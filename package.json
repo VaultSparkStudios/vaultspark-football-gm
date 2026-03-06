@@ -1,0 +1,23 @@
+{
+  "name": "vaultspark-football-gm",
+  "version": "1.0.0",
+  "description": "VaultSpark Football GM - 100-year scalable NFL-style franchise simulation engine",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "cli": "node src/index.js",
+    "sim:100": "node src/index.js --years 100 --seed 2026 --export",
+    "build:realism-profile": "node src/data/scripts/buildRealismProfile.js",
+    "etl:pfr": "node src/data/scripts/pfrEtl.js",
+    "verify:realism": "node src/data/scripts/verifyRealism.js --seasons 12",
+    "test": "node --test --test-isolation=none",
+    "test:ui": "playwright test",
+    "test:ui:headed": "playwright test --headed"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  }
+}

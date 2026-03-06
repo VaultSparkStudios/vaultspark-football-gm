@@ -1,0 +1,12 @@
+node_modules/
+test-results/
+playwright-report/
+.pw-saves/
+saves/
+output/
+
+*.log
+npm-debug.log*
+
+.DS_Store
+Thumbs.db

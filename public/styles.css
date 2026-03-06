@@ -1,0 +1,385 @@
+:root {
+  --ink: #f2efe7;
+  --muted: #b5beb9;
+  --bg-0: #0f1315;
+  --bg-1: #151d1f;
+  --bg-2: #1c282b;
+  --line: #344447;
+  --accent: #e7b24c;
+  --accent-2: #49b3a1;
+  --danger: #d05c5c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--bg-0);
+  font-family: "Bahnschrift", "Trebuchet MS", "Lucida Sans", sans-serif;
+  min-height: 100vh;
+}
+
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 8% 16%, rgba(73, 179, 161, 0.13), transparent 27%),
+    radial-gradient(circle at 88% 10%, rgba(231, 178, 76, 0.18), transparent 26%),
+    linear-gradient(160deg, #0b0f10, #141c1f 40%, #0f1518);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(1.3rem, 2.6vw, 1.95rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+h2 {
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.6rem;
+}
+
+h3 {
+  font-size: 0.84rem;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.small {
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.row.compact {
+  gap: 0.45rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  color: var(--muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  min-width: 120px;
+}
+
+input,
+select,
+button {
+  font-family: inherit;
+  font-size: 0.86rem;
+  color: var(--ink);
+  background: #11191b;
+  border: 1px solid #425156;
+  border-radius: 10px;
+  padding: 0.45rem 0.62rem;
+}
+
+button {
+  cursor: pointer;
+  background: linear-gradient(145deg, #293f43, #213336);
+}
+
+button:hover {
+  border-color: var(--accent-2);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button.warn {
+  background: linear-gradient(145deg, #5c2a2a, #472222);
+  border-color: #7b4141;
+}
+
+.link-btn {
+  border: none;
+  background: transparent;
+  color: var(--accent-2);
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+.chip {
+  border: 1px solid #4d5a5d;
+  border-radius: 999px;
+  padding: 0.26rem 0.52rem;
+  color: var(--muted);
+  font-size: 0.74rem;
+}
+
+.panel,
+.setup-card {
+  background: linear-gradient(180deg, rgba(24, 33, 35, 0.92), rgba(18, 26, 28, 0.92));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.86rem;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.23);
+}
+
+.split {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.stack {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.5rem;
+}
+
+.cards article {
+  border: 1px solid #394749;
+  border-radius: 10px;
+  padding: 0.52rem;
+  background: rgba(14, 20, 21, 0.6);
+}
+
+.cards p {
+  margin: 0.14rem 0 0;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.record {
+  border: 1px solid #394749;
+  border-radius: 9px;
+  padding: 0.46rem;
+  background: rgba(15, 21, 23, 0.64);
+}
+
+.record strong {
+  color: var(--accent-2);
+}
+
+.table-wrap {
+  overflow: auto;
+  border: 1px solid #314043;
+  border-radius: 10px;
+  background: rgba(12, 18, 19, 0.4);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.77rem;
+}
+
+th,
+td {
+  border-bottom: 1px solid rgba(63, 79, 82, 0.55);
+  padding: 0.35rem 0.42rem;
+  white-space: nowrap;
+}
+
+th {
+  background: rgba(21, 31, 34, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #a8b9b3;
+  position: sticky;
+  top: 0;
+}
+
+.setup-wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.setup-card.hero {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.game-topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 0.9rem 1rem 0.7rem;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(4px);
+}
+
+.game-shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 0.9rem;
+  padding: 0 1rem 1rem;
+}
+
+.side-menu {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+}
+
+.menu-btn {
+  text-align: left;
+  padding: 0.55rem 0.62rem;
+  border-color: #3a4a4f;
+}
+
+.menu-btn.active {
+  border-color: var(--accent);
+  background: linear-gradient(145deg, #4a3a1e, #2f2a1e);
+}
+
+.tab-panels {
+  min-width: 0;
+}
+
+.tab-panel {
+  display: none;
+  gap: 0.85rem;
+}
+
+.tab-panel.active {
+  display: grid;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 40;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-card {
+  width: min(1100px, 95vw);
+  max-height: 90vh;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(24, 33, 35, 0.97), rgba(18, 26, 28, 0.97));
+  padding: 0.9rem;
+}
+
+.command-card {
+  width: min(780px, 96vw);
+}
+
+.toast-stack {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  gap: 0.4rem;
+  z-index: 80;
+}
+
+.toast {
+  border: 1px solid #486166;
+  background: rgba(19, 30, 32, 0.95);
+  border-radius: 10px;
+  padding: 0.45rem 0.65rem;
+  font-size: 0.78rem;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(60, 77, 80, 0.25), rgba(92, 120, 126, 0.42), rgba(60, 77, 80, 0.25));
+  background-size: 220% 100%;
+  animation: pulse 1.1s ease-in-out infinite;
+  border-radius: 8px;
+  min-height: 14px;
+}
+
+@keyframes pulse {
+  0% { background-position: 0 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (min-width: 980px) {
+  .split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .split.triple {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .game-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .side-menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menu-btn {
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .game-topbar {
+    flex-direction: column;
+  }
+
+  .side-menu {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-btn {
+    padding: 0.44rem 0.5rem;
+  }
+
+  label {
+    min-width: 100%;
+  }
+}

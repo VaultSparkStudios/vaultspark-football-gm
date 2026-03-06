@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VaultSpark Football GM - Season Setup</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="setup-body">
+    <div class="bg-layer"></div>
+    <main class="setup-wrap">
+      <section class="setup-card hero">
+        <h1>VaultSpark Football GM</h1>
+        <p>League Hub: start a scenario, resume a save, or jump into your active franchise.</p>
+        <div class="row compact">
+          <button id="continueActiveBtn" data-testid="continue-active-btn">Continue Active League</button>
+          <button id="resumeLatestBtn" data-testid="resume-latest-btn">Resume Latest Save</button>
+          <span id="activeLeagueText" class="small">Checking active session...</span>
+        </div>
+        <div class="cards">
+          <article>
+            <h3>Quick Start: Modern</h3>
+            <button id="presetModernBtn">Apply</button>
+          </article>
+          <article>
+            <h3>Quick Start: Balanced</h3>
+            <button id="presetBalancedBtn">Apply</button>
+          </article>
+          <article>
+            <h3>Quick Start: Legacy</h3>
+            <button id="presetLegacyBtn">Apply</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="setup-card">
+        <h2>New League</h2>
+        <div class="form-grid">
+          <label>Seed
+            <input id="seedInput" data-testid="seed-input" type="number" />
+          </label>
+          <label>Start Year
+            <input id="startYearInput" data-testid="start-year-input" type="number" />
+          </label>
+          <label>Mode
+            <select id="modeInput" data-testid="mode-input">
+              <option value="drive">Drive</option>
+              <option value="play">Play</option>
+            </select>
+          </label>
+          <label>Era Profile
+            <select id="eraProfileInput">
+              <option value="modern">Modern Pass Era</option>
+              <option value="balanced">Balanced</option>
+              <option value="legacy">Legacy Run Era</option>
+            </select>
+          </label>
+          <label>Controlled Team
+            <select id="teamSelect" data-testid="setup-team-select"></select>
+          </label>
+          <label>PFR Player JSON Path
+            <input id="pfrPathInput" data-testid="pfr-path-input" type="text" placeholder="optional local path" />
+          </label>
+          <label>Realism Profile Path
+            <input id="profilePathInput" data-testid="profile-path-input" type="text" placeholder="optional local path" />
+          </label>
+        </div>
+        <div class="row compact">
+          <label><input id="ownerModeInput" type="checkbox" checked /> Owner Mode</label>
+          <label><input id="narrativesInput" type="checkbox" checked /> Dynamic Narratives</label>
+          <label><input id="compPicksInput" type="checkbox" checked /> Comp Picks</label>
+          <label><input id="chemistryInput" type="checkbox" checked /> Team Chemistry</label>
+        </div>
+        <div class="row">
+          <button id="createLeagueBtn" data-testid="create-league-btn">Create League</button>
+          <span id="setupStatus" data-testid="setup-status" class="chip">Ready</span>
+        </div>
+      </section>
+
+      <section class="setup-card">
+        <h2>Saved Leagues</h2>
+        <div class="row compact">
+          <button id="refreshSavesBtn" data-testid="refresh-saves-btn">Refresh Saves</button>
+          <label>Search
+            <input id="saveSearchInput" data-testid="save-search-input" type="text" placeholder="slot, team, year" />
+          </label>
+          <label>Delete Slot
+            <input id="deleteSlotInput" data-testid="delete-slot-input" type="text" placeholder="slot name" />
+          </label>
+          <button id="deleteSlotBtn" data-testid="delete-slot-btn" class="warn">Delete</button>
+        </div>
+        <div class="table-wrap">
+          <table id="savesTable" data-testid="saves-table"></table>
+        </div>
+      </section>
+
+      <section class="setup-card">
+        <h2>Auto Backups (Quick Rollback)</h2>
+        <div class="row compact">
+          <button id="refreshBackupsBtn" data-testid="refresh-backups-btn">Refresh Backups</button>
+          <label>Delete Backup
+            <input id="deleteBackupInput" data-testid="delete-backup-input" type="text" placeholder="backup slot" />
+          </label>
+          <button id="deleteBackupBtn" data-testid="delete-backup-btn" class="warn">Delete</button>
+        </div>
+        <div class="table-wrap">
+          <table id="backupsTable" data-testid="backups-table"></table>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="./setup.js"></script>
+  </body>
+</html>
