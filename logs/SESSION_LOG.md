@@ -28,11 +28,12 @@ Completed:
 - Parked the unrelated realism/runtime and local artifact files into a named stash so the worktree is clean again
 - Reproduced the reported `Play`-mode startup issue in a browser, traced it to the blocking game-page boot path, and changed startup to hydrate secondary panels in the background after the dashboard is ready
 - Added and passed a dedicated Playwright smoke test for create-league in `Play` mode
+- Deferred backup loading on the first setup-init request and tightened both save-store adapters so normal save listing avoids backup metadata work
 
 Open problems:
-- Setup/main-menu initialization still needs profiling and likely additional trimming
+- Setup/main-menu initialization still needs measuring after the backup-deferral change and may need additional trimming
 - GitHub Settings -> Pages and optional repo variables cannot be verified from repo files alone
 - A full `npm.cmd test` invocation was not rerun in this shell session, so verification here relies on the focused suites that passed
 
 Recommended next action:
-- Start profiling setup/main-menu initialization, then tackle randomized team abbreviations
+- Measure the remaining setup/main-menu latency after this backup-deferral pass, then tackle randomized team abbreviations

@@ -44,6 +44,10 @@ export function createBrowserSaveStore({
   function listSaveSlots({ includeBackups = false } = {}) {
     return storageKeys(storage)
       .filter((key) => key.startsWith(dataPrefix))
+      .filter((key) => {
+        if (includeBackups) return true;
+        return !isBackupSlot(key.slice(dataPrefix.length), backupPrefix);
+      })
       .map((key) => {
         const slot = key.slice(dataPrefix.length);
         const rawSnapshot = storage.getItem(key);
@@ -62,7 +66,6 @@ export function createBrowserSaveStore({
           serializedSnapshot: rawSnapshot
         });
       })
-      .filter((slot) => (includeBackups ? true : !isBackupSlot(slot.slot, backupPrefix)))
       .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
   }
 

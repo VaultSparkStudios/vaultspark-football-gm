@@ -5,7 +5,6 @@ import { GAME_NAME } from "./config.js";
 import { createSession, createSessionFromSnapshot } from "./runtime/bootstrap.js";
 import {
   deleteSaveSlot,
-  isBackupSlot,
   listBackupSlots,
   listSaveSlots,
   loadSessionFromSlot,
@@ -183,12 +182,15 @@ function createSimulationJob(totalSeasons) {
 async function handleApi(req, res, url) {
   if (req.method === "GET" && url.pathname === "/api/setup/init") {
     const setup = session.getSetupState();
-    const slots = listSaveSlots({ includeBackups: true });
+    const includeBackups = toBool(url.searchParams.get("includeBackups"), false);
+    const saves = listSaveSlots();
+    const backups = includeBackups ? listBackupSlots() : [];
     sendJson(res, 200, {
       ok: true,
       currentYear: CURRENT_YEAR,
-      saves: slots.filter((slot) => !isBackupSlot(slot.slot)),
-      backups: slots.filter((slot) => isBackupSlot(slot.slot)),
+      saves,
+      backups,
+      backupsDeferred: !includeBackups,
       activeLeague: {
         phase: setup.phase,
         currentYear: setup.currentYear,

@@ -159,3 +159,26 @@ test("local api runtime exposes regular-season and playoff stat filters", async 
   assert.equal(profile.payload.profile.seasonType, "playoffs");
   assert.ok(profile.payload.profile.timeline.length > 0);
 });
+
+test("local api runtime setup init defers backups by default", async () => {
+  const runtime = createLocalApiRuntime({
+    storage: createMemoryStorage(),
+    now: (() => {
+      let tick = 0;
+      return () => 1_720_000_000_000 + tick++;
+    })(),
+    scheduler: (fn) => fn()
+  });
+
+  const initial = await runtime.request("/api/setup/init");
+  assert.equal(initial.status, 200);
+  assert.equal(initial.payload.backupsDeferred, true);
+  assert.deepEqual(initial.payload.backups, []);
+
+  await runtime.request("/api/saves/save", { method: "POST", body: { slot: "alpha" } });
+
+  const withBackups = await runtime.request("/api/setup/init?includeBackups=1");
+  assert.equal(withBackups.status, 200);
+  assert.equal(withBackups.payload.backupsDeferred, false);
+  assert.ok(Array.isArray(withBackups.payload.backups));
+});

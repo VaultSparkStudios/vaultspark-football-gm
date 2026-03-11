@@ -5,7 +5,8 @@ const state = {
   saves: [],
   teams: [],
   saveSearch: "",
-  backups: []
+  backups: [],
+  backupsDeferred: false
 };
 
 const api = createApiClient();
@@ -167,6 +168,10 @@ function renderSaves() {
 function renderBackups() {
   const table = document.getElementById("backupsTable");
   if (!table) return;
+  if (state.backupsDeferred) {
+    table.innerHTML = "<tr><td>Backups are not loaded on first open. Click Refresh Backups to load them.</td></tr>";
+    return;
+  }
   if (!state.backups.length) {
     table.innerHTML = "<tr><td>No backups yet.</td></tr>";
     return;
@@ -199,11 +204,12 @@ function renderBackups() {
 
 async function loadSetup() {
   applyRuntimeModeUi();
-  const init = await api("/api/setup/init");
+  const init = await api("/api/setup/init?includeBackups=0");
   state.currentYear = init.currentYear;
   state.saves = init.saves || [];
   state.teams = init.teams || [];
   state.backups = init.backups || [];
+  state.backupsDeferred = init.backupsDeferred === true;
 
   document.getElementById("seedInput").value = Date.now();
   document.getElementById("startYearInput").value = init.currentYear;
@@ -356,6 +362,7 @@ function bindEvents() {
     try {
       const payload = await api("/api/backups");
       state.backups = payload.slots || [];
+      state.backupsDeferred = false;
       renderBackups();
       setStatus("Ready");
     } catch (error) {

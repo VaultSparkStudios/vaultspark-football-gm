@@ -8,15 +8,17 @@ Build status:
 - Manual snap-share overrides are now persisted in league state, exposed through `/api/depth-chart`, and consumed by the live game simulator rotation logic
 - The always-open footer Game Guide has been replaced with a button-driven modal/submenu while the Rules tab guide remains available
 - The game shell now marks itself ready after loading core dashboard state, then hydrates heavier panels in the background so `Play` mode no longer appears stuck on `Loading...` after league creation
+- Server-backed setup init now defers backup loading on first open, and both save-store adapters skip backup metadata work when only normal saves are requested
 - Focused validation passed for:
+  - `node --test --test-isolation=none test/browser-save-store.test.js test/file-save-store.test.js test/local-api-runtime.test.js`
   - `node --test --test-isolation=none test/session-actions.test.js test/local-api-runtime.test.js`
   - `npx.cmd playwright test tests-ui/app.spec.js --reporter=line --workers=1`
   - `npx.cmd playwright test tests-ui/play-mode-smoke.spec.js --reporter=line --workers=1`
 
 Current priorities:
-1. Profile and reduce setup/main-menu load time, especially setup init and active-session checks
+1. Measure and trim any remaining setup/main-menu latency after the backup-deferral pass, especially active-session checks
 2. Generate abbreviations from randomized city/team names instead of fixed NFL IDs
-3. Smoke the updated depth-chart and `Play`-mode startup flows in any remaining manual QA scenarios if needed
+3. Smoke the updated setup/startup, depth-chart, and `Play`-mode flows in any remaining manual QA scenarios if needed
 
 Known issues:
 - The Pages artifact is client-only; the server-backed runtime still requires separate backend rollout

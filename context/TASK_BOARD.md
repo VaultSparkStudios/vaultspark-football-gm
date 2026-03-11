@@ -1,13 +1,13 @@
 # Task Board
 
 ## Now
-- Profile and reduce setup/main-menu load time, especially setup init and active-session checks
+- Measure any remaining setup/main-menu latency after the backup-deferral pass, especially active-session checks
 - Generate abbreviations from randomized city/team names instead of fixed NFL IDs
-- Smoke the updated depth-chart and `Play`-mode startup flows in any remaining manual QA scenarios if needed
+- Smoke the updated setup/startup, depth-chart, and `Play`-mode flows in any remaining manual QA scenarios if needed
 
 ## Next
 - Decide whether to restore the parked realism/runtime stash onto a separate branch or continue keeping it isolated
-- Add more targeted startup observability if setup/menu latency is still unclear after the first pass
+- Add more targeted startup observability if setup/menu latency is still unclear after the backup-deferral pass
 - Reconcile the separate Studio repo deployment docs/templates to the direct-Pages model once that repo is safe to edit
 
 ## Later

@@ -58,6 +58,7 @@ test("browser save store supports save, list, load, backup pruning, and delete",
   store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 4, phase: "regular", maxBackups: 2 });
   store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 5, phase: "regular", maxBackups: 2 });
   store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 6, phase: "regular", maxBackups: 2 });
+  assert.equal(store.listSaveSlots().length, 1);
   assert.equal(store.listBackupSlots().length, 2);
 
   assert.equal(store.deleteSaveSlot("primary"), true);
