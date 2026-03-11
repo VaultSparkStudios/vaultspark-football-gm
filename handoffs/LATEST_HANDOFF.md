@@ -13,14 +13,14 @@ What was completed:
 - Updated `tests-ui/app.spec.js` to the current Contracts and Scouting UI flows and verified the full Playwright app spec passes locally
 
 What is mid-flight:
-- Git push for the Playwright UI spec sync
-- Live GitHub rerun of the updated `test:ui` job
+- Live GitHub rerun of the updated `test:ui` job after commit `117eb75`
+- Manual GitHub-side confirmation for Pages settings/variables still pending outside the repo
 
 What to do next:
-1. Commit and push the staged Playwright spec fix on `codex/direct-pages-standards`
-2. Confirm GitHub Actions clears the remaining UI failures
-3. Resume the gameplay/depth-chart/Game Guide feature work
+1. Confirm GitHub Actions clears the remaining UI failures on `codex/direct-pages-standards`
+2. Resume the gameplay/depth-chart/Game Guide feature work
+3. Reconcile the separate Studio repo docs/templates to match Studio `AGENTS.md` once that worktree is safe to edit
 
 Important constraints:
 - Do not revert or stage the unrelated gameplay/realism files already modified in the worktree
-- Studio-site repo changes are separate and only needed for landing-page card edits
+- The local Studio repo clone is heavily dirty; do not edit its standards/docs blindly without first isolating that worktree

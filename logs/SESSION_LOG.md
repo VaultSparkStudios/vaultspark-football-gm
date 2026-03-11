@@ -17,10 +17,13 @@ Completed:
   - `test/realism-career-regression.test.js`
   - `test/session-actions.test.js`
 - Synced the Playwright app spec to the current Contracts and Scouting UI and verified `tests-ui/app.spec.js` passes locally
+- Reviewed the Studio repo `origin/main` standards canon line by line and confirmed this game repo/local `origin/main` are aligned to the direct per-repo Pages model
+- Confirmed the separate local Studio repo clone is heavily dirty, so standards-only reconciliation there should be isolated before editing
 
 Open problems:
 - Live GitHub rerun is still needed to confirm the fix on the hosted runner
 - There are still unrelated dirty gameplay files in the worktree that are intentionally not part of this commit
+- GitHub Settings -> Pages and optional repo variables cannot be verified from repo files alone
 
 Recommended next action:
-- Commit and push the staged Playwright spec update, then watch the rerun on GitHub
+- Watch the rerun on GitHub, then resume the gameplay/depth-chart/Game Guide work if checks are green
