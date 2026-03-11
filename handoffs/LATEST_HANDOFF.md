@@ -9,14 +9,15 @@ What was completed:
 - Passed the focused local validation set for the standards-only diff
 - Updated CI to Node 24 so the test runner flag in `npm test` is supported on GitHub Actions
 - Isolated the real post-Node-upgrade CI failures and staged the runtime/stat fixes that make those tests pass locally
+- Verified the last two GitHub failures are stale test assumptions and validated the local test-file fixes
 
 What is mid-flight:
-- Git push for the runtime/stat regression fix commit
+- Git push for the final test expectation fixes
 - Live GitHub rerun of the updated `npm test` job
 
 What to do next:
-1. Commit and push the staged runtime/stat regression fixes on `codex/direct-pages-standards`
-2. Confirm GitHub Actions clears the four previously failing tests
+1. Commit and push the staged test expectation fixes on `codex/direct-pages-standards`
+2. Confirm GitHub Actions clears the remaining two failing tests
 3. Resume the gameplay/depth-chart/Game Guide feature work
 
 Important constraints:

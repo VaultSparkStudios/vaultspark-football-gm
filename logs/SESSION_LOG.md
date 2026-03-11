@@ -13,10 +13,13 @@ Completed:
   - `test/generated-league-presentation.test.js`
   - `test/local-api-runtime.test.js`
   - `test/realism-career-regression.test.js`
+- Verified the last two GitHub failures are fixed by already-present local test updates:
+  - `test/realism-career-regression.test.js`
+  - `test/session-actions.test.js`
 
 Open problems:
 - Live GitHub rerun is still needed to confirm the fix on the hosted runner
 - There are still unrelated dirty gameplay files in the worktree that are intentionally not part of this commit
 
 Recommended next action:
-- Commit and push the staged regression fix set, then watch the rerun on GitHub
+- Commit and push the staged test updates, then watch the rerun on GitHub
