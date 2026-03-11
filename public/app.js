@@ -9,6 +9,8 @@ const state = {
   contractCap: null,
   negotiationTargets: [],
   selectedContractPlayerId: null,
+  selectedDesignationPlayerId: null,
+  selectedRetirementOverridePlayerId: null,
   tradeBlockIds: [],
   statsRows: [],
   statsPage: 1,
@@ -1213,7 +1215,9 @@ function renderRoster() {
   const tr = table.querySelectorAll("tr");
   for (let i = 1; i < tr.length; i += 1) {
     const player = rows[i - 1];
+    const isSelected = player.id === state.selectedDesignationPlayerId;
     const actions = [
+      `<button data-designation-select="${escapeHtml(player.id)}">${isSelected ? "Selected" : "Select"}</button>`,
       `<button data-act="release" data-id="${escapeHtml(player.id)}" class="warn">Release</button>`
     ];
     if (player.slot === "active") actions.push(`<button data-act="ps" data-id="${escapeHtml(player.id)}">To PS</button>`);
@@ -1355,6 +1359,40 @@ function setSelectedContractPlayer(playerId, { preserveInputs = false } = {}) {
     if (salaryInput) salaryInput.value = demand?.salary || "";
   }
   updateContractPreview();
+}
+
+function getSelectedDesignationPlayer() {
+  return state.roster.find((player) => player.id === state.selectedDesignationPlayerId) || null;
+}
+
+function setSelectedDesignationPlayer(playerId) {
+  state.selectedDesignationPlayerId = playerId || null;
+  const player = getSelectedDesignationPlayer();
+  if (!player) state.selectedDesignationPlayerId = null;
+  const label = document.getElementById("designationSelectedPlayerText");
+  if (label) {
+    label.textContent = player ? `Selected: ${player.name} (${player.pos})` : "Selected: None";
+  }
+  const applyBtn = document.getElementById("applyDesignationBtn");
+  if (applyBtn) applyBtn.disabled = !player;
+  const clearBtn = document.getElementById("clearDesignationBtn");
+  if (clearBtn) clearBtn.disabled = !player;
+}
+
+function getSelectedRetirementOverridePlayer() {
+  return (state.retiredPool || []).find((player) => player.id === state.selectedRetirementOverridePlayerId) || null;
+}
+
+function setSelectedRetirementOverridePlayer(playerId) {
+  state.selectedRetirementOverridePlayerId = playerId || null;
+  const player = getSelectedRetirementOverridePlayer();
+  if (!player) state.selectedRetirementOverridePlayerId = null;
+  const label = document.getElementById("retirementOverrideSelectedPlayerText");
+  if (label) {
+    label.textContent = player ? `Selected: ${player.name} (${player.pos})` : "Selected: None";
+  }
+  const button = document.getElementById("retirementOverrideBtn");
+  if (button) button.disabled = !player;
 }
 
 function updateContractPreview() {
@@ -1673,8 +1711,9 @@ function renderRetiredPool() {
     if (!row) return;
     const cell = tr.lastElementChild;
     if (!cell) return;
+    const isSelected = row.id === state.selectedRetirementOverridePlayerId;
     cell.innerHTML = row.eligible === "Yes"
-      ? `<button data-retired-override-id="${escapeHtml(row.id)}">Use</button>`
+      ? `<button data-retired-override-id="${escapeHtml(row.id)}">${isSelected ? "Selected" : "Select"}</button>`
       : "";
   });
   decoratePlayerColumnFromRows("retiredTable", rows, { idKeys: ["id"] });
@@ -2801,6 +2840,7 @@ async function loadRoster() {
   if (maxAge) query.set("maxAge", maxAge);
   const data = await api(`/api/roster?${query.toString()}`);
   state.roster = data.roster || [];
+  setSelectedDesignationPlayer(state.selectedDesignationPlayerId);
   renderRoster();
   renderRosterBoard();
   if (!state.contractTeamId || state.contractTeamId === teamId) {
@@ -2837,6 +2877,7 @@ async function loadRetiredPool() {
   if (maxAge) query.set("maxAge", maxAge);
   const payload = await api(`/api/retired?${query.toString()}`);
   state.retiredPool = payload.retired || [];
+  setSelectedRetirementOverridePlayer(state.selectedRetirementOverridePlayerId);
   renderRetiredPool();
 }
 
@@ -3268,6 +3309,12 @@ function bindEvents() {
   });
 
   document.getElementById("rosterTable").addEventListener("click", (event) => {
+    const selectButton = event.target.closest("button[data-designation-select]");
+    if (selectButton) {
+      setSelectedDesignationPlayer(selectButton.dataset.designationSelect || "");
+      renderRoster();
+      return;
+    }
     const button = event.target.closest("button[data-act]");
     if (!button) return;
     const teamId = (document.getElementById("rosterTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
@@ -3309,16 +3356,19 @@ function bindEvents() {
   document.getElementById("retiredTable").addEventListener("click", (event) => {
     const button = event.target.closest("button[data-retired-override-id]");
     if (!button) return;
-    document.getElementById("retirementOverridePlayerId").value = button.dataset.retiredOverrideId || "";
+    setSelectedRetirementOverridePlayer(button.dataset.retiredOverrideId || "");
+    renderRetiredPool();
   });
 
   document.getElementById("retirementOverrideBtn").addEventListener("click", () =>
     runAction(async () => {
+      const player = getSelectedRetirementOverridePlayer();
+      if (!player) throw new Error("Select a retired player first.");
       const teamId = (document.getElementById("retirementOverrideTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
       await api("/api/retirement/override", {
         method: "POST",
         body: {
-          playerId: document.getElementById("retirementOverridePlayerId").value.trim(),
+          playerId: player.id,
           teamId,
           minWinningPct: Number(document.getElementById("retirementOverrideWinPct").value || 0.55),
           forceSign: true
@@ -3330,12 +3380,14 @@ function bindEvents() {
 
   document.getElementById("applyDesignationBtn").addEventListener("click", () =>
     runAction(async () => {
+      const player = getSelectedDesignationPlayer();
+      if (!player) throw new Error("Select a roster player first.");
       const teamId = (document.getElementById("rosterTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
       await api("/api/roster/designation", {
         method: "POST",
         body: {
           teamId,
-          playerId: document.getElementById("designationPlayerId").value.trim(),
+          playerId: player.id,
           designation: document.getElementById("designationType").value,
           active: true
         }
@@ -3346,12 +3398,14 @@ function bindEvents() {
 
   document.getElementById("clearDesignationBtn").addEventListener("click", () =>
     runAction(async () => {
+      const player = getSelectedDesignationPlayer();
+      if (!player) throw new Error("Select a roster player first.");
       const teamId = (document.getElementById("rosterTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
       await api("/api/roster/designation", {
         method: "POST",
         body: {
           teamId,
-          playerId: document.getElementById("designationPlayerId").value.trim(),
+          playerId: player.id,
           designation: document.getElementById("designationType").value,
           active: false
         }

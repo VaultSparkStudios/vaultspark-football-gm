@@ -15,14 +15,16 @@ What was completed:
 - Added a dedicated Playwright smoke test for creating a league in `Play` mode and reaching a ready franchise screen
 - Deferred backup loading on the first setup-init request and tightened both save-store adapters so normal save listing skips backup metadata work
 - Fixed the main user-facing team identity leak by mapping schedule/calendar/ticker/transaction/pick/player displays to the generated team abbreviations instead of raw team IDs
+- Replaced raw typed player-ID inputs in the designation and retirement-override panels with table-driven selection chips and disabled action buttons until a player is selected
+- Added a Playwright regression for the designation selection flow and the no-raw-ID retirement override shell state
 
 What is mid-flight:
 - The unrelated realism/runtime work is still parked in a local stash and has not been reincorporated
-- The next UX/runtime batch still needs to tackle remaining raw-ID commissioner/admin flows and any remaining setup/main-menu latency after this backup-deferral pass
+- The next UX/runtime batch still needs to tackle the remaining raw-ID commissioner/admin flows outside designation/retirement override and any remaining setup/main-menu latency after this backup-deferral pass
 
 What to do next:
 1. Measure and trim any remaining setup/main-menu latency, especially active-session checks
-2. Remove the remaining raw-ID dependence from roster/admin and other commissioner-facing flows
+2. Remove the remaining raw-ID dependence from the remaining commissioner/admin flows such as trade, compare, and player-history lookups
 3. Reconcile the separate Studio repo docs/templates to match Studio `AGENTS.md` once that worktree is safe to edit
 
 Important constraints:

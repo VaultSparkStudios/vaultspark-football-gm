@@ -155,7 +155,7 @@
               <label>Max Age <input id="rosterMaxAgeFilter" type="number" min="18" max="45" /></label>
             </div>
             <div class="row">
-              <label>Player ID <input id="designationPlayerId" type="text" /></label>
+              <span id="designationSelectedPlayerText" class="chip">Selected: None</span>
               <label>Designation
                 <select id="designationType">
                   <option value="gameDayInactive">Game-Day Inactive</option>
@@ -164,9 +164,10 @@
                   <option value="nfi">NFI</option>
                 </select>
               </label>
-              <button id="applyDesignationBtn">Apply Designation</button>
-              <button id="clearDesignationBtn" class="warn">Clear Designation</button>
+              <button id="applyDesignationBtn" disabled>Apply Designation</button>
+              <button id="clearDesignationBtn" class="warn" disabled>Clear Designation</button>
             </div>
+            <div class="small">Use Select in the roster table to choose a player for designation changes.</div>
             <div class="table-wrap"><table id="rosterTable" data-testid="roster-table"></table></div>
             <h3>Roster Board (Depth Order)</h3>
             <div class="row compact">
@@ -283,13 +284,14 @@
               <button id="loadRetiredBtn">Load Retired Pool</button>
             </div>
             <div class="row">
-              <label>Player ID <input id="retirementOverridePlayerId" type="text" /></label>
+              <span id="retirementOverrideSelectedPlayerText" class="chip">Selected: None</span>
               <label>Team <select id="retirementOverrideTeamSelect"></select></label>
               <label>Min Team Win %
                 <input id="retirementOverrideWinPct" type="number" step="0.01" value="0.55" min="0.30" max="0.90" />
               </label>
-              <button id="retirementOverrideBtn">Convince Comeback</button>
+              <button id="retirementOverrideBtn" disabled>Convince Comeback</button>
             </div>
+            <div class="small">Use Select in the retired table to choose a comeback target.</div>
             <div class="table-wrap"><table id="retiredTable"></table></div>
           </div>
         </section>

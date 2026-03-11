@@ -90,6 +90,44 @@ test("depth chart controls and game guide modal are operational", async ({ page 
   await expect(page.locator("#guideModal")).toHaveClass(/hidden/);
 });
 
+test("designation and retirement override flows use table selection", async ({ page }) => {
+  await createLeagueFromSetup(page);
+
+  await page.click('[data-testid="tab-roster"]');
+  await page.click("#loadRosterBtn");
+  await waitGameReady(page);
+
+  await expect(page.locator("#designationPlayerId")).toHaveCount(0);
+  const designationSelect = page.locator('#rosterTable tr:has(button[data-act="ps"]) button[data-designation-select]').first();
+  const selectedPlayerId = await designationSelect.getAttribute("data-designation-select");
+  expect(selectedPlayerId).toBeTruthy();
+  await designationSelect.click();
+  await expect(page.locator("#designationSelectedPlayerText")).not.toContainText("Selected: None");
+
+  await page.click("#applyDesignationBtn");
+  await waitGameReady(page);
+  await expect(page.locator(`#rosterTable tr:has(button[data-player-id="${selectedPlayerId}"])`)).toContainText("gameDayInactive");
+
+  await page.click("#clearDesignationBtn");
+  await waitGameReady(page);
+  await expect(page.locator(`#rosterTable tr:has(button[data-player-id="${selectedPlayerId}"])`)).not.toContainText("gameDayInactive");
+
+  await page.click('[data-testid="tab-transactions"]');
+  await page.click("#loadRetiredBtn");
+  await waitGameReady(page);
+
+  await expect(page.locator("#retirementOverridePlayerId")).toHaveCount(0);
+  const retiredSelect = page.locator('#retiredTable button[data-retired-override-id]');
+  if (await retiredSelect.count()) {
+    await retiredSelect.first().click();
+    await expect(page.locator("#retirementOverrideSelectedPlayerText")).not.toContainText("Selected: None");
+    await expect(page.locator("#retirementOverrideBtn")).toBeEnabled();
+  } else {
+    await expect(page.locator("#retirementOverrideSelectedPlayerText")).toContainText("Selected: None");
+    await expect(page.locator("#retirementOverrideBtn")).toBeDisabled();
+  }
+});
+
 test("contracts, trade, calendar, and transaction log are operational", async ({ page }) => {
   await createLeagueFromSetup(page);
 

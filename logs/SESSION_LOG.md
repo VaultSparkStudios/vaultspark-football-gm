@@ -30,11 +30,14 @@ Completed:
 - Added and passed a dedicated Playwright smoke test for create-league in `Play` mode
 - Deferred backup loading on the first setup-init request and tightened both save-store adapters so normal save listing avoids backup metadata work
 - Mapped user-facing schedule/calendar/ticker/transaction/pick/player displays to generated team abbreviations so the UI no longer leaks legacy team IDs after randomized league creation
+- Replaced raw typed player-ID entry in the roster designation and retirement override panels with table-driven selection state and disabled actions until a player is chosen
+- Added and passed a Playwright regression covering designation selection plus the retirement-override no-raw-ID shell state
 
 Open problems:
 - Setup/main-menu initialization still needs measuring after the backup-deferral change and may need additional trimming
 - GitHub Settings -> Pages and optional repo variables cannot be verified from repo files alone
 - A full `npm.cmd test` invocation was not rerun in this shell session, so verification here relies on the focused suites that passed
+- Trade, compare, and player-history commissioner tools still expose typed player IDs and need the same UX cleanup pass
 
 Recommended next action:
-- Measure the remaining setup/main-menu latency after this backup-deferral pass, then remove the remaining raw-ID commissioner/admin flows
+- Measure the remaining setup/main-menu latency after this backup-deferral pass, then remove the remaining raw-ID commissioner/admin flows outside designation/retirement override

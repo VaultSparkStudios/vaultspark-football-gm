@@ -22,8 +22,6 @@ VaultSpark Football GM
   - setup hover help for `Drive` vs `Play`
 - rules guide plus a footer-launched Game Guide modal describing gameplay loop, features, ratings, physicals, development, and era profiles
 - New user-reported blockers after the latest pass:
-  - generated team abbreviations still use legacy NFL IDs instead of matching the randomized city/team identity
-  - `Play` mode appears broken or non-functional when starting a league
   - setup/start menu is loading too slowly, especially while checking the active league/save state
   - the create-league/menu boot path currently feels too slow overall and needs profiling/trim work
 - The project is still not production-ready for GitHub Pages:
@@ -69,6 +67,7 @@ VaultSpark Football GM
   - game-page startup now loads the core dashboard first and hydrates heavier panels in the background so `Play` mode no longer looks hung on entry
   - setup init now defers backup loading on first open, and normal save listing skips backup metadata work
   - user-facing schedule/calendar/ticker/transaction/pick/player displays now resolve team IDs to generated team abbreviations instead of showing legacy NFL IDs
+  - roster designation and retirement override panels now use table-driven player selection chips instead of typed raw player IDs
 - Generated presentation work:
   - generated teams now use randomized names
   - generated players now carry deterministic physical/body data and `faceSeed`
@@ -129,10 +128,8 @@ VaultSpark Football GM
   - scouting and draft selection no longer depend on typed raw player IDs
   - controlled-team box scores are archived and exposed through runtime + API (`/api/boxscores`, `/api/boxscore`)
 - Still incomplete or needing polish:
-  - generated abbreviations do not yet match randomized team identities and need a new abbreviation model
-  - `Play` mode needs an immediate audit; user reports it is not working correctly from league creation
   - setup boot path is too slow, especially active-league/save checks on the main menu
-  - roster designation / some admin contract flows still expose raw IDs and need a cleaner UX pass
+  - some commissioner/admin flows still expose raw IDs, especially trade, compare, and player-history tools
   - the new box score ticker is functional but still stylistically basic
   - the stats page/player profile sample-matching pass is in progress and still needs more exact playoff/accolade formatting against the provided screenshots
   - stronger draft storylines / ranking variability still need a deeper pass
@@ -151,6 +148,7 @@ VaultSpark Football GM
  - Additional frontend/runtime sanity after the latest guide/profile/default-team pass:
    - `node --check public/app.js`
    - `node --check public/setup.js`
+   - `node --check tests-ui/app.spec.js`
    - `node --test --test-isolation=none test/browser-save-store.test.js test/file-save-store.test.js test/local-api-runtime.test.js`
    - `node --test --test-isolation=none test/local-api-runtime.test.js test/session-actions.test.js`
    - `npx.cmd playwright test tests-ui/app.spec.js --reporter=line --workers=1`
