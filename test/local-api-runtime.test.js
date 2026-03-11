@@ -172,13 +172,20 @@ test("local api runtime setup init defers backups by default", async () => {
 
   const initial = await runtime.request("/api/setup/init");
   assert.equal(initial.status, 200);
+  assert.equal(initial.payload.savesDeferred, false);
   assert.equal(initial.payload.backupsDeferred, true);
   assert.deepEqual(initial.payload.backups, []);
 
   await runtime.request("/api/saves/save", { method: "POST", body: { slot: "alpha" } });
 
+  const withoutSaves = await runtime.request("/api/setup/init?includeSaves=0");
+  assert.equal(withoutSaves.status, 200);
+  assert.equal(withoutSaves.payload.savesDeferred, true);
+  assert.deepEqual(withoutSaves.payload.saves, []);
+
   const withBackups = await runtime.request("/api/setup/init?includeBackups=1");
   assert.equal(withBackups.status, 200);
+  assert.equal(withBackups.payload.savesDeferred, false);
   assert.equal(withBackups.payload.backupsDeferred, false);
   assert.ok(Array.isArray(withBackups.payload.backups));
 });

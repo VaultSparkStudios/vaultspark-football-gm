@@ -1,13 +1,13 @@
 # Task Board
 
 ## Now
-- Measure any remaining setup/main-menu latency after the backup-deferral pass, especially active-session checks
+- Measure any remaining setup/main-menu latency after the non-blocking save-load pass, especially active-session/runtime-mode startup overhead
 - Remove the remaining raw-ID dependence from the remaining commissioner-facing tools such as trade, compare, and player-history lookups
 - Smoke the updated setup/startup, team-identity, depth-chart, and `Play`-mode flows in any remaining manual QA scenarios if needed
 
 ## Next
 - Decide whether to restore the parked realism/runtime stash onto a separate branch or continue keeping it isolated
-- Add more targeted startup observability if setup/menu latency is still unclear after the backup-deferral pass
+- Add more targeted startup observability if setup/menu latency is still unclear after the non-blocking save-load pass
 - Extend the table-selection pattern to any remaining admin flows that still expose typed player IDs
 - Reconcile the separate Studio repo deployment docs/templates to the direct-Pages model once that repo is safe to edit
 

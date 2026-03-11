@@ -66,6 +66,7 @@ VaultSpark Football GM
   - rules tab and game footer now include a fuller user guide, with the footer guide moved behind a button-driven modal
   - game-page startup now loads the core dashboard first and hydrates heavier panels in the background so `Play` mode no longer looks hung on entry
   - setup init now defers backup loading on first open, and normal save listing skips backup metadata work
+  - setup-page boot now skips save discovery on the first `/api/setup/init` request, marks the menu ready from active-league/team state, and hydrates saves in the background
   - user-facing schedule/calendar/ticker/transaction/pick/player displays now resolve team IDs to generated team abbreviations instead of showing legacy NFL IDs
   - roster designation and retirement override panels now use table-driven player selection chips instead of typed raw player IDs
 - Generated presentation work:
@@ -128,7 +129,7 @@ VaultSpark Football GM
   - scouting and draft selection no longer depend on typed raw player IDs
   - controlled-team box scores are archived and exposed through runtime + API (`/api/boxscores`, `/api/boxscore`)
 - Still incomplete or needing polish:
-  - setup boot path is too slow, especially active-league/save checks on the main menu
+  - setup boot path still needs more profiling after the non-blocking save-load change
   - some commissioner/admin flows still expose raw IDs, especially trade, compare, and player-history tools
   - the new box score ticker is functional but still stylistically basic
   - the stats page/player profile sample-matching pass is in progress and still needs more exact playoff/accolade formatting against the provided screenshots
@@ -148,9 +149,12 @@ VaultSpark Football GM
  - Additional frontend/runtime sanity after the latest guide/profile/default-team pass:
    - `node --check public/app.js`
    - `node --check public/setup.js`
+   - `node --check src/server.js`
+   - `node --check src/app/api/localApiRuntime.js`
    - `node --check tests-ui/app.spec.js`
    - `node --test --test-isolation=none test/browser-save-store.test.js test/file-save-store.test.js test/local-api-runtime.test.js`
    - `node --test --test-isolation=none test/local-api-runtime.test.js test/session-actions.test.js`
+   - `node --test --test-isolation=none test/local-api-runtime.test.js`
    - `npx.cmd playwright test tests-ui/app.spec.js --reporter=line --workers=1`
    - `npx.cmd playwright test tests-ui/play-mode-smoke.spec.js --reporter=line --workers=1`
 

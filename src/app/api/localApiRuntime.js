@@ -158,14 +158,16 @@ export function createLocalApiRuntime({
     try {
       if (method === "GET" && pathname === "/api/setup/init") {
         const setup = session.getSetupState();
+        const includeSaves = toBool(url.searchParams.get("includeSaves"), true);
         const includeBackups = toBool(url.searchParams.get("includeBackups"), false);
-        const saves = saveStore.listSaveSlots();
+        const saves = includeSaves ? saveStore.listSaveSlots() : [];
         const backups = includeBackups ? saveStore.listBackupSlots() : [];
         return finish(
           jsonResponse(200, {
             ok: true,
             currentYear,
             saves,
+            savesDeferred: !includeSaves,
             backups,
             backupsDeferred: !includeBackups,
             activeLeague: {

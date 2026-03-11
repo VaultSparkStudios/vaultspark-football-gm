@@ -3,6 +3,7 @@ import { createApiClient, getRuntimeMode, setRuntimeMode } from "./lib/api/creat
 const state = {
   currentYear: new Date().getFullYear(),
   saves: [],
+  savesDeferred: false,
   teams: [],
   saveSearch: "",
   backups: [],
@@ -109,6 +110,11 @@ function renderSaves() {
   const table = document.getElementById("savesTable");
   const latestBtn = document.getElementById("resumeLatestBtn");
   if (!table) return;
+  if (state.savesDeferred) {
+    table.innerHTML = "<tr><td>Saved leagues are loading in the background. Click Refresh Saves if this takes too long.</td></tr>";
+    if (latestBtn) latestBtn.disabled = true;
+    return;
+  }
 
   const needle = state.saveSearch.trim().toLowerCase();
   const filtered = !needle
@@ -165,6 +171,14 @@ function renderSaves() {
   if (latestBtn) latestBtn.disabled = state.saves.length === 0;
 }
 
+async function refreshSaves({ preserveStatus = false } = {}) {
+  const payload = await api("/api/saves");
+  state.saves = payload.slots || [];
+  state.savesDeferred = false;
+  renderSaves();
+  if (!preserveStatus) setStatus("Ready");
+}
+
 function renderBackups() {
   const table = document.getElementById("backupsTable");
   if (!table) return;
@@ -204,9 +218,10 @@ function renderBackups() {
 
 async function loadSetup() {
   applyRuntimeModeUi();
-  const init = await api("/api/setup/init?includeBackups=0");
+  const init = await api("/api/setup/init?includeSaves=0&includeBackups=0");
   state.currentYear = init.currentYear;
   state.saves = init.saves || [];
+  state.savesDeferred = init.savesDeferred === true;
   state.teams = init.teams || [];
   state.backups = init.backups || [];
   state.backupsDeferred = init.backupsDeferred === true;
@@ -220,6 +235,15 @@ async function loadSetup() {
   renderBackups();
   renderSetupGuide();
   updateModeHelp();
+
+  if (state.savesDeferred) {
+    queueMicrotask(() => {
+      refreshSaves({ preserveStatus: true }).catch(() => {
+        state.savesDeferred = false;
+        renderSaves();
+      });
+    });
+  }
 }
 
 async function createLeague() {
@@ -341,10 +365,7 @@ function bindEvents() {
 
   document.getElementById("refreshSavesBtn").addEventListener("click", async () => {
     try {
-      const payload = await api("/api/saves");
-      state.saves = payload.slots || [];
-      renderSaves();
-      setStatus("Ready");
+      await refreshSaves();
     } catch (error) {
       setStatus(`Error: ${error.message}`);
     }

@@ -17,13 +17,14 @@ What was completed:
 - Fixed the main user-facing team identity leak by mapping schedule/calendar/ticker/transaction/pick/player displays to the generated team abbreviations instead of raw team IDs
 - Replaced raw typed player-ID inputs in the designation and retirement-override panels with table-driven selection chips and disabled action buttons until a player is selected
 - Added a Playwright regression for the designation selection flow and the no-raw-ID retirement override shell state
+- Made setup boot non-blocking for save discovery by allowing `/api/setup/init` to skip saves, marking the page ready from active-league/team state, and hydrating `/api/saves` in the background
 
 What is mid-flight:
 - The unrelated realism/runtime work is still parked in a local stash and has not been reincorporated
-- The next UX/runtime batch still needs to tackle the remaining raw-ID commissioner/admin flows outside designation/retirement override and any remaining setup/main-menu latency after this backup-deferral pass
+- The next UX/runtime batch still needs to tackle the remaining raw-ID commissioner/admin flows outside designation/retirement override and any remaining setup/main-menu latency after the non-blocking save-load pass
 
 What to do next:
-1. Measure and trim any remaining setup/main-menu latency, especially active-session checks
+1. Measure and trim any remaining setup/main-menu latency, especially residual active-session/runtime-mode startup overhead
 2. Remove the remaining raw-ID dependence from the remaining commissioner/admin flows such as trade, compare, and player-history lookups
 3. Reconcile the separate Studio repo docs/templates to match Studio `AGENTS.md` once that worktree is safe to edit
 

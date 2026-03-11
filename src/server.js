@@ -182,13 +182,15 @@ function createSimulationJob(totalSeasons) {
 async function handleApi(req, res, url) {
   if (req.method === "GET" && url.pathname === "/api/setup/init") {
     const setup = session.getSetupState();
+    const includeSaves = toBool(url.searchParams.get("includeSaves"), true);
     const includeBackups = toBool(url.searchParams.get("includeBackups"), false);
-    const saves = listSaveSlots();
+    const saves = includeSaves ? listSaveSlots() : [];
     const backups = includeBackups ? listBackupSlots() : [];
     sendJson(res, 200, {
       ok: true,
       currentYear: CURRENT_YEAR,
       saves,
+      savesDeferred: !includeSaves,
       backups,
       backupsDeferred: !includeBackups,
       activeLeague: {
