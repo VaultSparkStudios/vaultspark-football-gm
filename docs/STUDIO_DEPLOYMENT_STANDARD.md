@@ -3,7 +3,7 @@
 This document defines the default deployment structure for all VaultSpark
 Studios games.
 
-It exists to keep future launches consistent across:
+It exists to keep launches consistent across:
 
 - repository naming
 - public URL structure
@@ -22,11 +22,11 @@ Use a hub-and-spoke structure.
   - shared brand/navigation/discovery
 - Spokes:
   - one repo per game
-  - one static frontend bundle per game
+  - one static frontend deployment per game repo
   - optional dedicated backend per game
 
-The studio site is the presentation/distribution layer.
-Each game repo is the product/source layer.
+The studio site is the presentation and discovery layer.
+Each game repo is the product and deployment layer for that game.
 Each backend service is the runtime layer.
 
 Do not collapse those roles into one repository.
@@ -40,7 +40,7 @@ That means every game repo should carry enough local documentation to explain:
 - the GitHub Pages deployment pattern
 - the studio-site integration pattern
 - the current game's public URL and backend origins
-- the required variables, secrets, and workflows
+- the required variables, settings, and workflows
 
 The studio repo is canonical, but no game repo should rely on chat history or
 external tribal knowledge to understand the studio deployment model.
@@ -52,15 +52,15 @@ Keep one repo per game plus one studio-site repo.
 - Studio site repo:
   - `VaultSparkStudios.github.io`
 - Game repos:
-  - `VaultFront`
-  - `Dunescape`
-  - `Call-Of-Doodie`
-  - `Gridiron-GM`
+  - `vaultfront`
+  - `dunescape`
+  - `call-of-doodie`
+  - `gridiron-gm`
 
 Rules:
 
-- repo names may follow branding and may contain caps/hyphens
-- public URLs must not depend on repo name casing
+- game repo names are lowercase with hyphens
+- repo name and public slug are identical
 - do not use the studio-site repo as the gameplay source repo
 - every game repo must keep local copies of the studio deployment standard,
   templates, and handoff references so the repo remains self-sufficient
@@ -91,6 +91,7 @@ Rules:
 - use hyphens, not underscores
 - keep the slug stable once launched
 - treat the slug as the canonical public identifier
+- repo name and path slug must match
 
 ## Backend domain standard
 
@@ -126,6 +127,9 @@ Required production values:
 - `VITE_CANONICAL_URL=https://vaultsparkstudios.com/{slug}/`
 - `VITE_OG_IMAGE_URL=https://vaultsparkstudios.com/{slug}/images/cover.png`
 - `VITE_DOMAIN=vaultsparkstudios.com`
+
+Optional backend-linked values:
+
 - `VITE_GAME_SERVICE_ORIGIN=https://play-{slug}.vaultsparkstudios.com`
 - `API_DOMAIN=api-{slug}.vaultsparkstudios.com`
 
@@ -134,6 +138,7 @@ Rules:
 - every game must support GitHub Pages subpath hosting
 - every game must generate SPA deep-link fallback `404.html`
 - every game must avoid hardcoding `/` as the production client root
+- every game deploys Pages directly from its own repo using GitHub Actions
 
 ## GitHub workflow standard
 
@@ -147,8 +152,8 @@ Each game repo should have:
 2. `deploy-pages.yml`
    - build static client for `/{slug}/`
    - copy `index.html` to `404.html`
-   - sync built bundle into `VaultSparkStudios.github.io/{slug}/`
-   - commit/push via token
+   - upload the built artifact to GitHub Pages
+   - deploy Pages directly from the same repo
 
 3. `deploy-backend.yml` if the game has a dedicated runtime/backend
 
@@ -156,7 +161,7 @@ Rules:
 
 - frontend deploy and backend deploy must be separate workflows
 - do not couple Pages publishing to backend rollout
-- studio-site publishing should update only the target subfolder for the game
+- enable Settings -> Pages -> Source = `GitHub Actions` in each game repo
 
 ## Temporary clone safety standard
 
@@ -172,23 +177,21 @@ Rules:
 
 ## GitHub variables and secrets standard
 
-Per game repo, define the same variable names.
+Per game repo, keep names consistent.
 
-Variables:
+Optional repo variables for games with a backend:
 
-- `GAME_SLUG`
 - `GAME_SERVICE_ORIGIN`
 - `API_DOMAIN`
-- `STUDIO_SITE_BRANCH`
 
 Secrets:
 
-- `STUDIO_SITE_TOKEN`
 - backend deploy credentials
 - game-specific API/auth secrets
 
 Rules:
 
+- GitHub Pages deployment itself does not require a token secret
 - keep variable names identical across all game repos
 - only values should change per game
 
@@ -224,13 +227,14 @@ Before launch, every game must have:
 2. canonical URL configured
 3. OG image under the game path
 4. SPA fallback
-5. studio-site card
-6. backend origins configured
-7. legal/attribution reviewed
-8. analytics verified
-9. mobile smoke test
-10. hard-refresh deep-link test
-11. studio-site remote/live verification completed before homepage changes are committed
+5. GitHub Pages enabled from the game repo via `GitHub Actions`
+6. studio-site card
+7. backend origins configured if needed
+8. legal/attribution reviewed
+9. analytics verified
+10. mobile smoke test
+11. hard-refresh deep-link test
+12. studio-site remote/live verification completed before homepage changes are committed
 
 Reusable template:
 
@@ -252,7 +256,7 @@ It should include:
 - public frontend URL
 - backend origins
 - workflow names
-- required secrets/variables
+- required settings and variables
 - known issues
 - last validation commands
 
@@ -268,7 +272,7 @@ Rules:
 For a new game with slug `shadow-rift`:
 
 - repo:
-  - `Shadow-Rift`
+  - `shadow-rift`
 - public URL:
   - `https://vaultsparkstudios.com/shadow-rift/`
 - gameplay origin:
@@ -281,7 +285,7 @@ For a new game with slug `shadow-rift`:
 - one studio site
 - one repo per game
 - one stable slug per game
-- one Pages subfolder per game
+- one direct Pages deployment per game repo
 - one backend origin pair per game
 - one reusable deployment workflow pattern across all games
 - one self-sufficient documentation set per game repo

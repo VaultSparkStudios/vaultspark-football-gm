@@ -1,25 +1,12 @@
-name: Deploy Pages Bundle
+name: Deploy Pages
 
 on:
   workflow_dispatch:
-    inputs:
-      studio_site_branch:
-        description: "Branch to update in the studio site repo"
-        required: true
-        default: "main"
-        type: string
-      deploy_path:
-        description: "Folder inside the studio site repo for this game bundle"
-        required: true
-        default: "vaultspark-football-gm"
-        type: string
   push:
     branches:
       - main
     paths:
       - ".github/workflows/deploy-pages.yml"
-      - "AGENTS.md"
-      - "docs/**"
       - "package.json"
       - "public/**"
       - "scripts/build-pages.mjs"
@@ -27,16 +14,18 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
 
 jobs:
-  deploy-pages:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      DEPLOY_PATH: ${{ github.event.inputs.deploy_path || 'vaultspark-football-gm' }}
-      STUDIO_SITE_BRANCH: ${{ github.event.inputs.studio_site_branch || vars.STUDIO_SITE_BRANCH || 'main' }}
-      STUDIO_SITE_REPOSITORY: VaultSparkStudios/VaultSparkStudios.github.io
-      GAME_SLUG: vaultspark-football-gm
       VITE_APP_BASE_PATH: /vaultspark-football-gm/
       VITE_CANONICAL_URL: https://vaultsparkstudios.com/vaultspark-football-gm/
       VITE_OG_IMAGE_URL: https://vaultsparkstudios.com/vaultspark-football-gm/images/cover.png
@@ -45,18 +34,6 @@ jobs:
       API_DOMAIN: ${{ vars.API_DOMAIN }}
       VSFGM_RUNTIME_DEFAULT: client
     steps:
-      - name: Validate deployment variables
-        run: |
-          set -euo pipefail
-          if [ -z "${VITE_GAME_SERVICE_ORIGIN}" ]; then
-            echo "GAME_SERVICE_ORIGIN is not configured in repo variables."
-            exit 1
-          fi
-          if [ -z "${API_DOMAIN}" ]; then
-            echo "API_DOMAIN is not configured in repo variables."
-            exit 1
-          fi
-
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -64,36 +41,25 @@ jobs:
           node-version: 22
           cache: npm
 
+      - uses: actions/configure-pages@v5
+
       - name: Install dependencies
         run: npm ci --ignore-scripts
 
       - name: Build Pages bundle
         run: npm run build:pages
 
-      - name: Checkout studio site repo
-        uses: actions/checkout@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          repository: ${{ env.STUDIO_SITE_REPOSITORY }}
-          ref: ${{ env.STUDIO_SITE_BRANCH }}
-          token: ${{ secrets.STUDIO_SITE_TOKEN }}
-          path: studio-site
+          path: static
 
-      - name: Sync bundle into studio site
-        run: |
-          set -euo pipefail
-          mkdir -p "studio-site/${DEPLOY_PATH}"
-          rsync -a --delete static/ "studio-site/${DEPLOY_PATH}/"
-
-      - name: Commit and push
-        working-directory: studio-site
-        run: |
-          set -euo pipefail
-          git config user.name "VaultSpark Studios"
-          git config user.email "87046611+VaultSparkStudios@users.noreply.github.com"
-          git add "${DEPLOY_PATH}"
-          if git diff --cached --quiet; then
-            echo "No Pages changes to publish."
-            exit 0
-          fi
-          git commit -m "Deploy VaultSpark Football GM Pages bundle (${GITHUB_SHA::7})"
-          git push origin "${STUDIO_SITE_BRANCH}"
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

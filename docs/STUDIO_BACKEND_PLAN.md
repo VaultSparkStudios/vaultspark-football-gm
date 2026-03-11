@@ -9,7 +9,7 @@ It is the backend counterpart to `docs/STUDIO_DEPLOYMENT_STANDARD.md`.
 
 Provide one scalable studio-wide hosting pattern that:
 
-- works for `VaultFront` now
+- works for `vaultfront` now
 - scales to future games without redesigning the whole stack
 - preserves per-game isolation
 - keeps operational complexity low
@@ -29,8 +29,9 @@ Start with one shared studio backend host.
 
 Frontend hosting stays separate:
 
-- studio site and static game frontends:
+- studio landing page:
   - `https://vaultsparkstudios.com/`
+- per-game GitHub Pages frontends deployed from each game repo:
   - `https://vaultsparkstudios.com/{slug}/`
 - runtime/backend:
   - `https://play-{slug}.vaultsparkstudios.com`
@@ -63,7 +64,7 @@ Per game, create:
 - `play-{slug}.vaultsparkstudios.com`
 - `api-{slug}.vaultsparkstudios.com`
 
-For `VaultFront`:
+For `vaultfront`:
 
 - `play-vaultfront.vaultsparkstudios.com`
 - `api-vaultfront.vaultsparkstudios.com`
@@ -162,8 +163,8 @@ Recommended next step after launch:
 
 Frontend deployment:
 
-- GitHub Pages workflow publishes static files into
-  `VaultSparkStudios.github.io/{slug}/`
+- per-game GitHub Pages workflow deploys the built static artifact directly from
+  that game repo
 
 Backend deployment:
 
@@ -184,12 +185,13 @@ Do not couple frontend Pages publishing to backend rollout.
 6. Deploy:
    - `vaultfront-play`
    - `vaultfront-api`
-7. Add GitHub repo variables in `VaultFront`:
+7. Add GitHub repo variables in `vaultfront` if backend-linked frontend config is needed:
    - `GAME_SERVICE_ORIGIN=https://play-vaultfront.vaultsparkstudios.com`
    - `API_DOMAIN=api-vaultfront.vaultsparkstudios.com`
-8. Verify CORS and websocket behavior from:
-   - `https://vaultsparkstudios.com/vaultfront/`
+8. Enable Settings -> Pages -> Source = `GitHub Actions`
 9. Run `deploy-pages.yml`
+10. Verify CORS and websocket behavior from:
+   - `https://vaultsparkstudios.com/vaultfront/`
 
 ## Scaling path
 
