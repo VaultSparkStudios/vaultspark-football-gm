@@ -5,10 +5,10 @@ Build status:
 - Backend scaffold remains separate under `deploy-backend.yml`, `Dockerfile.runtime`, and `ops/`
 - Project memory files now exist in-repo and are part of the required session bootstrap path
 - Local standards validation passed for `build:pages`, `smoke:pages`, and the focused diff check
-- CI now targets Node 22 so `npm test` can use `--test-isolation=none` in GitHub Actions
+- CI now targets Node 24 so `npm test` can use `--test-isolation=none` in GitHub Actions
 
 Current priorities:
-1. Push the CI Node 22 fix to the active PR branch
+1. Push the CI Node 24 fix to the active PR branch
 2. Confirm live GitHub Pages settings and any optional backend-linked repo variables in GitHub
 3. Keep the repo's memory and handoff files current as future feature work resumes
 

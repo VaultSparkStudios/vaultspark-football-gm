@@ -7,7 +7,7 @@ Completed:
 - Added the project-memory package required by the new Studio session model
 - Converted docs and workflows from cross-repo Pages sync to direct GitHub Pages deployment
 - Passed `npm.cmd run build:pages`, `npm.cmd run smoke:pages`, and the focused diff check
-- Updated CI from Node 20 to Node 22 so GitHub Actions supports `--test-isolation=none`
+- Updated CI from Node 20 to Node 24 so GitHub Actions supports `--test-isolation=none`
 
 Open problems:
 - Live GitHub Pages settings and any backend-related variables still need to be confirmed in GitHub

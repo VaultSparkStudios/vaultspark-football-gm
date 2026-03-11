@@ -7,7 +7,7 @@ What was completed:
 - Repointed the local repo remote to the lowercase canonical repo URL
 - Converted repo docs and workflows from studio-site sync Pages publishing to direct GitHub Pages deployment
 - Passed the focused local validation set for the standards-only diff
-- Updated CI to Node 22 so the test runner flag in `npm test` is supported on GitHub Actions
+- Updated CI to Node 24 so the test runner flag in `npm test` is supported on GitHub Actions
 
 What is mid-flight:
 - Git push/PR steps for the CI fix commit
