@@ -28,3 +28,36 @@ test("contract restructure keeps contract valid", () => {
   assert.ok(result.contract.restructureCount >= 1);
   assert.notEqual(result.contract.capHit, oldCap);
 });
+
+test("manual depth chart snap shares persist and influence game usage", () => {
+  const session = createSession({ seed: 102, startYear: 2026, controlledTeamId: "BUF", mode: "play" });
+  const rbChart = session.getDepthChart("BUF").RB.slice(0, 3);
+  assert.equal(rbChart.length >= 2, true);
+
+  const update = session.setDepthChart({
+    teamId: "BUF",
+    position: "RB",
+    playerIds: rbChart,
+    snapShares: {
+      [rbChart[0]]: 0.08,
+      [rbChart[1]]: 0.88,
+      [rbChart[2]]: 0.04
+    }
+  });
+  assert.equal(update.ok, true);
+
+  const snapShareRows = session.getDepthChartSnapShare("BUF").RB;
+  assert.equal(snapShareRows[0].snapShare, 0.08);
+  assert.equal(snapShareRows[0].manual, true);
+  assert.equal(snapShareRows[1].snapShare, 0.88);
+  assert.equal(snapShareRows[1].manual, true);
+
+  session.advanceWeek();
+  session.advanceWeek();
+
+  const firstTimeline = session.getPlayerProfile(rbChart[0], { seasonType: "regular" }).timeline;
+  const secondTimeline = session.getPlayerProfile(rbChart[1], { seasonType: "regular" }).timeline;
+  const firstSnaps = firstTimeline.find((entry) => entry.year === 2026)?.stats?.snaps?.offense || 0;
+  const secondSnaps = secondTimeline.find((entry) => entry.year === 2026)?.stats?.snaps?.offense || 0;
+  assert.ok(secondSnaps > firstSnaps);
+});

@@ -1,14 +1,14 @@
 # Task Board
 
 ## Now
-- Watch the GitHub rerun for the updated `tests-ui/app.spec.js` fix on `codex/direct-pages-standards`
-- Keep unrelated dirty gameplay files isolated from the standards/CI branch work
-- Prepare the next gameplay/UI implementation pass once CI is green
+- Keep unrelated dirty gameplay and realism files isolated from the committed depth chart / snap-share / Game Guide batch
+- Decide whether to clean the remaining local worktree clutter now or park it behind a separate branch/stash
+- Smoke the updated depth-chart flow in any remaining manual QA scenarios if needed
 
 ## Next
-- Implement the pending gameplay/UI backlog: depth chart controls, manual snap share editing, and Game Guide submenu
-- Confirm live GitHub Pages settings and backend-related repo variables if needed
-- Reconcile the Studio repo deployment docs/templates to the direct-Pages model once that repo is safe to edit
+- Diagnose and fix `Play` mode from the setup flow end-to-end
+- Profile and reduce setup/main-menu load time, especially setup init and active-session checks
+- Generate abbreviations from randomized city/team names instead of fixed NFL IDs
 
 ## Later
 - Add deeper runtime/backend rollout docs once production infra exists

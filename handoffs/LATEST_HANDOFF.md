@@ -3,22 +3,21 @@
 Last updated: 2026-03-11
 
 What was completed:
-- Added the required project-memory structure and seed files
-- Repointed the local repo remote to the lowercase canonical repo URL
-- Converted repo docs and workflows from studio-site sync Pages publishing to direct GitHub Pages deployment
-- Passed the focused local validation set for the standards-only diff
-- Updated CI to Node 24 so the test runner flag in `npm test` is supported on GitHub Actions
-- Isolated the real post-Node-upgrade CI failures and staged the runtime/stat fixes that make those tests pass locally
-- Verified the last two GitHub failures are stale test assumptions and validated the local test-file fixes
-- Updated `tests-ui/app.spec.js` to the current Contracts and Scouting UI flows and verified the full Playwright app spec passes locally
+- Confirmed the direct-Pages standards PR already merged into `origin/main`
+- Fixed the depth chart move-control bug by giving the depth table dedicated controls that no longer advertise `data-player-id` on reorder buttons
+- Added persisted manual snap-share overrides to the depth chart UI, server/local API, session state, and simulator usage path
+- Replaced the always-open footer Game Guide with a button-driven guide modal while leaving the Rules tab guide content intact
+- Added coverage for manual snap-share persistence/runtime behavior in `test/session-actions.test.js` and `test/local-api-runtime.test.js`
+- Added a Playwright regression for depth chart controls and the guide modal in `tests-ui/app.spec.js`
+- Re-ran the focused Node tests and the Playwright UI suite, then committed only the intended gameplay/UI files from this batch
 
 What is mid-flight:
-- Live GitHub rerun of the updated `test:ui` job after commit `117eb75`
-- Manual GitHub-side confirmation for Pages settings/variables still pending outside the repo
+- Unrelated dirty gameplay/realism files still remain in the repo and should not be swept into the next commit by accident
+- The next UX/runtime batch still needs to tackle randomized abbreviations, `Play` mode startup, and setup/main-menu performance
 
 What to do next:
-1. Confirm GitHub Actions clears the remaining UI failures on `codex/direct-pages-standards`
-2. Resume the gameplay/depth-chart/Game Guide feature work
+1. Clean or isolate the unrelated dirty files in the game repo before the next feature batch
+2. Reproduce the reported `Play` mode and setup-load issues from the main menu
 3. Reconcile the separate Studio repo docs/templates to match Studio `AGENTS.md` once that worktree is safe to edit
 
 Important constraints:

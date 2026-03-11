@@ -457,7 +457,13 @@ async function handleApi(req, res, url) {
     const result = session.setDepthChart({
       teamId: String(body.teamId).toUpperCase(),
       position: String(body.position).toUpperCase(),
-      playerIds: body.playerIds.map((id) => String(id))
+      playerIds: body.playerIds.map((id) => String(id)),
+      snapShares:
+        body.snapShares && typeof body.snapShares === "object" && !Array.isArray(body.snapShares)
+          ? Object.fromEntries(
+              Object.entries(body.snapShares).map(([playerId, share]) => [String(playerId), Number(share)])
+            )
+          : null
     });
     sendJson(res, result.ok ? 200 : 400, { ...result, state: session.getDashboardState() });
     return true;

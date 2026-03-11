@@ -221,7 +221,7 @@
               <span id="depthStatusText" class="chip">Use move controls to change playing-time order</span>
               <button id="saveDepthBtn" data-testid="save-depth-btn">Save Depth Chart</button>
             </div>
-            <div class="small">Top rows receive the highest modeled snap share for the selected position.</div>
+            <div class="small">Top rows receive the highest default modeled snap share. You can also set manual percentages for each player and save them into the live rotation.</div>
             <div class="table-wrap"><table id="depthTable" data-testid="depth-table"></table></div>
           </div>
         </section>
@@ -714,9 +714,12 @@
     </main>
 
     <footer class="game-footer">
-      <div class="panel">
-        <h2>Game Guide</h2>
-        <div id="guideFooterContent" class="stack small"></div>
+      <div class="panel footer-guide-panel">
+        <div>
+          <h2>Game Guide</h2>
+          <div class="small">Open the step-by-step guide in a focused submenu instead of keeping it expanded in the footer.</div>
+        </div>
+        <button id="openGuideBtn" data-testid="open-guide-btn">Open Game Guide</button>
       </div>
     </footer>
 
@@ -807,6 +810,19 @@
             <div class="table-wrap"><table id="boxScoreHomeKickingTable"></table></div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div id="guideModal" class="modal hidden" data-testid="guide-modal">
+      <div class="modal-card guide-card">
+        <div class="row" style="justify-content: space-between">
+          <div>
+            <h2>Game Guide</h2>
+            <p class="small">Core loop, league tools, and the fastest path through a full franchise season.</p>
+          </div>
+          <button id="closeGuideModalBtn" class="warn">Close</button>
+        </div>
+        <div id="guideModalContent" class="stack small"></div>
       </div>
     </div>
 

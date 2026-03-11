@@ -20,6 +20,8 @@ const state = {
   selectedDraftProspectId: null,
   depthChart: null,
   depthSnapShare: null,
+  depthDefaultShares: {},
+  depthManualShares: {},
   depthRoster: [],
   depthOrder: [],
   scheduleWeek: null,
@@ -708,9 +710,9 @@ function renderGuideContent() {
     (section) => `<div class="record"><strong>${escapeHtml(section.title)}</strong><div>${escapeHtml(section.body)}</div></div>`
   ).join("");
   const rules = document.getElementById("rulesGuideContent");
-  const footer = document.getElementById("guideFooterContent");
+  const modal = document.getElementById("guideModalContent");
   if (rules) rules.innerHTML = html;
-  if (footer) footer.innerHTML = html;
+  if (modal) modal.innerHTML = html;
 }
 
 function setTableSkeleton(tableId, rows = 6) {
@@ -1163,6 +1165,14 @@ function closeBoxScoreModal() {
   document.getElementById("boxScoreModal").classList.add("hidden");
 }
 
+function openGuideModal() {
+  document.getElementById("guideModal")?.classList.remove("hidden");
+}
+
+function closeGuideModal() {
+  document.getElementById("guideModal")?.classList.add("hidden");
+}
+
 function renderRoster() {
   const rows = state.roster.map((player) => ({
     id: player.id,
@@ -1526,41 +1536,106 @@ function deriveContractToolsFromRoster(roster, expiringPlayers) {
   return { expiring, tagEligible, optionEligible };
 }
 
+function depthManualShareMap(position) {
+  return state.depthManualShares?.[position] || {};
+}
+
+function depthDefaultShares(position) {
+  return state.depthDefaultShares?.[position] || [];
+}
+
+function formatDepthSharePercent(value) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return "-";
+  return `${Math.round(numeric * 100)}%`;
+}
+
+function updateDepthShare(position, playerId, rawValue) {
+  if (!state.depthManualShares[position]) state.depthManualShares[position] = {};
+  const defaultShare = depthDefaultShares(position)[state.depthOrder.indexOf(playerId)] ?? 0.02;
+  if (rawValue == null || rawValue === "") {
+    delete state.depthManualShares[position][playerId];
+    return;
+  }
+  const parsed = Number(rawValue);
+  if (!Number.isFinite(parsed)) return;
+  const normalized = Math.max(0, Math.min(100, parsed)) / 100;
+  if (Math.abs(normalized - defaultShare) < 0.001) {
+    delete state.depthManualShares[position][playerId];
+    return;
+  }
+  state.depthManualShares[position][playerId] = Number(normalized.toFixed(3));
+}
+
 function renderDepthChart() {
   const position = document.getElementById("depthPositionSelect")?.value;
   const ids = state.depthOrder?.length ? state.depthOrder : state.depthChart?.[position] || [];
   const shareRows = state.depthSnapShare?.[position] || [];
   const rosterById = new Map(state.depthRoster.map((player) => [player.id, player]));
-
-  const rows = ids.map((playerId, index) => {
-    const player = rosterById.get(playerId);
-    const share = shareRows[index];
-    return {
-      id: playerId,
-      rank: index + 1,
-      role: share?.role || `${position}${index + 1}`,
-      player: player?.name || "Unknown",
-      pos: player?.pos || position,
-      ovr: player?.overall || "",
-      snapShare: share ? `${Math.round((share.snapShare || 0) * 100)}%` : "-",
-      action: ""
-    };
-  });
-  renderTable("depthTable", rows);
-  decoratePlayerColumnFromRows("depthTable", rows, { idKeys: ["id"] });
+  const defaults = depthDefaultShares(position);
+  const manualShares = depthManualShareMap(position);
+  const table = document.getElementById("depthTable");
+  if (!table) return;
+  if (!ids.length) {
+    table.innerHTML = "<tr><td>No players loaded for this position</td></tr>";
+    document.getElementById("depthStatusText").textContent = "No players loaded for this position";
+    return;
+  }
+  table.innerHTML = `
+    <tr>
+      <th>Rank</th>
+      <th>Role</th>
+      <th>Player</th>
+      <th>Pos</th>
+      <th>OVR</th>
+      <th>Mode</th>
+      <th>Snap Share</th>
+      <th>Default</th>
+      <th>Move</th>
+    </tr>
+    ${ids
+      .map((playerId, index) => {
+        const player = rosterById.get(playerId);
+        const defaultShare = defaults[index] ?? shareRows[index]?.defaultSnapShare ?? shareRows[index]?.snapShare ?? 0.02;
+        const manualShare = manualShares[playerId];
+        const effectiveShare = Number.isFinite(manualShare) ? manualShare : defaultShare;
+        return `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${escapeHtml(shareRows[index]?.role || `${position}${index + 1}`)}</td>
+            <td><button class="link-btn" data-player-id="${escapeHtml(playerId)}">${escapeHtml(player?.name || "Unknown")}</button></td>
+            <td>${escapeHtml(player?.pos || position)}</td>
+            <td>${escapeHtml(player?.overall ?? "")}</td>
+            <td>${Number.isFinite(manualShare) ? "Manual" : "Auto"}</td>
+            <td>
+              <div class="depth-share-cell">
+                <input
+                  class="depth-share-input"
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="1"
+                  value="${escapeHtml(Math.round(effectiveShare * 100))}"
+                  data-depth-share-input="${escapeHtml(playerId)}"
+                />
+                <span class="small">%</span>
+                <button data-depth-share-reset="${escapeHtml(playerId)}">Auto</button>
+              </div>
+            </td>
+            <td>${escapeHtml(formatDepthSharePercent(defaultShare))}</td>
+            <td>
+              <div class="depth-action-group">
+                <button data-depth-move="up" data-depth-player-id="${escapeHtml(playerId)}" ${index === 0 ? "disabled" : ""}>Up</button>
+                <button data-depth-move="down" data-depth-player-id="${escapeHtml(playerId)}" ${index === ids.length - 1 ? "disabled" : ""}>Down</button>
+              </div>
+            </td>
+          </tr>`;
+      })
+      .join("")}
+  `;
   document.getElementById("depthStatusText").textContent = ids.length
     ? `Adjusting ${position} for ${document.getElementById("depthTeamSelect")?.value || state.dashboard?.controlledTeamId || "BUF"}`
     : "No players loaded for this position";
-  document.getElementById("depthTable")?.querySelectorAll("tr").forEach((tr, index) => {
-    if (index === 0) return;
-    const playerId = ids[index - 1];
-    const cell = tr.lastElementChild;
-    if (!cell || !playerId) return;
-    cell.innerHTML = [
-      `<button data-depth-move="up" data-player-id="${escapeHtml(playerId)}">Up</button>`,
-      `<button data-depth-move="down" data-player-id="${escapeHtml(playerId)}">Down</button>`
-    ].join(" ");
-  });
 }
 
 function renderRetiredPool() {
@@ -1647,7 +1722,7 @@ function renderRulesTab() {
     { tab: "Overview", feature: "Advance Week/Season", behavior: "Simulates schedule, updates standings, stats, transactions, and events. Multi-week sims can be paused." },
     { tab: "Overview", feature: "Header Box Scores", behavior: "Tracks the controlled team’s recent games with clickable scoring summary, play-by-play, team stats, and player stats." },
     { tab: "Roster & FA", feature: "Release / PS / Active", behavior: "Moves players between active/practice/waiver/free-agent pools with eligibility checks." },
-    { tab: "Depth Chart", feature: "Up / Down Order", behavior: "Reorders role priority for the selected position so snap share follows the visible slot order." },
+    { tab: "Depth Chart", feature: "Order + Snap Share", behavior: "Reorders role priority and lets you set manual snap-share targets per player; saved values feed the live game rotation." },
     { tab: "Transactions", feature: "Trade + Evaluate", behavior: "Validates package fairness/cap before executing asset swaps." },
     { tab: "Contracts", feature: "Extensions + Negotiation", behavior: "Shows cap context, expiring deals, negotiation targets, restructures, tag/option tools, quick trade, and trade block actions." },
     { tab: "Transactions", feature: "Retirement Overrides", behavior: "Loads retired pool and applies comeback override with team + win threshold." },
@@ -1657,7 +1732,8 @@ function renderRulesTab() {
     { tab: "League Log", feature: "Transaction Filters", behavior: "Filters transaction events by team, type, year, and limit." },
     { tab: "History", feature: "Records + Timelines", behavior: "Shows records, awards, champions, player timelines, and team history." },
     { tab: "Settings", feature: "Realism Verify", behavior: "Runs multi-year season/career drift check against target profiles." },
-    { tab: "Settings", feature: "League Settings", behavior: "Controls injuries, offseason automation, comp picks, chemistry, and retirement retention." }
+    { tab: "Settings", feature: "League Settings", behavior: "Controls injuries, offseason automation, comp picks, chemistry, and retirement retention." },
+    { tab: "Footer", feature: "Game Guide Button", behavior: "Opens the guide in a modal submenu instead of keeping the full help text permanently visible." }
   ];
   renderTable("rulesActionsTable", actionRows);
   renderGuideContent();
@@ -2212,6 +2288,7 @@ function renderCommandPalette() {
     { id: "transactions", label: "Open Transactions", run: () => activateTab("transactionsTab") },
     { id: "stats", label: "Open Stats", run: () => activateTab("statsTab") },
     { id: "rules", label: "Open Rules", run: () => activateTab("rulesTab") },
+    { id: "guide", label: "Open Game Guide", run: () => openGuideModal() },
     { id: "settings", label: "Open Settings", run: () => activateTab("settingsTab") },
     { id: "advance-week", label: "Advance Week", run: () => document.getElementById("advanceWeekBtn").click() },
     { id: "refresh", label: "Refresh All", run: () => document.getElementById("refreshBtn").click() }
@@ -2851,6 +2928,22 @@ async function loadDepthChart() {
   ]);
   state.depthChart = payload.depthChart || null;
   state.depthSnapShare = payload.snapShare || null;
+  state.depthDefaultShares = Object.fromEntries(
+    Object.entries(payload.snapShare || {}).map(([sharePosition, rows]) => [
+      sharePosition,
+      (rows || []).map((row) => Number(row.defaultSnapShare ?? row.snapShare ?? 0.02))
+    ])
+  );
+  state.depthManualShares = Object.fromEntries(
+    Object.entries(payload.snapShare || {}).map(([sharePosition, rows]) => [
+      sharePosition,
+      Object.fromEntries(
+        (rows || [])
+          .filter((row) => row.manual)
+          .map((row) => [row.playerId, Number(row.snapShare ?? 0)])
+      )
+    ])
+  );
   state.depthRoster = rosterPayload.roster || [];
   state.depthOrder = [...(state.depthChart?.[position] || [])];
   renderDepthChart();
@@ -3497,12 +3590,18 @@ function bindEvents() {
   });
   document.getElementById("saveDepthBtn").addEventListener("click", () =>
     runAction(async () => {
+      const position = document.getElementById("depthPositionSelect").value;
       await api("/api/depth-chart", {
         method: "POST",
         body: {
           teamId: document.getElementById("depthTeamSelect").value,
-          position: document.getElementById("depthPositionSelect").value,
-          playerIds: state.depthOrder
+          position,
+          playerIds: state.depthOrder,
+          snapShares: state.depthOrder.reduce((acc, playerId) => {
+            const manualShare = state.depthManualShares?.[position]?.[playerId];
+            if (Number.isFinite(manualShare)) acc[playerId] = manualShare;
+            return acc;
+          }, {})
         }
       });
       await loadDepthChart();
@@ -3510,10 +3609,24 @@ function bindEvents() {
   );
   document.getElementById("depthTable").addEventListener("click", (event) => {
     const button = event.target.closest("button[data-depth-move]");
-    if (!button) return;
-    const playerId = button.dataset.playerId;
-    const delta = button.dataset.depthMove === "up" ? -1 : 1;
-    state.depthOrder = moveIdWithinList(state.depthOrder, playerId, delta);
+    if (button) {
+      const playerId = button.dataset.depthPlayerId;
+      const delta = button.dataset.depthMove === "up" ? -1 : 1;
+      state.depthOrder = moveIdWithinList(state.depthOrder, playerId, delta);
+      renderDepthChart();
+      return;
+    }
+    const resetButton = event.target.closest("button[data-depth-share-reset]");
+    if (!resetButton) return;
+    const position = document.getElementById("depthPositionSelect").value;
+    delete state.depthManualShares?.[position]?.[resetButton.dataset.depthShareReset];
+    renderDepthChart();
+  });
+  document.getElementById("depthTable").addEventListener("change", (event) => {
+    const input = event.target.closest("input[data-depth-share-input]");
+    if (!input) return;
+    const position = document.getElementById("depthPositionSelect").value;
+    updateDepthShare(position, input.dataset.depthShareInput, input.value);
     renderDepthChart();
   });
 
@@ -3896,12 +4009,15 @@ function bindEvents() {
     document.getElementById("commandPalette").classList.add("hidden");
   };
   document.getElementById("closeCommandPaletteBtn")?.addEventListener("click", closeCommandPalette);
+  document.getElementById("openGuideBtn")?.addEventListener("click", openGuideModal);
+  document.getElementById("closeGuideModalBtn")?.addEventListener("click", closeGuideModal);
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeCommandPalette();
       closePlayerModal();
       closeBoxScoreModal();
+      closeGuideModal();
       return;
     }
     if (event.key.toLowerCase() === "r" && !event.ctrlKey && !event.metaKey && !event.altKey) {
@@ -3923,6 +4039,8 @@ function bindEvents() {
     if (event.target === boxScoreModal) closeBoxScoreModal();
     const commandModal = document.getElementById("commandPalette");
     if (event.target === commandModal) closeCommandPalette();
+    const guideModal = document.getElementById("guideModal");
+    if (event.target === guideModal) closeGuideModal();
   });
 
   document.getElementById("closePlayerModalBtn").addEventListener("click", () => {

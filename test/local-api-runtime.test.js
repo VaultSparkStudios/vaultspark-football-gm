@@ -74,6 +74,31 @@ test("local api runtime supports core client-only flow", async () => {
   assert.equal(response.status, 200);
   assert.ok(response.payload.roster.length > 0);
 
+  const depth = await runtime.request("/api/depth-chart?team=BUF");
+  assert.equal(depth.status, 200);
+  const rbIds = depth.payload.depthChart.RB.slice(0, 2);
+  const depthUpdate = await runtime.request("/api/depth-chart", {
+    method: "POST",
+    body: {
+      teamId: "BUF",
+      position: "RB",
+      playerIds: rbIds,
+      snapShares: {
+        [rbIds[0]]: 0.2,
+        [rbIds[1]]: 0.8
+      }
+    }
+  });
+  assert.equal(depthUpdate.status, 200);
+  assert.equal(depthUpdate.payload.snapShare[0].snapShare, 0.2);
+
+  const updatedDepth = await runtime.request("/api/depth-chart?team=BUF");
+  assert.equal(updatedDepth.status, 200);
+  assert.equal(updatedDepth.payload.snapShare.RB[0].snapShare, 0.2);
+  assert.equal(updatedDepth.payload.snapShare.RB[0].manual, true);
+  assert.equal(updatedDepth.payload.snapShare.RB[1].snapShare, 0.8);
+  assert.equal(updatedDepth.payload.snapShare.RB[1].manual, true);
+
   response = await runtime.request("/api/saves/save", { method: "POST", body: { slot: "alpha" } });
   assert.equal(response.status, 200);
   assert.equal(response.payload.slots.length, 1);

@@ -50,6 +50,36 @@ test("create league, advance week, and open player modal", async ({ page }) => {
   await expect(page.locator("#playerModal")).toHaveClass(/hidden/);
 });
 
+test("depth chart controls and game guide modal are operational", async ({ page }) => {
+  await createLeagueFromSetup(page);
+
+  await page.click('[data-testid="tab-depth"]');
+  await page.click("#loadDepthBtn");
+  await waitGameReady(page);
+
+  const firstPlayer = (await page.locator("#depthTable tr:nth-child(2) td:nth-child(3)").textContent())?.trim();
+  const secondPlayer = (await page.locator("#depthTable tr:nth-child(3) td:nth-child(3)").textContent())?.trim();
+  expect(firstPlayer).toBeTruthy();
+  expect(secondPlayer).toBeTruthy();
+
+  await page.locator('#depthTable button[data-depth-move="down"]').first().click();
+  await expect(page.locator("#depthTable tr:nth-child(2) td:nth-child(3)")).toContainText(secondPlayer || "");
+
+  const firstShareInput = page.locator('#depthTable input[data-depth-share-input]').first();
+  await firstShareInput.fill("85");
+  await page.click("#saveDepthBtn");
+  await waitGameReady(page);
+  await page.click("#loadDepthBtn");
+  await waitGameReady(page);
+  await expect(page.locator('#depthTable input[data-depth-share-input]').first()).toHaveValue("85");
+
+  await page.click("#openGuideBtn");
+  await expect(page.locator("#guideModal")).not.toHaveClass(/hidden/);
+  await expect(page.locator("#guideModalContent")).toContainText("League Setup");
+  await page.click("#closeGuideModalBtn");
+  await expect(page.locator("#guideModal")).toHaveClass(/hidden/);
+});
+
 test("contracts, trade, calendar, and transaction log are operational", async ({ page }) => {
   await createLeagueFromSetup(page);
 
