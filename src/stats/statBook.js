@@ -1,4 +1,4 @@
-import { ensureSeasonStatBucket, mergeStats } from "../domain/playerFactory.js";
+import { createZeroedSeasonStats, ensureSeasonStatBucket, mergeStats } from "../domain/playerFactory.js";
 
 function pct(numerator, denominator, digits = 1) {
   if (!denominator) return 0;
@@ -38,8 +38,7 @@ function hasSeasonVolume(season, category) {
   return true;
 }
 
-function hasCareerVolume(player, category) {
-  const stats = player.careerStats;
+function hasCareerVolume(stats, category) {
   const totalSnaps = (stats.snaps?.offense || 0) + (stats.snaps?.defense || 0) + (stats.snaps?.special || 0);
   if (category === "passing") return (stats.passing?.att || 0) > 0;
   if (category === "rushing") return (stats.rushing?.att || 0) > 0;
@@ -58,15 +57,67 @@ function hasCareerVolume(player, category) {
   return true;
 }
 
-function primaryTeamForPlayer(player) {
+function normalizeSeasonType(seasonType, fallback = "all") {
+  if (seasonType === "regular" || seasonType === "playoffs" || seasonType === "all") return seasonType;
+  return fallback;
+}
+
+function ensureSeasonSplit(season, seasonType) {
+  const normalized = normalizeSeasonType(seasonType, "regular");
+  if (normalized === "all") return season;
+  if (!season.splits || typeof season.splits !== "object") {
+    season.splits = {
+      regular: createZeroedSeasonStats(),
+      playoffs: createZeroedSeasonStats()
+    };
+  }
+  if (!season.splits[normalized]) season.splits[normalized] = createZeroedSeasonStats();
+  return season.splits[normalized];
+}
+
+function getSeasonStatsForType(season, seasonType) {
+  const normalized = normalizeSeasonType(seasonType, "all");
+  if (normalized === "all") return season;
+  return season.splits?.[normalized] || null;
+}
+
+function primaryTeamForPlayer(player, seasonType = "all") {
   const gamesByTeam = {};
   for (const season of Object.values(player.seasonStats || {})) {
     const team = season.meta?.teamId;
     if (!team) continue;
-    gamesByTeam[team] = (gamesByTeam[team] || 0) + (season.games || 0);
+    const source = getSeasonStatsForType(season, seasonType);
+    if (!source || !source.games) continue;
+    gamesByTeam[team] = (gamesByTeam[team] || 0) + (source.games || 0);
   }
   const sorted = Object.entries(gamesByTeam).sort((a, b) => b[1] - a[1]);
   return sorted[0]?.[0] || player.teamId;
+}
+
+function buildCareerView(player, seasonType = "all") {
+  const normalized = normalizeSeasonType(seasonType, "all");
+  if (normalized === "all") {
+    return {
+      stats: player.careerStats,
+      seasons: player.seasonsPlayed,
+      primaryTeam: primaryTeamForPlayer(player, "all")
+    };
+  }
+
+  const stats = createZeroedSeasonStats();
+  let seasons = 0;
+  for (const season of Object.values(player.seasonStats || {})) {
+    const source = getSeasonStatsForType(season, normalized);
+    if (!source) continue;
+    mergeStats(stats, source);
+    if ((source.games || 0) > 0) seasons += 1;
+  }
+
+  return {
+    stats,
+    seasons,
+    primaryTeam: primaryTeamForPlayer(player, normalized)
+  };
 }
 
 export class StatBook {
@@ -109,13 +160,16 @@ export class StatBook {
     if (position) season.meta.position = position;
   }
 
-  registerGameAppearance(playerId, year, started = false, teamId = null, position = null) {
+  registerGameAppearance(playerId, year, started = false, teamId = null, position = null, seasonType = "regular") {
     const player = this.getPlayerById(playerId);
     if (!player) return;
     const season = ensureSeasonStatBucket(player, year);
     this.ensureSeasonMeta(player, season, teamId, position);
     season.games += 1;
     season.gamesStarted += started ? 1 : 0;
+    const split = ensureSeasonSplit(season, seasonType);
+    split.games += 1;
+    split.gamesStarted += started ? 1 : 0;
     player.careerStats.games += 1;
     player.careerStats.gamesStarted += started ? 1 : 0;
   }
@@ -126,6 +180,7 @@ export class StatBook {
     const season = ensureSeasonStatBucket(player, year);
     this.ensureSeasonMeta(player, season, meta?.teamId || null, meta?.position || null);
     mergeStats(season, delta);
+    mergeStats(ensureSeasonSplit(season, normalizeSeasonType(meta?.seasonType, "regular")), delta);
     mergeStats(player.careerStats, delta);
   }
 
@@ -154,10 +209,10 @@ export class StatBook {
   }
 
   buildWarehouseForYear(year) {
-    const passing = this.getPlayerSeasonTable("passing", { year });
-    const rushing = this.getPlayerSeasonTable("rushing", { year });
-    const receiving = this.getPlayerSeasonTable("receiving", { year });
-    const defense = this.getPlayerSeasonTable("defense", { year });
+    const passing = this.getPlayerSeasonTable("passing", { year, seasonType: "regular" });
+    const rushing = this.getPlayerSeasonTable("rushing", { year, seasonType: "regular" });
+    const receiving = this.getPlayerSeasonTable("receiving", { year, seasonType: "regular" });
+    const defense = this.getPlayerSeasonTable("defense", { year, seasonType: "regular" });
     const teams = this.getTeamSeasonTable({ year });
     this.warehouse.byYear[year] = {
       year,
@@ -209,6 +264,7 @@ export class StatBook {
   }
 
   getPlayerSeasonTable(category, filters = {}) {
+    const seasonType = normalizeSeasonType(filters.seasonType, "all");
     const rows = [];
     for (const player of this.allPlayers()) {
       for (const [yearKey, season] of Object.entries(player.seasonStats)) {
@@ -217,7 +273,8 @@ export class StatBook {
         if (filters.position && player.position !== filters.position) continue;
         const seasonTeam = season.meta?.teamId || player.teamId;
         if (filters.team && seasonTeam !== filters.team) continue;
-        if (!hasSeasonVolume(season, category)) continue;
+        const source = getSeasonStatsForType(season, seasonType);
+        if (!source || !hasSeasonVolume(source, category)) continue;
 
         const base = {
           year,
@@ -226,16 +283,17 @@ export class StatBook {
           age: player.age,
           pos: season.meta?.position || player.position,
           tm: seasonTeam,
-          g: season.games,
-          gs: season.gamesStarted,
-          offSn: season.snaps?.offense || 0,
-          defSn: season.snaps?.defense || 0,
-          stSn: season.snaps?.special || 0,
-          sn: (season.snaps?.offense || 0) + (season.snaps?.defense || 0) + (season.snaps?.special || 0)
+          seasonType,
+          g: source.games,
+          gs: source.gamesStarted,
+          offSn: source.snaps?.offense || 0,
+          defSn: source.snaps?.defense || 0,
+          stSn: source.snaps?.special || 0,
+          sn: (source.snaps?.offense || 0) + (source.snaps?.defense || 0) + (source.snaps?.special || 0)
         };
 
         if (category === "passing") {
-          const p = season.passing;
+          const p = source.passing;
           rows.push({
             ...base,
             cmp: p.cmp,
@@ -253,7 +311,7 @@ export class StatBook {
             firstDowns: p.firstDowns
           });
         } else if (category === "rushing") {
-          const r = season.rushing;
+          const r = source.rushing;
           rows.push({
             ...base,
             att: r.att,
@@ -266,7 +324,7 @@ export class StatBook {
             brkTkl: r.brokenTackles
           });
         } else if (category === "receiving") {
-          const r = season.receiving;
+          const r = source.receiving;
           rows.push({
             ...base,
             tgt: r.targets,
@@ -282,7 +340,7 @@ export class StatBook {
             drops: r.drops
           });
         } else if (category === "defense") {
-          const d = season.defense;
+          const d = source.defense;
           rows.push({
             ...base,
             tkl: d.tackles,
@@ -297,17 +355,17 @@ export class StatBook {
             fr: d.fr
           });
         } else if (category === "blocking") {
-          const b = season.blocking || {};
+          const b = source.blocking || {};
           rows.push({
             ...base,
-            passBlkSn: season.snaps?.passBlock || 0,
-            runBlkSn: season.snaps?.runBlock || 0,
+            passBlkSn: source.snaps?.passBlock || 0,
+            runBlkSn: source.snaps?.runBlock || 0,
             sacksAllowed: b.sacksAllowed || 0,
             pressuresAllowed: b.pressuresAllowed || 0,
             penalties: b.penalties || 0
           });
         } else if (category === "kicking") {
-          const k = season.kicking;
+          const k = source.kicking;
           rows.push({
             ...base,
             fgm: k.fgm,
@@ -323,7 +381,7 @@ export class StatBook {
             fgA50: k.fgA50
           });
         } else if (category === "punting") {
-          const p = season.punting;
+          const p = source.punting;
           rows.push({
             ...base,
             punts: p.punts,
@@ -337,9 +395,9 @@ export class StatBook {
         } else if (category === "snaps") {
           rows.push({
             ...base,
-            offSnPct: pct(season.snaps?.offense || 0, season.games * 64),
-            defSnPct: pct(season.snaps?.defense || 0, season.games * 64),
-            stSnPct: pct(season.snaps?.special || 0, season.games * 24)
+            offSnPct: pct(source.snaps?.offense || 0, source.games * 64),
+            defSnPct: pct(source.snaps?.defense || 0, source.games * 64),
+            stSnPct: pct(source.snaps?.special || 0, source.games * 24)
           });
         }
       }
@@ -364,30 +422,32 @@ export class StatBook {
       .filter((p) => (filters.position ? p.position === filters.position : true))
       .filter((p) =>
         filters.team
-          ? Object.values(p.seasonStats || {}).some((season) => (season.meta?.teamId || p.teamId) === filters.team)
+          ? Object.values(p.seasonStats || {}).some((season) => {
+              const source = getSeasonStatsForType(season, normalizeSeasonType(filters.seasonType, "all"));
+              return source && (source.games || 0) > 0 && (season.meta?.teamId || p.teamId) === filters.team;
+            })
           : true
       )
-      .filter((p) => hasCareerVolume(p, category))
-      .map((player) => {
-        const primaryTeam = primaryTeamForPlayer(player);
+      .map((player) => ({ player, careerView: buildCareerView(player, filters.seasonType) }))
+      .filter(({ careerView }) => hasCareerVolume(careerView.stats, category))
+      .map(({ player, careerView }) => {
+        const stats = careerView.stats;
         const base = {
           playerId: player.id,
           player: player.name,
-          tm: primaryTeam,
+          tm: careerView.primaryTeam,
           pos: player.position,
           status: player.status,
-          seasons: player.seasonsPlayed,
-          offSn: player.careerStats.snaps?.offense || 0,
-          defSn: player.careerStats.snaps?.defense || 0,
-          stSn: player.careerStats.snaps?.special || 0,
-          sn:
-            (player.careerStats.snaps?.offense || 0) +
-            (player.careerStats.snaps?.defense || 0) +
-            (player.careerStats.snaps?.special || 0)
+          seasonType: normalizeSeasonType(filters.seasonType, "all"),
+          seasons: careerView.seasons,
+          offSn: stats.snaps?.offense || 0,
+          defSn: stats.snaps?.defense || 0,
+          stSn: stats.snaps?.special || 0,
+          sn: (stats.snaps?.offense || 0) + (stats.snaps?.defense || 0) + (stats.snaps?.special || 0)
         };
 
         if (category === "passing") {
-          const p = player.careerStats.passing;
+          const p = stats.passing;
           return {
             ...base,
             cmp: p.cmp,
@@ -406,7 +466,7 @@ export class StatBook {
           };
         }
         if (category === "rushing") {
-          const r = player.careerStats.rushing;
+          const r = stats.rushing;
           return {
             ...base,
             att: r.att,
@@ -420,7 +480,7 @@ export class StatBook {
           };
         }
         if (category === "receiving") {
-          const r = player.careerStats.receiving;
+          const r = stats.receiving;
           return {
             ...base,
             tgt: r.targets,
@@ -437,7 +497,7 @@ export class StatBook {
           };
         }
         if (category === "defense") {
-          const d = player.careerStats.defense;
+          const d = stats.defense;
           return {
             ...base,
             tkl: d.tackles,
@@ -453,17 +513,17 @@ export class StatBook {
           };
         }
         if (category === "blocking") {
-          const b = player.careerStats.blocking || {};
+          const b = stats.blocking || {};
           return {
             ...base,
-            passBlkSn: player.careerStats.snaps?.passBlock || 0,
-            runBlkSn: player.careerStats.snaps?.runBlock || 0,
+            passBlkSn: stats.snaps?.passBlock || 0,
+            runBlkSn: stats.snaps?.runBlock || 0,
             sacksAllowed: b.sacksAllowed || 0,
             pressuresAllowed: b.pressuresAllowed || 0,
             penalties: b.penalties || 0
           };
         }
-        const k = player.careerStats.kicking;
+        const k = stats.kicking;
         if (category === "kicking") {
           return {
             ...base,
@@ -481,7 +541,7 @@ export class StatBook {
           };
         }
 
-        const p = player.careerStats.punting;
+        const p = stats.punting;
         if (category === "punting") {
           return {
             ...base,
@@ -496,9 +556,9 @@ export class StatBook {
         }
         return {
           ...base,
-          offSnPct: pct(player.careerStats.snaps?.offense || 0, Math.max(1, player.careerStats.games) * 64),
-          defSnPct: pct(player.careerStats.snaps?.defense || 0, Math.max(1, player.careerStats.games) * 64),
-          stSnPct: pct(player.careerStats.snaps?.special || 0, Math.max(1, player.careerStats.games) * 24)
+          offSnPct: pct(stats.snaps?.offense || 0, Math.max(1, stats.games) * 64),
+          defSnPct: pct(stats.snaps?.defense || 0, Math.max(1, stats.games) * 64),
+          stSnPct: pct(stats.snaps?.special || 0, Math.max(1, stats.games) * 24)
         };
       });
 

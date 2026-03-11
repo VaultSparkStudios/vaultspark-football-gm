@@ -1,5 +1,6 @@
 import { DEPTH_CHART_ROLE_NAMES, DRIVE_OUTCOMES, NFL_STRUCTURE } from "../config.js";
-import { clamp } from "../utils/rng.js";
+import { createZeroedSeasonStats, mergeStats } from "../domain/playerFactory.js";
+import { clamp, mean } from "../utils/rng.js";
 import { getTeamPlayers } from "../domain/teamFactory.js";
 import { buildTeamUsageProfile, depthOrderedPlayers } from "./depthChartUsage.js";
 
@@ -61,7 +62,7 @@ function chooseFromRotation(rng, rotation) {
   return rotation[rotation.length - 1].player;
 }
 
-function applySnapCounts(statBook, year, rotation, unitSnaps, key) {
+function applySnapCounts(statBook, year, rotation, unitSnaps, key, seasonType = "regular") {
   const playersWithSnaps = new Set();
   if (!rotation?.length || !unitSnaps) return playersWithSnaps;
   const boundedSnaps = Math.max(0, Math.round(unitSnaps));
@@ -73,21 +74,21 @@ function applySnapCounts(statBook, year, rotation, unitSnaps, key) {
       row.player.id,
       year,
       { snaps: { [key]: snaps } },
-      { teamId: row.player.teamId, position: row.player.position }
+      { teamId: row.player.teamId, position: row.player.position, seasonType }
     );
     if (key === "offense" && row.player.position === "OL") {
       statBook.applyStatDelta(
         row.player.id,
         year,
         { snaps: { passBlock: Math.round(snaps * 0.58), runBlock: Math.round(snaps * 0.42) } },
-        { teamId: row.player.teamId, position: row.player.position }
+        { teamId: row.player.teamId, position: row.player.position, seasonType }
       );
     }
   }
   return playersWithSnaps;
 }
 
-function applyBlockingNoise(statBook, year, olRotation, offSnaps, rng) {
+function applyBlockingNoise(statBook, year, olRotation, offSnaps, rng, seasonType = "regular") {
   for (const row of olRotation.slice(0, 5)) {
     const snaps = Math.max(1, Math.round(offSnaps * row.snapShare));
     const pressureChance = clamp(0.015 + (78 - (row.player.overall || 70)) * 0.0012, 0.004, 0.07);
@@ -102,7 +103,7 @@ function applyBlockingNoise(statBook, year, olRotation, offSnaps, rng) {
         row.player.id,
         year,
         { blocking: { pressuresAllowed: pressures, penalties } },
-        { teamId: row.player.teamId, position: row.player.position }
+        { teamId: row.player.teamId, position: row.player.position, seasonType }
       );
     }
   }
@@ -130,6 +131,26 @@ function chooseWeightedEntity(rng, entries) {
     if (roll <= 0) return entry.player;
   }
   return clean[clean.length - 1].player;
+}
+
+function rating(player, key, fallback = 68) {
+  return player?.ratings?.[key] ?? fallback;
+}
+
+function averageRatingFromRotation(rotation, keys, fallback = 68) {
+  const players = (rotation || []).map((row) => row.player).filter(Boolean);
+  if (!players.length) return fallback;
+  return mean(
+    players.map((player) =>
+      mean(keys.map((key) => rating(player, key, fallback)))
+    )
+  );
+}
+
+function averageRatingFromPlayers(players, keys, fallback = 68) {
+  const clean = (players || []).filter(Boolean);
+  if (!clean.length) return fallback;
+  return mean(clean.map((player) => mean(keys.map((key) => rating(player, key, fallback)))));
 }
 
 const GAME_MISS_CHANCE_BY_POSITION = {
@@ -230,6 +251,26 @@ function buildTeamContext(league, teamId, rng) {
   const schemeFit = roster.length
     ? roster.reduce((sum, player) => sum + (player.schemeFit || 70), 0) / roster.length
     : 70;
+  const unitRatings = {
+    passBlocking: averageRatingFromRotation(olRotation.slice(0, 5), ["passBlocking", "awareness", "strength"], 70),
+    runBlocking: averageRatingFromRotation(olRotation.slice(0, 5), ["runBlocking", "strength", "awareness"], 70),
+    passRush: mean([
+      averageRatingFromRotation(dlRotation, ["passRush", "blockShedding", "playRecognition"], 68),
+      averageRatingFromRotation(lbRotation, ["passRush", "blockShedding", "pursuit"], 66)
+    ]),
+    runDefense: mean([
+      averageRatingFromRotation(dlRotation, ["tackle", "blockShedding", "strength"], 68),
+      averageRatingFromRotation(lbRotation, ["tackle", "pursuit", "hitPower"], 68)
+    ]),
+    coverage: mean([
+      averageRatingFromRotation(dbRotation, ["coverage", "manCoverage", "zoneCoverage", "playRecognition"], 68),
+      averageRatingFromRotation(lbRotation, ["coverage", "playRecognition", "pursuit"], 65)
+    ]),
+    tackling: mean([
+      averageRatingFromRotation(lbRotation, ["tackle", "pursuit", "hitPower"], 68),
+      averageRatingFromRotation(dbRotation, ["tackle", "pursuit", "coverage"], 66)
+    ])
+  };
   return {
     team,
     roster,
@@ -257,7 +298,8 @@ function buildTeamContext(league, teamId, rng) {
     chemistry,
     schemeFit,
     roleNames: DEPTH_CHART_ROLE_NAMES,
-    usageProfile
+    usageProfile,
+    unitRatings
   };
 }
 
@@ -314,13 +356,34 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
   let turnoverType = null;
   let passPlays = 0;
   let rushPlays = 0;
+  const playLog = [];
+  let lastReceiver = null;
+  let lastRunner = offenseContext.rb;
+
+  const qb = offenseContext.qb;
+  const qbAccuracy = mean([rating(qb, "throwAccuracy"), rating(qb, "awareness"), rating(qb, "playRecognition")]);
+  const qbArm = mean([rating(qb, "throwPower"), rating(qb, "throwOnRun"), rating(qb, "discipline")]);
+  const linePass = offenseContext.unitRatings?.passBlocking || 70;
+  const lineRun = offenseContext.unitRatings?.runBlocking || 70;
+  const passRush = defenseContext.unitRatings?.passRush || 70;
+  const runDefense = defenseContext.unitRatings?.runDefense || 70;
+  const coverage = defenseContext.unitRatings?.coverage || 70;
+  const tackling = defenseContext.unitRatings?.tackling || 70;
+
+  const addPlay = (entry) => {
+    playLog.push({
+      offenseTeamId: offenseContext.team.id,
+      defenseTeamId: defenseContext.team.id,
+      ...entry
+    });
+  };
 
   for (let i = 0; i < plays; i += 1) {
     if (turnover) break;
     const playType = rng.chance(offenseContext.passLean) ? "pass" : "run";
     if (playType === "pass") {
       passPlays += 1;
-      const qbSpeed = offenseContext.qb.ratings?.speed || 70;
+      const qbSpeed = rating(qb, "speed");
       const scrambleChance = clamp(0.055 + (qbSpeed - 70) / 520, 0.03, 0.12);
       if (rng.chance(scrambleChance)) {
         const scrambleYards = clamp(
@@ -339,22 +402,53 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
         } else {
           recordTeamTackle(driveDeltas, rng, defenseContext);
         }
+        addPlay({
+          type: "scramble",
+          yards: scrambleYards,
+          playerId: qb.id,
+          player: qb.name,
+          description: `${qb.name} scrambles for ${scrambleYards} yards`
+        });
         continue;
       }
       const completionChance = clamp(
-        0.52 + (offenseContext.qb.overall - defenseContext.team.defenseRating) / 230,
-        0.42,
-        0.76
+        0.47 +
+          (qbAccuracy - 70) / 240 +
+          (linePass - passRush) / 360 +
+          (offenseContext.team.offenseRating - defenseContext.team.defenseRating) / 420 -
+          (coverage - 70) / 340,
+        0.38,
+        0.79
       );
-      addDelta(driveDeltas, offenseContext.qb.id, { passing: { att: 1 } });
+      addDelta(driveDeltas, qb.id, { passing: { att: 1 } });
 
       if (rng.chance(completionChance)) {
         const receiver = chooseReceiver(rng, offenseContext);
-        const yards = Math.max(0, rng.int(1, 15) + Math.round((offenseContext.qb.overall - 74) / 6));
-        const yac = Math.round(yards * rng.float(0.28, 0.64));
+        const receiverSkill = mean([
+          rating(receiver, "catching"),
+          rating(receiver, "routeRunning"),
+          rating(receiver, "release"),
+          rating(receiver, "spectacularCatch")
+        ]);
+        const airYards = clamp(
+          rng.int(0, 13) +
+            Math.round((qbArm - 70) / 7) +
+            Math.round((receiverSkill - 70) / 9) +
+            Math.round((receiverSkill - coverage) / 16),
+          0,
+          32
+        );
+        const yac = clamp(
+          rng.int(-1, 9) +
+            Math.round((rating(receiver, "elusiveness", rating(receiver, "agility")) - tackling) / 10) +
+            Math.round((rating(receiver, "speed") - 70) / 10),
+          -1,
+          24
+        );
+        const yards = Math.max(0, airYards + yac);
         const firstDown = yards >= 10 ? 1 : 0;
         driveYards += yards;
-        addDelta(driveDeltas, offenseContext.qb.id, {
+        addDelta(driveDeltas, qb.id, {
           passing: {
             cmp: 1,
             yards,
@@ -363,19 +457,29 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
           }
         });
         if (receiver) {
+          lastReceiver = receiver;
           addDelta(driveDeltas, receiver.id, {
             receiving: { targets: 1, rec: 1, yards, yac, firstDowns: firstDown, long: yards }
           });
         }
         recordTeamTackle(driveDeltas, rng, defenseContext);
+        addPlay({
+          type: "pass",
+          yards,
+          playerId: qb.id,
+          targetId: receiver?.id || null,
+          player: qb.name,
+          target: receiver?.name || "receiver",
+          description: `${qb.name} to ${receiver?.name || "receiver"} for ${yards} yards`
+        });
       } else {
         const sackChance = clamp(
-          0.08 + (defenseContext.team.defenseRating - offenseContext.team.offenseRating) / 420,
+          0.07 + (passRush - linePass) / 310 + (defenseContext.team.defenseRating - offenseContext.team.offenseRating) / 520,
           0.05,
-          0.2
+          0.24
         );
         const intChance = clamp(
-          0.02 + (defenseContext.team.defenseRating - offenseContext.qb.overall) / 520,
+          0.018 + (coverage - qbAccuracy) / 360 + (defenseContext.team.defenseRating - qb.overall) / 640,
           0.01,
           0.07
         );
@@ -386,14 +490,23 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
             ...defenseContext.dbRotation.map((row) => ({ player: row.player, weight: row.usageWeight * 1.18 })),
             ...defenseContext.lbRotation.map((row) => ({ player: row.player, weight: row.usageWeight * 0.45 }))
           ]);
-          addDelta(driveDeltas, offenseContext.qb.id, { passing: { int: 1 } });
+          addDelta(driveDeltas, qb.id, { passing: { int: 1 } });
           if (defender) {
             addDelta(driveDeltas, defender.id, { defense: { int: 1, passDefended: 1 } });
           }
+          addPlay({
+            type: "interception",
+            yards: 0,
+            playerId: qb.id,
+            targetId: defender?.id || null,
+            player: qb.name,
+            target: defender?.name || "defense",
+            description: `${qb.name} is intercepted by ${defender?.name || "the defense"}`
+          });
         } else if (rng.chance(sackChance)) {
           const sackYards = rng.int(5, 11);
           driveYards -= sackYards;
-          addDelta(driveDeltas, offenseContext.qb.id, { passing: { sacks: 1, sackYards } });
+          addDelta(driveDeltas, qb.id, { passing: { sacks: 1, sackYards } });
           const sacker = chooseWeightedEntity(rng, [
             ...defenseContext.dlRotation.map((row) => ({ player: row.player, weight: row.usageWeight * 1.18 })),
             ...defenseContext.lbRotation.map((row) => ({ player: row.player, weight: row.usageWeight * 0.76 })),
@@ -403,6 +516,13 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
           const pressureLinemen = offenseContext.olRotation.slice(0, 5).map((row) => row.player);
           const beaten = choosePlayer(rng, pressureLinemen);
           if (beaten) addDelta(driveDeltas, beaten.id, { blocking: { sacksAllowed: 1, pressuresAllowed: 1 } });
+          addPlay({
+            type: "sack",
+            yards: -sackYards,
+            playerId: sacker?.id || null,
+            player: sacker?.name || "Defense",
+            description: `${sacker?.name || "Defense"} sacks ${qb.name} for ${sackYards} yards`
+          });
         } else {
           const receiver = chooseReceiver(rng, offenseContext);
           if (receiver) {
@@ -410,17 +530,42 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
             if (rng.chance(0.035)) addDelta(driveDeltas, receiver.id, { receiving: { drops: 1 } });
           }
           maybeRecordPassDefended(driveDeltas, rng, defenseContext);
+          addPlay({
+            type: "incomplete",
+            yards: 0,
+            playerId: qb.id,
+            targetId: receiver?.id || null,
+            player: qb.name,
+            target: receiver?.name || "receiver",
+            description: `${qb.name} incomplete to ${receiver?.name || "receiver"}`
+          });
         }
       }
     } else {
       rushPlays += 1;
       const runner = chooseFromRotation(rng, offenseContext.rbRotation) || offenseContext.rb;
+      lastRunner = runner;
+      const runnerVision = mean([
+        rating(runner, "speed"),
+        rating(runner, "acceleration"),
+        rating(runner, "elusiveness"),
+        rating(runner, "breakTackle"),
+        rating(runner, "trucking")
+      ]);
       const yards = clamp(
-        rng.int(-2, 9) + Math.round((runner.overall - defenseContext.team.defenseRating) / 17),
+        rng.int(-3, 8) +
+          Math.round((runnerVision - 70) / 7) +
+          Math.round((lineRun - runDefense) / 9) -
+          Math.round((tackling - 70) / 18),
         -4,
-        16
+        27
       );
-      const brokenTackles = yards > 3 ? (rng.chance(0.24) ? 1 : 0) : 0;
+      const brokenTackleChance = clamp(
+        0.08 + (mean([rating(runner, "breakTackle"), rating(runner, "trucking"), rating(runner, "elusiveness")]) - tackling) / 260,
+        0.04,
+        0.42
+      );
+      const brokenTackles = yards > 2 && rng.chance(brokenTackleChance) ? 1 : 0;
       const firstDown = yards >= 10 ? 1 : 0;
       driveYards += yards;
       addDelta(driveDeltas, runner.id, {
@@ -429,7 +574,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
       const tackler = recordTeamTackle(driveDeltas, rng, defenseContext);
       if (yards < 0 && tackler) addDelta(driveDeltas, tackler.id, { defense: { tfl: 1 } });
 
-      const fumbleChance = 0.012;
+      const fumbleChance = clamp(0.018 - (rating(runner, "carrying") - 70) / 520, 0.004, 0.028);
       if (rng.chance(fumbleChance)) {
         turnover = true;
         turnoverType = "FUMBLE";
@@ -440,6 +585,23 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
           ...defenseContext.dbRotation
         ]);
         if (recoverer) addDelta(driveDeltas, recoverer.id, { defense: { ff: 1, fr: 1 } });
+        addPlay({
+          type: "fumble",
+          yards,
+          playerId: runner.id,
+          targetId: recoverer?.id || null,
+          player: runner.name,
+          target: recoverer?.name || "defense",
+          description: `${runner.name} runs for ${yards} yards and fumbles`
+        });
+      } else {
+        addPlay({
+          type: "run",
+          yards,
+          playerId: runner.id,
+          player: runner.name,
+          description: `${runner.name} rushes for ${yards} yards`
+        });
       }
     }
   }
@@ -476,22 +638,35 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
       deltas: driveDeltas,
       plays,
       passPlays,
-      rushPlays
+      rushPlays,
+      playLog,
+      scoringEvent: null
     };
   }
 
   if (adjustedOffensePower > adjustedDefensePower + 12 || driveYards >= 66) {
     const passingTd = passPlays >= rushPlays ? rng.chance(offenseContext.passLean) : rng.chance(0.35);
+    let description = "";
     if (passingTd) {
-      const receiver = chooseReceiver(rng, offenseContext);
-      addDelta(driveDeltas, offenseContext.qb.id, { passing: { td: 1 } });
+      const receiver = lastReceiver || chooseReceiver(rng, offenseContext);
+      addDelta(driveDeltas, qb.id, { passing: { td: 1 } });
       if (receiver) addDelta(driveDeltas, receiver.id, { receiving: { td: 1 } });
+      description = `${qb.name} finds ${receiver?.name || "a receiver"} for the touchdown`;
     } else {
-      addDelta(driveDeltas, offenseContext.rb.id, { rushing: { td: 1 } });
+      const runner = lastRunner || offenseContext.rb;
+      addDelta(driveDeltas, runner.id, { rushing: { td: 1 } });
+      description = `${runner.name} punches in the touchdown`;
     }
     addDelta(driveDeltas, offenseContext.k.id, { kicking: { xpa: 1 } });
     const xpGood = rng.chance(clamp(0.93 + (offenseContext.k.overall - 75) / 320, 0.86, 0.99));
     if (xpGood) addDelta(driveDeltas, offenseContext.k.id, { kicking: { xpm: 1 } });
+    addPlay({
+      type: "score",
+      yards: 0,
+      playerId: passingTd ? qb.id : (lastRunner || offenseContext.rb)?.id || null,
+      player: passingTd ? qb.name : (lastRunner || offenseContext.rb)?.name || offenseContext.rb.name,
+      description
+    });
     return {
       outcome: DRIVE_OUTCOMES.TOUCHDOWN,
       points: xpGood ? 7 : 6,
@@ -502,7 +677,14 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
       deltas: driveDeltas,
       plays,
       passPlays,
-      rushPlays
+      rushPlays,
+      playLog,
+      scoringEvent: {
+        teamId: offenseContext.team.id,
+        type: "TD",
+        points: xpGood ? 7 : 6,
+        description: xpGood ? `${description} (XP good)` : `${description} (XP missed)`
+      }
     };
   }
 
@@ -516,6 +698,13 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
       addDelta(driveDeltas, offenseContext.k.id, {
         kicking: { fgm: 1, long: distance, fgM40: short, fgA40: short, fgM50: deep, fgA50: deep }
       });
+      addPlay({
+        type: "field-goal",
+        yards: 0,
+        playerId: offenseContext.k.id,
+        player: offenseContext.k.name,
+        description: `${offenseContext.k.name} hits a ${distance}-yard field goal`
+      });
       return {
         outcome: DRIVE_OUTCOMES.FIELD_GOAL,
         points: 3,
@@ -526,12 +715,26 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
         deltas: driveDeltas,
         plays,
         passPlays,
-        rushPlays
+        rushPlays,
+        playLog,
+        scoringEvent: {
+          teamId: offenseContext.team.id,
+          type: "FG",
+          points: 3,
+          description: `${offenseContext.k.name} makes a ${distance}-yard field goal`
+        }
       };
     }
     const short = distance < 40 ? 1 : 0;
     const deep = distance >= 50 ? 1 : 0;
     addDelta(driveDeltas, offenseContext.k.id, { kicking: { fgA40: short, fgA50: deep } });
+    addPlay({
+      type: "missed-field-goal",
+      yards: 0,
+      playerId: offenseContext.k.id,
+      player: offenseContext.k.name,
+      description: `${offenseContext.k.name} misses from ${distance} yards`
+    });
     return {
       outcome: DRIVE_OUTCOMES.TURNOVER,
       points: 0,
@@ -542,7 +745,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
       deltas: driveDeltas,
       plays,
       passPlays,
-      rushPlays
+      rushPlays,
+      playLog,
+      scoringEvent: null
     };
   }
 
@@ -550,6 +755,13 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
   addDelta(driveDeltas, offenseContext.p.id, { punting: { punts: 1, yards: puntYards } });
   if (rng.chance(0.37)) addDelta(driveDeltas, offenseContext.p.id, { punting: { in20: 1 } });
   if (rng.chance(0.08)) addDelta(driveDeltas, offenseContext.p.id, { punting: { touchbacks: 1 } });
+  addPlay({
+    type: "punt",
+    yards: puntYards,
+    playerId: offenseContext.p.id,
+    player: offenseContext.p.name,
+    description: `${offenseContext.p.name} punts ${puntYards} yards`
+  });
 
   return {
     outcome: DRIVE_OUTCOMES.PUNT,
@@ -561,7 +773,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
     deltas: driveDeltas,
     plays,
     passPlays,
-    rushPlays
+    rushPlays,
+    playLog,
+    scoringEvent: null
   };
 }
 
@@ -589,11 +803,167 @@ function collectStarters(teamContext) {
   ].filter(Boolean);
 }
 
-function applyDriveDeltas(statBook, year, deltaMap) {
+function applyDriveDeltas(statBook, year, deltaMap, seasonType = "regular") {
   for (const [playerId, delta] of deltaMap.entries()) {
     const player = statBook.getPlayerById(playerId);
-    statBook.applyStatDelta(playerId, year, delta, player ? { teamId: player.teamId, position: player.position } : null);
+    statBook.applyStatDelta(
+      playerId,
+      year,
+      delta,
+      player ? { teamId: player.teamId, position: player.position, seasonType } : { seasonType }
+    );
   }
+}
+
+function buildGameId({ year, week = 0, seasonType = "regular", homeTeamId, awayTeamId, label = "game" }) {
+  return `${year}-${seasonType}-${label}-${week}-${awayTeamId}-${homeTeamId}`;
+}
+
+function resolveClock(elapsedSeconds) {
+  if (elapsedSeconds < 3600) {
+    const quarter = Math.min(4, Math.floor(elapsedSeconds / 900) + 1);
+    const quarterElapsed = elapsedSeconds % 900;
+    const remaining = Math.max(0, 900 - quarterElapsed);
+    return {
+      quarter,
+      clock: `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`,
+      label: `Q${quarter}`
+    };
+  }
+  const overtimeElapsed = elapsedSeconds - 3600;
+  const remaining = Math.max(0, 600 - overtimeElapsed);
+  return {
+    quarter: 5,
+    clock: `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`,
+    label: "OT"
+  };
+}
+
+function stampDriveLog(playLog, elapsedStart, driveSeconds) {
+  if (!playLog?.length) return [];
+  return playLog.map((entry, index) => {
+    const elapsedAtPlay = elapsedStart + Math.round(((index + 1) / (playLog.length + 1)) * driveSeconds);
+    const clock = resolveClock(elapsedAtPlay);
+    return {
+      ...entry,
+      quarter: clock.quarter,
+      quarterLabel: clock.label,
+      clock: clock.clock
+    };
+  });
+}
+
+function collectGamePlayerStats(playerGameStats, statBook, deltaMap) {
+  for (const [playerId, delta] of deltaMap.entries()) {
+    const player = statBook.getPlayerById(playerId);
+    if (!player) continue;
+    if (!playerGameStats.has(playerId)) {
+      playerGameStats.set(playerId, {
+        playerId,
+        player: player.name,
+        teamId: player.teamId,
+        pos: player.position,
+        stats: createZeroedSeasonStats()
+      });
+    }
+    mergeStats(playerGameStats.get(playerId).stats, delta);
+  }
+}
+
+function teamGameSummary(teamId, score, totalYards, turnovers, passPlays, rushPlays, playerEntries) {
+  const teamPlayers = playerEntries.filter((entry) => entry.teamId === teamId);
+  const passingYards = teamPlayers.reduce((sum, entry) => sum + (entry.stats.passing?.yards || 0), 0);
+  const rushingYards = teamPlayers.reduce((sum, entry) => sum + (entry.stats.rushing?.yards || 0), 0);
+  const firstDowns = teamPlayers.reduce(
+    (sum, entry) => sum + (entry.stats.passing?.firstDowns || 0) + (entry.stats.rushing?.firstDowns || 0),
+    0
+  );
+  return {
+    teamId,
+    score,
+    totalYards,
+    passingYards,
+    rushingYards,
+    firstDowns,
+    turnovers,
+    passPlays,
+    rushPlays,
+    thirdDowns: Math.max(1, Math.round((passPlays + rushPlays) * 0.23)),
+    thirdDownConversions: Math.max(0, Math.round(firstDowns * 0.38))
+  };
+}
+
+function buildPlayerStatGroups(entries) {
+  return {
+    passing: entries
+      .filter((entry) => (entry.stats.passing?.att || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        cmp: entry.stats.passing.cmp,
+        att: entry.stats.passing.att,
+        yds: entry.stats.passing.yards,
+        td: entry.stats.passing.td,
+        int: entry.stats.passing.int,
+        sacks: entry.stats.passing.sacks
+      }))
+      .sort((a, b) => b.yds - a.yds || b.att - a.att),
+    rushing: entries
+      .filter((entry) => (entry.stats.rushing?.att || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        att: entry.stats.rushing.att,
+        yds: entry.stats.rushing.yards,
+        td: entry.stats.rushing.td,
+        ypa: Number((entry.stats.rushing.yards / Math.max(1, entry.stats.rushing.att)).toFixed(1)),
+        lng: entry.stats.rushing.long
+      }))
+      .sort((a, b) => b.yds - a.yds || b.att - a.att),
+    receiving: entries
+      .filter((entry) => (entry.stats.receiving?.targets || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        tgt: entry.stats.receiving.targets,
+        rec: entry.stats.receiving.rec,
+        yds: entry.stats.receiving.yards,
+        td: entry.stats.receiving.td,
+        ypr: Number((entry.stats.receiving.yards / Math.max(1, entry.stats.receiving.rec)).toFixed(1))
+      }))
+      .sort((a, b) => b.yds - a.yds || b.rec - a.rec),
+    defense: entries
+      .filter(
+        (entry) =>
+          (entry.stats.defense?.tackles || 0) > 0 ||
+          (entry.stats.defense?.sacks || 0) > 0 ||
+          (entry.stats.defense?.int || 0) > 0
+      )
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        tkl: entry.stats.defense.tackles,
+        sacks: entry.stats.defense.sacks,
+        int: entry.stats.defense.int,
+        pd: entry.stats.defense.passDefended
+      }))
+      .sort((a, b) => b.tkl - a.tkl || b.sacks - a.sacks),
+    kicking: entries
+      .filter((entry) => (entry.stats.kicking?.fga || 0) + (entry.stats.kicking?.xpa || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        fgm: entry.stats.kicking.fgm,
+        fga: entry.stats.kicking.fga,
+        xpm: entry.stats.kicking.xpm,
+        xpa: entry.stats.kicking.xpa
+      }))
+  };
 }
 
 export function simulateGame({
@@ -602,21 +972,31 @@ export function simulateGame({
   homeTeamId,
   awayTeamId,
   year,
+  week = 0,
   rng,
   mode = "drive",
-  allowTie = true
+  allowTie = true,
+  seasonType = "regular",
+  label = "game"
 }) {
   const homeContext = buildTeamContext(league, homeTeamId, rng);
   const awayContext = buildTeamContext(league, awayTeamId, rng);
   const homeTeam = homeContext.team;
   const awayTeam = awayContext.team;
+  const gameId = buildGameId({ year, week, seasonType, homeTeamId, awayTeamId, label });
 
   const homeStarters = collectStarters(homeContext);
   const awayStarters = collectStarters(awayContext);
   const starterIds = new Set([...homeStarters, ...awayStarters].map((player) => player.id));
+  const playerGameStats = new Map();
+  const scoringSummary = [];
+  const playByPlay = [];
+  const homeByQuarter = [0, 0, 0, 0, 0];
+  const awayByQuarter = [0, 0, 0, 0, 0];
+  let elapsedSeconds = 0;
 
-  for (const player of homeStarters) statBook.registerGameAppearance(player.id, year, true, homeTeamId, player.position);
-  for (const player of awayStarters) statBook.registerGameAppearance(player.id, year, true, awayTeamId, player.position);
+  for (const player of homeStarters) statBook.registerGameAppearance(player.id, year, true, homeTeamId, player.position, seasonType);
+  for (const player of awayStarters) statBook.registerGameAppearance(player.id, year, true, awayTeamId, player.position, seasonType);
 
   const homePossessions = rng.int(...NFL_STRUCTURE.possessionsPerTeamRange);
   const awayPossessions = rng.int(...NFL_STRUCTURE.possessionsPerTeamRange);
@@ -641,6 +1021,31 @@ export function simulateGame({
   const snappedPlayerIds = new Set();
   let homeBall = rng.chance(0.5);
 
+  const finalizeDrive = (drive, offenseTeamId) => {
+    collectGamePlayerStats(playerGameStats, statBook, drive.deltas);
+    const stampedLog = stampDriveLog(drive.playLog || [], elapsedSeconds, drive.seconds || 0);
+    playByPlay.push(...stampedLog);
+    elapsedSeconds += drive.seconds || 0;
+    if (drive.scoringEvent) {
+      const clock = resolveClock(Math.max(0, elapsedSeconds - 1));
+      const summary = {
+        teamId: offenseTeamId,
+        quarter: clock.quarter,
+        quarterLabel: clock.label,
+        clock: clock.clock,
+        type: drive.scoringEvent.type,
+        points: drive.scoringEvent.points,
+        description: drive.scoringEvent.description
+      };
+      if (offenseTeamId === homeTeamId) {
+        homeByQuarter[Math.min(homeByQuarter.length - 1, clock.quarter - 1)] += drive.points;
+      } else {
+        awayByQuarter[Math.min(awayByQuarter.length - 1, clock.quarter - 1)] += drive.points;
+      }
+      scoringSummary.push(summary);
+    }
+  };
+
   while (homeDrives < homePossessions || awayDrives < awayPossessions) {
     if (homeBall && homeDrives < homePossessions) {
       const drive = simulateDrive(homeContext, awayContext, rng, mode);
@@ -653,7 +1058,8 @@ export function simulateGame({
       homeRushPlays += drive.rushPlays || 0;
       if (drive.outcome === DRIVE_OUTCOMES.PUNT) homePOps += 1;
       if (drive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || drive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) homeKOps += 1;
-      applyDriveDeltas(statBook, year, drive.deltas);
+      applyDriveDeltas(statBook, year, drive.deltas, seasonType);
+      finalizeDrive(drive, homeTeamId);
       homeBall = false;
       continue;
     }
@@ -668,7 +1074,8 @@ export function simulateGame({
       awayRushPlays += drive.rushPlays || 0;
       if (drive.outcome === DRIVE_OUTCOMES.PUNT) awayPOps += 1;
       if (drive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || drive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) awayKOps += 1;
-      applyDriveDeltas(statBook, year, drive.deltas);
+      applyDriveDeltas(statBook, year, drive.deltas, seasonType);
+      finalizeDrive(drive, awayTeamId);
       homeBall = true;
       continue;
     }
@@ -683,7 +1090,8 @@ export function simulateGame({
       const firstDrive = firstHome
         ? simulateDrive(homeContext, awayContext, rng, mode)
         : simulateDrive(awayContext, homeContext, rng, mode);
-      applyDriveDeltas(statBook, year, firstDrive.deltas);
+      applyDriveDeltas(statBook, year, firstDrive.deltas, seasonType);
+      finalizeDrive(firstDrive, firstHome ? homeTeamId : awayTeamId);
       if (firstHome) {
         homeScore += firstDrive.points;
         homeYards += firstDrive.yards;
@@ -707,7 +1115,8 @@ export function simulateGame({
       const secondDrive = firstHome
         ? simulateDrive(awayContext, homeContext, rng, mode)
         : simulateDrive(homeContext, awayContext, rng, mode);
-      applyDriveDeltas(statBook, year, secondDrive.deltas);
+      applyDriveDeltas(statBook, year, secondDrive.deltas, seasonType);
+      finalizeDrive(secondDrive, firstHome ? awayTeamId : homeTeamId);
       if (firstHome) {
         awayScore += secondDrive.points;
         awayYards += secondDrive.yards;
@@ -735,41 +1144,67 @@ export function simulateGame({
   const trackSnaps = (set) => {
     for (const playerId of set) snappedPlayerIds.add(playerId);
   };
-  trackSnaps(applySnapCounts(statBook, year, homeContext.qbRotation, homeOffSnaps, "offense"));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.rbRotation, homeOffSnaps, "offense"));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.wrRotation, homeOffSnaps, "offense"));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.teRotation, homeOffSnaps, "offense"));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.olRotation, homeOffSnaps, "offense"));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.qbRotation, awayOffSnaps, "offense"));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.rbRotation, awayOffSnaps, "offense"));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.wrRotation, awayOffSnaps, "offense"));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.teRotation, awayOffSnaps, "offense"));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.olRotation, awayOffSnaps, "offense"));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.qbRotation, homeOffSnaps, "offense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.rbRotation, homeOffSnaps, "offense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.wrRotation, homeOffSnaps, "offense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.teRotation, homeOffSnaps, "offense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.olRotation, homeOffSnaps, "offense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.qbRotation, awayOffSnaps, "offense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.rbRotation, awayOffSnaps, "offense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.wrRotation, awayOffSnaps, "offense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.teRotation, awayOffSnaps, "offense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.olRotation, awayOffSnaps, "offense", seasonType));
 
-  trackSnaps(applySnapCounts(statBook, year, homeContext.dlRotation, awayOffSnaps, "defense"));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.lbRotation, awayOffSnaps, "defense"));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.dbRotation, awayOffSnaps, "defense"));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.dlRotation, homeOffSnaps, "defense"));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.lbRotation, homeOffSnaps, "defense"));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.dbRotation, homeOffSnaps, "defense"));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.dlRotation, awayOffSnaps, "defense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.lbRotation, awayOffSnaps, "defense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.dbRotation, awayOffSnaps, "defense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.dlRotation, homeOffSnaps, "defense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.lbRotation, homeOffSnaps, "defense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.dbRotation, homeOffSnaps, "defense", seasonType));
 
   const homeSpecialSnaps = homeKOps + homePOps + awayKOps;
   const awaySpecialSnaps = awayKOps + awayPOps + homeKOps;
-  trackSnaps(applySnapCounts(statBook, year, homeContext.kRotation, homeSpecialSnaps, "special"));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.pRotation, homeSpecialSnaps, "special"));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.kRotation, awaySpecialSnaps, "special"));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.pRotation, awaySpecialSnaps, "special"));
-  applyBlockingNoise(statBook, year, homeContext.olRotation, homeOffSnaps, rng);
-  applyBlockingNoise(statBook, year, awayContext.olRotation, awayOffSnaps, rng);
+  trackSnaps(applySnapCounts(statBook, year, homeContext.kRotation, homeSpecialSnaps, "special", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.pRotation, homeSpecialSnaps, "special", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.kRotation, awaySpecialSnaps, "special", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.pRotation, awaySpecialSnaps, "special", seasonType));
+  applyBlockingNoise(statBook, year, homeContext.olRotation, homeOffSnaps, rng, seasonType);
+  applyBlockingNoise(statBook, year, awayContext.olRotation, awayOffSnaps, rng, seasonType);
 
   for (const playerId of snappedPlayerIds) {
     if (starterIds.has(playerId)) continue;
     const player = statBook.getPlayerById(playerId);
     if (!player) continue;
-    statBook.registerGameAppearance(playerId, year, false, player.teamId, player.position);
+    statBook.registerGameAppearance(playerId, year, false, player.teamId, player.position, seasonType);
   }
 
+  const playerEntries = [...playerGameStats.values()];
+  const boxScore = {
+    gameId,
+    year,
+    week,
+    seasonType,
+    label,
+    homeTeam: teamGameSummary(homeTeamId, homeScore, homeYards, homeTurnovers, homePassPlays, homeRushPlays, playerEntries),
+    awayTeam: teamGameSummary(awayTeamId, awayScore, awayYards, awayTurnovers, awayPassPlays, awayRushPlays, playerEntries),
+    quarterScores: {
+      home: homeByQuarter,
+      away: awayByQuarter
+    },
+    scoringSummary,
+    playByPlay,
+    playerStats: {
+      home: buildPlayerStatGroups(playerEntries.filter((entry) => entry.teamId === homeTeamId)),
+      away: buildPlayerStatGroups(playerEntries.filter((entry) => entry.teamId === awayTeamId))
+    }
+  };
+
   return {
+    gameId,
+    year,
+    week,
+    seasonType,
+    label,
     homeTeamId,
     awayTeamId,
     homeScore,
@@ -785,6 +1220,7 @@ export function simulateGame({
     homeTurnovers,
     awayTurnovers,
     isTie: homeScore === awayScore,
-    winnerId: homeScore === awayScore ? null : homeScore > awayScore ? homeTeamId : awayTeamId
+    winnerId: homeScore === awayScore ? null : homeScore > awayScore ? homeTeamId : awayTeamId,
+    boxScore
   };
 }

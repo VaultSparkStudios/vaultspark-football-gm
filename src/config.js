@@ -66,15 +66,29 @@ export const ROSTER_TEMPLATE = {
 };
 
 export const PLAYER_ATTRIBUTE_KEYS = {
-  physical: ["speed", "strength", "agility", "acceleration"],
+  physical: ["speed", "strength", "agility", "acceleration", "jumping"],
   skill: [
     "throwPower",
     "throwAccuracy",
+    "throwOnRun",
     "catching",
+    "carrying",
+    "breakTackle",
+    "trucking",
+    "elusiveness",
+    "routeRunning",
+    "release",
+    "spectacularCatch",
     "passBlocking",
     "runBlocking",
     "tackle",
-    "coverage"
+    "coverage",
+    "passRush",
+    "blockShedding",
+    "pursuit",
+    "hitPower",
+    "manCoverage",
+    "zoneCoverage"
   ],
   mental: ["awareness", "playRecognition", "discipline"]
 };

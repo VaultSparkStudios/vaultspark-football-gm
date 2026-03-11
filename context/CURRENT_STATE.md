@@ -6,11 +6,12 @@ Build status:
 - Project memory files now exist in-repo and are part of the required session bootstrap path
 - Local standards validation passed for `build:pages`, `smoke:pages`, and the focused diff check
 - CI now targets Node 24 so `npm test` can use `--test-isolation=none` in GitHub Actions
+- The current PR branch now also includes the runtime/stat fixes for the four failing `npm test` assertions seen in GitHub Actions
 
 Current priorities:
-1. Push the CI Node 24 fix to the active PR branch
-2. Confirm live GitHub Pages settings and any optional backend-linked repo variables in GitHub
-3. Keep the repo's memory and handoff files current as future feature work resumes
+1. Push the committed CI regression fix set to the active PR branch
+2. Let GitHub rerun `npm test` and confirm the previously failing checks are green
+3. Return to the pending gameplay/UI work after CI is stable
 
 Known issues:
 - The Pages artifact is client-only; the server-backed runtime still requires separate backend rollout

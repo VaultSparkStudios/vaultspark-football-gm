@@ -17,9 +17,12 @@ export function simulateRegularSeasonWeek({
       homeTeamId: matchup.homeTeamId,
       awayTeamId: matchup.awayTeamId,
       year,
+      week: weekBlock.week,
       rng,
       mode,
-      allowTie: true
+      allowTie: true,
+      seasonType: "regular",
+      label: "regular-season"
     });
     applyRegularSeasonResult(league, weekBlock.week, game);
     games.push({

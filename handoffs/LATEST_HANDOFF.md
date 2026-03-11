@@ -8,15 +8,16 @@ What was completed:
 - Converted repo docs and workflows from studio-site sync Pages publishing to direct GitHub Pages deployment
 - Passed the focused local validation set for the standards-only diff
 - Updated CI to Node 24 so the test runner flag in `npm test` is supported on GitHub Actions
+- Isolated the real post-Node-upgrade CI failures and staged the runtime/stat fixes that make those tests pass locally
 
 What is mid-flight:
-- Git push/PR steps for the CI fix commit
-- Live GitHub-side confirmation for Pages settings and any optional backend-linked variables
+- Git push for the runtime/stat regression fix commit
+- Live GitHub rerun of the updated `npm test` job
 
 What to do next:
-1. Stage only the standards-compliance files in the dirty worktree
-2. Commit and push the standards update
-3. Open the game-repo PR if credentials/tooling allow it
+1. Commit and push the staged runtime/stat regression fixes on `codex/direct-pages-standards`
+2. Confirm GitHub Actions clears the four previously failing tests
+3. Resume the gameplay/depth-chart/Game Guide feature work
 
 Important constraints:
 - Do not revert or stage the unrelated gameplay/realism files already modified in the worktree
