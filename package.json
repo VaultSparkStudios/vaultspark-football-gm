@@ -16,8 +16,7 @@
     "verify:realism": "node src/data/scripts/verifyRealism.js --seasons 12",
     "test": "node --test --test-isolation=none",
     "test:ui": "playwright test",
-    "test:ui:headed": "playwright test --headed",
-    "build:pages": "node scripts/build-pages.mjs"
+    "test:ui:headed": "playwright test --headed"
   },
   "license": "MIT",
   "devDependencies": {

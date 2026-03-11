@@ -19,7 +19,8 @@ test("release then sign free agent obeys roster constraints", () => {
 
 test("contract restructure keeps contract valid", () => {
   const session = createSession({ seed: 101, startYear: 2026, controlledTeamId: "BUF" });
-  const player = session.getRoster("BUF")[0];
+  const player = session.getRoster("BUF").find((entry) => (entry.contract?.yearsRemaining || 0) > 1);
+  assert.ok(player);
   const oldCap = player.contract.capHit;
   const result = session.restructurePlayerContract({ teamId: "BUF", playerId: player.id });
   assert.equal(result.ok, true);

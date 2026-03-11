@@ -1,46 +1,43 @@
 # VaultSpark Football GM Pages Deployment
 
-This repo can build a static client bundle for deployment at:
+This repo builds and deploys its own GitHub Pages site directly at:
 
 - `https://vaultsparkstudios.com/vaultspark-football-gm/`
 
 The Pages bundle is client-only and uses the in-browser runtime. The Node-hosted
-server remains the local development/runtime path and is not part of the Pages
+server remains the development/runtime path and is not part of the Pages
 artifact.
 
-Backend/runtime deployment is separate. The default studio runtime plan is
-captured in:
+Backend/runtime deployment is separate. The default studio runtime plan lives in:
 
 - `docs/STUDIO_BACKEND_PLAN.md`
 
-## Required GitHub variables
+## Required GitHub setup
 
-Set these repo variables in `VaultSparkStudios/VaultSpark-Football-GM`:
+In `vaultspark-football-gm`:
 
-- `GAME_SLUG`
-  - `vaultspark-football-gm`
-- `STUDIO_SITE_BRANCH`
-  - Example: `main`
+- Settings -> Pages -> Source: `GitHub Actions`
+
+## Optional GitHub variables
+
+Set these only if the published client should point at a live backend:
+
 - `GAME_SERVICE_ORIGIN`
-  - Default standard: `https://play-vaultspark-football-gm.vaultsparkstudios.com`
+  - `https://play-vaultspark-football-gm.vaultsparkstudios.com`
 - `API_DOMAIN`
-  - Default standard: `api-vaultspark-football-gm.vaultsparkstudios.com`
+  - `api-vaultspark-football-gm.vaultsparkstudios.com`
 
-## Required GitHub secret
-
-- `STUDIO_SITE_TOKEN`
-  - Personal access token with write access to `VaultSparkStudios/VaultSparkStudios.github.io`
+No secret is required for GitHub Pages deployment.
 
 ## What the workflow does
 
 `deploy-pages.yml`:
 
-1. Builds the static client with `VITE_APP_BASE_PATH=/vaultspark-football-gm/`
-2. Forces client-only runtime default for the published bundle
-3. Copies `index.html` to `404.html` for GitHub Pages deep-link fallback
-4. Checks out the studio site repo
-5. Syncs the built bundle into `/vaultspark-football-gm/`
-6. Commits and pushes only that game subfolder
+1. Builds the static client for `/vaultspark-football-gm/`
+2. Forces the published bundle to default to the client runtime
+3. Copies `index.html` to `404.html` for deep-link fallback
+4. Uploads the built `static/` artifact to GitHub Pages
+5. Deploys the artifact directly from this repo
 
 Local validation commands:
 
@@ -55,21 +52,21 @@ production backend rollout is ready.
 
 ## Backend scaffold
 
-The repo now includes:
+The repo includes:
 
 - `.github/workflows/deploy-backend.yml`
 - `Dockerfile.runtime`
 - `ops/deploy-backend.docker-compose.yml`
 - `ops/Caddyfile`
 
-The backend workflow is a scaffold. It can build and push the standard
-`play-{slug}` and `api-{slug}` images now, and it supports optional server
-deployment once the required SSH/VPS secrets exist.
+The backend workflow is separate from Pages deployment and remains the Studio
+standard path for `play-{slug}` and `api-{slug}` rollout.
 
 ## Studio site follow-up
 
-The studio repo already contains a `VaultSpark Football GM` card and a
-`/vaultspark-football-gm/` launch path. Once the static game bundle is ready,
-that repo should receive the built bundle and any necessary card/status updates.
-Per studio policy, verify the latest remote/live homepage state there before
-editing the landing page.
+The studio site repo remains the landing page and discovery layer. Homepage
+card changes there are separate content work:
+
+- fetch the latest `VaultSparkStudios.github.io` remote state first
+- verify the live or upstream landing page before editing
+- keep the card link pointed at `/vaultspark-football-gm/`

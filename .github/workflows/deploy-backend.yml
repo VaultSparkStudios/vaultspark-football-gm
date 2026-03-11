@@ -53,8 +53,8 @@ jobs:
           file: ./Dockerfile.runtime
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/vaultspark-football-gm-${{ matrix.service }}:latest
-            ghcr.io/${{ github.repository_owner }}/vaultspark-football-gm-${{ matrix.service }}:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/${{ env.GAME_SLUG }}-${{ matrix.service }}:latest
+            ghcr.io/${{ github.repository_owner }}/${{ env.GAME_SLUG }}-${{ matrix.service }}:${{ github.sha }}
 
   deploy-server:
     needs: build-images

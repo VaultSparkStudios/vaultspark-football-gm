@@ -46,14 +46,14 @@ const LAST_NAMES = [
 ];
 
 const POSITION_ATTRIBUTE_BIASES = {
-  QB: { throwPower: 18, throwAccuracy: 18, awareness: 10, playRecognition: 8 },
-  RB: { speed: 12, acceleration: 12, agility: 12, runBlocking: 6, catching: 6 },
-  WR: { speed: 14, acceleration: 14, agility: 10, catching: 12 },
-  TE: { catching: 10, strength: 8, runBlocking: 10, passBlocking: 6 },
+  QB: { throwPower: 18, throwAccuracy: 18, throwOnRun: 10, awareness: 10, playRecognition: 8 },
+  RB: { speed: 12, acceleration: 12, agility: 12, carrying: 12, breakTackle: 10, trucking: 8, elusiveness: 10, catching: 6 },
+  WR: { speed: 14, acceleration: 14, agility: 10, catching: 12, routeRunning: 12, release: 10, spectacularCatch: 8, jumping: 8 },
+  TE: { catching: 10, strength: 8, routeRunning: 8, release: 6, spectacularCatch: 6, runBlocking: 10, passBlocking: 6 },
   OL: { passBlocking: 18, runBlocking: 18, strength: 12, awareness: 8 },
-  DL: { tackle: 16, strength: 14, playRecognition: 8 },
-  LB: { tackle: 14, coverage: 12, playRecognition: 10, speed: 8 },
-  DB: { coverage: 18, speed: 12, acceleration: 10, playRecognition: 8 },
+  DL: { tackle: 12, strength: 14, passRush: 14, blockShedding: 12, pursuit: 8, playRecognition: 8 },
+  LB: { tackle: 12, coverage: 10, pursuit: 12, hitPower: 10, blockShedding: 8, playRecognition: 10, speed: 8 },
+  DB: { coverage: 10, manCoverage: 14, zoneCoverage: 14, speed: 12, acceleration: 10, playRecognition: 8, jumping: 8 },
   K: { throwPower: 18, discipline: 10, awareness: 8 },
   P: { throwPower: 16, discipline: 10, awareness: 8 }
 };
@@ -76,6 +76,19 @@ const POSITION_ARCHETYPES = {
   DB: ["Man", "Zone", "BallHawk"],
   K: ["PowerLeg", "Accurate"],
   P: ["Directional", "Power"]
+};
+
+const POSITION_BODY_PROFILES = {
+  QB: { height: [72, 79], weight: [205, 245] },
+  RB: { height: [68, 74], weight: [195, 235] },
+  WR: { height: [69, 78], weight: [180, 230] },
+  TE: { height: [75, 81], weight: [235, 275] },
+  OL: { height: [75, 81], weight: [295, 365] },
+  DL: { height: [74, 80], weight: [255, 330] },
+  LB: { height: [72, 78], weight: [220, 270] },
+  DB: { height: [69, 76], weight: [180, 220] },
+  K: { height: [69, 76], weight: [170, 220] },
+  P: { height: [71, 78], weight: [185, 235] }
 };
 
 export function createZeroedSeasonStats() {
@@ -172,19 +185,45 @@ function randomArchetype(position, rng) {
   return rng.pick(list);
 }
 
+function hashString(value) {
+  let hash = 0;
+  for (const char of String(value || "")) {
+    hash = (hash * 31 + char.charCodeAt(0)) >>> 0;
+  }
+  return hash;
+}
+
+function deriveRangeValue(hash, min, max, offset = 0) {
+  const span = Math.max(1, max - min + 1);
+  return min + ((hash + offset) % span);
+}
+
+function physicalFrameFromSeed(position, seed) {
+  const profile = POSITION_BODY_PROFILES[position] || POSITION_BODY_PROFILES.QB;
+  const hash = hashString(seed);
+  return {
+    heightInches: deriveRangeValue(hash, profile.height[0], profile.height[1]),
+    weightLbs: deriveRangeValue(hash, profile.weight[0], profile.weight[1], 17)
+  };
+}
+
 export function createSyntheticPlayer({ teamId, position, year, rng, draft = false }) {
   const devTrait = randomTrait(rng);
   const potential = randomPotential(devTrait, rng);
   const ratings = randomAttributeBase(position, rng);
   const overall = calculatePositionOverall(position, ratings);
   const age = draft ? rng.int(21, 23) : rng.int(22, 33);
+  const id = `P${year}-${teamId}-${position}-${Math.floor(rng.next() * 1e8)}`;
+  const frame = physicalFrameFromSeed(position, id);
 
   return {
-    id: `P${year}-${teamId}-${position}-${Math.floor(rng.next() * 1e8)}`,
+    id,
     name: randomName(rng),
     position,
     teamId,
     age,
+    heightInches: frame.heightInches,
+    weightLbs: frame.weightLbs,
     experience: draft ? 0 : Math.max(0, age - 21),
     developmentTrait: DEVELOPMENT_TRAITS[devTrait].label,
     developmentKey: devTrait,
@@ -203,6 +242,7 @@ export function createSyntheticPlayer({ teamId, position, year, rng, draft = fal
     rosterSlot: "active",
     depthChartOrder: 99,
     morale: rng.int(55, 86),
+    motivation: rng.int(54, 88),
     schemeFit: rng.int(58, 86),
     chemistryImpact: rng.int(-6, 8),
     reinjuryRisk: 0,
@@ -214,7 +254,8 @@ export function createSyntheticPlayer({ teamId, position, year, rng, draft = fal
     profile: {
       source: draft ? "generated-draft" : "generated-roster",
       pfrId: null,
-      college: null
+      college: null,
+      faceSeed: `face-${hashString(id)}`
     },
     seasonStats: {},
     careerStats: createZeroedCareerStats()

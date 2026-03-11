@@ -169,16 +169,19 @@ export function getPlayoffSeeds(league, conference) {
   return seeds;
 }
 
-function simulateBracketGame({ league, statBook, year, rng, higherSeedTeam, lowerSeedTeam, mode }) {
+function simulateBracketGame({ league, statBook, year, rng, higherSeedTeam, lowerSeedTeam, mode, label }) {
   const result = simulateGame({
     league,
     statBook,
     homeTeamId: higherSeedTeam.id,
     awayTeamId: lowerSeedTeam.id,
     year,
+    week: 0,
     rng,
     mode,
-    allowTie: false
+    allowTie: false,
+    seasonType: "playoffs",
+    label
   });
   const winner = result.winnerId === higherSeedTeam.id ? higherSeedTeam : lowerSeedTeam;
   return { result, winner };
@@ -188,6 +191,7 @@ function bracketGameRow({ conference, round, higherSeedTeam, lowerSeedTeam, resu
   return {
     conference,
     round,
+    gameId: result.gameId,
     homeTeamId: higherSeedTeam.id,
     awayTeamId: lowerSeedTeam.id,
     homeSeed: higherSeedTeam.playoffSeed,
@@ -211,6 +215,7 @@ function runConferencePlayoffs({ league, statBook, year, rng, conference, mode }
     divisional: [],
     conference: []
   };
+  const gameDetails = [];
 
   const wildcardGames = [
     [2, 7],
@@ -225,7 +230,8 @@ function runConferencePlayoffs({ league, statBook, year, rng, conference, mode }
       rng,
       higherSeedTeam: bySeed[high],
       lowerSeedTeam: bySeed[low],
-      mode
+      mode,
+      label: `${conference.toLowerCase()}-wildcard`
     });
     bracket.wildcard.push(
       bracketGameRow({
@@ -236,6 +242,7 @@ function runConferencePlayoffs({ league, statBook, year, rng, conference, mode }
         result: matchup.result
       })
     );
+    gameDetails.push({ conference, round: "wildcard", ...matchup.result });
     advancing.push(matchup.winner);
   }
 
@@ -251,7 +258,8 @@ function runConferencePlayoffs({ league, statBook, year, rng, conference, mode }
     rng,
     higherSeedTeam: topSeed,
     lowerSeedTeam: opponentForTop,
-    mode
+    mode,
+    label: `${conference.toLowerCase()}-divisional`
   });
   const div2 = simulateBracketGame({
     league,
@@ -260,7 +268,8 @@ function runConferencePlayoffs({ league, statBook, year, rng, conference, mode }
     rng,
     higherSeedTeam: otherTwo[0],
     lowerSeedTeam: otherTwo[1],
-    mode
+    mode,
+    label: `${conference.toLowerCase()}-divisional`
   });
   bracket.divisional.push(
     bracketGameRow({
@@ -271,6 +280,7 @@ function runConferencePlayoffs({ league, statBook, year, rng, conference, mode }
       result: div1.result
     })
   );
+  gameDetails.push({ conference, round: "divisional", ...div1.result });
   bracket.divisional.push(
     bracketGameRow({
       conference,
@@ -280,6 +290,7 @@ function runConferencePlayoffs({ league, statBook, year, rng, conference, mode }
       result: div2.result
     })
   );
+  gameDetails.push({ conference, round: "divisional", ...div2.result });
 
   const conferenceChampionship = simulateBracketGame({
     league,
@@ -288,7 +299,8 @@ function runConferencePlayoffs({ league, statBook, year, rng, conference, mode }
     rng,
     higherSeedTeam: div1.winner.playoffSeed < div2.winner.playoffSeed ? div1.winner : div2.winner,
     lowerSeedTeam: div1.winner.playoffSeed < div2.winner.playoffSeed ? div2.winner : div1.winner,
-    mode
+    mode,
+    label: `${conference.toLowerCase()}-conference`
   });
   bracket.conference.push(
     bracketGameRow({
@@ -299,11 +311,13 @@ function runConferencePlayoffs({ league, statBook, year, rng, conference, mode }
       result: conferenceChampionship.result
     })
   );
+  gameDetails.push({ conference, round: "conference", ...conferenceChampionship.result });
 
   return {
     champion: conferenceChampionship.winner,
     seeds: seeds.map((team) => ({ teamId: team.id, seed: team.playoffSeed })),
-    bracket
+    bracket,
+    gameDetails
   };
 }
 
@@ -347,9 +361,12 @@ export function runPlayoffsAndSuperBowl({ league, statBook, year, rng, mode = "d
     homeTeamId: afcChampion.id,
     awayTeamId: nfcChampion.id,
     year,
+    week: 0,
     rng,
     mode,
-    allowTie: false
+    allowTie: false,
+    seasonType: "playoffs",
+    label: "super-bowl"
   });
 
   const champion = superBowlResult.winnerId === afcChampion.id ? afcChampion : nfcChampion;
@@ -392,8 +409,14 @@ export function runPlayoffsAndSuperBowl({ league, statBook, year, rng, mode = "d
       homeScore: superBowlResult.homeScore,
       awayScore: superBowlResult.awayScore,
       championTeamId: champion.id,
-      runnerUpTeamId: runnerUp.id
+      runnerUpTeamId: runnerUp.id,
+      gameId: superBowlResult.gameId
     },
+    gameArchiveEntries: [
+      ...afc.gameDetails,
+      ...nfc.gameDetails,
+      { conference: "NFL", round: "super-bowl", ...superBowlResult }
+    ],
     divisionRanksForNextYear: buildDivisionRankMap(league)
   };
 }
@@ -418,7 +441,8 @@ export function simulateSeason({
         year,
         rng,
         mode,
-        allowTie: true
+        allowTie: true,
+        seasonType: "regular"
       });
       applyRegularSeasonResult(league, weekBlock.week, game);
     }

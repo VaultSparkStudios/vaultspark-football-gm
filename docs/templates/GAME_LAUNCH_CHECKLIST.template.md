@@ -1,7 +1,6 @@
 # __GAME_NAME__ Launch Checklist
 
-Use this checklist before publishing a new VaultSpark Studios game to the
-studio website.
+Use this checklist before publishing a new VaultSpark Studios game.
 
 Replace:
 
@@ -10,7 +9,7 @@ Replace:
 
 ## Identity
 
-- [ ] Repo name is finalized
+- [ ] Repo name is finalized as `__GAME_SLUG__`
 - [ ] Public slug is finalized as `__GAME_SLUG__`
 - [ ] Public URL is set to `https://vaultsparkstudios.com/__GAME_SLUG__/`
 - [ ] Credits/attribution/license review is complete
@@ -18,13 +17,14 @@ Replace:
 
 ## Frontend
 
-- [ ] Vite/app base path supports `/{slug}/`
+- [ ] App base path supports `/{slug}/`
 - [ ] Canonical URL is set correctly
 - [ ] OG image URL is set correctly
-- [ ] Manifest `start_url` and `id` are subpath-safe
+- [ ] Manifest `start_url` and `id` are subpath-safe if used
 - [ ] SPA fallback `404.html` is generated from `index.html`
 - [ ] Deep links reload correctly under the Pages subpath
 - [ ] Share URLs/copy URLs use the correct subpath
+- [ ] Pages bundle deploys directly from this repo
 
 ## Backend
 
@@ -41,14 +41,13 @@ Replace:
 - [ ] DNS exists for API origin
 - [ ] SSL is valid on both backend origins
 - [ ] CORS allows `https://vaultsparkstudios.com`
-- [ ] Auth redirects/callbacks are verified
+- [ ] Auth redirects/callbacks are verified if applicable
 
 ## GitHub Configuration
 
-- [ ] Repo variable `GAME_SERVICE_ORIGIN` is set
-- [ ] Repo variable `API_DOMAIN` is set
-- [ ] Repo variable `STUDIO_SITE_BRANCH` is set
-- [ ] Secret `STUDIO_SITE_TOKEN` is set
+- [ ] Settings -> Pages -> Source is `GitHub Actions`
+- [ ] Repo variable `GAME_SERVICE_ORIGIN` is set if the frontend points to a live gameplay origin
+- [ ] Repo variable `API_DOMAIN` is set if the frontend points to a live API origin
 - [ ] `deploy-pages.yml` is configured for `__GAME_SLUG__`
 - [ ] Optional backend deploy workflow is configured
 
@@ -56,7 +55,7 @@ Replace:
 
 - [ ] Latest `VaultSparkStudios.github.io` remote state has been fetched
 - [ ] Live landing page or current upstream `index.html` has been checked before editing
-- [ ] `Vault-Forged` card has been added to `VaultSparkStudios.github.io`
+- [ ] `Vault-Forged` card has been added or updated in `VaultSparkStudios.github.io`
 - [ ] Card copy follows the standard:
   - status
   - one-sentence pitch
@@ -67,8 +66,8 @@ Replace:
 
 ## Validation
 
-- [ ] `tsc --noEmit` passes
-- [ ] lint passes
+- [ ] typecheck passes if the repo has a typecheck step
+- [ ] lint passes if the repo has a lint step
 - [ ] test suite passes
 - [ ] production Pages build passes
 - [ ] mobile smoke test passes
@@ -78,10 +77,10 @@ Replace:
 
 ## Launch
 
-- [ ] Pages bundle is published into `VaultSparkStudios.github.io/__GAME_SLUG__/`
-- [ ] Studio homepage changes are pushed
+- [ ] Pages deploy completed successfully from this repo
 - [ ] Public URL loads correctly
-- [ ] Core gameplay/API connectivity is live
+- [ ] Studio homepage changes are pushed if card work was part of the launch
+- [ ] Core gameplay/API connectivity is live if backend-linked mode is enabled
 - [ ] Any analytics/telemetry checks are green
 
 ## Post-launch
@@ -90,6 +89,6 @@ Replace:
   - public URL
   - backend origins
   - workflow names
-  - required secrets/variables
+  - required settings/variables
   - known issues
 - [ ] First-launch issues logged for follow-up
