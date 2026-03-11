@@ -16,10 +16,11 @@ Completed:
 - Verified the last two GitHub failures are fixed by already-present local test updates:
   - `test/realism-career-regression.test.js`
   - `test/session-actions.test.js`
+- Synced the Playwright app spec to the current Contracts and Scouting UI and verified `tests-ui/app.spec.js` passes locally
 
 Open problems:
 - Live GitHub rerun is still needed to confirm the fix on the hosted runner
 - There are still unrelated dirty gameplay files in the worktree that are intentionally not part of this commit
 
 Recommended next action:
-- Commit and push the staged test updates, then watch the rerun on GitHub
+- Commit and push the staged Playwright spec update, then watch the rerun on GitHub

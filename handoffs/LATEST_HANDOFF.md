@@ -10,14 +10,15 @@ What was completed:
 - Updated CI to Node 24 so the test runner flag in `npm test` is supported on GitHub Actions
 - Isolated the real post-Node-upgrade CI failures and staged the runtime/stat fixes that make those tests pass locally
 - Verified the last two GitHub failures are stale test assumptions and validated the local test-file fixes
+- Updated `tests-ui/app.spec.js` to the current Contracts and Scouting UI flows and verified the full Playwright app spec passes locally
 
 What is mid-flight:
-- Git push for the final test expectation fixes
-- Live GitHub rerun of the updated `npm test` job
+- Git push for the Playwright UI spec sync
+- Live GitHub rerun of the updated `test:ui` job
 
 What to do next:
-1. Commit and push the staged test expectation fixes on `codex/direct-pages-standards`
-2. Confirm GitHub Actions clears the remaining two failing tests
+1. Commit and push the staged Playwright spec fix on `codex/direct-pages-standards`
+2. Confirm GitHub Actions clears the remaining UI failures
 3. Resume the gameplay/depth-chart/Game Guide feature work
 
 Important constraints:

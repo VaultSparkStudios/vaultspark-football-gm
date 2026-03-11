@@ -53,17 +53,17 @@ test("create league, advance week, and open player modal", async ({ page }) => {
 test("contracts, trade, calendar, and transaction log are operational", async ({ page }) => {
   await createLeagueFromSetup(page);
 
-  await page.click('[data-testid="tab-roster"]');
-  await page.click("#loadRosterBtn");
+  await page.click('[data-testid="tab-contracts"]');
+  await page.click("#loadContractsBtn");
   await waitGameReady(page);
-  const playerId = await firstTableCell(page, "#rosterTable", 1);
-  expect(playerId).toBeTruthy();
+  const selectButtons = page.locator('#contractsRosterTable button[data-contract-select]');
+  await expect(selectButtons.first()).toBeVisible();
+  await selectButtons.first().click();
+  await page.click("#contractsRestructureBtn");
+  await waitGameReady(page);
+  await expect(page.locator("#contractActionText")).toContainText("restructured");
 
   await page.click('[data-testid="tab-transactions"]');
-  await page.fill("#restructurePlayerId", playerId);
-  await page.click("#restructureBtn");
-  await waitGameReady(page);
-
   await page.selectOption("#tradeTeamA", "BUF");
   await page.selectOption("#tradeTeamB", "MIA");
   await page.click("#tradeBtn");
@@ -93,16 +93,23 @@ test("scouting lock persists across save and load", async ({ page }) => {
   await page.click('[data-testid="tab-draft"]');
   await page.click("#prepareDraftBtn");
   await waitGameReady(page);
+  await page.click('[data-testid="tab-scouting"]');
   await page.click("#loadScoutingBtn");
   await waitGameReady(page);
 
   const idsToLock = [];
-  for (let i = 2; i <= 4; i += 1) {
-    const id = (await page.locator(`#scoutingTable tr:nth-child(${i}) td:nth-child(1)`).textContent())?.trim();
+  const addButtons = page.locator('#scoutingTable button[data-board-toggle="add"]');
+  const addCount = await addButtons.count();
+  for (let i = 0; i < Math.min(3, addCount); i += 1) {
+    const id = await addButtons.nth(i).getAttribute("data-player-id");
     if (id) idsToLock.push(id);
   }
   expect(idsToLock.length).toBeGreaterThan(0);
-  await page.fill("#lockBoardIdsInput", idsToLock.join(","));
+
+  for (const playerId of idsToLock) {
+    await page.locator(`#scoutingTable button[data-board-toggle="add"][data-player-id="${playerId}"]`).click();
+  }
+  await expect(page.locator("#scoutingBoardText")).toContainText(`Board: ${idsToLock.length} / 20`);
   await page.click("#lockBoardBtn");
   await waitGameReady(page);
   await expect(page.locator("#scoutingLockText")).toContainText("Locked");
@@ -121,12 +128,9 @@ test("scouting lock persists across save and load", async ({ page }) => {
 
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 25_000 });
   await waitGameReady(page);
-  await page.click('[data-testid="tab-draft"]');
+  await page.click('[data-testid="tab-scouting"]');
   await page.click("#loadScoutingBtn");
   await waitGameReady(page);
   await expect(page.locator("#scoutingLockText")).toContainText("Locked");
-
-  const firstBoardId = await firstTableCell(page, "#scoutingTable", 1);
-  expect(firstBoardId).toBeTruthy();
-  expect(idsToLock).toContain(firstBoardId);
+  await expect(page.locator("#scoutingBoardText")).toContainText(`Board: ${idsToLock.length} / 20`);
 });
