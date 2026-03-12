@@ -33,6 +33,13 @@ What was completed:
   - trade valuation now accounts for scheme fit, age/development, pick appetite, and owner/culture tolerance
   - free-agency offer selection now considers team context instead of only salary/years
   - player profiles now expose development outlook, focus ratings, weekly-plan context, owner pressure, and legacy score
+- Extended owner pressure into a full expectation model:
+  - owner state now computes a mandate, target wins, projected wins pace, recent transaction pressure, and contextual heat score
+  - weekly finance processing now uses that expectation model when updating fan interest and hot-seat state
+  - the owner table now surfaces mandate, target wins, projected wins, heat, trend, and expectation reasons
+- Added first-pass startup observability for setup init:
+  - both runtimes now emit setup-route timing diagnostics for setup state, saves, backups, and total API time
+  - the setup page measures client init time plus deferred save hydration time and shows the resulting diagnostics in the status line
 - Revalidated the current gameplay/client batch with:
   - `node --check public/app.js`
   - `node --check public/setup.js`
@@ -56,8 +63,8 @@ What is mid-flight:
 - Challenge restrictions are much more mechanical now, though edge-case acquisition paths may still be worth auditing later
 
 What to do next:
-1. Feed the new world-state deeper into owner expectation loops and any remaining transaction AI edges
-2. Measure and trim any remaining setup/main-menu latency, especially any residual runtime-mode startup overhead after the client-runtime import fix
+1. Measure and trim any remaining setup/main-menu latency using the new setup diagnostics first, especially any residual runtime-mode startup overhead after the client-runtime import fix
+2. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
 3. Add clearer UI messaging for challenge-triggered failures and for the new weekly-plan/scouting-fit outputs
 
 Important constraints:

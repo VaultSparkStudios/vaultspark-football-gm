@@ -2367,6 +2367,7 @@ function renderOwner() {
   const culture = state.ownerState?.cultureProfile || {};
   const scheme = state.ownerState?.schemeIdentity || {};
   const weeklyPlan = state.ownerState?.weeklyPlan || {};
+  const expectation = owner.expectation || {};
   renderTable("ownerTable", [
     {
       market: owner.marketSize,
@@ -2388,6 +2389,12 @@ function renderOwner() {
       culture: culture.identity || "-",
       pressure: culture.pressure ?? "-",
       scheme: `${scheme.offense || "-"} / ${scheme.defense || "-"}`,
+      mandate: expectation.mandate || "-",
+      targetWins: expectation.targetWins ?? "-",
+      projectedWins: expectation.projectedWins ?? "-",
+      heat: expectation.heat ?? "-",
+      trend: expectation.trend || "-",
+      reasons: (expectation.reasons || []).join("; ") || "-",
       weeklyPlan: weeklyPlan.summary || "-",
       exploit: weeklyPlan.exploit || "-",
       warning: weeklyPlan.warning || "-"

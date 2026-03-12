@@ -15,7 +15,8 @@ const state = {
   backups: [],
   backupsDeferred: false,
   configCatalog: null,
-  settings: null
+  settings: null,
+  setupDiagnostics: null
 };
 
 const api = createApiClient();
@@ -47,6 +48,16 @@ function escapeHtml(value) {
 function setStatus(text) {
   const el = document.getElementById("setupStatus");
   if (el) el.textContent = text;
+}
+
+function setupStatusText(base = "Ready") {
+  const diag = state.setupDiagnostics || {};
+  const parts = [base];
+  if (Number.isFinite(diag.clientInitMs)) parts.push(`client ${diag.clientInitMs}ms`);
+  if (Number.isFinite(diag.totalMs)) parts.push(`api ${diag.totalMs}ms`);
+  if (Number.isFinite(diag.savesMs) && !diag.savesDeferred) parts.push(`saves ${diag.savesMs}ms`);
+  if (diag.savesDeferred) parts.push("saves deferred");
+  return parts.join(" | ");
 }
 
 function pageUrl(page) {
@@ -248,12 +259,18 @@ function renderSaves() {
 }
 
 async function refreshSaves({ preserveStatus = false, loadVersion = setupLoadVersion } = {}) {
+  const started = performance.now();
   const payload = await api("/api/saves");
   if (loadVersion !== setupLoadVersion) return;
   state.saves = payload.slots || [];
   state.savesDeferred = false;
+  state.setupDiagnostics = {
+    ...(state.setupDiagnostics || {}),
+    savesMs: Math.round(performance.now() - started),
+    savesDeferred: false
+  };
   renderSaves();
-  if (!preserveStatus) setStatus("Ready");
+  if (!preserveStatus) setStatus(setupStatusText("Ready"));
 }
 
 function renderBackups() {
@@ -295,6 +312,7 @@ function renderBackups() {
 
 async function loadSetup() {
   const loadVersion = ++setupLoadVersion;
+  const started = performance.now();
   applyRuntimeModeUi();
   if (getRuntimeMode() === "client") {
     warmLocalRuntime().catch(() => {});
@@ -308,6 +326,10 @@ async function loadSetup() {
   state.backups = init.backups || [];
   state.backupsDeferred = init.backupsDeferred === true;
   state.settings = init.settings || state.settings || {};
+  state.setupDiagnostics = {
+    ...(init.diagnostics?.setup || {}),
+    clientInitMs: Math.round(performance.now() - started)
+  };
 
   document.getElementById("seedInput").value = Date.now();
   document.getElementById("startYearInput").value = init.currentYear;
@@ -319,6 +341,7 @@ async function loadSetup() {
   renderBackups();
   renderSetupGuide();
   updateModeHelp();
+  setStatus(setupStatusText("Ready"));
 
   if (state.savesDeferred) {
     queueMicrotask(() => {
@@ -326,6 +349,7 @@ async function loadSetup() {
         if (loadVersion !== setupLoadVersion) return;
         state.savesDeferred = false;
         renderSaves();
+        setStatus(setupStatusText("Ready"));
       });
     });
   }

@@ -479,6 +479,67 @@ function buildPlayerDevelopmentOutlook(player, team, roster = []) {
   };
 }
 
+function buildOwnerExpectation(team, roster = [], transactions = [], { currentWeek = 1 } = {}) {
+  const owner = team?.owner || {};
+  const culture = team?.cultureProfile || cultureIdentity(team, roster);
+  const strategy = team?.strategyProfile || "balanced";
+  const wins = Number(team?.season?.wins || 0);
+  const losses = Number(team?.season?.losses || 0);
+  const ties = Number(team?.season?.ties || 0);
+  const gamesPlayed = wins + losses + ties;
+  const winPct = gamesPlayed ? (wins + ties * 0.5) / gamesPlayed : 0.5;
+  const projectedWins = Number((winPct * NFL_STRUCTURE.regularSeasonWeeks).toFixed(1));
+  const targetWinsBase =
+    6 +
+    ((team?.overallRating || 70) - 70) * 0.22 +
+    (strategy === "win-now" ? 2.4 : strategy === "contender" ? 1.4 : strategy === "rebuild" ? -1.5 : strategy === "retool" ? -0.4 : 0) +
+    ((owner?.priorities?.championships || 70) - 70) / 18 +
+    (owner?.personality === "win-now" ? 1.2 : owner?.personality === "profit-first" ? -0.5 : 0);
+  const targetWins = clamp(Math.round(targetWinsBase), 4, 14);
+  const paceGap = Number((projectedWins - targetWins).toFixed(1));
+  const recentMoves = transactions
+    .filter((entry) => entry.teamId === team?.id || entry.teamA === team?.id || entry.teamB === team?.id)
+    .slice(-12);
+  const splashMoves = recentMoves.filter((entry) => ["trade", "signing", "fa-signing"].includes(entry.type)).length;
+  const turnoverMoves = recentMoves.filter((entry) => ["release", "restructure"].includes(entry.type)).length;
+  const cashPressure = owner.cash <= 35_000_000 ? 12 : owner.cash <= 80_000_000 ? 5 : 0;
+  const fanPressure = Math.max(0, 72 - Number(owner.fanInterest || 70)) * 0.8;
+  const pacePressure = Math.max(0, targetWins - projectedWins) * 7.5;
+  const transactionPressure = splashMoves >= 2 && paceGap < 0 ? 8 : turnoverMoves >= 3 ? 5 : 0;
+  const culturePressure = culture.identity === "urgent" ? 8 : culture.identity === "confident" ? -5 : culture.identity === "developmental" ? -3 : 0;
+  const patienceBuffer = Number(owner.patience || 0.55) * 24;
+  const heat = clamp(Math.round(28 + cashPressure + fanPressure + pacePressure + transactionPressure + culturePressure - patienceBuffer), 5, 99);
+
+  const mandate =
+    owner.personality === "win-now" || (owner.priorities?.championships || 0) >= 85
+      ? "playoffs-or-bust"
+      : strategy === "rebuild" || culture.identity === "developmental"
+        ? "develop-core"
+        : owner.personality === "profit-first"
+          ? "profit-and-stability"
+          : "winning-season";
+
+  const reasons = [];
+  if (paceGap <= -2) reasons.push(`pace is ${Math.abs(paceGap).toFixed(1)} wins below target`);
+  if ((owner.fanInterest || 70) < 58) reasons.push("fan interest is slipping");
+  if (cashPressure >= 10) reasons.push("owner cash cushion is thin");
+  if (splashMoves >= 2 && paceGap < 0) reasons.push("aggressive moves have not paid off yet");
+  if (!reasons.length && paceGap >= 1) reasons.push("club is ahead of owner mandate");
+  if (!reasons.length) reasons.push("season is tracking near expectation");
+
+  return {
+    mandate,
+    targetWins,
+    projectedWins,
+    paceGap,
+    heat,
+    trend: heat >= 75 ? "critical" : heat >= 58 ? "warming" : heat <= 28 ? "stable" : "watch",
+    splashMoves,
+    reasons: reasons.slice(0, 3),
+    evaluatedWeek: currentWeek
+  };
+}
+
 function buildWeeklyMatchPlan(team, roster = [], opponent = null, opponentRoster = []) {
   const culture = team?.cultureProfile || cultureIdentity(team, roster);
   if (!team || !opponent) {
@@ -756,6 +817,7 @@ function buildOwnerProfile(rng, existing = null) {
     patience: Number(patience.toFixed(2)),
     personality: existing?.personality || (typeof rng?.pick === "function" ? rng.pick(["profit-first", "legacy-builder", "win-now", "player-friendly"]) : "legacy-builder"),
     hotSeat: existing?.hotSeat === true,
+    expectation: existing?.expectation || null,
     priorities: existing?.priorities || {
       championships: rng.int(60, 95),
       profit: rng.int(45, 90),
@@ -1715,6 +1777,9 @@ export class GameSession {
     if (!team) return null;
     if (!team.owner) team.owner = buildOwnerProfile(this.rng);
     const roster = teamPlayersAll(this.league, teamId);
+    team.owner.expectation = buildOwnerExpectation(team, roster, this.league.transactionLog || [], {
+      currentWeek: this.currentWeek
+    });
     return {
       teamId,
       owner: team.owner,
@@ -1735,6 +1800,9 @@ export class GameSession {
     if (rehab != null) team.owner.facilities.rehab = clamp(Math.round(Number(rehab)), 40, 99);
     if (analytics != null) team.owner.facilities.analytics = clamp(Math.round(Number(analytics)), 40, 99);
     team.cultureProfile = cultureIdentity(team, teamPlayersAll(this.league, teamId));
+    team.owner.expectation = buildOwnerExpectation(team, teamPlayersAll(this.league, teamId), this.league.transactionLog || [], {
+      currentWeek: this.currentWeek
+    });
     this.logTransaction({
       type: "owner-update",
       teamId,
@@ -1755,6 +1823,11 @@ export class GameSession {
       team.chemistry = computeTeamChemistry(roster, team);
       team.schemeIdentity = schemeIdentityLabel(team);
       team.cultureProfile = cultureIdentity(team, roster);
+      if (team.owner) {
+        team.owner.expectation = buildOwnerExpectation(team, roster, this.league.transactionLog || [], {
+          currentWeek: this.currentWeek
+        });
+      }
       team.weeklyPlan = this.buildWeeklyPlan(team.id);
     }
   }
@@ -1789,10 +1862,18 @@ export class GameSession {
       const updatePressure = (team, won, modifiers) => {
         const owner = team.owner;
         const pressurePenalty = owner.personality === "win-now" || owner.priorities?.championships >= 85 ? 1.2 : 0.8;
-        const interestDelta = won ? 1.2 + modifiers.fanInterestWeeklyDelta : -1.1 * pressurePenalty + modifiers.fanInterestWeeklyDelta;
+        const expectation = buildOwnerExpectation(team, teamPlayersAll(this.league, team.id), this.league.transactionLog || [], {
+          currentWeek: this.currentWeek
+        });
+        const expectationDrift = expectation.paceGap < 0 ? Math.abs(expectation.paceGap) * 0.22 : -Math.min(0.5, expectation.paceGap * 0.08);
+        const interestDelta = won
+          ? 1.2 + modifiers.fanInterestWeeklyDelta - Math.max(0, expectationDrift * 0.3)
+          : -1.1 * pressurePenalty + modifiers.fanInterestWeeklyDelta - expectationDrift;
         owner.fanInterest = clamp(Math.round((owner.fanInterest || 70) + interestDelta), 20, 100);
-        const recordGap = (team.season?.losses || 0) - (team.season?.wins || 0);
-        owner.hotSeat = owner.patience < 0.4 && (recordGap >= 2 || owner.fanInterest < 55);
+        owner.expectation = buildOwnerExpectation(team, teamPlayersAll(this.league, team.id), this.league.transactionLog || [], {
+          currentWeek: this.currentWeek
+        });
+        owner.hotSeat = owner.expectation.heat >= (owner.personality === "win-now" ? 58 : 66);
       };
       updatePressure(home, game.winnerId === game.homeTeamId, homeModifiers);
       updatePressure(away, game.winnerId === game.awayTeamId, awayModifiers);

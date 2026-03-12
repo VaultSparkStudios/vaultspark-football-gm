@@ -136,3 +136,27 @@ test("feature pack v1: free agency AI can favor stronger team context over a sma
   const signed = session.league.players.find((player) => player.id === candidate.id);
   assert.equal(signed.teamId, "BUF");
 });
+
+test("feature pack v1: owner expectation and hot-seat pressure use mandate context", () => {
+  const session = createSession({ seed: 1003, startYear: 2026, controlledTeamId: "BUF" });
+  const buf = session.league.teams.find((team) => team.id === "BUF");
+  assert.ok(buf);
+
+  buf.owner.personality = "win-now";
+  buf.owner.patience = 0.22;
+  buf.owner.fanInterest = 48;
+  buf.owner.cash = 28_000_000;
+  buf.strategyProfile = "win-now";
+  buf.season.wins = 1;
+  buf.season.losses = 6;
+  session.refreshChemistryAndSchemeFit();
+
+  const ownerState = session.getOwnerState("BUF");
+  assert.equal(ownerState.owner.expectation.mandate, "playoffs-or-bust");
+  assert.ok(ownerState.owner.expectation.heat >= 58);
+
+  session.processOwnerFinances({
+    games: [{ homeTeamId: "BUF", awayTeamId: "MIA", winnerId: "MIA", isTie: false }]
+  });
+  assert.equal(buf.owner.hotSeat, true);
+});

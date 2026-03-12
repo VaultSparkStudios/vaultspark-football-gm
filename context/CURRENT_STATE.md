@@ -25,6 +25,9 @@ Build status:
   - trade valuation now accounts for scheme fit, age/development, picks bias, and owner/culture transaction tolerance
   - free-agency offer resolution now considers team context, not just raw salary/years
   - player profiles now expose a development outlook with fit, focus ratings, weekly-plan context, pressure, and legacy score
+- Owner hot-seat pressure now uses a computed expectation model with mandate, target wins, projected pace, recent transaction pressure, and cash/fan context instead of only a simple patience/record check
+- Both `/api/setup/init` runtimes now emit setup timing diagnostics for core setup state, save listing, backup listing, and total route time
+- The setup page now captures client init timing, tracks deferred save hydration timing, and surfaces startup diagnostics directly in the status line
 - Challenge enforcement now blocks user free-agent actions in `no-free-agency` mode and blocks trades that would deliver top-10 picks to the controlled team in `no-top-10-picks` mode
 - That enforcement now reaches the remaining obvious user acquisition paths too:
   - waiver claims are blocked in `no-free-agency`
@@ -46,8 +49,8 @@ Build status:
   - `npm.cmd run smoke:pages`
 
 Current priorities:
-1. Feed the new world-state deeper into owner expectation loops and any remaining transaction AI edges instead of stopping at the current trade/FA hooks
-2. Measure and trim any remaining setup/main-menu latency after the non-blocking save-load and client-runtime import fixes
+1. Measure and trim any remaining setup/main-menu latency using the new setup diagnostics first, especially residual runtime-mode startup overhead
+2. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges instead of stopping at the current trade/FA hooks
 3. Add clearer UI messaging for challenge-triggered failures and for the new weekly plan/scouting-fit outputs
 
 Known issues:

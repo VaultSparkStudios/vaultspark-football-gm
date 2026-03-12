@@ -168,11 +168,17 @@ export function createLocalApiRuntime({
 
     try {
       if (method === "GET" && pathname === "/api/setup/init") {
+        const setupStarted = now();
         const setup = session.getSetupState();
+        const setupStateMs = now() - setupStarted;
         const includeSaves = toBool(url.searchParams.get("includeSaves"), true);
         const includeBackups = toBool(url.searchParams.get("includeBackups"), false);
+        const savesStarted = now();
         const saves = includeSaves ? saveStore.listSaveSlots() : [];
+        const savesMs = includeSaves ? now() - savesStarted : 0;
+        const backupsStarted = now();
         const backups = includeBackups ? saveStore.listBackupSlots() : [];
+        const backupsMs = includeBackups ? now() - backupsStarted : 0;
         return finish(
           jsonResponse(200, {
             ok: true,
@@ -191,10 +197,21 @@ export function createLocalApiRuntime({
             controlledTeamName: setup.controlledTeamName,
             controlledTeamAbbrev: setup.controlledTeamAbbrev,
             configSummary: getLeagueConfigSummary(session.getLeagueSettings())
-          },
+            },
             teams: setup.teams,
             settings: session.getLeagueSettings(),
-            configCatalog: getLeagueConfigCatalog()
+            configCatalog: getLeagueConfigCatalog(),
+            diagnostics: {
+              setup: {
+                runtime: "browser",
+                setupStateMs,
+                savesMs,
+                backupsMs,
+                totalMs: now() - setupStarted,
+                savesDeferred: !includeSaves,
+                backupsDeferred: !includeBackups
+              }
+            }
           })
         );
       }

@@ -183,11 +183,17 @@ function createSimulationJob(totalSeasons) {
 
 async function handleApi(req, res, url) {
   if (req.method === "GET" && url.pathname === "/api/setup/init") {
+    const setupStarted = Date.now();
     const setup = session.getSetupState();
+    const setupStateMs = Date.now() - setupStarted;
     const includeSaves = toBool(url.searchParams.get("includeSaves"), true);
     const includeBackups = toBool(url.searchParams.get("includeBackups"), false);
+    const savesStarted = Date.now();
     const saves = includeSaves ? listSaveSlots() : [];
+    const savesMs = includeSaves ? Date.now() - savesStarted : 0;
+    const backupsStarted = Date.now();
     const backups = includeBackups ? listBackupSlots() : [];
+    const backupsMs = includeBackups ? Date.now() - backupsStarted : 0;
     sendJson(res, 200, {
       ok: true,
       currentYear: CURRENT_YEAR,
@@ -208,7 +214,18 @@ async function handleApi(req, res, url) {
       },
       teams: setup.teams,
       settings: session.getLeagueSettings(),
-      configCatalog: getLeagueConfigCatalog()
+      configCatalog: getLeagueConfigCatalog(),
+      diagnostics: {
+        setup: {
+          runtime: "server",
+          setupStateMs,
+          savesMs,
+          backupsMs,
+          totalMs: Date.now() - setupStarted,
+          savesDeferred: !includeSaves,
+          backupsDeferred: !includeBackups
+        }
+      }
     });
     return true;
   }

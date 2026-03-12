@@ -207,6 +207,8 @@ test("local api runtime setup init defers backups by default", async () => {
   assert.equal(initial.payload.savesDeferred, false);
   assert.equal(initial.payload.backupsDeferred, true);
   assert.deepEqual(initial.payload.backups, []);
+  assert.equal(initial.payload.diagnostics.setup.runtime, "browser");
+  assert.ok(initial.payload.diagnostics.setup.totalMs >= 0);
   assert.ok(initial.payload.configCatalog);
   assert.equal(initial.payload.settings.rulesPreset, "standard");
   assert.ok(initial.payload.configCatalog.franchiseArchetypes.some((entry) => entry.id === "cap-hell"));
@@ -217,6 +219,7 @@ test("local api runtime setup init defers backups by default", async () => {
   assert.equal(withoutSaves.status, 200);
   assert.equal(withoutSaves.payload.savesDeferred, true);
   assert.deepEqual(withoutSaves.payload.saves, []);
+  assert.equal(withoutSaves.payload.diagnostics.setup.savesDeferred, true);
 
   const withBackups = await runtime.request("/api/setup/init?includeBackups=1");
   assert.equal(withBackups.status, 200);

@@ -208,3 +208,29 @@ Open problems:
 
 Recommended next action:
 - Extend owner expectation/hot-seat logic and any remaining AI transaction edges, then perform the deferred setup/menu latency measurement pass
+
+## 2026-03-12 (owner expectations and setup diagnostics)
+
+Completed:
+- Added a richer owner expectation model that derives mandate, target wins, projected wins pace, transaction pressure, and heat from owner personality, team strategy, culture, fan interest, cash, and recent moves
+- Wired that expectation model into owner-state reads, owner updates, chemistry refreshes, and weekly finance processing so hot-seat pressure now reflects the fuller mandate context
+- Surfaced owner expectation fields in the owner UI table, including mandate, target wins, projected wins, heat, trend, and top expectation reasons
+- Added setup-init diagnostics in both runtimes for setup-state, saves, backups, and total API timing, then surfaced client init and deferred save timing in the setup status line
+- Revalidated the follow-up batch with:
+  - `node --check src/runtime/GameSession.js`
+  - `node --check src/app/api/localApiRuntime.js`
+  - `node --check src/server.js`
+  - `node --check public/setup.js`
+  - `node --check public/app.js`
+  - `node --check test/feature-pack-v1.test.js`
+  - `node --check test/local-api-runtime.test.js`
+  - `node --test --test-isolation=none test/feature-pack-v1.test.js test/local-api-runtime.test.js test/new-systems.test.js test/world-state-next-step.test.js test/session-actions.test.js test/strategy-contract-scouting.test.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
+
+Open problems:
+- Setup/menu latency is now measurable in the product, but the next trim pass still needs to identify and remove any remaining startup bottlenecks
+- Challenge-triggered failures and the new weekly-plan/scouting-fit outputs still need clearer UI messaging in the main game surface
+
+Recommended next action:
+- Use the new setup diagnostics to identify the next startup bottleneck, trim that path, and then add clearer messaging around challenge failures and weekly-plan/scouting outputs
