@@ -280,6 +280,25 @@ function showToast(message) {
   setTimeout(() => item.remove(), 2600);
 }
 
+function formatActionError(error) {
+  const reasonCode = error?.reasonCode || error?.payload?.reasonCode;
+  if (reasonCode === "challenge-free-agency") {
+    return "Challenge mode blocks free-agent adds, waiver claims, and forced comeback signings for this franchise.";
+  }
+  if (reasonCode === "challenge-top10-picks") {
+    return "Challenge mode blocks the controlled team from acquiring or using top-10 draft picks.";
+  }
+  return error?.message || "Unexpected error.";
+}
+
+function presentActionError(error) {
+  const message = formatActionError(error);
+  const reasonCode = error?.reasonCode || error?.payload?.reasonCode || "";
+  const prefix = reasonCode.startsWith("challenge-") ? "Blocked" : "Error";
+  setStatus(`${prefix}: ${message}`);
+  showToast(`${prefix}: ${message}`);
+}
+
 function teamName(teamId) {
   return state.dashboard?.teams?.find((team) => team.id === teamId)?.name || teamId;
 }
@@ -947,6 +966,21 @@ function renderOverview() {
   document.getElementById("capCard").textContent = fmtMoney(d.cap?.capSpace || 0);
   document.getElementById("deadCapCard").textContent = fmtMoney(d.cap?.deadCap || 0);
   document.getElementById("ovrCard").textContent = d.controlledTeam?.overallRating ?? "-";
+  const weeklyPlan = d.controlledTeam?.weeklyPlan || {};
+  const expectation = d.controlledTeam?.owner?.expectation || {};
+  const culture = d.controlledTeam?.cultureProfile || {};
+  const box = document.getElementById("weeklyPlanSummaryText");
+  if (box) {
+    const lines = [];
+    if (weeklyPlan.summary) lines.push(`Weekly plan: ${weeklyPlan.summary}.`);
+    if (weeklyPlan.exploit) lines.push(`Exploit: ${weeklyPlan.exploit}.`);
+    if (weeklyPlan.warning) lines.push(`Watch: ${weeklyPlan.warning}.`);
+    if (culture.identity) lines.push(`Culture: ${culture.identity}.`);
+    if (expectation.mandate) {
+      lines.push(`Owner mandate: ${expectation.mandate} (${expectation.trend || "watch"}, heat ${expectation.heat ?? "-"}).`);
+    }
+    box.textContent = lines.join(" ") || "Weekly plan, culture, and owner-pressure context will appear here after the dashboard loads.";
+  }
 }
 
 function renderRosterNeeds() {
@@ -1992,6 +2026,8 @@ function renderScouting() {
     document.getElementById("scoutingPointsText").textContent = "Points: 0";
     document.getElementById("scoutingLockText").textContent = "Board: Unlocked";
     document.getElementById("scoutingBoardText").textContent = "Board: 0 / 20";
+    const insight = document.getElementById("scoutingInsightText");
+    if (insight) insight.textContent = "Load the board to surface fit, confidence, and weekly scouting guidance.";
     renderTable("scoutingTable", []);
     renderTable("scoutingReportTable", []);
     return;
@@ -2019,6 +2055,7 @@ function renderScouting() {
     forty: prospect.combine40,
     scoutOvr: prospect.scoutedOverall ?? "-",
     baseline: prospect.baselineScout ?? "-",
+    fit: prospect.fitLabel ? `${prospect.fitLabel} (${prospect.schemeFit ?? "-"})` : prospect.schemeFit ?? "-",
     confidence: `${prospect.confidence ?? 0}%`,
     board: state.scoutingBoardDraft.indexOf(prospect.playerId) >= 0 ? state.scoutingBoardDraft.indexOf(prospect.playerId) + 1 : "-",
     action: scouting.locked ? "Locked" : "Scout / Board"
@@ -2066,6 +2103,25 @@ function renderScouting() {
     .slice(0, 120);
   renderTable("scoutingReportTable", reportRows);
   decoratePlayerColumnFromRows("scoutingReportTable", reportRows, { idKeys: ["playerId"] });
+  const insight = document.getElementById("scoutingInsightText");
+  if (insight) {
+    const featuredId = state.scoutingBoardDraft[0];
+    const featured = (scouting.prospects || []).find((prospect) => prospect.playerId === featuredId) || scouting.prospects?.[0] || null;
+    const latestReport = scouting.weeklyReports?.[0]?.evaluations?.[0] || null;
+    const lines = [];
+    if (featured) {
+      lines.push(
+        `Top board fit: ${featured.player} (${featured.pos}) is ${featured.fitLabel || "neutral"} for this scheme at ${featured.schemeFit ?? "-"} with ${featured.confidence ?? 0}% confidence.`
+      );
+    }
+    if (latestReport) {
+      lines.push(
+        `Latest report: ${latestReport.player} moved ${latestReport.delta >= 0 ? "+" : ""}${latestReport.delta || 0} with ${latestReport.confidence ?? 0}% confidence.`
+      );
+    }
+    lines.push(scouting.locked ? "Board is locked; scouting now only updates the live report." : `Board room remaining: ${Math.max(0, 20 - state.scoutingBoardDraft.length)} slots.`);
+    insight.textContent = lines.join(" ");
+  }
 }
 
 function moveIdWithinList(list, playerId, delta) {
@@ -2334,28 +2390,6 @@ function renderStaff() {
     weeklyFocus: role === "headCoach" ? weeklyPlan.summary || "-" : ""
   }));
   renderTable("staffTable", rows);
-}
-
-function renderRosterBoard() {
-  const rows = (state.roster || []).map((player, index) => ({
-    order: index + 1,
-    id: player.id,
-    player: player.name,
-    pos: player.pos,
-    ovr: player.overall,
-    fit: player.schemeFit ?? "-",
-    morale: player.morale,
-    action: ""
-  }));
-  renderTable("rosterBoardTable", rows);
-  decoratePlayerColumnFromRows("rosterBoardTable", rows, { idKeys: ["id"] });
-  document.getElementById("rosterBoardTable")?.querySelectorAll("tr").forEach((tr, index) => {
-    if (index === 0) return;
-    const row = rows[index - 1];
-    const cell = tr.lastElementChild;
-    if (!cell || !row) return;
-    cell.innerHTML = `<button data-roster-board-move="up" data-player-id="${escapeHtml(row.id)}">Up</button> <button data-roster-board-move="down" data-player-id="${escapeHtml(row.id)}">Down</button>`;
-  });
 }
 
 function renderOwner() {
@@ -2841,8 +2875,7 @@ function activateTab(tabId) {
   });
   if (tabId === "contractsTab") {
     loadContractsTeam().catch((error) => {
-      setStatus(`Error: ${error.message}`);
-      showToast(`Error: ${error.message}`);
+      presentActionError(error);
     });
   }
 }
@@ -3064,7 +3097,6 @@ async function loadRoster() {
   state.roster = data.roster || [];
   setSelectedDesignationPlayer(state.selectedDesignationPlayerId);
   renderRoster();
-  renderRosterBoard();
   if (!state.contractTeamId || state.contractTeamId === teamId) {
     state.contractTeamId = teamId;
     state.contractRoster = data.roster || [];
@@ -3406,8 +3438,7 @@ async function runAction(fn, statusText = "Working...") {
     setStatus("Ready");
     showToast("Done");
   } catch (error) {
-    setStatus(`Error: ${error.message}`);
-    showToast(`Error: ${error.message}`);
+    presentActionError(error);
   }
 }
 
@@ -3540,16 +3571,14 @@ function bindEvents() {
 
   document.getElementById("advance4WeeksBtn").addEventListener("click", () =>
     advanceWeeksSequential(4).catch((error) => {
-      setStatus(`Error: ${error.message}`);
-      showToast(`Error: ${error.message}`);
+      presentActionError(error);
       setSimControl({ active: false, pauseRequested: false, mode: null });
     })
   );
 
   document.getElementById("advanceSeasonBtn").addEventListener("click", () =>
     advanceSeasonSequential().catch((error) => {
-      setStatus(`Error: ${error.message}`);
-      showToast(`Error: ${error.message}`);
+      presentActionError(error);
       setSimControl({ active: false, pauseRequested: false, mode: null });
     })
   );
@@ -3683,24 +3712,6 @@ function bindEvents() {
       await Promise.all([loadState(), loadRoster(), loadTransactionLog()]);
     }, "Clearing designation...")
   );
-
-  const moveRosterBoard = (playerId, direction) => {
-    if (!playerId) return;
-    const index = state.roster.findIndex((player) => player.id === playerId);
-    if (index < 0) return;
-    const swapWith = direction < 0 ? index - 1 : index + 1;
-    if (swapWith < 0 || swapWith >= state.roster.length) return;
-    const copy = [...state.roster];
-    [copy[index], copy[swapWith]] = [copy[swapWith], copy[index]];
-    state.roster = copy;
-    renderRosterBoard();
-  };
-  document.getElementById("boardPlayerId")?.closest(".row")?.classList.add("hidden");
-  document.getElementById("rosterBoardTable").addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-roster-board-move]");
-    if (!button) return;
-    moveRosterBoard(button.dataset.playerId, button.dataset.rosterBoardMove === "up" ? -1 : 1);
-  });
 
   const buildTradePayload = () => ({
     teamA: getTradeTeamId("A").toUpperCase(),

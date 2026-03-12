@@ -255,3 +255,44 @@ Open problems:
 
 Recommended next action:
 - Read the preserved setup diagnostics after the lazy bootstrap change, decide whether another setup trim is warranted, and otherwise move on to clearer challenge/weekly-plan/scouting UI messaging and the remaining world-state AI edges
+
+## 2026-03-12 (challenge messaging and surfaced plan/scouting summaries)
+
+Completed:
+- Taught the frontend API client to preserve backend `reasonCode` data on thrown request errors so the UI can distinguish challenge blocks from generic failures
+- Added clearer blocked-action messaging for challenge-restricted moves instead of surfacing the raw backend error text
+- Surfaced the controlled team’s weekly plan, culture, and owner mandate pressure directly in the overview tab
+- Surfaced scheme fit and a textual scouting insight summary in the scouting tab so fit/confidence context is no longer buried only in deeper tables
+- Revalidated the UI-facing batch with:
+  - `node --check public/app.js`
+  - `node --check public/lib/api/createApiClient.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
+
+Open problems:
+- The new messaging is clearer in the main overview and scouting surfaces, but other panels can still do more to explain world-state and challenge restrictions in context
+- A follow-up pass still needs to decide whether setup latency is now sufficiently trimmed after the lazy browser bootstrap
+
+Recommended next action:
+- Use the new diagnostics to decide whether setup needs one more trim, then continue pushing world-state explanations and challenge guidance deeper into the remaining gameplay panels
+
+## 2026-03-12 (roster cleanup and stat-table fix)
+
+Completed:
+- Removed the redundant roster-board panel from the bottom of the roster page and cleaned up the dead UI wiring behind it
+- Fixed `StatBook.getPlayerCareerTable()` so career rows now include real games and starts, restoring correct per-game calculations in the stats UI
+- Added a focused stats regression suite that checks the career per-game denominator fix and starter-qualified season averages against weighted position baselines
+- Revalidated the batch with:
+  - `node --check public/app.js`
+  - `node --check src/stats/statBook.js`
+  - `node --check test/stats-regression.test.js`
+  - `node --test --test-isolation=none test/stats-regression.test.js test/strategy-contract-scouting.test.js test/local-api-runtime.test.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
+
+Open problems:
+- The broken per-game denominator is fixed, but the UI may still benefit from explicit starter-qualified benchmark hints so “NFL average by position” comparisons are clearer to users
+- The broader world-state roadmap still needs another pass into deeper AI/expectation behavior after this correctness detour
+
+Recommended next action:
+- Decide whether to add explicit starter-qualified benchmark hints to the stats UI, then return to the next world-state/latency slice

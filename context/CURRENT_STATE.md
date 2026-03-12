@@ -30,6 +30,13 @@ Build status:
 - The setup page now captures client init timing, tracks deferred save hydration timing, and surfaces startup diagnostics directly in the status line
 - The browser runtime no longer constructs a full default `GameSession` just to paint the setup menu; client-only `/api/setup/init` stays on a lightweight catalog/team bootstrap until a league is actually created, loaded, or opened
 - The setup page no longer overwrites those diagnostics with a plain `Ready` string after `loadSetup()`, so the timing readout stays visible after init and runtime-mode switches
+- Frontend API errors now preserve backend `reasonCode` data, so challenge-restricted actions can surface clear blocked-action messaging instead of generic raw backend errors
+- Weekly-plan/scouting-fit surfacing is more visible now:
+  - the overview tab includes a summary line for the controlled team’s weekly plan, culture, and owner mandate pressure
+  - the scouting tab now shows scheme-fit in the main board plus a textual scouting insight summary for the top board target and latest report
+- The roster page no longer shows the redundant roster-board panel at the bottom; only the main roster management surface remains
+- Career stat rows now carry real games and starts, fixing broken per-game calculations that were previously dividing by seasons in the stats UI
+- Added a regression suite that checks both the career per-game denominator fix and starter-qualified season averages against weighted position baselines
 - Challenge enforcement now blocks user free-agent actions in `no-free-agency` mode and blocks trades that would deliver top-10 picks to the controlled team in `no-top-10-picks` mode
 - That enforcement now reaches the remaining obvious user acquisition paths too:
   - waiver claims are blocked in `no-free-agency`
@@ -53,7 +60,7 @@ Build status:
 Current priorities:
 1. Use the new setup diagnostics to confirm whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
 2. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges instead of stopping at the current trade/FA hooks
-3. Add clearer UI messaging for challenge-triggered failures and for the new weekly plan/scouting-fit outputs
+3. Decide whether the stats UI now needs explicit benchmark/qualification hints so users do not confuse all-player tables with starter-qualified NFL baselines
 
 Known issues:
 - The Pages artifact remains client-only unless `GAME_SERVICE_ORIGIN` or `API_DOMAIN` is configured and the separate backend/runtime rollout is live

@@ -43,9 +43,20 @@ What was completed:
 - Trimmed the next setup-latency bottleneck on the client-only path:
   - browser `/api/setup/init` now stays on a lightweight catalog/team bootstrap until a full league session is actually needed
   - setup status no longer overwrites the timing diagnostics with a plain `Ready` after init or runtime-mode switches
+- Improved the main-game UI around the new systems:
+  - frontend API errors now preserve backend `reasonCode`, so challenge-restricted actions show explicit blocked-action messaging
+  - the overview tab now surfaces weekly-plan/culture/owner-pressure context in a summary line instead of hiding it only in staff-owner tables
+  - the scouting board now exposes scheme fit directly plus a textual scouting insight summary for the top board target and latest report
+- Cleaned up the roster and stats surfaces:
+  - removed the redundant roster-board panel from the roster page
+  - fixed career stat rows so they now carry real games/starts, which restores correct per-game calculations in the stats UI
+  - added a regression that checks starter-qualified season averages against weighted position baselines
 - Revalidated the current gameplay/client batch with:
   - `node --check public/app.js`
   - `node --check public/setup.js`
+  - `node --check public/lib/api/createApiClient.js`
+  - `node --check src/stats/statBook.js`
+  - `node --check test/stats-regression.test.js`
   - `node --check src/config/leagueSetup.js`
   - `node --check src/runtime/applyLeagueSetup.js`
   - `node --check src/runtime/GameSession.js`
@@ -68,7 +79,7 @@ What is mid-flight:
 What to do next:
 1. Use the new setup diagnostics to decide whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
 2. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
-3. Add clearer UI messaging for challenge-triggered failures and for the new weekly-plan/scouting-fit outputs
+3. Decide whether the stats UI now needs explicit starter-qualified benchmark hints so NFL-average comparisons by position are clearer
 
 Important constraints:
 - The parked stash is named `park unrelated realism-runtime work after depth-chart commit`; do not lose it if that work is still needed

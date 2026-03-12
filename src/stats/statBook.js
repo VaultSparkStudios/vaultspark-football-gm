@@ -440,6 +440,8 @@ export class StatBook {
           status: player.status,
           seasonType: normalizeSeasonType(filters.seasonType, "all"),
           seasons: careerView.seasons,
+          g: stats.games || 0,
+          gs: stats.gamesStarted || 0,
           offSn: stats.snaps?.offense || 0,
           defSn: stats.snaps?.defense || 0,
           stSn: stats.snaps?.special || 0,

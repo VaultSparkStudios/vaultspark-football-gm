@@ -87,6 +87,16 @@ function describeNonJsonResponse(path, text, status) {
   return `Server-backed request for ${path} returned invalid JSON (status ${status}).`;
 }
 
+function buildApiError(message, payload = null, status = null) {
+  const error = new Error(message);
+  if (payload && typeof payload === "object") {
+    error.payload = payload;
+    if (payload.reasonCode) error.reasonCode = payload.reasonCode;
+  }
+  if (status != null) error.status = status;
+  return error;
+}
+
 async function requestHttp(path, options = {}) {
   if (!isServerRuntimeAvailable()) {
     throw new Error("Server-backed mode is unavailable on this deployment. Switch to client-only mode.");
@@ -104,7 +114,7 @@ async function requestHttp(path, options = {}) {
     throw new Error(describeNonJsonResponse(path, raw, response.status));
   }
   if (!response.ok || payload.ok === false) {
-    throw new Error(payload.error || `Request failed: ${response.status}`);
+    throw buildApiError(payload.error || `Request failed: ${response.status}`, payload, response.status);
   }
   return payload;
 }
@@ -129,7 +139,7 @@ async function requestLocal(path, options = {}) {
   const runtime = await getLocalRuntime();
   const response = await runtime.request(path, options);
   if (!response.ok || response.payload?.ok === false) {
-    throw new Error(response.payload?.error || `Request failed: ${response.status}`);
+    throw buildApiError(response.payload?.error || `Request failed: ${response.status}`, response.payload, response.status);
   }
   return response.payload;
 }
