@@ -281,6 +281,7 @@ export function createLeagueBase(year, rng = null) {
     capLedger: {},
     teamCapOverride: {},
     depthCharts: {},
+    depthChartSnapShares: {},
     waiverWire: [],
     pendingWaiverClaims: [],
     pendingDraft: null

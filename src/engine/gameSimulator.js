@@ -2,7 +2,7 @@ import { DEPTH_CHART_ROLE_NAMES, DRIVE_OUTCOMES, NFL_STRUCTURE } from "../config
 import { createZeroedSeasonStats, mergeStats } from "../domain/playerFactory.js";
 import { clamp, mean } from "../utils/rng.js";
 import { getTeamPlayers } from "../domain/teamFactory.js";
-import { buildTeamUsageProfile, depthOrderedPlayers } from "./depthChartUsage.js";
+import { buildTeamUsageProfile, depthOrderedPlayers, resolveDepthChartRoomShares } from "./depthChartUsage.js";
 
 function mergeObject(target, source) {
   for (const [key, value] of Object.entries(source)) {
@@ -40,8 +40,8 @@ function buildRotation(players, shares = []) {
     rotation.push({
       player,
       rank: i + 1,
-      snapShare: Number(clamp(snapShare, 0.01, 1).toFixed(3)),
-      usageWeight: clamp(snapShare * talentBoost * fitBoost * moraleBoost, 0.005, 2)
+      snapShare: Number(clamp(snapShare, 0, 1).toFixed(3)),
+      usageWeight: clamp(snapShare * talentBoost * fitBoost * moraleBoost, 0, 2)
     });
   }
   return rotation;
@@ -216,7 +216,7 @@ function buildTeamContext(league, teamId, rng) {
   const team = league.teams.find((t) => t.id === teamId);
   const roster = buildGameReadyRoster(getTeamPlayers(league, teamId), team, rng);
   const usageProfile = buildTeamUsageProfile(team);
-  const shares = usageProfile.sharesByPosition;
+  const manualSharesByPosition = league.depthChartSnapShares?.[teamId] || {};
   const qbs = depthOrderedPlayers(league, teamId, "QB", roster).slice(0, 2);
   const rbs = depthOrderedPlayers(league, teamId, "RB", roster).slice(0, 4);
   const wrs = depthOrderedPlayers(league, teamId, "WR", roster).slice(0, 6);
@@ -227,6 +227,29 @@ function buildTeamContext(league, teamId, rng) {
   const dbs = depthOrderedPlayers(league, teamId, "DB", roster).slice(0, 8);
   const ks = depthOrderedPlayers(league, teamId, "K", roster).slice(0, 1);
   const ps = depthOrderedPlayers(league, teamId, "P", roster).slice(0, 1);
+
+  const resolveShares = (position, players) =>
+    resolveDepthChartRoomShares({
+      position,
+      playerIds: players.map((player) => player.id),
+      baseShares: usageProfile.sharesByPosition[position] || [],
+      manualSharesByPlayer: manualSharesByPosition[position] || {}
+    }).map((row) => row.snapShare);
+
+  const shares = {
+    ...usageProfile.sharesByPosition,
+    QB: resolveShares("QB", qbs),
+    RB: resolveShares("RB", rbs),
+    WR: resolveShares("WR", wrs),
+    TE: resolveShares("TE", tes),
+    OL: resolveShares("OL", ol),
+    DL: resolveShares("DL", dls),
+    LB: resolveShares("LB", lbs),
+    DB: resolveShares("DB", dbs),
+    K: resolveShares("K", ks.length ? ks : topPlayers(roster, "K", 1)),
+    P: resolveShares("P", ps.length ? ps : topPlayers(roster, "P", 1))
+  };
+  usageProfile.sharesByPosition = shares;
 
   const qbRotation = buildRotation(qbs, shares.QB);
   const rbRotation = buildRotation(rbs, shares.RB);

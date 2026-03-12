@@ -74,6 +74,31 @@ test("local api runtime supports core client-only flow", async () => {
   assert.equal(response.status, 200);
   assert.ok(response.payload.roster.length > 0);
 
+  const depth = await runtime.request("/api/depth-chart?team=BUF");
+  assert.equal(depth.status, 200);
+  const rbIds = depth.payload.depthChart.RB.slice(0, 2);
+  const depthUpdate = await runtime.request("/api/depth-chart", {
+    method: "POST",
+    body: {
+      teamId: "BUF",
+      position: "RB",
+      playerIds: rbIds,
+      snapShares: {
+        [rbIds[0]]: 0.2,
+        [rbIds[1]]: 0.8
+      }
+    }
+  });
+  assert.equal(depthUpdate.status, 200);
+  assert.equal(depthUpdate.payload.snapShare[0].snapShare, 0.2);
+
+  const updatedDepth = await runtime.request("/api/depth-chart?team=BUF");
+  assert.equal(updatedDepth.status, 200);
+  assert.equal(updatedDepth.payload.snapShare.RB[0].snapShare, 0.2);
+  assert.equal(updatedDepth.payload.snapShare.RB[0].manual, true);
+  assert.equal(updatedDepth.payload.snapShare.RB[1].snapShare, 0.8);
+  assert.equal(updatedDepth.payload.snapShare.RB[1].manual, true);
+
   response = await runtime.request("/api/saves/save", { method: "POST", body: { slot: "alpha" } });
   assert.equal(response.status, 200);
   assert.equal(response.payload.slots.length, 1);
@@ -133,4 +158,34 @@ test("local api runtime exposes regular-season and playoff stat filters", async 
   assert.equal(profile.status, 200);
   assert.equal(profile.payload.profile.seasonType, "playoffs");
   assert.ok(profile.payload.profile.timeline.length > 0);
+});
+
+test("local api runtime setup init defers backups by default", async () => {
+  const runtime = createLocalApiRuntime({
+    storage: createMemoryStorage(),
+    now: (() => {
+      let tick = 0;
+      return () => 1_720_000_000_000 + tick++;
+    })(),
+    scheduler: (fn) => fn()
+  });
+
+  const initial = await runtime.request("/api/setup/init");
+  assert.equal(initial.status, 200);
+  assert.equal(initial.payload.savesDeferred, false);
+  assert.equal(initial.payload.backupsDeferred, true);
+  assert.deepEqual(initial.payload.backups, []);
+
+  await runtime.request("/api/saves/save", { method: "POST", body: { slot: "alpha" } });
+
+  const withoutSaves = await runtime.request("/api/setup/init?includeSaves=0");
+  assert.equal(withoutSaves.status, 200);
+  assert.equal(withoutSaves.payload.savesDeferred, true);
+  assert.deepEqual(withoutSaves.payload.saves, []);
+
+  const withBackups = await runtime.request("/api/setup/init?includeBackups=1");
+  assert.equal(withBackups.status, 200);
+  assert.equal(withBackups.payload.savesDeferred, false);
+  assert.equal(withBackups.payload.backupsDeferred, false);
+  assert.ok(Array.isArray(withBackups.payload.backups));
 });

@@ -26,7 +26,7 @@ import {
   resetTeamSeasonState
 } from "../domain/teamFactory.js";
 import { runOffseason } from "../engine/offseasonSimulator.js";
-import { buildTeamUsageProfile } from "../engine/depthChartUsage.js";
+import { buildTeamUsageProfile, resolveDepthChartRoomShares } from "../engine/depthChartUsage.js";
 import {
   defaultDepthChartForTeam,
   isTradeValueAcceptable,
@@ -41,10 +41,10 @@ import { StatBook } from "../stats/statBook.js";
 import {
   applySeasonRealismCalibration,
   buildCareerCalibrationSnapshot,
-  buildPositionCalibrationSnapshot,
-  loadCareerRealismProfile,
-  loadRealismProfile
+  buildPositionCalibrationSnapshot
 } from "../stats/realismCalibrator.js";
+import { PFR_RECENT_WEIGHTED_PROFILE } from "../stats/profiles/pfrRecentWeightedProfile.js";
+import { PFR_CAREER_WEIGHTED_PROFILE } from "../stats/profiles/pfrCareerWeightedProfile.js";
 import { clamp } from "../utils/rng.js";
 import { RNGStreams } from "../utils/rngStreams.js";
 import { createSessionModules } from "./modules/sessionModules.js";
@@ -392,6 +392,7 @@ function ensureLeagueRuntime(league) {
   if (!league.capLedger) league.capLedger = {};
   if (!league.teamCapOverride) league.teamCapOverride = {};
   if (!league.depthCharts) league.depthCharts = {};
+  if (!league.depthChartSnapShares) league.depthChartSnapShares = {};
   if (!league.waiverWire) league.waiverWire = [];
   if (!league.pendingWaiverClaims) league.pendingWaiverClaims = [];
   if (!league.pendingDraft) league.pendingDraft = null;
@@ -477,6 +478,32 @@ function ensureDepthCharts(league) {
         .map((player) => player.id)
         .filter((id) => !chart.includes(id));
       league.depthCharts[team.id][position] = [...chart, ...missing];
+    }
+  }
+}
+
+function ensureDepthChartSnapShares(league) {
+  const positions = Object.keys(ROSTER_TEMPLATE);
+  if (!league.depthChartSnapShares || typeof league.depthChartSnapShares !== "object") {
+    league.depthChartSnapShares = {};
+  }
+  for (const team of league.teams) {
+    const roster = teamPlayersAll(league, team.id);
+    if (!league.depthChartSnapShares[team.id] || typeof league.depthChartSnapShares[team.id] !== "object") {
+      league.depthChartSnapShares[team.id] = {};
+    }
+    for (const position of positions) {
+      const existing = league.depthChartSnapShares[team.id][position];
+      const next = {};
+      if (existing && typeof existing === "object" && !Array.isArray(existing)) {
+        for (const [playerId, rawShare] of Object.entries(existing)) {
+          const player = roster.find((entry) => entry.id === playerId);
+          const share = Number(rawShare);
+          if (!player || player.position !== position || !Number.isFinite(share)) continue;
+          next[playerId] = Number(clamp(share, 0, 1).toFixed(3));
+        }
+      }
+      league.depthChartSnapShares[team.id][position] = next;
     }
   }
 }
@@ -571,8 +598,8 @@ export class GameSession {
     this.previousDivisionRanks = null;
     this.lastCalibrationReport = null;
     this.lastRealismVerificationReport = null;
-    this.realismProfile = realismProfile || loadRealismProfile();
-    this.careerRealismProfile = careerRealismProfile || loadCareerRealismProfile();
+    this.realismProfile = realismProfile || PFR_RECENT_WEIGHTED_PROFILE;
+    this.careerRealismProfile = careerRealismProfile || PFR_CAREER_WEIGHTED_PROFILE;
 
     this.league = createLeagueBase(startYear, this.rng);
     initializeLeagueRoster({ league: this.league, importedPlayers, rng: this.rng });
@@ -580,6 +607,7 @@ export class GameSession {
     this.initializeLeagueSystems();
     for (const player of this.league.players) ensurePlayerRuntime(player, this.rng);
     ensureDepthCharts(this.league);
+    ensureDepthChartSnapShares(this.league);
 
     recalculateAllTeamRatings(this.league);
     this.statBook = new StatBook(this.league);
@@ -607,14 +635,15 @@ export class GameSession {
     session.modules = createSessionModules(session);
     session.statBook = new StatBook(session.league);
     session.statBook.teamSeasonArchive = snapshot.teamSeasonArchive || [];
-    session.realismProfile = snapshot.realismProfile || loadRealismProfile();
-    session.careerRealismProfile = snapshot.careerRealismProfile || loadCareerRealismProfile();
+    session.realismProfile = snapshot.realismProfile || PFR_RECENT_WEIGHTED_PROFILE;
+    session.careerRealismProfile = snapshot.careerRealismProfile || PFR_CAREER_WEIGHTED_PROFILE;
     session.lastRealismVerificationReport = snapshot.lastRealismVerificationReport || null;
     session.statBook.reindexPlayers();
     ensureLeagueRuntime(session.league);
     session.initializeLeagueSystems();
     for (const player of [...session.league.players, ...session.league.retiredPlayers]) ensurePlayerRuntime(player);
     ensureDepthCharts(session.league);
+    ensureDepthChartSnapShares(session.league);
     return session;
   }
 
@@ -1657,7 +1686,9 @@ export class GameSession {
 
   getDepthChartSnapShare(teamId = this.controlledTeamId, { includePlayers = true } = {}) {
     ensureDepthCharts(this.league);
+    ensureDepthChartSnapShares(this.league);
     const chart = this.league.depthCharts[teamId] || {};
+    const manualShares = this.league.depthChartSnapShares?.[teamId] || {};
     const playersById = new Map(
       teamPlayersAll(this.league, teamId).map((player) => [player.id, player])
     );
@@ -1666,7 +1697,14 @@ export class GameSession {
     for (const [position, ids] of Object.entries(chart)) {
       const shares = usageProfile.sharesByPosition[position] || [];
       const roles = DEPTH_CHART_ROLE_NAMES[position] || [];
-      output[position] = ids.map((playerId, index) => {
+      const resolvedShares = resolveDepthChartRoomShares({
+        position,
+        playerIds: ids,
+        baseShares: shares,
+        manualSharesByPlayer: manualShares[position] || {}
+      });
+      output[position] = resolvedShares.map((row, index) => {
+        const playerId = row.playerId;
         const player = playersById.get(playerId) || null;
         return {
           rank: index + 1,
@@ -1674,21 +1712,55 @@ export class GameSession {
           playerId,
           player: includePlayers ? player?.name || null : null,
           overall: includePlayers ? player?.overall || null : null,
-          snapShare: Number((shares[index] ?? 0.02).toFixed(3))
+          snapShare: row.snapShare,
+          defaultSnapShare: row.defaultSnapShare,
+          manual: row.manual
         };
       });
     }
     return output;
   }
 
-  setDepthChart({ teamId, position, playerIds }) {
+  setDepthChart({ teamId, position, playerIds, snapShares = null }) {
     if (!teamById(this.league, teamId)) return { ok: false, error: "Invalid team." };
-    const allowed = new Set(teamPlayersAll(this.league, teamId).map((player) => player.id));
+    const team = teamById(this.league, teamId);
+    const allowed = new Set(
+      teamPlayersAll(this.league, teamId)
+        .filter((player) => player.position === position)
+        .map((player) => player.id)
+    );
     const sanitized = (playerIds || []).filter((id) => allowed.has(id));
     if (!sanitized.length) return { ok: false, error: "No valid players for depth chart." };
     ensureDepthCharts(this.league);
+    ensureDepthChartSnapShares(this.league);
     this.league.depthCharts[teamId][position] = sanitized;
-    return { ok: true, teamId, position, depthChart: sanitized };
+    const defaultShares = buildTeamUsageProfile(team).sharesByPosition[position] || [];
+    const existingShares = this.league.depthChartSnapShares[teamId][position] || {};
+    const sourceShares =
+      snapShares && typeof snapShares === "object" && !Array.isArray(snapShares)
+        ? snapShares
+        : existingShares;
+    const nextShares = {};
+    for (const [index, playerId] of sanitized.entries()) {
+      const rawShare = Number(sourceShares?.[playerId]);
+      if (!Number.isFinite(rawShare)) continue;
+      const share = Number(clamp(rawShare, 0, 1).toFixed(3));
+      const defaultShare = Number((defaultShares[index] ?? 0.02).toFixed(3));
+      if (Math.abs(share - defaultShare) < 0.001) continue;
+      nextShares[playerId] = share;
+    }
+    const hasPositiveManual = Object.values(nextShares).some((share) => share > 0);
+    if (Object.keys(nextShares).length && !hasPositiveManual) {
+      nextShares[sanitized[0]] = Number(clamp(defaultShares[0] ?? 0.5, 0.01, 1).toFixed(3));
+    }
+    this.league.depthChartSnapShares[teamId][position] = nextShares;
+    return {
+      ok: true,
+      teamId,
+      position,
+      depthChart: sanitized,
+      snapShare: this.getDepthChartSnapShare(teamId, { includePlayers: false })[position] || []
+    };
   }
 
   signFreeAgent({ teamId, playerId }) {

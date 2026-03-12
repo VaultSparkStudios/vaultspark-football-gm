@@ -236,10 +236,10 @@ th {
 }
 
 .game-topbar {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(180px, 280px) minmax(280px, 1fr) auto;
   gap: 0.8rem;
-  align-items: flex-start;
+  align-items: start;
   padding: 0.9rem 1rem 0.7rem;
   position: sticky;
   top: 0;
@@ -247,11 +247,70 @@ th {
   backdrop-filter: blur(4px);
 }
 
+.topbar-center {
+  min-width: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.topbar-actions {
+  justify-content: flex-end;
+}
+
+.boxscore-ticker {
+  min-height: 44px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  border: 1px solid #314043;
+  border-radius: 999px;
+  padding: 0.35rem 0.45rem;
+  background: rgba(12, 18, 19, 0.48);
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-right: 0.45rem;
+  border-radius: 999px;
+  padding: 0.32rem 0.56rem;
+  border: 1px solid #425156;
+  background: linear-gradient(145deg, #203133, #182628);
+}
+
+.ticker-item strong {
+  color: var(--accent);
+}
+
 .game-shell {
   display: grid;
   grid-template-columns: 220px 1fr;
   gap: 0.9rem;
   padding: 0 1rem 1rem;
+}
+
+.game-footer {
+  padding: 0 1rem 1rem;
+}
+
+.footer-guide-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+
+.depth-share-cell,
+.depth-action-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.depth-share-input {
+  width: 68px;
+  text-align: right;
 }
 
 .side-menu {
@@ -306,6 +365,10 @@ th {
   border-radius: 14px;
   background: linear-gradient(180deg, rgba(24, 33, 35, 0.97), rgba(18, 26, 28, 0.97));
   padding: 0.9rem;
+}
+
+.guide-card {
+  width: min(760px, 94vw);
 }
 
 .command-card {
@@ -368,7 +431,12 @@ th {
 
 @media (max-width: 640px) {
   .game-topbar {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-guide-panel {
     flex-direction: column;
+    align-items: stretch;
   }
 
   .side-menu {

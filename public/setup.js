@@ -1,14 +1,17 @@
-import { createApiClient, getRuntimeMode, setRuntimeMode } from "./lib/api/createApiClient.js";
+import { createApiClient, getRuntimeMode, setRuntimeMode, warmLocalRuntime } from "./lib/api/createApiClient.js";
 
 const state = {
   currentYear: new Date().getFullYear(),
   saves: [],
+  savesDeferred: false,
   teams: [],
   saveSearch: "",
-  backups: []
+  backups: [],
+  backupsDeferred: false
 };
 
 const api = createApiClient();
+let setupLoadVersion = 0;
 
 const MODE_HELP = {
   drive: "Drive resolves games possession-by-possession. It is faster for long sims and keeps weekly progression moving.",
@@ -108,6 +111,11 @@ function renderSaves() {
   const table = document.getElementById("savesTable");
   const latestBtn = document.getElementById("resumeLatestBtn");
   if (!table) return;
+  if (state.savesDeferred) {
+    table.innerHTML = "<tr><td>Saved leagues are loading in the background. Click Refresh Saves if this takes too long.</td></tr>";
+    if (latestBtn) latestBtn.disabled = true;
+    return;
+  }
 
   const needle = state.saveSearch.trim().toLowerCase();
   const filtered = !needle
@@ -164,9 +172,22 @@ function renderSaves() {
   if (latestBtn) latestBtn.disabled = state.saves.length === 0;
 }
 
+async function refreshSaves({ preserveStatus = false, loadVersion = setupLoadVersion } = {}) {
+  const payload = await api("/api/saves");
+  if (loadVersion !== setupLoadVersion) return;
+  state.saves = payload.slots || [];
+  state.savesDeferred = false;
+  renderSaves();
+  if (!preserveStatus) setStatus("Ready");
+}
+
 function renderBackups() {
   const table = document.getElementById("backupsTable");
   if (!table) return;
+  if (state.backupsDeferred) {
+    table.innerHTML = "<tr><td>Backups are not loaded on first open. Click Refresh Backups to load them.</td></tr>";
+    return;
+  }
   if (!state.backups.length) {
     table.innerHTML = "<tr><td>No backups yet.</td></tr>";
     return;
@@ -198,12 +219,19 @@ function renderBackups() {
 }
 
 async function loadSetup() {
+  const loadVersion = ++setupLoadVersion;
   applyRuntimeModeUi();
-  const init = await api("/api/setup/init");
+  if (getRuntimeMode() === "client") {
+    warmLocalRuntime().catch(() => {});
+  }
+  const init = await api("/api/setup/init?includeSaves=0&includeBackups=0");
+  if (loadVersion !== setupLoadVersion) return;
   state.currentYear = init.currentYear;
   state.saves = init.saves || [];
+  state.savesDeferred = init.savesDeferred === true;
   state.teams = init.teams || [];
   state.backups = init.backups || [];
+  state.backupsDeferred = init.backupsDeferred === true;
 
   document.getElementById("seedInput").value = Date.now();
   document.getElementById("startYearInput").value = init.currentYear;
@@ -214,6 +242,16 @@ async function loadSetup() {
   renderBackups();
   renderSetupGuide();
   updateModeHelp();
+
+  if (state.savesDeferred) {
+    queueMicrotask(() => {
+      refreshSaves({ preserveStatus: true, loadVersion }).catch(() => {
+        if (loadVersion !== setupLoadVersion) return;
+        state.savesDeferred = false;
+        renderSaves();
+      });
+    });
+  }
 }
 
 async function createLeague() {
@@ -272,8 +310,16 @@ async function deleteBackupSlot() {
 function bindEvents() {
   document.getElementById("runtimeModeSelect")?.addEventListener("change", (event) => {
     const mode = setRuntimeMode(event.target.value);
-    applyRuntimeModeUi();
-    setStatus(mode === "client" ? "Client-only mode enabled" : "Server-backed mode enabled");
+    const statusText = mode === "client" ? "Loading client-only menu..." : "Loading server-backed menu...";
+    setStatus(statusText);
+    if (mode === "client") {
+      warmLocalRuntime().catch(() => {});
+    }
+    loadSetup()
+      .then(() => setStatus("Ready"))
+      .catch((error) => {
+        setStatus(`Error: ${error.message}`);
+      });
   });
   document.getElementById("modeInput")?.addEventListener("change", updateModeHelp);
 
@@ -335,10 +381,7 @@ function bindEvents() {
 
   document.getElementById("refreshSavesBtn").addEventListener("click", async () => {
     try {
-      const payload = await api("/api/saves");
-      state.saves = payload.slots || [];
-      renderSaves();
-      setStatus("Ready");
+      await refreshSaves();
     } catch (error) {
       setStatus(`Error: ${error.message}`);
     }
@@ -356,6 +399,7 @@ function bindEvents() {
     try {
       const payload = await api("/api/backups");
       state.backups = payload.slots || [];
+      state.backupsDeferred = false;
       renderBackups();
       setStatus("Ready");
     } catch (error) {

@@ -1,4 +1,5 @@
 let localRuntimePromise = null;
+let runtimeModeCache = null;
 
 function readStoredRuntimeMode() {
   try {
@@ -22,18 +23,22 @@ function readDefaultRuntimeMode() {
 }
 
 export function getRuntimeMode() {
+  if (runtimeModeCache) return runtimeModeCache;
   const query = new URLSearchParams(window.location.search).get("runtime");
   if (query === "client" || query === "server") {
     persistRuntimeMode(query);
-    return query;
+    runtimeModeCache = query;
+    return runtimeModeCache;
   }
-  return readStoredRuntimeMode() === "client" ? "client" : readDefaultRuntimeMode();
+  runtimeModeCache = readStoredRuntimeMode() === "client" ? "client" : readDefaultRuntimeMode();
+  return runtimeModeCache;
 }
 
 export function setRuntimeMode(mode) {
   const nextMode = mode === "client" ? "client" : "server";
   persistRuntimeMode(nextMode);
-  return nextMode;
+  runtimeModeCache = nextMode;
+  return runtimeModeCache;
 }
 
 async function requestHttp(path, options = {}) {
@@ -51,11 +56,18 @@ async function requestHttp(path, options = {}) {
 
 async function getLocalRuntime() {
   if (!localRuntimePromise) {
-    localRuntimePromise = import(new URL("../../src/app/api/localApiRuntime.js", import.meta.url)).then(({ createLocalApiRuntime }) =>
-      createLocalApiRuntime({ storage: window.localStorage })
-    );
+    localRuntimePromise = import(new URL("../../src/app/api/localApiRuntime.js", import.meta.url))
+      .then(({ createLocalApiRuntime }) => createLocalApiRuntime({ storage: window.localStorage }))
+      .catch((error) => {
+        localRuntimePromise = null;
+        throw error;
+      });
   }
   return localRuntimePromise;
+}
+
+export function warmLocalRuntime() {
+  return getLocalRuntime().then(() => undefined);
 }
 
 async function requestLocal(path, options = {}) {

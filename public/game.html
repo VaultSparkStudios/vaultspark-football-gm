@@ -155,7 +155,7 @@
               <label>Max Age <input id="rosterMaxAgeFilter" type="number" min="18" max="45" /></label>
             </div>
             <div class="row">
-              <label>Player ID <input id="designationPlayerId" type="text" /></label>
+              <span id="designationSelectedPlayerText" class="chip">Selected: None</span>
               <label>Designation
                 <select id="designationType">
                   <option value="gameDayInactive">Game-Day Inactive</option>
@@ -164,9 +164,10 @@
                   <option value="nfi">NFI</option>
                 </select>
               </label>
-              <button id="applyDesignationBtn">Apply Designation</button>
-              <button id="clearDesignationBtn" class="warn">Clear Designation</button>
+              <button id="applyDesignationBtn" disabled>Apply Designation</button>
+              <button id="clearDesignationBtn" class="warn" disabled>Clear Designation</button>
             </div>
+            <div class="small">Use Select in the roster table to choose a player for designation changes.</div>
             <div class="table-wrap"><table id="rosterTable" data-testid="roster-table"></table></div>
             <h3>Roster Board (Depth Order)</h3>
             <div class="row compact">
@@ -221,7 +222,7 @@
               <span id="depthStatusText" class="chip">Use move controls to change playing-time order</span>
               <button id="saveDepthBtn" data-testid="save-depth-btn">Save Depth Chart</button>
             </div>
-            <div class="small">Top rows receive the highest modeled snap share for the selected position.</div>
+            <div class="small">Top rows receive the highest default modeled snap share. You can also set manual percentages for each player and save them into the live rotation.</div>
             <div class="table-wrap"><table id="depthTable" data-testid="depth-table"></table></div>
           </div>
         </section>
@@ -283,13 +284,14 @@
               <button id="loadRetiredBtn">Load Retired Pool</button>
             </div>
             <div class="row">
-              <label>Player ID <input id="retirementOverridePlayerId" type="text" /></label>
+              <span id="retirementOverrideSelectedPlayerText" class="chip">Selected: None</span>
               <label>Team <select id="retirementOverrideTeamSelect"></select></label>
               <label>Min Team Win %
                 <input id="retirementOverrideWinPct" type="number" step="0.01" value="0.55" min="0.30" max="0.90" />
               </label>
-              <button id="retirementOverrideBtn">Convince Comeback</button>
+              <button id="retirementOverrideBtn" disabled>Convince Comeback</button>
             </div>
+            <div class="small">Use Select in the retired table to choose a comeback target.</div>
             <div class="table-wrap"><table id="retiredTable"></table></div>
           </div>
         </section>
@@ -714,9 +716,12 @@
     </main>
 
     <footer class="game-footer">
-      <div class="panel">
-        <h2>Game Guide</h2>
-        <div id="guideFooterContent" class="stack small"></div>
+      <div class="panel footer-guide-panel">
+        <div>
+          <h2>Game Guide</h2>
+          <div class="small">Open the step-by-step guide in a focused submenu instead of keeping it expanded in the footer.</div>
+        </div>
+        <button id="openGuideBtn" data-testid="open-guide-btn">Open Game Guide</button>
       </div>
     </footer>
 
@@ -807,6 +812,19 @@
             <div class="table-wrap"><table id="boxScoreHomeKickingTable"></table></div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div id="guideModal" class="modal hidden" data-testid="guide-modal">
+      <div class="modal-card guide-card">
+        <div class="row" style="justify-content: space-between">
+          <div>
+            <h2>Game Guide</h2>
+            <p class="small">Core loop, league tools, and the fastest path through a full franchise season.</p>
+          </div>
+          <button id="closeGuideModalBtn" class="warn">Close</button>
+        </div>
+        <div id="guideModalContent" class="stack small"></div>
       </div>
     </div>
 

@@ -182,11 +182,17 @@ function createSimulationJob(totalSeasons) {
 async function handleApi(req, res, url) {
   if (req.method === "GET" && url.pathname === "/api/setup/init") {
     const setup = session.getSetupState();
+    const includeSaves = toBool(url.searchParams.get("includeSaves"), true);
+    const includeBackups = toBool(url.searchParams.get("includeBackups"), false);
+    const saves = includeSaves ? listSaveSlots() : [];
+    const backups = includeBackups ? listBackupSlots() : [];
     sendJson(res, 200, {
       ok: true,
       currentYear: CURRENT_YEAR,
-      saves: listSaveSlots(),
-      backups: listBackupSlots(),
+      saves,
+      savesDeferred: !includeSaves,
+      backups,
+      backupsDeferred: !includeBackups,
       activeLeague: {
         phase: setup.phase,
         currentYear: setup.currentYear,
@@ -457,7 +463,13 @@ async function handleApi(req, res, url) {
     const result = session.setDepthChart({
       teamId: String(body.teamId).toUpperCase(),
       position: String(body.position).toUpperCase(),
-      playerIds: body.playerIds.map((id) => String(id))
+      playerIds: body.playerIds.map((id) => String(id)),
+      snapShares:
+        body.snapShares && typeof body.snapShares === "object" && !Array.isArray(body.snapShares)
+          ? Object.fromEntries(
+              Object.entries(body.snapShares).map(([playerId, share]) => [String(playerId), Number(share)])
+            )
+          : null
     });
     sendJson(res, result.ok ? 200 : 400, { ...result, state: session.getDashboardState() });
     return true;

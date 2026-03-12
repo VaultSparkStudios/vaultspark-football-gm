@@ -158,12 +158,18 @@ export function createLocalApiRuntime({
     try {
       if (method === "GET" && pathname === "/api/setup/init") {
         const setup = session.getSetupState();
+        const includeSaves = toBool(url.searchParams.get("includeSaves"), true);
+        const includeBackups = toBool(url.searchParams.get("includeBackups"), false);
+        const saves = includeSaves ? saveStore.listSaveSlots() : [];
+        const backups = includeBackups ? saveStore.listBackupSlots() : [];
         return finish(
           jsonResponse(200, {
             ok: true,
             currentYear,
-            saves: saveStore.listSaveSlots(),
-            backups: saveStore.listBackupSlots(),
+            saves,
+            savesDeferred: !includeSaves,
+            backups,
+            backupsDeferred: !includeBackups,
             activeLeague: {
               phase: setup.phase,
               currentYear: setup.currentYear,
@@ -407,7 +413,13 @@ export function createLocalApiRuntime({
         const result = session.setDepthChart({
           teamId: String(body.teamId).toUpperCase(),
           position: String(body.position).toUpperCase(),
-          playerIds: body.playerIds.map((id) => String(id))
+          playerIds: body.playerIds.map((id) => String(id)),
+          snapShares:
+            body.snapShares && typeof body.snapShares === "object" && !Array.isArray(body.snapShares)
+              ? Object.fromEntries(
+                  Object.entries(body.snapShares).map(([playerId, share]) => [String(playerId), Number(share)])
+                )
+              : null
         });
         return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
       }

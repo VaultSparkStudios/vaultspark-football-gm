@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import { PFR_RECENT_WEIGHTED_PROFILE } from "./profiles/pfrRecentWeightedProfile.js";
 import { PFR_CAREER_WEIGHTED_PROFILE } from "./profiles/pfrCareerWeightedProfile.js";
 import { clamp } from "../utils/rng.js";
@@ -232,32 +230,6 @@ function rebalanceDiscreteMetric({ qualified, year, pathKey, targetAverage }) {
     }
     idx += 1;
     if (idx > currentTotal * 3 + sorted.length * 2) break;
-  }
-}
-
-export function loadRealismProfile(profilePath = null) {
-  if (!profilePath) return PFR_RECENT_WEIGHTED_PROFILE;
-  const resolved = path.resolve(profilePath);
-  if (!fs.existsSync(resolved)) return PFR_RECENT_WEIGHTED_PROFILE;
-  try {
-    const raw = JSON.parse(fs.readFileSync(resolved, "utf8"));
-    if (!raw || !raw.positions) return PFR_RECENT_WEIGHTED_PROFILE;
-    return raw;
-  } catch {
-    return PFR_RECENT_WEIGHTED_PROFILE;
-  }
-}
-
-export function loadCareerRealismProfile(profilePath = null) {
-  if (!profilePath) return PFR_CAREER_WEIGHTED_PROFILE;
-  const resolved = path.resolve(profilePath);
-  if (!fs.existsSync(resolved)) return PFR_CAREER_WEIGHTED_PROFILE;
-  try {
-    const raw = JSON.parse(fs.readFileSync(resolved, "utf8"));
-    if (!raw || !raw.positions) return PFR_CAREER_WEIGHTED_PROFILE;
-    return raw;
-  } catch {
-    return PFR_CAREER_WEIGHTED_PROFILE;
   }
 }
 

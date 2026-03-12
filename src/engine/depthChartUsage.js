@@ -117,6 +117,28 @@ function buildOlShares(packages, baseShares, team) {
   ].map((value, index) => Number(clamp(value, 0.001, baseShares[index] ? 0.995 : 0.05).toFixed(3)));
 }
 
+export function resolveDepthChartRoomShares({
+  position,
+  playerIds = [],
+  baseShares = [],
+  manualSharesByPlayer = {}
+} = {}) {
+  return playerIds.map((playerId, index) => {
+    const defaultSnapShare = Number((baseShares[index] ?? 0.02).toFixed(3));
+    const rawManual = Number(manualSharesByPlayer?.[playerId]);
+    const manual = Number.isFinite(rawManual);
+    const snapShare = Number(clamp(manual ? rawManual : defaultSnapShare, 0, 1).toFixed(3));
+    return {
+      position,
+      rank: index + 1,
+      playerId,
+      defaultSnapShare,
+      snapShare,
+      manual
+    };
+  });
+}
+
 export function buildTeamUsageProfile(team) {
   const base = DEPTH_CHART_SNAP_SHARE;
   const tendencies = teamTendencies(team);

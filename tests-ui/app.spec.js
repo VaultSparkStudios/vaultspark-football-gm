@@ -28,6 +28,16 @@ async function firstTableCell(page, selector, columnIndex = 1) {
 test("create league, advance week, and open player modal", async ({ page }) => {
   await createLeagueFromSetup(page);
 
+  const teamOptions = await page.locator("#teamSelect option").evaluateAll((options) =>
+    options
+      .map((option) => option.textContent?.split(" - ")[0]?.trim())
+      .filter(Boolean)
+  );
+  const scheduleAway = ((await page.locator("#scheduleTable tr:nth-child(2) td:nth-child(1)").textContent()) || "").trim();
+  const scheduleHome = ((await page.locator("#scheduleTable tr:nth-child(2) td:nth-child(2)").textContent()) || "").trim();
+  expect(teamOptions).toContain(scheduleAway);
+  expect(teamOptions).toContain(scheduleHome);
+
   const before = parseWeek(await page.locator("#yearCard").textContent());
   await page.click("#advanceWeekBtn");
   await waitGameReady(page);
@@ -48,6 +58,74 @@ test("create league, advance week, and open player modal", async ({ page }) => {
   await expect(page.locator("#playerModalTitle")).not.toHaveText(/^Player$/);
   await page.click("#closePlayerModalBtn");
   await expect(page.locator("#playerModal")).toHaveClass(/hidden/);
+});
+
+test("depth chart controls and game guide modal are operational", async ({ page }) => {
+  await createLeagueFromSetup(page);
+
+  await page.click('[data-testid="tab-depth"]');
+  await page.click("#loadDepthBtn");
+  await waitGameReady(page);
+
+  const firstPlayer = (await page.locator("#depthTable tr:nth-child(2) td:nth-child(3)").textContent())?.trim();
+  const secondPlayer = (await page.locator("#depthTable tr:nth-child(3) td:nth-child(3)").textContent())?.trim();
+  expect(firstPlayer).toBeTruthy();
+  expect(secondPlayer).toBeTruthy();
+
+  await page.locator('#depthTable button[data-depth-move="down"]').first().click();
+  await expect(page.locator("#depthTable tr:nth-child(2) td:nth-child(3)")).toContainText(secondPlayer || "");
+
+  const firstShareInput = page.locator('#depthTable input[data-depth-share-input]').first();
+  await firstShareInput.fill("85");
+  await page.click("#saveDepthBtn");
+  await waitGameReady(page);
+  await page.click("#loadDepthBtn");
+  await waitGameReady(page);
+  await expect(page.locator('#depthTable input[data-depth-share-input]').first()).toHaveValue("85");
+
+  await page.click("#openGuideBtn");
+  await expect(page.locator("#guideModal")).not.toHaveClass(/hidden/);
+  await expect(page.locator("#guideModalContent")).toContainText("League Setup");
+  await page.click("#closeGuideModalBtn");
+  await expect(page.locator("#guideModal")).toHaveClass(/hidden/);
+});
+
+test("designation and retirement override flows use table selection", async ({ page }) => {
+  await createLeagueFromSetup(page);
+
+  await page.click('[data-testid="tab-roster"]');
+  await page.click("#loadRosterBtn");
+  await waitGameReady(page);
+
+  await expect(page.locator("#designationPlayerId")).toHaveCount(0);
+  const designationSelect = page.locator('#rosterTable tr:has(button[data-act="ps"]) button[data-designation-select]').first();
+  const selectedPlayerId = await designationSelect.getAttribute("data-designation-select");
+  expect(selectedPlayerId).toBeTruthy();
+  await designationSelect.click();
+  await expect(page.locator("#designationSelectedPlayerText")).not.toContainText("Selected: None");
+
+  await page.click("#applyDesignationBtn");
+  await waitGameReady(page);
+  await expect(page.locator(`#rosterTable tr:has(button[data-player-id="${selectedPlayerId}"])`)).toContainText("gameDayInactive");
+
+  await page.click("#clearDesignationBtn");
+  await waitGameReady(page);
+  await expect(page.locator(`#rosterTable tr:has(button[data-player-id="${selectedPlayerId}"])`)).not.toContainText("gameDayInactive");
+
+  await page.click('[data-testid="tab-transactions"]');
+  await page.click("#loadRetiredBtn");
+  await waitGameReady(page);
+
+  await expect(page.locator("#retirementOverridePlayerId")).toHaveCount(0);
+  const retiredSelect = page.locator('#retiredTable button[data-retired-override-id]');
+  if (await retiredSelect.count()) {
+    await retiredSelect.first().click();
+    await expect(page.locator("#retirementOverrideSelectedPlayerText")).not.toContainText("Selected: None");
+    await expect(page.locator("#retirementOverrideBtn")).toBeEnabled();
+  } else {
+    await expect(page.locator("#retirementOverrideSelectedPlayerText")).toContainText("Selected: None");
+    await expect(page.locator("#retirementOverrideBtn")).toBeDisabled();
+  }
 });
 
 test("contracts, trade, calendar, and transaction log are operational", async ({ page }) => {
@@ -133,4 +211,33 @@ test("scouting lock persists across save and load", async ({ page }) => {
   await waitGameReady(page);
   await expect(page.locator("#scoutingLockText")).toContainText("Locked");
   await expect(page.locator("#scoutingBoardText")).toContainText(`Board: ${idsToLock.length} / 20`);
+});
+
+test("switching runtime mode reloads setup state", async ({ page }) => {
+  await createLeagueFromSetup(page);
+
+  const slot = `runtime-switch-${Date.now()}`;
+  await page.click('[data-testid="tab-settings"]');
+  await page.fill("#saveSlotInput", slot);
+  await page.click("#saveBtn");
+  await waitGameReady(page);
+
+  await page.click("#backSetupBtn");
+  await expect(page).toHaveURL(/\/$/, { timeout: 20_000 });
+  await waitSetupReady(page);
+  await expect(page.locator("#savesTable")).toContainText(slot, { timeout: 20_000 });
+
+  await page.selectOption("#runtimeModeSelect", "client");
+  await waitSetupReady(page);
+  await expect(page.locator("#runtimeModeSelect")).toHaveValue("client");
+  await expect(page.locator("#pfrPathInput")).toBeDisabled();
+  await expect(page.locator("#profilePathInput")).toBeDisabled();
+  await expect(page.locator("#savesTable")).not.toContainText(slot);
+  await expect(page.locator("#resumeLatestBtn")).toBeDisabled();
+
+  await page.selectOption("#runtimeModeSelect", "server");
+  await waitSetupReady(page);
+  await expect(page.locator("#runtimeModeSelect")).toHaveValue("server");
+  await expect(page.locator("#savesTable")).toContainText(slot, { timeout: 20_000 });
+  await expect(page.locator("#resumeLatestBtn")).toBeEnabled();
 });

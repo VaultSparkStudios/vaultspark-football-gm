@@ -74,8 +74,11 @@ export function createFileSaveStore({
     return fs
       .readdirSync(saveDir)
       .filter((name) => name.endsWith(".json") && !name.endsWith(".meta.json"))
+      .filter((name) => {
+        if (includeBackups) return true;
+        return !isBackupSlot(name.replace(/\.json$/i, ""), backupPrefix);
+      })
       .map(readSlotMeta)
-      .filter((slot) => (includeBackups ? true : !isBackupSlot(slot.slot, backupPrefix)))
       .sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
   }
 

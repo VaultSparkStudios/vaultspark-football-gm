@@ -1,14 +1,15 @@
 # Task Board
 
 ## Now
-- Watch the GitHub rerun for the updated `tests-ui/app.spec.js` fix on `codex/direct-pages-standards`
-- Keep unrelated dirty gameplay files isolated from the standards/CI branch work
-- Prepare the next gameplay/UI implementation pass once CI is green
+- Measure any remaining setup/main-menu latency after the non-blocking save-load and client-runtime import fixes, especially residual runtime-mode startup overhead
+- Remove the remaining raw-ID dependence from the remaining commissioner-facing tools such as trade, compare, and player-history lookups
+- Smoke the updated setup/startup, team-identity, depth-chart, and `Play`-mode flows in any remaining manual QA scenarios if needed
 
 ## Next
-- Implement the pending gameplay/UI backlog: depth chart controls, manual snap share editing, and Game Guide submenu
-- Confirm live GitHub Pages settings and backend-related repo variables if needed
-- Reconcile the Studio repo deployment docs/templates to the direct-Pages model once that repo is safe to edit
+- Decide whether to restore the parked realism/runtime stash onto a separate branch or continue keeping it isolated
+- Add more targeted startup observability if setup/menu latency is still unclear after the non-blocking save-load and client-runtime import fixes
+- Extend the table-selection pattern to any remaining admin flows that still expose typed player IDs
+- Reconcile the separate Studio repo deployment docs/templates to the direct-Pages model once that repo is safe to edit
 
 ## Later
 - Add deeper runtime/backend rollout docs once production infra exists
