@@ -2,7 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import http from "node:http";
 import { GAME_NAME } from "./config.js";
+import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "./config/leagueSetup.js";
 import { createSession, createSessionFromSnapshot } from "./runtime/bootstrap.js";
+import { applyInitialLeagueSetup } from "./runtime/applyLeagueSetup.js";
 import {
   deleteSaveSlot,
   listBackupSlots,
@@ -201,9 +203,12 @@ async function handleApi(req, res, url) {
         mode: setup.mode,
         controlledTeamId: setup.controlledTeamId,
         controlledTeamName: setup.controlledTeamName,
-        controlledTeamAbbrev: setup.controlledTeamAbbrev
+        controlledTeamAbbrev: setup.controlledTeamAbbrev,
+        configSummary: getLeagueConfigSummary(session.getLeagueSettings())
       },
-      teams: setup.teams
+      teams: setup.teams,
+      settings: session.getLeagueSettings(),
+      configCatalog: getLeagueConfigCatalog()
     });
     return true;
   }
@@ -228,13 +233,22 @@ async function handleApi(req, res, url) {
       careerRealismProfilePath: body.careerRealismProfilePath || null,
       controlledTeamId: body.controlledTeamId || "BUF"
     });
-    session.updateLeagueSettings({
-      eraProfile: body.eraProfile || "modern",
-      enableOwnerMode: toBool(body.enableOwnerMode, true),
-      enableNarratives: toBool(body.enableNarratives, true),
-      enableCompPicks: toBool(body.enableCompPicks, true),
-      enableChemistry: toBool(body.enableChemistry, true)
-    });
+    session.league.settings = resolveLeagueSettings(
+      {
+        eraProfile: body.eraProfile || "modern",
+        franchiseArchetype: body.franchiseArchetype || "balanced",
+        rulesPreset: body.rulesPreset || "standard",
+        difficultyPreset: body.difficultyPreset || "standard",
+        challengeMode: body.challengeMode || "open",
+        enableOwnerMode: toBool(body.enableOwnerMode, true),
+        enableNarratives: toBool(body.enableNarratives, true),
+        enableCompPicks: toBool(body.enableCompPicks, true),
+        enableChemistry: toBool(body.enableChemistry, true)
+      },
+      session.getLeagueSettings()
+    );
+    session.league.scouting.weeklyPoints = session.league.settings.scoutingWeeklyPoints;
+    applyInitialLeagueSetup(session, session.controlledTeamId);
     writeAutoBackup("new-league");
     sendJson(res, 200, { ok: true, state: session.getDashboardState() });
     return true;
@@ -863,7 +877,9 @@ async function handleApi(req, res, url) {
       sendJson(res, 400, { ok: false, error: "Invalid JSON body." });
       return true;
     }
-    const settings = session.updateLeagueSettings(body);
+    const settings = resolveLeagueSettings(body, session.getLeagueSettings());
+    session.league.settings = settings;
+    session.league.scouting.weeklyPoints = settings.scoutingWeeklyPoints;
     sendJson(res, 200, { ok: true, settings, state: session.getDashboardState() });
     return true;
   }

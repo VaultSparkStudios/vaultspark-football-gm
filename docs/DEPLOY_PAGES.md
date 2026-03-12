@@ -34,7 +34,7 @@ No secret is required for GitHub Pages deployment.
 `deploy-pages.yml`:
 
 1. Builds the static client for `/vaultspark-football-gm/`
-2. Forces the published bundle to default to the client runtime
+2. Forces the published bundle to default to the client runtime and disables the `server-backed` setup option unless an explicit backend origin variable is provided
 3. Copies `index.html` to `404.html` for deep-link fallback
 4. Uploads the built `static/` artifact to GitHub Pages
 5. Deploys the artifact directly from this repo
@@ -48,7 +48,9 @@ Local validation commands:
 
 This Pages build does not include the server-backed runtime. Published Pages
 artifacts are expected to run in browser/local-storage mode until a separate
-production backend rollout is ready.
+production backend rollout is ready. If `GAME_SERVICE_ORIGIN` or `API_DOMAIN`
+is configured later, the build can point the client at that backend and re-enable
+the `server-backed` runtime selector.
 
 ## Backend scaffold
 

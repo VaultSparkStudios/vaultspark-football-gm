@@ -9,6 +9,17 @@ import {
   ROSTER_TEMPLATE
 } from "../config.js";
 import {
+  DEFAULT_LEAGUE_SETTINGS,
+  DIFFICULTY_PRESETS,
+  ERA_PROFILES,
+  FRANCHISE_ARCHETYPES,
+  getLeagueConfigCatalog,
+  getLeagueConfigSummary,
+  resolveLeagueSettings,
+  RULES_PRESETS,
+  CHALLENGE_MODES
+} from "../config/leagueSetup.js";
+import {
   applyFifthYearOption,
   applyFranchiseTag,
   buildContract,
@@ -56,30 +67,16 @@ const MAX_PRACTICE_SQUAD = 16;
 const MAX_GAME_DAY_INACTIVES = 7;
 const DRAFT_ROUNDS = 7;
 const PICK_ASSET_HORIZON_YEARS = 3;
-
-const DEFAULT_LEAGUE_SETTINGS = {
-  allowInjuries: true,
-  injuryRateMultiplier: 1,
-  capGrowthRate: 0.045,
-  cpuTradeAggression: 0.5,
-  autoProgressOffseason: false,
-  eraProfile: "modern",
-  enableOwnerMode: true,
-  enableNarratives: true,
-  enableCompPicks: true,
-  enableChemistry: true,
-  retirementWinningRetention: true,
-  retirementOverrideMinWinningPct: 0.55,
-  waiverClaimWindowWeeks: 1,
-  practiceSquadExperienceLimit: 2,
-  onboardingCompleted: false
-};
-
-const ERA_PROFILES = {
-  modern: { passRateDelta: 0.02, offenseBoost: 1.5, injuryDelta: 0.04 },
-  balanced: { passRateDelta: 0, offenseBoost: 0, injuryDelta: 0 },
-  legacy: { passRateDelta: -0.05, offenseBoost: -1, injuryDelta: -0.02 }
-};
+const STAFF_ROLE_KEYS = [
+  "headCoach",
+  "offensiveCoordinator",
+  "defensiveCoordinator",
+  "scoutingDirector",
+  "capAnalyst",
+  "strengthCoach",
+  "medicalDirector"
+];
+const CORE_STAFF_KEYS = ["headCoach", "offensiveCoordinator", "defensiveCoordinator"];
 
 function normalizeCount(value, min, max, fallback) {
   const parsed = Number(value);
@@ -133,9 +130,9 @@ function driftStatus(absDrift, { warn = 0.12, fail = 0.25 } = {}) {
   return "on-target";
 }
 
-function scoutingConfidence(pointsSpent, hasReveal) {
+function scoutingConfidence(pointsSpent, hasReveal, bonus = 0) {
   const base = hasReveal ? 58 : 32;
-  return clamp(Math.round(base + pointsSpent * 1.9), hasReveal ? 55 : 20, 99);
+  return clamp(Math.round(base + pointsSpent * 1.9 + bonus), hasReveal ? 55 : 20, 99);
 }
 
 function rookieContract(round, overall, rng) {
@@ -162,6 +159,425 @@ function randomSuspensionReason(rng) {
   return rng.pick(["conduct", "substance policy", "team discipline"]);
 }
 
+function schemeIdentityLabel(team) {
+  const tendencyKey = team?.staff?.tendencyKey || "balanced";
+  const passRate = team?.scheme?.passRate ?? 0.54;
+  const aggression = team?.scheme?.aggression ?? 0.5;
+  const offense =
+    passRate >= 0.62 ? "air-raid" : passRate >= 0.57 ? "vertical-spread" : passRate <= 0.44 ? "ground-control" : "balanced";
+  const defense = aggression >= 0.62 ? "pressure-front" : aggression <= 0.4 ? "contain-shell" : "multiple";
+  return {
+    offense,
+    defense,
+    tempo: passRate >= 0.58 ? "up-tempo" : "measured",
+    tendencyKey
+  };
+}
+
+function cultureIdentity(team, roster = []) {
+  const chemistry = Number(team?.chemistry || 70);
+  const ownerPatience = Number(team?.owner?.patience || 0.55);
+  const hcDiscipline = Number(team?.staff?.headCoach?.discipline || 72);
+  const avgAge = roster.length ? roster.reduce((sum, player) => sum + (player.age || 26), 0) / roster.length : 26;
+  const avgMorale = roster.length ? roster.reduce((sum, player) => sum + (player.morale || 72), 0) / roster.length : 72;
+  const identity =
+    chemistry >= 82 && hcDiscipline >= 80
+      ? "disciplined"
+      : avgAge <= 24.7 && ownerPatience >= 0.62
+        ? "developmental"
+        : ownerPatience <= 0.35
+          ? "urgent"
+          : avgMorale >= 78
+            ? "confident"
+            : "balanced";
+  return {
+    identity,
+    chemistry,
+    avgAge: Number(avgAge.toFixed(1)),
+    avgMorale: Number(avgMorale.toFixed(1)),
+    pressure: Math.round((1 - ownerPatience) * 100)
+  };
+}
+
+function teamWorldStateModifiers(team, roster = []) {
+  const culture = team?.cultureProfile || cultureIdentity(team, roster);
+  const owner = team?.owner || {};
+  const staff = team?.staff || {};
+  const scouting = staff.scoutingDirector || {};
+  const medical = staff.medicalDirector || {};
+  const strength = staff.strengthCoach || {};
+  const capAnalyst = staff.capAnalyst || {};
+  const analytics = Number(owner?.facilities?.analytics || 72);
+  const rehab = Number(owner?.facilities?.rehab || 72);
+  const patience = Number(owner?.patience || 0.55);
+  const personality = owner?.personality || "legacy-builder";
+
+  const scoutingWeeklyBonus = clamp(
+    Math.round((Number(scouting.development || 72) - 72) / 9 + (analytics - 72) / 11 + (culture.identity === "developmental" ? 2 : 0)),
+    -2,
+    8
+  );
+  const moraleSwingMultiplier = Number(
+    clamp(
+      1 +
+        (culture.identity === "urgent" ? 0.2 : 0) +
+        (culture.identity === "confident" ? 0.08 : 0) -
+        (culture.identity === "disciplined" ? 0.07 : 0) -
+        (patience - 0.55) * 0.25,
+      0.75,
+      1.4
+    ).toFixed(2)
+  );
+  const injuryChanceDelta = Number(
+    (
+      -(Number(medical.discipline || 72) - 72) * 0.0014 -
+      (Number(strength.development || 72) - 72) * 0.0012 -
+      (rehab - 72) * 0.0009 +
+      (culture.identity === "urgent" ? 0.01 : 0) -
+      (culture.identity === "disciplined" ? 0.008 : 0)
+    ).toFixed(4)
+  );
+  const extraRecoveryWeeks = clamp(
+    Math.floor(Math.max(0, Number(medical.discipline || 72) - 80) / 14) + Math.floor(Math.max(0, rehab - 84) / 14),
+    0,
+    2
+  );
+  const negotiationLeverageDelta = Number(((Number(capAnalyst.discipline || 72) - 72) / 400).toFixed(3));
+  const fanInterestWeeklyDelta = Number(
+    (
+      (personality === "win-now" ? 0.35 : personality === "legacy-builder" ? 0.18 : personality === "profit-first" ? 0.12 : 0) +
+      (culture.identity === "confident" ? 0.18 : 0) -
+      (culture.identity === "urgent" ? 0.14 : 0)
+    ).toFixed(2)
+  );
+
+  return {
+    culture,
+    scoutingWeeklyBonus,
+    moraleSwingMultiplier,
+    injuryChanceDelta,
+    extraRecoveryWeeks,
+    negotiationLeverageDelta,
+    fanInterestWeeklyDelta
+  };
+}
+
+function averagePlayerRating(player, keys = [], fallback = 70) {
+  if (!player) return fallback;
+  const values = keys.map((key) => Number(player.ratings?.[key] ?? fallback)).filter(Number.isFinite);
+  if (!values.length) return fallback;
+  return values.reduce((sum, value) => sum + value, 0) / values.length;
+}
+
+function averageTopPlayers(roster = [], position, count, selector = (player) => player.overall || 70, fallback = 70) {
+  const players = roster
+    .filter((player) => player.position === position)
+    .slice()
+    .sort((a, b) => (selector(b) || fallback) - (selector(a) || fallback))
+    .slice(0, count);
+  if (!players.length) return fallback;
+  return players.reduce((sum, player) => sum + selector(player), 0) / players.length;
+}
+
+function teamNeedMap(roster = []) {
+  const counts = {};
+  for (const player of roster) {
+    if (player.status !== "active") continue;
+    counts[player.position] = (counts[player.position] || 0) + 1;
+  }
+  return Object.fromEntries(
+    Object.entries(ROSTER_TEMPLATE).map(([position, target]) => [position, Math.max(0, target - (counts[position] || 0))])
+  );
+}
+
+function scoutingInsightForProspect(team, roster, prospect) {
+  const modifiers = teamWorldStateModifiers(team, roster);
+  const fit = computeSchemeFit(prospect, team);
+  const needs = teamNeedMap(roster);
+  const need = needs[prospect.position] || 0;
+  const staffBudget = Number(team?.owner?.staffBudget || 25_000_000);
+  const budgetBonus = clamp((staffBudget - 25_000_000) / 20_000_000, -0.35, 1.25);
+  const revealBonus = clamp(
+    modifiers.scoutingWeeklyBonus * 0.014 + Math.max(0, fit - 72) * 0.0012 + need * 0.018 + budgetBonus * 0.03,
+    -0.05,
+    0.22
+  );
+  const noiseReduction = clamp(
+    Math.round(Math.max(0, modifiers.scoutingWeeklyBonus) / 2.5 + (fit >= 80 ? 1 : 0) + Math.min(2, need)),
+    0,
+    4
+  );
+  const confidenceBonus = clamp(Math.round(modifiers.scoutingWeeklyBonus * 2 + (fit - 70) / 4 + need * 4), -8, 24);
+  return {
+    fit,
+    need,
+    fitLabel: fit >= 84 ? "ideal" : fit >= 74 ? "solid" : fit <= 64 ? "poor" : "neutral",
+    needLabel: need >= 2 ? "priority" : need === 1 ? "depth" : "optional",
+    revealBonus,
+    noiseReduction,
+    confidenceBonus
+  };
+}
+
+function developmentFocusRatings(team, player) {
+  const offenseStyle = team?.schemeIdentity?.offense || schemeIdentityLabel(team).offense;
+  const defenseStyle = team?.schemeIdentity?.defense || schemeIdentityLabel(team).defense;
+  if (player.position === "QB") {
+    return offenseStyle === "ground-control"
+      ? ["awareness", "throwOnRun", "playRecognition", "discipline"]
+      : ["throwAccuracy", "throwPower", "awareness", "playRecognition"];
+  }
+  if (player.position === "RB") {
+    return offenseStyle === "ground-control"
+      ? ["breakTackle", "trucking", "carrying", "awareness"]
+      : ["acceleration", "agility", "catching", "elusiveness"];
+  }
+  if (player.position === "WR" || player.position === "TE") {
+    return offenseStyle === "air-raid"
+      ? ["routeRunning", "release", "catching", "spectacularCatch"]
+      : ["catching", "speed", "awareness", "discipline"];
+  }
+  if (player.position === "OL") {
+    return offenseStyle === "ground-control"
+      ? ["runBlocking", "strength", "awareness", "discipline"]
+      : ["passBlocking", "awareness", "strength", "playRecognition"];
+  }
+  if (player.position === "DL" || player.position === "LB" || player.position === "DB") {
+    return defenseStyle === "pressure-front"
+      ? ["passRush", "blockShedding", "pursuit", "playRecognition"]
+      : ["coverage", "playRecognition", "awareness", "discipline"];
+  }
+  return ["awareness", "discipline", "playRecognition", "agility"];
+}
+
+function playerDevelopmentContext(team, roster, player) {
+  if (!team) {
+    return {
+      developmentBonus: 0,
+      focusRatings: [],
+      moraleDelta: 0,
+      recoveryBonus: 0
+    };
+  }
+  const modifiers = teamWorldStateModifiers(team, roster);
+  const training = Number(team?.owner?.facilities?.training || 72);
+  const coachingDevelopment = Number(team?.coaching?.development || 72);
+  const fit = computeSchemeFit(player, team);
+  const developmentBonus = clamp(
+    Math.round(
+      (training - 72) / 10 +
+        (coachingDevelopment - 72) / 13 +
+        (fit - 70) / 18 +
+        (modifiers.culture.identity === "developmental" ? 1 : 0) -
+        (modifiers.culture.identity === "urgent" && player.age >= 29 ? 1 : 0)
+    ),
+    -3,
+    4
+  );
+  const moraleDelta = modifiers.culture.identity === "confident" ? 1 : modifiers.culture.identity === "urgent" ? -1 : 0;
+  const recoveryBonus = Number(
+    clamp((Number(team?.owner?.facilities?.rehab || 72) - 72) / 700 + modifiers.extraRecoveryWeeks * 0.01, 0, 0.08).toFixed(3)
+  );
+  return {
+    developmentBonus,
+    focusRatings: developmentFocusRatings(team, player),
+    moraleDelta,
+    recoveryBonus
+  };
+}
+
+function buildWeeklyMatchPlan(team, roster = [], opponent = null, opponentRoster = []) {
+  const culture = team?.cultureProfile || cultureIdentity(team, roster);
+  if (!team || !opponent) {
+    return {
+      opponentTeamId: null,
+      focus: "self-scout",
+      defenseFocus: "stay-multiple",
+      summary: "Self-scout week",
+      exploit: "No opponent loaded yet.",
+      warning: "",
+      passLeanDelta: 0,
+      aggressionDelta: 0,
+      tempoDelta: 0,
+      offenseBoost: 0.6,
+      defenseBoost: 0.6,
+      disciplineBoost: culture.identity === "disciplined" ? 1.2 : 0
+    };
+  }
+
+  const ownPassGame =
+    averageTopPlayers(roster, "QB", 1, (player) => averagePlayerRating(player, ["throwAccuracy", "throwPower", "awareness"], player.overall || 70)) *
+      0.46 +
+    averageTopPlayers(roster, "WR", 3, (player) => averagePlayerRating(player, ["catching", "routeRunning", "speed"], player.overall || 70)) *
+      0.32 +
+    averageTopPlayers(roster, "OL", 5, (player) => averagePlayerRating(player, ["passBlocking", "awareness"], player.overall || 70)) *
+      0.22;
+  const ownRunGame =
+    averageTopPlayers(roster, "RB", 2, (player) => averagePlayerRating(player, ["acceleration", "elusiveness", "breakTackle"], player.overall || 70)) *
+      0.48 +
+    averageTopPlayers(roster, "OL", 5, (player) => averagePlayerRating(player, ["runBlocking", "strength"], player.overall || 70)) * 0.34 +
+    averageTopPlayers(roster, "TE", 2, (player) => averagePlayerRating(player, ["runBlocking", "catching"], player.overall || 70)) * 0.18;
+  const ownPassProtection = averageTopPlayers(
+    roster,
+    "OL",
+    5,
+    (player) => averagePlayerRating(player, ["passBlocking", "awareness", "strength"], player.overall || 70)
+  );
+  const ownCoverage = averageTopPlayers(
+    roster,
+    "DB",
+    4,
+    (player) => averagePlayerRating(player, ["coverage", "manCoverage", "zoneCoverage", "playRecognition"], player.overall || 70)
+  );
+  const ownFront = Math.round(
+    averageTopPlayers(roster, "DL", 4, (player) => averagePlayerRating(player, ["passRush", "blockShedding", "tackle"], player.overall || 70)) *
+      0.55 +
+      averageTopPlayers(roster, "LB", 3, (player) => averagePlayerRating(player, ["pursuit", "tackle", "coverage"], player.overall || 70)) *
+        0.45
+  );
+
+  const oppCoverage = averageTopPlayers(
+    opponentRoster,
+    "DB",
+    4,
+    (player) => averagePlayerRating(player, ["coverage", "manCoverage", "zoneCoverage", "playRecognition"], player.overall || 70)
+  );
+  const oppPassRush = Math.round(
+    averageTopPlayers(opponentRoster, "DL", 4, (player) => averagePlayerRating(player, ["passRush", "blockShedding"], player.overall || 70)) *
+      0.62 +
+      averageTopPlayers(opponentRoster, "LB", 3, (player) => averagePlayerRating(player, ["passRush", "pursuit"], player.overall || 70)) *
+        0.38
+  );
+  const oppRunFront = Math.round(
+    averageTopPlayers(opponentRoster, "DL", 4, (player) => averagePlayerRating(player, ["tackle", "blockShedding", "strength"], player.overall || 70)) *
+      0.58 +
+      averageTopPlayers(opponentRoster, "LB", 3, (player) => averagePlayerRating(player, ["tackle", "pursuit"], player.overall || 70)) *
+        0.42
+  );
+  const oppPassGame =
+    averageTopPlayers(
+      opponentRoster,
+      "QB",
+      1,
+      (player) => averagePlayerRating(player, ["throwAccuracy", "throwPower", "awareness"], player.overall || 70)
+    ) *
+      0.46 +
+    averageTopPlayers(
+      opponentRoster,
+      "WR",
+      3,
+      (player) => averagePlayerRating(player, ["catching", "routeRunning", "speed"], player.overall || 70)
+    ) *
+      0.34 +
+    averageTopPlayers(
+      opponentRoster,
+      "OL",
+      5,
+      (player) => averagePlayerRating(player, ["passBlocking", "awareness"], player.overall || 70)
+    ) *
+      0.2;
+  const oppRunGame =
+    averageTopPlayers(
+      opponentRoster,
+      "RB",
+      2,
+      (player) => averagePlayerRating(player, ["acceleration", "elusiveness", "breakTackle"], player.overall || 70)
+    ) *
+      0.52 +
+    averageTopPlayers(
+      opponentRoster,
+      "OL",
+      5,
+      (player) => averagePlayerRating(player, ["runBlocking", "strength"], player.overall || 70)
+    ) *
+      0.48;
+  const oppPassProtection = averageTopPlayers(
+    opponentRoster,
+    "OL",
+    5,
+    (player) => averagePlayerRating(player, ["passBlocking", "awareness", "strength"], player.overall || 70)
+  );
+
+  let focus = "balanced-script";
+  let defenseFocus = "stay-multiple";
+  let exploit = "Lean on base efficiency.";
+  let warning = "";
+  let passLeanDelta = 0;
+  let aggressionDelta = 0;
+  let tempoDelta = 0;
+  let offenseBoost = 0.6;
+  let defenseBoost = 0.7;
+  let disciplineBoost = culture.identity === "disciplined" ? 1.2 : 0;
+
+  if (ownPassGame - oppCoverage >= 4) {
+    focus = "attack-secondary";
+    passLeanDelta += 0.05;
+    offenseBoost += 1.7;
+    exploit = "Their secondary is the cleanest weekly target.";
+  } else if (ownRunGame - oppRunFront >= 4) {
+    focus = "lean-run";
+    passLeanDelta -= 0.06;
+    offenseBoost += 1.5;
+    exploit = "The run front is soft enough to stay on schedule.";
+  } else if (oppPassRush - ownPassProtection >= 4) {
+    focus = "protect-front";
+    passLeanDelta -= 0.03;
+    offenseBoost += 0.9;
+    disciplineBoost += 1.1;
+    warning = "Their pass rush can wreck long-dropback offense.";
+  } else if ((team.strategyProfile || "balanced") === "win-now" || culture.identity === "urgent") {
+    focus = "tempo-script";
+    tempoDelta += 0.05;
+    passLeanDelta += 0.02;
+    offenseBoost += 1.1;
+    exploit = "Push pace before the opponent settles in.";
+  }
+
+  if (ownFront - oppPassProtection >= 4) {
+    defenseFocus = "pressure-pocket";
+    aggressionDelta += 0.08;
+    defenseBoost += 1.6;
+    if (!warning) warning = "Pressure should force them off-script.";
+  } else if (ownCoverage - oppPassGame >= 4) {
+    defenseFocus = "flood-coverage";
+    aggressionDelta -= 0.02;
+    defenseBoost += 1.3;
+  } else if (oppRunGame - ownFront >= 3) {
+    defenseFocus = "load-box";
+    aggressionDelta += 0.03;
+    defenseBoost += 1.0;
+    warning = warning || "The ground game needs extra bodies this week.";
+  }
+
+  if (culture.identity === "confident") {
+    offenseBoost += 0.4;
+    defenseBoost += 0.4;
+  }
+  if (culture.identity === "urgent") {
+    tempoDelta += 0.03;
+    aggressionDelta += 0.02;
+  }
+  if (team.owner?.hotSeat) {
+    offenseBoost += 0.3;
+    defenseBoost += 0.3;
+  }
+
+  return {
+    opponentTeamId: opponent.id,
+    focus,
+    defenseFocus,
+    summary: `${focus.replace(/-/g, " ")}; ${defenseFocus.replace(/-/g, " ")}`,
+    exploit,
+    warning,
+    passLeanDelta: Number(passLeanDelta.toFixed(2)),
+    aggressionDelta: Number(aggressionDelta.toFixed(2)),
+    tempoDelta: Number(tempoDelta.toFixed(2)),
+    offenseBoost: Number(offenseBoost.toFixed(2)),
+    defenseBoost: Number(defenseBoost.toFixed(2)),
+    disciplineBoost: Number(disciplineBoost.toFixed(2))
+  };
+}
+
 function buildStaffProfile(rng, existing = null) {
   const archetypes = Object.keys(COACHING_TENDENCY_ARCHETYPES);
   const pickArchetype = () => {
@@ -172,18 +588,23 @@ function buildStaffProfile(rng, existing = null) {
     existing?.tendencyKey && COACHING_TENDENCY_ARCHETYPES[existing.tendencyKey]
       ? existing.tendencyKey
       : pickArchetype();
-  const make = (role, fallback) => ({
+  const make = (role, fallback, specialty = {}) => ({
     name: existing?.[role]?.name || fallback,
     playcalling: Number.isFinite(existing?.[role]?.playcalling) ? existing[role].playcalling : rng.int(62, 93),
     development: Number.isFinite(existing?.[role]?.development) ? existing[role].development : rng.int(62, 93),
     discipline: Number.isFinite(existing?.[role]?.discipline) ? existing[role].discipline : rng.int(62, 93),
-    yearsRemaining: Number.isFinite(existing?.[role]?.yearsRemaining) ? existing[role].yearsRemaining : rng.int(2, 5)
+    yearsRemaining: Number.isFinite(existing?.[role]?.yearsRemaining) ? existing[role].yearsRemaining : rng.int(2, 5),
+    specialty
   });
   return {
     tendencyKey,
-    headCoach: make("headCoach", "Head Coach"),
-    offensiveCoordinator: make("offensiveCoordinator", "Offensive Coordinator"),
-    defensiveCoordinator: make("defensiveCoordinator", "Defensive Coordinator")
+    headCoach: make("headCoach", "Head Coach", { area: "leadership" }),
+    offensiveCoordinator: make("offensiveCoordinator", "Offensive Coordinator", { area: "offense" }),
+    defensiveCoordinator: make("defensiveCoordinator", "Defensive Coordinator", { area: "defense" }),
+    scoutingDirector: make("scoutingDirector", "Scouting Director", { area: "scouting" }),
+    capAnalyst: make("capAnalyst", "Cap Analyst", { area: "finance" }),
+    strengthCoach: make("strengthCoach", "Strength Coach", { area: "conditioning" }),
+    medicalDirector: make("medicalDirector", "Medical Director", { area: "health" })
   };
 }
 
@@ -192,12 +613,22 @@ function applyStaffToCoaching(team) {
   const hc = team.staff.headCoach;
   const oc = team.staff.offensiveCoordinator;
   const dc = team.staff.defensiveCoordinator;
+  const scouting = team.staff.scoutingDirector || { development: 72 };
+  const strength = team.staff.strengthCoach || { development: 72, discipline: 72 };
+  const medical = team.staff.medicalDirector || { discipline: 72 };
+  const capAnalyst = team.staff.capAnalyst || { discipline: 72 };
   const tendencies =
     COACHING_TENDENCY_ARCHETYPES[team.staff.tendencyKey] || COACHING_TENDENCY_ARCHETYPES.balanced;
   team.coaching = {
     offense: clamp(Math.round((oc.playcalling * 0.58 + hc.playcalling * 0.42)), 40, 99),
     defense: clamp(Math.round((dc.playcalling * 0.58 + hc.playcalling * 0.42)), 40, 99),
-    discipline: clamp(Math.round((hc.discipline * 0.68 + (oc.discipline + dc.discipline) * 0.16)), 40, 99),
+    discipline: clamp(
+      Math.round(hc.discipline * 0.5 + (oc.discipline + dc.discipline) * 0.12 + strength.discipline * 0.14 + capAnalyst.discipline * 0.12),
+      40,
+      99
+    ),
+    development: clamp(Math.round((hc.development + oc.development + dc.development + scouting.development + strength.development) / 5), 40, 99),
+    wellness: clamp(Math.round((medical.discipline * 0.55 + strength.development * 0.45)), 40, 99),
     tendencies
   };
 }
@@ -213,6 +644,7 @@ function computeTeamStrategyProfile(team, roster = []) {
 
 function buildOwnerProfile(rng, existing = null) {
   const market = Number(existing?.marketSize ?? rng.float(0.85, 1.2));
+  const patience = Number(existing?.patience ?? rng.float(0.28, 0.76));
   return {
     marketSize: Number(market.toFixed(2)),
     ticketPrice: Math.round(Number(existing?.ticketPrice ?? rng.int(75, 210))),
@@ -227,6 +659,15 @@ function buildOwnerProfile(rng, existing = null) {
     finances: {
       revenueYtd: Math.round(Number(existing?.finances?.revenueYtd ?? 0)),
       expensesYtd: Math.round(Number(existing?.finances?.expensesYtd ?? 0))
+    },
+    patience: Number(patience.toFixed(2)),
+    personality: existing?.personality || (typeof rng?.pick === "function" ? rng.pick(["profit-first", "legacy-builder", "win-now", "player-friendly"]) : "legacy-builder"),
+    hotSeat: existing?.hotSeat === true,
+    priorities: existing?.priorities || {
+      championships: rng.int(60, 95),
+      profit: rng.int(45, 90),
+      loyalty: rng.int(40, 88),
+      patience: Math.round(patience * 100)
     }
   };
 }
@@ -429,9 +870,11 @@ function ensureLeagueRuntime(league) {
   };
   for (const team of league.teams) {
     Object.assign(team, ensureTeamIdentity(team));
-    if (!team.staff) team.staff = buildStaffProfile({ int: () => 76 }, team.staff);
+    if (!team.staff || STAFF_ROLE_KEYS.some((role) => !team.staff?.[role])) {
+      team.staff = buildStaffProfile({ int: () => 76, pick: (items) => items[0] }, team.staff);
+    }
     if (!team.strategyProfile) team.strategyProfile = "balanced";
-    if (!team.owner) team.owner = buildOwnerProfile({ int: () => 76, float: () => 1, chance: () => false }, team.owner);
+    team.owner = buildOwnerProfile({ int: () => 76, float: () => 1, chance: () => false, pick: (items) => items[0] }, team.owner);
     if (!Number.isFinite(team.chemistry)) team.chemistry = 70;
     applyStaffToCoaching(team);
   }
@@ -455,9 +898,12 @@ function toDashboardTeam(team) {
     overallRating: team.overallRating,
     coaching: team.coaching,
     scheme: team.scheme,
+    schemeIdentity: team.schemeIdentity || null,
     strategyProfile: team.strategyProfile || "balanced",
     staff: team.staff || null,
+    weeklyPlan: team.weeklyPlan || null,
     chemistry: team.chemistry || 70,
+    cultureProfile: team.cultureProfile || null,
     owner: team.owner || null
   };
 }
@@ -523,8 +969,11 @@ function applyWeekMorale(league, weekResult) {
     }
   }
   for (const [teamId, delta] of deltaByTeam.entries()) {
+    const team = teamById(league, teamId);
+    const modifiers = teamWorldStateModifiers(team, activeRosterPlayers(league, teamId));
+    const appliedDelta = Math.round(delta * modifiers.moraleSwingMultiplier);
     for (const player of activeRosterPlayers(league, teamId)) {
-      player.morale = clamp((player.morale || 72) + delta, 35, 99);
+      player.morale = clamp((player.morale || 72) + appliedDelta, 35, 99);
     }
   }
 }
@@ -679,10 +1128,10 @@ export class GameSession {
   initializeLeagueSystems() {
     ensureLeagueRuntime(this.league);
     for (const team of this.league.teams) {
-      if (!team.staff || !team.staff.headCoach) {
+      if (!team.staff || STAFF_ROLE_KEYS.some((role) => !team.staff?.[role])) {
         team.staff = buildStaffProfile(this.rng, team.staff);
       }
-      if (!team.owner) team.owner = buildOwnerProfile(this.rng, team.owner);
+      team.owner = buildOwnerProfile(this.rng, team.owner);
       applyStaffToCoaching(team);
       if (!team.strategyProfile) {
         const roster = teamPlayersAll(this.league, team.id);
@@ -693,6 +1142,9 @@ export class GameSession {
         player.schemeFit = computeSchemeFit(player, team);
       }
       team.chemistry = computeTeamChemistry(roster, team);
+      team.schemeIdentity = schemeIdentityLabel(team);
+      team.cultureProfile = cultureIdentity(team, roster);
+      team.weeklyPlan = this.buildWeeklyPlan(team.id);
     }
     this.ensureDraftPickAssets();
     if (!this.league.offseasonPipeline || this.league.offseasonPipeline.year !== this.currentYear) {
@@ -807,43 +1259,57 @@ export class GameSession {
   }
 
   getLeagueSettings() {
-    return {
-      ...DEFAULT_LEAGUE_SETTINGS,
-      ...(this.league.settings || {})
-    };
+    return resolveLeagueSettings(this.league.settings || {}, this.league.settings || DEFAULT_LEAGUE_SETTINGS);
   }
 
   updateLeagueSettings(patch = {}) {
-    const next = {
-      ...this.getLeagueSettings()
-    };
-    if (patch.allowInjuries != null) next.allowInjuries = patch.allowInjuries === true;
-    if (patch.autoProgressOffseason != null) next.autoProgressOffseason = patch.autoProgressOffseason === true;
-    if (patch.injuryRateMultiplier != null) next.injuryRateMultiplier = clamp(Number(patch.injuryRateMultiplier) || 1, 0.1, 3);
-    if (patch.capGrowthRate != null) next.capGrowthRate = clamp(Number(patch.capGrowthRate) || 0.045, 0, 0.2);
-    if (patch.cpuTradeAggression != null) next.cpuTradeAggression = clamp(Number(patch.cpuTradeAggression) || 0.5, 0, 1);
-    if (patch.eraProfile != null && ERA_PROFILES[patch.eraProfile]) next.eraProfile = patch.eraProfile;
-    if (patch.enableOwnerMode != null) next.enableOwnerMode = patch.enableOwnerMode === true;
-    if (patch.enableNarratives != null) next.enableNarratives = patch.enableNarratives === true;
-    if (patch.enableCompPicks != null) next.enableCompPicks = patch.enableCompPicks === true;
-    if (patch.enableChemistry != null) next.enableChemistry = patch.enableChemistry === true;
-    if (patch.retirementWinningRetention != null) next.retirementWinningRetention = patch.retirementWinningRetention === true;
-    if (patch.retirementOverrideMinWinningPct != null) {
-      next.retirementOverrideMinWinningPct = clamp(Number(patch.retirementOverrideMinWinningPct) || 0.55, 0.3, 0.9);
-    }
-    if (patch.waiverClaimWindowWeeks != null) {
-      next.waiverClaimWindowWeeks = clamp(Math.round(Number(patch.waiverClaimWindowWeeks) || 1), 1, 4);
-    }
-    if (patch.practiceSquadExperienceLimit != null) {
-      next.practiceSquadExperienceLimit = clamp(Math.round(Number(patch.practiceSquadExperienceLimit) || 2), 0, 5);
-    }
+    const next = resolveLeagueSettings(patch, this.getLeagueSettings());
     this.league.settings = next;
+    if (!this.league.scouting) this.league.scouting = { teams: {}, weeklyPoints: next.scoutingWeeklyPoints };
+    this.league.scouting.weeklyPoints = next.scoutingWeeklyPoints;
     return next;
   }
 
   getEraProfile() {
     const key = this.league.settings?.eraProfile || "modern";
     return { key, ...(ERA_PROFILES[key] || ERA_PROFILES.modern) };
+  }
+
+  getChallengeRestrictions(teamId = this.controlledTeamId) {
+    const settings = this.getLeagueSettings();
+    const appliesToTeam = teamId === this.controlledTeamId;
+    return {
+      appliesToTeam,
+      allowUserFreeAgency: !appliesToTeam || settings.allowUserFreeAgency !== false,
+      allowTop10PickTrading: !appliesToTeam || settings.allowTop10PickTrading !== false,
+      challengeMode: settings.challengeMode || "open"
+    };
+  }
+
+  getWeeklyScoutingPointGrant(teamId = this.controlledTeamId) {
+    const base = Number(this.league.scouting?.weeklyPoints || 12);
+    const team = teamById(this.league, teamId);
+    const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, teamId) : []);
+    return clamp(Math.round(base + modifiers.scoutingWeeklyBonus), 4, 30);
+  }
+
+  buildWeeklyPlan(teamId = this.controlledTeamId) {
+    const team = teamById(this.league, teamId);
+    if (!team) return null;
+    const roster = teamPlayersAll(this.league, teamId);
+    const weekBlock =
+      this.seasonSchedule?.find((entry) => entry.week === this.currentWeek) || this.seasonSchedule?.[this.currentWeek - 1] || null;
+    const matchup = weekBlock?.games?.find((game) => game.homeTeamId === teamId || game.awayTeamId === teamId) || null;
+    const opponentId = matchup ? (matchup.homeTeamId === teamId ? matchup.awayTeamId : matchup.homeTeamId) : null;
+    const opponent = opponentId ? teamById(this.league, opponentId) : null;
+    const opponentRoster = opponent ? teamPlayersAll(this.league, opponentId) : [];
+    return buildWeeklyMatchPlan(team, roster, opponent, opponentRoster);
+  }
+
+  buildPlayerDevelopmentContext(teamId, player) {
+    const team = teamId ? teamById(this.league, teamId) : null;
+    const roster = team ? teamPlayersAll(this.league, teamId) : [];
+    return playerDevelopmentContext(team, roster, player);
   }
 
   getOffseasonPipeline() {
@@ -1003,6 +1469,7 @@ export class GameSession {
         year: this.currentYear,
         rng: this.rng,
         skipDraft: true,
+        developmentContext: (player, team) => this.buildPlayerDevelopmentContext(team?.id || player.teamId, player),
         retirementSettings: {
           winningRetention: settings.retirementWinningRetention !== false
         }
@@ -1109,10 +1576,14 @@ export class GameSession {
   getStaff(teamId = this.controlledTeamId) {
     const team = teamById(this.league, teamId);
     if (!team) return null;
+    const roster = teamPlayersAll(this.league, teamId);
     return {
       teamId,
       teamName: team.name,
       strategyProfile: team.strategyProfile || "balanced",
+      schemeIdentity: team.schemeIdentity || schemeIdentityLabel(team),
+      cultureProfile: team.cultureProfile || cultureIdentity(team, roster),
+      weeklyPlan: team.weeklyPlan || this.buildWeeklyPlan(teamId),
       staff: team.staff || null,
       coaching: team.coaching || null
     };
@@ -1122,7 +1593,7 @@ export class GameSession {
     const team = teamById(this.league, teamId);
     if (!team) return { ok: false, error: "Invalid team." };
     if (!team.staff) team.staff = buildStaffProfile(this.rng, team.staff);
-    if (!["headCoach", "offensiveCoordinator", "defensiveCoordinator"].includes(role)) {
+    if (!STAFF_ROLE_KEYS.includes(role)) {
       return { ok: false, error: "Invalid staff role." };
     }
     const current = team.staff[role];
@@ -1131,9 +1602,12 @@ export class GameSession {
       playcalling: clamp(Math.round(Number(playcalling ?? current.playcalling)), 40, 99),
       development: clamp(Math.round(Number(development ?? current.development)), 40, 99),
       discipline: clamp(Math.round(Number(discipline ?? current.discipline)), 40, 99),
-      yearsRemaining: clamp(Math.round(Number(yearsRemaining ?? current.yearsRemaining)), 1, 7)
+      yearsRemaining: clamp(Math.round(Number(yearsRemaining ?? current.yearsRemaining)), 1, 7),
+      specialty: current.specialty || null
     };
     applyStaffToCoaching(team);
+    team.schemeIdentity = schemeIdentityLabel(team);
+    team.cultureProfile = cultureIdentity(team, teamPlayersAll(this.league, teamId));
     this.logTransaction({
       type: "staff-update",
       teamId,
@@ -1147,10 +1621,14 @@ export class GameSession {
     const team = teamById(this.league, teamId);
     if (!team) return null;
     if (!team.owner) team.owner = buildOwnerProfile(this.rng);
+    const roster = teamPlayersAll(this.league, teamId);
     return {
       teamId,
       owner: team.owner,
-      chemistry: team.chemistry || 70
+      chemistry: team.chemistry || 70,
+      cultureProfile: team.cultureProfile || cultureIdentity(team, roster),
+      schemeIdentity: team.schemeIdentity || schemeIdentityLabel(team),
+      weeklyPlan: team.weeklyPlan || this.buildWeeklyPlan(teamId)
     };
   }
 
@@ -1163,6 +1641,7 @@ export class GameSession {
     if (training != null) team.owner.facilities.training = clamp(Math.round(Number(training)), 40, 99);
     if (rehab != null) team.owner.facilities.rehab = clamp(Math.round(Number(rehab)), 40, 99);
     if (analytics != null) team.owner.facilities.analytics = clamp(Math.round(Number(analytics)), 40, 99);
+    team.cultureProfile = cultureIdentity(team, teamPlayersAll(this.league, teamId));
     this.logTransaction({
       type: "owner-update",
       teamId,
@@ -1181,6 +1660,9 @@ export class GameSession {
         player.schemeFit = computeSchemeFit(player, team);
       }
       team.chemistry = computeTeamChemistry(roster, team);
+      team.schemeIdentity = schemeIdentityLabel(team);
+      team.cultureProfile = cultureIdentity(team, roster);
+      team.weeklyPlan = this.buildWeeklyPlan(team.id);
     }
   }
 
@@ -1191,8 +1673,18 @@ export class GameSession {
       const home = teamById(this.league, game.homeTeamId);
       const away = teamById(this.league, game.awayTeamId);
       if (!home?.owner || !away?.owner) continue;
-      const attendanceFactorHome = clamp((home.owner.fanInterest || 70) / 100 + this.rng.float(-0.08, 0.08), 0.52, 1.08);
-      const attendanceFactorAway = clamp((away.owner.fanInterest || 70) / 100 + this.rng.float(-0.08, 0.08), 0.52, 1.08);
+      const homeModifiers = teamWorldStateModifiers(home, teamPlayersAll(this.league, home.id));
+      const awayModifiers = teamWorldStateModifiers(away, teamPlayersAll(this.league, away.id));
+      const attendanceFactorHome = clamp(
+        (home.owner.fanInterest || 70) / 100 + homeModifiers.fanInterestWeeklyDelta * 0.02 + this.rng.float(-0.08, 0.08),
+        0.52,
+        1.12
+      );
+      const attendanceFactorAway = clamp(
+        (away.owner.fanInterest || 70) / 100 + awayModifiers.fanInterestWeeklyDelta * 0.02 + this.rng.float(-0.08, 0.08),
+        0.52,
+        1.12
+      );
       const homeRevenue = Math.round(home.owner.marketSize * (home.owner.ticketPrice || 120) * 66_500 * attendanceFactorHome);
       const awayRevenue = Math.round(away.owner.marketSize * (away.owner.ticketPrice || 120) * 24_000 * attendanceFactorAway);
       home.owner.finances.revenueYtd += homeRevenue;
@@ -1201,6 +1693,16 @@ export class GameSession {
       away.owner.finances.expensesYtd += Math.round((away.owner.staffBudget || 25_000_000) / NFL_STRUCTURE.regularSeasonWeeks);
       home.owner.cash += homeRevenue - Math.round((home.owner.staffBudget || 25_000_000) / NFL_STRUCTURE.regularSeasonWeeks);
       away.owner.cash += awayRevenue - Math.round((away.owner.staffBudget || 25_000_000) / NFL_STRUCTURE.regularSeasonWeeks);
+      const updatePressure = (team, won, modifiers) => {
+        const owner = team.owner;
+        const pressurePenalty = owner.personality === "win-now" || owner.priorities?.championships >= 85 ? 1.2 : 0.8;
+        const interestDelta = won ? 1.2 + modifiers.fanInterestWeeklyDelta : -1.1 * pressurePenalty + modifiers.fanInterestWeeklyDelta;
+        owner.fanInterest = clamp(Math.round((owner.fanInterest || 70) + interestDelta), 20, 100);
+        const recordGap = (team.season?.losses || 0) - (team.season?.wins || 0);
+        owner.hotSeat = owner.patience < 0.4 && (recordGap >= 2 || owner.fanInterest < 55);
+      };
+      updatePressure(home, game.winnerId === game.homeTeamId, homeModifiers);
+      updatePressure(away, game.winnerId === game.awayTeamId, awayModifiers);
     }
   }
 
@@ -1234,6 +1736,9 @@ export class GameSession {
       rng: this.rng
     });
     this.league.pendingWaiverClaims = [];
+    for (const team of this.league.teams) {
+      team.weeklyPlan = this.buildWeeklyPlan(team.id);
+    }
   }
   setControlledTeam(teamId) {
     if (teamById(this.league, teamId)) this.controlledTeamId = teamId;
@@ -1453,10 +1958,9 @@ export class GameSession {
   }
 
   grantWeeklyScoutingPoints() {
-    const weeklyPoints = Number(this.league.scouting?.weeklyPoints || 12);
     for (const team of this.league.teams) {
       const state = this.ensureScoutingTeamState(team.id);
-      state.points = Math.min(240, (state.points || 0) + weeklyPoints);
+      state.points = Math.min(240, (state.points || 0) + this.getWeeklyScoutingPointGrant(team.id));
     }
   }
 
@@ -1482,9 +1986,12 @@ export class GameSession {
     if (!draft) return { active: false, teamId, points: 0, locked: false, weeklyReports: [], prospects: [] };
     const state = this.ensureScoutingTeamState(teamId);
     const safeLimit = normalizeCount(limit, 10, 300, 120);
+    const team = teamById(this.league, teamId);
+    const roster = team ? teamPlayersAll(this.league, teamId) : [];
     const prospects = draft.available.slice(0, safeLimit).map((prospect) => {
       const revealed = state.evaluations[prospect.id];
       const spent = Number(state.effort[prospect.id] || 0);
+      const insight = scoutingInsightForProspect(team, roster, prospect);
       return {
         playerId: prospect.id,
         player: prospect.name,
@@ -1495,8 +2002,11 @@ export class GameSession {
         combine40: prospect.scouting?.combine?.forty || null,
         scoutedOverall: revealed ?? null,
         baselineScout: prospect.scouting?.scoutedOverall ?? null,
+        schemeFit: insight.fit,
+        fitLabel: insight.fitLabel,
+        need: insight.needLabel,
         pointsSpent: spent,
-        confidence: scoutingConfidence(spent, revealed != null)
+        confidence: scoutingConfidence(spent, revealed != null, insight.confidenceBonus)
       };
     });
 
@@ -1533,9 +2043,14 @@ export class GameSession {
 
     const hadReveal = teamState.evaluations[playerId] != null;
     const baseline = teamState.evaluations[playerId] ?? prospect.scouting?.scoutedOverall ?? prospect.overall;
-    const revealFactor = clamp(spend / 32, 0.08, 0.72);
+    const team = teamById(this.league, teamId);
+    const roster = team ? teamPlayersAll(this.league, teamId) : [];
+    const insight = scoutingInsightForProspect(team, roster, prospect);
+    const revealFactor = clamp(spend / 32 + insight.revealBonus, 0.08, 0.84);
+    const noiseRange = Math.max(0, 2 - insight.noiseReduction);
+    const noise = noiseRange ? this.rng.int(-noiseRange, noiseRange) : 0;
     const revealed = clamp(
-      Math.round(baseline + (prospect.overall - baseline) * revealFactor + this.rng.int(-2, 2)),
+      Math.round(baseline + (prospect.overall - baseline) * revealFactor + noise),
       45,
       99
     );
@@ -1558,7 +2073,7 @@ export class GameSession {
       if (teamState.weeklyReports.length > 180) teamState.weeklyReports = teamState.weeklyReports.slice(-180);
     }
     report.pointsSpent += spend;
-    const confidence = scoutingConfidence(teamState.effort[playerId], true);
+    const confidence = scoutingConfidence(teamState.effort[playerId], true, insight.confidenceBonus);
     const existingEvalIndex = report.evaluations.findIndex((entry) => entry.playerId === playerId);
     const evalRow = {
       playerId,
@@ -1567,6 +2082,9 @@ export class GameSession {
       previous: hadReveal ? baseline : null,
       revealed,
       delta: hadReveal ? revealed - baseline : revealed - (prospect.scouting?.scoutedOverall ?? revealed),
+      schemeFit: insight.fit,
+      fitLabel: insight.fitLabel,
+      need: insight.needLabel,
       confidence,
       pointsSpent: teamState.effort[playerId]
     };
@@ -1579,6 +2097,9 @@ export class GameSession {
       playerId,
       pointsSpent: spend,
       scoutedOverall: revealed,
+      schemeFit: insight.fit,
+      fitLabel: insight.fitLabel,
+      need: insight.needLabel,
       confidence,
       pointsRemaining: teamState.points
     };
@@ -1765,6 +2286,10 @@ export class GameSession {
 
   signFreeAgent({ teamId, playerId }) {
     if (!teamById(this.league, teamId)) return { ok: false, error: "Invalid team." };
+    const restrictions = this.getChallengeRestrictions(teamId);
+    if (!restrictions.allowUserFreeAgency) {
+      return { ok: false, error: "This challenge mode disables user free-agent signings.", reasonCode: "challenge-free-agency" };
+    }
     const player = this.league.players.find(
       (entry) =>
         entry.id === playerId &&
@@ -1874,6 +2399,10 @@ export class GameSession {
 
   claimWaiver({ teamId, playerId }) {
     if (!teamById(this.league, teamId)) return { ok: false, error: "Invalid team." };
+    const restrictions = this.getChallengeRestrictions(teamId);
+    if (!restrictions.allowUserFreeAgency) {
+      return { ok: false, error: "This challenge mode disables user waiver claims.", reasonCode: "challenge-free-agency" };
+    }
     if (!this.league.waiverWire.some((entry) => entry.playerId === playerId)) {
       return { ok: false, error: "Player is not on waiver wire." };
     }
@@ -1973,6 +2502,25 @@ export class GameSession {
       picksB.length !== teamBPickIds.length
     ) {
       return { ok: false, error: "Invalid asset in trade package.", reasonCode: "invalid-asset" };
+    }
+
+    const challengeA = this.getChallengeRestrictions(teamA);
+    const challengeB = this.getChallengeRestrictions(teamB);
+    const incomingTop10ToA = picksB.filter((pick) => (pick.originalPickIndex || 99) <= 10);
+    const incomingTop10ToB = picksA.filter((pick) => (pick.originalPickIndex || 99) <= 10);
+    if (!challengeA.allowTop10PickTrading && incomingTop10ToA.length) {
+      return {
+        ok: false,
+        error: "This challenge mode blocks acquiring top-10 draft picks.",
+        reasonCode: "challenge-top10-picks"
+      };
+    }
+    if (!challengeB.allowTop10PickTrading && incomingTop10ToB.length) {
+      return {
+        ok: false,
+        error: "This challenge mode blocks acquiring top-10 draft picks.",
+        reasonCode: "challenge-top10-picks"
+      };
     }
 
     const capA = this.getTeamCapSummary(teamA).capSpace;
@@ -2168,6 +2716,9 @@ export class GameSession {
     const leverage =
       player.developmentTrait === "Superstar" ? 1.28 : player.developmentTrait === "Hidden Development" ? 1.14 : 1;
     const ageCurve = player.age <= 27 ? 1.08 : player.age <= 31 ? 1 : 0.92;
+    const team = teamById(this.league, teamId);
+    const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, teamId) : []);
+    const demandMultiplier = this.getLeagueSettings().contractDemandMultiplier || 1;
     const years = clamp(
       contract.yearsRemaining <= 1
         ? player.age <= 25
@@ -2179,7 +2730,9 @@ export class GameSession {
       1,
       5
     );
-    const salary = Math.round(Math.max(baseSalary, contract.salary * 1.04) * leverage * ageCurve);
+    const salary = Math.round(
+      Math.max(baseSalary, contract.salary * 1.04) * leverage * ageCurve * demandMultiplier * (1 - modifiers.negotiationLeverageDelta)
+    );
     const guaranteedPct = clamp(0.36 + (player.overall - 70) / 160 + (leverage - 1) * 0.4, 0.32, 0.82);
     const guaranteed = Math.round(salary * guaranteedPct);
     return {
@@ -2431,10 +2984,14 @@ export class GameSession {
   decrementAvailability() {
     for (const player of this.league.players) {
       if (player.injury && player.injury.weeksRemaining > 0) {
-        player.injury.weeksRemaining -= 1;
+        const team = teamById(this.league, player.teamId);
+        const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, player.teamId) : []);
+        player.injury.weeksRemaining -= 1 + modifiers.extraRecoveryWeeks;
         if (player.injury.weeksRemaining <= 0) player.injury = null;
       } else if (!player.injury && Number(player.reinjuryRisk || 0) > 0) {
-        player.reinjuryRisk = clamp(player.reinjuryRisk - 0.02, 0, 0.55);
+        const team = teamById(this.league, player.teamId);
+        const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, player.teamId) : []);
+        player.reinjuryRisk = clamp(player.reinjuryRisk - (0.02 + modifiers.extraRecoveryWeeks * 0.01), 0, 0.55);
       }
       if ((player.suspensionWeeks || 0) > 0) player.suspensionWeeks -= 1;
     }
@@ -2456,6 +3013,9 @@ export class GameSession {
       for (const player of roster) player.schemeFit = computeSchemeFit(player, team);
       team.strategyProfile = computeTeamStrategyProfile(team, roster);
       team.chemistry = computeTeamChemistry(roster, team);
+      team.schemeIdentity = schemeIdentityLabel(team);
+      team.cultureProfile = cultureIdentity(team, roster);
+      team.weeklyPlan = this.buildWeeklyPlan(team.id);
       team.offenseRating = clamp(Math.round((team.offenseRating || 70) + era.offenseBoost * 0.1), 45, 99);
     }
   }
@@ -2486,12 +3046,13 @@ export class GameSession {
         if (!roster.length) continue;
 
         const injuryRolls = this.rng.int(0, 2);
-        for (let i = 0; i < injuryRolls; i += 1) {
+      for (let i = 0; i < injuryRolls; i += 1) {
           if (!settings.allowInjuries) continue;
           const team = teamById(this.league, teamId);
+          const modifiers = teamWorldStateModifiers(team, roster);
           const rehabBoost = (team?.owner?.facilities?.rehab || 72) - 72;
           const injuryBase = 0.24 * settings.injuryRateMultiplier + this.getEraProfile().injuryDelta;
-          if (!this.rng.chance(clamp(injuryBase - rehabBoost * 0.0012, 0.04, 0.65))) continue;
+          if (!this.rng.chance(clamp(injuryBase - rehabBoost * 0.0012 + modifiers.injuryChanceDelta, 0.03, 0.65))) continue;
           const player = this.rng.pick(roster);
           if (player.injury) continue;
           const reinjuryBias = Number(player.reinjuryRisk || 0);
@@ -3072,6 +3633,14 @@ export class GameSession {
     if (!draft || draft.completed) return { ok: false, error: "No active draft." };
     const teamOnClock = draft.order[(draft.currentPick - 1) % 32];
     if (teamOnClock !== this.controlledTeamId) return { ok: false, error: "User team is not on the clock." };
+    const restrictions = this.getChallengeRestrictions(teamOnClock);
+    if (!restrictions.allowTop10PickTrading && draft.currentPick <= 10) {
+      return {
+        ok: false,
+        error: "This challenge mode blocks making selections in the top 10. Trade down or let the CPU resolve the pick.",
+        reasonCode: "challenge-top10-picks"
+      };
+    }
     const round = Math.floor((draft.currentPick - 1) / 32) + 1;
     const pickIndex = draft.available.findIndex((prospect) => prospect.id === playerId);
     if (pickIndex < 0) return { ok: false, error: "Prospect not available." };
@@ -3103,7 +3672,10 @@ export class GameSession {
     let completed = 0;
     while (!draft.completed && completed < picks) {
       const teamOnClock = draft.order[(draft.currentPick - 1) % 32];
-      if (untilUserPick && teamOnClock === this.controlledTeamId) break;
+      if (untilUserPick && teamOnClock === this.controlledTeamId) {
+        const restrictions = this.getChallengeRestrictions(teamOnClock);
+        if (restrictions.allowTop10PickTrading || draft.currentPick > 10) break;
+      }
       const round = Math.floor((draft.currentPick - 1) / 32) + 1;
 
       const needs = this.getRosterNeedSummary(teamOnClock)
@@ -3388,6 +3960,16 @@ export class GameSession {
     }
 
     const destinationTeam = forceSign && teamById(this.league, teamId) ? teamId : "FA";
+    if (destinationTeam !== "FA") {
+      const restrictions = this.getChallengeRestrictions(destinationTeam);
+      if (!restrictions.allowUserFreeAgency) {
+        return {
+          ok: false,
+          error: "This challenge mode disables user retirement overrides that force a comeback signing.",
+          reasonCode: "challenge-free-agency"
+        };
+      }
+    }
     if (destinationTeam !== "FA" && activeRosterPlayers(this.league, destinationTeam).length >= MAX_ACTIVE_ROSTER) {
       return { ok: false, error: "Destination team active roster is full (53)." };
     }
@@ -3488,6 +4070,10 @@ export class GameSession {
 
   submitFreeAgencyOffer({ teamId, playerId, years = 2, salary = null }) {
     if (!teamById(this.league, teamId)) return { ok: false, error: "Invalid team." };
+    const restrictions = this.getChallengeRestrictions(teamId);
+    if (!restrictions.allowUserFreeAgency) {
+      return { ok: false, error: "This challenge mode disables user free-agent offers.", reasonCode: "challenge-free-agency" };
+    }
     const player = this.league.players.find(
       (entry) =>
         entry.id === playerId &&

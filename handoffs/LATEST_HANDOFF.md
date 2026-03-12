@@ -1,38 +1,59 @@
 # Latest Handoff
 
-Last updated: 2026-03-11
+Last updated: 2026-03-12
 
 What was completed:
 - Confirmed the direct-Pages standards PR already merged into `origin/main`
-- Fixed the depth chart move-control bug by giving the depth table dedicated controls that no longer advertise `data-player-id` on reorder buttons
-- Added persisted manual snap-share overrides to the depth chart UI, server/local API, session state, and simulator usage path
-- Replaced the always-open footer Game Guide with a button-driven guide modal while leaving the Rules tab guide content intact
-- Added coverage for manual snap-share persistence/runtime behavior in `test/session-actions.test.js` and `test/local-api-runtime.test.js`
-- Added a Playwright regression for depth chart controls and the guide modal in `tests-ui/app.spec.js`
-- Re-ran the focused Node tests and the Playwright UI suite, then committed only the intended gameplay/UI files from this batch
-- Parked the unrelated realism/runtime work behind a named stash so the branch is clean
 - Fixed the `Play`-mode startup hang by splitting game-page boot into core dashboard loading plus background panel hydration
-- Added a dedicated Playwright smoke test for creating a league in `Play` mode and reaching a ready franchise screen
-- Deferred backup loading on the first setup-init request and tightened both save-store adapters so normal save listing skips backup metadata work
-- Fixed the main user-facing team identity leak by mapping schedule/calendar/ticker/transaction/pick/player displays to the generated team abbreviations instead of raw team IDs
-- Replaced raw typed player-ID inputs in the designation and retirement-override panels with table-driven selection chips and disabled action buttons until a player is selected
-- Added a Playwright regression for the designation selection flow and the no-raw-ID retirement override shell state
 - Made setup boot non-blocking for save discovery by allowing `/api/setup/init` to skip saves, marking the page ready from active-league/team state, and hydrating `/api/saves` in the background
 - Fixed the client-only runtime import boundary by moving node-only realism profile loading out of the browser path, and made runtime-mode switching reload setup state for the selected runtime
-- Added regression coverage for switching between server-backed and client-only mode on the setup menu
-- Replaced the remaining commissioner raw-ID entry points in trade, compare, and player-history with staged roster/pick tables plus player-name search/selection flows
-- Added a shared `/api/players/search` path in both server-backed and client-only runtimes so compare/history tools no longer depend on typed IDs
-- Updated Playwright app coverage for the staged trade flow and the compare/history search-driven flow
-- Moved the repo-native Playwright dev-server default from `4173` to `4273` because an unrelated local app was already occupying `4173` during verification
+- Hardened the Pages runtime selector so builds without an explicit backend origin disable `server-backed` mode in setup and keep the published bundle on the client-only path by default
+- Made server-mode API failures report a clear non-JSON/backend-origin error instead of surfacing the raw `Unexpected token '<'` JSON parse failure on Pages
+- Taught the browser save store to prune older rolling backups before retrying quota-limited writes and downgraded client-only auto-backup quota failures to warnings so week advancement can continue
+- Added a shared setup/config framework for franchise archetype, rules preset, difficulty preset, and challenge mode; `/api/setup/init` now publishes the catalog to the menu, and both runtimes resolve those selections through a single settings normalizer
+- Applied first-pass startup scenario effects for controlled teams, including cap-hell dead cap, small-market budget pressure, aging-core veteran skew, and no-QB penalties
+- Added richer owner/staff/culture world-state by expanding owner personality/priorities, extra front-office and medical roles, derived scheme identity, and culture summaries
+- Wired challenge enforcement into user free-agent signings/offers and trades that would deliver top-10 draft picks to the controlled team
+- Extended the new world-state layer into live gameplay effects:
+  - scouting point gains now depend on scouting/analytics quality
+  - injury chance and recovery now depend on medical/strength support and rehab
+  - morale swing intensity now depends on culture/owner pressure
+  - owner fan-interest and hot-seat state now react during weekly finance processing
+  - negotiation demands now include cap-analyst leverage and demand multipliers
+- Extended that same world-state into the next planned systems:
+  - scouting board confidence/reveal quality now improves when staff quality, analytics, budget support, team need, and scheme fit line up
+  - offseason development now uses training/coaching/scheme context and lowers reinjury risk in stronger environments
+  - weekly matchup plans now derive from team/opponent strengths, feed the game simulator, and surface through staff/owner views plus game results
+- Finished the next challenge-enforcement pass:
+  - waiver claims are now blocked in `no-free-agency`
+  - force-sign retirement overrides are now blocked in `no-free-agency`
+  - user top-10 draft selections are now blocked in `no-top-10-picks`
+  - CPU draft progression no longer stalls when the controlled team is challenge-blocked from making a top-10 pick
+- Revalidated the current gameplay/client batch with:
+  - `node --check public/app.js`
+  - `node --check public/setup.js`
+  - `node --check src/config/leagueSetup.js`
+  - `node --check src/runtime/applyLeagueSetup.js`
+  - `node --check src/runtime/GameSession.js`
+  - `node --check src/engine/gameSimulator.js`
+  - `node --check src/engine/offseasonSimulator.js`
+  - `node --check src/app/api/localApiRuntime.js`
+  - `node --check src/server.js`
+  - `node --check test/world-state-next-step.test.js`
+  - `node --check test/local-api-runtime.test.js`
+  - `node --check test/new-systems.test.js`
+  - `node --test --test-isolation=none test/world-state-next-step.test.js test/feature-pack-v1.test.js test/new-systems.test.js test/session-actions.test.js test/local-api-runtime.test.js test/strategy-contract-scouting.test.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
 
 What is mid-flight:
 - The unrelated realism/runtime work is still parked in a local stash and has not been reincorporated
-- The next UX/runtime batch still needs to tackle any remaining setup/main-menu latency after the non-blocking save-load and client-runtime import fixes
+- Challenge restrictions are much more mechanical now, though edge-case acquisition paths may still be worth auditing later
 
 What to do next:
-1. Measure and trim any remaining setup/main-menu latency, especially any residual runtime-mode startup overhead after the client-runtime import fix
-2. Smoke the updated trade/compare/history selection flows manually if any commissioner edge cases still need coverage
-3. Reconcile the separate Studio repo docs/templates to match Studio `AGENTS.md` once that worktree is safe to edit
+1. Feed the new world-state deeper into transaction AI, player development surfacing, and owner expectation loops
+2. Measure and trim any remaining setup/main-menu latency, especially any residual runtime-mode startup overhead after the client-runtime import fix
+3. Add clearer UI messaging for challenge-triggered failures and for the new weekly-plan/scouting-fit outputs
 
 Important constraints:
 - The parked stash is named `park unrelated realism-runtime work after depth-chart commit`; do not lose it if that work is still needed

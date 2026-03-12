@@ -81,6 +81,12 @@ async function main() {
     await page.waitForSelector("#createLeagueBtn");
     const runtimeMode = await page.$eval("#runtimeModeSelect", (el) => el.value);
     if (runtimeMode !== "client") throw new Error(`Expected client runtime default, received ${runtimeMode}`);
+    const serverDisabled = await page.$eval("#runtimeModeSelect option[value=\"server\"]", (el) => el.disabled);
+    if (!serverDisabled) throw new Error("Expected server-backed runtime option to be disabled in the Pages build.");
+    const runtimeDescription = await page.$eval("#runtimeModeDescription", (el) => el.textContent || "");
+    if (!runtimeDescription.includes("client-only")) {
+      throw new Error(`Expected Pages runtime description to explain client-only mode, received: ${runtimeDescription}`);
+    }
 
     await page.click("#createLeagueBtn");
     await page.waitForURL(`**/${slug}/game.html`, { timeout: 15000 });

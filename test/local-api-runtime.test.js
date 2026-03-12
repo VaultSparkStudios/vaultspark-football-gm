@@ -23,6 +23,38 @@ function createMemoryStorage() {
   };
 }
 
+function createQuotaStorage(limitBytes) {
+  const data = new Map();
+  const usedBytes = () => [...data.values()].reduce((sum, value) => sum + String(value).length, 0);
+  return {
+    get length() {
+      return data.size;
+    },
+    key(index) {
+      return [...data.keys()][index] ?? null;
+    },
+    getItem(key) {
+      return data.has(key) ? data.get(key) : null;
+    },
+    setItem(key, value) {
+      const safeKey = String(key);
+      const safeValue = String(value);
+      const previous = data.get(safeKey);
+      const nextBytes = usedBytes() - (previous ? previous.length : 0) + safeValue.length;
+      if (nextBytes > limitBytes) {
+        const error = new Error("Quota exceeded");
+        error.name = "QuotaExceededError";
+        error.code = 22;
+        throw error;
+      }
+      data.set(safeKey, safeValue);
+    },
+    removeItem(key) {
+      data.delete(String(key));
+    }
+  };
+}
+
 test("local api runtime supports core client-only flow", async () => {
   const runtime = createLocalApiRuntime({
     storage: createMemoryStorage(),
@@ -175,6 +207,9 @@ test("local api runtime setup init defers backups by default", async () => {
   assert.equal(initial.payload.savesDeferred, false);
   assert.equal(initial.payload.backupsDeferred, true);
   assert.deepEqual(initial.payload.backups, []);
+  assert.ok(initial.payload.configCatalog);
+  assert.equal(initial.payload.settings.rulesPreset, "standard");
+  assert.ok(initial.payload.configCatalog.franchiseArchetypes.some((entry) => entry.id === "cap-hell"));
 
   await runtime.request("/api/saves/save", { method: "POST", body: { slot: "alpha" } });
 
@@ -188,6 +223,163 @@ test("local api runtime setup init defers backups by default", async () => {
   assert.equal(withBackups.payload.savesDeferred, false);
   assert.equal(withBackups.payload.backupsDeferred, false);
   assert.ok(Array.isArray(withBackups.payload.backups));
+});
+
+test("local api runtime applies setup preset selections to new leagues", async () => {
+  const runtime = createLocalApiRuntime({
+    storage: createMemoryStorage(),
+    now: (() => {
+      let tick = 0;
+      return () => 1_725_000_000_000 + tick++;
+    })(),
+    scheduler: (fn) => fn()
+  });
+
+  const created = await runtime.request("/api/new-league", {
+    method: "POST",
+    body: {
+      seed: 6060,
+      startYear: 2026,
+      controlledTeamId: "BUF",
+      mode: "play",
+      eraProfile: "legacy",
+      franchiseArchetype: "cap-hell",
+      rulesPreset: "simulation",
+      difficultyPreset: "hard",
+      challengeMode: "small-market"
+    }
+  });
+  assert.equal(created.status, 200);
+
+  const settings = await runtime.request("/api/settings");
+  assert.equal(settings.status, 200);
+  assert.equal(settings.payload.settings.franchiseArchetype, "cap-hell");
+  assert.equal(settings.payload.settings.rulesPreset, "simulation");
+  assert.equal(settings.payload.settings.difficultyPreset, "hard");
+  assert.equal(settings.payload.settings.challengeMode, "small-market");
+  assert.equal(settings.payload.settings.scoutingWeeklyPoints, 10);
+  assert.equal(settings.payload.settings.practiceSquadExperienceLimit, 1);
+  assert.equal(settings.payload.settings.smallMarketMode, true);
+
+  const roster = await runtime.request("/api/roster?team=BUF");
+  assert.equal(roster.status, 200);
+  assert.ok(roster.payload.cap.deadCap >= 28_000_000);
+
+  const setup = await runtime.request("/api/setup/init");
+  assert.equal(setup.status, 200);
+  assert.equal(setup.payload.activeLeague.configSummary.franchiseArchetype.id, "cap-hell");
+  assert.equal(setup.payload.activeLeague.configSummary.challengeMode.id, "small-market");
+});
+
+test("local api runtime enforces no-free-agency challenge for user signings", async () => {
+  const runtime = createLocalApiRuntime({
+    storage: createMemoryStorage(),
+    now: (() => {
+      let tick = 0;
+      return () => 1_726_000_000_000 + tick++;
+    })(),
+    scheduler: (fn) => fn()
+  });
+
+  const created = await runtime.request("/api/new-league", {
+    method: "POST",
+    body: {
+      seed: 7070,
+      startYear: 2026,
+      controlledTeamId: "BUF",
+      mode: "play",
+      challengeMode: "no-free-agency"
+    }
+  });
+  assert.equal(created.status, 200);
+
+  const roster = await runtime.request("/api/roster?team=BUF");
+  const released = await runtime.request("/api/release", {
+    method: "POST",
+    body: { teamId: "BUF", playerId: roster.payload.roster[0].id, toWaivers: false }
+  });
+  assert.equal(released.status, 200);
+
+  const freeAgents = await runtime.request("/api/free-agents?limit=1");
+  const target = freeAgents.payload.freeAgents[0];
+  assert.ok(target?.id);
+
+  const signing = await runtime.request("/api/sign", {
+    method: "POST",
+    body: { teamId: "BUF", playerId: target.id }
+  });
+  assert.equal(signing.status, 400);
+  assert.match(signing.payload.error, /challenge mode/i);
+});
+
+test("local api runtime enforces challenge restrictions for waiver claims, retirement overrides, and top-10 picks", async () => {
+  const runtime = createLocalApiRuntime({
+    storage: createMemoryStorage(),
+    now: (() => {
+      let tick = 0;
+      return () => 1_728_000_000_000 + tick++;
+    })(),
+    scheduler: (fn) => fn()
+  });
+
+  const created = await runtime.request("/api/new-league", {
+    method: "POST",
+    body: {
+      seed: 7171,
+      startYear: 2026,
+      controlledTeamId: "BUF",
+      mode: "play",
+      challengeMode: "no-free-agency"
+    }
+  });
+  assert.equal(created.status, 200);
+
+  const session = runtime.getSession();
+  const waiverTarget = session.getRoster("MIA")[0];
+  session.releasePlayer({ teamId: "MIA", playerId: waiverTarget.id, toWaivers: true });
+
+  const waiverClaim = await runtime.request("/api/waiver-claim", {
+    method: "POST",
+    body: { teamId: "BUF", playerId: waiverTarget.id }
+  });
+  assert.equal(waiverClaim.status, 400);
+  assert.equal(waiverClaim.payload.reasonCode, "challenge-free-agency");
+
+  const comebackRow = session.getRoster("BUF")[1];
+  const comebackPlayer = session.league.players.find((player) => player.id === comebackRow.id);
+  assert.ok(comebackPlayer);
+  const playerIndex = session.league.players.findIndex((player) => player.id === comebackPlayer.id);
+  session.league.players.splice(playerIndex, 1);
+  comebackPlayer.status = "retired";
+  comebackPlayer.teamId = "RET";
+  comebackPlayer.retiredYear = session.currentYear - 1;
+  session.league.retiredPlayers.push(comebackPlayer);
+
+  const override = await runtime.request("/api/retirement/override", {
+    method: "POST",
+    body: { playerId: comebackPlayer.id, teamId: "BUF", forceSign: true }
+  });
+  assert.equal(override.status, 400);
+  assert.equal(override.payload.reasonCode, "challenge-free-agency");
+
+  session.updateLeagueSettings({ challengeMode: "no-top-10-picks" });
+  const draft = session.prepareDraft();
+  draft.order[0] = "BUF";
+  draft.currentPick = 1;
+
+  const blockedPick = await runtime.request("/api/draft/user-pick", {
+    method: "POST",
+    body: { playerId: draft.available[0].id }
+  });
+  assert.equal(blockedPick.status, 400);
+  assert.equal(blockedPick.payload.reasonCode, "challenge-top10-picks");
+
+  const cpuAdvance = await runtime.request("/api/draft/cpu", {
+    method: "POST",
+    body: { picks: 1, untilUserPick: true }
+  });
+  assert.equal(cpuAdvance.status, 200);
+  assert.ok(cpuAdvance.payload.draft.currentPick >= 2);
 });
 
 test("local api runtime exposes player search for name-based admin tools", async () => {
@@ -212,4 +404,25 @@ test("local api runtime exposes player search for name-based admin tools", async
   const search = await runtime.request(`/api/players/search?q=${encodeURIComponent(player.name)}&limit=5&includeRetired=1`);
   assert.equal(search.status, 200);
   assert.ok(search.payload.players.some((entry) => entry.id === player.id));
+});
+
+test("local api runtime keeps week advancement non-fatal when auto-backups exceed browser quota", async () => {
+  const runtime = createLocalApiRuntime({
+    storage: createQuotaStorage(900),
+    now: (() => {
+      let tick = 0;
+      return () => 1_740_000_000_000 + tick++;
+    })(),
+    scheduler: (fn) => fn()
+  });
+
+  const response = await runtime.request("/api/new-league", {
+    method: "POST",
+    body: { seed: 5050, startYear: 2026, controlledTeamId: "BUF", mode: "play", eraProfile: "modern" }
+  });
+  assert.equal(response.status, 200);
+
+  const advanced = await runtime.request("/api/advance-week", { method: "POST", body: { count: 1 } });
+  assert.equal(advanced.status, 200);
+  assert.equal(advanced.payload.state.currentWeek, 2);
 });

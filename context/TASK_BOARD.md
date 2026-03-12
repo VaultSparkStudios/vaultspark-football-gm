@@ -1,14 +1,16 @@
 # Task Board
 
 ## Now
+- Feed the new world-state deeper into transaction AI, player development surfacing, and owner expectation loops
 - Measure any remaining setup/main-menu latency after the non-blocking save-load and client-runtime import fixes, especially residual runtime-mode startup overhead
-- Smoke the updated setup/startup, trade/compare/history selection flows, team-identity, depth-chart, and `Play`-mode flows in any remaining manual QA scenarios if needed
-- Reconcile the feature branch against `origin/main` and keep the parked realism/runtime stash isolated until that work is resolved deliberately
+- Add clearer UI messaging for challenge-triggered failures and the new weekly plan/scouting-fit outputs
 
 ## Next
+- Add UI hints for weekly plan/scouting-fit outputs where they matter most instead of only exposing them in generic tables
+- Add setup/settings UI hints for the challenge-rule failures that now have backend enforcement
 - Decide whether to restore the parked realism/runtime stash onto a separate branch or continue keeping it isolated
 - Add more targeted startup observability if setup/menu latency is still unclear after the non-blocking save-load and client-runtime import fixes
-- Extend the search/table-selection pattern to any new admin tools that might surface typed player IDs in future batches
+- Add UI affordances for pruning old browser backups if live Pages usage still hits quota pressure after the automatic recovery changes
 - Reconcile the separate Studio repo deployment docs/templates to the direct-Pages model once that repo is safe to edit
 
 ## Later

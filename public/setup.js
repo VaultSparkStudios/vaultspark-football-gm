@@ -1,4 +1,10 @@
-import { createApiClient, getRuntimeMode, setRuntimeMode, warmLocalRuntime } from "./lib/api/createApiClient.js";
+import {
+  createApiClient,
+  getRuntimeMode,
+  isServerRuntimeAvailable,
+  setRuntimeMode,
+  warmLocalRuntime
+} from "./lib/api/createApiClient.js";
 
 const state = {
   currentYear: new Date().getFullYear(),
@@ -7,7 +13,9 @@ const state = {
   teams: [],
   saveSearch: "",
   backups: [],
-  backupsDeferred: false
+  backupsDeferred: false,
+  configCatalog: null,
+  settings: null
 };
 
 const api = createApiClient();
@@ -21,6 +29,8 @@ const MODE_HELP = {
 const SETUP_GUIDE_ROWS = [
   "Choose `Drive` for faster weekly simulation or `Play` for more granular play-level outcomes.",
   "Era profiles change league tendencies: `Modern Pass` pushes more passing volume, `Balanced` stays near league-average, and `Legacy` tilts toward a lower-tempo run-heavy environment.",
+  "Franchise archetypes now shape the opening challenge: rebuilds buy patience, contenders raise pressure, and cap-hell/no-QB starts add immediate roster stress.",
+  "Rules, difficulty, and challenge presets compose into league settings first, then any checkbox overrides apply on top.",
   "Randomized leagues now use one real U.S. city plus one generated nickname per team for a single clean identity in each save.",
   "After league creation, the controlled team becomes the default roster and depth-chart focus in the franchise view."
 ];
@@ -50,13 +60,22 @@ function teamCode(team) {
 function applyRuntimeModeUi() {
   const select = document.getElementById("runtimeModeSelect");
   if (!select) return;
+  const serverAvailable = isServerRuntimeAvailable();
   const mode = getRuntimeMode();
   select.value = mode;
+  const serverOption = select.querySelector('option[value="server"]');
+  if (serverOption) serverOption.disabled = !serverAvailable;
   const pathInput = document.getElementById("pfrPathInput");
   const profileInput = document.getElementById("profilePathInput");
+  const description = document.getElementById("runtimeModeDescription");
   const disabled = mode === "client";
   if (pathInput) pathInput.disabled = disabled;
   if (profileInput) profileInput.disabled = disabled;
+  if (description) {
+    description.textContent = serverAvailable
+      ? "Client-only mode stores leagues in this browser and does not use filesystem path imports."
+      : "This Pages deployment is client-only. Server-backed mode requires a live backend and is unavailable here.";
+  }
 }
 
 function renderSetupGuide() {
@@ -103,8 +122,64 @@ function renderActiveLeague(activeLeague) {
   const team = activeLeague.controlledTeamAbbrev || activeLeague.controlledTeamId || "-";
   const name = activeLeague.controlledTeamName ? ` - ${activeLeague.controlledTeamName}` : "";
   const mode = activeLeague.mode ? ` | ${activeLeague.mode}` : "";
-  text.textContent = `Active: ${activeLeague.currentYear} W${activeLeague.currentWeek} (${activeLeague.phase}) Team ${team}${name}${mode}`;
+  const config = activeLeague.configSummary
+    ? ` | ${activeLeague.configSummary.franchiseArchetype?.label || ""} / ${activeLeague.configSummary.difficultyPreset?.label || ""}`
+    : "";
+  text.textContent = `Active: ${activeLeague.currentYear} W${activeLeague.currentWeek} (${activeLeague.phase}) Team ${team}${name}${mode}${config}`;
   button.disabled = false;
+}
+
+function renderConfigSelect(selectId, options = [], selectedId = null) {
+  const select = document.getElementById(selectId);
+  if (!select || !Array.isArray(options) || !options.length) return;
+  select.innerHTML = options
+    .map((option) => `<option value="${escapeHtml(option.id)}">${escapeHtml(option.label || option.id)}</option>`)
+    .join("");
+  select.value = selectedId && options.some((entry) => entry.id === selectedId) ? selectedId : options[0].id;
+}
+
+function findCatalogEntry(collection, id) {
+  return (collection || []).find((entry) => entry.id === id) || null;
+}
+
+function renderConfigSummary() {
+  const box = document.getElementById("configSummaryContent");
+  if (!box || !state.configCatalog) return;
+  const entries = [
+    findCatalogEntry(state.configCatalog.eraProfiles, document.getElementById("eraProfileInput")?.value),
+    findCatalogEntry(state.configCatalog.franchiseArchetypes, document.getElementById("franchiseArchetypeInput")?.value),
+    findCatalogEntry(state.configCatalog.rulesPresets, document.getElementById("rulesPresetInput")?.value),
+    findCatalogEntry(state.configCatalog.difficultyPresets, document.getElementById("difficultyPresetInput")?.value),
+    findCatalogEntry(state.configCatalog.challengeModes, document.getElementById("challengeModeInput")?.value)
+  ].filter(Boolean);
+  box.innerHTML = entries
+    .map((entry) => `<div class="record"><strong>${escapeHtml(entry.label || entry.id)}</strong>: ${escapeHtml(entry.summary || "")}</div>`)
+    .join("");
+}
+
+function applySettingsToForm(settings = {}) {
+  state.settings = settings;
+  if (settings.eraProfile) document.getElementById("eraProfileInput").value = settings.eraProfile;
+  if (settings.franchiseArchetype) document.getElementById("franchiseArchetypeInput").value = settings.franchiseArchetype;
+  if (settings.rulesPreset) document.getElementById("rulesPresetInput").value = settings.rulesPreset;
+  if (settings.difficultyPreset) document.getElementById("difficultyPresetInput").value = settings.difficultyPreset;
+  if (settings.challengeMode) document.getElementById("challengeModeInput").value = settings.challengeMode;
+  if (settings.enableOwnerMode != null) document.getElementById("ownerModeInput").checked = settings.enableOwnerMode === true;
+  if (settings.enableNarratives != null) document.getElementById("narrativesInput").checked = settings.enableNarratives === true;
+  if (settings.enableCompPicks != null) document.getElementById("compPicksInput").checked = settings.enableCompPicks === true;
+  if (settings.enableChemistry != null) document.getElementById("chemistryInput").checked = settings.enableChemistry === true;
+  renderConfigSummary();
+}
+
+function renderConfigCatalog(catalog = null, settings = {}) {
+  state.configCatalog = catalog;
+  if (!catalog) return;
+  renderConfigSelect("eraProfileInput", catalog.eraProfiles, settings.eraProfile);
+  renderConfigSelect("franchiseArchetypeInput", catalog.franchiseArchetypes, settings.franchiseArchetype);
+  renderConfigSelect("rulesPresetInput", catalog.rulesPresets, settings.rulesPreset);
+  renderConfigSelect("difficultyPresetInput", catalog.difficultyPresets, settings.difficultyPreset);
+  renderConfigSelect("challengeModeInput", catalog.challengeModes, settings.challengeMode);
+  applySettingsToForm(settings);
 }
 
 function renderSaves() {
@@ -232,12 +307,14 @@ async function loadSetup() {
   state.teams = init.teams || [];
   state.backups = init.backups || [];
   state.backupsDeferred = init.backupsDeferred === true;
+  state.settings = init.settings || state.settings || {};
 
   document.getElementById("seedInput").value = Date.now();
   document.getElementById("startYearInput").value = init.currentYear;
 
   renderTeams();
   renderActiveLeague(init.activeLeague);
+  renderConfigCatalog(init.configCatalog || null, init.settings || {});
   renderSaves();
   renderBackups();
   renderSetupGuide();
@@ -263,6 +340,10 @@ async function createLeague() {
       startYear: Number(document.getElementById("startYearInput").value || state.currentYear),
       mode: document.getElementById("modeInput").value,
       eraProfile: document.getElementById("eraProfileInput").value || "modern",
+      franchiseArchetype: document.getElementById("franchiseArchetypeInput").value || "balanced",
+      rulesPreset: document.getElementById("rulesPresetInput").value || "standard",
+      difficultyPreset: document.getElementById("difficultyPresetInput").value || "standard",
+      challengeMode: document.getElementById("challengeModeInput").value || "open",
       enableOwnerMode: document.getElementById("ownerModeInput").checked,
       enableNarratives: document.getElementById("narrativesInput").checked,
       enableCompPicks: document.getElementById("compPicksInput").checked,
@@ -310,6 +391,7 @@ async function deleteBackupSlot() {
 function bindEvents() {
   document.getElementById("runtimeModeSelect")?.addEventListener("change", (event) => {
     const mode = setRuntimeMode(event.target.value);
+    event.target.value = mode;
     const statusText = mode === "client" ? "Loading client-only menu..." : "Loading server-backed menu...";
     setStatus(statusText);
     if (mode === "client") {
@@ -322,32 +404,18 @@ function bindEvents() {
       });
   });
   document.getElementById("modeInput")?.addEventListener("change", updateModeHelp);
+  ["eraProfileInput", "franchiseArchetypeInput", "rulesPresetInput", "difficultyPresetInput", "challengeModeInput"].forEach((id) => {
+    document.getElementById(id)?.addEventListener("change", renderConfigSummary);
+  });
 
   const applyPreset = (preset) => {
-    if (preset === "modern") {
-      document.getElementById("modeInput").value = "play";
-      document.getElementById("eraProfileInput").value = "modern";
-      document.getElementById("ownerModeInput").checked = true;
-      document.getElementById("narrativesInput").checked = true;
-      document.getElementById("compPicksInput").checked = true;
-      document.getElementById("chemistryInput").checked = true;
-      return;
-    }
-    if (preset === "balanced") {
-      document.getElementById("modeInput").value = "drive";
-      document.getElementById("eraProfileInput").value = "balanced";
-      document.getElementById("ownerModeInput").checked = true;
-      document.getElementById("narrativesInput").checked = true;
-      document.getElementById("compPicksInput").checked = true;
-      document.getElementById("chemistryInput").checked = true;
-      return;
-    }
-    document.getElementById("modeInput").value = "drive";
-    document.getElementById("eraProfileInput").value = "legacy";
-    document.getElementById("ownerModeInput").checked = true;
-    document.getElementById("narrativesInput").checked = false;
-    document.getElementById("compPicksInput").checked = true;
-    document.getElementById("chemistryInput").checked = true;
+    const quickStart = (state.configCatalog?.quickStarts || []).find((entry) => entry.id === preset)?.selections;
+    if (!quickStart) return;
+    document.getElementById("modeInput").value = quickStart.mode || "drive";
+    applySettingsToForm({
+      ...state.settings,
+      ...quickStart
+    });
   };
 
   document.getElementById("presetModernBtn").addEventListener("click", () => applyPreset("modern"));

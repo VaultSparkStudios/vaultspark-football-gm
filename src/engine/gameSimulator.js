@@ -269,7 +269,12 @@ function buildTeamContext(league, teamId, rng) {
 
   const basePassLean = team.scheme?.passRate ?? 0.54;
   const coachingDelta = ((team.coaching?.offense || 72) - 72) / 180;
-  const passLean = clamp(basePassLean + (qb.overall - rb.overall) * 0.0035 + coachingDelta, 0.34, 0.72);
+  const weeklyPlan = team.weeklyPlan || null;
+  const passLean = clamp(
+    basePassLean + (qb.overall - rb.overall) * 0.0035 + coachingDelta + (weeklyPlan?.passLeanDelta || 0),
+    0.3,
+    0.78
+  );
   const chemistry = team.chemistry || 70;
   const schemeFit = roster.length
     ? roster.reduce((sum, player) => sum + (player.schemeFit || 70), 0) / roster.length
@@ -318,6 +323,7 @@ function buildTeamContext(league, teamId, rng) {
     k,
     p,
     passLean,
+    weeklyPlan,
     chemistry,
     schemeFit,
     roleNames: DEPTH_CHART_ROLE_NAMES,
@@ -497,12 +503,19 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
         });
       } else {
         const sackChance = clamp(
-          0.07 + (passRush - linePass) / 310 + (defenseContext.team.defenseRating - offenseContext.team.offenseRating) / 520,
+          0.07 +
+            (passRush - linePass) / 310 +
+            (defenseContext.team.defenseRating - offenseContext.team.offenseRating) / 520 +
+            (defenseContext.weeklyPlan?.aggressionDelta || 0) * 0.08 -
+            (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.008,
           0.05,
           0.24
         );
         const intChance = clamp(
-          0.018 + (coverage - qbAccuracy) / 360 + (defenseContext.team.defenseRating - qb.overall) / 640,
+          0.018 +
+            (coverage - qbAccuracy) / 360 +
+            (defenseContext.team.defenseRating - qb.overall) / 640 -
+            (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.003,
           0.01,
           0.07
         );
@@ -597,7 +610,13 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
       const tackler = recordTeamTackle(driveDeltas, rng, defenseContext);
       if (yards < 0 && tackler) addDelta(driveDeltas, tackler.id, { defense: { tfl: 1 } });
 
-      const fumbleChance = clamp(0.018 - (rating(runner, "carrying") - 70) / 520, 0.004, 0.028);
+      const fumbleChance = clamp(
+        0.018 -
+          (rating(runner, "carrying") - 70) / 520 -
+          (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.0015,
+        0.004,
+        0.028
+      );
       if (rng.chance(fumbleChance)) {
         turnover = true;
         turnoverType = "FUMBLE";
@@ -646,9 +665,17 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
   const moraleOffset = (offenseMorale - defenseMorale) * 0.06;
   const fitOffset = ((offenseContext.schemeFit || 70) - (defenseContext.schemeFit || 70)) * 0.035;
   const chemistryOffset = ((offenseContext.chemistry || 70) - (defenseContext.chemistry || 70)) * 0.03;
+  const offenseStrategyBoost =
+    (offenseContext.weeklyPlan?.offenseBoost || 0) +
+    (offenseContext.weeklyPlan?.tempoDelta || 0) * 8 +
+    (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.25;
+  const defenseStrategyBoost =
+    (defenseContext.weeklyPlan?.defenseBoost || 0) +
+    (defenseContext.weeklyPlan?.aggressionDelta || 0) * 8 +
+    (defenseContext.weeklyPlan?.disciplineBoost || 0) * 0.18;
   const defensePower = defenseContext.team.defenseRating + rng.int(-5, 5);
-  const adjustedOffensePower = offensePower + offenseCoachBoost + moraleOffset + fitOffset + chemistryOffset;
-  const adjustedDefensePower = defensePower + defenseCoachBoost;
+  const adjustedOffensePower = offensePower + offenseCoachBoost + moraleOffset + fitOffset + chemistryOffset + offenseStrategyBoost;
+  const adjustedDefensePower = defensePower + defenseCoachBoost + defenseStrategyBoost;
 
   if (turnover) {
     return {
@@ -1242,6 +1269,8 @@ export function simulateGame({
     awayOffSnaps,
     homeTurnovers,
     awayTurnovers,
+    homeStrategy: homeContext.weeklyPlan || null,
+    awayStrategy: awayContext.weeklyPlan || null,
     isTie: homeScore === awayScore,
     winnerId: homeScore === awayScore ? null : homeScore > awayScore ? homeTeamId : awayTeamId,
     boxScore

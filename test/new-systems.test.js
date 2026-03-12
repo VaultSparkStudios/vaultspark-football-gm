@@ -58,3 +58,71 @@ test("trade evaluation supports pick assets", () => {
   });
   assert.equal(trade.ok, true);
 });
+
+test("challenge mode can block user free agency and top-10 pick trades", () => {
+  const session = createSession({ seed: 4321, startYear: 2026, controlledTeamId: "BUF" });
+  session.updateLeagueSettings({ challengeMode: "no-free-agency" });
+
+  const released = session.releasePlayer({ teamId: "BUF", playerId: session.getRoster("BUF")[0].id, toWaivers: false });
+  assert.equal(released.ok, true);
+  const freeAgent = session.getFreeAgents({ limit: 1 })[0];
+  assert.ok(freeAgent);
+
+  const signing = session.signFreeAgent({ teamId: "BUF", playerId: freeAgent.id });
+  assert.equal(signing.ok, false);
+  assert.equal(signing.reasonCode, "challenge-free-agency");
+
+  session.updateLeagueSettings({ challengeMode: "no-top-10-picks" });
+  const bufPick = session.getDraftPickAssets("BUF")[0];
+  const miaPick = session.getDraftPickAssets("MIA")[0];
+  miaPick.originalPickIndex = 4;
+
+  const trade = session.evaluateTradePackage({
+    teamA: "BUF",
+    teamB: "MIA",
+    teamAPickIds: [bufPick.id],
+    teamBPickIds: [miaPick.id],
+    teamAPlayerIds: [],
+    teamBPlayerIds: []
+  });
+  assert.equal(trade.ok, false);
+  assert.equal(trade.reasonCode, "challenge-top10-picks");
+});
+
+test("challenge mode also blocks waiver claims, retirement overrides, and top-10 user picks", () => {
+  const session = createSession({ seed: 8765, startYear: 2026, controlledTeamId: "BUF" });
+  session.updateLeagueSettings({ challengeMode: "no-free-agency" });
+
+  const waiverTarget = session.getRoster("MIA")[0];
+  const released = session.releasePlayer({ teamId: "MIA", playerId: waiverTarget.id, toWaivers: true });
+  assert.equal(released.ok, true);
+
+  const waiverClaim = session.claimWaiver({ teamId: "BUF", playerId: waiverTarget.id });
+  assert.equal(waiverClaim.ok, false);
+  assert.equal(waiverClaim.reasonCode, "challenge-free-agency");
+
+  const comebackPlayer = session.league.players.find((player) => player.teamId === "FA" && player.status === "active") || session.getRoster("BUF")[1];
+  const retireIndex = session.league.players.findIndex((player) => player.id === comebackPlayer.id);
+  session.league.players.splice(retireIndex, 1);
+  comebackPlayer.status = "retired";
+  comebackPlayer.teamId = "RET";
+  comebackPlayer.retiredYear = session.currentYear - 1;
+  session.league.retiredPlayers.push(comebackPlayer);
+
+  const override = session.overrideRetirement({ playerId: comebackPlayer.id, teamId: "BUF", forceSign: true });
+  assert.equal(override.ok, false);
+  assert.equal(override.reasonCode, "challenge-free-agency");
+
+  session.updateLeagueSettings({ challengeMode: "no-top-10-picks" });
+  const draft = session.prepareDraft();
+  draft.order[0] = "BUF";
+  draft.currentPick = 1;
+
+  const blockedPick = session.draftUserPick({ playerId: draft.available[0].id });
+  assert.equal(blockedPick.ok, false);
+  assert.equal(blockedPick.reasonCode, "challenge-top10-picks");
+
+  const cpuAdvance = session.runCpuDraft({ picks: 1, untilUserPick: true });
+  assert.equal(cpuAdvance.ok, true);
+  assert.ok(cpuAdvance.draft.currentPick >= 2);
+});

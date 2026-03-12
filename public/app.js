@@ -2318,13 +2318,20 @@ function renderStaff() {
     renderTable("staffTable", []);
     return;
   }
+  const culture = s.cultureProfile || {};
+  const scheme = s.schemeIdentity || {};
+  const weeklyPlan = s.weeklyPlan || {};
   const rows = Object.entries(s.staff).map(([role, staff]) => ({
     role,
     name: staff.name,
     playcalling: staff.playcalling,
     development: staff.development,
     discipline: staff.discipline,
-    years: staff.yearsRemaining
+    years: staff.yearsRemaining,
+    specialty: staff.specialty?.area || "",
+    scheme: role === "headCoach" ? `${scheme.offense || "-"} / ${scheme.defense || "-"}` : "",
+    culture: role === "headCoach" ? culture.identity || "-" : "",
+    weeklyFocus: role === "headCoach" ? weeklyPlan.summary || "-" : ""
   }));
   renderTable("staffTable", rows);
 }
@@ -2357,6 +2364,9 @@ function renderOwner() {
     renderTable("ownerTable", []);
     return;
   }
+  const culture = state.ownerState?.cultureProfile || {};
+  const scheme = state.ownerState?.schemeIdentity || {};
+  const weeklyPlan = state.ownerState?.weeklyPlan || {};
   renderTable("ownerTable", [
     {
       market: owner.marketSize,
@@ -2364,11 +2374,23 @@ function renderOwner() {
       ticketPrice: owner.ticketPrice,
       staffBudget: fmtMoney(owner.staffBudget),
       cash: fmtMoney(owner.cash),
+      personality: owner.personality || "-",
+      patience: owner.patience ?? "-",
+      hotSeat: owner.hotSeat ? "Yes" : "No",
       revenueYtd: fmtMoney(owner.finances?.revenueYtd || 0),
       expensesYtd: fmtMoney(owner.finances?.expensesYtd || 0),
       training: owner.facilities?.training,
       rehab: owner.facilities?.rehab,
-      analytics: owner.facilities?.analytics
+      analytics: owner.facilities?.analytics,
+      championships: owner.priorities?.championships ?? "-",
+      profit: owner.priorities?.profit ?? "-",
+      loyalty: owner.priorities?.loyalty ?? "-",
+      culture: culture.identity || "-",
+      pressure: culture.pressure ?? "-",
+      scheme: `${scheme.offense || "-"} / ${scheme.defense || "-"}`,
+      weeklyPlan: weeklyPlan.summary || "-",
+      exploit: weeklyPlan.exploit || "-",
+      warning: weeklyPlan.warning || "-"
     }
   ]);
 }

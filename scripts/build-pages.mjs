@@ -9,6 +9,9 @@ const srcDir = path.join(rootDir, "src");
 const outDir = path.join(rootDir, "static");
 const slug = process.env.GAME_SLUG || "vaultspark-football-gm";
 const runtimeDefault = process.env.VSFGM_RUNTIME_DEFAULT || "client";
+const explicitServerBaseUrl = (process.env.VITE_GAME_SERVICE_ORIGIN || "").trim()
+  || ((process.env.API_DOMAIN || "").trim() ? `https://${String(process.env.API_DOMAIN).trim()}` : "");
+const serverAvailable = explicitServerBaseUrl ? "true" : "false";
 const browserEntryPoints = [path.join(srcDir, "app", "api", "localApiRuntime.js")];
 
 function normalizeBasePath(value) {
@@ -106,6 +109,28 @@ function injectHtmlDefaults(html, pagePath) {
     next = next.replace(
       '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
       `<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <meta name="vsfgm-runtime-default" content="${runtimeDefault}" />`
+    );
+  }
+  if (next.includes('meta name="vsfgm-server-available"')) {
+    next = next.replace(
+      /<meta name="vsfgm-server-available" content="[^"]*" \/>/,
+      `<meta name="vsfgm-server-available" content="${serverAvailable}" />`
+    );
+  } else {
+    next = next.replace(
+      '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+      `<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <meta name="vsfgm-server-available" content="${serverAvailable}" />`
+    );
+  }
+  if (next.includes('meta name="vsfgm-server-base-url"')) {
+    next = next.replace(
+      /<meta name="vsfgm-server-base-url" content="[^"]*" \/>/,
+      `<meta name="vsfgm-server-base-url" content="${explicitServerBaseUrl}" />`
+    );
+  } else {
+    next = next.replace(
+      '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+      `<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <meta name="vsfgm-server-base-url" content="${explicitServerBaseUrl}" />`
     );
   }
   if (!next.includes('rel="canonical"')) {

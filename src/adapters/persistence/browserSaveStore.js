@@ -16,6 +16,10 @@ function storageKeys(storage) {
   return keys;
 }
 
+function isQuotaExceededError(error) {
+  return error?.name === "QuotaExceededError" || error?.code === 22 || error?.code === 1014;
+}
+
 export function createBrowserSaveStore({
   storage,
   namespace = "vsfgm",
@@ -73,13 +77,49 @@ export function createBrowserSaveStore({
     return listSaveSlots({ includeBackups: true }).filter((slot) => isBackupSlot(slot.slot, backupPrefix));
   }
 
+  function clearOldestBackups(count = 1, { exclude = [] } = {}) {
+    const excluded = new Set((exclude || []).map((slot) => safeSlotName(slot)));
+    const candidates = listBackupSlots().filter((entry) => !excluded.has(safeSlotName(entry.slot)));
+    let removed = 0;
+    for (const backup of candidates.slice().reverse().slice(0, count)) {
+      if (deleteSaveSlot(backup.slot)) removed += 1;
+    }
+    return removed;
+  }
+
   function saveSessionToSlot(slot, snapshot) {
     const safe = safeSlotName(slot);
     const updatedAt = now();
     const serialized = JSON.stringify(snapshot);
-    storage.setItem(dataKey(safe), serialized);
-    storage.setItem(metaKey(safe), JSON.stringify({ ...(extractSnapshotMeta(snapshot) || {}), updatedAt }));
-    return { slot: safe, key: dataKey(safe) };
+    const write = () => {
+      try {
+        storage.setItem(dataKey(safe), serialized);
+        storage.setItem(metaKey(safe), JSON.stringify({ ...(extractSnapshotMeta(snapshot) || {}), updatedAt }));
+        return { slot: safe, key: dataKey(safe) };
+      } catch (error) {
+        storage.removeItem(dataKey(safe));
+        storage.removeItem(metaKey(safe));
+        throw error;
+      }
+    };
+    try {
+      return write();
+    } catch (error) {
+      if (!isQuotaExceededError(error)) throw error;
+      let recovered = false;
+      while (clearOldestBackups(1, { exclude: [safe] }) > 0) {
+        try {
+          const saved = write();
+          recovered = true;
+          return saved;
+        } catch (retryError) {
+          if (!isQuotaExceededError(retryError)) throw retryError;
+        }
+      }
+      if (!recovered) {
+        throw new Error("Browser storage is full. Delete old saves/backups or clear site data, then try again.");
+      }
+    }
   }
 
   function loadSessionFromSlot(slot) {
@@ -102,6 +142,11 @@ export function createBrowserSaveStore({
   ) {
     const stamp = now().replace(/[:.]/g, "-");
     const slot = safeSlotName(`${backupPrefix}${reason}-y${year}-w${week}-${phase}-${stamp}`);
+    const retainCount = Math.max(0, maxBackups - 1);
+    const existingBackups = listBackupSlots();
+    if (existingBackups.length > retainCount) {
+      clearOldestBackups(existingBackups.length - retainCount);
+    }
     const saved = saveSessionToSlot(slot, snapshot);
 
     const backups = listBackupSlots();

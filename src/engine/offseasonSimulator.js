@@ -106,15 +106,19 @@ function countsAsAccruedSeason(player, year) {
   return false;
 }
 
-function progressPlayer(player, rng) {
-  const delta = developmentDelta(player, rng);
+function progressPlayer(player, rng, context = {}) {
+  const delta = developmentDelta(player, rng) + Math.round(Number(context.developmentBonus || 0));
   const ratingKeys = Object.keys(player.ratings);
-  const touched = rng.shuffle(ratingKeys).slice(0, 4);
+  const focusRatings = (context.focusRatings || []).filter((key) => ratingKeys.includes(key));
+  const randomKeys = rng.shuffle(ratingKeys.filter((key) => !focusRatings.includes(key)));
+  const touched = [...focusRatings.slice(0, 2), ...randomKeys].slice(0, 4);
   for (const key of touched) {
     player.ratings[key] = clamp(player.ratings[key] + delta, 40, 99);
   }
   player.ratings.awareness = clamp(player.ratings.awareness + Math.round(delta / 2), 40, 99);
   player.overall = calculatePositionOverall(player.position, player.ratings);
+  player.morale = clamp((player.morale || 72) + Math.round(Number(context.moraleDelta || 0)), 35, 99);
+  player.reinjuryRisk = clamp((player.reinjuryRisk || 0) - Number(context.recoveryBonus || 0), 0, 0.55);
 }
 
 function expireContracts(league) {
@@ -147,7 +151,8 @@ function applyAgingProgressionAndRetirements(league, year, rng, options = {}) {
       player.experience += 1;
       player.seasonsPlayed += 1;
     }
-    progressPlayer(player, rng);
+    const context = typeof options.developmentContext === "function" ? options.developmentContext(player, team) || {} : {};
+    progressPlayer(player, rng, context);
     const chance = retirementChance(player, team, {
       ...options,
       seasonYear: year
@@ -293,9 +298,12 @@ function applyCapRollover(league) {
   }
 }
 
-export function runOffseason({ league, year, rng, skipDraft = false, retirementSettings = {} }) {
+export function runOffseason({ league, year, rng, skipDraft = false, retirementSettings = {}, developmentContext = null }) {
   expireContracts(league);
-  applyAgingProgressionAndRetirements(league, year, rng, retirementSettings);
+  applyAgingProgressionAndRetirements(league, year, rng, {
+    ...retirementSettings,
+    developmentContext
+  });
   if (!skipDraft) runDraft(league, year, rng);
   runFreeAgency(league, year, rng);
   normalizeRosterSlots(league);

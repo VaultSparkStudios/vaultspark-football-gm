@@ -22,32 +22,87 @@ function readDefaultRuntimeMode() {
   return meta === "client" ? "client" : "server";
 }
 
+function readServerAvailability() {
+  const meta = document.querySelector('meta[name="vsfgm-server-available"]')?.content;
+  if (meta === "false") return false;
+  if (meta === "true") return true;
+  return true;
+}
+
+function readServerBaseUrl() {
+  const value = document.querySelector('meta[name="vsfgm-server-base-url"]')?.content?.trim();
+  return value || "";
+}
+
+export function isServerRuntimeAvailable() {
+  return readServerAvailability();
+}
+
+export function getServerRuntimeBaseUrl() {
+  return readServerBaseUrl();
+}
+
+function normalizeRuntimeMode(mode) {
+  if (mode === "server" && !isServerRuntimeAvailable()) {
+    persistRuntimeMode("client");
+    runtimeModeCache = "client";
+    return runtimeModeCache;
+  }
+  runtimeModeCache = mode === "client" ? "client" : "server";
+  return runtimeModeCache;
+}
+
 export function getRuntimeMode() {
   if (runtimeModeCache) return runtimeModeCache;
   const query = new URLSearchParams(window.location.search).get("runtime");
   if (query === "client" || query === "server") {
-    persistRuntimeMode(query);
-    runtimeModeCache = query;
-    return runtimeModeCache;
+    const mode = normalizeRuntimeMode(query);
+    persistRuntimeMode(mode);
+    return mode;
   }
-  runtimeModeCache = readStoredRuntimeMode() === "client" ? "client" : readDefaultRuntimeMode();
-  return runtimeModeCache;
+  const stored = readStoredRuntimeMode();
+  return normalizeRuntimeMode(stored === "client" ? "client" : readDefaultRuntimeMode());
 }
 
 export function setRuntimeMode(mode) {
-  const nextMode = mode === "client" ? "client" : "server";
+  const nextMode = normalizeRuntimeMode(mode === "client" ? "client" : "server");
   persistRuntimeMode(nextMode);
-  runtimeModeCache = nextMode;
-  return runtimeModeCache;
+  return nextMode;
+}
+
+function resolveHttpUrl(path) {
+  const baseUrl = getServerRuntimeBaseUrl();
+  if (!baseUrl) return path;
+  return new URL(path, `${baseUrl.replace(/\/+$/, "")}/`).toString();
+}
+
+function describeNonJsonResponse(path, text, status) {
+  if (!isServerRuntimeAvailable()) {
+    return "Server-backed mode is unavailable on this deployment. Switch to client-only mode.";
+  }
+  const trimmed = String(text || "").trim();
+  if (trimmed.startsWith("<")) {
+    return `Server-backed request for ${path} returned HTML instead of JSON (status ${status}).`;
+  }
+  return `Server-backed request for ${path} returned invalid JSON (status ${status}).`;
 }
 
 async function requestHttp(path, options = {}) {
-  const response = await fetch(path, {
+  if (!isServerRuntimeAvailable()) {
+    throw new Error("Server-backed mode is unavailable on this deployment. Switch to client-only mode.");
+  }
+  const response = await fetch(resolveHttpUrl(path), {
     method: options.method || "GET",
     headers: { "Content-Type": "application/json" },
     body: options.body ? JSON.stringify(options.body) : undefined
   });
-  const payload = await response.json();
+  const raw = await response.text();
+  let payload = null;
+  try {
+    payload = raw ? JSON.parse(raw) : {};
+  } catch {
+    throw new Error(describeNonJsonResponse(path, raw, response.status));
+  }
   if (!response.ok || payload.ok === false) {
     throw new Error(payload.error || `Request failed: ${response.status}`);
   }

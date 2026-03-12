@@ -57,3 +57,133 @@ Open problems:
 
 Recommended next action:
 - Measure the remaining setup/main-menu latency after this client-runtime import fix, then do a focused manual smoke pass on the new trade/compare/history selection flows
+
+## 2026-03-12
+
+Completed:
+- Investigated the reported live Pages failures for server-backed league creation and browser-save quota exhaustion
+- Added build-time runtime availability metadata to `public/index.html` and `public/game.html`, then taught the Pages build to default the published client to browser mode unless an explicit backend origin is configured
+- Updated the setup runtime selector to disable `server-backed` mode when the Pages artifact has no backend origin and to keep its runtime description in sync with the normalized mode
+- Hardened the shared API client so server-mode requests resolve against an optional configured backend origin and emit a clear non-JSON/backend-origin error when HTML comes back from Pages
+- Changed the browser save store to prune old rolling backups before retrying quota-limited writes and return a user-facing storage-full error only when recovery cannot succeed
+- Updated the local browser runtime so auto-backup quota failures log warnings instead of aborting week advancement or other gameplay actions
+- Added targeted tests for browser quota recovery and non-fatal auto-backup failure handling
+- Revalidated the fix set with:
+  - `node --test --test-isolation=none test/browser-save-store.test.js test/local-api-runtime.test.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
+
+Open problems:
+- The published Pages site still cannot offer real server-backed play until the separate backend/runtime deployment exists and one of `GAME_SERVICE_ORIGIN` or `API_DOMAIN` is configured for the Pages build
+- Setup/main-menu latency still needs measuring after the non-blocking save-load and runtime-import fixes
+- A full `npm.cmd test` pass was not rerun in this shell session, so verification still relies on focused suites
+- The unrelated realism/runtime stash remains parked and should stay isolated until intentionally resumed
+
+Recommended next action:
+- Measure startup latency on the setup/menu path, then decide whether to stand up the separate backend/runtime origin or keep the public Pages build explicitly client-only for now
+
+Completed:
+- Started the roadmap’s first foundation epic by adding a shared setup/config catalog for franchise archetypes, rules presets, difficulty presets, and challenge modes in `src/config/leagueSetup.js`
+- Updated both runtimes so `/api/setup/init` publishes that catalog and `/api/new-league` resolves selected presets through a single settings normalizer before league creation completes
+- Added first-pass startup scenario effects in `src/runtime/applyLeagueSetup.js`, including cap-hell dead cap, small-market owner pressure, aging-core veteran skew, and no-QB quarterback penalties
+- Updated the setup menu to render the new config selectors and summaries from API data instead of hardcoded quick-start defaults alone
+- Revalidated the setup/config batch with:
+  - `node --check public/setup.js`
+  - `node --check src/config/leagueSetup.js`
+  - `node --check src/runtime/applyLeagueSetup.js`
+  - `node --check src/app/api/localApiRuntime.js`
+  - `node --check src/server.js`
+  - `node --test --test-isolation=none test/local-api-runtime.test.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
+
+Open problems:
+- Challenge restrictions are only partially mechanical so far; the config framework exists, but flows like free agency and user pick trading still need hard enforcement
+- The next world-state layer for owner personality, staff roles, and scheme/culture still needs to be built on top of the new config foundation
+
+## 2026-03-12 (world-state follow-up)
+
+Completed:
+- Expanded owner/staff world-state with extra front-office and health roles, owner personality/priorities/patience, derived scheme identity, and culture profile summaries
+- Surfaced those richer summaries through the existing owner/staff runtime endpoints and updated the game UI tables to show the new fields
+- Wired challenge enforcement into user free-agent signings/offers and trades that would deliver top-10 picks to the controlled team
+- Revalidated the batch with:
+  - `node --check public/app.js`
+  - `node --check src/runtime/GameSession.js`
+  - `node --check src/app/api/localApiRuntime.js`
+  - `node --check src/server.js`
+  - `node --test --test-isolation=none test/feature-pack-v1.test.js test/new-systems.test.js test/session-actions.test.js test/local-api-runtime.test.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
+
+Open problems:
+- Challenge enforcement still needs to reach any remaining transaction paths beyond the newly covered free-agency and top-10-pick trade cases
+- Owner/staff/culture state is still mostly descriptive; more of it needs to feed gameplay outcomes directly
+
+Recommended next action:
+- Connect owner personality, staff specialties, and culture identity into weekly strategy, development, and finance outcomes before widening the next feature area
+
+## 2026-03-12 (world-state gameplay effects)
+
+Completed:
+- Wired the new owner/staff/culture world-state into weekly scouting gains, injury chance/recovery, morale swing intensity, owner fan-interest/hot-seat updates, and negotiation demand
+- Added coverage that proves the world-state now changes scouting gain, injury recovery, and owner pressure outcomes
+- Revalidated the updated runtime and Pages bundle with:
+  - `node --check public/app.js`
+  - `node --check src/runtime/GameSession.js`
+  - `node --test --test-isolation=none test/feature-pack-v1.test.js test/new-systems.test.js test/session-actions.test.js test/local-api-runtime.test.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
+
+Open problems:
+- Challenge enforcement still needs to reach the remaining user transaction paths
+- World-state should influence more systems than the current scouting/injury/morale/finance/negotiation hooks
+
+Recommended next action:
+- Extend world-state effects into player development, weekly strategy, and scouting reveal quality before starting another broad feature area
+
+## 2026-03-12 (world-state development, strategy, and scouting)
+
+Completed:
+- Extended scouting reveal quality so board confidence and reveal precision now depend on staff strength, analytics support, staff budget, team need, and scheme fit
+- Extended offseason development so team training/coaching context can improve player growth focus and reduce reinjury risk during the offseason pass
+- Added weekly matchup plans that derive from team/opponent strengths, feed the game simulator, and surface through owner/staff views plus game results
+- Added deterministic coverage for the new world-state integrations in `test/world-state-next-step.test.js`
+- Revalidated the updated runtime and Pages bundle with:
+  - `node --check public/app.js`
+  - `node --check src/runtime/GameSession.js`
+  - `node --check src/engine/gameSimulator.js`
+  - `node --check src/engine/offseasonSimulator.js`
+  - `node --check test/world-state-next-step.test.js`
+  - `node --test --test-isolation=none test/world-state-next-step.test.js test/feature-pack-v1.test.js test/new-systems.test.js test/session-actions.test.js test/local-api-runtime.test.js test/strategy-contract-scouting.test.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
+
+Open problems:
+- Challenge enforcement still needs to reach the remaining user transaction paths
+- World-state is now in more of the sim loop, but it still needs deeper impact on transaction AI, player-facing development surfacing, and owner expectation systems
+
+Recommended next action:
+- Finish the remaining challenge enforcement paths, then push the world-state layer into transaction AI and player-facing development/history views
+
+## 2026-03-12 (challenge enforcement cleanup)
+
+Completed:
+- Extended challenge restrictions into waiver claims, forced retirement-comeback signings, and user top-10 draft selections
+- Updated CPU draft progression so `untilUserPick` no longer stalls when the controlled team is challenge-blocked from making a top-10 selection
+- Added runtime and local-API coverage for those restriction paths
+- Revalidated the current batch with:
+  - `node --check src/runtime/GameSession.js`
+  - `node --check public/app.js`
+  - `node --check test/new-systems.test.js`
+  - `node --check test/local-api-runtime.test.js`
+  - `node --test --test-isolation=none test/new-systems.test.js test/local-api-runtime.test.js test/world-state-next-step.test.js test/feature-pack-v1.test.js test/session-actions.test.js test/strategy-contract-scouting.test.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
+
+Open problems:
+- World-state still needs deeper impact on transaction AI, player-facing development surfacing, and owner expectation loops
+- Setup/menu latency still has not been measured after the latest rounds of runtime and UI hardening
+
+Recommended next action:
+- Push world-state into transaction AI and player-facing development/history views, then do the deferred setup/menu latency measurement pass

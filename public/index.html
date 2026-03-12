@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="vsfgm-runtime-default" content="server" />
+    <meta name="vsfgm-server-available" content="true" />
+    <meta name="vsfgm-server-base-url" content="" />
     <title>VaultSpark Football GM - Main Menu</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -25,7 +27,7 @@
               <option value="client">Client-only (Beta)</option>
             </select>
           </label>
-          <span class="small">Client-only mode stores leagues in this browser and does not use filesystem path imports.</span>
+          <span id="runtimeModeDescription" class="small">Client-only mode stores leagues in this browser and does not use filesystem path imports.</span>
         </div>
         <div class="cards">
           <article>
@@ -71,6 +73,18 @@
               <option value="legacy">Legacy Run Era</option>
             </select>
           </label>
+          <label>Franchise Archetype
+            <select id="franchiseArchetypeInput"></select>
+          </label>
+          <label>Rules Preset
+            <select id="rulesPresetInput"></select>
+          </label>
+          <label>Difficulty
+            <select id="difficultyPresetInput"></select>
+          </label>
+          <label>Challenge Mode
+            <select id="challengeModeInput"></select>
+          </label>
           <label>Controlled Team
             <select id="teamSelect" data-testid="setup-team-select"></select>
           </label>
@@ -87,6 +101,7 @@
           <label><input id="compPicksInput" type="checkbox" checked /> Comp Picks</label>
           <label><input id="chemistryInput" type="checkbox" checked /> Team Chemistry</label>
         </div>
+        <div id="configSummaryContent" class="stack small"></div>
         <div class="row">
           <button id="createLeagueBtn" data-testid="create-league-btn">Create League</button>
           <span id="setupStatus" data-testid="setup-status" class="chip">Ready</span>

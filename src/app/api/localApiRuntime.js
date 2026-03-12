@@ -1,6 +1,8 @@
 import { createBrowserSaveStore } from "../../adapters/persistence/browserSaveStore.js";
 import { createPersistenceDescriptor } from "../../adapters/persistence/saveStoreShared.js";
+import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "../../config/leagueSetup.js";
 import { GameSession } from "../../runtime/GameSession.js";
+import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { RNG } from "../../utils/rng.js";
 import { RNGStreams } from "../../utils/rngStreams.js";
 
@@ -75,7 +77,8 @@ export function createLocalApiRuntime({
     startedAt: now(),
     requests: 0,
     routeHits: {},
-    routeTiming: {}
+    routeTiming: {},
+    lastAutoBackupWarning: null
   };
 
   function trackRouteMetric(route, durationMs) {
@@ -88,13 +91,21 @@ export function createLocalApiRuntime({
   }
 
   function writeAutoBackup(reason) {
-    return saveStore.saveRollingBackup(session.toSnapshot(), {
-      reason,
-      year: session.currentYear,
-      week: session.currentWeek,
-      phase: session.phase,
-      maxBackups: 60
-    });
+    try {
+      const saved = saveStore.saveRollingBackup(session.toSnapshot(), {
+        reason,
+        year: session.currentYear,
+        week: session.currentWeek,
+        phase: session.phase,
+        maxBackups: 60
+      });
+      runtimeMetrics.lastAutoBackupWarning = null;
+      return saved;
+    } catch (error) {
+      runtimeMetrics.lastAutoBackupWarning = error?.message || "Automatic browser backup failed.";
+      console.warn("Auto-backup skipped:", runtimeMetrics.lastAutoBackupWarning);
+      return null;
+    }
   }
 
   function runSimulationJob(jobId) {
@@ -176,11 +187,14 @@ export function createLocalApiRuntime({
               currentWeek: setup.currentWeek,
               seasonsSimulated: setup.seasonsSimulated,
               mode: setup.mode,
-              controlledTeamId: setup.controlledTeamId,
-              controlledTeamName: setup.controlledTeamName,
-              controlledTeamAbbrev: setup.controlledTeamAbbrev
-            },
-            teams: setup.teams
+            controlledTeamId: setup.controlledTeamId,
+            controlledTeamName: setup.controlledTeamName,
+            controlledTeamAbbrev: setup.controlledTeamAbbrev,
+            configSummary: getLeagueConfigSummary(session.getLeagueSettings())
+          },
+            teams: setup.teams,
+            settings: session.getLeagueSettings(),
+            configCatalog: getLeagueConfigCatalog()
           })
         );
       }
@@ -204,13 +218,22 @@ export function createLocalApiRuntime({
           mode: body?.mode === "play" ? "play" : "drive",
           controlledTeamId: body?.controlledTeamId || "BUF"
         });
-        session.updateLeagueSettings({
-          eraProfile: body?.eraProfile || "modern",
-          enableOwnerMode: toBool(body?.enableOwnerMode, true),
-          enableNarratives: toBool(body?.enableNarratives, true),
-          enableCompPicks: toBool(body?.enableCompPicks, true),
-          enableChemistry: toBool(body?.enableChemistry, true)
-        });
+        session.league.settings = resolveLeagueSettings(
+          {
+            eraProfile: body?.eraProfile || "modern",
+            franchiseArchetype: body?.franchiseArchetype || "balanced",
+            rulesPreset: body?.rulesPreset || "standard",
+            difficultyPreset: body?.difficultyPreset || "standard",
+            challengeMode: body?.challengeMode || "open",
+            enableOwnerMode: toBool(body?.enableOwnerMode, true),
+            enableNarratives: toBool(body?.enableNarratives, true),
+            enableCompPicks: toBool(body?.enableCompPicks, true),
+            enableChemistry: toBool(body?.enableChemistry, true)
+          },
+          session.getLeagueSettings()
+        );
+        session.league.scouting.weeklyPoints = session.league.settings.scoutingWeeklyPoints;
+        applyInitialLeagueSetup(session, session.controlledTeamId);
         writeAutoBackup("new-league");
         return finish(jsonResponse(200, { ok: true, state: session.getDashboardState() }));
       }
@@ -746,7 +769,9 @@ export function createLocalApiRuntime({
       }
 
       if (method === "POST" && pathname === "/api/settings") {
-        const settings = session.updateLeagueSettings(body || {});
+        const settings = resolveLeagueSettings(body || {}, session.getLeagueSettings());
+        session.league.settings = settings;
+        session.league.scouting.weeklyPoints = settings.scoutingWeeklyPoints;
         return finish(jsonResponse(200, { ok: true, settings, state: session.getDashboardState() }));
       }
 
