@@ -40,6 +40,9 @@ What was completed:
 - Added first-pass startup observability for setup init:
   - both runtimes now emit setup-route timing diagnostics for setup state, saves, backups, and total API time
   - the setup page measures client init time plus deferred save hydration time and shows the resulting diagnostics in the status line
+- Trimmed the next setup-latency bottleneck on the client-only path:
+  - browser `/api/setup/init` now stays on a lightweight catalog/team bootstrap until a full league session is actually needed
+  - setup status no longer overwrites the timing diagnostics with a plain `Ready` after init or runtime-mode switches
 - Revalidated the current gameplay/client batch with:
   - `node --check public/app.js`
   - `node --check public/setup.js`
@@ -63,7 +66,7 @@ What is mid-flight:
 - Challenge restrictions are much more mechanical now, though edge-case acquisition paths may still be worth auditing later
 
 What to do next:
-1. Measure and trim any remaining setup/main-menu latency using the new setup diagnostics first, especially any residual runtime-mode startup overhead after the client-runtime import fix
+1. Use the new setup diagnostics to decide whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
 2. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
 3. Add clearer UI messaging for challenge-triggered failures and for the new weekly-plan/scouting-fit outputs
 

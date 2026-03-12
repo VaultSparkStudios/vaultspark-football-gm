@@ -234,3 +234,24 @@ Open problems:
 
 Recommended next action:
 - Use the new setup diagnostics to identify the next startup bottleneck, trim that path, and then add clearer messaging around challenge failures and weekly-plan/scouting outputs
+
+## 2026-03-12 (lazy browser setup bootstrap)
+
+Completed:
+- Removed the biggest remaining client-only setup bootstrap cost by keeping browser `/api/setup/init` on a lightweight catalog/team bootstrap until a route actually needs a full `GameSession`
+- Added runtime coverage that proves setup init no longer forces browser-session construction before the user creates or loads a league
+- Fixed the setup page so the new startup diagnostics remain visible after init and runtime-mode switches instead of being overwritten by a plain `Ready`
+- Revalidated the follow-up batch with:
+  - `node --check src/app/api/localApiRuntime.js`
+  - `node --check test/local-api-runtime.test.js`
+  - `node --check public/setup.js`
+  - `node --test --test-isolation=none test/local-api-runtime.test.js test/feature-pack-v1.test.js test/new-systems.test.js test/world-state-next-step.test.js test/session-actions.test.js test/strategy-contract-scouting.test.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run smoke:pages`
+
+Open problems:
+- The new setup diagnostics are now preserved and the largest client bootstrap cost is removed, but a follow-up pass should still confirm whether save listing or render work is now the main remaining setup cost
+- Challenge-triggered failures and the new weekly-plan/scouting-fit outputs still need clearer UI messaging in the main game surface
+
+Recommended next action:
+- Read the preserved setup diagnostics after the lazy bootstrap change, decide whether another setup trim is warranted, and otherwise move on to clearer challenge/weekly-plan/scouting UI messaging and the remaining world-state AI edges

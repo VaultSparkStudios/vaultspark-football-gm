@@ -422,7 +422,7 @@ function bindEvents() {
       warmLocalRuntime().catch(() => {});
     }
     loadSetup()
-      .then(() => setStatus("Ready"))
+      .then(() => setStatus(setupStatusText("Ready")))
       .catch((error) => {
         setStatus(`Error: ${error.message}`);
       });
@@ -550,7 +550,6 @@ function bindEvents() {
 async function init() {
   bindEvents();
   await loadSetup();
-  setStatus("Ready");
 }
 
 init();

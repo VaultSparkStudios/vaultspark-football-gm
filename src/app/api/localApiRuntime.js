@@ -1,6 +1,7 @@
 import { createBrowserSaveStore } from "../../adapters/persistence/browserSaveStore.js";
 import { createPersistenceDescriptor } from "../../adapters/persistence/saveStoreShared.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "../../config/leagueSetup.js";
+import { createLeagueBase } from "../../domain/teamFactory.js";
 import { GameSession } from "../../runtime/GameSession.js";
 import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { RNG } from "../../utils/rng.js";
@@ -61,6 +62,18 @@ function sessionFromSnapshot(snapshot) {
   return GameSession.fromSnapshot(snapshot, (seed) => new RNG(seed));
 }
 
+function toSetupTeamIdentity(team) {
+  return {
+    id: team.id,
+    abbrev: team.abbrev || team.id,
+    name: team.name,
+    city: team.city || null,
+    nickname: team.nickname || null,
+    conference: team.conference,
+    division: team.division
+  };
+}
+
 export function createLocalApiRuntime({
   storage,
   now = () => Date.now(),
@@ -71,7 +84,20 @@ export function createLocalApiRuntime({
     storage,
     now: () => new Date(now()).toISOString()
   });
-  let session = buildSession();
+  const setupBootstrap = createLeagueBase(currentYear);
+  const defaultSettings = resolveLeagueSettings();
+  const defaultSetupState = {
+    phase: "regular-season",
+    currentYear,
+    currentWeek: 1,
+    seasonsSimulated: 0,
+    mode: "drive",
+    controlledTeamId: "BUF",
+    controlledTeamName: null,
+    controlledTeamAbbrev: null,
+    teams: setupBootstrap.teams.map(toSetupTeamIdentity)
+  };
+  let session = null;
   const simJobs = new Map();
   const runtimeMetrics = {
     startedAt: now(),
@@ -80,6 +106,13 @@ export function createLocalApiRuntime({
     routeTiming: {},
     lastAutoBackupWarning: null
   };
+
+  function ensureSession() {
+    if (!session) {
+      session = buildSession({ startYear: currentYear });
+    }
+    return session;
+  }
 
   function trackRouteMetric(route, durationMs) {
     runtimeMetrics.routeHits[route] = (runtimeMetrics.routeHits[route] || 0) + 1;
@@ -91,12 +124,13 @@ export function createLocalApiRuntime({
   }
 
   function writeAutoBackup(reason) {
+    const activeSession = ensureSession();
     try {
-      const saved = saveStore.saveRollingBackup(session.toSnapshot(), {
+      const saved = saveStore.saveRollingBackup(activeSession.toSnapshot(), {
         reason,
-        year: session.currentYear,
-        week: session.currentWeek,
-        phase: session.phase,
+        year: activeSession.currentYear,
+        week: activeSession.currentWeek,
+        phase: activeSession.phase,
         maxBackups: 60
       });
       runtimeMetrics.lastAutoBackupWarning = null;
@@ -111,12 +145,13 @@ export function createLocalApiRuntime({
   function runSimulationJob(jobId) {
     const job = simJobs.get(jobId);
     if (!job || job.status === "cancelled" || job.status === "completed" || job.status === "failed") return;
+    const activeSession = ensureSession();
     job.status = "running";
     const batchSize = Math.min(4, Math.max(1, Math.floor(job.totalSeasons / 25) || 1));
     const started = now();
     try {
       for (let i = 0; i < batchSize && job.completedSeasons < job.totalSeasons; i += 1) {
-        const summary = session.simulateOneSeason({ runOffseasonAfter: true });
+        const summary = activeSession.simulateOneSeason({ runOffseasonAfter: true });
         job.results.push(summary);
         job.completedSeasons += 1;
       }
@@ -161,15 +196,18 @@ export function createLocalApiRuntime({
 
     const finish = (response) => {
       trackRouteMetric(pathname, now() - started);
-      session.trackCounter("api-request");
-      session.trackTiming(`api:${pathname}`, now() - started);
+      if (session) {
+        session.trackCounter("api-request");
+        session.trackTiming(`api:${pathname}`, now() - started);
+      }
       return response;
     };
 
     try {
       if (method === "GET" && pathname === "/api/setup/init") {
         const setupStarted = now();
-        const setup = session.getSetupState();
+        const activeSession = session;
+        const setup = activeSession ? activeSession.getSetupState() : defaultSetupState;
         const setupStateMs = now() - setupStarted;
         const includeSaves = toBool(url.searchParams.get("includeSaves"), true);
         const includeBackups = toBool(url.searchParams.get("includeBackups"), false);
@@ -187,23 +225,26 @@ export function createLocalApiRuntime({
             savesDeferred: !includeSaves,
             backups,
             backupsDeferred: !includeBackups,
-            activeLeague: {
-              phase: setup.phase,
-              currentYear: setup.currentYear,
-              currentWeek: setup.currentWeek,
-              seasonsSimulated: setup.seasonsSimulated,
-              mode: setup.mode,
-            controlledTeamId: setup.controlledTeamId,
-            controlledTeamName: setup.controlledTeamName,
-            controlledTeamAbbrev: setup.controlledTeamAbbrev,
-            configSummary: getLeagueConfigSummary(session.getLeagueSettings())
-            },
+            activeLeague: activeSession
+              ? {
+                  phase: setup.phase,
+                  currentYear: setup.currentYear,
+                  currentWeek: setup.currentWeek,
+                  seasonsSimulated: setup.seasonsSimulated,
+                  mode: setup.mode,
+                  controlledTeamId: setup.controlledTeamId,
+                  controlledTeamName: setup.controlledTeamName,
+                  controlledTeamAbbrev: setup.controlledTeamAbbrev,
+                  configSummary: getLeagueConfigSummary(activeSession.getLeagueSettings())
+                }
+              : null,
             teams: setup.teams,
-            settings: session.getLeagueSettings(),
+            settings: activeSession ? activeSession.getLeagueSettings() : defaultSettings,
             configCatalog: getLeagueConfigCatalog(),
             diagnostics: {
               setup: {
                 runtime: "browser",
+                bootstrapMode: activeSession ? "active-session" : "catalog-only",
                 setupStateMs,
                 savesMs,
                 backupsMs,
@@ -215,6 +256,8 @@ export function createLocalApiRuntime({
           })
         );
       }
+
+      ensureSession();
 
       if (method === "GET" && pathname === "/api/state") {
         return finish(jsonResponse(200, session.getDashboardState()));

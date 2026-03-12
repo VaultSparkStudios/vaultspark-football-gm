@@ -1,12 +1,12 @@
 # Task Board
 
 ## Now
-- Measure and trim any remaining setup/main-menu latency using the new setup diagnostics first, especially residual runtime-mode startup overhead
+- Validate whether any remaining setup/main-menu latency still needs another trim after the new lazy browser bootstrap
 - Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
 - Add clearer UI messaging for challenge-triggered failures and the new weekly plan/scouting-fit outputs
 
 ## Next
-- Use the new setup diagnostics to decide whether setup time is now dominated by save listing, backup listing, or client-side render work
+- Use the new setup diagnostics to decide whether any remaining setup cost is now dominated by save listing, backup listing, or client-side render work
 - Add UI hints for weekly plan/scouting-fit outputs where they matter most instead of only exposing them in generic tables
 - Add setup/settings UI hints for the challenge-rule failures that now have backend enforcement
 - Decide whether to restore the parked realism/runtime stash onto a separate branch or continue keeping it isolated

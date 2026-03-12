@@ -204,10 +204,12 @@ test("local api runtime setup init defers backups by default", async () => {
 
   const initial = await runtime.request("/api/setup/init");
   assert.equal(initial.status, 200);
+  assert.equal(runtime.getSession(), null);
   assert.equal(initial.payload.savesDeferred, false);
   assert.equal(initial.payload.backupsDeferred, true);
   assert.deepEqual(initial.payload.backups, []);
   assert.equal(initial.payload.diagnostics.setup.runtime, "browser");
+  assert.equal(initial.payload.diagnostics.setup.bootstrapMode, "catalog-only");
   assert.ok(initial.payload.diagnostics.setup.totalMs >= 0);
   assert.ok(initial.payload.configCatalog);
   assert.equal(initial.payload.settings.rulesPreset, "standard");
