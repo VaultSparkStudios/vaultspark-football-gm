@@ -38,6 +38,8 @@ Build status:
 - Career stat rows now carry real games and starts, fixing broken per-game calculations that were previously dividing by seasons in the stats UI
 - Added a regression suite that checks both the career per-game denominator fix and starter-qualified season averages against weighted position baselines
 - The stats tab now shows a filter-aware starter-qualified benchmark hint so position-based NFL-average comparisons are explicit instead of implied
+- The career realism profile now applies a QB games-started qualifier in addition to passing volume so the starter-weighted career verification no longer averages in long-tenure low-start backups
+- Backend image tags now normalize the GitHub owner name to lowercase before pushing to GHCR, fixing the `repository name must be lowercase` Actions failure on `Deploy Backend Runtime`
 - Challenge enforcement now blocks user free-agent actions in `no-free-agency` mode and blocks trades that would deliver top-10 picks to the controlled team in `no-top-10-picks` mode
 - That enforcement now reaches the remaining obvious user acquisition paths too:
   - waiver claims are blocked in `no-free-agency`
@@ -58,16 +60,18 @@ Build status:
   - `node --check test/stats-regression.test.js`
   - `node --check test/world-state-next-step.test.js`
   - `node --test --test-isolation=none test/world-state-next-step.test.js test/feature-pack-v1.test.js test/new-systems.test.js test/session-actions.test.js test/local-api-runtime.test.js test/strategy-contract-scouting.test.js test/stats-regression.test.js`
+  - `node --test --test-isolation=none test/realism-career-regression.test.js`
+  - `npm.cmd test`
   - `npm.cmd run build:pages`
   - `npm.cmd run smoke:pages`
 
 Current priorities:
 1. Use the new setup diagnostics to confirm whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
-2. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges instead of stopping at the current trade/FA hooks
-3. Extend the new benchmark/qualification hint pattern anywhere else the UI compares all-player data to starter-qualified or team-level baselines
+2. Verify the next GitHub push clears both `CI` and `Deploy Backend Runtime` now that the test regression and GHCR tag casing are fixed
+3. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges instead of stopping at the current trade/FA hooks
+4. Extend the new benchmark/qualification hint pattern anywhere else the UI compares all-player data to starter-qualified or team-level baselines
 
 Known issues:
 - The Pages artifact remains client-only unless `GAME_SERVICE_ORIGIN` or `API_DOMAIN` is configured and the separate backend/runtime rollout is live
 - Challenge restrictions are much more mechanical now, but there may still be edge-case user acquisition paths worth auditing later
 - The unrelated realism/runtime work was parked in a local stash and is not yet reconciled back into the branch
-- A full local `npm.cmd test` pass was not rerun in this session, so current verification still relies on focused suites plus targeted Playwright coverage

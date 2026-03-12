@@ -3,6 +3,11 @@
 Last updated: 2026-03-12
 
 What was completed:
+- Diagnosed the failing GitHub Actions runs on `main`:
+  - `CI` was failing in `npm test` because `test/realism-career-regression.test.js` exceeded the career out-of-range guardrail
+  - `Deploy Backend Runtime` was failing because GHCR tags used the mixed-case `github.repository_owner`, which Docker rejects
+- Fixed the career realism regression by tightening the QB career baseline qualifier to require meaningful starts in addition to passing-volume qualification, preventing long-tenure low-start backups from distorting the starter-weighted average
+- Fixed backend image tagging by lowercasing the GitHub owner before building/pushing GHCR tags in `deploy-backend.yml`
 - Confirmed the direct-Pages standards PR already merged into `origin/main`
 - Fixed the `Play`-mode startup hang by splitting game-page boot into core dashboard loading plus background panel hydration
 - Made setup boot non-blocking for save discovery by allowing `/api/setup/init` to skip saves, marking the page ready from active-league/team state, and hydrating `/api/saves` in the background
@@ -53,6 +58,8 @@ What was completed:
   - added a regression that checks starter-qualified season averages against weighted position baselines
 - Added a filter-aware starter-qualified benchmark hint to the stats tab so users can tell when they are comparing against position-specific regular-season starter baselines versus broader all-player/team views
 - Revalidated the current gameplay/client batch with:
+  - `node --test --test-isolation=none test/realism-career-regression.test.js`
+  - `npm.cmd test`
   - `node --check public/app.js`
   - `node --check public/setup.js`
   - `node --check public/lib/api/createApiClient.js`
@@ -78,9 +85,10 @@ What is mid-flight:
 - Challenge restrictions are much more mechanical now, though edge-case acquisition paths may still be worth auditing later
 
 What to do next:
-1. Use the new setup diagnostics to decide whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
-2. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
-3. Extend the new benchmark/qualification hint pattern to any other views that still imply apples-to-apples NFL averages without saying so
+1. Push the workflow/profile fixes and confirm the next GitHub Actions run clears both `CI` and `Deploy Backend Runtime`
+2. Use the new setup diagnostics to decide whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
+3. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
+4. Extend the new benchmark/qualification hint pattern to any other views that still imply apples-to-apples NFL averages without saying so
 
 Important constraints:
 - The parked stash is named `park unrelated realism-runtime work after depth-chart commit`; do not lose it if that work is still needed

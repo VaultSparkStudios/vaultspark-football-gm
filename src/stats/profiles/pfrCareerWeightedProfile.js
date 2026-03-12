@@ -10,7 +10,8 @@ export const PFR_CAREER_WEIGHTED_PROFILE = {
       minCareerSeasons: 3,
       minCareerGames: 80,
       qualifiers: {
-        "careerStats.passing.att": 1200
+        "careerStats.passing.att": 1200,
+        "careerStats.gamesStarted": 85
       },
       metrics: {
         seasonsPlayed: 8.4,

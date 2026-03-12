@@ -1,6 +1,7 @@
 # Task Board
 
 ## Now
+- Verify the next GitHub push clears both `CI` and `Deploy Backend Runtime` after the realism-regression and GHCR-tag fixes
 - Validate whether any remaining setup/main-menu latency still needs another trim after the new lazy browser bootstrap
 - Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
 - Extend the new stats benchmark/qualification hint pattern to any other views that still imply apples-to-apples NFL averages without saying so
