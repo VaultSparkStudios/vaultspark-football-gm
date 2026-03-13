@@ -9,6 +9,7 @@ What was completed:
   - the game simulator now picks short/intermediate/deep pass buckets and applies bucket-specific completion, YAC, breakup, sack, and interception behavior
 - Tuned PFR QB imports so productive modern passers derive more realistic depth-accuracy/awareness values instead of landing as low-end backups
 - Added a regression that verifies both generated and imported QBs have the new depth ratings
+- Fixed a stale challenge-mode trade test after CI exposed that `getDraftPickAssets()` returns cloned pick payloads; the test now mutates the underlying league pick before evaluating the top-10 trade restriction
 - Fixed the broken regular-season player stats path:
   - season realism calibration now updates the `regular` split that the stats UI and player profile views read
   - aggregate season totals and career totals are rebuilt from regular/playoff splits after calibration, so verification snapshots and table views no longer disagree
@@ -80,6 +81,7 @@ What was completed:
   - `node --test --test-isolation=none test/quarterback-depth-ratings.test.js`
   - `node --test --test-isolation=none test/stats-regression.test.js`
   - `node --test --test-isolation=none test/ratings-regression.test.js`
+  - `node --test --test-isolation=none test/new-systems.test.js`
   - `npm.cmd run build:pages`
   - `node --check src/stats/realismCalibrator.js`
   - `node --check test/stats-regression.test.js`

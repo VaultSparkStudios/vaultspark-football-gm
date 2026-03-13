@@ -75,7 +75,7 @@ test("challenge mode can block user free agency and top-10 pick trades", () => {
   session.updateLeagueSettings({ challengeMode: "no-top-10-picks" });
   const bufPick = session.getDraftPickAssets("BUF")[0];
   const miaPick = session.getDraftPickAssets("MIA")[0];
-  miaPick.originalPickIndex = 4;
+  session.league.draftPicks.find((pick) => pick.id === miaPick.id).originalPickIndex = 4;
 
   const trade = session.evaluateTradePackage({
     teamA: "BUF",

@@ -67,6 +67,7 @@ Build status:
   - `node --test --test-isolation=none test/quarterback-depth-ratings.test.js`
   - `node --test --test-isolation=none test/stats-regression.test.js`
   - `node --test --test-isolation=none test/ratings-regression.test.js`
+  - `node --test --test-isolation=none test/new-systems.test.js`
   - `npm.cmd run build:pages`
   - `node --check public/app.js`
   - `node --check public/lib/api/createApiClient.js`
