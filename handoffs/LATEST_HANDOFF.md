@@ -3,6 +3,18 @@
 Last updated: 2026-03-13
 
 What was completed:
+- Added a second UI-polish pass on top of the first branding refresh:
+  - the overview tab now opens with a command-deck style franchise spotlight instead of separate plain control/summary panels
+  - that spotlight surfaces controlled-team mandate, identity, primary roster need, and weekly plan context before the tables
+  - the box score subtab bar is now sticky inside the modal so users can switch between player stats, summary, and play-by-play without scrolling back to the top
+- Expanded the player dossier hero beyond visuals:
+  - added contract snapshot cards for salary/cap/guarantee/years remaining
+  - added availability/injury context and a latest-season production summary directly in the hero grid
+  - tightened the hero/mobile CSS so the portrait and meta cards stack more cleanly on smaller screens
+- Revalidated the follow-up UI pass with:
+  - `node --check public/app.js`
+  - `npm.cmd test`
+  - `npm.cmd run build:pages`
 - Refreshed the frontend brand/UI presentation:
   - added a VaultSpark Studios kicker to the setup and in-game top bars so the product reads as part of the studio identity instead of only a utilitarian shell
   - upgraded the shared visual system in `public/styles.css` with a richer stadium-night palette, stronger panel depth, cleaner tables/forms, and more deliberate modal/navigation styling
@@ -159,17 +171,17 @@ What was completed:
   - `npm.cmd run smoke:pages`
 
 What is mid-flight:
-- The branding/player-profile/box-score refresh is ready locally but still needs the commit/push/GitHub verification pass
+- The overview/dashboard/player-dossier follow-up polish is ready locally but still needs the commit/push/GitHub verification pass
 - The unrelated realism/runtime work is still parked in a local stash and has not been reincorporated
 - Challenge restrictions are much more mechanical now, though edge-case acquisition paths may still be worth auditing later
 - The broader 2025 baseline path currently lives as a generated output artifact plus smoothed live constants; it is not yet promoted to a dedicated checked-in builder script
 
 What to do next:
-1. Commit/push the branding/player-profile/box-score UI refresh and confirm the next GitHub run stays green
-2. Review the live deploy on desktop/mobile to catch any overflow or spacing issues in the new player hero and box score tab layout
-3. Decide whether to promote the generated StatMuse baseline flow into a checked-in repo script instead of keeping it as an output artifact plus smoothed constants
-4. Use the new setup diagnostics to decide whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
-5. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
+1. Commit/push the overview/dashboard/player-dossier follow-up UI pass and confirm the next GitHub run stays green
+2. Review the live deploy on desktop/mobile to catch any overflow or spacing issues in the new overview spotlight, player hero, and sticky box score tabs
+3. Extend the refreshed UI language into any remaining high-value legacy management tabs such as contracts and owner controls
+4. Decide whether to promote the generated StatMuse baseline flow into a checked-in repo script instead of keeping it as an output artifact plus smoothed constants
+5. Use the new setup diagnostics to decide whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
 
 Important constraints:
 - The parked stash is named `park unrelated realism-runtime work after depth-chart commit`; do not lose it if that work is still needed

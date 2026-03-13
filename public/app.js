@@ -332,6 +332,28 @@ function buildPlayerPortraitSvg(player) {
   `;
 }
 
+function buildProfileLatestSeasonSummary(position, entry) {
+  if (!entry) return "No season production recorded yet.";
+  const stats = entry.stats || {};
+  const games = stats.games || 0;
+  if (position === "QB") {
+    return `${entry.year}: ${stats.passing?.yards || 0} pass yds, ${stats.passing?.td || 0} TD, ${stats.passing?.int || 0} INT in ${games} G.`;
+  }
+  if (position === "RB") {
+    return `${entry.year}: ${stats.rushing?.yards || 0} rush yds, ${stats.rushing?.td || 0} rush TD, ${stats.receiving?.yards || 0} rec yds in ${games} G.`;
+  }
+  if (position === "WR" || position === "TE") {
+    return `${entry.year}: ${stats.receiving?.rec || 0} rec, ${stats.receiving?.yards || 0} yds, ${stats.receiving?.td || 0} TD in ${games} G.`;
+  }
+  if (position === "OL") {
+    return `${entry.year}: ${stats.gamesStarted || 0} starts across ${games} games played.`;
+  }
+  if (position === "K" || position === "P") {
+    return `${entry.year}: ${stats.kicking?.fgm || 0}/${stats.kicking?.fga || 0} FG, ${stats.kicking?.xpm || 0}/${stats.kicking?.xpa || 0} XP, ${stats.punting?.in20 || 0} punts inside the 20.`;
+  }
+  return `${entry.year}: ${stats.defense?.tackles || 0} tackles, ${stats.defense?.sacks || 0} sacks, ${stats.defense?.int || 0} INT in ${games} G.`;
+}
+
 function renderPlayerProfileHero(profile) {
   const player = profile.player || {};
   const outlook = profile.developmentOutlook || {};
@@ -339,6 +361,12 @@ function renderPlayerProfileHero(profile) {
   const awardsCount = (profile.awardsHistory || []).length;
   const latestSeason = (profile.timeline || []).slice().sort((a, b) => (b.year || 0) - (a.year || 0))[0] || null;
   const latestAv = latestSeason ? approximateValue(player.position, latestSeason.stats || {}) : 0;
+  const contract = player.contract || {};
+  const injury = player.injury?.type ? `${player.injury.type}${player.injury.weeksRemaining ? ` (${player.injury.weeksRemaining}w)` : ""}` : "Healthy";
+  const contractLabel = contract.yearsRemaining
+    ? `${fmtMoney(contract.salary || 0)} salary | ${contract.yearsRemaining} yrs left`
+    : "No active long-term deal";
+  const latestSeasonSummary = buildProfileLatestSeasonSummary(player.position, latestSeason);
   const badges = [
     `${teamCode(player.teamId)} ${player.position}`,
     `OVR ${player.overall ?? "-"}`,
@@ -366,14 +394,29 @@ function renderPlayerProfileHero(profile) {
             <div class="small">Scheme fit ${escapeHtml(outlook.fitLabel || "-")} (${escapeHtml(outlook.fit ?? "-")})</div>
           </div>
           <div class="player-meta-card">
+            <strong>Contract</strong>
+            <div>${escapeHtml(contractLabel)}</div>
+            <div class="small">Cap ${escapeHtml(fmtMoney(contract.capHit || 0))} | Guaranteed ${escapeHtml(fmtMoney(contract.guaranteed || 0))}</div>
+          </div>
+          <div class="player-meta-card">
             <strong>Development</strong>
             <div>${escapeHtml(outlook.trajectory || "steady")}</div>
             <div class="small">Weekly focus ${escapeHtml(outlook.weeklyPlan || "-")}</div>
           </div>
           <div class="player-meta-card">
+            <strong>Availability</strong>
+            <div>${escapeHtml(injury)}</div>
+            <div class="small">Status ${escapeHtml(player.status || player.rosterSlot || "active")} | Morale ${escapeHtml(player.morale || "-")}</div>
+          </div>
+          <div class="player-meta-card">
             <strong>Career Resume</strong>
             <div>Seasons ${escapeHtml(profile.timeline?.length || 0)} | Awards ${escapeHtml(awardsCount)}</div>
             <div class="small">Career AV ${escapeHtml(careerSummary.av ?? 0)} | Latest AV ${escapeHtml(latestAv)}</div>
+          </div>
+          <div class="player-meta-card">
+            <strong>Latest Season</strong>
+            <div class="player-statline">${escapeHtml(latestSeasonSummary)}</div>
+            <div class="small">${escapeHtml(profile.seasonType === "playoffs" ? "Filtered to playoffs" : "Regular-season lens with career context below")}</div>
           </div>
         </div>
         <div class="player-note">
@@ -1170,6 +1213,79 @@ function renderOverview() {
       lines.push(`Owner mandate: ${expectation.mandate} (${expectation.trend || "watch"}, heat ${expectation.heat ?? "-"}).`);
     }
     box.textContent = lines.join(" ") || "Weekly plan, culture, and owner-pressure context will appear here after the dashboard loads.";
+  }
+  renderOverviewSpotlight();
+}
+
+function renderOverviewSpotlight() {
+  const d = state.dashboard;
+  if (!d) return;
+  const controlledTeam = d.controlledTeam || {};
+  const expectation = controlledTeam.owner?.expectation || {};
+  const weeklyPlan = controlledTeam.weeklyPlan || {};
+  const culture = controlledTeam.cultureProfile || {};
+  const scheme = controlledTeam.schemeIdentity || {};
+  const standingsRow =
+    (d.latestStandings || []).find(
+      (row) =>
+        row.team === controlledTeam.abbrev ||
+        row.team === controlledTeam.id ||
+        row.teamName === controlledTeam.name
+    ) || null;
+  const topNeed = (d.rosterNeeds || [])
+    .slice()
+    .sort((a, b) => a.delta - b.delta || a.position.localeCompare(b.position))[0];
+  const recordLabel = standingsRow
+    ? `${standingsRow.wins}-${standingsRow.losses}${standingsRow.ties ? `-${standingsRow.ties}` : ""}`
+    : "0-0";
+  const teamLabel = [controlledTeam.city, controlledTeam.nickname].filter(Boolean).join(" ") || controlledTeam.name || controlledTeam.id || "-";
+  const schemeLabel = [scheme.offense, scheme.defense].filter(Boolean).join(" / ") || controlledTeam.scheme || "Balanced";
+  const spotlight = document.getElementById("overviewTeamSpotlight");
+  if (spotlight) {
+    spotlight.innerHTML = `
+      <div class="overview-team-mark">
+        <div class="overview-team-label">${escapeHtml(teamLabel)}</div>
+        <div class="overview-team-meta">
+          ${escapeHtml(controlledTeam.abbrev || controlledTeam.id || "-")} | ${escapeHtml(standingsRow?.conference || controlledTeam.conference || "-")} ${escapeHtml(standingsRow?.division || controlledTeam.division || "")} | Record ${escapeHtml(recordLabel)}
+        </div>
+      </div>
+      <div class="overview-team-grid">
+        <div class="overview-team-card">
+          <strong>Competitive Window</strong>
+          <div>${escapeHtml(expectation.mandate || "Build sustainably")}</div>
+          <div class="small">Projected wins ${escapeHtml(expectation.projectedWins ?? "-")} | Target ${escapeHtml(expectation.targetWins ?? "-")}</div>
+        </div>
+        <div class="overview-team-card">
+          <strong>Identity</strong>
+          <div>${escapeHtml(culture.identity || "Balanced culture")}</div>
+          <div class="small">${escapeHtml(schemeLabel)} | Chemistry ${escapeHtml(controlledTeam.chemistry ?? "-")}</div>
+        </div>
+        <div class="overview-team-card">
+          <strong>Primary Need</strong>
+          <div>${escapeHtml(topNeed ? `${topNeed.position} room` : "No urgent weakness")}</div>
+          <div class="small">${escapeHtml(topNeed ? `Need ${Math.abs(topNeed.delta)} against target ${topNeed.target}` : "Roster shape is on target")}</div>
+        </div>
+        <div class="overview-team-card">
+          <strong>Game Plan</strong>
+          <div>${escapeHtml(weeklyPlan.focus || weeklyPlan.summary || "Balanced script")}</div>
+          <div class="small">${escapeHtml(weeklyPlan.exploit || weeklyPlan.warning || "No weekly exploit flagged yet")}</div>
+        </div>
+      </div>
+    `;
+  }
+  const pulse = document.getElementById("overviewPulseBar");
+  if (pulse) {
+    const chips = [
+      expectation.trend ? `Heat ${expectation.heat ?? "-"} | ${expectation.trend}` : null,
+      culture.pressure ? `Culture pressure ${culture.pressure}` : null,
+      weeklyPlan.exploit ? `Exploit ${weeklyPlan.exploit}` : null,
+      weeklyPlan.warning ? `Watch ${weeklyPlan.warning}` : null,
+      scheme.offense ? `Offense ${scheme.offense}` : null,
+      scheme.defense ? `Defense ${scheme.defense}` : null
+    ].filter(Boolean);
+    pulse.innerHTML = chips.length
+      ? chips.map((chip) => `<span class="overview-pulse-chip">${escapeHtml(chip)}</span>`).join("")
+      : `<span class="overview-pulse-chip">Refresh to load franchise signals</span>`;
   }
 }
 

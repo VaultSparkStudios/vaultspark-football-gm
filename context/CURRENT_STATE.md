@@ -91,6 +91,14 @@ Build status:
   - box scores now open with `Player Stats` as the default subtab
   - `Summary` and `Play By Play` live in separate tab panels inside the same modal
   - users can inspect player stat lines immediately without scrolling through the full drive log first
+- The refreshed UI now reaches deeper into the main workflow surfaces:
+  - the overview tab opens with a command-deck style franchise spotlight instead of a generic control + summary stack
+  - the spotlight now surfaces mandate, identity, primary roster need, and weekly plan context for the controlled team before the data tables
+  - the box score subtab bar now stays sticky inside the modal so users can switch between stats/summary/play log without losing their place
+- The player dossier hero is more informative now, not just more visual:
+  - contract salary/cap/guarantee context is visible directly in the hero grid
+  - availability/injury status and latest-season production now sit in the summary area instead of requiring a scroll into the tables
+  - the hero layout was tightened for mobile by reducing portrait height and stacking the meta grid more cleanly
 - Challenge enforcement now blocks user free-agent actions in `no-free-agency` mode and blocks trades that would deliver top-10 picks to the controlled team in `no-top-10-picks` mode
 - That enforcement now reaches the remaining obvious user acquisition paths too:
   - waiver claims are blocked in `no-free-agency`
@@ -134,10 +142,10 @@ Build status:
   - `npm.cmd run smoke:pages`
 
 Current priorities:
-1. Push the branding/player-profile/box-score UI refresh and verify `CI`, `Deploy Backend Runtime`, and `Deploy Pages`
-2. Review the refreshed player profile and box score flows on mobile after the live deployment to catch any spacing or overflow issues
-3. Use the new setup diagnostics to confirm whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
-4. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges instead of stopping at the current trade/FA hooks
+1. Push the new overview/dashboard polish pass and verify `CI`, `Deploy Backend Runtime`, and `Deploy Pages`
+2. Review the refreshed overview/player-profile/box-score flows on mobile after the live deployment to catch any spacing or overflow issues
+3. Extend the refreshed UI language across any remaining legacy utility-style tabs such as contracts/owner/settings
+4. Use the new setup diagnostics to confirm whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
 5. Decide whether the generated StatMuse 2025 baseline should become a first-class repo script instead of only an output artifact plus smoothed live constants
 
 Known issues:
