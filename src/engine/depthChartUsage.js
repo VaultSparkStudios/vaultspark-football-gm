@@ -19,6 +19,10 @@ function total(values = []) {
   return values.reduce((sum, value) => sum + value, 0);
 }
 
+function roundToDepthShare(value) {
+  return Number(clamp(value, 0, 1).toFixed(3));
+}
+
 function normalizeTo(values = [], targetTotal) {
   const currentTotal = total(values);
   if (!currentTotal || !targetTotal) return values.slice();
@@ -117,23 +121,74 @@ function buildOlShares(packages, baseShares, team) {
   ].map((value, index) => Number(clamp(value, 0.001, baseShares[index] ? 0.995 : 0.05).toFixed(3)));
 }
 
+export function resolveDepthChartShareValues({
+  playerIds = [],
+  baseShares = [],
+  manualSharesByPlayer = {}
+} = {}) {
+  const defaults = playerIds.map((_, index) => roundToDepthShare(baseShares[index] ?? 0.02));
+  const targetTotal = Number(total(defaults).toFixed(3));
+  if (!playerIds.length) return defaults;
+
+  const manualIndexes = [];
+  const shares = defaults.slice();
+  for (const [index, playerId] of playerIds.entries()) {
+    const rawManual = Number(manualSharesByPlayer?.[playerId]);
+    if (!Number.isFinite(rawManual)) continue;
+    manualIndexes.push(index);
+    shares[index] = roundToDepthShare(rawManual);
+  }
+
+  if (!manualIndexes.length) return defaults;
+
+  let manualTotal = total(manualIndexes.map((index) => shares[index]));
+  if (manualTotal > targetTotal && manualTotal > 0) {
+    const scale = targetTotal / manualTotal;
+    for (const index of manualIndexes) shares[index] = roundToDepthShare(shares[index] * scale);
+    manualTotal = total(manualIndexes.map((index) => shares[index]));
+  }
+
+  const autoIndexes = playerIds.map((_, index) => index).filter((index) => !manualIndexes.includes(index));
+  const autoTarget = Math.max(0, Number((targetTotal - manualTotal).toFixed(3)));
+  if (autoIndexes.length) {
+    const autoBaseTotal = total(autoIndexes.map((index) => defaults[index]));
+    const autoFallback = autoIndexes.length ? autoTarget / autoIndexes.length : 0;
+    for (const index of autoIndexes) {
+      shares[index] =
+        autoBaseTotal > 0
+          ? roundToDepthShare(defaults[index] * (autoTarget / autoBaseTotal))
+          : roundToDepthShare(autoFallback);
+    }
+  }
+
+  if (total(shares) <= 0.001) return defaults;
+
+  const rounded = shares.map((value) => roundToDepthShare(value));
+  const delta = Number((targetTotal - total(rounded)).toFixed(3));
+  if (Math.abs(delta) >= 0.001) {
+    const adjustmentIndex = [...autoIndexes, ...manualIndexes].reverse().find((index) => rounded[index] + delta >= 0);
+    if (Number.isInteger(adjustmentIndex)) rounded[adjustmentIndex] = roundToDepthShare(rounded[adjustmentIndex] + delta);
+  }
+  return rounded;
+}
+
 export function resolveDepthChartRoomShares({
   position,
   playerIds = [],
   baseShares = [],
   manualSharesByPlayer = {}
 } = {}) {
+  const resolvedShares = resolveDepthChartShareValues({ playerIds, baseShares, manualSharesByPlayer });
   return playerIds.map((playerId, index) => {
-    const defaultSnapShare = Number((baseShares[index] ?? 0.02).toFixed(3));
+    const defaultSnapShare = roundToDepthShare(baseShares[index] ?? 0.02);
     const rawManual = Number(manualSharesByPlayer?.[playerId]);
     const manual = Number.isFinite(rawManual);
-    const snapShare = Number(clamp(manual ? rawManual : defaultSnapShare, 0, 1).toFixed(3));
     return {
       position,
       rank: index + 1,
       playerId,
       defaultSnapShare,
-      snapShare,
+      snapShare: resolvedShares[index] ?? defaultSnapShare,
       manual
     };
   });

@@ -63,6 +63,18 @@ Build status:
   - added `src/data/scripts/buildOfficialNfl2025Baseline.js` plus `npm run build:official-nfl-baseline` to scrape official NFL 2025 player tables and player `stats/` pages into a reviewable JSON baseline
   - the starter-qualified stats regression now reads its targets from `PFR_RECENT_WEIGHTED_PROFILE` instead of duplicating hard-coded benchmark numbers
   - the current official NFL scrape is useful for spot checks and K/P/QB coverage, but the public server-rendered leaderboards stop after a limited visible slice, so it is not yet trustworthy as a full-league replacement profile for WR/TE/front-seven coverage
+- The 2025 realism baseline is now refreshed from a broader bulk source path:
+  - generated `output/statmuse-2025-baseline.json` from division-split StatMuse player queries, using 17-game equivalents for starter-room samples
+  - updated `PFR_RECENT_WEIGHTED_PROFILE` to a smoothed 2025 starter baseline so live calibration stays aligned with modern output without overreacting to one injury-heavy season
+  - updated `PFR_CAREER_WEIGHTED_PROFILE` where the new live passing/coverage model had made the old QB/DL/DB career guardrails stale
+- The stats and awards surfaces now expose AV end to end:
+  - added shared AV calculation in `src/stats/approximateValue.js`
+  - season/career stat rows now include `av`, so the main Statistics page can show AV for every player instead of only profile/timeline rows
+  - records now include a career AV leader, and season awards now rank from regular-season AV instead of raw passing/rushing-yard leaders
+- Manual snap-share edits now rebalance the whole position room automatically:
+  - backend depth-chart share resolution now preserves the room target total while scaling untouched players around manual overrides
+  - the depth-chart UI mirrors that redistribution immediately before save, so the browser view matches the saved/runtime behavior
+  - session/API regressions now lock the rebalance behavior in
 - Challenge enforcement now blocks user free-agent actions in `no-free-agency` mode and blocks trades that would deliver top-10 picks to the controlled team in `no-top-10-picks` mode
 - That enforcement now reaches the remaining obvious user acquisition paths too:
   - waiver claims are blocked in `no-free-agency`
@@ -106,15 +118,14 @@ Build status:
   - `npm.cmd run smoke:pages`
 
 Current priorities:
-1. Use the new setup diagnostics to confirm whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
-2. Finish the refreshed realism-profile regeneration with a full-league bulk source now that the official NFL helper has confirmed the public leaderboard pages are too shallow for WR/TE/front-seven coverage
-3. Verify the next GitHub push clears both `CI` and `Deploy Backend Runtime` now that the test regression and GHCR tag casing are fixed
-4. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges instead of stopping at the current trade/FA hooks
-5. Extend the new benchmark/qualification hint pattern anywhere else the UI compares all-player data to starter-qualified or team-level baselines
+1. Verify the next GitHub push clears `CI`, `Deploy Backend Runtime`, and `Deploy Pages` after the AV/snap-share/baseline refresh work
+2. Use the new setup diagnostics to confirm whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
+3. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges instead of stopping at the current trade/FA hooks
+4. Extend the new benchmark/qualification hint pattern anywhere else the UI compares all-player data to starter-qualified or team-level baselines
+5. Decide whether the generated StatMuse 2025 baseline should become a first-class repo script instead of only an output artifact plus smoothed live constants
 
 Known issues:
 - The Pages artifact remains client-only unless `GAME_SERVICE_ORIGIN` or `API_DOMAIN` is configured and the separate backend/runtime rollout is live
 - Challenge restrictions are much more mechanical now, but there may still be edge-case user acquisition paths worth auditing later
 - The unrelated realism/runtime work was parked in a local stash and is not yet reconciled back into the branch
-- Full `npm.cmd test` still exceeds the local command timeout window in this shell, so GitHub Actions remains the authoritative full-suite verification path for the depth-rating passes
-- Official NFL player leaderboard pages are useful for spot checks but appear to expose only a limited server-rendered slice, so a full 2025 starter-qualified profile rebuild still needs a broader bulk source than the visible NFL.com tables
+- Official NFL player leaderboard pages are still useful for spot checks but appear to expose only a limited server-rendered slice, so the current broader bulk path depends on StatMuse-derived output plus smoothing rather than a pure NFL.com scrape

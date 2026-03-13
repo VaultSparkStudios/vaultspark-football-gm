@@ -1,4 +1,5 @@
 import { createZeroedSeasonStats, ensureSeasonStatBucket, mergeStats } from "../domain/playerFactory.js";
+import { approximateValueFromStats } from "./approximateValue.js";
 
 function pct(numerator, denominator, digits = 1) {
   if (!denominator) return 0;
@@ -289,7 +290,8 @@ export class StatBook {
           offSn: source.snaps?.offense || 0,
           defSn: source.snaps?.defense || 0,
           stSn: source.snaps?.special || 0,
-          sn: (source.snaps?.offense || 0) + (source.snaps?.defense || 0) + (source.snaps?.special || 0)
+          sn: (source.snaps?.offense || 0) + (source.snaps?.defense || 0) + (source.snaps?.special || 0),
+          av: approximateValueFromStats(season.meta?.position || player.position, source)
         };
 
         if (category === "passing") {
@@ -445,7 +447,8 @@ export class StatBook {
           offSn: stats.snaps?.offense || 0,
           defSn: stats.snaps?.defense || 0,
           stSn: stats.snaps?.special || 0,
-          sn: (stats.snaps?.offense || 0) + (stats.snaps?.defense || 0) + (stats.snaps?.special || 0)
+          sn: (stats.snaps?.offense || 0) + (stats.snaps?.defense || 0) + (stats.snaps?.special || 0),
+          av: approximateValueFromStats(player.position, stats)
         };
 
         if (category === "passing") {
@@ -604,7 +607,8 @@ export class StatBook {
       tackles: leaders((p) => p.careerStats.defense.tackles),
       sacks: leaders((p) => p.careerStats.defense.sacks),
       interceptions: leaders((p) => p.careerStats.defense.int),
-      fieldGoalsMade: leaders((p) => p.careerStats.kicking.fgm)
+      fieldGoalsMade: leaders((p) => p.careerStats.kicking.fgm),
+      approximateValue: leaders((p) => approximateValueFromStats(p.position, p.careerStats))
     };
   }
 }

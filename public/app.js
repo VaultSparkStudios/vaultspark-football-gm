@@ -186,7 +186,7 @@ const GUIDE_SECTIONS = [
 
 const STATS_BENCHMARK_HINTS = {
   passing: {
-    QB: "Starter-qualified QB baseline: QB1 sample, regular season, about 534 att, 3,850 yds, 25 TD, 12 INT, plus 44 rush att. That is roughly 31.4 att/g, 226.5 yds/g, and 1.5 pass TD/g over 17 games.",
+    QB: "Starter-qualified QB baseline: QB1 sample, regular season, about 520 att, 3,725 yds, 25 TD, 11 INT, plus 48 rush att. That is roughly 30.6 att/g, 219.1 yds/g, and 1.5 pass TD/g over 17 games.",
     default:
       "Passing NFL averages here are starter-qualified QB baselines, not all-player averages. Select QB for the clearest apples-to-apples comparison."
   },
@@ -199,9 +199,9 @@ const STATS_BENCHMARK_HINTS = {
       "Rushing NFL averages vary hard by position. For true benchmark comparisons, use QB or RB rather than all-player rushing rows."
   },
   receiving: {
-    RB: "Receiving RB baseline: starter-qualified backs average about 43 targets, 31 catches, 241 yds, and 2 TD, or about 2.5 targets/g and 14.2 rec yds/g.",
-    WR: "Starter-qualified WR baseline: top three receivers per team average about 88 targets, 58 catches, 761 yds, and 5 TD, or about 5.2 targets/g and 44.8 rec yds/g.",
-    TE: "Starter-qualified TE baseline: TE1 sample averages about 77 targets, 50 catches, 578 yds, and 4 TD, or about 4.5 targets/g and 34.0 rec yds/g.",
+    RB: "Receiving RB baseline: starter-qualified backs average about 42 targets, 32 catches, 244 yds, and 2 TD, or about 2.5 targets/g and 14.4 rec yds/g.",
+    WR: "Starter-qualified WR baseline: top three receivers per team average about 92 targets, 58 catches, 732 yds, and 5 TD, or about 5.4 targets/g and 43.1 rec yds/g.",
+    TE: "Starter-qualified TE baseline: TE1 sample averages about 82 targets, 54 catches, 620 yds, and 5 TD, or about 4.8 targets/g and 36.5 rec yds/g.",
     default:
       "Receiving NFL averages depend on role. Select WR, TE, or RB for a position-specific starter-qualified benchmark."
   },
@@ -217,7 +217,7 @@ const STATS_BENCHMARK_HINTS = {
     default: "Blocking baselines are only meaningful for OL starter samples."
   },
   kicking: {
-    K: "Starter-qualified K baseline: regular-season K1 sample averages about 34 FGA, 29 FGM, 37 XPA, and 35 XPM, or about 2.0 FGA/g and 2.2 XPA/g.",
+    K: "Starter-qualified K baseline: regular-season K1 sample averages about 35 FGA, 30 FGM, 38 XPA, and 36 XPM, or about 2.1 FGA/g and 2.2 XPA/g.",
     default: "Kicking baselines are based on one primary kicker per team over the regular season."
   },
   punting: {
@@ -651,7 +651,11 @@ function buildProfileCareerRow(profile) {
       xpm: kicking.xpm || 0,
       xpa: kicking.xpa || 0,
       punts: punting.punts || 0,
-      in20: punting.in20 || 0
+      in20: punting.in20 || 0,
+      av: approximateValue(player.position, {
+        kicking: { fgm: kicking.fgm || 0 },
+        punting: { in20: punting.in20 || 0 }
+      })
     }];
   }
   return [{
@@ -712,7 +716,8 @@ function shapeStatsRowsForDisplay(rows, { scope, category }) {
       lg: "NFL",
       pos: row.pos,
       g: row.g ?? row.seasons ?? 0,
-      gs: row.gs ?? 0
+      gs: row.gs ?? 0,
+      av: row.av ?? 0
     };
     if (category === "passing") {
       return {
@@ -1803,6 +1808,60 @@ function formatDepthSharePercent(value) {
   return `${Math.round(numeric * 100)}%`;
 }
 
+function roundDepthShare(value) {
+  return Number(Math.max(0, Math.min(1, value || 0)).toFixed(3));
+}
+
+function totalDepthShares(values = []) {
+  return values.reduce((sum, value) => sum + value, 0);
+}
+
+function resolveDepthShareValues(ids, defaults, manualShares) {
+  const baseShares = ids.map((_, index) => roundDepthShare(defaults[index] ?? 0.02));
+  const targetTotal = Number(totalDepthShares(baseShares).toFixed(3));
+  const manualIndexes = [];
+  const shares = baseShares.slice();
+
+  for (const [index, playerId] of ids.entries()) {
+    const manualShare = Number(manualShares?.[playerId]);
+    if (!Number.isFinite(manualShare)) continue;
+    manualIndexes.push(index);
+    shares[index] = roundDepthShare(manualShare);
+  }
+
+  if (!manualIndexes.length) return baseShares;
+
+  let manualTotal = totalDepthShares(manualIndexes.map((index) => shares[index]));
+  if (manualTotal > targetTotal && manualTotal > 0) {
+    const scale = targetTotal / manualTotal;
+    for (const index of manualIndexes) shares[index] = roundDepthShare(shares[index] * scale);
+    manualTotal = totalDepthShares(manualIndexes.map((index) => shares[index]));
+  }
+
+  const autoIndexes = ids.map((_, index) => index).filter((index) => !manualIndexes.includes(index));
+  const autoTarget = Math.max(0, Number((targetTotal - manualTotal).toFixed(3)));
+  if (autoIndexes.length) {
+    const autoBaseTotal = totalDepthShares(autoIndexes.map((index) => baseShares[index]));
+    const autoFallback = autoIndexes.length ? autoTarget / autoIndexes.length : 0;
+    for (const index of autoIndexes) {
+      shares[index] =
+        autoBaseTotal > 0
+          ? roundDepthShare(baseShares[index] * (autoTarget / autoBaseTotal))
+          : roundDepthShare(autoFallback);
+    }
+  }
+
+  if (totalDepthShares(shares) <= 0.001) return baseShares;
+
+  const rounded = shares.map((value) => roundDepthShare(value));
+  const delta = Number((targetTotal - totalDepthShares(rounded)).toFixed(3));
+  if (Math.abs(delta) >= 0.001) {
+    const adjustmentIndex = [...autoIndexes, ...manualIndexes].reverse().find((index) => rounded[index] + delta >= 0);
+    if (Number.isInteger(adjustmentIndex)) rounded[adjustmentIndex] = roundDepthShare(rounded[adjustmentIndex] + delta);
+  }
+  return rounded;
+}
+
 function updateDepthShare(position, playerId, rawValue) {
   if (!state.depthManualShares[position]) state.depthManualShares[position] = {};
   const defaultShare = depthDefaultShares(position)[state.depthOrder.indexOf(playerId)] ?? 0.02;
@@ -1827,6 +1886,7 @@ function renderDepthChart() {
   const rosterById = new Map(state.depthRoster.map((player) => [player.id, player]));
   const defaults = depthDefaultShares(position);
   const manualShares = depthManualShareMap(position);
+  const resolvedShares = resolveDepthShareValues(ids, defaults, manualShares);
   const table = document.getElementById("depthTable");
   if (!table) return;
   if (!ids.length) {
@@ -1851,7 +1911,7 @@ function renderDepthChart() {
         const player = rosterById.get(playerId);
         const defaultShare = defaults[index] ?? shareRows[index]?.defaultSnapShare ?? shareRows[index]?.snapShare ?? 0.02;
         const manualShare = manualShares[playerId];
-        const effectiveShare = Number.isFinite(manualShare) ? manualShare : defaultShare;
+        const effectiveShare = resolvedShares[index] ?? shareRows[index]?.snapShare ?? defaultShare;
         return `
           <tr>
             <td>${index + 1}</td>
@@ -2198,7 +2258,8 @@ function renderRecordsAndHistory() {
       ["Career Rec Yards", "receivingYards"],
       ["Career Sacks", "sacks"],
       ["Career INT", "interceptions"],
-      ["Career FG Made", "fieldGoalsMade"]
+      ["Career FG Made", "fieldGoalsMade"],
+      ["Career AV", "approximateValue"]
     ];
 
     box.innerHTML = leaders

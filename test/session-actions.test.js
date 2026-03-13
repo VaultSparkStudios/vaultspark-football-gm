@@ -29,28 +29,32 @@ test("contract restructure keeps contract valid", () => {
   assert.notEqual(result.contract.capHit, oldCap);
 });
 
-test("manual depth chart snap shares persist and influence game usage", () => {
+test("manual depth chart snap shares rebalance the room and influence game usage", () => {
   const session = createSession({ seed: 102, startYear: 2026, controlledTeamId: "BUF", mode: "play" });
   const rbChart = session.getDepthChart("BUF").RB.slice(0, 3);
   assert.equal(rbChart.length >= 2, true);
+  const before = session.getDepthChartSnapShare("BUF").RB;
+  const defaultTotal = Number(before.reduce((sum, row) => sum + row.defaultSnapShare, 0).toFixed(3));
 
   const update = session.setDepthChart({
     teamId: "BUF",
     position: "RB",
     playerIds: rbChart,
     snapShares: {
-      [rbChart[0]]: 0.08,
-      [rbChart[1]]: 0.88,
-      [rbChart[2]]: 0.04
+      [rbChart[0]]: 0.18
     }
   });
   assert.equal(update.ok, true);
 
   const snapShareRows = session.getDepthChartSnapShare("BUF").RB;
-  assert.equal(snapShareRows[0].snapShare, 0.08);
+  assert.equal(snapShareRows[0].snapShare, 0.18);
   assert.equal(snapShareRows[0].manual, true);
-  assert.equal(snapShareRows[1].snapShare, 0.88);
-  assert.equal(snapShareRows[1].manual, true);
+  assert.equal(snapShareRows[1].manual, false);
+  assert.equal(snapShareRows[1].snapShare > before[1].defaultSnapShare, true);
+  assert.equal(
+    Number(snapShareRows.reduce((sum, row) => sum + row.snapShare, 0).toFixed(3)),
+    defaultTotal
+  );
 
   session.advanceWeek();
   session.advanceWeek();
@@ -60,4 +64,26 @@ test("manual depth chart snap shares persist and influence game usage", () => {
   const firstSnaps = firstTimeline.find((entry) => entry.year === 2026)?.stats?.snaps?.offense || 0;
   const secondSnaps = secondTimeline.find((entry) => entry.year === 2026)?.stats?.snaps?.offense || 0;
   assert.ok(secondSnaps > firstSnaps);
+});
+
+test("season awards follow regular-season AV leaders", () => {
+  const session = createSession({ seed: 2126, startYear: 2026, controlledTeamId: "BUF" });
+  session.simulateSeasons(1, { runOffseasonAfterLast: false });
+
+  const offensiveLeader = [
+    ...session.statBook.getPlayerSeasonTable("passing", { year: 2026, seasonType: "regular" }),
+    ...session.statBook.getPlayerSeasonTable("rushing", { year: 2026, seasonType: "regular" }),
+    ...session.statBook.getPlayerSeasonTable("receiving", { year: 2026, seasonType: "regular" })
+  ]
+    .filter((row) => ["QB", "RB", "WR", "TE"].includes(row.pos))
+    .sort((a, b) => (b.av || 0) - (a.av || 0))[0];
+  const defensiveLeader = session.statBook
+    .getPlayerSeasonTable("defense", { year: 2026, seasonType: "regular" })
+    .filter((row) => ["DL", "LB", "DB"].includes(row.pos))
+    .sort((a, b) => (b.av || 0) - (a.av || 0))[0];
+  const awards = session.league.awards.at(-1);
+
+  assert.ok(awards);
+  assert.equal(awards.MVP?.playerId, offensiveLeader?.playerId);
+  assert.equal(awards.DPOY?.playerId, defensiveLeader?.playerId);
 });

@@ -1,14 +1,13 @@
 # Task Board
 
 ## Now
-- Use the new official-NFL baseline helper to finish a refreshed 2025 realism profile once a fuller bulk source is identified beyond NFL.com's limited visible player leaderboard slice
-- Verify the next GitHub push clears both `CI` and `Deploy Backend Runtime` after the realism-regression and GHCR-tag fixes
+- Verify the next GitHub push clears `CI`, `Deploy Backend Runtime`, and `Deploy Pages` after the AV/snap-share/baseline refresh pass
 - Validate whether any remaining setup/main-menu latency still needs another trim after the new lazy browser bootstrap
 - Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
 - Extend the new stats benchmark/qualification hint pattern to any other views that still imply apples-to-apples NFL averages without saying so
+- Decide whether to promote the generated `output/statmuse-2025-baseline.json` flow into a first-class repo script instead of keeping the live profile refresh as a documented/manual smoothing step
 
 ## Next
-- Finish the 2025 realism-profile regeneration after validating a broader bulk stat source for WR/TE/front-seven coverage than the current official NFL leaderboard pages expose
 - Use the new setup diagnostics to decide whether any remaining setup cost is now dominated by save listing, backup listing, or client-side render work
 - Add UI hints for weekly plan/scouting-fit outputs where they matter most beyond the new overview/scouting summaries
 - Add setup/settings UI hints for the challenge-rule failures that now have frontend error formatting

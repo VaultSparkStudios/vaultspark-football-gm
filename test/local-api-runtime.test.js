@@ -108,7 +108,9 @@ test("local api runtime supports core client-only flow", async () => {
 
   const depth = await runtime.request("/api/depth-chart?team=BUF");
   assert.equal(depth.status, 200);
+  const rbRowsBefore = depth.payload.snapShare.RB;
   const rbIds = depth.payload.depthChart.RB.slice(0, 2);
+  const defaultTotal = Number(rbRowsBefore.reduce((sum, row) => sum + row.defaultSnapShare, 0).toFixed(3));
   const depthUpdate = await runtime.request("/api/depth-chart", {
     method: "POST",
     body: {
@@ -116,20 +118,23 @@ test("local api runtime supports core client-only flow", async () => {
       position: "RB",
       playerIds: rbIds,
       snapShares: {
-        [rbIds[0]]: 0.2,
-        [rbIds[1]]: 0.8
+        [rbIds[0]]: 0.2
       }
     }
   });
   assert.equal(depthUpdate.status, 200);
   assert.equal(depthUpdate.payload.snapShare[0].snapShare, 0.2);
+  assert.equal(depthUpdate.payload.snapShare[1].manual, false);
+  assert.equal(
+    Number(depthUpdate.payload.snapShare.reduce((sum, row) => sum + row.snapShare, 0).toFixed(3)),
+    defaultTotal
+  );
 
   const updatedDepth = await runtime.request("/api/depth-chart?team=BUF");
   assert.equal(updatedDepth.status, 200);
   assert.equal(updatedDepth.payload.snapShare.RB[0].snapShare, 0.2);
   assert.equal(updatedDepth.payload.snapShare.RB[0].manual, true);
-  assert.equal(updatedDepth.payload.snapShare.RB[1].snapShare, 0.8);
-  assert.equal(updatedDepth.payload.snapShare.RB[1].manual, true);
+  assert.equal(updatedDepth.payload.snapShare.RB[1].manual, false);
 
   response = await runtime.request("/api/saves/save", { method: "POST", body: { slot: "alpha" } });
   assert.equal(response.status, 200);

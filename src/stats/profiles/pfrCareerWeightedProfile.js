@@ -22,8 +22,8 @@ export const PFR_CAREER_WEIGHTED_PROFILE = {
         "careerStats.passing.td": 184,
         "careerStats.passing.int": 90,
         "careerStats.passing.sacks": 246,
-        "careerStats.rushing.yards": 1210,
-        "careerStats.rushing.td": 10
+        "careerStats.rushing.yards": 1750,
+        "careerStats.rushing.td": 16
       }
     },
     RB: {
@@ -97,8 +97,8 @@ export const PFR_CAREER_WEIGHTED_PROFILE = {
         "careerStats.games": 116,
         "careerStats.defense.tackles": 324,
         "careerStats.defense.sacks": 36,
-        "careerStats.defense.passDefended": 21,
-        "careerStats.defense.int": 2
+        "careerStats.defense.passDefended": 12,
+        "careerStats.defense.int": 1
       }
     },
     LB: {
@@ -126,7 +126,7 @@ export const PFR_CAREER_WEIGHTED_PROFILE = {
         seasonsPlayed: 8,
         "careerStats.games": 117,
         "careerStats.defense.tackles": 486,
-        "careerStats.defense.sacks": 8,
+        "careerStats.defense.sacks": 5,
         "careerStats.defense.passDefended": 72,
         "careerStats.defense.int": 16
       }

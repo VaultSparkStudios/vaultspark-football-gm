@@ -3,6 +3,21 @@
 Last updated: 2026-03-13
 
 What was completed:
+- Added shared AV calculation in `src/stats/approximateValue.js` and pushed AV through the backend stats path:
+  - season/career stat rows from `StatBook` now include `av`
+  - the Statistics page now shows AV in the main season/career tables instead of only in player profile/timeline views
+  - records now expose a career AV leader, and K/P career rows now carry AV too
+- Reworked season awards to use regular-season AV:
+  - MVP/OPOY/DPOY/OROY/DROY selection now derives from regular-season AV pools instead of yards-only shortcuts
+  - the periodic MVP watch news blurb now references offensive AV leadership instead of only passing yards
+- Fixed the manual snap-share UX/runtime bug:
+  - depth-chart share resolution now rebalances untouched players around manual overrides while preserving the room target total
+  - the browser depth-chart table now mirrors that redistribution immediately before save
+  - new session/API regressions cover both redistribution and persistence
+- Refreshed the live season/career realism baselines:
+  - generated `output/statmuse-2025-baseline.json` from division-split StatMuse 2025 starter-room queries using 17-game equivalents
+  - updated `PFR_RECENT_WEIGHTED_PROFILE` to a smoothed 2025 starter baseline informed by that bulk sample plus official NFL spot checks
+  - updated `PFR_CAREER_WEIGHTED_PROFILE` for QB rushing and modern DL/DB career expectations so full realism verification stays green with the newer passing/coverage model
 - Added `src/data/scripts/buildOfficialNfl2025Baseline.js` and `npm run build:official-nfl-baseline` so official NFL 2025 leaderboard pages plus official player `stats/` pages can be scraped into a reviewable JSON baseline instead of hand-editing realism targets
 - Updated `test/stats-regression.test.js` so it now reads the benchmark numbers directly from `PFR_RECENT_WEIGHTED_PROFILE` instead of duplicating those constants in the test body
 - Added route-family and coverage-shell structure to the live pass game:
@@ -126,16 +141,13 @@ What was completed:
   - `npm.cmd run smoke:pages`
 
 What is mid-flight:
-- A full refreshed 2025 realism-profile rebuild is still blocked on source coverage:
-  - official NFL server-rendered player leaderboard pages appear to expose only a limited visible slice
-  - the new helper is useful for official-source spot checks and coverage diagnostics, but not yet trustworthy enough to overwrite WR/TE/front-seven baseline targets from that partial sample
 - The unrelated realism/runtime work is still parked in a local stash and has not been reincorporated
 - Challenge restrictions are much more mechanical now, though edge-case acquisition paths may still be worth auditing later
-- Full `npm.cmd test` exceeded the local command timeout window during the QB depth-rating pass, so the focused suites above are the confirmed validation set for this session
+- The broader 2025 baseline path currently lives as a generated output artifact plus smoothed live constants; it is not yet promoted to a dedicated checked-in builder script
 
 What to do next:
-1. Finish the refreshed realism-profile regeneration with a broader bulk stat source for WR/TE/front-seven coverage, then use the new official-NFL helper as the cross-check/output step
-2. Push the next realism-profile follow-up and confirm GitHub stays green on the next run
+1. Push this AV/snap-share/baseline refresh batch and confirm GitHub stays green on the next run
+2. Decide whether to promote the generated StatMuse baseline flow into a checked-in repo script instead of keeping it as an output artifact plus smoothed constants
 3. Use the new setup diagnostics to decide whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
 4. Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
 5. Extend the new benchmark/qualification hint pattern to any other views that still imply apples-to-apples NFL averages without saying so

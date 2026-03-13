@@ -51,6 +51,10 @@ import { runPlayoffsAndSuperBowl, sortStandings } from "../engine/seasonSimulato
 import { simulateRegularSeasonWeek } from "../engine/weeklySimulator.js";
 import { StatBook } from "../stats/statBook.js";
 import {
+  DEFENSIVE_AV_POSITIONS,
+  OFFENSIVE_AV_POSITIONS
+} from "../stats/approximateValue.js";
+import {
   applySeasonRealismCalibration,
   buildCareerCalibrationSnapshot,
   buildPositionCalibrationSnapshot
@@ -1168,27 +1172,42 @@ function waiverPriority(league) {
 }
 
 function estimateAwards(session, year) {
-  const passing = session.statBook.getPlayerSeasonTable("passing", { year }).slice(0, 30);
-  const rushing = session.statBook.getPlayerSeasonTable("rushing", { year }).slice(0, 30);
-  const receiving = session.statBook.getPlayerSeasonTable("receiving", { year }).slice(0, 30);
-  const defense = session.statBook.getPlayerSeasonTable("defense", { year }).slice(0, 30);
+  const seasonType = "regular";
+  const passing = session.statBook.getPlayerSeasonTable("passing", { year, seasonType });
+  const rushing = session.statBook.getPlayerSeasonTable("rushing", { year, seasonType });
+  const receiving = session.statBook.getPlayerSeasonTable("receiving", { year, seasonType });
+  const defense = session.statBook.getPlayerSeasonTable("defense", { year, seasonType });
   const rookies = new Set(
     session.league.players.filter((player) => player.seasonsPlayed <= 1 && player.status === "active").map((p) => p.id)
   );
-
-  const mvp = passing[0] || rushing[0] || receiving[0] || null;
-  const opoy = (rushing[0]?.yds || 0) > (receiving[0]?.yds || 0) ? rushing[0] : receiving[0] || passing[0] || null;
-  const dpoy =
-    defense
+  const uniqueRows = (rows) => {
+    const byPlayer = new Map();
+    for (const row of rows) {
+      const current = byPlayer.get(row.playerId);
+      if (!current || (row.av || 0) > (current.av || 0)) byPlayer.set(row.playerId, row);
+    }
+    return [...byPlayer.values()];
+  };
+  const sortByAv = (rows, fallback = () => 0) =>
+    rows
       .slice()
-      .sort(
-        (a, b) =>
-          (b.sacks || 0) * 2 + (b.int || 0) * 2.5 + (b.tkl || 0) * 0.04 -
-          ((a.sacks || 0) * 2 + (a.int || 0) * 2.5 + (a.tkl || 0) * 0.04)
-      )[0] || null;
-
-  const oroy = [...passing, ...rushing, ...receiving].find((row) => rookies.has(row.playerId)) || null;
-  const droy = defense.find((row) => rookies.has(row.playerId)) || null;
+      .sort((a, b) => (b.av || 0) - (a.av || 0) || fallback(b) - fallback(a) || (b.yds || 0) - (a.yds || 0));
+  const offensivePool = uniqueRows(
+    [...passing, ...rushing, ...receiving].filter((row) => OFFENSIVE_AV_POSITIONS.has(row.pos))
+  );
+  const defensivePool = uniqueRows(defense.filter((row) => DEFENSIVE_AV_POSITIONS.has(row.pos)));
+  const mvp = sortByAv(offensivePool, (row) => (row.pos === "QB" ? 1 : 0))[0] || null;
+  const opoy = sortByAv(
+    offensivePool.filter((row) => row.playerId !== mvp?.playerId),
+    (row) => row.td || 0
+  )[0] || mvp;
+  const dpoy = sortByAv(defensivePool)[0] || null;
+  const oroy = sortByAv(offensivePool.filter((row) => rookies.has(row.playerId)), (row) => row.td || 0)[0] || null;
+  const droy = sortByAv(defensivePool.filter((row) => rookies.has(row.playerId)), (row) => (row.sacks || 0) + (row.int || 0))[0] || null;
+  const bestQb = sortByAv(
+    passing.filter((row) => row.pos === "QB"),
+    (row) => row.rate || 0
+  )[0] || null;
 
   const award = {
     year,
@@ -1197,7 +1216,7 @@ function estimateAwards(session, year) {
     DPOY: dpoy ? { playerId: dpoy.playerId, player: dpoy.player, team: dpoy.tm } : null,
     OROY: oroy ? { playerId: oroy.playerId, player: oroy.player, team: oroy.tm } : null,
     DROY: droy ? { playerId: droy.playerId, player: droy.player, team: droy.tm } : null,
-    BestQB: passing[0] ? { playerId: passing[0].playerId, player: passing[0].player, team: passing[0].tm } : null
+    BestQB: bestQb ? { playerId: bestQb.playerId, player: bestQb.player, team: bestQb.tm } : null
   };
   session.league.awards.push(award);
   return award;
@@ -2466,10 +2485,6 @@ export class GameSession {
       if (Math.abs(share - defaultShare) < 0.001) continue;
       nextShares[playerId] = share;
     }
-    const hasPositiveManual = Object.values(nextShares).some((share) => share > 0);
-    if (Object.keys(nextShares).length && !hasPositiveManual) {
-      nextShares[sanitized[0]] = Number(clamp(defaultShares[0] ?? 0.5, 0.01, 1).toFixed(3));
-    }
     this.league.depthChartSnapShares[teamId][position] = nextShares;
     return {
       ok: true,
@@ -3340,11 +3355,16 @@ export class GameSession {
       notes.push(note);
     }
     if (weekResult.week % 4 === 0) {
-      const passLeader = this.statBook.getPlayerSeasonTable("passing", { year: this.currentYear })[0];
-      const rushLeader = this.statBook.getPlayerSeasonTable("rushing", { year: this.currentYear })[0];
-      if (passLeader) {
-        const note = `MVP watch: ${passLeader.player} leads passing yards (${passLeader.yds})`;
-        this.logNews(note, { playerId: passLeader.playerId, teamId: passLeader.tm, narrative: "mvp-watch" });
+      const passing = this.statBook.getPlayerSeasonTable("passing", { year: this.currentYear, seasonType: "regular" });
+      const rushing = this.statBook.getPlayerSeasonTable("rushing", { year: this.currentYear, seasonType: "regular" });
+      const receiving = this.statBook.getPlayerSeasonTable("receiving", { year: this.currentYear, seasonType: "regular" });
+      const offensiveWatch = [...passing, ...rushing, ...receiving]
+        .filter((row) => OFFENSIVE_AV_POSITIONS.has(row.pos))
+        .sort((a, b) => (b.av || 0) - (a.av || 0) || (b.td || 0) - (a.td || 0))[0];
+      const rushLeader = rushing[0];
+      if (offensiveWatch) {
+        const note = `MVP watch: ${offensiveWatch.player} leads offensive AV (${offensiveWatch.av || 0})`;
+        this.logNews(note, { playerId: offensiveWatch.playerId, teamId: offensiveWatch.tm, narrative: "mvp-watch" });
         notes.push(note);
       }
       if (rushLeader) {
