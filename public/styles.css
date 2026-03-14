@@ -883,6 +883,10 @@ th {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+.history-gallery.micro {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
 .history-card {
   display: grid;
   gap: 0.65rem;

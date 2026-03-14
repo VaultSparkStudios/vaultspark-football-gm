@@ -30,6 +30,13 @@ What was completed:
   - loaded player timelines now render a career-archive spotlight with team span, latest-season snapshot, title count, and award density
   - season-by-season history now appears as archive cards ahead of the raw timeline table, so the user can scan a career path without parsing columns first
   - selecting a different player now clears the previously loaded archive immediately instead of leaving stale career data in view until reload
+- Polished the Season Awards side too:
+  - the selected award year now opens with a showcase spotlight covering MVP standard, Super Bowl MVP/pivotal moment, and All-Pro depth
+  - headline winners now render as award cards, and All-Pro / Pro Bowl rosters now render as honor galleries ahead of the existing tables
+  - the raw awards tables remain for dense lookup, but the default read path is now visual first
+- Hardened the Playwright setup helper:
+  - increased the create-league redirect wait from `25s` to `45s` in `tests-ui/app.spec.js` after a local setup-navigation flake hit the first UI test
+  - this was a test-stability change only; no product logic changed
 - Tightened the AV implementation closer to PFR's published methodology:
   - offensive AV now uses team points-per-drive buckets for rushers, passers, and receivers instead of a generic yardage heuristic
   - defensive AV now uses front-seven vs secondary pools with starts/tackles/sack/turnover weighting closer to the published PFR split

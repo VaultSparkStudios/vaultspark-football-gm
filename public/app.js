@@ -2774,6 +2774,134 @@ function awardCountLine(awardCounts = {}) {
   return pairs.length ? pairs.map(([label, value]) => `${label} ${value}`).join(" | ") : "No major awards logged";
 }
 
+function setSelectedHistoryPlayerFromAwardEntry(entry) {
+  if (!entry?.playerId) return;
+  setSelectedHistoryPlayer({ id: entry.playerId, name: entry.player, pos: entry.pos || "-" });
+}
+
+function renderAwardGallery(containerId, entries = [], emptyText = "No honors recorded for this group.") {
+  const gallery = document.getElementById(containerId);
+  if (!gallery) return;
+  if (!entries.length) {
+    gallery.innerHTML = `<div class="history-empty">${escapeHtml(emptyText)}</div>`;
+    return;
+  }
+  gallery.innerHTML = entries.map((entry) => `
+    <article class="history-card">
+      <div class="history-card-top">
+        <div class="history-card-title">
+          <strong>${escapeHtml(entry.player || "-")}</strong>
+          <div class="history-card-meta">${escapeHtml(entry.pos || "-")} | ${escapeHtml(entry.team || "-")}</div>
+        </div>
+        <div class="history-number-plate">${escapeHtml(entry.av ?? "-")}</div>
+      </div>
+      <div class="history-card-grid">
+        <div class="history-card-stat"><strong>Honor</strong><div>${escapeHtml(entry.label || "-")}</div></div>
+        <div class="history-card-stat"><strong>Team</strong><div>${escapeHtml(entry.team || "-")}</div></div>
+        <div class="history-card-stat"><strong>Position</strong><div>${escapeHtml(entry.pos || "-")}</div></div>
+        <div class="history-card-stat"><strong>AV</strong><div>${escapeHtml(entry.av ?? "-")}</div></div>
+      </div>
+      <div class="history-card-actions">
+        <span class="small">${escapeHtml(entry.note || `${entry.label || "Honor"} selection`)}</span>
+        ${entry.playerId ? `<button type="button" data-award-player-select="${escapeHtml(entry.playerId)}">Select Player</button>` : ""}
+      </div>
+    </article>
+  `).join("");
+  gallery.querySelectorAll("[data-award-player-select]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const selected = entries.find((entry) => entry.playerId === button.dataset.awardPlayerSelect);
+      if (selected) setSelectedHistoryPlayerFromAwardEntry(selected);
+    });
+  });
+}
+
+function renderSeasonAwardsShowcase(selectedAward = null) {
+  const spotlight = document.getElementById("seasonAwardsSpotlight");
+  const winnerGallery = document.getElementById("awardWinnerGallery");
+  if (!selectedAward) {
+    if (spotlight) {
+      spotlight.innerHTML = `
+        <div class="history-spotlight-mark">
+          <div class="history-spotlight-label">Season Awards Archive</div>
+          <div class="history-spotlight-meta">Select an award year to review winners, All-Pro teams, Pro Bowl rosters, and the Super Bowl summary.</div>
+        </div>
+      `;
+    }
+    if (winnerGallery) winnerGallery.innerHTML = `<div class="history-empty">No award year selected.</div>`;
+    renderAwardGallery("allPro1Gallery", []);
+    renderAwardGallery("allPro2Gallery", []);
+    renderAwardGallery("allPro3Gallery", []);
+    renderAwardGallery("proBowlGallery", []);
+    return;
+  }
+
+  const superBowlSummary = selectedAward.SuperBowl
+    ? `${selectedAward.SuperBowl.championTeamId || "-"} def. ${selectedAward.SuperBowl.runnerUpTeamId || "-"} ${selectedAward.SuperBowl.finalScore || ""}`
+    : "No Super Bowl summary recorded";
+  if (spotlight) {
+    spotlight.innerHTML = `
+      <div class="history-spotlight-mark">
+        <div class="history-spotlight-label">${escapeHtml(String(selectedAward.year))} Awards Class</div>
+        <div class="history-spotlight-meta">${escapeHtml(superBowlSummary)}</div>
+      </div>
+      <div class="history-spotlight-grid">
+        <div class="history-spotlight-card">
+          <strong>MVP Standard</strong>
+          <div>${escapeHtml(selectedAward.MVP?.player || "No MVP recorded")}</div>
+          <div class="small">${escapeHtml(selectedAward.MVP ? `${selectedAward.MVP.team || "-"} | ${selectedAward.MVP.pos || "-"}` : "No major award winner logged.")}</div>
+        </div>
+        <div class="history-spotlight-card">
+          <strong>Super Bowl MVP</strong>
+          <div>${escapeHtml(selectedAward.SuperBowl?.MVP?.player || "No Super Bowl MVP")}</div>
+          <div class="small">${escapeHtml(selectedAward.SuperBowl?.pivotalMoment || "No pivotal moment logged")}</div>
+        </div>
+        <div class="history-spotlight-card">
+          <strong>All-Pro Depth</strong>
+          <div>${escapeHtml((selectedAward.AllPro1 || []).length + (selectedAward.AllPro2 || []).length + (selectedAward.AllPro3 || []).length)} selections</div>
+          <div class="small">${escapeHtml(`${(selectedAward.AllPro1 || []).length} first-team | ${(selectedAward.ProBowl || []).length} Pro Bowl`)}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  const winnerEntries = [
+    { label: "MVP", ...selectedAward.MVP, note: "League MVP winner" },
+    { label: "OPOY", ...selectedAward.OPOY, note: "Offensive Player of the Year" },
+    { label: "DPOY", ...selectedAward.DPOY, note: "Defensive Player of the Year" },
+    { label: "OROY", ...selectedAward.OROY, note: "Offensive Rookie of the Year" },
+    { label: "DROY", ...selectedAward.DROY, note: "Defensive Rookie of the Year" },
+    { label: "ROY", ...selectedAward.ROY, note: "Overall Rookie of the Year" },
+    { label: "CPOY", ...selectedAward.CPOY, note: "Comeback Player of the Year" },
+    { label: "Most Improved", ...selectedAward.MostImproved, note: "Most Improved award winner" },
+    { label: "Super Bowl MVP", ...selectedAward.SuperBowl?.MVP, team: selectedAward.SuperBowl?.championTeamId, note: selectedAward.SuperBowl?.pivotalMoment || "Super Bowl MVP" }
+  ].filter((entry) => entry?.player);
+
+  if (winnerGallery) {
+    winnerGallery.classList.add("micro");
+  }
+  renderAwardGallery("awardWinnerGallery", winnerEntries, "No headline winners recorded for this season.");
+  renderAwardGallery(
+    "allPro1Gallery",
+    (selectedAward.AllPro1 || []).map((entry) => ({ label: "All-Pro 1", note: "First-team All-Pro selection", ...entry })),
+    "No All-Pro first-team selections recorded."
+  );
+  renderAwardGallery(
+    "allPro2Gallery",
+    (selectedAward.AllPro2 || []).map((entry) => ({ label: "All-Pro 2", note: "Second-team All-Pro selection", ...entry })),
+    "No All-Pro second-team selections recorded."
+  );
+  renderAwardGallery(
+    "allPro3Gallery",
+    (selectedAward.AllPro3 || []).map((entry) => ({ label: "All-Pro 3", note: "Third-team All-Pro selection", ...entry })),
+    "No All-Pro third-team selections recorded."
+  );
+  renderAwardGallery(
+    "proBowlGallery",
+    (selectedAward.ProBowl || []).map((entry) => ({ label: "Pro Bowl", note: "Pro Bowl selection", ...entry })),
+    "No Pro Bowl selections recorded."
+  );
+}
+
 function timelineEntrySummary(entry, position) {
   const stats = entry?.stats || {};
   if (position === "QB") {
@@ -3116,6 +3244,7 @@ function renderRecordsAndHistory() {
   const selectedAward =
     awards.find((award) => String(award.year) === String(state.selectedAwardsYear || awardYears[0] || "")) || null;
   if (selectedAward) state.selectedAwardsYear = selectedAward.year;
+  renderSeasonAwardsShowcase(selectedAward);
 
   renderTable(
     "awardDetailTable",

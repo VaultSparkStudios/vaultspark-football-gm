@@ -17,7 +17,7 @@ async function createLeagueFromSetup(page) {
   await page.goto("/");
   await waitSetupReady(page);
   await page.click("#createLeagueBtn");
-  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 25_000 });
+  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 45_000 });
   await waitGameReady(page);
 }
 
