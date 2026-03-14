@@ -3,6 +3,7 @@
 ## Now
 - Verify the next GitHub push clears `CI`, `Deploy Backend Runtime`, and `Deploy Pages` after the awards/history/schedule pass
 - Check the live/mobile behavior of the new `Season Awards` / `Hall of Fame` history split, retired-number controls, and updated player dossier hero
+- Decide whether the new Hall of Fame card gallery should replace the remaining player-history search/table pairing or simply complement it
 - Sanity-check the new 18-week / one-bye schedule structure across a few seeded leagues after deploy, not just the regression seed
 - Validate whether any remaining setup/main-menu latency still needs another trim after the new lazy browser bootstrap
 - Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges

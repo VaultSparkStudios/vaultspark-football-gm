@@ -2758,11 +2758,204 @@ function hallOfFameCareerLine(entry) {
   return `${stats.defense?.tackles || 0} tackles, ${stats.defense?.sacks || 0} sacks, ${stats.defense?.int || 0} INT`;
 }
 
+function awardCountLine(awardCounts = {}) {
+  const pairs = [
+    ["MVP", awardCounts.MVP || 0],
+    ["OPOY", awardCounts.OPOY || 0],
+    ["DPOY", awardCounts.DPOY || 0],
+    ["All-Pro 1", awardCounts.AllPro1 || 0],
+    ["All-Pro 2", awardCounts.AllPro2 || 0],
+    ["Pro Bowl", awardCounts.ProBowl || 0],
+    ["ROY", (awardCounts.OROY || 0) + (awardCounts.DROY || 0) + (awardCounts.ROY || 0)],
+    ["CPOY", awardCounts.CPOY || 0],
+    ["Most Improved", awardCounts.MostImproved || 0]
+  ].filter(([, value]) => value > 0);
+  return pairs.length ? pairs.map(([label, value]) => `${label} ${value}`).join(" | ") : "No major awards logged";
+}
+
+function renderHistorySpotlight() {
+  const awards = state.dashboard?.awards || [];
+  const hall = state.dashboard?.hallOfFame || [];
+  const champions = state.dashboard?.champions || [];
+  const retiredCount = hall.reduce((sum, entry) => sum + (entry.retiredNumbers?.length || 0), 0);
+  const latestChampion = champions.slice().sort((a, b) => (b.year || 0) - (a.year || 0))[0] || null;
+  const topLegacy = hall[0] || null;
+  const spotlight = document.getElementById("historySpotlight");
+  if (spotlight) {
+    spotlight.innerHTML = `
+      <div class="history-spotlight-mark">
+        <div class="history-spotlight-label">Legacy Ledger</div>
+        <div class="history-spotlight-meta">${escapeHtml(latestChampion ? `${latestChampion.year} champion ${latestChampion.championTeamId}` : "No champions recorded yet")} | ${escapeHtml(hall.length)} Hall of Fame resumes | ${escapeHtml(retiredCount)} retired numbers logged</div>
+      </div>
+      <div class="history-spotlight-grid">
+        <div class="history-spotlight-card">
+          <strong>Top Resume</strong>
+          <div>${escapeHtml(topLegacy ? `${topLegacy.player} (${topLegacy.pos})` : "No inductees yet")}</div>
+          <div class="small">${escapeHtml(topLegacy ? `Career AV ${topLegacy.careerAv || 0} | ${topLegacy.championships || 0} titles` : "Retired legends will appear here once careers close.")}</div>
+        </div>
+        <div class="history-spotlight-card">
+          <strong>Award Archive</strong>
+          <div>${escapeHtml(awards.length)} seasons captured</div>
+          <div class="small">${escapeHtml(awards.length ? `Latest awards class ${awards[awards.length - 1]?.year}` : "No award history recorded yet")}</div>
+        </div>
+        <div class="history-spotlight-card">
+          <strong>Ring Standard</strong>
+          <div>${escapeHtml(latestChampion ? latestChampion.score || "-" : "-")}</div>
+          <div class="small">${escapeHtml(latestChampion ? `${latestChampion.championTeamId} over ${latestChampion.runnerUpTeamId}` : "Super Bowl scorecards will show here")}</div>
+        </div>
+      </div>
+    `;
+  }
+  const hallCountCard = document.getElementById("historyHallCountCard");
+  const retiredCountCard = document.getElementById("historyRetiredCountCard");
+  const awardYearsCard = document.getElementById("historyAwardYearsCard");
+  const championCard = document.getElementById("historyChampionCard");
+  if (hallCountCard) hallCountCard.textContent = String(hall.length);
+  if (retiredCountCard) retiredCountCard.textContent = String(retiredCount);
+  if (awardYearsCard) awardYearsCard.textContent = String(awards.length);
+  if (championCard) championCard.textContent = latestChampion?.championTeamId || "-";
+  renderPulseChips(
+    "historyPulseBar",
+    [
+      topLegacy ? `Top AV ${topLegacy.player} ${topLegacy.careerAv || 0}` : null,
+      latestChampion ? `Latest score ${latestChampion.score}` : null,
+      hall.length ? `Most rings ${hall.slice().sort((a, b) => (b.championships || 0) - (a.championships || 0))[0]?.player}` : null,
+      retiredCount ? `${retiredCount} jersey retirements tracked` : "No retired numbers yet"
+    ],
+    "Legacy archive updates load here"
+  );
+}
+
+function renderHallOfFameGallery(entries = []) {
+  const gallery = document.getElementById("hallOfFameGallery");
+  const spotlight = document.getElementById("hallOfFameSpotlight");
+  if (spotlight) {
+    const top = entries[0] || null;
+    const mostDecorated = entries.slice().sort((a, b) =>
+      ((b.awardCounts?.MVP || 0) + (b.awardCounts?.OPOY || 0) + (b.awardCounts?.DPOY || 0) + (b.awardCounts?.AllPro1 || 0) * 0.5) -
+      ((a.awardCounts?.MVP || 0) + (a.awardCounts?.OPOY || 0) + (a.awardCounts?.DPOY || 0) + (a.awardCounts?.AllPro1 || 0) * 0.5)
+    )[0] || null;
+    spotlight.innerHTML = `
+      <div class="history-spotlight-mark">
+        <div class="history-spotlight-label">${escapeHtml(top ? top.player : "Hall of Fame pending")}</div>
+        <div class="history-spotlight-meta">${escapeHtml(top ? `${top.pos} | Retired ${top.retiredYear} | Career AV ${top.careerAv || 0}` : "Players who clear the induction threshold will appear here.")}</div>
+      </div>
+      <div class="history-spotlight-grid">
+        <div class="history-spotlight-card">
+          <strong>Standard Bearer</strong>
+          <div>${escapeHtml(top ? hallOfFameCareerLine(top) : "No inducted resume yet")}</div>
+          <div class="small">${escapeHtml(top ? `${top.championships || 0} titles | Legacy ${Math.round(top.legacyScore || 0)}` : "The archive populates as careers end.")}</div>
+        </div>
+        <div class="history-spotlight-card">
+          <strong>Most Decorated</strong>
+          <div>${escapeHtml(mostDecorated ? mostDecorated.player : "No decorated legend yet")}</div>
+          <div class="small">${escapeHtml(mostDecorated ? awardCountLine(mostDecorated.awardCounts || {}) : "Award-heavy careers will surface here.")}</div>
+        </div>
+      </div>
+    `;
+  }
+  if (!gallery) return;
+  if (!entries.length) {
+    gallery.innerHTML = `<div class="history-empty">No Hall of Fame players yet.</div>`;
+    return;
+  }
+  gallery.innerHTML = entries.slice(0, 18).map((entry) => `
+    <article class="history-card">
+      <div class="history-card-top">
+        <div class="history-card-title">
+          <strong>${escapeHtml(entry.player)}</strong>
+          <div class="history-card-meta">${escapeHtml(entry.pos)} | Retired ${escapeHtml(entry.retiredYear || "-")} | ${escapeHtml((entry.teams || []).join(", ") || "No teams logged")}</div>
+        </div>
+        <div class="history-number-plate">#${escapeHtml(entry.jerseyNumber ?? "--")}</div>
+      </div>
+      <div class="history-card-grid">
+        <div class="history-card-stat"><strong>Career AV</strong><div>${escapeHtml(entry.careerAv || 0)}</div></div>
+        <div class="history-card-stat"><strong>Titles</strong><div>${escapeHtml(entry.championships || 0)}</div></div>
+        <div class="history-card-stat"><strong>Legacy</strong><div>${escapeHtml(Math.round(entry.legacyScore || 0))}</div></div>
+        <div class="history-card-stat"><strong>Resume</strong><div>${escapeHtml(hallOfFameCareerLine(entry))}</div></div>
+      </div>
+      <div class="history-chip-row">
+        ${(entry.retiredNumbers || []).length
+          ? entry.retiredNumbers.map((row) => `<span class="history-chip">${escapeHtml(row.teamId)} #${escapeHtml(row.number)}</span>`).join("")
+          : `<span class="history-chip">No jersey retired yet</span>`}
+      </div>
+      <div class="small">${escapeHtml(awardCountLine(entry.awardCounts || {}))}</div>
+      <div class="history-card-actions">
+        <span class="small">${escapeHtml(hallOfFameCareerLine(entry))}</span>
+        <button type="button" data-hof-player-select="${escapeHtml(entry.playerId)}">Select Player</button>
+      </div>
+    </article>
+  `).join("");
+  gallery.querySelectorAll("[data-hof-player-select]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const selected = entries.find((entry) => entry.playerId === button.dataset.hofPlayerSelect);
+      if (!selected) return;
+      setSelectedHistoryPlayer({ id: selected.playerId, name: selected.player, pos: selected.pos });
+    });
+  });
+}
+
+function renderTeamHistorySpotlight(history = null) {
+  const spotlight = document.getElementById("teamHistorySpotlight");
+  const gallery = document.getElementById("retiredNumbersGallery");
+  if (spotlight) {
+    const seasons = history?.seasons || [];
+    const bestSeason = seasons.slice().sort((a, b) => (b.w || 0) - (a.w || 0) || (b.pf || 0) - (a.pf || 0))[0] || null;
+    spotlight.innerHTML = `
+      <div class="history-spotlight-mark">
+        <div class="history-spotlight-label">${escapeHtml(history?.teamName || "Franchise Legacy")}</div>
+        <div class="history-spotlight-meta">${escapeHtml(bestSeason ? `Best recorded season: ${bestSeason.year} (${bestSeason.w}-${bestSeason.l}${bestSeason.t ? `-${bestSeason.t}` : ""})` : "Load a team to review titles, retired numbers, and historical seasons.")}</div>
+      </div>
+      <div class="history-spotlight-grid">
+        <div class="history-spotlight-card">
+          <strong>Titles</strong>
+          <div>${escapeHtml(history?.championships?.length || 0)}</div>
+          <div class="small">${escapeHtml(history?.championships?.length ? `${history.championships.slice(-1)[0]?.year} latest ring` : "No championships recorded")}</div>
+        </div>
+        <div class="history-spotlight-card">
+          <strong>Retired Numbers</strong>
+          <div>${escapeHtml(history?.retiredNumbers?.length || 0)}</div>
+          <div class="small">${escapeHtml(history?.retiredNumbers?.length ? "Select a legend below to retire more jerseys." : "No retired numbers recorded yet")}</div>
+        </div>
+        <div class="history-spotlight-card">
+          <strong>Best Year</strong>
+          <div>${escapeHtml(bestSeason ? String(bestSeason.year) : "-")}</div>
+          <div class="small">${escapeHtml(bestSeason ? `${bestSeason.pf || 0} PF | ${bestSeason.pa || 0} PA` : "Historical team seasons will appear after load.")}</div>
+        </div>
+      </div>
+    `;
+  }
+  if (!gallery) return;
+  const retiredNumbers = history?.retiredNumbers || [];
+  if (!retiredNumbers.length) {
+    gallery.innerHTML = `<div class="history-empty">No retired numbers recorded for this team yet.</div>`;
+    return;
+  }
+  gallery.innerHTML = retiredNumbers.map((entry) => `
+    <article class="history-card">
+      <div class="history-card-top">
+        <div class="history-card-title">
+          <strong>${escapeHtml(entry.player)}</strong>
+          <div class="history-card-meta">${escapeHtml(entry.pos)} | Retired ${escapeHtml(entry.retiredYear || "-")}</div>
+        </div>
+        <div class="history-number-plate">#${escapeHtml(entry.number)}</div>
+      </div>
+      <div class="history-card-grid">
+        <div class="history-card-stat"><strong>Career AV</strong><div>${escapeHtml(entry.careerAv || 0)}</div></div>
+        <div class="history-card-stat"><strong>Titles</strong><div>${escapeHtml(entry.championships || 0)}</div></div>
+      </div>
+      <div class="small">${escapeHtml(awardCountLine(entry.awards || {}))}</div>
+    </article>
+  `).join("");
+}
+
 function renderRecordsAndHistory() {
   const box = document.getElementById("recordsBox");
   const records = state.dashboard?.records;
   const awards = (state.dashboard?.awards || []).slice().reverse();
   const awardYears = awards.map((award) => String(award.year));
+  renderHistorySpotlight();
+  renderTeamHistorySpotlight(state.teamHistory);
 
   if (!records) {
     box.innerHTML = "<div class='record'>No record data</div>";
@@ -2854,29 +3047,7 @@ function renderRecordsAndHistory() {
     }))
   );
 
-  renderTable(
-    "hallOfFameTable",
-    (state.dashboard?.hallOfFame || []).map((entry) => ({
-      player: entry.player,
-      pos: entry.pos,
-      retired: entry.retiredYear,
-      no: entry.jerseyNumber ?? "-",
-      careerAV: entry.careerAv || 0,
-      careerStats: hallOfFameCareerLine(entry),
-      superBowls: entry.championships || 0,
-      teams: (entry.teams || []).join(", "),
-      MVP: entry.awardCounts?.MVP || 0,
-      OPOY: entry.awardCounts?.OPOY || 0,
-      DPOY: entry.awardCounts?.DPOY || 0,
-      allPro1: entry.awardCounts?.AllPro1 || 0,
-      allPro2: entry.awardCounts?.AllPro2 || 0,
-      proBowl: entry.awardCounts?.ProBowl || 0,
-      rookieAwards: (entry.awardCounts?.OROY || 0) + (entry.awardCounts?.DROY || 0) + (entry.awardCounts?.ROY || 0),
-      comeback: entry.awardCounts?.CPOY || 0,
-      improved: entry.awardCounts?.MostImproved || 0,
-      retiredNos: (entry.retiredNumbers || []).map((row) => `${row.teamId} #${row.number}`).join(", ")
-    }))
-  );
+  renderHallOfFameGallery(state.dashboard?.hallOfFame || []);
 
   setHistoryView(state.historyView);
 }
@@ -4009,6 +4180,7 @@ async function loadTeamHistory() {
   const teamId = document.getElementById("teamHistorySelect").value || state.dashboard?.controlledTeamId;
   const payload = await api(`/api/history/team?team=${encodeURIComponent(teamId)}`);
   state.teamHistory = payload.history || null;
+  renderTeamHistorySpotlight(payload.history || null);
   renderTable(
     "teamHistoryTable",
     (payload.history?.seasons || []).map((season) => ({
@@ -4018,18 +4190,6 @@ async function loadTeamHistory() {
       t: season.ties,
       pf: season.pf,
       pa: season.pa
-    }))
-  );
-  renderTable(
-    "retiredNumbersTable",
-    (payload.history?.retiredNumbers || []).map((entry) => ({
-      no: entry.number,
-      player: entry.player,
-      pos: entry.pos,
-      retired: entry.retiredYear,
-      careerAV: entry.careerAv || 0,
-      superBowls: entry.championships || 0,
-      awards: Object.entries(entry.awards || {}).map(([key, value]) => `${key}:${value}`).join(", ")
     }))
   );
 }

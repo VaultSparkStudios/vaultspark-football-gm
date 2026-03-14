@@ -578,6 +578,27 @@
         </section>
 
         <section id="historyTab" class="tab-panel">
+          <div class="panel control-hero-panel">
+            <div class="control-hero-grid">
+              <div class="control-hero-copy">
+                <div class="brand-kicker">League Legacy Archive</div>
+                <h2>History Command</h2>
+                <div id="historySpotlight" class="control-spotlight">
+                  <div class="small">Season honors, Hall of Fame resumes, and retired numbers will load here.</div>
+                </div>
+              </div>
+              <div class="control-hero-side">
+                <div class="cards">
+                  <article><h3>Hall Inductees</h3><p id="historyHallCountCard">-</p></article>
+                  <article><h3>Retired Numbers</h3><p id="historyRetiredCountCard">-</p></article>
+                  <article><h3>Award Years</h3><p id="historyAwardYearsCard">-</p></article>
+                  <article><h3>Latest Champion</h3><p id="historyChampionCard">-</p></article>
+                </div>
+                <div id="historyPulseBar" class="control-pulse-bar"></div>
+              </div>
+            </div>
+          </div>
+
           <div class="panel">
             <div class="subtab-bar history-subtab-bar">
               <button class="subtab-btn active" data-history-view="season-awards">Season Awards</button>
@@ -610,14 +631,16 @@
               <div class="split">
                 <div>
                   <h2>Hall Of Fame Resume</h2>
-                  <div class="table-wrap"><table id="hallOfFameTable"></table></div>
+                  <div id="hallOfFameSpotlight" class="history-spotlight"></div>
+                  <div id="hallOfFameGallery" class="history-gallery"></div>
                   <div class="row">
                     <label>Team <select id="teamHistorySelect"></select></label>
                     <button id="loadTeamHistoryBtn">Load Team History</button>
                     <button id="retireSelectedJerseyBtn" disabled>Retire Selected Player Jersey</button>
                   </div>
                   <div class="small">Select a player below, then choose a team they played for to retire that jersey number.</div>
-                  <div class="table-wrap"><table id="retiredNumbersTable"></table></div>
+                  <div id="teamHistorySpotlight" class="history-spotlight"></div>
+                  <div id="retiredNumbersGallery" class="history-gallery compact"></div>
                   <div class="table-wrap"><table id="teamHistoryTable" data-testid="team-history-table"></table></div>
                 </div>
                 <div>

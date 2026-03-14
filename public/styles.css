@@ -820,6 +820,172 @@ th {
   margin-bottom: 1rem;
 }
 
+.history-spotlight {
+  display: grid;
+  gap: 0.8rem;
+  padding: 0.95rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid rgba(84, 117, 113, 0.46);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 27, 0.84), rgba(9, 15, 17, 0.92)),
+    radial-gradient(circle at top left, rgba(123, 196, 215, 0.08), transparent 28%);
+}
+
+.history-spotlight-mark {
+  display: grid;
+  gap: 0.24rem;
+}
+
+.history-spotlight-label {
+  font-size: clamp(1.05rem, 2.1vw, 1.45rem);
+  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-strong);
+}
+
+.history-spotlight-meta {
+  color: #c9d6d1;
+  font-size: 0.82rem;
+}
+
+.history-spotlight-grid {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.history-spotlight-card {
+  border: 1px solid rgba(61, 87, 85, 0.46);
+  border-radius: 16px;
+  padding: 0.72rem;
+  background: rgba(10, 17, 19, 0.72);
+}
+
+.history-spotlight-card strong {
+  display: block;
+  margin-bottom: 0.24rem;
+  color: var(--accent-strong);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.71rem;
+}
+
+.history-gallery {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-bottom: 0.85rem;
+}
+
+.history-gallery.compact {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.history-card {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.9rem;
+  border: 1px solid rgba(61, 87, 85, 0.46);
+  border-radius: 18px;
+  background:
+    linear-gradient(180deg, rgba(18, 27, 31, 0.92), rgba(12, 18, 21, 0.9)),
+    radial-gradient(circle at top right, rgba(215, 162, 74, 0.1), transparent 35%);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+}
+
+.history-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.65rem;
+  align-items: start;
+}
+
+.history-card-title {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.history-card-title strong {
+  color: var(--ink-strong);
+  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.history-card-meta {
+  color: #c9d6d1;
+  font-size: 0.76rem;
+}
+
+.history-number-plate {
+  min-width: 58px;
+  padding: 0.46rem 0.55rem;
+  border-radius: 14px;
+  border: 1px solid rgba(215, 162, 74, 0.5);
+  background: linear-gradient(145deg, rgba(77, 57, 27, 0.88), rgba(24, 20, 16, 0.98));
+  color: var(--accent-strong);
+  text-align: center;
+  font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.history-card-grid {
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.history-card-stat {
+  border: 1px solid rgba(61, 87, 85, 0.38);
+  border-radius: 14px;
+  padding: 0.52rem 0.58rem;
+  background: rgba(8, 14, 16, 0.58);
+}
+
+.history-card-stat strong {
+  display: block;
+  margin-bottom: 0.16rem;
+  color: var(--accent-2);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.history-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.history-chip {
+  padding: 0.3rem 0.58rem;
+  border-radius: 999px;
+  border: 1px solid rgba(84, 117, 113, 0.54);
+  background: rgba(9, 16, 18, 0.76);
+  color: #d7e4df;
+  font-size: 0.69rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.history-card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.history-empty {
+  padding: 0.9rem;
+  border: 1px dashed rgba(84, 117, 113, 0.5);
+  border-radius: 16px;
+  color: var(--muted);
+  background: rgba(10, 16, 18, 0.46);
+}
+
 @keyframes pulse {
   0% { background-position: 0 0; }
   100% { background-position: -200% 0; }
@@ -849,6 +1015,10 @@ th {
   .player-meta-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .history-card-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 980px) {
@@ -863,6 +1033,10 @@ th {
 
   .menu-btn {
     text-align: center;
+  }
+
+  .history-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -889,6 +1063,15 @@ th {
 
   .menu-btn {
     padding: 0.44rem 0.5rem;
+  }
+
+  .history-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .history-card-actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .player-portrait-card {

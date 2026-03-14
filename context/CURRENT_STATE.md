@@ -112,6 +112,7 @@ Build status:
   - select dropdown menus now force readable option contrast instead of the earlier white-on-white native menu issue
   - leftover placeholder/dev copy on the overview dashboard was replaced with user-facing text, and vague `delta` wording now reads as `Change`, `Need Gap`, `Cap Change`, or `value swing`
   - player dossier cards now surface jersey numbers plus more explicit NFL frame/body-type labels, and the generated portraits bias harder toward position/weight-specific football builds with stronger shoulder/trap silhouettes for heavier positions
+  - the Hall of Fame and retired-number areas now render as spotlight/card galleries instead of only raw tables, with direct legend selection from Hall of Fame cards and a clearer franchise-legacy summary for the selected team
 - Season wrap/history is now deeper and more explicit:
   - the yearly flow now pauses on a dedicated `season-awards` phase between the Super Bowl and offseason pipeline
   - award history now stores richer categories including `ROY`, `CPOY`, `MostImproved`, `AllPro1/2/3`, `ProBowl`, and a Super Bowl summary with MVP/pivotal moment

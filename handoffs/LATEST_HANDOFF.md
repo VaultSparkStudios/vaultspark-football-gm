@@ -22,6 +22,10 @@ What was completed:
   - leftover overview placeholder/dev text was replaced with user-facing copy
   - vague `delta` wording now reads as `Change`, `Need Gap`, `Cap Change`, or `value swing` depending on context
   - player portraits were pushed further toward position/weight-shaped NFL frames with stronger pad/trap silhouettes for heavier positions
+- Polished the Hall of Fame and retired-number presentation:
+  - the History tab now opens with a legacy-archive spotlight that summarizes hall count, retired numbers, award-year coverage, and the latest champion
+  - Hall of Fame rows were upgraded into selectable resume cards with jersey-number plates, award chips, title/AV/legacy stats, and direct player-selection actions
+  - team history now has a franchise-legacy spotlight plus retired-number cards instead of only raw tables
 - Tightened the AV implementation closer to PFR's published methodology:
   - offensive AV now uses team points-per-drive buckets for rushers, passers, and receivers instead of a generic yardage heuristic
   - defensive AV now uses front-seven vs secondary pools with starts/tackles/sack/turnover weighting closer to the published PFR split
@@ -45,6 +49,7 @@ What was completed:
   - `npm.cmd run build:pages`
 - Revalidated the full suite successfully with:
   - `npm.cmd test`
+  - `npm.cmd run test:ui`
 - Added the next management-surface UI pass:
   - the contracts tab now opens with a cap-command hero that summarizes selected-player leverage, negotiation ask, cap posture, and risk signals
   - the settings tab now opens with a commissioner-deck summary for saves, policy toggles, persistence, and runtime health
