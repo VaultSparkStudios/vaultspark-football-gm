@@ -204,6 +204,7 @@ test("compare and player history flows use search-driven selection", async ({ pa
   await expect(page.locator("#comparePlayersTable tr").nth(1)).toBeVisible();
 
   await page.click('[data-testid="tab-history"]');
+  await page.click('[data-history-view="hall-of-fame"]');
   await expect(page.locator("#playerTimelineId")).toHaveCount(0);
   await page.fill("#playerTimelineSearchInput", firstPlayer);
   await page.click("#searchPlayerTimelineBtn");
