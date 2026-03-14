@@ -87,3 +87,36 @@ test("season awards follow regular-season AV leaders", () => {
   assert.equal(awards.MVP?.playerId, offensiveLeader?.playerId);
   assert.equal(awards.DPOY?.playerId, defensiveLeader?.playerId);
 });
+
+test("regular season keeps 18 weeks, one bye, and 17 games per team", () => {
+  const session = createSession({ seed: 140, startYear: 2026, controlledTeamId: "BUF" });
+  assert.equal(session.seasonSchedule.length, 18);
+
+  const gamesByTeam = new Map();
+  const byesByTeam = new Map();
+  for (const week of session.getSeasonCalendar(2026).weeks) {
+    for (const game of week.games || []) {
+      gamesByTeam.set(game.homeTeamId, (gamesByTeam.get(game.homeTeamId) || 0) + 1);
+      gamesByTeam.set(game.awayTeamId, (gamesByTeam.get(game.awayTeamId) || 0) + 1);
+    }
+    for (const teamId of week.byeTeams || []) {
+      byesByTeam.set(teamId, (byesByTeam.get(teamId) || 0) + 1);
+    }
+  }
+
+  for (const team of session.league.teams) {
+    assert.equal(gamesByTeam.get(team.id), 17);
+    assert.equal(byesByTeam.get(team.id), 1);
+  }
+});
+
+test("season awards phase sits between postseason and offseason", () => {
+  const session = createSession({ seed: 141, startYear: 2026, controlledTeamId: "BUF" });
+  session.simulateOneSeason({ runOffseasonAfter: false });
+
+  assert.equal(session.phase, "season-awards");
+  assert.ok(session.league.awards.at(-1));
+
+  session.advanceWeek();
+  assert.equal(session.phase, "offseason");
+});

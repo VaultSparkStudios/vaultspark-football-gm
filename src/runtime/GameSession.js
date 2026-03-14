@@ -27,7 +27,7 @@ import {
   normalizeContract,
   restructureContract
 } from "../domain/contracts.js";
-import { createDraftClass, createZeroedSeasonStats } from "../domain/playerFactory.js";
+import { createDraftClass, createZeroedSeasonStats, jerseyNumberForPlayer } from "../domain/playerFactory.js";
 import {
   createLeagueBase,
   ensureTeamIdentity,
@@ -970,6 +970,9 @@ function pickAssetValue(pick) {
 function ensurePlayerRuntime(player, rng = null) {
   if (!player.rosterSlot) player.rosterSlot = "active";
   if (!Number.isFinite(player.depthChartOrder)) player.depthChartOrder = 99;
+  if (!Number.isFinite(player.jerseyNumber)) {
+    player.jerseyNumber = jerseyNumberForPlayer(player.position, player.id || `${player.teamId}-${player.name}`);
+  }
   if (!Number.isFinite(player.morale)) player.morale = rng ? rng.int(58, 86) : 72;
   if (!Number.isFinite(player.motivation)) player.motivation = rng ? rng.int(56, 88) : 72;
   if (!player.injury) player.injury = null;
@@ -1050,6 +1053,10 @@ function ensureLeagueRuntime(league) {
     ...league.settings
   };
   for (const team of league.teams) {
+    if (!team.season || typeof team.season !== "object") team.season = {};
+    if (!Number.isFinite(team.season.drivesFor)) team.season.drivesFor = 0;
+    if (!Number.isFinite(team.season.drivesAgainst)) team.season.drivesAgainst = 0;
+    if (!Array.isArray(team.retiredNumbers)) team.retiredNumbers = [];
     Object.assign(team, ensureTeamIdentity(team));
     if (!team.staff || STAFF_ROLE_KEYS.some((role) => !team.staff?.[role])) {
       team.staff = buildStaffProfile({ int: () => 76, pick: (items) => items[0] }, team.staff);
@@ -1171,52 +1178,246 @@ function waiverPriority(league) {
     .map((team) => team.id);
 }
 
-function estimateAwards(session, year) {
+const ALL_PRO_COUNTS = {
+  QB: 1,
+  RB: 2,
+  WR: 3,
+  TE: 1,
+  OL: 5,
+  DL: 2,
+  LB: 2,
+  DB: 4,
+  K: 1,
+  P: 1
+};
+
+const PRO_BOWL_COUNTS = {
+  QB: 3,
+  RB: 4,
+  WR: 6,
+  TE: 3,
+  OL: 8,
+  DL: 6,
+  LB: 6,
+  DB: 8,
+  K: 2,
+  P: 2
+};
+
+function awardRowSummary(row) {
+  if (!row) return null;
+  return {
+    playerId: row.playerId,
+    player: row.player,
+    team: row.tm,
+    pos: row.pos,
+    av: row.av || 0
+  };
+}
+
+function uniqueBestRows(rows = []) {
+  const byPlayer = new Map();
+  for (const row of rows) {
+    const current = byPlayer.get(row.playerId);
+    if (!current || (row.av || 0) > (current.av || 0)) byPlayer.set(row.playerId, row);
+  }
+  return [...byPlayer.values()];
+}
+
+function sortRowsByAv(rows, fallback = () => 0) {
+  return rows
+    .slice()
+    .sort((a, b) => (b.av || 0) - (a.av || 0) || fallback(b) - fallback(a) || (b.yds || 0) - (a.yds || 0));
+}
+
+function collectSeasonAvMap(session, year, seasonType = "regular") {
+  const tables = [
+    ...session.statBook.getPlayerSeasonTable("passing", { year, seasonType }),
+    ...session.statBook.getPlayerSeasonTable("rushing", { year, seasonType }),
+    ...session.statBook.getPlayerSeasonTable("receiving", { year, seasonType }),
+    ...session.statBook.getPlayerSeasonTable("defense", { year, seasonType }),
+    ...session.statBook.getPlayerSeasonTable("blocking", { year, seasonType }),
+    ...session.statBook.getPlayerSeasonTable("kicking", { year, seasonType }),
+    ...session.statBook.getPlayerSeasonTable("punting", { year, seasonType })
+  ];
+  return new Map(uniqueBestRows(tables).map((row) => [row.playerId, row]));
+}
+
+function selectAwardTeam(positionRows, counts) {
+  const team1 = [];
+  const team2 = [];
+  const team3 = [];
+  for (const [position, count] of Object.entries(counts)) {
+    const pool = sortRowsByAv(positionRows[position] || [], (row) => row.td || row.sacks || row.int || row.rate || 0);
+    team1.push(...pool.slice(0, count).map(awardRowSummary));
+    team2.push(...pool.slice(count, count * 2).map(awardRowSummary));
+    team3.push(...pool.slice(count * 2, count * 3).map(awardRowSummary));
+  }
+  return { team1, team2, team3 };
+}
+
+function selectProBowl(positionRows, counts, excludedIds = new Set()) {
+  const selections = [];
+  for (const [position, count] of Object.entries(counts)) {
+    const pool = sortRowsByAv(positionRows[position] || [], (row) => row.td || row.sacks || row.int || row.rate || 0)
+      .filter((row) => !excludedIds.has(row.playerId))
+      .slice(0, count)
+      .map(awardRowSummary);
+    selections.push(...pool);
+  }
+  return selections;
+}
+
+function buildSuperBowlAwardSummary(session, playoffResult) {
+  const superBowlGame = (playoffResult?.gameArchiveEntries || []).find((game) => game.label === "super-bowl");
+  const boxScore = superBowlGame?.boxScore || null;
+  const championTeamId = playoffResult?.superBowl?.championTeamId || null;
+  if (!boxScore) {
+    return {
+      championTeamId,
+      runnerUpTeamId: playoffResult?.superBowl?.runnerUpTeamId || null,
+      finalScore: playoffResult?.superBowl ? `${playoffResult.superBowl.homeScore}-${playoffResult.superBowl.awayScore}` : "-",
+      MVP: null,
+      pivotalMoment: ""
+    };
+  }
+
+  const playerScores = new Map();
+  const applyRows = (rows, scorer, teamId) => {
+    for (const row of rows || []) {
+      const current = playerScores.get(row.playerId) || {
+        playerId: row.playerId,
+        player: row.player,
+        team: teamId,
+        pos: row.pos,
+        score: 0
+      };
+      current.score += scorer(row);
+      playerScores.set(row.playerId, current);
+    }
+  };
+
+  applyRows(boxScore.playerStats?.home?.passing, (row) => (row.yds || 0) / 25 + (row.td || 0) * 4 - (row.int || 0) * 2, boxScore.homeTeam?.teamId);
+  applyRows(boxScore.playerStats?.away?.passing, (row) => (row.yds || 0) / 25 + (row.td || 0) * 4 - (row.int || 0) * 2, boxScore.awayTeam?.teamId);
+  applyRows(boxScore.playerStats?.home?.rushing, (row) => (row.yds || 0) / 10 + (row.td || 0) * 6, boxScore.homeTeam?.teamId);
+  applyRows(boxScore.playerStats?.away?.rushing, (row) => (row.yds || 0) / 10 + (row.td || 0) * 6, boxScore.awayTeam?.teamId);
+  applyRows(boxScore.playerStats?.home?.receiving, (row) => (row.yds || 0) / 10 + (row.td || 0) * 6, boxScore.homeTeam?.teamId);
+  applyRows(boxScore.playerStats?.away?.receiving, (row) => (row.yds || 0) / 10 + (row.td || 0) * 6, boxScore.awayTeam?.teamId);
+  applyRows(boxScore.playerStats?.home?.defense, (row) => (row.tkl || 0) * 0.45 + (row.sacks || 0) * 2 + (row.int || 0) * 3 + (row.pd || 0) * 0.75, boxScore.homeTeam?.teamId);
+  applyRows(boxScore.playerStats?.away?.defense, (row) => (row.tkl || 0) * 0.45 + (row.sacks || 0) * 2 + (row.int || 0) * 3 + (row.pd || 0) * 0.75, boxScore.awayTeam?.teamId);
+  applyRows(boxScore.playerStats?.home?.kicking, (row) => (row.fgm || 0) * 1.5 + (row.xpm || 0) * 0.25, boxScore.homeTeam?.teamId);
+  applyRows(boxScore.playerStats?.away?.kicking, (row) => (row.fgm || 0) * 1.5 + (row.xpm || 0) * 0.25, boxScore.awayTeam?.teamId);
+
+  const mvp = [...playerScores.values()]
+    .filter((row) => !championTeamId || row.team === championTeamId)
+    .sort((a, b) => b.score - a.score)[0] || null;
+
+  const scoringSummary = boxScore.scoringSummary || [];
+  const pivotalMoment = [...scoringSummary]
+    .reverse()
+    .find((entry) => entry.teamId === championTeamId)
+    || scoringSummary[scoringSummary.length - 1]
+    || null;
+
+  return {
+    championTeamId,
+    runnerUpTeamId: playoffResult?.superBowl?.runnerUpTeamId || null,
+    finalScore: `${playoffResult?.superBowl?.homeScore || 0}-${playoffResult?.superBowl?.awayScore || 0}`,
+    MVP: mvp
+      ? {
+          playerId: mvp.playerId,
+          player: mvp.player,
+          team: mvp.team,
+          pos: mvp.pos,
+          score: Number(mvp.score.toFixed(1))
+        }
+      : null,
+    pivotalMoment: pivotalMoment
+      ? `${pivotalMoment.quarterLabel || "Q4"} ${pivotalMoment.clock || ""} ${pivotalMoment.description || ""}`.trim()
+      : ""
+  };
+}
+
+function estimateAwards(session, year, playoffResult = null) {
   const seasonType = "regular";
   const passing = session.statBook.getPlayerSeasonTable("passing", { year, seasonType });
   const rushing = session.statBook.getPlayerSeasonTable("rushing", { year, seasonType });
   const receiving = session.statBook.getPlayerSeasonTable("receiving", { year, seasonType });
+  const blocking = session.statBook.getPlayerSeasonTable("blocking", { year, seasonType });
   const defense = session.statBook.getPlayerSeasonTable("defense", { year, seasonType });
+  const kicking = session.statBook.getPlayerSeasonTable("kicking", { year, seasonType });
+  const punting = session.statBook.getPlayerSeasonTable("punting", { year, seasonType });
   const rookies = new Set(
     session.league.players.filter((player) => player.seasonsPlayed <= 1 && player.status === "active").map((p) => p.id)
   );
-  const uniqueRows = (rows) => {
-    const byPlayer = new Map();
-    for (const row of rows) {
-      const current = byPlayer.get(row.playerId);
-      if (!current || (row.av || 0) > (current.av || 0)) byPlayer.set(row.playerId, row);
-    }
-    return [...byPlayer.values()];
-  };
-  const sortByAv = (rows, fallback = () => 0) =>
-    rows
-      .slice()
-      .sort((a, b) => (b.av || 0) - (a.av || 0) || fallback(b) - fallback(a) || (b.yds || 0) - (a.yds || 0));
-  const offensivePool = uniqueRows(
+  const offensivePool = uniqueBestRows(
     [...passing, ...rushing, ...receiving].filter((row) => OFFENSIVE_AV_POSITIONS.has(row.pos))
   );
-  const defensivePool = uniqueRows(defense.filter((row) => DEFENSIVE_AV_POSITIONS.has(row.pos)));
-  const mvp = sortByAv(offensivePool, (row) => (row.pos === "QB" ? 1 : 0))[0] || null;
-  const opoy = sortByAv(
+  const defensivePool = uniqueBestRows(defense.filter((row) => DEFENSIVE_AV_POSITIONS.has(row.pos)));
+  const specialPool = [...kicking, ...punting];
+  const mvp = sortRowsByAv(offensivePool, (row) => (row.pos === "QB" ? 1 : 0))[0] || null;
+  const opoy = sortRowsByAv(
     offensivePool.filter((row) => row.playerId !== mvp?.playerId),
     (row) => row.td || 0
   )[0] || mvp;
-  const dpoy = sortByAv(defensivePool)[0] || null;
-  const oroy = sortByAv(offensivePool.filter((row) => rookies.has(row.playerId)), (row) => row.td || 0)[0] || null;
-  const droy = sortByAv(defensivePool.filter((row) => rookies.has(row.playerId)), (row) => (row.sacks || 0) + (row.int || 0))[0] || null;
-  const bestQb = sortByAv(
+  const dpoy = sortRowsByAv(defensivePool)[0] || null;
+  const oroy = sortRowsByAv(offensivePool.filter((row) => rookies.has(row.playerId)), (row) => row.td || 0)[0] || null;
+  const droy = sortRowsByAv(defensivePool.filter((row) => rookies.has(row.playerId)), (row) => (row.sacks || 0) + (row.int || 0))[0] || null;
+  const roy = sortRowsByAv([oroy, droy].filter(Boolean))[0] || null;
+  const bestQb = sortRowsByAv(
     passing.filter((row) => row.pos === "QB"),
     (row) => row.rate || 0
   )[0] || null;
+  const previousAv = collectSeasonAvMap(session, year - 1, seasonType);
+  const comebackCandidates = [...offensivePool, ...defensivePool, ...specialPool]
+    .map((row) => ({
+      row,
+      prior: previousAv.get(row.playerId) || null
+    }))
+    .filter(({ row, prior }) => prior && (prior.g || 0) <= 10)
+    .sort((a, b) => ((b.row.av || 0) - (b.prior?.av || 0)) - ((a.row.av || 0) - (a.prior?.av || 0)) || (b.row.av || 0) - (a.row.av || 0));
+  const improvedCandidates = [...offensivePool, ...defensivePool, ...specialPool]
+    .map((row) => ({
+      row,
+      prior: previousAv.get(row.playerId) || null
+    }))
+    .filter(({ row, prior }) => prior && (row.av || 0) >= 4)
+    .sort((a, b) => ((b.row.av || 0) - (b.prior?.av || 0)) - ((a.row.av || 0) - (a.prior?.av || 0)) || (b.row.av || 0) - (a.row.av || 0));
+
+  const positionRows = {
+    QB: passing.filter((row) => row.pos === "QB"),
+    RB: offensivePool.filter((row) => row.pos === "RB"),
+    WR: offensivePool.filter((row) => row.pos === "WR"),
+    TE: offensivePool.filter((row) => row.pos === "TE"),
+    OL: blocking.filter((row) => row.pos === "OL"),
+    DL: defense.filter((row) => row.pos === "DL"),
+    LB: defense.filter((row) => row.pos === "LB"),
+    DB: defense.filter((row) => row.pos === "DB"),
+    K: kicking.filter((row) => row.pos === "K"),
+    P: punting.filter((row) => row.pos === "P")
+  };
+  const allPro = selectAwardTeam(positionRows, ALL_PRO_COUNTS);
+  const allProIds = new Set([...allPro.team1, ...allPro.team2, ...allPro.team3].map((row) => row?.playerId).filter(Boolean));
+  const proBowl = selectProBowl(positionRows, PRO_BOWL_COUNTS, allProIds);
+  const superBowl = buildSuperBowlAwardSummary(session, playoffResult);
 
   const award = {
     year,
-    MVP: mvp ? { playerId: mvp.playerId, player: mvp.player, team: mvp.tm } : null,
-    OPOY: opoy ? { playerId: opoy.playerId, player: opoy.player, team: opoy.tm } : null,
-    DPOY: dpoy ? { playerId: dpoy.playerId, player: dpoy.player, team: dpoy.tm } : null,
-    OROY: oroy ? { playerId: oroy.playerId, player: oroy.player, team: oroy.tm } : null,
-    DROY: droy ? { playerId: droy.playerId, player: droy.player, team: droy.tm } : null,
-    BestQB: bestQb ? { playerId: bestQb.playerId, player: bestQb.player, team: bestQb.tm } : null
+    stage: "season-awards",
+    MVP: awardRowSummary(mvp),
+    OPOY: awardRowSummary(opoy),
+    DPOY: awardRowSummary(dpoy),
+    OROY: awardRowSummary(oroy),
+    DROY: awardRowSummary(droy),
+    ROY: awardRowSummary(roy),
+    CPOY: awardRowSummary(comebackCandidates[0]?.row || null),
+    MostImproved: awardRowSummary(improvedCandidates[0]?.row || null),
+    BestQB: awardRowSummary(bestQb),
+    AllPro1: allPro.team1,
+    AllPro2: allPro.team2,
+    AllPro3: allPro.team3,
+    ProBowl: proBowl,
+    SuperBowl: superBowl
   };
   session.league.awards.push(award);
   return award;
@@ -1264,6 +1465,7 @@ export class GameSession {
     this.weekResultsCurrentSeason = [];
     this.latestPostseason = null;
     this.lastAwardSummary = null;
+    this.pendingSeasonWrap = null;
 
     this.startSeason(this.currentYear);
   }
@@ -1283,6 +1485,7 @@ export class GameSession {
     session.realismProfile = snapshot.realismProfile || PFR_RECENT_WEIGHTED_PROFILE;
     session.careerRealismProfile = snapshot.careerRealismProfile || PFR_CAREER_WEIGHTED_PROFILE;
     session.lastRealismVerificationReport = snapshot.lastRealismVerificationReport || null;
+    session.pendingSeasonWrap = snapshot.pendingSeasonWrap || null;
     session.statBook.reindexPlayers();
     ensureLeagueRuntime(session.league);
     session.initializeLeagueSystems();
@@ -1317,6 +1520,7 @@ export class GameSession {
       weekResultsCurrentSeason: this.weekResultsCurrentSeason,
       latestPostseason: this.latestPostseason,
       lastAwardSummary: this.lastAwardSummary,
+      pendingSeasonWrap: this.pendingSeasonWrap,
       teamSeasonArchive: this.statBook.teamSeasonArchive
     };
   }
@@ -1944,6 +2148,7 @@ export class GameSession {
     this.weekResultsCurrentSeason = [];
     this.latestPostseason = null;
     this.lastAwardSummary = null;
+    this.pendingSeasonWrap = null;
     this.seasonSchedule = buildSeasonSchedule({
       league: this.league,
       year,
@@ -3456,25 +3661,42 @@ export class GameSession {
           score: `${playoffResult.superBowl.homeScore}-${playoffResult.superBowl.awayScore}`
         }
       });
-      this.lastAwardSummary = estimateAwards(this, this.currentYear);
+      this.lastAwardSummary = estimateAwards(this, this.currentYear, playoffResult);
       this.latestPostseason = playoffResult;
+      this.pendingSeasonWrap = {
+        year: this.currentYear,
+        superBowl: playoffResult.superBowl,
+        awards: this.lastAwardSummary
+      };
       this.archiveGameResults(playoffResult.gameArchiveEntries);
-      this.prepareDraft();
-      this.seedCompLedgerForUpcomingOffseason();
-      this.resetOffseasonPipeline(this.currentYear);
-      this.league.freeAgencyMarket.stage = "legal-tampering";
       this.logNews(`${playoffResult.superBowl.championTeamId} won the championship`, {
         teamId: playoffResult.superBowl.championTeamId,
         runnerUp: playoffResult.superBowl.runnerUpTeamId
       });
-      this.seasonsSimulated += 1;
-      this.phase = "offseason";
+      this.phase = "season-awards";
       return {
         ok: true,
         phase: this.phase,
         year: this.currentYear,
         superBowl: playoffResult.superBowl,
         awards: this.lastAwardSummary
+      };
+    }
+
+    if (this.phase === "season-awards") {
+      this.prepareDraft();
+      this.seedCompLedgerForUpcomingOffseason();
+      this.resetOffseasonPipeline(this.currentYear);
+      this.league.freeAgencyMarket.stage = "legal-tampering";
+      this.seasonsSimulated += 1;
+      this.phase = "offseason";
+      return {
+        ok: true,
+        phase: this.phase,
+        year: this.currentYear,
+        awards: this.lastAwardSummary,
+        superBowl: this.pendingSeasonWrap?.superBowl || this.latestPostseason?.superBowl || null,
+        message: "Season awards finalized. Offseason has begun."
       };
     }
 
@@ -3518,7 +3740,7 @@ export class GameSession {
     const post = this.advanceWeek();
     if (runOffseasonAfter) {
       let guard = 0;
-      while (this.phase === "offseason" && guard < 16) {
+      while ((this.phase === "season-awards" || this.phase === "offseason") && guard < 18) {
         this.advanceWeek();
         guard += 1;
       }
@@ -3622,11 +3844,18 @@ export class GameSession {
       };
     });
 
+    const activeTeams = new Set(weekBlock.games.flatMap((game) => [game.homeTeamId, game.awayTeamId]));
+    const byeTeams = this.league.teams
+      .map((team) => team.id)
+      .filter((teamId) => !activeTeams.has(teamId))
+      .sort();
+
     return {
       year: this.currentYear,
       week: weekNumber,
       played: Boolean(historicalWeek),
-      games
+      games,
+      byeTeams
     };
   }
 
@@ -3759,7 +3988,12 @@ export class GameSession {
             isTie: played?.isTie ?? false
           };
         });
-        return { week: weekBlock.week, played: Boolean(historicalWeek), games };
+        const activeTeams = new Set(weekBlock.games.flatMap((game) => [game.homeTeamId, game.awayTeamId]));
+        const byeTeams = this.league.teams
+          .map((team) => team.id)
+          .filter((teamId) => !activeTeams.has(teamId))
+          .sort();
+        return { week: weekBlock.week, played: Boolean(historicalWeek), games, byeTeams };
       });
     } else {
       const historicalSeason = this.league.history.find((entry) => entry.year === targetYear);
@@ -3767,6 +4001,7 @@ export class GameSession {
         .map((weekEntry) => ({
           week: weekEntry.week,
           played: true,
+          byeTeams: weekEntry.byeTeams || [],
           games: (weekEntry.games || []).map((game) => ({
             homeTeamId: game.homeTeamId,
             awayTeamId: game.awayTeamId,
@@ -3831,6 +4066,7 @@ export class GameSession {
         age: player.age,
         heightInches: player.heightInches || null,
         weightLbs: player.weightLbs || null,
+        jerseyNumber: player.jerseyNumber ?? null,
         experience: player.experience,
         overall: player.overall,
         schemeFit: player.schemeFit || null,
@@ -3854,6 +4090,7 @@ export class GameSession {
       career,
       seasonRows,
       awardsHistory: this.getPlayerAwards(playerId),
+      eligibleRetiredNumberTeams: this.getEligibleRetiredNumberTeams(playerId),
       transactionHistory: this.getTransactionLog({ playerId, limit: 80 })
     };
   }
@@ -4021,6 +4258,8 @@ export class GameSession {
       teams: this.league.teams.map(toDashboardTeam),
       champions: this.league.champions.slice(-20),
       awards: this.league.awards.slice(-20),
+      hallOfFame: this.getHallOfFameHistory().slice(0, 120),
+      seasonAwardsStage: this.phase === "season-awards" ? this.pendingSeasonWrap : null,
       latestStandings: standingsRows,
       latestWeekResults: this.weekResultsCurrentSeason.slice(-1)[0] || null,
       recentBoxScores: this.getRecentBoxScores(this.controlledTeamId, 8),
@@ -4458,21 +4697,174 @@ export class GameSession {
   }
 
   getTeamHistory(teamId) {
+    const team = teamById(this.league, teamId);
     return {
       teamId,
-      teamName: teamById(this.league, teamId)?.name || teamId,
+      teamName: team?.name || teamId,
       seasons: this.statBook.getTeamSeasonTable({ team: teamId }).sort((a, b) => a.year - b.year),
-      championships: this.league.champions.filter((entry) => entry.championTeamId === teamId)
+      championships: this.league.champions.filter((entry) => entry.championTeamId === teamId),
+      retiredNumbers: (team?.retiredNumbers || []).slice().sort((a, b) => (a.number || 0) - (b.number || 0))
     };
   }
 
+  getPlayerAwardCounts(playerId) {
+    return this.getPlayerAwards(playerId).reduce((counts, entry) => {
+      counts[entry.award] = (counts[entry.award] || 0) + 1;
+      return counts;
+    }, {});
+  }
+
+  getPlayerCareerApproximateValue(playerId) {
+    const player = [...this.league.players, ...this.league.retiredPlayers].find((entry) => entry.id === playerId);
+    if (!player) return 0;
+    const category = primaryCategoryForPosition(player.position);
+    const row = this.statBook.getPlayerCareerTable(category, { seasonType: "all" }).find((entry) => entry.playerId === playerId);
+    return row?.av || 0;
+  }
+
+  getPlayerChampionships(playerId) {
+    const timeline = this.getPlayerTimeline(playerId, { seasonType: "all" })?.timeline || [];
+    return timeline.filter((entry) => entry.champion).length;
+  }
+
+  getEligibleRetiredNumberTeams(playerId) {
+    const player = [...this.league.players, ...this.league.retiredPlayers].find((entry) => entry.id === playerId);
+    if (!player) return [];
+    const teamIds = new Set();
+    if (player.teamId && !["FA", "WAIVER", "RET"].includes(player.teamId)) teamIds.add(player.teamId);
+    for (const season of Object.values(player.seasonStats || {})) {
+      if (season.meta?.teamId) teamIds.add(season.meta.teamId);
+      for (const teamId of Object.keys(season.meta?.teamGames || {})) teamIds.add(teamId);
+    }
+    return [...teamIds]
+      .filter((teamId) => teamById(this.league, teamId))
+      .sort()
+      .map((teamId) => ({
+        teamId,
+        teamName: teamById(this.league, teamId)?.name || teamId,
+        alreadyRetired: (teamById(this.league, teamId)?.retiredNumbers || []).some((entry) => entry.playerId === playerId)
+      }));
+  }
+
+  refreshHallOfFame() {
+    const existing = new Map((this.league.hallOfFame || []).map((entry) => [entry.playerId, entry]));
+    for (const player of this.league.retiredPlayers) {
+      const awardCounts = this.getPlayerAwardCounts(player.id);
+      const legacyScore = hallOfFameLegacyScore(player);
+      const careerAv = this.getPlayerCareerApproximateValue(player.id);
+      const championships = this.getPlayerChampionships(player.id);
+      const inductionScore =
+        legacyScore +
+        careerAv * 1.4 +
+        (awardCounts.MVP || 0) * 24 +
+        (awardCounts.OPOY || 0) * 14 +
+        (awardCounts.DPOY || 0) * 14 +
+        (awardCounts.AllPro1 || 0) * 10 +
+        championships * 8;
+      if (inductionScore < 240) continue;
+      const timeline = this.getPlayerTimeline(player.id, { seasonType: "all" })?.timeline || [];
+      const teams = [...new Set(timeline.map((entry) => entry.teamId).filter(Boolean))];
+      existing.set(player.id, {
+        playerId: player.id,
+        player: player.name,
+        pos: player.position,
+        retiredYear: player.retiredYear || this.currentYear,
+        legacyScore,
+        careerAv,
+        championships,
+        awardCounts,
+        teams,
+        retiredNumbers: teams.flatMap((teamId) =>
+          (teamById(this.league, teamId)?.retiredNumbers || [])
+            .filter((entry) => entry.playerId === player.id)
+            .map((entry) => ({ teamId, number: entry.number }))
+        )
+      });
+    }
+    this.league.hallOfFame = [...existing.values()].sort(
+      (a, b) => (b.careerAv || 0) - (a.careerAv || 0) || (b.legacyScore || 0) - (a.legacyScore || 0)
+    );
+    return this.league.hallOfFame;
+  }
+
+  getHallOfFameHistory() {
+    this.refreshHallOfFame();
+    return this.league.hallOfFame.map((entry) => {
+      const player = this.league.retiredPlayers.find((row) => row.id === entry.playerId)
+        || this.league.players.find((row) => row.id === entry.playerId)
+        || null;
+      return {
+        ...entry,
+        jerseyNumber: player?.jerseyNumber ?? null,
+        careerStats: player?.careerStats || createZeroedSeasonStats()
+      };
+    });
+  }
+
+  retireJerseyNumber({ teamId, playerId }) {
+    const team = teamById(this.league, teamId);
+    const player = [...this.league.players, ...this.league.retiredPlayers].find((entry) => entry.id === playerId);
+    if (!team) return { ok: false, error: "Team not found." };
+    if (!player) return { ok: false, error: "Player not found." };
+    if (!Number.isFinite(player.jerseyNumber)) return { ok: false, error: "Player has no jersey number on record." };
+    const eligibleTeams = new Set(this.getEligibleRetiredNumberTeams(playerId).map((entry) => entry.teamId));
+    if (!eligibleTeams.has(teamId)) {
+      return { ok: false, error: "That player has no recorded playing history with this team." };
+    }
+    if ((team.retiredNumbers || []).some((entry) => entry.playerId === playerId)) {
+      return { ok: false, error: "That player's jersey is already retired for this team." };
+    }
+    if ((team.retiredNumbers || []).some((entry) => Number(entry.number) === Number(player.jerseyNumber))) {
+      return { ok: false, error: `Number ${player.jerseyNumber} is already retired by this team.` };
+    }
+    const awardCounts = this.getPlayerAwardCounts(playerId);
+    const record = {
+      number: player.jerseyNumber,
+      playerId,
+      player: player.name,
+      pos: player.position,
+      retiredYear: this.currentYear,
+      careerAv: this.getPlayerCareerApproximateValue(playerId),
+      championships: this.getPlayerChampionships(playerId),
+      awards: awardCounts
+    };
+    team.retiredNumbers.push(record);
+    team.retiredNumbers.sort((a, b) => (a.number || 0) - (b.number || 0));
+    this.logTransaction({
+      type: "retired-number",
+      teamId,
+      playerId,
+      playerName: player.name,
+      details: { number: player.jerseyNumber }
+    });
+    this.logNews(`${teamId} retired #${player.jerseyNumber} for ${player.name}`, { teamId, playerId });
+    this.refreshHallOfFame();
+    return { ok: true, teamId, retiredNumbers: team.retiredNumbers };
+  }
+
   getPlayerAwards(playerId, year = null) {
+    const collectEntries = (award, key, value) => {
+      if (!value) return [];
+      if (Array.isArray(value)) {
+        return value
+          .filter((entry) => entry?.playerId === playerId)
+          .map(() => ({ year: award.year, award: key }));
+      }
+      if (typeof value === "object") {
+        if (value.playerId === playerId) return [{ year: award.year, award: key }];
+        return Object.entries(value).flatMap(([nestedKey, nestedValue]) => {
+          if (nestedValue?.playerId === playerId) return [{ year: award.year, award: `${key}.${nestedKey}` }];
+          return [];
+        });
+      }
+      return [];
+    };
     return (this.league.awards || [])
       .filter((award) => (year == null ? true : award.year === year))
       .flatMap((award) =>
         Object.entries(award)
-          .filter(([key, value]) => key !== "year" && value?.playerId === playerId)
-          .map(([key]) => ({ year: award.year, award: key }))
+          .filter(([key]) => key !== "year" && key !== "stage")
+          .flatMap(([key, value]) => collectEntries(award, key, value))
       );
   }
 

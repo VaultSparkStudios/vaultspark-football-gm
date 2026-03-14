@@ -770,6 +770,17 @@ export function createLocalApiRuntime({
         return finish(jsonResponse(200, { ok: true, timeline }));
       }
 
+      if (method === "POST" && pathname === "/api/history/retire-jersey") {
+        if (!body?.teamId || !body?.playerId) {
+          return finish(jsonResponse(400, { ok: false, error: "teamId and playerId are required." }));
+        }
+        const result = session.retireJerseyNumber({
+          teamId: String(body.teamId).toUpperCase(),
+          playerId: String(body.playerId)
+        });
+        return finish(jsonResponse(result.ok ? 200 : 400, result.ok ? { ok: true, result, state: session.getDashboardState() } : result));
+      }
+
       if (method === "GET" && pathname === "/api/news") {
         const year = toInt(url.searchParams.get("year"));
         const teamId = url.searchParams.get("team");

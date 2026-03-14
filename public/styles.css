@@ -123,6 +123,12 @@ button {
   transition: border-color 120ms ease, transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
 }
 
+select option,
+select optgroup {
+  color: #132025;
+  background: #f5f1e7;
+}
+
 button {
   cursor: pointer;
   background: linear-gradient(140deg, rgba(43, 62, 67, 0.96), rgba(26, 40, 44, 0.98));
@@ -404,6 +410,10 @@ th {
 
 .modal.hidden {
   display: none;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .modal-card {
@@ -799,6 +809,15 @@ th {
 
 .subtab-panel.active {
   display: grid;
+}
+
+.history-subpanel {
+  display: grid;
+  gap: 1rem;
+}
+
+.history-subtab-bar {
+  margin-bottom: 1rem;
 }
 
 @keyframes pulse {

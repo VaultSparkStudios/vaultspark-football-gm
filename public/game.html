@@ -58,9 +58,9 @@
                 <div class="brand-kicker">VaultSpark Command Deck</div>
                 <h2>Franchise Command</h2>
                 <div id="overviewTeamSpotlight" class="overview-team-spotlight">
-                  <div class="small">Team identity, mandate, and competitive context will appear here after the dashboard loads.</div>
+                  <div class="small">Select your club to review its identity, mandate, and current competitive outlook.</div>
                 </div>
-                <div id="weeklyPlanSummaryText" class="small">Weekly plan, culture, and owner-pressure context will appear here after the dashboard loads.</div>
+                <div id="weeklyPlanSummaryText" class="small">The weekly game plan and organizational pressure summary will appear here.</div>
               </div>
               <div class="overview-hero-side">
                 <div class="row">
@@ -250,8 +250,8 @@
             </div>
             <div class="cards">
               <article><h3>Fairness</h3><p id="tradeFairnessScore">-</p></article>
-              <article><h3>Cap Delta A</h3><p id="tradeCapDeltaA">-</p></article>
-              <article><h3>Cap Delta B</h3><p id="tradeCapDeltaB">-</p></article>
+              <article><h3>Team A Cap Change</h3><p id="tradeCapDeltaA">-</p></article>
+              <article><h3>Team B Cap Change</h3><p id="tradeCapDeltaB">-</p></article>
             </div>
           </div>
 
@@ -578,28 +578,60 @@
         </section>
 
         <section id="historyTab" class="tab-panel">
-          <div class="panel split">
-            <div>
-              <h2>Records / Awards / Champions</h2>
-              <div id="recordsBox" class="stack"></div>
-              <div class="table-wrap"><table id="awardsTable" data-testid="awards-table"></table></div>
-              <div class="table-wrap"><table id="championsTable" data-testid="champions-table"></table></div>
+          <div class="panel">
+            <div class="subtab-bar history-subtab-bar">
+              <button class="subtab-btn active" data-history-view="season-awards">Season Awards</button>
+              <button class="subtab-btn" data-history-view="hall-of-fame">Hall of Fame</button>
             </div>
-            <div>
-              <h2>Player & Team History</h2>
-              <div class="row">
-                <label>Player Search <input id="playerTimelineSearchInput" type="text" placeholder="search by player name" /></label>
-                <button id="searchPlayerTimelineBtn">Search</button>
-                <span id="playerTimelineSelectedPlayerText" class="chip">Selected: None</span>
-                <button id="loadPlayerTimelineBtn">Load Player History</button>
+
+            <div id="historySeasonAwardsPanel" class="history-subpanel active">
+              <div class="split">
+                <div>
+                  <h2>Records & Annual Winners</h2>
+                  <div id="recordsBox" class="stack"></div>
+                  <div class="table-wrap"><table id="awardsTable" data-testid="awards-table"></table></div>
+                  <div class="table-wrap"><table id="championsTable" data-testid="champions-table"></table></div>
+                </div>
+                <div>
+                  <h2>Season Awards Detail</h2>
+                  <div class="row">
+                    <label>Award Year <select id="historyAwardYearSelect"></select></label>
+                  </div>
+                  <div class="table-wrap"><table id="awardDetailTable"></table></div>
+                  <div class="table-wrap"><table id="allPro1Table"></table></div>
+                  <div class="table-wrap"><table id="allPro2Table"></table></div>
+                  <div class="table-wrap"><table id="allPro3Table"></table></div>
+                  <div class="table-wrap"><table id="proBowlTable"></table></div>
+                </div>
               </div>
-              <div class="table-wrap"><table id="playerTimelineSearchTable" data-testid="player-timeline-search-table"></table></div>
-              <div class="table-wrap"><table id="playerTimelineTable" data-testid="player-timeline-table"></table></div>
-              <div class="row">
-                <label>Team <select id="teamHistorySelect"></select></label>
-                <button id="loadTeamHistoryBtn">Load Team History</button>
+            </div>
+
+            <div id="historyHallOfFamePanel" class="history-subpanel hidden">
+              <div class="split">
+                <div>
+                  <h2>Hall Of Fame Resume</h2>
+                  <div class="table-wrap"><table id="hallOfFameTable"></table></div>
+                  <div class="row">
+                    <label>Team <select id="teamHistorySelect"></select></label>
+                    <button id="loadTeamHistoryBtn">Load Team History</button>
+                    <button id="retireSelectedJerseyBtn" disabled>Retire Selected Player Jersey</button>
+                  </div>
+                  <div class="small">Select a player below, then choose a team they played for to retire that jersey number.</div>
+                  <div class="table-wrap"><table id="retiredNumbersTable"></table></div>
+                  <div class="table-wrap"><table id="teamHistoryTable" data-testid="team-history-table"></table></div>
+                </div>
+                <div>
+                  <h2>Player & Team History</h2>
+                  <div class="row">
+                    <label>Player Search <input id="playerTimelineSearchInput" type="text" placeholder="search by player name" /></label>
+                    <button id="searchPlayerTimelineBtn">Search</button>
+                    <span id="playerTimelineSelectedPlayerText" class="chip">Selected: None</span>
+                    <button id="loadPlayerTimelineBtn">Load Player History</button>
+                  </div>
+                  <div class="table-wrap"><table id="playerTimelineSearchTable" data-testid="player-timeline-search-table"></table></div>
+                  <div class="table-wrap"><table id="playerTimelineTable" data-testid="player-timeline-table"></table></div>
+                </div>
               </div>
-              <div class="table-wrap"><table id="teamHistoryTable" data-testid="team-history-table"></table></div>
             </div>
           </div>
         </section>

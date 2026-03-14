@@ -116,11 +116,15 @@ export function applyRegularSeasonResult(league, week, result) {
   home.season.pointsAgainst += result.awayScore;
   home.season.yardsFor += result.homeYards;
   home.season.yardsAgainst += result.awayYards;
+  home.season.drivesFor += result.homeDrives || 0;
+  home.season.drivesAgainst += result.awayDrives || 0;
   home.season.turnovers += result.homeTurnovers;
   away.season.pointsFor += result.awayScore;
   away.season.pointsAgainst += result.homeScore;
   away.season.yardsFor += result.awayYards;
   away.season.yardsAgainst += result.homeYards;
+  away.season.drivesFor += result.awayDrives || 0;
+  away.season.drivesAgainst += result.homeDrives || 0;
   away.season.turnovers += result.awayTurnovers;
 
   if (result.isTie) {

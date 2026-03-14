@@ -71,6 +71,11 @@ Build status:
   - added shared AV calculation in `src/stats/approximateValue.js`
   - season/career stat rows now include `av`, so the main Statistics page can show AV for every player instead of only profile/timeline rows
   - records now include a career AV leader, and season awards now rank from regular-season AV instead of raw passing/rushing-yard leaders
+- AV now uses a fuller PFR-style context path instead of only a local heuristic:
+  - `StatBook` now computes season AV from year/team/honors context and sums season AV for career totals
+  - the latest pass tightened that logic toward PFR's published offense/defense split formulas, using team points-per-drive, front-seven/secondary pools, starts-based OL/TE treatment, and contextual kicking/punting shares from the sim's available stat splits
+  - AV is now the last displayed stat column in the main stats tables and player profile season/career tables
+  - the old frontend-only AV estimate was removed from the player dossier/stats views so UI and backend no longer drift
 - Manual snap-share edits now rebalance the whole position room automatically:
   - backend depth-chart share resolution now preserves the room target total while scaling untouched players around manual overrides
   - the depth-chart UI mirrors that redistribution immediately before save, so the browser view matches the saved/runtime behavior
@@ -103,6 +108,19 @@ Build status:
   - the contracts tab now opens with a cap-command spotlight that summarizes selected-player leverage, cap posture, expiring deals, and tag/option signals
   - the settings tab now has a commissioner-deck summary that surfaces save health, core rules toggles, persistence posture, and observability status
   - owner controls now include an owner spotlight that summarizes mandate, economics, facilities, and weekly pressure before the raw owner table
+- The latest UI/history pass tightened readability and league-history flow:
+  - select dropdown menus now force readable option contrast instead of the earlier white-on-white native menu issue
+  - leftover placeholder/dev copy on the overview dashboard was replaced with user-facing text, and vague `delta` wording now reads as `Change`, `Need Gap`, `Cap Change`, or `value swing`
+  - player dossier cards now surface jersey numbers plus more explicit NFL frame/body-type labels, and the generated portraits bias harder toward position/weight-specific football builds with stronger shoulder/trap silhouettes for heavier positions
+- Season wrap/history is now deeper and more explicit:
+  - the yearly flow now pauses on a dedicated `season-awards` phase between the Super Bowl and offseason pipeline
+  - award history now stores richer categories including `ROY`, `CPOY`, `MostImproved`, `AllPro1/2/3`, `ProBowl`, and a Super Bowl summary with MVP/pivotal moment
+  - the History tab now splits into `Season Awards` and `Hall of Fame`, and hall-of-fame rows include career AV, career stat lines, award-category totals, titles, and retired-number tracking
+  - teams now track retired jersey numbers, players have persistent jersey numbers, and both local/server runtimes expose a retire-jersey action
+- The regular-season calendar now respects the requested NFL structure more cleanly:
+  - the schedule/calendar surfaces show bye teams explicitly
+  - added a regression that checks `18` regular-season weeks, `17` games per team, and exactly one bye per team
+  - the matchup builder now produces a correct 17-opponent matrix and the week assignment step repairs duplicate-week collisions so bye math stays stable
 - Checkbox-heavy settings controls are less brittle and easier to scan now:
   - commissioner toggles render in a card-style grid instead of a long inline row
   - numeric settings render in a denser form grid, which reduces wrap chaos on smaller widths
@@ -149,11 +167,11 @@ Build status:
   - `npm.cmd run smoke:pages`
 
 Current priorities:
-1. Push the contracts/settings/owner UI polish pass and verify `CI`, `Deploy Backend Runtime`, and `Deploy Pages`
-2. Review the refreshed overview/contracts/player-profile/settings flows on mobile after the live deployment to catch any spacing or overflow issues
-3. Extend the refreshed UI language across any remaining lower-priority legacy tabs instead of leaving the new control-deck treatment isolated to a few screens
-4. Use the new setup diagnostics to confirm whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
-5. Decide whether the generated StatMuse 2025 baseline should become a first-class repo script instead of only an output artifact plus smoothed live constants
+1. Verify the next push keeps `CI`, `Deploy Backend Runtime`, and `Deploy Pages` green after the awards/history/schedule batch
+2. Review the new `Season Awards` / `Hall of Fame` history split and retired-number UX on mobile and on a populated multi-year league
+3. Decide whether the hall-of-fame induction threshold and retired-number workflow need more commissioner controls or auto-ceremony surfacing
+4. Extend the refreshed UI language across any remaining lower-priority legacy tabs instead of leaving the new control-deck treatment isolated to a few screens
+5. Use the new setup diagnostics to confirm whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
 
 Known issues:
 - The Pages artifact remains client-only unless `GAME_SERVICE_ORIGIN` or `API_DOMAIN` is configured and the separate backend/runtime rollout is live

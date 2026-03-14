@@ -104,42 +104,28 @@ function buildMatchups(league, year, previousDivisionRanks, rng) {
     }
   }
 
-  const yearOffset = year % 4;
+  const sameConferencePatterns = [
+    [[0, 1], [2, 3]],
+    [[0, 2], [1, 3]],
+    [[0, 3], [1, 2]]
+  ];
+  const sameConferencePattern = sameConferencePatterns[year % sameConferencePatterns.length];
+  const sameConferencePartner = { AFC: {}, NFC: {} };
+
   for (const conference of NFL_STRUCTURE.conferences) {
-    const sameConferenceDivisions = divisionsByConference[conference];
-    const otherConference = conference === "AFC" ? "NFC" : "AFC";
-    const otherDivisions = divisionsByConference[otherConference];
-
-    for (let index = 0; index < sameConferenceDivisions.length; index += 1) {
-      const division = sameConferenceDivisions[index];
-      const intraDivision = sameConferenceDivisions[(index + 1 + yearOffset) % sameConferenceDivisions.length];
-      const interDivision = otherDivisions[(index + yearOffset) % otherDivisions.length];
-
-      const teams = teamsInDivision(league, conference, division);
-      const intraTeams = teamsInDivision(league, conference, intraDivision);
-      const interTeams = teamsInDivision(league, otherConference, interDivision);
-
-      for (const team of teams) {
-        for (const opponent of intraTeams) {
-          const [home, away] = fairHomeAway(team.id, opponent.id, homeCounts, awayCounts, rng);
+    const divisions = divisionsByConference[conference];
+    for (const [leftIndex, rightIndex] of sameConferencePattern) {
+      sameConferencePartner[conference][leftIndex] = rightIndex;
+      sameConferencePartner[conference][rightIndex] = leftIndex;
+      const leftTeams = teamsInDivision(league, conference, divisions[leftIndex]);
+      const rightTeams = teamsInDivision(league, conference, divisions[rightIndex]);
+      for (const left of leftTeams) {
+        for (const right of rightTeams) {
+          const [home, away] = fairHomeAway(left.id, right.id, homeCounts, awayCounts, rng);
           addMatchup({
             home,
             away,
-            tag: "intra-division-rotation",
-            games,
-            pairCounts,
-            teamGameCounts,
-            homeCounts,
-            awayCounts,
-            maxPair: 1
-          });
-        }
-        for (const opponent of interTeams) {
-          const [home, away] = fairHomeAway(team.id, opponent.id, homeCounts, awayCounts, rng);
-          addMatchup({
-            home,
-            away,
-            tag: "inter-division-rotation",
+            tag: "same-conference-rotation",
             games,
             pairCounts,
             teamGameCounts,
@@ -152,23 +138,41 @@ function buildMatchups(league, year, previousDivisionRanks, rng) {
     }
   }
 
+  const interConferenceOffset = year % divisionsByConference.NFC.length;
+  const interConferenceRotation = {};
+  for (let index = 0; index < divisionsByConference.AFC.length; index += 1) {
+    interConferenceRotation[index] = (index + interConferenceOffset) % divisionsByConference.NFC.length;
+    const afcTeams = teamsInDivision(league, "AFC", divisionsByConference.AFC[index]);
+    const nfcTeams = teamsInDivision(league, "NFC", divisionsByConference.NFC[interConferenceRotation[index]]);
+    for (const afcTeam of afcTeams) {
+      for (const nfcTeam of nfcTeams) {
+        const [home, away] = fairHomeAway(afcTeam.id, nfcTeam.id, homeCounts, awayCounts, rng);
+        addMatchup({
+          home,
+          away,
+          tag: "inter-conference-rotation",
+          games,
+          pairCounts,
+          teamGameCounts,
+          homeCounts,
+          awayCounts,
+          maxPair: 1
+        });
+      }
+    }
+  }
+
   for (const conference of NFL_STRUCTURE.conferences) {
     const divisions = divisionsByConference[conference];
-    for (let i = 0; i < divisions.length; i += 1) {
-      const division = divisions[i];
-      const other1 = divisions[(i + 1) % divisions.length];
-      const other2 = divisions[(i + 2) % divisions.length];
-
-      const teams = teamsInDivision(league, conference, division);
-      const candidates1 = teamsInDivision(league, conference, other1);
-      const candidates2 = teamsInDivision(league, conference, other2);
-
-      for (const team of teams) {
-        const rank = ranks[team.id] || 2;
-        const opp1 = candidates1.find((c) => (ranks[c.id] || 2) === rank) || candidates1[0];
-        const opp2 = candidates2.find((c) => (ranks[c.id] || 2) === rank) || candidates2[0];
-        for (const opp of [opp1, opp2]) {
-          const [home, away] = fairHomeAway(team.id, opp.id, homeCounts, awayCounts, rng);
+    for (let leftIndex = 0; leftIndex < divisions.length; leftIndex += 1) {
+      for (let rightIndex = leftIndex + 1; rightIndex < divisions.length; rightIndex += 1) {
+        if (sameConferencePartner[conference][leftIndex] === rightIndex) continue;
+        const leftTeams = teamsInDivision(league, conference, divisions[leftIndex]);
+        const rightTeams = teamsInDivision(league, conference, divisions[rightIndex]);
+        for (let rank = 1; rank <= 4; rank += 1) {
+          const leftTeam = leftTeams.find((entry) => (ranks[entry.id] || 2) === rank) || leftTeams[rank - 1];
+          const rightTeam = rightTeams.find((entry) => (ranks[entry.id] || 2) === rank) || rightTeams[rank - 1];
+          const [home, away] = fairHomeAway(leftTeam.id, rightTeam.id, homeCounts, awayCounts, rng);
           addMatchup({
             home,
             away,
@@ -185,68 +189,172 @@ function buildMatchups(league, year, previousDivisionRanks, rng) {
     }
   }
 
-  for (const conference of NFL_STRUCTURE.conferences) {
-    const otherConference = conference === "AFC" ? "NFC" : "AFC";
-    const divisions = divisionsByConference[conference];
-    const otherDivisions = divisionsByConference[otherConference];
-    for (let i = 0; i < divisions.length; i += 1) {
-      const division = divisions[i];
-      const targetOtherDivision = otherDivisions[(i + 2 + yearOffset) % otherDivisions.length];
-      const teams = teamsInDivision(league, conference, division);
-      const opponents = teamsInDivision(league, otherConference, targetOtherDivision);
-      for (const team of teams) {
-        const rank = ranks[team.id] || 2;
-        const opp = opponents.find((c) => (ranks[c.id] || 2) === rank) || opponents[0];
-        const [home, away] = fairHomeAway(team.id, opp.id, homeCounts, awayCounts, rng);
-        addMatchup({
-          home,
-          away,
-          tag: "inter-conference-standing",
-          games,
-          pairCounts,
-          teamGameCounts,
-          homeCounts,
-          awayCounts,
-          maxPair: 1
-        });
-      }
+  const interConferenceStandingOffset = (year % 3) + 1;
+  for (let divisionIndex = 0; divisionIndex < divisionsByConference.AFC.length; divisionIndex += 1) {
+    const afcDivision = divisionsByConference.AFC[divisionIndex];
+    const targetNfcDivision = divisionsByConference.NFC[
+      (divisionIndex + interConferenceOffset + interConferenceStandingOffset) % divisionsByConference.NFC.length
+    ];
+    const afcTeams = teamsInDivision(league, "AFC", afcDivision);
+    const nfcTeams = teamsInDivision(league, "NFC", targetNfcDivision);
+    for (let rank = 1; rank <= 4; rank += 1) {
+      const afcTeam = afcTeams.find((entry) => (ranks[entry.id] || 2) === rank) || afcTeams[rank - 1];
+      const nfcTeam = nfcTeams.find((entry) => (ranks[entry.id] || 2) === rank) || nfcTeams[rank - 1];
+      const [home, away] = fairHomeAway(afcTeam.id, nfcTeam.id, homeCounts, awayCounts, rng);
+      addMatchup({
+        home,
+        away,
+        tag: "inter-conference-standing",
+        games,
+        pairCounts,
+        teamGameCounts,
+        homeCounts,
+        awayCounts,
+        maxPair: 1
+      });
     }
-  }
-
-  while ([...teamGameCounts.values()].some((count) => count < NFL_STRUCTURE.gamesPerTeam)) {
-    const underfilled = league.teams
-      .slice()
-      .sort((a, b) => (teamGameCounts.get(a.id) || 0) - (teamGameCounts.get(b.id) || 0))
-      .find((team) => (teamGameCounts.get(team.id) || 0) < NFL_STRUCTURE.gamesPerTeam);
-    if (!underfilled) break;
-
-    const opponents = league.teams
-      .filter((t) => t.id !== underfilled.id && (teamGameCounts.get(t.id) || 0) < NFL_STRUCTURE.gamesPerTeam)
-      .sort((a, b) => (teamGameCounts.get(a.id) || 0) - (teamGameCounts.get(b.id) || 0));
-    let filled = false;
-    for (const opponent of opponents) {
-      const [home, away] = fairHomeAway(underfilled.id, opponent.id, homeCounts, awayCounts, rng);
-      if (
-        addMatchup({
-          home,
-          away,
-          tag: "balance-fill",
-          games,
-          pairCounts,
-          teamGameCounts,
-          homeCounts,
-          awayCounts,
-          maxPair: 2
-        })
-      ) {
-        filled = true;
-        break;
-      }
-    }
-    if (!filled) break;
   }
 
   return games;
+}
+
+function weekTeamGames(week, teamId) {
+  return week.games.filter((game) => game.homeTeamId === teamId || game.awayTeamId === teamId);
+}
+
+function teamMissingWeeks(teamWeekUsage, totalWeeks, teamId) {
+  const used = teamWeekUsage.get(teamId) || new Set();
+  const missing = [];
+  for (let week = 1; week <= totalWeeks; week += 1) {
+    if (!used.has(week)) missing.push(week);
+  }
+  return missing;
+}
+
+function cloneScheduleState(weeks, teamWeekUsage) {
+  return {
+    weeks: weeks.map((week) => ({ week: week.week, games: [...week.games] })),
+    usage: new Map([...teamWeekUsage.entries()].map(([teamId, weeksSet]) => [teamId, new Set(weeksSet)]))
+  };
+}
+
+function stateWeek(state, weekNumber) {
+  return state.weeks.find((week) => week.week === weekNumber) || null;
+}
+
+function stateHasTeamConflict(state, game, weekNumber) {
+  const week = stateWeek(state, weekNumber);
+  if (!week) return true;
+  return week.games.some(
+    (entry) =>
+      [entry.homeTeamId, entry.awayTeamId].includes(game.homeTeamId)
+      || [entry.homeTeamId, entry.awayTeamId].includes(game.awayTeamId)
+  );
+}
+
+function stateRemoveGame(state, game, weekNumber) {
+  const week = stateWeek(state, weekNumber);
+  if (!week) return;
+  week.games = week.games.filter((entry) => entry !== game);
+  if (!week.games.some((entry) => entry.homeTeamId === game.homeTeamId || entry.awayTeamId === game.homeTeamId)) {
+    state.usage.get(game.homeTeamId).delete(weekNumber);
+  }
+  if (!week.games.some((entry) => entry.homeTeamId === game.awayTeamId || entry.awayTeamId === game.awayTeamId)) {
+    state.usage.get(game.awayTeamId).delete(weekNumber);
+  }
+}
+
+function stateAddGame(state, game, weekNumber) {
+  const week = stateWeek(state, weekNumber);
+  if (!week) return;
+  week.games.push(game);
+  state.usage.get(game.homeTeamId).add(weekNumber);
+  state.usage.get(game.awayTeamId).add(weekNumber);
+}
+
+function relocateInState(state, game, fromWeekNumber, targetWeekNumber, depth = 2, seen = new Set()) {
+  const visitKey = `${game.homeTeamId}-${game.awayTeamId}-${fromWeekNumber}-${targetWeekNumber}`;
+  if (seen.has(visitKey)) return null;
+  const nextSeen = new Set(seen);
+  nextSeen.add(visitKey);
+
+  const working = cloneScheduleState(state.weeks, state.usage);
+  stateRemoveGame(working, game, fromWeekNumber);
+  if (!stateHasTeamConflict(working, game, targetWeekNumber)) {
+    stateAddGame(working, game, targetWeekNumber);
+    return working;
+  }
+  if (depth <= 0) return null;
+
+  const target = stateWeek(working, targetWeekNumber);
+  const conflicts = target.games.filter(
+    (entry) =>
+      [entry.homeTeamId, entry.awayTeamId].includes(game.homeTeamId)
+      || [entry.homeTeamId, entry.awayTeamId].includes(game.awayTeamId)
+  );
+
+  for (const conflictGame of conflicts) {
+    for (const altWeek of working.weeks) {
+      if (altWeek.week === targetWeekNumber) continue;
+      const moved = relocateInState(working, conflictGame, targetWeekNumber, altWeek.week, depth - 1, nextSeen);
+      if (!moved) continue;
+      if (!stateHasTeamConflict(moved, game, targetWeekNumber)) {
+        stateAddGame(moved, game, targetWeekNumber);
+        return moved;
+      }
+    }
+  }
+  return null;
+}
+
+function repairWeekConflicts(weeks, league, teamWeekUsage) {
+  const weekByNumber = new Map(weeks.map((week) => [week.week, week]));
+  let changed = true;
+  let guard = 0;
+
+  while (changed && guard < 300) {
+    changed = false;
+    guard += 1;
+    for (const team of league.teams) {
+      const missingWeeks = teamMissingWeeks(teamWeekUsage, NFL_STRUCTURE.regularSeasonWeeks, team.id);
+      if (!missingWeeks.length) continue;
+      const duplicateWeeks = weeks.filter((week) => weekTeamGames(week, team.id).length > 1);
+      if (!duplicateWeeks.length) continue;
+
+      for (const missingWeekNumber of missingWeeks) {
+        const missingWeek = weekByNumber.get(missingWeekNumber);
+        if (!missingWeek) continue;
+
+        let repaired = false;
+        for (const duplicateWeek of duplicateWeeks) {
+          const duplicateGames = weekTeamGames(duplicateWeek, team.id);
+          for (const game of duplicateGames) {
+            const repairedState = relocateInState(
+              { weeks, usage: teamWeekUsage },
+              game,
+              duplicateWeek.week,
+              missingWeek.week,
+              3
+            );
+            if (repairedState) {
+              for (const week of weeks) {
+                const nextWeek = stateWeek(repairedState, week.week);
+                week.games = [...(nextWeek?.games || [])];
+              }
+              for (const [teamId, weeksSet] of repairedState.usage.entries()) {
+                teamWeekUsage.set(teamId, new Set(weeksSet));
+              }
+              changed = true;
+              repaired = true;
+              break;
+            }
+            if (repaired) break;
+          }
+          if (repaired) break;
+        }
+      }
+    }
+  }
 }
 
 export function buildSeasonSchedule({ league, year, previousDivisionRanks, rng }) {
@@ -256,11 +364,10 @@ export function buildSeasonSchedule({ league, year, previousDivisionRanks, rng }
     week: index + 1,
     games: []
   }));
-
   const teamWeekUsage = new Map(league.teams.map((t) => [t.id, new Set()]));
   for (const game of games) {
     let placed = false;
-    const candidateWeeks = weeks.slice().sort((a, b) => a.games.length - b.games.length);
+    const candidateWeeks = weeks.slice().sort((a, b) => a.games.length - b.games.length || a.week - b.week);
     for (const week of candidateWeeks) {
       const homeBusy = teamWeekUsage.get(game.homeTeamId).has(week.week);
       const awayBusy = teamWeekUsage.get(game.awayTeamId).has(week.week);
@@ -278,6 +385,6 @@ export function buildSeasonSchedule({ league, year, previousDivisionRanks, rng }
       teamWeekUsage.get(game.awayTeamId).add(fallback.week);
     }
   }
-
+  repairWeekConflicts(weeks, league, teamWeekUsage);
   return weeks;
 }

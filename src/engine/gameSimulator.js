@@ -1593,6 +1593,8 @@ export function simulateGame({
     awayRushPlays,
     homeOffSnaps,
     awayOffSnaps,
+    homeDrives,
+    awayDrives,
     homeTurnovers,
     awayTurnovers,
     homeStrategy: homeContext.weeklyPlan || null,

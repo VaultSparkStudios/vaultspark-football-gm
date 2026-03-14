@@ -10,7 +10,10 @@ export function simulateRegularSeasonWeek({
   mode = "drive"
 }) {
   const games = [];
+  const activeTeams = new Set();
   for (const matchup of weekBlock.games) {
+    activeTeams.add(matchup.homeTeamId);
+    activeTeams.add(matchup.awayTeamId);
     const game = simulateGame({
       league,
       statBook,
@@ -33,6 +36,7 @@ export function simulateRegularSeasonWeek({
   return {
     week: weekBlock.week,
     games,
+    byeTeams: league.teams.map((team) => team.id).filter((teamId) => !activeTeams.has(teamId)).sort(),
     standings: {
       AFC: conferenceStandings(league, "AFC").map((team) => ({
         teamId: team.id,

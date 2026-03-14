@@ -230,6 +230,8 @@ function createTeam(meta, year, randomizedIdentities = null) {
       pointsAgainst: 0,
       yardsFor: 0,
       yardsAgainst: 0,
+      drivesFor: 0,
+      drivesAgainst: 0,
       turnovers: 0,
       weekResults: []
     },
@@ -273,6 +275,7 @@ export function createLeagueBase(year, rng = null) {
     teams: TEAM_METADATA.map((meta) => createTeam(meta, year, randomizedIdentities)),
     players: [],
     retiredPlayers: [],
+    retiredNumbers: [],
     champions: [],
     history: [],
     weeklyHistory: [],

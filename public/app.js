@@ -62,6 +62,9 @@ const state = {
   compareSearchResults: [],
   commandFilter: "",
   retiredPool: [],
+  historyView: "season-awards",
+  selectedAwardsYear: null,
+  teamHistory: null,
   historyPlayerSearchResults: [],
   selectedHistoryPlayerId: null,
   statsHiddenColumns: [],
@@ -108,6 +111,8 @@ const DISPLAY_LABELS = {
   currCap: "Current Cap",
   tagCap: "Tag Cap",
   optionCap: "Option Cap",
+  gap: "Need Gap",
+  delta: "Change",
   snapShare: "Snap Share",
   season: "Season",
   age: "Age",
@@ -155,7 +160,7 @@ const GUIDE_SECTIONS = [
   {
     title: "Season Loop",
     body:
-      "The long loop is regular season -> postseason -> retirements -> coaching carousel -> free agency negotiation -> combine -> pro day -> draft -> next regular season. Stage chips and the calendar tell you what the current step expects."
+      "The long loop is regular season -> postseason -> season awards -> retirements -> coaching carousel -> free agency negotiation -> combine -> pro day -> draft -> next regular season. Stage chips and the calendar tell you what the current step expects."
   },
   {
     title: "Core Team Screens",
@@ -265,22 +270,79 @@ function portraitChoice(seed, items, offset = 0) {
   return items[index];
 }
 
+function playerBodyTypeLabel(player) {
+  const position = String(player?.position || "").toUpperCase();
+  const height = Number(player?.heightInches || 75);
+  const weight = Number(player?.weightLbs || 225);
+  if (position === "OL") return weight >= 325 ? "Massive edge-protector frame" : "Athletic interior line frame";
+  if (position === "DL") return weight >= 295 ? "Power trench frame" : "Long-limbed edge rusher frame";
+  if (position === "LB") return weight >= 245 ? "Downhill stack linebacker build" : "Sideline pursuit linebacker build";
+  if (position === "TE") return weight >= 255 ? "In-line tight end frame" : "Detached move tight end frame";
+  if (position === "RB") return weight >= 220 ? "Dense power-back build" : "Compact acceleration-back build";
+  if (position === "WR") return height >= 75 ? "Boundary X-receiver build" : "Lean space-creator build";
+  if (position === "DB") return weight >= 205 ? "Press-corner safety frame" : "Lean recovery-speed frame";
+  if (position === "QB") return height >= 76 ? "Tall pocket-passer frame" : "Compact movement-passer frame";
+  return "NFL-caliber frame";
+}
+
 function buildPlayerPortraitSvg(player) {
   const seed = hashStringLocal(player?.profile?.faceSeed || `${player?.id || ""}-${player?.name || ""}`);
+  const height = Number(player?.heightInches || 75);
+  const weight = Number(player?.weightLbs || 225);
+  const position = String(player?.position || "QB").toUpperCase();
   const skin = portraitChoice(seed, ["#f2d6bf", "#e6c1a1", "#d6a57f", "#b97d58", "#8c5a3d"]);
   const hair = portraitChoice(seed, ["#2a1e1a", "#3c2d25", "#5d4938", "#1f2528", "#5b5d61"], 7);
   const eyes = portraitChoice(seed, ["#2d3d4e", "#3f4b2f", "#5b422d", "#2b2a30"], 11);
   const jersey = portraitChoice(seed, ["#375e56", "#6d4b28", "#4d5b77", "#6b3535", "#34516f"], 17);
   const jerseyStripe = portraitChoice(seed, ["#f4c97a", "#7bc4d7", "#d8ede8", "#f5efe0"], 23);
-  const mouth = portraitChoice(seed, ["M85 154 Q110 164 135 154", "M87 156 Q110 160 133 156", "M88 153 Q110 151 132 153"], 29);
-  const browTilt = (seed % 5) - 2;
-  const jawWidth = 46 + (seed % 10);
-  const faceHeight = 58 + ((seed >> 3) % 8);
+  const shadowTone = "#081014";
+  const sternSet = position === "OL" || position === "DL" || position === "LB";
+  const mouth =
+    sternSet
+      ? "M86 157 Q110 155 134 157"
+      : position === "DB" || position === "WR"
+        ? "M88 156 Q110 152 132 156"
+        : portraitChoice(seed, ["M85 156 Q110 158 135 156", "M87 157 Q110 154 133 157", "M88 155 Q110 153 132 155"], 29);
+  const browTilt = sternSet ? -2 + (seed % 3) : (seed % 5) - 2;
+  const jawWidth = 44 + (seed % 10) + Math.round((weight - 205) / 18) + (sternSet ? 4 : 0);
+  const faceHeight = 56 + ((seed >> 3) % 8) + Math.max(0, Math.round((height - 74) / 3));
   const eyeY = 106 + ((seed >> 5) % 6);
   const noseY = 123 + ((seed >> 7) % 5);
   const hairVariant = seed % 4;
   const facialHairVariant = (seed >> 4) % 5;
   const portraitId = `portrait-${seed}`;
+  const sizeBias =
+    position === "OL" || position === "DL"
+      ? 18
+      : position === "LB" || position === "TE"
+        ? 12
+        : position === "RB"
+          ? 8
+          : position === "WR" || position === "DB"
+            ? 2
+            : 6;
+  const shoulderWidth = Math.max(66, Math.min(92, Math.round(62 + (weight - 190) / 4 + sizeBias)));
+  const chestWidth = Math.max(54, shoulderWidth - (position === "WR" || position === "DB" ? 12 : 8));
+  const waistWidth = Math.max(42, chestWidth - (position === "OL" || position === "DL" ? 3 : position === "RB" || position === "LB" ? 8 : 12));
+  const neckWidth = Math.max(22, Math.min(42, Math.round(22 + (weight - 190) / 9 + sizeBias / 5)));
+  const trapRise = Math.max(8, Math.min(22, Math.round((weight - 185) / 10 + 8)));
+  const chestY = 194;
+  const waistY = 224;
+  const torsoBottom = 252;
+  const shoulderY = 170 - Math.max(0, Math.round((height - 74) / 2));
+  const padRise = sternSet ? 15 : position === "RB" || position === "TE" ? 12 : 9;
+  const torsoShadow = sternSet ? 0.38 : 0.28;
+  const leftShoulder = 110 - shoulderWidth;
+  const rightShoulder = 110 + shoulderWidth;
+  const leftChest = 110 - chestWidth;
+  const rightChest = 110 + chestWidth;
+  const leftWaist = 110 - waistWidth;
+  const rightWaist = 110 + waistWidth;
+  const jerseyShadow = `${jersey}cc`;
+  const eyeRx = sternSet ? 10.5 : position === "WR" || position === "DB" ? 12.5 : 11.5;
+  const eyeRy = sternSet ? 5.4 : 7.4;
+  const pupilRadius = sternSet ? 4.8 : 4;
+  const noseStroke = sternSet ? "#7d4a35" : "#8c5e45";
   const hairPaths = [
     `<path d="M58 95 C66 48, 154 44, 162 96 C149 76, 132 68, 110 66 C88 68, 70 76, 58 95 Z" fill="${hair}" />`,
     `<path d="M52 101 C62 42, 158 40, 170 103 C146 84, 132 77, 111 75 C90 77, 73 86, 52 101 Z" fill="${hair}" />`,
@@ -294,6 +356,7 @@ function buildPlayerPortraitSvg(player) {
     `<path d="M89 149 Q110 156 131 149" fill="none" stroke="${hair}" stroke-width="4" stroke-linecap="round" />`,
     `<path d="M82 161 Q110 173 138 161" fill="none" stroke="${hair}" stroke-width="6" stroke-linecap="round" opacity="0.84" />`
   ];
+  const beard = sternSet && facialHairVariant === 0 ? facialHair[4] : facialHair[facialHairVariant];
 
   return `
     <svg class="player-portrait-svg" viewBox="0 0 220 260" aria-label="${escapeHtml(player?.name || "Player")} portrait">
@@ -310,24 +373,27 @@ function buildPlayerPortraitSvg(player) {
       <rect x="0" y="0" width="220" height="260" rx="28" fill="url(#${portraitId}-bg)" />
       <circle cx="46" cy="38" r="26" fill="${jersey}" opacity="0.1" />
       <circle cx="186" cy="52" r="18" fill="${jerseyStripe}" opacity="0.08" />
-      <path d="M36 252 Q62 198 110 194 Q158 198 184 252 Z" fill="${jersey}" />
-      <path d="M62 252 Q92 214 110 214 Q128 214 158 252" fill="none" stroke="${jerseyStripe}" stroke-width="8" opacity="0.9" />
-      <rect x="94" y="154" width="32" height="34" rx="12" fill="${skin}" opacity="0.95" />
+      <path d="M${leftShoulder - 8} ${shoulderY + padRise} Q110 ${shoulderY - 22} ${rightShoulder + 8} ${shoulderY + padRise} L${rightChest + 2} ${chestY - 6} Q110 ${chestY - 26} ${leftChest - 2} ${chestY - 6} Z" fill="${shadowTone}" opacity="0.45" />
+      <path d="M${leftShoulder} ${shoulderY + trapRise} Q110 ${shoulderY - 12} ${rightShoulder} ${shoulderY + trapRise} L${rightChest} ${chestY} L${rightWaist} ${waistY} Q110 ${torsoBottom + 4} ${leftWaist} ${waistY} L${leftChest} ${chestY} Z" fill="${jersey}" />
+      <path d="M${leftShoulder + 8} ${shoulderY + trapRise + 4} Q110 ${shoulderY - 4} ${rightShoulder - 8} ${shoulderY + trapRise + 4}" fill="none" stroke="${jerseyStripe}" stroke-width="9" opacity="0.95" stroke-linecap="round" />
+      <path d="M${leftChest + 6} ${chestY + 4} Q110 ${chestY - 10} ${rightChest - 6} ${chestY + 4}" fill="none" stroke="${jerseyShadow}" stroke-width="18" opacity="${torsoShadow}" stroke-linecap="round" />
+      <path d="M82 188 Q110 207 138 188" fill="none" stroke="${shadowTone}" stroke-width="9" opacity="0.28" stroke-linecap="round" />
+      <rect x="${110 - neckWidth / 2}" y="154" width="${neckWidth}" height="34" rx="12" fill="${skin}" opacity="0.95" />
       <ellipse cx="110" cy="112" rx="${jawWidth}" ry="${faceHeight}" fill="url(#${portraitId}-skin)" />
       <ellipse cx="61" cy="118" rx="8" ry="14" fill="${skin}" opacity="0.92" />
       <ellipse cx="159" cy="118" rx="8" ry="14" fill="${skin}" opacity="0.92" />
       ${hairPaths[hairVariant]}
       <path d="M69 ${92 + browTilt} Q86 ${84 + browTilt} 98 ${91 + browTilt}" fill="none" stroke="${hair}" stroke-width="4" stroke-linecap="round" />
       <path d="M122 ${91 - browTilt} Q135 ${84 - browTilt} 151 ${92 - browTilt}" fill="none" stroke="${hair}" stroke-width="4" stroke-linecap="round" />
-      <ellipse cx="86" cy="${eyeY}" rx="12" ry="8" fill="#f4f1eb" />
-      <ellipse cx="134" cy="${eyeY}" rx="12" ry="8" fill="#f4f1eb" />
-      <circle cx="86" cy="${eyeY}" r="4" fill="${eyes}" />
-      <circle cx="134" cy="${eyeY}" r="4" fill="${eyes}" />
+      <ellipse cx="86" cy="${eyeY}" rx="${eyeRx}" ry="${eyeRy}" fill="#f4f1eb" />
+      <ellipse cx="134" cy="${eyeY}" rx="${eyeRx}" ry="${eyeRy}" fill="#f4f1eb" />
+      <circle cx="86" cy="${eyeY}" r="${pupilRadius}" fill="${eyes}" />
+      <circle cx="134" cy="${eyeY}" r="${pupilRadius}" fill="${eyes}" />
       <circle cx="84" cy="${eyeY - 2}" r="1.4" fill="#ffffff" opacity="0.85" />
       <circle cx="132" cy="${eyeY - 2}" r="1.4" fill="#ffffff" opacity="0.85" />
-      <path d="M110 ${noseY} Q101 ${noseY + 17} 110 ${noseY + 23} Q119 ${noseY + 17} 110 ${noseY}" fill="none" stroke="#8c5e45" stroke-width="3" stroke-linecap="round" />
+      <path d="M110 ${noseY} Q101 ${noseY + 17} 110 ${noseY + 23} Q119 ${noseY + 17} 110 ${noseY}" fill="none" stroke="${noseStroke}" stroke-width="3" stroke-linecap="round" />
       <path d="${mouth}" fill="none" stroke="#7d453f" stroke-width="3" stroke-linecap="round" />
-      ${facialHair[facialHairVariant]}
+      ${beard}
     </svg>
   `;
 }
@@ -360,7 +426,8 @@ function renderPlayerProfileHero(profile) {
   const careerSummary = buildProfileCareerRow(profile)?.[0] || {};
   const awardsCount = (profile.awardsHistory || []).length;
   const latestSeason = (profile.timeline || []).slice().sort((a, b) => (b.year || 0) - (a.year || 0))[0] || null;
-  const latestAv = latestSeason ? approximateValue(player.position, latestSeason.stats || {}) : 0;
+  const latestSeasonRow = buildProfileSeasonRows(profile).slice().sort((a, b) => (b.season || 0) - (a.season || 0))[0] || null;
+  const latestAv = latestSeasonRow?.av ?? 0;
   const contract = player.contract || {};
   const injury = player.injury?.type ? `${player.injury.type}${player.injury.weeksRemaining ? ` (${player.injury.weeksRemaining}w)` : ""}` : "Healthy";
   const contractLabel = contract.yearsRemaining
@@ -369,6 +436,7 @@ function renderPlayerProfileHero(profile) {
   const latestSeasonSummary = buildProfileLatestSeasonSummary(player.position, latestSeason);
   const badges = [
     `${teamCode(player.teamId)} ${player.position}`,
+    `#${player.jerseyNumber ?? "--"}`,
     `OVR ${player.overall ?? "-"}`,
     `Potential ${player.potential ?? "-"}`,
     `${player.developmentTrait || "Steady"} Dev`,
@@ -391,7 +459,7 @@ function renderPlayerProfileHero(profile) {
           <div class="player-meta-card">
             <strong>Frame</strong>
             <div>${escapeHtml(formatHeight(player.heightInches))} / ${escapeHtml(player.weightLbs || "-")} lbs</div>
-            <div class="small">Scheme fit ${escapeHtml(outlook.fitLabel || "-")} (${escapeHtml(outlook.fit ?? "-")})</div>
+            <div class="small">${escapeHtml(playerBodyTypeLabel(player))} | Scheme fit ${escapeHtml(outlook.fitLabel || "-")} (${escapeHtml(outlook.fit ?? "-")})</div>
           </div>
           <div class="player-meta-card">
             <strong>Contract</strong>
@@ -431,6 +499,10 @@ function renderPlayerProfileHero(profile) {
 function setStatus(text) {
   const el = document.getElementById("statusChip");
   if (el) el.textContent = text;
+}
+
+function appendAvLast(row, av) {
+  return { ...row, av: av ?? 0 };
 }
 
 function toTitleCaseKey(key) {
@@ -558,39 +630,22 @@ function setSimControl(next) {
   }
 }
 
-function approximateValue(position, stats) {
-  if (!stats) return 0;
-  if (position === "QB") {
-    return Math.round(
-      (stats.passing?.yards || 0) / 165 +
-        (stats.passing?.td || 0) * 0.8 -
-        (stats.passing?.int || 0) * 0.6 +
-        (stats.rushing?.yards || 0) / 120
-    );
-  }
-  if (position === "RB") {
-    return Math.round(
-      (stats.rushing?.yards || 0) / 115 +
-        (stats.rushing?.td || 0) * 0.7 +
-        (stats.receiving?.yards || 0) / 180 +
-        (stats.receiving?.td || 0) * 0.45
-    );
-  }
-  if (position === "WR" || position === "TE") {
-    return Math.round((stats.receiving?.yards || 0) / 125 + (stats.receiving?.td || 0) * 0.75);
-  }
-  if (position === "OL") {
-    return Math.round((stats.snaps?.offense || 0) / 130 - (stats.blocking?.sacksAllowed || 0) * 1.5);
-  }
-  if (position === "K" || position === "P") {
-    return Math.round((stats.kicking?.fgm || 0) * 0.45 + (stats.punting?.in20 || 0) * 0.2);
-  }
-  return Math.round(
-    (stats.defense?.tackles || 0) / 6 +
-      (stats.defense?.sacks || 0) * 1.2 +
-      (stats.defense?.int || 0) * 1.5 +
-      (stats.defense?.ff || 0) * 0.8
-  );
+function buildProfileSeasonAvMap(profile) {
+  const category =
+    profile.player.position === "QB"
+      ? "passing"
+      : profile.player.position === "RB"
+        ? "rushing"
+        : profile.player.position === "WR" || profile.player.position === "TE"
+          ? "receiving"
+          : profile.player.position === "K"
+            ? "kicking"
+            : profile.player.position === "P"
+              ? "punting"
+              : profile.player.position === "OL"
+                ? "blocking"
+                : "defense";
+  return new Map((profile.seasonRows?.[category] || []).map((row) => [row.year, row.av ?? 0]));
 }
 
 function passerRateFromStats(stats) {
@@ -614,6 +669,7 @@ function formatAwards(awards = [], champion = false) {
 
 function buildProfileSeasonRows(profile) {
   const position = profile.player.position;
+  const avByYear = buildProfileSeasonAvMap(profile);
   return (profile.timeline || []).map((entry) => {
     const stats = entry.stats || {};
     const passing = stats.passing || {};
@@ -631,7 +687,7 @@ function buildProfileSeasonRows(profile) {
       gs: stats.gamesStarted || 0
     };
     if (position === "QB") {
-      return {
+      return appendAvLast({
         ...common,
         cmp: passing.cmp || 0,
         att: passing.att || 0,
@@ -649,14 +705,13 @@ function buildProfileSeasonRows(profile) {
         sk: passing.sacks || 0,
         nya: Number((((passing.yards || 0) - (passing.sackYards || 0)) / Math.max(1, (passing.att || 0) + (passing.sacks || 0))).toFixed(2)),
         anya: Number((((passing.yards || 0) + (passing.td || 0) * 20 - (passing.int || 0) * 45 - (passing.sackYards || 0)) / Math.max(1, (passing.att || 0) + (passing.sacks || 0))).toFixed(2)),
-        av: approximateValue(position, stats),
         awards: formatAwards(entry.awards, entry.champion)
-      };
+      }, avByYear.get(entry.year));
     }
     if (position === "RB") {
       const scrimmageYards = (rushing.yards || 0) + (receiving.yards || 0);
       const touches = (rushing.att || 0) + (receiving.rec || 0);
-      return {
+      return appendAvLast({
         ...common,
         att: rushing.att || 0,
         yds: rushing.yards || 0,
@@ -676,14 +731,13 @@ function buildProfileSeasonRows(profile) {
         yTch: Number((scrimmageYards / Math.max(1, touches)).toFixed(1)),
         yScr: scrimmageYards,
         fmb: rushing.fumbles || 0,
-        av: approximateValue(position, stats),
         awards: formatAwards(entry.awards, entry.champion)
-      };
+      }, avByYear.get(entry.year));
     }
     if (position === "WR" || position === "TE") {
       const scrimmageYards = (rushing.yards || 0) + (receiving.yards || 0);
       const touches = (rushing.att || 0) + (receiving.rec || 0);
-      return {
+      return appendAvLast({
         ...common,
         tgt: receiving.targets || 0,
         rec: receiving.rec || 0,
@@ -702,14 +756,13 @@ function buildProfileSeasonRows(profile) {
         yTch: Number((scrimmageYards / Math.max(1, touches)).toFixed(1)),
         yScr: scrimmageYards,
         fmb: rushing.fumbles || 0,
-        av: approximateValue(position, stats),
         awards: formatAwards(entry.awards, entry.champion)
-      };
+      }, avByYear.get(entry.year));
     }
     if (position === "K" || position === "P") {
       const kicking = stats.kicking || {};
       const punting = stats.punting || {};
-      return {
+      return appendAvLast({
         ...common,
         fgm: kicking.fgm || 0,
         fga: kicking.fga || 0,
@@ -718,11 +771,10 @@ function buildProfileSeasonRows(profile) {
         xpa: kicking.xpa || 0,
         punts: punting.punts || 0,
         in20: punting.in20 || 0,
-        av: approximateValue(position, stats),
         awards: formatAwards(entry.awards, entry.champion)
-      };
+      }, avByYear.get(entry.year));
     }
-    return {
+    return appendAvLast({
       ...common,
       int: defense.int || 0,
       pd: defense.passDefended || 0,
@@ -734,14 +786,28 @@ function buildProfileSeasonRows(profile) {
       ast: defense.ast || 0,
       tfl: defense.tfl || 0,
       qbHits: defense.qbHits || 0,
-      av: approximateValue(position, stats),
       awards: formatAwards(entry.awards, entry.champion)
-    };
+    }, avByYear.get(entry.year));
   });
 }
 
 function buildProfileCareerRow(profile) {
   const player = profile.player;
+  const category =
+    player.position === "QB"
+      ? "passing"
+      : player.position === "RB"
+        ? "rushing"
+        : player.position === "WR" || player.position === "TE"
+          ? "receiving"
+          : player.position === "K"
+            ? "kicking"
+            : player.position === "P"
+              ? "punting"
+              : player.position === "OL"
+                ? "blocking"
+                : "defense";
+  const careerAv = profile.career?.[category]?.av ?? 0;
   const passing = profile.career?.passing || {};
   const rushing = profile.career?.rushing || {};
   const receiving = profile.career?.receiving || {};
@@ -752,7 +818,7 @@ function buildProfileCareerRow(profile) {
     passing.g || rushing.g || receiving.g || defense.g || profile.timeline?.reduce((sum, row) => sum + (row.stats?.games || 0), 0) || 1
   );
   if (player.position === "QB") {
-    return [{
+    return [appendAvLast({
       season: "Career",
       seasons,
       cmp: passing.cmp || 0,
@@ -763,17 +829,13 @@ function buildProfileCareerRow(profile) {
       int: passing.int || 0,
       ypa: passing.ypa || 0,
       rate: passing.rate || 0,
-      sk: passing.sacks || 0,
-      av: approximateValue(player.position, {
-        passing: { yards: passing.yds || 0, td: passing.td || 0, int: passing.int || 0 },
-        rushing: { yards: rushing.yds || 0 }
-      })
-    }];
+      sk: passing.sacks || 0
+    }, careerAv)];
   }
   if (player.position === "RB") {
     const touch = (rushing.att || 0) + (receiving.rec || 0);
     const yScr = (rushing.yds || 0) + (receiving.yds || 0);
-    return [{
+    return [appendAvLast({
       season: "Career",
       seasons,
       att: rushing.att || 0,
@@ -787,17 +849,13 @@ function buildProfileCareerRow(profile) {
       touch,
       yTch: Number((yScr / Math.max(1, touch)).toFixed(1)),
       yScr,
-      fmb: rushing.fmb || 0,
-      av: approximateValue(player.position, {
-        rushing: { yards: rushing.yds || 0, td: rushing.td || 0 },
-        receiving: { yards: receiving.yds || 0, td: receiving.td || 0 }
-      })
-    }];
+      fmb: rushing.fmb || 0
+    }, careerAv)];
   }
   if (player.position === "WR" || player.position === "TE") {
     const touch = (rushing.att || 0) + (receiving.rec || 0);
     const yScr = (rushing.yds || 0) + (receiving.yds || 0);
-    return [{
+    return [appendAvLast({
       season: "Career",
       seasons,
       tgt: receiving.tgt || 0,
@@ -810,17 +868,13 @@ function buildProfileCareerRow(profile) {
       rushYds: rushing.yds || 0,
       touch,
       yTch: Number((yScr / Math.max(1, touch)).toFixed(1)),
-      yScr,
-      av: approximateValue(player.position, {
-        rushing: { yards: rushing.yds || 0, td: rushing.td || 0 },
-        receiving: { yards: receiving.yds || 0, td: receiving.td || 0 }
-      })
-    }];
+      yScr
+    }, careerAv)];
   }
   if (player.position === "K" || player.position === "P") {
     const kicking = profile.career?.kicking || {};
     const punting = profile.career?.punting || {};
-    return [{
+    return [appendAvLast({
       season: "Career",
       seasons,
       fgm: kicking.fgm || 0,
@@ -829,14 +883,10 @@ function buildProfileCareerRow(profile) {
       xpm: kicking.xpm || 0,
       xpa: kicking.xpa || 0,
       punts: punting.punts || 0,
-      in20: punting.in20 || 0,
-      av: approximateValue(player.position, {
-        kicking: { fgm: kicking.fgm || 0 },
-        punting: { in20: punting.in20 || 0 }
-      })
-    }];
+      in20: punting.in20 || 0
+    }, careerAv)];
   }
-  return [{
+  return [appendAvLast({
     season: "Career",
     seasons,
     int: defense.int || 0,
@@ -848,11 +898,8 @@ function buildProfileCareerRow(profile) {
     solo: defense.solo || 0,
     ast: defense.ast || 0,
     tfl: defense.tfl || 0,
-    qbHits: defense.qbHits || 0,
-    av: approximateValue(player.position, {
-      defense: { tackles: defense.tkl || 0, sacks: defense.sacks || 0, int: defense.int || 0, ff: defense.ff || 0 }
-    })
-  }];
+    qbHits: defense.qbHits || 0
+  }, careerAv)];
 }
 
 function buildProfileTeamSplits(profile) {
@@ -894,11 +941,10 @@ function shapeStatsRowsForDisplay(rows, { scope, category }) {
       lg: "NFL",
       pos: row.pos,
       g: row.g ?? row.seasons ?? 0,
-      gs: row.gs ?? 0,
-      av: row.av ?? 0
+      gs: row.gs ?? 0
     };
     if (category === "passing") {
-      return {
+      return appendAvLast({
         ...common,
         cmp: row.cmp,
         att: row.att,
@@ -916,13 +962,13 @@ function shapeStatsRowsForDisplay(rows, { scope, category }) {
         sk: row.sacks,
         nya: Number((((row.yds || 0) - (row.sackYds || 0)) / Math.max(1, (row.att || 0) + (row.sacks || 0))).toFixed(2)),
         anya: Number((((row.yds || 0) + (row.td || 0) * 20 - (row.int || 0) * 45 - (row.sackYds || 0)) / Math.max(1, (row.att || 0) + (row.sacks || 0))).toFixed(2))
-      };
+      }, row.av);
     }
     if (category === "rushing") {
       const receiving = rushingCompanion.get(rowJoinKey(row)) || {};
       const touch = (row.att || 0) + (receiving.rec || 0);
       const yScr = (row.yds || 0) + (receiving.yds || 0);
-      return {
+      return appendAvLast({
         ...common,
         att: row.att,
         yds: row.yds,
@@ -941,13 +987,13 @@ function shapeStatsRowsForDisplay(rows, { scope, category }) {
         yTch: Number((yScr / Math.max(1, touch)).toFixed(1)),
         yScr,
         fmb: row.fmb || 0
-      };
+      }, row.av);
     }
     if (category === "receiving") {
       const rushing = receivingCompanion.get(rowJoinKey(row)) || {};
       const touch = (rushing.att || 0) + (row.rec || 0);
       const yScr = (rushing.yds || 0) + (row.yds || 0);
-      return {
+      return appendAvLast({
         ...common,
         tgt: row.tgt,
         rec: row.rec,
@@ -966,10 +1012,10 @@ function shapeStatsRowsForDisplay(rows, { scope, category }) {
         yTch: Number((yScr / Math.max(1, touch)).toFixed(1)),
         yScr,
         fmb: rushing.fmb || 0
-      };
+      }, row.av);
     }
     if (category === "defense") {
-      return {
+      return appendAvLast({
         ...common,
         int: row.int,
         pd: row.pd,
@@ -981,9 +1027,9 @@ function shapeStatsRowsForDisplay(rows, { scope, category }) {
         ast: row.ast,
         tfl: row.tfl,
         qbHits: row.qbHits
-      };
+      }, row.av);
     }
-    return { ...common, ...row };
+    return appendAvLast({ ...common, ...row }, row.av);
   });
 }
 
@@ -1212,7 +1258,7 @@ function renderOverview() {
     if (expectation.mandate) {
       lines.push(`Owner mandate: ${expectation.mandate} (${expectation.trend || "watch"}, heat ${expectation.heat ?? "-"}).`);
     }
-    box.textContent = lines.join(" ") || "Weekly plan, culture, and owner-pressure context will appear here after the dashboard loads.";
+    box.textContent = lines.join(" ") || "Weekly plan, locker-room pressure, and owner mandate updates will appear here.";
   }
   renderOverviewSpotlight();
 }
@@ -1260,11 +1306,11 @@ function renderOverviewSpotlight() {
           <div>${escapeHtml(culture.identity || "Balanced culture")}</div>
           <div class="small">${escapeHtml(schemeLabel)} | Chemistry ${escapeHtml(controlledTeam.chemistry ?? "-")}</div>
         </div>
-        <div class="overview-team-card">
-          <strong>Primary Need</strong>
-          <div>${escapeHtml(topNeed ? `${topNeed.position} room` : "No urgent weakness")}</div>
-          <div class="small">${escapeHtml(topNeed ? `Need ${Math.abs(topNeed.delta)} against target ${topNeed.target}` : "Roster shape is on target")}</div>
-        </div>
+      <div class="overview-team-card">
+        <strong>Primary Need</strong>
+        <div>${escapeHtml(topNeed ? `${topNeed.position} room` : "No urgent weakness")}</div>
+        <div class="small">${escapeHtml(topNeed ? `${Math.abs(topNeed.delta)} players short of the target ${topNeed.target}` : "Roster shape is on target")}</div>
+      </div>
         <div class="overview-team-card">
           <strong>Game Plan</strong>
           <div>${escapeHtml(weeklyPlan.focus || weeklyPlan.summary || "Balanced script")}</div>
@@ -1463,7 +1509,7 @@ function renderRosterNeeds() {
       pos: entry.position,
       target: entry.target,
       current: entry.current,
-      delta: entry.delta,
+      gap: entry.delta,
       status: entry.delta < 0 ? `Need ${Math.abs(entry.delta)}` : entry.delta === 0 ? "On target" : `+${entry.delta}`
     }));
   renderTable("needsTable", needs);
@@ -1528,13 +1574,23 @@ function renderSchedule() {
     renderTable("scheduleTable", []);
     return;
   }
-  weekText.textContent = `Week ${schedule.week} (${schedule.played ? "Played" : "Upcoming"})`;
+  const controlledTeamId = state.dashboard?.controlledTeamId || null;
+  const controlledOnBye = controlledTeamId && (schedule.byeTeams || []).includes(controlledTeamId);
+  weekText.textContent = `Week ${schedule.week} (${schedule.played ? "Played" : "Upcoming"})${controlledOnBye ? ` | ${controlledTeamId} bye week` : ""}`;
   const rows = (schedule.games || []).map((game) => ({
     away: teamCode(game.awayTeamId),
     home: teamCode(game.homeTeamId),
     score: game.played ? `${game.awayScore}-${game.homeScore}` : "-",
     winner: game.played ? (game.isTie ? "TIE" : teamCode(game.winnerId) || "") : "TBD"
   }));
+  for (const teamId of schedule.byeTeams || []) {
+    rows.push({
+      away: teamCode(teamId),
+      home: "BYE",
+      score: "-",
+      winner: "REST"
+    });
+  }
   renderTable("scheduleTable", rows);
 }
 
@@ -2451,7 +2507,7 @@ function renderRealismVerification() {
 
 function renderRulesTab() {
   const coreRows = [
-    { area: "League Structure", rule: "32 teams, 17-game regular season, NFL playoff format, division/conference standings." },
+    { area: "League Structure", rule: "32 teams, 18-week regular season calendar with 17 games and one bye per team, plus NFL playoff format and division/conference standings." },
     { area: "Simulation Engine", rule: "Drive/possession simulation with rating, coaching, chemistry, and scheme effects." },
     { area: "Team Identity", rule: "Every new league draws one real U.S. city plus one nickname per team for a single randomized team identity." },
     { area: "Depth Chart Usage", rule: "Each depth slot has position-specific snap-share targets; game snaps and touches are role-weighted." },
@@ -2658,7 +2714,7 @@ function renderScouting() {
     }
     if (latestReport) {
       lines.push(
-        `Latest report: ${latestReport.player} moved ${latestReport.delta >= 0 ? "+" : ""}${latestReport.delta || 0} with ${latestReport.confidence ?? 0}% confidence.`
+        `Latest report: ${latestReport.player} changed by ${latestReport.delta >= 0 ? "+" : ""}${latestReport.delta || 0} OVR with ${latestReport.confidence ?? 0}% confidence.`
       );
     }
     lines.push(scouting.locked ? "Board is locked; scouting now only updates the live report." : `Board room remaining: ${Math.max(0, 20 - state.scoutingBoardDraft.length)} slots.`);
@@ -2677,9 +2733,36 @@ function moveIdWithinList(list, playerId, delta) {
   return next;
 }
 
+function setHistoryView(view) {
+  state.historyView = view === "hall-of-fame" ? "hall-of-fame" : "season-awards";
+  document.querySelectorAll("[data-history-view]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.historyView === state.historyView);
+  });
+  const seasonPanel = document.getElementById("historySeasonAwardsPanel");
+  const hallPanel = document.getElementById("historyHallOfFamePanel");
+  if (seasonPanel) seasonPanel.classList.toggle("hidden", state.historyView !== "season-awards");
+  if (hallPanel) hallPanel.classList.toggle("hidden", state.historyView !== "hall-of-fame");
+}
+
+function formatAwardList(list = []) {
+  return (list || []).map((entry) => `${entry.player} (${entry.team})`).join(", ");
+}
+
+function hallOfFameCareerLine(entry) {
+  const stats = entry.careerStats || {};
+  if (entry.pos === "QB") return `${stats.passing?.yards || 0} pass yds, ${stats.passing?.td || 0} pass TD`;
+  if (entry.pos === "RB") return `${stats.rushing?.yards || 0} rush yds, ${stats.rushing?.td || 0} rush TD`;
+  if (entry.pos === "WR" || entry.pos === "TE") return `${stats.receiving?.yards || 0} rec yds, ${stats.receiving?.td || 0} rec TD`;
+  if (entry.pos === "K") return `${stats.kicking?.fgm || 0} FGM, ${stats.kicking?.xpm || 0} XPM`;
+  if (entry.pos === "P") return `${stats.punting?.punts || 0} punts, ${stats.punting?.in20 || 0} in20`;
+  return `${stats.defense?.tackles || 0} tackles, ${stats.defense?.sacks || 0} sacks, ${stats.defense?.int || 0} INT`;
+}
+
 function renderRecordsAndHistory() {
   const box = document.getElementById("recordsBox");
   const records = state.dashboard?.records;
+  const awards = (state.dashboard?.awards || []).slice().reverse();
+  const awardYears = awards.map((award) => String(award.year));
 
   if (!records) {
     box.innerHTML = "<div class='record'>No record data</div>";
@@ -2709,15 +2792,57 @@ function renderRecordsAndHistory() {
 
   renderTable(
     "awardsTable",
-    (state.dashboard?.awards || []).slice().reverse().map((award) => ({
+    awards.map((award) => ({
       year: award.year,
       MVP: award.MVP?.player || "",
       OPOY: award.OPOY?.player || "",
       DPOY: award.DPOY?.player || "",
       OROY: award.OROY?.player || "",
-      DROY: award.DROY?.player || ""
+      DROY: award.DROY?.player || "",
+      ROY: award.ROY?.player || "",
+      CPOY: award.CPOY?.player || "",
+      mostImproved: award.MostImproved?.player || "",
+      sbScore: award.SuperBowl?.finalScore || "",
+      sbMVP: award.SuperBowl?.MVP?.player || ""
     }))
   );
+
+  setSelectOptions(
+    "historyAwardYearSelect",
+    awardYears.map((year) => ({ value: year, label: year })),
+    state.selectedAwardsYear && awardYears.includes(String(state.selectedAwardsYear))
+      ? String(state.selectedAwardsYear)
+      : awardYears[0] || ""
+  );
+  if (!state.selectedAwardsYear && awardYears[0]) state.selectedAwardsYear = Number(awardYears[0]);
+  const selectedAward =
+    awards.find((award) => String(award.year) === String(state.selectedAwardsYear || awardYears[0] || "")) || null;
+  if (selectedAward) state.selectedAwardsYear = selectedAward.year;
+
+  renderTable(
+    "awardDetailTable",
+    selectedAward
+      ? [{
+          year: selectedAward.year,
+          MVP: selectedAward.MVP?.player || "",
+          OPOY: selectedAward.OPOY?.player || "",
+          DPOY: selectedAward.DPOY?.player || "",
+          OROY: selectedAward.OROY?.player || "",
+          DROY: selectedAward.DROY?.player || "",
+          ROY: selectedAward.ROY?.player || "",
+          CPOY: selectedAward.CPOY?.player || "",
+          mostImproved: selectedAward.MostImproved?.player || "",
+          superBowl: `${selectedAward.SuperBowl?.championTeamId || "-"} def. ${selectedAward.SuperBowl?.runnerUpTeamId || "-"} ${selectedAward.SuperBowl?.finalScore || ""}`,
+          superBowlMVP: selectedAward.SuperBowl?.MVP?.player || "",
+          pivotalMoment: selectedAward.SuperBowl?.pivotalMoment || ""
+        }]
+      : []
+  );
+
+  renderTable("allPro1Table", (selectedAward?.AllPro1 || []).map((entry) => ({ team: "All-Pro 1", pos: entry.pos, player: entry.player, tm: entry.team, av: entry.av })));
+  renderTable("allPro2Table", (selectedAward?.AllPro2 || []).map((entry) => ({ team: "All-Pro 2", pos: entry.pos, player: entry.player, tm: entry.team, av: entry.av })));
+  renderTable("allPro3Table", (selectedAward?.AllPro3 || []).map((entry) => ({ team: "All-Pro 3", pos: entry.pos, player: entry.player, tm: entry.team, av: entry.av })));
+  renderTable("proBowlTable", (selectedAward?.ProBowl || []).map((entry) => ({ pos: entry.pos, player: entry.player, tm: entry.team, av: entry.av })));
 
   renderTable(
     "championsTable",
@@ -2728,6 +2853,32 @@ function renderRecordsAndHistory() {
       score: champion.score
     }))
   );
+
+  renderTable(
+    "hallOfFameTable",
+    (state.dashboard?.hallOfFame || []).map((entry) => ({
+      player: entry.player,
+      pos: entry.pos,
+      retired: entry.retiredYear,
+      no: entry.jerseyNumber ?? "-",
+      careerAV: entry.careerAv || 0,
+      careerStats: hallOfFameCareerLine(entry),
+      superBowls: entry.championships || 0,
+      teams: (entry.teams || []).join(", "),
+      MVP: entry.awardCounts?.MVP || 0,
+      OPOY: entry.awardCounts?.OPOY || 0,
+      DPOY: entry.awardCounts?.DPOY || 0,
+      allPro1: entry.awardCounts?.AllPro1 || 0,
+      allPro2: entry.awardCounts?.AllPro2 || 0,
+      proBowl: entry.awardCounts?.ProBowl || 0,
+      rookieAwards: (entry.awardCounts?.OROY || 0) + (entry.awardCounts?.DROY || 0) + (entry.awardCounts?.ROY || 0),
+      comeback: entry.awardCounts?.CPOY || 0,
+      improved: entry.awardCounts?.MostImproved || 0,
+      retiredNos: (entry.retiredNumbers || []).map((row) => `${row.teamId} #${row.number}`).join(", ")
+    }))
+  );
+
+  setHistoryView(state.historyView);
 }
 
 function renderCalendar() {
@@ -2753,6 +2904,7 @@ function renderCalendar() {
   const weekRows = (calendar.weeks || []).map((week) => ({
     week: week.week,
     games: week.games?.length || 0,
+    byes: week.byeTeams?.length || 0,
     completed: week.games?.filter((game) => game.played).length || 0,
     points: week.games?.reduce((sum, game) => sum + (game.homeScore || 0) + (game.awayScore || 0), 0) || 0
   }));
@@ -2767,6 +2919,14 @@ function renderCalendar() {
     score: game.played ? `${game.awayScore}-${game.homeScore}` : "-",
     winner: game.played ? (game.isTie ? "TIE" : teamCode(game.winnerId) || "") : "TBD"
   }));
+  for (const teamId of selected?.byeTeams || []) {
+    gameRows.push({
+      away: teamCode(teamId),
+      home: "BYE",
+      score: "-",
+      winner: "REST"
+    });
+  }
   renderTable("calendarGamesTable", gameRows);
 
   const toBracketRows = (conf, bracket) =>
@@ -3202,7 +3362,7 @@ async function loadPlayerModal(playerId) {
 
   document.getElementById("playerModalTitle").textContent = `${player.name} (${player.position})`;
   document.getElementById("playerModalMeta").textContent =
-    `${teamCode(player.teamId)} | OVR ${player.overall} | Age ${player.age} | ${formatHeight(player.heightInches)} ${player.weightLbs || "-"} lbs | Dev ${player.developmentTrait} | Injury ${player.injury?.type || "Healthy"}`;
+      `${teamCode(player.teamId)} | #${player.jerseyNumber ?? "--"} | OVR ${player.overall} | Age ${player.age} | ${formatHeight(player.heightInches)} ${player.weightLbs || "-"} lbs | Dev ${player.developmentTrait} | Injury ${player.injury?.type || "Healthy"}`;
   document.getElementById("playerProfileSummary").innerHTML = renderPlayerProfileHero(profile);
 
   const ratingRows = Object.entries(player.ratings || {})
@@ -3848,6 +4008,7 @@ async function loadQa() {
 async function loadTeamHistory() {
   const teamId = document.getElementById("teamHistorySelect").value || state.dashboard?.controlledTeamId;
   const payload = await api(`/api/history/team?team=${encodeURIComponent(teamId)}`);
+  state.teamHistory = payload.history || null;
   renderTable(
     "teamHistoryTable",
     (payload.history?.seasons || []).map((season) => ({
@@ -3857,6 +4018,18 @@ async function loadTeamHistory() {
       t: season.ties,
       pf: season.pf,
       pa: season.pa
+    }))
+  );
+  renderTable(
+    "retiredNumbersTable",
+    (payload.history?.retiredNumbers || []).map((entry) => ({
+      no: entry.number,
+      player: entry.player,
+      pos: entry.pos,
+      retired: entry.retiredYear,
+      careerAV: entry.careerAv || 0,
+      superBowls: entry.championships || 0,
+      awards: Object.entries(entry.awards || {}).map(([key, value]) => `${key}:${value}`).join(", ")
     }))
   );
 }
@@ -3888,6 +4061,21 @@ function setSelectedHistoryPlayer(player = null) {
   }
   const button = document.getElementById("loadPlayerTimelineBtn");
   if (button) button.disabled = !player;
+  const retireButton = document.getElementById("retireSelectedJerseyBtn");
+  if (retireButton) retireButton.disabled = !player;
+}
+
+async function retireSelectedJersey() {
+  const teamId = document.getElementById("teamHistorySelect").value || state.dashboard?.controlledTeamId;
+  if (!teamId || !state.selectedHistoryPlayerId) return;
+  await api("/api/history/retire-jersey", {
+    method: "POST",
+    body: {
+      teamId,
+      playerId: state.selectedHistoryPlayerId
+    }
+  });
+  await Promise.all([loadState(), loadTeamHistory()]);
 }
 
 function renderPlayerTimelineSearchResults() {
@@ -4294,7 +4482,7 @@ function bindEvents() {
       const a = result.valuation?.[payload.teamA] || {};
       const b = result.valuation?.[payload.teamB] || {};
       const fairness = Math.max(0, 100 - Math.abs((a.delta || 0) - (b.delta || 0)) * 4);
-      setTradeEvalText(`Trade accepted. ${payload.teamA} delta ${a.delta || 0}, ${payload.teamB} delta ${b.delta || 0}`);
+      setTradeEvalText(`Trade accepted. ${payload.teamA} value swing ${a.delta || 0}, ${payload.teamB} value swing ${b.delta || 0}`);
       setTradeEvalCards({ fairness, capDeltaA: a.capDelta || 0, capDeltaB: b.capDelta || 0 });
       clearTradePackages({ keepMessage: true });
       await Promise.all([loadState(), loadRoster(), loadContractsTeam(), loadFreeAgency(), loadDepthChart(), loadTransactionLog(), loadPickAssets()]);
@@ -4891,6 +5079,15 @@ function bindEvents() {
   document.getElementById("loadPlayerTimelineBtn").addEventListener("click", () =>
     runAction(loadPlayerTimeline, "Loading player history...")
   );
+  document.querySelectorAll("[data-history-view]").forEach((button) => {
+    button.addEventListener("click", () => {
+      setHistoryView(button.dataset.historyView || "season-awards");
+    });
+  });
+  document.getElementById("historyAwardYearSelect").addEventListener("change", () => {
+    state.selectedAwardsYear = Number(document.getElementById("historyAwardYearSelect").value || 0) || null;
+    renderRecordsAndHistory();
+  });
   document.getElementById("searchPlayerTimelineBtn").addEventListener("click", () =>
     runAction(searchHistoryPlayers, "Searching player history...")
   );
@@ -4903,6 +5100,9 @@ function bindEvents() {
     renderPlayerTimelineSearchResults();
   });
   document.getElementById("loadTeamHistoryBtn").addEventListener("click", () => runAction(loadTeamHistory, "Loading team history..."));
+  document.getElementById("retireSelectedJerseyBtn").addEventListener("click", () =>
+    runAction(retireSelectedJersey, "Retiring jersey number...")
+  );
 
   document.getElementById("saveBtn").addEventListener("click", () =>
     runAction(async () => {

@@ -207,6 +207,25 @@ function physicalFrameFromSeed(position, seed) {
   };
 }
 
+export function jerseyNumberForPlayer(position, seed) {
+  const hash = hashString(seed);
+  const pickFromRange = (min, max, offset = 0) => deriveRangeValue(hash, min, max, offset);
+  const pickFromRanges = (ranges) => {
+    const range = ranges[(hash >>> 3) % ranges.length];
+    return pickFromRange(range[0], range[1], 11);
+  };
+  if (position === "QB") return pickFromRange(1, 19);
+  if (position === "RB") return pickFromRanges([[0, 19], [20, 49]]);
+  if (position === "WR") return pickFromRanges([[0, 19], [80, 89]]);
+  if (position === "TE") return pickFromRanges([[40, 49], [80, 89]]);
+  if (position === "OL") return pickFromRange(50, 79);
+  if (position === "DL") return pickFromRanges([[50, 79], [90, 99]]);
+  if (position === "LB") return pickFromRanges([[0, 59], [90, 99]]);
+  if (position === "DB") return pickFromRange(0, 49);
+  if (position === "K" || position === "P") return pickFromRange(1, 19);
+  return pickFromRange(0, 99);
+}
+
 export function createSyntheticPlayer({ teamId, position, year, rng, draft = false }) {
   const devTrait = randomTrait(rng);
   const potential = randomPotential(devTrait, rng);
@@ -226,6 +245,7 @@ export function createSyntheticPlayer({ teamId, position, year, rng, draft = fal
     age,
     heightInches: frame.heightInches,
     weightLbs: frame.weightLbs,
+    jerseyNumber: jerseyNumberForPlayer(position, id),
     experience: draft ? 0 : Math.max(0, age - 21),
     developmentTrait: DEVELOPMENT_TRAITS[devTrait].label,
     developmentKey: devTrait,

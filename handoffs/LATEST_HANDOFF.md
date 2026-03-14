@@ -3,6 +3,48 @@
 Last updated: 2026-03-13
 
 What was completed:
+- Finished the in-flight stats/history/schedule pass:
+  - season/career AV now comes from the backend year/team/honors context path instead of a separate frontend heuristic
+  - AV now renders as the final stat column in the main stats tables and player profile season/career tables
+  - added team season drive tracking so the PFR-style AV context has offense/defense possession input instead of guessing
+- Added the requested end-of-season structure and history depth:
+  - the yearly flow now pauses on a dedicated `season-awards` phase between postseason and offseason
+  - season award history now includes `ROY`, `CPOY`, `MostImproved`, `AllPro1`, `AllPro2`, `AllPro3`, `ProBowl`, and a richer `SuperBowl` summary with final score, MVP, and pivotal moment
+  - the History tab now splits into `Season Awards` and `Hall of Fame`
+  - hall-of-fame rows now show career AV, career stat summary, titles, award-category counts, and retired-number status
+- Added retired jersey infrastructure:
+  - players now carry persistent jersey numbers
+  - teams now track `retiredNumbers`
+  - both server-backed and local runtimes expose `/api/history/retire-jersey`
+  - player dossier/meta now surface jersey numbers and more explicit NFL body-type labeling
+- Tightened frontend readability/polish:
+  - native select dropdown option styling is now readable again instead of white-on-white
+  - leftover overview placeholder/dev text was replaced with user-facing copy
+  - vague `delta` wording now reads as `Change`, `Need Gap`, `Cap Change`, or `value swing` depending on context
+  - player portraits were pushed further toward position/weight-shaped NFL frames with stronger pad/trap silhouettes for heavier positions
+- Tightened the AV implementation closer to PFR's published methodology:
+  - offensive AV now uses team points-per-drive buckets for rushers, passers, and receivers instead of a generic yardage heuristic
+  - defensive AV now uses front-seven vs secondary pools with starts/tackles/sack/turnover weighting closer to the published PFR split
+  - kicking/punting AV now use contextual team-share formulas from the sim's available distance and special-teams data
+- Fixed the 18-week / one-bye schedule request without changing 17-game stat totals:
+  - the opponent matrix now builds a clean 17-opponent NFL-style slate
+  - week assignment now repairs duplicate-week collisions after greedy placement so each team ends with 17 distinct game weeks and exactly one bye
+  - schedule/calendar surfaces now show bye teams directly
+  - added a regression that verifies `18` weeks, `17` games per team, and one bye per team
+- Revalidated the new batch with:
+  - `node --check src/stats/approximateValue.js`
+  - `node --check src/stats/statBook.js`
+  - `node --check src/engine/schedule.js`
+  - `node --check src/runtime/GameSession.js`
+  - `node --check src/server.js`
+  - `node --check src/app/api/localApiRuntime.js`
+  - `node --check public/app.js`
+  - `node --test --test-isolation=none test/session-actions.test.js`
+  - `node --test --test-isolation=none test/stats-regression.test.js`
+  - `node --test --test-isolation=none test/local-api-runtime.test.js`
+  - `npm.cmd run build:pages`
+- Revalidated the full suite successfully with:
+  - `npm.cmd test`
 - Added the next management-surface UI pass:
   - the contracts tab now opens with a cap-command hero that summarizes selected-player leverage, negotiation ask, cap posture, and risk signals
   - the settings tab now opens with a commissioner-deck summary for saves, policy toggles, persistence, and runtime health
@@ -182,17 +224,16 @@ What was completed:
   - `npm.cmd run smoke:pages`
 
 What is mid-flight:
-- The contracts/settings/owner follow-up polish is ready locally but still needs the commit/push/GitHub verification pass
 - The unrelated realism/runtime work is still parked in a local stash and has not been reincorporated
 - Challenge restrictions are much more mechanical now, though edge-case acquisition paths may still be worth auditing later
 - The broader 2025 baseline path currently lives as a generated output artifact plus smoothed live constants; it is not yet promoted to a dedicated checked-in builder script
 
 What to do next:
-1. Commit/push the contracts/settings/owner follow-up UI pass and confirm the next GitHub run stays green
-2. Review the live deploy on desktop/mobile to catch any overflow or spacing issues in the new contracts, settings, and owner spotlight layouts
-3. Extend the refreshed UI language into any remaining lower-priority legacy tabs so the shell feels consistent end to end
-4. Decide whether to promote the generated StatMuse baseline flow into a checked-in repo script instead of keeping it as an output artifact plus smoothed constants
-5. Use the new setup diagnostics to decide whether any remaining setup/main-menu latency still needs another trim after the lazy browser bootstrap
+1. Commit/push the awards/history/schedule batch and confirm `CI`, `Deploy Backend Runtime`, and `Deploy Pages` stay green
+2. Review the live deploy on desktop/mobile to catch any overflow or spacing issues in the new history split, retired-number controls, and updated player dossier
+3. Decide whether the hall-of-fame induction threshold or retired-number action need extra commissioner controls / guardrails
+4. Extend the refreshed UI language into any remaining lower-priority legacy tabs so the shell feels consistent end to end
+5. Decide whether to promote the generated StatMuse baseline flow into a checked-in repo script instead of keeping it as an output artifact plus smoothed constants
 
 Important constraints:
 - The parked stash is named `park unrelated realism-runtime work after depth-chart commit`; do not lose it if that work is still needed

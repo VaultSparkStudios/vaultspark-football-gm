@@ -1101,6 +1101,21 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  if (req.method === "POST" && url.pathname === "/api/history/retire-jersey") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const check = assertFields(body, ["teamId", "playerId"]);
+    if (!check.ok) {
+      sendJson(res, 400, { ok: false, error: check.error });
+      return true;
+    }
+    const result = session.retireJerseyNumber({
+      teamId: String(body.teamId).toUpperCase(),
+      playerId: String(body.playerId)
+    });
+    sendJson(res, result.ok ? 200 : 400, result.ok ? { ok: true, result, state: session.getDashboardState() } : result);
+    return true;
+  }
+
   if (req.method === "GET" && url.pathname === "/api/saves") {
     sendJson(res, 200, { ok: true, slots: listSaveSlots() });
     return true;
