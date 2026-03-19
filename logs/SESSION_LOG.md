@@ -346,3 +346,59 @@ Open problems:
 
 Recommended next action:
 - Do the populated-league desktop/mobile review next, then decide whether the hall-of-fame/retired-number controls or startup path need the next change batch
+
+## 2026-03-18 (legacy policy commissioner controls)
+
+Completed:
+- Added formal Hall-of-Fame and retired-number commissioner controls across runtime, settings, and history surfaces
+- Added league settings for:
+  - Hall-of-Fame induction score floor
+  - Hall-of-Fame minimum years retired
+  - retired-player-only jersey-retirement rule
+  - optional Hall-of-Fame requirement for jersey retirement
+  - retired-number career-AV floor
+- Updated runtime enforcement so blocked jersey-retirement actions return explicit `reasonCode` values for active-player, Hall-of-Fame, and AV-floor failures
+- Surfaced the active legacy-policy rules in the Settings and History UI so commissioners can see the current archive standard without leaving the main workflow
+- Extended regression coverage in:
+  - `test/new-systems.test.js`
+  - `test/local-api-runtime.test.js`
+  - `tests-ui/app.spec.js`
+- Increased `playwright.config.mjs` `webServer.timeout` from `30000` to `60000` to reduce false negatives from local server startup lag
+- Revalidated with:
+  - `node --check src/config/leagueSetup.js`
+  - `node --check src/runtime/GameSession.js`
+  - `node --check public/app.js`
+  - `node --check tests-ui/app.spec.js`
+  - `node --test --test-isolation=none test/new-systems.test.js`
+  - `node --test --test-isolation=none test/local-api-runtime.test.js`
+  - `npm.cmd run test:ui -- --grep "season awards and hall of fame history render for a populated multi-year league" --reporter=dot`
+
+Open problems:
+- The legacy-policy controls exist, but they still need a focused populated-league desktop/mobile review for copy clarity, defaults, and blocked-action messaging
+- The broader history/archive UX still needs ceremony/storytelling decisions beyond the new guardrails
+
+Recommended next action:
+- Review the new legacy-policy controls in a live populated league, then decide whether Hall-of-Fame and jersey-retirement flows need ceremony surfacing or richer commissioner messaging
+
+## 2026-03-19 (team-themed shell refresh)
+
+Completed:
+- Refreshed the shell and setup presentation across `public/index.html`, `public/game.html`, `public/app.js`, and `public/styles.css`
+- Added controlled-team color theming so the background, top bar, and active side-nav treatment now change with the current franchise context
+- Grouped the side nav into workflow sections and strengthened the active-state styling so the shell reads more like a franchise command console
+- Added more distinct visual palettes for `Contracts`, `Scouting`, and `History`
+- Added a dedicated scouting command-deck hero/spotlight instead of keeping Scouting as only a utilitarian work panel
+- Added broader semantic tone styling for positive, warning, negative, info, and accent values across chips, cards, and many rendered table cells
+- Reworked the main menu hero so it has more atmosphere and framing instead of reading like a plain setup form
+- Revalidated with:
+  - `node --check public/app.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run test:ui -- --grep "create league, advance week, and open player modal" --reporter=dot`
+
+Open problems:
+- The stronger color language is in place, but it still needs a focused desktop/mobile review on a populated league to catch any layout or readability regressions
+- Some lower-priority legacy panels may still look older than the refreshed command-deck surfaces
+- The next major product decision should likely shift back from shell polish to a long-playability feature area such as league-era drift, coaching/staff carousel, or rivalry/narrative memory
+
+Recommended next action:
+- Run a populated-league desktop/mobile visual review on the refreshed shell, then choose the next long-playability feature area now that the UI no longer feels as flat
