@@ -281,6 +281,53 @@ test("local api runtime applies setup preset selections to new leagues", async (
   assert.equal(setup.payload.activeLeague.configSummary.challengeMode.id, "small-market");
 });
 
+test("local api runtime persists legacy commissioner settings and blocks active-player jersey retirements", async () => {
+  const runtime = createLocalApiRuntime({
+    storage: createMemoryStorage(),
+    now: (() => {
+      let tick = 0;
+      return () => 1_725_500_000_000 + tick++;
+    })(),
+    scheduler: (fn) => fn()
+  });
+
+  await runtime.request("/api/new-league", {
+    method: "POST",
+    body: { seed: 6161, startYear: 2026, controlledTeamId: "BUF", mode: "play", eraProfile: "modern" }
+  });
+
+  const saved = await runtime.request("/api/settings", {
+    method: "POST",
+    body: {
+      hallOfFameInductionScoreMin: 285,
+      hallOfFameYearsRetiredMin: 2,
+      retiredNumberRequireRetiredPlayer: true,
+      retiredNumberRequireHallOfFame: true,
+      retiredNumberCareerAvMin: 55
+    }
+  });
+  assert.equal(saved.status, 200);
+  assert.equal(saved.payload.settings.hallOfFameInductionScoreMin, 285);
+  assert.equal(saved.payload.settings.hallOfFameYearsRetiredMin, 2);
+  assert.equal(saved.payload.settings.retiredNumberRequireRetiredPlayer, true);
+  assert.equal(saved.payload.settings.retiredNumberRequireHallOfFame, true);
+  assert.equal(saved.payload.settings.retiredNumberCareerAvMin, 55);
+
+  const session = runtime.getSession();
+  const activePlayer = session.getRoster("BUF")[0];
+  assert.ok(activePlayer?.id);
+  const livePlayer = session.league.players.find((player) => player.id === activePlayer.id);
+  assert.ok(livePlayer);
+  if (!Number.isFinite(livePlayer.jerseyNumber)) livePlayer.jerseyNumber = 12;
+
+  const retireAttempt = await runtime.request("/api/history/retire-jersey", {
+    method: "POST",
+    body: { teamId: "BUF", playerId: activePlayer.id }
+  });
+  assert.equal(retireAttempt.status, 400);
+  assert.equal(retireAttempt.payload.reasonCode, "history-retired-number-active");
+});
+
 test("local api runtime enforces no-free-agency challenge for user signings", async () => {
   const runtime = createLocalApiRuntime({
     storage: createMemoryStorage(),

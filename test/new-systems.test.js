@@ -126,3 +126,53 @@ test("challenge mode also blocks waiver claims, retirement overrides, and top-10
   assert.equal(cpuAdvance.ok, true);
   assert.ok(cpuAdvance.draft.currentPick >= 2);
 });
+
+test("hall of fame policy and retired-number guardrails are configurable", () => {
+  const session = createSession({ seed: 2468, startYear: 2026, controlledTeamId: "BUF" });
+  const activePlayer = session.league.players.find((player) => player.teamId === "BUF" && Number.isFinite(player.jerseyNumber));
+  assert.ok(activePlayer);
+  activePlayer.seasonStats = {
+    ...(activePlayer.seasonStats || {}),
+    [session.currentYear - 1]: {
+      ...(activePlayer.seasonStats?.[session.currentYear - 1] || {}),
+      meta: {
+        ...(activePlayer.seasonStats?.[session.currentYear - 1]?.meta || {}),
+        teamId: "BUF",
+        teamGames: { BUF: 17 }
+      }
+    }
+  };
+
+  const activeBlock = session.retireJerseyNumber({ teamId: "BUF", playerId: activePlayer.id });
+  assert.equal(activeBlock.ok, false);
+  assert.equal(activeBlock.reasonCode, "history-retired-number-active");
+
+  const playerIndex = session.league.players.findIndex((player) => player.id === activePlayer.id);
+  session.league.players.splice(playerIndex, 1);
+  activePlayer.status = "retired";
+  activePlayer.teamId = "RET";
+  activePlayer.retiredYear = session.currentYear - 1;
+  session.league.retiredPlayers.push(activePlayer);
+
+  session.updateLeagueSettings({
+    retiredNumberRequireHallOfFame: true,
+    hallOfFameInductionScoreMin: 0,
+    hallOfFameYearsRetiredMin: 3
+  });
+  const hofWaitBlock = session.retireJerseyNumber({ teamId: "BUF", playerId: activePlayer.id });
+  assert.equal(hofWaitBlock.ok, false);
+  assert.equal(hofWaitBlock.reasonCode, "history-retired-number-hof");
+
+  session.updateLeagueSettings({
+    hallOfFameYearsRetiredMin: 0,
+    retiredNumberCareerAvMin: Math.max(1, session.getPlayerCareerApproximateValue(activePlayer.id) + 5)
+  });
+  const avBlock = session.retireJerseyNumber({ teamId: "BUF", playerId: activePlayer.id });
+  assert.equal(avBlock.ok, false);
+  assert.equal(avBlock.reasonCode, "history-retired-number-av");
+
+  session.updateLeagueSettings({ retiredNumberCareerAvMin: 0 });
+  const retired = session.retireJerseyNumber({ teamId: "BUF", playerId: activePlayer.id });
+  assert.equal(retired.ok, true);
+  assert.ok((session.league.hallOfFame || []).some((entry) => entry.playerId === activePlayer.id));
+});

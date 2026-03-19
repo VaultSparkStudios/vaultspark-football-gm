@@ -4747,8 +4747,13 @@ export class GameSession {
   }
 
   refreshHallOfFame() {
+    const settings = this.getLeagueSettings();
+    const inductionScoreMin = Number(settings.hallOfFameInductionScoreMin ?? 240);
+    const yearsRetiredMin = Number(settings.hallOfFameYearsRetiredMin ?? 0);
     const existing = new Map((this.league.hallOfFame || []).map((entry) => [entry.playerId, entry]));
     for (const player of this.league.retiredPlayers) {
+      const retiredYear = Number(player.retiredYear || this.currentYear);
+      if (this.currentYear - retiredYear < yearsRetiredMin) continue;
       const awardCounts = this.getPlayerAwardCounts(player.id);
       const legacyScore = hallOfFameLegacyScore(player);
       const careerAv = this.getPlayerCareerApproximateValue(player.id);
@@ -4761,14 +4766,14 @@ export class GameSession {
         (awardCounts.DPOY || 0) * 14 +
         (awardCounts.AllPro1 || 0) * 10 +
         championships * 8;
-      if (inductionScore < 240) continue;
+      if (inductionScore < inductionScoreMin) continue;
       const timeline = this.getPlayerTimeline(player.id, { seasonType: "all" })?.timeline || [];
       const teams = [...new Set(timeline.map((entry) => entry.teamId).filter(Boolean))];
       existing.set(player.id, {
         playerId: player.id,
         player: player.name,
         pos: player.position,
-        retiredYear: player.retiredYear || this.currentYear,
+        retiredYear,
         legacyScore,
         careerAv,
         championships,
@@ -4802,14 +4807,40 @@ export class GameSession {
   }
 
   retireJerseyNumber({ teamId, playerId }) {
+    const settings = this.getLeagueSettings();
     const team = teamById(this.league, teamId);
     const player = [...this.league.players, ...this.league.retiredPlayers].find((entry) => entry.id === playerId);
     if (!team) return { ok: false, error: "Team not found." };
     if (!player) return { ok: false, error: "Player not found." };
+    const isRetired = player.status === "retired" || player.teamId === "RET"
+      || this.league.retiredPlayers.some((entry) => entry.id === playerId);
+    if (settings.retiredNumberRequireRetiredPlayer !== false && !isRetired) {
+      return {
+        ok: false,
+        error: "Only retired players can have jerseys retired.",
+        reasonCode: "history-retired-number-active"
+      };
+    }
     if (!Number.isFinite(player.jerseyNumber)) return { ok: false, error: "Player has no jersey number on record." };
     const eligibleTeams = new Set(this.getEligibleRetiredNumberTeams(playerId).map((entry) => entry.teamId));
     if (!eligibleTeams.has(teamId)) {
       return { ok: false, error: "That player has no recorded playing history with this team." };
+    }
+    const careerAv = this.getPlayerCareerApproximateValue(playerId);
+    if (careerAv < Number(settings.retiredNumberCareerAvMin || 0)) {
+      return {
+        ok: false,
+        error: `That player does not meet the retired-number AV floor of ${settings.retiredNumberCareerAvMin}.`,
+        reasonCode: "history-retired-number-av"
+      };
+    }
+    this.refreshHallOfFame();
+    if (settings.retiredNumberRequireHallOfFame === true && !(this.league.hallOfFame || []).some((entry) => entry.playerId === playerId)) {
+      return {
+        ok: false,
+        error: "This league requires Hall of Fame induction before retiring a jersey number.",
+        reasonCode: "history-retired-number-hof"
+      };
     }
     if ((team.retiredNumbers || []).some((entry) => entry.playerId === playerId)) {
       return { ok: false, error: "That player's jersey is already retired for this team." };
@@ -4824,7 +4855,7 @@ export class GameSession {
       player: player.name,
       pos: player.position,
       retiredYear: this.currentYear,
-      careerAv: this.getPlayerCareerApproximateValue(playerId),
+      careerAv,
       championships: this.getPlayerChampionships(playerId),
       awards: awardCounts
     };

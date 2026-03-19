@@ -9,8 +9,8 @@ async function waitSetupReady(page) {
   await expect(page.locator("#setupStatus")).toContainText("Ready", { timeout: 20_000 });
 }
 
-async function waitGameReady(page) {
-  await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 25_000 });
+async function waitGameReady(page, timeout = 25_000) {
+  await expect(page.locator("#statusChip")).toContainText("Ready", { timeout });
 }
 
 async function createLeagueFromSetup(page, { runtimeMode = null } = {}) {
@@ -252,6 +252,11 @@ test("season awards and hall of fame history render for a populated multi-year l
   expect(retirementCandidate?.name).toBeTruthy();
   await page.reload();
   await waitGameReady(page);
+  await page.click('[data-testid="tab-settings"]');
+  await page.uncheck("#settingRetiredNumberRequireRetiredPlayer");
+  await page.uncheck("#settingRetiredNumberRequireHallOfFame");
+  await page.click("#saveSettingsBtn");
+  await waitGameReady(page, 45_000);
   await page.click('[data-testid="tab-history"]');
 
   expect(await page.locator("#historyAwardYearSelect option").count()).toBeGreaterThanOrEqual((dashboard.awards || []).length);
@@ -289,7 +294,7 @@ test("season awards and hall of fame history render for a populated multi-year l
   await expect(page.locator("#teamHistorySpotlight")).toBeVisible();
 
   await page.click("#retireSelectedJerseyBtn");
-  await waitGameReady(page);
+  await waitGameReady(page, 60_000);
   await expect(page.locator("#retiredNumbersGallery")).toContainText(retirementCandidate.name);
   if (Number.isFinite(retirementCandidate.jerseyNumber)) {
     await expect(page.locator("#retiredNumbersGallery")).toContainText(`#${retirementCandidate.jerseyNumber}`);

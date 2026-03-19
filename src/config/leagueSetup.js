@@ -47,7 +47,12 @@ export const DEFAULT_LEAGUE_SETTINGS = {
   allowUserFreeAgency: true,
   allowTop10PickTrading: true,
   smallMarketMode: false,
-  ownerMandateWinNow: false
+  ownerMandateWinNow: false,
+  hallOfFameInductionScoreMin: 240,
+  hallOfFameYearsRetiredMin: 0,
+  retiredNumberRequireRetiredPlayer: true,
+  retiredNumberRequireHallOfFame: false,
+  retiredNumberCareerAvMin: 0
 };
 
 export const ERA_PROFILES = {
@@ -389,6 +394,27 @@ export function resolveLeagueSettings(patch = {}, current = DEFAULT_LEAGUE_SETTI
     next.practiceSquadExperienceLimit = clampInt(patch.practiceSquadExperienceLimit, 0, 5, 2);
   }
   if (patch.scoutingWeeklyPoints != null) next.scoutingWeeklyPoints = clampInt(patch.scoutingWeeklyPoints, 4, 24, 12);
+  if (patch.hallOfFameInductionScoreMin != null) {
+    next.hallOfFameInductionScoreMin = clampInt(patch.hallOfFameInductionScoreMin, 120, 500, 240);
+  }
+  if (patch.hallOfFameYearsRetiredMin != null) {
+    next.hallOfFameYearsRetiredMin = clampInt(patch.hallOfFameYearsRetiredMin, 0, 10, 0);
+  }
+  if (patch.retiredNumberRequireRetiredPlayer != null) {
+    next.retiredNumberRequireRetiredPlayer = normalizeBool(
+      patch.retiredNumberRequireRetiredPlayer,
+      next.retiredNumberRequireRetiredPlayer
+    );
+  }
+  if (patch.retiredNumberRequireHallOfFame != null) {
+    next.retiredNumberRequireHallOfFame = normalizeBool(
+      patch.retiredNumberRequireHallOfFame,
+      next.retiredNumberRequireHallOfFame
+    );
+  }
+  if (patch.retiredNumberCareerAvMin != null) {
+    next.retiredNumberCareerAvMin = clampInt(patch.retiredNumberCareerAvMin, 0, 200, 0);
+  }
   if (patch.ownerPatience != null) next.ownerPatience = clampNumber(patch.ownerPatience, 0.05, 0.95, 0.55);
   if (patch.contractDemandMultiplier != null) {
     next.contractDemandMultiplier = clampNumber(patch.contractDemandMultiplier, 0.75, 1.5, 1);

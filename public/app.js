@@ -589,6 +589,15 @@ function formatActionError(error) {
   if (reasonCode === "challenge-top10-picks") {
     return "Challenge mode blocks the controlled team from acquiring or using top-10 draft picks.";
   }
+  if (reasonCode === "history-retired-number-active") {
+    return "This league requires a player to be retired before a team can retire that jersey number.";
+  }
+  if (reasonCode === "history-retired-number-hof") {
+    return "This league requires Hall of Fame induction before a jersey number can be retired.";
+  }
+  if (reasonCode === "history-retired-number-av") {
+    return "This player does not clear the league's retired-number legacy floor.";
+  }
   return error?.message || "Unexpected error.";
 }
 
@@ -1410,6 +1419,8 @@ function renderSettingsSpotlight() {
   const persistence = state.persistence || {};
   const runtimeCounters = Object.keys(state.observability?.runtime?.counters || {}).length;
   const serverRequests = state.observability?.server?.requests ?? 0;
+  const hallPolicy = hallOfFamePolicyLine(settings);
+  const retiredPolicy = retiredNumberPolicyLine(settings);
 
   spotlight.innerHTML = `
     <div class="overview-team-mark">
@@ -1428,6 +1439,11 @@ function renderSettingsSpotlight() {
         <strong>Commissioner Policy</strong>
         <div>${escapeHtml(settings.enableOwnerMode !== false ? "Owner mode active" : "Commissioner-only mode")}</div>
         <div class="small">${escapeHtml(`Injuries ${settings.allowInjuries !== false ? "on" : "off"} | Comp picks ${settings.enableCompPicks !== false ? "on" : "off"}`)}</div>
+      </div>
+      <div class="control-spotlight-card">
+        <strong>Legacy Policy</strong>
+        <div>${escapeHtml(hallPolicy)}</div>
+        <div class="small">${escapeHtml(`Retired numbers: ${retiredPolicy}`)}</div>
       </div>
       <div class="control-spotlight-card">
         <strong>Persistence</strong>
@@ -1450,7 +1466,8 @@ function renderSettingsSpotlight() {
       `Narratives ${settings.enableNarratives !== false ? "on" : "off"}`,
       `Owner mode ${settings.enableOwnerMode !== false ? "on" : "off"}`,
       `Chemistry ${settings.enableChemistry !== false ? "on" : "off"}`,
-      `Trade aggression ${settings.cpuTradeAggression ?? 0.5}`
+      `Trade aggression ${settings.cpuTradeAggression ?? 0.5}`,
+      `HOF ${hallPolicy}`
     ],
     "Settings will appear here after the league config loads"
   );
@@ -2533,9 +2550,9 @@ function renderRulesTab() {
     { tab: "Statistics", feature: "Player/Team Filters", behavior: "PFR-style filtered tables by scope, year, team, position, and category." },
     { tab: "Calendar", feature: "Year/Week Browser", behavior: "Displays regular season schedule + playoff bracket snapshots." },
     { tab: "League Log", feature: "Transaction Filters", behavior: "Filters transaction events by team, type, year, and limit." },
-    { tab: "History", feature: "Records + Timelines", behavior: "Shows records, awards, champions, player timelines, and team history." },
+    { tab: "History", feature: "Records + Timelines", behavior: "Shows records, awards, champions, Hall of Fame resumes, retired numbers, player timelines, and team history." },
     { tab: "Settings", feature: "Realism Verify", behavior: "Runs multi-year season/career drift check against target profiles." },
-    { tab: "Settings", feature: "League Settings", behavior: "Controls injuries, offseason automation, comp picks, chemistry, and retirement retention." },
+    { tab: "Settings", feature: "League Settings", behavior: "Controls injuries, offseason automation, comp picks, chemistry, retirement retention, Hall of Fame induction policy, and retired-number guardrails." },
     { tab: "Footer", feature: "Game Guide Button", behavior: "Opens the guide in a modal submenu instead of keeping the full help text permanently visible." }
   ];
   renderTable("rulesActionsTable", actionRows);
@@ -2772,6 +2789,18 @@ function awardCountLine(awardCounts = {}) {
     ["Most Improved", awardCounts.MostImproved || 0]
   ].filter(([, value]) => value > 0);
   return pairs.length ? pairs.map(([label, value]) => `${label} ${value}`).join(" | ") : "No major awards logged";
+}
+
+function hallOfFamePolicyLine(settings = state.leagueSettings || state.dashboard?.settings || {}) {
+  return `Score ${settings.hallOfFameInductionScoreMin ?? 240} | Wait ${settings.hallOfFameYearsRetiredMin ?? 0}y`;
+}
+
+function retiredNumberPolicyLine(settings = state.leagueSettings || state.dashboard?.settings || {}) {
+  const parts = [];
+  parts.push(settings.retiredNumberRequireRetiredPlayer !== false ? "Retired only" : "Active allowed");
+  if (settings.retiredNumberRequireHallOfFame === true) parts.push("Hall required");
+  if (Number(settings.retiredNumberCareerAvMin || 0) > 0) parts.push(`AV ${settings.retiredNumberCareerAvMin}+`);
+  return parts.join(" | ");
 }
 
 function setSelectedHistoryPlayerFromAwardEntry(entry) {
@@ -3012,12 +3041,13 @@ function renderHistorySpotlight() {
   const retiredCount = hall.reduce((sum, entry) => sum + (entry.retiredNumbers?.length || 0), 0);
   const latestChampion = champions.slice().sort((a, b) => (b.year || 0) - (a.year || 0))[0] || null;
   const topLegacy = hall[0] || null;
+  const settings = state.leagueSettings || state.dashboard?.settings || {};
   const spotlight = document.getElementById("historySpotlight");
   if (spotlight) {
     spotlight.innerHTML = `
       <div class="history-spotlight-mark">
         <div class="history-spotlight-label">Legacy Ledger</div>
-        <div class="history-spotlight-meta">${escapeHtml(latestChampion ? `${latestChampion.year} champion ${latestChampion.championTeamId}` : "No champions recorded yet")} | ${escapeHtml(hall.length)} Hall of Fame resumes | ${escapeHtml(retiredCount)} retired numbers logged</div>
+        <div class="history-spotlight-meta">${escapeHtml(latestChampion ? `${latestChampion.year} champion ${latestChampion.championTeamId}` : "No champions recorded yet")} | ${escapeHtml(hall.length)} Hall of Fame resumes | ${escapeHtml(retiredCount)} retired numbers logged | ${escapeHtml(hallOfFamePolicyLine(settings))}</div>
       </div>
       <div class="history-spotlight-grid">
         <div class="history-spotlight-card">
@@ -3061,6 +3091,7 @@ function renderHistorySpotlight() {
 function renderHallOfFameGallery(entries = []) {
   const gallery = document.getElementById("hallOfFameGallery");
   const spotlight = document.getElementById("hallOfFameSpotlight");
+  const settings = state.leagueSettings || state.dashboard?.settings || {};
   if (spotlight) {
     const top = entries[0] || null;
     const mostDecorated = entries.slice().sort((a, b) =>
@@ -3082,6 +3113,11 @@ function renderHallOfFameGallery(entries = []) {
           <strong>Most Decorated</strong>
           <div>${escapeHtml(mostDecorated ? mostDecorated.player : "No decorated legend yet")}</div>
           <div class="small">${escapeHtml(mostDecorated ? awardCountLine(mostDecorated.awardCounts || {}) : "Award-heavy careers will surface here.")}</div>
+        </div>
+        <div class="history-spotlight-card">
+          <strong>Induction Policy</strong>
+          <div>${escapeHtml(hallOfFamePolicyLine(settings))}</div>
+          <div class="small">${escapeHtml(entries.length ? "Commissioner settings can tighten or loosen the legacy bar." : "Lower the bar only if the archive is too thin for your league.")}</div>
         </div>
       </div>
     `;
@@ -3130,6 +3166,7 @@ function renderHallOfFameGallery(entries = []) {
 function renderTeamHistorySpotlight(history = null) {
   const spotlight = document.getElementById("teamHistorySpotlight");
   const gallery = document.getElementById("retiredNumbersGallery");
+  const settings = state.leagueSettings || state.dashboard?.settings || {};
   if (spotlight) {
     const seasons = history?.seasons || [];
     const bestSeason = seasons.slice().sort((a, b) => (b.w || 0) - (a.w || 0) || (b.pf || 0) - (a.pf || 0))[0] || null;
@@ -3147,7 +3184,7 @@ function renderTeamHistorySpotlight(history = null) {
         <div class="history-spotlight-card">
           <strong>Retired Numbers</strong>
           <div>${escapeHtml(history?.retiredNumbers?.length || 0)}</div>
-          <div class="small">${escapeHtml(history?.retiredNumbers?.length ? "Select a legend below to retire more jerseys." : "No retired numbers recorded yet")}</div>
+          <div class="small">${escapeHtml(history?.retiredNumbers?.length ? `Policy: ${retiredNumberPolicyLine(settings)}` : "No retired numbers recorded yet")}</div>
         </div>
         <div class="history-spotlight-card">
           <strong>Best Year</strong>
@@ -3739,6 +3776,8 @@ function applySettingsControls() {
   const compPicks = document.getElementById("settingEnableCompPicks");
   const chemistry = document.getElementById("settingEnableChemistry");
   const retirementRetention = document.getElementById("settingRetirementWinningRetention");
+  const retiredOnly = document.getElementById("settingRetiredNumberRequireRetiredPlayer");
+  const hallRequired = document.getElementById("settingRetiredNumberRequireHallOfFame");
   const era = document.getElementById("settingEraProfile");
   if (allowInjuries) allowInjuries.checked = settings.allowInjuries !== false;
   if (autoOffseason) autoOffseason.checked = settings.autoProgressOffseason === true;
@@ -3747,11 +3786,16 @@ function applySettingsControls() {
   if (compPicks) compPicks.checked = settings.enableCompPicks !== false;
   if (chemistry) chemistry.checked = settings.enableChemistry !== false;
   if (retirementRetention) retirementRetention.checked = settings.retirementWinningRetention !== false;
+  if (retiredOnly) retiredOnly.checked = settings.retiredNumberRequireRetiredPlayer !== false;
+  if (hallRequired) hallRequired.checked = settings.retiredNumberRequireHallOfFame === true;
   if (era) era.value = settings.eraProfile || "modern";
   document.getElementById("settingInjuryRate").value = settings.injuryRateMultiplier ?? 1;
   document.getElementById("settingCapGrowth").value = settings.capGrowthRate ?? 0.045;
   document.getElementById("settingTradeAggression").value = settings.cpuTradeAggression ?? 0.5;
   document.getElementById("settingRetirementMinWinPct").value = settings.retirementOverrideMinWinningPct ?? 0.55;
+  document.getElementById("settingHallOfFameInductionScoreMin").value = settings.hallOfFameInductionScoreMin ?? 240;
+  document.getElementById("settingHallOfFameYearsRetiredMin").value = settings.hallOfFameYearsRetiredMin ?? 0;
+  document.getElementById("settingRetiredNumberCareerAvMin").value = settings.retiredNumberCareerAvMin ?? 0;
   renderSettingsSpotlight();
 }
 
@@ -5371,7 +5415,12 @@ function bindEvents() {
           enableCompPicks: document.getElementById("settingEnableCompPicks").checked,
           enableChemistry: document.getElementById("settingEnableChemistry").checked,
           retirementWinningRetention: document.getElementById("settingRetirementWinningRetention").checked,
+          retiredNumberRequireRetiredPlayer: document.getElementById("settingRetiredNumberRequireRetiredPlayer").checked,
+          retiredNumberRequireHallOfFame: document.getElementById("settingRetiredNumberRequireHallOfFame").checked,
           retirementOverrideMinWinningPct: Number(document.getElementById("settingRetirementMinWinPct").value || 0.55),
+          hallOfFameInductionScoreMin: Number(document.getElementById("settingHallOfFameInductionScoreMin").value || 240),
+          hallOfFameYearsRetiredMin: Number(document.getElementById("settingHallOfFameYearsRetiredMin").value || 0),
+          retiredNumberCareerAvMin: Number(document.getElementById("settingRetiredNumberCareerAvMin").value || 0),
           eraProfile: document.getElementById("settingEraProfile").value,
           injuryRateMultiplier: Number(document.getElementById("settingInjuryRate").value || 1),
           capGrowthRate: Number(document.getElementById("settingCapGrowth").value || 0.045),

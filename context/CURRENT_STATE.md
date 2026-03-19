@@ -122,6 +122,10 @@ Build status:
 - Playwright UI coverage now includes a seeded server-backed multi-year history regression:
   - the test forces `server` runtime from setup, seeds two seasons quickly through `POST /api/advance-season`, reloads into the populated league, and verifies the `Season Awards` showcase plus `Hall of Fame` gallery surfaces render with non-empty archive data
   - the same regression then searches for a controlled-team roster player in `History`, loads that player timeline, loads the controlled-team legacy panel, and exercises the jersey-retirement action end to end without relying on imported real-NFL Hall of Fame entries
+- Hall-of-Fame and retired-number policy is now a formal commissioner-controlled system:
+  - settings now expose a configurable Hall-of-Fame induction score floor, Hall-of-Fame waiting-period floor, retired-player-only jersey-retirement rule, optional Hall-of-Fame requirement for jersey retirement, and a retired-number AV floor
+  - runtime enforcement now blocks retiring jerseys for active players by default and returns explicit `reasonCode` values when Hall-of-Fame or AV policy blocks the action
+  - the Settings and History surfaces now summarize those legacy-policy rules directly so commissioners can see the active induction/retired-number standard without leaving the main workflow
 - Season wrap/history is now deeper and more explicit:
   - the yearly flow now pauses on a dedicated `season-awards` phase between the Super Bowl and offseason pipeline
   - award history now stores richer categories including `ROY`, `CPOY`, `MostImproved`, `AllPro1/2/3`, `ProBowl`, and a Super Bowl summary with MVP/pivotal moment
@@ -177,10 +181,15 @@ Build status:
   - `npm.cmd run smoke:pages`
   - `node --check tests-ui/app.spec.js`
   - `npm.cmd run test:ui -- --grep "season awards and hall of fame history render for a populated multi-year league" --reporter=dot`
+  - `node --check src/config/leagueSetup.js`
+  - `node --check src/runtime/GameSession.js`
+  - `node --check public/app.js`
+  - `node --test --test-isolation=none test/new-systems.test.js`
+  - `node --test --test-isolation=none test/local-api-runtime.test.js`
 
 Current priorities:
 1. Review the `Season Awards` / `Hall of Fame` split, retired-number controls, and dossier/control-deck layouts on mobile plus a populated multi-year league
-2. Decide whether the hall-of-fame induction threshold and retired-number workflow need commissioner settings, extra guardrails, or ceremony surfacing
+2. Decide whether Hall-of-Fame and jersey-retirement flows now need ceremony surfacing or additional commissioner messaging beyond the new settings/guardrails
 3. Extend the refreshed UI language across any remaining lower-priority legacy tabs so the newer command-deck treatment is not isolated
 4. Use the preserved setup diagnostics to decide whether another setup/main-menu latency trim is warranted before starting a new feature area
 5. Feed the newer world-state deeper into any remaining owner expectation loops and transaction AI edges after the UX review pass

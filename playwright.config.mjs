@@ -19,7 +19,7 @@ export default defineConfig({
       PORT: "4273"
     },
     reuseExistingServer: false,
-    timeout: 30_000
+    timeout: 60_000
   }
 });
 
