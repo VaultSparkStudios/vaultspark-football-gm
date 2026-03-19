@@ -68,6 +68,7 @@ const state = {
   historyTimeline: null,
   historyPlayerSearchResults: [],
   selectedHistoryPlayerId: null,
+  activeTab: "overviewTab",
   statsHiddenColumns: [],
   activePlayerId: null,
   recentBoxScores: [],
@@ -238,6 +239,41 @@ const STATS_BENCHMARK_HINTS = {
     default:
       "Team tables are not starter-qualified player baselines. Use QA and analytics panels for league-level scoring and efficiency averages."
   }
+};
+
+const TEAM_THEME_MAP = {
+  ARI: { primary: "#97233f", secondary: "#ffb612", tertiary: "#000000" },
+  ATL: { primary: "#a71930", secondary: "#000000", tertiary: "#a5acaf" },
+  BAL: { primary: "#241773", secondary: "#9e7c0c", tertiary: "#c60c30" },
+  BUF: { primary: "#00338d", secondary: "#c60c30", tertiary: "#5bc2e7" },
+  CAR: { primary: "#0085ca", secondary: "#101820", tertiary: "#bfc0bf" },
+  CHI: { primary: "#0b162a", secondary: "#c83803", tertiary: "#a5acaf" },
+  CIN: { primary: "#fb4f14", secondary: "#000000", tertiary: "#ffffff" },
+  CLE: { primary: "#311d00", secondary: "#ff3c00", tertiary: "#ffffff" },
+  DAL: { primary: "#003594", secondary: "#869397", tertiary: "#041e42" },
+  DEN: { primary: "#fb4f14", secondary: "#002244", tertiary: "#ffffff" },
+  DET: { primary: "#0076b6", secondary: "#b0b7bc", tertiary: "#000000" },
+  GB: { primary: "#203731", secondary: "#ffb612", tertiary: "#ffffff" },
+  HOU: { primary: "#03202f", secondary: "#a71930", tertiary: "#ffffff" },
+  IND: { primary: "#002c5f", secondary: "#a2aaad", tertiary: "#ffffff" },
+  JAX: { primary: "#006778", secondary: "#9f792c", tertiary: "#101820" },
+  KC: { primary: "#e31837", secondary: "#ffb81c", tertiary: "#ffffff" },
+  LAC: { primary: "#0080c6", secondary: "#ffc20e", tertiary: "#ffffff" },
+  LAR: { primary: "#003594", secondary: "#ffd100", tertiary: "#ffffff" },
+  LV: { primary: "#000000", secondary: "#a5acaf", tertiary: "#ffffff" },
+  MIA: { primary: "#008e97", secondary: "#fc4c02", tertiary: "#005778" },
+  MIN: { primary: "#4f2683", secondary: "#ffc62f", tertiary: "#ffffff" },
+  NE: { primary: "#002244", secondary: "#c60c30", tertiary: "#b0b7bc" },
+  NO: { primary: "#101820", secondary: "#d3bc8d", tertiary: "#ffffff" },
+  NYG: { primary: "#0b2265", secondary: "#a71930", tertiary: "#ffffff" },
+  NYJ: { primary: "#125740", secondary: "#000000", tertiary: "#ffffff" },
+  PHI: { primary: "#004c54", secondary: "#a5acaf", tertiary: "#000000" },
+  PIT: { primary: "#101820", secondary: "#ffb612", tertiary: "#ffffff" },
+  SEA: { primary: "#002244", secondary: "#69be28", tertiary: "#a5acaf" },
+  SF: { primary: "#aa0000", secondary: "#b3995d", tertiary: "#000000" },
+  TB: { primary: "#d50a0a", secondary: "#34302b", tertiary: "#ff7900" },
+  TEN: { primary: "#0c2340", secondary: "#4b92db", tertiary: "#c8102e" },
+  WAS: { primary: "#5a1414", secondary: "#ffb612", tertiary: "#ffffff" }
 };
 
 const api = createApiClient();
@@ -499,7 +535,15 @@ function renderPlayerProfileHero(profile) {
 
 function setStatus(text) {
   const el = document.getElementById("statusChip");
-  if (el) el.textContent = text;
+  if (!el) return;
+  el.textContent = text;
+  const tone =
+    /^error/i.test(text) ? "negative"
+      : /^blocked/i.test(text) ? "warning"
+        : /loading|simulating|working|retiring|saving|updating|starting|searching|refreshing|advancing/i.test(text) ? "info"
+          : /ready|done/i.test(text) ? "positive"
+            : null;
+  setElementTone(el, tone);
 }
 
 function appendAvLast(row, av) {
@@ -581,6 +625,61 @@ function showToast(message) {
   setTimeout(() => item.remove(), 2600);
 }
 
+function metricNumber(value) {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  const text = String(value ?? "").replace(/[^0-9.+-]/g, "");
+  if (!text || text === "+" || text === "-" || text === ".") return null;
+  const parsed = Number(text);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function classifyTone(column, value) {
+  const key = String(column || "").toLowerCase();
+  const text = String(value ?? "").trim();
+  const lower = text.toLowerCase();
+  const number = metricNumber(value);
+
+  if (!text) return null;
+  if (lower.includes("error") || lower.includes("blocked")) return "negative";
+  if (lower.includes("warning") || lower.includes("watch") || lower.includes("pressure")) return "warning";
+  if (lower.includes("healthy") || lower.includes("ready") || lower.includes("won") || lower.includes("surplus")) return "positive";
+  if (lower.includes("locked")) return "warning";
+
+  if (["delta", "change", "swing"].some((token) => key.includes(token)) && number != null) {
+    return number > 0 ? "positive" : number < 0 ? "negative" : null;
+  }
+  if (["capspace", "space", "cash", "wins", "projectedwins", "confidence", "fit", "chemistry"].some((token) => key.includes(token)) && number != null) {
+    return number > 0 ? "positive" : number < 0 ? "negative" : null;
+  }
+  if (["deadcap", "losses", "heat", "pressure", "injury", "risk"].some((token) => key.includes(token)) && number != null) {
+    return number > 0 ? "warning" : null;
+  }
+  if (["ovr", "av", "grade", "potential"].some((token) => key === token || key.includes(token)) && number != null) {
+    if (number >= 85) return "positive";
+    if (number <= 65) return "warning";
+    return "accent";
+  }
+  if (key === "status") {
+    if (/(healthy|ready|active|available)/i.test(text)) return "positive";
+    if (/(inj|suspended|out|inactive)/i.test(text)) return "warning";
+  }
+  return null;
+}
+
+function setElementTone(elementOrId, tone) {
+  const el = typeof elementOrId === "string" ? document.getElementById(elementOrId) : elementOrId;
+  if (!el) return;
+  el.classList.remove("tone-positive", "tone-negative", "tone-warning", "tone-info", "tone-accent");
+  if (tone) el.classList.add(`tone-${tone}`);
+}
+
+function setMetricCardValue(elementId, value, tone = null) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  el.textContent = value;
+  setElementTone(el, tone);
+}
+
 function formatActionError(error) {
   const reasonCode = error?.reasonCode || error?.payload?.reasonCode;
   if (reasonCode === "challenge-free-agency") {
@@ -629,6 +728,37 @@ function teamDisplayFromId(teamId) {
 
 function teamDisplayLabel(team) {
   return `${team?.abbrev || team?.id || "-"} - ${team?.name || "-"}`;
+}
+
+function hexToRgbTriplet(hex, fallback = "70, 182, 154") {
+  const safe = String(hex || "").trim().replace("#", "");
+  if (![3, 6].includes(safe.length)) return fallback;
+  const normalized = safe.length === 3 ? safe.split("").map((part) => `${part}${part}`).join("") : safe;
+  const value = Number.parseInt(normalized, 16);
+  if (!Number.isFinite(value)) return fallback;
+  const r = (value >> 16) & 255;
+  const g = (value >> 8) & 255;
+  const b = value & 255;
+  return `${r}, ${g}, ${b}`;
+}
+
+function getActiveTeamTheme() {
+  const controlledTeamId = state.dashboard?.controlledTeam?.id || state.dashboard?.controlledTeamId || "BUF";
+  return TEAM_THEME_MAP[controlledTeamId] || TEAM_THEME_MAP.BUF;
+}
+
+function applyShellTheme() {
+  const root = document.documentElement;
+  const body = document.body;
+  if (!root || !body) return;
+  const theme = getActiveTeamTheme();
+  root.style.setProperty("--team-primary", theme.primary);
+  root.style.setProperty("--team-secondary", theme.secondary);
+  root.style.setProperty("--team-tertiary", theme.tertiary);
+  root.style.setProperty("--team-primary-rgb", hexToRgbTriplet(theme.primary, "0, 51, 141"));
+  root.style.setProperty("--team-secondary-rgb", hexToRgbTriplet(theme.secondary, "198, 12, 48"));
+  root.style.setProperty("--team-tertiary-rgb", hexToRgbTriplet(theme.tertiary, "91, 194, 231"));
+  body.dataset.activeTab = state.activeTab || "overviewTab";
 }
 
 function setSimControl(next) {
@@ -1160,7 +1290,11 @@ function renderTable(
     .map(
       (row) =>
         `<tr>${columns
-          .map((col) => `<td>${row[col] == null ? "" : escapeHtml(row[col])}</td>`)
+          .map((col) => {
+            const tone = classifyTone(col, row[col]);
+            const className = tone ? ` class="tone-${tone}"` : "";
+            return `<td${className}>${row[col] == null ? "" : escapeHtml(row[col])}</td>`;
+          })
           .join("")}</tr>`
     )
     .join("");
@@ -1231,6 +1365,7 @@ function syncTeamSelects() {
     txPrevious || ""
   );
   state.syncedControlledTeamId = controlled;
+  applyShellTheme();
 }
 
 function updateTopMeta() {
@@ -1243,18 +1378,26 @@ function updateTopMeta() {
     const draftStage = d.draft?.completed === false ? `Draft Pick ${d.draft.currentPick}` : null;
     const offseasonStage = d.offseasonPipeline?.currentStage?.replaceAll("-", " ") || null;
     stageChip.textContent = `Stage: ${draftStage || offseasonStage || d.phase}`;
+    setElementTone(
+      stageChip,
+      /playoff|super bowl|draft/i.test(stageChip.textContent) ? "accent" : /offseason/i.test(stageChip.textContent) ? "info" : "positive"
+    );
   }
 }
 
 function renderOverview() {
   const d = state.dashboard;
   if (!d) return;
-  document.getElementById("phaseCard").textContent = d.phase;
-  document.getElementById("yearCard").textContent = `${d.currentYear} / W${d.currentWeek}`;
-  document.getElementById("seasonsCard").textContent = String(d.seasonsSimulated || 0);
-  document.getElementById("capCard").textContent = fmtMoney(d.cap?.capSpace || 0);
-  document.getElementById("deadCapCard").textContent = fmtMoney(d.cap?.deadCap || 0);
-  document.getElementById("ovrCard").textContent = d.controlledTeam?.overallRating ?? "-";
+  setMetricCardValue("phaseCard", d.phase, "info");
+  setMetricCardValue("yearCard", `${d.currentYear} / W${d.currentWeek}`, "accent");
+  setMetricCardValue("seasonsCard", String(d.seasonsSimulated || 0), "accent");
+  setMetricCardValue("capCard", fmtMoney(d.cap?.capSpace || 0), (d.cap?.capSpace || 0) >= 0 ? "positive" : "negative");
+  setMetricCardValue("deadCapCard", fmtMoney(d.cap?.deadCap || 0), (d.cap?.deadCap || 0) > 40_000_000 ? "negative" : "warning");
+  setMetricCardValue(
+    "ovrCard",
+    d.controlledTeam?.overallRating ?? "-",
+    classifyTone("ovr", d.controlledTeam?.overallRating ?? null) || "accent"
+  );
   const weeklyPlan = d.controlledTeam?.weeklyPlan || {};
   const expectation = d.controlledTeam?.owner?.expectation || {};
   const culture = d.controlledTeam?.cultureProfile || {};
@@ -2068,12 +2211,24 @@ function renderContractsPage() {
   const roster = state.contractRoster || [];
   const totalSalary = roster.reduce((sum, player) => sum + Number(player.contract?.salary || 0), 0);
   const totalYears = roster.reduce((sum, player) => sum + Number(player.contract?.yearsRemaining || 0), 0);
-  document.getElementById("contractsCapSpaceCard").textContent = fmtMoney(state.contractCap?.capSpace || 0);
-  document.getElementById("contractsActiveCapCard").textContent = fmtMoney(state.contractCap?.activeCap || 0);
-  document.getElementById("contractsDeadCapCard").textContent = fmtMoney(state.contractCap?.deadCapCurrentYear || 0);
-  document.getElementById("contractsAvgSalaryCard").textContent = roster.length ? fmtMoney(totalSalary / roster.length) : "$0";
-  document.getElementById("contractsAvgYearsCard").textContent = roster.length ? (totalYears / roster.length).toFixed(1) : "0.0";
-  document.getElementById("contractsTradeBlockCard").textContent = `${roster.filter((player) => state.tradeBlockIds.includes(player.id)).length}`;
+  setMetricCardValue(
+    "contractsCapSpaceCard",
+    fmtMoney(state.contractCap?.capSpace || 0),
+    (state.contractCap?.capSpace || 0) >= 0 ? "positive" : "negative"
+  );
+  setMetricCardValue("contractsActiveCapCard", fmtMoney(state.contractCap?.activeCap || 0), "accent");
+  setMetricCardValue(
+    "contractsDeadCapCard",
+    fmtMoney(state.contractCap?.deadCapCurrentYear || 0),
+    (state.contractCap?.deadCapCurrentYear || 0) > 35_000_000 ? "negative" : "warning"
+  );
+  setMetricCardValue("contractsAvgSalaryCard", roster.length ? fmtMoney(totalSalary / roster.length) : "$0", "accent");
+  setMetricCardValue("contractsAvgYearsCard", roster.length ? (totalYears / roster.length).toFixed(1) : "0.0", "info");
+  setMetricCardValue(
+    "contractsTradeBlockCard",
+    `${roster.filter((player) => state.tradeBlockIds.includes(player.id)).length}`,
+    state.tradeBlockIds.length ? "warning" : "accent"
+  );
 
   const demandById = new Map((state.negotiationTargets || []).map((entry) => [entry.id, entry.demand || null]));
   const rows = roster.map((player) => ({
@@ -2642,6 +2797,18 @@ function renderScouting() {
     document.getElementById("scoutingPointsText").textContent = "Points: 0";
     document.getElementById("scoutingLockText").textContent = "Board: Unlocked";
     document.getElementById("scoutingBoardText").textContent = "Board: 0 / 20";
+    setElementTone("scoutingPointsText", null);
+    setElementTone("scoutingLockText", null);
+    setElementTone("scoutingBoardText", null);
+    setMetricCardValue("scoutingPointsCard", "-", "accent");
+    setMetricCardValue("scoutingBoardCard", "-", "accent");
+    setMetricCardValue("scoutingLockCard", "-", "warning");
+    setMetricCardValue("scoutingTopProspectCard", "-", "accent");
+    const scoutingSpotlight = document.getElementById("scoutingSpotlight");
+    if (scoutingSpotlight) {
+      scoutingSpotlight.innerHTML = `<div class="small">Load the board to surface confidence, scheme fit, and board pressure.</div>`;
+    }
+    renderPulseChips("scoutingPulseBar", [], "Scouting signals will appear here");
     const insight = document.getElementById("scoutingInsightText");
     if (insight) insight.textContent = "Load the board to surface fit, confidence, and weekly scouting guidance.";
     renderTable("scoutingTable", []);
@@ -2660,6 +2827,9 @@ function renderScouting() {
   document.getElementById("scoutingPointsText").textContent = `Points: ${scouting.points || 0}`;
   document.getElementById("scoutingLockText").textContent = scouting.locked ? "Board: Locked" : "Board: Unlocked";
   document.getElementById("scoutingBoardText").textContent = `Board: ${state.scoutingBoardDraft.length} / 20`;
+  setElementTone("scoutingPointsText", (scouting.points || 0) > 0 ? "positive" : "warning");
+  setElementTone("scoutingLockText", scouting.locked ? "warning" : "positive");
+  setElementTone("scoutingBoardText", state.scoutingBoardDraft.length >= 20 ? "warning" : "accent");
   const rows = (scouting.prospects || []).slice(0, 140).map((prospect) => ({
     id: prospect.playerId,
     playerId: prospect.playerId,
@@ -2737,7 +2907,62 @@ function renderScouting() {
     }
     lines.push(scouting.locked ? "Board is locked; scouting now only updates the live report." : `Board room remaining: ${Math.max(0, 20 - state.scoutingBoardDraft.length)} slots.`);
     insight.textContent = lines.join(" ");
+    setMetricCardValue("scoutingPointsCard", String(scouting.points || 0), (scouting.points || 0) > 0 ? "positive" : "warning");
+    setMetricCardValue("scoutingBoardCard", `${state.scoutingBoardDraft.length} / 20`, state.scoutingBoardDraft.length >= 20 ? "warning" : "accent");
+    setMetricCardValue("scoutingLockCard", scouting.locked ? "Locked" : "Open", scouting.locked ? "warning" : "positive");
+    setMetricCardValue("scoutingTopProspectCard", featured ? featured.player : "-", featured ? "accent" : null);
+    renderScoutingSpotlight(featured, latestReport);
   }
+}
+
+function renderScoutingSpotlight(featured = null, latestReport = null) {
+  const spotlight = document.getElementById("scoutingSpotlight");
+  if (!spotlight) return;
+  const teamId = state.dashboard?.controlledTeamId || null;
+  const team = teamByCode(teamId) || null;
+  const scouting = state.scouting || {};
+  const fitText = featured?.fitLabel ? `${featured.fitLabel} (${featured.schemeFit ?? "-"})` : "No fit read yet";
+  const reportText = latestReport
+    ? `${latestReport.player} ${latestReport.delta >= 0 ? "+" : ""}${latestReport.delta || 0} OVR | ${latestReport.confidence ?? 0}% confidence`
+    : "No weekly report yet";
+
+  spotlight.innerHTML = `
+    <div class="overview-team-mark">
+      <div class="overview-team-label">${escapeHtml(team?.name || teamId || "Scouting")}</div>
+      <div class="overview-team-meta">
+        ${escapeHtml(team?.abbrev || teamId || "-")} | ${escapeHtml(scouting.locked ? "Board locked for draft prep" : "Board open for weekly allocation")}
+      </div>
+    </div>
+    <div class="control-spotlight-grid">
+      <div class="control-spotlight-card">
+        <strong>Top Board Target</strong>
+        <div>${escapeHtml(featured ? `${featured.player} (${featured.pos})` : "No target selected")}</div>
+        <div class="small">${escapeHtml(featured ? `Projected Round ${featured.projectedRound || "-"} | ${fitText}` : "Build a board to surface your best team-fit targets.")}</div>
+      </div>
+      <div class="control-spotlight-card">
+        <strong>Weekly Read</strong>
+        <div>${escapeHtml(reportText)}</div>
+        <div class="small">${escapeHtml(featured ? `Combine ${featured.combine40 || "-"} | Scout OVR ${featured.scoutedOverall ?? "-"}` : "Scouting reports update after spending points or advancing weeks.")}</div>
+      </div>
+      <div class="control-spotlight-card">
+        <strong>Room Pressure</strong>
+        <div>${escapeHtml(`${Math.max(0, 20 - state.scoutingBoardDraft.length)} slots left`)}</div>
+        <div class="small">${escapeHtml(`${scouting.points || 0} weekly points | ${scouting.locked ? "Locked board" : "Board can still move"}`)}</div>
+      </div>
+    </div>
+  `;
+
+  renderPulseChips(
+    "scoutingPulseBar",
+    [
+      featured?.fitLabel ? `Fit ${featured.fitLabel}` : null,
+      featured?.confidence != null ? `Confidence ${featured.confidence}%` : null,
+      latestReport ? `Latest delta ${latestReport.delta >= 0 ? "+" : ""}${latestReport.delta || 0}` : null,
+      scouting.locked ? "Board locked" : "Board open",
+      `${Math.max(0, 20 - state.scoutingBoardDraft.length)} slots left`
+    ],
+    "Scouting signals will appear here"
+  );
 }
 
 function moveIdWithinList(list, playerId, delta) {
@@ -3072,10 +3297,22 @@ function renderHistorySpotlight() {
   const retiredCountCard = document.getElementById("historyRetiredCountCard");
   const awardYearsCard = document.getElementById("historyAwardYearsCard");
   const championCard = document.getElementById("historyChampionCard");
-  if (hallCountCard) hallCountCard.textContent = String(hall.length);
-  if (retiredCountCard) retiredCountCard.textContent = String(retiredCount);
-  if (awardYearsCard) awardYearsCard.textContent = String(awards.length);
-  if (championCard) championCard.textContent = latestChampion?.championTeamId || "-";
+  if (hallCountCard) {
+    hallCountCard.textContent = String(hall.length);
+    setElementTone(hallCountCard, hall.length ? "accent" : null);
+  }
+  if (retiredCountCard) {
+    retiredCountCard.textContent = String(retiredCount);
+    setElementTone(retiredCountCard, retiredCount ? "positive" : null);
+  }
+  if (awardYearsCard) {
+    awardYearsCard.textContent = String(awards.length);
+    setElementTone(awardYearsCard, awards.length ? "info" : null);
+  }
+  if (championCard) {
+    championCard.textContent = latestChampion?.championTeamId || "-";
+    setElementTone(championCard, latestChampion ? "accent" : null);
+  }
   renderPulseChips(
     "historyPulseBar",
     [
@@ -4039,12 +4276,14 @@ function applyDashboard(newState) {
 }
 
 function activateTab(tabId) {
+  state.activeTab = tabId;
   document.querySelectorAll(".menu-btn").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.tab === tabId);
   });
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);
   });
+  applyShellTheme();
   if (tabId === "contractsTab") {
     loadContractsTeam().catch((error) => {
       presentActionError(error);
@@ -5675,6 +5914,7 @@ function bindEvents() {
 async function init() {
   state.statsHiddenColumns = readStatsHiddenColumns();
   bindEvents();
+  applyShellTheme();
   renderTradeWorkspace();
   renderPickAssets();
   renderCompareSearchResults();

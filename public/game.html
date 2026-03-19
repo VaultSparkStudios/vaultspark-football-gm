@@ -34,14 +34,17 @@
 
     <main class="game-shell">
       <aside class="side-menu">
+        <div class="menu-section-label">Franchise</div>
         <button class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview">Overview</button>
         <button class="menu-btn" data-tab="rosterTab" data-testid="tab-roster">Roster</button>
         <button class="menu-btn" data-tab="faTab" data-testid="tab-fa">Free Agents</button>
         <button class="menu-btn" data-tab="depthTab" data-testid="tab-depth">Depth Chart</button>
+        <div class="menu-section-label">Front Office</div>
         <button class="menu-btn" data-tab="transactionsTab" data-testid="tab-transactions">Transactions</button>
         <button class="menu-btn" data-tab="contractsTab" data-testid="tab-contracts">Contracts</button>
         <button class="menu-btn" data-tab="scoutingTab" data-testid="tab-scouting">Scouting</button>
         <button class="menu-btn" data-tab="draftTab" data-testid="tab-draft">Draft</button>
+        <div class="menu-section-label">League</div>
         <button class="menu-btn" data-tab="statsTab" data-testid="tab-stats">Statistics</button>
         <button class="menu-btn" data-tab="calendarTab" data-testid="tab-calendar">Calendar</button>
         <button class="menu-btn" data-tab="logTab" data-testid="tab-log">League Log</button>
@@ -300,7 +303,7 @@
         </section>
 
         <section id="contractsTab" class="tab-panel">
-          <div class="panel control-hero-panel">
+          <div class="panel control-hero-panel contracts-hero-panel">
             <div class="control-hero-grid">
               <div class="control-hero-copy">
                 <div class="brand-kicker">Contract Operations</div>
@@ -381,6 +384,27 @@
         </section>
 
         <section id="scoutingTab" class="tab-panel">
+          <div class="panel control-hero-panel scouting-hero-panel">
+            <div class="control-hero-grid">
+              <div class="control-hero-copy">
+                <div class="brand-kicker">Draft Intelligence</div>
+                <h2>Scouting Room</h2>
+                <div id="scoutingSpotlight" class="control-spotlight">
+                  <div class="small">Load the board to surface confidence, scheme fit, and board pressure.</div>
+                </div>
+              </div>
+              <div class="control-hero-side">
+                <div class="cards">
+                  <article><h3>Weekly Points</h3><p id="scoutingPointsCard">-</p></article>
+                  <article><h3>Board Slots</h3><p id="scoutingBoardCard">-</p></article>
+                  <article><h3>Board State</h3><p id="scoutingLockCard">-</p></article>
+                  <article><h3>Top Prospect</h3><p id="scoutingTopProspectCard">-</p></article>
+                </div>
+                <div id="scoutingPulseBar" class="control-pulse-bar"></div>
+              </div>
+            </div>
+          </div>
+
           <div class="panel">
             <h2>Scouting</h2>
             <div class="row">
@@ -578,7 +602,7 @@
         </section>
 
         <section id="historyTab" class="tab-panel">
-          <div class="panel control-hero-panel">
+          <div class="panel control-hero-panel history-hero-panel">
             <div class="control-hero-grid">
               <div class="control-hero-copy">
                 <div class="brand-kicker">League Legacy Archive</div>

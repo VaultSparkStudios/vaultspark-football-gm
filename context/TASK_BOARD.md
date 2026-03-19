@@ -4,6 +4,7 @@
 - Check the live/mobile behavior of the `Season Awards` / `Hall of Fame` split, retired-number controls, player dossier hero, and newer contracts/settings/owner command-deck surfaces
 - Use the seeded Playwright history regression as the baseline while continuing the manual populated-league review, especially for mobile layout and any states not covered by the server-backed test path
 - Review the new Hall-of-Fame/retired-number commissioner settings in live play so the policy copy, defaults, and blocked-action messaging feel clear on desktop and mobile
+- Review the new team-color shell, top bar/nav treatment, scouting hero, and setup hero on desktop/mobile so the stronger visual language holds up beyond the default happy path
 - Decide whether the player-history archive cards should stay paired with the raw timeline/search tables or whether one of those legacy tables can be reduced further
 - Decide whether the remaining History lookup drawers should stay collapsible or whether some of that raw-table access belongs in export/admin views later
 - Sanity-check the 18-week / one-bye schedule structure across a few seeded leagues after deploy, not just the regression seed
@@ -11,6 +12,10 @@
 - Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
 - Decide whether to promote the generated `output/statmuse-2025-baseline.json` flow into a first-class repo script instead of keeping the live profile refresh as a documented/manual smoothing step
 - Extend the refreshed UI language across any remaining legacy panels that still look like pre-refresh utility screens
+- Decide which long-playability feature area should come next now that the shell is in better shape:
+  - league-era drift
+  - coaching/staff carousel
+  - rivalry/narrative memory
 
 ## Next
 - Add more player-profile richness if the new dossier surface lands well:

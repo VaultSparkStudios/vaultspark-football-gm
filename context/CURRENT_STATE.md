@@ -110,6 +110,12 @@ Build status:
   - the contracts tab now opens with a cap-command spotlight that summarizes selected-player leverage, cap posture, expiring deals, and tag/option signals
   - the settings tab now has a commissioner-deck summary that surfaces save health, core rules toggles, persistence posture, and observability status
   - owner controls now include an owner spotlight that summarizes mandate, economics, facilities, and weekly pressure before the raw owner table
+- The shell now has a much stronger live visual identity instead of one flat dark treatment:
+  - the game shell applies a controlled-team color theme to the background, top bar, and active navigation state
+  - the side nav now groups workflow areas and uses stronger active-state treatment so the shell reads more like a command console than a button list
+  - `Contracts`, `Scouting`, and `History` now have more distinct hero/surface palettes, including a new scouting command-deck hero instead of only a utilitarian work panel
+  - table/chip/card values now use broader semantic tone styling for positive, warning, negative, info, and accent states
+  - the main menu hero now carries more atmosphere and framing, with a stronger story/pillars layer instead of only a plain setup card
 - The latest UI/history pass tightened readability and league-history flow:
   - select dropdown menus now force readable option contrast instead of the earlier white-on-white native menu issue
   - leftover placeholder/dev copy on the overview dashboard was replaced with user-facing text, and vague `delta` wording now reads as `Change`, `Need Gap`, `Cap Change`, or `value swing`
@@ -184,6 +190,8 @@ Build status:
   - `node --check src/config/leagueSetup.js`
   - `node --check src/runtime/GameSession.js`
   - `node --check public/app.js`
+  - `npm.cmd run build:pages`
+  - `npm.cmd run test:ui -- --grep "create league, advance week, and open player modal" --reporter=dot`
   - `node --test --test-isolation=none test/new-systems.test.js`
   - `node --test --test-isolation=none test/local-api-runtime.test.js`
 
