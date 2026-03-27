@@ -1,7 +1,18 @@
 # Self-Improvement Loop
 
 This file is the living audit and improvement engine for the project.
-Append a new entry every closeout. Never delete prior entries.
+The Rolling Status header is overwritten each closeout. Entries are append-only — never delete.
+
+---
+
+<!-- rolling-status-start -->
+## Rolling Status (auto-updated each closeout)
+Sparkline (last 5 totals): ▁ (session 0)
+3-session avg [N/A — Calibration]: Dev — | Align — | Momentum — | Engage — | Process 4.0
+Avg total: 4.0 / 50  |  Velocity trend: →  |  Debt: →
+Last session: 2026-03-26 | Session 0 | Total: 4/50 | Velocity: 0
+─────────────────────────────────────────────────────────────────────
+<!-- rolling-status-end -->
 
 ---
 

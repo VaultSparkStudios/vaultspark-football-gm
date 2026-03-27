@@ -1,6 +1,13 @@
 # Latest Handoff
 
-Last updated: 2026-03-26
+Last updated: 2026-03-26 (Session 0 — Studio OS Bootstrap)
+
+## Where We Left Off (Session 0)
+- Shipped: 0 code changes — Studio OS bootstrap session
+- Tests: N/A — no automated test suite
+- Deploy: deployed — live client beta at vaultsparkstudios.com/vaultspark-football-gm/
+
+---
 
 This is the authoritative active handoff file for the project.
 

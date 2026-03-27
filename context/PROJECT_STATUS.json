@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.1",
+  "slug": "football-gm",
+  "name": "VaultSpark Football GM",
+  "type": "game",
+  "stage": "client-beta",
+  "status": "active",
+  "health": "yellow",
+  "owner": "VaultSpark Studios",
+  "localPath": "C:\\Users\\p4cka\\documents\\development\\VaultSpark Football GM",
+  "github": "https://github.com/VaultSparkStudios/vaultspark-football-gm",
+  "liveUrl": "https://vaultsparkstudios.com/vaultspark-football-gm/",
+  "currentFocus": "Beta testing and polish.",
+  "nextMilestone": "Full release pass.",
+  "blockers": [
+    "SOUL.md non-negotiables need Studio Owner input",
+    "Beta release milestone not yet concretely defined"
+  ],
+  "lastUpdated": "2026-03-26",
+  "silScore": 4,
+  "silAvg3": null,
+  "silVelocity": 0,
+  "silDebt": "→",
+  "silLastSession": "2026-03-26",
+  "ignisScore": null,
+  "testsTotal": null,
+  "lastDeployStatus": "deployed"
+}
