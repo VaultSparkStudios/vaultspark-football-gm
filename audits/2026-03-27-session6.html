@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VaultSpark Football GM — Session 6 Full Audit | 2026-03-27</title>
+<style>
+  :root {
+    --bg0: #0d0f14;
+    --bg1: #13161e;
+    --bg2: #1a1e28;
+    --bg3: #222736;
+    --panel: #1e2230;
+    --line: #2e3448;
+    --ink: #e8ecf4;
+    --muted: #7a8299;
+    --accent: #4f8ef7;
+    --accent2: #7c5cbf;
+    --gold: #e8a840;
+    --success: #3dba7e;
+    --warn: #e8a840;
+    --danger: #e05a5a;
+    --info: #4f8ef7;
+    --shadow: 0 4px 24px rgba(0,0,0,0.5);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg0);
+    color: var(--ink);
+    font-family: 'Segoe UI', 'Bahnschrift', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0 0 60px 0;
+  }
+  a { color: var(--accent); text-decoration: none; }
+
+  /* HEADER */
+  .report-header {
+    background: linear-gradient(135deg, #0d0f14 0%, #1a1030 50%, #0d1a2e 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 48px 40px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,142,247,0.08) 0%, transparent 70%);
+  }
+  .report-header .label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .report-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .report-header .subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+  .score-hero {
+    display: flex;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .score-big {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -3px;
+  }
+  .score-big .denom { font-size: 36px; color: var(--muted); font-weight: 400; }
+  .score-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 8px;
+  }
+  .grade-pill {
+    display: inline-block;
+    background: var(--accent2);
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    padding: 4px 18px;
+    border-radius: 8px;
+    letter-spacing: 1px;
+  }
+  .score-trend {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .score-trend strong { color: var(--success); }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  .section { margin-top: 40px; }
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* CATEGORY SCORES */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 12px;
+  }
+  .cat-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .cat-card .cat-name {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+  .cat-card .cat-score-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .cat-card .cat-score-num {
+    font-size: 28px;
+    font-weight: 800;
+    min-width: 52px;
+    color: var(--ink);
+  }
+  .bar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--bg3);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+  .bar-s { background: var(--success); }
+  .bar-m { background: var(--warn); }
+  .bar-d { background: var(--danger); }
+  .cat-card .cat-notes {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .cat-card .cat-notes strong { color: var(--success); }
+  .cat-card .cat-notes em { color: var(--warn); font-style: normal; }
+
+  /* IMPROVEMENTS */
+  .improvement-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .improvement-list li {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--warn);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .improvement-list li strong { color: var(--warn); }
+
+  /* ANALYSIS TABLE */
+  table.analysis-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  table.analysis-table thead tr {
+    background: var(--bg3);
+  }
+  table.analysis-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--line);
+  }
+  table.analysis-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  table.analysis-table tr:hover td { background: var(--bg2); }
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .pill-high { background: rgba(61,186,126,0.15); color: var(--success); }
+  .pill-mid  { background: rgba(232,168,64,0.15); color: var(--warn); }
+  .pill-low  { background: rgba(224,90,90,0.15); color: var(--danger); }
+
+  /* BRAINSTORM TABLE */
+  .brainstorm-section { margin-top: 40px; }
+  table.brainstorm-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  table.brainstorm-table thead tr { background: var(--bg2); }
+  table.brainstorm-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+    border-bottom: 2px solid var(--line);
+  }
+  table.brainstorm-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  table.brainstorm-table tr:hover td { background: var(--bg2); }
+  table.brainstorm-table .item-num {
+    color: var(--muted);
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  table.brainstorm-table .item-name {
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  table.brainstorm-table .item-synopsis {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .score-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 14px;
+    min-width: 36px;
+    text-align: center;
+  }
+  .score-9, .score-10 { background: rgba(61,186,126,0.18); color: var(--success); }
+  .score-7, .score-8  { background: rgba(79,142,247,0.18); color: var(--accent); }
+  .score-5, .score-6  { background: rgba(232,168,64,0.18); color: var(--warn); }
+  .score-3, .score-4  { background: rgba(224,90,90,0.18); color: var(--danger); }
+  .score-1, .score-2  { background: rgba(224,90,90,0.28); color: var(--danger); }
+  .impact-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-weight: 800;
+    font-size: 13px;
+    background: rgba(124,92,191,0.18);
+    color: #a47fe8;
+    white-space: nowrap;
+  }
+
+  /* TIER SECTIONS */
+  .tier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 16px;
+  }
+  @media (max-width: 700px) { .tier-grid { grid-template-columns: 1fr; } }
+  .tier-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 22px;
+  }
+  .tier-card.leverage { border-top: 3px solid var(--success); }
+  .tier-card.ceiling  { border-top: 3px solid var(--accent2); }
+  .tier-card .tier-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .tier-card.leverage .tier-label { color: var(--success); }
+  .tier-card.ceiling  .tier-label { color: var(--accent2); }
+  .tier-card .tier-title {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .tier-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .tier-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .tier-item .ti-num {
+    background: var(--bg3);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .tier-card.leverage .tier-item .ti-num { background: rgba(61,186,126,0.12); color: var(--success); }
+  .tier-card.ceiling .tier-item .ti-num  { background: rgba(124,92,191,0.12); color: var(--accent2); }
+  .tier-item .ti-body .ti-name { font-weight: 700; font-size: 13px; margin-bottom: 2px; }
+  .tier-item .ti-body .ti-why  { font-size: 12px; color: var(--muted); }
+  .ti-impact { font-size: 11px; margin-top: 3px; }
+  .ti-impact strong { color: var(--accent); }
+
+  /* FOOTER */
+  .report-footer {
+    margin-top: 60px;
+    padding: 20px 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media print {
+    body { background: white; color: #111; }
+    .report-header { background: #f0f0f0; border-color: #333; }
+    .cat-card, .tier-card, table.analysis-table td { border-color: #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ======= HEADER ======= -->
+<div class="report-header">
+  <div class="container">
+    <div class="label">VaultSpark Studios · Football GM · Session 6 Audit</div>
+    <h1>Full Project Audit Report</h1>
+    <div class="subtitle">2026-03-27 · Post-Session 5 · All Engine Hooks Wired · 38/38 Tests Passing</div>
+    <div class="score-hero">
+      <div class="score-big">77<span class="denom">/100</span></div>
+      <div class="score-meta">
+        <div class="grade-pill">B</div>
+        <div class="score-trend" style="margin-top:6px">
+          Session history: 78 → <strong>83</strong> → 72 → <strong>77</strong>
+        </div>
+        <div class="score-trend">18 engine modules · 141 JS files · 38/38 tests · Not yet deployed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ======= CATEGORY SCORES ======= -->
+<div class="section">
+  <div class="section-title">Category Scores</div>
+  <div class="cat-grid">
+
+    <div class="cat-card">
+      <div class="cat-name">Core Simulation Engine</div>
+      <div class="cat-score-row">
+        <div class="cat-score-num">88</div>
+        <div class="bar-track"><div class="bar-fill bar-s" style="width:88%"></div></div>
+      </div>
+      <div class="cat-notes">
+        <strong>Strengths:</strong> PFR-calibrated stats, deterministic RNG, 18 engine modules, play-level resolution, all hooks wired in GameSession.<br>
+        <em>Gaps:</em> leagueSimulator.js is mostly a stub; no halftime tactical adjustment; game-level spectate/replay absent.
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-name">Franchise Management UX</div>
+      <div class="cat-score-row">
+        <div class="cat-score-num">78</div>
+        <div class="bar-track"><div class="bar-fill bar-s" style="width:78%"></div></div>
+      </div>
+      <div class="cat-notes">
+        <strong>Strengths:</strong> 14 tabs, command-deck layouts on key tabs, team color theming, 10+ modals, keyboard shortcuts.<br>
+        <em>Gaps:</em> Inconsistent command-deck treatment across all tabs; some sub-tabs still lack visual hierarchy; no Quick-Add pill for cross-tab actions.
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-name">Player &amp; Roster Depth</div>
+      <div class="cat-score-row">
+        <div class="cat-score-num">82</div>
+        <div class="bar-track"><div class="bar-fill bar-s" style="width:82%"></div></div>
+      </div>
+      <div class="cat-notes">
+        <strong>Strengths:</strong> Full cap math, depth chart auto-rebalance, 6-phase development traits, injury system, agent modal.<br>
+        <em>Gaps:</em> No player comparison tool; agent AI is heuristic-only; trait chips not surfaced in dossier; no player regression/cliff warning.
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-name">Narrative &amp; World-State</div>
+      <div class="cat-score-row">
+        <div class="cat-score-num">81</div>
+        <div class="bar-track"><div class="bar-fill bar-s" style="width:81%"></div></div>
+      </div>
+      <div class="cat-notes">
+        <strong>Strengths:</strong> All 5 hooks wired, 6-tier GM legacy, rivalry DNA 0–100, press conference 2× per week, franchise story panel.<br>
+        <em>Gaps:</em> Narrative events use hard-coded templates; no fan sentiment / crowd approval; no offseason storylines; no consequence branching.
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-name">Draft &amp; Scouting Pipeline</div>
+      <div class="cat-score-row">
+        <div class="cat-score-num">74</div>
+        <div class="bar-track"><div class="bar-fill bar-m" style="width:74%"></div></div>
+      </div>
+      <div class="cat-notes">
+        <strong>Strengths:</strong> Draft combine, scouting board, scheme-fit scoring, war room 3-col CSS, CPU draft flow.<br>
+        <em>Gaps:</em> No prospect comparison / comp cards; no rival team scouting visibility; CPU draft logic is heuristic; no draft grade system.
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-name">Persistence &amp; Data Integrity</div>
+      <div class="cat-score-row">
+        <div class="cat-score-num">83</div>
+        <div class="bar-track"><div class="bar-fill bar-s" style="width:83%"></div></div>
+      </div>
+      <div class="cat-notes">
+        <strong>Strengths:</strong> 3 persistence layers (file / IndexedDB / Gist), 10-slot rewind, snapshot migration, auto-pruning.<br>
+        <em>Gaps:</em> No Gist sync conflict resolution; no save size indicator in UI; CURRENT_STATE.md stale since Session 2.
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-name">Mobile &amp; Accessibility</div>
+      <div class="cat-score-row">
+        <div class="cat-score-num" style="color:var(--warn)">66</div>
+        <div class="bar-track"><div class="bar-fill bar-m" style="width:66%"></div></div>
+      </div>
+      <div class="cat-notes">
+        <strong>Strengths:</strong> Mobile overlay (#mobileLoopOverlay), 375px CSS fix shipped, keyboard shortcuts, tutorial.<br>
+        <em>Gaps:</em> 375px smoke test still NOT run; most tabs not fully responsive; no touch gestures; limited ARIA markup on new components.
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-name">Testing &amp; Code Quality</div>
+      <div class="cat-score-row">
+        <div class="cat-score-num">80</div>
+        <div class="bar-track"><div class="bar-fill bar-s" style="width:80%"></div></div>
+      </div>
+      <div class="cat-notes">
+        <strong>Strengths:</strong> 24 test files, 38/38 passing, Playwright UI regression, CI green, 18 modular engine files.<br>
+        <em>Gaps:</em> GameSession.js is 5,130 LOC monolith; leagueSimulator.js stub; no E2E coverage for challenge mode or multi-season injury arcs.
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-name">Community &amp; Engagement</div>
+      <div class="cat-score-row">
+        <div class="cat-score-num" style="color:var(--warn)">60</div>
+        <div class="bar-track"><div class="bar-fill bar-m" style="width:60%"></div></div>
+      </div>
+      <div class="cat-notes">
+        <strong>Strengths:</strong> Tutorial, dynasty share, newsletter, OG meta tags, feedback widget, Gist cloud sync.<br>
+        <em>Gaps:</em> Zero real users (not deployed); no Discord/community hub; engagement stuck at 6/10 for 3 sessions; no beta landing page.
+      </div>
+    </div>
+
+    <div class="cat-card">
+      <div class="cat-name">Production Readiness</div>
+      <div class="cat-score-row">
+        <div class="cat-score-num" style="color:var(--danger)">54</div>
+        <div class="bar-track"><div class="bar-fill bar-d" style="width:54%"></div></div>
+      </div>
+      <div class="cat-notes">
+        <strong>Strengths:</strong> GitHub Actions CI/CD, Pages build script, esbuild bundling, README with API docs.<br>
+        <em>Gaps:</em> Sessions 3–5 NOT DEPLOYED (local only); CURRENT_STATE.md stale; no error boundaries in UI; no analytics pipeline; no backend live in prod.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======= AREAS OF IMPROVEMENT ======= -->
+<div class="section">
+  <div class="section-title">Top Areas of Improvement</div>
+  <ul class="improvement-list">
+    <li><strong>Deploy NOW.</strong> Sessions 3–5 are local-only. Every feature built is invisible to real users. Deployment unlocks the Engagement and Community scores immediately — the single highest-leverage unlock remaining.</li>
+    <li><strong>Run 375px smoke test.</strong> The CSS fix was shipped but never validated on a real or emulated device. 14+ new panels added in Sessions 4–5 are untested on mobile. Ship-blocking risk.</li>
+    <li><strong>Refresh CURRENT_STATE.md.</strong> The context file is pre-Session 3 and describes a project with 5 fewer engine systems. AI/human onboarding from it will generate wrong assumptions.</li>
+    <li><strong>Add engagement feedback loops.</strong> Persona tier unlocks fire silently. Stat leaders don't surface on Overview. Injury overlay missing. Players cannot feel progression without reactive moments.</li>
+    <li><strong>Break up GameSession.js.</strong> 5,130 LOC single file is already past the "too big to reason about" threshold. DraftManager / CapManager / RosterManager split would improve testability and reduce merge complexity.</li>
+    <li><strong>Add fan sentiment and world consequence.</strong> The world-state moat (owner/rival/culture) has no fan layer. Owner patience exists but fan approval is absent — a missing pillar of franchise simulation tension.</li>
+    <li><strong>Close the draft system gap.</strong> No prospect comparison, no draft grade, no comp cards. The draft is the most emotionally charged moment in franchise simulation and the current surface underserves it.</li>
+    <li><strong>Build a community acquisition funnel.</strong> Beta landing page + Discord invite = the first step toward community moat. Zero community spend so far despite having sharing tools, OG tags, and a newsletter ready.</li>
+  </ul>
+</div>
+
+<!-- ======= ANALYSIS TABLE ======= -->
+<div class="section">
+  <div class="section-title">Analysis &amp; Recommendations</div>
+  <table class="analysis-table">
+    <thead>
+      <tr>
+        <th>Area</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Recommendation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Deployment</strong></td>
+        <td>Local-only (Sessions 3–5)</td>
+        <td><span class="pill pill-high">Critical</span></td>
+        <td>Push to GitHub Pages immediately; all blocking items are resolved except 375px test.</td>
+      </tr>
+      <tr>
+        <td><strong>Mobile 375px</strong></td>
+        <td>CSS shipped; test not run</td>
+        <td><span class="pill pill-high">High</span></td>
+        <td>Run smoke:pages + Playwright mobile emulation against the 14 new Session 4/5 panels before deploy.</td>
+      </tr>
+      <tr>
+        <td><strong>Docs / Context</strong></td>
+        <td>CURRENT_STATE.md stale since Session 2</td>
+        <td><span class="pill pill-high">High</span></td>
+        <td>Full rewrite to reflect 18 engine modules, 141 JS files, all Session 3–5 features. Critical for next AI session.</td>
+      </tr>
+      <tr>
+        <td><strong>Engagement Feedback Loops</strong></td>
+        <td>Persona tier / stat leaders / injury card missing</td>
+        <td><span class="pill pill-mid">Medium</span></td>
+        <td>Ship persona tier toast, stat leaders strip, and injury overlay — all use existing state data, low effort.</td>
+      </tr>
+      <tr>
+        <td><strong>GameSession Architecture</strong></td>
+        <td>5,130 LOC monolith</td>
+        <td><span class="pill pill-mid">Medium</span></td>
+        <td>Extract DraftManager, CapManager, RosterManager into modules/. Improves testability and parallel development.</td>
+      </tr>
+      <tr>
+        <td><strong>Draft Experience</strong></td>
+        <td>No prospect comp cards, no draft grade</td>
+        <td><span class="pill pill-mid">Medium</span></td>
+        <td>Add comp cards (attribute-based archetype match) and immediate post-pick grade UI to raise emotional stakes.</td>
+      </tr>
+      <tr>
+        <td><strong>Fan Sentiment Layer</strong></td>
+        <td>Not implemented</td>
+        <td><span class="pill pill-mid">Medium</span></td>
+        <td>Fan approval → owner patience feedback loop adds a second axis of tension alongside the win/loss record.</td>
+      </tr>
+      <tr>
+        <td><strong>Community Funnel</strong></td>
+        <td>Zero community presence</td>
+        <td><span class="pill pill-mid">Medium</span></td>
+        <td>Beta landing page + Discord/Discussions link = lowest-effort community moat. Ship in tandem with Pages deploy.</td>
+      </tr>
+      <tr>
+        <td><strong>AI GM Tendencies</strong></td>
+        <td>Hidden from player</td>
+        <td><span class="pill pill-low">Low</span></td>
+        <td>Surface CPU team posture (REBUILD / WIN-NOW / DEVELOP) in trade UI — makes AI feel legible and strategic.</td>
+      </tr>
+      <tr>
+        <td><strong>leagueSimulator.js stub</strong></td>
+        <td>559 bytes, minimal logic</td>
+        <td><span class="pill pill-low">Low</span></td>
+        <td>Flesh out multi-year orchestration — currently all season progression is managed inline by GameSession.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ======= BRAINSTORM ======= -->
+<div class="brainstorm-section section">
+  <div class="section-title">Innovations Brainstorm — 30 Items</div>
+  <p style="color:var(--muted);font-size:12px;margin-bottom:16px">Every item includes synopsis, Innovation Score (1–10), and estimated Project Impact (points added to overall 77/100 score).</p>
+  <table class="brainstorm-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th style="min-width:180px">Feature</th>
+        <th>Synopsis</th>
+        <th style="white-space:nowrap">Innov.</th>
+        <th style="white-space:nowrap">+Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item-num">01</td>
+        <td><div class="item-name">Deploy to GitHub Pages</div></td>
+        <td class="item-synopsis">Push Sessions 3–5 local code to live Pages URL. Zero code changes needed — just the push + verify. Unlocks real user feedback, Engagement score, and Community score simultaneously.</td>
+        <td><span class="score-badge score-2">2</span></td>
+        <td><span class="impact-badge">+6 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">02</td>
+        <td><div class="item-name">Persona Tier Unlock Toast</div></td>
+        <td class="item-synopsis">Toast notification + brief celebration modal when GM crosses a legacy tier threshold (e.g. Tactician → Visionary). Data already fires from gmLegacyScore.js; this is purely a UI reactive moment that validates player progression.</td>
+        <td><span class="score-badge score-6">6</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">03</td>
+        <td><div class="item-name">Active Injury Overlay Card</div></td>
+        <td class="item-synopsis">Always-visible Overview card showing all starters currently on injured list + return week estimate. The injury system fires every week but the player has no quick-glance surface for it. Brainstormed in Sessions 4 and 5 — overdue.</td>
+        <td><span class="score-badge score-5">5</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">04</td>
+        <td><div class="item-name">Stat Leaders Strip</div></td>
+        <td class="item-synopsis">Top-3 rushing/passing/sack leaders as a quick-scan row widget pinned to the Overview tab. "Pulse of the league" at a glance — data already aggregated in statBook.js, just needs a renderer.</td>
+        <td><span class="score-badge score-5">5</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">05</td>
+        <td><div class="item-name">Save Size Indicator</div></td>
+        <td class="item-synopsis">IndexedDB vs. localStorage usage bar + quota warning in Settings footer. /api/storage/estimate already returns quota data — just needs a visual bar component next to the Gist sync panel.</td>
+        <td><span class="score-badge score-4">4</span></td>
+        <td><span class="impact-badge">+1 pt</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">06</td>
+        <td><div class="item-name">CURRENT_STATE.md Refresh</div></td>
+        <td class="item-synopsis">Full rewrite of the stale context file to reflect Sessions 3–5 (18 engine modules, 141 JS files, all new features). Critical for AI/human onboarding — any new session starting from this file now has a wrong picture of the project.</td>
+        <td><span class="score-badge score-3">3</span></td>
+        <td><span class="impact-badge">+1 pt</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">07</td>
+        <td><div class="item-name">Beta Landing Page</div></td>
+        <td class="item-synopsis">A static HTML splash page at the GitHub Pages root advertising the beta — "Play Now" CTA, 3 feature highlights, screenshot or hero image. Community acquisition funnel from day 1 of deployment. Zero backend required.</td>
+        <td><span class="score-badge score-5">5</span></td>
+        <td><span class="impact-badge">+3 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">08</td>
+        <td><div class="item-name">Community Hub Launch</div></td>
+        <td class="item-synopsis">Enable GitHub Discussions or a Discord server tied to the feedback widget. Post a beta invite as the first message. The social sharing tools, newsletter, and OG tags are all ready — they just have nowhere to point users yet.</td>
+        <td><span class="score-badge score-5">5</span></td>
+        <td><span class="impact-badge">+5 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">09</td>
+        <td><div class="item-name">Player Comparison Tool</div></td>
+        <td class="item-synopsis">Side-by-side modal for comparing 2 players on attributes, contract value, AV, scheme fit, and career stats. Critical for evaluating trade offers and free agent targets. Current evaluation is all mental math.</td>
+        <td><span class="score-badge score-7">7</span></td>
+        <td><span class="impact-badge">+3 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">10</td>
+        <td><div class="item-name">Draft Prospect Comp Cards</div></td>
+        <td class="item-synopsis">Each draft prospect gets a "projects like [historical/simulated comp]" label derived from attribute archetype. e.g. "Pocket passer, big arm, slow — comp: Peyton Manning type." Transforms the draft board from a spreadsheet into a story.</td>
+        <td><span class="score-badge score-8">8</span></td>
+        <td><span class="impact-badge">+3 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">11</td>
+        <td><div class="item-name">AI GM Tendency Visible</div></td>
+        <td class="item-synopsis">Show each AI team's current posture (REBUILD / WIN-NOW / DEVELOP) in the trade builder and free agent market. Makes CPU teams feel legible and strategic rather than random. Data already exists in aiTeamStrategy.js.</td>
+        <td><span class="score-badge score-7">7</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">12</td>
+        <td><div class="item-name">Draft Grade System</div></td>
+        <td class="item-synopsis">Immediate post-pick letter grade (A–F) based on team needs, positional value, and scheme fit shown in the war room immediately after each selection. Creates emotional stakes and a grading loop to share post-draft.</td>
+        <td><span class="score-badge score-7">7</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">13</td>
+        <td><div class="item-name">Fan Sentiment System</div></td>
+        <td class="item-synopsis">Crowd approval rating (0–100) that shifts based on win-loss, key signings/trades, and cap strategy. Owner patience is explicitly tied to fan mood. Adds political stakes: your cap move might be smart but the fans hate it.</td>
+        <td><span class="score-badge score-8">8</span></td>
+        <td><span class="impact-badge">+4 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">14</td>
+        <td><div class="item-name">Offseason Storylines Engine</div></td>
+        <td class="item-synopsis">Off-season drama events that extend narrativeEvents.js into the dead period: ex-player return game, position battle media coverage, coaching tree reunion, redemption arc. Currently offseason is narratively silent.</td>
+        <td><span class="score-badge score-8">8</span></td>
+        <td><span class="impact-badge">+3 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">15</td>
+        <td><div class="item-name">End-of-Season GM Review Screen</div></td>
+        <td class="item-synopsis">Rich narrative performance review after each season: goals met/missed, key decision grades, owner verdict, fan reaction, top memory of the year, and a "What the league is saying" quote. Turns season end into a narrative climax.</td>
+        <td><span class="score-badge score-8">8</span></td>
+        <td><span class="impact-badge">+4 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">16</td>
+        <td><div class="item-name">Owner Ultimatum System</div></td>
+        <td class="item-synopsis">Owner issues specific, measurable demands with a deadline: "Win 10 games this season or we start over." Owner mandate exists but lacks consequence triggers. Ultimatum system adds existential stakes to every week-4 loss.</td>
+        <td><span class="score-badge score-8">8</span></td>
+        <td><span class="impact-badge">+4 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">17</td>
+        <td><div class="item-name">Player Regression Cliff Warning</div></td>
+        <td class="item-synopsis">When an aging star (30+) shows statistical decline in realismCalibrator context, surface a "performance cliff risk" chip in their dossier + a yellow flag in contracts tab. Rewards GMs who read the data.</td>
+        <td><span class="score-badge score-7">7</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">18</td>
+        <td><div class="item-name">Halftime Adjustment System</div></td>
+        <td class="item-synopsis">Mid-game tactical choice surfaced during game simulation: blitz-heavy, cover-2 shell, run-game grind, or tempo offense. Each option has probabilistic 2nd-half outcome modifiers. The only way to touch in-game agency without full play-calling.</td>
+        <td><span class="score-badge score-8">8</span></td>
+        <td><span class="impact-badge">+4 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">19</td>
+        <td><div class="item-name">Draft Day Radio Feel</div></td>
+        <td class="item-synopsis">During draft picks a simulated "broadcast" text plays: "The [team] is on the clock… [analyst quote]… pick revealed… [crowd reaction]." Transforms the pick flow from a button click into a theater moment. Huge immersion delta for low code cost.</td>
+        <td><span class="score-badge score-9">9</span></td>
+        <td><span class="impact-badge">+4 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">20</td>
+        <td><div class="item-name">Franchise Brand Builder</div></td>
+        <td class="item-synopsis">Expansion team mode: choose city, mascot, uniform colors, and starting era. The engine generates a franchise history from that seed. Unlocks infinite replay value and community sharing ("look at my Atlanta Wolves dynasty").</td>
+        <td><span class="score-badge score-9">9</span></td>
+        <td><span class="impact-badge">+5 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">21</td>
+        <td><div class="item-name">Weekly Power Rankings Feed</div></td>
+        <td class="item-synopsis">Simulated AP/Coaches poll-style rankings generated every week with brief AI commentary explaining movements ("Bills drop 3 spots after ugly loss to division rival"). Adds a media layer that reinforces narrative significance of each game.</td>
+        <td><span class="score-badge score-7">7</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">22</td>
+        <td><div class="item-name">Salary Arbitration Mini-Game</div></td>
+        <td class="item-synopsis">When agent demand is extreme, offer a quick arbitration dialogue: pick an argument (comparable contracts, team loyalty, injury risk), agent counters, outcome resolves with partial win/loss. Deepens agent negotiations beyond accept/decline.</td>
+        <td><span class="score-badge score-9">9</span></td>
+        <td><span class="impact-badge">+3 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">23</td>
+        <td><div class="item-name">3-Way Trade Builder</div></td>
+        <td class="item-synopsis">Extend the trade builder to support assets flowing between three teams simultaneously. Real NFL trades frequently involve 3 parties — the current 2-team builder is a significant strategic limitation for power users.</td>
+        <td><span class="score-badge score-7">7</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">24</td>
+        <td><div class="item-name">Practice Squad Story Arc</div></td>
+        <td class="item-synopsis">PS players get a development narrative: "X is quietly outperforming his draft slot in practice — push for elevation?" CPU teams can poach PS players mid-season. Adds roster tension and a second track of player storytelling below the 53-man.</td>
+        <td><span class="score-badge score-7">7</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">25</td>
+        <td><div class="item-name">Cross-Tab Quick-Add Actions</div></td>
+        <td class="item-synopsis">A "Quick Action" floating pill that lets you trigger sign/release/offer directly from Roster, Stats, or Scouting without navigating to Transactions. Reduces friction on the most common multi-step workflows.</td>
+        <td><span class="score-badge score-6">6</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">26</td>
+        <td><div class="item-name">Coach Personality Conflict System</div></td>
+        <td class="item-synopsis">OC/DC can develop personality clashes that reduce team chemistry stats. Firing a coach mid-season triggers a morale ripple. Adds a people-management axis: talent vs. cohesion tradeoffs at the coaching level.</td>
+        <td><span class="score-badge score-8">8</span></td>
+        <td><span class="impact-badge">+3 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">27</td>
+        <td><div class="item-name">Veteran Mentorship System</div></td>
+        <td class="item-synopsis">Veteran players (5+ seasons) can be assigned to mentor younger players at the same position, increasing the younger player's development speed. Creates roster strategy around veteran value beyond their on-field production.</td>
+        <td><span class="score-badge score-8">8</span></td>
+        <td><span class="impact-badge">+3 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">28</td>
+        <td><div class="item-name">Rivalry Week Big Game Mode</div></td>
+        <td class="item-synopsis">When a rivalry game (heat > 60) is scheduled, offer a special pre-game briefing with extra tactical options. Rivalry heat feeds into crowd noise modifiers. Makes the season calendar feel uneven in a good way.</td>
+        <td><span class="score-badge score-8">8</span></td>
+        <td><span class="impact-badge">+3 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">29</td>
+        <td><div class="item-name">GameSession Modular Refactor</div></td>
+        <td class="item-synopsis">Break the 5,130-LOC GameSession.js into DraftManager, CapManager, RosterManager, NarrativeOrchestrator sub-modules. Reduces cognitive load, enables parallel development, and makes unit tests more targeted.</td>
+        <td><span class="score-badge score-5">5</span></td>
+        <td><span class="impact-badge">+2 pts</span></td>
+      </tr>
+      <tr>
+        <td class="item-num">30</td>
+        <td><div class="item-name">Speedrun Challenge Mode</div></td>
+        <td class="item-synopsis">Objective: reach the Super Bowl in the fewest simulated seasons with specified constraints. Weekly leaderboard saved to Gist. Community competition element that pairs naturally with the existing challenge mode and dynasty share.</td>
+        <td><span class="score-badge score-8">8</span></td>
+        <td><span class="impact-badge">+3 pts</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ======= TIER RECOMMENDATIONS ======= -->
+<div class="section">
+  <div class="section-title">Tier Recommendations</div>
+  <div class="tier-grid">
+
+    <div class="tier-card leverage">
+      <div class="tier-label">Tier 1</div>
+      <div class="tier-title">Highest Leverage Right Now<br><span style="font-size:12px;font-weight:400;color:var(--muted)">Low effort · Real, immediate impact</span></div>
+
+      <div class="tier-item">
+        <div class="ti-num">1</div>
+        <div class="ti-body">
+          <div class="ti-name">Deploy to GitHub Pages</div>
+          <div class="ti-why">All code is ready. Sessions 3–5 are invisible to users. This single action unlocks real feedback, raises Engagement and Community simultaneously, and validates 3 sessions of work.</div>
+          <div class="ti-impact"><strong>+6 pts</strong> · No code changes needed</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">2</div>
+        <div class="ti-body">
+          <div class="ti-name">Community Hub Launch</div>
+          <div class="ti-why">GitHub Discussions or Discord. Zero code. The feedback widget, newsletter, and OG tags are already live — they just have nowhere to direct users. First post = beta invite.</div>
+          <div class="ti-impact"><strong>+5 pts</strong> · Zero dev effort</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">3</div>
+        <div class="ti-body">
+          <div class="ti-name">Persona Tier Unlock Toast</div>
+          <div class="ti-why">The GM Legacy arc is one of the most creative features — but tiers unlock silently. A toast/modal creates the "ding!" moment that makes progression feel earned. All data is in-state.</div>
+          <div class="ti-impact"><strong>+2 pts</strong> · ~1 hr implementation</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">4</div>
+        <div class="ti-body">
+          <div class="ti-name">Active Injury Overlay Card</div>
+          <div class="ti-why">Injury system fires every week but has no always-visible surface. One card on Overview showing starters currently out + return week gives the feature the visibility it deserves.</div>
+          <div class="ti-impact"><strong>+2 pts</strong> · Data already in state</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">5</div>
+        <div class="ti-body">
+          <div class="ti-name">Stat Leaders Strip</div>
+          <div class="ti-why">statBook already aggregates the data. A 3-column strip on Overview (top RB / top QB / top DEF) gives the player a "league pulse" instantly. Validates the simulation's realism at a glance.</div>
+          <div class="ti-impact"><strong>+2 pts</strong> · Pure renderer, no new API</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">6</div>
+        <div class="ti-body">
+          <div class="ti-name">Beta Landing Page</div>
+          <div class="ti-why">A static splash page at the GitHub Pages root with "Play Now" CTA. Community acquisition funnel from day 1. Pairs with deploy + community hub for a complete launch stack.</div>
+          <div class="ti-impact"><strong>+3 pts</strong> · Static HTML, 2–3 hrs</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">7</div>
+        <div class="ti-body">
+          <div class="ti-name">CURRENT_STATE.md Refresh</div>
+          <div class="ti-why">Pre-Session 3 context file is actively misleading. Every AI session that reads it starts with wrong assumptions. 30-minute rewrite pays compound dividends across every future session.</div>
+          <div class="ti-impact"><strong>+1 pt</strong> · 30–45 min, no code</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tier-card ceiling">
+      <div class="tier-label">Tier 2</div>
+      <div class="tier-title">Highest Ceiling<br><span style="font-size:12px;font-weight:400;color:var(--muted)">High effort · Transformative, category-defining</span></div>
+
+      <div class="tier-item">
+        <div class="ti-num">1</div>
+        <div class="ti-body">
+          <div class="ti-name">Franchise Brand Builder</div>
+          <div class="ti-why">Custom city/mascot/colors expansion team mode. Unlocks infinite replay, community sharing ("my Atlanta Wolves dynasty"), and differentiation from every competitor. No one in the browser-GM space offers this.</div>
+          <div class="ti-impact"><strong>+5 pts</strong> · High dev, transformative</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">2</div>
+        <div class="ti-body">
+          <div class="ti-name">Fan Sentiment System</div>
+          <div class="ti-why">A crowd approval rating tied to owner patience creates a second axis of tension. Your cap move might be analytically correct but the fans hate it. No current competitor models fan politics in the browser space.</div>
+          <div class="ti-impact"><strong>+4 pts</strong> · Medium-high dev, world-state moat ↑</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">3</div>
+        <div class="ti-body">
+          <div class="ti-name">Owner Ultimatum System</div>
+          <div class="ti-why">Owner mandate exists but lacks consequence triggers. Measurable demands ("Win 10 games or I start over") with a countdown add existential stakes to every week-4 loss. GM Legacy becomes genuinely high-stakes.</div>
+          <div class="ti-impact"><strong>+4 pts</strong> · Medium dev, loop tension ↑↑</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">4</div>
+        <div class="ti-body">
+          <div class="ti-name">Halftime Adjustment System</div>
+          <div class="ti-why">Mid-game tactical option (blitz-heavy / run-grind / tempo) with probabilistic 2nd-half outcome modifiers. The only feasible way to give players in-game agency without full play-calling infrastructure.</div>
+          <div class="ti-impact"><strong>+4 pts</strong> · Medium dev, agency ↑↑</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">5</div>
+        <div class="ti-body">
+          <div class="ti-name">End-of-Season GM Review Screen</div>
+          <div class="ti-why">Narrative-rich performance review after each season: goals vs. results, key decision grades, owner verdict, top memory of the year. Turns the season-end into a dramatic climax and a shareable moment.</div>
+          <div class="ti-impact"><strong>+4 pts</strong> · Medium dev, narrative ↑↑↑</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">6</div>
+        <div class="ti-body">
+          <div class="ti-name">Draft Day Radio Feel</div>
+          <div class="ti-why">Simulated broadcast text during picks: "The Chiefs are on the clock… scouts love his explosiveness… the pick is in." Transforms the draft from a spreadsheet action into theater. Brainstorm innovation score 9/10.</div>
+          <div class="ti-impact"><strong>+4 pts</strong> · Low-medium dev, immersion ↑↑↑</div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="ti-num">7</div>
+        <div class="ti-body">
+          <div class="ti-name">Veteran Mentorship System</div>
+          <div class="ti-why">Veterans (5+ seasons) can mentor younger players, boosting development speed. Creates a second layer of roster strategy: aging stars have value beyond their stats. Deepens the franchise simulation identity.</div>
+          <div class="ti-impact"><strong>+3 pts</strong> · Medium dev, roster depth ↑↑</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<div class="report-footer">
+  <span>VaultSpark Football GM · Session 6 Audit · 2026-03-27</span>
+  <span>Overall Score: 77/100 — B · 18 engine modules · 141 JS files · 38/38 tests passing</span>
+</div>
+
+</body>
+</html>

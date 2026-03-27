@@ -75,6 +75,8 @@ import {
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore.js";
 import { generatePressConference } from "../engine/pressConference.js";
+import { updateFanSentiment } from "../engine/fanSentiment.js";
+import { applyMentorshipBonuses } from "../engine/veteranMentorship.js";
 
 const TABLE_CATEGORIES = ["passing", "rushing", "receiving", "defense", "blocking", "kicking", "punting", "snaps"];
 const MAX_ACTIVE_ROSTER = 53;
@@ -542,6 +544,21 @@ function buildOwnerExpectation(team, roster = [], transactions = [], { currentWe
   if (!reasons.length && paceGap >= 1) reasons.push("club is ahead of owner mandate");
   if (!reasons.length) reasons.push("season is tracking near expectation");
 
+  // Build ultimatum when owner patience is critically low mid-season
+  let ultimatum = null;
+  if (heat >= 75 && gamesPlayed >= 6 && (owner.patience || 0.55) <= 0.35) {
+    const winsNeeded = Math.max(1, targetWins - wins);
+    const weeksLeft = Math.max(0, NFL_STRUCTURE.regularSeasonWeeks - gamesPlayed);
+    ultimatum = {
+      active: true,
+      message: `Win ${winsNeeded} more game${winsNeeded !== 1 ? "s" : ""} or expect major changes.`,
+      targetWins,
+      winsNeeded,
+      weeksLeft,
+      consequence: mandate === "playoffs-or-bust" ? "coaching staff overhaul" : "full rebuild"
+    };
+  }
+
   return {
     mandate,
     targetWins,
@@ -551,7 +568,8 @@ function buildOwnerExpectation(team, roster = [], transactions = [], { currentWe
     trend: heat >= 75 ? "critical" : heat >= 58 ? "warming" : heat <= 28 ? "stable" : "watch",
     splashMoves,
     reasons: reasons.slice(0, 3),
-    evaluatedWeek: currentWeek
+    evaluatedWeek: currentWeek,
+    ultimatum
   };
 }
 
@@ -1889,6 +1907,8 @@ export class GameSession {
     if (stage === "camp-cuts") {
       this.runAiTeamMaintenance();
       this.refreshChemistryAndSchemeFit();
+      // Apply veteran mentorship development bonuses
+      applyMentorshipBonuses(this.league, this.currentYear);
       return next({ nextStage: "complete", message: "Training camp cuts and roster normalization complete." });
     }
     pipeline.completed = true;
@@ -3647,6 +3667,8 @@ export class GameSession {
       recordWeekRivalries(this.league, weekResult, this.currentYear);
       // Press conference quotes for controlled team's game
       generatePressConference(this.league, weekResult, this.controlledTeamId, this.currentYear);
+      // Fan sentiment update (uses current standings snapshot)
+      updateFanSentiment(this.league, weekResult, this.currentYear);
       // ─────────────────────────────────────────────────────────────────────
 
       this.weekResultsCurrentSeason.push(weekResult);

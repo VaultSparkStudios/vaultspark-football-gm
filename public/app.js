@@ -7,6 +7,12 @@ import {
 } from "./lib/gistSync.js";
 
 const state = {
+  prevGmLegacyTier: null,
+  prevDashboardPhase: null,
+  halftimeTacticChoice: null,
+  mentorships: [],
+  statLeaders: null,
+  brandOverride: null,
   dashboard: null,
   roster: [],
   freeAgents: [],
@@ -4389,6 +4395,11 @@ function applyDashboard(newState) {
   renderSeasonPreviewPanel();
   renderGmLegacyScore().catch(() => {});
   renderCapAlertBanner();
+  renderFanSentimentCard();
+  renderInjuryOverlayCard();
+  renderStatLeadersStrip().catch(() => {});
+  renderOwnerUltimatum();
+  checkSeasonEndReview(previous);
 
   const yearInput = document.getElementById("yearFilter");
   if (yearInput && (!yearInput.value || !previous || previous.currentYear !== newState.currentYear)) {
@@ -5120,7 +5131,18 @@ function bindEvents() {
 
   document.getElementById("advanceWeekBtn").addEventListener("click", () =>
     runAction(async () => {
-      const response = await api("/api/advance-week", { method: "POST", body: { count: 1 } });
+      // Show pre-game tactical modal during regular season
+      const isRegularSeason = state.dashboard?.phase === "regular-season";
+      const tactic = await new Promise((resolve) => {
+        if (isRegularSeason) {
+          showHalftimeAdjustModal(resolve);
+        } else {
+          resolve(null);
+        }
+      });
+      const body = { count: 1 };
+      if (tactic) body.weeklyTacticOverride = tactic;
+      const response = await api("/api/advance-week", { method: "POST", body });
       applyDashboard(response.state);
       await Promise.all([
         loadRoster(),
@@ -5614,7 +5636,7 @@ function bindEvents() {
     }, "Submitting user pick...")
   );
 
-  document.getElementById("draftAvailableTable").addEventListener("click", (event) => {
+  document.getElementById("draftAvailableTable").addEventListener("click", async (event) => {
     const selectButton = event.target.closest("button[data-draft-select-id]");
     if (selectButton) {
       state.selectedDraftProspectId = selectButton.dataset.draftSelectId || null;
@@ -5623,7 +5645,12 @@ function bindEvents() {
     }
     const button = event.target.closest("button[data-draft-player-id]");
     if (!button) return;
-    state.selectedDraftProspectId = button.dataset.draftPlayerId || null;
+    const prospectId = button.dataset.draftPlayerId || null;
+    state.selectedDraftProspectId = prospectId;
+    // Draft Day Broadcast Reveal
+    const prospect = (state.draftState?.available || []).find((p) => p.id === prospectId);
+    const teamName = state.dashboard?.controlledTeam?.name || state.dashboard?.controlledTeamId || "Your Team";
+    await new Promise((resolve) => showDraftPickReveal(prospect, teamName, resolve));
     runAction(async () => {
       await api("/api/draft/user-pick", {
         method: "POST",
@@ -6199,6 +6226,35 @@ function bindEvents() {
 
   document.getElementById("shareDynastyBtn")?.addEventListener("click", shareDynastyTimeline);
   document.getElementById("franchiseNewsletterBtn")?.addEventListener("click", () => generateFranchiseNewsletter(state));
+
+  // Season review modal close
+  document.getElementById("closeSeasonReviewBtn")?.addEventListener("click", () => {
+    const m = document.getElementById("seasonReviewModal");
+    if (m) { m.hidden = true; m.classList.remove("active"); }
+  });
+
+  // Brand builder apply button
+  document.getElementById("applyBrandBtn")?.addEventListener("click", () => {
+    const name    = document.getElementById("brandNameInput")?.value?.trim();
+    const city    = document.getElementById("brandCityInput")?.value?.trim();
+    const abbrev  = document.getElementById("brandAbbrevInput")?.value?.trim();
+    const primary = document.getElementById("brandPrimaryInput")?.value?.trim();
+    const secondary = document.getElementById("brandSecondaryInput")?.value?.trim();
+    const overrides = { teamId: state.dashboard?.controlledTeamId };
+    if (name)    overrides.customName = name;
+    if (city)    overrides.customCity = city;
+    if (abbrev)  overrides.customAbbrev = abbrev;
+    if (primary) overrides.primaryColor = primary;
+    if (secondary) overrides.secondaryColor = secondary;
+    applyBrandIdentity(overrides).catch(presentActionError);
+  });
+
+  // Mentorship panel load on Roster tab
+  document.querySelectorAll(".menu-btn[data-tab='rosterTab']").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      renderVeteranMentorshipPanel().catch(() => {});
+    });
+  });
 }
 
 // ── News Ticker ────────────────────────────────────────────────────────────────
@@ -6257,10 +6313,36 @@ async function renderGmLegacyScore() {
         <div class="gm-persona-desc">${escapeHtml(persona.current.description)}</div>
         ${persona.next ? `<div class="gm-persona-next">Next: <strong>${escapeHtml(persona.next.name)}</strong> · ${persona.next.gapToNext > 0 ? `+${persona.next.gapToNext} pts needed` : "Ready to advance"}</div>` : `<div class="gm-persona-next">🏆 Peak tier reached</div>`}
       `;
+
+      // Persona tier unlock toast
+      const currentTier = persona.current.tier;
+      if (state.prevGmLegacyTier !== null && currentTier > state.prevGmLegacyTier) {
+        showPersonaTierToast(persona.current.name, currentTier);
+      }
+      state.prevGmLegacyTier = currentTier;
     }
   } catch {
     // non-critical
   }
+}
+
+function showPersonaTierToast(tierName, tier) {
+  const overlay = document.getElementById("personaTierToast");
+  if (!overlay) {
+    // Fallback to regular toast
+    showToast(`GM Arc Unlocked: ${tierName} (Tier ${tier})`);
+    return;
+  }
+  const nameEl = overlay.querySelector(".persona-toast-name");
+  const tierEl = overlay.querySelector(".persona-toast-tier");
+  if (nameEl) nameEl.textContent = tierName;
+  if (tierEl) tierEl.textContent = `Tier ${tier} of 6`;
+  overlay.hidden = false;
+  overlay.classList.add("active");
+  setTimeout(() => {
+    overlay.classList.remove("active");
+    setTimeout(() => { overlay.hidden = true; }, 500);
+  }, 3500);
 }
 
 // ── Season Preview Panel ───────────────────────────────────────────────────────
@@ -6621,6 +6703,286 @@ function initGistSyncUI() {
   const gistEl = document.getElementById("gistIdInput");
   const savedId = getSavedGistId();
   if (gistEl && savedId) gistEl.value = savedId;
+}
+
+// ── Fan Sentiment Card ─────────────────────────────────────────────────────────
+function renderFanSentimentCard() {
+  const el = document.getElementById("fanSentimentCard");
+  if (!el) return;
+  const fs = state.dashboard?.fanSentiment;
+  if (!fs) { el.hidden = true; return; }
+  el.hidden = false;
+  const trendIcons = { rising: "📈", falling: "📉", stable: "→" };
+  const barPct = fs.approval || 0;
+  const tone = barPct >= 75 ? "positive" : barPct >= 50 ? "warning" : "negative";
+  el.innerHTML = `
+    <div class="fan-sentiment-header">
+      <span class="fan-sentiment-label">Fan Pulse</span>
+      <span class="fan-sentiment-trend">${trendIcons[fs.trend] || "→"} ${escapeHtml(fs.trend || "stable")}</span>
+    </div>
+    <div class="fan-sentiment-approval">
+      <div class="fs-bar-track"><div class="fs-bar-fill tone-bg-${escapeHtml(tone)}" style="width:${barPct}%"></div></div>
+      <span class="fs-approval-num tone-${escapeHtml(tone)}">${barPct}</span>
+    </div>
+    <div class="fan-sentiment-label-name">${escapeHtml(fs.label || "Steady")}</div>
+    ${fs.reasons?.length ? `<div class="fan-sentiment-reason">${escapeHtml(fs.reasons[0])}</div>` : ""}
+  `;
+}
+
+// ── Active Injury Overlay Card ─────────────────────────────────────────────────
+function renderInjuryOverlayCard() {
+  const el = document.getElementById("injuryOverlayCard");
+  if (!el) return;
+  const injured = state.dashboard?.activeInjuries || [];
+  if (!injured.length) { el.hidden = true; return; }
+  el.hidden = false;
+  const items = injured.slice(0, 6).map((p) => {
+    const wkColor = p.weeksRemaining <= 1 ? "positive" : p.weeksRemaining <= 3 ? "warning" : "negative";
+    return `
+      <div class="injury-overlay-row">
+        <span class="inj-pos-chip">${escapeHtml(p.pos || "?")}</span>
+        <span class="inj-name">${escapeHtml(p.name || p.playerId)}</span>
+        <span class="inj-status tone-${escapeHtml(p.severity === "severe" ? "negative" : "warning")}">${escapeHtml(p.status || "IR")}</span>
+        <span class="inj-weeks tone-${wkColor}">${p.weeksRemaining}w</span>
+      </div>`;
+  }).join("");
+  el.innerHTML = `
+    <div class="injury-overlay-title">Active Injuries <span class="inj-count-chip">${injured.length}</span></div>
+    <div class="injury-overlay-list">${items}</div>
+    ${injured.length > 6 ? `<div class="inj-overflow small muted">+${injured.length - 6} more</div>` : ""}
+  `;
+}
+
+// ── Stat Leaders Strip ─────────────────────────────────────────────────────────
+async function renderStatLeadersStrip() {
+  const el = document.getElementById("statLeadersStrip");
+  if (!el) return;
+  try {
+    const data = await api("/api/stat-leaders");
+    if (!data?.leaders) return;
+    const { passing, rushing, defense } = data.leaders;
+    const fmt = (rows, label, key, fmt2) => {
+      if (!rows?.length) return "";
+      const top = rows[0];
+      const val = fmt2 ? fmt2(top[key]) : (top[key] || 0);
+      return `<div class="stat-leader-cell">
+        <span class="sl-cat">${label}</span>
+        <span class="sl-name">${escapeHtml(top.player || top.name || "—")}</span>
+        <span class="sl-val">${typeof val === "number" ? val.toLocaleString() : val}</span>
+      </div>`;
+    };
+    el.innerHTML = `
+      <div class="stat-leaders-inner">
+        ${fmt(passing, "Pass Yds", "yds")}
+        ${fmt(rushing, "Rush Yds", "yds")}
+        ${fmt(defense, "Def Stars", "sacks", (v) => `${(defense[0]?.sacks || 0)} sck / ${(defense[0]?.int || 0)} int`)}
+      </div>`;
+    el.hidden = !passing?.length && !rushing?.length && !defense?.length;
+  } catch {
+    // non-critical
+  }
+}
+
+// ── Owner Ultimatum Banner ─────────────────────────────────────────────────────
+function renderOwnerUltimatum() {
+  const el = document.getElementById("ownerUltimatumBanner");
+  if (!el) return;
+  const ult = state.dashboard?.controlledTeam?.owner?.expectation?.ultimatum;
+  if (!ult?.active) { el.hidden = true; return; }
+  el.hidden = false;
+  el.innerHTML = `
+    <div class="ultimatum-banner">
+      <span class="ultimatum-icon">⚠️</span>
+      <div class="ultimatum-body">
+        <strong>Owner Ultimatum</strong>
+        <span>${escapeHtml(ult.message)}</span>
+        <span class="ultimatum-detail">${ult.weeksLeft} week${ult.weeksLeft !== 1 ? "s" : ""} remaining · Consequence: ${escapeHtml(ult.consequence || "major changes")}</span>
+      </div>
+    </div>`;
+}
+
+// ── Season-End GM Review Modal ─────────────────────────────────────────────────
+function checkSeasonEndReview(previous) {
+  const curr = state.dashboard;
+  if (!curr || !previous) return;
+  // Trigger when transitioning from postseason → offseason
+  const justEndedSeason =
+    (previous.phase === "postseason" || previous.phase === "regular-season") &&
+    (curr.phase === "offseason" || curr.phase === "season-awards");
+  if (!justEndedSeason) return;
+  // Don't fire on initial load
+  if (state.prevDashboardPhase === null) { state.prevDashboardPhase = curr.phase; return; }
+  state.prevDashboardPhase = curr.phase;
+  showSeasonEndReview();
+}
+
+function showSeasonEndReview() {
+  const d = state.dashboard;
+  if (!d) return;
+  const team = d.controlledTeam || {};
+  const standings = d.latestStandings || [];
+  const myRow = standings.find((r) => r.team === (team.abbrev || team.teamId)) || {};
+  const record = myRow.wins != null ? `${myRow.wins}–${myRow.losses}` : "—";
+  const rank = standings.findIndex((r) => r.team === (team.abbrev || team.teamId)) + 1;
+  const legacy = d.gmLegacy;
+  const heat = team.owner?.expectation?.heat ?? "—";
+  const verdict = heat >= 75 ? "On the Hot Seat" : heat >= 55 ? "Owner Watching" : "Owner Satisfied";
+  const verdictTone = heat >= 75 ? "negative" : heat >= 55 ? "warning" : "positive";
+
+  const modal = document.getElementById("seasonReviewModal");
+  if (!modal) return;
+  const body = modal.querySelector(".season-review-body");
+  if (!body) return;
+  body.innerHTML = `
+    <div class="sr-headline">Season ${d.currentYear - 1} Complete</div>
+    <div class="sr-grid">
+      <div class="sr-tile"><div class="sr-tile-label">Record</div><div class="sr-tile-val">${escapeHtml(record)}</div></div>
+      <div class="sr-tile"><div class="sr-tile-label">League Rank</div><div class="sr-tile-val">${rank > 0 ? `#${rank}` : "—"}</div></div>
+      <div class="sr-tile"><div class="sr-tile-label">Team OVR</div><div class="sr-tile-val">${team.overallRating ?? "—"}</div></div>
+      <div class="sr-tile"><div class="sr-tile-label">Cap Space</div><div class="sr-tile-val">${fmtMoney(d.cap?.capSpace || 0)}</div></div>
+    </div>
+    <div class="sr-verdict tone-border-${verdictTone}">
+      <strong>Owner Verdict:</strong> <span class="tone-${verdictTone}">${escapeHtml(verdict)}</span>
+      ${team.owner?.expectation?.reasons?.length ? `<div class="sr-reasons">${escapeHtml(team.owner.expectation.reasons.join(" · "))}</div>` : ""}
+    </div>
+    ${legacy ? `<div class="sr-legacy">
+      <strong>GM Legacy:</strong> ${escapeHtml(legacy.label || "")} — Score ${legacy.score ?? "—"} · Grade ${escapeHtml(legacy.grade || "—")}
+    </div>` : ""}
+    <div class="sr-call-to-action">A new season awaits. What will your legacy be?</div>
+  `;
+  modal.hidden = false;
+  modal.classList.add("active");
+}
+
+// ── Pre-Game Tactical Adjustment Modal ────────────────────────────────────────
+function showHalftimeAdjustModal(onChoice) {
+  const modal = document.getElementById("halftimeAdjustModal");
+  if (!modal) { onChoice(null); return; }
+  // reset
+  modal.querySelectorAll(".tactic-option").forEach((btn) => btn.classList.remove("selected"));
+  const confirmBtn = modal.querySelector(".tactic-confirm-btn");
+  let choice = null;
+  modal.querySelectorAll(".tactic-option").forEach((btn) => {
+    btn.onclick = () => {
+      modal.querySelectorAll(".tactic-option").forEach((b) => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      choice = btn.dataset.tactic;
+    };
+  });
+  if (confirmBtn) {
+    confirmBtn.onclick = () => {
+      modal.hidden = true;
+      modal.classList.remove("active");
+      onChoice(choice);
+    };
+  }
+  const skipBtn = modal.querySelector(".tactic-skip-btn");
+  if (skipBtn) {
+    skipBtn.onclick = () => {
+      modal.hidden = true;
+      modal.classList.remove("active");
+      onChoice(null);
+    };
+  }
+  modal.hidden = false;
+  modal.classList.add("active");
+}
+
+// ── Draft Day Broadcast Reveal ────────────────────────────────────────────────
+const DRAFT_ANALYST_LINES = [
+  "A calculated pick — fits the scheme perfectly.",
+  "The crowd's buzzing. Interesting choice under pressure.",
+  "Scouts had this one circled for weeks.",
+  "The board fell their way. They'll take it.",
+  "He's raw but the upside is undeniable.",
+  "Safe pick. Fills a real need on this roster.",
+  "There's a reason he slipped — but this team believes.",
+  "High floor, high ceiling. Franchise player potential.",
+  "They stayed true to the board. Smart process.",
+  "Controversy pick. Some in the room were surprised."
+];
+
+function pickAnalystLine(seed) {
+  const idx = Math.abs(seed || Date.now()) % DRAFT_ANALYST_LINES.length;
+  return DRAFT_ANALYST_LINES[idx];
+}
+
+function showDraftPickReveal(prospect, teamName, onConfirm) {
+  const modal = document.getElementById("draftPickRevealModal");
+  if (!modal) { onConfirm(); return; }
+  const body = modal.querySelector(".draft-reveal-body");
+  if (body) {
+    const analyst = pickAnalystLine(
+      (prospect?.name?.charCodeAt(0) || 0) + (prospect?.overall || 0)
+    );
+    body.innerHTML = `
+      <div class="draft-reveal-clock">⏱ On the clock: <strong>${escapeHtml(teamName || "Your Team")}</strong></div>
+      <div class="draft-reveal-pick">
+        <div class="dr-pos-badge">${escapeHtml(prospect?.position || prospect?.pos || "?")}</div>
+        <div class="dr-name">${escapeHtml(prospect?.name || "Unknown")}</div>
+        <div class="dr-ovr">OVR ${prospect?.overall ?? "—"}</div>
+      </div>
+      <div class="draft-reveal-analyst">"${escapeHtml(analyst)}"</div>
+      <button class="dr-confirm-btn btn-primary">Confirm Pick</button>
+    `;
+    body.querySelector(".dr-confirm-btn")?.addEventListener("click", () => {
+      modal.hidden = true;
+      modal.classList.remove("active");
+      onConfirm();
+    }, { once: true });
+  }
+  modal.hidden = false;
+  modal.classList.add("active");
+}
+
+// ── Veteran Mentorship Panel ───────────────────────────────────────────────────
+async function renderVeteranMentorshipPanel() {
+  const el = document.getElementById("mentorshipPanel");
+  if (!el) return;
+  try {
+    const data = await api("/api/mentorship");
+    const pairs = data.pairs || [];
+    if (!pairs.length) {
+      el.innerHTML = `<div class="narrative-empty">No active mentorship pairings on this roster. Veteran players (5+ seasons, OVR 75+) will mentor eligible young players during the offseason.</div>`;
+      return;
+    }
+    el.innerHTML = `
+      <div class="mentorship-list">
+        ${pairs.map((p) => `
+          <div class="mentorship-pair">
+            <div class="mp-mentor">
+              <span class="mp-pos-chip">${escapeHtml(p.position || "?")}</span>
+              <span class="mp-name">${escapeHtml(p.mentorName)}</span>
+              <span class="mp-ovr muted">OVR ${p.mentorOvr}</span>
+            </div>
+            <div class="mp-arrow">→</div>
+            <div class="mp-mentee">
+              <span class="mp-name">${escapeHtml(p.menteeName)}</span>
+              <span class="mp-age muted">Age ${p.menteeAge}</span>
+            </div>
+            <div class="mp-bonus">+${p.projectedBonus} OVR next offseason</div>
+          </div>`).join("")}
+      </div>
+      <div class="mentorship-note small muted">Mentorship bonuses apply during training camp each offseason.</div>
+    `;
+  } catch {
+    // non-critical
+  }
+}
+
+// ── Franchise Brand Builder ────────────────────────────────────────────────────
+async function applyBrandIdentity(overrides) {
+  if (!overrides || !Object.keys(overrides).length) return;
+  try {
+    const result = await api("/api/brand-identity", { method: "POST", body: overrides });
+    if (result.ok) {
+      state.brandOverride = result.brandOverride;
+      applyDashboard(result.state);
+      showToast("Franchise identity updated!");
+    }
+  } catch (e) {
+    presentActionError(e);
+  }
 }
 
 async function init() {

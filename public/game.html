@@ -167,6 +167,25 @@
             </div>
           </div>
 
+          <!-- ── Owner Ultimatum Banner ──────────────────────────────────── -->
+          <div id="ownerUltimatumBanner" hidden></div>
+
+          <!-- ── World-State Pulse Row (Fan Sentiment, Injuries, Stat Leaders) ─ -->
+          <div class="panel split triple">
+            <div>
+              <h3>Fan Pulse</h3>
+              <div id="fanSentimentCard" hidden></div>
+            </div>
+            <div>
+              <h3>Active Injuries</h3>
+              <div id="injuryOverlayCard" hidden></div>
+            </div>
+            <div>
+              <h3>Stat Leaders</h3>
+              <div id="statLeadersStrip" hidden></div>
+            </div>
+          </div>
+
           <div class="panel" id="tradeDeadlinePanel" hidden>
             <div class="trade-deadline-alert">
               <span class="trade-deadline-icon">&#9874;</span>
@@ -229,6 +248,15 @@
             </div>
             <div class="small">Use Select in the roster table to choose a player for designation changes.</div>
             <div class="table-wrap"><table id="rosterTable" data-testid="roster-table"></table></div>
+          </div>
+
+          <!-- ── Veteran Mentorship Panel ────────────────────────────────── -->
+          <div class="panel">
+            <div class="narrative-panel-header">
+              <h2>Veteran Mentorship</h2>
+              <span class="narrative-panel-kicker">Veterans accelerate young player development each offseason</span>
+            </div>
+            <div id="mentorshipPanel"><div class="narrative-empty">Load roster to see mentorship pairings.</div></div>
           </div>
         </section>
 
@@ -855,6 +883,38 @@
             </div>
           </div>
 
+          <!-- ── Franchise Brand Builder ──────────────────────────────────── -->
+          <div class="panel">
+            <div class="narrative-panel-header">
+              <h2>Franchise Brand Builder</h2>
+              <span class="narrative-panel-kicker">Customize your franchise identity — name, city, colors</span>
+            </div>
+            <div class="brand-builder-card">
+              <div class="brand-builder-title">Custom Identity Overrides</div>
+              <div class="form-grid">
+                <label>Team Name
+                  <input id="brandNameInput" type="text" placeholder="e.g. Wolves" maxlength="30" />
+                </label>
+                <label>City
+                  <input id="brandCityInput" type="text" placeholder="e.g. Atlanta" maxlength="24" />
+                </label>
+                <label>Abbreviation (3 chars)
+                  <input id="brandAbbrevInput" type="text" placeholder="e.g. ATL" maxlength="3" />
+                </label>
+                <label>Primary Color (hex)
+                  <input id="brandPrimaryInput" type="color" value="#4f8ef7" />
+                </label>
+                <label>Secondary Color (hex)
+                  <input id="brandSecondaryInput" type="color" value="#7c5cbf" />
+                </label>
+              </div>
+              <div class="row compact" style="margin-top:10px">
+                <button id="applyBrandBtn">Apply Brand Override</button>
+                <span class="small muted">Changes apply to your controlled team's display name and color theme.</span>
+              </div>
+            </div>
+          </div>
+
           <div class="panel control-hero-panel">
             <div class="control-hero-grid">
               <div class="control-hero-copy">
@@ -1277,6 +1337,64 @@
     </div>
 
     <div id="toastStack" class="toast-stack"></div>
+
+    <!-- ── Persona Tier Unlock Toast ─────────────────────────────────────── -->
+    <div id="personaTierToast" hidden>
+      <div class="persona-toast-kicker">GM Arc Unlocked</div>
+      <div class="persona-toast-name"></div>
+      <div class="persona-toast-tier"></div>
+    </div>
+
+    <!-- ── Season Review Modal ────────────────────────────────────────────── -->
+    <div id="seasonReviewModal" hidden>
+      <div class="season-review-card">
+        <div class="season-review-body"></div>
+        <div class="season-review-actions">
+          <button id="closeSeasonReviewBtn" class="btn-primary">Start New Season</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Halftime / Pre-Game Tactical Modal ─────────────────────────────── -->
+    <div id="halftimeAdjustModal" hidden>
+      <div class="halftime-modal-card">
+        <div class="halftime-modal-title">Pre-Game Tactical Brief</div>
+        <div class="halftime-modal-sub">Choose your team's focus for this week's matchup.</div>
+        <div class="tactic-options-grid">
+          <div class="tactic-option" data-tactic="run-heavy">
+            <div class="to-icon">🏃</div>
+            <div class="to-label">Run-Heavy</div>
+            <div class="to-desc">Control the clock, grind yards, wear down the defense.</div>
+          </div>
+          <div class="tactic-option" data-tactic="pass-heavy">
+            <div class="to-icon">🎯</div>
+            <div class="to-label">Pass-Heavy</div>
+            <div class="to-desc">Open up the field, attack downfield, tempo offense.</div>
+          </div>
+          <div class="tactic-option" data-tactic="blitz-heavy">
+            <div class="to-icon">⚡</div>
+            <div class="to-label">Blitz Package</div>
+            <div class="to-desc">Bring pressure, disrupt the QB, force quick decisions.</div>
+          </div>
+          <div class="tactic-option" data-tactic="prevent">
+            <div class="to-icon">🛡️</div>
+            <div class="to-label">Prevent Defense</div>
+            <div class="to-desc">Protect the lead, concede short gains, stop the big play.</div>
+          </div>
+        </div>
+        <div class="halftime-actions">
+          <button class="tactic-confirm-btn btn-primary">Confirm Tactic</button>
+          <button class="tactic-skip-btn btn-sm">No Adjustment</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Draft Pick Reveal Modal ─────────────────────────────────────────── -->
+    <div id="draftPickRevealModal" hidden>
+      <div class="draft-reveal-card">
+        <div class="draft-reveal-body"></div>
+      </div>
+    </div>
 
     <!-- ── Feedback Widget ────────────────────────────────────────────────── -->
     <div id="feedbackWidget" class="feedback-widget" title="Send feedback or report a bug">

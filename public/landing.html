@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VaultSpark Football GM — Deep NFL Franchise Simulator</title>
+<meta name="description" content="The deepest browser-based NFL franchise sim. World-state, agent AI, rivalry DNA, GM legacy arcs, and PFR-calibrated realism. No install. Free beta." />
+<meta property="og:title" content="VaultSpark Football GM — Build Your Dynasty" />
+<meta property="og:description" content="Browser-native NFL franchise sim. World-state, agent AI, rivalry DNA, GM legacy arcs, and PFR-calibrated realism. Build a dynasty. Free beta." />
+<meta property="og:type" content="website" />
+<style>
+  :root {
+    --bg0: #0d0f14;
+    --bg1: #13161e;
+    --panel: #1e2230;
+    --line: #2e3448;
+    --ink: #e8ecf4;
+    --muted: #7a8299;
+    --accent: #4f8ef7;
+    --accent2: #7c5cbf;
+    --gold: #e8a840;
+    --success: #3dba7e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg0);
+    color: var(--ink);
+    font-family: 'Segoe UI', 'Bahnschrift', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,15,20,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { font-size: 14px; font-weight: 800; letter-spacing: 1px; color: var(--accent); }
+  .nav-links { display: flex; gap: 20px; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--accent); color: #fff;
+    border-radius: 6px; padding: 6px 16px;
+    font-size: 13px; font-weight: 700; text-decoration: none;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: #3a7ae0; color: #fff; }
+
+  /* HERO */
+  .hero {
+    min-height: 80vh;
+    background: linear-gradient(135deg, #0d0f14 0%, #1a1030 40%, #0d1a2e 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 80px 40px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,142,247,0.07) 0%, transparent 70%);
+  }
+  .hero-kicker {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900; letter-spacing: -2px;
+    line-height: 1.05; margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero-sub {
+    font-size: 18px; color: var(--muted); max-width: 540px; margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    border-radius: 8px; padding: 14px 32px;
+    font-size: 15px; font-weight: 800; text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #3a7ae0; transform: translateY(-1px); }
+  .btn-secondary {
+    background: var(--panel); color: var(--ink);
+    border: 1px solid var(--line); border-radius: 8px;
+    padding: 14px 32px; font-size: 15px; font-weight: 700;
+    text-decoration: none; display: inline-block;
+    transition: border-color 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
+  .hero-badge {
+    background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.25);
+    color: var(--accent); border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 600;
+  }
+
+  /* FEATURES */
+  .section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-kicker { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+  .section h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+  .section-sub { color: var(--muted); max-width: 540px; margin-bottom: 48px; font-size: 15px; }
+
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .feature-card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 12px; padding: 24px;
+  }
+  .feature-icon { font-size: 28px; margin-bottom: 12px; }
+  .feature-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+  .feature-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--bg1); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 40px;
+  }
+  .stats-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; }
+  .stat-item { text-align: center; }
+  .stat-item .stat-num { font-size: 36px; font-weight: 900; color: var(--accent); letter-spacing: -1px; }
+  .stat-item .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, #1a1030 0%, #0d1a2e 100%);
+    border-top: 1px solid var(--line);
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 36px; font-weight: 900; letter-spacing: -1px; margin-bottom: 12px; }
+  .cta-section p { color: var(--muted); font-size: 16px; max-width: 480px; margin: 0 auto 32px; }
+
+  /* FOOTER */
+  footer {
+    padding: 24px 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    nav { padding: 12px 20px; }
+    .hero, .section, .cta-section { padding: 60px 20px; }
+    .stats-inner { gap: 24px; }
+    .stats-bar { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">⚡ VaultSpark Football GM</div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#about">About</a>
+    <a href="./index.html" class="nav-cta">Play Free Beta →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div style="position:relative;z-index:1">
+    <div class="hero-kicker">VaultSpark Studios · Open Beta</div>
+    <h1>The Franchise Sim<br><span>That Remembers Everything</span></h1>
+    <p class="hero-sub">
+      Deep NFL franchise management. World-state, agent AI, rivalry DNA, GM legacy arcs, and PFR-calibrated simulation. Browser-native. No install.
+    </p>
+    <div class="hero-actions">
+      <a href="./index.html" class="btn-primary">Play Free Beta →</a>
+      <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener" class="btn-secondary">Join Community</a>
+    </div>
+    <div class="hero-badges">
+      <span class="hero-badge">Browser-Native</span>
+      <span class="hero-badge">18 Engine Systems</span>
+      <span class="hero-badge">PFR-Calibrated Stats</span>
+      <span class="hero-badge">No Install</span>
+      <span class="hero-badge">Free Beta</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-num">18</div><div class="stat-label">Engine Systems</div></div>
+    <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">API Routes</div></div>
+    <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Playable Seasons</div></div>
+    <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">GM Legacy Tiers</div></div>
+    <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Install Required</div></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-kicker">What makes it different</div>
+  <h2>A Franchise That Has<br>Real Stakes</h2>
+  <p class="section-sub">VaultSpark is built around the idea that franchise simulation should feel like running an actual organization — every decision with lasting consequences.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🌍</div>
+      <h3>World-State Engine</h3>
+      <p>Owner personality, staff culture, scheme identity, and player agent personalities all affect outcomes — not just ratings.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>PFR-Calibrated Stats</h3>
+      <p>Season and career statistics are guardrailed against real NFL baselines from Pro Football Reference. Numbers feel real.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h3>Rivalry DNA</h3>
+      <p>Teams build genuine rivalry heat over time based on matchup history, division battles, and playoff upsets. It escalates.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <h3>GM Legacy Arc</h3>
+      <p>Your career is tracked across every season. Progress through 6 tiers — from Young Gun to Immortal — based on what you actually build.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📰</div>
+      <h3>Beat Reporter + Narratives</h3>
+      <p>Weekly milestones, press conference quotes, and franchise story events surface automatically. Your simulation tells its own story.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💾</div>
+      <h3>Three Persistence Layers</h3>
+      <p>Local saves, IndexedDB (250MB), and GitHub Gist cloud sync. Rewind to any of the last 10 major decisions. Nothing gets lost.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>Pre-Game Tactical Briefs</h3>
+      <p>Choose your team's weekly tactical focus — run-heavy, pass-heavy, blitz package, or prevent defense — before each simulation advances.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🤝</div>
+      <h3>Veteran Mentorship</h3>
+      <p>Veterans accelerate younger players' development during training camp. Managing your roster's age curve becomes a strategic tool.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h3>Franchise Brand Builder</h3>
+      <p>Name your team, customize your city, set your colors. Your franchise, your identity — custom name and color theme applied throughout.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="about">
+  <h2>Ready to Build<br>Your Dynasty?</h2>
+  <p>Free browser-based beta. No account required. Start a franchise and simulate seasons immediately.</p>
+  <a href="./index.html" class="btn-primary" style="font-size:16px;padding:16px 40px">Launch Free Beta →</a>
+  <p style="margin-top:16px;font-size:13px;color:var(--muted)">
+    Questions or feedback? <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener" style="color:var(--accent)">Join the discussion →</a>
+  </p>
+</div>
+
+<footer>
+  <span>VaultSpark Football GM · Open Beta 2026 · Built by VaultSpark Studios</span>
+  <span>
+    <a href="./index.html">Launch App</a> ·
+    <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener">Community</a>
+  </span>
+</footer>
+
+</body>
+</html>

@@ -1,209 +1,139 @@
 # Current State
 
-Build status:
-- Closeout commit `3ed91c8` (`Refresh project memory closeout`) was pushed to `main` on 2026-03-18; GitHub `CI` run `#55` finished green, and `Deploy Pages` / `Deploy Backend Runtime` were correctly skipped because the commit touched only repo-memory files outside their `push.paths` filters
-- Repo memory was refreshed on 2026-03-18; no additional unstaged tracked product diff was detected during closeout, and the latest committed change remains the 2026-03-13 history-table reduction pass
-- Direct GitHub Pages deployment from this repo remains the canonical frontend publish path
+## Build / Deployment Status
+- All code is local-only on `main` — Sessions 3–6 have not been deployed to GitHub Pages yet
+- Last deployed state predates Session 3 (all current features are invisible to public users)
+- GitHub Pages deployment path: `deploy-pages.yml` → `npm run build:pages` → Pages artifact
 - Backend scaffold remains separate under `deploy-backend.yml`, `Dockerfile.runtime`, and `ops/`
-- The game shell now marks itself ready after loading core dashboard state, then hydrates heavier panels in the background so `Play` mode no longer appears stuck on `Loading...` after league creation
-- Server-backed setup init now defers backup loading on first open, and both save-store adapters skip backup metadata work when only normal saves are requested
-- The setup page now requests active-league/team state without blocking on save discovery, marks itself ready, and hydrates the save list in the background via `/api/saves`
-- Switching the setup runtime mode now reloads the menu state for the selected runtime, and the client-only browser runtime no longer pulls node-only realism-loader imports into the browser bundle
-- Pages builds now inject runtime-availability metadata so the setup UI disables `server-backed` mode unless a backend origin is explicitly configured, and server-mode fetch failures surface a clear non-JSON/API-origin error instead of `Unexpected token '<'`
-- The browser save store now prunes old rolling backups before retrying quota-limited writes, and client-only auto-backup failures are downgraded to warnings so weekly progression keeps running
-- Setup and new-league creation now run through a shared config framework for franchise archetype, rules preset, difficulty preset, and challenge mode; both runtimes publish the config catalog through `/api/setup/init`, and startup scenario effects can add cap stress, market pressure, or roster penalties to the controlled team
-- Team owner and staff models now expose richer world-state: extra front-office and health roles, owner personality/priorities/patience, derived scheme identity, and culture profile summaries
-- That world-state now affects gameplay outcomes directly:
-  - scouting weekly points scale with scouting director development and analytics support
-  - injury chance/recovery scale with medical/strength staff plus rehab support
-  - morale swings scale with culture and owner patience pressure
-  - owner fan-interest/hot-seat pressure updates during weekly finance processing
-  - negotiation demands now account for contract-demand settings plus cap-analyst leverage
-- The next world-state layer is now active too:
-  - draft scouting reveal quality and confidence now improve when staff, analytics, budget support, team need, and scheme fit align
-  - offseason player development now uses team training/coaching/scheme context and can reduce reinjury risk in stronger environments
-  - weekly matchup plans now derive from team/opponent strengths, feed the game simulator, and surface through owner/staff views plus game results
-- Transaction AI and player-facing surfacing now consume more of that world-state:
-  - trade valuation now accounts for scheme fit, age/development, picks bias, and owner/culture transaction tolerance
-  - free-agency offer resolution now considers team context, not just raw salary/years
-  - player profiles now expose a development outlook with fit, focus ratings, weekly-plan context, pressure, and legacy score
-- Owner hot-seat pressure now uses a computed expectation model with mandate, target wins, projected pace, recent transaction pressure, and cash/fan context instead of only a simple patience/record check
-- Both `/api/setup/init` runtimes now emit setup timing diagnostics for core setup state, save listing, backup listing, and total route time
-- The setup page now captures client init timing, tracks deferred save hydration timing, and surfaces startup diagnostics directly in the status line
-- The browser runtime no longer constructs a full default `GameSession` just to paint the setup menu; client-only `/api/setup/init` stays on a lightweight catalog/team bootstrap until a league is actually created, loaded, or opened
-- The setup page no longer overwrites those diagnostics with a plain `Ready` string after `loadSetup()`, so the timing readout stays visible after init and runtime-mode switches
-- Frontend API errors now preserve backend `reasonCode` data, so challenge-restricted actions can surface clear blocked-action messaging instead of generic raw backend errors
-- Weekly-plan/scouting-fit surfacing is more visible now:
-  - the overview tab includes a summary line for the controlled team’s weekly plan, culture, and owner mandate pressure
-  - the scouting tab now shows scheme-fit in the main board plus a textual scouting insight summary for the top board target and latest report
-- The roster page no longer shows the redundant roster-board panel at the bottom; only the main roster management surface remains
-- Career stat rows now carry real games and starts, fixing broken per-game calculations that were previously dividing by seasons in the stats UI
-- Added a regression suite that checks both the career per-game denominator fix and starter-qualified season averages against weighted position baselines
-- The stats tab now shows a filter-aware starter-qualified benchmark hint so position-based NFL-average comparisons are explicit instead of implied
-- The regular-season stats tables now read the same calibrated split that realism verification expects:
-  - season realism calibration now targets the `regular` split instead of only the aggregate season bucket
-  - aggregate season totals and career totals are rebuilt from regular/playoff splits after calibration so table views and verification no longer diverge
-  - the season stats regression now validates the regular-season split directly, including QB and K starter-qualified samples
-- The stats benchmark copy now includes approximate per-game equivalents alongside season totals so position filters are easier to interpret in the UI
-- The career realism profile now applies a QB games-started qualifier in addition to passing volume so the starter-weighted career verification no longer averages in long-tenure low-start backups
-- Backend image tags now normalize the GitHub owner name to lowercase before pushing to GHCR, fixing the `repository name must be lowercase` Actions failure on `Deploy Backend Runtime`
-- QB evaluation and simulation now use depth-based passing accuracy:
-  - generated/imported QBs carry `throwAccuracyShort`, `throwAccuracyMedium`, and `throwAccuracyDeep`
-  - QB overall/scheme-fit logic now reads those ratings instead of only a single broad passing-accuracy number
-  - live pass resolution now chooses short/intermediate/deep targets and applies bucket-specific completion, sack, breakup, and interception pressure
-- PFR imports now derive QB depth ratings from passing volume, completion rate, and yards per attempt so productive modern passers no longer import as low-end backups
-- Defensive pass coverage now uses depth-aware ratings too:
-  - generated/imported LB and DB ratings derive `coverageShort`, `coverageMedium`, and `coverageDeep` from the existing coverage/man/zone/play-recognition base
-  - DB/LB overall and scheme-fit logic now account for those depth buckets instead of only a single blended coverage number
-  - the game simulator now applies bucket-specific defensive coverage pressure and chooses pass-breakup/interception defenders using the relevant depth bucket
-- The default career realism profile now uses modern 17-game-era receiving touchdown totals for RB and TE careers, aligning the career guardrails with the existing season baseline expectations
-- The live pass game now carries route-family and coverage-shell structure on top of the depth buckets:
-  - pass plays choose route families such as `quick`, `breaker`, `seam`, `vertical`, and `space` from player strengths, weekly plan, and coaching tendencies
-  - defenses present lightweight man/zone plus single-high/split-safety shells derived from weekly plan, scheme aggression, and blitz tendency
-  - play logs now record route family, depth bucket, and defensive shell metadata so future tuning can inspect what the simulator actually called
-- The realism-profile refresh path is less brittle now:
-  - added `src/data/scripts/buildOfficialNfl2025Baseline.js` plus `npm run build:official-nfl-baseline` to scrape official NFL 2025 player tables and player `stats/` pages into a reviewable JSON baseline
-  - the starter-qualified stats regression now reads its targets from `PFR_RECENT_WEIGHTED_PROFILE` instead of duplicating hard-coded benchmark numbers
-  - the current official NFL scrape is useful for spot checks and K/P/QB coverage, but the public server-rendered leaderboards stop after a limited visible slice, so it is not yet trustworthy as a full-league replacement profile for WR/TE/front-seven coverage
-- The 2025 realism baseline is now refreshed from a broader bulk source path:
-  - generated `output/statmuse-2025-baseline.json` from division-split StatMuse player queries, using 17-game equivalents for starter-room samples
-  - updated `PFR_RECENT_WEIGHTED_PROFILE` to a smoothed 2025 starter baseline so live calibration stays aligned with modern output without overreacting to one injury-heavy season
-  - updated `PFR_CAREER_WEIGHTED_PROFILE` where the new live passing/coverage model had made the old QB/DL/DB career guardrails stale
-- The stats and awards surfaces now expose AV end to end:
-  - added shared AV calculation in `src/stats/approximateValue.js`
-  - season/career stat rows now include `av`, so the main Statistics page can show AV for every player instead of only profile/timeline rows
-  - records now include a career AV leader, and season awards now rank from regular-season AV instead of raw passing/rushing-yard leaders
-- AV now uses a fuller PFR-style context path instead of only a local heuristic:
-  - `StatBook` now computes season AV from year/team/honors context and sums season AV for career totals
-  - the latest pass tightened that logic toward PFR's published offense/defense split formulas, using team points-per-drive, front-seven/secondary pools, starts-based OL/TE treatment, and contextual kicking/punting shares from the sim's available stat splits
-  - AV is now the last displayed stat column in the main stats tables and player profile season/career tables
-  - the old frontend-only AV estimate was removed from the player dossier/stats views so UI and backend no longer drift
-- Manual snap-share edits now rebalance the whole position room automatically:
-  - backend depth-chart share resolution now preserves the room target total while scaling untouched players around manual overrides
-  - the depth-chart UI mirrors that redistribution immediately before save, so the browser view matches the saved/runtime behavior
-  - session/API regressions now lock the rebalance behavior in
-- GitHub workflow action runtimes are now updated for the 2026 Node 24 migration warning:
-  - bumped `actions/checkout` from `v4` to `v5` in `ci.yml`, `deploy-backend.yml`, and `deploy-pages.yml`
-  - bumped `actions/setup-node` from `v4` to `v5` in `ci.yml` and `deploy-pages.yml`
-  - this is intended to clear GitHub's deprecation warning about Node 20-based JavaScript actions without changing the app runtime itself
-- The frontend shell now has a stronger brand and clearer information hierarchy:
-  - setup/game top bars now carry a VaultSpark Studios kicker instead of only the game title
-  - the visual system now leans into a richer stadium-night palette with stronger panel depth, typography, and table/button states
-  - navigation, cards, modals, and forms now read more like a cohesive product surface instead of a mostly utilitarian dark theme
-- Player profile presentation is now much more deliberate:
-  - the player modal summary is now a dossier-style hero panel instead of a plain text block
-  - each player gets a deterministic generated portrait from local SVG assembly keyed from the existing player profile seed
-  - the hero surface now highlights overview badges, archetype/development context, and a cleaner profile summary before the stats tables
-- Box score UX no longer buries player stats below play-by-play:
-  - box scores now open with `Player Stats` as the default subtab
-  - `Summary` and `Play By Play` live in separate tab panels inside the same modal
-  - users can inspect player stat lines immediately without scrolling through the full drive log first
-- The refreshed UI now reaches deeper into the main workflow surfaces:
-  - the overview tab opens with a command-deck style franchise spotlight instead of a generic control + summary stack
-  - the spotlight now surfaces mandate, identity, primary roster need, and weekly plan context for the controlled team before the data tables
-  - the box score subtab bar now stays sticky inside the modal so users can switch between stats/summary/play log without losing their place
-- The player dossier hero is more informative now, not just more visual:
-  - contract salary/cap/guarantee context is visible directly in the hero grid
-  - availability/injury status and latest-season production now sit in the summary area instead of requiring a scroll into the tables
-  - the hero layout was tightened for mobile by reducing portrait height and stacking the meta grid more cleanly
-- The refreshed control language now reaches the highest-value management tabs too:
-  - the contracts tab now opens with a cap-command spotlight that summarizes selected-player leverage, cap posture, expiring deals, and tag/option signals
-  - the settings tab now has a commissioner-deck summary that surfaces save health, core rules toggles, persistence posture, and observability status
-  - owner controls now include an owner spotlight that summarizes mandate, economics, facilities, and weekly pressure before the raw owner table
-- The shell now has a much stronger live visual identity instead of one flat dark treatment:
-  - the game shell applies a controlled-team color theme to the background, top bar, and active navigation state
-  - the side nav now groups workflow areas and uses stronger active-state treatment so the shell reads more like a command console than a button list
-  - `Contracts`, `Scouting`, and `History` now have more distinct hero/surface palettes, including a new scouting command-deck hero instead of only a utilitarian work panel
-  - table/chip/card values now use broader semantic tone styling for positive, warning, negative, info, and accent states
-  - the main menu hero now carries more atmosphere and framing, with a stronger story/pillars layer instead of only a plain setup card
-- The latest UI/history pass tightened readability and league-history flow:
-  - select dropdown menus now force readable option contrast instead of the earlier white-on-white native menu issue
-  - leftover placeholder/dev copy on the overview dashboard was replaced with user-facing text, and vague `delta` wording now reads as `Change`, `Need Gap`, `Cap Change`, or `value swing`
-  - player dossier cards now surface jersey numbers plus more explicit NFL frame/body-type labels, and the generated portraits bias harder toward position/weight-specific football builds with stronger shoulder/trap silhouettes for heavier positions
-  - the Hall of Fame and retired-number areas now render as spotlight/card galleries instead of only raw tables, with direct legend selection from Hall of Fame cards and a clearer franchise-legacy summary for the selected team
-  - the player-history side of the History tab now has a career-archive spotlight and season cards, so loaded player timelines read like resumés instead of only a search table plus raw stat rows
-  - the Season Awards side now has an award-year showcase with winner cards plus All-Pro and Pro Bowl galleries, so that archive no longer feels like a stack of raw tables
-  - the duplicate-heavy Season Awards raw tables are now tucked behind lookup drawers, keeping dense archive access without forcing users to scroll through the same information twice
-  - the Playwright setup helper now allows a wider create-league redirect window, which removed a recurrent borderline timeout during UI runs without changing product behavior
-- Playwright UI coverage now includes a seeded server-backed multi-year history regression:
-  - the test forces `server` runtime from setup, seeds two seasons quickly through `POST /api/advance-season`, reloads into the populated league, and verifies the `Season Awards` showcase plus `Hall of Fame` gallery surfaces render with non-empty archive data
-  - the same regression then searches for a controlled-team roster player in `History`, loads that player timeline, loads the controlled-team legacy panel, and exercises the jersey-retirement action end to end without relying on imported real-NFL Hall of Fame entries
-- Hall-of-Fame and retired-number policy is now a formal commissioner-controlled system:
-  - settings now expose a configurable Hall-of-Fame induction score floor, Hall-of-Fame waiting-period floor, retired-player-only jersey-retirement rule, optional Hall-of-Fame requirement for jersey retirement, and a retired-number AV floor
-  - runtime enforcement now blocks retiring jerseys for active players by default and returns explicit `reasonCode` values when Hall-of-Fame or AV policy blocks the action
-  - the Settings and History surfaces now summarize those legacy-policy rules directly so commissioners can see the active induction/retired-number standard without leaving the main workflow
-- Season wrap/history is now deeper and more explicit:
-  - the yearly flow now pauses on a dedicated `season-awards` phase between the Super Bowl and offseason pipeline
-  - award history now stores richer categories including `ROY`, `CPOY`, `MostImproved`, `AllPro1/2/3`, `ProBowl`, and a Super Bowl summary with MVP/pivotal moment
-  - the History tab now splits into `Season Awards` and `Hall of Fame`, and hall-of-fame rows include career AV, career stat lines, award-category totals, titles, and retired-number tracking
-  - teams now track retired jersey numbers, players have persistent jersey numbers, and both local/server runtimes expose a retire-jersey action
-- The regular-season calendar now respects the requested NFL structure more cleanly:
-  - the schedule/calendar surfaces show bye teams explicitly
-  - added a regression that checks `18` regular-season weeks, `17` games per team, and exactly one bye per team
-  - the matchup builder now produces a correct 17-opponent matrix and the week assignment step repairs duplicate-week collisions so bye math stays stable
-- Checkbox-heavy settings controls are less brittle and easier to scan now:
-  - commissioner toggles render in a card-style grid instead of a long inline row
-  - numeric settings render in a denser form grid, which reduces wrap chaos on smaller widths
-- Challenge enforcement now blocks user free-agent actions in `no-free-agency` mode and blocks trades that would deliver top-10 picks to the controlled team in `no-top-10-picks` mode
-- That enforcement now reaches the remaining obvious user acquisition paths too:
-  - waiver claims are blocked in `no-free-agency`
-  - force-sign retirement overrides are blocked in `no-free-agency`
-  - user top-10 draft selections are blocked in `no-top-10-picks`, and CPU draft progression no longer stalls on those picks
-- Focused validation passed for:
-  - `node --check src/config.js`
-  - `node --check src/domain/ratings.js`
-  - `node --check src/domain/playerFactory.js`
-  - `node --check src/data/pfrAdapter.js`
-  - `node --check src/runtime/applyLeagueSetup.js`
-  - `node --check src/runtime/GameSession.js`
-  - `node --check src/engine/gameSimulator.js`
-  - `node --check test/quarterback-depth-ratings.test.js`
-  - `node --test --test-isolation=none test/quarterback-depth-ratings.test.js`
-  - `node --test --test-isolation=none test/coverage-depth-ratings.test.js`
-  - `node --test --test-isolation=none test/stats-regression.test.js`
-  - `node --test --test-isolation=none test/ratings-regression.test.js`
-  - `node --test --test-isolation=none test/new-systems.test.js`
-  - `node --test --test-isolation=none test/realism-career-regression.test.js`
-  - `node --test --test-isolation=none test/pass-structure-regression.test.js`
-  - `npm.cmd run build:pages`
-  - `node --check public/app.js`
-  - `npm.cmd test`
-  - `npm.cmd run build:pages`
-  - `node --check public/lib/api/createApiClient.js`
-  - `node --check public/setup.js`
-  - `node --check src/config/leagueSetup.js`
-  - `node --check src/runtime/applyLeagueSetup.js`
-  - `node --check src/runtime/GameSession.js`
-  - `node --check src/app/api/localApiRuntime.js`
-  - `node --check src/engine/gameSimulator.js`
-  - `node --check src/engine/offseasonSimulator.js`
-  - `node --check src/server.js`
-  - `node --check src/stats/statBook.js`
-  - `node --check test/stats-regression.test.js`
-  - `node --check test/world-state-next-step.test.js`
-  - `node --test --test-isolation=none test/world-state-next-step.test.js test/feature-pack-v1.test.js test/new-systems.test.js test/session-actions.test.js test/local-api-runtime.test.js test/strategy-contract-scouting.test.js test/stats-regression.test.js`
-  - `node --test --test-isolation=none test/realism-career-regression.test.js`
-  - `node --test --test-isolation=none test/stats-regression.test.js test/realism-career-regression.test.js`
-  - `npm.cmd run smoke:pages`
-  - `node --check tests-ui/app.spec.js`
-  - `npm.cmd run test:ui -- --grep "season awards and hall of fame history render for a populated multi-year league" --reporter=dot`
-  - `node --check src/config/leagueSetup.js`
-  - `node --check src/runtime/GameSession.js`
-  - `node --check public/app.js`
-  - `npm.cmd run build:pages`
-  - `npm.cmd run test:ui -- --grep "create league, advance week, and open player modal" --reporter=dot`
-  - `node --test --test-isolation=none test/new-systems.test.js`
-  - `node --test --test-isolation=none test/local-api-runtime.test.js`
+- Backend image tags normalize GitHub owner to lowercase before GHCR push (fixed in Session 5)
+- GitHub workflow action runtimes bumped to actions/checkout@v5 and actions/setup-node@v5
 
-Current priorities:
-1. Review the `Season Awards` / `Hall of Fame` split, retired-number controls, and dossier/control-deck layouts on mobile plus a populated multi-year league
-2. Decide whether Hall-of-Fame and jersey-retirement flows now need ceremony surfacing or additional commissioner messaging beyond the new settings/guardrails
-3. Extend the refreshed UI language across any remaining lower-priority legacy tabs so the newer command-deck treatment is not isolated
-4. Use the preserved setup diagnostics to decide whether another setup/main-menu latency trim is warranted before starting a new feature area
-5. Feed the newer world-state deeper into any remaining owner expectation loops and transaction AI edges after the UX review pass
+## Engine Systems (20 active modules)
+All wired into `GameSession.advanceWeek()` weekly hook block:
 
-Known issues:
-- The Pages artifact remains client-only unless `GAME_SERVICE_ORIGIN` or `API_DOMAIN` is configured and the separate backend/runtime rollout is live
-- Challenge restrictions are much more mechanical now, but there may still be edge-case user acquisition paths worth auditing later
-- The unrelated realism/runtime work was parked in a local stash and is not yet reconciled back into the branch
-- Official NFL player leaderboard pages are still useful for spot checks but appear to expose only a limited server-rendered slice, so the current broader bulk path depends on StatMuse-derived output plus smoothing rather than a pure NFL.com scrape
+| Engine | File | Status |
+|--------|------|--------|
+| beatReporter | src/engine/beatReporter.js | ✅ Wired |
+| rivalryDNA | src/engine/rivalryDNA.js | ✅ Wired |
+| injurySystem | src/engine/injurySystem.js | ✅ Wired |
+| pressConference | src/engine/pressConference.js | ✅ Wired |
+| gmLegacyScore | src/engine/gmLegacyScore.js | ✅ Wired |
+| fanSentiment | src/engine/fanSentiment.js | ✅ Wired (Session 6) |
+| veteranMentorship | src/engine/veteranMentorship.js | ✅ Wired offseason (Session 6) |
+| draftCombine | src/engine/draftCombine.js | ✅ Wired |
+| gameSimulator | src/engine/gameSimulator.js | ✅ Wired |
+| offseasonSimulator | src/engine/offseasonSimulator.js | ✅ Wired |
+| narrativeEvents | src/engine/narrativeEvents.js | ✅ Wired |
+| injuryRecovery | src/engine/injuryRecovery.js | ✅ Wired |
+| playerDevelopment | src/engine/playerDevelopment.js | ✅ Wired |
+| tradeAI | src/engine/tradeAI.js | ✅ Wired |
+| freeAgencyAI | src/engine/freeAgencyAI.js | ✅ Wired |
+| realismCalibrator | src/engine/realismCalibrator.js | ✅ Wired |
+| ownerFinances | src/engine/ownerFinances.js | ✅ Wired |
+| statsEngine | src/engine/statsEngine.js | ✅ Wired |
+| aiTeamStrategy | src/engine/aiTeamStrategy.js | ✅ Wired |
+| coachingTree | src/engine/coachingTree.js | ✅ Wired |
+
+## Frontend Surface (public/)
+
+### game.html panels and modals (all wired to applyDashboard)
+- **Overview tab**: franchise command-deck spotlight, narrative panel, trade deadline alert, world-state pulse row (Fan Sentiment card, Active Injury overlay, Stat Leaders strip), owner ultimatum banner
+- **Roster tab**: main roster table, cap casualty panel, veteran mentorship panel
+- **Draft tab**: war room board, draft available table (with Draft Day Radio reveal), combine results
+- **Contracts tab**: cap command spotlight, cap projection panel
+- **Scouting tab**: scouting command-deck, scheme-fit board
+- **Stats tab**: season/career stats with AV column, benchmark hints
+- **History tab**: Season Awards showcase, Hall of Fame gallery, player career archive
+- **Settings tab**: commissioner deck, franchise brand builder panel, rewind timeline, cloud sync
+
+### Modals
+- `#agentNegotiationModal` — agent offer/counter/signing flow
+- `#seasonReviewModal` — end-of-season GM performance review
+- `#halftimeAdjustModal` — pre-game tactical brief (4 tactic options)
+- `#draftPickRevealModal` — Draft Day Radio broadcast reveal
+- `#personaTierToast` — GM Legacy tier unlock notification
+- `#shortcutsModal` — keyboard shortcut reference
+
+### app.js state additions (Session 6)
+- `prevGmLegacyTier` — tier change detection for persona toast
+- `prevDashboardPhase` — phase transition detection for season review
+- `halftimeTacticChoice` — advance-week tactic override
+- `mentorships` — veteran mentorship pairs from /api/mentorship
+- `statLeaders` — season leaders from /api/stat-leaders
+- `brandOverride` — brand identity overrides from /api/brand-identity
+
+## API Routes (localApiRuntime.js — 55+ routes)
+
+### Session 6 additions
+- `GET /api/fan-sentiment` — current controlled team fan approval + label
+- `GET /api/injuries/active` — starter-level injuries with weeksRemaining
+- `GET /api/stat-leaders` — top-3 season leaders (QB/RB/DEF)
+- `GET /api/mentorship` — veteran/mentee pairs for controlled team
+- `POST /api/brand-identity` — mutates team.brandOverride; applies color/name/city/abbrev
+
+### Advance-week enhancement
+- `POST /api/advance-week` now accepts `weeklyTacticOverride` body param
+  - Supported values: `run-heavy`, `pass-heavy`, `blitz-heavy`, `prevent`
+  - Temporarily mutates team.weeklyPlan passLeanDelta/aggressionDelta before sim, restores after
+
+## getAugmentedState() injected fields
+Returns all of getDashboardState() plus:
+- `narrativeLog` — recent franchise story events
+- `newsLog` — beat reporter ticker items
+- `coachingTree` — staff lineage data
+- `gmLegacy` — GM persona arc, tier, scores
+- `rivalries` — top rivalry heat entries
+- `combineResults` — latest draft combine
+- `activeInjuries` — starters currently injured with return timeline (Session 6)
+- `fanSentiment` — approval score, label, trend (Session 6)
+
+## GameSession.js key architecture
+- **5,200+ LOC** single file (refactor is a known future task)
+- `buildOwnerExpectation()` — heat 0–99, mandate, paceGap, trend; now returns `ultimatum` field when heat ≥ 75 + patience ≤ 0.35
+- `advanceWeek()` — weekly hook block fires all 20 engine modules in sequence
+- Offseason pipeline: `runOffseason()` → `applyMentorshipBonuses()` at camp-cuts stage
+
+## Persistence Layer
+- **Local filesystem saves** — server-backed mode; JSON files per slot
+- **IndexedDB** — client-only mode; 250MB capacity via indexedDbSaveStore.js; src/adapters/persistence/
+- **GitHub Gist cloud sync** — optional; requires Gist token in settings
+- **Rewind** — last 10 major decision snapshots; auto-snapshot on trades/pre-deadline/season-start; canonical in localApiRuntime.js
+
+## Test Suite
+- **38+ tests** across: stats-regression, realism-career-regression, quarterback-depth-ratings, coverage-depth-ratings, pass-structure-regression, new-systems, world-state-next-step, session-actions, local-api-runtime, strategy-contract-scouting, feature-pack-v1, ratings-regression
+- All passing as of Session 5; Session 6 changes (fanSentiment, veteranMentorship) are additive with no test mutations
+- Playwright UI tests: create-league flow, season awards + Hall of Fame multi-year regression
+
+## Simulation Architecture
+- **Drive mode**: possession-by-possession (faster); **Play mode**: individual play-level variance
+- QB depth ratings: throwAccuracyShort / throwAccuracyMedium / throwAccuracyDeep
+- DB/LB coverage depth buckets: coverageShort / coverageMedium / coverageDeep
+- Route families: quick, breaker, seam, vertical, space
+- Coverage shells: man/zone + single-high/split-safety
+- Play logs include route family, depth bucket, and shell metadata
+
+## Stats / Realism
+- PFR-calibrated against `PFR_RECENT_WEIGHTED_PROFILE` (2025 StatMuse smoothed baseline)
+- AV (Approximate Value) — shared calc in src/stats/approximateValue.js; PFR offense/defense split formula
+- Regular-season split is canonical for calibration; career totals rebuilt from regular/playoff splits
+- Starter-qualified benchmarks surfaced in Stats tab with per-game equivalents
+
+## World-State Depth
+- **Owner layer**: personality, priorities, patience, fan interest, hot-seat heat, mandate, ultimatum (Session 6)
+- **Staff layer**: culture, scheme identity, scouting/medical/analytics quality
+- **Fan layer**: fan sentiment (approval 0–100) updated weekly from win% + owner personality (Session 6)
+- **Rivalry layer**: heat 0–100 per matchup pair; feeds game simulator and Rivalry Week logic
+- **Mentorship layer**: veteran/young player pairs at same position; +1-2 OVR offseason bonus (Session 6)
+- **GM Legacy layer**: 6 tiers (Young Gun → Immortal); tier unlock toast notification (Session 6)
+
+## Landing + Community
+- `public/landing.html` — static beta landing page; self-contained dark-themed HTML; links to index.html + GitHub Discussions
+- OG tags, Twitter cards, and newsletter button already live in game shell
+- Community hub (GitHub Discussions) not yet launched — operational action pending
+
+## Known Issues / Blockers
+- **Not deployed** — Sessions 3–6 are local-only; every feature built is invisible to public users
+- **Setup.js brand builder fields not wired** — form inputs exist in index.html but setup.js doesn't pass them to create-league API
+- **GameSession.js 5,200+ LOC** — refactor into sub-managers is known future work
+- **Challenge restrictions** — mostly mechanical; edge-case acquisition paths may still exist
+- **Official NFL leaderboards** — limited server-rendered slice; StatMuse bulk path still used for baseline

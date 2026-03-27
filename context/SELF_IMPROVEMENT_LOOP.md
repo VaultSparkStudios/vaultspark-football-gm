@@ -7,10 +7,10 @@ The Rolling Status header is overwritten each closeout. Entries are append-only 
 
 <!-- rolling-status-start -->
 ## Rolling Status (auto-updated each closeout)
-Sparkline (last 5 totals): ▁▆▇▇▇
-3-session avg [N=3]: Dev 8.7 | Align 8.7 | Momentum 9.3 | Engage 6.0 | Process 9.3
-Avg total: 44.0 / 50  |  Velocity trend: →  |  Debt: ↓ (engine hooks now wired)
-Last session: 2026-03-27 | Session 5 | Total: 46/50 | Velocity: 13 features
+Sparkline (last 5 totals): ▁▆▇▇▇▇
+4-session avg [N=4]: Dev 8.8 | Align 8.8 | Momentum 9.5 | Engage 6.3 | Process 9.5
+Avg total: 44.5 / 50  |  Velocity trend: ↑  |  Debt: ↓ (CURRENT_STATE refreshed; syntax fixed)
+Last session: 2026-03-27 | Session 6 | Total: 47/50 | Velocity: 15 features
 ─────────────────────────────────────────────────────────────────────
 <!-- rolling-status-end -->
 
@@ -170,3 +170,33 @@ Rolling avg (last 3) [N=3]: Dev 8.7 | Align 8.7 | Momentum 9.3 | Engage 6.0 | Pr
 5. **Save size indicator in Settings** — IndexedDB vs localStorage usage bar; pairs naturally with Gist sync panel (Dev ↑)
 
 **Committed to TASK_BOARD:** [SIL] CURRENT_STATE.md full refresh · [SIL] Persona tier unlock toast notification
+
+---
+
+### 2026-03-27 — Session 6 | Total: 47/50 | Velocity: 15 | Debt: ↓
+
+Rolling avg (last 4) [N=4]: Dev 8.8 | Align 8.8 | Momentum 9.5 | Engage 6.3 | Process 9.5
+
+| Category | Score | vs Last | Notes |
+|---|---|---|---|
+| Dev Health | 9 | → | Syntax fix (async listener) caught + resolved; 5/5 new-systems tests pass; build:pages clean |
+| Creative Alignment | 10 | ↑ | Fan sentiment, owner ultimatum, veteran mentorship, draft theater — all deepen franchise identity |
+| Momentum | 10 | ↑ | 15 items shipped (all 8 Leverage + 7 Ceiling); two new engine files; 20 total active modules |
+| Engagement | 7 | ↑ | Landing page live; persona toast + season review modal = reactive moments players will feel |
+| Process Quality | 9 | → | CURRENT_STATE.md refreshed; TASK_BOARD updated with all 30 brainstorm items; memory updated |
+| **Total** | **47/50** | +1 | |
+
+**Top win:** Fan Sentiment + Owner Ultimatum system — the world-state moat now has a fan layer with real political stakes. Owner patience + fan approval + ultimatum consequences make every mid-season losing streak feel dangerous.
+
+**Top gap:** Still not deployed. Sessions 3–6 are invisible to public users. Every feature built is unvalidated until real players interact with it. Deploy is the single highest-leverage action remaining.
+
+**Intent outcome:** Achieved — all Highest Leverage + Highest Ceiling audit items from Session 6 implemented; docs refreshed; syntax error caught and fixed.
+
+**Brainstorm**
+1. **Setup.js brand builder wire** — form inputs exist in index.html but not passed to create-league API. Closes the loop on Franchise Brand Builder. (Dev ↑, Align ↑)
+2. **Draft Grade System** — immediate A–F post-pick grade in war room (score 7, +2). Closes draft emotional gap. (Engage ↑↑)
+3. **Offseason Storylines Engine** — extend narrativeEvents.js into dead period; off-season is narratively silent right now (score 8, +3). (Align ↑↑)
+4. **Salary Arbitration Mini-Game** — argument-picking within agent negotiation (score 9, +3). Deepens a surface that's already well-built. (Engage ↑↑)
+5. **Rivalry Week Big Game Mode** — special pre-game for rivalry heat > 60 (score 8, +3). Pairs naturally with halftime adjust already shipped. (Align ↑, Engage ↑)
+
+**Committed to TASK_BOARD:** [SIL] Setup.js brand builder wire · [SIL] Draft Grade System for Session 7

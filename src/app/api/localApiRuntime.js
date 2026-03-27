@@ -11,6 +11,8 @@ import { initRivalries, getRivalryContext, getTeamRivalries } from "../../engine
 import { runLeagueCombine, getCombineSummary } from "../../engine/draftCombine.js";
 import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "../../engine/playerAgentAI.js";
 import { getCapAlerts } from "../../engine/capAlerts.js";
+import { getFanSentiment, fanApprovalLabel } from "../../engine/fanSentiment.js";
+import { getMentorshipStatus, getMentorshipHistory } from "../../engine/veteranMentorship.js";
 import {
   createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
   lockGate, openGate, applyIntents, recordAdvance, lobbyStatus,
@@ -33,6 +35,26 @@ function getAugmentedState(session) {
   const roster = session.controlledTeamId
     ? session.getRoster(session.controlledTeamId)
     : [];
+  // Active injuries for controlled team
+  const activeInjuries = roster
+    .filter((p) => p.injuryStatus && p.injuryStatus !== "healthy" && p.injuryWeeksRemaining > 0)
+    .map((p) => ({
+      playerId: p.id || p.playerId,
+      name: p.name,
+      pos: p.position || p.pos,
+      status: p.injuryStatus,
+      weeksRemaining: p.injuryWeeksRemaining || 0,
+      severity: p.injurySeverity || "minor"
+    }));
+
+  // Fan sentiment for controlled team
+  const fanSentimentData = session.controlledTeamId
+    ? (() => {
+        const fs = getFanSentiment(league, session.controlledTeamId);
+        return { ...fs, label: fanApprovalLabel(fs.approval) };
+      })()
+    : null;
+
   return {
     ...base,
     narrativeLog:   league?.narrativeLog  || [],
@@ -44,7 +66,9 @@ function getAugmentedState(session) {
     } : null,
     rivalries:      league?.rivalries     || {},
     combineResults: league?.combineResults || [],
-    capAlerts:      getCapAlerts(capSummary, roster, session.currentYear)
+    capAlerts:      getCapAlerts(capSummary, roster, session.currentYear),
+    activeInjuries,
+    fanSentiment:   fanSentimentData
   };
 }
 
@@ -412,6 +436,23 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/advance-week") {
         const count = Math.max(1, Math.min(40, toInt(body?.count) || 1));
+        // ── Pre-game tactical override (halftime adjustment) ─────────────────
+        const tacticOverride = body?.weeklyTacticOverride;
+        let prevWeeklyPlan = null;
+        if (tacticOverride && session.controlledTeamId) {
+          const team = session.league?.teams?.find((t) => t.id === session.controlledTeamId);
+          if (team?.weeklyPlan) {
+            prevWeeklyPlan = { ...team.weeklyPlan };
+            const tacticMap = {
+              "run-heavy":   { passLeanDelta: -0.15, aggressionDelta:  0.05, summary: "Ground game focus" },
+              "pass-heavy":  { passLeanDelta:  0.15, aggressionDelta:  0.05, summary: "Air attack tempo" },
+              "blitz-heavy": { passLeanDelta: -0.05, aggressionDelta:  0.20, summary: "Pressure package" },
+              "prevent":     { passLeanDelta: -0.10, aggressionDelta: -0.15, summary: "Prevent defense" }
+            };
+            const mod = tacticMap[tacticOverride];
+            if (mod) Object.assign(team.weeklyPlan, mod);
+          }
+        }
         const results = [];
         for (let i = 0; i < count; i += 1) {
           const prevPhase = session.phase;
@@ -427,8 +468,17 @@ export function createLocalApiRuntime({
           }
           results.push(result);
         }
+        // Restore original weekly plan after simulation
+        if (prevWeeklyPlan && session.controlledTeamId) {
+          const team = session.league?.teams?.find((t) => t.id === session.controlledTeamId);
+          if (team) team.weeklyPlan = prevWeeklyPlan;
+        }
         writeAutoBackup(results[results.length - 1]?.phase === "offseason" ? "offseason-checkpoint" : "week");
-        return finish(jsonResponse(200, { ok: true, count, results, state: getAugmentedState(session) }));
+        return finish(jsonResponse(200, {
+          ok: true, count, results,
+          tacticApplied: tacticOverride || null,
+          state: getAugmentedState(session)
+        }));
       }
 
       if (method === "GET" && pathname === "/api/roster") {
@@ -1358,6 +1408,75 @@ export function createLocalApiRuntime({
         _lobby = null;
         _persistLobby();
         return finish(jsonResponse(200, { ok: true }));
+      }
+
+      // ── Fan Sentiment ────────────────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/fan-sentiment") {
+        const s = ensureSession();
+        const teamId = (url.searchParams.get("team") || s.controlledTeamId || "").toUpperCase();
+        if (!teamId) return finish(jsonResponse(400, { ok: false, error: "team required." }));
+        const fs = getFanSentiment(s.league, teamId);
+        return finish(jsonResponse(200, { ok: true, teamId, fanSentiment: { ...fs, label: fanApprovalLabel(fs.approval) } }));
+      }
+
+      // ── Active Injuries ──────────────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/injuries/active") {
+        const s = ensureSession();
+        const teamId = (url.searchParams.get("team") || s.controlledTeamId || "").toUpperCase();
+        const roster = teamId ? s.getRoster(teamId) : [];
+        const injured = roster
+          .filter((p) => p.injuryStatus && p.injuryStatus !== "healthy" && (p.injuryWeeksRemaining || 0) > 0)
+          .map((p) => ({
+            playerId: p.id || p.playerId,
+            name: p.name,
+            pos: p.pos,
+            status: p.injuryStatus,
+            weeksRemaining: p.injuryWeeksRemaining || 0,
+            severity: p.injurySeverity || "minor",
+            overall: p.overall
+          }))
+          .sort((a, b) => (b.overall || 0) - (a.overall || 0));
+        return finish(jsonResponse(200, { ok: true, teamId, injured, count: injured.length }));
+      }
+
+      // ── Stat Leaders ─────────────────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/stat-leaders") {
+        const s = ensureSession();
+        const year = toInt(url.searchParams.get("year")) || s.currentYear;
+        const passing = s.statBook.getPlayerSeasonTable("passing", { year })
+          .sort((a, b) => (b.yds || 0) - (a.yds || 0)).slice(0, 3);
+        const rushing = s.statBook.getPlayerSeasonTable("rushing", { year })
+          .sort((a, b) => (b.yds || 0) - (a.yds || 0)).slice(0, 3);
+        const defense = s.statBook.getPlayerSeasonTable("defense", { year })
+          .sort((a, b) => ((b.sacks || 0) + (b.int || 0) * 1.5) - ((a.sacks || 0) + (a.int || 0) * 1.5)).slice(0, 3);
+        return finish(jsonResponse(200, { ok: true, year, leaders: { passing, rushing, defense } }));
+      }
+
+      // ── Veteran Mentorship ───────────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/mentorship") {
+        const s = ensureSession();
+        const teamId = (url.searchParams.get("team") || s.controlledTeamId || "").toUpperCase();
+        const pairs = getMentorshipStatus(s.league, teamId);
+        const history = getMentorshipHistory(s.league, teamId);
+        return finish(jsonResponse(200, { ok: true, teamId, pairs, history }));
+      }
+
+      // ── Brand Identity (Franchise Brand Builder) ─────────────────────────────
+      if (method === "POST" && pathname === "/api/brand-identity") {
+        const s = ensureSession();
+        const { teamId, customName, customCity, customAbbrev, primaryColor, secondaryColor } = body || {};
+        const tid = (teamId || s.controlledTeamId || "").toUpperCase();
+        if (!tid) return finish(jsonResponse(400, { ok: false, error: "teamId required." }));
+        const team = s.league?.teams?.find((t) => t.id === tid);
+        if (!team) return finish(jsonResponse(404, { ok: false, error: `Team ${tid} not found.` }));
+        if (!team.brandOverride) team.brandOverride = {};
+        if (customName)    team.brandOverride.name       = String(customName).slice(0, 30);
+        if (customCity)    team.brandOverride.city       = String(customCity).slice(0, 24);
+        if (customAbbrev)  team.brandOverride.abbrev     = String(customAbbrev).toUpperCase().slice(0, 3);
+        if (primaryColor)  team.brandOverride.primary    = String(primaryColor).slice(0, 7);
+        if (secondaryColor) team.brandOverride.secondary = String(secondaryColor).slice(0, 7);
+        team.brandOverrideActive = true;
+        return finish(jsonResponse(200, { ok: true, teamId: tid, brandOverride: team.brandOverride, state: getAugmentedState(s) }));
       }
 
       return finish(jsonResponse(501, { ok: false, error: `Client-only runtime not implemented for ${method} ${pathname}.` }));
