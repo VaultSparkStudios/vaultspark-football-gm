@@ -142,6 +142,31 @@ This is written into the `ignisNote` field of the audit JSON in Step 8.
 
 ---
 
+### Step 4.5 — Human Action Required
+
+Scan the full session for any items that require human (not agent) action before the next session
+can proceed. This includes: external service setup (hosting, DNS, API keys, secrets), manual
+approvals (affiliate programs, legal, app stores), financial actions, decisions only the Studio
+Owner can make, or any "blocked on human" items discovered this session.
+
+**If items exist:**
+1. Write a `## Human Action Required` section in `context/LATEST_HANDOFF.md` listing each item
+   with enough context to act on it immediately
+2. Add items to `context/TASK_BOARD.md` under a `## Human Action Required` bucket (separate from
+   `## Blocked` — blocked = agent-resolvable; human-required = only the Studio Owner can act)
+
+**If no items exist:** write "No human action required this session." in the closeout output.
+
+**Format for each item:**
+```
+- [ ] **{Item}** — {what is needed, who/where to do it, why it unblocks the project}
+```
+
+This step is **mandatory** — never skip by assuming no human-required items exist. Always confirm
+explicitly either way.
+
+---
+
 ### Step 5 — Brainstorm
 
 Generate 3–5 innovative solutions, features, or improvements. Push past the obvious. Consider:
