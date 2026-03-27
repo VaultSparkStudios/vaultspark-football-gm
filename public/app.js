@@ -1,4 +1,10 @@
 import { createApiClient } from "./lib/api/createApiClient.js";
+import { mountTutorial } from "./lib/tutorialCampaign.js";
+import { generateFranchiseNewsletter } from "./lib/franchiseNewsletter.js";
+import {
+  getSavedToken, saveToken, getSavedGistId, saveGistId,
+  exportToGist, importFromGist, listGists
+} from "./lib/gistSync.js";
 
 const state = {
   dashboard: null,
@@ -4382,6 +4388,7 @@ function applyDashboard(newState) {
   renderNewsTicker();
   renderSeasonPreviewPanel();
   renderGmLegacyScore().catch(() => {});
+  renderCapAlertBanner();
 
   const yearInput = document.getElementById("yearFilter");
   if (yearInput && (!yearInput.value || !previous || previous.currentYear !== newState.currentYear)) {
@@ -5980,6 +5987,37 @@ function bindEvents() {
 
   document.getElementById("loadQaBtn").addEventListener("click", () => runAction(loadQa, "Loading QA report..."));
 
+  // ── GitHub Gist Cloud Sync ──────────────────────────────────────────────────
+  document.getElementById("gistSyncSaveTokenBtn")?.addEventListener("click", () => {
+    const tok = document.getElementById("gistTokenInput")?.value?.trim();
+    saveToken(tok);
+    setStatus(tok ? "GitHub token saved." : "Token cleared.");
+  });
+  document.getElementById("gistExportBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      const token = getSavedToken();
+      if (!token) { setStatus("Set your GitHub token first."); return; }
+      const snap = await api("/api/snapshot/export");
+      const { gistId, url } = await exportToGist(snap, token);
+      setStatus(`Saved to Gist: ${gistId}`);
+      renderGistSyncStatus(`✅ Exported — <a href="${url}" target="_blank" rel="noopener">Open Gist</a>`);
+      renderGistList();
+    }, "Uploading to Gist…")
+  );
+  document.getElementById("gistImportBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      const token = getSavedToken();
+      const gistId = document.getElementById("gistIdInput")?.value?.trim() || getSavedGistId();
+      if (!gistId) { setStatus("Enter a Gist ID to import."); return; }
+      const { snapshot } = await importFromGist(gistId, token);
+      await api("/api/snapshot/import", { method: "POST", body: { snapshot } });
+      await loadState();
+      setStatus("Imported from Gist.");
+      renderGistSyncStatus("✅ Imported successfully.");
+    }, "Importing from Gist…")
+  );
+  document.getElementById("gistListBtn")?.addEventListener("click", renderGistList);
+
   document.getElementById("refreshRewindBtn")?.addEventListener("click", () =>
     loadRewindHistory().catch(() => {})
   );
@@ -6143,6 +6181,13 @@ function bindEvents() {
   document.getElementById("refreshLobbyBtn")?.addEventListener("click", () =>
     runAction(renderCommissionerLobby, "Refreshing lobby...")
   );
+  document.getElementById("disbandLobbyBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      if (!confirm("Disband this lobby? All players will need to re-join.")) return;
+      await api("/api/commissioner/lobby", { method: "DELETE" });
+      await renderCommissionerLobby();
+    }, "Disbanding lobby...")
+  );
 
   document.getElementById("closeAgentModalBtn")?.addEventListener("click", closeAgentModal);
 
@@ -6153,20 +6198,33 @@ function bindEvents() {
   });
 
   document.getElementById("shareDynastyBtn")?.addEventListener("click", shareDynastyTimeline);
+  document.getElementById("franchiseNewsletterBtn")?.addEventListener("click", () => generateFranchiseNewsletter(state));
 }
 
 // ── News Ticker ────────────────────────────────────────────────────────────────
 function renderNewsTicker() {
   const ticker = document.getElementById("newsTicker");
   if (!ticker) return;
-  const rows = state.newsRows || [];
+  // Prefer live newsLog from dashboard (populated by beatReporter + press conference)
+  const rows = state.dashboard?.newsLog?.length
+    ? state.dashboard.newsLog
+    : (state.newsRows || []);
   if (!rows.length) { ticker.hidden = true; return; }
   ticker.hidden = false;
   const track = ticker.querySelector(".news-ticker-track");
   if (!track) return;
-  const items = rows.slice(0, 10).map((r) =>
-    `<span class="news-ticker-item">${escapeHtml(r.headline || String(r))}</span>`
-  ).join('<span class="news-ticker-sep"> · </span>');
+  const TYPE_ICONS = {
+    injury: "🚑", trade: "🔄", blowout: "💥", upset: "⚡", milestone: "🌟",
+    streak: "🔥", standings: "📊", retirement: "👋", signing: "✍️",
+    "press-conference": "🎤", championship: "🏆"
+  };
+  const items = rows.slice(0, 15).map((r) => {
+    const icon = TYPE_ICONS[r.type] || "📰";
+    const text = r.type === "press-conference" && r.quote
+      ? `${r.quote.slice(0, 80)}${r.quote.length > 80 ? "…" : ""}`
+      : (r.headline || String(r));
+    return `<span class="news-ticker-item">${icon} ${escapeHtml(text)}</span>`;
+  }).join('<span class="news-ticker-sep"> · </span>');
   track.innerHTML = items + '<span class="news-ticker-sep"> · </span>' + items;
 }
 
@@ -6185,6 +6243,21 @@ async function renderGmLegacyScore() {
     if (scoreEl) scoreEl.textContent = s.score ?? "—";
     if (gradeEl) gradeEl.textContent = s.grade ?? "—";
     if (labelEl) labelEl.textContent = s.label ?? "";
+
+    // Persona tier arc
+    const personaEl = document.getElementById("gmPersonaTier");
+    const persona = s.persona;
+    if (personaEl && persona) {
+      const tierDots = [1,2,3,4,5,6].map((t) =>
+        `<span class="gm-tier-dot ${t <= persona.current.tier ? "active" : ""}" title="Tier ${t}"></span>`
+      ).join("");
+      personaEl.innerHTML = `
+        <div class="gm-persona-name">${escapeHtml(persona.current.name)}</div>
+        <div class="gm-tier-track">${tierDots}</div>
+        <div class="gm-persona-desc">${escapeHtml(persona.current.description)}</div>
+        ${persona.next ? `<div class="gm-persona-next">Next: <strong>${escapeHtml(persona.next.name)}</strong> · ${persona.next.gapToNext > 0 ? `+${persona.next.gapToNext} pts needed` : "Ready to advance"}</div>` : `<div class="gm-persona-next">🏆 Peak tier reached</div>`}
+      `;
+    }
   } catch {
     // non-critical
   }
@@ -6215,6 +6288,27 @@ function renderSeasonPreviewPanel() {
     <div class="season-preview-tile"><div class="sp-tile-label">Cap Space</div><div class="sp-tile-val">${escapeHtml(cap)}</div></div>
     <div class="season-preview-tile"><div class="sp-tile-label">Scheme</div><div class="sp-tile-val">${escapeHtml(scheme.offense || "—")} / ${escapeHtml(scheme.defense || "—")}</div></div>
   `;
+}
+
+// ── Cap Alert Banner ──────────────────────────────────────────────────────────
+function renderCapAlertBanner() {
+  const el = document.getElementById("capAlertBanner");
+  if (!el) return;
+  const alerts = state.dashboard?.capAlerts || [];
+  if (!alerts.length) { el.innerHTML = ""; el.classList.add("hidden"); return; }
+
+  const icons = { critical: "🔴", warning: "🟡", info: "🔵" };
+  const top = alerts[0];
+  el.innerHTML = `
+    <div class="cap-alert cap-alert-${top.severity}">
+      <span class="cap-alert-icon">${icons[top.severity] || "⚠"}</span>
+      <div class="cap-alert-body">
+        <strong>${escapeHtml(top.headline)}</strong>
+        <span class="cap-alert-detail">${escapeHtml(top.detail)}</span>
+      </div>
+      ${alerts.length > 1 ? `<span class="cap-alert-count">+${alerts.length - 1} more</span>` : ""}
+    </div>`;
+  el.classList.remove("hidden");
 }
 
 // ── Cap Casualty Panel ─────────────────────────────────────────────────────────
@@ -6484,6 +6578,51 @@ function shareDynastyTimeline() {
   if (btn) btn.textContent = "Share Dynasty";
 }
 
+// ── Gist Cloud Sync helpers ────────────────────────────────────────────────────
+function renderGistSyncStatus(html) {
+  const el = document.getElementById("gistSyncStatus");
+  if (el) el.innerHTML = html;
+}
+
+async function renderGistList() {
+  const el = document.getElementById("gistSaveList");
+  if (!el) return;
+  try {
+    const token = getSavedToken();
+    if (!token) { el.innerHTML = `<div class="small muted">Set a GitHub token to see your cloud saves.</div>`; return; }
+    el.innerHTML = `<div class="small muted">Loading…</div>`;
+    const gists = await listGists(token);
+    if (!gists.length) { el.innerHTML = `<div class="small muted">No VaultSpark saves found in your Gists.</div>`; return; }
+    el.innerHTML = gists.map((g) =>
+      `<div class="gist-save-row">
+        <span class="gist-save-desc">${escapeHtml(g.description || g.id)}</span>
+        <span class="gist-save-date">${escapeHtml(g.updatedAt?.slice(0, 10) || "")}</span>
+        <button class="btn-sm gist-load-btn" data-gist-id="${escapeHtml(g.id)}">Load</button>
+        <a class="btn-sm" href="${escapeHtml(g.url)}" target="_blank" rel="noopener">View</a>
+      </div>`
+    ).join("");
+    el.querySelectorAll(".gist-load-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.dataset.gistId;
+        if (id) document.getElementById("gistIdInput").value = id;
+        document.getElementById("gistImportBtn")?.click();
+      });
+    });
+  } catch (e) {
+    el.innerHTML = `<div class="small muted">Error: ${escapeHtml(e.message)}</div>`;
+  }
+}
+
+// Populate token/gist fields on load
+function initGistSyncUI() {
+  const tok = getSavedToken();
+  const el = document.getElementById("gistTokenInput");
+  if (el && tok) el.value = "••••••••••••••••" + tok.slice(-4);
+  const gistEl = document.getElementById("gistIdInput");
+  const savedId = getSavedGistId();
+  if (gistEl && savedId) gistEl.value = savedId;
+}
+
 async function init() {
   state.statsHiddenColumns = readStatsHiddenColumns();
   bindEvents();
@@ -6498,6 +6637,8 @@ async function init() {
   await loadCoreDashboard();
   setStatus("Ready");
   queueStartupHydration();
+  initGistSyncUI();
+  mountTutorial({ onComplete: () => loadState(), onSkip: () => {} });
   if (typeof initMobileLoop === "function") {
     initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
   }

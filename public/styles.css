@@ -2190,3 +2190,94 @@ body.mobile-loop-active .mobile-loop-overlay {
     font-size: 0.9rem;
   }
 }
+
+/* ── GM Persona Arc ─────────────────────────────────────────────────────── */
+.gm-grade-badge {
+  font-size: 11px; font-weight: 800;
+  background: rgba(210,153,34,.15); border: 1px solid rgba(210,153,34,.4);
+  color: #d29922; padding: 1px 6px; border-radius: 8px;
+  vertical-align: middle; margin-left: 4px;
+}
+.gm-persona-tier { margin-top: 8px; }
+.gm-persona-name { font-size: 12px; font-weight: 700; color: #e6edf3; margin-bottom: 5px; }
+.gm-tier-track { display: flex; gap: 4px; margin-bottom: 6px; }
+.gm-tier-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #30363d; border: 1px solid #30363d;
+  transition: background 0.2s;
+}
+.gm-tier-dot.active { background: #d29922; border-color: #d29922; }
+.gm-persona-desc { font-size: 11px; color: #7d8590; line-height: 1.4; margin-bottom: 4px; }
+.gm-persona-next { font-size: 11px; color: #58a6ff; }
+.gm-legacy-card { grid-column: span 2; }
+
+/* ── Cap Alert Banner ───────────────────────────────────────────────────── */
+.cap-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.cap-alert-critical { background: rgba(248,81,73,.12); border: 1px solid rgba(248,81,73,.4); }
+.cap-alert-warning  { background: rgba(210,153,34,.12); border: 1px solid rgba(210,153,34,.4); }
+.cap-alert-info     { background: rgba(88,166,255,.10); border: 1px solid rgba(88,166,255,.3); }
+.cap-alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.cap-alert-body { flex: 1; }
+.cap-alert-body strong { display: block; font-size: 13px; margin-bottom: 3px; }
+.cap-alert-detail { font-size: 11px; color: var(--muted, #7d8590); }
+.cap-alert-count {
+  font-size: 11px; font-weight: 700; color: var(--muted, #7d8590);
+  background: rgba(255,255,255,.06); border-radius: 10px;
+  padding: 2px 8px; white-space: nowrap; margin-top: 2px;
+}
+
+/* ── Cloud Sync / Gist ───────────────────────────────────────────────────── */
+.cloud-sync-panel { border: 1px solid #30363d; border-radius: 8px; padding: 16px 20px; }
+.gist-save-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 0; border-bottom: 1px solid #21262d; font-size: 12px;
+}
+.gist-save-row:last-child { border-bottom: none; }
+.gist-save-desc { flex: 1; color: var(--text, #e6edf3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gist-save-date { color: var(--muted, #7d8590); white-space: nowrap; }
+.btn-sm {
+  font-size: 11px; padding: 3px 10px; border-radius: 4px;
+  background: #21262d; border: 1px solid #30363d; color: #e6edf3;
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+}
+.btn-sm:hover { border-color: #58a6ff; color: #58a6ff; }
+
+/* ── Feedback Widget ─────────────────────────────────────────────────────── */
+.feedback-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 900;
+}
+.feedback-widget a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #1c2330;
+  border: 1px solid #30363d;
+  border-radius: 20px;
+  padding: 7px 14px 7px 10px;
+  color: #7d8590;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.feedback-widget a:hover {
+  background: #21262d;
+  border-color: #58a6ff;
+  color: #58a6ff;
+}
+.feedback-icon { font-size: 14px; }
+@media (max-width: 480px) {
+  .feedback-widget { bottom: 12px; right: 12px; }
+  .feedback-label { display: none; }
+  .feedback-widget a { padding: 8px; border-radius: 50%; }
+}

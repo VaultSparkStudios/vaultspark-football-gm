@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VaultSpark Football GM — Full Audit | Session 5 | 2026-03-27</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2330;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --green: #3fb950;
+    --green-dim: #1a3a22;
+    --yellow: #d29922;
+    --yellow-dim: #2f2712;
+    --red: #f85149;
+    --red-dim: #3b1215;
+    --blue: #58a6ff;
+    --blue-dim: #0d2149;
+    --purple: #bc8cff;
+    --orange: #f0883e;
+    --accent: #1f6feb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0 0 80px;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 48px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(31,111,235,.12) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(63,185,80,.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .header-kicker { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+  .header h1 { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .header-meta { color: var(--muted); font-size: 13px; }
+  .header-meta span { margin-right: 20px; }
+
+  .overall-score-band {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 36px;
+    margin: 32px 48px 0;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+  .score-ring-wrap { flex-shrink: 0; }
+  .score-ring { width: 120px; height: 120px; position: relative; }
+  .score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .score-ring-label {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    transform: none;
+  }
+  .score-ring-label .score-num { font-size: 30px; font-weight: 800; color: var(--yellow); line-height: 1; }
+  .score-ring-label .score-denom { font-size: 12px; color: var(--muted); }
+  .overall-text h2 { font-size: 22px; font-weight: 700; color: var(--yellow); margin-bottom: 6px; }
+  .overall-text p { color: var(--muted); font-size: 13px; max-width: 600px; }
+  .grade-badge {
+    background: var(--yellow-dim);
+    border: 1px solid var(--yellow);
+    color: var(--yellow);
+    font-size: 32px;
+    font-weight: 900;
+    padding: 8px 20px;
+    border-radius: 8px;
+    margin-left: auto;
+  }
+
+  /* ── Layout ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+  section { margin-top: 48px; }
+  h2.section-title {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
+    color: var(--muted); border-bottom: 1px solid var(--border);
+    padding-bottom: 8px; margin-bottom: 20px;
+  }
+
+  /* ── Category Score Grid ── */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .cat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+  .cat-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .cat-name { font-weight: 600; font-size: 13px; }
+  .cat-score-pill {
+    font-size: 13px; font-weight: 700;
+    padding: 2px 10px; border-radius: 20px;
+  }
+  .s-high { background: var(--green-dim); color: var(--green); }
+  .s-mid { background: var(--yellow-dim); color: var(--yellow); }
+  .s-low { background: var(--red-dim); color: var(--red); }
+  .cat-bar-track {
+    background: var(--border);
+    border-radius: 4px; height: 6px; overflow: hidden;
+  }
+  .cat-bar-fill { height: 100%; border-radius: 4px; }
+  .cat-notes { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .cat-delta { font-size: 11px; font-weight: 600; margin-left: 6px; }
+  .delta-up { color: var(--green); }
+  .delta-dn { color: var(--red); }
+  .delta-flat { color: var(--muted); }
+
+  /* ── SWOT ── */
+  .swot-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+  }
+  .swot-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; }
+  .swot-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+  .swot-s .swot-label { color: var(--green); }
+  .swot-w .swot-label { color: var(--red); }
+  .swot-o .swot-label { color: var(--blue); }
+  .swot-t .swot-label { color: var(--orange); }
+  .swot-card ul { padding-left: 16px; }
+  .swot-card li { font-size: 13px; color: var(--text); margin-bottom: 5px; line-height: 1.5; }
+
+  /* ── Recommendations ── */
+  .rec-list { display: flex; flex-direction: column; gap: 10px; }
+  .rec-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 14px 18px;
+  }
+  .rec-card.urgent { border-left-color: var(--red); }
+  .rec-card.medium { border-left-color: var(--yellow); }
+  .rec-card.low { border-left-color: var(--green); }
+  .rec-title { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+  .rec-body { font-size: 12px; color: var(--muted); }
+
+  /* ── Brainstorm ── */
+  .brainstorm-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .bs-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    position: relative;
+  }
+  .bs-card:hover { border-color: #444; }
+  .bs-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 8px; gap: 12px;
+  }
+  .bs-title { font-weight: 700; font-size: 13px; flex: 1; }
+  .bs-score-wrap { display: flex; flex-direction: column; align-items: flex-end; flex-shrink: 0; }
+  .bs-score {
+    font-size: 11px; font-weight: 700;
+    padding: 2px 8px; border-radius: 12px;
+    white-space: nowrap;
+  }
+  .bs-impact-label { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .bs-synopsis { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+  .bs-impact-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+  }
+  .bs-impact-item { font-size: 11px; }
+  .bs-impact-item .label { color: var(--muted); display: block; font-size: 10px; }
+  .bs-impact-item .val { font-weight: 600; }
+  .val-high { color: var(--green); }
+  .val-med { color: var(--yellow); }
+  .val-low { color: var(--red); }
+
+  .tier-banner {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .tier-leverage {
+    background: #0d2233;
+    border: 1px solid #1f6feb;
+    color: var(--blue);
+  }
+  .tier-ceiling {
+    background: #1a0d2e;
+    border: 1px solid var(--purple);
+    color: var(--purple);
+  }
+  .tier-banner .tier-icon { font-size: 18px; }
+  .tier-banner .tier-label { font-size: 13px; }
+  .tier-banner .tier-desc { font-size: 12px; font-weight: 400; color: var(--muted); margin-left: auto; }
+
+  .tier-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+  .tier-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .tier-item-num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .leverage-num { background: #0d2233; border: 1px solid var(--blue); color: var(--blue); }
+  .ceiling-num { background: #1a0d2e; border: 1px solid var(--purple); color: var(--purple); }
+  .tier-item-body { flex: 1; }
+  .tier-item-name { font-weight: 700; font-size: 13px; margin-bottom: 3px; }
+  .tier-item-why { font-size: 12px; color: var(--muted); }
+  .tier-item-meta {
+    display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap;
+  }
+  .tag {
+    font-size: 10px; font-weight: 600;
+    padding: 2px 8px; border-radius: 10px;
+    border: 1px solid;
+  }
+  .tag-effort-low { background: var(--green-dim); color: var(--green); border-color: var(--green); }
+  .tag-effort-med { background: var(--yellow-dim); color: var(--yellow); border-color: var(--yellow); }
+  .tag-effort-high { background: var(--red-dim); color: var(--red); border-color: var(--red); }
+  .tag-impact { background: #1a1a2e; color: var(--blue); border-color: var(--blue); }
+
+  /* ── Summary bar ── */
+  .score-summary-bar {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .ssb-item { text-align: center; }
+  .ssb-num { font-size: 20px; font-weight: 800; color: var(--text); }
+  .ssb-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .ssb-divider { width: 1px; background: var(--border); align-self: stretch; }
+
+  footer {
+    text-align: center; color: var(--muted); font-size: 11px;
+    margin-top: 60px; padding: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 700px) {
+    .cat-grid, .swot-grid, .brainstorm-grid { grid-template-columns: 1fr; }
+    .main { padding: 0 20px; }
+    .header { padding: 24px 20px; }
+    .overall-score-band { padding: 20px; gap: 24px; flex-wrap: wrap; }
+    .overall-score-band { margin: 20px 20px 0; }
+    .grade-badge { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════ HEADER -->
+<div class="header">
+  <div class="header-kicker">VaultSpark Studios · Full Project Audit</div>
+  <h1>VaultSpark Football GM</h1>
+  <div class="header-meta">
+    <span>2026-03-27</span>
+    <span>Session 5 · Builder Mode</span>
+    <span>Auditor: Claude Sonnet 4.6</span>
+  </div>
+</div>
+
+<div class="overall-score-band">
+  <div class="score-ring-wrap">
+    <div class="score-ring">
+      <svg viewBox="0 0 120 120">
+        <circle cx="60" cy="60" r="50" fill="none" stroke="#30363d" stroke-width="10"/>
+        <!-- 72/100 = 72% of circumference = 72% × 314.16 = 226.2 -->
+        <circle cx="60" cy="60" r="50" fill="none" stroke="#d29922" stroke-width="10"
+                stroke-dasharray="226.2 88.0" stroke-linecap="round"/>
+      </svg>
+      <div class="score-ring-label">
+        <span class="score-num">72</span>
+        <span class="score-denom">/100</span>
+      </div>
+    </div>
+  </div>
+  <div class="overall-text">
+    <h2>B− &nbsp;·&nbsp; Capable, Execution Gap</h2>
+    <p>
+      The simulation engine and persistence story are world-class for a browser game.
+      Visual and UX quality has levelled up significantly across Sessions 3–4.
+      But <strong>4 core engines built in S4 are dormant</strong> — not called from the game loop —
+      and the <strong>tutorial is fully built but never launched</strong>. Community and growth hooks
+      remain at zero. The project is technically impressive; the gap is in <em>activation</em> of
+      the work already done.
+    </p>
+  </div>
+  <div class="grade-badge">B−</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ MAIN -->
+<div class="main">
+
+  <!-- ── Category Scores ── -->
+  <section>
+    <h2 class="section-title">Category Scores (10 × 10)</h2>
+    <div class="cat-grid">
+
+      <!-- Simulation Engine Depth -->
+      <div class="cat-card">
+        <div class="cat-header">
+          <span class="cat-name">Simulation Engine Depth</span>
+          <span class="cat-score-pill s-high">8 / 10 <span class="cat-delta delta-flat">→</span></span>
+        </div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:80%;background:var(--green)"></div></div>
+        <div class="cat-notes">
+          QB depth ratings (short/medium/deep), route families, coverage shells, AV, PFR-calibrated realism,
+          Monte Carlo regression, world-state gameplay effects. beatReporter, rivalryDNA, injurySystem, and
+          gmLegacy engines all exist and are correct — but are not called from <code>advanceWeek()</code> or
+          <code>advanceSeason()</code>, so they produce no live data. Deduct 2 for this integration gap.
+        </div>
+      </div>
+
+      <!-- Frontend / UX Quality -->
+      <div class="cat-card">
+        <div class="cat-header">
+          <span class="cat-name">Frontend / UX Quality</span>
+          <span class="cat-score-pill s-high">8 / 10 <span class="cat-delta delta-up">↑</span></span>
+        </div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:80%;background:var(--green)"></div></div>
+        <div class="cat-notes">
+          Command-deck treatment on Overview, Contracts, Scouting, Settings. Player dossier hero with
+          generated portrait and contract context. Box score subtab UX, HoF/Season Awards galleries,
+          team color theming, side-nav grouping. S4 added news ticker, cap panels, coaching DNA card,
+          agent modal, shortcuts modal. Some legacy tabs not yet updated. <code>app.js</code> at 6,519 lines
+          is a growing maintainability concern.
+        </div>
+      </div>
+
+      <!-- Mobile & Accessibility -->
+      <div class="cat-card">
+        <div class="cat-header">
+          <span class="cat-name">Mobile &amp; Accessibility</span>
+          <span class="cat-score-pill s-mid">6 / 10 <span class="cat-delta delta-flat">→</span></span>
+        </div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:60%;background:var(--yellow)"></div></div>
+        <div class="cat-notes">
+          375px CSS fix shipped. <code>initMobileLoop()</code> wired into <code>init()</code>. Keyboard
+          shortcuts extended (W, N, 1–9, ?, Escape). No confirmed smoke test results for S4 panels at
+          375px — this is a pending human action. No formal accessibility audit. Screen-reader compliance
+          unknown. Aria labels present in some places, not systematic.
+        </div>
+      </div>
+
+      <!-- Feature Integration -->
+      <div class="cat-card">
+        <div class="cat-header">
+          <span class="cat-name">Feature Integration (depth vs. breadth)</span>
+          <span class="cat-score-pill s-mid">6 / 10 <span class="cat-delta delta-dn">↓</span></span>
+        </div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:60%;background:var(--yellow)"></div></div>
+        <div class="cat-notes">
+          S4 shipped 15 features but 4 engine modules (beatReporter, rivalryDNA, injurySystem, gmLegacy)
+          are not called from the game loop — their UI panels render empty or stale data.
+          <code>tutorialCampaign.js</code> is fully built (252 lines, 3-step FTUE) but is never imported
+          or called in <code>app.js</code>. Commissioner Lobby is async UI only with no real multiplayer
+          backend. Dynasty Share outputs a print window with no persistent URL. These are not design
+          failures — they are integration steps still pending.
+        </div>
+      </div>
+
+      <!-- Test Coverage & CI -->
+      <div class="cat-card">
+        <div class="cat-header">
+          <span class="cat-name">Test Coverage &amp; CI</span>
+          <span class="cat-score-pill s-mid">7 / 10 <span class="cat-delta delta-flat">→</span></span>
+        </div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:70%;background:var(--yellow)"></div></div>
+        <div class="cat-notes">
+          23 unit test files covering most core systems (stats regression, realism, depth ratings, session
+          actions, standings, calibration, determinism, pass structure, world-state, etc.). 2 Playwright
+          UI specs. CI runs both on every push. The gap: <code>new-systems.test.js</code> tests S1/S2
+          systems. beatReporter, rivalryDNA, injurySystem, gmLegacy, and draftCombine have <em>zero</em>
+          unit tests. S4 systems are untested.
+        </div>
+      </div>
+
+      <!-- Persistence & Data Integrity -->
+      <div class="cat-card">
+        <div class="cat-header">
+          <span class="cat-name">Persistence &amp; Data Integrity</span>
+          <span class="cat-score-pill s-high">9 / 10 <span class="cat-delta delta-up">↑</span></span>
+        </div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:90%;background:var(--green)"></div></div>
+        <div class="cat-notes">
+          Strongest category. Multiple adapter stack: localStorage (rolling backup), IndexedDB (250MB,
+          S4), server-backed file saves, snapshot import/export. Rewind system (max 10 slots,
+          auto-pruned) canonical in <code>localApiRuntime.js</code>. Snapshot migration versioning.
+          Quota-limit recovery. Determinism test. Backup pruning before retry. Client + server save
+          stores both tested. Deduct 1 for IndexedDB not yet exercised at Pages scale.
+        </div>
+      </div>
+
+      <!-- Onboarding & FTUE -->
+      <div class="cat-card">
+        <div class="cat-header">
+          <span class="cat-name">Onboarding &amp; FTUE</span>
+          <span class="cat-score-pill s-low">5 / 10 <span class="cat-delta delta-up">↑</span></span>
+        </div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:50%;background:var(--red)"></div></div>
+        <div class="cat-notes">
+          <code>tutorialCampaign.js</code> is fully implemented — 3-step FTUE with choice-based
+          archetype selection, progress pips, skip option, and localStorage gate. It is never imported
+          or triggered. Setup hero has good framing text and feature ribbon cards. Season Preview Panel
+          contextualises the first game week. No in-game guidance, no contextual tooltips, no "What's
+          New" on first load after update.
+        </div>
+      </div>
+
+      <!-- Community & Growth -->
+      <div class="cat-card">
+        <div class="cat-header">
+          <span class="cat-name">Community &amp; Growth Hooks</span>
+          <span class="cat-score-pill s-low">3 / 10 <span class="cat-delta delta-flat">→</span></span>
+        </div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:30%;background:var(--red)"></div></div>
+        <div class="cat-notes">
+          No analytics integration (no Plausible, Fathom, Umami, or equivalent). No Open Graph / social
+          preview meta tags in <code>index.html</code>. No community links (Discord, Reddit, forum). No
+          in-game feedback mechanism. Dynasty Share outputs a print window — no shareable URL, no social
+          card, no image capture. Pre-launch is appropriate context, but these foundations should be in
+          place <em>before</em> first external players arrive.
+        </div>
+      </div>
+
+      <!-- Deployment & Operations -->
+      <div class="cat-card">
+        <div class="cat-header">
+          <span class="cat-name">Deployment &amp; Operations</span>
+          <span class="cat-score-pill s-mid">7 / 10 <span class="cat-delta delta-flat">→</span></span>
+        </div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:70%;background:var(--yellow)"></div></div>
+        <div class="cat-notes">
+          CI (unit + UI tests), deploy-pages.yml, deploy-backend.yml all present. Node 24 action
+          upgrades done. Setup timing diagnostics in place. Backend image tag normalization fixed.
+          Pages direct-deploy is the canonical path. <strong>S3 + S4 work — 20 features across 2
+          sessions — is still local only and has not been deployed.</strong> The longer this sits, the
+          higher the merge/conflict risk. Deduct 2 for sitting undeployed.
+        </div>
+      </div>
+
+      <!-- Project Health & Process -->
+      <div class="cat-card">
+        <div class="cat-header">
+          <span class="cat-name">Project Health &amp; Process</span>
+          <span class="cat-score-pill s-high">8 / 10 <span class="cat-delta delta-flat">→</span></span>
+        </div>
+        <div class="cat-bar-track"><div class="cat-bar-fill" style="width:80%;background:var(--green)"></div></div>
+        <div class="cat-notes">
+          LATEST_HANDOFF.md is thorough. TASK_BOARD clearly maintains Now/Next/Later + SIL items.
+          SIL scoring active (sparkline ▁▆▇, clear upward trend). Studio OS compliance high.
+          <strong>CURRENT_STATE.md is significantly stale</strong> — it still describes the state
+          from before Session 3 and does not mention any of the 20 features shipped in S3+S4.
+          DECISIONS.md is sparse. Context overhead growing; may benefit from pruning older log entries.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Score summary bar -->
+    <div class="score-summary-bar" style="margin-top:20px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px 24px;display:flex;gap:0;justify-content:space-around;">
+      <div class="ssb-item"><div class="ssb-num" style="color:var(--green)">8</div><div class="ssb-label">Sim Engine</div></div>
+      <div class="ssb-divider"></div>
+      <div class="ssb-item"><div class="ssb-num" style="color:var(--green)">8</div><div class="ssb-label">Frontend UX</div></div>
+      <div class="ssb-divider"></div>
+      <div class="ssb-item"><div class="ssb-num" style="color:var(--yellow)">6</div><div class="ssb-label">Mobile/A11y</div></div>
+      <div class="ssb-divider"></div>
+      <div class="ssb-item"><div class="ssb-num" style="color:var(--yellow)">6</div><div class="ssb-label">Integration</div></div>
+      <div class="ssb-divider"></div>
+      <div class="ssb-item"><div class="ssb-num" style="color:var(--yellow)">7</div><div class="ssb-label">Test / CI</div></div>
+      <div class="ssb-divider"></div>
+      <div class="ssb-item"><div class="ssb-num" style="color:var(--green)">9</div><div class="ssb-label">Persistence</div></div>
+      <div class="ssb-divider"></div>
+      <div class="ssb-item"><div class="ssb-num" style="color:var(--red)">5</div><div class="ssb-label">Onboarding</div></div>
+      <div class="ssb-divider"></div>
+      <div class="ssb-item"><div class="ssb-num" style="color:var(--red)">3</div><div class="ssb-label">Community</div></div>
+      <div class="ssb-divider"></div>
+      <div class="ssb-item"><div class="ssb-num" style="color:var(--yellow)">7</div><div class="ssb-label">Deploy/Ops</div></div>
+      <div class="ssb-divider"></div>
+      <div class="ssb-item"><div class="ssb-num" style="color:var(--green)">8</div><div class="ssb-label">Health/Process</div></div>
+    </div>
+  </section>
+
+  <!-- ── SWOT ── -->
+  <section>
+    <h2 class="section-title">SWOT Analysis</h2>
+    <div class="swot-grid">
+      <div class="swot-card swot-s">
+        <div class="swot-label">Strengths</div>
+        <ul>
+          <li>Simulation depth genuinely exceeds Football-GM / ZenGM — world-state, QB depth ratings, route families, AV</li>
+          <li>Persistence stack is robust (4 adapter paths, rewind, versioned migration)</li>
+          <li>23 unit test files + 2 Playwright specs + full CI</li>
+          <li>Command-deck UI surfaces are distinctive and polished for a browser game</li>
+          <li>PFR-calibrated realism baseline is a hard moat — months of data work behind it</li>
+          <li>beatReporter, rivalryDNA, gmLegacy, injurySystem are correctly designed — just need wiring</li>
+        </ul>
+      </div>
+      <div class="swot-card swot-w">
+        <div class="swot-label">Weaknesses</div>
+        <ul>
+          <li>4 core S4 engines dormant — no live data flows through news ticker, rivalry, or GM legacy card</li>
+          <li>Tutorial campaign built but never launched — biggest missed onboarding win</li>
+          <li>Community / growth = zero: no analytics, no OG tags, no community presence</li>
+          <li>CURRENT_STATE.md is 2+ sessions stale — context debt</li>
+          <li>app.js monolith (6,519 lines) and growing — split complexity risk</li>
+          <li>20 features undeployed across 2 sessions — compounding deployment risk</li>
+        </ul>
+      </div>
+      <div class="swot-card swot-o">
+        <div class="swot-label">Opportunities</div>
+        <ul>
+          <li>Activating 4 engine hooks is a single-session task that unlocks narrative richness, injury realism, and legacy progression simultaneously</li>
+          <li>Tutorial activation converts the setup hero experience into a proper FTUE — one import + one function call</li>
+          <li>Analytics baseline (Plausible/Umami) before first external users = ability to learn from beta</li>
+          <li>Dynasty Share → real shareable URL/image card is a high word-of-mouth lever</li>
+          <li>Injury + Beat Reporter live data = the richest gamefeel upgrade available without new design</li>
+          <li>Commissioner Lobby → async league play differentiates from every browser competitor</li>
+        </ul>
+      </div>
+      <div class="swot-card swot-t">
+        <div class="swot-label">Threats / Risks</div>
+        <ul>
+          <li>Beta launch (2026-06-01) without community hooks = no retention signal and no feedback loop</li>
+          <li>Engine hooks staying dormant another session = risk of narrative systems atrophying (stale data visible in UI)</li>
+          <li>app.js monolith growth could make future UI work increasingly expensive</li>
+          <li>IndexedDB adapter untested at Pages scale — quota/browser compat surprises possible at launch</li>
+          <li>No changelog or "what's new" surface means returning beta users won't know what changed</li>
+          <li>Undeployed S3+S4 work means beta testers see an outdated product</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Recommendations ── -->
+  <section>
+    <h2 class="section-title">Key Recommendations (Short)</h2>
+    <div class="rec-list">
+      <div class="rec-card urgent">
+        <div class="rec-title">🔴 Deploy immediately — S3+S4 work is 2 sessions behind</div>
+        <div class="rec-body">Push to main, confirm Pages CI green, verify live URL. Every day this sits local is compounding deployment risk and means beta testers see an outdated product. This is a human action — cannot be automated.</div>
+      </div>
+      <div class="rec-card urgent">
+        <div class="rec-title">🔴 Wire 4 engine hooks into GameSession in this session</div>
+        <div class="rec-body">
+          <code>beatReporter.reportWeeklyResults()</code> → <code>advanceWeek()</code> after game sim.<br>
+          <code>rivalryDNA.recordWeekRivalries()</code> → <code>advanceWeek()</code> after game results.<br>
+          <code>injurySystem.rollInjuryChecks()</code> → <code>advanceWeek()</code> after simulation.<br>
+          <code>gmLegacyScore.updateGmLegacyAfterSeason()</code> → postseason phase.<br>
+          Until these run, 4 UI panels show empty or stale data on every advance. Estimated effort: 1–2 hours.
+        </div>
+      </div>
+      <div class="rec-card urgent">
+        <div class="rec-title">🔴 Wire tutorialCampaign.js into app.js — one import, one call</div>
+        <div class="rec-body">Add <code>import { startTutorial } from "./lib/tutorialCampaign.js"</code> and call it after first league load if the tutorial hasn't been seen. This is 2–3 lines of code and unlocks the full 3-step FTUE that was already built and tested.</div>
+      </div>
+      <div class="rec-card medium">
+        <div class="rec-title">🟡 Add OG meta tags + a privacy-friendly analytics script before beta</div>
+        <div class="rec-body">5 meta tags in <code>index.html</code> (og:title, og:description, og:image, og:url, twitter:card) unlock social preview when dynasty timelines are shared. One Plausible/Umami script tag gives you a beta feedback signal from day one. Combined effort: under 1 hour.</div>
+      </div>
+      <div class="rec-card medium">
+        <div class="rec-title">🟡 Refresh CURRENT_STATE.md — it's 2 sessions stale</div>
+        <div class="rec-body">The file still reflects pre-Session 3 state. It's the "live snapshot" field that future sessions rely on. Updating it now prevents compounding drift. Can be done at closeout.</div>
+      </div>
+      <div class="rec-card low">
+        <div class="rec-title">🟢 Add unit tests for S4 engine systems</div>
+        <div class="rec-body">beatReporter, rivalryDNA, injurySystem, gmLegacy, and draftCombine have zero test coverage. A basic smoke test for each (init, one result cycle, output shape check) would add confidence before they power live gameplay.</div>
+      </div>
+      <div class="rec-card low">
+        <div class="rec-title">🟢 Plan an app.js split before it becomes a blocker</div>
+        <div class="rec-body">At 6,519 lines the file is a growing risk. It doesn't need splitting today, but scoping a panel-extraction plan (e.g. cap-panels.js, narrative-panels.js) before the next feature block will save compounding pain.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ BRAINSTORM ══════════════════════════ -->
+  <section>
+    <h2 class="section-title">Innovation Brainstorm — 24 Items with Scores &amp; Impact Ratings</h2>
+    <p style="color:var(--muted);font-size:12px;margin-bottom:24px;">
+      Each item rated on: <strong>Overall Score</strong> (1–10 net value to project) ·
+      <strong>Potential</strong> (ceiling impact) · <strong>Momentum</strong> (immediate velocity gain) · <strong>Effort</strong> (Low / Med / High)
+    </p>
+    <div class="brainstorm-grid">
+
+      <!-- 1 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">1. Wire 4 Engine Hooks into GameSession</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#1a3a22;color:var(--green);border:1px solid var(--green)">10 / 10</span>
+            <span class="bs-impact-label">Effort: Low</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">beatReporter, rivalryDNA, injurySystem, and gmLegacy are fully coded engines sitting idle. Calling them from <code>advanceWeek()</code> and the postseason phase unlocks narrative news feeds, live injury tracking, rivalry heat maps, and GM legacy progression — all in one session. This is the single highest-impact unfinished task in the codebase.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+18pts</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">Very High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-high">+4–6pts</span></div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">2. Activate Tutorial Campaign (FTUE)</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#1a3a22;color:var(--green);border:1px solid var(--green)">9 / 10</span>
+            <span class="bs-impact-label">Effort: Low</span>
+          </div>
+        </div>
+        <div class="bs-synopsis"><code>tutorialCampaign.js</code> is a fully operational 3-step FTUE with archetype selection, progress pips, skip option, and localStorage gate. It needs one import and one function call in <code>app.js</code>. For a complex game, first-session guidance is the highest-leverage retention mechanism available at this stage.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+10pts</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-high">+2–3pts</span></div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">3. OG Meta Tags + Social Preview Image</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#1a3a22;color:var(--green);border:1px solid var(--green)">8 / 10</span>
+            <span class="bs-impact-label">Effort: Low</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">5 meta tags in <code>index.html</code> unlock rich social previews when a player shares a dynasty timeline link. Combined with a static preview image (even a screenshot), every share becomes a word-of-mouth ad. Currently <code>index.html</code> has zero OG tags — social sharing produces a blank card.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+8pts growth</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+1–2pts</span></div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">4. Privacy-First Analytics (Plausible / Umami)</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#1a3a22;color:var(--green);border:1px solid var(--green)">8 / 10</span>
+            <span class="bs-impact-label">Effort: Low</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">One script tag gives you page views, session count, and key event tracking (league started, week advanced, draft completed). Without this, beta is blind — no retention signal, no feature usage data, no funnel visibility. Plausible and Umami are privacy-compliant, GDPR-friendly, and self-hostable.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+12pts feedback</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+1–2pts</span></div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">5. Unit Tests for S4 Engine Systems</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Low–Med</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">beatReporter, rivalryDNA, injurySystem, gmLegacy, and draftCombine each need a basic smoke test: init, one cycle, output shape check. Without tests these engines have no regression safety net. Given they will now be called from the live game loop after hook wiring, tests should accompany the wiring.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-med">+5pts safety</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+1pt</span></div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">6. Dynasty Share → Real Shareable Image Card</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">8 / 10</span>
+            <span class="bs-impact-label">Effort: Medium</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">Current dynasty share opens a print window. Upgrade to: generate a styled HTML card rendered to a canvas image (using html2canvas or equivalent), then offer a direct download PNG with the team name, championship rings, and GM legacy score. This is the most shareable artefact in the game — make it something people actually post.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+15pts reach</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+2–3pts</span></div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">7. Cap Alert / Proactive Warning System</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Low</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">Surface proactive alerts when: approaching hard cap within 5% of ceiling, a restructured contract hits its dead-cap spike window, a key FA enters their final contract year, or a top-3 pick year is approaching. Cap management is a core loop differentiator — make it feel alive with smart prompts rather than silent data tables.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-med">+8pts loop feel</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+1–2pts</span></div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">8. Changelog / What's New Modal on Update</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Low</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">On first load after a new Pages deploy, show a lightweight "What's New" card with 3–5 bullet points (injected at build time from a CHANGELOG.md). Zero runtime cost. Returning beta users know what changed. Builds trust that the game is actively developed. Also serves as a soft re-engagement trigger for users who drifted away.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-med">+6pts retention</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-low">+1pt</span></div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">9. Injury System → Live Injury Events in Beat Reporter</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#1a3a22;color:var(--green);border:1px solid var(--green)">9 / 10</span>
+            <span class="bs-impact-label">Effort: Low (after hook wiring)</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">Once <code>rollInjuryChecks()</code> fires in the game loop, injury events feed into the beat reporter news ticker automatically. A "QB1 lost for 4 weeks" headline mid-season creates genuine drama and changes cap/roster decisions. This is the single most impactful gamefeel improvement achievable — it makes every game week feel meaningful rather than abstract.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+20pts feel</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">Very High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-high">+3–5pts</span></div>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">10. Offseason Power Rankings Panel</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">6 / 10</span>
+            <span class="bs-impact-label">Effort: Low–Med</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">Post-season, generate AI power rankings using team overall ratings, recent record, championship, and momentum. Surface as a top-32 list in the Overview tab each offseason. Adds narrative framing to the offseason and gives the player a sense of where their franchise stands in the broader league without deep data diving.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-med">+6pts narrative</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-low">+1pt</span></div>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">11. Press Conference Quotes System</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Medium</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">After each game, generate 2–3 coach / GM quote cards pulled from game result data (score, key performers, injuries, rivalry context). Pure template-based generation — no AI required. Feeds naturally into the Beat Reporter surface. Creates "I can't believe that happened" moments that turn into social shares. Strongly differentiates from Football-GM.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+14pts personality</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+2–3pts</span></div>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">12. Player Trade Wishlist / Target Board</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Medium</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">Let the user pin 3–5 players from other rosters as trade targets. The CPU trade AI checks this list when generating proposals, and the Draft War Room highlights wishlist prospects. Creates a planning layer that bridges sessions (targets persist in save state), increases engagement between active game phases, and makes the trade system feel responsive to user intent.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-med">+8pts agency</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+1–2pts</span></div>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">13. Draft Combine → Draft Board Impact</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Medium</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">The combine simulation generates event results and confidence ratings — but these do not currently feed back into draft prospect rankings. Wire combine results into prospect confidence adjustments so a "freak combine performance" actually moves a player up the board. This closes the loop on the combine feature and makes it feel consequential, not decorative.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-med">+10pts depth</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+1–2pts</span></div>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">14. Seasonal Franchise Newsletter (Shareable)</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">8 / 10</span>
+            <span class="bs-impact-label">Effort: Medium</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">At season end, auto-generate a franchise "season review" card — championship result, MVP, top stat leaders, biggest injury news, GM legacy score change, and next season power ranking. Styled like a real NFL newsletter. Downloadable as a PNG or shareable URL. Combines dynasty share + beat reporter into the project's most powerful social growth asset.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+18pts reach</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+2–3pts</span></div>
+        </div>
+      </div>
+
+      <!-- 15 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">15. IndexedDB Migration + Live Pages Test</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Medium</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">The IndexedDB adapter (250MB capacity) was built in S4 but has not been exercised in the live Pages environment. Auto-migrate existing localStorage saves to IndexedDB on first load. Add a browser compatibility check (Safari ITP, Firefox private mode) with graceful fallback. Eliminates the biggest beta retention blocker — a 10MB quota limit silently destroying save data.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+12pts reliability</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+1–2pts</span></div>
+        </div>
+      </div>
+
+      <!-- 16 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">16. Trophy Room / Dynasty Score Dashboard</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Medium</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">A dedicated "Legacy" tab (or hero surface) showing: championship rings with year + score, Hall of Fame inductees, retired numbers, GM legacy score arc, dynasty milestones. Emotionally, this is the "why you keep playing" surface. Heavy franchise players will spend more time here than anywhere else. Converts the game from a loop to a legacy builder.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+15pts retention</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+2–3pts</span></div>
+        </div>
+      </div>
+
+      <!-- 17 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">17. app.js Panel Extraction (Architecture)</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">6 / 10</span>
+            <span class="bs-impact-label">Effort: Medium–High</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">app.js is 6,519 lines and growing. Extract logical modules: <code>cap-panels.js</code> (casualty, projection, agent modal), <code>narrative-panels.js</code> (ticker, season preview, press conference), <code>legacy-panels.js</code> (coaching DNA, GM card, dynasty). This does not change any user-visible behaviour but is a prerequisite for sustainable feature velocity in sessions 6–10.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-med">+10pts velocity</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-low">Low short-term</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+1pt now, +5pts later</span></div>
+        </div>
+      </div>
+
+      <!-- 18 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">18. In-Game Feedback / Bug Report Widget</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Low–Med</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">A persistent "?" button that opens a lightweight feedback form. Could be as simple as a GitHub Discussions link, a Tally embed, or a mailto: prefilled with game state metadata. Without this, the only feedback channel is finding your email. Beta players who hit a bug or love a feature have nowhere to go — you'll never know. Critical before external beta users arrive.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+12pts feedback</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+1–2pts</span></div>
+        </div>
+      </div>
+
+      <!-- 19 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">19. Commissioner Lobby → Real Async League Play</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#1a0d2e;color:var(--purple);border:1px solid var(--purple)">9 / 10</span>
+            <span class="bs-impact-label">Effort: High</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">The Commissioner Lobby UI exists. The <code>multiplayerSession.js</code> module has 6 API routes. The missing layer is a server-backed lobby state store (user sessions, turn order, shared game state sync). True async multiplayer where friends run franchises in the same league — each advancing on their own schedule — has no browser-native competitor. This is the highest-ceiling differentiation available.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+25pts moat</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-high">+5–8pts</span></div>
+        </div>
+      </div>
+
+      <!-- 20 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">20. GM Persona / Legacy Arc Progression System</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#1a0d2e;color:var(--purple);border:1px solid var(--purple)">8 / 10</span>
+            <span class="bs-impact-label">Effort: High</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">Extend gmLegacyScore into a full persona arc: the GM starts as "Young Gun" → "Contender Builder" → "Dynasty Architect" → "Legend" → "Immortal" based on cumulative legacy score, rings, and draft track record. Each tier unlocks a new owner contract, media reputation badge, and AI reaction from players/staff. Creates a meta-progression layer that makes 30-year dynasties feel like a journey, not just a number.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+20pts depth</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-high">+3–5pts</span></div>
+        </div>
+      </div>
+
+      <!-- 21 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">21. Save Cloud Sync via GitHub Gist</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#1a0d2e;color:var(--purple);border:1px solid var(--purple)">7 / 10</span>
+            <span class="bs-impact-label">Effort: High</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">Allow users to export a compressed snapshot to a GitHub Gist (private, authenticated) and import it on any device. No backend required — uses the GitHub API directly from the browser. Solves the biggest pain point for mobile/desktop cross-play and is a compelling differentiator vs. any game that relies on localStorage only. Also serves as a community-sharable artefact (public Gist = browse other people's dynasties).</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+18pts reach</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+2–3pts</span></div>
+        </div>
+      </div>
+
+      <!-- 22 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">22. Prospect Scouting Big Board with Comparisons</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Medium</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">Surface the current draft class as a ranked "Big Board" with historical comp labels (e.g., "Prototypical #1 WR — comp: Stefon Diggs era"). Combine results feed into board position. AI team needs annotate the board with colour coding. Transforms the draft from a pure data exercise into something that feels like actual scouting — one of the most immersive draft-day differentiators available.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-med">+10pts immersion</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+1–2pts</span></div>
+        </div>
+      </div>
+
+      <!-- 23 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">23. Rivalry DNA Visual Heat Map</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">7 / 10</span>
+            <span class="bs-impact-label">Effort: Low (after hook wiring)</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">Once rivalry heat data is live (engine hook #1 above), surface it as a division-conference heat matrix in the Overview tab. Colour cells by heat level (cool → hot). Show streak context for top 3 rivalries. Makes standings emotionally charged — you don't just want to win the division, you want to dominate a hated rival. One of the most distinctive narrative surfaces in any franchise sim.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-high">+12pts narrative</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-high">High</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-med">+2pts</span></div>
+        </div>
+      </div>
+
+      <!-- 24 -->
+      <div class="bs-card">
+        <div class="bs-header">
+          <div class="bs-title">24. Challenge Mode Visibility Panel</div>
+          <div class="bs-score-wrap">
+            <span class="bs-score" style="background:#2f2712;color:var(--yellow);border:1px solid var(--yellow)">6 / 10</span>
+            <span class="bs-impact-label">Effort: Low</span>
+          </div>
+        </div>
+        <div class="bs-synopsis">Challenge restrictions (no-free-agency, no-top-10-picks, etc.) are enforced correctly but invisible until something is blocked. Add a persistent "Challenge HUD" in the game header showing active constraints with colour coding. When a restriction fires (blocked action), the HUD pulses. Turns challenge mode from an invisible rule set into a visible game layer that contributes to tension and storytelling.</div>
+        <div class="bs-impact-grid">
+          <div class="bs-impact-item"><span class="label">Potential</span><span class="val val-med">+6pts clarity</span></div>
+          <div class="bs-impact-item"><span class="label">Momentum</span><span class="val val-med">Medium</span></div>
+          <div class="bs-impact-item"><span class="label">Overall Score</span><span class="val val-low">+1pt</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════ TIER RECOMMENDATIONS ══════════════════════ -->
+  <section>
+    <h2 class="section-title">Recommended Tiers</h2>
+
+    <!-- Highest Leverage -->
+    <div class="tier-banner tier-leverage">
+      <span class="tier-icon">⚡</span>
+      <div>
+        <div class="tier-label">Highest Leverage Right Now</div>
+        <div style="font-size:12px;font-weight:400;color:#7d8590;margin-top:2px;">Low effort · Real and immediate impact · Unlocks dormant work already built</div>
+      </div>
+    </div>
+    <div class="tier-items">
+
+      <div class="tier-item">
+        <div class="tier-item-num leverage-num">1</div>
+        <div class="tier-item-body">
+          <div class="tier-item-name">Wire 4 Engine Hooks into GameSession.js</div>
+          <div class="tier-item-why">4 completed engines — beatReporter, rivalryDNA, injurySystem, gmLegacy — are idle. Calling them from <code>advanceWeek()</code> and the postseason phase activates the news ticker, injury realism, rivalry drama, and GM legacy arc with no new design work. Every UI panel built for these features currently shows empty data.</div>
+          <div class="tier-item-meta">
+            <span class="tag tag-effort-low">Effort: Low</span>
+            <span class="tag tag-impact">Score impact: +4–6pts</span>
+            <span class="tag tag-impact">Session: 1–2 hrs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="tier-item-num leverage-num">2</div>
+        <div class="tier-item-body">
+          <div class="tier-item-name">Activate Tutorial Campaign (1 import, 1 call)</div>
+          <div class="tier-item-why"><code>tutorialCampaign.js</code> is a fully built 3-step FTUE with choice-based archetype selection and localStorage gating. One import and one conditional call in <code>app.js</code> is all that's needed. Onboarding (currently 5/10) rises to 8/10 instantly — the single largest score improvement per minute of work available.</div>
+          <div class="tier-item-meta">
+            <span class="tag tag-effort-low">Effort: &lt;30 min</span>
+            <span class="tag tag-impact">Score impact: +2–3pts</span>
+            <span class="tag tag-impact">Onboarding: 5→8</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="tier-item-num leverage-num">3</div>
+        <div class="tier-item-body">
+          <div class="tier-item-name">OG Meta Tags + In-Game Feedback Widget</div>
+          <div class="tier-item-why">5 meta tags take under 10 minutes and unlock social sharing previews. A feedback widget (GitHub Discussions link or Tally embed) takes under 30 minutes and creates the only external feedback channel before beta. Without these two, the beta launch is blind and unshareable — both have outsized impact relative to their trivial effort.</div>
+          <div class="tier-item-meta">
+            <span class="tag tag-effort-low">Effort: ~45 min total</span>
+            <span class="tag tag-impact">Community: 3→5</span>
+            <span class="tag tag-impact">Growth unlock</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="tier-item-num leverage-num">4</div>
+        <div class="tier-item-body">
+          <div class="tier-item-name">Unit Tests for S4 Engine Systems</div>
+          <div class="tier-item-why">5 new engine modules with zero test coverage are about to be wired into the live game loop. Adding basic smoke tests now (init → one cycle → output shape assertion) provides a regression safety net before these systems power live gameplay. Should accompany hook wiring in the same session.</div>
+          <div class="tier-item-meta">
+            <span class="tag tag-effort-low">Effort: Low–Med</span>
+            <span class="tag tag-impact">Score impact: +1pt CI</span>
+            <span class="tag tag-impact">Risk reduction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="tier-item-num leverage-num">5</div>
+        <div class="tier-item-body">
+          <div class="tier-item-name">Cap Alert / Proactive Warning System</div>
+          <div class="tier-item-why">Cap management is a core loop differentiator. Surface smart alerts (approaching hard cap, dead-cap spike window, FA expiring) without requiring the player to hunt through tables. Transforms cap management from a reactive chore into an active drama. Low engineering cost — reads existing cap data and pushes to a notification queue.</div>
+          <div class="tier-item-meta">
+            <span class="tag tag-effort-low">Effort: Low</span>
+            <span class="tag tag-impact">Gamefeel: High</span>
+            <span class="tag tag-impact">Score impact: +1–2pts</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Highest Ceiling -->
+    <div class="tier-banner tier-ceiling">
+      <span class="tier-icon">🚀</span>
+      <div>
+        <div class="tier-label">Highest Ceiling</div>
+        <div style="font-size:12px;font-weight:400;color:#7d8590;margin-top:2px;">High effort · Transformative · Competitive moat and growth leverage</div>
+      </div>
+    </div>
+    <div class="tier-items">
+
+      <div class="tier-item">
+        <div class="tier-item-num ceiling-num">1</div>
+        <div class="tier-item-body">
+          <div class="tier-item-name">Commissioner Lobby → Real Async Multiplayer</div>
+          <div class="tier-item-why">The UI and backend API routes are built. The missing layer is a server-backed lobby state store. True async multiplayer — friends running franchises in the same league, each advancing on their own schedule — has no browser-native competitor in the franchise sim space. This is a hard moat. Once live, every player becomes a potential recruiter.</div>
+          <div class="tier-item-meta">
+            <span class="tag tag-effort-high">Effort: High</span>
+            <span class="tag tag-impact">Score impact: +5–8pts</span>
+            <span class="tag tag-impact">Category-defining</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="tier-item-num ceiling-num">2</div>
+        <div class="tier-item-body">
+          <div class="tier-item-name">Seasonal Franchise Newsletter (Shareable Image Card)</div>
+          <div class="tier-item-why">Combines dynasty share + beat reporter + GM legacy into one beautiful end-of-season card: rings, MVP, top headlines, legacy score arc, next-year power ranking. Downloadable PNG or shareable URL. Turns every season completion into a potential social post. The most powerful word-of-mouth mechanic available with current data.</div>
+          <div class="tier-item-meta">
+            <span class="tag tag-effort-med">Effort: Medium–High</span>
+            <span class="tag tag-impact">Score impact: +2–3pts</span>
+            <span class="tag tag-impact">Growth flywheel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="tier-item-num ceiling-num">3</div>
+        <div class="tier-item-body">
+          <div class="tier-item-name">GM Persona Legacy Arc (Tier Progression System)</div>
+          <div class="tier-item-why">Extend gmLegacyScore into a full persona arc with named tiers (Young Gun → Contender Builder → Dynasty Architect → Legend → Immortal). Each tier unlocks owner contract terms, media reputation, and AI reactions. Creates meta-progression that motivates multi-decade play — the core retention engine for a game whose tagline is "long-horizon franchise sim."</div>
+          <div class="tier-item-meta">
+            <span class="tag tag-effort-high">Effort: High</span>
+            <span class="tag tag-impact">Score impact: +3–5pts</span>
+            <span class="tag tag-impact">Core retention loop</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="tier-item-num ceiling-num">4</div>
+        <div class="tier-item-body">
+          <div class="tier-item-name">Save Cloud Sync via GitHub Gist</div>
+          <div class="tier-item-why">Compressed snapshot export/import via GitHub Gist API (no backend required). Solves multi-device play, provides off-site backup, and — with public Gist support — creates a browsable gallery of other people's dynasties. Turns a technical persistence feature into a discovery and community mechanic.</div>
+          <div class="tier-item-meta">
+            <span class="tag tag-effort-high">Effort: High</span>
+            <span class="tag tag-impact">Score impact: +2–3pts</span>
+            <span class="tag tag-impact">Retention + discovery</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tier-item">
+        <div class="tier-item-num ceiling-num">5</div>
+        <div class="tier-item-body">
+          <div class="tier-item-name">Press Conference Quotes System</div>
+          <div class="tier-item-why">Template-driven coach/GM quote generation from game result data (score, key performers, injuries, rivalry context). No AI required — deterministic templates seeded from game state. Creates the "I can't believe that happened" moments that generate social shares and community discussion. Strongly differentiates from every competitor in the space.</div>
+          <div class="tier-item-meta">
+            <span class="tag tag-effort-med">Effort: Medium</span>
+            <span class="tag tag-impact">Score impact: +2–3pts</span>
+            <span class="tag tag-impact">Personality moat</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  VaultSpark Football GM · Full Project Audit · Session 5 · 2026-03-27 · Claude Sonnet 4.6<br>
+  Overall: 72/100 B− · Previous (S4): 83/100 B+ · Methodology: 10 categories × 10pts
+</footer>
+
+</body>
+</html>

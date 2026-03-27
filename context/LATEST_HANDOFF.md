@@ -1,6 +1,9 @@
 # Latest Handoff
 
-Last updated: 2026-03-27 (Session 4 — Full Audit + Mass Implementation)
+Last updated: 2026-03-27 (Session 5 — Full Audit + All Leverage + Ceiling items implemented)
+
+---
+
 
 ## Where We Left Off (Session 4)
 - Full project audit completed: 83/100 B+ (up from 78/100)
@@ -38,24 +41,34 @@ Last updated: 2026-03-27 (Session 4 — Full Audit + Mass Implementation)
 ### Session 3 (2026-03-27)
 - Franchise Story panel, Trade Deadline Alert, Rewind Timeline, War Room CSS, 375px fix, competitive analysis HTML
 
+### Session 5 (2026-03-27)
+- **Engine hooks wired** — beatReporter, rivalryDNA, injurySystem, pressConference, gmLegacy all fire in `GameSession.advanceWeek()` and postseason
+- **getAugmentedState fix** — was self-referencing; fixed to call `session.getDashboardState()`; added capAlerts + persona to response
+- **GM Persona Arc** — 6-tier progression (Young Gun → Immortal) in `gmLegacyScore.js`; tier dots + description rendered in Overview
+- **Press Conference Quotes** — `src/engine/pressConference.js`; 5 tones; 2 newsLog items per week (head-coach + gm-analyst subtypes)
+- **Cap Alert System** — `src/engine/capAlerts.js`; 4 alert types (cap-pressure, dead-cap, expiring-key, cap-room); banner in Overview
+- **Tutorial activated** — `mountTutorial()` wired in `app.js init()`
+- **OG/Twitter meta tags** — 11 social sharing tags in `public/index.html`
+- **Feedback widget** — fixed pill in bottom-right → GitHub Discussions
+- **Franchise Newsletter** — `public/lib/franchiseNewsletter.js`; rich season recap card opens in new tab
+- **GitHub Gist Save Sync** — `public/lib/gistSync.js`; full Cloud Sync panel in Settings; PAT stored in localStorage
+- **Commissioner Lobby persistence** — `localApiRuntime.js` now persists `_lobby` to localStorage; survives page refresh; Disband Lobby button added
+- **Unit tests** — `test/s4-systems.test.js`; 38 tests; 38/38 pass
+
 ## What is mid-flight
 
-- Live 375px smoke test: all new panels (season preview, agent modal, cap casualty, combine, commissioner, coaching DNA, news ticker, mobile overlay)
-- Deploy to GitHub Pages
+Nothing — all Session 5 items complete.
 
 ## What to do next
 
-1. Live smoke test at 375px — hit all new feature panels
-2. Deploy to Pages if smoke test passes
-3. Wire `beatReporter.js` auto-calls into `GameSession.js` season advance hook so `league.newsLog` populates automatically
-4. Wire `rivalryDNA.recordWeekRivalries()` into week advance hook
-5. Wire `injurySystem.rollGameInjuries()` into game simulation
-6. Wire `gmLegacyScore.updateGmLegacyAfterSeason()` into season-end hook
+1. **Deploy to GitHub Pages** — push + confirm Pages build
+2. **375px smoke test** — all new panels on iPhone SE width
+3. **CURRENT_STATE.md refresh** — stale since Session 2
 
 ## Human Action Required
 
-- [ ] **Deploy to GitHub Pages** — push branch + confirm Pages build succeeds (liveUrl: https://vaultsparkstudios.com/vaultspark-football-gm/); all Sessions 3+4 code is local only
-- [ ] **375px smoke test** — open game on real or emulated iPhone SE (375px); hit every new panel: news ticker, season preview, agent modal, cap casualty, combine table, coaching DNA, commissioner panel, shortcuts modal, mobile overlay
+- [ ] **Deploy to GitHub Pages** — push branch + confirm Pages build (liveUrl: https://vaultsparkstudios.com/vaultspark-football-gm/); all Sessions 3–5 code is local only
+- [ ] **375px smoke test** — open on real/emulated iPhone SE (375px); verify: news ticker, season preview, agent modal, cap casualty, combine table, coaching DNA, commissioner panel, shortcuts modal, mobile overlay, cap alert banner, persona tier dots, newsletter button, cloud sync panel
 
 ## Constraints
 

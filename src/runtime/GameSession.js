@@ -65,6 +65,16 @@ import { clamp } from "../utils/rng.js";
 import { RNGStreams } from "../utils/rngStreams.js";
 import { createSessionModules } from "./modules/sessionModules.js";
 import { LATEST_SNAPSHOT_SCHEMA_VERSION } from "./snapshotMigration.js";
+import { advanceInjuryRecovery, rollGameInjuries } from "../engine/injurySystem.js";
+import {
+  reportWeeklyResults,
+  reportPlayerMilestones,
+  reportStreaks,
+  reportSignificantInjury
+} from "../engine/beatReporter.js";
+import { recordWeekRivalries } from "../engine/rivalryDNA.js";
+import { updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore.js";
+import { generatePressConference } from "../engine/pressConference.js";
 
 const TABLE_CATEGORIES = ["passing", "rushing", "receiving", "defense", "blocking", "kicking", "punting", "snaps"];
 const MAX_ACTIVE_ROSTER = 53;
@@ -3587,6 +3597,7 @@ export class GameSession {
       this.runStaffAndStrategyRefresh();
       this.grantWeeklyScoutingPoints();
       this.decrementAvailability();
+      advanceInjuryRecovery(this.league);
       this.processWaivers();
       this.runAiTeamMaintenance();
       const weekBlock = this.seasonSchedule[this.currentWeek - 1];
@@ -3612,6 +3623,32 @@ export class GameSession {
       weekResult.narratives = this.generateNarratives(weekResult);
       this.processOwnerFinances(weekResult);
       this.refreshChemistryAndSchemeFit();
+
+      // ── Engine hooks ──────────────────────────────────────────────────────
+      // Injury rolls for every game this week
+      const injuryMultiplier = this.league.settings?.injuryRateMultiplier ?? 1.0;
+      for (const game of weekResult.games) {
+        const homePlayers = this.league.players.filter(
+          (p) => p.teamId === game.homeTeamId && p.status === "active"
+        );
+        const awayPlayers = this.league.players.filter(
+          (p) => p.teamId === game.awayTeamId && p.status === "active"
+        );
+        const injured = rollGameInjuries(homePlayers, awayPlayers, this.rng, injuryMultiplier);
+        for (const { player } of injured) {
+          reportSignificantInjury(this.league, player, this.currentYear, weekResult.week);
+        }
+      }
+      // Beat reporter: results, milestones, streaks
+      reportWeeklyResults(this.league, weekResult, this.currentYear);
+      reportPlayerMilestones(this.league, this.league.players, this.currentYear, weekResult.week);
+      reportStreaks(this.league, this.currentYear, weekResult.week);
+      // Rivalry DNA
+      recordWeekRivalries(this.league, weekResult, this.currentYear);
+      // Press conference quotes for controlled team's game
+      generatePressConference(this.league, weekResult, this.controlledTeamId, this.currentYear);
+      // ─────────────────────────────────────────────────────────────────────
+
       this.weekResultsCurrentSeason.push(weekResult);
       this.league.weeklyHistory.push({ year: this.currentYear, week: weekResult.week, ...weekResult });
       this.archiveGameResults(weekResult.games);
@@ -3663,6 +3700,10 @@ export class GameSession {
       });
       this.lastAwardSummary = estimateAwards(this, this.currentYear, playoffResult);
       this.latestPostseason = playoffResult;
+      // GM Legacy Score — update after each season
+      if (this.controlledTeamId) {
+        updateGmLegacyAfterSeason(this.league, this.controlledTeamId, this.currentYear);
+      }
       this.pendingSeasonWrap = {
         year: this.currentYear,
         superBowl: playoffResult.superBowl,

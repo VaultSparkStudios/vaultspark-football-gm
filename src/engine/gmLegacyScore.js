@@ -136,10 +136,116 @@ export function computeGmLegacyScore(legacy) {
   };
 }
 
+// ── GM Persona Tier Arc ───────────────────────────────────────────────────────
+//
+// Tier progression based on cumulative legacy score and career milestones.
+// Each tier unlocks narrative flavour and owner treatment.
+//
+//   1. Young Gun         — first 3 seasons OR score < 40
+//   2. Contender Builder — score 40–54  OR 1+ playoff appearance
+//   3. Proven GM         — score 55–67  OR 2+ playoff appearances
+//   4. Dynasty Architect — score 68–79  OR 4+ playoffs / 1+ Super Bowl
+//   5. Legend            — score 80–89  OR 3+ Super Bowls
+//   6. Immortal          — score 90+    OR 5+ Super Bowls
+
+const TIER_DEFS = [
+  {
+    tier: 1,
+    name: "Young Gun",
+    scoreMin: 0,
+    description: "Still finding your footing. The league is watching — but hasn't made up its mind.",
+    ownerTreatment: "Patience mode. Owner is supportive but expectant.",
+    unlocks: []
+  },
+  {
+    tier: 2,
+    name: "Contender Builder",
+    scoreMin: 40,
+    description: "You've put together a competitive team. Playoffs are the new baseline expectation.",
+    ownerTreatment: "Owner demands postseason appearances. Missing two straight triggers reviews.",
+    unlocks: ["extended_contract_offer"]
+  },
+  {
+    tier: 3,
+    name: "Proven GM",
+    scoreMin: 55,
+    description: "A track record of winning. Players want to play here. Free agents take less to sign.",
+    ownerTreatment: "Owner grants a longer leash after proven results. PR pressure is manageable.",
+    unlocks: ["fa_discount", "extended_contract_offer"]
+  },
+  {
+    tier: 4,
+    name: "Dynasty Architect",
+    scoreMin: 68,
+    description: "You are building something special. The franchise is a destination, not a doormat.",
+    ownerTreatment: "Owner defers to your judgment on major transactions. Patience is high.",
+    unlocks: ["fa_discount", "extended_contract_offer", "owner_deference"]
+  },
+  {
+    tier: 5,
+    name: "Legend",
+    scoreMin: 80,
+    description: "Multiple championships. Your name is spoken alongside the all-time greats.",
+    ownerTreatment: "Owner is a partner, not a boss. Full autonomy on football decisions.",
+    unlocks: ["fa_discount", "extended_contract_offer", "owner_deference", "legend_badge"]
+  },
+  {
+    tier: 6,
+    name: "Immortal",
+    scoreMin: 90,
+    description: "No franchise has done what you've done. History will remember this era forever.",
+    ownerTreatment: "Lifetime tenure offered. The stadium may one day bear your name.",
+    unlocks: ["fa_discount", "extended_contract_offer", "owner_deference", "legend_badge", "immortal_aura"]
+  }
+];
+
+export function getGmPersonaTier(legacy) {
+  if (!legacy || legacy.seasonsServed === 0) return TIER_DEFS[0];
+  const computed = computeGmLegacyScore(legacy);
+  const score = computed.score;
+  const superBowls = legacy.superBowlWins || 0;
+  const playoffs = legacy.playoffAppearances || 0;
+  const seasons = legacy.seasonsServed || 0;
+
+  // Override tier by milestone achievements
+  if (superBowls >= 5 || score >= 90)            return TIER_DEFS[5];
+  if (superBowls >= 3 || score >= 80)            return TIER_DEFS[4];
+  if (playoffs >= 4 || superBowls >= 1 || score >= 68) return TIER_DEFS[3];
+  if (playoffs >= 2 || score >= 55)              return TIER_DEFS[2];
+  if (playoffs >= 1 || score >= 40 || seasons >= 3)    return TIER_DEFS[1];
+  return TIER_DEFS[0];
+}
+
+export function getGmPersonaArc(legacy) {
+  if (!legacy) return null;
+  const current = getGmPersonaTier(legacy);
+  const next = TIER_DEFS[current.tier] || null; // tier is 1-indexed
+  const computed = computeGmLegacyScore(legacy);
+
+  return {
+    current: {
+      tier: current.tier,
+      name: current.name,
+      description: current.description,
+      ownerTreatment: current.ownerTreatment,
+      unlocks: current.unlocks
+    },
+    next: next ? {
+      tier: next.tier,
+      name: next.name,
+      scoreNeeded: next.scoreMin,
+      gapToNext: Math.max(0, next.scoreMin - computed.score)
+    } : null,
+    score: computed.score,
+    grade: computed.grade
+  };
+}
+
 // ── UI summary ────────────────────────────────────────────────────────────────
 
 export function getGmLegacySummary(league) {
   const legacy = league.gmLegacy;
   if (!legacy) return null;
-  return computeGmLegacyScore(legacy);
+  const score = computeGmLegacyScore(legacy);
+  return { ...score, persona: getGmPersonaArc(legacy) };
 }

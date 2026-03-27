@@ -87,9 +87,10 @@
                   <article><h3>Dead Cap</h3><p id="deadCapCard">-</p></article>
                   <article><h3>Team OVR</h3><p id="ovrCard">-</p></article>
                   <article class="gm-legacy-card" id="gmLegacyCardWrap" title="Career arc across all seasons">
-                    <h3>GM Legacy</h3>
+                    <h3>GM Legacy <span id="gmLegacyGradeVal" class="gm-grade-badge"></span></h3>
                     <p id="gmLegacyCard">-</p>
                     <span id="gmLegacyLabel" class="small" style="color:var(--muted)"></span>
+                    <div id="gmPersonaTier" class="gm-persona-tier"></div>
                   </article>
                 </div>
                 <div id="overviewPulseBar" class="overview-pulse-bar"></div>
@@ -426,6 +427,9 @@
             <h2>Expiring Contracts</h2>
             <div class="table-wrap"><table id="expiringTable" data-testid="expiring-table"></table></div>
           </div>
+
+          <!-- ── Cap Alert Banner ────────────────────────────────────────── -->
+          <div id="capAlertBanner" class="hidden"></div>
 
           <!-- ── Cap Casualty Predictor ──────────────────────────────────── -->
           <div class="panel" id="capCasualtyPanel">
@@ -847,6 +851,7 @@
                 </select>
               </label>
               <button id="refreshLobbyBtn">Refresh Lobby</button>
+              <button id="disbandLobbyBtn" style="color:#f85149;">Disband Lobby</button>
             </div>
           </div>
 
@@ -892,6 +897,35 @@
             <div class="row small" id="saveListText"></div>
             <div class="row">
               <button id="loadQaBtn" data-testid="load-qa-btn">Load QA Report</button>
+            </div>
+
+            <!-- ── GitHub Gist Cloud Sync ──────────────────────────────────── -->
+            <div class="panel cloud-sync-panel" style="margin-top:16px;">
+              <h3>☁️ Cloud Save Sync <span class="small muted">(GitHub Gist)</span></h3>
+              <p class="small muted" style="margin:6px 0 12px;">
+                Sync saves to a private GitHub Gist — play from any device.
+                Requires a GitHub Personal Access Token with <code>gist</code> scope.
+                Your token is stored only in this browser.
+              </p>
+              <div class="row compact">
+                <label style="flex:1">
+                  GitHub Token
+                  <input id="gistTokenInput" type="password" placeholder="ghp_…" style="width:100%" />
+                </label>
+                <button id="gistSyncSaveTokenBtn">Save Token</button>
+              </div>
+              <div class="row compact" style="margin-top:8px;">
+                <button id="gistExportBtn">⬆ Export to Gist</button>
+                <label style="flex:1">
+                  <input id="gistIdInput" placeholder="Gist ID (auto-filled after first export)" style="width:100%" />
+                </label>
+                <button id="gistImportBtn">⬇ Import from Gist</button>
+              </div>
+              <div id="gistSyncStatus" class="small" style="margin-top:6px;color:var(--muted)"></div>
+              <div class="row compact" style="margin-top:8px;">
+                <button id="gistListBtn">List My Cloud Saves</button>
+              </div>
+              <div id="gistSaveList" style="margin-top:8px;"></div>
             </div>
             <div class="table-wrap"><table id="qaTable" data-testid="qa-table"></table></div>
           </div>
@@ -1033,10 +1067,12 @@
                 🎮 Join the VaultSpark Discord
               </a>
               <button id="shareDynastyBtn">📤 Share My Dynasty Timeline</button>
+              <button id="franchiseNewsletterBtn">📰 Season Newsletter</button>
             </div>
             <div class="small" style="color:var(--muted);margin-top:.5rem;">
               Mobile mode shows a simplified daily-decision view optimized for narrow screens.
               Dynasty share generates a downloadable HTML card of your franchise history.
+              Season Newsletter generates a shareable season-end card with headlines, GM legacy, and quotes.
             </div>
           </div>
         </section>
@@ -1241,6 +1277,15 @@
     </div>
 
     <div id="toastStack" class="toast-stack"></div>
+
+    <!-- ── Feedback Widget ────────────────────────────────────────────────── -->
+    <div id="feedbackWidget" class="feedback-widget" title="Send feedback or report a bug">
+      <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions/new?category=feedback"
+         target="_blank" rel="noopener" aria-label="Send feedback">
+        <span class="feedback-icon">💬</span>
+        <span class="feedback-label">Feedback</span>
+      </a>
+    </div>
 
     <script type="module" src="./app.js"></script>
   </body>

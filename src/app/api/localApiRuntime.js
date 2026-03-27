@@ -6,10 +6,11 @@ import { GameSession } from "../../runtime/GameSession.js";
 import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { RNG } from "../../utils/rng.js";
 import { RNGStreams } from "../../utils/rngStreams.js";
-import { initGmLegacy, computeGmLegacyScore } from "../../engine/gmLegacyScore.js";
+import { initGmLegacy, computeGmLegacyScore, getGmPersonaArc } from "../../engine/gmLegacyScore.js";
 import { initRivalries, getRivalryContext, getTeamRivalries } from "../../engine/rivalryDNA.js";
 import { runLeagueCombine, getCombineSummary } from "../../engine/draftCombine.js";
 import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "../../engine/playerAgentAI.js";
+import { getCapAlerts } from "../../engine/capAlerts.js";
 import {
   createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
   lockGate, openGate, applyIntents, recordAdvance, lobbyStatus,
@@ -24,21 +25,48 @@ function jsonResponse(status, payload) {
 // Extends getDashboardState() with new world-state layers not yet in GameSession.
 
 function getAugmentedState(session) {
-  const base = getAugmentedState(session);
+  const base = session.getDashboardState();
   const league = session.league;
+  const capSummary = session.controlledTeamId
+    ? session.getTeamCapSummary(session.controlledTeamId)
+    : null;
+  const roster = session.controlledTeamId
+    ? session.getRoster(session.controlledTeamId)
+    : [];
   return {
     ...base,
     narrativeLog:   league?.narrativeLog  || [],
     newsLog:        league?.newsLog       || [],
     coachingTree:   league?.coachingTree  || null,
-    gmLegacy:       league?.gmLegacy      ? computeGmLegacyScore(league.gmLegacy) : null,
+    gmLegacy:       league?.gmLegacy      ? {
+      ...computeGmLegacyScore(league.gmLegacy),
+      persona: getGmPersonaArc(league.gmLegacy)
+    } : null,
     rivalries:      league?.rivalries     || {},
-    combineResults: league?.combineResults || []
+    combineResults: league?.combineResults || [],
+    capAlerts:      getCapAlerts(capSummary, roster, session.currentYear)
   };
 }
 
-// ── Commissioner lobby (in-memory per runtime) ─────────────────────────────────
+// ── Commissioner lobby (persisted via localStorage) ────────────────────────────
 let _lobby = null;
+const LOBBY_KEY = "vsfgm-commissioner-lobby-v1";
+
+function _persistLobby() {
+  try {
+    if (_lobby) localStorage.setItem(LOBBY_KEY, JSON.stringify(_lobby));
+    else localStorage.removeItem(LOBBY_KEY);
+  } catch { /* quota exceeded — lobby still works in-memory */ }
+}
+
+function _loadPersistedLobby() {
+  try {
+    const s = localStorage.getItem(LOBBY_KEY);
+    if (s) _lobby = JSON.parse(s);
+  } catch { _lobby = null; }
+}
+
+_loadPersistedLobby();
 
 // ── Rewind snapshot helpers ───────────────────────────────────────────────────
 
@@ -1249,6 +1277,7 @@ export function createLocalApiRuntime({
           displayName:     commissionerId,
           controlledTeamId: s.controlledTeamId
         });
+        _persistLobby();
         return finish(jsonResponse(200, { ok: true, lobby: lobbyStatus(_lobby) }));
       }
 
@@ -1263,6 +1292,7 @@ export function createLocalApiRuntime({
         if (!userId || !controlledTeamId) return finish(jsonResponse(400, { ok: false, error: "userId and controlledTeamId required." }));
         try {
           addPlayerToLobby(_lobby, { userId, displayName: displayName || userId, controlledTeamId });
+          _persistLobby();
           return finish(jsonResponse(200, { ok: true, lobby: lobbyStatus(_lobby) }));
         } catch (e) {
           return finish(jsonResponse(400, { ok: false, error: e.message }));
@@ -1275,6 +1305,7 @@ export function createLocalApiRuntime({
         if (!userId) return finish(jsonResponse(400, { ok: false, error: "userId required." }));
         try {
           const allReady = markPlayerReady(_lobby, userId);
+          _persistLobby();
           return finish(jsonResponse(200, { ok: true, allReady, lobby: lobbyStatus(_lobby) }));
         } catch (e) {
           return finish(jsonResponse(400, { ok: false, error: e.message }));
@@ -1287,6 +1318,7 @@ export function createLocalApiRuntime({
         if (!userId || !type) return finish(jsonResponse(400, { ok: false, error: "userId and type required." }));
         try {
           const intent = queueIntent(_lobby, userId, type, intentPayload || {});
+          _persistLobby();
           return finish(jsonResponse(200, { ok: true, intent, lobby: lobbyStatus(_lobby) }));
         } catch (e) {
           return finish(jsonResponse(400, { ok: false, error: e.message }));
@@ -1313,12 +1345,19 @@ export function createLocalApiRuntime({
         );
         recordAdvance(_lobby, s.currentYear, s.currentWeek, s.phase, intentResults);
         openGate(_lobby, s.currentYear, s.currentWeek, s.phase);
+        _persistLobby();
         return finish(jsonResponse(200, {
           ok: true,
           intentResults,
           state: getAugmentedState(s),
           lobby: lobbyStatus(_lobby)
         }));
+      }
+
+      if (method === "DELETE" && pathname === "/api/commissioner/lobby") {
+        _lobby = null;
+        _persistLobby();
+        return finish(jsonResponse(200, { ok: true }));
       }
 
       return finish(jsonResponse(501, { ok: false, error: `Client-only runtime not implemented for ${method} ${pathname}.` }));
