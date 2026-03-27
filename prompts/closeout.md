@@ -29,6 +29,7 @@ If meaningful work happened, update in this order:
 6. `context/SELF_IMPROVEMENT_LOOP.md` — MANDATORY (see below)
 7. `docs/CREATIVE_DIRECTION_RECORD.md` — MANDATORY if human gave any creative direction this session
 8. Any project-type or repo-specific files whose truth changed
+9. **Delete `context/.session-lock`** — MANDATORY last step. Removing the lock signals to studio-ops and other cross-repo agents that this project is safe to write to again.
 
 ### Where We Left Off — write to LATEST_HANDOFF.md
 
@@ -225,11 +226,12 @@ and Studio Review agent to aggregate scores programmatically without parsing Mar
 
 ```json
 {
-  "schemaVersion": "1.1",
+  "schemaVersion": "1.2",
   "project": "{slug from context/PROJECT_STATUS.json}",
   "date": "YYYY-MM-DD",
   "session": N,
   "label": "{entry label, e.g. 'Bootstrap Baseline', or null}",
+  "sessionType": "implementation",
   "calibration": true,
   "scores": {
     "devHealth": N,
@@ -241,6 +243,8 @@ and Studio Review agent to aggregate scores programmatically without parsing Mar
   "total": N,
   "maxScore": 50,
   "velocity": N,
+  "protocolVelocity": null,
+  "durationMinutes": null,
   "debt": "→",
   "rollingAvg3": {
     "devHealth": null,
