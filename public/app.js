@@ -83,7 +83,8 @@ const state = {
     expiring: [],
     tagEligible: [],
     optionEligible: []
-  }
+  },
+  rewindSnapshots: []
 };
 
 const DISPLAY_LABELS = {
@@ -1414,6 +1415,123 @@ function renderOverview() {
     box.textContent = lines.join(" ") || "Weekly plan, locker-room pressure, and owner mandate updates will appear here.";
   }
   renderOverviewSpotlight();
+  renderNarrativePanel();
+  renderTradeDeadlineAlert();
+}
+
+function renderNarrativePanel() {
+  const feed = document.getElementById("narrativeEventsFeed");
+  if (!feed) return;
+  const events = state.dashboard?.narrativeLog || [];
+  if (!events.length) {
+    feed.innerHTML = `<div class="narrative-empty">Simulate weeks to generate franchise story events.</div>`;
+    return;
+  }
+  const iconMap = {
+    TRADE_REQUEST: "🔀", BREAKOUT_FLAG: "⚡", INJURY_SCARE: "🩹",
+    MVP_RACE: "🏆", CULTURE_SHIFT: "🎭", SALARY_DISPUTE: "💰",
+    DRAFT_STEAL: "💎", RIVAL_SURGE: "🔥", default: "📰"
+  };
+  const toneMap = {
+    BREAKOUT_FLAG: "positive", DRAFT_STEAL: "positive", MVP_RACE: "positive",
+    TRADE_REQUEST: "warning", SALARY_DISPUTE: "warning", RIVAL_SURGE: "warning",
+    INJURY_SCARE: "negative",
+    CULTURE_SHIFT: "info", default: "info"
+  };
+  const recent = events.slice(0, 8);
+  feed.innerHTML = recent.map((ev) => {
+    const icon = iconMap[ev.type] || iconMap.default;
+    const tone = toneMap[ev.type] || toneMap.default;
+    return `
+      <div class="narrative-event tone-border-${escapeHtml(tone)}">
+        <span class="narrative-event-icon">${icon}</span>
+        <div class="narrative-event-body">
+          <div class="narrative-event-headline">${escapeHtml(ev.headline || ev.type || "League Event")}</div>
+          ${ev.detail ? `<div class="narrative-event-detail">${escapeHtml(ev.detail)}</div>` : ""}
+          ${ev.impact ? `<div class="narrative-event-impact">${escapeHtml(ev.impact)}</div>` : ""}
+          <div class="narrative-event-time">Week ${ev.week ?? "?"} · ${ev.year ?? ""}</div>
+        </div>
+      </div>`;
+  }).join("");
+}
+
+function renderTradeDeadlineAlert() {
+  const panel = document.getElementById("tradeDeadlinePanel");
+  if (!panel) return;
+  const d = state.dashboard;
+  if (!d) { panel.hidden = true; return; }
+  const week = d.currentWeek || 0;
+  const phase = d.phase || "";
+  const isDeadline = phase === "regular-season" && week >= 9 && week <= 11;
+  panel.hidden = !isDeadline;
+  if (!isDeadline) return;
+  const statusEl = document.getElementById("tradeDeadlineStatus");
+  const roleEl = document.getElementById("tradeDeadlineBuyerSeller");
+  const standings = d.latestStandings || [];
+  const team = d.controlledTeam || {};
+  const myRow = standings.find((r) => r.team === (team.abbrev || team.teamId));
+  const winPct = myRow ? (myRow.wins || 0) / Math.max(1, (myRow.wins || 0) + (myRow.losses || 0)) : 0.5;
+  const weeksLeft = 18 - week;
+  const role = winPct >= 0.55 ? "BUYER" : winPct <= 0.4 ? "SELLER" : "NEUTRAL";
+  const roleColors = { BUYER: "var(--success)", SELLER: "#ff8f8f", NEUTRAL: "var(--info)" };
+  if (statusEl) statusEl.textContent = `Week ${week} of 18 — ${weeksLeft} weeks remain. Deadline closes end of Week 11.`;
+  if (roleEl) {
+    roleEl.textContent = role;
+    roleEl.style.color = roleColors[role];
+  }
+}
+
+async function loadRewindHistory() {
+  const data = await api("/api/rewind");
+  state.rewindSnapshots = data.snapshots || [];
+  renderRewindTimeline();
+}
+
+function renderRewindTimeline() {
+  const list = document.getElementById("rewindTimelineList");
+  if (!list) return;
+  const snaps = state.rewindSnapshots;
+  if (!snaps.length) {
+    list.innerHTML = `<div class="narrative-empty">No snapshots yet. Snapshots are auto-created before key decisions.</div>`;
+    return;
+  }
+  const triggerIcons = {
+    "pre-trade": "🔀", "pre-deadline": "⏰", "season-start": "🏈",
+    "pre-draft": "📋", "pre-restore": "↩️", "manual": "📸", default: "💾"
+  };
+  list.innerHTML = snaps.map((snap) => {
+    const icon = triggerIcons[snap.trigger] || triggerIcons.default;
+    const date = snap.createdAt ? new Date(snap.createdAt).toLocaleString() : "";
+    return `
+      <div class="rewind-entry" data-id="${escapeHtml(snap.id)}">
+        <span class="rewind-entry-icon">${icon}</span>
+        <div class="rewind-entry-body">
+          <div class="rewind-entry-label">${escapeHtml(snap.label || snap.trigger)}</div>
+          <div class="rewind-entry-meta">Y${snap.year} W${snap.week} · ${escapeHtml(date)}</div>
+        </div>
+        <div class="rewind-entry-actions">
+          <button class="small-btn rewind-restore-btn" data-id="${escapeHtml(snap.id)}">Restore</button>
+          <button class="small-btn warn rewind-delete-btn" data-id="${escapeHtml(snap.id)}">✕</button>
+        </div>
+      </div>`;
+  }).join("");
+
+  list.querySelectorAll(".rewind-restore-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      if (!confirm(`Restore to: ${btn.dataset.id}?\n\nYour current state will be auto-snapshotted first.`)) return;
+      const data = await api("/api/rewind/restore", { method: "POST", body: { id: btn.dataset.id } });
+      if (data.state) applyDashboard(data);
+      await loadRewindHistory();
+    });
+  });
+
+  list.querySelectorAll(".rewind-delete-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const data = await api("/api/rewind/delete", { method: "POST", body: { id: btn.dataset.id } });
+      state.rewindSnapshots = data.snapshots || [];
+      renderRewindTimeline();
+    });
+  });
 }
 
 function renderOverviewSpotlight() {
@@ -3772,6 +3890,7 @@ function renderStaff() {
     weeklyFocus: role === "headCoach" ? weeklyPlan.summary || "-" : ""
   }));
   renderTable("staffTable", rows);
+  renderCoachingDnaCard();
 }
 
 function renderOwner() {
@@ -4260,6 +4379,9 @@ function applyDashboard(newState) {
   renderRulesTab();
   applySettingsControls();
   renderRecordsAndHistory();
+  renderNewsTicker();
+  renderSeasonPreviewPanel();
+  renderGmLegacyScore().catch(() => {});
 
   const yearInput = document.getElementById("yearFilter");
   if (yearInput && (!yearInput.value || !previous || previous.currentYear !== newState.currentYear)) {
@@ -4288,6 +4410,9 @@ function activateTab(tabId) {
     loadContractsTeam().catch((error) => {
       presentActionError(error);
     });
+  }
+  if (tabId === "settingsTab") {
+    loadRewindHistory().catch(() => {});
   }
 }
 
@@ -5855,6 +5980,14 @@ function bindEvents() {
 
   document.getElementById("loadQaBtn").addEventListener("click", () => runAction(loadQa, "Loading QA report..."));
 
+  document.getElementById("refreshRewindBtn")?.addEventListener("click", () =>
+    loadRewindHistory().catch(() => {})
+  );
+  document.getElementById("manualRewindSnapshotBtn")?.addEventListener("click", async () => {
+    await api("/api/rewind/snapshot", { method: "POST", body: { label: "Manual snapshot" } });
+    await loadRewindHistory();
+  });
+
   const openCommandPalette = () => {
     document.getElementById("commandPalette").classList.remove("hidden");
     document.getElementById("commandInput").focus();
@@ -5873,16 +6006,49 @@ function bindEvents() {
       closePlayerModal();
       closeBoxScoreModal();
       closeGuideModal();
+      closeAgentModal();
+      closeShortcutsModal();
       return;
     }
+    const tag = document.activeElement?.tagName;
+    const editable = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT";
+    if (editable) return;
     if (event.key.toLowerCase() === "r" && !event.ctrlKey && !event.metaKey && !event.altKey) {
-      if (document.activeElement?.tagName !== "INPUT") {
-        document.getElementById("refreshBtn").click();
-      }
+      document.getElementById("refreshBtn").click();
+      return;
+    }
+    if (event.key === "?" || (event.key === "/" && event.shiftKey)) {
+      openShortcutsModal();
+      return;
+    }
+    if (event.key.toLowerCase() === "w" && !event.ctrlKey && !event.metaKey) {
+      document.getElementById("advanceWeekBtn")?.click();
+      return;
+    }
+    if (event.key.toLowerCase() === "n" && !event.ctrlKey && !event.metaKey) {
+      const ticker = document.getElementById("newsTicker");
+      if (ticker) ticker.hidden = !ticker.hidden;
+      return;
+    }
+    // 1–9: jump to tab by index
+    if (/^[1-9]$/.test(event.key) && !event.ctrlKey && !event.metaKey) {
+      const idx = parseInt(event.key, 10) - 1;
+      const tabs = document.querySelectorAll(".menu-btn[data-tab]");
+      if (tabs[idx]) { tabs[idx].click(); }
+      return;
     }
   });
 
   document.addEventListener("click", (event) => {
+    const agentBtn = event.target.closest("button[data-agent-player-id]");
+    if (agentBtn) {
+      openAgentModal(agentBtn.dataset.agentPlayerId);
+      return;
+    }
+    const agentModal = document.getElementById("agentNegotiationModal");
+    if (event.target === agentModal) { closeAgentModal(); return; }
+    const shortcutsModal = document.getElementById("shortcutsModal");
+    if (event.target === shortcutsModal) { closeShortcutsModal(); return; }
     const playerButton = event.target.closest("button[data-player-id]");
     if (playerButton) {
       runAction(() => loadPlayerModal(playerButton.dataset.playerId), "Loading player...");
@@ -5909,6 +6075,413 @@ function bindEvents() {
   document.getElementById("closeBoxScoreModalBtn").addEventListener("click", () => {
     closeBoxScoreModal();
   });
+
+  // ── New feature event listeners ────────────────────────────────────────────
+  document.getElementById("closeNewsTickerBtn")?.addEventListener("click", () => {
+    const ticker = document.getElementById("newsTicker");
+    if (ticker) ticker.hidden = true;
+  });
+
+  document.getElementById("runCapCasualtyBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      await loadContracts();
+      renderCapCasualtyPanel();
+    }, "Analyzing cap casualties...")
+  );
+  document.getElementById("runCapProjectionBtn")?.addEventListener("click", () => {
+    renderCapProjectionPanel();
+  });
+
+  document.getElementById("runCombineBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      const data = await api("/api/combine/run", { method: "POST", body: {} });
+      if (data.results) {
+        state.dashboard = { ...(state.dashboard || {}), combineResults: data.results };
+        renderCombineResults();
+      }
+    }, "Running combine...")
+  );
+  document.getElementById("loadCombineResultsBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      const data = await api("/api/combine/results");
+      if (data.results) {
+        state.dashboard = { ...(state.dashboard || {}), combineResults: data.results };
+        renderCombineResults();
+      }
+    }, "Loading combine results...")
+  );
+
+  document.getElementById("createLobbyBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      const gmId = state.dashboard?.controlledTeamId || "gm1";
+      await api("/api/commissioner/create", { method: "POST", body: { gmId, displayName: gmId, teamId: gmId } });
+      await renderCommissionerLobby();
+    }, "Creating lobby...")
+  );
+  document.getElementById("joinLobbyBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      const lobbyId = document.getElementById("joinLobbyIdInput")?.value?.trim();
+      const gmId = state.dashboard?.controlledTeamId || "gm-guest";
+      if (!lobbyId) return;
+      await api("/api/commissioner/join", { method: "POST", body: { lobbyId, gmId, displayName: gmId, teamId: gmId } });
+      await renderCommissionerLobby();
+    }, "Joining lobby...")
+  );
+  document.getElementById("markReadyBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      const gmId = state.dashboard?.controlledTeamId || "gm1";
+      await api("/api/commissioner/ready", { method: "POST", body: { gmId } });
+      await renderCommissionerLobby();
+    }, "Marking ready...")
+  );
+  document.getElementById("advanceLobbyBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      await api("/api/commissioner/advance", { method: "POST", body: {} });
+      await Promise.all([loadState(), renderCommissionerLobby()]);
+    }, "Advancing commissioner turn...")
+  );
+  document.getElementById("refreshLobbyBtn")?.addEventListener("click", () =>
+    runAction(renderCommissionerLobby, "Refreshing lobby...")
+  );
+
+  document.getElementById("closeAgentModalBtn")?.addEventListener("click", closeAgentModal);
+
+  document.getElementById("closeShortcutsModalBtn")?.addEventListener("click", closeShortcutsModal);
+
+  document.getElementById("mobileLoopToggle")?.addEventListener("change", (e) => {
+    if (typeof setMobileModeEnabled === "function") setMobileModeEnabled(e.target.checked);
+  });
+
+  document.getElementById("shareDynastyBtn")?.addEventListener("click", shareDynastyTimeline);
+}
+
+// ── News Ticker ────────────────────────────────────────────────────────────────
+function renderNewsTicker() {
+  const ticker = document.getElementById("newsTicker");
+  if (!ticker) return;
+  const rows = state.newsRows || [];
+  if (!rows.length) { ticker.hidden = true; return; }
+  ticker.hidden = false;
+  const track = ticker.querySelector(".news-ticker-track");
+  if (!track) return;
+  const items = rows.slice(0, 10).map((r) =>
+    `<span class="news-ticker-item">${escapeHtml(r.headline || String(r))}</span>`
+  ).join('<span class="news-ticker-sep"> · </span>');
+  track.innerHTML = items + '<span class="news-ticker-sep"> · </span>' + items;
+}
+
+// ── GM Legacy Score ────────────────────────────────────────────────────────────
+async function renderGmLegacyScore() {
+  const card = document.getElementById("gmLegacyCard");
+  if (!card) return;
+  try {
+    const data = await api("/api/gm-legacy");
+    const s = data.legacy;
+    if (!s) { card.hidden = true; return; }
+    card.hidden = false;
+    const scoreEl = document.getElementById("gmLegacyScoreVal");
+    const gradeEl = document.getElementById("gmLegacyGradeVal");
+    const labelEl = document.getElementById("gmLegacyLabel");
+    if (scoreEl) scoreEl.textContent = s.score ?? "—";
+    if (gradeEl) gradeEl.textContent = s.grade ?? "—";
+    if (labelEl) labelEl.textContent = s.label ?? "";
+  } catch {
+    // non-critical
+  }
+}
+
+// ── Season Preview Panel ───────────────────────────────────────────────────────
+function renderSeasonPreviewPanel() {
+  const panel = document.getElementById("seasonPreviewPanel");
+  if (!panel) return;
+  const d = state.dashboard;
+  if (!d) { panel.hidden = true; return; }
+  const phase = d.phase || "";
+  const show = phase === "preseason" || phase === "offseason" || phase === "draft";
+  panel.hidden = !show;
+  if (!show) return;
+  const grid = panel.querySelector(".season-preview-grid");
+  if (!grid) return;
+  const team = d.controlledTeam || {};
+  const standings = d.latestStandings || [];
+  const myRow = standings.find((r) => r.team === (team.abbrev || team.teamId)) || {};
+  const lastRecord = myRow.wins != null ? `${myRow.wins}–${myRow.losses}` : "—";
+  const ovr = team.overallRating ?? "—";
+  const cap = d.cap?.capSpace != null ? fmtMoney(d.cap.capSpace) : "—";
+  const scheme = team.schemeIdentity || {};
+  grid.innerHTML = `
+    <div class="season-preview-tile"><div class="sp-tile-label">Last Record</div><div class="sp-tile-val">${escapeHtml(lastRecord)}</div></div>
+    <div class="season-preview-tile"><div class="sp-tile-label">Team OVR</div><div class="sp-tile-val">${escapeHtml(String(ovr))}</div></div>
+    <div class="season-preview-tile"><div class="sp-tile-label">Cap Space</div><div class="sp-tile-val">${escapeHtml(cap)}</div></div>
+    <div class="season-preview-tile"><div class="sp-tile-label">Scheme</div><div class="sp-tile-val">${escapeHtml(scheme.offense || "—")} / ${escapeHtml(scheme.defense || "—")}</div></div>
+  `;
+}
+
+// ── Cap Casualty Panel ─────────────────────────────────────────────────────────
+function renderCapCasualtyPanel() {
+  const content = document.getElementById("capCasualtyContent");
+  if (!content) return;
+  const roster = state.contractRoster || [];
+  if (!roster.length) {
+    content.innerHTML = `<div class="narrative-empty">Load contracts to see cut risk analysis.</div>`;
+    return;
+  }
+  const d = state.dashboard;
+  const salaryCap = d?.cap?.salaryCap || 200_000_000;
+  const candidates = roster
+    .filter((p) => (p.yearsLeft || p.yearsRemaining || 0) > 0)
+    .map((p) => {
+      const salary = p.salary || 0;
+      const ovr = p.overall || 75;
+      const pct = salary / Math.max(1, salaryCap);
+      let risk = "low";
+      if (ovr < 65 || pct > 0.08) risk = "high";
+      else if (ovr < 72 || pct > 0.05) risk = "medium";
+      return { name: p.name || p.playerId, pos: p.pos, salary, ovr, risk, barPct: Math.min(100, Math.round(pct * 400)) };
+    })
+    .filter((p) => p.risk !== "low")
+    .sort((a, b) => (b.risk === "high" ? 1 : 0) - (a.risk === "high" ? 1 : 0))
+    .slice(0, 10);
+  if (!candidates.length) {
+    content.innerHTML = `<div class="narrative-empty">No high-risk contracts detected.</div>`;
+    return;
+  }
+  content.innerHTML = candidates.map((p) => `
+    <div class="cap-casualty-row">
+      <div class="cap-casualty-name">${escapeHtml(p.name)}</div>
+      <div class="cap-casualty-pos">${escapeHtml(p.pos || "")}</div>
+      <div class="cap-casualty-ovr">OVR ${escapeHtml(String(p.ovr))}</div>
+      <div class="cap-casualty-salary">${fmtMoney(p.salary)}</div>
+      <div class="cut-risk-bar"><div class="cut-risk-fill ${escapeHtml(p.risk)}" style="width:${p.barPct}%"></div></div>
+      <span class="cut-risk-label ${escapeHtml(p.risk)}">${p.risk.toUpperCase()}</span>
+    </div>`).join("");
+}
+
+// ── Cap Projection Panel ───────────────────────────────────────────────────────
+function renderCapProjectionPanel() {
+  const content = document.getElementById("capProjectionContent");
+  if (!content) return;
+  const d = state.dashboard;
+  if (!d?.cap) { content.innerHTML = `<div class="narrative-empty">Cap data unavailable.</div>`; return; }
+  const baseCap = d.cap.salaryCap || 200_000_000;
+  const baseSpace = d.cap.capSpace || 0;
+  const growthRate = state.leagueSettings?.capGrowthRate ?? 0.045;
+  const years = [0, 1, 2].map((offset) => {
+    const yr = (d.currentYear || 2024) + offset;
+    const projCap = Math.round(baseCap * Math.pow(1 + growthRate, offset));
+    const projSpace = offset === 0 ? baseSpace : Math.round(projCap * 0.18);
+    const pct = Math.max(0, Math.min(100, Math.round((Math.max(0, projSpace) / projCap) * 100)));
+    return { yr, projCap, projSpace, pct };
+  });
+  content.innerHTML = `<div class="cap-projection-bars">` + years.map(({ yr, projCap, projSpace, pct }) => `
+    <div class="cap-proj-year-row">
+      <div class="cap-proj-year-label">${yr}</div>
+      <div class="cap-proj-bar-wrap"><div class="cap-proj-bar-fill" style="width:${pct}%"></div></div>
+      <div class="cap-proj-space">${fmtMoney(projSpace)} free / ${fmtMoney(projCap)} cap</div>
+    </div>`).join("") + `</div>`;
+}
+
+// ── Coaching DNA Card ──────────────────────────────────────────────────────────
+function renderCoachingDnaCard() {
+  const card = document.getElementById("coachingDnaCard");
+  if (!card) return;
+  const s = state.staffState;
+  const tree = s?.coachingTree || state.dashboard?.coachingTree;
+  if (!tree) { card.hidden = true; return; }
+  card.hidden = false;
+  const body = card.querySelector(".coaching-dna-body");
+  if (!body) return;
+  const lineage = tree.lineage || tree.coaches || Object.values(tree).filter((v) => v && v.coachName);
+  if (!lineage.length) {
+    body.innerHTML = `<div class="narrative-empty">No coaching lineage tracked yet.</div>`;
+    return;
+  }
+  body.innerHTML = lineage.slice(0, 6).map((entry) => `
+    <div class="coaching-dna-row">
+      <span class="coaching-dna-name">${escapeHtml(entry.coachName || entry.name || "Unknown")}</span>
+      <span class="coaching-dna-role">${escapeHtml(entry.role || "")}</span>
+      <span class="coaching-dna-scheme">${escapeHtml(entry.scheme || entry.schemeDrift || "")}</span>
+      ${entry.mentor ? `<span class="coaching-dna-mentor">from ${escapeHtml(entry.mentor)}</span>` : ""}
+    </div>`).join("");
+}
+
+// ── Combine Results ────────────────────────────────────────────────────────────
+function renderCombineResults() {
+  const table = document.getElementById("combineResultsTable");
+  if (!table) return;
+  const results = state.dashboard?.combineResults || [];
+  if (!results.length) {
+    table.innerHTML = `<div class="narrative-empty">No combine data. Run the combine above.</div>`;
+    return;
+  }
+  const sorted = [...results].sort((a, b) => (b.grade || 0) - (a.grade || 0));
+  table.innerHTML = `<table class="data-table"><thead><tr>
+    <th>Name</th><th>Pos</th><th>OVR</th><th>Grade</th><th>Tier</th>
+  </tr></thead><tbody>` +
+  sorted.map((p) => {
+    const g = p.grade ?? 0;
+    const cls = g >= 78 ? "combine-grade-elite" : g >= 65 ? "combine-grade-good" : g >= 50 ? "combine-grade-avg" : "combine-grade-poor";
+    const tier = g >= 78 ? "Elite" : g >= 65 ? "Good" : g >= 50 ? "Average" : "Poor";
+    return `<tr>
+      <td>${escapeHtml(p.name || p.id || "")}</td>
+      <td>${escapeHtml(p.pos || "")}</td>
+      <td>${escapeHtml(String(p.overall ?? "—"))}</td>
+      <td class="${cls}">${escapeHtml(String(p.grade ?? "—"))}</td>
+      <td class="${cls}">${tier}</td>
+    </tr>`;
+  }).join("") + `</tbody></table>`;
+}
+
+// ── Commissioner Lobby ─────────────────────────────────────────────────────────
+async function renderCommissionerLobby() {
+  const status = document.getElementById("commissionerLobbyStatus");
+  if (!status) return;
+  try {
+    const data = await api("/api/commissioner/lobby");
+    const lobby = data.lobby;
+    if (!lobby) {
+      status.innerHTML = `<div class="narrative-empty">No active lobby. Create one above or join with a Lobby ID.</div>`;
+      return;
+    }
+    const rows = (lobby.players || []).map((p) => `
+      <div class="lobby-player-row">
+        <span class="lobby-ready-dot ${p.ready ? "ready" : ""}"></span>
+        <span>${escapeHtml(p.displayName || p.gmId)}</span>
+        <span class="lobby-team">${escapeHtml(p.teamId || "—")}</span>
+        <span class="lobby-status-text">${p.ready ? "Ready" : "Waiting"}</span>
+      </div>`).join("");
+    status.innerHTML = `
+      <div class="commissioner-lobby-header">Lobby: <strong>${escapeHtml(lobby.id)}</strong> · Gate: ${lobby.gateOpen ? "Open" : "Locked"}</div>
+      <div class="lobby-players">${rows || "<em>No players yet.</em>"}</div>`;
+  } catch {
+    status.innerHTML = `<div class="narrative-empty">Unable to load lobby status.</div>`;
+  }
+}
+
+// ── Agent Negotiation Modal ────────────────────────────────────────────────────
+let _agentModalPlayerId = null;
+
+function openAgentModal(playerId) {
+  _agentModalPlayerId = playerId;
+  const modal = document.getElementById("agentNegotiationModal");
+  if (!modal) return;
+  modal.classList.remove("hidden");
+  renderAgentModal(playerId);
+}
+
+function closeAgentModal() {
+  _agentModalPlayerId = null;
+  document.getElementById("agentNegotiationModal")?.classList.add("hidden");
+}
+
+async function renderAgentModal(playerId) {
+  const card = document.getElementById("agentModalCard");
+  if (!card) return;
+  card.innerHTML = `<div class="narrative-empty">Loading agent profile…</div>`;
+  try {
+    const data = await api("/api/agent/roster");
+    const agents = data.agents || [];
+    const agent = agents.find((a) => a.playerId === playerId) || agents[0];
+    if (!agent) {
+      card.innerHTML = `<div class="narrative-empty">No agent data for this player.</div>`;
+      return;
+    }
+    const salaryVal = agent.askingSalary || 5_000_000;
+    const barPct = Math.min(100, Math.round((salaryVal / 30_000_000) * 100));
+    card.innerHTML = `
+      <div class="agent-personality-box">${escapeHtml(agent.personality || "balanced")}</div>
+      <div class="agent-name">${escapeHtml(agent.name || playerId)}</div>
+      <div class="agent-pos-ovr">${escapeHtml(agent.pos || "")} · OVR ${escapeHtml(String(agent.overall ?? "—"))}</div>
+      <div class="agent-demand-bar-wrap">
+        <label>Asking Price</label>
+        <div class="agent-demand-bar"><div class="agent-demand-fill" style="width:${barPct}%"></div></div>
+        <span class="agent-demand-val">${fmtMoney(salaryVal)}/yr</span>
+      </div>
+      <div class="agent-offer-form">
+        <label>Your Offer ($/yr):</label>
+        <input type="number" id="agentOfferSalary" class="form-input" value="${salaryVal}" step="500000" min="500000">
+        <label>Years:</label>
+        <input type="number" id="agentOfferYears" class="form-input" value="3" min="1" max="6">
+        <button class="btn primary" id="agentSubmitBtn">Submit Offer</button>
+        <button class="btn" id="agentCompetingBtn">Signal Competing Offer</button>
+      </div>
+      <div id="agentResponseBox" class="agent-response-box"></div>
+      <div id="agentHistoryBox" class="agent-history-box"></div>`;
+    document.getElementById("agentSubmitBtn")?.addEventListener("click", submitAgentOffer);
+    document.getElementById("agentCompetingBtn")?.addEventListener("click", signalCompetingOffer);
+    if (agent.negotiationHistory?.length) {
+      const histBox = document.getElementById("agentHistoryBox");
+      if (histBox) histBox.innerHTML = `<strong>History</strong>` +
+        agent.negotiationHistory.map((h) => `<div>${escapeHtml(h.label || JSON.stringify(h))}</div>`).join("");
+    }
+  } catch {
+    card.innerHTML = `<div class="narrative-empty">Error loading agent data.</div>`;
+  }
+}
+
+async function submitAgentOffer() {
+  if (!_agentModalPlayerId) return;
+  const salary = Number(document.getElementById("agentOfferSalary")?.value || 0);
+  const years = Number(document.getElementById("agentOfferYears")?.value || 3);
+  const box = document.getElementById("agentResponseBox");
+  if (box) box.textContent = "Processing offer…";
+  try {
+    const data = await api("/api/agent/offer", {
+      method: "POST",
+      body: { playerId: _agentModalPlayerId, salary, years }
+    });
+    const r = data.result || {};
+    if (box) {
+      box.className = `agent-response-box ${r.outcome === "accepted" ? "accepted" : r.outcome === "counter" ? "counter" : "walked"}`;
+      box.textContent = r.message || r.outcome || "Offer submitted.";
+    }
+  } catch {
+    if (box) box.textContent = "Error submitting offer.";
+  }
+}
+
+async function signalCompetingOffer() {
+  if (!_agentModalPlayerId) return;
+  const box = document.getElementById("agentResponseBox");
+  if (box) box.textContent = "Signaling competing interest…";
+  try {
+    const data = await api("/api/agent/competing-offer", {
+      method: "POST",
+      body: { playerId: _agentModalPlayerId, competingSalary: 0 }
+    });
+    if (box) {
+      box.className = "agent-response-box counter";
+      box.textContent = data.result?.message || "Competing offer signaled.";
+    }
+  } catch {
+    if (box) box.textContent = "Error.";
+  }
+}
+
+// ── Shortcuts Modal ────────────────────────────────────────────────────────────
+function openShortcutsModal() {
+  document.getElementById("shortcutsModal")?.classList.remove("hidden");
+}
+function closeShortcutsModal() {
+  document.getElementById("shortcutsModal")?.classList.add("hidden");
+}
+
+// ── Dynasty Timeline Share ─────────────────────────────────────────────────────
+function shareDynastyTimeline() {
+  const btn = document.getElementById("shareDynastyBtn");
+  if (btn) btn.textContent = "Generating…";
+  try {
+    const el = document.getElementById("dynastyTimelineContainer");
+    if (!el) { if (btn) btn.textContent = "Share Dynasty"; return; }
+    const w = window.open("", "_blank", "width=900,height=420");
+    if (w) {
+      w.document.write(`<html><head><title>Dynasty Timeline — VaultSpark</title><style>body{background:#0a0d12;color:#e0e8f0;padding:24px;font-family:sans-serif}svg{max-width:100%}</style></head><body>${el.innerHTML}</body></html>`);
+      w.document.close();
+    }
+  } catch {
+    // ignore
+  }
+  if (btn) btn.textContent = "Share Dynasty";
 }
 
 async function init() {
@@ -5925,6 +6498,9 @@ async function init() {
   await loadCoreDashboard();
   setStatus("Ready");
   queueStartupHydration();
+  if (typeof initMobileLoop === "function") {
+    initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
+  }
   setInterval(() => {
     loadSimJobs().catch(() => {});
   }, 8000);

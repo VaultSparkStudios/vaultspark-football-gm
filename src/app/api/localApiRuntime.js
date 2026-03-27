@@ -6,9 +6,80 @@ import { GameSession } from "../../runtime/GameSession.js";
 import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { RNG } from "../../utils/rng.js";
 import { RNGStreams } from "../../utils/rngStreams.js";
+import { initGmLegacy, computeGmLegacyScore } from "../../engine/gmLegacyScore.js";
+import { initRivalries, getRivalryContext, getTeamRivalries } from "../../engine/rivalryDNA.js";
+import { runLeagueCombine, getCombineSummary } from "../../engine/draftCombine.js";
+import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "../../engine/playerAgentAI.js";
+import {
+  createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
+  lockGate, openGate, applyIntents, recordAdvance, lobbyStatus,
+  ADVANCE_GATE_STATUS
+} from "../../runtime/multiplayerSession.js";
 
 function jsonResponse(status, payload) {
   return { status, ok: status >= 200 && status < 300, payload };
+}
+
+// ── Augmented dashboard state ─────────────────────────────────────────────────
+// Extends getDashboardState() with new world-state layers not yet in GameSession.
+
+function getAugmentedState(session) {
+  const base = getAugmentedState(session);
+  const league = session.league;
+  return {
+    ...base,
+    narrativeLog:   league?.narrativeLog  || [],
+    newsLog:        league?.newsLog       || [],
+    coachingTree:   league?.coachingTree  || null,
+    gmLegacy:       league?.gmLegacy      ? computeGmLegacyScore(league.gmLegacy) : null,
+    rivalries:      league?.rivalries     || {},
+    combineResults: league?.combineResults || []
+  };
+}
+
+// ── Commissioner lobby (in-memory per runtime) ─────────────────────────────────
+let _lobby = null;
+
+// ── Rewind snapshot helpers ───────────────────────────────────────────────────
+
+const REWIND_META_KEY = "vsfgm-rw-index";
+const REWIND_STATE_PREFIX = "vsfgm:rw-state:";
+const REWIND_MAX_SLOTS = 10;
+
+function _rwGetMeta(storage) {
+  try { return JSON.parse(storage.getItem(REWIND_META_KEY) || "[]"); } catch { return []; }
+}
+
+function _rwSetMeta(storage, meta) {
+  storage.setItem(REWIND_META_KEY, JSON.stringify(meta));
+}
+
+function _rwPruneOldest(storage, meta) {
+  while (meta.length >= REWIND_MAX_SLOTS) {
+    const oldest = meta.pop();
+    if (oldest?.id) storage.removeItem(REWIND_STATE_PREFIX + oldest.id);
+  }
+}
+
+function _rwTakeSnapshot(storage, session, trigger, label) {
+  const id = `${trigger}-y${session.currentYear}-w${session.currentWeek}-${Date.now()}`;
+  const entry = {
+    id, trigger, label,
+    year: session.currentYear,
+    week: session.currentWeek,
+    phase: session.phase,
+    createdAt: new Date().toISOString()
+  };
+  try {
+    storage.setItem(REWIND_STATE_PREFIX + id, JSON.stringify(session.toSnapshot()));
+    const meta = _rwGetMeta(storage);
+    meta.unshift(entry);
+    _rwPruneOldest(storage, meta);
+    _rwSetMeta(storage, meta);
+    return { ok: true, entry };
+  } catch (e) {
+    return { ok: false, error: e?.message || "Snapshot failed (storage quota?)" };
+  }
 }
 
 function toInt(value) {
@@ -260,7 +331,7 @@ export function createLocalApiRuntime({
       ensureSession();
 
       if (method === "GET" && pathname === "/api/state") {
-        return finish(jsonResponse(200, session.getDashboardState()));
+        return finish(jsonResponse(200, getAugmentedState(session)));
       }
 
       if (method === "POST" && pathname === "/api/new-league") {
@@ -295,28 +366,41 @@ export function createLocalApiRuntime({
         session.league.scouting.weeklyPoints = session.league.settings.scoutingWeeklyPoints;
         applyInitialLeagueSetup(session, session.controlledTeamId);
         writeAutoBackup("new-league");
-        return finish(jsonResponse(200, { ok: true, state: session.getDashboardState() }));
+        return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/control-team") {
         if (!body?.teamId) return finish(jsonResponse(400, { ok: false, error: "teamId is required." }));
         const teamId = session.setControlledTeam(String(body.teamId).toUpperCase());
-        return finish(jsonResponse(200, { ok: true, teamId, state: session.getDashboardState() }));
+        return finish(jsonResponse(200, { ok: true, teamId, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/advance-season") {
         const count = Math.max(1, Math.min(100, toInt(body?.count) || 1));
         const results = session.simulateSeasons(count, { runOffseasonAfterLast: true });
         writeAutoBackup("season-sim");
-        return finish(jsonResponse(200, { ok: true, count, results, state: session.getDashboardState() }));
+        return finish(jsonResponse(200, { ok: true, count, results, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/advance-week") {
         const count = Math.max(1, Math.min(40, toInt(body?.count) || 1));
         const results = [];
-        for (let i = 0; i < count; i += 1) results.push(session.advanceWeek());
+        for (let i = 0; i < count; i += 1) {
+          const prevPhase = session.phase;
+          const prevWeek = session.currentWeek;
+          const result = session.advanceWeek();
+          // Pre-trade-deadline snapshot (week 9)
+          if (result.week === 9) {
+            _rwTakeSnapshot(storage, session, "pre-deadline", "Before Trade Deadline");
+          }
+          // Season-start snapshot (transition into regular-season week 1)
+          if (prevPhase !== "regular-season" && session.phase === "regular-season" && session.currentWeek === 1) {
+            _rwTakeSnapshot(storage, session, "season-start", `Season ${session.currentYear} Start`);
+          }
+          results.push(result);
+        }
         writeAutoBackup(results[results.length - 1]?.phase === "offseason" ? "offseason-checkpoint" : "week");
-        return finish(jsonResponse(200, { ok: true, count, results, state: session.getDashboardState() }));
+        return finish(jsonResponse(200, { ok: true, count, results, state: getAugmentedState(session) }));
       }
 
       if (method === "GET" && pathname === "/api/roster") {
@@ -347,7 +431,7 @@ export function createLocalApiRuntime({
           jsonResponse(result.ok ? 200 : 400, {
             ...result,
             roster: session.getRoster(String(body.teamId).toUpperCase()),
-            state: session.getDashboardState()
+            state: getAugmentedState(session)
           })
         );
       }
@@ -413,7 +497,7 @@ export function createLocalApiRuntime({
           jsonResponse(result.ok ? 200 : 400, {
             ...result,
             market: session.getFreeAgencyMarket({ teamId }),
-            state: session.getDashboardState()
+            state: getAugmentedState(session)
           })
         );
       }
@@ -429,7 +513,7 @@ export function createLocalApiRuntime({
         return finish(
           jsonResponse(result.ok ? 200 : 400, {
             ...result,
-            state: session.getDashboardState(),
+            state: getAugmentedState(session),
             roster: session.getRoster(String(body.teamId).toUpperCase())
           })
         );
@@ -446,7 +530,7 @@ export function createLocalApiRuntime({
         return finish(
           jsonResponse(result.ok ? 200 : 400, {
             ...result,
-            state: session.getDashboardState(),
+            state: getAugmentedState(session),
             retired: session.getRetiredPlayers({ limit: 250 })
           })
         );
@@ -465,7 +549,7 @@ export function createLocalApiRuntime({
         return finish(
           jsonResponse(result.ok ? 200 : 400, {
             ...result,
-            state: session.getDashboardState(),
+            state: getAugmentedState(session),
             roster: session.getRoster(String(body.teamId).toUpperCase())
           })
         );
@@ -483,7 +567,7 @@ export function createLocalApiRuntime({
         return finish(
           jsonResponse(result.ok ? 200 : 400, {
             ...result,
-            state: session.getDashboardState(),
+            state: getAugmentedState(session),
             roster: session.getRoster(String(body.teamId).toUpperCase())
           })
         );
@@ -516,7 +600,7 @@ export function createLocalApiRuntime({
                 )
               : null
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/waiver-claim") {
@@ -527,11 +611,12 @@ export function createLocalApiRuntime({
           teamId: String(body.teamId).toUpperCase(),
           playerId: String(body.playerId)
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/trade") {
         if (!body?.teamA || !body?.teamB) return finish(jsonResponse(400, { ok: false, error: "teamA and teamB required." }));
+        _rwTakeSnapshot(storage, session, "pre-trade", `Before trade ${String(body.teamA).toUpperCase()} ↔ ${String(body.teamB).toUpperCase()}`);
         const result = session.tradePlayers({
           teamA: String(body.teamA).toUpperCase(),
           teamB: String(body.teamB).toUpperCase(),
@@ -540,7 +625,7 @@ export function createLocalApiRuntime({
           teamAPickIds: (body.teamAPickIds || []).map((id) => String(id)),
           teamBPickIds: (body.teamBPickIds || []).map((id) => String(id))
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/trade/evaluate") {
@@ -585,7 +670,7 @@ export function createLocalApiRuntime({
           years: toInt(body.years) || 3,
           salary: body.salary != null ? Number(body.salary) : null
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/contracts/restructure") {
@@ -594,7 +679,7 @@ export function createLocalApiRuntime({
           teamId: String(body.teamId).toUpperCase(),
           playerId: String(body.playerId)
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/contracts/franchise-tag") {
@@ -604,7 +689,7 @@ export function createLocalApiRuntime({
           playerId: String(body.playerId),
           salary: body.salary != null ? Number(body.salary) : null
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/contracts/fifth-year-option") {
@@ -614,7 +699,7 @@ export function createLocalApiRuntime({
           playerId: String(body.playerId),
           salary: body.salary != null ? Number(body.salary) : null
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/contracts/negotiate") {
@@ -625,7 +710,7 @@ export function createLocalApiRuntime({
           years: toInt(body.years),
           salary: body.salary != null ? Number(body.salary) : null
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "GET" && pathname === "/api/draft") {
@@ -634,7 +719,7 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/draft/prepare") {
         const draft = session.prepareDraft();
-        return finish(jsonResponse(200, { ok: true, draft, state: session.getDashboardState() }));
+        return finish(jsonResponse(200, { ok: true, draft, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/draft/cpu") {
@@ -642,13 +727,13 @@ export function createLocalApiRuntime({
           picks: Math.max(1, Math.min(224, toInt(body?.picks) || 224)),
           untilUserPick: body?.untilUserPick !== false
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/draft/user-pick") {
         if (!body?.playerId) return finish(jsonResponse(400, { ok: false, error: "playerId required." }));
         const result = session.draftUserPick({ playerId: String(body.playerId) });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "GET" && pathname === "/api/schedule") {
@@ -711,7 +796,7 @@ export function createLocalApiRuntime({
           playerId: String(body.playerId),
           points: toInt(body.points) || 10
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/scouting/lock-board") {
@@ -720,7 +805,7 @@ export function createLocalApiRuntime({
           teamId: String(body.teamId || session.controlledTeamId).toUpperCase(),
           playerIds: body.playerIds.map((id) => String(id))
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "GET" && pathname === "/api/tables/player-season") {
@@ -778,7 +863,7 @@ export function createLocalApiRuntime({
           teamId: String(body.teamId).toUpperCase(),
           playerId: String(body.playerId)
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, result.ok ? { ok: true, result, state: session.getDashboardState() } : result));
+        return finish(jsonResponse(result.ok ? 200 : 400, result.ok ? { ok: true, result, state: getAugmentedState(session) } : result));
       }
 
       if (method === "GET" && pathname === "/api/news") {
@@ -843,7 +928,7 @@ export function createLocalApiRuntime({
         const settings = resolveLeagueSettings(body || {}, session.getLeagueSettings());
         session.league.settings = settings;
         session.league.scouting.weeklyPoints = settings.scoutingWeeklyPoints;
-        return finish(jsonResponse(200, { ok: true, settings, state: session.getDashboardState() }));
+        return finish(jsonResponse(200, { ok: true, settings, state: getAugmentedState(session) }));
       }
 
       if (method === "GET" && pathname === "/api/staff") {
@@ -864,7 +949,7 @@ export function createLocalApiRuntime({
           discipline: body.discipline,
           yearsRemaining: body.yearsRemaining
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "GET" && pathname === "/api/owner") {
@@ -885,7 +970,7 @@ export function createLocalApiRuntime({
           rehab: toNumber(body.rehab),
           analytics: toNumber(body.analytics)
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: session.getDashboardState() }));
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "GET" && pathname === "/api/observability") {
@@ -920,7 +1005,7 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/offseason/advance") {
         const pipeline = session.advanceOffseasonPipeline();
-        return finish(jsonResponse(200, { ok: true, pipeline, state: session.getDashboardState() }));
+        return finish(jsonResponse(200, { ok: true, pipeline, state: getAugmentedState(session) }));
       }
 
       if (method === "GET" && pathname === "/api/calibration/jobs") {
@@ -985,7 +1070,7 @@ export function createLocalApiRuntime({
         }
         session = sessionFromSnapshot(body.snapshot);
         writeAutoBackup("snapshot-import");
-        return finish(jsonResponse(200, { ok: true, state: session.getDashboardState() }));
+        return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session) }));
       }
 
       if (method === "GET" && pathname === "/api/backups") {
@@ -1003,7 +1088,7 @@ export function createLocalApiRuntime({
         const snapshot = saveStore.loadSessionFromSlot(String(body.slot));
         if (!snapshot) return finish(jsonResponse(404, { ok: false, error: "Save slot not found." }));
         session = sessionFromSnapshot(snapshot);
-        return finish(jsonResponse(200, { ok: true, state: session.getDashboardState(), slots: saveStore.listSaveSlots() }));
+        return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: saveStore.listSaveSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/backups/load") {
@@ -1011,7 +1096,7 @@ export function createLocalApiRuntime({
         const snapshot = saveStore.loadSessionFromSlot(String(body.slot));
         if (!snapshot) return finish(jsonResponse(404, { ok: false, error: "Backup slot not found." }));
         session = sessionFromSnapshot(snapshot);
-        return finish(jsonResponse(200, { ok: true, state: session.getDashboardState(), slots: saveStore.listBackupSlots() }));
+        return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: saveStore.listBackupSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/saves/delete") {
@@ -1022,6 +1107,218 @@ export function createLocalApiRuntime({
       if (method === "POST" && pathname === "/api/backups/delete") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
         return finish(jsonResponse(200, { ok: true, deleted: saveStore.deleteSaveSlot(String(body.slot)), slots: saveStore.listBackupSlots() }));
+      }
+
+      // ── Rewind routes ───────────────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/rewind") {
+        return finish(jsonResponse(200, { ok: true, snapshots: _rwGetMeta(storage) }));
+      }
+
+      if (method === "POST" && pathname === "/api/rewind/snapshot") {
+        const label = body?.label ? String(body.label) : "Manual snapshot";
+        const result = _rwTakeSnapshot(storage, session, "manual", label);
+        return finish(jsonResponse(result.ok ? 200 : 500, result));
+      }
+
+      if (method === "POST" && pathname === "/api/rewind/restore") {
+        if (!body?.id) return finish(jsonResponse(400, { ok: false, error: "id is required." }));
+        const snapshotJson = storage.getItem(REWIND_STATE_PREFIX + String(body.id));
+        if (!snapshotJson) return finish(jsonResponse(404, { ok: false, error: "Snapshot not found." }));
+        // Auto-backup current state before restoring
+        _rwTakeSnapshot(storage, session, "pre-restore", `Before restore to ${String(body.id)}`);
+        try {
+          const snapshot = JSON.parse(snapshotJson);
+          const rngFactory = (seed) => new session.rng.constructor(seed);
+          const restored = GameSession.fromSnapshot(snapshot, rngFactory);
+          // Replace active session internals
+          Object.assign(session, restored);
+          return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session) }));
+        } catch (e) {
+          return finish(jsonResponse(500, { ok: false, error: e?.message || "Restore failed." }));
+        }
+      }
+
+      if (method === "POST" && pathname === "/api/rewind/delete") {
+        if (!body?.id) return finish(jsonResponse(400, { ok: false, error: "id is required." }));
+        const sid = String(body.id);
+        storage.removeItem(REWIND_STATE_PREFIX + sid);
+        const meta = _rwGetMeta(storage).filter((e) => e.id !== sid);
+        _rwSetMeta(storage, meta);
+        return finish(jsonResponse(200, { ok: true, snapshots: meta }));
+      }
+
+      // ── Agent negotiation routes ────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/agent/roster") {
+        const s = ensureSession();
+        const players = s.league?.players || [];
+        const eligible = players
+          .filter((p) => p.agentState && p.agentState.negotiationStatus === "active")
+          .map((p) => agentSummary(p))
+          .filter(Boolean);
+        return finish(jsonResponse(200, { ok: true, agents: eligible }));
+      }
+
+      if (method === "POST" && pathname === "/api/agent/offer") {
+        const s = ensureSession();
+        const { playerId, salary, years } = body || {};
+        if (!playerId) return finish(jsonResponse(400, { ok: false, error: "playerId required." }));
+        const player = (s.league?.players || []).find((p) => p.id === playerId);
+        if (!player) return finish(jsonResponse(404, { ok: false, error: "Player not found." }));
+        if (!player.agentState) return finish(jsonResponse(400, { ok: false, error: "Player has no active agent." }));
+        const result = evaluateTeamOffer(player, Number(salary) || 0, Number(years) || 1);
+        return finish(jsonResponse(200, { ok: true, result, agentState: player.agentState }));
+      }
+
+      if (method === "POST" && pathname === "/api/agent/competing-offer") {
+        const s = ensureSession();
+        const { playerId, competingTeamId } = body || {};
+        if (!playerId) return finish(jsonResponse(400, { ok: false, error: "playerId required." }));
+        const player = (s.league?.players || []).find((p) => p.id === playerId);
+        if (!player) return finish(jsonResponse(404, { ok: false, error: "Player not found." }));
+        const result = applyCompetingOffer(player, competingTeamId || "Unknown");
+        return finish(jsonResponse(200, { ok: true, result, agentState: player.agentState }));
+      }
+
+      // ── GM Legacy routes ────────────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/gm-legacy") {
+        const s = ensureSession();
+        initGmLegacy(s.league);
+        const summary = computeGmLegacyScore(s.league.gmLegacy);
+        return finish(jsonResponse(200, { ok: true, legacy: summary, raw: s.league.gmLegacy }));
+      }
+
+      // ── Rivalry routes ──────────────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/rivalry") {
+        const s = ensureSession();
+        const { teamA, teamB } = body || {};
+        initRivalries(s.league);
+        if (teamA && teamB) {
+          const ctx = getRivalryContext(s.league, teamA, teamB);
+          return finish(jsonResponse(200, { ok: true, rivalry: ctx }));
+        }
+        const teamId = teamA || s.controlledTeamId;
+        const rivalries = getTeamRivalries(s.league, teamId);
+        return finish(jsonResponse(200, { ok: true, rivalries }));
+      }
+
+      // ── Draft Combine routes ────────────────────────────────────────────────
+      if (method === "POST" && pathname === "/api/combine/run") {
+        const s = ensureSession();
+        const draftClass = s.league?.pendingDraft?.prospects || s.league?.draftClass || [];
+        if (!draftClass.length) return finish(jsonResponse(400, { ok: false, error: "No draft class available." }));
+        const rng = s.rng || new RNG(Date.now());
+        const results = runLeagueCombine(draftClass, rng);
+        s.league.combineResults = results;
+        return finish(jsonResponse(200, { ok: true, results, count: results.length }));
+      }
+
+      if (method === "GET" && pathname === "/api/combine/results") {
+        const s = ensureSession();
+        const draftClass = s.league?.pendingDraft?.prospects || s.league?.draftClass || [];
+        const boardIds = (s.league?.scoutingBoards?.[s.controlledTeamId] || []).map((p) => p.id);
+        const summary = getCombineSummary(draftClass, boardIds);
+        return finish(jsonResponse(200, { ok: true, summary, hasResults: summary.length > 0 }));
+      }
+
+      // ── IndexedDB storage routes ────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/storage/estimate") {
+        const estimate = navigator?.storage?.estimate
+          ? await navigator.storage.estimate().then(({ usage, quota }) => ({
+              usedMb: (usage / 1_048_576).toFixed(1),
+              quotaMb: (quota / 1_048_576).toFixed(1),
+              pct: Math.round((usage / quota) * 100)
+            }))
+          : null;
+        return finish(jsonResponse(200, { ok: true, estimate }));
+      }
+
+      // ── Commissioner / Multiplayer routes ───────────────────────────────────
+      if (method === "POST" && pathname === "/api/commissioner/create") {
+        const s = ensureSession();
+        const { leagueName, commissionerId, maxPlayers } = body || {};
+        if (!commissionerId) return finish(jsonResponse(400, { ok: false, error: "commissionerId required." }));
+        _lobby = createLobby({
+          leagueId:      `lobby-${Date.now()}`,
+          commissionerId,
+          leagueName:    leagueName || "VaultSpark League",
+          maxPlayers:    Number(maxPlayers) || 4
+        });
+        // Commissioner auto-joins with controlled team
+        addPlayerToLobby(_lobby, {
+          userId:          commissionerId,
+          displayName:     commissionerId,
+          controlledTeamId: s.controlledTeamId
+        });
+        return finish(jsonResponse(200, { ok: true, lobby: lobbyStatus(_lobby) }));
+      }
+
+      if (method === "GET" && pathname === "/api/commissioner/lobby") {
+        if (!_lobby) return finish(jsonResponse(404, { ok: false, error: "No active lobby." }));
+        return finish(jsonResponse(200, { ok: true, lobby: lobbyStatus(_lobby) }));
+      }
+
+      if (method === "POST" && pathname === "/api/commissioner/join") {
+        if (!_lobby) return finish(jsonResponse(404, { ok: false, error: "No active lobby." }));
+        const { userId, displayName, controlledTeamId } = body || {};
+        if (!userId || !controlledTeamId) return finish(jsonResponse(400, { ok: false, error: "userId and controlledTeamId required." }));
+        try {
+          addPlayerToLobby(_lobby, { userId, displayName: displayName || userId, controlledTeamId });
+          return finish(jsonResponse(200, { ok: true, lobby: lobbyStatus(_lobby) }));
+        } catch (e) {
+          return finish(jsonResponse(400, { ok: false, error: e.message }));
+        }
+      }
+
+      if (method === "POST" && pathname === "/api/commissioner/ready") {
+        if (!_lobby) return finish(jsonResponse(404, { ok: false, error: "No active lobby." }));
+        const { userId } = body || {};
+        if (!userId) return finish(jsonResponse(400, { ok: false, error: "userId required." }));
+        try {
+          const allReady = markPlayerReady(_lobby, userId);
+          return finish(jsonResponse(200, { ok: true, allReady, lobby: lobbyStatus(_lobby) }));
+        } catch (e) {
+          return finish(jsonResponse(400, { ok: false, error: e.message }));
+        }
+      }
+
+      if (method === "POST" && pathname === "/api/commissioner/intent") {
+        if (!_lobby) return finish(jsonResponse(404, { ok: false, error: "No active lobby." }));
+        const { userId, type, payload: intentPayload } = body || {};
+        if (!userId || !type) return finish(jsonResponse(400, { ok: false, error: "userId and type required." }));
+        try {
+          const intent = queueIntent(_lobby, userId, type, intentPayload || {});
+          return finish(jsonResponse(200, { ok: true, intent, lobby: lobbyStatus(_lobby) }));
+        } catch (e) {
+          return finish(jsonResponse(400, { ok: false, error: e.message }));
+        }
+      }
+
+      if (method === "POST" && pathname === "/api/commissioner/advance") {
+        if (!_lobby) return finish(jsonResponse(404, { ok: false, error: "No active lobby." }));
+        if (_lobby.gateStatus === ADVANCE_GATE_STATUS.ADVANCING) {
+          return finish(jsonResponse(409, { ok: false, error: "Already advancing." }));
+        }
+        lockGate(_lobby);
+        const s = ensureSession();
+        const intentResults = await applyIntents(_lobby, {
+          call: async (action, params) => {
+            const res = await new Promise((resolve) => {
+              request({ method: "POST", pathname: `/api/${action}`, body: params }, resolve);
+            });
+            return res.payload;
+          }
+        });
+        const advResult = await new Promise((resolve) =>
+          request({ method: "POST", pathname: "/api/advance-week", body: {} }, resolve)
+        );
+        recordAdvance(_lobby, s.currentYear, s.currentWeek, s.phase, intentResults);
+        openGate(_lobby, s.currentYear, s.currentWeek, s.phase);
+        return finish(jsonResponse(200, {
+          ok: true,
+          intentResults,
+          state: getAugmentedState(s),
+          lobby: lobbyStatus(_lobby)
+        }));
       }
 
       return finish(jsonResponse(501, { ok: false, error: `Client-only runtime not implemented for ${method} ${pathname}.` }));

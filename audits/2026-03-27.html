@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VaultSpark Football GM — Full Project Audit · 2026-03-27</title>
+<style>
+  :root {
+    --bg: #09090d;
+    --bg1: #111218;
+    --bg2: #191c26;
+    --bg3: #20242f;
+    --line: #2e3347;
+    --ink: #e8e6f0;
+    --muted: #8a8fa8;
+    --accent: #d7a24a;
+    --accent2: #46b69a;
+    --accent3: #7bc4d7;
+    --danger: #d05c5c;
+    --success: #63d68c;
+    --warn: #ffb74d;
+    --grade-a: #63d68c;
+    --grade-b: #7bc4d7;
+    --grade-c: #ffb74d;
+    --grade-d: #d05c5c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", "Inter", system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 0;
+  }
+  .cover {
+    background: linear-gradient(135deg, #0d1020, #161c30 40%, #0d1525 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: "";
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(215,162,74,0.12), transparent 70%);
+    pointer-events: none;
+  }
+  .cover-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .cover h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .cover h2 {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .score-hero {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .big-score {
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -4px;
+  }
+  .big-score span { font-size: 32px; color: var(--muted); }
+  .score-meta { display: flex; flex-direction: column; gap: 6px; padding-bottom: 10px; }
+  .grade-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-size: 22px;
+    font-weight: 900;
+    padding: 4px 16px;
+    border-radius: 6px;
+    letter-spacing: -0.5px;
+  }
+  .delta { font-size: 13px; color: var(--success); }
+  .session-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(70,182,154,0.12);
+    border: 1px solid rgba(70,182,154,0.3);
+    color: var(--accent2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  section { padding: 40px 0 0; }
+  section:last-child { padding-bottom: 56px; }
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+  }
+  h3 { font-size: 18px; color: #fff; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(46,51,71,0.5);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  .score-bar-wrap { display: flex; align-items: center; gap: 10px; }
+  .bar-bg {
+    flex: 1;
+    height: 6px;
+    background: var(--bg3);
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 80px;
+  }
+  .bar-fill { height: 100%; border-radius: 3px; }
+  .score-num { font-size: 15px; font-weight: 700; min-width: 30px; text-align: right; }
+  .delta-cell { font-size: 12px; }
+  .up { color: var(--success); }
+  .flat { color: var(--muted); }
+  .down { color: var(--danger); }
+  .grade-a { color: var(--grade-a); }
+  .grade-b { color: var(--grade-b); }
+  .grade-c { color: var(--grade-c); }
+  .grade-d { color: var(--grade-d); }
+  .card {
+    background: var(--bg1);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 12px;
+  }
+  .card h4 { font-size: 14px; color: var(--accent); margin-bottom: 6px; }
+  .card p { color: var(--muted); font-size: 13px; }
+  .bullet-list { list-style: none; padding: 0; }
+  .bullet-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .bullet-list li:last-child { border-bottom: none; }
+  .bullet-icon { font-size: 14px; flex-shrink: 0; padding-top: 1px; }
+  .rec-table td:first-child { font-weight: 600; color: #fff; min-width: 180px; }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .tag-easy { background: rgba(99,214,140,0.15); color: var(--success); border: 1px solid rgba(99,214,140,0.3); }
+  .tag-medium { background: rgba(255,183,77,0.15); color: var(--warn); border: 1px solid rgba(255,183,77,0.3); }
+  .tag-hard { background: rgba(208,92,92,0.15); color: var(--danger); border: 1px solid rgba(208,92,92,0.3); }
+  .tag-transformative { background: rgba(123,196,215,0.15); color: var(--accent3); border: 1px solid rgba(123,196,215,0.3); }
+  .brainstorm-item {
+    background: var(--bg1);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 12px;
+    align-items: start;
+  }
+  .brainstorm-item:hover { border-color: var(--accent); }
+  .item-num {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 700;
+    padding-top: 3px;
+  }
+  .item-body h4 { font-size: 14px; color: #fff; margin-bottom: 4px; }
+  .item-body p { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .item-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .item-scores {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    min-width: 80px;
+  }
+  .inno-score { font-size: 20px; font-weight: 900; color: var(--accent); }
+  .inno-label { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+  .impact-score { font-size: 12px; color: var(--success); font-weight: 700; }
+  .tier-block {
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .tier-leverage { background: linear-gradient(135deg, rgba(99,214,140,0.06), rgba(70,182,154,0.04)); border: 1px solid rgba(99,214,140,0.2); }
+  .tier-ceiling { background: linear-gradient(135deg, rgba(123,196,215,0.06), rgba(108,87,215,0.04)); border: 1px solid rgba(123,196,215,0.2); }
+  .tier-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .tier-leverage .tier-title { color: var(--success); }
+  .tier-ceiling .tier-title { color: var(--accent3); }
+  .tier-sub { font-size: 11px; color: var(--muted); margin-bottom: 16px; }
+  .tier-items { display: flex; flex-direction: column; gap: 8px; }
+  .tier-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .tier-item-name { font-size: 13px; font-weight: 600; color: #fff; flex: 1; }
+  .tier-item-why { font-size: 11px; color: var(--muted); }
+  .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .swot-box { background: var(--bg1); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+  .swot-box h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  .swot-s h4 { color: var(--success); }
+  .swot-w h4 { color: var(--danger); }
+  .swot-o h4 { color: var(--accent3); }
+  .swot-t h4 { color: var(--warn); }
+  .swot-box ul { list-style: none; padding: 0; }
+  .swot-box ul li { font-size: 12px; color: var(--muted); padding: 4px 0; border-bottom: 1px solid rgba(46,51,71,0.4); }
+  .swot-box ul li:last-child { border-bottom: none; }
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 20px 32px;
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+  @media print {
+    body { background: #fff; color: #111; }
+    .cover { background: #f5f5f5; }
+    .brainstorm-item, .card { background: #fafafa; border-color: #ddd; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="wrap">
+    <div class="cover-label">VaultSpark Studios · Project Audit</div>
+    <h1>VaultSpark Football GM</h1>
+    <h2>Full Project Audit — 2026-03-27 · Session 4</h2>
+    <div class="score-hero">
+      <div class="big-score">83<span>/100</span></div>
+      <div class="score-meta">
+        <span class="grade-badge">B+</span>
+        <span class="delta">↑ +5 pts from Session 2 audit (78/100)</span>
+        <span class="session-badge">Client Beta · Stage: Active</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- CATEGORY SCORES -->
+  <section>
+    <div class="section-title">Category Scores</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Score</th>
+          <th style="min-width:180px">Bar</th>
+          <th>vs Sess 2</th>
+          <th>Assessment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Simulation Engine Depth</strong></td>
+          <td><span class="score-num grade-a">92</span></td>
+          <td><div class="bar-bg"><div class="bar-fill" style="width:92%;background:var(--grade-a)"></div></div></td>
+          <td class="delta-cell up">↑ +7</td>
+          <td style="color:var(--muted);font-size:12px">PFR-calibrated, snap shares, morale, scheme fit, coaching tree, agent AI — best-in-class for browser</td>
+        </tr>
+        <tr>
+          <td><strong>Narrative &amp; World-State</strong></td>
+          <td><span class="score-num grade-a">87</span></td>
+          <td><div class="bar-bg"><div class="bar-fill" style="width:87%;background:var(--grade-a)"></div></div></td>
+          <td class="delta-cell up">↑ +17</td>
+          <td style="color:var(--muted);font-size:12px">7 narrative event types, coaching lineage, 4 agent personalities, franchise story panel — genuine moat</td>
+        </tr>
+        <tr>
+          <td><strong>Visual Design &amp; Polish</strong></td>
+          <td><span class="score-num grade-a">83</span></td>
+          <td><div class="bar-bg"><div class="bar-fill" style="width:83%;background:var(--grade-a)"></div></div></td>
+          <td class="delta-cell up">↑ +5</td>
+          <td style="color:var(--muted);font-size:12px">Dynamic team-color CSS vars, tab-aware theming, war room board, dark game aesthetic</td>
+        </tr>
+        <tr>
+          <td><strong>Feature Completeness (Beta)</strong></td>
+          <td><span class="score-num grade-a">81</span></td>
+          <td><div class="bar-bg"><div class="bar-fill" style="width:81%;background:var(--grade-a)"></div></div></td>
+          <td class="delta-cell up">↑ +8</td>
+          <td style="color:var(--muted);font-size:12px">6/8 beta criteria met; rewind, war room, report card, narrative all live</td>
+        </tr>
+        <tr>
+          <td><strong>Persistence &amp; Data Safety</strong></td>
+          <td><span class="score-num grade-b">76</span></td>
+          <td><div class="bar-bg"><div class="bar-fill" style="width:76%;background:var(--grade-b)"></div></div></td>
+          <td class="delta-cell up">↑ +11</td>
+          <td style="color:var(--muted);font-size:12px">10-slot rewind ring buffer, snapshot migration, multi-store; no cloud save yet</td>
+        </tr>
+        <tr>
+          <td><strong>Onboarding / First-Play UX</strong></td>
+          <td><span class="score-num grade-b">71</span></td>
+          <td><div class="bar-bg"><div class="bar-fill" style="width:71%;background:var(--grade-b)"></div></div></td>
+          <td class="delta-cell up">↑ +4</td>
+          <td style="color:var(--muted);font-size:12px">3-step tutorial exists; jump to full complexity is steep; ~80% complete</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile &amp; Responsive</strong></td>
+          <td><span class="score-num grade-c">65</span></td>
+          <td><div class="bar-bg"><div class="bar-fill" style="width:65%;background:var(--grade-c)"></div></div></td>
+          <td class="delta-cell up">↑ +5</td>
+          <td style="color:var(--muted);font-size:12px">375px fix shipped; single breakpoint; fundamentally desktop-first data density</td>
+        </tr>
+        <tr>
+          <td><strong>Code Quality &amp; Architecture</strong></td>
+          <td><span class="score-num grade-c">67</span></td>
+          <td><div class="bar-bg"><div class="bar-fill" style="width:67%;background:var(--grade-c)"></div></div></td>
+          <td class="delta-cell flat">→ +2</td>
+          <td style="color:var(--muted);font-size:12px">GameSession.js (5,089 ln) and app.js (6,072 ln) are growing monoliths; good service layer but no TypeScript; duplicate rewind implementations</td>
+        </tr>
+        <tr>
+          <td><strong>Test Coverage &amp; Reliability</strong></td>
+          <td><span class="score-num grade-c">58</span></td>
+          <td><div class="bar-bg"><div class="bar-fill" style="width:58%;background:var(--grade-c)"></div></div></td>
+          <td class="delta-cell up">↑ +3</td>
+          <td style="color:var(--muted);font-size:12px">23 test files exist; only 3 tracked passing in PROJECT_STATUS; deploy still pending; many new modules untested</td>
+        </tr>
+        <tr>
+          <td><strong>Community &amp; Viral Potential</strong></td>
+          <td><span class="score-num grade-d">53</span></td>
+          <td><div class="bar-bg"><div class="bar-fill" style="width:53%;background:var(--grade-d)"></div></div></td>
+          <td class="delta-cell flat">→ +3</td>
+          <td style="color:var(--muted);font-size:12px">League Story Export exists; analytics opt-in exists; no Discord, no deployed community layer; engagement stuck at 6/50 SIL</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SWOT -->
+  <section>
+    <div class="section-title">SWOT Analysis</div>
+    <div class="swot-grid">
+      <div class="swot-box swot-s">
+        <h4>Strengths</h4>
+        <ul>
+          <li>World-state moat (owner + staff + scheme + culture)</li>
+          <li>PFR-calibrated realism — statistically honest simulation</li>
+          <li>Agent AI personalities — no competitor has this</li>
+          <li>Coaching tree lineage — generational scheme drift</li>
+          <li>Rewind ring buffer — undo safety players expect</li>
+          <li>TurboSim 100-season mode — dynasty play enabler</li>
+          <li>Premium dark aesthetic with team-color theming</li>
+        </ul>
+      </div>
+      <div class="swot-box swot-w">
+        <h4>Weaknesses</h4>
+        <ul>
+          <li>GameSession.js (5,089 ln) + app.js (6,072 ln) — monolith risk</li>
+          <li>Two conflicting rewind implementations (rewindManager.js vs localApiRuntime.js)</li>
+          <li>Test count: 3 tracked passing vs 23 test files — brittleness risk pre-beta</li>
+          <li>Mobile UX: single breakpoint, data density not adapted</li>
+          <li>No deploy live — all changes local; community can't access</li>
+          <li>Tutorial: 3 steps only; complexity cliff post-tutorial</li>
+        </ul>
+      </div>
+      <div class="swot-box swot-o">
+        <h4>Opportunities</h4>
+        <ul>
+          <li>Wire playerAgentAI.js to full multi-step negotiation UI</li>
+          <li>Surface coachingTree.js as a visual graphical UI</li>
+          <li>Wire beatReporter.js to a persistent news ticker</li>
+          <li>Rivalry DNA system — differentiated narrative memory</li>
+          <li>League Story Export — viral share card mechanism</li>
+          <li>GM Legacy Score — cross-season retention hook</li>
+          <li>Discord community seeding — first-mover advantage</li>
+        </ul>
+      </div>
+      <div class="swot-box swot-t">
+        <h4>Threats</h4>
+        <ul>
+          <li>Football-GM/ZenGM active dev — feature gap closes</li>
+          <li>localStorage quota ceiling as world-state grows</li>
+          <li>No beta users yet — product-market fit unvalidated</li>
+          <li>Growing monolith files become unmaintainable at scale</li>
+          <li>Beta target (2026-06-01) has 2 of 8 criteria unfinished</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREAS OF IMPROVEMENT -->
+  <section>
+    <div class="section-title">Areas of Improvement</div>
+    <ul class="bullet-list">
+      <li><span class="bullet-icon">🔴</span><span><strong>Dual rewind implementations:</strong> rewindManager.js (async, saveStore) and localApiRuntime.js (sync, localStorage) are functionally identical but architecturally misaligned — one must be the canonical path.</span></li>
+      <li><span class="bullet-icon">🔴</span><span><strong>Test coverage gap:</strong> 23 test files exist but PROJECT_STATUS reports 3 passing. Many new engine modules (coachingTree, narrativeEvents, playerAgentAI, beatReporter) have no confirmed test wiring. Pre-beta this is a reliability risk.</span></li>
+      <li><span class="bullet-icon">🔴</span><span><strong>Deploy pending:</strong> All Session 3 changes are local. No live URL access for beta testers until smoke test + deploy completes.</span></li>
+      <li><span class="bullet-icon">🟡</span><span><strong>Monolith growth:</strong> GameSession.js (5,089 ln) and app.js (6,072 ln) are approaching the threshold where bugs become hard to isolate and onboarding a collaborator is painful.</span></li>
+      <li><span class="bullet-icon">🟡</span><span><strong>Built systems without UIs:</strong> coachingTree.js, playerAgentAI.js, beatReporter.js, dynastyTimeline.js — all complete engines with no UI surface wired yet. They exist but are invisible to players.</span></li>
+      <li><span class="bullet-icon">🟡</span><span><strong>Mobile UX depth:</strong> Single 420px breakpoint handles layout collapse but doesn't adapt data density, font sizing, or interaction targets for thumb use. A GM game with 40-column stat tables needs a mobile strategy, not just a layout fix.</span></li>
+      <li><span class="bullet-icon">🟡</span><span><strong>Tutorial complexity cliff:</strong> 3-step tutorial then full 53-man roster + 32-team league. No guided Year 1 challenge mode, no progressive complexity reveal.</span></li>
+      <li><span class="bullet-icon">🟢</span><span><strong>Community zero:</strong> The features are ready to talk about but there's no place to do it. A Discord, a dev log page, or even a "Share Your Dynasty" button would bootstrap the community funnel.</span></li>
+      <li><span class="bullet-icon">🟢</span><span><strong>No cloud save:</strong> localStorage as the only persistence layer is a retention risk — players lose everything on browser clear. IndexedDB or a lightweight server-side option would increase long-term retention.</span></li>
+    </ul>
+  </section>
+
+  <!-- ANALYSIS & RECOMMENDATIONS -->
+  <section>
+    <div class="section-title">Analysis &amp; Recommendations</div>
+    <table class="rec-table">
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Finding</th>
+          <th>Action</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rewind Architecture</td>
+          <td>Two parallel implementations; tech debt compounds fast</td>
+          <td>Deprecate rewindManager.js; localApiRuntime.js is the canonical path</td>
+          <td><span class="tag tag-easy">Now</span></td>
+        </tr>
+        <tr>
+          <td>Deploy Blocker</td>
+          <td>375px smoke test → deploy is the single gating item</td>
+          <td>Complete smoke test; push to Pages; get first real user feedback</td>
+          <td><span class="tag tag-easy">Now</span></td>
+        </tr>
+        <tr>
+          <td>Test Pipeline</td>
+          <td>23 test files, 3 tracked passing — gap before beta</td>
+          <td>Run full test suite; document pass count; add CI step</td>
+          <td><span class="tag tag-medium">Soon</span></td>
+        </tr>
+        <tr>
+          <td>Wire Built Engines</td>
+          <td>coachingTree, beatReporter, playerAgentAI have no UI</td>
+          <td>Surface 1 of these per session — start with beatReporter news ticker</td>
+          <td><span class="tag tag-medium">Soon</span></td>
+        </tr>
+        <tr>
+          <td>GM Legacy Score</td>
+          <td>Highest retention mechanism currently unbuilt</td>
+          <td>Persistent career arc visible on overview hero — drives multi-season play</td>
+          <td><span class="tag tag-medium">Soon</span></td>
+        </tr>
+        <tr>
+          <td>App.js Monolith</td>
+          <td>6,072 lines — growing 1,000+ lines/session</td>
+          <td>Extract tab render modules (overviewTab.js, contractsTab.js etc.) into /public/views/</td>
+          <td><span class="tag tag-medium">Q2</span></td>
+        </tr>
+        <tr>
+          <td>Mobile Strategy</td>
+          <td>Data-dense tables need mobile-first thinking, not just layout collapse</td>
+          <td>Identify top 3 actions mobile users need; optimize those paths specifically</td>
+          <td><span class="tag tag-medium">Q2</span></td>
+        </tr>
+        <tr>
+          <td>Community Bootstrap</td>
+          <td>Zero community = zero feedback signal = product-market fit unknown</td>
+          <td>Open a Discord; post dev log with franchise story export; launch subreddit thread</td>
+          <td><span class="tag tag-hard">Q2</span></td>
+        </tr>
+        <tr>
+          <td>Tutorial Ramp</td>
+          <td>3 steps → full complexity is too steep for casual players</td>
+          <td>Add 3 "Year 1 Challenge" guided milestones after tutorial resolves</td>
+          <td><span class="tag tag-hard">Q2</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- INNOVATION BRAINSTORM -->
+  <section>
+    <div class="section-title">Innovation Brainstorm — 28 Items</div>
+    <p style="color:var(--muted);font-size:12px;margin-bottom:20px">Every item rated: Innovation Score (1–10) · Project Impact (pts added to overall)</p>
+
+    <!-- Item 1 -->
+    <div class="brainstorm-item">
+      <div class="item-num">01</div>
+      <div class="item-body">
+        <h4>Agent Negotiation Drama Modal (UI Wire)</h4>
+        <p>playerAgentAI.js is fully built with 4 personalities (maximizer, loyalist, balanced, opportunist) but has no UI. Wire a multi-step counter-offer modal: opening demand → team offer → agent counter → walk-away or sign. Show leverage bar, personality flavor text, and competing-offer escalation.</p>
+        <div class="item-tags">
+          <span class="tag tag-easy">Low Effort</span>
+          <span class="tag tag-easy">System Already Built</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">9.0</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+4 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="brainstorm-item">
+      <div class="item-num">02</div>
+      <div class="item-body">
+        <h4>Beat Reporter News Ticker (UI Wire)</h4>
+        <p>beatReporter.js generates blowout alerts, streak events, and weekly results in league.newsLog (50-item rolling window) but nothing surfaces it. Add a persistent news ribbon across the bottom of the game UI — players see the league breathing around them in real time.</p>
+        <div class="item-tags">
+          <span class="tag tag-easy">Low Effort</span>
+          <span class="tag tag-easy">System Already Built</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+3 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="brainstorm-item">
+      <div class="item-num">03</div>
+      <div class="item-body">
+        <h4>Coaching Tree Visualizer</h4>
+        <p>coachingTree.js already tracks mentor-protégé lineage with scheme drift across generations. Build an interactive SVG tree UI showing which coaches across the league descend from whose coaching tree. Clicking a node shows their scheme DNA and promotion history. A genuinely novel feature no competitor has.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-easy">System Already Built</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">9.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+4 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="brainstorm-item">
+      <div class="item-num">04</div>
+      <div class="item-body">
+        <h4>GM Legacy Score</h4>
+        <p>A persistent, multi-season career arc rating that accumulates across years: playoff appearances, draft ROI, cap efficiency, culture health. Shown on the overview hero. Creates a compelling reason to play 10+ seasons. The clearest long-playability retention mechanism currently missing.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-transformative">Retention Driver</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.8</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+5 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 5 -->
+    <div class="brainstorm-item">
+      <div class="item-num">05</div>
+      <div class="item-body">
+        <h4>Rivalry DNA System</h4>
+        <p>Track win/loss history, trade disputes, and narrative events between specific team pairs across seasons. When your team faces a rival, surface a rivalry chip showing win streak, last 5 matchups, and notable history ("You traded away their HoF QB in 2028"). Creates emotional investment in the schedule.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-transformative">Narrative Differentiator</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">9.2</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+4 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 6 -->
+    <div class="brainstorm-item">
+      <div class="item-num">06</div>
+      <div class="item-body">
+        <h4>Dynasty Timeline Share Card</h4>
+        <p>dynastyTimeline.js builds an interactive SVG franchise history ribbon — but there's no export hook. Add a one-click "Share My Dynasty" button that generates a standalone PNG or HTML card. Every player who shares becomes a marketing touchpoint. The viral loop the project currently has zero of.</p>
+        <div class="item-tags">
+          <span class="tag tag-easy">Low Effort</span>
+          <span class="tag tag-transformative">Viral Mechanism</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.0</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+4 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 7 -->
+    <div class="brainstorm-item">
+      <div class="item-num">07</div>
+      <div class="item-body">
+        <h4>Cap Casualty Predictor</h4>
+        <p>Pre-offseason panel showing each player's cut probability for next season based on age curve, contract structure, dead cap hit, and roster need at their position. GM-style analytics that no browser competitor surfaces explicitly. Drives contract tab engagement and restructure/tag decisions earlier.</p>
+        <div class="item-tags">
+          <span class="tag tag-easy">Low Effort</span>
+          <span class="tag tag-easy">Data Already Available</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">7.8</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+3 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 8 -->
+    <div class="brainstorm-item">
+      <div class="item-num">08</div>
+      <div class="item-body">
+        <h4>Rewind Architecture Consolidation</h4>
+        <p>Two parallel rewind implementations (rewindManager.js async/saveStore + localApiRuntime.js sync/localStorage) create compounding technical debt. Deprecate rewindManager.js, keep localApiRuntime.js as the canonical path. Not glamorous — but necessary before new features layer on top of the wrong one.</p>
+        <div class="item-tags">
+          <span class="tag tag-easy">Low Effort</span>
+          <span class="tag tag-easy">Debt Reduction</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">4.0</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+2 pts (Code Quality)</div>
+      </div>
+    </div>
+
+    <!-- Item 9 -->
+    <div class="brainstorm-item">
+      <div class="item-num">09</div>
+      <div class="item-body">
+        <h4>Year 1 Challenge Milestones (Post-Tutorial)</h4>
+        <p>After the 3-step tutorial resolves, surface 3 guided Year 1 objectives: "Sign your starter to an extension before Week 8," "Draft a prospect scoring ≥75 OVR," "Reach .500 record." Each completed milestone unlocks a brief narrative beat. Bridges the tutorial cliff into genuine self-direction without being hand-holdy.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-transformative">Retention Mechanism</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.0</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+4 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 10 -->
+    <div class="brainstorm-item">
+      <div class="item-num">10</div>
+      <div class="item-body">
+        <h4>Free Agency Rumor Mill</h4>
+        <p>In the weeks before free agency opens, generate "rumor items" for top pending FAs: "Agent signals team X has made first contact," "Rival GM flies in to meet with [Player]." Players could scout these signals and react — adjusting their offer timing. Transforms the quiet FA period into a narrative event.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-transformative">Narrative Differentiator</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+3 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 11 -->
+    <div class="brainstorm-item">
+      <div class="item-num">11</div>
+      <div class="item-body">
+        <h4>App.js Tab Module Extraction</h4>
+        <p>app.js at 6,072 lines will hit 8,000+ by beta. Extract each tab's render logic into /public/views/ modules (overviewTab.js, contractsTab.js, draftTab.js, etc.). Reduces per-file cognitive load and enables future lazy-loading. Invest 1–2 sessions in this before it becomes a blocker.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-easy">Debt Reduction</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">3.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+3 pts (Code Quality)</div>
+      </div>
+    </div>
+
+    <!-- Item 12 -->
+    <div class="brainstorm-item">
+      <div class="item-num">12</div>
+      <div class="item-body">
+        <h4>Test Suite Audit &amp; CI Gate</h4>
+        <p>23 test files with only 3 confirmed passing is a time bomb before beta. Run the full suite, document which pass/fail, fix the most critical regressions. Set up a GitHub Actions CI step (even just npm test on push). Shows beta users you take quality seriously and catches regressions early.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-easy">Reliability</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">4.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+4 pts (Test Coverage)</div>
+      </div>
+    </div>
+
+    <!-- Item 13 -->
+    <div class="brainstorm-item">
+      <div class="item-num">13</div>
+      <div class="item-body">
+        <h4>Draft Combine System</h4>
+        <p>Pre-draft measurables week: speed scores, strength tests, QB accuracy drills. Each prospect's combine performance adjusts their scouting confidence range (widening or narrowing the uncertainty band). GMs who scout the combine get better information — those who don't take on risk. Adds a dedicated pre-draft decision window.</p>
+        <div class="item-tags">
+          <span class="tag tag-hard">High Effort</span>
+          <span class="tag tag-transformative">Differentiator</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.2</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+4 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 14 -->
+    <div class="brainstorm-item">
+      <div class="item-num">14</div>
+      <div class="item-body">
+        <h4>Player Retirement Ceremony &amp; HoF Eligibility Arc</h4>
+        <p>Currently HoF settings exist as commissioner controls but there's no ceremony moment. When a legend retires, surface a full-page ceremony: career stats summary, signature moments pulled from narrativeLog, jersey retirement vote, Hall eligibility countdown. Makes endings feel as good as Super Bowl wins.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-transformative">Emotional Peak Moment</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.8</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+3 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 15 -->
+    <div class="brainstorm-item">
+      <div class="item-num">15</div>
+      <div class="item-body">
+        <h4>Mod Loader Showcase</h4>
+        <p>modLoader.js exists and suggests the infrastructure for community mods. Document 2–3 sample mods (custom team names, alternate draft class names, rule variations). Surface a "Community Mods" section in settings. Even if mods are manual JSON drops, signaling mod support builds a power-user community before it's actually needed.</p>
+        <div class="item-tags">
+          <span class="tag tag-easy">Low Effort</span>
+          <span class="tag tag-transformative">Community Builder</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">7.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+3 pts (Community)</div>
+      </div>
+    </div>
+
+    <!-- Item 16 -->
+    <div class="brainstorm-item">
+      <div class="item-num">16</div>
+      <div class="item-body">
+        <h4>Multi-Year Cap Projection Table</h4>
+        <p>Show a 3-year cap outlook per team: current obligations + expiring contracts + estimated extensions + projected cap space. Visualized as a bar chart per year. This is the kind of tool real GMs use and no browser competitor surfaces explicitly. Dramatically increases the depth feel of the contracts tab.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-easy">Data Already Available</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">7.8</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+3 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 17 -->
+    <div class="brainstorm-item">
+      <div class="item-num">17</div>
+      <div class="item-body">
+        <h4>IndexedDB / Cloud Save Option</h4>
+        <p>localStorage is a ~5MB ceiling that world-state and narrative logs can push against. IndexedDB gives 50–250MB in-browser. A lightweight server-side save (even GitHub Gist via OAuth) would give players confidence their dynasty survives browser clears. This is a retention risk before beta users invest 10+ seasons.</p>
+        <div class="item-tags">
+          <span class="tag tag-hard">High Effort</span>
+          <span class="tag tag-transformative">Retention Safety Net</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">7.0</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+4 pts (Persistence)</div>
+      </div>
+    </div>
+
+    <!-- Item 18 -->
+    <div class="brainstorm-item">
+      <div class="item-num">18</div>
+      <div class="item-body">
+        <h4>Franchise Archetype Consequences System</h4>
+        <p>leagueSetup.js already has FRANCHISE_ARCHETYPES. Wire real downstream consequences: a "Rebuild Mode" franchise gets owner patience boost but media criticism; a "Win Now" franchise gets higher FA interest but higher coach pressure. Make the archetype choice feel alive across seasons, not just a setup label.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-easy">System Partially Built</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.0</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+3 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 19 -->
+    <div class="brainstorm-item">
+      <div class="item-num">19</div>
+      <div class="item-body">
+        <h4>Season Preview Hype Panel</h4>
+        <p>Before Week 1, show a pre-season panel: power rankings, media predictions, owner mandate for the year, win-now vs rebuild assessment. Turns an abstract "advance season" button into an anticipated event with stakes. Pulls from existing owner expectations + standings data — primarily a presentation layer.</p>
+        <div class="item-tags">
+          <span class="tag tag-easy">Low Effort</span>
+          <span class="tag tag-easy">Presentation Layer</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">7.2</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+2 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 20 -->
+    <div class="brainstorm-item">
+      <div class="item-num">20</div>
+      <div class="item-body">
+        <h4>Practice Squad Elevation Drama</h4>
+        <p>Game-day roster decisions: when a starter is injured mid-week, surface an "Emergency Elevation" prompt. Choose from your practice squad. The PS player gets a confidence boost if they perform. Creates a micro-decision loop that rewards roster depth investment and makes the PS feel relevant.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-easy">Depth Loop</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">7.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+2 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 21 -->
+    <div class="brainstorm-item">
+      <div class="item-num">21</div>
+      <div class="item-body">
+        <h4>TurboSim Milestones Dashboard</h4>
+        <p>turboSim.js runs up to 100 seasons but the milestone output is basic. Build a post-run "Dynasty Report": champions per year, all-time leading scorers, coaching tree evolution, HoF inductees. Surface the most dramatic moments (10-game losing streak in year 34, dynasty GOAT emerges). Makes TurboSim a story, not a skip button.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-easy">System Already Built</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.2</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+3 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 22 -->
+    <div class="brainstorm-item">
+      <div class="item-num">22</div>
+      <div class="item-body">
+        <h4>Discord Community Bootstrap</h4>
+        <p>Zero community is the biggest gap between now and beta success. Open a Discord today: #dev-log channel seeded with session summaries, #share-your-dynasty for league story exports, #feedback for beta testers. Add a "Join our Discord" link in the game's settings tab. Community at zero has compounding cost — start now.</p>
+        <div class="item-tags">
+          <span class="tag tag-easy">Low Effort</span>
+          <span class="tag tag-transformative">Community Foundation</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">7.0</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+6 pts (Community)</div>
+      </div>
+    </div>
+
+    <!-- Item 23 -->
+    <div class="brainstorm-item">
+      <div class="item-num">23</div>
+      <div class="item-body">
+        <h4>Keyboard Shortcut Layer</h4>
+        <p>Power users in sim games expect K/B navigation. Add a shortcut overlay (? key): tab switching, advance week, open trade/draft/contracts. Shows the game takes power users seriously, dramatically improves flow for returning players, and differentiates from Football-GM (which has minimal shortcut support).</p>
+        <div class="item-tags">
+          <span class="tag tag-easy">Low Effort</span>
+          <span class="tag tag-easy">Power User QoL</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">6.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+2 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 24 -->
+    <div class="brainstorm-item">
+      <div class="item-num">24</div>
+      <div class="item-body">
+        <h4>Mobile-First Core Loop Mode</h4>
+        <p>The desktop game will never fully work on mobile — but a "mobile core loop" could: just the daily decision (advance week, sign/cut a player, make a trade). A simplified single-column mobile view showing your team's key stats and 2–3 actionable decisions. Let desktop players manage from the couch.</p>
+        <div class="item-tags">
+          <span class="tag tag-hard">High Effort</span>
+          <span class="tag tag-transformative">Platform Expansion</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+5 pts (Mobile)</div>
+      </div>
+    </div>
+
+    <!-- Item 25 -->
+    <div class="brainstorm-item">
+      <div class="item-num">25</div>
+      <div class="item-body">
+        <h4>Multiplayer Async Commissioner Mode</h4>
+        <p>multiplayerSession.js exists but is uncharted. An async "Commissioner Mode" — where one player sets the league, others claim teams and submit decisions weekly — doesn't require real-time play and could be implemented via JSON export/import or a simple API. This is the highest-ceiling feature for community growth.</p>
+        <div class="item-tags">
+          <span class="tag tag-hard">High Effort</span>
+          <span class="tag tag-transformative">Transformative</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">9.8</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+8 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 26 -->
+    <div class="brainstorm-item">
+      <div class="item-num">26</div>
+      <div class="item-body">
+        <h4>Trade Value Calculator with Live Grade</h4>
+        <p>While building a trade, show a live "Trade Grade" that estimates net AV gained/lost based on player OVR, age curve, contract years, and positional scarcity. Show both your grade and what the CPU team's algorithm computed. Teaches players good trade strategy and makes the trade screen feel like a real negotiation room.</p>
+        <div class="item-tags">
+          <span class="tag tag-medium">Medium Effort</span>
+          <span class="tag tag-easy">Data Already Available</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">7.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+2 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 27 -->
+    <div class="brainstorm-item">
+      <div class="item-num">27</div>
+      <div class="item-body">
+        <h4>Injury System with Depth Vulnerability Alert</h4>
+        <p>Add an injury probability layer: players can miss 1–4 weeks based on age and position contact rate. Surface a "Depth Vulnerability" alert if your team has no capable backup behind an injured starter. Forces players to think about roster depth, not just stars — makes every roster transaction consequential.</p>
+        <div class="item-tags">
+          <span class="tag tag-hard">High Effort</span>
+          <span class="tag tag-transformative">Sim Realism</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">8.5</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+4 pts overall</div>
+      </div>
+    </div>
+
+    <!-- Item 28 -->
+    <div class="brainstorm-item">
+      <div class="item-num">28</div>
+      <div class="item-body">
+        <h4>Coaching Tendency Evolution Display</h4>
+        <p>Show per coach: how their scheme has evolved over their career arc, how many promotions they've tracked through, and which active coaches in the league share their coaching tree lineage. Surface this as a "Coaching DNA" card on the staff page. Brings coachingTree.js to life without a complex SVG graph.</p>
+        <div class="item-tags">
+          <span class="tag tag-easy">Low Effort</span>
+          <span class="tag tag-easy">System Already Built</span>
+        </div>
+      </div>
+      <div class="item-scores">
+        <div class="inno-score">7.8</div>
+        <div class="inno-label">Innovation</div>
+        <div class="impact-score">+2 pts overall</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- TIER RECOMMENDATIONS -->
+  <section>
+    <div class="section-title">Implementation Tiers</div>
+
+    <div class="tier-block tier-leverage">
+      <div class="tier-title">⚡ Highest Leverage Right Now</div>
+      <div class="tier-sub">Low effort, real impact — do these in the next 1–2 sessions</div>
+      <div class="tier-items">
+        <div class="tier-item">
+          <span class="tier-item-name">01 · Agent Negotiation Modal</span>
+          <span class="tier-item-why">Engine is done. Wire the UI. Instantly the most novel visible feature.</span>
+          <span class="tag tag-easy">Score +4</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">02 · Beat Reporter News Ticker</span>
+          <span class="tier-item-why">Engine done. Scroll bar UI. Makes the league feel alive immediately.</span>
+          <span class="tag tag-easy">Score +3</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">06 · Dynasty Timeline Share Card</span>
+          <span class="tier-item-why">dynastyTimeline.js is done. Add export hook. First viral mechanism.</span>
+          <span class="tag tag-easy">Score +4</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">07 · Cap Casualty Predictor</span>
+          <span class="tier-item-why">Data already live. UI panel only. Differentiates contracts tab.</span>
+          <span class="tag tag-easy">Score +3</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">08 · Rewind Architecture Cleanup</span>
+          <span class="tier-item-why">Removes a bug vector before new features compound the confusion.</span>
+          <span class="tag tag-easy">Score +2</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">19 · Season Preview Hype Panel</span>
+          <span class="tier-item-why">Pure presentation. Uses existing data. High perceived quality boost.</span>
+          <span class="tag tag-easy">Score +2</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">22 · Discord Community Bootstrap</span>
+          <span class="tier-item-why">Zero code required. Opens the feedback loop. Community starts compounding today.</span>
+          <span class="tag tag-easy">Score +6 Community</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">28 · Coaching DNA Card</span>
+          <span class="tier-item-why">coachingTree.js is done. Staff page card is an afternoon of UI work.</span>
+          <span class="tag tag-easy">Score +2</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-block tier-ceiling">
+      <div class="tier-title">🚀 Highest Ceiling</div>
+      <div class="tier-sub">High effort, transformative potential — plan for Q2 2026</div>
+      <div class="tier-items">
+        <div class="tier-item">
+          <span class="tier-item-name">25 · Multiplayer Async Commissioner Mode</span>
+          <span class="tier-item-why">multiplayerSession.js started. Async model avoids real-time complexity. Highest community ceiling.</span>
+          <span class="tag tag-transformative">Score +8</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">04 · GM Legacy Score</span>
+          <span class="tier-item-why">Primary long-playability retention driver. Without it, sessions end at 3 seasons. The franchise loop's missing north star.</span>
+          <span class="tag tag-transformative">Score +5</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">05 · Rivalry DNA System</span>
+          <span class="tier-item-why">Creates emotional attachment to individual matchups. Nothing like it in any competitor.</span>
+          <span class="tag tag-transformative">Score +4</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">13 · Draft Combine System</span>
+          <span class="tier-item-why">New pre-draft decision window. Scouting confidence variance creates authentic uncertainty. Major differentiator.</span>
+          <span class="tag tag-transformative">Score +4</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">17 · IndexedDB / Cloud Save</span>
+          <span class="tier-item-why">localStorage ceiling will become a real problem by 10+ season dynasties. Solve it before beta players report data loss.</span>
+          <span class="tag tag-transformative">Score +4 Persistence</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">24 · Mobile-First Core Loop Mode</span>
+          <span class="tier-item-why">A simplified single-column "daily decision" mode opens a new platform category and dramatically broadens the audience.</span>
+          <span class="tag tag-transformative">Score +5 Mobile</span>
+        </div>
+        <div class="tier-item">
+          <span class="tier-item-name">27 · Injury System</span>
+          <span class="tier-item-why">Adds depth risk to every roster transaction. Makes the practice squad and depth chart meaningful at every moment.</span>
+          <span class="tag tag-transformative">Score +4</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span>VaultSpark Football GM · Full Project Audit · 2026-03-27 · Session 4</span>
+  <span>Generated by VaultSpark Studio OS · Claude Sonnet 4.6</span>
+</footer>
+
+</body>
+</html>

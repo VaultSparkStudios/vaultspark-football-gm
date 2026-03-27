@@ -32,6 +32,13 @@
       </div>
     </header>
 
+    <!-- ── Beat Reporter News Ticker ─────────────────────────────────── -->
+    <div id="newsTicker" class="news-ticker hidden" aria-live="polite">
+      <span class="news-ticker-icon">📡</span>
+      <div id="newsTickerContent" class="news-ticker-content">No league news yet.</div>
+      <button class="news-ticker-close" id="closeNewsTickerBtn" aria-label="Close ticker">✕</button>
+    </div>
+
     <main class="game-shell">
       <aside class="side-menu">
         <div class="menu-section-label">Franchise</div>
@@ -79,10 +86,27 @@
                   <article><h3>Cap Space</h3><p id="capCard">-</p></article>
                   <article><h3>Dead Cap</h3><p id="deadCapCard">-</p></article>
                   <article><h3>Team OVR</h3><p id="ovrCard">-</p></article>
+                  <article class="gm-legacy-card" id="gmLegacyCardWrap" title="Career arc across all seasons">
+                    <h3>GM Legacy</h3>
+                    <p id="gmLegacyCard">-</p>
+                    <span id="gmLegacyLabel" class="small" style="color:var(--muted)"></span>
+                  </article>
                 </div>
                 <div id="overviewPulseBar" class="overview-pulse-bar"></div>
               </div>
             </div>
+          </div>
+
+          <!-- ── Season Preview Hype Panel ────────────────────────────────── -->
+          <div class="panel season-preview-panel" id="seasonPreviewPanel" hidden>
+            <div class="season-preview-header">
+              <span class="season-preview-icon">🏟️</span>
+              <div>
+                <h2 id="seasonPreviewTitle">Season Preview</h2>
+                <div class="small" id="seasonPreviewSub">Pre-season outlook and media projections.</div>
+              </div>
+            </div>
+            <div id="seasonPreviewContent" class="season-preview-grid"></div>
           </div>
 
           <div class="panel split">
@@ -130,6 +154,27 @@
           <div class="panel">
             <h2>League News Feed</h2>
             <div class="table-wrap"><table id="newsTable"></table></div>
+          </div>
+
+          <div class="panel" id="narrativePanel">
+            <div class="narrative-panel-header">
+              <h2>Franchise Story</h2>
+              <span class="narrative-panel-kicker">Live events from your simulation</span>
+            </div>
+            <div id="narrativeEventsFeed" class="narrative-feed">
+              <div class="narrative-empty">Simulate weeks to generate franchise story events.</div>
+            </div>
+          </div>
+
+          <div class="panel" id="tradeDeadlinePanel" hidden>
+            <div class="trade-deadline-alert">
+              <span class="trade-deadline-icon">&#9874;</span>
+              <div>
+                <strong>Trade Deadline Active</strong>
+                <div class="small" id="tradeDeadlineStatus">Deadline approaching — evaluate your roster.</div>
+              </div>
+              <div id="tradeDeadlineBuyerSeller" class="trade-deadline-role"></div>
+            </div>
           </div>
 
           <div class="panel split">
@@ -381,6 +426,36 @@
             <h2>Expiring Contracts</h2>
             <div class="table-wrap"><table id="expiringTable" data-testid="expiring-table"></table></div>
           </div>
+
+          <!-- ── Cap Casualty Predictor ──────────────────────────────────── -->
+          <div class="panel" id="capCasualtyPanel">
+            <div class="narrative-panel-header">
+              <h2>Cap Casualty Predictor</h2>
+              <span class="narrative-panel-kicker">Players most at risk of pre-season cut</span>
+            </div>
+            <div class="row compact">
+              <label>Team <select id="capCasualtyTeamSelect"></select></label>
+              <button id="runCapCasualtyBtn">Run Analysis</button>
+            </div>
+            <div id="capCasualtyContent" class="cap-casualty-list">
+              <div class="narrative-empty">Select your team and run to see cut risk analysis.</div>
+            </div>
+          </div>
+
+          <!-- ── Multi-Year Cap Projection ──────────────────────────────── -->
+          <div class="panel" id="capProjectionPanel">
+            <div class="narrative-panel-header">
+              <h2>3-Year Cap Projection</h2>
+              <span class="narrative-panel-kicker">Obligations + expiring + projected space</span>
+            </div>
+            <div class="row compact">
+              <label>Team <select id="capProjectionTeamSelect"></select></label>
+              <button id="runCapProjectionBtn">Calculate</button>
+            </div>
+            <div id="capProjectionContent" class="cap-projection-bars">
+              <div class="narrative-empty">Run to see 3-year cap outlook.</div>
+            </div>
+          </div>
         </section>
 
         <section id="scoutingTab" class="tab-panel">
@@ -426,6 +501,22 @@
         </section>
 
         <section id="draftTab" class="tab-panel">
+          <!-- ── Draft Combine Panel ───────────────────────────────────────── -->
+          <div class="panel" id="draftCombinePanel">
+            <div class="narrative-panel-header">
+              <h2>Draft Combine</h2>
+              <span class="narrative-panel-kicker">Pre-draft measurables — narrows scouting confidence</span>
+            </div>
+            <div class="row compact">
+              <button id="runCombineBtn">Run Combine Week</button>
+              <button id="loadCombineResultsBtn">Load Results</button>
+              <span id="combineStatusText" class="chip">Combine not yet run</span>
+            </div>
+            <div id="combineResultsContent" class="table-wrap">
+              <table id="combineResultsTable"></table>
+            </div>
+          </div>
+
           <div class="panel">
             <h2>Draft Room</h2>
             <div class="row">
@@ -720,6 +811,45 @@
         </section>
 
         <section id="settingsTab" class="tab-panel">
+          <!-- ── Commissioner / Multiplayer Mode Panel ─────────────────────── -->
+          <div class="panel" id="commissionerPanel">
+            <div class="narrative-panel-header">
+              <h2>Commissioner Mode</h2>
+              <span class="narrative-panel-kicker">Async multiplayer — up to 4 GMs in one league</span>
+            </div>
+            <div id="commissionerLobbyStatus" class="commissioner-lobby-status">
+              <div class="narrative-empty">No active lobby. Create one to play with others.</div>
+            </div>
+            <div class="row compact" id="commissionerCreateRow">
+              <label>Your ID <input id="commissionerIdInput" type="text" placeholder="your name" /></label>
+              <label>League Name <input id="commissionerLeagueNameInput" type="text" placeholder="My League" /></label>
+              <label>Max GMs
+                <select id="commissionerMaxPlayersSelect">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                </select>
+              </label>
+              <button id="createLobbyBtn">Create Lobby</button>
+            </div>
+            <div class="row compact" id="commissionerJoinRow">
+              <label>Your ID <input id="joinUserIdInput" type="text" placeholder="your name" /></label>
+              <label>Team <select id="joinTeamSelect"></select></label>
+              <button id="joinLobbyBtn">Join Lobby</button>
+              <button id="markReadyBtn" disabled>Mark Ready</button>
+              <button id="advanceLobbyBtn" disabled>Force Advance (Commissioner)</button>
+            </div>
+            <div class="row compact" id="commissionerQueueRow">
+              <label>Intent Type
+                <select id="intentTypeSelect">
+                  <option value="depth-reorder">Depth Reorder</option>
+                  <option value="restructure">Restructure</option>
+                </select>
+              </label>
+              <button id="refreshLobbyBtn">Refresh Lobby</button>
+            </div>
+          </div>
+
           <div class="panel control-hero-panel">
             <div class="control-hero-grid">
               <div class="control-hero-copy">
@@ -734,6 +864,20 @@
               </div>
             </div>
           </div>
+          <div class="panel" id="rewindPanel">
+            <div class="narrative-panel-header">
+              <h2>Rewind Timeline</h2>
+              <span class="narrative-panel-kicker">Auto-snapshots at key decision points</span>
+            </div>
+            <div id="rewindTimelineList" class="rewind-timeline-list">
+              <div class="narrative-empty">Open this tab to load your snapshot history.</div>
+            </div>
+            <div class="row" style="margin-top:.75rem;">
+              <button id="refreshRewindBtn">Refresh Snapshots</button>
+              <button id="manualRewindSnapshotBtn" class="secondary">Take Manual Snapshot</button>
+            </div>
+          </div>
+
           <div class="panel">
             <h2>Saves & QA</h2>
             <div class="row">
@@ -863,6 +1007,37 @@
               <button id="updateStaffBtn">Update Staff</button>
             </div>
             <div class="table-wrap"><table id="staffTable"></table></div>
+            <!-- ── Coaching DNA Card ─────────────────────────────────────── -->
+            <div id="coachingDnaCard" class="coaching-dna-card" hidden>
+              <div class="coaching-dna-header">
+                <span class="coaching-dna-icon">🌳</span>
+                <div>
+                  <div class="coaching-dna-title">Coaching Tree DNA</div>
+                  <div class="coaching-dna-sub" id="coachingDnaSub">Load a team to see scheme lineage.</div>
+                </div>
+              </div>
+              <div id="coachingDnaBody" class="coaching-dna-body"></div>
+            </div>
+          </div>
+
+          <!-- ── Mobile & Community Links ──────────────────────────────────── -->
+          <div class="panel">
+            <h2>Mobile &amp; Community</h2>
+            <div class="row compact" style="flex-wrap:wrap;gap:1rem;">
+              <label>
+                <input type="checkbox" id="mobileLoopToggle" />
+                Enable Mobile Core Loop Mode
+              </label>
+              <a href="https://discord.gg/vaultspark" target="_blank" rel="noopener noreferrer"
+                 class="btn-discord" id="discordLink">
+                🎮 Join the VaultSpark Discord
+              </a>
+              <button id="shareDynastyBtn">📤 Share My Dynasty Timeline</button>
+            </div>
+            <div class="small" style="color:var(--muted);margin-top:.5rem;">
+              Mobile mode shows a simplified daily-decision view optimized for narrow screens.
+              Dynasty share generates a downloadable HTML card of your franchise history.
+            </div>
           </div>
         </section>
       </section>
@@ -1006,6 +1181,63 @@
         </label>
         <div class="table-wrap"><table id="commandTable"></table></div>
       </div>
+    </div>
+
+    <!-- ── Agent Negotiation Drama Modal ─────────────────────────────────── -->
+    <div id="agentNegotiationModal" class="modal hidden">
+      <div class="modal-card agent-modal-card">
+        <div class="row compact" style="justify-content:space-between">
+          <h2>Agent Negotiation</h2>
+          <button id="closeAgentModalBtn" class="warn">Close</button>
+        </div>
+        <div id="agentModalHeader" class="agent-modal-header"></div>
+        <div class="agent-modal-body">
+          <div id="agentPersonalityBox" class="agent-personality-box"></div>
+          <div id="agentDemandBar" class="agent-demand-bar"></div>
+          <div class="agent-offer-form">
+            <label>Offer Salary (per year)
+              <input id="agentOfferSalaryInput" type="number" placeholder="e.g. 18000000" min="500000" />
+            </label>
+            <label>Years
+              <input id="agentOfferYearsInput" type="number" value="3" min="1" max="5" />
+            </label>
+            <div class="row compact">
+              <button id="submitAgentOfferBtn">Submit Offer</button>
+              <button id="signalCompetingOfferBtn" class="secondary">Signal Competing Interest</button>
+            </div>
+          </div>
+          <div id="agentResponseBox" class="agent-response-box hidden"></div>
+          <div id="agentHistoryBox" class="agent-history-box">
+            <div class="small" style="color:var(--muted)">Offer history will appear here.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Keyboard Shortcuts Modal ──────────────────────────────────────── -->
+    <div id="shortcutsModal" class="modal hidden">
+      <div class="modal-card shortcuts-card">
+        <div class="row" style="justify-content:space-between">
+          <h2>Keyboard Shortcuts</h2>
+          <button id="closeShortcutsModalBtn" class="warn">Close</button>
+        </div>
+        <table class="shortcuts-table">
+          <thead><tr><th>Key</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td><kbd>R</kbd></td><td>Refresh overview</td></tr>
+            <tr><td><kbd>?</kbd></td><td>Open this shortcuts panel</td></tr>
+            <tr><td><kbd>Escape</kbd></td><td>Close any modal</td></tr>
+            <tr><td><kbd>1</kbd>–<kbd>9</kbd></td><td>Jump to tab 1–9 in the side menu</td></tr>
+            <tr><td><kbd>N</kbd></td><td>Toggle news ticker</td></tr>
+            <tr><td><kbd>W</kbd></td><td>Advance one week (when no input focused)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── Mobile Loop Overlay ────────────────────────────────────────────── -->
+    <div id="mobileLoopOverlay" class="mobile-loop-overlay hidden" aria-label="Mobile core loop view">
+      <div class="ml-loading">Loading franchise data…</div>
     </div>
 
     <div id="toastStack" class="toast-stack"></div>

@@ -1,21 +1,41 @@
 # Task Board
 
+## Completed This Session (Session 4 — 2026-03-27)
+- **Full project audit** — audits/2026-03-27.html; 83/100 B+; 10 category scores, 28-item brainstorm with scores
+- **GM Legacy Score** — src/engine/gmLegacyScore.js; /api/gm-legacy; overview hero card
+- **Rivalry DNA System** — src/engine/rivalryDNA.js; heat metric 0–100; /api/rivalry route
+- **Injury System** — src/engine/injurySystem.js; position contact rates, severity 0–8 weeks, reinjury risk
+- **Draft Combine** — src/engine/draftCombine.js; position events; /api/combine/run + /api/combine/results; combine results table in Draft tab
+- **IndexedDB Save Store** — src/adapters/persistence/indexedDbSaveStore.js; 250MB capacity; /api/storage/estimate
+- **Mobile Core Loop** — public/lib/mobileLoop.js; #mobileLoopOverlay; shows record/cap/next game/needs/actions
+- **Agent Negotiation Modal** — #agentNegotiationModal; openAgentModal/renderAgentModal/submitAgentOffer/signalCompetingOffer; /api/agent/offer + competing-offer routes
+- **Beat Reporter News Ticker** — #newsTicker; renderNewsTicker(); seamless scroll animation; called in applyDashboard
+- **Season Preview Hype Panel** — #seasonPreviewPanel; shows on preseason/offseason/draft phase; renderSeasonPreviewPanel()
+- **Cap Casualty Predictor** — #capCasualtyPanel; cut risk bar per contract; renderCapCasualtyPanel()
+- **Cap Projection Panel** — 3-year cap outlook bars; renderCapProjectionPanel()
+- **Coaching DNA Card** — #coachingDnaCard; coaching lineage; auto-called from renderStaff()
+- **Commissioner Lobby (async)** — src/runtime/multiplayerSession.js; 6 API routes; #commissionerPanel
+- **Keyboard shortcuts extended** — W=advance, N=ticker, 1–9=tab jump, ?=shortcuts modal
+- **Dynasty Timeline Share** — shareDynastyTimeline() print window
+- **Rewind architecture cleanup** — rewindManager.js @deprecated; canonical = localApiRuntime.js
+- **getAugmentedState()** — injects narrativeLog/newsLog/coachingTree/gmLegacy/rivalries/combineResults
+- **~450 lines new CSS** — all new components in styles.css
+
+## Completed This Session (Session 3 — 2026-03-27)
+- **Franchise Story narrative panel** — live event feed on Overview tab (renderNarrativePanel); reads narrativeLog from dashboard state; icon/tone mapping per event type
+- **Trade Deadline Alert panel** — week 9–11 banner on Overview; auto-detects BUYER/SELLER/NEUTRAL role from standings win%
+- **Rewind Timeline panel** — Settings tab; auto-snapshots before trades, pre-deadline (wk 9), season-start; restore/delete via UI; manual snapshot button; max 10 slots with oldest-first pruning (localApiRuntime.js)
+- **War Room board CSS + all component styles** — war-room-board, wrb-*, clock-bar, trade-call, narrative-feed, rewind-timeline, small-btn in styles.css
+- **Mobile 375px fix** — @media max-width:420px collapses war room board to 3 cols, drops .wrb-need, stacks rewind actions, forces history galleries to 1 col
+- **Competitive analysis HTML report** — audits/competitive-analysis-2026-03-26.html (full feature matrix vs Football-GM/ZenGM, SWOT, differentiation strategy)
+- **[SIL] Fill out all context files** — complete (SOUL, TASK_BOARD, LATEST_HANDOFF, SELF_IMPROVEMENT_LOOP all populated)
+
 ## Now
-- Check the live/mobile behavior of the `Season Awards` / `Hall of Fame` split, retired-number controls, player dossier hero, and newer contracts/settings/owner command-deck surfaces
-- Use the seeded Playwright history regression as the baseline while continuing the manual populated-league review, especially for mobile layout and any states not covered by the server-backed test path
-- Review the new Hall-of-Fame/retired-number commissioner settings in live play so the policy copy, defaults, and blocked-action messaging feel clear on desktop and mobile
-- Review the new team-color shell, top bar/nav treatment, scouting hero, and setup hero on desktop/mobile so the stronger visual language holds up beyond the default happy path
-- Decide whether the player-history archive cards should stay paired with the raw timeline/search tables or whether one of those legacy tables can be reduced further
-- Decide whether the remaining History lookup drawers should stay collapsible or whether some of that raw-table access belongs in export/admin views later
-- Sanity-check the 18-week / one-bye schedule structure across a few seeded leagues after deploy, not just the regression seed
-- Read the preserved setup diagnostics and decide whether another setup/main-menu trim is still justified
-- Feed the new world-state deeper into any remaining owner expectation loops and transaction AI edges
-- Decide whether to promote the generated `output/statmuse-2025-baseline.json` flow into a first-class repo script instead of keeping the live profile refresh as a documented/manual smoothing step
-- Extend the refreshed UI language across any remaining legacy panels that still look like pre-refresh utility screens
-- Decide which long-playability feature area should come next now that the shell is in better shape:
-  - league-era drift
-  - coaching/staff carousel
-  - rivalry/narrative memory
+- **Live smoke test at 375px** — all new Session 4 panels: news ticker, season preview hype, agent modal, cap casualty, cap projection, draft combine, coaching DNA card, commissioner lobby, shortcuts modal, mobile loop overlay
+- **Wire engine hooks into GameSession.js**: beatReporter auto-call on week advance, rivalryDNA.recordWeekRivalries on week advance, injurySystem.rollGameInjuries on game sim, gmLegacy.updateGmLegacyAfterSeason on season end
+- **Deploy** to GitHub Pages after smoke test passes
+- **[SIL] Wire engine hooks into GameSession.js** — beatReporter on week advance, rivalryDNA on week advance, injurySystem on game sim, gmLegacy on season end
+- **[SIL] Tutorial mission board** — surface tutorialCampaign.js as 3-step first-session guide for new GMs (onboarding beta-criteria push)
 
 ## Next
 - Add more player-profile richness if the new dossier surface lands well:
