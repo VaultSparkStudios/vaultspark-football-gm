@@ -19,7 +19,17 @@ const PORT = Number(process.env.PORT || 4173);
 const PUBLIC_DIR = path.resolve("public");
 const SRC_DIR = path.resolve("src");
 
-let session = createSession();
+let session = null;
+let sessionReady = false;
+
+function ensureSession() {
+  if (!sessionReady) {
+    session = createSession();
+    sessionReady = true;
+  }
+  return session;
+}
+
 const CURRENT_YEAR = new Date().getFullYear();
 const serverMetrics = {
   startedAt: Date.now(),
@@ -182,6 +192,7 @@ function createSimulationJob(totalSeasons) {
 }
 
 async function handleApi(req, res, url) {
+  ensureSession();
   if (req.method === "GET" && url.pathname === "/api/setup/init") {
     const setupStarted = Date.now();
     const setup = session.getSetupState();

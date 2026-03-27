@@ -101,11 +101,25 @@ async function requestHttp(path, options = {}) {
   if (!isServerRuntimeAvailable()) {
     throw new Error("Server-backed mode is unavailable on this deployment. Switch to client-only mode.");
   }
-  const response = await fetch(resolveHttpUrl(path), {
-    method: options.method || "GET",
-    headers: { "Content-Type": "application/json" },
-    body: options.body ? JSON.stringify(options.body) : undefined
-  });
+  const timeoutMs = options.timeoutMs || 15_000;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  let response;
+  try {
+    response = await fetch(resolveHttpUrl(path), {
+      method: options.method || "GET",
+      headers: { "Content-Type": "application/json" },
+      body: options.body ? JSON.stringify(options.body) : undefined,
+      signal: controller.signal
+    });
+  } catch (err) {
+    clearTimeout(timer);
+    if (err.name === "AbortError") {
+      throw new Error(`Server request timed out after ${timeoutMs / 1000}s — is the server running?`);
+    }
+    throw new Error(`Cannot reach the server — is it running? (${err.message})`);
+  }
+  clearTimeout(timer);
   const raw = await response.text();
   let payload = null;
   try {

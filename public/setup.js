@@ -310,14 +310,35 @@ function renderBackups() {
     rows;
 }
 
-async function loadSetup() {
+async function loadSetup(retryCount = 0) {
+  const MAX_RETRIES = 2;
   const loadVersion = ++setupLoadVersion;
   const started = performance.now();
   applyRuntimeModeUi();
   if (getRuntimeMode() === "client") {
     warmLocalRuntime().catch(() => {});
   }
-  const init = await api("/api/setup/init?includeSaves=0&includeBackups=0");
+
+  const activeText = document.getElementById("activeLeagueText");
+  if (activeText) activeText.textContent = retryCount > 0 ? `Retrying connection (${retryCount}/${MAX_RETRIES})...` : "Connecting to server...";
+
+  let init;
+  try {
+    init = await api("/api/setup/init?includeSaves=0&includeBackups=0");
+  } catch (err) {
+    if (loadVersion !== setupLoadVersion) return;
+    if (retryCount < MAX_RETRIES) {
+      const delayMs = (retryCount + 1) * 2000;
+      if (activeText) activeText.textContent = `Server not ready — retrying in ${delayMs / 1000}s...`;
+      await new Promise((r) => setTimeout(r, delayMs));
+      if (loadVersion !== setupLoadVersion) return;
+      return loadSetup(retryCount + 1);
+    }
+    if (activeText) activeText.textContent = `Could not reach server. ${err.message}`;
+    setStatus("Server unavailable — start the server or switch to client-only mode.");
+    return;
+  }
+
   if (loadVersion !== setupLoadVersion) return;
   state.currentYear = init.currentYear;
   state.saves = init.saves || [];

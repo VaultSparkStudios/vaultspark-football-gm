@@ -22,175 +22,167 @@
   <body class="setup-body">
     <div class="bg-layer"></div>
     <main class="setup-wrap">
-      <section class="setup-card hero">
-        <div class="brand-kicker">VaultSpark Studios Franchise Lab</div>
-        <h1>VaultSpark Football GM</h1>
-        <p>League Hub: start a scenario, resume a save, or jump into your active franchise.</p>
-        <div class="row compact">
-          <button id="continueActiveBtn" data-testid="continue-active-btn">Continue Active League</button>
-          <button id="resumeLatestBtn" data-testid="resume-latest-btn">Resume Latest Save</button>
-          <span id="activeLeagueText" class="small">Checking active session...</span>
-        </div>
-        <div class="row compact">
-          <label>Runtime
-            <select id="runtimeModeSelect">
-              <option value="server">Server-backed</option>
-              <option value="client">Client-only (Beta)</option>
-            </select>
-          </label>
-          <span id="runtimeModeDescription" class="small">Client-only mode stores leagues in this browser and does not use filesystem path imports.</span>
-        </div>
-        <div class="setup-ribbon-row">
-          <span class="hero-ribbon">Long-Horizon Franchise Sim</span>
-          <span class="hero-ribbon">Owner + Staff Pressure</span>
-          <span class="hero-ribbon">League History That Sticks</span>
-        </div>
-        <div class="setup-hero-feature-grid">
-          <article class="setup-marquee-card">
-            <div class="setup-marquee-label">Franchise Signals</div>
-            <div class="setup-signal-grid">
-              <article><strong>Roster Arc</strong><span>Build, peak, reload, repeat.</span></article>
-              <article><strong>Front Office</strong><span>Staff, culture, and owner patience matter.</span></article>
-              <article><strong>Legacy</strong><span>Hall of Fame, retired numbers, and history now carry real weight.</span></article>
-            </div>
-          </article>
-          <div class="setup-story-strip">
-            <div class="setup-story-card">
-              <strong>Cap Drama</strong>
-              <span>Restructures, expiring windows, dead-cap pressure, and trade leverage.</span>
-            </div>
-            <div class="setup-story-card">
-              <strong>Draft Room</strong>
-              <span>Weekly scouting points, board pressure, and scheme-fit reads.</span>
-            </div>
+
+      <!-- ── HERO ── -->
+      <section class="setup-hero">
+        <div class="setup-hero-inner">
+          <div class="brand-kicker">VaultSpark Studios</div>
+          <h1 class="setup-title">Football GM</h1>
+          <p class="setup-tagline">Build a dynasty. Own every roster move, draft pick, and cap decision across decades of franchise football.</p>
+          <div class="setup-hero-actions">
+            <button id="continueActiveBtn" class="btn-primary btn-lg" data-testid="continue-active-btn" disabled>Continue Franchise</button>
+            <button id="resumeLatestBtn" class="btn-secondary btn-lg" data-testid="resume-latest-btn">Resume Latest Save</button>
           </div>
-        </div>
-        <div class="cards quickstart-cards">
-          <article>
-            <h3>Quick Start: Modern</h3>
-            <button id="presetModernBtn">Apply</button>
-          </article>
-          <article>
-            <h3>Quick Start: Balanced</h3>
-            <button id="presetBalancedBtn">Apply</button>
-          </article>
-          <article>
-            <h3>Quick Start: Legacy</h3>
-            <button id="presetLegacyBtn">Apply</button>
-          </article>
+          <span id="activeLeagueText" class="setup-session-status">Connecting to server...</span>
         </div>
       </section>
 
-      <section class="setup-card">
-        <h2>New League</h2>
-        <div class="form-grid">
-          <label>Seed
-            <input id="seedInput" data-testid="seed-input" type="number" />
-          </label>
-          <label>Start Year
-            <input id="startYearInput" data-testid="start-year-input" type="number" />
-          </label>
-          <label>Mode
-            <div class="row compact">
-              <select id="modeInput" data-testid="mode-input">
-                <option value="drive">Drive</option>
-                <option value="play">Play</option>
-              </select>
-              <span id="modeHelpTip" class="chip" title="Drive sim resolves games possession-by-possession for faster season flow. Play sim resolves more individual plays for more granular stat and box-score variance.">Drive vs Play</span>
-            </div>
-            <div id="modeHelpText" class="small">
-              Drive is faster and more abstract. Play uses more granular play-level variance.
-            </div>
-          </label>
-          <label>Era Profile
-            <select id="eraProfileInput">
-              <option value="modern">Modern Pass Era</option>
-              <option value="balanced">Balanced</option>
-              <option value="legacy">Legacy Run Era</option>
-            </select>
-          </label>
-          <label>Franchise Archetype
-            <select id="franchiseArchetypeInput"></select>
-          </label>
-          <label>Rules Preset
-            <select id="rulesPresetInput"></select>
-          </label>
-          <label>Difficulty
-            <select id="difficultyPresetInput"></select>
-          </label>
-          <label>Challenge Mode
-            <select id="challengeModeInput"></select>
-          </label>
-          <label>Controlled Team
+      <!-- ── QUICK START ── -->
+      <section class="setup-section">
+        <h2 class="setup-section-title">New Franchise</h2>
+        <p class="setup-section-subtitle">Pick a style and jump straight in, or customize everything below.</p>
+
+        <div class="quickstart-grid">
+          <button id="presetModernBtn" class="quickstart-card">
+            <span class="quickstart-era">Modern</span>
+            <span class="quickstart-label">Pass-heavy era with explosive offenses and aggressive cap management.</span>
+          </button>
+          <button id="presetBalancedBtn" class="quickstart-card quickstart-card--featured">
+            <span class="quickstart-era">Balanced</span>
+            <span class="quickstart-label">League-average tendencies. The classic franchise experience.</span>
+          </button>
+          <button id="presetLegacyBtn" class="quickstart-card">
+            <span class="quickstart-era">Legacy</span>
+            <span class="quickstart-label">Run-first, low-tempo football. Grind it out on the ground.</span>
+          </button>
+        </div>
+
+        <div class="setup-team-row">
+          <label class="setup-team-label">
+            Your Team
             <select id="teamSelect" data-testid="setup-team-select"></select>
           </label>
-          <label>Custom Team Name
-            <input id="setupBrandNameInput" type="text" placeholder="optional — e.g. Wolves" maxlength="30" />
-          </label>
-          <label>Custom City
-            <input id="setupBrandCityInput" type="text" placeholder="optional — e.g. Atlanta" maxlength="24" />
-          </label>
-          <label>Custom Abbrev
-            <input id="setupBrandAbbrevInput" type="text" placeholder="optional — e.g. ATL" maxlength="3" />
-          </label>
-          <label>Primary Color
-            <input id="setupBrandPrimaryInput" type="color" value="#4f8ef7" title="Brand primary color override" />
-          </label>
-          <label>PFR Player JSON Path
-            <input id="pfrPathInput" data-testid="pfr-path-input" type="text" placeholder="optional local path" />
-          </label>
-          <label>Realism Profile Path
-            <input id="profilePathInput" data-testid="profile-path-input" type="text" placeholder="optional local path" />
-          </label>
-        </div>
-        <div class="row compact">
-          <label><input id="ownerModeInput" type="checkbox" checked /> Owner Mode</label>
-          <label><input id="narrativesInput" type="checkbox" checked /> Dynamic Narratives</label>
-          <label><input id="compPicksInput" type="checkbox" checked /> Comp Picks</label>
-          <label><input id="chemistryInput" type="checkbox" checked /> Team Chemistry</label>
-        </div>
-        <div id="configSummaryContent" class="stack small"></div>
-        <div class="row">
-          <button id="createLeagueBtn" data-testid="create-league-btn">Create League</button>
+          <button id="createLeagueBtn" class="btn-primary" data-testid="create-league-btn">Create League</button>
           <span id="setupStatus" data-testid="setup-status" class="chip">Ready</span>
         </div>
       </section>
 
-      <section class="setup-card">
-        <h2>Saved Leagues</h2>
-        <div class="row compact">
-          <button id="refreshSavesBtn" data-testid="refresh-saves-btn">Refresh Saves</button>
-          <label>Search
-            <input id="saveSearchInput" data-testid="save-search-input" type="text" placeholder="slot, team, year" />
-          </label>
-          <label>Delete Slot
-            <input id="deleteSlotInput" data-testid="delete-slot-input" type="text" placeholder="slot name" />
-          </label>
-          <button id="deleteSlotBtn" data-testid="delete-slot-btn" class="warn">Delete</button>
-        </div>
-        <div class="table-wrap">
-          <table id="savesTable" data-testid="saves-table"></table>
-        </div>
-      </section>
+      <!-- ── ADVANCED LEAGUE SETTINGS ── -->
+      <details class="setup-section setup-details">
+        <summary class="setup-details-toggle">Customize League Settings</summary>
+        <div class="setup-details-body">
+          <div class="form-grid">
+            <label>Seed
+              <input id="seedInput" data-testid="seed-input" type="number" />
+            </label>
+            <label>Start Year
+              <input id="startYearInput" data-testid="start-year-input" type="number" />
+            </label>
+            <label>Mode
+              <div class="row compact">
+                <select id="modeInput" data-testid="mode-input">
+                  <option value="drive">Drive</option>
+                  <option value="play">Play</option>
+                </select>
+                <span id="modeHelpTip" class="chip" title="Drive sim resolves games possession-by-possession for faster season flow. Play sim resolves more individual plays for more granular stat and box-score variance.">?</span>
+              </div>
+              <div id="modeHelpText" class="small">
+                Drive is faster and more abstract. Play uses more granular play-level variance.
+              </div>
+            </label>
+            <label>Era Profile
+              <select id="eraProfileInput">
+                <option value="modern">Modern Pass Era</option>
+                <option value="balanced">Balanced</option>
+                <option value="legacy">Legacy Run Era</option>
+              </select>
+            </label>
+            <label>Franchise Archetype
+              <select id="franchiseArchetypeInput"></select>
+            </label>
+            <label>Rules Preset
+              <select id="rulesPresetInput"></select>
+            </label>
+            <label>Difficulty
+              <select id="difficultyPresetInput"></select>
+            </label>
+            <label>Challenge Mode
+              <select id="challengeModeInput"></select>
+            </label>
+          </div>
+          <div class="row compact" style="margin-top:0.6rem">
+            <label><input id="ownerModeInput" type="checkbox" checked /> Owner Mode</label>
+            <label><input id="narrativesInput" type="checkbox" checked /> Dynamic Narratives</label>
+            <label><input id="compPicksInput" type="checkbox" checked /> Comp Picks</label>
+            <label><input id="chemistryInput" type="checkbox" checked /> Team Chemistry</label>
+          </div>
+          <div id="configSummaryContent" class="stack small"></div>
 
-      <section class="setup-card">
-        <h2>Auto Backups (Quick Rollback)</h2>
-        <div class="row compact">
-          <button id="refreshBackupsBtn" data-testid="refresh-backups-btn">Refresh Backups</button>
-          <label>Delete Backup
-            <input id="deleteBackupInput" data-testid="delete-backup-input" type="text" placeholder="backup slot" />
-          </label>
-          <button id="deleteBackupBtn" data-testid="delete-backup-btn" class="warn">Delete</button>
+          <details class="setup-details setup-details--nested">
+            <summary class="setup-details-toggle">Data Paths (Advanced)</summary>
+            <div class="setup-details-body">
+              <div class="form-grid">
+                <label>PFR Player JSON Path
+                  <input id="pfrPathInput" data-testid="pfr-path-input" type="text" placeholder="optional local path" />
+                </label>
+                <label>Realism Profile Path
+                  <input id="profilePathInput" data-testid="profile-path-input" type="text" placeholder="optional local path" />
+                </label>
+              </div>
+            </div>
+          </details>
         </div>
-        <div class="table-wrap">
-          <table id="backupsTable" data-testid="backups-table"></table>
-        </div>
-      </section>
+      </details>
 
-      <section class="setup-card">
-        <h2>Setup Guide</h2>
+      <!-- ── SAVES ── -->
+      <details class="setup-section setup-details" open>
+        <summary class="setup-details-toggle">Saved Leagues</summary>
+        <div class="setup-details-body">
+          <div class="row compact">
+            <button id="refreshSavesBtn" data-testid="refresh-saves-btn">Refresh</button>
+            <label>Search
+              <input id="saveSearchInput" data-testid="save-search-input" type="text" placeholder="slot, team, year" />
+            </label>
+            <label>Delete Slot
+              <input id="deleteSlotInput" data-testid="delete-slot-input" type="text" placeholder="slot name" />
+            </label>
+            <button id="deleteSlotBtn" data-testid="delete-slot-btn" class="warn">Delete</button>
+          </div>
+          <div class="table-wrap">
+            <table id="savesTable" data-testid="saves-table"></table>
+          </div>
+        </div>
+      </details>
+
+      <!-- ── BACKUPS ── -->
+      <details class="setup-section setup-details">
+        <summary class="setup-details-toggle">Auto Backups</summary>
+        <div class="setup-details-body">
+          <div class="row compact">
+            <button id="refreshBackupsBtn" data-testid="refresh-backups-btn">Refresh</button>
+            <label>Delete Backup
+              <input id="deleteBackupInput" data-testid="delete-backup-input" type="text" placeholder="backup slot" />
+            </label>
+            <button id="deleteBackupBtn" data-testid="delete-backup-btn" class="warn">Delete</button>
+          </div>
+          <div class="table-wrap">
+            <table id="backupsTable" data-testid="backups-table"></table>
+          </div>
+        </div>
+      </details>
+
+      <!-- ── FOOTER ── -->
+      <footer class="setup-footer">
+        <label class="setup-runtime-label">Runtime
+          <select id="runtimeModeSelect">
+            <option value="server">Server-backed</option>
+            <option value="client">Client-only (Beta)</option>
+          </select>
+        </label>
+        <span id="runtimeModeDescription" class="small">Client-only mode stores leagues in this browser and does not use filesystem path imports.</span>
         <div id="setupGuideContent" class="stack small"></div>
-      </section>
+      </footer>
+
     </main>
     <script type="module" src="./setup.js"></script>
   </body>
