@@ -10,8 +10,8 @@
   "localPath": "C:\\Users\\p4cka\\documents\\development\\VaultSpark Football GM",
   "github": "https://github.com/VaultSparkStudios/vaultspark-football-gm",
   "liveUrl": "https://vaultsparkstudios.com/vaultspark-football-gm/",
-  "currentFocus": "Live 375px smoke test of all new Session 4 panels → deploy",
-  "nextMilestone": "Public beta open 2026-06-01 — 8-criteria definition in TASK_BOARD.",
+  "currentFocus": "Startup perf fix + main menu redesign shipped; next: in-game UX polish",
+  "nextMilestone": "Public beta open 2026-06-01 \u2014 8-criteria definition in TASK_BOARD.",
   "blockers": [
     "Live 375px smoke test needed before next deploy",
     "Engine hooks (beatReporter, rivalryDNA, injurySystem, gmLegacy) need wiring into GameSession.js season/week advance"
@@ -20,12 +20,14 @@
   "silScore": 45,
   "silAvg3": 42.5,
   "silVelocity": 15,
-  "silDebt": "→",
+  "silDebt": "\u2192",
   "silLastSession": "2026-03-27",
-  "ignisScore": null,
+  "ignisScore": 22,
   "testsTotal": 3,
   "lastDeployStatus": "pending",
   "auditScore": 83,
   "auditGrade": "B+",
-  "sessionCount": 4
+  "sessionCount": 5,
+  "ignisGrade": "DARK-ZONE",
+  "ignisLastComputed": "2026-03-27"
 }
