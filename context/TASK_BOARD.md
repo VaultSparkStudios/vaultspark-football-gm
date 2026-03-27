@@ -31,11 +31,13 @@
 - **[SIL] Fill out all context files** — complete (SOUL, TASK_BOARD, LATEST_HANDOFF, SELF_IMPROVEMENT_LOOP all populated)
 
 ## Now
-- **Live smoke test at 375px** — all new Session 4 panels: news ticker, season preview hype, agent modal, cap casualty, cap projection, draft combine, coaching DNA card, commissioner lobby, shortcuts modal, mobile loop overlay
-- **Wire engine hooks into GameSession.js**: beatReporter auto-call on week advance, rivalryDNA.recordWeekRivalries on week advance, injurySystem.rollGameInjuries on game sim, gmLegacy.updateGmLegacyAfterSeason on season end
-- **Deploy** to GitHub Pages after smoke test passes
-- **[SIL] Wire engine hooks into GameSession.js** — beatReporter on week advance, rivalryDNA on week advance, injurySystem on game sim, gmLegacy on season end
-- **[SIL] Tutorial mission board** — surface tutorialCampaign.js as 3-step first-session guide for new GMs (onboarding beta-criteria push)
+- **Live smoke test at 375px** — all new Session 4+5 panels: news ticker, season preview hype, agent modal, cap casualty, cap projection, draft combine, coaching DNA card, commissioner lobby, shortcuts modal, mobile loop overlay, cap alert banner, persona tier dots, newsletter button, cloud sync panel
+- **Deploy** to GitHub Pages after smoke test passes (Sessions 3–5 are local only)
+- **[SIL] CURRENT_STATE.md full refresh** — stale since Session 2; update to reflect Sessions 3–5 additions (13+ new systems)
+- **[SIL] Persona tier unlock toast** — notify when GM crosses a tier threshold mid-session (Engage ↑↑)
+
+~~- **Wire engine hooks into GameSession.js** — DONE Session 5~~
+~~- **[SIL] Tutorial mission board** — DONE Session 5 (mountTutorial wired in init())~~
 
 ## Next
 - Add more player-profile richness if the new dossier surface lands well:

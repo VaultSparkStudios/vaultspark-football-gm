@@ -7,10 +7,10 @@ The Rolling Status header is overwritten each closeout. Entries are append-only 
 
 <!-- rolling-status-start -->
 ## Rolling Status (auto-updated each closeout)
-Sparkline (last 5 totals): ▁▆▇
-3-session avg [N=2]: Dev 8.5 | Align 8.5 | Momentum 9.5 | Engage 6.0 | Process 9.0
-Avg total: 42.5 / 50  |  Velocity trend: ↑  |  Debt: →
-Last session: 2026-03-27 | Session 4 | Total: 45/50 | Velocity: 15
+Sparkline (last 5 totals): ▁▆▇▇▇
+3-session avg [N=3]: Dev 8.7 | Align 8.7 | Momentum 9.3 | Engage 6.0 | Process 9.3
+Avg total: 44.0 / 50  |  Velocity trend: →  |  Debt: ↓ (engine hooks now wired)
+Last session: 2026-03-27 | Session 5 | Total: 46/50 | Velocity: 13 features
 ─────────────────────────────────────────────────────────────────────
 <!-- rolling-status-end -->
 
@@ -140,3 +140,33 @@ Rolling avg (last 3) [N=2]: Dev 8.5 | Align 8.5 | Momentum 9.5 | Engage 6.0 | Pr
 5. **Save size indicator** — IndexedDB vs localStorage usage bar in Settings footer (Dev ↑, Persistence ↑)
 
 **Committed to TASK_BOARD:** [SIL] Wire engine hooks into GameSession.js · [SIL] Tutorial mission board for new-GM onboarding
+
+---
+
+### 2026-03-27 — Session 5 | Total: 46/50 | Velocity: 13 | Debt: ↓
+
+Rolling avg (last 3) [N=3]: Dev 8.7 | Align 8.7 | Momentum 9.3 | Engage 6.0 | Process 9.3
+
+| Category | Score | vs Last | Notes |
+|---|---|---|---|
+| Dev Health | 9 | → | 38/38 tests pass; all new files syntax clean; self-referential bug fixed |
+| Creative Alignment | 9 | → | Persona arc, press conf quotes, newsletter all deepen GM identity |
+| Momentum | 9 | ↓ | 13 features shipped; slightly below session 4 peak but still high velocity |
+| Engagement | 6 | → | Feedback widget + newsletter now exist; still no live player signal |
+| Process Quality | 10 | ↑ | SIL updated, handoff accurate, memory refreshed, full commit + push |
+| **Total** | **46/50** | +1 | |
+
+**Top win:** Engine hooks fully wired — beatReporter, rivalryDNA, injurySystem, pressConference, and gmLegacy now all fire automatically in GameSession.js. The world-state engines that were dormant since Session 4 now produce real data.
+
+**Top gap:** CURRENT_STATE.md is stale (pre-Session 3). With 5 sessions of features added, incoming GMs reading it will have a significantly wrong picture of the project.
+
+**Intent outcome:** Achieved — all Highest Leverage + Highest Ceiling audit items implemented; Commissioner Lobby now fully persistent.
+
+**Brainstorm**
+1. **CURRENT_STATE.md refresh** — full rewrite to reflect Sessions 3–5 additions; critical for onboarding continuity (Process ↑↑)
+2. **Persona tier unlock notifications** — toast/modal when GM crosses a tier threshold mid-session (Engage ↑↑)
+3. **Stat leaders strip on Overview** — top-3 rushing/passing/sack leaders rendered as a quick-scan ticker row (Visual ↑, Engage ↑)
+4. **Injury overlay card on Overview** — show starters with active injuries + return week always visible (Align ↑, Engage ↑)
+5. **Save size indicator in Settings** — IndexedDB vs localStorage usage bar; pairs naturally with Gist sync panel (Dev ↑)
+
+**Committed to TASK_BOARD:** [SIL] CURRENT_STATE.md full refresh · [SIL] Persona tier unlock toast notification
