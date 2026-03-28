@@ -1,3 +1,5 @@
+<!-- template-version: 2.0 -->
+<!-- synced-from: studio-ops/prompts/closeout.md @ Session 19 (2026-03-28) -->
 # Closeout Protocol
 
 Use this when the user says only `closeout`.
@@ -65,11 +67,18 @@ Exclude `[SIL]` meta-tasks. Record as integer: `Velocity: N`
 - `↓` if net `[DEBT]` items were resolved this session
 - `→` if debt was unchanged or no `[DEBT]` items exist
 
-**Rolling 3-session averages:**
-Look back at the last 3 SIL entries in `context/SELF_IMPROVEMENT_LOOP.md` and compute:
+**Rolling averages (3 / 5 / 10 / 25 / all):**
+Look back at the SIL entries in `context/SELF_IMPROVEMENT_LOOP.md` and compute:
+
+For each window (3, 5, 10, 25, all):
+- **Total avg** = sum of Total scores in window / count — round to 1 decimal
+- If fewer entries than the window size exist, use all available and mark with `[N=n]`
+- Omit windows where N < 3 (not enough data to be meaningful)
+
+For the **3-session window only**, also compute per-category averages:
 - `Avg Dev Health` = (score1 + score2 + score3) / 3 — round to 1 decimal
 - Same calculation for all 5 categories
-- If fewer than 3 prior entries exist, average what is available and label with `[N=n]`
+- This is the only window with per-category breakdown (token efficiency)
 
 **Sparkline:**
 Collect the Total scores from the last 5 SIL entries (including this session). Map each to a bar:
@@ -100,9 +109,10 @@ The top of `context/SELF_IMPROVEMENT_LOOP.md` contains a `## Rolling Status` blo
 <!-- rolling-status-start -->
 ## Rolling Status (auto-updated each closeout)
 Sparkline (last 5 totals): ▃▅▆▇█
-3-session avg: Dev X.X | Align X.X | Momentum X.X | Engage X.X | Process X.X
-Avg total: XX.X / 50  |  Velocity trend: ↑↓→  |  Debt: ↑↓→
-Last session: YYYY-MM-DD | Session N | Total: XX/50 | Velocity: N
+Avgs — 3: XX.X | 5: XX.X | 10: XX.X | 25: — | all: XX.X  (— = insufficient data)
+  └ 3-session: Dev X.X | Align X.X | Momentum X.X | Engage X.X | Process X.X
+Velocity trend: ↑↓→  |  Protocol velocity: ↑↓→  |  Debt: ↑↓→
+Last session: YYYY-MM-DD | Session N | Total: XX/50 | Velocity: N | protocolVelocity: N
 ─────────────────────────────────────────────────────────────────────
 <!-- rolling-status-end -->
 ```
@@ -132,6 +142,25 @@ After scoring, record one sentence for IGNIS to learn from this session.
 what pattern is emerging — one sentence max]
 
 This is written into the `ignisNote` field of the audit JSON in Step 8.
+
+---
+
+### Step 3.6 — Momentum Runway (PROPOSAL-006, accepted 2026-03-27)
+
+After scoring, compute the Momentum Runway estimate:
+
+```
+momentumRunway = open_Now_items / silAvg_velocity_last3
+```
+
+- Count open (incomplete) items currently in the `## Now` bucket of TASK_BOARD
+- Use the rolling 3-session velocity average (from Step 1)
+- If velocity average is 0 (architecture phase): write "N/A — architecture phase; pre-load TASK_BOARD recommended before next implementation sprint"
+- If runway <= 2 sessions: **flag** — "Low momentum runway. Add items to Now before next session."
+
+**Output:** "Momentum runway: ~N sessions at current velocity" (include in closeout summary)
+
+This data does not go into the audit JSON — it is for the closeout summary and IGNIS synthesis only.
 
 ---
 
@@ -177,6 +206,16 @@ Generate 3–5 innovative solutions, features, or improvements. Push past the ob
 - What creative direction has drifted from the SOUL?
 - What competitive move would surprise and delight?
 
+**Brainstorm item format (standardized — Session 9):**
+Each brainstorm item must include:
+1. **One-sentence synopsis** — what the idea is
+2. **Implementation path** — concrete first step (one sentence)
+3. **Execution probability** — High / Medium / Low (based on current phase and available time)
+
+Items rated **Low** execution probability go to the **IGNIS Parking Lot** in `context/IGNIS_PROTOCOL.md` — not to TASK_BOARD. Items rated **High** or **Medium** are eligible for commitment.
+
+**Infrastructure projects (Studio Ops, Studio Hub, etc.):** Dev-category items are Low by default unless execution path is clear within 2 sessions. Process/protocol items can be High/Medium.
+
 ---
 
 ### Step 6 — Commit
@@ -191,7 +230,8 @@ Use this exact format:
 
 ```markdown
 ## YYYY-MM-DD — Session N | Total: XX/50 | Velocity: N | Debt: →
-Rolling avg (last 3): Dev X.X | Align X.X | Momentum X.X | Engage X.X | Process X.X
+Avgs — 3: XX.X | 5: XX.X | 10: XX.X | 25: — | all: XX.X
+  └ 3-session: Dev X.X | Align X.X | Momentum X.X | Engage X.X | Process X.X
 
 | Category | Score | vs Last | Notes |
 |---|---|---|---|
@@ -226,12 +266,12 @@ and Studio Review agent to aggregate scores programmatically without parsing Mar
 
 ```json
 {
-  "schemaVersion": "1.2",
+  "schemaVersion": "1.3",
   "project": "{slug from context/PROJECT_STATUS.json}",
   "date": "YYYY-MM-DD",
   "session": N,
-  "label": "{entry label, e.g. 'Bootstrap Baseline', or null}",
   "sessionType": "implementation",
+  "label": "{entry label, e.g. 'Bootstrap Baseline', or null}",
   "calibration": true,
   "scores": {
     "devHealth": N,
@@ -254,6 +294,7 @@ and Studio Review agent to aggregate scores programmatically without parsing Mar
     "processQuality": null,
     "total": null
   },
+  "rollingAvgTotals": { "3": null, "5": null, "10": null, "25": null, "all": null },
   "topWin": "...",
   "topGap": "...",
   "intentOutcome": "Achieved",
@@ -273,7 +314,11 @@ Set `"calibration": false` once the project is past Session 3.
 
 **ignisFlags** — choose from: `high-velocity`, `low-velocity`, `creative-drift`, `debt-spike`, `debt-clear`, `intent-achieved`, `intent-redirected`, `compacted-resume`, `cdr-gap-recovered`, `blocker-cleared`, `sil-escalation`. Leave `[]` if none apply.
 
+**intentOutcome** — IGNIS Loop A tracks this field (PROPOSAL-011). Use: `"Achieved"` / `"Partial"` / `"Redirected"`. Be accurate — this feeds the `intentCompletionRate` metric. Also add `"intent-achieved"` or `"intent-redirected"` flag to `ignisFlags` accordingly.
+
 **ignisNote** — the sentence written in Step 3.5. Copy it here verbatim.
+
+**durationMinutes** — estimate the session duration in minutes based on context (number of files touched, complexity of work, conversation length). Ranges: short sprint = 30–45 min; focused session = 60–90 min; deep architecture session = 120–180 min; marathon = 180+. Use `null` if unable to estimate. (PROPOSAL-004, accepted 2026-03-27)
 
 Also update `context/PROJECT_STATUS.json` SIL fields to match this session:
 - `silScore` → this session's `total`
