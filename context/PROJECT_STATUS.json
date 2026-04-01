@@ -17,7 +17,7 @@
     "Live 375px smoke test needed before next deploy",
     "Engine hooks (beatReporter, rivalryDNA, injurySystem, gmLegacy) need wiring into GameSession.js season/week advance"
   ],
-  "lastUpdated": "2026-03-31",
+  "lastUpdated": "2026-04-01",
   "silScore": 45,
   "silAvg3": 42.5,
   "silVelocity": 15,
