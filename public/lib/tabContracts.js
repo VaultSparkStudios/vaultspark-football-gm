@@ -1,5 +1,5 @@
 import { state, api } from "./appState.js";
-import { decoratePlayerColumnFromRows, escapeHtml, fmtDeltaMoney, fmtMoney, renderPulseChips, renderTable, saveTradeBlockIds, setMetricCardValue, setTradeEvalText, teamByCode, teamCode, tradeAssetKeys, uniqueIds } from "./appCore.js";
+import { createEmptyTradeAssets, decoratePlayerColumnFromRows, escapeHtml, fmtDeltaMoney, fmtMoney, renderPulseChips, renderTable, saveTradeBlockIds, setMetricCardValue, setTradeEvalText, teamByCode, teamCode, tradeAssetKeys, uniqueIds } from "./appCore.js";
 import { activateTab, loadPickAssets } from "./gameFlow.js";
 
 export function renderExpiringContracts() {
@@ -86,6 +86,21 @@ export function getSelectedContractPlayer() {
 }
 
 export function setSelectedContractPlayer(playerId, { preserveInputs = false } = {}) {
+  state.selectedContractPlayerId = playerId || null;
+  const player = getSelectedContractPlayer();
+  const label = document.getElementById("contractsSelectedPlayerText");
+  if (label) {
+    label.textContent = player ? `Selected: ${player.name} (${player.pos})` : "Selected: None";
+  }
+  if (!preserveInputs) {
+    const demand = state.negotiationTargets.find((entry) => entry.id === playerId)?.demand || null;
+    const yearsInput = document.getElementById("contractYearsInput");
+    const salaryInput = document.getElementById("contractSalaryInput");
+    if (yearsInput) yearsInput.value = String(demand?.years || player?.contract?.yearsRemaining || 3);
+    if (salaryInput) salaryInput.value = demand?.salary || "";
+  }
+  updateContractPreview();
+}
 
 export function getSelectedDesignationPlayer() {
   return state.roster.find((player) => player.id === state.selectedDesignationPlayerId) || null;
@@ -330,8 +345,19 @@ export function getTradeTeamId(side) {
 }
 
 export function setTradeEvalCards({ fairness = null, capDeltaA = null, capDeltaB = null } = {}) {
+  document.getElementById("tradeFairnessScore").textContent = fairness == null ? "-" : `${fairness.toFixed(0)} / 100`;
+  document.getElementById("tradeCapDeltaA").textContent = capDeltaA == null ? "-" : fmtDeltaMoney(capDeltaA);
+  document.getElementById("tradeCapDeltaB").textContent = capDeltaB == null ? "-" : fmtDeltaMoney(capDeltaB);
+}
 
 export function clearTradePackages({ keepMessage = false } = {}) {
+  state.tradeAssets = createEmptyTradeAssets();
+  renderTradeWorkspace();
+  if (!keepMessage) {
+    setTradeEvalText("Use evaluate to see cap/value impact.");
+    setTradeEvalCards();
+  }
+}
 
 export function getTradePlayersForSide(side) {
   const { playerKey, rosterKey } = tradeAssetKeys(side);

@@ -380,6 +380,7 @@ async function createLeague() {
   setStatus("Creating league...");
   await api("/api/new-league", {
     method: "POST",
+    timeoutMs: 60_000,
     body: {
       seed: Number(document.getElementById("seedInput").value || Date.now()),
       startYear: Number(document.getElementById("startYearInput").value || state.currentYear),

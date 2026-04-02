@@ -27,10 +27,31 @@ export function hallOfFameCareerLine(entry) {
 }
 
 export function awardCountLine(awardCounts = {}) {
+  const pairs = [
+    ["MVP", awardCounts.MVP || 0],
+    ["OPOY", awardCounts.OPOY || 0],
+    ["DPOY", awardCounts.DPOY || 0],
+    ["All-Pro 1", awardCounts.AllPro1 || 0],
+    ["All-Pro 2", awardCounts.AllPro2 || 0],
+    ["Pro Bowl", awardCounts.ProBowl || 0],
+    ["ROY", (awardCounts.OROY || 0) + (awardCounts.DROY || 0) + (awardCounts.ROY || 0)],
+    ["CPOY", awardCounts.CPOY || 0],
+    ["Most Improved", awardCounts.MostImproved || 0]
+  ].filter(([, value]) => value > 0);
+  return pairs.length ? pairs.map(([label, value]) => `${label} ${value}`).join(" | ") : "No major awards logged";
+}
 
 export function hallOfFamePolicyLine(settings = state.leagueSettings || state.dashboard?.settings || {}) {
+  return `Score ${settings.hallOfFameInductionScoreMin ?? 240} | Wait ${settings.hallOfFameYearsRetiredMin ?? 0}y`;
+}
 
 export function retiredNumberPolicyLine(settings = state.leagueSettings || state.dashboard?.settings || {}) {
+  const parts = [];
+  parts.push(settings.retiredNumberRequireRetiredPlayer !== false ? "Retired only" : "Active allowed");
+  if (settings.retiredNumberRequireHallOfFame === true) parts.push("Hall required");
+  if (Number(settings.retiredNumberCareerAvMin || 0) > 0) parts.push(`AV ${settings.retiredNumberCareerAvMin}+`);
+  return parts.join(" | ");
+}
 
 export function setSelectedHistoryPlayerFromAwardEntry(entry) {
   if (!entry?.playerId) return;

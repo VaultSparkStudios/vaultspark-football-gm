@@ -790,6 +790,110 @@ export function rowJoinKey(row) {
 }
 
 export function shapeStatsRowsForDisplay(rows, { scope, category }) {
+  if (scope === "team") return rows;
+  const rushingCompanion = new Map((state.statsCompanionRows.receiving || []).map((row) => [rowJoinKey(row), row]));
+  const receivingCompanion = new Map((state.statsCompanionRows.rushing || []).map((row) => [rowJoinKey(row), row]));
+  return (rows || []).map((row) => {
+    const common = {
+      playerId: row.playerId,
+      player: row.player,
+      season: row.year ?? row.seasons,
+      age: row.age ?? "",
+      team: row.tm,
+      lg: "NFL",
+      pos: row.pos,
+      g: row.g ?? row.seasons ?? 0,
+      gs: row.gs ?? 0
+    };
+    if (category === "passing") {
+      return appendAvLast({
+        ...common,
+        cmp: row.cmp,
+        att: row.att,
+        cmpPct: row.cmpPct,
+        yds: row.yds,
+        td: row.td,
+        tdPct: Number(((row.td || 0) / Math.max(1, row.att || 0) * 100).toFixed(1)),
+        int: row.int,
+        intPct: Number(((row.int || 0) / Math.max(1, row.att || 0) * 100).toFixed(1)),
+        firstDowns: row.firstDowns,
+        ypa: row.ypa,
+        ypc: row.ypc,
+        ypg: Number(((row.yds || 0) / Math.max(1, row.g || 0)).toFixed(1)),
+        rate: row.rate,
+        sk: row.sacks,
+        nya: Number((((row.yds || 0) - (row.sackYds || 0)) / Math.max(1, (row.att || 0) + (row.sacks || 0))).toFixed(2)),
+        anya: Number((((row.yds || 0) + (row.td || 0) * 20 - (row.int || 0) * 45 - (row.sackYds || 0)) / Math.max(1, (row.att || 0) + (row.sacks || 0))).toFixed(2))
+      }, row.av);
+    }
+    if (category === "rushing") {
+      const receiving = rushingCompanion.get(rowJoinKey(row)) || {};
+      const touch = (row.att || 0) + (receiving.rec || 0);
+      const yScr = (row.yds || 0) + (receiving.yds || 0);
+      return appendAvLast({
+        ...common,
+        att: row.att,
+        yds: row.yds,
+        td: row.td,
+        firstDowns: row.firstDowns,
+        ypa: row.ypa,
+        ypg: Number(((row.yds || 0) / Math.max(1, row.g || 0)).toFixed(1)),
+        apg: Number(((row.att || 0) / Math.max(1, row.g || 0)).toFixed(1)),
+        tgt: receiving.tgt || 0,
+        rec: receiving.rec || 0,
+        recYds: receiving.yds || 0,
+        ypr: receiving.ypr || 0,
+        catchPct: receiving.catchPct || 0,
+        ypt: receiving.ypt || 0,
+        touch,
+        yTch: Number((yScr / Math.max(1, touch)).toFixed(1)),
+        yScr,
+        fmb: row.fmb || 0
+      }, row.av);
+    }
+    if (category === "receiving") {
+      const rushing = receivingCompanion.get(rowJoinKey(row)) || {};
+      const touch = (rushing.att || 0) + (row.rec || 0);
+      const yScr = (rushing.yds || 0) + (row.yds || 0);
+      return appendAvLast({
+        ...common,
+        tgt: row.tgt,
+        rec: row.rec,
+        yds: row.yds,
+        ypr: row.ypr,
+        td: row.td,
+        firstDowns: row.firstDowns,
+        recPg: Number(((row.rec || 0) / Math.max(1, row.g || 0)).toFixed(1)),
+        ypg: Number(((row.yds || 0) / Math.max(1, row.g || 0)).toFixed(1)),
+        catchPct: row.catchPct,
+        ypt: row.ypt,
+        att: rushing.att || 0,
+        rushYds: rushing.yds || 0,
+        rushYpa: rushing.ypa || 0,
+        touch,
+        yTch: Number((yScr / Math.max(1, touch)).toFixed(1)),
+        yScr,
+        fmb: rushing.fmb || 0
+      }, row.av);
+    }
+    if (category === "defense") {
+      return appendAvLast({
+        ...common,
+        int: row.int,
+        pd: row.pd,
+        ff: row.ff,
+        fr: row.fr,
+        sk: row.sacks,
+        comb: row.tkl,
+        solo: row.solo,
+        ast: row.ast,
+        tfl: row.tfl,
+        qbHits: row.qbHits
+      }, row.av);
+    }
+    return appendAvLast({ ...common, ...row }, row.av);
+  });
+}
 
 export function renderGuideContent() {
   const html = GUIDE_SECTIONS.map(
@@ -884,6 +988,47 @@ export function renderTable(
   tableId,
   rows,
   { sortable = false, onSort = null, sortKey = null, sortDir = "desc", maxRows = null, hiddenColumns = [] } = {}
+) {
+  const table = document.getElementById(tableId);
+  if (!table) return;
+  if (!rows?.length) {
+    table.innerHTML = "<tr><td>No rows</td></tr>";
+    return;
+  }
+
+  const visibleRows = maxRows == null ? rows : rows.slice(0, Math.max(1, maxRows));
+  const columns = Object.keys(visibleRows[0]).filter(
+    (col) => !shouldHideInternalColumn(col) && !hiddenColumns.includes(col)
+  );
+  const head = `<tr>${columns
+    .map((col) => {
+      if (!sortable) return `<th>${escapeHtml(toTitleCaseKey(col))}</th>`;
+      const marker = sortKey === col ? (sortDir === "asc" ? " ^" : " v") : "";
+      return `<th data-sort-key="${escapeHtml(col)}">${escapeHtml(toTitleCaseKey(col))}${marker}</th>`;
+    })
+    .join("")}</tr>`;
+
+  const body = visibleRows
+    .map(
+      (row) =>
+        `<tr>${columns
+          .map((col) => {
+            const tone = classifyTone(col, row[col]);
+            const className = tone ? ` class="tone-${tone}"` : "";
+            return `<td${className}>${row[col] == null ? "" : escapeHtml(row[col])}</td>`;
+          })
+          .join("")}</tr>`
+    )
+    .join("");
+
+  table.innerHTML = `${head}${body}`;
+
+  if (sortable && typeof onSort === "function") {
+    table.querySelectorAll("th[data-sort-key]").forEach((th) => {
+      th.addEventListener("click", () => onSort(th.dataset.sortKey));
+    });
+  }
+}
 
 export function setSelectOptions(selectId, options, preferredValue = null) {
   const el = document.getElementById(selectId);
@@ -981,6 +1126,26 @@ export function setBoxScoreTab(panelId = "boxScoreStatsPanel") {
 }
 
 export function decoratePlayerColumnFromRows(tableId, rows, { nameKey = "player", idKeys = ["playerId", "id"] } = {}) {
+  if (!rows?.length) return;
+  const columns = Object.keys(rows[0]);
+  const nameIndex = columns.indexOf(nameKey);
+  if (nameIndex < 0) return;
+  const idKey = idKeys.find((key) => columns.includes(key));
+  if (!idKey) return;
+
+  const table = document.getElementById(tableId);
+  if (!table) return;
+  const tr = table.querySelectorAll("tr");
+  for (let i = 1; i < tr.length; i += 1) {
+    const row = rows[i - 1];
+    const playerId = row?.[idKey];
+    const playerName = row?.[nameKey];
+    if (!playerId || !playerName) continue;
+    const td = tr[i].children[nameIndex];
+    if (!td) continue;
+    td.innerHTML = `<button class="link-btn" data-player-id="${escapeHtml(playerId)}">${escapeHtml(playerName)}</button>`;
+  }
+}
 
 export function decoratePlayerColumnByIds(tableId, playerIds, playerColumnIndex = 1) {
   const table = document.getElementById(tableId);

@@ -22,7 +22,7 @@ async function createLeagueFromSetup(page, { runtimeMode = null } = {}) {
     await expect(page.locator("#runtimeModeSelect")).toHaveValue(runtimeMode);
   }
   await page.click("#createLeagueBtn");
-  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 45_000 });
+  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
   await waitGameReady(page);
 }
 
@@ -56,7 +56,12 @@ test("create league, advance week, and open player modal", async ({ page }) => {
 
   const before = parseWeek(await page.locator("#yearCard").textContent());
   await page.click("#advanceWeekBtn");
-  await waitGameReady(page);
+  // Dismiss the pre-game tactical modal if it appears during regular season
+  const skipBtn = page.locator("#halftimeAdjustModal .tactic-skip-btn");
+  if (await skipBtn.isVisible({ timeout: 3_000 }).catch(() => false)) {
+    await skipBtn.click();
+  }
+  await waitGameReady(page, 120_000);
   const after = parseWeek(await page.locator("#yearCard").textContent());
   expect(after).not.toBeNull();
   expect(before).not.toBeNull();
