@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.3",
+  "project": "football-gm",
+  "date": "2026-04-02",
+  "session": 9,
+  "sessionType": "implementation",
+  "label": "CI Fix — Modular Split Repair",
+  "calibration": false,
+  "scores": {
+    "devHealth": 9,
+    "creativeAlignment": 8,
+    "momentum": 8,
+    "engagement": 7,
+    "processQuality": 9
+  },
+  "total": 41,
+  "maxScore": 50,
+  "velocity": 4,
+  "protocolVelocity": null,
+  "durationMinutes": 90,
+  "debt": "↓",
+  "rollingAvg3": {
+    "devHealth": 9.0,
+    "creativeAlignment": 9.0,
+    "momentum": 9.0,
+    "engagement": 6.7,
+    "processQuality": 9.3,
+    "total": 44.7
+  },
+  "rollingAvgTotals": { "3": 44.7, "5": 43.8, "10": null, "25": null, "all": 43.8 },
+  "topWin": "Root-caused and fixed 7 empty-body functions across 4 modules from the modular split — game was completely broken in server-backed mode.",
+  "topGap": "Low momentum runway (~0.3 sessions). TASK_BOARD Now bucket needs replenishment.",
+  "intentOutcome": "Achieved",
+  "improvementsShipped": 4,
+  "improvementGroups": {
+    "modular-split-repair": ["appCore-3-functions", "tabContracts-2-functions", "tabHistory-3-functions", "gameFlow-loadSecondaryPanels"],
+    "ci-stability": ["tactical-modal-dismiss", "api-timeout-increase"]
+  },
+  "testsTotal": 102,
+  "testsByType": { "unit": 93, "playwright": 9 },
+  "testsDelta": 9,
+  "deployStatus": "deployed",
+  "ignisFlags": ["intent-achieved", "debt-clear"],
+  "ignisNote": "Automated code-splitting scripts need syntax verification as a post-step — the split-app.mjs brace-counting parser silently dropped function bodies for closures with complex parameter destructuring."
+}

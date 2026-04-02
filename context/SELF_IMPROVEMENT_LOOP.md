@@ -7,10 +7,12 @@ The Rolling Status header is overwritten each closeout. Entries are append-only 
 
 <!-- rolling-status-start -->
 ## Rolling Status (auto-updated each closeout)
-Sparkline (last 5 totals): ▁▆▇▇▇▇
-4-session avg [N=4]: Dev 8.8 | Align 8.8 | Momentum 9.5 | Engage 6.3 | Process 9.5
-Avg total: 44.5 / 50  |  Velocity trend: ↑  |  Debt: ↓ (CURRENT_STATE refreshed; syntax fixed)
-Last session: 2026-03-27 | Session 6 | Total: 47/50 | Velocity: 15 features
+Sparkline (last 5 totals): ▅▆▇▇▆
+Avgs — 3: 44.7 | 5: 43.8 | 10: — | 25: — | all: 43.8  (— = insufficient data)
+  └ 3-session: Dev 9.0 | Align 9.0 | Momentum 9.0 | Engage 6.7 | Process 9.3
+Velocity trend: ↓  |  Protocol velocity: →  |  Debt: ↓
+Momentum runway: ~0.3 sessions  |  Intent rate: 100% (last 5)
+Last session: 2026-04-02 | Session 9 | Total: 41/50 | Velocity: 4 | protocolVelocity: 0
 ─────────────────────────────────────────────────────────────────────
 <!-- rolling-status-end -->
 
@@ -200,3 +202,32 @@ Rolling avg (last 4) [N=4]: Dev 8.8 | Align 8.8 | Momentum 9.5 | Engage 6.3 | Pr
 5. **Rivalry Week Big Game Mode** — special pre-game for rivalry heat > 60 (score 8, +3). Pairs naturally with halftime adjust already shipped. (Align ↑, Engage ↑)
 
 **Committed to TASK_BOARD:** [SIL] Setup.js brand builder wire · [SIL] Draft Grade System for Session 7
+
+---
+
+## 2026-04-02 — Session 9 | Total: 41/50 | Velocity: 4 | Debt: ↓
+Avgs — 3: 44.7 | 5: 43.8 | 10: — | 25: — | all: 43.8
+  └ 3-session: Dev 9.0 | Align 9.0 | Momentum 9.0 | Engage 6.7 | Process 9.3
+
+| Category | Score | vs Last | Notes |
+|---|---|---|---|
+| Dev Health | 9 | → | 7 broken split functions restored; 102 tests all green; CI fully operational |
+| Creative Alignment | 8 | ↓ | Pure fix session — no new features but all existing features now work correctly |
+| Momentum | 8 | ↓ | Critical CI blocker cleared (0/9 → 9/9 Playwright); no new features shipped |
+| Engagement | 7 | → | Game deployed and live; no new engagement surfaces this session |
+| Process Quality | 9 | → | Full closeout; all context files refreshed; TASK_BOARD caught up from Session 8 |
+| **Total** | **41/50** | -6 | Fix session — lower total expected; health maintained |
+
+**Top win:** Root-caused and fixed the modular split damage — 7 empty-body functions across 4 modules were silently breaking all ES module imports, making the entire game unplayable in server-backed mode.
+**Top gap:** Low momentum runway (~0.3 sessions). TASK_BOARD Now bucket needs replenishment before next implementation sprint.
+**Intent outcome:** Achieved — user said "fix it" for CI failures; all 9 Playwright tests now pass, 93 unit tests pass, Pages build clean.
+
+**IGNIS note:** Automated code-splitting scripts need syntax verification as a post-step — the split-app.mjs brace-counting parser silently dropped function bodies for closures with complex parameter destructuring.
+
+**Brainstorm**
+1. **split-app.mjs syntax validator** — add a post-split `node -c` check on every output module; prevents silent empty-body regressions. Path: add validation loop at end of split-app.mjs. Execution: High.
+2. **Playwright smoke test for module loading** — dedicated test that verifies all ES module imports resolve without errors before testing app behavior. Path: add `page.on("pageerror")` listener in test fixture. Execution: High.
+3. **CI parallelization** — run Node tests and Playwright in parallel jobs to cut CI time from ~8min to ~4min. Path: split `ci.yml` into parallel jobs with shared build step. Execution: Medium.
+4. **Test coverage report** — add c8/istanbul coverage to Node tests; track coverage % in PROJECT_STATUS.json. Path: `node --test --experimental-test-coverage`. Execution: Medium.
+
+**Committed to TASK_BOARD:** [SIL] split-app.mjs syntax validator · [SIL] Playwright module-load smoke test

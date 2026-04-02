@@ -12,6 +12,16 @@ Append chronological entries.
 
 ---
 
+### 2026-04-02 — Session 9 — CI Fix (Modular Split Repair)
+
+- Goal: Fix all 9 Playwright UI tests failing after Session 8's app.js modular split
+- What changed: Restored 7 empty-body functions across 4 modules (appCore, tabContracts, tabHistory, gameFlow) that split-app.mjs silently broke; added missing import; fixed Playwright test to dismiss pre-game tactical modal; increased /api/new-league client timeout from 15s to 60s
+- Files or systems touched: `public/lib/appCore.js`, `public/lib/gameFlow.js`, `public/lib/tabContracts.js`, `public/lib/tabHistory.js`, `public/setup.js`, `tests-ui/app.spec.js`, all context files
+- Risks created or removed: Removed — game was completely broken in server-backed mode (ES modules wouldn't parse); now fully functional with 102 tests passing
+- Recommended next move: 375px smoke test → Setup.js brand builder wire → Draft Grade System
+
+---
+
 ### 2026-03-27 — Session 4 — Full Audit + Mass Implementation
 
 - Goal: Full project audit (83/100 B+) + implement all 15 items from both audit tiers (Highest Leverage + Highest Ceiling)
