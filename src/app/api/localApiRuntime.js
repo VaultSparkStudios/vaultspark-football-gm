@@ -11,6 +11,10 @@ import { initRivalries, getRivalryContext, getTeamRivalries } from "../../engine
 import { runLeagueCombine, getCombineSummary } from "../../engine/draftCombine.js";
 import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "../../engine/playerAgentAI.js";
 import { getCapAlerts } from "../../engine/capAlerts.js";
+import {
+  startChallenge, advanceChallengeSeason, checkChallengeComplete,
+  formatLeaderboardEntry, parseLeaderboard, serializeLeaderboard, rankEntry
+} from "../../engine/speedrunChallenge.js";
 import { getFanSentiment, fanApprovalLabel } from "../../engine/fanSentiment.js";
 import { getMentorshipStatus, getMentorshipHistory } from "../../engine/veteranMentorship.js";
 import {
@@ -91,6 +95,27 @@ function _loadPersistedLobby() {
 }
 
 _loadPersistedLobby();
+
+// ── Speedrun Challenge (persisted via localStorage) ───────────────────────────
+let _speedrunChallenge = null;
+const SPEEDRUN_KEY = "vsfgm-speedrun-challenge-v1";
+const SPEEDRUN_LB_KEY = "speedrunLeaderboard";
+
+function _persistSpeedrun() {
+  try {
+    if (_speedrunChallenge) localStorage.setItem(SPEEDRUN_KEY, JSON.stringify(_speedrunChallenge));
+    else localStorage.removeItem(SPEEDRUN_KEY);
+  } catch { /* quota exceeded — state still works in-memory */ }
+}
+
+function _loadPersistedSpeedrun() {
+  try {
+    const s = localStorage.getItem(SPEEDRUN_KEY);
+    if (s) _speedrunChallenge = JSON.parse(s);
+  } catch { _speedrunChallenge = null; }
+}
+
+_loadPersistedSpeedrun();
 
 // ── Rewind snapshot helpers ───────────────────────────────────────────────────
 
@@ -1477,6 +1502,70 @@ export function createLocalApiRuntime({
         if (secondaryColor) team.brandOverride.secondary = String(secondaryColor).slice(0, 7);
         team.brandOverrideActive = true;
         return finish(jsonResponse(200, { ok: true, teamId: tid, brandOverride: team.brandOverride, state: getAugmentedState(s) }));
+      }
+
+      // ── Speedrun Challenge routes ──────────────────────────────────────────
+      if (method === "POST" && pathname === "/api/speedrun/start") {
+        const s = ensureSession();
+        const { teamId } = body || {};
+        const tid = teamId || s.controlledTeamId;
+        if (!tid) return finish(jsonResponse(400, { ok: false, error: "teamId required." }));
+        const settings = {
+          startYear: s.currentYear,
+          difficulty: s.getLeagueSettings?.()?.difficulty || "normal"
+        };
+        _speedrunChallenge = startChallenge(tid, settings);
+        _persistSpeedrun();
+        return finish(jsonResponse(200, { ok: true, challenge: _speedrunChallenge }));
+      }
+
+      if (method === "GET" && pathname === "/api/speedrun/status") {
+        return finish(jsonResponse(200, { ok: true, challenge: _speedrunChallenge }));
+      }
+
+      if (method === "POST" && pathname === "/api/speedrun/check") {
+        if (!_speedrunChallenge || !_speedrunChallenge.active) {
+          return finish(jsonResponse(200, { ok: true, complete: false, challenge: null }));
+        }
+        const s = ensureSession();
+        // Find the latest champion entry for the current year
+        const latestChampion = (s.league.champions || []).slice(-1)[0] || null;
+        const postseasonResults = latestChampion ? { superBowl: { championTeamId: latestChampion.championTeamId } } : null;
+        // Advance the season counter
+        _speedrunChallenge = advanceChallengeSeason(_speedrunChallenge);
+        const result = checkChallengeComplete(_speedrunChallenge, postseasonResults, s.controlledTeamId);
+        if (result.complete) {
+          _speedrunChallenge.active = false;
+        }
+        _persistSpeedrun();
+        return finish(jsonResponse(200, { ok: true, ...result, challenge: _speedrunChallenge }));
+      }
+
+      if (method === "POST" && pathname === "/api/speedrun/abandon") {
+        _speedrunChallenge = null;
+        _persistSpeedrun();
+        return finish(jsonResponse(200, { ok: true }));
+      }
+
+      if (method === "GET" && pathname === "/api/speedrun/leaderboard") {
+        const raw = localStorage.getItem(SPEEDRUN_LB_KEY) || "[]";
+        const entries = parseLeaderboard(raw);
+        return finish(jsonResponse(200, { ok: true, entries }));
+      }
+
+      if (method === "POST" && pathname === "/api/speedrun/submit") {
+        const { playerName } = body || {};
+        if (!_speedrunChallenge) {
+          return finish(jsonResponse(400, { ok: false, error: "No challenge state to submit." }));
+        }
+        const entry = formatLeaderboardEntry(_speedrunChallenge, playerName);
+        const raw = localStorage.getItem(SPEEDRUN_LB_KEY) || "[]";
+        const existing = parseLeaderboard(raw);
+        const { rank, entries } = rankEntry(existing, entry);
+        localStorage.setItem(SPEEDRUN_LB_KEY, serializeLeaderboard(entries));
+        _speedrunChallenge = null;
+        _persistSpeedrun();
+        return finish(jsonResponse(200, { ok: true, rank, totalEntries: entries.length, entry }));
       }
 
       return finish(jsonResponse(501, { ok: false, error: `Client-only runtime not implemented for ${method} ${pathname}.` }));

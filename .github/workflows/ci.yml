@@ -31,3 +31,9 @@ jobs:
 
       - name: Run UI tests
         run: npm run test:ui
+
+      - name: Verify Pages build
+        run: npm run build:pages
+        env:
+          VITE_APP_BASE_PATH: /vaultspark-football-gm/
+          VSFGM_RUNTIME_DEFAULT: client
