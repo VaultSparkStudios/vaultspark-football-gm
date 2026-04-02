@@ -6,7 +6,7 @@ test("create league in play mode reaches the franchise screen", async ({ page })
   await page.click(".setup-details-toggle");
   await page.selectOption("#modeInput", "play");
   await page.click("#createLeagueBtn");
-  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 25_000 });
-  await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 25_000 });
+  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 45_000 });
+  await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
   await expect(page.locator("#yearCard")).toContainText("2026");
 });

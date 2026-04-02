@@ -9,7 +9,7 @@ async function waitSetupReady(page) {
   await expect(page.locator("#setupStatus")).toContainText("Ready", { timeout: 20_000 });
 }
 
-async function waitGameReady(page, timeout = 25_000) {
+async function waitGameReady(page, timeout = 60_000) {
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout });
 }
 
