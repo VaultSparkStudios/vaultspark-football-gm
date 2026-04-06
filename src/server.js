@@ -18,6 +18,16 @@ import { getPersistenceDescriptor } from "./runtime/persistence.js";
 const PORT = Number(process.env.PORT || 4173);
 const PUBLIC_DIR = path.resolve("public");
 const SRC_DIR = path.resolve("src");
+const ALLOWED_ORIGINS = new Set(
+  [
+    process.env.APP_ORIGIN,
+    process.env.GAME_PUBLIC_ORIGIN,
+    process.env.GAME_SERVICE_ORIGIN,
+    process.env.API_ORIGIN
+  ]
+    .map((value) => String(value || "").trim().replace(/\/+$/, ""))
+    .filter(Boolean)
+);
 
 let session = null;
 let sessionReady = false;
@@ -58,6 +68,17 @@ function sendJson(res, statusCode, payload) {
 function sendText(res, statusCode, body, contentType = "text/plain; charset=utf-8") {
   res.writeHead(statusCode, { "Content-Type": contentType });
   res.end(body);
+}
+
+function applyCorsHeaders(req, res) {
+  const requestOrigin = String(req.headers.origin || "").trim().replace(/\/+$/, "");
+  if (!requestOrigin) return;
+  if (!ALLOWED_ORIGINS.size || ALLOWED_ORIGINS.has(requestOrigin)) {
+    res.setHeader("Access-Control-Allow-Origin", requestOrigin);
+    res.setHeader("Vary", "Origin");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  }
 }
 
 function readRequestBody(req) {
@@ -1230,6 +1251,12 @@ const server = http.createServer(async (req, res) => {
   const started = Date.now();
   serverMetrics.requests += 1;
   try {
+    applyCorsHeaders(req, res);
+    if (req.method === "OPTIONS") {
+      res.writeHead(204);
+      res.end();
+      return;
+    }
     const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
     if (url.pathname.startsWith("/api/")) {
       serverMetrics.apiRequests += 1;

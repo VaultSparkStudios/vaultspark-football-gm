@@ -1,5 +1,6 @@
 let localRuntimePromise = null;
 let runtimeModeCache = null;
+let fallbackAttempted = false;
 
 function readStoredRuntimeMode() {
   try {
@@ -67,6 +68,7 @@ export function getRuntimeMode() {
 export function setRuntimeMode(mode) {
   const nextMode = normalizeRuntimeMode(mode === "client" ? "client" : "server");
   persistRuntimeMode(nextMode);
+  fallbackAttempted = false;
   return nextMode;
 }
 
@@ -135,8 +137,22 @@ async function requestHttp(path, options = {}) {
 
 async function getLocalRuntime() {
   if (!localRuntimePromise) {
-    localRuntimePromise = import(new URL("../../src/app/api/localApiRuntime.js", import.meta.url))
-      .then(({ createLocalApiRuntime }) => createLocalApiRuntime({ storage: window.localStorage }))
+    const moduleCandidates = [
+      new URL("../../src/app/api/localApiRuntime.js", import.meta.url),
+      new URL("../../../src/app/api/localApiRuntime.js", import.meta.url)
+    ];
+    localRuntimePromise = (async () => {
+      let lastError = null;
+      for (const candidate of moduleCandidates) {
+        try {
+          const { createLocalApiRuntime } = await import(candidate);
+          return createLocalApiRuntime({ storage: window.localStorage });
+        } catch (error) {
+          lastError = error;
+        }
+      }
+      throw lastError || new Error("Unable to load local runtime.");
+    })()
       .catch((error) => {
         localRuntimePromise = null;
         throw error;
@@ -158,11 +174,48 @@ async function requestLocal(path, options = {}) {
   return response.payload;
 }
 
+function canAutoFallbackToClient(error) {
+  if (fallbackAttempted || getRuntimeMode() !== "server") return false;
+  if (typeof window === "undefined") return false;
+  const protocol = window.location?.protocol || "";
+  if (protocol === "file:") return true;
+  const message = String(error?.message || "").toLowerCase();
+  return (
+    message.includes("cannot reach the server") ||
+    message.includes("server request timed out") ||
+    message.includes("server-backed mode is unavailable")
+  );
+}
+
+async function retryInClientMode(path, options, error) {
+  fallbackAttempted = true;
+  const mode = setRuntimeMode("client");
+  try {
+    window.dispatchEvent(new CustomEvent("vsfgm:runtime-fallback", {
+      detail: {
+        from: "server",
+        to: mode,
+        reason: error?.message || "Server-backed runtime unavailable."
+      }
+    }));
+  } catch {
+    // Ignore event dispatch failures.
+  }
+  return requestLocal(path, options);
+}
+
 export function createApiClient() {
   return async function api(path, options = {}) {
     if (getRuntimeMode() === "client") {
       return requestLocal(path, options);
     }
-    return requestHttp(path, options);
+    try {
+      return await requestHttp(path, options);
+    } catch (error) {
+      if (canAutoFallbackToClient(error)) {
+        return await retryInClientMode(path, options, error);
+      }
+      throw error;
+    }
   };
 }

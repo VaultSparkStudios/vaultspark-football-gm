@@ -117,8 +117,8 @@ export function activateTab(tabId) {
   }
 }
 
-export async function loadState() {
-  const data = await api("/api/state");
+export async function loadState({ timeoutMs } = {}) {
+  const data = await api("/api/state", timeoutMs ? { timeoutMs } : {});
   applyDashboard(data);
 }
 
@@ -594,7 +594,7 @@ export function syncBootFilters() {
 }
 
 export async function loadCoreDashboard() {
-  await loadState();
+  await loadState({ timeoutMs: 4000 });
   updateStatsControls();
   syncBootFilters();
   renderCommandPalette();
@@ -603,44 +603,60 @@ export async function loadCoreDashboard() {
   renderRealismVerification();
 }
 
+async function runLoaderBatch(loaders = []) {
+  const results = await Promise.allSettled(loaders.map((loader) => loader()));
+  return results
+    .map((result, index) => (result.status === "rejected" ? result.reason?.message || `Loader ${index + 1} failed.` : null))
+    .filter(Boolean);
+}
+
 export async function loadSecondaryPanels({ background = false } = {}) {
-  const loaders = [
-    loadRoster(),
-    loadContractsTeam(),
-    loadFreeAgency(),
-    loadRetiredPool(),
-    loadStats(),
-    loadDraftState(),
-    loadScouting(),
-    loadDepthChart(),
-    loadSaves(),
-    loadQa(),
-    loadTeamHistory(),
-    loadCalendar(),
-    loadTransactionLog(),
-    loadNews(),
-    loadPickAssets(),
-    loadNegotiations(),
-    loadAnalytics(),
-    loadSettings(),
-    loadStaff(),
-    loadOwner(),
-    loadObservability(),
-    loadPersistence(),
-    loadPipeline(),
-    loadCalibrationJobs(),
-    loadSimJobs()
+  const loaderFns = [
+    () => loadRoster(),
+    () => loadContractsTeam(),
+    () => loadFreeAgency(),
+    () => loadRetiredPool(),
+    () => loadStats(),
+    () => loadDraftState(),
+    () => loadScouting(),
+    () => loadDepthChart(),
+    () => loadSaves(),
+    () => loadQa(),
+    () => loadTeamHistory(),
+    () => loadCalendar(),
+    () => loadTransactionLog(),
+    () => loadNews(),
+    () => loadPickAssets(),
+    () => loadNegotiations(),
+    () => loadAnalytics(),
+    () => loadSettings(),
+    () => loadStaff(),
+    () => loadOwner(),
+    () => loadObservability(),
+    () => loadPersistence(),
+    () => loadPipeline(),
+    () => loadCalibrationJobs(),
+    () => loadSimJobs()
   ];
+  const batches = [];
+  for (let index = 0; index < loaderFns.length; index += 4) {
+    batches.push(loaderFns.slice(index, index + 4));
+  }
 
   if (!background) {
-    await Promise.all(loaders);
+    for (const batch of batches) {
+      const failures = await runLoaderBatch(batch);
+      if (failures.length) {
+        throw new Error(failures[0]);
+      }
+    }
     return [];
   }
 
-  const results = await Promise.allSettled(loaders);
-  const failures = results
-    .map((result, index) => (result.status === "rejected" ? result.reason?.message || `Loader ${index + 1} failed.` : null))
-    .filter(Boolean);
+  const failures = [];
+  for (const batch of batches) {
+    failures.push(...(await runLoaderBatch(batch)));
+  }
   if (failures.length) {
     console.error("Background panel hydration failed:", failures.join(" | "));
   }

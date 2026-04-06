@@ -9,7 +9,7 @@
 ## Deployment/runtime status
 - GitHub Pages remains the canonical frontend publish path for this repo.
 - The Pages build now injects runtime-availability metadata into `index.html` and `game.html`.
-- Published Pages artifacts default to `client-only` mode and disable the `server-backed` setup option unless `GAME_SERVICE_ORIGIN` or `API_DOMAIN` is configured at build time.
+- Published Pages artifacts default to `client-only` mode and disable the `server-backed` setup option unless `API_ORIGIN`, `GAME_SERVICE_ORIGIN`, or `API_DOMAIN` is configured at build time.
 - Backend GHCR image tags now lowercase the GitHub owner name before push, fixing the `repository name must be lowercase` failure in `Deploy Backend Runtime`.
 - Backend/runtime deployment remains separate and still targets:
   - `https://play-vaultspark-football-gm.vaultsparkstudios.com`

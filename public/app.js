@@ -1520,6 +1520,10 @@ globalThis._loadSpeedrunStatus = loadSpeedrunStatus;
 
 async function init() {
   state.statsHiddenColumns = readStatsHiddenColumns();
+  window.addEventListener("vsfgm:runtime-fallback", (event) => {
+    const reason = event?.detail?.reason ? ` ${event.detail.reason}` : "";
+    setStatus(`Server unreachable — switched to client-only mode.${reason}`);
+  });
   bindEvents();
   applyShellTheme();
   renderTradeWorkspace();

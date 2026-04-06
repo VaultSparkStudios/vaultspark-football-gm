@@ -46,7 +46,8 @@ Replace:
 ## GitHub Configuration
 
 - [ ] Settings -> Pages -> Source is `GitHub Actions`
-- [ ] Repo variable `GAME_SERVICE_ORIGIN` is set if the frontend points to a live gameplay origin
+- [ ] Repo variable `API_ORIGIN` is set if the frontend points to a live API origin
+- [ ] Repo variable `GAME_SERVICE_ORIGIN` is set if the frontend still needs a separate live gameplay origin
 - [ ] Repo variable `API_DOMAIN` is set if the frontend points to a live API origin
 - [ ] `deploy-pages.yml` is configured for `__GAME_SLUG__`
 - [ ] Optional backend deploy workflow is configured

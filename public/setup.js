@@ -324,7 +324,7 @@ async function loadSetup(retryCount = 0) {
 
   let init;
   try {
-    init = await api("/api/setup/init?includeSaves=0&includeBackups=0");
+    init = await api("/api/setup/init?includeSaves=0&includeBackups=0", { timeoutMs: 4000 });
   } catch (err) {
     if (loadVersion !== setupLoadVersion) return;
     if (retryCount < MAX_RETRIES) {
@@ -435,6 +435,12 @@ async function deleteBackupSlot() {
 }
 
 function bindEvents() {
+  window.addEventListener("vsfgm:runtime-fallback", (event) => {
+    const reason = event?.detail?.reason ? ` ${event.detail.reason}` : "";
+    setStatus(`Server unreachable — switched to client-only mode.${reason}`);
+    applyRuntimeModeUi();
+  });
+
   document.getElementById("runtimeModeSelect")?.addEventListener("change", (event) => {
     const mode = setRuntimeMode(event.target.value);
     event.target.value = mode;

@@ -30,7 +30,9 @@ jobs:
       VITE_CANONICAL_URL: https://vaultsparkstudios.com/vaultspark-football-gm/
       VITE_OG_IMAGE_URL: https://vaultsparkstudios.com/vaultspark-football-gm/images/cover.png
       VITE_DOMAIN: vaultsparkstudios.com
+      VITE_API_ORIGIN: ${{ vars.API_ORIGIN }}
       VITE_GAME_SERVICE_ORIGIN: ${{ vars.GAME_SERVICE_ORIGIN }}
+      API_ORIGIN: ${{ vars.API_ORIGIN }}
       API_DOMAIN: ${{ vars.API_DOMAIN }}
       VSFGM_RUNTIME_DEFAULT: client
     steps:

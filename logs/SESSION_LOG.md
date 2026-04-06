@@ -74,7 +74,7 @@ Completed:
   - `npm.cmd run smoke:pages`
 
 Open problems:
-- The published Pages site still cannot offer real server-backed play until the separate backend/runtime deployment exists and one of `GAME_SERVICE_ORIGIN` or `API_DOMAIN` is configured for the Pages build
+- The published Pages site still cannot offer real server-backed play until the separate backend/runtime deployment exists and one of `API_ORIGIN`, `GAME_SERVICE_ORIGIN`, or `API_DOMAIN` is configured for the Pages build
 - Setup/main-menu latency still needs measuring after the non-blocking save-load and runtime-import fixes
 - A full `npm.cmd test` pass was not rerun in this shell session, so verification still relies on focused suites
 - The unrelated realism/runtime stash remains parked and should stay isolated until intentionally resumed

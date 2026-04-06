@@ -9,7 +9,9 @@ const srcDir = path.join(rootDir, "src");
 const outDir = path.join(rootDir, "static");
 const slug = process.env.GAME_SLUG || "vaultspark-football-gm";
 const runtimeDefault = process.env.VSFGM_RUNTIME_DEFAULT || "client";
-const explicitServerBaseUrl = (process.env.VITE_GAME_SERVICE_ORIGIN || "").trim()
+const explicitServerBaseUrl = (process.env.VITE_API_ORIGIN || "").trim()
+  || (process.env.API_ORIGIN || "").trim()
+  || (process.env.VITE_GAME_SERVICE_ORIGIN || "").trim()
   || ((process.env.API_DOMAIN || "").trim() ? `https://${String(process.env.API_DOMAIN).trim()}` : "");
 const serverAvailable = explicitServerBaseUrl ? "true" : "false";
 const browserEntryPoints = [path.join(srcDir, "app", "api", "localApiRuntime.js")];
