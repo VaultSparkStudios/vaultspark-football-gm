@@ -62,7 +62,7 @@ VaultSpark Football GM is a browser-based NFL franchise simulator with weekly pr
 ## Run Browser Game
 
 ```powershell
-cd "C:\Users\p4cka\Documents\Development\VaultSpark Football GM"
+cd "[local-project-root]"
 npm.cmd run dev
 ```
 
@@ -145,3 +145,4 @@ Saves:
 - `POST /api/saves/save`
 - `POST /api/saves/load`
 - `POST /api/saves/delete`
+

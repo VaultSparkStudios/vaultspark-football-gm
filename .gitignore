@@ -13,3 +13,7 @@ npm-debug.log*
 Thumbs.db
 static/
 .claude/
+docs/CREATIVE_DIRECTION_RECORD.md
+docs/RIGHTS_PROVENANCE.md
+CODEX_HANDOFF_*.md
+
