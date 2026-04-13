@@ -180,6 +180,109 @@ function toBool(value, fallback = null) {
   return fallback;
 }
 
+// ── Session-8 engagement helpers (mirrored from server.js) ───────────────────
+
+function _deriveGmArchetype(team) {
+  const roster = Array.isArray(team.roster) ? team.roster : [];
+  const avgAge = roster.length ? roster.reduce((s, p) => s + (p.age || 26), 0) / roster.length : 27;
+  const ovr = team.overallRating || 75;
+  const capHit = team.capSummary?.activeCap || 0;
+  if (avgAge < 25.5 && ovr < 79) return { label: "Moneyball", description: "Builds through analytics, cheap young talent, draft-first.", icon: "📊" };
+  if (avgAge > 28 && ovr > 80) return { label: "Win-Now", description: "Aggressive veteran acquisitions, mortgages the future.", icon: "🔥" };
+  if (capHit > 220_000_000) return { label: "Gut-Feel", description: "Pays for star names, trusts instinct over data.", icon: "🎲" };
+  return { label: "Loyalty", description: "Extends core players, rewards homegrown talent.", icon: "🤝" };
+}
+
+function _generateSeasonArcs(sess) {
+  try {
+    const d = typeof sess.getDashboardState === "function" ? sess.getDashboardState() : {};
+    const team = d.controlledTeam || {};
+    const standings = d.latestStandings || [];
+    const myRow = standings.find((r) => r.team === (team.abbrev || team.id)) || {};
+    const wins = myRow.wins || 0;
+    const losses = myRow.losses || 0;
+    const winPct = (wins + losses) > 0 ? wins / (wins + losses) : 0.5;
+    const arcs = [];
+    const qb = (team.roster || []).find((p) => p.position === "QB");
+    if (qb) {
+      const isRookie = (qb.age || 25) <= 23;
+      const isVet = (qb.age || 25) >= 33;
+      arcs.push({
+        id: "qb-arc", type: "QB_JOURNEY", icon: "🏈",
+        title: isRookie ? `Can ${qb.name} handle the pressure?` : isVet ? `Is ${qb.name}'s window closing?` : `Can ${qb.name} take the next step?`,
+        status: winPct >= 0.5 ? "on-track" : "at-risk", resolved: null
+      });
+    }
+    arcs.push({
+      id: "playoff-arc", type: "PLAYOFF_HUNT", icon: "🏆",
+      title: winPct >= 0.6 ? "Can you hold the division lead?" : winPct <= 0.35 ? "Is the season already lost?" : "Can you sneak into the playoffs?",
+      status: winPct >= 0.5 ? "on-track" : "at-risk", resolved: null
+    });
+    const topNeed = (d.rosterNeeds || []).slice().sort((a, b) => a.delta - b.delta)[0];
+    if (topNeed) {
+      arcs.push({
+        id: "roster-arc", type: "ROSTER_QUESTION", icon: "🔧",
+        title: `Will your ${topNeed.position} room hold up all season?`,
+        status: Math.abs(topNeed.delta) > 2 ? "at-risk" : "on-track", resolved: null
+      });
+    }
+    return arcs;
+  } catch {
+    return [];
+  }
+}
+
+function _generateGmDecisions(augState) {
+  try {
+    const week = augState.currentWeek || 0;
+    const phase = augState.phase || "";
+    const decisions = [];
+    if (phase === "regular-season" && week >= 9 && week <= 11) {
+      const standings = augState.latestStandings || [];
+      const team = augState.controlledTeam || {};
+      const myRow = standings.find((r) => r.team === (team.abbrev || team.id)) || {};
+      decisions.push({
+        id: "trade-deadline", type: "TRADE_DEADLINE", week,
+        prompt: `Trade deadline closes end of Week 11 (current: Week ${week}). Record: ${myRow.wins || 0}-${myRow.losses || 0}. What's your priority?`,
+        options: [
+          { id: "buy", label: "Buy — acquire veterans now", effect: "Trade picks for proven players. Win-now mode." },
+          { id: "sell", label: "Sell — stock picks for the future", effect: "Trade veterans for draft capital. Long-term play." },
+          { id: "hold", label: "Hold — stay the course", effect: "No major moves. Evaluate at Week 12." }
+        ]
+      });
+    }
+    const activeInjuries = augState.activeInjuries || [];
+    const qbInjury = activeInjuries.find((p) => p.pos === "QB" && p.severity === "severe");
+    if (qbInjury) {
+      decisions.push({
+        id: "qb-injury", type: "INJURY_CRISIS", week,
+        prompt: `${qbInjury.name} is out ${qbInjury.weeksRemaining}+ weeks. How do you respond?`,
+        options: [
+          { id: "fa-qb", label: "Sign a veteran QB from free agency", effect: "Costs cap, provides experience and stability." },
+          { id: "start-backup", label: "Start backup — develop for the future", effect: "Higher risk short-term, unlocks development." },
+          { id: "trade-qb", label: "Trade for a QB upgrade", effect: "Costs picks. High risk, high reward." }
+        ]
+      });
+    }
+    const capAlerts = augState.capAlerts || [];
+    const criticalCap = capAlerts.find((a) => a.severity === "critical");
+    if (criticalCap) {
+      decisions.push({
+        id: "cap-crisis", type: "CAP_CRISIS", week,
+        prompt: `Cap emergency: ${criticalCap.headline}. Time is running out to find relief.`,
+        options: [
+          { id: "restructure", label: "Restructure key contracts immediately", effect: "Saves cap now, adds dead cap later." },
+          { id: "release", label: "Release a high-salary player", effect: "Immediate cap relief. Roster weakens." },
+          { id: "wait", label: "Let it play out — monitor closely", effect: "Risk a cap violation. High stakes." }
+        ]
+      });
+    }
+    return decisions;
+  } catch {
+    return [];
+  }
+}
+
 function assertFields(body, fields = []) {
   if (!body || typeof body !== "object") return { ok: false, error: "Invalid JSON body." };
   for (const field of fields) {
@@ -1566,6 +1669,72 @@ export function createLocalApiRuntime({
         _speedrunChallenge = null;
         _persistSpeedrun();
         return finish(jsonResponse(200, { ok: true, rank, totalEntries: entries.length, entry }));
+      }
+
+      // ── Season Narrative Arcs ────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/season-arcs") {
+        return finish(jsonResponse(200, { ok: true, arcs: _generateSeasonArcs(session) }));
+      }
+
+      // ── GM Decision Queue ────────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/gm-decision") {
+        return finish(jsonResponse(200, { ok: true, decisions: _generateGmDecisions(getAugmentedState(session)) }));
+      }
+
+      // ── Franchise Records Board ──────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/records/franchise") {
+        const recTeamId = (url.searchParams.get("team") || session.controlledTeamId || "").toUpperCase();
+        return finish(jsonResponse(200, { ok: true, records: session.statBook.getRecords(), teamId: recTeamId }));
+      }
+
+      // ── AI Team GM Archetypes ────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/team-archetypes") {
+        const archetypes = (session.league.teams || []).map((t) => ({
+          teamId: t.id,
+          name: [t.city, t.nickname].filter(Boolean).join(" ") || t.name || t.id,
+          abbrev: t.abbrev || t.id,
+          ovr: t.overallRating || 75,
+          archetype: _deriveGmArchetype(t)
+        }));
+        return finish(jsonResponse(200, { ok: true, archetypes }));
+      }
+
+      // ── Franchise Moment ─────────────────────────────────────────────────
+      if (method === "GET" && pathname === "/api/franchise-moment") {
+        const fmTeamId = (url.searchParams.get("team") || session.controlledTeamId || "").toUpperCase();
+        const recentGames = session.getRecentBoxScores(fmTeamId, 3);
+        let moment = null;
+        for (const game of (recentGames || [])) {
+          const boxScore = session.getBoxScore(game.gameId);
+          if (!boxScore) continue;
+          const scoring = boxScore.scoringSummary || [];
+          const pbp = boxScore.playByPlay || [];
+          const margin = Math.abs((boxScore.homeTeam?.score || 0) - (boxScore.awayTeam?.score || 0));
+          const isUpset = game.winnerId && game.winnerId === fmTeamId && margin < 4;
+          const walkoff = scoring.slice(-1)[0];
+          const dramaScore = (isUpset ? 3 : 0) + (margin <= 3 ? 2 : 0) + (scoring.length > 8 ? 1 : 0);
+          if (!moment || dramaScore > (moment.dramaScore || 0)) {
+            const homeIsControlled = game.homeTeamId === fmTeamId;
+            const teamScore = homeIsControlled ? boxScore.homeTeam?.score : boxScore.awayTeam?.score;
+            const oppScore = homeIsControlled ? boxScore.awayTeam?.score : boxScore.homeTeam?.score;
+            const won = (teamScore || 0) > (oppScore || 0);
+            moment = {
+              gameId: game.gameId,
+              week: game.week || boxScore.week,
+              year: game.year || boxScore.year,
+              dramaScore,
+              headline: won
+                ? (margin <= 3 ? `Clutch ${margin === 0 ? "tie" : `${teamScore}-${oppScore} thriller`} — your team wins it!` : `Dominant ${teamScore}-${oppScore} victory`)
+                : `Tough ${teamScore}-${oppScore} loss — narrowly missed`,
+              highlight: walkoff ? `${walkoff.type} by ${walkoff.description?.split(" ")[0] || "your team"} — ${walkoff.quarterLabel}` : "Big moments on both sides",
+              result: won ? "win" : "loss",
+              score: `${teamScore}-${oppScore}`,
+              shareText: `🏈 Week ${game.week} ${won ? "Win" : "Loss"} — ${teamScore}-${oppScore}. Playing VaultSpark Football GM — best GM sim around! #VaultSpark`,
+              topPlay: pbp.find((p) => p.description?.toLowerCase().includes("touchdown") || p.description?.toLowerCase().includes("interception"))?.description || null
+            };
+          }
+        }
+        return finish(jsonResponse(200, { ok: true, moment }));
       }
 
       return finish(jsonResponse(501, { ok: false, error: `Client-only runtime not implemented for ${method} ${pathname}.` }));

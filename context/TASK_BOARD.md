@@ -1,6 +1,6 @@
 # Task Board — VaultSpark Football GM
 
-Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13).
+Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Session 9: test coverage (2026-04-13).
 
 ## Session 8 Priority Items (All 20)
 
@@ -43,6 +43,18 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13).
 | 18 | Input validation hardening — schema validation at route entry for teamId/seed/week/year | ✅ Done |
 | 19 | Seeded RNG for ID generation — replace Math.random() in beatReporter/narrativeEvents/server.js | ✅ Done |
 | 20 | Rate limiting — token-bucket 50 req/min per IP on API endpoints | ✅ Done |
+
+## Session 9 — Test Coverage Sprint (2026-04-13)
+
+| Item | Status |
+|------|--------|
+| Add Session-8 endpoints to localApiRuntime (season-arcs, gm-decision, records/franchise, team-archetypes, franchise-moment) | ✅ Done |
+| test/session8-endpoints.test.js — 18 tests covering all 5 new endpoints | ✅ Done |
+| test/session8-contract-edges.test.js — 17 tests (pure logic + session edge cases) | ✅ Done |
+| Pure unit tests for checkRateLimit, validateParam, deriveGmArchetype, pruneSimJobs | ✅ Done |
+| Session tests: multi-restructure, picks-only trades, dashboard state, box score shape | ✅ Done |
+
+**Suite result: 95 pass, 0 fail (up from 45 at S8 close)**
 
 ## Deferred to Next Sprint
 

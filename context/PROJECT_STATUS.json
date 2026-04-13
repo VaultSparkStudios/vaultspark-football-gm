@@ -3,7 +3,7 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Beta polish — all 19/20 Session 8 items shipped. Deploy pipeline and map-index remain.",
+  "currentFocus": "Test coverage expansion — 35 new tests added (session8-endpoints + session8-contract-edges). Suite now 95 pass, 0 fail.",
   "nextMilestone": "GitHub Pages CI deploy + map-based player/team index (Item 16).",
   "blockers": [
     "GitHub Pages deploy pipeline requires repo secrets configuration",
@@ -17,12 +17,32 @@
   "ignisScore": 21200,
   "ignisGrade": "FLAME",
   "ignisLastComputed": "2026-04-13",
+  "testSuiteStatus": {
+    "totalTests": 95,
+    "pass": 95,
+    "fail": 0,
+    "lastRun": "2026-04-13",
+    "newTestFiles": [
+      "test/session8-endpoints.test.js",
+      "test/session8-contract-edges.test.js"
+    ],
+    "newTestCount": 35,
+    "coverage": "All 5 Session-8 API endpoints now covered via localApiRuntime; pure-logic unit tests for checkRateLimit, validateParam, deriveGmArchetype, pruneSimJobs; session-level tests for contract restructures, trades, dashboard state, box scores"
+  },
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
     "linesAdded": 719,
-    "newFiles": ["public/lib/engagementFeatures.js"],
-    "modifiedFiles": ["src/server.js", "public/app.js", "public/game.html", "public/lib/tabOverview.js", "public/styles.css"],
+    "newFiles": [
+      "public/lib/engagementFeatures.js"
+    ],
+    "modifiedFiles": [
+      "src/server.js",
+      "public/app.js",
+      "public/game.html",
+      "public/lib/tabOverview.js",
+      "public/styles.css"
+    ],
     "highlights": [
       "Priority Inbox (CRITICAL/IMPORTANT/FLAVOR tiers, bell badge, slide-in drawer)",
       "Live Sim-Watch overlay (300ms animated drive log, key play cards)",
