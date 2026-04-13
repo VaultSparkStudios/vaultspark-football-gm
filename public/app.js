@@ -273,6 +273,28 @@ import {
   showHalftimeAdjustModal
 } from "./lib/gameFlow.js";
 
+import {
+  ingestNewsIntoInbox,
+  renderInboxBadge,
+  openInbox,
+  closeInbox,
+  checkAndShowFranchiseMoment,
+  closeFranchiseMomentModal,
+  checkAndShowGmDecision,
+  dismissGmDecision,
+  runSimWatch,
+  skipSimWatch,
+  closeSimWatch,
+  renderSeasonArcs,
+  renderCapWarRoom,
+  renderTradeBreakdown,
+  hideTradeBreakdown,
+  renderDynastyRecordsBoard,
+  loadTeamArchetypes,
+  renderArchetypesTable,
+  checkAndPruneRewindStorage
+} from "./lib/engagementFeatures.js";
+
 
 function bindEvents() {
   bindMenuTabs(activateTab);
@@ -320,6 +342,10 @@ function bindEvents() {
       });
       const body = { count: 1 };
       if (tactic) body.weeklyTacticOverride = tactic;
+      // Check GM Decision before advancing (Session 8)
+      if (state.dashboard?.phase === "regular-season") {
+        await checkAndShowGmDecision().catch(() => {});
+      }
       const response = await api("/api/advance-week", { method: "POST", body });
       applyDashboard(response.state);
       await Promise.all([
@@ -338,6 +364,13 @@ function bindEvents() {
         loadPipeline(),
         loadSimJobs()
       ]);
+      // Ingest news into Priority Inbox + show Franchise Moment (Session 8)
+      const newsItems = state.dashboard?.newsLog || state.newsRows || [];
+      ingestNewsIntoInbox(newsItems);
+      renderInboxBadge();
+      renderSeasonArcs().catch(() => {});
+      checkAndShowFranchiseMoment().catch(() => {});
+      checkAndPruneRewindStorage();
     }, "Advancing week...")
   );
 
@@ -542,6 +575,14 @@ function bindEvents() {
         `${payload.teamA}: in ${a.incomingValue ?? 0} / out ${a.outgoingValue ?? 0} | ${payload.teamB}: in ${b.incomingValue ?? 0} / out ${b.outgoingValue ?? 0}`
       );
       setTradeEvalCards({ fairness, capDeltaA: a.capDelta || 0, capDeltaB: b.capDelta || 0 });
+      // Show trade breakdown card (Session 8)
+      renderTradeBreakdown({
+        fairness,
+        teamAPlayers: (state.tradeTeamARoster || []).filter((p) => (state.tradeAssets.teamAPlayerIds || []).includes(p.id)),
+        teamBPlayers: (state.tradeTeamBRoster || []).filter((p) => (state.tradeAssets.teamBPlayerIds || []).includes(p.id)),
+        teamAPicksValue: a.picksValue || 0,
+        teamBPicksValue: b.picksValue || 0
+      });
     }, "Evaluating trade...")
   );
 
@@ -1431,6 +1472,59 @@ function bindEvents() {
   document.querySelectorAll(".menu-btn[data-tab='rosterTab']").forEach((btn) => {
     btn.addEventListener("click", () => {
       renderVeteranMentorshipPanel().catch(() => {});
+    });
+  });
+
+  // ── Session 8: Engagement Features ─────────────────────────────────────
+  // Priority Inbox
+  document.getElementById("openInboxBtn")?.addEventListener("click", openInbox);
+  document.getElementById("closeInboxBtn")?.addEventListener("click", closeInbox);
+
+  // Franchise Moment card
+  document.getElementById("fmCloseBtn")?.addEventListener("click", closeFranchiseMomentModal);
+
+  // GM Decision modal
+  document.getElementById("gmDecisionDismissBtn")?.addEventListener("click", dismissGmDecision);
+  document.getElementById("gmDecisionModal")?.addEventListener("click", (e) => {
+    if (e.target === document.getElementById("gmDecisionModal")) dismissGmDecision();
+  });
+
+  // Sim-Watch
+  document.getElementById("simWatchSkipBtn")?.addEventListener("click", skipSimWatch);
+  document.getElementById("simWatchCloseBtn")?.addEventListener("click", closeSimWatch);
+
+  // Box score ticker — wire sim-watch on click if play-by-play available
+  document.getElementById("boxScoreTicker")?.addEventListener("click", (event) => {
+    const btn = event.target.closest("button[data-boxscore-id]");
+    if (!btn) return;
+    const gameId = btn.dataset.boxscoreId;
+    // Run sim-watch if we haven't shown the box score yet
+    if (state.activeBoxScoreId !== gameId && gameId) {
+      runSimWatch(gameId).catch(() => {});
+    }
+  });
+
+  // Cap War Room — load on Contracts tab activation
+  document.querySelectorAll(".menu-btn[data-tab='contractsTab']").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      renderCapWarRoom().catch(() => {});
+    });
+  });
+
+  // Dynasty Records Board
+  document.getElementById("loadRecordsBoardBtn")?.addEventListener("click", () => {
+    renderDynastyRecordsBoard().catch(() => {});
+  });
+
+  // AI GM Archetypes
+  document.getElementById("loadArchetypesBtn")?.addEventListener("click", () => {
+    loadTeamArchetypes().then(() => renderArchetypesTable()).catch(() => {});
+  });
+
+  // Season Arcs — load on Overview activation
+  document.querySelectorAll(".menu-btn[data-tab='overviewTab']").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      renderSeasonArcs().catch(() => {});
     });
   });
 }

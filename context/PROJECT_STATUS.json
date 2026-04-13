@@ -3,12 +3,45 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Keep the public repository deployable and public-safe.",
-  "nextMilestone": "Complete public-repo sanitization follow-through.",
-  "blockers": [],
-  "lastUpdated": "2026-04-03",
+  "currentFocus": "Beta polish — all 19/20 Session 8 items shipped. Deploy pipeline and map-index remain.",
+  "nextMilestone": "GitHub Pages CI deploy + map-based player/team index (Item 16).",
+  "blockers": [
+    "GitHub Pages deploy pipeline requires repo secrets configuration",
+    "Item 16 (map-based O(1) index) deferred — requires GameSession.js refactor"
+  ],
+  "lastUpdated": "2026-04-13",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-04-03"
+  "truthAuditLastRun": "2026-04-13",
+  "ignisScore": 21200,
+  "ignisGrade": "FLAME",
+  "ignisLastComputed": "2026-04-13",
+  "session8Summary": {
+    "itemsShipped": 19,
+    "itemsDeferred": 1,
+    "linesAdded": 719,
+    "newFiles": ["public/lib/engagementFeatures.js"],
+    "modifiedFiles": ["src/server.js", "public/app.js", "public/game.html", "public/lib/tabOverview.js", "public/styles.css"],
+    "highlights": [
+      "Priority Inbox (CRITICAL/IMPORTANT/FLAVOR tiers, bell badge, slide-in drawer)",
+      "Live Sim-Watch overlay (300ms animated drive log, key play cards)",
+      "Franchise Moment card (cinematic post-game drama + share button)",
+      "GM Decision modal (pre-advance choices on critical weeks)",
+      "Cap War Room (4-year visual cap timeline, color-coded risk zones)",
+      "Trade Breakdown card (A-F letter grades, fairness verdict)",
+      "Season Narrative Arcs (3 dynamic story threads per season)",
+      "AI GM Archetypes (Moneyball/Win-Now/Gut-Feel/Loyalty per team)",
+      "Dynasty Records Board (all-time franchise records)",
+      "Veteran Mentorship visual badge",
+      "GM Persona progress bar + confetti tier-up burst",
+      "Tab sidebar 4-bucket grouping (Gameday/Roster/Builds/History/Config)",
+      "localStorage rewind size guard (auto-prune at 4MB)",
+      "Rate limiting (token-bucket 50 req/min per IP)",
+      "SimJob TTL cleanup (10-min eviction, prevents OOM)",
+      "Seeded deterministic job IDs (replaced Math.random())",
+      "5 new API endpoints (season-arcs, gm-decision, records/franchise, team-archetypes, franchise-moment)",
+      "Mobile 375px overflow fixes across all new modals"
+    ]
+  }
 }

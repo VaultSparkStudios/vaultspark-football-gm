@@ -457,9 +457,18 @@ export async function renderGmLegacyScore() {
       const tierDots = [1,2,3,4,5,6].map((t) =>
         `<span class="gm-tier-dot ${t <= persona.current.tier ? "active" : ""}" title="Tier ${t}"></span>`
       ).join("");
+      const progressPct = persona.next && persona.next.gapToNext != null
+        ? Math.max(0, Math.min(100, Math.round(100 - (persona.next.gapToNext / Math.max(1, persona.next.threshold || 100)) * 100)))
+        : persona.next ? 0 : 100;
       personaEl.innerHTML = `
         <div class="gm-persona-name">${escapeHtml(persona.current.name)}</div>
         <div class="gm-tier-track">${tierDots}</div>
+        <div class="gm-persona-progress-wrap">
+          <div class="gm-persona-progress-track">
+            <div class="gm-persona-progress-fill" style="width:${progressPct}%"></div>
+          </div>
+          <span class="gm-persona-progress-pct">${progressPct}%</span>
+        </div>
         <div class="gm-persona-desc">${escapeHtml(persona.current.description)}</div>
         ${persona.next ? `<div class="gm-persona-next">Next: <strong>${escapeHtml(persona.next.name)}</strong> · ${persona.next.gapToNext > 0 ? `+${persona.next.gapToNext} pts needed` : "Ready to advance"}</div>` : `<div class="gm-persona-next">🏆 Peak tier reached</div>`}
       `;
@@ -477,9 +486,15 @@ export async function renderGmLegacyScore() {
 }
 
 export function showPersonaTierToast(tierName, tier) {
+  // Confetti burst effect
+  const confetti = document.createElement("div");
+  confetti.className = "persona-tier-up-confetti";
+  confetti.textContent = "🏆";
+  document.body.appendChild(confetti);
+  setTimeout(() => confetti.remove(), 1100);
+
   const overlay = document.getElementById("personaTierToast");
   if (!overlay) {
-    // Fallback to regular toast
     showToast(`GM Arc Unlocked: ${tierName} (Tier ${tier})`);
     return;
   }

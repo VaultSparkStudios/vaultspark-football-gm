@@ -27,6 +27,9 @@
         <button id="advance4WeeksBtn" data-testid="advance-4-weeks-btn">Advance 4 Weeks</button>
         <button id="advanceSeasonBtn" data-testid="advance-season-btn">Advance Season</button>
         <button id="pauseSimBtn" disabled>Pause Sim</button>
+        <button class="inbox-bell-btn" id="openInboxBtn" aria-label="Open GM Inbox" title="GM Inbox">
+          🔔<span id="inboxBadge" class="inbox-badge" hidden>0</span>
+        </button>
         <button id="backSetupBtn" data-testid="back-setup-btn">Main Menu</button>
         <span id="statusChip" data-testid="status-chip" class="chip">Loading...</span>
       </div>
@@ -41,21 +44,23 @@
 
     <main class="game-shell">
       <aside class="side-menu">
-        <div class="menu-section-label">Franchise</div>
+        <div class="menu-group-header">Gameday</div>
         <button class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview">Overview</button>
+        <button class="menu-btn" data-tab="statsTab" data-testid="tab-stats">Statistics</button>
+        <button class="menu-btn" data-tab="calendarTab" data-testid="tab-calendar">Calendar</button>
+        <div class="menu-group-header">Roster</div>
         <button class="menu-btn" data-tab="rosterTab" data-testid="tab-roster">Roster</button>
         <button class="menu-btn" data-tab="faTab" data-testid="tab-fa">Free Agents</button>
         <button class="menu-btn" data-tab="depthTab" data-testid="tab-depth">Depth Chart</button>
-        <div class="menu-section-label">Front Office</div>
-        <button class="menu-btn" data-tab="transactionsTab" data-testid="tab-transactions">Transactions</button>
         <button class="menu-btn" data-tab="contractsTab" data-testid="tab-contracts">Contracts</button>
+        <div class="menu-group-header">Builds</div>
+        <button class="menu-btn" data-tab="transactionsTab" data-testid="tab-transactions">Trades</button>
         <button class="menu-btn" data-tab="scoutingTab" data-testid="tab-scouting">Scouting</button>
         <button class="menu-btn" data-tab="draftTab" data-testid="tab-draft">Draft</button>
-        <div class="menu-section-label">League</div>
-        <button class="menu-btn" data-tab="statsTab" data-testid="tab-stats">Statistics</button>
-        <button class="menu-btn" data-tab="calendarTab" data-testid="tab-calendar">Calendar</button>
+        <div class="menu-group-header">History</div>
         <button class="menu-btn" data-tab="logTab" data-testid="tab-log">League Log</button>
-        <button class="menu-btn" data-tab="historyTab" data-testid="tab-history">History</button>
+        <button class="menu-btn" data-tab="historyTab" data-testid="tab-history">Dynasty</button>
+        <div class="menu-group-header">Config</div>
         <button class="menu-btn" data-tab="rulesTab" data-testid="tab-rules">Rules</button>
         <button class="menu-btn" data-tab="settingsTab" data-testid="tab-settings">Settings</button>
       </aside>
@@ -155,6 +160,15 @@
           <div class="panel">
             <h2>League News Feed</h2>
             <div class="table-wrap"><table id="newsTable"></table></div>
+          </div>
+
+          <!-- ── Season Narrative Arcs (Session 8) ───────────────────────── -->
+          <div class="panel" id="seasonArcsPanel" hidden>
+            <div class="narrative-panel-header">
+              <h2>Season Story Threads</h2>
+              <span class="narrative-panel-kicker">3 narrative arcs defining your season</span>
+            </div>
+            <div id="seasonArcsContent"></div>
           </div>
 
           <div class="panel" id="narrativePanel">
@@ -330,6 +344,8 @@
               <article><h3>Team A Cap Change</h3><p id="tradeCapDeltaA">-</p></article>
               <article><h3>Team B Cap Change</h3><p id="tradeCapDeltaB">-</p></article>
             </div>
+            <!-- ── Trade Breakdown Card (Session 8) ──────────────────────── -->
+            <div id="tradeBreakdownCard" hidden></div>
           </div>
 
           <div class="panel split">
@@ -488,6 +504,16 @@
               <div class="narrative-empty">Run to see 3-year cap outlook.</div>
             </div>
           </div>
+
+          <!-- ── Cap War Room (Session 8) ──────────────────────────────── -->
+          <div class="panel" id="capWarRoomPanel" hidden>
+            <div class="narrative-panel-header">
+              <h2>Cap War Room</h2>
+              <span class="narrative-panel-kicker">4-year cap trajectory · color-coded risk zones</span>
+            </div>
+            <div id="capWarRoomBars"></div>
+            <div id="capWarRoomHint"></div>
+          </div>
         </section>
 
         <section id="scoutingTab" class="tab-panel">
@@ -529,6 +555,18 @@
             <div class="table-wrap"><table id="scoutingTable" data-testid="scouting-table"></table></div>
             <h3>Weekly Scouting Report</h3>
             <div class="table-wrap"><table id="scoutingReportTable" data-testid="scouting-report-table"></table></div>
+          </div>
+
+          <!-- ── AI GM Archetypes (Session 8) ──────────────────────────── -->
+          <div class="panel" id="teamArchetypesPanel">
+            <div class="narrative-panel-header">
+              <h2>League GM Archetypes</h2>
+              <span class="narrative-panel-kicker">How rival front offices think and act</span>
+            </div>
+            <div class="row compact">
+              <button id="loadArchetypesBtn">Load Archetypes</button>
+            </div>
+            <div class="table-wrap"><table id="teamArchetypesTable"></table></div>
           </div>
         </section>
 
@@ -744,6 +782,18 @@
                 <div id="historyPulseBar" class="control-pulse-bar"></div>
               </div>
             </div>
+          </div>
+
+          <!-- ── Dynasty Records Board (Session 8) ────────────────────── -->
+          <div class="panel">
+            <div class="narrative-panel-header">
+              <h2>Franchise Records Board</h2>
+              <span class="narrative-panel-kicker">All-time franchise bests — your legacy in numbers</span>
+            </div>
+            <div class="row compact">
+              <button id="loadRecordsBoardBtn">Load Records</button>
+            </div>
+            <div id="dynastyRecordsBoard"></div>
           </div>
 
           <div class="panel">
@@ -1415,6 +1465,57 @@
         <span class="feedback-icon">💬</span>
         <span class="feedback-label">Feedback</span>
       </a>
+    </div>
+
+    <!-- ── Priority Inbox Drawer (Session 8) ────────────────────────────── -->
+    <div id="inboxDrawer" role="dialog" aria-label="GM Inbox" aria-modal="true">
+      <div class="inbox-drawer-header">
+        <span class="inbox-drawer-title">GM Inbox</span>
+        <button class="inbox-close-btn" id="closeInboxBtn" aria-label="Close inbox">✕</button>
+      </div>
+      <div id="inboxList" role="list"></div>
+    </div>
+
+    <!-- ── Franchise Moment Card (Session 8) ────────────────────────────── -->
+    <div id="franchiseMomentModal" hidden aria-live="polite">
+      <div class="fm-kicker">Franchise Moment</div>
+      <div id="fmHeadline"></div>
+      <div class="fm-score-row">
+        <span id="fmScore"></span>
+        <span id="fmWeek"></span>
+      </div>
+      <div class="fm-highlight-label">Key Play</div>
+      <div id="fmHighlight"></div>
+      <div id="fmTopPlay" hidden></div>
+      <div class="fm-actions">
+        <button class="fm-share-btn" id="fmShareBtn">Share This Moment</button>
+        <button class="fm-close-btn" id="fmCloseBtn">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- ── GM Decision Modal (Session 8) ────────────────────────────────── -->
+    <div id="gmDecisionModal" hidden role="dialog" aria-modal="true" aria-labelledby="gmDecisionTitle">
+      <div class="gm-decision-card">
+        <div class="gm-decision-kicker">GM Decision Required</div>
+        <h2 class="gm-decision-title" id="gmDecisionTitle">Strategic Choice</h2>
+        <p id="gmDecisionPrompt"></p>
+        <div id="gmDecisionOptions"></div>
+        <button class="gm-decision-dismiss" id="gmDecisionDismissBtn">Skip this decision</button>
+      </div>
+    </div>
+
+    <!-- ── Sim-Watch Overlay (Session 8) ─────────────────────────────────── -->
+    <div id="simWatchOverlay" hidden aria-live="polite" aria-label="Live game simulation">
+      <div class="sw-header-bar">
+        <span class="sw-kicker">Live Sim</span>
+        <div class="sw-ctrl">
+          <button class="sw-skip-btn" id="simWatchSkipBtn">Skip to Final</button>
+          <button class="sw-close-btn" id="simWatchCloseBtn">✕</button>
+        </div>
+      </div>
+      <div id="simWatchHeader"></div>
+      <div id="simWatchFeed" role="log"></div>
+      <div id="simWatchFinal" hidden></div>
     </div>
 
     <script type="module" src="./app.js"></script>
