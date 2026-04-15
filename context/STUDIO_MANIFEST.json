@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0",
+  "generatedFrom": "ops runtime-pack synthesized manifest",
+  "synthesized": true,
+  "identity": {
+    "slug": "football-gm",
+    "name": "VaultSpark Football GM",
+    "repo": "VaultSparkStudios/vaultspark-football-gm",
+    "owner": "VaultSpark Studios",
+    "type": "game",
+    "lifecycle": "deployed",
+    "audience": "public-unlaunched",
+    "vaultStatus": "SPARKED"
+  },
+  "studioOs": {
+    "applied": true,
+    "templateVersion": "3.2",
+    "complianceVersion": "1.5",
+    "sessionModeDefault": "builder",
+    "requiredFilesPresent": false
+  },
+  "listingMetadata": {
+    "canonicalSummary": "Deep football GM simulation with advanced analytics. Currently in client beta.",
+    "tagline": "Beta testing and polish.",
+    "tags": [
+      "game",
+      "live",
+      "deployed"
+    ],
+    "categories": [
+      "game",
+      "public-unlaunched"
+    ],
+    "hubDescription": "Beta testing and polish.",
+    "websiteDescription": "Deep football GM simulation with advanced analytics. Currently in client beta.",
+    "socialDescription": "Deep football GM simulation with advanced analytics. Currently in client beta.",
+    "brandingLabel": "Powered by VaultSpark Studios"
+  },
+  "surfaces": {
+    "local": [
+      {
+        "label": "workspace",
+        "path": "C:\\Users\\p4cka\\documents\\development\\VaultSpark Football GM"
+      }
+    ],
+    "staging": [],
+    "production": [
+      {
+        "label": "live",
+        "url": "https://vaultsparkstudios.com/vaultspark-football-gm/"
+      }
+    ],
+    "preview": [],
+    "admin": [],
+    "api": [],
+    "docs": [],
+    "github": [
+      {
+        "label": "repo",
+        "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm"
+      }
+    ],
+    "testing": []
+  },
+  "capabilities": {
+    "auth": false,
+    "payments": false,
+    "analytics": false,
+    "email": false,
+    "ai": false,
+    "publishing": false,
+    "community": false,
+    "storage": false,
+    "cron": false
+  },
+  "integrations": {
+    "studioHub": {
+      "enabled": true,
+      "mode": "private"
+    },
+    "website": {
+      "enabled": true,
+      "mode": "public-safe"
+    },
+    "socialDashboard": {
+      "enabled": true,
+      "mode": "private"
+    },
+    "sparkFunnel": {
+      "enabled": true,
+      "mode": "growth"
+    },
+    "ignis": {
+      "enabled": true,
+      "mode": "portfolio-intelligence"
+    },
+    "founderQueue": {
+      "enabled": true,
+      "mode": "private"
+    }
+  },
+  "secretsCapabilities": [],
+  "hosting": {
+    "hostingProvider": "github-pages",
+    "liveUrl": "https://vaultsparkstudios.com/vaultspark-football-gm/",
+    "stagingUrl": null,
+    "privatePreviewUrl": null,
+    "localDevUrl": null,
+    "deployStatus": "deployed-unannounced",
+    "testInstructions": []
+  },
+  "capacity": {
+    "currentPlanTier": "unknown",
+    "freePlanCeilings": [],
+    "fitsCurrentCapacity": true,
+    "preferredRuntime": "github-pages",
+    "fallbackRuntime": "hetzner",
+    "notes": ""
+  },
+  "publicMetadata": {
+    "privateByDefault": true,
+    "publicReady": false,
+    "publicRepoSanitized": false,
+    "brandingRequired": true,
+    "brandingCompliant": true,
+    "footerAttribution": "A VaultSpark Studios Game",
+    "websiteListingRequired": true
+  },
+  "automation": {
+    "safeActions": [
+      "refresh-generated-surfaces"
+    ],
+    "guardedActions": [
+      "propagate-templates"
+    ],
+    "blockedActions": [
+      "change-canon",
+      "flip-repo-public",
+      "alter-licensing"
+    ]
+  },
+  "contracts": {
+    "hub": "context/contracts/hub.json",
+    "websitePublic": "context/contracts/website-public.json",
+    "socialDashboard": "context/contracts/social-dashboard.json",
+    "sparkFunnel": "context/contracts/sparkfunnel.json",
+    "ignis": "context/contracts/ignis.json"
+  }
+}
