@@ -54,7 +54,7 @@
 ║  ⚠  Tests         ?/? passing                                    ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ✓  Runway        unknown                                        ║
-║  ✓  Headroom      94% remaining · ~1 large item(s) fit           ║
+║  ✓  Headroom      99% remaining · ~9 large item(s) fit           ║
 ║  ⛔  Context age   ?d                                             ║
 ║  ⚠  IGNIS         33206 FLARE  ·  11d old                        ║
 ║  ✓  Truth         green  ·  Genome: ?                            ║

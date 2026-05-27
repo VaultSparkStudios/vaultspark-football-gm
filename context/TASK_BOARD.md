@@ -98,5 +98,5 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 | Item | Status |
 |------|--------|
-| Split simulation-heavy `npm test` into CI-friendly shards so local/agent runs return actionable output | 🔜 Next sprint |
+| Split simulation-heavy `npm test` into CI-friendly shards so local/agent runs return actionable output | 🔜 Next sprint — reconfirmed by 20-minute timeout on 2026-05-27 |
 | Complete GitHub Pages CI deploy once repo secret/provider configuration is ready | 🔜 Next sprint |

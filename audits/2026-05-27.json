@@ -2,7 +2,7 @@
   "schemaVersion": "1.3",
   "date": "2026-05-27",
   "project": "vaultspark-football-gm",
-  "summary": "Closeout for Football GM-local Codex startup reliability fix.",
+  "summary": "Continuation closeout for the requested /start -> /audit -> /implement -> /closeout chain.",
   "status": "green",
   "writeback": {
     "currentState": true,
@@ -16,15 +16,20 @@
     "agentMemory": true
   },
   "changes": [
-    "Added project-local Codex launch wrappers that disable built-in Apps only for this repo.",
-    "Kept global Codex Apps enabled for the broader Studio portfolio.",
-    "Aligned package metadata with proprietary rights posture."
+    "Confirmed the latest audit sidecar and markdown are present and all three audit items remain shipped.",
+    "Reran targeted changed-surface gates for startup automation, blocker preflight, GameSession lookup indexes, deterministic browser job IDs, and syntax checks.",
+    "Recorded the full-suite timeout as the top next engineering constraint."
   ],
   "verification": [
-    "scripts/codex-football.cmd exec --ephemeral --sandbox read-only \"Say ok.\""
+    "node --test test/studio-protocol-smoke.test.js",
+    "node --test test/session-lookup-indexes.test.js",
+    "node --check src/runtime/GameSession.js",
+    "node --check src/app/api/localApiRuntime.js",
+    "node scripts/render-startup-brief.mjs",
+    "node scripts/blocker-preflight.mjs --json"
   ],
   "followUp": [
-    "Retest normal Codex Apps startup after upstream/client behavior changes.",
-    "Remove project-local wrappers if normal startup becomes reliable."
+    "Split simulation-heavy npm test into CI-friendly shards.",
+    "Complete GitHub Pages CI deploy once repo secret/provider configuration is ready."
   ]
 }
