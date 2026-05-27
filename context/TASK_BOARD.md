@@ -58,7 +58,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Deferred to Next Sprint
 
-- Item 16: Map-based player/team index (no engine file access this session)
+- Item 16: Map-based player/team index — Done 2026-05-27 for GameSession identity lookups; future sim-loop hot paths can build on the index layer.
 - Full GitHub Pages CI wiring (repo secrets needed)
 - Verify whether the Football GM Codex Apps MCP startup failure is resolved upstream; remove `scripts/codex-football.*` wrappers if normal Codex startup becomes reliable for this repo.
 
@@ -74,3 +74,14 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 | Add Football GM-only Codex startup wrappers using `--disable apps` | Done |
 | Verify wrapper startup path with `codex exec --ephemeral --sandbox read-only` | Done |
 | Align package metadata with proprietary rights posture | Done |
+
+## Session 11 — Audit + Implementation Sprint (2026-05-27)
+
+| Item | Status |
+|------|--------|
+| Restore local Studio startup/blocker helper modules so `/start` and blocker preflight run again | Done |
+| Ship GameSession Map-backed lookup indexes for teams, players, retired players, draft picks, and team rosters | Done |
+| Replace browser local API simulation job `Math.random()` IDs with deterministic clock-plus-counter IDs | Done |
+| Add regression coverage for Studio protocol scripts, lookup index mutations, and deterministic job IDs | Done |
+
+**Verification:** `node --test test/studio-protocol-smoke.test.js`, `node --test test/session-lookup-indexes.test.js`, `node --check src/runtime/GameSession.js`, `node --check src/app/api/localApiRuntime.js`, `node scripts/render-startup-brief.mjs`, and `node scripts/blocker-preflight.mjs --json` passed. Full `npm test` was attempted with 5-minute and 15-minute ceilings and timed out before completion.

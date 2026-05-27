@@ -423,7 +423,7 @@ export function createLocalApiRuntime({
   }
 
   function createSimulationJob(totalSeasons) {
-    const id = `JOB-${now()}-${Math.floor(Math.random() * 1e6)}`;
+    const id = `JOB-${now()}-${simJobs.size + 1}`;
     const job = {
       id,
       status: "queued",

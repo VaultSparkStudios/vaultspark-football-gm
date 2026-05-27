@@ -6,3 +6,6 @@ Public-safe summary:
 - detailed internal state now lives in the private Studio OS / ops repository
 - 2026-05-27: added Football GM-specific Codex launch wrappers that suppress the failing built-in Apps MCP startup path only for this repo while leaving global Codex Apps enabled for the broader Studio portfolio
 - 2026-05-27: package metadata was aligned with the proprietary rights posture declared in `docs/RIGHTS_PROVENANCE.md`
+- 2026-05-27: `/start` automation was restored by adding the missing local helper modules for startup brief rendering and blocker preflight; the regenerated startup brief now builds successfully
+- 2026-05-27: GameSession now maintains Map-backed lookup indexes for teams, active players, retired players, draft picks, and team rosters; roster-moving mutations refresh the indexes
+- 2026-05-27: browser local API simulation job IDs now use deterministic clock-plus-counter IDs instead of `Math.random()`

@@ -4,13 +4,13 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Test coverage expansion — 35 new tests added (session8-endpoints + session8-contract-edges). Suite now 95 pass, 0 fail.",
-  "nextMilestone": "GitHub Pages CI deploy + map-based player/team index (Item 16).",
+  "currentFocus": "Session 11 audit implementation — startup/blocker automation restored, GameSession lookup indexes shipped, deterministic browser job IDs added.",
+  "nextMilestone": "Split simulation-heavy tests into CI-friendly shards and complete GitHub Pages CI deploy.",
   "blockers": [
     "GitHub Pages deploy pipeline requires repo secrets configuration",
-    "Item 16 (map-based O(1) index) deferred — requires GameSession.js refactor"
+    "Full npm test exceeded local 15-minute timeout during Session 11; targeted changed-surface tests pass"
   ],
-  "lastUpdated": "2026-04-13",
+  "lastUpdated": "2026-05-27",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -68,23 +68,25 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 746,
+  "silScore": 781,
   "silCategoriesV3": {
-    "devHealth": 70,
+    "devHealth": 76,
     "creativeAlignment": 70,
-    "momentum": 70,
-    "engagement": 70,
-    "processQuality": 70,
+    "momentum": 74,
+    "engagement": 73,
+    "processQuality": 74,
     "crossRepoCoherence": 93,
-    "securityPosture": 80,
+    "securityPosture": 82,
     "ecosystemIntegration": 70,
     "capitalEfficiency": 78,
-    "automationCoverage": 75
+    "automationCoverage": 83
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "T2_opusplan",
   "modelTierDefault": "opus",
   "modelTierCtxLimit": 200000,
   "modelPlanMode": true,
-  "modelPlanModeSlash": "/model opusplan"
+  "modelPlanModeSlash": "/model opusplan",
+  "planModeDetected": "missing",
+  "planModeCheckedAt": "2026-05-27T18:30:29.545Z"
 }

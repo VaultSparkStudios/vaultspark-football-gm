@@ -1,0 +1,89 @@
+{
+  "generatedBy": "/audit skill v1.0",
+  "generatedAt": "2026-05-27",
+  "project": "vaultspark-football-gm",
+  "type": "game",
+  "topLine": {
+    "totalItems": 3,
+    "combinedPriority": 52.4,
+    "top3": [
+      "restore-studio-start-automation",
+      "session-lookup-indexes",
+      "deterministic-browser-job-ids"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "slug": "restore-studio-start-automation",
+      "tier": "fire",
+      "axis": "speed/organization/efficiency",
+      "effort": "1h",
+      "impact": 9,
+      "innovation": 6,
+      "priority": 24.1,
+      "title": "Restore local Studio startup and blocker automation",
+      "insight": "The repo had the propagated scripts but not the helper libraries they import, so /start and blocker discipline failed before they could produce fresh evidence. Restoring minimal local helpers keeps the public repo autonomous without pulling private ops internals into deployable code.",
+      "recipe": "Add local task-board, blocker-rules, cross-repo, Ignis, and human-action-age helper modules, then smoke-test startup and blocker scripts."
+    },
+    {
+      "rank": 2,
+      "slug": "session-lookup-indexes",
+      "tier": "fire",
+      "axis": "speed/organization/efficiency",
+      "effort": "2h",
+      "impact": 9,
+      "innovation": 5,
+      "priority": 18.0,
+      "title": "Add GameSession map indexes for hot identity lookups",
+      "insight": "The task board's deferred Item 16 is the right next engine move: GameSession still performs repeated linear player, team, and pick lookups across roster, trade, profile, and admin flows. A rebuilt lookup index gives the session a real identity layer and creates a path for future sim-loop speed work.",
+      "recipe": "Add Map-backed team/player/pick/team-roster indexes to GameSession, route high-frequency public methods through them, and refresh indexes after roster-moving mutations."
+    },
+    {
+      "rank": 3,
+      "slug": "deterministic-browser-job-ids",
+      "tier": "high",
+      "axis": "security",
+      "effort": "30m",
+      "impact": 7,
+      "innovation": 3,
+      "priority": 10.3,
+      "title": "Remove browser runtime Math.random job IDs",
+      "insight": "Most server-side random ID generation had already been cleaned up, but the browser local API still used Math.random for simulation job IDs. Deterministic IDs are easier to test, replay, and reason about in a simulation product.",
+      "recipe": "Replace the Math.random suffix with a deterministic clock-plus-counter suffix and cover it with a no-simulation runtime test."
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "restore-studio-start-automation",
+      "status": "shipped",
+      "completedAt": "2026-05-27",
+      "evidence": [
+        "scripts/lib/task-board.mjs",
+        "scripts/lib/blocker-rules.mjs",
+        "scripts/lib/cross-repo-tasks.mjs",
+        "scripts/lib/ignis-insight.mjs",
+        "scripts/lib/human-action-ages.mjs",
+        "node --test test/studio-protocol-smoke.test.js"
+      ]
+    },
+    {
+      "slug": "session-lookup-indexes",
+      "status": "shipped",
+      "completedAt": "2026-05-27",
+      "evidence": [
+        "src/runtime/GameSession.js lookupIndexes helpers",
+        "node --test test/session-lookup-indexes.test.js"
+      ]
+    },
+    {
+      "slug": "deterministic-browser-job-ids",
+      "status": "shipped",
+      "completedAt": "2026-05-27",
+      "evidence": [
+        "src/app/api/localApiRuntime.js createSimulationJob deterministic ID",
+        "node --test test/session-lookup-indexes.test.js"
+      ]
+    }
+  ]
+}

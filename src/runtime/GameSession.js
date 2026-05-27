@@ -1496,6 +1496,7 @@ export class GameSession {
     this.pendingSeasonWrap = null;
 
     this.startSeason(this.currentYear);
+    this.rebuildLookupIndexes();
   }
 
   static fromSnapshot(snapshot, rngFactory) {
@@ -1520,7 +1521,48 @@ export class GameSession {
     for (const player of [...session.league.players, ...session.league.retiredPlayers]) ensurePlayerRuntime(player);
     ensureDepthCharts(session.league);
     ensureDepthChartSnapShares(session.league);
+    session.rebuildLookupIndexes();
     return session;
+  }
+
+  rebuildLookupIndexes() {
+    const playersByTeamId = new Map();
+    for (const player of this.league.players || []) {
+      if (!playersByTeamId.has(player.teamId)) playersByTeamId.set(player.teamId, []);
+      playersByTeamId.get(player.teamId).push(player);
+    }
+    for (const players of playersByTeamId.values()) {
+      players.sort((a, b) => (b.overall || 0) - (a.overall || 0));
+    }
+    this.lookupIndexes = {
+      teamsById: new Map((this.league.teams || []).map((team) => [team.id, team])),
+      playersById: new Map((this.league.players || []).map((player) => [player.id, player])),
+      retiredPlayersById: new Map((this.league.retiredPlayers || []).map((player) => [player.id, player])),
+      draftPicksById: new Map((this.league.draftPicks || []).map((pick) => [pick.id, pick])),
+      playersByTeamId
+    };
+    return this.lookupIndexes;
+  }
+
+  getLookupIndexes() {
+    return this.lookupIndexes || this.rebuildLookupIndexes();
+  }
+
+  getTeamById(teamId) {
+    return this.getLookupIndexes().teamsById.get(teamId) || null;
+  }
+
+  getPlayerById(playerId, { includeRetired = false } = {}) {
+    const indexes = this.getLookupIndexes();
+    return indexes.playersById.get(playerId) || (includeRetired ? indexes.retiredPlayersById.get(playerId) : null) || null;
+  }
+
+  getDraftPickById(pickId) {
+    return this.getLookupIndexes().draftPicksById.get(pickId) || null;
+  }
+
+  getTeamPlayersById(teamId) {
+    return (this.getLookupIndexes().playersByTeamId.get(teamId) || []).filter((player) => player.teamId === teamId);
   }
 
   toSnapshot() {
@@ -2568,9 +2610,10 @@ export class GameSession {
   }
 
   setPracticeSquad({ teamId, playerId, moveToPractice = true }) {
-    const player = this.league.players.find(
-      (entry) => entry.id === playerId && entry.teamId === teamId && entry.status === "active"
-    );
+    const player = this.getPlayerById(playerId);
+    if (player && (player.teamId !== teamId || player.status !== "active")) {
+      return { ok: false, error: "Player not found on team." };
+    }
     if (!player) return { ok: false, error: "Player not found on team." };
 
     const previousSlot = player.rosterSlot || "active";
@@ -2693,7 +2736,7 @@ export class GameSession {
   }
 
   setDepthChart({ teamId, position, playerIds, snapShares = null }) {
-    if (!teamById(this.league, teamId)) return { ok: false, error: "Invalid team." };
+    if (!this.getTeamById(teamId)) return { ok: false, error: "Invalid team." };
     const team = teamById(this.league, teamId);
     const allowed = new Set(
       teamPlayersAll(this.league, teamId)
@@ -2731,17 +2774,15 @@ export class GameSession {
   }
 
   signFreeAgent({ teamId, playerId }) {
-    if (!teamById(this.league, teamId)) return { ok: false, error: "Invalid team." };
+    if (!this.getTeamById(teamId)) return { ok: false, error: "Invalid team." };
     const restrictions = this.getChallengeRestrictions(teamId);
     if (!restrictions.allowUserFreeAgency) {
       return { ok: false, error: "This challenge mode disables user free-agent signings.", reasonCode: "challenge-free-agency" };
     }
-    const player = this.league.players.find(
-      (entry) =>
-        entry.id === playerId &&
-        entry.status === "active" &&
-        (entry.teamId === "FA" || entry.teamId === "WAIVER")
-    );
+    const player = this.getPlayerById(playerId);
+    if (player && (player.status !== "active" || (player.teamId !== "FA" && player.teamId !== "WAIVER"))) {
+      return { ok: false, error: "Free agent not found." };
+    }
     if (!player) return { ok: false, error: "Free agent not found." };
     if (activeRosterPlayers(this.league, teamId).length >= MAX_ACTIVE_ROSTER) {
       return { ok: false, error: "Active roster full (53)." };
@@ -2757,6 +2798,7 @@ export class GameSession {
     this.league.waiverWire = this.league.waiverWire.filter((entry) => entry.playerId !== playerId);
     recalculateAllTeamRatings(this.league);
     this.statBook.reindexPlayers();
+    this.rebuildLookupIndexes();
     this.logTransaction({
       type: "signing",
       teamId,
@@ -2778,9 +2820,10 @@ export class GameSession {
   }
 
   releasePlayer({ teamId, playerId, june1 = false, toWaivers = this.phase === "regular-season" }) {
-    const player = this.league.players.find(
-      (entry) => entry.id === playerId && entry.teamId === teamId && entry.status === "active"
-    );
+    const player = this.getPlayerById(playerId);
+    if (player && (player.teamId !== teamId || player.status !== "active")) {
+      return { ok: false, error: "Player not found on team." };
+    }
     if (!player) return { ok: false, error: "Player not found on team." };
     const capLedger = this.league.capLedger[teamId] || {
       rollover: 0,
@@ -2819,6 +2862,7 @@ export class GameSession {
 
     recalculateAllTeamRatings(this.league);
     this.statBook.reindexPlayers();
+    this.rebuildLookupIndexes();
     this.logTransaction({
       type: "release",
       teamId,
@@ -2844,7 +2888,7 @@ export class GameSession {
   }
 
   claimWaiver({ teamId, playerId }) {
-    if (!teamById(this.league, teamId)) return { ok: false, error: "Invalid team." };
+    if (!this.getTeamById(teamId)) return { ok: false, error: "Invalid team." };
     const restrictions = this.getChallengeRestrictions(teamId);
     if (!restrictions.allowUserFreeAgency) {
       return { ok: false, error: "This challenge mode disables user waiver claims.", reasonCode: "challenge-free-agency" };
@@ -2861,7 +2905,7 @@ export class GameSession {
       year: this.currentYear,
       week: this.currentWeek
     });
-    const player = this.league.players.find((entry) => entry.id === playerId);
+    const player = this.getPlayerById(playerId);
     this.logTransaction({
       type: "waiver-claim",
       teamId,
@@ -2882,8 +2926,8 @@ export class GameSession {
 
     for (const claim of claims) {
       if (resolved.has(claim.playerId)) continue;
-      const player = this.league.players.find((entry) => entry.id === claim.playerId && entry.teamId === "WAIVER");
-      if (!player) continue;
+      const player = this.getPlayerById(claim.playerId);
+      if (!player || player.teamId !== "WAIVER") continue;
       if (activeRosterPlayers(this.league, claim.teamId).length >= MAX_ACTIVE_ROSTER) continue;
       const offerContract = veteranContract(player.overall, this.rng);
       if (this.getTeamCapSummary(claim.teamId).capSpace < offerContract.capHit) continue;
@@ -2910,7 +2954,7 @@ export class GameSession {
     }
 
     this.league.waiverWire = this.league.waiverWire.filter((entry) => {
-      const player = this.league.players.find((row) => row.id === entry.playerId);
+      const player = this.getPlayerById(entry.playerId);
       if (!player) return false;
       if (player.teamId !== "WAIVER") return false;
       if (entry.expiresWeek < this.currentWeek) {
@@ -2920,25 +2964,30 @@ export class GameSession {
       return true;
     });
     this.league.pendingWaiverClaims = [];
+    this.rebuildLookupIndexes();
   }
 
   evaluateTradePackage({ teamA, teamB, teamAPlayerIds = [], teamBPlayerIds = [], teamAPickIds = [], teamBPickIds = [] }) {
-    if (!teamById(this.league, teamA) || !teamById(this.league, teamB)) {
+    if (!this.getTeamById(teamA) || !this.getTeamById(teamB)) {
       return { ok: false, error: "Invalid team IDs.", reasonCode: "invalid-team" };
     }
     if (teamA === teamB) return { ok: false, error: "Teams must be different.", reasonCode: "same-team" };
 
     const fromA = teamAPlayerIds
-      .map((id) => this.league.players.find((player) => player.id === id && player.teamId === teamA))
+      .map((id) => this.getPlayerById(id))
+      .filter((player) => player?.teamId === teamA)
       .filter(Boolean);
     const fromB = teamBPlayerIds
-      .map((id) => this.league.players.find((player) => player.id === id && player.teamId === teamB))
+      .map((id) => this.getPlayerById(id))
+      .filter((player) => player?.teamId === teamB)
       .filter(Boolean);
     const picksA = teamAPickIds
-      .map((id) => this.league.draftPicks.find((pick) => pick.id === id && pick.ownerTeamId === teamA))
+      .map((id) => this.getDraftPickById(id))
+      .filter((pick) => pick?.ownerTeamId === teamA)
       .filter(Boolean);
     const picksB = teamBPickIds
-      .map((id) => this.league.draftPicks.find((pick) => pick.id === id && pick.ownerTeamId === teamB))
+      .map((id) => this.getDraftPickById(id))
+      .filter((pick) => pick?.ownerTeamId === teamB)
       .filter(Boolean);
 
     if (
@@ -2988,8 +3037,8 @@ export class GameSession {
       };
     }
 
-    const teamAObj = teamById(this.league, teamA);
-    const teamBObj = teamById(this.league, teamB);
+    const teamAObj = this.getTeamById(teamA);
+    const teamBObj = this.getTeamById(teamB);
     const pickValueA = picksA.reduce((sum, pick) => sum + pickAssetValue(pick), 0);
     const pickValueB = picksB.reduce((sum, pick) => sum + pickAssetValue(pick), 0);
     const rosterA = teamPlayersAll(this.league, teamA);
@@ -3090,6 +3139,7 @@ export class GameSession {
     ensureDepthCharts(this.league);
     recalculateAllTeamRatings(this.league);
     this.statBook.reindexPlayers();
+    this.rebuildLookupIndexes();
     return {
       ok: true,
       teamA,
@@ -4094,10 +4144,10 @@ export class GameSession {
   }
 
   getPlayerProfile(playerId, { seasonType = "regular" } = {}) {
-    const player = [...this.league.players, ...this.league.retiredPlayers].find((entry) => entry.id === playerId);
+    const player = this.getPlayerById(playerId, { includeRetired: true });
     if (!player) return null;
-    const team = teamById(this.league, player.teamId);
-    const roster = team ? teamPlayersAll(this.league, player.teamId) : [];
+    const team = this.getTeamById(player.teamId);
+    const roster = team ? this.getTeamPlayersById(player.teamId) : [];
     const normalizedSeasonType = normalizeSeasonType(seasonType, "regular");
 
     const seasonRows = Object.fromEntries(
@@ -4370,7 +4420,7 @@ export class GameSession {
   }
 
   getRoster(teamId = this.controlledTeamId) {
-    return teamPlayersAll(this.league, teamId).map((player) => ({
+    return this.getTeamPlayersById(teamId).map((player) => ({
       id: player.id,
       name: player.name,
       pos: player.position,
@@ -4455,8 +4505,8 @@ export class GameSession {
       return 3;
     };
     return [
-      ...this.league.players.map((player) => ({ ...player, __retired: false })),
-      ...(includeRetired ? this.league.retiredPlayers.map((player) => ({ ...player, __retired: true })) : [])
+      ...[...this.getLookupIndexes().playersById.values()].map((player) => ({ ...player, __retired: false })),
+      ...(includeRetired ? [...this.getLookupIndexes().retiredPlayersById.values()].map((player) => ({ ...player, __retired: true })) : [])
     ]
       .filter((player) => String(player.name || "").toLowerCase().includes(needle))
       .sort((a, b) => {
