@@ -85,3 +85,18 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 | Add regression coverage for Studio protocol scripts, lookup index mutations, and deterministic job IDs | Done |
 
 **Verification:** `node --test test/studio-protocol-smoke.test.js`, `node --test test/session-lookup-indexes.test.js`, `node --check src/runtime/GameSession.js`, `node --check src/app/api/localApiRuntime.js`, `node scripts/render-startup-brief.mjs`, and `node scripts/blocker-preflight.mjs --json` passed. Full `npm test` was attempted with 5-minute and 15-minute ceilings and timed out before completion.
+
+## Session 12 — Explicit Closeout Refresh (2026-05-27)
+
+| Item | Status |
+|------|--------|
+| Refresh all public-safe closeout surfaces after pushed audit implementation sprint | Done |
+| Add canonical `context/OBELISK_ADOPTION.md` Phase 0 declaration | Done |
+| Update CDR, decisions, work log, SIL, truth audit, closeout board, and agent memory | Done |
+
+## Next Sprint Queue
+
+| Item | Status |
+|------|--------|
+| Split simulation-heavy `npm test` into CI-friendly shards so local/agent runs return actionable output | 🔜 Next sprint |
+| Complete GitHub Pages CI deploy once repo secret/provider configuration is ready | 🔜 Next sprint |

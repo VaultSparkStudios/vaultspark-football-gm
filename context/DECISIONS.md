@@ -2,6 +2,14 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-05-27 — Obelisk posture declared in public-safe context
+
+**Decision:** Declare Football GM's Obelisk posture in `context/OBELISK_ADOPTION.md` as `phase-0-declared`.
+
+**Rationale:** CANON-021 requires every project to declare an Obelisk posture. This repo currently has no production auth migration to claim, so Phase 0 is the accurate public-safe state.
+
+---
+
 ## 2026-04-06 — CANON-008: All VaultSpark IP is proprietary by default
 
 **Decision:** All code, content, assets, and designs created by VaultSpark Studios are proprietary and all rights are reserved by VaultSpark Studios LLC unless an open-source license is explicitly declared and approved by the Studio Owner. No agent may apply or imply an open-source license without Studio Owner direction.

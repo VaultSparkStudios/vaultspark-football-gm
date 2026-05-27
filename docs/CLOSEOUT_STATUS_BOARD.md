@@ -5,37 +5,37 @@
 
 ```
 ╔══ SESSION CLOSEOUT · VaultSpark Football GM · S? ══════════════╗
-║  Date: 2026-05-27  ·  SIL: 781/1000  ·  Velocity: —              ║
+║  Date: 2026-05-27  ·  SIL: 789/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: claude-code                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
 ║  (no shipped bullets parsed from LATEST_HANDOFF — see git log)   ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 781/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 789/1000 ═══════════════════════════════════════╗
 ║    Dev Health         76   ████████░░                            ║
-║    Alignment          70   ███████░░░                            ║
+║    Alignment          71   ███████░░░                            ║
 ║    Momentum           74   ███████░░░                            ║
 ║    Engagement         73   ███████░░░                            ║
-║    Process Qual       74   ███████░░░                            ║
-║    Coherence          93   █████████░                            ║
+║    Process Qual       77   ████████░░                            ║
+║    Coherence          95   ██████████                            ║
 ║    Security           82   ████████░░                            ║
 ║    Ecosystem          70   ███████░░░                            ║
 ║    Capital            78   ████████░░                            ║
-║    Automation         83   ████████░░                            ║
+║    Automation         85   █████████░                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
+║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 33 files  ·  M:9 A:0 D:0 ?:24                          ║
+║  Changes: 13 files  ·  M:9 A:0 D:0 ?:4                           ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝

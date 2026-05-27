@@ -10,3 +10,4 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Football GM has a repo-local Codex startup workaround; global Codex Apps remains enabled outside this project.
 - Startup brief generation and blocker preflight now run with local public-safe helper modules.
 - GameSession lookup indexes and deterministic browser simulation job IDs are covered by targeted regression tests; full `npm test` timed out locally and remains unproven for this session.
+- Obelisk posture is now declared in `context/OBELISK_ADOPTION.md` as Phase 0. The root-level `OBELISK.md` template remains uncommitted because it contains placeholders and is not the canonical project adoption file.

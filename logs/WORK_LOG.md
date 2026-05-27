@@ -1,5 +1,11 @@
 # Work Log
 
+## 2026-05-27 — Explicit closeout refresh
+
+- Refreshed public-safe closeout surfaces after the audit implementation sprint had already been committed and pushed.
+- Added canonical `context/OBELISK_ADOPTION.md` with Phase 0 declared posture for CANON-021.
+- Updated task board, current state, latest handoff, decisions, CDR, SIL, truth audit, closeout board, and Codex memory for the post-push handoff.
+
 ## 2026-05-27 — Audit implementation sprint closeout
 
 - Restored local Studio startup/blocker automation by adding the helper modules imported by `render-startup-brief.mjs` and `blocker-preflight.mjs`.

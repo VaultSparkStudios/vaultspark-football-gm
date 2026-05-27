@@ -37,11 +37,11 @@
 ║    Momentum           0    ░░░░░░░░░░  —        →                ║
 ║    Engagement         0    ░░░░░░░░░░  —        →                ║
 ║    Process Qual       0    ░░░░░░░░░░  —        →                ║
-║    Coherence         93    █████████░  ········ →                ║
-║    Security          80    ████████░░  ········ →                ║
+║    Coherence         95    ██████████  ········ →                ║
+║    Security          82    ████████░░  ········ →                ║
 ║    Ecosystem         70    ███████░░░  ········ →                ║
 ║    Capital           78    ████████░░  ········ →                ║
-║    Automation        75    ████████░░  ········ →                ║
+║    Automation        85    █████████░  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -54,7 +54,7 @@
 ║  ⚠  Tests         ?/? passing                                    ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ✓  Runway        unknown                                        ║
-║  ✓  Headroom      99% remaining · ~9 large item(s) fit           ║
+║  ✓  Headroom      94% remaining · ~1 large item(s) fit           ║
 ║  ⛔  Context age   ?d                                             ║
 ║  ⚠  IGNIS         33206 FLARE  ·  11d old                        ║
 ║  ✓  Truth         green  ·  Genome: ?                            ║

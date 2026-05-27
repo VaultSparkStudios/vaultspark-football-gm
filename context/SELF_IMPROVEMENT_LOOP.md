@@ -1,5 +1,17 @@
 # Self-Improvement Loop
 
+## 2026-05-27 — Session 12 Closeout Refresh
+
+Score: 789 / 1000
+
+Category notes:
+- Process Quality: +3 for running a follow-up closeout pass after the pushed implementation sprint.
+- Cross-Repo Coherence: +2 for adding the canonical Obelisk adoption declaration in the expected context path.
+- Automation Coverage: +2 for preserving the startup/blocker closeout evidence in public-safe handoff surfaces.
+- Creative Alignment: +1 for recording the founder's closeout-completeness preference in CDR.
+
+Follow-up: keep generated runtime artifacts out of commits unless they are canonical public-safe docs; `.cache/` and compact fallback handoffs remain local artifacts.
+
 ## 2026-05-27 — Session 11 Closeout
 
 Score: 781 / 1000
