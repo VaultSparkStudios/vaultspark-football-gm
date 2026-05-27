@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-05-27",
+  "project": "vaultspark-football-gm",
+  "summary": "Closeout for Football GM-local Codex startup reliability fix.",
+  "status": "green",
+  "writeback": {
+    "currentState": true,
+    "taskBoard": true,
+    "latestHandoff": true,
+    "workLog": true,
+    "decisions": true,
+    "selfImprovementLoop": true,
+    "creativeDirectionRecord": true,
+    "truthAudit": true,
+    "agentMemory": true
+  },
+  "changes": [
+    "Added project-local Codex launch wrappers that disable built-in Apps only for this repo.",
+    "Kept global Codex Apps enabled for the broader Studio portfolio.",
+    "Aligned package metadata with proprietary rights posture."
+  ],
+  "verification": [
+    "scripts/codex-football.cmd exec --ephemeral --sandbox read-only \"Say ok.\""
+  ],
+  "followUp": [
+    "Retest normal Codex Apps startup after upstream/client behavior changes.",
+    "Remove project-local wrappers if normal startup becomes reliable."
+  ]
+}

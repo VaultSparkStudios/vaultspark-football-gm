@@ -60,7 +60,17 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 - Item 16: Map-based player/team index (no engine file access this session)
 - Full GitHub Pages CI wiring (repo secrets needed)
+- Verify whether the Football GM Codex Apps MCP startup failure is resolved upstream; remove `scripts/codex-football.*` wrappers if normal Codex startup becomes reliable for this repo.
 
 ## Deferred to Project Agents
 
 - cross-repo item owned by another repo agent:
+
+## Session 10 — Codex Startup Reliability (2026-05-27)
+
+| Item | Status |
+|------|--------|
+| Keep Codex Apps globally enabled for the Studio portfolio | Done |
+| Add Football GM-only Codex startup wrappers using `--disable apps` | Done |
+| Verify wrapper startup path with `codex exec --ephemeral --sandbox read-only` | Done |
+| Align package metadata with proprietary rights posture | Done |

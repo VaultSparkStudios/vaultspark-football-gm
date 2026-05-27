@@ -19,7 +19,8 @@
     "test:ui": "playwright test",
     "test:ui:headed": "playwright test --headed"
   },
-  "license": "MIT",
+  "private": true,
+  "license": "UNLICENSED",
   "devDependencies": {
     "@playwright/test": "^1.58.2"
   }

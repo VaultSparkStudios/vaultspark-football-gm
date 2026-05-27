@@ -14,6 +14,24 @@ Public-safe decisions only. Detailed internal decision history is maintained pri
 
 ---
 
+## 2026-05-27 — Project-local Codex Apps startup workaround
+
+**Decision:** Keep global Codex Apps enabled, but add Football GM-specific launch wrappers that run Codex with `--disable apps` for this repo only.
+
+**Rationale:** The failing startup path is the built-in `codex_apps` MCP handshake, not the entire GitHub connector capability. Other Studio projects may need Apps, so a repo-local wrapper avoids a portfolio-wide capability loss while preserving a reliable startup path here.
+
+**Pattern established:** When an agent runtime feature fails in one repo, prefer a project-local launcher or profile before changing global Codex configuration.
+
+---
+
+## 2026-05-27 — Package metadata follows proprietary posture
+
+**Decision:** Package metadata should not advertise an open-source license for VaultSpark Football GM.
+
+**Rationale:** `docs/RIGHTS_PROVENANCE.md` declares the project proprietary under CANON-008. `package.json` and the lockfile root entry should not contradict that public rights posture.
+
+---
+
 ## 2026-04-13 — Session 8: Engagement-first architecture for beta
 
 **Decision:** All new features in Session 8 prioritize user retention and emotional engagement over raw feature count. The "Franchise Moment" card, GM Decision modal, and Sim-Watch overlay are all designed to create memorable individual moments that drive word-of-mouth sharing.
