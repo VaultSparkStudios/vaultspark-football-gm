@@ -40,7 +40,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 22
+          node-version: 24
           cache: npm
 
       - uses: actions/configure-pages@v5
@@ -50,6 +50,12 @@ jobs:
 
       - name: Build Pages bundle
         run: npm run build:pages
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Smoke static Pages client
+        run: npm run smoke:pages
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

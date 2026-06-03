@@ -4,31 +4,32 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Continuation closeout verified the requested /start -> /audit -> /implement -> /closeout chain from current-state evidence; targeted changed-surface gates pass, full npm test still needs sharding.",
-  "nextMilestone": "Split simulation-heavy tests into CI-friendly shards and complete GitHub Pages CI deploy.",
+  "currentFocus": "Session 13 shipped CI-friendly test shards, restored missing local Studio helper modules exposed by startup smoke, and added static Pages smoke gates before public artifact upload.",
+  "nextMilestone": "Run the new shard matrix in GitHub Actions and finish provider/repo GitHub Pages settings.",
   "blockers": [
-    "GitHub Pages deploy pipeline requires repo secrets configuration",
-    "Full npm test exceeded a local 20-minute timeout during continuation verification; targeted changed-surface tests pass"
+    "GitHub Pages provider/repo settings still need final external confirmation before public launch"
   ],
-  "lastUpdated": "2026-05-27",
+  "lastUpdated": "2026-06-03",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
   "truthAuditLastRun": "2026-04-13",
-  "ignisScore": 33206,
-  "ignisGrade": "FLARE",
-  "ignisLastComputed": "2026-05-16",
+  "ignisScore": 38490,
+  "ignisGrade": "FORGE",
+  "ignisLastComputed": "2026-06-03",
   "testSuiteStatus": {
-    "totalTests": 95,
-    "pass": 95,
+    "totalTests": 134,
+    "pass": 134,
     "fail": 0,
-    "lastRun": "2026-04-13",
+    "lastRun": "2026-06-03",
     "newTestFiles": [
-      "test/session8-endpoints.test.js",
-      "test/session8-contract-edges.test.js"
+      "scripts/run-test-shard.mjs",
+      "scripts/lib/turn-classifier.mjs",
+      "scripts/lib/visual-blocks.mjs",
+      "scripts/lib/sil-forecaster.mjs"
     ],
-    "newTestCount": 35,
-    "coverage": "All 5 Session-8 API endpoints now covered via localApiRuntime; pure-logic unit tests for checkRateLimit, validateParam, deriveGmArchetype, pruneSimJobs; session-level tests for contract restructures, trades, dashboard state, box scores"
+    "newTestCount": 39,
+    "coverage": "Default npm test now runs core, runtime, sim-contract, sim-realism, and studio shards with 131 passing tests; explicit long smoke shard adds 3 passing determinism/realism pipeline tests."
   },
   "session8Summary": {
     "itemsShipped": 19,
@@ -68,35 +69,36 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 792,
+  "silScore": 806,
   "silCategoriesV3": {
-    "devHealth": 76,
+    "devHealth": 81,
     "creativeAlignment": 71,
-    "momentum": 74,
+    "momentum": 76,
     "engagement": 73,
-    "processQuality": 79,
+    "processQuality": 82,
     "crossRepoCoherence": 95,
-    "securityPosture": 82,
+    "securityPosture": 84,
     "ecosystemIntegration": 70,
     "capitalEfficiency": 78,
-    "automationCoverage": 86
+    "automationCoverage": 94
   },
   "currentSession": 13,
   "lastAgent": "codex",
   "sessionMode": "execution",
   "lastVerification": {
-    "date": "2026-05-27",
+    "date": "2026-06-03",
     "passed": [
-      "node --test test/studio-protocol-smoke.test.js",
-      "node --test test/session-lookup-indexes.test.js",
-      "node --check src/runtime/GameSession.js",
-      "node --check src/app/api/localApiRuntime.js",
-      "node scripts/render-startup-brief.mjs",
-      "node scripts/blocker-preflight.mjs --json"
+      "npm run test:studio",
+      "npm run test:runtime",
+      "npm run test:core",
+      "npm run test:sim:contract",
+      "npm run test:sim:realism",
+      "npm test",
+      "npm run test:long",
+      "npm run build:pages",
+      "npm run smoke:pages"
     ],
-    "timedOut": [
-      "npm test (20-minute local ceiling)"
-    ]
+    "timedOut": []
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "T2_opusplan",

@@ -1,5 +1,17 @@
 # Self-Improvement Loop
 
+## 2026-06-03 — Session 13 Closeout
+
+Score: 806 / 1000
+
+Category notes:
+- Dev Health: +5 for replacing the local full-suite timeout with bounded default shards and a still-explicit long smoke path.
+- Automation Coverage: +8 for making `npm test`, named shard scripts, CI matrix jobs, and Pages smoke gates executable from the public repo.
+- Process Quality: +3 for letting the Studio smoke reveal missing helper modules and restoring them instead of preserving a stale startup assumption.
+- Security Posture: +2 for requiring a playable static client smoke before GitHub Pages artifact upload.
+
+Follow-up: reintroduce a scheduled deep realism sweep with a larger season sample once it has its own time budget and does not block default CI.
+
 ## 2026-05-27 — Goal Continuation Verification Closeout
 
 Score: 792 / 1000

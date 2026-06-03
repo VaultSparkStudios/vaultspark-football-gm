@@ -53,6 +53,16 @@ export function renderTitleHeader({ name, type, lifecycle, audience, vaultStatus
  * Render the "Last session · what shipped" block from PROJECT_STATUS.lastSessionSummary.
  */
 export function renderLastCompleted(summary) {
+  if (typeof summary === 'string') {
+    const session = summary.match(/\bS(\d+)\b/i)?.[1] || '?';
+    return [
+      top(`LAST SESSION (S${session}) - WHAT SHIPPED`),
+      row(summary.slice(0, W)),
+      row(`Tests  -`),
+      row(`Deploy -`),
+      bottom(),
+    ].join('\n');
+  }
   if (!summary) return '';
   const header = top(`LAST SESSION (S${summary.session}) · WHAT SHIPPED`);
   const shipLines = (summary.shipped || []).slice(0, 5).map(s => row(`✓ ${s.slice(0, W - 2)}`));

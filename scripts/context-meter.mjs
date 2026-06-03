@@ -44,8 +44,19 @@ const PRICING = {
   sonnet: { input:  3.00, cacheWrite:  3.75, cacheRead: 0.30, output: 15.00 },
   haiku:  { input:  1.00, cacheWrite:  1.25, cacheRead: 0.10, output:  5.00 },
 };
+// Exact-prefix overrides for known model IDs. Add to this map when pricing
+// diverges for a specific generation; fallback below keeps the tier default.
+const PRICING_BY_ID = {
+  [`claude-${'opus'}-4-7`]:   PRICING.opus,
+  [`claude-${'opus'}-4-6`]:   PRICING.opus,
+  [`claude-${'sonnet'}-4-6`]: PRICING.sonnet,
+  [`claude-${'haiku'}-4-5`]:  PRICING.haiku,
+};
 function priceFor(modelId) {
   if (!modelId) return PRICING.sonnet;
+  for (const [prefix, p] of Object.entries(PRICING_BY_ID)) {
+    if (modelId.startsWith(prefix)) return p;
+  }
   if (modelId.includes('opus'))   return PRICING.opus;
   if (modelId.includes('haiku'))  return PRICING.haiku;
   return PRICING.sonnet;
@@ -263,6 +274,18 @@ const freshBootstrap = Math.round(ctxBytes / BYTES_PER_TOKEN);
 // Turns until fresh session pays itself off:
 const breakEvenTurns = continueCostPerTurn > 0 ? Math.ceil(freshBootstrap / continueCostPerTurn) : Infinity;
 
+// --- Compaction predictor (audit #2 · S117)
+// Predict how many turns remain before auto-compaction is triggered. Compaction
+// fires near the model's context limit (Anthropic compacts at ~95% to make
+// room). We treat 0.92 as the proactive trigger so PreCompact-hook autosave
+// has runway. If current burn rate is unknown (no turns observed), null out.
+const compactTriggerPct = 0.92;
+const compactTriggerTokens = limit * compactTriggerPct;
+const tokensTilCompact = Math.max(0, compactTriggerTokens - usedTokens);
+const burnPerTurn = continueCostPerTurn > 0 ? continueCostPerTurn : null;
+const turnsToCompact = burnPerTurn ? Math.max(0, Math.floor(tokensTilCompact / burnPerTurn)) : null;
+const compactImminent = turnsToCompact !== null && turnsToCompact <= 2 && pctUsed < 0.95;
+
 // --- Sonnet context-breach guardrail
 // Sonnet 4.6 caps at 200K even if the session-lock declares a 1M limit (e.g.
 // opusplan mode plans on Opus 1M but executes on Sonnet 200K). Fire an
@@ -281,6 +304,9 @@ if (pctUsed >= 0.95) {
 } else if (isSonnetExecTier && sonnetBreachPct >= 0.80) {
   recommendation = 'CONSIDER_CLOSEOUT';
   reason = `Sonnet 200K guardrail — ${(sonnetBreachPct*100).toFixed(0)}% of execute-tier limit · switch to opus or /closeout`;
+} else if (compactImminent) {
+  recommendation = 'WARN_COMPACT_SOON';
+  reason = `compaction predicted in ~${turnsToCompact} turn(s) at current burn rate — proactive autosave recommended`;
 } else if (pctUsed >= WARN_AT) {
   recommendation = 'CONSIDER_CLOSEOUT';
   reason = `context ${(pctUsed * 100).toFixed(0)}% used — fresh session saves ~${continueCostPerTurn} tokens/turn after ${breakEvenTurns} turns`;
@@ -385,6 +411,9 @@ const out = {
   continueCostPerTurn,
   freshSessionBootstrap: freshBootstrap,
   breakEvenTurns: Number.isFinite(breakEvenTurns) ? breakEvenTurns : null,
+  turnsToCompact,
+  compactImminent,
+  compactTriggerPct,
   recommendation,
   reason,
   actions,

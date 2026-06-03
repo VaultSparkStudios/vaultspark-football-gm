@@ -1,21 +1,32 @@
 # Latest Handoff
 
-## Where We Left Off — 2026-05-27
+## Where We Left Off — 2026-06-03
 
-Continuation verification reran the requested `/start -> /audit -> /implement -> /closeout` chain against the current worktree. The latest audit artifacts are present and all three audit items remain marked shipped with matching code/test evidence.
+The requested `/start -> /audit -> /implement -> /closeout` chain has now produced fresh 2026-06-03 audit artifacts and shipped all three current audit items.
 
-Current verification passed for `node --test test/studio-protocol-smoke.test.js`, `node --test test/session-lookup-indexes.test.js`, `node --check src/runtime/GameSession.js`, `node --check src/app/api/localApiRuntime.js`, `node scripts/render-startup-brief.mjs`, and `node scripts/blocker-preflight.mjs --json`. Full `npm test` was attempted again with a 20-minute ceiling and timed out, so splitting the simulation-heavy suite remains the top next engineering item.
+What changed:
+- `npm test` no longer runs the whole football simulation suite as one opaque block. It now composes bounded shards for `core`, `runtime`, `sim:contract`, `sim:realism`, and `studio`.
+- `npm run test:long` now isolates determinism and career-realism smoke probes, so expensive confidence checks are explicit instead of silently causing default local timeouts.
+- GitHub CI runs unit shards as a matrix and has a separate browser-gates job for `build:pages`, `smoke:pages`, and UI tests.
+- GitHub Pages deploy now builds the static bundle, installs Chromium, runs `smoke:pages`, and only then uploads the Pages artifact.
+- Missing local helper modules required by startup/protocol smoke were restored: `turn-classifier`, `visual-blocks`, and `sil-forecaster`.
 
-Founder explicitly requested a follow-up closeout after the audit implementation push. The repo now has an additional closeout refresh commit queued: public-safe context surfaces were updated, `context/OBELISK_ADOPTION.md` declares Phase 0 posture, and the next sprint queue is narrowed to test sharding plus GitHub Pages CI completion.
+Verification passed:
+- `npm run test:studio`
+- `npm run test:runtime`
+- `npm run test:core`
+- `npm run test:sim:contract`
+- `npm run test:sim:realism`
+- `npm test` (131 default tests, about 8.9 minutes locally)
+- `npm run test:long` (3 long-smoke tests, about 21 seconds locally)
+- `npm run build:pages`
+- `npm run smoke:pages`
 
-Session 11 completed the requested `/start -> /audit -> /implement -> /closeout` loop. Startup automation was repaired with local helper modules, the fresh startup brief renders again, and blocker preflight now returns JSON instead of failing on missing imports.
+Remaining public-safe blocker:
+- GitHub Pages provider/repo settings still need final external confirmation before public launch. The repo-side build and smoke gate are now ready.
 
-The gameplay/performance backlog moved forward: GameSession now has Map-backed lookup indexes for teams, active players, retired players, draft picks, and team rosters, with refreshes after roster-moving mutations. Browser local API simulation jobs now use deterministic clock-plus-counter IDs instead of `Math.random()`.
-
-Verification passed for the changed surfaces: `node --test test/studio-protocol-smoke.test.js`, `node --test test/session-lookup-indexes.test.js`, `node --check src/runtime/GameSession.js`, `node --check src/app/api/localApiRuntime.js`, `node scripts/render-startup-brief.mjs`, and `node scripts/blocker-preflight.mjs --json`. Full `npm test` was attempted twice and timed out before completion, so the next session should either run it with a longer external window or split the simulation-heavy suite by file.
-
-Football GM now has repo-local Codex launch wrappers at `scripts/codex-football.cmd` and `scripts/codex-football.ps1`. Use them when normal Codex startup in this repo is blocked by the built-in `codex_apps` MCP handshake; global Codex Apps remains enabled for other Studio projects.
-
-Package metadata now matches the proprietary rights posture in `docs/RIGHTS_PROVENANCE.md`. Next project work remains the gameplay/performance backlog: map-based player/team index and GitHub Pages CI completion.
+Next best work:
+- Run the new CI matrix in GitHub Actions and inspect any environment-only failures.
+- Add a scheduled deep realism sweep with a larger sample after it has a separate time budget and does not block default CI.
 
 This repo now keeps only a public-safe handoff summary. Detailed handoff history is maintained privately.

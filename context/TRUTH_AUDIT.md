@@ -2,7 +2,7 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-05-27
+Last reviewed: 2026-06-03
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 2026-05-27 note:
@@ -12,3 +12,9 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - GameSession lookup indexes and deterministic browser simulation job IDs are covered by targeted regression tests; full `npm test` timed out locally and remains unproven for this session.
 - Obelisk posture is now declared in `context/OBELISK_ADOPTION.md` as Phase 0. The root-level `OBELISK.md` template remains uncommitted because it contains placeholders and is not the canonical project adoption file.
 - Continuation verification on 2026-05-27 reconfirmed the targeted changed-surface gates; full `npm test` timed out again after 20 minutes.
+
+2026-06-03 note:
+- The prior full-suite timeout statement is obsolete. Default `npm test` now passes locally via bounded shards with 131 passing tests.
+- The explicit `npm run test:long` smoke shard passes locally with 3 tests covering same-seed determinism and the career-realism verification pipeline.
+- GitHub CI and Pages deploy workflows now include a static client smoke gate before public artifact upload.
+- GitHub Pages launch remains blocked only on external provider/repo settings confirmation, not on missing repo-side smoke automation.

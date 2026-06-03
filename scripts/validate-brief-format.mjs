@@ -137,7 +137,17 @@ export function validateStartupBrief(body) {
     missingRecommended: [],
     forbiddenHits: [],
     bodyShape: null,
+    staleBrief: null,
   };
+
+  // S142 audit item 2 — brief integrity self-assertion. The renderer stamps
+  // `<!-- brief-coherent: true|false -->` after a three-way check (SIL log vs
+  // PROJECT_STATUS vs rendered headline). false → the brief is showing stale or
+  // unparseable state and /start must NOT proceed on it.
+  const coherentMatch = body.match(/<!--\s*brief-coherent:\s*(true|false)\s*-->/i);
+  if (coherentMatch && coherentMatch[1].toLowerCase() === 'false') {
+    findings.staleBrief = 'brief-coherent: false — renderer detected stale/unparseable SIL state (see ⛔ STALE BRIEF banner). Re-render before /start.';
+  }
 
   for (const block of REQUIRED_BLOCKS) {
     if (!block.pattern.test(body)) {
@@ -162,9 +172,25 @@ export function validateStartupBrief(body) {
   return {
     ok: findings.missingRequired.length === 0
       && findings.forbiddenHits.length === 0
-      && findings.bodyShape === null,
+      && findings.bodyShape === null
+      && findings.staleBrief === null,
     ...findings,
   };
+}
+
+export function briefBlockSizes(body) {
+  const blocks = [];
+  const re = /(╔[^\n]*\n[\s\S]*?╚[^\n]*╝)/g;
+  for (const match of body.matchAll(re)) {
+    const block = match[1];
+    const title = block.match(/^╔[═\s]*([^═╗]+?)(?:\s*═|╗)/m)?.[1]?.trim() || 'UNTITLED';
+    blocks.push({
+      title,
+      bytes: Buffer.byteLength(block, 'utf8'),
+      lines: block.split(/\r?\n/).length,
+    });
+  }
+  return blocks.sort((a, b) => b.bytes - a.bytes);
 }
 
 async function readTarget() {
@@ -196,7 +222,47 @@ if (IS_DIRECT_RUN) {
   }
 
   const result = validateStartupBrief(body);
-  const fail = !result.ok;
+  let fail = !result.ok;
+
+  // S124 #8 — Token-budget enforcer. Brief is the only canonical /start
+  // surface — bloat = re-introducing the 100KB pre-v4 tax. Persist size to
+  // .cache/brief-size.json for doctor probe.
+  // S153 re-baseline: the 13/15KB budget predated the augment layer (S118
+  // R-H5/R-H12) and the S121–S142 tile additions (PROPAGATION · ARK · ARK
+  // PRIORITY · CASCADE · ANALYTICA · OBELISK · SIL GAPS · ROUTER — ~5.7KB of
+  // deliberate, individually-shipped surface). A fresh render+augment measured
+  // 20.9KB and hard-failed every /start deterministically. 24KB ≈ 5.2K tokens
+  // — still inside the v1.3 token-lean target (≤8K at session start).
+  // Trim-first rule stands: no-data boxes are skipped (augment S153).
+  const sizeBytes = Buffer.byteLength(body, 'utf8');
+  const topBlocks = briefBlockSizes(body).slice(0, 5);
+  const BUDGET_WARN = 18_432; // 18KB
+  const BUDGET_FAIL = 24_576; // 24KB
+  const budgetStatus = sizeBytes > BUDGET_FAIL ? 'fail' : sizeBytes > BUDGET_WARN ? 'warn' : 'pass';
+  try {
+    const fs2 = await import('node:fs');
+    const path2 = await import('node:path');
+    const cacheDir = path2.join(path2.dirname(targetPath || '.'), '..', '.cache');
+    fs2.mkdirSync(cacheDir, { recursive: true });
+    fs2.writeFileSync(path2.join(cacheDir, 'brief-size.json'), JSON.stringify({
+      generatedAt: new Date().toISOString(),
+      sizeBytes,
+      budgetWarn: BUDGET_WARN,
+      budgetFail: BUDGET_FAIL,
+      status: budgetStatus,
+      topBlocks,
+    }, null, 2));
+  } catch {}
+  if (budgetStatus === 'fail') fail = true;
+  if (!JSON_MODE && budgetStatus !== 'pass') {
+    console.log(`  ${budgetStatus === 'fail' ? '⛔' : '⚠'}  brief size ${sizeBytes}B ${budgetStatus === 'fail' ? `> ${BUDGET_FAIL}B (HARD FAIL — trim tiles)` : `> ${BUDGET_WARN}B (warn — approaching budget)`}`);
+    if (topBlocks.length) {
+      console.log('  top brief blocks by size:');
+      for (const block of topBlocks.slice(0, 3)) {
+        console.log(`    - ${block.title}: ${block.bytes}B · ${block.lines} lines`);
+      }
+    }
+  }
 
   if (JSON_MODE) {
     process.stdout.write(JSON.stringify({
@@ -206,11 +272,22 @@ if (IS_DIRECT_RUN) {
       missingRecommended: result.missingRecommended,
       forbiddenHits: result.forbiddenHits,
       bodyShape: result.bodyShape,
+      staleBrief: result.staleBrief,
+      budget: {
+        sizeBytes,
+        warnBytes: BUDGET_WARN,
+        failBytes: BUDGET_FAIL,
+        status: budgetStatus,
+        topBlocks,
+      },
     }, null, 2) + '\n');
   } else {
     const header = `validate-brief-format · ${STDIN_MODE ? '<stdin>' : path.relative(process.cwd(), targetPath)}`;
     console.log(header);
     console.log('─'.repeat(Math.min(72, header.length + 8)));
+    if (result.staleBrief) {
+      console.log(`  ⛔  STALE BRIEF: ${result.staleBrief}`);
+    }
     if (result.bodyShape) {
       console.log(`  ⛔  ${result.bodyShape}`);
     }

@@ -1,5 +1,13 @@
 # Work Log
 
+## 2026-06-03 — Test sharding and Pages smoke closeout
+
+- Generated fresh 2026-06-03 audit artifacts focused on the active Football GM blockers: opaque test timeout, Pages publish confidence, and low-token verification routing.
+- Added a named shard runner plus npm scripts for core, runtime, sim-contract, sim-realism, studio, long, and full verification paths.
+- Converted GitHub CI unit checks to a shard matrix and added static Pages smoke gates to CI/deploy before artifact upload.
+- Restored missing local Studio helper modules surfaced by the startup smoke test.
+- Verification passed for all default shards, composed `npm test`, explicit `test:long`, Pages build, and Pages smoke.
+
 ## 2026-05-27 — Goal continuation verification closeout
 
 - Reran the Studio sequence from the current worktree: `/start` orientation, audit artifact inspection, `/implement` no-op verification against the execution log, and closeout write-back.

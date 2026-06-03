@@ -1,0 +1,90 @@
+{
+  "generatedBy": "/audit skill v1.0",
+  "generatedAt": "2026-06-03",
+  "project": "vaultspark-football-gm",
+  "type": "game",
+  "topLine": {
+    "totalItems": 3,
+    "combinedPriority": 55.6,
+    "top3": [
+      "ci-friendly-test-shards",
+      "pages-smoke-deploy-gate",
+      "test-surface-contract-map"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "slug": "ci-friendly-test-shards",
+      "tier": "fire",
+      "axis": "speed/organization/efficiency",
+      "effort": "2h",
+      "impact": 9,
+      "innovation": 6,
+      "priority": 22.5,
+      "title": "Split the simulation-heavy test suite into actionable shards",
+      "insight": "The known 20-minute local timeout is not just slowness; it hides which football surface failed. Sharding by contract, runtime, simulation realism, and Studio protocol turns a stalled monolith into coachable signals for local agents and CI.",
+      "recipe": "Add a shard runner with named test groups, npm scripts for each shard, and a CI matrix that runs shards independently."
+    },
+    {
+      "rank": 2,
+      "slug": "pages-smoke-deploy-gate",
+      "tier": "fire",
+      "axis": "security",
+      "effort": "1h",
+      "impact": 8,
+      "innovation": 5,
+      "priority": 20.0,
+      "title": "Make the GitHub Pages deploy prove the playable client boots",
+      "insight": "The project has a good static smoke script, but deploy only built artifacts and uploaded them. The deploy gate should prove the client-only league path actually boots before publishing a public game surface.",
+      "recipe": "Run the existing static Pages smoke test in deploy-pages after build and wire CI to execute the same smoke gate after the Pages bundle is produced."
+    },
+    {
+      "rank": 3,
+      "slug": "test-surface-contract-map",
+      "tier": "high",
+      "axis": "token/api consumption reduction",
+      "effort": "30m",
+      "impact": 7,
+      "innovation": 5,
+      "priority": 13.1,
+      "title": "Give future agents a low-token map from change surface to test shard",
+      "insight": "Agents currently have to grep the suite or rerun too much to choose a verification path. A compact contract map cuts repeated context and command cost by telling the next agent exactly which shard covers browser runtime, sim realism, protocol helpers, or UI smoke.",
+      "recipe": "Document shard ownership in the implementation plan and package scripts, then log the measurement plan for full-suite timeout replacement."
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "ci-friendly-test-shards",
+      "status": "shipped",
+      "completedAt": "2026-06-03",
+      "evidence": [
+        "scripts/run-test-shard.mjs",
+        "package.json test:core/test:runtime/test:sim:contract/test:sim:realism/test:studio/test:long scripts",
+        "npm test passed with 131 default tests across core/runtime/sim-contract/sim-realism/studio shards",
+        "npm run test:long passed with 3 long-smoke tests"
+      ]
+    },
+    {
+      "slug": "pages-smoke-deploy-gate",
+      "status": "shipped",
+      "completedAt": "2026-06-03",
+      "evidence": [
+        ".github/workflows/ci.yml browser-gates job runs build:pages and smoke:pages",
+        ".github/workflows/deploy-pages.yml runs smoke:pages before upload-pages-artifact",
+        "npm run build:pages passed",
+        "npm run smoke:pages passed"
+      ]
+    },
+    {
+      "slug": "test-surface-contract-map",
+      "status": "shipped",
+      "completedAt": "2026-06-03",
+      "evidence": [
+        "docs/IMPLEMENT_PLAN.md records shard ownership and measurement plan",
+        "scripts/run-test-shard.mjs list support documents file membership",
+        "Long-horizon realism/determinism checks isolated behind npm run test:long and npm run test:full"
+      ]
+    }
+  ]
+}

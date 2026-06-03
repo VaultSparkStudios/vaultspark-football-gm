@@ -1,55 +1,42 @@
-<!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-05-27 (Session 13 closeout) -->
+<!-- generated-by: /closeout summary -->
+<!-- generated-at: 2026-06-03 (Session 13 closeout) -->
 
 # Closeout Status Board — VaultSpark Football GM
 
 ```
 ╔══ SESSION CLOSEOUT · VaultSpark Football GM · S13 ═════════════╗
-║  Date: 2026-05-27  ·  SIL: 792/1000  ·  Velocity: —              ║
-║  Mode: EXECUTION  ·  Agent: codex                                ║
+║  Date: 2026-06-03  ·  SIL: 806/1000  ·  Mode: EXECUTION        ║
+║  Agent: codex  ·  Focus: test shards + Pages smoke gates       ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  (no shipped bullets parsed from LATEST_HANDOFF — see git log)   ║
+║  ✓ Fresh 2026-06-03 audit with 3/3 items shipped               ║
+║  ✓ Bounded default npm test shards                             ║
+║  ✓ Explicit long smoke shard for realism/determinism            ║
+║  ✓ CI shard matrix and browser gate                            ║
+║  ✓ Pages deploy smoke before artifact upload                    ║
+║  ✓ Missing startup helper modules restored                      ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 792/1000 ═══════════════════════════════════════╗
-║    Dev Health         76   ████████░░                            ║
-║    Alignment          71   ███████░░░                            ║
-║    Momentum           74   ███████░░░                            ║
-║    Engagement         73   ███████░░░                            ║
-║    Process Qual       79   ████████░░                            ║
-║    Coherence          95   ██████████                            ║
-║    Security           82   ████████░░                            ║
-║    Ecosystem          70   ███████░░░                            ║
-║    Capital            78   ████████░░                            ║
-║    Automation         86   █████████░                            ║
+╔══ VERIFICATION ════════════════════════════════════════════════╗
+║  ✓ npm test — 131 default tests passed                         ║
+║  ✓ npm run test:long — 3 long-smoke tests passed               ║
+║  ✓ npm run build:pages                                         ║
+║  ✓ npm run smoke:pages                                         ║
+║  ✓ npm run test:studio/runtime/core/sim:* shards                ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  ✓ context/CURRENT_STATE.md                                      ║
-║  ✓ context/TASK_BOARD.md                                         ║
-║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
-║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  ✓ context/TRUTH_AUDIT.md                                        ║
-║  ✓ context/PROJECT_STATUS.json                                   ║
-╚════════════════════════════════════════════════════════════════╝
-╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 12 files  ·  M:9 A:0 D:0 ?:3                           ║
-║  Ahead: 0  ·  Behind: 0                                          ║
-║  Branch: main                                                    ║
-╚════════════════════════════════════════════════════════════════╝
-╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
-║  Doctor:        —                                                ║
-║  Compliance:    —                                                ║
-║  Tests:         —                                                ║
-║  IGNIS:         12d ago                                          ║
-║  Truth:         green                                            ║
-║  Sanitization:  —                                                ║
+╔══ SCORES · SIL 806/1000 ═══════════════════════════════════════╗
+║    Dev Health         81   ████████░░                          ║
+║    Alignment          71   ███████░░░                          ║
+║    Momentum           76   ████████░░                          ║
+║    Engagement         73   ███████░░░                          ║
+║    Process Qual       82   ████████░░                          ║
+║    Coherence          95   ██████████                          ║
+║    Security           84   ████████░░                          ║
+║    Ecosystem          70   ███████░░░                          ║
+║    Capital            78   ████████░░                          ║
+║    Automation         94   █████████░                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║
+║  Run GitHub Actions matrix and finish Pages provider settings. ║
+║  Add scheduled deep realism sweep with its own time budget.     ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
-
-*Generated by `scripts/render-closeout-board.mjs v1.0`*

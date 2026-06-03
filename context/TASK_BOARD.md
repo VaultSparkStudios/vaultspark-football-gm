@@ -98,5 +98,16 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 | Item | Status |
 |------|--------|
-| Split simulation-heavy `npm test` into CI-friendly shards so local/agent runs return actionable output | 🔜 Next sprint — reconfirmed by 20-minute timeout on 2026-05-27 |
-| Complete GitHub Pages CI deploy once repo secret/provider configuration is ready | 🔜 Next sprint |
+| Split simulation-heavy `npm test` into CI-friendly shards so local/agent runs return actionable output | ✅ Done 2026-06-03 — `npm test` now runs bounded default shards; `npm run test:long` isolates expensive realism/determinism smoke probes |
+| Complete GitHub Pages CI deploy once repo secret/provider configuration is ready | 🔄 Improved 2026-06-03 — deploy workflow now builds and smokes the static client before upload; provider/repo Pages settings still external |
+
+## Session 13 — Test Sharding + Pages Smoke Gates (2026-06-03)
+
+| Item | Status |
+|------|--------|
+| Add shard runner and npm scripts for core/runtime/sim/studio/long test surfaces | Done |
+| Convert CI unit checks to a matrix of bounded shards | Done |
+| Run static Pages smoke in CI and deploy workflow before artifact upload | Done |
+| Restore missing local Studio helper modules required by startup smoke | Done |
+
+**Verification:** `npm run test:studio`, `npm run test:runtime`, `npm run test:core`, `npm run test:sim:contract`, `npm run test:sim:realism`, `npm test`, `npm run test:long`, `npm run build:pages`, and `npm run smoke:pages` passed. `npm run test:runtime` took about 183 seconds when run alone; composed `npm test` completed in about 8.9 minutes with 131 default tests.
