@@ -51,9 +51,16 @@ const serverMetrics = {
 const simJobs = new Map();
 
 // ── Rate limiter (token-bucket, 50 req/min per IP) ───────────────────────────
+// VSFGM_RATE_LIMIT_PER_MIN overrides the per-minute budget. UI test harnesses
+// poll far faster than a human and self-throttle into 429s — see CI run
+// 26991314776, where Playwright tripped the limit the first time the UI suite
+// ever executed in Actions. Production default stays 50.
 let _jobIdSeq = 0;
 const SIM_JOB_TTL_MS = 10 * 60 * 1000; // 10 minutes
 const rateBuckets = new Map();
+const RATE_LIMIT_PER_MIN = Number(process.env.VSFGM_RATE_LIMIT_PER_MIN) > 0
+  ? Number(process.env.VSFGM_RATE_LIMIT_PER_MIN)
+  : 50;
 
 function checkRateLimit(ip) {
   const now = Date.now();
@@ -69,7 +76,7 @@ function checkRateLimit(ip) {
       if (now - v.windowStart > 120_000) rateBuckets.delete(k);
     }
   }
-  return bucket.count <= 50;
+  return bucket.count <= RATE_LIMIT_PER_MIN;
 }
 
 function pruneSimJobs() {

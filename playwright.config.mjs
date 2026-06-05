@@ -16,7 +16,10 @@ export default defineConfig({
     command: "node scripts/dev-playwright-server.mjs",
     url: "http://localhost:4273",
     env: {
-      PORT: "4273"
+      PORT: "4273",
+      // The UI suite polls far faster than a human; don't let the production
+      // 50 req/min bucket 429 the tests (CI run 26991314776).
+      VSFGM_RATE_LIMIT_PER_MIN: "100000"
     },
     reuseExistingServer: false,
     timeout: 60_000
