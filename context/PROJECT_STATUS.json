@@ -4,12 +4,12 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 13 shipped CI-friendly test shards, restored missing local Studio helper modules exposed by startup smoke, and added static Pages smoke gates before public artifact upload.",
-  "nextMilestone": "Run the new shard matrix in GitHub Actions and finish provider/repo GitHub Pages settings.",
+  "currentFocus": "Session 14 shipped rivalry surfacing, Season Epilogue, shareable challenge codes, save integrity, and beta feedback, and armored CI/Pages against the Playwright install hang.",
+  "nextMilestone": "Prove the hardened CI matrix + Pages deploy in Actions, then restore the public domain after the Cloudflare runbook is applied.",
   "blockers": [
-    "GitHub Pages provider/repo settings still need final external confirmation before public launch"
+    "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) — Cloudflare-side fix required; runbook in TASK_BOARD"
   ],
-  "lastUpdated": "2026-06-03",
+  "lastUpdated": "2026-06-04",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,18 +18,17 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-03",
   "testSuiteStatus": {
-    "totalTests": 134,
-    "pass": 134,
+    "totalTests": 149,
+    "pass": 149,
     "fail": 0,
-    "lastRun": "2026-06-03",
+    "lastRun": "2026-06-04",
     "newTestFiles": [
-      "scripts/run-test-shard.mjs",
-      "scripts/lib/turn-classifier.mjs",
-      "scripts/lib/visual-blocks.mjs",
-      "scripts/lib/sil-forecaster.mjs"
+      "test/challenge-codes.test.js",
+      "test/save-integrity.test.js",
+      "test/beta-feedback.test.js"
     ],
-    "newTestCount": 39,
-    "coverage": "Default npm test now runs core, runtime, sim-contract, sim-realism, and studio shards with 131 passing tests; explicit long smoke shard adds 3 passing determinism/realism pipeline tests."
+    "newTestCount": 18,
+    "coverage": "Five default shards (core 54, runtime 69, sim-contract 22, sim-realism 1, studio 3); long shard remains the explicit deep-confidence path plus the new weekly realism-sweep workflow."
   },
   "session8Summary": {
     "itemsShipped": 19,
@@ -82,9 +81,9 @@
     "capitalEfficiency": 78,
     "automationCoverage": 94
   },
-  "currentSession": 13,
+  "currentSession": 14,
   "lastAgent": "codex",
-  "sessionMode": "execution",
+  "sessionMode": "builder",
   "lastVerification": {
     "date": "2026-06-03",
     "passed": [
@@ -107,5 +106,6 @@
   "modelPlanMode": true,
   "modelPlanModeSlash": "/model opusplan",
   "planModeDetected": "missing",
-  "planModeCheckedAt": "2026-05-27T20:28:14.507Z"
+  "planModeCheckedAt": "2026-06-04T00:44:30.058Z",
+  "sessionModeAutoShiftedAt": "2026-06-04T00:44:29.866Z"
 }

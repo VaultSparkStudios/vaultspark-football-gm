@@ -1,42 +1,60 @@
-<!-- generated-by: /closeout summary -->
-<!-- generated-at: 2026-06-03 (Session 13 closeout) -->
+<!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
+<!-- generated-at: 2026-06-05 (Session 14 closeout) -->
 
 # Closeout Status Board — VaultSpark Football GM
 
 ```
-╔══ SESSION CLOSEOUT · VaultSpark Football GM · S13 ═════════════╗
-║  Date: 2026-06-03  ·  SIL: 806/1000  ·  Mode: EXECUTION        ║
-║  Agent: codex  ·  Focus: test shards + Pages smoke gates       ║
+╔══ SESSION CLOSEOUT · VaultSpark Football GM · S14 ═════════════╗
+║  Date: 2026-06-05  ·  SIL: 806/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Fresh 2026-06-03 audit with 3/3 items shipped               ║
-║  ✓ Bounded default npm test shards                             ║
-║  ✓ Explicit long smoke shard for realism/determinism            ║
-║  ✓ CI shard matrix and browser gate                            ║
-║  ✓ Pages deploy smoke before artifact upload                    ║
-║  ✓ Missing startup helper modules restored                      ║
-╚════════════════════════════════════════════════════════════════╝
-╔══ VERIFICATION ════════════════════════════════════════════════╗
-║  ✓ npm test — 131 default tests passed                         ║
-║  ✓ npm run test:long — 3 long-smoke tests passed               ║
-║  ✓ npm run build:pages                                         ║
-║  ✓ npm run smoke:pages                                         ║
-║  ✓ npm run test:studio/runtime/core/sim:* shards                ║
+║  ✓ Shipped 7 of 8 audit items; the 8th (custom-domain cert) is   ║
+║  ✓ Test suite grew 131 → 149 (18 new tests across challenge cod  ║
+║  ✓ New player-facing surfaces: rivalry strip + RIVALRY WEEK ban  ║
+║  ✓ Both `.github/workflows/ci.yml` and `deploy-pages.yml` cache  ║
+║  ✓ `.github/workflows/realism-sweep.yml` (new) runs weekly: `te  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 806/1000 ═══════════════════════════════════════╗
-║    Dev Health         81   ████████░░                          ║
-║    Alignment          71   ███████░░░                          ║
-║    Momentum           76   ████████░░                          ║
-║    Engagement         73   ███████░░░                          ║
-║    Process Qual       82   ████████░░                          ║
-║    Coherence          95   ██████████                          ║
-║    Security           84   ████████░░                          ║
-║    Ecosystem          70   ███████░░░                          ║
-║    Capital            78   ████████░░                          ║
-║    Automation         94   █████████░                          ║
+║    Dev Health         81   ████████░░                            ║
+║    Alignment          71   ███████░░░                            ║
+║    Momentum           76   ████████░░                            ║
+║    Engagement         73   ███████░░░                            ║
+║    Process Qual       82   ████████░░                            ║
+║    Coherence          95   ██████████                            ║
+║    Security           84   ████████░░                            ║
+║    Ecosystem          70   ███████░░░                            ║
+║    Capital            78   ████████░░                            ║
+║    Automation         94   █████████░                            ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
+║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ GIT STATUS ══════════════════════════════════════════════════╗
+║  Changes: 13 files  ·  M:9 A:0 D:0 ?:4                           ║
+║  Ahead: 1  ·  Behind: 0                                          ║
+║  Branch: main                                                    ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
+║  Doctor:        —                                                ║
+║  Compliance:    —                                                ║
+║  Tests:         —                                                ║
+║  IGNIS:         2d ago                                           ║
+║  Truth:         green                                            ║
+║  Sanitization:  —                                                ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  Run GitHub Actions matrix and finish Pages provider settings. ║
-║  Add scheduled deep realism sweep with its own time budget.     ║
+║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
+
+*Generated by `scripts/render-closeout-board.mjs v1.0`*

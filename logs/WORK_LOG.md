@@ -1,5 +1,13 @@
 # Work Log
 
+## 2026-06-04 — Session 14: engagement surfacing + pipeline defense closeout
+
+- Generated the 2026-06-04 audit (8 items) personalized to live findings: both ship pipelines dead since Session 13 at the Playwright install step, the custom-domain cert expired/bad_authz, rivalryDNA invisible in UI, and the twice-recorded realism-sweep follow-up.
+- Hardened CI and Pages deploy with Playwright browser caching, bounded install steps with retry, and a smoke watchdog; added the weekly scheduled realism sweep workflow.
+- Shipped four player-facing systems: rivalry surfacing, Season Epilogue ritual, shareable challenge codes, and the beta feedback flow; added save/gist integrity stamping.
+- Root-caused the public 403 outage to Cloudflare-proxied DNS blocking GitHub ACME plus a Cloudflare-side block; wrote the founder runbook and confirmed Cloudflare credentials are absent from the secrets gateway.
+- Verification: 149 tests green across five shards (up from 131), `build:pages` + `smoke:pages` pass.
+
 ## 2026-06-03 — Test sharding and Pages smoke closeout
 
 - Generated fresh 2026-06-03 audit artifacts focused on the active Football GM blockers: opaque test timeout, Pages publish confidence, and low-token verification routing.

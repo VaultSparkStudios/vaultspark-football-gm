@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-06-04",
+  "project": "vaultspark-football-gm",
+  "summary": "Session 14 full chain: fresh 8-item audit driven by live incident forensics, 7 shipped + 1 diagnosed-and-escalated, suite 131 -> 149.",
+  "status": "green",
+  "writeback": {
+    "currentState": true,
+    "taskBoard": true,
+    "latestHandoff": true,
+    "workLog": true,
+    "decisions": true,
+    "selfImprovementLoop": true,
+    "creativeDirectionRecord": true,
+    "truthAudit": true,
+    "agentMemory": true
+  },
+  "changes": [
+    "CI + Pages deploy defended against the proven Playwright install hang (cache, bounded install with retry, smoke watchdog).",
+    "Weekly scheduled deep realism sweep workflow added with its own 90-minute budget (non-blocking).",
+    "Rivalry DNA surfaced in game UI: schedule rivalry strip + RIVALRY WEEK sim-watch banner.",
+    "Season Epilogue ritual appended to the Season Review modal (arc verdicts, records, fan pulse, deterministic quote).",
+    "Shareable VSFC1 challenge codes: copy on speedrun panel, accept on setup, FNV-1a checksum.",
+    "Save integrity stamps on browser saves and gist sync payloads, verified on load/import.",
+    "Beta feedback flow: prefilled GitHub issue with game context, opt-in analytics digest.",
+    "Public-site 403 root-caused: Cloudflare-proxied apex blocks GitHub ACME; founder runbook written."
+  ],
+  "verification": [
+    "npm run test:core (54 pass)",
+    "npm run test:runtime (69 pass)",
+    "npm run test:sim:contract (22 pass)",
+    "npm run test:sim:realism (1 pass)",
+    "npm run test:studio (3 pass)",
+    "npm run build:pages",
+    "npm run smoke:pages"
+  ],
+  "silScore": 819,
+  "followUp": [
+    "Push and verify the CI matrix + Pages deploy with the install defenses in Actions.",
+    "After Cloudflare runbook is applied, confirm cert reissue and public game URL reachability.",
+    "Next-wave audit candidates: press-conference narrative cross-refs, fan-sentiment hot-seat loop."
+  ]
+}

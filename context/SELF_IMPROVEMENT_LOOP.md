@@ -1,5 +1,19 @@
 # Self-Improvement Loop
 
+## 2026-06-04 — Session 14 Closeout
+
+Score: 819 / 1000
+
+Category notes:
+- Engagement: +6 for shipping four player-facing systems in one pass — rivalry surfacing closed a built-but-invisible engine gap, the Season Epilogue converts the churn point into a payoff ritual, and challenge codes add a zero-backend duel loop nobody in the category has.
+- Dev Health: +3 for armoring both ship pipelines against the proven Playwright install hang and growing the suite 131 → 149 with the new surfaces covered.
+- Security Posture: +3 for save/gist integrity stamping (the valid-JSON corruption case is now caught) and for root-causing the public-site 403 with evidence instead of leaving a vague external blocker.
+- Automation Coverage: +2 for the scheduled deep realism sweep, closing a follow-up recorded in two consecutive SIL entries.
+- Process Quality: +1 for the audit being driven by live incident evidence (step-log forensics, cert/DNS probes) rather than codebase reading alone.
+- Momentum: -2 held back — the Session-13 push never went green in Actions and the public domain is down; both must be proven next session.
+
+Follow-up: push and verify the CI matrix + Pages deploy with the install defenses; after the founder applies the Cloudflare runbook, confirm cert reissue and public reachability of the game URL.
+
 ## 2026-06-03 — Session 13 Closeout
 
 Score: 806 / 1000
