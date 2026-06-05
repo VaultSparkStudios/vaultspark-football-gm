@@ -40,7 +40,7 @@ jobs:
 
       - uses: actions/setup-node@v5
         with:
-          node-version: 24
+          node-version: "24.14.0" # pinned: Node 24.16 hangs playwright install post-download (S14 evidence: runs 26991314776, 26991314875)
           cache: npm
 
       - uses: actions/configure-pages@v5
