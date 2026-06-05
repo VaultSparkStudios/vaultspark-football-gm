@@ -15,6 +15,31 @@
 
 const GIST_API = "https://api.github.com/gists";
 const GIST_FILENAME = "vsfgm-save.json";
+const INTEGRITY_FILENAME = "vsfgm-save.integrity.json";
+
+// ── Integrity stamp (S14) ─────────────────────────────────────────────────────
+// Mirrors src/adapters/persistence/saveStoreShared.js — kept inline because
+// gistSync is a dependency-free leaf module in the static Pages bundle.
+
+function computeSnapshotChecksum(serialized) {
+  const str = String(serialized);
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < str.length; i += 1) {
+    hash ^= str.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return (hash >>> 0).toString(16).padStart(8, "0");
+}
+
+function buildIntegrityStamp(serialized) {
+  return { algo: "fnv1a32", checksum: computeSnapshotChecksum(serialized), length: String(serialized).length };
+}
+
+function verifyIntegrityStamp(serialized, integrity) {
+  if (!integrity || integrity.algo !== "fnv1a32") return true; // legacy payloads: nothing to verify
+  const str = String(serialized);
+  return integrity.length === str.length && integrity.checksum === computeSnapshotChecksum(str);
+}
 const TOKEN_KEY = "vsfgm_gist_token";
 const GIST_ID_KEY = "vsfgm_gist_id";
 
@@ -80,7 +105,11 @@ export async function exportToGist(snapshot, token, gistId) {
   const body = {
     description,
     public: false,
-    files: { [GIST_FILENAME]: { content } }
+    files: {
+      [GIST_FILENAME]: { content },
+      // Integrity sidecar (S14): lets import detect truncated/corrupted sync payloads.
+      [INTEGRITY_FILENAME]: { content: JSON.stringify(buildIntegrityStamp(content)) }
+    }
   };
 
   let result;
@@ -123,6 +152,23 @@ export async function importFromGist(gistId, token) {
     ? await fetch(file.raw_url).then((r) => r.text())
     : null;
   if (!raw) throw new Error("Could not read Gist file content.");
+
+  // Verify integrity sidecar when present (legacy gists without one still import).
+  const integrityFile = data.files?.[INTEGRITY_FILENAME];
+  if (integrityFile?.content) {
+    let integrity = null;
+    try {
+      integrity = JSON.parse(integrityFile.content);
+    } catch {
+      integrity = null;
+    }
+    if (!verifyIntegrityStamp(raw, integrity)) {
+      throw new Error(
+        "Cloud save failed integrity verification — the synced data is corrupt or was truncated. " +
+          "Your local saves are unaffected; re-export from the device that has the good copy."
+      );
+    }
+  }
 
   const snapshot = JSON.parse(raw);
   return { snapshot, description: data.description };

@@ -1623,7 +1623,16 @@ export function createLocalApiRuntime({
       }
 
       if (method === "GET" && pathname === "/api/speedrun/status") {
-        return finish(jsonResponse(200, { ok: true, challenge: _speedrunChallenge }));
+        // leagueMeta powers shareable challenge codes (public/lib/challengeCodes.js)
+        const metaSession = session;
+        const leagueMeta = metaSession
+          ? {
+              seed: metaSession.rng?.seed ?? null,
+              startYear: metaSession.startYear ?? metaSession.currentYear ?? null,
+              controlledTeamId: metaSession.controlledTeamId || null
+            }
+          : null;
+        return finish(jsonResponse(200, { ok: true, challenge: _speedrunChallenge, leagueMeta }));
       }
 
       if (method === "POST" && pathname === "/api/speedrun/check") {

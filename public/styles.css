@@ -3028,3 +3028,104 @@ body.mobile-loop-active .mobile-loop-overlay {
 .gm-persona-progress-pct { font-size: 0.7rem; color: var(--muted); min-width: 30px; text-align: right; }
 @keyframes confettiBurst { 0% { opacity:1; transform:scale(1) translateY(0); } 100% { opacity:0; transform:scale(1.5) translateY(-30px); } }
 .persona-tier-up-confetti { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; z-index:9999; font-size:48px; animation:confettiBurst 1s ease-out forwards; }
+
+/* ── Rivalry DNA surfacing (S14) ────────────────────────────────────────── */
+.rivalry-strip {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin: 8px 0; padding: 8px 12px; border-radius: 6px;
+  background: var(--bg-3); border-left: 3px solid var(--accent-3);
+  font-size: 0.82rem;
+}
+.rivalry-strip.rs-heated { border-left-color: var(--accent); }
+.rivalry-strip.rs-bitter { border-left-color: var(--danger); background: linear-gradient(90deg, rgba(208,92,92,0.12), var(--bg-3)); }
+.rivalry-week-badge {
+  background: var(--danger); color: #fff; font-weight: 700; font-size: 0.68rem;
+  letter-spacing: 0.08em; padding: 2px 8px; border-radius: 3px;
+  animation: rivalryPulse 2s ease-in-out infinite;
+}
+@keyframes rivalryPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.65; } }
+.rivalry-label { font-weight: 700; color: var(--accent-strong); }
+.rivalry-matchup { font-weight: 600; }
+.rivalry-series, .rivalry-streak { color: var(--muted); }
+.rivalry-heat-meter {
+  flex: 1; min-width: 60px; max-width: 140px; height: 5px;
+  background: var(--bg-2, rgba(255,255,255,0.08)); border-radius: 3px; overflow: hidden;
+}
+.rivalry-heat-fill {
+  display: block; height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent-3), var(--accent), var(--danger));
+  transition: width 600ms ease-out;
+}
+.sw-rivalry-banner {
+  margin-top: 6px; padding: 4px 8px; border-radius: 4px;
+  background: rgba(208,92,92,0.15); font-size: 0.78rem;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ── Season Epilogue (S14) ──────────────────────────────────────────────── */
+.season-epilogue { margin-top: 16px; }
+.ep-divider {
+  text-align: center; color: var(--accent); font-size: 0.7rem;
+  letter-spacing: 0.25em; font-weight: 700; margin: 14px 0 10px;
+}
+.ep-champion {
+  text-align: center; font-size: 1.1rem; font-weight: 800; color: var(--accent-strong);
+  padding: 8px; margin-bottom: 10px; border: 1px solid var(--accent);
+  border-radius: 6px; background: rgba(215,162,74,0.1);
+}
+.ep-arcs { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.ep-arc {
+  display: flex; align-items: center; gap: 8px; padding: 6px 10px;
+  border-radius: 5px; background: var(--bg-3); font-size: 0.82rem;
+}
+.ep-arc-won { border-left: 3px solid var(--accent-2); }
+.ep-arc-lost { border-left: 3px solid var(--danger); opacity: 0.85; }
+.ep-arc-title { flex: 1; }
+.ep-arc-verdict { font-weight: 700; font-size: 0.72rem; letter-spacing: 0.05em; }
+.ep-arc-won .ep-arc-verdict { color: var(--accent-2); }
+.ep-arc-lost .ep-arc-verdict { color: var(--danger); }
+.ep-section-label {
+  font-size: 0.68rem; letter-spacing: 0.12em; color: var(--muted);
+  font-weight: 700; margin-bottom: 5px; text-transform: uppercase;
+}
+.ep-records { margin-bottom: 10px; }
+.ep-record { font-size: 0.82rem; padding: 3px 0; }
+.ep-fan { margin-bottom: 10px; }
+.ep-fan-meter {
+  height: 6px; background: var(--bg-3); border-radius: 3px; overflow: hidden;
+}
+.ep-fan-fill {
+  display: block; height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--danger), var(--accent), var(--accent-2));
+  transition: width 900ms ease-out;
+}
+.ep-fan-text { font-size: 0.75rem; color: var(--muted); margin-top: 3px; }
+.ep-quote {
+  margin: 12px 0 0; padding: 10px 14px; border-left: 3px solid var(--accent);
+  background: var(--bg-3); border-radius: 0 6px 6px 0;
+  font-style: italic; font-size: 0.88rem;
+}
+.ep-quote cite { display: block; margin-top: 6px; font-size: 0.72rem; color: var(--muted); font-style: normal; }
+
+/* ── Challenge codes (S14) ──────────────────────────────────────────────── */
+.challenge-code-row {
+  display: flex; gap: 8px; margin-top: 10px; align-items: center;
+}
+.challenge-code-row input {
+  flex: 1; font-size: 0.82rem; padding: 7px 10px;
+  background: var(--bg-3); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 5px; color: inherit;
+}
+.speedrun-rival {
+  margin-top: 8px; padding: 6px 10px; border-radius: 5px;
+  background: rgba(123,196,215,0.1); border-left: 3px solid var(--accent-3);
+  font-size: 0.82rem;
+}
+
+/* ── Beta feedback (S14) ────────────────────────────────────────────────── */
+.fm-feedback-link {
+  margin-top: 8px; background: none; border: none; cursor: pointer;
+  color: var(--muted); font-size: 0.72rem; text-decoration: underline;
+  opacity: 0.8;
+}
+.fm-feedback-link:hover { opacity: 1; color: var(--accent-3); }

@@ -1,4 +1,6 @@
 import { mountTutorial } from "./lib/tutorialCampaign.js";
+import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
+import { mountBetaFeedback } from "./lib/betaFeedback.js";
 import {
   getSavedToken, saveToken, getSavedGistId, saveGistId,
   exportToGist, importFromGist, listGists
@@ -1538,23 +1540,30 @@ function renderSpeedrunPanel() {
   if (!statusEl) return;
 
   const ch = state.speedrunChallenge;
+  const rival = loadRivalTarget();
+  const rivalHtml = rival?.rivalSeasons
+    ? `<div class="speedrun-rival">🎯 Challenge target: beat <strong>${rival.rivalSeasons} season${rival.rivalSeasons === 1 ? "" : "s"}</strong>${rival.rivalName ? ` by ${escapeHtml(rival.rivalName)}` : ""}</div>`
+    : "";
   if (ch && ch.active) {
     statusEl.innerHTML = `<div class="speedrun-status-card">
       <span class="speedrun-active-badge">ACTIVE</span>
       <div class="speedrun-stat"><strong>Team:</strong> ${escapeHtml(teamCode(ch.teamId))}</div>
       <div class="speedrun-stat"><strong>Seasons:</strong> ${ch.seasonsElapsed}</div>
-    </div>`;
-    actionsEl.innerHTML = `<button id="abandonSpeedrunBtn" class="btn btn-sm btn-danger">Abandon Run</button>`;
+    </div>${rivalHtml}`;
+    actionsEl.innerHTML = `<button id="copyChallengeCodeBtn" class="btn btn-sm">Copy Challenge Code</button>
+      <button id="abandonSpeedrunBtn" class="btn btn-sm btn-danger">Abandon Run</button>`;
     document.getElementById("abandonSpeedrunBtn")?.addEventListener("click", () =>
       runAction(abandonSpeedrunChallenge, "Abandoning run...")
     );
   } else {
-    statusEl.innerHTML = `<p style="opacity:0.7">No active challenge. Start one to begin tracking.</p>`;
-    actionsEl.innerHTML = `<button id="startSpeedrunBtn" class="btn btn-sm btn-accent">Start Challenge</button>`;
+    statusEl.innerHTML = `<p style="opacity:0.7">No active challenge. Start one to begin tracking.</p>${rivalHtml}`;
+    actionsEl.innerHTML = `<button id="startSpeedrunBtn" class="btn btn-sm btn-accent">Start Challenge</button>
+      ${state.speedrunLeagueMeta?.seed != null ? `<button id="copyChallengeCodeBtn" class="btn btn-sm">Copy Challenge Code</button>` : ""}`;
     document.getElementById("startSpeedrunBtn")?.addEventListener("click", () =>
       runAction(startSpeedrunChallenge, "Starting challenge...")
     );
   }
+  document.getElementById("copyChallengeCodeBtn")?.addEventListener("click", copyChallengeCode);
 
   const lb = state.speedrunLeaderboard || [];
   if (lb.length) {
@@ -1568,11 +1577,38 @@ function renderSpeedrunPanel() {
   }
 }
 
+// Encode this league + your best result as a shareable "beat my run" code.
+async function copyChallengeCode() {
+  const meta = state.speedrunLeagueMeta;
+  if (!meta || meta.seed == null) { showToast("No league seed available for a challenge code"); return; }
+  const lb = state.speedrunLeaderboard || [];
+  const bestYou = lb
+    .filter((e) => e.playerName && e.seasons > 0)
+    .sort((a, b) => a.seasons - b.seasons)[0] || null;
+  const code = encodeChallengeCode({
+    seed: meta.seed,
+    startYear: meta.startYear,
+    teamId: state.speedrunChallenge?.teamId || meta.controlledTeamId,
+    rivalSeasons: bestYou?.seasons ?? null,
+    rivalName: bestYou?.playerName ?? null
+  });
+  if (!code) { showToast("Could not build challenge code"); return; }
+  try {
+    await navigator.clipboard.writeText(code);
+    showToast(bestYou
+      ? `Challenge code copied — dare a friend to beat ${bestYou.seasons} seasons!`
+      : "Challenge code copied — share your league seed!");
+  } catch {
+    prompt("Copy your challenge code:", code);
+  }
+}
+
 async function loadSpeedrunStatus() {
   try {
     const res = await api("/api/speedrun/status");
     state.speedrunChallenge = res.challenge || null;
-  } catch { state.speedrunChallenge = null; }
+    state.speedrunLeagueMeta = res.leagueMeta || null;
+  } catch { state.speedrunChallenge = null; state.speedrunLeagueMeta = null; }
   try {
     const res = await api("/api/speedrun/leaderboard");
     state.speedrunLeaderboard = res.entries || [];
@@ -1632,6 +1668,7 @@ async function init() {
   queueStartupHydration();
   initGistSyncUI();
   mountTutorial({ onComplete: () => loadState(), onSkip: () => {} });
+  mountBetaFeedback();
   if (typeof initMobileLoop === "function") {
     initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
   }

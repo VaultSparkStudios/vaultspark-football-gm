@@ -1,0 +1,144 @@
+{
+  "generatedBy": "/audit skill v1.0",
+  "generatedAt": "2026-06-04",
+  "project": "vaultspark-football-gm",
+  "type": "game",
+  "topLine": {
+    "totalItems": 8,
+    "combinedPriority": 226.1,
+    "top3": [
+      "shareable-challenge-codes",
+      "season-epilogue-ritual",
+      "rivalry-heat-surfacing"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "slug": "shareable-challenge-codes",
+      "tier": "fire",
+      "axis": "gamification/engagement/immersion",
+      "effort": "2h",
+      "impact": 9,
+      "innovation": 9,
+      "priority": 40.5,
+      "title": "Zero-backend viral loop: shareable seeded challenge codes",
+      "insight": "The speedrun challenge engine and its UI panel already exist, but a challenge dies with the player who ran it. Because the sim is fully deterministic from a seed, a compact share code (seed + team + ruleset + target) makes 'beat my run' possible on a pure static host with no backend, no accounts, and no server costs. No franchise sim in this category has a deterministic challenge-code duel loop.",
+      "recipe": "Add encode/decode for a base36 challenge code in a new public/lib/challengeCodes.js, an 'Export Challenge Code' button on the active speedrun card, and an 'Enter Challenge Code' input on setup that seeds an identical league and registers the rival's result as the leaderboard target."
+    },
+    {
+      "rank": 2,
+      "slug": "season-epilogue-ritual",
+      "tier": "fire",
+      "axis": "gamification/engagement/immersion",
+      "effort": "2h",
+      "impact": 9,
+      "innovation": 7,
+      "priority": 31.5,
+      "title": "Season Epilogue: cinematic end-of-season payoff ritual",
+      "insight": "End-of-season is the natural churn point, and right now the resolution moment is scattered: narrative arcs resolve silently, records land in a board, fan sentiment shifts without ceremony. One cinematic epilogue sequence — arc verdicts, records broken, fan approval trajectory, a closing press quote — converts the churn point into the 'one more season' hook. The pieces (narrative arcs, records board, fan sentiment, press conferences, newsletter) all exist; this is a wiring play, not a systems build.",
+      "recipe": "Add buildSeasonEpilogue() that aggregates arc resolutions, new records, fan-approval delta, and a press quote at season end, then present it as a multi-card modal sequence reusing the Franchise Moment card styling, with a share/export hook into leagueStoryExport."
+    },
+    {
+      "rank": 3,
+      "slug": "rivalry-heat-surfacing",
+      "tier": "fire",
+      "axis": "gamification/engagement/immersion",
+      "effort": "1h",
+      "impact": 8,
+      "innovation": 6,
+      "priority": 30.4,
+      "title": "Surface rivalryDNA in the game UI — the engine already computes it",
+      "insight": "src/engine/rivalryDNA.js tracks heat, streaks, and history for every matchup, but grep proves zero game-UI usage — rivalry only appears in marketing HTML. That is shipped depth generating no felt experience. A heat meter on the matchup card and rivalry framing in sim-watch turn an invisible system into weekly anticipation.",
+      "recipe": "Expose rivalry context through the local API runtime (getRivalryContext + getTeamRivalries), render a heat badge on the upcoming-game card in tabOverview, and add a RIVALRY WEEK banner to the sim-watch header when heat crosses a threshold."
+    },
+    {
+      "rank": 4,
+      "slug": "beta-feedback-widget",
+      "tier": "fire",
+      "axis": "user feedback loop",
+      "effort": "1h",
+      "impact": 8,
+      "innovation": 6,
+      "priority": 30.4,
+      "title": "Tell the Commissioner — beta feedback capture that works on a static host",
+      "insight": "The beta is the next milestone and there is no in-game way for a tester to report anything; the privacy-first analytics module collects signals but they never leave the player's browser. A static-host-compatible widget (prefilled GitHub issue link plus clipboard export with an opt-in analytics snapshot) closes the loop without adding a backend or breaking the privacy posture.",
+      "recipe": "Add a 'Tell the Commissioner' button in the Settings tab and after Franchise Moment cards that opens a prefilled GitHub issue URL with game context (week/year/tab) and, when analytics opt-in is on, attaches the exportSummary() digest via clipboard."
+    },
+    {
+      "rank": 5,
+      "slug": "ci-playwright-hang-fix",
+      "tier": "fire",
+      "axis": "speed/organization/efficiency",
+      "effort": "1h",
+      "impact": 10,
+      "innovation": 3,
+      "priority": 19.0,
+      "title": "Unblock both ship pipelines: defend against the Playwright install hang",
+      "insight": "Step logs from run 26918582803 prove 'npx playwright install --with-deps chromium' downloaded Chromium to 100% then hung silently for 25 minutes until job timeout — in BOTH the CI browser-gates job and the Pages deploy build job. The Session-13 shard matrix has never gone green in Actions and the published site is stale because every deploy since has died at this step. The fix is defensive: cache, step timeout, retry.",
+      "recipe": "Add actions/cache for ~/.cache/ms-playwright keyed on the Playwright version, set timeout-minutes: 6 on the install step with a single retry fallback, set DEBIAN_FRONTEND=noninteractive, and add a global watchdog timeout to smoke-pages.mjs so the smoke itself can never hang a pipeline."
+    },
+    {
+      "rank": 6,
+      "slug": "save-integrity-guard",
+      "tier": "high",
+      "axis": "security",
+      "effort": "1h",
+      "impact": 7,
+      "innovation": 5,
+      "priority": 22.1,
+      "title": "Checksum + schema stamp on browser saves and gist sync payloads",
+      "insight": "Beta testers' franchises live entirely in localStorage and optional gist sync; one corrupt write or interrupted sync silently destroys a 40-season dynasty, and that player never comes back. snapshotMigration exists on the server path but the browser save path has no integrity verification. A cheap checksum + schema version stamp turns silent corruption into a recoverable, reportable event.",
+      "recipe": "Add a FNV-1a checksum and schemaVersion stamp to browser save envelopes in the save store path, verify on load with a non-blocking 'save restored from last good slot' toast on mismatch, and stamp gistSync payloads the same way."
+    },
+    {
+      "rank": 7,
+      "slug": "pages-cert-remediation",
+      "tier": "high",
+      "axis": "security",
+      "effort": "30m",
+      "impact": 9,
+      "innovation": 3,
+      "priority": 20.5,
+      "title": "Custom-domain HTTPS cert is bad_authz and expired 2026-06-02 — remediate",
+      "insight": "The Pages API reports the ACME authorization for vaultsparkstudios.com in a bad state with the certificate expired the day before this audit, while https_enforced is true — the launch domain is broken right now. This was labeled a human blocker, but gh is authenticated with repo scope, so re-triggering ACME issuance by re-setting the cname is agent-attemptable first per blocker preflight protocol.",
+      "recipe": "Re-set the Pages cname via gh api PUT to retrigger certificate issuance, verify DNS A/AAAA records point at GitHub Pages IPs, poll the https_certificate state, and only escalate to the founder with exact DNS instructions if ACME fails again."
+    },
+    {
+      "rank": 8,
+      "slug": "realism-sweep-cron",
+      "tier": "high",
+      "axis": "speed/organization/efficiency",
+      "effort": "1h",
+      "impact": 7,
+      "innovation": 4,
+      "priority": 17.7,
+      "title": "Scheduled deep realism sweep with its own time budget",
+      "insight": "Two consecutive SIL entries record the same follow-up: reintroduce a scheduled deep realism sweep with a larger season sample once it has its own time budget and does not block default CI. The shard work made room for it; the cron workflow itself was never added, so deep statistical confidence currently depends on someone remembering to run test:long manually.",
+      "recipe": "Add .github/workflows/realism-sweep.yml on a weekly cron running npm run test:long plus verify:realism with a generous seasons sample, its own timeout budget, and an uploaded summary artifact — never wired into the push-blocking path."
+    }
+  ],
+  "innovationReserve": [
+    "shareable-challenge-codes"
+  ],
+  "skipped": [
+    {
+      "slug": "press-conference-narrative-crossrefs",
+      "reason": "Strong AI-axis candidate (press quotes referencing live rivalry/arc context) but deferred to next wave to keep this sprint shippable in one session; folded as a natural extension of rivalry-heat-surfacing."
+    },
+    {
+      "slug": "fan-sentiment-hot-seat-loop",
+      "reason": "Fan sentiment already partially surfaced in tabOverview; the consequence loop (owner patience / hot seat) deserves its own design pass rather than a bolt-on."
+    }
+  ],
+  "executionLog": [
+    { "slug": "ci-playwright-hang-fix", "status": "shipped", "completedAt": "2026-06-04", "evidence": "build:pages + smoke:pages pass locally; cache/timeout/retry + smoke watchdog in both workflows" },
+    { "slug": "realism-sweep-cron", "status": "shipped", "completedAt": "2026-06-04", "evidence": ".github/workflows/realism-sweep.yml weekly cron, 90m budget, artifact upload, non-blocking" },
+    { "slug": "pages-cert-remediation", "status": "diagnosed-escalated", "completedAt": "2026-06-04", "evidence": "Root cause: Cloudflare-proxied apex blocks GitHub ACME; site serves Cloudflare 403; founder runbook in TASK_BOARD; cloudflare capability MISSING" },
+    { "slug": "rivalry-heat-surfacing", "status": "shipped", "completedAt": "2026-06-04", "evidence": "rivalryStrip in tabOverview + RIVALRY WEEK sim-watch banner; runtime shard 69/69" },
+    { "slug": "season-epilogue-ritual", "status": "shipped", "completedAt": "2026-06-04", "evidence": "seasonEpilogue.js wired into Season Review modal; arc verdicts + records + fan pulse + deterministic quote" },
+    { "slug": "shareable-challenge-codes", "status": "shipped", "completedAt": "2026-06-04", "evidence": "challengeCodes.js + speedrun Copy button + setup Accept input; 8/8 unit tests" },
+    { "slug": "save-integrity-guard", "status": "shipped", "completedAt": "2026-06-04", "evidence": "FNV-1a stamp/verify on browser saves + gist sidecar; 6/6 tests incl. valid-JSON corruption" },
+    { "slug": "beta-feedback-widget", "status": "shipped", "completedAt": "2026-06-04", "evidence": "betaFeedback.js Settings panel + Franchise Moment link; 4/4 URL tests" }
+  ]
+}

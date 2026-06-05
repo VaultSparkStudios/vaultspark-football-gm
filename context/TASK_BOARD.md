@@ -111,3 +111,32 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 | Restore missing local Studio helper modules required by startup smoke | Done |
 
 **Verification:** `npm run test:studio`, `npm run test:runtime`, `npm run test:core`, `npm run test:sim:contract`, `npm run test:sim:realism`, `npm test`, `npm run test:long`, `npm run build:pages`, and `npm run smoke:pages` passed. `npm run test:runtime` took about 183 seconds when run alone; composed `npm test` completed in about 8.9 minutes with 131 default tests.
+
+## Session 14 — Engagement Surfacing + Pipeline Defense Sprint (2026-06-04)
+
+| Item | Status |
+|------|--------|
+| Defend CI + Pages deploy against the Playwright install hang (cache, step timeouts, retry, smoke watchdog) | Done |
+| Add weekly scheduled deep realism sweep workflow with its own time budget (closes twice-recorded SIL follow-up) | Done |
+| Surface rivalryDNA in game UI — schedule rivalry strip + RIVALRY WEEK sim-watch banner | Done |
+| Season Epilogue ritual — arc verdicts, records, fan pulse, coach quote in the Season Review modal | Done |
+| Shareable seeded challenge codes — zero-backend "beat my run" duels (encode/copy/accept flow) | Done |
+| Save integrity guard — FNV-1a checksum on browser saves + gist sync sidecar, verified on load/import | Done |
+| Beta feedback widget — "Tell the Commissioner" prefilled GitHub issue with game context | Done |
+| Pages custom-domain cert remediation | Diagnosed — founder action required (see below) |
+
+**Verification:** all five default shards green — core 54, runtime 69, sim-contract 22, sim-realism 1, studio 3 (149 tests, up from 131, 0 fail) · `npm run build:pages` + `npm run smoke:pages` pass.
+
+### ⚠ Human Action Required — vaultsparkstudios.com is serving 403 (site down)
+
+Diagnosis (agent-verified 2026-06-04):
+- The custom domain lives on the org root repo `VaultSparkStudios.github.io` (cname `vaultsparkstudios.com`).
+- GitHub's HTTPS cert for it is `bad_authz`, **expired 2026-06-02** — DNS points at Cloudflare proxy IPs, so GitHub's ACME HTTP-01 challenge can never complete.
+- Visitors get TLS from Cloudflare's edge cert, but **every path returns a Cloudflare-origin 403** — the game URL `https://vaultsparkstudios.com/vaultspark-football-gm/` is unreachable, and `*.github.io` 301-redirects into it.
+- Cloudflare credentials are MISSING from the secrets gateway, so the agent could not inspect/repair the zone.
+
+Fix options (pick one in the Cloudflare dashboard):
+1. **Grey-cloud (DNS-only) the apex + www records** so they resolve directly to GitHub Pages (A: 185.199.108–111.153, AAAA equivalents). GitHub ACME then reissues the cert automatically (~minutes–hours). Simplest and matches GitHub's official guidance.
+2. **Keep the orange-cloud proxy** but fix the zone: SSL mode "Full" (not "Full (strict)" while GitHub's cert is expired), and check Security/WAF rules for whatever returns the 403 today.
+
+Optionally: add a `cloudflare` API token to the secrets gateway so future agents can run this remediation end-to-end.

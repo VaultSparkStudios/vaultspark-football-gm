@@ -5,6 +5,7 @@ import {
   setRuntimeMode,
   warmLocalRuntime
 } from "./lib/api/createApiClient.js";
+import { decodeChallengeCode, saveRivalTarget } from "./lib/challengeCodes.js";
 
 const state = {
   currentYear: new Date().getFullYear(),
@@ -480,6 +481,28 @@ function bindEvents() {
     } catch (error) {
       setStatus(`Error: ${error.message}`);
     }
+  });
+
+  // Challenge code redemption: prefill the exact league a rival played.
+  document.getElementById("applyChallengeCodeBtn")?.addEventListener("click", () => {
+    const input = document.getElementById("challengeCodeInput");
+    const decoded = decodeChallengeCode(input?.value || "");
+    if (!decoded) {
+      setStatus("Invalid challenge code — check for typos and try again.");
+      return;
+    }
+    document.getElementById("seedInput").value = decoded.seed;
+    document.getElementById("startYearInput").value = decoded.startYear;
+    const teamSelect = document.getElementById("teamSelect");
+    if (teamSelect && [...teamSelect.options].some((o) => o.value === decoded.teamId)) {
+      teamSelect.value = decoded.teamId;
+    }
+    saveRivalTarget(decoded);
+    setStatus(
+      decoded.rivalSeasons
+        ? `Challenge accepted — beat ${decoded.rivalSeasons} season${decoded.rivalSeasons === 1 ? "" : "s"}${decoded.rivalName ? ` set by ${decoded.rivalName}` : ""}. Create the league to begin.`
+        : "Challenge league loaded — create the league to begin."
+    );
   });
 
   document.getElementById("continueActiveBtn").addEventListener("click", () => {

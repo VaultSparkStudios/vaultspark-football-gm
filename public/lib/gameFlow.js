@@ -6,6 +6,7 @@ import { deriveContractToolsFromRoster, getTradeTeamId, renderContractsPage, ren
 import { renderDraft, renderScouting } from "./tabDraft.js";
 import { applyStatsSort, renderAnalyticsChart, renderComparePlayers, renderCompareSearchResults, updateStatsControls } from "./tabStats.js";
 import { renderCalendar, renderPlayerHistoryArchive, renderPlayerTimelineSearchResults, renderRecordsAndHistory, renderTeamHistorySpotlight, setSelectedHistoryPlayer } from "./tabHistory.js";
+import { appendSeasonEpilogue } from "./seasonEpilogue.js";
 import { applySettingsControls, loadRewindHistory, renderAnalytics, renderCalibrationJobs, renderCommandPalette, renderNegotiationTargets, renderNews, renderObservability, renderOwner, renderPersistence, renderPickAssets, renderPipeline, renderRealismVerification, renderRulesTab, renderSettingsSpotlight, renderSimJobs, renderStaff, renderTransactionLog } from "./tabSettings.js";
 
 export function applyDashboard(newState) {
@@ -785,6 +786,7 @@ export function showSeasonEndReview() {
     </div>` : ""}
     <div class="sr-call-to-action">A new season awaits. What will your legacy be?</div>
   `;
+  appendSeasonEpilogue(body, d).catch(() => {});
   modal.hidden = false;
   modal.classList.add("active");
 }

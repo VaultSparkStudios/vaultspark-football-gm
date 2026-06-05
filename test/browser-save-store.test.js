@@ -98,7 +98,8 @@ test("browser save store supports save, list, load, backup pruning, and delete",
 });
 
 test("browser save store prunes old backups before failing on quota", () => {
-  const storage = createQuotaStorage(1200);
+  // Budget fits two slot records including the S14 integrity stamp (~65 bytes each).
+  const storage = createQuotaStorage(1400);
   let tick = 0;
   const store = createBrowserSaveStore({
     storage,

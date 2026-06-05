@@ -259,6 +259,51 @@ export function renderSchedule() {
     });
   }
   renderTable("scheduleTable", rows);
+  renderRivalryStrip(schedule, controlledTeamId).catch(() => {});
+}
+
+// ── Rivalry DNA strip (engine: src/engine/rivalryDNA.js via /api/rivalry) ────
+async function renderRivalryStrip(schedule, controlledTeamId) {
+  const strip = document.getElementById("rivalryStrip");
+  if (!strip) return;
+  const game = controlledTeamId
+    ? (schedule.games || []).find(
+        (g) => g.awayTeamId === controlledTeamId || g.homeTeamId === controlledTeamId
+      )
+    : null;
+  if (!game) {
+    strip.hidden = true;
+    return;
+  }
+  const opponentId = game.awayTeamId === controlledTeamId ? game.homeTeamId : game.awayTeamId;
+  let ctx = null;
+  try {
+    const res = await api(
+      `/api/rivalry?teamA=${encodeURIComponent(controlledTeamId)}&teamB=${encodeURIComponent(opponentId)}`
+    );
+    ctx = res?.rivalry || null;
+  } catch {
+    ctx = null;
+  }
+  if (!ctx || !ctx.totalMeetings) {
+    strip.hidden = true;
+    return;
+  }
+  const heat = Math.max(0, Math.min(100, ctx.heat || 0));
+  const heatTone = heat >= 80 ? "rs-bitter" : heat >= 60 ? "rs-heated" : heat >= 40 ? "rs-competitive" : "rs-mild";
+  const streakText = ctx.streak?.count > 1
+    ? `${teamCode(ctx.streak.team)} has won ${ctx.streak.count} straight`
+    : "";
+  strip.hidden = false;
+  strip.innerHTML = `
+    <div class="rivalry-strip ${heatTone}">
+      ${heat >= 60 ? `<span class="rivalry-week-badge">RIVALRY WEEK</span>` : ""}
+      <span class="rivalry-label">${escapeHtml(ctx.heatLabel || "Series")}</span>
+      <span class="rivalry-matchup">${escapeHtml(teamCode(controlledTeamId))} vs ${escapeHtml(teamCode(opponentId))}</span>
+      <span class="rivalry-series">Series ${ctx.teamAWins}-${ctx.teamBWins} (${ctx.totalMeetings} meetings)</span>
+      ${streakText ? `<span class="rivalry-streak">${escapeHtml(streakText)}</span>` : ""}
+      <span class="rivalry-heat-meter" title="Rivalry heat ${heat}/100"><span class="rivalry-heat-fill" style="width:${heat}%"></span></span>
+    </div>`;
 }
 
 export function renderStandings() {

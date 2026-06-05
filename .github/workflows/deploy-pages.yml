@@ -51,10 +51,31 @@ jobs:
       - name: Build Pages bundle
         run: npm run build:pages
 
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      # The install step has hung indefinitely after a completed Chromium download
+      # (run 26918582803 burned the full 25m job budget). Bounded attempt + one retry.
       - name: Install Playwright browser
+        id: pw-install
+        timeout-minutes: 6
+        continue-on-error: true
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: npx playwright install --with-deps chromium
+
+      - name: Retry Playwright browser install
+        if: steps.pw-install.outcome != 'success'
+        timeout-minutes: 6
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: npx playwright install --with-deps chromium
 
       - name: Smoke static Pages client
+        timeout-minutes: 5
         run: npm run smoke:pages
 
       - name: Upload Pages artifact

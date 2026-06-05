@@ -108,6 +108,15 @@ async function main() {
   }
 }
 
+// Watchdog: the smoke must never be the step that hangs a ship pipeline.
+// unref() lets a healthy run exit naturally; a wedged run is force-failed.
+const WATCHDOG_MS = 180_000;
+const watchdog = setTimeout(() => {
+  console.error(`Smoke watchdog: exceeded ${WATCHDOG_MS / 1000}s, forcing failure exit.`);
+  process.exit(1);
+}, WATCHDOG_MS);
+watchdog.unref();
+
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;

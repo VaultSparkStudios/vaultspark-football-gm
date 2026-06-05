@@ -1,9 +1,11 @@
 import {
+  buildIntegrityStamp,
   buildSlotRecord,
   extractSnapshotMeta,
   getDefaultBackupPrefix,
   isBackupSlot,
-  safeSlotName
+  safeSlotName,
+  verifyIntegrityStamp
 } from "./saveStoreShared.js";
 
 function storageKeys(storage) {
@@ -94,7 +96,10 @@ export function createBrowserSaveStore({
     const write = () => {
       try {
         storage.setItem(dataKey(safe), serialized);
-        storage.setItem(metaKey(safe), JSON.stringify({ ...(extractSnapshotMeta(snapshot) || {}), updatedAt }));
+        storage.setItem(
+          metaKey(safe),
+          JSON.stringify({ ...(extractSnapshotMeta(snapshot) || {}), updatedAt, integrity: buildIntegrityStamp(serialized) })
+        );
         return { slot: safe, key: dataKey(safe) };
       } catch (error) {
         storage.removeItem(dataKey(safe));
@@ -124,7 +129,21 @@ export function createBrowserSaveStore({
 
   function loadSessionFromSlot(slot) {
     const raw = storage.getItem(dataKey(slot));
-    return raw ? JSON.parse(raw) : null;
+    if (!raw) return null;
+    let integrity = null;
+    try {
+      const rawMeta = storage.getItem(metaKey(slot));
+      integrity = rawMeta ? JSON.parse(rawMeta)?.integrity || null : null;
+    } catch {
+      integrity = null;
+    }
+    if (!verifyIntegrityStamp(raw, integrity)) {
+      throw new Error(
+        `Save slot "${safeSlotName(slot)}" failed integrity verification — the stored data is corrupt. ` +
+          "Restore from a rolling backup (Settings → Saves → Backups)."
+      );
+    }
+    return JSON.parse(raw);
   }
 
   function deleteSaveSlot(slot) {

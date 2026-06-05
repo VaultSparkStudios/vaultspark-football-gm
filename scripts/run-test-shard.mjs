@@ -17,10 +17,13 @@ const SHARDS = {
     "test/world-state-next-step.test.js"
   ],
   runtime: [
+    "test/beta-feedback.test.js",
     "test/browser-save-store.test.js",
+    "test/challenge-codes.test.js",
     "test/create-api-client.test.js",
     "test/file-save-store.test.js",
     "test/local-api-runtime.test.js",
+    "test/save-integrity.test.js",
     "test/session-lookup-indexes.test.js",
     "test/session8-contract-edges.test.js",
     "test/session8-endpoints.test.js"

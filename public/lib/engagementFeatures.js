@@ -237,6 +237,7 @@ export async function runSimWatch(gameId) {
     _simWatchActive = true;
     _simWatchSkip = false;
     renderSimWatchHeader(bs);
+    decorateSimWatchRivalry(bs).catch(() => {});
     overlay.hidden = false;
     overlay.classList.add("sim-watch-open");
     const feed = document.getElementById("simWatchFeed");
@@ -274,6 +275,26 @@ function renderSimWatchHeader(bs) {
     </div>
     <div class="sw-meta">${escapeHtml(String(bs.year || ""))} · Week ${escapeHtml(String(bs.week || ""))} · ${escapeHtml(bs.seasonType || "regular")}</div>
   `;
+}
+
+// Rivalry DNA framing: when the matchup is hot, the broadcast should feel it.
+async function decorateSimWatchRivalry(bs) {
+  const header = document.getElementById("simWatchHeader");
+  if (!header || !bs.homeTeamId || !bs.awayTeamId) return;
+  let ctx = null;
+  try {
+    const res = await api(
+      `/api/rivalry?teamA=${encodeURIComponent(bs.homeTeamId)}&teamB=${encodeURIComponent(bs.awayTeamId)}`
+    );
+    ctx = res?.rivalry || null;
+  } catch {
+    return;
+  }
+  if (!ctx || (ctx.heat || 0) < 60 || !_simWatchActive) return;
+  const banner = document.createElement("div");
+  banner.className = "sw-rivalry-banner";
+  banner.innerHTML = `<span class="rivalry-week-badge">RIVALRY WEEK</span> ${escapeHtml(ctx.heatLabel || "")} · Series ${ctx.teamAWins}-${ctx.teamBWins}${ctx.streak?.count > 1 ? ` · ${escapeHtml(teamCode(ctx.streak.team))} won last ${ctx.streak.count}` : ""}`;
+  header.appendChild(banner);
 }
 
 function appendSimWatchPlay(play, scoringSet) {
