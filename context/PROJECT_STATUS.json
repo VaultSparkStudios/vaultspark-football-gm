@@ -4,12 +4,12 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 14 shipped rivalry surfacing, Season Epilogue, shareable challenge codes, save integrity, and beta feedback, and armored CI/Pages against the Playwright install hang.",
-  "nextMilestone": "Prove the hardened CI matrix + Pages deploy in Actions, then restore the public domain after the Cloudflare runbook is applied.",
+  "currentFocus": "Pipeline chase complete: first fully-green CI + Pages deploy in project history (ae0c92b) after Node 24.16 pin and rate-limiter test exemption.",
+  "nextMilestone": "Founder applies the Cloudflare runbook to restore vaultsparkstudios.com, then public beta link goes out.",
   "blockers": [
     "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) — Cloudflare-side fix required; runbook in TASK_BOARD"
   ],
-  "lastUpdated": "2026-06-04",
+  "lastUpdated": "2026-06-05",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
