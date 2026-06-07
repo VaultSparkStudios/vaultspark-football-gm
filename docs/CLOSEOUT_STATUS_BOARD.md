@@ -1,26 +1,26 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-06-07 (Session 15 closeout) -->
+<!-- generated-at: 2026-06-07 (Session 16 closeout) -->
 
 # Closeout Status Board — VaultSpark Football GM
 
 ```
-╔══ SESSION CLOSEOUT · VaultSpark Football GM · S15 ═════════════╗
-║  Date: 2026-06-07  ·  SIL: 825/1000  ·  Velocity: —              ║
-║  Mode: FOUNDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · VaultSpark Football GM · S16 ═════════════╗
+║  Date: 2026-06-07  ·  SIL: 827/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Studio protocol command shims were added for `scripts/set-ac  ║
-║  ✓ Draft tab gained `buildDraftPressureModel()` and a Draft War  ║
-║  ✓ Settings gained `buildLaunchReadinessRows()` and a Launch Re  ║
-║  ✓ `scripts/run-test-shard.mjs` now includes the draft and laun  ║
-║  ✓ Focused protocol/helper tests: 7/7                            ║
+║  ✓ Public-safe status and closeout surfaces now reflect the ful  ║
+║  ✓ SIL moved from 825 to 827 on Dev Health and Process Quality   ║
+║  ✓ `npm test` — 153/153                                          ║
+║  ✓ `npm run build:pages`                                         ║
+║  ✓ `npm run smoke:pages`                                         ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 825/1000 ═══════════════════════════════════════╗
-║    Dev Health         84   ████████░░                            ║
+╔══ SCORES · SIL 827/1000 ═══════════════════════════════════════╗
+║    Dev Health         85   █████████░                            ║
 ║    Alignment          72   ███████░░░                            ║
 ║    Momentum           78   ████████░░                            ║
 ║    Engagement         76   ████████░░                            ║
-║    Process Qual       87   █████████░                            ║
+║    Process Qual       88   █████████░                            ║
 ║    Coherence          95   ██████████                            ║
 ║    Security           85   █████████░                            ║
 ║    Ecosystem          71   ███████░░░                            ║
@@ -29,25 +29,25 @@
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
-║  ✓ context/TASK_BOARD.md                                         ║
+║  · context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
 ║  · context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  · context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 33 files  ·  M:20 A:0 D:0 ?:13                         ║
+║  Changes: 7 files  ·  M:7 A:0 D:0 ?:0                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        —                                                ║
 ║  Compliance:    —                                                ║
-║  Tests:         130/130                                          ║
+║  Tests:         153/153                                          ║
 ║  IGNIS:         5d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  —                                                ║

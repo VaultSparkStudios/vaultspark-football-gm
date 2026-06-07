@@ -1,5 +1,29 @@
 # Latest Handoff
 
+## Impact Summary — Session 16 (2026-06-07)
+
+**Headline:** Session 16 confirmed the same-day implementation is fully default-suite green and narrowed the remaining launch blocker to the already-documented Cloudflare/GitHub Pages certificate path.
+
+- No abandoned worktree edits were found; Session 15 had already completed the audit, implementation, and closeout loop.
+- Verification now includes `npm test` at 153/153 across core, runtime, sim-contract, sim-realism, and studio, plus Pages build and static smoke.
+- GitHub Pages API still reports the inherited custom-domain certificate as `bad_authz`, expired 2026-06-02; repo-side game code is deployable, while public reachability still depends on the Cloudflare runbook or credentials.
+
+## Where We Left Off — 2026-06-07 (Session 16)
+
+The resume pass found no mid-edit cutoff. The correct next step was verification, not another same-day audit rewrite.
+
+What changed:
+- Public-safe status and closeout surfaces now reflect the full default-suite pass.
+- SIL moved from 825 to 827 on Dev Health and Process Quality only; no product behavior changed.
+
+Verification passed:
+- `npm test` — 153/153
+- `npm run build:pages`
+- `npm run smoke:pages`
+
+Remaining public-safe blocker:
+- `vaultsparkstudios.com` still depends on Cloudflare-side remediation or Cloudflare credentials; GitHub Pages cert state remains `bad_authz` and expired `2026-06-02`.
+
 ## Impact Summary — Session 15 (2026-06-07)
 
 **Headline:** Session 15 repaired the documented Studio workflow and added beta-readiness surfaces that help both agents and testers see the next move without private context.

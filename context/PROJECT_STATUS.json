@@ -4,7 +4,7 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 15 shipped protocol reliability plus beta readiness: Studio command shims, Draft War Room pressure, Launch Readiness cockpit, and named-shard coverage.",
+  "currentFocus": "Session 16 verified the completed Session 15 implementation with the full default suite plus Pages build/smoke; remaining launch work is the Cloudflare custom-domain repair.",
   "nextMilestone": "Apply or unlock the Cloudflare runbook, re-verify the public game URL, then send the public beta link.",
   "blockers": [
     "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) — Cloudflare-side fix required; runbook in TASK_BOARD"
@@ -19,7 +19,7 @@
   "ignisLastComputed": "2026-06-03",
   "testSuiteStatus": {
     "totalTests": 153,
-    "pass": 130,
+    "pass": 153,
     "fail": 0,
     "lastRun": "2026-06-07",
     "newTestFiles": [
@@ -30,10 +30,10 @@
       "test/launch-readiness.test.js"
     ],
     "newTestCount": 22,
-    "coverage": "Known default-shard inventory is 153 tests (core 54, runtime 72, sim-contract 22, sim-realism 1, studio 4). Session 15 reran affected/default-adjacent surfaces: core, runtime, studio, Pages build, and Pages smoke."
+    "coverage": "Known default-shard inventory is 153 tests (core 54, runtime 72, sim-contract 22, sim-realism 1, studio 4). Session 16 reran the full default suite plus Pages build and Pages smoke."
   },
-  "testsPassing": 130,
-  "testsTotal": 130,
+  "testsPassing": 153,
+  "testsTotal": 153,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -72,28 +72,29 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 825,
+  "silScore": 827,
   "silCategoriesV3": {
-    "devHealth": 84,
+    "devHealth": 85,
     "creativeAlignment": 72,
     "momentum": 78,
     "engagement": 76,
-    "processQuality": 87,
+    "processQuality": 88,
     "crossRepoCoherence": 95,
     "securityPosture": 85,
     "ecosystemIntegration": 71,
     "capitalEfficiency": 80,
     "automationCoverage": 97
   },
-  "currentSession": 15,
+  "currentSession": 16,
   "lastAgent": "codex",
-  "sessionMode": "founder",
+  "sessionMode": "builder",
   "lastVerification": {
     "date": "2026-06-07",
     "passed": [
       "npm run test:studio",
       "npm run test:runtime",
       "npm run test:core",
+      "npm test",
       "npm run build:pages",
       "npm run smoke:pages",
       "node --test test/studio-protocol-smoke.test.js test/draft-war-room.test.js test/launch-readiness.test.js"
@@ -108,6 +109,6 @@
   "modelPlanModeSlash": "/model opusplan",
   "planModeDetected": "active",
   "planModeCheckedAt": "2026-06-07T17:52:36.774Z",
-  "sessionModeAutoShiftedAt": "2026-06-07T17:52:37.526Z",
+  "sessionModeAutoShiftedAt": "2026-06-07T21:53:58.640Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z"
 }

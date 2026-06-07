@@ -1,5 +1,12 @@
 # Work Log
 
+## 2026-06-07 — Session 16: resume verification closeout
+
+- Analyzed the current handoff, git state, and same-day audit artifacts; no abandoned edits were present, and all four Session 15 audit items were already implemented and logged.
+- Probed GitHub Pages through `gh api`; the org-root Pages site and game repo still report `https_certificate.state=bad_authz`, expiring on 2026-06-02, matching the Cloudflare-side blocker in TASK_BOARD.
+- Verification: `npm test` passed 153/153 across all default shards, followed by `npm run build:pages` and `npm run smoke:pages`.
+- Closeout impact: this pass converts the Session 15 implementation from focused-shard confidence to full default-suite confidence without changing product behavior.
+
 ## 2026-06-07 — Session 15: protocol repair + beta readiness closeout
 
 - Ran the requested `/start -> /audit -> /implement -> /closeout` chain from live repo evidence and wrote `docs/AUDIT_2026-06-07.*`.
