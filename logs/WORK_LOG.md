@@ -1,5 +1,13 @@
 # Work Log
 
+## 2026-06-07 — Session 15: protocol repair + beta readiness closeout
+
+- Ran the requested `/start -> /audit -> /implement -> /closeout` chain from live repo evidence and wrote `docs/AUDIT_2026-06-07.*`.
+- Restored the documented Studio command surface with repo-local shims for active-skill tracking, skill profiles, startup brief staleness, credential watch, Ark drain, and ops dispatch.
+- Added a Draft War Room pressure model and browser panel so draft day surfaces current-pick urgency, board targets, and roster-need pressure.
+- Added a Launch Readiness panel in Settings for runtime/save/feedback/challenge-code/domain status, keeping the Cloudflare 403 blocker visible inside the beta cockpit.
+- Verification: focused helper/protocol tests 7/7, `npm run test:studio` 4/4, `npm run test:runtime` 72/72, `npm run test:core` 54/54, `npm run build:pages`, and `npm run smoke:pages`.
+
 ## 2026-06-04 — Session 14: engagement surfacing + pipeline defense closeout
 
 - Generated the 2026-06-04 audit (8 items) personalized to live findings: both ship pipelines dead since Session 13 at the Playwright install step, the custom-domain cert expired/bad_authz, rivalryDNA invisible in UI, and the twice-recorded realism-sweep follow-up.

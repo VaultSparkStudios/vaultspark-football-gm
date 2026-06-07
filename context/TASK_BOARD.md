@@ -127,16 +127,30 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 **Verification:** all five default shards green — core 54, runtime 69, sim-contract 22, sim-realism 1, studio 3 (149 tests, up from 131, 0 fail) · `npm run build:pages` + `npm run smoke:pages` pass.
 
-### ⚠ Human Action Required — vaultsparkstudios.com is serving 403 (site down)
+### ⚠ Cloudflare Access Required — vaultsparkstudios.com is serving 403 (site down)
 
 Diagnosis (agent-verified 2026-06-04):
 - The custom domain lives on the org root repo `VaultSparkStudios.github.io` (cname `vaultsparkstudios.com`).
 - GitHub's HTTPS cert for it is `bad_authz`, **expired 2026-06-02** — DNS points at Cloudflare proxy IPs, so GitHub's ACME HTTP-01 challenge can never complete.
 - Visitors get TLS from Cloudflare's edge cert, but **every path returns a Cloudflare-origin 403** — the game URL `https://vaultsparkstudios.com/vaultspark-football-gm/` is unreachable, and `*.github.io` 301-redirects into it.
-- Cloudflare credentials are MISSING from the secrets gateway, so the agent could not inspect/repair the zone.
+- Cloudflare deploy/DNS credentials are MISSING from the secrets gateway as of 2026-06-07, and blocker preflight still marks this item not auto-ready, so the agent cannot inspect or repair the zone from this repo session.
 
 Fix options (pick one in the Cloudflare dashboard):
 1. **Grey-cloud (DNS-only) the apex + www records** so they resolve directly to GitHub Pages (A: 185.199.108–111.153, AAAA equivalents). GitHub ACME then reissues the cert automatically (~minutes–hours). Simplest and matches GitHub's official guidance.
 2. **Keep the orange-cloud proxy** but fix the zone: SSL mode "Full" (not "Full (strict)" while GitHub's cert is expired), and check Security/WAF rules for whatever returns the 403 today.
 
 Optionally: add a `cloudflare` API token to the secrets gateway so future agents can run this remediation end-to-end.
+
+## Session 15 — Protocol Repair + Beta Readiness Sprint (2026-06-07)
+
+| Item | Status |
+|------|--------|
+| Generate a fresh project-specific audit that respects current shipped items, flags, and blockers | Done |
+| Restore documented Studio protocol command surface with repo-local shims | Done |
+| Add Draft War Room pressure model and browser panel | Done |
+| Add Settings Launch Readiness cockpit for beta checks and public-domain blocker visibility | Done |
+| Add protocol/helper coverage to named test shards | Done |
+
+**Verification:** focused protocol/helper tests 7/7 · `npm run test:studio` 4/4 · `npm run test:runtime` 72/72 · `npm run test:core` 54/54 · `npm run build:pages` · `npm run smoke:pages`.
+
+**Still blocked:** `vaultsparkstudios.com` remains Cloudflare-side blocked until the existing runbook is applied or Cloudflare credentials are added to the secrets gateway.

@@ -10,6 +10,39 @@ import {
   exportToGist, importFromGist, listGists
 } from "./gistSync.js";
 
+export function buildLaunchReadinessRows({ dashboard = null, saves = [], persistence = {}, observability = {}, speedrunChallenge = null } = {}) {
+  const runtimeKind = persistence.kind || (dashboard ? "browser/server" : "not loaded");
+  const serverRequests = observability.server?.requests ?? 0;
+  const phase = dashboard?.phase || "no league loaded";
+  return [
+    {
+      area: "Runtime",
+      status: dashboard ? "Ready" : "Load league",
+      detail: `${runtimeKind} | ${phase} | ${serverRequests} server requests`
+    },
+    {
+      area: "Save Health",
+      status: saves.length ? "Ready" : "No saves",
+      detail: saves.length ? `${saves.length} local slots available` : "Create a save before inviting long beta runs"
+    },
+    {
+      area: "Feedback",
+      status: "Ready",
+      detail: "Tell the Commissioner opens a prefilled public GitHub feedback path"
+    },
+    {
+      area: "Challenge Codes",
+      status: speedrunChallenge ? "Active" : "Ready",
+      detail: "VSFC1 seeded challenge codes support zero-backend beat-my-run duels"
+    },
+    {
+      area: "Public Domain",
+      status: "Blocked",
+      detail: "vaultsparkstudios.com currently needs the Cloudflare 403 and expired GitHub Pages certificate runbook completed"
+    }
+  ];
+}
+
 export function renderTransactionLog() {
   const rows = state.txRows.map((entry) => ({
     seq: entry.seq,
@@ -471,6 +504,20 @@ export function renderSettingsSpotlight() {
     ],
     "Settings will appear here after the league config loads"
   );
+  renderLaunchReadinessPanel();
+}
+
+export function renderLaunchReadinessPanel() {
+  const table = document.getElementById("launchReadinessTable");
+  if (!table) return;
+  const rows = buildLaunchReadinessRows({
+    dashboard: state.dashboard,
+    saves: state.saves,
+    persistence: state.persistence,
+    observability: state.observability,
+    speedrunChallenge: state.speedrunChallenge
+  });
+  renderTable("launchReadinessTable", rows);
 }
 
 export function renderOwnerSpotlight() {

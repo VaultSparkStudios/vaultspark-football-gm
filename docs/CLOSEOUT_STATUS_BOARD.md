@@ -1,38 +1,38 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-06-05 (Session 14 closeout) -->
+<!-- generated-at: 2026-06-07 (Session 15 closeout) -->
 
 # Closeout Status Board — VaultSpark Football GM
 
 ```
-╔══ SESSION CLOSEOUT · VaultSpark Football GM · S14 ═════════════╗
-║  Date: 2026-06-05  ·  SIL: 806/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · VaultSpark Football GM · S15 ═════════════╗
+║  Date: 2026-06-07  ·  SIL: 825/1000  ·  Velocity: —              ║
+║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Shipped 7 of 8 audit items; the 8th (custom-domain cert) is   ║
-║  ✓ Test suite grew 131 → 149 (18 new tests across challenge cod  ║
-║  ✓ New player-facing surfaces: rivalry strip + RIVALRY WEEK ban  ║
-║  ✓ Both `.github/workflows/ci.yml` and `deploy-pages.yml` cache  ║
-║  ✓ `.github/workflows/realism-sweep.yml` (new) runs weekly: `te  ║
+║  ✓ Studio protocol command shims were added for `scripts/set-ac  ║
+║  ✓ Draft tab gained `buildDraftPressureModel()` and a Draft War  ║
+║  ✓ Settings gained `buildLaunchReadinessRows()` and a Launch Re  ║
+║  ✓ `scripts/run-test-shard.mjs` now includes the draft and laun  ║
+║  ✓ Focused protocol/helper tests: 7/7                            ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 806/1000 ═══════════════════════════════════════╗
-║    Dev Health         81   ████████░░                            ║
-║    Alignment          71   ███████░░░                            ║
-║    Momentum           76   ████████░░                            ║
-║    Engagement         73   ███████░░░                            ║
-║    Process Qual       82   ████████░░                            ║
+╔══ SCORES · SIL 825/1000 ═══════════════════════════════════════╗
+║    Dev Health         84   ████████░░                            ║
+║    Alignment          72   ███████░░░                            ║
+║    Momentum           78   ████████░░                            ║
+║    Engagement         76   ████████░░                            ║
+║    Process Qual       87   █████████░                            ║
 ║    Coherence          95   ██████████                            ║
-║    Security           84   ████████░░                            ║
-║    Ecosystem          70   ███████░░░                            ║
-║    Capital            78   ████████░░                            ║
-║    Automation         94   █████████░                            ║
+║    Security           85   █████████░                            ║
+║    Ecosystem          71   ███████░░░                            ║
+║    Capital            80   ████████░░                            ║
+║    Automation         97   ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
+║  · context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
@@ -40,15 +40,15 @@
 ║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 13 files  ·  M:9 A:0 D:0 ?:4                           ║
-║  Ahead: 1  ·  Behind: 0                                          ║
+║  Changes: 33 files  ·  M:20 A:0 D:0 ?:13                         ║
+║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        —                                                ║
 ║  Compliance:    —                                                ║
-║  Tests:         —                                                ║
-║  IGNIS:         2d ago                                           ║
+║  Tests:         130/130                                          ║
+║  IGNIS:         5d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  —                                                ║
 ╚════════════════════════════════════════════════════════════════╝

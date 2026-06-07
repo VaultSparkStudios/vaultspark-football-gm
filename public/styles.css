@@ -3129,3 +3129,66 @@ body.mobile-loop-active .mobile-loop-overlay {
   opacity: 0.8;
 }
 .fm-feedback-link:hover { opacity: 1; color: var(--accent-3); }
+
+/* ── Session 15 beta-readiness surfaces ─────────────────────────────────── */
+#draftWarRoomPanel {
+  margin: 14px 0;
+  padding: 14px;
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.draft-war-room-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+.draft-war-room-head h3 {
+  margin: 2px 0 0;
+  font-size: 1rem;
+}
+.draft-pressure-tone {
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  padding: 3px 9px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.draft-pressure-danger { color: var(--danger); border-color: var(--danger); }
+.draft-pressure-warning { color: var(--warning); border-color: var(--warning); }
+.draft-pressure-accent { color: var(--accent-strong); border-color: var(--accent); }
+.draft-pressure-neutral { color: var(--muted); }
+.draft-pressure-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.draft-pressure-chips span {
+  background: var(--bg-3);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-size: 0.72rem;
+}
+.draft-target-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.draft-target-card {
+  background: var(--bg-3);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  padding: 9px 10px;
+  font-size: 0.78rem;
+}
+.draft-target-card strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--accent-strong);
+}

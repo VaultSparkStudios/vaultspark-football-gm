@@ -1,6 +1,72 @@
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, formatHeight, renderPulseChips, renderTable, setElementTone, setMetricCardValue, teamByCode, teamName } from "./appCore.js";
 
+export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rosterNeeds = [], controlledTeamId = null } = {}) {
+  if (!draft) {
+    return {
+      status: "No active draft",
+      tone: "neutral",
+      chips: ["Prepare board"],
+      targets: [],
+      insight: "Prepare the board before draft day so team-fit targets are already staged."
+    };
+  }
+
+  const currentTeam = draft.order?.[(draft.currentPick - 1) % 32] || null;
+  const isUserPick = Boolean(controlledTeamId && currentTeam === controlledTeamId && !draft.completed);
+  const picksUntilUser = draft.completed
+    ? 0
+    : Math.max(0, (draft.order || []).slice(Math.max(0, draft.currentPick - 1)).findIndex((teamId) => teamId === controlledTeamId));
+  const needByPosition = new Map(
+    (rosterNeeds || []).map((need) => [String(need.position || "").toUpperCase(), Number(need.delta || 0)])
+  );
+  const boardRank = new Map((scoutingBoard || []).map((id, index) => [id, index + 1]));
+  const candidates = (draft.available || [])
+    .slice(0, 40)
+    .map((prospect, index) => {
+      const position = String(prospect.position || prospect.pos || "").toUpperCase();
+      const board = boardRank.get(prospect.id) || null;
+      const needGap = needByPosition.get(position) || 0;
+      const rank = Number(prospect.scouting?.rank || index + 1);
+      const projectedRound = Number(prospect.scouting?.projectedRound || 9);
+      const currentRound = Math.max(1, Math.ceil((draft.currentPick || 1) / 32));
+      const value = (100 - rank) + (board ? 35 - board : 0) + (needGap < 0 ? Math.abs(needGap) * 8 : 0) + Math.max(0, projectedRound - currentRound) * 4;
+      return {
+        id: prospect.id,
+        player: prospect.name,
+        pos: position,
+        rank,
+        board,
+        needGap,
+        label: needGap < 0 ? `Need ${Math.abs(needGap)}` : board ? `Board ${board}` : `Rank ${rank}`,
+        value
+      };
+    })
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 3);
+
+  const status = draft.completed
+    ? "Draft complete"
+    : isUserPick
+      ? "You are on the clock"
+      : picksUntilUser > 0
+        ? `${picksUntilUser} picks until your room`
+        : "CPU pick in progress";
+  const tone = isUserPick ? "danger" : picksUntilUser <= 5 ? "warning" : "accent";
+  const chips = [
+    status,
+    `${(draft.available || []).length} prospects left`,
+    candidates[0]?.needGap < 0 ? `Top need ${candidates[0].pos}` : "Best value watch",
+    scoutingBoard.length ? `${scoutingBoard.length} board targets` : "No board targets"
+  ];
+  const top = candidates[0];
+  const insight = top
+    ? `${top.player} is the room's pressure target at ${top.pos}: ${top.label.toLowerCase()}, rank ${top.rank}. ${isUserPick ? "Pick or pass now; the model sees this as the highest-leverage board decision." : "Watch the board until the user window arrives."}`
+    : "No available prospects are loaded yet.";
+
+  return { status, tone, chips, targets: candidates, insight };
+}
+
 export function renderDraft() {
   const draft = state.draftState;
   if (!draft) {
@@ -12,6 +78,7 @@ export function renderDraft() {
     document.getElementById("draftSelectedText").textContent = "Selected Prospect: None";
     renderTable("draftTable", []);
     renderTable("draftAvailableTable", []);
+    renderDraftWarRoom();
     return;
   }
 
@@ -75,6 +142,39 @@ export function renderDraft() {
       ? `<button data-draft-select-id="${escapeHtml(prospect.id)}">Select</button> <button data-draft-player-id="${escapeHtml(prospect.id)}">Draft</button>`
       : "";
   });
+  renderDraftWarRoom();
+}
+
+export function renderDraftWarRoom() {
+  const panel = document.getElementById("draftWarRoomPanel");
+  if (!panel) return;
+  const model = buildDraftPressureModel({
+    draft: state.draftState,
+    scoutingBoard: state.scoutingBoardDraft,
+    rosterNeeds: state.dashboard?.rosterNeeds || [],
+    controlledTeamId: state.dashboard?.controlledTeamId || null
+  });
+  panel.hidden = false;
+  panel.innerHTML = `
+    <div class="draft-war-room-head">
+      <div>
+        <div class="brand-kicker">Draft War Room</div>
+        <h3>${escapeHtml(model.status)}</h3>
+      </div>
+      <span class="draft-pressure-tone draft-pressure-${escapeHtml(model.tone)}">${escapeHtml(model.tone)}</span>
+    </div>
+    <div class="draft-pressure-chips">
+      ${model.chips.map((chip) => `<span>${escapeHtml(chip)}</span>`).join("")}
+    </div>
+    <div class="draft-target-grid">
+      ${model.targets.length ? model.targets.map((target) => `
+        <div class="draft-target-card">
+          <strong>${escapeHtml(target.player || target.id)}</strong>
+          <div>${escapeHtml(target.pos || "-")} | ${escapeHtml(target.label)} | Rank ${escapeHtml(target.rank)}</div>
+        </div>`).join("") : `<div class="narrative-empty">No draft targets loaded yet.</div>`}
+    </div>
+    <div class="small">${escapeHtml(model.insight)}</div>
+  `;
 }
 
 export function renderScouting() {

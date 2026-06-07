@@ -1,5 +1,18 @@
 # Self-Improvement Loop
 
+## 2026-06-07 — Session 15 Closeout
+
+Score: 825 / 1000
+
+Category notes:
+- Process Quality: +5 for proving the full requested chain against current evidence, avoiding stale Session 14 rework, and writing a fresh audit personalized to this repo's live protocol drift and Cloudflare blocker.
+- Automation Coverage: +3 for adding repo-local Studio protocol shims and shard coverage so documented commands stop failing at startup.
+- Engagement: +3 for adding the Draft War Room pressure surface, converting an information table into a pick-room decision moment.
+- Capital Efficiency: +2 for keeping launch readiness static-host-safe and no-backend, with challenge-code and feedback paths visible without new SaaS spend.
+- Momentum: +2 for shipping all four audit items and verifying the changed surfaces through focused tests, studio/runtime/core shards, and Pages smoke.
+
+Follow-up: after the existing Cloudflare runbook is applied or credentials are added, re-verify the public game URL and update Launch Readiness from "Blocked" to "Ready".
+
 ## 2026-06-04 — Session 14 Closeout
 
 Score: 819 / 1000

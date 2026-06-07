@@ -1,5 +1,38 @@
 # Latest Handoff
 
+## Impact Summary — Session 15 (2026-06-07)
+
+**Headline:** Session 15 repaired the documented Studio workflow and added beta-readiness surfaces that help both agents and testers see the next move without private context.
+
+- Shipped all 4 items from `docs/AUDIT_2026-06-07.*`: protocol shims, Draft War Room pressure, Launch Readiness cockpit, and regression coverage.
+- Test inventory is now 153 known default-shard tests; this session verified focused tests 7/7, studio 4/4, runtime 72/72, core 54/54, Pages build, and Pages smoke.
+- The custom-domain outage remains Cloudflare-side, but it is now surfaced in the browser Settings launch cockpit as an explicit beta-readiness blocker.
+
+## Where We Left Off — 2026-06-07
+
+The `/start -> /audit -> /implement -> /closeout` chain ran end-to-end for Session 15 with a fresh four-item audit personalized to current repo evidence.
+
+What changed:
+- Studio protocol command shims were added for `scripts/set-active-skill.mjs`, `scripts/lib/skill-profile.mjs`, `scripts/check-brief-staleness.mjs`, `scripts/credential-watch.mjs`, `scripts/ark.mjs`, and `scripts/ops.mjs`.
+- Draft tab gained `buildDraftPressureModel()` and a Draft War Room panel that turns current pick, scouting board, roster needs, and available prospects into pressure chips and top-target cards.
+- Settings gained `buildLaunchReadinessRows()` and a Launch Readiness table covering runtime, saves, feedback, challenge-code readiness, and the known public-domain blocker.
+- `scripts/run-test-shard.mjs` now includes the draft and launch readiness helper tests in the runtime shard.
+
+Verification passed:
+- Focused protocol/helper tests: 7/7
+- `npm run test:studio` (4)
+- `npm run test:runtime` (72)
+- `npm run test:core` (54)
+- `npm run build:pages`
+- `npm run smoke:pages`
+
+Remaining public-safe blockers:
+- `vaultsparkstudios.com` still serves the Cloudflare-side failure captured in the existing runbook. The repo can surface the blocker and verify after repair; it should not silently mutate the shared org-root domain without Cloudflare credentials or founder direction.
+
+Next best work:
+- Apply or unlock the Cloudflare runbook, then re-verify the public game URL and update Launch Readiness.
+- Run the full default test suite before push if this branch is being prepared for a production-facing commit.
+
 ## Impact Summary — Session 14 (2026-06-04)
 
 **Headline:** Session 14 converted invisible engine depth into felt gameplay (rivalries, season epilogue, shareable challenge duels), armored both ship pipelines against the Playwright hang that had silently killed every deploy since Session 13, and root-caused the public-site 403 to a Cloudflare/ACME conflict with a ready founder runbook.

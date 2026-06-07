@@ -1,0 +1,108 @@
+{
+  "generatedBy": "/audit skill v1.0",
+  "generatedAt": "2026-06-07",
+  "project": "vaultspark-football-gm",
+  "type": "game",
+  "topLine": {
+    "totalItems": 4,
+    "combinedPriority": 97.2,
+    "top3": [
+      "studio-protocol-shims",
+      "draft-war-room-pressure",
+      "launch-readiness-cockpit"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "slug": "studio-protocol-shims",
+      "tier": "fire",
+      "axis": "speed/organization/efficiency",
+      "effort": "1h",
+      "impact": 9,
+      "innovation": 4,
+      "priority": 22.8,
+      "title": "Repair the repo-local Studio protocol command surface",
+      "insight": "The project guide requires `/start`, `/audit`, `/implement`, and `/closeout`, but live preflight proved key helper scripts are missing: `set-active-skill`, `skill-profile`, `check-brief-staleness`, `credential-watch`, `ark`, and `ops`. That makes future agents burn time rediscovering drift before they can improve the game.",
+      "recipe": "Add repo-local compatibility shims for the missing scripts, dispatch `ops.mjs blocker-preflight/startup-brief/doctor` to existing helpers, make unsupported Ark and credential-watch calls no-op safely, and extend the studio smoke test to prove the documented command surface loads."
+    },
+    {
+      "rank": 2,
+      "slug": "draft-war-room-pressure",
+      "tier": "fire",
+      "axis": "gamification/engagement/immersion",
+      "effort": "1h",
+      "impact": 8,
+      "innovation": 6,
+      "priority": 30.4,
+      "title": "Draft War Room: board pressure and steal-risk intelligence",
+      "insight": "Scouting and draft are feature-rich, but the draft table still reads like raw data instead of an urgent pick-room decision. A lightweight war-room panel can convert rank, board slot, current pick, positional need, and user-pick window into immediate pressure: take now, stash, or watch a steal vanish.",
+      "recipe": "Add a pure `buildDraftPressureModel()` helper, render a Draft War Room panel above the tables with pressure chips and top-target cards, and test the helper against user-on-clock and no-draft states."
+    },
+    {
+      "rank": 3,
+      "slug": "launch-readiness-cockpit",
+      "tier": "high",
+      "axis": "user feedback loop",
+      "effort": "45m",
+      "impact": 7,
+      "innovation": 5,
+      "priority": 20.5,
+      "title": "Static launch cockpit inside the Commissioner Deck",
+      "insight": "The product is deployed but public-unlaunched, and the real blocker is a Cloudflare 403 on the portfolio domain. The browser game should surface a tester-ready cockpit: current runtime, feedback path, challenge-code virality, and launch-domain status without needing a backend.",
+      "recipe": "Add `buildLaunchReadinessRows()` and render a compact Launch Readiness panel in Settings showing runtime, saves, feedback/discussion route, challenge-code readiness, and the known custom-domain blocker."
+    },
+    {
+      "rank": 4,
+      "slug": "protocol-and-ui-coverage",
+      "tier": "high",
+      "axis": "security",
+      "effort": "45m",
+      "impact": 7,
+      "innovation": 4,
+      "priority": 23.5,
+      "title": "Regression coverage for protocol shims and beta-facing pure helpers",
+      "insight": "The last two sessions proved that invisible plumbing regressions cost more than their code size suggests. Covering the protocol shims and the pure UI intelligence helpers keeps future creative sprints from breaking startup, launch readiness, or draft pressure logic.",
+      "recipe": "Extend `test/studio-protocol-smoke.test.js` for the new command shims and add focused unit tests for the draft pressure and launch readiness helpers; run studio plus core shards as verification."
+    }
+  ],
+  "innovationReserve": [
+    "draft-war-room-pressure"
+  ],
+  "skipped": [
+    {
+      "slug": "cloudflare-agent-remediation",
+      "reason": "Still not agent-actionable inside this repo because Cloudflare credentials are missing and the mutation targets the org-root domain shared across the portfolio; keep the existing founder runbook instead of pretending this repo can fix DNS."
+    },
+    {
+      "slug": "agentic-rival-scout",
+      "reason": "Strong AI/intelligence idea, but a real General Manager opponent model should wait until post-launch telemetry shows which decisions beta players repeat or ignore."
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "studio-protocol-shims",
+      "status": "shipped",
+      "completedAt": "2026-06-07",
+      "evidence": "Added repo-local shims for set-active-skill, skill-profile, check-brief-staleness, credential-watch, ark drain, and ops dispatch."
+    },
+    {
+      "slug": "draft-war-room-pressure",
+      "status": "shipped",
+      "completedAt": "2026-06-07",
+      "evidence": "Draft tab now renders Draft War Room pressure chips and target cards from buildDraftPressureModel()."
+    },
+    {
+      "slug": "launch-readiness-cockpit",
+      "status": "shipped",
+      "completedAt": "2026-06-07",
+      "evidence": "Settings now includes Launch Readiness table for runtime, saves, feedback, challenge codes, and public-domain blocker."
+    },
+    {
+      "slug": "protocol-and-ui-coverage",
+      "status": "shipped",
+      "completedAt": "2026-06-07",
+      "evidence": "Added studio protocol shim coverage plus draft-war-room and launch-readiness unit tests."
+    }
+  ]
+}

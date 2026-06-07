@@ -23,3 +23,8 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - The prior "external provider/repo settings confirmation" framing is obsolete: Pages is configured (workflow build type), and the real outage is a Cloudflare-origin 403 plus an expired bad_authz GitHub cert on the org root repo's custom domain. The remaining action is Cloudflare-side (founder runbook in TASK_BOARD).
 - The "CI matrix green" claim from Session 13 was never true in Actions: both browser-dependent jobs hung at the Playwright install and were timeout-cancelled. Local shard results were accurate; the CI claim is now corrected and the install step is defended. Default suite is 149 passing tests locally.
 - New derived surfaces (rivalry strip, epilogue, challenge codes, integrity stamps, feedback URLs) are covered by 18 new tests in the runtime shard.
+
+2026-06-07 note:
+- The documented Studio protocol surface now has project-local shims for the helper commands that live `/start` preflight proved were missing; `test:studio` covers the command load path.
+- The test suite inventory has grown to 153 known tests across default shards after adding draft pressure, launch readiness, and protocol-shim coverage. This session reran affected/default-adjacent surfaces: core, runtime, studio, Pages build, and Pages smoke.
+- The public-domain blocker remains true and intentionally visible: the game repo can explain and surface the Cloudflare/GitHub Pages issue, but it should not silently mutate the shared org-root domain without credentials or founder direction.

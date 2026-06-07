@@ -1,49 +1,33 @@
-# Implement Plan - 2026-06-04 Audit
+# Implement Plan - 2026-06-07 Audit
 
-Public-safe sprint sequencing. Detailed private ops context remains outside this repo.
+Public-safe sprint sequencing for the latest audit. Detailed private ops context remains outside this repo.
 
-## Wave 1 — Ship-pipeline foundations (infra unblocks everything downstream)
+## Wave 1 - Protocol Reliability
 
-1. `ci-playwright-hang-fix`
-   - Surface: `.github/workflows/ci.yml`, `.github/workflows/deploy-pages.yml`, `scripts/smoke-pages.mjs`
-   - Verification: `npm run build:pages` + `npm run smoke:pages` locally; CI matrix green on push.
-   - Contract: no browser-dependent CI step may run without a step-level timeout; Playwright browser binaries are cached keyed to the Playwright version.
+1. `studio-protocol-shims`
+   - Surface: `scripts/set-active-skill.mjs`, `scripts/lib/skill-profile.mjs`, `scripts/check-brief-staleness.mjs`, `scripts/credential-watch.mjs`, `scripts/ark.mjs`, `scripts/ops.mjs`
+   - Verification: `node --test test/studio-protocol-smoke.test.js`
+   - Contract: documented Studio commands load locally even when the full private Studio OS command surface is not vendored into this public repo.
 
-2. `realism-sweep-cron`
-   - Surface: `.github/workflows/realism-sweep.yml` (new)
-   - Verification: workflow YAML validates; never wired into push-blocking path.
-   - Contract: deep statistical confidence has its own time budget; closes the twice-recorded SIL follow-up.
+## Wave 2 - Beta Player Experience
 
-3. `pages-cert-remediation`
-   - Surface: GitHub Pages API (no repo files)
-   - Verification: `https_certificate.state` leaves `bad_authz`; DNS records confirmed.
-   - Contract: agent attempts remediation before any human-blocked label (blocker preflight protocol).
+2. `draft-war-room-pressure`
+   - Surface: `public/lib/tabDraft.js`, `public/game.html`, `public/styles.css`
+   - Verification: `node --test test/draft-war-room.test.js` plus `npm run build:pages` and `npm run smoke:pages`
+   - Contract: the draft tab turns board state, current pick, roster needs, and scouting order into immediate decision pressure.
 
-## Wave 2 — Engine→UI gamification cluster (shared client surfaces)
+3. `launch-readiness-cockpit`
+   - Surface: `public/lib/tabSettings.js`, `public/game.html`
+   - Verification: `node --test test/launch-readiness.test.js` plus static Pages smoke
+   - Contract: the Commissioner Deck surfaces runtime, save, feedback, challenge-code, and known public-domain readiness without a backend.
 
-4. `rivalry-heat-surfacing`
-   - Surface: `public/lib/api` runtime, `public/lib/tabOverview.js`, `public/lib/engagementFeatures.js` (sim-watch header), `public/styles.css`
-   - Verification: `npm run test:runtime`; smoke if presentation path touched.
+## Wave 3 - Regression Coverage
 
-5. `season-epilogue-ritual`
-   - Surface: new `public/lib/seasonEpilogue.js`, `public/lib/gameFlow.js` hook, `public/styles.css`
-   - Verification: `npm run test:runtime` + targeted unit test for `buildSeasonEpilogue()`.
+4. `protocol-and-ui-coverage`
+   - Surface: `test/studio-protocol-smoke.test.js`, `test/draft-war-room.test.js`, `test/launch-readiness.test.js`, `scripts/run-test-shard.mjs`
+   - Verification: `npm run test:studio`, `npm run test:runtime`, `npm run test:core`
+   - Contract: new protocol and beta-facing helper coverage is part of named shards, not only a manual one-off command.
 
-6. `shareable-challenge-codes`
-   - Surface: new `public/lib/challengeCodes.js`, speedrun card UI, `public/setup.js`
-   - Verification: encode/decode round-trip unit tests; `npm run test:runtime`.
+## Execution Result
 
-## Wave 3 — Trust & feedback loop
-
-7. `save-integrity-guard`
-   - Surface: browser save store path, `public/lib/gistSync.js`
-   - Verification: checksum round-trip unit tests; `npm run test:runtime`.
-
-8. `beta-feedback-widget`
-   - Surface: `public/lib/tabSettings.js`, `public/lib/engagementFeatures.js`
-   - Verification: URL-building unit test; manual render check via smoke.
-
-## Test-surface contract map (carried forward from 2026-06-03)
-
-- `core` covers pure football engine/domain contracts; `runtime` covers browser/local API/save/session endpoints; `sim:contract` covers season-flow contracts; `sim:realism` covers the bounded Monte Carlo guardrail; `studio` covers local Studio protocol helpers; `long` keeps the two expensive determinism/career-realism probes explicit instead of hiding them in default CI.
-- Measurement plan: shard-level durations recorded after each full CI run; agents choose the smallest matching shard before attempting all shards; `npm run test:long` only for realism/determinism changes or scheduled confidence sweeps.
+All four 2026-06-07 audit items shipped in this pass. The public-domain Cloudflare blocker remains intentionally outside this repo's mutation scope until credentials or founder dashboard action changes the evidence.

@@ -42,3 +42,20 @@ test("startup and blocker protocol scripts load without missing helper modules",
   });
   assert.equal(startup.status, 0, startup.stderr);
 });
+
+test("documented Studio protocol shims load", () => {
+  for (const args of [
+    ["scripts/set-active-skill.mjs", "audit"],
+    ["scripts/lib/skill-profile.mjs", "audit"],
+    ["scripts/check-brief-staleness.mjs"],
+    ["scripts/credential-watch.mjs", "--silent"],
+    ["scripts/ark.mjs", "drain", "--silent"],
+    ["scripts/ops.mjs", "blocker-preflight", "--json"]
+  ]) {
+    const result = spawnSync(process.execPath, args, {
+      cwd: process.cwd(),
+      encoding: "utf8"
+    });
+    assert.equal(result.status, 0, `${args.join(" ")}\n${result.stderr}`);
+  }
+});

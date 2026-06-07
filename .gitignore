@@ -12,10 +12,13 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 static/
+.cache/
+.ops-cache/
 .claude/
 docs/CREATIVE_DIRECTION_RECORD.md
 docs/RIGHTS_PROVENANCE.md
 CODEX_HANDOFF_*.md
+docs/cache-ledger.ndjson
 
 CODEX_HANDOFF_2026-03-11.md
 CODEX_HANDOFF_2026-03-12.md
