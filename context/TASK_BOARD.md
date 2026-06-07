@@ -154,3 +154,16 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 **Verification:** focused protocol/helper tests 7/7 · `npm run test:studio` 4/4 · `npm run test:runtime` 72/72 · `npm run test:core` 54/54 · `npm run build:pages` · `npm run smoke:pages`.
 
 **Still blocked:** `vaultsparkstudios.com` remains Cloudflare-side blocked until the existing runbook is applied or Cloudflare credentials are added to the secrets gateway.
+
+## Session 17 — Goal Completion Verification (2026-06-07)
+
+| Item | Status |
+|------|--------|
+| Re-verify latest audit execution log against current code and tests | Done |
+| Rerun full default suite and static Pages gates | Done |
+| Preserve propagated lean `AGENTS.md` canon block | Done |
+| Backfill closeout cost/brief renderer scripts | Follow-up |
+
+**Verification:** `npm test` 153/153 · `npm run build:pages` · `npm run smoke:pages` · `node scripts/ops.mjs blocker-preflight` · `node scripts/check-secrets.mjs --audit`.
+
+**Follow-up:** add or propagate `scripts/record-skill-cost.mjs` and `scripts/render-closeout-brief.mjs`; both are referenced by the current Studio closeout protocol but absent from this public repo.

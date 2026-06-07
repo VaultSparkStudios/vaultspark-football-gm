@@ -1,5 +1,16 @@
 # Self-Improvement Loop
 
+## 2026-06-07 — Session 17 Goal Completion Closeout
+
+Score: 829 / 1000
+
+Category notes:
+- Process Quality: +1 for proving the full requested chain requirement-by-requirement from current files, execution logs, and fresh test output before marking the durable goal complete.
+- Cross-Repo Coherence: +1 for preserving the propagated lean `AGENTS.md` canon block while recording that this public repo still lacks the newer closeout cost/brief helper scripts.
+- Dev Health: unchanged because the full 153-test default suite, Pages build, and Pages smoke stayed green without product-code edits.
+
+Follow-up: propagate or shim `scripts/record-skill-cost.mjs` and `scripts/render-closeout-brief.mjs` so future closeouts can use the canonical cost ledger and brief renderer locally.
+
 ## 2026-06-07 — Session 16 Resume Closeout
 
 Score: 827 / 1000

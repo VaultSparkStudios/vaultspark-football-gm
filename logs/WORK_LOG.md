@@ -1,5 +1,13 @@
 # Work Log
 
+## 2026-06-07 — Session 17: goal completion verification closeout
+
+- Continued the active `/start -> /audit -> /implement -> /closeout` goal from current repo evidence instead of assuming prior completion.
+- Verified the latest 2026-06-07 audit sidecar and Markdown execution log: all four items are shipped (`studio-protocol-shims`, `draft-war-room-pressure`, `launch-readiness-cockpit`, `protocol-and-ui-coverage`).
+- Reran the full default suite and static site gates: `npm test` passed 153/153, `npm run build:pages` passed, and `npm run smoke:pages` passed.
+- Ran blocker/secrets preflight; Pages/domain remediation remains agent-attemptable only if credentials become available, with no ready repo capabilities reported by the local audit.
+- Closeout note: `scripts/record-skill-cost.mjs` and `scripts/render-closeout-brief.mjs` are not present in this public repo, so Session 17 used public-safe manual closeout write-back and captured the helper gap.
+
 ## 2026-06-07 — Session 16: resume verification closeout
 
 - Analyzed the current handoff, git state, and same-day audit artifacts; no abandoned edits were present, and all four Session 15 audit items were already implemented and logged.

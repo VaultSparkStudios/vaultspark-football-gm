@@ -1,27 +1,27 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-06-07 (Session 16 closeout) -->
+<!-- generated-at: 2026-06-07 (Session 17 closeout) -->
 
 # Closeout Status Board — VaultSpark Football GM
 
 ```
-╔══ SESSION CLOSEOUT · VaultSpark Football GM · S16 ═════════════╗
-║  Date: 2026-06-07  ·  SIL: 827/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · VaultSpark Football GM · S17 ═════════════╗
+║  Date: 2026-06-07  ·  SIL: 829/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Public-safe status and closeout surfaces now reflect the ful  ║
-║  ✓ SIL moved from 825 to 827 on Dev Health and Process Quality   ║
 ║  ✓ `npm test` — 153/153                                          ║
 ║  ✓ `npm run build:pages`                                         ║
 ║  ✓ `npm run smoke:pages`                                         ║
+║  ✓ `node scripts/ops.mjs blocker-preflight`                      ║
+║  ✓ `node scripts/check-secrets.mjs --audit`                      ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 827/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 829/1000 ═══════════════════════════════════════╗
 ║    Dev Health         85   █████████░                            ║
 ║    Alignment          72   ███████░░░                            ║
 ║    Momentum           78   ████████░░                            ║
 ║    Engagement         76   ████████░░                            ║
-║    Process Qual       88   █████████░                            ║
-║    Coherence          95   ██████████                            ║
+║    Process Qual       89   █████████░                            ║
+║    Coherence          96   ██████████                            ║
 ║    Security           85   █████████░                            ║
 ║    Ecosystem          71   ███████░░░                            ║
 ║    Capital            80   ████████░░                            ║
@@ -29,18 +29,18 @@
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
 ║  · context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 7 files  ·  M:7 A:0 D:0 ?:0                            ║
+║  Changes: 11 files  ·  M:9 A:0 D:0 ?:2                           ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝

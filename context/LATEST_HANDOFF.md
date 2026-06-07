@@ -1,5 +1,31 @@
 # Latest Handoff
 
+## Impact Summary — Session 17 (2026-06-07)
+
+**Headline:** Session 17 re-proved the completed audit loop, absorbed the lean Studio canon propagation in `AGENTS.md`, and documented the remaining closeout-helper gap without changing product behavior.
+
+- Verification is current again: `npm test` passed 153/153, `npm run build:pages` passed, and `npm run smoke:pages` passed.
+- The latest audit remains complete: all four `docs/AUDIT_2026-06-07.*` items are shipped and evidenced in code, tests, and the execution log.
+- Local closeout protocol coverage is still partial: startup shims exist, but `scripts/record-skill-cost.mjs` and `scripts/render-closeout-brief.mjs` are not vendored in this public repo, so this closeout used public-safe manual write-back.
+
+## Where We Left Off — 2026-06-07 (Session 17)
+
+The requested `/start -> /audit -> /implement -> /closeout` chain is complete from current evidence. Session 17 did not introduce new gameplay changes; it verified the shipped Session 15 work, preserved the propagated `AGENTS.md` lean canon rewrite, and recorded the missing closeout helper scripts as a process follow-up.
+
+Verification passed:
+- `npm test` — 153/153
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `node scripts/ops.mjs blocker-preflight`
+- `node scripts/check-secrets.mjs --audit`
+
+Remaining public-safe blocker:
+- `vaultsparkstudios.com` still depends on Cloudflare-side remediation or credentials. The repo surfaces the blocker in Launch Readiness and TASK_BOARD, but `github.repo`/Cloudflare capability evidence is still missing locally.
+
+Next best work:
+- Apply or unlock the Cloudflare runbook, then re-verify the public game URL and update Launch Readiness from blocked to ready.
+- Backfill repo-local closeout shims for cost recording and closeout-brief rendering, or propagate the canonical scripts from Studio Ops.
+
 ## Impact Summary — Session 16 (2026-06-07)
 
 **Headline:** Session 16 confirmed the same-day implementation is fully default-suite green and narrowed the remaining launch blocker to the already-documented Cloudflare/GitHub Pages certificate path.

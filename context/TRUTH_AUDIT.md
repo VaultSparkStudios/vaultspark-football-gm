@@ -2,7 +2,7 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-06-04
+Last reviewed: 2026-06-07
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 2026-05-27 note:
@@ -28,3 +28,4 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - The documented Studio protocol surface now has project-local shims for the helper commands that live `/start` preflight proved were missing; `test:studio` covers the command load path.
 - The test suite inventory has grown to 153 known tests across default shards after adding draft pressure, launch readiness, and protocol-shim coverage. This session reran affected/default-adjacent surfaces: core, runtime, studio, Pages build, and Pages smoke.
 - The public-domain blocker remains true and intentionally visible: the game repo can explain and surface the Cloudflare/GitHub Pages issue, but it should not silently mutate the shared org-root domain without credentials or founder direction.
+- Session 17 reran the full default suite (`npm test`: 153/153), Pages build, and Pages smoke. The repo-local startup shim surface is green, while the newer closeout cost ledger and closeout-brief renderer scripts are not present in this public repo and should be propagated or shimmed before relying on canonical closeout automation.

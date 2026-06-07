@@ -4,7 +4,7 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 16 verified the completed Session 15 implementation with the full default suite plus Pages build/smoke; remaining launch work is the Cloudflare custom-domain repair.",
+  "currentFocus": "Session 17 re-verified the completed audit/implementation loop with the full default suite plus Pages build/smoke; remaining launch work is the Cloudflare custom-domain repair and closeout-helper propagation.",
   "nextMilestone": "Apply or unlock the Cloudflare runbook, re-verify the public game URL, then send the public beta link.",
   "blockers": [
     "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) — Cloudflare-side fix required; runbook in TASK_BOARD"
@@ -30,7 +30,7 @@
       "test/launch-readiness.test.js"
     ],
     "newTestCount": 22,
-    "coverage": "Known default-shard inventory is 153 tests (core 54, runtime 72, sim-contract 22, sim-realism 1, studio 4). Session 16 reran the full default suite plus Pages build and Pages smoke."
+      "coverage": "Known default-shard inventory is 153 tests (core 54, runtime 72, sim-contract 22, sim-realism 1, studio 4). Session 17 reran the full default suite plus Pages build and Pages smoke."
   },
   "testsPassing": 153,
   "testsTotal": 153,
@@ -72,20 +72,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 827,
+  "silScore": 829,
   "silCategoriesV3": {
     "devHealth": 85,
     "creativeAlignment": 72,
     "momentum": 78,
     "engagement": 76,
-    "processQuality": 88,
-    "crossRepoCoherence": 95,
+    "processQuality": 89,
+    "crossRepoCoherence": 96,
     "securityPosture": 85,
     "ecosystemIntegration": 71,
     "capitalEfficiency": 80,
     "automationCoverage": 97
   },
-  "currentSession": 16,
+  "currentSession": 17,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
@@ -97,7 +97,9 @@
       "npm test",
       "npm run build:pages",
       "npm run smoke:pages",
-      "node --test test/studio-protocol-smoke.test.js test/draft-war-room.test.js test/launch-readiness.test.js"
+      "node --test test/studio-protocol-smoke.test.js test/draft-war-room.test.js test/launch-readiness.test.js",
+      "node scripts/ops.mjs blocker-preflight",
+      "node scripts/check-secrets.mjs --audit"
     ],
     "timedOut": []
   },
