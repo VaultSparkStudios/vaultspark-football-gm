@@ -1,26 +1,26 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-06-07 (Session 17 closeout) -->
+<!-- generated-at: 2026-06-08 (Session 18 closeout) -->
 
 # Closeout Status Board — VaultSpark Football GM
 
 ```
-╔══ SESSION CLOSEOUT · VaultSpark Football GM · S17 ═════════════╗
-║  Date: 2026-06-07  ·  SIL: 829/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · VaultSpark Football GM · S18 ═════════════╗
+║  Date: 2026-06-08  ·  SIL: 835/1000  ·  Velocity: —              ║
+║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ `npm test` — 153/153                                          ║
-║  ✓ `npm run build:pages`                                         ║
-║  ✓ `npm run smoke:pages`                                         ║
-║  ✓ `node scripts/ops.mjs blocker-preflight`                      ║
-║  ✓ `node scripts/check-secrets.mjs --audit`                      ║
+║  ✓ `buildLaunchReadinessRows()` now uses `resolvePublicDomainRe  ║
+║  ✓ Draft War Room targets now include `stealRisk` and `urgency`  ║
+║  ✓ `buildFeedbackIssueUrl()` can include launch-readiness rows   ║
+║  ✓ Focused helper tests: 10/10                                   ║
+║  ✓ `npm run test:runtime` — 75/75                                ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 829/1000 ═══════════════════════════════════════╗
-║    Dev Health         85   █████████░                            ║
+╔══ SCORES · SIL 835/1000 ═══════════════════════════════════════╗
+║    Dev Health         86   █████████░                            ║
 ║    Alignment          72   ███████░░░                            ║
-║    Momentum           78   ████████░░                            ║
-║    Engagement         76   ████████░░                            ║
-║    Process Qual       89   █████████░                            ║
+║    Momentum           80   ████████░░                            ║
+║    Engagement         78   ████████░░                            ║
+║    Process Qual       90   █████████░                            ║
 ║    Coherence          96   ██████████                            ║
 ║    Security           85   █████████░                            ║
 ║    Ecosystem          71   ███████░░░                            ║
@@ -32,7 +32,7 @@
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
+║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
@@ -40,14 +40,14 @@
 ║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 11 files  ·  M:9 A:0 D:0 ?:2                           ║
+║  Changes: 23 files  ·  M:19 A:0 D:0 ?:4                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        —                                                ║
 ║  Compliance:    —                                                ║
-║  Tests:         153/153                                          ║
+║  Tests:         156/156                                          ║
 ║  IGNIS:         5d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  —                                                ║

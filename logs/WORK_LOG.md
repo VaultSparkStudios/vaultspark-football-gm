@@ -1,5 +1,13 @@
 # Work Log
 
+## 2026-06-08 — Session 18: live beta readiness + draft pressure closeout
+
+- Ran the active `/start -> /audit -> /implement -> /closeout` chain from current repo evidence after confirming the 2026-06-07 audit was fully shipped.
+- Wrote `docs/AUDIT_2026-06-08.*` with three scoped items: live domain readiness states, Draft War Room steal-risk pressure, and beta feedback readiness packets.
+- Shipped all three items: Launch Readiness can now represent `Blocked`, `Ready`, and `Needs check`; draft targets now expose `stealRisk`/`urgency`; feedback issue URLs can include readiness rows without personal data.
+- Verification: focused helper tests 10/10, `npm run test:runtime` 75/75, `npm run test:studio` 4/4, `npm run test:core` 54/54, full `npm test` 156/156, `npm run build:pages`, and `npm run smoke:pages`.
+- Remaining blocker: `vaultsparkstudios.com` still depends on the existing Cloudflare/GitHub Pages runbook or credentials; the game now has the truth-state model needed to flip from blocked to ready after verification.
+
 ## 2026-06-07 — Session 17: goal completion verification closeout
 
 - Continued the active `/start -> /audit -> /implement -> /closeout` goal from current repo evidence instead of assuming prior completion.

@@ -167,3 +167,16 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 **Verification:** `npm test` 153/153 · `npm run build:pages` · `npm run smoke:pages` · `node scripts/ops.mjs blocker-preflight` · `node scripts/check-secrets.mjs --audit`.
 
 **Follow-up:** add or propagate `scripts/record-skill-cost.mjs` and `scripts/render-closeout-brief.mjs`; both are referenced by the current Studio closeout protocol but absent from this public repo.
+
+## Session 18 — Live Beta Readiness + Draft Pressure (2026-06-08)
+
+| Item | Status |
+|------|--------|
+| Generate a fresh current-state audit after confirming the 2026-06-07 audit was fully shipped | Done |
+| Make Launch Readiness public-domain status evidence-driven (`Blocked` / `Ready` / `Needs check`) | Done |
+| Add Draft War Room steal-risk and urgency labels for pick-room decisions | Done |
+| Attach optional launch-readiness rows to beta feedback issue URLs without personal data | Done |
+
+**Verification:** focused helper tests 10/10 · `npm run test:runtime` 75/75 · `npm run test:studio` 4/4 · `npm run test:core` 54/54 · `npm test` 156/156 · `npm run build:pages` · `npm run smoke:pages`.
+
+**Still blocked:** `vaultsparkstudios.com` remains Cloudflare/GitHub Pages-side until the existing runbook is applied or credentials are added; Launch Readiness now has the truth-state model to flip to `Ready` after public URL verification.

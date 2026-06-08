@@ -4,12 +4,12 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 17 re-verified the completed audit/implementation loop with the full default suite plus Pages build/smoke; remaining launch work is the Cloudflare custom-domain repair and closeout-helper propagation.",
+  "currentFocus": "Session 18 shipped live beta readiness truth states, Draft War Room steal-risk pressure, and readiness-rich beta feedback; remaining launch work is the Cloudflare custom-domain repair and closeout-helper propagation.",
   "nextMilestone": "Apply or unlock the Cloudflare runbook, re-verify the public game URL, then send the public beta link.",
   "blockers": [
     "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) — Cloudflare-side fix required; runbook in TASK_BOARD"
   ],
-  "lastUpdated": "2026-06-07",
+  "lastUpdated": "2026-06-08",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,10 +18,10 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-03",
   "testSuiteStatus": {
-    "totalTests": 153,
-    "pass": 153,
+    "totalTests": 156,
+    "pass": 156,
     "fail": 0,
-    "lastRun": "2026-06-07",
+    "lastRun": "2026-06-08",
     "newTestFiles": [
       "test/challenge-codes.test.js",
       "test/save-integrity.test.js",
@@ -29,11 +29,11 @@
       "test/draft-war-room.test.js",
       "test/launch-readiness.test.js"
     ],
-    "newTestCount": 22,
-      "coverage": "Known default-shard inventory is 153 tests (core 54, runtime 72, sim-contract 22, sim-realism 1, studio 4). Session 17 reran the full default suite plus Pages build and Pages smoke."
+    "newTestCount": 25,
+    "coverage": "Known default-shard inventory is 156 tests (core 54, runtime 75, sim-contract 22, sim-realism 1, studio 4). Session 18 reran the full default suite plus Pages build and Pages smoke."
   },
-  "testsPassing": 153,
-  "testsTotal": 153,
+  "testsPassing": 156,
+  "testsTotal": 156,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -72,24 +72,24 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 829,
+  "silScore": 835,
   "silCategoriesV3": {
-    "devHealth": 85,
+    "devHealth": 86,
     "creativeAlignment": 72,
-    "momentum": 78,
-    "engagement": 76,
-    "processQuality": 89,
+    "momentum": 80,
+    "engagement": 78,
+    "processQuality": 90,
     "crossRepoCoherence": 96,
     "securityPosture": 85,
     "ecosystemIntegration": 71,
     "capitalEfficiency": 80,
     "automationCoverage": 97
   },
-  "currentSession": 17,
+  "currentSession": 18,
   "lastAgent": "codex",
-  "sessionMode": "builder",
+  "sessionMode": "founder",
   "lastVerification": {
-    "date": "2026-06-07",
+    "date": "2026-06-08",
     "passed": [
       "npm run test:studio",
       "npm run test:runtime",
@@ -97,7 +97,7 @@
       "npm test",
       "npm run build:pages",
       "npm run smoke:pages",
-      "node --test test/studio-protocol-smoke.test.js test/draft-war-room.test.js test/launch-readiness.test.js",
+      "node --test --test-isolation=none test/launch-readiness.test.js test/draft-war-room.test.js test/beta-feedback.test.js",
       "node scripts/ops.mjs blocker-preflight",
       "node scripts/check-secrets.mjs --audit"
     ],
@@ -109,8 +109,8 @@
   "modelTierCtxLimit": 200000,
   "modelPlanMode": true,
   "modelPlanModeSlash": "/model opusplan",
-  "planModeDetected": "active",
-  "planModeCheckedAt": "2026-06-07T17:52:36.774Z",
-  "sessionModeAutoShiftedAt": "2026-06-07T21:53:58.640Z",
+  "planModeDetected": "missing",
+  "planModeCheckedAt": "2026-06-08T04:43:05.525Z",
+  "sessionModeAutoShiftedAt": "2026-06-08T04:43:04.856Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z"
 }

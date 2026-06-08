@@ -1,5 +1,17 @@
 # Self-Improvement Loop
 
+## 2026-06-08 — Session 18 Live Beta Readiness Closeout
+
+Score: 835 / 1000
+
+Category notes:
+- Engagement: +2 for turning Draft War Room target cards into explicit steal-risk decisions instead of only sorted recommendations.
+- User Feedback / Momentum: +2 for making beta feedback carry launch-readiness context and for shipping a fresh audit rather than no-oping yesterday's completed plan.
+- Dev Health: +1 for raising the verified default-shard inventory to 156 passing tests and preserving Pages build/smoke.
+- Process Quality: +1 for replacing the hardcoded public-domain blocker with a truth-state resolver that can be flipped only after evidence changes.
+
+Follow-up: after the Cloudflare/GitHub Pages runbook is applied or credentials are added, set the public-domain readiness evidence to `Ready` only after a public URL smoke passes.
+
 ## 2026-06-07 — Session 17 Goal Completion Closeout
 
 Score: 829 / 1000

@@ -31,6 +31,10 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
       const projectedRound = Number(prospect.scouting?.projectedRound || 9);
       const currentRound = Math.max(1, Math.ceil((draft.currentPick || 1) / 32));
       const value = (100 - rank) + (board ? 35 - board : 0) + (needGap < 0 ? Math.abs(needGap) * 8 : 0) + Math.max(0, projectedRound - currentRound) * 4;
+      const boardPressure = board ? Math.max(0, 22 - board) : 0;
+      const waitWindow = isUserPick ? 0 : picksUntilUser;
+      const urgency = Math.max(0, boardPressure + (needGap < 0 ? 8 : 0) + Math.max(0, currentRound - projectedRound + 1) * 6 - waitWindow * 2);
+      const stealRisk = urgency >= 24 ? "critical" : urgency >= 14 ? "high" : urgency >= 6 ? "watch" : "low";
       return {
         id: prospect.id,
         player: prospect.name,
@@ -39,6 +43,8 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
         board,
         needGap,
         label: needGap < 0 ? `Need ${Math.abs(needGap)}` : board ? `Board ${board}` : `Rank ${rank}`,
+        stealRisk,
+        urgency,
         value
       };
     })
@@ -56,12 +62,13 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
   const chips = [
     status,
     `${(draft.available || []).length} prospects left`,
+    candidates[0] ? `Steal risk ${candidates[0].stealRisk}` : "Steal risk none",
     candidates[0]?.needGap < 0 ? `Top need ${candidates[0].pos}` : "Best value watch",
     scoutingBoard.length ? `${scoutingBoard.length} board targets` : "No board targets"
   ];
   const top = candidates[0];
   const insight = top
-    ? `${top.player} is the room's pressure target at ${top.pos}: ${top.label.toLowerCase()}, rank ${top.rank}. ${isUserPick ? "Pick or pass now; the model sees this as the highest-leverage board decision." : "Watch the board until the user window arrives."}`
+    ? `${top.player} is the room's pressure target at ${top.pos}: ${top.label.toLowerCase()}, rank ${top.rank}, ${top.stealRisk} steal risk. ${isUserPick ? "Pick or pass now; the model sees this as the highest-leverage board decision." : "Watch the board until the user window arrives."}`
     : "No available prospects are loaded yet.";
 
   return { status, tone, chips, targets: candidates, insight };
@@ -170,7 +177,7 @@ export function renderDraftWarRoom() {
       ${model.targets.length ? model.targets.map((target) => `
         <div class="draft-target-card">
           <strong>${escapeHtml(target.player || target.id)}</strong>
-          <div>${escapeHtml(target.pos || "-")} | ${escapeHtml(target.label)} | Rank ${escapeHtml(target.rank)}</div>
+          <div>${escapeHtml(target.pos || "-")} | ${escapeHtml(target.label)} | Rank ${escapeHtml(target.rank)} | ${escapeHtml(target.stealRisk)} steal risk</div>
         </div>`).join("") : `<div class="narrative-empty">No draft targets loaded yet.</div>`}
     </div>
     <div class="small">${escapeHtml(model.insight)}</div>

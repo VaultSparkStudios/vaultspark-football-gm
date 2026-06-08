@@ -12,6 +12,7 @@
 import { state } from "./appState.js";
 import { showToast } from "./appCore.js";
 import { exportSummary, isOptedIn } from "./analytics.js";
+import { buildLaunchReadinessRows } from "./tabSettings.js";
 
 const REPO_ISSUE_BASE = "https://github.com/VaultSparkStudios/vaultspark-football-gm/issues/new";
 
@@ -21,6 +22,7 @@ const REPO_ISSUE_BASE = "https://github.com/VaultSparkStudios/vaultspark-footbal
  * @returns {string}
  */
 export function buildFeedbackIssueUrl(ctx = {}) {
+  const readinessRows = Array.isArray(ctx.launchReadinessRows) ? ctx.launchReadinessRows : [];
   const lines = [
     "<!-- Tell the Commissioner: describe what happened, what you expected, and what you'd love to see. -->",
     "",
@@ -31,6 +33,7 @@ export function buildFeedbackIssueUrl(ctx = {}) {
     "_Auto-attached game context:_",
     `- Season: ${ctx.year ?? "?"} · Week ${ctx.week ?? "?"} · ${ctx.phase ?? "?"}`,
     `- Screen: ${ctx.tab ?? "?"} · Runtime: ${ctx.runtimeMode ?? "?"}`,
+    ...readinessRows.map((row) => `- Readiness/${row.area}: ${row.status} — ${row.detail}`),
     ctx.analyticsAttached
       ? "- Analytics digest: copied to clipboard — paste below if you want to share it."
       : "- Analytics digest: not attached (opt in via Settings → Analytics)."
@@ -56,7 +59,15 @@ function gatherContext() {
     week: d.currentWeek,
     phase: d.phase,
     tab: state.activeTab || "unknown",
-    runtimeMode
+    runtimeMode,
+    launchReadinessRows: buildLaunchReadinessRows({
+      dashboard: state.dashboard,
+      saves: state.saves,
+      persistence: state.persistence,
+      observability: state.observability,
+      speedrunChallenge: state.speedrunChallenge,
+      publicDomainStatus: state.launchReadiness?.publicDomainStatus
+    })
   };
 }
 

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildLaunchReadinessRows } from "../public/lib/tabSettings.js";
+import { buildLaunchReadinessRows, resolvePublicDomainReadiness } from "../public/lib/tabSettings.js";
 
 test("launch readiness rows expose static beta launch posture", () => {
   const rows = buildLaunchReadinessRows({
@@ -15,4 +15,21 @@ test("launch readiness rows expose static beta launch posture", () => {
   assert.equal(rows.find((row) => row.area === "Runtime").status, "Ready");
   assert.equal(rows.find((row) => row.area === "Challenge Codes").status, "Active");
   assert.equal(rows.find((row) => row.area === "Public Domain").status, "Blocked");
+});
+
+test("public domain readiness can represent fixed and stale-check states", () => {
+  assert.deepEqual(resolvePublicDomainReadiness({ ok: true, checkedAt: "2026-06-08" }), {
+    status: "Ready",
+    detail: "Public game URL is reachable. Checked 2026-06-08."
+  });
+
+  assert.equal(
+    resolvePublicDomainReadiness({ status: "needs-check", checkedAt: "2026-06-08" }).status,
+    "Needs check"
+  );
+
+  const rows = buildLaunchReadinessRows({
+    publicDomainStatus: { status: "ready", detail: "Pages smoke passed from the public URL." }
+  });
+  assert.equal(rows.find((row) => row.area === "Public Domain").status, "Ready");
 });

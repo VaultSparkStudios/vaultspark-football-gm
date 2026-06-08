@@ -1,0 +1,89 @@
+{
+  "generatedBy": "/audit skill v1.0",
+  "generatedAt": "2026-06-08",
+  "project": "vaultspark-football-gm",
+  "type": "game",
+  "topLine": {
+    "totalItems": 3,
+    "combinedPriority": 80.7,
+    "top3": [
+      "live-domain-readiness-sentinel",
+      "draft-steal-risk-meter",
+      "beta-feedback-readiness-packet"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "slug": "live-domain-readiness-sentinel",
+      "tier": "fire",
+      "axis": "user feedback loop",
+      "effort": "45m",
+      "impact": 8,
+      "innovation": 5,
+      "priority": 23.4,
+      "title": "Make Launch Readiness truth-state driven instead of permanently blocked",
+      "insight": "The Settings cockpit correctly exposes the Cloudflare/GitHub Pages outage, but its public-domain row is hardcoded to Blocked. That protects the current beta gate today and becomes a lying surface the moment the domain is fixed, so the row needs a small status model that can represent blocked, ready, and needs-check evidence.",
+      "recipe": "Add a pure public-domain readiness resolver to `buildLaunchReadinessRows()`, accept explicit status evidence, preserve the known blocker as the default, and add unit coverage for blocked, ready, and stale/needs-check states."
+    },
+    {
+      "rank": 2,
+      "slug": "draft-steal-risk-meter",
+      "tier": "fire",
+      "axis": "gamification/engagement/immersion",
+      "effort": "1h",
+      "impact": 8,
+      "innovation": 6,
+      "priority": 30.4,
+      "title": "Turn Draft War Room targets into steal-risk decisions",
+      "insight": "The Draft War Room now ranks useful targets, but it still stops short of the emotional decision a General Manager needs: can I wait, or is this player about to disappear? Adding steal-risk labels from board rank, user pick distance, projected round, and roster need makes the panel feel like a live room instead of a smarter table.",
+      "recipe": "Extend `buildDraftPressureModel()` targets with `stealRisk`, `urgency`, and a pressure chip; render those labels on target cards; test critical user-on-clock and low-risk waiting states."
+    },
+    {
+      "rank": 3,
+      "slug": "beta-feedback-readiness-packet",
+      "tier": "high",
+      "axis": "user feedback loop",
+      "effort": "30m",
+      "impact": 7,
+      "innovation": 4,
+      "priority": 26.9,
+      "title": "Attach launch-readiness context to beta feedback",
+      "insight": "Tester reports are more valuable when they arrive with the same launch posture the game is showing locally. A compact readiness packet in the GitHub issue body lets the founder distinguish gameplay reports from deployment-access reports without a backend, account system, or analytics dependency.",
+      "recipe": "Teach `buildFeedbackIssueUrl()` to include optional readiness rows, gather a static readiness snapshot when opening feedback, and add tests that the generated issue body carries runtime/domain context without personal data."
+    }
+  ],
+  "innovationReserve": [
+    "draft-steal-risk-meter"
+  ],
+  "skipped": [
+    {
+      "slug": "cloudflare-agent-remediation",
+      "reason": "Still blocked locally by missing Cloudflare/GitHub repo capabilities; keep the runbook and blocker-preflight evidence rather than pretending the game repo can mutate the shared org-root domain."
+    },
+    {
+      "slug": "ai-rival-scouting-coach",
+      "reason": "The idea remains strong, but it should be trained from post-beta decision telemetry so it critiques real player habits instead of invented ones."
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "live-domain-readiness-sentinel",
+      "status": "shipped",
+      "completedAt": "2026-06-08",
+      "evidence": "Added resolvePublicDomainReadiness(), wired Launch Readiness to explicit public-domain evidence, and covered blocked/ready/needs-check states."
+    },
+    {
+      "slug": "draft-steal-risk-meter",
+      "status": "shipped",
+      "completedAt": "2026-06-08",
+      "evidence": "Draft War Room targets now include stealRisk and urgency, render the steal-risk label, and pass critical plus low-risk wait tests."
+    },
+    {
+      "slug": "beta-feedback-readiness-packet",
+      "status": "shipped",
+      "completedAt": "2026-06-08",
+      "evidence": "Feedback issue URLs can embed launch-readiness rows; runtime shard passed 75/75."
+    }
+  ]
+}

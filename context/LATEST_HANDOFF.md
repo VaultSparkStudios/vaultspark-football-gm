@@ -1,5 +1,38 @@
 # Latest Handoff
 
+## Impact Summary — Session 18 (2026-06-08)
+
+**Headline:** Session 18 made beta readiness truth-state driven, sharpened the Draft War Room into a steal-risk decision surface, and sent richer launch context with tester feedback while keeping the static-host/no-PII posture intact.
+
+- Shipped all 3 items from `docs/AUDIT_2026-06-08.*`: live domain readiness states, draft steal-risk/urgency, and launch-readiness feedback packets.
+- Verification is broader than the changed surfaces: focused helper tests 10/10, `npm run test:runtime` 75/75, `npm run test:studio` 4/4, `npm run test:core` 54/54, full `npm test` 156/156, Pages build, and Pages smoke all passed.
+- The Cloudflare/GitHub Pages outage remains external, but Launch Readiness can now flip from `Blocked` to `Ready` only when explicit public-domain evidence changes.
+
+## Where We Left Off — 2026-06-08 (Session 18)
+
+The requested `/start -> /audit -> /implement -> /closeout` chain continued from current repo evidence. Because the 2026-06-07 audit was already fully shipped, Session 18 generated a fresh audit instead of treating a completed plan as success.
+
+What changed:
+- `buildLaunchReadinessRows()` now uses `resolvePublicDomainReadiness()` to represent `Blocked`, `Ready`, and `Needs check`.
+- Draft War Room targets now include `stealRisk` and `urgency`, and the UI renders the steal-risk label on each target card.
+- `buildFeedbackIssueUrl()` can include launch-readiness rows so beta issues carry runtime/domain context without accounts, analytics dependency, or personal data.
+
+Verification passed:
+- Focused helper tests: 10/10
+- `npm run test:runtime` — 75/75
+- `npm run test:studio` — 4/4
+- `npm run test:core` — 54/54
+- `npm test` — 156/156
+- `npm run build:pages`
+- `npm run smoke:pages`
+
+Remaining public-safe blocker:
+- `vaultsparkstudios.com` still depends on Cloudflare-side remediation or credentials. After the runbook is applied, re-run the public URL smoke and set Launch Readiness to `Ready` only from that evidence.
+
+Next best work:
+- Apply or unlock the Cloudflare/GitHub Pages runbook, verify the public URL, then send the public beta link.
+- Backfill repo-local closeout shims for cost recording and closeout-brief rendering, or propagate the canonical scripts from Studio Ops.
+
 ## Impact Summary — Session 17 (2026-06-07)
 
 **Headline:** Session 17 re-proved the completed audit loop, absorbed the lean Studio canon propagation in `AGENTS.md`, and documented the remaining closeout-helper gap without changing product behavior.

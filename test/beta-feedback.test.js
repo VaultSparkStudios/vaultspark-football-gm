@@ -28,6 +28,19 @@ test("analytics attachment note reflects opt-in state", () => {
   assert.match(without, /not attached/);
 });
 
+test("launch readiness rows are embedded in the beta issue body", () => {
+  const body = new URL(buildFeedbackIssueUrl({
+    launchReadinessRows: [
+      { area: "Runtime", status: "Ready", detail: "browser | regular-season | 0 server requests" },
+      { area: "Public Domain", status: "Blocked", detail: "Cloudflare runbook pending" }
+    ]
+  })).searchParams.get("body");
+
+  assert.match(body, /Readiness\/Runtime: Ready/);
+  assert.match(body, /Readiness\/Public Domain: Blocked/);
+  assert.doesNotMatch(body, /email|token|password/i);
+});
+
 test("missing context degrades gracefully", () => {
   const url = buildFeedbackIssueUrl();
   assert.match(new URL(url).searchParams.get("body"), /Season: \? · Week \?/);

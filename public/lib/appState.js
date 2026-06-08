@@ -92,7 +92,10 @@ export const state = {
   },
   rewindSnapshots: [],
   speedrunChallenge: null,
-  speedrunLeaderboard: []
+  speedrunLeaderboard: [],
+  launchReadiness: {
+    publicDomainStatus: null
+  }
 };
 
 export const DISPLAY_LABELS = {

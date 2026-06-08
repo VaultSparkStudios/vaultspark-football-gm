@@ -10,10 +10,38 @@ import {
   exportToGist, importFromGist, listGists
 } from "./gistSync.js";
 
-export function buildLaunchReadinessRows({ dashboard = null, saves = [], persistence = {}, observability = {}, speedrunChallenge = null } = {}) {
+export function resolvePublicDomainReadiness(status = {}) {
+  const checkedAt = status.checkedAt ? ` Checked ${status.checkedAt}.` : "";
+  if (status.ok === true || status.status === "ready") {
+    return {
+      status: "Ready",
+      detail: status.detail || `Public game URL is reachable.${checkedAt}`.trim()
+    };
+  }
+  if (status.status === "needs-check") {
+    return {
+      status: "Needs check",
+      detail: status.detail || `Run the public URL smoke after DNS or Pages changes.${checkedAt}`.trim()
+    };
+  }
+  return {
+    status: "Blocked",
+    detail: status.detail || "vaultsparkstudios.com currently needs the Cloudflare 403 and expired GitHub Pages certificate runbook completed"
+  };
+}
+
+export function buildLaunchReadinessRows({
+  dashboard = null,
+  saves = [],
+  persistence = {},
+  observability = {},
+  speedrunChallenge = null,
+  publicDomainStatus = {}
+} = {}) {
   const runtimeKind = persistence.kind || (dashboard ? "browser/server" : "not loaded");
   const serverRequests = observability.server?.requests ?? 0;
   const phase = dashboard?.phase || "no league loaded";
+  const publicDomain = resolvePublicDomainReadiness(publicDomainStatus);
   return [
     {
       area: "Runtime",
@@ -37,8 +65,8 @@ export function buildLaunchReadinessRows({ dashboard = null, saves = [], persist
     },
     {
       area: "Public Domain",
-      status: "Blocked",
-      detail: "vaultsparkstudios.com currently needs the Cloudflare 403 and expired GitHub Pages certificate runbook completed"
+      status: publicDomain.status,
+      detail: publicDomain.detail
     }
   ];
 }
@@ -515,7 +543,8 @@ export function renderLaunchReadinessPanel() {
     saves: state.saves,
     persistence: state.persistence,
     observability: state.observability,
-    speedrunChallenge: state.speedrunChallenge
+    speedrunChallenge: state.speedrunChallenge,
+    publicDomainStatus: state.launchReadiness?.publicDomainStatus
   });
   renderTable("launchReadinessTable", rows);
 }

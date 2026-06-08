@@ -21,6 +21,8 @@ test("draft pressure model highlights user on-clock target", () => {
   assert.equal(model.status, "You are on the clock");
   assert.equal(model.tone, "danger");
   assert.equal(model.targets[0].player, "Field Tilt");
+  assert.equal(model.targets[0].stealRisk, "critical");
+  assert.ok(model.chips.includes("Steal risk critical"));
   assert.ok(model.insight.includes("pressure target"));
 });
 
@@ -29,4 +31,24 @@ test("draft pressure model is useful before a draft exists", () => {
   assert.equal(model.status, "No active draft");
   assert.equal(model.targets.length, 0);
   assert.ok(model.chips.includes("Prepare board"));
+});
+
+test("draft pressure model can tell the room to wait on a low-risk target", () => {
+  const model = buildDraftPressureModel({
+    controlledTeamId: "BUF",
+    scoutingBoard: Array.from({ length: 20 }, (_, index) => (index === 17 ? "p2" : `board-${index}`)),
+    rosterNeeds: [{ position: "WR", delta: 1 }],
+    draft: {
+      currentPick: 1,
+      totalPicks: 224,
+      order: ["MIA", "NYJ", "NE", "KC", "DAL", "PHI", "BUF"],
+      available: [
+        { id: "p2", name: "Long Wait", position: "WR", scouting: { rank: 44, projectedRound: 4 } }
+      ]
+    }
+  });
+
+  assert.equal(model.status, "6 picks until your room");
+  assert.equal(model.targets[0].stealRisk, "low");
+  assert.ok(model.targets[0].urgency < 6);
 });
