@@ -2354,6 +2354,48 @@ body.mobile-loop-active .mobile-loop-overlay {
   border-left: 2px solid var(--accent);
 }
 
+.ml-decision-deck {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ml-decision-card {
+  width: 100%;
+  display: grid;
+  gap: 0.16rem;
+  text-align: left;
+  padding: 0.72rem 0.78rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.045);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.ml-decision-card strong {
+  color: var(--ink-strong);
+  font-size: 0.92rem;
+}
+
+.ml-decision-card span:last-child {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.ml-decision-card.danger { border-left-color: var(--danger); }
+.ml-decision-card.warning { border-left-color: var(--warning); }
+.ml-decision-card.primary { border-left-color: var(--accent); background: rgba(249, 195, 73, 0.12); }
+
+.ml-decision-kicker {
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .ml-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .ml-btn { padding: 0.65rem 1rem; border-radius: 8px; font-size: 0.88rem; font-weight: 600; border: 1px solid var(--line); cursor: pointer; flex: 1; }
 .ml-btn.primary { background: var(--accent); color: #000; border-color: var(--accent); }

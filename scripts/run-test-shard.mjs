@@ -25,6 +25,7 @@ const SHARDS = {
     "test/file-save-store.test.js",
     "test/launch-readiness.test.js",
     "test/local-api-runtime.test.js",
+    "test/mobile-loop.test.js",
     "test/save-integrity.test.js",
     "test/session-lookup-indexes.test.js",
     "test/session8-contract-edges.test.js",

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildFeedbackIssueUrl } from "../public/lib/betaFeedback.js";
+import { buildFeedbackContextFingerprint, buildFeedbackIssueUrl } from "../public/lib/betaFeedback.js";
 
 // ── Beta feedback URL builder (S14) ──────────────────────────────────────────
 
@@ -39,6 +39,27 @@ test("launch readiness rows are embedded in the beta issue body", () => {
   assert.match(body, /Readiness\/Runtime: Ready/);
   assert.match(body, /Readiness\/Public Domain: Blocked/);
   assert.doesNotMatch(body, /email|token|password/i);
+});
+
+test("franchise fingerprint rows are embedded without secret-like payloads", () => {
+  const fingerprint = buildFeedbackContextFingerprint({
+    dashboard: {
+      controlledTeamId: "BUF",
+      controlledTeam: { name: "Buffalo Voltage", abbrev: "BUF" },
+      latestStandings: [{ team: "BUF", wins: 7, losses: 3 }],
+      cap: { capSpace: -1_250_000 },
+      rosterNeeds: [{ pos: "CB" }]
+    },
+    newsRows: [{ headline: "Starting quarterback questionable before rivalry week" }]
+  });
+  const body = new URL(buildFeedbackIssueUrl({ franchiseFingerprint: fingerprint })).searchParams.get("body");
+
+  assert.match(body, /Franchise\/Team: Buffalo Voltage/);
+  assert.match(body, /Franchise\/Record: 7-3/);
+  assert.match(body, /Franchise\/Cap: over cap/);
+  assert.match(body, /Franchise\/Top Need: CB/);
+  assert.match(body, /quarterback questionable/);
+  assert.doesNotMatch(body, /token|password|localStorage|snapshot|save payload/i);
 });
 
 test("missing context degrades gracefully", () => {

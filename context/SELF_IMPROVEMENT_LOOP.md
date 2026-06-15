@@ -1,5 +1,17 @@
 # Self-Improvement Loop
 
+## 2026-06-15 — Session 19 Mobile Beta Loop Closeout
+
+Score: 856 / 1000
+
+Category notes:
+- Engagement: +5 for turning the narrow mobile overlay into a decision deck that surfaces draft, cap, injury, deadline, and advance-week pressure as immediate General Manager choices.
+- User Feedback / Momentum: +4 for attaching a public-safe franchise fingerprint to beta feedback and completing a fresh current-state audit instead of reusing a shipped plan.
+- Dev Health: +3 for raising the verified default-shard inventory to 161 passing tests and adding focused mobile-loop coverage.
+- Process Quality / Automation: +9 combined for backfilling closeout cost and brief shims, proving them in the studio shard, and visually checking the mobile decision deck with Playwright.
+
+Follow-up: after the Cloudflare/GitHub Pages runbook is applied or credentials are added, set the public-domain readiness evidence to `Ready` only after a public URL smoke passes.
+
 ## 2026-06-08 — Session 18 Live Beta Readiness Closeout
 
 Score: 835 / 1000

@@ -1,38 +1,38 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-06-08 (Session 18 closeout) -->
+<!-- generated-at: 2026-06-15 (Session 19 closeout) -->
 
 # Closeout Status Board — VaultSpark Football GM
 
 ```
-╔══ SESSION CLOSEOUT · VaultSpark Football GM · S18 ═════════════╗
-║  Date: 2026-06-08  ·  SIL: 835/1000  ·  Velocity: —              ║
-║  Mode: FOUNDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · VaultSpark Football GM · S19 ═════════════╗
+║  Date: 2026-06-15  ·  SIL: 856/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ `buildLaunchReadinessRows()` now uses `resolvePublicDomainRe  ║
-║  ✓ Draft War Room targets now include `stealRisk` and `urgency`  ║
-║  ✓ `buildFeedbackIssueUrl()` can include launch-readiness rows   ║
-║  ✓ Focused helper tests: 10/10                                   ║
-║  ✓ `npm run test:runtime` — 75/75                                ║
+║  ✓ `buildMobileDecisionDeck()` now turns draft, cap, injury, de  ║
+║  ✓ `buildFeedbackContextFingerprint()` now attaches team, recor  ║
+║  ✓ `scripts/record-skill-cost.mjs` and `scripts/render-closeout  ║
+║  ✓ Focused mobile tests: 3/3                                     ║
+║  ✓ Focused beta feedback tests: 6/6                              ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 835/1000 ═══════════════════════════════════════╗
-║    Dev Health         86   █████████░                            ║
-║    Alignment          72   ███████░░░                            ║
-║    Momentum           80   ████████░░                            ║
-║    Engagement         78   ████████░░                            ║
-║    Process Qual       90   █████████░                            ║
+╔══ SCORES · SIL 856/1000 ═══════════════════════════════════════╗
+║    Dev Health         89   █████████░                            ║
+║    Alignment          73   ███████░░░                            ║
+║    Momentum           84   ████████░░                            ║
+║    Engagement         83   ████████░░                            ║
+║    Process Qual       94   █████████░                            ║
 ║    Coherence          96   ██████████                            ║
-║    Security           85   █████████░                            ║
-║    Ecosystem          71   ███████░░░                            ║
+║    Security           86   █████████░                            ║
+║    Ecosystem          72   ███████░░░                            ║
 ║    Capital            80   ████████░░                            ║
-║    Automation         97   ██████████                            ║
+║    Automation         99   ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
+║  · context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
@@ -40,15 +40,15 @@
 ║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 23 files  ·  M:19 A:0 D:0 ?:4                          ║
+║  Changes: 25 files  ·  M:17 A:0 D:0 ?:8                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        —                                                ║
 ║  Compliance:    —                                                ║
-║  Tests:         156/156                                          ║
-║  IGNIS:         5d ago                                           ║
+║  Tests:         161/161                                          ║
+║  IGNIS:         12d ago                                          ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  —                                                ║
 ╚════════════════════════════════════════════════════════════════╝

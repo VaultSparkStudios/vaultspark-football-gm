@@ -1,5 +1,14 @@
 # Work Log
 
+## 2026-06-15 — Session 19: mobile decision deck + feedback fingerprint closeout
+
+- Ran the active `/start -> /audit -> /implement -> /closeout` chain from current repo evidence; generated `docs/AUDIT_2026-06-15.*` because the prior 2026-06-08 audit was already shipped.
+- Shipped a mobile General Manager decision deck: draft, cap, injury, deadline, news, and advance-week pressure now render as prioritized cards in the mobile overlay.
+- Shipped public-safe feedback fingerprints: beta issue URLs can include team, record, cap posture, top roster need, and active pressure without tokens, personal data, analytics dependency, or save payloads.
+- Backfilled local closeout shims for cost recording and closeout brief rendering, with temporary-directory coverage to avoid test artifacts in the repo.
+- Verification: focused mobile 3/3, beta feedback 6/6, studio protocol 5/5, `npm run test:runtime` 79/79, `npm run test:studio` 5/5, full `npm test` 161/161, `npm run build:pages`, `npm run smoke:pages`, and Playwright mobile screenshots.
+- Remaining blocker: `vaultsparkstudios.com` still depends on the existing Cloudflare/GitHub Pages runbook or credentials; no repo-side code blocker remains for the shipped audit items.
+
 ## 2026-06-08 — Session 18: live beta readiness + draft pressure closeout
 
 - Ran the active `/start -> /audit -> /implement -> /closeout` chain from current repo evidence after confirming the 2026-06-07 audit was fully shipped.

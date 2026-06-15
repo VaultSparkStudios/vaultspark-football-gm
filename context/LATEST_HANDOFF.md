@@ -1,5 +1,40 @@
 # Latest Handoff
 
+## Impact Summary — Session 19 (2026-06-15)
+
+**Headline:** Session 19 made the mobile beta loop decision-driven, attached useful public-safe franchise context to feedback, and repaired the local closeout protocol surface.
+
+- Shipped all 3 items from `docs/AUDIT_2026-06-15.*`: mobile General Manager decision deck, beta feedback franchise fingerprint, and closeout cost/brief shims.
+- Verification expanded the known default-shard inventory to `161/161`: full `npm test`, runtime `79/79`, studio `5/5`, Pages build/smoke, and Playwright mobile screenshots all passed.
+- The Cloudflare/GitHub Pages public-domain blocker is unchanged; the game code is deployable and keeps surfacing the blocker truthfully until public URL evidence changes.
+
+## Where We Left Off — 2026-06-15 (Session 19)
+
+The requested `/start -> /audit -> /implement -> /closeout` chain continued from current repo evidence. Session 19 generated a fresh audit because the Session 18 audit was already fully shipped.
+
+What changed:
+- `buildMobileDecisionDeck()` now turns draft, cap, injury, deadline, and news pressure into prioritized mobile decision cards; `renderMobileOverlay()` displays those cards and routes them to existing tabs or advance-week.
+- `buildFeedbackContextFingerprint()` now attaches team, record, cap posture, top roster need, and active pressure to beta issue URLs without accounts, analytics dependency, tokens, or save payloads.
+- `scripts/record-skill-cost.mjs` and `scripts/render-closeout-brief.mjs` now provide public-safe local closeout shims covered by studio protocol tests.
+
+Verification passed:
+- Focused mobile tests: 3/3
+- Focused beta feedback tests: 6/6
+- Focused studio protocol tests: 5/5
+- `npm run test:runtime` — 79/79
+- `npm run test:studio` — 5/5
+- `npm test` — 161/161
+- `npm run build:pages`
+- `npm run smoke:pages`
+- Playwright screenshots: `output/playwright/mobile-game.png` and `output/playwright/mobile-decision-deck.png`
+
+Remaining public-safe blocker:
+- `vaultsparkstudios.com` still depends on Cloudflare-side remediation or credentials. After the runbook is applied, re-run the public URL smoke and set Launch Readiness to `Ready` only from that evidence.
+
+Next best work:
+- Apply or unlock the Cloudflare/GitHub Pages runbook, verify the public URL, then send the public beta link.
+- Consider an L3 pass on the mobile decision deck: direct tab activation worked in-browser, but the next refinement is richer decision-specific tab focus once each target surface has stable anchors.
+
 ## Impact Summary — Session 18 (2026-06-08)
 
 **Headline:** Session 18 made beta readiness truth-state driven, sharpened the Draft War Room into a steal-risk decision surface, and sent richer launch context with tester feedback while keeping the static-host/no-PII posture intact.

@@ -23,6 +23,7 @@ const REPO_ISSUE_BASE = "https://github.com/VaultSparkStudios/vaultspark-footbal
  */
 export function buildFeedbackIssueUrl(ctx = {}) {
   const readinessRows = Array.isArray(ctx.launchReadinessRows) ? ctx.launchReadinessRows : [];
+  const fingerprintRows = Array.isArray(ctx.franchiseFingerprint) ? ctx.franchiseFingerprint : [];
   const lines = [
     "<!-- Tell the Commissioner: describe what happened, what you expected, and what you'd love to see. -->",
     "",
@@ -33,6 +34,7 @@ export function buildFeedbackIssueUrl(ctx = {}) {
     "_Auto-attached game context:_",
     `- Season: ${ctx.year ?? "?"} · Week ${ctx.week ?? "?"} · ${ctx.phase ?? "?"}`,
     `- Screen: ${ctx.tab ?? "?"} · Runtime: ${ctx.runtimeMode ?? "?"}`,
+    ...fingerprintRows.map((row) => `- Franchise/${row.label}: ${row.value}`),
     ...readinessRows.map((row) => `- Readiness/${row.area}: ${row.status} — ${row.detail}`),
     ctx.analyticsAttached
       ? "- Analytics digest: copied to clipboard — paste below if you want to share it."
@@ -44,6 +46,32 @@ export function buildFeedbackIssueUrl(ctx = {}) {
     labels: "beta-feedback"
   });
   return `${REPO_ISSUE_BASE}?${params.toString()}`;
+}
+
+export function buildFeedbackContextFingerprint({ dashboard = {}, newsRows = [] } = {}) {
+  const team = dashboard.controlledTeam || {};
+  const controlledTeamId = dashboard.controlledTeamId || team.abbrev || team.teamId || "?";
+  const standings = dashboard.latestStandings || [];
+  const row = standings.find((entry) => entry.team === controlledTeamId || entry.team === team.abbrev || entry.teamId === controlledTeamId) || {};
+  const wins = row.wins ?? team.wins ?? 0;
+  const losses = row.losses ?? team.losses ?? 0;
+  const capSpace = dashboard.cap?.capSpace;
+  const rosterNeed = (dashboard.rosterNeeds || [])[0];
+  const topNeed = rosterNeed?.pos || rosterNeed?.position || rosterNeed || "none surfaced";
+  const pressure = newsRows[0]?.headline || dashboard.ownerState?.owner?.expectation?.mandate || dashboard.phase || "none surfaced";
+  const capPosture = capSpace == null
+    ? "unknown"
+    : capSpace < 0
+      ? `over cap (${_fmtMoney(capSpace)})`
+      : `${_fmtMoney(capSpace)} available`;
+
+  return [
+    { label: "Team", value: `${team.name || team.abbrev || controlledTeamId}` },
+    { label: "Record", value: `${wins}-${losses}` },
+    { label: "Cap", value: capPosture },
+    { label: "Top Need", value: String(topNeed) },
+    { label: "Pressure", value: String(pressure).slice(0, 120) }
+  ];
 }
 
 function gatherContext() {
@@ -60,6 +88,10 @@ function gatherContext() {
     phase: d.phase,
     tab: state.activeTab || "unknown",
     runtimeMode,
+    franchiseFingerprint: buildFeedbackContextFingerprint({
+      dashboard: state.dashboard,
+      newsRows: state.newsRows
+    }),
     launchReadinessRows: buildLaunchReadinessRows({
       dashboard: state.dashboard,
       saves: state.saves,
@@ -69,6 +101,14 @@ function gatherContext() {
       publicDomainStatus: state.launchReadiness?.publicDomainStatus
     })
   };
+}
+
+function _fmtMoney(value) {
+  const abs = Math.abs(value);
+  const prefix = value < 0 ? "-" : "";
+  if (abs >= 1_000_000) return `${prefix}$${(abs / 1_000_000).toFixed(1)}M`;
+  if (abs >= 1_000) return `${prefix}$${(abs / 1_000).toFixed(0)}K`;
+  return `${prefix}$${abs}`;
 }
 
 export async function openFeedback() {
