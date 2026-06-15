@@ -8,6 +8,7 @@ import { applyStatsSort, renderAnalyticsChart, renderComparePlayers, renderCompa
 import { renderCalendar, renderPlayerHistoryArchive, renderPlayerTimelineSearchResults, renderRecordsAndHistory, renderTeamHistorySpotlight, setSelectedHistoryPlayer } from "./tabHistory.js";
 import { appendSeasonEpilogue } from "./seasonEpilogue.js";
 import { applySettingsControls, loadRewindHistory, renderAnalytics, renderCalibrationJobs, renderCommandPalette, renderNegotiationTargets, renderNews, renderObservability, renderOwner, renderPersistence, renderPickAssets, renderPipeline, renderRealismVerification, renderRulesTab, renderSettingsSpotlight, renderSimJobs, renderStaff, renderTransactionLog } from "./tabSettings.js";
+import { buildWeekDigestData, getDigestKey, renderWeekDigestBanner } from "./weekDigest.js";
 
 export function applyDashboard(newState) {
   const previous = state.dashboard;
@@ -692,6 +693,15 @@ export async function refreshPostSimulation() {
   ]);
 }
 
+function _maybeShowWeekDigest(newState, completedWeek) {
+  try {
+    const key = getDigestKey(newState?.currentYear, completedWeek);
+    if (sessionStorage.getItem(key)) return;
+    const data = buildWeekDigestData(newState, completedWeek);
+    if (data) renderWeekDigestBanner("weekDigestBanner", data, { onTabActivate: activateTab });
+  } catch { /* digest is non-critical */ }
+}
+
 export async function advanceWeeksSequential(totalWeeks) {
   const safeWeeks = Math.max(1, Number(totalWeeks) || 1);
   setSimControl({ active: true, pauseRequested: false, mode: "weeks" });
@@ -699,9 +709,11 @@ export async function advanceWeeksSequential(totalWeeks) {
   try {
     while (completed < safeWeeks) {
       if (state.simControl.pauseRequested) break;
+      const completedWeek = state.dashboard?.currentWeek;
       setStatus(`Simulating week ${completed + 1}/${safeWeeks}...`);
       const response = await api("/api/advance-week", { method: "POST", body: { count: 1 } });
       applyDashboard(response.state);
+      _maybeShowWeekDigest(response.state, completedWeek);
       completed += 1;
     }
     await refreshPostSimulation();
@@ -725,9 +737,11 @@ export async function advanceSeasonSequential() {
         state.dashboard.phase === "regular-season" &&
         state.dashboard.currentWeek === 1;
       if (done) break;
+      const completedWeek = state.dashboard?.currentWeek;
       setStatus(`Advancing season step ${steps + 1}...`);
       const response = await api("/api/advance-week", { method: "POST", body: { count: 1 } });
       applyDashboard(response.state);
+      _maybeShowWeekDigest(response.state, completedWeek);
       steps += 1;
     }
     await refreshPostSimulation();
