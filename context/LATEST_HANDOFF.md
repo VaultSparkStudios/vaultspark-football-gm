@@ -1,5 +1,30 @@
 # Latest Handoff
 
+## Impact Summary — Session 20 (2026-06-15)
+
+**Headline:** Session 20 deepened franchise narrative integrity and emotional immersion — veteran legacies persist, GM reputations shape CPU behaviour, miracle runs get their moment, and rival coaches are no longer a mystery before kickoff.
+
+- Shipped all 6 items from `docs/AUDIT_2026-06-15_SESSION20.*`: narrative determinism fix, miracle-run arc, veteran farewell lore, GM reputation profile + CPU trade multiplier, Priority Inbox deeplinks, and Rival Coach Intel card.
+- Discovered and fixed a smart-quote encoding bug in `seasonEpilogue.js` that silently broke Node.js test parsing — caught by the test run, not by pre-flight.
+- Suite: 20 new focused tests; full `npm test` 184/184 passing.
+
+## Where We Left Off — 2026-06-15 (Session 20)
+
+The requested `/start -> /audit -> /implement -> /closeout` chain ran from current repo evidence. Session 20 generated a new 6-item audit and shipped all items in one pass.
+
+What changed:
+- `narrativeEvents.js` `pushEvent()` id is now `narr-{year}-{week}-{type}-{player|team|gen}` — no more `Math.random()` IDs; events are fully replayable.
+- `seasonEpilogue.js` gained `isMiracleRun(winPct, madePlayoffs)` and a `"miracle-run"` QUOTE_BANK key; a `⭐ MIRACLE RUN` HTML badge appears in the epilogue when a sub-.500 team makes the playoffs.
+- `narrativeEvents.js` exports `buildVeteranLegacyBlurb(player, year)` and writes to `league.franchiseLore[]` on every LEGEND_FAREWELL event; `localApiRuntime.js` exposes `franchiseLore` in the dashboard state; `tabHistory.js` renders lore cards in the History tab.
+- `gmLegacyScore.js` exports `buildGmReputationProfile(legacy)` → `{tradeStyle, capStyle, cultureStyle, labels, multiplier}`; `aiTeamStrategy.js` applies the multiplier to CPU trade asks; `localApiRuntime.js` includes `reputation` in the gmLegacy block; `tabOverview.js` shows `"Market knows you as: [labels]"` on the Identity Card.
+- `engagementFeatures.js` exports `getInboxActionTab(item)` and renders `"Take Action →"` deeplinks on CRITICAL Priority Inbox items with known action tabs.
+- `public/lib/rivalCoachIntel.js` (new file) exports `buildRivalCoachIntel(archetypeLabel, rivalryHeat, teamOvr)` returning 3 tendency lines; `tabOverview.js` renders an intel card below the rivalry strip when a matchup exists.
+- `seasonEpilogue.js` had curly/smart quotes used as JavaScript string delimiters — fixed by replacing U+201C/201D with ASCII `"`.
+
+Verification passed:
+- Focused session20 tests: 20/20
+- `npm test` — 184/184
+
 ## Impact Summary — Session 19 (2026-06-15)
 
 **Headline:** Session 19 made the mobile beta loop decision-driven, attached useful public-safe franchise context to feedback, and repaired the local closeout protocol surface.

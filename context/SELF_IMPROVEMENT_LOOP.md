@@ -1,5 +1,18 @@
 # Self-Improvement Loop
 
+## 2026-06-15 — Session 20 Narrative Integrity + Franchise Depth Closeout
+
+Score: 880 / 1000
+
+Category notes:
+- Engagement / Gamification: +10 for shipping four franchise-narrative items that collectively deepen the "this is my story" feeling — veteran lore persists, miracle runs get a badge, GM reputation is visible and mechanically real, rival coaches are no longer a black box.
+- Dev Health: +7 for fixing a silent encoding bug (smart quotes as JS string delimiters) that would have blocked future Node.js test imports of seasonEpilogue.js; 20 new focused tests; full suite 184/184.
+- Momentum: +5 for shipping all 6 audit items in a single uninterrupted session pass — the highest item count in any session this run.
+- Creative Alignment: +5 for the miracle-run arc, veteran blurb, and rival coach tendency lines — each adds voice-driven narrative that fits the GM identity the game is building.
+- Process Quality / Automation: +3 for the source-inspection test pattern (covering internal pushEvent without exporting it) and the clean module-import smoke embedded in the Node.js test run.
+
+Follow-up: after the Cloudflare/GitHub Pages runbook is applied or credentials are added, set the public-domain readiness evidence to `Ready` only after a public URL smoke passes.
+
 ## 2026-06-15 — Session 19 Mobile Beta Loop Closeout
 
 Score: 856 / 1000

@@ -1,5 +1,14 @@
 # Work Log
 
+## 2026-06-15 — Session 20: narrative integrity + franchise depth closeout
+
+- Ran the active `/start -> /audit -> /implement -> /closeout` chain from current repo evidence; generated `docs/AUDIT_2026-06-15_SESSION20.*` because the Session 19 audit was already fully shipped.
+- Shipped all 6 audit items: narrative event deterministic IDs, miracle-run comeback arc, veteran farewell legacy system, GM reputation profile, Priority Inbox action deeplinks, Rival Coach Intel card.
+- Discovered and fixed a silent encoding bug: `seasonEpilogue.js` used U+201C/201D curly quotes as JavaScript string delimiters, causing Node.js to refuse to parse the module. Fixed by replacing all smart quotes with ASCII straight quotes.
+- Wrote 20 focused tests in `test/session20-features.test.js` covering all 6 items (source inspection for internal `pushEvent`, runtime checks for all exported functions).
+- Verification: session20 focused 20/20, full `npm test` 184/184.
+- Remaining blocker: `vaultsparkstudios.com` still depends on the existing Cloudflare/GitHub Pages runbook or credentials; no Session 20 shipped item requires it.
+
 ## 2026-06-15 — Session 19: mobile decision deck + feedback fingerprint closeout
 
 - Ran the active `/start -> /audit -> /implement -> /closeout` chain from current repo evidence; generated `docs/AUDIT_2026-06-15.*` because the prior 2026-06-08 audit was already shipped.

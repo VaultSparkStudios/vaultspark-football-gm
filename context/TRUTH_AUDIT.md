@@ -35,7 +35,16 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - The default test inventory is now 156 passing tests: core 54, runtime 75, sim-contract 22, sim-realism 1, studio 4. `npm test`, `npm run build:pages`, and `npm run smoke:pages` all passed in Session 18.
 - Beta feedback issue URLs can include launch-readiness rows and still avoid personal data, tokens, or credentials.
 
-2026-06-15 note:
+2026-06-15 note (Session 19):
 - The mobile overlay is no longer a static action row only. It now derives draft, cap, injury, deadline, news, and advance-week priorities through `buildMobileDecisionDeck()` and renders visible General Manager decision cards in the browser UI.
 - Beta feedback issue URLs can now include a compact franchise fingerprint (team, record, cap posture, top need, active pressure) while still avoiding personal data, tokens, credentials, local storage, and save payloads.
+
+2026-06-15 note (Session 20):
+- Narrative event IDs are now deterministic (narr-{year}-{week}-{type}-{player}) — no Math.random() ID generation remains in the engine.
+- `league.franchiseLore[]` is a new persisted array (MAX 20 entries) that accumulates LEGEND_FAREWELL blurbs; it is exposed in the dashboard state via `getAugmentedState()`.
+- GM reputation (tradeStyle/capStyle/cultureStyle + trade ask multiplier) is now computed from career data and wired into CPU trade negotiations.
+- Priority Inbox CRITICAL items now expose Take Action deeplinks to relevant tabs — previously the inbox was view-only.
+- `public/lib/rivalCoachIntel.js` is a new self-contained browser module; `public/lib/tabOverview.js` now imports from it.
+- Smart-quote bug in `seasonEpilogue.js` lines 176-177 used U+201C/201D as JavaScript string delimiters; fixed by replacing all curly quotes with ASCII. Previously undetectable in browsers; breaks Node.js module parsing.
+- The default test inventory is now 184 passing tests. Core 54 · runtime 79 · sim-contract · sim-realism · studio 5 · session20-features 20 · remainder in existing suites.
 - The default test inventory is now 161 passing tests: core 54, runtime 79, sim-contract 22, sim-realism 1, studio 5. `npm test`, `npm run build:pages`, `npm run smoke:pages`, and Playwright mobile screenshot checks passed in Session 19.
