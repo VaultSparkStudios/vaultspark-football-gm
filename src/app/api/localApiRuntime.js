@@ -6,7 +6,7 @@ import { GameSession } from "../../runtime/GameSession.js";
 import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { RNG } from "../../utils/rng.js";
 import { RNGStreams } from "../../utils/rngStreams.js";
-import { initGmLegacy, computeGmLegacyScore, getGmPersonaArc } from "../../engine/gmLegacyScore.js";
+import { initGmLegacy, computeGmLegacyScore, getGmPersonaArc, buildGmReputationProfile } from "../../engine/gmLegacyScore.js";
 import { initRivalries, getRivalryContext, getTeamRivalries } from "../../engine/rivalryDNA.js";
 import { runLeagueCombine, getCombineSummary } from "../../engine/draftCombine.js";
 import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "../../engine/playerAgentAI.js";
@@ -62,11 +62,13 @@ function getAugmentedState(session) {
   return {
     ...base,
     narrativeLog:   league?.narrativeLog  || [],
+    franchiseLore:  league?.franchiseLore || [],
     newsLog:        league?.newsLog       || [],
     coachingTree:   league?.coachingTree  || null,
     gmLegacy:       league?.gmLegacy      ? {
       ...computeGmLegacyScore(league.gmLegacy),
-      persona: getGmPersonaArc(league.gmLegacy)
+      persona: getGmPersonaArc(league.gmLegacy),
+      reputation: buildGmReputationProfile(league.gmLegacy)
     } : null,
     rivalries:      league?.rivalries     || {},
     combineResults: league?.combineResults || [],

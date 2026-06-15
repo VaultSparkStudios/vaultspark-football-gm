@@ -88,7 +88,7 @@
   },
   "currentSession": 19,
   "lastAgent": "codex",
-  "sessionMode": "builder",
+  "sessionMode": "founder",
   "lastVerification": {
     "date": "2026-06-15",
     "passed": [
@@ -114,7 +114,7 @@
   "modelPlanModeSlash": "/model opusplan",
   "planModeDetected": "active",
   "planModeCheckedAt": "2026-06-15T03:38:28.633Z",
-  "sessionModeAutoShiftedAt": "2026-06-08T05:20:13.073Z",
+  "sessionModeAutoShiftedAt": "2026-06-15T04:17:19.127Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-05-22",

@@ -1,6 +1,7 @@
 import { POSITION_ROLE_RETENTION, ROSTER_TEMPLATE, TEAM_STRATEGY_PRESETS } from "../config.js";
 import { normalizeContract } from "../domain/contracts.js";
 import { clamp } from "../utils/rng.js";
+import { buildGmReputationProfile } from "./gmLegacyScore.js";
 
 function schemeWeight(position, scheme = { passRate: 0.5, aggression: 0.5 }) {
   const passRate = Number(scheme.passRate || 0.5);
@@ -84,4 +85,9 @@ export function isTradeValueAcceptable({ outgoing, incoming, team, tolerance = 0
   if (outgoingValue <= 0 || incomingValue <= 0) return false;
   const ratio = incomingValue / outgoingValue;
   return ratio >= 1 - tolerance && ratio <= 1 + tolerance;
+}
+
+export function applyReputationToTradeAsk(baseAsk, gmLegacy) {
+  const rep = buildGmReputationProfile(gmLegacy);
+  return Math.round(baseAsk * rep.multiplier);
 }

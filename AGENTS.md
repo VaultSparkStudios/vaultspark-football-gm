@@ -35,7 +35,7 @@ Full decision: `vaultspark-studio-ops/docs/STUDIO_CANON.md` → CANON-008
 
 <!-- studio-os:universal-sections-start -->
 <!-- Source: vaultspark-studio-ops/docs/templates/project-system/AGENTS_universal_sections.md -->
-<!-- DO NOT EDIT — re-run `node scripts/propagate-agents-sections.mjs --apply` from studio-ops to refresh -->
+<!-- DO NOT EDIT — re-run via /start deferred-propagation hook or scripts/propagate-agents-sections.mjs -->
 
 <!-- Universal AGENTS.md sections — propagated to every Studio repo via scripts/propagate-agents-sections.mjs -->
 <!-- Owner: Studio Ops · Source: docs/templates/project-system/AGENTS_universal_sections.md -->
@@ -43,6 +43,7 @@ Full decision: `vaultspark-studio-ops/docs/STUDIO_CANON.md` → CANON-008
 
 > **This block is the studio-wide operational layer, shared by every VaultSpark repo.** It carries the gates and pointers you need resident every session. Full canon prose lives once, in `vaultspark-studio-ops/docs/STUDIO_CANON.md` — the index below points into it. Don't expand canon text back into this file; keep it lean.
 
+<!-- canon-section: hard-gates -->
 ## The hard gates (run before you label anything blocked)
 
 **CANON-019 — Founder-Action Discipline. Default: try first; label blocked only with evidence.** Before any `Human Action Required` / `[BLOCKER]` / `FOUNDER ACTION` / `human-blocked` label, you MUST run + log:
@@ -56,6 +57,7 @@ node ../vaultspark-studio-ops/scripts/ops.mjs blocker-preflight              # 2
 
 Reserve human-blocked **only** for: hardware-key enrollment · provider dashboard signup · billing/payment confirmation · CANON-gated destructive ops (force-push to main, npm publish, prod DB drop). **Everything else is agent work** — apply scripted migrations/deploys/secret-puts yourself (`wrangler deploy`, `wrangler secret put`, `gh secret set`, `gcloud …`, `node scripts/migrate-*.mjs --apply`). The founder-twin auto-approves safe patterns; deny patterns still gate at the founder.
 
+<!-- canon-section: secrets -->
 ## Secrets gateway (CANON-012)
 
 All Studio credentials live in **`vaultspark-studio-ops/secrets/`** — every project, every agent reads from there. Never read `.env` directly in subprocesses; never assume `process.env.X` is set.
@@ -68,10 +70,13 @@ console.log(redact(`Using ${key}`));
 
 Capability → env-var names: `vaultspark-studio-ops/secrets/CAPABILITY_MAP.json`. MISSING credential → `/intake-credentials`. Never print raw secrets (`redact()` everything). Stripe Agent Payments (autonomous spend w/ cap): capability `stripe.agent-payments`. Full: `vaultspark-studio-ops/docs/SECRETS_PROTOCOL.md`.
 
+<!-- canon-section: founder-twin -->
+<!-- canon-section: broad-approval -->
 ## Founder-Twin — shared cross-agent approval brain (CANON-024)
 
 One shared auto-approval model across Claude Code, Codex, and managed agents — patterns learned by one benefit all. **Claude Code:** wired via `~/.claude/settings.json` PreToolUse hook. **Codex/other:** call before risky commands — `node ../vaultspark-studio-ops/scripts/twin-ask.mjs Bash "<command>"` (exit 0=approve · 1=ask · 2=deny). Prefer one bounded command-family approval over piecemeal asks; never request broad approval for destructive/arbitrary-interpreter/`curl|sh`/heredoc/secret/force-push/publish/prod-destructive/billing/legal actions. Before any side-effecting/networked/privileged/cross-repo/payment/secret action verify: intent · scope (recursive ops resolve inside the intended dir) · trust (package-trust) · secrets-gateway-only · blast-radius+rollback · twin-verdict. Disable per-session: `export TWIN_DISABLED=1`. Spec: `vaultspark-studio-ops/docs/TWIN_PROTOCOL.md`.
 
+<!-- canon-section: package-trust -->
 ## Package trust (CANON-023)
 
 Before any `npm/pnpm/yarn/pip/cargo install`, `curl | sh`, archive/binary/model-weight download, or agent-suggested install command:
@@ -82,6 +87,7 @@ node ../vaultspark-studio-ops/scripts/package-trust.mjs --package <name>@<versio
 
 `BLOCK` = hard stop, pick another option. Treat raw GitHub zips, shortened URLs, installers, shell scripts, model weights, and browser extensions as quarantined until verified. After lockfile changes / before push: `node ../vaultspark-studio-ops/scripts/scan-npm-supply-chain.mjs --json`. Protocol: `vaultspark-studio-ops/docs/OBELISK_PACKAGE_TRUST_PROTOCOL.md`.
 
+<!-- canon-section: ark-transport -->
 ## Cross-repo transport — Studio Ark (CANON-018)
 
 **Never write directly to another repo's files. Ship cargo instead.** `/start` auto-drains your inbox (the `╔══ ARK STATUS ══╗` brief tile shows depth + sig health); receipts auto-emit on drain.
@@ -92,8 +98,11 @@ node scripts/ark.mjs ship --type repo-question --to <slug> --payload '{"question
 node scripts/ark.mjs ship --type agent-handoff --to <slug> --payload '{"intent":"...","openFiles":["..."]}'
 ```
 
+<!-- canon-section: co-authoring -->
 Producer allowlist: `vaultspark-studio-ops/portfolio/ark/MANIFEST.json` (`canon-update` + `phantom-blocker-fix` are studio-ops only). Co-authoring roles (CANON-022): Designer owns source-of-truth · Mechanizer owns canon/probes/templates · Propagator owns cross-repo rollout (both studio-ops) · Implementer owns code. Design: `vaultspark-studio-ops/docs/STUDIO_ARK.md`.
 
+<!-- canon-section: skill-discovery -->
+<!-- canon-section: audit-implement -->
 ## Skill & capability discovery (CANON-012)
 
 Don't know the command? Check capabilities before declaring anything unknown or blocked: master index `vaultspark-studio-ops/docs/AGENT_CAPABILITIES.md` · NL lookup `node ../vaultspark-studio-ops/scripts/ops.mjs cap "<intent>"` · skills `~/.claude/skills/` (Claude) / `~/.agents/skills/` (Codex) · cheatsheet `vaultspark-studio-ops/docs/SKILL_MAP.md`. Universal skills: `/audit` (9-axis audit → `docs/AUDIT_<date>.md`) + `/implement` (ship the audit). No match → file an innovation candidate.
@@ -146,6 +155,12 @@ For `audience: public-*` projects:
 - **CANON-032** · Build-Optimal for Flagships — no premature constraint
 - **CANON-033** · Launch Announcement Discipline — no silent launches
 - **CANON-034** · Browser Experience Excellence — browser is never second-class
+- **CANON-035** · Project Brand Identity — every project designs its own professional logo, favicon, and brand kit
+- **CANON-036** · Deploy Currency Discipline — production must not silently lag main
+- **CANON-037** · Canon Half-Life and Automated Consistency — re-confirmation cadence + consistency check
+- **CANON-038** · Shared Studio Self-Host Server — one Hetzner box · isolated per-project databases/APIs · default self-host target
+- **CANON-039** · Build-It-Ourselves, Internal-First, OSS-Research Discipline — own our stack; reuse internal tools; research free/credible/verified open-source before adopting or building
+- **CANON-040** · Agent-Deployed Migrations — AI agents apply database/infra migrations themselves, automatically, behind the safety gates
 
 <!-- canon-index:end -->
 

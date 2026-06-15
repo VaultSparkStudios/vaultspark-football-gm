@@ -581,6 +581,7 @@ export function renderRecordsAndHistory() {
   );
 
   renderHallOfFameGallery(state.dashboard?.hallOfFame || []);
+  renderFranchiseLegends("franchiseLegendsContainer", state.dashboard?.franchiseLore || []);
 
   setHistoryView(state.historyView);
 }
@@ -678,6 +679,26 @@ export function setSelectedHistoryPlayer(player = null) {
   const retireButton = document.getElementById("retireSelectedJerseyBtn");
   if (retireButton) retireButton.disabled = !player;
   renderPlayerHistoryArchive(state.historyTimeline);
+}
+
+export function renderFranchiseLegends(containerId, lore = []) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  if (!lore.length) {
+    container.innerHTML = `<div class="history-empty">No franchise legends yet. Veterans who signal retirement will be remembered here.</div>`;
+    return;
+  }
+  container.innerHTML = lore.map((entry) => `
+    <article class="history-card legend-card">
+      <div class="history-card-top">
+        <div class="history-card-title">
+          <strong>${escapeHtml(entry.playerName || entry.name || "—")}</strong>
+          <div class="history-card-meta">${escapeHtml(entry.position || "-")} · Year ${escapeHtml(String(entry.year || "—"))} · ${escapeHtml(entry.teamId || "-")}</div>
+        </div>
+      </div>
+      <div class="legend-blurb">${escapeHtml(entry.blurb || "")}</div>
+    </article>
+  `).join("");
 }
 
 export function renderPlayerTimelineSearchResults() {

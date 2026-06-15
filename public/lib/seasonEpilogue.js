@@ -1,4 +1,4 @@
-/**
+﻿/**
  * seasonEpilogue.js — Season Epilogue payoff ritual (S14)
  *
  * End-of-season is the natural churn point. The epilogue aggregates the
@@ -23,6 +23,11 @@ const QUOTE_BANK = {
     "This one belongs to every fan who never stopped believing.",
     "Dynasties start with a single ring. We're not done."
   ],
+  "miracle-run": [
+    "Nobody believed in us. We didn't care. That's what made it special.",
+    "They had us buried in October. We used it as fuel. Remember that.",
+    "This city needed a miracle. This team delivered one. Write it down."
+  ],
   contender: [
     "We knocked on the door. Next year we kick it down.",
     "Close isn't the goal. But close means the window is open.",
@@ -40,8 +45,13 @@ const QUOTE_BANK = {
   ]
 };
 
-function outcomeKey(winPct, isChampion) {
+export function isMiracleRun(winPct, madePlayoffs) {
+  return madePlayoffs && winPct < 0.5;
+}
+
+function outcomeKey(winPct, isChampion, madePlayoffs) {
   if (isChampion) return "champion";
+  if (isMiracleRun(winPct, madePlayoffs)) return "miracle-run";
   if (winPct >= 0.6) return "contender";
   if (winPct >= 0.45) return "mediocre";
   return "struggling";
@@ -72,6 +82,7 @@ export async function buildSeasonEpilogue(dashboard) {
   const losses = myRow.losses || 0;
   const winPct = wins + losses > 0 ? wins / (wins + losses) : 0.5;
   const isChampion = Boolean(d.lastChampionTeamId && (d.lastChampionTeamId === (team.teamId || teamKey)));
+  const madePlayoffs = Boolean(myRow.playoffSeed || myRow.playoffExit || myRow.madePlayoffs);
 
   const [arcs, records, fan] = await Promise.all([
     api("/api/season-arcs").then((r) => r?.arcs || []).catch(() => []),
@@ -104,11 +115,12 @@ export async function buildSeasonEpilogue(dashboard) {
     }
   }
 
-  const quoteKey = outcomeKey(winPct, isChampion);
+  const quoteKey = outcomeKey(winPct, isChampion, madePlayoffs);
   return {
     seasonYear,
     record: wins || losses ? `${wins}–${losses}` : "—",
     isChampion,
+    isMiracleRunSeason: isMiracleRun(winPct, madePlayoffs),
     arcVerdicts,
     recordsBroken: recordsBroken.slice(0, 4),
     fanApproval: fan ? Math.round(fan.approval ?? 0) : null,
@@ -162,10 +174,11 @@ export async function appendSeasonEpilogue(bodyEl, dashboard) {
   section.innerHTML = `
     <div class="ep-divider">— SEASON EPILOGUE —</div>
     ${ep.isChampion ? `<div class="ep-champion">🏆 WORLD CHAMPIONS</div>` : ""}
+    ${ep.isMiracleRunSeason ? `<div class="ep-miracle-run">⭐ MIRACLE RUN — Against all odds, we made it.</div>` : ""}
     ${arcHtml}
     ${recordsHtml}
     ${fanHtml}
-    <blockquote class="ep-quote">“${escapeHtml(ep.closingQuote)}”<cite>— Head Coach, season-ending press conference</cite></blockquote>
+    <blockquote class="ep-quote">"${escapeHtml(ep.closingQuote)}"<cite>— Head Coach, season-ending press conference</cite></blockquote>
   `;
   bodyEl.appendChild(section);
 }

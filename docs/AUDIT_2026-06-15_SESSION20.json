@@ -1,0 +1,260 @@
+{
+  "generatedBy": "/audit skill v1.0",
+  "generatedAt": "2026-06-15",
+  "session": 20,
+  "project": "vaultspark-football-gm",
+  "type": "game",
+  "axisWeights": {
+    "gamification/engagement/immersion": 5,
+    "ui/ux/user-experience": 3,
+    "feature-depth": 1.5,
+    "ai/intelligence-integration": 1.5,
+    "speed/organization/efficiency": 2,
+    "user-feedback-loop": 1,
+    "security": 1,
+    "token-cost-reduction": 1
+  },
+  "candidates": [
+    {
+      "id": 1,
+      "slug": "veteran-farewell-legacy",
+      "title": "Veteran Farewell Legacy Article",
+      "axis": "gamification/engagement/immersion",
+      "tier": "🔥",
+      "effort": "2h",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 32.0,
+      "why": "When a LEGEND_FAREWELL narrative event resolves into actual retirement, the player quietly disappears into the retired pool — a franchise-defining moment treated as a database row. Generating a 3-sentence legacy blurb (years served, peak moment, fan memory) and persisting it to a Franchise Legends section in the History tab creates the emotional payoff that keeps GMs playing for decades, not seasons. This is the difference between a game and a dynasty.",
+      "recipe": "Add `buildVeteranLegacyBlurb(player, gmLegacy, league)` in `seasonEpilogue.js` — pure function using career stats from `league.gmLegacy.seasonHistory`, championship years, and `player.position/overall`. Call when `LEGEND_FAREWELL` event triggers at season end and the player exits roster. Push blurb to `league.franchiseLore[]` (cap 20). Surface in Season Review modal beneath the epilogue and in a new 'Franchise Legends' section within the History tab.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Add `buildVeteranLegacyBlurb()` to seasonEpilogue.js; display one blurb per retiring legend in the Season Review modal below the existing epilogue. No persistence needed at L1."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Persist blurbs to `league.franchiseLore[]` (rolling 20 entries); add a 'Franchise Legends' section in tabHistory.js listing all retired legends with their blurbs and career stat line."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Full Franchise Legends Archive in History tab with position filter, championship-season filter, and a wall-of-fame card layout; clickable Dynasty Timeline node links to the corresponding legend card."
+        }
+      }
+    },
+    {
+      "id": 2,
+      "slug": "gm-reputation-league-awareness",
+      "title": "GM Reputation: League-Wide Awareness",
+      "axis": "gamification/engagement/immersion",
+      "tier": "🔥",
+      "effort": "4h",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 31.3,
+      "why": "CPU teams currently treat every trade with you identically regardless of your 20-season history — a known aggressive buyer faces the same ask as a patient rebuilder. `gmLegacy` already tracks tradeNetAV, capGrade, playoff rate, and culture score: everything needed to derive a reputation profile that CPU teams react to. When the league has memory, every GM decision carries permanent meta-game weight and replayability compounds dramatically.",
+      "recipe": "Add `buildGmReputationProfile(gmLegacy)` as a pure export in `gmLegacyScore.js` — returns 3 reputation labels (Aggressive Buyer / Cap Hawk / Youth Builder / Veteran Loyalty / Volatile) derived from tradeNetAV, capGrade, and seasonHistory. Wire into CPU trade logic in `aiTeamStrategy.js`: aggressive buyers face a 5-10% CPU ask premium; cap hawks get a 3% FA bonus. Surface a 'Market knows you as: [label]' line on the GM Identity Card in the Overview tab and on the Trade Workspace sidebar.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Add `buildGmReputationProfile(gmLegacy)` in gmLegacyScore.js; display the 3 reputation labels in the GM Identity Card on the Overview tab. No CPU logic wired yet."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Wire reputation into CPU trade asks via a `reputationMultiplier()` helper in aiTeamStrategy.js; surface 'Market knows you' label on Trade Workspace; cover with focused tests."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Full reputation economy: free agent personality preferences (veterans seek culture builders, young FAs seek youth programs); narrative events reference reputation; 5-category reputation system with trend tracking across seasons."
+        }
+      }
+    },
+    {
+      "id": 3,
+      "slug": "miracle-run-comeback-arc",
+      "title": "Miracle Run Comeback Arc",
+      "axis": "gamification/engagement/immersion",
+      "tier": "⚡",
+      "effort": "2h",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 28.0,
+      "why": "The season epilogue knows four outcome types — champion, contender, mediocre, struggling — but nothing for a team that was 2-5 at week 9 and clawed into the playoffs. That's the most emotionally resonant arc in sports. Without recognition, a Miracle Run looks identical to a boring 9-8 wild-card entry, and the user's best memory gets no payoff. `outcomeKey()` in seasonEpilogue.js is a single function change away from unlocking this.",
+      "recipe": "Add `isMiracleRun(team, week, league)` helper — true if controlled team record was ≤40% at or after week 9 and made playoffs (check `team.season.playoffSeed`). Add 'miracle-run' key to `QUOTE_BANK` with 3 against-all-odds quotes. In `outcomeKey()`, check `isMiracleRun` before `contender`. Add a 'MIRACLE RUN' badge to the epilogue HTML and a '★ Miracle' indicator on the Dynasty Timeline node for that season.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Add `isMiracleRun()` to seasonEpilogue.js; add miracle-run QUOTE_BANK entry; update `outcomeKey()` to return 'miracle-run' when conditions met. Badge in Season Review modal."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Add '★ Miracle' indicator to Dynasty Timeline node; add a week-1 narrative arc 'Can this team turn it around?' that resolves at season end if isMiracleRun. Cover with focused test."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Multi-season tracking: 2+ miracle runs in 5 seasons unlocks 'Perennial Underdog' legacy label in gmLegacyScore; fan sentiment boost after each miracle run; special owner reaction narrative event."
+        }
+      }
+    },
+    {
+      "id": 4,
+      "slug": "draft-sleeper-reveal",
+      "title": "Hidden Draft Sleeper Discovery",
+      "axis": "gamification/engagement/immersion",
+      "tier": "⚡",
+      "effort": "4h",
+      "effortHours": 4,
+      "impact": 7,
+      "innovation": 8,
+      "priority": 21.7,
+      "why": "The Draft War Room pressure model (S15) and steal-risk labels (S18) have made the draft feel consequential, but every user sees the same board in the same order — there's no discovery. One seeded sleeper per class (deterministic per draft year + seed, so challenge-code duels see the same gem) whose hidden +OVR potential is unlocked only by scouting investment creates the 'I found him first' moment that defines franchise sims.",
+      "recipe": "In `ScoutingService.js`, on `getScoutReport(playerId)` for draft prospects, check if the prospect's `id` mod (seeded by `draftYear + rng seed`) matches the year's designated sleeper index. If yes, add `{ sleeperFlag: true, hiddenPotentialBoost: 3-7 }` to the scout report response. In the Draft War Room panel (`draftWarRoom.js`), render a 'SLEEPER' badge and hidden potential indicator when `sleeperFlag` is true on a scout report. Add a focused test covering sleeper flag reveal for a seeded scenario.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Seed a `_sleeperIndex` per draft year in ScoutingService; on full scout action, reveal 'SLEEPER' badge + potential boost on the designated prospect. No progressive reveal yet."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Progressive reveal: basic scout = 30% reveal chance, full scout = 100%; confidence meter on draft card shows reveal likelihood. Wire into draftWarRoom.js badge system."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Full sleeper economy: rivals discover sleepers too and may draft ahead if you wait; developing sleepers generate 'I found him first' narrative events; multi-year tracking of GM sleeper hit rate in gmLegacy."
+        }
+      }
+    },
+    {
+      "id": 5,
+      "slug": "post-week-digest-card",
+      "title": "Post-Week Digest Card",
+      "axis": "ui/ux/user-experience",
+      "tier": "⚡",
+      "effort": "4h",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 20.9,
+      "why": "Advancing a week triggers a full dashboard re-render across 10+ tabs, but gives the user no summary moment — they must navigate manually to discover results, narrative events, and critical inbox items. The mobile decision deck (S19) proved that a compressed priority surface retains attention; a post-week digest card applies the same principle to the transition moment after advance-week, which is when most users tab away.",
+      "recipe": "Add `renderWeekDigestBanner(newState, prevState)` in `gameFlow.js`, called from `applyDashboard()` after re-renders complete. Banner shows: game result or 'bye week', top performer name+stat, 1 CRITICAL inbox item if any, and a 'Next Best Move' pulled from `buildMobileDecisionDeck()`. Dismisses on click, stores dismissed week in sessionStorage. Mobile-first design (stack layout, large tap target). Cover the 'no result', 'bye week', and 'critical item present' states with focused tests.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Add a collapsible banner at top of dashboard after advance-week: shows result text, 1 critical inbox item, Next Best Move. Dismissible via sessionStorage flag. No animation."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Full modal (not banner): slides in after advance-week, shows score card, stat leaders strip, 1 narrative event highlight, and action button for top inbox item. 'Got it' dismisses."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Animated week-end sequence using sim-watch drive-log pattern; Franchise Moment integration if week had a cinematic event; shareable week-in-review card (extends leagueStoryExport)."
+        }
+      }
+    },
+    {
+      "id": 6,
+      "slug": "inbox-action-deeplinks",
+      "title": "Inbox Actionable Deep-Links",
+      "axis": "ui/ux/user-experience",
+      "tier": "⚡",
+      "effort": "2h",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 20.0,
+      "why": "The Priority Inbox surfaces CRITICAL items (cap alerts, injuries, trade requests) but offers no path to resolution — it just shows information. Users who see a CRITICAL cap alert must remember which tab and which sub-panel to navigate to. Every extra navigation step is a drop-off risk for beta testers.",
+      "recipe": "In `engagementFeatures.js`, update `renderInboxModal()` to include a `data-action-tab` attribute on each inbox item mapped to its resolution surface: CRITICAL cap-alert → 'contractsTab', CRITICAL injury → 'rosterTab', TRADE_REQUEST → 'contractsTab'. Add a 'Take Action →' pill button on CRITICAL tier items that calls `activateTab(item.actionTab)` on click. Wire focused tests for all CRITICAL type mappings.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Add 'Take Action →' button to CRITICAL inbox items that navigates to the mapped tab. No sub-panel deep-link needed at L1."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Route to the specific sub-panel within the tab (e.g., cap alert → Cap War Room view; injury → Depth Chart view). Test all CRITICAL type mappings."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Inline triage mode: CRITICAL inbox items render the top resolution action inline in the inbox drawer (e.g., restructure candidates for cap alerts) without requiring tab navigation."
+        }
+      }
+    },
+    {
+      "id": 7,
+      "slug": "ai-rival-coach-intel",
+      "title": "Pre-Game Rival Coach Intel Card",
+      "axis": "ai/intelligence-integration",
+      "tier": "⚡",
+      "effort": "2h",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 32.0,
+      "why": "The AI GM archetype system (Moneyball / Gut-Feel / Loyalty / Win-Now) already gives every CPU team a personality, and rivalryDNA already tracks heat between franchises — but this intelligence is never surfaced before a game. A pre-game rival coach intel card ('Andy plays pass-heavy in high-rivalry matchups and overpays for veterans at the deadline') turns the advance-week button into a strategic decision with real pre-game stakes. No backend required — purely derived from existing archetype + narrative log data.",
+      "recipe": "Add `buildRivalCoachIntel(rivalTeam, myTeam, narrativeLog, rivalryHeat)` in a new `public/lib/rivalCoachIntel.js` — returns 3 tendency lines keyed to `TEAM_STRATEGY_PRESETS[rivalTeam.strategyProfile]` and recent narrative log events involving the rival. Render as a card in `tabOverview.js` adjacent to the current-week schedule entry for the next matchup. Wire a focused test verifying all 4 archetype variants produce non-empty tendency lines.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Add `buildRivalCoachIntel()` and render a 3-line tendency card in the Schedule section of the Overview tab next to the next matchup. Text only, no design assets."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "High-rivalry matchups get a 'Rivalry Edition' card with extra context (last 3 results, rivalry trait quote). Add to sim-watch overlay header as a pre-game banner."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Full coach scouting surface: coach cards with archetype badge, 5-game pattern, GamePlan recommendations. Persistent across the season; updates weekly based on results."
+        }
+      }
+    },
+    {
+      "id": 8,
+      "slug": "narrative-deterministic-ids",
+      "title": "Narrative Event IDs: Seeded RNG Fix",
+      "axis": "speed/organization/efficiency",
+      "tier": "💡",
+      "effort": "30m",
+      "effortHours": 0.5,
+      "impact": 4,
+      "innovation": 2,
+      "priority": 6.1,
+      "why": "Line 25 of `narrativeEvents.js` uses `Date.now() + Math.random()` for event IDs — the same non-deterministic pattern replaced everywhere else in Sessions 11 and 14. Challenge-code replay scenarios produce different narrative log IDs on each run, which breaks diff-based replay validation and creates a subtle correctness gap in the seeded sim layer.",
+      "recipe": "In `narrativeEvents.js`, change the `id` field in `pushEvent()` from `narr-${Date.now()}-${Math.random().toString(36).slice(2,6)}` to `narr-${year}-${week}-${type}-${(playerIds?.[0] || teamIds?.[0] || 'gen')}`. This makes IDs deterministic per (year, week, type, subject) — the combination that already prevents duplicate events from firing (the `already` check above it). No test changes needed; the existing narrative event tests will still pass.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Single-line change in pushEvent(): replace Date.now()+Math.random() with deterministic composite key. Verify with existing narrative event tests."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Same as L1 — this item has no meaningful L2/L3 expansion."
+        },
+        "L3": {
+          "effortHours": 0.5,
+          "recipe": "Same as L1 — correctness fix only."
+        }
+      }
+    }
+  ],
+  "innovationReserve": [
+    "veteran-farewell-legacy",
+    "gm-reputation-league-awareness",
+    "draft-sleeper-reveal",
+    "ai-rival-coach-intel"
+  ],
+  "skipped": [
+    {
+      "slug": "cloudflare-remediation",
+      "reason": "Agent-attemptable but Cloudflare/GitHub org-root capability missing from this repo; existing runbook in TASK_BOARD is the live path."
+    },
+    {
+      "slug": "ai-scouting-standalone",
+      "reason": "Core AI intelligence is now incorporated into ai-rival-coach-intel (which uses existing archetype data) and draft-sleeper-reveal (which uses existing scouting infra). Standalone AI scouting model still needs real beta decision traces."
+    }
+  ],
+  "executionLog": []
+}

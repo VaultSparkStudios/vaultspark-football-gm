@@ -22,7 +22,7 @@ const MAX_LOG = 30;
 function pushEvent(league, event) {
   if (!Array.isArray(league.narrativeLog)) league.narrativeLog = [];
   league.narrativeLog.unshift({
-    id: `narr-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+    id: `narr-${event.year || 0}-${event.week || 0}-${event.type || 'evt'}-${event.playerIds?.[0] || event.teamIds?.[0] || 'gen'}`,
     ...event
   });
   if (league.narrativeLog.length > MAX_LOG) league.narrativeLog.length = MAX_LOG;
@@ -190,6 +190,26 @@ export function checkOwnerUltimatums(league, year, week, rng) {
 // ── LEGEND_FAREWELL ───────────────────────────────────────────────────────────
 // Condition: age >= maxAge-2, career AV >= 40, final contract year
 
+export function buildVeteranLegacyBlurb(player, year) {
+  const pos = player.position || player.pos || "player";
+  const ovr = player.overall || 70;
+  const careerAV = Object.values(player.seasonStats || {}).reduce((s, ss) => s + (ss?.av || 0), 0);
+  const line1 = `${player.name} closes the book on a remarkable career as one of the defining ${pos}s of this franchise era.`;
+  const line2 = ovr >= 85
+    ? `His ${ovr} OVR peak and ${careerAV} career AV mark a player who made this franchise a destination, not a doormat.`
+    : `At ${ovr} overall and ${careerAV} career AV, he gave everything he had and earned the respect of every locker room he entered.`;
+  const line3 = `Year ${year} is the last chapter — but the franchise will feel his absence for seasons to come.`;
+  return `${line1} ${line2} ${line3}`;
+}
+
+const MAX_LORE = 20;
+
+function pushFranchiseLore(league, entry) {
+  if (!Array.isArray(league.franchiseLore)) league.franchiseLore = [];
+  league.franchiseLore.unshift(entry);
+  if (league.franchiseLore.length > MAX_LORE) league.franchiseLore.length = MAX_LORE;
+}
+
 export function checkLegendFarewells(league, year, week, rng) {
   if (week !== 1) return; // Fire at season start only
   for (const player of league.players) {
@@ -212,6 +232,15 @@ export function checkLegendFarewells(league, year, week, rng) {
       impact: "Consider a farewell extension, a ceremonial start, or begin succession planning at the position.",
       teamIds: [player.teamId],
       playerIds: [player.id]
+    });
+
+    pushFranchiseLore(league, {
+      playerId: player.id,
+      playerName: player.name,
+      position: player.position || "",
+      year,
+      teamId: player.teamId || "",
+      blurb: buildVeteranLegacyBlurb(player, year)
     });
   }
 }

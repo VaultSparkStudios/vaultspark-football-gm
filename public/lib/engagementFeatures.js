@@ -77,6 +77,17 @@ export function closeInbox() {
   if (drawer) drawer.classList.remove("open");
 }
 
+const INBOX_ACTION_TABS = {
+  "cap-alert":  "contractsTab",
+  "cap_alert":  "contractsTab",
+  injury:       "rosterTab",
+  trade:        "contractsTab",
+};
+
+export function getInboxActionTab(item) {
+  return INBOX_ACTION_TABS[item.type?.toLowerCase()] || null;
+}
+
 function renderInboxContent() {
   const list = document.getElementById("inboxList");
   if (!list) return;
@@ -93,6 +104,7 @@ function renderInboxContent() {
   };
   list.innerHTML = _inbox.items.slice(0, 30).map((item) => {
     const typeIcon = typeIcons[item.type?.toLowerCase()] || "📰";
+    const actionTab = item.tier === "CRITICAL" ? getInboxActionTab(item) : null;
     return `
       <div class="inbox-item inbox-tier-${escapeHtml(item.tier.toLowerCase())}">
         <div class="inbox-item-header">
@@ -103,8 +115,16 @@ function renderInboxContent() {
         </div>
         ${item.detail ? `<div class="inbox-detail">${escapeHtml(item.detail)}</div>` : ""}
         ${item.quote ? `<div class="inbox-quote">"${escapeHtml(item.quote.slice(0, 100))}"</div>` : ""}
+        ${actionTab ? `<div class="inbox-action-row"><button class="inbox-action-btn" data-inbox-action-tab="${escapeHtml(actionTab)}">Take Action →</button></div>` : ""}
       </div>`;
   }).join("");
+
+  list.querySelectorAll("[data-inbox-action-tab]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tab = btn.dataset.inboxActionTab;
+      if (tab) document.querySelector(`[data-tab="${tab}"]`)?.click();
+    });
+  });
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

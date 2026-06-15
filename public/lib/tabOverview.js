@@ -1,5 +1,6 @@
 import { state, api, STATS_BENCHMARK_HINTS } from "./appState.js";
 import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderTable, setBoxScoreTab, setMetricCardValue, showToast, teamCode, teamName } from "./appCore.js";
+import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -273,6 +274,8 @@ async function renderRivalryStrip(schedule, controlledTeamId) {
     : null;
   if (!game) {
     strip.hidden = true;
+    const ic = document.getElementById("rivalCoachIntelContainer");
+    if (ic) ic.hidden = true;
     return;
   }
   const opponentId = game.awayTeamId === controlledTeamId ? game.homeTeamId : game.awayTeamId;
@@ -287,6 +290,8 @@ async function renderRivalryStrip(schedule, controlledTeamId) {
   }
   if (!ctx || !ctx.totalMeetings) {
     strip.hidden = true;
+    const ic2 = document.getElementById("rivalCoachIntelContainer");
+    if (ic2) ic2.hidden = true;
     return;
   }
   const heat = Math.max(0, Math.min(100, ctx.heat || 0));
@@ -304,6 +309,26 @@ async function renderRivalryStrip(schedule, controlledTeamId) {
       ${streakText ? `<span class="rivalry-streak">${escapeHtml(streakText)}</span>` : ""}
       <span class="rivalry-heat-meter" title="Rivalry heat ${heat}/100"><span class="rivalry-heat-fill" style="width:${heat}%"></span></span>
     </div>`;
+
+  // Rival coach intel card
+  try {
+    const res = await api(`/api/team-archetypes`);
+    const rival = (res?.archetypes || []).find((a) => a.teamId === opponentId);
+    const intel = buildRivalCoachIntel(rival?.archetype?.label, heat, rival?.ovr);
+    const intelContainer = document.getElementById("rivalCoachIntelContainer");
+    if (intelContainer) {
+      intelContainer.hidden = false;
+      intelContainer.innerHTML = `
+        <div class="rival-coach-intel">
+          <div class="rci-header">${intel.icon} Coach Intel: ${escapeHtml(rival?.name || teamCode(opponentId))} <span class="rci-archetype">[${escapeHtml(intel.archetype)}]</span></div>
+          <ul class="rci-tendencies">
+            ${intel.tendencies.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}
+          </ul>
+          ${intel.heatNote ? `<div class="rci-alert rci-alert-${intel.alertLevel}">${escapeHtml(intel.heatNote)}</div>` : ""}
+          ${intel.ovrNote ? `<div class="rci-alert rci-alert-high">${escapeHtml(intel.ovrNote)}</div>` : ""}
+        </div>`;
+    }
+  } catch { /* non-fatal — rivalry strip still shows */ }
 }
 
 export function renderStandings() {
@@ -524,6 +549,16 @@ export async function renderGmLegacyScore() {
         showPersonaTierToast(persona.current.name, currentTier);
       }
       state.prevGmLegacyTier = currentTier;
+    }
+
+    // GM Reputation: market perception label
+    const repEl = document.getElementById("gmReputationLabel");
+    const rep = s.reputation;
+    if (repEl && rep && rep.labels && rep.labels[0] !== "Unestablished") {
+      repEl.textContent = `Market knows you as: ${rep.labels.join(" · ")}`;
+      repEl.hidden = false;
+    } else if (repEl) {
+      repEl.hidden = true;
     }
   } catch {
     // non-critical

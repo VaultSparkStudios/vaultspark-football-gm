@@ -241,6 +241,64 @@ export function getGmPersonaArc(legacy) {
   };
 }
 
+// ── GM Reputation Profile ─────────────────────────────────────────────────────
+//
+// Derives 3 reputation labels from career data that CPU teams react to.
+// Labels are shown on the GM Identity Card and the Trade Workspace.
+//
+// Categories:
+//   trade-style   → Aggressive Buyer | Patient Rebuilder | Balanced Trader
+//   cap-style     → Cap Hawk | Spender | Cap Neutral
+//   culture-style → Youth Builder | Veteran Loyalty | Culture Neutral
+//
+// CPU multipliers (used in aiTeamStrategy.js):
+//   Aggressive Buyer  → asks +8%   Spender → asks +5%
+//   Cap Hawk          → asks -4%   Youth Builder → asks -3% on young players
+
+export function buildGmReputationProfile(legacy) {
+  if (!legacy || legacy.seasonsServed === 0) {
+    return {
+      tradeStyle: "Unestablished",
+      capStyle: "Unestablished",
+      cultureStyle: "Unestablished",
+      labels: ["Reputation: not yet established"],
+      multiplier: 1.0
+    };
+  }
+
+  const avgCapGrade = legacy.seasonsServed > 0 ? legacy.capGradeTotal / legacy.seasonsServed : 50;
+  const avgCulture = legacy.seasonsServed > 0 ? legacy.cultureGradeTotal / legacy.seasonsServed : 50;
+  const tradeNetAV = legacy.tradeNetAV || 0;
+
+  const tradeStyle =
+    tradeNetAV < -10 ? "Aggressive Buyer" :
+    tradeNetAV > 10  ? "Asset Accumulator" : "Balanced Trader";
+
+  const capStyle =
+    avgCapGrade >= 70 ? "Cap Hawk" :
+    avgCapGrade <= 40 ? "Spender" : "Cap Neutral";
+
+  const cultureStyle =
+    avgCulture >= 70 ? "Culture Builder" :
+    avgCulture <= 40 ? "Culture Risk" : "Culture Neutral";
+
+  // Trade ask multiplier: aggressive buyers pay more; cap hawks get slight discount
+  let multiplier = 1.0;
+  if (tradeStyle === "Aggressive Buyer") multiplier += 0.08;
+  if (tradeStyle === "Asset Accumulator") multiplier -= 0.04;
+  if (capStyle === "Cap Hawk") multiplier -= 0.04;
+  if (capStyle === "Spender") multiplier += 0.05;
+  multiplier = Math.max(0.85, Math.min(1.20, multiplier));
+
+  return {
+    tradeStyle,
+    capStyle,
+    cultureStyle,
+    labels: [tradeStyle, capStyle, cultureStyle],
+    multiplier: parseFloat(multiplier.toFixed(3))
+  };
+}
+
 // ── UI summary ────────────────────────────────────────────────────────────────
 
 export function getGmLegacySummary(league) {
