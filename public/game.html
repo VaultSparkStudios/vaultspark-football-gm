@@ -1527,6 +1527,31 @@
       <div id="simWatchFinal" hidden></div>
     </div>
 
+    <!-- ── Mobile Bottom Nav — CANON-041 ─────────────────────────────────── -->
+    <!-- Visible only at ≤640px; mirrors the desktop side-menu section groups. -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Game navigation">
+      <button class="mbn-btn active" data-tab="overviewTab" data-tabs="overviewTab statsTab calendarTab" aria-label="Gameday">
+        <span class="mbn-icon">🏈</span>
+        <span class="mbn-label">Gameday</span>
+      </button>
+      <button class="mbn-btn" data-tab="rosterTab" data-tabs="rosterTab faTab depthTab contractsTab" aria-label="Roster">
+        <span class="mbn-icon">👥</span>
+        <span class="mbn-label">Roster</span>
+      </button>
+      <button class="mbn-btn" data-tab="transactionsTab" data-tabs="transactionsTab scoutingTab draftTab" aria-label="Builds">
+        <span class="mbn-icon">⚡</span>
+        <span class="mbn-label">Builds</span>
+      </button>
+      <button class="mbn-btn" data-tab="logTab" data-tabs="logTab historyTab" aria-label="History">
+        <span class="mbn-icon">🏆</span>
+        <span class="mbn-label">History</span>
+      </button>
+      <button class="mbn-btn" data-tab="settingsTab" data-tabs="rulesTab settingsTab" aria-label="More">
+        <span class="mbn-icon">⚙️</span>
+        <span class="mbn-label">More</span>
+      </button>
+    </nav>
+
     <script type="module" src="./app.js"></script>
   </body>
 </html>

@@ -301,6 +301,11 @@ import {
 function bindEvents() {
   bindMenuTabs(activateTab);
 
+  // Mobile bottom nav (CANON-041) — each button navigates to its section's lead tab
+  document.querySelectorAll(".mbn-btn[data-tab]").forEach((btn) => {
+    btn.addEventListener("click", () => activateTab(btn.dataset.tab));
+  });
+
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();
   });

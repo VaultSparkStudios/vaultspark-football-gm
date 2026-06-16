@@ -40,7 +40,7 @@ body {
   color: var(--ink);
   background: var(--bg-0);
   font-family: "Bahnschrift", "Franklin Gothic Medium", "Trebuchet MS", sans-serif;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .bg-layer {
@@ -1589,12 +1589,14 @@ td.tone-info {
     align-items: stretch;
   }
 
+  /* hide sidebar on mobile — replaced by bottom nav */
   .side-menu {
-    grid-template-columns: 1fr;
+    display: none;
   }
 
-  .menu-btn {
-    padding: 0.44rem 0.5rem;
+  /* pad tab-panels so content clears the fixed bottom nav */
+  .game-shell {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
   }
 
   .history-card-grid {
@@ -1612,6 +1614,11 @@ td.tone-info {
 
   label {
     min-width: 100%;
+  }
+
+  /* show mobile bottom nav */
+  .mobile-bottom-nav {
+    display: flex;
   }
 }
 
@@ -3233,4 +3240,74 @@ body.mobile-loop-active .mobile-loop-overlay {
   display: block;
   margin-bottom: 3px;
   color: var(--accent-strong);
+}
+
+/* ── Mobile Bottom Nav — CANON-041 ─────────────────────────────────────── */
+/* Hidden on desktop; displayed at ≤640px via the media query above.        */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(56px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background:
+    linear-gradient(0deg, rgba(7, 11, 14, 0.97), rgba(7, 11, 14, 0.88)),
+    radial-gradient(circle at bottom center, rgba(var(--team-primary-rgb), 0.14), transparent 50%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(var(--team-tertiary-rgb), 0.22);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.28);
+  z-index: 200;
+  align-items: stretch;
+}
+
+.mbn-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 6px 2px;
+  border-radius: 0;
+  min-width: 0;
+  transition: color 120ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.mbn-btn:active {
+  background: rgba(var(--team-primary-rgb), 0.1);
+}
+
+.mbn-btn.active {
+  color: var(--section-accent-strong, var(--accent));
+}
+
+.mbn-btn.active .mbn-icon {
+  filter: drop-shadow(0 0 5px rgba(var(--team-primary-rgb), 0.55));
+}
+
+.mbn-icon {
+  font-size: 1.22rem;
+  line-height: 1;
+  display: block;
+  transition: filter 120ms ease;
+}
+
+.mbn-label {
+  font-size: 0.58rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
