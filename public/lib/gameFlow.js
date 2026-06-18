@@ -106,6 +106,11 @@ export function activateTab(tabId) {
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);
   });
+  // Sync mobile bottom nav section highlight (CANON-041)
+  document.querySelectorAll(".mbn-btn").forEach((btn) => {
+    const tabs = (btn.dataset.tabs || "").split(" ");
+    btn.classList.toggle("active", tabs.includes(tabId));
+  });
   applyShellTheme();
   if (tabId === "contractsTab") {
     loadContractsTeam().catch((error) => {
