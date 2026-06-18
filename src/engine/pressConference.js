@@ -147,7 +147,7 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
   for (const item of items) {
     league.newsLog.unshift({
       ...item,
-      id: `pc-${item.subtype}-${week}-${year}-${Math.random().toString(36).slice(2, 6)}`
+      id: `pc-${item.subtype}-${week}-${year}-${controlledTeamId}`
     });
     if (league.newsLog.length > 50) league.newsLog.length = 50;
   }

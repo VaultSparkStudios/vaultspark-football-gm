@@ -28,6 +28,7 @@ export function classifyNewsItem(item) {
   const headline = (item.headline || "").toLowerCase();
   if (type === "injury" && (headline.includes("out for season") || headline.includes("severe"))) return "CRITICAL";
   if (type === "cap-alert" || type === "cap_alert") return "CRITICAL";
+  if (type === "hot-seat") return "CRITICAL";
   if (type === "trade" || type === "signing" || type === "milestone") return "IMPORTANT";
   if (type === "injury") return "IMPORTANT";
   if (type === "standings" || type === "streak" || type === "upset" || type === "blowout") return "IMPORTANT";
@@ -47,6 +48,59 @@ export function ingestNewsIntoInbox(newsItems = []) {
   // Cap at 60 items
   if (_inbox.items.length > 60) _inbox.items = _inbox.items.slice(0, 60);
   return newCount;
+}
+
+/**
+ * Promote hot-seat signals from the narrative layer into the Priority Inbox.
+ * Checks two sources each call:
+ *   1. OWNER_ULTIMATUM events in dashboard.narrativeLog (this season only)
+ *   2. Critically low fan sentiment (approval ≤ 38 = "Frustrated" or "Booing")
+ * Returns the number of new CRITICAL items added.
+ */
+export function ingestNarrativeAlerts(dashboard = {}) {
+  if (!dashboard) return 0;
+  let count = 0;
+  const year = dashboard.currentYear;
+  const week = dashboard.currentWeek;
+
+  for (const ev of (dashboard.narrativeLog || [])) {
+    if (ev.type !== "OWNER_ULTIMATUM") continue;
+    if (ev.year !== year) continue;
+    const key = `hot-seat-ultimatum-${ev.id || ev.week}-${year}`;
+    if (_inbox.seen.has(key)) continue;
+    _inbox.seen.add(key);
+    _inbox.items.unshift({
+      type: "hot-seat",
+      tier: "CRITICAL",
+      headline: ev.headline || "Ownership delivers ultimatum to front office",
+      detail: ev.detail || "Owner pressure is at a critical level. Results are required.",
+      week: ev.week,
+      year: ev.year,
+      receivedAt: Date.now()
+    });
+    count++;
+  }
+
+  const fs = dashboard.fanSentiment;
+  if (fs && fs.approval <= 38) {
+    const key = `hot-seat-fan-${year}-w${week}`;
+    if (!_inbox.seen.has(key)) {
+      _inbox.seen.add(key);
+      _inbox.items.unshift({
+        type: "hot-seat",
+        tier: "CRITICAL",
+        headline: `Fan base has lost faith — approval ${fs.approval}/100 (${fs.label || "Frustrated"})`,
+        detail: fs.reasons?.join("; ") || "Wins are urgently needed to reverse the trend.",
+        week,
+        year,
+        receivedAt: Date.now()
+      });
+      count++;
+    }
+  }
+
+  if (_inbox.items.length > 60) _inbox.items = _inbox.items.slice(0, 60);
+  return count;
 }
 
 export function getUnreadCount() {
@@ -82,6 +136,7 @@ const INBOX_ACTION_TABS = {
   "cap_alert":  "contractsTab",
   injury:       "rosterTab",
   trade:        "contractsTab",
+  "hot-seat":   "overviewTab",
 };
 
 export function getInboxActionTab(item) {
@@ -101,6 +156,7 @@ function renderInboxContent() {
     injury: "🚑", trade: "🔄", blowout: "💥", upset: "⚡", milestone: "🌟",
     streak: "🔥", standings: "📊", retirement: "👋", signing: "✍️",
     "press-conference": "🎤", championship: "🏆", "cap-alert": "💰", "cap_alert": "💰",
+    "hot-seat": "🔥",
   };
   list.innerHTML = _inbox.items.slice(0, 30).map((item) => {
     const typeIcon = typeIcons[item.type?.toLowerCase()] || "📰";

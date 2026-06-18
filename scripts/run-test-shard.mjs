@@ -28,6 +28,7 @@ const SHARDS = {
     "test/mobile-loop.test.js",
     "test/save-integrity.test.js",
     "test/session-lookup-indexes.test.js",
+    "test/session21-hot-seat.test.js",
     "test/session8-contract-edges.test.js",
     "test/session8-endpoints.test.js"
   ],
