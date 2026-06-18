@@ -277,6 +277,7 @@ import {
 
 import {
   ingestNewsIntoInbox,
+  ingestNarrativeAlerts,
   renderInboxBadge,
   openInbox,
   closeInbox,
@@ -369,6 +370,7 @@ function bindEvents() {
       // Ingest news into Priority Inbox + show Franchise Moment (Session 8)
       const newsItems = state.dashboard?.newsLog || state.newsRows || [];
       ingestNewsIntoInbox(newsItems);
+      ingestNarrativeAlerts(state.dashboard);
       renderInboxBadge();
       renderSeasonArcs().catch(() => {});
       checkAndShowFranchiseMoment().catch(() => {});
@@ -1664,6 +1666,8 @@ async function init() {
   renderPlayerTimelineSearchResults();
   activateTab("overviewTab");
   await loadCoreDashboard();
+  ingestNarrativeAlerts(state.dashboard);
+  renderInboxBadge();
   setStatus("Ready");
   queueStartupHydration();
   initGistSyncUI();
