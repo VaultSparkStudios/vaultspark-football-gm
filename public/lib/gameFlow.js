@@ -100,12 +100,17 @@ export function applyDashboard(newState) {
 
 export function activateTab(tabId) {
   state.activeTab = tabId;
+  let activeBtn = null;
   document.querySelectorAll(".menu-btn").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.tab === tabId);
+    const isActive = btn.dataset.tab === tabId;
+    btn.classList.toggle("active", isActive);
+    if (isActive) activeBtn = btn;
   });
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);
   });
+  // Scroll active pill into view in the horizontal strip on mobile
+  if (activeBtn) activeBtn.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
   applyShellTheme();
   if (tabId === "contractsTab") {
     loadContractsTeam().catch((error) => {
