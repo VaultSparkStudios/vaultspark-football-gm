@@ -2278,10 +2278,12 @@ kbd {
   display: none;
   position: fixed;
   inset: 0;
+  min-height: 100dvh;
   background: var(--bg-0);
   z-index: 1000;
   padding: 1rem;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-loop-overlay.hidden { display: none !important; }
