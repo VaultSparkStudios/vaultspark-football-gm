@@ -77,6 +77,7 @@ export function applyDashboard(newState) {
   renderOwnerUltimatum();
   checkSeasonEndReview(previous);
   if (typeof globalThis._renderSpeedrunPanel === "function") globalThis._renderSpeedrunPanel();
+  globalThis._refreshMobileOverlay?.();
 
   // Check speedrun completion on postseason → offseason transition
   if (previous && (previous.phase === "postseason" || previous.phase === "regular-season")
