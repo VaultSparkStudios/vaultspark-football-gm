@@ -1,7 +1,7 @@
 import { mountTutorial } from "./lib/tutorialCampaign.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
-import { initMobileLoop, setMobileModeEnabled, initMobileNavDrawer } from "./lib/mobileLoop.js";
+import { initMobileLoop, setMobileModeEnabled, initMobileNavDrawer, renderMobileOverlay } from "./lib/mobileLoop.js";
 import {
   getSavedToken, saveToken, getSavedGistId, saveGistId,
   exportToGist, importFromGist, listGists
@@ -1444,6 +1444,15 @@ function bindEvents() {
 
   document.getElementById("mobileLoopToggle")?.addEventListener("change", (e) => {
     setMobileModeEnabled(e.target.checked);
+    const overlay = document.getElementById("mobileLoopOverlay");
+    if (overlay) {
+      if (e.target.checked) {
+        overlay.classList.remove("hidden");
+        renderMobileOverlay(state, () => document.getElementById("advanceWeekBtn")?.click());
+      } else {
+        overlay.classList.add("hidden");
+      }
+    }
   });
 
   document.getElementById("shareDynastyBtn")?.addEventListener("click", shareDynastyTimeline);
