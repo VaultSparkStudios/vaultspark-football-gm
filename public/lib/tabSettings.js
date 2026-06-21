@@ -38,10 +38,10 @@ export function buildLaunchReadinessRows({
   speedrunChallenge = null,
   publicDomainStatus = {}
 } = {}) {
-  const runtimeKind = persistence.kind || (dashboard ? "browser/server" : "not loaded");
-  const serverRequests = observability.server?.requests ?? 0;
+  const runtimeKind = persistence?.kind || (dashboard ? "browser/server" : "not loaded");
+  const serverRequests = observability?.server?.requests ?? 0;
   const phase = dashboard?.phase || "no league loaded";
-  const publicDomain = resolvePublicDomainReadiness(publicDomainStatus);
+  const publicDomain = resolvePublicDomainReadiness(publicDomainStatus ?? {});
   return [
     {
       area: "Runtime",

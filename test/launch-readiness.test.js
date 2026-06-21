@@ -17,6 +17,19 @@ test("launch readiness rows expose static beta launch posture", () => {
   assert.equal(rows.find((row) => row.area === "Public Domain").status, "Blocked");
 });
 
+test("null persistence and observability do not throw", () => {
+  const rows = buildLaunchReadinessRows({
+    dashboard: null,
+    saves: [],
+    persistence: null,
+    observability: null,
+    speedrunChallenge: null
+  });
+  assert.equal(rows.length, 5);
+  assert.equal(rows.find((r) => r.area === "Runtime").status, "Load league");
+  assert.equal(rows.find((r) => r.area === "Save Health").status, "No saves");
+});
+
 test("public domain readiness can represent fixed and stale-check states", () => {
   assert.deepEqual(resolvePublicDomainReadiness({ ok: true, checkedAt: "2026-06-08" }), {
     status: "Ready",
