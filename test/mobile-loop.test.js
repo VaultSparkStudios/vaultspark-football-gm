@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildMobileDecisionDeck } from "../public/lib/mobileLoop.js";
+import { buildMobileDecisionDeck, initMobileLoop, setMobileModeEnabled, initMobileNavDrawer } from "../public/lib/mobileLoop.js";
 
 test("mobile decision deck prioritizes an active draft room", () => {
   const cards = buildMobileDecisionDeck({
@@ -53,4 +53,20 @@ test("mobile decision deck falls back to advance week when no pressure exists", 
   assert.equal(cards.length, 1);
   assert.equal(cards[0].action, "advance-week");
   assert.equal(cards[0].tone, "primary");
+});
+
+test("initMobileLoop is exported from mobileLoop.js", () => {
+  assert.equal(typeof initMobileLoop, "function");
+});
+
+test("setMobileModeEnabled is exported from mobileLoop.js", () => {
+  assert.equal(typeof setMobileModeEnabled, "function");
+});
+
+test("initMobileNavDrawer is exported from mobileLoop.js", () => {
+  assert.equal(typeof initMobileNavDrawer, "function");
+});
+
+test("initMobileNavDrawer is a no-op when DOM elements are absent", () => {
+  assert.doesNotThrow(() => initMobileNavDrawer());
 });

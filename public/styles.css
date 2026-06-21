@@ -3234,3 +3234,174 @@ body.mobile-loop-active .mobile-loop-overlay {
   margin-bottom: 3px;
   color: var(--accent-strong);
 }
+
+/* ── Mobile Nav Drawer (CANON-041) ──────────────────────────────────────── */
+
+/* Hamburger toggle — hidden on desktop, flex on mobile */
+.mobile-nav-toggle {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(var(--team-tertiary-rgb, 180, 180, 200), 0.3);
+  border-radius: 10px;
+  background: linear-gradient(145deg, rgba(var(--team-primary-rgb, 60, 100, 140), 0.14), rgba(9, 14, 16, 0.85));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.mobile-nav-toggle:hover,
+.mobile-nav-toggle[aria-expanded="true"] {
+  border-color: rgba(var(--team-secondary-rgb, 200, 160, 60), 0.5);
+  background: linear-gradient(145deg, rgba(var(--team-primary-rgb, 60, 100, 140), 0.28), rgba(9, 14, 16, 0.9));
+}
+
+/* Brand row becomes flex on mobile so hamburger + text sit side-by-side */
+@media (max-width: 980px) {
+  .mobile-nav-toggle {
+    display: flex;
+  }
+  .topbar-brand {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .brand-copy {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* Hide inline side-menu on mobile — drawer replaces it */
+@media (max-width: 768px) {
+  .game-shell > .side-menu {
+    display: none;
+  }
+}
+
+/* Backdrop */
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 199;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.24s ease;
+}
+.mobile-nav-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 100dvh slide-in drawer */
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: min(300px, 88vw);
+  height: 100dvh;
+  height: 100vh; /* fallback for older browsers */
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(180deg, rgba(9, 14, 16, 0.98) 0%, rgba(8, 13, 15, 0.96) 100%),
+    radial-gradient(circle at top left, rgba(var(--team-primary-rgb, 60, 100, 140), 0.2), transparent 42%);
+  border-right: 1px solid rgba(var(--team-tertiary-rgb, 180, 180, 200), 0.22);
+  box-shadow: 24px 0 48px rgba(0, 0, 0, 0.32);
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition:
+    transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s 0.26s;
+}
+@supports (height: 100dvh) {
+  .mobile-nav-drawer { height: 100dvh; }
+}
+.mobile-nav-drawer.open {
+  transform: translateX(0);
+  visibility: visible;
+  transition:
+    transform 0.26s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
+}
+
+/* Drawer header */
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0.8rem;
+  border-bottom: 1px solid rgba(var(--team-tertiary-rgb, 180, 180, 200), 0.18);
+  flex-shrink: 0;
+}
+.mobile-nav-brand {
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.mobile-nav-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(var(--team-tertiary-rgb, 180, 180, 200), 0.22);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.mobile-nav-close:hover {
+  border-color: rgba(var(--team-tertiary-rgb, 180, 180, 200), 0.5);
+  color: var(--ink);
+}
+
+/* Scrollable nav content — this is the 100dvh scrollable region */
+.mobile-nav-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.6rem;
+}
+
+/* Group headers matching desktop side-menu style */
+.mobile-nav-group-header {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(var(--team-tertiary-rgb, 180, 180, 200), 0.7);
+  padding: 0.6rem 0.38rem 0.22rem;
+  margin-top: 0.35rem;
+  border-top: 1px solid rgba(var(--team-tertiary-rgb, 180, 180, 200), 0.12);
+}
+.mobile-nav-group-header:first-child {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0.2rem;
+}
+
+/* Drawer nav buttons — extend .menu-btn with full-width touch target */
+.mobile-nav-btn {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 0.22rem;
+}
+
+/* Team-color pulse on active nav item in drawer */
+.mobile-nav-drawer .menu-btn.active {
+  box-shadow: 0 0 0 1px rgba(var(--team-secondary-rgb, 200, 160, 60), 0.35),
+              0 8px 18px rgba(0, 0, 0, 0.18);
+}

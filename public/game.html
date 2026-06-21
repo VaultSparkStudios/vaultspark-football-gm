@@ -13,9 +13,18 @@
     <div class="bg-layer"></div>
     <header class="game-topbar">
       <div class="topbar-brand">
-        <div class="brand-kicker">VaultSpark Studios Franchise Desk</div>
-        <h1>VaultSpark Football GM</h1>
-        <p id="topMetaText" class="small">Loading...</p>
+        <button id="mobileNavToggle" class="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNavDrawer">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true">
+            <rect x="1" y="3" width="16" height="2.2" rx="1.1"/>
+            <rect x="1" y="7.9" width="16" height="2.2" rx="1.1"/>
+            <rect x="1" y="12.8" width="16" height="2.2" rx="1.1"/>
+          </svg>
+        </button>
+        <div class="brand-copy">
+          <div class="brand-kicker">VaultSpark Studios Franchise Desk</div>
+          <h1>VaultSpark Football GM</h1>
+          <p id="topMetaText" class="small">Loading...</p>
+        </div>
       </div>
       <div class="topbar-center">
         <div class="small">User Team Box Scores</div>
@@ -1526,6 +1535,40 @@
       <div id="simWatchFeed" role="log"></div>
       <div id="simWatchFinal" hidden></div>
     </div>
+
+    <!-- ── Mobile Nav Drawer (CANON-041) ────────────────────────────────────── -->
+    <div id="mobileNavBackdrop" class="mobile-nav-backdrop" aria-hidden="true"></div>
+    <nav id="mobileNavDrawer" class="mobile-nav-drawer" aria-label="Navigation menu" aria-hidden="true">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-brand">VaultSpark GM</span>
+        <button id="mobileNavClose" class="mobile-nav-close" aria-label="Close navigation">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.293 3.293a1 1 0 0 1 1.414 0L8 6.586l3.293-3.293a1 1 0 1 1 1.414 1.414L9.414 8l3.293 3.293a1 1 0 0 1-1.414 1.414L8 9.414l-3.293 3.293a1 1 0 0 1-1.414-1.414L6.586 8 3.293 4.707a1 1 0 0 1 0-1.414z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="mobile-nav-scroll">
+        <div class="mobile-nav-group-header">Gameday</div>
+        <button class="menu-btn mobile-nav-btn" data-tab="overviewTab">Overview</button>
+        <button class="menu-btn mobile-nav-btn" data-tab="statsTab">Statistics</button>
+        <button class="menu-btn mobile-nav-btn" data-tab="calendarTab">Calendar</button>
+        <div class="mobile-nav-group-header">Roster</div>
+        <button class="menu-btn mobile-nav-btn" data-tab="rosterTab">Roster</button>
+        <button class="menu-btn mobile-nav-btn" data-tab="faTab">Free Agents</button>
+        <button class="menu-btn mobile-nav-btn" data-tab="depthTab">Depth Chart</button>
+        <button class="menu-btn mobile-nav-btn" data-tab="contractsTab">Contracts</button>
+        <div class="mobile-nav-group-header">Builds</div>
+        <button class="menu-btn mobile-nav-btn" data-tab="transactionsTab">Trades</button>
+        <button class="menu-btn mobile-nav-btn" data-tab="scoutingTab">Scouting</button>
+        <button class="menu-btn mobile-nav-btn" data-tab="draftTab">Draft</button>
+        <div class="mobile-nav-group-header">History</div>
+        <button class="menu-btn mobile-nav-btn" data-tab="logTab">League Log</button>
+        <button class="menu-btn mobile-nav-btn" data-tab="historyTab">Dynasty</button>
+        <div class="mobile-nav-group-header">Config</div>
+        <button class="menu-btn mobile-nav-btn" data-tab="rulesTab">Rules</button>
+        <button class="menu-btn mobile-nav-btn" data-tab="settingsTab">Settings</button>
+      </div>
+    </nav>
 
     <script type="module" src="./app.js"></script>
   </body>
