@@ -1,6 +1,7 @@
 import { mountTutorial } from "./lib/tutorialCampaign.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
+import { initMobileLoop, setMobileModeEnabled, initMobileNavDrawer, renderMobileOverlay } from "./lib/mobileLoop.js";
 import {
   getSavedToken, saveToken, getSavedGistId, saveGistId,
   exportToGist, importFromGist, listGists
@@ -1442,7 +1443,16 @@ function bindEvents() {
   document.getElementById("closeShortcutsModalBtn")?.addEventListener("click", closeShortcutsModal);
 
   document.getElementById("mobileLoopToggle")?.addEventListener("change", (e) => {
-    if (typeof setMobileModeEnabled === "function") setMobileModeEnabled(e.target.checked);
+    setMobileModeEnabled(e.target.checked);
+    const overlay = document.getElementById("mobileLoopOverlay");
+    if (overlay) {
+      if (e.target.checked) {
+        overlay.classList.remove("hidden");
+        renderMobileOverlay(state, () => document.getElementById("advanceWeekBtn")?.click());
+      } else {
+        overlay.classList.add("hidden");
+      }
+    }
   });
 
   document.getElementById("shareDynastyBtn")?.addEventListener("click", shareDynastyTimeline);
@@ -1669,9 +1679,8 @@ async function init() {
   initGistSyncUI();
   mountTutorial({ onComplete: () => loadState(), onSkip: () => {} });
   mountBetaFeedback();
-  if (typeof initMobileLoop === "function") {
-    initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
-  }
+  initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
+  initMobileNavDrawer();
   setInterval(() => {
     loadSimJobs().catch(() => {});
   }, 8000);

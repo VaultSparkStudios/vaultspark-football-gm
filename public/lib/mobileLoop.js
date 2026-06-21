@@ -153,6 +153,45 @@ export function initMobileLoop(state, onAdvanceWeek) {
   }
 }
 
+// ── Mobile Nav Drawer (CANON-041) ─────────────────────────────────────────────
+
+export function initMobileNavDrawer() {
+  if (typeof document === "undefined") return;
+  const toggle   = document.getElementById("mobileNavToggle");
+  const drawer   = document.getElementById("mobileNavDrawer");
+  const backdrop = document.getElementById("mobileNavBackdrop");
+  const closeBtn = document.getElementById("mobileNavClose");
+  if (!toggle || !drawer) return;
+
+  function openDrawer() {
+    drawer.classList.add("open");
+    drawer.setAttribute("aria-hidden", "false");
+    backdrop?.classList.add("open");
+    toggle.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove("open");
+    drawer.setAttribute("aria-hidden", "true");
+    backdrop?.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  toggle.addEventListener("click", openDrawer);
+  closeBtn?.addEventListener("click", closeDrawer);
+  backdrop?.addEventListener("click", closeDrawer);
+
+  drawer.querySelectorAll(".mobile-nav-btn").forEach((btn) => {
+    btn.addEventListener("click", closeDrawer);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && drawer.classList.contains("open")) closeDrawer();
+  });
+}
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [] } = {}) {
