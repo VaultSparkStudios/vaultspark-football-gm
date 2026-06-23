@@ -301,6 +301,25 @@ import {
 function bindEvents() {
   bindMenuTabs(activateTab);
 
+  // ── Mobile nav drawer ───────────────────────────────────────────────────────
+  const _navHamburger = document.getElementById("navHamburgerBtn");
+  const _navBackdrop  = document.getElementById("navDrawerBackdrop");
+  const _sideMenu     = document.querySelector(".side-menu");
+  if (_navHamburger) {
+    _navHamburger.addEventListener("click", () => {
+      const isOpen = _sideMenu?.classList.toggle("nav-open");
+      if (_navBackdrop) _navBackdrop.hidden = !isOpen;
+      _navHamburger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+  if (_navBackdrop) {
+    _navBackdrop.addEventListener("click", () => {
+      _sideMenu?.classList.remove("nav-open");
+      _navBackdrop.hidden = true;
+      _navHamburger?.setAttribute("aria-expanded", "false");
+    });
+  }
+
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();
   });
