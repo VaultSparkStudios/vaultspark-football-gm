@@ -1221,8 +1221,20 @@ export function closePlayerModal() {
 
 export function bindMenuTabs(activateTabFn) {
   document.querySelectorAll(".menu-btn").forEach((button) => {
-    button.addEventListener("click", () => activateTabFn(button.dataset.tab));
+    button.addEventListener("click", () => {
+      activateTabFn(button.dataset.tab);
+      _closeMobileNavDrawer();
+    });
   });
+}
+
+function _closeMobileNavDrawer() {
+  const menu = document.querySelector(".side-menu");
+  const backdrop = document.getElementById("navDrawerBackdrop");
+  const hamburger = document.getElementById("navHamburgerBtn");
+  menu?.classList.remove("nav-open");
+  if (backdrop) backdrop.hidden = true;
+  hamburger?.setAttribute("aria-expanded", "false");
 }
 
 export async function runAction(fn, statusText = "Working...") {
