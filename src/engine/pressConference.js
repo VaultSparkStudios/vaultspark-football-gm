@@ -10,6 +10,7 @@
  */
 
 import { initNewsLog } from "./beatReporter.js";
+import { getRivalryContext } from "./rivalryDNA.js";
 
 // ── Tone assignment ────────────────────────────────────────────────────────────
 
@@ -57,6 +58,21 @@ const ANALYST_QUOTES = [
   (ctx) => `"Looking at the numbers: ${ctx.topPerformer ? `${ctx.topPerformer} was our most efficient player` : "the unit held its own"}. The matchup advantage we identified pre-game played out. Film tells you what the score doesn't."`,
   (ctx) => `"Tactically, we wanted to attack their secondary early. ${ctx.isWin ? "It worked." : "We didn't execute it cleanly."} The adjustments at halftime ${ctx.isWin ? "were the difference" : "came too late"}."`
 ];
+
+// ── Rivalry-aware quote banks (heat ≥ 60) ─────────────────────────────────────
+
+const RIVALRY_QUOTES = {
+  win: [
+    (ctx) => `"You don't need to remind me what this matchup means. ${ctx.rivalryLabel} — and we handled it. ${ctx.topPerformer ? `${ctx.topPerformer} stepped up in the biggest moment.` : "This locker room showed up when it counted."} That one goes deep."`,
+    (ctx) => `"${ctx.score}. Against ${ctx.opponent}. In a ${ctx.rivalryLabel} game. I don't want to oversell it, but the players know what this means to our fans. Enjoy tonight."`,
+    (ctx) => `"History matters in this building. We've played ${ctx.opponent} enough times to know nothing is guaranteed. We earned this one in the fourth quarter — that's what rivalries are about."`
+  ],
+  loss: [
+    (ctx) => `"Losing to ${ctx.opponent} stings more than most. ${ctx.rivalryLabel} — they know it and we know it. I'm not interested in excuses. We regroup and we'll see them again."`,
+    (ctx) => `"${ctx.score}. I'm not going to pretend that's just another loss. This rivalry runs deep and that one hurts. The right response is what we do Monday morning."`,
+    (ctx) => `"${ctx.opponent} played a complete game. When you're in a ${ctx.rivalryLabel} matchup that intense, execution decides it. We didn't execute. We will next time."`
+  ]
+};
 
 // ── Pick a deterministic quote using game seed ─────────────────────────────────
 
@@ -111,24 +127,39 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
   }
 
   const tone = getTone(margin, isWin, streak);
-  const ctx  = { opponent, score, isWin, margin, topPerformer, week };
+
+  // Rivalry cross-reference
+  const rivalry = getRivalryContext(league, controlledTeamId, opponent);
+  const rivalryHeat = rivalry?.heat ?? 0;
+  const rivalryLabel = rivalry?.heatLabel ?? null;
+
+  const ctx  = { opponent, score, isWin, margin, topPerformer, week, rivalryHeat, rivalryLabel };
   const gameId = `${game.homeTeamId}-${game.awayTeamId}-${week}`;
 
-  const headCoachQ = pickQuote(QUOTES[tone], gameId, 0)(ctx);
+  // Use rivalry-aware quotes when heat is high enough; fall back to tone bank
+  const isRivalryGame = rivalryHeat >= 60;
+  const coachBank = isRivalryGame
+    ? (isWin ? RIVALRY_QUOTES.win : RIVALRY_QUOTES.loss)
+    : QUOTES[tone];
+
+  const headCoachQ = pickQuote(coachBank, gameId, 0)(ctx);
   const analystQ   = pickQuote(ANALYST_QUOTES, gameId, 1)(ctx);
+
+  const teamSuffix = controlledTeamId.slice(-3).toLowerCase();
 
   const items = [
     {
       type: "press-conference",
       subtype: "head-coach",
-      tone,
+      tone: isRivalryGame ? "rivalry" : tone,
       week,
       year,
       headline: `${isWin ? "Win" : "Loss"} vs ${opponent} — Week ${week} Post-Game: Head Coach`,
       quote: headCoachQ,
       teamIds: [controlledTeamId],
       score,
-      isWin
+      isWin,
+      rivalryHeat: rivalryHeat || undefined
     },
     {
       type: "press-conference",
@@ -147,7 +178,7 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
   for (const item of items) {
     league.newsLog.unshift({
       ...item,
-      id: `pc-${item.subtype}-${week}-${year}-${Math.random().toString(36).slice(2, 6)}`
+      id: `pc-${item.subtype}-${week}-${year}-${teamSuffix}`
     });
     if (league.newsLog.length > 50) league.newsLog.length = 50;
   }
