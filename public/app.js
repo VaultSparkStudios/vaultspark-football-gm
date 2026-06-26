@@ -298,8 +298,45 @@ import {
 } from "./lib/engagementFeatures.js";
 
 
+function initMobileNavDrawer() {
+  const hamburger = document.getElementById("navHamburgerBtn");
+  const backdrop = document.getElementById("navDrawerBackdrop");
+  const closeBtn = document.getElementById("navDrawerCloseBtn");
+  const sideNav = document.getElementById("sideNav");
+  if (!hamburger || !sideNav) return;
+
+  function openNav() {
+    sideNav.classList.add("nav-open");
+    backdrop?.classList.add("open");
+    hamburger.setAttribute("aria-expanded", "true");
+    document.body.classList.add("nav-drawer-open");
+  }
+
+  function closeNav() {
+    sideNav.classList.remove("nav-open");
+    backdrop?.classList.remove("open");
+    hamburger.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("nav-drawer-open");
+  }
+
+  hamburger.addEventListener("click", openNav);
+  closeBtn?.addEventListener("click", closeNav);
+  backdrop?.addEventListener("click", closeNav);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sideNav.classList.contains("nav-open")) closeNav();
+  });
+
+  document.querySelectorAll(".menu-btn[data-tab]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (window.innerWidth <= 640) closeNav();
+    });
+  });
+}
+
 function bindEvents() {
   bindMenuTabs(activateTab);
+  initMobileNavDrawer();
 
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();

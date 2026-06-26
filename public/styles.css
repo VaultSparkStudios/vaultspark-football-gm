@@ -3234,3 +3234,113 @@ body.mobile-loop-active .mobile-loop-overlay {
   margin-bottom: 3px;
   color: var(--accent-strong);
 }
+
+/* ── Mobile Nav Drawer (CANON-041) ──────────────────────────────────────────── */
+
+.nav-hamburger-btn {
+  display: none;
+}
+
+.nav-drawer-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 8, 12, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 149;
+  cursor: pointer;
+}
+
+.nav-drawer-backdrop.open {
+  display: block;
+}
+
+.nav-drawer-header {
+  display: none;
+}
+
+body.nav-drawer-open {
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .nav-hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    padding: 0;
+    border: 1px solid rgba(var(--team-tertiary-rgb), 0.35);
+    border-radius: 9px;
+    background: var(--bg-2);
+    cursor: pointer;
+    color: var(--ink);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .nav-hamburger-btn:hover,
+  .nav-hamburger-btn[aria-expanded="true"] {
+    background: rgba(var(--team-primary-rgb), 0.28);
+    border-color: rgba(var(--team-tertiary-rgb), 0.65);
+  }
+
+  .nav-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.88rem 0.75rem 0.6rem;
+    border-bottom: 1px solid rgba(var(--team-tertiary-rgb), 0.22);
+    gap: 0.5rem;
+    margin-bottom: 0.35rem;
+    grid-column: 1 / -1;
+  }
+
+  .nav-drawer-title {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav-drawer-close-btn {
+    padding: 0.22rem 0.6rem;
+    font-size: 0.88rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--bg-3);
+    color: var(--muted);
+    cursor: pointer;
+    line-height: 1.4;
+  }
+
+  .nav-drawer-close-btn:hover {
+    border-color: var(--line-strong);
+    color: var(--ink);
+  }
+
+  .side-menu {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0;
+    width: min(272px, 88vw);
+    height: 100dvh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 150;
+    transform: translateX(-100%);
+    transition: transform 240ms cubic-bezier(.22, .68, 0, 1.1);
+    border-radius: 0 20px 20px 0;
+    grid-template-columns: 1fr;
+    padding: 0 0.65rem 1rem;
+    align-content: start;
+  }
+
+  .side-menu.nav-open {
+    transform: translateX(0);
+    box-shadow: 8px 0 36px rgba(0, 0, 0, 0.54);
+  }
+}
