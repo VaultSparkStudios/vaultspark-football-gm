@@ -27,6 +27,7 @@ const SHARDS = {
     "test/local-api-runtime.test.js",
     "test/mobile-loop.test.js",
     "test/save-integrity.test.js",
+    "test/week-digest.test.js",
     "test/session-lookup-indexes.test.js",
     "test/session8-contract-edges.test.js",
     "test/session8-endpoints.test.js"
@@ -58,6 +59,13 @@ function usage() {
   console.error(`Usage: node scripts/run-test-shard.mjs <${names}|all|list>`);
 }
 
+// --test-isolation=none became stable (non-experimental) in Node 23.
+// Node 22 requires --experimental-test-isolation=none.
+const [nodeMajor] = process.versions.node.split(".").map(Number);
+const ISOLATION_FLAG = nodeMajor >= 23
+  ? "--test-isolation=none"
+  : "--experimental-test-isolation=none";
+
 function runShard(name) {
   const files = SHARDS[name];
   if (!files) {
@@ -68,7 +76,7 @@ function runShard(name) {
   console.log(`\n== ${name} shard (${files.length} files) ==`);
   const result = spawnSync(
     process.execPath,
-    ["--test", "--test-isolation=none", ...files],
+    ["--test", ISOLATION_FLAG, ...files],
     { stdio: "inherit" }
   );
   return result.status ?? 1;

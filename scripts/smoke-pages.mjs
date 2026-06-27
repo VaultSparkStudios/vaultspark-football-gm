@@ -71,7 +71,12 @@ async function createServer() {
 async function main() {
   const server = await createServer();
   await new Promise((resolve) => server.listen(port, host, resolve));
-  const browser = await chromium.launch({ headless: true });
+  // Use pre-installed chromium when available (cloud/CI environments set PLAYWRIGHT_BROWSERS_PATH
+  // but may pin a different @playwright/test version than the installed revision).
+  const executablePath = process.env.PLAYWRIGHT_BROWSERS_PATH
+    ? `${process.env.PLAYWRIGHT_BROWSERS_PATH}/chromium`
+    : undefined;
+  const browser = await chromium.launch({ headless: true, ...(executablePath ? { executablePath } : {}) });
   const page = await browser.newPage();
 
   try {

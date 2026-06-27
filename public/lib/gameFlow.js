@@ -8,6 +8,7 @@ import { applyStatsSort, renderAnalyticsChart, renderComparePlayers, renderCompa
 import { renderCalendar, renderPlayerHistoryArchive, renderPlayerTimelineSearchResults, renderRecordsAndHistory, renderTeamHistorySpotlight, setSelectedHistoryPlayer } from "./tabHistory.js";
 import { appendSeasonEpilogue } from "./seasonEpilogue.js";
 import { applySettingsControls, loadRewindHistory, renderAnalytics, renderCalibrationJobs, renderCommandPalette, renderNegotiationTargets, renderNews, renderObservability, renderOwner, renderPersistence, renderPickAssets, renderPipeline, renderRealismVerification, renderRulesTab, renderSettingsSpotlight, renderSimJobs, renderStaff, renderTransactionLog } from "./tabSettings.js";
+import { renderWeekDigestBanner } from "./weekDigest.js";
 
 export function applyDashboard(newState) {
   const previous = state.dashboard;
@@ -76,6 +77,7 @@ export function applyDashboard(newState) {
   renderStatLeadersStrip().catch(() => {});
   renderOwnerUltimatum();
   checkSeasonEndReview(previous);
+  renderWeekDigestBanner(newState, previous, { onActivateTab: activateTab });
   if (typeof globalThis._renderSpeedrunPanel === "function") globalThis._renderSpeedrunPanel();
 
   // Check speedrun completion on postseason → offseason transition
