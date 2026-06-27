@@ -4,12 +4,12 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 19 shipped the mobile General Manager decision deck, public-safe feedback franchise fingerprints, and local closeout cost/brief shims; remaining launch work is the Cloudflare custom-domain repair.",
+  "currentFocus": "Session 21 fixed the Node 22 test-runner flag (--test-isolation) and shipped the post-week digest banner; remaining launch work is the Cloudflare custom-domain repair.",
   "nextMilestone": "Apply or unlock the Cloudflare runbook, re-verify the public game URL, then send the public beta link.",
   "blockers": [
     "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) — Cloudflare-side fix required; runbook in TASK_BOARD"
   ],
-  "lastUpdated": "2026-06-15",
+  "lastUpdated": "2026-06-27",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,23 +18,18 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-03",
   "testSuiteStatus": {
-    "totalTests": 161,
-    "pass": 161,
+    "totalTests": 192,
+    "pass": 192,
     "fail": 0,
-    "lastRun": "2026-06-15",
+    "lastRun": "2026-06-27",
     "newTestFiles": [
-      "test/challenge-codes.test.js",
-      "test/save-integrity.test.js",
-      "test/beta-feedback.test.js",
-      "test/draft-war-room.test.js",
-      "test/launch-readiness.test.js",
-      "test/mobile-loop.test.js"
+      "test/week-digest.test.js"
     ],
-    "newTestCount": 30,
-    "coverage": "Known default-shard inventory is 161 tests (core 54, runtime 79, sim-contract 22, sim-realism 1, studio 5). Session 19 reran the full default suite plus Pages build, Pages smoke, and Playwright mobile screenshots."
+    "newTestCount": 8,
+    "coverage": "Default-shard inventory is 192 tests (core 54, runtime 87, sim-contract 22, sim-realism 1, studio 5). Session 20 added 23 tests; Session 21 fixed Node 22 test-runner flag and added 8 week-digest tests."
   },
-  "testsPassing": 161,
-  "testsTotal": 161,
+  "testsPassing": 192,
+  "testsTotal": 192,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -86,23 +81,19 @@
     "capitalEfficiency": 80,
     "automationCoverage": 99
   },
-  "currentSession": 19,
-  "lastAgent": "codex",
-  "sessionMode": "founder",
+  "currentSession": 21,
+  "lastAgent": "claude-code-cloud",
+  "sessionMode": "scheduled",
   "lastVerification": {
-    "date": "2026-06-15",
+    "date": "2026-06-27",
     "passed": [
-      "npm run test:studio",
-      "npm run test:runtime",
-      "npm test",
+      "node scripts/run-test-shard.mjs studio (5/5)",
+      "node scripts/run-test-shard.mjs core (54/54)",
+      "node scripts/run-test-shard.mjs runtime (87/87 — includes 8 new week-digest tests)",
+      "node scripts/run-test-shard.mjs sim-contract (22/22)",
+      "node scripts/run-test-shard.mjs sim-realism (1/1)",
       "npm run build:pages",
-      "npm run smoke:pages",
-      "node --test test/mobile-loop.test.js",
-      "node --test test/beta-feedback.test.js",
-      "node --test test/studio-protocol-smoke.test.js",
-      "Playwright mobile screenshots for game page and decision deck",
-      "node scripts/ops.mjs blocker-preflight",
-      "node scripts/check-secrets.mjs --audit"
+      "node --test test/week-digest.test.js (8/8)"
     ],
     "timedOut": []
   },
