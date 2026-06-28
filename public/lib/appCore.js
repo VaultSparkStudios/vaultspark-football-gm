@@ -1219,10 +1219,30 @@ export function closePlayerModal() {
   document.getElementById("playerModal").classList.add("hidden");
 }
 
+function closeMobileNav() {
+  document.body.classList.remove("mobile-nav-open");
+  document.getElementById("mobileNavBtn")?.setAttribute("aria-expanded", "false");
+}
+
+function openMobileNav() {
+  document.body.classList.add("mobile-nav-open");
+  document.getElementById("mobileNavBtn")?.setAttribute("aria-expanded", "true");
+}
+
 export function bindMenuTabs(activateTabFn) {
   document.querySelectorAll(".menu-btn").forEach((button) => {
-    button.addEventListener("click", () => activateTabFn(button.dataset.tab));
+    button.addEventListener("click", () => {
+      activateTabFn(button.dataset.tab);
+      closeMobileNav();
+    });
   });
+
+  document.getElementById("mobileNavBtn")?.addEventListener("click", () => {
+    document.body.classList.contains("mobile-nav-open") ? closeMobileNav() : openMobileNav();
+  });
+
+  document.getElementById("mobileNavCloseBtn")?.addEventListener("click", closeMobileNav);
+  document.getElementById("mobileNavOverlay")?.addEventListener("click", closeMobileNav);
 }
 
 export async function runAction(fn, statusText = "Working...") {
