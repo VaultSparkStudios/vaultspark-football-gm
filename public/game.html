@@ -1527,6 +1527,33 @@
       <div id="simWatchFinal" hidden></div>
     </div>
 
+    <!-- ── CANON-041 Mobile Bottom Navigation ────────────────────────────── -->
+    <nav id="mobileTabBar" class="mobile-tab-bar" aria-label="Main navigation" hidden>
+      <div id="mobileTabTray" class="mobile-tab-tray mob-tray-hidden" role="group" aria-label="Section tabs"></div>
+      <div class="mobile-tab-sections">
+        <button class="mob-section-btn active" data-section="gameday" aria-label="Gameday section">
+          <span class="mob-section-icon" aria-hidden="true">🏈</span>
+          <span class="mob-section-label">Gameday</span>
+        </button>
+        <button class="mob-section-btn" data-section="roster" aria-label="Roster section">
+          <span class="mob-section-icon" aria-hidden="true">👥</span>
+          <span class="mob-section-label">Roster</span>
+        </button>
+        <button class="mob-section-btn" data-section="builds" aria-label="Builds section">
+          <span class="mob-section-icon" aria-hidden="true">🔄</span>
+          <span class="mob-section-label">Builds</span>
+        </button>
+        <button class="mob-section-btn" data-section="history" aria-label="History section">
+          <span class="mob-section-icon" aria-hidden="true">📜</span>
+          <span class="mob-section-label">History</span>
+        </button>
+        <button class="mob-section-btn" data-section="config" aria-label="Config section">
+          <span class="mob-section-icon" aria-hidden="true">⚙️</span>
+          <span class="mob-section-label">Config</span>
+        </button>
+      </div>
+    </nav>
+
     <script type="module" src="./app.js"></script>
   </body>
 </html>

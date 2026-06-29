@@ -3234,3 +3234,145 @@ body.mobile-loop-active .mobile-loop-overlay {
   margin-bottom: 3px;
   color: var(--accent-strong);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CANON-041 — Mobile Bottom Navigation (100dvh scrollable nav)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* 100dvh base: dynamic viewport height excludes mobile browser chrome */
+@supports (min-height: 100dvh) {
+  body { min-height: 100dvh; }
+}
+
+@media (max-width: 640px) {
+  /* Reserve space at the bottom for the fixed tab bar */
+  body {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Hide the desktop side-menu; the bottom nav takes over */
+  .side-menu { display: none !important; }
+
+  /* ── Bottom Tab Bar ──────────────────────────────────────────────────── */
+  .mobile-tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    background:
+      linear-gradient(180deg, rgba(8, 13, 16, 0.97) 0%, rgba(5, 8, 10, 0.99) 100%),
+      radial-gradient(circle at bottom left, rgba(var(--team-primary-rgb), 0.1), transparent 50%);
+    border-top: 1px solid rgba(var(--team-tertiary-rgb), 0.28);
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.3);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .mobile-tab-sections {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: 56px;
+  }
+
+  .mob-section-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 0;
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 120ms ease, background 120ms ease;
+    border-radius: 0;
+    font-size: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mob-section-btn:active {
+    background: rgba(var(--team-primary-rgb), 0.12);
+  }
+
+  .mob-section-btn.active {
+    color: var(--accent);
+  }
+
+  .mob-section-btn.active .mob-section-icon {
+    filter: drop-shadow(0 0 6px rgba(var(--team-primary-rgb), 0.6));
+  }
+
+  .mob-section-icon {
+    font-size: 20px;
+    line-height: 1;
+    transition: filter 150ms ease;
+  }
+
+  .mob-section-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: "Bahnschrift", "Franklin Gothic Medium", "Trebuchet MS", sans-serif;
+    font-weight: 600;
+  }
+
+  /* ── Sub-tab Tray (slides above the bar) ────────────────────────────── */
+  .mobile-tab-tray {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+    padding: 8px 12px 6px;
+    background:
+      linear-gradient(180deg, rgba(14, 21, 24, 0.98) 0%, rgba(10, 16, 19, 0.96) 100%);
+    border-top: 1px solid rgba(var(--team-tertiary-rgb), 0.18);
+    scrollbar-width: none;
+    animation: tray-slide-in 160ms ease;
+  }
+
+  .mobile-tab-tray::-webkit-scrollbar { display: none; }
+
+  .mobile-tab-tray.mob-tray-hidden { display: none !important; }
+
+  @keyframes tray-slide-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .mob-tray-btn {
+    flex: 0 0 auto;
+    padding: 7px 15px;
+    border: 1px solid rgba(var(--team-tertiary-rgb), 0.22);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(22, 33, 37, 0.96), rgba(12, 20, 23, 0.98));
+    color: var(--ink);
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 120ms, border-color 120ms, color 120ms;
+    -webkit-tap-highlight-color: transparent;
+    font-family: "Bahnschrift", "Franklin Gothic Medium", "Trebuchet MS", sans-serif;
+  }
+
+  .mob-tray-btn.active {
+    background: linear-gradient(145deg,
+      rgba(var(--team-primary-rgb), 0.82),
+      rgba(16, 19, 31, 0.98));
+    border-color: rgba(var(--team-secondary-rgb), 0.62);
+    color: var(--ink-strong);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+  }
+
+  .mob-tray-btn:active {
+    opacity: 0.75;
+  }
+}
+
+/* On desktop, hide the mobile nav bar entirely */
+@media (min-width: 641px) {
+  .mobile-tab-bar { display: none !important; }
+}
