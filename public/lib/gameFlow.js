@@ -107,6 +107,7 @@ export function activateTab(tabId) {
     panel.classList.toggle("active", panel.id === tabId);
   });
   applyShellTheme();
+  document.dispatchEvent(new CustomEvent("vsfgm:tab-activated", { detail: { tabId } }));
   if (tabId === "contractsTab") {
     loadContractsTeam().catch((error) => {
       presentActionError(error);

@@ -297,9 +297,11 @@ import {
   checkAndPruneRewindStorage
 } from "./lib/engagementFeatures.js";
 
+import { initMobileTabBar } from "./lib/mobileNav.js";
 
 function bindEvents() {
   bindMenuTabs(activateTab);
+  initMobileTabBar(activateTab);
 
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();
