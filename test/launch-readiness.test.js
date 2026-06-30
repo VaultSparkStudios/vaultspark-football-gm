@@ -33,3 +33,16 @@ test("public domain readiness can represent fixed and stale-check states", () =>
   });
   assert.equal(rows.find((row) => row.area === "Public Domain").status, "Ready");
 });
+
+test("null optional launch readiness inputs do not block browser initialization", () => {
+  const rows = buildLaunchReadinessRows({
+    dashboard: { phase: "regular-season" },
+    persistence: null,
+    observability: null,
+    publicDomainStatus: null
+  });
+
+  assert.equal(rows.find((row) => row.area === "Runtime").status, "Ready");
+  assert.equal(rows.find((row) => row.area === "Runtime").detail.includes("regular-season"), true);
+  assert.equal(rows.find((row) => row.area === "Public Domain").status, "Blocked");
+});

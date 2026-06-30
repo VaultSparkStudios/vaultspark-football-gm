@@ -11,6 +11,7 @@ import {
 } from "./gistSync.js";
 
 export function resolvePublicDomainReadiness(status = {}) {
+  status = status || {};
   const checkedAt = status.checkedAt ? ` Checked ${status.checkedAt}.` : "";
   if (status.ok === true || status.status === "ready") {
     return {
@@ -38,8 +39,10 @@ export function buildLaunchReadinessRows({
   speedrunChallenge = null,
   publicDomainStatus = {}
 } = {}) {
-  const runtimeKind = persistence.kind || (dashboard ? "browser/server" : "not loaded");
-  const serverRequests = observability.server?.requests ?? 0;
+  const safePersistence = persistence || {};
+  const safeObservability = observability || {};
+  const runtimeKind = safePersistence.kind || (dashboard ? "browser/server" : "not loaded");
+  const serverRequests = safeObservability.server?.requests ?? 0;
   const phase = dashboard?.phase || "no league loaded";
   const publicDomain = resolvePublicDomainReadiness(publicDomainStatus);
   return [

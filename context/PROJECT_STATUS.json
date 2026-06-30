@@ -4,7 +4,7 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 21 shipped infrastructure hardening for the Studio protocol layer: hidden child-process execution by construction, CANON-044 Wave enforcement, task-board/blocker truth repair, and honest SIL/context telemetry.",
+  "currentFocus": "Session 21 shipped infrastructure hardening for the Studio protocol layer and followed up with a browser bootstrap fix: hidden child-process execution by construction, CANON-044 Wave enforcement, task-board/blocker truth repair, honest SIL/context telemetry, and null-safe launch readiness inputs.",
   "nextMilestone": "Commit and push Session 21 to main, let GitHub Pages deploy from the direct push, then apply or unlock the Cloudflare custom-domain runbook and verify the public URL.",
   "blockers": [
     "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) — Cloudflare-side fix required; runbook in TASK_BOARD"
@@ -18,8 +18,8 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 161,
-    "pass": 161,
+    "totalTests": 162,
+    "pass": 162,
     "fail": 0,
     "lastRun": "2026-06-30",
     "newTestFiles": [
@@ -31,10 +31,10 @@
       "test/mobile-loop.test.js"
     ],
     "newTestCount": 30,
-    "coverage": "Known default-shard inventory is 161 tests (core 54, runtime 79, sim-contract 22, sim-realism 1, studio 5). Session 21 reran the full default suite plus Pages build and Pages smoke."
+    "coverage": "Known default-shard inventory is 162 tests (core 54, runtime 80, sim-contract 22, sim-realism 1, studio 5). Session 21 reran the full default suite plus Playwright UI 9/9 and Pages build/smoke."
   },
-  "testsPassing": 161,
-  "testsTotal": 161,
+  "testsPassing": 162,
+  "testsTotal": 162,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -104,7 +104,9 @@
       "npm run test:studio",
       "npm test",
       "npm run build:pages",
-      "npm run smoke:pages"
+      "npm run smoke:pages",
+      "npm run test:runtime",
+      "npm run test:ui"
     ],
     "timedOut": []
   },

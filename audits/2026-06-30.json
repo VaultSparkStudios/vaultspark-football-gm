@@ -12,12 +12,14 @@
     "honest-sil-context-telemetry"
   ],
   "verification": [
-    "node --check across 37 changed JS/MJS files",
+    "node --check across changed JS/MJS files",
     "node scripts/check-windows-hide.mjs",
     "node scripts/check-canon-044-waves.mjs",
     "node scripts/lib/sil-v6.mjs --repo-root . --medium infrastructure --json",
     "npm run test:studio 5/5",
-    "npm test 161/161",
+    "npm run test:runtime 80/80",
+    "npm run test:ui 9/9",
+    "npm test 162/162",
     "npm run build:pages",
     "npm run smoke:pages"
   ],

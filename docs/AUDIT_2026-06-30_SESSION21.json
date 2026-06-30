@@ -69,7 +69,7 @@
       "impact": 8,
       "innovation": 6,
       "priority": 30.3,
-      "title": "Preserve truthful blocker and task-board parsing while adding richer rules",
+      "title": "Preserve truthful blocker, task-board, and launch-readiness parsing while adding richer rules",
       "insight": "The broader blocker taxonomy initially regressed two live contracts: older task-board tables parsed to zero items, and GitHub Pages repo-secret work lost its agent-attemptable probe. Fixing the parser and classifier keeps CANON-019 honest because agent-runnable work stays visible as runnable.",
       "recipe": "Restore table/checklist fallback parsing, accept both bold and plain Human Action bullets, and add a GitHub Pages repo-secret blocker rule before the generic GitHub rule.",
       "premiseEvidence": [
@@ -80,7 +80,8 @@
       "status": "shipped",
       "verification": [
         "npm run test:studio",
-        "node scripts/ops.mjs doctor --json"
+        "node scripts/ops.mjs doctor --json",
+        "npm run test:ui"
       ]
     },
     {
@@ -133,6 +134,11 @@
       "slug": "honest-sil-context-telemetry",
       "status": "shipped",
       "evidence": "context-meter and SIL v6 probes run; Impact remains honestly uninstrumented"
+    },
+    {
+      "slug": "launch-readiness-null-bootstrap",
+      "status": "shipped",
+      "evidence": "Fixed null persistence/observability/publicDomainStatus bootstrap bug; Playwright UI 9/9; npm test 162/162"
     }
   ]
 }

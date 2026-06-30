@@ -1,39 +1,40 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 6ded71645435 -->
-<!-- generated-at: 2026-06-30T02:22:16.962Z -->
+<!-- source-hash: 1370c023bd3e -->
+<!-- generated-at: 2026-06-30T04:16:45.800Z -->
 
 # LATEST_HANDOFF (compact)
 
-## Handoff Summary — Session 21 (2026-06-30)
+Session 21 Handoff Summary
 
-Session
-- Session 21; medium: protocol infrastructure (Football GM Studio layer).
+Status
+- Session 21 (2026-06-30) hardened Studio protocol layer in Football GM.
+- Shipped all 4 audit items: safe-spawn/window-storm guard, CANON-044 Wave enforcement, blocker/parser truth repair, honest SIL/context telemetry.
+- Added CANON-043 dependency hygiene baseline (dependabot config + auto-merge workflow).
 
-Shipped
-- Safe-spawn wrapper forcing windowsHide:true plus check-windows-hide guard banning direct child_process imports outside allowlist.
-- CANON-044 Wave-list enforcement guard; repaired missing mandate in SESSION_PROTOCOL.md.
-- Blocker/parser truth repair: task-board.mjs parses legacy + Unified Genius List rows; blocker-rules.mjs maps Pages secret work to github.repo / gh auth.
-- Centralized context + SIL v6 telemetry; SIL Impact honestly 0/1000 (uninstrumented). Added dependabot config + auto-merge workflow (CANON-043).
+Shipped This Session
+- scripts/lib/safe-spawn.mjs forces windowsHide:true; check-windows-hide.mjs blocks direct child_process imports outside allowlist.
+- check-canon-044-waves.mjs enforces Wave-list mandate on agent-facing surfaces; SESSION_PROTOCOL.md repaired.
+- task-board.mjs re-parses legacy tables/checklists plus Unified Genius List rows; blocker-rules.mjs re-maps Pages secret work to github.repo/gh auth.
+- context-verdicts.mjs, cache-ledger-rollup.mjs, sil-v6.mjs centralize context/SIL telemetry. SIL Impact honestly 0/1000 until adoption instrumented.
 
-Current Intent
-- Direct push from main and deploy; verify the resulting GitHub Actions/Pages deployment.
-
-Now Bucket
-- Verify the Actions/Pages deployment created by this push.
-- Apply/unlock Cloudflare/GitHub Pages runbook, then re-run public URL smoke.
-- Set Launch Readiness to Ready only from public URL evidence.
-
-Blockers
-- vaultsparkstudios.com depends on Cloudflare-side remediation or credentials (public-safe; unresolved across multiple sessions).
-- SIL v6 Impact uninstrumented (0/1000) until adoption signals wired.
-- Hardened CI/deploy Playwright defenses still need a live Actions run to prove (carried from S14).
-
-Human-Blocked
-- Cloudflare/GitHub Pages cert + domain fix: open since Session 14 (~16 days; cert bad_authz, expired 2026-06-02). Needs founder action or cloudflare token in secrets gateway.
-
-Verification (S21)
-- node --check on 37 files; windows-hide + CANON-044 guards pass.
-- npm run test:studio 5/5; npm test 161/161; build:pages; smoke:pages.
+Verification
+- node --check across 37 files; windows-hide guard; canon-044 guard.
+- npm run test:studio 5/5; npm test 161/161 (post-fix 162/162); build:pages; smoke:pages.
+- Playwright UI 9/9 after null launch-readiness bootstrap fix.
 - SIL v6 infrastructure: Health 796/1000, Impact 0/1000.
 
-Next session: confirm Actions/Pages deploy is green, then apply Cloudflare runbook and re-smoke the public URL.
+Now Bucket (top 3)
+- Verify the GitHub Actions/Pages deployment created by this push.
+- Apply/unlock Cloudflare/GitHub Pages runbook, verify public URL, send public beta link.
+- Re-run public URL smoke and set Launch Readiness to Ready only from real evidence.
+
+Blockers (top 3)
+- vaultsparkstudios.com depends on Cloudflare-side remediation or credentials (human-blocked, open since Session 14, ~6 sessions).
+- SIL v6 Impact uninstrumented (0/1000) until adoption signals are wired.
+- Hardened CI/deploy defenses still need live Actions run to prove.
+
+Human-Blocked
+- Cloudflare/GitHub Pages public-domain cert/outage: requires founder Cloudflare credentials or runbook execution. Open since Session 14 (~6 sessions). Cert state bad_authz, expired 2026-06-02.
+
+Next Session Pointer
+- Verify this push's Pages deploy, then resolve Cloudflare blocker to flip Launch Readiness to Ready and ship the public beta link.

@@ -6,9 +6,11 @@
 
 - Shipped all 4 items from `docs/AUDIT_2026-06-30_SESSION21.*`: safe-spawn/window-storm guard, CANON-044 Wave enforcement, blocker/parser truth repair, and honest SIL/context telemetry.
 - Rejected the stale Session 19 game-audit sidecar as the active plan for this arc because the founder requested the infrastructure rubric and the live diff was protocol infrastructure.
-- Verification: `npm run test:studio` 5/5, full `npm test` 161/161, Pages build, Pages smoke, windows-hide guard, CANON-044 guard, context meter, and SIL v6 probe.
+- Verification: `npm run test:studio` 5/5, full `npm test` 162/162, Pages build, Pages smoke, windows-hide guard, CANON-044 guard, context meter, and SIL v6 probe.
 
 ## Where We Left Off — 2026-06-30 (Session 21)
+
+Follow-up deploy fix: remote CI exposed a null launch-readiness bootstrap bug; fixed and verified with Playwright UI 9/9 plus `npm test` 162/162.
 
 The requested `/arc -> /closeout -> direct push main -> deploy` chain ran from current repo evidence. Session 21 preserved the dirty worktree, rebased from `origin/main`, verified the existing WIP, repaired two real focused-test regressions, and prepared the repo for direct deployment from `main`.
 

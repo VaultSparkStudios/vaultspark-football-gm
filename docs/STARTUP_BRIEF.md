@@ -46,18 +46,18 @@
 
 ╔══ WHERE WE LEFT OFF  ·  Session 21 ════════════════════════════╗
 ║  Shipped:  see LATEST_HANDOFF.md                                 ║
-║  Tests:    161/161 passing  ·  Deploy: N/A                       ║
+║  Tests:    162/162 passing  ·  Deploy: N/A                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
-║     21,844 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~10,922 tok/turn  ·  cache 50%  ·  82 turns to compact       ║
+║  ✓  ██████████████████████░░   90% used                          ║
+║     9,052 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heuri  ║
+║     ~4,526 tok/turn  ·  cache 50%  ·  201 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         161/161 passing                                ║
+║  ✓  Tests         162/162 passing                                ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ✓  Runway        unknown                                        ║
 ║  ⛔  Context age   ?d                                             ║
@@ -72,7 +72,7 @@
 ║  ⛔  Revenue sig.  not found  ⚠ stale                             ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
 ║  ⚠  Doctor        not yet tracked — run: node scripts/ops.mjs d  ║
-║  ✓  Cost          real $0.00/7d · real metered total $0.0605 <   ║
+║  ✓  Cost          real $0.00/7d · real metered total $0.0724 <   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗

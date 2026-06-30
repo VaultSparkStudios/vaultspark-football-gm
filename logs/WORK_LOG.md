@@ -101,3 +101,4 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Root-fixed two focused Studio test regressions: legacy TASK_BOARD tables/checklists parsed to zero items, and GitHub Pages repo-secret work lost its `github.repo` / `gh auth status` attempt path.
 - Verification: `node --check` across 37 changed JS/MJS files, `npm run test:studio` 5/5, full `npm test` 161/161, `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, CANON-044 guard, context meter, and SIL v6 probe.
 - Closeout note: repo-local `scripts/closeout-autopilot.mjs` is absent, so this session ran the required closeout gates manually and recorded the helper gap.
+- Follow-up after push: GitHub CI exposed a real browser bootstrap bug where null launch-readiness inputs left `#statusChip` stuck at `Loading...`; fixed `public/lib/tabSettings.js`, added a regression test, and verified `npm run test:ui` 9/9 plus full `npm test` 162/162.

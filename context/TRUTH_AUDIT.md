@@ -54,3 +54,4 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - The default test inventory is verified as 161 passing tests in this run: core 54, runtime 79, sim-contract 22, sim-realism 1, studio 5. The prior 184-test Session 20 note is treated as historical and not reused for Session 21 evidence.
 - `node scripts/ops.mjs doctor --json` now classifies GitHub Pages repo-secret work as agent-attemptable with `github.repo` and `gh auth status`; Cloudflare custom-domain remediation remains not auto-ready from this repo.
 - SIL v6 Impact intentionally remains 0/1000 with needs-instrumentation rows. That is an honest missing-measurement signal, not a quality score to inflate manually.
+- Follow-up correction: Session 21 remote CI failed the UI gate because `buildLaunchReadinessRows()` assumed non-null launch-readiness inputs. The fix is committed in-browser code, not a test relaxation; verified by Playwright UI 9/9 and default suite 162/162.
