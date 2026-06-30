@@ -143,7 +143,7 @@ export function renderStoryHTML(story) {
     </div>
   </div>
   <div class="footer">
-    Generated ${now} &nbsp;&bull;&nbsp; <a href="https://vaultsparkstudios.com/vaultspark-football-gm/" target="_blank">VaultSpark Football GM</a>
+    Generated ${now} &nbsp;&bull;&nbsp; <a href="https://playfranchisearchitect.com/" target="_blank">Franchise Architect: Football</a>
   </div>
 </div>
 </body>

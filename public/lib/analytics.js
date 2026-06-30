@@ -1,5 +1,5 @@
 /**
- * VaultSpark Football GM — Privacy-First Engagement Analytics
+ * Franchise Architect: Football — Privacy-First Engagement Analytics
  *
  * Collects anonymous usage signals: no PII, no network requests, localStorage only.
  * Players opt in via the Settings tab. Studio exports the aggregate via the console

@@ -1747,7 +1747,7 @@ export function createLocalApiRuntime({
               highlight: walkoff ? `${walkoff.type} by ${walkoff.description?.split(" ")[0] || "your team"} — ${walkoff.quarterLabel}` : "Big moments on both sides",
               result: won ? "win" : "loss",
               score: `${teamScore}-${oppScore}`,
-              shareText: `🏈 Week ${game.week} ${won ? "Win" : "Loss"} — ${teamScore}-${oppScore}. Playing VaultSpark Football GM — best GM sim around! #VaultSpark`,
+              shareText: `🏈 Week ${game.week} ${won ? "Win" : "Loss"} — ${teamScore}-${oppScore}. Playing Franchise Architect: Football — best GM sim around! #VaultSpark`,
               topPlay: pbp.find((p) => p.description?.toLowerCase().includes("touchdown") || p.description?.toLowerCase().includes("interception"))?.description || null
             };
           }

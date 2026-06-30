@@ -1,4 +1,4 @@
-export const GAME_NAME = "VaultSpark Football GM";
+export const GAME_NAME = "Franchise Architect: Football";
 
 export const NFL_STRUCTURE = {
   conferences: ["AFC", "NFC"],

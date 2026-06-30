@@ -101,7 +101,7 @@ export async function exportToGist(snapshot, token, gistId) {
   if (content.length > 10_000_000) throw new Error("Snapshot too large for Gist (> 10 MB). Try exporting after a shorter session.");
 
   const targetId = gistId || getSavedGistId();
-  const description = `VaultSpark Football GM save — ${new Date().toISOString().slice(0, 10)} (${size} KB)`;
+  const description = `Franchise Architect: Football save — ${new Date().toISOString().slice(0, 10)} (${size} KB)`;
   const body = {
     description,
     public: false,

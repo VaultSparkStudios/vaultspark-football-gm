@@ -1,14 +1,14 @@
-# VaultSpark Football GM
+# Franchise Architect: Football
 
-VaultSpark Football GM is a proprietary browser franchise simulator by VaultSpark Studios LLC.
+Franchise Architect: Football is a proprietary browser franchise simulator by VaultSpark Studios LLC.
 
-Canonical URL: https://vaultsparkstudios.com/vaultspark-football-gm/
-Contact: footballgm@vaultsparkstudios.com
+Canonical URL: https://playfranchisearchitect.com/
+Contact: football@playfranchisearchitect.com
 Rights: Proprietary - All Rights Reserved, VaultSpark Studios LLC.
 
 Useful paths:
-- /vaultspark-football-gm/ - browser game
-- /vaultspark-football-gm/contact.html - project contact
-- /vaultspark-football-gm/privacy.html - privacy notice
-- /vaultspark-football-gm/terms.html - terms and rights notice
-- /vaultspark-football-gm/agents.json - machine-readable agent metadata
+- /franchise-architect-football/ - browser game
+- /franchise-architect-football/contact.html - project contact
+- /franchise-architect-football/privacy.html - privacy notice
+- /franchise-architect-football/terms.html - terms and rights notice
+- /franchise-architect-football/agents.json - machine-readable agent metadata

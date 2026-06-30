@@ -3,7 +3,7 @@
 // (plain DOM + the Obelisk client script). Works in any React/Vite SPA.
 import { useEffect, useRef } from "react";
 const IDP = "https://obeliskgate.com";
-export function ObeliskLogin({ project = "Football GM", tier = "T4", returnUrl }) {
+export function ObeliskLogin({ project = "Franchise Architect: Football", tier = "T4", returnUrl }) {
   const ref = useRef(null);
   useEffect(() => {
     const ret = returnUrl || (location.origin + "/auth/callback");
