@@ -46,3 +46,7 @@ Verification after correction:
 - `npm run smoke:pages`
 - `npm test` — 165/165
 - `npm run test:ui` — 9/9
+
+## Final Live-Domain Evidence
+
+The deployed Pages artifact for `3c3e795` contains the slug-prefixed route files, confirmed by listing the downloaded artifact. Live custom-domain smoke still returns 404/fallback for the new `/vaultspark-football-gm/*` compliance routes, so the remaining launch blocker is external domain routing/certificate state, not missing repo files.

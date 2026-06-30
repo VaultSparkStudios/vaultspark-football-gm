@@ -37,3 +37,7 @@ Public-safe summary:
 ## 2026-06-30 — Session 23 post-push correction
 
 Post-push smoke found the first Session 23 Pages deploy served the app root but not the newly added project-path compliance routes. `scripts/build-pages.mjs` now mirrors the generated artifact under `static/vaultspark-football-gm/`, and `scripts/smoke-pages.mjs` asserts those mirrored files. Re-run public route smoke after the follow-up deploy, then keep the custom-domain certificate `bad_authz` as the remaining launch gate until GitHub Pages API evidence changes.
+
+## 2026-06-30 — Session 23 final live-domain evidence
+
+The Pages artifact for `3c3e795` contains the slug-prefixed compliance files, but live custom-domain route smoke still returns 404/fallback for those routes. The repo-side packaging gap is closed; Launch Readiness remains blocked on the external custom-domain routing/certificate layer.

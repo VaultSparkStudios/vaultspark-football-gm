@@ -192,6 +192,11 @@
       "slug": "project-path-pages-mirror",
       "status": "shipped-second-order-follow-up",
       "evidence": "Post-push smoke found project-path compliance routes falling into fallback; build-pages mirrors the artifact under static/vaultspark-football-gm and smoke-pages asserts mirrored files."
+    },
+    {
+      "slug": "live-domain-route-smoke",
+      "status": "verified-blocked-external",
+      "evidence": "Pages artifact for 3c3e795 contains slug-prefixed files, but live custom-domain project-path compliance routes still return 404/fallback; remaining blocker is domain routing/certificate state."
     }
   ]
 }

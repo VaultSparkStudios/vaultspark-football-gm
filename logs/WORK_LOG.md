@@ -126,3 +126,9 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Verified first Session 23 push: GitHub Actions green, project root HTTP 200, but newly added `/vaultspark-football-gm/*` compliance routes fell into fallback/404 behavior.
 - Fixed Pages artifact packaging by mirroring the generated static bundle under `static/vaultspark-football-gm/`.
 - Added smoke assertions for mirrored project-path files and reran `npm run build:pages`, `npm run smoke:pages`, `npm test` (165/165), and `npm run test:ui` (9/9).
+
+## 2026-06-30 — Session 23 final live-domain evidence
+
+- Confirmed GitHub Actions green for `3c3e795`.
+- Downloaded Pages artifact and listed `artifact.tar`; slug-prefixed route files are present.
+- Live custom-domain route smoke still returned 404/fallback for new compliance routes, so remaining blocker is external domain/routing/certificate state.

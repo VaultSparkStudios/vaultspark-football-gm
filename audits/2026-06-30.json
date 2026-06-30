@@ -13,15 +13,15 @@
     "static-route-build-smoke-proof",
     "project-path-pages-mirror"
   ],
-  "suite": "npm test 165/165; Playwright UI 9/9; Pages build/smoke pass with root and slug-prefixed public route assertions",
+  "suite": "npm test 165/165; Playwright UI 9/9; Pages build/smoke pass; slug-prefixed files confirmed inside deployed Pages artifact; live custom-domain compliance routes still 404/fallback",
   "blockingFailing": 0,
   "deferred": [
     {
-      "reason": "Cloudflare/API credentials missing; GitHub Pages API still reports bad_authz certificate despite public URL HTTP 200.",
+      "reason": "Deployed artifact contains slug-prefixed route files, but GitHub Pages API still reports bad_authz certificate and live compliance routes still 404/fallback.",
       "slug": "cloudflare-cert-repair"
     },
     {
-      "reason": "Needs post-follow-up public route smoke and certificate-state verification.",
+      "reason": "Blocked by live custom-domain routing/certificate state: deployed artifact contains route files, but live project-path compliance URLs still return 404/fallback.",
       "slug": "sparked-release-flip"
     }
   ],

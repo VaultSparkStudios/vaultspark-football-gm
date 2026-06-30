@@ -4,10 +4,10 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 23 repaired beta-facing browser affordances, aligned Commissioner Mode UI/runtime contracts, completed the public contact/legal/agent metadata surface, and fixed the Pages artifact shape so canonical /vaultspark-football-gm/* routes receive slug-prefixed files.",
-  "nextMilestone": "After the follow-up deploy completes, run public route smoke for /vaultspark-football-gm/contact.html, privacy.html, terms.html, agents.json, .well-known/llms.txt, and sitemap.xml; then re-check GitHub Pages certificate state before changing Launch Readiness.",
+  "currentFocus": "Session 23 repaired beta-facing browser affordances, aligned Commissioner Mode UI/runtime contracts, completed the public contact/legal/agent metadata surface, and proved the Pages artifact now contains slug-prefixed /vaultspark-football-gm/* files.",
+  "nextMilestone": "External domain remediation: live custom-domain smoke still returns 404/fallback for new /vaultspark-football-gm/* compliance routes even though the deployed Pages artifact contains those files. Re-check after GitHub Pages certificate/routing repair.",
   "blockers": [
-    "GitHub Pages API still reports custom-domain certificate bad_authz/expired 2026-06-02. Session 23 fixed repo-side project-path route packaging; certificate remediation remains evidence-gated before public launch flip."
+    "GitHub Pages artifact for commit 3c3e795 contains slug-prefixed compliance files, but live custom-domain project-path routes still return 404/fallback. GitHub Pages API still reports custom-domain certificate bad_authz/expired 2026-06-02; launch readiness remains blocked on external domain/routing/certificate remediation."
   ],
   "lastUpdated": "2026-06-30",
   "lifecycle": "deployed",
@@ -27,7 +27,7 @@
       "test/public-compliance.test.js"
     ],
     "newTestCount": 6,
-    "coverage": "Known default-shard inventory is 165 tests after Session 23 (core 54, runtime 83, sim-contract 22, sim-realism 1, studio 5). Session 23 also verified Playwright UI 9/9, Pages build, Pages smoke with root and slug-prefixed static route assertions, and post-push workflow status."
+    "coverage": "Known default-shard inventory is 165 tests after Session 23 (core 54, runtime 83, sim-contract 22, sim-realism 1, studio 5). Session 23 also verified Playwright UI 9/9, Pages build, Pages smoke with root and slug-prefixed static route assertions, post-push workflow status, and deployed artifact contents."
   },
   "testsPassing": 165,
   "testsTotal": 165,
@@ -100,12 +100,21 @@
       "npm run build:pages",
       "npm run smoke:pages",
       "gh run list --branch main --limit 6",
+      "gh run download 28428765527 -n github-pages",
+      "tar -tf artifact.tar confirmed vaultspark-football-gm/contact.html, agents.json, llms.txt, sitemap.xml, styles.css",
       "gh api repos/VaultSparkStudios/vaultspark-football-gm/pages",
-      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/",
-      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/contact.html (pre-fix returned 404/fallback; build mirror fix added)"
+      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/ returned 200"
     ],
     "date": "2026-06-30",
-    "timedOut": []
+    "timedOut": [],
+    "failed": [
+      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/contact.html returned 404 after artifact fix",
+      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/privacy.html returned 404 after artifact fix",
+      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/terms.html returned 404 after artifact fix",
+      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/agents.json returned 404 after artifact fix",
+      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/.well-known/llms.txt returned 404 after artifact fix",
+      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/sitemap.xml returned 404 after artifact fix"
+    ]
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "T2_opusplan",

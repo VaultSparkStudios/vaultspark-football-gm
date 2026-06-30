@@ -332,3 +332,7 @@ Verification passed after the fix:
 
 Remaining public-safe blocker:
 - GitHub Pages API still reports the custom-domain certificate as `bad_authz`/expired `2026-06-02`; route packaging is fixed repo-side, certificate state still needs post-deploy evidence before Launch Readiness changes.
+
+## Session 23 final live-domain evidence
+
+The follow-up Pages artifact for `3c3e795` contains the slug-prefixed route files, confirmed by listing `artifact.tar`. After the successful Pages deploy, live custom-domain route smoke still returned 404/fallback for the new `/vaultspark-football-gm/*` compliance routes. Treat the remaining launch blocker as custom-domain routing/certificate state, not missing repo files.

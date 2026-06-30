@@ -77,3 +77,8 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Post-push route smoke found the new project-path compliance routes (`/vaultspark-football-gm/contact.html`, `privacy.html`, `terms.html`, `agents.json`, `llms.txt`, `sitemap.xml`) were not served from the live custom-domain path even though the Pages workflow and local smoke were green.
 - Root cause fixed repo-side: `scripts/build-pages.mjs` now mirrors the generated artifact under `static/vaultspark-football-gm/`, and `scripts/smoke-pages.mjs` asserts the mirrored files so the deployed custom-domain/project-path shape is covered before upload.
 - Launch truth unchanged: GitHub Pages API still reports custom-domain certificate `bad_authz`/expired `2026-06-02`; the route packaging fix is not a certificate remediation.
+
+## 2026-06-30 — Session 23 deployed artifact vs live domain truth
+
+- Deployed Pages artifact for commit `3c3e795` contains `vaultspark-football-gm/contact.html`, `agents.json`, `.well-known/llms.txt`, `sitemap.xml`, and supporting assets.
+- Live custom-domain route smoke after that successful Pages deploy still returns 404/fallback for the new project-path compliance routes. This disproves a repo-artifact-only root cause and keeps launch readiness blocked on the external custom-domain routing/certificate layer.

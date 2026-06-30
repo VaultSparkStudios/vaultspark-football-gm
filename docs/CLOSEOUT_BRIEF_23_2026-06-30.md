@@ -14,16 +14,16 @@
 
 ## Follow-ups
 
-- **Post-follow-up public route smoke**: After the mirror-fix deploy completes, verify game, contact, privacy, terms, agents.json, llms.txt, and sitemap.xml from the live `/vaultspark-football-gm/` URL.
+- **External domain/routing remediation**: Follow-up deploy artifact contains the slug-prefixed files, but live `/vaultspark-football-gm/contact.html`, privacy, terms, agents.json, llms.txt, and sitemap.xml still return 404/fallback from the custom domain.
 - **Launch Readiness certificate state**: Re-check GitHub Pages API certificate state; keep readiness evidence-driven until bad_authz clears or is explicitly resolved.
 
 ## Blockers
 
-- **Custom-domain certificate bad_authz**: GitHub Pages API reports certificate state bad_authz/expired 2026-06-02; Cloudflare-edge route returned HTTP 200, so the blocker is now cert-state verification, not blanket 403.
+- **Custom-domain route/certificate layer**: GitHub Pages API reports certificate state bad_authz/expired 2026-06-02. The deployed artifact contains the new project-path files, but the custom domain still returns 404/fallback for those routes.
 
 ## Honesty Ledger
 
-- **Did not force-green public launch**: Public root returned HTTP 200, the first post-push route smoke exposed missing project-path files, and the repo-side mirror fix is now covered by smoke. GitHub Pages API still reports bad_authz; launch readiness remains gated.
+- **Did not force-green public launch**: Public root returned HTTP 200, the first post-push route smoke exposed project-path failures, and the repo-side artifact now contains the mirrored files. Live custom-domain routes still return 404/fallback and GitHub Pages API still reports bad_authz; launch readiness remains gated.
 - **Manual innovation pack**: Local ops innovation-pack is unsupported, so Session 23 recorded a manual second-order pass instead of inventing tool output.
 
 ## Proof
@@ -31,4 +31,4 @@
 - Files changed: 33
 - Insertions: 351
 - Deletions: 156
-- Suite: npm test 165/165; Playwright UI 9/9; Pages build/smoke pass, including slug-prefixed Pages artifact assertions
+- Suite: npm test 165/165; Playwright UI 9/9; Pages build/smoke pass, slug-prefixed artifact assertions, deployed artifact listing confirmed
