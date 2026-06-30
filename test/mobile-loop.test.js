@@ -67,3 +67,13 @@ test("app shell imports and wires the mobile loop overlay", () => {
   assert.doesNotMatch(appSource, /typeof initMobileLoop/);
   assert.match(appSource, /checkAndPruneRewindStorage\(\);\s*syncMobileLoopOverlay\(\);/s);
 });
+
+
+test("player history archive has an empty-season fallback for selected players", () => {
+  const historySource = fs.readFileSync(new URL("../public/lib/tabHistory.js", import.meta.url), "utf8");
+  const flowSource = fs.readFileSync(new URL("../public/lib/gameFlow.js", import.meta.url), "utf8");
+
+  assert.match(historySource, /No logged seasons yet/);
+  assert.match(historySource, /<article class=\"history-card\">/);
+  assert.match(flowSource, /No logged seasons for this filter/);
+});

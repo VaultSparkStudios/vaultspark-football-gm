@@ -5,14 +5,15 @@
   "project": "vaultspark-football-gm",
   "silScore": 906,
   "tests": {
-    "passed": 163,
-    "total": 163
+    "passed": 164,
+    "total": 164
   },
   "shipped": [
     "wire-mobile-core-loop",
     "deterministic-runtime-ids",
     "canon-strong-gap-repair",
-    "mobile-overlay-post-advance-refresh"
+    "mobile-overlay-post-advance-refresh",
+    "player-history-empty-season-fallback"
   ],
   "deferred": [
     {
@@ -25,5 +26,5 @@
     }
   ],
   "blockingFailing": 0,
-  "suite": "npm test 163/163; Pages build/smoke pass"
+  "suite": "npm test 164/164; Playwright UI 9/9; Pages build/smoke pass"
 }

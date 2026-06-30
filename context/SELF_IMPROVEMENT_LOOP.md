@@ -1,7 +1,7 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 22 closed at 906 / 1000 SIL v3.0. Last verified suite: 163/163 plus Pages build/smoke.
+Rolling status: Session 22 closed at 906 / 1000 SIL v3.0. Last verified suite: 164/164 plus Playwright UI 9/9 and Pages build/smoke.
 <!-- rolling-status-end -->
 
 
@@ -11,7 +11,7 @@ Score: 906 / 1000
 
 Category notes:
 - Engagement: +5 for making the mobile core loop actually reachable in the browser shell and keeping it fresh after week advancement.
-- Dev Health: +3 for removing remaining runtime randomness from replay-sensitive IDs/callers and proving deterministic output with focused tests.
+- Dev Health: +3 for removing remaining runtime randomness from replay-sensitive IDs/callers, proving deterministic output with focused tests, and repairing the CI-exposed player-history empty-state fallback.
 - Process Quality / Cross-Repo Coherence: +5 for repairing current STRONG canon gaps to 0 and recording honest deferrals instead of force-greening public reachability.
 - Momentum: +4 for completing the primary audit and second-order innovation pass in one continuous `/goal /arc` run.
 

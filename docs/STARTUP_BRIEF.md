@@ -46,18 +46,18 @@
 
 ╔══ WHERE WE LEFT OFF  ·  Session 22 ════════════════════════════╗
 ║  Shipped:  see LATEST_HANDOFF.md                                 ║
-║  Tests:    163/163 passing  ·  Deploy: N/A                       ║
+║  Tests:    164/164 passing  ·  Deploy: N/A                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     13,587 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~6,794 tok/turn  ·  cache 50%  ·  133 turns to compact       ║
+║  ✓  ██████████████████████░░   90% used                          ║
+║     9,082 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heuri  ║
+║     ~4,541 tok/turn  ·  cache 50%  ·  200 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         163/163 passing                                ║
+║  ✓  Tests         164/164 passing                                ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ✓  Runway        unknown                                        ║
 ║  ⛔  Context age   ?d                                             ║

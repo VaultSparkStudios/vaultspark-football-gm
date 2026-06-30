@@ -543,7 +543,7 @@ export async function loadPlayerTimeline() {
   if (!playerId) return;
   const payload = await api(`/api/history/player?playerId=${encodeURIComponent(playerId)}`);
   state.historyTimeline = payload.timeline || null;
-  const rows = (payload.timeline?.timeline || []).map((entry) => ({
+  let rows = (payload.timeline?.timeline || []).map((entry) => ({
     year: entry.year,
     tm: teamCode(entry.teamId),
     champion: entry.champion ? "Yes" : "",
@@ -558,6 +558,24 @@ export async function loadPlayerTimeline() {
     sacks: entry.stats?.defense?.sacks || 0,
     ints: entry.stats?.defense?.int || 0
   }));
+  if (!rows.length && payload.timeline) {
+    const selected = (state.historyPlayerSearchResults || []).find((player) => player.id === playerId) || null;
+    rows = [{
+      year: state.dashboard?.currentYear || "-",
+      tm: teamCode(selected?.teamId || ""),
+      champion: "",
+      awards: "No logged seasons for this filter",
+      passYds: 0,
+      passTd: 0,
+      rushYds: 0,
+      rushTd: 0,
+      recYds: 0,
+      recTd: 0,
+      tackles: 0,
+      sacks: 0,
+      ints: 0
+    }];
+  }
   renderPlayerHistoryArchive(payload.timeline || null);
   renderTable("playerTimelineTable", rows);
 }

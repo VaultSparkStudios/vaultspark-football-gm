@@ -58,6 +58,7 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 
 ## 2026-06-30 — Session 22 truth updates
 
+- CI follow-up truth repair: player history no longer renders an empty archive when a selected player has no logged timeline rows for the active filter; the UI shows a selected-player fallback card and table row instead.
 - Mobile Loop truth repair: `public/app.js` now imports and calls `mobileLoop.js`; the Settings toggle no longer relies on undefined globals, and the enabled overlay refreshes after Advance Week state mutation.
 - Determinism truth repair: runtime `Math.random()` usage is removed from event IDs/callers; the only remaining `Math.random()` grep hit is the intentional test cache-busting import in `test/create-api-client.test.js`.
 - Canon truth repair: `check-canon-conformance` now reports 0 gaps after adding rolling-status markers and `prompts/initiate.md`; `context/CANON_ADOPTION.md` records the active posture.

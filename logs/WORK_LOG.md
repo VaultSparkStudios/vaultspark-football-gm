@@ -110,4 +110,4 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Restored mobile core loop app-shell wiring and added the post-advance overlay refresh path.
 - Removed remaining runtime `Math.random()` leaks from event IDs/callers and covered deterministic output with `test/deterministic-ids.test.js`.
 - Repaired current STRONG canon gaps: rolling-status markers, `prompts/initiate.md`, and `context/CANON_ADOPTION.md`; conformance now reports 0 gaps.
-- Verification: focused mobile/determinism 8/8, runtime 81/81, studio 5/5, full `npm test` 163/163, Pages build/smoke, and canon conformance 0 gaps.
+- Verification: focused mobile/determinism 8/8, runtime 82/82, studio 5/5, full `npm test` 164/164, Pages build/smoke, and canon conformance 0 gaps.

@@ -4,7 +4,7 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 22 restored mobile core loop browser wiring, refreshed enabled mobile mode after week advancement, removed remaining runtime determinism leaks, repaired canon conformance gaps to 0, and verified the repo at 163/163 plus Pages build/smoke.",
+  "currentFocus": "Session 22 restored mobile core loop browser wiring, refreshed enabled mobile mode after week advancement, removed remaining runtime determinism leaks, repaired canon conformance gaps to 0, and fixed the CI browser-history fallback exposed after push. Verified at 164/164 plus Playwright 9/9 and Pages build/smoke.",
   "nextMilestone": "Push Session 22 to main, confirm GitHub Actions/Pages deployment, then apply or unlock the Cloudflare custom-domain runbook and verify the public beta URL before marking Launch Readiness ready.",
   "blockers": [
     "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) \u2014 Cloudflare-side fix required; runbook in TASK_BOARD"
@@ -18,19 +18,19 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 163,
-    "pass": 163,
+    "totalTests": 164,
+    "pass": 164,
     "fail": 0,
     "lastRun": "2026-06-30",
     "newTestFiles": [
       "test/deterministic-ids.test.js",
       "test/mobile-loop.test.js"
     ],
-    "newTestCount": 5,
-    "coverage": "Known default-shard inventory is 163 tests (core 54, runtime 81, sim-contract 22, sim-realism 1, studio 5). Session 22 reran focused mobile/determinism tests, runtime, studio, full default suite, Pages build, and Pages smoke."
+    "newTestCount": 6,
+    "coverage": "Known default-shard inventory is 164 tests (core 54, runtime 82, sim-contract 22, sim-realism 1, studio 5). Session 22 reran focused mobile/determinism tests, Playwright UI 9/9, full default suite, Pages build, and Pages smoke after the CI history fallback repair."
   },
-  "testsPassing": 163,
-  "testsTotal": 163,
+  "testsPassing": 164,
+  "testsTotal": 164,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -94,8 +94,7 @@
       "node scripts/ops.mjs blocker-preflight",
       "node scripts/context-meter.mjs --json",
       "node --test test/mobile-loop.test.js test/deterministic-ids.test.js",
-      "npm run test:runtime",
-      "npm run test:studio",
+      "npm run test:ui",
       "npm test",
       "npm run build:pages",
       "npm run smoke:pages",

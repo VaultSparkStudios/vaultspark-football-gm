@@ -6,7 +6,7 @@
 
 - Shipped all 3 items from `docs/AUDIT_2026-06-30_SESSION22.*`: mobile core loop wiring, deterministic runtime IDs/callers, and canon strong-gap repair.
 - Shipped the second-order innovation candidate in `docs/INNOVATION_PACK.md`: enabled mobile mode refreshes after Advance Week state mutation so decision cards do not go stale.
-- Verification: focused mobile/determinism 8/8, `npm run test:runtime` 81/81, `npm run test:studio` 5/5, full `npm test` 163/163, Pages build/smoke, and canon conformance 0 gaps.
+- Verification: focused mobile/determinism 8/8, `npm run test:runtime` 81/81, `npm run test:studio` 5/5, full `npm test` 164/164, Pages build/smoke, and canon conformance 0 gaps.
 
 ## Where We Left Off — 2026-06-30 (Session 22)
 
@@ -18,12 +18,13 @@ What changed:
 - Runtime `Math.random()` usage is gone outside the intentional test cache-busting import: news IDs, press conference IDs, multiplayer intent IDs, and Draft War Room trade callers are deterministic from event/pick context.
 - `test/deterministic-ids.test.js` covers deterministic replay for these runtime IDs/callers, and `test/mobile-loop.test.js` covers the browser-shell wiring contract.
 - `context/CANON_ADOPTION.md`, `prompts/initiate.md`, and rolling-status markers in `context/SELF_IMPROVEMENT_LOOP.md` repair current STRONG canon gaps; conformance now reports 0 gaps.
+- Follow-up CI repair: the pushed browser gate exposed that selected players with no logged regular-season timeline rendered an empty archive; `tabHistory.js` and `gameFlow.js` now show a selected-player fallback card/table row, verified by Playwright 9/9.
 
 Verification passed:
 - `node --test test/mobile-loop.test.js test/deterministic-ids.test.js` — 8/8
 - `npm run test:runtime` — 81/81
 - `npm run test:studio` — 5/5
-- `npm test` — 163/163
+- `npm test` — 164/164
 - `npm run build:pages`
 - `npm run smoke:pages`
 - `node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline` — 0 gaps

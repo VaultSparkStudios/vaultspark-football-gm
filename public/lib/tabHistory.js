@@ -224,7 +224,24 @@ export function renderPlayerHistoryArchive(payload = null) {
         </div>
       `;
     }
-    if (gallery) gallery.innerHTML = `<div class="history-empty">No player history loaded yet.</div>`;
+    if (gallery) {
+      gallery.innerHTML = selected
+        ? `<article class="history-card">
+            <div class="history-card-top">
+              <div class="history-card-title">
+                <strong>${escapeHtml(selected.name || "Selected Player")}</strong>
+                <div class="history-card-meta">${escapeHtml(selected.pos || "-")} | ${escapeHtml(teamCode(selected.teamId))} | No logged seasons yet</div>
+              </div>
+              <div class="history-number-plate">${escapeHtml(teamCode(selected.teamId))}</div>
+            </div>
+            <div class="history-card-grid">
+              <div class="history-card-stat"><strong>Status</strong><div>${escapeHtml(selected.status || "active")}</div></div>
+              <div class="history-card-stat"><strong>OVR</strong><div>${escapeHtml(selected.overall || "-")}</div></div>
+              <div class="history-card-stat"><strong>Archive</strong><div>No season rows logged for this filter.</div></div>
+            </div>
+          </article>`
+        : `<div class="history-empty">No player history loaded yet.</div>`;
+    }
     return;
   }
 
