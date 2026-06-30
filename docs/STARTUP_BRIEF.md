@@ -1,11 +1,11 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-06-30 (Session 23 closeout) -->
+<!-- generated-at: 2026-06-30 (Session 24 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 
 # Startup Brief — VaultSpark Football GM
 
-> **Fast-boot brief** — generated at Session 23 closeout · 2026-06-30.
+> **Fast-boot brief** — generated at Session 24 closeout · 2026-06-30.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -14,7 +14,7 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🚀 VAULTSPARK FOOTBALL GM                                       ║
 ║  project · deployed/public-unlaunched · FORGE                    ║
-║  Session 24 · 2026-06-30 · FOUNDER MODE                          ║
+║  Session 25 · 2026-06-30 · FOUNDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -24,40 +24,40 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    921/1000   ██████████████████████░░   92%                     ║
+║    930/1000   ██████████████████████░░   93%                     ║
 ║    SIL v3.0  ·  Avg3: ?  ·  Velocity 0→                          ║
 ║    Last active: 0d  ·  Last closeout: ?d  ·  (active = newest o  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health         0    ░░░░░░░░░░  —        →                ║
-║    Alignment          0    ░░░░░░░░░░  —        →                ║
-║    Momentum           0    ░░░░░░░░░░  —        →                ║
-║    Engagement         0    ░░░░░░░░░░  —        →                ║
-║    Process Qual       0    ░░░░░░░░░░  —        →                ║
-║    Coherence         98    ██████████  ········ →                ║
-║    Security          94    █████████░  ········ →                ║
-║    Ecosystem         87    █████████░  ········ →                ║
-║    Capital           88    █████████░  ········ →                ║
+║    Dev Health        97    ██████████  ▇        →                ║
+║    Alignment         76    ████████░░  ▆        →                ║
+║    Momentum          94    █████████░  ▇        →                ║
+║    Engagement        90    █████████░  ▇        →                ║
+║    Process Qual     100    ██████████  █        →                ║
+║    Coherence         99    ██████████  ········ →                ║
+║    Security          95    ██████████  ········ →                ║
+║    Ecosystem         90    █████████░  ········ →                ║
+║    Capital           89    █████████░  ········ →                ║
 ║    Automation       100    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 23 ════════════════════════════╗
+╔══ WHERE WE LEFT OFF  ·  Session 24 ════════════════════════════╗
 ║  Shipped:  see LATEST_HANDOFF.md                                 ║
-║  Tests:    165/165 passing  ·  Deploy: N/A                       ║
+║  Tests:    166/166 passing  ·  Deploy: N/A                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     9,045 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heuri  ║
-║     ~4,523 tok/turn  ·  cache 50%  ·  201 turns to compact       ║
+║     14,786 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~7,393 tok/turn  ·  cache 50%  ·  122 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         165/165 passing                                ║
+║  ✓  Tests         166/166 passing                                ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ✓  Runway        unknown                                        ║
 ║  ⛔  Context age   ?d                                             ║
@@ -72,7 +72,7 @@
 ║  ⛔  Revenue sig.  not found  ⚠ stale                             ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
 ║  ⚠  Doctor        not yet tracked — run: node scripts/ops.mjs d  ║
-║  ✓  Cost          real $0.00/7d · real metered total $0.1108 <   ║
+║  ✓  Cost          real $0.00/7d · real metered total $0.1264 <   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -97,5 +97,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 23 closeout · 2026-06-30*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 24 closeout · 2026-06-30*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

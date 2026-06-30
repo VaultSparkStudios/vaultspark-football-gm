@@ -82,3 +82,11 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 
 - Deployed Pages artifact for commit `3c3e795` contains `vaultspark-football-gm/contact.html`, `agents.json`, `.well-known/llms.txt`, `sitemap.xml`, and supporting assets.
 - Live custom-domain route smoke after that successful Pages deploy still returns 404/fallback for the new project-path compliance routes. This disproves a repo-artifact-only root cause and keeps launch readiness blocked on the external custom-domain routing/certificate layer.
+
+## 2026-06-30 — Session 24 truth updates
+
+- Startup brief truth repair: the first five SIL category rows now derive from `PROJECT_STATUS.json.silCategoriesV3` when the SIL log only has prose category notes, so a 921/1000 brief no longer renders false zero bars.
+- Protocol truth repair: `node scripts/ops.mjs innovation-pack` now exists and produces source-derived candidates; prior notes saying the command is unsupported are obsolete after this session.
+- Guard truth repair: the Windows no-window guard now detects dynamic `import('node:child_process')` as well as static imports and `require()`.
+- Task-board truth repair: old rows for Pages CI, GameSession lookup indexes, and closeout renderer shims now reflect the later completed state already documented in the same board.
+- Launch truth unchanged: external custom-domain certificate/routing remediation remains blocked on provider/dashboard state, not repo-side packaging or tests.

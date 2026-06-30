@@ -132,3 +132,14 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Confirmed GitHub Actions green for `3c3e795`.
 - Downloaded Pages artifact and listed `artifact.tar`; slug-prefixed route files are present.
 - Live custom-domain route smoke still returned 404/fallback for new compliance routes, so remaining blocker is external domain/routing/certificate state.
+
+## 2026-06-30 — Session 24: protocol expansion and observability honesty closeout
+
+- Ran the requested `/goal /arc` sequence through startup, live audit, implementation, second-order innovation, verification, and closeout.
+- Generated `docs/AUDIT_2026-06-30_SESSION24.md` from verified live findings, then shipped all four items.
+- Added a real project-local innovation pack command (`scripts/generate-innovation-pack.mjs`, `ops innovation-pack`, dry-run support) so future arcs no longer need manual expansion for this protocol step.
+- Hardened Windows child-process guard coverage by catching dynamic `node:child_process` imports and routing the startup v5 branch through `safe-spawn`.
+- Repaired startup brief SIL category rendering to prefer `PROJECT_STATUS.json.silCategoriesV3`, eliminating false zero category rows under a 921/1000 headline.
+- Cleaned stale task-board rows that incorrectly left already-shipped Pages CI, lookup-index, and closeout-renderer work open.
+- Verification: `npm run test:studio` 6/6, full `npm test` 166/166, `npm run build:pages`, `npm run smoke:pages`, `npm run test:ui` 9/9, windows-hide guard, brief validation, and innovation-pack dry run.
+- Honesty note: the first full Playwright UI run had one transient timeout in the first test; the same test passed in isolation and the full suite passed on rerun. No deterministic product regression was found.

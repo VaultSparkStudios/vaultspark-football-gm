@@ -4,8 +4,8 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 23 repaired beta-facing browser affordances, aligned Commissioner Mode UI/runtime contracts, completed the public contact/legal/agent metadata surface, and proved the Pages artifact now contains slug-prefixed /vaultspark-football-gm/* files.",
-  "nextMilestone": "External domain remediation: live custom-domain smoke still returns 404/fallback for new /vaultspark-football-gm/* compliance routes even though the deployed Pages artifact contains those files. Re-check after GitHub Pages certificate/routing repair.",
+  "currentFocus": "Session 24 protocol/observability closeout shipped a project-local innovation-pack command, dynamic child_process guard coverage, truthful startup SIL v3 category rendering, and stale task-board open-row cleanup.",
+  "nextMilestone": "External domain remediation remains the launch gate: re-check custom-domain route smoke and GitHub Pages certificate state after provider/DNS repair or new evidence.",
   "blockers": [
     "GitHub Pages artifact for commit 3c3e795 contains slug-prefixed compliance files, but live custom-domain project-path routes still return 404/fallback. GitHub Pages API still reports custom-domain certificate bad_authz/expired 2026-06-02; launch readiness remains blocked on external domain/routing/certificate remediation."
   ],
@@ -18,19 +18,18 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 165,
-    "pass": 165,
+    "totalTests": 166,
+    "pass": 166,
     "fail": 0,
     "lastRun": "2026-06-30",
     "newTestFiles": [
-      "test/browser-wiring.test.js",
-      "test/public-compliance.test.js"
+      "test/studio-protocol-smoke.test.js"
     ],
-    "newTestCount": 6,
-    "coverage": "Known default-shard inventory is 165 tests after Session 23 (core 54, runtime 83, sim-contract 22, sim-realism 1, studio 5). Session 23 also verified Playwright UI 9/9, Pages build, Pages smoke with root and slug-prefixed static route assertions, post-push workflow status, and deployed artifact contents."
+    "newTestCount": 1,
+    "coverage": "Known default-shard inventory is 166 tests after Session 24 (core 54, runtime 83, sim-contract 22, sim-realism 1, studio 6). Session 24 also verified Playwright UI 9/9, Pages build, Pages smoke, windows-hide guard, brief validation, and innovation-pack dry run."
   },
-  "testsPassing": 165,
-  "testsTotal": 165,
+  "testsPassing": 166,
+  "testsTotal": 166,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -69,20 +68,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 921,
+  "silScore": 930,
   "silCategoriesV3": {
-    "devHealth": 96,
+    "devHealth": 97,
     "creativeAlignment": 76,
-    "momentum": 92,
+    "momentum": 94,
     "engagement": 90,
     "processQuality": 100,
-    "crossRepoCoherence": 98,
-    "securityPosture": 94,
-    "ecosystemIntegration": 87,
-    "capitalEfficiency": 88,
+    "crossRepoCoherence": 99,
+    "securityPosture": 95,
+    "ecosystemIntegration": 90,
+    "capitalEfficiency": 89,
     "automationCoverage": 100
   },
-  "currentSession": 23,
+  "currentSession": 24,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
@@ -91,29 +90,25 @@
       "node scripts/detect-session-mode.mjs --explain",
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
-      "node scripts/context-meter.mjs --json",
+      "node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --check",
+      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline",
+      "node --check scripts/generate-innovation-pack.mjs",
       "node --check scripts/render-startup-brief.mjs",
-      "node --check scripts/build-pages.mjs",
-      "node --check scripts/smoke-pages.mjs",
+      "node scripts/check-windows-hide.mjs",
+      "node scripts/ops.mjs innovation-pack --dry-run",
+      "node scripts/render-startup-brief.mjs",
+      "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
+      "npm run test:studio",
       "npm test",
-      "npm run test:ui",
       "npm run build:pages",
       "npm run smoke:pages",
-      "gh run list --branch main --limit 6",
-      "gh run download 28428765527 -n github-pages",
-      "tar -tf artifact.tar confirmed vaultspark-football-gm/contact.html, agents.json, llms.txt, sitemap.xml, styles.css",
-      "gh api repos/VaultSparkStudios/vaultspark-football-gm/pages",
-      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/ returned 200"
+      "npx playwright test tests-ui/app.spec.js --grep \"create league\"",
+      "npm run test:ui"
     ],
     "date": "2026-06-30",
     "timedOut": [],
     "failed": [
-      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/contact.html returned 404 after artifact fix",
-      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/privacy.html returned 404 after artifact fix",
-      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/terms.html returned 404 after artifact fix",
-      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/agents.json returned 404 after artifact fix",
-      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/.well-known/llms.txt returned 404 after artifact fix",
-      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/sitemap.xml returned 404 after artifact fix"
+      "First npm run test:ui attempt timed out in tests-ui/app.spec.js create league/advance week while status remained Advancing week; the same test passed in isolation and full npm run test:ui passed on rerun."
     ]
   },
   "silScoreV3MigratedAt": "2026-04-21",
@@ -141,6 +136,6 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 921,
+  "silHealth": 930,
   "silHealthMax": 1000
 }

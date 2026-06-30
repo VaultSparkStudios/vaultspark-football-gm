@@ -1,5 +1,40 @@
 # Latest Handoff
 
+## Impact Summary — Session 24 (2026-06-30)
+
+**Headline:** Session 24 made the arc expansion and startup truth surfaces executable and self-validating: innovation-pack is now a real command, dynamic child-process imports are guarded, startup SIL rows no longer show false zeroes, and stale open task-board rows were reconciled.
+
+- Shipped all 4 items from `docs/AUDIT_2026-06-30_SESSION24.md`: project-local innovation-pack command, dynamic `child_process` guard coverage, startup SIL v3 category fallback, and stale task-board cleanup.
+- Shipped the second-order innovation pass recorded in `docs/INNOVATION_PACK.md`; rejected the generic client-runtime 501 sweep as a bad audit item because no missing endpoint was verified.
+- Verification: `npm run test:studio` 6/6, full `npm test` 166/166, `npm run build:pages`, `npm run smoke:pages`, and `npm run test:ui` 9/9. The first UI full-suite attempt had one transient timeout, then the failing test passed in isolation and the full suite passed on rerun.
+
+## Where We Left Off — 2026-06-30 (Session 24)
+
+The requested `/goal /arc` ran through startup, live audit, implementation, expansion, verification, and closeout. The primary queue is exhausted except the known external custom-domain certificate/routing blocker.
+
+What changed:
+- `scripts/generate-innovation-pack.mjs` now generates a source-derived innovation pack, and `scripts/ops.mjs innovation-pack --dry-run` is covered by the studio smoke shard.
+- `scripts/check-windows-hide.mjs` now detects dynamic `import('node:child_process')`, and `render-startup-brief.mjs` no longer uses a raw dynamic child-process import in the v5 branch.
+- `render-startup-brief.mjs` now prefers `PROJECT_STATUS.json.silCategoriesV3` for the first five category rows, so the founder-facing brief shows real v3 scores instead of false zero bars.
+- `context/TASK_BOARD.md` stale rows for Pages CI, GameSession lookup indexes, and closeout renderer shims now reflect their later completed state.
+
+Verification passed:
+- `node --check scripts/generate-innovation-pack.mjs`
+- `node --check scripts/render-startup-brief.mjs`
+- `node scripts/check-windows-hide.mjs`
+- `node scripts/ops.mjs innovation-pack --dry-run`
+- `node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md`
+- `npm run test:studio` — 6/6
+- `npm test` — 166/166
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `npm run test:ui` — 9/9 after rerun
+
+Remaining public-safe blocker:
+- GitHub Pages custom-domain certificate/routing still requires external provider/dashboard remediation or new evidence. Do not flip Launch Readiness from repo-local success alone.
+
+Next best work:
+- After this push deploys, verify GitHub Actions/Pages, run public route smoke for the project path and compliance routes, then re-check GitHub Pages certificate state.
 ## Impact Summary — Session 23 (2026-06-30)
 
 **Headline:** Session 23 repaired broken beta-facing browser affordances, made Commissioner Mode's client-only loop real, and turned the new public contact/legal/agent metadata into build- and smoke-proven static output.

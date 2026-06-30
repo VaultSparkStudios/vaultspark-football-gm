@@ -38,7 +38,6 @@ const node = process.execPath;
 // to render-startup-brief-v5.mjs (71% token reduction, validated S117). Default
 // remains v3.1 until 3-session hash-stability monitoring completes.
 if (process.argv.includes('--v5') || process.env.BRIEF_V5 === '1') {
-  const { spawnSync } = await import('node:child_process');
   const r = spawnSync(node, [path.join(__dirname, 'render-startup-brief-v5.mjs'), ...process.argv.slice(2).filter(a => a !== '--v5')], { stdio: 'inherit', cwd: root });
   process.exit(r.status ?? 0);
 }
@@ -328,11 +327,12 @@ function parseScore(label) {
   const m = lastEntry.match(new RegExp(`\\|\\s*${label}(?:\\s*\\([^)]*\\))?\\s*\\|\\s*(\\d+)`, 'i'));
   return m ? parseInt(m[1]) : null;
 }
-const lastDev      = parseScore('Dev Health') ?? cat3.dev ?? 0;
-const lastAlign    = parseScore('Creative Alignment') ?? cat3.align ?? 0;
-const lastMomentum = parseScore('Momentum') ?? cat3.momentum ?? 0;
-const lastEngage   = parseScore('Engagement') ?? cat3.engage ?? 0;
-const lastProcess  = parseScore('Process Quality') ?? cat3.process ?? 0;
+const v3Cats = status.silCategoriesV3 || {};
+const lastDev      = v3Cats.devHealth ?? parseScore('Dev Health') ?? cat3.dev ?? 0;
+const lastAlign    = v3Cats.creativeAlignment ?? parseScore('Creative Alignment') ?? cat3.align ?? 0;
+const lastMomentum = v3Cats.momentum ?? parseScore('Momentum') ?? cat3.momentum ?? 0;
+const lastEngage   = v3Cats.engagement ?? parseScore('Engagement') ?? cat3.engage ?? 0;
+const lastProcess  = v3Cats.processQuality ?? parseScore('Process Quality') ?? cat3.process ?? 0;
 
 // Trend arrows per category (compare last to avg3)
 function trend(last, avg) {
@@ -365,7 +365,6 @@ const catHistory = {
   process:  parseCategoryHistory('Process Quality'),
 };
 // v3 categories — single-point snapshot (will grow as new sessions score v3)
-const v3Cats = status.silCategoriesV3 || {};
 const lastCoherence  = v3Cats.crossRepoCoherence ?? 0;
 const lastSecurity   = v3Cats.securityPosture ?? 0;
 const lastEcosystem  = v3Cats.ecosystemIntegration ?? 0;

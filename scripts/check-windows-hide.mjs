@@ -52,8 +52,9 @@ const RAW_CP_ALLOWLIST = new Set([
   'scripts/test/tier1-windows-hide-shim.mjs',
 ]);
 
-// A direct import/require of node:child_process (any quote/spacing, with or without node: prefix).
-const RAW_CP_RE = /(?:from\s*['"]|require\(\s*['"])(?:node:)?child_process['"]/;
+// A direct import/require of node:child_process (static, dynamic, or require;
+// any quote/spacing, with or without node: prefix).
+const RAW_CP_RE = /(?:from\s*['"]|require\(\s*['"]|import\(\s*['"])(?:node:)?child_process['"]/;
 
 // Scan a tree for scripts that import child_process directly instead of the hardened
 // wrapper. Pure file reads — no child spawns — safe to call in-process from a test.

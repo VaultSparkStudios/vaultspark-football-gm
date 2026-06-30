@@ -9,7 +9,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 | # | Item | Status |
 |---|------|--------|
 | 1 | localStorage rewind size guard — auto-demote oldest slots above 4MB, non-blocking toast | ✅ Done |
-| 2 | GitHub Pages CI deploy + Playwright smoke test on push to main | 🔄 In Progress |
+| 2 | GitHub Pages CI deploy + Playwright smoke test on push to main | ✅ Done 2026-06-30 — workflows and Pages deploy green; remaining issue is external custom-domain certificate/routing smoke |
 | 3 | Mobile 375px overflow fix — modal-content overflow-x, draft war room, trade modal | ✅ Done |
 
 ### TIER 2 — UX/Retention Breakers
@@ -38,7 +38,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 | # | Item | Status |
 |---|------|--------|
-| 16 | Map-based player/team index — O(1) lookups in GameSession, ~15-25% sim speedup | 🔜 Next sprint |
+| 16 | Map-based player/team index — O(1) lookups in GameSession, ~15-25% sim speedup | ✅ Done 2026-05-27 — GameSession identity lookup indexes shipped; future sim-loop hot paths can build on this layer |
 | 17 | SimJob memory cleanup — TTL eviction after fetch or 10 min, prevents OOM | ✅ Done |
 | 18 | Input validation hardening — schema validation at route entry for teamId/seed/week/year | ✅ Done |
 | 19 | Seeded RNG for ID generation — replace Math.random() in beatReporter/narrativeEvents/server.js | ✅ Done |
@@ -162,7 +162,7 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 | Re-verify latest audit execution log against current code and tests | Done |
 | Rerun full default suite and static Pages gates | Done |
 | Preserve propagated lean `AGENTS.md` canon block | Done |
-| Backfill closeout cost/brief renderer scripts | Follow-up |
+| Backfill closeout cost/brief renderer scripts | ✅ Done 2026-06-15 — local shims covered by studio protocol smoke tests |
 
 **Verification:** `npm test` 153/153 · `npm run build:pages` · `npm run smoke:pages` · `node scripts/ops.mjs blocker-preflight` · `node scripts/check-secrets.mjs --audit`.
 
@@ -253,3 +253,17 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 **Verification:** focused browser/public/runtime tests 15/15 · full `npm test` 165/165 · Playwright UI 9/9 · `npm run build:pages` · `npm run smoke:pages`.
 
 **Launch note:** GitHub Actions/Pages workflows are green and the public game URL returned HTTP 200 on 2026-06-30, but GitHub Pages API still reports the custom-domain certificate as `bad_authz`/expired 2026-06-02. Keep Launch Readiness evidence-driven until post-push route smoke and certificate state are verified.
+
+## Session 24 — Protocol Expansion + Observability Honesty (2026-06-30)
+
+| Item | Status |
+|------|--------|
+| Generate a fresh live-code protocol audit after confirming the primary genius list was exhausted except the external domain blocker | Done |
+| Add `node scripts/ops.mjs innovation-pack` with source-derived candidates and `--dry-run` support | Done |
+| Close the dynamic `node:child_process` detection blind spot in the Windows no-window guard | Done |
+| Repair startup brief SIL category rows so v3 values do not render as false zeroes | Done |
+| Correct stale task-board rows for Pages CI, GameSession lookup indexes, and closeout renderer shims | Done |
+
+**Verification:** `node --check scripts/generate-innovation-pack.mjs`; `node --check scripts/render-startup-brief.mjs`; `node scripts/check-windows-hide.mjs`; `node scripts/ops.mjs innovation-pack --dry-run`; `npm run test:studio` 6/6; full `npm test` 166/166; `npm run build:pages`; `npm run smoke:pages`; `npm run test:ui` 9/9 after one transient first-run timeout passed in isolation and rerun.
+
+**Still blocked:** external custom-domain certificate/routing remediation remains outside this repo until provider/dashboard access or DNS/certificate evidence changes.

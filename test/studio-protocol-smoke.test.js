@@ -7,6 +7,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseHumanItems, parseUnifiedItems } from "../scripts/lib/task-board.mjs";
 import { classifyBlocker } from "../scripts/lib/blocker-rules.mjs";
+import { scanDirectChildProcessImports } from "../scripts/check-windows-hide.mjs";
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -57,7 +58,8 @@ test("documented Studio protocol shims load", () => {
     ["scripts/credential-watch.mjs", "--silent"],
     ["scripts/ark.mjs", "drain", "--silent"],
     ["scripts/record-skill-cost.mjs", "--skill", "studio-closeout", "--phase", "start"],
-    ["scripts/ops.mjs", "blocker-preflight", "--json"]
+    ["scripts/ops.mjs", "blocker-preflight", "--json"],
+    ["scripts/ops.mjs", "innovation-pack", "--dry-run"]
   ]) {
     const result = spawnSync(process.execPath, args, {
       cwd: process.cwd(),
@@ -65,6 +67,15 @@ test("documented Studio protocol shims load", () => {
     });
     assert.equal(result.status, 0, `${args.join(" ")}\n${result.stderr}`);
   }
+});
+
+test("windows-hide guard detects dynamic child_process imports", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vsfgm-window-guard-"));
+  const script = join(dir, "dynamic.mjs");
+  writeFileSync(script, "const cp = await import('node:child_process');\nvoid cp;\n");
+  const violations = scanDirectChildProcessImports(dir);
+  assert.equal(violations.length, 1);
+  assert.match(violations[0].file, /dynamic\.mjs$/);
 });
 
 test("closeout brief renderer writes a public-safe markdown artifact", () => {
