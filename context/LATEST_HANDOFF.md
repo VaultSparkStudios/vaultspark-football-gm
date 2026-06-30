@@ -1,5 +1,37 @@
 # Latest Handoff
 
+## Impact Summary — Session 23 (2026-06-30)
+
+**Headline:** Session 23 repaired broken beta-facing browser affordances, made Commissioner Mode's client-only loop real, and turned the new public contact/legal/agent metadata into build- and smoke-proven static output.
+
+- Shipped all 5 items from `docs/AUDIT_2026-06-30_SESSION23.*`: Season Newsletter import, live news ticker selector repair, Commissioner lobby UI/runtime contract, Cap Casualty action wiring, and public contact/privacy/terms/agent/sitemap files.
+- Shipped a second-order innovation pass after the primary list: `scripts/build-pages.mjs` now canonicalizes every static HTML page, and `scripts/smoke-pages.mjs` verifies contact, privacy, terms, `agents.json`, `.well-known/llms.txt`, and `sitemap.xml` in the built Pages bundle.
+- Verification: focused browser/public/runtime tests 15/15, full `npm test` 165/165, Playwright UI 9/9, `npm run build:pages`, and `npm run smoke:pages`.
+
+## Where We Left Off — 2026-06-30 (Session 23)
+
+The requested `/goal /arc` continued through startup, live audit, implementation, second-order innovation, verification, and closeout. The project-local `ops innovation-pack` command is still unsupported, so the expansion pass was manual and recorded in `docs/INNOVATION_PACK.md`.
+
+What changed:
+- `public/app.js` now imports `generateFranchiseNewsletter()` and the Season Newsletter button no longer throws a ReferenceError.
+- The Cap Casualty action now calls the imported `loadContractsTeam()` loader instead of undefined `loadContracts()`.
+- `renderNewsTicker()` now renders into the real `#newsTickerContent` markup instead of a nonexistent `.news-ticker-track` child.
+- Commissioner Mode now sends canonical `commissionerId` / `userId` / `controlledTeamId` payloads, the client runtime accepts legacy aliases, and the status panel renders `leagueId`, `gateStatus`, and player `status` truthfully.
+- Public static source now includes `contact.html`, `privacy.html`, `terms.html`, `agents.json`, `.well-known/llms.txt`, and `sitemap.xml`, with primary page footer links.
+- Second-order build hardening: Pages build canonicalizes all static HTML pages and the smoke test verifies the new public/agent/legal routes in the built bundle.
+
+Verification passed:
+- `node --test test/browser-wiring.test.js test/public-compliance.test.js test/local-api-runtime.test.js` — 15/15
+- `npm test` — 165/165
+- `npm run test:ui` — 9/9
+- `npm run build:pages`
+- `npm run smoke:pages`
+
+Remaining public-safe launch note:
+- GitHub Actions and Pages workflows are green, and `curl -I https://vaultsparkstudios.com/vaultspark-football-gm/` returned HTTP 200 on 2026-06-30. GitHub's Pages API still reports the custom-domain certificate as `bad_authz`, expired 2026-06-02, so Launch Readiness should stay in a needs-check/blocked-for-cert posture until post-push public route smoke and certificate state are verified.
+
+Next best work:
+- After this push deploys, run a public URL smoke for `/vaultspark-football-gm/`, `/contact.html`, `/privacy.html`, `/terms.html`, `/agents.json`, and `/.well-known/llms.txt`, then update Launch Readiness from evidence only.
 ## Impact Summary — Session 22 (2026-06-30)
 
 **Headline:** Session 22 made the mobile beta loop real in the browser shell, closed the last runtime determinism leaks found by live grep, and repaired current Studio canon conformance gaps without force-greening the public-domain blocker.

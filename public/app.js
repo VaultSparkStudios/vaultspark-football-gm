@@ -229,6 +229,7 @@ import {
   initGistSyncUI,
   applyBrandIdentity
 } from "./lib/tabSettings.js";
+import { generateFranchiseNewsletter } from "./lib/franchiseNewsletter.js";
 
 import {
   applyDashboard,
@@ -1389,7 +1390,7 @@ function bindEvents() {
 
   document.getElementById("runCapCasualtyBtn")?.addEventListener("click", () =>
     runAction(async () => {
-      await loadContracts();
+      await loadContractsTeam();
       renderCapCasualtyPanel();
     }, "Analyzing cap casualties...")
   );
@@ -1418,24 +1419,45 @@ function bindEvents() {
 
   document.getElementById("createLobbyBtn")?.addEventListener("click", () =>
     runAction(async () => {
-      const gmId = state.dashboard?.controlledTeamId || "gm1";
-      await api("/api/commissioner/create", { method: "POST", body: { gmId, displayName: gmId, teamId: gmId } });
+      const commissionerId =
+        document.getElementById("commissionerIdInput")?.value?.trim() ||
+        state.dashboard?.controlledTeamId ||
+        "commissioner";
+      const leagueName = document.getElementById("commissionerLeagueNameInput")?.value?.trim() || "VaultSpark League";
+      const maxPlayers = Number(document.getElementById("commissionerMaxPlayersSelect")?.value || 4);
+      await api("/api/commissioner/create", {
+        method: "POST",
+        body: {
+          commissionerId,
+          leagueName,
+          maxPlayers,
+          controlledTeamId: state.dashboard?.controlledTeamId
+        }
+      });
       await renderCommissionerLobby();
     }, "Creating lobby...")
   );
   document.getElementById("joinLobbyBtn")?.addEventListener("click", () =>
     runAction(async () => {
-      const lobbyId = document.getElementById("joinLobbyIdInput")?.value?.trim();
-      const gmId = state.dashboard?.controlledTeamId || "gm-guest";
-      if (!lobbyId) return;
-      await api("/api/commissioner/join", { method: "POST", body: { lobbyId, gmId, displayName: gmId, teamId: gmId } });
+      const userId = document.getElementById("joinUserIdInput")?.value?.trim() || "guest-gm";
+      const controlledTeamId =
+        document.getElementById("joinTeamSelect")?.value ||
+        state.dashboard?.controlledTeamId;
+      if (!controlledTeamId) throw new Error("Choose a team before joining the lobby.");
+      await api("/api/commissioner/join", {
+        method: "POST",
+        body: { userId, displayName: userId, controlledTeamId }
+      });
       await renderCommissionerLobby();
     }, "Joining lobby...")
   );
   document.getElementById("markReadyBtn")?.addEventListener("click", () =>
     runAction(async () => {
-      const gmId = state.dashboard?.controlledTeamId || "gm1";
-      await api("/api/commissioner/ready", { method: "POST", body: { gmId } });
+      const userId =
+        document.getElementById("joinUserIdInput")?.value?.trim() ||
+        document.getElementById("commissionerIdInput")?.value?.trim() ||
+        "commissioner";
+      await api("/api/commissioner/ready", { method: "POST", body: { userId } });
       await renderCommissionerLobby();
     }, "Marking ready...")
   );

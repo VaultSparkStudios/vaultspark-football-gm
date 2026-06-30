@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-06-30",
+  "project": "vaultspark-football-gm",
+  "projectType": "game",
+  "session": 23,
+  "headline": "Session 23 targets beta-facing broken affordances and public-surface completeness: newsletter export, live ticker, Commissioner lobby, action buttons, and dual-audience legal/contact metadata.",
+  "items": [
+    {
+      "id": 1,
+      "slug": "repair-shareable-newsletter-action",
+      "tier": "fire",
+      "axis": "ui/ux/user-experience",
+      "effort": "30m",
+      "impact": 8,
+      "innovation": 5,
+      "priority": 25.2,
+      "title": "Repair the Season Newsletter action",
+      "why": "The browser app imports many settings actions but live grep proved the Season Newsletter button calls generateFranchiseNewsletter without importing it. That makes a visible beta/share affordance throw a ReferenceError at the exact moment the player tries to export a season story.",
+      "recipe": "Import generateFranchiseNewsletter into public/app.js, keep the existing button behavior, and add a source-level regression that the action is imported and callable.",
+      "evidence": "public/app.js calls generateFranchiseNewsletter(state); public/lib/franchiseNewsletter.js exports it; no import existed before Session 23.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Add the missing import."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Add import plus a focused browser-wiring regression."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "Add Playwright coverage that opens the newsletter export in a controlled browser context."
+        }
+      }
+    },
+    {
+      "id": 2,
+      "slug": "restore-live-news-ticker-renderer",
+      "tier": "fire",
+      "axis": "gamification/engagement/immersion",
+      "effort": "30m",
+      "impact": 8,
+      "innovation": 5,
+      "priority": 25.2,
+      "title": "Restore the live news ticker renderer",
+      "why": "The game markup exposes #newsTickerContent, but renderNewsTicker searched for a .news-ticker-track child that does not exist. That silently disables the beat-reporter pulse row and makes league events feel flatter than the underlying simulation supports.",
+      "recipe": "Render ticker items into #newsTickerContent, keep the existing escape path, and add a wiring regression that prevents the stale selector from returning.",
+      "evidence": "public/game.html contains id=\"newsTickerContent\"; public/lib/tabOverview.js used ticker.querySelector(\".news-ticker-track\").",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Change the selector."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Change selector plus regression coverage."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "Add an animated ticker track that respects reduced motion and mobile overflow."
+        }
+      }
+    },
+    {
+      "id": 3,
+      "slug": "fix-commissioner-lobby-contract",
+      "tier": "fire",
+      "axis": "feature depth & refinement",
+      "effort": "1h",
+      "impact": 9,
+      "innovation": 6,
+      "priority": 27.0,
+      "title": "Fix the Commissioner lobby UI/runtime contract",
+      "why": "Commissioner Mode is presented as async multiplayer, but the app sent gmId/teamId while the local runtime required userId/controlledTeamId and the status renderer read fields the runtime never returns. The result is a visible advanced feature that fails its first create/join/ready loop in client-only mode.",
+      "recipe": "Align app payloads with runtime names, accept legacy aliases in localApiRuntime, render leagueId/gateStatus/player status, enable controls only when a lobby exists, and cover the full create/join/ready/advance path with a runtime test.",
+      "evidence": "public/app.js sent gmId/teamId; src/app/api/localApiRuntime.js required commissionerId/userId/controlledTeamId; public/lib/tabSettings.js read lobby.id/gateOpen/p.ready.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Patch aliases only."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Patch aliases, renderer fields, and focused runtime coverage."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Also wire intent queue creation from the UI and render queued intent summaries."
+        }
+      }
+    },
+    {
+      "id": 4,
+      "slug": "repair-cap-casualty-action",
+      "tier": "high",
+      "axis": "ui/ux/user-experience",
+      "effort": "15m",
+      "impact": 6,
+      "innovation": 3,
+      "priority": 15.1,
+      "title": "Repair the Cap Casualty action button",
+      "why": "The app shell calls loadContracts(), but the imported loader is loadContractsTeam(). This leaves a cap-management action wired to an undefined function and creates another avoidable beta trust break.",
+      "recipe": "Replace the undefined loadContracts call with loadContractsTeam and add it to the browser-wiring regression.",
+      "evidence": "rg found loadContracts() only in public/app.js and loadContractsTeam exported by public/lib/gameFlow.js.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.1,
+          "recipe": "Rename the call."
+        },
+        "L2": {
+          "effortHours": 0.25,
+          "recipe": "Rename the call and test that the stale call is absent."
+        },
+        "L3": {
+          "effortHours": 1,
+          "recipe": "Add Playwright coverage for the Contracts cap casualty panel."
+        }
+      }
+    },
+    {
+      "id": 5,
+      "slug": "complete-public-agent-legal-surface",
+      "tier": "high",
+      "axis": "security",
+      "effort": "1h",
+      "impact": 7,
+      "innovation": 4,
+      "priority": 18.1,
+      "title": "Complete the public contact/legal/agent metadata surface",
+      "why": "The repo is public-unlaunched and the app footers link only to the author brand, while current public-site canon expects contact, privacy, terms, sitemap, agents.json, and llms.txt. This is not the Cloudflare launch blocker; it is a local static gap the repo can honestly fix before domain repair.",
+      "recipe": "Add public contact/privacy/terms pages, agents.json, .well-known/llms.txt, sitemap.xml, footer links from primary pages, and tests that the static source files exist and carry proprietary-first language.",
+      "evidence": "rg found no privacy/terms/contact/agents.json/llms.txt/sitemap.xml in public before Session 23.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Add the files."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Add files, links, and static tests."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "Also add release footer manifest coverage and HTML canonical injection for every static page."
+        }
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "slug": "cloudflare-custom-domain-fix",
+      "reason": "Still blocked by missing Cloudflare/admin capability from this repo; the existing runbook remains the honest path and launch readiness must not be force-greened."
+    },
+    {
+      "slug": "sparked-release-flip",
+      "reason": "Public launch remains blocked until the external domain smoke passes and release-gate checks are green."
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "fix-commissioner-lobby-contract",
+      "status": "shipped",
+      "evidence": "App payloads aligned, local runtime accepts canonical/legacy aliases, status renderer uses leagueId/gateStatus/status, and local runtime create/join/ready/advance test passes."
+    },
+    {
+      "slug": "repair-shareable-newsletter-action",
+      "status": "shipped",
+      "evidence": "public/app.js imports generateFranchiseNewsletter; browser-wiring test covers the action."
+    },
+    {
+      "slug": "restore-live-news-ticker-renderer",
+      "status": "shipped",
+      "evidence": "renderNewsTicker targets #newsTickerContent and stale .news-ticker-track selector is covered by test/browser-wiring.test.js."
+    },
+    {
+      "slug": "repair-cap-casualty-action",
+      "status": "shipped",
+      "evidence": "Cap Casualty action calls loadContractsTeam and source regression confirms no stale loadContracts call remains."
+    },
+    {
+      "slug": "complete-public-agent-legal-surface",
+      "status": "shipped",
+      "evidence": "contact/privacy/terms/agents/llms/sitemap files added, linked, built, and smoke-tested."
+    },
+    {
+      "slug": "static-route-build-smoke-proof",
+      "status": "shipped-second-order",
+      "evidence": "build-pages canonicalizes all static HTML pages and smoke-pages asserts public route artifacts in static bundle."
+    }
+  ]
+}

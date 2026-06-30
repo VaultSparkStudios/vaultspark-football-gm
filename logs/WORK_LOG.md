@@ -111,3 +111,12 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Removed remaining runtime `Math.random()` leaks from event IDs/callers and covered deterministic output with `test/deterministic-ids.test.js`.
 - Repaired current STRONG canon gaps: rolling-status markers, `prompts/initiate.md`, and `context/CANON_ADOPTION.md`; conformance now reports 0 gaps.
 - Verification: focused mobile/determinism 8/8, runtime 82/82, studio 5/5, full `npm test` 164/164, Pages build/smoke, and canon conformance 0 gaps.
+
+## 2026-06-30 — Session 23: browser affordance and public surface closeout
+
+- Ran the requested `/goal /arc` sequence through startup, live-code audit, implementation, second-order innovation, verification, and closeout.
+- Generated `docs/AUDIT_2026-06-30_SESSION23.*` from verified live findings rather than reusing Session 22 work.
+- Shipped five primary fixes: Season Newsletter import, Cap Casualty loader correction, news ticker DOM target repair, Commissioner lobby UI/runtime contract alignment, and public contact/privacy/terms/agents/llms/sitemap static files.
+- Shipped second-order build/smoke hardening so every static HTML page is canonicalized and the Pages smoke verifies the new contact/legal/agent routes in the built bundle.
+- Verification: focused browser/public/runtime tests 15/15, full `npm test` 165/165, Playwright UI 9/9, Pages build, and Pages smoke.
+- Blocker truth update: public URL returned HTTP 200, Actions/Pages are green, but GitHub Pages API still reports the custom-domain certificate as `bad_authz`/expired; launch readiness remains evidence-gated.

@@ -483,3 +483,48 @@ test("local api runtime keeps week advancement non-fatal when auto-backups excee
   assert.equal(advanced.status, 200);
   assert.equal(advanced.payload.state.currentWeek, 2);
 });
+
+test("local api runtime accepts commissioner UI aliases and advances lobby", async () => {
+  const runtime = createLocalApiRuntime({
+    storage: createMemoryStorage(),
+    now: (() => {
+      let tick = 0;
+      return () => 1_731_000_000_000 + tick++;
+    })(),
+    scheduler: (fn) => fn()
+  });
+
+  await runtime.request("/api/new-league", {
+    method: "POST",
+    body: { seed: 8080, startYear: 2026, controlledTeamId: "BUF", mode: "play" }
+  });
+
+  const created = await runtime.request("/api/commissioner/create", {
+    method: "POST",
+    body: { gmId: "commish", leagueName: "Tuesday League", teamId: "BUF", maxPlayers: 3 }
+  });
+  assert.equal(created.status, 200);
+  assert.equal(created.payload.lobby.leagueName, "Tuesday League");
+  assert.equal(created.payload.lobby.players[0].userId, "commish");
+  assert.equal(created.payload.lobby.players[0].teamId, "BUF");
+
+  const joined = await runtime.request("/api/commissioner/join", {
+    method: "POST",
+    body: { gmId: "guest", displayName: "Guest GM", teamId: "MIA" }
+  });
+  assert.equal(joined.status, 200);
+  assert.equal(joined.payload.lobby.totalPlayers, 2);
+
+  const ready = await runtime.request("/api/commissioner/ready", {
+    method: "POST",
+    body: { gmId: "guest" }
+  });
+  assert.equal(ready.status, 200);
+  assert.equal(ready.payload.lobby.readyPlayers, 1);
+
+  const advanced = await runtime.request("/api/commissioner/advance", { method: "POST", body: {} });
+  assert.equal(advanced.status, 200);
+  assert.equal(advanced.payload.lobby.gateStatus, "open");
+  assert.equal(advanced.payload.lobby.readyPlayers, 0);
+  assert.ok(advanced.payload.state.currentWeek >= 2);
+});

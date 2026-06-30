@@ -99,7 +99,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 | Item | Status |
 |------|--------|
 | Split simulation-heavy `npm test` into CI-friendly shards so local/agent runs return actionable output | ✅ Done 2026-06-03 — `npm test` now runs bounded default shards; `npm run test:long` isolates expensive realism/determinism smoke probes |
-| Complete GitHub Pages CI deploy once repo secret/provider configuration is ready | 🔄 Improved 2026-06-03 — deploy workflow now builds and smokes the static client before upload; provider/repo Pages settings still external |
+| Complete GitHub Pages CI deploy once repo secret/provider configuration is ready | ✅ Workflow green 2026-06-30 — Actions/Pages deploys are succeeding; remaining launch check is custom-domain certificate state plus post-push route smoke |
 
 ## Session 13 — Test Sharding + Pages Smoke Gates (2026-06-03)
 
@@ -127,12 +127,12 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 **Verification:** all five default shards green — core 54, runtime 69, sim-contract 22, sim-realism 1, studio 3 (149 tests, up from 131, 0 fail) · `npm run build:pages` + `npm run smoke:pages` pass.
 
-### ⚠ Cloudflare Access Required — vaultsparkstudios.com is serving 403 (site down)
+### ⚠ Custom-domain certificate state requires verification — public route now returns HTTP 200
 
 Diagnosis (agent-verified 2026-06-04):
 - The custom domain lives on the org root repo `VaultSparkStudios.github.io` (cname `vaultsparkstudios.com`).
 - GitHub's HTTPS cert for it is `bad_authz`, **expired 2026-06-02** — DNS points at Cloudflare proxy IPs, so GitHub's ACME HTTP-01 challenge can never complete.
-- Visitors get TLS from Cloudflare's edge cert, but **every path returns a Cloudflare-origin 403** — the game URL `https://vaultsparkstudios.com/vaultspark-football-gm/` is unreachable, and `*.github.io` 301-redirects into it.
+- 2026-06-30 update: `curl -I https://vaultsparkstudios.com/vaultspark-football-gm/` returned HTTP 200 through Cloudflare, so the old blanket 403 diagnosis is stale. GitHub Pages API still reports the custom-domain certificate as `bad_authz` / expired 2026-06-02, so certificate health and post-push route smoke still need verification before Launch Readiness flips green.
 - Cloudflare deploy/DNS credentials are MISSING from the secrets gateway as of 2026-06-07, and blocker preflight still marks this item not auto-ready, so the agent cannot inspect or repair the zone from this repo session.
 
 Fix options (pick one in the Cloudflare dashboard):
@@ -237,3 +237,19 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 **Verification:** focused mobile/determinism 8/8 · `npm run test:runtime` 81/81 · `npm run test:studio` 5/5 · full `npm test` 164/164 · `npm run build:pages` · `npm run smoke:pages` · canon conformance 0 gaps.
 
 **Still blocked:** `vaultsparkstudios.com` remains Cloudflare/GitHub Pages-side until the existing runbook is applied or credentials are added; no Session 22 shipped item depends on new backend, paid services, or fabricated public-domain evidence.
+
+## Session 23 — Browser Affordance + Public Surface Repair (2026-06-30)
+
+| Item | Status |
+|------|--------|
+| Generate a fresh live-code audit for beta-facing broken affordances and public surface gaps | Done |
+| Repair Season Newsletter import/wiring | Done |
+| Restore live news ticker rendering into the actual `#newsTickerContent` markup | Done |
+| Fix Commissioner lobby create/join/ready/advance contract in app UI and client runtime | Done |
+| Repair Cap Casualty action loader | Done |
+| Add public contact/privacy/terms/agents/llms/sitemap static files and footer links | Done |
+| Second-order: make Pages build/smoke prove the new static route surface | Done |
+
+**Verification:** focused browser/public/runtime tests 15/15 · full `npm test` 165/165 · Playwright UI 9/9 · `npm run build:pages` · `npm run smoke:pages`.
+
+**Launch note:** GitHub Actions/Pages workflows are green and the public game URL returned HTTP 200 on 2026-06-30, but GitHub Pages API still reports the custom-domain certificate as `bad_authz`/expired 2026-06-02. Keep Launch Readiness evidence-driven until post-push route smoke and certificate state are verified.

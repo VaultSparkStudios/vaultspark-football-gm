@@ -4,10 +4,10 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 22 restored mobile core loop browser wiring, refreshed enabled mobile mode after week advancement, removed remaining runtime determinism leaks, repaired canon conformance gaps to 0, and fixed the CI browser-history fallback exposed after push. Verified at 164/164 plus Playwright 9/9 and Pages build/smoke.",
-  "nextMilestone": "Push Session 22 to main, confirm GitHub Actions/Pages deployment, then apply or unlock the Cloudflare custom-domain runbook and verify the public beta URL before marking Launch Readiness ready.",
+  "currentFocus": "Session 23 repaired beta-facing browser affordances, aligned Commissioner Mode UI/runtime contracts, completed the public contact/legal/agent metadata surface, and made Pages build/smoke prove the new static routes.",
+  "nextMilestone": "After this push deploys, run public route smoke for the game, contact/privacy/terms, agents.json, and llms.txt, then re-check GitHub Pages certificate state before changing Launch Readiness.",
   "blockers": [
-    "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) \u2014 Cloudflare-side fix required; runbook in TASK_BOARD"
+    "GitHub Pages API still reports custom-domain certificate bad_authz/expired 2026-06-02 even though the Cloudflare-edge public game URL returned HTTP 200 on 2026-06-30; verify post-push routes and cert state before public launch flip."
   ],
   "lastUpdated": "2026-06-30",
   "lifecycle": "deployed",
@@ -18,19 +18,19 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 164,
-    "pass": 164,
+    "totalTests": 165,
+    "pass": 165,
     "fail": 0,
     "lastRun": "2026-06-30",
     "newTestFiles": [
-      "test/deterministic-ids.test.js",
-      "test/mobile-loop.test.js"
+      "test/browser-wiring.test.js",
+      "test/public-compliance.test.js"
     ],
     "newTestCount": 6,
-    "coverage": "Known default-shard inventory is 164 tests (core 54, runtime 82, sim-contract 22, sim-realism 1, studio 5). Session 22 reran focused mobile/determinism tests, Playwright UI 9/9, full default suite, Pages build, and Pages smoke after the CI history fallback repair."
+    "coverage": "Known default-shard inventory is 165 tests after Session 23 (core 54, runtime 83, sim-contract 22, sim-realism 1, studio 5). Session 23 also verified Playwright UI 9/9, Pages build, and Pages smoke with public route assertions."
   },
-  "testsPassing": 164,
-  "testsTotal": 164,
+  "testsPassing": 165,
+  "testsTotal": 165,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -69,37 +69,39 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 906,
+  "silScore": 921,
   "silCategoriesV3": {
-    "devHealth": 95,
-    "creativeAlignment": 74,
-    "momentum": 90,
-    "engagement": 88,
+    "devHealth": 96,
+    "creativeAlignment": 76,
+    "momentum": 92,
+    "engagement": 90,
     "processQuality": 100,
     "crossRepoCoherence": 98,
-    "securityPosture": 92,
-    "ecosystemIntegration": 83,
-    "capitalEfficiency": 86,
+    "securityPosture": 94,
+    "ecosystemIntegration": 87,
+    "capitalEfficiency": 88,
     "automationCoverage": 100
   },
-  "currentSession": 22,
+  "currentSession": 23,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
-    "date": "2026-06-30",
     "passed": [
       "git pull --rebase origin main",
       "node scripts/detect-session-mode.mjs --explain",
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
       "node scripts/context-meter.mjs --json",
-      "node --test test/mobile-loop.test.js test/deterministic-ids.test.js",
-      "npm run test:ui",
+      "node --test test/browser-wiring.test.js test/public-compliance.test.js test/local-api-runtime.test.js",
       "npm test",
+      "npm run test:ui",
       "npm run build:pages",
       "npm run smoke:pages",
-      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline"
+      "gh run list --limit 5",
+      "gh api repos/VaultSparkStudios/vaultspark-football-gm/pages",
+      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/"
     ],
+    "date": "2026-06-30",
     "timedOut": []
   },
   "silScoreV3MigratedAt": "2026-04-21",
@@ -127,6 +129,6 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 906,
+  "silHealth": 921,
   "silHealthMax": 1000
 }

@@ -1,38 +1,36 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 20802639fca8 -->
-<!-- generated-at: 2026-06-30T04:26:38.366Z -->
+<!-- source-hash: 6605d41f2fec -->
+<!-- generated-at: 2026-06-30T07:06:32.142Z -->
 
 # LATEST_HANDOFF (compact)
 
-## Handoff Summary — Session 21 (2026-06-30)
+Session Handoff Summary — Session 22 (2026-06-30)
 
 State
-- Football GM Studio protocol layer hardened: safe-spawn window guard, CANON-044 Wave enforcement, blocker/parser truth repair, honest SIL/context telemetry.
-- Deploy chain (/arc -> /closeout -> push main -> deploy) ran from current repo evidence.
+- Football GM browser/mobile beta; static-host, no-PII posture.
+- Full test suite green: npm test 164/164, test:runtime 81/81, test:studio 5/5, focused mobile/determinism 8/8, Pages build/smoke pass, canon conformance 0 gaps.
 
 Shipped This Session
-- safe-spawn.mjs forces windowsHide:true; check-windows-hide.mjs blocks direct child_process imports outside allowlist.
-- check-canon-044-waves.mjs enforces Wave-list mandate on agent surfaces; repaired missing mandate in SESSION_PROTOCOL.md.
-- task-board.mjs reparses legacy tables + Unified Genius List; blocker-rules.mjs remaps Pages secret work to github.repo/gh auth.
-- Centralized context + SIL v6 telemetry; dependabot CANON-043 baseline added.
-- Fixed null launch-readiness bootstrap bug exposed by remote CI.
+- Mobile core loop wired in browser shell: public/app.js imports/calls public/lib/mobileLoop.js; Settings toggle uses real module functions.
+- Mobile mode re-renders after single-week advance so decision deck follows franchise state.
+- Deterministic runtime IDs/callers (news, press conf, multiplayer intent, Draft trade callers) from event/pick context; removed Math.random outside intentional test cache-bust.
+- Canon STRONG-gap repair across CANON_ADOPTION.md, initiate.md, SELF_IMPROVEMENT_LOOP.md.
+- CI fix: selected players with no regular-season timeline now render fallback card/row (tabHistory.js, gameFlow.js); Playwright 9/9.
 
-Verification
-- npm test 162/162; test:studio 5/5; node --check 37 files; windows-hide + canon-044 guards; Pages build + smoke; Playwright 9/9.
-- SIL v6 infrastructure: Health 796/1000; Impact 0/1000 (uninstrumented).
+Current Intent
+- Deploy Session 22 from main; verify GitHub Actions/Pages deploy; then unblock and verify public beta URL.
 
-Now Bucket
-1. Verify GitHub Actions/Pages deployment from this push.
-2. Apply/unlock Cloudflare-GitHub Pages runbook, verify public URL, send beta link.
-3. Instrument SIL v6 adoption signals to move Impact off 0/1000.
+Now Bucket (top 3)
+- Push Session 22 closeout and confirm Actions/Pages deploy from main.
+- Apply or unlock the Cloudflare/GitHub Pages runbook.
+- Run public URL smoke; flip Launch Readiness to Ready only on that evidence.
 
-Blockers
-1. vaultsparkstudios.com depends on Cloudflare-side remediation or credentials (Cloudflare 403, GitHub cert bad_authz, expired 2026-06-02). Standing since Session 14.
-2. SIL v6 Impact honestly 0/1000 until adoption signals instrumented.
-3. Public deployment cannot flip Launch Readiness to Ready until public URL smoke passes.
+Blockers (top 3)
+- vaultsparkstudios.com unreachable: Cloudflare-side remediation or credentials required; Launch Readiness stays Blocked.
+- GitHub Pages cert for custom domain bad_authz/expired (2026-06-02) due to Cloudflare-proxied apex blocking ACME.
+- project-local ops innovation-pack command not implemented; innovation expansion done manually in docs/INNOVATION_PACK.md.
 
-Human-Blocked Items
-- Cloudflare/GitHub Pages domain fix: founder action or cloudflare token needed; open since Session 14 (~7 sessions / 26 days). Two-option runbook in TASK_BOARD.
+Human-Blocked Items (with age)
+- Cloudflare/Pages public-domain fix: founder action or credentials, open since Session 14 (2026-06-04), ~8 sessions.
 
-Next Session
-- Confirm the Pages deploy went green, then apply Cloudflare runbook and re-run public URL smoke.
+Next session: push Session 22, confirm Pages deploy, then drive the Cloudflare runbook to a passing public URL smoke.

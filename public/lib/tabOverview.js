@@ -488,8 +488,8 @@ export function renderNewsTicker() {
     : (state.newsRows || []);
   if (!rows.length) { ticker.hidden = true; return; }
   ticker.hidden = false;
-  const track = ticker.querySelector(".news-ticker-track");
-  if (!track) return;
+  const content = document.getElementById("newsTickerContent") || ticker.querySelector(".news-ticker-content");
+  if (!content) return;
   const TYPE_ICONS = {
     injury: "🚑", trade: "🔄", blowout: "💥", upset: "⚡", milestone: "🌟",
     streak: "🔥", standings: "📊", retirement: "👋", signing: "✍️",
@@ -502,7 +502,7 @@ export function renderNewsTicker() {
       : (r.headline || String(r));
     return `<span class="news-ticker-item">${icon} ${escapeHtml(text)}</span>`;
   }).join('<span class="news-ticker-sep"> · </span>');
-  track.innerHTML = items + '<span class="news-ticker-sep"> · </span>' + items;
+  content.innerHTML = items;
 }
 
 export async function renderGmLegacyScore() {

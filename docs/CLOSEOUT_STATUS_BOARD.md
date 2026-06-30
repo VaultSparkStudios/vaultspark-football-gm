@@ -1,30 +1,30 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-06-30 (Session 22 closeout) -->
+<!-- generated-at: 2026-06-30 (Session 23 closeout) -->
 
 # Closeout Status Board — VaultSpark Football GM
 
 ```
-╔══ SESSION CLOSEOUT · VaultSpark Football GM · S22 ═════════════╗
-║  Date: 2026-06-30  ·  SIL: 906/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · VaultSpark Football GM · S23 ═════════════╗
+║  Date: 2026-06-30  ·  SIL: 921/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ `public/app.js` imports and calls `public/lib/mobileLoop.js`  ║
-║  ✓ Enabled mobile mode now re-renders after single-week advance  ║
-║  ✓ Runtime `Math.random()` usage is gone outside the intentiona  ║
-║  ✓ `test/deterministic-ids.test.js` covers deterministic replay  ║
-║  ✓ `context/CANON_ADOPTION.md`, `prompts/initiate.md`, and roll  ║
+║  ✓ `public/app.js` now imports `generateFranchiseNewsletter()`   ║
+║  ✓ The Cap Casualty action now calls the imported `loadContract  ║
+║  ✓ `renderNewsTicker()` now renders into the real `#newsTickerC  ║
+║  ✓ Commissioner Mode now sends canonical `commissionerId` / `us  ║
+║  ✓ Public static source now includes `contact.html`, `privacy.h  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 906/1000 ═══════════════════════════════════════╗
-║    Dev Health         95   ██████████                            ║
-║    Alignment          74   ███████░░░                            ║
-║    Momentum           90   █████████░                            ║
-║    Engagement         88   █████████░                            ║
+╔══ SCORES · SIL 921/1000 ═══════════════════════════════════════╗
+║    Dev Health         96   ██████████                            ║
+║    Alignment          76   ████████░░                            ║
+║    Momentum           92   █████████░                            ║
+║    Engagement         90   █████████░                            ║
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          98   ██████████                            ║
-║    Security           92   █████████░                            ║
-║    Ecosystem          83   ████████░░                            ║
-║    Capital            86   █████████░                            ║
+║    Security           94   █████████░                            ║
+║    Ecosystem          87   █████████░                            ║
+║    Capital            88   █████████░                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
@@ -32,7 +32,7 @@
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
+║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
@@ -40,7 +40,7 @@
 ║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 13 files  ·  M:13 A:0 D:0 ?:0                          ║
+║  Changes: 35 files  ·  M:24 A:11 D:0 ?:0                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -51,7 +51,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        —                                                ║
 ║  Compliance:    —                                                ║
-║  Tests:         164/164                                          ║
+║  Tests:         165/165                                          ║
 ║  IGNIS:         11d ago                                          ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  —                                                ║

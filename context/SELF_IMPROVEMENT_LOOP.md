@@ -1,10 +1,22 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 22 closed at 906 / 1000 SIL v3.0. Last verified suite: 164/164 plus Playwright UI 9/9 and Pages build/smoke.
+Rolling status: Session 23 closed at 921 / 1000 SIL v3.0. Last verified suite: 165/165 plus Playwright UI 9/9 and Pages build/smoke.
 <!-- rolling-status-end -->
 
 
+
+## 2026-06-30 — Session 23 Browser Affordance + Public Surface Closeout
+
+Score: 921 / 1000
+
+Category notes:
+- Dev Health: +3 for repairing four live browser/runtime contract breaks and raising the verified default suite to 165 passing tests.
+- Engagement: +2 for restoring the Season Newsletter, live news ticker, and Commissioner loop affordances that make the beta feel alive instead of brittle.
+- Security / Ecosystem Integration: +6 for adding proprietary-first contact, privacy, terms, sitemap, `agents.json`, and `llms.txt` surfaces and proving them in Pages smoke.
+- Process Quality: +2 for refusing to carry forward stale Cloudflare 403 wording after the public URL returned HTTP 200 while still preserving the bad_authz certificate blocker.
+
+Follow-up: after this push deploys, run public route smoke for the new contact/legal/agent paths and re-check GitHub Pages certificate state before changing Launch Readiness.
 ## 2026-06-30 — Session 22 Mobile Loop + Determinism + Canon Repair Closeout
 
 Score: 906 / 1000

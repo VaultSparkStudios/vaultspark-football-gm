@@ -1,30 +1,31 @@
 {
-  "schemaVersion": "1.3",
-  "date": "2026-06-30",
-  "session": 22,
-  "project": "vaultspark-football-gm",
-  "silScore": 906,
   "tests": {
-    "passed": 164,
-    "total": 164
+    "total": 165,
+    "passed": 165
   },
+  "session": 23,
   "shipped": [
-    "wire-mobile-core-loop",
-    "deterministic-runtime-ids",
-    "canon-strong-gap-repair",
-    "mobile-overlay-post-advance-refresh",
-    "player-history-empty-season-fallback"
+    "fix-commissioner-lobby-contract",
+    "repair-shareable-newsletter-action",
+    "restore-live-news-ticker-renderer",
+    "repair-cap-casualty-action",
+    "complete-public-agent-legal-surface",
+    "static-route-build-smoke-proof"
   ],
+  "suite": "npm test 165/165; Playwright UI 9/9; Pages build/smoke pass with public route assertions",
+  "blockingFailing": 0,
   "deferred": [
     {
-      "slug": "cloudflare-custom-domain-fix",
-      "reason": "Missing Cloudflare capability / external runbook required"
+      "reason": "Cloudflare/API credentials missing; GitHub Pages API still reports bad_authz certificate despite public URL HTTP 200.",
+      "slug": "cloudflare-cert-repair"
     },
     {
-      "slug": "full-sparked-release",
-      "reason": "Public URL smoke has not passed"
+      "reason": "Needs post-push public route smoke and certificate-state verification.",
+      "slug": "sparked-release-flip"
     }
   ],
-  "blockingFailing": 0,
-  "suite": "npm test 164/164; Playwright UI 9/9; Pages build/smoke pass"
+  "project": "vaultspark-football-gm",
+  "schemaVersion": "1.3",
+  "silScore": 921,
+  "date": "2026-06-30"
 }

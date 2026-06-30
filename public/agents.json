@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "project": "vaultspark-football-gm",
+  "name": "VaultSpark Football GM",
+  "owner": "VaultSpark Studios LLC",
+  "rights": "Proprietary - All Rights Reserved",
+  "audience": "humans-and-ai-agents",
+  "canonicalUrl": "https://vaultsparkstudios.com/vaultspark-football-gm/",
+  "contact": "footballgm@vaultsparkstudios.com",
+  "entrypoints": [
+    { "label": "Play", "url": "https://vaultsparkstudios.com/vaultspark-football-gm/" },
+    { "label": "Contact", "url": "https://vaultsparkstudios.com/vaultspark-football-gm/contact.html" },
+    { "label": "Privacy", "url": "https://vaultsparkstudios.com/vaultspark-football-gm/privacy.html" },
+    { "label": "Terms", "url": "https://vaultsparkstudios.com/vaultspark-football-gm/terms.html" }
+  ]
+}

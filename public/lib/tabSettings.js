@@ -677,25 +677,36 @@ export function renderCoachingDnaCard() {
 export async function renderCommissionerLobby() {
   const status = document.getElementById("commissionerLobbyStatus");
   if (!status) return;
+  const markReadyBtn = document.getElementById("markReadyBtn");
+  const advanceLobbyBtn = document.getElementById("advanceLobbyBtn");
   try {
     const data = await api("/api/commissioner/lobby");
     const lobby = data.lobby;
     if (!lobby) {
       status.innerHTML = `<div class="narrative-empty">No active lobby. Create one above or join with a Lobby ID.</div>`;
+      if (markReadyBtn) markReadyBtn.disabled = true;
+      if (advanceLobbyBtn) advanceLobbyBtn.disabled = true;
       return;
     }
-    const rows = (lobby.players || []).map((p) => `
+    const rows = (lobby.players || []).map((p) => {
+      const ready = p.status === "ready";
+      return `
       <div class="lobby-player-row">
-        <span class="lobby-ready-dot ${p.ready ? "ready" : ""}"></span>
-        <span>${escapeHtml(p.displayName || p.gmId)}</span>
-        <span class="lobby-team">${escapeHtml(p.teamId || "—")}</span>
-        <span class="lobby-status-text">${p.ready ? "Ready" : "Waiting"}</span>
-      </div>`).join("");
+        <span class="lobby-ready-dot ${ready ? "ready" : ""}"></span>
+        <span>${escapeHtml(p.displayName || p.userId || "GM")}</span>
+        <span class="lobby-team">${escapeHtml(p.teamId || "-")}</span>
+        <span class="lobby-status-text">${ready ? "Ready" : "Waiting"}</span>
+      </div>`;
+    }).join("");
     status.innerHTML = `
-      <div class="commissioner-lobby-header">Lobby: <strong>${escapeHtml(lobby.id)}</strong> · Gate: ${lobby.gateOpen ? "Open" : "Locked"}</div>
+      <div class="commissioner-lobby-header">Lobby: <strong>${escapeHtml(lobby.leagueId || lobby.id || "active")}</strong> · Gate: ${escapeHtml(lobby.gateStatus || "open")} · ${escapeHtml(String(lobby.readyPlayers ?? 0))}/${escapeHtml(String(lobby.totalPlayers ?? 0))} ready</div>
       <div class="lobby-players">${rows || "<em>No players yet.</em>"}</div>`;
+    if (markReadyBtn) markReadyBtn.disabled = !lobby.players?.length;
+    if (advanceLobbyBtn) advanceLobbyBtn.disabled = !lobby.players?.length;
   } catch {
     status.innerHTML = `<div class="narrative-empty">Unable to load lobby status.</div>`;
+    if (markReadyBtn) markReadyBtn.disabled = true;
+    if (advanceLobbyBtn) advanceLobbyBtn.disabled = true;
   }
 }
 

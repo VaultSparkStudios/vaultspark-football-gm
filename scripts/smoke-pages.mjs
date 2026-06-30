@@ -38,6 +38,24 @@ async function fileExists(filePath) {
   }
 }
 
+function fetchStaticText(pathname) {
+  return new Promise((resolve, reject) => {
+    http.get(`http://${host}:${port}${pathname}`, (res) => {
+      let body = "";
+      res.setEncoding("utf8");
+      res.on("data", (chunk) => { body += chunk; });
+      res.on("end", () => resolve({ statusCode: res.statusCode, body }));
+    }).on("error", reject);
+  });
+}
+
+async function assertStaticPath(pathname, expectedPattern) {
+  const response = await fetchStaticText(pathname);
+  if (response.statusCode !== 200) throw new Error(`Expected 200 for ${pathname}, received ${response.statusCode}`);
+  if (expectedPattern && !expectedPattern.test(response.body)) {
+    throw new Error(`Expected ${pathname} to match ${expectedPattern}`);
+  }
+}
 async function createServer() {
   if (!(await fileExists(path.join(staticDir, "index.html")))) {
     throw new Error("Missing static/index.html. Run `npm run build:pages` first.");
@@ -101,6 +119,12 @@ async function main() {
 
     await page.goto(`${baseUrl}missing-route`, { waitUntil: "networkidle" });
     await page.waitForSelector("#createLeagueBtn");
+    await assertStaticPath(`${mountPath}/contact.html`, /footballgm@vaultsparkstudios\.com/);
+    await assertStaticPath(`${mountPath}/privacy.html`, /Browser-First Beta/);
+    await assertStaticPath(`${mountPath}/terms.html`, /All rights reserved/);
+    await assertStaticPath(`${mountPath}/agents.json`, /Proprietary - All Rights Reserved/);
+    await assertStaticPath(`${mountPath}/.well-known/llms.txt`, /VaultSpark Football GM/);
+    await assertStaticPath(`${mountPath}/sitemap.xml`, /contact\.html/);
     console.log("Static Pages smoke pass completed.");
   } finally {
     await browser.close();

@@ -63,3 +63,11 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Determinism truth repair: runtime `Math.random()` usage is removed from event IDs/callers; the only remaining `Math.random()` grep hit is the intentional test cache-busting import in `test/create-api-client.test.js`.
 - Canon truth repair: `check-canon-conformance` now reports 0 gaps after adding rolling-status markers and `prompts/initiate.md`; `context/CANON_ADOPTION.md` records the active posture.
 - Launch truth unchanged: Cloudflare/GitHub Pages public-domain readiness remains blocked until public URL evidence changes.
+
+## 2026-06-30 — Session 23 truth updates
+
+- Browser affordance truth repair: Season Newsletter and Cap Casualty buttons no longer call undefined functions; focused source tests cover both contracts.
+- Ticker truth repair: live news ticker output now targets the actual `#newsTickerContent` DOM node, not a nonexistent `.news-ticker-track` child.
+- Commissioner truth repair: the client-only runtime and browser UI now agree on create/join/ready/advance payload and status fields; `test/local-api-runtime.test.js` covers the flow.
+- Public surface truth repair: contact/privacy/terms/agents/llms/sitemap files exist in `public/`, are linked from primary pages, are copied by the Pages build, and are asserted by static smoke.
+- Launch truth refinement: public URL probe returned HTTP 200 and GitHub Actions/Pages workflows are green, but GitHub Pages API still reports `bad_authz` on the custom-domain certificate. Do not mark full launch readiness until post-push public route smoke and certificate state are verified.

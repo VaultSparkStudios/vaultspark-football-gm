@@ -15,6 +15,7 @@ const explicitServerBaseUrl = (process.env.VITE_API_ORIGIN || "").trim()
   || ((process.env.API_DOMAIN || "").trim() ? `https://${String(process.env.API_DOMAIN).trim()}` : "");
 const serverAvailable = explicitServerBaseUrl ? "true" : "false";
 const browserEntryPoints = [path.join(srcDir, "app", "api", "localApiRuntime.js")];
+const htmlPages = ["index.html", "game.html", "landing.html", "contact.html", "privacy.html", "terms.html"];
 
 function normalizeBasePath(value) {
   const trimmed = String(value || "").trim() || `/${slug}/`;
@@ -163,8 +164,9 @@ async function main() {
   await ensureCleanDir(outDir);
   await copyDir(publicDir, outDir);
   await copyBrowserModules();
-  await writeHtml("index.html");
-  await writeHtml("game.html");
+  for (const pageName of htmlPages) {
+    await writeHtml(pageName);
+  }
   await fs.copyFile(path.join(outDir, "index.html"), path.join(outDir, "404.html"));
   console.log(`Built Pages bundle in ${outDir}`);
 }

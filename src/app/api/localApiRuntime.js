@@ -1443,10 +1443,12 @@ export function createLocalApiRuntime({
       // ── Commissioner / Multiplayer routes ───────────────────────────────────
       if (method === "POST" && pathname === "/api/commissioner/create") {
         const s = ensureSession();
-        const { leagueName, commissionerId, maxPlayers } = body || {};
+        const { leagueName, maxPlayers } = body || {};
+        const commissionerId = body?.commissionerId || body?.userId || body?.gmId;
+        const controlledTeamId = body?.controlledTeamId || body?.teamId || s.controlledTeamId;
         if (!commissionerId) return finish(jsonResponse(400, { ok: false, error: "commissionerId required." }));
         _lobby = createLobby({
-          leagueId:      `lobby-${Date.now()}`,
+          leagueId:      `lobby-${now()}`,
           commissionerId,
           leagueName:    leagueName || "VaultSpark League",
           maxPlayers:    Number(maxPlayers) || 4
@@ -1455,7 +1457,7 @@ export function createLocalApiRuntime({
         addPlayerToLobby(_lobby, {
           userId:          commissionerId,
           displayName:     commissionerId,
-          controlledTeamId: s.controlledTeamId
+          controlledTeamId
         });
         _persistLobby();
         return finish(jsonResponse(200, { ok: true, lobby: lobbyStatus(_lobby) }));
@@ -1468,7 +1470,9 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/commissioner/join") {
         if (!_lobby) return finish(jsonResponse(404, { ok: false, error: "No active lobby." }));
-        const { userId, displayName, controlledTeamId } = body || {};
+        const userId = body?.userId || body?.gmId;
+        const displayName = body?.displayName || userId;
+        const controlledTeamId = body?.controlledTeamId || body?.teamId;
         if (!userId || !controlledTeamId) return finish(jsonResponse(400, { ok: false, error: "userId and controlledTeamId required." }));
         try {
           addPlayerToLobby(_lobby, { userId, displayName: displayName || userId, controlledTeamId });
@@ -1481,7 +1485,7 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/commissioner/ready") {
         if (!_lobby) return finish(jsonResponse(404, { ok: false, error: "No active lobby." }));
-        const { userId } = body || {};
+        const userId = body?.userId || body?.gmId;
         if (!userId) return finish(jsonResponse(400, { ok: false, error: "userId required." }));
         try {
           const allReady = markPlayerReady(_lobby, userId);
@@ -1514,15 +1518,18 @@ export function createLocalApiRuntime({
         const s = ensureSession();
         const intentResults = await applyIntents(_lobby, {
           call: async (action, params) => {
-            const res = await new Promise((resolve) => {
-              request({ method: "POST", pathname: `/api/${action}`, body: params }, resolve);
-            });
+            const routeMap = {
+              "propose-trade": "/api/trade",
+              "sign-free-agent": "/api/sign",
+              "release-player": "/api/release",
+              "update-depth-chart": "/api/depth-chart",
+              "restructure-contract": "/api/contracts/restructure"
+            };
+            const res = await request(routeMap[action] || `/api/${action}`, { method: "POST", body: params });
             return res.payload;
           }
         });
-        const advResult = await new Promise((resolve) =>
-          request({ method: "POST", pathname: "/api/advance-week", body: {} }, resolve)
-        );
+        await request("/api/advance-week", { method: "POST", body: {} });
         recordAdvance(_lobby, s.currentYear, s.currentWeek, s.phase, intentResults);
         openGate(_lobby, s.currentYear, s.currentWeek, s.phase);
         _persistLobby();
