@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import { buildMobileDecisionDeck } from "../public/lib/mobileLoop.js";
 
 test("mobile decision deck prioritizes an active draft room", () => {
@@ -53,4 +54,16 @@ test("mobile decision deck falls back to advance week when no pressure exists", 
   assert.equal(cards.length, 1);
   assert.equal(cards[0].action, "advance-week");
   assert.equal(cards[0].tone, "primary");
+});
+
+
+test("app shell imports and wires the mobile loop overlay", () => {
+  const appSource = fs.readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
+
+  assert.match(appSource, /from "\.\/lib\/mobileLoop\.js"/);
+  assert.match(appSource, /function syncMobileLoopOverlay\(\)/);
+  assert.match(appSource, /setMobileModeEnabled\(e\.target\.checked\)/);
+  assert.doesNotMatch(appSource, /typeof setMobileModeEnabled/);
+  assert.doesNotMatch(appSource, /typeof initMobileLoop/);
+  assert.match(appSource, /checkAndPruneRewindStorage\(\);\s*syncMobileLoopOverlay\(\);/s);
 });

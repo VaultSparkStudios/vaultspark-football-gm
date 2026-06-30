@@ -1,5 +1,39 @@
 # Latest Handoff
 
+## Impact Summary — Session 22 (2026-06-30)
+
+**Headline:** Session 22 made the mobile beta loop real in the browser shell, closed the last runtime determinism leaks found by live grep, and repaired current Studio canon conformance gaps without force-greening the public-domain blocker.
+
+- Shipped all 3 items from `docs/AUDIT_2026-06-30_SESSION22.*`: mobile core loop wiring, deterministic runtime IDs/callers, and canon strong-gap repair.
+- Shipped the second-order innovation candidate in `docs/INNOVATION_PACK.md`: enabled mobile mode refreshes after Advance Week state mutation so decision cards do not go stale.
+- Verification: focused mobile/determinism 8/8, `npm run test:runtime` 81/81, `npm run test:studio` 5/5, full `npm test` 163/163, Pages build/smoke, and canon conformance 0 gaps.
+
+## Where We Left Off — 2026-06-30 (Session 22)
+
+The requested `/goal /arc` ran through startup, live audit, implementation, expansion pass, verification, and closeout. The project-local `ops innovation-pack` command is not implemented, so the innovation expansion was manual and recorded in `docs/INNOVATION_PACK.md`.
+
+What changed:
+- `public/app.js` imports and calls `public/lib/mobileLoop.js`; the Settings toggle now enables/disables the overlay through real module functions instead of unresolved globals.
+- Enabled mobile mode now re-renders after single-week advancement so the decision deck follows the new franchise state.
+- Runtime `Math.random()` usage is gone outside the intentional test cache-busting import: news IDs, press conference IDs, multiplayer intent IDs, and Draft War Room trade callers are deterministic from event/pick context.
+- `test/deterministic-ids.test.js` covers deterministic replay for these runtime IDs/callers, and `test/mobile-loop.test.js` covers the browser-shell wiring contract.
+- `context/CANON_ADOPTION.md`, `prompts/initiate.md`, and rolling-status markers in `context/SELF_IMPROVEMENT_LOOP.md` repair current STRONG canon gaps; conformance now reports 0 gaps.
+
+Verification passed:
+- `node --test test/mobile-loop.test.js test/deterministic-ids.test.js` — 8/8
+- `npm run test:runtime` — 81/81
+- `npm run test:studio` — 5/5
+- `npm test` — 163/163
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline` — 0 gaps
+
+Remaining public-safe blocker:
+- `vaultsparkstudios.com` still depends on Cloudflare-side remediation or credentials. Keep Launch Readiness blocked until a real public URL smoke passes.
+
+Next best work:
+- Push this Session 22 closeout, confirm GitHub Actions/Pages deploy from main, then apply or unlock the Cloudflare/GitHub Pages runbook and verify the public beta URL.
+
 ## Impact Summary — Session 21 (2026-06-30)
 
 **Headline:** Session 21 hardened the Studio protocol layer inside Football GM so Windows sessions stop spawning visible child processes, Wave-list discipline is executable, and blocker/status surfaces stay truthful.

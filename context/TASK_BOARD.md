@@ -223,3 +223,17 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 **Verification:** `node --check` across 37 changed JS/MJS files · `node scripts/check-windows-hide.mjs` · `node scripts/check-canon-044-waves.mjs` · `node scripts/lib/sil-v6.mjs --repo-root . --medium infrastructure --json` · `npm run test:studio` 5/5 · full `npm test` 161/161 · `npm run build:pages` · `npm run smoke:pages`.
 
 **Still blocked:** `vaultsparkstudios.com` remains Cloudflare/GitHub Pages-side until the existing runbook is applied or Cloudflare credentials are added; Session 21 did not force-green public reachability.
+
+## Session 22 — Mobile Loop + Determinism + Canon Repair (2026-06-30)
+
+| Item | Status |
+|------|--------|
+| Generate a live-code audit after confirming the project-local genius generator is absent | Done |
+| Wire the mobile core loop overlay into the browser app shell and Settings toggle | Done |
+| Refresh enabled mobile overlay after Advance Week state mutation | Done |
+| Remove remaining runtime `Math.random()` leaks from news IDs, press conference IDs, multiplayer intent IDs, and Draft War Room trade calls | Done |
+| Repair CANON-001/CANON-003/CANON-004 STRONG gaps with rolling-status markers and `prompts/initiate.md` | Done |
+
+**Verification:** focused mobile/determinism 8/8 · `npm run test:runtime` 81/81 · `npm run test:studio` 5/5 · full `npm test` 163/163 · `npm run build:pages` · `npm run smoke:pages` · canon conformance 0 gaps.
+
+**Still blocked:** `vaultsparkstudios.com` remains Cloudflare/GitHub Pages-side until the existing runbook is applied or credentials are added; no Session 22 shipped item depends on new backend, paid services, or fabricated public-domain evidence.

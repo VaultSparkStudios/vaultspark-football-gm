@@ -12,8 +12,25 @@ export function initNewsLog(league) {
   if (!Array.isArray(league.newsLog)) league.newsLog = [];
 }
 
+function slugPart(value) {
+  return String(value ?? "na").replace(/[^a-z0-9_-]+/gi, "-").replace(/^-+|-+$/g, "").slice(0, 36) || "na";
+}
+
+function newsId(item, ordinal) {
+  const teams = (item.teamIds || []).map(slugPart).join("-");
+  const players = (item.playerIds || []).map(slugPart).join("-");
+  return [
+    "news",
+    slugPart(item.type),
+    slugPart(item.year),
+    slugPart(item.week),
+    teams || players || "league",
+    ordinal
+  ].join("-");
+}
+
 function push(league, item) {
-  league.newsLog.unshift({ ...item, id: `news-${Date.now()}-${Math.random().toString(36).slice(2, 7)}` });
+  league.newsLog.unshift({ ...item, id: newsId(item, league.newsLog.length) });
   if (league.newsLog.length > MAX_NEWS_LOG) league.newsLog.length = MAX_NEWS_LOG;
 }
 

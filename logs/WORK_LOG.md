@@ -102,3 +102,12 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Verification: `node --check` across 37 changed JS/MJS files, `npm run test:studio` 5/5, full `npm test` 161/161, `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, CANON-044 guard, context meter, and SIL v6 probe.
 - Closeout note: repo-local `scripts/closeout-autopilot.mjs` is absent, so this session ran the required closeout gates manually and recorded the helper gap.
 - Follow-up after push: GitHub CI exposed a real browser bootstrap bug where null launch-readiness inputs left `#statusChip` stuck at `Loading...`; fixed `public/lib/tabSettings.js`, added a regression test, and verified `npm run test:ui` 9/9 plus full `npm test` 162/162.
+
+## 2026-06-30 — Session 22: mobile loop, determinism, and canon repair closeout
+
+- Ran the requested durable `/goal /arc` sequence through startup, live-code audit, implementation, expansion pass, validation, and closeout.
+- Generated `docs/AUDIT_2026-06-30_SESSION22.*` from verified live findings and recorded the manual expansion pass in `docs/INNOVATION_PACK.md` because `ops innovation-pack` is not implemented locally.
+- Restored mobile core loop app-shell wiring and added the post-advance overlay refresh path.
+- Removed remaining runtime `Math.random()` leaks from event IDs/callers and covered deterministic output with `test/deterministic-ids.test.js`.
+- Repaired current STRONG canon gaps: rolling-status markers, `prompts/initiate.md`, and `context/CANON_ADOPTION.md`; conformance now reports 0 gaps.
+- Verification: focused mobile/determinism 8/8, runtime 81/81, studio 5/5, full `npm test` 163/163, Pages build/smoke, and canon conformance 0 gaps.

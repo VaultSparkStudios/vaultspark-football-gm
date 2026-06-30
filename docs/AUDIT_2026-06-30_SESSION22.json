@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-06-30",
+  "project": "vaultspark-football-gm",
+  "projectType": "game",
+  "session": 22,
+  "headline": "Session 22 targets live beta quality: restore the mobile core loop, finish deterministic runtime IDs, and repair active Studio canon gaps without touching the external Cloudflare blocker.",
+  "items": [
+    {
+      "id": 1,
+      "slug": "wire-mobile-core-loop",
+      "tier": "fire",
+      "axis": "ui/ux/user-experience",
+      "effort": "1h",
+      "impact": 9,
+      "innovation": 7,
+      "priority": 31.5,
+      "title": "Wire the mobile core loop overlay into the browser app shell",
+      "why": "The mobile loop module exists and has focused tests, but live grep proved app.js never imports it. The Settings toggle calls undefined globals, so the player-facing narrow-screen decision deck is effectively inert in production.",
+      "recipe": "Import initMobileLoop/renderMobileOverlay/setMobileModeEnabled/isMobileModeEnabled into public/app.js, add a syncMobileLoopOverlay helper, wire the Settings toggle to show/hide/render the overlay, and add a focused wiring test.",
+      "evidence": "rg found initMobileLoop/setMobileModeEnabled only in public/lib/mobileLoop.js and unresolved typeof checks in public/app.js.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Add the missing imports and remove typeof-global guards." },
+        "L2": { "effortHours": 1, "recipe": "Add imports plus overlay sync, checkbox state, and regression coverage." },
+        "L3": { "effortHours": 2, "recipe": "Add full Playwright mobile toggle coverage after the L2 fix." }
+      }
+    },
+    {
+      "id": 2,
+      "slug": "deterministic-runtime-ids",
+      "tier": "fire",
+      "axis": "speed/organization/efficiency",
+      "effort": "1h",
+      "impact": 8,
+      "innovation": 6,
+      "priority": 24.0,
+      "title": "Remove remaining runtime Math.random() leaks from game IDs and draft drama",
+      "why": "The project repeatedly improved deterministic replay, yet live grep still found Math.random() in beat reporter IDs, press conference IDs, multiplayer intent IDs, and Draft War Room trade callers. These are small leaks, but they undermine reproducible sessions and make bug reports harder to replay.",
+      "recipe": "Replace random suffixes with deterministic field-derived IDs or stable hashes, preserve human-readable IDs, and add tests that same inputs produce same IDs/callers.",
+      "evidence": "rg -n Math.random public src test found four runtime surfaces outside test cache-busting.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Replace ID Math.random calls only." },
+        "L2": { "effortHours": 1, "recipe": "Replace all runtime Math.random calls and add deterministic regression tests." },
+        "L3": { "effortHours": 2, "recipe": "Add a shared deterministic ID helper and migrate related event writers." }
+      }
+    },
+    {
+      "id": 3,
+      "slug": "canon-strong-gap-repair",
+      "tier": "high",
+      "axis": "security",
+      "effort": "30m",
+      "impact": 7,
+      "innovation": 3,
+      "priority": 16.0,
+      "title": "Repair current STRONG canon gaps found by conformance check",
+      "why": "The startup conformance check reported no ABSOLUTE gaps, but did report missing rolling-status markers and a missing prompts/initiate.md split. These are cheap, live, source-of-truth repairs that keep future sessions from re-spending time on known protocol drift.",
+      "recipe": "Add rolling-status markers to context/SELF_IMPROVEMENT_LOOP.md and a public-safe prompts/initiate.md pointer to docs/SESSION_PROTOCOL.md section 4, then rerun conformance.",
+      "evidence": "check-canon-conformance reported CANON-001/CANON-004 marker gaps and CANON-003 missing prompts/initiate.md.",
+      "ladder": {
+        "L1": { "effortHours": 0.25, "recipe": "Add the missing initiate prompt pointer." },
+        "L2": { "effortHours": 0.5, "recipe": "Add initiate prompt and rolling-status markers, then rerun conformance." },
+        "L3": { "effortHours": 1, "recipe": "Also update closeout write-back docs to keep the marker current automatically." }
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "slug": "cloudflare-custom-domain-fix",
+      "reason": "Still externally blocked from this repo: no Cloudflare capability is present, and the existing runbook is already recorded. Do not fabricate readiness or mutate the org root domain without credentials."
+    },
+    {
+      "slug": "full-sparked-release",
+      "reason": "Public launch remains no-go until the Cloudflare/GitHub Pages public URL smoke passes."
+    }
+  ],
+  "executionLog": []
+}

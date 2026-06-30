@@ -65,6 +65,10 @@ function pickQuote(bank, gameId, slot) {
   return bank[seed % bank.length];
 }
 
+function pressConferenceId(item, gameId, slot) {
+  return `pc-${item.subtype}-${item.year}-${item.week}-${gameId}-${slot}`.replace(/[^a-z0-9_-]+/gi, "-");
+}
+
 // ── Main export ────────────────────────────────────────────────────────────────
 
 /**
@@ -144,11 +148,11 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
     }
   ];
 
-  for (const item of items) {
+  items.forEach((item, index) => {
     league.newsLog.unshift({
       ...item,
-      id: `pc-${item.subtype}-${week}-${year}-${Math.random().toString(36).slice(2, 6)}`
+      id: pressConferenceId(item, gameId, index)
     });
     if (league.newsLog.length > 50) league.newsLog.length = 50;
-  }
+  });
 }

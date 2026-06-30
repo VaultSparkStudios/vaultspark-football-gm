@@ -4,10 +4,10 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 21 shipped infrastructure hardening for the Studio protocol layer and followed up with a browser bootstrap fix: hidden child-process execution by construction, CANON-044 Wave enforcement, task-board/blocker truth repair, honest SIL/context telemetry, and null-safe launch readiness inputs.",
-  "nextMilestone": "Commit and push Session 21 to main, let GitHub Pages deploy from the direct push, then apply or unlock the Cloudflare custom-domain runbook and verify the public URL.",
+  "currentFocus": "Session 22 restored mobile core loop browser wiring, refreshed enabled mobile mode after week advancement, removed remaining runtime determinism leaks, repaired canon conformance gaps to 0, and verified the repo at 163/163 plus Pages build/smoke.",
+  "nextMilestone": "Push Session 22 to main, confirm GitHub Actions/Pages deployment, then apply or unlock the Cloudflare custom-domain runbook and verify the public beta URL before marking Launch Readiness ready.",
   "blockers": [
-    "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) — Cloudflare-side fix required; runbook in TASK_BOARD"
+    "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) \u2014 Cloudflare-side fix required; runbook in TASK_BOARD"
   ],
   "lastUpdated": "2026-06-30",
   "lifecycle": "deployed",
@@ -18,23 +18,19 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 162,
-    "pass": 162,
+    "totalTests": 163,
+    "pass": 163,
     "fail": 0,
     "lastRun": "2026-06-30",
     "newTestFiles": [
-      "test/challenge-codes.test.js",
-      "test/save-integrity.test.js",
-      "test/beta-feedback.test.js",
-      "test/draft-war-room.test.js",
-      "test/launch-readiness.test.js",
+      "test/deterministic-ids.test.js",
       "test/mobile-loop.test.js"
     ],
-    "newTestCount": 30,
-    "coverage": "Known default-shard inventory is 162 tests (core 54, runtime 80, sim-contract 22, sim-realism 1, studio 5). Session 21 reran the full default suite plus Playwright UI 9/9 and Pages build/smoke."
+    "newTestCount": 5,
+    "coverage": "Known default-shard inventory is 163 tests (core 54, runtime 81, sim-contract 22, sim-realism 1, studio 5). Session 22 reran focused mobile/determinism tests, runtime, studio, full default suite, Pages build, and Pages smoke."
   },
-  "testsPassing": 162,
-  "testsTotal": 162,
+  "testsPassing": 163,
+  "testsTotal": 163,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -73,20 +69,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 889,
+  "silScore": 906,
   "silCategoriesV3": {
-    "devHealth": 92,
-    "creativeAlignment": 73,
-    "momentum": 86,
-    "engagement": 83,
+    "devHealth": 95,
+    "creativeAlignment": 74,
+    "momentum": 90,
+    "engagement": 88,
     "processQuality": 100,
-    "crossRepoCoherence": 97,
-    "securityPosture": 91,
-    "ecosystemIntegration": 81,
+    "crossRepoCoherence": 98,
+    "securityPosture": 92,
+    "ecosystemIntegration": 83,
     "capitalEfficiency": 86,
     "automationCoverage": 100
   },
-  "currentSession": 21,
+  "currentSession": 22,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
@@ -97,16 +93,13 @@
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
       "node scripts/context-meter.mjs --json",
-      "node --check across 37 changed JS/MJS files",
-      "node scripts/check-windows-hide.mjs",
-      "node scripts/check-canon-044-waves.mjs",
-      "node scripts/lib/sil-v6.mjs --repo-root . --medium infrastructure --json",
+      "node --test test/mobile-loop.test.js test/deterministic-ids.test.js",
+      "npm run test:runtime",
       "npm run test:studio",
       "npm test",
       "npm run build:pages",
       "npm run smoke:pages",
-      "npm run test:runtime",
-      "npm run test:ui"
+      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline"
     ],
     "timedOut": []
   },
@@ -135,6 +128,6 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 889,
+  "silHealth": 906,
   "silHealthMax": 1000
 }

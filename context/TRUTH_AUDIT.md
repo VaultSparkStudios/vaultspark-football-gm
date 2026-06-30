@@ -55,3 +55,10 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - `node scripts/ops.mjs doctor --json` now classifies GitHub Pages repo-secret work as agent-attemptable with `github.repo` and `gh auth status`; Cloudflare custom-domain remediation remains not auto-ready from this repo.
 - SIL v6 Impact intentionally remains 0/1000 with needs-instrumentation rows. That is an honest missing-measurement signal, not a quality score to inflate manually.
 - Follow-up correction: Session 21 remote CI failed the UI gate because `buildLaunchReadinessRows()` assumed non-null launch-readiness inputs. The fix is committed in-browser code, not a test relaxation; verified by Playwright UI 9/9 and default suite 162/162.
+
+## 2026-06-30 — Session 22 truth updates
+
+- Mobile Loop truth repair: `public/app.js` now imports and calls `mobileLoop.js`; the Settings toggle no longer relies on undefined globals, and the enabled overlay refreshes after Advance Week state mutation.
+- Determinism truth repair: runtime `Math.random()` usage is removed from event IDs/callers; the only remaining `Math.random()` grep hit is the intentional test cache-busting import in `test/create-api-client.test.js`.
+- Canon truth repair: `check-canon-conformance` now reports 0 gaps after adding rolling-status markers and `prompts/initiate.md`; `context/CANON_ADOPTION.md` records the active posture.
+- Launch truth unchanged: Cloudflare/GitHub Pages public-domain readiness remains blocked until public URL evidence changes.

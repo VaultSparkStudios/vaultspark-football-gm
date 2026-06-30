@@ -1,40 +1,29 @@
 {
   "schemaVersion": "1.3",
   "date": "2026-06-30",
-  "session": 21,
-  "agent": "codex",
+  "session": 22,
   "project": "vaultspark-football-gm",
-  "summary": "Infrastructure-rubric arc shipped protocol hardening for hidden child-process spawning, CANON-044 Wave enforcement, blocker/parser truth repair, and honest SIL/context telemetry.",
-  "shipped": [
-    "safe-spawn-window-storm-guard",
-    "canon-044-wave-enforcement",
-    "blocker-parser-truth-repair",
-    "honest-sil-context-telemetry"
-  ],
-  "verification": [
-    "node --check across changed JS/MJS files",
-    "node scripts/check-windows-hide.mjs",
-    "node scripts/check-canon-044-waves.mjs",
-    "node scripts/lib/sil-v6.mjs --repo-root . --medium infrastructure --json",
-    "npm run test:studio 5/5",
-    "npm run test:runtime 80/80",
-    "npm run test:ui 9/9",
-    "npm test 162/162",
-    "npm run build:pages",
-    "npm run smoke:pages"
-  ],
-  "silScore": 889,
-  "silV6": {
-    "health": 796,
-    "impact": 0,
-    "note": "Impact intentionally remains zero until real adoption signals are instrumented."
+  "silScore": 906,
+  "tests": {
+    "passed": 163,
+    "total": 163
   },
-  "blockers": [
-    "vaultsparkstudios.com still requires Cloudflare/GitHub Pages remediation or credentials"
+  "shipped": [
+    "wire-mobile-core-loop",
+    "deterministic-runtime-ids",
+    "canon-strong-gap-repair",
+    "mobile-overlay-post-advance-refresh"
   ],
-  "followUps": [
-    "Verify GitHub Actions/Pages deployment after direct push to main",
-    "Apply or unlock Cloudflare runbook, then set public-domain readiness only after public URL smoke evidence",
-    "Wire real SIL v6 Impact signals from adoption evidence"
-  ]
+  "deferred": [
+    {
+      "slug": "cloudflare-custom-domain-fix",
+      "reason": "Missing Cloudflare capability / external runbook required"
+    },
+    {
+      "slug": "full-sparked-release",
+      "reason": "Public URL smoke has not passed"
+    }
+  ],
+  "blockingFailing": 0,
+  "suite": "npm test 163/163; Pages build/smoke pass"
 }

@@ -95,7 +95,7 @@ export function queueIntent(lobby, userId, type, payload) {
   if (!slot) throw new Error("User not in lobby.");
 
   const intent = {
-    id: `intent-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+    id: `intent-${lobby.currentYear}-${lobby.currentWeek}-${slot.controlledTeamId}-${type}-${lobby.intentQueue.length + 1}`,
     userId,
     controlledTeamId: slot.controlledTeamId,
     type,

@@ -1,5 +1,22 @@
 # Self-Improvement Loop
 
+<!-- rolling-status-start -->
+Rolling status: Session 22 closed at 906 / 1000 SIL v3.0. Last verified suite: 163/163 plus Pages build/smoke.
+<!-- rolling-status-end -->
+
+
+## 2026-06-30 — Session 22 Mobile Loop + Determinism + Canon Repair Closeout
+
+Score: 906 / 1000
+
+Category notes:
+- Engagement: +5 for making the mobile core loop actually reachable in the browser shell and keeping it fresh after week advancement.
+- Dev Health: +3 for removing remaining runtime randomness from replay-sensitive IDs/callers and proving deterministic output with focused tests.
+- Process Quality / Cross-Repo Coherence: +5 for repairing current STRONG canon gaps to 0 and recording honest deferrals instead of force-greening public reachability.
+- Momentum: +4 for completing the primary audit and second-order innovation pass in one continuous `/goal /arc` run.
+
+Follow-up: after Cloudflare DNS/proxy remediation or credential provisioning, re-run the public URL smoke and update Launch Readiness from `Blocked` to `Ready` only from evidence.
+
 ## 2026-06-30 — Session 21 Infrastructure Protocol Hardening Closeout
 
 Score: 889 / 1000

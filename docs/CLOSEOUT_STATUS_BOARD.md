@@ -1,47 +1,47 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-06-30 (Session 21 closeout) -->
+<!-- generated-at: 2026-06-30 (Session 22 closeout) -->
 
 # Closeout Status Board — VaultSpark Football GM
 
 ```
-╔══ SESSION CLOSEOUT · VaultSpark Football GM · S21 ═════════════╗
-║  Date: 2026-06-30  ·  SIL: 889/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · VaultSpark Football GM · S22 ═════════════╗
+║  Date: 2026-06-30  ·  SIL: 906/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ `scripts/lib/safe-spawn.mjs` now wraps the child-process spa  ║
-║  ✓ `scripts/check-canon-044-waves.mjs` verifies durable agent-f  ║
-║  ✓ `scripts/lib/task-board.mjs` again parses legacy tables/chec  ║
-║  ✓ `scripts/lib/context-verdicts.mjs`, `scripts/cache-ledger-ro  ║
-║  ✓ `.github/dependabot.yml` and `.github/workflows/dependabot-a  ║
+║  ✓ `public/app.js` imports and calls `public/lib/mobileLoop.js`  ║
+║  ✓ Enabled mobile mode now re-renders after single-week advance  ║
+║  ✓ Runtime `Math.random()` usage is gone outside the intentiona  ║
+║  ✓ `test/deterministic-ids.test.js` covers deterministic replay  ║
+║  ✓ `context/CANON_ADOPTION.md`, `prompts/initiate.md`, and roll  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 889/1000 ═══════════════════════════════════════╗
-║    Dev Health         92   █████████░                            ║
-║    Alignment          73   ███████░░░                            ║
-║    Momentum           86   █████████░                            ║
-║    Engagement         83   ████████░░                            ║
+╔══ SCORES · SIL 906/1000 ═══════════════════════════════════════╗
+║    Dev Health         95   ██████████                            ║
+║    Alignment          74   ███████░░░                            ║
+║    Momentum           90   █████████░                            ║
+║    Engagement         88   █████████░                            ║
 ║    Process Qual       100  ██████████                            ║
-║    Coherence          97   ██████████                            ║
-║    Security           91   █████████░                            ║
-║    Ecosystem          81   ████████░░                            ║
+║    Coherence          98   ██████████                            ║
+║    Security           92   █████████░                            ║
+║    Ecosystem          83   ████████░░                            ║
 ║    Capital            86   █████████░                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
-║  · context/LATEST_HANDOFF.md                                     ║
+║  ✓ context/TASK_BOARD.md                                         ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 9 files  ·  M:9 A:0 D:0 ?:0                            ║
-║  Ahead: 0  ·  Behind: 0                                          ║
+║  Changes: 20 files  ·  M:12 A:0 D:0 ?:8                          ║
+║  Ahead: 1  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
@@ -51,7 +51,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        —                                                ║
 ║  Compliance:    —                                                ║
-║  Tests:         162/162                                          ║
+║  Tests:         163/163                                          ║
 ║  IGNIS:         11d ago                                          ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  —                                                ║

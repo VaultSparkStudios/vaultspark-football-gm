@@ -2,6 +2,12 @@ import { mountTutorial } from "./lib/tutorialCampaign.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
 import {
+  initMobileLoop,
+  isMobileModeEnabled,
+  renderMobileOverlay,
+  setMobileModeEnabled
+} from "./lib/mobileLoop.js";
+import {
   getSavedToken, saveToken, getSavedGistId, saveGistId,
   exportToGist, importFromGist, listGists
 } from "./lib/gistSync.js";
@@ -297,6 +303,18 @@ import {
   checkAndPruneRewindStorage
 } from "./lib/engagementFeatures.js";
 
+function syncMobileLoopOverlay() {
+  const overlay = document.getElementById("mobileLoopOverlay");
+  if (!overlay) return;
+  const active = isMobileModeEnabled();
+  overlay.classList.toggle("hidden", !active);
+  const toggle = document.getElementById("mobileLoopToggle");
+  if (toggle) toggle.checked = active;
+  if (active) {
+    renderMobileOverlay(state, () => document.getElementById("advanceWeekBtn")?.click());
+  }
+}
+
 
 function bindEvents() {
   bindMenuTabs(activateTab);
@@ -373,6 +391,7 @@ function bindEvents() {
       renderSeasonArcs().catch(() => {});
       checkAndShowFranchiseMoment().catch(() => {});
       checkAndPruneRewindStorage();
+      syncMobileLoopOverlay();
     }, "Advancing week...")
   );
 
@@ -1442,7 +1461,8 @@ function bindEvents() {
   document.getElementById("closeShortcutsModalBtn")?.addEventListener("click", closeShortcutsModal);
 
   document.getElementById("mobileLoopToggle")?.addEventListener("change", (e) => {
-    if (typeof setMobileModeEnabled === "function") setMobileModeEnabled(e.target.checked);
+    setMobileModeEnabled(e.target.checked);
+    syncMobileLoopOverlay();
   });
 
   document.getElementById("shareDynastyBtn")?.addEventListener("click", shareDynastyTimeline);
@@ -1669,9 +1689,8 @@ async function init() {
   initGistSyncUI();
   mountTutorial({ onComplete: () => loadState(), onSkip: () => {} });
   mountBetaFeedback();
-  if (typeof initMobileLoop === "function") {
-    initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
-  }
+  initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
+  syncMobileLoopOverlay();
   setInterval(() => {
     loadSimJobs().catch(() => {});
   }, 8000);

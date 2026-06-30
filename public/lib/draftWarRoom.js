@@ -14,6 +14,17 @@
 const ON_THE_CLOCK_MS = 90_000; // 90 second pick timer
 const TRADE_CALL_BEFORE_PICKS = 3; // show trade call N picks before user's turn
 
+function deterministicIndex(parts, length) {
+  if (!length) return 0;
+  const text = parts.map((part) => String(part ?? "")).join("|");
+  let hash = 2166136261 >>> 0;
+  for (let i = 0; i < text.length; i += 1) {
+    hash ^= text.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash % length;
+}
+
 export class DraftWarRoom {
   constructor({ onPickTimeout, onTradeCallDismiss, callApi, getState }) {
     this.onPickTimeout = onPickTimeout || (() => {});
@@ -88,7 +99,7 @@ export class DraftWarRoom {
     if (!target) return null;
 
     const callerTeams = ["LAR", "DAL", "NE", "SEA", "SF", "KC", "BUF", "PHI", "GB"];
-    const caller = callerTeams[Math.floor(Math.random() * callerTeams.length)];
+    const caller = callerTeams[deterministicIndex([currentPick, userNextPick, userNeed, target.id || target.name], callerTeams.length)];
 
     this._tradeCallShown = true;
 
