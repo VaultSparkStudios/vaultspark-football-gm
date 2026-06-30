@@ -30,6 +30,6 @@
   "private": true,
   "license": "UNLICENSED",
   "devDependencies": {
-    "@playwright/test": "^1.58.2"
+    "@playwright/test": "^1.61.1"
   }
 }
