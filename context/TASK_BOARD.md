@@ -209,3 +209,17 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 **Verification:** focused session20 tests 20/20 · full `npm test` 184/184.
 
 **Still blocked:** `vaultsparkstudios.com` remains Cloudflare/GitHub Pages-side; no Session 20 shipped item depends on new backend or paid services.
+
+## Session 21 — Infrastructure Protocol Hardening (2026-06-30)
+
+| Item | Status |
+|------|--------|
+| Generate a current infrastructure-rubric audit after rejecting stale Session 19 game-audit metadata | Done |
+| Make Windows child-process execution hidden by construction with `safe-spawn` and `check-windows-hide` | Done |
+| Enforce CANON-044 Wave-list discipline across durable agent surfaces | Done |
+| Repair task-board parser and blocker classifier truth after focused Studio tests caught regressions | Done |
+| Add honest context/SIL telemetry scaffolding, including shared context verdicts and SIL v6 dual-axis output | Done |
+
+**Verification:** `node --check` across 37 changed JS/MJS files · `node scripts/check-windows-hide.mjs` · `node scripts/check-canon-044-waves.mjs` · `node scripts/lib/sil-v6.mjs --repo-root . --medium infrastructure --json` · `npm run test:studio` 5/5 · full `npm test` 161/161 · `npm run build:pages` · `npm run smoke:pages`.
+
+**Still blocked:** `vaultsparkstudios.com` remains Cloudflare/GitHub Pages-side until the existing runbook is applied or Cloudflare credentials are added; Session 21 did not force-green public reachability.

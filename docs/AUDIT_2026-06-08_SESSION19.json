@@ -1,0 +1,68 @@
+{
+  "generatedBy": "/audit skill v1.0",
+  "generatedAt": "2026-06-08",
+  "project": "vaultspark-football-gm",
+  "type": "game",
+  "topLine": {
+    "totalItems": 3,
+    "combinedPriority": 92.6,
+    "top3": [
+      "mobile-gm-decision-deck",
+      "feedback-franchise-fingerprint",
+      "closeout-protocol-shims"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "slug": "mobile-gm-decision-deck",
+      "tier": "fire",
+      "axis": "ui/ux/user-experience",
+      "effort": "1h",
+      "impact": 9,
+      "innovation": 7,
+      "priority": 39.8,
+      "title": "Make the mobile loop a real General Manager decision deck",
+      "insight": "The mobile overlay already compresses the franchise into a single-column view, but its action row is static and misses the highest-pressure next decision. A narrow beta tester should see the next meaningful General Manager move immediately: draft board, injury triage, cap cleanup, trade deadline, or advance week.",
+      "recipe": "Add a pure `buildMobileDecisionDeck()` helper that derives two to three prioritized mobile actions from phase, week, cap, injuries, draft, roster needs, and news; render those actions in `renderMobileOverlay()`; add focused tests for draft, cap/injury, and default advance-week states."
+    },
+    {
+      "rank": 2,
+      "slug": "feedback-franchise-fingerprint",
+      "tier": "high",
+      "axis": "user feedback loop",
+      "effort": "45m",
+      "impact": 8,
+      "innovation": 6,
+      "priority": 32.8,
+      "title": "Attach a compact franchise fingerprint to beta feedback",
+      "insight": "The beta issue URL now carries launch readiness, but it still loses the franchise state that explains why a report matters. A privacy-safe fingerprint with team, record, cap posture, top roster need, and active pressure lets feedback be triaged as gameplay balance, roster logic, or deployment friction without analytics or accounts.",
+      "recipe": "Add `buildFeedbackContextFingerprint()` as a pure helper, include optional fingerprint lines in `buildFeedbackIssueUrl()`, gather the snapshot in `openFeedback()`, and test that the body includes gameplay context without tokens, emails, or save payloads."
+    },
+    {
+      "rank": 3,
+      "slug": "closeout-protocol-shims",
+      "tier": "high",
+      "axis": "speed/organization/efficiency",
+      "effort": "1h",
+      "impact": 7,
+      "innovation": 5,
+      "priority": 20.0,
+      "title": "Backfill missing closeout protocol scripts locally",
+      "insight": "Startup has repo-local shims, but closeout still references missing cost and impact-brief scripts, which makes every session carry avoidable protocol drift. Public-safe local shims keep the documented `/closeout` surface executable while private Studio OS remains the source of deeper operations.",
+      "recipe": "Add `scripts/record-skill-cost.mjs` and `scripts/render-closeout-brief.mjs` with public-safe behavior, wire tests that both scripts load and emit/write expected artifacts, and keep outputs secret-redacted and local to `.cache`/`docs`."
+    }
+  ],
+  "innovationReserve": [],
+  "skipped": [
+    {
+      "slug": "cloudflare-agent-remediation",
+      "reason": "Still requires Cloudflare/GitHub org-root capability that is missing from this repo; keep it surfaced as an agent-attemptable blocker with the existing runbook."
+    },
+    {
+      "slug": "ai-scouting-rival-coach",
+      "reason": "Best deferred until beta feedback produces real decision traces; otherwise the critique model would invent player habits."
+    }
+  ],
+  "executionLog": []
+}

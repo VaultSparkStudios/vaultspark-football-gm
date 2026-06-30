@@ -92,3 +92,12 @@
 - Aligned package metadata with the proprietary rights posture documented in `docs/RIGHTS_PROVENANCE.md`.
 
 This public repo no longer carries the detailed internal work log. Internal session-by-session execution detail is maintained privately.
+
+## 2026-06-30 — Session 21: infrastructure protocol hardening closeout
+
+- Ran the requested `/arc` continuation through startup, audit verification, implementation repair, verification, and closeout from current worktree evidence.
+- Preserved the dirty worktree, rebased from `origin/main` (`Already up to date`), restored WIP, and treated the old Session 19 game audit as stale for this infrastructure-rubric arc.
+- Shipped protocol infrastructure: safe child-process spawning, windows-hide enforcement, CANON-044 Wave enforcement, context/SIL telemetry scaffolding, canonical Dependabot config, and richer blocker/doctor/status policy helpers.
+- Root-fixed two focused Studio test regressions: legacy TASK_BOARD tables/checklists parsed to zero items, and GitHub Pages repo-secret work lost its `github.repo` / `gh auth status` attempt path.
+- Verification: `node --check` across 37 changed JS/MJS files, `npm run test:studio` 5/5, full `npm test` 161/161, `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, CANON-044 guard, context meter, and SIL v6 probe.
+- Closeout note: repo-local `scripts/closeout-autopilot.mjs` is absent, so this session ran the required closeout gates manually and recorded the helper gap.

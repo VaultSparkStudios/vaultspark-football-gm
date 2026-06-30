@@ -42,7 +42,7 @@ export function renderTitleHeader({ name, type, lifecycle, audience, vaultStatus
   return [
     top(),
     row(`${emoji} ${nameUpper}`),
-    row(`${type || 'project'} · ${lifecycle || '—'}/${audience || '—'} · ${vaultStatus || 'FORGE'}`),
+    row(`${type || 'project'} · ${lifecycle || '—'}/${audience || '—'} · ${(vaultStatus || 'FORGE').toUpperCase()}`),
     row(`Session ${session || '?'} · ${date || '—'} · ${modeLabel} MODE`),
     row(`Owner: ${owner || 'VaultSpark Studios'}`),
     bottom(),

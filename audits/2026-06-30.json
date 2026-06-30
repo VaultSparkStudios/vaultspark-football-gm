@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-06-30",
+  "session": 21,
+  "agent": "codex",
+  "project": "vaultspark-football-gm",
+  "summary": "Infrastructure-rubric arc shipped protocol hardening for hidden child-process spawning, CANON-044 Wave enforcement, blocker/parser truth repair, and honest SIL/context telemetry.",
+  "shipped": [
+    "safe-spawn-window-storm-guard",
+    "canon-044-wave-enforcement",
+    "blocker-parser-truth-repair",
+    "honest-sil-context-telemetry"
+  ],
+  "verification": [
+    "node --check across 37 changed JS/MJS files",
+    "node scripts/check-windows-hide.mjs",
+    "node scripts/check-canon-044-waves.mjs",
+    "node scripts/lib/sil-v6.mjs --repo-root . --medium infrastructure --json",
+    "npm run test:studio 5/5",
+    "npm test 161/161",
+    "npm run build:pages",
+    "npm run smoke:pages"
+  ],
+  "silScore": 889,
+  "silV6": {
+    "health": 796,
+    "impact": 0,
+    "note": "Impact intentionally remains zero until real adoption signals are instrumented."
+  },
+  "blockers": [
+    "vaultsparkstudios.com still requires Cloudflare/GitHub Pages remediation or credentials"
+  ],
+  "followUps": [
+    "Verify GitHub Actions/Pages deployment after direct push to main",
+    "Apply or unlock Cloudflare runbook, then set public-domain readiness only after public URL smoke evidence",
+    "Wire real SIL v6 Impact signals from adoption evidence"
+  ]
+}

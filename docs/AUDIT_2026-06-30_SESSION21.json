@@ -1,0 +1,138 @@
+{
+  "generatedBy": "/audit skill v1.0 + /infra-debt-sweep",
+  "generatedAt": "2026-06-30",
+  "session": 21,
+  "project": "vaultspark-football-gm",
+  "type": "infrastructure",
+  "rubric": "infrastructure",
+  "topLine": {
+    "totalItems": 4,
+    "combinedPriority": 130.4,
+    "top3": [
+      "safe-spawn-window-storm-guard",
+      "canon-044-wave-enforcement",
+      "blocker-parser-truth-repair"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "slug": "safe-spawn-window-storm-guard",
+      "tier": "fire",
+      "axis": "speed/organization/efficiency",
+      "effort": "2h",
+      "impact": 10,
+      "innovation": 8,
+      "priority": 45.0,
+      "title": "Make Windows child-process execution hidden by construction",
+      "insight": "The repo had many script surfaces that could import child_process directly, preserving the window-storm failure mode that makes Windows sessions unusable. A safe-spawn wrapper plus a guard converts the rule from a remembered convention into an executable invariant.",
+      "recipe": "Route spawn-family calls through scripts/lib/safe-spawn.mjs, enforce no raw child_process imports with scripts/check-windows-hide.mjs, and keep the guard in the Studio verification surface.",
+      "premiseEvidence": [
+        "scripts/lib/safe-spawn.mjs exists and forces windowsHide:true",
+        "scripts/check-windows-hide.mjs exits 0 with zero direct child_process imports"
+      ],
+      "status": "shipped",
+      "verification": [
+        "node scripts/check-windows-hide.mjs",
+        "npm run test:studio",
+        "npm test"
+      ]
+    },
+    {
+      "rank": 2,
+      "slug": "canon-044-wave-enforcement",
+      "tier": "high",
+      "axis": "process quality",
+      "effort": "1h",
+      "impact": 9,
+      "innovation": 6,
+      "priority": 34.1,
+      "title": "Enforce in-session Wave lists across durable agent surfaces",
+      "insight": "CANON-044 only works if every agent-facing surface compels the behavior before closeout. The new guard originally proved the protocol copy was missing the mandate; the session fixed the source surface instead of weakening the guard.",
+      "recipe": "Add scripts/check-canon-044-waves.mjs, carry the Wave mandate in AGENTS.md and docs/SESSION_PROTOCOL.md, and verify both surfaces before closeout.",
+      "premiseEvidence": [
+        "scripts/check-canon-044-waves.mjs initially failed on docs/SESSION_PROTOCOL.md",
+        "docs/SESSION_PROTOCOL.md now contains the CANON-044 Wave-list preflight bullet"
+      ],
+      "status": "shipped",
+      "verification": [
+        "node scripts/check-canon-044-waves.mjs",
+        "npm run test:studio"
+      ]
+    },
+    {
+      "rank": 3,
+      "slug": "blocker-parser-truth-repair",
+      "tier": "high",
+      "axis": "security",
+      "effort": "1h",
+      "impact": 8,
+      "innovation": 6,
+      "priority": 30.3,
+      "title": "Preserve truthful blocker and task-board parsing while adding richer rules",
+      "insight": "The broader blocker taxonomy initially regressed two live contracts: older task-board tables parsed to zero items, and GitHub Pages repo-secret work lost its agent-attemptable probe. Fixing the parser and classifier keeps CANON-019 honest because agent-runnable work stays visible as runnable.",
+      "recipe": "Restore table/checklist fallback parsing, accept both bold and plain Human Action bullets, and add a GitHub Pages repo-secret blocker rule before the generic GitHub rule.",
+      "premiseEvidence": [
+        "npm run test:studio initially failed task-board parser and blocker classifier tests",
+        "scripts/lib/task-board.mjs now supports Unified Genius List plus legacy tables/checklists",
+        "scripts/lib/blocker-rules.mjs maps GitHub Pages repo secrets to github.repo and gh auth status"
+      ],
+      "status": "shipped",
+      "verification": [
+        "npm run test:studio",
+        "node scripts/ops.mjs doctor --json"
+      ]
+    },
+    {
+      "rank": 4,
+      "slug": "honest-sil-context-telemetry",
+      "tier": "high",
+      "axis": "token/api consumption reduction",
+      "effort": "2h",
+      "impact": 8,
+      "innovation": 5,
+      "priority": 21.0,
+      "title": "Centralize context verdicts and dual-axis SIL telemetry",
+      "insight": "Context-meter verdicts and SIL scoring are high-trust routing surfaces, so drift there is more expensive than an ordinary script bug. The new shared verdict library, cost ledger rollup, and SIL v6 scaffold make the repo show honest context and impact signals without replacing the existing SIL v3 contract.",
+      "recipe": "Add scripts/lib/context-verdicts.mjs, scripts/cache-ledger-rollup.mjs, scripts/lib/sil-v6.mjs, and write-project-status invariant hooks; leave Impact at zero until real adoption signals are wired.",
+      "premiseEvidence": [
+        "node scripts/context-meter.mjs --json returns CONTINUE with measured ledger data",
+        "node scripts/lib/sil-v6.mjs --repo-root . --medium infrastructure --json reports Health 796/1000 and Impact 0/1000 with needs-instrumentation rows"
+      ],
+      "status": "shipped",
+      "verification": [
+        "node scripts/context-meter.mjs --json",
+        "node scripts/lib/sil-v6.mjs --repo-root . --medium infrastructure --json",
+        "npm test"
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "slug": "custom-domain-cloudflare-remediation",
+      "reason": "Live doctor still shows the domain repair as Cloudflare/DNS-side and not auto-ready from this repo; keeping it explicit is more honest than force-greening deployment reachability."
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "safe-spawn-window-storm-guard",
+      "status": "shipped",
+      "evidence": "check-windows-hide green; full suite green"
+    },
+    {
+      "slug": "canon-044-wave-enforcement",
+      "status": "shipped",
+      "evidence": "check-canon-044-waves green after docs/SESSION_PROTOCOL.md repair"
+    },
+    {
+      "slug": "blocker-parser-truth-repair",
+      "status": "shipped",
+      "evidence": "studio shard failures fixed without test relaxation"
+    },
+    {
+      "slug": "honest-sil-context-telemetry",
+      "status": "shipped",
+      "evidence": "context-meter and SIL v6 probes run; Impact remains honestly uninstrumented"
+    }
+  ]
+}

@@ -48,3 +48,9 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Smart-quote bug in `seasonEpilogue.js` lines 176-177 used U+201C/201D as JavaScript string delimiters; fixed by replacing all curly quotes with ASCII. Previously undetectable in browsers; breaks Node.js module parsing.
 - The default test inventory is now 184 passing tests. Core 54 · runtime 79 · sim-contract · sim-realism · studio 5 · session20-features 20 · remainder in existing suites.
 - The default test inventory is now 161 passing tests: core 54, runtime 79, sim-contract 22, sim-realism 1, studio 5. `npm test`, `npm run build:pages`, `npm run smoke:pages`, and Playwright mobile screenshot checks passed in Session 19.
+
+2026-06-30 note (Session 21):
+- The active audit for this arc is `docs/AUDIT_2026-06-30_SESSION21.*`; the older untracked Session 19 audit is preserved as historical context but was not used as proof of current infrastructure-rubric completion.
+- The default test inventory is verified as 161 passing tests in this run: core 54, runtime 79, sim-contract 22, sim-realism 1, studio 5. The prior 184-test Session 20 note is treated as historical and not reused for Session 21 evidence.
+- `node scripts/ops.mjs doctor --json` now classifies GitHub Pages repo-secret work as agent-attemptable with `github.repo` and `gh auth status`; Cloudflare custom-domain remediation remains not auto-ready from this repo.
+- SIL v6 Impact intentionally remains 0/1000 with needs-instrumentation rows. That is an honest missing-measurement signal, not a quality score to inflate manually.

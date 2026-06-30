@@ -1,38 +1,38 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-06-15 (Session 19 closeout) -->
+<!-- generated-at: 2026-06-30 (Session 21 closeout) -->
 
 # Closeout Status Board — VaultSpark Football GM
 
 ```
-╔══ SESSION CLOSEOUT · VaultSpark Football GM · S19 ═════════════╗
-║  Date: 2026-06-15  ·  SIL: 856/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · VaultSpark Football GM · S21 ═════════════╗
+║  Date: 2026-06-30  ·  SIL: 889/1000  ·  Velocity: —              ║
+║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ `buildMobileDecisionDeck()` now turns draft, cap, injury, de  ║
-║  ✓ `buildFeedbackContextFingerprint()` now attaches team, recor  ║
-║  ✓ `scripts/record-skill-cost.mjs` and `scripts/render-closeout  ║
-║  ✓ Focused mobile tests: 3/3                                     ║
-║  ✓ Focused beta feedback tests: 6/6                              ║
+║  ✓ `scripts/lib/safe-spawn.mjs` now wraps the child-process spa  ║
+║  ✓ `scripts/check-canon-044-waves.mjs` verifies durable agent-f  ║
+║  ✓ `scripts/lib/task-board.mjs` again parses legacy tables/chec  ║
+║  ✓ `scripts/lib/context-verdicts.mjs`, `scripts/cache-ledger-ro  ║
+║  ✓ `.github/dependabot.yml` and `.github/workflows/dependabot-a  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 856/1000 ═══════════════════════════════════════╗
-║    Dev Health         89   █████████░                            ║
+╔══ SCORES · SIL 889/1000 ═══════════════════════════════════════╗
+║    Dev Health         92   █████████░                            ║
 ║    Alignment          73   ███████░░░                            ║
-║    Momentum           84   ████████░░                            ║
+║    Momentum           86   █████████░                            ║
 ║    Engagement         83   ████████░░                            ║
-║    Process Qual       94   █████████░                            ║
-║    Coherence          96   ██████████                            ║
-║    Security           86   █████████░                            ║
-║    Ecosystem          72   ███████░░░                            ║
-║    Capital            80   ████████░░                            ║
-║    Automation         99   ██████████                            ║
+║    Process Qual       100  ██████████                            ║
+║    Coherence          97   ██████████                            ║
+║    Security           91   █████████░                            ║
+║    Ecosystem          81   ████████░░                            ║
+║    Capital            86   █████████░                            ║
+║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
+║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
@@ -40,15 +40,19 @@
 ║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 25 files  ·  M:17 A:0 D:0 ?:8                          ║
+║  Changes: 59 files  ·  M:35 A:0 D:0 ?:24                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
+║  Staging:  not configured  ·  type: —                            ║
+║  Live:     N/A — pre-deploy (FORGE)                              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        —                                                ║
 ║  Compliance:    —                                                ║
 ║  Tests:         161/161                                          ║
-║  IGNIS:         12d ago                                          ║
+║  IGNIS:         11d ago                                          ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  —                                                ║
 ╚════════════════════════════════════════════════════════════════╝

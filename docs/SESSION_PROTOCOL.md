@@ -115,6 +115,7 @@ Meaning: *"Update memory and task board with all Genius List items/ideas and imp
 - `context/.session-lock` must exist → if not, route to `/start` and stop.
 - `context/SELF_IMPROVEMENT_LOOP.md` must exist → if not, route to `/initiate` and stop.
 - `context/TASK_BOARD.md` must exist → if not, stop with error.
+- **CANON-044 Wave list:** for any multi-step `/go`, `/audit`, `/implement`, or arc session, maintain a visible in-session Wave list (`Wave 1`, `Wave 2`, `Wave 3`, …) and reconcile every Wave before `/closeout`. This is a required task scaffold, not optional narration.
 
 ### 2.0.5 Context-meter preflight
 

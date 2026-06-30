@@ -1,55 +1,39 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: b92f0c81ee8d -->
-<!-- generated-at: 2026-06-15T04:19:21.690Z -->
+<!-- source-hash: 6ded71645435 -->
+<!-- generated-at: 2026-06-30T02:22:16.962Z -->
 
 # LATEST_HANDOFF (compact)
 
-Session 19 (2026-06-15)
+## Handoff Summary — Session 21 (2026-06-30)
+
+Session
+- Session 21; medium: protocol infrastructure (Football GM Studio layer).
 
 Shipped
-- Mobile decision deck: buildMobileDecisionDeck prioritizes draft/cap/injury/deadline/news; renderMobileOverlay routes to tabs
-- Beta feedback fingerprint: team/record/cap/need/pressure attached to GitHub issue URLs, no PII/tokens
-- Closeout shims: scripts/record-skill-cost.mjs, scripts/render-closeout-brief.mjs (public-safe local)
-
-Verification
-- npm test 161/161
-- test:runtime 79/79, test:studio 5/5
-- build:pages + smoke:pages pass
-- Playwright: mobile-game.png, mobile-decision-deck.png
+- Safe-spawn wrapper forcing windowsHide:true plus check-windows-hide guard banning direct child_process imports outside allowlist.
+- CANON-044 Wave-list enforcement guard; repaired missing mandate in SESSION_PROTOCOL.md.
+- Blocker/parser truth repair: task-board.mjs parses legacy + Unified Genius List rows; blocker-rules.mjs maps Pages secret work to github.repo / gh auth.
+- Centralized context + SIL v6 telemetry; SIL Impact honestly 0/1000 (uninstrumented). Added dependabot config + auto-merge workflow (CANON-043).
 
 Current Intent
-- Public deploy of vaultsparkstudios.com gated only on Cloudflare/ACME remediation; Launch Readiness flips to Ready only on public URL evidence
-- Game code is deployable; blocker surfaced truthfully in Settings/TASK_BOARD
+- Direct push from main and deploy; verify the resulting GitHub Actions/Pages deployment.
 
-Now Bucket (top 3)
-1. Apply Cloudflare/GitHub Pages runbook (two options in TASK_BOARD), re-verify public URL, flip Launch Readiness to Ready
-2. Send public beta link once URL verified
-3. L3 pass on mobile decision deck: decision-specific tab focus once target surfaces have stable anchors
+Now Bucket
+- Verify the Actions/Pages deployment created by this push.
+- Apply/unlock Cloudflare/GitHub Pages runbook, then re-run public URL smoke.
+- Set Launch Readiness to Ready only from public URL evidence.
 
-Blockers (top 3)
-1. vaultsparkstudios.com Cloudflare 403; GitHub cert bad_authz, expired 2026-06-02 — Cloudflare-proxied apex blocks ACME
-2. No cloudflare token in agent secrets gateway (optional) — limits agent-side remediation
-3. Hardened CI/deploy Playwright defenses (Session 14) still need one push to prove green in Actions for current branch state
+Blockers
+- vaultsparkstudios.com depends on Cloudflare-side remediation or credentials (public-safe; unresolved across multiple sessions).
+- SIL v6 Impact uninstrumented (0/1000) until adoption signals wired.
+- Hardened CI/deploy Playwright defenses still need a live Actions run to prove (carried from S14).
 
 Human-Blocked
-- Cloudflare DNS/SSL fix: open since Session 14 (2026-06-04), ~11 days, founder action required
-- Optional cloudflare secret provisioning: open since Session 14, ~11 days
+- Cloudflare/GitHub Pages cert + domain fix: open since Session 14 (~16 days; cert bad_authz, expired 2026-06-02). Needs founder action or cloudflare token in secrets gateway.
 
-Inventory
-- Default test shard: 161/161 known
-- Shards: core 54, runtime 79, sim-contract, sim-realism, studio 5
+Verification (S21)
+- node --check on 37 files; windows-hide + CANON-044 guards pass.
+- npm run test:studio 5/5; npm test 161/161; build:pages; smoke:pages.
+- SIL v6 infrastructure: Health 796/1000, Impact 0/1000.
 
-Notable Surfaces
-- public/lib/: seasonEpilogue, challengeCodes, betaFeedback, mobileDecisionDeck (Session 19)
-- Settings: Launch Readiness cockpit with resolvePublicDomainReadiness states (Blocked/Ready/Needs check)
-- Draft War Room: pressure model + steal-risk/urgency on target cards
-- Save integrity: FNV-1a stamps on browser + gist sidecar
-- Rivalry strip + RIVALRY WEEK banner at heat ≥60
-- Realism sweep: weekly workflow, 24-season verify, non-blocking
-
-Process Notes
-- Session 17 noted record-skill-cost/render-closeout-brief missing locally; Session 19 shipped public-safe shims with studio test coverage
-- Lean canon AGENTS.md propagated Session 17
-- /start -> /audit -> /implement -> /closeout chain ran clean
-
-Next session: apply Cloudflare runbook, verify public URL, flip Launch Readiness, send beta link.
+Next session: confirm Actions/Pages deploy is green, then apply Cloudflare runbook and re-smoke the public URL.

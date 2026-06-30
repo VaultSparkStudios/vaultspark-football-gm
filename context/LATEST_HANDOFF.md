@@ -1,5 +1,41 @@
 # Latest Handoff
 
+## Impact Summary — Session 21 (2026-06-30)
+
+**Headline:** Session 21 hardened the Studio protocol layer inside Football GM so Windows sessions stop spawning visible child processes, Wave-list discipline is executable, and blocker/status surfaces stay truthful.
+
+- Shipped all 4 items from `docs/AUDIT_2026-06-30_SESSION21.*`: safe-spawn/window-storm guard, CANON-044 Wave enforcement, blocker/parser truth repair, and honest SIL/context telemetry.
+- Rejected the stale Session 19 game-audit sidecar as the active plan for this arc because the founder requested the infrastructure rubric and the live diff was protocol infrastructure.
+- Verification: `npm run test:studio` 5/5, full `npm test` 161/161, Pages build, Pages smoke, windows-hide guard, CANON-044 guard, context meter, and SIL v6 probe.
+
+## Where We Left Off — 2026-06-30 (Session 21)
+
+The requested `/arc -> /closeout -> direct push main -> deploy` chain ran from current repo evidence. Session 21 preserved the dirty worktree, rebased from `origin/main`, verified the existing WIP, repaired two real focused-test regressions, and prepared the repo for direct deployment from `main`.
+
+What changed:
+- `scripts/lib/safe-spawn.mjs` now wraps the child-process spawn family and forces `windowsHide: true` by construction; `scripts/check-windows-hide.mjs` enforces no direct `child_process` imports outside the wrapper/shim allowlist.
+- `scripts/check-canon-044-waves.mjs` verifies durable agent-facing surfaces carry the CANON-044 Wave-list mandate; `docs/SESSION_PROTOCOL.md` was repaired after the guard found a real missing mandate.
+- `scripts/lib/task-board.mjs` again parses legacy tables/checklists as well as newer Unified Genius List rows; `scripts/lib/blocker-rules.mjs` again maps GitHub Pages repo-secret work to `github.repo` and `gh auth status` before generic GitHub classification.
+- `scripts/lib/context-verdicts.mjs`, `scripts/cache-ledger-rollup.mjs`, `scripts/lib/sil-v6.mjs`, and related status/brief wiring centralize context and SIL telemetry. SIL v6 Impact remains honestly 0/1000 until adoption signals are instrumented.
+- `.github/dependabot.yml` and `.github/workflows/dependabot-auto-merge.yml` add the canonical CANON-043 dependency hygiene baseline.
+
+Verification passed:
+- `node --check` across 37 changed JS/MJS files
+- `node scripts/check-windows-hide.mjs`
+- `node scripts/check-canon-044-waves.mjs`
+- `node scripts/lib/sil-v6.mjs --repo-root . --medium infrastructure --json` (Health 796/1000 with stale-status decay; Impact 0/1000 uninstrumented)
+- `npm run test:studio` — 5/5
+- `npm test` — 161/161
+- `npm run build:pages`
+- `npm run smoke:pages`
+
+Remaining public-safe blocker:
+- `vaultsparkstudios.com` still depends on Cloudflare-side remediation or credentials. After the runbook is applied, re-run the public URL smoke and set Launch Readiness to `Ready` only from that evidence.
+
+Next best work:
+- Verify the GitHub Actions/Pages deployment created by this push.
+- Apply or unlock the Cloudflare/GitHub Pages runbook, verify the public URL, then send the public beta link.
+
 ## Impact Summary — Session 20 (2026-06-15)
 
 **Headline:** Session 20 deepened franchise narrative integrity and emotional immersion — veteran legacies persist, GM reputations shape CPU behaviour, miracle runs get their moment, and rival coaches are no longer a mystery before kickoff.

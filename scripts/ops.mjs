@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { spawnSync } from "child_process";
+import { spawnSync } from "./lib/safe-spawn.mjs";
 import path from "path";
 
 const root = process.cwd();

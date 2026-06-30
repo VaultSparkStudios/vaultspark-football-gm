@@ -14,6 +14,19 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+// Self-healing default label, derived from the model-router chokepoint (the single
+// source of truth for model IDs) when it's reachable: a chokepoint bump (opus 4.7
+// -> 4.8) carries into the lock label automatically — no stale hardcode (S165).
+// write-session-lock is deliberately copyable + invoked standalone (concurrency
+// tests, bootstrap), so the chokepoint may be absent; fall back to the current
+// canonical label rather than hard-failing the import. Strips the 'claude-' API
+// prefix to keep a human label (not an API ID) and appends the 1M-context suffix.
+let DEFAULT_CLAUDE_LABEL = 'opus-4-8-1m';
+try {
+  const { MODELS } = await import('./lib/model-router.mjs');
+  if (MODELS?.opus) DEFAULT_CLAUDE_LABEL = MODELS.opus.replace(/^claude-/, '') + '-1m';
+} catch { /* standalone copy — chokepoint unavailable, keep fallback */ }
+
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
 
@@ -26,7 +39,7 @@ const modelArg = args.find((_, i) => args[i - 1] === '--model')
   ?? process.env.CLAUDE_MODEL
   // Lock stores a human-readable label, NOT an API model ID (keeps chokepoint
   // tier1 test happy: no "claude-*-N" hardcoded outside lib/model-router.mjs).
-  ?? (agentArg === 'claude-code' ? 'opus-4-7-1m'
+  ?? (agentArg === 'claude-code' ? DEFAULT_CLAUDE_LABEL
       : agentArg === 'codex' ? 'codex-1m'
       : 'unknown');
 // Context window in tokens. Precedence:

@@ -4,24 +4,24 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 19 shipped the mobile General Manager decision deck, public-safe feedback franchise fingerprints, and local closeout cost/brief shims; remaining launch work is the Cloudflare custom-domain repair.",
-  "nextMilestone": "Apply or unlock the Cloudflare runbook, re-verify the public game URL, then send the public beta link.",
+  "currentFocus": "Session 21 shipped infrastructure hardening for the Studio protocol layer: hidden child-process execution by construction, CANON-044 Wave enforcement, task-board/blocker truth repair, and honest SIL/context telemetry.",
+  "nextMilestone": "Commit and push Session 21 to main, let GitHub Pages deploy from the direct push, then apply or unlock the Cloudflare custom-domain runbook and verify the public URL.",
   "blockers": [
     "vaultsparkstudios.com serves a Cloudflare 403 and its GitHub Pages cert is expired (bad_authz) — Cloudflare-side fix required; runbook in TASK_BOARD"
   ],
-  "lastUpdated": "2026-06-15",
+  "lastUpdated": "2026-06-30",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
   "truthAuditLastRun": "2026-04-13",
-  "ignisScore": 38490,
+  "ignisScore": 41305,
   "ignisGrade": "FORGE",
-  "ignisLastComputed": "2026-06-03",
+  "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
     "totalTests": 161,
     "pass": 161,
     "fail": 0,
-    "lastRun": "2026-06-15",
+    "lastRun": "2026-06-30",
     "newTestFiles": [
       "test/challenge-codes.test.js",
       "test/save-integrity.test.js",
@@ -31,7 +31,7 @@
       "test/mobile-loop.test.js"
     ],
     "newTestCount": 30,
-    "coverage": "Known default-shard inventory is 161 tests (core 54, runtime 79, sim-contract 22, sim-realism 1, studio 5). Session 19 reran the full default suite plus Pages build, Pages smoke, and Playwright mobile screenshots."
+    "coverage": "Known default-shard inventory is 161 tests (core 54, runtime 79, sim-contract 22, sim-realism 1, studio 5). Session 21 reran the full default suite plus Pages build and Pages smoke."
   },
   "testsPassing": 161,
   "testsTotal": 161,
@@ -73,36 +73,38 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 856,
+  "silScore": 889,
   "silCategoriesV3": {
-    "devHealth": 89,
+    "devHealth": 92,
     "creativeAlignment": 73,
-    "momentum": 84,
+    "momentum": 86,
     "engagement": 83,
-    "processQuality": 94,
-    "crossRepoCoherence": 96,
-    "securityPosture": 86,
-    "ecosystemIntegration": 72,
-    "capitalEfficiency": 80,
-    "automationCoverage": 99
+    "processQuality": 100,
+    "crossRepoCoherence": 97,
+    "securityPosture": 91,
+    "ecosystemIntegration": 81,
+    "capitalEfficiency": 86,
+    "automationCoverage": 100
   },
-  "currentSession": 19,
+  "currentSession": 21,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
-    "date": "2026-06-15",
+    "date": "2026-06-30",
     "passed": [
+      "git pull --rebase origin main",
+      "node scripts/detect-session-mode.mjs --explain",
+      "node scripts/check-secrets.mjs --audit",
+      "node scripts/ops.mjs blocker-preflight",
+      "node scripts/context-meter.mjs --json",
+      "node --check across 37 changed JS/MJS files",
+      "node scripts/check-windows-hide.mjs",
+      "node scripts/check-canon-044-waves.mjs",
+      "node scripts/lib/sil-v6.mjs --repo-root . --medium infrastructure --json",
       "npm run test:studio",
-      "npm run test:runtime",
       "npm test",
       "npm run build:pages",
-      "npm run smoke:pages",
-      "node --test test/mobile-loop.test.js",
-      "node --test test/beta-feedback.test.js",
-      "node --test test/studio-protocol-smoke.test.js",
-      "Playwright mobile screenshots for game page and decision deck",
-      "node scripts/ops.mjs blocker-preflight",
-      "node scripts/check-secrets.mjs --audit"
+      "npm run smoke:pages"
     ],
     "timedOut": []
   },
@@ -120,5 +122,17 @@
   "freeTierAuditDate": "2026-05-22",
   "freeTierAuditDoc": "vaultspark-studio-ops/docs/FREE_TIER_AUDIT_2026-05-22_PORTFOLIO.md",
   "estimatedMonthlyCostAt1000FreeUsers": 0,
-  "freeTierAuditNote": "Verified S138 #753: pure browser game, no LLM/email/per-user backend calls. Static deploy."
+  "freeTierAuditNote": "Verified S138 #753: pure browser game, no LLM/email/per-user backend calls. Static deploy.",
+  "silHealthAsOf": "2026-06-30",
+  "silImpactCategories": {
+    "reach": 0,
+    "retention": 0,
+    "conversion": 0,
+    "feedbackLoop": 0,
+    "launchMomentum": 0
+  },
+  "silImpact": 0,
+  "silImpactMax": 1000,
+  "silHealth": 889,
+  "silHealthMax": 1000
 }

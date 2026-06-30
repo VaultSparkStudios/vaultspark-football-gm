@@ -1,5 +1,17 @@
 # Self-Improvement Loop
 
+## 2026-06-30 — Session 21 Infrastructure Protocol Hardening Closeout
+
+Score: 889 / 1000
+
+Category notes:
+- Process Quality / Automation: +9 for converting no-window spawning and CANON-044 Wave discipline into executable guards instead of relying on remembered protocol prose.
+- Dev Health: +3 for root-fixing the task-board parser and blocker classifier regressions caught by `npm run test:studio`, without weakening the tests.
+- Security Posture / Cross-Repo Coherence: +4 for restoring agent-attemptable GitHub Pages repo-secret classification and adding canonical Dependabot grouping/auto-merge surfaces.
+- Capital Efficiency: +2 for keeping all work static-host-safe/local-only and making SIL v6 Impact honestly report uninstrumented adoption instead of fabricating usage.
+
+Follow-up: wire real SIL v6 Impact signals only when adoption evidence exists; do not backfill non-measured values.
+
 ## 2026-06-15 — Session 20 Narrative Integrity + Franchise Depth Closeout
 
 Score: 880 / 1000
