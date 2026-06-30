@@ -10,9 +10,10 @@
     "restore-live-news-ticker-renderer",
     "repair-cap-casualty-action",
     "complete-public-agent-legal-surface",
-    "static-route-build-smoke-proof"
+    "static-route-build-smoke-proof",
+    "project-path-pages-mirror"
   ],
-  "suite": "npm test 165/165; Playwright UI 9/9; Pages build/smoke pass with public route assertions",
+  "suite": "npm test 165/165; Playwright UI 9/9; Pages build/smoke pass with root and slug-prefixed public route assertions",
   "blockingFailing": 0,
   "deferred": [
     {
@@ -20,7 +21,7 @@
       "slug": "cloudflare-cert-repair"
     },
     {
-      "reason": "Needs post-push public route smoke and certificate-state verification.",
+      "reason": "Needs post-follow-up public route smoke and certificate-state verification.",
       "slug": "sparked-release-flip"
     }
   ],

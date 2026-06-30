@@ -56,6 +56,15 @@ async function assertStaticPath(pathname, expectedPattern) {
     throw new Error(`Expected ${pathname} to match ${expectedPattern}`);
   }
 }
+
+async function assertStaticFile(relativePath, expectedPattern) {
+  const filePath = path.join(staticDir, ...relativePath.split("/"));
+  if (!(await fileExists(filePath))) throw new Error(`Missing static file ${relativePath}`);
+  if (expectedPattern) {
+    const body = await fs.readFile(filePath, "utf8");
+    if (!expectedPattern.test(body)) throw new Error(`Expected ${relativePath} to match ${expectedPattern}`);
+  }
+}
 async function createServer() {
   if (!(await fileExists(path.join(staticDir, "index.html")))) {
     throw new Error("Missing static/index.html. Run `npm run build:pages` first.");
@@ -125,6 +134,16 @@ async function main() {
     await assertStaticPath(`${mountPath}/agents.json`, /Proprietary - All Rights Reserved/);
     await assertStaticPath(`${mountPath}/.well-known/llms.txt`, /VaultSpark Football GM/);
     await assertStaticPath(`${mountPath}/sitemap.xml`, /contact\.html/);
+
+    await assertStaticFile(`${slug}/index.html`, /VaultSpark Football GM/);
+    await assertStaticFile(`${slug}/game.html`, /VaultSpark Football GM/);
+    await assertStaticFile(`${slug}/styles.css`, /:root/);
+    await assertStaticFile(`${slug}/contact.html`, /footballgm@vaultsparkstudios\.com/);
+    await assertStaticFile(`${slug}/privacy.html`, /Browser-First Beta/);
+    await assertStaticFile(`${slug}/terms.html`, /All rights reserved/);
+    await assertStaticFile(`${slug}/agents.json`, /Proprietary - All Rights Reserved/);
+    await assertStaticFile(`${slug}/.well-known/llms.txt`, /VaultSpark Football GM/);
+    await assertStaticFile(`${slug}/sitemap.xml`, /contact\.html/);
     console.log("Static Pages smoke pass completed.");
   } finally {
     await browser.close();

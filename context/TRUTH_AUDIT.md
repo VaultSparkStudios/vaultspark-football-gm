@@ -71,3 +71,9 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Commissioner truth repair: the client-only runtime and browser UI now agree on create/join/ready/advance payload and status fields; `test/local-api-runtime.test.js` covers the flow.
 - Public surface truth repair: contact/privacy/terms/agents/llms/sitemap files exist in `public/`, are linked from primary pages, are copied by the Pages build, and are asserted by static smoke.
 - Launch truth refinement: public URL probe returned HTTP 200 and GitHub Actions/Pages workflows are green, but GitHub Pages API still reports `bad_authz` on the custom-domain certificate. Do not mark full launch readiness until post-push public route smoke and certificate state are verified.
+
+## 2026-06-30 — Session 23 post-push route correction
+
+- Post-push route smoke found the new project-path compliance routes (`/vaultspark-football-gm/contact.html`, `privacy.html`, `terms.html`, `agents.json`, `llms.txt`, `sitemap.xml`) were not served from the live custom-domain path even though the Pages workflow and local smoke were green.
+- Root cause fixed repo-side: `scripts/build-pages.mjs` now mirrors the generated artifact under `static/vaultspark-football-gm/`, and `scripts/smoke-pages.mjs` asserts the mirrored files so the deployed custom-domain/project-path shape is covered before upload.
+- Launch truth unchanged: GitHub Pages API still reports custom-domain certificate `bad_authz`/expired `2026-06-02`; the route packaging fix is not a certificate remediation.

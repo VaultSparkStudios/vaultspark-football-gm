@@ -316,3 +316,19 @@ Next best work:
 - Next-wave audit candidates already scoped: press-conference narrative cross-refs, fan-sentiment hot-seat loop.
 
 This repo now keeps only a public-safe handoff summary. Detailed handoff history is maintained privately.
+
+## Impact Summary — Session 23 follow-up (2026-06-30)
+
+Post-push smoke exposed a real Pages deployment-shape gap: newly added compliance routes existed in the artifact root but not under the canonical `/vaultspark-football-gm/` project path. The build now mirrors the full artifact under `static/vaultspark-football-gm/`, and static smoke asserts the mirrored contact/legal/agent files before deploy.
+
+Verification passed after the fix:
+- `node --check scripts/render-startup-brief.mjs`
+- `node --check scripts/build-pages.mjs`
+- `node --check scripts/smoke-pages.mjs`
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `npm test` — 165/165
+- `npm run test:ui` — 9/9
+
+Remaining public-safe blocker:
+- GitHub Pages API still reports the custom-domain certificate as `bad_authz`/expired `2026-06-02`; route packaging is fixed repo-side, certificate state still needs post-deploy evidence before Launch Readiness changes.

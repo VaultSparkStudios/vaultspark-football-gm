@@ -120,3 +120,9 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Shipped second-order build/smoke hardening so every static HTML page is canonicalized and the Pages smoke verifies the new contact/legal/agent routes in the built bundle.
 - Verification: focused browser/public/runtime tests 15/15, full `npm test` 165/165, Playwright UI 9/9, Pages build, and Pages smoke.
 - Blocker truth update: public URL returned HTTP 200, Actions/Pages are green, but GitHub Pages API still reports the custom-domain certificate as `bad_authz`/expired; launch readiness remains evidence-gated.
+
+## 2026-06-30 — Session 23 post-push correction
+
+- Verified first Session 23 push: GitHub Actions green, project root HTTP 200, but newly added `/vaultspark-football-gm/*` compliance routes fell into fallback/404 behavior.
+- Fixed Pages artifact packaging by mirroring the generated static bundle under `static/vaultspark-football-gm/`.
+- Added smoke assertions for mirrored project-path files and reran `npm run build:pages`, `npm run smoke:pages`, `npm test` (165/165), and `npm run test:ui` (9/9).

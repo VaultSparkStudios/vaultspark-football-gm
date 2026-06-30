@@ -37,3 +37,12 @@
 - **static-route-build-smoke-proof** — shipped as second-order innovation. Evidence: Pages build canonicalizes all static HTML pages and smoke asserts the new built routes.
 
 Verification: focused browser/public/runtime tests 15/15; `npm test` 165/165; Playwright UI 9/9; Pages build/smoke pass.
+## Post-Push Correction — Project-Path Pages Mirror
+
+Post-push public smoke found the newly added compliance files were present in the Pages artifact root but not served from the canonical `/vaultspark-football-gm/` project path. Session 23 follow-up added `static/vaultspark-football-gm/` mirroring in `scripts/build-pages.mjs` and direct smoke assertions for the mirrored files in `scripts/smoke-pages.mjs`.
+
+Verification after correction:
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `npm test` — 165/165
+- `npm run test:ui` — 9/9

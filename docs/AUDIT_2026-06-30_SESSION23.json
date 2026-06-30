@@ -187,6 +187,11 @@
       "slug": "static-route-build-smoke-proof",
       "status": "shipped-second-order",
       "evidence": "build-pages canonicalizes all static HTML pages and smoke-pages asserts public route artifacts in static bundle."
+    },
+    {
+      "slug": "project-path-pages-mirror",
+      "status": "shipped-second-order-follow-up",
+      "evidence": "Post-push smoke found project-path compliance routes falling into fallback; build-pages mirrors the artifact under static/vaultspark-football-gm and smoke-pages asserts mirrored files."
     }
   ]
 }

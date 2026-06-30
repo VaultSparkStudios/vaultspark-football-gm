@@ -10,10 +10,11 @@
 - **Cap Casualty action** (6/10 project, 2/10 ecosystem): Button now calls loadContractsTeam instead of undefined loadContracts.
 - **Public contact/legal/agent surface** (8/10 project, 5/10 ecosystem): contact/privacy/terms/agents/llms/sitemap files are linked, built, and smoke-tested.
 - **Static route build/smoke proof** (8/10 project, 5/10 ecosystem): Pages build canonicalizes all static HTML pages; smoke asserts the new public route artifacts.
+- **Project-path Pages mirror** (8/10 project, 5/10 ecosystem): Post-push smoke found new `/vaultspark-football-gm/*` files falling into the Pages fallback; the build now mirrors the artifact under `static/vaultspark-football-gm/` and smoke asserts the mirrored files.
 
 ## Follow-ups
 
-- **Post-push public route smoke**: Verify game, contact, privacy, terms, agents.json, and llms.txt from the live public URL after deploy.
+- **Post-follow-up public route smoke**: After the mirror-fix deploy completes, verify game, contact, privacy, terms, agents.json, llms.txt, and sitemap.xml from the live `/vaultspark-football-gm/` URL.
 - **Launch Readiness certificate state**: Re-check GitHub Pages API certificate state; keep readiness evidence-driven until bad_authz clears or is explicitly resolved.
 
 ## Blockers
@@ -22,7 +23,7 @@
 
 ## Honesty Ledger
 
-- **Did not force-green public launch**: Public URL returned HTTP 200, but GitHub Pages API still reports bad_authz; launch readiness remains gated.
+- **Did not force-green public launch**: Public root returned HTTP 200, the first post-push route smoke exposed missing project-path files, and the repo-side mirror fix is now covered by smoke. GitHub Pages API still reports bad_authz; launch readiness remains gated.
 - **Manual innovation pack**: Local ops innovation-pack is unsupported, so Session 23 recorded a manual second-order pass instead of inventing tool output.
 
 ## Proof
@@ -30,4 +31,4 @@
 - Files changed: 33
 - Insertions: 351
 - Deletions: 156
-- Suite: npm test 165/165; Playwright UI 9/9; Pages build/smoke pass
+- Suite: npm test 165/165; Playwright UI 9/9; Pages build/smoke pass, including slug-prefixed Pages artifact assertions

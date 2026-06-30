@@ -33,3 +33,7 @@ Public-safe summary:
 - 2026-06-30: Session 22 restored and proved the mobile core loop wiring, added deterministic regression coverage around remaining runtime IDs/callers, repaired STRONG canon conformance gaps to 0, and kept the Cloudflare/GitHub Pages public-domain blocker honest. Full `npm test` passes 163/163 plus Pages build/smoke.
 - 2026-06-30: CI follow-up after Session 22 push added a player-history empty-season fallback so selected players without logged timeline rows still render a useful archive card/table row; Playwright UI passes 9/9 and full `npm test` passes 164/164.
 - 2026-06-30: Session 23 repaired beta-facing browser affordances (Season Newsletter import, Cap Casualty loader, news ticker markup target), aligned Commissioner Mode UI/runtime payloads for client-only create/join/ready/advance, and added public contact/privacy/terms/agent metadata files with Pages build/smoke coverage. Full `npm test` passes 165/165 plus Playwright UI 9/9 and Pages build/smoke.
+
+## 2026-06-30 — Session 23 post-push correction
+
+Post-push smoke found the first Session 23 Pages deploy served the app root but not the newly added project-path compliance routes. `scripts/build-pages.mjs` now mirrors the generated artifact under `static/vaultspark-football-gm/`, and `scripts/smoke-pages.mjs` asserts those mirrored files. Re-run public route smoke after the follow-up deploy, then keep the custom-domain certificate `bad_authz` as the remaining launch gate until GitHub Pages API evidence changes.

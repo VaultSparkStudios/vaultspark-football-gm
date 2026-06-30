@@ -4,10 +4,10 @@
   "name": "VaultSpark Football GM",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 23 repaired beta-facing browser affordances, aligned Commissioner Mode UI/runtime contracts, completed the public contact/legal/agent metadata surface, and made Pages build/smoke prove the new static routes.",
-  "nextMilestone": "After this push deploys, run public route smoke for the game, contact/privacy/terms, agents.json, and llms.txt, then re-check GitHub Pages certificate state before changing Launch Readiness.",
+  "currentFocus": "Session 23 repaired beta-facing browser affordances, aligned Commissioner Mode UI/runtime contracts, completed the public contact/legal/agent metadata surface, and fixed the Pages artifact shape so canonical /vaultspark-football-gm/* routes receive slug-prefixed files.",
+  "nextMilestone": "After the follow-up deploy completes, run public route smoke for /vaultspark-football-gm/contact.html, privacy.html, terms.html, agents.json, .well-known/llms.txt, and sitemap.xml; then re-check GitHub Pages certificate state before changing Launch Readiness.",
   "blockers": [
-    "GitHub Pages API still reports custom-domain certificate bad_authz/expired 2026-06-02 even though the Cloudflare-edge public game URL returned HTTP 200 on 2026-06-30; verify post-push routes and cert state before public launch flip."
+    "GitHub Pages API still reports custom-domain certificate bad_authz/expired 2026-06-02. Session 23 fixed repo-side project-path route packaging; certificate remediation remains evidence-gated before public launch flip."
   ],
   "lastUpdated": "2026-06-30",
   "lifecycle": "deployed",
@@ -27,7 +27,7 @@
       "test/public-compliance.test.js"
     ],
     "newTestCount": 6,
-    "coverage": "Known default-shard inventory is 165 tests after Session 23 (core 54, runtime 83, sim-contract 22, sim-realism 1, studio 5). Session 23 also verified Playwright UI 9/9, Pages build, and Pages smoke with public route assertions."
+    "coverage": "Known default-shard inventory is 165 tests after Session 23 (core 54, runtime 83, sim-contract 22, sim-realism 1, studio 5). Session 23 also verified Playwright UI 9/9, Pages build, Pages smoke with root and slug-prefixed static route assertions, and post-push workflow status."
   },
   "testsPassing": 165,
   "testsTotal": 165,
@@ -92,14 +92,17 @@
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
       "node scripts/context-meter.mjs --json",
-      "node --test test/browser-wiring.test.js test/public-compliance.test.js test/local-api-runtime.test.js",
+      "node --check scripts/render-startup-brief.mjs",
+      "node --check scripts/build-pages.mjs",
+      "node --check scripts/smoke-pages.mjs",
       "npm test",
       "npm run test:ui",
       "npm run build:pages",
       "npm run smoke:pages",
-      "gh run list --limit 5",
+      "gh run list --branch main --limit 6",
       "gh api repos/VaultSparkStudios/vaultspark-football-gm/pages",
-      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/"
+      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/",
+      "curl.exe -I https://vaultsparkstudios.com/vaultspark-football-gm/contact.html (pre-fix returned 404/fallback; build mirror fix added)"
     ],
     "date": "2026-06-30",
     "timedOut": []

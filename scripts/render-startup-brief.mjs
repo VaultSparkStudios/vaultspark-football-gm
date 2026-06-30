@@ -241,8 +241,9 @@ const meter = loadLiveContextMeter();
 const meterUsed = meter.usedTokens;
 const meterRemaining = Math.max(0, meter.limit - meterUsed);
 const meterRemainingPct = Math.round((meterRemaining / meter.limit) * 100);
-// context-meter returns pctUsed in percentage form (0-100), not 0-1. Normalize.
-const meterUsedPctRaw = meter.pctUsed > 1 ? meter.pctUsed : meter.pctUsed * 100;
+// Derive the display percentage from token counts. context-meter reports pctUsed
+// as a rounded percentage, so values below 1 (for example 0.9%) are valid.
+const meterUsedPctRaw = meter.limit > 0 ? (meterUsed / meter.limit) * 100 : Number(meter.pctUsed || 0);
 const meterUsedPct = Math.max(0, Math.min(100, Math.round(meterUsedPctRaw)));
 // pctUsedFraction is 0-1 for bar rendering math
 const meterUsedFrac = meterUsedPctRaw / 100;

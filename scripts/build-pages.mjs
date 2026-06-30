@@ -160,6 +160,23 @@ async function writeHtml(pageName) {
   await fs.writeFile(outputPath, injectHtmlDefaults(source, pagePath), "utf8");
 }
 
+async function mirrorProjectPath() {
+  const projectDir = path.join(outDir, slug);
+  const entries = await fs.readdir(outDir, { withFileTypes: true });
+  await fs.mkdir(projectDir, { recursive: true });
+
+  for (const entry of entries) {
+    if (entry.name === slug) continue;
+    const source = path.join(outDir, entry.name);
+    const destination = path.join(projectDir, entry.name);
+    if (entry.isDirectory()) {
+      await fs.cp(source, destination, { recursive: true });
+    } else {
+      await fs.copyFile(source, destination);
+    }
+  }
+}
+
 async function main() {
   await ensureCleanDir(outDir);
   await copyDir(publicDir, outDir);
@@ -168,6 +185,7 @@ async function main() {
     await writeHtml(pageName);
   }
   await fs.copyFile(path.join(outDir, "index.html"), path.join(outDir, "404.html"));
+  await mirrorProjectPath();
   console.log(`Built Pages bundle in ${outDir}`);
 }
 
