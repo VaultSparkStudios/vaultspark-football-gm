@@ -153,3 +153,14 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Hardened process automation with non-interactive Git guard env in safe-spawn/shim wiring and repaired the raw `node:child_process` import regression caught by `check-windows-hide`.
 - Verification: `npm test` 166/166, `npm run test:ui` 9/9, `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, secrets audit, blocker preflight, canon adoption check, and canon conformance 0 gaps.
 - Honesty note: one aggregate `npm test` attempt failed during overlapping parallel shard pressure with truncated/no-detail output; direct and sequential reruns passed, including the final canonical aggregate run.
+
+## 2026-07-01 — Session 26: consequence integrity and truth-surface saturation closeout
+
+- Ran the requested durable `/goal /arc` sequence through startup, live audit, implementation, innovation-pack expansion, validation, and closeout prep.
+- Generated `docs/AUDIT_2026-07-01_SESSION26.*` from verified live findings after confirming the primary Session 25 queue was exhausted.
+- Shipped GM Decision consequences: modal choices now flow through advance-week, apply a shared consequence policy, write news/transaction/event ledgers, expose `latestGmDecision`, and show browser confirmation.
+- Repaired observability honesty: startup brief live context-meter `pctUsed=1` now renders as `1% used`, not `100% used`.
+- Repaired queue truth: three-column task-board rows normalize `✅ Done` as done, preventing stale completed items from reappearing in innovation-pack candidates.
+- Repaired innovation-pack hygiene: intentional guard/sentinel marker lines are filtered, leaving only the latest-audit follow-through candidate after this session's second-order pass.
+- Verification: `npm test` 170/170, Playwright UI 9/9, Pages build/smoke, windows-hide guard, Wave guard, secrets audit, blocker preflight, focused browser/endpoint/studio tests.
+- Honesty note: one Pages smoke attempt failed while running concurrently with the Pages build; the sequential rerun after build passed.

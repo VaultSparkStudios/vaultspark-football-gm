@@ -1,34 +1,64 @@
-# Closeout Status Board
+<!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
+<!-- generated-at: 2026-07-01 (Session 26 closeout) -->
 
-Session: 25
-Date: 2026-07-01
-Project: Franchise Architect: Football
-Agent: Codex
+# Closeout Status Board — Franchise Architect: Football
 
-## Status
+```
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S26 ══════╗
+║  Date: 2026-07-01  ·  SIL: 954/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
+║  ✓ `src/engine/gmDecisionConsequences.js` centralizes decision-  ║
+║  ✓ `src/server.js` and `src/app/api/localApiRuntime.js` apply `  ║
+║  ✓ `public/lib/engagementFeatures.js` returns structured modal   ║
+║  ✓ `scripts/render-startup-brief.mjs` now treats live context-m  ║
+║  ✓ `scripts/lib/task-board.mjs` normalizes statuses for both ra  ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ SCORES · SIL 954/1000 ═══════════════════════════════════════╗
+║    Dev Health         99   ██████████                            ║
+║    Alignment          83   ████████░░                            ║
+║    Momentum           96   ██████████                            ║
+║    Engagement         96   ██████████                            ║
+║    Process Qual       100  ██████████                            ║
+║    Coherence          100  ██████████                            ║
+║    Security           96   ██████████                            ║
+║    Ecosystem          94   █████████░                            ║
+║    Capital            90   █████████░                            ║
+║    Automation         100  ██████████                            ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  · context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
+║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ GIT STATUS ══════════════════════════════════════════════════╗
+║  Changes: 27 files  ·  M:23 A:0 D:0 ?:4                          ║
+║  Ahead: 0  ·  Behind: 0                                          ║
+║  Branch: main                                                    ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
+║  Staging:  not configured  ·  type: —                            ║
+║  Live:     N/A — pre-deploy (FORGE)                              ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
+║  Doctor:        —                                                ║
+║  Compliance:    —                                                ║
+║  Tests:         170/170                                          ║
+║  IGNIS:         12d ago                                          ║
+║  Truth:         green                                            ║
+║  Sanitization:  —                                                ║
+╚════════════════════════════════════════════════════════════════╝
+╔══ NEXT SESSION ════════════════════════════════════════════════╗
+║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║
+╚════════════════════════════════════════════════════════════════╝
+```
 
-- Health: green
-- SIL: 949/1000
-- Tests: 166/166 default suite, Playwright UI 9/9
-- Pages: build passed, static smoke passed
-- Canon: adoption checked, conformance 0 gaps
-- Security/process: secrets audit passed, blocker preflight open HAR 0, windows-hide guard passed
-
-## Shipped
-
-- Franchise Architect identity and root-domain metadata
-- Expanded public static surface and agent-readable files
-- Brand assets, favicon, and theme toggle
-- Scouting narratives, trade-deadline cards, Hall of Fame ceremony sharing, sim-watch field feedback
-- Non-interactive Git child-process guard hardening
-- Session 25 audit and closeout truth surfaces
-
-## Still Evidence-Gated
-
-- Verify GitHub Actions/Pages after push
-- Smoke `https://playfranchisearchitect.com/` routes after deploy
-- Verify `football@playfranchisearchitect.com` forwards/copies to Studio operations before SPARKED
-
-## Shell Hygiene
-
-- shells: 0 background shells intentionally started · 0 left running by this closeout
+*Generated by `scripts/render-closeout-board.mjs v1.0`*

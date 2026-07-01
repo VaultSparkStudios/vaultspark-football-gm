@@ -12,6 +12,14 @@ export function extractSection(markdown, heading) {
   return nl === -1 ? '' : match.slice(nl + 1);
 }
 
+function normalizeStatus(statusText = '') {
+  const text = String(statusText || '').toLowerCase();
+  if (/✅|\bdone\b|\bcomplete(?:d)?\b|\bshipped\b/.test(text)) return 'done';
+  if (/human|blocked|⛔|⚠/.test(text)) return 'blocked';
+  if (/next|queued|todo|open|pending|🔜/.test(text)) return 'open';
+  return text.trim() || 'open';
+}
+
 export function parseUnifiedItems(markdown) {
   const section = extractSection(markdown, 'Unified Genius List') || String(markdown || '');
 
@@ -23,14 +31,29 @@ export function parseUnifiedItems(markdown) {
       .slice(1, -1)
       .map((cell) => cell.trim());
     if (cells.length < 3 || cells[0] === '#') continue;
-    const [rank, tier, category, status = '', effort = '', item = cells.length === 3 ? tier : category] = cells;
+
+    let rank = cells[0];
+    let tier = '';
+    let category = '';
+    let status = '';
+    let effort = '';
+    let item = '';
+
+    if (cells.length === 3) {
+      [, item, status] = cells;
+      category = 'Task Board';
+    } else {
+      [rank, tier, category, status = '', effort = '', item = category] = cells;
+    }
+
     const titleMatch = item.match(/\*\*(.+?)\*\*/);
     items.push({
       rank,
       rankNumber: parseFloat(rank),
       tier,
       category,
-      status,
+      status: normalizeStatus(status),
+      statusText: status,
       effort,
       item: item.replace(/\*\*/g, ''),
       rawItem: item,
@@ -50,6 +73,7 @@ export function parseUnifiedItems(markdown) {
   }));
   return [...humanItems, ...items];
 }
+
 export function parseHumanItems(markdown) {
   const section = extractSection(markdown, 'Human Action Required');
   if (!section) return [];
@@ -79,4 +103,3 @@ export function extractCurrentSessionIntent(markdown) {
   if (!match) return '';
   return match[1].trim().replace(/\r?\n+/g, ' ');
 }
-

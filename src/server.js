@@ -14,6 +14,7 @@ import {
   saveSessionToSlot
 } from "./runtime/saveStore.js";
 import { getPersistenceDescriptor } from "./runtime/persistence.js";
+import { applyGmDecisionConsequence } from "./engine/gmDecisionConsequences.js";
 
 const PORT = Number(process.env.PORT || 4173);
 const PUBLIC_DIR = path.resolve("public");
@@ -490,12 +491,19 @@ async function handleApi(req, res, url) {
       return true;
     }
     const count = Math.max(1, Math.min(40, toInt(body.count) || 1));
+    const gmDecision = body.gmDecisionChoice
+      ? applyGmDecisionConsequence(session, body.gmDecisionChoice)
+      : { ok: true, applied: false };
+    if (!gmDecision.ok) {
+      sendJson(res, 400, gmDecision);
+      return true;
+    }
     const results = [];
     for (let i = 0; i < count; i += 1) results.push(session.advanceWeek());
     const last = results[results.length - 1];
     if (last?.phase === "offseason") writeAutoBackup("offseason-checkpoint");
     else writeAutoBackup("week");
-    sendJson(res, 200, { ok: true, count, results, state: session.getDashboardState() });
+    sendJson(res, 200, { ok: true, count, results, gmDecision, state: session.getDashboardState() });
     return true;
   }
 

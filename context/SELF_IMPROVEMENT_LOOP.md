@@ -224,3 +224,21 @@ Category notes:
 - Automation Coverage: unchanged at max; `npm test`, UI, Pages build/smoke, windows-hide, blocker preflight, and canon checks all passed.
 
 Follow-up: after push, verify GitHub Actions/Pages, smoke `https://playfranchisearchitect.com/`, and prove `football@playfranchisearchitect.com` forwarding before any SPARKED/launch claim.
+
+## 2026-07-01 — Session 26 Closeout
+
+Score: 954 / 1000
+
+Category notes:
+- Dev Health: +1 for shipping the GM Decision consequence contract with shared server/browser runtime coverage and keeping the full default suite green at 170/170.
+- Creative Alignment: +1 for making high-pressure General Manager choices carry visible consequence instead of remaining a cosmetic prompt.
+- Momentum: +1 for saturating after the primary list was exhausted and shipping verified second-order work instead of stopping early.
+- Engagement: +2 for turning trade-deadline, injury, and cap-crisis decisions into ledgered story events and player-visible feedback.
+- Process Quality: held at 100; the session improved truth surfaces, but the category was already maxed.
+- Cross-Repo Coherence: unchanged; no sibling tree edits were made.
+- Security Posture: unchanged; no new credential or auth surface was added.
+- Ecosystem Integration: unchanged; public launch evidence remains honestly gated.
+- Capital Efficiency: unchanged; all work remains static-host/client-runtime safe with no new paid services.
+- Automation Coverage: held at 100; added focused regressions for decision wiring, context-meter normalization, parser status, and innovation-pack marker hygiene.
+
+Follow-up: after push, verify GitHub Actions/Pages deploy, smoke `https://playfranchisearchitect.com/`, and prove `football@playfranchisearchitect.com` forwarding/copying before any SPARKED or launch claim.

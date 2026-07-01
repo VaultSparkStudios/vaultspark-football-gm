@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0",
+  "session": 26,
+  "date": "2026-07-01",
+  "scope": "goal arc saturation: live-code audit plus second-order innovation pack",
+  "project": "Franchise Architect: Football",
+  "type": "game",
+  "rubric": "product/game with Studio OS process honesty",
+  "findings": [
+    {
+      "rank": 1,
+      "tier": "🔥",
+      "axis": "Engagement / Consequence Integrity",
+      "slug": "gm-decision-consequences",
+      "title": "GM Decision modal choices were cosmetic during advance-week",
+      "premiseVerified": true,
+      "evidence": "public/app.js awaited checkAndShowGmDecision() but discarded the choice; server/local advance-week routes had no gmDecisionChoice path.",
+      "impact": 9,
+      "innovation": 7,
+      "effort": "2h",
+      "status": "implemented",
+      "implementation": "Added shared GM decision consequence engine, wired server and client-only runtime advance-week routes, surfaced latestGmDecision in dashboard state, returned structured modal choices, and added endpoint/browser tests."
+    },
+    {
+      "rank": 2,
+      "tier": "⚡",
+      "axis": "Observability Honesty",
+      "slug": "context-meter-percent-honesty",
+      "title": "Startup brief rendered pctUsed=1 as 100% used",
+      "premiseVerified": true,
+      "evidence": "docs/STARTUP_BRIEF.md showed 100% used while scripts/context-meter.mjs --json reported pctUsed near 1.",
+      "impact": 8,
+      "innovation": 4,
+      "effort": "30m",
+      "status": "implemented",
+      "implementation": "Changed render-startup-brief live-meter normalization so live pctUsed is treated as 0-100 percentage, while heuristic fallback remains 0-1."
+    },
+    {
+      "rank": 3,
+      "tier": "⚡",
+      "axis": "Process / Queue Truth",
+      "slug": "task-board-three-column-status",
+      "title": "Three-column task-board rows made done items look open",
+      "premiseVerified": true,
+      "evidence": "node scripts/ops.mjs innovation-pack --dry-run listed completed Session 8 task rows as open candidates.",
+      "impact": 7,
+      "innovation": 4,
+      "effort": "45m",
+      "status": "implemented",
+      "implementation": "Normalized parseUnifiedItems() across three-column and ranked tables and added regression tests for done/open status extraction."
+    },
+    {
+      "rank": 4,
+      "tier": "💡",
+      "axis": "Process / Innovation Hygiene",
+      "slug": "innovation-marker-sentinel-filter",
+      "title": "Innovation pack treated intentional guard sentinels as unfinished work",
+      "premiseVerified": true,
+      "evidence": "Dry-run candidates included Client-only runtime fallback, v5 startup-brief guard code, and parser regex lines.",
+      "impact": 6,
+      "innovation": 3,
+      "effort": "30m",
+      "status": "implemented",
+      "implementation": "Filtered marker scan for regex classifier lines and intentional sentinel/fallback guards; dry-run now only reports latest audit follow-through."
+    }
+  ],
+  "rejected": [
+    "External SPARKED launch evidence remains honestly deferred until on-domain email forwarding and post-push public route/domain checks are verified."
+  ],
+  "verification": [
+    "node --check src/engine/gmDecisionConsequences.js",
+    "node --check src/runtime/GameSession.js",
+    "node --check src/server.js",
+    "node --check src/app/api/localApiRuntime.js",
+    "node --check public/app.js",
+    "node --check public/lib/engagementFeatures.js",
+    "node --test test/browser-wiring.test.js (4/4)",
+    "node --test test/session8-endpoints.test.js (19/19)",
+    "node --test test/studio-protocol-smoke.test.js (9/9)",
+    "node scripts/ops.mjs innovation-pack --dry-run (1 candidate: latest audit follow-through)"
+  ]
+}

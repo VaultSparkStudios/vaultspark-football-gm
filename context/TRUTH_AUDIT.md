@@ -98,3 +98,11 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Engagement truth repair: scouting narratives, reveal tiers, trade-deadline pressure cards, Hall of Fame ceremony sharing, and sim-watch field position feedback are wired through browser modules and passed full suite/UI verification.
 - Process truth repair: `check-windows-hide` caught a raw dynamic `node:child_process` import in `render-startup-brief.mjs`; the regression was repaired before closeout.
 - Launch truth update: the old `vaultsparkstudios.com/vaultspark-football-gm` blocker wording is stale for the new canonical identity. Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.
+
+## 2026-07-01 — Session 26 truth updates
+
+- GM Decision truth repair: decision choices are no longer discarded by the browser. They now flow into advance-week, are validated by `gmDecisionConsequences`, write source-of-truth ledgers, and surface in dashboard state.
+- Context-meter truth repair: live `pctUsed` from `scripts/context-meter.mjs` is treated as a percentage in the startup brief. The regenerated brief shows `1% used` instead of the false `100% used` boundary case.
+- Queue truth repair: `parseUnifiedItems()` now handles three-column task tables and normalizes `✅ Done` rows as done, so completed rows do not re-enter open queues.
+- Innovation-pack truth repair: intentional guard/sentinel marker lines are no longer treated as unfinished work. The remaining dry-run candidate is latest-audit follow-through only.
+- Launch truth unchanged: launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.

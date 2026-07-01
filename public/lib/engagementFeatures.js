@@ -231,8 +231,14 @@ export function resolveGmDecision(choice) {
   if (_pendingDecisionResolve) {
     const fn = _pendingDecisionResolve;
     _pendingDecisionResolve = null;
+    const active = _activeDecision;
     _activeDecision = null;
-    fn(choice);
+    fn(choice && active ? {
+      decisionId: active.id,
+      choiceId: choice,
+      type: active.type,
+      week: active.week
+    } : null);
   }
 }
 

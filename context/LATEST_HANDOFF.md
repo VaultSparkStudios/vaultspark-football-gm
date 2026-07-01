@@ -1,5 +1,47 @@
 # Latest Handoff
 
+## Impact Summary — Session 26 (2026-07-01)
+
+**Headline:** Session 26 turned a cosmetic GM Decision prompt into a real consequence loop and repaired the Studio truth surfaces that were creating false urgency: context percent, task-board status, and innovation-pack marker scans now derive from the right source of truth.
+
+- Shipped all 4 findings from `docs/AUDIT_2026-07-01_SESSION26.*`: GM decision consequences, startup context-meter percent honesty, three-column task-board status parsing, and innovation-pack guard/sentinel filtering.
+- GM Decision choices now flow from the browser modal into `/api/advance-week`, apply through a shared consequence engine, write news/transaction/event ledgers, surface `latestGmDecision` in dashboard state, and show a confirmation toast.
+- Startup brief now renders live `pctUsed=1` as `1% used`, not `100% used`; the regenerated `docs/STARTUP_BRIEF.md` shows the corrected value.
+- Innovation-pack no longer resurrects completed task-board rows or intentional guard sentinels as work; dry-run is down to the latest-audit follow-through check.
+- Verification: `npm test` 170/170, `npm run test:ui` 9/9, `npm run build:pages`, `npm run smoke:pages`, `node scripts/check-windows-hide.mjs`, `node scripts/check-canon-044-waves.mjs`, `node scripts/check-secrets.mjs --audit`, and `node scripts/ops.mjs blocker-preflight`.
+- Honesty note: one `smoke:pages` run failed because it ran concurrently with `build:pages`; the sequential rerun after build passed. Launch/SPARKED still remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.
+
+## Where We Left Off — 2026-07-01 (Session 26)
+
+The requested durable `/goal /arc` ran continuously through `/start`, live-code `/audit`, `/implement`, second-order innovation-pack expansion, validation, and closeout prep. The primary queue was exhausted from Session 25, so Session 26 focused on verified second-order issues rather than fabricating new launch evidence.
+
+What changed:
+- `src/engine/gmDecisionConsequences.js` centralizes decision-choice validation and ledger effects.
+- `src/server.js` and `src/app/api/localApiRuntime.js` apply `gmDecisionChoice` before advancing a week and return the applied consequence.
+- `public/lib/engagementFeatures.js` returns structured modal choices; `public/app.js` sends them and confirms applied effects.
+- `scripts/render-startup-brief.mjs` now treats live context-meter `pctUsed` as a percentage, fixing the false `100% used` display.
+- `scripts/lib/task-board.mjs` normalizes statuses for both ranked and three-column task tables.
+- `scripts/generate-innovation-pack.mjs` ignores intentional guard/sentinel marker lines.
+
+Verification passed:
+- `node --check` on changed runtime/server/browser/script files
+- `node --test test/browser-wiring.test.js` — 4/4
+- `node --test test/session8-endpoints.test.js` — 19/19
+- `node --test test/studio-protocol-smoke.test.js` — 9/9
+- `npm test` — 170/170
+- `npm run build:pages`
+- `npm run smoke:pages` — sequential rerun passed after one overlapping build/smoke failure
+- `npm run test:ui` — 9/9
+- `node scripts/check-windows-hide.mjs`
+- `node scripts/check-canon-044-waves.mjs`
+- `node scripts/check-secrets.mjs --audit`
+- `node scripts/ops.mjs blocker-preflight`
+
+Remaining public-safe blocker:
+- Do not flip launch/SPARKED yet. Verify `football@playfranchisearchitect.com` actually forwards/copies to Studio operations and re-check the pushed public route/domain state after deployment.
+
+Next best work:
+- After this push, confirm GitHub Actions/Pages deploy for the commit, smoke `https://playfranchisearchitect.com/` routes, and verify on-domain email forwarding.
 ## Impact Summary — Session 25 (2026-07-01)
 
 **Headline:** Session 25 turned Football GM into the Franchise Architect public beta surface: identity, domain metadata, route coverage, brand assets, theme controls, and high-emotion game moments now line up behind `playfranchisearchitect.com`, while Windows/Git process guardrails are stricter and verified.

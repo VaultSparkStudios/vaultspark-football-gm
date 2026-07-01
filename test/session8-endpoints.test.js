@@ -153,6 +153,36 @@ test("GET /api/gm-decision each decision has required shape", async () => {
   }
 });
 
+test("POST /api/advance-week applies a GM decision choice to state and ledgers", async () => {
+  const rt = makeRuntime();
+  await makeLeague(rt, { seed: 9013, advanceWeeks: 10 });
+
+  const decisions = await rt.request("/api/gm-decision");
+  const tradeDecision = decisions.payload.decisions.find((d) => d.id === "trade-deadline");
+  if (!tradeDecision) return;
+
+  const res = await rt.request("/api/advance-week", {
+    method: "POST",
+    body: {
+      count: 1,
+      gmDecisionChoice: {
+        decisionId: tradeDecision.id,
+        choiceId: "buy",
+        type: tradeDecision.type,
+        week: tradeDecision.week
+      }
+    }
+  });
+
+  assert.equal(res.status, 200);
+  assert.equal(res.payload.gmDecision.applied, true);
+  assert.equal(res.payload.gmDecision.decision.choiceId, "buy");
+  assert.equal(res.payload.state.latestGmDecision.choiceId, "buy");
+  const session = rt.getSession();
+  assert.ok(session.league.gmDecisionLedger.some((entry) => entry.choiceId === "buy"));
+  assert.ok(session.getTransactionLog({ type: "gm-decision-buy" }).length >= 1);
+  assert.ok(session.getNewsFeed({ limit: 5 }).some((entry) => /buy at the trade deadline/i.test(entry.headline)));
+});
 // ── /api/team-archetypes ──────────────────────────────────────────────────────
 
 test("GET /api/team-archetypes returns all 32 teams", async () => {

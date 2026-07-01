@@ -240,8 +240,9 @@ const meter = loadLiveContextMeter();
 const meterUsed = meter.usedTokens;
 const meterRemaining = Math.max(0, meter.limit - meterUsed);
 const meterRemainingPct = Math.round((meterRemaining / meter.limit) * 100);
-// context-meter returns pctUsed in percentage form (0-100), not 0-1. Normalize.
-const meterUsedPctRaw = meter.pctUsed > 1 ? meter.pctUsed : meter.pctUsed * 100;
+// Live context-meter returns pctUsed in percentage form (0-100), including exact
+// boundary values like 1. Heuristic fallback still returns a 0-1 fraction.
+const meterUsedPctRaw = meter.live ? meter.pctUsed : meter.pctUsed * 100;
 const meterUsedPct = Math.max(0, Math.min(100, Math.round(meterUsedPctRaw)));
 // pctUsedFraction is 0-1 for bar rendering math
 const meterUsedFrac = meterUsedPctRaw / 100;

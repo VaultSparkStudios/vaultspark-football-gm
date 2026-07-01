@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdtempSync, mkdirSync, writeFileSync, existsSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, existsSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -24,8 +24,23 @@ test("task board parser extracts table and human-blocked items", () => {
 
   const items = parseUnifiedItems(markdown);
   assert.equal(items.length, 2);
-  assert.equal(items.some((item) => item.title.includes("Map-based")), true);
+  const mapItem = items.find((item) => item.title.includes("Map-based"));
+  assert.equal(Boolean(mapItem), true);
+  assert.equal(mapItem.status, "open");
   assert.equal(parseHumanItems(markdown).length, 1);
+});
+
+test("task board parser keeps completed three-column rows out of open queues", () => {
+  const markdown = `
+| # | Item | Status |
+|---|------|--------|
+| 1 | localStorage rewind size guard | ✅ Done |
+| 2 | Next launch evidence | 🔜 Next sprint |
+`;
+
+  const items = parseUnifiedItems(markdown);
+  assert.equal(items.find((item) => item.title.includes("localStorage")).status, "done");
+  assert.equal(items.find((item) => item.title.includes("Next launch")).status, "open");
 });
 
 test("blocker classifier maps GitHub Pages secret work to an agent-attemptable probe", () => {
@@ -101,4 +116,20 @@ test("closeout brief renderer writes a public-safe markdown artifact", () => {
   assert.equal(result.status, 0, result.stderr);
   assert.match(result.stdout, /Protocol shim/);
   assert.equal(existsSync(join(dir, "docs", "CLOSEOUT_BRIEF_TEST_2026-06-15.md")), true);
+});
+
+test("startup brief treats live pctUsed 1 as one percent, not full", () => {
+  const source = readFileSync(resolve(repoRoot, "scripts/render-startup-brief.mjs"), "utf8");
+  assert.match(source, /const meterUsedPctRaw = meter\.live \? meter\.pctUsed : meter\.pctUsed \* 100;/);
+  assert.doesNotMatch(source, /meter\.pctUsed > 1 \? meter\.pctUsed : meter\.pctUsed \* 100/);
+});
+test("innovation-pack marker scan ignores intentional guard sentinels", () => {
+  const result = spawnSync(process.execPath, ["scripts/ops.mjs", "innovation-pack", "--dry-run"], {
+    cwd: process.cwd(),
+    encoding: "utf8"
+  });
+  assert.equal(result.status, 0, result.stderr);
+  assert.doesNotMatch(result.stdout, /Client-only runtime not implemented/);
+  assert.doesNotMatch(result.stdout, /unresolved computed-block stub/);
+  assert.doesNotMatch(result.stdout, /scripts\/lib\/task-board\.mjs/);
 });

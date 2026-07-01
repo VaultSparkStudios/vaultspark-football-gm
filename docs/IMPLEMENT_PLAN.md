@@ -1,7 +1,12 @@
-# Implement Plan — Session 23
+# Implement Plan — Session 26
 
-1. fix-commissioner-lobby-contract — shared app/runtime/status surface; ship first because it touches the largest contract.
-2. repair-shareable-newsletter-action + repair-cap-casualty-action — app-shell broken-button fixes in one source pass.
-3. restore-live-news-ticker-renderer — isolated renderer/markup fix.
-4. complete-public-agent-legal-surface — static files and footer links.
-5. validation — focused tests, default suite, Pages build/smoke, canon/security checks.
+1. GM Decision consequences: make pressure choices alter source-of-truth ledgers and state, not just UI.
+2. Context-meter honesty: fix live percent normalization in the startup brief.
+3. Task-board queue truth: parse three-column done/open status correctly.
+4. Innovation-pack hygiene: suppress intentional guard/sentinel marker false positives.
+
+## Results
+
+- 4/4 shipped.
+- Primary list was exhausted before this session; second-order innovation pack was generated, implemented, and reduced to latest-audit follow-through only.
+- External SPARKED launch evidence remains deferred honestly; no fabricated email/domain proof was added.

@@ -17,6 +17,7 @@ import {
 } from "../../engine/speedrunChallenge.js";
 import { getFanSentiment, fanApprovalLabel } from "../../engine/fanSentiment.js";
 import { getMentorshipStatus, getMentorshipHistory } from "../../engine/veteranMentorship.js";
+import { applyGmDecisionConsequence } from "../../engine/gmDecisionConsequences.js";
 import {
   createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
   lockGate, openGate, applyIntents, recordAdvance, lobbyStatus,
@@ -566,6 +567,10 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/advance-week") {
         const count = Math.max(1, Math.min(40, toInt(body?.count) || 1));
+        const gmDecision = body?.gmDecisionChoice
+          ? applyGmDecisionConsequence(session, body.gmDecisionChoice)
+          : { ok: true, applied: false };
+        if (!gmDecision.ok) return finish(jsonResponse(400, gmDecision));
         // ── Pre-game tactical override (halftime adjustment) ─────────────────
         const tacticOverride = body?.weeklyTacticOverride;
         let prevWeeklyPlan = null;
@@ -606,6 +611,7 @@ export function createLocalApiRuntime({
         writeAutoBackup(results[results.length - 1]?.phase === "offseason" ? "offseason-checkpoint" : "week");
         return finish(jsonResponse(200, {
           ok: true, count, results,
+          gmDecision,
           tacticApplied: tacticOverride || null,
           state: getAugmentedState(session)
         }));

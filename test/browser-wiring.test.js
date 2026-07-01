@@ -34,3 +34,13 @@ test("commissioner browser wiring uses local runtime payload contract", () => {
   assert.match(settingsSource, /lobby\.gateStatus/);
   assert.match(settingsSource, /p\.status === "ready"/);
 });
+test("advance-week browser wiring sends selected GM decision choice", () => {
+  const appSource = read("../public/app.js");
+  const engagementSource = read("../public/lib/engagementFeatures.js");
+
+  assert.match(engagementSource, /decisionId: active\.id/);
+  assert.match(engagementSource, /choiceId: choice/);
+  assert.match(appSource, /const gmDecisionChoice = await checkAndShowGmDecision/);
+  assert.match(appSource, /body\.gmDecisionChoice = gmDecisionChoice/);
+  assert.match(appSource, /response\.gmDecision\?\.applied/);
+});

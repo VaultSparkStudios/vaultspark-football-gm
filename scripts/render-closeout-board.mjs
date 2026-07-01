@@ -230,24 +230,30 @@ function gitChangeSummary() {
 }
 
 function agentMemoryRecentlyTouched() {
-  // Check whether agent memory (~/.claude/projects/<slug>/memory) has files
-  // modified within the last 24h. Best-effort — cross-platform path resolution
-  // varies; absence is reported as "·" rather than failing.
+  // Check whether agent memory has files modified within the last 24h.
+  // Supports Claude's project memory path and Codex's session memory path.
+  // Best-effort: absence is reported as "·" rather than failing.
   const home = os?.homedir?.() || process.env.HOME || process.env.USERPROFILE;
   if (!home) return false;
   const slug = path.basename(ROOT);
-  // Project memory dirs use a prefix-encoded form; fall back to a glob scan.
+  const normalizedSlug = slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const candidateDirs = [
+    path.join(home, '.codex', 'memories', normalizedSlug),
+  ];
   const projectsDir = path.join(home, '.claude', 'projects');
-  if (!fs.existsSync(projectsDir)) return false;
   try {
     const cutoff = Date.now() - 24 * 3600_000;
-    for (const entry of fs.readdirSync(projectsDir)) {
-      if (!entry.includes(slug)) continue;
-      const memDir = path.join(projectsDir, entry, 'memory');
+    if (fs.existsSync(projectsDir)) {
+      for (const entry of fs.readdirSync(projectsDir)) {
+        if (!entry.includes(slug)) continue;
+        candidateDirs.push(path.join(projectsDir, entry, 'memory'));
+      }
+    }
+    for (const memDir of candidateDirs) {
       if (!fs.existsSync(memDir)) continue;
-      for (const f of fs.readdirSync(memDir)) {
-        const stat = fs.statSync(path.join(memDir, f));
-        if (stat.mtimeMs > cutoff) return true;
+      for (const file of fs.readdirSync(memDir)) {
+        const stat = fs.statSync(path.join(memDir, file));
+        if (stat.isFile() && stat.mtimeMs > cutoff) return true;
       }
     }
   } catch { /* best-effort */ }
@@ -279,7 +285,7 @@ function writeBackCoverage() {
   const result = TARGETS.map((t) => ({ file: t, touched: touched.has(t) }));
   // 10th item (per closeout spec): agent memory at ~/.claude/projects/<slug>/memory/
   result.push({
-    file: 'agent memory (~/.claude/projects/<slug>/memory/)',
+    file: 'agent memory (~/.codex or ~/.claude project memory)',
     touched: agentMemoryRecentlyTouched(),
   });
   return result;
@@ -440,3 +446,4 @@ if (STDOUT_MODE) {
   const sessionTag = (readJson(STATUS_PATH) || {}).currentSession ?? '?';
   console.log(`✓ Closeout board → docs/CLOSEOUT_STATUS_BOARD.md  (Session ${sessionTag})`);
 }
+

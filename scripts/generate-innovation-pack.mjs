@@ -52,6 +52,7 @@ function markerCandidates() {
       const lines = readText(file).split(/\r?\n/);
       lines.forEach((line, idx) => {
         if (/\b(pattern|re):\s*\//.test(line) || /^\s*\//.test(line)) return;
+        if (/\.test\(text\)|Client-only runtime not implemented|hasStub|unresolved computed-block stub/.test(line)) return;
         const hit = patterns.find((p) => p.re.test(line));
         if (!hit) return;
         rows.push({ rel, line: idx + 1, reason: hit.reason, text: line.trim().slice(0, 120) });

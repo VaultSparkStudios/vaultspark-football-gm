@@ -4,10 +4,10 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 25 completed the Franchise Architect rebrand/public-surface arc: canonical identity/domain metadata, expanded static pages, brand assets/theme toggle, engagement moments, and Windows/Git process guard hardening are verified.",
+  "currentFocus": "Session 26 completed a saturated arc after the primary queue was exhausted: GM Decision choices now apply source-of-truth consequences, startup context-meter percent honesty is fixed, task-board done/open parsing is truthful, and innovation-pack marker hygiene no longer creates phantom work.",
   "nextMilestone": "Post-push launch evidence: confirm GitHub Actions/Pages for this commit, smoke https://playfranchisearchitect.com/ routes, and verify football@playfranchisearchitect.com forwards/copies to Studio operations before SPARKED.",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified and post-push public route/domain smoke passes for playfranchisearchitect.com."
+    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified and post-push public route/domain state passes for playfranchisearchitect.com."
   ],
   "lastUpdated": "2026-07-01",
   "lifecycle": "deployed",
@@ -18,18 +18,20 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 166,
-    "pass": 166,
+    "totalTests": 170,
+    "pass": 170,
     "fail": 0,
     "lastRun": "2026-07-01",
     "newTestFiles": [
+      "test/session8-endpoints.test.js",
+      "test/browser-wiring.test.js",
       "test/studio-protocol-smoke.test.js"
     ],
-    "newTestCount": 1,
-    "coverage": "Known default-shard inventory remains 166 tests after Session 25 (core 54, runtime 83, sim-contract 22, sim-realism 1, studio 6). Session 25 also verified Playwright UI 9/9, Pages build/smoke, windows-hide guard, secrets audit, blocker preflight, canon adoption check, and canon conformance 0 gaps."
+    "newTestCount": 4,
+    "coverage": "Session 26 verified default npm test 170/170 (core 54, runtime 84, sim-contract 22, sim-realism 1, studio 9), Playwright UI 9/9, Pages build/smoke, windows-hide guard, Wave guard, secrets audit, and blocker preflight."
   },
-  "testsPassing": 166,
-  "testsTotal": 166,
+  "testsPassing": 170,
+  "testsTotal": 170,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -68,12 +70,12 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 949,
+  "silScore": 954,
   "silCategoriesV3": {
-    "devHealth": 98,
-    "creativeAlignment": 82,
-    "momentum": 95,
-    "engagement": 94,
+    "devHealth": 99,
+    "creativeAlignment": 83,
+    "momentum": 96,
+    "engagement": 96,
     "processQuality": 100,
     "crossRepoCoherence": 100,
     "securityPosture": 96,
@@ -81,29 +83,28 @@
     "capitalEfficiency": 90,
     "automationCoverage": 100
   },
-  "currentSession": 25,
+  "currentSession": 26,
   "lastAgent": "codex",
-  "sessionMode": "founder",
+  "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "node scripts/check-windows-hide.mjs",
-      "npm run test:studio",
-      "npm run test:runtime",
-      "npm run test:sim:contract",
-      "npm run test:sim:realism",
-      "npm test",
-      "npm run test:ui",
+      "node --check changed JS/MJS files",
+      "node --test test/browser-wiring.test.js (4/4)",
+      "node --test test/session8-endpoints.test.js (19/19)",
+      "node --test test/studio-protocol-smoke.test.js (9/9)",
+      "npm test (170/170)",
+      "npm run test:ui (9/9)",
       "npm run build:pages",
       "npm run smoke:pages",
+      "node scripts/check-windows-hide.mjs",
+      "node scripts/check-canon-044-waves.mjs",
       "node scripts/check-secrets.mjs --audit",
-      "node scripts/ops.mjs blocker-preflight",
-      "node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --check",
-      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline"
+      "node scripts/ops.mjs blocker-preflight"
     ],
     "date": "2026-07-01",
     "timedOut": [],
     "failed": [
-      "Earlier parallel aggregate test attempt exited nonzero with truncated/no-detail shard output under overlapping Node pressure; isolated and final sequential reruns passed, including canonical npm test 166/166."
+      "One npm run smoke:pages attempt failed while running concurrently with npm run build:pages; sequential rerun after build passed."
     ]
   },
   "silScoreV3MigratedAt": "2026-04-21",
@@ -112,9 +113,9 @@
   "modelTierCtxLimit": 200000,
   "modelPlanMode": true,
   "modelPlanModeSlash": "/model opusplan",
-  "planModeDetected": "active",
-  "planModeCheckedAt": "2026-06-15T03:38:28.633Z",
-  "sessionModeAutoShiftedAt": "2026-06-15T04:17:19.127Z",
+  "planModeDetected": "missing",
+  "planModeCheckedAt": "2026-07-01T05:54:57.303Z",
+  "sessionModeAutoShiftedAt": "2026-07-01T05:54:12.692Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-05-22",

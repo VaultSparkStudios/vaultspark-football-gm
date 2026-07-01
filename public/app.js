@@ -366,10 +366,16 @@ function bindEvents() {
       if (tactic) body.weeklyTacticOverride = tactic;
       // Check GM Decision before advancing (Session 8)
       if (state.dashboard?.phase === "regular-season") {
-        await checkAndShowGmDecision().catch(() => {});
+        const gmDecisionChoice = await checkAndShowGmDecision().catch(() => null);
+        if (gmDecisionChoice) body.gmDecisionChoice = gmDecisionChoice;
       }
       const response = await api("/api/advance-week", { method: "POST", body });
       applyDashboard(response.state);
+      if (response.gmDecision?.applied) {
+        const label = response.gmDecision.decision?.label || "GM decision";
+        const effect = response.gmDecision.decision?.effect || "choice recorded";
+        showToast(`${label}: ${effect}`);
+      }
       await Promise.all([
         loadRoster(),
         loadFreeAgency(),

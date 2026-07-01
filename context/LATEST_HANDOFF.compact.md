@@ -1,38 +1,39 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: c413f0c896ed -->
-<!-- generated-at: 2026-06-30T19:31:59.801Z -->
+<!-- source-hash: be9325379dd8 -->
+<!-- generated-at: 2026-07-01T06:27:05.346Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 23 HANDOFF SUMMARY
+SESSION HANDOFF SUMMARY (compressed)
 
-Status
-- Session 23 + follow-up complete. Direct push to main, Pages deployed.
-- Suite green: npm test 165/165, test:ui 9/9, build:pages + smoke:pages pass.
+Session
+- Latest: Session 26 (2026-07-01)
 
-What Shipped (Session 23)
-- Season Newsletter import fix (generateFranchiseNewsletter); button no longer throws.
-- News ticker selector repair (renders into #newsTickerContent).
-- Commissioner Mode client-only loop: canonical commissionerId/userId/controlledTeamId payloads, legacy alias acceptance, truthful status panel.
-- Cap Casualty wiring fixed (loadContractsTeam).
-- Public compliance files: contact.html, privacy.html, terms.html, agents.json, .well-known/llms.txt, sitemap.xml + footer links.
-- Build hardening: build-pages canonicalizes static HTML; smoke verifies compliance routes.
-- Follow-up: build now mirrors full artifact under static/vaultspark-football-gm/; smoke asserts mirrored routes pre-deploy.
+Shipped (Session 26)
+- All 4 findings from AUDIT_2026-07-01_SESSION26: GM decision consequence loop, startup context-meter percent honesty (1% not 100%), three-column task-board status parsing, innovation-pack guard/sentinel filtering.
+- GM Decision choices now flow browser modal to /api/advance-week via shared consequence engine (src/engine/gmDecisionConsequences.js); write news/transaction/event ledgers; surface latestGmDecision + toast.
+- Verified: npm test 170/170, test:ui 9/9, build:pages, smoke:pages, windows-hide, canon-044-waves, check-secrets --audit, blocker-preflight.
 
 Current Intent
-- Verify live custom-domain compliance routes and update Launch Readiness from evidence only.
+- Post-push: confirm GitHub Actions/Pages deploy for the commit, smoke live playfranchisearchitect.com routes, verify on-domain email forwarding. Then update Launch Readiness from evidence only. Do not flip launch/SPARKED prematurely.
 
 Now Bucket (top 3)
-1. Live URL smoke for /vaultspark-football-gm/ + /contact.html, /privacy.html, /terms.html, /agents.json, /.well-known/llms.txt.
-2. Verify custom-domain certificate state post-deploy.
-3. Update Launch Readiness from real public-route evidence only (no force-green).
+1. Confirm GitHub Actions/Pages deploy for pushed commit.
+2. Smoke https://playfranchisearchitect.com/ routes (canonical + legacy paths).
+3. Verify football@playfranchisearchitect.com forwarding/copying to Studio ops.
 
 Blockers (top 3)
-1. Custom-domain routing: post-deploy, live /vaultspark-football-gm/* compliance routes return 404/fallback despite slug-prefixed files present in artifact (confirmed in artifact.tar for 3c3e795). Repo files correct; issue is routing/cert state.
-2. GitHub Pages cert reports bad_authz, expired 2026-06-02. Cloudflare-proxied apex blocks ACME.
-3. Project-local ops innovation-pack command unsupported; innovation passes remain manual (docs/INNOVATION_PACK.md).
+1. Launch/SPARKED flip blocked: needs verified email forwarding + post-push public route/domain evidence.
+2. Custom-domain routing/certificate: prior sessions saw live 404/fallback on new routes and Pages cert bad_authz/expired 2026-06-02; treat as routing/cert state, not missing repo files.
+3. smoke:pages fails if run concurrently with build:pages; must run sequentially after build.
 
-Human-Blocked
-- Cloudflare/GitHub Pages custom-domain remediation: needs Cloudflare-side fix or credentials. Open and unresolved since Session 14 (~9 sessions). Two-option runbook in TASK_BOARD. Optionally add cloudflare token to secrets gateway for agent-side fix. Launch Readiness must stay blocked until live evidence clears.
+Human-Blocked Items (with age)
+- Email forwarding verification for football@playfranchisearchitect.com: open since Session 25 (2 sessions).
+- Public route/domain launch evidence: open since Session 25 (2 sessions).
+- Custom-domain certificate remediation (formerly Cloudflare/GitHub Pages runbook): open since Session 14 (~12 sessions), now rebranded to playfranchisearchitect.com.
 
-Next Session: Run live public-route smoke against the custom domain, confirm cert state, then set Launch Readiness from evidence.
+Notes
+- Primary work queue exhausted since Session 25; recent sessions do verified second-order work, not fabricated launch evidence.
+- Repo keeps only public-safe handoff; detailed history is private.
+
+Next session: verify deploy + live-domain route smoke + email forwarding, then set Launch Readiness from evidence.

@@ -77,6 +77,7 @@ import { updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore
 import { generatePressConference } from "../engine/pressConference.js";
 import { updateFanSentiment } from "../engine/fanSentiment.js";
 import { applyMentorshipBonuses } from "../engine/veteranMentorship.js";
+import { latestGmDecision } from "../engine/gmDecisionConsequences.js";
 
 const TABLE_CATEGORIES = ["passing", "rushing", "receiving", "defense", "blocking", "kicking", "punting", "snaps"];
 const MAX_ACTIVE_ROSTER = 53;
@@ -1056,6 +1057,7 @@ function ensureLeagueRuntime(league) {
   if (!league.scouting.teams) league.scouting.teams = {};
   if (!Array.isArray(league.newsFeed)) league.newsFeed = [];
   if (!Array.isArray(league.eventLog)) league.eventLog = [];
+  if (!Array.isArray(league.gmDecisionLedger)) league.gmDecisionLedger = [];
   if (!Array.isArray(league.calibrationJobs)) league.calibrationJobs = [];
   if (!Array.isArray(league.draftPicks)) league.draftPicks = [];
   if (!Array.isArray(league.compensatoryPicks)) league.compensatoryPicks = [];
@@ -4366,6 +4368,7 @@ export class GameSession {
       compPicks: this.getCompensatoryPicks({ teamId: this.controlledTeamId }),
       news: this.getNewsFeed({ limit: 20 }),
       eventLog: this.getEventLog({ limit: 30 }),
+      latestGmDecision: latestGmDecision(this.league),
       observability: this.getObservability(),
       calibrationJobs: this.listCalibrationJobs(10),
       teams: this.league.teams.map(toDashboardTeam),
