@@ -2,7 +2,7 @@
 
 Date: 2026-06-30
 Reviewer: Codex
-Source repo reviewed: `C:\Users\p4cka\Documents\Development\Gridiron-GM`
+Source repo reviewed: `<dev-root>\\Gridiron-GM`
 Target repo: `Franchise Architect: Football`
 
 ## Executive Recommendation

@@ -40,7 +40,7 @@ The console failure that triggered this tombstone was a missing legacy asset pat
 
 Full merge review: `docs/rebrand/GRIDIRON_GM_VAULT_MERGE_REVIEW.md`
 
-Reviewed `C:\Users\p4cka\Documents\Development\Gridiron-GM` as a VAULTED source. Do not bulk-merge its React app into the current static game. The useful candidates are design/mechanics to port selectively:
+Reviewed `<dev-root>\\Gridiron-GM` as a VAULTED source. Do not bulk-merge its React app into the current static game. The useful candidates are design/mechanics to port selectively:
 
 - Live play-by-play sim with field visualization.
 - Draft clock, draft lottery, and stronger draft-room ceremony.

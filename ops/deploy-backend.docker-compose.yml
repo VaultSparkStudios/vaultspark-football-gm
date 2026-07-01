@@ -42,7 +42,7 @@ services:
       GAME_PUBLIC_ORIGIN: https://playfranchisearchitect.com/
       GAME_SERVICE_ORIGIN: https://play-franchise-architect-football.vaultsparkstudios.com
       API_ORIGIN: https://api-franchise-architect-football.vaultsparkstudios.com
-      DATABASE_URL: postgresql://studio_admin:${POSTGRES_PASSWORD}@postgres:5432/vaultspark_football_gm_db
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL via deployment secrets}
       REDIS_URL: redis://redis:6379
     depends_on:
       - postgres
@@ -59,7 +59,7 @@ services:
       APP_ORIGIN: https://playfranchisearchitect.com/
       GAME_SERVICE_ORIGIN: https://play-franchise-architect-football.vaultsparkstudios.com
       API_ORIGIN: https://api-franchise-architect-football.vaultsparkstudios.com
-      DATABASE_URL: postgresql://studio_admin:${POSTGRES_PASSWORD}@postgres:5432/vaultspark_football_gm_db
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL via deployment secrets}
       REDIS_URL: redis://redis:6379
     depends_on:
       - postgres
