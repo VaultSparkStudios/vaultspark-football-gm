@@ -240,9 +240,8 @@ const meter = loadLiveContextMeter();
 const meterUsed = meter.usedTokens;
 const meterRemaining = Math.max(0, meter.limit - meterUsed);
 const meterRemainingPct = Math.round((meterRemaining / meter.limit) * 100);
-// Derive the display percentage from token counts. context-meter reports pctUsed
-// as a rounded percentage, so values below 1 (for example 0.9%) are valid.
-const meterUsedPctRaw = meter.limit > 0 ? (meterUsed / meter.limit) * 100 : Number(meter.pctUsed || 0);
+// context-meter returns pctUsed in percentage form (0-100), not 0-1. Normalize.
+const meterUsedPctRaw = meter.pctUsed > 1 ? meter.pctUsed : meter.pctUsed * 100;
 const meterUsedPct = Math.max(0, Math.min(100, Math.round(meterUsedPctRaw)));
 // pctUsedFraction is 0-1 for bar rendering math
 const meterUsedFrac = meterUsedPctRaw / 100;
@@ -321,18 +320,18 @@ if (latestScored) {
   if (v != null) velocity = v;
 }
 if (!silTotal && status.silScore) { silTotal = status.silScore; silMax = status.silMax || 1000; }
+const silStreak = status.silStreak ?? 0;  // S202: consecutive max-score sessions
 function parseScore(label) {
   // Tolerate suffixes like "Engagement (infra)" — match label followed by optional
   // whitespace + parenthesized note before the column separator.
   const m = lastEntry.match(new RegExp(`\\|\\s*${label}(?:\\s*\\([^)]*\\))?\\s*\\|\\s*(\\d+)`, 'i'));
   return m ? parseInt(m[1]) : null;
 }
-const v3Cats = status.silCategoriesV3 || {};
-const lastDev      = v3Cats.devHealth ?? parseScore('Dev Health') ?? cat3.dev ?? 0;
-const lastAlign    = v3Cats.creativeAlignment ?? parseScore('Creative Alignment') ?? cat3.align ?? 0;
-const lastMomentum = v3Cats.momentum ?? parseScore('Momentum') ?? cat3.momentum ?? 0;
-const lastEngage   = v3Cats.engagement ?? parseScore('Engagement') ?? cat3.engage ?? 0;
-const lastProcess  = v3Cats.processQuality ?? parseScore('Process Quality') ?? cat3.process ?? 0;
+const lastDev      = parseScore('Dev Health') ?? cat3.dev ?? 0;
+const lastAlign    = parseScore('Creative Alignment') ?? cat3.align ?? 0;
+const lastMomentum = parseScore('Momentum') ?? cat3.momentum ?? 0;
+const lastEngage   = parseScore('Engagement') ?? cat3.engage ?? 0;
+const lastProcess  = parseScore('Process Quality') ?? cat3.process ?? 0;
 
 // Trend arrows per category (compare last to avg3)
 function trend(last, avg) {
@@ -365,6 +364,7 @@ const catHistory = {
   process:  parseCategoryHistory('Process Quality'),
 };
 // v3 categories — single-point snapshot (will grow as new sessions score v3)
+const v3Cats = status.silCategoriesV3 || {};
 const lastCoherence  = v3Cats.crossRepoCoherence ?? 0;
 const lastSecurity   = v3Cats.securityPosture ?? 0;
 const lastEcosystem  = v3Cats.ecosystemIntegration ?? 0;
@@ -753,14 +753,30 @@ try {
     }
   }
 } catch { /* non-fatal — fall through to PROJECT_STATUS values */ }
+function listSignalCount(value) {
+  return Array.isArray(value) ? value.length : (typeof value === 'number' ? value : 0);
+}
+
+function compactFileList(files, max = 2) {
+  const list = Array.isArray(files) ? files : [];
+  const names = list.slice(0, max).map(f => path.basename(String(f)));
+  const extra = Math.max(0, list.length - names.length);
+  return names.join(', ') + (extra ? ` +${extra}` : '');
+}
+
 // Prefer explicit pass/total from run-tests; fall back to testsTotal only; then exempt; else warn.
 const testsExempt = !status.testsTotal && (status.audience === 'internal' || status.type === 'infrastructure' || status.type === 'internal-ops') && !status.testsPassing;
 let sigTests, testsLabel;
 if (typeof status.testsPassing === 'number' && typeof status.testsTotal === 'number' && status.testsTotal > 0) {
+  const deferredCount = listSignalCount(status.testsDeferred);
+  const envBlockedCount = listSignalCount(status.testsEnvBlocked);
   const allPass = status.testsPassing === status.testsTotal;
   const mostlyPass = status.testsPassing / status.testsTotal >= 0.9;
-  sigTests = testsStale ? '⚠' : allPass ? '✓' : mostlyPass ? '⚠' : '⛔';
-  testsLabel = `${status.testsPassing}/${status.testsTotal} passing` + (status.testsLastRun ? ` (${status.testsLastRun})` : '') + (testsStale ? ' · STALE — run node scripts/run-tests.mjs' : '');
+  sigTests = testsStale || deferredCount || envBlockedCount ? '⚠' : allPass ? '✓' : mostlyPass ? '⚠' : '⛔';
+  testsLabel = `${status.testsPassing}/${status.testsTotal} passing` + (status.testsLastRun ? ` (${status.testsLastRun})` : '');
+  if (deferredCount) testsLabel += ` · ${deferredCount} deferred: ${compactFileList(status.testsDeferred)}`;
+  if (envBlockedCount) testsLabel += ` · ${envBlockedCount} env-blocked: ${compactFileList(status.testsEnvBlocked)}`;
+  if (testsStale) testsLabel += ' · STALE — run node scripts/run-tests.mjs';
 } else if (testsExempt) {
   sigTests = '✓';
   testsLabel = 'N/A (protocol repo)';
@@ -810,6 +826,22 @@ function buildGeniusBoxFromMarkdown(markdown) {
   if (entries.length === 0) return '';
 
   const out = [top('GENIUS HIT LIST')];
+  // S211 [SIL S209 #2]: surface the IGNIS rank source so a fallback-degraded list
+  // (D-S209.4 — once ~2mo stale on fallback while live was reachable) is never
+  // silent. Parsed from the GENIUS_LIST.md header (`**Rank source:** live`).
+  const rankMatch = markdown.match(/\*\*Rank source:\*\*\s*(\w+)/i);
+  if (rankMatch) {
+    const src = rankMatch[1].toLowerCase();
+    const genMatch = markdown.match(/\*\*Generated:\*\*\s*(\S+)/);
+    let ageStr = '';
+    if (genMatch) {
+      const ageD = (Date.now() - new Date(genMatch[1])) / 86_400_000;
+      if (!Number.isNaN(ageD)) ageStr = ` · ${ageD < 1 ? '<1' : Math.round(ageD)}d old`;
+    }
+    const icon = src === 'live' ? '✓' : '⚠';
+    out.push(row(`${icon} rank source: ${src}${ageStr}`.slice(0, W)));
+    out.push(blank());
+  }
   for (const entry of entries) {
     out.push(row(entry.title.slice(0, W)));
     out.push(row(entry.summary.slice(0, W)));
@@ -1069,7 +1101,10 @@ const lines = [
     owner: status.owner,
   }),
   ``,
-  renderLastCompleted(status.lastSessionSummary),
+  renderLastCompleted(status.lastSessionSummary, {
+    expectedSession: currentSession - 1,
+    fallback: status.currentFocus || shippedLine || 'Latest session details unavailable.',
+  }),
   ``,
   ...(Array.isArray(status.testingSurfaces) && status.testingSurfaces.length
     ? [renderTestItNow({ name: status.name || 'Studio Ops', testingSurfaces: status.testingSurfaces }), ``]
@@ -1081,7 +1116,7 @@ const lines = [
   top('SCORE'),
   blank(),
   row(`  ${silTotal}/${silMax}   ${bar24(silTotal, silMax)}   ${pct}`),
-  row(`  SIL v3.0  ·  Avg3: ${avg3Raw ?? '?'}  ·  Velocity ${velocity}${velTrend || '→'}`),
+  row(`  SIL v3.0  ·  Avg3: ${avg3Raw ?? '?'}  ·  Velocity ${velocity}${velTrend || '→'}${silStreak >= 2 ? `  ·  Streak ${silStreak}${silStreak >= 8 ? ' 🔥' : silStreak >= 4 ? ' ✦' : ''}` : ''}`),
   row(`  Last active: ${daysSinceActive}d  ·  Last closeout: ${daysSinceClosedOut}d  ·  (active = newest of SIL/status/handoff)`),
   row(`  Trend  ${velHistBar || sparkline}  ${velTrend || '→'}  (last ${(velLast5 || []).length || 5} sessions)`),
   blank(),
@@ -1308,8 +1343,20 @@ if (v5Mode !== 'off') {
           const reductionPct = Math.round(((v3Bytes - v5Bytes) / v3Bytes) * 100);
           console.log(`  ◆ brief-v5 compare: v3=${v3Bytes}b v5=${v5Bytes}b  (${reductionPct}% reduction)`);
           if (v5Mode === '1' || v5Mode === 'promote') {
-            fs.copyFileSync(v5File, outputPath);
-            console.log(`  ◆ brief-v5 promoted → docs/STARTUP_BRIEF.md`);
+            // S209 [audit #2] — promotion guard. v5 must not overwrite the
+            // canonical brief unless it passes the same validator /start uses AND
+            // carries no unresolved computed-block stub. This is the safety net
+            // that stops a half-built v5 (e.g. an unwired SIGNALS/HUMAN PRESSURE
+            // resolver) from silently becoming the founder's primary surface.
+            const v5Text = fs.readFileSync(v5File, 'utf8');
+            const hasStub = /\{"script":\s*"/.test(v5Text);
+            const valid = spawnSync(node, [path.join(__dirname, 'validate-brief-format.mjs'), v5File], { cwd: root });
+            if (hasStub || valid.status !== 0) {
+              console.error(`  ⚠ brief-v5 promotion BLOCKED — ${hasStub ? 'unresolved computed-block stub' : 'failed validate-brief-format'}; keeping v3.1 canonical.`);
+            } else {
+              fs.copyFileSync(v5File, outputPath);
+              console.log(`  ◆ brief-v5 promoted → docs/STARTUP_BRIEF.md`);
+            }
           }
         }
       }

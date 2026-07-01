@@ -207,3 +207,20 @@ Category notes:
 Follow-up: re-test normal Codex Apps startup after the upstream/client issue clears, then remove the project wrapper if it is no longer needed.
 
 Detailed internal scoring, audit trends, and brainstorming are maintained privately.
+
+## 2026-07-01 — Session 25 Closeout
+
+Score: 949 / 1000
+
+Category notes:
+- Dev Health: +1 for keeping the full default suite green after a broad rebrand/static route change and for catching the raw child-process regression with the guard before closeout.
+- Creative Alignment: +6 for moving the product from generic Football GM naming into a distinct Franchise Architect brand system with mark, logo, favicon, root-domain metadata, and themeable screens.
+- Momentum: +1 for turning a large dirty tree into a complete audit-backed arc with verified build/test/deploy surfaces.
+- Engagement: +4 for adding scouting narrative, deadline pressure, Hall of Fame ceremony sharing, and sim-watch field feedback without adding backend cost.
+- Cross-Repo Coherence: +1 for aligning public agent metadata, package identity, and Studio manifest/runtime-pack surfaces to the new canonical identity.
+- Security Posture: +1 for adding public security.txt and strengthening non-interactive Git child-process behavior.
+- Ecosystem Integration: +4 for shipping `/agents.json`, `/.well-known/llms.txt`, sitemap, status/IP/about/changelog pages, and canonical/legacy route coverage behind the new domain.
+- Capital Efficiency: +1 for keeping the beta fully static-host-safe and browser-native.
+- Automation Coverage: unchanged at max; `npm test`, UI, Pages build/smoke, windows-hide, blocker preflight, and canon checks all passed.
+
+Follow-up: after push, verify GitHub Actions/Pages, smoke `https://playfranchisearchitect.com/`, and prove `football@playfranchisearchitect.com` forwarding before any SPARKED/launch claim.

@@ -7,11 +7,12 @@ import { chromium } from "@playwright/test";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
 const staticDir = path.join(rootDir, "static");
-const slug = "vaultspark-football-gm";
+const slug = "franchise-architect-football";
 const mountPath = `/${slug}`;
+const legacyMountPath = "/games/vaultspark-football-gm";
 const host = "127.0.0.1";
 const port = 4310;
-const baseUrl = `http://${host}:${port}${mountPath}/`;
+const baseUrl = `http://${host}:${port}/`;
 
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
@@ -72,18 +73,12 @@ async function createServer() {
 
   return http.createServer(async (req, res) => {
     const url = new URL(req.url || "/", `http://${host}:${port}`);
-    if (url.pathname === "/") {
-      res.writeHead(302, { Location: `${mountPath}/` });
-      res.end();
-      return;
+    let relativePath = url.pathname.replace(/^\/+/, "");
+    if (url.pathname.startsWith(`${mountPath}/`)) {
+      relativePath = url.pathname.slice(mountPath.length).replace(/^\/+/, "");
+    } else if (url.pathname.startsWith(`${legacyMountPath}/`)) {
+      relativePath = url.pathname.slice(legacyMountPath.length).replace(/^\/+/, "");
     }
-    if (!url.pathname.startsWith(mountPath)) {
-      res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
-      res.end("Not found");
-      return;
-    }
-
-    const relativePath = url.pathname.slice(mountPath.length).replace(/^\/+/, "");
     const targetPath = relativePath || "index.html";
     const safePath = path.normalize(targetPath).replace(/^(\.\.[\\/])+/, "");
     let filePath = path.join(staticDir, safePath);
@@ -116,7 +111,7 @@ async function main() {
     }
 
     await page.click("#createLeagueBtn");
-    await page.waitForURL(`**/${slug}/game.html`, { timeout: 15000 });
+    await page.waitForURL(`**/game.html`, { timeout: 15000 });
     await page.waitForSelector("#refreshBtn");
     await page.waitForFunction(() => {
       const text = document.getElementById("topMetaText")?.textContent || "";
@@ -128,22 +123,26 @@ async function main() {
 
     await page.goto(`${baseUrl}missing-route`, { waitUntil: "networkidle" });
     await page.waitForSelector("#createLeagueBtn");
-    await assertStaticPath(`${mountPath}/contact.html`, /footballgm@vaultsparkstudios\.com/);
-    await assertStaticPath(`${mountPath}/privacy.html`, /Browser-First Beta/);
-    await assertStaticPath(`${mountPath}/terms.html`, /All rights reserved/);
-    await assertStaticPath(`${mountPath}/agents.json`, /Proprietary - All Rights Reserved/);
-    await assertStaticPath(`${mountPath}/.well-known/llms.txt`, /VaultSpark Football GM/);
-    await assertStaticPath(`${mountPath}/sitemap.xml`, /contact\.html/);
+    await assertStaticPath(`/contact.html`, /football@playfranchisearchitect\.com/);
+    await assertStaticPath(`/privacy.html`, /Browser-First Beta/);
+    await assertStaticPath(`/terms.html`, /All rights reserved/);
+    await assertStaticPath(`/agents.json`, /Proprietary - All Rights Reserved/);
+    await assertStaticPath(`/.well-known/llms.txt`, /Franchise Architect: Football/);
+    await assertStaticPath(`/sitemap.xml`, /contact\.html/);
 
-    await assertStaticFile(`${slug}/index.html`, /VaultSpark Football GM/);
-    await assertStaticFile(`${slug}/game.html`, /VaultSpark Football GM/);
+    await assertStaticFile(`${slug}/index.html`, /Franchise Architect: Football/);
+    await assertStaticFile(`${slug}/game.html`, /Franchise Architect: Football/);
     await assertStaticFile(`${slug}/styles.css`, /:root/);
-    await assertStaticFile(`${slug}/contact.html`, /footballgm@vaultsparkstudios\.com/);
+    await assertStaticFile(`${slug}/contact.html`, /football@playfranchisearchitect\.com/);
     await assertStaticFile(`${slug}/privacy.html`, /Browser-First Beta/);
     await assertStaticFile(`${slug}/terms.html`, /All rights reserved/);
     await assertStaticFile(`${slug}/agents.json`, /Proprietary - All Rights Reserved/);
-    await assertStaticFile(`${slug}/.well-known/llms.txt`, /VaultSpark Football GM/);
+    await assertStaticFile(`${slug}/.well-known/llms.txt`, /Franchise Architect: Football/);
     await assertStaticFile(`${slug}/sitemap.xml`, /contact\.html/);
+    await assertStaticFile(`games/vaultspark-football-gm/styles.css`, /:root/);
+    await assertStaticFile(`games/vaultspark-football-gm/setup.js`, /createApiClient/);
+    await assertStaticPath(`${legacyMountPath}/styles.css`, /:root/);
+    await assertStaticPath(`${legacyMountPath}/setup.js`, /createApiClient/);
     console.log("Static Pages smoke pass completed.");
   } finally {
     await browser.close();

@@ -6,7 +6,7 @@ lastReviewed: 2026-05-27
 
 ## Scope
 
-VaultSpark Football GM is a public-unlaunched game repo with local browser/runtime surfaces and Studio OS automation scripts. It does not currently expose a password-primary production auth flow in this repo.
+Franchise Architect: Football is a public-unlaunched game repo with local browser/runtime surfaces and Studio OS automation scripts. It does not currently expose a password-primary production auth flow in this repo.
 
 ## Current Posture
 

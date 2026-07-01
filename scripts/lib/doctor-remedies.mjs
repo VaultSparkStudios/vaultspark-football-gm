@@ -50,6 +50,11 @@ export const HEAL_MAP = {
   // self-owned (see SELF_REMEDIABLE_NO_AUTOHEAL).
   'agents-md-drift':     { script: 'validate-agents-md.mjs',        args: [],          label: 'refresh AGENTS.md drift report',        kind: 'refresh', remediation: 'node scripts/propagate-agents-sections.mjs --apply' },
   'analytica-freshness': { script: 'build-analytica-dashboard.mjs', args: [],          label: 'refresh Analytica dashboard',           kind: 'remediate' },
+  // S210 — lastSessionSummary had a detector but no writer, so it silently went stale
+  // (S208 prose survived the S209 closeout). --fix mirrors the agent-maintained
+  // currentFocus into lastSessionSummary when currentFocus names the expected session;
+  // a genuine state mutation (kind:'remediate'), not a report refresh.
+  'last-session-summary': { script: 'check-last-session-summary.mjs', args: ['--fix'], label: 'heal lastSessionSummary from currentFocus', kind: 'remediate' },
 };
 
 // S171 [audit #2/#3] — probes studio-ops CAN remediate via a real action that is

@@ -143,3 +143,13 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Cleaned stale task-board rows that incorrectly left already-shipped Pages CI, lookup-index, and closeout-renderer work open.
 - Verification: `npm run test:studio` 6/6, full `npm test` 166/166, `npm run build:pages`, `npm run smoke:pages`, `npm run test:ui` 9/9, windows-hide guard, brief validation, and innovation-pack dry run.
 - Honesty note: the first full Playwright UI run had one transient timeout in the first test; the same test passed in isolation and the full suite passed on rerun. No deterministic product regression was found.
+
+## 2026-07-01 — Session 25: Franchise Architect rebrand and public surface closeout
+
+- Continued the active `/goal /arc` objective through cutoff classification, live audit reconstruction, implementation verification, and `/closeout`.
+- Generated `docs/AUDIT_2026-07-01_SESSION25.*` from the current dirty tree and verified it matched shipped work instead of relying on Session 24 artifacts.
+- Completed the Franchise Architect identity pass across package metadata, public docs, agent metadata, Pages routing, feedback URL targets, static pages, favicon, brand assets, and compatibility aliases.
+- Shipped engagement/UI polish: theme toggle, brand lockup, scouting prospect narratives/reveal tiers, trade-deadline pressure cards, Hall of Fame ceremony sharing, and live sim-watch field position feedback.
+- Hardened process automation with non-interactive Git guard env in safe-spawn/shim wiring and repaired the raw `node:child_process` import regression caught by `check-windows-hide`.
+- Verification: `npm test` 166/166, `npm run test:ui` 9/9, `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, secrets audit, blocker preflight, canon adoption check, and canon conformance 0 gaps.
+- Honesty note: one aggregate `npm test` attempt failed during overlapping parallel shard pressure with truncated/no-detail output; direct and sequential reruns passed, including the final canonical aggregate run.

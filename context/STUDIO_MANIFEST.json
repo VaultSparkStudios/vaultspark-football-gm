@@ -3,9 +3,9 @@
   "generatedFrom": "ops runtime-pack synthesized manifest",
   "synthesized": true,
   "identity": {
-    "slug": "football-gm",
-    "name": "VaultSpark Football GM",
-    "repo": "VaultSparkStudios/vaultspark-football-gm",
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "repo": "VaultSparkStudios/franchise-architect-football",
     "owner": "VaultSpark Studios",
     "type": "game",
     "lifecycle": "deployed",
@@ -20,7 +20,7 @@
     "requiredFilesPresent": false
   },
   "listingMetadata": {
-    "canonicalSummary": "Deep football GM simulation with advanced analytics. Currently in client beta.",
+    "canonicalSummary": "Deep Franchise Architect: Football simulation with advanced analytics. Currently in client beta.",
     "tagline": "Beta testing and polish.",
     "tags": [
       "game",
@@ -32,22 +32,22 @@
       "public-unlaunched"
     ],
     "hubDescription": "Beta testing and polish.",
-    "websiteDescription": "Deep football GM simulation with advanced analytics. Currently in client beta.",
-    "socialDescription": "Deep football GM simulation with advanced analytics. Currently in client beta.",
+    "websiteDescription": "Deep Franchise Architect: Football simulation with advanced analytics. Currently in client beta.",
+    "socialDescription": "Deep Franchise Architect: Football simulation with advanced analytics. Currently in client beta.",
     "brandingLabel": "Powered by VaultSpark Studios"
   },
   "surfaces": {
     "local": [
       {
         "label": "workspace",
-        "path": "<dev-root>\\VaultSpark Football GM"
+        "path": "<dev-root>\\Franchise Architect: Football"
       }
     ],
     "staging": [],
     "production": [
       {
         "label": "live",
-        "url": "https://vaultsparkstudios.com/vaultspark-football-gm/"
+        "url": "https://playfranchisearchitect.com/"
       }
     ],
     "preview": [],
@@ -57,7 +57,7 @@
     "github": [
       {
         "label": "repo",
-        "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm"
+        "url": "https://github.com/VaultSparkStudios/franchise-architect-football"
       }
     ],
     "testing": []
@@ -102,7 +102,7 @@
   "secretsCapabilities": [],
   "hosting": {
     "hostingProvider": "github-pages",
-    "liveUrl": "https://vaultsparkstudios.com/vaultspark-football-gm/",
+    "liveUrl": "https://playfranchisearchitect.com/",
     "stagingUrl": null,
     "privatePreviewUrl": null,
     "localDevUrl": null,

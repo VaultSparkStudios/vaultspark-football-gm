@@ -13,7 +13,7 @@ const profile = {
     "Free-tier work must remain static-host-safe or local-only."
   ],
   promptOverlay:
-    "VaultSpark Football GM is a public-unlaunched browser franchise simulator. Prefer beta-readiness, zero-backend loops, and vivid General Manager decision pressure over backend-heavy features.",
+    "Franchise Architect: Football is a public-unlaunched browser franchise simulator. Prefer beta-readiness, zero-backend loops, and vivid General Manager decision pressure over backend-heavy features.",
   axisWeightDeltas: {
     "gamification/engagement/immersion": 2,
     "ui/ux/user-experience": 1,

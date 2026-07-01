@@ -1,5 +1,43 @@
 # Latest Handoff
 
+## Impact Summary — Session 25 (2026-07-01)
+
+**Headline:** Session 25 turned Football GM into the Franchise Architect public beta surface: identity, domain metadata, route coverage, brand assets, theme controls, and high-emotion game moments now line up behind `playfranchisearchitect.com`, while Windows/Git process guardrails are stricter and verified.
+
+- Shipped all 6 findings from `docs/AUDIT_2026-07-01_SESSION25.*`: rebrand identity migration, root-domain public pages, engagement surfaces, theme/brand polish, Windows process hardening, and observability-honesty helpers.
+- Public surface now includes about/play/contact/privacy/terms/IP/status/changelog, `agents.json`, `.well-known/llms.txt`, `.well-known/security.txt`, `robots.txt`, `sitemap.xml`, brand mark/logo assets, favicon, and Pages smoke coverage for canonical plus legacy aliases.
+- Game UI now has a theme toggle, new brand lockup, scouting narrative/reveal signals, trade-deadline pressure cards, Hall of Fame ceremony sharing, and live sim-watch field position feedback.
+- Verification: `npm test` 166/166, `npm run test:ui` 9/9, `npm run build:pages`, `npm run smoke:pages`, `node scripts/check-windows-hide.mjs`, `node scripts/check-secrets.mjs --audit`, `node scripts/ops.mjs blocker-preflight`, canon adoption check, and canon conformance 0 gaps.
+- Honesty note: an earlier parallel aggregate test attempt produced nonzero/no-detail shard exits under overlapping Node pressure; direct and sequential reruns passed, including the canonical aggregate `npm test`.
+
+## Where We Left Off — 2026-07-01 (Session 25)
+
+The requested durable `/goal /arc` continuation ran through profile/cutoff classification, live audit reconstruction, implementation repair, verification, and closeout. There was no session lock; the dirty tree was active Session 25 work, not a completed closeout.
+
+What changed:
+- Identity and routing moved to `franchise-architect-football` / `Franchise Architect: Football` / `https://playfranchisearchitect.com/`, with legacy route mirrors retained for compatibility.
+- `scripts/build-pages.mjs` now builds the expanded static page set and mirrors canonical plus legacy paths; `scripts/smoke-pages.mjs` verifies root, canonical slug, and legacy game paths.
+- `public/lib/themeMode.js`, brand SVG assets, and CSS theme tokens add visible dark/light support without backend cost.
+- `public/lib/prospectNarratives.js`, `tradeDeadlineFrenzy.js`, and `hallOfFameCeremony.js` add retention moments in scouting, deadline week, and history.
+- `scripts/lib/git-window-guard.mjs` and safe-spawn/shim wiring make Git child processes non-interactive; `check-windows-hide` also catches shell-resolved literal `node` spawns.
+- Startup/status helpers gained stale-summary, test-deferral, pricing, and append-only guard fixes.
+
+Verification passed:
+- `npm test` — 166/166
+- `npm run test:ui` — 9/9
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `node scripts/check-windows-hide.mjs`
+- `node scripts/check-secrets.mjs --audit`
+- `node scripts/ops.mjs blocker-preflight`
+- `node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --check`
+- `node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline` — 0 gaps
+
+Remaining public-safe blocker:
+- Do not flip launch/SPARKED yet. Verify `football@playfranchisearchitect.com` actually forwards/copies to Studio operations and re-check the pushed public route/domain state after deployment.
+
+Next best work:
+- After this push, confirm GitHub Actions/Pages deploy for the commit, smoke `https://playfranchisearchitect.com/` routes, and verify on-domain email forwarding.
 ## Impact Summary — Session 24 (2026-06-30)
 
 **Headline:** Session 24 made the arc expansion and startup truth surfaces executable and self-validating: innovation-pack is now a real command, dynamic child-process imports are guarded, startup SIL rows no longer show false zeroes, and stale open task-board rows were reconciled.

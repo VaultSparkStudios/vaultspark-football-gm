@@ -12,8 +12,8 @@ services:
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
-      - vaultspark-football-gm-play
-      - vaultspark-football-gm-api
+      - franchise-architect-football-play
+      - franchise-architect-football-api
 
   postgres:
     image: postgres:16
@@ -31,34 +31,34 @@ services:
     volumes:
       - redis_data:/data
 
-  vaultspark-football-gm-play:
-    image: ghcr.io/vaultsparkstudios/vaultspark-football-gm-play:latest
+  franchise-architect-football-play:
+    image: ghcr.io/vaultsparkstudios/franchise-architect-football-play:latest
     restart: unless-stopped
     environment:
       NODE_ENV: production
       PORT: 8080
       DOMAIN: vaultsparkstudios.com
-      GAME_SLUG: vaultspark-football-gm
-      GAME_PUBLIC_ORIGIN: https://vaultsparkstudios.com/vaultspark-football-gm/
-      GAME_SERVICE_ORIGIN: https://play-vaultspark-football-gm.vaultsparkstudios.com
-      API_ORIGIN: https://api-vaultspark-football-gm.vaultsparkstudios.com
+      GAME_SLUG: franchise-architect-football
+      GAME_PUBLIC_ORIGIN: https://playfranchisearchitect.com/
+      GAME_SERVICE_ORIGIN: https://play-franchise-architect-football.vaultsparkstudios.com
+      API_ORIGIN: https://api-franchise-architect-football.vaultsparkstudios.com
       DATABASE_URL: postgresql://studio_admin:${POSTGRES_PASSWORD}@postgres:5432/vaultspark_football_gm_db
       REDIS_URL: redis://redis:6379
     depends_on:
       - postgres
       - redis
 
-  vaultspark-football-gm-api:
-    image: ghcr.io/vaultsparkstudios/vaultspark-football-gm-api:latest
+  franchise-architect-football-api:
+    image: ghcr.io/vaultsparkstudios/franchise-architect-football-api:latest
     restart: unless-stopped
     environment:
       NODE_ENV: production
       PORT: 8081
       DOMAIN: vaultsparkstudios.com
-      GAME_SLUG: vaultspark-football-gm
-      APP_ORIGIN: https://vaultsparkstudios.com/vaultspark-football-gm/
-      GAME_SERVICE_ORIGIN: https://play-vaultspark-football-gm.vaultsparkstudios.com
-      API_ORIGIN: https://api-vaultspark-football-gm.vaultsparkstudios.com
+      GAME_SLUG: franchise-architect-football
+      APP_ORIGIN: https://playfranchisearchitect.com/
+      GAME_SERVICE_ORIGIN: https://play-franchise-architect-football.vaultsparkstudios.com
+      API_ORIGIN: https://api-franchise-architect-football.vaultsparkstudios.com
       DATABASE_URL: postgresql://studio_admin:${POSTGRES_PASSWORD}@postgres:5432/vaultspark_football_gm_db
       REDIS_URL: redis://redis:6379
     depends_on:

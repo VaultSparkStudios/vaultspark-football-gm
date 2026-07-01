@@ -26,6 +26,7 @@
 
 import * as cp from 'node:child_process';
 import { promisify } from 'node:util';
+import { withGitWindowGuardEnv } from './git-window-guard.mjs';
 
 // Force windowsHide:true into a spawn-family call's options, matching every signature:
 //   fn(cmd) · fn(cmd,args) · fn(cmd,opts) · fn(cmd,args,opts) · fn(cmd,cb) · fn(cmd,opts,cb)
@@ -46,15 +47,17 @@ function harden(args) {
     ) { optIdx = i; break; }
   }
   if (optIdx >= 0) {
-    if (a[optIdx].windowsHide === undefined) {
-      a[optIdx] = { ...a[optIdx], windowsHide: true };
-    }
+    a[optIdx] = {
+      ...a[optIdx],
+      windowsHide: a[optIdx].windowsHide === undefined ? true : a[optIdx].windowsHide,
+      env: withGitWindowGuardEnv(a[optIdx].env || process.env),
+    };
     return a;
   }
   if (a.length && typeof a[a.length - 1] === 'function') {
-    a.splice(a.length - 1, 0, { windowsHide: true });
+    a.splice(a.length - 1, 0, { windowsHide: true, env: withGitWindowGuardEnv() });
   } else {
-    a.push({ windowsHide: true });
+    a.push({ windowsHide: true, env: withGitWindowGuardEnv() });
   }
   return a;
 }
@@ -85,3 +88,4 @@ execFile[promisify.custom] = (...args) => _execFileP(...harden(args));
 export const { ChildProcess } = cp;
 
 export default { spawn, spawnSync, exec, execSync, execFile, execFileSync, fork, ChildProcess };
+

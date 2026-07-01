@@ -52,8 +52,7 @@ const RAW_CP_ALLOWLIST = new Set([
   'scripts/test/tier1-windows-hide-shim.mjs',
 ]);
 
-// A direct import/require of node:child_process (static, dynamic, or require;
-// any quote/spacing, with or without node: prefix).
+// A direct import/require of node:child_process (any quote/spacing, with or without node: prefix).
 const RAW_CP_RE = /(?:from\s*['"]|require\(\s*['"]|import\(\s*['"])(?:node:)?child_process['"]/;
 
 // Scan a tree for scripts that import child_process directly instead of the hardened
@@ -113,19 +112,46 @@ export function scanWindowsHide(root = join(ROOT, 'scripts')) {
   return violations;
 }
 
+
+// S206 root-cause guard: shell-resolving literal `node` is the window-storm/DEP0190
+// source when `process.execPath` would work. `npx`/`.cmd` shim calls may still need
+// a shell on Windows; literal node does not.
+const LITERAL_NODE_SPAWN_NEAR = /\b(spawnSync|spawn|execFileSync|execFile)\s*\(\s*['"]node['"]/;
+
+export function scanShellNodeSpawns(root = join(ROOT, 'scripts')) {
+  const violations = [];
+  for (const file of walk(root)) {
+    if (file.endsWith('check-windows-hide.mjs')) continue;
+    const src = readFileSync(file, 'utf8')
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/(^|[^:])\/\/[^\n]*/g, '$1');
+    SHELL_RE.lastIndex = 0;
+    let m;
+    while ((m = SHELL_RE.exec(src)) !== null) {
+      const idx = m.index;
+      const before = src.slice(Math.max(0, idx - 450), idx);
+      if (!LITERAL_NODE_SPAWN_NEAR.test(before)) continue;
+      const line = src.slice(0, idx).split('\n').length;
+      violations.push({ file: relative(ROOT, file).replace(/\\/g, '/'), line });
+    }
+  }
+  return violations;
+}
 // CLI entry — only when run directly (not on import).
 const INVOKED_DIRECTLY = process.argv[1] && process.argv[1].endsWith('check-windows-hide.mjs');
 if (INVOKED_DIRECTLY) {
   const JSON_OUT = process.argv.includes('--json');
   const shellViolations = scanWindowsHide();          // legacy: shell:true missing windowsHide
   const rawImports = scanDirectChildProcessImports();  // primary: direct child_process import
-  const total = shellViolations.length + rawImports.length;
+  const shellNodeSpawns = scanShellNodeSpawns();        // root-cause: literal node behind shell:true
+  const total = shellViolations.length + rawImports.length + shellNodeSpawns.length;
   if (JSON_OUT) {
     console.log(JSON.stringify({
       ok: total === 0,
       count: total,
       directChildProcessImports: rawImports,
       shellTrueMissingHide: shellViolations,
+      shellNodeSpawns,
     }, null, 2));
   } else if (total === 0) {
     console.log('✓ windows-hide: all spawns route through lib/safe-spawn.mjs and set windowsHide:true (no window-storm / no SuspExec heuristic)');
@@ -133,6 +159,10 @@ if (INVOKED_DIRECTLY) {
     if (rawImports.length) {
       console.log(`⛔ windows-hide: ${rawImports.length} direct child_process import(s) — route through ./lib/safe-spawn.mjs instead (windowsHide:true is forced there):`);
       for (const v of rawImports) console.log(`   ${v.file}:${v.line}`);
+    }
+    if (shellNodeSpawns.length) {
+      console.log(`⛔ windows-hide:  shell-resolved literal node spawn(s) — use process.execPath instead (window-storm root):`);
+      for (const v of shellNodeSpawns) console.log(`   ${v.file}:${v.line}`);
     }
     if (shellViolations.length) {
       console.log(`⛔ windows-hide: ${shellViolations.length} shell:true spawn(s) missing windowsHide:true — they pop a console window per call on Windows:`);
@@ -142,3 +172,4 @@ if (INVOKED_DIRECTLY) {
   }
   process.exit(total === 0 ? 0 : 1);
 }
+

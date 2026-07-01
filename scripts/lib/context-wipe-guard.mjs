@@ -43,9 +43,14 @@ function stripRegenerable(content) {
 // deleted" — i.e. the prior committed body survives intact as a contiguous block.
 // `existing ⊆ new` (substring) holds for BOTH prepend and append; startsWith does
 // not. Returns true when the append-only contract is satisfied.
+function normalizeEol(content) {
+  const normalized = content.replace(/\r\n/g, '\n');
+  return normalized.length ? normalized.replace(/\s+$/, '\n') : normalized;
+}
+
 function appendOnlyPreserved(existing, newContent) {
-  const oldBody = stripRegenerable(existing);
-  const newBody = stripRegenerable(newContent);
+  const oldBody = normalizeEol(stripRegenerable(existing));
+  const newBody = normalizeEol(stripRegenerable(newContent));
   if (oldBody.length === 0) return true;        // nothing prior to preserve
   if (newBody.includes(oldBody)) return true;   // fast path: pure prepend/append (contiguous)
   // General case: the closeout pattern prepends a NEW entry *after a fixed header*
@@ -89,6 +94,7 @@ const SHRINK_ALLOWED = [
 const GENERATED = [
   'docs/GENIUS_LIST.md',
   'docs/INNOVATION_PACK.md',
+  'docs/AUDIT_',
 ];
 
 // Template-placeholder markers that signal an empty scaffold overwrote real
@@ -291,4 +297,4 @@ export function checkContextFiles(root, opts = {}) {
   return { ok: findings.length === 0, findings };
 }
 
-export { APPEND_ONLY, SHRINK_ALLOWED, GENERATED, WIPE_THRESHOLD, appendOnlyPreserved, stripRegenerable, isGeneratedWiped };
+export { APPEND_ONLY, SHRINK_ALLOWED, GENERATED, WIPE_THRESHOLD, appendOnlyPreserved, stripRegenerable, normalizeEol, isGeneratedWiped };

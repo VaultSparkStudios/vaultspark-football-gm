@@ -7,7 +7,12 @@ const rootDir = path.resolve(__dirname, "..");
 const publicDir = path.join(rootDir, "public");
 const srcDir = path.join(rootDir, "src");
 const outDir = path.join(rootDir, "static");
-const slug = process.env.GAME_SLUG || "vaultspark-football-gm";
+const slug = process.env.GAME_SLUG || "franchise-architect-football";
+const legacySlugs = [
+  "vaultspark-football-gm",
+  "games/vaultspark-football-gm",
+  "games/franchise-architect-football"
+];
 const runtimeDefault = process.env.VSFGM_RUNTIME_DEFAULT || "client";
 const explicitServerBaseUrl = (process.env.VITE_API_ORIGIN || "").trim()
   || (process.env.API_ORIGIN || "").trim()
@@ -15,7 +20,19 @@ const explicitServerBaseUrl = (process.env.VITE_API_ORIGIN || "").trim()
   || ((process.env.API_DOMAIN || "").trim() ? `https://${String(process.env.API_DOMAIN).trim()}` : "");
 const serverAvailable = explicitServerBaseUrl ? "true" : "false";
 const browserEntryPoints = [path.join(srcDir, "app", "api", "localApiRuntime.js")];
-const htmlPages = ["index.html", "game.html", "landing.html", "contact.html", "privacy.html", "terms.html"];
+const htmlPages = [
+  "index.html",
+  "game.html",
+  "landing.html",
+  "about.html",
+  "play.html",
+  "contact.html",
+  "privacy.html",
+  "terms.html",
+  "ip.html",
+  "status.html",
+  "changelog.html"
+];
 
 function normalizeBasePath(value) {
   const trimmed = String(value || "").trim() || `/${slug}/`;
@@ -23,9 +40,9 @@ function normalizeBasePath(value) {
   return withLeadingSlash.endsWith("/") ? withLeadingSlash : `${withLeadingSlash}/`;
 }
 
-const basePath = normalizeBasePath(process.env.VITE_APP_BASE_PATH || `/${slug}/`);
-const canonicalBase = process.env.VITE_CANONICAL_URL || `https://vaultsparkstudios.com${basePath}`;
-const ogImageUrl = process.env.VITE_OG_IMAGE_URL || `https://vaultsparkstudios.com${basePath}images/cover.png`;
+const basePath = normalizeBasePath(process.env.VITE_APP_BASE_PATH || "/");
+const canonicalBase = process.env.VITE_CANONICAL_URL || `https://playfranchisearchitect.com${basePath}`;
+const ogImageUrl = process.env.VITE_OG_IMAGE_URL || `https://playfranchisearchitect.com${basePath}images/cover.png`;
 
 async function ensureCleanDir(dir) {
   await fs.rm(dir, { recursive: true, force: true });
@@ -160,13 +177,13 @@ async function writeHtml(pageName) {
   await fs.writeFile(outputPath, injectHtmlDefaults(source, pagePath), "utf8");
 }
 
-async function mirrorProjectPath() {
-  const projectDir = path.join(outDir, slug);
+async function mirrorPath(mirrorSlug) {
+  const projectDir = path.join(outDir, ...mirrorSlug.split("/"));
   const entries = await fs.readdir(outDir, { withFileTypes: true });
   await fs.mkdir(projectDir, { recursive: true });
 
   for (const entry of entries) {
-    if (entry.name === slug) continue;
+    if ([slug, "vaultspark-football-gm", "games"].includes(entry.name)) continue;
     const source = path.join(outDir, entry.name);
     const destination = path.join(projectDir, entry.name);
     if (entry.isDirectory()) {
@@ -174,6 +191,12 @@ async function mirrorProjectPath() {
     } else {
       await fs.copyFile(source, destination);
     }
+  }
+}
+
+async function mirrorProjectPaths() {
+  for (const mirrorSlug of [slug, ...legacySlugs]) {
+    await mirrorPath(mirrorSlug);
   }
 }
 
@@ -185,7 +208,7 @@ async function main() {
     await writeHtml(pageName);
   }
   await fs.copyFile(path.join(outDir, "index.html"), path.join(outDir, "404.html"));
-  await mirrorProjectPath();
+  await mirrorProjectPaths();
   console.log(`Built Pages bundle in ${outDir}`);
 }
 
@@ -193,3 +216,5 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+

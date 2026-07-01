@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "session": 25,
+  "date": "2026-07-01",
+  "scope": "goal arc continuation",
+  "findings": [
+    { "rank": 1, "axis": "Brand / Public Surface", "title": "Resolve legacy Football GM identity split", "status": "implemented" },
+    { "rank": 2, "axis": "Public Launch Readiness", "title": "Canonicalize root-domain public pages and route smoke", "status": "implemented" },
+    { "rank": 3, "axis": "Engagement / Retention", "title": "Wire scouting narratives, deadline pressure, and Hall of Fame ceremony sharing", "status": "implemented" },
+    { "rank": 4, "axis": "Browser UX", "title": "Add brand lockup and theme toggle", "status": "implemented" },
+    { "rank": 5, "axis": "Process Hardening", "title": "Extend Windows Git/process guard and repair raw child_process regression", "status": "implemented" },
+    { "rank": 6, "axis": "Observability Honesty", "title": "Improve startup/status truth surfaces", "status": "implemented" }
+  ],
+  "deferred": [
+    "Keep SPARKED blocked until football@playfranchisearchitect.com forwarding and post-push public route evidence are verified.",
+    "Keep legacy route mirrors until migration evidence supports removal."
+  ]
+}

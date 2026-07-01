@@ -85,7 +85,7 @@ test("closeout brief renderer writes a public-safe markdown artifact", () => {
   writeFileSync(input, JSON.stringify({
     session: "TEST",
     date: "2026-06-15",
-    repo: "vaultspark-football-gm",
+    repo: "franchise-architect-football",
     headline: "Test brief",
     items: [{ title: "Protocol shim", projectImpact: 7, ecosystemImpact: 5, evidence: "renderer wrote markdown" }],
     followUps: [],

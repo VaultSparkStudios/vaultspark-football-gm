@@ -1,7 +1,7 @@
-# Obelisk Posture — VaultSpark Football GM
+# Obelisk Posture — Franchise Architect: Football
 
 **Canon:** CANON-021 · D-S119.2
-**Project slug:** `vaultspark-football-gm`
+**Project slug:** `franchise-architect-football`
 **Declared at:** {{DATE}}
 **Owner:** {{OWNER}}
 
@@ -13,7 +13,7 @@
 
 ## Current auth surfaces
 
-> Auto-detected by `node scripts/obelisk-inventory.mjs --slug vaultspark-football-gm`. Run it and paste/summarize findings here.
+> Auto-detected by `node scripts/obelisk-inventory.mjs --slug franchise-architect-football`. Run it and paste/summarize findings here.
 
 - [ ] Password sign-in forms
 - [ ] Raw API keys in env (static bearer tokens)

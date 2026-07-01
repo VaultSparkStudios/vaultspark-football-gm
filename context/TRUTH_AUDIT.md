@@ -90,3 +90,11 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Guard truth repair: the Windows no-window guard now detects dynamic `import('node:child_process')` as well as static imports and `require()`.
 - Task-board truth repair: old rows for Pages CI, GameSession lookup indexes, and closeout renderer shims now reflect the later completed state already documented in the same board.
 - Launch truth unchanged: external custom-domain certificate/routing remediation remains blocked on provider/dashboard state, not repo-side packaging or tests.
+
+## 2026-07-01 — Session 25 truth updates
+
+- Rebrand truth repair: `Franchise Architect: Football`, `franchise-architect-football`, and `https://playfranchisearchitect.com/` are now the canonical public identity across package metadata, public pages, agent metadata, sitemap, feedback URLs, and Pages build/smoke paths.
+- Route truth repair: local Pages smoke now covers root-domain output plus canonical and legacy mirrored paths. This proves the artifact shape, not the post-push live domain state.
+- Engagement truth repair: scouting narratives, reveal tiers, trade-deadline pressure cards, Hall of Fame ceremony sharing, and sim-watch field position feedback are wired through browser modules and passed full suite/UI verification.
+- Process truth repair: `check-windows-hide` caught a raw dynamic `node:child_process` import in `render-startup-brief.mjs`; the regression was repaired before closeout.
+- Launch truth update: the old `vaultsparkstudios.com/vaultspark-football-gm` blocker wording is stale for the new canonical identity. Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.

@@ -2,10 +2,10 @@
 	email __TLS_EMAIL__
 }
 
-play-vaultspark-football-gm.vaultsparkstudios.com {
-	reverse_proxy vaultspark-football-gm-play:8080
+play-franchise-architect-football.vaultsparkstudios.com {
+	reverse_proxy franchise-architect-football-play:8080
 }
 
-api-vaultspark-football-gm.vaultsparkstudios.com {
-	reverse_proxy vaultspark-football-gm-api:8081
+api-franchise-architect-football.vaultsparkstudios.com {
+	reverse_proxy franchise-architect-football-api:8081
 }

@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.3",
-  "slug": "vaultspark-football-gm",
-  "name": "VaultSpark Football GM",
+  "slug": "franchise-architect-football",
+  "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 24 protocol/observability closeout shipped a project-local innovation-pack command, dynamic child_process guard coverage, truthful startup SIL v3 category rendering, and stale task-board open-row cleanup.",
-  "nextMilestone": "External domain remediation remains the launch gate: re-check custom-domain route smoke and GitHub Pages certificate state after provider/DNS repair or new evidence.",
+  "currentFocus": "Session 25 completed the Franchise Architect rebrand/public-surface arc: canonical identity/domain metadata, expanded static pages, brand assets/theme toggle, engagement moments, and Windows/Git process guard hardening are verified.",
+  "nextMilestone": "Post-push launch evidence: confirm GitHub Actions/Pages for this commit, smoke https://playfranchisearchitect.com/ routes, and verify football@playfranchisearchitect.com forwards/copies to Studio operations before SPARKED.",
   "blockers": [
-    "GitHub Pages artifact for commit 3c3e795 contains slug-prefixed compliance files, but live custom-domain project-path routes still return 404/fallback. GitHub Pages API still reports custom-domain certificate bad_authz/expired 2026-06-02; launch readiness remains blocked on external domain/routing/certificate remediation."
+    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified and post-push public route/domain smoke passes for playfranchisearchitect.com."
   ],
-  "lastUpdated": "2026-06-30",
+  "lastUpdated": "2026-07-01",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -21,12 +21,12 @@
     "totalTests": 166,
     "pass": 166,
     "fail": 0,
-    "lastRun": "2026-06-30",
+    "lastRun": "2026-07-01",
     "newTestFiles": [
       "test/studio-protocol-smoke.test.js"
     ],
     "newTestCount": 1,
-    "coverage": "Known default-shard inventory is 166 tests after Session 24 (core 54, runtime 83, sim-contract 22, sim-realism 1, studio 6). Session 24 also verified Playwright UI 9/9, Pages build, Pages smoke, windows-hide guard, brief validation, and innovation-pack dry run."
+    "coverage": "Known default-shard inventory remains 166 tests after Session 25 (core 54, runtime 83, sim-contract 22, sim-realism 1, studio 6). Session 25 also verified Playwright UI 9/9, Pages build/smoke, windows-hide guard, secrets audit, blocker preflight, canon adoption check, and canon conformance 0 gaps."
   },
   "testsPassing": 166,
   "testsTotal": 166,
@@ -68,47 +68,42 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 930,
+  "silScore": 949,
   "silCategoriesV3": {
-    "devHealth": 97,
-    "creativeAlignment": 76,
-    "momentum": 94,
-    "engagement": 90,
+    "devHealth": 98,
+    "creativeAlignment": 82,
+    "momentum": 95,
+    "engagement": 94,
     "processQuality": 100,
-    "crossRepoCoherence": 99,
-    "securityPosture": 95,
-    "ecosystemIntegration": 90,
-    "capitalEfficiency": 89,
+    "crossRepoCoherence": 100,
+    "securityPosture": 96,
+    "ecosystemIntegration": 94,
+    "capitalEfficiency": 90,
     "automationCoverage": 100
   },
-  "currentSession": 24,
+  "currentSession": 25,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
     "passed": [
-      "git pull --rebase origin main",
-      "node scripts/detect-session-mode.mjs --explain",
+      "node scripts/check-windows-hide.mjs",
+      "npm run test:studio",
+      "npm run test:runtime",
+      "npm run test:sim:contract",
+      "npm run test:sim:realism",
+      "npm test",
+      "npm run test:ui",
+      "npm run build:pages",
+      "npm run smoke:pages",
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
       "node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --check",
-      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline",
-      "node --check scripts/generate-innovation-pack.mjs",
-      "node --check scripts/render-startup-brief.mjs",
-      "node scripts/check-windows-hide.mjs",
-      "node scripts/ops.mjs innovation-pack --dry-run",
-      "node scripts/render-startup-brief.mjs",
-      "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
-      "npm run test:studio",
-      "npm test",
-      "npm run build:pages",
-      "npm run smoke:pages",
-      "npx playwright test tests-ui/app.spec.js --grep \"create league\"",
-      "npm run test:ui"
+      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline"
     ],
-    "date": "2026-06-30",
+    "date": "2026-07-01",
     "timedOut": [],
     "failed": [
-      "First npm run test:ui attempt timed out in tests-ui/app.spec.js create league/advance week while status remained Advancing week; the same test passed in isolation and full npm run test:ui passed on rerun."
+      "Earlier parallel aggregate test attempt exited nonzero with truncated/no-detail shard output under overlapping Node pressure; isolated and final sequential reruns passed, including canonical npm test 166/166."
     ]
   },
   "silScoreV3MigratedAt": "2026-04-21",
@@ -136,6 +131,6 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 930,
+  "silHealth": 949,
   "silHealthMax": 1000
 }

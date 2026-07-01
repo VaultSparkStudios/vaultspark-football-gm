@@ -1,7 +1,7 @@
 {
-  "name": "vaultspark-football-gm",
+  "name": "franchise-architect-football",
   "version": "1.0.0",
-  "description": "VaultSpark Football GM - 100-year scalable NFL-style franchise simulation engine",
+  "description": "Franchise Architect: Football - 100-year scalable NFL-style franchise simulation engine",
   "type": "module",
   "main": "src/server.js",
   "scripts": {

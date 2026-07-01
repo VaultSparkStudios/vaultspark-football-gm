@@ -1,4 +1,4 @@
-# Task Board — VaultSpark Football GM
+# Task Board — Franchise Architect: Football
 
 Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Session 9: test coverage (2026-04-13).
 
@@ -60,7 +60,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 - Item 16: Map-based player/team index — Done 2026-05-27 for GameSession identity lookups; future sim-loop hot paths can build on the index layer.
 - Full GitHub Pages CI wiring (repo secrets needed)
-- Verify whether the Football GM Codex Apps MCP startup failure is resolved upstream; remove `scripts/codex-football.*` wrappers if normal Codex startup becomes reliable for this repo.
+- Verify whether the Franchise Architect: Football Codex Apps MCP startup failure is resolved upstream; remove `scripts/codex-football.*` wrappers if normal Codex startup becomes reliable for this repo.
 
 ## Deferred to Project Agents
 
@@ -71,7 +71,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 | Item | Status |
 |------|--------|
 | Keep Codex Apps globally enabled for the Studio portfolio | Done |
-| Add Football GM-only Codex startup wrappers using `--disable apps` | Done |
+| Add Franchise Architect: Football-only Codex startup wrappers using `--disable apps` | Done |
 | Verify wrapper startup path with `codex exec --ephemeral --sandbox read-only` | Done |
 | Align package metadata with proprietary rights posture | Done |
 
@@ -132,7 +132,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 Diagnosis (agent-verified 2026-06-04):
 - The custom domain lives on the org root repo `VaultSparkStudios.github.io` (cname `vaultsparkstudios.com`).
 - GitHub's HTTPS cert for it is `bad_authz`, **expired 2026-06-02** — DNS points at Cloudflare proxy IPs, so GitHub's ACME HTTP-01 challenge can never complete.
-- 2026-06-30 update: `curl -I https://vaultsparkstudios.com/vaultspark-football-gm/` returned HTTP 200 through Cloudflare, so the old blanket 403 diagnosis is stale. GitHub Pages API still reports the custom-domain certificate as `bad_authz` / expired 2026-06-02, so certificate health and post-push route smoke still need verification before Launch Readiness flips green.
+- 2026-06-30 update: `curl -I https://playfranchisearchitect.com/` returned HTTP 200 through Cloudflare, so the old blanket 403 diagnosis is stale. GitHub Pages API still reports the custom-domain certificate as `bad_authz` / expired 2026-06-02, so certificate health and post-push route smoke still need verification before Launch Readiness flips green.
 - Cloudflare deploy/DNS credentials are MISSING from the secrets gateway as of 2026-06-07, and blocker preflight still marks this item not auto-ready, so the agent cannot inspect or repair the zone from this repo session.
 
 Fix options (pick one in the Cloudflare dashboard):
@@ -267,3 +267,19 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 **Verification:** `node --check scripts/generate-innovation-pack.mjs`; `node --check scripts/render-startup-brief.mjs`; `node scripts/check-windows-hide.mjs`; `node scripts/ops.mjs innovation-pack --dry-run`; `npm run test:studio` 6/6; full `npm test` 166/166; `npm run build:pages`; `npm run smoke:pages`; `npm run test:ui` 9/9 after one transient first-run timeout passed in isolation and rerun.
 
 **Still blocked:** external custom-domain certificate/routing remediation remains outside this repo until provider/dashboard access or DNS/certificate evidence changes.
+
+## Session 25 — Franchise Architect Rebrand + Public Surface Arc (2026-07-01)
+
+| Item | Status |
+|------|--------|
+| Generate a live Session 25 audit for the in-progress rebrand/public-surface and process-hardening work | Done |
+| Complete Franchise Architect identity migration across package metadata, public docs, agent metadata, Pages build paths, and feedback URLs | Done |
+| Add root-domain public pages, brand assets, favicon, sitemap/security/robots files, and canonical/legacy Pages smoke coverage | Done |
+| Ship brand lockup plus light/dark theme toggles on setup and game screens | Done |
+| Add scouting narrative/reveal tiers, trade-deadline frenzy cards, Hall of Fame ceremony sharing, and sim-watch field position feedback | Done |
+| Extend Windows process hardening with non-interactive Git guard env and repair the raw child_process regression found by the guard | Done |
+| Keep launch readiness blocked on evidence: on-domain email forwarding and post-push public route/domain state still need verification before SPARKED | Done |
+
+**Verification:** `npm test` 166/166 · `npm run test:ui` 9/9 · `npm run build:pages` · `npm run smoke:pages` · `node scripts/check-windows-hide.mjs` · `node scripts/check-secrets.mjs --audit` · `node scripts/ops.mjs blocker-preflight` · canon adoption check · canon conformance 0 gaps.
+
+**Still blocked:** do not mark SPARKED until `football@playfranchisearchitect.com` forwarding/copying is verified and the pushed public routes/domain evidence are checked after deployment.

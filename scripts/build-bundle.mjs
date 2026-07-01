@@ -1,5 +1,5 @@
 /**
- * VaultSpark Football GM — esbuild Frontend Bundle Script
+ * Franchise Architect: Football — esbuild Frontend Bundle Script
  *
  * Bundles and minifies the browser-facing JS/CSS using esbuild.
  * Produces a production-optimised artifact set in static/.
@@ -32,7 +32,7 @@ const outDir    = path.join(rootDir, "static");
 
 const isWatch   = process.argv.includes("--watch");
 const isAnalyze = process.env.ANALYZE === "1";
-const slug = process.env.GAME_SLUG || "vaultspark-football-gm";
+const slug = process.env.GAME_SLUG || "franchise-architect-football";
 const basePath = `/${slug}/`;
 
 // ── Dynamic import of esbuild (gracefully degrade if not installed) ───────────

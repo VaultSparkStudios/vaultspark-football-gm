@@ -7,8 +7,8 @@ Contact: football@playfranchisearchitect.com
 Rights: Proprietary - All Rights Reserved, VaultSpark Studios LLC.
 
 Useful paths:
-- /franchise-architect-football/ - browser game
-- /franchise-architect-football/contact.html - project contact
-- /franchise-architect-football/privacy.html - privacy notice
-- /franchise-architect-football/terms.html - terms and rights notice
-- /franchise-architect-football/agents.json - machine-readable agent metadata
+- / - browser game
+- /contact.html - project contact
+- /privacy.html - privacy notice
+- /terms.html - terms and rights notice
+- /agents.json - machine-readable agent metadata

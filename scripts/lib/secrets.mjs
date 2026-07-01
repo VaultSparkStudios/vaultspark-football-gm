@@ -142,6 +142,17 @@ function audit(entry) {
  * `capability` is a free-form string for auditing (e.g. "claude.api").
  */
 export function getSecret(key, capability = 'unspecified') {
+  // Deterministic test seam (S210). When STUDIO_OPS_TEST_NO_SECRETS is explicitly set,
+  // the gateway behaves as if NO credential is vaulted — so credential-gated branches
+  // (fallback / early-bail / offline paths) can be exercised the SAME way on a
+  // credentialed founder host and in credential-less CI. Without this, tests that
+  // `delete process.env.X` to force a fallback are silently host-dependent, because
+  // getSecret reads from secrets/*.env, not process.env (see
+  // tier1-gateway-credential-test-honesty). Production never sets this flag.
+  if (/^(1|true|yes|on)$/i.test(process.env.STUDIO_OPS_TEST_NO_SECRETS || '')) {
+    audit({ key, capability, result: 'TEST_NO_SECRETS' });
+    return null;
+  }
   const env = loadEnv();
   const val = env[key] ?? process.env[key] ?? null;
   audit({ key, capability, result: val ? 'FOUND' : 'MISSING' });

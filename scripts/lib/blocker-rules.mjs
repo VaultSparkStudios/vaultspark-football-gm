@@ -12,19 +12,6 @@
 
 const RULES = [
   {
-    id: 'github-pages-repo-secrets',
-    test: /github pages|pages deploy pipeline|repo secrets?|repository secrets?/i,
-    capability: 'github.repo',
-    category: 'GitHub',
-    elevatedProbe: 'Probe GitHub CLI authentication and repo secret access before treating Pages deployment setup as human-only.',
-    probeCommands: [
-      'gh auth status',
-      'node scripts/ops.mjs check-secrets --for github.repo',
-    ],
-    humanAction:
-      'Escalate only if the authenticated token lacks repo secret/workflow permissions or the repository setting must be changed in the GitHub UI.',
-    attemptable: true,
-  },  {
     id: 'cloudflare-workers-routes',
     test: /workers routes|auth worker route|zone:workers routes:edit/i,
     capability: 'cloudflare.workers.routes',
@@ -106,6 +93,19 @@ const RULES = [
     signupUiOnly: true,
   },
   {
+    id: 'github-pages-secrets',
+    test: /github pages|pages deploy|repo secrets|secrets configuration/i,
+    capability: 'github.repo',
+    category: 'GitHub',
+    elevatedProbe: 'Verify GitHub CLI repo access and Actions/Pages secret permissions before escalating.',
+    probeCommands: [
+      'gh auth status',
+      'node scripts/ops.mjs check-secrets --for github.repo',
+    ],
+    humanAction:
+      'Escalate only if the authenticated token cannot read/write the required repository secrets or Pages settings.',
+    attemptable: true,
+  },  {
     id: 'github-workflow',
     test: /github|workflow scope|workflow token|repo creation|label/i,
     capability: 'github.org',
@@ -257,3 +257,4 @@ export function summarizeAttemptOrder(text) {
 
   return steps;
 }
+

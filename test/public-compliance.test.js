@@ -19,12 +19,12 @@ test("public Pages bundle has contact, legal, sitemap, and agent metadata source
 
   const agents = JSON.parse(fs.readFileSync(new URL("../public/agents.json", import.meta.url), "utf8"));
   assert.equal(agents.rights, "Proprietary - All Rights Reserved");
-  assert.equal(agents.contact, "footballgm@vaultsparkstudios.com");
+  assert.equal(agents.contact, "football@playfranchisearchitect.com");
   assert.ok(agents.entrypoints.some((entry) => entry.label === "Privacy"));
 
   const llms = fs.readFileSync(new URL("../public/.well-known/llms.txt", import.meta.url), "utf8");
   assert.match(llms, /Proprietary - All Rights Reserved/);
-  assert.match(llms, /footballgm@vaultsparkstudios\.com/);
+  assert.match(llms, /football@playfranchisearchitect\.com/);
 
   const sitemap = fs.readFileSync(new URL("../public/sitemap.xml", import.meta.url), "utf8");
   assert.match(sitemap, /contact\.html/);

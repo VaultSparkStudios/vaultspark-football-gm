@@ -1,6 +1,6 @@
-# VaultSpark Football GM
+# Franchise Architect: Football
 
-VaultSpark Football GM is a browser-based NFL franchise simulator with weekly progression, offseason systems, and PFR-weighted statistical calibration.
+Franchise Architect: Football is a browser-based NFL franchise simulator with weekly progression, offseason systems, and PFR-weighted statistical calibration.
 
 ## Implemented Systems
 
