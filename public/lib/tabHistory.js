@@ -1,5 +1,6 @@
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, renderPulseChips, renderTable, setElementTone, setSelectOptions, teamCode, teamName } from "./appCore.js";
+import { hallOfFameCeremonyButton, openHallOfFameCeremony } from "./hallOfFameCeremony.js";
 
 export function setHistoryView(view) {
   state.historyView = view === "hall-of-fame" ? "hall-of-fame" : "season-awards";
@@ -430,9 +431,16 @@ export function renderHallOfFameGallery(entries = []) {
       <div class="history-card-actions">
         <span class="small">${escapeHtml(hallOfFameCareerLine(entry))}</span>
         <button type="button" data-hof-player-select="${escapeHtml(entry.playerId)}">Select Player</button>
+        ${hallOfFameCeremonyButton(entry)}
       </div>
     </article>
   `).join("");
+  gallery.querySelectorAll("[data-hof-ceremony]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const selected = entries.find((entry) => String(entry.playerId || entry.player) === button.dataset.hofCeremony);
+      if (selected) openHallOfFameCeremony(selected);
+    });
+  });
   gallery.querySelectorAll("[data-hof-player-select]").forEach((button) => {
     button.addEventListener("click", () => {
       const selected = entries.find((entry) => entry.playerId === button.dataset.hofPlayerSelect);
@@ -740,3 +748,5 @@ export function renderPlayerTimelineSearchResults() {
     cell.innerHTML = `<button data-history-player-select="${escapeHtml(row.id)}">${isSelected ? "Selected" : "Select"}</button>`;
   });
 }
+
+

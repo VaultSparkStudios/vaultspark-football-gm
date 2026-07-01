@@ -1,5 +1,6 @@
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, formatHeight, renderPulseChips, renderTable, setElementTone, setMetricCardValue, teamByCode, teamName } from "./appCore.js";
+import { getProspectNarrative, getScoutingRevealTier } from "./prospectNarratives.js";
 
 export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rosterNeeds = [], controlledTeamId = null } = {}) {
   if (!draft) {
@@ -236,7 +237,9 @@ export function renderScouting() {
     scoutOvr: prospect.scoutedOverall ?? "-",
     baseline: prospect.baselineScout ?? "-",
     fit: prospect.fitLabel ? `${prospect.fitLabel} (${prospect.schemeFit ?? "-"})` : prospect.schemeFit ?? "-",
+    reveal: `${getScoutingRevealTier(prospect).label} (${getScoutingRevealTier(prospect).range})`,
     confidence: `${prospect.confidence ?? 0}%`,
+    story: getProspectNarrative(prospect).flag,
     board: state.scoutingBoardDraft.indexOf(prospect.playerId) >= 0 ? state.scoutingBoardDraft.indexOf(prospect.playerId) + 1 : "-",
     action: scouting.locked ? "Locked" : "Scout / Board"
   }));
@@ -316,6 +319,8 @@ export function renderScoutingSpotlight(featured = null, latestReport = null) {
   const team = teamByCode(teamId) || null;
   const scouting = state.scouting || {};
   const fitText = featured?.fitLabel ? `${featured.fitLabel} (${featured.schemeFit ?? "-"})` : "No fit read yet";
+  const revealTier = featured ? getScoutingRevealTier(featured) : null;
+  const narrative = featured ? getProspectNarrative(featured) : null;
   const reportText = latestReport
     ? `${latestReport.player} ${latestReport.delta >= 0 ? "+" : ""}${latestReport.delta || 0} OVR | ${latestReport.confidence ?? 0}% confidence`
     : "No weekly report yet";
@@ -331,12 +336,13 @@ export function renderScoutingSpotlight(featured = null, latestReport = null) {
       <div class="control-spotlight-card">
         <strong>Top Board Target</strong>
         <div>${escapeHtml(featured ? `${featured.player} (${featured.pos})` : "No target selected")}</div>
-        <div class="small">${escapeHtml(featured ? `Projected Round ${featured.projectedRound || "-"} | ${fitText}` : "Build a board to surface your best team-fit targets.")}</div>
+        <div class="small">${escapeHtml(featured ? `Projected Round ${featured.projectedRound || "-"} | ${fitText} | ${revealTier.label} ${revealTier.range}` : "Build a board to surface your best team-fit targets.")}</div>
+        ${narrative ? `<div class="prospect-origin-note">${escapeHtml(narrative.origin)}</div>` : ""}
       </div>
       <div class="control-spotlight-card">
         <strong>Weekly Read</strong>
         <div>${escapeHtml(reportText)}</div>
-        <div class="small">${escapeHtml(featured ? `Combine ${featured.combine40 || "-"} | Scout OVR ${featured.scoutedOverall ?? "-"}` : "Scouting reports update after spending points or advancing weeks.")}</div>
+        <div class="small">${escapeHtml(featured ? `Combine ${featured.combine40 || "-"} | Scout OVR ${featured.scoutedOverall ?? "-"} | Staff flag: ${narrative.flag}` : "Scouting reports update after spending points or advancing weeks.")}</div>
       </div>
       <div class="control-spotlight-card">
         <strong>Room Pressure</strong>
@@ -406,6 +412,7 @@ export function showDraftPickReveal(prospect, teamName, onConfirm) {
         <div class="dr-ovr">OVR ${prospect?.overall ?? "—"}</div>
       </div>
       <div class="draft-reveal-analyst">"${escapeHtml(analyst)}"</div>
+      <div class="prospect-origin-note">${escapeHtml(getProspectNarrative(prospect).line)}</div>
       <button class="dr-confirm-btn btn-primary">Confirm Pick</button>
     `;
     body.querySelector(".dr-confirm-btn")?.addEventListener("click", () => {
@@ -417,3 +424,4 @@ export function showDraftPickReveal(prospect, teamName, onConfirm) {
   modal.hidden = false;
   modal.classList.add("active");
 }
+

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Franchise Architect mark</title>
+  <desc id="desc">A structured football field plan forming the letters F and A.</desc>
+  <rect width="64" height="64" rx="14" fill="#101820"/>
+  <path d="M12 14h40v10H24v8h22v9H24v9H12V14Z" fill="#f2f6ef"/>
+  <path d="M34 50 50 14h-9L25 50h9Z" fill="#3dd6a3"/>
+  <path d="M40 39h9l-3.2-7.4h-8.4L40 39Z" fill="#f7c948"/>
+  <path d="M16 18h8m-8 18h8m20-18h8m-8 18h8" stroke="#3dd6a3" stroke-width="2" stroke-linecap="round" opacity=".65"/>
+</svg>

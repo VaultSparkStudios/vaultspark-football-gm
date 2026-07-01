@@ -1,4 +1,5 @@
 import { mountTutorial } from "./lib/tutorialCampaign.js";
+import { bindThemeToggle } from "./lib/themeMode.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
 import {
@@ -1719,3 +1720,6 @@ async function init() {
 }
 
 init();
+
+bindThemeToggle("themeToggleBtn");
+

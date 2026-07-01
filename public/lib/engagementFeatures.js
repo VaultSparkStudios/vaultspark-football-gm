@@ -272,6 +272,7 @@ export async function runSimWatch(gameId) {
       if (!_simWatchActive) break;
       appendSimWatchPlay(plays[i], scoringSet);
       updateSimWatchScore(bs, scoring, i, plays);
+      updateSimWatchField(bs, plays[i], i);
     }
     // Show final state
     showSimWatchFinal(bs);
@@ -337,6 +338,21 @@ function appendSimWatchPlay(play, scoringSet) {
   el.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
+function updateSimWatchField(bs, play, playIndex) {
+  const field = document.getElementById("simWatchField");
+  const possession = document.getElementById("simWatchPossession");
+  const yardLine = document.getElementById("simWatchYardLine");
+  if (!field) return;
+  const desc = String(play?.description || "").toLowerCase();
+  const offense = play?.offenseTeamId || "";
+  let x = 50 + ((playIndex * 13) % 42) - 21;
+  if (desc.includes("touchdown")) x = offense === bs.homeTeamId ? 92 : 8;
+  if (desc.includes("interception") || desc.includes("fumble")) x = 100 - x;
+  x = Math.max(8, Math.min(92, x));
+  field.style.setProperty("--ball-x", String(x));
+  if (possession) possession.textContent = offense ? `${teamCode(offense)} ball` : "Live drive";
+  if (yardLine) yardLine.textContent = x >= 50 ? `Opp ${Math.max(1, Math.round(100 - x))}` : `Own ${Math.max(1, Math.round(x))}`;
+}
 function updateSimWatchScore(bs, scoring, playIndex, plays) {
   // Count scoring plays up to current index
   const desc = plays.slice(0, playIndex + 1).map((p) => p.description);
@@ -657,3 +673,4 @@ export function checkAndPruneRewindStorage() {
     // non-critical — never block gameplay
   }
 }
+

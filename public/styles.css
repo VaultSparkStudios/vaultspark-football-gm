@@ -3234,3 +3234,191 @@ body.mobile-loop-active .mobile-loop-overlay {
   margin-bottom: 3px;
   color: var(--accent-strong);
 }
+
+/* Franchise Architect brand and public-site polish */
+:root[data-theme="light"], body[data-theme="light"] {
+  --ink: #132027;
+  --ink-strong: #091116;
+  --muted: #50636f;
+  --bg-0: #f4f7f3;
+  --bg-1: #e7eee8;
+  --bg-2: #dbe7df;
+  --bg-3: #c9d9d1;
+  --panel: rgba(255, 255, 255, 0.9);
+  --panel-strong: rgba(255, 255, 255, 0.98);
+  --line: #b6c7bf;
+  --line-strong: #76918a;
+  --accent: #986b22;
+  --accent-strong: #715016;
+  --accent-2: #158466;
+  --accent-3: #196f85;
+  --shadow: rgba(16, 30, 38, 0.16);
+}
+
+body[data-theme="light"] .bg-layer,
+html[data-theme="light"] .bg-layer {
+  background:
+    linear-gradient(135deg, rgba(21, 132, 102, 0.14), transparent 32%),
+    linear-gradient(210deg, rgba(152, 107, 34, 0.12), transparent 34%),
+    repeating-linear-gradient(120deg, rgba(16, 32, 39, 0.035) 0, rgba(16, 32, 39, 0.035) 2px, transparent 2px, transparent 22px),
+    linear-gradient(155deg, #f7faf6, #e8f0eb 48%, #f3f7f3 100%);
+}
+
+.brand-lockup,
+.topbar-logo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.brand-mark {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  filter: drop-shadow(0 8px 18px var(--shadow));
+}
+
+.brand-logo-wide {
+  width: min(420px, 100%);
+  height: auto;
+  display: block;
+  margin: 0 0 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 18px 40px var(--shadow);
+}
+
+.brand-kicker.franchise-kicker {
+  color: var(--accent-2);
+}
+
+.theme-toggle-btn {
+  min-width: 42px;
+  height: 38px;
+  padding: 0 0.72rem;
+  border-radius: 8px;
+}
+
+.legal-wrap {
+  width: min(920px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 34px 0 54px;
+}
+
+.legal-panel {
+  line-height: 1.6;
+}
+
+.footer-link-row {
+  text-align: center;
+  padding: 10px 0 14px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.footer-link-row a { color: inherit; text-decoration: none; margin: 0 4px; }
+.footer-link-row a:hover { color: var(--ink); text-decoration: underline; }
+
+.trade-frenzy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+.trade-frenzy-card {
+  border: 1px solid var(--line);
+  background: rgba(var(--section-wash-rgb), 0.08);
+  border-radius: 8px;
+  padding: 0.85rem;
+}
+.trade-frenzy-head { display: flex; justify-content: space-between; gap: 0.5rem; align-items: center; }
+.trade-frenzy-chip { color: var(--accent-strong); font-size: 0.72rem; font-weight: 700; }
+.trade-frenzy-card button { margin-top: 0.65rem; }
+
+.scout-reveal-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.1rem 0.42rem;
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+.scout-reveal-elite { color: var(--success); border-color: rgba(99, 214, 140, 0.55); }
+.scout-reveal-strong { color: var(--accent-3); border-color: rgba(123, 196, 215, 0.55); }
+.scout-reveal-partial { color: var(--warning); border-color: rgba(255, 183, 77, 0.55); }
+.scout-reveal-blind { color: var(--danger); border-color: rgba(208, 92, 92, 0.55); }
+.prospect-origin-note { margin-top: 0.45rem; color: var(--muted); }
+
+.hof-ceremony-overlay[hidden] { display: none; }
+.hof-ceremony-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 18px;
+}
+.hof-ceremony-card {
+  width: min(760px, 100%);
+  border: 1px solid rgba(247, 201, 72, 0.5);
+  background: linear-gradient(135deg, var(--panel-strong), rgba(16, 24, 27, 0.98));
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 26px 80px rgba(0,0,0,0.45);
+}
+.hof-card-canvas { width: 100%; max-height: 360px; border-radius: 8px; border: 1px solid var(--line); background: #101820; }
+.hof-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: flex-end; margin-top: 0.9rem; }
+
+.sw-field {
+  margin: 10px 16px;
+  height: 74px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0, rgba(255,255,255,0.12) 1px, transparent 1px, transparent 10%),
+    linear-gradient(90deg, #174b2b, #20723f 50%, #174b2b);
+}
+.sw-field::before, .sw-field::after {
+  content: "END";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 34px;
+  display: grid;
+  place-items: center;
+  color: rgba(255,255,255,0.66);
+  font-size: 0.62rem;
+  font-weight: 800;
+  writing-mode: vertical-rl;
+  background: rgba(10, 24, 18, 0.55);
+}
+.sw-field::before { left: 0; }
+.sw-field::after { right: 0; transform: rotate(180deg); }
+.sw-ball {
+  position: absolute;
+  top: 26px;
+  left: calc(var(--ball-x, 50) * 1%);
+  width: 22px;
+  height: 14px;
+  margin-left: -11px;
+  border-radius: 50%;
+  background: #7a3f19;
+  border: 2px solid #f7d7a1;
+  box-shadow: 0 0 18px rgba(247, 201, 72, 0.7);
+  transition: left 240ms ease;
+}
+.sw-field-meta {
+  position: absolute;
+  left: 44px;
+  right: 44px;
+  bottom: 7px;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255,255,255,0.82);
+  font-size: 0.66rem;
+  font-weight: 700;
+}

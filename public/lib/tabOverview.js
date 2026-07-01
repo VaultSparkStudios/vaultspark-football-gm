@@ -1,6 +1,7 @@
 import { state, api, STATS_BENCHMARK_HINTS } from "./appState.js";
 import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderTable, setBoxScoreTab, setMetricCardValue, showToast, teamCode, teamName } from "./appCore.js";
 import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
+import { renderTradeDeadlineFrenzy } from "./tradeDeadlineFrenzy.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -81,6 +82,7 @@ export function renderTradeDeadlineAlert() {
   const isDeadline = phase === "regular-season" && week >= 9 && week <= 11;
   panel.hidden = !isDeadline;
   if (!isDeadline) return;
+  renderTradeDeadlineFrenzy("tradeDeadlineFrenzy", d);
   const statusEl = document.getElementById("tradeDeadlineStatus");
   const roleEl = document.getElementById("tradeDeadlineBuyerSeller");
   const standings = d.latestStandings || [];
@@ -727,3 +729,5 @@ export function renderOwnerUltimatum() {
       </div>
     </div>`;
 }
+
+

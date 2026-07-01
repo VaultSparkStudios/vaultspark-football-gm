@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 128" role="img" aria-labelledby="title desc">
+  <title id="title">Franchise Architect</title>
+  <desc id="desc">Franchise Architect wordmark with a football field blueprint mark.</desc>
+  <rect width="520" height="128" rx="22" fill="#101820"/>
+  <g transform="translate(24 24)">
+    <rect width="80" height="80" rx="18" fill="#17242d"/>
+    <path d="M14 16h52v12H29v11h29v11H29v14H14V16Z" fill="#f2f6ef"/>
+    <path d="M43 64 65 16H53L31 64h12Z" fill="#3dd6a3"/>
+    <path d="M52 51h12l-4.2-10H48.5L52 51Z" fill="#f7c948"/>
+  </g>
+  <text x="126" y="58" fill="#f2f6ef" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="0">Franchise Architect</text>
+  <text x="128" y="88" fill="#92a6b4" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="0">Football franchise simulation</text>
+  <path d="M126 100h338" stroke="#3dd6a3" stroke-width="4" stroke-linecap="round"/>
+</svg>

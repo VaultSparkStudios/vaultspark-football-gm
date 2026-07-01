@@ -1,0 +1,4 @@
+Contact: mailto:football@playfranchisearchitect.com
+Policy: https://playfranchisearchitect.com/terms.html
+Preferred-Languages: en
+Canonical: https://playfranchisearchitect.com/.well-known/security.txt

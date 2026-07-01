@@ -7,15 +7,19 @@
     <meta name="vsfgm-server-available" content="true" />
     <meta name="vsfgm-server-base-url" content="" />
     <title>Franchise Architect: Football - Franchise</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body class="game-body">
     <div class="bg-layer"></div>
     <header class="game-topbar">
-      <div class="topbar-brand">
-        <div class="brand-kicker">VaultSpark Studios Franchise Desk</div>
-        <h1>Franchise Architect: Football</h1>
-        <p id="topMetaText" class="small">Loading...</p>
+      <div class="topbar-brand topbar-logo-lockup">
+        <img class="brand-mark" src="./images/franchise-architect-mark.svg" alt="" aria-hidden="true" />
+        <div>
+          <div class="brand-kicker franchise-kicker">Franchise Architect</div>
+          <h1>Football</h1>
+          <p id="topMetaText" class="small">Loading...</p>
+        </div>
       </div>
       <div class="topbar-center">
         <div class="small">User Team Box Scores</div>
@@ -30,6 +34,7 @@
         <button class="inbox-bell-btn" id="openInboxBtn" aria-label="Open GM Inbox" title="GM Inbox">
           🔔<span id="inboxBadge" class="inbox-badge" hidden>0</span>
         </button>
+        <button id="themeToggleBtn" class="theme-toggle-btn" type="button" title="Toggle theme">◐</button>
         <button id="backSetupBtn" data-testid="back-setup-btn">Main Menu</button>
         <span id="statusChip" data-testid="status-chip" class="chip">Loading...</span>
       </div>
@@ -70,7 +75,7 @@
           <div class="panel overview-hero-panel">
             <div class="overview-hero-grid">
               <div class="overview-hero-copy">
-                <div class="brand-kicker">VaultSpark Command Deck</div>
+                <div class="brand-kicker franchise-kicker">Franchise Architect Command Deck</div>
                 <h2>Franchise Command</h2>
                 <div id="overviewTeamSpotlight" class="overview-team-spotlight">
                   <div class="small">Select your club to review its identity, mandate, and current competitive outlook.</div>
@@ -211,6 +216,7 @@
               </div>
               <div id="tradeDeadlineBuyerSeller" class="trade-deadline-role"></div>
             </div>
+            <div id="tradeDeadlineFrenzy"></div>
           </div>
 
           <div class="panel split">
@@ -1217,7 +1223,7 @@
         </div>
         <button id="openGuideBtn" data-testid="open-guide-btn">Open Game Guide</button>
       </div>
-      <div style="text-align:center;padding:8px 0;font-size:11px;color:#7a8299">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank" style="color:inherit;text-decoration:none">VaultSpark Studios</a> Game · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a></div>
+      <div style="text-align:center;padding:8px 0;font-size:11px;color:#7a8299">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank" style="color:inherit;text-decoration:none">VaultSpark Studios</a> Game · <a href="./about.html">About</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="./ip.html">IP</a> · <a href="./status.html">Status</a></div>
     </footer>
 
     <div id="playerModal" data-testid="player-modal" class="modal hidden">
@@ -1523,10 +1529,30 @@
         </div>
       </div>
       <div id="simWatchHeader"></div>
+      <div id="simWatchField" class="sw-field" aria-hidden="true"><span id="simWatchBall" class="sw-ball"></span><div class="sw-field-meta"><span id="simWatchPossession">Possession</span><span id="simWatchYardLine">50</span></div></div>
       <div id="simWatchFeed" role="log"></div>
       <div id="simWatchFinal" hidden></div>
     </div>
 
+
+    <div id="hofCeremonyOverlay" class="hof-ceremony-overlay" hidden>
+      <div class="hof-ceremony-card">
+        <div class="row" style="justify-content:space-between">
+          <div>
+            <div class="brand-kicker franchise-kicker">Franchise Architect Hall of Fame</div>
+            <h2 id="hofCeremonyTitle">Induction Ceremony</h2>
+          </div>
+          <button id="hofCeremonyCloseBtn" class="warn">Close</button>
+        </div>
+        <canvas id="hofCeremonyCanvas" class="hof-card-canvas" width="1200" height="630"></canvas>
+        <div id="hofCeremonyCopy" class="small"></div>
+        <div class="hof-actions">
+          <button id="hofCeremonyCopyBtn">Copy Share Text</button>
+          <button id="hofCeremonyDownloadBtn">Download Card</button>
+        </div>
+      </div>
+    </div>
     <script type="module" src="./app.js"></script>
   </body>
 </html>
+
