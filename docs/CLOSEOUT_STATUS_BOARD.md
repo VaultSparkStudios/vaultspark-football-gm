@@ -1,38 +1,38 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-01 (Session 26 closeout) -->
+<!-- generated-at: 2026-07-01 (Session 27 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S26 ══════╗
-║  Date: 2026-07-01  ·  SIL: 954/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S27 ══════╗
+║  Date: 2026-07-01  ·  SIL: 957/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ `src/engine/gmDecisionConsequences.js` centralizes decision-  ║
-║  ✓ `src/server.js` and `src/app/api/localApiRuntime.js` apply `  ║
-║  ✓ `public/lib/engagementFeatures.js` returns structured modal   ║
-║  ✓ `scripts/render-startup-brief.mjs` now treats live context-m  ║
-║  ✓ `scripts/lib/task-board.mjs` normalizes statuses for both ra  ║
+║  ✓ `scripts/cache-genius-list.mjs` implements the protocol cach  ║
+║  ✓ `scripts/ops.mjs` dispatches `cache-genius-list` alongside t  ║
+║  ✓ `scripts/render-startup-brief.mjs` always renders the HUMAN   ║
+║  ✓ `tests-ui/app.spec.js` handles the expected GM Decision skip  ║
+║  ✓ `test/studio-protocol-smoke.test.js` covers cache/brief truth ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 954/1000 ═══════════════════════════════════════╗
-║    Dev Health         99   ██████████                            ║
+╔══ SCORES · SIL 957/1000 ═══════════════════════════════════════╗
+║    Dev Health         100  ██████████                            ║
 ║    Alignment          83   ████████░░                            ║
 ║    Momentum           96   ██████████                            ║
-║    Engagement         96   ██████████                            ║
+║    Engagement         97   ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          100  ██████████                            ║
 ║    Security           96   ██████████                            ║
-║    Ecosystem          94   █████████░                            ║
+║    Ecosystem          95   ██████████                            ║
 ║    Capital            90   █████████░                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
+║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
@@ -40,8 +40,8 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 27 files  ·  M:23 A:0 D:0 ?:4                          ║
-║  Ahead: 0  ·  Behind: 0                                          ║
+║  Changes: 18 files  ·  M:13 A:5 D:0 ?:0                          ║
+║  Ahead: 1  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
@@ -51,7 +51,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        —                                                ║
 ║  Compliance:    —                                                ║
-║  Tests:         170/170                                          ║
+║  Tests:         172/172                                          ║
 ║  IGNIS:         12d ago                                          ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  —                                                ║
