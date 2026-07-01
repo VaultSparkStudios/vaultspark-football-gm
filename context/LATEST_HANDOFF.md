@@ -1,3 +1,12 @@
+## 2026-07-01 — Session 28 Closeout Handoff
+
+Where we left off:
+- Shipped first-run tutorial style injection, manifest launch-truth repair (`FORGE`, not `SPARKED`), and repo-local launch evidence reporting.
+- `node scripts\ops.mjs launch-evidence --json --output audits\launch-evidence-2026-07-01-session28.json` found public routes reachable but correctly blocked launch on missing on-domain email forwarding/copying evidence.
+- Verification passed `npm test` 173/173, Playwright UI 9/9, focused launch/browser/studio tests 20/20, Pages build/smoke, windows-hide, Wave guard, startup brief validation, secrets audit, blocker preflight, and canon checks.
+
+Next best move:
+- Verify `football@playfranchisearchitect.com` forwards/copies to Studio operations using a real received-message receipt, then rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json` before any SPARKED flip.
 # Latest Handoff
 
 ## Impact Summary — Session 27 (2026-07-01)

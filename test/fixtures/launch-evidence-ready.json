@@ -1,0 +1,13 @@
+{
+  "routes": {
+    "/": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
+    "/game.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
+    "/contact.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
+    "/privacy.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
+    "/terms.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
+    "/agents.json": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
+    "/.well-known/llms.txt": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
+    "/sitemap.xml": { "ok": true, "statusCode": 200, "detail": "HTTP 200" }
+  },
+  "emailEvidence": "Forwarding receipt copied to founder operations inbox."
+}

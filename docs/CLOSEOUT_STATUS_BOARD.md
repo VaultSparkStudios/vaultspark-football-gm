@@ -1,11 +1,11 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-01 (Session 27 closeout) -->
+<!-- generated-at: 2026-07-01 (Session 28 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S27 ══════╗
-║  Date: 2026-07-01  ·  SIL: 957/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S28 ══════╗
+║  Date: 2026-07-01  ·  SIL: 963/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
@@ -13,18 +13,18 @@
 ║  ✓ `scripts/ops.mjs` dispatches `cache-genius-list` alongside t  ║
 ║  ✓ `scripts/render-startup-brief.mjs` always renders the HUMAN   ║
 ║  ✓ `tests-ui/app.spec.js` handles the expected GM Decision skip  ║
-║  ✓ `test/studio-protocol-smoke.test.js` covers cache/brief truth ║
+║  ✓ `tests-ui/app.spec.js` handles the expected GM Decision skip  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 957/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 963/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          83   ████████░░                            ║
-║    Momentum           96   ██████████                            ║
+║    Alignment          84   ████████░░                            ║
+║    Momentum           97   ██████████                            ║
 ║    Engagement         97   ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          100  ██████████                            ║
-║    Security           96   ██████████                            ║
-║    Ecosystem          95   ██████████                            ║
-║    Capital            90   █████████░                            ║
+║    Security           97   ██████████                            ║
+║    Ecosystem          97   ██████████                            ║
+║    Capital            91   █████████░                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
@@ -40,8 +40,8 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 18 files  ·  M:13 A:5 D:0 ?:0                          ║
-║  Ahead: 1  ·  Behind: 0                                          ║
+║  Changes: 26 files  ·  M:18 A:0 D:0 ?:8                          ║
+║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
@@ -51,8 +51,8 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        —                                                ║
 ║  Compliance:    —                                                ║
-║  Tests:         172/172                                          ║
-║  IGNIS:         12d ago                                          ║
+║  Tests:         173/173                                          ║
+║  IGNIS:         13d ago                                          ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  —                                                ║
 ╚════════════════════════════════════════════════════════════════╝

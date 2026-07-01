@@ -76,7 +76,8 @@ test("documented Studio protocol shims load", () => {
     ["scripts/cache-genius-list.mjs", "--write"],
     ["scripts/ops.mjs", "blocker-preflight", "--json"],
     ["scripts/ops.mjs", "cache-genius-list", "--check"],
-    ["scripts/ops.mjs", "innovation-pack", "--dry-run"]
+    ["scripts/ops.mjs", "innovation-pack", "--dry-run"],
+    ["scripts/ops.mjs", "launch-evidence", "--fixture", "test/fixtures/launch-evidence-ready.json"]
   ]) {
     const result = spawnSync(process.execPath, args, {
       cwd: process.cwd(),
@@ -152,6 +153,16 @@ test("genius cache check/write reports latest audit truthfully", () => {
   const cache = JSON.parse(readFileSync(resolve(repoRoot, ".cache/genius-list.json"), "utf8"));
   assert.equal(Array.isArray(cache.items), true);
   assert.equal(cache.status, cache.items.length > 0 ? "open" : "exhausted");
+});
+
+test("studio manifest launch state does not outrun active project blockers", () => {
+  const manifest = JSON.parse(readFileSync(resolve(repoRoot, "context/STUDIO_MANIFEST.json"), "utf8"));
+  const status = JSON.parse(readFileSync(resolve(repoRoot, "context/PROJECT_STATUS.json"), "utf8"));
+
+  assert.equal(manifest.identity.slug, status.slug);
+  if ((status.blockers || []).length > 0 || status.audience === "public-unlaunched") {
+    assert.notEqual(manifest.identity.vaultStatus, "SPARKED");
+  }
 });
 test("innovation-pack marker scan ignores intentional guard sentinels", () => {
   const result = spawnSync(process.execPath, ["scripts/ops.mjs", "innovation-pack", "--dry-run"], {

@@ -10,7 +10,7 @@
     "type": "game",
     "lifecycle": "deployed",
     "audience": "public-unlaunched",
-    "vaultStatus": "SPARKED"
+    "vaultStatus": "FORGE"
   },
   "studioOs": {
     "applied": true,

@@ -1,4 +1,4 @@
-import { mountTutorial } from "./lib/tutorialCampaign.js";
+import { injectTutorialStyles, mountTutorial } from "./lib/tutorialCampaign.js";
 import { bindThemeToggle } from "./lib/themeMode.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
@@ -1716,6 +1716,7 @@ async function init() {
   setStatus("Ready");
   queueStartupHydration();
   initGistSyncUI();
+  injectTutorialStyles();
   mountTutorial({ onComplete: () => loadState(), onSkip: () => {} });
   mountBetaFeedback();
   initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());

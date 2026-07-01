@@ -174,3 +174,13 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Repaired the browser advance-week smoke for the real GM Decision modal by dismissing the expected prompt before waiting for the ready state.
 - Verification: `npm test` 172/172, Playwright UI 9/9, focused browser/studio/session8 tests 34/34, Pages build/smoke, windows-hide guard, Wave guard, secrets audit, blocker preflight, and startup brief validation.
 - Honesty note: the first Playwright aggregate failed because the test did not handle the now-real GM Decision prompt; focused and full UI reruns passed after the expected modal path was covered.
+
+## 2026-07-01 — Session 28: launch evidence and tutorial truth closeout
+
+- Continued the active durable `/goal /arc` objective through startup, live audit, implementation, second-order innovation, verification, and closeout prep.
+- Generated `docs/AUDIT_2026-07-01_SESSION28.*` from current repo evidence after rejecting stale/phantom audit candidates that were already shipped.
+- Wired `injectTutorialStyles()` into the browser app bootstrap and updated the Playwright create-league flow to dismiss the now-real tutorial overlay when it appears.
+- Corrected manifest truth by changing `context/STUDIO_MANIFEST.json.identity.vaultStatus` from `SPARKED` to `FORGE` while launch blockers remain open.
+- Added `scripts/launch-evidence-report.mjs`, `ops launch-evidence`, fixtures, and tests so launch evidence checks public routes and refuses to green-light email forwarding without explicit proof.
+- Verification: `node --test test/launch-evidence-report.test.js test/browser-wiring.test.js test/studio-protocol-smoke.test.js` 20/20, `npm test` 173/173, `npm run test:ui` 9/9, `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, canon adoption check, and canon conformance 0 gaps.
+- Honesty note: the first Playwright aggregate exposed the expected tutorial overlay interception; the test was updated to use the product's visible dismiss path, then focused and full UI reruns passed. Launch evidence remains blocked because on-domain email forwarding/copying is not yet verified.

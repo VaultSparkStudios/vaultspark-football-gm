@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.0",
+  "session": 28,
+  "date": "2026-07-01",
+  "scope": "goal arc saturation: tutorial polish, manifest truth, and launch-evidence automation",
+  "project": "Franchise Architect: Football",
+  "type": "game",
+  "rubric": "product/game with public-unlaunched launch honesty",
+  "headline": "Session 28 targets three verified live gaps: first-run tutorial styling, manifest launch-state truth, and explicit no-fabrication launch evidence.",
+  "findings": [
+    {
+      "rank": 1,
+      "tier": "⚡",
+      "axis": "UX / Onboarding",
+      "slug": "tutorial-style-injection",
+      "title": "The first-run tutorial defines its own CSS injector but the app never calls it",
+      "premiseVerified": true,
+      "evidence": "`public/lib/tutorialCampaign.js` exports `injectTutorialStyles()`, but `rg injectTutorialStyles public test` only found the definition and no call site.",
+      "impact": 8,
+      "innovation": 4,
+      "effort": "20m",
+      "priority": 16,
+      "status": "implemented",
+      "recipe": "Import `injectTutorialStyles` in `public/app.js`, call it before `mountTutorial()`, and add a browser-wiring assertion so the first-run challenge cannot silently lose its intended layout.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Wire the existing injector and assert the call exists."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Wire the injector and cover import/call ordering in the focused browser-wiring test."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "Move tutorial CSS into the main stylesheet with visual regression coverage across mobile and desktop."
+        }
+      },
+      "implementation": "Imported and invoked injectTutorialStyles before mountTutorial; Playwright helper now dismisses the styled first-run overlay intentionally."
+    },
+    {
+      "rank": 2,
+      "tier": "⚡",
+      "axis": "Observability / Truth",
+      "slug": "manifest-vaultstatus-truth",
+      "title": "The synthesized studio manifest claims SPARKED while active status and blockers keep the project public-unlaunched",
+      "premiseVerified": true,
+      "evidence": "`context/STUDIO_MANIFEST.json.identity.vaultStatus` is `SPARKED`; `context/PROJECT_STATUS.json` is public-unlaunched and still blocks launch on on-domain email plus post-push public route evidence.",
+      "impact": 8,
+      "innovation": 3,
+      "effort": "15m",
+      "priority": 12,
+      "status": "implemented",
+      "recipe": "Set the manifest vault status back to `FORGE` and add a studio smoke assertion that manifest launch state cannot outrun `PROJECT_STATUS.json` blockers.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Correct the manifest value."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Correct the manifest and add a regression test for status/blocker coherence."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "Add a generated manifest refresh command that derives vault status from the canonical status file."
+        }
+      },
+      "implementation": "Set STUDIO_MANIFEST identity.vaultStatus to FORGE and added a smoke assertion that active blockers/public-unlaunched status cannot coexist with SPARKED."
+    },
+    {
+      "rank": 3,
+      "tier": "⚡",
+      "axis": "Launch / Automation",
+      "slug": "launch-evidence-report",
+      "title": "The remaining SPARKED gate is evidence-driven but lacks a single repo-local report command",
+      "premiseVerified": true,
+      "evidence": "`scripts/smoke-pages.mjs` proves the local static artifact, while `PROJECT_STATUS.json` still requires post-push route/domain evidence and `football@playfranchisearchitect.com` forwarding/copying verification before SPARKED.",
+      "impact": 7,
+      "innovation": 4,
+      "effort": "45m",
+      "priority": 11,
+      "status": "implemented",
+      "recipe": "Add a static-host-safe launch evidence reporter that checks public routes when network is available, always records email forwarding as `unverified` unless explicit evidence is supplied, and exposes it through `ops.mjs` without ever flipping readiness automatically.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Create a JSON report script with fixtureable probes and email-unverified output."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Wire the script into `ops.mjs` and test both ready and blocked report aggregation."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Feed the report into Launch Readiness UI state after an explicit post-push verification run."
+        }
+      },
+      "implementation": "Added scripts/launch-evidence-report.mjs, ops launch-evidence, fixtureable tests, and a live evidence report under audits/ showing routes reachable but email forwarding unverified."
+    }
+  ],
+  "rejected": [
+    "Speedrun Challenge hidden-surface premise was rejected: `game.html` already contains the panel and `gameFlow.js` loads speedrun status from Settings.",
+    "SPARKED flip is intentionally deferred: on-domain email forwarding/copying has not been verified and cannot be fabricated from repo code."
+  ],
+  "verificationPlanned": [
+    "node --check public/app.js",
+    "node --check scripts/launch-evidence-report.mjs",
+    "node --test test/browser-wiring.test.js test/studio-protocol-smoke.test.js test/launch-evidence-report.test.js",
+    "npm test",
+    "npm run build:pages",
+    "npm run smoke:pages"
+  ],
+  "executionLog": [
+    "implemented tutorial-style-injection; verified by browser-wiring and UI scenario",
+    "implemented manifest-vaultstatus-truth; verified by studio protocol smoke",
+    "implemented launch-evidence-report; verified by focused tests and live no-fabrication report",
+    "innovation-pack follow-through exhausted: latest audit now implemented; no marker or human-blocked candidates remain"
+  ]
+}

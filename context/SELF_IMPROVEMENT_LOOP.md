@@ -1,8 +1,28 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 27 closed at 957 / 1000 SIL v3.0. Last verified suite: 172/172 plus Playwright UI 9/9 and Pages build/smoke.
+Rolling status: Session 28 closed at 963 / 1000 SIL v3.0. Last verified suite: 173/173 plus Playwright UI 9/9 and Pages build/smoke.
 <!-- rolling-status-end -->
+
+## 2026-07-01 — Session 28 Launch Evidence + Tutorial Truth Closeout
+
+Score: 963 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap with 173/173 default tests, 9/9 UI tests, focused launch/studio/browser coverage, and no new dependency or build risk. |
+| Creative Alignment | 84 | +1 because the first-run tutorial is now visible and styled in the real browser experience. |
+| Momentum | 97 | +1 for exhausting the latest audit and innovation-pack follow-through without silently skipping the launch evidence problem. |
+| Engagement | 97 | Maintained; the work protected onboarding clarity rather than adding a new retention loop. |
+| Process Quality | 100 | Maintained cap; manifest truth, launch evidence, and audit execution are now all explicit and test-covered. |
+| Cross-Repo Coherence | 100 | Maintained cap by avoiding sibling-repo edits and keeping public-repo state aligned with local source-of-truth. |
+| Security Posture | 97 | +1 for evidence-gating on-domain contact delivery and keeping the launch report from fabricating readiness. |
+| Ecosystem Integration | 97 | +2 for adding `ops launch-evidence` as a reusable local launch gate tied to Studio public-site requirements. |
+| Capital Efficiency | 91 | +1 for staying static-host-safe and using no new paid services or variable-cost runtime paths. |
+| Automation Coverage | 100 | Maintained cap with new report fixtures, command shim coverage, and full closeout guard verification. |
+
+Follow-up: verify `football@playfranchisearchitect.com` forwarding/copying with a real received-message receipt, rerun launch evidence with `--email-evidence`, then consider SPARKED only if the report and post-push route state are green.
 ## 2026-06-30 — Session 24 Protocol Expansion + Observability Honesty Closeout
 
 Score: 930 / 1000

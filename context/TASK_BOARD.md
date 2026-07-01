@@ -297,3 +297,14 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 **Verification:** `npm test` 172/172 · `npm run test:ui` 9/9 · `node --test test/browser-wiring.test.js test/studio-protocol-smoke.test.js test/session8-endpoints.test.js` 34/34 · `npm run build:pages` · `npm run smoke:pages` · `node scripts/check-windows-hide.mjs` · `node scripts/check-canon-044-waves.mjs` · startup brief validation · secrets audit · blocker preflight.
 
 **Still blocked:** do not mark SPARKED until `football@playfranchisearchitect.com` forwarding/copying is verified and the pushed public routes/domain evidence are checked after deployment.
+
+## Session 28 — Launch Evidence + Tutorial Truth Arc (2026-07-01)
+
+| Item | Status |
+|------|--------|
+| Inject first-run tutorial styles through the app bootstrap so the tutorial overlay is real browser UI, not dead exported code | Done |
+| Correct `context/STUDIO_MANIFEST.json` launch posture from `SPARKED` to `FORGE` while public launch blockers remain open | Done |
+| Add `scripts/launch-evidence-report.mjs` and `ops launch-evidence` so route/email launch readiness is evidence-gated | Done |
+| Exhaust latest-audit innovation-pack follow-through after Session 28 implementation | Done |
+
+**Still blocked:** Launch/SPARKED is blocked until `football@playfranchisearchitect.com` forwarding/copying to Studio operations is verified with real delivery evidence and the public route smoke remains green after push.

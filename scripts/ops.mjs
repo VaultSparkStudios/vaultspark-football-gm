@@ -12,7 +12,8 @@ const dispatch = {
   "startup-brief": ["scripts/render-startup-brief.mjs"],
   "brief": ["scripts/render-startup-brief.mjs"],
   "doctor": ["scripts/blocker-preflight.mjs", "--json"],
-  "innovation-pack": ["scripts/generate-innovation-pack.mjs"]
+  "innovation-pack": ["scripts/generate-innovation-pack.mjs"],
+  "launch-evidence": ["scripts/launch-evidence-report.mjs"]
 };
 
 if (command === "genius-list") {

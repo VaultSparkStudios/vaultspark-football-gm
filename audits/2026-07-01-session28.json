@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-07-01",
+  "session": 28,
+  "slug": "franchise-architect-football",
+  "agent": "codex",
+  "status": "closed",
+  "silScore": 963,
+  "blockingFailing": 0,
+  "suite": {
+    "npmTest": "173/173",
+    "playwrightUi": "9/9",
+    "pages": "build+smoke pass",
+    "focused": "20/20"
+  },
+  "shipped": [
+    "Tutorial style injection wired into app bootstrap",
+    "Manifest launch posture corrected to FORGE",
+    "Launch evidence report and ops shim added",
+    "Latest audit follow-through innovation candidate implemented"
+  ],
+  "blockers": [
+    "On-domain email forwarding/copying for football@playfranchisearchitect.com remains unverified"
+  ],
+  "honestyLedger": [
+    "Launch evidence report is blocked until explicit email delivery proof is supplied; no SPARKED flip this session"
+  ]
+}

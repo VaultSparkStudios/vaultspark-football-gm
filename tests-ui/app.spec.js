@@ -13,6 +13,14 @@ async function waitGameReady(page, timeout = 60_000) {
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout });
 }
 
+async function dismissTutorialIfVisible(page) {
+  const skip = page.locator("#tutSkipBtn");
+  if (await skip.isVisible({ timeout: 3_000 }).catch(() => false)) {
+    await skip.click();
+    await expect(page.locator(".tutorial-overlay")).toHaveCount(0);
+  }
+}
+
 async function createLeagueFromSetup(page, { runtimeMode = null } = {}) {
   await page.goto("/");
   await waitSetupReady(page);
@@ -24,6 +32,7 @@ async function createLeagueFromSetup(page, { runtimeMode = null } = {}) {
   await page.click("#createLeagueBtn");
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
   await waitGameReady(page);
+  await dismissTutorialIfVisible(page);
 }
 
 async function simulateSeasonsByApi(page, count) {

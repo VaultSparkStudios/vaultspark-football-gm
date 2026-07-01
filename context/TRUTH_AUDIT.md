@@ -114,3 +114,9 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Browser smoke truth repair: when a GM Decision prompt appears during advance-week, Playwright now handles the expected modal instead of misclassifying the flow as a hung simulation.
 - Test truth repair: Playwright advance-week smoke now handles the expected GM Decision modal path introduced by Session 26's real consequence loop.
 - Launch truth unchanged: launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.
+
+## 2026-07-01 — Session 28 Truth Audit
+
+- Tutorial truth: `public/lib/tutorialCampaign.js` exported styles but the app did not inject them; `public/app.js` now imports and calls `injectTutorialStyles()` before mounting the tutorial.
+- Launch posture truth: `context/STUDIO_MANIFEST.json` no longer claims `SPARKED` while `PROJECT_STATUS.json` still records public-unlaunched launch blockers; manifest status is `FORGE`.
+- Launch evidence truth: `audits/launch-evidence-2026-07-01-session28.json` reports public routes reachable, but status remains `blocked` because on-domain email forwarding/copying has no delivery receipt. No fabricated evidence was used to pass the gate.

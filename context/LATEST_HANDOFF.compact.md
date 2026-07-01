@@ -1,39 +1,45 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: be9325379dd8 -->
-<!-- generated-at: 2026-07-01T06:27:05.346Z -->
+<!-- source-hash: fda240858894 -->
+<!-- generated-at: 2026-07-01T16:32:27.050Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION HANDOFF SUMMARY (compressed)
+HANDOFF SUMMARY
 
 Session
-- Latest: Session 26 (2026-07-01)
+- Latest: Session 27 (2026-07-01)
 
-Shipped (Session 26)
-- All 4 findings from AUDIT_2026-07-01_SESSION26: GM decision consequence loop, startup context-meter percent honesty (1% not 100%), three-column task-board status parsing, innovation-pack guard/sentinel filtering.
-- GM Decision choices now flow browser modal to /api/advance-week via shared consequence engine (src/engine/gmDecisionConsequences.js); write news/transaction/event ledgers; surface latestGmDecision + toast.
-- Verified: npm test 170/170, test:ui 9/9, build:pages, smoke:pages, windows-hide, canon-044-waves, check-secrets --audit, blocker-preflight.
+Shipped (S27)
+- cache-genius-list.mjs: --check/--write, ranks audit sources by date/session, writes .cache/genius-list.json with status exhausted when latest audit has no open items.
+- ops.mjs cache-genius-list command surface exposed, covered by studio smoke.
+- render-startup-brief.mjs: always renders HUMAN PRESSURE block (zero-pressure copy when empty); STARTUP_BRIEF.md validates clean.
+- Playwright advance-week smoke now dismisses GM Decision modal before waiting for Ready (was looking like a test hang).
 
 Current Intent
-- Post-push: confirm GitHub Actions/Pages deploy for the commit, smoke live playfranchisearchitect.com routes, verify on-domain email forwarding. Then update Launch Readiness from evidence only. Do not flip launch/SPARKED prematurely.
+- Continue durable /goal /arc. Primary ranked queue exhausted; sessions run fresh live-code audits and implement verified truth/reliability items rather than fabricating launch evidence.
+- Do NOT flip launch/SPARKED until public-route and email-forwarding evidence verified.
 
 Now Bucket (top 3)
-1. Confirm GitHub Actions/Pages deploy for pushed commit.
-2. Smoke https://playfranchisearchitect.com/ routes (canonical + legacy paths).
-3. Verify football@playfranchisearchitect.com forwarding/copying to Studio ops.
+- Confirm GitHub Actions/Pages deploy for the pushed commit.
+- Smoke https://playfranchisearchitect.com/ routes post-deploy.
+- Verify on-domain email forwarding for football@playfranchisearchitect.com.
 
 Blockers (top 3)
-1. Launch/SPARKED flip blocked: needs verified email forwarding + post-push public route/domain evidence.
-2. Custom-domain routing/certificate: prior sessions saw live 404/fallback on new routes and Pages cert bad_authz/expired 2026-06-02; treat as routing/cert state, not missing repo files.
-3. smoke:pages fails if run concurrently with build:pages; must run sequentially after build.
+- Launch/SPARKED blocked: public route/domain state not verified after deploy.
+- Email forwarding for football@playfranchisearchitect.com not confirmed to reach Studio operations.
+- SIL v6 Impact remains 0/1000 (uninstrumented adoption signals; carried from S21).
 
 Human-Blocked Items (with age)
-- Email forwarding verification for football@playfranchisearchitect.com: open since Session 25 (2 sessions).
-- Public route/domain launch evidence: open since Session 25 (2 sessions).
-- Custom-domain certificate remediation (formerly Cloudflare/GitHub Pages runbook): open since Session 14 (~12 sessions), now rebranded to playfranchisearchitect.com.
+- Email forwarding verification (football@playfranchisearchitect.com): open since S25, ~2 sessions.
+- Public route/domain post-deploy smoke: recurring since S25, ~2 sessions.
+- (Historical) Cloudflare/GitHub Pages custom-domain cert bad_authz: raised S14-S24; superseded by playfranchisearchitect.com migration in S25.
 
-Notes
-- Primary work queue exhausted since Session 25; recent sessions do verified second-order work, not fabricated launch evidence.
-- Repo keeps only public-safe handoff; detailed history is private.
+Verification State (S27)
+- npm test 172/172; test:ui 9/9; focused browser/studio/session8 34/34.
+- build:pages, smoke:pages, check-windows-hide, check-canon-044-waves, startup-brief validation, secrets audit, blocker-preflight all passed.
 
-Next session: verify deploy + live-domain route smoke + email forwarding, then set Launch Readiness from evidence.
+Honesty Note
+- First UI aggregate exposed a real expected-modal test gap, not a protocol-patch regression; fixed before pass.
+
+Next Session
+- Post-deploy: verify Pages deploy, smoke playfranchisearchitect.com routes, confirm email forwarding; only then consider flipping Launch Readiness.

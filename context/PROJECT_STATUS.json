@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 27 completed the next saturated arc after the Session 26 queue was exhausted: /go cache checks are executable and truthfully exhausted, startup HUMAN PRESSURE renders cleanly at zero pressure, and the browser advance-week smoke handles the now-real GM Decision prompt.",
-  "nextMilestone": "Post-push launch evidence: confirm GitHub Actions/Pages for this commit, smoke https://playfranchisearchitect.com/ routes, and verify football@playfranchisearchitect.com forwards/copies to Studio operations before SPARKED.",
+  "currentFocus": "Session 28 completed the next saturated /goal /arc pass: first-run tutorial styling now loads in the real browser app, manifest launch posture is corrected to FORGE, and launch evidence reporting checks routes while refusing to fabricate on-domain email delivery proof.",
+  "nextMilestone": "Verify football@playfranchisearchitect.com forwarding/copying with a real received-message receipt, rerun ops launch-evidence with --email-evidence, then confirm post-push public route state before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified and post-push public route/domain state passes for playfranchisearchitect.com."
   ],
@@ -18,20 +18,21 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 172,
-    "pass": 172,
+    "totalTests": 173,
+    "pass": 173,
     "fail": 0,
     "lastRun": "2026-07-01",
     "newTestFiles": [
       "test/session8-endpoints.test.js",
       "test/browser-wiring.test.js",
-      "test/studio-protocol-smoke.test.js"
+      "test/studio-protocol-smoke.test.js",
+      "test/launch-evidence-report.test.js"
     ],
-    "newTestCount": 4,
-    "coverage": "Session 27 verified default npm test 172/172, Playwright UI 9/9, focused browser/studio/session8 tests 34/34, Pages build/smoke, windows-hide guard, Wave guard, startup brief validation, secrets audit, and blocker preflight."
+    "newTestCount": 3,
+    "coverage": "Session 28 verified default npm test 173/173, Playwright UI 9/9, focused launch/browser/studio tests 20/20, Pages build/smoke, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, canon adoption check, and canon conformance."
   },
-  "testsPassing": 172,
-  "testsTotal": 172,
+  "testsPassing": 173,
+  "testsTotal": 173,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -70,32 +71,31 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 957,
+  "silScore": 963,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 83,
-    "momentum": 96,
+    "creativeAlignment": 84,
+    "momentum": 97,
     "engagement": 97,
     "processQuality": 100,
     "crossRepoCoherence": 100,
-    "securityPosture": 96,
-    "ecosystemIntegration": 95,
-    "capitalEfficiency": 90,
+    "securityPosture": 97,
+    "ecosystemIntegration": 97,
+    "capitalEfficiency": 91,
     "automationCoverage": 100
   },
-  "currentSession": 27,
+  "currentSession": 28,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "node --check scripts/cache-genius-list.mjs",
+      "node --check public/app.js",
+      "node --check scripts/launch-evidence-report.mjs",
       "node --check scripts/ops.mjs",
-      "node --check scripts/render-startup-brief.mjs",
-      "node --check public/lib/engagementFeatures.js",
-      "node --test test/studio-protocol-smoke.test.js (11/11)",
-      "node --test test/browser-wiring.test.js (4/4)",
-      "node --test test/browser-wiring.test.js test/studio-protocol-smoke.test.js test/session8-endpoints.test.js (34/34)",
-      "npm test (172/172)",
+      "node --test test/launch-evidence-report.test.js test/browser-wiring.test.js test/studio-protocol-smoke.test.js (20/20)",
+      "node scripts/ops.mjs launch-evidence --json --output audits/launch-evidence-2026-07-01-session28.json (blocked as expected on missing email evidence)",
+      "npm test (173/173)",
+      "npx playwright test tests-ui/app.spec.js -g \"create league, advance week\" --reporter=line",
       "npm run test:ui (9/9)",
       "npm run build:pages",
       "npm run smoke:pages",
@@ -103,12 +103,14 @@
       "node scripts/check-windows-hide.mjs",
       "node scripts/check-canon-044-waves.mjs",
       "node scripts/check-secrets.mjs --audit",
-      "node scripts/ops.mjs blocker-preflight"
+      "node scripts/ops.mjs blocker-preflight",
+      "node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --check",
+      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline"
     ],
     "date": "2026-07-01",
     "timedOut": [],
     "failed": [
-      "First npm run test:ui attempt failed because the existing smoke did not handle the now-real GM Decision prompt; focused and full UI reruns passed after covering the expected modal path."
+      "First npm run test:ui attempt exposed the now-styled tutorial overlay intercepting setup clicks and left a stale local server; the test now dismisses the real tutorial affordance, stale server processes were stopped, and focused/full Playwright reruns passed."
     ]
   },
   "silScoreV3MigratedAt": "2026-04-21",

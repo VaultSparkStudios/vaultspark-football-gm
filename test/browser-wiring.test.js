@@ -44,3 +44,9 @@ test("advance-week browser wiring sends selected GM decision choice", () => {
   assert.match(appSource, /body\.gmDecisionChoice = gmDecisionChoice/);
   assert.match(appSource, /response\.gmDecision\?\.applied/);
 });
+test("first-run tutorial styles are injected before mounting onboarding", () => {
+  const appSource = read("../public/app.js");
+
+  assert.match(appSource, /import \{ injectTutorialStyles, mountTutorial \} from "\.\/lib\/tutorialCampaign\.js"/);
+  assert.match(appSource, /injectTutorialStyles\(\);\s*mountTutorial\(/s);
+});
