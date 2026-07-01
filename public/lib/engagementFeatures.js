@@ -222,6 +222,8 @@ export function showGmDecisionModal(decision) {
       });
     });
   }
+  const statusChip = document.getElementById("statusChip");
+  if (statusChip) statusChip.textContent = "GM decision required";
   modal.hidden = false;
 }
 
