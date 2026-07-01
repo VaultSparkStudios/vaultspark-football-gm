@@ -1,5 +1,49 @@
 # Latest Handoff
 
+## Impact Summary — Session 27 (2026-07-01)
+
+**Headline:** Session 27 closed the remaining arc-tooling truth gap and made the now-real GM Decision prompt a first-class browser state instead of a smoke-test hang.
+
+- Shipped both findings from `docs/AUDIT_2026-07-01_SESSION27.*`: protocol cache/startup pressure truth and GM Decision advance-smoke reliability.
+- `scripts/cache-genius-list.mjs` now supports `--check` / `--write`, ranks audit sources by date/session filename, and writes `.cache/genius-list.json` with `status: exhausted` when the latest audit has no open items.
+- `scripts/ops.mjs cache-genius-list` exposes the cache helper through the repo-local protocol command surface, and studio smoke coverage proves the command path.
+- `docs/STARTUP_BRIEF.md` now validates without warnings because `render-startup-brief.mjs` renders a canonical HUMAN PRESSURE block even when there are zero owner-action items.
+- The Playwright advance-week smoke now dismisses the expected GM Decision modal before waiting for `Ready`, so the real consequence loop no longer looks like a test hang.
+- Verification: `npm test` 172/172, `npm run test:ui` 9/9, focused browser/studio/session8 tests 34/34, `npm run build:pages`, `npm run smoke:pages`, `node scripts/check-windows-hide.mjs`, `node scripts/check-canon-044-waves.mjs`, startup brief validation, secrets audit, and blocker preflight.
+- Honesty note: the first UI aggregate exposed a real expected-modal test gap, not a protocol-patch regression. Launch/SPARKED still remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.
+
+## Where We Left Off — 2026-07-01 (Session 27)
+
+The requested durable `/goal /arc` continued from a clean Session 26 closeout. The primary ranked queue was exhausted, so Session 27 performed a fresh live-code audit and implemented the next two verified truth/reliability issues instead of fabricating launch evidence.
+
+What changed:
+- `scripts/cache-genius-list.mjs` implements the protocol cache helper and prefers the newest audit by filename date/session rather than mutable file modification time.
+- `scripts/ops.mjs` dispatches `cache-genius-list` alongside the other project-local Studio protocol shims.
+- `scripts/render-startup-brief.mjs` always renders the HUMAN PRESSURE box, with zero-pressure copy when no owner-action item exists.
+- `tests-ui/app.spec.js` handles the expected GM Decision skip path after the tactical modal and before waiting for the status chip to return to `Ready`.
+- `tests-ui/app.spec.js` handles the expected GM Decision skip path during the advance-week smoke.
+- `test/studio-protocol-smoke.test.js` covers the cache shim, ops dispatch, startup pressure block, and cache JSON status.
+
+Verification passed:
+- `node --check scripts/cache-genius-list.mjs`, `scripts/ops.mjs`, `scripts/render-startup-brief.mjs`, `public/lib/engagementFeatures.js`
+- `node --test test/studio-protocol-smoke.test.js` — 11/11
+- `node --test test/browser-wiring.test.js` — 4/4
+- `node --test test/browser-wiring.test.js test/studio-protocol-smoke.test.js test/session8-endpoints.test.js` — 34/34
+- `npm test` — 172/172
+- `npm run test:ui` — 9/9 after fixing the expected GM Decision modal handling
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md`
+- `node scripts/check-windows-hide.mjs`
+- `node scripts/check-canon-044-waves.mjs`
+- `node scripts/check-secrets.mjs --audit`
+- `node scripts/ops.mjs blocker-preflight`
+
+Remaining public-safe blocker:
+- Do not flip launch/SPARKED yet. Verify `football@playfranchisearchitect.com` actually forwards/copies to Studio operations and re-check the pushed public route/domain state after deployment.
+
+Next best work:
+- After this push deploys, confirm GitHub Actions/Pages deploy for the commit, smoke `https://playfranchisearchitect.com/` routes, and verify on-domain email forwarding.
 ## Impact Summary — Session 26 (2026-07-01)
 
 **Headline:** Session 26 turned a cosmetic GM Decision prompt into a real consequence loop and repaired the Studio truth surfaces that were creating false urgency: context percent, task-board status, and innovation-pack marker scans now derive from the right source of truth.

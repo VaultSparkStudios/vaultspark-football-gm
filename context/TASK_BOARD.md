@@ -283,3 +283,17 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 **Verification:** `npm test` 166/166 · `npm run test:ui` 9/9 · `npm run build:pages` · `npm run smoke:pages` · `node scripts/check-windows-hide.mjs` · `node scripts/check-secrets.mjs --audit` · `node scripts/ops.mjs blocker-preflight` · canon adoption check · canon conformance 0 gaps.
 
 **Still blocked:** do not mark SPARKED until `football@playfranchisearchitect.com` forwarding/copying is verified and the pushed public routes/domain evidence are checked after deployment.
+
+## Session 27 — Protocol Cache + GM Decision Smoke Closeout (2026-07-01)
+
+| Item | Status |
+|------|--------|
+| Generate a fresh live-code audit after confirming the Session 26 queue was exhausted | Done |
+| Add project-local `scripts/cache-genius-list.mjs` and `ops cache-genius-list` so `/go` cache checks no longer fail as a missing command | Done |
+| Render the canonical HUMAN PRESSURE startup block at zero pressure so the brief validator is clean and truthful | Done |
+| Repair the advance-week Playwright smoke for expected GM Decision prompts without treating the expected modal as a hung advance-week simulation | Done |
+| Keep launch readiness blocked on evidence: on-domain email forwarding and post-push public route/domain state still need verification before SPARKED | Done |
+
+**Verification:** `npm test` 172/172 · `npm run test:ui` 9/9 · `node --test test/browser-wiring.test.js test/studio-protocol-smoke.test.js test/session8-endpoints.test.js` 34/34 · `npm run build:pages` · `npm run smoke:pages` · `node scripts/check-windows-hide.mjs` · `node scripts/check-canon-044-waves.mjs` · startup brief validation · secrets audit · blocker preflight.
+
+**Still blocked:** do not mark SPARKED until `football@playfranchisearchitect.com` forwarding/copying is verified and the pushed public routes/domain evidence are checked after deployment.

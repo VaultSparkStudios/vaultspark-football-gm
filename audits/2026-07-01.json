@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-07-01",
+  "session": 27,
+  "project": "franchise-architect-football",
+  "status": "completed",
+  "shipped": [
+    "protocol-cache-and-pressure-truth",
+    "gm-decision-modal-advance-smoke"
+  ],
+  "deferred": [
+    "SPARKED launch evidence remains gated on on-domain email forwarding and post-push public route/domain verification."
+  ],
+  "verification": [
+    "node --check scripts/cache-genius-list.mjs",
+    "node --check scripts/ops.mjs",
+    "node --check scripts/render-startup-brief.mjs",
+    "node --check public/lib/engagementFeatures.js",
+    "node --test test/studio-protocol-smoke.test.js (11/11)",
+    "node --test test/browser-wiring.test.js (4/4)",
+    "node --test test/browser-wiring.test.js test/studio-protocol-smoke.test.js test/session8-endpoints.test.js (34/34)",
+    "npm test (172/172)",
+    "npm run test:ui (9/9)",
+    "npm run build:pages",
+    "npm run smoke:pages",
+    "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
+    "node scripts/check-windows-hide.mjs",
+    "node scripts/check-canon-044-waves.mjs",
+    "node scripts/check-secrets.mjs --audit",
+    "node scripts/ops.mjs blocker-preflight"
+  ],
+  "silScore": 957
+}

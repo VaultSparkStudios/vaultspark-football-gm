@@ -73,7 +73,9 @@ test("documented Studio protocol shims load", () => {
     ["scripts/credential-watch.mjs", "--silent"],
     ["scripts/ark.mjs", "drain", "--silent"],
     ["scripts/record-skill-cost.mjs", "--skill", "studio-closeout", "--phase", "start"],
+    ["scripts/cache-genius-list.mjs", "--write"],
     ["scripts/ops.mjs", "blocker-preflight", "--json"],
+    ["scripts/ops.mjs", "cache-genius-list", "--check"],
     ["scripts/ops.mjs", "innovation-pack", "--dry-run"]
   ]) {
     const result = spawnSync(process.execPath, args, {
@@ -122,6 +124,34 @@ test("startup brief treats live pctUsed 1 as one percent, not full", () => {
   const source = readFileSync(resolve(repoRoot, "scripts/render-startup-brief.mjs"), "utf8");
   assert.match(source, /const meterUsedPctRaw = meter\.live \? meter\.pctUsed : meter\.pctUsed \* 100;/);
   assert.doesNotMatch(source, /meter\.pctUsed > 1 \? meter\.pctUsed : meter\.pctUsed \* 100/);
+});
+
+test("startup brief always renders the canonical human pressure block", () => {
+  const result = spawnSync(process.execPath, ["scripts/render-startup-brief.mjs"], {
+    cwd: process.cwd(),
+    encoding: "utf8"
+  });
+  assert.equal(result.status, 0, result.stderr);
+  const brief = readFileSync(resolve(repoRoot, "docs/STARTUP_BRIEF.md"), "utf8");
+  assert.match(brief, /HUMAN PRESSURE/);
+});
+
+test("genius cache check/write reports latest audit truthfully", () => {
+  const write = spawnSync(process.execPath, ["scripts/cache-genius-list.mjs", "--write"], {
+    cwd: process.cwd(),
+    encoding: "utf8"
+  });
+  assert.equal(write.status, 0, write.stderr);
+
+  const check = spawnSync(process.execPath, ["scripts/cache-genius-list.mjs", "--check"], {
+    cwd: process.cwd(),
+    encoding: "utf8"
+  });
+  assert.equal(check.status, 0, check.stderr);
+
+  const cache = JSON.parse(readFileSync(resolve(repoRoot, ".cache/genius-list.json"), "utf8"));
+  assert.equal(Array.isArray(cache.items), true);
+  assert.equal(cache.status, cache.items.length > 0 ? "open" : "exhausted");
 });
 test("innovation-pack marker scan ignores intentional guard sentinels", () => {
   const result = spawnSync(process.execPath, ["scripts/ops.mjs", "innovation-pack", "--dry-run"], {

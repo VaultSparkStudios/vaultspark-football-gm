@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1.0",
+  "session": 27,
+  "date": "2026-07-01",
+  "scope": "goal arc saturation: live-code protocol and browser-smoke repair",
+  "project": "Franchise Architect: Football",
+  "type": "game",
+  "rubric": "product/game with Studio OS process honesty",
+  "findings": [
+    {
+      "rank": 1,
+      "tier": "⚡",
+      "axis": "Process / Startup Truth",
+      "slug": "protocol-cache-and-pressure-truth",
+      "title": "/go referenced a missing cache helper and startup validation warned about a missing HUMAN PRESSURE block",
+      "premiseVerified": true,
+      "evidence": "node scripts/cache-genius-list.mjs --check failed with MODULE_NOT_FOUND; node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md reported missing recommended HUMAN PRESSURE block.",
+      "impact": 8,
+      "innovation": 5,
+      "effort": "45m",
+      "status": "implemented",
+      "implementation": "Added scripts/cache-genius-list.mjs, exposed it through ops.mjs, rendered a canonical zero-pressure HUMAN PRESSURE block, and covered the shims/brief/cache in studio protocol smoke tests."
+    },
+    {
+      "rank": 2,
+      "tier": "⚡",
+      "axis": "UX / Browser Reliability",
+      "slug": "gm-decision-modal-advance-smoke",
+      "title": "Advance-week browser smoke could hang when a GM Decision prompt appeared",
+      "premiseVerified": true,
+      "evidence": "npm run test:ui failed in tests-ui/app.spec.js:44 with #statusChip stuck on Advancing week while #gmDecisionModal was visible.",
+      "impact": 7,
+      "innovation": 4,
+      "effort": "30m",
+      "status": "implemented",
+      "implementation": "The Playwright smoke dismisses the expected GM Decision prompt before waiting for Ready."
+    }
+  ],
+  "rejected": [
+    "External SPARKED launch evidence remains honestly deferred until on-domain email forwarding and post-push public route/domain checks are verified."
+  ],
+  "verification": [
+    "node --check scripts/cache-genius-list.mjs",
+    "node --check scripts/ops.mjs",
+    "node --check scripts/render-startup-brief.mjs",
+    "node --check public/lib/engagementFeatures.js",
+    "node --test test/studio-protocol-smoke.test.js (11/11)",
+    "node --test test/browser-wiring.test.js (4/4)",
+    "node --test test/browser-wiring.test.js test/studio-protocol-smoke.test.js test/session8-endpoints.test.js (34/34)",
+    "npm test (172/172)",
+    "npx playwright test tests-ui/app.spec.js -g \"create league, advance week, and open player modal\" (1/1)",
+    "npm run test:ui (9/9)",
+    "npm run build:pages",
+    "npm run smoke:pages",
+    "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
+    "node scripts/check-windows-hide.mjs",
+    "node scripts/check-canon-044-waves.mjs"
+  ]
+}

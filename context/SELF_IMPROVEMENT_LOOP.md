@@ -1,7 +1,7 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 24 closed at 930 / 1000 SIL v3.0. Last verified suite: 166/166 plus Playwright UI 9/9 and Pages build/smoke.
+Rolling status: Session 27 closed at 957 / 1000 SIL v3.0. Last verified suite: 172/172 plus Playwright UI 9/9 and Pages build/smoke.
 <!-- rolling-status-end -->
 ## 2026-06-30 — Session 24 Protocol Expansion + Observability Honesty Closeout
 
@@ -242,3 +242,23 @@ Category notes:
 - Automation Coverage: held at 100; added focused regressions for decision wiring, context-meter normalization, parser status, and innovation-pack marker hygiene.
 
 Follow-up: after push, verify GitHub Actions/Pages deploy, smoke `https://playfranchisearchitect.com/`, and prove `football@playfranchisearchitect.com` forwarding/copying before any SPARKED or launch claim.
+
+## 2026-07-01 — Session 27 Protocol Cache + GM Decision Smoke Closeout
+
+Score: 957 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | +1 for keeping the default suite green at 172 tests while adding focused protocol and browser-smoke coverage. |
+| Creative Alignment | 83 | unchanged; no new product creative direction was introduced. |
+| Momentum | 96 | held high after exhausting the prior audit and shipping two verified follow-through items. |
+| Engagement | 97 | +1 for making the GM Decision wait state explicit in the browser and keeping the advance-week loop reliable. |
+| Process Quality | 100 | maintained at cap; missing protocol cache and startup warning surfaces are now executable/truthful. |
+| Cross-Repo Coherence | 100 | maintained at cap; local shims align with the shared Session Protocol without sibling writes. |
+| Security Posture | 96 | unchanged; no new secret, auth, or dependency surface was added. |
+| Ecosystem Integration | 95 | +1 for making `/go` cache behavior interoperable with the Studio protocol command surface. |
+| Capital Efficiency | 90 | unchanged; all work remains static-host-safe/local-only with no new services. |
+| Automation Coverage | 100 | maintained at cap with new cache, brief, and UI-smoke regressions. |
+
+Follow-up: after this push deploys, verify GitHub Actions/Pages, public routes, and on-domain email forwarding before any SPARKED flip.

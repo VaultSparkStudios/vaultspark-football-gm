@@ -164,3 +164,13 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Repaired innovation-pack hygiene: intentional guard/sentinel marker lines are filtered, leaving only the latest-audit follow-through candidate after this session's second-order pass.
 - Verification: `npm test` 170/170, Playwright UI 9/9, Pages build/smoke, windows-hide guard, Wave guard, secrets audit, blocker preflight, focused browser/endpoint/studio tests.
 - Honesty note: one Pages smoke attempt failed while running concurrently with the Pages build; the sequential rerun after build passed.
+
+## 2026-07-01 — Session 27: protocol cache and GM Decision smoke closeout
+
+- Continued the active durable `/goal /arc` objective from a clean Session 26 closeout through startup, live audit, implementation, verification, and closeout prep.
+- Generated `docs/AUDIT_2026-07-01_SESSION27.*` from current repo evidence after confirming the Session 26 audit queue was exhausted.
+- Added `scripts/cache-genius-list.mjs` plus `ops cache-genius-list` so the documented `/go` cache check is executable and truthfully reports an exhausted latest audit.
+- Made the startup brief render the canonical HUMAN PRESSURE block at zero pressure, clearing the validator warning without fabricating owner-action work.
+- Repaired the browser advance-week smoke for the real GM Decision modal by dismissing the expected prompt before waiting for the ready state.
+- Verification: `npm test` 172/172, Playwright UI 9/9, focused browser/studio/session8 tests 34/34, Pages build/smoke, windows-hide guard, Wave guard, secrets audit, blocker preflight, and startup brief validation.
+- Honesty note: the first Playwright aggregate failed because the test did not handle the now-real GM Decision prompt; focused and full UI reruns passed after the expected modal path was covered.

@@ -1230,7 +1230,13 @@ const lines = [
     row(`Next action:   ${topPressure.nextAgentAction.slice(0, W - 15)}`),
     bot(),
     ``,
-  ] : []),
+  ] : [
+    top('HUMAN PRESSURE'),
+    row('Open items:    0 · no owner-action pressure detected'),
+    row('Next action:   keep execution inside the agent path'),
+    bot(),
+    ``,
+  ]),
   // ── v4.0: SESSION VOICE (personable cue) ────────────────────────────────────
   // Suppressed S116 #623 — low-signal flavor block was pushing brief over the
   // 15KB brief-golden cap. v4.1 spec already drops this. Re-enable behind a

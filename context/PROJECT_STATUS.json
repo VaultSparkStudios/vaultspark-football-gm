@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 26 completed a saturated arc after the primary queue was exhausted: GM Decision choices now apply source-of-truth consequences, startup context-meter percent honesty is fixed, task-board done/open parsing is truthful, and innovation-pack marker hygiene no longer creates phantom work.",
+  "currentFocus": "Session 27 completed the next saturated arc after the Session 26 queue was exhausted: /go cache checks are executable and truthfully exhausted, startup HUMAN PRESSURE renders cleanly at zero pressure, and the browser advance-week smoke handles the now-real GM Decision prompt.",
   "nextMilestone": "Post-push launch evidence: confirm GitHub Actions/Pages for this commit, smoke https://playfranchisearchitect.com/ routes, and verify football@playfranchisearchitect.com forwards/copies to Studio operations before SPARKED.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified and post-push public route/domain state passes for playfranchisearchitect.com."
@@ -18,8 +18,8 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 170,
-    "pass": 170,
+    "totalTests": 172,
+    "pass": 172,
     "fail": 0,
     "lastRun": "2026-07-01",
     "newTestFiles": [
@@ -28,10 +28,10 @@
       "test/studio-protocol-smoke.test.js"
     ],
     "newTestCount": 4,
-    "coverage": "Session 26 verified default npm test 170/170 (core 54, runtime 84, sim-contract 22, sim-realism 1, studio 9), Playwright UI 9/9, Pages build/smoke, windows-hide guard, Wave guard, secrets audit, and blocker preflight."
+    "coverage": "Session 27 verified default npm test 172/172, Playwright UI 9/9, focused browser/studio/session8 tests 34/34, Pages build/smoke, windows-hide guard, Wave guard, startup brief validation, secrets audit, and blocker preflight."
   },
-  "testsPassing": 170,
-  "testsTotal": 170,
+  "testsPassing": 172,
+  "testsTotal": 172,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -70,32 +70,36 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 954,
+  "silScore": 957,
   "silCategoriesV3": {
-    "devHealth": 99,
+    "devHealth": 100,
     "creativeAlignment": 83,
     "momentum": 96,
-    "engagement": 96,
+    "engagement": 97,
     "processQuality": 100,
     "crossRepoCoherence": 100,
     "securityPosture": 96,
-    "ecosystemIntegration": 94,
+    "ecosystemIntegration": 95,
     "capitalEfficiency": 90,
     "automationCoverage": 100
   },
-  "currentSession": 26,
+  "currentSession": 27,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "node --check changed JS/MJS files",
+      "node --check scripts/cache-genius-list.mjs",
+      "node --check scripts/ops.mjs",
+      "node --check scripts/render-startup-brief.mjs",
+      "node --check public/lib/engagementFeatures.js",
+      "node --test test/studio-protocol-smoke.test.js (11/11)",
       "node --test test/browser-wiring.test.js (4/4)",
-      "node --test test/session8-endpoints.test.js (19/19)",
-      "node --test test/studio-protocol-smoke.test.js (9/9)",
-      "npm test (170/170)",
+      "node --test test/browser-wiring.test.js test/studio-protocol-smoke.test.js test/session8-endpoints.test.js (34/34)",
+      "npm test (172/172)",
       "npm run test:ui (9/9)",
       "npm run build:pages",
       "npm run smoke:pages",
+      "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
       "node scripts/check-windows-hide.mjs",
       "node scripts/check-canon-044-waves.mjs",
       "node scripts/check-secrets.mjs --audit",
@@ -104,7 +108,7 @@
     "date": "2026-07-01",
     "timedOut": [],
     "failed": [
-      "One npm run smoke:pages attempt failed while running concurrently with npm run build:pages; sequential rerun after build passed."
+      "First npm run test:ui attempt failed because the existing smoke did not handle the now-real GM Decision prompt; focused and full UI reruns passed after covering the expected modal path."
     ]
   },
   "silScoreV3MigratedAt": "2026-04-21",

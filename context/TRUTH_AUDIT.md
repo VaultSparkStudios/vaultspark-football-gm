@@ -106,3 +106,11 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Queue truth repair: `parseUnifiedItems()` now handles three-column task tables and normalizes `✅ Done` rows as done, so completed rows do not re-enter open queues.
 - Innovation-pack truth repair: intentional guard/sentinel marker lines are no longer treated as unfinished work. The remaining dry-run candidate is latest-audit follow-through only.
 - Launch truth unchanged: launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.
+
+## 2026-07-01 — Session 27 truth updates
+
+- Protocol cache truth repair: `scripts/cache-genius-list.mjs` now exists and writes `.cache/genius-list.json`; it selects the newest audit by filename date/session so verification-side file touches cannot resurrect older audit state.
+- Startup brief truth repair: the canonical HUMAN PRESSURE block renders even when open owner-action pressure is zero, so validation is clean without inventing blockers.
+- Browser smoke truth repair: when a GM Decision prompt appears during advance-week, Playwright now handles the expected modal instead of misclassifying the flow as a hung simulation.
+- Test truth repair: Playwright advance-week smoke now handles the expected GM Decision modal path introduced by Session 26's real consequence loop.
+- Launch truth unchanged: launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.
