@@ -191,3 +191,25 @@ Decision: Launch/SPARKED readiness for Franchise Architect: Football is gated by
 Rationale: Public route checks can be automated, but email forwarding cannot be assumed from static files or DNS intent. The evidence report must remain `blocked` until a real delivery receipt is supplied.
 
 Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green public routes while still blocking launch on missing email evidence. This is the desired honest state, not a failure to paper over.
+
+---
+
+## 2026-07-02 — Session 29: additive situational play-calling over drive-engine rewrite
+
+**Decision:** Implement fourth-down decision-making and situational play selection as a real, tracked-within-the-drive down/distance/field-position state machine layered on top of the existing drive-summary engine, rather than rearchitecting `simulateDrive` into a full down-by-down play-by-play engine.
+
+**Rationale:** The audit's literal ask ("no down-and-distance awareness, no 4th-down go-for-it model") is real, but the drive engine's yardage/completion/sack/interception formulas are tuned against a heavily-guarded regression suite (calibration, monte-carlo, stats, ratings, career-realism, determinism). A full rearchitecture in one session risks destabilizing calibration that took many prior sessions to tune, with no safety net beyond re-tuning tolerances after the fact. The additive design tracks real down/distance/field position, replaces the flat coin-flip play selector with a situational one, and adds a genuine go/kick/punt fourth-down brain — reusing the exact existing FG-make and punt-yardage formulas for the forced-4th-down path, and leaving the natural-end-of-drive resolution path (for drives that exhaust their rolled play budget before a real 4th down) completely untouched byte-for-byte.
+
+**Verification:** Full calibration/monte-carlo/stats/ratings/career-realism/determinism regression suite passed unchanged before and after; a new end-to-end test proves forced fourth-down kicks/punts fire in real simulated games.
+
+**Pattern established:** When an audit item's literal scope would require rearchitecting a heavily-calibrated system, prefer an additive layer that changes *decisions* (what play is called, whether to go for it) without touching the *formulas* that produce the outcome distributions those decisions feed into. Verify with the full regression suite, not just the new feature's own tests.
+
+---
+
+## 2026-07-02 — Session 29: honest deferral under a session-limit signal
+
+**Decision:** Three planned audit items (what-if-replay, silent-error-surfacing, service-scaffold-honesty) were not started this session. Two were dispatched as background subagents but returned no usable result alongside two consecutive "you've hit your session limit" notifications; a third (return-hook-digest work) was completed directly. Rather than dispatch further large parallel work under that signal, the session consolidated: verified all in-flight and completed work (tests, syntax checks, Pages build/smoke), fixed a real bug the background agent's partial work left behind (ARIA `aria-selected`/`tabindex` markup shipped in `game.html` but `activateTab()` was never updated to keep it in sync — fixed directly), and moved to closeout.
+
+**Rationale:** CANON-019/031 — try first, but do not fabricate progress or push further under a resource-ceiling signal when the honest move is to stabilize and hand off cleanly. A background agent producing no result text is not evidence its file changes are safe; each touched file was diffed and verified before being trusted.
+
+**Pattern established:** When a background subagent's notification carries a session-limit/resource-ceiling signal instead of a result, treat its partial file changes as unverified until diffed directly — do not assume completion from the dispatch prompt's intent. Stop dispatching new large work and consolidate.

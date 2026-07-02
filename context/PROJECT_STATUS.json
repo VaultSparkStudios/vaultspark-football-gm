@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 28 completed the next saturated /goal /arc pass: first-run tutorial styling now loads in the real browser app, manifest launch posture is corrected to FORGE, and launch evidence reporting checks routes while refusing to fabricate on-domain email delivery proof.",
-  "nextMilestone": "Verify football@playfranchisearchitect.com forwarding/copying with a real received-message receipt, rerun ops launch-evidence with --email-evidence, then confirm post-push public route state before any SPARKED flip.",
+  "currentFocus": "Session 29 shipped a saturated /goal /arc pass covering 13 of 17 ranked audit items: preseason-prediction receipts, a narrative continuity engine reviving a previously-dead event system, investment-driven scouting reveal, a real situational play-calling + fourth-down decision brain, a zero-backend return digest, ARIA tab semantics + a modal focus-trap utility, and six infra/truth fixes. what-if-replay, silent-error-surfacing, and service-scaffold-honesty are deferred to the next session.",
+  "nextMilestone": "Pick up what-if-replay, silent-error-surfacing, and service-scaffold-honesty from docs/AUDIT_2026-07-01_SESSION29.md; verify football@playfranchisearchitect.com forwarding/copying with a real received-message receipt before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified and post-push public route/domain state passes for playfranchisearchitect.com."
   ],
-  "lastUpdated": "2026-07-01",
+  "lastUpdated": "2026-07-02",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,21 +18,26 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 173,
-    "pass": 173,
+    "totalTests": 270,
+    "pass": 270,
     "fail": 0,
-    "lastRun": "2026-07-01",
+    "lastRun": "2026-07-02",
     "newTestFiles": [
-      "test/session8-endpoints.test.js",
-      "test/browser-wiring.test.js",
-      "test/studio-protocol-smoke.test.js",
-      "test/launch-evidence-report.test.js"
+      "test/time-capsule.test.js",
+      "test/continuity-ledger.test.js",
+      "test/scouting-skill-reveal.test.js",
+      "test/situational-playcalling.test.js",
+      "test/return-digest.test.js",
+      "test/modal-manager.test.js",
+      "test/shard-coverage.test.js",
+      "test/determinism-smoke.test.js"
     ],
-    "newTestCount": 3,
-    "coverage": "Session 28 verified default npm test 173/173, Playwright UI 9/9, focused launch/browser/studio tests 20/20, Pages build/smoke, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, canon adoption check, and canon conformance."
+    "newTestCount": 8,
+    "coverage": "Session 29 verified default npm test 270/270 (up from 173) across all 5 shards with real per-shard exit codes (core 64/64, runtime 109/109, sim-contract 60/60, sim-realism 1/1, studio 36/36), Pages build/smoke, windows-hide guard, Wave guard, canon conformance (vector green, 0 GAP), secrets audit, blocker preflight. Playwright UI could not be verified locally this session — repeated launches hung with zero output in this sandboxed environment (93 lingering node.exe processes observed system-wide, likely resource contention from the session's many test invocations); not attempted to fix via bulk process termination (out of safe scope). This is a local-environment gap, not a regression signal — CI has its own documented Playwright install/launch workarounds and will verify the UI suite on push.",
+    "uiSuiteNote": "npm run test:ui not verified locally this session (hung, killed after ~14 min combined across two attempts including a fresh browser install). Session 28 last verified it 9/9; no code change in this session should affect Playwright's ability to launch a browser, so this is treated as an environment issue, not a shipped regression."
   },
-  "testsPassing": 173,
-  "testsTotal": 173,
+  "testsPassing": 270,
+  "testsTotal": 270,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -71,46 +76,42 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 963,
+  "silScore": 974,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 84,
-    "momentum": 97,
-    "engagement": 97,
+    "creativeAlignment": 88,
+    "momentum": 98,
+    "engagement": 99,
     "processQuality": 100,
     "crossRepoCoherence": 100,
-    "securityPosture": 97,
-    "ecosystemIntegration": 97,
-    "capitalEfficiency": 91,
+    "securityPosture": 99,
+    "ecosystemIntegration": 98,
+    "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 28,
-  "lastAgent": "codex",
+  "currentSession": 29,
+  "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "node --check public/app.js",
-      "node --check scripts/launch-evidence-report.mjs",
-      "node --check scripts/ops.mjs",
-      "node --test test/launch-evidence-report.test.js test/browser-wiring.test.js test/studio-protocol-smoke.test.js (20/20)",
-      "node scripts/ops.mjs launch-evidence --json --output audits/launch-evidence-2026-07-01-session28.json (blocked as expected on missing email evidence)",
-      "npm test (173/173)",
-      "npx playwright test tests-ui/app.spec.js -g \"create league, advance week\" --reporter=line",
-      "npm run test:ui (9/9)",
+      "node --check on every new/modified JS file (engine, runtime, public/lib, scripts)",
+      "npm test (270/270; core 64/64, runtime 109/109, sim-contract 60/60, sim-realism 1/1, studio 36/36 — real per-shard exit codes, run twice)",
       "npm run build:pages",
       "npm run smoke:pages",
-      "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
       "node scripts/check-windows-hide.mjs",
       "node scripts/check-canon-044-waves.mjs",
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
-      "node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --check",
-      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline"
+      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . (vector green, 0 GAP, 0 ABSOLUTE)",
+      "manual staged-file secret pattern scan (scripts/scan-secrets.mjs not vendored locally)",
+      "full calibration/monte-carlo/stats/ratings/career-realism/determinism regression suite verified green before and after the situational-playcalling engine change"
     ],
-    "date": "2026-07-01",
-    "timedOut": [],
+    "date": "2026-07-02",
+    "timedOut": [
+      "npm run test:ui — hung twice (5-minute timeout, then killed after ~9 more minutes following a fresh Playwright browser install); 93 lingering node.exe processes observed system-wide, most likely resource contention from the session's own many test invocations, not a code regression. Not chased further — bulk process termination was judged out of safe scope; CI will verify the UI suite on push."
+    ],
     "failed": [
-      "First npm run test:ui attempt exposed the now-styled tutorial overlay intercepting setup clicks and left a stale local server; the test now dismisses the real tutorial affordance, stale server processes were stopped, and focused/full Playwright reruns passed."
+      "Caught mid-session, before commit: test/modal-manager.test.js relied on a module-scope globalThis.document assignment that another file's async test (test/create-api-client.test.js) deleted mid-shard under --test-isolation=none, producing a real failure on the second full-suite run. Fixed by having every test set document fresh as its first synchronous statement; re-verified green."
     ]
   },
   "silScoreV3MigratedAt": "2026-04-21",

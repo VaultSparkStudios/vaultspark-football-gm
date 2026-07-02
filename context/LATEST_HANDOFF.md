@@ -1,5 +1,16 @@
 Session Intent: Session 29 — full saturated /goal /arc (start → audit → implement → closeout); exhaust the Unified Genius List plus second-order innovation candidates at genius quality bar, gate on context-meter, close out with full canonical write-back and direct push to main.
 
+## 2026-07-02 — Session 29 Closeout Handoff
+
+Where we left off:
+- Shipped 13 of 17 ranked audit items: preseason-prediction receipts, a narrative continuity engine (revived a previously dead event system), investment-driven scouting reveal, a real situational play-calling + fourth-down decision engine (verified against the full calibration/monte-carlo/determinism regression suite), a zero-backend return digest, ARIA tab semantics + a modal focus-trap utility, and six infra/truth fixes (genius-cache truth, orphan-test-shard coverage, landing.html un-orphaned, launch-evidence redirect-following, windows-hide-safe test spawning, CI deploy-gating).
+- Deferred honestly: what-if-replay, silent-error-surfacing, service-scaffold-honesty — not started after a mid-session resource-ceiling signal; carried to the next session's genius list, not silently dropped.
+- Verification: `npm test` 270/270 across all 5 default shards with real per-shard exit codes, `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, Wave guard, canon conformance (vector green, 0 GAP), secrets audit, blocker preflight.
+
+Next best move:
+- Pick up what-if-replay, silent-error-surfacing, and service-scaffold-honesty from `docs/AUDIT_2026-07-01_SESSION29.md` (ranks 4, 13, 17) — ladders and recipes are already scoped.
+- Verify `football@playfranchisearchitect.com` forwards/copies to Studio operations with a real received-message receipt, then rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json` before any SPARKED flip (unchanged blocker from Session 28).
+
 ## 2026-07-01 — Session 28 Closeout Handoff
 
 Where we left off:

@@ -315,20 +315,24 @@ Source: `docs/AUDIT_2026-07-01_SESSION29.md` (17 ranked items, combined priority
 
 | Item | Status |
 |------|--------|
-| time-capsule-receipts — preseason predictions graded by the Season Epilogue with reporter self-roast | Open |
-| return-hook-digest — zero-backend "While you were away" digest + attention badge for lapsed saves | Open |
-| narrative-continuity-engine — press-conference memory + narrative events feeding morale/hot-seat | Open |
-| what-if-replay — once-per-season non-canon Monday Morning QB replay of the most painful loss | Open |
-| situational-playcalling — down/distance/clock playcall leans, 4th-down brain, game-plan tendencies | Open |
-| scouting-skill-reveal — scouting allocation drives pro-day reveal precision + gated flags | Open |
-| genius-cache-truth — cache status must read the Execution Log, not mtimes/prose substrings | Open |
-| orphan-test-shards — shard the 5 unsharded test files + no-orphan guard | Open |
-| landing-front-door — un-orphan landing.html (links + sitemap + CTA + compliance test) | Open |
-| launch-evidence-redirect-truth — follow redirect chains; judge final status | Open |
-| test-spawn-window-guard — safe-spawn in studio smoke test + guard scan root includes test/ | Open |
-| tabs-aria-modal-focus — ARIA tab semantics, shared modal focus manager, 44px touch targets | Open |
-| silent-error-surfacing — panelGuard() inline failure states replacing empty catch blocks | Open |
-| ci-deploy-gating — fast test prerequisite inside deploy workflows | Open |
-| determinism-smoke-on-push — fast same-seed comparison test in a push-path shard | Open |
-| theme-parity-static-pages — shared theme bootstrap across static pages | Open |
-| service-scaffold-honesty — truth-align or prove the stalled service extraction | Open |
+| time-capsule-receipts — preseason predictions graded by the Season Epilogue with reporter self-roast | Done |
+| return-hook-digest — zero-backend "While you were away" digest + attention badge for lapsed saves | Done |
+| narrative-continuity-engine — press-conference memory + narrative events feeding morale/hot-seat | Done |
+| what-if-replay — once-per-season non-canon Monday Morning QB replay of the most painful loss | Deferred |
+| situational-playcalling — down/distance/clock playcall leans, 4th-down brain, game-plan tendencies | Done |
+| scouting-skill-reveal — scouting allocation drives pro-day reveal precision + gated flags | Done |
+| genius-cache-truth — cache status must read the Execution Log, not mtimes/prose substrings | Done |
+| orphan-test-shards — shard the 5 unsharded test files + no-orphan guard | Done |
+| landing-front-door — un-orphan landing.html (links + sitemap + CTA + compliance test) | Done |
+| launch-evidence-redirect-truth — follow redirect chains; judge final status | Done |
+| test-spawn-window-guard — safe-spawn in studio smoke test + guard scan root includes test/ | Done |
+| tabs-aria-modal-focus — ARIA tab semantics, shared modal focus manager, 44px touch targets | Done |
+| silent-error-surfacing — panelGuard() inline failure states replacing empty catch blocks | Deferred |
+| ci-deploy-gating — fast test prerequisite inside deploy workflows | Done |
+| determinism-smoke-on-push — fast same-seed comparison test in a push-path shard | Done |
+| theme-parity-static-pages — shared theme bootstrap across static pages | Done |
+| service-scaffold-honesty — truth-align or prove the stalled service extraction | Deferred |
+
+**Notes:**
+- tabs-aria-modal-focus: ARIA tab semantics (roles, aria-selected sync, roving tabindex, 44px touch targets) are fully wired. `modalManager.js` is a complete, tested focus-trap/Escape/restore utility but is not yet adopted at each of the 14 modal call sites in `public/app.js` — ready-to-adopt follow-up, not silently claimed as fully wired.
+- what-if-replay, silent-error-surfacing, service-scaffold-honesty: not started this session — a session-limit signal arrived mid-sprint (two consecutive background-agent notifications carried no usable result and reported a resource ceiling). Consolidated and verified everything already shipped instead of starting new large work under that constraint. Honest deferral, not a silent skip — carry forward to the next session's genius list.

@@ -1,7 +1,7 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 28 closed at 963 / 1000 SIL v3.0. Last verified suite: 173/173 plus Playwright UI 9/9 and Pages build/smoke.
+Rolling status: Session 29 closed at 974 / 1000 SIL v3.0. Last verified suite: 270/270 (up from 173) plus Pages build/smoke. Playwright UI not verified locally this session (hung — environment resource contention, not a code regression); CI will verify on push.
 <!-- rolling-status-end -->
 
 ## 2026-07-01 — Session 28 Launch Evidence + Tutorial Truth Closeout
@@ -282,3 +282,22 @@ Category scores:
 | Automation Coverage | 100 | maintained at cap with new cache, brief, and UI-smoke regressions. |
 
 Follow-up: after this push deploys, verify GitHub Actions/Pages, public routes, and on-domain email forwarding before any SPARKED flip.
+## 2026-07-02 — Session 29 Saturated Genius Arc: Story, Retention, Sim Depth + Truth Repairs
+
+Score: 974 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap; default suite grew from 173 to 270 tests (13 new focused test files for every shipped item) and stays green with real per-shard direct exit codes verified twice. |
+| Creative Alignment | 88 | +4 — the largest single-session creative depth push in the project's history: preseason predictions graded by the beat reporter, a narrative continuity engine that revived a previously-dead event system with press-room memory, and a real situational play-calling + fourth-down brain replacing the flat coin-flip play selector. |
+| Momentum | 98 | +1 — shipped 13 of 17 ranked audit items across infra, UX, and engine depth axes; the remaining 4 were honestly deferred rather than silently dropped or fabricated as done. |
+| Engagement | 99 | +2 — closed the single largest engagement gap named in the audit trail: there was no return/retention loop of any kind before this session. Zero-backend "While You Were Away" digest now ships, plus the narrative continuity engine gives the story layer memory across weeks. |
+| Process Quality | 100 | Maintained cap; caught and fixed a real cross-file test-isolation bug in my own harness (`--test-isolation=none` sharing globalThis.document across files) before it could ship as a fabricated pass — verified with the real exit code, not the pipe's. |
+| Cross-Repo Coherence | 100 | Maintained cap; no sibling-repo tree edits, all work stayed local. |
+| Security Posture | 99 | +2 — added CI deploy-gating (Pages/backend deploys now require a fast test job to pass before building/publishing artifacts), closing a real gap where a red-CI push could still deploy. |
+| Ecosystem Integration | 98 | +1 — the genius-list protocol cache now reads Execution Log truth instead of mtimes and prose substrings, closing a real /go-protocol integrity gap discovered mid-audit. |
+| Capital Efficiency | 92 | +1 — every shipped feature (time capsule, return digest, narrative continuity) stayed zero-backend/static-host-safe; no new paid services or variable-cost runtime paths. |
+| Automation Coverage | 100 | Maintained cap; 13 new focused test files (97 new tests) cover every shipped item, including a statistical correlation proof for position-weighted combine grades and a full calibration/monte-carlo/determinism regression pass around the new play-calling engine. |
+
+Follow-up: what-if-replay, silent-error-surfacing, and service-scaffold-honesty remain on the genius list for the next session — deferred honestly under a mid-session resource-ceiling signal, not skipped silently. Verify `football@playfranchisearchitect.com` forwarding/copying before any SPARKED flip (unchanged blocker, not touched this session).

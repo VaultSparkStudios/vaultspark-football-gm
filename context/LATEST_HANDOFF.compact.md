@@ -1,45 +1,35 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: fda240858894 -->
-<!-- generated-at: 2026-07-01T16:32:27.050Z -->
+<!-- source-hash: f5cdac897365 -->
+<!-- generated-at: 2026-07-01T23:13:11.307Z -->
 
 # LATEST_HANDOFF (compact)
 
-HANDOFF SUMMARY
+SESSION 28 HANDOFF (compressed)
 
-Session
-- Latest: Session 27 (2026-07-01)
+Shipped
+- First-run tutorial style injection.
+- Manifest launch-truth repair: state is FORGE, not SPARKED.
+- Repo-local launch evidence reporting via ops.mjs launch-evidence.
+- Launch-evidence run confirmed public routes reachable but correctly blocked launch on missing on-domain email forwarding/copying evidence.
 
-Shipped (S27)
-- cache-genius-list.mjs: --check/--write, ranks audit sources by date/session, writes .cache/genius-list.json with status exhausted when latest audit has no open items.
-- ops.mjs cache-genius-list command surface exposed, covered by studio smoke.
-- render-startup-brief.mjs: always renders HUMAN PRESSURE block (zero-pressure copy when empty); STARTUP_BRIEF.md validates clean.
-- Playwright advance-week smoke now dismisses GM Decision modal before waiting for Ready (was looking like a test hang).
+Verification (all passed)
+- npm test 173/173; Playwright UI 9/9; focused launch/browser/studio 20/20.
+- Pages build/smoke, windows-hide, Wave guard, startup brief validation, secrets audit, blocker preflight, canon checks.
 
 Current Intent
-- Continue durable /goal /arc. Primary ranked queue exhausted; sessions run fresh live-code audits and implement verified truth/reliability items rather than fabricating launch evidence.
-- Do NOT flip launch/SPARKED until public-route and email-forwarding evidence verified.
+- Get to launch (SPARKED flip) once real on-domain email evidence exists. Do not flip prematurely.
 
-Now Bucket (top 3)
-- Confirm GitHub Actions/Pages deploy for the pushed commit.
-- Smoke https://playfranchisearchitect.com/ routes post-deploy.
-- Verify on-domain email forwarding for football@playfranchisearchitect.com.
+Now (top 3)
+1. Verify football@playfranchisearchitect.com forwards/copies to Studio operations using a real received-message receipt.
+2. Rerun ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json.
+3. Confirm GitHub Actions/Pages deploy for the pushed commit and smoke https://playfranchisearchitect.com/ routes.
 
 Blockers (top 3)
-- Launch/SPARKED blocked: public route/domain state not verified after deploy.
-- Email forwarding for football@playfranchisearchitect.com not confirmed to reach Studio operations.
-- SIL v6 Impact remains 0/1000 (uninstrumented adoption signals; carried from S21).
+1. Missing on-domain email forwarding/copying evidence — hard-blocks SPARKED flip.
+2. Launch evidence report requires a real received-message receipt (--email-evidence), not yet supplied.
+3. Post-deploy public route/domain state must be re-verified after push before any launch claim.
 
-Human-Blocked Items (with age)
-- Email forwarding verification (football@playfranchisearchitect.com): open since S25, ~2 sessions.
-- Public route/domain post-deploy smoke: recurring since S25, ~2 sessions.
-- (Historical) Cloudflare/GitHub Pages custom-domain cert bad_authz: raised S14-S24; superseded by playfranchisearchitect.com migration in S25.
+Human-Blocked (with age)
+- Email forwarding verification for football@playfranchisearchitect.com — pending across Sessions 22-28 (~6 sessions / carried since domain rebrand in Session 25). Requires external mailbox/receipt access.
 
-Verification State (S27)
-- npm test 172/172; test:ui 9/9; focused browser/studio/session8 34/34.
-- build:pages, smoke:pages, check-windows-hide, check-canon-044-waves, startup-brief validation, secrets audit, blocker-preflight all passed.
-
-Honesty Note
-- First UI aggregate exposed a real expected-modal test gap, not a protocol-patch regression; fixed before pass.
-
-Next Session
-- Post-deploy: verify Pages deploy, smoke playfranchisearchitect.com routes, confirm email forwarding; only then consider flipping Launch Readiness.
+Next session: obtain the on-domain email receipt, rerun launch-evidence with --email-evidence, then re-check deploy/routes before considering SPARKED.
