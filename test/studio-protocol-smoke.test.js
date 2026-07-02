@@ -201,6 +201,31 @@ function runGeniusCache(dir, flag) {
   });
 }
 
+test("genius cache falls back to TASK_BOARD status when audit has no Execution Log", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vsfgm-genius-taskboard-"));
+  writeGeniusAuditFixture(dir);
+  mkdirSync(join(dir, "context"), { recursive: true });
+  writeFileSync(join(dir, "context", "TASK_BOARD.md"), `
+## Session Fixture
+
+| Item | Status |
+|------|--------|
+| alpha-item — shipped through task board only | Done |
+| gamma-item — blocked through task board only | Blocked |
+`);
+
+  const write = runGeniusCache(dir, "--write");
+  assert.equal(write.status, 0, write.stderr);
+
+  const cache = JSON.parse(readFileSync(join(dir, ".cache", "genius-list.json"), "utf8"));
+  assert.equal(cache.closed.includes("alpha-item"), true);
+  assert.equal(cache.items.some((item) => item.slug === "alpha-item"), false);
+  const beta = cache.items.find((item) => item.slug === "beta-item");
+  assert.equal(beta.status, "open");
+  const gamma = cache.items.find((item) => item.slug === "gamma-item");
+  assert.equal(gamma.status, "open");
+  assert.equal(gamma.blocked, true);
+});
 test("genius cache joins Execution Log status by slug and ignores prose substrings", () => {
   const dir = mkdtempSync(join(tmpdir(), "vsfgm-genius-cache-"));
   writeGeniusAuditFixture(dir, {

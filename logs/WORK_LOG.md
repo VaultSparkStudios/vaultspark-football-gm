@@ -207,3 +207,12 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Caught and fixed a real bug in my own test harness mid-session: `scripts/run-test-shard.mjs` runs shards with `--test-isolation=none`, sharing one process across files; a module-scope `globalThis.document` assignment in a new test file collided with another file's async cleanup. Found via a genuine full-suite failure (not assumed), fixed by making every test set `document` fresh synchronously, re-verified.
 - Deferred honestly: what-if-replay, silent-error-surfacing, service-scaffold-honesty. Two were dispatched as background subagents but returned no usable result alongside a session-limit signal; consolidated and verified in-flight work instead of dispatching further large parallel work under that constraint.
 - Verification: `npm test` 270/270 (up from 173; 97 new tests across 13 new files), full per-shard direct exit codes (core 64/64, runtime 109/109, sim-contract 60/60, sim-realism 1/1, studio 36/36), `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, Wave guard, canon conformance (vector green, 0 GAP), secrets audit, blocker preflight.
+
+## 2026-07-02 — Session 31 closeout truth repair and deploy evidence
+
+- Continued the active `/arc` → `/closeout` → direct-main/deploy objective from a clean Session 30 commit.
+- Classified the lingering session lock as stale, not cutoff, because the worktree was clean and `origin/main...HEAD` was `0 0`.
+- Found a real `/go` observability defect: `.cache/genius-list.json` still listed Session 29/30 completed items as open because the latest audit has no Execution Log and completion evidence lives in `context/TASK_BOARD.md`.
+- Fixed `scripts/cache-genius-list.mjs` to fall back to task-board Done/Blocked rows by slug, added a focused regression, and regenerated the cache to `0 open items` / `exhausted`.
+- Ran live launch evidence for `https://playfranchisearchitect.com`: all checked public routes returned final HTTP 200, but launch remains blocked because `football@playfranchisearchitect.com` forwarding/copying has no received-message receipt.
+- Verification final: `npm test` 274/274, `npm run test:ui` 9/9 after the aggregate-only history awards test-state fix, Pages build/smoke, cache check, windows-hide, Wave guard, secrets audit, blocker preflight, and canon conformance all passed.

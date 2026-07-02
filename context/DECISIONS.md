@@ -226,3 +226,13 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** CANON-019/031 — try first, but do not fabricate progress or push further under a resource-ceiling signal when the honest move is to stabilize and hand off cleanly. A background agent producing no result text is not evidence its file changes are safe; each touched file was diffed and verified before being trusted.
 
 **Pattern established:** When a background subagent's notification carries a session-limit/resource-ceiling signal instead of a result, treat its partial file changes as unverified until diffed directly — do not assume completion from the dispatch prompt's intent. Stop dispatching new large work and consolidate.
+
+---
+
+## 2026-07-02 — Session 31: task board is the cache fallback truth source
+
+**Decision:** When the latest audit lacks an Execution Log, `scripts/cache-genius-list.mjs` must join completion status from `context/TASK_BOARD.md` by audit slug before reporting `/go` open work.
+
+**Rationale:** Session 29/30 completion evidence was recorded in the task board, handoff, current state, and status JSON, but the cache helper only trusted an audit Execution Log section that did not exist in `docs/AUDIT_2026-07-01_SESSION29.md`. Reporting those shipped items as open violated CANON-031 observability honesty and could make a future arc rework completed systems.
+
+**Pattern established:** Audit artifacts can be immutable ranked plans; task boards are allowed to be the append-only execution ledger. Protocol caches should reconcile both before claiming work is open or exhausted.

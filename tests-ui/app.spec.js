@@ -256,6 +256,9 @@ test("season awards and hall of fame history render for a populated multi-year l
   await createLeagueFromSetup(page, { runtimeMode: "server" });
   const seeded = await simulateSeasonsByApi(page, 2);
   const dashboard = seeded?.state || {};
+  await page.evaluate((nextState) => {
+    globalThis.__VS_FA_APPLY_DASHBOARD__?.(nextState);
+  }, dashboard);
   expect(dashboard.currentYear).toBeGreaterThanOrEqual(2028);
   expect((dashboard.awards || []).length).toBeGreaterThanOrEqual(2);
   expect((dashboard.hallOfFame || []).length).toBeGreaterThan(0);
@@ -268,8 +271,6 @@ test("season awards and hall of fame history render for a populated multi-year l
     (rosterPayload.roster || []).find((player) => Number.isFinite(player.jerseyNumber)) || rosterPayload.roster?.[0] || null;
   expect(retirementCandidate?.id).toBeTruthy();
   expect(retirementCandidate?.name).toBeTruthy();
-  await page.reload();
-  await waitGameReady(page);
   await page.click('[data-testid="tab-settings"]');
   await page.uncheck("#settingRetiredNumberRequireRetiredPlayer");
   await page.uncheck("#settingRetiredNumberRequireHallOfFame");

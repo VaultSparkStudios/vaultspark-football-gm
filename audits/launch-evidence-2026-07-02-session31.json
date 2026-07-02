@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0",
+  "generatedBy": "scripts/launch-evidence-report.mjs",
+  "checkedAt": "2026-07-02T19:19:02.550Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "summary": {
+    "status": "blocked",
+    "routesOk": true,
+    "emailForwardingVerified": false,
+    "blocker": "On-domain email forwarding/copying is unverified."
+  },
+  "routeChecks": [
+    {
+      "route": "/",
+      "url": "https://playfranchisearchitect.com/",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/game.html",
+      "url": "https://playfranchisearchitect.com/game.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /game → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/game.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/contact.html",
+      "url": "https://playfranchisearchitect.com/contact.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /contact → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/contact.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/contact",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/privacy.html",
+      "url": "https://playfranchisearchitect.com/privacy.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /privacy → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/privacy.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/privacy",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/terms.html",
+      "url": "https://playfranchisearchitect.com/terms.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /terms → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/terms.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/terms",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/agents.json",
+      "url": "https://playfranchisearchitect.com/agents.json",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/agents.json",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/.well-known/llms.txt",
+      "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/sitemap.xml",
+      "url": "https://playfranchisearchitect.com/sitemap.xml",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/sitemap.xml",
+          "statusCode": 200
+        }
+      ]
+    }
+  ],
+  "emailForwarding": {
+    "status": "unverified",
+    "address": "football@playfranchisearchitect.com",
+    "detail": "No delivery/forwarding evidence supplied. Do not mark SPARKED from route checks alone."
+  }
+}

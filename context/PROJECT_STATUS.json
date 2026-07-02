@@ -4,10 +4,10 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 30 completed the carried Session 29 deferrals: deterministic non-canon what-if replay, visible panel error surfacing, honest service scaffold binding, and a Playwright-caught return digest overlay truth repair. Current tree is verified green.",
-  "nextMilestone": "Verify football@playfranchisearchitect.com forwarding/copying with a real received-message receipt, rerun launch evidence with email proof, then consider SPARKED only if post-push public route/domain state remains green.",
+  "currentFocus": "Session 31 closeout repaired the genius-cache truth source so completed Session 29/30 audit items no longer reappear as open work, regenerated the exhausted cache, and verified live public routes while preserving the email-forwarding launch blocker.",
+  "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, rerun launch evidence with that receipt, then verify post-push Pages/Actions state before any SPARKED flip.",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified and post-push public route/domain state passes for playfranchisearchitect.com."
+    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt; Session 31 live route evidence passed for all checked public routes."
   ],
   "lastUpdated": "2026-07-02",
   "lifecycle": "deployed",
@@ -18,19 +18,17 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 273,
-    "pass": 273,
+    "totalTests": 274,
+    "pass": 274,
     "fail": 0,
     "lastRun": "2026-07-02",
-    "newTestFiles": [
-      "test/what-if-replay.test.js"
-    ],
+    "newTestFiles": [],
     "newTestCount": 1,
-    "coverage": "Session 30 verified current-tree npm test 273/273 across all 5 default shards (core 64/64, runtime 109/109, sim-contract 63/63, sim-realism 1/1, studio 36/36), Playwright UI 9/9, Pages build/smoke, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, and canon conformance 0 gaps.",
-    "uiSuiteNote": "npm run test:ui verified locally this session: 9/9. First run caught the return digest overlay intercepting navigation; fixed as non-modal status UI and re-ran green."
+    "coverage": "Session 31 verified final tree with npm test 274/274 across all 5 default shards (core 64/64, runtime 109/109, sim-contract 63/63, sim-realism 1/1, studio 37/37), Playwright UI 9/9 after repairing aggregate history test state sync, Pages build/smoke, cache --check, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, canon conformance 0 gaps, and live launch evidence routesOk=true blocked only on email proof.",
+    "uiSuiteNote": "npm run test:ui verified locally this session: first aggregate run caught the history awards test relying on an unrelated Settings refresh after API seeding; fixed with a localhost-only dashboard sync hook and reran full UI 9/9."
   },
-  "testsPassing": 273,
-  "testsTotal": 273,
+  "testsPassing": 274,
+  "testsTotal": 274,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -69,11 +67,11 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 978,
+  "silScore": 979,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 90,
-    "momentum": 99,
+    "momentum": 100,
     "engagement": 100,
     "processQuality": 100,
     "crossRepoCoherence": 100,
@@ -82,26 +80,31 @@
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 30,
+  "currentSession": 31,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "npm test (273/273; core 64/64, runtime 109/109, sim-contract 63/63, sim-realism 1/1, studio 36/36 — real per-shard exit codes on the current tree)",
-      "npm run test:ui (9/9 after fixing return digest overlay interception)",
+      "npm test (274/274; core 64/64, runtime 109/109, sim-contract 63/63, sim-realism 1/1, studio 37/37)",
+      "npm run test:ui (9/9 after fixing aggregate history awards state sync)",
       "npm run build:pages",
       "npm run smoke:pages",
+      "node --check scripts/cache-genius-list.mjs",
+      "node --check public/app.js",
+      "node scripts/cache-genius-list.mjs --write (0 open items)",
+      "node scripts/cache-genius-list.mjs --check (FRESH)",
       "node scripts/check-windows-hide.mjs",
       "node scripts/check-canon-044-waves.mjs",
       "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
-      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline (0 GAP, 0 ABSOLUTE)"
+      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline (0 GAP, 0 ABSOLUTE)",
+      "node scripts/ops.mjs launch-evidence --json --output audits/launch-evidence-2026-07-02-session31.json (routesOk=true, blocked on email evidence)"
     ],
     "date": "2026-07-02",
     "timedOut": [],
     "failed": [
-      "Caught mid-session, before commit: first Playwright UI run failed because the return digest overlay intercepted Settings navigation after reload. Fixed the product behavior by making the digest non-modal status UI; re-verified Playwright UI 9/9 and default npm test 273/273."
+      "First npm run test:ui aggregate failed because the history awards test seeded server state via raw fetch but relied on a later Settings save to update browser state; fixed by applying the seeded dashboard through a localhost-only test hook and reran full UI 9/9."
     ]
   },
   "silScoreV3MigratedAt": "2026-04-21",
@@ -144,3 +147,4 @@
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-02"
 }
+

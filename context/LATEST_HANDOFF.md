@@ -1,3 +1,15 @@
+## 2026-07-02 — Session 31 Closeout Handoff
+
+Where we left off:
+- Continued the active `/arc` plus `/closeout` objective from a clean Session 30 commit and confirmed there was no cutoff: clean tree, no divergence, stale lock only.
+- Repaired the genius cache truth source: `scripts/cache-genius-list.mjs` now falls back to task-board Done/Blocked rows by slug when the audit lacks an Execution Log.
+- Regenerated `.cache/genius-list.json`; the latest audit is now exhausted with 0 open items, matching Session 29/30 task-board truth.
+- Live launch evidence for `https://playfranchisearchitect.com` found all checked public routes reachable, including `/`, `/game.html`, `/contact.html`, `/privacy.html`, `/terms.html`, `/agents.json`, `/.well-known/llms.txt`, and `/sitemap.xml`.
+- Launch/SPARKED remains blocked honestly because no received-message receipt proves `football@playfranchisearchitect.com` forwards/copies to Studio operations.
+
+Next best move:
+- Verify `football@playfranchisearchitect.com` forwarding/copying with a real received-message receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then check GitHub Actions/Pages after the closeout push.
+Session Intent: Continue durable `/arc` objective through full `/closeout`, direct commit/push to main, and deploy verification without fabricating launch readiness.
 ## 2026-07-02 — Session 30 Closeout Handoff
 
 Where we left off:

@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-07-02",
+  "session": 31,
+  "project": "franchise-architect-football",
+  "intent": "Continue /arc through /closeout, direct commit/push to main, and deploy verification.",
+  "outcome": "partial-launch-blocked-on-email-proof",
+  "shipped": [
+    "Repaired genius cache fallback to TASK_BOARD Done/Blocked rows when audit Execution Log is absent",
+    "Regenerated exhausted genius cache with 0 open items",
+    "Captured live launch evidence: all checked public routes final HTTP 200; email forwarding unverified"
+  ],
+  "verification": [
+    "node --check scripts/cache-genius-list.mjs",
+    "node --test --test-name-pattern \"TASK_BOARD status\" test/studio-protocol-smoke.test.js",
+    "node scripts/cache-genius-list.mjs --write",
+    "node scripts/cache-genius-list.mjs --check",
+    "node scripts/ops.mjs launch-evidence --json --output audits/launch-evidence-2026-07-02-session31.json"
+  ],
+  "blockers": [
+    "football@playfranchisearchitect.com forwarding/copying lacks a real delivery receipt"
+  ]
+}
+

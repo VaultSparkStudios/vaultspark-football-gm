@@ -301,3 +301,23 @@ Category scores:
 | Automation Coverage | 100 | Maintained cap; 13 new focused test files (97 new tests) cover every shipped item, including a statistical correlation proof for position-weighted combine grades and a full calibration/monte-carlo/determinism regression pass around the new play-calling engine. |
 
 Follow-up: what-if-replay, silent-error-surfacing, and service-scaffold-honesty remain on the genius list for the next session — deferred honestly under a mid-session resource-ceiling signal, not skipped silently. Verify `football@playfranchisearchitect.com` forwarding/copying before any SPARKED flip (unchanged blocker, not touched this session).
+
+## 2026-07-02 — Session 31 Closeout Truth Repair + Deploy Evidence
+
+Score: 979 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap; cache helper syntax and focused regression passed, full closeout suite pending before push. |
+| Creative Alignment | 90 | Unchanged; no new player-facing creative behavior, but launch truth now protects the public experience from false readiness. |
+| Momentum | 100 | +1 for closing the remaining protocol queue defect and preserving direct-to-main deploy momentum without reworking shipped Session 29/30 items. |
+| Engagement | 100 | Maintained cap; no gameplay change, but public route evidence stayed green. |
+| Process Quality | 100 | Maintained cap; caught and fixed a false-open queue state during startup instead of accepting the generated cache. |
+| Cross-Repo Coherence | 100 | Maintained cap; no sibling-repo tree edits. |
+| Security Posture | 99 | Unchanged; no credential or auth surface changed. |
+| Ecosystem Integration | 98 | Maintained; `/go` cache now reconciles audit plans with task-board execution truth. |
+| Capital Efficiency | 92 | Unchanged; no new services or variable-cost runtime paths. |
+| Automation Coverage | 100 | Maintained cap with a new regression proving task-board fallback status parsing. |
+
+Follow-up: obtain real delivery proof for `football@playfranchisearchitect.com`, rerun launch evidence with `--email-evidence`, then verify post-push GitHub Actions/Pages before any SPARKED flip.

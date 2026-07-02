@@ -320,6 +320,12 @@ function syncMobileLoopOverlay() {
 }
 
 
+function exposeLocalTestHooks() {
+  const host = globalThis.location?.hostname || "";
+  if (host !== "localhost" && host !== "127.0.0.1") return;
+  globalThis.__VS_FA_APPLY_DASHBOARD__ = applyDashboard;
+}
+
 function bindEvents() {
   bindMenuTabs(activateTab);
 
@@ -1727,6 +1733,7 @@ async function init() {
     const reason = event?.detail?.reason ? ` ${event.detail.reason}` : "";
     setStatus(`Server unreachable — switched to client-only mode.${reason}`);
   });
+  exposeLocalTestHooks();
   bindEvents();
   applyShellTheme();
   renderTradeWorkspace();

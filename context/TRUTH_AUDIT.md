@@ -137,3 +137,10 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - UI truth repair: Playwright caught the return digest overlay intercepting Settings navigation after reload. It is now non-modal status UI; `npm run test:ui` passes 9/9.
 - Verification truth: current tree passed `npm test` 273/273, Playwright UI 9/9, Pages build/smoke, windows-hide, Wave guard, startup brief validation, secrets audit, blocker preflight, and canon conformance 0 gaps.
 - Launch truth unchanged: launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.
+
+## 2026-07-02 — Session 31 Truth Audit
+
+- Genius-cache truth repair: `scripts/cache-genius-list.mjs` now falls back to `context/TASK_BOARD.md` Done/Blocked rows when an audit lacks an Execution Log. This fixes the live defect where completed Session 29/30 audit items were still shown as open in `.cache/genius-list.json`.
+- Queue truth: regenerated `.cache/genius-list.json` reports the latest audit as exhausted with 0 open items.
+- Launch truth: `audits/launch-evidence-2026-07-02-session31.json` reports `routesOk=true` for all checked public routes on `https://playfranchisearchitect.com`, but status remains `blocked` because on-domain email forwarding/copying is still unverified.
+- UI verification truth: first Session 31 Playwright aggregate failed because the history-awards test seeded server state through raw API calls without updating browser state, then depended on a later Settings save to pull that state into the UI. A localhost-only dashboard sync hook now makes the test assert the seeded state directly; full Playwright UI rerun passed 9/9.
