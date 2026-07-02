@@ -121,7 +121,8 @@ export function renderOverviewSpotlight() {
     ? `${standingsRow.wins}-${standingsRow.losses}${standingsRow.ties ? `-${standingsRow.ties}` : ""}`
     : "0-0";
   const teamLabel = [controlledTeam.city, controlledTeam.nickname].filter(Boolean).join(" ") || controlledTeam.name || controlledTeam.id || "-";
-  const schemeLabel = [scheme.offense, scheme.defense].filter(Boolean).join(" / ") || controlledTeam.scheme || "Balanced";
+  const schemeFallback = typeof controlledTeam.scheme === "string" ? controlledTeam.scheme : "";
+  const schemeLabel = [scheme.offense, scheme.defense].filter(Boolean).join(" / ") || schemeFallback || "Balanced";
   const spotlight = document.getElementById("overviewTeamSpotlight");
   if (spotlight) {
     spotlight.innerHTML = `

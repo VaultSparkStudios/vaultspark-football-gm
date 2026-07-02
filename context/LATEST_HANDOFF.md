@@ -1,3 +1,19 @@
+## 2026-07-02 — Session 33 Closeout Handoff
+
+Where we left off:
+- Founder goal: fix the entire visual website theme (color scheme "not readable and all conflicting"), deliver premium/elite cohesive UX with a real user loop working end-to-end across all modes and through saves/load, add test coverage, then full /closeout + deploy to main.
+- Root cause found by rendering the app: the light theme only overrode base tokens, so the game screen showed dark panels/topbar/sidebar/hero with dark text on top — light mode was effectively unusable. Confirmed via Playwright screenshots before/after.
+- Shipped a disciplined surface-token system and a deterministic codemod (scripts/codemod-theme-tokens.mjs, 95 replacements) routing all hardcoded dark surfaces/text/borders through tokens, plus a complete [data-theme=light] override; dark theme preserved and refined.
+- Tamed the "conflicting" accents (overview identity labels off raw team crimson onto section accent); fixed two content bugs (IDENTITY [object Object]; broken logo from dev-server .svg octet-stream MIME).
+- Added tests-ui/theme.spec.js (4) guarding the exact regression (opposite-luminance text/surface per theme), plus no-[object Object] and theme persistence.
+- Verified: node shards 275/275; Playwright UI 13/13 (incl. save/load persistence); Pages build/smoke. Visual QA in both themes across every tab, setup, and marketing pages.
+
+Next best move:
+- After this push deploys, confirm GitHub Actions/Pages for the Session 33 commit and rerun live route smoke if needed.
+- Optional cohesion follow-up: rebrand the blue landing marketing page to the app gold/teal language.
+- Launch/SPARKED still needs the real football@playfranchisearchitect.com forwarding receipt before any flip.
+Session Intent: Fix the website visual theme to a premium, readable, cohesive standard with end-to-end loop + save/load working, add coverage, and complete full /closeout with commit/push to main.
+
 ## 2026-07-02 — Session 32 Closeout Handoff
 
 Where we left off:

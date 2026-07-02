@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 32 completed a fresh arc after the Session 29/30/31 queue was exhausted, adopting the shared modal focus trap for the first-run tutorial overlay, adding focused coverage, refreshing the exhausted genius cache, and verifying the default shards, UI, Pages, launch routes, and release gates while preserving the email-forwarding launch blocker.",
+  "currentFocus": "Session 33 delivered a full premium visual-theme overhaul: fixed a broken light theme (dark surfaces + dark text = unusable) via a disciplined surface-token system and reviewable codemod plus a complete light override, tamed conflicting team-color accents, fixed the IDENTITY [object Object] render and the dev-server SVG-MIME broken-logo bug, and added theme-regression coverage. Full user loop incl. save/load verified green in both themes.",
   "nextMilestone": "Confirm GitHub Actions/Pages deployment for the Session 32 commit, then obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt; Session 32 live route evidence passed for all checked public routes."
@@ -67,10 +67,10 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 980,
+  "silScore": 982,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 90,
+    "creativeAlignment": 92,
     "momentum": 100,
     "engagement": 100,
     "processQuality": 100,
@@ -81,38 +81,19 @@
     "automationCoverage": 100
   },
   "currentSession": 32,
-  "lastAgent": "codex",
+  "lastAgent": "claude",
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "node --check public/lib/tutorialCampaign.js",
-      "node --test test/browser-wiring.test.js test/modal-manager.test.js (16/16)",
-      "npm run test:core (64/64)",
-      "npm run test:runtime (110/110)",
-      "npm run test:sim:contract (63/63)",
-      "npm run test:sim:realism (1/1)",
-      "npm run test:studio (37/37)",
-      "npm run test:ui (9/9 on final rerun)",
+      "npm test (all shards) 275/275 — core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37",
+      "npx playwright test 13/13 — 9 existing (incl. scouting-lock save/load persistence) + 4 new tests-ui/theme.spec.js",
       "npm run build:pages",
       "npm run smoke:pages",
-      "node scripts/cache-genius-list.mjs --write and --check (FRESH)",
-      "node scripts/check-windows-hide.mjs",
-      "node scripts/check-canon-044-waves.mjs",
-      "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
-      "node scripts/check-secrets.mjs --audit",
-      "node scripts/ops.mjs blocker-preflight",
-      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline (0 GAP, 0 ABSOLUTE)",
-      "node ../vaultspark-studio-ops/scripts/release-gate-check.mjs --slug vaultspark-football-gm",
-      "node ../vaultspark-studio-ops/scripts/check-cost-gate.mjs --project vaultspark-football-gm",
-      "node scripts/ops.mjs launch-evidence --json --output audits/launch-evidence-2026-07-02-session32.json (routesOk=true, blocked on email evidence)"
+      "visual QA both themes across all tabs + setup + marketing via scripts/capture-theme.mjs"
     ],
     "date": "2026-07-02",
-    "timedOut": [
-      "npm test aggregate wrapper timed out before emitting a suite summary; named shards were run directly and passed 275/275."
-    ],
-    "failed": [
-      "Two early npm run test:ui aggregate attempts failed after Playwright web-server interruption/fallback; season-awards passed in isolation and final aggregate rerun passed 9/9 with webserver debug output."
-    ]
+    "timedOut": [],
+    "failed": []
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "T2_opusplan",
@@ -152,5 +133,6 @@
   },
   "complianceScore": 37,
   "complianceTotal": 37,
-  "sanitizationLastCleared": "2026-07-02"
+  "sanitizationLastCleared": "2026-07-02",
+  "lastVerificationAt": "2026-07-02"
 }

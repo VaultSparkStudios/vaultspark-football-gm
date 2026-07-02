@@ -363,3 +363,20 @@ Source: `docs/AUDIT_2026-07-02_SESSION32.md`.
 | sparked-flip — public launch status change | Blocked — missing real on-domain email forwarding/copying receipt |
 
 **Verification:** focused browser/modal 16/16; named default shards 275/275 (core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37); Playwright UI 9/9 on rerun; Pages build/smoke; cache check; windows-hide; Wave guard; startup brief validation; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates allow under registry slug `vaultspark-football-gm`; live routesOk=true but launch evidence remains blocked on email proof.
+
+## Session 33 — Premium Visual Theme Overhaul (2026-07-02)
+
+Source: founder goal — "fix the entire visual website theme; the color scheme is not readable and is all conflicting; premium elite UX, cohesive UI, engaging feel, real user loop working end-to-end across all modes and through saves/load."
+
+| Item | Status |
+|------|--------|
+| light-theme-broken-fix — light mode rendered dark panels/topbar/sidebar/hero with dark text (invisible); introduced surface-token system + complete [data-theme=light] override via reviewable codemod | Done |
+| conflicting-accents-fix — overview identity labels routed off raw --team-secondary (alarm-red) onto cohesive --section-accent-strong; per-tab section accents given readable light values | Done |
+| identity-object-object-bug — overview IDENTITY card no longer renders [object Object] (scheme fallback string-guarded) | Done |
+| svg-mime-logo-bug — dev server served .svg as octet-stream so brand logo was a broken image; added image/font MIME types | Done |
+| theme-regression-coverage — tests-ui/theme.spec.js (4) asserts opposite-luminance text/surface per theme, no [object Object], theme persists across reload | Done |
+| end-to-end-loop-verification — full user loop incl. save/load re-verified green in both themes | Done |
+
+**Verification:** node shards 275/275 (core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37); Playwright UI 13/13 (9 existing incl. scouting-lock save/load persistence + 4 new theme); npm run build:pages; npm run smoke:pages. Visual QA via scripts/capture-theme.mjs across all tabs + setup + marketing pages in both light and dark.
+
+**Still blocked:** Launch/SPARKED remains blocked only on real football@playfranchisearchitect.com forwarding/copying delivery evidence (unchanged). Follow-up (non-blocking): harmonize the blue-branded landing marketing page (public/landing.html) with the app gold/teal brand language for full cross-page cohesion.
