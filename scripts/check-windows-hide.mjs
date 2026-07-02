@@ -31,7 +31,7 @@
 // Propagated studio-wide (CANON-016): every project ships this guard + safe-spawn.mjs
 // + windows-hide-shim.cjs so no agent, in any repo, can reintroduce the window-storm.
 
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 // Reuse the ONE canonical directory-walk ignore set — do NOT re-declare the literal
@@ -55,11 +55,25 @@ const RAW_CP_ALLOWLIST = new Set([
 // A direct import/require of node:child_process (any quote/spacing, with or without node: prefix).
 const RAW_CP_RE = /(?:from\s*['"]|require\(\s*['"]|import\(\s*['"])(?:node:)?child_process['"]/;
 
-// Scan a tree for scripts that import child_process directly instead of the hardened
+// Default scan roots (S29: broadened from scripts/-only to include test/ — the smoke
+// test spawned ~15 raw children and the guard never saw it, founder-flagged S186).
+export const SCAN_ROOTS = [join(ROOT, 'scripts'), join(ROOT, 'test')];
+
+// Accept a single root (legacy test callers) or an array of roots; skip missing dirs.
+function filesUnder(roots) {
+  const out = [];
+  for (const root of Array.isArray(roots) ? roots : [roots]) {
+    if (!existsSync(root)) continue;
+    walk(root, out);
+  }
+  return out;
+}
+
+// Scan tree(s) for scripts that import child_process directly instead of the hardened
 // wrapper. Pure file reads — no child spawns — safe to call in-process from a test.
-export function scanDirectChildProcessImports(root = join(ROOT, 'scripts')) {
+export function scanDirectChildProcessImports(roots = SCAN_ROOTS) {
   const violations = [];
-  for (const file of walk(root)) {
+  for (const file of filesUnder(roots)) {
     const relPath = relative(ROOT, file).replace(/\\/g, '/');
     if (RAW_CP_ALLOWLIST.has(relPath)) continue;
     const src = readFileSync(file, 'utf8');
@@ -90,11 +104,11 @@ const SHELL_RE = /shell\s*:\s*true/g;
 const SPAWN_NEAR = /\b(spawnSync|spawn|execSync|execFileSync|execFile|exec|fork)\s*\(/;
 const HIDE_RE = /windowsHide\s*:\s*true/;
 
-// Scan a tree for shell:true spawns missing windowsHide:true. Pure file reads —
+// Scan tree(s) for shell:true spawns missing windowsHide:true. Pure file reads —
 // no child spawns — so it is safe to call in-process from a test.
-export function scanWindowsHide(root = join(ROOT, 'scripts')) {
+export function scanWindowsHide(roots = SCAN_ROOTS) {
   const violations = [];
-  for (const file of walk(root)) {
+  for (const file of filesUnder(roots)) {
     if (file.endsWith('check-windows-hide.mjs')) continue; // don't lint the guard's own pattern doc
     const src = readFileSync(file, 'utf8');
     SHELL_RE.lastIndex = 0;
@@ -118,9 +132,9 @@ export function scanWindowsHide(root = join(ROOT, 'scripts')) {
 // a shell on Windows; literal node does not.
 const LITERAL_NODE_SPAWN_NEAR = /\b(spawnSync|spawn|execFileSync|execFile)\s*\(\s*['"]node['"]/;
 
-export function scanShellNodeSpawns(root = join(ROOT, 'scripts')) {
+export function scanShellNodeSpawns(roots = SCAN_ROOTS) {
   const violations = [];
-  for (const file of walk(root)) {
+  for (const file of filesUnder(roots)) {
     if (file.endsWith('check-windows-hide.mjs')) continue;
     const src = readFileSync(file, 'utf8')
       .replace(/\/\*[\s\S]*?\*\//g, '')

@@ -6,7 +6,6 @@ const root = process.cwd();
 const args = new Set(process.argv.slice(2));
 const cachePath = path.join(root, ".cache", "genius-list.json");
 const docsDir = path.join(root, "docs");
-const taskBoardPath = path.join(root, "context", "TASK_BOARD.md");
 
 function statMs(file) {
   try {
@@ -36,15 +35,48 @@ function latestAudit() {
   }
 }
 
+// Done-status comes EXCLUSIVELY from the audit's Execution Log table, joined by slug.
+// The old prose sniff (/shipped|implemented|done|verified|.../i on the Item cell) had two
+// live failure modes: Execution Log completions never matched (rows don't start with a
+// digit), and "unverified" in an Item cell matched /verified/i and wrongly closed the item.
+const DONE_STATUS_RE = /^(shipped|implemented|done)$/i;
+const BLOCKED_STATUS_RE = /^blocked$/i;
+
+// Parse the "## Execution Log" section table (if present): rows are
+// `| <slug> | <Status> | <Evidence> |`. Returns Map of lowercased slug -> raw status cell.
+function parseExecutionLog(text) {
+  const statuses = new Map();
+  const lines = text.split(/\r?\n/);
+  const start = lines.findIndex((line) => /^##\s+Execution Log\b/i.test(line.trim()));
+  if (start === -1) return statuses;
+  for (let i = start + 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (/^##\s/.test(line)) break; // next section
+    if (!line.startsWith("|")) continue;
+    const cols = line.split("|").slice(1, -1).map((col) => col.trim());
+    if (cols.length < 2) continue;
+    const slug = cols[0].replace(/\*\*/g, "").replace(/`/g, "").trim();
+    if (!slug) continue;
+    if (/^item$/i.test(slug)) continue; // header row
+    if (/^:?-{2,}:?$/.test(slug)) continue; // separator row
+    statuses.set(slug.toLowerCase(), cols[1]);
+  }
+  return statuses;
+}
+
 function parseAuditItems(auditFile) {
   if (!auditFile || !fs.existsSync(auditFile)) return [];
   const text = fs.readFileSync(auditFile, "utf8");
+  const execLog = parseExecutionLog(text);
   return text.split(/\r?\n/)
     .filter((line) => /^\|\s*\d+\s*\|/.test(line))
     .map((line) => {
       const cols = line.split("|").slice(1, -1).map((col) => col.trim());
       const titleMatch = (cols[7] ?? "").match(/\*\*([^*]+)\*\*/);
-      const status = /shipped|implemented|done|verified|recipe shipped/i.test(cols[7] ?? "") ? "done" : "open";
+      const slug = titleMatch?.[1]?.trim() ?? `audit-item-${cols[0]}`;
+      const logStatus = (execLog.get(slug.toLowerCase()) ?? "").trim();
+      const done = DONE_STATUS_RE.test(logStatus);
+      const blocked = BLOCKED_STATUS_RE.test(logStatus);
       return {
         rank: Number(cols[0]),
         tier: cols[1],
@@ -53,9 +85,10 @@ function parseAuditItems(auditFile) {
         impact: Number(cols[4]) || null,
         innovation: Number(cols[5]) || null,
         priority: Number(cols[6]) || null,
-        slug: titleMatch?.[1] ?? `audit-item-${cols[0]}`,
+        slug,
         title: (cols[7] ?? "").replace(/\*\*/g, "").trim(),
-        status,
+        status: done ? "done" : "open",
+        ...(blocked ? { blocked: true } : {}),
       };
     });
 }
@@ -64,27 +97,49 @@ function buildCache() {
   const audit = latestAudit();
   const allItems = parseAuditItems(audit?.file);
   const items = allItems.filter((item) => item.status !== "done");
+  const closed = allItems.filter((item) => item.status === "done").map((item) => item.slug);
   return {
     generatedAt: new Date().toISOString(),
     source: audit?.name ?? null,
     status: items.length > 0 ? "open" : "exhausted",
     items,
+    closed,
     exhaustedReason: items.length === 0
       ? "Latest audit has no open ranked items; run /audit for a new live-code plan."
       : null,
   };
 }
 
+// Content signature for freshness: source audit filename + closed slug set + per-item
+// slug/status/blocked. Deliberately excludes generatedAt (a rewrite with identical truth
+// stays FRESH) and file mtimes (a newer cache file whose CONTENT contradicts the audit
+// is STALE — correctness beats speed; the mtime fast-path was dropped, see S186/S29).
+function contentSignature(cache) {
+  return JSON.stringify({
+    source: cache?.source ?? null,
+    closed: [...(cache?.closed ?? [])].sort(),
+    items: (cache?.items ?? [])
+      .map((item) => ({ slug: item.slug, status: item.status, blocked: Boolean(item.blocked) }))
+      .sort((a, b) => a.slug.localeCompare(b.slug)),
+  });
+}
+
 function isFresh() {
-  const cacheMs = statMs(cachePath);
-  if (!cacheMs) return false;
-  const audit = latestAudit();
-  const inputMs = Math.max(statMs(taskBoardPath), audit?.mtimeMs ?? 0);
-  return cacheMs >= inputMs;
+  let existing;
+  try {
+    existing = JSON.parse(fs.readFileSync(cachePath, "utf8"));
+  } catch {
+    return false;
+  }
+  return contentSignature(existing) === contentSignature(buildCache());
 }
 
 if (args.has("--check")) {
-  process.exit(isFresh() ? 0 : 1);
+  const fresh = isFresh();
+  console.log(fresh
+    ? "genius cache: FRESH (content matches latest audit)"
+    : "genius cache: STALE (content contradicts latest audit — run --write)");
+  process.exit(fresh ? 0 : 1);
 }
 
 if (args.has("--write")) {

@@ -1,13 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { spawnSync } from "node:child_process";
+// S186 window-storm guard: spawnSync comes from the hardened wrapper (forces
+// windowsHide:true), never raw node:child_process — this file spawns ~15 children.
+import { spawnSync } from "../scripts/lib/safe-spawn.mjs";
 import { mkdtempSync, mkdirSync, writeFileSync, existsSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseHumanItems, parseUnifiedItems } from "../scripts/lib/task-board.mjs";
 import { classifyBlocker } from "../scripts/lib/blocker-rules.mjs";
-import { scanDirectChildProcessImports } from "../scripts/check-windows-hide.mjs";
+import { SCAN_ROOTS, scanDirectChildProcessImports } from "../scripts/check-windows-hide.mjs";
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -90,10 +92,24 @@ test("documented Studio protocol shims load", () => {
 test("windows-hide guard detects dynamic child_process imports", () => {
   const dir = mkdtempSync(join(tmpdir(), "vsfgm-window-guard-"));
   const script = join(dir, "dynamic.mjs");
-  writeFileSync(script, "const cp = await import('node:child_process');\nvoid cp;\n");
+  // String is split so the guard (which now scans test/ too) never self-matches this line.
+  writeFileSync(script, "const cp = await import('node:" + "child_process');\nvoid cp;\n");
   const violations = scanDirectChildProcessImports(dir);
   assert.equal(violations.length, 1);
   assert.match(violations[0].file, /dynamic\.mjs$/);
+});
+
+test("windows-hide guard scans both scripts/ and test/ and the tree is clean", () => {
+  assert.equal(SCAN_ROOTS.some((root) => /[\\/]scripts$/.test(root)), true);
+  assert.equal(SCAN_ROOTS.some((root) => /[\\/]test$/.test(root)), true);
+  // Default scan (scripts/ + test/) must be clean — a raw child_process import in
+  // either tree would surface here and in `node scripts/check-windows-hide.mjs`.
+  assert.deepEqual(scanDirectChildProcessImports(), []);
+  // Array-of-roots form catches a violation planted under a test-style tree.
+  const dir = mkdtempSync(join(tmpdir(), "vsfgm-window-guard-roots-"));
+  writeFileSync(join(dir, "raw.test.js"), "const { spawnSync } = require('node:" + "child_process');\nvoid spawnSync;\n");
+  const violations = scanDirectChildProcessImports([dir]);
+  assert.equal(violations.length, 1);
 });
 
 test("closeout brief renderer writes a public-safe markdown artifact", () => {
@@ -149,10 +165,93 @@ test("genius cache check/write reports latest audit truthfully", () => {
     encoding: "utf8"
   });
   assert.equal(check.status, 0, check.stderr);
+  assert.match(check.stdout, /FRESH/);
 
   const cache = JSON.parse(readFileSync(resolve(repoRoot, ".cache/genius-list.json"), "utf8"));
   assert.equal(Array.isArray(cache.items), true);
+  assert.equal(Array.isArray(cache.closed), true);
   assert.equal(cache.status, cache.items.length > 0 ? "open" : "exhausted");
+});
+
+const cacheGeniusScript = join("scripts", "cache-genius-list.mjs");
+
+function writeGeniusAuditFixture(dir, { executionLog } = {}) {
+  mkdirSync(join(dir, "docs"), { recursive: true });
+  const lines = [
+    "# Fixture Audit",
+    "",
+    "## Ranked Plan",
+    "",
+    "| # | Tier | Axis | Effort | Impact | Innov. | Priority | Item |",
+    "|---|:-:|---|---|:-:|:-:|:-:|---|",
+    "| 1 | A | gamification | 2h | 8 | 8 | 32.0 | **alpha-item** — first fixture item. |",
+    "| 2 | B | observability | 1h | 7 | 4 | 20.0 | **beta-item** — evidence remains unverified until launch. |",
+    "| 3 | C | security | 1h | 6 | 3 | 15.0 | **gamma-item** — third fixture item. |"
+  ];
+  if (executionLog) {
+    lines.push("", "## Execution Log", "", "| Item | Status | Evidence |", "|---|---|---|", ...executionLog);
+  }
+  writeFileSync(join(dir, "docs", "AUDIT_2026-01-01_SESSION1.md"), `${lines.join("\n")}\n`);
+}
+
+function runGeniusCache(dir, flag) {
+  return spawnSync(process.execPath, [join(repoRoot, cacheGeniusScript), flag], {
+    cwd: dir,
+    encoding: "utf8"
+  });
+}
+
+test("genius cache joins Execution Log status by slug and ignores prose substrings", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vsfgm-genius-cache-"));
+  writeGeniusAuditFixture(dir, {
+    executionLog: [
+      "| alpha-item | Implemented | shipped in fixture evidence |",
+      "| gamma-item | Blocked | waiting on founder action |"
+    ]
+  });
+
+  const write = runGeniusCache(dir, "--write");
+  assert.equal(write.status, 0, write.stderr);
+
+  const cache = JSON.parse(readFileSync(join(dir, ".cache", "genius-list.json"), "utf8"));
+  const openSlugs = cache.items.map((item) => item.slug);
+  // Failure mode 1 (fixed): Execution Log "Implemented" must close the item.
+  assert.equal(openSlugs.includes("alpha-item"), false);
+  assert.equal(cache.closed.includes("alpha-item"), true);
+  // Failure mode 2 (fixed): "unverified" prose in the Item cell must NOT read as done.
+  const beta = cache.items.find((item) => item.slug === "beta-item");
+  assert.equal(beta.status, "open");
+  // Execution Log "Blocked" keeps the item open and records blocked:true.
+  const gamma = cache.items.find((item) => item.slug === "gamma-item");
+  assert.equal(gamma.status, "open");
+  assert.equal(gamma.blocked, true);
+});
+
+test("genius cache --check is content-aware: newer-mtime cache contradicting the audit is STALE", () => {
+  const dir = mkdtempSync(join(tmpdir(), "vsfgm-genius-check-"));
+  writeGeniusAuditFixture(dir); // no Execution Log — all three items open
+
+  const write = runGeniusCache(dir, "--write");
+  assert.equal(write.status, 0, write.stderr);
+  const fresh = runGeniusCache(dir, "--check");
+  assert.equal(fresh.status, 0, fresh.stderr);
+  assert.match(fresh.stdout, /FRESH/);
+
+  // Corrupt the cache CONTENT (pretend beta-item is closed). The cache file's mtime is
+  // now NEWER than the audit — the old mtime-only check would have said FRESH.
+  const cachePath = join(dir, ".cache", "genius-list.json");
+  const cache = JSON.parse(readFileSync(cachePath, "utf8"));
+  cache.items = cache.items.filter((item) => item.slug !== "beta-item");
+  cache.closed = ["beta-item"];
+  writeFileSync(cachePath, `${JSON.stringify(cache, null, 2)}\n`);
+
+  const stale = runGeniusCache(dir, "--check");
+  assert.equal(stale.status, 1, stale.stdout + stale.stderr);
+  assert.match(stale.stdout, /STALE/);
+
+  // --write restores truth and --check goes FRESH again.
+  assert.equal(runGeniusCache(dir, "--write").status, 0);
+  assert.equal(runGeniusCache(dir, "--check").status, 0);
 });
 
 test("studio manifest launch state does not outrun active project blockers", () => {
