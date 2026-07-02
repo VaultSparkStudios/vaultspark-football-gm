@@ -2,6 +2,7 @@ import { DEPTH_CHART_ROLE_NAMES, DRIVE_OUTCOMES, NFL_STRUCTURE } from "../config
 import { createZeroedSeasonStats, mergeStats } from "../domain/playerFactory.js";
 import { coverageDepthRating, quarterbackDepthAccuracy } from "../domain/ratings.js";
 import { clamp, mean } from "../utils/rng.js";
+import { choosePlayType, chooseFourthDownDecision, fieldGoalDistanceFromPosition } from "./playCalling.js";
 import { getTeamPlayers } from "../domain/teamFactory.js";
 import { buildTeamUsageProfile, depthOrderedPlayers, resolveDepthChartRoomShares } from "./depthChartUsage.js";
 
@@ -650,7 +651,7 @@ function maybeRecordPassDefended(deltaMap, rng, defenseContext, bucket = "medium
   addDelta(deltaMap, defender.id, { defense: { passDefended: 1 } });
 }
 
-function simulateDrive(offenseContext, defenseContext, rng, mode) {
+function simulateDrive(offenseContext, defenseContext, rng, mode, situational = {}) {
   const driveDeltas = new Map();
   const plays = mode === "play" ? rng.int(6, 10) : rng.int(3, 7);
   let driveYards = 0;
@@ -661,6 +662,31 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
   const playLog = [];
   let lastReceiver = null;
   let lastRunner = offenseContext.rb;
+
+  // ── Situational play-calling state (S29) ──────────────────────────────────
+  // Down/distance/field-position are a real, tracked-within-the-drive state
+  // machine now (see playCalling.js) — a synthetic per-drive estimate, not a
+  // full cross-drive field-position engine (this abstraction doesn't track
+  // possessions' starting spot; 25 is a plausible average).
+  const scoreDifferential = situational.scoreDifferential || 0;
+  const elapsedSeconds = situational.elapsedSeconds || 0;
+  let down = 1;
+  let distance = 10;
+  let fieldPosition = 25;
+  let forcedFourthDownOutcome = null;
+  const applyDownProgression = (yardsThisPlay) => {
+    fieldPosition = clamp(fieldPosition + yardsThisPlay, 1, 99);
+    if (yardsThisPlay >= distance) {
+      down = 1;
+      distance = 10;
+    } else if (down === 4) {
+      turnover = true;
+      turnoverType = "DOWNS";
+    } else {
+      down += 1;
+      distance = Math.max(1, distance - yardsThisPlay);
+    }
+  };
 
   const qb = offenseContext.qb;
   const qbArm = mean([rating(qb, "throwPower"), rating(qb, "throwOnRun"), rating(qb, "discipline")]);
@@ -681,7 +707,36 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
 
   for (let i = 0; i < plays; i += 1) {
     if (turnover) break;
-    const playType = rng.chance(offenseContext.passLean) ? "pass" : "run";
+
+    // ── Fourth-down decision (S29) — the real go/kick/punt brain ───────────
+    if (down === 4) {
+      const decision = chooseFourthDownDecision(
+        {
+          distance,
+          fieldPosition,
+          scoreDifferential,
+          elapsedSeconds,
+          aggressionDelta: offenseContext.weeklyPlan?.aggressionDelta || 0
+        },
+        rng
+      );
+      if (decision === "field-goal") {
+        forcedFourthDownOutcome = "field-goal";
+        break;
+      }
+      if (decision === "punt") {
+        forcedFourthDownOutcome = "punt";
+        break;
+      }
+      // decision === "go" falls through to a real play attempt below.
+    }
+
+    const yardsBeforePlay = driveYards;
+    const playType = choosePlayType(
+      { down, distance, fieldPosition, scoreDifferential, elapsedSeconds },
+      offenseContext,
+      rng
+    );
     if (playType === "pass") {
       passPlays += 1;
       const qbSpeed = rating(qb, "speed");
@@ -710,6 +765,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
           player: qb.name,
           description: `${qb.name} scrambles for ${scrambleYards} yards`
         });
+        if (!turnover) applyDownProgression(scrambleYards);
         continue;
       }
       const targetProfile = choosePassTargetProfile(rng, offenseContext, defenseContext, qb);
@@ -972,6 +1028,15 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
         });
       }
     }
+
+    // ── Down/distance/field-position progression (S29) ──────────────────────
+    // A single generic delta read (post-play minus pre-play driveYards) works
+    // for every remaining play type — pass completion/incompletion, sack,
+    // run — without touching any of the yardage formulas above. Scrambles
+    // apply this same progression inline above (they `continue` early).
+    if (!turnover) {
+      applyDownProgression(driveYards - yardsBeforePlay);
+    }
   }
 
   driveYards = Math.max(-12, driveYards);
@@ -1011,6 +1076,97 @@ function simulateDrive(offenseContext, defenseContext, rng, mode) {
       turnover: true,
       turnoverType,
       seconds: rng.int(70, 185),
+      deltas: driveDeltas,
+      plays,
+      passPlays,
+      rushPlays,
+      playLog,
+      scoringEvent: null
+    };
+  }
+
+  // ── Fourth-down-forced kick/punt (S29) ────────────────────────────────────
+  // The fourth-down decision model chose to kick or punt rather than go for
+  // it — attempt it now, at the real in-drive field position, instead of
+  // falling into the aggregate power-differential cascade below (which is
+  // reserved for drives that never hit a real fourth down within their
+  // rolled play budget).
+  if (forcedFourthDownOutcome === "field-goal") {
+    const fgYards = fieldGoalDistanceFromPosition(fieldPosition);
+    addDelta(driveDeltas, offenseContext.k.id, { kicking: { fga: 1 } });
+    const fgGood = rng.chance(clamp(0.75 - Math.max(0, fgYards - 35) * 0.013 + (offenseContext.k.overall - 75) / 360, 0.3, 0.95));
+    if (fgGood) {
+      const short = fgYards < 40 ? 1 : 0;
+      const deep = fgYards >= 50 ? 1 : 0;
+      addDelta(driveDeltas, offenseContext.k.id, {
+        kicking: { fgm: 1, long: fgYards, fgM40: short, fgA40: short, fgM50: deep, fgA50: deep }
+      });
+      addPlay({
+        type: "field-goal",
+        yards: 0,
+        playerId: offenseContext.k.id,
+        player: offenseContext.k.name,
+        description: `${offenseContext.k.name} hits a ${fgYards}-yard field goal on fourth down`
+      });
+      return {
+        outcome: DRIVE_OUTCOMES.FIELD_GOAL,
+        points: 3,
+        yards: driveYards,
+        turnover: false,
+        turnoverType: null,
+        seconds: rng.int(70, 180),
+        deltas: driveDeltas,
+        plays,
+        passPlays,
+        rushPlays,
+        playLog,
+        scoringEvent: { teamId: offenseContext.team.id, type: "FG", points: 3, description: `${offenseContext.k.name} makes a ${fgYards}-yard field goal` }
+      };
+    }
+    const short = fgYards < 40 ? 1 : 0;
+    const deep = fgYards >= 50 ? 1 : 0;
+    addDelta(driveDeltas, offenseContext.k.id, { kicking: { fgA40: short, fgA50: deep } });
+    addPlay({
+      type: "missed-field-goal",
+      yards: 0,
+      playerId: offenseContext.k.id,
+      player: offenseContext.k.name,
+      description: `${offenseContext.k.name} misses from ${fgYards} yards on fourth down`
+    });
+    return {
+      outcome: DRIVE_OUTCOMES.TURNOVER,
+      points: 0,
+      yards: driveYards,
+      turnover: true,
+      turnoverType: "MISSED_FG",
+      seconds: rng.int(70, 180),
+      deltas: driveDeltas,
+      plays,
+      passPlays,
+      rushPlays,
+      playLog,
+      scoringEvent: null
+    };
+  }
+  if (forcedFourthDownOutcome === "punt") {
+    const puntYards = rng.int(38, 53);
+    addDelta(driveDeltas, offenseContext.p.id, { punting: { punts: 1, yards: puntYards } });
+    if (rng.chance(0.37)) addDelta(driveDeltas, offenseContext.p.id, { punting: { in20: 1 } });
+    if (rng.chance(0.08)) addDelta(driveDeltas, offenseContext.p.id, { punting: { touchbacks: 1 } });
+    addPlay({
+      type: "punt",
+      yards: puntYards,
+      playerId: offenseContext.p.id,
+      player: offenseContext.p.name,
+      description: `${offenseContext.p.name} punts ${puntYards} yards on fourth down`
+    });
+    return {
+      outcome: DRIVE_OUTCOMES.PUNT,
+      points: 0,
+      yards: driveYards,
+      turnover: false,
+      turnoverType: null,
+      seconds: rng.int(65, 165),
       deltas: driveDeltas,
       plays,
       passPlays,
@@ -1424,7 +1580,10 @@ export function simulateGame({
 
   while (homeDrives < homePossessions || awayDrives < awayPossessions) {
     if (homeBall && homeDrives < homePossessions) {
-      const drive = simulateDrive(homeContext, awayContext, rng, mode);
+      const drive = simulateDrive(homeContext, awayContext, rng, mode, {
+        scoreDifferential: homeScore - awayScore,
+        elapsedSeconds
+      });
       homeDrives += 1;
       homeScore += drive.points;
       homeYards += drive.yards;
@@ -1440,7 +1599,10 @@ export function simulateGame({
       continue;
     }
     if (!homeBall && awayDrives < awayPossessions) {
-      const drive = simulateDrive(awayContext, homeContext, rng, mode);
+      const drive = simulateDrive(awayContext, homeContext, rng, mode, {
+        scoreDifferential: awayScore - homeScore,
+        elapsedSeconds
+      });
       awayDrives += 1;
       awayScore += drive.points;
       awayYards += drive.yards;
@@ -1463,9 +1625,13 @@ export function simulateGame({
     let overtimeRounds = 0;
     while (homeScore === awayScore && overtimeRounds < (allowTie ? 1 : 10)) {
       const firstHome = rng.chance(0.5);
+      const otSituational = {
+        scoreDifferential: 0,
+        elapsedSeconds: Math.max(elapsedSeconds, 3600)
+      };
       const firstDrive = firstHome
-        ? simulateDrive(homeContext, awayContext, rng, mode)
-        : simulateDrive(awayContext, homeContext, rng, mode);
+        ? simulateDrive(homeContext, awayContext, rng, mode, otSituational)
+        : simulateDrive(awayContext, homeContext, rng, mode, otSituational);
       applyDriveDeltas(statBook, year, firstDrive.deltas, seasonType);
       finalizeDrive(firstDrive, firstHome ? homeTeamId : awayTeamId);
       if (firstHome) {
@@ -1488,9 +1654,13 @@ export function simulateGame({
         if (firstDrive.outcome === DRIVE_OUTCOMES.FIELD_GOAL || firstDrive.outcome === DRIVE_OUTCOMES.TOUCHDOWN) awayKOps += 1;
       }
 
+      const secondDriveSituational = {
+        scoreDifferential: firstHome ? awayScore - homeScore : homeScore - awayScore,
+        elapsedSeconds: otSituational.elapsedSeconds
+      };
       const secondDrive = firstHome
-        ? simulateDrive(awayContext, homeContext, rng, mode)
-        : simulateDrive(homeContext, awayContext, rng, mode);
+        ? simulateDrive(awayContext, homeContext, rng, mode, secondDriveSituational)
+        : simulateDrive(homeContext, awayContext, rng, mode, secondDriveSituational);
       applyDriveDeltas(statBook, year, secondDrive.deltas, seasonType);
       finalizeDrive(secondDrive, firstHome ? awayTeamId : homeTeamId);
       if (firstHome) {
