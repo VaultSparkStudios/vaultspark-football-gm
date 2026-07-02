@@ -318,7 +318,7 @@ Source: `docs/AUDIT_2026-07-01_SESSION29.md` (17 ranked items, combined priority
 | time-capsule-receipts — preseason predictions graded by the Season Epilogue with reporter self-roast | Done |
 | return-hook-digest — zero-backend "While you were away" digest + attention badge for lapsed saves | Done |
 | narrative-continuity-engine — press-conference memory + narrative events feeding morale/hot-seat | Done |
-| what-if-replay — once-per-season non-canon Monday Morning QB replay of the most painful loss | Deferred |
+| what-if-replay — once-per-season non-canon Monday Morning QB replay of the most painful loss | Done (Session 30) |
 | situational-playcalling — down/distance/clock playcall leans, 4th-down brain, game-plan tendencies | Done |
 | scouting-skill-reveal — scouting allocation drives pro-day reveal precision + gated flags | Done |
 | genius-cache-truth — cache status must read the Execution Log, not mtimes/prose substrings | Done |
@@ -327,12 +327,27 @@ Source: `docs/AUDIT_2026-07-01_SESSION29.md` (17 ranked items, combined priority
 | launch-evidence-redirect-truth — follow redirect chains; judge final status | Done |
 | test-spawn-window-guard — safe-spawn in studio smoke test + guard scan root includes test/ | Done |
 | tabs-aria-modal-focus — ARIA tab semantics, shared modal focus manager, 44px touch targets | Done |
-| silent-error-surfacing — panelGuard() inline failure states replacing empty catch blocks | Deferred |
+| silent-error-surfacing — panelGuard() inline failure states replacing empty catch blocks | Done (Session 30) |
 | ci-deploy-gating — fast test prerequisite inside deploy workflows | Done |
 | determinism-smoke-on-push — fast same-seed comparison test in a push-path shard | Done |
 | theme-parity-static-pages — shared theme bootstrap across static pages | Done |
-| service-scaffold-honesty — truth-align or prove the stalled service extraction | Deferred |
+| service-scaffold-honesty — truth-align or prove the stalled service extraction | Done (Session 30) |
 
 **Notes:**
 - tabs-aria-modal-focus: ARIA tab semantics (roles, aria-selected sync, roving tabindex, 44px touch targets) are fully wired. `modalManager.js` is a complete, tested focus-trap/Escape/restore utility but is not yet adopted at each of the 14 modal call sites in `public/app.js` — ready-to-adopt follow-up, not silently claimed as fully wired.
-- what-if-replay, silent-error-surfacing, service-scaffold-honesty: not started this session — a session-limit signal arrived mid-sprint (two consecutive background-agent notifications carried no usable result and reported a resource ceiling). Consolidated and verified everything already shipped instead of starting new large work under that constraint. Honest deferral, not a silent skip — carry forward to the next session's genius list.
+- Session 30 follow-through: what-if-replay, silent-error-surfacing, and service-scaffold-honesty are now shipped and verified. The historical Session 29 deferral was honest; it is no longer current open work.
+## Session 30 — Deferred Genius Follow-Through + UI Truth Repair (2026-07-02)
+
+Source: carried items from `docs/AUDIT_2026-07-01_SESSION29.md` plus `docs/INNOVATION_PACK.md` latest-audit follow-through.
+
+| Item | Status |
+|------|--------|
+| what-if-replay — non-canon Monday Morning QB replay for the controlled team's most painful archived loss | Done |
+| silent-error-surfacing — visible panel failure states for season arcs, mentorship, cap war room, records, archetypes, sim-watch, and background spotlight hydration | Done |
+| service-scaffold-honesty — bind service bundle on GameSession and truth-align service extraction docs/comments | Done |
+| return-digest-overlay-truth — Playwright-caught blocking overlay converted to non-modal status UI so navigation is never trapped | Done |
+| latest-audit-follow-through innovation-pack candidate | Done |
+
+**Verification:** `npm test` 273/273 · `npm run test:ui` 9/9 · `npm run build:pages` · `npm run smoke:pages` · `node scripts/check-windows-hide.mjs` · `node scripts/check-canon-044-waves.mjs` · startup brief validation · secrets audit · blocker preflight · canon conformance 0 gaps.
+
+**Still blocked:** Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying to Studio operations is verified with real delivery evidence and post-push public route/domain state remains green.

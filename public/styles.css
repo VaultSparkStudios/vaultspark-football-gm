@@ -2663,6 +2663,20 @@ body.mobile-loop-active .mobile-loop-overlay {
 .sr-call-to-action { font-size: 14px; font-style: italic; color: var(--accent, #4f8ef7); text-align: center; }
 .season-review-actions { margin-top: 16px; display: flex; justify-content: center; }
 #closeSeasonReviewBtn { min-width: 120px; }
+.sr-what-if {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 12px;
+}
+
+.sr-what-if-win { border-color: rgba(99, 214, 140, 0.45); }
+.sr-what-if-loss { border-color: rgba(232, 168, 64, 0.45); }
+.sr-what-if-kicker { color: var(--accent); font-size: 10px; text-transform: uppercase; margin-bottom: 4px; }
+.sr-what-if-line { color: var(--muted); margin-top: 6px; line-height: 1.45; }
+.sr-what-if-note { color: var(--muted); margin-top: 6px; font-style: italic; }
 
 /* ── Halftime / Tactical Adjust Modal ────────────────────────────────────── */
 #halftimeAdjustModal {
@@ -2873,6 +2887,20 @@ body.mobile-loop-active .mobile-loop-overlay {
 .inbox-detail { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
 .inbox-quote { font-size: 0.75rem; color: var(--accent-2); font-style: italic; margin-top: 3px; }
 .inbox-empty { padding: 24px 16px; color: var(--muted); font-size: 0.82rem; text-align: center; }
+.panel-error-state {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(208, 92, 92, 0.45);
+  border-radius: 8px;
+  background: rgba(208, 92, 92, 0.09);
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.panel-error-state span {
+  color: var(--muted);
+}
 
 /* ── Franchise Moment Modal ─────────────────────────────────────────────── */
 #franchiseMomentModal {

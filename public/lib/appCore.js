@@ -430,6 +430,39 @@ export function presentActionError(error) {
   showToast(`${prefix}: ${message}`);
 }
 
+
+export function renderPanelError(targetId, label, error, { onRetry = null } = {}) {
+  const target = typeof targetId === "string" ? document.getElementById(targetId) : targetId;
+  const message = formatActionError(error);
+  if (!target) {
+    presentActionError(error);
+    return;
+  }
+  const retryId = `retry-${String(target.id || label).replace(/[^a-z0-9_-]/gi, "-")}`;
+  const panelHtml = `
+    <div class="panel-error-state" role="status">
+      <strong>${escapeHtml(label)} could not load.</strong>
+      <span>${escapeHtml(message)}</span>
+      ${onRetry ? `<button id="${escapeHtml(retryId)}" class="btn btn-sm">Retry</button>` : ""}
+    </div>
+  `;
+  const retryHtml = `<div class="narrative-empty">Retrying ${escapeHtml(label)}...</div>`;
+  const renderHtml = (html) => {
+    if (target.tagName === "TABLE") {
+      target.innerHTML = `<tbody><tr><td colspan="8">${html}</td></tr></tbody>`;
+      return;
+    }
+    target.innerHTML = html;
+  };
+  renderHtml(panelHtml);
+  if (onRetry) {
+    document.getElementById(retryId)?.addEventListener("click", () => {
+      renderHtml(retryHtml);
+      onRetry();
+    });
+  }
+  setStatus(`${label} failed: ${message}`);
+}
 export function teamName(teamId) {
   return state.dashboard?.teams?.find((team) => team.id === teamId)?.name || teamId;
 }

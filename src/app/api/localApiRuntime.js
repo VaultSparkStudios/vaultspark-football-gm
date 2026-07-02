@@ -970,6 +970,11 @@ export function createLocalApiRuntime({
         );
       }
 
+      if (method === "GET" && pathname === "/api/what-if-replay") {
+        const teamId = (url.searchParams.get("team") || session.controlledTeamId || "").toUpperCase();
+        return finish(jsonResponse(200, { ok: true, replay: session.getWhatIfReplay({ teamId }) }));
+      }
+
       if (method === "GET" && pathname === "/api/calendar") {
         const year = toInt(url.searchParams.get("year")) || session.currentYear;
         return finish(jsonResponse(200, { ok: true, calendar: session.getSeasonCalendar(year) }));

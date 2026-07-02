@@ -1,5 +1,13 @@
 # Work Log
 
+## 2026-07-02 — Session 30: deferred genius follow-through closeout
+
+- Ran the requested `/goal /arc` sequence from live repo evidence: pulled/rebased main first, completed startup preflight, rechecked the latest audit against code, shipped the three carried Session 29 deferrals, generated the innovation pack, and classified its single latest-audit follow-through candidate as completed by the live-code pass.
+- Shipped non-canon Monday Morning QB what-if replay for the controlled team's most painful archived loss, including dashboard state and `/api/what-if-replay` support in both local and server runtimes; the replay is deterministic and does not mutate standings, stats, records, saves, or injuries.
+- Replaced key silent catches with visible panel failure states and retry affordances; fixed records/archetype loaders so their failures propagate to the UI instead of disappearing.
+- Bound the domain service bundle on `GameSession` and truth-aligned the service extraction comments so the scaffold no longer claims full production delegation ahead of parity migration.
+- Playwright caught the return digest overlay blocking tab navigation after reload; fixed it as non-modal status UI and reran UI green.
+- Verification: `npm test` 273/273, `npm run test:ui` 9/9, `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, and canon conformance 0 gaps.
 ## 2026-06-15 — Session 20: narrative integrity + franchise depth closeout
 
 - Ran the active `/start -> /audit -> /implement -> /closeout` chain from current repo evidence; generated `docs/AUDIT_2026-06-15_SESSION20.*` because the Session 19 audit was already fully shipped.

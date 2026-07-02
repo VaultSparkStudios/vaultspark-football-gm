@@ -2,7 +2,7 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-06-08
+Last reviewed: 2026-07-02
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 2026-05-27 note:
@@ -128,3 +128,12 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Test-isolation truth: a real cross-file test collision was found and fixed before commit (`test/modal-manager.test.js` vs `test/create-api-client.test.js` under `--test-isolation=none` — see `context/DECISIONS.md` 2026-07-02). This is recorded because it demonstrates the second full-suite run caught something the first run's shard-by-shard verification did not; both are legitimate verification passes and the fix is real, not a masked flake.
 - Playwright UI truth: `npm run test:ui` could not be verified locally this session — it hung on two separate attempts (including after a fresh browser install) with zero output, alongside 93 lingering node.exe processes observed system-wide. This is recorded honestly as NOT VERIFIED rather than assumed passing from Session 28's last-known-good result. No code change in this session touches Playwright's browser-launch path; CI carries its own documented install/launch workarounds and will verify on push.
 - Launch truth unchanged: launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified. Not touched this session.
+## 2026-07-02 — Session 30 Truth Audit
+
+- Audit follow-through truth: the three Session 29 deferrals are now complete. `what-if-replay`, `silent-error-surfacing`, and `service-scaffold-honesty` are no longer open genius-list work.
+- Counterfactual truth: Monday Morning QB replay is explicitly non-canon and covered by mutation-safety tests; it never changes standings, stats, records, saves, or injuries.
+- Error-surfacing truth: several previously empty catches now render visible panel errors or action errors. Records and archetype loaders were corrected to propagate failures so the visible handlers actually run.
+- Service-extraction truth: service scaffolds are now bound on `GameSession`, but production delegation is still incremental. Comments now say extraction target/parity target instead of claiming completed ownership.
+- UI truth repair: Playwright caught the return digest overlay intercepting Settings navigation after reload. It is now non-modal status UI; `npm run test:ui` passes 9/9.
+- Verification truth: current tree passed `npm test` 273/273, Playwright UI 9/9, Pages build/smoke, windows-hide, Wave guard, startup brief validation, secrets audit, blocker preflight, and canon conformance 0 gaps.
+- Launch truth unchanged: launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.

@@ -1,5 +1,5 @@
 import { state, api } from "./appState.js";
-import { applyShellTheme, escapeHtml, fmtMoney, presentActionError, renderTable, selectedSeasonType, setSimControl, setStatus, shapeStatsRowsForDisplay, showToast, syncTeamSelects, teamCode, updateTopMeta } from "./appCore.js";
+import { applyShellTheme, escapeHtml, fmtMoney, presentActionError, renderPanelError, renderTable, selectedSeasonType, setSimControl, setStatus, shapeStatsRowsForDisplay, showToast, syncTeamSelects, teamCode, updateTopMeta } from "./appCore.js";
 import { renderBoxScoreTicker, renderCapAlertBanner, renderFanSentimentCard, renderGmLegacyScore, renderInjuryOverlayCard, renderLeaders, renderNewsTicker, renderOverview, renderOwnerUltimatum, renderRosterNeeds, renderSchedule, renderSeasonPreviewPanel, renderStandings, renderStatLeadersStrip, renderWeekResults } from "./tabOverview.js";
 import { depthDefaultShares, renderDepthChart, renderFreeAgency, renderRetiredPool, renderRoster } from "./tabRoster.js";
 import { deriveContractToolsFromRoster, getTradeTeamId, renderContractsPage, renderExpiringContracts, renderTradeWorkspace, setSelectedDesignationPlayer, setSelectedRetirementOverridePlayer } from "./tabContracts.js";
@@ -25,6 +25,7 @@ export function applyDashboard(newState) {
   state.depthSnapShare = newState.depthChartSnapShare || state.depthSnapShare;
   state.realismVerification = newState.lastRealismVerificationReport || state.realismVerification;
   state.recentBoxScores = newState.recentBoxScores || state.recentBoxScores;
+  state.whatIfReplay = newState.whatIfReplay || state.whatIfReplay;
 
   if (!previous || previous.currentYear !== newState.currentYear) {
     state.scheduleYear = newState.currentYear;
@@ -810,11 +811,26 @@ export function showSeasonEndReview() {
     </div>` : ""}
     <div class="sr-call-to-action">A new season awaits. What will your legacy be?</div>
   `;
+  appendWhatIfReplay(body);
   appendSeasonEpilogue(body, d).catch(() => {});
   modal.hidden = false;
   modal.classList.add("active");
 }
 
+
+function appendWhatIfReplay(body) {
+  const replay = state.whatIfReplay;
+  if (!replay?.available) return;
+  const card = document.createElement("div");
+  card.className = `sr-what-if ${replay.replay?.flipped ? "sr-what-if-win" : "sr-what-if-loss"}`;
+  card.innerHTML = `
+    <div class="sr-what-if-kicker">Monday Morning QB · Non-canon</div>
+    <strong>${escapeHtml(replay.headline || "Alternate timeline available.")}</strong>
+    <div class="sr-what-if-line">Week ${escapeHtml(String(replay.week))} vs ${escapeHtml(replay.opponentName || replay.opponentTeamId || "Opponent")}: ${escapeHtml(String(replay.original?.teamScore ?? "-"))}-${escapeHtml(String(replay.original?.opponentScore ?? "-"))} became ${escapeHtml(String(replay.replay?.teamScore ?? "-"))}-${escapeHtml(String(replay.replay?.opponentScore ?? "-"))} after one lever: ${escapeHtml(replay.lever?.label || "change the plan")}.</div>
+    <div class="sr-what-if-note">${escapeHtml(replay.note || "No live state changed.")}</div>
+  `;
+  body.appendChild(card);
+}
 export function showHalftimeAdjustModal(onChoice) {
   const modal = document.getElementById("halftimeAdjustModal");
   if (!modal) { onChoice(null); return; }

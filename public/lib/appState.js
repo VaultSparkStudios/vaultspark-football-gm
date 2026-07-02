@@ -78,6 +78,7 @@ export const state = {
   statsHiddenColumns: [],
   activePlayerId: null,
   recentBoxScores: [],
+  whatIfReplay: null,
   activeBoxScoreId: null,
   simControl: {
     active: false,

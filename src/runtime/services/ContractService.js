@@ -1,9 +1,7 @@
 /**
- * ContractService — Domain Service Scaffold
+ * ContractService — Domain Service Extraction Target
  *
- * Owns all contract lifecycle logic currently spread across GameSession.js.
- * Migration path: extract GameSession contract methods here, then delegate
- * from GameSession → ContractService to maintain API compatibility.
+ * GameSession still owns production contract mutations today. This service is bound on every GameSession instance and acts as the parity target for the incremental extraction; do not claim full delegation until callers move.
  *
  * Responsibilities:
  *   - Cap accounting (capUsed, deadCap, capRemaining per team)

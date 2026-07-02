@@ -64,6 +64,7 @@ import { PFR_CAREER_WEIGHTED_PROFILE } from "../stats/profiles/pfrCareerWeighted
 import { clamp } from "../utils/rng.js";
 import { RNGStreams } from "../utils/rngStreams.js";
 import { createSessionModules } from "./modules/sessionModules.js";
+import { createServices } from "./services/index.js";
 import { LATEST_SNAPSHOT_SCHEMA_VERSION } from "./snapshotMigration.js";
 import { advanceInjuryRecovery, rollGameInjuries } from "../engine/injurySystem.js";
 import {
@@ -81,6 +82,7 @@ import { resolveThreads as resolveContinuityThreads } from "../engine/continuity
 import { updateFanSentiment } from "../engine/fanSentiment.js";
 import { applyMentorshipBonuses } from "../engine/veteranMentorship.js";
 import { latestGmDecision } from "../engine/gmDecisionConsequences.js";
+import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 
 const TABLE_CATEGORIES = ["passing", "rushing", "receiving", "defense", "blocking", "kicking", "punting", "snaps"];
 const MAX_ACTIVE_ROSTER = 53;
@@ -1555,6 +1557,7 @@ export class GameSession {
     this.careerRealismProfile = careerRealismProfile || PFR_CAREER_WEIGHTED_PROFILE;
 
     this.league = createLeagueBase(startYear, this.rng);
+    this.services = createServices(this);
     initializeLeagueRoster({ league: this.league, importedPlayers, rng: this.rng });
     ensureLeagueRuntime(this.league);
     this.initializeLeagueSystems();
@@ -1588,6 +1591,7 @@ export class GameSession {
       session.rng.constructor
     );
     session.modules = createSessionModules(session);
+    session.services = createServices(session);
     session.statBook = new StatBook(session.league);
     session.statBook.teamSeasonArchive = snapshot.teamSeasonArchive || [];
     session.realismProfile = snapshot.realismProfile || PFR_RECENT_WEIGHTED_PROFILE;
@@ -4903,6 +4907,15 @@ export class GameSession {
     recalculateAllTeamRatings(this.league);
     this.statBook.reindexPlayers();
     return { ok: true, signed };
+  }
+
+  getWhatIfReplay({ teamId = this.controlledTeamId, maxGames = 24 } = {}) {
+    return buildWhatIfReplay({
+      teamId,
+      games: this.getRecentBoxScores(teamId, maxGames),
+      getBoxScore: (gameId) => this.getBoxScore(gameId),
+      seasonKey: `${this.currentYear}:${teamId}`
+    });
   }
 
   getTables({ table, category, filters = {} }) {

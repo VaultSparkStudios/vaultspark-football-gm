@@ -1,7 +1,7 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 29 closed at 974 / 1000 SIL v3.0. Last verified suite: 270/270 (up from 173) plus Pages build/smoke. Playwright UI not verified locally this session (hung — environment resource contention, not a code regression); CI will verify on push.
+Rolling status: Session 30 closed at 978 / 1000 SIL v3.0. Last verified suite: 273/273 plus Playwright UI 9/9 and Pages build/smoke. Launch/SPARKED remains blocked only on verified on-domain email forwarding/copying evidence.
 <!-- rolling-status-end -->
 
 ## 2026-07-01 — Session 28 Launch Evidence + Tutorial Truth Closeout

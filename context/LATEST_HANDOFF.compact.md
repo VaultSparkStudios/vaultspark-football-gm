@@ -1,35 +1,35 @@
-<!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: f5cdac897365 -->
-<!-- generated-at: 2026-07-01T23:13:11.307Z -->
+<!-- generated-by: codex session-30 closeout -->
+<!-- generated-at: 2026-07-02 -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 28 HANDOFF (compressed)
+Session 30 Handoff Summary
 
-Shipped
-- First-run tutorial style injection.
-- Manifest launch-truth repair: state is FORGE, not SPARKED.
-- Repo-local launch evidence reporting via ops.mjs launch-evidence.
-- Launch-evidence run confirmed public routes reachable but correctly blocked launch on missing on-domain email forwarding/copying evidence.
-
-Verification (all passed)
-- npm test 173/173; Playwright UI 9/9; focused launch/browser/studio 20/20.
-- Pages build/smoke, windows-hide, Wave guard, startup brief validation, secrets audit, blocker preflight, canon checks.
+Shipped (Session 30)
+- Completed all carried Session 29 deferrals from `docs/AUDIT_2026-07-01_SESSION29.md`: what-if replay, silent error surfacing, and service scaffold honesty.
+- Added deterministic non-canon Monday Morning QB replay for the controlled team's most painful archived loss; exposed through dashboard state plus local/server `/api/what-if-replay`; tests prove it does not mutate live state.
+- Replaced key silent UI failures with visible panel/action errors and retry affordances; records and archetype loaders now propagate failures to the user-visible handlers.
+- Bound the service bundle on `GameSession` and truth-aligned service comments as extraction/parity targets, not completed delegation.
+- Fixed a Playwright-caught return digest overlay regression by making the digest non-modal status UI that no longer blocks navigation.
 
 Current Intent
-- Get to launch (SPARKED flip) once real on-domain email evidence exists. Do not flip prematurely.
+- Session 30 `/goal /arc` completed; primary audit queue and the generated innovation-pack follow-through candidate are exhausted.
 
-Now (top 3)
-1. Verify football@playfranchisearchitect.com forwards/copies to Studio operations using a real received-message receipt.
-2. Rerun ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json.
-3. Confirm GitHub Actions/Pages deploy for the pushed commit and smoke https://playfranchisearchitect.com/ routes.
+Now Bucket (top 3)
+- Verify `football@playfranchisearchitect.com` forwarding/copying with a real received-message receipt.
+- Rerun `node scripts/ops.mjs launch-evidence --email-evidence <receipt>` after email proof exists.
+- Continue future service migration only with parity tests when moving production delegation out of `GameSession`.
 
 Blockers (top 3)
-1. Missing on-domain email forwarding/copying evidence — hard-blocks SPARKED flip.
-2. Launch evidence report requires a real received-message receipt (--email-evidence), not yet supplied.
-3. Post-deploy public route/domain state must be re-verified after push before any launch claim.
+- Launch/SPARKED remains blocked on real on-domain email forwarding/copying evidence and post-push public route/domain verification.
 
 Human-Blocked (with age)
-- Email forwarding verification for football@playfranchisearchitect.com — pending across Sessions 22-28 (~6 sessions / carried since domain rebrand in Session 25). Requires external mailbox/receipt access.
+- Email forwarding verification for `football@playfranchisearchitect.com` — open since Session 28. Requires real received-message receipt; blocks launch/SPARKED.
 
-Next session: obtain the on-domain email receipt, rerun launch-evidence with --email-evidence, then re-check deploy/routes before considering SPARKED.
+Verification State (Session 30)
+- `npm test` 273/273 across all default shards.
+- `npm run test:ui` 9/9.
+- `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, and canon conformance 0 gaps all passed.
+
+Next Session Pointer
+- Do not regenerate the already-exhausted Session 29 queue as open work. The only standing launch gate is email-forwarding proof plus post-push route/domain evidence.

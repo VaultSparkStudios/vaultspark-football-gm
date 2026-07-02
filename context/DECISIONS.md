@@ -2,6 +2,19 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-07-02 — Counterfactual features must be explicitly non-canon and side-effect free
+
+**Decision:** The Monday Morning QB what-if replay is a deterministic counterfactual read model only. It may summarize an alternate outcome, but it must not mutate standings, stats, records, saves, injuries, or league history.
+
+**Rationale:** Counterfactuals are useful for retention and learning, but fabricated alternate outcomes would violate observability honesty if they touched source-of-truth state. Keeping the replay behind a pure builder and API response preserves trust while still giving players a satisfying post-loss ritual.
+
+**Pattern established:** Any future alternate-history feature must include an explicit non-canon note, deterministic inputs, and mutation-safety tests before it appears in the UI.
+
+## 2026-07-02 — Return hooks should be interruptible status UI, not blocking modals
+
+**Decision:** The return digest overlay should not be `aria-modal` or intercept normal navigation outside its card. It remains visible and actionable, but clicks outside the card pass through and Escape still dismisses it.
+
+**Rationale:** Playwright proved the prior modal behavior could trap the player after a reload and block unrelated history/settings navigation. A return hook is engagement garnish, not a hard gate.
 ## 2026-06-15 — Browser-side pure functions are testable in Node if they don't touch the DOM at import time
 
 **Decision:** Test `public/lib/*.js` functions in Node.js by importing them directly, relying on the fact that the import chain (`appState.js` → `createApiClient.js`) is pure JS with no DOM access at module evaluation time.

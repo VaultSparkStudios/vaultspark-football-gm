@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 29 shipped a saturated /goal /arc pass covering 13 of 17 ranked audit items: preseason-prediction receipts, a narrative continuity engine reviving a previously-dead event system, investment-driven scouting reveal, a real situational play-calling + fourth-down decision brain, a zero-backend return digest, ARIA tab semantics + a modal focus-trap utility, and six infra/truth fixes. what-if-replay, silent-error-surfacing, and service-scaffold-honesty are deferred to the next session.",
-  "nextMilestone": "Pick up what-if-replay, silent-error-surfacing, and service-scaffold-honesty from docs/AUDIT_2026-07-01_SESSION29.md; verify football@playfranchisearchitect.com forwarding/copying with a real received-message receipt before any SPARKED flip.",
+  "currentFocus": "Session 30 completed the carried Session 29 deferrals: deterministic non-canon what-if replay, visible panel error surfacing, honest service scaffold binding, and a Playwright-caught return digest overlay truth repair. Current tree is verified green.",
+  "nextMilestone": "Verify football@playfranchisearchitect.com forwarding/copying with a real received-message receipt, rerun launch evidence with email proof, then consider SPARKED only if post-push public route/domain state remains green.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified and post-push public route/domain state passes for playfranchisearchitect.com."
   ],
@@ -18,26 +18,19 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 270,
-    "pass": 270,
+    "totalTests": 273,
+    "pass": 273,
     "fail": 0,
     "lastRun": "2026-07-02",
     "newTestFiles": [
-      "test/time-capsule.test.js",
-      "test/continuity-ledger.test.js",
-      "test/scouting-skill-reveal.test.js",
-      "test/situational-playcalling.test.js",
-      "test/return-digest.test.js",
-      "test/modal-manager.test.js",
-      "test/shard-coverage.test.js",
-      "test/determinism-smoke.test.js"
+      "test/what-if-replay.test.js"
     ],
-    "newTestCount": 8,
-    "coverage": "Session 29 verified default npm test 270/270 (up from 173) across all 5 shards with real per-shard exit codes (core 64/64, runtime 109/109, sim-contract 60/60, sim-realism 1/1, studio 36/36), Pages build/smoke, windows-hide guard, Wave guard, canon conformance (vector green, 0 GAP), secrets audit, blocker preflight. Playwright UI could not be verified locally this session — repeated launches hung with zero output in this sandboxed environment (93 lingering node.exe processes observed system-wide, likely resource contention from the session's many test invocations); not attempted to fix via bulk process termination (out of safe scope). This is a local-environment gap, not a regression signal — CI has its own documented Playwright install/launch workarounds and will verify the UI suite on push.",
-    "uiSuiteNote": "npm run test:ui not verified locally this session (hung, killed after ~14 min combined across two attempts including a fresh browser install). Session 28 last verified it 9/9; no code change in this session should affect Playwright's ability to launch a browser, so this is treated as an environment issue, not a shipped regression."
+    "newTestCount": 1,
+    "coverage": "Session 30 verified current-tree npm test 273/273 across all 5 default shards (core 64/64, runtime 109/109, sim-contract 63/63, sim-realism 1/1, studio 36/36), Playwright UI 9/9, Pages build/smoke, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, and canon conformance 0 gaps.",
+    "uiSuiteNote": "npm run test:ui verified locally this session: 9/9. First run caught the return digest overlay intercepting navigation; fixed as non-modal status UI and re-ran green."
   },
-  "testsPassing": 270,
-  "testsTotal": 270,
+  "testsPassing": 273,
+  "testsTotal": 273,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -76,12 +69,12 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 974,
+  "silScore": 978,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 88,
-    "momentum": 98,
-    "engagement": 99,
+    "creativeAlignment": 90,
+    "momentum": 99,
+    "engagement": 100,
     "processQuality": 100,
     "crossRepoCoherence": 100,
     "securityPosture": 99,
@@ -89,29 +82,26 @@
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 29,
-  "lastAgent": "claude-code",
+  "currentSession": 30,
+  "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "node --check on every new/modified JS file (engine, runtime, public/lib, scripts)",
-      "npm test (270/270; core 64/64, runtime 109/109, sim-contract 60/60, sim-realism 1/1, studio 36/36 — real per-shard exit codes, run twice)",
+      "npm test (273/273; core 64/64, runtime 109/109, sim-contract 63/63, sim-realism 1/1, studio 36/36 — real per-shard exit codes on the current tree)",
+      "npm run test:ui (9/9 after fixing return digest overlay interception)",
       "npm run build:pages",
       "npm run smoke:pages",
       "node scripts/check-windows-hide.mjs",
       "node scripts/check-canon-044-waves.mjs",
+      "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
-      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . (vector green, 0 GAP, 0 ABSOLUTE)",
-      "manual staged-file secret pattern scan (scripts/scan-secrets.mjs not vendored locally)",
-      "full calibration/monte-carlo/stats/ratings/career-realism/determinism regression suite verified green before and after the situational-playcalling engine change"
+      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline (0 GAP, 0 ABSOLUTE)"
     ],
     "date": "2026-07-02",
-    "timedOut": [
-      "npm run test:ui — hung twice (5-minute timeout, then killed after ~9 more minutes following a fresh Playwright browser install); 93 lingering node.exe processes observed system-wide, most likely resource contention from the session's own many test invocations, not a code regression. Not chased further — bulk process termination was judged out of safe scope; CI will verify the UI suite on push."
-    ],
+    "timedOut": [],
     "failed": [
-      "Caught mid-session, before commit: test/modal-manager.test.js relied on a module-scope globalThis.document assignment that another file's async test (test/create-api-client.test.js) deleted mid-shard under --test-isolation=none, producing a real failure on the second full-suite run. Fixed by having every test set document fresh as its first synchronous statement; re-verified green."
+      "Caught mid-session, before commit: first Playwright UI run failed because the return digest overlay intercepted Settings navigation after reload. Fixed the product behavior by making the digest non-modal status UI; re-verified Playwright UI 9/9 and default npm test 273/273."
     ]
   },
   "silScoreV3MigratedAt": "2026-04-21",
@@ -140,5 +130,17 @@
   "silImpact": 0,
   "silImpactMax": 1000,
   "silHealth": 949,
-  "silHealthMax": 1000
+  "silHealthMax": 1000,
+  "doctorScore": {
+    "passing": 1,
+    "total": 1,
+    "failing": 0,
+    "warning": 0,
+    "score": 100,
+    "date": "2026-07-02",
+    "blockingFailing": 0
+  },
+  "complianceScore": 37,
+  "complianceTotal": 37,
+  "sanitizationLastCleared": "2026-07-02"
 }

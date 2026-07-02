@@ -48,7 +48,8 @@ export const SHARDS = {
     "test/session-actions.test.js",
     "test/session20-features.test.js",
     "test/strategy-contract-scouting.test.js",
-    "test/time-capsule.test.js"
+    "test/time-capsule.test.js",
+    "test/what-if-replay.test.js"
   ],
   "sim-realism": [
     "test/monte-carlo-regression.test.js"

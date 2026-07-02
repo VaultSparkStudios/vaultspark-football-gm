@@ -1,12 +1,12 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-02 (Session 29 closeout) -->
+<!-- generated-at: 2026-07-02 (Session 30 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S29 ══════╗
-║  Date: 2026-07-02  ·  SIL: 974/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: claude-code                            ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S30 ══════╗
+║  Date: 2026-07-02  ·  SIL: 978/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
 ║  ✓ `scripts/cache-genius-list.mjs` implements the protocol cach  ║
@@ -15,11 +15,11 @@
 ║  ✓ `tests-ui/app.spec.js` handles the expected GM Decision skip  ║
 ║  ✓ `tests-ui/app.spec.js` handles the expected GM Decision skip  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 974/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 978/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          88   █████████░                            ║
-║    Momentum           98   ██████████                            ║
-║    Engagement         99   ██████████                            ║
+║    Alignment          90   █████████░                            ║
+║    Momentum           99   ██████████                            ║
+║    Engagement         100  ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          100  ██████████                            ║
 ║    Security           99   ██████████                            ║
@@ -28,19 +28,19 @@
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
-║  · context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
-║  · context/PROJECT_STATUS.json                                   ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 27 files  ·  M:25 A:0 D:0 ?:2                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -49,12 +49,12 @@
 ║  Live:     N/A — pre-deploy (FORGE)                              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
-║  Doctor:        —                                                ║
-║  Compliance:    —                                                ║
-║  Tests:         270/270                                          ║
-║  IGNIS:         13d ago                                          ║
+║  Doctor:        1/1                                              ║
+║  Compliance:    37/37                                            ║
+║  Tests:         273/273                                          ║
+║  IGNIS:         14d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  —                                                ║
+║  Sanitization:  1d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║

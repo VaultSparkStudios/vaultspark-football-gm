@@ -105,8 +105,8 @@ function ensureStyles() {
   const style = document.createElement("style");
   style.id = "returnDigestStyles";
   style.textContent = `
-    .return-digest-overlay { position: fixed; inset: 0; z-index: 9000; display: flex; align-items: center; justify-content: center; background: rgba(6, 10, 18, 0.72); padding: 1rem; }
-    .return-digest-card { max-width: 420px; width: 100%; background: var(--panel, #141c2b); color: var(--ink, #eef2fb); border: 1px solid var(--line, #263248); border-radius: 14px; padding: 1.25rem 1.4rem; box-shadow: 0 18px 60px rgba(0,0,0,0.45); }
+    .return-digest-overlay { position: fixed; inset: 0; z-index: 9000; display: flex; align-items: center; justify-content: center; background: rgba(6, 10, 18, 0.72); padding: 1rem; pointer-events: none; }
+    .return-digest-card { max-width: 420px; width: 100%; background: var(--panel, #141c2b); color: var(--ink, #eef2fb); border: 1px solid var(--line, #263248); border-radius: 14px; padding: 1.25rem 1.4rem; box-shadow: 0 18px 60px rgba(0,0,0,0.45); pointer-events: auto; }
     .return-digest-header { font-size: 1.15rem; font-weight: 700; letter-spacing: 0.01em; }
     .return-digest-sub { margin-top: 0.25rem; font-size: 0.85rem; color: var(--muted, #93a1bd); }
     .return-digest-list { list-style: none; margin: 0.9rem 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem; }
@@ -140,8 +140,8 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
   const overlay = document.createElement("div");
   overlay.className = "return-digest-overlay";
   overlay.id = "returnDigestOverlay";
-  overlay.setAttribute("role", "dialog");
-  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("role", "status");
+  overlay.setAttribute("aria-live", "polite");
   overlay.setAttribute("aria-label", "While you were away");
   overlay.innerHTML = `
     <div class="return-digest-card">
@@ -173,9 +173,6 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
     overlay.remove();
     document.removeEventListener("keydown", escHandler);
     onJumpToInbox?.();
-  });
-  overlay.addEventListener("click", (event) => {
-    if (event.target === overlay) close();
   });
   document.addEventListener("keydown", escHandler);
 

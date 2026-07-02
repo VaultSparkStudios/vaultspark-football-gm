@@ -890,6 +890,12 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  if (req.method === "GET" && url.pathname === "/api/what-if-replay") {
+    const teamId = (url.searchParams.get("team") || session.controlledTeamId).toUpperCase();
+    sendJson(res, 200, { ok: true, replay: session.getWhatIfReplay({ teamId }) });
+    return true;
+  }
+
   if (req.method === "GET" && url.pathname === "/api/calendar") {
     const year = toInt(url.searchParams.get("year")) || session.currentYear;
     sendJson(res, 200, { ok: true, calendar: session.getSeasonCalendar(year) });

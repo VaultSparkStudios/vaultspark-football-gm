@@ -43,6 +43,7 @@ import {
   setMetricCardValue,
   formatActionError,
   presentActionError,
+  renderPanelError,
   teamName,
   teamByCode,
   teamCode,
@@ -397,8 +398,10 @@ function bindEvents() {
       const newsItems = state.dashboard?.newsLog || state.newsRows || [];
       ingestNewsIntoInbox(newsItems);
       renderInboxBadge();
-      renderSeasonArcs().catch(() => {});
-      checkAndShowFranchiseMoment().catch(() => {});
+      renderSeasonArcs().catch((error) => renderPanelError("seasonArcsContent", "Season arcs", error, {
+        onRetry: () => renderSeasonArcs().catch((retryError) => renderPanelError("seasonArcsContent", "Season arcs", retryError))
+      }));
+      checkAndShowFranchiseMoment().catch(presentActionError);
       checkAndPruneRewindStorage();
       syncMobileLoopOverlay();
     }, "Advancing week...")
@@ -1539,7 +1542,7 @@ function bindEvents() {
   // Mentorship panel load on Roster tab
   document.querySelectorAll(".menu-btn[data-tab='rosterTab']").forEach((btn) => {
     btn.addEventListener("click", () => {
-      renderVeteranMentorshipPanel().catch(() => {});
+      renderVeteranMentorshipPanel().catch((error) => renderPanelError("mentorshipPanel", "Mentorship panel", error));
     });
   });
 
@@ -1568,31 +1571,35 @@ function bindEvents() {
     const gameId = btn.dataset.boxscoreId;
     // Run sim-watch if we haven't shown the box score yet
     if (state.activeBoxScoreId !== gameId && gameId) {
-      runSimWatch(gameId).catch(() => {});
+      runSimWatch(gameId).catch(presentActionError);
     }
   });
 
   // Cap War Room — load on Contracts tab activation
   document.querySelectorAll(".menu-btn[data-tab='contractsTab']").forEach((btn) => {
     btn.addEventListener("click", () => {
-      renderCapWarRoom().catch(() => {});
+      renderCapWarRoom().catch((error) => renderPanelError("capWarRoomBars", "Cap War Room", error, {
+        onRetry: () => renderCapWarRoom().catch((retryError) => renderPanelError("capWarRoomBars", "Cap War Room", retryError))
+      }));
     });
   });
 
   // Dynasty Records Board
   document.getElementById("loadRecordsBoardBtn")?.addEventListener("click", () => {
-    renderDynastyRecordsBoard().catch(() => {});
+    renderDynastyRecordsBoard().catch((error) => renderPanelError("dynastyRecordsBoard", "Dynasty Records Board", error));
   });
 
   // AI GM Archetypes
   document.getElementById("loadArchetypesBtn")?.addEventListener("click", () => {
-    loadTeamArchetypes().then(() => renderArchetypesTable()).catch(() => {});
+    loadTeamArchetypes().then(() => renderArchetypesTable()).catch((error) => renderPanelError("teamArchetypesTable", "League GM Archetypes", error));
   });
 
   // Season Arcs — load on Overview activation
   document.querySelectorAll(".menu-btn[data-tab='overviewTab']").forEach((btn) => {
     btn.addEventListener("click", () => {
-      renderSeasonArcs().catch(() => {});
+      renderSeasonArcs().catch((error) => renderPanelError("seasonArcsContent", "Season arcs", error, {
+        onRetry: () => renderSeasonArcs().catch((retryError) => renderPanelError("seasonArcsContent", "Season arcs", retryError))
+      }));
     });
   });
 }

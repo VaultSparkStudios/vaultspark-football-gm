@@ -567,29 +567,25 @@ export function hideTradeBreakdown() {
 export async function renderDynastyRecordsBoard() {
   const el = document.getElementById("dynastyRecordsBoard");
   if (!el) return;
-  try {
-    const teamId = state.dashboard?.controlledTeamId || "BUF";
-    const data = await api(`/api/records/franchise?team=${encodeURIComponent(teamId)}`);
-    const records = data?.records || {};
-    const cats = Object.entries(records).slice(0, 12);
-    if (!cats.length) { el.innerHTML = `<div class="records-empty">No franchise records yet — simulate seasons to build your legacy.</div>`; return; }
-    el.innerHTML = `<div class="records-grid">${cats.map(([cat, record]) => {
-      if (!record) return "";
-      const label = cat.replace(/([A-Z])/g, " $1").replace(/^./, (s) => s.toUpperCase());
-      const val = typeof record === "object" ? (record.value ?? record.stat ?? "-") : record;
-      const player = typeof record === "object" ? (record.player || record.name || "") : "";
-      const year = typeof record === "object" ? (record.year || "") : "";
-      return `
-        <div class="record-card">
-          <div class="record-cat">${escapeHtml(label)}</div>
-          <div class="record-val">${typeof val === "number" ? val.toLocaleString() : escapeHtml(String(val))}</div>
-          ${player ? `<div class="record-player">${escapeHtml(player)}</div>` : ""}
-          ${year ? `<div class="record-year">${escapeHtml(String(year))}</div>` : ""}
-        </div>`;
-    }).join("")}</div>`;
-  } catch {
-    // non-critical
-  }
+  const teamId = state.dashboard?.controlledTeamId || "BUF";
+  const data = await api(`/api/records/franchise?team=${encodeURIComponent(teamId)}`);
+  const records = data?.records || {};
+  const cats = Object.entries(records).slice(0, 12);
+  if (!cats.length) { el.innerHTML = `<div class="records-empty">No franchise records yet — simulate seasons to build your legacy.</div>`; return; }
+  el.innerHTML = `<div class="records-grid">${cats.map(([cat, record]) => {
+    if (!record) return "";
+    const label = cat.replace(/([A-Z])/g, " $1").replace(/^./, (s) => s.toUpperCase());
+    const val = typeof record === "object" ? (record.value ?? record.stat ?? "-") : record;
+    const player = typeof record === "object" ? (record.player || record.name || "") : "";
+    const year = typeof record === "object" ? (record.year || "") : "";
+    return `
+      <div class="record-card">
+        <div class="record-cat">${escapeHtml(label)}</div>
+        <div class="record-val">${typeof val === "number" ? val.toLocaleString() : escapeHtml(String(val))}</div>
+        ${player ? `<div class="record-player">${escapeHtml(player)}</div>` : ""}
+        ${year ? `<div class="record-year">${escapeHtml(String(year))}</div>` : ""}
+      </div>`;
+  }).join("")}</div>`;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -599,14 +595,10 @@ export async function renderDynastyRecordsBoard() {
 let _archetypesCache = null;
 
 export async function loadTeamArchetypes() {
-  try {
-    const data = await api("/api/team-archetypes");
-    _archetypesCache = {};
-    for (const team of (data?.archetypes || [])) {
-      _archetypesCache[team.teamId] = team.archetype;
-    }
-  } catch {
-    // non-critical
+  const data = await api("/api/team-archetypes");
+  _archetypesCache = {};
+  for (const team of (data?.archetypes || [])) {
+    _archetypesCache[team.teamId] = team.archetype;
   }
 }
 

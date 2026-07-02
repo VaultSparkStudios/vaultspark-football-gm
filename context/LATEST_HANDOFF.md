@@ -1,3 +1,16 @@
+## 2026-07-02 — Session 30 Closeout Handoff
+
+Where we left off:
+- Completed all carried Session 29 deferrals from `docs/AUDIT_2026-07-01_SESSION29.md`: what-if replay, silent error surfacing, and service scaffold honesty.
+- Added deterministic non-canon Monday Morning QB replay for the controlled team's most painful archived loss; exposed through dashboard state plus local/server `/api/what-if-replay`; tests prove it does not mutate live state.
+- Replaced key silent UI failures with visible panel/action errors and retry affordances; records and archetype loaders now propagate failures to the user-visible handlers.
+- Bound the service bundle on `GameSession` and truth-aligned service comments as extraction/parity targets, not completed delegation.
+- Fixed a Playwright-caught return digest overlay regression by making the digest non-modal status UI that no longer blocks navigation.
+- Verification: `npm test` 273/273, `npm run test:ui` 9/9, Pages build/smoke, windows-hide, Wave guard, startup brief validation, secrets audit, blocker preflight, and canon conformance 0 gaps.
+
+Next best move:
+- Verify `football@playfranchisearchitect.com` forwards/copies to Studio operations with a real received-message receipt, then rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json` before any SPARKED flip.
+- Do not regenerate the already-exhausted Session 29 deferred queue as open work; it was completed in Session 30.
 Session Intent: Session 29 — full saturated /goal /arc (start → audit → implement → closeout); exhaust the Unified Genius List plus second-order innovation candidates at genius quality bar, gate on context-meter, close out with full canonical write-back and direct push to main.
 
 ## 2026-07-02 — Session 29 Closeout Handoff
