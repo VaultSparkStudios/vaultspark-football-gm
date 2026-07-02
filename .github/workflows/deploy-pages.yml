@@ -1,3 +1,8 @@
+# Deploy gating trade-off: GitHub Actions cannot combine `workflow_run` (depend on
+# ci.yml) with per-workflow path filters, so the "gate" job below is a fast test
+# prerequisite inside this workflow to keep path-filter triggers; full CI still runs
+# in parallel in ci.yml. The gate runs the studio shard (protocol-truth) so a push
+# that breaks tests cannot publish Pages artifacts.
 name: Deploy Pages
 
 on:
@@ -22,7 +27,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "24.14.0" # pinned: Node 24.16 hangs playwright install post-download (S14 evidence: runs 26991314776, 26991314875)
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run studio shard (protocol truth)
+        run: npm run test:studio
+
   build:
+    needs: gate
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
