@@ -8,6 +8,7 @@
 <meta property="og:title" content="Franchise Architect: Football — Build Your Dynasty" />
 <meta property="og:description" content="Browser-native NFL franchise sim. World-state, agent AI, rivalry DNA, GM legacy arcs, and PFR-calibrated realism. Build a dynasty. Free beta." />
 <meta property="og:type" content="website" />
+<script src="./lib/themeBoot.js"></script>
 <style>
   :root {
     --bg0: #0d0f14;
@@ -153,6 +154,40 @@
     .stats-inner { gap: 24px; }
     .stats-bar { padding: 32px 20px; }
   }
+
+  /* LIGHT THEME (set pre-paint by lib/themeBoot.js; dark stays the no-JS default) */
+  [data-theme="light"] {
+    --bg0: #f4f6fa;
+    --bg1: #eaeef5;
+    --panel: #ffffff;
+    --line: #c9d2e2;
+    --ink: #16202e;
+    --muted: #5a6478;
+    --accent: #2f6fd6;
+    --accent2: #6a4ab0;
+    --gold: #a9761f;
+    --success: #1e8a5c;
+  }
+  [data-theme="light"] nav {
+    background: rgba(244, 246, 250, 0.92);
+  }
+  [data-theme="light"] .hero {
+    background: linear-gradient(135deg, #f4f6fa 0%, #ece4f8 40%, #e2edf9 100%);
+  }
+  [data-theme="light"] .hero::before {
+    background: radial-gradient(circle, rgba(47, 111, 214, 0.09) 0%, transparent 70%);
+  }
+  [data-theme="light"] .hero-badge {
+    background: rgba(47, 111, 214, 0.08);
+    border-color: rgba(47, 111, 214, 0.3);
+  }
+  [data-theme="light"] .cta-section {
+    background: linear-gradient(135deg, #ece4f8 0%, #e2edf9 100%);
+  }
+  [data-theme="light"] .btn-primary { color: #fff; }
+  [data-theme="light"] .btn-primary:hover { background: #2a63c0; }
+  [data-theme="light"] .nav-cta { color: #fff; }
+  [data-theme="light"] .nav-cta:hover { background: #2a63c0; color: #fff; }
 </style>
 </head>
 <body>
@@ -267,6 +302,7 @@
   <span>Franchise Architect: Football · Open Beta 2026 · A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank" style="color:inherit">VaultSpark Studios</a> Game</span>
   <span>
     <a href="./index.html">Launch App</a> ·
+    <a href="./about.html">About</a> ·
     <a href="https://github.com/VaultSparkStudios/franchise-architect-football" target="_blank" rel="noopener">GitHub</a> ·
     <a href="https://github.com/VaultSparkStudios/franchise-architect-football/discussions" target="_blank" rel="noopener">Community</a> ·
     <a href="./contact.html">Contact</a> ·
