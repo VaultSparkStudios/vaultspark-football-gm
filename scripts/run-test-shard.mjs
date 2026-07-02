@@ -36,6 +36,7 @@ export const SHARDS = {
   ],
   "sim-contract": [
     "test/bootstrap-realism-profile.test.js",
+    "test/continuity-ledger.test.js",
     "test/determinism-smoke.test.js",
     "test/e2e-session.test.js",
     "test/feature-pack-v1.test.js",

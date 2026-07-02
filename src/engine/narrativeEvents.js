@@ -17,6 +17,8 @@
  * Each event includes: type, year, week, teamIds[], playerIds[], headline, detail, impact.
  */
 
+import { applyEventFeedback, openThreadForEvent } from "./continuityLedger.js";
+
 const MAX_LOG = 30;
 
 function pushEvent(league, event) {
@@ -26,6 +28,9 @@ function pushEvent(league, event) {
     ...event
   });
   if (league.narrativeLog.length > MAX_LOG) league.narrativeLog.length = MAX_LOG;
+  // Continuity layer: events are consequences, not just headlines (S29).
+  applyEventFeedback(league, event);
+  openThreadForEvent(league, event);
 }
 
 // ── TRADE_REQUEST ─────────────────────────────────────────────────────────────

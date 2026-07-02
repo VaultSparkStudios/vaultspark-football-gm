@@ -76,6 +76,8 @@ import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
 import { updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore.js";
 import { generatePressConference } from "../engine/pressConference.js";
+import { runNarrativeChecks } from "../engine/narrativeEvents.js";
+import { resolveThreads as resolveContinuityThreads } from "../engine/continuityLedger.js";
 import { updateFanSentiment } from "../engine/fanSentiment.js";
 import { applyMentorshipBonuses } from "../engine/veteranMentorship.js";
 import { latestGmDecision } from "../engine/gmDecisionConsequences.js";
@@ -3731,6 +3733,18 @@ export class GameSession {
       recordWeekRivalries(this.league, weekResult, this.currentYear);
       // Press conference quotes for controlled team's game
       generatePressConference(this.league, weekResult, this.controlledTeamId, this.currentYear);
+      // Narrative event engine + continuity threads (S29 — previously unwired)
+      if (this.getLeagueSettings().enableNarratives) {
+        runNarrativeChecks(this.league, this.currentYear, weekResult.week, this.rng);
+        for (const thread of resolveContinuityThreads(this.league, { year: this.currentYear, week: weekResult.week })) {
+          this.logNews(thread.resolution, {
+            teamId: thread.teamId,
+            playerId: thread.playerId,
+            kind: "continuity-resolution",
+            threadType: thread.type
+          });
+        }
+      }
       // Fan sentiment update (uses current standings snapshot)
       updateFanSentiment(this.league, weekResult, this.currentYear);
       // ─────────────────────────────────────────────────────────────────────

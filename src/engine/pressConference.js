@@ -10,6 +10,7 @@
  */
 
 import { initNewsLog } from "./beatReporter.js";
+import { getLastPress, recordPress } from "./continuityLedger.js";
 
 // ── Tone assignment ────────────────────────────────────────────────────────────
 
@@ -52,6 +53,33 @@ const QUOTES = {
     (ctx) => `"No moral victories in this sport, but I'll give our guys credit — they competed for sixty minutes. We'll clean up the film and keep stacking wins."`
   ]
 };
+
+// ── Continuity follow-ups (S29) — the room remembers last week's podium ──────
+// Keyed by transition from last week's tone/result to this week's result.
+
+const FOLLOWUP_QUOTES = {
+  "promise-kept": [
+    (ctx) => `"I stood here last week and told you it wouldn't happen again. ${ctx.score}. It didn't. This locker room answers."`,
+    (ctx) => `"Monday I promised a response. That ${ctx.score} against ${ctx.opponent} — that's the response. Hold me to the next one too."`
+  ],
+  "promise-broken": [
+    (ctx) => `"I told you last week this wouldn't happen again, and it did. That's on me. No excuses left in this podium — only work."`,
+    (ctx) => `"You can replay my quote from last week. I own every word of it. Two in a row after a promise like that means everything gets reviewed, starting with me."`
+  ],
+  humbled: [
+    (ctx) => `"A week ago I called us a statement team. ${ctx.opponent} just made a statement of their own. That's the league reminding us who we have to be every single week."`,
+    (ctx) => `"I was up here talking about who we are after last week's win. Credit ${ctx.opponent} — they read the quote and took it personally."`
+  ]
+};
+
+function followupKey(lastPress, isWin) {
+  if (!lastPress) return null;
+  const promised = !lastPress.isWin && (lastPress.tone === "fiery" || lastPress.tone === "disappointed");
+  if (promised && isWin) return "promise-kept";
+  if (promised && !isWin) return "promise-broken";
+  if (lastPress.isWin && lastPress.tone === "confident" && !isWin) return "humbled";
+  return null;
+}
 
 const ANALYST_QUOTES = [
   (ctx) => `"Looking at the numbers: ${ctx.topPerformer ? `${ctx.topPerformer} was our most efficient player` : "the unit held its own"}. The matchup advantage we identified pre-game played out. Film tells you what the score doesn't."`,
@@ -121,6 +149,10 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
   const headCoachQ = pickQuote(QUOTES[tone], gameId, 0)(ctx);
   const analystQ   = pickQuote(ANALYST_QUOTES, gameId, 1)(ctx);
 
+  // Continuity: does the room remember something from last week's podium?
+  const lastPress = getLastPress(league, { year, week });
+  const fKey = followupKey(lastPress, isWin);
+
   const items = [
     {
       type: "press-conference",
@@ -148,6 +180,22 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
     }
   ];
 
+  if (fKey) {
+    items.unshift({
+      type: "press-conference",
+      subtype: "follow-up",
+      tone: fKey === "promise-kept" ? "confident" : fKey === "promise-broken" ? "fiery" : "humble",
+      week,
+      year,
+      headline: `Week ${week} Post-Game: The Room Remembers (${fKey.replace(/-/g, " ")})`,
+      quote: pickQuote(FOLLOWUP_QUOTES[fKey], gameId, 2)(ctx),
+      teamIds: [controlledTeamId],
+      score,
+      isWin,
+      continuity: fKey
+    });
+  }
+
   items.forEach((item, index) => {
     league.newsLog.unshift({
       ...item,
@@ -155,4 +203,7 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
     });
     if (league.newsLog.length > 50) league.newsLog.length = 50;
   });
+
+  // Remember this podium for next week's room.
+  recordPress(league, { year, week, tone, isWin, opponent, score });
 }
