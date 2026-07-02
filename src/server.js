@@ -1418,6 +1418,16 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  // ── Time Capsule (preseason predictions + receipts) ────────────────────────
+  if (req.method === "GET" && url.pathname === "/api/time-capsule") {
+    sendJson(res, 200, {
+      ok: true,
+      capsule: session.league.timeCapsule || null,
+      ledger: session.league.timeCapsuleLedger || []
+    });
+    return true;
+  }
+
   // ── GM Decision Queue ──────────────────────────────────────────────────────
   if (req.method === "GET" && url.pathname === "/api/gm-decision") {
     sendJson(res, 200, { ok: true, decisions: generateGmDecisions(session) });

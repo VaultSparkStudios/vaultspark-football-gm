@@ -84,10 +84,11 @@ export async function buildSeasonEpilogue(dashboard) {
   const isChampion = Boolean(d.lastChampionTeamId && (d.lastChampionTeamId === (team.teamId || teamKey)));
   const madePlayoffs = Boolean(myRow.playoffSeed || myRow.playoffExit || myRow.madePlayoffs);
 
-  const [arcs, records, fan] = await Promise.all([
+  const [arcs, records, fan, capsule] = await Promise.all([
     api("/api/season-arcs").then((r) => r?.arcs || []).catch(() => []),
     api("/api/records/franchise").then((r) => r?.records || null).catch(() => null),
-    api("/api/fan-sentiment").then((r) => r?.fanSentiment || null).catch(() => null)
+    api("/api/fan-sentiment").then((r) => r?.fanSentiment || null).catch(() => null),
+    api("/api/time-capsule").then((r) => r?.capsule || null).catch(() => null)
   ]);
 
   // Arc verdicts: the generator reflects final standings after rollover.
@@ -115,6 +116,18 @@ export async function buildSeasonEpilogue(dashboard) {
     }
   }
 
+  // Time-capsule receipts: only for the season that just ended, only once graded.
+  const receipts =
+    capsule && capsule.year === seasonYear && capsule.graded
+      ? {
+          hits: capsule.graded.hits,
+          pushes: capsule.graded.pushes,
+          misses: capsule.graded.misses,
+          rows: capsule.graded.receipts || [],
+          reporterVerdict: capsule.graded.reporterVerdict || ""
+        }
+      : null;
+
   const quoteKey = outcomeKey(winPct, isChampion, madePlayoffs);
   return {
     seasonYear,
@@ -125,6 +138,7 @@ export async function buildSeasonEpilogue(dashboard) {
     recordsBroken: recordsBroken.slice(0, 4),
     fanApproval: fan ? Math.round(fan.approval ?? 0) : null,
     fanLabel: fan?.label || null,
+    receipts,
     closingQuote: pickQuote(quoteKey, seasonYear),
     quoteKey
   };
@@ -169,6 +183,20 @@ export async function appendSeasonEpilogue(bodyEl, dashboard) {
       </div>`
     : "";
 
+  const receiptIcon = { hit: "✅", push: "➖", miss: "❌" };
+  const receiptsHtml = ep.receipts
+    ? `<div class="ep-records ep-receipts">
+        <div class="ep-section-label">The Receipts — Preseason Predictions, Graded (${ep.receipts.hits}-${ep.receipts.misses}${ep.receipts.pushes ? `, ${ep.receipts.pushes} push` : ""})</div>
+        ${ep.receipts.rows
+          .map(
+            (r) => `<div class="ep-record">${receiptIcon[r.verdict] || "➖"} ${escapeHtml(r.text)}<br>
+              <em>${escapeHtml(r.evidence || "")}</em></div>`
+          )
+          .join("")}
+        ${ep.receipts.reporterVerdict ? `<blockquote class="ep-quote">"${escapeHtml(ep.receipts.reporterVerdict)}"<cite>— Beat Reporter, grading the board</cite></blockquote>` : ""}
+      </div>`
+    : "";
+
   const section = document.createElement("div");
   section.className = "season-epilogue";
   section.innerHTML = `
@@ -177,6 +205,7 @@ export async function appendSeasonEpilogue(bodyEl, dashboard) {
     ${ep.isMiracleRunSeason ? `<div class="ep-miracle-run">⭐ MIRACLE RUN — Against all odds, we made it.</div>` : ""}
     ${arcHtml}
     ${recordsHtml}
+    ${receiptsHtml}
     ${fanHtml}
     <blockquote class="ep-quote">"${escapeHtml(ep.closingQuote)}"<cite>— Head Coach, season-ending press conference</cite></blockquote>
   `;

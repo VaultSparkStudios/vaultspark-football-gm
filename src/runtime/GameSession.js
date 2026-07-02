@@ -73,6 +73,7 @@ import {
   reportSignificantInjury
 } from "../engine/beatReporter.js";
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
+import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
 import { updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore.js";
 import { generatePressConference } from "../engine/pressConference.js";
 import { updateFanSentiment } from "../engine/fanSentiment.js";
@@ -2233,6 +2234,17 @@ export class GameSession {
     for (const team of this.league.teams) {
       team.weeklyPlan = this.buildWeeklyPlan(team.id);
     }
+    this.league.timeCapsule = buildPreseasonPredictions({
+      league: this.league,
+      year,
+      controlledTeamId: this.controlledTeamId,
+      seedState: this.rng.seed
+    });
+    this.logNews(`Beat reporter goes on record: ${this.league.timeCapsule.predictions.length} preseason predictions for ${year}`, {
+      year,
+      kind: "time-capsule",
+      lines: this.league.timeCapsule.predictions.map((p) => p.text)
+    });
   }
   setControlledTeam(teamId) {
     if (teamById(this.league, teamId)) this.controlledTeamId = teamId;
@@ -3784,6 +3796,13 @@ export class GameSession {
         awards: this.lastAwardSummary
       };
       this.archiveGameResults(playoffResult.gameArchiveEntries);
+      const capsuleGrade = gradeTimeCapsule({ league: this.league, statBook: this.statBook, year: this.currentYear });
+      if (capsuleGrade) {
+        this.logNews(
+          `Receipts are in: the beat reporter went ${capsuleGrade.hits}-${capsuleGrade.misses}${capsuleGrade.pushes ? ` (${capsuleGrade.pushes} push)` : ""} on preseason predictions`,
+          { year: this.currentYear, kind: "time-capsule-receipts", verdict: capsuleGrade.reporterVerdict }
+        );
+      }
       this.logNews(`${playoffResult.superBowl.championTeamId} won the championship`, {
         teamId: playoffResult.superBowl.championTeamId,
         runnerUp: playoffResult.superBowl.runnerUpTeamId

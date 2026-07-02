@@ -1700,6 +1700,17 @@ export function createLocalApiRuntime({
         return finish(jsonResponse(200, { ok: true, arcs: _generateSeasonArcs(session) }));
       }
 
+      // ── Time Capsule (preseason predictions + receipts) ─────────────────
+      if (method === "GET" && pathname === "/api/time-capsule") {
+        return finish(
+          jsonResponse(200, {
+            ok: true,
+            capsule: session.league.timeCapsule || null,
+            ledger: session.league.timeCapsuleLedger || []
+          })
+        );
+      }
+
       // ── GM Decision Queue ────────────────────────────────────────────────
       if (method === "GET" && pathname === "/api/gm-decision") {
         return finish(jsonResponse(200, { ok: true, decisions: _generateGmDecisions(getAugmentedState(session)) }));
