@@ -1,3 +1,18 @@
+## 2026-07-02 — Session 32 Closeout Handoff
+
+Where we left off:
+- Continued the durable `/arc` plus `/closeout` objective from a clean Session 31 closeout; no cutoff, no divergence, no prior uncommitted work.
+- Confirmed the Session 29/30/31 queue was exhausted, then generated and implemented `docs/AUDIT_2026-07-02_SESSION32.*` from current live evidence.
+- Shipped `tutorial-focus-trap-adoption`: the first-run tutorial overlay now uses the shared `modalManager` focus trap, closes it before rerender/removal, supports Escape through the same modal path, and has focused browser wiring coverage.
+- Regenerated `.cache/genius-list.json`; latest audit status is exhausted with 0 open items.
+- Verification passed: focused browser/modal 16/16; named default shards 275/275 (core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37); Playwright UI 9/9 after one aggregate server-flake rerun; Pages build/smoke; windows-hide; Wave guard; startup brief validation; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates allow under `vaultspark-football-gm`.
+- Live route evidence for `https://playfranchisearchitect.com` remains routesOk=true for `/`, `/game.html`, `/contact.html`, `/privacy.html`, `/terms.html`, `/agents.json`, `/.well-known/llms.txt`, and `/sitemap.xml`.
+- Launch/SPARKED remains blocked honestly because no received-message receipt proves `football@playfranchisearchitect.com` forwards/copies to Studio operations.
+
+Next best move:
+- After this push deploys, confirm GitHub Actions/Pages for the Session 32 commit and rerun live route smoke if needed.
+- Obtain a real received-message receipt for `football@playfranchisearchitect.com`, then rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json` before any SPARKED flip.
+Session Intent: Continue durable `/arc` objective through full `/closeout`, direct commit/push to main, and deploy verification without fabricating launch readiness.
 ## 2026-07-02 — Session 31 Closeout Handoff
 
 Where we left off:

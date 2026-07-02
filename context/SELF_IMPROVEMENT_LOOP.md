@@ -321,3 +321,23 @@ Category scores:
 | Automation Coverage | 100 | Maintained cap with a new regression proving task-board fallback status parsing. |
 
 Follow-up: obtain real delivery proof for `football@playfranchisearchitect.com`, rerun launch evidence with `--email-evidence`, then verify post-push GitHub Actions/Pages before any SPARKED flip.
+
+## 2026-07-02 — Session 32 Tutorial Focus Trap + Launch Evidence Closeout
+
+Score: 980 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap; named default shards pass 275/275 and focused browser/modal coverage passes 16/16. |
+| Creative Alignment | 90 | Held; the change improves the first-run tutorial experience without changing product direction. |
+| Momentum | 100 | Maintained cap; queue stayed exhausted and the session shipped the one verified new accessibility gap. |
+| Engagement | 100 | Maintained cap; onboarding is easier to operate by keyboard and Escape, reducing first-session friction. |
+| Process Quality | 100 | Maintained cap; rejected stale audit and SPARKED-flip candidates on evidence instead of reopening/fabricating work. |
+| Cross-Repo Coherence | 100 | Maintained cap; no sibling tree edits, registry slug mismatch noted but not changed from this repo. |
+| Security Posture | 99 | Unchanged; no auth, secret, dependency, or data surface changed. |
+| Ecosystem Integration | 99 | +1 for preserving launch-evidence truth while adding Session 32 audit/cache artifacts that reconcile cleanly with `/go`. |
+| Capital Efficiency | 92 | Unchanged; work remains static-host-safe and adds no paid service or variable-cost runtime. |
+| Automation Coverage | 100 | Maintained cap; added focused wiring coverage and reran full named shards plus Playwright UI. |
+
+Follow-up: post-push, confirm GitHub Actions/Pages deployment for the Session 32 commit. Obtain a real `football@playfranchisearchitect.com` delivery receipt before any SPARKED flip.

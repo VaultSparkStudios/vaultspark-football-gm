@@ -16,6 +16,8 @@
  * After step 3, the tutorial resolves and the player enters the full game.
  */
 
+import { closeModal, openModal } from "./modalManager.js";
+
 const TUTORIAL_SEEN_KEY = "vsfgm_tutorial_seen_v1";
 
 export function hasTutorialBeenSeen() {
@@ -129,7 +131,15 @@ export function mountTutorial({ onComplete, onSkip }) {
   overlay.setAttribute("aria-labelledby", "tutorial-title");
   document.body.appendChild(overlay);
 
+  function closeTutorial(callback) {
+    closeModal(overlay);
+    markTutorialSeen();
+    overlay.remove();
+    callback?.(selections);
+  }
+
   function render() {
+    closeModal(overlay);
     const step = STEPS[currentStep];
     const isLast = currentStep === STEPS.length - 1;
 
@@ -185,22 +195,20 @@ export function mountTutorial({ onComplete, onSkip }) {
     });
 
     overlay.querySelector("#tutSkipBtn").addEventListener("click", () => {
-      markTutorialSeen();
-      overlay.remove();
-      onSkip?.();
+      closeTutorial(onSkip);
     });
 
     overlay.querySelector("#tutNextBtn").addEventListener("click", () => {
       if (!selections[step.id]) return;
       if (isLast) {
-        markTutorialSeen();
-        overlay.remove();
-        onComplete?.(selections);
+        closeTutorial(onComplete);
       } else {
         currentStep++;
         render();
       }
     });
+
+    openModal(overlay, { onClose: () => closeTutorial(onSkip) });
   }
 
   render();

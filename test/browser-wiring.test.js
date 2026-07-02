@@ -44,6 +44,13 @@ test("advance-week browser wiring sends selected GM decision choice", () => {
   assert.match(appSource, /body\.gmDecisionChoice = gmDecisionChoice/);
   assert.match(appSource, /response\.gmDecision\?\.applied/);
 });
+test("first-run tutorial modal uses the shared focus trap", () => {
+  const tutorialSource = read("../public/lib/tutorialCampaign.js");
+
+  assert.match(tutorialSource, /import \{ closeModal, openModal \} from "\.\/modalManager\.js"/);
+  assert.match(tutorialSource, /openModal\(overlay, \{ onClose: \(\) => closeTutorial\(onSkip\) \}\)/);
+  assert.match(tutorialSource, /closeModal\(overlay\);\s*markTutorialSeen\(\);\s*overlay\.remove\(\);/s);
+});
 test("first-run tutorial styles are injected before mounting onboarding", () => {
   const appSource = read("../public/app.js");
 

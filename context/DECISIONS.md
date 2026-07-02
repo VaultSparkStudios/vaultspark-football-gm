@@ -236,3 +236,13 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** Session 29/30 completion evidence was recorded in the task board, handoff, current state, and status JSON, but the cache helper only trusted an audit Execution Log section that did not exist in `docs/AUDIT_2026-07-01_SESSION29.md`. Reporting those shipped items as open violated CANON-031 observability honesty and could make a future arc rework completed systems.
 
 **Pattern established:** Audit artifacts can be immutable ranked plans; task boards are allowed to be the append-only execution ledger. Protocol caches should reconcile both before claiming work is open or exhausted.
+
+---
+
+## 2026-07-02 — Session 32: first-run tutorial uses the shared modal contract
+
+**Decision:** The first-run tutorial overlay must use the same `modalManager` focus-trap contract as the rest of the game flow instead of hand-rolling dialog lifecycle behavior.
+
+**Rationale:** The tutorial is the first keyboard-facing onboarding modal many beta players see. Keeping it outside the shared modal manager created inconsistent Escape/focus behavior and left an already-tested accessibility utility partially adopted.
+
+**Pattern established:** New modal-like overlays should call `openModal()` after rendering and `closeModal()` before rerender/removal. Exceptions should be explicitly non-modal status surfaces, like the return digest.

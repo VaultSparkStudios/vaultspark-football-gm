@@ -351,3 +351,15 @@ Source: carried items from `docs/AUDIT_2026-07-01_SESSION29.md` plus `docs/INNOV
 **Verification:** `npm test` 273/273 · `npm run test:ui` 9/9 · `npm run build:pages` · `npm run smoke:pages` · `node scripts/check-windows-hide.mjs` · `node scripts/check-canon-044-waves.mjs` · startup brief validation · secrets audit · blocker preflight · canon conformance 0 gaps.
 
 **Still blocked:** Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying to Studio operations is verified with real delivery evidence and post-push public route/domain state remains green.
+
+## Session 32 — Tutorial Focus Trap + Launch Evidence Closeout (2026-07-02)
+
+Source: `docs/AUDIT_2026-07-02_SESSION32.md`.
+
+| Item | Status |
+|------|--------|
+| tutorial-focus-trap-adoption — first-run tutorial overlay uses shared modal focus trap and closes it before skip/complete removal | Done |
+| latest-audit-follow-through — re-check Session 29/30 queue before new work | Rejected on evidence — already exhausted |
+| sparked-flip — public launch status change | Blocked — missing real on-domain email forwarding/copying receipt |
+
+**Verification:** focused browser/modal 16/16; named default shards 275/275 (core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37); Playwright UI 9/9 on rerun; Pages build/smoke; cache check; windows-hide; Wave guard; startup brief validation; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates allow under registry slug `vaultspark-football-gm`; live routesOk=true but launch evidence remains blocked on email proof.

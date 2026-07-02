@@ -144,3 +144,10 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Queue truth: regenerated `.cache/genius-list.json` reports the latest audit as exhausted with 0 open items.
 - Launch truth: `audits/launch-evidence-2026-07-02-session31.json` reports `routesOk=true` for all checked public routes on `https://playfranchisearchitect.com`, but status remains `blocked` because on-domain email forwarding/copying is still unverified.
 - UI verification truth: first Session 31 Playwright aggregate failed because the history-awards test seeded server state through raw API calls without updating browser state, then depended on a later Settings save to pull that state into the UI. A localhost-only dashboard sync hook now makes the test assert the seeded state directly; full Playwright UI rerun passed 9/9.
+
+## 2026-07-02 — Session 32 Truth Audit
+
+- Queue truth: Session 29/30/31 work is still exhausted; `.cache/genius-list.json` is fresh against `docs/AUDIT_2026-07-02_SESSION32.md` with 0 open items.
+- Tutorial modal truth: first-run tutorial dialog now uses `openModal`/`closeModal`; it closes the focus trap before rerender/removal and focused source coverage asserts that wiring.
+- Verification truth: the aggregate `npm test` wrapper timed out before a suite summary, so it was not counted as green. Direct named shards passed with real exit codes: core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37 (275 total). Playwright UI failed twice due server/dev-runner flake, then passed 9/9 with webserver debug output; this is recorded as rerun-verified, not first-try green.
+- Launch truth: `audits/launch-evidence-2026-07-02-session32.json` reports all checked live routes OK, but status remains blocked because on-domain email forwarding/copying has no real receipt. No SPARKED flip was claimed.

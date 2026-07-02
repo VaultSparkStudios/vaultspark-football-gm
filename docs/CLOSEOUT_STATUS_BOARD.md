@@ -1,11 +1,11 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-02 (Session 31 closeout) -->
+<!-- generated-at: 2026-07-02 (Session 32 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S31 ══════╗
-║  Date: 2026-07-02  ·  SIL: 979/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S32 ══════╗
+║  Date: 2026-07-02  ·  SIL: 980/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
@@ -15,7 +15,7 @@
 ║  ✓ `tests-ui/app.spec.js` handles the expected GM Decision skip  ║
 ║  ✓ `tests-ui/app.spec.js` handles the expected GM Decision skip  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 979/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 980/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          90   █████████░                            ║
 ║    Momentum           100  ██████████                            ║
@@ -23,13 +23,13 @@
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          100  ██████████                            ║
 ║    Security           99   ██████████                            ║
-║    Ecosystem          98   ██████████                            ║
+║    Ecosystem          99   ██████████                            ║
 ║    Capital            92   █████████░                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
 ║  ✓ context/DECISIONS.md                                          ║
@@ -40,7 +40,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 16 files  ·  M:13 A:0 D:0 ?:3                          ║
+║  Changes: 15 files  ·  M:10 A:0 D:0 ?:5                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -51,7 +51,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        1/1                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         274/274                                          ║
+║  Tests:         275/275                                          ║
 ║  IGNIS:         14d ago                                          ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  1d ago                                           ║

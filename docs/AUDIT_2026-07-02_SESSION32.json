@@ -1,0 +1,55 @@
+{
+  "generatedBy": "/audit skill v2 fallback",
+  "generatedAt": "2026-07-02",
+  "project": "franchise-architect-football",
+  "type": "game",
+  "session": 32,
+  "scope": "fresh arc after exhausted Session 29/30/31 queue",
+  "summary": {
+    "totalItems": 1,
+    "combinedPriority": 12.8,
+    "topItems": ["tutorial-focus-trap-adoption"]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "⚡",
+      "axis": "ux/accessibility",
+      "slug": "tutorial-focus-trap-adoption",
+      "effortHours": 0.5,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 12.8,
+      "why": "The repo already has a tested shared modal focus trap, and gameFlow uses it, but the first-run tutorial overlay remains a hand-rolled dialog. That leaves keyboard focus and Escape behavior inconsistent on the first player-facing onboarding moment.",
+      "recipe": "Import openModal/closeModal in public/lib/tutorialCampaign.js, pair every tutorial exit with closeModal before removing the overlay, open the trap after each step render, and add focused static coverage in test/browser-wiring.test.js.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Trap tutorial focus and cover wiring." },
+        "L2": { "effortHours": 1.0, "recipe": "Also add a DOM-level fake test for Escape." },
+        "L3": { "effortHours": 2.0, "recipe": "Adopt the modal manager across every remaining overlay." }
+      },
+      "status": "implemented",
+      "implementation": "public/lib/tutorialCampaign.js now imports the shared modal manager, opens the focus trap after each tutorial step render, closes any previous trap before rerendering, and closes the trap before skip/complete removal. test/browser-wiring.test.js asserts this wiring remains present.",
+      "verification": [
+        "node --test test/browser-wiring.test.js test/modal-manager.test.js"
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "slug": "latest-audit-follow-through",
+      "reason": "Rejected on live evidence: Session 29/30 audit queue is exhausted in context/TASK_BOARD.md and .cache/genius-list.json after Session 31 repair. Reopening it would be a false-positive queue regression."
+    },
+    {
+      "slug": "sparked-flip",
+      "reason": "Still evidence-gated on a real football@playfranchisearchitect.com received-message forwarding receipt. Route reachability alone is insufficient and no email evidence was supplied this session."
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "tutorial-focus-trap-adoption",
+      "status": "shipped",
+      "evidence": "public/lib/tutorialCampaign.js + test/browser-wiring.test.js",
+      "verifiedBy": ["node --test test/browser-wiring.test.js test/modal-manager.test.js"]
+    }
+  ]
+}

@@ -4,10 +4,10 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 31 closeout repaired the genius-cache truth source so completed Session 29/30 audit items no longer reappear as open work, regenerated the exhausted cache, and verified live public routes while preserving the email-forwarding launch blocker.",
-  "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, rerun launch evidence with that receipt, then verify post-push Pages/Actions state before any SPARKED flip.",
+  "currentFocus": "Session 32 completed a fresh arc after the Session 29/30/31 queue was exhausted, adopting the shared modal focus trap for the first-run tutorial overlay, adding focused coverage, refreshing the exhausted genius cache, and verifying the default shards, UI, Pages, launch routes, and release gates while preserving the email-forwarding launch blocker.",
+  "nextMilestone": "Confirm GitHub Actions/Pages deployment for the Session 32 commit, then obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations before any SPARKED flip.",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt; Session 31 live route evidence passed for all checked public routes."
+    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt; Session 32 live route evidence passed for all checked public routes."
   ],
   "lastUpdated": "2026-07-02",
   "lifecycle": "deployed",
@@ -18,17 +18,17 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 274,
-    "pass": 274,
+    "totalTests": 275,
+    "pass": 275,
     "fail": 0,
     "lastRun": "2026-07-02",
     "newTestFiles": [],
     "newTestCount": 1,
-    "coverage": "Session 31 verified final tree with npm test 274/274 across all 5 default shards (core 64/64, runtime 109/109, sim-contract 63/63, sim-realism 1/1, studio 37/37), Playwright UI 9/9 after repairing aggregate history test state sync, Pages build/smoke, cache --check, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, canon conformance 0 gaps, and live launch evidence routesOk=true blocked only on email proof.",
-    "uiSuiteNote": "npm run test:ui verified locally this session: first aggregate run caught the history awards test relying on an unrelated Settings refresh after API seeding; fixed with a localhost-only dashboard sync hook and reran full UI 9/9."
+    "coverage": "Session 32 verified final tree with named default shards 275/275 (core 64/64, runtime 110/110, sim-contract 63/63, sim-realism 1/1, studio 37/37), focused browser/modal 16/16, Playwright UI 9/9 on rerun after an aggregate web-server flake, Pages build/smoke, cache --check, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, canon conformance 0 gaps, release/cost gates under registry slug vaultspark-football-gm, and live launch evidence routesOk=true blocked only on email proof.",
+    "uiSuiteNote": "npm run test:ui verified locally this session: two aggregate attempts showed Playwright dev-server interruption/fallback flake, the season-awards test passed in isolation, and the final aggregate rerun with webserver debug completed 9/9."
   },
-  "testsPassing": 274,
-  "testsTotal": 274,
+  "testsPassing": 275,
+  "testsTotal": 275,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -67,7 +67,7 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 979,
+  "silScore": 980,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 90,
@@ -76,35 +76,42 @@
     "processQuality": 100,
     "crossRepoCoherence": 100,
     "securityPosture": 99,
-    "ecosystemIntegration": 98,
+    "ecosystemIntegration": 99,
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 31,
+  "currentSession": 32,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "npm test (274/274; core 64/64, runtime 109/109, sim-contract 63/63, sim-realism 1/1, studio 37/37)",
-      "npm run test:ui (9/9 after fixing aggregate history awards state sync)",
+      "node --check public/lib/tutorialCampaign.js",
+      "node --test test/browser-wiring.test.js test/modal-manager.test.js (16/16)",
+      "npm run test:core (64/64)",
+      "npm run test:runtime (110/110)",
+      "npm run test:sim:contract (63/63)",
+      "npm run test:sim:realism (1/1)",
+      "npm run test:studio (37/37)",
+      "npm run test:ui (9/9 on final rerun)",
       "npm run build:pages",
       "npm run smoke:pages",
-      "node --check scripts/cache-genius-list.mjs",
-      "node --check public/app.js",
-      "node scripts/cache-genius-list.mjs --write (0 open items)",
-      "node scripts/cache-genius-list.mjs --check (FRESH)",
+      "node scripts/cache-genius-list.mjs --write and --check (FRESH)",
       "node scripts/check-windows-hide.mjs",
       "node scripts/check-canon-044-waves.mjs",
       "node scripts/validate-brief-format.mjs docs/STARTUP_BRIEF.md",
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
       "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline (0 GAP, 0 ABSOLUTE)",
-      "node scripts/ops.mjs launch-evidence --json --output audits/launch-evidence-2026-07-02-session31.json (routesOk=true, blocked on email evidence)"
+      "node ../vaultspark-studio-ops/scripts/release-gate-check.mjs --slug vaultspark-football-gm",
+      "node ../vaultspark-studio-ops/scripts/check-cost-gate.mjs --project vaultspark-football-gm",
+      "node scripts/ops.mjs launch-evidence --json --output audits/launch-evidence-2026-07-02-session32.json (routesOk=true, blocked on email evidence)"
     ],
     "date": "2026-07-02",
-    "timedOut": [],
+    "timedOut": [
+      "npm test aggregate wrapper timed out before emitting a suite summary; named shards were run directly and passed 275/275."
+    ],
     "failed": [
-      "First npm run test:ui aggregate failed because the history awards test seeded server state via raw fetch but relied on a later Settings save to update browser state; fixed by applying the seeded dashboard through a localhost-only test hook and reran full UI 9/9."
+      "Two early npm run test:ui aggregate attempts failed after Playwright web-server interruption/fallback; season-awards passed in isolation and final aggregate rerun passed 9/9 with webserver debug output."
     ]
   },
   "silScoreV3MigratedAt": "2026-04-21",
@@ -147,4 +154,3 @@
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-02"
 }
-

@@ -216,3 +216,12 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Fixed `scripts/cache-genius-list.mjs` to fall back to task-board Done/Blocked rows by slug, added a focused regression, and regenerated the cache to `0 open items` / `exhausted`.
 - Ran live launch evidence for `https://playfranchisearchitect.com`: all checked public routes returned final HTTP 200, but launch remains blocked because `football@playfranchisearchitect.com` forwarding/copying has no received-message receipt.
 - Verification final: `npm test` 274/274, `npm run test:ui` 9/9 after the aggregate-only history awards test-state fix, Pages build/smoke, cache check, windows-hide, Wave guard, secrets audit, blocker preflight, and canon conformance all passed.
+
+## 2026-07-02 — Session 32 tutorial focus trap and launch-evidence closeout
+
+- Continued the active `/arc` → `/closeout` → direct-main/deploy objective from a clean Session 31 closeout.
+- Classified prior state as not cut off: no lock, clean tree, `origin/main...HEAD` was `0 0`, and Session 31 closeout commit existed.
+- Generated `docs/AUDIT_2026-07-02_SESSION32.*` after confirming the Session 29/30 queue was exhausted and rejecting launch/SPARKED flip without email proof.
+- Shipped tutorial focus-trap adoption: `public/lib/tutorialCampaign.js` now uses the shared modal manager, closes the trap before step rerender/removal, and routes Escape through the same close path.
+- Added `test/browser-wiring.test.js` coverage for the tutorial modal manager wiring.
+- Verification: focused browser/modal 16/16; named default shards 275/275; Playwright UI 9/9 on rerun after one server-flake aggregate failure; Pages build/smoke; cache check; windows-hide; Wave guard; startup brief validation; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates passed under registry slug `vaultspark-football-gm`; live launch evidence routesOk=true but blocked on missing email receipt.
