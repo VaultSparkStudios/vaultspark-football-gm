@@ -106,6 +106,9 @@ export function activateTab(tabId) {
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);
   });
+  // Scroll active button into view in the mobile bottom nav
+  document.querySelector(`.menu-btn[data-tab="${tabId}"]`)
+    ?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
   applyShellTheme();
   if (tabId === "contractsTab") {
     loadContractsTeam().catch((error) => {
