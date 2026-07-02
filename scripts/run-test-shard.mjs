@@ -1,7 +1,8 @@
 #!/usr/bin/env node
+import { pathToFileURL } from "node:url";
 import { spawnSync } from "./lib/safe-spawn.mjs";
 
-const SHARDS = {
+export const SHARDS = {
   core: [
     "test/api.test.js",
     "test/calibration.test.js",
@@ -19,8 +20,10 @@ const SHARDS = {
   runtime: [
     "test/beta-feedback.test.js",
     "test/browser-save-store.test.js",
+    "test/browser-wiring.test.js",
     "test/challenge-codes.test.js",
     "test/create-api-client.test.js",
+    "test/deterministic-ids.test.js",
     "test/draft-war-room.test.js",
     "test/file-save-store.test.js",
     "test/launch-readiness.test.js",
@@ -33,11 +36,14 @@ const SHARDS = {
   ],
   "sim-contract": [
     "test/bootstrap-realism-profile.test.js",
+    "test/determinism-smoke.test.js",
     "test/e2e-session.test.js",
     "test/feature-pack-v1.test.js",
     "test/new-systems.test.js",
     "test/session-actions.test.js",
-    "test/strategy-contract-scouting.test.js"
+    "test/session20-features.test.js",
+    "test/strategy-contract-scouting.test.js",
+    "test/time-capsule.test.js"
   ],
   "sim-realism": [
     "test/monte-carlo-regression.test.js"
@@ -47,6 +53,9 @@ const SHARDS = {
     "test/realism-career-regression.test.js"
   ],
   studio: [
+    "test/launch-evidence-report.test.js",
+    "test/public-compliance.test.js",
+    "test/shard-coverage.test.js",
     "test/studio-protocol-smoke.test.js"
   ]
 };
@@ -74,29 +83,34 @@ function runShard(name) {
   return result.status ?? 1;
 }
 
-const requested = process.argv[2] || "all";
+const isMainModule =
+  process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
 
-if (requested === "list") {
-  for (const [name, files] of Object.entries(SHARDS)) {
-    console.log(`${name}: ${files.join(", ")}`);
+if (isMainModule) {
+  const requested = process.argv[2] || "all";
+
+  if (requested === "list") {
+    for (const [name, files] of Object.entries(SHARDS)) {
+      console.log(`${name}: ${files.join(", ")}`);
+    }
+    process.exit(0);
   }
-  process.exit(0);
-}
 
-if (requested === "all") {
-  for (const name of DEFAULT_SHARDS) {
-    const status = runShard(name);
-    if (status !== 0) process.exit(status);
+  if (requested === "all") {
+    for (const name of DEFAULT_SHARDS) {
+      const status = runShard(name);
+      if (status !== 0) process.exit(status);
+    }
+    process.exit(0);
   }
-  process.exit(0);
-}
 
-if (requested === "full") {
-  for (const name of Object.keys(SHARDS)) {
-    const status = runShard(name);
-    if (status !== 0) process.exit(status);
+  if (requested === "full") {
+    for (const name of Object.keys(SHARDS)) {
+      const status = runShard(name);
+      if (status !== 0) process.exit(status);
+    }
+    process.exit(0);
   }
-  process.exit(0);
-}
 
-process.exit(runShard(requested));
+  process.exit(runShard(requested));
+}
