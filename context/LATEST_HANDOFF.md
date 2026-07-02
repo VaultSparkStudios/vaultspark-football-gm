@@ -1,3 +1,5 @@
+Session Intent: Session 29 — full saturated /goal /arc (start → audit → implement → closeout); exhaust the Unified Genius List plus second-order innovation candidates at genius quality bar, gate on context-meter, close out with full canonical write-back and direct push to main.
+
 ## 2026-07-01 — Session 28 Closeout Handoff
 
 Where we left off:

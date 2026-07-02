@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "1.0",
+  "generatedBy": "/audit skill v1.0",
+  "generatedAt": "2026-07-01",
+  "project": "franchise-architect-football",
+  "type": "game",
+  "session": 29,
+  "axisWeights": { "gamification": 3, "ux": 2, "ai": 1.5, "featureDepth": 1.5, "speed": 1.5 },
+  "topLine": { "totalItems": 17, "combinedPriority": 280.1, "top3": ["time-capsule-receipts", "return-hook-digest", "narrative-continuity-engine"] },
+  "items": [
+    {
+      "rank": 1, "tier": "🔥", "axis": "gamification/engagement", "slug": "time-capsule-receipts",
+      "effort": "2h", "impact": 8, "innovation": 8, "priority": 32.0,
+      "title": "Preseason predictions with season-end receipts",
+      "why": "The beat reporter already narrates results (src/engine/beatReporter.js) and the Season Epilogue already runs a season-end ritual. Nothing in the genre grades its own preseason takes: at season start the beat reporter publishes deterministic predictions (division winners, your team's record window, a bold player call); at season end the epilogue grades those receipts and the reporter owns the misses. Creates a season-long promise the player wants to see resolved.",
+      "recipe": "New src/engine/timeCapsule.js: buildPreseasonPredictions(league, rng) at startSeason, gradePredictions(league) in the epilogue path; render a 'Receipts' section in the Season Review modal and a preseason news item; deterministic from league seed; focused test.",
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Predictions generated + stored on league state, graded lines printed in season epilogue text only." },
+        "L2": { "effortHours": 2, "recipe": "Full receipts card in Season Review modal with hit/miss badges and reporter self-roast quotes; news item at preseason; focused test." },
+        "L3": { "effortHours": 4, "recipe": "Multi-year prediction ledger with reporter credibility score that shifts quote tone; archive tab in Dynasty view." }
+      }
+    },
+    {
+      "rank": 2, "tier": "🔥", "axis": "gamification/retention", "slug": "return-hook-digest",
+      "effort": "2h", "impact": 8, "innovation": 7, "priority": 28.0,
+      "title": "\"Since you were away\" return digest (zero-backend)",
+      "why": "All engagement is in-session; there is no return loop of any kind (survey: streaks exist only as in-sim win streaks, tabOverview.js:301). A static-host-safe return hook — last-visit timestamp in localStorage, a digest of what changed in your franchise since then, and a title-bar attention badge — gives lapsed beta players a reason to re-enter the loop without any server.",
+      "recipe": "Track lastSeenAt + lastSeenWeek in localStorage on unload/advance; on game load with an existing save, if elapsed > 6h or week advanced, render a compact 'While you were away' card (top inbox items, standings delta, next decision) before the dashboard; wire into engagementFeatures.js; focused test.",
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Timestamp tracking + simple welcome-back banner with week/record delta." },
+        "L2": { "effortHours": 2, "recipe": "Full digest card fed from Priority Inbox + standings + pending GM decision, with a 'jump back in' deeplink; test." },
+        "L3": { "effortHours": 4, "recipe": "Optional Notification API opt-in that schedules a local 'your season is waiting' nudge; digest history." }
+      }
+    },
+    {
+      "rank": 3, "tier": "🔥", "axis": "gamification/immersion", "slug": "narrative-continuity-engine",
+      "effort": "4h", "impact": 9, "innovation": 8, "priority": 27.9,
+      "title": "Press conferences with memory; narratives that compound",
+      "why": "Press conferences are static template banks with no memory (src/engine/pressConference.js:1-10) and narrative events fire without feeding back into morale, agent leverage, or hot-seat (src/engine/narrativeEvents.js). Wiring a small continuity ledger makes the franchise feel like one escalating story instead of parallel flavor generators — no other browser franchise sim carries reporter memory across weeks.",
+      "recipe": "Add a continuityLedger to league state (last promise, last crisis, streak context); pressConference.js consumes it (references last week's claim, follows up on open crises); narrativeEvents outcomes write morale/agent-leverage/hot-seat deltas through existing systems; surface 'story so far' line in the news panel; focused tests.",
+      "ladder": {
+        "L1": { "effortHours": 2, "recipe": "Continuity ledger + press quotes referencing the previous week's result/promise." },
+        "L2": { "effortHours": 4, "recipe": "Narrative event outcomes apply bounded morale/hot-seat deltas; follow-up press threads on open crises; tests." },
+        "L3": { "effortHours": 8, "recipe": "Multi-week storyline arcs with named beats that escalate to OWNER_ULTIMATUM and resolve with epilogue verdicts." }
+      }
+    },
+    {
+      "rank": 4, "tier": "🔥", "axis": "gamification/engagement", "slug": "what-if-replay",
+      "effort": "3h", "impact": 8, "innovation": 8, "priority": 27.6,
+      "title": "Monday Morning QB: one non-canon what-if replay per season",
+      "why": "The deterministic sim plus the existing rewind manager (src/runtime/rewindManager.js) make a genre-first possible on a static host: once per season, replay your most painful loss in a sandboxed 'what-if' timeline with one changed decision, clearly marked non-canon. Turns determinism — an engine property — into a player-facing emotional payoff.",
+      "recipe": "Season epilogue offers the season's closest/most painful loss; replay runs a sandboxed GameSession copy from the pre-game snapshot with an alternate seed or user-picked tactical lean; result renders side-by-side with canon and is never persisted to league state; focused test on non-persistence.",
+      "ladder": {
+        "L1": { "effortHours": 1.5, "recipe": "Epilogue 'what-if' card that re-sims the worst loss with alternate seed and shows the counterfactual score." },
+        "L2": { "effortHours": 3, "recipe": "Player picks one lever (tempo/aggression/starter swap) before the replay; side-by-side drive summary; non-persistence test." },
+        "L3": { "effortHours": 6, "recipe": "Full 'ghost season' — replay the whole season in background as a shadow ledger and compare final standings." }
+      }
+    },
+    {
+      "rank": 5, "tier": "🔥", "axis": "featureDepth/simulation", "slug": "situational-playcalling",
+      "effort": "6h", "impact": 10, "innovation": 7, "priority": 23.3,
+      "title": "Down-and-distance playcalling + 4th-down brain + game-plan tendencies",
+      "why": "The engine simulates plays inside drives but chooses pass/run stochastically from rotations (src/engine/gameSimulator.js:906-908) with no situational logic: no 3rd-and-long awareness, no 4th-down go-for-it model, no 2-minute urgency, and GM strategy settings never reach the play level. This is the single biggest realism ceiling in an otherwise drive-level sim.",
+      "recipe": "Introduce a choosePlayCall(situation, gameState, teamPlan) module: pass lean by down/distance/deficit/clock, 4th-down decision model (go/FG/punt by field position + win probability heuristic), 2-minute tempo; honor a per-team gamePlan (aggression/tempo/run-pass lean) that the user sets in the strategy surface; surface clutch calls in box score; regression tests on distributions.",
+      "ladder": {
+        "L1": { "effortHours": 2, "recipe": "Situational pass/run lean by down-distance-deficit + 4th-down decision model; distribution regression test." },
+        "L2": { "effortHours": 6, "recipe": "User-facing game-plan (aggression/tempo/lean) honored by the sim + clutch-call lines in box score; tests." },
+        "L3": { "effortHours": 10, "recipe": "Clock/timeout management, situational personnel packages, and coach-archetype playcalling identities from coachingTree schemes." }
+      }
+    },
+    {
+      "rank": 6, "tier": "🔥", "axis": "featureDepth/draft", "slug": "scouting-skill-reveal",
+      "effort": "3h", "impact": 9, "innovation": 6, "priority": 23.3,
+      "title": "Make scouting investment actually drive prospect reveal",
+      "why": "Pro days bump every prospect by rng.int(-1,3) regardless of scouting spend (src/runtime/GameSession.js:1922-1926) and the combine grade is one fixed 3-drill formula (:1907-1917). The point-allocation scouting system exists but luck, not investment, reveals truth — weakening the draft's core skill loop.",
+      "recipe": "Pro-day adjustment precision scales with points allocated + scout staff quality (invested prospects converge toward true overall, uninvested stay noisy); position-weighted combine grades; interview/medical flags revealed only past allocation thresholds; deterministic tests comparing invested vs uninvested reveal error.",
+      "ladder": {
+        "L1": { "effortHours": 1.5, "recipe": "Scale pro-day noise by allocation (invested → tighter bound toward true overall); test." },
+        "L2": { "effortHours": 3, "recipe": "Position-weighted combine grade + interview/medical flags gated on allocation thresholds; war-room surfaces flags; tests." },
+        "L3": { "effortHours": 6, "recipe": "Scout archetypes with bias profiles (trait-blind spots) the player learns and compensates for across drafts." }
+      }
+    },
+    {
+      "rank": 7, "tier": "⚡", "axis": "observability/truth", "slug": "genius-cache-truth",
+      "effort": "1h", "impact": 8, "innovation": 4, "priority": 20.2,
+      "title": "Genius-list cache must read execution truth, not mtimes and substrings",
+      "why": "cache-genius-list.mjs --check compares only file mtimes (:78-84) and parseAuditItems only reads ranked-plan rows, deriving status from a done-words regex on the Item cell (:43-47). Live proof: .cache/genius-list.json lists Session 28's completed items as open, while rank 3 was misclassified by an accidental substring match on a word containing 'verified'. The /go protocol's source of truth lies in both directions.",
+      "recipe": "Parse the Execution Log table for per-slug status and join it to ranked rows; anchor the status regex on word boundaries against a dedicated status column, not prose; make --check content-aware (recompute buildCache and diff item set + status); extend the existing genius-cache test with a fixture reproducing both failure modes.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Join Execution Log status by slug + word-boundary regex fix; regenerate cache." },
+        "L2": { "effortHours": 1, "recipe": "L1 plus content-aware --check (recompute + diff) and fixture tests for both observed failure modes." },
+        "L3": { "effortHours": 2, "recipe": "L2 plus a closeout guard that fails when cache status contradicts the latest audit execution log." }
+      }
+    },
+    {
+      "rank": 8, "tier": "⚡", "axis": "speed/testing", "slug": "orphan-test-shards",
+      "effort": "45m", "impact": 8, "innovation": 3, "priority": 16.4,
+      "title": "Five test files run in no shard — npm test and CI silently skip them",
+      "why": "test/ holds 40 test files but scripts/run-test-shard.mjs shards list only 35: browser-wiring, deterministic-ids, launch-evidence-report, public-compliance, and session20-features are unreachable through npm test and every CI matrix leg. Recent sessions ran them only as focused invocations, so a regression in any of them would land silently.",
+      "recipe": "Add the five files to appropriate shards; add a self-guard test (or check in run-test-shard.mjs list mode) that fails when a test/*.test.js exists in no shard; confirm suite totals rise accordingly.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Shard the five files; run the affected shards green." },
+        "L2": { "effortHours": 0.75, "recipe": "L1 plus the no-orphan guard so the hole can never reopen." },
+        "L3": { "effortHours": 1.5, "recipe": "L2 plus shard-balance report (per-shard duration) to keep npm test wall-clock honest." }
+      }
+    },
+    {
+      "rank": 9, "tier": "⚡", "axis": "ux/public-surface", "slug": "landing-front-door",
+      "effort": "45m", "impact": 7, "innovation": 3, "priority": 14.4,
+      "title": "Un-orphan landing.html — the best first impression is unreachable",
+      "why": "public/landing.html is a polished marketing page (feature grid, stats bar, CTAs) with zero inbound links and no sitemap entry — new visitors land on the utilitarian setup screen instead. For a public-unlaunched beta the pitch page is the front door.",
+      "recipe": "Link landing.html from the index footer and about page, add it (and changelog) to sitemap.xml, cross-link landing → play; align its inline palette with themeMode; extend public-compliance test to assert the links exist.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Sitemap + footer/about links + landing→play CTA check." },
+        "L2": { "effortHours": 0.75, "recipe": "L1 plus shared footer parity on landing and theme alignment; compliance test extended." },
+        "L3": { "effortHours": 2, "recipe": "L2 plus making landing the canonical marketing route with hero screenshot refresh and beta CTA." }
+      }
+    },
+    {
+      "rank": 10, "tier": "⚡", "axis": "observability/launch", "slug": "launch-evidence-redirect-truth",
+      "effort": "45m", "impact": 6, "innovation": 3, "priority": 12.3,
+      "title": "Launch evidence must follow redirects before calling a route ok",
+      "why": "scripts/launch-evidence-report.mjs:49 marks any 2xx/3xx as ok without following the Location — a 308 pointing at a dead target would still pass the launch gate. Live Session 29 evidence shows four routes returning 308 that are counted as reachable without proof of the final destination.",
+      "recipe": "Follow redirect chains (bounded, e.g. 5 hops), judge ok on the FINAL status, record the chain in routeChecks detail; update fixtures + test with a redirect-to-404 case.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Bounded redirect following + final-status judgment + chain recorded." },
+        "L2": { "effortHours": 0.75, "recipe": "L1 plus fixture/test coverage for redirect-to-404 and redirect-loop cases." },
+        "L3": { "effortHours": 1.5, "recipe": "L2 plus content assertion (final body contains expected marker) for the app root." }
+      }
+    },
+    {
+      "rank": 11, "tier": "⚡", "axis": "security/process", "slug": "test-spawn-window-guard",
+      "effort": "30m", "impact": 7, "innovation": 2, "priority": 10.6,
+      "title": "Test-side child_process spawns bypass the windows-hide guard",
+      "why": "test/studio-protocol-smoke.test.js imports spawnSync directly from node:child_process (~15 spawn sites) while check-windows-hide.mjs scans only scripts/ — reintroducing the exact Windows window-storm the safe-spawn mechanism was built to eliminate (founder-flagged S186).",
+      "recipe": "Route the test file's spawns through scripts/lib/safe-spawn.mjs; extend check-windows-hide.mjs scan root to include test/; run the guard + studio shard green.",
+      "ladder": {
+        "L1": { "effortHours": 0.3, "recipe": "Swap to safe-spawn import in the test; guard green." },
+        "L2": { "effortHours": 0.5, "recipe": "L1 plus guard scan-root extension to test/ so it can't regress." },
+        "L3": { "effortHours": 1, "recipe": "L2 plus tests-ui/ and any future top-level dirs in guard scope with an allowlist." }
+      }
+    },
+    {
+      "rank": 12, "tier": "⚡", "axis": "ux/accessibility", "slug": "tabs-aria-modal-focus",
+      "effort": "2h", "impact": 7, "innovation": 3, "priority": 10.5,
+      "title": "ARIA tab semantics + one shared modal focus system + 44px touch targets",
+      "why": "The 14 game tabs are plain buttons with only a class toggle (public/lib/gameFlow.js:101-108) — no tablist/tab roles, no aria-selected, no roving tabindex — and the 14 modals each hand-wire show/hide with no shared focus trap or Escape handling (public/app.js:1355-1383). Menu buttons shrink to ~0.44rem padding at ≤640px (styles.css:1596-1598), under the 44px touch guideline.",
+      "recipe": "Add role=tablist/tab/tabpanel + aria-selected + roving tabindex in gameFlow; a small modalManager (open/close, focus trap, Escape, focus return) adopted by the highest-traffic modals; min touch target bump in the ≤640px media query; Playwright accessibility smoke.",
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Tab ARIA semantics + touch-target bump." },
+        "L2": { "effortHours": 2, "recipe": "L1 plus shared modalManager adopted by player/inbox/GM-decision modals; UI smoke." },
+        "L3": { "effortHours": 4, "recipe": "L2 plus full modal migration and an axe-core pass in Playwright." }
+      }
+    },
+    {
+      "rank": 13, "tier": "⚡", "axis": "ux/reliability", "slug": "silent-error-surfacing",
+      "effort": "90m", "impact": 6, "innovation": 3, "priority": 9.9,
+      "title": "Stop swallowing panel failures with empty catch blocks",
+      "why": "Many async dashboard paths use .catch(() => {}) — season arcs (app.js:399-400), sim-jobs polling (:1725), mentorship/cap-war-room/archetypes/rewind (:1525-1572) — so a failed fetch leaves a stale or empty panel with no signal. Beta players can't report what they can't see.",
+      "recipe": "Small panelGuard(promise, panelId) helper that renders an unobtrusive inline 'couldn't load — retry' state on failure and logs to the analytics digest; adopt at the cited call sites; test the helper.",
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Helper + adoption at the five cited sites." },
+        "L2": { "effortHours": 1.5, "recipe": "L1 plus retry wiring and inclusion of failures in the beta feedback context payload." },
+        "L3": { "effortHours": 3, "recipe": "L2 plus a global unhandled-rejection banner with rate limiting." }
+      }
+    },
+    {
+      "rank": 14, "tier": "💡", "axis": "security/ci", "slug": "ci-deploy-gating",
+      "effort": "1h", "impact": 6, "innovation": 2, "priority": 7.6,
+      "title": "Pages/backend deploys don't require CI green",
+      "why": "deploy-pages.yml and deploy-backend.yml trigger on push to main with no dependency on ci.yml passing — a red-CI push can still deploy. The Pages workflow does run its own build+smoke, so exposure is bounded, but unit regressions can reach production artifacts.",
+      "recipe": "Add a fast test job (studio + core shard subset) as a needs: prerequisite inside deploy-pages.yml (keeps path-filter triggers intact); document the trade-off vs workflow_run gating in the workflow header.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Prerequisite fast-test job in deploy-pages.yml." },
+        "L2": { "effortHours": 1, "recipe": "L1 plus the same gate for deploy-backend image builds." },
+        "L3": { "effortHours": 2, "recipe": "workflow_run-based gating on full CI with path-filter reimplementation." }
+      }
+    },
+    {
+      "rank": 15, "tier": "💡", "axis": "speed/ci", "slug": "determinism-smoke-on-push",
+      "effort": "45m", "impact": 5, "innovation": 2, "priority": 6.8,
+      "title": "Determinism check only runs weekly — add a fast push-path smoke",
+      "why": "The long shard (determinism + realism-career) is excluded from npm test and the CI matrix; it only runs in the weekly realism-sweep. A determinism regression can merge and hide for up to a week in a game whose challenge codes and what-if features depend on seed stability.",
+      "recipe": "Extract a fast determinism smoke (2 short seasons, same seed, deep-equal key ledgers) as its own test file in the core or studio shard; keep the long shard weekly for full coverage.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Fast same-seed two-run comparison test in a push-path shard." },
+        "L2": { "effortHours": 0.75, "recipe": "L1 plus challenge-code checksum stability assertion." },
+        "L3": { "effortHours": 1.5, "recipe": "L2 plus a CI matrix leg running the smoke on Node current to catch runtime drift." }
+      }
+    },
+    {
+      "rank": 16, "tier": "💡", "axis": "ux/theme", "slug": "theme-parity-static-pages",
+      "effort": "1h", "impact": 5, "innovation": 2, "priority": 6.3,
+      "title": "Static pages are locked dark with no theme toggle",
+      "why": "about/changelog/status/ip hardcode data-theme=dark and load no theme JS; contact/privacy/terms set no theme at all; landing ships its own inline dark palette. Theme choice only works inside the app — the public surface ignores the player's stored preference.",
+      "recipe": "Small shared theme bootstrap include (reads franchise-architect-theme key + prefers-color-scheme) added to the static pages, plus a footer toggle where layout allows; extend public-compliance test.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Theme bootstrap respecting stored preference on all static pages." },
+        "L2": { "effortHours": 1, "recipe": "L1 plus toggles and landing palette alignment; compliance test." },
+        "L3": { "effortHours": 2, "recipe": "L2 plus a shared header/footer partial generated at build-pages time." }
+      }
+    },
+    {
+      "rank": 17, "tier": "💡", "axis": "speed/architecture", "slug": "service-scaffold-honesty",
+      "effort": "30m", "impact": 4, "innovation": 1, "priority": 3.0,
+      "title": "757 LOC of unused service scaffolds misrepresent the architecture",
+      "why": "src/runtime/services/* is dead scaffold code — createServices is imported nowhere and the documented 3-phase migration stalled at Phase 1 (services/index.js:1-16). Dead scaffolding misleads future agents about where logic lives.",
+      "recipe": "Either delete the scaffolds with a DECISIONS entry, or (better) extract ONE real service (ContractService wrapping the contract actions) as a proof the pattern works, and update the phase notes to the truth.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Truth-align the phase notes + record the stall in DECISIONS (keep or delete decision made explicit)." },
+        "L2": { "effortHours": 2, "recipe": "Extract ContractService for real (GameSession delegates), tests for it." },
+        "L3": { "effortHours": 8, "recipe": "Complete Phase 2 for contracts+scouting+draft services." }
+      }
+    }
+  ],
+  "skipped": [
+    { "slug": "static-host-client-default", "reason": "Premise false on live code: scripts/build-pages.mjs rewrites vsfgm-runtime-default to client and vsfgm-server-available to false in the Pages artifact (static/index.html:7-8 proves it), so the deployed site already boots client-only. Reject-on-check win." },
+    { "slug": "in-app-feedback-form", "reason": "A POSTable in-app form needs a backend or third-party endpoint; violates the static-host-safe success bar. GitHub prefilled-issue flow with auto-context stays." },
+    { "slug": "sparked-flip", "reason": "Still evidence-gated: live launch report (audits/launch-evidence-2026-07-01-session29.json) shows routes reachable but on-domain email delivery proof missing. Owner action, not agent work." }
+  ]
+}

@@ -308,3 +308,27 @@ Optionally: add a `cloudflare` API token to the secrets gateway so future agents
 | Exhaust latest-audit innovation-pack follow-through after Session 28 implementation | Done |
 
 **Still blocked:** Launch/SPARKED is blocked until `football@playfranchisearchitect.com` forwarding/copying to Studio operations is verified with real delivery evidence and the public route smoke remains green after push.
+
+## Session 29 — Saturated Genius Arc: Story, Retention, Sim Depth + Truth Repairs (2026-07-01)
+
+Source: `docs/AUDIT_2026-07-01_SESSION29.md` (17 ranked items, combined priority 280.1). Ladders in the JSON sidecar.
+
+| Item | Status |
+|------|--------|
+| time-capsule-receipts — preseason predictions graded by the Season Epilogue with reporter self-roast | Open |
+| return-hook-digest — zero-backend "While you were away" digest + attention badge for lapsed saves | Open |
+| narrative-continuity-engine — press-conference memory + narrative events feeding morale/hot-seat | Open |
+| what-if-replay — once-per-season non-canon Monday Morning QB replay of the most painful loss | Open |
+| situational-playcalling — down/distance/clock playcall leans, 4th-down brain, game-plan tendencies | Open |
+| scouting-skill-reveal — scouting allocation drives pro-day reveal precision + gated flags | Open |
+| genius-cache-truth — cache status must read the Execution Log, not mtimes/prose substrings | Open |
+| orphan-test-shards — shard the 5 unsharded test files + no-orphan guard | Open |
+| landing-front-door — un-orphan landing.html (links + sitemap + CTA + compliance test) | Open |
+| launch-evidence-redirect-truth — follow redirect chains; judge final status | Open |
+| test-spawn-window-guard — safe-spawn in studio smoke test + guard scan root includes test/ | Open |
+| tabs-aria-modal-focus — ARIA tab semantics, shared modal focus manager, 44px touch targets | Open |
+| silent-error-surfacing — panelGuard() inline failure states replacing empty catch blocks | Open |
+| ci-deploy-gating — fast test prerequisite inside deploy workflows | Open |
+| determinism-smoke-on-push — fast same-seed comparison test in a push-path shard | Open |
+| theme-parity-static-pages — shared theme bootstrap across static pages | Open |
+| service-scaffold-honesty — truth-align or prove the stalled service extraction | Open |
