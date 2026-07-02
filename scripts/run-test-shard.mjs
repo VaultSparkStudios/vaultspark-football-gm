@@ -41,6 +41,7 @@ export const SHARDS = {
     "test/e2e-session.test.js",
     "test/feature-pack-v1.test.js",
     "test/new-systems.test.js",
+    "test/scouting-skill-reveal.test.js",
     "test/session-actions.test.js",
     "test/session20-features.test.js",
     "test/strategy-contract-scouting.test.js",

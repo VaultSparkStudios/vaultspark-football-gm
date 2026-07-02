@@ -340,6 +340,80 @@ function scoutingInsightForProspect(team, roster, prospect) {
   };
 }
 
+// ── Draft-class reveal: position-weighted combine + investment-gated flags (S29) ──
+// Audit fix: the combine grade used one flat drill formula for every position, and
+// pro-days bumped every prospect's public grade by identical noise regardless of
+// scouting spend — investment never paid off. Below, the combine grade is weighted
+// by what actually predicts success at each position, and deep team investment
+// unlocks interview/medical reads that stay private to the scouting team.
+
+const COMBINE_WEIGHTS = {
+  QB: { speed: 0.5, agility: 0.9, bench: 0.2, explosion: 0.4 },
+  RB: { speed: 1.3, agility: 1.1, bench: 0.5, explosion: 1.1 },
+  WR: { speed: 1.4, agility: 1.2, bench: 0.3, explosion: 1.3 },
+  TE: { speed: 0.9, agility: 0.8, bench: 0.9, explosion: 1.0 },
+  OL: { speed: 0.4, agility: 0.6, bench: 1.5, explosion: 0.5 },
+  DL: { speed: 0.7, agility: 1.1, bench: 1.4, explosion: 0.7 },
+  LB: { speed: 1.0, agility: 1.0, bench: 1.0, explosion: 0.9 },
+  DB: { speed: 1.5, agility: 1.3, bench: 0.3, explosion: 1.1 },
+  K: { speed: 0.2, agility: 0.2, bench: 0.1, explosion: 0.3 },
+  P: { speed: 0.2, agility: 0.2, bench: 0.1, explosion: 0.3 }
+};
+const COMBINE_BASE = { speed: 10, agility: 4, bench: 0.5, vertical: 0.35, broad: 0.05 };
+
+function computeCombineGrade(prospect) {
+  const combine = prospect.scouting?.combine;
+  if (!combine) return prospect.scouting?.combineGrade ?? 50;
+  const w = COMBINE_WEIGHTS[prospect.position] || COMBINE_WEIGHTS.WR;
+  const speedScore = (5.2 - combine.forty) * COMBINE_BASE.speed * w.speed;
+  const agilityScore = ((4.8 - combine.shuttle) + (8.1 - combine.cone)) * COMBINE_BASE.agility * w.agility;
+  const benchScore = combine.bench * COMBINE_BASE.bench * w.bench;
+  const explosionScore = (combine.vertical * COMBINE_BASE.vertical + combine.broad * COMBINE_BASE.broad) * w.explosion;
+  return clamp(Math.round(50 + speedScore + agilityScore + benchScore + explosionScore), 45, 99);
+}
+
+function stableHash(value) {
+  let hash = 2166136261;
+  const str = String(value || "");
+  for (let i = 0; i < str.length; i += 1) {
+    hash ^= str.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+const SCOUTING_INTERVIEW_THRESHOLD = 20;
+const SCOUTING_MEDICAL_THRESHOLD = 35;
+
+// Correlated-but-imperfect read on the hidden development trait: heavy investment
+// buys real signal, not a spoiler. ~72% accurate to the true trait bucket.
+function deriveMakeupRead(prospect, rng) {
+  const trait = prospect.developmentKey || "NORMAL";
+  const positive = ["High-motor competitor. Coaches around the league love the tape and the tone.",
+    "Football-obsessed in the interview room — first in, last out at every school he's attended."];
+  const neutral = ["Solid, professional makeup. No red flags, no standout intangibles either.",
+    "Even-keeled evaluator's dream in interviews — says the right things, tape backs it up."];
+  const concern = ["Interview raised questions about coachability. Splits the room.",
+    "Talented, but multiple sources flagged effort inconsistency on tape between series."];
+  const accurate = rng.next() < 0.72;
+  const bucket = accurate
+    ? (trait === "SUPERSTAR" || trait === "HIDDEN" ? "positive" : trait === "BUST" ? "concern" : "neutral")
+    : rng.pick(["positive", "neutral", "concern"]);
+  const bank = bucket === "positive" ? positive : bucket === "concern" ? concern : neutral;
+  return { bucket, note: rng.pick(bank) };
+}
+
+// Deterministic per-prospect durability read — a fixed trait revealed by deep
+// medical investment, not fresh randomness on every allocation call.
+function deriveMedicalRead(prospect) {
+  const seed = stableHash(prospect.id) % 100;
+  const heavyPosition = ["OL", "DL", "LB"].includes(prospect.position);
+  const risk = seed + (heavyPosition ? 8 : 0) + Math.max(0, (prospect.weightLbs || 220) - 260) * 0.15;
+  if (risk < 55) return { level: "clean", note: "Medical staff signed off clean. No durability concerns on file." };
+  if (risk < 80) return { level: "monitor", note: "Minor durability flag — team doctors want a re-check closer to the draft, not disqualifying." };
+  return { level: "red-flag", note: "Significant medical risk flagged. Expect this to affect draft-day price more than the tape does." };
+}
+
 function developmentFocusRatings(team, player) {
   const offenseStyle = team?.schemeIdentity?.offense || schemeIdentityLabel(team).offense;
   const defenseStyle = team?.schemeIdentity?.defense || schemeIdentityLabel(team).defense;
@@ -1907,25 +1981,39 @@ export class GameSession {
     if (stage === "combine") {
       if (!this.league.pendingDraft) this.prepareDraft();
       for (const prospect of this.league.pendingDraft.available) {
-        prospect.scouting.combineGrade = clamp(
-          Math.round(
-            50 +
-              (5.2 - prospect.scouting.combine.forty) * 12 +
-              prospect.scouting.combine.bench * 0.65 +
-              prospect.scouting.combine.vertical * 0.6
-          ),
-          45,
-          99
-        );
+        // Position-weighted combine grade (S29) — a corner's 40 time and a
+        // guard's bench press are not interchangeable signals.
+        prospect.scouting.combineGrade = computeCombineGrade(prospect);
       }
       this.logNews(`NFL Combine wrapped for class ${this.league.pendingDraft.year}`, { year: this.league.pendingDraft.year });
       return next({ nextStage: "pro-days", message: "Combine metrics applied to draft class." });
     }
     if (stage === "pro-days") {
+      const controlledState = this.controlledTeamId
+        ? this.ensureScoutingTeamState(this.controlledTeamId)
+        : null;
       for (const prospect of this.league.pendingDraft?.available || []) {
+        // Public baseline: unchanged flat-noise pro-day bump — nobody's homework,
+        // nobody's payoff. This is the grade a team that never scouted still sees.
         const bump = this.rng.int(-1, 3);
         prospect.scouting.proDayBoost = (prospect.scouting.proDayBoost || 0) + bump;
         prospect.scouting.scoutedOverall = clamp((prospect.scouting.scoutedOverall || prospect.overall) + bump, 45, 99);
+
+        // Investment payoff (S29 audit fix): the controlled team's own private
+        // evaluation converges toward true overall proportional to points spent —
+        // pro days are the scouting department's last data point before the draft,
+        // so heavy investment should sharply reduce remaining uncertainty.
+        if (controlledState) {
+          const spent = Number(controlledState.effort[prospect.id] || 0);
+          if (spent > 0) {
+            const priorEval = controlledState.evaluations[prospect.id] ?? prospect.scouting.scoutedOverall;
+            const convergence = clamp(spent / 90, 0.15, 0.85);
+            const noiseRange = Math.max(0, 2 - Math.round(convergence * 4));
+            const proDayNoise = noiseRange ? this.rng.int(-noiseRange, noiseRange) : 0;
+            const converged = Math.round(priorEval + (prospect.overall - priorEval) * convergence) + proDayNoise;
+            controlledState.evaluations[prospect.id] = clamp(converged, 45, 99);
+          }
+        }
       }
       return next({ nextStage: "draft", message: "Pro day updates merged." });
     }
@@ -2452,12 +2540,14 @@ export class GameSession {
         locked: false,
         evaluations: {},
         effort: {},
+        flags: {},
         weeklyReports: []
       };
     }
     const state = this.league.scouting.teams[teamId];
     if (!state.evaluations) state.evaluations = {};
     if (!state.effort) state.effort = {};
+    if (!state.flags) state.flags = {};
     if (!Array.isArray(state.weeklyReports)) state.weeklyReports = [];
     if (!Array.isArray(state.board)) state.board = [];
     if (!Number.isFinite(state.points)) state.points = 0;
@@ -2484,6 +2574,9 @@ export class GameSession {
       );
       state.effort = Object.fromEntries(
         Object.entries(state.effort || {}).filter(([playerId]) => availableSet.has(playerId))
+      );
+      state.flags = Object.fromEntries(
+        Object.entries(state.flags || {}).filter(([playerId]) => availableSet.has(playerId))
       );
       state.board = (state.board || []).filter((playerId) => availableSet.has(playerId));
     }
@@ -2514,7 +2607,8 @@ export class GameSession {
         fitLabel: insight.fitLabel,
         need: insight.needLabel,
         pointsSpent: spent,
-        confidence: scoutingConfidence(spent, revealed != null, insight.confidenceBonus)
+        confidence: scoutingConfidence(spent, revealed != null, insight.confidenceBonus),
+        flags: state.flags[prospect.id] || null
       };
     });
 
@@ -2567,6 +2661,18 @@ export class GameSession {
     teamState.effort[playerId] = Number(teamState.effort[playerId] || 0) + spend;
     teamState.points -= spend;
 
+    // Investment-gated interview/medical reads (S29) — private to this team,
+    // unlocked only past real spend thresholds, never handed out for free.
+    if (!teamState.flags[playerId]) teamState.flags[playerId] = {};
+    const flags = teamState.flags[playerId];
+    const totalEffort = teamState.effort[playerId];
+    if (totalEffort >= SCOUTING_INTERVIEW_THRESHOLD && !flags.makeup) {
+      flags.makeup = deriveMakeupRead(prospect, this.rng);
+    }
+    if (totalEffort >= SCOUTING_MEDICAL_THRESHOLD && !flags.medical) {
+      flags.medical = deriveMedicalRead(prospect);
+    }
+
     const reportKey = `${this.currentYear}-${this.currentWeek}`;
     let report = teamState.weeklyReports.find((entry) => entry.key === reportKey);
     if (!report) {
@@ -2609,7 +2715,8 @@ export class GameSession {
       fitLabel: insight.fitLabel,
       need: insight.needLabel,
       confidence,
-      pointsRemaining: teamState.points
+      pointsRemaining: teamState.points,
+      flags: { ...flags }
     };
   }
 

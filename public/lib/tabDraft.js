@@ -2,6 +2,19 @@ import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, formatHeight, renderPulseChips, renderTable, setElementTone, setMetricCardValue, teamByCode, teamName } from "./appCore.js";
 import { getProspectNarrative, getScoutingRevealTier } from "./prospectNarratives.js";
 
+const MEDICAL_LABELS = { clean: "Medical: clean", monitor: "Medical: monitor", "red-flag": "Medical: RED FLAG" };
+const MAKEUP_LABELS = { positive: "Makeup: positive", neutral: "Makeup: neutral", concern: "Makeup: concern" };
+
+// Investment-gated interview/medical reads (S29) — "-" until enough points are
+// spent on this prospect to have earned the intel; never fabricated for free.
+export function formatScoutingFlags(flags) {
+  if (!flags || (!flags.makeup && !flags.medical)) return "-";
+  const parts = [];
+  if (flags.makeup) parts.push(MAKEUP_LABELS[flags.makeup.bucket] || "Makeup: unknown");
+  if (flags.medical) parts.push(MEDICAL_LABELS[flags.medical.level] || "Medical: unknown");
+  return parts.join(" · ");
+}
+
 export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rosterNeeds = [], controlledTeamId = null } = {}) {
   if (!draft) {
     return {
@@ -239,6 +252,7 @@ export function renderScouting() {
     fit: prospect.fitLabel ? `${prospect.fitLabel} (${prospect.schemeFit ?? "-"})` : prospect.schemeFit ?? "-",
     reveal: `${getScoutingRevealTier(prospect).label} (${getScoutingRevealTier(prospect).range})`,
     confidence: `${prospect.confidence ?? 0}%`,
+    intel: formatScoutingFlags(prospect.flags),
     story: getProspectNarrative(prospect).flag,
     board: state.scoutingBoardDraft.indexOf(prospect.playerId) >= 0 ? state.scoutingBoardDraft.indexOf(prospect.playerId) + 1 : "-",
     action: scouting.locked ? "Locked" : "Scout / Board"
@@ -348,6 +362,14 @@ export function renderScoutingSpotlight(featured = null, latestReport = null) {
         <strong>Room Pressure</strong>
         <div>${escapeHtml(`${Math.max(0, 20 - state.scoutingBoardDraft.length)} slots left`)}</div>
         <div class="small">${escapeHtml(`${scouting.points || 0} weekly points | ${scouting.locked ? "Locked board" : "Board can still move"}`)}</div>
+      </div>
+      <div class="control-spotlight-card">
+        <strong>Deep Dive Intel</strong>
+        <div>${escapeHtml(formatScoutingFlags(featured?.flags))}</div>
+        <div class="small">${escapeHtml(
+          featured?.flags?.makeup?.note || featured?.flags?.medical?.note ||
+          "Interview reads unlock at 20 invested points; medical reads unlock at 35."
+        )}</div>
       </div>
     </div>
   `;
