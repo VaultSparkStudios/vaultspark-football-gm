@@ -7,9 +7,15 @@ import { openModal, closeModal, isModalOpen } from "../public/lib/modalManager.j
 // implements exactly the DOM surface the module calls (addEventListener,
 // querySelectorAll, focus, attribute get/set) — real code paths, not a mock
 // of the module's own behavior. openModal() no-ops entirely when
-// `typeof document === "undefined"`, so `document` must exist for the
-// whole file's duration (never deleted mid-run) or every call is a no-op.
-globalThis.document = { activeElement: null };
+// `typeof document === "undefined"`.
+//
+// IMPORTANT: this repo's shard runner uses `--test-isolation=none`, so every
+// file in a shard shares ONE process/module registry (confirmed: other test
+// files in the runtime shard set/delete globalThis.document too). A single
+// module-scope `globalThis.document` assignment is unsafe here — another
+// file's test can delete or replace it between two of THIS file's tests.
+// Every test below sets `globalThis.document` fresh, synchronously, as its
+// first statement, so it is never at the mercy of another file's cleanup.
 
 function fakeElement({ focusableChildren = [] } = {}) {
   const listeners = {};
@@ -44,6 +50,7 @@ function fakeEvent(key, { shiftKey = false } = {}) {
 }
 
 test("openModal focuses the first focusable child and registers as open", () => {
+  globalThis.document = { activeElement: null };
   const first = fakeFocusable();
   const second = fakeFocusable();
   const modal = fakeElement({ focusableChildren: [first, second] });
@@ -58,6 +65,7 @@ test("openModal focuses the first focusable child and registers as open", () => 
 });
 
 test("openModal falls back to focusing the modal itself when nothing inside is focusable", () => {
+  globalThis.document = { activeElement: null };
   const modal = fakeElement({ focusableChildren: [] });
   openModal(modal);
   assert.equal(modal.focusCalls, 1);
@@ -67,7 +75,7 @@ test("openModal falls back to focusing the modal itself when nothing inside is f
 
 test("closeModal restores focus to whatever was focused before the modal opened", () => {
   const priorFocused = fakeFocusable();
-  globalThis.document.activeElement = priorFocused;
+  globalThis.document = { activeElement: priorFocused };
   const modal = fakeElement({ focusableChildren: [fakeFocusable()] });
 
   openModal(modal);
@@ -78,11 +86,13 @@ test("closeModal restores focus to whatever was focused before the modal opened"
 });
 
 test("closeModal on a modal that was never opened is a safe no-op", () => {
+  globalThis.document = { activeElement: null };
   const modal = fakeElement();
   assert.doesNotThrow(() => closeModal(modal));
 });
 
 test("Escape inside an open modal calls the supplied onClose instead of the default close", () => {
+  globalThis.document = { activeElement: null };
   const modal = fakeElement({ focusableChildren: [fakeFocusable()] });
   let closedViaCallback = false;
   openModal(modal, { onClose: () => { closedViaCallback = true; } });
@@ -100,7 +110,7 @@ test("Escape inside an open modal calls the supplied onClose instead of the defa
 
 test("Escape with no onClose supplied falls back to the module's own closeModal", () => {
   const priorFocused = fakeFocusable();
-  globalThis.document.activeElement = priorFocused;
+  globalThis.document = { activeElement: priorFocused };
   const modal = fakeElement({ focusableChildren: [fakeFocusable()] });
   openModal(modal);
 
@@ -113,7 +123,7 @@ test("Escape with no onClose supplied falls back to the module's own closeModal"
 test("Tab focus wraps from the last focusable element back to the first", () => {
   const first = fakeFocusable();
   const last = fakeFocusable();
-  globalThis.document.activeElement = last;
+  globalThis.document = { activeElement: last };
   const modal = fakeElement({ focusableChildren: [first, last] });
   openModal(modal);
 
@@ -128,7 +138,7 @@ test("Tab focus wraps from the last focusable element back to the first", () => 
 test("Shift+Tab focus wraps from the first focusable element back to the last", () => {
   const first = fakeFocusable();
   const last = fakeFocusable();
-  globalThis.document.activeElement = first;
+  globalThis.document = { activeElement: first };
   const modal = fakeElement({ focusableChildren: [first, last] });
   openModal(modal);
 
@@ -141,6 +151,7 @@ test("Shift+Tab focus wraps from the first focusable element back to the last", 
 });
 
 test("re-opening an already-open modal closes the previous trap first (no leaked listeners)", () => {
+  globalThis.document = { activeElement: null };
   const modal = fakeElement({ focusableChildren: [fakeFocusable()] });
   openModal(modal);
   const firstListenerActive = modal._hasListener();
@@ -151,6 +162,7 @@ test("re-opening an already-open modal closes the previous trap first (no leaked
 });
 
 test("openModal is a safe no-op with no modal element", () => {
+  globalThis.document = { activeElement: null };
   assert.doesNotThrow(() => openModal(null));
   assert.equal(isModalOpen(null), false);
 });
