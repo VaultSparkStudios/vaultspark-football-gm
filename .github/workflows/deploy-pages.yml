@@ -31,9 +31,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: "24.14.0" # pinned: Node 24.16 hangs playwright install post-download (S14 evidence: runs 26991314776, 26991314875)
           cache: npm
@@ -59,14 +59,14 @@ jobs:
       API_DOMAIN: ${{ vars.API_DOMAIN }}
       VSFGM_RUNTIME_DEFAULT: client
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: "24.14.0" # pinned: Node 24.16 hangs playwright install post-download (S14 evidence: runs 26991314776, 26991314875)
           cache: npm
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
 
       - name: Install dependencies
         run: npm ci --ignore-scripts
@@ -75,7 +75,7 @@ jobs:
         run: npm run build:pages
 
       - name: Cache Playwright browsers
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
@@ -102,7 +102,7 @@ jobs:
         run: npm run smoke:pages
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: static
 
@@ -114,4 +114,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
