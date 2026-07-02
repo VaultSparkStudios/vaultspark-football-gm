@@ -40,26 +40,94 @@ function routeUrl(baseUrl, route) {
   return `${normalizeBaseUrl(baseUrl)}${route.startsWith("/") ? route : `/${route}`}`;
 }
 
-function probeHttps(url, timeoutMs) {
+const maxRedirectHops = 5;
+
+function probeOnceHttps(url, timeoutMs) {
   return new Promise((resolve) => {
     const request = https.get(url, { timeout: timeoutMs }, (response) => {
       response.resume();
       response.on("end", () => {
         resolve({
-          ok: response.statusCode >= 200 && response.statusCode < 400,
           statusCode: response.statusCode,
-          detail: `HTTP ${response.statusCode}`
+          location: response.headers.location ?? null
         });
       });
     });
     request.on("timeout", () => {
       request.destroy();
-      resolve({ ok: false, statusCode: null, detail: `timeout after ${timeoutMs}ms` });
+      resolve({ error: `timeout after ${timeoutMs}ms` });
     });
     request.on("error", (error) => {
-      resolve({ ok: false, statusCode: null, detail: error.message });
+      resolve({ error: error.message });
     });
   });
+}
+
+export async function probeWithRedirects(url, timeoutMs, probeOnce = probeOnceHttps) {
+  const chain = [];
+  const detailParts = [];
+  let currentUrl = url;
+  for (let hop = 0; hop <= maxRedirectHops; hop += 1) {
+    const response = await probeOnce(currentUrl, timeoutMs);
+    if (response.error || typeof response.statusCode !== "number") {
+      chain.push({ url: currentUrl, statusCode: null });
+      const failure = response.error || "no response";
+      return {
+        ok: false,
+        statusCode: null,
+        detail: detailParts.length ? `${detailParts.join(" → ")} → ${failure}` : failure,
+        chain
+      };
+    }
+    chain.push({ url: currentUrl, statusCode: response.statusCode });
+    detailParts.push(`HTTP ${response.statusCode}`);
+    const isRedirect = response.statusCode >= 300 && response.statusCode < 400;
+    if (!isRedirect) {
+      return {
+        ok: response.statusCode >= 200 && response.statusCode < 300,
+        statusCode: response.statusCode,
+        detail: detailParts.join(" → "),
+        chain
+      };
+    }
+    if (hop === maxRedirectHops) {
+      return {
+        ok: false,
+        statusCode: response.statusCode,
+        detail: `${detailParts.join(" → ")} → redirect limit exceeded`,
+        chain
+      };
+    }
+    if (!response.location) {
+      return {
+        ok: false,
+        statusCode: response.statusCode,
+        detail: `${detailParts.join(" → ")} → redirect missing Location header`,
+        chain
+      };
+    }
+    let nextUrl;
+    try {
+      nextUrl = new URL(response.location, currentUrl);
+    } catch {
+      return {
+        ok: false,
+        statusCode: response.statusCode,
+        detail: `${detailParts.join(" → ")} → invalid redirect target "${response.location}"`,
+        chain
+      };
+    }
+    if (nextUrl.protocol !== "https:") {
+      return {
+        ok: false,
+        statusCode: response.statusCode,
+        detail: `${detailParts.join(" → ")} → insecure redirect target`,
+        chain
+      };
+    }
+    detailParts.push(response.location);
+    currentUrl = nextUrl.href;
+  }
 }
 
 async function readFixture(file) {
@@ -81,15 +149,17 @@ export async function buildLaunchEvidenceReport({
 
   for (const route of routes) {
     const url = routeUrl(baseUrl, route);
-    const observed = fixtureRoutes[route] || (fixture ? null : await probeHttps(url, timeoutMs));
+    const observed = fixtureRoutes[route] || (fixture ? null : await probeWithRedirects(url, timeoutMs));
     const result = observed || { ok: false, statusCode: null, detail: "missing fixture route result" };
-    routeChecks.push({
+    const check = {
       route,
       url,
       ok: result.ok === true,
       statusCode: result.statusCode ?? null,
       detail: result.detail || (result.ok ? "ok" : "failed")
-    });
+    };
+    if (Array.isArray(result.chain)) check.chain = result.chain;
+    routeChecks.push(check);
   }
 
   const trimmedEvidence = String(emailEvidence || fixture?.emailEvidence || "").trim();
