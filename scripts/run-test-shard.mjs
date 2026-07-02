@@ -30,6 +30,8 @@ export const SHARDS = {
     "test/launch-readiness.test.js",
     "test/local-api-runtime.test.js",
     "test/mobile-loop.test.js",
+    "test/modal-manager.test.js",
+    "test/return-digest.test.js",
     "test/save-integrity.test.js",
     "test/session-lookup-indexes.test.js",
     "test/session8-contract-edges.test.js",

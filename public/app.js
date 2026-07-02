@@ -2,6 +2,7 @@ import { injectTutorialStyles, mountTutorial } from "./lib/tutorialCampaign.js";
 import { bindThemeToggle } from "./lib/themeMode.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
+import { maybeShowReturnDigest } from "./lib/returnDigest.js";
 import {
   initMobileLoop,
   isMobileModeEnabled,
@@ -1352,6 +1353,22 @@ function bindEvents() {
     }
   });
 
+  // Roving-tabindex arrow navigation for the ARIA tablist (S29).
+  document.querySelector('.side-menu[role="tablist"]')?.addEventListener("keydown", (event) => {
+    if (!["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    const tabs = Array.from(document.querySelectorAll(".menu-btn[data-tab]"));
+    const currentIndex = tabs.indexOf(document.activeElement);
+    if (currentIndex === -1) return;
+    event.preventDefault();
+    let nextIndex = currentIndex;
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tabs.length;
+    else if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+    else if (event.key === "Home") nextIndex = 0;
+    else if (event.key === "End") nextIndex = tabs.length - 1;
+    tabs[nextIndex].click();
+    tabs[nextIndex].focus();
+  });
+
   document.addEventListener("click", (event) => {
     const agentBtn = event.target.closest("button[data-agent-player-id]");
     if (agentBtn) {
@@ -1719,6 +1736,7 @@ async function init() {
   injectTutorialStyles();
   mountTutorial({ onComplete: () => loadState(), onSkip: () => {} });
   mountBetaFeedback();
+  maybeShowReturnDigest(state.dashboard, { onJumpToInbox: () => openInbox() }).catch(() => {});
   initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
   syncMobileLoopOverlay();
   setInterval(() => {

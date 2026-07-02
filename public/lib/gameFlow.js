@@ -8,6 +8,7 @@ import { applyStatsSort, renderAnalyticsChart, renderComparePlayers, renderCompa
 import { renderCalendar, renderPlayerHistoryArchive, renderPlayerTimelineSearchResults, renderRecordsAndHistory, renderTeamHistorySpotlight, setSelectedHistoryPlayer } from "./tabHistory.js";
 import { appendSeasonEpilogue } from "./seasonEpilogue.js";
 import { applySettingsControls, loadRewindHistory, renderAnalytics, renderCalibrationJobs, renderCommandPalette, renderNegotiationTargets, renderNews, renderObservability, renderOwner, renderPersistence, renderPickAssets, renderPipeline, renderRealismVerification, renderRulesTab, renderSettingsSpotlight, renderSimJobs, renderStaff, renderTransactionLog } from "./tabSettings.js";
+import { closeModal, openModal } from "./modalManager.js";
 
 export function applyDashboard(newState) {
   const previous = state.dashboard;
@@ -101,7 +102,12 @@ export function applyDashboard(newState) {
 export function activateTab(tabId) {
   state.activeTab = tabId;
   document.querySelectorAll(".menu-btn").forEach((btn) => {
-    btn.classList.toggle("active", btn.dataset.tab === tabId);
+    const isActive = btn.dataset.tab === tabId;
+    btn.classList.toggle("active", isActive);
+    // ARIA tab state must track the active tab (S29) — a screen reader
+    // otherwise announces whichever tab loaded first as selected forever.
+    btn.setAttribute("aria-selected", isActive ? "true" : "false");
+    btn.setAttribute("tabindex", isActive ? "0" : "-1");
   });
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);

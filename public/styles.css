@@ -1594,7 +1594,8 @@ td.tone-info {
   }
 
   .menu-btn {
-    padding: 0.44rem 0.5rem;
+    padding: 0.6rem 0.5rem;
+    min-height: 44px;
   }
 
   .history-card-grid {

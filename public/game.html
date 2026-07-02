@@ -48,30 +48,30 @@
     </div>
 
     <main class="game-shell">
-      <aside class="side-menu">
+      <aside class="side-menu" role="tablist" aria-label="Franchise sections" aria-orientation="vertical">
         <div class="menu-group-header">Gameday</div>
-        <button class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview">Overview</button>
-        <button class="menu-btn" data-tab="statsTab" data-testid="tab-stats">Statistics</button>
-        <button class="menu-btn" data-tab="calendarTab" data-testid="tab-calendar">Calendar</button>
+        <button id="tab-overview" class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview" role="tab" aria-selected="true" aria-controls="overviewTab" tabindex="0">Overview</button>
+        <button id="tab-stats" class="menu-btn" data-tab="statsTab" data-testid="tab-stats" role="tab" aria-selected="false" aria-controls="statsTab" tabindex="-1">Statistics</button>
+        <button id="tab-calendar" class="menu-btn" data-tab="calendarTab" data-testid="tab-calendar" role="tab" aria-selected="false" aria-controls="calendarTab" tabindex="-1">Calendar</button>
         <div class="menu-group-header">Roster</div>
-        <button class="menu-btn" data-tab="rosterTab" data-testid="tab-roster">Roster</button>
-        <button class="menu-btn" data-tab="faTab" data-testid="tab-fa">Free Agents</button>
-        <button class="menu-btn" data-tab="depthTab" data-testid="tab-depth">Depth Chart</button>
-        <button class="menu-btn" data-tab="contractsTab" data-testid="tab-contracts">Contracts</button>
+        <button id="tab-roster" class="menu-btn" data-tab="rosterTab" data-testid="tab-roster" role="tab" aria-selected="false" aria-controls="rosterTab" tabindex="-1">Roster</button>
+        <button id="tab-fa" class="menu-btn" data-tab="faTab" data-testid="tab-fa" role="tab" aria-selected="false" aria-controls="faTab" tabindex="-1">Free Agents</button>
+        <button id="tab-depth" class="menu-btn" data-tab="depthTab" data-testid="tab-depth" role="tab" aria-selected="false" aria-controls="depthTab" tabindex="-1">Depth Chart</button>
+        <button id="tab-contracts" class="menu-btn" data-tab="contractsTab" data-testid="tab-contracts" role="tab" aria-selected="false" aria-controls="contractsTab" tabindex="-1">Contracts</button>
         <div class="menu-group-header">Builds</div>
-        <button class="menu-btn" data-tab="transactionsTab" data-testid="tab-transactions">Trades</button>
-        <button class="menu-btn" data-tab="scoutingTab" data-testid="tab-scouting">Scouting</button>
-        <button class="menu-btn" data-tab="draftTab" data-testid="tab-draft">Draft</button>
+        <button id="tab-transactions" class="menu-btn" data-tab="transactionsTab" data-testid="tab-transactions" role="tab" aria-selected="false" aria-controls="transactionsTab" tabindex="-1">Trades</button>
+        <button id="tab-scouting" class="menu-btn" data-tab="scoutingTab" data-testid="tab-scouting" role="tab" aria-selected="false" aria-controls="scoutingTab" tabindex="-1">Scouting</button>
+        <button id="tab-draft" class="menu-btn" data-tab="draftTab" data-testid="tab-draft" role="tab" aria-selected="false" aria-controls="draftTab" tabindex="-1">Draft</button>
         <div class="menu-group-header">History</div>
-        <button class="menu-btn" data-tab="logTab" data-testid="tab-log">League Log</button>
-        <button class="menu-btn" data-tab="historyTab" data-testid="tab-history">Dynasty</button>
+        <button id="tab-log" class="menu-btn" data-tab="logTab" data-testid="tab-log" role="tab" aria-selected="false" aria-controls="logTab" tabindex="-1">League Log</button>
+        <button id="tab-history" class="menu-btn" data-tab="historyTab" data-testid="tab-history" role="tab" aria-selected="false" aria-controls="historyTab" tabindex="-1">Dynasty</button>
         <div class="menu-group-header">Config</div>
-        <button class="menu-btn" data-tab="rulesTab" data-testid="tab-rules">Rules</button>
-        <button class="menu-btn" data-tab="settingsTab" data-testid="tab-settings">Settings</button>
+        <button id="tab-rules" class="menu-btn" data-tab="rulesTab" data-testid="tab-rules" role="tab" aria-selected="false" aria-controls="rulesTab" tabindex="-1">Rules</button>
+        <button id="tab-settings" class="menu-btn" data-tab="settingsTab" data-testid="tab-settings" role="tab" aria-selected="false" aria-controls="settingsTab" tabindex="-1">Settings</button>
       </aside>
 
       <section class="tab-panels">
-        <section id="overviewTab" class="tab-panel active">
+        <section id="overviewTab" class="tab-panel active" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
           <div class="panel overview-hero-panel">
             <div class="overview-hero-grid">
               <div class="overview-hero-copy">
@@ -236,7 +236,7 @@
           </div>
         </section>
 
-        <section id="rosterTab" class="tab-panel">
+        <section id="rosterTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-roster" tabindex="0">
           <div class="panel">
             <h2>Roster</h2>
             <div class="row">
@@ -282,7 +282,7 @@
           </div>
         </section>
 
-        <section id="faTab" class="tab-panel">
+        <section id="faTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-fa" tabindex="0">
           <div class="panel">
             <h2>Free Agents</h2>
             <div class="row">
@@ -308,7 +308,7 @@
           </div>
         </section>
 
-        <section id="depthTab" class="tab-panel">
+        <section id="depthTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-depth" tabindex="0">
           <div class="panel">
             <h2>Depth Chart</h2>
             <div class="row">
@@ -330,7 +330,7 @@
           </div>
         </section>
 
-        <section id="transactionsTab" class="tab-panel">
+        <section id="transactionsTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-transactions" tabindex="0">
           <div class="panel">
             <h2>Trades</h2>
             <div class="row">
@@ -400,7 +400,7 @@
           </div>
         </section>
 
-        <section id="contractsTab" class="tab-panel">
+        <section id="contractsTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-contracts" tabindex="0">
           <div class="panel control-hero-panel contracts-hero-panel">
             <div class="control-hero-grid">
               <div class="control-hero-copy">
@@ -524,7 +524,7 @@
           </div>
         </section>
 
-        <section id="scoutingTab" class="tab-panel">
+        <section id="scoutingTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-scouting" tabindex="0">
           <div class="panel control-hero-panel scouting-hero-panel">
             <div class="control-hero-grid">
               <div class="control-hero-copy">
@@ -578,7 +578,7 @@
           </div>
         </section>
 
-        <section id="draftTab" class="tab-panel">
+        <section id="draftTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-draft" tabindex="0">
           <!-- ── Draft Combine Panel ───────────────────────────────────────── -->
           <div class="panel" id="draftCombinePanel">
             <div class="narrative-panel-header">
@@ -623,7 +623,7 @@
           </div>
         </section>
 
-        <section id="statsTab" class="tab-panel">
+        <section id="statsTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-stats" tabindex="0">
           <div class="panel">
             <h2>Statistics</h2>
             <div class="row">
@@ -701,7 +701,7 @@
           </div>
         </section>
 
-        <section id="calendarTab" class="tab-panel">
+        <section id="calendarTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-calendar" tabindex="0">
           <div class="panel">
             <h2>Season Calendar</h2>
             <div class="row">
@@ -737,7 +737,7 @@
           </div>
         </section>
 
-        <section id="logTab" class="tab-panel">
+        <section id="logTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-log" tabindex="0">
           <div class="panel">
             <h2>Transaction Log</h2>
             <div class="row">
@@ -773,7 +773,7 @@
           </div>
         </section>
 
-        <section id="historyTab" class="tab-panel">
+        <section id="historyTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-history" tabindex="0">
           <div class="panel control-hero-panel history-hero-panel">
             <div class="control-hero-grid">
               <div class="control-hero-copy">
@@ -885,7 +885,7 @@
           </div>
         </section>
 
-        <section id="rulesTab" class="tab-panel">
+        <section id="rulesTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-rules" tabindex="0">
           <div class="panel">
             <h2>VaultSpark Rulebook</h2>
             <p class="small">
@@ -903,7 +903,7 @@
           </div>
         </section>
 
-        <section id="settingsTab" class="tab-panel">
+        <section id="settingsTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-settings" tabindex="0">
           <!-- ── Commissioner / Multiplayer Mode Panel ─────────────────────── -->
           <div class="panel" id="commissionerPanel">
             <div class="narrative-panel-header">
