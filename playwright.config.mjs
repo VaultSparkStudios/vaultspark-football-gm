@@ -10,7 +10,10 @@ export default defineConfig({
     baseURL: "http://localhost:4273",
     headless: true,
     trace: "retain-on-failure",
-    screenshot: "only-on-failure"
+    screenshot: "only-on-failure",
+    launchOptions: {
+      executablePath: "/opt/pw-browsers/chromium"
+    }
   },
   webServer: {
     command: "node scripts/dev-playwright-server.mjs",
