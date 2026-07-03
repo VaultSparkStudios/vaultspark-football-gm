@@ -82,7 +82,7 @@
   },
   "currentSession": 35,
   "lastAgent": "codex",
-  "sessionMode": "founder",
+  "sessionMode": "builder",
   "lastVerification": {
     "passed": [
       "npm test 278/278 (core 64, runtime 113, sim-contract 63, sim-realism 1, studio 37)",
@@ -109,7 +109,7 @@
   "modelPlanModeSlash": "/model opusplan",
   "planModeDetected": "missing",
   "planModeCheckedAt": "2026-07-01T05:54:57.303Z",
-  "sessionModeAutoShiftedAt": "2026-07-03T20:37:15.981Z",
+  "sessionModeAutoShiftedAt": "2026-07-03T22:22:03.852Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-05-22",

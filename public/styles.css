@@ -315,7 +315,8 @@ th {
 /* ── SETUP / MAIN MENU ─────────────────────────────────────────────── */
 
 .setup-wrap {
-  max-width: 860px;
+  width: min(860px, 100%);
+  min-width: 0;
   margin: 0 auto;
   padding: 1.2rem;
   display: grid;
@@ -324,6 +325,7 @@ th {
 
 /* Hero */
 .setup-hero {
+  min-width: 0;
   text-align: center;
   padding: 3.2rem 1.4rem 2.4rem;
   border-radius: 22px;
@@ -357,10 +359,19 @@ th {
   position: relative;
 }
 
+.setup-hero .brand-lockup {
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.setup-hero .brand-lockup > div {
+  min-width: 0;
+}
+
 .setup-title {
   font-size: clamp(2.2rem, 6vw, 3.6rem);
   font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
   margin: 0 0 0.15rem;
   color: var(--ink-strong);
@@ -423,10 +434,11 @@ body[data-theme="light"] .btn-primary {
 }
 
 .btn-primary:disabled {
-  background: var(--raised);
-  color: #6b6b5d;
-  border-color: #4a4a3e;
+  background: var(--inset);
+  color: var(--ink-dim);
+  border-color: var(--line);
   box-shadow: none;
+  opacity: 0.72;
 }
 
 .btn-secondary {
@@ -443,6 +455,7 @@ body[data-theme="light"] .btn-primary {
 
 /* Section blocks */
 .setup-section {
+  min-width: 0;
   background: var(--panel-grad);
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -453,7 +466,7 @@ body[data-theme="light"] .btn-primary {
 .setup-section-title {
   font-size: 1.1rem;
   font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
   margin: 0 0 0.25rem;
   color: var(--ink-strong);
@@ -505,7 +518,7 @@ body[data-theme="light"] .btn-primary {
 .quickstart-era {
   font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
   font-size: 1.2rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--ink-strong);
 }
@@ -536,6 +549,7 @@ body[data-theme="light"] .btn-primary {
 
 /* Collapsible details sections */
 .setup-details {
+  min-width: 0;
   background: var(--panel-grad);
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -548,7 +562,7 @@ body[data-theme="light"] .btn-primary {
   list-style: none;
   font-family: "Rockwell", "Bahnschrift SemiCondensed", serif;
   font-size: 0.92rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--ink);
   display: flex;
@@ -617,8 +631,15 @@ body[data-theme="light"] .btn-primary {
     padding: 2rem 1rem 1.6rem;
   }
 
+  .setup-hero .brand-lockup {
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
   .setup-title {
-    font-size: 2rem;
+    max-width: 100%;
+    font-size: clamp(1.55rem, 9vw, 2rem);
+    overflow-wrap: normal;
   }
 
   .setup-hero-actions {
@@ -628,6 +649,16 @@ body[data-theme="light"] .btn-primary {
 
   .btn-lg {
     text-align: center;
+  }
+
+  .challenge-code-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .challenge-code-row input,
+  .challenge-code-row button {
+    width: 100%;
   }
 }
 
@@ -3342,6 +3373,93 @@ body[data-theme="light"].game-body[data-active-tab="scoutingTab"] {
 body[data-theme="light"].game-body[data-active-tab="historyTab"] {
   --section-accent: #9a6a2a;
   --section-accent-strong: #7a5210;
+}
+
+
+:root[data-theme="light"] .setup-hero,
+body[data-theme="light"] .setup-hero {
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 0%, rgba(18, 121, 93, 0.14), transparent 62%),
+    radial-gradient(ellipse 64% 54% at 84% 8%, rgba(160, 109, 28, 0.12), transparent 56%),
+    linear-gradient(180deg, #ffffff, #f3f8f4);
+  border-color: #9fb8ae;
+  box-shadow: 0 22px 56px rgba(16, 30, 38, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+:root[data-theme="light"] .setup-hero::before,
+body[data-theme="light"] .setup-hero::before {
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(16, 32, 39, 0.026) 3px, rgba(16, 32, 39, 0.026) 4px);
+}
+
+:root[data-theme="light"] .setup-title,
+body[data-theme="light"] .setup-title,
+:root[data-theme="light"] .setup-section-title,
+body[data-theme="light"] .setup-section-title,
+:root[data-theme="light"] .quickstart-era,
+body[data-theme="light"] .quickstart-era {
+  color: #081015;
+  text-shadow: none;
+}
+
+:root[data-theme="light"] .setup-tagline,
+body[data-theme="light"] .setup-tagline,
+:root[data-theme="light"] .setup-session-status,
+body[data-theme="light"] .setup-session-status,
+:root[data-theme="light"] .setup-section-subtitle,
+body[data-theme="light"] .setup-section-subtitle,
+:root[data-theme="light"] .quickstart-label,
+body[data-theme="light"] .quickstart-label,
+:root[data-theme="light"] .setup-team-label,
+body[data-theme="light"] .setup-team-label {
+  color: #435963;
+}
+
+:root[data-theme="light"] .setup-section,
+body[data-theme="light"] .setup-section,
+:root[data-theme="light"] .setup-details,
+body[data-theme="light"] .setup-details {
+  background: linear-gradient(180deg, #ffffff, #f3f8f4);
+  border-color: #b2c6bc;
+  box-shadow: 0 14px 36px rgba(16, 30, 38, 0.12);
+}
+
+:root[data-theme="light"] .quickstart-card,
+body[data-theme="light"] .quickstart-card {
+  background:
+    radial-gradient(ellipse 78% 58% at 50% 0%, rgba(18, 121, 93, 0.08), transparent 64%),
+    linear-gradient(180deg, #ffffff, #eef6f1);
+  border-color: #9fb8ae;
+  color: #14232b;
+}
+
+:root[data-theme="light"] .quickstart-card--featured,
+body[data-theme="light"] .quickstart-card--featured {
+  background:
+    radial-gradient(ellipse 78% 58% at 50% 0%, rgba(26, 106, 128, 0.12), transparent 64%),
+    linear-gradient(180deg, #ffffff, #eaf4f1);
+  border-color: #6e978a;
+}
+
+:root[data-theme="light"] input,
+body[data-theme="light"] input,
+:root[data-theme="light"] select,
+body[data-theme="light"] select {
+  background: #ffffff;
+  color: #14232b;
+  border-color: #8ba59c;
+}
+
+:root[data-theme="light"] input::placeholder,
+body[data-theme="light"] input::placeholder {
+  color: #5f727a;
+  opacity: 1;
+}
+
+:root[data-theme="light"] .challenge-code-row input,
+body[data-theme="light"] .challenge-code-row input {
+  background: #ffffff;
+  color: #14232b;
+  border-color: #8ba59c;
 }
 
 body[data-theme="light"] .bg-layer,
