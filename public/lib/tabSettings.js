@@ -9,6 +9,7 @@ import {
   getSavedToken, saveToken, getSavedGistId, saveGistId,
   exportToGist, importFromGist, listGists
 } from "./gistSync.js";
+import { closeModal, openModal } from "./modalManager.js";
 
 export function resolvePublicDomainReadiness(status = {}) {
   status = status || {};
@@ -740,11 +741,17 @@ export async function renderCommissionerLobby() {
 }
 
 export function openShortcutsModal() {
-  document.getElementById("shortcutsModal")?.classList.remove("hidden");
+  const modal = document.getElementById("shortcutsModal");
+  if (!modal) return;
+  modal.classList.remove("hidden");
+  openModal(modal, { onClose: closeShortcutsModal });
 }
 
 export function closeShortcutsModal() {
-  document.getElementById("shortcutsModal")?.classList.add("hidden");
+  const modal = document.getElementById("shortcutsModal");
+  if (!modal) return;
+  closeModal(modal);
+  modal.classList.add("hidden");
 }
 
 export function shareDynastyTimeline() {

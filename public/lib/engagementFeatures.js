@@ -16,6 +16,7 @@
 
 import { state, api } from "./appState.js";
 import { escapeHtml, fmtMoney, showToast, renderTable, teamCode } from "./appCore.js";
+import { closeModal, openModal } from "./modalManager.js";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PRIORITY INBOX SYSTEM
@@ -70,11 +71,15 @@ export function openInbox() {
   renderInboxBadge();
   renderInboxContent();
   drawer.classList.add("open");
+  openModal(drawer, { onClose: closeInbox });
 }
 
 export function closeInbox() {
   const drawer = document.getElementById("inboxDrawer");
-  if (drawer) drawer.classList.remove("open");
+  if (drawer) {
+    closeModal(drawer);
+    drawer.classList.remove("open");
+  }
 }
 
 const INBOX_ACTION_TABS = {
@@ -168,13 +173,17 @@ export function showFranchiseMomentCard(moment) {
   }
   modal.className = `franchise-moment-modal ${isWin ? "fm-win" : "fm-loss"}`;
   modal.hidden = false;
+  openModal(modal, { onClose: closeFranchiseMomentModal });
   modal.classList.add("fm-animate-in");
   setTimeout(() => modal.classList.remove("fm-animate-in"), 600);
 }
 
 export function closeFranchiseMomentModal() {
   const modal = document.getElementById("franchiseMomentModal");
-  if (modal) modal.hidden = true;
+  if (modal) {
+    closeModal(modal);
+    modal.hidden = true;
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -225,11 +234,15 @@ export function showGmDecisionModal(decision) {
   const statusChip = document.getElementById("statusChip");
   if (statusChip) statusChip.textContent = "GM decision required";
   modal.hidden = false;
+  openModal(modal, { onClose: dismissGmDecision });
 }
 
 export function resolveGmDecision(choice) {
   const modal = document.getElementById("gmDecisionModal");
-  if (modal) modal.hidden = true;
+  if (modal) {
+    closeModal(modal);
+    modal.hidden = true;
+  }
   if (_pendingDecisionResolve) {
     const fn = _pendingDecisionResolve;
     _pendingDecisionResolve = null;

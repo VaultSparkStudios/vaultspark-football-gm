@@ -160,3 +160,9 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - UI accessibility truth: the theme customizer is no longer mouse-only polish; Playwright proves focus handoff, arrow-key segmented control navigation, Escape close, and focus restore.
 - Verification truth: current tree passed `npm test` 276/276, Playwright UI 16/16, Pages build/smoke, sitemap compliance 10/10, release/cost gates, canon conformance 0 gaps, windows-hide, Wave guard, secrets audit, blocker preflight, and PROJECT_STATUS invariant check. Sitemap compliance required an escalated rerun because the Windows sandbox failed before executing the read-only command.
 - Launch truth unchanged: no SPARKED flip. Email forwarding/copying still lacks real received-message proof, and live origin/routing must be verified after deployment.
+
+## 2026-07-03 — Session 35 truth updates
+
+- Modal accessibility truth repair: Season Review, Pre-Game Tactical Brief, Draft Pick Reveal, Franchise Moment, GM Decision, Agent Negotiation, Keyboard Shortcuts, and Priority Inbox now use the same shared modal lifecycle instead of claiming or behaving like modals with inconsistent focus behavior.
+- Markup truth repair: high-frequency overlays that function as dialogs now expose dialog semantics and labels in `public/game.html`.
+- Queue truth: Session 34 audit follow-through is exhausted; Session 35 generated a new live audit and shipped both ranked items. Launch/SPARKED remains blocked on real email receipt plus current live origin/routing evidence.

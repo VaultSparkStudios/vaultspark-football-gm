@@ -1,0 +1,23 @@
+{
+  "session": 35,
+  "date": "2026-07-03",
+  "schemaVersion": "1.3",
+  "silScore": 984,
+  "shipped": [
+    "modal-contract-completion",
+    "priority-inbox-modal-truth"
+  ],
+  "doctor": {
+    "status": "green",
+    "blockingFailing": 0
+  },
+  "deferred": [
+    "sparked-flip: missing contact-email receipt plus current live origin/routing evidence"
+  ],
+  "tests": {
+    "pages": "build/smoke passed",
+    "ui": "16/16",
+    "default": "278/278"
+  },
+  "notes": "State-vector/entropy/genome local helpers are not vendored; Studio Ops equivalents were used where available."
+}

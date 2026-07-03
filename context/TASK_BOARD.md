@@ -407,3 +407,16 @@ Source: `docs/AUDIT_2026-07-03_SESSION34.md`.
 | sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt and current live origin/routing evidence |
 
 **Verification:** focused launch/feedback tests 10/10; Playwright theme 7/7; default `npm test` 276/276; Playwright UI 16/16; Pages build/smoke; sitemap compliance 10/10; release/cost gates; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight; PROJECT_STATUS SIL invariant clean.
+
+## Session 35 — Modal Contract Completion + Inbox Truth
+
+Source: `docs/AUDIT_2026-07-03_SESSION35.md`.
+
+| Item | Status |
+|------|--------|
+| modal-contract-completion — finish shared modalManager lifecycle across high-frequency game overlays and add missing dialog semantics | Done |
+| priority-inbox-modal-truth — make the Priority Inbox drawer's `aria-modal` claim truthful with focus trapping/restoration | Done |
+| latest-audit-follow-through | Rejected on evidence — Session 34 audit cache and execution log are exhausted |
+| sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt and current live origin/routing evidence |
+
+**Verification:** default `npm test` 278/278; Playwright UI 16/16; focused modal wiring 8/8; modal manager 10/10; Pages build/smoke; sitemap compliance 10/10; release/cost gates; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight.

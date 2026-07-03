@@ -234,3 +234,12 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Shipped theme customizer accessibility polish: stable popover ids, `aria-controls`, selected-control focus on open, Escape focus restore, and arrow/Home/End navigation for Appearance and Accent controls.
 - Verification: focused launch/feedback tests 10/10; Playwright theme 7/7; default `npm test` 276/276; Playwright UI 16/16; Pages build/smoke; sitemap compliance 10/10; release/cost gates; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight; PROJECT_STATUS SIL invariant clean.
 - Honesty note: sitemap compliance initially hit a Windows sandbox `CryptUnprotectData` failure before execution; rerun outside the sandbox passed 10/10. Launch/SPARKED remains blocked on real email receipt plus live origin/routing evidence.
+
+## 2026-07-03 — Session 35: modal contract completion + inbox truth
+
+- Ran the continuous `/goal /arc` mission from a clean Session 34 closeout: startup sync, profile/triage, secrets/blocker/canon checks, live audit, implementation, verification, and closeout prep.
+- Generated `docs/AUDIT_2026-07-03_SESSION35.*` after rejecting stale latest-audit follow-through on evidence and keeping SPARKED blocked on missing email receipt/live-origin proof.
+- Shipped `modal-contract-completion`: Season Review, Pre-Game Tactical Brief, Draft Pick Reveal, Franchise Moment, GM Decision, Agent Negotiation, and Keyboard Shortcuts now use the shared `modalManager` lifecycle; close paths call `closeModal()` and restore focus.
+- Added missing `role="dialog"`, `aria-modal`, and labels/labelledby for high-frequency game overlays that previously behaved like modals without a complete accessibility contract.
+- Shipped second-order innovation `priority-inbox-modal-truth`: Priority Inbox declared itself modal in markup and now actually traps/restores focus through `openModal()` / `closeModal()`.
+- Verification: `npm test` 278/278; `npm run test:ui` 16/16; focused browser wiring 8/8; modal manager 10/10; Pages build/smoke; sitemap compliance 10/10; release/cost gates allow; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight. Local closeout helper scripts for state-vector/entropy/genome/secrets are not all vendored, so Studio Ops equivalents were used where available.

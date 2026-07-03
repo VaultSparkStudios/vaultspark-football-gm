@@ -1,0 +1,41 @@
+{
+  "type": "game/public-product",
+  "session": 35,
+  "combinedPriority": 34.4,
+  "totalItems": 2,
+  "status": "implemented",
+  "items": [
+    {
+      "effortHours": 1.25,
+      "axis": "accessibility/retention-loop",
+      "tier": "critical",
+      "priority": 24.0,
+      "innovation": 4,
+      "impact": 8,
+      "status": "shipped",
+      "id": "modal-contract-completion"
+    },
+    {
+      "effortHours": 0.25,
+      "axis": "accessibility/truth",
+      "tier": "second-order",
+      "priority": 10.4,
+      "innovation": 2,
+      "impact": 5,
+      "status": "shipped",
+      "id": "priority-inbox-modal-truth"
+    }
+  ],
+  "generatedAt": "2026-07-03T20:55:00Z",
+  "rejected": [
+    {
+      "reason": "Session 34 cache and execution log are exhausted",
+      "id": "latest-audit-follow-through"
+    },
+    {
+      "reason": "Missing real contact-email receipt plus current live origin/routing evidence",
+      "id": "sparked-flip"
+    }
+  ],
+  "project": "franchise-architect-football"
+}

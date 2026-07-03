@@ -1,35 +1,43 @@
-<!-- generated-by: codex session-30 closeout -->
-<!-- generated-at: 2026-07-02 -->
+<!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
+<!-- source-hash: 0633276a4bf9 -->
+<!-- generated-at: 2026-07-03T20:38:19.058Z -->
 
 # LATEST_HANDOFF (compact)
 
-Session 30 Handoff Summary
+## Handoff Summary — Session 34 (2026-07-03)
 
-Shipped (Session 30)
-- Completed all carried Session 29 deferrals from `docs/AUDIT_2026-07-01_SESSION29.md`: what-if replay, silent error surfacing, and service scaffold honesty.
-- Added deterministic non-canon Monday Morning QB replay for the controlled team's most painful archived loss; exposed through dashboard state plus local/server `/api/what-if-replay`; tests prove it does not mutate live state.
-- Replaced key silent UI failures with visible panel/action errors and retry affordances; records and archetype loaders now propagate failures to the user-visible handlers.
-- Bound the service bundle on `GameSession` and truth-aligned service comments as extraction/parity targets, not completed delegation.
-- Fixed a Playwright-caught return digest overlay regression by making the digest non-modal status UI that no longer blocks navigation.
+Session: 34
 
-Current Intent
-- Session 30 `/goal /arc` completed; primary audit queue and the generated innovation-pack follow-through candidate are exhausted.
+Shipped:
+- `/arc` ran end-to-end (start, fresh audit, implement, verify, closeout prep).
+- Generated `docs/AUDIT_2026-07-03_SESSION34.*` (prior genius list exhausted).
+- Launch Readiness now has a Contact Email row, defaults `Unverified` until real receipt proves `football@playfranchisearchitect.com` forwards to Studio ops.
+- Beta feedback issue bodies carry the Contact Email readiness row (no secrets).
+- Public-domain fallback copy renamed to `playfranchisearchitect.com` with current origin/routing evidence.
+- Theme customizer: stable popover ids, `aria-controls`, focus move on open, focus restore on Escape, Arrow/Home/End navigation.
 
-Now Bucket (top 3)
-- Verify `football@playfranchisearchitect.com` forwarding/copying with a real received-message receipt.
-- Rerun `node scripts/ops.mjs launch-evidence --email-evidence <receipt>` after email proof exists.
-- Continue future service migration only with parity tests when moving production delegation out of `GameSession`.
+Current intent:
+- Continue durable `/arc` through full `/closeout` and deploy verification without fabricating launch readiness.
 
-Blockers (top 3)
-- Launch/SPARKED remains blocked on real on-domain email forwarding/copying evidence and post-push public route/domain verification.
+Now bucket (top 3):
+1. Obtain real received-message receipt for `football@playfranchisearchitect.com`.
+2. Rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`.
+3. Verify live origin/routing after deployment proves `playfranchisearchitect.com` serves latest build.
 
-Human-Blocked (with age)
-- Email forwarding verification for `football@playfranchisearchitect.com` — open since Session 28. Requires real received-message receipt; blocks launch/SPARKED.
+Blockers (top 3):
+1. Launch/SPARKED flip blocked: no email-forwarding receipt for `football@playfranchisearchitect.com`.
+2. Live origin/routing evidence for latest build not yet confirmed post-deploy.
+3. Cloudflare edge caches (historical CSS-cache issue) — mitigated via content-hashed CSS; monitor live surfacing.
 
-Verification State (Session 30)
-- `npm test` 273/273 across all default shards.
-- `npm run test:ui` 9/9.
-- `npm run build:pages`, `npm run smoke:pages`, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, and canon conformance 0 gaps all passed.
+Human-blocked:
+- Email-forwarding receipt for `football@playfranchisearchitect.com`: unresolved since Session 28 (~6 sessions). Human/founder action required.
 
-Next Session Pointer
-- Do not regenerate the already-exhausted Session 29 queue as open work. The only standing launch gate is email-forwarding proof plus post-push route/domain evidence.
+Verification (all passed):
+- `node --test test/launch-readiness.test.js test/beta-feedback.test.js` 10/10
+- `npx playwright test tests-ui/theme.spec.js` 7/7
+- `npm test` 276/276
+- `npx playwright test` 16/16
+- `npm run build:pages`, `npm run smoke:pages`
+- sitemap compliance 10/10; release/cost gates allow; canon 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight; SIL invariant clean
+
+Next session: Get the email receipt, run launch-evidence with it, then verify live origin/routing before any SPARKED flip.

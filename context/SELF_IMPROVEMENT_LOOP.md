@@ -361,3 +361,23 @@ Category scores:
 | Automation Coverage | 100 | Maintained cap; added focused launch/feedback tests and Playwright keyboard coverage, then reran full default/UI suites. |
 
 Follow-up: obtain a real `football@playfranchisearchitect.com` delivery receipt and verify current live origin/routing before any SPARKED flip.
+
+## 2026-07-03 — Session 35 Modal Contract Completion + Inbox Truth
+
+Score: 984 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap; default suite passed 278/278 after adding focused modal wiring regressions. |
+| Creative Alignment | 93 | +1 for making the dramatic/ritual parts of the franchise loop operable and coherent for keyboard users without changing product direction. |
+| Momentum | 100 | Maintained cap; primary list was exhausted, a fresh live audit was generated, and both the primary item plus second-order innovation shipped in the same arc. |
+| Engagement | 100 | Maintained cap; high-frequency decision, inbox, review, and draft overlays now have consistent focus/escape behavior. |
+| Process Quality | 100 | Maintained cap; rejected stale audit/SPARKED candidates on evidence and recorded the missing GAME_LOOP doc instead of fabricating a design score. |
+| Cross-Repo Coherence | 100 | Maintained cap; no sibling tree edits, only read-only Studio Ops gates/equivalents. |
+| Security Posture | 99 | Unchanged; no credential, dependency, auth, or sensitive data surface was added. |
+| Ecosystem Integration | 100 | Maintained cap; public launch truth remains aligned across in-game/readiness docs and Studio gates. |
+| Capital Efficiency | 92 | Unchanged; all work stays static-host/browser-safe with no new paid service or variable-cost runtime. |
+| Automation Coverage | 100 | Maintained cap; focused browser-wiring tests now guard modal-manager adoption and dialog semantics, plus full node/UI suites passed. |
+
+Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.

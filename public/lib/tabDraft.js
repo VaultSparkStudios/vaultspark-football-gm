@@ -1,6 +1,7 @@
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, formatHeight, renderPulseChips, renderTable, setElementTone, setMetricCardValue, teamByCode, teamName } from "./appCore.js";
 import { getProspectNarrative, getScoutingRevealTier } from "./prospectNarratives.js";
+import { closeModal, openModal } from "./modalManager.js";
 
 const MEDICAL_LABELS = { clean: "Medical: clean", monitor: "Medical: monitor", "red-flag": "Medical: RED FLAG" };
 const MAKEUP_LABELS = { positive: "Makeup: positive", neutral: "Makeup: neutral", concern: "Makeup: concern" };
@@ -438,6 +439,7 @@ export function showDraftPickReveal(prospect, teamName, onConfirm) {
       <button class="dr-confirm-btn btn-primary">Confirm Pick</button>
     `;
     body.querySelector(".dr-confirm-btn")?.addEventListener("click", () => {
+      closeModal(modal);
       modal.hidden = true;
       modal.classList.remove("active");
       onConfirm();
@@ -445,5 +447,13 @@ export function showDraftPickReveal(prospect, teamName, onConfirm) {
   }
   modal.hidden = false;
   modal.classList.add("active");
+  openModal(modal, {
+    onClose: () => {
+      modal.hidden = true;
+      modal.classList.remove("active");
+      closeModal(modal);
+      onConfirm();
+    }
+  });
 }
 

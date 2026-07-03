@@ -1,3 +1,31 @@
+## Where We Left Off — 2026-07-03 Session 35
+
+The `/goal /arc` mission ran continuously through startup, live audit, implementation, validation, and closeout prep.
+
+What changed:
+- Generated `docs/AUDIT_2026-07-03_SESSION35.*` after confirming the Session 34 genius cache was exhausted.
+- Finished the shared modal accessibility contract across the main game loop: Season Review, Pre-Game Tactical Brief, Draft Pick Reveal, Franchise Moment, GM Decision, Agent Negotiation, and Keyboard Shortcuts now route through `modalManager` for focus trapping, Escape close behavior, and focus restoration.
+- Added missing dialog semantics to Season Review, Pre-Game Tactical Brief, Draft Pick Reveal, and Franchise Moment markup.
+- Implemented the second-order innovation candidate: Priority Inbox already claimed `role="dialog" aria-modal="true"`; it now uses `openModal()` / `closeModal()` so that claim is truthful.
+- Added focused source-level regression coverage in `test/browser-wiring.test.js` for the modal-manager adoption and dialog markup.
+
+Verification passed:
+- `npm test` — 278/278 (core 64, runtime 113, sim-contract 63, sim-realism 1, studio 37)
+- `npm run test:ui` — 16/16
+- `node --test test/browser-wiring.test.js` — 8/8
+- `node --test test/modal-manager.test.js` — 10/10
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `node ../vaultspark-studio-ops/scripts/check-sitemap-compliance.mjs --project vaultspark-football-gm` — 10/10
+- release gate + cost gate allow; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight
+
+Remaining blocker:
+- Do not flip Launch/SPARKED until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence proves `playfranchisearchitect.com` serves the latest build.
+
+Next best work:
+- Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
+
+Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
 ## Where We Left Off — 2026-07-03 Session 34
 
 The `/arc` sequence ran end-to-end through start, fresh audit, implementation, verification, and closeout prep.

@@ -282,6 +282,7 @@ import {
   advanceSeasonSequential,
   checkSeasonEndReview,
   showSeasonEndReview,
+  closeSeasonReviewModal,
   showHalftimeAdjustModal
 } from "./lib/gameFlow.js";
 
@@ -1524,10 +1525,7 @@ function bindEvents() {
   document.getElementById("franchiseNewsletterBtn")?.addEventListener("click", () => generateFranchiseNewsletter(state));
 
   // Season review modal close
-  document.getElementById("closeSeasonReviewBtn")?.addEventListener("click", () => {
-    const m = document.getElementById("seasonReviewModal");
-    if (m) { m.hidden = true; m.classList.remove("active"); }
-  });
+  document.getElementById("closeSeasonReviewBtn")?.addEventListener("click", closeSeasonReviewModal);
 
   // Brand builder apply button
   document.getElementById("applyBrandBtn")?.addEventListener("click", () => {

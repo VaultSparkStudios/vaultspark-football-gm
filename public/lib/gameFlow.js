@@ -815,6 +815,15 @@ export function showSeasonEndReview() {
   appendSeasonEpilogue(body, d).catch(() => {});
   modal.hidden = false;
   modal.classList.add("active");
+  openModal(modal, { onClose: closeSeasonReviewModal });
+}
+
+export function closeSeasonReviewModal() {
+  const modal = document.getElementById("seasonReviewModal");
+  if (!modal) return;
+  closeModal(modal);
+  modal.hidden = true;
+  modal.classList.remove("active");
 }
 
 
@@ -834,6 +843,12 @@ function appendWhatIfReplay(body) {
 export function showHalftimeAdjustModal(onChoice) {
   const modal = document.getElementById("halftimeAdjustModal");
   if (!modal) { onChoice(null); return; }
+  const finish = (choice) => {
+    closeModal(modal);
+    modal.hidden = true;
+    modal.classList.remove("active");
+    onChoice(choice);
+  };
   // reset
   modal.querySelectorAll(".tactic-option").forEach((btn) => btn.classList.remove("selected"));
   const confirmBtn = modal.querySelector(".tactic-confirm-btn");
@@ -846,20 +861,13 @@ export function showHalftimeAdjustModal(onChoice) {
     };
   });
   if (confirmBtn) {
-    confirmBtn.onclick = () => {
-      modal.hidden = true;
-      modal.classList.remove("active");
-      onChoice(choice);
-    };
+    confirmBtn.onclick = () => finish(choice);
   }
   const skipBtn = modal.querySelector(".tactic-skip-btn");
   if (skipBtn) {
-    skipBtn.onclick = () => {
-      modal.hidden = true;
-      modal.classList.remove("active");
-      onChoice(null);
-    };
+    skipBtn.onclick = () => finish(null);
   }
   modal.hidden = false;
   modal.classList.add("active");
+  openModal(modal, { onClose: () => finish(null) });
 }

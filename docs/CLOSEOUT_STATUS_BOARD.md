@@ -1,23 +1,23 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-03 (Session 34 closeout) -->
+<!-- generated-at: 2026-07-03 (Session 35 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S34 ══════╗
-║  Date: 2026-07-03  ·  SIL: 983/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S35 ══════╗
+║  Date: 2026-07-03  ·  SIL: 984/1000  ·  Velocity: —              ║
+║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Generated `docs/AUDIT_2026-07-03_SESSION34.*` after confirmi  ║
-║  ✓ Launch Readiness now includes a dedicated Contact Email row.  ║
-║  ✓ Beta feedback issue bodies now carry that Contact Email read  ║
-║  ✓ Public-domain fallback copy now names `playfranchisearchitec  ║
-║  ✓ The Appearance/Accent theme customizer now assigns stable po  ║
+║  ✓ Generated `docs/AUDIT_2026-07-03_SESSION35.*` after confirmi  ║
+║  ✓ Finished the shared modal accessibility contract across the   ║
+║  ✓ Added missing dialog semantics to Season Review, Pre-Game Ta  ║
+║  ✓ Implemented the second-order innovation candidate: Priority   ║
+║  ✓ Added focused source-level regression coverage in `test/brow  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 983/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 984/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          92   █████████░                            ║
+║    Alignment          93   █████████░                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
@@ -32,15 +32,15 @@
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
+║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
-║  ✓ agent memory (~/.codex memories)                              ║
+║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 18 files  ·  M:15 A:0 D:0 ?:3                          ║
+║  Changes: 24 files  ·  M:19 A:0 D:0 ?:5                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -51,10 +51,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        1/1                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         276/276                                          ║
+║  Tests:         278/278                                          ║
 ║  IGNIS:         15d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  2026-07-03                                       ║
+║  Sanitization:  1d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║

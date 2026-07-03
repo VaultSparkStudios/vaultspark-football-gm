@@ -1,4 +1,5 @@
 import { state, api } from "./appState.js";
+import { closeModal, openModal } from "./modalManager.js";
 import { createEmptyTradeAssets, decoratePlayerColumnFromRows, escapeHtml, fmtDeltaMoney, fmtMoney, renderPulseChips, renderTable, saveTradeBlockIds, setMetricCardValue, setTradeEvalText, teamByCode, teamCode, tradeAssetKeys, uniqueIds } from "./appCore.js";
 import { activateTab, loadPickAssets } from "./gameFlow.js";
 
@@ -561,12 +562,16 @@ export function openAgentModal(playerId) {
   const modal = document.getElementById("agentNegotiationModal");
   if (!modal) return;
   modal.classList.remove("hidden");
+  openModal(modal, { onClose: closeAgentModal });
   renderAgentModal(playerId);
 }
 
 export function closeAgentModal() {
   _agentModalPlayerId = null;
-  document.getElementById("agentNegotiationModal")?.classList.add("hidden");
+  const modal = document.getElementById("agentNegotiationModal");
+  if (!modal) return;
+  closeModal(modal);
+  modal.classList.add("hidden");
 }
 
 export async function renderAgentModal(playerId) {

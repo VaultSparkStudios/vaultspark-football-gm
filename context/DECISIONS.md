@@ -246,3 +246,11 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** The tutorial is the first keyboard-facing onboarding modal many beta players see. Keeping it outside the shared modal manager created inconsistent Escape/focus behavior and left an already-tested accessibility utility partially adopted.
 
 **Pattern established:** New modal-like overlays should call `openModal()` after rendering and `closeModal()` before rerender/removal. Exceptions should be explicitly non-modal status surfaces, like the return digest.
+
+## 2026-07-03 — Modal semantics must be backed by the shared modal lifecycle
+
+**Decision:** Any overlay that behaves like a modal, or claims `role="dialog"` / `aria-modal="true"`, must use the shared `modalManager` open/close lifecycle unless it is explicitly documented as a non-modal status surface.
+
+**Rationale:** Session 35 found several important overlays that looked modal but bypassed the focus trap or lacked complete dialog semantics. That created inconsistent keyboard behavior across the main game loop. The shared manager is small, tested, and already established by the tutorial modal, so adopting it preserves focus restoration and Escape behavior without adding new UI complexity.
+
+**Pattern established:** New modal-like surfaces call `openModal()` after becoming visible and `closeModal()` before being hidden. Non-modal engagement surfaces must not claim `aria-modal`.

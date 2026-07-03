@@ -57,3 +57,36 @@ test("first-run tutorial styles are injected before mounting onboarding", () => 
   assert.match(appSource, /import \{ injectTutorialStyles, mountTutorial \} from "\.\/lib\/tutorialCampaign\.js"/);
   assert.match(appSource, /injectTutorialStyles\(\);\s*mountTutorial\(/s);
 });
+test("game flow modals use the shared focus trap", () => {
+  const gameFlowSource = read("../public/lib/gameFlow.js");
+  const engagementSource = read("../public/lib/engagementFeatures.js");
+  const draftSource = read("../public/lib/tabDraft.js");
+  const settingsSource = read("../public/lib/tabSettings.js");
+  const contractsSource = read("../public/lib/tabContracts.js");
+  const appSource = read("../public/app.js");
+
+  assert.match(gameFlowSource, /import \{ closeModal, openModal \} from "\.\/modalManager\.js"/);
+  assert.match(gameFlowSource, /openModal\(modal, \{ onClose: closeSeasonReviewModal \}\)/);
+  assert.match(gameFlowSource, /openModal\(modal, \{ onClose: \(\) => finish\(null\) \}\)/);
+  assert.match(appSource, /closeSeasonReviewModal/);
+
+  assert.match(engagementSource, /import \{ closeModal, openModal \} from "\.\/modalManager\.js"/);
+  assert.match(engagementSource, /openModal\(drawer, \{ onClose: closeInbox \}\)/);
+  assert.match(engagementSource, /openModal\(modal, \{ onClose: closeFranchiseMomentModal \}\)/);
+  assert.match(engagementSource, /openModal\(modal, \{ onClose: dismissGmDecision \}\)/);
+
+  assert.match(draftSource, /import \{ closeModal, openModal \} from "\.\/modalManager\.js"/);
+  assert.match(draftSource, /openModal\(modal, \{/);
+  assert.match(settingsSource, /openModal\(modal, \{ onClose: closeShortcutsModal \}\)/);
+  assert.match(contractsSource, /openModal\(modal, \{ onClose: closeAgentModal \}\)/);
+});
+
+test("game modal markup exposes dialog semantics", () => {
+  const gameHtml = read("../public/game.html");
+
+  assert.match(gameHtml, /id="seasonReviewModal" hidden role="dialog" aria-modal="true"/);
+  assert.match(gameHtml, /id="halftimeAdjustModal" hidden role="dialog" aria-modal="true" aria-labelledby="halftimeAdjustTitle"/);
+  assert.match(gameHtml, /id="halftimeAdjustTitle">Pre-Game Tactical Brief/);
+  assert.match(gameHtml, /id="draftPickRevealModal" hidden role="dialog" aria-modal="true"/);
+  assert.match(gameHtml, /id="franchiseMomentModal" hidden role="dialog" aria-modal="true"/);
+});
