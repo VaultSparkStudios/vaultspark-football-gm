@@ -1727,6 +1727,49 @@ globalThis._renderSpeedrunPanel = renderSpeedrunPanel;
 globalThis._checkSpeedrunCompletion = checkSpeedrunCompletion;
 globalThis._loadSpeedrunStatus = loadSpeedrunStatus;
 
+// ── Mobile nav drawer — CANON-041: scrollable 100dvh mobile nav ─────────────
+function initMobileNavDrawer() {
+  const openBtn = document.getElementById("navDrawerBtn");
+  const closeBtn = document.getElementById("navDrawerCloseBtn");
+  const backdrop = document.getElementById("navBackdrop");
+  if (!openBtn || !closeBtn || !backdrop) return;
+
+  function openDrawer() {
+    // Dismiss mobile loop overlay so full game UI is accessible behind the drawer
+    setMobileModeEnabled(false);
+    document.getElementById("mobileLoopOverlay")?.classList.add("hidden");
+    document.body.classList.add("nav-drawer-open");
+    openBtn.setAttribute("aria-expanded", "true");
+    backdrop.removeAttribute("aria-hidden");
+    closeBtn.focus();
+  }
+
+  function closeDrawer() {
+    document.body.classList.remove("nav-drawer-open");
+    openBtn.setAttribute("aria-expanded", "false");
+    backdrop.setAttribute("aria-hidden", "true");
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener("click", openDrawer);
+  closeBtn.addEventListener("click", closeDrawer);
+  backdrop.addEventListener("click", closeDrawer);
+
+  // Auto-close when a section tab is selected on mobile
+  document.querySelectorAll(".menu-btn[data-tab]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (document.body.classList.contains("nav-drawer-open")) closeDrawer();
+    });
+  });
+
+  // Close on Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("nav-drawer-open")) {
+      closeDrawer();
+    }
+  });
+}
+
 async function init() {
   state.statsHiddenColumns = readStatsHiddenColumns();
   window.addEventListener("vsfgm:runtime-fallback", (event) => {
@@ -1753,6 +1796,7 @@ async function init() {
   maybeShowReturnDigest(state.dashboard, { onJumpToInbox: () => openInbox() }).catch(() => {});
   initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
   syncMobileLoopOverlay();
+  initMobileNavDrawer();
   setInterval(() => {
     loadSimJobs().catch(() => {});
   }, 8000);

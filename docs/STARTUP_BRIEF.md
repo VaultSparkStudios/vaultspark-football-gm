@@ -72,7 +72,7 @@
 ║  ⛔  Revenue sig.  not found  ⚠ stale                             ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
 ║  ✓  Doctor        1/1 (100%)  ·  2026-07-02  ✓                   ║
-║  ✓  Cost          real $0.18/7d · 7d notional $2.81 (flat-rate   ║
+║  ✓  Cost          no ledger data                                 ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
