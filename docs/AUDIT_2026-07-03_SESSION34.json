@@ -1,0 +1,110 @@
+{
+  "generatedBy": "/audit skill v2 fallback",
+  "generatedAt": "2026-07-03",
+  "project": "franchise-architect-football",
+  "type": "game",
+  "session": 34,
+  "scope": "fresh /arc audit after Session 32 queue exhaustion and Session 33 theme overhaul",
+  "summary": {
+    "totalItems": 2,
+    "combinedPriority": 28.8,
+    "topItems": [
+      "launch-readiness-email-gate-row",
+      "theme-customizer-keyboard-polish"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "🔥",
+      "axis": "user feedback loop / launch truth",
+      "slug": "launch-readiness-email-gate-row",
+      "effortHours": 0.75,
+      "impact": 8,
+      "innovation": 4,
+      "priority": 18.3,
+      "why": "The current Launch Readiness table exposes route, save, feedback, and challenge-code posture, but the real current SPARKED blocker is the on-domain email forwarding receipt. That blocker is only in context docs, not in the in-game readiness panel beta testers and agents see. The fallback copy also still names the older vaultsparkstudios.com blocker, despite current canonical identity being playfranchisearchitect.com.",
+      "recipe": "Add an evidence-driven Contact Email row to buildLaunchReadinessRows(), default it to Unverified for football@playfranchisearchitect.com, allow explicit verified evidence, and update the Public Domain fallback copy to the current playfranchisearchitect.com origin/routing posture. Extend launch-readiness and beta-feedback tests so feedback bodies carry the email gate without leaking secrets.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Add the Contact Email readiness row and tests."
+        },
+        "L2": {
+          "effortHours": 0.75,
+          "recipe": "Also refresh stale public-domain fallback copy to the canonical domain."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "Wire launch-evidence reports directly into UI state after a verification run."
+        }
+      },
+      "status": "implemented",
+      "implementation": "public/lib/tabSettings.js now adds an evidence-driven Contact Email readiness row, defaults it to Unverified for football@playfranchisearchitect.com, accepts verified/needs-check evidence, and updates stale public-domain fallback copy to playfranchisearchitect.com. Beta feedback issue bodies inherit the row.",
+      "verification": [
+        "node --test test/launch-readiness.test.js test/beta-feedback.test.js"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "⚡",
+      "axis": "ui/ux/accessibility",
+      "slug": "theme-customizer-keyboard-polish",
+      "effortHours": 0.75,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 10.5,
+      "why": "Session 33 added the high-value Appearance + Accent customizer, but the popover currently opens without moving focus into the control, has no aria-controls relationship, and has no arrow-key control within the segmented groups. That leaves the new visual system less usable for keyboard users than the rest of the repaired modal surface.",
+      "recipe": "Give each popover panel a stable id, wire aria-controls, focus the selected appearance button on open, restore focus on close, support ArrowLeft/ArrowRight/Home/End within the Appearance and Accent groups, and cover the behavior in tests-ui/theme.spec.js.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Focus selected control on open and restore focus on close."
+        },
+        "L2": {
+          "effortHours": 0.75,
+          "recipe": "Add aria-controls and roving arrow-key support."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "Adopt a shared popover manager for every toolbar popover."
+        }
+      },
+      "status": "implemented",
+      "implementation": "public/lib/themeCustomizer.js now assigns stable panel ids, wires aria-controls, focuses the selected control on open, restores focus on Escape, and supports Arrow/Home/End navigation across Appearance and Accent segmented controls.",
+      "verification": [
+        "node --check public/lib/themeCustomizer.js",
+        "npx playwright test tests-ui/theme.spec.js"
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "slug": "latest-audit-follow-through",
+      "reason": "Rejected on live evidence: .cache/genius-list.json marks AUDIT_2026-07-02_SESSION32 exhausted, and the Session 32 execution log shows its only ranked item shipped."
+    },
+    {
+      "slug": "sparked-flip",
+      "reason": "Still evidence-gated on a real football@playfranchisearchitect.com received-message forwarding receipt and current live origin/routing proof. Route reachability alone is insufficient."
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "launch-readiness-email-gate-row",
+      "status": "shipped",
+      "evidence": "public/lib/tabSettings.js + test/launch-readiness.test.js + test/beta-feedback.test.js",
+      "verifiedBy": [
+        "node --test test/launch-readiness.test.js test/beta-feedback.test.js"
+      ]
+    },
+    {
+      "slug": "theme-customizer-keyboard-polish",
+      "status": "shipped",
+      "evidence": "public/lib/themeCustomizer.js + tests-ui/theme.spec.js",
+      "verifiedBy": [
+        "node --check public/lib/themeCustomizer.js",
+        "npx playwright test tests-ui/theme.spec.js"
+      ]
+    }
+  ]
+}

@@ -151,3 +151,12 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Tutorial modal truth: first-run tutorial dialog now uses `openModal`/`closeModal`; it closes the focus trap before rerender/removal and focused source coverage asserts that wiring.
 - Verification truth: the aggregate `npm test` wrapper timed out before a suite summary, so it was not counted as green. Direct named shards passed with real exit codes: core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37 (275 total). Playwright UI failed twice due server/dev-runner flake, then passed 9/9 with webserver debug output; this is recorded as rerun-verified, not first-try green.
 - Launch truth: `audits/launch-evidence-2026-07-02-session32.json` reports all checked live routes OK, but status remains blocked because on-domain email forwarding/copying has no real receipt. No SPARKED flip was claimed.
+
+## 2026-07-03 — Session 34 Truth Audit
+
+- Launch Readiness truth repair: the browser readiness panel now exposes the true current launch blocker as a dedicated Contact Email row. It defaults to Unverified until explicit evidence proves `football@playfranchisearchitect.com` forwards/copies to Studio operations.
+- Domain copy truth repair: the readiness fallback no longer names the stale `vaultsparkstudios.com` blocker; it names `playfranchisearchitect.com` and requires current origin/routing evidence.
+- Feedback truth repair: beta feedback issue bodies now include the Contact Email readiness row, so tester reports carry launch-gate context without secrets.
+- UI accessibility truth: the theme customizer is no longer mouse-only polish; Playwright proves focus handoff, arrow-key segmented control navigation, Escape close, and focus restore.
+- Verification truth: current tree passed `npm test` 276/276, Playwright UI 16/16, Pages build/smoke, sitemap compliance 10/10, release/cost gates, canon conformance 0 gaps, windows-hide, Wave guard, secrets audit, blocker preflight, and PROJECT_STATUS invariant check. Sitemap compliance required an escalated rerun because the Windows sandbox failed before executing the read-only command.
+- Launch truth unchanged: no SPARKED flip. Email forwarding/copying still lacks real received-message proof, and live origin/routing must be verified after deployment.

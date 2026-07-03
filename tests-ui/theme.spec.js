@@ -149,3 +149,35 @@ test("gold accent is the default and clears the data-accent attribute", async ({
   // Gold is the base palette — no data-accent override should be present.
   expect(accent).toBeUndefined();
 });
+
+test("theme customizer supports keyboard focus and arrow navigation", async ({ page }) => {
+  await page.goto("/");
+  await waitSetupReady(page);
+
+  const button = page.locator("#setupThemeToggleBtn");
+  await button.click();
+  const panel = page.locator(".theme-cx-panel");
+  await expect(panel).toBeVisible();
+
+  const panelId = await panel.getAttribute("id");
+  await expect(button).toHaveAttribute("aria-controls", panelId || "");
+  await expect(page.locator(":focus")).toHaveAttribute("data-mode", "system");
+
+  await page.keyboard.press("ArrowRight");
+  await expect(page.locator(":focus")).toHaveAttribute("data-mode", "light");
+  await expect(page.locator('html')).toHaveAttribute("data-theme", "light");
+
+  await page.keyboard.press("End");
+  await expect(page.locator(":focus")).toHaveAttribute("data-mode", "dark");
+  await expect(page.locator('html')).toHaveAttribute("data-theme", "dark");
+
+  await page.keyboard.press("Tab");
+  await expect(page.locator(":focus")).toHaveAttribute("data-accent", "gold");
+  await page.keyboard.press("ArrowRight");
+  await expect(page.locator(":focus")).toHaveAttribute("data-accent", "emerald");
+  await expect(page.locator('html')).toHaveAttribute("data-accent", "emerald");
+
+  await page.keyboard.press("Escape");
+  await expect(panel).toBeHidden();
+  await expect(button).toBeFocused();
+});

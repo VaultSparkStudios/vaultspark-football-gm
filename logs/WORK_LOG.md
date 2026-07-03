@@ -225,3 +225,12 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Shipped tutorial focus-trap adoption: `public/lib/tutorialCampaign.js` now uses the shared modal manager, closes the trap before step rerender/removal, and routes Escape through the same close path.
 - Added `test/browser-wiring.test.js` coverage for the tutorial modal manager wiring.
 - Verification: focused browser/modal 16/16; named default shards 275/275; Playwright UI 9/9 on rerun after one server-flake aggregate failure; Pages build/smoke; cache check; windows-hide; Wave guard; startup brief validation; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates passed under registry slug `vaultspark-football-gm`; live launch evidence routesOk=true but blocked on missing email receipt.
+
+## 2026-07-03 — Session 34: launch truth row + theme customizer keyboard closeout
+
+- Ran the continuous `/arc` sequence from current repo evidence: startup gates, fresh live audit, implementation, verification, and closeout prep.
+- Generated `docs/AUDIT_2026-07-03_SESSION34.*` with two ranked items after rejecting stale latest-audit follow-through and SPARKED flip on evidence.
+- Shipped Launch Readiness truth repair: `buildLaunchReadinessRows()` now exposes the real Contact Email gate, defaults it to Unverified, accepts verified/needs-check evidence, updates public-domain copy to `playfranchisearchitect.com`, and carries the row into beta feedback issue bodies.
+- Shipped theme customizer accessibility polish: stable popover ids, `aria-controls`, selected-control focus on open, Escape focus restore, and arrow/Home/End navigation for Appearance and Accent controls.
+- Verification: focused launch/feedback tests 10/10; Playwright theme 7/7; default `npm test` 276/276; Playwright UI 16/16; Pages build/smoke; sitemap compliance 10/10; release/cost gates; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight; PROJECT_STATUS SIL invariant clean.
+- Honesty note: sitemap compliance initially hit a Windows sandbox `CryptUnprotectData` failure before execution; rerun outside the sandbox passed 10/10. Launch/SPARKED remains blocked on real email receipt plus live origin/routing evidence.

@@ -22,6 +22,8 @@ const ACCENTS = [
   { id: "violet", label: "Violet" }
 ];
 
+let nextPanelId = 0;
+
 function readMode() {
   try {
     const saved = localStorage.getItem(MODE_KEY);
@@ -76,9 +78,38 @@ export function applyTheme(mode = readMode(), accent = readAccent()) {
   return { theme, mode, accent };
 }
 
+function focusSelectedControl(panel) {
+  const selected =
+    panel.querySelector('.theme-cx-mode[aria-pressed="true"]') ||
+    panel.querySelector('.theme-cx-accent[aria-pressed="true"]') ||
+    panel.querySelector("button");
+  selected?.focus();
+}
+
+function moveWithinGroup(event, selector) {
+  const keys = ["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown", "Home", "End"];
+  if (!keys.includes(event.key)) return false;
+  const buttons = Array.from(event.currentTarget.querySelectorAll(selector));
+  const currentIndex = buttons.indexOf(event.target);
+  if (currentIndex < 0) return false;
+  event.preventDefault();
+  const last = buttons.length - 1;
+  const nextIndex = event.key === "Home"
+    ? 0
+    : event.key === "End"
+      ? last
+      : event.key === "ArrowLeft" || event.key === "ArrowUp"
+        ? (currentIndex - 1 + buttons.length) % buttons.length
+        : (currentIndex + 1) % buttons.length;
+  buttons[nextIndex]?.focus();
+  buttons[nextIndex]?.click();
+  return true;
+}
+
 function buildPanel(state, onChange) {
   const panel = document.createElement("div");
   panel.className = "theme-cx-panel";
+  panel.id = `theme-cx-panel-${++nextPanelId}`;
   panel.setAttribute("role", "dialog");
   panel.setAttribute("aria-label", "Theme customization");
   panel.hidden = true;
@@ -135,6 +166,14 @@ function buildPanel(state, onChange) {
     sync();
   });
 
+  panel.addEventListener("keydown", (event) => {
+    if (event.target.closest?.(".theme-cx-modes")) {
+      moveWithinGroup(event, ".theme-cx-mode");
+    } else if (event.target.closest?.(".theme-cx-accents")) {
+      moveWithinGroup(event, ".theme-cx-accent");
+    }
+  });
+
   panel.sync = sync;
   return panel;
 }
@@ -163,17 +202,20 @@ export function initThemeCustomizer(buttonId) {
     // Keep every mounted customizer (setup + game share the module) in sync.
     document.querySelectorAll(".theme-cx-panel").forEach((p) => p.sync && p.sync());
   });
+  button.setAttribute("aria-controls", panel.id);
   wrap.appendChild(panel);
   panel.sync();
 
-  function close() {
+  function close({ restoreFocus = false } = {}) {
     panel.hidden = true;
     button.setAttribute("aria-expanded", "false");
+    if (restoreFocus) button.focus();
   }
   function open() {
     panel.sync();
     panel.hidden = false;
     button.setAttribute("aria-expanded", "true");
+    focusSelectedControl(panel);
   }
 
   button.addEventListener("click", (event) => {
@@ -187,8 +229,7 @@ export function initThemeCustomizer(buttonId) {
   });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !panel.hidden) {
-      close();
-      button.focus();
+      close({ restoreFocus: true });
     }
   });
 

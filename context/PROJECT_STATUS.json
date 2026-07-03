@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 33 shipped a premium theme overhaul: fixed a fully-broken light theme, then (part 2) made the fix reach the live Cloudflare-cached domain via content-hashed CSS filenames, built a theme design customization control (Appearance + 5 accent presets), and lifted the sitemap audit to 10/10 with JSON-LD.",
-  "nextMilestone": "Confirm GitHub Actions/Pages deployment for the Session 32 commit, then obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations before any SPARKED flip.",
+  "currentFocus": "Session 34 shipped launch-truth and theme-customizer accessibility polish: Launch Readiness now exposes the real football@playfranchisearchitect.com contact-email receipt gate, beta feedback carries that readiness context, stale public-domain copy now names playfranchisearchitect.com, and the Appearance/Accent theme customizer is keyboard/focus complete.",
+  "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt; Session 32 live route evidence passed for all checked public routes."
+    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
   ],
-  "lastUpdated": "2026-07-02",
+  "lastUpdated": "2026-07-03",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,17 +18,17 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 275,
-    "pass": 275,
+    "totalTests": 276,
+    "pass": 276,
     "fail": 0,
-    "lastRun": "2026-07-02",
+    "lastRun": "2026-07-03",
     "newTestFiles": [],
     "newTestCount": 1,
-    "coverage": "Session 32 verified final tree with named default shards 275/275 (core 64/64, runtime 110/110, sim-contract 63/63, sim-realism 1/1, studio 37/37), focused browser/modal 16/16, Playwright UI 9/9 on rerun after an aggregate web-server flake, Pages build/smoke, cache --check, windows-hide guard, Wave guard, startup brief validation, secrets audit, blocker preflight, canon conformance 0 gaps, release/cost gates under registry slug vaultspark-football-gm, and live launch evidence routesOk=true blocked only on email proof.",
-    "uiSuiteNote": "npm run test:ui verified locally this session: two aggregate attempts showed Playwright dev-server interruption/fallback flake, the season-awards test passed in isolation, and the final aggregate rerun with webserver debug completed 9/9."
+    "coverage": "Session 34 verified final tree with default npm test 276/276 (core 64/64, runtime 111/111, sim-contract 63/63, sim-realism 1/1, studio 37/37), Playwright UI 16/16, focused launch/feedback tests 10/10, Playwright theme 7/7, Pages build/smoke, sitemap compliance 10/10, release/cost gates, canon conformance 0 gaps, windows-hide guard, Wave guard, secrets audit, blocker preflight, and PROJECT_STATUS SIL invariant check.",
+    "uiSuiteNote": "npx playwright test verified locally this session: 16/16, including the new theme customizer keyboard/focus coverage."
   },
-  "testsPassing": 275,
-  "testsTotal": 275,
+  "testsPassing": 276,
+  "testsTotal": 276,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -67,7 +67,7 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 982,
+  "silScore": 983,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 92,
@@ -76,22 +76,27 @@
     "processQuality": 100,
     "crossRepoCoherence": 100,
     "securityPosture": 99,
-    "ecosystemIntegration": 99,
+    "ecosystemIntegration": 100,
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 32,
-  "lastAgent": "claude",
+  "currentSession": 34,
+  "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "npm test 275/275 (core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37)",
-      "npx playwright test 15/15 (incl. 6 tests-ui/theme.spec.js + scouting-lock save/load)",
-      "npm run build:pages (emits content-hashed styles.<hash>.css)",
+      "npm test 276/276 (core 64, runtime 111, sim-contract 63, sim-realism 1, studio 37)",
+      "npx playwright test 16/16",
+      "node --test test/launch-readiness.test.js test/beta-feedback.test.js 10/10",
+      "npx playwright test tests-ui/theme.spec.js 7/7",
+      "npm run build:pages",
       "npm run smoke:pages",
-      "studio-ops sitemap audit 10/10 (JSON-LD added)"
+      "studio-ops sitemap audit 10/10",
+      "release/cost gates allow",
+      "canon conformance 0 gaps",
+      "windows-hide, Wave guard, secrets audit, blocker preflight"
     ],
-    "date": "2026-07-02",
+    "date": "2026-07-03",
     "timedOut": [],
     "failed": []
   },
@@ -103,7 +108,7 @@
   "modelPlanModeSlash": "/model opusplan",
   "planModeDetected": "missing",
   "planModeCheckedAt": "2026-07-01T05:54:57.303Z",
-  "sessionModeAutoShiftedAt": "2026-07-01T05:54:12.692Z",
+  "sessionModeAutoShiftedAt": "2026-07-03T09:01:01.995Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-05-22",
@@ -128,11 +133,11 @@
     "failing": 0,
     "warning": 0,
     "score": 100,
-    "date": "2026-07-02",
+    "date": "2026-07-03",
     "blockingFailing": 0
   },
   "complianceScore": 37,
   "complianceTotal": 37,
-  "sanitizationLastCleared": "2026-07-02",
-  "lastVerificationAt": "2026-07-02"
+  "sanitizationLastCleared": "2026-07-03",
+  "lastVerificationAt": "2026-07-03"
 }

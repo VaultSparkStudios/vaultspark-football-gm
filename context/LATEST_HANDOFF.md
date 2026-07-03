@@ -1,3 +1,29 @@
+## Where We Left Off — 2026-07-03 Session 34
+
+The `/arc` sequence ran end-to-end through start, fresh audit, implementation, verification, and closeout prep.
+
+What changed:
+- Generated `docs/AUDIT_2026-07-03_SESSION34.*` after confirming the latest cached genius list was exhausted.
+- Launch Readiness now includes a dedicated Contact Email row. It defaults to `Unverified` until a real received-message receipt proves `football@playfranchisearchitect.com` forwards/copies to Studio operations.
+- Beta feedback issue bodies now carry that Contact Email readiness row, so launch-gate context travels with tester reports without secrets.
+- Public-domain fallback copy now names `playfranchisearchitect.com` and current origin/routing evidence instead of stale `vaultsparkstudios.com` runbook language.
+- The Appearance/Accent theme customizer now assigns stable popover ids, wires `aria-controls`, moves focus into the selected control on open, restores focus on Escape, and supports Arrow/Home/End navigation inside both segmented groups.
+
+Verification passed:
+- `node --test test/launch-readiness.test.js test/beta-feedback.test.js` — 10/10
+- `npx playwright test tests-ui/theme.spec.js` — 7/7
+- `npm test` — 276/276
+- `npx playwright test` — 16/16
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `node ../vaultspark-studio-ops/scripts/check-sitemap-compliance.mjs --project vaultspark-football-gm` — 10/10
+- release gate + cost gate allow; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight; PROJECT_STATUS SIL invariant clean
+
+Remaining blocker:
+- Do not flip Launch/SPARKED until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence proves `playfranchisearchitect.com` serves the latest build.
+
+Next best work:
+- Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
 ## 2026-07-02 — Session 33 part 2 Closeout Handoff
 
 Where we left off:

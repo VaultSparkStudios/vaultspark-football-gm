@@ -1,29 +1,29 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-02 (Session 32 closeout) -->
+<!-- generated-at: 2026-07-03 (Session 34 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S32 ══════╗
-║  Date: 2026-07-02  ·  SIL: 980/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S34 ══════╗
+║  Date: 2026-07-03  ·  SIL: 983/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ `scripts/cache-genius-list.mjs` implements the protocol cach  ║
-║  ✓ `scripts/ops.mjs` dispatches `cache-genius-list` alongside t  ║
-║  ✓ `scripts/render-startup-brief.mjs` always renders the HUMAN   ║
-║  ✓ `tests-ui/app.spec.js` handles the expected GM Decision skip  ║
-║  ✓ `tests-ui/app.spec.js` handles the expected GM Decision skip  ║
+║  ✓ Generated `docs/AUDIT_2026-07-03_SESSION34.*` after confirmi  ║
+║  ✓ Launch Readiness now includes a dedicated Contact Email row.  ║
+║  ✓ Beta feedback issue bodies now carry that Contact Email read  ║
+║  ✓ Public-domain fallback copy now names `playfranchisearchitec  ║
+║  ✓ The Appearance/Accent theme customizer now assigns stable po  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 980/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 983/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          90   █████████░                            ║
+║    Alignment          92   █████████░                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          100  ██████████                            ║
 ║    Security           99   ██████████                            ║
-║    Ecosystem          99   ██████████                            ║
+║    Ecosystem          100  ██████████                            ║
 ║    Capital            92   █████████░                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -32,15 +32,15 @@
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
+║  · context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
-║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
+║  ✓ agent memory (~/.codex memories)                              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 15 files  ·  M:10 A:0 D:0 ?:5                          ║
+║  Changes: 18 files  ·  M:15 A:0 D:0 ?:3                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -51,10 +51,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        1/1                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         275/275                                          ║
-║  IGNIS:         14d ago                                          ║
+║  Tests:         276/276                                          ║
+║  IGNIS:         15d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  1d ago                                           ║
+║  Sanitization:  2026-07-03                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║

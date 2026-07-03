@@ -394,3 +394,16 @@ Source: founder follow-up (live screenshot still dark-on-dark) + "build the them
 | vendored-mirror-sync | Skipped — vaultsparkstudios.com/vaultspark-football-gm 403s (not served) + stale engine-only mirror; playfranchisearchitect.com uses this repo's Pages |
 
 **Verification:** node shards 275/275; Playwright UI 15/15 (incl. 6 theme tests + save/load persistence); build:pages; smoke:pages; studio-ops sitemap audit 10/10.
+
+## Session 34 — Launch Truth + Theme Customizer Accessibility (2026-07-03)
+
+Source: `docs/AUDIT_2026-07-03_SESSION34.md`.
+
+| Item | Status |
+|------|--------|
+| launch-readiness-email-gate-row — show the real on-domain email receipt gate in Launch Readiness and beta feedback, with current `playfranchisearchitect.com` copy | Done |
+| theme-customizer-keyboard-polish — `aria-controls`, focus handoff/restore, and arrow/Home/End navigation for Appearance/Accent controls | Done |
+| latest-audit-follow-through | Rejected on evidence — latest Session 32 audit already exhausted |
+| sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt and current live origin/routing evidence |
+
+**Verification:** focused launch/feedback tests 10/10; Playwright theme 7/7; default `npm test` 276/276; Playwright UI 16/16; Pages build/smoke; sitemap compliance 10/10; release/cost gates; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight; PROJECT_STATUS SIL invariant clean.

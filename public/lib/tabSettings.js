@@ -27,7 +27,28 @@ export function resolvePublicDomainReadiness(status = {}) {
   }
   return {
     status: "Blocked",
-    detail: status.detail || "vaultsparkstudios.com currently needs the Cloudflare 403 and expired GitHub Pages certificate runbook completed"
+    detail: status.detail || "playfranchisearchitect.com needs current origin/routing evidence before launch readiness can flip green"
+  };
+}
+
+export function resolveContactEmailReadiness(status = {}) {
+  status = status || {};
+  const checkedAt = status.checkedAt ? ` Checked ${status.checkedAt}.` : "";
+  if (status.ok === true || status.status === "verified") {
+    return {
+      status: "Verified",
+      detail: status.detail || `football@playfranchisearchitect.com forwarding/copying is verified.${checkedAt}`.trim()
+    };
+  }
+  if (status.status === "needs-check") {
+    return {
+      status: "Needs check",
+      detail: status.detail || `Send a real message to football@playfranchisearchitect.com and confirm receipt by Studio operations.${checkedAt}`.trim()
+    };
+  }
+  return {
+    status: "Unverified",
+    detail: status.detail || "Need a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations"
   };
 }
 
@@ -37,7 +58,8 @@ export function buildLaunchReadinessRows({
   persistence = {},
   observability = {},
   speedrunChallenge = null,
-  publicDomainStatus = {}
+  publicDomainStatus = {},
+  contactEmailStatus = {}
 } = {}) {
   const safePersistence = persistence || {};
   const safeObservability = observability || {};
@@ -45,6 +67,7 @@ export function buildLaunchReadinessRows({
   const serverRequests = safeObservability.server?.requests ?? 0;
   const phase = dashboard?.phase || "no league loaded";
   const publicDomain = resolvePublicDomainReadiness(publicDomainStatus);
+  const contactEmail = resolveContactEmailReadiness(contactEmailStatus);
   return [
     {
       area: "Runtime",
@@ -70,6 +93,11 @@ export function buildLaunchReadinessRows({
       area: "Public Domain",
       status: publicDomain.status,
       detail: publicDomain.detail
+    },
+    {
+      area: "Contact Email",
+      status: contactEmail.status,
+      detail: contactEmail.detail
     }
   ];
 }
@@ -547,7 +575,8 @@ export function renderLaunchReadinessPanel() {
     persistence: state.persistence,
     observability: state.observability,
     speedrunChallenge: state.speedrunChallenge,
-    publicDomainStatus: state.launchReadiness?.publicDomainStatus
+    publicDomainStatus: state.launchReadiness?.publicDomainStatus,
+    contactEmailStatus: state.launchReadiness?.contactEmailStatus || state.launchReadiness?.emailForwarding
   });
   renderTable("launchReadinessTable", rows);
 }
