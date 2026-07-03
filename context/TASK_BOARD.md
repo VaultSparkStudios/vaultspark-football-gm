@@ -380,3 +380,17 @@ Source: founder goal — "fix the entire visual website theme; the color scheme 
 **Verification:** node shards 275/275 (core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37); Playwright UI 13/13 (9 existing incl. scouting-lock save/load persistence + 4 new theme); npm run build:pages; npm run smoke:pages. Visual QA via scripts/capture-theme.mjs across all tabs + setup + marketing pages in both light and dark.
 
 **Still blocked:** Launch/SPARKED remains blocked only on real football@playfranchisearchitect.com forwarding/copying delivery evidence (unchanged). Follow-up (non-blocking): harmonize the blue-branded landing marketing page (public/landing.html) with the app gold/teal brand language for full cross-page cohesion.
+
+## Session 33 part 2 — Live cache-bust + Theme Customizer + JSON-LD (2026-07-02)
+
+Source: founder follow-up (live screenshot still dark-on-dark) + "build the theme design customization changer button" + "check website scaffolding via vaultspark-studio-ops."
+
+| Item | Status |
+|------|--------|
+| live-theme-cache-bust — content-hashed styles.<hash>.css in build-pages.mjs so Cloudflare 4h edge cache (ignores query strings) can never serve stale theme after deploy | Done |
+| theme-customizer-control — popover button: Appearance (System/Light/Dark) + 5 theme-aware Accent presets, persisted + pre-paint restore; replaces single toggle in setup + game | Done |
+| primary-cta-accent-driven — btn-primary no longer hardcodes gold; light-mode white text keeps all presets legible | Done |
+| jsonld-scaffolding — VideoGame JSON-LD on index + landing; studio-ops sitemap audit 9/10 -> 10/10 | Done |
+| vendored-mirror-sync | Skipped — vaultsparkstudios.com/vaultspark-football-gm 403s (not served) + stale engine-only mirror; playfranchisearchitect.com uses this repo's Pages |
+
+**Verification:** node shards 275/275; Playwright UI 15/15 (incl. 6 theme tests + save/load persistence); build:pages; smoke:pages; studio-ops sitemap audit 10/10.

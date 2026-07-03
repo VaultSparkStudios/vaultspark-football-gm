@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 33 delivered a full premium visual-theme overhaul: fixed a broken light theme (dark surfaces + dark text = unusable) via a disciplined surface-token system and reviewable codemod plus a complete light override, tamed conflicting team-color accents, fixed the IDENTITY [object Object] render and the dev-server SVG-MIME broken-logo bug, and added theme-regression coverage. Full user loop incl. save/load verified green in both themes.",
+  "currentFocus": "Session 33 shipped a premium theme overhaul: fixed a fully-broken light theme, then (part 2) made the fix reach the live Cloudflare-cached domain via content-hashed CSS filenames, built a theme design customization control (Appearance + 5 accent presets), and lifted the sitemap audit to 10/10 with JSON-LD.",
   "nextMilestone": "Confirm GitHub Actions/Pages deployment for the Session 32 commit, then obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt; Session 32 live route evidence passed for all checked public routes."
@@ -85,11 +85,11 @@
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "npm test (all shards) 275/275 — core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37",
-      "npx playwright test 13/13 — 9 existing (incl. scouting-lock save/load persistence) + 4 new tests-ui/theme.spec.js",
-      "npm run build:pages",
+      "npm test 275/275 (core 64, runtime 110, sim-contract 63, sim-realism 1, studio 37)",
+      "npx playwright test 15/15 (incl. 6 tests-ui/theme.spec.js + scouting-lock save/load)",
+      "npm run build:pages (emits content-hashed styles.<hash>.css)",
       "npm run smoke:pages",
-      "visual QA both themes across all tabs + setup + marketing via scripts/capture-theme.mjs"
+      "studio-ops sitemap audit 10/10 (JSON-LD added)"
     ],
     "date": "2026-07-02",
     "timedOut": [],

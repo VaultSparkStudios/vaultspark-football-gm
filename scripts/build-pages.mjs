@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -20,6 +21,14 @@ const explicitServerBaseUrl = (process.env.VITE_API_ORIGIN || "").trim()
   || ((process.env.API_DOMAIN || "").trim() ? `https://${String(process.env.API_DOMAIN).trim()}` : "");
 const serverAvailable = explicitServerBaseUrl ? "true" : "false";
 const browserEntryPoints = [path.join(srcDir, "app", "api", "localApiRuntime.js")];
+
+// Cache-busting: playfranchisearchitect.com is Cloudflare-proxied with a 4h edge
+// cache on styles.css and Cloudflare ignores query strings in its cache key, so
+// `styles.css?v=` never busts. We emit a content-hashed copy (styles.<hash>.css)
+// and point every HTML <link> at it, so each deploy that changes the theme
+// serves fresh CSS via a brand-new URL (guaranteed cache miss) — no stale-theme
+// window. styles.css is still emitted for back-compat / smoke assertions.
+let hashedStyleHref = "styles.css";
 const htmlPages = [
   "index.html",
   "game.html",
@@ -153,6 +162,10 @@ function injectHtmlDefaults(html, pagePath) {
       `<meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <meta name="vsfgm-server-base-url" content="${explicitServerBaseUrl}" />`
     );
   }
+  if (hashedStyleHref !== "styles.css") {
+    // Rewrite ./styles.css (optionally with an existing ?query) to the hashed file.
+    next = next.replace(/href="\.\/styles\.css(?:\?[^"]*)?"/g, `href="./${hashedStyleHref}"`);
+  }
   if (!next.includes('rel="canonical"')) {
     next = next.replace("</title>", `</title>\n    <link rel=\"canonical\" href=\"${canonicalUrl}\" />`);
   }
@@ -200,10 +213,20 @@ async function mirrorProjectPaths() {
   }
 }
 
+async function emitHashedStylesheet() {
+  const cssPath = path.join(outDir, "styles.css");
+  const css = await fs.readFile(cssPath, "utf8");
+  const hash = createHash("sha256").update(css).digest("hex").slice(0, 10);
+  hashedStyleHref = `styles.${hash}.css`;
+  await fs.writeFile(path.join(outDir, hashedStyleHref), css, "utf8");
+  return hashedStyleHref;
+}
+
 async function main() {
   await ensureCleanDir(outDir);
   await copyDir(publicDir, outDir);
   await copyBrowserModules();
+  await emitHashedStylesheet();
   for (const pageName of htmlPages) {
     await writeHtml(pageName);
   }

@@ -100,3 +100,52 @@ test("theme toggle persists across a reload", async ({ page }) => {
   const theme = await page.evaluate(() => document.documentElement.dataset.theme);
   expect(theme).toBe("light");
 });
+
+test("theme customizer changes appearance and accent, and persists", async ({ page }) => {
+  await page.goto("/");
+  await waitSetupReady(page);
+
+  // Open the customizer popover.
+  await page.click("#setupThemeToggleBtn");
+  await expect(page.locator(".theme-cx-panel")).toBeVisible();
+
+  // Pick an explicit Dark appearance + Emerald accent.
+  await page.click('.theme-cx-mode[data-mode="dark"]');
+  await page.click('.theme-cx-accent[data-accent="emerald"]');
+
+  const applied = await page.evaluate(() => ({
+    theme: document.documentElement.dataset.theme,
+    accent: document.documentElement.dataset.accent,
+    accentVar: getComputedStyle(document.documentElement).getPropertyValue("--accent").trim().toLowerCase()
+  }));
+  expect(applied.theme).toBe("dark");
+  expect(applied.accent).toBe("emerald");
+  expect(applied.accentVar).toBe("#3fbf87"); // dark emerald preset
+
+  // Switch to Light: the emerald preset must resolve to its darkened light value.
+  await page.click('.theme-cx-mode[data-mode="light"]');
+  const light = await page.evaluate(() =>
+    getComputedStyle(document.documentElement).getPropertyValue("--accent").trim().toLowerCase()
+  );
+  expect(light).toBe("#12795d");
+
+  // Persist across reload (pre-paint boot must restore both).
+  await page.reload();
+  await waitSetupReady(page);
+  const afterReload = await page.evaluate(() => ({
+    theme: document.documentElement.dataset.theme,
+    accent: document.documentElement.dataset.accent
+  }));
+  expect(afterReload.theme).toBe("light");
+  expect(afterReload.accent).toBe("emerald");
+});
+
+test("gold accent is the default and clears the data-accent attribute", async ({ page }) => {
+  await page.goto("/");
+  await waitSetupReady(page);
+  await page.click("#setupThemeToggleBtn");
+  await page.click('.theme-cx-accent[data-accent="gold"]');
+  const accent = await page.evaluate(() => document.documentElement.dataset.accent);
+  // Gold is the base palette — no data-accent override should be present.
+  expect(accent).toBeUndefined();
+});

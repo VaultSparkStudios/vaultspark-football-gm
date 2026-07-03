@@ -1,4 +1,4 @@
-import { bindThemeToggle } from "./lib/themeMode.js";
+import { initThemeCustomizer } from "./lib/themeCustomizer.js";
 import {
   createApiClient,
   getRuntimeMode,
@@ -606,5 +606,5 @@ async function init() {
 
 init();
 
-bindThemeToggle("setupThemeToggleBtn");
+initThemeCustomizer("setupThemeToggleBtn");
 

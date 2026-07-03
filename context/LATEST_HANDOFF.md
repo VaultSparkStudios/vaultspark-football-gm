@@ -1,3 +1,17 @@
+## 2026-07-02 — Session 33 part 2 Closeout Handoff
+
+Where we left off:
+- Founder showed the LIVE site still rendering dark-on-dark after the part-1 fix. Root cause: Cloudflare edge-caches styles.css for 4h and ignores query strings in its cache key, so the green deploy could not surface for hours and `?v=` cannot bust it. playfranchisearchitect.com serves THIS repo's Pages (HTML dynamic, CSS cached).
+- Shipped content-hashed CSS in build-pages.mjs (styles.<hash>.css + rewritten <link>s) so every theme-changing deploy serves fresh CSS via a new URL — permanent fix, no stale window.
+- Built the theme design customization changer button: popover with Appearance (System/Light/Dark) + 5 theme-aware accent presets, persisted + pre-paint restore, wired in setup + game. Made the primary CTA accent-driven with light-mode white text.
+- Added JSON-LD (VideoGame) to index + landing; studio-ops sitemap audit is now 10/10.
+- Verified: node 275/275; Playwright 15/15; build/smoke; sitemap 10/10.
+
+Next best move:
+- After push + Pages deploy, confirm the live HTML links styles.<newhash>.css and that URL returns the token-based CSS (cache miss = instant). If the apex still shows old within minutes, the hashed URL guarantees correctness regardless of the old styles.css cache.
+- Launch/SPARKED still blocked only on the email-forwarding receipt.
+Session Intent: Make the theme fix actually reach the live domain, ship a real theme customization control, and lift site scaffolding — through full closeout + deploy.
+
 ## 2026-07-02 — Session 33 Closeout Handoff
 
 Where we left off:

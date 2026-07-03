@@ -1,5 +1,5 @@
 import { injectTutorialStyles, mountTutorial } from "./lib/tutorialCampaign.js";
-import { bindThemeToggle } from "./lib/themeMode.js";
+import { initThemeCustomizer } from "./lib/themeCustomizer.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
 import { maybeShowReturnDigest } from "./lib/returnDigest.js";
@@ -1760,5 +1760,5 @@ async function init() {
 
 init();
 
-bindThemeToggle("themeToggleBtn");
+initThemeCustomizer("themeToggleBtn");
 
