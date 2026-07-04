@@ -327,8 +327,53 @@ function exposeLocalTestHooks() {
   globalThis.__VS_FA_APPLY_DASHBOARD__ = applyDashboard;
 }
 
+// ── Mobile nav drawer (CANON-041) ────────────────────────────────────────
+function initNavDrawer() {
+  const hamburger = document.getElementById("navHamburgerBtn");
+  const backdrop  = document.getElementById("navBackdrop");
+  const drawer    = document.getElementById("navDrawer");
+  if (!hamburger || !drawer) return;
+
+  function openDrawer() {
+    drawer.classList.add("nav-open");
+    backdrop?.classList.add("nav-open");
+    backdrop?.removeAttribute("aria-hidden");
+    hamburger.setAttribute("aria-expanded", "true");
+    hamburger.textContent = "✕";
+    hamburger.title = "Close navigation";
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove("nav-open");
+    backdrop?.classList.remove("nav-open");
+    backdrop?.setAttribute("aria-hidden", "true");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.textContent = "☰";
+    hamburger.title = "Navigation";
+  }
+
+  hamburger.addEventListener("click", () => {
+    if (drawer.classList.contains("nav-open")) closeDrawer();
+    else openDrawer();
+  });
+
+  backdrop?.addEventListener("click", closeDrawer);
+
+  drawer.addEventListener("click", (event) => {
+    if (event.target.closest(".menu-btn[data-tab]")) closeDrawer();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && drawer.classList.contains("nav-open")) {
+      closeDrawer();
+      hamburger.focus();
+    }
+  });
+}
+
 function bindEvents() {
   bindMenuTabs(activateTab);
+  initNavDrawer();
 
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();

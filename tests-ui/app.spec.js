@@ -396,3 +396,37 @@ test("switching runtime mode reloads setup state", async ({ page }) => {
   await expect(page.locator("#savesTable")).toContainText(slot, { timeout: 20_000 });
   await expect(page.locator("#resumeLatestBtn")).toBeEnabled();
 });
+
+// ── Mobile nav drawer (CANON-041) ────────────────────────────────────────────
+// Viewport 600px: triggers the ≤640px nav-drawer CSS but stays above the
+// ≤480px mobile-loop-overlay threshold, so only the drawer needs dismissing.
+test.describe("mobile nav drawer", () => {
+  test.use({ viewport: { width: 600, height: 812 } });
+
+  test("hamburger opens drawer and tab selection closes it", async ({ page }) => {
+    await createLeagueFromSetup(page);
+
+    const hamburger = page.locator("#navHamburgerBtn");
+    const drawer    = page.locator("#navDrawer");
+
+    // Hamburger must be visible at narrow viewport
+    await expect(hamburger).toBeVisible();
+
+    // Drawer starts closed
+    await expect(drawer).not.toHaveClass(/nav-open/);
+    await expect(hamburger).toHaveAttribute("aria-expanded", "false");
+
+    // Open drawer
+    await hamburger.click();
+    await expect(drawer).toHaveClass(/nav-open/);
+    await expect(hamburger).toHaveAttribute("aria-expanded", "true");
+
+    // Selecting a tab closes the drawer
+    await page.locator('[data-testid="tab-roster"]').click();
+    await expect(drawer).not.toHaveClass(/nav-open/);
+    await expect(hamburger).toHaveAttribute("aria-expanded", "false");
+
+    // The selected tab panel is now active
+    await expect(page.locator("#rosterTab")).toHaveClass(/active/);
+  });
+});

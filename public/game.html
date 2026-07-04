@@ -26,6 +26,7 @@
         <div id="boxScoreTicker" class="boxscore-ticker">Loading recent games...</div>
       </div>
       <div class="row compact topbar-actions">
+        <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navDrawer" title="Navigation">☰</button>
         <span id="stageChip" class="chip">Stage: Loading...</span>
         <button id="advanceWeekBtn" data-testid="advance-week-btn">Advance Week</button>
         <button id="advance4WeeksBtn" data-testid="advance-4-weeks-btn">Advance 4 Weeks</button>
@@ -47,8 +48,9 @@
       <button class="news-ticker-close" id="closeNewsTickerBtn" aria-label="Close ticker">✕</button>
     </div>
 
+    <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
     <main class="game-shell">
-      <aside class="side-menu" role="tablist" aria-label="Franchise sections" aria-orientation="vertical">
+      <aside class="side-menu" id="navDrawer" role="tablist" aria-label="Franchise sections" aria-orientation="vertical">
         <div class="menu-group-header">Gameday</div>
         <button id="tab-overview" class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview" role="tab" aria-selected="true" aria-controls="overviewTab" tabindex="0">Overview</button>
         <button id="tab-stats" class="menu-btn" data-tab="statsTab" data-testid="tab-stats" role="tab" aria-selected="false" aria-controls="statsTab" tabindex="-1">Statistics</button>
