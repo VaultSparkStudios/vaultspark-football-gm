@@ -274,3 +274,13 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** `/api/gm-decision` and `applyGmDecisionConsequence()` are already the source of truth. The gap was presentation and agency in the mobile loop, not backend capability. Keeping one consequence path preserves determinism and prevents desktop/mobile drift.
 
 **Pattern established:** Mobile-first surfaces can add faster choice affordances, but must emit source-of-truth payloads into existing runtime actions when those actions already own game-state mutation.
+
+---
+
+## 2026-07-04 — Mobile fallback GM decisions use the existing modal/consequence path
+
+**Decision:** Generic mobile `vsfgm:mobile-decision` events with `choose-gm-decision` action should route through the existing `checkAndShowGmDecision()` modal and then submit through `submitMobileGmDecisionChoice()` if the user makes a choice.
+
+**Rationale:** Inline mobile choices are the best path when `/api/gm-decision` returns option details, but the generic event path already existed for non-inline cards and had no app-shell listener. The right fix is to complete the existing event contract, not add a mobile-only decision engine or second backend route.
+
+**Pattern established:** Mobile fallback affordances should converge into the same accessible modal and source-of-truth consequence path used by desktop when inline data is unavailable.

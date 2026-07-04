@@ -1,0 +1,62 @@
+{
+  "session": "S41",
+  "date": "2026-07-04",
+  "repo": "Franchise Architect: Football",
+  "headline": "Session 41 completed the mobile General Manager decision fallback path, keeping phone decisions actionable through the existing modal and consequence source of truth.",
+  "items": [
+    {
+      "title": "mobile-gm-decision-fallback-modal-path",
+      "projectImpact": 7,
+      "ecosystemImpact": 3,
+      "evidence": "public/app.js now listens for vsfgm:mobile-decision choose-gm-decision events and routes them through checkAndShowGmDecision() plus submitMobileGmDecisionChoice()."
+    },
+    {
+      "title": "focused mobile-loop coverage",
+      "projectImpact": 5,
+      "ecosystemImpact": 2,
+      "evidence": "test/mobile-loop.test.js covers the generic mobile-decision app-shell binding; focused suite passes 12/12."
+    },
+    {
+      "title": "latest-audit-follow-through",
+      "projectImpact": 4,
+      "ecosystemImpact": 3,
+      "evidence": "docs/INNOVATION_PACK.md and .cache/genius-list.json show Session 41 exhausted with 0 open items."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "email-forwarding receipt",
+      "evidence": "Obtain real received-message proof for football@playfranchisearchitect.com before any SPARKED flip."
+    },
+    {
+      "title": "live-origin/routing proof",
+      "evidence": "After deployment, verify playfranchisearchitect.com serves the latest build before launch status changes."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "launch/SPARKED evidence gate",
+      "evidence": "Email forwarding/copying receipt and current live-origin/routing evidence are still missing."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "SPARKED flip rejected",
+      "evidence": "No fabricated email receipt or live-origin proof was used."
+    },
+    {
+      "title": "new mobile backend rejected",
+      "evidence": "Existing /api/gm-decision and /api/advance-week gmDecisionChoice remain the source of truth."
+    },
+    {
+      "title": "local scanner/helper gaps recorded",
+      "evidence": "scripts/sample-codebase.mjs, scripts/scan-secrets.mjs, state-vector, entropy, and genome helpers are not vendored locally; Studio Ops equivalent scanner is used before push."
+    }
+  ],
+  "diffStat": {
+    "files": 16,
+    "insertions": 141,
+    "deletions": 27,
+    "suite": "npm test 285/285; npm run test:ui 17/17; Pages build/smoke; doctor no items; canon conformance 0 gaps"
+  }
+}

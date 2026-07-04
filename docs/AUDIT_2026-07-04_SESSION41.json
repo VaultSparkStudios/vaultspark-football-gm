@@ -1,0 +1,54 @@
+{
+  "generatedBy": "/audit skill v2 live-code",
+  "generatedAt": "2026-07-04",
+  "project": "franchise-architect-football",
+  "type": "game/public-product",
+  "totalRankedItems": 1,
+  "combinedPriority": 26.3,
+  "items": [
+    {
+      "rank": 1,
+      "tier": "fire",
+      "axis": "mobile-core-loop/fallback-actionability",
+      "slug": "mobile-gm-decision-fallback-modal-path",
+      "effortHours": 0.5,
+      "impact": 7,
+      "innovation": 6,
+      "priority": 26.3,
+      "status": "shipped",
+      "why": "The mobile decision deck emitted a generic vsfgm:mobile-decision event for non-inline decision cards, but the app shell only listened to the inline choice event. Normal /api/gm-decision responses include options, so this was not a current broken mainline; it was a defensive actionability gap if a future decision prompt has an id/prompt but no option details.",
+      "evidence": [
+        "public/lib/mobileLoop.js renderDecisionCard() emits vsfgm:mobile-decision for non-inline cards",
+        "public/app.js syncMobileLoopOverlay() previously only bound vsfgm:mobile-gm-decision-choice",
+        "test/session8-endpoints.test.js proves current API decision options are populated"
+      ],
+      "verification": [
+        "node --check public/app.js",
+        "node --check public/lib/mobileLoop.js",
+        "node --test test/mobile-loop.test.js 12/12"
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "slug": "sparked-flip",
+      "reason": "Still blocked on real received-message proof for football@playfranchisearchitect.com forwarding/copying and current live-origin/routing evidence; no fabricated launch evidence used."
+    },
+    {
+      "slug": "new-mobile-decision-backend",
+      "reason": "Rejected because /api/gm-decision, checkAndShowGmDecision(), and /api/advance-week gmDecisionChoice already own the source-of-truth path; the right fix was wiring the existing event to the existing modal path."
+    },
+    {
+      "slug": "sample-codebase-required",
+      "reason": "Rejected as a blocker: scripts/sample-codebase.mjs is absent in this repo, so /audit used targeted rg plus direct file reads. The missing sampler is a tooling note, not product work."
+    }
+  ],
+  "gameLoopReview": {
+    "loopTightness": 10,
+    "progressionCurve": 9,
+    "sessionEngagement": 10,
+    "retentionHooks": 9,
+    "soulFidelity": 10,
+    "finding": "The phone loop now has a complete fallback route from pressure card to accessible General Manager modal to consequence submit even when inline option details are unavailable."
+  }
+}

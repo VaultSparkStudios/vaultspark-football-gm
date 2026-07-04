@@ -195,3 +195,10 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Failed mobile decision refreshes now clear stale `state.mobilePendingDecision` and repaint the mobile deck, avoiding ghost decision cards.
 - Generated mobile overlay attributes/classes now use quote-safe `_escAttr()` rather than text-only escaping.
 - Launch/SPARKED remains blocked on real `football@playfranchisearchitect.com` forwarding/copying receipt plus current live-origin/routing evidence; no launch readiness was force-greened.
+
+## 2026-07-04 — Session 41 truth updates
+
+- Mobile fallback decision truth repair: `public/lib/mobileLoop.js` already emitted `vsfgm:mobile-decision` for non-inline mobile cards; `public/app.js` now listens for `choose-gm-decision` and routes it through the existing GM Decision modal and consequence path.
+- Queue truth: `docs/AUDIT_2026-07-04_SESSION41.md` contains one shipped ranked item; `docs/INNOVATION_PACK.md` marks latest-audit follow-through shipped; `.cache/genius-list.json` is exhausted with 0 open items.
+- Verification truth: current tree passed focused mobile-loop 12/12, default `npm test` 285/285, Playwright UI 17/17, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight, cache check, and canon conformance 0 gaps.
+- Launch truth unchanged: Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof and current live origin/routing evidence remains green.

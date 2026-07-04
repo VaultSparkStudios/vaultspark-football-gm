@@ -289,3 +289,13 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Shipped second-order mobile overlay hardening: generated mobile data attributes/classes now use `_escAttr()` for quote-safe escaping.
 - Verification so far: `node --check public/lib/mobileLoop.js`, `node --check public/app.js`, `node --test test/mobile-loop.test.js` 12/12. Full closeout suite pending before push.
 - Launch/SPARKED remains honestly blocked on email delivery receipt plus current live-origin/routing evidence.
+
+## 2026-07-04 — Session 41: mobile GM fallback actionability
+
+- Ran the continuous `/goal /arc` mission from current repo evidence: required pull/rebase, startup gates, live audit, implementation, innovation-pack follow-through, verification, and closeout prep.
+- Generated `docs/AUDIT_2026-07-04_SESSION41.*` after confirming the Session 40 audit/cache were exhausted.
+- Shipped `mobile-gm-decision-fallback-modal-path`: fallback mobile `choose-gm-decision` cards now route through the existing accessible GM Decision modal instead of emitting an unhandled generic event.
+- Preserved source-of-truth mutation by submitting returned modal choices through the existing `/api/advance-week` `gmDecisionChoice` path.
+- Shipped second-order `latest-audit-follow-through`: regenerated `docs/INNOVATION_PACK.md`, verified the only candidate against live code, and regenerated the genius cache to exhausted/0 open.
+- Verification: `node --check public/app.js`; `node --check public/lib/mobileLoop.js`; focused `node --test test/mobile-loop.test.js` 12/12; default `npm test` 285/285; `npm run test:ui` 17/17; `npm run build:pages`; `npm run smoke:pages`; doctor no items; windows-hide; Wave guard; secrets audit; blocker preflight; cache check fresh/exhausted; canon conformance 0 gaps.
+- Launch truth unchanged: Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live-origin/routing evidence remains green.

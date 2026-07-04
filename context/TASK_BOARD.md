@@ -493,3 +493,19 @@ Source: `docs/AUDIT_2026-07-04_SESSION40.md`.
 
 **Still blocked:** Launch/SPARKED remains evidence-gated until `football@playfranchisearchitect.com` forwarding/copying is verified with a real received-message receipt and current live origin/routing proves `playfranchisearchitect.com` serves the latest build.
 
+
+## Session 41 — Mobile GM Fallback Actionability
+
+Source: `docs/AUDIT_2026-07-04_SESSION41.md`.
+
+| Item | Status |
+|------|--------|
+| Generate a fresh live-code audit after confirming the Session 40 queue was exhausted | Done |
+| Route generic mobile `choose-gm-decision` cards through the existing GM Decision modal and consequence path | Done |
+| Add focused mobile-loop/app-shell regression coverage for the fallback event binding | Done |
+| latest-audit-follow-through innovation candidate | Done |
+| sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt and current live-origin/routing evidence |
+
+**Verification:** `node --check public/app.js`, `node --check public/lib/mobileLoop.js`, focused `node --test test/mobile-loop.test.js` 12/12, default `npm test` 285/285, Playwright UI 17/17, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight, cache check fresh/exhausted, and canon conformance 0 gaps.
+
+**Still blocked:** Launch/SPARKED remains evidence-gated until `football@playfranchisearchitect.com` forwarding/copying is verified with a real received-message receipt and current live origin/routing proves `playfranchisearchitect.com` serves the latest build.

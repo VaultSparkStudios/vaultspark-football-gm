@@ -480,3 +480,23 @@ Category scores:
 | Automation Coverage | 100 | Maintained cap; focused tests now guard stale async decision refresh and attribute escaping. |
 
 Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.
+
+## 2026-07-04 — Session 41 Mobile GM Fallback Actionability
+
+Score: 991 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap; default suite passed 285/285 and focused mobile-loop coverage still passes 12/12 after the fallback event binding. |
+| Creative Alignment | 99 | +1 because mobile General Manager decision flow now has a complete fallback through the established decision ritual instead of a dead card edge. |
+| Momentum | 100 | Maintained cap; fresh live audit generated, implemented, second-order follow-through classified, and cache exhausted in the same arc. |
+| Engagement | 100 | Maintained cap; phone users keep agency even if inline option details are unavailable. |
+| Process Quality | 100 | Maintained cap; rejected SPARKED flip and duplicate backend work on evidence while fixing the smallest source-of-truth gap. |
+| Cross-Repo Coherence | 100 | Maintained cap; no sibling tree edits. |
+| Security Posture | 100 | Maintained cap; no new credential, dependency, auth, or sensitive data surface changed. |
+| Ecosystem Integration | 100 | Maintained cap; launch truth remains aligned across audit, status, task board, and evidence gates. |
+| Capital Efficiency | 92 | Unchanged; static-host-safe/browser-only work with no new paid service or variable runtime cost. |
+| Automation Coverage | 100 | Maintained cap; focused source coverage now guards generic mobile-decision app-shell binding. |
+
+Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.

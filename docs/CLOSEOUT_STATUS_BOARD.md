@@ -1,23 +1,23 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-04 (Session 40 closeout) -->
+<!-- generated-at: 2026-07-04 (Session 41 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S40 ══════╗
-║  Date: 2026-07-04  ·  SIL: 990/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S41 ══════╗
+║  Date: 2026-07-04  ·  SIL: 991/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Generated `docs/AUDIT_2026-07-04_SESSION40.*` after confirmi  ║
-║  ✓ Added a mobile decision snapshot key in `public/app.js` so a  ║
-║  ✓ Re-rendered the mobile deck after a failed decision refresh   ║
-║  ✓ Shipped second-order mobile overlay hardening: generated dat  ║
+║  ✓ Generated `docs/AUDIT_2026-07-04_SESSION41.*` after confirmi  ║
+║  ✓ Wired the mobile deck's generic `vsfgm:mobile-decision` even  ║
+║  ✓ Preserved the single source-of-truth mutation path by submit  ║
+║  ✓ Added focused app-shell coverage in `test/mobile-loop.test.j  ║
 ║  ✓ Regenerated `docs/INNOVATION_PACK.md` and `.cache/genius-lis  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 990/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 991/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          98   ██████████                            ║
+║    Alignment          99   ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
@@ -28,19 +28,19 @@
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
-║  · context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
-║  · context/PROJECT_STATUS.json                                   ║
-║  · agent memory (~/.codex or ~/.claude project memory)           ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
+║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 14 files  ·  M:12 A:0 D:0 ?:2                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝

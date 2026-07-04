@@ -363,6 +363,15 @@ function syncMobileLoopOverlay() {
   const advanceFromMobile = () => document.getElementById("advanceWeekBtn")?.click();
   if (!overlay.dataset.mobileGmChoiceBound) {
     overlay.dataset.mobileGmChoiceBound = "1";
+    overlay.addEventListener("vsfgm:mobile-decision", (event) => {
+      if (event.detail?.action !== "choose-gm-decision") return;
+      checkAndShowGmDecision()
+        .then((choice) => {
+          if (choice) return submitMobileGmDecisionChoice(choice);
+          return null;
+        })
+        .catch(presentActionError);
+    });
     overlay.addEventListener("vsfgm:mobile-gm-decision-choice", (event) => {
       submitMobileGmDecisionChoice(event.detail).catch(presentActionError);
     });

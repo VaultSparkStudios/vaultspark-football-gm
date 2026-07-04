@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 40 shipped mobile GM decision truth guards: phone-mode /api/gm-decision refreshes now validate phase/year/week/team before repainting, failed refreshes clear stale pending decisions and repaint, and generated mobile overlay attributes use quote-safe escaping.",
+  "currentFocus": "Session 41 shipped mobile GM fallback actionability: generic mobile vsfgm:mobile-decision choose-gm-decision cards now route through the existing accessible GM Decision modal and submit choices through the established /api/advance-week gmDecisionChoice consequence path.",
   "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
@@ -13,7 +13,7 @@
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-07-03",
+  "truthAuditLastRun": "2026-07-04",
   "ignisScore": 41305,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
@@ -23,9 +23,9 @@
     "fail": 0,
     "lastRun": "2026-07-04",
     "newTestFiles": [],
-    "newTestCount": 2,
-    "coverage": "Session 40 verified final tree with default npm test 285/285 (core 64/64, runtime 120/120, sim-contract 63/63, sim-realism 1/1, studio 37/37), Playwright UI 17/17, focused mobile-loop 12/12, node --check public/lib/mobileLoop.js, node --check public/app.js, Pages build/smoke, and doctor no items.",
-    "uiSuiteNote": "Session 39 reran npm run test:ui successfully: 17/17."
+    "newTestCount": 0,
+    "coverage": "Session 41 verified final tree with default npm test 285/285 (core 64/64, runtime 120/120, sim-contract 63/63, sim-realism 1/1, studio 37/37), Playwright UI 17/17, focused mobile-loop 12/12, node --check public/app.js, node --check public/lib/mobileLoop.js, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight, cache check fresh/exhausted, and canon conformance 0 gaps.",
+    "uiSuiteNote": "Session 41 reran npm run test:ui successfully: 17/17."
   },
   "testsPassing": 285,
   "testsTotal": 285,
@@ -67,10 +67,10 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 990,
+  "silScore": 991,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 98,
+    "creativeAlignment": 99,
     "momentum": 100,
     "engagement": 100,
     "processQuality": 100,
@@ -80,13 +80,13 @@
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 40,
+  "currentSession": 41,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
     "passed": [
-      "node --check public/lib/mobileLoop.js",
       "node --check public/app.js",
+      "node --check public/lib/mobileLoop.js",
       "node --test test/mobile-loop.test.js 12/12",
       "npm test 285/285 (core 64, runtime 120, sim-contract 63, sim-realism 1, studio 37)",
       "npm run test:ui 17/17",
@@ -97,7 +97,8 @@
       "node scripts/check-canon-044-waves.mjs",
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
-      "node scripts/cache-genius-list.mjs --write exhausted 0 open"
+      "node scripts/cache-genius-list.mjs --check fresh/exhausted",
+      "canon conformance 0 gaps"
     ],
     "date": "2026-07-04",
     "timedOut": [],
