@@ -281,3 +281,11 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Shipped second-order `latest-audit-follow-through`: regenerated `docs/INNOVATION_PACK.md` and classified the only candidate as shipped after source/test verification.
 - Verification: `node --check public/lib/mobileLoop.js`; `node --check public/app.js`; focused `node --test test/mobile-loop.test.js` 10/10; default `npm test` 283/283; `npm run test:ui` 17/17; `npm run build:pages`; `npm run smoke:pages`; doctor no items; windows-hide; Wave guard; secrets audit; blocker preflight.
 - Launch truth unchanged: Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence remains green.
+
+## 2026-07-04 — Session 40 Mobile GM Decision Truth Guard
+
+- Ran `/goal /arc` through startup, audit, implementation, innovation-pack follow-through, and closeout prep.
+- Shipped `mobile-gm-decision-snapshot-guard`: mobile `/api/gm-decision` refreshes now validate phase/year/week/team before mutating pending decision state, and failed refreshes repaint the mobile deck after clearing stale state.
+- Shipped second-order mobile overlay hardening: generated mobile data attributes/classes now use `_escAttr()` for quote-safe escaping.
+- Verification so far: `node --check public/lib/mobileLoop.js`, `node --check public/app.js`, `node --test test/mobile-loop.test.js` 12/12. Full closeout suite pending before push.
+- Launch/SPARKED remains honestly blocked on email delivery receipt plus current live-origin/routing evidence.

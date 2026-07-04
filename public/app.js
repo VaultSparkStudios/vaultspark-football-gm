@@ -343,6 +343,16 @@ async function submitMobileGmDecisionChoice(choice) {
   }, "Recording mobile GM decision...");
 }
 
+function mobileDecisionSnapshotKey() {
+  const dashboard = state.dashboard || {};
+  return [
+    dashboard.phase || "",
+    dashboard.currentYear || "",
+    dashboard.currentWeek || "",
+    dashboard.controlledTeamId || ""
+  ].join(":");
+}
+
 function syncMobileLoopOverlay() {
   const overlay = document.getElementById("mobileLoopOverlay");
   if (!overlay) return;
@@ -358,15 +368,19 @@ function syncMobileLoopOverlay() {
     });
   }
   if (active) {
+    const decisionSnapshotKey = mobileDecisionSnapshotKey();
     renderMobileOverlay(state, advanceFromMobile);
     if (state.dashboard?.phase === "regular-season") {
       api("/api/gm-decision")
         .then((data) => {
+          if (!isMobileModeEnabled() || decisionSnapshotKey !== mobileDecisionSnapshotKey()) return;
           state.mobilePendingDecision = data?.decisions?.[0] || null;
-          if (isMobileModeEnabled()) renderMobileOverlay(state, advanceFromMobile);
+          renderMobileOverlay(state, advanceFromMobile);
         })
         .catch(() => {
+          if (decisionSnapshotKey !== mobileDecisionSnapshotKey()) return;
           state.mobilePendingDecision = null;
+          if (isMobileModeEnabled()) renderMobileOverlay(state, advanceFromMobile);
         });
     } else {
       state.mobilePendingDecision = null;

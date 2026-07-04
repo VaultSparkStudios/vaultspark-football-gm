@@ -1,46 +1,46 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-04 (Session 39 closeout) -->
+<!-- generated-at: 2026-07-04 (Session 40 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S39 ══════╗
-║  Date: 2026-07-04  ·  SIL: 988/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S40 ══════╗
+║  Date: 2026-07-04  ·  SIL: 990/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Generated `docs/AUDIT_2026-07-04_SESSION39.*` after confirmi  ║
-║  ✓ Made pending `/api/gm-decision` prompts fully actionable in   ║
-║  ✓ Added `vsfgm:mobile-gm-decision-choice` dispatch from `publi  ║
-║  ✓ Submitted selected mobile choices through the existing `/api  ║
-║  ✓ Regenerated `docs/INNOVATION_PACK.md` and marked the latest-  ║
+║  ✓ Generated `docs/AUDIT_2026-07-04_SESSION40.*` after confirmi  ║
+║  ✓ Added a mobile decision snapshot key in `public/app.js` so a  ║
+║  ✓ Re-rendered the mobile deck after a failed decision refresh   ║
+║  ✓ Shipped second-order mobile overlay hardening: generated dat  ║
+║  ✓ Regenerated `docs/INNOVATION_PACK.md` and `.cache/genius-lis  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 988/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 990/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          97   ██████████                            ║
+║    Alignment          98   ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          100  ██████████                            ║
-║    Security           99   ██████████                            ║
+║    Security           100  ██████████                            ║
 ║    Ecosystem          100  ██████████                            ║
 ║    Capital            92   █████████░                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  ✓ context/CURRENT_STATE.md                                      ║
-║  ✓ context/TASK_BOARD.md                                         ║
-║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
-║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  · context/CURRENT_STATE.md                                      ║
+║  · context/TASK_BOARD.md                                         ║
+║  · context/LATEST_HANDOFF.md                                     ║
+║  · logs/WORK_LOG.md                                              ║
+║  · context/DECISIONS.md                                          ║
+║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  · context/TRUTH_AUDIT.md                                        ║
-║  ✓ context/PROJECT_STATUS.json                                   ║
+║  · context/PROJECT_STATUS.json                                   ║
 ║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 19 files  ·  M:15 A:4 D:0 ?:0                          ║
+║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -51,7 +51,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        1/1                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         283/283                                          ║
+║  Tests:         285/285                                          ║
 ║  IGNIS:         16d ago                                          ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  2d ago                                           ║

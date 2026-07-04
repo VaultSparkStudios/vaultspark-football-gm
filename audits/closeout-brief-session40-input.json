@@ -1,0 +1,54 @@
+{
+  "session": "S40",
+  "date": "2026-07-04",
+  "repo": "Franchise Architect: Football",
+  "headline": "Session 40 made the mobile General Manager decision deck self-validating, preventing stale async decisions from lingering on phones.",
+  "items": [
+    {
+      "title": "mobile-gm-decision-snapshot-guard",
+      "projectImpact": 8,
+      "ecosystemImpact": 4,
+      "evidence": "Mobile /api/gm-decision refreshes now validate phase/year/week/team before mutating state and repaint after failed refreshes clear stale pending decisions."
+    },
+    {
+      "title": "mobile-overlay-attribute-escaping",
+      "projectImpact": 5,
+      "ecosystemImpact": 3,
+      "evidence": "Generated mobile overlay data attributes and classes now use quote-safe _escAttr() instead of text-only escaping."
+    },
+    {
+      "title": "latest-audit-follow-through",
+      "projectImpact": 4,
+      "ecosystemImpact": 3,
+      "evidence": "Innovation pack rechecked the Session 40 audit against live code; focused tests and full suite passed with the cache exhausted."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "email-forwarding receipt",
+      "evidence": "Obtain real received-message proof for football@playfranchisearchitect.com before any SPARKED flip."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "launch/SPARKED",
+      "evidence": "Launch remains blocked on real email forwarding/copying proof and current live origin/routing evidence."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "duplicate-mobile-decision-cache",
+      "evidence": "Rejected on evidence because state.mobilePendingDecision and /api/gm-decision already own the source-of-truth path."
+    },
+    {
+      "title": "missing local closeout helpers",
+      "evidence": "render-state-vector, compute-entropy, and append-genome-snapshot are not vendored in this public repo; doctor and board renderers were run locally."
+    }
+  ],
+  "diffStat": {
+    "files": 16,
+    "insertions": 0,
+    "deletions": 0,
+    "suite": "npm test 285/285; npm run test:ui 17/17; Pages build/smoke; doctor no items; cache exhausted 0 open"
+  }
+}

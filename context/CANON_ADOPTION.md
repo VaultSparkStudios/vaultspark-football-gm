@@ -1,22 +1,23 @@
-# Canon Adoption — Franchise Architect: Football
+# Canon Adoption — VaultSpark Football GM
 
 > ACTIVELY CHECKED against the live `vaultspark-studio-ops/docs/STUDIO_CANON.md` (founder directive S183).
 > Refresh: `node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --write`.
+> Suggest: `node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --suggest` uses conformance evidence to pre-fill safe suggestions.
 > Mark each: **adopted** · **pending** · **review** · **exempt (reason)**. This file is maintained, not auto-trusted.
 
-Audience: public-unlaunched · Live ACTIVE canons: 50 · Pending review: 50
+Audience: public-unlaunched · Live ACTIVE canons: 50 · Pending review: 43
 
 | Canon | Title | Status | Evidence / note |
 |---|---|---|---|
-| CANON-001 | Rolling Status headers use HTML comment markers for programm | review |  |
+| CANON-001 | Rolling Status headers use HTML comment markers for programm | adopted (suggested) | Conformance checker passed: rolling-status start+end markers present with content |
 | CANON-002 | Sessions 1–3 are a Calibration Window, excluded from studio- | review |  |
-| CANON-003 | prompts/initiate.md is separate from prompts/start.md for to | review |  |
-| CANON-004 | studioOsApplied: true requires Layer 1 SIL format, not just  | review |  |
-| CANON-005 | CDR gap recovery check is mandatory at startup and closeout  | review |  |
+| CANON-003 | prompts/initiate.md is separate from prompts/start.md for to | adopted (suggested) | Conformance checker passed: start.md + initiate.md both present and distinct |
+| CANON-004 | studioOsApplied: true requires Layer 1 SIL format, not just  | exempt (suggested) | studioOsApplied !== true (registry + status) — Layer 1 SIL format not yet required |
+| CANON-005 | CDR gap recovery check is mandatory at startup and closeout  | adopted (suggested) | Conformance checker passed: CDR gap-recovery instruction present in prompts/start.md, prompts/closeout.md, docs/SESSION_PROTOCOL.md |
 | CANON-006 | Every public-facing product must display VaultSpark Studios  | review |  |
 | CANON-007 | Every project must have a staging environment before deployi | review |  |
 | CANON-008 | All VaultSpark IP is proprietary by default; open-source lic | review |  |
-| CANON-009 | SIL rubric is 10 × 100 = 1000 (v3.0) | review |  |
+| CANON-009 | SIL rubric is 10 × 100 = 1000 (v3.0) | adopted (suggested) | Conformance checker passed: 1000-pt v3.0 · 10 cats · Σ==silScore(988) |
 | CANON-010 | Claude Code and Codex must have strict skills + hooks + MCP  | review |  |
 | CANON-011 | Every public-facing project must follow the universal sitema | review |  |
 | CANON-012 | Every studio agent resolves credentials via the secrets gate | review |  |
@@ -50,9 +51,9 @@ Audience: public-unlaunched · Live ACTIVE canons: 50 · Pending review: 50
 | CANON-041 | Website Mobile Parity + Elite Visual Craft (full desktop↔mob | review |  |
 | CANON-042 | Studio Branding System: approved usages, DBA rule, and the e | review |  |
 | CANON-043 | Baseline repository security hygiene (free-tier: Dependabot  | review |  |
-| CANON-044 | In-session task scaffolding (Phase/Wave lists), reconciled a | review |  |
+| CANON-044 | In-session task scaffolding (Phase/Wave lists), reconciled a | adopted (suggested) | Conformance checker passed: } |
 | CANON-045 | Obelisk is the unified studio identity + auth plane (one stu | review |  |
-| CANON-046 | Canon weighting: tiers + autonomy-first conflict resolution  | review |  |
+| CANON-046 | Canon weighting: tiers + autonomy-first conflict resolution  | adopted (suggested) | Conformance checker passed: matrix integrity ok — no orphan rows, all tiers valid |
 | CANON-047 | Theme system + AI-verified human readability (no unreadable  | review |  |
 | CANON-048 | Dual-audience ecosystem: every surface built for Humans AND  | review |  |
 | CANON-049 | Continuous evolution: the studio + every project is never st | review |  |
