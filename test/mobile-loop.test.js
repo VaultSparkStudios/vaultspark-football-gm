@@ -140,3 +140,35 @@ test("mobile pressure stack elevates deadline window and stays useful without ur
   assert.equal(calmCards[0].kicker, "Franchise state");
   assert.equal(calmCards[0].tone, "positive");
 });
+test("mobile decision deck prioritizes a pending GM decision before generic pressure", () => {
+  const cards = buildMobileDecisionDeck({
+    dashboard: {
+      phase: "regular-season",
+      controlledTeamId: "BUF",
+      currentWeek: 10,
+      cap: { capSpace: 15_000_000 },
+      injuryReport: []
+    },
+    pendingDecision: {
+      id: "trade-deadline",
+      type: "TRADE_DEADLINE",
+      prompt: "Trade deadline closes soon. Buy, sell, or hold?",
+      options: [{ id: "buy" }, { id: "sell" }, { id: "hold" }]
+    }
+  });
+
+  assert.equal(cards[0].kicker, "GM decision");
+  assert.equal(cards[0].action, "advance-week");
+  assert.equal(cards[0].tone, "danger");
+  assert.match(cards[0].detail, /Trade deadline closes soon/);
+});
+
+test("mobile overlay refreshes pending GM decisions from the app shell", () => {
+  const appSource = fs.readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
+  const stateSource = fs.readFileSync(new URL("../public/lib/appState.js", import.meta.url), "utf8");
+
+  assert.match(stateSource, /mobilePendingDecision: null/);
+  assert.match(appSource, /api\("\/api\/gm-decision"\)/);
+  assert.match(appSource, /state\.mobilePendingDecision = data\?\.decisions\?\.\[0\] \|\| null/);
+  assert.match(appSource, /renderMobileOverlay\(state, advanceFromMobile\)/);
+});

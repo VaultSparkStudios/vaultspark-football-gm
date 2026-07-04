@@ -1,42 +1,43 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: f30398c38808 -->
-<!-- generated-at: 2026-07-04T08:03:46.517Z -->
+<!-- source-hash: bcf4c88db75a -->
+<!-- generated-at: 2026-07-04T08:46:55.482Z -->
 
 # LATEST_HANDOFF (compact)
 
-Where We Left Off — Session 37 Recovery Closeout
+Handoff Summary
 
-SESSION
-- Session 37 (recovery closeout of interrupted prior session).
+Session
+- Latest: Session 38 (2026-07-04). Continuous chain 22 through 38.
 
-SHIPPED
-- docs/AUDIT_2026-07-04_SESSION37.* generated (Session 36 queue confirmed exhausted).
-- buildMobilePressureStack() in public/lib/mobileLoop.js: surfaces owner mandate, fan pulse, cap pressure, injuries, deadline, headline, or calm-state pressure from existing source-of-truth.
-- Pressure stack rendered above mobile decision deck with theme tokens.
-- Pressure cards actionable: route to relevant tab, dispatch vsfgm:mobile-pressure.
-- Unit coverage added in test/mobile-loop.test.js.
+What Shipped (Session 38)
+- Generated docs/AUDIT_2026-07-04_SESSION38.* after confirming Session 37 queue exhausted.
+- Added state.mobilePendingDecision, passed into mobile decision deck.
+- Pending /api/gm-decision prompts now render as the first mobile GM decision card, before generic advance pressure.
+- syncMobileLoopOverlay() fetches /api/gm-decision in mobile regular-season mode and re-renders from source-of-truth.
+- Added regression coverage in test/mobile-loop.test.js.
 
-INTENT
-- Recover/checkpoint interrupted session, then continue full /goal /arc mission (start, audit, implement, closeout); exhaust genius list plus second-order candidates; commit and push direct to main.
+Verification (Session 38)
+- node --check on mobileLoop.js and app.js.
+- node --test test/mobile-loop.test.js — 9/9.
+- Default shards 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37).
+- build:pages, smoke:pages, ops doctor (no items), windows-hide, Wave guard, secrets audit, blocker preflight.
 
-NOW (top 3)
-1. Obtain real received-message receipt for football@playfranchisearchitect.com forwarding/copying.
-2. Rerun launch-evidence: node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json
-3. Verify live origin/routing proves playfranchisearchitect.com serves latest build after deployment.
+Current Intent
+- Complete full /goal /arc mission (start, audit, implement, closeout); exhaust genius list plus second-order candidates; commit and push direct to main.
 
-BLOCKERS (top 3)
-1. Launch/SPARKED locked pending email forwarding receipt (human-blocked).
-2. Live origin/routing evidence for playfranchisearchitect.com serving latest build not yet confirmed.
-3. Aggregate npm test wrapper timed out twice under harness; only direct-shard exit codes count as green evidence.
+Now Bucket (Top 3)
+- Obtain real received-message receipt for football@playfranchisearchitect.com forwarding/copying.
+- Rerun ops.mjs launch-evidence with --email-evidence receipt, output to audits/launch-evidence-<date>.json.
+- Verify live origin/routing proves playfranchisearchitect.com serves latest build after deployment.
 
-HUMAN-BLOCKED (age)
-- Email forwarding receipt for football@playfranchisearchitect.com: unresolved and carried as the sole launch blocker since Session 28 (~9 sessions).
+Blockers (Top 3)
+- Launch/SPARKED flip blocked: no email forwarding receipt for football@playfranchisearchitect.com.
+- Live origin/routing evidence for latest build on playfranchisearchitect.com not yet confirmed.
+- Cloudflare edge caches CSS (mitigated via content-hashed CSS filenames; verify hashed URL surfaces live).
 
-VERIFICATION STATE
-- node --check mobileLoop.js: pass.
-- node --test test/mobile-loop.test.js: 7/7.
-- Direct default shards: 280/280 (core 64, runtime 115, sim-contract 63, sim-realism 1, studio 37).
-- ops doctor --update-json: no items.
+Human-Blocked Items (with age)
+- Email forwarding receipt for football@playfranchisearchitect.com: open since Session 24 (2026-06-30), ~14 sessions.
+- Live domain routing/origin verification post-deploy: recurring since Session 22.
 
-NEXT SESSION
-- Secure email receipt, rerun launch-evidence, then verify live origin/routing before any SPARKED flip.
+Next Session
+- Get the email receipt, run launch-evidence, verify live routing, then flip Launch if evidence is clean.

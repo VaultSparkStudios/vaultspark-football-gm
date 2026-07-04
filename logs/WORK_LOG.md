@@ -1,5 +1,13 @@
 # Work Log
 
+## 2026-07-04 — Session 38: mobile GM decision-first closeout
+
+- Continued the requested `/goal /arc` mission after the recovered Session 37 checkpoint: startup gates, fresh live-code audit, implementation, verification, and closeout prep.
+- Generated `docs/AUDIT_2026-07-04_SESSION38.*` after confirming the Session 37 audit/cache were exhausted.
+- Shipped `mobile-gm-decision-first`: pending `/api/gm-decision` prompts now appear as the first mobile decision-deck card, so phone users see the live General Manager choice before generic Advance Week pressure.
+- Shipped second-order `mobile-gm-decision-refresh-affordance`: mobile mode fetches `/api/gm-decision` in regular season, stores the first pending decision in app state, and re-renders without duplicating backend decision logic.
+- Verification: `node --check public/lib/mobileLoop.js`; `node --check public/app.js`; focused mobile-loop 9/9; direct default shards 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37); Pages build/smoke; doctor no items; windows-hide; Wave guard; secrets audit; blocker preflight; genius cache check.
+- Launch truth unchanged: Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence remains green.
 ## 2026-07-02 — Session 30: deferred genius follow-through closeout
 
 - Ran the requested `/goal /arc` sequence from live repo evidence: pulled/rebased main first, completed startup preflight, rechecked the latest audit against code, shipped the three carried Session 29 deferrals, generated the innovation pack, and classified its single latest-audit follow-through candidate as completed by the live-code pass.

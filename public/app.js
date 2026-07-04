@@ -315,8 +315,21 @@ function syncMobileLoopOverlay() {
   overlay.classList.toggle("hidden", !active);
   const toggle = document.getElementById("mobileLoopToggle");
   if (toggle) toggle.checked = active;
+  const advanceFromMobile = () => document.getElementById("advanceWeekBtn")?.click();
   if (active) {
-    renderMobileOverlay(state, () => document.getElementById("advanceWeekBtn")?.click());
+    renderMobileOverlay(state, advanceFromMobile);
+    if (state.dashboard?.phase === "regular-season") {
+      api("/api/gm-decision")
+        .then((data) => {
+          state.mobilePendingDecision = data?.decisions?.[0] || null;
+          if (isMobileModeEnabled()) renderMobileOverlay(state, advanceFromMobile);
+        })
+        .catch(() => {
+          state.mobilePendingDecision = null;
+        });
+    } else {
+      state.mobilePendingDecision = null;
+    }
   }
 }
 

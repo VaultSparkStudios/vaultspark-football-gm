@@ -1,9 +1,28 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 30 closed at 978 / 1000 SIL v3.0. Last verified suite: 273/273 plus Playwright UI 9/9 and Pages build/smoke. Launch/SPARKED remains blocked only on verified on-domain email forwarding/copying evidence.
+Rolling status: Session 38 closed at 987 / 1000 SIL v3.0. Last verified suite: direct default shards 282/282 plus Pages build/smoke and doctor no items. Launch/SPARKED remains blocked only on verified on-domain email forwarding/copying evidence plus live-origin proof.
 <!-- rolling-status-end -->
 
+## 2026-07-04 — Session 38 Mobile GM Decision-First Closeout
+
+Score: 987 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap with direct default shards 282/282, focused mobile-loop 9/9, syntax checks, Pages build/smoke, and doctor no items. |
+| Creative Alignment | 96 | +1 because mobile now honors the core General Manager fantasy by surfacing a live pending decision before generic sim advancement. |
+| Momentum | 100 | Maintained cap; recovery was checkpointed first, then the next audit and second-order item were shipped in the same mission. |
+| Engagement | 100 | Maintained cap; the phone loop now starts with the highest-stakes unresolved choice when one exists. |
+| Process Quality | 100 | Maintained cap with evidence-derived audit artifacts, direct shard verification, and honest launch gating. |
+| Cross-Repo Coherence | 100 | Maintained cap by keeping all changes local and public-safe. |
+| Security Posture | 99 | Maintained; no new secrets, services, or variable-cost paths were introduced. |
+| Ecosystem Integration | 100 | Maintained; reused existing `/api/gm-decision` and desktop advance gate rather than duplicating logic. |
+| Capital Efficiency | 92 | Maintained; browser/static path remains cost-neutral. |
+| Automation Coverage | 100 | Maintained cap with new focused tests and existing protocol gates green. |
+
+Follow-up: verify `football@playfranchisearchitect.com` forwarding/copying with a real received-message receipt before any Launch/SPARKED flip.
 ## 2026-07-01 — Session 28 Launch Evidence + Tutorial Truth Closeout
 
 Score: 963 / 1000

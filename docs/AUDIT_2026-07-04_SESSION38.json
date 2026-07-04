@@ -1,0 +1,72 @@
+{
+  "generatedBy": "/audit skill v2 live-code",
+  "generatedAt": "2026-07-04",
+  "project": "franchise-architect-football",
+  "type": "game/public-product",
+  "totalRankedItems": 2,
+  "combinedPriority": 43.4,
+  "items": [
+    {
+      "rank": 1,
+      "tier": "fire",
+      "axis": "mobile-core-loop/decision-clarity",
+      "slug": "mobile-gm-decision-first",
+      "effortHours": 0.8,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 29.6,
+      "status": "shipped",
+      "why": "Desktop gates advance-week through pending GM decisions, but mobile mode rendered only dashboard/news-derived decision cards and could hide the live choice behind generic advance.",
+      "evidence": [
+        "public/lib/appState.js",
+        "public/lib/mobileLoop.js",
+        "public/app.js",
+        "test/mobile-loop.test.js"
+      ],
+      "verification": [
+        "node --check public/lib/mobileLoop.js",
+        "node --check public/app.js",
+        "node --test test/mobile-loop.test.js"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "second-order",
+      "axis": "feedback-loop/live-state-sync",
+      "slug": "mobile-gm-decision-refresh-affordance",
+      "effortHours": 0.4,
+      "impact": 6,
+      "innovation": 4,
+      "priority": 13.8,
+      "status": "shipped",
+      "why": "A decision-first card needs live pending-decision state, not a stale one-time render.",
+      "evidence": [
+        "public/app.js",
+        "public/lib/appState.js",
+        "test/mobile-loop.test.js"
+      ],
+      "verification": [
+        "node --check public/app.js",
+        "node --test test/mobile-loop.test.js"
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "slug": "sparked-flip",
+      "reason": "Still blocked on real received-message proof for football@playfranchisearchitect.com forwarding/copying; no fabricated launch evidence used."
+    },
+    {
+      "slug": "new-backend-decision-engine",
+      "reason": "/api/gm-decision already exists and desktop already trusts it; duplicating the engine would add drift."
+    }
+  ],
+  "gameLoopReview": {
+    "loopTightness": 10,
+    "progressionCurve": 9,
+    "sessionEngagement": 10,
+    "retentionHooks": 9,
+    "soulFidelity": 10,
+    "finding": "Mobile mode now makes the highest-stakes unresolved GM choice first-class before advancing the season."
+  }
+}

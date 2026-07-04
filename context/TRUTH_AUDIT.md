@@ -2,7 +2,7 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-07-02
+Last reviewed: 2026-07-04
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 2026-05-27 note:
@@ -181,4 +181,10 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Navigation truth: pressure cards are real buttons that route to the relevant tab and dispatch `vsfgm:mobile-pressure`; they are not passive decoration.
 - Integrity truth: `docs/AUDIT_2026-07-04_SESSION37.json` parses, no changed NDJSON exists, and `~/.claude.json` parses cleanly when checked outside the Windows sandbox.
 - Verification truth: direct default shards passed 280/280 (core 64, runtime 115, sim-contract 63, sim-realism 1, studio 37), focused mobile-loop passed 7/7, syntax check passed, and doctor returned no items. Aggregate `npm test` timed out twice under the harness before printing a final summary and is not counted as green.
+- Launch truth unchanged: Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof and current live origin/routing evidence remains green.
+## 2026-07-04 — Session 38 truth updates
+
+- Mobile decision truth repair: mobile mode now fetches the same `/api/gm-decision` source used by the desktop advance gate and renders the first pending decision as the first decision-deck card.
+- State truth: `state.mobilePendingDecision` is the single app-shell handoff into `buildMobileDecisionDeck()`; no parallel mobile-only decision engine was invented.
+- Verification truth: current tree passed direct default shards 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37), focused mobile-loop 9/9, syntax checks for `public/lib/mobileLoop.js` and `public/app.js`, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, genius cache check, and doctor no items.
 - Launch truth unchanged: Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof and current live origin/routing evidence remains green.

@@ -1,3 +1,31 @@
+## Where We Left Off — 2026-07-04 Session 38 Closeout
+
+The `/goal /arc` mission continued after the recovered Session 37 checkpoint and completed startup, live audit, implementation, validation, and closeout prep.
+
+What changed:
+- Generated `docs/AUDIT_2026-07-04_SESSION38.*` after confirming the Session 37 queue was exhausted.
+- Added `state.mobilePendingDecision` and passed it into the mobile decision deck.
+- Made pending `/api/gm-decision` prompts render as the first mobile General Manager decision card, before generic advance pressure.
+- Updated `syncMobileLoopOverlay()` to fetch `/api/gm-decision` when mobile mode is active in regular season and re-render from the same source-of-truth state.
+- Added focused regression coverage in `test/mobile-loop.test.js` for the decision-first card and app-shell refresh wiring.
+
+Verification passed:
+- `node --check public/lib/mobileLoop.js`
+- `node --check public/app.js`
+- `node --test test/mobile-loop.test.js` — 9/9
+- Direct default shards — 282/282: core 64/64, runtime 117/117, sim-contract 63/63, sim-realism 1/1, studio 37/37
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `node scripts/ops.mjs doctor --update-json` — no items
+- windows-hide, Wave guard, secrets audit, blocker preflight, genius cache check
+
+Remaining blocker:
+- Do not flip Launch/SPARKED until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence proves `playfranchisearchitect.com` serves the latest build.
+
+Next best work:
+- Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
+
+Session Intent: Recover the interrupted prior session, checkpoint it cleanly, then complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
 ## Where We Left Off — 2026-07-04 Session 37 Recovery Closeout
 
 The previous session cut off after implementing Session 37 but before canonical closeout. Recovery verified the uncommitted work, completed write-back, and checkpointed it as recovered Session 37 work.

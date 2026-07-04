@@ -446,3 +446,15 @@ Source: `docs/AUDIT_2026-07-04_SESSION37.md`.
 | sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt despite live routesOk=true |
 
 **Verification:** direct default shards 280/280 (core 64, runtime 115, sim-contract 63, sim-realism 1, studio 37); focused mobile-loop 7/7; `node --check public/lib/mobileLoop.js`; doctor returned no items. The aggregate `npm test` wrapper timed out twice and is not counted as green.
+## Session 38 — Mobile GM Decision First (2026-07-04)
+
+| Item | Status |
+|------|--------|
+| Generate a fresh live-code audit after Session 37 recovery closeout | Done |
+| Surface pending `/api/gm-decision` prompts as the first mobile decision card | Done |
+| Refresh mobile pending-decision state while mobile mode is active in regular season | Done |
+| Add focused mobile-loop/app-shell regression coverage | Done |
+
+**Verification:** direct default shards 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37), focused mobile-loop 9/9, `node --check public/lib/mobileLoop.js`, `node --check public/app.js`, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight.
+
+**Still blocked:** Launch/SPARKED remains evidence-gated until `football@playfranchisearchitect.com` forwarding/copying is verified with a real received-message receipt and current live origin/routing proves `playfranchisearchitect.com` serves the latest build.

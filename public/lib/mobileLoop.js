@@ -67,7 +67,8 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
   });
   const decisionDeck = buildMobileDecisionDeck({
     dashboard: d,
-    newsRows: state.newsRows || []
+    newsRows: state.newsRows || [],
+    pendingDecision: state.mobilePendingDecision || null
   });
 
   overlay.innerHTML = `
@@ -194,6 +195,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
   const newsHead = newsRows[0]?.headline || "";
   const cards = [];
 
+
   if (expectation.ultimatum?.active) {
     cards.push({
       kicker: "Owner mandate",
@@ -279,7 +281,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
   return cards.slice(0, 4);
 }
 
-export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [] } = {}) {
+export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [], pendingDecision = null } = {}) {
   const controlledTeamId = dashboard.controlledTeamId;
   const phase = String(dashboard.phase || "").toLowerCase();
   const capSpace = dashboard.cap?.capSpace ?? 0;
@@ -291,6 +293,18 @@ export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [] } = {}) 
   const newsHead = newsRows[0]?.headline || "";
 
   const cards = [];
+
+  if (pendingDecision?.id) {
+    const optionCount = Array.isArray(pendingDecision.options) ? pendingDecision.options.length : 0;
+    cards.push({
+      kicker: "GM decision",
+      title: pendingDecision.label || pendingDecision.type || "Decision required",
+      detail: pendingDecision.prompt || `${optionCount || "Multiple"} option${optionCount === 1 ? "" : "s"} waiting before you advance.`,
+      action: "advance-week",
+      targetTab: null,
+      tone: "danger"
+    });
+  }
   if (draftActive) {
     cards.push({
       kicker: "Draft room",

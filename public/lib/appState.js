@@ -8,6 +8,7 @@ export const state = {
   statLeaders: null,
   brandOverride: null,
   dashboard: null,
+  mobilePendingDecision: null,
   roster: [],
   freeAgents: [],
   contractRoster: [],

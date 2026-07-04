@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 37 recovery closeout shipped mobile pressure stack: phone users now see source-derived owner, fan, cap, injury, deadline, headline, or calm-state pressure above the mobile decision deck, with pressure cards routing to relevant tabs.",
+  "currentFocus": "Session 38 shipped mobile GM decision-first flow: phone users now see the live pending /api/gm-decision prompt before generic advance pressure, and mobile mode refreshes that state from the existing decision source.",
   "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
@@ -18,17 +18,17 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 280,
-    "pass": 280,
+    "totalTests": 282,
+    "pass": 282,
     "fail": 0,
     "lastRun": "2026-07-04",
     "newTestFiles": [],
     "newTestCount": 2,
-    "coverage": "Session 37 recovery verified final tree with direct default shards 280/280 (core 64/64, runtime 115/115, sim-contract 63/63, sim-realism 1/1, studio 37/37), focused mobile-loop 7/7, node --check public/lib/mobileLoop.js, and doctor no items. Aggregate npm test wrapper timed out twice and is not counted as green.",
-    "uiSuiteNote": "UI suite was not rerun during Session 37 recovery; latest verified UI suite remains Session 36 npm run test:ui 17/17."
+    "coverage": "Session 38 verified final tree with direct default shards 282/282 (core 64/64, runtime 117/117, sim-contract 63/63, sim-realism 1/1, studio 37/37), focused mobile-loop 9/9, node --check public/lib/mobileLoop.js, node --check public/app.js, Pages build/smoke, and doctor no items.",
+    "uiSuiteNote": "UI suite was not rerun during Session 38; latest verified UI suite remains Session 36 npm run test:ui 17/17."
   },
-  "testsPassing": 280,
-  "testsTotal": 280,
+  "testsPassing": 282,
+  "testsTotal": 282,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -67,10 +67,10 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 986,
+  "silScore": 987,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 95,
+    "creativeAlignment": 96,
     "momentum": 100,
     "engagement": 100,
     "processQuality": 100,
@@ -80,22 +80,23 @@
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 37,
+  "currentSession": 38,
   "lastAgent": "codex",
-  "sessionMode": "builder",
+  "sessionMode": "founder",
   "lastVerification": {
     "passed": [
-      "direct default shards 280/280 (core 64, runtime 115, sim-contract 63, sim-realism 1, studio 37)",
-      "node --test test/mobile-loop.test.js 7/7",
+      "direct default shards 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37)",
+      "node --test test/mobile-loop.test.js 9/9",
       "node --check public/lib/mobileLoop.js",
+      "node --check public/app.js",
+      "npm run build:pages",
+      "npm run smoke:pages",
       "node scripts/ops.mjs doctor --update-json returned no items",
-      "docs/AUDIT_2026-07-04_SESSION37.json parsed cleanly",
-      "~/.claude.json parsed cleanly outside sandbox"
+      "docs/AUDIT_2026-07-04_SESSION38.json parsed cleanly",
+      "windows-hide, Wave guard, secrets audit, blocker preflight, genius cache check"
     ],
     "date": "2026-07-04",
-    "timedOut": [
-      "npm test aggregate wrapper timed out twice before final summary"
-    ],
+    "timedOut": [],
     "failed": []
   },
   "silScoreV3MigratedAt": "2026-04-21",
@@ -106,7 +107,7 @@
   "modelPlanModeSlash": "/model opusplan",
   "planModeDetected": "missing",
   "planModeCheckedAt": "2026-07-01T05:54:57.303Z",
-  "sessionModeAutoShiftedAt": "2026-07-03T22:22:03.852Z",
+  "sessionModeAutoShiftedAt": "2026-07-04T08:08:36.928Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-05-22",
