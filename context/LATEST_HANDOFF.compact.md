@@ -1,44 +1,43 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: bcf4c88db75a -->
-<!-- generated-at: 2026-07-04T18:16:19.555Z -->
+<!-- source-hash: 49110be8344e -->
+<!-- generated-at: 2026-07-04T19:02:18.428Z -->
 
 # LATEST_HANDOFF (compact)
 
-Handoff Summary — Session 38 (2026-07-04)
+SESSION 40 HANDOFF SUMMARY
 
 Session
-- Latest: Session 38, project Franchise Architect: Football (playfranchisearchitect.com)
+- Session 40, 2026-07-04. Mission: /goal /arc through start, audit, implement, closeout, push to main.
 
-Shipped (Session 38)
-- Generated docs/AUDIT_2026-07-04_SESSION38.* (Session 37 queue confirmed exhausted).
-- Added state.mobilePendingDecision; pending /api/gm-decision prompts now render as the first mobile GM decision card, before generic advance pressure.
-- syncMobileLoopOverlay() fetches /api/gm-decision in mobile regular-season mode and re-renders from source-of-truth state.
-- Added regression coverage in test/mobile-loop.test.js for decision-first card and app-shell refresh wiring.
+Shipped
+- Generated docs/AUDIT_2026-07-04_SESSION40 after confirming S39 queue exhausted.
+- Mobile decision snapshot key in public/app.js: async /api/gm-decision results ignored if phase/year/week/team changed before response returns.
+- Re-render mobile deck after failed decision refresh clears state.mobilePendingDecision (prevents stale decision cards).
+- Second-order: mobile overlay data attributes/classes now use _escAttr() for quote-safe escaping in public/lib/mobileLoop.js.
+- Regenerated docs/INNOVATION_PACK.md and .cache/genius-list.json; status exhausted, 0 open items.
+
+Verification (all passed)
+- node --check on mobileLoop.js and app.js.
+- node --test test/mobile-loop.test.js 12/12.
+- npm test 285/285; npm run test:ui 17/17.
+- build:pages, smoke:pages; ops doctor no items.
+- windows-hide, Wave guard, secrets audit, blocker preflight, genius cache exhausted.
 
 Current Intent
-- Complete durable /goal /arc mission: recover interrupted session, checkpoint, run start/audit/implement/closeout, exhaust genius + second-order candidates, commit and push direct to main.
+- Complete full /goal /arc; exhaust genius list plus second-order candidates; commit and push direct to main. Genius queue currently exhausted.
 
 Now Bucket (top items)
-- Obtain real received-message receipt for football@playfranchisearchitect.com forwarding/copying.
-- Rerun: node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json
-- Verify live origin/routing proves playfranchisearchitect.com serves latest build after deployment.
+- Obtain email receipt for football@playfranchisearchitect.com forwarding/copying.
+- Rerun ops launch-evidence with --email-evidence receipt to audits/launch-evidence-<date>.json.
+- Verify live origin/routing proves playfranchisearchitect.com serves latest build after deploy.
 
-Blockers (top items)
-- Launch/SPARKED flip blocked: no email-forwarding receipt for football@playfranchisearchitect.com.
-- Live origin/routing evidence not yet confirmed for latest build on playfranchisearchitect.com.
-- No new open genius/audit items; queue exhausted pending external evidence.
+Blockers (top)
+- Launch/SPARKED flip blocked: no received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio ops.
+- Live origin/routing evidence needed to confirm apex serves latest build.
+- Genius/innovation queue exhausted; no coding work pending until new audit.
 
 Human-Blocked Items (with age)
-- Email forwarding receipt for football@playfranchisearchitect.com: open/unverified since Session 28 (2026-07-01), ~10 sessions.
-- Live domain build/routing verification: gated on same launch evidence, unresolved since Session 25 rebrand (2026-07-01).
+- Email forwarding receipt for football@playfranchisearchitect.com: open since Session 28 (2026-07-01), ~12 sessions unresolved. Sole gate on launch.
 
-Verification (Session 38, passed)
-- node --check on mobileLoop.js and app.js
-- node --test test/mobile-loop.test.js — 9/9
-- Default shards — 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37)
-- npm run build:pages; npm run smoke:pages
-- node scripts/ops.mjs doctor --update-json — no items
-- windows-hide, Wave guard, secrets audit, blocker preflight, genius cache check
-
-Next Session
-- Secure the email receipt, rerun launch-evidence, verify live routing, then flip Launch only on real evidence.
+Next Session Pointer
+- Get the email receipt, rerun launch-evidence, verify live routing; otherwise run fresh /audit since genius queue is exhausted.

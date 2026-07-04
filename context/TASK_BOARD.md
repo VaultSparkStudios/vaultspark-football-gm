@@ -475,3 +475,21 @@ Source: `docs/AUDIT_2026-07-04_SESSION39.md`.
 **Verification:** `node --check public/lib/mobileLoop.js`, `node --check public/app.js`, focused `node --test test/mobile-loop.test.js` 10/10, default `npm test` 283/283, Playwright UI 17/17, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight, genius cache exhausted 0 open.
 
 **Still blocked:** Launch/SPARKED remains evidence-gated until `football@playfranchisearchitect.com` forwarding/copying is verified with a real received-message receipt and current live origin/routing proves `playfranchisearchitect.com` serves the latest build.
+
+## Session 40 — Mobile GM Decision Truth Guard
+
+Source: `docs/AUDIT_2026-07-04_SESSION40.md`.
+
+| Item | Status |
+|------|--------|
+| Generate a fresh live-code audit after confirming the Session 39 queue was exhausted | Done |
+| Guard mobile `/api/gm-decision` refreshes with a phase/year/week/team snapshot so stale async results cannot repaint the current mobile deck | Done |
+| Clear and repaint stale pending mobile decisions when the decision refresh fails | Done |
+| Second-order innovation: use quote-safe `_escAttr()` for generated mobile overlay data attributes/classes | Done |
+| latest-audit-follow-through innovation candidate | Done |
+| sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt and current live-origin/routing evidence |
+
+**Verification:** `node --check public/lib/mobileLoop.js`, `node --check public/app.js`, focused `node --test test/mobile-loop.test.js` 12/12, default `npm test` 285/285, Playwright UI 17/17, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight, genius cache exhausted 0 open.
+
+**Still blocked:** Launch/SPARKED remains evidence-gated until `football@playfranchisearchitect.com` forwarding/copying is verified with a real received-message receipt and current live origin/routing proves `playfranchisearchitect.com` serves the latest build.
+

@@ -102,7 +102,7 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
 
       <div class="ml-pressure-stack" aria-label="Franchise pressure stack">
         ${pressureStack.map((item, index) => `
-          <button class="ml-pressure-card ${_esc(item.tone)}" data-mobile-pressure-index="${index}" data-target-tab="${_esc(item.targetTab || "")}">
+          <button class="ml-pressure-card ${_escAttr(item.tone)}" data-mobile-pressure-index="${index}" data-target-tab="${_escAttr(item.targetTab || "")}">
             <span class="ml-pressure-kicker">${_esc(item.kicker)}</span>
             <strong>${_esc(item.title)}</strong>
             <span>${_esc(item.detail)}</span>
@@ -395,7 +395,7 @@ function renderDecisionCard(card, index) {
   `;
   if (card.action === "choose-gm-decision" && card.choices?.length) {
     return `
-      <article class="ml-decision-card ${_esc(card.tone)} ml-decision-card-with-options" data-action="${_esc(card.action)}">
+      <article class="ml-decision-card ${_escAttr(card.tone)} ml-decision-card-with-options" data-action="${_escAttr(card.action)}">
         ${common}
         <div class="ml-decision-options" aria-label="GM decision options">
           ${card.choices.map((choice, choiceIndex) => `
@@ -409,7 +409,7 @@ function renderDecisionCard(card, index) {
     `;
   }
   return `
-    <button class="ml-decision-card ${_esc(card.tone)}" data-mobile-decision-index="${index}" data-action="${_esc(card.action)}" data-target-tab="${_esc(card.targetTab || "")}">
+    <button class="ml-decision-card ${_escAttr(card.tone)}" data-mobile-decision-index="${index}" data-action="${_escAttr(card.action)}" data-target-tab="${_escAttr(card.targetTab || "")}">
       ${common}
     </button>
   `;
@@ -417,6 +417,10 @@ function renderDecisionCard(card, index) {
 
 function _esc(s) {
   return String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function _escAttr(s) {
+  return _esc(s).replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
 function _fmtMoney(value) {

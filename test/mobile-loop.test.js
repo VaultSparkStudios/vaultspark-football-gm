@@ -170,9 +170,18 @@ test("mobile overlay refreshes pending GM decisions from the app shell", () => {
   const stateSource = fs.readFileSync(new URL("../public/lib/appState.js", import.meta.url), "utf8");
 
   assert.match(stateSource, /mobilePendingDecision: null/);
+  assert.match(appSource, /function mobileDecisionSnapshotKey\(\)/);
+  assert.match(appSource, /const decisionSnapshotKey = mobileDecisionSnapshotKey\(\)/);
   assert.match(appSource, /api\("\/api\/gm-decision"\)/);
+  assert.match(appSource, /decisionSnapshotKey !== mobileDecisionSnapshotKey\(\)/);
   assert.match(appSource, /state\.mobilePendingDecision = data\?\.decisions\?\.\[0\] \|\| null/);
   assert.match(appSource, /renderMobileOverlay\(state, advanceFromMobile\)/);
+});
+
+test("mobile overlay clears stale pending decisions when refresh fails", () => {
+  const appSource = fs.readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
+
+  assert.match(appSource, /\.catch\(\(\) => \{\s*if \(decisionSnapshotKey !== mobileDecisionSnapshotKey\(\)\) return;\s*state\.mobilePendingDecision = null;\s*if \(isMobileModeEnabled\(\)\) renderMobileOverlay\(state, advanceFromMobile\);/s);
 });
 
 test("mobile GM decision choices are rendered and submitted through the app shell", () => {
@@ -184,4 +193,14 @@ test("mobile GM decision choices are rendered and submitted through the app shel
   assert.match(appSource, /submitMobileGmDecisionChoice/);
   assert.match(appSource, /gmDecisionChoice: choice/);
   assert.match(appSource, /Recording mobile GM decision/);
+});
+
+
+test("mobile overlay uses attribute escaping for generated data attributes", () => {
+  const mobileSource = fs.readFileSync(new URL("../public/lib/mobileLoop.js", import.meta.url), "utf8");
+
+  assert.match(mobileSource, /function _escAttr\(s\)/);
+  assert.match(mobileSource, /replace\(\/"\/g, "&quot;"\)\.replace\(\/'\/g, "&#39;"\)/);
+  assert.match(mobileSource, /data-target-tab="\$\{_escAttr\(item\.targetTab/);
+  assert.match(mobileSource, /data-action="\$\{_escAttr\(card\.action\)\}"/);
 });

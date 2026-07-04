@@ -1,0 +1,50 @@
+{
+  "generatedBy": "/audit skill v2 live-code",
+  "generatedAt": "2026-07-04",
+  "project": "franchise-architect-football",
+  "type": "game/public-product",
+  "totalRankedItems": 1,
+  "combinedPriority": 36.8,
+  "items": [
+    {
+      "rank": 1,
+      "tier": "fire",
+      "axis": "mobile-core-loop/source-of-truth-honesty",
+      "slug": "mobile-gm-decision-snapshot-guard",
+      "effortHours": 0.7,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 36.8,
+      "status": "shipped",
+      "why": "The mobile overlay fetched /api/gm-decision asynchronously after rendering. If the request failed, the app cleared state without repainting; if the week/team/phase changed before the request returned, an older decision could repaint the current mobile deck.",
+      "evidence": [
+        "public/app.js syncMobileLoopOverlay()",
+        "public/lib/mobileLoop.js buildMobileDecisionDeck()",
+        "test/mobile-loop.test.js"
+      ],
+      "verification": [
+        "node --check public/lib/mobileLoop.js",
+        "node --check public/app.js",
+        "node --test test/mobile-loop.test.js 12/12"
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "slug": "duplicate-mobile-decision-cache",
+      "reason": "Rejected because state.mobilePendingDecision and /api/gm-decision already provide the source-of-truth path; a second cache would make observability less honest."
+    },
+    {
+      "slug": "sparked-flip",
+      "reason": "Still blocked on real received-message proof for football@playfranchisearchitect.com forwarding/copying and current live-origin/routing evidence; no fabricated launch evidence used."
+    }
+  ],
+  "gameLoopReview": {
+    "loopTightness": 10,
+    "progressionCurve": 9,
+    "sessionEngagement": 10,
+    "retentionHooks": 9,
+    "soulFidelity": 10,
+    "finding": "The mobile loop now protects pressure -> choice -> consequence from stale asynchronous decision state, so a phone user never sees an old General Manager call as the current one."
+  }
+}

@@ -1,8 +1,6 @@
 # Self-Improvement Loop
 
-<!-- rolling-status-start -->
-Rolling status: Session 38 closed at 987 / 1000 SIL v3.0. Last verified suite: direct default shards 282/282 plus Pages build/smoke and doctor no items. Launch/SPARKED remains blocked only on verified on-domain email forwarding/copying evidence plus live-origin proof.
-<!-- rolling-status-end -->
+<!-- rolling-status-start -->`nRolling status: Session 40 closed at 990 / 1000 SIL v3.0. Last focused verification: mobile-loop 12/12 plus app/mobile syntax checks; full closeout validation runs before push. Launch/SPARKED remains blocked only on verified on-domain email forwarding/copying evidence plus live-origin proof.`n<!-- rolling-status-end -->
 
 ## 2026-07-04 — Session 38 Mobile GM Decision-First Closeout
 
@@ -459,5 +457,26 @@ Category scores:
 | Ecosystem Integration | 100 | Maintained cap; launch truth remains aligned across audit, task board, status, and evidence gates. |
 | Capital Efficiency | 92 | Unchanged; static-host-safe/browser-only work with no new paid service or variable runtime cost. |
 | Automation Coverage | 100 | Maintained cap; focused mobile-loop coverage now guards inline choice rendering and app-shell submission. |
+
+Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.
+
+
+## 2026-07-04 — Session 40 Mobile GM Decision Truth Guard
+
+Score: 990 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap; focused mobile-loop coverage now passes 12/12 with syntax checks on both touched browser modules. |
+| Creative Alignment | 98 | +1 because the mobile General Manager desk now refuses stale decisions and keeps the phone-first choice loop honest to the current franchise state. |
+| Momentum | 100 | Maintained cap; fresh live audit generated, implemented, second-order candidate shipped, and cache exhausted in the same arc. |
+| Engagement | 100 | Maintained cap; mobile users keep direct decision agency without ghost cards after network/runtime churn. |
+| Process Quality | 100 | Maintained cap; rejected duplicate cache/backend work and SPARKED flip on evidence while fixing source-of-truth drift directly. |
+| Cross-Repo Coherence | 100 | Maintained cap; no sibling tree edits. |
+| Security Posture | 100 | +1 for adding quote-safe attribute escaping to the generated mobile overlay attribute surface. |
+| Ecosystem Integration | 100 | Maintained cap; launch truth remains aligned across audit, task board, status, and evidence gates. |
+| Capital Efficiency | 92 | Unchanged; static-host-safe/browser-only work with no new paid service or variable runtime cost. |
+| Automation Coverage | 100 | Maintained cap; focused tests now guard stale async decision refresh and attribute escaping. |
 
 Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.

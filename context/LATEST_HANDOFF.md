@@ -1,3 +1,32 @@
+## Where We Left Off — 2026-07-04 Session 40 Closeout
+
+The `/goal /arc` mission continued from a clean Session 39 closeout and completed startup, live audit, implementation, second-order innovation follow-through, validation prep, and closeout write-back.
+
+What changed:
+- Generated `docs/AUDIT_2026-07-04_SESSION40.*` after confirming the Session 39 queue was exhausted.
+- Added a mobile decision snapshot key in `public/app.js` so asynchronous `/api/gm-decision` results are ignored if phase/year/week/team changed before the response returns.
+- Re-rendered the mobile deck after a failed decision refresh clears `state.mobilePendingDecision`, preventing stale decision cards from lingering.
+- Shipped second-order mobile overlay hardening: generated data attributes/classes now use `_escAttr()` for quote-safe escaping in `public/lib/mobileLoop.js`.
+- Regenerated `docs/INNOVATION_PACK.md` and `.cache/genius-list.json`; latest audit status is exhausted with 0 open items.
+
+Verification passed:
+- `node --check public/lib/mobileLoop.js`
+- `node --check public/app.js`
+- `node --test test/mobile-loop.test.js` — 12/12
+- `npm test` — 285/285
+- `npm run test:ui` — 17/17
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `node scripts/ops.mjs doctor --update-json` — no items
+- windows-hide, Wave guard, secrets audit, blocker preflight, genius cache exhausted 0 open
+
+Remaining blocker:
+- Do not flip Launch/SPARKED until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence proves `playfranchisearchitect.com` serves the latest build.
+
+Next best work:
+- Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
+
+Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
 ## Where We Left Off — 2026-07-04 Session 39 Closeout
 
 The `/goal /arc` mission continued from a clean Session 38 closeout and completed startup, live audit, implementation, second-order innovation follow-through, validation, and closeout prep.
@@ -753,3 +782,6 @@ Remaining public-safe blocker:
 ## Session 23 final live-domain evidence
 
 The follow-up Pages artifact for `3c3e795` contains the slug-prefixed route files, confirmed by listing `artifact.tar`. After the successful Pages deploy, live custom-domain route smoke still returned 404/fallback for the new `/vaultspark-football-gm/*` compliance routes. Treat the remaining launch blocker as custom-domain routing/certificate state, not missing repo files.
+
+
+

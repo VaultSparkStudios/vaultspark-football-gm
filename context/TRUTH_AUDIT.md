@@ -188,3 +188,10 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - State truth: `state.mobilePendingDecision` is the single app-shell handoff into `buildMobileDecisionDeck()`; no parallel mobile-only decision engine was invented.
 - Verification truth: current tree passed direct default shards 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37), focused mobile-loop 9/9, syntax checks for `public/lib/mobileLoop.js` and `public/app.js`, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, genius cache check, and doctor no items.
 - Launch truth unchanged: Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof and current live origin/routing evidence remains green.
+
+## 2026-07-04 — Session 40 Truth Check
+
+- Mobile GM decision overlay truth improved: `/api/gm-decision` async results are now ignored if the dashboard phase/year/week/team snapshot changed before the response returns.
+- Failed mobile decision refreshes now clear stale `state.mobilePendingDecision` and repaint the mobile deck, avoiding ghost decision cards.
+- Generated mobile overlay attributes/classes now use quote-safe `_escAttr()` rather than text-only escaping.
+- Launch/SPARKED remains blocked on real `football@playfranchisearchitect.com` forwarding/copying receipt plus current live-origin/routing evidence; no launch readiness was force-greened.
