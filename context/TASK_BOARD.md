@@ -433,3 +433,16 @@ Source: `docs/AUDIT_2026-07-04_SESSION36.md`.
 | sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt despite live routesOk=true |
 
 **Verification:** default `npm test` 278/278; Playwright UI 17/17; focused browser wiring 8/8; focused theme 8/8; Pages build/smoke; genius cache exhausted 0 open; windows-hide; Wave guard; secrets audit; blocker preflight.
+
+## Session 37 — Mobile Pressure Stack Recovery Closeout
+
+Source: `docs/AUDIT_2026-07-04_SESSION37.md`.
+
+| Item | Status |
+|------|--------|
+| mobile-pressure-stack — mobile mode surfaces source-derived owner, fan, cap, injury, deadline, headline, or calm-state pressure above the decision deck | Done |
+| mobile-pressure-navigation-affordance — pressure cards are buttons that route to the relevant tab and emit `vsfgm:mobile-pressure` for future telemetry/tests | Done |
+| latest-audit-follow-through | Rejected on evidence — Session 36 audit/cache are exhausted |
+| sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt despite live routesOk=true |
+
+**Verification:** direct default shards 280/280 (core 64, runtime 115, sim-contract 63, sim-realism 1, studio 37); focused mobile-loop 7/7; `node --check public/lib/mobileLoop.js`; doctor returned no items. The aggregate `npm test` wrapper timed out twice and is not counted as green.

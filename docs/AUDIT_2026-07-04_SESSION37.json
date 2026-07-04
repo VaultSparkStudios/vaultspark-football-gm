@@ -1,0 +1,68 @@
+{
+  "generatedBy": "/audit skill v2 live-code",
+  "generatedAt": "2026-07-04",
+  "project": "franchise-architect-football",
+  "type": "game/public-product",
+  "totalRankedItems": 2,
+  "combinedPriority": 46.2,
+  "items": [
+    {
+      "rank": 1,
+      "tier": "fire",
+      "axis": "mobile-core-loop/engagement",
+      "slug": "mobile-pressure-stack",
+      "effortHours": 0.9,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 31.1,
+      "status": "shipped",
+      "why": "Mobile mode had fast actions but did not compress existing owner, fan, cap, injury, and deadline source-of-truth signals into the narrow-screen daily decision loop.",
+      "evidence": [
+        "public/lib/mobileLoop.js",
+        "public/styles.css",
+        "test/mobile-loop.test.js"
+      ],
+      "verification": [
+        "node --check public/lib/mobileLoop.js",
+        "node --test test/mobile-loop.test.js"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "second-order",
+      "axis": "feedback-loop/navigation",
+      "slug": "mobile-pressure-navigation-affordance",
+      "effortHours": 0.4,
+      "impact": 6,
+      "innovation": 5,
+      "priority": 15.1,
+      "status": "shipped",
+      "why": "A passive pressure readout would add information without action. Pressure cards now route to the relevant tab and emit a typed event for future telemetry/tests.",
+      "evidence": [
+        "public/lib/mobileLoop.js",
+        "test/mobile-loop.test.js"
+      ],
+      "verification": [
+        "node --test test/mobile-loop.test.js"
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "slug": "sparked-flip",
+      "reason": "Still blocked on real received-message proof for football@playfranchisearchitect.com forwarding/copying; no fabricated launch evidence used."
+    },
+    {
+      "slug": "latest-audit-follow-through",
+      "reason": "Session 36 cache and audit execution log are exhausted; no reopened source item found."
+    }
+  ],
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progressionCurve": 9,
+    "sessionEngagement": 10,
+    "retentionHooks": 9,
+    "soulFidelity": 9,
+    "finding": "Mobile mode is the highest-leverage session-return surface; pressure must be immediately legible and actionable."
+  }
+}

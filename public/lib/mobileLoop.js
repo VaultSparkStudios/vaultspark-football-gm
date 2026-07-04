@@ -61,6 +61,10 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
 
   // Injury count
   const injuredCount = (d.injuryReport || []).filter((e) => e.teamId === d.controlledTeamId).length;
+  const pressureStack = buildMobilePressureStack({
+    dashboard: d,
+    newsRows: state.newsRows || []
+  });
   const decisionDeck = buildMobileDecisionDeck({
     dashboard: d,
     newsRows: state.newsRows || []
@@ -94,6 +98,16 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
       </div>
 
       ${needs ? `<div class="ml-needs"><strong>Roster Needs:</strong> ${_esc(needs)}</div>` : ""}
+
+      <div class="ml-pressure-stack" aria-label="Franchise pressure stack">
+        ${pressureStack.map((item, index) => `
+          <button class="ml-pressure-card ${_esc(item.tone)}" data-mobile-pressure-index="${index}" data-target-tab="${_esc(item.targetTab || "")}">
+            <span class="ml-pressure-kicker">${_esc(item.kicker)}</span>
+            <strong>${_esc(item.title)}</strong>
+            <span>${_esc(item.detail)}</span>
+          </button>
+        `).join("")}
+      </div>
 
       <div class="ml-decision-deck" aria-label="General Manager decision deck">
         ${decisionDeck.map((card, index) => `
@@ -133,6 +147,18 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
     });
   });
 
+  overlay.querySelectorAll("[data-mobile-pressure-index]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = Number(btn.dataset.mobilePressureIndex || 0);
+      const pressure = pressureStack[index];
+      if (!pressure) return;
+      if (pressure.targetTab) {
+        document.querySelector(`[data-tab="${pressure.targetTab}"]`)?.click();
+      }
+      overlay.dispatchEvent(new CustomEvent("vsfgm:mobile-pressure", { detail: pressure }));
+    });
+  });
+
   // Exit mobile mode to full view
   document.getElementById("mlFullViewBtn")?.addEventListener("click", () => {
     setMobileModeEnabled(false);
@@ -154,6 +180,104 @@ export function initMobileLoop(state, onAdvanceWeek) {
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
+
+export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {}) {
+  const controlledTeamId = dashboard.controlledTeamId;
+  const team = dashboard.controlledTeam || {};
+  const expectation = team.owner?.expectation || {};
+  const fan = dashboard.fanSentiment || {};
+  const capSpace = dashboard.cap?.capSpace ?? null;
+  const injuries = (dashboard.injuryReport || []).filter((entry) => entry.teamId === controlledTeamId);
+  const week = Number(dashboard.currentWeek || 0);
+  const phase = String(dashboard.phase || "").toLowerCase();
+  const rosterNeeds = (dashboard.rosterNeeds || []).map((need) => need.pos || need.position || need).filter(Boolean);
+  const newsHead = newsRows[0]?.headline || "";
+  const cards = [];
+
+  if (expectation.ultimatum?.active) {
+    cards.push({
+      kicker: "Owner mandate",
+      title: expectation.mandate || "Ultimatum active",
+      detail: `${expectation.ultimatum.weeksLeft ?? "?"} week${expectation.ultimatum.weeksLeft === 1 ? "" : "s"} left: ${expectation.ultimatum.consequence || "results required"}.`,
+      targetTab: "overviewTab",
+      tone: "danger"
+    });
+  } else if (Number.isFinite(expectation.heat) || expectation.mandate) {
+    const heat = Number.isFinite(expectation.heat) ? expectation.heat : null;
+    cards.push({
+      kicker: "Owner pressure",
+      title: expectation.mandate || "Build trust",
+      detail: heat == null
+        ? "Mandate is active; keep the plan aligned before advancing."
+        : `Heat ${heat}/100${expectation.trend ? `, ${expectation.trend}` : ""}.`,
+      targetTab: "overviewTab",
+      tone: heat != null && heat >= 75 ? "danger" : heat != null && heat >= 55 ? "warning" : "neutral"
+    });
+  }
+
+  if (Number.isFinite(fan.approval)) {
+    cards.push({
+      kicker: "Fan pulse",
+      title: fan.label || "Fan approval",
+      detail: `${Math.round(fan.approval)}/100${fan.trend ? `, ${fan.trend}` : ""}${fan.reasons?.[0] ? `: ${fan.reasons[0]}` : ""}.`,
+      targetTab: "overviewTab",
+      tone: fan.approval < 45 ? "danger" : fan.approval < 65 ? "warning" : "positive"
+    });
+  }
+
+  if (capSpace != null && capSpace < 0) {
+    cards.push({
+      kicker: "Cap pressure",
+      title: "Over the cap",
+      detail: `${_fmtMoney(capSpace)} space. Fix contracts before simulating too far.`,
+      targetTab: "contractsTab",
+      tone: "danger"
+    });
+  }
+
+  if (injuries.length) {
+    cards.push({
+      kicker: "Trainer report",
+      title: `${injuries.length} controlled-team ${injuries.length === 1 ? "injury" : "injuries"}`,
+      detail: "Check depth before advancing the week.",
+      targetTab: "rosterTab",
+      tone: injuries.length >= 3 ? "danger" : "warning"
+    });
+  }
+
+  if (phase === "regular-season" && week >= 9 && week <= 11) {
+    const topNeed = rosterNeeds[0] || "roster";
+    cards.push({
+      kicker: "Deadline window",
+      title: "Trade market is live",
+      detail: `Week ${week}: price ${topNeed} help or sell before the window shuts.`,
+      targetTab: "transactionsTab",
+      tone: "warning"
+    });
+  }
+
+  if (!cards.length && newsHead) {
+    cards.push({
+      kicker: "League pulse",
+      title: "Latest headline",
+      detail: newsHead,
+      targetTab: "overviewTab",
+      tone: "neutral"
+    });
+  }
+
+  if (!cards.length) {
+    cards.push({
+      kicker: "Franchise state",
+      title: "No urgent pressure",
+      detail: "Advance when the roster plan is set.",
+      targetTab: null,
+      tone: "positive"
+    });
+  }
+
+  return cards.slice(0, 4);
+}
 
 export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [] } = {}) {
   const controlledTeamId = dashboard.controlledTeamId;

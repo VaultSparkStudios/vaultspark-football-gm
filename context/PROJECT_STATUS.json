@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 36 shipped tutorial theme parity: first-run tutorial overlay/modal/choice styling now inherits the shared light/dark/accent token system, with Playwright coverage proving light-mode readability.",
+  "currentFocus": "Session 37 recovery closeout shipped mobile pressure stack: phone users now see source-derived owner, fan, cap, injury, deadline, headline, or calm-state pressure above the mobile decision deck, with pressure cards routing to relevant tabs.",
   "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
@@ -18,17 +18,17 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 278,
-    "pass": 278,
+    "totalTests": 280,
+    "pass": 280,
     "fail": 0,
     "lastRun": "2026-07-04",
     "newTestFiles": [],
-    "newTestCount": 1,
-    "coverage": "Session 36 verified final tree with default npm test 278/278 (core 64/64, runtime 113/113, sim-contract 63/63, sim-realism 1/1, studio 37/37), Playwright UI 17/17, focused browser wiring 8/8, focused theme 8/8, Pages build/smoke, cache check exhausted 0 open, windows-hide guard, Wave guard, secrets audit, and blocker preflight.",
-    "uiSuiteNote": "npm run test:ui verified locally this session: 17/17 after adding first-run tutorial light-theme readability coverage."
+    "newTestCount": 2,
+    "coverage": "Session 37 recovery verified final tree with direct default shards 280/280 (core 64/64, runtime 115/115, sim-contract 63/63, sim-realism 1/1, studio 37/37), focused mobile-loop 7/7, node --check public/lib/mobileLoop.js, and doctor no items. Aggregate npm test wrapper timed out twice and is not counted as green.",
+    "uiSuiteNote": "UI suite was not rerun during Session 37 recovery; latest verified UI suite remains Session 36 npm run test:ui 17/17."
   },
-  "testsPassing": 278,
-  "testsTotal": 278,
+  "testsPassing": 280,
+  "testsTotal": 280,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -67,10 +67,10 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 985,
+  "silScore": 986,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 94,
+    "creativeAlignment": 95,
     "momentum": 100,
     "engagement": 100,
     "processQuality": 100,
@@ -80,22 +80,22 @@
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 36,
+  "currentSession": 37,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
-      "npm test 278/278 (core 64, runtime 113, sim-contract 63, sim-realism 1, studio 37)",
-      "npm run test:ui 17/17",
-      "node --test test/browser-wiring.test.js 8/8",
-      "npx playwright test tests-ui/theme.spec.js 8/8",
-      "npm run build:pages",
-      "npm run smoke:pages",
-      "node scripts/cache-genius-list.mjs --check exhausted 0 open",
-      "windows-hide, Wave guard, secrets audit, blocker preflight"
+      "direct default shards 280/280 (core 64, runtime 115, sim-contract 63, sim-realism 1, studio 37)",
+      "node --test test/mobile-loop.test.js 7/7",
+      "node --check public/lib/mobileLoop.js",
+      "node scripts/ops.mjs doctor --update-json returned no items",
+      "docs/AUDIT_2026-07-04_SESSION37.json parsed cleanly",
+      "~/.claude.json parsed cleanly outside sandbox"
     ],
     "date": "2026-07-04",
-    "timedOut": [],
+    "timedOut": [
+      "npm test aggregate wrapper timed out twice before final summary"
+    ],
     "failed": []
   },
   "silScoreV3MigratedAt": "2026-04-21",

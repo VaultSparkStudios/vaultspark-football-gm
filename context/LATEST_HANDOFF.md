@@ -1,3 +1,30 @@
+## Where We Left Off — 2026-07-04 Session 37 Recovery Closeout
+
+The previous session cut off after implementing Session 37 but before canonical closeout. Recovery verified the uncommitted work, completed write-back, and checkpointed it as recovered Session 37 work.
+
+What changed:
+- Generated `docs/AUDIT_2026-07-04_SESSION37.*` after confirming the Session 36 queue was exhausted.
+- Added `buildMobilePressureStack()` in `public/lib/mobileLoop.js` so the mobile overlay surfaces owner mandate, fan pulse, cap pressure, controlled-team injuries, deadline window, headline, or calm-state pressure from existing dashboard/news source-of-truth.
+- Rendered the pressure stack above the mobile decision deck with theme-token styling.
+- Made pressure cards actionable: they route to the relevant tab and dispatch `vsfgm:mobile-pressure`.
+- Added focused unit coverage in `test/mobile-loop.test.js`.
+
+Verification passed:
+- `node --check public/lib/mobileLoop.js`
+- `node --test test/mobile-loop.test.js` — 7/7
+- Direct default shards — 280/280: core 64/64, runtime 115/115, sim-contract 63/63, sim-realism 1/1, studio 37/37
+- `node scripts/ops.mjs doctor --update-json` — no items
+
+Honesty note:
+- The aggregate `npm test` wrapper timed out twice under the harness before a final summary; it is not counted as green. Direct shard exit codes are the current suite evidence.
+
+Remaining blocker:
+- Do not flip Launch/SPARKED until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence proves `playfranchisearchitect.com` serves the latest build.
+
+Next best work:
+- Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
+
+Session Intent: Recover the interrupted prior session, checkpoint it cleanly, then continue into the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
 ## Where We Left Off — 2026-07-04 Session 36
 
 The `/goal /arc` mission ran continuously through startup, live audit, implementation, validation, and closeout prep.

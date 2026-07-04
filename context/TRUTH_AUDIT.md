@@ -173,3 +173,12 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Queue truth: `docs/AUDIT_2026-07-04_SESSION36.md` contains only the shipped ranked item; stale latest-audit follow-through is recorded as rejected evidence, and `.cache/genius-list.json` is exhausted with 0 open items.
 - Verification truth: current tree passed `npm test` 278/278, Playwright UI 17/17, focused browser wiring 8/8, focused theme 8/8, Pages build/smoke, windows-hide, Wave guard, secrets audit, and blocker preflight.
 - Launch truth unchanged: live route checks are reachable, but Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof.
+
+## 2026-07-04 — Session 37 recovery truth updates
+
+- Recovery truth: the previous session did not complete closeout. Session 37 audit/product changes were uncommitted on top of the Session 36 commit, with a stale Session 36 lock still present.
+- Mobile loop truth repair: `public/lib/mobileLoop.js` now derives pressure cards from dashboard/news source-of-truth instead of leaving mobile users with actions but no compact "why this matters now" readout.
+- Navigation truth: pressure cards are real buttons that route to the relevant tab and dispatch `vsfgm:mobile-pressure`; they are not passive decoration.
+- Integrity truth: `docs/AUDIT_2026-07-04_SESSION37.json` parses, no changed NDJSON exists, and `~/.claude.json` parses cleanly when checked outside the Windows sandbox.
+- Verification truth: direct default shards passed 280/280 (core 64, runtime 115, sim-contract 63, sim-realism 1, studio 37), focused mobile-loop passed 7/7, syntax check passed, and doctor returned no items. Aggregate `npm test` timed out twice under the harness before printing a final summary and is not counted as green.
+- Launch truth unchanged: Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof and current live origin/routing evidence remains green.

@@ -252,3 +252,14 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Added Playwright regression coverage proving a first-run light-theme tutorial renders light surfaces, dark text, and a strong contrast gap.
 - Verification: `npm test` 278/278; `npm run test:ui` 17/17; focused browser wiring 8/8; focused theme 8/8; Pages build/smoke; cache check exhausted 0 open; windows-hide; Wave guard; secrets audit; blocker preflight.
 - Launch truth: live route evidence on 2026-07-04 returned routesOk=true, but status remains blocked because `football@playfranchisearchitect.com` forwarding/copying has no received-message receipt.
+
+## 2026-07-04 — Session 37 recovery closeout: mobile pressure stack
+
+- Recovered a cut-off `/goal /arc` session from uncommitted state: stale Session 36 lock, new Session 37 audit artifacts, and uncommitted mobile-loop/CSS/test changes.
+- Generated `docs/AUDIT_2026-07-04_SESSION37.*` after confirming Session 36 audit/cache were exhausted.
+- Shipped `mobile-pressure-stack`: mobile mode now renders a compact source-derived pressure stack above the decision deck for owner mandates, fan pulse, cap pressure, controlled-team injuries, trade-deadline window, league headline, or calm-state readiness.
+- Shipped second-order `mobile-pressure-navigation-affordance`: pressure cards route to the relevant tab and emit `vsfgm:mobile-pressure` for future telemetry/tests instead of being passive status text.
+- Integrity recovery: `docs/AUDIT_2026-07-04_SESSION37.json` parsed cleanly, no changed NDJSON existed, `~/.claude.json` parsed cleanly outside the sandbox, and no confirmed command-output debris was deleted.
+- Verification: `node --check public/lib/mobileLoop.js`; focused `node --test test/mobile-loop.test.js` 7/7; direct default shards 280/280 (core 64, runtime 115, sim-contract 63, sim-realism 1, studio 37); doctor returned no items.
+- Honesty note: aggregate `npm test` timed out twice under the harness and is not counted as green; direct shard exit codes are the real suite evidence.
+- Launch truth unchanged: Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence remains green.

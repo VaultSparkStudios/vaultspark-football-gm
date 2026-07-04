@@ -401,3 +401,23 @@ Category scores:
 | Automation Coverage | 100 | Maintained cap; Playwright UI now covers first-run tutorial light-theme readability. |
 
 Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.
+
+## 2026-07-04 — Session 37 Recovery Closeout: Mobile Pressure Stack
+
+Score: 986 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap; direct default shards passed 280/280 after adding the mobile pressure tests. Aggregate `npm test` timed out twice and was not counted as green. |
+| Creative Alignment | 95 | +1 because mobile mode now starts with a franchise-pressure read instead of only raw actions, matching the product's "General Manager under pressure" differentiator. |
+| Momentum | 100 | Maintained cap; recovered the cut-off Session 37 implementation and closed the two-item audit cleanly. |
+| Engagement | 100 | Maintained cap; phone users now see why the next action matters before tapping through the deck. |
+| Process Quality | 100 | Maintained cap; recovery distinguished committed Session 36 work from uncommitted Session 37 work, validated JSON/config integrity, and refused phantom-green aggregate-suite evidence. |
+| Cross-Repo Coherence | 100 | Maintained cap; no sibling tree edits. |
+| Security Posture | 99 | Unchanged; no credential, auth, dependency, or sensitive data surface changed. |
+| Ecosystem Integration | 100 | Maintained cap; audit, task board, truth audit, and handoff now agree on Session 37 state. |
+| Capital Efficiency | 92 | Unchanged; browser-only/static-host-safe work with no new paid service or variable runtime cost. |
+| Automation Coverage | 100 | Maintained cap; focused mobile-loop coverage now guards pressure-card derivation and fallback behavior. |
+
+Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip. Consider adding a narrower aggregate-suite watchdog so the wrapper timeout does not obscure already-green shard evidence.

@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
-import { buildMobileDecisionDeck } from "../public/lib/mobileLoop.js";
+import { buildMobileDecisionDeck, buildMobilePressureStack } from "../public/lib/mobileLoop.js";
 
 test("mobile decision deck prioritizes an active draft room", () => {
   const cards = buildMobileDecisionDeck({
@@ -76,4 +76,67 @@ test("player history archive has an empty-season fallback for selected players",
   assert.match(historySource, /No logged seasons yet/);
   assert.match(historySource, /<article class=\"history-card\">/);
   assert.match(flowSource, /No logged seasons for this filter/);
+});
+test("mobile pressure stack surfaces owner mandate, fan pulse, cap, and injuries", () => {
+  const cards = buildMobilePressureStack({
+    dashboard: {
+      phase: "regular-season",
+      controlledTeamId: "BUF",
+      currentWeek: 4,
+      controlledTeam: {
+        owner: {
+          expectation: {
+            mandate: "playoffs-or-bust",
+            ultimatum: { active: true, weeksLeft: 2, consequence: "front-office changes" }
+          }
+        }
+      },
+      fanSentiment: { approval: 42, trend: "falling", label: "Restless", reasons: ["QB injuries"] },
+      cap: { capSpace: -1_200_000 },
+      injuryReport: [{ teamId: "BUF" }, { teamId: "BUF" }, { teamId: "MIA" }]
+    }
+  });
+
+  assert.deepEqual(cards.map((card) => card.kicker), [
+    "Owner mandate",
+    "Fan pulse",
+    "Cap pressure",
+    "Trainer report"
+  ]);
+  assert.equal(cards[0].tone, "danger");
+  assert.equal(cards[1].targetTab, "overviewTab");
+  assert.equal(cards[2].targetTab, "contractsTab");
+  assert.match(cards[3].title, /2 controlled-team injuries/);
+});
+
+test("mobile pressure stack elevates deadline window and stays useful without urgent pressure", () => {
+  const deadlineCards = buildMobilePressureStack({
+    dashboard: {
+      phase: "regular-season",
+      controlledTeamId: "BUF",
+      currentWeek: 10,
+      controlledTeam: {},
+      cap: { capSpace: 15_000_000 },
+      rosterNeeds: [{ pos: "CB" }],
+      injuryReport: []
+    }
+  });
+
+  assert.equal(deadlineCards[0].kicker, "Deadline window");
+  assert.equal(deadlineCards[0].targetTab, "transactionsTab");
+  assert.match(deadlineCards[0].detail, /CB/);
+
+  const calmCards = buildMobilePressureStack({
+    dashboard: {
+      phase: "regular-season",
+      controlledTeamId: "BUF",
+      currentWeek: 2,
+      controlledTeam: {},
+      cap: { capSpace: 20_000_000 },
+      injuryReport: []
+    }
+  });
+
+  assert.equal(calmCards[0].kicker, "Franchise state");
+  assert.equal(calmCards[0].tone, "positive");
 });
