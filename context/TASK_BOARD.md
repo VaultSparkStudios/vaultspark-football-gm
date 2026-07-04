@@ -420,3 +420,16 @@ Source: `docs/AUDIT_2026-07-03_SESSION35.md`.
 | sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt and current live origin/routing evidence |
 
 **Verification:** default `npm test` 278/278; Playwright UI 16/16; focused modal wiring 8/8; modal manager 10/10; Pages build/smoke; sitemap compliance 10/10; release/cost gates; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight.
+
+## Session 36 — Tutorial Theme Parity + Genius Cache Exhaustion
+
+Source: `docs/AUDIT_2026-07-04_SESSION36.md`.
+
+| Item | Status |
+|------|--------|
+| tutorial-theme-token-parity — first-run tutorial overlay/modal/choices inherit the shared light/dark/accent theme token system | Done |
+| tutorial-light-readability-regression — Playwright proves the first-run tutorial is readable in light mode | Done |
+| latest-audit-follow-through | Rejected on evidence — Session 35 audit cache and execution log are exhausted |
+| sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt despite live routesOk=true |
+
+**Verification:** default `npm test` 278/278; Playwright UI 17/17; focused browser wiring 8/8; focused theme 8/8; Pages build/smoke; genius cache exhausted 0 open; windows-hide; Wave guard; secrets audit; blocker preflight.

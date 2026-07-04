@@ -381,3 +381,23 @@ Category scores:
 | Automation Coverage | 100 | Maintained cap; focused browser-wiring tests now guard modal-manager adoption and dialog semantics, plus full node/UI suites passed. |
 
 Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.
+
+## 2026-07-04 — Session 36 Tutorial Theme Parity + Genius Cache Exhaustion
+
+Score: 985 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap; default suite passed 278/278 after the tutorial theme regression landed. |
+| Creative Alignment | 94 | +1 because first-run onboarding now honors the same premium light/dark/accent visual contract as the rest of the product. |
+| Momentum | 100 | Maintained cap; fresh live audit generated, shipped, and the cache is exhausted with 0 open items. |
+| Engagement | 100 | Maintained cap; onboarding readability and first-session polish improved without adding friction or backend cost. |
+| Process Quality | 100 | Maintained cap; stale latest-audit follow-through and SPARKED flip were rejected on evidence. |
+| Cross-Repo Coherence | 100 | Maintained cap; no sibling tree edits. |
+| Security Posture | 99 | Unchanged; no credential, auth, dependency, or sensitive data surface changed. |
+| Ecosystem Integration | 100 | Maintained cap; launch truth remains aligned across source, audit, and evidence report. |
+| Capital Efficiency | 92 | Unchanged; static-host-safe/browser-only work with no new paid service or variable runtime cost. |
+| Automation Coverage | 100 | Maintained cap; Playwright UI now covers first-run tutorial light-theme readability. |
+
+Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.

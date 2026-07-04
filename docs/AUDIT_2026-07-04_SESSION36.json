@@ -1,0 +1,44 @@
+{
+  "generatedBy": "/audit skill v2 live-code",
+  "generatedAt": "2026-07-04",
+  "project": "franchise-architect-football",
+  "type": "game/public-product",
+  "totalRankedItems": 1,
+  "combinedPriority": 20.2,
+  "items": [
+    {
+      "rank": 1,
+      "tier": "fire",
+      "axis": "onboarding/theme-parity",
+      "slug": "tutorial-theme-token-parity",
+      "effortHours": 0.6,
+      "impact": 7,
+      "innovation": 4,
+      "priority": 20.2,
+      "status": "shipped",
+      "why": "The first-run tutorial still injected hard-coded dark colors after the app moved to a tokenized theme system.",
+      "evidence": [
+        "public/lib/tutorialCampaign.js",
+        "tests-ui/theme.spec.js"
+      ],
+      "verification": [
+        "node --check public/lib/tutorialCampaign.js",
+        "node --test test/browser-wiring.test.js",
+        "npx playwright test tests-ui/theme.spec.js"
+      ]
+    }
+  ],
+  "launchEvidence": {
+    "routesOk": true,
+    "emailForwardingVerified": false,
+    "status": "blocked",
+    "checkedAt": "2026-07-04T05:48:07.063Z"
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progressionCurve": 9,
+    "sessionEngagement": 9,
+    "retentionHooks": 9,
+    "soulFidelity": 9
+  }
+}

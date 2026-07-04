@@ -254,3 +254,13 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** Session 35 found several important overlays that looked modal but bypassed the focus trap or lacked complete dialog semantics. That created inconsistent keyboard behavior across the main game loop. The shared manager is small, tested, and already established by the tutorial modal, so adopting it preserves focus restoration and Escape behavior without adding new UI complexity.
 
 **Pattern established:** New modal-like surfaces call `openModal()` after becoming visible and `closeModal()` before being hidden. Non-modal engagement surfaces must not claim `aria-modal`.
+
+---
+
+## 2026-07-04 — First-run tutorial must inherit the global theme contract
+
+**Decision:** First-run tutorial styling must use the same theme tokens (`--panel-grad`, `--card-grad`, `--ink`, `--muted`, `--accent`, etc.) as the rest of the product instead of injecting standalone dark-mode colors.
+
+**Rationale:** The tutorial is a first-session product surface. After the premium theme repair, leaving it hard-coded dark made light-mode onboarding visibly inconsistent and risked reintroducing the exact readability class the theme overhaul fixed.
+
+**Pattern established:** Any injected or component-local CSS must consume the global surface/text/accent token contract unless it is deliberately brand-specific and covered by light/dark readability tests.

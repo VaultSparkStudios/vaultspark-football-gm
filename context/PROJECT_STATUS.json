@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 35 shipped modal contract completion and Priority Inbox modal truth: high-frequency game overlays now use the shared modalManager lifecycle with dialog semantics, focus trapping, Escape behavior, and focus restoration; focused regressions cover the contract.",
+  "currentFocus": "Session 36 shipped tutorial theme parity: first-run tutorial overlay/modal/choice styling now inherits the shared light/dark/accent token system, with Playwright coverage proving light-mode readability.",
   "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
   ],
-  "lastUpdated": "2026-07-03",
+  "lastUpdated": "2026-07-04",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -21,11 +21,11 @@
     "totalTests": 278,
     "pass": 278,
     "fail": 0,
-    "lastRun": "2026-07-03",
+    "lastRun": "2026-07-04",
     "newTestFiles": [],
-    "newTestCount": 2,
-    "coverage": "Session 35 verified final tree with default npm test 278/278 (core 64/64, runtime 113/113, sim-contract 63/63, sim-realism 1/1, studio 37/37), Playwright UI 16/16, focused modal/browser wiring 8/8, modal manager 10/10, Pages build/smoke, sitemap compliance 10/10, release/cost gates, canon conformance 0 gaps, windows-hide guard, Wave guard, secrets audit, blocker preflight, and PROJECT_STATUS SIL invariant check.",
-    "uiSuiteNote": "npm run test:ui verified locally this session: 16/16 after modal lifecycle changes."
+    "newTestCount": 1,
+    "coverage": "Session 36 verified final tree with default npm test 278/278 (core 64/64, runtime 113/113, sim-contract 63/63, sim-realism 1/1, studio 37/37), Playwright UI 17/17, focused browser wiring 8/8, focused theme 8/8, Pages build/smoke, cache check exhausted 0 open, windows-hide guard, Wave guard, secrets audit, and blocker preflight.",
+    "uiSuiteNote": "npm run test:ui verified locally this session: 17/17 after adding first-run tutorial light-theme readability coverage."
   },
   "testsPassing": 278,
   "testsTotal": 278,
@@ -67,10 +67,10 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 984,
+  "silScore": 985,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 93,
+    "creativeAlignment": 94,
     "momentum": 100,
     "engagement": 100,
     "processQuality": 100,
@@ -80,24 +80,21 @@
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 35,
+  "currentSession": 36,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "passed": [
       "npm test 278/278 (core 64, runtime 113, sim-contract 63, sim-realism 1, studio 37)",
-      "npm run test:ui 16/16",
+      "npm run test:ui 17/17",
       "node --test test/browser-wiring.test.js 8/8",
-      "node --test test/modal-manager.test.js 10/10",
+      "npx playwright test tests-ui/theme.spec.js 8/8",
       "npm run build:pages",
       "npm run smoke:pages",
-      "studio-ops sitemap audit 10/10",
-      "release/cost gates allow",
-      "canon conformance 0 gaps",
-      "windows-hide, Wave guard, secrets audit, blocker preflight",
-      "PROJECT_STATUS SIL invariant clean"
+      "node scripts/cache-genius-list.mjs --check exhausted 0 open",
+      "windows-hide, Wave guard, secrets audit, blocker preflight"
     ],
-    "date": "2026-07-03",
+    "date": "2026-07-04",
     "timedOut": [],
     "failed": []
   },
@@ -134,11 +131,11 @@
     "failing": 0,
     "warning": 0,
     "score": 100,
-    "date": "2026-07-03",
+    "date": "2026-07-04",
     "blockingFailing": 0
   },
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-03",
-  "lastVerificationAt": "2026-07-03"
+  "lastVerificationAt": "2026-07-04"
 }

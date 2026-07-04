@@ -166,3 +166,10 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Modal accessibility truth repair: Season Review, Pre-Game Tactical Brief, Draft Pick Reveal, Franchise Moment, GM Decision, Agent Negotiation, Keyboard Shortcuts, and Priority Inbox now use the same shared modal lifecycle instead of claiming or behaving like modals with inconsistent focus behavior.
 - Markup truth repair: high-frequency overlays that function as dialogs now expose dialog semantics and labels in `public/game.html`.
 - Queue truth: Session 34 audit follow-through is exhausted; Session 35 generated a new live audit and shipped both ranked items. Launch/SPARKED remains blocked on real email receipt plus current live origin/routing evidence.
+
+## 2026-07-04 — Session 36 truth updates
+
+- Tutorial theme truth repair: first-run tutorial CSS now consumes the shared theme token system instead of hard-coded dark surfaces/text, so light-mode onboarding matches the product-level theme contract.
+- Queue truth: `docs/AUDIT_2026-07-04_SESSION36.md` contains only the shipped ranked item; stale latest-audit follow-through is recorded as rejected evidence, and `.cache/genius-list.json` is exhausted with 0 open items.
+- Verification truth: current tree passed `npm test` 278/278, Playwright UI 17/17, focused browser wiring 8/8, focused theme 8/8, Pages build/smoke, windows-hide, Wave guard, secrets audit, and blocker preflight.
+- Launch truth unchanged: live route checks are reachable, but Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof.

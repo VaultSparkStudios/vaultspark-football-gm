@@ -181,3 +181,54 @@ test("theme customizer supports keyboard focus and arrow navigation", async ({ p
   await expect(panel).toBeHidden();
   await expect(button).toBeFocused();
 });
+
+test("first-run tutorial follows light theme readability tokens", async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("franchise-architect-theme-mode", "light");
+    localStorage.setItem("franchise-architect-theme", "light");
+    localStorage.removeItem("vsfgm_tutorial_seen_v1");
+  });
+
+  await page.goto("/");
+  await waitSetupReady(page);
+  await page.click("#createLeagueBtn");
+  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
+  await expect(page.locator(".tutorial-modal")).toBeVisible({ timeout: 60_000 });
+
+  const metrics = await page.evaluate(() => {
+    const luminance = (raw) => {
+      const text = String(raw || "");
+      let match = text.match(/#([0-9a-fA-F]{6})/);
+      let r, g, b;
+      if (match) {
+        const n = parseInt(match[1], 16);
+        r = (n >> 16) & 255;
+        g = (n >> 8) & 255;
+        b = n & 255;
+      } else {
+        match = text.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/);
+        if (!match) return null;
+        r = Number(match[1]);
+        g = Number(match[2]);
+        b = Number(match[3]);
+      }
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    };
+    const styleOf = (selector) => getComputedStyle(document.querySelector(selector));
+    const modal = styleOf(".tutorial-modal");
+    const choice = styleOf(".tutorial-choice");
+    const label = styleOf(".choice-label");
+    return {
+      theme: document.documentElement.dataset.theme,
+      modalSurface: luminance(modal.backgroundImage || modal.backgroundColor),
+      choiceSurface: luminance(choice.backgroundImage || choice.backgroundColor),
+      labelText: luminance(label.color)
+    };
+  });
+
+  expect(metrics.theme).toBe("light");
+  expect(metrics.modalSurface, "light tutorial modal surface").toBeGreaterThan(180);
+  expect(metrics.choiceSurface, "light tutorial choice surface").toBeGreaterThan(180);
+  expect(metrics.labelText, "light tutorial label text").toBeLessThan(110);
+  expect(metrics.modalSurface - metrics.labelText, "tutorial modal/text contrast gap").toBeGreaterThan(120);
+});

@@ -243,3 +243,12 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Added missing `role="dialog"`, `aria-modal`, and labels/labelledby for high-frequency game overlays that previously behaved like modals without a complete accessibility contract.
 - Shipped second-order innovation `priority-inbox-modal-truth`: Priority Inbox declared itself modal in markup and now actually traps/restores focus through `openModal()` / `closeModal()`.
 - Verification: `npm test` 278/278; `npm run test:ui` 16/16; focused browser wiring 8/8; modal manager 10/10; Pages build/smoke; sitemap compliance 10/10; release/cost gates allow; canon conformance 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight. Local closeout helper scripts for state-vector/entropy/genome/secrets are not all vendored, so Studio Ops equivalents were used where available.
+
+## 2026-07-04 — Session 36 tutorial theme parity closeout
+
+- Ran the continuous `/goal /arc` mission from current repo evidence: startup sync, stale-lock triage, secrets/blocker/canon checks, live audit, implementation, verification, and closeout prep.
+- Generated `docs/AUDIT_2026-07-04_SESSION36.*` after rejecting stale latest-audit follow-through and keeping SPARKED blocked on missing email receipt proof.
+- Shipped `tutorial-theme-token-parity`: first-run tutorial injected CSS now derives overlay/modal/choice/text/progress styling from the shared theme token system instead of hard-coded dark colors.
+- Added Playwright regression coverage proving a first-run light-theme tutorial renders light surfaces, dark text, and a strong contrast gap.
+- Verification: `npm test` 278/278; `npm run test:ui` 17/17; focused browser wiring 8/8; focused theme 8/8; Pages build/smoke; cache check exhausted 0 open; windows-hide; Wave guard; secrets audit; blocker preflight.
+- Launch truth: live route evidence on 2026-07-04 returned routesOk=true, but status remains blocked because `football@playfranchisearchitect.com` forwarding/copying has no received-message receipt.

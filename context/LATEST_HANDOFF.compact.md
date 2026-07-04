@@ -1,43 +1,38 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 0633276a4bf9 -->
-<!-- generated-at: 2026-07-03T20:38:19.058Z -->
+<!-- source-hash: afa8e525b250 -->
+<!-- generated-at: 2026-07-04T05:16:33.479Z -->
 
 # LATEST_HANDOFF (compact)
 
-## Handoff Summary — Session 34 (2026-07-03)
+Where We Left Off — Session 35 (2026-07-03)
 
-Session: 34
+SHIPPED THIS SESSION
+- Generated docs/AUDIT_2026-07-03_SESSION35.* (Session 34 genius cache confirmed exhausted).
+- Completed shared modal accessibility contract across main game loop: Season Review, Pre-Game Tactical Brief, Draft Pick Reveal, Franchise Moment, GM Decision, Agent Negotiation, Keyboard Shortcuts now route through modalManager (focus trap, Escape close, focus restoration).
+- Added dialog semantics to Season Review, Pre-Game Tactical Brief, Draft Pick Reveal, Franchise Moment.
+- Priority Inbox now uses openModal()/closeModal() so its existing role="dialog" aria-modal="true" claim is truthful.
+- Added regression coverage in test/browser-wiring.test.js for modal-manager adoption and dialog markup.
 
-Shipped:
-- `/arc` ran end-to-end (start, fresh audit, implement, verify, closeout prep).
-- Generated `docs/AUDIT_2026-07-03_SESSION34.*` (prior genius list exhausted).
-- Launch Readiness now has a Contact Email row, defaults `Unverified` until real receipt proves `football@playfranchisearchitect.com` forwards to Studio ops.
-- Beta feedback issue bodies carry the Contact Email readiness row (no secrets).
-- Public-domain fallback copy renamed to `playfranchisearchitect.com` with current origin/routing evidence.
-- Theme customizer: stable popover ids, `aria-controls`, focus move on open, focus restore on Escape, Arrow/Home/End navigation.
+VERIFICATION (all passed)
+- npm test 278/278; test:ui 16/16; browser-wiring 8/8; modal-manager 10/10
+- build:pages; smoke:pages; sitemap compliance 10/10
+- release/cost gates allow; canon 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight
 
-Current intent:
-- Continue durable `/arc` through full `/closeout` and deploy verification without fabricating launch readiness.
+CURRENT INTENT
+- Complete full /goal /arc mission (start, audit, implement, closeout); exhaust genius list plus second-order candidates; commit and push direct to main.
 
-Now bucket (top 3):
-1. Obtain real received-message receipt for `football@playfranchisearchitect.com`.
-2. Rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`.
-3. Verify live origin/routing after deployment proves `playfranchisearchitect.com` serves latest build.
+NOW BUCKET (top 3)
+1. Obtain real received-message receipt for football@playfranchisearchitect.com.
+2. Rerun: node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json
+3. Verify live origin/routing proves playfranchisearchitect.com serves latest build after deployment.
 
-Blockers (top 3):
-1. Launch/SPARKED flip blocked: no email-forwarding receipt for `football@playfranchisearchitect.com`.
-2. Live origin/routing evidence for latest build not yet confirmed post-deploy.
-3. Cloudflare edge caches (historical CSS-cache issue) — mitigated via content-hashed CSS; monitor live surfacing.
+BLOCKERS (top 3)
+1. Launch/SPARKED flip blocked: no email-forwarding receipt for football@playfranchisearchitect.com.
+2. Live origin/routing evidence not yet confirmed for latest build on apex domain.
+3. None additional active; primary genius queue exhausted.
 
-Human-blocked:
-- Email-forwarding receipt for `football@playfranchisearchitect.com`: unresolved since Session 28 (~6 sessions). Human/founder action required.
+HUMAN-BLOCKED (with age)
+- Email forwarding receipt for football@playfranchisearchitect.com: outstanding since Session 28 (2026-07-01), ~7 sessions. This is the sole gate on Launch/SPARKED.
 
-Verification (all passed):
-- `node --test test/launch-readiness.test.js test/beta-feedback.test.js` 10/10
-- `npx playwright test tests-ui/theme.spec.js` 7/7
-- `npm test` 276/276
-- `npx playwright test` 16/16
-- `npm run build:pages`, `npm run smoke:pages`
-- sitemap compliance 10/10; release/cost gates allow; canon 0 gaps; windows-hide; Wave guard; secrets audit; blocker preflight; SIL invariant clean
-
-Next session: Get the email receipt, run launch-evidence with it, then verify live origin/routing before any SPARKED flip.
+NEXT SESSION
+- Get the email receipt, run launch-evidence with it, then verify live origin/routing before any SPARKED flip.

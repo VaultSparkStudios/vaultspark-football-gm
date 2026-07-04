@@ -1,23 +1,23 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-03 (Session 35 closeout) -->
+<!-- generated-at: 2026-07-04 (Session 36 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S35 ══════╗
-║  Date: 2026-07-03  ·  SIL: 984/1000  ·  Velocity: —              ║
-║  Mode: FOUNDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S36 ══════╗
+║  Date: 2026-07-04  ·  SIL: 985/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Generated `docs/AUDIT_2026-07-03_SESSION35.*` after confirmi  ║
-║  ✓ Finished the shared modal accessibility contract across the   ║
-║  ✓ Added missing dialog semantics to Season Review, Pre-Game Ta  ║
-║  ✓ Implemented the second-order innovation candidate: Priority   ║
-║  ✓ Added focused source-level regression coverage in `test/brow  ║
+║  ✓ Generated `docs/AUDIT_2026-07-04_SESSION36.*` after confirmi  ║
+║  ✓ Repaired first-run tutorial theme parity: `public/lib/tutori  ║
+║  ✓ Added `tests-ui/theme.spec.js` coverage that creates a new l  ║
+║  ✓ Regenerated `.cache/genius-list.json`; latest audit status i  ║
+║  ✓ Re-ran live launch evidence: public routes are reachable, bu  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 984/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 985/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          93   █████████░                            ║
+║    Alignment          94   █████████░                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
@@ -37,10 +37,10 @@
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
-║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
+║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 18 files  ·  M:14 A:0 D:0 ?:4                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -57,8 +57,7 @@
 ║  Sanitization:  1d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  Genius cache exhausted (0 open). Next: prove email receipt       ║
-║  plus live origin/routing before any SPARKED flip.                 ║
+║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 

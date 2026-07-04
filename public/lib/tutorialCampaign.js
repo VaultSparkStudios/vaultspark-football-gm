@@ -223,35 +223,40 @@ export function injectTutorialStyles() {
   style.textContent = `
     .tutorial-overlay {
       position: fixed; inset: 0; z-index: 1000;
-      background: rgba(6, 10, 13, 0.88);
+      background: var(--scrim, rgba(6, 10, 13, 0.82));
       display: flex; align-items: center; justify-content: center;
       padding: 1rem;
       backdrop-filter: blur(6px);
     }
     .tutorial-modal {
-      background: #111820; border: 1px solid #2a3a4a;
+      background: var(--panel-grad, #111820);
+      border: 1px solid var(--line, #2a3a4a);
+      color: var(--ink, #f5f1e7);
       border-radius: 12px; max-width: 680px; width: 100%;
       padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem;
       max-height: 90vh; overflow-y: auto;
+      box-shadow: 0 24px 70px var(--shadow, rgba(0, 0, 0, 0.34));
     }
     .tutorial-progress { display: flex; gap: .5rem; }
-    .tutorial-pip { width: 28px; height: 4px; border-radius: 2px; background: #2a3a4a; }
+    .tutorial-pip { width: 28px; height: 4px; border-radius: 2px; background: var(--line, #2a3a4a); }
     .tutorial-pip.active { background: var(--accent, #d7a24a); }
     .tutorial-pip.done { background: var(--success, #63d68c); }
-    .tutorial-header .brand-kicker { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: #6a7a8a; margin-bottom: .35rem; }
-    .tutorial-header h2 { font-size: 1.4rem; color: #f5f1e7; margin: 0; }
-    .tutorial-body { color: #a0b0b8; line-height: 1.6; font-size: .9rem; }
+    .tutorial-header .brand-kicker { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted, #6a7a8a); margin-bottom: .35rem; }
+    .tutorial-header h2 { font-size: 1.4rem; color: var(--ink-strong, #f5f1e7); margin: 0; }
+    .tutorial-body { color: var(--ink-dim, #a0b0b8); line-height: 1.6; font-size: .9rem; }
     .tutorial-choices { display: flex; flex-direction: column; gap: .65rem; }
     .tutorial-choice {
-      background: #182028; border: 1px solid #2a3a4a; border-radius: 8px;
+      background: var(--card-grad, #182028);
+      border: 1px solid var(--line, #2a3a4a);
+      border-radius: 8px;
       padding: .85rem 1rem; text-align: left; cursor: pointer; transition: border-color .15s, background .15s;
       width: 100%;
     }
-    .tutorial-choice:hover { border-color: #4a6a7a; background: #1e2c38; }
-    .tutorial-choice.selected { border-color: var(--accent, #d7a24a); background: rgba(215,162,74,.08); }
-    .choice-label { font-weight: 700; font-size: .95rem; color: #f5f1e7; margin-bottom: .2rem; }
-    .choice-sub { font-size: .82rem; color: #8a9ab0; margin-bottom: .35rem; }
-    .choice-tip { font-size: .75rem; color: #5a7a6a; font-style: italic; }
+    .tutorial-choice:hover { border-color: var(--section-accent, #4a6a7a); background: var(--raised, #1e2c38); }
+    .tutorial-choice.selected { border-color: var(--accent, #d7a24a); background: color-mix(in srgb, var(--accent, #d7a24a) 12%, transparent); }
+    .choice-label { font-weight: 700; font-size: .95rem; color: var(--ink-strong, #f5f1e7); margin-bottom: .2rem; }
+    .choice-sub { font-size: .82rem; color: var(--muted, #8a9ab0); margin-bottom: .35rem; }
+    .choice-tip { font-size: .75rem; color: var(--accent-2, #5a7a6a); font-style: italic; }
     .tutorial-choice.selected .choice-tip { color: var(--accent, #d7a24a); }
     .tutorial-actions { display: flex; justify-content: space-between; align-items: center; padding-top: .5rem; }
     .tutorial-next:disabled { opacity: .45; cursor: not-allowed; }

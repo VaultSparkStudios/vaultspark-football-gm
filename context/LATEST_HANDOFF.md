@@ -1,4 +1,31 @@
-## Where We Left Off — 2026-07-03 Session 35
+## Where We Left Off — 2026-07-04 Session 36
+
+The `/goal /arc` mission ran continuously through startup, live audit, implementation, validation, and closeout prep.
+
+What changed:
+- Generated `docs/AUDIT_2026-07-04_SESSION36.*` after confirming the Session 35 genius cache was exhausted.
+- Repaired first-run tutorial theme parity: `public/lib/tutorialCampaign.js` now uses the shared surface/text/accent tokens instead of hard-coded dark tutorial colors.
+- Added `tests-ui/theme.spec.js` coverage that creates a new league in light mode and verifies the first-run tutorial has light surfaces, dark text, and a strong contrast gap.
+- Regenerated `.cache/genius-list.json`; latest audit status is exhausted with 0 open items.
+- Re-ran live launch evidence: public routes are reachable, but email forwarding remains unverified.
+
+Verification passed:
+- `npm test` — 278/278 (core 64, runtime 113, sim-contract 63, sim-realism 1, studio 37)
+- `npm run test:ui` — 17/17
+- `node --test test/browser-wiring.test.js` — 8/8
+- `npx playwright test tests-ui/theme.spec.js` — 8/8
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `node scripts/cache-genius-list.mjs --check` — fresh/exhausted
+- windows-hide; Wave guard; secrets audit; blocker preflight
+
+Remaining blocker:
+- Do not flip Launch/SPARKED until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence proves `playfranchisearchitect.com` serves the latest build.
+
+Next best work:
+- Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
+
+Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.## Where We Left Off — 2026-07-03 Session 35
 
 The `/goal /arc` mission ran continuously through startup, live audit, implementation, validation, and closeout prep.
 
