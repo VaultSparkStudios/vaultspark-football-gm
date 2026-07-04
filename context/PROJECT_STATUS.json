@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 38 shipped mobile GM decision-first flow: phone users now see the live pending /api/gm-decision prompt before generic advance pressure, and mobile mode refreshes that state from the existing decision source.",
+  "currentFocus": "Session 39 shipped inline mobile GM decision choices: phone users can now answer a pending /api/gm-decision directly inside the mobile deck, and the selected choice advances through the existing gmDecisionChoice consequence path.",
   "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
@@ -18,17 +18,17 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 282,
-    "pass": 282,
+    "totalTests": 283,
+    "pass": 283,
     "fail": 0,
     "lastRun": "2026-07-04",
     "newTestFiles": [],
-    "newTestCount": 2,
-    "coverage": "Session 38 verified final tree with direct default shards 282/282 (core 64/64, runtime 117/117, sim-contract 63/63, sim-realism 1/1, studio 37/37), focused mobile-loop 9/9, node --check public/lib/mobileLoop.js, node --check public/app.js, Pages build/smoke, and doctor no items.",
-    "uiSuiteNote": "UI suite was not rerun during Session 38; latest verified UI suite remains Session 36 npm run test:ui 17/17."
+    "newTestCount": 1,
+    "coverage": "Session 39 verified final tree with default npm test 283/283 (core 64/64, runtime 118/118, sim-contract 63/63, sim-realism 1/1, studio 37/37), focused mobile-loop 10/10, Playwright UI 17/17, node --check public/lib/mobileLoop.js, node --check public/app.js, Pages build/smoke, and doctor no items.",
+    "uiSuiteNote": "Session 39 reran npm run test:ui successfully: 17/17."
   },
-  "testsPassing": 282,
-  "testsTotal": 282,
+  "testsPassing": 283,
+  "testsTotal": 283,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -67,10 +67,10 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 987,
+  "silScore": 988,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 96,
+    "creativeAlignment": 97,
     "momentum": 100,
     "engagement": 100,
     "processQuality": 100,
@@ -80,20 +80,24 @@
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 38,
+  "currentSession": 39,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
     "passed": [
-      "direct default shards 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37)",
-      "node --test test/mobile-loop.test.js 9/9",
       "node --check public/lib/mobileLoop.js",
       "node --check public/app.js",
+      "node --test test/mobile-loop.test.js 10/10",
+      "npm test 283/283 (core 64, runtime 118, sim-contract 63, sim-realism 1, studio 37)",
+      "npm run test:ui 17/17",
       "npm run build:pages",
       "npm run smoke:pages",
       "node scripts/ops.mjs doctor --update-json returned no items",
-      "docs/AUDIT_2026-07-04_SESSION38.json parsed cleanly",
-      "windows-hide, Wave guard, secrets audit, blocker preflight, genius cache check"
+      "node scripts/check-windows-hide.mjs",
+      "node scripts/check-canon-044-waves.mjs",
+      "node scripts/check-secrets.mjs --audit",
+      "node scripts/ops.mjs blocker-preflight",
+      "node scripts/cache-genius-list.mjs --write exhausted 0 open"
     ],
     "date": "2026-07-04",
     "timedOut": [],

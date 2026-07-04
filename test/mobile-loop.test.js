@@ -158,8 +158,10 @@ test("mobile decision deck prioritizes a pending GM decision before generic pres
   });
 
   assert.equal(cards[0].kicker, "GM decision");
-  assert.equal(cards[0].action, "advance-week");
+  assert.equal(cards[0].action, "choose-gm-decision");
   assert.equal(cards[0].tone, "danger");
+  assert.equal(cards[0].decisionId, "trade-deadline");
+  assert.deepEqual(cards[0].choices.map((choice) => choice.id), ["buy", "sell", "hold"]);
   assert.match(cards[0].detail, /Trade deadline closes soon/);
 });
 
@@ -171,4 +173,15 @@ test("mobile overlay refreshes pending GM decisions from the app shell", () => {
   assert.match(appSource, /api\("\/api\/gm-decision"\)/);
   assert.match(appSource, /state\.mobilePendingDecision = data\?\.decisions\?\.\[0\] \|\| null/);
   assert.match(appSource, /renderMobileOverlay\(state, advanceFromMobile\)/);
+});
+
+test("mobile GM decision choices are rendered and submitted through the app shell", () => {
+  const mobileSource = fs.readFileSync(new URL("../public/lib/mobileLoop.js", import.meta.url), "utf8");
+  const appSource = fs.readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
+
+  assert.match(mobileSource, /ml-decision-option-btn/);
+  assert.match(mobileSource, /vsfgm:mobile-gm-decision-choice/);
+  assert.match(appSource, /submitMobileGmDecisionChoice/);
+  assert.match(appSource, /gmDecisionChoice: choice/);
+  assert.match(appSource, /Recording mobile GM decision/);
 });

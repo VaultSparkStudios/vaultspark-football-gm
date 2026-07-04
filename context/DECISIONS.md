@@ -264,3 +264,13 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** The tutorial is a first-session product surface. After the premium theme repair, leaving it hard-coded dark made light-mode onboarding visibly inconsistent and risked reintroducing the exact readability class the theme overhaul fixed.
 
 **Pattern established:** Any injected or component-local CSS must consume the global surface/text/accent token contract unless it is deliberately brand-specific and covered by light/dark readability tests.
+
+---
+
+## 2026-07-04 — Mobile inline GM choices use the existing consequence path
+
+**Decision:** Mobile GM decision choices should render inline in the mobile deck, but the selected choice must be submitted through the existing `/api/advance-week` `gmDecisionChoice` path rather than a new mobile-only endpoint or duplicate decision engine.
+
+**Rationale:** `/api/gm-decision` and `applyGmDecisionConsequence()` are already the source of truth. The gap was presentation and agency in the mobile loop, not backend capability. Keeping one consequence path preserves determinism and prevents desktop/mobile drift.
+
+**Pattern established:** Mobile-first surfaces can add faster choice affordances, but must emit source-of-truth payloads into existing runtime actions when those actions already own game-state mutation.

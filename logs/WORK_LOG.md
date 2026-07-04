@@ -271,3 +271,13 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Verification: `node --check public/lib/mobileLoop.js`; focused `node --test test/mobile-loop.test.js` 7/7; direct default shards 280/280 (core 64, runtime 115, sim-contract 63, sim-realism 1, studio 37); doctor returned no items.
 - Honesty note: aggregate `npm test` timed out twice under the harness and is not counted as green; direct shard exit codes are the real suite evidence.
 - Launch truth unchanged: Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence remains green.
+
+## 2026-07-04 — Session 39: mobile inline GM decision choices
+
+- Ran the continuous `/goal /arc` mission from current repo evidence: required pull/rebase, startup gates, live audit, implementation, innovation-pack follow-through, verification, and closeout prep.
+- Generated `docs/AUDIT_2026-07-04_SESSION39.*` after confirming the Session 38 audit/cache were exhausted.
+- Shipped `mobile-inline-gm-decision-choices`: pending `/api/gm-decision` prompts now render their option choices directly in the mobile decision deck.
+- Wired `vsfgm:mobile-gm-decision-choice` to `submitMobileGmDecisionChoice()`, which posts the selected choice through the existing `/api/advance-week` `gmDecisionChoice` consequence path and refreshes mobile state from the returned dashboard.
+- Shipped second-order `latest-audit-follow-through`: regenerated `docs/INNOVATION_PACK.md` and classified the only candidate as shipped after source/test verification.
+- Verification: `node --check public/lib/mobileLoop.js`; `node --check public/app.js`; focused `node --test test/mobile-loop.test.js` 10/10; default `npm test` 283/283; `npm run test:ui` 17/17; `npm run build:pages`; `npm run smoke:pages`; doctor no items; windows-hide; Wave guard; secrets audit; blocker preflight.
+- Launch truth unchanged: Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence remains green.

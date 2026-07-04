@@ -1,0 +1,51 @@
+{
+  "generatedBy": "/audit skill v2 live-code",
+  "generatedAt": "2026-07-04",
+  "project": "franchise-architect-football",
+  "type": "game/public-product",
+  "totalRankedItems": 1,
+  "combinedPriority": 35.1,
+  "items": [
+    {
+      "rank": 1,
+      "tier": "fire",
+      "axis": "mobile-core-loop/decision-agency",
+      "slug": "mobile-inline-gm-decision-choices",
+      "effortHours": 0.9,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 35.1,
+      "status": "shipped",
+      "why": "Mobile mode detected pending /api/gm-decision prompts but still rendered a single advance-week card, forcing the actual choice through the desktop modal path instead of the mobile-first decision loop.",
+      "evidence": [
+        "public/lib/mobileLoop.js",
+        "public/app.js",
+        "src/app/api/localApiRuntime.js",
+        "test/mobile-loop.test.js"
+      ],
+      "verification": [
+        "node --check public/lib/mobileLoop.js",
+        "node --check public/app.js",
+        "node --test test/mobile-loop.test.js"
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "slug": "new-backend-decision-engine",
+      "reason": "/api/gm-decision and POST /api/advance-week gmDecisionChoice already exist; building another decision engine would create drift instead of improving the source-of-truth path."
+    },
+    {
+      "slug": "sparked-flip",
+      "reason": "Still blocked on real received-message proof for football@playfranchisearchitect.com forwarding/copying and current live-origin/routing evidence; no fabricated launch evidence used."
+    }
+  ],
+  "gameLoopReview": {
+    "loopTightness": 10,
+    "progressionCurve": 9,
+    "sessionEngagement": 10,
+    "retentionHooks": 9,
+    "soulFidelity": 10,
+    "finding": "The mobile loop now lets a phone user see and commit the pending General Manager choice in place, tightening the core loop from pressure -> choice -> consequence."
+  }
+}

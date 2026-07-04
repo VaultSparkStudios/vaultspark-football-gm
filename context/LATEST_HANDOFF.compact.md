@@ -1,43 +1,44 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
 <!-- source-hash: bcf4c88db75a -->
-<!-- generated-at: 2026-07-04T08:46:55.482Z -->
+<!-- generated-at: 2026-07-04T18:16:19.555Z -->
 
 # LATEST_HANDOFF (compact)
 
-Handoff Summary
+Handoff Summary — Session 38 (2026-07-04)
 
 Session
-- Latest: Session 38 (2026-07-04). Continuous chain 22 through 38.
+- Latest: Session 38, project Franchise Architect: Football (playfranchisearchitect.com)
 
-What Shipped (Session 38)
-- Generated docs/AUDIT_2026-07-04_SESSION38.* after confirming Session 37 queue exhausted.
-- Added state.mobilePendingDecision, passed into mobile decision deck.
-- Pending /api/gm-decision prompts now render as the first mobile GM decision card, before generic advance pressure.
-- syncMobileLoopOverlay() fetches /api/gm-decision in mobile regular-season mode and re-renders from source-of-truth.
-- Added regression coverage in test/mobile-loop.test.js.
-
-Verification (Session 38)
-- node --check on mobileLoop.js and app.js.
-- node --test test/mobile-loop.test.js — 9/9.
-- Default shards 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37).
-- build:pages, smoke:pages, ops doctor (no items), windows-hide, Wave guard, secrets audit, blocker preflight.
+Shipped (Session 38)
+- Generated docs/AUDIT_2026-07-04_SESSION38.* (Session 37 queue confirmed exhausted).
+- Added state.mobilePendingDecision; pending /api/gm-decision prompts now render as the first mobile GM decision card, before generic advance pressure.
+- syncMobileLoopOverlay() fetches /api/gm-decision in mobile regular-season mode and re-renders from source-of-truth state.
+- Added regression coverage in test/mobile-loop.test.js for decision-first card and app-shell refresh wiring.
 
 Current Intent
-- Complete full /goal /arc mission (start, audit, implement, closeout); exhaust genius list plus second-order candidates; commit and push direct to main.
+- Complete durable /goal /arc mission: recover interrupted session, checkpoint, run start/audit/implement/closeout, exhaust genius + second-order candidates, commit and push direct to main.
 
-Now Bucket (Top 3)
+Now Bucket (top items)
 - Obtain real received-message receipt for football@playfranchisearchitect.com forwarding/copying.
-- Rerun ops.mjs launch-evidence with --email-evidence receipt, output to audits/launch-evidence-<date>.json.
+- Rerun: node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json
 - Verify live origin/routing proves playfranchisearchitect.com serves latest build after deployment.
 
-Blockers (Top 3)
-- Launch/SPARKED flip blocked: no email forwarding receipt for football@playfranchisearchitect.com.
-- Live origin/routing evidence for latest build on playfranchisearchitect.com not yet confirmed.
-- Cloudflare edge caches CSS (mitigated via content-hashed CSS filenames; verify hashed URL surfaces live).
+Blockers (top items)
+- Launch/SPARKED flip blocked: no email-forwarding receipt for football@playfranchisearchitect.com.
+- Live origin/routing evidence not yet confirmed for latest build on playfranchisearchitect.com.
+- No new open genius/audit items; queue exhausted pending external evidence.
 
 Human-Blocked Items (with age)
-- Email forwarding receipt for football@playfranchisearchitect.com: open since Session 24 (2026-06-30), ~14 sessions.
-- Live domain routing/origin verification post-deploy: recurring since Session 22.
+- Email forwarding receipt for football@playfranchisearchitect.com: open/unverified since Session 28 (2026-07-01), ~10 sessions.
+- Live domain build/routing verification: gated on same launch evidence, unresolved since Session 25 rebrand (2026-07-01).
+
+Verification (Session 38, passed)
+- node --check on mobileLoop.js and app.js
+- node --test test/mobile-loop.test.js — 9/9
+- Default shards — 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37)
+- npm run build:pages; npm run smoke:pages
+- node scripts/ops.mjs doctor --update-json — no items
+- windows-hide, Wave guard, secrets audit, blocker preflight, genius cache check
 
 Next Session
-- Get the email receipt, run launch-evidence, verify live routing, then flip Launch if evidence is clean.
+- Secure the email receipt, rerun launch-evidence, verify live routing, then flip Launch only on real evidence.

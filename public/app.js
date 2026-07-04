@@ -308,6 +308,41 @@ import {
   checkAndPruneRewindStorage
 } from "./lib/engagementFeatures.js";
 
+
+async function submitMobileGmDecisionChoice(choice) {
+  if (!choice?.decisionId || !choice?.choiceId) return;
+  await runAction(async () => {
+    const response = await api("/api/advance-week", {
+      method: "POST",
+      body: { count: 1, gmDecisionChoice: choice }
+    });
+    applyDashboard(response.state);
+    state.mobilePendingDecision = null;
+    if (response.gmDecision?.applied) {
+      const label = response.gmDecision.decision?.label || "GM decision";
+      const effect = response.gmDecision.decision?.effect || "choice recorded";
+      showToast(`${label}: ${effect}`);
+    }
+    await Promise.all([
+      loadRoster(),
+      loadFreeAgency(),
+      loadRetiredPool(),
+      loadStats(),
+      loadDraftState(),
+      loadScouting(),
+      loadQa(),
+      loadTeamHistory(),
+      loadCalendar(),
+      loadTransactionLog(),
+      loadNews(),
+      loadOwner(),
+      loadPipeline(),
+      loadSimJobs()
+    ]);
+    syncMobileLoopOverlay();
+  }, "Recording mobile GM decision...");
+}
+
 function syncMobileLoopOverlay() {
   const overlay = document.getElementById("mobileLoopOverlay");
   if (!overlay) return;
@@ -316,6 +351,12 @@ function syncMobileLoopOverlay() {
   const toggle = document.getElementById("mobileLoopToggle");
   if (toggle) toggle.checked = active;
   const advanceFromMobile = () => document.getElementById("advanceWeekBtn")?.click();
+  if (!overlay.dataset.mobileGmChoiceBound) {
+    overlay.dataset.mobileGmChoiceBound = "1";
+    overlay.addEventListener("vsfgm:mobile-gm-decision-choice", (event) => {
+      submitMobileGmDecisionChoice(event.detail).catch(presentActionError);
+    });
+  }
   if (active) {
     renderMobileOverlay(state, advanceFromMobile);
     if (state.dashboard?.phase === "regular-season") {

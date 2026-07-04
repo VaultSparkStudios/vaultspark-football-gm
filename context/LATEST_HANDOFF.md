@@ -1,3 +1,33 @@
+## Where We Left Off — 2026-07-04 Session 39 Closeout
+
+The `/goal /arc` mission continued from a clean Session 38 closeout and completed startup, live audit, implementation, second-order innovation follow-through, validation, and closeout prep.
+
+What changed:
+- Generated `docs/AUDIT_2026-07-04_SESSION39.*` after confirming the Session 38 queue was exhausted.
+- Made pending `/api/gm-decision` prompts fully actionable in the mobile loop: option choices now render inline inside the mobile decision deck.
+- Added `vsfgm:mobile-gm-decision-choice` dispatch from `public/lib/mobileLoop.js` and `submitMobileGmDecisionChoice()` in `public/app.js`.
+- Submitted selected mobile choices through the existing `/api/advance-week` `gmDecisionChoice` consequence path, then refreshed mobile state from the returned dashboard.
+- Regenerated `docs/INNOVATION_PACK.md` and marked the latest-audit follow-through candidate shipped.
+
+Verification passed:
+- `node --check public/lib/mobileLoop.js`
+- `node --check public/app.js`
+- `node --test test/mobile-loop.test.js` — 10/10
+- `npm test` — 283/283
+- `npm run test:ui` — 17/17
+- `npm run build:pages`
+- `npm run smoke:pages`
+- `node scripts/ops.mjs doctor --update-json` — no items
+- windows-hide, Wave guard, secrets audit, blocker preflight, genius cache exhausted 0 open
+
+Remaining blocker:
+- Do not flip Launch/SPARKED until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live origin/routing evidence proves `playfranchisearchitect.com` serves the latest build.
+
+Next best work:
+- Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
+
+Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
+
 ## Where We Left Off — 2026-07-04 Session 38 Closeout
 
 The `/goal /arc` mission continued after the recovered Session 37 checkpoint and completed startup, live audit, implementation, validation, and closeout prep.

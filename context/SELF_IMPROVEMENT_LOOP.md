@@ -440,3 +440,24 @@ Category scores:
 | Automation Coverage | 100 | Maintained cap; focused mobile-loop coverage now guards pressure-card derivation and fallback behavior. |
 
 Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip. Consider adding a narrower aggregate-suite watchdog so the wrapper timeout does not obscure already-green shard evidence.
+
+
+## 2026-07-04 — Session 39 Mobile Inline GM Decision Choices
+
+Score: 988 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap; default suite passed 283/283 and Playwright UI passed 17/17 after mobile choice coverage landed. |
+| Creative Alignment | 97 | +1 because mobile mode now lets the General Manager make the actual front-office choice in the phone-first loop instead of bouncing through a generic advance action. |
+| Momentum | 100 | Maintained cap; fresh live audit generated, implemented, second-order follow-through classified, and cache exhausted in the same arc. |
+| Engagement | 100 | Maintained cap; pending decision prompts now move from pressure awareness to direct agency on mobile. |
+| Process Quality | 100 | Maintained cap; rejected duplicate backend work and SPARKED flip on evidence, then fixed audit-cache format at source when closeout exposed it. |
+| Cross-Repo Coherence | 100 | Maintained cap; no sibling tree edits. |
+| Security Posture | 99 | Unchanged; no credential, auth, dependency, or sensitive data surface changed. |
+| Ecosystem Integration | 100 | Maintained cap; launch truth remains aligned across audit, task board, status, and evidence gates. |
+| Capital Efficiency | 92 | Unchanged; static-host-safe/browser-only work with no new paid service or variable runtime cost. |
+| Automation Coverage | 100 | Maintained cap; focused mobile-loop coverage now guards inline choice rendering and app-shell submission. |
+
+Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.

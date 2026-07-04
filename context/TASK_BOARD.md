@@ -458,3 +458,20 @@ Source: `docs/AUDIT_2026-07-04_SESSION37.md`.
 **Verification:** direct default shards 282/282 (core 64, runtime 117, sim-contract 63, sim-realism 1, studio 37), focused mobile-loop 9/9, `node --check public/lib/mobileLoop.js`, `node --check public/app.js`, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight.
 
 **Still blocked:** Launch/SPARKED remains evidence-gated until `football@playfranchisearchitect.com` forwarding/copying is verified with a real received-message receipt and current live origin/routing proves `playfranchisearchitect.com` serves the latest build.
+
+## Session 39 — Mobile Inline GM Decision Choices
+
+Source: `docs/AUDIT_2026-07-04_SESSION39.md`.
+
+| Item | Status |
+|------|--------|
+| Generate a fresh live-code audit after confirming the Session 38 queue was exhausted | Done |
+| Render pending `/api/gm-decision` option choices inline inside the mobile decision deck | Done |
+| Submit selected mobile choices through the existing `/api/advance-week` `gmDecisionChoice` consequence path | Done |
+| Add focused mobile-loop/app-shell regression coverage | Done |
+| latest-audit-follow-through innovation candidate | Done |
+| sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt and current live-origin/routing evidence |
+
+**Verification:** `node --check public/lib/mobileLoop.js`, `node --check public/app.js`, focused `node --test test/mobile-loop.test.js` 10/10, default `npm test` 283/283, Playwright UI 17/17, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight, genius cache exhausted 0 open.
+
+**Still blocked:** Launch/SPARKED remains evidence-gated until `football@playfranchisearchitect.com` forwarding/copying is verified with a real received-message receipt and current live origin/routing proves `playfranchisearchitect.com` serves the latest build.

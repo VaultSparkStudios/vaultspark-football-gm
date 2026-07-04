@@ -111,13 +111,7 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
       </div>
 
       <div class="ml-decision-deck" aria-label="General Manager decision deck">
-        ${decisionDeck.map((card, index) => `
-          <button class="ml-decision-card ${_esc(card.tone)}" data-mobile-decision-index="${index}" data-action="${_esc(card.action)}" data-target-tab="${_esc(card.targetTab || "")}">
-            <span class="ml-decision-kicker">${_esc(card.kicker)}</span>
-            <strong>${_esc(card.title)}</strong>
-            <span>${_esc(card.detail)}</span>
-          </button>
-        `).join("")}
+        ${decisionDeck.map((card, index) => renderDecisionCard(card, index)).join("")}
       </div>
 
       <div class="ml-actions">
@@ -145,6 +139,24 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
         document.querySelector(`[data-tab="${decision.targetTab}"]`)?.click();
       }
       overlay.dispatchEvent(new CustomEvent("vsfgm:mobile-decision", { detail: decision }));
+    });
+  });
+
+  overlay.querySelectorAll("[data-mobile-decision-choice-index]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const cardIndex = Number(btn.dataset.mobileDecisionChoiceIndex || 0);
+      const choiceIndex = Number(btn.dataset.mobileDecisionChoiceOption || 0);
+      const decision = decisionDeck[cardIndex];
+      const choice = decision?.choices?.[choiceIndex];
+      if (!decision || !choice) return;
+      overlay.dispatchEvent(new CustomEvent("vsfgm:mobile-gm-decision-choice", {
+        detail: {
+          decisionId: decision.decisionId,
+          choiceId: choice.id,
+          type: decision.type,
+          week: decision.week
+        }
+      }));
     });
   });
 
@@ -300,7 +312,15 @@ export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [], pending
       kicker: "GM decision",
       title: pendingDecision.label || pendingDecision.type || "Decision required",
       detail: pendingDecision.prompt || `${optionCount || "Multiple"} option${optionCount === 1 ? "" : "s"} waiting before you advance.`,
-      action: "advance-week",
+      action: "choose-gm-decision",
+      decisionId: pendingDecision.id,
+      type: pendingDecision.type,
+      week: pendingDecision.week,
+      choices: (pendingDecision.options || []).slice(0, 4).map((option) => ({
+        id: option.id,
+        label: option.label || option.id,
+        effect: option.effect || ""
+      })),
       targetTab: null,
       tone: "danger"
     });
@@ -365,6 +385,34 @@ export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [], pending
   });
 
   return cards.slice(0, 3);
+}
+
+function renderDecisionCard(card, index) {
+  const common = `
+    <span class="ml-decision-kicker">${_esc(card.kicker)}</span>
+    <strong>${_esc(card.title)}</strong>
+    <span>${_esc(card.detail)}</span>
+  `;
+  if (card.action === "choose-gm-decision" && card.choices?.length) {
+    return `
+      <article class="ml-decision-card ${_esc(card.tone)} ml-decision-card-with-options" data-action="${_esc(card.action)}">
+        ${common}
+        <div class="ml-decision-options" aria-label="GM decision options">
+          ${card.choices.map((choice, choiceIndex) => `
+            <button class="ml-decision-option-btn" data-mobile-decision-choice-index="${index}" data-mobile-decision-choice-option="${choiceIndex}">
+              <span>${_esc(choice.label)}</span>
+              ${choice.effect ? `<small>${_esc(choice.effect)}</small>` : ""}
+            </button>
+          `).join("")}
+        </div>
+      </article>
+    `;
+  }
+  return `
+    <button class="ml-decision-card ${_esc(card.tone)}" data-mobile-decision-index="${index}" data-action="${_esc(card.action)}" data-target-tab="${_esc(card.targetTab || "")}">
+      ${common}
+    </button>
+  `;
 }
 
 function _esc(s) {
