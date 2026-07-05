@@ -2326,34 +2326,73 @@ kbd {
   color: var(--accent);
 }
 
-/* ── Mobile Core Loop Overlay ────────────────────────────────────────────── */
+/* ── Mobile Core Loop Overlay (CANON-041: 100dvh scrollable drawer) ─────── */
 
 .mobile-loop-overlay {
   display: none;
   position: fixed;
   inset: 0;
+  height: 100vh;    /* fallback for browsers without dvh support */
+  height: 100dvh;   /* dynamic viewport — matches visible area as chrome collapses */
   background: var(--bg-0);
   z-index: 1000;
-  padding: 1rem;
-  overflow-y: auto;
+  overflow: hidden; /* scroll is owned by .ml-scroll */
 }
 
 .mobile-loop-overlay.hidden { display: none !important; }
 
 body.mobile-loop-active .mobile-loop-overlay {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.ml-card {
+/* ── Drawer shell: full-height column, max-width constrained ─────────────── */
+
+.ml-shell {
   width: 100%;
-  max-width: 420px;
+  max-width: 520px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Pinned header: team identity + context strip ────────────────────────── */
+
+.ml-topbar {
+  flex-shrink: 0;
+  padding-top: max(0.85rem, env(safe-area-inset-top));
+  padding-right: max(1rem, env(safe-area-inset-right));
+  padding-bottom: 0.75rem;
+  padding-left: max(1rem, env(safe-area-inset-left));
+  background:
+    var(--topbar-grad),
+    radial-gradient(circle at top left, rgba(var(--team-primary-rgb), 0.14), transparent 50%);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Scrollable middle: stats + pressure + decisions ─────────────────────── */
+
+.ml-scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 0.85rem max(1rem, env(safe-area-inset-right)) 0.85rem max(1rem, env(safe-area-inset-left));
+}
+
+/* ── Pinned footer: primary action dock ──────────────────────────────────── */
+
+.ml-footer {
+  flex-shrink: 0;
+  padding-top: 0.65rem;
+  padding-right: max(1rem, env(safe-area-inset-right));
+  padding-bottom: max(0.65rem, env(safe-area-inset-bottom));
+  padding-left: max(1rem, env(safe-area-inset-left));
   background: var(--bg-1);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 1.25rem;
-  margin: auto;
+  border-top: 1px solid var(--line);
 }
 
 .ml-header {
