@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { buildDraftPressureModel } from "../public/lib/tabDraft.js";
+import { getProspectNarrative } from "../public/lib/prospectNarratives.js";
 
 test("draft pressure model highlights user on-clock target", () => {
   const model = buildDraftPressureModel({
@@ -24,6 +25,8 @@ test("draft pressure model highlights user on-clock target", () => {
   assert.equal(model.targets[0].stealRisk, "critical");
   assert.ok(model.chips.includes("Steal risk critical"));
   assert.ok(model.insight.includes("pressure target"));
+  assert.match(model.targets[0].story, /staff's pressure read/);
+  assert.equal(model.targets[0].pressureTrait, getProspectNarrative({ id: "p2", name: "Field Tilt", position: "WR" }).pressureTrait);
 });
 
 test("draft pressure model is useful before a draft exists", () => {
@@ -51,4 +54,15 @@ test("draft pressure model can tell the room to wait on a low-risk target", () =
   assert.equal(model.status, "6 picks until your room");
   assert.equal(model.targets[0].stealRisk, "low");
   assert.ok(model.targets[0].urgency < 6);
+});
+
+test("prospect narratives include deterministic backstory pressure", () => {
+  const first = getProspectNarrative({ id: "p-backstory", name: "Ridge Runner", position: "LB", confidence: 80 });
+  const second = getProspectNarrative({ id: "p-backstory", name: "Ridge Runner", position: "LB", confidence: 80 });
+
+  assert.equal(first.backstory, second.backstory);
+  assert.match(first.backstory, /staff's pressure read/);
+  assert.ok(first.provingGround.length > 10);
+  assert.ok(first.pressureTrait.length > 4);
+  assert.match(first.line, /Staff flag:/);
 });

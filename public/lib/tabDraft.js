@@ -50,6 +50,7 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
       const waitWindow = isUserPick ? 0 : picksUntilUser;
       const urgency = Math.max(0, boardPressure + (needGap < 0 ? 8 : 0) + Math.max(0, currentRound - projectedRound + 1) * 6 - waitWindow * 2);
       const stealRisk = urgency >= 24 ? "critical" : urgency >= 14 ? "high" : urgency >= 6 ? "watch" : "low";
+      const narrative = getProspectNarrative(prospect);
       return {
         id: prospect.id,
         player: prospect.name,
@@ -60,7 +61,9 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
         label: needGap < 0 ? `Need ${Math.abs(needGap)}` : board ? `Board ${board}` : `Rank ${rank}`,
         stealRisk,
         urgency,
-        value
+        value,
+        story: narrative.backstory,
+        pressureTrait: narrative.pressureTrait
       };
     })
     .sort((a, b) => b.value - a.value)
@@ -193,6 +196,7 @@ export function renderDraftWarRoom() {
         <div class="draft-target-card">
           <strong>${escapeHtml(target.player || target.id)}</strong>
           <div>${escapeHtml(target.pos || "-")} | ${escapeHtml(target.label)} | Rank ${escapeHtml(target.rank)} | ${escapeHtml(target.stealRisk)} steal risk</div>
+          <div class="draft-target-story">${escapeHtml(target.story || "The room has no background read yet.")}</div>
         </div>`).join("") : `<div class="narrative-empty">No draft targets loaded yet.</div>`}
     </div>
     <div class="small">${escapeHtml(model.insight)}</div>

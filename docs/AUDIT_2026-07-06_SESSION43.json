@@ -1,0 +1,39 @@
+{
+  "generatedBy": "/audit skill v2 live-code",
+  "generatedAt": "2026-07-06",
+  "project": "franchise-architect-football",
+  "type": "app/public-product",
+  "rubric": "product/gameplay",
+  "totalRankedItems": 1,
+  "combinedPriority": 48.1,
+  "items": [
+    {
+      "rank": 1,
+      "tier": "fire",
+      "axis": "gameplay-immersion/draft-room",
+      "slug": "prospect-backstory-pressure-read",
+      "effortHours": 0.6,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 48.1,
+      "status": "shipped",
+      "why": "Draft pressure targets ranked need/value/steal risk, and prospectNarratives.js already generated deterministic origin/flag copy, but the Draft War Room target cards did not expose a richer human read for the prospect.",
+      "evidence": [
+        "node scripts/ops.mjs genius-list returned exhausted with 0 open items.",
+        "docs/INNOVATION_PACK.md only surfaced latest-audit-follow-through; the latest audit execution log already shipped both ranked items.",
+        "docs/rebrand/GRIDIRON_GM_VAULT_MERGE_REVIEW.md calls out prospect backstory as a low/medium-risk flavor upgrade, and public/lib/tabDraft.js already imports getProspectNarrative."
+      ],
+      "recipe": "Deepen getProspectNarrative with deterministic proving-ground and pressure-trait fields, attach those to buildDraftPressureModel targets, render them in Draft War Room cards, and assert the contract in focused tests."
+    }
+  ],
+  "rejected": [
+    {
+      "slug": "latest-audit-follow-through",
+      "reason": "Latest audit is exhausted: ops genius-list reported 0 open items and the execution log marks both Session 42 ranked items shipped."
+    },
+    {
+      "slug": "sparked-flip",
+      "reason": "Still blocked on real received-message proof for football@playfranchisearchitect.com forwarding/copying and current live-origin/routing evidence."
+    }
+  ]
+}

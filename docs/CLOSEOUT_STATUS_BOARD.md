@@ -1,24 +1,24 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-06 (Session 42 closeout) -->
+<!-- generated-at: 2026-07-06 (Session 43 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S42 ══════╗
-║  Date: 2026-07-06  ·  SIL: 991/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S43 ══════╗
+║  Date: 2026-07-06  ·  SIL: 992/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Generated `docs/AUDIT_2026-07-06_SESSION42.*` after confirmi  ║
-║  ✓ Added `scripts/sample-codebase.mjs`, a deterministic codebas  ║
-║  ✓ Bridged `node scripts/ops.mjs genius-list` to `scripts/cache  ║
-║  ✓ Added studio protocol smoke coverage for the sampler and a d  ║
-║  ✓ Regenerated `docs/INNOVATION_PACK.md` and `.cache/genius-lis  ║
+║  ✓ Generated docs/AUDIT_2026-07-06_SESSION43.* after confirming  ║
+║  ✓ Rejected stale latest-audit follow-through on evidence, then  ║
+║  ✓ public/lib/prospectNarratives.js now returns deterministic b  ║
+║  ✓ public/lib/tabDraft.js attaches those reads to Draft War Roo  ║
+║  ✓ public/styles.css styles the new target-card story line.      ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 991/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 992/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          99   ██████████                            ║
+║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
@@ -33,15 +33,15 @@
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
+║  · context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
-║  ✓ docs/CREATIVE_DIRECTION_RECORD.md                             ║
+║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 22 files  ·  M:16 A:0 D:0 ?:6                          ║
+║  Changes: 17 files  ·  M:14 A:0 D:0 ?:3                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,7 +52,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        1/1                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         287/287                                          ║
+║  Tests:         288/288                                          ║
 ║  IGNIS:         17d ago                                          ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  3d ago                                           ║

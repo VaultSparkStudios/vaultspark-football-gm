@@ -524,3 +524,17 @@ Source: `docs/AUDIT_2026-07-06_SESSION42.md`.
 | sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt and current live-origin/routing evidence |
 
 **Verification:** syntax checks for touched scripts/tests; focused studio smoke 18/18; default `npm test` 287/287; Playwright UI 17/17; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight; genius cache exhausted 0 open; canon conformance 0 gaps.
+
+## Session 43 — Draft Prospect Backstory Pressure
+
+Source: docs/AUDIT_2026-07-06_SESSION43.md.
+
+| Item | Status |
+|------|--------|
+| Generate fresh live-code audit after confirming Session 42 queue exhaustion | Done |
+| prospect-backstory-pressure-read — deterministic proving-ground and pressure-trait backstory for draft prospects | Done |
+| Surface prospect backstory in Draft War Room target cards | Done |
+| latest-audit-follow-through | Rejected on evidence — Session 42 audit/cache were already exhausted |
+| sparked-flip | Blocked — still missing real football@playfranchisearchitect.com forwarding/copying receipt and current live-origin/routing evidence |
+
+**Verification:** direct shards 288/288 (core 64, runtime 121, sim-contract 63, sim-realism 1, studio 39); focused draft-war-room 4/4; Playwright UI 17/17; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight; genius cache exhausted 0 open.

@@ -1,0 +1,26 @@
+{
+  "verification": {
+    "simRealism": "1/1",
+    "directDefaultShards": "288/288",
+    "playwright": "17/17",
+    "aggregateNpmTest": "timed out twice; not counted as green",
+    "pages": "build/smoke pass",
+    "simContract": "63/63",
+    "runtime": "121/121",
+    "core": "64/64",
+    "studio": "39/39"
+  },
+  "blockingFailing": 0,
+  "silScore": 992,
+  "session": 43,
+  "deferred": [
+    "sparked-flip: blocked on real email forwarding receipt and live-origin/routing evidence"
+  ],
+  "date": "2026-07-06",
+  "shipped": [
+    "prospect-backstory-pressure-read"
+  ],
+  "project": "franchise-architect-football",
+  "schemaVersion": "1.3",
+  "intent": "Complete full /goal /arc mission; exhaust primary and second-order innovation work."
+}

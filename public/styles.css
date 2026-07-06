@@ -3814,3 +3814,16 @@ html[data-theme="light"] .bg-layer {
 .theme-cx-accent[data-accent="azure"]   { background: #4f9ef0; }
 .theme-cx-accent[data-accent="crimson"] { background: #e0645f; }
 .theme-cx-accent[data-accent="violet"]  { background: #a98cf0; }
+
+
+.draft-target-card strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.draft-target-story {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}

@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 42 shipped protocol truth repairs: deterministic /audit code sampling via scripts/sample-codebase.mjs and cache-backed node scripts/ops.mjs genius-list output with parseable JSON coverage.",
+  "currentFocus": "Session 43 shipped prospect backstory pressure: deterministic proving-ground and pressure-trait reads now appear on Draft War Room target cards, with focused model coverage and all direct shards green.",
   "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
@@ -18,17 +18,17 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 287,
-    "pass": 287,
+    "totalTests": 288,
+    "pass": 288,
     "fail": 0,
     "lastRun": "2026-07-06",
     "newTestFiles": [],
     "newTestCount": 0,
-    "coverage": "Session 42 verified final tree with default npm test 287/287 (core 64/64, runtime 120/120, sim-contract 63/63, sim-realism 1/1, studio 39/39), Playwright UI 17/17, focused studio protocol smoke 18/18, syntax checks for scripts/sample-codebase.mjs scripts/ops.mjs test/studio-protocol-smoke.test.js, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, genius cache exhausted, and canon conformance 0 gaps.",
-    "uiSuiteNote": "Session 42 reran npm run test:ui successfully: 17/17."
+    "coverage": "Session 43 verified final tree with direct default shards 288/288 (core 64/64, runtime 121/121, sim-contract 63/63, sim-realism 1/1, studio 39/39), Playwright UI 17/17, focused draft-war-room 4/4, syntax checks for public/lib/prospectNarratives.js and public/lib/tabDraft.js, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, and genius cache exhausted. Aggregate npm test timed out twice under the harness and is not counted as green.",
+    "uiSuiteNote": "Session 43 reran npm run test:ui successfully: 17/17."
   },
-  "testsPassing": 287,
-  "testsTotal": 287,
+  "testsPassing": 288,
+  "testsTotal": 288,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -67,10 +67,10 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 991,
+  "silScore": 992,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 99,
+    "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 100,
     "processQuality": 100,
@@ -80,16 +80,19 @@
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 42,
+  "currentSession": 43,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
     "passed": [
-      "node --check scripts/sample-codebase.mjs",
-      "node --check scripts/ops.mjs",
-      "node --check test/studio-protocol-smoke.test.js",
-      "node --test test/studio-protocol-smoke.test.js 18/18",
-      "npm test 287/287 (core 64, runtime 120, sim-contract 63, sim-realism 1, studio 39)",
+      "node --check public/lib/prospectNarratives.js",
+      "node --check public/lib/tabDraft.js",
+      "node --test test/draft-war-room.test.js 4/4",
+      "npm run test:core 64/64",
+      "npm run test:runtime 121/121",
+      "npm run test:sim:contract 63/63",
+      "npm run test:sim:realism 1/1",
+      "npm run test:studio 39/39",
       "npm run test:ui 17/17",
       "npm run build:pages",
       "npm run smoke:pages",
@@ -97,11 +100,12 @@
       "node scripts/check-canon-044-waves.mjs",
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
-      "node scripts/cache-genius-list.mjs --write exhausted/0 open",
-      "canon conformance 0 gaps"
+      "node scripts/cache-genius-list.mjs --write exhausted/0 open"
     ],
     "date": "2026-07-06",
-    "timedOut": [],
+    "timedOut": [
+      "npm test aggregate wrapper timed out twice under harness; direct shards passed 288/288"
+    ],
     "failed": []
   },
   "silScoreV3MigratedAt": "2026-04-21",

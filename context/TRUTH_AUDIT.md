@@ -210,3 +210,10 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Queue truth: `docs/AUDIT_2026-07-06_SESSION42.md` contains two shipped ranked items; `docs/INNOVATION_PACK.md` marks latest-audit follow-through shipped; `.cache/genius-list.json` is exhausted with 0 open items.
 - Verification truth: current tree passed focused studio smoke 18/18, default `npm test` 287/287, Playwright UI 17/17, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, and canon conformance 0 gaps.
 - Launch truth unchanged: Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof and current live origin/routing evidence remains green.
+
+## 2026-07-06 — Session 43 truth updates
+
+- Prospect narrative truth repair: Draft War Room targets now show deterministic prospect backstory from the same source-derived narrative helper used by scouting/reveal surfaces, rather than only numeric need/rank/steal-risk data.
+- Queue truth: docs/AUDIT_2026-07-06_SESSION43.md contains one shipped ranked item; docs/INNOVATION_PACK.md rejects stale latest-audit follow-through with evidence; .cache/genius-list.json is exhausted with 0 open items.
+- Verification truth: aggregate npm test timed out twice under the harness before a summary and is not counted as green. Direct named shards passed with real exit codes: core 64, runtime 121, sim-contract 63, sim-realism 1, studio 39 (288 total). Playwright UI passed 17/17, and Pages build/smoke passed.
+- Launch truth unchanged: Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof and current live origin/routing evidence remains green.
