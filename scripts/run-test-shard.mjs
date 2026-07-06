@@ -22,6 +22,7 @@ export const SHARDS = {
     "test/beta-feedback.test.js",
     "test/browser-save-store.test.js",
     "test/browser-wiring.test.js",
+    "test/league-story-export.test.js",
     "test/challenge-codes.test.js",
     "test/create-api-client.test.js",
     "test/deterministic-ids.test.js",

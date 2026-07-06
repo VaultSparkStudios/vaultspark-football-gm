@@ -563,3 +563,22 @@ Category scores:
 | Automation Coverage | 100 | Maintained cap; focused tests now guard structured deadline offers, cap/challenge constraints, determinism, render metadata, and shard inclusion. |
 
 Follow-up: obtain real football@playfranchisearchitect.com delivery proof and current live origin/routing evidence before any SPARKED flip.
+
+## 2026-07-06 — Session 45 League Story Card Export
+
+SIL v3.0: **994 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 94, Automation Coverage 100).
+
+- Dev Health: 100 — direct default shards passed 294/294 after the new test was added to the runtime shard; doctor has no items.
+- Creative Alignment: 100 — the shipped feature strengthens the public beta's franchise-memory/share ritual without drifting from the Football General Manager sim identity.
+- Momentum: 100 — fresh audit item plus second-order innovation were both completed in one continuous arc.
+- Engagement: 100 — Settings now exposes a source-derived League Story Card that gives players a concrete zero-backend season artifact to save/share.
+- Process Quality: 100 — wrapper timeout/empty-output signals were not counted as green; direct shard and Playwright evidence were used instead.
+- Cross-Repo Coherence: 100 — no sibling repo tree edits; no Ark cargo needed because all work was repo-local.
+- Security Posture: 100 — no new dependency, no secret surface, escaping tests cover source-derived HTML output.
+- Ecosystem Integration: 100 — audit, innovation pack, genius cache, shard map, task board, handoff, and status agree on Session 45 exhaustion.
+- Capital Efficiency: 94 — +2 from Session 44 because the feature reuses dormant code, remains static-host safe, and adds no variable-cost integration.
+- Automation Coverage: 100 — new focused coverage plus shard assignment prevents a silent skipped-test regression.
+
+Committed SIL follow-ups:
+- `[SIL]` Keep default shard coverage as a blocking check whenever adding new `test/*.test.js` files.
+- `[SIL]` Treat empty-output wrapper failures as non-evidence and rerun the underlying command directly before claiming green.

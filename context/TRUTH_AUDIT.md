@@ -224,3 +224,10 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - The new deadline recommendations remain non-executable until the user enters the existing Trade Desk, preserving trade evaluator/cap/challenge source-of-truth boundaries.
 - Test inventory is now 292 direct default shard tests: core 64, runtime 125, sim-contract 63, sim-realism 1, studio 39. The new trade-deadline test is assigned to the runtime shard and covered by the shard guard.
 - Launch truth unchanged: launch/SPARKED remains blocked until football@playfranchisearchitect.com forwarding/copying and current live-origin/routing evidence are verified.
+
+## 2026-07-06 — Session 45 truth updates
+
+- Queue truth: Session 45 generated `docs/AUDIT_2026-07-06_SESSION45.*`; `scripts/cache-genius-list.mjs --write` reports 0 open items after the execution log and runtime shard assignment landed.
+- Test truth: `npm test` timed out before a summary and `npm run test:ui` returned exit 1 with no captured output. Neither is reported as green. Counted evidence is direct named shards 294/294 plus direct Playwright 17/17.
+- Browser truth: `leagueStoryCardBtn` is visible in Settings and `public/app.js` wires it to `buildLeagueStoryFromDashboard()` and `downloadLeagueStory()`; `test/browser-wiring.test.js` now guards that path.
+- Launch truth: no launch/SPARKED flip attempted; email forwarding/copying remains unverified without a real received-message receipt.

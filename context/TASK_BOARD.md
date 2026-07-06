@@ -552,3 +552,13 @@ Source: `docs/AUDIT_2026-07-06_SESSION44.md`.
 | sparked-flip | Blocked — still missing real football@playfranchisearchitect.com forwarding/copying receipt and current live-origin/routing evidence |
 
 **Verification:** direct shards 292/292 (core 64, runtime 125, sim-contract 63, sim-realism 1, studio 39); focused trade-deadline-frenzy 4/4; Playwright UI 17/17; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates allowed cost-neutral; doctor no items.
+
+## Session 45 — League Story Card Export
+
+| Item | Status |
+|---|---|
+| Generate fresh live-code audit after confirming Session 44 queue exhaustion | Done |
+| league-story-card-export — visible zero-backend League Story Card derived from dashboard champion, record, awards, leaders, cap, General Manager legacy, and time-capsule receipts | Done |
+| league-story-card-wiring-regression-net — browser wiring and shard coverage prove the new export path is included in CI/default shards | Done |
+| latest-audit-follow-through | Done — accepted and completed via live code re-check plus regression-net hardening |
+| launch/SPARKED email and live-origin evidence | Blocked on real received-message receipt plus current live origin/routing proof; no code-side fabrication attempted |

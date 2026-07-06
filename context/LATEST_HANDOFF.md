@@ -1,3 +1,32 @@
+## Where We Left Off — Session 45 (2026-07-06)
+
+The requested `/goal /arc` ran continuously through `/start -> /audit -> /implement -> /closeout` for Session 45.
+
+### Shipped
+
+- Generated fresh audit artifacts: `docs/AUDIT_2026-07-06_SESSION45.md` and `.json` after confirming Session 44's genius cache was exhausted.
+- Shipped `league-story-card-export`: the dormant `public/lib/leagueStoryExport.js` is now a visible Settings action via `leagueStoryCardBtn`.
+- The League Story Card downloads a self-contained HTML card derived from live dashboard state: champion, Super Bowl score/MVP, controlled-team record, awards, league leaders, cap space, General Manager legacy, best trade, and time-capsule receipts.
+- Shipped second-order innovation: `test/browser-wiring.test.js` now proves the new import/button/download wiring, and `scripts/run-test-shard.mjs` assigns `test/league-story-export.test.js` to the runtime shard so CI/default tests do not skip it.
+- `docs/INNOVATION_PACK.md` was refreshed from pending placeholders to actual shipped/rejected classification.
+
+### Verification
+
+- Direct default shards: 294/294 passing (`core` 64/64, `runtime` 127/127, `sim-contract` 63/63, `sim-realism` 1/1, `studio` 39/39).
+- Focused/syntax: `node --check public/lib/leagueStoryExport.js`, `node --check public/app.js`, focused story/browser suite 10/10.
+- UI: direct `npx playwright test` 17/17 passing. `npm run test:ui` returned exit 1 with no captured output, so the direct Playwright run is the counted source of truth.
+- Pages: `npm run build:pages`; `npm run smoke:pages`.
+- Studio gates: windows-hide guard, CANON-044 Wave guard, secrets audit, blocker preflight, canon conformance 0 gaps, release gate allow, cost gate allow, doctor no items.
+- `npm test` wrapper timed out before summary; direct named shards are the counted source of truth.
+
+### Still Blocked / Honest Deferrals
+
+- Launch/SPARKED remains evidence-blocked until a real received-message receipt proves `football@playfranchisearchitect.com` forwards/copies to Studio operations and current live-origin/routing evidence proves the public domain serves the latest build.
+- No email-forwarding proof was fabricated; no SPARKED flip was attempted.
+
+### Next Best Move
+
+Obtain the real on-domain email delivery receipt, rerun launch evidence/live-origin proof, then decide whether to flip launch posture. Otherwise continue beta-polish arcs from fresh live-code audit evidence.
 ## Where We Left Off — Session 44 (2026-07-06)
 
 The requested `/goal /arc` ran continuously through `/start -> /audit -> /implement -> /closeout` for Session 44.

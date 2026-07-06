@@ -1,0 +1,62 @@
+{
+  "session": "S45",
+  "date": "2026-07-06",
+  "repo": "Franchise Architect Football",
+  "headline": "Session 45 turned a dormant story-export helper into a source-derived League Story Card while tightening test-shard truth.",
+  "items": [
+    {
+      "title": "league-story-card-export",
+      "evidence": "Settings now exposes a League Story Card action that downloads a dashboard-derived card with champion, record, awards, leaders, cap, General Manager legacy, best trade, and time-capsule receipts.",
+      "projectImpact": 8,
+      "ecosystemImpact": 3
+    },
+    {
+      "title": "league-story-card-wiring-regression-net",
+      "evidence": "Browser wiring tests now prove the import/button/download path and the new story-export test is assigned to the runtime shard.",
+      "projectImpact": 6,
+      "ecosystemImpact": 4
+    },
+    {
+      "title": "audit-and-innovation-exhaustion",
+      "evidence": "Session 45 audit and innovation-pack follow-through are shipped; genius cache reports 0 open items.",
+      "projectImpact": 5,
+      "ecosystemImpact": 3
+    }
+  ],
+  "followUps": [
+    {
+      "title": "email-forwarding receipt",
+      "evidence": "Obtain real received-message proof for football@playfranchisearchitect.com before SPARKED flip."
+    },
+    {
+      "title": "live-origin/routing proof",
+      "evidence": "After deployment, verify playfranchisearchitect.com serves the latest build before launch posture changes."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "SPARKED launch evidence",
+      "evidence": "Still blocked on on-domain email forwarding/copying proof and current live-origin/routing evidence."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "wrapper test signals",
+      "evidence": "npm test timed out and npm run test:ui returned empty exit 1; direct shards 294/294 and direct Playwright 17/17 are the counted proof."
+    },
+    {
+      "title": "email-forwarding automation",
+      "evidence": "Rejected as phantom work; no local Brevo capability is declared and code cannot fabricate a received-message receipt."
+    },
+    {
+      "title": "missing closeout helper scripts",
+      "evidence": "render-state-vector, compute-entropy, and append-genome-snapshot are not present locally; no fabricated artifacts were produced."
+    }
+  ],
+  "diffStat": {
+    "suite": "direct default shards 294/294; direct Playwright 17/17; Pages build/smoke",
+    "files": 17,
+    "insertions": "n/a",
+    "deletions": "n/a"
+  }
+}

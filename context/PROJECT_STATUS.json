@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 44 shipped deadline offer ritual: Trade Deadline Frenzy now renders deterministic structured market recommendations with partner, need, ask, cap, rule, and risk fields, plus accessible action metadata.",
+  "currentFocus": "Session 45 shipped League Story Card export: Settings now downloads a source-derived zero-backend season card with champion, record, awards, leaders, cap, General Manager legacy, best trade, and time-capsule receipt data.",
   "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
@@ -18,17 +18,17 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 292,
-    "pass": 292,
+    "totalTests": 294,
+    "pass": 294,
     "fail": 0,
     "lastRun": "2026-07-06",
     "newTestFiles": [],
     "newTestCount": 0,
-    "coverage": "Session 44 verified final tree with direct default shards 292/292 (core 64/64, runtime 125/125, sim-contract 63/63, sim-realism 1/1, studio 39/39), Playwright UI 17/17, focused trade-deadline-frenzy 4/4, syntax checks for public/lib/tradeDeadlineFrenzy.js and scripts/run-test-shard.mjs, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, canon conformance 0 gaps, release/cost gates allowed cost-neutral, doctor no items.",
-    "uiSuiteNote": "Session 44 reran npm run test:ui successfully: 17/17."
+    "coverage": "Session 45 verified final tree with direct default shards 294/294 (core 64/64, runtime 127/127, sim-contract 63/63, sim-realism 1/1, studio 39/39), direct Playwright UI 17/17, focused league-story/browser wiring 10/10, syntax checks for public/lib/leagueStoryExport.js and public/app.js, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, canon conformance 0 gaps, release/cost gates allowed cost-neutral, doctor no items. npm test timed out before summary and npm run test:ui returned empty exit 1, so direct shard/Playwright evidence is the counted source of truth.",
+    "uiSuiteNote": "Session 45 direct npx playwright test passed 17/17; npm run test:ui returned exit 1 with no captured output and is not counted as proof."
   },
-  "testsPassing": 292,
-  "testsTotal": 292,
+  "testsPassing": 294,
+  "testsTotal": 294,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -67,7 +67,7 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 992,
+  "silScore": 994,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
@@ -77,25 +77,30 @@
     "crossRepoCoherence": 100,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
-    "capitalEfficiency": 92,
+    "capitalEfficiency": 94,
     "automationCoverage": 100
   },
-  "currentSession": 44,
+  "currentSession": 45,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
-    "timedOut": [],
-    "failed": [],
+    "timedOut": [
+      "npm test"
+    ],
+    "failed": [
+      "npm test timed out before final suite summary",
+      "npm run test:ui returned exit 1 with no captured output"
+    ],
     "passed": [
-      "node --check public/lib/tradeDeadlineFrenzy.js",
-      "node --check scripts/run-test-shard.mjs",
-      "node --test test/trade-deadline-frenzy.test.js 4/4",
+      "node --check public/lib/leagueStoryExport.js",
+      "node --check public/app.js",
+      "node --test test/league-story-export.test.js test/browser-wiring.test.js 10/10",
       "npm run test:core 64/64",
-      "npm run test:runtime 125/125",
+      "node scripts/run-test-shard.mjs runtime 127/127",
       "npm run test:sim:contract 63/63",
       "npm run test:sim:realism 1/1",
-      "npm run test:studio 39/39",
-      "npm run test:ui 17/17",
+      "node scripts/run-test-shard.mjs studio 39/39",
+      "npx playwright test 17/17",
       "npm run build:pages",
       "npm run smoke:pages",
       "node scripts/check-windows-hide.mjs",

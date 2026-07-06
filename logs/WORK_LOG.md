@@ -1,3 +1,9 @@
+## 2026-07-06 — Session 45: League Story Card Export
+
+- Ran the full `/goal /arc` flow after `git pull --rebase origin main`; Session 44 cache was exhausted, so a fresh live-code audit produced `league-story-card-export`.
+- Shipped the League Story Card export: dormant `public/lib/leagueStoryExport.js` now builds a source-derived card from dashboard champion, standings, awards, leaders, cap, General Manager legacy, trade, and time-capsule data; `public/app.js` and `public/game.html` expose it in Settings.
+- Shipped second-order innovation: browser wiring regression coverage now proves the new import/button/download path, and the new test is assigned to the runtime shard so default CI cannot skip it.
+- Verification: direct default shards 294/294, direct Playwright 17/17, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight, canon conformance 0 gaps, release/cost gates allow cost-neutral. `npm test` timed out and `npm run test:ui` returned empty exit 1, so direct shard/Playwright evidence is the counted source of truth.
 # Work Log
 
 ## 2026-07-04 — Session 38: mobile GM decision-first closeout

@@ -19,6 +19,76 @@ function fmtSalary(n) {
   return `$${(n / 1_000).toFixed(0)}K`;
 }
 
+function latest(list = []) {
+  return Array.isArray(list) && list.length ? list[list.length - 1] : null;
+}
+
+function nameFromAward(award) {
+  if (!award) return "—";
+  if (typeof award === "string") return award;
+  return award.name || award.player || award.playerName || "—";
+}
+
+function standingsRecord(dashboard) {
+  const teamId = dashboard?.controlledTeamId;
+  const row = (dashboard?.latestStandings || []).find((entry) => entry.team === teamId || entry.teamId === teamId);
+  if (!row) return "—";
+  return `${row.wins ?? 0}-${row.losses ?? 0}${row.ties ? `-${row.ties}` : ""}`;
+}
+
+function leaderName(rows = [], category) {
+  const leader = Array.isArray(rows) ? rows[0] : null;
+  if (!leader) return "—";
+  const name = leader.player || leader.name || leader.playerName || "—";
+  const team = leader.team || leader.teamId ? `, ${leader.team || leader.teamId}` : "";
+  const stat =
+    category === "passing" ? leader.yds ?? leader.yards :
+    category === "rushing" ? leader.yds ?? leader.yards :
+    category === "receiving" ? leader.yds ?? leader.yards :
+    category === "sacks" ? leader.sacks :
+    null;
+  return stat == null ? `${name}${team}` : `${name}${team} (${stat})`;
+}
+
+export function buildLeagueStoryFromDashboard(dashboard = {}) {
+  const team = dashboard.controlledTeam || {};
+  const champion = latest(dashboard.champions || []);
+  const lastAwards = dashboard.lastAwards || latest(dashboard.awards || []) || {};
+  const leaders = dashboard.leagueLeaders || dashboard.statLeaders || {};
+  const capsule = dashboard.timeCapsule?.graded || dashboard.timeCapsuleGrade || null;
+  const gmLegacy = dashboard.gmLegacy || {};
+  const cap = dashboard.cap || {};
+
+  return buildLeagueStory({
+    year: dashboard.currentYear,
+    leagueName: "Franchise Architect League",
+    teamName: team.name || dashboard.controlledTeamName || dashboard.controlledTeamId,
+    champion: champion?.championTeamName || champion?.championTeamId || champion,
+    sbMvpName: champion?.mvp?.name || champion?.superBowlMvp?.name,
+    sbMvpPosition: champion?.mvp?.position || champion?.superBowlMvp?.position || champion?.mvp?.pos,
+    sbScore: champion?.score,
+    awards: {
+      mvp: nameFromAward(lastAwards.mvp || lastAwards.MVP),
+      roy: nameFromAward(lastAwards.roy || lastAwards.OROY || lastAwards.DROY),
+      dpoy: nameFromAward(lastAwards.dpoy || lastAwards.DPOY)
+    },
+    bestDraftPick: dashboard.draftPickAssets?.[0]?.label || dashboard.draftPickAssets?.[0]?.summary,
+    bestTrade: (dashboard.newsLog || []).find((entry) => /trade/i.test(entry.headline || entry.message || ""))?.headline,
+    controlledTeamRecord: standingsRecord(dashboard),
+    leagueLeaders: {
+      passing: leaderName(leaders.passing, "passing"),
+      rushing: leaderName(leaders.rushing, "rushing"),
+      receiving: leaderName(leaders.receiving, "receiving"),
+      sacks: leaderName(leaders.sacks || leaders.defense, "sacks")
+    },
+    capSpace: cap.capSpace,
+    gmLegacy: gmLegacy.score != null ? `${gmLegacy.score} (${gmLegacy.grade || "grade pending"})` : "—",
+    timeCapsule: capsule
+      ? `${capsule.hits || 0}-${capsule.misses || 0}${capsule.pushes ? `, ${capsule.pushes} push` : ""}: ${capsule.reporterVerdict || "receipts filed"}`
+      : "No receipt ledger yet"
+  });
+}
+
 /**
  * Build the story object from session state.
  * @param {object} state — flat snapshot object from app.js (gameState / summary data)
@@ -37,7 +107,10 @@ export function buildLeagueStory(state) {
     bestTrade,
     biggestBust,
     controlledTeamRecord,
-    leagueLeaders = {}
+    leagueLeaders = {},
+    capSpace,
+    gmLegacy,
+    timeCapsule
   } = state;
 
   return {
@@ -45,7 +118,7 @@ export function buildLeagueStory(state) {
     leagueName: leagueName || "VaultSpark League",
     teamName: teamName || "Your Franchise",
     champion: champion || "TBD",
-    sbMvp: sbMvpName ? `${sbMvpName} (${sbMvpPosition})` : "—",
+    sbMvp: sbMvpName ? `${sbMvpName} (${sbMvpPosition || "—"})` : "—",
     sbScore: sbScore || "—",
     mvp: awards.mvp || "—",
     roy: awards.roy || "—",
@@ -57,7 +130,10 @@ export function buildLeagueStory(state) {
     passingLeader: leagueLeaders.passing || "—",
     rushingLeader: leagueLeaders.rushing || "—",
     receivingLeader: leagueLeaders.receiving || "—",
-    sacksLeader: leagueLeaders.sacks || "—"
+    sacksLeader: leagueLeaders.sacks || "—",
+    capSpace: fmtSalary(capSpace),
+    gmLegacy: gmLegacy || "—",
+    timeCapsule: timeCapsule || "—"
   };
 }
 
@@ -75,7 +151,7 @@ export function renderStoryHTML(story) {
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:#090c0e;color:#f5f1e7;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem}
-  .card{background:#111518;border:1px solid #2a2f35;border-radius:12px;max-width:680px;width:100%;overflow:hidden}
+  .card{background:#111518;border:1px solid #2a2f35;border-radius:12px;max-width:760px;width:100%;overflow:hidden}
   .hero{background:linear-gradient(135deg,#0d1f2d 0%,#1a2e42 100%);padding:2.5rem 2rem 2rem;text-align:center;border-bottom:1px solid #2a2f35}
   .league-name{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:#8ab4c2;margin-bottom:.5rem}
   .season-title{font-size:2rem;font-weight:700;color:#e8d5a0;margin-bottom:.25rem}
@@ -90,6 +166,7 @@ export function renderStoryHTML(story) {
   .cell-value.highlight{color:#f0c040}
   .footer{padding:1rem 1.5rem;background:#0c0f12;text-align:center;font-size:.75rem;color:#4a5568}
   .footer a{color:#8ab4c2;text-decoration:none}
+  @media (max-width:640px){body{padding:1rem}.grid{grid-template-columns:1fr}.cell:nth-child(odd){border-right:0}.hero{padding:2rem 1.25rem 1.5rem}}
 </style>
 </head>
 <body>
@@ -118,6 +195,14 @@ export function renderStoryHTML(story) {
       <div class="cell-value">${esc(story.controlledTeamRecord)}</div>
     </div>
     <div class="cell">
+      <div class="cell-label">Cap Space</div>
+      <div class="cell-value">${esc(story.capSpace)}</div>
+    </div>
+    <div class="cell">
+      <div class="cell-label">GM Legacy</div>
+      <div class="cell-value">${esc(story.gmLegacy)}</div>
+    </div>
+    <div class="cell">
       <div class="cell-label">Best Draft Pick</div>
       <div class="cell-value">${esc(story.bestDraftPick)}</div>
     </div>
@@ -140,6 +225,10 @@ export function renderStoryHTML(story) {
     <div class="cell">
       <div class="cell-label">Sack Leader</div>
       <div class="cell-value">${esc(story.sacksLeader)}</div>
+    </div>
+    <div class="cell">
+      <div class="cell-label">Time Capsule Receipts</div>
+      <div class="cell-value">${esc(story.timeCapsule)}</div>
     </div>
   </div>
   <div class="footer">

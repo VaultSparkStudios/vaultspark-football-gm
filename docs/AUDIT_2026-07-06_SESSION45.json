@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-06",
+  "session": 45,
+  "project": "franchise-architect-football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 1,
+    "combinedPriority": 62.2,
+    "topItem": "league-story-card-export",
+    "source": "live-code-audit"
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Engagement / zero-backend sharing",
+      "effortHours": 0.9,
+      "impact": 8,
+      "innovation": 9,
+      "priority": 62.2,
+      "slug": "league-story-card-export",
+      "status": "shipped",
+      "evidence": [
+        "public/lib/leagueStoryExport.js",
+        "public/app.js",
+        "public/game.html",
+        "test/league-story-export.test.js"
+      ],
+      "verification": [
+        "node --check public/lib/leagueStoryExport.js",
+        "node --check public/app.js",
+        "node --test test/league-story-export.test.js test/browser-wiring.test.js"
+      ]
+    }
+  ],
+  "deferred": [
+    {
+      "slug": "sparked-flip",
+      "reason": "Missing real football@playfranchisearchitect.com forwarding/copying receipt and current live-origin/routing proof."
+    },
+    {
+      "slug": "email-forwarding-automation",
+      "reason": "No local Brevo capability declared; receipt cannot be fabricated from static repo code."
+    },
+    {
+      "slug": "latest-audit-follow-through",
+      "reason": "Session 44 audit exhausted with deadline-offer-ritual closed."
+    }
+  ]
+}

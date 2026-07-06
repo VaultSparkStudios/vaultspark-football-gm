@@ -233,6 +233,7 @@ import {
   applyBrandIdentity
 } from "./lib/tabSettings.js";
 import { generateFranchiseNewsletter } from "./lib/franchiseNewsletter.js";
+import { buildLeagueStoryFromDashboard, downloadLeagueStory } from "./lib/leagueStoryExport.js";
 
 import {
   applyDashboard,
@@ -1599,6 +1600,10 @@ function bindEvents() {
   });
 
   document.getElementById("shareDynastyBtn")?.addEventListener("click", shareDynastyTimeline);
+  document.getElementById("leagueStoryCardBtn")?.addEventListener("click", () => {
+    const story = buildLeagueStoryFromDashboard(state.dashboard || {});
+    downloadLeagueStory(story);
+  });
   document.getElementById("franchiseNewsletterBtn")?.addEventListener("click", () => generateFranchiseNewsletter(state));
 
   // Season review modal close

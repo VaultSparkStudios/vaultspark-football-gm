@@ -1,42 +1,37 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: eef6903b0445 -->
-<!-- generated-at: 2026-07-06T05:23:43.396Z -->
+<!-- source-hash: c7118f1f0b71 -->
+<!-- generated-at: 2026-07-06T20:16:08.906Z -->
 
 # LATEST_HANDOFF (compact)
 
-Where We Left Off — Session 43 (2026-07-06)
+## Handoff Summary — Session 44 (2026-07-06)
 
-Session: 43
+Shipped
+- deadline-offer-ritual: public/lib/tradeDeadlineFrenzy.js now builds deterministic structured deadline offers (partner, target need, asset ask, cap impact, rule constraint, risk, role/cap metadata); rendered in Trade Deadline panel + styles.
+- Second-order deadline-action-accessibility-refinement: offer buttons carry data-deadline-action and offer-specific aria-label.
+- Added test/trade-deadline-frenzy.test.js on runtime shard.
+- Refreshed docs/INNOVATION_PACK.md and .cache/genius-list.json; audit queue exhausted, 0 open.
 
-Shipped this session:
-- docs/AUDIT_2026-07-06_SESSION43.* generated after Session 42 cache exhausted.
-- prospect-backstory-pressure-read shipped via compound-refinement pass (rejected stale latest-audit follow-through on evidence).
-- public/lib/prospectNarratives.js: deterministic backstory, provingGround, pressureTrait fields.
-- public/lib/tabDraft.js: attaches reads to Draft War Room pressure targets; renders .draft-target-story cards.
-- public/styles.css: styles target-card story line.
-- test/draft-war-room.test.js: deterministic backstory + Draft War Room target contract coverage.
-- Regenerated docs/INNOVATION_PACK.md and .cache/genius-list.json (status exhausted, 0 open).
+Current Intent
+- Full /goal /arc (start -> audit -> implement -> closeout); exhaust genius list plus second-order candidates; commit/push direct to main.
 
-Current intent:
-- Complete full /goal /arc mission (start, audit, implement, closeout); exhaust genius list plus second-order candidates; commit and push direct to main.
+Verification
+- Default shards 292/292; test:ui 17/17; build:pages + smoke:pages pass.
+- node --check on tradeDeadlineFrenzy.js and run-test-shard.mjs; focused trade-deadline 4/4.
+- windows-hide, canon-044-waves, secrets audit, blocker-preflight, canon-conformance (offline), doctor all clean.
+- Release/cost gates allow cost-neutral under slug vaultspark-football-gm. Footer manifest gate skipped (no manifest in repo).
 
-Now bucket (top items):
-- Obtain a real received-message receipt for football@playfranchisearchitect.com forwarding/copying.
-- Rerun node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json.
-- Verify live origin/routing proves playfranchisearchitect.com serves the latest build after deployment.
+Now Bucket
+1. Obtain on-domain email forwarding receipt for football@playfranchisearchitect.com.
+2. Capture live-origin/routing evidence proving playfranchisearchitect.com serves latest build.
+3. If building before launch evidence arrives, continue small browser-visible retention improvements that stay static-host-safe and source-of-truth tested.
 
-Blockers (top):
-- Launch/SPARKED flip blocked: no email forwarding receipt for football@playfranchisearchitect.com and no current live origin/routing proof of latest build.
-- Aggregate npm test timed out twice under harness before a summary; not counted green (all shards rerun directly, exit 0).
+Blockers
+1. Launch/SPARKED evidence-gated on real received-message receipt for football@playfranchisearchitect.com forwarding/copying.
+2. Same gate requires current live-origin/routing proof for playfranchisearchitect.com.
 
-Human-blocked items with age:
-- Email-forwarding receipt for football@playfranchisearchitect.com: outstanding since Session 28 (~15 sessions). Sole gate on launch.
+Human-Blocked (age)
+- Email forwarding receipt + live-origin/routing evidence: outstanding since at least Session 27 (~17 sessions). Sole barrier to SPARKED flip.
 
-Verification status (Session 43):
-- node --check on changed files; node --test test/draft-war-room.test.js 4/4.
-- Direct default shards 288/288 (core 64, runtime 121, sim-contract 63, sim-realism 1, studio 39).
-- npm run test:ui 17/17; build:pages; smoke:pages.
-- check-windows-hide, check-canon-044-waves, check-secrets --audit, ops blocker-preflight all clean.
-- cache-genius-list --write: exhausted / 0 open.
-
-Next session pointer: Secure the email-forwarding receipt, run launch-evidence with it, then verify live origin/routing before any SPARKED flip.
+Next Session
+- Get the email forwarding receipt and live-origin evidence, run launch-evidence with --email-evidence, then verify routing before any SPARKED flip.

@@ -4,10 +4,15 @@ import fs from "node:fs";
 
 const read = (path) => fs.readFileSync(new URL(path, import.meta.url), "utf8");
 
-test("app shell wires newsletter and contract tools to imported functions", () => {
+test("app shell wires share-card, newsletter, and contract tools to imported functions", () => {
   const appSource = read("../public/app.js");
+  const gameSource = read("../public/game.html");
 
   assert.match(appSource, /import \{ generateFranchiseNewsletter \} from "\.\/lib\/franchiseNewsletter\.js"/);
+  assert.match(appSource, /import \{ buildLeagueStoryFromDashboard, downloadLeagueStory \} from "\.\/lib\/leagueStoryExport\.js"/);
+  assert.match(appSource, /leagueStoryCardBtn/);
+  assert.match(appSource, /downloadLeagueStory\(story\)/);
+  assert.match(gameSource, /id="leagueStoryCardBtn"/);
   assert.match(appSource, /generateFranchiseNewsletter\(state\)/);
   assert.match(appSource, /await loadContractsTeam\(\);\s*renderCapCasualtyPanel\(\);/s);
   assert.doesNotMatch(appSource, /await loadContracts\(\);/);
