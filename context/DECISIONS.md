@@ -294,3 +294,13 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** Missing samplers and dead-end generator messages push future agents into ad hoc evidence gathering and can make startup guidance lie by omission. Bridging these commands to deterministic, tested outputs keeps `/audit` and `/go` aligned with live code and latest-audit truth.
 
 **Pattern established:** When a required protocol helper is public-safe and repeatedly missing, implement the smallest local executable shim and add a focused studio smoke assertion for both exit status and output shape.
+
+---
+
+## 2026-07-06 — Deadline offers are structured recommendations, not fabricated trades
+
+**Decision:** The Trade Deadline Frenzy panel should generate deterministic structured recommendations with partner, target need, asset ask, cap impact, rule constraint, and risk, but it should not fabricate an executable trade package unless the trade engine has actually evaluated that package.
+
+**Rationale:** The existing trade evaluator and cap/challenge restrictions are the source of truth for executable deals. Session 44's gap was decision pressure and market framing in the browser panel, not a new trade engine. Structured recommendations make the General Manager ritual sharper while preserving CANON-031 observability honesty.
+
+**Pattern established:** Player-facing recommendation cards may frame a market, but must name their constraints and route the user back to the source-of-truth action surface when execution requires validation.

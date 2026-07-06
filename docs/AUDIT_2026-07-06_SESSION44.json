@@ -1,0 +1,49 @@
+{
+  "generatedBy": "/audit skill v2 live-code",
+  "generatedAt": "2026-07-06",
+  "project": "franchise-architect-football",
+  "type": "app/public-product",
+  "rubric": "product/gameplay",
+  "totalRankedItems": 1,
+  "combinedPriority": 55.8,
+  "items": [
+    {
+      "rank": 1,
+      "tier": "fire",
+      "axis": "gameplay-immersion/trade-deadline",
+      "slug": "deadline-offer-ritual",
+      "effortHours": 0.8,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 55.8,
+      "status": "shipped",
+      "why": "The trade deadline panel exists and is browser-visible, but live code only renders advisory cards. The rebrand review specifically calls for deterministic deadline offers generated from standings, needs, and cap/trade discipline instead of hard-coded old-app behavior.",
+      "evidence": [
+        "public/lib/tradeDeadlineFrenzy.js currently returns three copy-only offers per buyer/seller/swing role.",
+        "public/lib/tabOverview.js renders the panel only during regular-season weeks 9-11, so the feature has a safe, narrow browser surface.",
+        "docs/rebrand/GRIDIRON_GM_VAULT_MERGE_REVIEW.md prioritizes Trade Deadline Frenzy as Wave 2 and warns to avoid fixed pick-cost behavior.",
+        "rg found no existing focused test for tradeDeadlineFrenzy.js, so regression coverage is missing."
+      ],
+      "recipe": "Upgrade buildTradeDeadlineFrenzy to generate deterministic offer cards with partner, target need, cap impact, asset ask, constraint, and risk from live dashboard inputs; render those fields in the existing panel; add focused tests proving role selection, determinism, and cap/challenge-safe constraints.",
+      "shippedEvidence": [
+        "public/lib/tradeDeadlineFrenzy.js returns structured deterministic deadline offers",
+        "public/styles.css renders the offer terms",
+        "test/trade-deadline-frenzy.test.js covers buyer, cap/challenge constraints, and determinism"
+      ],
+      "verification": [
+        "node --check public/lib/tradeDeadlineFrenzy.js",
+        "node --test test/trade-deadline-frenzy.test.js 3/3"
+      ]
+    }
+  ],
+  "rejected": [
+    {
+      "slug": "sparked-flip",
+      "reason": "Still blocked on real received-message proof for football@playfranchisearchitect.com forwarding/copying and current live-origin/routing evidence."
+    },
+    {
+      "slug": "live-field-visualization",
+      "reason": "Already present in Sim-Watch as a current field-position visualization; further work would need fresh play-by-play data design, not a quick port."
+    }
+  ]
+}

@@ -35,7 +35,8 @@ export const SHARDS = {
     "test/save-integrity.test.js",
     "test/session-lookup-indexes.test.js",
     "test/session8-contract-edges.test.js",
-    "test/session8-endpoints.test.js"
+    "test/session8-endpoints.test.js",
+    "test/trade-deadline-frenzy.test.js"
   ],
   "sim-contract": [
     "test/bootstrap-realism-profile.test.js",

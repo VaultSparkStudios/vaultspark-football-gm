@@ -3631,6 +3631,29 @@ html[data-theme="light"] .bg-layer {
 .trade-frenzy-head { display: flex; justify-content: space-between; gap: 0.5rem; align-items: center; }
 .trade-frenzy-chip { color: var(--accent-strong); font-size: 0.72rem; font-weight: 700; }
 .trade-frenzy-card button { margin-top: 0.65rem; }
+.trade-frenzy-terms {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0;
+}
+.trade-frenzy-terms div {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+}
+.trade-frenzy-terms dt {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.trade-frenzy-terms dd {
+  margin: 0;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.35;
+}
 
 .scout-reveal-pill {
   display: inline-flex;

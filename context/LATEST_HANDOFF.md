@@ -1,3 +1,31 @@
+## Where We Left Off — Session 44 (2026-07-06)
+
+The requested `/goal /arc` ran continuously through `/start -> /audit -> /implement -> /closeout` for Session 44.
+
+What changed:
+- Generated `docs/AUDIT_2026-07-06_SESSION44.*` from live code after confirming the Session 43 queue was exhausted.
+- Shipped `deadline-offer-ritual`: `public/lib/tradeDeadlineFrenzy.js` now builds deterministic structured deadline offers with partner, target need, asset ask, cap impact, rule constraint, risk, and role/cap metadata instead of copy-only advice.
+- Rendered the structured offer terms in the existing Trade Deadline panel and styled them in `public/styles.css`.
+- Shipped second-order `deadline-action-accessibility-refinement`: each offer action button now includes `data-deadline-action` and an offer-specific `aria-label`.
+- Added `test/trade-deadline-frenzy.test.js` and assigned it to the runtime shard so CI/default shards cannot skip it.
+- Refreshed `docs/INNOVATION_PACK.md` and `.cache/genius-list.json`; the latest audit queue is exhausted with 0 open items.
+
+Verification:
+- Direct default shards: 292/292 (`core` 64/64, `runtime` 125/125, `sim-contract` 63/63, `sim-realism` 1/1, `studio` 39/39).
+- `npm run test:ui` 17/17.
+- `npm run build:pages`; `npm run smoke:pages`.
+- `node --check public/lib/tradeDeadlineFrenzy.js`; `node --check scripts/run-test-shard.mjs`; focused trade-deadline 4/4.
+- `node scripts/check-windows-hide.mjs`; `node scripts/check-canon-044-waves.mjs`; `node scripts/check-secrets.mjs --audit`; `node scripts/ops.mjs blocker-preflight`; `node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline`; `node scripts/ops.mjs doctor --update-json`.
+- Release/cost gates with registered slug `vaultspark-football-gm` allowed cost-neutral. Footer manifest gate skipped because no footer manifest exists in this repo.
+
+Still blocked:
+- Launch/SPARKED remains evidence-gated until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live-origin/routing proves `playfranchisearchitect.com` serves the latest build.
+
+Next best work:
+- Obtain the on-domain email forwarding receipt and live-origin/routing evidence before any SPARKED flip.
+- If another build session runs before launch evidence arrives, continue with small browser-visible retention improvements that stay static-host-safe and source-of-truth tested.
+
+---
 ## Where We Left Off — 2026-07-06 Session 43 Closeout
 
 The /goal /arc mission continued from a clean Session 42 closeout and completed startup, live audit, implementation, second-order innovation follow-through, verification, and closeout write-back.

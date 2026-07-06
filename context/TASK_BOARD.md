@@ -538,3 +538,17 @@ Source: docs/AUDIT_2026-07-06_SESSION43.md.
 | sparked-flip | Blocked — still missing real football@playfranchisearchitect.com forwarding/copying receipt and current live-origin/routing evidence |
 
 **Verification:** direct shards 288/288 (core 64, runtime 121, sim-contract 63, sim-realism 1, studio 39); focused draft-war-room 4/4; Playwright UI 17/17; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight; genius cache exhausted 0 open.
+
+## Session 44 — Deadline Offer Ritual
+
+Source: `docs/AUDIT_2026-07-06_SESSION44.md`.
+
+| Item | Status |
+|------|--------|
+| Generate fresh live-code audit after confirming Session 43 queue exhaustion | Done |
+| deadline-offer-ritual — deterministic structured Trade Deadline Frenzy offers with partner, need, ask, cap, rule, and risk fields | Done |
+| deadline-action-accessibility-refinement — second-order offer action metadata and `aria-label` coverage | Done |
+| latest-audit-follow-through | Rejected on evidence — Session 44 audit/cache were already exhausted after implementation |
+| sparked-flip | Blocked — still missing real football@playfranchisearchitect.com forwarding/copying receipt and current live-origin/routing evidence |
+
+**Verification:** direct shards 292/292 (core 64, runtime 125, sim-contract 63, sim-realism 1, studio 39); focused trade-deadline-frenzy 4/4; Playwright UI 17/17; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates allowed cost-neutral; doctor no items.

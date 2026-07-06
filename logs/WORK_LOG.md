@@ -319,3 +319,13 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Verification: syntax checks for touched modules; focused draft-war-room 4/4; direct default shards 288/288 (core 64, runtime 121, sim-contract 63, sim-realism 1, studio 39); Playwright UI 17/17; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight; genius cache exhausted.
 - Honesty: aggregate npm test timed out twice under the harness and is not counted as green; direct shard exit codes are the suite evidence.
 - Launch truth unchanged: Launch/SPARKED remains blocked until football@playfranchisearchitect.com forwarding/copying has a real received-message receipt and current live-origin/routing evidence remains green.
+
+## 2026-07-06 — Session 44: deadline offer ritual
+
+- Ran the continuous `/goal /arc` mission from current repo evidence: required pull/rebase, startup gates, live audit, implementation, second-order innovation pass, verification, and closeout prep.
+- Generated `docs/AUDIT_2026-07-06_SESSION44.*` after confirming the Session 43 audit/cache were exhausted.
+- Shipped `deadline-offer-ritual`: Trade Deadline Frenzy now creates deterministic structured offers from standings, roster needs, cap room, and challenge mode, with partner/need/ask/cap/rule/risk fields rendered in the browser panel.
+- Shipped second-order `deadline-action-accessibility-refinement`: deadline action buttons now include action metadata and offer-specific accessible labels.
+- Fixed the shard map so the new trade-deadline regression test is part of the runtime shard and cannot be skipped by default CI/local suite coverage.
+- Verification: direct default shards 292/292 (core 64, runtime 125, sim-contract 63, sim-realism 1, studio 39); Playwright UI 17/17; Pages build/smoke; syntax checks; windows-hide; Wave guard; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates allowed cost-neutral; doctor no items.
+- Launch truth unchanged: Launch/SPARKED remains blocked until football@playfranchisearchitect.com forwarding/copying has a real received-message receipt and current live-origin/routing evidence remains green.

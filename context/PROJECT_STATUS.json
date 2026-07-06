@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 43 shipped prospect backstory pressure: deterministic proving-ground and pressure-trait reads now appear on Draft War Room target cards, with focused model coverage and all direct shards green.",
+  "currentFocus": "Session 44 shipped deadline offer ritual: Trade Deadline Frenzy now renders deterministic structured market recommendations with partner, need, ask, cap, rule, and risk fields, plus accessible action metadata.",
   "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
@@ -18,17 +18,17 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 288,
-    "pass": 288,
+    "totalTests": 292,
+    "pass": 292,
     "fail": 0,
     "lastRun": "2026-07-06",
     "newTestFiles": [],
     "newTestCount": 0,
-    "coverage": "Session 43 verified final tree with direct default shards 288/288 (core 64/64, runtime 121/121, sim-contract 63/63, sim-realism 1/1, studio 39/39), Playwright UI 17/17, focused draft-war-room 4/4, syntax checks for public/lib/prospectNarratives.js and public/lib/tabDraft.js, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, and genius cache exhausted. Aggregate npm test timed out twice under the harness and is not counted as green.",
-    "uiSuiteNote": "Session 43 reran npm run test:ui successfully: 17/17."
+    "coverage": "Session 44 verified final tree with direct default shards 292/292 (core 64/64, runtime 125/125, sim-contract 63/63, sim-realism 1/1, studio 39/39), Playwright UI 17/17, focused trade-deadline-frenzy 4/4, syntax checks for public/lib/tradeDeadlineFrenzy.js and scripts/run-test-shard.mjs, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, canon conformance 0 gaps, release/cost gates allowed cost-neutral, doctor no items.",
+    "uiSuiteNote": "Session 44 reran npm run test:ui successfully: 17/17."
   },
-  "testsPassing": 288,
-  "testsTotal": 288,
+  "testsPassing": 292,
+  "testsTotal": 292,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -80,16 +80,18 @@
     "capitalEfficiency": 92,
     "automationCoverage": 100
   },
-  "currentSession": 43,
+  "currentSession": 44,
   "lastAgent": "codex",
-  "sessionMode": "founder",
+  "sessionMode": "builder",
   "lastVerification": {
+    "timedOut": [],
+    "failed": [],
     "passed": [
-      "node --check public/lib/prospectNarratives.js",
-      "node --check public/lib/tabDraft.js",
-      "node --test test/draft-war-room.test.js 4/4",
+      "node --check public/lib/tradeDeadlineFrenzy.js",
+      "node --check scripts/run-test-shard.mjs",
+      "node --test test/trade-deadline-frenzy.test.js 4/4",
       "npm run test:core 64/64",
-      "npm run test:runtime 121/121",
+      "npm run test:runtime 125/125",
       "npm run test:sim:contract 63/63",
       "npm run test:sim:realism 1/1",
       "npm run test:studio 39/39",
@@ -100,13 +102,13 @@
       "node scripts/check-canon-044-waves.mjs",
       "node scripts/check-secrets.mjs --audit",
       "node scripts/ops.mjs blocker-preflight",
+      "node ../vaultspark-studio-ops/scripts/check-canon-conformance.mjs --project . --offline 0 gaps",
+      "node ../vaultspark-studio-ops/scripts/release-gate-check.mjs --slug vaultspark-football-gm allow",
+      "node ../vaultspark-studio-ops/scripts/check-cost-gate.mjs --project vaultspark-football-gm allow",
+      "node scripts/ops.mjs doctor --update-json no items",
       "node scripts/cache-genius-list.mjs --write exhausted/0 open"
     ],
-    "date": "2026-07-06",
-    "timedOut": [
-      "npm test aggregate wrapper timed out twice under harness; direct shards passed 288/288"
-    ],
-    "failed": []
+    "date": "2026-07-06"
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "T2_opusplan",
@@ -116,7 +118,7 @@
   "modelPlanModeSlash": "/model opusplan",
   "planModeDetected": "missing",
   "planModeCheckedAt": "2026-07-01T05:54:57.303Z",
-  "sessionModeAutoShiftedAt": "2026-07-04T08:08:36.928Z",
+  "sessionModeAutoShiftedAt": "2026-07-06T05:23:32.124Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-05-22",
@@ -136,13 +138,13 @@
   "silHealth": 949,
   "silHealthMax": 1000,
   "doctorScore": {
-    "passing": 1,
+    "blockingFailing": 0,
     "total": 1,
     "failing": 0,
-    "warning": 0,
     "score": 100,
     "date": "2026-07-06",
-    "blockingFailing": 0
+    "passing": 1,
+    "warning": 0
   },
   "complianceScore": 37,
   "complianceTotal": 37,

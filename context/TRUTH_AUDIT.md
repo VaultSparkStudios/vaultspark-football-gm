@@ -217,3 +217,10 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Queue truth: docs/AUDIT_2026-07-06_SESSION43.md contains one shipped ranked item; docs/INNOVATION_PACK.md rejects stale latest-audit follow-through with evidence; .cache/genius-list.json is exhausted with 0 open items.
 - Verification truth: aggregate npm test timed out twice under the harness before a summary and is not counted as green. Direct named shards passed with real exit codes: core 64, runtime 121, sim-contract 63, sim-realism 1, studio 39 (288 total). Playwright UI passed 17/17, and Pages build/smoke passed.
 - Launch truth unchanged: Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof and current live origin/routing evidence remains green.
+
+## 2026-07-06 — Session 44 truth updates
+
+- Trade Deadline Frenzy no longer claims only generic market advice. The browser panel now renders deterministic structured recommendation cards from live dashboard inputs, including partner, need, ask, cap impact, rule constraint, and risk.
+- The new deadline recommendations remain non-executable until the user enters the existing Trade Desk, preserving trade evaluator/cap/challenge source-of-truth boundaries.
+- Test inventory is now 292 direct default shard tests: core 64, runtime 125, sim-contract 63, sim-realism 1, studio 39. The new trade-deadline test is assigned to the runtime shard and covered by the shard guard.
+- Launch truth unchanged: launch/SPARKED remains blocked until football@playfranchisearchitect.com forwarding/copying and current live-origin/routing evidence are verified.

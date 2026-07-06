@@ -69,3 +69,7 @@ CDR reviewed — no new product creative direction was given this session beyond
 ## 2026-07-06 — Session 42 review
 
 CDR reviewed — no new creative direction this session. Founder direction was operational/process discipline for the continuous arc, saturation, verification, and direct-main closeout.
+
+## 2026-07-06 — Session 44 CDR review
+
+CDR reviewed — no new founder creative direction specific to Franchise Architect: Football was added this session. The `/goal /arc` quality bar was procedural session guidance, not a new product creative constraint.

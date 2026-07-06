@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-06 (Session 43 closeout) -->
+<!-- generated-at: 2026-07-06 (Session 44 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S43 ══════╗
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S44 ══════╗
 ║  Date: 2026-07-06  ·  SIL: 992/1000  ·  Velocity: —              ║
-║  Mode: FOUNDER  ·  Agent: codex                                  ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Generated docs/AUDIT_2026-07-06_SESSION43.* after confirming  ║
-║  ✓ Rejected stale latest-audit follow-through on evidence, then  ║
-║  ✓ public/lib/prospectNarratives.js now returns deterministic b  ║
-║  ✓ public/lib/tabDraft.js attaches those reads to Draft War Roo  ║
-║  ✓ public/styles.css styles the new target-card story line.      ║
+║  ✓ Generated `docs/AUDIT_2026-07-06_SESSION44.*` from live code  ║
+║  ✓ Shipped `deadline-offer-ritual`: `public/lib/tradeDeadlineFr  ║
+║  ✓ Rendered the structured offer terms in the existing Trade De  ║
+║  ✓ Shipped second-order `deadline-action-accessibility-refineme  ║
+║  ✓ Added `test/trade-deadline-frenzy.test.js` and assigned it t  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 992/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -29,19 +29,19 @@
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
-║  · context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
-║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
-║  · context/PROJECT_STATUS.json                                   ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ docs/CREATIVE_DIRECTION_RECORD.md                             ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 22 files  ·  M:16 A:0 D:0 ?:6                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,7 +52,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        1/1                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         288/288                                          ║
+║  Tests:         292/292                                          ║
 ║  IGNIS:         17d ago                                          ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  3d ago                                           ║

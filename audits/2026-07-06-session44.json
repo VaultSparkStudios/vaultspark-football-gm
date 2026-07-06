@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-07-06",
+  "session": 44,
+  "project": "franchise-architect-football",
+  "silScore": 992,
+  "velocity": 1,
+  "shipped": [
+    "deadline-offer-ritual",
+    "deadline-action-accessibility-refinement",
+    "test-shard-truth"
+  ],
+  "deferred": [
+    "sparked-flip",
+    "latest-audit-follow-through"
+  ],
+  "humanActionRequired": [
+    "football@playfranchisearchitect.com forwarding/copying receipt and live-origin/routing proof before SPARKED flip"
+  ],
+  "verification": {
+    "canonGaps": 0,
+    "simRealism": "1/1",
+    "studio": "39/39",
+    "pages": "build/smoke green",
+    "doctorBlockingFailing": 0,
+    "core": "64/64",
+    "ui": "17/17",
+    "defaultShards": "292/292",
+    "simContract": "63/63",
+    "runtime": "125/125"
+  },
+  "honesty": [
+    "No fabricated executable trades; deadline cards remain recommendations routed to Trade Desk source-of-truth.",
+    "Footer manifest gate skipped because no manifest exists.",
+    "Missing local closeout helper scripts recorded."
+  ],
+  "launchStatus": "blocked on email forwarding receipt and live-origin/routing evidence"
+}
