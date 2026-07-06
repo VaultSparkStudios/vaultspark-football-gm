@@ -1558,15 +1558,6 @@ td.tone-info {
     grid-template-columns: 1fr;
   }
 
-  .side-menu {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    position: static;
-  }
-
-  .menu-btn {
-    text-align: center;
-  }
-
   .history-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1589,12 +1580,9 @@ td.tone-info {
     align-items: stretch;
   }
 
-  .side-menu {
-    grid-template-columns: 1fr;
-  }
-
   .menu-btn {
     padding: 0.44rem 0.5rem;
+    min-height: 44px;
   }
 
   .history-card-grid {
@@ -1612,6 +1600,146 @@ td.tone-info {
 
   label {
     min-width: 100%;
+  }
+}
+
+/* ── Mobile Nav Drawer — CANON-041 ────────────────────────────────────────── */
+
+/* Hamburger toggle: hidden on desktop, shown on mobile (≤980px) */
+.nav-drawer-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  flex: 0 0 40px;
+  padding: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(var(--team-tertiary-rgb), 0.3);
+  background: var(--panel);
+  cursor: pointer;
+  z-index: 51;
+}
+.nav-drawer-toggle:hover {
+  background: var(--panel-strong);
+  border-color: rgba(var(--team-tertiary-rgb), 0.55);
+}
+
+/* Three-bar hamburger icon */
+.hamburger-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 18px;
+}
+.hamburger-bars span {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Animate to X when drawer-lock is set */
+body.nav-drawer-lock .nav-drawer-toggle .hamburger-bars span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+body.nav-drawer-lock .nav-drawer-toggle .hamburger-bars span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+body.nav-drawer-lock .nav-drawer-toggle .hamburger-bars span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Active section label in topbar (mobile only) */
+.nav-active-label {
+  display: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90px;
+  align-self: center;
+}
+
+/* Scrim backdrop */
+.nav-drawer-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 49;
+}
+
+/* Scroll-lock while drawer open */
+body.nav-drawer-lock {
+  overflow: hidden;
+}
+
+/* Mobile topbar-brand becomes flex row to fit hamburger */
+@media (max-width: 980px) {
+  .topbar-brand-mobile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .topbar-brand-mobile > div {
+    min-width: 0;
+    flex: 1;
+  }
+}
+
+/* Mobile drawer mode: ≤ 980px — side-menu becomes 100dvh fixed drawer */
+@media (max-width: 980px) {
+  .nav-drawer-toggle {
+    display: flex;
+  }
+
+  .nav-active-label {
+    display: block;
+  }
+
+  .side-menu {
+    /* Override the horizontal grid; become a fixed 100dvh drawer */
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: min(280px, 85vw);
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    z-index: 50;
+    border-radius: 0 18px 18px 0;
+    padding: 1rem 0.65rem 2rem;
+    align-content: start;
+    transform: translateX(-105%);
+    transition: transform 0.24s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.24s ease;
+    box-shadow: none;
+    /* preserve the nav background */
+    background:
+      linear-gradient(180deg, rgba(9, 14, 16, 0.92), rgba(8, 13, 15, 0.84)),
+      radial-gradient(circle at top left, rgba(var(--team-primary-rgb), 0.14), transparent 34%);
+  }
+
+  .side-menu.drawer-open {
+    transform: translateX(0);
+    box-shadow: 6px 0 40px rgba(0, 0, 0, 0.44);
+  }
+
+  /* Restore left-aligned text inside drawer */
+  .menu-btn {
+    text-align: left !important;
   }
 }
 

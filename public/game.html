@@ -12,10 +12,19 @@
   <body class="game-body">
     <div class="bg-layer"></div>
     <header class="game-topbar">
-      <div class="topbar-brand">
-        <div class="brand-kicker">VaultSpark Studios Franchise Desk</div>
-        <h1>VaultSpark Football GM</h1>
-        <p id="topMetaText" class="small">Loading...</p>
+      <div class="topbar-brand topbar-brand-mobile">
+        <button id="navDrawerToggle" class="nav-drawer-toggle" type="button"
+          aria-label="Open navigation" aria-expanded="false" aria-controls="sideMenu">
+          <span class="hamburger-bars" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+        <div>
+          <div class="brand-kicker">VaultSpark Studios Franchise Desk</div>
+          <h1>VaultSpark Football GM</h1>
+          <p id="topMetaText" class="small">Loading...</p>
+        </div>
+        <span id="navActiveLabel" class="nav-active-label" aria-hidden="true">Overview</span>
       </div>
       <div class="topbar-center">
         <div class="small">User Team Box Scores</div>
@@ -35,6 +44,9 @@
       </div>
     </header>
 
+    <!-- Nav drawer scrim (mobile only) -->
+    <div id="navDrawerScrim" class="nav-drawer-scrim" hidden></div>
+
     <!-- ── Beat Reporter News Ticker ─────────────────────────────────── -->
     <div id="newsTicker" class="news-ticker hidden" aria-live="polite">
       <span class="news-ticker-icon">📡</span>
@@ -43,7 +55,7 @@
     </div>
 
     <main class="game-shell">
-      <aside class="side-menu">
+      <aside id="sideMenu" class="side-menu">
         <div class="menu-group-header">Gameday</div>
         <button class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview">Overview</button>
         <button class="menu-btn" data-tab="statsTab" data-testid="tab-stats">Statistics</button>

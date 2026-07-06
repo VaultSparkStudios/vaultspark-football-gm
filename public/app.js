@@ -1,3 +1,4 @@
+import { initMobileNav, updateMobileNavLabel } from "./lib/mobileNav.js";
 import { mountTutorial } from "./lib/tutorialCampaign.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
@@ -226,7 +227,7 @@ import {
 
 import {
   applyDashboard,
-  activateTab,
+  activateTab as _activateTab,
   loadState,
   loadScheduleWeek,
   loadCalendar,
@@ -297,6 +298,10 @@ import {
   checkAndPruneRewindStorage
 } from "./lib/engagementFeatures.js";
 
+function activateTab(tabId) {
+  _activateTab(tabId);
+  updateMobileNavLabel(tabId);
+}
 
 function bindEvents() {
   bindMenuTabs(activateTab);
@@ -1669,6 +1674,7 @@ async function init() {
   initGistSyncUI();
   mountTutorial({ onComplete: () => loadState(), onSkip: () => {} });
   mountBetaFeedback();
+  initMobileNav();
   if (typeof initMobileLoop === "function") {
     initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
   }
