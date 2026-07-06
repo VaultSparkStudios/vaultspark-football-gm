@@ -1,0 +1,57 @@
+{
+  "generatedBy": "/audit skill v2 live-code",
+  "generatedAt": "2026-07-06",
+  "project": "franchise-architect-football",
+  "type": "app/public-product",
+  "rubric": "infrastructure",
+  "totalRankedItems": 2,
+  "combinedPriority": 71.2,
+  "items": [
+    {
+      "rank": 1,
+      "tier": "fire",
+      "axis": "audit-protocol/tooling-honesty",
+      "slug": "sample-codebase-protocol-sampler",
+      "effortHours": 1,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 42.8,
+      "status": "shipped",
+      "why": "The /audit skill explicitly calls `node scripts/sample-codebase.mjs --max-tokens 30000 --json`, and recent audits repeatedly logged that the helper is absent. That absence forces agents into ad hoc sampling and makes audit evidence less reproducible.",
+      "evidence": [
+        "scripts/sample-codebase.mjs is absent in the live tree.",
+        "docs/AUDIT_2026-07-04_SESSION41.md records the missing sampler fallback.",
+        "The local /audit skill execution failed with MODULE_NOT_FOUND for scripts/sample-codebase.mjs."
+      ],
+      "recipe": "Add a deterministic, Windows-safe sampler that honors --max-tokens and --json, skips heavy/generated directories, ranks core app/runtime/test/studio files first, and emits enough metadata for an agent to prove what was sampled."
+    },
+    {
+      "rank": 2,
+      "tier": "fire",
+      "axis": "genius-list/source-of-truth",
+      "slug": "ops-genius-list-cache-bridge",
+      "effortHours": 0.5,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 28.4,
+      "status": "shipped",
+      "why": "The startup brief instructs agents to run `node scripts/ops.mjs genius-list`, but the command currently says no local generator is configured even though `scripts/cache-genius-list.mjs` exists and is the current source-of-truth bridge over the latest audit.",
+      "evidence": [
+        "node scripts/ops.mjs genius-list prints a no-generator message.",
+        "scripts/cache-genius-list.mjs can write/read `.cache/genius-list.json` from the latest audit and TASK_BOARD truth.",
+        "test/studio-protocol-smoke.test.js already covers cache-genius-list but not the advertised ops genius-list command."
+      ],
+      "recipe": "Route `ops genius-list` through `cache-genius-list --write`, then print the resulting cache summary and JSON so `/start` and `/go` receive actionable, truthful ranked work or an exhausted signal."
+    }
+  ],
+  "rejected": [
+    {
+      "slug": "sparked-flip",
+      "reason": "Still blocked on real received-message proof for football@playfranchisearchitect.com forwarding/copying and current live-origin/routing evidence; no fabricated launch evidence used."
+    },
+    {
+      "slug": "feature-depth-new-gameplay",
+      "reason": "The latest game loop is already saturated through Session 41 mobile GM decision work. This audit's live broken premises are infrastructure/tooling truth gaps that affect every future arc."
+    }
+  ]
+}

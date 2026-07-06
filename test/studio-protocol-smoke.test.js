@@ -75,8 +75,10 @@ test("documented Studio protocol shims load", () => {
     ["scripts/credential-watch.mjs", "--silent"],
     ["scripts/ark.mjs", "drain", "--silent"],
     ["scripts/record-skill-cost.mjs", "--skill", "studio-closeout", "--phase", "start"],
+    ["scripts/sample-codebase.mjs", "--max-tokens", "1200", "--json"],
     ["scripts/cache-genius-list.mjs", "--write"],
     ["scripts/ops.mjs", "blocker-preflight", "--json"],
+    ["scripts/ops.mjs", "genius-list"],
     ["scripts/ops.mjs", "cache-genius-list", "--check"],
     ["scripts/ops.mjs", "innovation-pack", "--dry-run"],
     ["scripts/ops.mjs", "launch-evidence", "--fixture", "test/fixtures/launch-evidence-ready.json"]
@@ -87,6 +89,38 @@ test("documented Studio protocol shims load", () => {
     });
     assert.equal(result.status, 0, `${args.join(" ")}\n${result.stderr}`);
   }
+});
+
+
+test("sample-codebase emits bounded JSON with prioritized live files", () => {
+  const result = spawnSync(process.execPath, ["scripts/sample-codebase.mjs", "--max-tokens", "25000", "--json"], {
+    cwd: process.cwd(),
+    encoding: "utf8"
+  });
+  assert.equal(result.status, 0, result.stderr);
+  const sample = JSON.parse(result.stdout);
+  assert.equal(sample.maxTokens, 25000);
+  assert.equal(sample.usedTokens <= 25000, true);
+  assert.equal(sample.files.length > 0, true);
+  assert.equal(sample.files[0].path, "public/app.js");
+  assert.equal(sample.files.some((file) => file.path === "scripts/ops.mjs"), true);
+  assert.equal(sample.files.some((file) => file.path.includes("node_modules")), false);
+});
+
+
+test("ops genius-list emits a parseable cache summary", () => {
+  const result = spawnSync(process.execPath, ["scripts/ops.mjs", "genius-list"], {
+    cwd: process.cwd(),
+    encoding: "utf8"
+  });
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stdout, /genius list: (open|exhausted)/);
+  const jsonStart = result.stdout.indexOf("{");
+  assert.equal(jsonStart >= 0, true);
+  const cache = JSON.parse(result.stdout.slice(jsonStart));
+  assert.equal(typeof cache.status, "string");
+  assert.equal(Array.isArray(cache.items), true);
+  assert.equal(Array.isArray(cache.closed), true);
 });
 
 test("windows-hide guard detects dynamic child_process imports", () => {

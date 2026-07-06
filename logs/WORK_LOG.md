@@ -299,3 +299,13 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Shipped second-order `latest-audit-follow-through`: regenerated `docs/INNOVATION_PACK.md`, verified the only candidate against live code, and regenerated the genius cache to exhausted/0 open.
 - Verification: `node --check public/app.js`; `node --check public/lib/mobileLoop.js`; focused `node --test test/mobile-loop.test.js` 12/12; default `npm test` 285/285; `npm run test:ui` 17/17; `npm run build:pages`; `npm run smoke:pages`; doctor no items; windows-hide; Wave guard; secrets audit; blocker preflight; cache check fresh/exhausted; canon conformance 0 gaps.
 - Launch truth unchanged: Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live-origin/routing evidence remains green.
+
+## 2026-07-06 — Session 42: audit sampler and genius-list truth closeout
+
+- Ran the continuous `/goal /arc` mission from current repo evidence: required pull/rebase, startup gates, canon checks, live infrastructure-rubric audit, implementation, innovation-pack follow-through, verification, and closeout prep.
+- Generated `docs/AUDIT_2026-07-06_SESSION42.*` after confirming the Session 41 audit/cache were exhausted.
+- Shipped `sample-codebase-protocol-sampler`: `scripts/sample-codebase.mjs` now gives `/audit` a deterministic, bounded, JSON-capable live-code sample instead of forcing agents into ad hoc fallback reads.
+- Shipped `ops-genius-list-cache-bridge`: `node scripts/ops.mjs genius-list` now generates and prints the cache-backed latest-audit queue/exhausted state with parseable JSON.
+- Shipped second-order `latest-audit-follow-through` plus a compound refinement: studio smoke now asserts `ops genius-list` output is parseable, not merely exit-code green.
+- Verification: syntax checks for touched scripts/tests; `node --test test/studio-protocol-smoke.test.js` 18/18; default `npm test` 287/287; `npm run test:ui` 17/17; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight; genius cache exhausted; canon conformance 0 gaps.
+- Launch truth unchanged: Launch/SPARKED remains blocked until `football@playfranchisearchitect.com` forwarding/copying has a real received-message receipt and current live-origin/routing evidence remains green.

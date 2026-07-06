@@ -1,18 +1,19 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-04 (Session 41 closeout) -->
+<!-- generated-at: 2026-07-06 (Session 42 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S41 ══════╗
-║  Date: 2026-07-04  ·  SIL: 991/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S42 ══════╗
+║  Date: 2026-07-06  ·  SIL: 991/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
+║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Generated `docs/AUDIT_2026-07-04_SESSION41.*` after confirmi  ║
-║  ✓ Wired the mobile deck's generic `vsfgm:mobile-decision` even  ║
-║  ✓ Preserved the single source-of-truth mutation path by submit  ║
-║  ✓ Added focused app-shell coverage in `test/mobile-loop.test.j  ║
+║  ✓ Generated `docs/AUDIT_2026-07-06_SESSION42.*` after confirmi  ║
+║  ✓ Added `scripts/sample-codebase.mjs`, a deterministic codebas  ║
+║  ✓ Bridged `node scripts/ops.mjs genius-list` to `scripts/cache  ║
+║  ✓ Added studio protocol smoke coverage for the sampler and a d  ║
 ║  ✓ Regenerated `docs/INNOVATION_PACK.md` and `.cache/genius-lis  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 991/1000 ═══════════════════════════════════════╗
@@ -34,30 +35,32 @@
 ║  ✓ logs/WORK_LOG.md                                              ║
 ║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
-║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
+║  ✓ docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 14 files  ·  M:12 A:0 D:0 ?:2                          ║
+║  Changes: 22 files  ·  M:16 A:0 D:0 ?:6                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
-║  Staging:  not configured  ·  type: —                            ║
-║  Live:     N/A — pre-deploy (FORGE)                              ║
+║  Staging:  https://vaultsparkstudios.github.io/vaultspark-footb  ║
+║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        1/1                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         285/285                                          ║
-║  IGNIS:         16d ago                                          ║
+║  Tests:         287/287                                          ║
+║  IGNIS:         17d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  2d ago                                           ║
+║  Sanitization:  3d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║
+║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
+║      Latest audit has no open ranked items; run /audit for a ne  ║
+║      ↳ node scripts/ops.mjs genius-list                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 

@@ -202,3 +202,11 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Queue truth: `docs/AUDIT_2026-07-04_SESSION41.md` contains one shipped ranked item; `docs/INNOVATION_PACK.md` marks latest-audit follow-through shipped; `.cache/genius-list.json` is exhausted with 0 open items.
 - Verification truth: current tree passed focused mobile-loop 12/12, default `npm test` 285/285, Playwright UI 17/17, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight, cache check, and canon conformance 0 gaps.
 - Launch truth unchanged: Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof and current live origin/routing evidence remains green.
+
+## 2026-07-06 — Session 42 truth updates
+
+- Audit sampler truth repair: `scripts/sample-codebase.mjs` now exists and provides deterministic, bounded, JSON-capable code sampling for `/audit`; recent audit notes saying the sampler is absent are obsolete after this session.
+- Genius-list truth repair: `node scripts/ops.mjs genius-list` no longer reports that no local generator is configured. It writes `.cache/genius-list.json` through the latest-audit cache helper and prints a parseable open/exhausted cache summary.
+- Queue truth: `docs/AUDIT_2026-07-06_SESSION42.md` contains two shipped ranked items; `docs/INNOVATION_PACK.md` marks latest-audit follow-through shipped; `.cache/genius-list.json` is exhausted with 0 open items.
+- Verification truth: current tree passed focused studio smoke 18/18, default `npm test` 287/287, Playwright UI 17/17, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, and canon conformance 0 gaps.
+- Launch truth unchanged: Launch/SPARKED remains blocked until on-domain email forwarding/copying has real received-message proof and current live origin/routing evidence remains green.

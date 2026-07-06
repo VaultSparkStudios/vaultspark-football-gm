@@ -284,3 +284,13 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** Inline mobile choices are the best path when `/api/gm-decision` returns option details, but the generic event path already existed for non-inline cards and had no app-shell listener. The right fix is to complete the existing event contract, not add a mobile-only decision engine or second backend route.
 
 **Pattern established:** Mobile fallback affordances should converge into the same accessible modal and source-of-truth consequence path used by desktop when inline data is unavailable.
+
+---
+
+## 2026-07-06 — Protocol commands must resolve to executable truth surfaces
+
+**Decision:** If the local Session Protocol or startup brief points agents at a command, that command must either execute the real local source-of-truth path or fail with a specific actionable reason. Session 42 applied this to `scripts/sample-codebase.mjs` and `node scripts/ops.mjs genius-list`.
+
+**Rationale:** Missing samplers and dead-end generator messages push future agents into ad hoc evidence gathering and can make startup guidance lie by omission. Bridging these commands to deterministic, tested outputs keeps `/audit` and `/go` aligned with live code and latest-audit truth.
+
+**Pattern established:** When a required protocol helper is public-safe and repeatedly missing, implement the smallest local executable shim and add a focused studio smoke assertion for both exit status and output shape.

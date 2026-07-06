@@ -324,11 +324,18 @@ function postSessionSignals(status) {
 
 function nextSessionHint() {
   const cache = readJson(GENIUS_CACHE);
-  const top = cache?.list?.ranked?.[0];
+  const top = cache?.list?.ranked?.[0] || cache?.items?.[0];
+  if (!top && cache?.status === 'exhausted') {
+    return {
+      title: 'Latest audit exhausted; run /audit for a fresh live-code plan',
+      rationale: cache.exhaustedReason || '',
+      cmd: 'node scripts/ops.mjs genius-list',
+    };
+  }
   if (!top) return null;
   return {
-    title: top.title || top.id,
-    rationale: top.rationale || '',
+    title: top.title || top.id || top.slug,
+    rationale: top.rationale || top.axis || '',
     cmd: top.command || null,
   };
 }
@@ -446,4 +453,3 @@ if (STDOUT_MODE) {
   const sessionTag = (readJson(STATUS_PATH) || {}).currentSession ?? '?';
   console.log(`✓ Closeout board → docs/CLOSEOUT_STATUS_BOARD.md  (Session ${sessionTag})`);
 }
-

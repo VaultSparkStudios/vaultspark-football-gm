@@ -509,3 +509,18 @@ Source: `docs/AUDIT_2026-07-04_SESSION41.md`.
 **Verification:** `node --check public/app.js`, `node --check public/lib/mobileLoop.js`, focused `node --test test/mobile-loop.test.js` 12/12, default `npm test` 285/285, Playwright UI 17/17, Pages build/smoke, doctor no items, windows-hide, Wave guard, secrets audit, blocker preflight, cache check fresh/exhausted, and canon conformance 0 gaps.
 
 **Still blocked:** Launch/SPARKED remains evidence-gated until `football@playfranchisearchitect.com` forwarding/copying is verified with a real received-message receipt and current live origin/routing proves `playfranchisearchitect.com` serves the latest build.
+
+## Session 42 — Audit Sampler + Genius List Truth
+
+Source: `docs/AUDIT_2026-07-06_SESSION42.md`.
+
+| Item | Status |
+|------|--------|
+| Generate fresh infrastructure-rubric audit after Session 41 queue exhaustion | Done |
+| sample-codebase-protocol-sampler — add deterministic `scripts/sample-codebase.mjs` for `/audit` live-code sampling | Done |
+| ops-genius-list-cache-bridge — make `node scripts/ops.mjs genius-list` emit the cache-backed latest-audit queue instead of a dead-end message | Done |
+| latest-audit-follow-through innovation candidate | Done |
+| compound refinement — assert `ops genius-list` emits parseable cache JSON | Done |
+| sparked-flip | Blocked — still missing real `football@playfranchisearchitect.com` forwarding/copying receipt and current live-origin/routing evidence |
+
+**Verification:** syntax checks for touched scripts/tests; focused studio smoke 18/18; default `npm test` 287/287; Playwright UI 17/17; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight; genius cache exhausted 0 open; canon conformance 0 gaps.

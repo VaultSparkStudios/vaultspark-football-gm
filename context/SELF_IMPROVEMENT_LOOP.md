@@ -1,6 +1,8 @@
 # Self-Improvement Loop
 
-<!-- rolling-status-start -->`nRolling status: Session 40 closed at 990 / 1000 SIL v3.0. Last focused verification: mobile-loop 12/12 plus app/mobile syntax checks; full closeout validation runs before push. Launch/SPARKED remains blocked only on verified on-domain email forwarding/copying evidence plus live-origin proof.`n<!-- rolling-status-end -->
+<!-- rolling-status-start -->
+Rolling status: Session 42 closed at 991 / 1000 SIL v3.0. Verification: focused studio protocol smoke 18/18, default npm test 287/287, Playwright UI 17/17, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, cache exhausted, canon conformance 0 gaps. Launch/SPARKED remains blocked only on verified on-domain email forwarding/copying evidence plus live-origin proof.
+<!-- rolling-status-end -->
 
 ## 2026-07-04 — Session 38 Mobile GM Decision-First Closeout
 
@@ -498,5 +500,26 @@ Category scores:
 | Ecosystem Integration | 100 | Maintained cap; launch truth remains aligned across audit, status, task board, and evidence gates. |
 | Capital Efficiency | 92 | Unchanged; static-host-safe/browser-only work with no new paid service or variable runtime cost. |
 | Automation Coverage | 100 | Maintained cap; focused source coverage now guards generic mobile-decision app-shell binding. |
+
+Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.
+
+
+## 2026-07-06 — Session 42 Audit Sampler + Genius-List Truth
+
+Score: 991 / 1000
+
+Category scores:
+| Category | Score | Notes |
+|---|---:|---|
+| Dev Health | 100 | Maintained cap; default suite passed 287/287 after protocol helper coverage expanded. |
+| Creative Alignment | 99 | Maintained; no new player-facing creative behavior, but future audits now see live code reproducibly. |
+| Momentum | 100 | Maintained cap; fresh audit generated, all ranked items shipped, innovation-pack follow-through completed, and cache exhausted in the same arc. |
+| Engagement | 100 | Maintained cap; no gameplay change, but protocol truth protects future player-facing work from stale audit inputs. |
+| Process Quality | 100 | Maintained cap; missing/dead-end protocol commands were root-fixed instead of worked around again. |
+| Cross-Repo Coherence | 100 | Maintained cap; no sibling tree edits, only local public-safe shims and read-only Studio Ops checks. |
+| Security Posture | 100 | Maintained cap; no new credential, auth, dependency, or sensitive data surface changed. |
+| Ecosystem Integration | 100 | Maintained cap; `/audit`, `/go`, startup brief guidance, and the latest-audit cache now agree. |
+| Capital Efficiency | 92 | Unchanged; all work stays local/static-host-safe with no paid service or variable runtime cost. |
+| Automation Coverage | 100 | Maintained cap; studio smoke now covers sampler execution and parseable genius-list output. |
 
 Follow-up: obtain real `football@playfranchisearchitect.com` delivery proof and current live origin/routing evidence before any SPARKED flip.

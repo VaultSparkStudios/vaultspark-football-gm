@@ -65,3 +65,7 @@ CDR reviewed — no new product creative direction was given this session beyond
 ## 2026-07-04 — Session 38 CDR Review
 
 CDR reviewed — no new product creative direction was given this session beyond the existing `/goal /arc` recovery, saturation, quality, direct-push, and evidence-honesty expectations. Product interpretation reinforced: mobile mode should put unresolved General Manager decisions ahead of generic advancement so the browser game feels like front-office judgment, not a fast-forward button.
+
+## 2026-07-06 — Session 42 review
+
+CDR reviewed — no new creative direction this session. Founder direction was operational/process discipline for the continuous arc, saturation, verification, and direct-main closeout.
