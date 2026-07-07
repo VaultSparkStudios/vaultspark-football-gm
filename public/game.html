@@ -13,6 +13,7 @@
   <body class="game-body">
     <div class="bg-layer"></div>
     <header class="game-topbar">
+      <button id="navDrawerToggleBtn" class="nav-hamburger-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sideMenu">☰</button>
       <div class="topbar-brand topbar-logo-lockup">
         <img class="brand-mark" src="./images/franchise-architect-mark.svg" alt="" aria-hidden="true" />
         <div>
@@ -48,7 +49,9 @@
     </div>
 
     <main class="game-shell">
-      <aside class="side-menu" role="tablist" aria-label="Franchise sections" aria-orientation="vertical">
+      <div id="navDrawerBackdrop" class="nav-drawer-backdrop" aria-hidden="true"></div>
+      <aside id="sideMenu" class="side-menu" role="tablist" aria-label="Franchise sections" aria-orientation="vertical">
+        <button id="navDrawerCloseBtn" class="nav-drawer-close-btn" aria-label="Close navigation menu">Sections <span aria-hidden="true">✕</span></button>
         <div class="menu-group-header">Gameday</div>
         <button id="tab-overview" class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview" role="tab" aria-selected="true" aria-controls="overviewTab" tabindex="0">Overview</button>
         <button id="tab-stats" class="menu-btn" data-tab="statsTab" data-testid="tab-stats" role="tab" aria-selected="false" aria-controls="statsTab" tabindex="-1">Statistics</button>

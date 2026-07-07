@@ -102,6 +102,10 @@ export function applyDashboard(newState) {
 
 export function activateTab(tabId) {
   state.activeTab = tabId;
+  // Close mobile nav drawer on any tab selection (CANON-041)
+  document.body.classList.remove("nav-drawer-open");
+  const hamburger = document.getElementById("navDrawerToggleBtn");
+  if (hamburger) hamburger.setAttribute("aria-expanded", "false");
   document.querySelectorAll(".menu-btn").forEach((btn) => {
     const isActive = btn.dataset.tab === tabId;
     btn.classList.toggle("active", isActive);
