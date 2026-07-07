@@ -72,51 +72,56 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
   });
 
   overlay.innerHTML = `
-    <div class="ml-card">
-      <div class="ml-header">
-        <div class="ml-team">${_esc(team.name || team.abbrev || "Your Franchise")}</div>
-        <div class="ml-record">${_esc(record)}</div>
-      </div>
-      <div class="ml-meta">
-        ${_esc(phase.replace(/-/g, " "))} · Year ${d.currentYear} · Week ${d.currentWeek}
-      </div>
-
-      ${newsHead ? `<div class="ml-news-ticker">${_esc(newsHead)}</div>` : ""}
-
-      <div class="ml-stats-row">
-        <div class="ml-stat">
-          <div class="ml-stat-label">Cap Space</div>
-          <div class="ml-stat-value">${_fmtMoney(capSpace)}</div>
+    <div class="ml-shell">
+      <div class="ml-topbar">
+        <div class="ml-header">
+          <div class="ml-team">${_esc(team.name || team.abbrev || "Your Franchise")}</div>
+          <div class="ml-record">${_esc(record)}</div>
         </div>
-        <div class="ml-stat">
-          <div class="ml-stat-label">Next Game</div>
-          <div class="ml-stat-value">${_esc(nextGameText)}</div>
+        <div class="ml-meta">
+          ${_esc(phase.replace(/-/g, " "))} · Year ${d.currentYear} · Week ${d.currentWeek}
         </div>
-        ${injuredCount ? `<div class="ml-stat">
-          <div class="ml-stat-label">Injured</div>
-          <div class="ml-stat-value negative">${injuredCount}</div>
-        </div>` : ""}
+        ${newsHead ? `<div class="ml-news-ticker">${_esc(newsHead)}</div>` : ""}
       </div>
 
-      ${needs ? `<div class="ml-needs"><strong>Roster Needs:</strong> ${_esc(needs)}</div>` : ""}
+      <div class="ml-scroll">
+        <div class="ml-stats-row">
+          <div class="ml-stat">
+            <div class="ml-stat-label">Cap Space</div>
+            <div class="ml-stat-value">${_fmtMoney(capSpace)}</div>
+          </div>
+          <div class="ml-stat">
+            <div class="ml-stat-label">Next Game</div>
+            <div class="ml-stat-value">${_esc(nextGameText)}</div>
+          </div>
+          ${injuredCount ? `<div class="ml-stat">
+            <div class="ml-stat-label">Injured</div>
+            <div class="ml-stat-value negative">${injuredCount}</div>
+          </div>` : ""}
+        </div>
 
-      <div class="ml-pressure-stack" aria-label="Franchise pressure stack">
-        ${pressureStack.map((item, index) => `
-          <button class="ml-pressure-card ${_escAttr(item.tone)}" data-mobile-pressure-index="${index}" data-target-tab="${_escAttr(item.targetTab || "")}">
-            <span class="ml-pressure-kicker">${_esc(item.kicker)}</span>
-            <strong>${_esc(item.title)}</strong>
-            <span>${_esc(item.detail)}</span>
-          </button>
-        `).join("")}
+        ${needs ? `<div class="ml-needs"><strong>Roster Needs:</strong> ${_esc(needs)}</div>` : ""}
+
+        <div class="ml-pressure-stack" aria-label="Franchise pressure stack">
+          ${pressureStack.map((item, index) => `
+            <button class="ml-pressure-card ${_escAttr(item.tone)}" data-mobile-pressure-index="${index}" data-target-tab="${_escAttr(item.targetTab || "")}">
+              <span class="ml-pressure-kicker">${_esc(item.kicker)}</span>
+              <strong>${_esc(item.title)}</strong>
+              <span>${_esc(item.detail)}</span>
+            </button>
+          `).join("")}
+        </div>
+
+        <div class="ml-decision-deck" aria-label="General Manager decision deck">
+          ${decisionDeck.map((card, index) => renderDecisionCard(card, index)).join("")}
+        </div>
       </div>
 
-      <div class="ml-decision-deck" aria-label="General Manager decision deck">
-        ${decisionDeck.map((card, index) => renderDecisionCard(card, index)).join("")}
-      </div>
-
-      <div class="ml-actions">
-        <button class="ml-btn primary" id="mlAdvanceWeekBtn">⏭ Advance Week</button>
-        <button class="ml-btn" id="mlFullViewBtn">Full View</button>
+      <div class="ml-footer">
+        <div class="ml-actions">
+          <button class="ml-btn primary" id="mlAdvanceWeekBtn">⏭ Advance Week</button>
+          <button class="ml-btn" id="mlFullViewBtn">Full View</button>
+        </div>
       </div>
     </div>
   `;

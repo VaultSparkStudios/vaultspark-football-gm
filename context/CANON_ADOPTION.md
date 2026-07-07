@@ -48,7 +48,7 @@ Audience: public-unlaunched · Live ACTIVE canons: 50 · Pending review: 43
 | CANON-038 | Shared Studio Self-Host Server (one Hetzner box · isolated p | review |  |
 | CANON-039 | Build-It-Ourselves, Internal-First, OSS-Research Discipline  | review |  |
 | CANON-040 | Agent-Deployed Migrations (AI agents apply database/infra mi | review |  |
-| CANON-041 | Website Mobile Parity + Elite Visual Craft (full desktop↔mob | review |  |
+| CANON-041 | Website Mobile Parity + Elite Visual Craft (full desktop↔mob | adopted | 100dvh drawer (height:100dvh fallback chain), safe-area-inset-* padding via max(), viewport-fit=cover on game.html, overscroll-behavior:contain; pinned topbar + scrollable middle + pinned footer action dock — Session 42 |
 | CANON-042 | Studio Branding System: approved usages, DBA rule, and the e | review |  |
 | CANON-043 | Baseline repository security hygiene (free-tier: Dependabot  | review |  |
 | CANON-044 | In-session task scaffolding (Phase/Wave lists), reconciled a | adopted (suggested) | Conformance checker passed: } |
