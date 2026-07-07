@@ -405,8 +405,34 @@ function exposeLocalTestHooks() {
   globalThis.__VS_FA_APPLY_DASHBOARD__ = applyDashboard;
 }
 
+function _bindMobileNavDrawer() {
+  const hamburger = document.getElementById("navDrawerToggleBtn");
+  const backdrop = document.getElementById("navDrawerBackdrop");
+  const closeBtn = document.getElementById("navDrawerCloseBtn");
+
+  function openDrawer() {
+    document.body.classList.add("nav-drawer-open");
+    if (hamburger) hamburger.setAttribute("aria-expanded", "true");
+  }
+  function closeDrawer() {
+    document.body.classList.remove("nav-drawer-open");
+    if (hamburger) hamburger.setAttribute("aria-expanded", "false");
+  }
+
+  if (hamburger) hamburger.addEventListener("click", openDrawer);
+  if (backdrop) backdrop.addEventListener("click", closeDrawer);
+  if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("nav-drawer-open")) {
+      closeDrawer();
+      if (hamburger) hamburger.focus();
+    }
+  });
+}
+
 function bindEvents() {
   bindMenuTabs(activateTab);
+  _bindMobileNavDrawer();
 
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();
