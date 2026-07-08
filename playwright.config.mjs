@@ -9,6 +9,7 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:4273",
     headless: true,
+    launchOptions: { executablePath: "/opt/pw-browsers/chromium" },
     trace: "retain-on-failure",
     screenshot: "only-on-failure"
   },

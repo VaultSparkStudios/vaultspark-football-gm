@@ -408,6 +408,38 @@ function exposeLocalTestHooks() {
 function bindEvents() {
   bindMenuTabs(activateTab);
 
+  // Mobile hamburger nav (CANON-041) — 100dvh slide-out drawer
+  const _mobileNavToggle = document.getElementById("mobileNavToggleBtn");
+  const _mobileNavOverlay = document.getElementById("mobileNavOverlay");
+  const _gameNav = document.getElementById("gameNav");
+  function _closeMobileNav() {
+    _gameNav?.classList.remove("nav-open");
+    _mobileNavOverlay?.classList.remove("open");
+    if (_mobileNavToggle) {
+      _mobileNavToggle.setAttribute("aria-expanded", "false");
+      _mobileNavToggle.textContent = "☰";
+      _mobileNavToggle.setAttribute("aria-label", "Open navigation");
+    }
+  }
+  _mobileNavToggle?.addEventListener("click", () => {
+    const isOpen = _gameNav?.classList.contains("nav-open");
+    if (isOpen) {
+      _closeMobileNav();
+    } else {
+      _gameNav?.classList.add("nav-open");
+      _mobileNavOverlay?.classList.add("open");
+      _mobileNavToggle.setAttribute("aria-expanded", "true");
+      _mobileNavToggle.textContent = "✕";
+      _mobileNavToggle.setAttribute("aria-label", "Close navigation");
+      _gameNav?.querySelector(".menu-btn")?.focus();
+    }
+  });
+  _mobileNavOverlay?.addEventListener("click", _closeMobileNav);
+  // Auto-close drawer when any tab is selected on mobile
+  _gameNav?.addEventListener("click", (e) => {
+    if (e.target.closest(".menu-btn[data-tab]")) _closeMobileNav();
+  });
+
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();
   });
