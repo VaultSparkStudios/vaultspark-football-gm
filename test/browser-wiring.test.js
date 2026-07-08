@@ -95,3 +95,22 @@ test("game modal markup exposes dialog semantics", () => {
   assert.match(gameHtml, /id="draftPickRevealModal" hidden role="dialog" aria-modal="true"/);
   assert.match(gameHtml, /id="franchiseMomentModal" hidden role="dialog" aria-modal="true"/);
 });
+
+test("mobile hamburger nav is present in game HTML and wired in app.js (CANON-041)", () => {
+  const appSource = read("../public/app.js");
+  const gameSource = read("../public/game.html");
+
+  // HTML: required elements
+  assert.match(gameSource, /id="mobileNavToggleBtn"/);
+  assert.match(gameSource, /id="mobileNavOverlay"/);
+  assert.match(gameSource, /id="gameNav"/);
+  assert.match(gameSource, /class="nav-hamburger"/);
+  assert.match(gameSource, /aria-controls="gameNav"/);
+
+  // JS: wiring present
+  assert.match(appSource, /mobileNavToggleBtn/);
+  assert.match(appSource, /mobileNavOverlay/);
+  assert.match(appSource, /_gameNav/);
+  assert.match(appSource, /_closeMobileNav/);
+  assert.match(appSource, /nav-open/);
+});

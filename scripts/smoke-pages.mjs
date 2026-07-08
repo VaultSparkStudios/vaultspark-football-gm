@@ -93,7 +93,7 @@ async function createServer() {
 async function main() {
   const server = await createServer();
   await new Promise((resolve) => server.listen(port, host, resolve));
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, executablePath: "/opt/pw-browsers/chromium" });
   const page = await browser.newPage();
 
   try {
