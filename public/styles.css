@@ -55,7 +55,7 @@ body {
   color: var(--ink);
   background: var(--bg-0);
   font-family: "Bahnschrift", "Franklin Gothic Medium", "Trebuchet MS", sans-serif;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .bg-layer {
@@ -1642,13 +1642,49 @@ td.tone-info {
     align-items: stretch;
   }
 
+  /* CANON-041: convert vertical sidebar to horizontal scroll pill strip on mobile */
   .side-menu {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    gap: 0.35rem;
+    padding: 0.45rem 0.75rem;
+    /* bleed edge-to-edge against game-shell's 1.1rem side padding */
+    margin: 0 -1.1rem 0.85rem;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid rgba(var(--team-tertiary-rgb), 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+    background:
+      var(--nav-grad),
+      radial-gradient(circle at left, rgba(var(--team-primary-rgb), 0.1), transparent 50%);
+  }
+
+  .side-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide section dividers — not useful in a horizontal strip */
+  .side-menu .menu-group-header {
+    display: none;
   }
 
   .menu-btn {
-    padding: 0.6rem 0.5rem;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    white-space: nowrap;
+    padding: 0.48rem 0.85rem;
     min-height: 44px;
+    text-align: center;
+    border-radius: 999px;
+    font-size: 0.8rem;
   }
 
   .history-card-grid {
