@@ -1,4 +1,4 @@
-import { defineConfig } from "@playwright/test";
+import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests-ui",
@@ -10,7 +10,11 @@ export default defineConfig({
     baseURL: "http://localhost:4273",
     headless: true,
     trace: "retain-on-failure",
-    screenshot: "only-on-failure"
+    screenshot: "only-on-failure",
+    // Use the pre-installed Chromium bundled in the container
+    launchOptions: {
+      executablePath: process.env.PLAYWRIGHT_CHROMIUM_PATH || undefined
+    }
   },
   webServer: {
     command: "node scripts/dev-playwright-server.mjs",
