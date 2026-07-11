@@ -2,6 +2,19 @@ import { injectTutorialStyles, mountTutorial } from "./lib/tutorialCampaign.js";
 import { initThemeCustomizer } from "./lib/themeCustomizer.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
+import {
+  trackSessionStart,
+  trackSessionEnd,
+  trackLeagueLoaded,
+  trackWeekAdvanced,
+  trackDraftCompleted,
+  trackTradeCompleted,
+  trackContractRestructured,
+  trackTabVisit,
+  setOptIn,
+  isOptedIn,
+  exportSummary
+} from "./lib/analytics.js";
 import { maybeShowReturnDigest } from "./lib/returnDigest.js";
 import {
   initMobileLoop,
@@ -237,7 +250,7 @@ import { buildLeagueStoryFromDashboard, downloadLeagueStory } from "./lib/league
 
 import {
   applyDashboard,
-  activateTab,
+  activateTab as _activateTab,
   loadState,
   loadScheduleWeek,
   loadCalendar,
@@ -309,6 +322,30 @@ import {
   checkAndPruneRewindStorage
 } from "./lib/engagementFeatures.js";
 
+function activateTab(tabId) {
+  trackTabVisit(tabId);
+  _activateTab(tabId);
+}
+
+function renderEngagementStats() {
+  const display = document.getElementById("engagementStatsDisplay");
+  if (!display) return;
+  if (!isOptedIn()) {
+    display.textContent = "";
+    return;
+  }
+  const s = exportSummary();
+  if (!s) { display.textContent = ""; return; }
+  const topTabs = s.topTabs || "—";
+  display.innerHTML = [
+    `<span class="eng-stat"><strong>${s.sessions}</strong> sessions</span>`,
+    `<span class="eng-stat"><strong>${s.totalPlayMinutes}</strong> min played</span>`,
+    `<span class="eng-stat"><strong>${s.weeksAdvanced}</strong> weeks advanced</span>`,
+    `<span class="eng-stat"><strong>${s.tradesCompleted}</strong> trades</span>`,
+    `<span class="eng-stat"><strong>${s.draftsCompleted}</strong> drafts</span>`,
+    `<span class="eng-stat muted" title="Most visited tabs">Top tabs: ${topTabs}</span>`
+  ].join("");
+}
 
 async function submitMobileGmDecisionChoice(choice) {
   if (!choice?.decisionId || !choice?.choiceId) return;
@@ -457,6 +494,7 @@ function bindEvents() {
         if (gmDecisionChoice) body.gmDecisionChoice = gmDecisionChoice;
       }
       const response = await api("/api/advance-week", { method: "POST", body });
+      trackWeekAdvanced();
       applyDashboard(response.state);
       if (response.gmDecision?.applied) {
         const label = response.gmDecision.decision?.label || "GM decision";
@@ -652,6 +690,7 @@ function bindEvents() {
       const result = await api("/api/trade", { method: "POST", body: payload });
       const a = result.valuation?.[payload.teamA] || {};
       const b = result.valuation?.[payload.teamB] || {};
+      trackTradeCompleted();
       const fairness = Math.max(0, 100 - Math.abs((a.delta || 0) - (b.delta || 0)) * 4);
       setTradeEvalText(`Trade accepted. ${payload.teamA} value swing ${a.delta || 0}, ${payload.teamB} value swing ${b.delta || 0}`);
       setTradeEvalCards({ fairness, capDeltaA: a.capDelta || 0, capDeltaB: b.capDelta || 0 });
@@ -757,6 +796,7 @@ function bindEvents() {
           playerId: player.id
         }
       });
+      trackContractRestructured();
       setContractActionText(`${player.name} restructured the current deal.`);
       await Promise.all([loadState(), loadRoster(), loadContractsTeam(), loadTransactionLog()]);
     }, "Restructuring...")
@@ -969,6 +1009,7 @@ function bindEvents() {
         method: "POST",
         body: { playerId: state.selectedDraftProspectId }
       });
+      trackDraftCompleted();
       await Promise.all([loadState(), loadDraftState(), loadScouting(), loadRoster(), loadTransactionLog()]);
     }, "Submitting user pick...")
   );
@@ -993,6 +1034,7 @@ function bindEvents() {
         method: "POST",
         body: { playerId: button.dataset.draftPlayerId }
       });
+      trackDraftCompleted();
       await Promise.all([loadState(), loadDraftState(), loadScouting(), loadRoster(), loadTransactionLog()]);
     }, "Drafting player...");
   });
@@ -1599,6 +1641,15 @@ function bindEvents() {
     syncMobileLoopOverlay();
   });
 
+  const analyticsToggle = document.getElementById("analyticsOptInToggle");
+  if (analyticsToggle) {
+    analyticsToggle.checked = isOptedIn();
+    analyticsToggle.addEventListener("change", (e) => {
+      setOptIn(e.target.checked);
+      renderEngagementStats();
+    });
+  }
+
   document.getElementById("shareDynastyBtn")?.addEventListener("click", shareDynastyTimeline);
   document.getElementById("leagueStoryCardBtn")?.addEventListener("click", () => {
     const story = buildLeagueStoryFromDashboard(state.dashboard || {});
@@ -1809,6 +1860,8 @@ globalThis._loadSpeedrunStatus = loadSpeedrunStatus;
 
 async function init() {
   state.statsHiddenColumns = readStatsHiddenColumns();
+  trackSessionStart();
+  window.addEventListener("beforeunload", () => trackSessionEnd());
   window.addEventListener("vsfgm:runtime-fallback", (event) => {
     const reason = event?.detail?.reason ? ` ${event.detail.reason}` : "";
     setStatus(`Server unreachable — switched to client-only mode.${reason}`);
@@ -1824,6 +1877,8 @@ async function init() {
   renderPlayerTimelineSearchResults();
   activateTab("overviewTab");
   await loadCoreDashboard();
+  trackLeagueLoaded();
+  renderEngagementStats();
   setStatus("Ready");
   queueStartupHydration();
   initGistSyncUI();
