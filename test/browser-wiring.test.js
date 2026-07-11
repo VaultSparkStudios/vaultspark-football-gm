@@ -95,3 +95,38 @@ test("game modal markup exposes dialog semantics", () => {
   assert.match(gameHtml, /id="draftPickRevealModal" hidden role="dialog" aria-modal="true"/);
   assert.match(gameHtml, /id="franchiseMomentModal" hidden role="dialog" aria-modal="true"/);
 });
+
+test("analytics tracking functions are imported and wired at all key game-loop call sites", () => {
+  const appSource = read("../public/app.js");
+
+  // Import
+  assert.match(appSource, /import \{[^}]*trackSessionStart[^}]*\} from "\.\/lib\/analytics\.js"/s);
+  assert.match(appSource, /trackWeekAdvanced/);
+  assert.match(appSource, /trackTradeCompleted/);
+  assert.match(appSource, /trackContractRestructured/);
+  assert.match(appSource, /trackDraftCompleted/);
+  assert.match(appSource, /trackTabVisit/);
+  assert.match(appSource, /trackSessionStart\(\)/);
+  assert.match(appSource, /trackSessionEnd\(\)/);
+  assert.match(appSource, /trackLeagueLoaded\(\)/);
+
+  // activateTab wrapper delegates to _activateTab
+  assert.match(appSource, /activateTab as _activateTab/);
+  assert.match(appSource, /function activateTab\(tabId\)/);
+  assert.match(appSource, /trackTabVisit\(tabId\)/);
+
+  // beforeunload wires session end
+  assert.match(appSource, /beforeunload.*trackSessionEnd/s);
+
+  // opt-in toggle wired
+  assert.match(appSource, /analyticsOptInToggle/);
+  assert.match(appSource, /setOptIn\(e\.target\.checked\)/);
+  assert.match(appSource, /renderEngagementStats\(\)/);
+});
+
+test("analytics opt-in panel is present in game.html settings tab", () => {
+  const gameHtml = read("../public/game.html");
+
+  assert.match(gameHtml, /id="analyticsOptInToggle"/);
+  assert.match(gameHtml, /id="engagementStatsDisplay"/);
+});
