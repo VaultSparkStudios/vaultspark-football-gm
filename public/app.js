@@ -1,4 +1,5 @@
 import { injectTutorialStyles, mountTutorial } from "./lib/tutorialCampaign.js";
+import { initMobileNav, syncMobileNavToTab } from "./lib/mobileNav.js";
 import { initThemeCustomizer } from "./lib/themeCustomizer.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
@@ -405,8 +406,14 @@ function exposeLocalTestHooks() {
   globalThis.__VS_FA_APPLY_DASHBOARD__ = applyDashboard;
 }
 
+function _activateTabAndSyncNav(tabId) {
+  activateTab(tabId);
+  syncMobileNavToTab(tabId);
+}
+
 function bindEvents() {
-  bindMenuTabs(activateTab);
+  bindMenuTabs(_activateTabAndSyncNav);
+  initMobileNav(_activateTabAndSyncNav);
 
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();
@@ -1822,7 +1829,7 @@ async function init() {
   renderComparePlayers();
   setSelectedHistoryPlayer(null);
   renderPlayerTimelineSearchResults();
-  activateTab("overviewTab");
+  _activateTabAndSyncNav("overviewTab");
   await loadCoreDashboard();
   setStatus("Ready");
   queueStartupHydration();

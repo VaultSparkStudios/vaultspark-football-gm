@@ -56,6 +56,7 @@ body {
   background: var(--bg-0);
   font-family: "Bahnschrift", "Franklin Gothic Medium", "Trebuchet MS", sans-serif;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .bg-layer {
@@ -2995,7 +2996,7 @@ body.mobile-loop-active .mobile-loop-overlay {
 }
 .inbox-badge-critical { background: var(--danger); color: #fff; }
 #inboxDrawer {
-  position: fixed; right: -360px; top: 0; width: 360px; height: 100vh;
+  position: fixed; right: -360px; top: 0; width: 360px; height: 100vh; height: 100dvh;
   background: var(--bg-1); border-left: 1px solid var(--line);
   z-index: 999; display: flex; flex-direction: column;
   transition: right 280ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -3849,4 +3850,151 @@ html[data-theme="light"] .bg-layer {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.45;
+}
+
+/* ── Mobile Bottom Navigation — CANON-041 scrollable 100dvh mobile nav ──────── */
+
+/* Hidden by default on desktop; shown by media query below */
+.mobile-bottom-nav,
+.mobile-subtab-strip { display: none; }
+
+@media (max-width: 640px) {
+  /* Hide the sidebar; bottom nav + sub-tab strip replace it */
+  body:not(.mobile-loop-active) .side-menu { display: none; }
+
+  /* Shift game shell to single-column without the sidebar column */
+  body:not(.mobile-loop-active) .game-shell {
+    grid-template-columns: 1fr;
+    /* bottom padding = sub-tab strip (44px) + bottom nav (56px) + safe area */
+    padding-bottom: calc(44px + 56px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* ── Sub-tab horizontal strip (above the bottom bar) ── */
+  body:not(.mobile-loop-active) .mobile-subtab-strip {
+    display: flex;
+    position: fixed;
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+    left: 0;
+    right: 0;
+    height: 44px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    background: var(--nav-grad, var(--bg-1));
+    border-top: 1px solid var(--line);
+    z-index: 99;
+    gap: 0;
+    align-items: center;
+    padding: 0 0.5rem;
+  }
+
+  body:not(.mobile-loop-active) .mobile-subtab-strip::-webkit-scrollbar { display: none; }
+
+  .mbn-subtab {
+    flex: 0 0 auto;
+    height: 36px;
+    padding: 0 0.9rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: none;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color 120ms, background 120ms, border-color 120ms;
+  }
+
+  .mbn-subtab.active {
+    background: rgba(var(--team-primary-rgb, 184, 136, 46), 0.18);
+    border-color: rgba(var(--team-secondary-rgb, 215, 162, 74), 0.45);
+    color: var(--accent, #d7a24a);
+  }
+
+  .mbn-subtab:not(.active):hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--ink);
+  }
+
+  /* ── Bottom bucket bar ── */
+  body:not(.mobile-loop-active) .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* 56px bar + iOS safe-area-inset-bottom so it clears the home indicator */
+    height: calc(56px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background:
+      var(--topbar-grad, var(--bg-1)),
+      radial-gradient(circle at bottom left, rgba(var(--team-primary-rgb, 184, 136, 46), 0.12), transparent 30%);
+    border-top: 1px solid rgba(var(--team-tertiary-rgb, 100, 100, 120), 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.24);
+  }
+
+  .mbn-bucket {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    border: none;
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0 0.25rem;
+    transition: color 120ms;
+    min-height: 44px;
+    /* 44px minimum touch target */
+    min-width: 44px;
+  }
+
+  .mbn-bucket.active {
+    color: var(--accent, #d7a24a);
+  }
+
+  .mbn-bucket:not(.active):hover {
+    color: var(--ink-dim);
+  }
+
+  .mbn-icon {
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  .mbn-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  /* Active bucket indicator pip */
+  .mbn-bucket.active .mbn-icon::after {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent, #d7a24a);
+    margin: 2px auto 0;
+  }
+}
+
+/* Light-theme overrides for mobile nav */
+[data-theme="light"] .mbn-subtab.active {
+  background: rgba(var(--team-primary-rgb, 140, 100, 20), 0.12);
+  color: var(--accent, #8c6414);
+}
+
+[data-theme="light"] .mbn-bucket.active {
+  color: var(--accent, #8c6414);
 }
