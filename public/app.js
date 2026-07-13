@@ -408,6 +408,11 @@ function exposeLocalTestHooks() {
 function bindEvents() {
   bindMenuTabs(activateTab);
 
+  // Mobile bottom nav pill click handlers (CANON-041)
+  document.querySelectorAll(".mobile-nav-pill[data-tab]").forEach((pill) => {
+    pill.addEventListener("click", () => activateTab(pill.dataset.tab));
+  });
+
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();
   });
