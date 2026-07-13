@@ -110,6 +110,15 @@ export function activateTab(tabId) {
     btn.setAttribute("aria-selected", isActive ? "true" : "false");
     btn.setAttribute("tabindex", isActive ? "0" : "-1");
   });
+  // Sync mobile bottom nav pills and scroll the active one into view (CANON-041).
+  document.querySelectorAll(".mobile-nav-pill[data-tab]").forEach((pill) => {
+    const isActive = pill.dataset.tab === tabId;
+    pill.classList.toggle("active", isActive);
+    pill.setAttribute("aria-selected", isActive ? "true" : "false");
+    if (isActive) {
+      pill.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    }
+  });
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);
   });

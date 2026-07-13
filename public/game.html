@@ -1554,6 +1554,31 @@
         </div>
       </div>
     </div>
+    <!-- Mobile bottom navigation bar — replaces sidebar on narrow viewports (CANON-041) -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Game navigation">
+      <div class="mobile-nav-track" role="tablist" aria-label="Franchise sections" aria-orientation="horizontal">
+        <span class="mobile-nav-group-label" aria-hidden="true">Gameday</span>
+        <button class="mobile-nav-pill" data-tab="overviewTab" data-testid="mobile-nav-overview" role="tab" aria-selected="true" aria-controls="overviewTab" type="button">Overview</button>
+        <button class="mobile-nav-pill" data-tab="statsTab" data-testid="mobile-nav-stats" role="tab" aria-selected="false" aria-controls="statsTab" type="button">Stats</button>
+        <button class="mobile-nav-pill" data-tab="calendarTab" data-testid="mobile-nav-calendar" role="tab" aria-selected="false" aria-controls="calendarTab" type="button">Calendar</button>
+        <span class="mobile-nav-group-label" aria-hidden="true">Roster</span>
+        <button class="mobile-nav-pill" data-tab="rosterTab" data-testid="mobile-nav-roster" role="tab" aria-selected="false" aria-controls="rosterTab" type="button">Roster</button>
+        <button class="mobile-nav-pill" data-tab="faTab" data-testid="mobile-nav-fa" role="tab" aria-selected="false" aria-controls="faTab" type="button">Free Agents</button>
+        <button class="mobile-nav-pill" data-tab="depthTab" data-testid="mobile-nav-depth" role="tab" aria-selected="false" aria-controls="depthTab" type="button">Depth</button>
+        <button class="mobile-nav-pill" data-tab="contractsTab" data-testid="mobile-nav-contracts" role="tab" aria-selected="false" aria-controls="contractsTab" type="button">Contracts</button>
+        <span class="mobile-nav-group-label" aria-hidden="true">Builds</span>
+        <button class="mobile-nav-pill" data-tab="transactionsTab" data-testid="mobile-nav-transactions" role="tab" aria-selected="false" aria-controls="transactionsTab" type="button">Trades</button>
+        <button class="mobile-nav-pill" data-tab="scoutingTab" data-testid="mobile-nav-scouting" role="tab" aria-selected="false" aria-controls="scoutingTab" type="button">Scouting</button>
+        <button class="mobile-nav-pill" data-tab="draftTab" data-testid="mobile-nav-draft" role="tab" aria-selected="false" aria-controls="draftTab" type="button">Draft</button>
+        <span class="mobile-nav-group-label" aria-hidden="true">History</span>
+        <button class="mobile-nav-pill" data-tab="logTab" data-testid="mobile-nav-log" role="tab" aria-selected="false" aria-controls="logTab" type="button">Log</button>
+        <button class="mobile-nav-pill" data-tab="historyTab" data-testid="mobile-nav-history" role="tab" aria-selected="false" aria-controls="historyTab" type="button">Dynasty</button>
+        <span class="mobile-nav-group-label" aria-hidden="true">Config</span>
+        <button class="mobile-nav-pill" data-tab="rulesTab" data-testid="mobile-nav-rules" role="tab" aria-selected="false" aria-controls="rulesTab" type="button">Rules</button>
+        <button class="mobile-nav-pill" data-tab="settingsTab" data-testid="mobile-nav-settings" role="tab" aria-selected="false" aria-controls="settingsTab" type="button">Settings</button>
+      </div>
+    </nav>
+
     <script type="module" src="./app.js"></script>
   </body>
 </html>

@@ -1642,8 +1642,14 @@ td.tone-info {
     align-items: stretch;
   }
 
+  /* Sidebar replaced by the fixed bottom nav on mobile */
   .side-menu {
-    grid-template-columns: 1fr;
+    display: none;
+  }
+
+  /* Pad content so the fixed bottom nav never covers it */
+  .game-shell {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
   }
 
   .menu-btn {
@@ -1667,6 +1673,111 @@ td.tone-info {
   label {
     min-width: 100%;
   }
+}
+
+/* ── Mobile Bottom Navigation Bar (CANON-041) ──────────────────────────── */
+
+/* Hidden on desktop; shown on mobile via the @media block below */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  body.game-body {
+    /* Dynamic viewport height: adapts when mobile browser chrome shows/hides */
+    min-height: 100dvh;
+  }
+
+  .mobile-bottom-nav {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background:
+      var(--topbar-grad),
+      radial-gradient(circle at bottom left, rgba(var(--team-primary-rgb), 0.14), transparent 40%);
+    border-top: 1px solid rgba(var(--team-tertiary-rgb), 0.24);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.18);
+    /* iPhone safe area inset so pills clear the home indicator */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+.mobile-nav-track {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+  padding: 0.55rem 0.75rem;
+  height: 52px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+}
+
+.mobile-nav-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.mobile-nav-group-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(var(--team-tertiary-rgb), 0.6);
+  white-space: nowrap;
+  padding: 0 0.25rem 0 0.5rem;
+  flex-shrink: 0;
+  user-select: none;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.mobile-nav-group-label:first-child {
+  padding-left: 0;
+}
+
+.mobile-nav-pill {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0.36rem 0.88rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 999px;
+  min-height: 34px;
+  height: 34px;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid rgba(var(--team-tertiary-rgb), 0.18);
+  background: var(--raised);
+  color: var(--ink);
+  transition: background 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+.mobile-nav-pill:hover {
+  border-color: rgba(var(--team-secondary-rgb), 0.4);
+  background: var(--card-grad);
+}
+
+.mobile-nav-pill.active {
+  background: linear-gradient(145deg, rgba(var(--team-primary-rgb), 0.84), rgba(16, 19, 31, 0.98));
+  border-color: rgba(var(--team-secondary-rgb), 0.62);
+  color: var(--ink-strong);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .mobile-nav-pill.active {
+  background: linear-gradient(145deg, rgba(var(--team-primary-rgb), 0.18), rgba(255, 255, 255, 0.9));
+  color: var(--ink-strong);
+  border-color: rgba(var(--team-secondary-rgb), 0.5);
 }
 
 .boxscore-modal-card .subtab-bar {
