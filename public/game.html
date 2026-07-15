@@ -325,7 +325,7 @@
               <span id="depthStatusText" class="chip">Use move controls to change playing-time order</span>
               <button id="saveDepthBtn" data-testid="save-depth-btn">Save Depth Chart</button>
             </div>
-            <div class="small">Top rows receive the highest default modeled snap share. You can also set manual percentages for each player and save them into the live rotation.</div>
+            <div class="small">Automatic shares blend overall, potential, scheme fit, morale, personnel packages, and depth intent. Healthy QB1, K1, and P1 own 100% of their role; backups inherit it while the starter is unavailable. Other rooms can still use manual targets.</div>
             <div class="table-wrap"><table id="depthTable" data-testid="depth-table"></table></div>
           </div>
         </section>
@@ -1285,6 +1285,8 @@
           </div>
           <button id="closeBoxScoreModalBtn" class="warn">Close</button>
         </div>
+        <div id="boxScoreBroadcastStrip" class="boxscore-broadcast-strip"></div>
+        <div id="boxScoreImpactStrip" class="boxscore-impact-strip"></div>
         <div class="subtab-bar boxscore-subtabs">
           <button class="subtab-btn active" data-boxscore-tab="boxScoreStatsPanel">Player Stats</button>
           <button class="subtab-btn" data-boxscore-tab="boxScoreSummaryPanel">Summary</button>
@@ -1300,6 +1302,9 @@
               <div class="table-wrap"><table id="boxScoreAwayReceivingTable"></table></div>
               <div class="table-wrap"><table id="boxScoreAwayDefenseTable"></table></div>
               <div class="table-wrap"><table id="boxScoreAwayKickingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreAwayPuntingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreAwayBlockingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreAwaySnapsTable"></table></div>
             </div>
             <div>
               <h3 id="boxScoreHomeTitle">Home Player Stats</h3>
@@ -1308,6 +1313,9 @@
               <div class="table-wrap"><table id="boxScoreHomeReceivingTable"></table></div>
               <div class="table-wrap"><table id="boxScoreHomeDefenseTable"></table></div>
               <div class="table-wrap"><table id="boxScoreHomeKickingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreHomePuntingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreHomeBlockingTable"></table></div>
+              <div class="table-wrap"><table id="boxScoreHomeSnapsTable"></table></div>
             </div>
           </div>
         </section>

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-15",
+  "session": 46,
+  "project": "franchise-architect-football",
+  "status": "implemented",
+  "profile": {
+    "type": "game",
+    "audience": "public-unlaunched",
+    "rubric": "product",
+    "staging": "github-pages",
+    "source": "context/PROJECT_STATUS.json and game skill profile; arc-profile registry fallback rejected as unmatched"
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.6,
+    "progression": 8.4,
+    "sessionEngagement": 8.7,
+    "retention": 8.3,
+    "soulFidelity": 9.0,
+    "evidence": "No context/GAME_LOOP.md or recent docs/PLAYTESTS files; scores derive from live browser/runtime systems and existing regression surfaces."
+  },
+  "summary": {
+    "rankedItems": 6,
+    "combinedPriority": 324.4,
+    "topItem": "commissioner-feedback-trusted-open",
+    "source": "live-code-audit"
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "UI/UX + feedback loop",
+      "effortHours": 0.7,
+      "impact": 10,
+      "innovation": 6,
+      "priority": 68.8,
+      "slug": "commissioner-feedback-trusted-open",
+      "title": "Make Tell the Commissioner reliably open and expose failures",
+      "status": "shipped",
+      "premise": "openFeedback awaits optional clipboard work before window.open, losing trusted click activation; both mounted click handlers swallow rejected promises.",
+      "evidence": ["public/lib/betaFeedback.js:114", "public/lib/betaFeedback.js:154", "public/lib/betaFeedback.js:165"],
+      "ladder": {
+        "L1": { "effortHours": 0.3, "recipe": "Open a placeholder window synchronously and navigate it after context assembly." },
+        "L2": { "effortHours": 0.7, "recipe": "Add injectable window/clipboard adapters, blocked-popup fallback navigation, visible error reporting, and focused tests." },
+        "L3": { "effortHours": 1.2, "recipe": "Also validate the complete Settings and Franchise Moment interaction paths in Playwright." }
+      },
+      "verification": ["node --test test/beta-feedback.test.js", "browser interaction smoke"]
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Gamification / NFL realism",
+      "effortHours": 3.0,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 62.1,
+      "slug": "merit-availability-snap-engine",
+      "title": "Ship potential-aware, injury-restoring live snap allocation",
+      "status": "shipped",
+      "premise": "QB defaults below 100%; automatic room shares are package/order based and do not incorporate player potential; injured players leave the active roster but the restoration contract is untested.",
+      "evidence": ["src/engine/depthChartUsage.js:246", "src/engine/gameSimulator.js:489", "src/domain/teamFactory.js:372", "test/session-actions.test.js:32"],
+      "ladder": {
+        "L1": { "effortHours": 1.2, "recipe": "Lock healthy QB1/K1/P1 to all role snaps and test it." },
+        "L2": { "effortHours": 3.0, "recipe": "Blend overall, potential, fit, morale, and depth intent into automatic room shares; exclude injured players and prove restoration after recovery while preserving manual overrides." },
+        "L3": { "effortHours": 4.5, "recipe": "Add UI explanations, live effective-share visualization, and multi-week distribution realism checks." }
+      },
+      "verification": ["focused snap engine tests", "simulation integration tests", "browser depth-chart visibility"]
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Features / statistical depth",
+      "effortHours": 3.0,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 55.2,
+      "slug": "broadcast-box-score-stat-matrix",
+      "title": "Expand box scores and every player-stat lens with truthful football telemetry",
+      "status": "shipped",
+      "premise": "Season/career schemas already track rich fields, but box-score groups omit many fields, punting, blocking, and snaps; team third-down values are estimated rather than observed.",
+      "evidence": ["src/domain/playerFactory.js:94", "src/engine/gameSimulator.js:1405", "src/engine/gameSimulator.js:1428", "public/lib/tabOverview.js:414"],
+      "ladder": {
+        "L1": { "effortHours": 1.2, "recipe": "Expose already-tracked player fields and add punting." },
+        "L2": { "effortHours": 3.0, "recipe": "Carry snap/blocking deltas into game stats, add efficiency columns, and derive down/distance conversion metrics from stamped plays rather than estimates." },
+        "L3": { "effortHours": 4.2, "recipe": "Add a broadcast-style game strip, quarter differential, efficiency tiles, and game-impact leaders." }
+      },
+      "verification": ["focused box-score tests", "stat table regression tests", "Playwright modal smoke"]
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Engagement / player identity",
+      "effortHours": 2.4,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 52.6,
+      "slug": "living-player-dossier",
+      "title": "Generate personalized bios, facts, achievements, and career identity for every player",
+      "status": "shipped",
+      "premise": "Player profiles expose ratings, contract, history, and a generic hero, but no deterministic narrative synthesizes position, age, overall, potential, attributes, stats, awards, health, and career context.",
+      "evidence": ["src/runtime/GameSession.js:4292", "public/lib/appCore.js:182", "public/lib/appCore.js:1197"],
+      "ladder": {
+        "L1": { "effortHours": 1.0, "recipe": "Create a deterministic source-derived bio and fact list." },
+        "L2": { "effortHours": 2.4, "recipe": "Add position-specific identity, trajectory, signature attributes, truthful achievements, milestone facts, and dossier visuals for all players." },
+        "L3": { "effortHours": 3.5, "recipe": "Add evolving career chapters, game-ball moments, and profile share cards." }
+      },
+      "verification": ["narrative unit tests across every position", "profile API/browser rendering tests"]
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "UI/UX / roster intelligence",
+      "effortHours": 1.6,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 46.9,
+      "slug": "potential-everywhere",
+      "title": "Place potential beside overall on every player surface",
+      "status": "shipped",
+      "premise": "Potential is persisted and visible in the profile hero but omitted from roster, free agency, retired, contract, draft, history, commissioner, and statistical row builders.",
+      "evidence": ["src/domain/playerFactory.js:231", "public/lib/appCore.js:200", "public/lib/tabRoster.js:10", "public/lib/tabContracts.js:15", "src/stats/statBook.js:563"],
+      "ladder": {
+        "L1": { "effortHours": 0.7, "recipe": "Add POT immediately after OVR in principal roster/draft/contract tables." },
+        "L2": { "effortHours": 1.6, "recipe": "Cover every player-row builder and stat table, plus consistent labels and potential-gap tone." },
+        "L3": { "effortHours": 2.3, "recipe": "Add dual-rating visual meters and development-window explanations." }
+      },
+      "verification": ["browser-wiring/static coverage test", "focused table tests", "Playwright player surfaces"]
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Dev health / action reliability",
+      "effortHours": 1.8,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 38.8,
+      "slug": "all-actions-contract-net",
+      "title": "Prove every button and delegated action has a working contract",
+      "status": "shipped",
+      "premise": "Existing browser-wiring tests cover selected paths but there is no exhaustive static action inventory, and several UI handlers intentionally swallow errors.",
+      "evidence": ["test/browser-wiring.test.js", "public/app.js", "public/game.html", "public/lib/betaFeedback.js:155"],
+      "ladder": {
+        "L1": { "effortHours": 0.8, "recipe": "Inventory button IDs/data-action contracts and fail on orphaned controls." },
+        "L2": { "effortHours": 1.8, "recipe": "Add static contract validation plus focused runtime/Playwright coverage for high-value actions and visible error paths." },
+        "L3": { "effortHours": 3.0, "recipe": "Add state-aware interaction crawling across all tabs with allowlisted destructive actions." }
+      },
+      "verification": ["button contract test", "browser wiring suite", "Playwright UI suite"]
+    }
+  ],
+  "preverifiedSkips": [
+    { "candidate": "Create a new potential system", "reason": "Rejected: a persisted seeded potential rating already exists; the real gap is visibility and rotation use." },
+    { "candidate": "Add season/career stat tables", "reason": "Rejected: rich PFR-inspired tables already exist; the real gap is box-score parity and universal rating context." },
+    { "candidate": "Build injury substitution", "reason": "Rejected as phrased: injured players are already excluded by getTeamPlayers; the missing contract is merit rebalance and restoration proof." },
+    { "candidate": "Launch/SPARKED flip", "reason": "Deferred honestly: real on-domain email receipt and live-origin evidence remain external proof gates." }
+  ]
+}

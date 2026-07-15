@@ -164,6 +164,7 @@ export function renderNegotiationTargets(rows) {
     player: entry.name,
     pos: entry.pos,
     ovr: entry.overall,
+    pot: entry.potential ?? "-",
     askYears: entry.demand?.years || "-",
     askSalary: fmtMoney(entry.demand?.salary || 0),
     askCap: fmtMoney(entry.demand?.askCapHit || 0),

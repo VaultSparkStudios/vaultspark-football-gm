@@ -116,6 +116,7 @@ export function renderComparePlayers() {
     tm: teamCode(player.teamId),
     pos: player.position,
     ovr: player.overall,
+    pot: player.potential,
     fit: player.schemeFit ?? "-",
     age: player.age,
     dev: player.developmentTrait
@@ -137,6 +138,7 @@ export function renderCompareSearchResults() {
     pos: player.pos,
     age: player.age,
     ovr: player.overall,
+    pot: player.potential,
     status: player.status,
     action: ""
   }));

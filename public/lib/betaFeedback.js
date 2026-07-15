@@ -112,6 +112,10 @@ function _fmtMoney(value) {
 }
 
 export async function openFeedback() {
+  // Open before the first await so the browser still considers this part of
+  // the trusted click. Waiting for clipboard permission first causes popup
+  // blockers to silently eat the Commissioner form.
+  const popup = openFeedbackPlaceholder(window);
   const ctx = gatherContext();
   let analyticsAttached = false;
   if (isOptedIn()) {
@@ -126,12 +130,41 @@ export async function openFeedback() {
     }
   }
   const url = buildFeedbackIssueUrl({ ...ctx, analyticsAttached });
-  window.open(url, "_blank", "noopener");
+  commitFeedbackNavigation({ popup, url, browser: window });
   showToast(
     analyticsAttached
       ? "Feedback form opened — analytics digest copied, paste it in if you'd like."
       : "Feedback form opened — thanks for making the game better!"
   );
+}
+
+export function openFeedbackPlaceholder(browser = globalThis.window) {
+  try {
+    const popup = browser?.open?.("about:blank", "_blank");
+    if (popup) popup.opener = null;
+    return popup || null;
+  } catch {
+    return null;
+  }
+}
+
+export function commitFeedbackNavigation({ popup = null, url, browser = globalThis.window } = {}) {
+  if (!url) throw new Error("Feedback URL is required.");
+  if (popup?.location) {
+    if (typeof popup.location.replace === "function") popup.location.replace(url);
+    else popup.location.href = url;
+    return "popup";
+  }
+  if (typeof browser?.location?.assign === "function") {
+    browser.location.assign(url);
+    return "current-tab";
+  }
+  throw new Error("The feedback form could not be opened.");
+}
+
+function reportFeedbackError(error) {
+  console.error("Tell the Commissioner failed", error);
+  showToast("Feedback could not open. Check popup settings and try again.");
 }
 
 /**
@@ -152,7 +185,7 @@ export function mountBetaFeedback() {
       <button id="betaFeedbackBtn" class="btn btn-accent" data-testid="beta-feedback-btn">Send Feedback</button>`;
     settingsTab.insertBefore(panel, settingsTab.firstElementChild);
     document.getElementById("betaFeedbackBtn")?.addEventListener("click", () => {
-      openFeedback().catch(() => {});
+      openFeedback().catch(reportFeedbackError);
     });
   }
 
@@ -163,7 +196,7 @@ export function mountBetaFeedback() {
     link.className = "fm-feedback-link";
     link.textContent = "Tell the Commissioner";
     link.addEventListener("click", () => {
-      openFeedback().catch(() => {});
+      openFeedback().catch(reportFeedbackError);
     });
     fmModal.appendChild(link);
   }

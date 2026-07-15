@@ -4,7 +4,12 @@ import { coverageDepthRating, quarterbackDepthAccuracy } from "../domain/ratings
 import { clamp, mean } from "../utils/rng.js";
 import { choosePlayType, chooseFourthDownDecision, fieldGoalDistanceFromPosition } from "./playCalling.js";
 import { getTeamPlayers } from "../domain/teamFactory.js";
-import { buildTeamUsageProfile, depthOrderedPlayers, resolveDepthChartRoomShares } from "./depthChartUsage.js";
+import {
+  buildMeritAdjustedRoomShares,
+  buildTeamUsageProfile,
+  depthOrderedPlayers,
+  resolveDepthChartRoomShares
+} from "./depthChartUsage.js";
 
 function mergeObject(target, source) {
   for (const [key, value] of Object.entries(source)) {
@@ -64,7 +69,7 @@ function chooseFromRotation(rng, rotation) {
   return rotation[rotation.length - 1].player;
 }
 
-function applySnapCounts(statBook, year, rotation, unitSnaps, key, seasonType = "regular") {
+function applySnapCounts(statBook, year, rotation, unitSnaps, key, seasonType = "regular", gameStats = null) {
   const playersWithSnaps = new Set();
   if (!rotation?.length || !unitSnaps) return playersWithSnaps;
   const boundedSnaps = Math.max(0, Math.round(unitSnaps));
@@ -78,19 +83,26 @@ function applySnapCounts(statBook, year, rotation, unitSnaps, key, seasonType = 
       { snaps: { [key]: snaps } },
       { teamId: row.player.teamId, position: row.player.position, seasonType }
     );
+    if (gameStats) {
+      collectGamePlayerStats(gameStats, statBook, new Map([[row.player.id, { snaps: { [key]: snaps } }]]));
+    }
     if (key === "offense" && row.player.position === "OL") {
+      const blockingSnaps = { passBlock: Math.round(snaps * 0.58), runBlock: Math.round(snaps * 0.42) };
       statBook.applyStatDelta(
         row.player.id,
         year,
-        { snaps: { passBlock: Math.round(snaps * 0.58), runBlock: Math.round(snaps * 0.42) } },
+        { snaps: blockingSnaps },
         { teamId: row.player.teamId, position: row.player.position, seasonType }
       );
+      if (gameStats) {
+        collectGamePlayerStats(gameStats, statBook, new Map([[row.player.id, { snaps: blockingSnaps }]]));
+      }
     }
   }
   return playersWithSnaps;
 }
 
-function applyBlockingNoise(statBook, year, olRotation, offSnaps, rng, seasonType = "regular") {
+function applyBlockingNoise(statBook, year, olRotation, offSnaps, rng, seasonType = "regular", gameStats = null) {
   for (const row of olRotation.slice(0, 5)) {
     const snaps = Math.max(1, Math.round(offSnaps * row.snapShare));
     const pressureChance = clamp(0.015 + (78 - (row.player.overall || 70)) * 0.0012, 0.004, 0.07);
@@ -101,12 +113,14 @@ function applyBlockingNoise(statBook, year, olRotation, offSnaps, rng, seasonTyp
     }
     const penalties = rng.chance(penaltyChance * Math.min(3, snaps / 25)) ? 1 : 0;
     if (pressures || penalties) {
+      const delta = { blocking: { pressuresAllowed: pressures, penalties } };
       statBook.applyStatDelta(
         row.player.id,
         year,
-        { blocking: { pressuresAllowed: pressures, penalties } },
+        delta,
         { teamId: row.player.teamId, position: row.player.position, seasonType }
       );
+      if (gameStats) collectGamePlayerStats(gameStats, statBook, new Map([[row.player.id, delta]]));
     }
   }
 }
@@ -504,8 +518,14 @@ function buildTeamContext(league, teamId, rng) {
     resolveDepthChartRoomShares({
       position,
       playerIds: players.map((player) => player.id),
-      baseShares: usageProfile.sharesByPosition[position] || [],
-      manualSharesByPlayer: manualSharesByPosition[position] || {}
+      baseShares: buildMeritAdjustedRoomShares({
+        position,
+        players,
+        baseShares: usageProfile.sharesByPosition[position] || []
+      }),
+      manualSharesByPlayer: ["QB", "K", "P"].includes(position)
+        ? {}
+        : manualSharesByPosition[position] || {}
     }).map((row) => row.snapShare);
 
   const shares = {
@@ -701,6 +721,9 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
     playLog.push({
       offenseTeamId: offenseContext.team.id,
       defenseTeamId: defenseContext.team.id,
+      down,
+      distance,
+      fieldPosition,
       ...entry
     });
   };
@@ -1402,13 +1425,46 @@ function collectGamePlayerStats(playerGameStats, statBook, deltaMap) {
   }
 }
 
-function teamGameSummary(teamId, score, totalYards, turnovers, passPlays, rushPlays, playerEntries) {
+function teamGameSummary(
+  teamId,
+  score,
+  totalYards,
+  turnovers,
+  passPlays,
+  rushPlays,
+  playerEntries,
+  playByPlay,
+  drives,
+  possessionSeconds
+) {
   const teamPlayers = playerEntries.filter((entry) => entry.teamId === teamId);
+  const teamPlays = (playByPlay || []).filter((entry) => entry.offenseTeamId === teamId);
   const passingYards = teamPlayers.reduce((sum, entry) => sum + (entry.stats.passing?.yards || 0), 0);
   const rushingYards = teamPlayers.reduce((sum, entry) => sum + (entry.stats.rushing?.yards || 0), 0);
-  const firstDowns = teamPlayers.reduce(
-    (sum, entry) => sum + (entry.stats.passing?.firstDowns || 0) + (entry.stats.rushing?.firstDowns || 0),
-    0
+  const firstDownPlays = teamPlays.filter(
+    (entry) =>
+      !["field-goal", "missed-field-goal", "punt"].includes(entry.type) &&
+      (Number(entry.yards || 0) >= Number(entry.distance || 10) ||
+        Number(entry.fieldPosition || 0) + Number(entry.yards || 0) >= 100)
+  );
+  const firstDowns = firstDownPlays.length;
+  const passingFirstDowns = firstDownPlays.filter((entry) => entry.type === "pass").length;
+  const rushingFirstDowns = firstDownPlays.filter((entry) =>
+    ["run", "scramble"].includes(entry.type)
+  ).length;
+  const thirdDownPlays = teamPlays.filter((entry) => entry.down === 3);
+  const fourthDownPlays = teamPlays.filter(
+    (entry) => entry.down === 4 && !["field-goal", "missed-field-goal", "punt"].includes(entry.type)
+  );
+  const converted = (entry) => Number(entry.yards || 0) >= Number(entry.distance || 10);
+  const passAttempts = teamPlayers.reduce((sum, entry) => sum + (entry.stats.passing?.att || 0), 0);
+  const completions = teamPlayers.reduce((sum, entry) => sum + (entry.stats.passing?.cmp || 0), 0);
+  const sacks = teamPlayers.reduce((sum, entry) => sum + (entry.stats.passing?.sacks || 0), 0);
+  const redZoneDrives = new Set(
+    teamPlays
+      .filter((entry) => Number(entry.fieldPosition || 0) >= 80)
+      .map((entry) => entry.driveNumber)
+      .filter(Boolean)
   );
   return {
     teamId,
@@ -1417,12 +1473,35 @@ function teamGameSummary(teamId, score, totalYards, turnovers, passPlays, rushPl
     passingYards,
     rushingYards,
     firstDowns,
+    passingFirstDowns,
+    rushingFirstDowns,
     turnovers,
     passPlays,
     rushPlays,
-    thirdDowns: Math.max(1, Math.round((passPlays + rushPlays) * 0.23)),
-    thirdDownConversions: Math.max(0, Math.round(firstDowns * 0.38))
+    plays: passPlays + rushPlays,
+    drives,
+    yardsPerPlay: Number((totalYards / Math.max(1, passPlays + rushPlays)).toFixed(1)),
+    passAttempts,
+    completions,
+    completionPct: Number(((completions / Math.max(1, passAttempts)) * 100).toFixed(1)),
+    sacks,
+    thirdDowns: thirdDownPlays.length,
+    thirdDownConversions: thirdDownPlays.filter(converted).length,
+    fourthDowns: fourthDownPlays.length,
+    fourthDownConversions: fourthDownPlays.filter(converted).length,
+    redZoneTrips: redZoneDrives.size,
+    possessionSeconds: Math.max(0, Math.round(possessionSeconds || 0))
   };
+}
+
+function gamePasserRating(passing = {}) {
+  const att = Number(passing.att || 0);
+  if (!att) return 0;
+  const a = clamp((Number(passing.cmp || 0) / att - 0.3) * 5, 0, 2.375);
+  const b = clamp((Number(passing.yards || 0) / att - 3) * 0.25, 0, 2.375);
+  const c = clamp((Number(passing.td || 0) / att) * 20, 0, 2.375);
+  const d = clamp(2.375 - (Number(passing.int || 0) / att) * 25, 0, 2.375);
+  return Number((((a + b + c + d) / 6) * 100).toFixed(1));
 }
 
 function buildPlayerStatGroups(entries) {
@@ -1435,10 +1514,17 @@ function buildPlayerStatGroups(entries) {
         pos: entry.pos,
         cmp: entry.stats.passing.cmp,
         att: entry.stats.passing.att,
+        cmpPct: Number(((entry.stats.passing.cmp / Math.max(1, entry.stats.passing.att)) * 100).toFixed(1)),
         yds: entry.stats.passing.yards,
         td: entry.stats.passing.td,
         int: entry.stats.passing.int,
-        sacks: entry.stats.passing.sacks
+        ypa: Number((entry.stats.passing.yards / Math.max(1, entry.stats.passing.att)).toFixed(1)),
+        rate: gamePasserRating(entry.stats.passing),
+        sacks: entry.stats.passing.sacks,
+        sackYds: entry.stats.passing.sackYards,
+        firstDowns: entry.stats.passing.firstDowns,
+        lng: entry.stats.passing.long,
+        offSn: entry.stats.snaps?.offense || 0
       }))
       .sort((a, b) => b.yds - a.yds || b.att - a.att),
     rushing: entries
@@ -1451,7 +1537,11 @@ function buildPlayerStatGroups(entries) {
         yds: entry.stats.rushing.yards,
         td: entry.stats.rushing.td,
         ypa: Number((entry.stats.rushing.yards / Math.max(1, entry.stats.rushing.att)).toFixed(1)),
-        lng: entry.stats.rushing.long
+        lng: entry.stats.rushing.long,
+        firstDowns: entry.stats.rushing.firstDowns,
+        fmb: entry.stats.rushing.fumbles,
+        brkTkl: entry.stats.rushing.brokenTackles,
+        offSn: entry.stats.snaps?.offense || 0
       }))
       .sort((a, b) => b.yds - a.yds || b.att - a.att),
     receiving: entries
@@ -1464,7 +1554,13 @@ function buildPlayerStatGroups(entries) {
         rec: entry.stats.receiving.rec,
         yds: entry.stats.receiving.yards,
         td: entry.stats.receiving.td,
-        ypr: Number((entry.stats.receiving.yards / Math.max(1, entry.stats.receiving.rec)).toFixed(1))
+        ypr: Number((entry.stats.receiving.yards / Math.max(1, entry.stats.receiving.rec)).toFixed(1)),
+        catchPct: Number(((entry.stats.receiving.rec / Math.max(1, entry.stats.receiving.targets)) * 100).toFixed(1)),
+        yac: entry.stats.receiving.yac,
+        drops: entry.stats.receiving.drops,
+        firstDowns: entry.stats.receiving.firstDowns,
+        lng: entry.stats.receiving.long,
+        offSn: entry.stats.snaps?.offense || 0
       }))
       .sort((a, b) => b.yds - a.yds || b.rec - a.rec),
     defense: entries
@@ -1479,9 +1575,16 @@ function buildPlayerStatGroups(entries) {
         player: entry.player,
         pos: entry.pos,
         tkl: entry.stats.defense.tackles,
+        solo: entry.stats.defense.solo,
+        ast: entry.stats.defense.ast,
         sacks: entry.stats.defense.sacks,
+        tfl: entry.stats.defense.tfl,
+        qbHits: entry.stats.defense.qbHits,
         int: entry.stats.defense.int,
-        pd: entry.stats.defense.passDefended
+        pd: entry.stats.defense.passDefended,
+        ff: entry.stats.defense.ff,
+        fr: entry.stats.defense.fr,
+        defSn: entry.stats.snaps?.defense || 0
       }))
       .sort((a, b) => b.tkl - a.tkl || b.sacks - a.sacks),
     kicking: entries
@@ -1492,8 +1595,51 @@ function buildPlayerStatGroups(entries) {
         pos: entry.pos,
         fgm: entry.stats.kicking.fgm,
         fga: entry.stats.kicking.fga,
+        fgPct: Number(((entry.stats.kicking.fgm / Math.max(1, entry.stats.kicking.fga)) * 100).toFixed(1)),
         xpm: entry.stats.kicking.xpm,
-        xpa: entry.stats.kicking.xpa
+        xpa: entry.stats.kicking.xpa,
+        xpPct: Number(((entry.stats.kicking.xpm / Math.max(1, entry.stats.kicking.xpa)) * 100).toFixed(1)),
+        lng: entry.stats.kicking.long,
+        stSn: entry.stats.snaps?.special || 0
+      })),
+    punting: entries
+      .filter((entry) => (entry.stats.punting?.punts || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        punts: entry.stats.punting.punts,
+        yds: entry.stats.punting.yards,
+        avg: Number((entry.stats.punting.yards / Math.max(1, entry.stats.punting.punts)).toFixed(1)),
+        lng: entry.stats.punting.long,
+        in20: entry.stats.punting.in20,
+        tb: entry.stats.punting.touchbacks,
+        blk: entry.stats.punting.blocks,
+        stSn: entry.stats.snaps?.special || 0
+      })),
+    blocking: entries
+      .filter((entry) => (entry.stats.snaps?.passBlock || 0) + (entry.stats.snaps?.runBlock || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        passBlkSn: entry.stats.snaps.passBlock,
+        runBlkSn: entry.stats.snaps.runBlock,
+        sacksAllowed: entry.stats.blocking?.sacksAllowed || 0,
+        pressuresAllowed: entry.stats.blocking?.pressuresAllowed || 0,
+        penalties: entry.stats.blocking?.penalties || 0,
+        offSn: entry.stats.snaps?.offense || 0
+      })),
+    snaps: entries
+      .filter((entry) => (entry.stats.snaps?.offense || 0) + (entry.stats.snaps?.defense || 0) + (entry.stats.snaps?.special || 0) > 0)
+      .map((entry) => ({
+        playerId: entry.playerId,
+        player: entry.player,
+        pos: entry.pos,
+        offSn: entry.stats.snaps?.offense || 0,
+        defSn: entry.stats.snaps?.defense || 0,
+        stSn: entry.stats.snaps?.special || 0,
+        totalSn: (entry.stats.snaps?.offense || 0) + (entry.stats.snaps?.defense || 0) + (entry.stats.snaps?.special || 0)
       }))
   };
 }
@@ -1526,6 +1672,10 @@ export function simulateGame({
   const homeByQuarter = [0, 0, 0, 0, 0];
   const awayByQuarter = [0, 0, 0, 0, 0];
   let elapsedSeconds = 0;
+  let homeDriveSequence = 0;
+  let awayDriveSequence = 0;
+  let homePossessionSeconds = 0;
+  let awayPossessionSeconds = 0;
 
   for (const player of homeStarters) statBook.registerGameAppearance(player.id, year, true, homeTeamId, player.position, seasonType);
   for (const player of awayStarters) statBook.registerGameAppearance(player.id, year, true, awayTeamId, player.position, seasonType);
@@ -1555,7 +1705,11 @@ export function simulateGame({
 
   const finalizeDrive = (drive, offenseTeamId) => {
     collectGamePlayerStats(playerGameStats, statBook, drive.deltas);
-    const stampedLog = stampDriveLog(drive.playLog || [], elapsedSeconds, drive.seconds || 0);
+    const driveNumber = offenseTeamId === homeTeamId ? ++homeDriveSequence : ++awayDriveSequence;
+    if (offenseTeamId === homeTeamId) homePossessionSeconds += drive.seconds || 0;
+    else awayPossessionSeconds += drive.seconds || 0;
+    const stampedLog = stampDriveLog(drive.playLog || [], elapsedSeconds, drive.seconds || 0)
+      .map((entry) => ({ ...entry, driveNumber }));
     playByPlay.push(...stampedLog);
     elapsedSeconds += drive.seconds || 0;
     if (drive.scoringEvent) {
@@ -1690,32 +1844,32 @@ export function simulateGame({
   const trackSnaps = (set) => {
     for (const playerId of set) snappedPlayerIds.add(playerId);
   };
-  trackSnaps(applySnapCounts(statBook, year, homeContext.qbRotation, homeOffSnaps, "offense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.rbRotation, homeOffSnaps, "offense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.wrRotation, homeOffSnaps, "offense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.teRotation, homeOffSnaps, "offense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.olRotation, homeOffSnaps, "offense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.qbRotation, awayOffSnaps, "offense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.rbRotation, awayOffSnaps, "offense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.wrRotation, awayOffSnaps, "offense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.teRotation, awayOffSnaps, "offense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.olRotation, awayOffSnaps, "offense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.qbRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.rbRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.wrRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.teRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.olRotation, homeOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.qbRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.rbRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.wrRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.teRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.olRotation, awayOffSnaps, "offense", seasonType, playerGameStats));
 
-  trackSnaps(applySnapCounts(statBook, year, homeContext.dlRotation, awayOffSnaps, "defense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.lbRotation, awayOffSnaps, "defense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.dbRotation, awayOffSnaps, "defense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.dlRotation, homeOffSnaps, "defense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.lbRotation, homeOffSnaps, "defense", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.dbRotation, homeOffSnaps, "defense", seasonType));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.dlRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.lbRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.dbRotation, awayOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.dlRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.lbRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.dbRotation, homeOffSnaps, "defense", seasonType, playerGameStats));
 
   const homeSpecialSnaps = homeKOps + homePOps + awayKOps;
   const awaySpecialSnaps = awayKOps + awayPOps + homeKOps;
-  trackSnaps(applySnapCounts(statBook, year, homeContext.kRotation, homeSpecialSnaps, "special", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, homeContext.pRotation, homeSpecialSnaps, "special", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.kRotation, awaySpecialSnaps, "special", seasonType));
-  trackSnaps(applySnapCounts(statBook, year, awayContext.pRotation, awaySpecialSnaps, "special", seasonType));
-  applyBlockingNoise(statBook, year, homeContext.olRotation, homeOffSnaps, rng, seasonType);
-  applyBlockingNoise(statBook, year, awayContext.olRotation, awayOffSnaps, rng, seasonType);
+  trackSnaps(applySnapCounts(statBook, year, homeContext.kRotation, homeSpecialSnaps, "special", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, homeContext.pRotation, homeSpecialSnaps, "special", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.kRotation, awaySpecialSnaps, "special", seasonType, playerGameStats));
+  trackSnaps(applySnapCounts(statBook, year, awayContext.pRotation, awaySpecialSnaps, "special", seasonType, playerGameStats));
+  applyBlockingNoise(statBook, year, homeContext.olRotation, homeOffSnaps, rng, seasonType, playerGameStats);
+  applyBlockingNoise(statBook, year, awayContext.olRotation, awayOffSnaps, rng, seasonType, playerGameStats);
 
   for (const playerId of snappedPlayerIds) {
     if (starterIds.has(playerId)) continue;
@@ -1731,8 +1885,14 @@ export function simulateGame({
     week,
     seasonType,
     label,
-    homeTeam: teamGameSummary(homeTeamId, homeScore, homeYards, homeTurnovers, homePassPlays, homeRushPlays, playerEntries),
-    awayTeam: teamGameSummary(awayTeamId, awayScore, awayYards, awayTurnovers, awayPassPlays, awayRushPlays, playerEntries),
+    homeTeam: teamGameSummary(
+      homeTeamId, homeScore, homeYards, homeTurnovers, homePassPlays, homeRushPlays,
+      playerEntries, playByPlay, homeDriveSequence, homePossessionSeconds
+    ),
+    awayTeam: teamGameSummary(
+      awayTeamId, awayScore, awayYards, awayTurnovers, awayPassPlays, awayRushPlays,
+      playerEntries, playByPlay, awayDriveSequence, awayPossessionSeconds
+    ),
     quarterScores: {
       home: homeByQuarter,
       away: awayByQuarter

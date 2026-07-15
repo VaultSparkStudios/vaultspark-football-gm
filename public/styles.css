@@ -916,6 +916,86 @@ body[data-theme="light"] .btn-primary {
   width: min(1280px, 96vw);
 }
 
+.boxscore-broadcast-strip {
+  margin: 0.4rem 0 0.8rem;
+  overflow-x: auto;
+  border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at top left, rgba(var(--team-primary-rgb), 0.2), transparent 38%),
+    var(--inset);
+}
+
+.broadcast-score-grid {
+  display: grid;
+  grid-template-columns: minmax(150px, 1.5fr) repeat(var(--quarter-count), minmax(44px, 0.45fr)) minmax(58px, 0.55fr);
+  min-width: 470px;
+}
+
+.broadcast-score-grid > div {
+  padding: 0.56rem 0.68rem;
+  border-right: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  text-align: center;
+}
+
+.broadcast-score-head {
+  color: var(--ink-dim);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.broadcast-team-name {
+  text-align: left !important;
+  color: var(--ink-strong);
+  font-weight: 700;
+}
+
+.broadcast-final {
+  color: var(--accent-strong);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.boxscore-impact-strip {
+  display: grid;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.game-impact-card {
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  border-radius: 14px;
+  padding: 0.75rem;
+  background: var(--inset);
+}
+
+.game-impact-card--game-ball {
+  border-color: color-mix(in srgb, var(--warning) 58%, transparent);
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--warning) 17%, transparent), transparent 42%),
+    var(--inset);
+}
+
+.game-impact-card p {
+  margin: 0.35rem 0;
+  color: var(--ink-dim);
+}
+
+.game-impact-card > span {
+  color: var(--accent-strong);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 760px) {
+  .boxscore-impact-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 .overview-hero-panel {
   overflow: hidden;
   background:
@@ -1206,6 +1286,100 @@ body[data-theme="light"] .btn-primary {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: 0.72rem;
+}
+
+.player-story-grid {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.player-story-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent);
+  border-radius: 16px;
+  padding: 0.9rem;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, transparent), transparent 52%),
+    var(--inset);
+}
+
+.player-story-card--bio {
+  border-color: color-mix(in srgb, var(--accent-2) 48%, transparent);
+}
+
+.player-story-card--achievements {
+  background:
+    radial-gradient(circle at top right, rgba(215, 162, 74, 0.18), transparent 42%),
+    var(--inset);
+}
+
+.player-story-card h3 {
+  margin: 0.2rem 0 0.45rem;
+  color: var(--ink-strong);
+  font-size: 1rem;
+}
+
+.player-story-card p,
+.player-story-card ul {
+  margin: 0;
+  color: var(--ink-dim);
+  line-height: 1.55;
+}
+
+.player-story-card ul {
+  display: grid;
+  gap: 0.35rem;
+  padding-left: 1.1rem;
+}
+
+.profile-signature-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.profile-signature-row span {
+  padding: 0.32rem 0.55rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 13%, transparent);
+  color: var(--ink-dim);
+  font-size: 0.76rem;
+}
+
+.profile-signature-row strong {
+  color: var(--accent-strong);
+}
+
+.profile-milestone-stack {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+
+.profile-milestone > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  color: var(--ink-dim);
+  font-size: 0.74rem;
+}
+
+.profile-milestone-track {
+  height: 7px;
+  margin-top: 0.28rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 11%, transparent);
+}
+
+.profile-milestone-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 42%, transparent);
 }
 
 .player-note {
@@ -1599,6 +1773,10 @@ td.tone-info {
 
   .player-meta-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .player-story-grid {
+    grid-template-columns: 1.35fr 1fr 1fr;
   }
 
   .history-card-grid {

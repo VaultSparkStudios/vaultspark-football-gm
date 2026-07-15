@@ -8,6 +8,7 @@ export function renderRoster() {
     pos: player.pos,
     age: player.age,
     ovr: player.overall,
+    pot: player.potential,
     fit: player.schemeFit ?? "-",
     morale: player.morale,
     slot: player.rosterSlot,
@@ -46,6 +47,7 @@ export function renderFreeAgency() {
     pos: player.pos,
     age: player.age,
     ovr: player.overall,
+    pot: player.potential,
     fit: player.schemeFit ?? "-",
     dev: player.devTrait,
     source: player.source,
@@ -80,6 +82,7 @@ export function renderRetiredPool() {
     pos: player.pos,
     age: player.age,
     ovr: player.overall,
+    pot: player.potential,
     retiredYear: player.retiredYear,
     maxAge: player.maxAge,
     seasons: player.seasonsPlayed,
@@ -189,6 +192,7 @@ export function updateDepthShare(position, playerId, rawValue) {
 
 export function renderDepthChart() {
   const position = document.getElementById("depthPositionSelect")?.value;
+  const exclusiveRole = ["QB", "K", "P"].includes(position);
   const ids = state.depthOrder?.length ? state.depthOrder : state.depthChart?.[position] || [];
   const shareRows = state.depthSnapShare?.[position] || [];
   const rosterById = new Map(state.depthRoster.map((player) => [player.id, player]));
@@ -209,6 +213,9 @@ export function renderDepthChart() {
       <th>Player</th>
       <th>Pos</th>
       <th>OVR</th>
+      <th>POT</th>
+      <th>Merit</th>
+      <th>Available</th>
       <th>Mode</th>
       <th>Snap Share</th>
       <th>Default</th>
@@ -227,7 +234,10 @@ export function renderDepthChart() {
             <td><button class="link-btn" data-player-id="${escapeHtml(playerId)}">${escapeHtml(player?.name || "Unknown")}</button></td>
             <td>${escapeHtml(player?.pos || position)}</td>
             <td>${escapeHtml(player?.overall ?? "")}</td>
-            <td>${Number.isFinite(manualShare) ? "Manual" : "Auto"}</td>
+            <td>${escapeHtml(player?.potential ?? shareRows[index]?.potential ?? "")}</td>
+            <td>${escapeHtml(shareRows[index]?.meritScore ?? "-")}</td>
+            <td>${shareRows[index]?.available === false ? "Out" : "Ready"}</td>
+            <td>${exclusiveRole ? "Auto locked" : Number.isFinite(manualShare) ? "Manual" : "Auto"}</td>
             <td>
               <div class="depth-share-cell">
                 <input
@@ -238,9 +248,10 @@ export function renderDepthChart() {
                   step="1"
                   value="${escapeHtml(Math.round(effectiveShare * 100))}"
                   data-depth-share-input="${escapeHtml(playerId)}"
+                  ${exclusiveRole ? "disabled" : ""}
                 />
                 <span class="small">%</span>
-                <button data-depth-share-reset="${escapeHtml(playerId)}">Auto</button>
+                <button data-depth-share-reset="${escapeHtml(playerId)}" ${exclusiveRole ? "disabled" : ""}>Auto</button>
               </div>
             </td>
             <td>${escapeHtml(formatDepthSharePercent(defaultShare))}</td>
@@ -255,7 +266,9 @@ export function renderDepthChart() {
       .join("")}
   `;
   document.getElementById("depthStatusText").textContent = ids.length
-    ? `Adjusting ${position} for ${document.getElementById("depthTeamSelect")?.value || state.dashboard?.controlledTeamId || "BUF"}`
+    ? exclusiveRole
+      ? `${position} is availability-locked: the healthy ${position}1 receives 100%, and the next ready player inherits the role during injury.`
+      : `Adjusting ${position} for ${document.getElementById("depthTeamSelect")?.value || state.dashboard?.controlledTeamId || "BUF"} · auto shares blend OVR, POT, fit, and morale.`
     : "No players loaded for this position";
 }
 

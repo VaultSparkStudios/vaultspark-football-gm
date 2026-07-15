@@ -80,6 +80,15 @@ test("create league, advance week, and open player modal", async ({ page }) => {
   expect(before).not.toBeNull();
   expect(after).toBeGreaterThanOrEqual(before + 1);
 
+  const latestBoxScore = page.locator("#boxScoreTicker [data-boxscore-id]").first();
+  await expect(latestBoxScore).toBeVisible();
+  await latestBoxScore.click();
+  await expect(page.locator("#boxScoreModal")).not.toHaveClass(/hidden/);
+  await expect(page.locator("#boxScoreBroadcastStrip .broadcast-score-grid")).toBeVisible();
+  await expect(page.locator("#boxScoreImpactStrip .game-impact-card").first()).toContainText("Impact Index");
+  await expect(page.locator("#boxScoreHomeSnapsTable tr").nth(1)).toBeVisible();
+  await page.click("#closeBoxScoreModalBtn");
+
   await page.click('[data-testid="tab-roster"]');
   await page.click("#loadRosterBtn");
   await waitGameReady(page);
@@ -90,6 +99,10 @@ test("create league, advance week, and open player modal", async ({ page }) => {
 
   await expect(page.locator("#playerModal")).not.toHaveClass(/hidden/);
   await expect(page.locator("#playerModalTitle")).not.toHaveText(/^Player$/);
+  await expect(page.locator("#playerModalMeta")).toContainText("POT");
+  await expect(page.locator(".player-story-card")).toHaveCount(3);
+  await expect(page.locator(".player-story-card--bio")).toContainText(/OVR.*POT/);
+  await expect(page.locator(".player-story-card--achievements")).toContainText("Achievements");
   await page.click("#closePlayerModalBtn");
   await expect(page.locator("#playerModal")).toHaveClass(/hidden/);
 });
@@ -98,6 +111,7 @@ test("depth chart controls and game guide modal are operational", async ({ page 
   await createLeagueFromSetup(page);
 
   await page.click('[data-testid="tab-depth"]');
+  await page.selectOption("#depthPositionSelect", "RB");
   await page.click("#loadDepthBtn");
   await waitGameReady(page);
 
@@ -122,6 +136,26 @@ test("depth chart controls and game guide modal are operational", async ({ page 
   await expect(page.locator("#guideModalContent")).toContainText("League Setup");
   await page.click("#closeGuideModalBtn");
   await expect(page.locator("#guideModal")).toHaveClass(/hidden/);
+});
+
+test("Tell the Commissioner reserves a trusted window and navigates it to a prefilled issue", async ({ page }) => {
+  await createLeagueFromSetup(page);
+  await page.evaluate(() => {
+    globalThis.__feedbackTarget = "";
+    window.open = () => ({
+      opener: null,
+      location: {
+        replace(url) {
+          globalThis.__feedbackTarget = url;
+        }
+      }
+    });
+  });
+  await page.click('[data-testid="tab-settings"]');
+  await expect(page.locator("#betaFeedbackBtn")).toBeVisible();
+  await page.click("#betaFeedbackBtn");
+  await expect.poll(() => page.evaluate(() => globalThis.__feedbackTarget)).toContain("/issues/new?");
+  await expect.poll(() => page.evaluate(() => globalThis.__feedbackTarget)).toContain("labels=beta-feedback");
 });
 
 test("designation and retirement override flows use table selection", async ({ page }) => {

@@ -148,6 +148,7 @@ export function renderDraft() {
     height: formatHeight(prospect.heightInches),
     weight: prospect.weightLbs || "-",
     ovr: prospect.overall,
+    pot: prospect.potential,
     projRnd: prospect.scouting?.projectedRound || "-",
     board: state.scoutingBoardDraft.indexOf(prospect.id) >= 0 ? state.scoutingBoardDraft.indexOf(prospect.id) + 1 : "-",
     action: isUserPick && !draft.completed ? "Select / Draft" : ""
@@ -460,4 +461,3 @@ export function showDraftPickReveal(prospect, teamName, onConfirm) {
     }
   });
 }
-

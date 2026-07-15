@@ -1,0 +1,62 @@
+{
+  "session": "S46",
+  "date": "2026-07-15",
+  "repo": "Franchise Architect: Football",
+  "headline": "Session 46 turns every roster into a living football world: usage is merit- and availability-aware, players carry evolving personal stories, and the box score now reads like a truthful broadcast command center.",
+  "items": [
+    {
+      "title": "NFL-role usage and Potential system",
+      "projectImpact": 10,
+      "ecosystemImpact": 5,
+      "evidence": "Healthy QB1/K1/P1 own 100% of role volume; other rooms use OVR/POT/fit/morale merit; injury substitution and restoration are regression-tested."
+    },
+    {
+      "title": "Living player dossiers",
+      "projectImpact": 10,
+      "ecosystemImpact": 4,
+      "evidence": "Every supported position generates deterministic personalized bios, facts, traits, actual achievements, and career milestone progress."
+    },
+    {
+      "title": "Truthful broadcast box score",
+      "projectImpact": 9,
+      "ecosystemImpact": 4,
+      "evidence": "Observed team/player matrices, snaps, punting, blocking, quarter scoring, and a labeled source-derived Impact Index shipped."
+    },
+    {
+      "title": "All-actions reliability net",
+      "projectImpact": 8,
+      "ecosystemImpact": 6,
+      "evidence": "Trusted Commissioner popup flow and a 100+ button contract inventory shipped; the inventory found and fixed Agent Negotiation ID drift."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "Launch evidence",
+      "evidence": "Obtain real football@playfranchisearchitect.com delivery proof and current live-origin evidence before any SPARKED flip."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "SPARKED flip",
+      "evidence": "External evidence gate only; no product or doctor blocker remains."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "Impact Index boundary",
+      "evidence": "The index is visibly labeled and computed from recorded player output; it is not presented as an observed NFL statistic."
+    },
+    {
+      "title": "Control-plane helper gap",
+      "evidence": "Public repo lacks local rescore/state-vector/entropy/genome/closeout-autopilot helpers; no sibling tree was edited to simulate completion."
+    },
+    {
+      "title": "Launch state preserved",
+      "evidence": "No email receipt or live-origin evidence was fabricated, so public-unlaunched remains accurate."
+    }
+  ],
+  "diffStat": {
+    "files": 45,
+    "suite": "Direct shards 317/317; Playwright 18/18; focused 24/24; Pages build/smoke; doctor blockingFailing 0."
+  }
+}

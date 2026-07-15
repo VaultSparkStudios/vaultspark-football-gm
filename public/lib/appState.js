@@ -101,7 +101,7 @@ export const state = {
 };
 
 export const DISPLAY_LABELS = {
-  ovr: "OVR", pos: "Pos", tm: "Tm", pf: "PF", pa: "PA", pct: "Pct",
+  ovr: "OVR", pot: "POT", pos: "Pos", tm: "Tm", pf: "PF", pa: "PA", pct: "Pct",
   yds: "Yds", td: "TD", tkl: "Tkl", rec: "Rec", tgt: "Tgt", ypr: "YPR",
   passYds: "Pass Yds", passTd: "Pass TD", rushYds: "Rush Yds", rushTd: "Rush TD",
   recYds: "Rec Yds", recTd: "Rec TD", fgm: "FGM", fga: "FGA", xpm: "XPM", xpa: "XPA",
@@ -110,7 +110,17 @@ export const DISPLAY_LABELS = {
   team: "Team", lg: "Lg", g: "G", gs: "GS", cmpPct: "Cmp%", tdPct: "TD%", intPct: "Int%",
   firstDowns: "1D", ypg: "Y/G", apg: "A/G", recPg: "R/G", tpg: "Tch/G", ypt: "Y/Tgt",
   touch: "Touch", yScr: "YScr", yTch: "Y/Tch", rushYpa: "Y/A", av: "AV", awards: "Awards",
-  comb: "Comb", pd: "PD", ff: "FF", fr: "FR", sk: "Sk", nya: "NY/A", anya: "ANY/A"
+  comb: "Comb", pd: "PD", ff: "FF", fr: "FR", sk: "Sk", nya: "NY/A", anya: "ANY/A",
+  rate: "Rate", ypa: "Y/A", catchPct: "Catch%", fgPct: "FG%", xpPct: "XP%",
+  firstDownPct: "1D%", fmbRate: "Fum%", pressurePct: "Pressure%", penaltyPct: "Penalty%",
+  tklPg: "Tkl/G", sackPg: "Sack/G", takeaways: "TA", in20Pct: "In20%", tbPct: "TB%",
+  fgM40to49: "FGM 40–49", fgA40to49: "FGA 40–49",
+  qbHits: "QB Hits", tfl: "TFL", brkTkl: "Brk Tkl", fmb: "Fum", lng: "Lng",
+  offSn: "Off Sn", defSn: "Def Sn", stSn: "ST Sn", totalSn: "Total Sn",
+  passBlkSn: "Pass Blk Sn", runBlkSn: "Run Blk Sn", sacksAllowed: "Sacks All",
+  pressuresAllowed: "Pressures All", in20: "In 20", tb: "TB", blk: "Blk",
+  thirdDown: "3rd Down", fourthDown: "4th Down", redZone: "Red Zone", top: "TOP",
+  pass1D: "Pass 1D", rush1D: "Rush 1D"
 };
 
 export const GUIDE_SECTIONS = [

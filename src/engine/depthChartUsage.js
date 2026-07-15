@@ -23,6 +23,37 @@ function roundToDepthShare(value) {
   return Number(clamp(value, 0, 1).toFixed(3));
 }
 
+const EXCLUSIVE_ROLE_POSITIONS = new Set(["QB", "K", "P"]);
+
+export function rotationMeritScore(player = {}) {
+  return Number((
+    Number(player.overall || 60) * 0.72 +
+    Number(player.potential || player.overall || 60) * 0.18 +
+    Number(player.schemeFit || 70) * 0.07 +
+    Number(player.morale || 70) * 0.03
+  ).toFixed(2));
+}
+
+export function buildMeritAdjustedRoomShares({ position, players = [], baseShares = [] } = {}) {
+  if (!players.length) return [];
+  if (EXCLUSIVE_ROLE_POSITIONS.has(position)) return players.map((_, index) => (index === 0 ? 1 : 0));
+  const defaults = players.map((_, index) => roundToDepthShare(baseShares[index] ?? 0.02));
+  const targetTotal = total(defaults);
+  if (!targetTotal) return defaults;
+  const merits = players.map(rotationMeritScore);
+  const roomAverage = total(merits) / merits.length;
+  const weighted = defaults.map((share, index) =>
+    share * clamp(1 + (merits[index] - roomAverage) / 46, 0.58, 1.42)
+  );
+  const normalized = normalizeTo(weighted, targetTotal).map(roundToDepthShare);
+  const delta = Number((targetTotal - total(normalized)).toFixed(3));
+  if (Math.abs(delta) >= 0.001) {
+    const bestIndex = merits.indexOf(Math.max(...merits));
+    normalized[bestIndex] = roundToDepthShare(normalized[bestIndex] + delta);
+  }
+  return normalized;
+}
+
 function normalizeTo(values = [], targetTotal) {
   const currentTotal = total(values);
   if (!currentTotal || !targetTotal) return values.slice();
@@ -232,8 +263,9 @@ export function buildTeamUsageProfile(team) {
     blend: 0.58
   });
 
-  const qb2 = clamp((1 - (tendencies.rotationDiscipline || 1)) * 0.07 + 0.015, 0.01, 0.05);
-  const qbShares = [Number((1 - qb2).toFixed(3)), Number(qb2.toFixed(3))];
+  // Healthy QB1 owns the role. Injured/inactive players are removed before
+  // game context is built, so QB2 inherits 100% and recovery restores QB1.
+  const qbShares = [1, 0];
 
   return {
     packages,

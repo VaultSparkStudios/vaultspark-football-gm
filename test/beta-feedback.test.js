@@ -1,6 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildFeedbackContextFingerprint, buildFeedbackIssueUrl } from "../public/lib/betaFeedback.js";
+import {
+  buildFeedbackContextFingerprint,
+  buildFeedbackIssueUrl,
+  commitFeedbackNavigation,
+  openFeedbackPlaceholder
+} from "../public/lib/betaFeedback.js";
 
 // ── Beta feedback URL builder (S14) ──────────────────────────────────────────
 
@@ -67,4 +72,36 @@ test("franchise fingerprint rows are embedded without secret-like payloads", () 
 test("missing context degrades gracefully", () => {
   const url = buildFeedbackIssueUrl();
   assert.match(new URL(url).searchParams.get("body"), /Season: \? · Week \?/);
+});
+
+test("feedback placeholder opens synchronously and severs opener access", () => {
+  const popup = { opener: { unsafe: true }, location: { replace() {} } };
+  const calls = [];
+  const result = openFeedbackPlaceholder({ open: (...args) => { calls.push(args); return popup; } });
+  assert.equal(result, popup);
+  assert.deepEqual(calls, [["about:blank", "_blank"]]);
+  assert.equal(popup.opener, null);
+});
+
+test("feedback navigation uses the reserved popup or a reliable current-tab fallback", () => {
+  let replaced = "";
+  assert.equal(
+    commitFeedbackNavigation({
+      popup: { location: { replace: (url) => { replaced = url; } } },
+      url: "https://example.test/feedback"
+    }),
+    "popup"
+  );
+  assert.equal(replaced, "https://example.test/feedback");
+
+  let assigned = "";
+  assert.equal(
+    commitFeedbackNavigation({
+      popup: null,
+      url: "https://example.test/fallback",
+      browser: { location: { assign: (url) => { assigned = url; } } }
+    }),
+    "current-tab"
+  );
+  assert.equal(assigned, "https://example.test/fallback");
 });

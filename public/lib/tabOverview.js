@@ -2,6 +2,7 @@ import { state, api, STATS_BENCHMARK_HINTS } from "./appState.js";
 import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderTable, setBoxScoreTab, setMetricCardValue, showToast, teamCode, teamName } from "./appCore.js";
 import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
 import { renderTradeDeadlineFrenzy } from "./tradeDeadlineFrenzy.js";
+import { buildBoxScoreImpactLeaders, buildQuarterScoreboard } from "./boxScorePresentation.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -411,25 +412,61 @@ export async function loadBoxScore(gameId) {
   document.getElementById("boxScoreAwayTitle").textContent = `${boxScore.awayTeamName} Player Stats`;
   document.getElementById("boxScoreHomeTitle").textContent = `${boxScore.homeTeamName} Player Stats`;
 
+  const scoreboard = buildQuarterScoreboard(boxScore);
+  document.getElementById("boxScoreBroadcastStrip").innerHTML = `
+    <div class="broadcast-score-grid" style="--quarter-count: ${scoreboard.labels.length}">
+      <div class="broadcast-score-head">Team</div>
+      ${scoreboard.labels.map((label) => `<div class="broadcast-score-head">${escapeHtml(label)}</div>`).join("")}
+      <div class="broadcast-score-head">Final</div>
+      ${scoreboard.rows.map((row) => `
+        <div class="broadcast-team-name">${escapeHtml(row.team)}</div>
+        ${row.quarters.map((score) => `<div>${escapeHtml(score)}</div>`).join("")}
+        <div class="broadcast-final">${escapeHtml(row.total)}</div>
+      `).join("")}
+    </div>`;
+
+  const impactLeaders = buildBoxScoreImpactLeaders(boxScore);
+  document.getElementById("boxScoreImpactStrip").innerHTML = impactLeaders.length
+    ? impactLeaders.map((leader, index) => `
+        <article class="game-impact-card ${index === 0 ? "game-impact-card--game-ball" : ""}">
+          <div class="brand-kicker">${index === 0 ? "Game Ball" : `Impact #${index + 1}`}</div>
+          <button class="link-btn" data-player-id="${escapeHtml(leader.playerId)}">${escapeHtml(leader.player)}</button>
+          <div>${escapeHtml(leader.team)} · ${escapeHtml(leader.pos)} · ${escapeHtml(leader.category)}</div>
+          <p>${escapeHtml(leader.summary)}</p>
+          <span>Impact Index ${escapeHtml(leader.score)}</span>
+        </article>
+      `).join("")
+    : `<div class="narrative-empty">No individual impact leaders were recorded.</div>`;
+
+  const formatPossession = (seconds) => {
+    const safe = Math.max(0, Math.round(Number(seconds || 0)));
+    return `${Math.floor(safe / 60)}:${String(safe % 60).padStart(2, "0")}`;
+  };
+  const teamRow = (name, team) => ({
+    team: name,
+    score: team.score,
+    yds: team.totalYards,
+    plays: team.plays,
+    ypp: team.yardsPerPlay,
+    passYds: team.passingYards,
+    rushYds: team.rushingYards,
+    compAtt: `${team.completions || 0}/${team.passAttempts || 0}`,
+    cmpPct: team.completionPct,
+    sacks: team.sacks,
+    firstDowns: team.firstDowns,
+    pass1D: team.passingFirstDowns,
+    rush1D: team.rushingFirstDowns,
+    thirdDown: `${team.thirdDownConversions || 0}/${team.thirdDowns || 0}`,
+    fourthDown: `${team.fourthDownConversions || 0}/${team.fourthDowns || 0}`,
+    redZone: team.redZoneTrips,
+    turnovers: team.turnovers,
+    drives: team.drives,
+    top: formatPossession(team.possessionSeconds)
+  });
+
   renderTable("boxScoreTeamStatsTable", [
-    {
-      team: boxScore.awayTeamName,
-      score: boxScore.awayTeam.score,
-      yds: boxScore.awayTeam.totalYards,
-      passYds: boxScore.awayTeam.passingYards,
-      rushYds: boxScore.awayTeam.rushingYards,
-      firstDowns: boxScore.awayTeam.firstDowns,
-      turnovers: boxScore.awayTeam.turnovers
-    },
-    {
-      team: boxScore.homeTeamName,
-      score: boxScore.homeTeam.score,
-      yds: boxScore.homeTeam.totalYards,
-      passYds: boxScore.homeTeam.passingYards,
-      rushYds: boxScore.homeTeam.rushingYards,
-      firstDowns: boxScore.homeTeam.firstDowns,
-      turnovers: boxScore.homeTeam.turnovers
-    }
+    teamRow(boxScore.awayTeamName, boxScore.awayTeam),
+    teamRow(boxScore.homeTeamName, boxScore.homeTeam)
   ]);
 
   renderTable(
@@ -449,6 +486,9 @@ export async function loadBoxScore(gameId) {
       qtr: entry.quarterLabel,
       clock: entry.clock,
       offense: entry.offenseTeamId,
+      down: entry.down,
+      toGo: entry.distance,
+      yardLine: entry.fieldPosition,
       play: entry.description
     }))
   );
@@ -459,7 +499,10 @@ export async function loadBoxScore(gameId) {
     renderTable(`${prefix}ReceivingTable`, groups.receiving || []);
     renderTable(`${prefix}DefenseTable`, groups.defense || []);
     renderTable(`${prefix}KickingTable`, groups.kicking || []);
-    ["Passing", "Rushing", "Receiving", "Defense", "Kicking"].forEach((suffix) => {
+    renderTable(`${prefix}PuntingTable`, groups.punting || []);
+    renderTable(`${prefix}BlockingTable`, groups.blocking || []);
+    renderTable(`${prefix}SnapsTable`, groups.snaps || []);
+    ["Passing", "Rushing", "Receiving", "Defense", "Kicking", "Punting", "Blocking", "Snaps"].forEach((suffix) => {
       decoratePlayerColumnFromRows(`${prefix}${suffix}Table`, groups[suffix.toLowerCase()] || [], { idKeys: ["playerId"] });
     });
   };

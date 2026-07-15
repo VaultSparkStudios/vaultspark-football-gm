@@ -563,6 +563,8 @@ export class StatBook {
           playerId: player.id,
           player: player.name,
           age: player.age,
+          ovr: player.overall,
+          pot: player.potential,
           pos: season.meta?.position || player.position,
           tm: seasonTeam,
           seasonType,
@@ -586,6 +588,10 @@ export class StatBook {
             int: p.int,
             ypa: per(p.yards, p.att),
             ypc: per(p.yards, p.cmp),
+            tdPct: pct(p.td, p.att),
+            intPct: pct(p.int, p.att),
+            nya: per(p.yards - p.sackYards, p.att + p.sacks, 2),
+            anya: per(p.yards - p.sackYards + p.td * 20 - p.int * 45, p.att + p.sacks, 2),
             rate: passerRating(p),
             sacks: p.sacks,
             sackYds: p.sackYards,
@@ -602,6 +608,10 @@ export class StatBook {
             td: r.td,
             lng: r.long,
             ypa: per(r.yards, r.att),
+            ypg: per(r.yards, source.games),
+            apg: per(r.att, source.games),
+            firstDownPct: pct(r.firstDowns, r.att),
+            fmbRate: pct(r.fumbles, r.att, 2),
             fmb: r.fumbles,
             firstDowns: r.firstDowns,
             brkTkl: r.brokenTackles,
@@ -616,9 +626,13 @@ export class StatBook {
             yds: r.yards,
             ypr: per(r.yards, r.rec),
             ypt: per(r.yards, r.targets),
+            ypg: per(r.yards, source.games),
+            recPg: per(r.rec, source.games),
             td: r.td,
+            tdPct: pct(r.td, r.targets),
             lng: r.long,
             catchPct: pct(r.rec, r.targets),
+            firstDownPct: pct(r.firstDowns, r.targets),
             firstDowns: r.firstDowns,
             yac: r.yac,
             drops: r.drops,
@@ -638,6 +652,9 @@ export class StatBook {
             pd: d.passDefended,
             ff: d.ff,
             fr: d.fr,
+            tklPg: per(d.tackles, source.games),
+            sackPg: per(d.sacks, source.games, 2),
+            takeaways: d.int + d.fr,
             av
           });
         } else if (category === "blocking") {
@@ -648,7 +665,9 @@ export class StatBook {
             runBlkSn: source.snaps?.runBlock || 0,
             sacksAllowed: b.sacksAllowed || 0,
             pressuresAllowed: b.pressuresAllowed || 0,
+            pressurePct: pct(b.pressuresAllowed || 0, source.snaps?.passBlock || 0, 2),
             penalties: b.penalties || 0,
+            penaltyPct: pct(b.penalties || 0, (source.snaps?.passBlock || 0) + (source.snaps?.runBlock || 0), 2),
             av
           });
         } else if (category === "kicking") {
@@ -666,6 +685,8 @@ export class StatBook {
             fgA40: k.fgA40,
             fgM50: k.fgM50,
             fgA50: k.fgA50,
+            fgM40to49: Math.max(0, k.fgm - k.fgM40 - k.fgM50),
+            fgA40to49: Math.max(0, k.fga - k.fgA40 - k.fgA50),
             av
           });
         } else if (category === "punting") {
@@ -678,6 +699,8 @@ export class StatBook {
             in20: p.in20,
             lng: p.long,
             tb: p.touchbacks || 0,
+            in20Pct: pct(p.in20, p.punts),
+            tbPct: pct(p.touchbacks || 0, p.punts),
             blk: p.blocks || 0,
             av
           });
@@ -740,6 +763,9 @@ export class StatBook {
         const base = {
           playerId: player.id,
           player: player.name,
+          age: player.age,
+          ovr: player.overall,
+          pot: player.potential,
           tm: careerView.primaryTeam,
           pos: player.position,
           status: player.status,
@@ -765,6 +791,10 @@ export class StatBook {
             int: p.int,
             ypa: per(p.yards, p.att),
             ypc: per(p.yards, p.cmp),
+            tdPct: pct(p.td, p.att),
+            intPct: pct(p.int, p.att),
+            nya: per(p.yards - p.sackYards, p.att + p.sacks, 2),
+            anya: per(p.yards - p.sackYards + p.td * 20 - p.int * 45, p.att + p.sacks, 2),
             rate: passerRating(p),
             sacks: p.sacks,
             sackYds: p.sackYards,
@@ -781,6 +811,10 @@ export class StatBook {
             yds: r.yards,
             td: r.td,
             ypa: per(r.yards, r.att),
+            ypg: per(r.yards, stats.games),
+            apg: per(r.att, stats.games),
+            firstDownPct: pct(r.firstDowns, r.att),
+            fmbRate: pct(r.fumbles, r.att, 2),
             lng: r.long,
             fmb: r.fumbles,
             firstDowns: r.firstDowns,
@@ -797,9 +831,13 @@ export class StatBook {
             yds: r.yards,
             ypr: per(r.yards, r.rec),
             ypt: per(r.yards, r.targets),
+            ypg: per(r.yards, stats.games),
+            recPg: per(r.rec, stats.games),
             td: r.td,
+            tdPct: pct(r.td, r.targets),
             lng: r.long,
             catchPct: pct(r.rec, r.targets),
+            firstDownPct: pct(r.firstDowns, r.targets),
             firstDowns: r.firstDowns,
             yac: r.yac,
             drops: r.drops,
@@ -820,6 +858,9 @@ export class StatBook {
             pd: d.passDefended,
             ff: d.ff,
             fr: d.fr,
+            tklPg: per(d.tackles, stats.games),
+            sackPg: per(d.sacks, stats.games, 2),
+            takeaways: d.int + d.fr,
             av
           };
         }
@@ -831,7 +872,9 @@ export class StatBook {
             runBlkSn: stats.snaps?.runBlock || 0,
             sacksAllowed: b.sacksAllowed || 0,
             pressuresAllowed: b.pressuresAllowed || 0,
+            pressurePct: pct(b.pressuresAllowed || 0, stats.snaps?.passBlock || 0, 2),
             penalties: b.penalties || 0,
+            penaltyPct: pct(b.penalties || 0, (stats.snaps?.passBlock || 0) + (stats.snaps?.runBlock || 0), 2),
             av
           };
         }
@@ -850,6 +893,8 @@ export class StatBook {
             fgA40: k.fgA40,
             fgM50: k.fgM50,
             fgA50: k.fgA50,
+            fgM40to49: Math.max(0, k.fgm - k.fgM40 - k.fgM50),
+            fgA40to49: Math.max(0, k.fga - k.fgA40 - k.fgA50),
             av
           };
         }
@@ -864,6 +909,8 @@ export class StatBook {
             in20: p.in20,
             lng: p.long,
             tb: p.touchbacks || 0,
+            in20Pct: pct(p.in20, p.punts),
+            tbPct: pct(p.touchbacks || 0, p.punts),
             blk: p.blocks || 0,
             av
           };

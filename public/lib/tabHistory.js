@@ -734,6 +734,7 @@ export function renderPlayerTimelineSearchResults() {
     pos: player.pos,
     age: player.age,
     ovr: player.overall,
+    pot: player.potential,
     status: player.status,
     action: ""
   }));

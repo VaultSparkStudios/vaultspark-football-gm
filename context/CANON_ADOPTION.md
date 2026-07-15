@@ -1,4 +1,4 @@
-# Canon Adoption — VaultSpark Football GM
+# Canon Adoption — Franchise-Architect
 
 > ACTIVELY CHECKED against the live `vaultspark-studio-ops/docs/STUDIO_CANON.md` (founder directive S183).
 > Refresh: `node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --write`.

@@ -335,3 +335,11 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Fixed the shard map so the new trade-deadline regression test is part of the runtime shard and cannot be skipped by default CI/local suite coverage.
 - Verification: direct default shards 292/292 (core 64, runtime 125, sim-contract 63, sim-realism 1, studio 39); Playwright UI 17/17; Pages build/smoke; syntax checks; windows-hide; Wave guard; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates allowed cost-neutral; doctor no items.
 - Launch truth unchanged: Launch/SPARKED remains blocked until football@playfranchisearchitect.com forwarding/copying has a real received-message receipt and current live-origin/routing evidence remains green.
+## 2026-07-15 — Session 46: complete player-realism and broadcast arc
+
+- Ran the complete continuous `/goal /arc`: pull/rebase, startup gates, live audit, all-item implementation, second-order innovation, full verification, and closeout.
+- Generated `docs/AUDIT_2026-07-15_SESSION46.*` with six premise-verified ranked items and marked every item shipped against live code.
+- Shipped trusted Commissioner feedback navigation, all-actions contract coverage, OVR/POT propagation, an availability-aware merit snap engine, exclusive specialist role ownership, expanded truthful box scores, and living personalized player dossiers.
+- Generated and shipped two compound innovations after list exhaustion: the broadcast Impact Index/quarter command center and position-aware career milestone questlines.
+- Verification passed direct canonical shards 317/317, direct Playwright 18/18, focused Session 46 suites 24/24, syntax checks, Pages build/smoke, Windows/Wave/security/blocker/canon/cost/release gates, and doctor no items.
+- Launch truth is unchanged: no SPARKED flip without real email-delivery and live-origin proof.

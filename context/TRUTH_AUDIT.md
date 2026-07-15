@@ -231,3 +231,12 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Test truth: `npm test` timed out before a summary and `npm run test:ui` returned exit 1 with no captured output. Neither is reported as green. Counted evidence is direct named shards 294/294 plus direct Playwright 17/17.
 - Browser truth: `leagueStoryCardBtn` is visible in Settings and `public/app.js` wires it to `buildLeagueStoryFromDashboard()` and `downloadLeagueStory()`; `test/browser-wiring.test.js` now guards that path.
 - Launch truth: no launch/SPARKED flip attempted; email forwarding/copying remains unverified without a real received-message receipt.
+## 2026-07-15 — Session 46 truth updates
+
+- Usage truth: game-day shares now derive from persisted room intent plus live availability and merit. Healthy QB1/K1/P1 own 100% of their role; the next healthy specialist inherits it only while unavailable.
+- Stat truth: situational box-score conversions come from stamped plays and drive identity. The new Impact Index is visibly a deterministic derived index, not an observed NFL statistic.
+- Player truth: Potential is persisted and exposed beside Overall across browser/API/stat surfaces; dossier prose, facts, achievements, traits, and milestones derive from player identity, attributes, age, health, and real stored production.
+- Interaction truth: static game buttons are contract-inventoried. The Agent Negotiation IDs now match rendered markup, and Commissioner feedback failures are surfaced rather than swallowed.
+- Queue truth: all six Session 46 audit items and both second-order Innovation Pack candidates are shipped; the genius cache reports exhausted with 0 open.
+- Verification truth: direct canonical shards passed 317/317, direct Playwright passed 18/18, Pages build/smoke passed, Studio gates passed, and doctor returned no items.
+- Launch truth unchanged: launch/SPARKED remains gated on real email-receipt and live-origin proof.

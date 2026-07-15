@@ -37,7 +37,12 @@ import {
   resetTeamSeasonState
 } from "../domain/teamFactory.js";
 import { runOffseason } from "../engine/offseasonSimulator.js";
-import { buildTeamUsageProfile, resolveDepthChartRoomShares } from "../engine/depthChartUsage.js";
+import {
+  buildMeritAdjustedRoomShares,
+  buildTeamUsageProfile,
+  resolveDepthChartRoomShares,
+  rotationMeritScore
+} from "../engine/depthChartUsage.js";
 import { coverageDepthRating } from "../domain/ratings.js";
 import {
   defaultDepthChartForTeam,
@@ -2836,13 +2841,18 @@ export class GameSession {
     const output = {};
     const usageProfile = buildTeamUsageProfile(teamById(this.league, teamId));
     for (const [position, ids] of Object.entries(chart)) {
-      const shares = usageProfile.sharesByPosition[position] || [];
+      const orderedPlayers = ids.map((id) => playersById.get(id)).filter(Boolean);
+      const shares = buildMeritAdjustedRoomShares({
+        position,
+        players: orderedPlayers,
+        baseShares: usageProfile.sharesByPosition[position] || []
+      });
       const roles = DEPTH_CHART_ROLE_NAMES[position] || [];
       const resolvedShares = resolveDepthChartRoomShares({
         position,
         playerIds: ids,
         baseShares: shares,
-        manualSharesByPlayer: manualShares[position] || {}
+        manualSharesByPlayer: ["QB", "K", "P"].includes(position) ? {} : manualShares[position] || {}
       });
       output[position] = resolvedShares.map((row, index) => {
         const playerId = row.playerId;
@@ -2853,6 +2863,21 @@ export class GameSession {
           playerId,
           player: includePlayers ? player?.name || null : null,
           overall: includePlayers ? player?.overall || null : null,
+          potential: includePlayers ? player?.potential || null : null,
+          meritScore: includePlayers && player ? rotationMeritScore(player) : null,
+          available: includePlayers
+            ? Boolean(
+                player &&
+                player.status === "active" &&
+                (player.rosterSlot || "active") === "active" &&
+                !player.designations?.ir &&
+                !player.designations?.pup &&
+                !player.designations?.nfi &&
+                !player.designations?.gameDayInactive &&
+                (!player.injury || player.injury.weeksRemaining <= 0) &&
+                (player.suspensionWeeks || 0) <= 0
+              )
+            : null,
           snapShare: row.snapShare,
           defaultSnapShare: row.defaultSnapShare,
           manual: row.manual
@@ -2875,9 +2900,19 @@ export class GameSession {
     ensureDepthCharts(this.league);
     ensureDepthChartSnapShares(this.league);
     this.league.depthCharts[teamId][position] = sanitized;
-    const defaultShares = buildTeamUsageProfile(team).sharesByPosition[position] || [];
+    const orderedPlayers = sanitized
+      .map((id) => teamPlayersAll(this.league, teamId).find((player) => player.id === id))
+      .filter(Boolean);
+    const defaultShares = buildMeritAdjustedRoomShares({
+      position,
+      players: orderedPlayers,
+      baseShares: buildTeamUsageProfile(team).sharesByPosition[position] || []
+    });
     const existingShares = this.league.depthChartSnapShares[teamId][position] || {};
     const sourceShares =
+      ["QB", "K", "P"].includes(position)
+        ? {}
+        :
       snapShares && typeof snapShares === "object" && !Array.isArray(snapShares)
         ? snapShares
         : existingShares;
@@ -3287,6 +3322,7 @@ export class GameSession {
         name: player.name,
         pos: player.position,
         overall: player.overall,
+        potential: player.potential,
         contract: normalizeContract(player.contract)
       }));
   }
@@ -3305,6 +3341,7 @@ export class GameSession {
           name: player.name,
           pos: player.position,
           overall: player.overall,
+          potential: player.potential,
           contract,
           projectedCapHit: Math.round(projectedCapHit),
           capDelta: Math.round(projectedCapHit - contract.capHit)
@@ -3327,6 +3364,7 @@ export class GameSession {
           name: player.name,
           pos: player.position,
           overall: player.overall,
+          potential: player.potential,
           experience: player.experience,
           contract,
           projectedCapHit: Math.round(projectedCapHit),
@@ -4576,6 +4614,7 @@ export class GameSession {
       weightLbs: player.weightLbs || null,
       experience: player.experience,
       overall: player.overall,
+      potential: player.potential,
       schemeFit: player.schemeFit,
       morale: player.morale,
       motivation: player.motivation,
@@ -4607,6 +4646,7 @@ export class GameSession {
         heightInches: player.heightInches || null,
         weightLbs: player.weightLbs || null,
         overall: player.overall,
+        potential: player.potential,
         schemeFit: player.schemeFit || null,
         devTrait: player.developmentTrait,
         source: player.teamId === "WAIVER" ? "waiver" : "free-agent"
@@ -4632,6 +4672,7 @@ export class GameSession {
         pos: player.position,
         age: player.age,
         overall: player.overall,
+        potential: player.potential,
         retiredYear: player.retiredYear,
         maxAge: this.getPositionMaxAge(player.position),
         seasonsPlayed: player.seasonsPlayed || 0,
@@ -4668,6 +4709,7 @@ export class GameSession {
         pos: player.position,
         age: player.age,
         overall: player.overall,
+        potential: player.potential,
         teamId: player.__retired ? "RET" : player.teamId,
         status: player.__retired ? "retired" : player.teamId === "WAIVER" ? "waiver" : player.teamId === "FA" ? "free-agent" : "active",
         retiredYear: player.retiredYear || null
@@ -4778,6 +4820,7 @@ export class GameSession {
         pos: player.position,
         age: player.age,
         overall: player.overall,
+        potential: player.potential,
         contract: normalizeContract(player.contract),
         retirementOverride: player.retirementOverride
       }

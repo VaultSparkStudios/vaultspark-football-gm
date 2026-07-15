@@ -304,3 +304,22 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** The existing trade evaluator and cap/challenge restrictions are the source of truth for executable deals. Session 44's gap was decision pressure and market framing in the browser panel, not a new trade engine. Structured recommendations make the General Manager ritual sharper while preserving CANON-031 observability honesty.
 
 **Pattern established:** Player-facing recommendation cards may frame a market, but must name their constraints and route the user back to the source-of-truth action surface when execution requires validation.
+---
+
+## 2026-07-15 — Potential, availability, and snap authority
+
+**Decision:** Potential is a persisted ceiling/trajectory signal while Overall remains the current ability signal. Automatic non-specialist room shares blend Overall (72%), Potential (18%), scheme fit (7%), and morale (3%). Healthy QB1, K1, and P1 exclusively own their role volume; availability promotes the next healthy player, and recovery naturally restores the prior hierarchy without overwriting saved non-exclusive room thresholds.
+
+**Rationale:** Potential needs to matter for replayability and developmental opportunity without overpowering present NFL-quality performance. Deriving active shares from the saved room threshold plus live availability prevents injuries from permanently mutating the user's healthy-depth preferences.
+
+**Pattern established:** Save healthy intent; derive game-day availability and merit at simulation time. Exclusive football jobs are automatic invariants, while rotational rooms preserve strategic volume.
+
+---
+
+## 2026-07-15 — Broadcast insights remain derived and visibly non-official
+
+**Decision:** Quarter scoring and the Impact Index may synthesize the existing play/player box score into a broadcast hierarchy, but they must be deterministic, source-derived, and labeled as an index rather than presented as an observed NFL statistic.
+
+**Rationale:** The box score benefits from editorial hierarchy, but CANON-031 forbids invented data. A transparent cross-phase index can identify decisive performances without fabricating tackles, conversions, or advanced tracking observations the simulator did not record.
+
+**Pattern established:** Add interpretation above source data, never counterfeit source data to create the interpretation.

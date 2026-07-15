@@ -13,6 +13,7 @@ export function renderExpiringContracts() {
     player: player.name,
     pos: player.pos,
     ovr: player.overall,
+    pot: player.potential,
     yearsLeft: player.contract?.yearsRemaining,
     capHit: fmtMoney(player.contract?.capHit || 0),
     action: ""
@@ -31,6 +32,7 @@ export function renderExpiringContracts() {
     player: player.name,
     pos: player.pos,
     ovr: player.overall,
+    pot: player.potential,
     currCap: fmtMoney(player.contract?.capHit || 0),
     tagCap: fmtMoney(player.projectedCapHit || 0),
     delta: fmtDeltaMoney(player.capDelta || 0),
@@ -53,6 +55,7 @@ export function renderExpiringContracts() {
     pos: player.pos,
     exp: player.experience,
     ovr: player.overall,
+    pot: player.potential,
     currCap: fmtMoney(player.contract?.capHit || 0),
     optionCap: fmtMoney(player.projectedCapHit || 0),
     delta: fmtDeltaMoney(player.capDelta || 0),
@@ -220,6 +223,7 @@ export function renderContractsPage() {
     pos: player.pos,
     age: player.age,
     ovr: player.overall,
+    pot: player.potential,
     morale: player.morale,
     motivation: player.motivation ?? "-",
     salary: fmtMoney(player.contract?.salary || 0),
@@ -252,6 +256,7 @@ export function renderContractsPage() {
       player: player.name,
       pos: player.pos,
       ovr: player.overall,
+      pot: player.potential,
       capHit: fmtMoney(player.contract?.capHit || 0),
       years: player.contract?.yearsRemaining || 0,
       action: ""
@@ -418,6 +423,7 @@ export function renderTradeRosterTable(tableId, roster, side) {
     pos: player.pos,
     age: player.age,
     ovr: player.overall,
+    pot: player.potential,
     capHit: fmtMoney(player.contract?.capHit || 0),
     action: ""
   }));
@@ -607,8 +613,8 @@ export async function renderAgentModal(playerId) {
       </div>
       <div id="agentResponseBox" class="agent-response-box"></div>
       <div id="agentHistoryBox" class="agent-history-box"></div>`;
-    document.getElementById("agentSubmitBtn")?.addEventListener("click", submitAgentOffer);
-    document.getElementById("agentCompetingBtn")?.addEventListener("click", signalCompetingOffer);
+    document.getElementById("submitAgentOfferBtn")?.addEventListener("click", submitAgentOffer);
+    document.getElementById("signalCompetingOfferBtn")?.addEventListener("click", signalCompetingOffer);
     if (agent.negotiationHistory?.length) {
       const histBox = document.getElementById("agentHistoryBox");
       if (histBox) histBox.innerHTML = `<strong>History</strong>` +

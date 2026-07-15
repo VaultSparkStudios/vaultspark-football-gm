@@ -1,4 +1,5 @@
 import { state, api, DISPLAY_LABELS, GUIDE_SECTIONS, STATS_BENCHMARK_HINTS, TEAM_THEME_MAP } from "./appState.js";
+import { buildPlayerProfileNarrative } from "./playerProfileNarrative.js";
 
 export function escapeHtml(value) {
   return String(value)
@@ -193,6 +194,7 @@ export function renderPlayerProfileHero(profile) {
     ? `${fmtMoney(contract.salary || 0)} salary | ${contract.yearsRemaining} yrs left`
     : "No active long-term deal";
   const latestSeasonSummary = buildProfileLatestSeasonSummary(player.position, latestSeason);
+  const narrative = buildPlayerProfileNarrative(profile);
   const badges = [
     `${teamCode(player.teamId)} ${player.position}`,
     `#${player.jerseyNumber ?? "--"}`,
@@ -245,6 +247,33 @@ export function renderPlayerProfileHero(profile) {
             <div class="player-statline">${escapeHtml(latestSeasonSummary)}</div>
             <div class="small">${escapeHtml(profile.seasonType === "playoffs" ? "Filtered to playoffs" : "Regular-season lens with career context below")}</div>
           </div>
+        </div>
+        <div class="player-story-grid">
+          <article class="player-story-card player-story-card--bio">
+            <div class="brand-kicker">Identity</div>
+            <h3>${escapeHtml(narrative.headline)}</h3>
+            <p>${escapeHtml(narrative.bio)}</p>
+            <div class="profile-signature-row">
+              ${narrative.signature.map((trait) => `<span><strong>${escapeHtml(trait.value)}</strong> ${escapeHtml(trait.name)}</span>`).join("")}
+            </div>
+          </article>
+          <article class="player-story-card">
+            <div class="brand-kicker">Personal File</div>
+            <ul>${narrative.facts.map((fact) => `<li>${escapeHtml(fact)}</li>`).join("")}</ul>
+          </article>
+          <article class="player-story-card player-story-card--achievements">
+            <div class="brand-kicker">Achievements</div>
+            <ul>${narrative.achievements.map((achievement) => `<li>★ ${escapeHtml(achievement)}</li>`).join("")}</ul>
+            <div class="profile-milestone-stack">
+              ${narrative.milestones.map((milestone) => `
+                <div class="profile-milestone">
+                  <div><strong>${escapeHtml(milestone.label)}</strong><span>${escapeHtml(milestone.current)} / ${escapeHtml(milestone.target)}</span></div>
+                  <div class="profile-milestone-track" aria-label="${escapeHtml(milestone.label)} ${escapeHtml(milestone.progress)} percent">
+                    <span style="width: ${escapeHtml(milestone.progress)}%"></span>
+                  </div>
+                </div>`).join("")}
+            </div>
+          </article>
         </div>
         <div class="player-note">
           Morale ${escapeHtml(player.morale || "-")} | Motivation ${escapeHtml(player.motivation || "-")} | Owner pressure ${escapeHtml(outlook.ownerPressure ?? "-")} | Legacy score ${escapeHtml(outlook.legacyScore ?? "-")}<br />
@@ -1206,7 +1235,7 @@ export async function loadPlayerModal(playerId) {
 
   document.getElementById("playerModalTitle").textContent = `${player.name} (${player.position})`;
   document.getElementById("playerModalMeta").textContent =
-      `${teamCode(player.teamId)} | #${player.jerseyNumber ?? "--"} | OVR ${player.overall} | Age ${player.age} | ${formatHeight(player.heightInches)} ${player.weightLbs || "-"} lbs | Dev ${player.developmentTrait} | Injury ${player.injury?.type || "Healthy"}`;
+      `${teamCode(player.teamId)} | #${player.jerseyNumber ?? "--"} | OVR ${player.overall} | POT ${player.potential ?? "-"} | Age ${player.age} | ${formatHeight(player.heightInches)} ${player.weightLbs || "-"} lbs | Dev ${player.developmentTrait} | Injury ${player.injury?.type || "Healthy"}`;
   document.getElementById("playerProfileSummary").innerHTML = renderPlayerProfileHero(profile);
 
   const ratingRows = Object.entries(player.ratings || {})

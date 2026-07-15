@@ -562,3 +562,18 @@ Source: `docs/AUDIT_2026-07-06_SESSION44.md`.
 | league-story-card-wiring-regression-net — browser wiring and shard coverage prove the new export path is included in CI/default shards | Done |
 | latest-audit-follow-through | Done — accepted and completed via live code re-check plus regression-net hardening |
 | launch/SPARKED email and live-origin evidence | Blocked on real received-message receipt plus current live origin/routing proof; no code-side fabrication attempted |
+## Session 46 — Player Truth, Usage Realism, and Broadcast Depth
+
+| Item | Status |
+|---|---|
+| Trusted Tell the Commissioner popup/navigation contract | Done |
+| Availability-aware OVR/POT/fit/morale snap engine | Done |
+| Healthy QB1/K1/P1 100% role volume with injury substitution/restoration | Done |
+| Potential beside Overall across player surfaces and APIs | Done |
+| Expanded observed team/player box-score statistical matrix | Done |
+| Living player dossiers with personalized bios, facts, achievements, and traits | Done |
+| Static button/action contract inventory and Agent Negotiation ID repair | Done |
+| Second-order broadcast Impact Index and quarter command center | Done |
+| Second-order position-aware career milestone questlines | Done |
+
+**Verification:** direct canonical shards 317/317 (core 64, runtime 146, sim-contract 67, sim-realism 1, studio 39); Playwright 18/18; focused Session 46 suites 24/24; JavaScript syntax checks; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates allow cost-neutral; doctor no items; genius cache exhausted 0 open.
