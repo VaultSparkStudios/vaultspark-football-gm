@@ -1,5 +1,7 @@
 # Current State
 
+- 2026-07-16: Session 47 recovery completed the cut-off audit/implementation arc. The game now has a persistent save-scoped Priority Inbox, opponent-aware tactical briefs and honest postgame film receipts, executable/expiring General Manager commitments with cross-system consequences, and checkpoint-aware accelerated simulation with a visible digest and one-action resume. Startup/audit protocol truth was repaired, direct shards pass 337/337, Playwright passes 18/18, Pages build/smoke pass, doctor is clean, and the Session 47 queue is exhausted. Launch/SPARKED remains gated on real email-delivery and live-origin evidence.
+
 Public-safe summary:
 - this repo remains deployable
 - internal operational records were sanitized for public-repo safety on 2026-04-03

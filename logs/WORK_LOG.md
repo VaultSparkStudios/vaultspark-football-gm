@@ -343,3 +343,14 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Generated and shipped two compound innovations after list exhaustion: the broadcast Impact Index/quarter command center and position-aware career milestone questlines.
 - Verification passed direct canonical shards 317/317, direct Playwright 18/18, focused Session 46 suites 24/24, syntax checks, Pages build/smoke, Windows/Wave/security/blocker/canon/cost/release gates, and doctor no items.
 - Launch truth is unchanged: no SPARKED flip without real email-delivery and live-origin proof.
+
+## 2026-07-16 — Session 47 recovery: decision authority and checkpointed fast sim
+
+- Reconstructed the cut-off Session 47 from the full dirty diff, audit artifacts, Session 46 handoff/closeout, work log, and git history; confirmed the cutoff occurred during `/implement`, before final audit render, full verification, innovation classification, and closeout.
+- Verified project JSON/JavaScript integrity and `~/.claude.json`; rejected the silent aggregate wrapper as non-evidence and ran every named shard directly.
+- Completed all six audit items, including the unfinished GM commitment engine and checkpoint-aware accelerated simulation.
+- Strengthened GM promise truth: directionally distinct buy/sell evidence, immediate cap/depth primitives, deadline receipts, and owner/fan/morale/legacy/news/history consequences.
+- Added a visible fast-sim digest with material phase/playoff/decision/commitment pauses and one-action resolve/resume.
+- Classified latest-audit follow-through as shipped and fixed a second-order runtime-mode save-row race found by Playwright.
+- Verification passed direct canonical shards 337/337, focused consequence/checkpoint 10/10, Playwright 18/18, Pages build/smoke, syntax/integrity gates, and doctor no items with `blockingFailing: 0`.
+- Launch truth is unchanged: no SPARKED flip without real email-delivery and current live-origin proof.

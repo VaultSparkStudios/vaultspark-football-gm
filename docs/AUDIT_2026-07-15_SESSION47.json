@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-15",
+  "session": 47,
+  "project": "franchise-architect-football",
+  "status": "shipped",
+  "profile": {
+    "type": "game",
+    "audience": "public-unlaunched",
+    "rubric": "product",
+    "staging": "github-pages",
+    "source": "context/PROJECT_STATUS.json, startup brief, game skill profile, and live code; unmatched arc-profile registry fallback rejected"
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.0,
+    "progression": 8.7,
+    "sessionEngagement": 8.1,
+    "retention": 7.7,
+    "soulFidelity": 8.8,
+    "overall": 8.3,
+    "evidence": "No context/GAME_LOOP.md or recent docs/PLAYTESTS files and context/SOUL.md is public-safe only; scores are provisional and derive from live runtime/browser contracts rather than fabricated player observations."
+  },
+  "summary": {
+    "rankedItems": 6,
+    "combinedPriority": 353.0,
+    "topItem": "gm-decision-commitment-engine",
+    "source": "live-code-audit"
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Gamification / agency / simulation truth",
+      "effortHours": 4.0,
+      "impact": 10,
+      "innovation": 10,
+      "priority": 86.0,
+      "slug": "gm-decision-commitment-engine",
+      "title": "Make every marquee GM decision execute or create a measurable obligation",
+      "status": "shipped",
+      "premise": "The decision modal promises player, pick, cap, and organizational consequences, but applyGmDecisionConsequence currently records momentum/risk metadata, news, and transaction prose without executing the named roster/cap move or creating an expiring mandate that later resolves.",
+      "evidence": [
+        "src/app/api/localApiRuntime.js:243",
+        "src/engine/gmDecisionConsequences.js:115",
+        "src/engine/gmDecisionConsequences.js:171"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1.5, "recipe": "Classify every option as immediate or commitment and emit a source-derived receipt." },
+        "L2": { "effortHours": 4.0, "recipe": "Execute safe immediate consequences through existing runtime primitives; persist measurable expiring commitments; resolve success/failure into owner heat, fan sentiment, morale, legacy, news, and history." },
+        "L3": { "effortHours": 6.0, "recipe": "Add multi-week negotiation branches and cross-season promise reputation." }
+      },
+      "verification": ["focused consequence-engine tests", "advance-week integration", "browser receipt visibility"],
+      "executionEvidence": "Immediate depth-chart and cap actions, directionally honest trade obligations, expiring success/failure receipts, owner/fan/morale/legacy effects, news/history, and browser commitment visibility shipped; combined consequence/checkpoint verification passed 10/10."
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Core loop / speed / engagement",
+      "effortHours": 3.0,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 77.0,
+      "slug": "checkpoint-aware-fast-sim",
+      "title": "Preserve consequential decisions and ceremonies inside accelerated simulation",
+      "status": "shipped",
+      "premise": "The deliberate one-week path asks for tactics and a GM decision and then ingests inbox, moments, and review beats; the four-week and season loops repeatedly post bare advances and refresh only at the end, allowing deadlines, crises, controlled playoff games, and season-review crossings to be skipped.",
+      "evidence": ["public/app.js:441", "public/app.js:491", "public/lib/gameFlow.js:720", "public/lib/gameFlow.js:818"],
+      "ladder": {
+        "L1": { "effortHours": 1.0, "recipe": "Stop accelerated sim on phase changes and active GM decisions." },
+        "L2": { "effortHours": 3.0, "recipe": "Introduce a shared checkpoint classifier, accumulate a source-derived digest, pause only for material controlled-team moments, and resume with one action." },
+        "L3": { "effortHours": 4.5, "recipe": "Add configurable checkpoint sensitivity and autoplay policies." }
+      },
+      "verification": ["checkpoint classifier tests", "multi-week integration", "Playwright accelerated-loop smoke"],
+      "executionEvidence": "Source-derived phase, playoff, decision, and commitment checkpoints now pause accelerated loops; a visible five-step digest retains franchise results and one action resolves/resumes remaining work; runtime decision-contract and browser wiring verification passed."
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Retention / feedback loop / persistence",
+      "effortHours": 2.0,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 65.0,
+      "slug": "save-scoped-franchise-inbox",
+      "title": "Turn the Priority Inbox into a reconstructable franchise journal",
+      "status": "shipped",
+      "premise": "Inbox items and de-duplication live in browser module memory while a single global localStorage timestamp marks reads. Reloads erase items, and different saves share read state even though the underlying news/event source persists.",
+      "evidence": ["public/lib/engagementFeatures.js:25", "public/lib/engagementFeatures.js:50", "public/lib/engagementFeatures.js:53", "public/lib/engagementFeatures.js:71"],
+      "ladder": {
+        "L1": { "effortHours": 0.8, "recipe": "Scope read cursors to a stable franchise identity and persist item snapshots." },
+        "L2": { "effortHours": 2.0, "recipe": "Reconstruct from stable event IDs, merge persisted state idempotently, retain critical items until their linked action/outcome resolves, and surface unread truth per save." },
+        "L3": { "effortHours": 3.5, "recipe": "Add a searchable multi-season journal with resolution receipts." }
+      },
+      "verification": ["localStorage/save-scope unit tests", "reload reconstruction test", "browser inbox regression"],
+      "executionEvidence": "Stable franchiseId added to dashboard; inbox cache/read/resolution state is scoped and reconstructable; 41/41 focused inbox/browser/runtime tests passed."
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "AI / coaching intelligence / UI",
+      "effortHours": 2.5,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 58.0,
+      "slug": "matchup-aware-tactical-film-room",
+      "title": "Convert the weekly tactic prompt into opponent-aware strategy with a postgame receipt",
+      "status": "shipped",
+      "premise": "Weekly tactics mechanically alter the simulation and are restored after the game, but the modal always offers the same context-free labels and the user receives no source-derived explanation of matchup fit or whether the chosen plan produced the intended observable result.",
+      "evidence": ["public/game.html:1445", "src/app/api/localApiRuntime.js:575", "src/app/api/localApiRuntime.js:610", "src/engine/gameSimulator.js:566"],
+      "ladder": {
+        "L1": { "effortHours": 1.0, "recipe": "Annotate options with opponent tendency and explicit tradeoff." },
+        "L2": { "effortHours": 2.5, "recipe": "Build a deterministic matchup brief from opponent roster/scheme/injuries and a postgame film receipt from actual box-score/play telemetry, with no causal claims beyond observed deltas." },
+        "L3": { "effortHours": 4.0, "recipe": "Add multi-week tendency learning and counter-adjustment memory." }
+      },
+      "verification": ["brief/debrief pure-function tests", "API response contract", "browser tactic modal proof"],
+      "executionEvidence": "Opponent-aware modal and persistent source-derived Film Receipt shipped; syntax checks and 21/21 focused tactic/browser/runtime tests passed."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Observability / truth / process quality",
+      "effortHours": 2.0,
+      "impact": 10,
+      "innovation": 6,
+      "priority": 45.0,
+      "slug": "startup-brief-truth-contract",
+      "title": "Make every founder-facing startup signal source-derived and self-validating",
+      "status": "shipped",
+      "premise": "The live startup brief renders unknown rolling averages/closeout age/genome and malformed truncated rows despite available project state, labels flat-rate plan ledger estimates as real spend, and allows an unmatched registry fallback to misprofile this public game as internal infrastructure.",
+      "evidence": ["docs/STARTUP_BRIEF.md", "scripts/render-startup-brief.mjs:1120", "scripts/render-startup-brief.mjs:1194", "context/PROJECT_STATUS.json"],
+      "ladder": {
+        "L1": { "effortHours": 0.8, "recipe": "Fix current parsers and flat-rate wording." },
+        "L2": { "effortHours": 2.0, "recipe": "Introduce explicit source/fallback contracts, invariant validation, width-safe rows, and tests for modern SIL/status formats and flat-rate Max Plan cost semantics." },
+        "L3": { "effortHours": 3.5, "recipe": "Emit machine-readable signal provenance and drift diagnostics for every brief field." }
+      },
+      "verification": ["startup renderer tests", "brief format validator", "truth fixture with current status/SIL formats"],
+      "executionEvidence": "Modern SIL average/date parsing, manifest profile fallback, status compliance, prelaunch revenue N/A, cache Genius List, width-safe rows, and flat-rate notional cost semantics shipped; validator green and protocol smoke 19/19."
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Developer efficiency / protocol reliability",
+      "effortHours": 1.0,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 22.0,
+      "slug": "audit-renderer-protocol-bridge",
+      "title": "Make the documented JSON-to-audit renderer executable in this repo",
+      "status": "shipped",
+      "premise": "The canonical audit skill requires scripts/render-audit-md.mjs, but the command fails with MODULE_NOT_FOUND, forcing manual Markdown duplication and weakening the JSON sole-source contract.",
+      "evidence": ["scripts/render-audit-md.mjs missing", "docs/AUDIT_2026-07-15_SESSION46.json", "docs/AUDIT_2026-07-15_SESSION46.md"],
+      "ladder": {
+        "L1": { "effortHours": 0.4, "recipe": "Render the latest session JSON into the canonical Markdown table." },
+        "L2": { "effortHours": 1.0, "recipe": "Add deterministic source selection, schema validation, merge-safe output, premise/skip/game-loop sections, and focused tests." },
+        "L3": { "effortHours": 1.8, "recipe": "Add audit brief rendering and structural diff diagnostics." }
+      },
+      "verification": ["renderer unit test", "round-trip Session 47 render", "cache-genius-list source selection"],
+      "executionEvidence": "Deterministic JSON-to-Markdown renderer added; 3/3 focused tests and syntax check passed; Session 47 sidecar round-trip is current."
+    }
+  ],
+  "preverifiedSkips": [
+    { "candidate": "Add a fan sentiment card", "reason": "Rejected: desktop and mobile fan sentiment surfaces already exist; the real gap is action memory and consequence authority." },
+    { "candidate": "Add tactical choices", "reason": "Rejected: four choices already modify weeklyPlan for the real simulation; the real gap is matchup intelligence and an honest result receipt." },
+    { "candidate": "Add press conference continuity", "reason": "Rejected: deterministic follow-up quotes already remember prior podium tone; the higher-value gap is user-authored commitment and source-derived tactic language." },
+    { "candidate": "Launch/SPARKED flip", "reason": "Deferred honestly: real on-domain email forwarding receipt and current live-origin proof remain external evidence gates and cannot be fabricated." }
+  ]
+}

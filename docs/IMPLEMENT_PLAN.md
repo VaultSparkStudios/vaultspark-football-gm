@@ -1,13 +1,13 @@
-# Session 46 Implementation Plan
+# Session 47 Implementation Plan
 
-Source: `docs/AUDIT_2026-07-15_SESSION46.json`.
+Source: `docs/AUDIT_2026-07-15_SESSION47.json`.
 
-1. Simulation foundation: `merit-availability-snap-engine`.
-2. Shared telemetry foundation: `broadcast-box-score-stat-matrix`.
-3. Player identity layer: `living-player-dossier`.
-4. Cross-surface roster intelligence: `potential-everywhere`.
-5. Feedback reliability: `commissioner-feedback-trusted-open`.
-6. Regression net: `all-actions-contract-net`.
-7. Refresh the genius cache, generate the innovation pack, implement second-order candidates, and refine the three most recent shipped surfaces.
+1. Protocol foundation: `audit-renderer-protocol-bridge`.
+2. Founder-facing truth foundation: `startup-brief-truth-contract`.
+3. Retention state foundation: `save-scoped-franchise-inbox`.
+4. Strategy learning loop: `matchup-aware-tactical-film-room`.
+5. Consequence authority: `gm-decision-commitment-engine`.
+6. Accelerated-loop convergence: `checkpoint-aware-fast-sim`.
+7. Refresh the Genius List, generate the Innovation Pack, implement second-order candidates, and refine the three most recent shipped surfaces.
 
 Every item uses the L2 recipe or higher, must be browser-visible when applicable, and is not shipped until focused behavior tests pass.

@@ -1,3 +1,38 @@
+## Where We Left Off — Session 47 Recovery Closeout (2026-07-16)
+
+The previous Session 47 was cut off during `/implement`: four audit items were marked shipped in JSON, two implementation branches were present but still open, the Markdown execution log was stale, verification had not finished, and no closeout write-back/commit existed. Recovery completed the intended arc before creating a clean checkpoint.
+
+### Recovery ledger
+
+- Intent reconstructed from the Session 46 handoff/closeout plus the full Session 47 diff: run a fresh six-item live-code audit, ship all items, exhaust second-order work, and close out direct to main.
+- Integrity: every changed/untracked JSON parsed; every changed/untracked JavaScript file passed `node --check`; `~/.claude.json` is standards-compliant JSON (PowerShell alone rejects its case-distinct path keys); no half-written file or stray command-output debris remained.
+- Committed vs uncommitted: `b414838` contained Session 46 only. Every Session 47 audit/product/protocol change was uncommitted at recovery start.
+- Phantom-green rejected: aggregate `npm test` emitted no output for five minutes and was terminated without being counted. Direct named shards are the source of truth.
+
+### Shipped
+
+- All six Session 47 audit items: executable JSON-to-Markdown audit renderer, source-derived startup brief contract, save-scoped reconstructable Priority Inbox, opponent-aware Tactical Film Room, executable/expiring GM decision commitments, and checkpoint-aware accelerated simulation.
+- GM choices now execute safe depth-chart/cap primitives or create measurable promises. Buy/sell evidence is directionally distinct; success/failure updates owner heat, fan interest/sentiment, player morale, General Manager legacy, news, and event history.
+- Fast simulation pauses at phase/playoff/decision/commitment boundaries, displays a source-derived five-step digest, preserves remaining work, and resolves/resumes with one action.
+- Second-order browser refinement: switching runtime modes immediately clears and locks stale save rows before the new runtime loads, preventing cross-runtime resume races.
+
+### Verification
+
+- Direct canonical shards: 337/337 (core 64, runtime 162, sim-contract 67, sim-realism 1, studio 43).
+- Playwright: 18/18 after the runtime-switch race was reproduced, fixed, and rerun both focused and full-suite.
+- Focused consequence/checkpoint suite: 10/10; all changed JavaScript syntax checks passed.
+- Pages build and static smoke passed; doctor returned no items and recorded `blockingFailing: 0`.
+
+### Still blocked / honest deferral
+
+- Launch/SPARKED remains evidence-gated until a real received-message receipt proves `football@playfranchisearchitect.com` forwarding/copying and current live-origin evidence proves the domain serves the pushed build. No evidence or launch state was fabricated.
+
+### Next best move
+
+Start the next fresh `/start -> /audit -> /implement -> /closeout` arc from the now-exhausted Session 47 queue, unless launch evidence arrives first.
+
+Session Intent: Recover the interrupted Session 47, verify it from live evidence, complete the unfinished implementation/closeout, checkpoint it cleanly, then continue automatically into the next full saturated arc.
+
 ## Where We Left Off — Session 46 (2026-07-15)
 
 The requested continuous `/goal /arc` completed `/start -> /audit -> /implement -> /closeout` without a phase handback.

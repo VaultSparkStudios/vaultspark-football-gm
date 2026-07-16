@@ -240,3 +240,14 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Queue truth: all six Session 46 audit items and both second-order Innovation Pack candidates are shipped; the genius cache reports exhausted with 0 open.
 - Verification truth: direct canonical shards passed 317/317, direct Playwright passed 18/18, Pages build/smoke passed, Studio gates passed, and doctor returned no items.
 - Launch truth unchanged: launch/SPARKED remains gated on real email-receipt and live-origin proof.
+
+## 2026-07-16 — Session 47 recovery truth updates
+
+- Recovery truth: the previous session stopped during `/implement`; Session 47 existed only as uncommitted audit/code/test changes on top of the Session 46 commit. No closeout boundary existed before this recovery.
+- Integrity truth: all changed/untracked JSON parsed, all changed/untracked JavaScript syntax-checked, `git diff --check` is clean, and `~/.claude.json` parses with standards-compliant `JSON.parse`. PowerShell's case-insensitive object converter warning was not JSON corruption.
+- Decision truth: General Manager choices now execute existing safe mutations or create persisted deadline commitments; buy/sell success uses directionally distinct transaction evidence, and resolved promises write cross-system receipts.
+- Simulation truth: accelerated loops pause only on dashboard-derived phase/playoff/decision/commitment boundaries and show actual controlled-team results; the film receipt explicitly avoids causal claims.
+- Persistence truth: Priority Inbox data/read/resolution state is scoped by stable franchise identity and rebuilt idempotently from event IDs.
+- Queue truth: all six Session 47 audit items plus latest-audit follow-through and the Playwright-discovered runtime-switch refinement are shipped; Genius cache is exhausted with 0 open items.
+- Verification truth: direct shards pass 337/337 and Playwright 18/18. The aggregate `npm test` wrapper produced no output for five minutes and is not counted as green.
+- Launch truth unchanged: launch/SPARKED remains gated on real email-delivery and current live-origin proof.

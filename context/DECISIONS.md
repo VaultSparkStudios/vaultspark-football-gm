@@ -2,6 +2,26 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-07-16 — General Manager choices must execute or become falsifiable promises
+
+**Decision:** Every marquee General Manager choice must either execute immediately through an existing safe simulation primitive or create a persisted, expiring commitment with directionally valid success/failure evidence.
+
+**Rationale:** Recording only news and momentum prose made high-stakes choices feel consequential while leaving roster/cap state unchanged. Conversely, fabricating a trade or release without the source-of-truth evaluator would violate simulation honesty. Immediate depth-chart/restructure actions can execute safely; market-dependent choices become explicit promises that resolve from real transaction/cap evidence.
+
+**Pattern established:** Immediate actions use existing `GameSession` mutation methods. Commitments capture baselines and deadlines, distinguish acquisition from draft-capital evidence, and resolve once into owner, fan, morale, legacy, news, and event-history receipts.
+
+---
+
+## 2026-07-16 — Accelerated simulation pauses only at material source-derived checkpoints
+
+**Decision:** Four-week and season simulation may advance ordinary weeks continuously, but must pause at phase/playoff transitions, newly material General Manager decisions, or commitment resolutions; the browser must retain remaining work and provide one-action resume.
+
+**Rationale:** Fast simulation should remove repetitive clicks without deleting agency or ceremonies. A source-derived digest preserves what happened, while narrow checkpoint classes avoid turning acceleration back into weekly modal spam.
+
+**Pattern established:** Compare previous and next dashboard contracts, never infer hidden causality. A checkpoint panel reports actual game results and reason labels; resolving a pending decision flows through the existing decision modal and `/api/advance-week` consequence path.
+
+---
+
 ## 2026-07-02 — Counterfactual features must be explicitly non-canon and side-effect free
 
 **Decision:** The Monday Morning QB what-if replay is a deterministic counterfactual read model only. It may summarize an alternate outcome, but it must not mutate standings, stats, records, saves, injuries, or league history.

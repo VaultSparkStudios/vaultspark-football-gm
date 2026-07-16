@@ -600,3 +600,22 @@ SIL v3.0: **994 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, 
 Committed SIL follow-ups:
 - Keep the Impact Index explicitly labeled and source-derived as new stat families are added.
 - Extend merit allocation only through evidence-backed role rules; never silently erase user-controlled rotational volume.
+
+## 2026-07-16 — Session 47 Recovery, Decision Authority, and Fast-Sim Checkpoints
+
+SIL v3.0: **994 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 94, Automation Coverage 100).
+
+- Dev Health: 100 — direct named shards pass 337/337, Playwright 18/18, Pages build/smoke, focused checks 10/10, and doctor is clean.
+- Creative Alignment: 100 — high-stakes General Manager choices now change the football world or create visible promises, while fast sim preserves decision rituals.
+- Momentum: 100 — interrupted work was recovered without reset/overwrite, both unfinished items completed, second-order race fixed, and queue exhausted.
+- Engagement: 100 — decisions carry durable stakes, tactics teach through honest film receipts, inbox pressure survives reloads, and acceleration no longer skips the season's turning points.
+- Process Quality: 100 — phantom-green wrapper output was rejected; stale audit/test surfaces were repaired against the JSON/live-code truth.
+- Cross-Repo Coherence: 100 — no sibling repository tree was edited.
+- Security Posture: 100 — no dependency, credential, auth, or sensitive-data surface was added; stored inbox keys are franchise-scoped and bounded.
+- Ecosystem Integration: 100 — audit sidecar, renderer, Genius cache, Innovation Pack, task board, handoff, status, and tests agree on exhaustion.
+- Capital Efficiency: 94 — unchanged; all improvements remain deterministic, browser/static-host compatible, and zero variable cost.
+- Automation Coverage: 100 — new audit, inbox, tactics, commitment, checkpoint, startup, browser, and shard-contract coverage closes the interrupted verification surface.
+
+Committed SIL follow-ups:
+- `[SIL]` Keep accelerated simulation checkpoint classes narrow and source-derived; add sensitivity only if player evidence justifies it.
+- `[SIL]` Treat generated Markdown drift as a blocking JSON-sidecar contract failure, not harmless documentation lag.

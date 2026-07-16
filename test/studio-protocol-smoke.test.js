@@ -76,6 +76,7 @@ test("documented Studio protocol shims load", () => {
     ["scripts/ark.mjs", "drain", "--silent"],
     ["scripts/record-skill-cost.mjs", "--skill", "studio-closeout", "--phase", "start"],
     ["scripts/sample-codebase.mjs", "--max-tokens", "1200", "--json"],
+    ["scripts/render-audit-md.mjs", "--check"],
     ["scripts/cache-genius-list.mjs", "--write"],
     ["scripts/ops.mjs", "blocker-preflight", "--json"],
     ["scripts/ops.mjs", "genius-list"],
@@ -185,6 +186,26 @@ test("startup brief always renders the canonical human pressure block", () => {
   assert.equal(result.status, 0, result.stderr);
   const brief = readFileSync(resolve(repoRoot, "docs/STARTUP_BRIEF.md"), "utf8");
   assert.match(brief, /HUMAN PRESSURE/);
+});
+
+test("startup brief derives modern SIL dates/averages and keeps Max Plan cost notional", () => {
+  const result = spawnSync(process.execPath, ["scripts/render-startup-brief.mjs"], {
+    cwd: process.cwd(),
+    encoding: "utf8"
+  });
+  assert.equal(result.status, 0, result.stderr);
+  const brief = readFileSync(resolve(repoRoot, "docs/STARTUP_BRIEF.md"), "utf8");
+  assert.doesNotMatch(brief, /Avg3:\s*\?/);
+  assert.doesNotMatch(brief, /closeout\s+\?d/);
+  assert.doesNotMatch(brief, /active = newest o/);
+  assert.match(brief, /Max flat-rate/);
+  assert.match(brief, /\/7d notional · no alarm/);
+  assert.doesNotMatch(brief, /Cost\s+.*real \$/);
+  assert.match(brief, /game · deployed\/public-unlaunched/);
+  assert.match(brief, /GENIUS HIT LIST/);
+  assert.match(brief, /ops\.mjs genius-list/);
+  assert.match(brief, /Compliance\s+37\/37 \(100%\)/);
+  assert.match(brief, /Revenue sig\.\s+prelaunch · not applicable/);
 });
 
 test("genius cache check/write reports latest audit truthfully", () => {

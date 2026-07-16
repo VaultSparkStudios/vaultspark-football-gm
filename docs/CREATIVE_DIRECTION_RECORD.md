@@ -76,3 +76,7 @@ CDR reviewed — no new founder creative direction specific to Franchise Archite
 ## 2026-07-15 — Session 46 founder direction
 
 The founder directed a complete, continuous, saturated `/goal /arc` with no phase handback and a highest-quality bar. Product direction: make every button/action work; repair Tell the Commissioner; greatly deepen box-score and player statistics; make player profiles visually elite and personally alive with position/rating/age/stat-aware bios, facts, achievements, and progression; expose Potential beside Overall for every player; model NFL-realistic usage with healthy QB1/K1/P1 at 100% and merit-driven rotations elsewhere; and make injury substitutions and returns translate into actual game snaps without losing healthy-depth intent. The founder also required generating and implementing second-order innovations after the primary list was exhausted.
+
+## 2026-07-16 — Session 47 recovery direction
+
+CDR reviewed — no new Franchise Architect product creative direction was introduced beyond the established highest-quality, continuous-arc, saturation, evidence-honesty, and direct-main expectations. The explicit recovery direction is now treated as a workflow invariant: reconstruct interrupted intent from repository evidence, reject phantom-green claims, finish the prior boundary cleanly, and only then begin new creative work.

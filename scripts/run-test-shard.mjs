@@ -30,6 +30,9 @@ export const SHARDS = {
     "test/deterministic-ids.test.js",
     "test/draft-war-room.test.js",
     "test/file-save-store.test.js",
+    "test/fast-sim-checkpoints.test.js",
+    "test/gm-decision-commitments.test.js",
+    "test/inbox-persistence.test.js",
     "test/launch-readiness.test.js",
     "test/local-api-runtime.test.js",
     "test/mobile-loop.test.js",
@@ -39,6 +42,7 @@ export const SHARDS = {
     "test/return-digest.test.js",
     "test/save-integrity.test.js",
     "test/session-lookup-indexes.test.js",
+    "test/tactical-film-room.test.js",
     "test/session8-contract-edges.test.js",
     "test/session8-endpoints.test.js",
     "test/trade-deadline-frenzy.test.js"
@@ -66,6 +70,7 @@ export const SHARDS = {
     "test/realism-career-regression.test.js"
   ],
   studio: [
+    "test/audit-renderer.test.js",
     "test/launch-evidence-report.test.js",
     "test/public-compliance.test.js",
     "test/shard-coverage.test.js",

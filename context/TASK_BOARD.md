@@ -577,3 +577,21 @@ Source: `docs/AUDIT_2026-07-06_SESSION44.md`.
 | Second-order position-aware career milestone questlines | Done |
 
 **Verification:** direct canonical shards 317/317 (core 64, runtime 146, sim-contract 67, sim-realism 1, studio 39); Playwright 18/18; focused Session 46 suites 24/24; JavaScript syntax checks; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight; canon conformance 0 gaps; release/cost gates allow cost-neutral; doctor no items; genius cache exhausted 0 open.
+
+## Session 47 — Decision Authority + Fast-Sim Checkpoints (2026-07-16)
+
+Source: `docs/AUDIT_2026-07-15_SESSION47.json`.
+
+| Item | Status |
+|---|---|
+| audit-renderer-protocol-bridge | Done — deterministic sidecar validation/render/check path with focused tests |
+| startup-brief-truth-contract | Done — modern SIL/profile/compliance/cost/Genius sources render truthfully |
+| save-scoped-franchise-inbox | Done — per-franchise persistence, idempotent reconstruction, unread and resolution state |
+| matchup-aware-tactical-film-room | Done — opponent-aware pregame brief plus source-derived postgame receipt |
+| gm-decision-commitment-engine | Done — safe immediate actions or measurable expiring obligations with receipts and consequences |
+| checkpoint-aware-fast-sim | Done — material checkpoint classifier, digest, pause, and one-action resume |
+| latest-audit-follow-through | Done — live execution log/code/tests rechecked; Genius cache exhausted 0 open |
+| runtime-switch-stale-save-guard | Done — second-order Playwright-discovered cross-runtime race fixed and verified |
+| launch/SPARKED evidence | Blocked — requires real received-message proof plus current live-origin proof; no fabrication |
+
+**Verification:** direct canonical shards 337/337 (core 64, runtime 162, sim-contract 67, sim-realism 1, studio 43); focused consequence/checkpoint 10/10; Playwright 18/18; Pages build/smoke; syntax/integrity sweep; doctor no items with `blockingFailing: 0`; Genius cache exhausted 0 open. Aggregate `npm test` produced no output for five minutes and is not counted as green.

@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-07-15 (Session 46 closeout) -->
+<!-- generated-at: 2026-07-16 (Session 47 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 46 closeout · 2026-07-15.
+> **Fast-boot brief** — generated at Session 47 closeout · 2026-07-16.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
 
 ```
 ╔════════════════════════════════════════════════════════════════╗
-║  🚀 FRANCHISE ARCHITECT: FOOTBALL                                ║
-║  project · deployed/public-unlaunched · FORGE                    ║
-║  Session 47 · 2026-07-15 · FOUNDER MODE                          ║
+║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
+║  game · deployed/public-unlaunched · FORGE                       ║
+║  Session 48 · 2026-07-16 · FOUNDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -25,8 +25,8 @@
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
 ║    994/1000   ███████████████████████░   99%                     ║
-║    SIL v3.0  ·  Avg3: ?  ·  Velocity 0→                          ║
-║    Last active: 0d  ·  Last closeout: ?d  ·  (active = newest o  ║
+║    SIL v3.0  ·  Avg3: 994  ·  Velocity 0→                        ║
+║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -44,35 +44,35 @@
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 46 ════════════════════════════╗
-║  Shipped:  see LATEST_HANDOFF.md                                 ║
-║  Tests:    317/317 passing  ·  Deploy: N/A                       ║
+╔══ WHERE WE LEFT OFF  ·  Session 47 ════════════════════════════╗
+║  Shipped:  All six Session 47 audit items: executable JSON-to-M  ║
+║  Tests:    337/337 passing  ·  Deploy: N/A                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     39,342 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~19,671 tok/turn  ·  cache 50%  ·  44 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
+║     25,582 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~12,791 tok/turn  ·  cache 50%  ·  69 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         317/317 passing                                ║
+║  ✓  Tests         337/337 passing                                ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
-║  ✓  Runway        unknown                                        ║
-║  ⛔  Context age   ?d                                             ║
-║  ⛔  IGNIS         41305 FORGE  ·  26d old                        ║
-║  ✓  Truth         green  ·  Genome: ?                            ║
-║  ⚠  Compliance   not tracked — run: node scripts/ops.mjs compli  ║
+║  ⚠  Runway        not tracked                                    ║
+║  ✓  Context age   0d                                             ║
+║  ⛔  IGNIS         41305 FORGE  ·  27d old                        ║
+║  ✓  Truth         green  ·  Genome: green                        ║
+║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
 ║  ⚠  Entropy       not computed                                   ║
 ║  ✓  CDR           no gap detected                                ║
 ║  ✓  Patterns      no recurring pressure detected                 ║
 ║  ✓  Templates     v3.3 aligned                                   ║
-║  ⛔  Revenue sig.  not found  ⚠ stale                             ║
+║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ✓  Doctor        1/1 (100%)  ·  2026-07-15  ✓                   ║
-║  ✓  Cost          real $0.00/7d · real metered total $0.5066 <   ║
+║  ✓  Doctor        1/1 (100%)  ·  2026-07-16  ✓                   ║
+║  ✓  Cost          Max flat-rate · $0.32/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -102,5 +102,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 46 closeout · 2026-07-15*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 47 closeout · 2026-07-16*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

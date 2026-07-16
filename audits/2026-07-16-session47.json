@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-07-16",
+  "session": 47,
+  "agent": "codex",
+  "project": "franchise-architect-football",
+  "intent": "Recover the interrupted Session 47, verify and finish its six-item audit/implementation arc, exhaust second-order work, and close out a clean direct-main checkpoint.",
+  "intentStatus": "achieved",
+  "shipped": [
+    "audit-renderer-protocol-bridge",
+    "startup-brief-truth-contract",
+    "save-scoped-franchise-inbox",
+    "matchup-aware-tactical-film-room",
+    "gm-decision-commitment-engine",
+    "checkpoint-aware-fast-sim",
+    "latest-audit-follow-through",
+    "runtime-switch-stale-save-guard"
+  ],
+  "deferred": [
+    {
+      "item": "launch/SPARKED flip",
+      "reason": "Requires real football@playfranchisearchitect.com received-message proof plus current live-origin evidence."
+    }
+  ],
+  "sil": {
+    "version": "3.0",
+    "score": 994,
+    "max": 1000,
+    "categories": {
+      "devHealth": 100,
+      "creativeAlignment": 100,
+      "momentum": 100,
+      "engagement": 100,
+      "processQuality": 100,
+      "crossRepoCoherence": 100,
+      "securityPosture": 100,
+      "ecosystemIntegration": 100,
+      "capitalEfficiency": 94,
+      "automationCoverage": 100
+    }
+  },
+  "verification": {
+    "passed": [
+      "direct canonical shards 337/337 (64 + 162 + 67 + 1 + 43)",
+      "focused consequence/checkpoint suite 10/10",
+      "Playwright 18/18",
+      "Pages build/smoke",
+      "syntax and JSON integrity sweeps",
+      "doctor no items and blockingFailing 0",
+      "Genius cache exhausted 0 open"
+    ],
+    "nonEvidence": [
+      "aggregate npm test wrapper emitted no output for five minutes and was terminated"
+    ]
+  }
+}

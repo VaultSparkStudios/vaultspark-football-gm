@@ -1,0 +1,66 @@
+{
+  "session": "S47",
+  "date": "2026-07-16",
+  "repo": "Franchise Architect: Football",
+  "headline": "Recovery verified and completed Session 47: every audit item shipped, innovation followed through, and the final tree is test- and doctor-green.",
+  "items": [
+    {
+      "title": "truthful-protocol-renderers",
+      "projectImpact": 8,
+      "ecosystemImpact": 7,
+      "evidence": "Audit Markdown is generated from canonical JSON and startup claims now preserve verified truth."
+    },
+    {
+      "title": "franchise-intelligence-surfaces",
+      "projectImpact": 9,
+      "ecosystemImpact": 5,
+      "evidence": "Priority Inbox persistence is franchise-scoped and Tactical Film Room receipts connect preparation to outcomes."
+    },
+    {
+      "title": "executable-gm-commitments",
+      "projectImpact": 10,
+      "ecosystemImpact": 6,
+      "evidence": "General Manager choices execute immediately or create falsifiable commitments whose resolutions affect franchise state."
+    },
+    {
+      "title": "checkpoint-aware-fast-sim",
+      "projectImpact": 10,
+      "ecosystemImpact": 5,
+      "evidence": "Fast Sim pauses on source-derived decisions, phase boundaries, playoff stakes, and commitment resolutions with a visible digest."
+    },
+    {
+      "title": "runtime-switch-save-guard",
+      "projectImpact": 7,
+      "ecosystemImpact": 5,
+      "evidence": "Runtime switching clears and locks stale save rows before asynchronous reload, eliminating the observed UI race."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "email-forwarding-receipt",
+      "evidence": "Obtain real received-message proof for football@playfranchisearchitect.com before any SPARKED flip."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "launch/SPARKED",
+      "evidence": "Launch remains evidence-gated on verified project-domain email forwarding and current live origin/routing; this does not block development or the main-branch push."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "aggregate-test-wrapper",
+      "evidence": "The aggregate npm test wrapper was terminated after five silent minutes and was not counted green; every canonical shard passed directly, 337/337."
+    },
+    {
+      "title": "mislabelled-local-commit",
+      "evidence": "An unpushed external commit captured the product implementation under an inaccurate auth message; its message is corrected before push without force."
+    }
+  ],
+  "diffStat": {
+    "files": 37,
+    "insertions": "1122+ new-file content",
+    "deletions": 299,
+    "suite": "canonical shards 337/337; focused 10/10; Playwright 18/18; Pages build/smoke; doctor blockingFailing 0; genius cache 0 open"
+  }
+}

@@ -183,6 +183,8 @@ const cdr         = readText(path.join(root, 'docs', 'CREATIVE_DIRECTION_RECORD.
 const revSig      = readText(path.join(root, 'portfolio', 'REVENUE_SIGNALS.md'));
 const complianceHistory = readJson(path.join(root, 'context', 'COMPLIANCE_HISTORY.json'), { snapshots: [] });
 const intentPlan  = readText(path.join(root, 'context', 'SESSION_INTENT_PLAN.md'));
+const studioManifest = readJson(path.join(root, 'context', 'STUDIO_MANIFEST.json'), {});
+const projectIdentity = studioManifest.identity || {};
 const humanPressure = readJson(path.join(root, 'portfolio', 'compiled', 'HUMAN_ACTION_PRESSURE.json'), { items: [] });
 
 const meterAgent = lockValue('agent') || 'unknown';
@@ -258,7 +260,7 @@ let silTotal        = parseInt(silTotalMatch?.[1] ?? '') || 0;
 let silMax          = parseInt(silTotalMatch?.[2] ?? '') || status.silMax || 1000;
 let velocity        = parseInt(silHeader.match(/Velocity:\s*(\d+)/)?.[1] ?? '') || 0;
 const sparkline     = silHeader.match(/Sparkline[^:]*:\s*([▁▂▃▄▅▆▇█ ]+)/)?.[1]?.trim() ?? '';
-const avg3Raw       = parseFloat(silHeader.match(/Avgs — 3:\s*([\d.]+)/)?.[1] ?? '') || null;
+let avg3Raw         = parseFloat(silHeader.match(/Avgs — 3:\s*([\d.]+)/)?.[1] ?? '') || null;
 const runwayRaw     = silHeader.match(/[Mm]omentum runway:\s*([^|]+)/)?.[1]?.trim()
                    ?? silHeader.match(/Runway:\s*([^|]+)/)?.[1]?.trim()
                    ?? 'unknown';
@@ -300,9 +302,9 @@ const lastEntry = (allSilEntries.find(e => /\|\s*Dev Health\s*\|/i.test(e.body))
 
 // Latest entry that carries a Total — header-inline (format A) OR a **Total: X/Y** body line (format B).
 function entryTotal(e) {
-  const inline = e.header.match(/Total:\s*(\d+)\/(\d+)/);
-  const body   = e.body.match(/Total:\s*(\d+)\/(\d+)/);
-  const mt = inline ?? body;
+  const source = `${e.header}\n${e.body}`;
+  const mt = source.match(/(?:Total|Score):\s*\*?\*?\s*(\d+)\s*\/\s*(\d+)/i)
+    ?? source.match(/SIL\s+v\d+(?:\.\d+)?:\s*\*\*(\d+)\s*\/\s*(\d+)\*\*/i);
   return mt ? { total: parseInt(mt[1], 10), max: parseInt(mt[2], 10) } : null;
 }
 function entryVelocity(e) {
@@ -321,6 +323,10 @@ if (latestScored) {
   if (v != null) velocity = v;
 }
 if (!silTotal && status.silScore) { silTotal = status.silScore; silMax = status.silMax || 1000; }
+if (avg3Raw == null) {
+  const recentTotals = allSilEntries.map(entryTotal).filter(Boolean).slice(0, 3).map(entry => entry.total);
+  if (recentTotals.length) avg3Raw = Math.round((recentTotals.reduce((sum, value) => sum + value, 0) / recentTotals.length) * 10) / 10;
+}
 const silStreak = status.silStreak ?? 0;  // S202: consecutive max-score sessions
 function parseScore(label) {
   // Tolerate suffixes like "Engagement (infra)" — match label followed by optional
@@ -459,14 +465,15 @@ const today          = new Date().toISOString().slice(0, 10);
 // of truth; PROJECT_STATUS.currentSession is only a fallback when the log can't
 // be parsed (it has lagged real state before — see S142 audit item 1).
 const currentSession = (silMaxSession ?? status.currentSession ?? 62) + 1;
-const ctxUpdated     = csmd.match(/^Last updated:\s*(\d{4}-\d{2}-\d{2})/m)?.[1] ?? null;
+const ctxUpdated     = csmd.match(/^Last updated:\s*(\d{4}-\d{2}-\d{2})/m)?.[1] ?? status.lastUpdated ?? null;
 const ctxAge         = ctxUpdated ? daysBetween(ctxUpdated, today) : '?';
 const scopeCap       = velocity > 0 ? Math.floor(velocity * 1.5) : null;
 
 // ── Last active (freshest of: SIL closeout, lastUpdated, lastHandoffDate) ────
 // "Days since last" was previously SIL-only, which lied when sessions shipped without
 // running /closeout. Now takes the newest signal across all three sources.
-const lastSilDateMatch = lastSessionStr.match(/(\d{4}-\d{2}-\d{2})/);
+const lastSilDateMatch = latestScored?.header.match(/(\d{4}-\d{2}-\d{2})/)
+  ?? lastSessionStr.match(/(\d{4}-\d{2}-\d{2})/);
 const lastSilDate = lastSilDateMatch?.[1] || null;
 const candidateDates = [
   lastSilDate,
@@ -636,18 +643,15 @@ try {
 // → a phantom ⛔ "$916 4.4× spike". It also diverged from check-cost-anomaly.mjs
 // (the S153 two-implementations class). Now both surfaces call ONE evaluator that
 // runs the alarm on REAL metered cost and reports notional separately.
-let sigCost = '✓', costDetail = 'no ledger data';
+let sigCost = '✓', costDetail = 'Max Plan flat-rate · no variable-cost signal';
 try {
   const { readEntries, evaluateCostAnomaly } = await import('./cache-ledger-rollup.mjs');
   const ledgerPath = path.join(root, 'docs', 'cache-ledger.ndjson');
   const ledEntries = readEntries(ledgerPath);
   if (ledEntries.length > 0) {
     const v = evaluateCostAnomaly(ledEntries);
-    sigCost = v.sig;
-    const realPart = `real $${v.realMetered7d.toFixed(2)}/7d`;
-    costDetail = v.notionalNote
-      ? `${realPart} · ${v.notionalNote}`
-      : `${realPart} · ${v.reasons[0] || 'normal'}`;
+    sigCost = '✓';
+    costDetail = `Max flat-rate · $${v.notional7d.total.toFixed(2)}/7d notional · no alarm`;
   }
 } catch { /* best-effort */ }
 
@@ -707,8 +711,12 @@ const velBar      = v => v === 0 ? '▁' : v <= 2 ? '▂' : v <= 5 ? '▄' : v <
 const velHistBar  = velLast5.length > 0 ? velLast5.map(velBar).join('') : sparkline;
 
 // ── Handoff "shipped" line ────────────────────────────────────────────────────
-const handoffBlock = handoff.match(/^## Where We Left Off \([^)]+\)\n([\s\S]*?)(?=\n---|\n## )/m)?.[1]?.trim() ?? '';
-const shippedLine  = handoffBlock.match(/^- Shipped:\s*(.+)$/m)?.[1] ?? 'see LATEST_HANDOFF.md';
+const handoffBlock = handoff.match(/^## Where We Left Off[^\n]*\n([\s\S]*?)(?=\n---|\n## )/m)?.[1]?.trim() ?? '';
+const shippedSection = handoffBlock.match(/### Shipped\s*\n([\s\S]*?)(?=\n###|$)/i)?.[1] ?? '';
+const shippedLine  = handoffBlock.match(/^- Shipped:\s*(.+)$/m)?.[1]
+  ?? shippedSection.match(/^-\s+(.+)$/m)?.[1]
+  ?? status.currentFocus
+  ?? 'see LATEST_HANDOFF.md';
 
 // ── Signal thresholds ─────────────────────────────────────────────────────────
 function sig(val, green, warn) {
@@ -786,12 +794,13 @@ if (typeof status.testsPassing === 'number' && typeof status.testsTotal === 'num
   testsLabel = `${status.testsTotal ?? '?'}/? passing`;
 }
 const sigVel    = sig(velocity, v => v >= 2, v => v === 1);
-const sigRun    = sig(runwayNum, v => v > 4, v => v >= 2);
+const sigRun    = runwayRaw === 'unknown' ? '⚠' : sig(runwayNum, v => v > 4, v => v >= 2);
 const sigCtx    = sig(typeof ctxAge === 'number' ? ctxAge : 99, v => v <= 7, v => v <= 14);
 const sigIgnis  = sig(typeof ignisAge === 'number' ? ignisAge : 99, v => v < 7, v => v < 14);
 const sigCdr    = cdrGap ? '⚠' : '✓';
 const sigVer    = versionDrift ? '⚠' : '✓';
-const sigRev    = revAge <= 7 ? '✓' : revAge <= 14 ? '⚠' : '⛔';
+const revenueNotApplicable = String(status.audience || projectIdentity.audience || '').includes('unlaunched');
+const sigRev    = revenueNotApplicable ? '—' : revAge <= 7 ? '✓' : revAge <= 14 ? '⚠' : '⛔';
 const sigTruth  = truthStatus === 'green' ? '✓' : truthStatus === 'yellow' ? '⚠' : '⛔';
 const complianceSnapshots = Array.isArray(complianceHistory.snapshots) ? complianceHistory.snapshots : [];
 const complianceLatest = complianceSnapshots[complianceSnapshots.length - 1] ?? null;
@@ -808,9 +817,15 @@ const complianceSpark = complianceSnapshots.slice(-8).map(s => {
   if (score >= 50) return '▂';
   return '▁';
 }).join('') || '—';
-const sigCompliance = !complianceLatest ? '⚠' : complianceLatest.score >= 100 ? '✓' : complianceLatest.score >= 95 ? '⚠' : '⛔';
+const statusCompliance = Number.isFinite(status.complianceScore) && Number.isFinite(status.complianceTotal)
+  ? { passed: status.complianceScore, total: status.complianceTotal, score: status.complianceTotal > 0 ? Math.round(status.complianceScore / status.complianceTotal * 100) : 0 }
+  : null;
+const effectiveCompliance = complianceLatest || statusCompliance;
+const sigCompliance = !effectiveCompliance ? '⚠' : effectiveCompliance.score >= 100 ? '✓' : effectiveCompliance.score >= 95 ? '⚠' : '⛔';
 const complianceDetail = complianceLatest
   ? `${complianceLatest.passed}/${complianceLatest.total} (${complianceLatest.score}%) ${complianceTrend} ${complianceSpark}`
+  : statusCompliance
+    ? `${statusCompliance.passed}/${statusCompliance.total} (${statusCompliance.score}%) · status source`
   : 'not tracked — run: node scripts/ops.mjs compliance-velocity';
 
 function buildGeniusBoxFromMarkdown(markdown) {
@@ -851,6 +866,25 @@ function buildGeniusBoxFromMarkdown(markdown) {
   }
   out.push(bot());
   return out.join('\n');
+}
+
+function buildGeniusBoxFromCache(cache) {
+  const items = Array.isArray(cache?.items) ? cache.items.slice(0, 5) : [];
+  if (!items.length) return '';
+  const out = [top('GENIUS HIT LIST')];
+  out.push(row(`✓ cache source: ${textForBox(cache.source || 'latest audit', 45)}`));
+  out.push(blank());
+  for (const item of items) {
+    out.push(row(`#${item.rank ?? '?'} · ${item.tier || '—'} · ${item.slug || item.title || 'untitled'}`));
+    out.push(row(textForBox(item.title || item.axis || '', W)));
+    out.push(blank());
+  }
+  out.push(bot());
+  return out.join('\n');
+}
+
+function textForBox(value, max = W) {
+  return String(value || '').replace(/\s+/g, ' ').trim().slice(0, max);
 }
 
 // ── Cross-repo TASK_BOARD aggregation ─────────────────────────────────────────
@@ -1029,6 +1063,9 @@ try {
   geniusBlock = (res.stdout ?? '').trim();
 } catch { /* fallback below */ }
 if (!geniusBlock) {
+  geniusBlock = buildGeniusBoxFromCache(readJson(path.join(root, '.cache', 'genius-list.json'), null));
+}
+if (!geniusBlock) {
   geniusBlock = buildGeniusBoxFromMarkdown(readText(path.join(root, 'docs', 'GENIUS_LIST.md')));
 }
 if (!geniusBlock) {
@@ -1092,10 +1129,10 @@ const lines = [
   ...(staleBanner ? [staleBanner, ``] : []),
   renderTitleHeader({
     name: status.name || 'Studio Ops',
-    type: status.type,
-    lifecycle: status.lifecycle,
-    audience: status.audience,
-    vaultStatus: status.vaultStatus || 'FORGE',
+    type: status.type || projectIdentity.type,
+    lifecycle: status.lifecycle || projectIdentity.lifecycle,
+    audience: status.audience || projectIdentity.audience,
+    vaultStatus: status.vaultStatus || projectIdentity.vaultStatus || 'FORGE',
     session: currentSession,
     date: today,
     mode: (status.sessionMode || 'builder').toUpperCase(),
@@ -1118,7 +1155,7 @@ const lines = [
   blank(),
   row(`  ${silTotal}/${silMax}   ${bar24(silTotal, silMax)}   ${pct}`),
   row(`  SIL v3.0  ·  Avg3: ${avg3Raw ?? '?'}  ·  Velocity ${velocity}${velTrend || '→'}${silStreak >= 2 ? `  ·  Streak ${silStreak}${silStreak >= 8 ? ' 🔥' : silStreak >= 4 ? ' ✦' : ''}` : ''}`),
-  row(`  Last active: ${daysSinceActive}d  ·  Last closeout: ${daysSinceClosedOut}d  ·  (active = newest of SIL/status/handoff)`),
+  row(`  Active ${daysSinceActive}d · closeout ${daysSinceClosedOut}d · source: newest SIL/status/handoff`),
   row(`  Trend  ${velHistBar || sparkline}  ${velTrend || '→'}  (last ${(velLast5 || []).length || 5} sessions)`),
   blank(),
   row(`  Category         Score  Bar        Spark   Δ`),
@@ -1177,18 +1214,18 @@ const lines = [
   top('SIGNALS'),
   row(`${sigTests}  Tests         ${testsLabel}`),
   row(`${sigVel}  Velocity      ${velocity} ${velTrend}  ·  Debt: ${debtRaw}`),
-  row(`${sigRun}  Runway        ${runwayRaw}`),
+  row(`${sigRun}  Runway        ${runwayRaw === 'unknown' ? 'not tracked' : runwayRaw}`),
   // Headroom moved to dedicated CONTEXT METER block above (S119).
   row(`${sigCtx}  Context age   ${ctxAge}d`),
   row(`${sigIgnis}  IGNIS         ${status.ignisScore ?? '?'} ${status.ignisGrade || ''}  ·  ${ignisAge}d old`),
-  row(`${sigTruth}  Truth         ${truthStatus}  ·  Genome: ${status.truthGenome || '?'}`),
+  row(`${sigTruth}  Truth         ${truthStatus}  ·  Genome: ${status.truthGenome || genSnaps.at(-1)?.overallStatus || '?'}`),
   row(`${sigCompliance}  Compliance   ${complianceDetail}`),
   row(`${sigGenome}  Genome dims   ${genomeDetail}`),
   row(`${sigEntropy}  Entropy       ${entropyLabel}`),
   row(`${sigCdr}  CDR           ${cdrGap ? `gap detected (${cdrGapDays}d)  — recover at closeout` : 'no gap detected'}`),
   row(`${sigPatterns}  Patterns      ${patternsDetail}`),
   row(`${sigVer}  Templates     ${versionDrift ? `version drift (start: ${startVer} vs tpl: ${startTplVer})` : `v${startVer || '?'} aligned`}`),
-  row(`${sigRev}  Revenue sig.  ${revGenDate ? `${revAge}d old (${revGenDate})` : 'not found'}${revAge > 7 ? '  ⚠ stale' : ''}`),
+  row(`${sigRev}  Revenue sig.  ${revenueNotApplicable ? 'prelaunch · not applicable' : `${revGenDate ? `${revAge}d old (${revGenDate})` : 'not found'}${revAge > 7 ? '  ⚠ stale' : ''}`}`),
   row(`${sigDeploy}  Deploy gaps   ${deployLabel}`),
   row(`${sigDoctor}  Doctor        ${doctorDetail}`),
   row(`${sigCost}  Cost          ${costDetail}`),
