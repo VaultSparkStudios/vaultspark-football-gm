@@ -86,7 +86,7 @@ import { runNarrativeChecks } from "../engine/narrativeEvents.js";
 import { resolveThreads as resolveContinuityThreads } from "../engine/continuityLedger.js";
 import { updateFanSentiment } from "../engine/fanSentiment.js";
 import { applyMentorshipBonuses } from "../engine/veteranMentorship.js";
-import { latestGmDecision } from "../engine/gmDecisionConsequences.js";
+import { getGmCommitmentState, latestGmDecision, resolveGmDecisionCommitments } from "../engine/gmDecisionConsequences.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 
 const TABLE_CATEGORIES = ["passing", "rushing", "receiving", "defense", "blocking", "kicking", "punting", "snaps"];
@@ -3904,6 +3904,7 @@ export class GameSession {
 
       this.currentWeek += 1;
       if (this.currentWeek > NFL_STRUCTURE.regularSeasonWeeks) this.phase = "postseason";
+      resolveGmDecisionCommitments(this);
       return { ok: true, phase: this.phase, week: weekResult.week, games: weekResult.games, events };
     }
 
@@ -4517,6 +4518,8 @@ export class GameSession {
 
     return {
       game: GAME_NAME,
+      franchiseId: `fa-${this.rngStreams?.baseSeed ?? this.startYear}-${this.controlledTeamId}`,
+      startYear: this.startYear,
       phase: this.phase,
       currentYear: this.currentYear,
       currentWeek: this.currentWeek,
@@ -4551,6 +4554,7 @@ export class GameSession {
       news: this.getNewsFeed({ limit: 20 }),
       eventLog: this.getEventLog({ limit: 30 }),
       latestGmDecision: latestGmDecision(this.league),
+      gmCommitments: getGmCommitmentState(this.league, this.controlledTeamId),
       observability: this.getObservability(),
       calibrationJobs: this.listCalibrationJobs(10),
       teams: this.league.teams.map(toDashboardTeam),
@@ -4560,6 +4564,7 @@ export class GameSession {
       seasonAwardsStage: this.phase === "season-awards" ? this.pendingSeasonWrap : null,
       latestStandings: standingsRows,
       latestWeekResults: this.weekResultsCurrentSeason.slice(-1)[0] || null,
+      latestTacticalFilm: (this.league.tacticalFilmLog || []).find((entry) => entry.teamId === this.controlledTeamId) || null,
       recentBoxScores: this.getRecentBoxScores(this.controlledTeamId, 8),
       injuryReport: this.league.players
         .filter((player) => player.status === "active" && player.injury && player.injury.weeksRemaining > 0)

@@ -4028,3 +4028,70 @@ html[data-theme="light"] .bg-layer {
   font-size: 12px;
   line-height: 1.45;
 }
+
+.tactical-matchup-brief {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0.8rem 0 1rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--inset);
+  color: var(--ink);
+}
+
+.tactical-matchup-brief span,
+.film-disclaimer {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.tactical-film-room {
+  display: grid;
+  gap: 0.55rem;
+  border-left: 4px solid var(--accent);
+}
+
+.tactical-film-room[hidden] { display: none; }
+.tactical-film-room.film-aligned { border-left-color: var(--success); }
+.tactical-film-room.film-mixed { border-left-color: var(--warning); }
+.film-kicker { color: var(--accent-strong); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.film-headline { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.film-verdict { font-weight: 750; }
+.film-observed { color: var(--ink); font-variant-numeric: tabular-nums; }
+.gm-commitment-board { border-left: 4px solid var(--accent); display: grid; gap: .75rem; }
+.gm-commitment-kicker { color: var(--accent); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.gm-commitment-row { align-items: center; background: color-mix(in srgb, var(--panel) 82%, var(--accent)); border: 1px solid var(--border); border-radius: .65rem; display: flex; gap: 1rem; justify-content: space-between; padding: .8rem; }
+.gm-commitment-row span { color: var(--muted); font-size: .8rem; white-space: nowrap; }
+.gm-commitment-receipt { border-radius: .65rem; padding: .8rem; }
+.gm-commitment-receipt.receipt-success { background: color-mix(in srgb, var(--panel) 80%, var(--success)); }
+.gm-commitment-receipt.receipt-failure { background: color-mix(in srgb, var(--panel) 80%, var(--danger)); }
+@media (max-width: 700px) { .gm-commitment-row { align-items: flex-start; flex-direction: column; } }
+
+.sim-checkpoint-panel {
+  align-items: center;
+  background: color-mix(in srgb, var(--panel) 88%, var(--accent));
+  border: 1px solid var(--accent);
+  border-left: 5px solid var(--warning);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin: .75rem 1rem 0;
+  padding: .9rem 1rem;
+}
+.sim-checkpoint-panel[hidden] { display: none; }
+.sim-checkpoint-kicker { color: var(--accent); font-size: .72rem; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+.sim-checkpoint-panel p { color: var(--ink); margin: .25rem 0; }
+.sim-checkpoint-panel ul { color: var(--muted); display: grid; font-size: .78rem; gap: .15rem; list-style: none; margin: .35rem 0 0; padding: 0; }
+.sim-checkpoint-actions { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: flex-end; }
+
+@media (max-width: 700px) {
+  .sim-checkpoint-panel {
+    align-items: stretch;
+    flex-direction: column;
+    margin: .5rem;
+  }
+  .sim-checkpoint-actions button { flex: 1 1 10rem; }
+}

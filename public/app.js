@@ -281,6 +281,8 @@ import {
   refreshPostSimulation,
   advanceWeeksSequential,
   advanceSeasonSequential,
+  resumeSimulationFromCheckpoint,
+  dismissSimulationCheckpoint,
   checkSeasonEndReview,
   showSeasonEndReview,
   closeSeasonReviewModal,
@@ -321,7 +323,7 @@ async function submitMobileGmDecisionChoice(choice) {
     state.mobilePendingDecision = null;
     if (response.gmDecision?.applied) {
       const label = response.gmDecision.decision?.label || "GM decision";
-      const effect = response.gmDecision.decision?.effect || "choice recorded";
+      const effect = response.gmDecision.decision?.receipt?.summary || response.gmDecision.decision?.effect || "choice recorded";
       showToast(`${label}: ${effect}`);
     }
     await Promise.all([
@@ -460,7 +462,7 @@ function bindEvents() {
       applyDashboard(response.state);
       if (response.gmDecision?.applied) {
         const label = response.gmDecision.decision?.label || "GM decision";
-        const effect = response.gmDecision.decision?.effect || "choice recorded";
+        const effect = response.gmDecision.decision?.receipt?.summary || response.gmDecision.decision?.effect || "choice recorded";
         showToast(`${label}: ${effect}`);
       }
       await Promise.all([
@@ -493,14 +495,14 @@ function bindEvents() {
   );
 
   document.getElementById("advance4WeeksBtn").addEventListener("click", () =>
-    advanceWeeksSequential(4).catch((error) => {
+    advanceWeeksSequential(4, { resolveDecision: checkAndShowGmDecision }).catch((error) => {
       presentActionError(error);
       setSimControl({ active: false, pauseRequested: false, mode: null });
     })
   );
 
   document.getElementById("advanceSeasonBtn").addEventListener("click", () =>
-    advanceSeasonSequential().catch((error) => {
+    advanceSeasonSequential({ resolveDecision: checkAndShowGmDecision }).catch((error) => {
       presentActionError(error);
       setSimControl({ active: false, pauseRequested: false, mode: null });
     })
@@ -509,6 +511,15 @@ function bindEvents() {
   document.getElementById("pauseSimBtn").addEventListener("click", () => {
     if (!state.simControl.active) return;
     setSimControl({ pauseRequested: true });
+  });
+  document.getElementById("resumeSimBtn").addEventListener("click", () => {
+    resumeSimulationFromCheckpoint({ resolveDecision: checkAndShowGmDecision }).catch((error) => {
+      presentActionError(error);
+      setSimControl({ active: false, pauseRequested: false, mode: null });
+    });
+  });
+  document.getElementById("dismissSimCheckpointBtn").addEventListener("click", () => {
+    dismissSimulationCheckpoint();
   });
 
   document.getElementById("refreshBtn").addEventListener("click", () => runAction(refreshEverything, "Refreshing..."));
@@ -1824,6 +1835,8 @@ async function init() {
   renderPlayerTimelineSearchResults();
   activateTab("overviewTab");
   await loadCoreDashboard();
+  ingestNewsIntoInbox(state.dashboard?.newsLog || state.dashboard?.news || state.newsRows || []);
+  renderInboxBadge();
   setStatus("Ready");
   queueStartupHydration();
   initGistSyncUI();

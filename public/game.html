@@ -47,6 +47,19 @@
       <button class="news-ticker-close" id="closeNewsTickerBtn" aria-label="Close ticker">✕</button>
     </div>
 
+    <section id="simCheckpointPanel" class="sim-checkpoint-panel" hidden aria-live="polite" aria-label="Simulation checkpoint">
+      <div>
+        <div class="sim-checkpoint-kicker">Fast Simulation Digest</div>
+        <strong id="simCheckpointTitle">Simulation checkpoint reached</strong>
+        <p id="simCheckpointReason"></p>
+        <ul id="simCheckpointDigest"></ul>
+      </div>
+      <div class="sim-checkpoint-actions">
+        <button id="resumeSimBtn" type="button">Resolve &amp; Resume</button>
+        <button id="dismissSimCheckpointBtn" type="button" class="secondary">Stay Paused</button>
+      </div>
+    </section>
+
     <main class="game-shell">
       <aside class="side-menu" role="tablist" aria-label="Franchise sections" aria-orientation="vertical">
         <div class="menu-group-header">Gameday</div>
@@ -107,6 +120,9 @@
               </div>
             </div>
           </div>
+
+          <div id="tacticalFilmRoom" class="panel tactical-film-room" hidden></div>
+          <div id="gmCommitmentBoard" class="panel gm-commitment-board" hidden></div>
 
           <!-- ── Season Preview Hype Panel ────────────────────────────────── -->
           <div class="panel season-preview-panel" id="seasonPreviewPanel" hidden>
@@ -1447,6 +1463,7 @@
       <div class="halftime-modal-card">
         <div class="halftime-modal-title" id="halftimeAdjustTitle">Pre-Game Tactical Brief</div>
         <div class="halftime-modal-sub">Choose your team's focus for this week's matchup.</div>
+        <div id="tacticalMatchupBrief" class="tactical-matchup-brief"></div>
         <div class="tactic-options-grid">
           <div class="tactic-option" data-tactic="run-heavy">
             <div class="to-icon">🏃</div>

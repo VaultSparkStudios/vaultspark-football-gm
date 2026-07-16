@@ -33,8 +33,48 @@ export function renderOverview() {
     box.textContent = lines.join(" ") || "Weekly plan, locker-room pressure, and owner mandate updates will appear here.";
   }
   renderOverviewSpotlight();
+  renderGmCommitmentBoard();
+  renderTacticalFilmRoom();
   renderNarrativePanel();
   renderTradeDeadlineAlert();
+}
+
+export function renderGmCommitmentBoard() {
+  const card = document.getElementById("gmCommitmentBoard");
+  if (!card) return;
+  const commitments = stateDashboardCommitments();
+  const active = commitments.active || [];
+  const receipt = commitments.latestReceipt;
+  if (!active.length && !receipt) { card.hidden = true; return; }
+  card.hidden = false;
+  card.innerHTML = `
+    <div class="gm-commitment-kicker">Decision Consequence Ledger</div>
+    ${active.map((entry) => `<div class="gm-commitment-row"><div><strong>${escapeHtml(entry.label)}</strong><div>${escapeHtml(entry.promise)}</div></div><span>Due Y${escapeHtml(String(entry.deadlineYear))} W${escapeHtml(String(entry.deadlineWeek))}</span></div>`).join("")}
+    ${receipt ? `<div class="gm-commitment-receipt ${receipt.status === "succeeded" ? "receipt-success" : "receipt-failure"}"><strong>${escapeHtml(receipt.label)} · ${escapeHtml(receipt.status)}</strong><div>${escapeHtml(receipt.evidence)}</div></div>` : ""}
+  `;
+}
+
+function stateDashboardCommitments() {
+  return state.dashboard?.gmCommitments || { active: [], latestReceipt: null };
+}
+
+export function renderTacticalFilmRoom() {
+  const card = document.getElementById("tacticalFilmRoom");
+  const receipt = state.dashboard?.latestTacticalFilm;
+  if (!card) return;
+  if (!receipt) {
+    card.hidden = true;
+    return;
+  }
+  card.hidden = false;
+  card.className = `panel tactical-film-room ${receipt.aligned ? "film-aligned" : "film-mixed"}`;
+  card.innerHTML = `
+    <div class="film-kicker">Postgame Film Receipt · Week ${escapeHtml(String(receipt.week ?? "?"))}</div>
+    <div class="film-headline"><strong>${escapeHtml(receipt.label)}</strong><span>${escapeHtml(receipt.result.toUpperCase())} ${escapeHtml(receipt.score)} vs ${escapeHtml(receipt.opponentId)}</span></div>
+    <div class="film-verdict">${receipt.aligned ? "Intent aligned with the observed signal" : "Observed signal was mixed against the chosen intent"}</div>
+    <div class="film-observed">${escapeHtml(receipt.observed)}</div>
+    <div class="film-disclaimer">${escapeHtml(receipt.disclaimer)}</div>
+  `;
 }
 
 export function renderNarrativePanel() {

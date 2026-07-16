@@ -447,6 +447,12 @@ function bindEvents() {
     const mode = setRuntimeMode(event.target.value);
     event.target.value = mode;
     const statusText = mode === "client" ? "Loading client-only menu..." : "Loading server-backed menu...";
+    // Saves belong to one runtime. Clear the previous runtime's rows before
+    // the asynchronous reload so a user can never resume a stale cross-runtime
+    // slot during the transition window.
+    state.saves = [];
+    state.savesDeferred = true;
+    renderSaves();
     setStatus(statusText);
     if (mode === "client") {
       warmLocalRuntime().catch(() => {});

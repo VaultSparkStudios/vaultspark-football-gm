@@ -16,6 +16,7 @@ import {
   formatLeaderboardEntry, parseLeaderboard, serializeLeaderboard, rankEntry
 } from "../../engine/speedrunChallenge.js";
 import { getFanSentiment, fanApprovalLabel } from "../../engine/fanSentiment.js";
+import { buildTacticalFilmReceipt } from "../../../public/lib/tacticalFilmRoom.js";
 import { getMentorshipStatus, getMentorshipHistory } from "../../engine/veteranMentorship.js";
 import { applyGmDecisionConsequence } from "../../engine/gmDecisionConsequences.js";
 import {
@@ -60,7 +61,7 @@ function getAugmentedState(session) {
       })()
     : null;
 
-  return {
+  const augmented = {
     ...base,
     narrativeLog:   league?.narrativeLog  || [],
     franchiseLore:  league?.franchiseLore || [],
@@ -77,6 +78,8 @@ function getAugmentedState(session) {
     activeInjuries,
     fanSentiment:   fanSentimentData
   };
+  augmented.gmDecisionQueue = _generateGmDecisions(augmented);
+  return augmented;
 }
 
 // ── Commissioner lobby (persisted via localStorage) ────────────────────────────
@@ -603,6 +606,19 @@ export function createLocalApiRuntime({
           }
           results.push(result);
         }
+        const tacticalReceipt = tacticOverride
+          ? buildTacticalFilmReceipt({
+              tactic: tacticOverride,
+              results,
+              controlledTeamId: session.controlledTeamId,
+              year: session.currentYear
+            })
+          : null;
+        if (tacticalReceipt) {
+          if (!Array.isArray(session.league.tacticalFilmLog)) session.league.tacticalFilmLog = [];
+          session.league.tacticalFilmLog.unshift(tacticalReceipt);
+          session.league.tacticalFilmLog = session.league.tacticalFilmLog.slice(0, 40);
+        }
         // Restore original weekly plan after simulation
         if (prevWeeklyPlan && session.controlledTeamId) {
           const team = session.league?.teams?.find((t) => t.id === session.controlledTeamId);
@@ -613,6 +629,7 @@ export function createLocalApiRuntime({
           ok: true, count, results,
           gmDecision,
           tacticApplied: tacticOverride || null,
+          tacticalReceipt,
           state: getAugmentedState(session)
         }));
       }

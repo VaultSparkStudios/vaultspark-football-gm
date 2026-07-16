@@ -22,7 +22,69 @@ import { closeModal, openModal } from "./modalManager.js";
 // PRIORITY INBOX SYSTEM
 // ─────────────────────────────────────────────────────────────────────────────
 
-const _inbox = { items: [], seen: new Set() };
+const INBOX_STORAGE_PREFIX = "fa-inbox-v1";
+const _inbox = { scope: null, items: [], seen: new Set(), lastSeen: 0 };
+
+function browserStorage(storage) {
+  return storage || globalThis.localStorage || null;
+}
+
+export function inboxScopeFromDashboard(dashboard = {}) {
+  const franchiseId = dashboard.franchiseId || dashboard.franchiseKey;
+  if (franchiseId) return String(franchiseId).replace(/[^a-z0-9_-]+/gi, "-").toLowerCase();
+  const team = dashboard.controlledTeamId || dashboard.controlledTeam?.id || "unassigned";
+  const start = dashboard.startYear || dashboard.currentYear || "unknown";
+  return `legacy-${team}-${start}`.toLowerCase();
+}
+
+export function inboxItemKey(item = {}) {
+  if (item.id != null && String(item.id).trim()) return `id:${String(item.id).trim()}`;
+  return ["event", item.type || "news", item.year ?? "?", item.week ?? "?", item.headline || item.detail || "untitled"]
+    .map((part) => String(part).trim())
+    .join(":");
+}
+
+function storageKey(scope) {
+  return `${INBOX_STORAGE_PREFIX}:${scope}`;
+}
+
+function persistInbox(storage = null) {
+  const target = browserStorage(storage);
+  if (!target || !_inbox.scope) return false;
+  try {
+    target.setItem(storageKey(_inbox.scope), JSON.stringify({
+      version: 1,
+      scope: _inbox.scope,
+      lastSeen: _inbox.lastSeen,
+      items: _inbox.items.slice(0, 60)
+    }));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function syncInboxScope(dashboard = state.dashboard || {}, storage = null) {
+  const scope = inboxScopeFromDashboard(dashboard);
+  if (_inbox.scope === scope) return scope;
+  _inbox.scope = scope;
+  _inbox.items = [];
+  _inbox.seen = new Set();
+  _inbox.lastSeen = 0;
+  const target = browserStorage(storage);
+  if (!target) return scope;
+  try {
+    const saved = JSON.parse(target.getItem(storageKey(scope)) || "null");
+    if (saved?.version === 1 && saved.scope === scope && Array.isArray(saved.items)) {
+      _inbox.items = saved.items.slice(0, 60);
+      _inbox.seen = new Set(_inbox.items.map(inboxItemKey));
+      _inbox.lastSeen = Number(saved.lastSeen || 0);
+    }
+  } catch {
+    // A corrupt browser cache never blocks the simulation; rebuild from source news.
+  }
+  return scope;
+}
 
 export function classifyNewsItem(item) {
   const type = (item.type || "").toLowerCase();
@@ -35,24 +97,45 @@ export function classifyNewsItem(item) {
   return "FLAVOR";
 }
 
-export function ingestNewsIntoInbox(newsItems = []) {
+export function ingestNewsIntoInbox(newsItems = [], { dashboard = state.dashboard || {}, storage = null, now = Date.now } = {}) {
+  syncInboxScope(dashboard, storage);
   let newCount = 0;
   for (const item of newsItems) {
-    const key = `${item.type}-${item.headline}-${item.week}`;
+    const key = inboxItemKey(item);
     if (_inbox.seen.has(key)) continue;
     _inbox.seen.add(key);
     const tier = classifyNewsItem(item);
-    _inbox.items.unshift({ ...item, tier, receivedAt: Date.now() });
+    _inbox.items.unshift({ ...item, inboxKey: key, tier, receivedAt: Number(now()), resolvedAt: null });
     if (tier === "CRITICAL" || tier === "IMPORTANT") newCount++;
   }
   // Cap at 60 items
   if (_inbox.items.length > 60) _inbox.items = _inbox.items.slice(0, 60);
+  persistInbox(storage);
   return newCount;
 }
 
-export function getUnreadCount() {
-  const lastSeen = Number(localStorage.getItem("vsfgm-inbox-seen") || 0);
-  return _inbox.items.filter((i) => i.receivedAt > lastSeen && (i.tier === "CRITICAL" || i.tier === "IMPORTANT")).length;
+export function getUnreadCount({ dashboard = state.dashboard || {}, storage = null } = {}) {
+  syncInboxScope(dashboard, storage);
+  return _inbox.items.filter((i) => !i.resolvedAt && i.receivedAt > _inbox.lastSeen && (i.tier === "CRITICAL" || i.tier === "IMPORTANT")).length;
+}
+
+export function resolveInboxItem(key, { storage = null, now = Date.now } = {}) {
+  const item = _inbox.items.find((entry) => (entry.inboxKey || inboxItemKey(entry)) === key);
+  if (!item) return false;
+  item.resolvedAt = Number(now());
+  persistInbox(storage);
+  return true;
+}
+
+export function getInboxSnapshot() {
+  return { scope: _inbox.scope, lastSeen: _inbox.lastSeen, items: _inbox.items.map((item) => ({ ...item })) };
+}
+
+export function resetInboxForTests() {
+  _inbox.scope = null;
+  _inbox.items = [];
+  _inbox.seen = new Set();
+  _inbox.lastSeen = 0;
 }
 
 export function renderInboxBadge() {
@@ -61,13 +144,15 @@ export function renderInboxBadge() {
   const count = getUnreadCount();
   badge.textContent = count > 9 ? "9+" : String(count);
   badge.hidden = count === 0;
-  badge.className = count > 0 ? "inbox-badge" + (_inbox.items.some((i) => i.tier === "CRITICAL" && i.receivedAt > Number(localStorage.getItem("vsfgm-inbox-seen") || 0)) ? " inbox-badge-critical" : "") : "inbox-badge";
+  badge.className = count > 0 ? "inbox-badge" + (_inbox.items.some((i) => !i.resolvedAt && i.tier === "CRITICAL" && i.receivedAt > _inbox.lastSeen) ? " inbox-badge-critical" : "") : "inbox-badge";
 }
 
 export function openInbox() {
   const drawer = document.getElementById("inboxDrawer");
   if (!drawer) return;
-  localStorage.setItem("vsfgm-inbox-seen", String(Date.now()));
+  syncInboxScope();
+  _inbox.lastSeen = Date.now();
+  persistInbox();
   renderInboxBadge();
   renderInboxContent();
   drawer.classList.add("open");
@@ -111,7 +196,7 @@ function renderInboxContent() {
     const typeIcon = typeIcons[item.type?.toLowerCase()] || "📰";
     const actionTab = item.tier === "CRITICAL" ? getInboxActionTab(item) : null;
     return `
-      <div class="inbox-item inbox-tier-${escapeHtml(item.tier.toLowerCase())}">
+      <div class="inbox-item inbox-tier-${escapeHtml(item.tier.toLowerCase())}${item.resolvedAt ? " inbox-resolved" : ""}">
         <div class="inbox-item-header">
           <span class="inbox-tier-dot" title="${escapeHtml(tierLabels[item.tier])}">${escapeHtml(tierIcons[item.tier])}</span>
           <span class="inbox-type-icon">${typeIcon}</span>
@@ -120,14 +205,18 @@ function renderInboxContent() {
         </div>
         ${item.detail ? `<div class="inbox-detail">${escapeHtml(item.detail)}</div>` : ""}
         ${item.quote ? `<div class="inbox-quote">"${escapeHtml(item.quote.slice(0, 100))}"</div>` : ""}
-        ${actionTab ? `<div class="inbox-action-row"><button class="inbox-action-btn" data-inbox-action-tab="${escapeHtml(actionTab)}">Take Action →</button></div>` : ""}
+        ${item.resolvedAt ? `<div class="inbox-action-row"><span class="inbox-resolution">Action opened</span></div>` : actionTab ? `<div class="inbox-action-row"><button class="inbox-action-btn" data-inbox-key="${escapeHtml(item.inboxKey || inboxItemKey(item))}" data-inbox-action-tab="${escapeHtml(actionTab)}">Take Action →</button></div>` : ""}
       </div>`;
   }).join("");
 
   list.querySelectorAll("[data-inbox-action-tab]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const tab = btn.dataset.inboxActionTab;
+      const key = btn.dataset.inboxKey;
+      if (key) resolveInboxItem(key);
       if (tab) document.querySelector(`[data-tab="${tab}"]`)?.click();
+      renderInboxContent();
+      renderInboxBadge();
     });
   });
 }

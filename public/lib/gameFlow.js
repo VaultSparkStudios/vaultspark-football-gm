@@ -9,6 +9,9 @@ import { renderCalendar, renderPlayerHistoryArchive, renderPlayerTimelineSearchR
 import { appendSeasonEpilogue } from "./seasonEpilogue.js";
 import { applySettingsControls, loadRewindHistory, renderAnalytics, renderCalibrationJobs, renderCommandPalette, renderNegotiationTargets, renderNews, renderObservability, renderOwner, renderPersistence, renderPickAssets, renderPipeline, renderRealismVerification, renderRulesTab, renderSettingsSpotlight, renderSimJobs, renderStaff, renderTransactionLog } from "./tabSettings.js";
 import { closeModal, openModal } from "./modalManager.js";
+import { buildTacticalMatchupBrief } from "./tacticalFilmRoom.js";
+import { ingestNewsIntoInbox, renderInboxBadge } from "./engagementFeatures.js";
+import { appendSimulationDigest, classifySimulationCheckpoint, formatSimulationDigest, hasPendingSimulationDecision } from "./simulationCheckpoints.js";
 
 export function applyDashboard(newState) {
   const previous = state.dashboard;
@@ -717,30 +720,118 @@ export async function refreshPostSimulation() {
   ]);
 }
 
-export async function advanceWeeksSequential(totalWeeks) {
+let pendingSimulationResume = null;
+
+function renderSimulationCheckpoint(checkpoint, digest, continuation = null) {
+  const panel = document.getElementById("simCheckpointPanel");
+  const title = document.getElementById("simCheckpointTitle");
+  const reason = document.getElementById("simCheckpointReason");
+  const list = document.getElementById("simCheckpointDigest");
+  const resume = document.getElementById("resumeSimBtn");
+  if (!panel) return;
+  pendingSimulationResume = continuation;
+  if (title) title.textContent = continuation ? "Simulation paused at a decision checkpoint" : "Simulation checkpoint reached";
+  if (reason) reason.textContent = checkpoint?.primary?.label || "A material franchise moment was reached.";
+  if (list) list.innerHTML = formatSimulationDigest(digest).map((line) => `<li>${escapeHtml(line)}</li>`).join("");
+  if (resume) {
+    resume.hidden = !continuation;
+    resume.textContent = continuation?.mode === "season" ? "Resolve & Resume Season" : "Resolve & Resume";
+  }
+  panel.hidden = false;
+}
+
+export function dismissSimulationCheckpoint() {
+  const panel = document.getElementById("simCheckpointPanel");
+  if (panel) panel.hidden = true;
+}
+
+export async function resumeSimulationFromCheckpoint({ resolveDecision = null } = {}) {
+  const continuation = pendingSimulationResume;
+  if (!continuation) return { resumed: false };
+  pendingSimulationResume = null;
+  dismissSimulationCheckpoint();
+  if (continuation.mode === "weeks") {
+    await advanceWeeksSequential(continuation.remaining, { digest: continuation.digest, resolveDecision });
+  } else {
+    await advanceSeasonSequential({
+      startYear: continuation.startYear,
+      steps: continuation.steps,
+      digest: continuation.digest,
+      resolveDecision
+    });
+  }
+  return { resumed: true };
+}
+
+async function fastSimRequestBody(resolveDecision) {
+  const body = { count: 1 };
+  if (!hasPendingSimulationDecision(state.dashboard || {})) return body;
+  const choice = typeof resolveDecision === "function" ? await resolveDecision() : null;
+  if (!choice) return null;
+  body.gmDecisionChoice = choice;
+  return body;
+}
+
+function decisionCheckpointFromState() {
+  const decision = state.dashboard?.gmDecisionQueue?.[0];
+  return {
+    shouldPause: true,
+    primary: { id: "gm-decision", label: decision?.prompt || "A General Manager decision requires attention" },
+    reasons: []
+  };
+}
+
+function ingestFastSimNews(dashboard) {
+  ingestNewsIntoInbox(dashboard?.newsLog || dashboard?.news || []);
+  renderInboxBadge();
+}
+
+export async function advanceWeeksSequential(totalWeeks, { digest: initialDigest = [], resolveDecision = null } = {}) {
   const safeWeeks = Math.max(1, Number(totalWeeks) || 1);
   setSimControl({ active: true, pauseRequested: false, mode: "weeks" });
   let completed = 0;
+  let digest = initialDigest;
+  let checkpointed = false;
   try {
     while (completed < safeWeeks) {
       if (state.simControl.pauseRequested) break;
       setStatus(`Simulating week ${completed + 1}/${safeWeeks}...`);
-      const response = await api("/api/advance-week", { method: "POST", body: { count: 1 } });
+      const body = await fastSimRequestBody(resolveDecision);
+      if (!body) {
+        renderSimulationCheckpoint(decisionCheckpointFromState(), digest, {
+          mode: "weeks", remaining: safeWeeks - completed, digest
+        });
+        checkpointed = true;
+        break;
+      }
+      const previous = state.dashboard;
+      const response = await api("/api/advance-week", { method: "POST", body });
       applyDashboard(response.state);
+      ingestFastSimNews(response.state);
       completed += 1;
+      const checkpoint = classifySimulationCheckpoint({ previous, next: response.state });
+      digest = appendSimulationDigest(digest, { previous, next: response.state, checkpoint });
+      if (checkpoint.shouldPause) {
+        const remaining = safeWeeks - completed;
+        renderSimulationCheckpoint(checkpoint, digest, remaining > 0 ? { mode: "weeks", remaining, digest } : null);
+        checkpointed = true;
+        break;
+      }
     }
     await refreshPostSimulation();
-    showToast(state.simControl.pauseRequested ? `Paused after ${completed} week(s)` : "Done");
+    showToast(checkpointed ? `Checkpoint reached after ${completed} week(s)` : state.simControl.pauseRequested ? `Paused after ${completed} week(s)` : "Done");
   } finally {
     setSimControl({ active: false, pauseRequested: false, mode: null });
     setStatus("Ready");
   }
 }
 
-export async function advanceSeasonSequential() {
-  const startYear = state.dashboard?.currentYear || new Date().getFullYear();
+export async function advanceSeasonSequential({ startYear: requestedStartYear = null, steps: initialSteps = 0, digest: initialDigest = [], resolveDecision = null } = {}) {
+  const startYear = requestedStartYear || state.dashboard?.currentYear || new Date().getFullYear();
   setSimControl({ active: true, pauseRequested: false, mode: "season" });
-  let steps = 0;
+  let steps = initialSteps;
+  let digest = initialDigest;
+  let checkpointed = false;
   try {
     while (steps < 64) {
       if (state.simControl.pauseRequested) break;
@@ -751,12 +842,35 @@ export async function advanceSeasonSequential() {
         state.dashboard.currentWeek === 1;
       if (done) break;
       setStatus(`Advancing season step ${steps + 1}...`);
-      const response = await api("/api/advance-week", { method: "POST", body: { count: 1 } });
+      const body = await fastSimRequestBody(resolveDecision);
+      if (!body) {
+        renderSimulationCheckpoint(decisionCheckpointFromState(), digest, {
+          mode: "season", startYear, steps, digest
+        });
+        checkpointed = true;
+        break;
+      }
+      const previous = state.dashboard;
+      const response = await api("/api/advance-week", { method: "POST", body });
       applyDashboard(response.state);
+      ingestFastSimNews(response.state);
       steps += 1;
+      const checkpoint = classifySimulationCheckpoint({ previous, next: response.state });
+      digest = appendSimulationDigest(digest, { previous, next: response.state, checkpoint });
+      const completedSeason =
+        response.state.currentYear > startYear &&
+        response.state.phase === "regular-season" &&
+        response.state.currentWeek === 1;
+      if (checkpoint.shouldPause) {
+        renderSimulationCheckpoint(checkpoint, digest, completedSeason ? null : {
+          mode: "season", startYear, steps, digest
+        });
+        checkpointed = true;
+        break;
+      }
     }
     await refreshPostSimulation();
-    showToast(state.simControl.pauseRequested ? `Season sim paused after ${steps} step(s)` : "Done");
+    showToast(checkpointed ? `Season checkpoint reached after ${steps} step(s)` : state.simControl.pauseRequested ? `Season sim paused after ${steps} step(s)` : "Done");
   } finally {
     setSimControl({ active: false, pauseRequested: false, mode: null });
     setStatus("Ready");
@@ -850,10 +964,19 @@ export function showHalftimeAdjustModal(onChoice) {
     onChoice(choice);
   };
   // reset
+  const brief = buildTacticalMatchupBrief(state.dashboard || {});
+  const briefEl = document.getElementById("tacticalMatchupBrief");
+  if (briefEl) {
+    briefEl.innerHTML = `<strong>${escapeHtml(brief.headline)}</strong><span>${escapeHtml(brief.read)}</span>`;
+  }
+  const optionById = new Map(brief.options.map((option) => [option.id, option]));
   modal.querySelectorAll(".tactic-option").forEach((btn) => btn.classList.remove("selected"));
   const confirmBtn = modal.querySelector(".tactic-confirm-btn");
   let choice = null;
   modal.querySelectorAll(".tactic-option").forEach((btn) => {
+    const option = optionById.get(btn.dataset.tactic);
+    const desc = btn.querySelector(".to-desc");
+    if (desc && option) desc.textContent = `${option.matchup} Tradeoff: ${option.tradeoff}`;
     btn.onclick = () => {
       modal.querySelectorAll(".tactic-option").forEach((b) => b.classList.remove("selected"));
       btn.classList.add("selected");
