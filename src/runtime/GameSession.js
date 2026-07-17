@@ -71,12 +71,18 @@ import { RNGStreams } from "../utils/rngStreams.js";
 import { createSessionModules } from "./modules/sessionModules.js";
 import { createServices } from "./services/index.js";
 import { LATEST_SNAPSHOT_SCHEMA_VERSION } from "./snapshotMigration.js";
-import { advanceInjuryRecovery, rollGameInjuries } from "../engine/injurySystem.js";
+import {
+  advanceInjuryRecovery,
+  getInjuryReport,
+  rollGameInjuries,
+  setPlayerRehabPlan
+} from "../engine/injurySystem.js";
 import {
   reportWeeklyResults,
   reportPlayerMilestones,
   reportStreaks,
-  reportSignificantInjury
+  reportSignificantInjury,
+  reportRehabClearance
 } from "../engine/beatReporter.js";
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
@@ -2416,6 +2422,15 @@ export class GameSession {
   }
 
   runAiTeamMaintenance() {
+    // Draft selections are added after the prior lookup snapshot. Refresh once
+    // before the batch so newly drafted players can be mutated by ID.
+    this.rebuildLookupIndexes();
+    const warnings = [];
+    const recordStall = (teamId, stage, playerId, result) => {
+      const warning = { teamId, stage, playerId, error: result?.error || "Roster mutation made no progress." };
+      warnings.push(warning);
+      this.appendEvent("roster-maintenance-stalled", warning);
+    };
     const freeAgentPool = () =>
       this.league.players.filter((player) => player.status === "active" && player.teamId === "FA");
 
@@ -2455,7 +2470,11 @@ export class GameSession {
 
         const cutCandidate = findWorstActivePlayer(team.id);
         if (!cutCandidate) break;
-        this.releasePlayer({ teamId: team.id, playerId: cutCandidate.id, toWaivers: false });
+        const released = this.releasePlayer({ teamId: team.id, playerId: cutCandidate.id, toWaivers: false, deferReindex: true });
+        if (!released.ok) {
+          recordStall(team.id, "active-cuts", cutCandidate.id, released);
+          break;
+        }
       }
 
       const needs = this.getRosterNeedSummary(team.id)
@@ -2482,9 +2501,9 @@ export class GameSession {
             team
           )[0];
           if (!candidate) continue;
-          const sign = this.signFreeAgent({ teamId: team.id, playerId: candidate.id });
+          const sign = this.signFreeAgent({ teamId: team.id, playerId: candidate.id, deferReindex: true });
           if (!sign.ok) continue;
-          this.releasePlayer({ teamId: team.id, playerId: current.id, toWaivers: false });
+          this.releasePlayer({ teamId: team.id, playerId: current.id, toWaivers: false, deferReindex: true });
         }
       }
 
@@ -2508,7 +2527,7 @@ export class GameSession {
                 ? candidates[0]
                 : candidates.find((player) => player.contract?.capHit <= 8_000_000) || candidates[0];
           if (!best) break;
-          const signed = this.signFreeAgent({ teamId: team.id, playerId: best.id });
+          const signed = this.signFreeAgent({ teamId: team.id, playerId: best.id, deferReindex: true });
           if (!signed.ok) break;
         }
       }
@@ -2521,7 +2540,7 @@ export class GameSession {
         }
         const bestOverallFa = sortPlayersForDepth(freeAgentPool(), team)[0];
         if (!bestOverallFa) break;
-        const signed = this.signFreeAgent({ teamId: team.id, playerId: bestOverallFa.id });
+        const signed = this.signFreeAgent({ teamId: team.id, playerId: bestOverallFa.id, deferReindex: true });
         if (!signed.ok) break;
       }
 
@@ -2530,7 +2549,11 @@ export class GameSession {
           .slice()
           .sort((a, b) => a.overall - b.overall || b.age - a.age)[0];
         if (!practiceCut) break;
-        this.releasePlayer({ teamId: team.id, playerId: practiceCut.id, toWaivers: false });
+        const released = this.releasePlayer({ teamId: team.id, playerId: practiceCut.id, toWaivers: false, deferReindex: true });
+        if (!released.ok) {
+          recordStall(team.id, "practice-cuts", practiceCut.id, released);
+          break;
+        }
       }
 
       this.refreshTeamDepthChart(team.id);
@@ -2538,6 +2561,10 @@ export class GameSession {
 
     recalculateAllTeamRatings(this.league);
     this.statBook.reindexPlayers();
+    this.rebuildLookupIndexes();
+    const receipt = { year: this.currentYear, week: this.currentWeek, ok: warnings.length === 0, warnings };
+    this.league.lastRosterMaintenance = receipt;
+    return receipt;
   }
 
   ensureScoutingTeamState(teamId) {
@@ -2935,7 +2962,7 @@ export class GameSession {
     };
   }
 
-  signFreeAgent({ teamId, playerId }) {
+  signFreeAgent({ teamId, playerId, deferReindex = false }) {
     if (!this.getTeamById(teamId)) return { ok: false, error: "Invalid team." };
     const restrictions = this.getChallengeRestrictions(teamId);
     if (!restrictions.allowUserFreeAgency) {
@@ -2958,9 +2985,11 @@ export class GameSession {
     player.contract = contract;
     player.rosterSlot = "active";
     this.league.waiverWire = this.league.waiverWire.filter((entry) => entry.playerId !== playerId);
-    recalculateAllTeamRatings(this.league);
-    this.statBook.reindexPlayers();
-    this.rebuildLookupIndexes();
+    if (!deferReindex) {
+      recalculateAllTeamRatings(this.league);
+      this.statBook.reindexPlayers();
+      this.rebuildLookupIndexes();
+    }
     this.logTransaction({
       type: "signing",
       teamId,
@@ -2981,7 +3010,7 @@ export class GameSession {
     return { ok: true, teamId, playerId };
   }
 
-  releasePlayer({ teamId, playerId, june1 = false, toWaivers = this.phase === "regular-season" }) {
+  releasePlayer({ teamId, playerId, june1 = false, toWaivers = this.phase === "regular-season", deferReindex = false }) {
     const player = this.getPlayerById(playerId);
     if (player && (player.teamId !== teamId || player.status !== "active")) {
       return { ok: false, error: "Player not found on team." };
@@ -3022,9 +3051,11 @@ export class GameSession {
     }
     player.rosterSlot = "active";
 
-    recalculateAllTeamRatings(this.league);
-    this.statBook.reindexPlayers();
-    this.rebuildLookupIndexes();
+    if (!deferReindex) {
+      recalculateAllTeamRatings(this.league);
+      this.statBook.reindexPlayers();
+      this.rebuildLookupIndexes();
+    }
     this.logTransaction({
       type: "release",
       teamId,
@@ -3655,19 +3686,55 @@ export class GameSession {
     return { ok: true, teamId, playerId, contract: updated };
   }
   decrementAvailability() {
+    const modifierCache = new Map();
+    const recoveryModifiers = (teamId) => {
+      if (modifierCache.has(teamId)) return modifierCache.get(teamId);
+      const team = teamById(this.league, teamId);
+      const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, teamId) : []);
+      modifierCache.set(teamId, modifiers);
+      return modifiers;
+    };
+    const recovery = advanceInjuryRecovery(this.league, {
+      getTeamModifiers: recoveryModifiers,
+      onRecovered: (receipt) => {
+        if (!Array.isArray(this.league.rehabReceipts)) this.league.rehabReceipts = [];
+        const stamped = { ...receipt, year: this.currentYear, week: this.currentWeek };
+        this.league.rehabReceipts.unshift(stamped);
+        this.league.rehabReceipts = this.league.rehabReceipts.slice(0, 80);
+        this.appendEvent("rehab-complete", stamped);
+        reportRehabClearance(this.league, stamped, this.currentYear, this.currentWeek);
+      }
+    });
+    const recoveredPlayerIds = new Set(recovery.receipts.map((entry) => entry.playerId));
     for (const player of this.league.players) {
-      if (player.injury && player.injury.weeksRemaining > 0) {
-        const team = teamById(this.league, player.teamId);
-        const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, player.teamId) : []);
-        player.injury.weeksRemaining -= 1 + modifiers.extraRecoveryWeeks;
-        if (player.injury.weeksRemaining <= 0) player.injury = null;
-      } else if (!player.injury && Number(player.reinjuryRisk || 0) > 0) {
-        const team = teamById(this.league, player.teamId);
-        const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, player.teamId) : []);
+      if (!player.injury && Number(player.reinjuryRisk || 0) > 0 && !recoveredPlayerIds.has(player.id)) {
+        const modifiers = recoveryModifiers(player.teamId);
         player.reinjuryRisk = clamp(player.reinjuryRisk - (0.02 + modifiers.extraRecoveryWeeks * 0.01), 0, 0.55);
       }
       if ((player.suspensionWeeks || 0) > 0) player.suspensionWeeks -= 1;
     }
+    return recovery;
+  }
+
+  setRehabPlan({ teamId = this.controlledTeamId, playerId, plan }) {
+    const player = this.getPlayerById(playerId);
+    if (!player || player.teamId !== teamId) return { ok: false, error: "Injured player not found on that team." };
+    const result = setPlayerRehabPlan(player, plan);
+    if (!result.ok) return result;
+    const receipt = {
+      type: "rehab-plan",
+      teamId,
+      playerId,
+      playerName: player.name,
+      plan: result.plan,
+      label: result.policy.label,
+      summary: result.policy.summary,
+      year: this.currentYear,
+      week: this.currentWeek
+    };
+    this.logTransaction({ type: "rehab-plan", teamId, playerId, playerName: player.name, details: receipt });
+    this.appendEvent("rehab-plan", receipt);
+    return { ...result, receipt };
   }
 
   resetGameDayInactives() {
@@ -3832,7 +3899,6 @@ export class GameSession {
       this.runStaffAndStrategyRefresh();
       this.grantWeeklyScoutingPoints();
       this.decrementAvailability();
-      advanceInjuryRecovery(this.league);
       this.processWaivers();
       this.runAiTeamMaintenance();
       const weekBlock = this.seasonSchedule[this.currentWeek - 1];
@@ -3862,6 +3928,14 @@ export class GameSession {
       // ── Engine hooks ──────────────────────────────────────────────────────
       // Injury rolls for every game this week
       const injuryMultiplier = this.league.settings?.injuryRateMultiplier ?? 1.0;
+      const injuryModifierCache = new Map();
+      const injuryModifiers = (teamId) => {
+        if (injuryModifierCache.has(teamId)) return injuryModifierCache.get(teamId);
+        const team = teamById(this.league, teamId);
+        const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, teamId) : []);
+        injuryModifierCache.set(teamId, modifiers);
+        return modifiers;
+      };
       for (const game of weekResult.games) {
         const homePlayers = this.league.players.filter(
           (p) => p.teamId === game.homeTeamId && p.status === "active"
@@ -3869,7 +3943,9 @@ export class GameSession {
         const awayPlayers = this.league.players.filter(
           (p) => p.teamId === game.awayTeamId && p.status === "active"
         );
-        const injured = rollGameInjuries(homePlayers, awayPlayers, this.rng, injuryMultiplier);
+        const injured = rollGameInjuries(homePlayers, awayPlayers, this.rng, injuryMultiplier, {
+          getTeamModifiers: injuryModifiers
+        });
         for (const { player } of injured) {
           reportSignificantInjury(this.league, player, this.currentYear, weekResult.week);
         }
@@ -4496,6 +4572,14 @@ export class GameSession {
   }
   getDashboardState() {
     const controlledTeam = this.getControlledTeam();
+    const injuryModifierCache = new Map();
+    const dashboardInjuryModifiers = (teamId) => {
+      if (injuryModifierCache.has(teamId)) return injuryModifierCache.get(teamId);
+      const team = teamById(this.league, teamId);
+      const modifiers = teamWorldStateModifiers(team, team ? teamPlayersAll(this.league, teamId) : []);
+      injuryModifierCache.set(teamId, modifiers);
+      return modifiers;
+    };
     const currentRows = this.statBook.getTeamSeasonTable({ year: this.currentYear });
     const fallbackRows = this.statBook.getTeamSeasonTable({ year: this.currentYear - 1 });
     const standingsRows = (currentRows.length ? currentRows : fallbackRows)
@@ -4566,16 +4650,10 @@ export class GameSession {
       latestWeekResults: this.weekResultsCurrentSeason.slice(-1)[0] || null,
       latestTacticalFilm: (this.league.tacticalFilmLog || []).find((entry) => entry.teamId === this.controlledTeamId) || null,
       recentBoxScores: this.getRecentBoxScores(this.controlledTeamId, 8),
-      injuryReport: this.league.players
-        .filter((player) => player.status === "active" && player.injury && player.injury.weeksRemaining > 0)
-        .slice(0, 80)
-        .map((player) => ({
-          playerId: player.id,
-          player: player.name,
-          teamId: player.teamId,
-          pos: player.position,
-          injury: player.injury
-        })),
+      injuryReport: getInjuryReport(this.league, null, {
+        getTeamModifiers: dashboardInjuryModifiers
+      }).slice(0, 80),
+      latestRehabReceipt: (this.league.rehabReceipts || [])[0] || null,
       suspensionReport: this.league.players
         .filter((player) => player.status === "active" && (player.suspensionWeeks || 0) > 0)
         .slice(0, 50)

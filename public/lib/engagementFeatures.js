@@ -93,6 +93,7 @@ export function classifyNewsItem(item) {
   if (type === "cap-alert" || type === "cap_alert") return "CRITICAL";
   if (type === "trade" || type === "signing" || type === "milestone") return "IMPORTANT";
   if (type === "injury") return "IMPORTANT";
+  if (type === "rehab-clearance") return "IMPORTANT";
   if (type === "standings" || type === "streak" || type === "upset" || type === "blowout") return "IMPORTANT";
   return "FLAVOR";
 }
@@ -191,6 +192,7 @@ function renderInboxContent() {
     injury: "🚑", trade: "🔄", blowout: "💥", upset: "⚡", milestone: "🌟",
     streak: "🔥", standings: "📊", retirement: "👋", signing: "✍️",
     "press-conference": "🎤", championship: "🏆", "cap-alert": "💰", "cap_alert": "💰",
+    "rehab-clearance": "✅",
   };
   list.innerHTML = _inbox.items.slice(0, 30).map((item) => {
     const typeIcon = typeIcons[item.type?.toLowerCase()] || "📰";

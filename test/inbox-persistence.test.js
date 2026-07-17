@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  classifyNewsItem,
   getInboxSnapshot,
   getUnreadCount,
   inboxItemKey,
@@ -20,6 +21,10 @@ class MemoryStorage {
 const franchiseA = { franchiseId: "fa-2026-BUF", controlledTeamId: "BUF" };
 const franchiseB = { franchiseId: "fa-2027-MIA", controlledTeamId: "MIA" };
 const severeInjury = { id: "evt-1", type: "injury", headline: "QB out for season", week: 4, year: 2026 };
+
+test("source-derived rehab clearance is an important inbox event", () => {
+  assert.equal(classifyNewsItem({ type: "rehab-clearance", headline: "Player cleared rehab" }), "IMPORTANT");
+});
 
 test("inbox scope is stable per franchise and team", () => {
   assert.equal(inboxScopeFromDashboard(franchiseA), "fa-2026-buf");

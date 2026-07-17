@@ -343,3 +343,33 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** The box score benefits from editorial hierarchy, but CANON-031 forbids invented data. A transparent cross-phase index can identify decisive performances without fabricating tackles, conversions, or advanced tracking observations the simulator did not record.
 
 **Pattern established:** Add interpretation above source data, never counterfeit source data to create the interpretation.
+
+---
+
+## 2026-07-16 — Injury recovery has one authority and explicit General Manager risk
+
+**Decision:** Injury weeks decrement once per league week through the injury system. Rehab facilities, age, reinjury history, and a persisted Protect/Standard/Accelerate plan may affect modeled pace and risk, but no second availability path may mutate the same clock.
+
+**Rationale:** Two independent decrement paths made displayed durations false. A single authority preserves simulation truth, while explicit plans turn recovery into a consequential football decision without presenting modeled risk as clinical advice.
+
+**Pattern established:** When multiple systems observe the same countdown, exactly one mutates it; all others derive projections and publish receipts.
+
+---
+
+## 2026-07-16 — Runtime fallback is bootstrap-only after authority is established
+
+**Decision:** Automatic server-to-client fallback is allowed only before the server has answered successfully. After authority is established, timeouts and connection failures remain visible server errors and cannot switch the active league to browser-local state.
+
+**Rationale:** A background poll timed out while a valid multi-season server simulation occupied the event loop, silently forking subsequent settings work into unrelated local state. Availability convenience cannot outrank save authority.
+
+**Pattern established:** Failover that changes the state authority must be explicit once a stateful session exists; transient read failures never authorize an implicit data-plane switch.
+
+---
+
+## 2026-07-16 — Roster-maintenance loops must prove progress
+
+**Decision:** Batched offseason roster mutations refresh lookup authority before work, defer repeated reindexing, validate every release result, and stop with a source-derived stall receipt when the roster cannot shrink.
+
+**Rationale:** Newly drafted practice players could be absent from a stale index, making release fail while an unguarded `while` loop continued forever. Progress is now a checked invariant, not an assumption.
+
+**Pattern established:** Every state-reduction loop must either demonstrate a smaller measure on each iteration or emit an explicit bounded failure receipt.

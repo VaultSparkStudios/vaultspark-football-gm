@@ -146,6 +146,7 @@
               <div class="table-wrap"><table id="weekTable" data-testid="week-table"></table></div>
               <h3>Injuries / Suspensions</h3>
               <div class="table-wrap"><table id="injuryTable" data-testid="injury-table"></table></div>
+              <section id="rehabCommandCenter" class="rehab-command-center" aria-live="polite" hidden></section>
             </div>
           </div>
 
@@ -1057,14 +1058,14 @@
               <p class="small muted" style="margin:6px 0 12px;">
                 Sync saves to a private GitHub Gist — play from any device.
                 Requires a GitHub Personal Access Token with <code>gist</code> scope.
-                Your token is stored only in this browser.
+                Your token is kept only for this tab session and is removed from persistent browser storage.
               </p>
               <div class="row compact">
                 <label style="flex:1">
                   GitHub Token
-                  <input id="gistTokenInput" type="password" placeholder="ghp_…" style="width:100%" />
+                  <input id="gistTokenInput" type="password" placeholder="Paste token for this tab" autocomplete="off" style="width:100%" />
                 </label>
-                <button id="gistSyncSaveTokenBtn">Save Token</button>
+                <button id="gistSyncSaveTokenBtn">Use Token This Tab</button>
               </div>
               <div class="row compact" style="margin-top:8px;">
                 <button id="gistExportBtn">⬆ Export to Gist</button>
@@ -1582,4 +1583,3 @@
     <script type="module" src="./app.js"></script>
   </body>
 </html>
-

@@ -33,10 +33,63 @@ export function renderOverview() {
     box.textContent = lines.join(" ") || "Weekly plan, locker-room pressure, and owner mandate updates will appear here.";
   }
   renderOverviewSpotlight();
+  renderRehabCommandCenter();
   renderGmCommitmentBoard();
   renderTacticalFilmRoom();
   renderNarrativePanel();
   renderTradeDeadlineAlert();
+}
+
+export function renderRehabCommandCenter() {
+  const panel = document.getElementById("rehabCommandCenter");
+  if (!panel) return;
+  const dashboard = state.dashboard || {};
+  const teamId = dashboard.controlledTeamId;
+  const injuries = (dashboard.injuryReport || []).filter((entry) => entry.teamId === teamId);
+  const receipt = dashboard.latestRehabReceipt?.teamId === teamId ? dashboard.latestRehabReceipt : null;
+  if (!injuries.length && !receipt) {
+    panel.hidden = true;
+    panel.innerHTML = "";
+    return;
+  }
+  const plans = [
+    ["protect", "Protect", "Lower risk"],
+    ["standard", "Standard", "Staff pace"],
+    ["accelerate", "Accelerate", "Faster · riskier"]
+  ];
+  const cards = injuries.map((entry) => {
+    const risk = Math.round(Number(entry.reinjuryRisk || 0) * 100);
+    const actions = plans.map(([id, label, detail]) => `
+      <button class="rehab-plan-btn ${entry.rehabPlan === id ? "active" : ""}"
+        data-player-id="${escapeHtml(entry.playerId)}"
+        data-plan="${id}"
+        aria-pressed="${entry.rehabPlan === id}">
+        <strong>${label}</strong><span>${detail}</span>
+      </button>`).join("");
+    return `
+      <article class="rehab-player-card">
+        <div class="rehab-player-head">
+          <div><strong>${escapeHtml(entry.player)}</strong><span>${escapeHtml(entry.pos)} · ${escapeHtml(entry.injuryType)}</span></div>
+          <div class="rehab-eta">${escapeHtml(String(entry.estimatedAdvances))} advance${entry.estimatedAdvances === 1 ? "" : "s"}</div>
+        </div>
+        <div class="rehab-truth-row">
+          <span>${escapeHtml(String(entry.weeksRemaining))} modeled week${entry.weeksRemaining === 1 ? "" : "s"} remaining</span>
+          <span>${escapeHtml(String(entry.weeklyRecovery))} week${entry.weeklyRecovery === 1 ? "" : "s"} recovered per advance</span>
+          <span>${risk}% re-injury risk</span>
+        </div>
+        <div class="rehab-plan-grid" role="group" aria-label="Rehab plan for ${escapeHtml(entry.player)}">${actions}</div>
+        <p class="rehab-plan-summary">${escapeHtml(entry.rehabSummary)}</p>
+      </article>`;
+  }).join("");
+  panel.hidden = false;
+  panel.innerHTML = `
+    <div class="rehab-command-head">
+      <div><span class="brand-kicker">Medical Strategy · Modeled, not clinical</span><h3>Rehab Command Center</h3></div>
+      <span class="rehab-count">${injuries.length} active</span>
+    </div>
+    ${receipt ? `<div class="rehab-receipt"><strong>${escapeHtml(receipt.player)} cleared</strong><span>${escapeHtml(receipt.planLabel)} · risk now ${Math.round(Number(receipt.reinjuryRisk || 0) * 100)}%</span></div>` : ""}
+    <div class="rehab-player-list">${cards || '<p class="small muted">No active injuries. The latest clearance receipt remains above.</p>'}</div>
+  `;
 }
 
 export function renderGmCommitmentBoard() {

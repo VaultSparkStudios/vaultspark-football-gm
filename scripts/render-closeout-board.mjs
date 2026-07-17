@@ -235,17 +235,18 @@ function agentMemoryRecentlyTouched() {
   // Best-effort: absence is reported as "·" rather than failing.
   const home = os?.homedir?.() || process.env.HOME || process.env.USERPROFILE;
   if (!home) return false;
-  const slug = path.basename(ROOT);
-  const normalizedSlug = slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-  const candidateDirs = [
-    path.join(home, '.codex', 'memories', normalizedSlug),
-  ];
+  const statusSlug = readJson(STATUS_PATH)?.slug;
+  const slugCandidates = [...new Set([path.basename(ROOT), statusSlug].filter(Boolean))];
+  const normalizedSlugs = slugCandidates.map((slug) =>
+    slug.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  );
+  const candidateDirs = normalizedSlugs.map((slug) => path.join(home, '.codex', 'memories', slug));
   const projectsDir = path.join(home, '.claude', 'projects');
   try {
     const cutoff = Date.now() - 24 * 3600_000;
     if (fs.existsSync(projectsDir)) {
       for (const entry of fs.readdirSync(projectsDir)) {
-        if (!entry.includes(slug)) continue;
+        if (!slugCandidates.some((slug) => entry.toLowerCase().includes(slug.toLowerCase()))) continue;
         candidateDirs.push(path.join(projectsDir, entry, 'memory'));
       }
     }

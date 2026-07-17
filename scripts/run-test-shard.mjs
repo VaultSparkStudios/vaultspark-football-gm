@@ -32,7 +32,9 @@ export const SHARDS = {
     "test/file-save-store.test.js",
     "test/fast-sim-checkpoints.test.js",
     "test/gm-decision-commitments.test.js",
+    "test/gist-sync-security.test.js",
     "test/inbox-persistence.test.js",
+    "test/injury-rehab-command.test.js",
     "test/launch-readiness.test.js",
     "test/local-api-runtime.test.js",
     "test/mobile-loop.test.js",
@@ -72,6 +74,7 @@ export const SHARDS = {
   studio: [
     "test/audit-renderer.test.js",
     "test/launch-evidence-report.test.js",
+    "test/lifecycle-coherence.test.js",
     "test/public-compliance.test.js",
     "test/shard-coverage.test.js",
     "test/studio-protocol-smoke.test.js"

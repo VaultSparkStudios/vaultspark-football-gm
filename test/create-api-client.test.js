@@ -77,3 +77,55 @@ test("api client falls back to client runtime when server connection fails", asy
   delete globalThis.window;
   delete globalThis.CustomEvent;
 });
+
+test("api client preserves an established server authority after a transient connection failure", async () => {
+  const storage = createMemoryStorage();
+  const dispatched = [];
+  let requestCount = 0;
+
+  globalThis.CustomEvent = class CustomEvent {
+    constructor(type, init = {}) {
+      this.type = type;
+      this.detail = init.detail;
+    }
+  };
+  globalThis.window = {
+    localStorage: storage,
+    location: { protocol: "http:" },
+    dispatchEvent(event) {
+      dispatched.push(event);
+      return true;
+    }
+  };
+  globalThis.document = createMetaDocument({
+    "vsfgm-runtime-default": "server",
+    "vsfgm-server-available": "true",
+    "vsfgm-server-base-url": ""
+  });
+  globalThis.fetch = async () => {
+    requestCount += 1;
+    if (requestCount === 1) {
+      return {
+        ok: true,
+        status: 200,
+        async text() {
+          return JSON.stringify({ ok: true, authority: "server" });
+        }
+      };
+    }
+    throw new Error("ECONNRESET");
+  };
+
+  const { createApiClient, getRuntimeMode } = await importClientModule();
+  const api = createApiClient();
+  assert.equal((await api("/api/state")).authority, "server");
+  await assert.rejects(() => api("/api/jobs/simulate"), /cannot reach the server/i);
+  assert.equal(getRuntimeMode(), "server");
+  assert.equal(storage.getItem("vsfgm:runtime-mode"), null);
+  assert.equal(dispatched.length, 0);
+
+  delete globalThis.fetch;
+  delete globalThis.document;
+  delete globalThis.window;
+  delete globalThis.CustomEvent;
+});

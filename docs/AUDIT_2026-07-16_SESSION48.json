@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-16",
+  "session": 48,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "shipped",
+  "profile": {
+    "type": "game",
+    "audience": "public-unlaunched",
+    "rubric": "infrastructure-weighted product rubric",
+    "staging": "github-pages",
+    "source": "live code, context/PROJECT_STATUS.json, context/STUDIO_MANIFEST.json, startup brief, game skill profile, and authoritative arc-profile output"
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.6,
+    "progression": 8.8,
+    "sessionEngagement": 8.4,
+    "retention": 8.2,
+    "soulFidelity": 9.0,
+    "overall": 8.6,
+    "evidence": "No context/GAME_LOOP.md or recent docs/PLAYTESTS files exist and context/SOUL.md is intentionally public-safe only. Scores are therefore provisional and derive from executable simulation, browser, persistence, and test contracts rather than invented playtest observations."
+  },
+  "summary": {
+    "rankedItems": 3,
+    "combinedPriority": 96.5,
+    "topItem": "injury-authority-rehab-command",
+    "source": "live-code-audit"
+  },
+  "recommendedMoves": [
+    "Replace the double injury clock with one facilities-aware authority and make recovery strategy a visible General Manager decision with source-derived receipts.",
+    "Make FORGE/SPARKED posture self-validating across local truth surfaces and send the authoritative registry mismatch through Ark instead of silently normalizing it.",
+    "Keep user-supplied GitHub credentials memory/session-bound by default, eliminate masked-token corruption, and verify both inline and remote Gist payloads before import."
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Simulation truth / architecture / engagement",
+      "effortHours": 6.0,
+      "impact": 10,
+      "innovation": 10,
+      "priority": 40.0,
+      "slug": "injury-authority-rehab-command",
+      "title": "Create one truthful injury clock and turn recovery into a consequential Rehab Command Center",
+      "status": "shipped",
+      "premise": "Regular-season advance calls GameSession.decrementAvailability() and then advanceInjuryRecovery(), and both decrement injury.weeksRemaining. The live batch injury roller also reimplements the contact roll without the existing age and reinjury modifiers. Injuries therefore recover faster than their displayed duration, while the browser only reports passive weeks remaining despite existing rehab facilities and reinjury state.",
+      "evidence": [
+        "src/runtime/GameSession.js:3657",
+        "src/runtime/GameSession.js:3834",
+        "src/runtime/GameSession.js:3835",
+        "src/engine/injurySystem.js:42",
+        "src/engine/injurySystem.js:71",
+        "src/engine/injurySystem.js:89",
+        "public/lib/tabOverview.js:749"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Remove the duplicate decrement, route game rolls through the canonical probability function, and add regression tests proving exact week counts."
+        },
+        "L2": {
+          "effortHours": 6.0,
+          "recipe": "Move recovery into one facilities-aware injury authority; persist conservative, standard, and accelerated rehab plans; expose them through both runtimes; render a responsive Rehab Command Center with honest return/risk projections; and record source-derived recovery receipts."
+        },
+        "L3": {
+          "effortHours": 9.0,
+          "recipe": "Add position-specific return-to-play gates, practice participation phases, and multi-season medical history that alters future risk without claiming clinical accuracy."
+        }
+      },
+      "verification": [
+        "focused injury authority and exact-duration tests",
+        "local/server API parity tests",
+        "save/snapshot round-trip",
+        "browser wiring and responsive UI proof",
+        "simulation realism regression"
+      ],
+      "executionEvidence": "Replaced the double decrement with one facilities-aware recovery authority; canonical injury probability now includes age, reinjury, multiplier, and team modifiers; Protect/Standard/Accelerate plans persist across snapshots; both runtimes expose the action; the responsive browser panel shows modeled pace/risk and clearance receipts. Focused injury/system/API/browser contracts pass 61/61; saturation also root-fixed stale-index camp-cut progress and cached source-identical team modifiers."
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Observability / release truth / organization",
+      "effortHours": 2.5,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 33.0,
+      "slug": "lifecycle-source-coherence-guard",
+      "title": "Make FORGE/SPARKED posture self-validating and impossible to silently misprofile",
+      "status": "shipped",
+      "premise": "Local source-of-truth files and public status correctly say FORGE/public-unlaunched with an email-receipt gate, while the authoritative arc profile resolves the portfolio registry entry as SPARKED. Startup can therefore display FORGE while arc/release tooling profiles the same project as SPARKED, violating observability honesty.",
+      "evidence": [
+        "context/STUDIO_MANIFEST.json:10",
+        "context/PROJECT_STATUS.json:4",
+        "context/PROJECT_STATUS.json:8",
+        "public/status.html:18",
+        "authoritative arc-profile output: vaultStatus=SPARKED, registryMatched=true"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.8,
+          "recipe": "Add a focused local assertion that manifest, project status, public status, and launch evidence do not contradict one another."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Create a machine-readable lifecycle coherence contract, wire it into studio tests and doctor, surface explicit local-versus-authoritative drift evidence, and ship a signed Ark correction request to Studio Ops without touching the sibling tree."
+        },
+        "L3": {
+          "effortHours": 4.0,
+          "recipe": "Teach startup and release renderers to carry field-level lifecycle provenance and block any launch-state transition lacking matching evidence receipts."
+        }
+      },
+      "verification": [
+        "coherence checker direct exit code",
+        "studio shard regression",
+        "Ark cargo receipt",
+        "startup brief remains FORGE"
+      ],
+      "executionEvidence": "Added a machine-readable FORGE launch contract, direct checker, doctor aggregation, and studio-shard coverage. Local blockingFailing is 0; authoritative SPARKED drift remains an explicit warning and signed Ark repo-question 01JTMN2KPU7561F0E9B389360E was shipped to Studio Ops without a sibling-tree edit."
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Security / privacy / persistence",
+      "effortHours": 3.0,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 23.5,
+      "slug": "secure-gist-sync-custody",
+      "title": "Stop silently persisting GitHub credentials and harden cloud-save integrity",
+      "status": "shipped",
+      "premise": "Gist sync stores the user's GitHub Personal Access Token in localStorage even though the page has a large dynamic HTML surface. The UI preloads a masked bullet string into the token input, so pressing Save Token without replacing it corrupts the credential. Import also prefers a raw URL fetch even when inline content exists and only verifies an inline integrity sidecar.",
+      "evidence": [
+        "public/lib/gistSync.js:8",
+        "public/lib/gistSync.js:39",
+        "public/lib/gistSync.js:42",
+        "public/lib/gistSync.js:132",
+        "public/lib/tabSettings.js:810",
+        "public/app.js:1366",
+        "public/game.html:1060"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.8,
+          "recipe": "Migrate tokens from localStorage to sessionStorage and stop writing mask glyphs into the credential field."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Use memory/session-only credential custody with explicit clear state and migration cleanup; never serialize or echo the token; prefer inline Gist content with bounded remote fallback; fetch and verify remote integrity sidecars; and add focused security/integrity tests plus accurate privacy copy."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Replace Personal Access Token entry with a short-lived device authorization flow once a cost-neutral trusted broker exists."
+        }
+      },
+      "verification": [
+        "credential custody unit tests",
+        "masked-token regression",
+        "inline/raw Gist import tests",
+        "integrity failure test",
+        "public privacy/compliance smoke"
+      ],
+      "executionEvidence": "GitHub tokens now live only in memory/tab session storage; legacy persistent copies are migrated then deleted; masked glyphs are rejected; the UI never rehydrates the secret; inline and bounded remote Gist files use correct precedence; remote integrity sidecars are verified. Focused credential/integrity tests pass 4/4 and browser/public contracts pass."
+    }
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Add tactical choices or postgame film",
+      "reason": "Rejected as phantom work: opponent-aware tactical choices and source-derived Film Receipts shipped in Session 47."
+    },
+    {
+      "candidate": "Add player biographies, Potential, or milestone quests",
+      "reason": "Rejected as phantom work: living dossiers, Potential visibility, and position-aware milestone quests shipped in Session 46."
+    },
+    {
+      "candidate": "Add a theme system or mobile decision surface",
+      "reason": "Rejected as phantom work: dark/light/accent themes have direct browser contrast tests and the mobile General Manager decision deck is already wired."
+    },
+    {
+      "candidate": "Add generative AI commentary",
+      "reason": "Culled: deterministic source-derived narrative systems already fit the product and preserve the cost-neutral static-host contract; an external model would add cost, latency, and truth risk without a verified gameplay gap."
+    },
+    {
+      "candidate": "Add a feedback form backend",
+      "reason": "Culled: the zero-backend Commissioner feedback path already opens public-safe GitHub issue drafts; no evidence shows a backend would improve the loop enough to justify new data handling."
+    },
+    {
+      "candidate": "Flip launch/SPARKED state",
+      "reason": "Deferred honestly: a real received-message receipt for football@playfranchisearchitect.com and current live-origin proof remain required. The portfolio registry's existing SPARKED value is drift evidence, not permission to fabricate readiness."
+    },
+    {
+      "candidate": "Add weather and stadium systems",
+      "reason": "Culled below the current priority floor: they add flavor, but exact injury truth, lifecycle coherence, and credential safety compound across more of the current game and release surface."
+    },
+    {
+      "candidate": "Use paid observability or API products",
+      "reason": "Rejected by the internal-first and cost-neutral ladder: current source-derived local telemetry and GitHub Actions are sufficient for this session's verified gaps."
+    }
+  ]
+}

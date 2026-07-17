@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-06 (Session 45 closeout) -->
+<!-- generated-at: 2026-07-17 (Session 48 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S45 ══════╗
-║  Date: 2026-07-06  ·  SIL: 994/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S48 ══════╗
+║  Date: 2026-07-17  ·  SIL: 994/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Generated fresh audit artifacts: `docs/AUDIT_2026-07-06_SESS  ║
-║  ✓ Shipped `league-story-card-export`: the dormant `public/lib/  ║
-║  ✓ The League Story Card downloads a self-contained HTML card d  ║
-║  ✓ Shipped second-order innovation: `test/browser-wiring.test.j  ║
-║  ✓ `docs/INNOVATION_PACK.md` was refreshed from pending placeho  ║
+║  ✓ One truthful injury clock with facilities-, age-, and reinju  ║
+║  ✓ GitHub Gist sync now keeps credentials in memory/tab session  ║
+║  ✓ A machine-readable lifecycle coherence contract, direct chec  ║
+║  ✓ Saturation root fixes: stale lookup indexes can no longer tr  ║
+║  ✓ Established server authority can no longer silently fall bac  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 994/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -29,19 +29,19 @@
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
-║  · context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
-║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
-║  · context/PROJECT_STATUS.json                                   ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ docs/CREATIVE_DIRECTION_RECORD.md                             ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 49 files  ·  M:37 A:0 D:0 ?:12                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -50,12 +50,12 @@
 ║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
-║  Doctor:        1/1                                              ║
+║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         294/294                                          ║
-║  IGNIS:         18d ago                                          ║
+║  Tests:         358/358                                          ║
+║  IGNIS:         28d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  4d ago                                           ║
+║  Sanitization:  14d ago                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

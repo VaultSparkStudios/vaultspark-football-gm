@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0",
+  "slug": "franchise-architect-football",
+  "expectedVaultStatus": "FORGE",
+  "audience": "public-unlaunched",
+  "launchTransitionRequires": [
+    "A real received-message receipt proving football@playfranchisearchitect.com forwards or copies to Studio operations.",
+    "Current live-origin evidence proving playfranchisearchitect.com serves the pushed build.",
+    "A green release gate with no fabricated or fixture-only evidence."
+  ],
+  "localTruthSources": [
+    "context/STUDIO_MANIFEST.json",
+    "context/PROJECT_STATUS.json",
+    "public/status.html",
+    "audits/launch-evidence-*.json"
+  ],
+  "authoritativeRegistry": "../vaultspark-studio-ops/portfolio/PROJECT_REGISTRY.json",
+  "driftPolicy": "Local contradictions block. Authoritative registry drift warns locally and must be corrected through signed Studio Ark cargo; this repo never edits the sibling tree."
+}

@@ -4095,3 +4095,86 @@ html[data-theme="light"] .bg-layer {
   }
   .sim-checkpoint-actions button { flex: 1 1 10rem; }
 }
+
+.rehab-command-center {
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+  border-radius: 14px;
+  background: var(--card-grad);
+}
+
+.rehab-command-head,
+.rehab-player-head,
+.rehab-truth-row,
+.rehab-receipt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.rehab-command-head h3 { margin: 2px 0 0; }
+
+.rehab-count,
+.rehab-eta {
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 4px 9px;
+  background: var(--wash-gold);
+  color: var(--ink);
+  font-size: .76rem;
+  font-weight: 700;
+}
+
+.rehab-player-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.rehab-player-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 11px;
+  background: var(--inset);
+}
+
+.rehab-player-head > div:first-child { display: grid; gap: 2px; }
+.rehab-player-head span,
+.rehab-truth-row,
+.rehab-plan-summary,
+.rehab-receipt span { color: var(--muted); font-size: .76rem; }
+.rehab-truth-row { flex-wrap: wrap; justify-content: flex-start; margin: 8px 0; }
+
+.rehab-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.rehab-plan-btn {
+  min-height: 48px;
+  display: grid;
+  gap: 2px;
+  text-align: left;
+  border: 1px solid var(--border);
+  background: var(--raised);
+  color: var(--ink);
+}
+
+.rehab-plan-btn span { color: var(--muted); font-size: .7rem; }
+.rehab-plan-btn.active { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.rehab-plan-summary { margin: 8px 0 0; }
+
+.rehab-receipt {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-left: 3px solid var(--positive);
+  background: color-mix(in srgb, var(--positive) 10%, transparent);
+}
+
+@media (max-width: 700px) {
+  .rehab-plan-grid { grid-template-columns: 1fr; }
+  .rehab-plan-btn { min-height: 52px; }
+}

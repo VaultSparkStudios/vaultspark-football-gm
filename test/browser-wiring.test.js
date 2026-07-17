@@ -49,6 +49,21 @@ test("advance-week browser wiring sends selected GM decision choice", () => {
   assert.match(appSource, /body\.gmDecisionChoice = gmDecisionChoice/);
   assert.match(appSource, /response\.gmDecision\?\.applied/);
 });
+
+test("Rehab Command Center is visible, actionable, and routed through both runtimes", () => {
+  const appSource = read("../public/app.js");
+  const overviewSource = read("../public/lib/tabOverview.js");
+  const gameHtml = read("../public/game.html");
+  const localRuntime = read("../src/app/api/localApiRuntime.js");
+  const serverRuntime = read("../src/server.js");
+
+  assert.match(gameHtml, /id="rehabCommandCenter"/);
+  assert.match(overviewSource, /export function renderRehabCommandCenter/);
+  assert.match(overviewSource, /Medical Strategy · Modeled, not clinical/);
+  assert.match(appSource, /api\("\/api\/injuries\/rehab-plan"/);
+  assert.match(localRuntime, /pathname === "\/api\/injuries\/rehab-plan"/);
+  assert.match(serverRuntime, /url\.pathname === "\/api\/injuries\/rehab-plan"/);
+});
 test("first-run tutorial modal uses the shared focus trap", () => {
   const tutorialSource = read("../public/lib/tutorialCampaign.js");
 

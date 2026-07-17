@@ -13,7 +13,7 @@ const dispatch = {
   "genius-list": ["scripts/cache-genius-list.mjs", "--write"],
   "startup-brief": ["scripts/render-startup-brief.mjs"],
   "brief": ["scripts/render-startup-brief.mjs"],
-  "doctor": ["scripts/blocker-preflight.mjs", "--json"],
+  "doctor": ["scripts/doctor.mjs"],
   "innovation-pack": ["scripts/generate-innovation-pack.mjs"],
   "launch-evidence": ["scripts/launch-evidence-report.mjs"]
 };

@@ -6,7 +6,7 @@ import { renderAnalyticsChart } from "./tabStats.js";
 import { hallOfFamePolicyLine, retiredNumberPolicyLine } from "./tabHistory.js";
 import { activateTab, applyDashboard } from "./gameFlow.js";
 import {
-  getSavedToken, saveToken, getSavedGistId, saveGistId,
+  getSavedToken, getSavedGistId, saveGistId,
   exportToGist, importFromGist, listGists
 } from "./gistSync.js";
 import { closeModal, openModal } from "./modalManager.js";
@@ -809,7 +809,12 @@ export async function renderGistList() {
 export function initGistSyncUI() {
   const tok = getSavedToken();
   const el = document.getElementById("gistTokenInput");
-  if (el && tok) el.value = "••••••••••••••••" + tok.slice(-4);
+  if (el) {
+    el.value = "";
+    el.placeholder = tok ? "Token available for this tab" : "Paste token for this tab";
+  }
+  const button = document.getElementById("gistSyncSaveTokenBtn");
+  if (button) button.textContent = tok ? "Clear Token" : "Use Token This Tab";
   const gistEl = document.getElementById("gistIdInput");
   const savedId = getSavedGistId();
   if (gistEl && savedId) gistEl.value = savedId;

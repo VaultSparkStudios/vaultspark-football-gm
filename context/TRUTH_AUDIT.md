@@ -251,3 +251,14 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Queue truth: all six Session 47 audit items plus latest-audit follow-through and the Playwright-discovered runtime-switch refinement are shipped; Genius cache is exhausted with 0 open items.
 - Verification truth: direct shards pass 337/337 and Playwright 18/18. The aggregate `npm test` wrapper produced no output for five minutes and is not counted as green.
 - Launch truth unchanged: launch/SPARKED remains gated on real email-delivery and current live-origin proof.
+
+## 2026-07-16 — Session 48 truth updates
+
+- Injury truth: `weeksRemaining` has one weekly mutation authority. Rehab projections use actual player/team/facility/reinjury inputs and are explicitly modeled, not clinical claims.
+- Persistence/security truth: GitHub tokens are memory/tab-session only, masked token text is invalid, legacy persistent copies are deleted, and both inline and remotely fetched Gist payloads are bounded and integrity-verified before import.
+- Lifecycle truth: local contract, manifest, audience, public status, and blocked launch evidence agree on FORGE/public-unlaunched. The authoritative portfolio registry still reports SPARKED; doctor exposes that as one nonblocking warning and signed Ark cargo requests correction.
+- Progress truth: offseason roster maintenance refreshes lookup authority, validates every mutation, records `lastRosterMaintenance`, and cannot spin indefinitely when a release fails.
+- Runtime truth: once the server has answered successfully, transient background polling failures cannot silently change the league's state authority to browser-local mode.
+- Test truth: counted direct evidence is 358/358 Node tests and Playwright 18/18. One timed runtime wrapper and an earlier 17/18 browser run are retained as superseded diagnostic evidence, not claimed green.
+- Release truth: current public routes pass 8/8 and sitemap passes 10/10, but no real received-message receipt proves `football@playfranchisearchitect.com` forwarding/copying. Launch posture therefore remains FORGE regardless of the registry's stale SPARKED value.
+- Cost truth: all work remains browser/static compatible and zero variable cost; Max Plan accounting is notional and does not generate an alarm.

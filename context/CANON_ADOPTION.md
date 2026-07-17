@@ -5,7 +5,7 @@
 > Suggest: `node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --suggest` uses conformance evidence to pre-fill safe suggestions.
 > Mark each: **adopted** · **pending** · **review** · **exempt (reason)**. This file is maintained, not auto-trusted.
 
-Audience: public-unlaunched · Live ACTIVE canons: 50 · Pending review: 43
+Audience: public-unlaunched · Live ACTIVE canons: 51 · Pending review: 44
 
 | Canon | Title | Status | Evidence / note |
 |---|---|---|---|
@@ -59,4 +59,5 @@ Audience: public-unlaunched · Live ACTIVE canons: 50 · Pending review: 43
 | CANON-049 | Continuous evolution: the studio + every project is never st | review |  |
 | CANON-050 | Atlas: the foundation that carries the ecosystem — and the s | review |  |
 | CANON-051 | Web Hardening: every public surface meets the edge-security  | review |  |
+| CANON-052 | Project Lifecycle Ladder: FORGE/SPARKED/VAULTED with sub-sta | review |  |
 

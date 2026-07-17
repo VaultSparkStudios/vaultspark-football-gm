@@ -595,3 +595,21 @@ Source: `docs/AUDIT_2026-07-15_SESSION47.json`.
 | launch/SPARKED evidence | Blocked — requires real received-message proof plus current live-origin proof; no fabrication |
 
 **Verification:** direct canonical shards 337/337 (core 64, runtime 162, sim-contract 67, sim-realism 1, studio 43); focused consequence/checkpoint 10/10; Playwright 18/18; Pages build/smoke; syntax/integrity sweep; doctor no items with `blockingFailing: 0`; Genius cache exhausted 0 open. Aggregate `npm test` produced no output for five minutes and is not counted as green.
+
+## Session 48 — Rehab Authority, Secure Sync, and Lifecycle Truth (2026-07-16)
+
+Source: `docs/AUDIT_2026-07-16_SESSION48.json`.
+
+| Item | Status |
+|---|---|
+| injury-authority-rehab-command | Done — one recovery authority, facilities/age/reinjury probability, three persistent rehab plans, dual-runtime API, responsive command center, clearance receipts |
+| lifecycle-source-coherence-guard | Done — machine contract, checker, doctor/studio coverage, local FORGE truth, signed Ark correction request |
+| secure-gist-sync-custody | Done — memory/tab-only token custody, legacy cleanup, bounded import, integrity verification, accurate privacy copy |
+| rehab-comeback-journal | Done — source-derived clearance events publish into the canonical Priority Inbox ledger |
+| live-doctor-freshness | Done — `doctor --update-json` writes live lifecycle health through the SIL-invariant status writer |
+| offseason-progress-fence | Done — stale-index camp-cut loop root-fixed with batched indexes and truthful progress/stall receipts |
+| authority-preserving-runtime-transport | Done — established server sessions cannot silently fork to local state on transient timeout |
+| latest-audit-follow-through | Rejected on evidence — latest audit execution log and live code agree; report churn would add no value |
+| launch/SPARKED flip | Deferred honestly — live routes pass, but no real project-domain email forwarding/copying receipt exists |
+
+**Verification:** direct canonical plus long shards 358/358 (core 64, runtime 175, sim-contract 68, sim-realism 1, long 3, studio 47); Playwright 18/18; Pages build/smoke; live routes 8/8; sitemap 10/10; current-repo secret scan 0; canon conformance 0 gaps; Windows/Wave guards green; doctor `blockingFailing: 0`; Genius cache exhausted 0 open.

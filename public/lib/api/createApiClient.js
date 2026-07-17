@@ -1,6 +1,7 @@
 let localRuntimePromise = null;
 let runtimeModeCache = null;
 let fallbackAttempted = false;
+let serverSessionEstablished = false;
 
 function readStoredRuntimeMode() {
   try {
@@ -69,6 +70,7 @@ export function setRuntimeMode(mode) {
   const nextMode = normalizeRuntimeMode(mode === "client" ? "client" : "server");
   persistRuntimeMode(nextMode);
   fallbackAttempted = false;
+  serverSessionEstablished = false;
   return nextMode;
 }
 
@@ -132,6 +134,7 @@ async function requestHttp(path, options = {}) {
   if (!response.ok || payload.ok === false) {
     throw buildApiError(payload.error || `Request failed: ${response.status}`, payload, response.status);
   }
+  serverSessionEstablished = true;
   return payload;
 }
 
@@ -175,7 +178,10 @@ async function requestLocal(path, options = {}) {
 }
 
 function canAutoFallbackToClient(error) {
-  if (fallbackAttempted || getRuntimeMode() !== "server") return false;
+  // Automatic fallback is a bootstrap convenience, not a runtime failover
+  // mechanism. Once the server has answered successfully, silently switching
+  // authorities would fork the active league into unrelated browser state.
+  if (fallbackAttempted || serverSessionEstablished || getRuntimeMode() !== "server") return false;
   if (typeof window === "undefined") return false;
   const protocol = window.location?.protocol || "";
   if (protocol === "file:") return true;

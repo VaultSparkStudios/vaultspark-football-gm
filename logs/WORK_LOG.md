@@ -354,3 +354,12 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Classified latest-audit follow-through as shipped and fixed a second-order runtime-mode save-row race found by Playwright.
 - Verification passed direct canonical shards 337/337, focused consequence/checkpoint 10/10, Playwright 18/18, Pages build/smoke, syntax/integrity gates, and doctor no items with `blockingFailing: 0`.
 - Launch truth is unchanged: no SPARKED flip without real email-delivery and current live-origin proof.
+
+## 2026-07-16 — Session 48: rehab authority, secure sync, and lifecycle coherence
+
+- Ran the requested continuous `/goal /arc`: pull/rebase-first startup, canonical context and preflights, infrastructure-weighted live audit, all-item implementation, four second-order innovations, full release verification, and canonical closeout.
+- Generated and exhausted `docs/AUDIT_2026-07-16_SESSION48.*`: one facilities-aware injury/recovery authority with three consequential Rehab Command plans; secure Gist credential/integrity custody; and a self-validating lifecycle/doctor contract with signed Ark correction cargo.
+- Saturation uncovered and root-fixed two additional authority failures: stale post-draft lookup indexes could make camp cuts loop without progress, and a timed-out background poll could silently replace a live server league with unrelated local state.
+- Final direct evidence is 358/358 Node tests plus Playwright 18/18, Pages build/smoke, live routes 8/8, sitemap 10/10, secret scan 0, canon 0 gaps, and doctor 5 pass/1 warning/0 blocking.
+- The current-main CI failure was traced to a generated startup cost-label fixture mismatch; the Session 48 generated brief and local studio shard now pass. Deploy workflows failed only because they gate on that studio shard.
+- Launch truth remains unchanged: routes are green, but no real email-forwarding receipt exists, so no launch-state fabrication or SPARKED flip occurred.

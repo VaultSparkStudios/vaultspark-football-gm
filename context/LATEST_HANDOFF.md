@@ -1,3 +1,35 @@
+## Session 48 Intent (2026-07-16)
+
+Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; exhaust the Unified Genius List; generate and implement second-order innovations; verify direct suite, staging, doctor, security, canon, and observability truth; then commit and push directly to `main` with Ark and zero-shell closeout hygiene.
+
+## Where We Left Off — Session 48 Closeout (2026-07-16)
+
+Session 48 completed the requested uninterrupted `/start -> /audit -> /implement -> /closeout` mission. The three-item infrastructure-weighted audit and the second-order Innovation Pack are exhausted; no ranked implementation item remains open.
+
+### Shipped
+
+- One truthful injury clock with facilities-, age-, and reinjury-aware probability and recovery; persistent Protect/Standard/Accelerate Rehab Command plans; matching server/local APIs; responsive browser command surface; and source-derived Priority Inbox clearance receipts.
+- GitHub Gist sync now keeps credentials in memory/tab session storage only, removes legacy persistent copies, rejects masked tokens, bounds inline/raw imports, verifies remote integrity sidecars, and never rehydrates a secret into the UI.
+- A machine-readable lifecycle coherence contract, direct checker, doctor integration, and studio-shard coverage preserve local FORGE/public-unlaunched truth while surfacing the authoritative registry's SPARKED value as a warning. Signed Ark correction request `01JTMN2KPU7561F0E9B389360E` was sent without editing the sibling source tree.
+- Saturation root fixes: stale lookup indexes can no longer trap offseason camp cuts in a non-progress loop; batched mutation rebuilds indexes once and emits `lastRosterMaintenance`/`roster-maintenance-stalled` truth receipts. Source-identical per-team modifier caching restored practical multi-season verification speed.
+- Established server authority can no longer silently fall back to unrelated browser-local state after a transient busy-period poll timeout. Browser coverage also respects legitimate controlled-team bye weeks instead of requiring fabricated box-score data.
+
+### Verification
+
+- Direct Node evidence: 358/358 across core 64, runtime 175, simulation contract 68, simulation realism 1, long-run 3, and studio 47.
+- Browser: full Playwright 18/18 with explicit exit 0; the multi-year cross-test authority race was trace-proven, fixed, and rerun full-suite.
+- Static staging: Pages build and smoke pass sequentially. Public route probe passes all 8 routes; sitemap compliance is 10/10.
+- Security/canon: current-repo secret scan 0 findings; capability/blocker preflights complete; canon conformance 51 applicable/0 gaps; Wave and Windows guards pass.
+- Doctor: 5 passing, 1 nonblocking authoritative-registry warning, `blockingFailing: 0`.
+
+### Honest deferral
+
+- Do not flip local launch/SPARKED posture. Live routes are green, but `football@playfranchisearchitect.com` still lacks a real forwarding/copying receipt. The Brevo capability is discoverable, while the central probe exposes a capability-name mismatch/no implemented route-verification probe; neither is evidence of received mail.
+
+### Next best move
+
+Obtain or generate a real received-message receipt for the project-domain address through an evidence-producing inbound route checker, then reconcile the authoritative lifecycle registry. Otherwise begin the next fresh audit because Session 48's Genius list and Innovation Pack are exhausted.
+
 ## Where We Left Off — Session 47 Recovery Closeout (2026-07-16)
 
 The previous Session 47 was cut off during `/implement`: four audit items were marked shipped in JSON, two implementation branches were present but still open, the Markdown execution log was stale, verification had not finished, and no closeout write-back/commit existed. Recovery completed the intended arc before creating a clean checkpoint.
@@ -1008,4 +1040,3 @@ Remaining public-safe blocker:
 ## Session 23 final live-domain evidence
 
 The follow-up Pages artifact for `3c3e795` contains the slug-prefixed route files, confirmed by listing `artifact.tar`. After the successful Pages deploy, live custom-domain route smoke still returned 404/fallback for the new `/vaultspark-football-gm/*` compliance routes. Treat the remaining launch blocker as custom-domain routing/certificate state, not missing repo files.
-

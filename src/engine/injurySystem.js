@@ -37,14 +37,59 @@ const SEVERITY_TABLE = [
   { type: "IR-Long (8W)", weeksRemaining: 8,  weight: 0.06 }
 ];
 
+export const REHAB_PLANS = Object.freeze({
+  protect: Object.freeze({
+    id: "protect",
+    label: "Protect the Player",
+    recoveryDelta: 0,
+    reinjuryDelta: -0.04,
+    summary: "No forced acceleration. Prioritize lowering modeled re-injury risk."
+  }),
+  standard: Object.freeze({
+    id: "standard",
+    label: "Standard Protocol",
+    recoveryDelta: 0,
+    reinjuryDelta: -0.02,
+    summary: "Use the staff and facility recovery rate without adding risk."
+  }),
+  accelerate: Object.freeze({
+    id: "accelerate",
+    label: "Accelerate Return",
+    recoveryDelta: 1,
+    reinjuryDelta: 0.04,
+    summary: "Gain one modeled recovery week now and accept higher re-injury risk."
+  })
+});
+
+export function normalizeRehabPlan(plan) {
+  return REHAB_PLANS[plan] ? plan : "standard";
+}
+
+export function setPlayerRehabPlan(player, plan) {
+  if (!player?.injury || Number(player.injury.weeksRemaining || 0) <= 0) {
+    return { ok: false, error: "Player does not have an active multi-week injury." };
+  }
+  const normalized = normalizeRehabPlan(plan);
+  player.rehabPlan = normalized;
+  return { ok: true, plan: normalized, policy: REHAB_PLANS[normalized] };
+}
+
+function ageRiskMultiplier(player) {
+  return (player?.age || 25) >= 30 ? 1.25 : 1;
+}
+
+export function injuryProbability(player, { multiplier = 1, injuryChanceDelta = 0 } = {}) {
+  const base = CONTACT_RATES[player?.position] || 0.05;
+  const reinjuryMod = 1 + Math.min(0.5, Math.max(0, Number(player?.reinjuryRisk || 0)));
+  const safeMultiplier = Number.isFinite(Number(multiplier)) ? Number(multiplier) : 1;
+  return Math.max(0, Math.min(0.95, (base + Number(injuryChanceDelta || 0)) * ageRiskMultiplier(player) * reinjuryMod * safeMultiplier));
+}
+
 // ── Roll injury check for a single player ────────────────────────────────────
 
-export function rollInjuryCheck(player, rng) {
+export function rollInjuryCheck(player, rng, options = {}) {
   if (player.injury?.weeksRemaining > 0) return false; // already out
-  const base = CONTACT_RATES[player.position] || 0.05;
-  const ageMod = (player.age || 25) >= 30 ? 1.25 : 1.0;
-  const reinjuryMod = 1 + Math.min(0.5, player.reinjuryRisk || 0);
-  return rng.next() < base * ageMod * reinjuryMod;
+  return rng.next() < injuryProbability(player, options);
 }
 
 // ── Sample injury severity ────────────────────────────────────────────────────
@@ -68,26 +113,51 @@ export function applyInjury(player, severity) {
 
 // ── Batch roll for all active players in a game ───────────────────────────────
 
-export function rollGameInjuries(teamAPlayers, teamBPlayers, rng, multiplier = 1.0) {
+export function rollGameInjuries(teamAPlayers, teamBPlayers, rng, multiplier = 1.0, options = {}) {
   const injured = [];
   for (const player of [...teamAPlayers, ...teamBPlayers]) {
     if (!player || player.status !== "active") continue;
-    // Adjust rate by league multiplier
-    const adjustedRng = { next: () => rng.next() };
-    const rollHit = rng.next() < (CONTACT_RATES[player.position] || 0.05) * multiplier;
-    if (!rollHit) continue;
-    if (player.injury?.weeksRemaining > 0) continue;
+    const modifiers = options.getTeamModifiers?.(player.teamId, player) || {};
+    if (!rollInjuryCheck(player, rng, {
+      multiplier,
+      injuryChanceDelta: modifiers.injuryChanceDelta || 0
+    })) continue;
     const severity = getSeverity(rng);
     applyInjury(player, severity);
-    injured.push({ player, severity });
+    player.rehabPlan = "standard";
+    injured.push({
+      player,
+      severity,
+      probability: injuryProbability(player, {
+        multiplier,
+        injuryChanceDelta: modifiers.injuryChanceDelta || 0
+      })
+    });
   }
   return injured;
 }
 
 // ── Advance recovery (call once per week) ─────────────────────────────────────
 
-export function advanceInjuryRecovery(league) {
+export function projectRehab(player, { extraRecoveryWeeks = 0 } = {}) {
+  const planId = normalizeRehabPlan(player?.rehabPlan);
+  const policy = REHAB_PLANS[planId];
+  const weeksRemaining = Math.max(0, Number(player?.injury?.weeksRemaining || 0));
+  const weeklyRecovery = Math.max(1, 1 + Math.max(0, Number(extraRecoveryWeeks || 0)) + policy.recoveryDelta);
+  return {
+    plan: planId,
+    label: policy.label,
+    summary: policy.summary,
+    weeksRemaining,
+    weeklyRecovery,
+    estimatedAdvances: weeksRemaining ? Math.ceil(weeksRemaining / weeklyRecovery) : 0,
+    reinjuryRisk: Number(Math.max(0, Number(player?.reinjuryRisk || 0)).toFixed(2))
+  };
+}
+
+export function advanceInjuryRecovery(league, options = {}) {
   let recovered = 0;
+  const receipts = [];
   for (const player of league.players) {
     if (!player.injury || player.injury.weeksRemaining <= 0) {
       if (player.injury?.weeksRemaining === 0) {
@@ -95,28 +165,63 @@ export function advanceInjuryRecovery(league) {
       }
       continue;
     }
-    player.injury.weeksRemaining = Math.max(0, player.injury.weeksRemaining - 1);
-    if (player.injury.weeksRemaining === 0) recovered++;
+    const modifiers = options.getTeamModifiers?.(player.teamId, player) || {};
+    const projection = projectRehab(player, modifiers);
+    const before = Number(player.injury.weeksRemaining || 0);
+    const injuryType = player.injury.type;
+    player.injury.weeksRemaining = Math.max(0, before - projection.weeklyRecovery);
+    const policy = REHAB_PLANS[projection.plan];
+    player.reinjuryRisk = Math.max(0, Math.min(0.55, Number(player.reinjuryRisk || 0) + policy.reinjuryDelta));
+    if (player.injury.weeksRemaining === 0) {
+      recovered++;
+      player.injury = null;
+      const receipt = {
+        playerId: player.id,
+        player: player.name,
+        teamId: player.teamId,
+        pos: player.position,
+        injuryType,
+        plan: projection.plan,
+        planLabel: projection.label,
+        weeksAdvanced: before,
+        reinjuryRisk: Number(player.reinjuryRisk.toFixed(2))
+      };
+      receipts.push(receipt);
+      options.onRecovered?.(receipt, player);
+    }
   }
-  return recovered;
+  return { recovered, receipts };
 }
 
 // ── Injury report for UI ──────────────────────────────────────────────────────
 
-export function getInjuryReport(league, teamId = null) {
+export function getInjuryReport(league, teamId = null, options = {}) {
   return league.players
     .filter((p) => p.status === "active" && p.injury?.weeksRemaining > 0)
     .filter((p) => !teamId || p.teamId === teamId)
-    .map((p) => ({
-      id:             p.id,
-      name:           p.name,
-      position:       p.position,
-      teamId:         p.teamId,
-      overall:        p.overall,
-      injuryType:     p.injury.type,
-      weeksRemaining: p.injury.weeksRemaining,
-      reinjuryRisk:   Number((p.reinjuryRisk || 0).toFixed(2))
-    }))
+    .map((p) => {
+      const modifiers = options.getTeamModifiers?.(p.teamId, p) || {};
+      const projection = projectRehab(p, modifiers);
+      return {
+        id: p.id,
+        playerId: p.id,
+        name: p.name,
+        player: p.name,
+        position: p.position,
+        pos: p.position,
+        teamId: p.teamId,
+        overall: p.overall,
+        injuryType: p.injury.type,
+        injury: { ...p.injury },
+        weeksRemaining: p.injury.weeksRemaining,
+        reinjuryRisk: Number((p.reinjuryRisk || 0).toFixed(2)),
+        rehabPlan: projection.plan,
+        rehabLabel: projection.label,
+        rehabSummary: projection.summary,
+        weeklyRecovery: projection.weeklyRecovery,
+        estimatedAdvances: projection.estimatedAdvances
+      };
+    })
     .sort((a, b) => b.weeksRemaining - a.weeksRemaining);
 }
 

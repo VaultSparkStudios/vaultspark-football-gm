@@ -66,6 +66,34 @@ test("manual depth chart snap shares rebalance the room and influence game usage
   assert.ok(secondSnaps > firstSnaps);
 });
 
+test("batch roster maintenance rebuilds post-draft lookups and proves normalization progress", () => {
+  const session = createSession({ seed: 103, startYear: 2026, controlledTeamId: "BUF" });
+  const teamId = "HOU";
+  const template = session.league.players.find((player) => player.teamId === teamId && player.status === "active");
+  assert.ok(template);
+  const injected = Array.from({ length: 18 }, (_, index) => ({
+    ...structuredClone(template),
+    id: `POST-DRAFT-${teamId}-${index + 1}`,
+    name: `Camp Prospect ${index + 1}`,
+    overall: 45 + index,
+    potential: 55 + index,
+    experience: 0,
+    rosterSlot: "practice",
+    injury: null
+  }));
+  session.league.players.push(...injected);
+  assert.equal(session.getPlayerById(injected[0].id), null, "fixture must begin outside the stale lookup snapshot");
+
+  const receipt = session.runAiTeamMaintenance();
+  const practiceCount = session.league.players.filter(
+    (player) => player.status === "active" && player.teamId === teamId && player.rosterSlot === "practice"
+  ).length;
+  assert.equal(receipt.ok, true);
+  assert.deepEqual(receipt.warnings, []);
+  assert.ok(practiceCount <= 16);
+  assert.equal(session.league.lastRosterMaintenance, receipt);
+});
+
 test("season awards follow regular-season AV leaders", () => {
   const session = createSession({ seed: 2126, startYear: 2026, controlledTeamId: "BUF" });
   session.simulateSeasons(1, { runOffseasonAfterLast: false });

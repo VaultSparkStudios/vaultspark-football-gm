@@ -1,0 +1,70 @@
+{
+  "session": "S48",
+  "date": "2026-07-16",
+  "repo": "Franchise Architect: Football",
+  "headline": "Session 48 exhausted the full audit and innovation queue, unified recovery and runtime authority, secured cloud-save custody, and closed with direct suites, staging, routes, and doctor green.",
+  "items": [
+    {
+      "title": "rehab-command-authority",
+      "projectImpact": 10,
+      "ecosystemImpact": 6,
+      "evidence": "One facilities-aware recovery clock now powers three persistent risk/pace plans, dual runtimes, a responsive command surface, and source-derived comeback receipts."
+    },
+    {
+      "title": "secure-gist-custody",
+      "projectImpact": 9,
+      "ecosystemImpact": 7,
+      "evidence": "Credentials are memory/tab-only; legacy persistence is removed; bounded payloads and integrity sidecars gate import."
+    },
+    {
+      "title": "lifecycle-coherence-guard",
+      "projectImpact": 8,
+      "ecosystemImpact": 9,
+      "evidence": "Local FORGE truth is machine-checked, doctor-owned, and protected from the authoritative registry's stale SPARKED value by explicit warning and Ark correction cargo."
+    },
+    {
+      "title": "offseason-progress-fence",
+      "projectImpact": 10,
+      "ecosystemImpact": 7,
+      "evidence": "Camp cuts cannot spin on stale indexes; batched mutations prove progress or emit a truthful stall receipt, restoring practical long simulation."
+    },
+    {
+      "title": "authority-preserving-transport",
+      "projectImpact": 10,
+      "ecosystemImpact": 8,
+      "evidence": "A transient server-busy poll can no longer silently fork an established league into unrelated browser-local state."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "email-forwarding-receipt",
+      "evidence": "Produce a real received-message receipt for football@playfranchisearchitect.com before any local SPARKED flip."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "launch/SPARKED",
+      "evidence": "Live routes are green, but email forwarding/copying remains unverified; this does not block the direct-main development checkpoint."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "superseded-timeouts",
+      "evidence": "Timed wrappers and the initial 17/18 browser result were retained as diagnostic evidence and superseded only by explicit direct zero exits."
+    },
+    {
+      "title": "registry-drift",
+      "evidence": "Authoritative SPARKED is reported as drift, not copied into local truth; signed Ark cargo requests the source correction."
+    },
+    {
+      "title": "email-proof",
+      "evidence": "Brevo credential discovery is not a delivery receipt; launch evidence remains blocked without received-mail proof."
+    }
+  ],
+  "diffStat": {
+    "files": 49,
+    "insertions": "896 tracked-line additions plus new audit/checker/test artifacts",
+    "deletions": 183,
+    "suite": "direct Node 358/358; Playwright 18/18; Pages build/smoke; live routes 8/8; sitemap 10/10; secret scan 0; doctor blockingFailing 0; Genius cache 0 open"
+  }
+}

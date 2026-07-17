@@ -1604,6 +1604,18 @@ export function createLocalApiRuntime({
         return finish(jsonResponse(200, { ok: true, teamId, injured, count: injured.length }));
       }
 
+      if (method === "POST" && pathname === "/api/injuries/rehab-plan") {
+        const s = ensureSession();
+        const check = assertFields(body, ["teamId", "playerId", "plan"]);
+        if (!check.ok) return finish(jsonResponse(400, { ok: false, error: check.error }));
+        const result = s.setRehabPlan({
+          teamId: String(body.teamId).toUpperCase(),
+          playerId: String(body.playerId),
+          plan: String(body.plan)
+        });
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(s) }));
+      }
+
       // ── Stat Leaders ─────────────────────────────────────────────────────────
       if (method === "GET" && pathname === "/api/stat-leaders") {
         const s = ensureSession();

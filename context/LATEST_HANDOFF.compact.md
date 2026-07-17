@@ -1,41 +1,42 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 91eca15311b4 -->
-<!-- generated-at: 2026-07-16T21:00:24.276Z -->
+<!-- source-hash: f1483371c70f -->
+<!-- generated-at: 2026-07-17T03:09:07.355Z -->
 
 # LATEST_HANDOFF (compact)
 
-## Handoff Summary — Session 47 Recovery (2026-07-16)
+## Handoff Summary — Session 48
 
-Session: 47 (recovery closeout of interrupted Session 47)
+Session: 48 (2026-07-16)
+
+Intent
+- Run uninterrupted /start -> /audit -> /implement -> /closeout arc; exhaust Genius List + second-order Innovation Pack; verify all suites; commit/push direct to main.
+- Status: mission complete; no ranked implementation item open.
 
 Shipped
-- All six audit items: JSON-to-Markdown audit renderer, source-derived startup brief contract, save-scoped reconstructable Priority Inbox, opponent-aware Tactical Film Room, executable/expiring GM decision commitments, checkpoint-aware accelerated simulation.
-- GM choices execute safe depth-chart/cap primitives or measurable promises; consequences update owner heat, fan interest/sentiment, morale, GM legacy, news, event history.
-- Fast simulation pauses at phase/playoff/decision/commitment boundaries with five-step digest and one-action resume.
-- Second-order: runtime-mode switch clears/locks stale save rows before new runtime loads (fixes cross-runtime resume race).
+- Injury clock: facilities/age/reinjury-aware probability + recovery, persistent Rehab Command plans, server/local APIs, browser surface, source-derived Priority Inbox receipts.
+- Gist sync hardening: credentials in memory/tab session only, legacy persistent copies removed, masked-token rejection, bounded imports, remote integrity sidecar verification, no secret rehydration to UI.
+- Lifecycle coherence contract + checker + doctor integration + studio-shard coverage; preserves local FORGE/public-unlaunched truth; surfaces registry SPARKED as warning. Signed Ark correction request 01JTMN2KPU7561F0E9B389360E sent (no sibling source edits).
+- Saturation fixes: stale index no longer traps offseason cuts; batched mutation rebuilds index once with roster-maintenance truth receipts; per-team modifier caching restored sim speed.
+- Server authority no longer silently falls back to browser-local state after poll timeout; browser coverage respects controlled-team bye weeks.
 
 Verification
-- Direct canonical shards 337/337 (core 64, runtime 162, sim-contract 67, sim-realism 1, studio 43).
-- Playwright 18/18 (runtime-switch race reproduced, fixed, rerun).
-- Focused consequence/checkpoint suite 10/10; all changed JS syntax checks passed.
-- Pages build + static smoke passed; doctor no items, blockingFailing 0.
-- Aggregate npm test rejected as phantom-green (no output, 5-min timeout); named shards are source of truth.
+- Node: 358/358 (core 64, runtime 175, sim-contract 68, sim-realism 1, long-run 3, studio 47).
+- Playwright: 18/18 exit 0; authority race trace-proven, fixed, rerun.
+- Staging: Pages build + smoke pass; 8/8 route probe; sitemap 10/10.
+- Security/canon: secret scan 0 findings; canon 51 applicable/0 gaps; Wave + Windows guards pass.
+- Doctor: 5 passing, 1 nonblocking registry warning, blockingFailing 0.
 
-Current intent
-- Recover interrupted Session 47, verify from live evidence, complete implementation/closeout, checkpoint cleanly, continue into next saturated arc.
+Now (top items)
+1. Obtain/generate real received-message receipt for football@playfranchisearchitect.com via evidence-producing inbound route checker.
+2. Reconcile authoritative lifecycle registry after receipt.
+3. If no receipt, begin next fresh audit (Session 48 lists exhausted).
 
-Now bucket (top 3)
-- Start next fresh /start -> /audit -> /implement -> /closeout arc from exhausted Session 47 queue.
-- Prioritize launch evidence path if it arrives first.
-- Maintain direct-named-shard verification discipline (never count aggregate npm test).
+Blockers (top)
+1. No real inbound-mail receipt for football@playfranchisearchitect.com; forwarding/copying unverified.
+2. Central email probe exposes capability-name mismatch / no implemented route-verification probe (not proof of received mail).
+3. Authoritative registry shows SPARKED vs local unlaunched posture (warning-only until receipt).
 
-Blockers (top 3)
-- Launch/SPARKED gated: no real received-message receipt proving football@playfranchisearchitect.com forwarding/copying.
-- Launch/SPARKED gated: no current live-origin evidence proving domain serves pushed build.
-- Aggregate npm test wrapper times out; cannot be used as green signal.
+Human-blocked (age)
+- Launch/SPARKED flip: blocked on email-delivery receipt + live-origin proof. Persistent since ~Session 32 (multi-session, ~16+ sessions). Do not flip posture without receipt.
 
-Human-blocked items (with age)
-- Email-forwarding receipt for football@playfranchisearchitect.com: open since ~Session 30 (2026-07-02), ~14 days.
-- Live-origin/routing proof for playfranchisearchitect.com serving latest build: open since ~Session 30, ~14 days.
-
-Next session: Begin a fresh full audit-to-closeout arc from the exhausted Session 47 queue unless the email receipt and live-origin proof arrive, in which case run launch-evidence and reassess SPARKED posture.
+Next session: Run inbound-mail route checker for the project domain to get a receipt; else start a fresh audit arc.

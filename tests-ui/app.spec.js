@@ -80,7 +80,17 @@ test("create league, advance week, and open player modal", async ({ page }) => {
   expect(before).not.toBeNull();
   expect(after).toBeGreaterThanOrEqual(before + 1);
 
-  const latestBoxScore = page.locator("#boxScoreTicker [data-boxscore-id]").first();
+  let latestBoxScore = page.locator("#boxScoreTicker [data-boxscore-id]").first();
+  if ((await latestBoxScore.count()) === 0) {
+    // A controlled team can legitimately open on a bye. Switch to a team
+    // that played so this test exercises the box-score flow without making
+    // a false schedule assumption.
+    const playedTeam = (await page.locator("#weekTable tr").nth(1).locator("td").nth(1).textContent())?.trim();
+    expect(playedTeam).toBeTruthy();
+    await page.selectOption("#teamSelect", playedTeam);
+    await waitGameReady(page);
+    latestBoxScore = page.locator("#boxScoreTicker [data-boxscore-id]").first();
+  }
   await expect(latestBoxScore).toBeVisible();
   await latestBoxScore.click();
   await expect(page.locator("#boxScoreModal")).not.toHaveClass(/hidden/);

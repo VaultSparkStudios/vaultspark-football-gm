@@ -80,3 +80,7 @@ The founder directed a complete, continuous, saturated `/goal /arc` with no phas
 ## 2026-07-16 — Session 47 recovery direction
 
 CDR reviewed — no new Franchise Architect product creative direction was introduced beyond the established highest-quality, continuous-arc, saturation, evidence-honesty, and direct-main expectations. The explicit recovery direction is now treated as a workflow invariant: reconstruct interrupted intent from repository evidence, reject phantom-green claims, finish the prior boundary cleanly, and only then begin new creative work.
+
+## 2026-07-16 — Session 48 founder direction
+
+The founder reaffirmed the complete continuous `/start -> /audit -> /implement -> /closeout` mission, requiring the Unified Genius List and generated second-order innovations to be fully exhausted before handback. The creative quality bar remains best-in-history rather than checkbox completion. Product interpretation reinforced this session: observability and simulation surfaces must derive from one state authority, never fabricate data to pass a gate, and turn truthful constraints—injury recovery, roster progress, and runtime custody—into legible General Manager decisions and receipts.

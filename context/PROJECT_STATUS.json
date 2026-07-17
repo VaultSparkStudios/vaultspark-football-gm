@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 47 shipped save-scoped Priority Inbox persistence, Tactical Film Room receipts, executable General Manager decisions with commitment tracking, checkpoint-aware Fast Sim, truthful audit/startup renderers, and a runtime-switch stale-save guard.",
-  "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
+  "currentFocus": "Session 48 shipped one injury/recovery authority with Rehab Command plans, secure memory-only Gist credential custody and integrity verification, lifecycle coherence/doctor guards, bounded offseason roster progress, and authority-preserving server transport.",
+  "nextMilestone": "Produce a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then reconcile the authoritative SPARKED registry value with the local FORGE evidence contract.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
   ],
-  "lastUpdated": "2026-07-16",
+  "lastUpdated": "2026-07-17",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,23 +18,21 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 337,
-    "pass": 337,
+    "totalTests": 358,
+    "pass": 358,
     "fail": 0,
     "lastRun": "2026-07-16",
     "newTestFiles": [
-      "test/audit-renderer.test.js",
-      "test/fast-sim-checkpoints.test.js",
-      "test/gm-decision-commitments.test.js",
-      "test/inbox-persistence.test.js",
-      "test/tactical-film-room.test.js"
+      "test/gist-sync-security.test.js",
+      "test/injury-rehab-command.test.js",
+      "test/lifecycle-coherence.test.js"
     ],
-    "newTestCount": 19,
-    "coverage": "Session 47 verified final code tree with direct canonical shards 337/337 (core 64/64, runtime 162/162, sim-contract 67/67, sim-realism 1/1, studio 43/43), focused consequence/checkpoint tests 10/10, Playwright UI 18/18, Pages build/smoke, syntax/integrity sweeps, and doctor blockingFailing 0.",
-    "uiSuiteNote": "Session 47 direct Playwright passed 18/18 after adding a deterministic stale-save guard for runtime switching."
+    "newTestCount": 16,
+    "coverage": "Session 48 verified the final tree with direct shards 358/358 (core 64/64, runtime 175/175, sim-contract 68/68, sim-realism 1/1, long 3/3, studio 47/47), Playwright UI 18/18, Pages build/smoke, live routes 8/8, sitemap 10/10, secret scan 0, canon conformance 0 gaps, and doctor blockingFailing 0.",
+    "uiSuiteNote": "Session 48 Playwright passed 18/18 after trace-driven authority-fallback repair and a bye-aware box-score contract."
   },
-  "testsPassing": 337,
-  "testsTotal": 337,
+  "testsPassing": 358,
+  "testsTotal": 358,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -86,28 +84,30 @@
     "capitalEfficiency": 94,
     "automationCoverage": 100
   },
-  "currentSession": 47,
+  "currentSession": 48,
   "lastAgent": "codex",
-  "sessionMode": "founder",
+  "sessionMode": "builder",
   "lastVerification": {
     "timedOut": [
-      "Aggregate npm test wrapper was terminated after five silent minutes; all direct canonical shards subsequently passed 337/337."
+      "One runtime-shard wrapper exceeded the shell timeout while its child remained active; it was terminated and the shard was rerun through a direct exit ledger, passing 175/175."
     ],
     "failed": [],
     "passed": [
-      "changed/untracked JSON and NDJSON integrity sweep",
-      "node --check every changed/untracked JavaScript file",
-      "npm run test:core 64/64",
-      "runtime shard 162/162",
-      "npm run test:sim:contract 67/67",
-      "npm run test:sim:realism 1/1",
-      "studio shard 43/43",
-      "focused GM consequence/checkpoint suites 10/10",
-      "npx playwright test 18/18",
+      "core shard 64/64",
+      "runtime shard 175/175",
+      "sim-contract shard 68/68",
+      "sim-realism shard 1/1",
+      "long shard 3/3",
+      "studio shard 47/47",
+      "Playwright 18/18",
       "npm run build:pages",
       "npm run smoke:pages",
-      "node scripts/ops.mjs doctor --update-json blockingFailing 0",
-      "node scripts/cache-genius-list.mjs --write exhausted/0 open"
+      "live public routes 8/8",
+      "sitemap compliance 10/10",
+      "current-repo secret scan 0 findings",
+      "canon conformance 51 applicable and 0 gaps",
+      "doctor 5 passing, 1 warning, blockingFailing 0",
+      "Genius cache exhausted 0 open"
     ],
     "date": "2026-07-16"
   },
@@ -119,7 +119,7 @@
   "modelPlanModeSlash": "/model opusplan",
   "planModeDetected": "missing",
   "planModeCheckedAt": "2026-07-01T05:54:57.303Z",
-  "sessionModeAutoShiftedAt": "2026-07-15T07:15:18.129Z",
+  "sessionModeAutoShiftedAt": "2026-07-16T23:59:32.398Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-05-22",
@@ -140,12 +140,20 @@
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
-    "total": 1,
+    "total": 6,
     "failing": 0,
-    "score": 100,
-    "date": "2026-07-16",
-    "passing": 1,
-    "warning": 0
+    "score": 83,
+    "date": "2026-07-17",
+    "passing": 5,
+    "warning": 1,
+    "checks": [
+      {
+        "id": "lifecycle-authoritative-registry",
+        "status": "warning",
+        "blocking": false,
+        "detail": "registry SPARKED · local contract FORGE"
+      }
+    ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,

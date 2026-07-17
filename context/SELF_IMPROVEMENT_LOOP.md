@@ -619,3 +619,22 @@ SIL v3.0: **994 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, 
 Committed SIL follow-ups:
 - `[SIL]` Keep accelerated simulation checkpoint classes narrow and source-derived; add sensitivity only if player evidence justifies it.
 - `[SIL]` Treat generated Markdown drift as a blocking JSON-sidecar contract failure, not harmless documentation lag.
+
+## 2026-07-16 — Session 48 Rehab Authority and Coherence Guard
+
+SIL v3.0: **994 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 94, Automation Coverage 100).
+
+- Dev Health: 100 — 358/358 direct Node tests, Playwright 18/18, Pages build/smoke, live routes 8/8, and doctor blockingFailing 0.
+- Creative Alignment: 100 — Rehab Command turns injuries into honest roster-risk strategy while comeback receipts deepen the franchise story.
+- Momentum: 100 — all three fresh audit items and four independently found second-order innovations shipped in one continuous mission.
+- Engagement: 100 — recovery plans, visible risk/pace tradeoffs, and clearance inbox moments create a new consequential weekly ritual.
+- Process Quality: 100 — live premises rejected phantom items; trace evidence exposed the authority race; infinite-loop and generated-audit regressions were root-fixed before closeout.
+- Cross-Repo Coherence: 100 — authoritative lifecycle drift was transported through signed Ark cargo; no sibling source tree was edited to make this project green.
+- Security Posture: 100 — Gist credentials are no longer persistently stored or echoed; imports are bounded and integrity-checked; current-repo scan reports 0 findings.
+- Ecosystem Integration: 100 — audit sidecar/renderer, Genius cache, lifecycle doctor, Innovation Pack, task board, handoff, and status agree on exhaustion and FORGE truth.
+- Capital Efficiency: 94 — unchanged; all product/runtime improvements are deterministic, static-host compatible, and add no variable-cost service.
+- Automation Coverage: 100 — new rehab, Gist, lifecycle, stale-index, authority-fallback, bye-aware browser, and doctor freshness contracts are assigned to canonical shards.
+
+Committed SIL follow-ups:
+- `[SIL]` Treat any implicit state-authority switch as a data-integrity event and cover it with a full-sequence browser test.
+- `[SIL]` Require monotonic progress or an explicit stall receipt in every mutation-driven `while` loop.

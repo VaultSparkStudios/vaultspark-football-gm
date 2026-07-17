@@ -1151,6 +1151,22 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  if (req.method === "POST" && url.pathname === "/api/injuries/rehab-plan") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const check = assertFields(body, ["teamId", "playerId", "plan"]);
+    if (!check.ok) {
+      sendJson(res, 400, { ok: false, error: check.error });
+      return true;
+    }
+    const result = session.setRehabPlan({
+      teamId: String(body.teamId).toUpperCase(),
+      playerId: String(body.playerId),
+      plan: String(body.plan)
+    });
+    sendJson(res, result.ok ? 200 : 400, { ...result, state: session.getDashboardState() });
+    return true;
+  }
+
   if (req.method === "GET" && url.pathname === "/api/events") {
     const limit = Math.max(1, Math.min(3000, toInt(url.searchParams.get("limit")) || 250));
     const year = toInt(url.searchParams.get("year"));

@@ -1362,11 +1362,39 @@ function bindEvents() {
 
   document.getElementById("loadQaBtn").addEventListener("click", () => runAction(loadQa, "Loading QA report..."));
 
+  document.getElementById("rehabCommandCenter")?.addEventListener("click", (event) => {
+    const button = event.target.closest(".rehab-plan-btn");
+    if (!button) return;
+    runAction(async () => {
+      const payload = await api("/api/injuries/rehab-plan", {
+        method: "POST",
+        body: {
+          teamId: state.dashboard?.controlledTeamId,
+          playerId: button.dataset.playerId,
+          plan: button.dataset.plan
+        }
+      });
+      applyDashboard(payload.state);
+      showToast(payload.receipt?.label + ": " + payload.receipt?.playerName);
+    }, "Updating rehab plan...");
+  });
+
   // ── GitHub Gist Cloud Sync ──────────────────────────────────────────────────
   document.getElementById("gistSyncSaveTokenBtn")?.addEventListener("click", () => {
-    const tok = document.getElementById("gistTokenInput")?.value?.trim();
-    saveToken(tok);
-    setStatus(tok ? "GitHub token saved." : "Token cleared.");
+    const input = document.getElementById("gistTokenInput");
+    const tok = input?.value?.trim();
+    const result = saveToken(tok);
+    if (!result.ok) {
+      setStatus(result.error);
+      return;
+    }
+    if (input) {
+      input.value = "";
+      input.placeholder = tok ? "Token available for this tab" : "Paste token for this tab";
+    }
+    const button = document.getElementById("gistSyncSaveTokenBtn");
+    if (button) button.textContent = tok ? "Clear Token" : "Use Token This Tab";
+    setStatus(tok ? "GitHub token available for this tab only." : "Token cleared.");
   });
   document.getElementById("gistExportBtn")?.addEventListener("click", () =>
     runAction(async () => {
@@ -1854,4 +1882,3 @@ async function init() {
 init();
 
 initThemeCustomizer("themeToggleBtn");
-

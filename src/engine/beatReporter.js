@@ -175,6 +175,29 @@ export function reportSignificantInjury(league, player, year, week) {
   });
 }
 
+/**
+ * Publish a completed rehab plan into the same source-derived stream that
+ * powers the Priority Inbox. The receipt is produced by injurySystem; this
+ * function adds presentation metadata only and never invents an outcome.
+ */
+export function reportRehabClearance(league, receipt, year, week) {
+  if (!receipt?.playerId || !receipt?.teamId) return null;
+  initNewsLog(league);
+  const item = {
+    type: "rehab-clearance",
+    week,
+    year,
+    headline: `${receipt.player} cleared the ${receipt.plan} rehab plan`,
+    detail: `Modeled re-injury risk at clearance: ${Math.round(Number(receipt.reinjuryRisk || 0) * 100)}%.`,
+    playerIds: [receipt.playerId],
+    teamIds: [receipt.teamId],
+    rehabPlan: receipt.plan,
+    reinjuryRisk: Number(receipt.reinjuryRisk || 0)
+  };
+  push(league, item);
+  return league.newsLog[0];
+}
+
 // ── Trades ───────────────────────────────────────────────────────────────────
 
 export function reportTrade(league, fromTeamId, toTeamId, playerName, year, week) {

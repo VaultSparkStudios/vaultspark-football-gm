@@ -5,7 +5,8 @@
  * No backend required — uses the GitHub REST API directly from the browser.
  * Authentication is via a user-provided Personal Access Token (gist scope only).
  *
- * Token is stored in localStorage (user-managed, not transmitted to our servers).
+ * Token is kept in memory/sessionStorage for this tab only and is never written
+ * to persistent localStorage or transmitted to VaultSpark servers.
  *
  * Usage:
  *   exportToGist(snapshot, token)  → returns { gistId, url }
@@ -42,25 +43,78 @@ function verifyIntegrityStamp(serialized, integrity) {
 }
 const TOKEN_KEY = "vsfgm_gist_token";
 const GIST_ID_KEY = "vsfgm_gist_id";
+const MAX_GIST_BYTES = 10_000_000;
+let memoryToken = "";
+
+function storageOrNull(name) {
+  try {
+    return globalThis[name] || null;
+  } catch {
+    return null;
+  }
+}
+
+function removeLegacyToken() {
+  const persistent = storageOrNull("localStorage");
+  const legacy = persistent?.getItem(TOKEN_KEY) || "";
+  persistent?.removeItem(TOKEN_KEY);
+  return legacy;
+}
 
 // ── Token helpers ─────────────────────────────────────────────────────────────
 
 export function getSavedToken() {
-  return localStorage.getItem(TOKEN_KEY) || "";
+  if (memoryToken) return memoryToken;
+  const session = storageOrNull("sessionStorage");
+  const sessionToken = session?.getItem(TOKEN_KEY) || "";
+  if (sessionToken) {
+    memoryToken = sessionToken;
+    removeLegacyToken();
+    return memoryToken;
+  }
+  const legacy = removeLegacyToken();
+  if (legacy) {
+    memoryToken = legacy;
+    session?.setItem(TOKEN_KEY, legacy);
+  }
+  return memoryToken;
 }
 
 export function saveToken(token) {
-  if (token) localStorage.setItem(TOKEN_KEY, token);
-  else localStorage.removeItem(TOKEN_KEY);
+  const normalized = String(token || "").trim();
+  if (/^[•*]{4,}\S{0,4}$/.test(normalized)) {
+    return { ok: false, error: "Masked token text is not a credential. Paste the token again." };
+  }
+  memoryToken = normalized;
+  const session = storageOrNull("sessionStorage");
+  if (normalized) session?.setItem(TOKEN_KEY, normalized);
+  else session?.removeItem(TOKEN_KEY);
+  removeLegacyToken();
+  return { ok: true, stored: Boolean(normalized), scope: "tab-session" };
 }
 
 export function getSavedGistId() {
-  return localStorage.getItem(GIST_ID_KEY) || "";
+  return storageOrNull("localStorage")?.getItem(GIST_ID_KEY) || "";
 }
 
 export function saveGistId(id) {
-  if (id) localStorage.setItem(GIST_ID_KEY, id);
-  else localStorage.removeItem(GIST_ID_KEY);
+  const storage = storageOrNull("localStorage");
+  if (id) storage?.setItem(GIST_ID_KEY, id);
+  else storage?.removeItem(GIST_ID_KEY);
+}
+
+async function readGistFile(file, label) {
+  if (!file) return null;
+  if (typeof file.content === "string") {
+    if (new Blob([file.content]).size > MAX_GIST_BYTES) throw new Error(`${label} is too large (> 10 MB).`);
+    return file.content;
+  }
+  if (!file.raw_url) return null;
+  const response = await fetch(file.raw_url, { headers: { Accept: "application/vnd.github.raw+json" } });
+  if (!response.ok) throw new Error(`Could not fetch ${label}: HTTP ${response.status}`);
+  const content = await response.text();
+  if (new Blob([content]).size > MAX_GIST_BYTES) throw new Error(`${label} is too large (> 10 MB).`);
+  return content;
 }
 
 // ── Core Gist API ─────────────────────────────────────────────────────────────
@@ -98,7 +152,7 @@ export async function exportToGist(snapshot, token, gistId) {
   if (!token) throw new Error("GitHub token is required. Set it in Settings → Cloud Sync.");
   const content = typeof snapshot === "string" ? snapshot : JSON.stringify(snapshot, null, 0);
   const size = (new Blob([content]).size / 1024).toFixed(0);
-  if (content.length > 10_000_000) throw new Error("Snapshot too large for Gist (> 10 MB). Try exporting after a shorter session.");
+  if (new Blob([content]).size > MAX_GIST_BYTES) throw new Error("Snapshot too large for Gist (> 10 MB). Try exporting after a shorter session.");
 
   const targetId = gistId || getSavedGistId();
   const description = `Franchise Architect: Football save — ${new Date().toISOString().slice(0, 10)} (${size} KB)`;
@@ -148,17 +202,16 @@ export async function importFromGist(gistId, token) {
   const file = data.files?.[GIST_FILENAME];
   if (!file) throw new Error(`Gist does not contain a "${GIST_FILENAME}" file.`);
 
-  const raw = file.content || file.raw_url
-    ? await fetch(file.raw_url).then((r) => r.text())
-    : null;
+  const raw = await readGistFile(file, "cloud save");
   if (!raw) throw new Error("Could not read Gist file content.");
 
   // Verify integrity sidecar when present (legacy gists without one still import).
   const integrityFile = data.files?.[INTEGRITY_FILENAME];
-  if (integrityFile?.content) {
+  if (integrityFile) {
     let integrity = null;
     try {
-      integrity = JSON.parse(integrityFile.content);
+      const integrityRaw = await readGistFile(integrityFile, "integrity sidecar");
+      integrity = integrityRaw ? JSON.parse(integrityRaw) : null;
     } catch {
       integrity = null;
     }
