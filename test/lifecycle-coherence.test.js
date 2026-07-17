@@ -33,7 +33,8 @@ test("doctor reports blockingFailing zero while preserving lifecycle warnings", 
   assert.equal(report.lifecycle.coherent, true);
 });
 
-test("doctor update-json persists the live warning instead of a stale startup score", () => {
+test("doctor update-json persists the live lifecycle result instead of a stale startup score", () => {
+  const lifecycle = inspectLifecycleCoherence(process.cwd());
   const result = spawnSync(process.execPath, ["scripts/doctor.mjs", "--update-json", "--quiet"], {
     cwd: process.cwd(),
     encoding: "utf8"
@@ -41,7 +42,11 @@ test("doctor update-json persists the live warning instead of a stale startup sc
   assert.equal(result.status, 0, result.stderr || result.stdout);
   const status = JSON.parse(readFileSync(path.join(process.cwd(), "context", "PROJECT_STATUS.json"), "utf8"));
   assert.equal(status.doctorScore.blockingFailing, 0);
-  assert.equal(status.doctorScore.warning, 1);
+  assert.equal(status.doctorScore.warning, lifecycle.warning);
   assert.equal(status.doctorScore.total, status.doctorScore.passing + status.doctorScore.warning);
-  assert.equal(status.doctorScore.checks[0].id, "lifecycle-authoritative-registry");
+  if (lifecycle.warning > 0) {
+    assert.equal(status.doctorScore.checks[0].id, "lifecycle-authoritative-registry");
+  } else {
+    assert.deepEqual(status.doctorScore.checks, []);
+  }
 });

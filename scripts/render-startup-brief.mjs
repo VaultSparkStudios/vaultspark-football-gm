@@ -643,7 +643,7 @@ try {
 // → a phantom ⛔ "$916 4.4× spike". It also diverged from check-cost-anomaly.mjs
 // (the S153 two-implementations class). Now both surfaces call ONE evaluator that
 // runs the alarm on REAL metered cost and reports notional separately.
-let sigCost = '✓', costDetail = 'Max Plan flat-rate · no variable-cost signal';
+let sigCost = '✓', costDetail = 'Max flat-rate · $0.00/7d notional · no alarm';
 try {
   const { readEntries, evaluateCostAnomaly } = await import('./cache-ledger-rollup.mjs');
   const ledgerPath = path.join(root, 'docs', 'cache-ledger.ndjson');
