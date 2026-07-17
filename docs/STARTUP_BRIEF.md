@@ -50,9 +50,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     40,821 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~20,411 tok/turn  ·  cache 50%  ·  43 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     2,174 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,087 tok/turn  ·  cache 50%  ·  167 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -71,8 +71,8 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        5/6 (83%)  ·  1 warn                           ║
-║  ✓  Cost          Max flat-rate · $1.29/7d notional · no alarm   ║
+║  ✓  Doctor        5/5 (100%)  ·  2026-07-17  ✓                   ║
+║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
