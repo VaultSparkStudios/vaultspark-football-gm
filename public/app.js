@@ -407,8 +407,44 @@ function exposeLocalTestHooks() {
   globalThis.__VS_FA_APPLY_DASHBOARD__ = applyDashboard;
 }
 
+function bindMobileNav() {
+  const toggleBtn = document.getElementById("mobileNavToggleBtn");
+  const closeBtn = document.getElementById("mobileNavCloseBtn");
+  const backdrop = document.getElementById("mobileNavBackdrop");
+
+  function openNav() {
+    document.body.classList.add("mobile-nav-open");
+    toggleBtn?.setAttribute("aria-expanded", "true");
+    closeBtn?.focus();
+  }
+
+  function closeNav() {
+    document.body.classList.remove("mobile-nav-open");
+    toggleBtn?.setAttribute("aria-expanded", "false");
+    toggleBtn?.focus();
+  }
+
+  toggleBtn?.addEventListener("click", () =>
+    document.body.classList.contains("mobile-nav-open") ? closeNav() : openNav()
+  );
+  closeBtn?.addEventListener("click", closeNav);
+  backdrop?.addEventListener("click", closeNav);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("mobile-nav-open")) closeNav();
+  });
+
+  // Close drawer after selecting a tab on mobile
+  document.querySelectorAll(".side-menu .menu-btn[data-tab]").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      if (window.matchMedia("(max-width: 980px)").matches) closeNav();
+    })
+  );
+}
+
 function bindEvents() {
   bindMenuTabs(activateTab);
+  bindMobileNav();
 
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();

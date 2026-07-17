@@ -26,6 +26,7 @@
         <div id="boxScoreTicker" class="boxscore-ticker">Loading recent games...</div>
       </div>
       <div class="row compact topbar-actions">
+        <button id="mobileNavToggleBtn" class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="sideMenu" aria-label="Open navigation menu">&#9776;</button>
         <span id="stageChip" class="chip">Stage: Loading...</span>
         <button id="advanceWeekBtn" data-testid="advance-week-btn">Advance Week</button>
         <button id="advance4WeeksBtn" data-testid="advance-4-weeks-btn">Advance 4 Weeks</button>
@@ -34,7 +35,7 @@
         <button class="inbox-bell-btn" id="openInboxBtn" aria-label="Open GM Inbox" title="GM Inbox">
           🔔<span id="inboxBadge" class="inbox-badge" hidden>0</span>
         </button>
-        <button id="themeToggleBtn" class="theme-toggle-btn" type="button" title="Toggle theme">◐</button>
+        <button id="themeToggleBtn" class="theme-toggle-btn" type="button" title="Toggle theme">&#9680;</button>
         <button id="backSetupBtn" data-testid="back-setup-btn">Main Menu</button>
         <span id="statusChip" data-testid="status-chip" class="chip">Loading...</span>
       </div>
@@ -60,8 +61,10 @@
       </div>
     </section>
 
+    <div id="mobileNavBackdrop" class="mobile-nav-backdrop" aria-hidden="true"></div>
     <main class="game-shell">
-      <aside class="side-menu" role="tablist" aria-label="Franchise sections" aria-orientation="vertical">
+      <aside id="sideMenu" class="side-menu" role="tablist" aria-label="Franchise sections" aria-orientation="vertical">
+        <button id="mobileNavCloseBtn" class="mobile-nav-close" type="button" aria-label="Close navigation">&#10005;</button>
         <div class="menu-group-header">Gameday</div>
         <button id="tab-overview" class="menu-btn active" data-tab="overviewTab" data-testid="tab-overview" role="tab" aria-selected="true" aria-controls="overviewTab" tabindex="0">Overview</button>
         <button id="tab-stats" class="menu-btn" data-tab="statsTab" data-testid="tab-stats" role="tab" aria-selected="false" aria-controls="statsTab" tabindex="-1">Statistics</button>
