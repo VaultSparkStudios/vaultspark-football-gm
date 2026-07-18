@@ -55,7 +55,7 @@ body {
   color: var(--ink);
   background: var(--bg-0);
   font-family: "Bahnschrift", "Franklin Gothic Medium", "Trebuchet MS", sans-serif;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .bg-layer {
@@ -4177,4 +4177,76 @@ html[data-theme="light"] .bg-layer {
 @media (max-width: 700px) {
   .rehab-plan-grid { grid-template-columns: 1fr; }
   .rehab-plan-btn { min-height: 52px; }
+}
+
+/* ── Mobile Bottom Nav — CANON-041 (desktop↔mobile parity, scrollable 100dvh nav) ─
+   On narrow viewports the vertical sidebar becomes a fixed-bottom horizontal
+   scrollable strip. Content fills the full viewport height using 100dvh.            */
+@media (max-width: 640px) {
+  /* room for the fixed bottom nav + iOS safe area */
+  .tab-panels {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* side-menu leaves normal flow and pins to the bottom of the viewport */
+  .side-menu {
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 28;
+    /* flex row scrolls horizontally — all 14 tabs always reachable */
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    gap: 3px;
+    padding: 4px 6px env(safe-area-inset-bottom, 6px);
+    height: calc(52px + env(safe-area-inset-bottom, 0px));
+    /* visual polish */
+    border-radius: 0 !important;
+    border: none !important;
+    border-top: 1px solid rgba(var(--team-tertiary-rgb), 0.28) !important;
+    box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(12px);
+    /* clear any grid columns set earlier */
+    grid-template-columns: unset;
+  }
+
+  .side-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* group headers become slim vertical dividers between sections */
+  .side-menu .menu-group-header {
+    flex: 0 0 1px;
+    width: 1px;
+    height: 28px;
+    background: rgba(var(--team-tertiary-rgb), 0.32);
+    padding: 0 !important;
+    margin: 0 4px;
+    align-self: center;
+    border: none;
+    font-size: 0;
+    line-height: 0;
+  }
+
+  /* the very first group header adds no useful divider — hide it */
+  .side-menu .menu-group-header:first-child {
+    display: none !important;
+  }
+
+  /* nav buttons: compact horizontal pills */
+  .menu-btn {
+    flex: 0 0 auto !important;
+    white-space: nowrap;
+    padding: 6px 12px !important;
+    font-size: 0.74rem;
+    min-height: 44px !important;
+    height: 44px;
+    text-align: center;
+    border-radius: 10px !important;
+  }
 }
