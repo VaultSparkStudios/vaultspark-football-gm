@@ -127,10 +127,11 @@ export function activateTab(tabId) {
   document.querySelectorAll(".menu-btn").forEach((btn) => {
     const isActive = btn.dataset.tab === tabId;
     btn.classList.toggle("active", isActive);
-    // ARIA tab state must track the active tab (S29) — a screen reader
-    // otherwise announces whichever tab loaded first as selected forever.
     btn.setAttribute("aria-selected", isActive ? "true" : "false");
-    btn.setAttribute("tabindex", isActive ? "0" : "-1");
+    // Bottom nav items are always touch-reachable — skip roving tabindex.
+    if (!btn.classList.contains("mobile-nav-btn")) {
+      btn.setAttribute("tabindex", isActive ? "0" : "-1");
+    }
   });
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);

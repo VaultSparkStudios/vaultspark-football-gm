@@ -1580,6 +1580,51 @@
         </div>
       </div>
     </div>
+    <!-- ── Mobile Bottom Tab Nav ────────────────────────────────────────── -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Game navigation">
+      <button class="menu-btn mobile-nav-btn" data-tab="overviewTab" data-testid="mobile-tab-overview" aria-label="Overview">
+        <span class="mobile-nav-icon" aria-hidden="true">🏠</span>
+        <span class="mobile-nav-label">Overview</span>
+      </button>
+      <button class="menu-btn mobile-nav-btn" data-tab="rosterTab" data-testid="mobile-tab-roster" aria-label="Roster">
+        <span class="mobile-nav-icon" aria-hidden="true">👥</span>
+        <span class="mobile-nav-label">Roster</span>
+      </button>
+      <button class="menu-btn mobile-nav-btn" data-tab="transactionsTab" data-testid="mobile-tab-transactions" aria-label="Trades">
+        <span class="mobile-nav-icon" aria-hidden="true">🔄</span>
+        <span class="mobile-nav-label">Trades</span>
+      </button>
+      <button class="menu-btn mobile-nav-btn" data-tab="draftTab" data-testid="mobile-tab-draft" aria-label="Draft">
+        <span class="mobile-nav-icon" aria-hidden="true">📋</span>
+        <span class="mobile-nav-label">Draft</span>
+      </button>
+      <button class="mobile-more-btn mobile-nav-btn" id="mobileMoreBtn" aria-expanded="false" aria-controls="mobileMoreSheet" aria-label="More sections">
+        <span class="mobile-nav-icon" aria-hidden="true">⋯</span>
+        <span class="mobile-nav-label">More</span>
+      </button>
+    </nav>
+
+    <!-- ── Mobile More Sheet ──────────────────────────────────────────────── -->
+    <div class="mobile-more-backdrop hidden" id="mobileMoreBackdrop" aria-hidden="true"></div>
+    <div class="mobile-more-sheet hidden" id="mobileMoreSheet" aria-label="More game sections">
+      <div class="mobile-more-sheet-header">
+        <span class="mobile-more-sheet-title">All Sections</span>
+        <button class="mobile-more-close" id="mobileMoreCloseBtn" aria-label="Close menu">✕</button>
+      </div>
+      <div class="mobile-more-grid">
+        <button class="menu-btn mobile-more-item" data-tab="statsTab">Stats</button>
+        <button class="menu-btn mobile-more-item" data-tab="calendarTab">Calendar</button>
+        <button class="menu-btn mobile-more-item" data-tab="faTab">Free Agents</button>
+        <button class="menu-btn mobile-more-item" data-tab="depthTab">Depth Chart</button>
+        <button class="menu-btn mobile-more-item" data-tab="contractsTab">Contracts</button>
+        <button class="menu-btn mobile-more-item" data-tab="scoutingTab">Scouting</button>
+        <button class="menu-btn mobile-more-item" data-tab="logTab">League Log</button>
+        <button class="menu-btn mobile-more-item" data-tab="historyTab">Dynasty</button>
+        <button class="menu-btn mobile-more-item" data-tab="rulesTab">Rules</button>
+        <button class="menu-btn mobile-more-item" data-tab="settingsTab">Settings</button>
+      </div>
+    </div>
+
     <script type="module" src="./app.js"></script>
   </body>
 </html>
