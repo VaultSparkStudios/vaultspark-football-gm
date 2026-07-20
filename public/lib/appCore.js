@@ -1287,6 +1287,48 @@ export function bindMenuTabs(activateTabFn) {
   });
 }
 
+export function initMobileBottomNav() {
+  const moreBtn = document.getElementById("mobileMoreBtn");
+  const sheet = document.getElementById("mobileMoreSheet");
+  const backdrop = document.getElementById("mobileMoreBackdrop");
+  const closeBtn = document.getElementById("mobileMoreCloseBtn");
+  if (!moreBtn || !sheet || !backdrop) return;
+
+  function openSheet() {
+    sheet.classList.remove("hidden");
+    backdrop.classList.remove("hidden");
+    requestAnimationFrame(() => {
+      sheet.classList.add("open");
+      backdrop.classList.add("visible");
+    });
+    moreBtn.setAttribute("aria-expanded", "true");
+  }
+
+  function closeSheet() {
+    sheet.classList.remove("open");
+    backdrop.classList.remove("visible");
+    moreBtn.setAttribute("aria-expanded", "false");
+    const onEnd = () => {
+      sheet.classList.add("hidden");
+      backdrop.classList.add("hidden");
+      sheet.removeEventListener("transitionend", onEnd);
+    };
+    sheet.addEventListener("transitionend", onEnd);
+  }
+
+  moreBtn.addEventListener("click", () => {
+    const isOpen = moreBtn.getAttribute("aria-expanded") === "true";
+    isOpen ? closeSheet() : openSheet();
+  });
+  closeBtn?.addEventListener("click", closeSheet);
+  backdrop.addEventListener("click", closeSheet);
+
+  // Close sheet after selecting a secondary tab
+  sheet.querySelectorAll(".mobile-more-item").forEach((btn) => {
+    btn.addEventListener("click", closeSheet);
+  });
+}
+
 export async function runAction(fn, statusText = "Working...") {
   try {
     setStatus(statusText);

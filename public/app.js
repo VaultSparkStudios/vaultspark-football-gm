@@ -82,6 +82,7 @@ import {
   loadPlayerModal,
   closePlayerModal,
   bindMenuTabs,
+  initMobileBottomNav,
   runAction
 } from "./lib/appCore.js";
 
@@ -409,6 +410,7 @@ function exposeLocalTestHooks() {
 
 function bindEvents() {
   bindMenuTabs(activateTab);
+  initMobileBottomNav();
 
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();

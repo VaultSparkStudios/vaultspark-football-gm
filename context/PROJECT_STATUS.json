@@ -137,20 +137,13 @@
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
-    "total": 6,
+    "total": 5,
     "failing": 0,
-    "score": 83,
+    "score": 100,
     "date": "2026-07-20",
     "passing": 5,
-    "warning": 1,
-    "checks": [
-      {
-        "id": "lifecycle-authoritative-registry",
-        "status": "warning",
-        "blocking": false,
-        "detail": "registry SPARKED · local contract FORGE"
-      }
-    ]
+    "warning": 0,
+    "checks": []
   },
   "complianceScore": 37,
   "complianceTotal": 37,
