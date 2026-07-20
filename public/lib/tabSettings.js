@@ -10,6 +10,8 @@ import {
   exportToGist, importFromGist, listGists
 } from "./gistSync.js";
 import { closeModal, openModal } from "./modalManager.js";
+import { getClientDiagnosticsSnapshot } from "./clientDiagnostics.js";
+import { buildTimelineData, injectStyles as injectDynastyTimelineStyles, mount as mountDynastyTimeline } from "./dynastyTimeline.js";
 
 export function resolvePublicDomainReadiness(status = {}) {
   status = status || {};
@@ -290,18 +292,21 @@ export function renderOwner() {
 
 export function renderObservability() {
   const obs = state.observability;
-  if (!obs) {
-    renderTable("observabilityTable", []);
-    renderSettingsSpotlight();
-    return;
-  }
+  const client = getClientDiagnosticsSnapshot();
   const rows = [
-    { metric: "serverRequests", value: obs.server?.requests ?? 0 },
-    { metric: "apiRequests", value: obs.server?.apiRequests ?? 0 },
-    { metric: "uptimeSeconds", value: obs.server?.uptimeSeconds ?? 0 },
-    { metric: "runtimeCounters", value: Object.keys(obs.runtime?.counters || {}).length },
+    { metric: "clientHealth", value: client.status },
+    { metric: "clientDegradations", value: client.unresolved },
+    { metric: "clientRetryable", value: client.retryable },
+    { metric: "serverRequests", value: obs?.server?.requests ?? 0 },
+    { metric: "apiRequests", value: obs?.server?.apiRequests ?? 0 },
+    { metric: "uptimeSeconds", value: obs?.server?.uptimeSeconds ?? 0 },
+    { metric: "runtimeCounters", value: Object.keys(obs?.runtime?.counters || {}).length },
     { metric: "hydrationAuthorityEpoch", value: state.hydrationAuthority?.epoch ?? 0 },
-    { metric: "staleResponsesDiscarded", value: state.hydrationAuthority?.staleResponsesDiscarded ?? 0 }
+    { metric: "staleResponsesDiscarded", value: state.hydrationAuthority?.staleResponsesDiscarded ?? 0 },
+    ...client.entries.map((entry) => ({
+      metric: `${entry.surface}/${entry.operation}`,
+      value: `${entry.message} · ${entry.count}x${entry.retryable ? " · retryable" : ""}`
+    }))
   ];
   renderTable("observabilityTable", rows);
   renderSettingsSpotlight();
@@ -568,6 +573,16 @@ export function renderSettingsSpotlight() {
     "Settings will appear here after the league config loads"
   );
   renderLaunchReadinessPanel();
+  renderDynastyTimeline();
+}
+
+export function renderDynastyTimeline() {
+  const container = document.getElementById("dynastyTimelineContainer");
+  if (!container) return;
+  const teamId = state.dashboard?.controlledTeamId || "";
+  const seasons = buildTimelineData(state.teamHistory?.seasons || [], teamId);
+  injectDynastyTimelineStyles();
+  mountDynastyTimeline(container, { seasons, teamId, teamColor: "var(--accent, #4a8fb5)" });
 }
 
 export function renderLaunchReadinessPanel() {

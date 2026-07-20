@@ -1149,6 +1149,8 @@
                 <button id="loadObservabilityBtn">Load Metrics</button>
                 <button id="loadPersistenceBtn">Persistence Info</button>
                 <button id="runCalibrationJobBtn">Run Calibration Job</button>
+                <button id="retryClientDiagnosticsBtn" type="button">Retry Degraded Panels</button>
+                <button id="clearClientDiagnosticsBtn" type="button" class="secondary">Clear Client Ledger</button>
               </div>
               <div class="table-wrap"><table id="observabilityTable"></table></div>
               <div class="table-wrap"><table id="persistenceTable"></table></div>
@@ -1229,6 +1231,7 @@
               League Story Card downloads a source-derived season snapshot with champion, leaders, cap, legacy, and prediction receipts.
               Season Newsletter generates a shareable season-end card with headlines, GM legacy, and quotes.
             </div>
+            <div id="dynastyTimelineContainer" style="margin-top:1rem;" aria-live="polite"></div>
           </div>
         </section>
       </section>

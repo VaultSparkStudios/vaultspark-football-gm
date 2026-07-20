@@ -1,5 +1,7 @@
 import { state, api, DISPLAY_LABELS, GUIDE_SECTIONS, STATS_BENCHMARK_HINTS, TEAM_THEME_MAP } from "./appState.js";
 import { buildPlayerProfileNarrative } from "./playerProfileNarrative.js";
+import { actionCoordinator } from "./actionCoordinator.js";
+import { getClientDiagnosticsSnapshot, recordClientDiagnostic, subscribeClientDiagnostics } from "./clientDiagnostics.js";
 
 export function escapeHtml(value) {
   return String(value)
@@ -295,7 +297,24 @@ export function setStatus(text) {
           : /ready|done/i.test(text) ? "positive"
             : null;
   setElementTone(el, tone);
+  syncClientDiagnosticsStatus();
 }
+
+export function syncClientDiagnosticsStatus(snapshot = getClientDiagnosticsSnapshot()) {
+  const el = document.getElementById("statusChip");
+  if (!el) return;
+  const degraded = snapshot.unresolved > 0;
+  el.dataset.clientHealth = degraded ? "degraded" : "healthy";
+  el.title = degraded
+    ? `${snapshot.unresolved} unresolved client degradation${snapshot.unresolved === 1 ? "" : "s"}. Open Settings > System Health.`
+    : "Client runtime healthy.";
+  if (/^ready(?:\s*·\s*degraded\s+\d+)?$/i.test(el.textContent || "")) {
+    el.textContent = degraded ? `Ready · Degraded ${snapshot.unresolved}` : "Ready";
+    setElementTone(el, degraded ? "warning" : "positive");
+  }
+}
+
+subscribeClientDiagnostics(syncClientDiagnosticsStatus);
 
 export function appendAvLast(row, av) {
   return { ...row, av: av ?? 0 };
@@ -455,6 +474,14 @@ export function presentActionError(error) {
   const message = formatActionError(error);
   const reasonCode = error?.reasonCode || error?.payload?.reasonCode || "";
   const prefix = reasonCode.startsWith("challenge-") ? "Blocked" : "Error";
+  if (prefix === "Error") {
+    recordClientDiagnostic({
+      surface: "action",
+      operation: reasonCode || "unclassified",
+      error: message,
+      severity: "error"
+    });
+  }
   setStatus(`${prefix}: ${message}`);
   showToast(`${prefix}: ${message}`);
 }
@@ -463,6 +490,12 @@ export function presentActionError(error) {
 export function renderPanelError(targetId, label, error, { onRetry = null } = {}) {
   const target = typeof targetId === "string" ? document.getElementById(targetId) : targetId;
   const message = formatActionError(error);
+  recordClientDiagnostic({
+    surface: "panel",
+    operation: label,
+    error: message,
+    retry: onRetry
+  });
   if (!target) {
     presentActionError(error);
     return;
@@ -1287,13 +1320,33 @@ export function bindMenuTabs(activateTabFn) {
   });
 }
 
-export async function runAction(fn, statusText = "Working...") {
-  try {
-    setStatus(statusText);
-    await fn();
-    setStatus("Ready");
-    showToast("Done");
-  } catch (error) {
-    presentActionError(error);
+function setActionControlsDisabled(controlIds, disabled) {
+  for (const id of controlIds || []) {
+    const element = document.getElementById(id);
+    if (element) element.disabled = disabled;
   }
+}
+
+export async function runAction(fn, statusText = "Working...", { key = null, controls = [] } = {}) {
+  const execute = async () => {
+    setActionControlsDisabled(controls, true);
+    try {
+      setStatus(statusText);
+      const result = await fn();
+      if (result?.actionStatus === "deferred") {
+        setStatus(result.statusText || "Deferred");
+        return result;
+      }
+      setStatus("Ready");
+      showToast("Done");
+      return result;
+    } catch (error) {
+      presentActionError(error);
+      return { actionStatus: "failed", error };
+    } finally {
+      setActionControlsDisabled(controls, false);
+    }
+  };
+  if (key) return actionCoordinator.run(key, execute);
+  return execute();
 }

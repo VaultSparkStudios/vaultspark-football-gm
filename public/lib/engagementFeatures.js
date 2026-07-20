@@ -285,22 +285,17 @@ let _pendingDecisionResolve = null;
 let _activeDecision = null;
 
 export async function checkAndShowGmDecision() {
-  try {
-    const data = await api("/api/gm-decision");
-    if (!data?.decisions?.length) return null;
-    const decision = data.decisions[0]; // Show highest-priority first
-    const shownKey = `vsfgm-decision-${decision.id}-w${decision.week}`;
-    if (localStorage.getItem(shownKey)) return null; // Already shown this week
-    return new Promise((resolve) => {
-      _pendingDecisionResolve = (choice) => {
-        localStorage.setItem(shownKey, "1");
-        resolve(choice);
-      };
-      showGmDecisionModal(decision);
-    });
-  } catch {
-    return null;
-  }
+  const data = await api("/api/gm-decision");
+  if (!data?.decisions?.length) return { status: "none", decision: null, choice: null };
+  const decision = data.decisions[0];
+  return new Promise((resolve) => {
+    _pendingDecisionResolve = (choice) => {
+      resolve(choice
+        ? { status: "chosen", decision, choice }
+        : { status: "deferred", decision, choice: null });
+    };
+    showGmDecisionModal(decision);
+  });
 }
 
 export function showGmDecisionModal(decision) {
@@ -343,7 +338,10 @@ export function resolveGmDecision(choice) {
       decisionId: active.id,
       choiceId: choice,
       type: active.type,
-      week: active.week
+      year: active.year,
+      week: active.week,
+      teamId: active.teamId,
+      occurrenceKey: active.occurrenceKey
     } : null);
   }
 }

@@ -1,7 +1,8 @@
 import { applyGmDecisionConsequence, resolveGmDecisionConsequence } from "../engine/gmDecisionConsequences.js";
+import { validatePendingGmDecision } from "../engine/gmDecisionAuthority.js";
 import { buildTacticalFilmReceipt, tacticDefinition } from "../../public/lib/tacticalFilmRoom.js";
 
-export const ADVANCE_WEEK_COMMAND_VERSION = "1.0";
+export const ADVANCE_WEEK_COMMAND_VERSION = "2.0";
 
 const tacticModifiers = Object.freeze({
   "run-heavy": { passLeanDelta: -0.15, aggressionDelta: 0.05, summary: "Ground game focus" },
@@ -23,10 +24,13 @@ export function validateAdvanceWeekCommand(session, payload = {}) {
   if (tactic && !tacticDefinition(tactic)) {
     return { ok: false, status: 400, reasonCode: "ADVANCE_WEEK_UNKNOWN_TACTIC", error: `Unknown weekly tactic: ${tactic}.` };
   }
+  const pendingDecision = session.getDashboardState?.().gmDecisionQueue?.[0] || null;
+  const pendingValidation = validatePendingGmDecision(pendingDecision, payload.gmDecisionChoice || null);
+  if (!pendingValidation.ok) return pendingValidation;
   if (payload.gmDecisionChoice && !resolveGmDecisionConsequence(payload.gmDecisionChoice)) {
     return { ok: false, status: 400, reasonCode: "ADVANCE_WEEK_UNKNOWN_GM_DECISION", error: "Unknown GM decision choice." };
   }
-  return { ok: true, count: normalizeCount(payload.count), tactic, gmDecisionChoice: payload.gmDecisionChoice || null };
+  return { ok: true, count: normalizeCount(payload.count), tactic, gmDecisionChoice: pendingValidation.choice };
 }
 
 export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance } = {}) {
@@ -88,4 +92,29 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
       gmDecisionApplied: gmDecision.applied === true
     }
   };
+}
+
+function cloneSessionForTransaction(session) {
+  const snapshot = JSON.parse(JSON.stringify(session.toSnapshot()));
+  return session.constructor.fromSnapshot(
+    snapshot,
+    (seed) => new session.rng.constructor(seed)
+  );
+}
+
+export function executeAdvanceWeekTransaction(session, payload = {}, options = {}) {
+  try {
+    const workingSession = cloneSessionForTransaction(session);
+    const outcome = executeAdvanceWeekCommand(workingSession, payload, options);
+    if (!outcome.ok) return outcome;
+    return { ...outcome, committedSession: workingSession };
+  } catch (error) {
+    return {
+      ok: false,
+      status: 500,
+      reasonCode: "ADVANCE_WEEK_TRANSACTION_FAILED",
+      error: "The week could not be committed. Your franchise remains unchanged.",
+      diagnostic: error?.message || "Unknown weekly transaction failure."
+    };
+  }
 }

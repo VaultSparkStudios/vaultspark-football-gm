@@ -14,7 +14,7 @@ import {
   saveSessionToSlot
 } from "./runtime/saveStore.js";
 import { getPersistenceDescriptor } from "./runtime/persistence.js";
-import { executeAdvanceWeekCommand } from "./runtime/advanceWeekCommand.js";
+import { executeAdvanceWeekTransaction } from "./runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, snapshotErrorPayload } from "./runtime/snapshotMigration.js";
 
 const PORT = Number(process.env.PORT || 4173);
@@ -149,58 +149,6 @@ function generateSeasonArcs(sess) {
       });
     }
     return arcs;
-  } catch {
-    return [];
-  }
-}
-
-function generateGmDecisions(sess) {
-  try {
-    const d = typeof sess.getDashboardState === "function" ? sess.getDashboardState() : {};
-    const week = d.currentWeek || 0;
-    const phase = d.phase || "";
-    const decisions = [];
-    if (phase === "regular-season" && week >= 9 && week <= 11) {
-      const standings = d.latestStandings || [];
-      const team = d.controlledTeam || {};
-      const myRow = standings.find((r) => r.team === (team.abbrev || team.id)) || {};
-      decisions.push({
-        id: "trade-deadline", type: "TRADE_DEADLINE", week,
-        prompt: `Trade deadline closes end of Week 11 (current: Week ${week}). Record: ${myRow.wins || 0}-${myRow.losses || 0}. What's your priority?`,
-        options: [
-          { id: "buy", label: "Buy — acquire veterans now", effect: "Trade picks for proven players. Win-now mode." },
-          { id: "sell", label: "Sell — stock picks for the future", effect: "Trade veterans for draft capital. Long-term play." },
-          { id: "hold", label: "Hold — stay the course", effect: "No major moves. Evaluate at Week 12." }
-        ]
-      });
-    }
-    const activeInjuries = d.activeInjuries || [];
-    const qbInjury = activeInjuries.find((p) => p.pos === "QB" && p.severity === "severe");
-    if (qbInjury) {
-      decisions.push({
-        id: "qb-injury", type: "INJURY_CRISIS", week,
-        prompt: `${qbInjury.name} is out ${qbInjury.weeksRemaining}+ weeks. How do you respond?`,
-        options: [
-          { id: "fa-qb", label: "Sign a veteran QB from free agency", effect: "Costs cap, provides experience and stability." },
-          { id: "start-backup", label: "Start backup — develop for the future", effect: "Higher risk short-term, unlocks development." },
-          { id: "trade-qb", label: "Trade for a QB upgrade", effect: "Costs picks. High risk, high reward." }
-        ]
-      });
-    }
-    const capAlerts = d.capAlerts || [];
-    const criticalCap = capAlerts.find((a) => a.severity === "critical");
-    if (criticalCap) {
-      decisions.push({
-        id: "cap-crisis", type: "CAP_CRISIS", week,
-        prompt: `Cap emergency: ${criticalCap.headline}. Time is running out to find relief.`,
-        options: [
-          { id: "restructure", label: "Restructure key contracts immediately", effect: "Saves cap now, adds dead cap later." },
-          { id: "release", label: "Release a high-salary player", effect: "Immediate cap relief. Roster weakens." },
-          { id: "wait", label: "Let it play out — monitor closely", effect: "Risk a cap violation. High stakes." }
-        ]
-      });
-    }
-    return decisions;
   } catch {
     return [];
   }
@@ -497,15 +445,17 @@ async function handleApi(req, res, url) {
       sendJson(res, 400, { ok: false, error: "Invalid JSON body." });
       return true;
     }
-    const outcome = executeAdvanceWeekCommand(session, body);
+    const outcome = executeAdvanceWeekTransaction(session, body);
     if (!outcome.ok) {
       sendJson(res, outcome.status || 400, outcome);
       return true;
     }
-    const last = outcome.results[outcome.results.length - 1];
+    const { committedSession, ...responseOutcome } = outcome;
+    session = committedSession;
+    const last = responseOutcome.results[responseOutcome.results.length - 1];
     if (last?.phase === "offseason") writeAutoBackup("offseason-checkpoint");
     else writeAutoBackup("week");
-    sendJson(res, 200, { ...outcome, state: session.getDashboardState() });
+    sendJson(res, 200, { ...responseOutcome, state: session.getDashboardState() });
     return true;
   }
 
@@ -1481,7 +1431,7 @@ async function handleApi(req, res, url) {
 
   // ── GM Decision Queue ──────────────────────────────────────────────────────
   if (req.method === "GET" && url.pathname === "/api/gm-decision") {
-    sendJson(res, 200, { ok: true, decisions: generateGmDecisions(session) });
+    sendJson(res, 200, { ok: true, decisions: session.getDashboardState().gmDecisionQueue || [] });
     return true;
   }
 

@@ -15,6 +15,12 @@ import {
 } from "./lib/gistSync.js";
 
 import { state, api } from "./lib/appState.js";
+import { clearClientDiagnostics, retryClientDiagnostics } from "./lib/clientDiagnostics.js";
+
+const SIMULATION_ACTION = {
+  key: "franchise-simulation",
+  controls: ["advanceWeekBtn", "advance4WeeksBtn", "advanceSeasonBtn", "resumeSimBtn"]
+};
 
 import {
   escapeHtml,
@@ -343,7 +349,7 @@ async function submitMobileGmDecisionChoice(choice) {
       loadSimJobs()
     ]);
     syncMobileLoopOverlay();
-  }, "Recording mobile GM decision...");
+  }, "Recording mobile GM decision...", SIMULATION_ACTION);
 }
 
 function mobileDecisionSnapshotKey() {
@@ -369,8 +375,8 @@ function syncMobileLoopOverlay() {
     overlay.addEventListener("vsfgm:mobile-decision", (event) => {
       if (event.detail?.action !== "choose-gm-decision") return;
       checkAndShowGmDecision()
-        .then((choice) => {
-          if (choice) return submitMobileGmDecisionChoice(choice);
+        .then((result) => {
+          if (result?.status === "chosen") return submitMobileGmDecisionChoice(result.choice);
           return null;
         })
         .catch(presentActionError);
@@ -455,8 +461,12 @@ function bindEvents() {
       if (tactic) body.weeklyTacticOverride = tactic;
       // Check GM Decision before advancing (Session 8)
       if (state.dashboard?.phase === "regular-season") {
-        const gmDecisionChoice = await checkAndShowGmDecision().catch(() => null);
-        if (gmDecisionChoice) body.gmDecisionChoice = gmDecisionChoice;
+        const gmDecisionResult = await checkAndShowGmDecision();
+        if (gmDecisionResult.status === "deferred") {
+          showToast("Decision deferred — the franchise has not advanced.");
+          return { actionStatus: "deferred", statusText: "GM decision deferred" };
+        }
+        if (gmDecisionResult.status === "chosen") body.gmDecisionChoice = gmDecisionResult.choice;
       }
       const response = await api("/api/advance-week", { method: "POST", body });
       applyDashboard(response.state);
@@ -491,20 +501,26 @@ function bindEvents() {
       checkAndShowFranchiseMoment().catch(presentActionError);
       checkAndPruneRewindStorage();
       syncMobileLoopOverlay();
-    }, "Advancing week...")
+    }, "Advancing week...", SIMULATION_ACTION)
   );
 
   document.getElementById("advance4WeeksBtn").addEventListener("click", () =>
-    advanceWeeksSequential(4, { resolveDecision: checkAndShowGmDecision }).catch((error) => {
-      presentActionError(error);
-      setSimControl({ active: false, pauseRequested: false, mode: null });
+    runAction(
+      () => advanceWeeksSequential(4, { resolveDecision: checkAndShowGmDecision }),
+      "Advancing four weeks...",
+      SIMULATION_ACTION
+    ).then((result) => {
+      if (result?.actionStatus === "failed") setSimControl({ active: false, pauseRequested: false, mode: null });
     })
   );
 
   document.getElementById("advanceSeasonBtn").addEventListener("click", () =>
-    advanceSeasonSequential({ resolveDecision: checkAndShowGmDecision }).catch((error) => {
-      presentActionError(error);
-      setSimControl({ active: false, pauseRequested: false, mode: null });
+    runAction(
+      () => advanceSeasonSequential({ resolveDecision: checkAndShowGmDecision }),
+      "Advancing season...",
+      SIMULATION_ACTION
+    ).then((result) => {
+      if (result?.actionStatus === "failed") setSimControl({ active: false, pauseRequested: false, mode: null });
     })
   );
 
@@ -513,9 +529,12 @@ function bindEvents() {
     setSimControl({ pauseRequested: true });
   });
   document.getElementById("resumeSimBtn").addEventListener("click", () => {
-    resumeSimulationFromCheckpoint({ resolveDecision: checkAndShowGmDecision }).catch((error) => {
-      presentActionError(error);
-      setSimControl({ active: false, pauseRequested: false, mode: null });
+    runAction(
+      () => resumeSimulationFromCheckpoint({ resolveDecision: checkAndShowGmDecision }),
+      "Resuming simulation...",
+      SIMULATION_ACTION
+    ).then((result) => {
+      if (result?.actionStatus === "failed") setSimControl({ active: false, pauseRequested: false, mode: null });
     });
   });
   document.getElementById("dismissSimCheckpointBtn").addEventListener("click", () => {
@@ -1205,6 +1224,18 @@ function bindEvents() {
   document.getElementById("loadObservabilityBtn").addEventListener("click", () =>
     runAction(loadObservability, "Loading metrics...")
   );
+  document.getElementById("retryClientDiagnosticsBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      const result = await retryClientDiagnostics();
+      renderObservability();
+      showToast(`${result.recovered} client surface${result.recovered === 1 ? "" : "s"} recovered.`);
+    }, "Retrying degraded panels...")
+  );
+  document.getElementById("clearClientDiagnosticsBtn")?.addEventListener("click", () => {
+    clearClientDiagnostics();
+    renderObservability();
+    showToast("Client degradation ledger cleared.");
+  });
   document.getElementById("loadPersistenceBtn").addEventListener("click", () =>
     runAction(loadPersistence, "Loading persistence...")
   );

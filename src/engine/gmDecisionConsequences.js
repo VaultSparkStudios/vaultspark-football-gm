@@ -1,28 +1,17 @@
 import { initGmLegacy } from "./gmLegacyScore.js";
-
-const DECISION_CATALOG = {
-  "trade-deadline": {
-    buy: { label: "Buy", headline: "GM mandate: buy at the trade deadline", effect: "add a roster upgrade before the deadline", transactionType: "gm-decision-buy", momentum: 2, risk: 2, targetTab: "contractsTab", mode: "commitment", deadlineWeek: 12 },
-    sell: { label: "Sell", headline: "GM mandate: sell at the trade deadline", effect: "complete a future-focused trade before the deadline", transactionType: "gm-decision-sell", momentum: -1, risk: -1, targetTab: "draftTab", mode: "commitment", deadlineWeek: 12 },
-    hold: { label: "Hold", headline: "GM mandate: hold the roster course", effect: "make no trade through the deadline", transactionType: "gm-decision-hold", momentum: 0, risk: 0, targetTab: "overviewTab", mode: "commitment", deadlineWeek: 12 }
-  },
-  "qb-injury": {
-    "fa-qb": { label: "Sign Veteran QB", headline: "GM mandate: stabilize the quarterback room", effect: "sign the best viable veteran quarterback", transactionType: "gm-decision-qb-fa", momentum: 1, risk: 1, targetTab: "rosterTab", mode: "immediate-or-commitment", deadlineOffset: 2 },
-    "start-backup": { label: "Start Backup", headline: "GM mandate: develop the backup quarterback", effect: "promote an available backup to QB1", transactionType: "gm-decision-qb-backup", momentum: -1, risk: 0, targetTab: "rosterTab", mode: "immediate" },
-    "trade-qb": { label: "Trade for QB", headline: "GM mandate: explore quarterback trades", effect: "acquire a quarterback by trade", transactionType: "gm-decision-qb-trade", momentum: 2, risk: 3, targetTab: "contractsTab", mode: "commitment", deadlineOffset: 2 }
-  },
-  "cap-crisis": {
-    restructure: { label: "Restructure", headline: "GM mandate: restructure key contracts", effect: "restructure the largest eligible cap hit", transactionType: "gm-decision-cap-restructure", momentum: 1, risk: 2, targetTab: "contractsTab", mode: "immediate-or-commitment", deadlineOffset: 2 },
-    release: { label: "Release", headline: "GM mandate: cut salary now", effect: "release a player through the contract desk", transactionType: "gm-decision-cap-release", momentum: -2, risk: -1, targetTab: "contractsTab", mode: "commitment", deadlineOffset: 2 },
-    wait: { label: "Wait", headline: "GM mandate: monitor the cap crisis", effect: "restore non-negative cap space without an immediate cut", transactionType: "gm-decision-cap-wait", momentum: 0, risk: 3, targetTab: "settingsTab", mode: "commitment", deadlineOffset: 2 }
-  }
-};
+import { GM_DECISION_CATALOG } from "./gmDecisionAuthority.js";
 
 function normalizePayload(payload = {}) {
   const decisionId = String(payload.decisionId || payload.id || "").trim().toLowerCase();
   const choiceId = String(payload.choiceId || payload.choice || "").trim().toLowerCase();
   if (!decisionId || !choiceId) return null;
-  return { decisionId, choiceId, type: payload.type ? String(payload.type).trim() : null, week: Number.isFinite(Number(payload.week)) ? Number(payload.week) : null };
+  return {
+    decisionId,
+    choiceId,
+    type: payload.type ? String(payload.type).trim() : null,
+    week: Number.isFinite(Number(payload.week)) ? Number(payload.week) : null,
+    occurrenceKey: payload.occurrenceKey ? String(payload.occurrenceKey) : null
+  };
 }
 
 function teamPlayers(session, teamId) {
@@ -69,7 +58,7 @@ function attemptImmediateAction(session, consequence, teamId) {
 export function resolveGmDecisionConsequence(payload = {}) {
   const normalized = normalizePayload(payload);
   if (!normalized) return null;
-  const definition = DECISION_CATALOG[normalized.decisionId]?.[normalized.choiceId];
+  const definition = GM_DECISION_CATALOG[normalized.decisionId]?.choices?.[normalized.choiceId];
   return definition ? { ...normalized, ...definition, appliedAt: Date.now() } : null;
 }
 
@@ -191,7 +180,7 @@ export function applyGmDecisionConsequence(session, payload = {}) {
   if (!consequence || !session?.league) return { ok: false, applied: false, error: "Unknown GM decision choice." };
   const teamId = session.controlledTeamId || null;
   if (!Array.isArray(session.league.gmDecisionLedger)) session.league.gmDecisionLedger = [];
-  const entry = { id: `GMD-${session.currentYear}-${session.currentWeek}-${session.league.gmDecisionLedger.length + 1}`, year: session.currentYear, week: session.currentWeek, phase: session.phase, teamId, decisionId: consequence.decisionId, choiceId: consequence.choiceId, type: consequence.type, label: consequence.label, effect: consequence.effect, momentum: consequence.momentum, risk: consequence.risk, targetTab: consequence.targetTab, appliedAt: consequence.appliedAt };
+  const entry = { id: `GMD-${session.currentYear}-${session.currentWeek}-${session.league.gmDecisionLedger.length + 1}`, year: session.currentYear, week: session.currentWeek, phase: session.phase, teamId, decisionId: consequence.decisionId, choiceId: consequence.choiceId, occurrenceKey: consequence.occurrenceKey, type: consequence.type, label: consequence.label, effect: consequence.effect, momentum: consequence.momentum, risk: consequence.risk, targetTab: consequence.targetTab, appliedAt: consequence.appliedAt };
   let execution = null;
   if (consequence.mode === "immediate" || consequence.mode === "immediate-or-commitment") execution = attemptImmediateAction(session, consequence, teamId);
   const needsCommitment = consequence.mode === "commitment" || (consequence.mode === "immediate-or-commitment" && !execution?.ok);

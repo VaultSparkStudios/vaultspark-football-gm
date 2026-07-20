@@ -154,7 +154,9 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
           decisionId: decision.decisionId,
           choiceId: choice.id,
           type: decision.type,
-          week: decision.week
+          year: decision.year,
+          week: decision.week,
+          occurrenceKey: decision.occurrenceKey
         }
       }));
     });
@@ -315,7 +317,9 @@ export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [], pending
       action: "choose-gm-decision",
       decisionId: pendingDecision.id,
       type: pendingDecision.type,
+      year: pendingDecision.year,
       week: pendingDecision.week,
+      occurrenceKey: pendingDecision.occurrenceKey,
       choices: (pendingDecision.options || []).slice(0, 4).map((option) => ({
         id: option.id,
         label: option.label || option.id,

@@ -93,6 +93,7 @@ import { resolveThreads as resolveContinuityThreads } from "../engine/continuity
 import { updateFanSentiment } from "../engine/fanSentiment.js";
 import { applyMentorshipBonuses } from "../engine/veteranMentorship.js";
 import { getGmCommitmentState, latestGmDecision, resolveGmDecisionCommitments } from "../engine/gmDecisionConsequences.js";
+import { generateGmDecisions } from "../engine/gmDecisionAuthority.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 
 const TABLE_CATEGORIES = ["passing", "rushing", "receiving", "defense", "blocking", "kicking", "punting", "snaps"];
@@ -4600,7 +4601,7 @@ export class GameSession {
         )
       : null;
 
-    return {
+    const dashboard = {
       game: GAME_NAME,
       franchiseId: `fa-${this.rngStreams?.baseSeed ?? this.startYear}-${this.controlledTeamId}`,
       startYear: this.startYear,
@@ -4684,6 +4685,10 @@ export class GameSession {
             completed: this.league.pendingDraft.completed
           }
         : null
+    };
+    return {
+      ...dashboard,
+      gmDecisionQueue: generateGmDecisions(dashboard, { ledger: this.league.gmDecisionLedger })
     };
   }
 

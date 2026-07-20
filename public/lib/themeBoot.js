@@ -1,7 +1,7 @@
 /*
  * themeBoot.js — pre-paint theme bootstrap for static pages.
  * Classic (non-module) script so it can run synchronously in <head>
- * before first paint. Mirrors the resolution order of lib/themeMode.js:
+ * before first paint. Uses the same system-preference resolution order as the game shell:
  * saved "franchise-architect-theme" preference first, then
  * prefers-color-scheme, defaulting to dark. Must never throw.
  */

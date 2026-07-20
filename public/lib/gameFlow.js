@@ -13,6 +13,7 @@ import { buildTacticalMatchupBrief } from "./tacticalFilmRoom.js";
 import { ingestNewsIntoInbox, renderInboxBadge } from "./engagementFeatures.js";
 import { appendSimulationDigest, classifySimulationCheckpoint, formatSimulationDigest, hasPendingSimulationDecision } from "./simulationCheckpoints.js";
 import { createAuthorityEpochTracker } from "./authorityEpoch.js";
+import { recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -695,40 +696,39 @@ export async function loadCoreDashboard() {
 }
 
 async function runLoaderBatch(loaders = []) {
-  const results = await Promise.allSettled(loaders.map((loader) => loader()));
+  const results = await Promise.allSettled(loaders.map((loader) => loader.load()));
   return results
-    .map((result, index) => (result.status === "rejected" ? result.reason?.message || `Loader ${index + 1} failed.` : null))
+    .map((result, index) => {
+      const loader = loaders[index];
+      if (result.status === "fulfilled") {
+        resolveClientDiagnostic({ surface: "hydration", operation: loader.name });
+        return null;
+      }
+      const message = result.reason?.message || `${loader.name} failed.`;
+      recordClientDiagnostic({
+        surface: "hydration",
+        operation: loader.name,
+        error: message,
+        authorityKey: state.hydrationAuthority?.identity,
+        retry: loader.load
+      });
+      return message;
+    })
     .filter(Boolean);
 }
 
 export async function loadSecondaryPanels({ background = false } = {}) {
   const loaderFns = [
-    () => loadRoster(),
-    () => loadContractsTeam(),
-    () => loadFreeAgency(),
-    () => loadRetiredPool(),
-    () => loadStats(),
-    () => loadDraftState(),
-    () => loadScouting(),
-    () => loadDepthChart(),
-    () => loadSaves(),
-    () => loadQa(),
-    () => loadTeamHistory(),
-    () => loadCalendar(),
-    () => loadTransactionLog(),
-    () => loadNews(),
-    () => loadPickAssets(),
-    () => loadNegotiations(),
-    () => loadAnalytics(),
-    () => loadSettings(),
-    () => loadStaff(),
-    () => loadOwner(),
-    () => loadObservability(),
-    () => loadPersistence(),
-    () => loadPipeline(),
-    () => loadCalibrationJobs(),
-    () => loadSimJobs()
-  ];
+    ["roster", loadRoster], ["contracts", loadContractsTeam], ["free-agency", loadFreeAgency],
+    ["retired-pool", loadRetiredPool], ["stats", loadStats], ["draft", loadDraftState],
+    ["scouting", loadScouting], ["depth-chart", loadDepthChart], ["saves", loadSaves],
+    ["qa", loadQa], ["team-history", loadTeamHistory], ["calendar", loadCalendar],
+    ["transactions", loadTransactionLog], ["news", loadNews], ["pick-assets", loadPickAssets],
+    ["negotiations", loadNegotiations], ["analytics", loadAnalytics], ["settings", loadSettings],
+    ["staff", loadStaff], ["owner", loadOwner], ["observability", loadObservability],
+    ["persistence", loadPersistence], ["pipeline", loadPipeline],
+    ["calibration-jobs", loadCalibrationJobs], ["simulation-jobs", loadSimJobs]
+  ].map(([name, load]) => ({ name, load }));
   const batches = [];
   for (let index = 0; index < loaderFns.length; index += 4) {
     batches.push(loaderFns.slice(index, index + 4));
@@ -828,9 +828,9 @@ export async function resumeSimulationFromCheckpoint({ resolveDecision = null } 
 async function fastSimRequestBody(resolveDecision) {
   const body = { count: 1 };
   if (!hasPendingSimulationDecision(state.dashboard || {})) return body;
-  const choice = typeof resolveDecision === "function" ? await resolveDecision() : null;
-  if (!choice) return null;
-  body.gmDecisionChoice = choice;
+  const result = typeof resolveDecision === "function" ? await resolveDecision() : null;
+  if (result?.status !== "chosen") return null;
+  body.gmDecisionChoice = result.choice;
   return body;
 }
 

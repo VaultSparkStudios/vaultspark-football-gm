@@ -17,7 +17,7 @@ import {
 } from "../../engine/speedrunChallenge.js";
 import { getFanSentiment, fanApprovalLabel } from "../../engine/fanSentiment.js";
 import { getMentorshipStatus, getMentorshipHistory } from "../../engine/veteranMentorship.js";
-import { executeAdvanceWeekCommand } from "../../runtime/advanceWeekCommand.js";
+import { executeAdvanceWeekTransaction } from "../../runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, migrateSnapshot, snapshotErrorPayload } from "../../runtime/snapshotMigration.js";
 import {
   createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
@@ -78,7 +78,6 @@ function getAugmentedState(session) {
     activeInjuries,
     fanSentiment:   fanSentimentData
   };
-  augmented.gmDecisionQueue = _generateGmDecisions(augmented);
   return augmented;
 }
 
@@ -233,57 +232,6 @@ function _generateSeasonArcs(sess) {
       });
     }
     return arcs;
-  } catch {
-    return [];
-  }
-}
-
-function _generateGmDecisions(augState) {
-  try {
-    const week = augState.currentWeek || 0;
-    const phase = augState.phase || "";
-    const decisions = [];
-    if (phase === "regular-season" && week >= 9 && week <= 11) {
-      const standings = augState.latestStandings || [];
-      const team = augState.controlledTeam || {};
-      const myRow = standings.find((r) => r.team === (team.abbrev || team.id)) || {};
-      decisions.push({
-        id: "trade-deadline", type: "TRADE_DEADLINE", week,
-        prompt: `Trade deadline closes end of Week 11 (current: Week ${week}). Record: ${myRow.wins || 0}-${myRow.losses || 0}. What's your priority?`,
-        options: [
-          { id: "buy", label: "Buy — acquire veterans now", effect: "Trade picks for proven players. Win-now mode." },
-          { id: "sell", label: "Sell — stock picks for the future", effect: "Trade veterans for draft capital. Long-term play." },
-          { id: "hold", label: "Hold — stay the course", effect: "No major moves. Evaluate at Week 12." }
-        ]
-      });
-    }
-    const activeInjuries = augState.activeInjuries || [];
-    const qbInjury = activeInjuries.find((p) => p.pos === "QB" && p.severity === "severe");
-    if (qbInjury) {
-      decisions.push({
-        id: "qb-injury", type: "INJURY_CRISIS", week,
-        prompt: `${qbInjury.name} is out ${qbInjury.weeksRemaining}+ weeks. How do you respond?`,
-        options: [
-          { id: "fa-qb", label: "Sign a veteran QB from free agency", effect: "Costs cap, provides experience and stability." },
-          { id: "start-backup", label: "Start backup — develop for the future", effect: "Higher risk short-term, unlocks development." },
-          { id: "trade-qb", label: "Trade for a QB upgrade", effect: "Costs picks. High risk, high reward." }
-        ]
-      });
-    }
-    const capAlerts = augState.capAlerts || [];
-    const criticalCap = capAlerts.find((a) => a.severity === "critical");
-    if (criticalCap) {
-      decisions.push({
-        id: "cap-crisis", type: "CAP_CRISIS", week,
-        prompt: `Cap emergency: ${criticalCap.headline}. Time is running out to find relief.`,
-        options: [
-          { id: "restructure", label: "Restructure key contracts immediately", effect: "Saves cap now, adds dead cap later." },
-          { id: "release", label: "Release a high-salary player", effect: "Immediate cap relief. Roster weakens." },
-          { id: "wait", label: "Let it play out — monitor closely", effect: "Risk a cap violation. High stakes." }
-        ]
-      });
-    }
-    return decisions;
   } catch {
     return [];
   }
@@ -569,22 +517,19 @@ export function createLocalApiRuntime({
       }
 
       if (method === "POST" && pathname === "/api/advance-week") {
-        const outcome = executeAdvanceWeekCommand(session, body, {
-          afterAdvance: ({ result, before }) => {
-          // Pre-trade-deadline snapshot (week 9)
-          if (result.week === 9) {
-            _rwTakeSnapshot(storage, session, "pre-deadline", "Before Trade Deadline");
-          }
-          // Season-start snapshot (transition into regular-season week 1)
-          if (before.phase !== "regular-season" && session.phase === "regular-season" && session.currentWeek === 1) {
-            _rwTakeSnapshot(storage, session, "season-start", `Season ${session.currentYear} Start`);
-          }
-          }
-        });
+        const outcome = executeAdvanceWeekTransaction(session, body);
         if (!outcome.ok) return finish(jsonResponse(outcome.status || 400, outcome));
-        writeAutoBackup(outcome.results[outcome.results.length - 1]?.phase === "offseason" ? "offseason-checkpoint" : "week");
+        const { committedSession, ...responseOutcome } = outcome;
+        session = committedSession;
+        if (responseOutcome.results.some((result) => result.week === 9)) {
+          _rwTakeSnapshot(storage, session, "pre-deadline", "Trade Deadline Checkpoint");
+        }
+        if (responseOutcome.commandReceipt.started.phase !== "regular-season" && session.phase === "regular-season") {
+          _rwTakeSnapshot(storage, session, "season-start", `Season ${session.currentYear} Start`);
+        }
+        writeAutoBackup(responseOutcome.results[responseOutcome.results.length - 1]?.phase === "offseason" ? "offseason-checkpoint" : "week");
         return finish(jsonResponse(200, {
-          ...outcome,
+          ...responseOutcome,
           state: getAugmentedState(session)
         }));
       }
@@ -1729,7 +1674,7 @@ export function createLocalApiRuntime({
 
       // ── GM Decision Queue ────────────────────────────────────────────────
       if (method === "GET" && pathname === "/api/gm-decision") {
-        return finish(jsonResponse(200, { ok: true, decisions: _generateGmDecisions(getAugmentedState(session)) }));
+        return finish(jsonResponse(200, { ok: true, decisions: getAugmentedState(session).gmDecisionQueue || [] }));
       }
 
       // ── Franchise Records Board ──────────────────────────────────────────

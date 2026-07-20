@@ -41,9 +41,9 @@ function recordLabel(season) {
 export function buildTimelineData(historySeasons = [], controlledTeamId) {
   return historySeasons.map((s) => ({
     year: s.year,
-    record: s.teams?.[controlledTeamId]?.record ?? s.record ?? "",
-    wins: s.teams?.[controlledTeamId]?.wins ?? 0,
-    losses: s.teams?.[controlledTeamId]?.losses ?? 0,
+    record: s.teams?.[controlledTeamId]?.record ?? s.record ?? `${s.wins ?? 0}-${s.losses ?? 0}${s.ties ? `-${s.ties}` : ""}`,
+    wins: s.teams?.[controlledTeamId]?.wins ?? s.wins ?? 0,
+    losses: s.teams?.[controlledTeamId]?.losses ?? s.losses ?? 0,
     champion: s.champion === controlledTeamId || s.superBowlWinner === controlledTeamId,
     playoffRound: s.teams?.[controlledTeamId]?.playoffExit ?? null,
     mvpName: s.awards?.mvp ?? "",
