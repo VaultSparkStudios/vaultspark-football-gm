@@ -19,6 +19,8 @@ export const SHARDS = {
     "test/world-state-next-step.test.js"
   ],
   runtime: [
+    "test/advance-week-command.test.js",
+    "test/authority-epoch.test.js",
     "test/beta-feedback.test.js",
     "test/box-score-presentation.test.js",
     "test/browser-save-store.test.js",
@@ -76,6 +78,7 @@ export const SHARDS = {
     "test/launch-evidence-report.test.js",
     "test/lifecycle-coherence.test.js",
     "test/public-compliance.test.js",
+    "test/release-provenance.test.js",
     "test/shard-coverage.test.js",
     "test/studio-protocol-smoke.test.js"
   ]

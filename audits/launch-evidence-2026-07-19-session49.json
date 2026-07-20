@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "1.0",
+  "generatedBy": "scripts/launch-evidence-report.mjs",
+  "checkedAt": "2026-07-20T05:12:08.107Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "summary": {
+    "status": "blocked",
+    "routesOk": false,
+    "emailForwardingVerified": false,
+    "originEvidenceVerified": false,
+    "blocker": "One or more public routes failed or could not be checked. On-domain email forwarding/copying is unverified. Canonical-origin health receipt is missing or invalid. Canonical-origin edge security headers are incomplete."
+  },
+  "routeChecks": [
+    {
+      "route": "/",
+      "url": "https://playfranchisearchitect.com/",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "statusCode": 200
+        }
+      ],
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      }
+    },
+    {
+      "route": "/game.html",
+      "url": "https://playfranchisearchitect.com/game.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /game → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/game.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/contact.html",
+      "url": "https://playfranchisearchitect.com/contact.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /contact → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/contact.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/contact",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/privacy.html",
+      "url": "https://playfranchisearchitect.com/privacy.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /privacy → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/privacy.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/privacy",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/terms.html",
+      "url": "https://playfranchisearchitect.com/terms.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /terms → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/terms.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/terms",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/agents.json",
+      "url": "https://playfranchisearchitect.com/agents.json",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/agents.json",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/.well-known/llms.txt",
+      "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/sitemap.xml",
+      "url": "https://playfranchisearchitect.com/sitemap.xml",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/sitemap.xml",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/_health",
+      "url": "https://playfranchisearchitect.com/_health",
+      "ok": false,
+      "statusCode": 404,
+      "detail": "HTTP 404",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/_health",
+          "statusCode": 404
+        }
+      ],
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      },
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <base href=\"/\" />\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta name=\"vsfgm-runtime-default\" content=\"client\" />\n    <meta name=\"vsfgm-server-available\" content=\"false\" />\n    <meta name=\"vsfgm-server-base-url\" content=\"\" />\n    <title>Franchise Architect: Football - Main Menu</title>\n    <link rel=\"canonical\" href=\"https://playfranchisearchitect.com/\" />\n    <meta name=\"description\" content=\"Run a long-horizon NFL franchise — roster, cap, scouting, draft, and simulation. Browser-native. No install required.\" />\n    <meta property=\"og:title\" content=\"Franchise Architect: Football\" />\n    <meta property=\"og:description\" content=\"The deepest browser-based NFL franchise sim. World-state, agent AI, rivalry DNA, and PFR-calibrated realism. Build a dynasty.\" />\n    <meta property=\"og:type\" content=\"website\" />\n    <meta property=\"og:url\" content=\"https://playfranchisearchitect.com/\" />\n    <meta property=\"og:image\" content=\"https://playfranchisearchitect.com/images/cover.png\" />\n    <meta name=\"twitter:card\" content=\"summary_large_image\" />\n    <meta name=\"twitter:title\" content=\"Franchise Architect: Football\" />\n    <meta name=\"twitter:description\" content=\"Browser-native NFL franchise sim. Build your dynasty.\" />\n    <meta name=\"twitter:image\" content=\"https://playfranchisearchitect.com/images/cover.png\" />\n    <link rel=\"icon\" href=\"./favicon.svg\" type=\"image/svg+xml\" />\n    <script src=\"./lib/themeBoot.js\"></script>\r\n    <link rel=\"stylesheet\" href=\"./styles.ac140e67ee.css\" />\n    <script type=\"application/ld+json\">\n      {\n        \"@context\": \"https://schema.org\",\n        \"@type\": \"VideoGame\",\n        \"name\": \"Franchise Architect: Football\",\n        \"url\": \"https://playfranchisearchitect.com/\",\n        \"description\": \"Deep browser-native NFL franchise management simulator with world-state, agent AI, rivalry DNA, GM legacy arcs, and PFR-calibrated simulation.\",\n        \"applicationCategory\": \"Game\",\n "
+    }
+  ],
+  "emailForwarding": {
+    "status": "unverified",
+    "address": "football@playfranchisearchitect.com",
+    "detail": "No delivery/forwarding evidence supplied. Do not mark SPARKED from route checks alone."
+  },
+  "originEvidence": {
+    "required": true,
+    "healthReceiptValid": false,
+    "securityHeaders": {
+      "strictTransportSecurity": false,
+      "frameProtection": false,
+      "contentSecurityPolicy": false
+    },
+    "status": "blocked"
+  }
+}

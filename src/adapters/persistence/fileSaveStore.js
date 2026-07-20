@@ -2,12 +2,15 @@ import fs from "node:fs";
 import path from "node:path";
 import {
   buildSlotRecord,
+  buildIntegrityStamp,
   extractSnapshotMeta,
   extractSnapshotMetaFromSerialized,
   getDefaultBackupPrefix,
   isBackupSlot,
-  safeSlotName
+  safeSlotName,
+  verifyIntegrityStamp
 } from "./saveStoreShared.js";
+import { assertSnapshotCompatibility, SnapshotCompatibilityError } from "../../runtime/snapshotMigration.js";
 
 export function createFileSaveStore({
   saveDir = path.resolve(process.env.VSFGM_SAVE_DIR || "saves"),
@@ -48,10 +51,12 @@ export function createFileSaveStore({
     }
   }
 
-  function writeStoredMeta(slot, snapshot, updatedAt = new Date().toISOString()) {
+  function writeStoredMeta(slot, snapshot, integrity, updatedAt = new Date().toISOString()) {
     const file = metaPath(slot);
     const meta = extractSnapshotMeta(snapshot);
-    fs.writeFileSync(file, `${JSON.stringify({ ...(meta || {}), updatedAt }, null, 2)}\n`, "utf8");
+    const temp = `${file}.tmp`;
+    fs.writeFileSync(temp, `${JSON.stringify({ ...(meta || {}), updatedAt, integrity }, null, 2)}\n`, "utf8");
+    fs.renameSync(temp, file);
     return meta;
   }
 
@@ -87,18 +92,34 @@ export function createFileSaveStore({
   }
 
   function saveSessionToSlot(slot, snapshot) {
+    assertSnapshotCompatibility(snapshot);
     const file = slotPath(slot);
     const safe = safeSlotName(slot);
     const updatedAt = new Date().toISOString();
-    fs.writeFileSync(file, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
-    writeStoredMeta(safe, snapshot, updatedAt);
+    const serialized = `${JSON.stringify(snapshot, null, 2)}\n`;
+    const integrity = buildIntegrityStamp(serialized);
+    const temp = `${file}.tmp`;
+    fs.writeFileSync(temp, serialized, "utf8");
+    fs.renameSync(temp, file);
+    writeStoredMeta(safe, snapshot, integrity, updatedAt);
     return { slot: safe, path: file };
   }
 
   function loadSessionFromSlot(slot) {
     const file = slotPath(slot);
     if (!fs.existsSync(file)) return null;
-    return JSON.parse(fs.readFileSync(file, "utf8"));
+    const serialized = fs.readFileSync(file, "utf8");
+    const integrity = readStoredMeta(slot)?.integrity || null;
+    if (!verifyIntegrityStamp(serialized, integrity)) {
+      throw new SnapshotCompatibilityError(
+        "SNAPSHOT_INTEGRITY_FAILED",
+        `Save slot "${safeSlotName(slot)}" failed integrity verification.`,
+        { status: 409 }
+      );
+    }
+    const snapshot = JSON.parse(serialized);
+    assertSnapshotCompatibility(snapshot);
+    return snapshot;
   }
 
   function deleteSaveSlot(slot) {

@@ -15,7 +15,8 @@ const defaultRoutes = [
   "/terms.html",
   "/agents.json",
   "/.well-known/llms.txt",
-  "/sitemap.xml"
+  "/sitemap.xml",
+  "/_health"
 ];
 
 function parseArgs(argv = process.argv.slice(2)) {
@@ -45,11 +46,21 @@ const maxRedirectHops = 5;
 function probeOnceHttps(url, timeoutMs) {
   return new Promise((resolve) => {
     const request = https.get(url, { timeout: timeoutMs }, (response) => {
-      response.resume();
+      const chunks = [];
+      let size = 0;
+      response.on("data", (chunk) => {
+        if (size >= 65536) return;
+        const remaining = 65536 - size;
+        const bounded = chunk.subarray(0, remaining);
+        chunks.push(bounded);
+        size += bounded.length;
+      });
       response.on("end", () => {
         resolve({
           statusCode: response.statusCode,
-          location: response.headers.location ?? null
+          location: response.headers.location ?? null,
+          headers: response.headers,
+          body: Buffer.concat(chunks).toString("utf8")
         });
       });
     });
@@ -76,7 +87,9 @@ export async function probeWithRedirects(url, timeoutMs, probeOnce = probeOnceHt
         ok: false,
         statusCode: null,
         detail: detailParts.length ? `${detailParts.join(" → ")} → ${failure}` : failure,
-        chain
+        chain,
+        headers: response.headers || {},
+        body: response.body || ""
       };
     }
     chain.push({ url: currentUrl, statusCode: response.statusCode });
@@ -87,7 +100,9 @@ export async function probeWithRedirects(url, timeoutMs, probeOnce = probeOnceHt
         ok: response.statusCode >= 200 && response.statusCode < 300,
         statusCode: response.statusCode,
         detail: detailParts.join(" → "),
-        chain
+        chain,
+        headers: response.headers || {},
+        body: response.body || ""
       };
     }
     if (hop === maxRedirectHops) {
@@ -159,6 +174,14 @@ export async function buildLaunchEvidenceReport({
       detail: result.detail || (result.ok ? "ok" : "failed")
     };
     if (Array.isArray(result.chain)) check.chain = result.chain;
+    if ((route === "/" || route === "/_health") && result.headers && typeof result.headers === "object") {
+      check.headers = Object.fromEntries(
+        ["content-type", "server", "strict-transport-security", "x-frame-options", "content-security-policy", "x-content-type-options", "referrer-policy"]
+          .filter((name) => result.headers[name] != null)
+          .map((name) => [name, result.headers[name]])
+      );
+    }
+    if (route === "/_health" && typeof result.body === "string") check.body = result.body.slice(0, 2048);
     routeChecks.push(check);
   }
 
@@ -177,21 +200,54 @@ export async function buildLaunchEvidenceReport({
 
   const routesOk = routeChecks.every((check) => check.ok);
   const emailOk = emailForwarding.status === "verified";
+  const originEvidenceRequired = routes.includes("/_health");
+  const rootCheck = routeChecks.find((check) => check.route === "/");
+  const healthCheck = routeChecks.find((check) => check.route === "/_health");
+  let healthReceipt = null;
+  try {
+    healthReceipt = healthCheck?.body ? JSON.parse(healthCheck.body) : null;
+  } catch {
+    healthReceipt = null;
+  }
+  const securityHeaders = {
+    strictTransportSecurity: Boolean(rootCheck?.headers?.["strict-transport-security"]),
+    frameProtection: Boolean(rootCheck?.headers?.["x-frame-options"]),
+    contentSecurityPolicy: Boolean(rootCheck?.headers?.["content-security-policy"])
+  };
+  const healthReceiptValid = Boolean(
+    healthCheck?.ok &&
+    healthReceipt?.status === "ok" &&
+    healthReceipt?.launchReady === false &&
+    typeof healthReceipt?.sourceRevision === "string" &&
+    healthReceipt.sourceRevision.length > 0
+  );
+  const headersValid = Object.values(securityHeaders).every(Boolean);
+  const originOk = !originEvidenceRequired || (healthReceiptValid && headersValid);
+  const blockers = [];
+  if (!routesOk) blockers.push("One or more public routes failed or could not be checked.");
+  if (!emailOk) blockers.push("On-domain email forwarding/copying is unverified.");
+  if (originEvidenceRequired && !healthReceiptValid) blockers.push("Canonical-origin health receipt is missing or invalid.");
+  if (originEvidenceRequired && !headersValid) blockers.push("Canonical-origin edge security headers are incomplete.");
   return {
     schemaVersion: "1.0",
     generatedBy: "scripts/launch-evidence-report.mjs",
     checkedAt,
     baseUrl: normalizeBaseUrl(baseUrl),
     summary: {
-      status: routesOk && emailOk ? "ready" : "blocked",
+      status: routesOk && emailOk && originOk ? "ready" : "blocked",
       routesOk,
       emailForwardingVerified: emailOk,
-      blocker: routesOk
-        ? (emailOk ? null : "On-domain email forwarding/copying is unverified.")
-        : "One or more public routes failed or could not be checked."
+      originEvidenceVerified: originOk,
+      blocker: blockers.length ? blockers.join(" ") : null
     },
     routeChecks,
-    emailForwarding
+    emailForwarding,
+    originEvidence: {
+      required: originEvidenceRequired,
+      healthReceiptValid,
+      securityHeaders,
+      status: originOk ? "verified" : "blocked"
+    }
   };
 }
 
@@ -201,6 +257,7 @@ function renderText(report) {
     `Base URL: ${report.baseUrl}`,
     `Routes: ${report.summary.routesOk ? "ok" : "blocked"}`,
     `Email: ${report.emailForwarding.status}`,
+    `Origin evidence: ${report.originEvidence.status}`,
     report.summary.blocker ? `Blocker: ${report.summary.blocker}` : "Blocker: none"
   ];
   for (const check of report.routeChecks) {

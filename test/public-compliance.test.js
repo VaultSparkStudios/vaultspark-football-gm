@@ -7,6 +7,10 @@ const requiredFiles = [
   "../public/privacy.html",
   "../public/terms.html",
   "../public/agents.json",
+  "../public/public-identity.json",
+  "../public/footer-manifest.json",
+  "../public/_health",
+  "../public/favicon.ico",
   "../public/.well-known/llms.txt",
   "../public/sitemap.xml"
 ];
@@ -32,6 +36,20 @@ test("public Pages bundle has contact, legal, sitemap, and agent metadata source
   assert.match(sitemap, /terms\.html/);
   assert.match(sitemap, /landing\.html/, "sitemap lists landing.html");
   assert.match(sitemap, /changelog\.html/, "sitemap lists changelog.html");
+});
+
+test("public identity, health, and footer contracts use the actual deploy repository", () => {
+  const identity = JSON.parse(fs.readFileSync(new URL("../public/public-identity.json", import.meta.url), "utf8"));
+  const footer = JSON.parse(fs.readFileSync(new URL("../public/footer-manifest.json", import.meta.url), "utf8"));
+  const health = JSON.parse(fs.readFileSync(new URL("../public/_health", import.meta.url), "utf8"));
+  assert.equal(identity.repository, "VaultSparkStudios/vaultspark-football-gm");
+  assert.equal(identity.canonicalOrigin, "https://playfranchisearchitect.com");
+  assert.equal(health.launchReady, false, "runtime health must not fabricate launch readiness");
+  for (const required of footer.headerLinks) {
+    assert.ok(footer.footerLinks.includes(required), `footer includes header destination ${required}`);
+  }
+  assert.match(fs.readFileSync(new URL("../public/landing.html", import.meta.url), "utf8"), /VaultSparkStudios\/vaultspark-football-gm/);
+  assert.doesNotMatch(fs.readFileSync(new URL("../public/landing.html", import.meta.url), "utf8"), /VaultSparkStudios\/franchise-architect-football/);
 });
 
 test("index footer links the landing marketing page", () => {

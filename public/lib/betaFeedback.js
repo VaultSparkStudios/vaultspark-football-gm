@@ -14,7 +14,7 @@ import { showToast } from "./appCore.js";
 import { exportSummary, isOptedIn } from "./analytics.js";
 import { buildLaunchReadinessRows } from "./tabSettings.js";
 
-const REPO_ISSUE_BASE = "https://github.com/VaultSparkStudios/franchise-architect-football/issues/new";
+const REPO_ISSUE_BASE = "https://github.com/VaultSparkStudios/vaultspark-football-gm/issues/new";
 
 /**
  * Build a prefilled GitHub new-issue URL.

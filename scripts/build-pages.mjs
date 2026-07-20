@@ -222,6 +222,37 @@ async function emitHashedStylesheet() {
   return hashedStyleHref;
 }
 
+async function emitDeployEvidence() {
+  const identity = JSON.parse(await fs.readFile(path.join(publicDir, "public-identity.json"), "utf8"));
+  const sourceRevision = String(
+    process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || process.env.SOURCE_REVISION || "local-worktree"
+  ).trim();
+  const generatedAt = new Date().toISOString();
+  const deployManifest = {
+    schemaVersion: "1.0",
+    service: identity.slug,
+    canonicalOrigin: identity.canonicalOrigin,
+    repository: identity.repository,
+    sourceRevision,
+    styleAsset: hashedStyleHref,
+    basePath,
+    runtimeDefault,
+    serverAvailable: serverAvailable === "true",
+    generatedAt
+  };
+  const health = {
+    status: "ok",
+    service: identity.slug,
+    sourceRevision,
+    styleAsset: hashedStyleHref,
+    generatedAt,
+    launchReady: false,
+    launchNote: "Runtime health is green; launch readiness still requires separate email, edge-header, deploy-currency, and founder-approval evidence."
+  };
+  await fs.writeFile(path.join(outDir, "deploy-manifest.json"), `${JSON.stringify(deployManifest, null, 2)}\n`, "utf8");
+  await fs.writeFile(path.join(outDir, "_health"), `${JSON.stringify(health, null, 2)}\n`, "utf8");
+}
+
 async function main() {
   await ensureCleanDir(outDir);
   await copyDir(publicDir, outDir);
@@ -230,6 +261,7 @@ async function main() {
   for (const pageName of htmlPages) {
     await writeHtml(pageName);
   }
+  await emitDeployEvidence();
   await fs.copyFile(path.join(outDir, "index.html"), path.join(outDir, "404.html"));
   await mirrorProjectPaths();
   console.log(`Built Pages bundle in ${outDir}`);
@@ -239,5 +271,4 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-
 

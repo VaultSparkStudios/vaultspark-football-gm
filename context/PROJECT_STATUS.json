@@ -4,35 +4,35 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 48 shipped one injury/recovery authority with Rehab Command plans, secure memory-only Gist credential custody and integrity verification, lifecycle coherence/doctor guards, bounded offseason roster progress, and authority-preserving server transport.",
-  "nextMilestone": "Produce a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then reconcile the authoritative SPARKED registry value with the local FORGE evidence contract.",
+  "currentFocus": "Session 49 shipped self-proving release evidence, shared weekly-command authority, transactional save compatibility/integrity, authority-keyed browser hydration, exact deploy provenance attestation, and read-only import preflight.",
+  "nextMilestone": "Configure and verify the canonical origin edge headers plus a real football@playfranchisearchitect.com forwarding receipt, run exact deploy provenance against the workflow artifact, then reconcile authoritative lifecycle truth.",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
+    "Launch/SPARKED remains evidence-gated until the canonical live origin has complete edge-security headers, football@playfranchisearchitect.com forwarding/copying has a real received-message receipt, deploy provenance matches the expected workflow artifact, and the authoritative registry is reconciled."
   ],
-  "lastUpdated": "2026-07-17",
+  "lastUpdated": "2026-07-20",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-07-16",
+  "truthAuditLastRun": "2026-07-19",
   "ignisScore": 41305,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 358,
-    "pass": 358,
+    "totalTests": 373,
+    "pass": 373,
     "fail": 0,
-    "lastRun": "2026-07-16",
+    "lastRun": "2026-07-19",
     "newTestFiles": [
-      "test/gist-sync-security.test.js",
-      "test/injury-rehab-command.test.js",
-      "test/lifecycle-coherence.test.js"
+      "test/advance-week-command.test.js",
+      "test/authority-epoch.test.js",
+      "test/release-provenance.test.js"
     ],
-    "newTestCount": 16,
-    "coverage": "Session 48 verified the final tree with direct shards 358/358 (core 64/64, runtime 175/175, sim-contract 68/68, sim-realism 1/1, long 3/3, studio 47/47), Playwright UI 18/18, Pages build/smoke, live routes 8/8, sitemap 10/10, secret scan 0, canon conformance 0 gaps, and doctor blockingFailing 0.",
-    "uiSuiteNote": "Session 48 Playwright passed 18/18 after trace-driven authority-fallback repair and a bye-aware box-score contract."
+    "newTestCount": 15,
+    "coverage": "Session 49 verified the final tree with aggregate canonical tests 370/370 (core 67/67, runtime 182/182, sim-contract 68/68, sim-realism 1/1, studio 52/52), long-run 3/3, Playwright 18/18, Pages build/smoke, canon conformance 0 gaps, Windows/Wave guards, and doctor blockingFailing 0.",
+    "uiSuiteNote": "Session 49 Playwright passed 18/18 after trace-equivalent failure evidence exposed and root-fixed same-authority hydration over-fencing."
   },
-  "testsPassing": 358,
-  "testsTotal": 358,
+  "testsPassing": 373,
+  "testsTotal": 373,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -84,32 +84,29 @@
     "capitalEfficiency": 94,
     "automationCoverage": 100
   },
-  "currentSession": 48,
+  "currentSession": 49,
   "lastAgent": "codex",
-  "sessionMode": "builder",
+  "sessionMode": "founder",
   "lastVerification": {
-    "timedOut": [
-      "One runtime-shard wrapper exceeded the shell timeout while its child remained active; it was terminated and the shard was rerun through a direct exit ledger, passing 175/175."
-    ],
+    "timedOut": [],
     "failed": [],
     "passed": [
-      "core shard 64/64",
-      "runtime shard 175/175",
+      "aggregate canonical suite 370/370 with exit 0",
+      "core shard 67/67",
+      "runtime shard 182/182",
       "sim-contract shard 68/68",
       "sim-realism shard 1/1",
       "long shard 3/3",
-      "studio shard 47/47",
+      "studio shard 52/52",
       "Playwright 18/18",
       "npm run build:pages",
       "npm run smoke:pages",
-      "live public routes 8/8",
-      "sitemap compliance 10/10",
-      "current-repo secret scan 0 findings",
       "canon conformance 51 applicable and 0 gaps",
       "doctor 5 passing, 1 warning, blockingFailing 0",
       "Genius cache exhausted 0 open"
     ],
-    "date": "2026-07-16"
+    "date": "2026-07-19",
+    "diagnosticNote": "An outdated ready fixture and same-authority hydration over-fencing failed earlier attempts; both were root-fixed and superseded by full green reruns."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "T2_opusplan",
@@ -119,7 +116,7 @@
   "modelPlanModeSlash": "/model opusplan",
   "planModeDetected": "missing",
   "planModeCheckedAt": "2026-07-01T05:54:57.303Z",
-  "sessionModeAutoShiftedAt": "2026-07-16T23:59:32.398Z",
+  "sessionModeAutoShiftedAt": "2026-07-20T02:57:10.673Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-05-22",
@@ -143,7 +140,7 @@
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-07-17",
+    "date": "2026-07-20",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -158,8 +155,10 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-03",
-  "lastVerificationAt": "2026-07-16",
+  "lastVerificationAt": "2026-07-19",
   "stagingType": "github-pages",
   "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
-  "runtimeUrl": "https://playfranchisearchitect.com/"
+  "runtimeUrl": "https://playfranchisearchitect.com/",
+  "entropyScore": 0.114,
+  "entropyLastComputed": "2026-07-20"
 }

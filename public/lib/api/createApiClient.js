@@ -1,6 +1,7 @@
 let localRuntimePromise = null;
 let runtimeModeCache = null;
 let fallbackAttempted = false;
+let fallbackPromise = null;
 let serverSessionEstablished = false;
 
 function readStoredRuntimeMode() {
@@ -70,6 +71,7 @@ export function setRuntimeMode(mode) {
   const nextMode = normalizeRuntimeMode(mode === "client" ? "client" : "server");
   persistRuntimeMode(nextMode);
   fallbackAttempted = false;
+  fallbackPromise = null;
   serverSessionEstablished = false;
   return nextMode;
 }
@@ -194,19 +196,25 @@ function canAutoFallbackToClient(error) {
 }
 
 async function retryInClientMode(path, options, error) {
-  fallbackAttempted = true;
-  const mode = setRuntimeMode("client");
-  try {
-    window.dispatchEvent(new CustomEvent("vsfgm:runtime-fallback", {
-      detail: {
-        from: "server",
-        to: mode,
-        reason: error?.message || "Server-backed runtime unavailable."
+  if (!fallbackPromise) {
+    fallbackAttempted = true;
+    fallbackPromise = (async () => {
+      const mode = setRuntimeMode("client");
+      try {
+        window.dispatchEvent(new CustomEvent("vsfgm:runtime-fallback", {
+          detail: {
+            from: "server",
+            to: mode,
+            reason: error?.message || "Server-backed runtime unavailable."
+          }
+        }));
+      } catch {
+        // Ignore event dispatch failures.
       }
-    }));
-  } catch {
-    // Ignore event dispatch failures.
+      await getLocalRuntime();
+    })();
   }
+  await fallbackPromise;
   return requestLocal(path, options);
 }
 
@@ -218,7 +226,7 @@ export function createApiClient() {
     try {
       return await requestHttp(path, options);
     } catch (error) {
-      if (canAutoFallbackToClient(error)) {
+      if (canAutoFallbackToClient(error) || fallbackPromise) {
         return await retryInClientMode(path, options, error);
       }
       throw error;

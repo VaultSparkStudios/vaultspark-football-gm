@@ -1,8 +1,27 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 43 closed at 992 / 1000 SIL v3.0. Verification: focused draft-war-room 4/4, direct default shards 288/288, Playwright UI 17/17, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight, cache exhausted. Aggregate npm test timed out twice and is not counted as green. Launch/SPARKED remains blocked only on verified on-domain email forwarding/copying evidence plus live-origin proof.
+Rolling status: Session 49 closed at 994 / 1000 SIL v3.0. Verification: aggregate canonical suite 370/370, long 3/3, Playwright 18/18, Pages build/smoke, Windows/Wave guards, canon 51 applicable/0 gaps, blocker preflight empty, doctor blockingFailing 0, and Genius cache exhausted. Launch/SPARKED remains evidence-gated on complete live edge headers, verified on-domain forwarding/copying, and authoritative registry reconciliation.
 <!-- rolling-status-end -->
+
+## 2026-07-19 — Session 49 Release and State Authority
+
+SIL v3.0: **994 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 94, Automation Coverage 100).
+
+- Dev Health: 100 — aggregate canonical tests pass 370/370 with exit 0, long-run 3/3, Playwright 18/18, Pages build/smoke, and doctor blockingFailing 0.
+- Creative Alignment: 100 — runtime commands, save continuity, and visible sync truth strengthen the one-franchise General Manager fantasy without adding fake outcomes.
+- Momentum: 100 — four primary items and two concrete second-order innovations shipped in one uninterrupted mission.
+- Engagement: 100 — tactical receipts, continuity-safe saves, and trustworthy live state protect the weekly decision ritual and long-dynasty investment.
+- Process Quality: 100 — every audit premise was checked against live code; the stale fixture and over-fencing defect were root-fixed instead of weakening gates.
+- Cross-Repo Coherence: 100 — authoritative checker/registry contradictions were sent through signed Ark cargo; no sibling tree was edited.
+- Security Posture: 100 — save integrity fails closed, no secrets/dependencies/variable-cost services were added, and launch gates remain evidence-driven.
+- Ecosystem Integration: 100 — audit sidecar, renderer, Genius cache, Innovation Pack, Ark receipt, task board, handoff, status, and release artifacts agree.
+- Capital Efficiency: 94 — unchanged; the work remains static-host compatible and zero variable cost, but no business impact is fabricated to raise this score.
+- Automation Coverage: 100 — new command, fallback, persistence, authority-race, release-evidence, provenance, and preflight contracts are assigned to canonical shards and real-browser coverage.
+
+Committed SIL follow-ups:
+- `[SIL]` Every new background/entity loader must use the authority/filter/sequence fence before mutating global browser state.
+- `[SIL]` Launch evidence fixtures and live checks must include explicit health, edge, email, and deploy-currency evidence; absence never defaults to pass.
 
 ## 2026-07-04 — Session 38 Mobile GM Decision-First Closeout
 

@@ -16,9 +16,9 @@ import {
   formatLeaderboardEntry, parseLeaderboard, serializeLeaderboard, rankEntry
 } from "../../engine/speedrunChallenge.js";
 import { getFanSentiment, fanApprovalLabel } from "../../engine/fanSentiment.js";
-import { buildTacticalFilmReceipt } from "../../../public/lib/tacticalFilmRoom.js";
 import { getMentorshipStatus, getMentorshipHistory } from "../../engine/veteranMentorship.js";
-import { applyGmDecisionConsequence } from "../../engine/gmDecisionConsequences.js";
+import { executeAdvanceWeekCommand } from "../../runtime/advanceWeekCommand.js";
+import { inspectSnapshotCompatibility, migrateSnapshot, snapshotErrorPayload } from "../../runtime/snapshotMigration.js";
 import {
   createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
   lockGate, openGate, applyIntents, recordAdvance, lobbyStatus,
@@ -316,7 +316,7 @@ function buildSession({
 }
 
 function sessionFromSnapshot(snapshot) {
-  return GameSession.fromSnapshot(snapshot, (seed) => new RNG(seed));
+  return GameSession.fromSnapshot(migrateSnapshot(snapshot), (seed) => new RNG(seed));
 }
 
 function toSetupTeamIdentity(team) {
@@ -569,67 +569,22 @@ export function createLocalApiRuntime({
       }
 
       if (method === "POST" && pathname === "/api/advance-week") {
-        const count = Math.max(1, Math.min(40, toInt(body?.count) || 1));
-        const gmDecision = body?.gmDecisionChoice
-          ? applyGmDecisionConsequence(session, body.gmDecisionChoice)
-          : { ok: true, applied: false };
-        if (!gmDecision.ok) return finish(jsonResponse(400, gmDecision));
-        // ── Pre-game tactical override (halftime adjustment) ─────────────────
-        const tacticOverride = body?.weeklyTacticOverride;
-        let prevWeeklyPlan = null;
-        if (tacticOverride && session.controlledTeamId) {
-          const team = session.league?.teams?.find((t) => t.id === session.controlledTeamId);
-          if (team?.weeklyPlan) {
-            prevWeeklyPlan = { ...team.weeklyPlan };
-            const tacticMap = {
-              "run-heavy":   { passLeanDelta: -0.15, aggressionDelta:  0.05, summary: "Ground game focus" },
-              "pass-heavy":  { passLeanDelta:  0.15, aggressionDelta:  0.05, summary: "Air attack tempo" },
-              "blitz-heavy": { passLeanDelta: -0.05, aggressionDelta:  0.20, summary: "Pressure package" },
-              "prevent":     { passLeanDelta: -0.10, aggressionDelta: -0.15, summary: "Prevent defense" }
-            };
-            const mod = tacticMap[tacticOverride];
-            if (mod) Object.assign(team.weeklyPlan, mod);
-          }
-        }
-        const results = [];
-        for (let i = 0; i < count; i += 1) {
-          const prevPhase = session.phase;
-          const prevWeek = session.currentWeek;
-          const result = session.advanceWeek();
+        const outcome = executeAdvanceWeekCommand(session, body, {
+          afterAdvance: ({ result, before }) => {
           // Pre-trade-deadline snapshot (week 9)
           if (result.week === 9) {
             _rwTakeSnapshot(storage, session, "pre-deadline", "Before Trade Deadline");
           }
           // Season-start snapshot (transition into regular-season week 1)
-          if (prevPhase !== "regular-season" && session.phase === "regular-season" && session.currentWeek === 1) {
+          if (before.phase !== "regular-season" && session.phase === "regular-season" && session.currentWeek === 1) {
             _rwTakeSnapshot(storage, session, "season-start", `Season ${session.currentYear} Start`);
           }
-          results.push(result);
-        }
-        const tacticalReceipt = tacticOverride
-          ? buildTacticalFilmReceipt({
-              tactic: tacticOverride,
-              results,
-              controlledTeamId: session.controlledTeamId,
-              year: session.currentYear
-            })
-          : null;
-        if (tacticalReceipt) {
-          if (!Array.isArray(session.league.tacticalFilmLog)) session.league.tacticalFilmLog = [];
-          session.league.tacticalFilmLog.unshift(tacticalReceipt);
-          session.league.tacticalFilmLog = session.league.tacticalFilmLog.slice(0, 40);
-        }
-        // Restore original weekly plan after simulation
-        if (prevWeeklyPlan && session.controlledTeamId) {
-          const team = session.league?.teams?.find((t) => t.id === session.controlledTeamId);
-          if (team) team.weeklyPlan = prevWeeklyPlan;
-        }
-        writeAutoBackup(results[results.length - 1]?.phase === "offseason" ? "offseason-checkpoint" : "week");
+          }
+        });
+        if (!outcome.ok) return finish(jsonResponse(outcome.status || 400, outcome));
+        writeAutoBackup(outcome.results[outcome.results.length - 1]?.phase === "offseason" ? "offseason-checkpoint" : "week");
         return finish(jsonResponse(200, {
-          ok: true, count, results,
-          gmDecision,
-          tacticApplied: tacticOverride || null,
-          tacticalReceipt,
+          ...outcome,
           state: getAugmentedState(session)
         }));
       }
@@ -1304,9 +1259,26 @@ export function createLocalApiRuntime({
         if (!body?.snapshot || typeof body.snapshot !== "object") {
           return finish(jsonResponse(400, { ok: false, error: "snapshot object is required." }));
         }
-        session = sessionFromSnapshot(body.snapshot);
+        let replacement;
+        try {
+          replacement = sessionFromSnapshot(body.snapshot);
+        } catch (error) {
+          return finish(jsonResponse(error.status || 400, snapshotErrorPayload(error)));
+        }
+        session = replacement;
         writeAutoBackup("snapshot-import");
         return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session) }));
+      }
+
+      if (method === "POST" && pathname === "/api/snapshot/inspect") {
+        if (!body?.snapshot || typeof body.snapshot !== "object") {
+          return finish(jsonResponse(400, { ok: false, error: "snapshot object is required." }));
+        }
+        const compatibility = inspectSnapshotCompatibility(body.snapshot);
+        return finish(jsonResponse(compatibility.ok ? 200 : compatibility.status || 400, {
+          ...compatibility,
+          activeLeaguePreserved: true
+        }));
       }
 
       if (method === "GET" && pathname === "/api/backups") {
@@ -1321,17 +1293,27 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/saves/load") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
-        const snapshot = saveStore.loadSessionFromSlot(String(body.slot));
+        let snapshot;
+        try { snapshot = saveStore.loadSessionFromSlot(String(body.slot)); }
+        catch (error) { return finish(jsonResponse(error.status || 409, snapshotErrorPayload(error))); }
         if (!snapshot) return finish(jsonResponse(404, { ok: false, error: "Save slot not found." }));
-        session = sessionFromSnapshot(snapshot);
+        let replacement;
+        try { replacement = sessionFromSnapshot(snapshot); }
+        catch (error) { return finish(jsonResponse(error.status || 400, snapshotErrorPayload(error))); }
+        session = replacement;
         return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: saveStore.listSaveSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/backups/load") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
-        const snapshot = saveStore.loadSessionFromSlot(String(body.slot));
+        let snapshot;
+        try { snapshot = saveStore.loadSessionFromSlot(String(body.slot)); }
+        catch (error) { return finish(jsonResponse(error.status || 409, snapshotErrorPayload(error))); }
         if (!snapshot) return finish(jsonResponse(404, { ok: false, error: "Backup slot not found." }));
-        session = sessionFromSnapshot(snapshot);
+        let replacement;
+        try { replacement = sessionFromSnapshot(snapshot); }
+        catch (error) { return finish(jsonResponse(error.status || 400, snapshotErrorPayload(error))); }
+        session = replacement;
         return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: saveStore.listBackupSlots() }));
       }
 

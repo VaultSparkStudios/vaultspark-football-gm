@@ -129,3 +129,35 @@ test("api client preserves an established server authority after a transient con
   delete globalThis.window;
   delete globalThis.CustomEvent;
 });
+
+test("concurrent bootstrap failures coalesce into one client fallback authority", async () => {
+  const storage = createMemoryStorage();
+  const dispatched = [];
+  globalThis.CustomEvent = class CustomEvent {
+    constructor(type, init = {}) { this.type = type; this.detail = init.detail; }
+  };
+  globalThis.window = {
+    localStorage: storage,
+    location: { protocol: "http:" },
+    dispatchEvent(event) { dispatched.push(event); return true; }
+  };
+  globalThis.document = createMetaDocument({
+    "vsfgm-runtime-default": "server",
+    "vsfgm-server-available": "true",
+    "vsfgm-server-base-url": ""
+  });
+  globalThis.fetch = async () => { throw new Error("ECONNREFUSED"); };
+
+  const { createApiClient, getRuntimeMode } = await importClientModule();
+  const api = createApiClient();
+  const payloads = await Promise.all(Array.from({ length: 4 }, () => api("/api/setup/init")));
+
+  assert.ok(payloads.every((payload) => payload.ok && payload.diagnostics?.setup?.runtime === "browser"));
+  assert.equal(getRuntimeMode(), "client");
+  assert.equal(dispatched.filter((event) => event.type === "vsfgm:runtime-fallback").length, 1);
+
+  delete globalThis.fetch;
+  delete globalThis.document;
+  delete globalThis.window;
+  delete globalThis.CustomEvent;
+});

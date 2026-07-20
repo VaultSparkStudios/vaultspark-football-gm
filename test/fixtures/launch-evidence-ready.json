@@ -1,13 +1,28 @@
 {
   "routes": {
-    "/": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
+    "/": {
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "headers": {
+        "strict-transport-security": "max-age=31536000",
+        "x-frame-options": "DENY",
+        "content-security-policy": "default-src 'self'"
+      }
+    },
     "/game.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
     "/contact.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
     "/privacy.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
     "/terms.html": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
     "/agents.json": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
     "/.well-known/llms.txt": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
-    "/sitemap.xml": { "ok": true, "statusCode": 200, "detail": "HTTP 200" }
+    "/sitemap.xml": { "ok": true, "statusCode": 200, "detail": "HTTP 200" },
+    "/_health": {
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "body": "{\"status\":\"ok\",\"launchReady\":false,\"sourceRevision\":\"fixture-ready\"}"
+    }
   },
   "emailEvidence": "Forwarding receipt copied to founder operations inbox."
 }

@@ -299,7 +299,9 @@ export function renderObservability() {
     { metric: "serverRequests", value: obs.server?.requests ?? 0 },
     { metric: "apiRequests", value: obs.server?.apiRequests ?? 0 },
     { metric: "uptimeSeconds", value: obs.server?.uptimeSeconds ?? 0 },
-    { metric: "runtimeCounters", value: Object.keys(obs.runtime?.counters || {}).length }
+    { metric: "runtimeCounters", value: Object.keys(obs.runtime?.counters || {}).length },
+    { metric: "hydrationAuthorityEpoch", value: state.hydrationAuthority?.epoch ?? 0 },
+    { metric: "staleResponsesDiscarded", value: state.hydrationAuthority?.staleResponsesDiscarded ?? 0 }
   ];
   renderTable("observabilityTable", rows);
   renderSettingsSpotlight();

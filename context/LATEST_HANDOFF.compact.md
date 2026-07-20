@@ -1,42 +1,42 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: f1483371c70f -->
-<!-- generated-at: 2026-07-17T03:09:07.355Z -->
+<!-- source-hash: 87c6bfef5ae0 -->
+<!-- generated-at: 2026-07-20T04:34:56.730Z -->
 
 # LATEST_HANDOFF (compact)
 
-## Handoff Summary — Session 48
+SESSION HANDOFF SUMMARY (Session 49, 2026-07-19)
 
-Session: 48 (2026-07-16)
+Status
+- Mission complete. Genius List: 0 open / 4 closed. Innovation Pack exhausted.
 
-Intent
-- Run uninterrupted /start -> /audit -> /implement -> /closeout arc; exhaust Genius List + second-order Innovation Pack; verify all suites; commit/push direct to main.
-- Status: mission complete; no ranked implementation item open.
-
-Shipped
-- Injury clock: facilities/age/reinjury-aware probability + recovery, persistent Rehab Command plans, server/local APIs, browser surface, source-derived Priority Inbox receipts.
-- Gist sync hardening: credentials in memory/tab session only, legacy persistent copies removed, masked-token rejection, bounded imports, remote integrity sidecar verification, no secret rehydration to UI.
-- Lifecycle coherence contract + checker + doctor integration + studio-shard coverage; preserves local FORGE/public-unlaunched truth; surfaces registry SPARKED as warning. Signed Ark correction request 01JTMN2KPU7561F0E9B389360E sent (no sibling source edits).
-- Saturation fixes: stale index no longer traps offseason cuts; batched mutation rebuilds index once with roster-maintenance truth receipts; per-team modifier caching restored sim speed.
-- Server authority no longer silently falls back to browser-local state after poll timeout; browser coverage respects controlled-team bye weeks.
+Shipped this session
+- Public origin contract: GitHub repo links, canonical identity, health receipt, deploy manifest, hashed style provenance, favicon, footer/responsive ledgers, rollback runbook, origin evidence report (never greens missing edge/email evidence).
+- Weekly command authority: shared validated executor (server+browser), known tactics only, validation-before-mutation, GM/tactic ordering, finally cleanup, versioned receipts, same-seed parity, coalesced bootstrap fallback.
+- Save transaction boundary: future/invalid schemas fail with stable recovery codes; shared integrity semantics; unknown algorithms fail closed; legacy unstamped slots supported; failed imports preserve active franchise.
+- Hydration authority: identity + per-panel sequence/filter keys fence async writes; stale drops tracked in Settings metric; over-fencing defect root-fixed.
+- Second-order: verify-release-provenance.mjs (proves live revision/asset/repo/health identity); /api/snapshot/inspect (read-only import preflight).
 
 Verification
-- Node: 358/358 (core 64, runtime 175, sim-contract 68, sim-realism 1, long-run 3, studio 47).
-- Playwright: 18/18 exit 0; authority race trace-proven, fixed, rerun.
-- Staging: Pages build + smoke pass; 8/8 route probe; sitemap 10/10.
-- Security/canon: secret scan 0 findings; canon 51 applicable/0 gaps; Wave + Windows guards pass.
-- Doctor: 5 passing, 1 nonblocking registry warning, blockingFailing 0.
+- npm test: 370/370 exit 0 (core 67, runtime 182, sim-contract 68, sim-realism 1, studio 52).
+- Long-run 3/3; Playwright 18/18; Pages build/smoke pass.
+- Windows spawn + CANON-044 Wave guards pass; canon 51 applicable / 0 gaps; blocker preflight empty; Genius cache exhausted.
+- Doctor: 5 passing / 1 nonblocking registry warning / blockingFailing 0.
 
-Now (top items)
-1. Obtain/generate real received-message receipt for football@playfranchisearchitect.com via evidence-producing inbound route checker.
-2. Reconcile authoritative lifecycle registry after receipt.
-3. If no receipt, begin next fresh audit (Session 48 lists exhausted).
+Current intent
+- Complete edge-security-header and real-email-receipt evidence gates via canonical hosting/inbound route; run provenance attestor against workflow artifact; reconcile lifecycle registry truth. Otherwise start fresh audit.
 
-Blockers (top)
-1. No real inbound-mail receipt for football@playfranchisearchitect.com; forwarding/copying unverified.
-2. Central email probe exposes capability-name mismatch / no implemented route-verification probe (not proof of received mail).
-3. Authoritative registry shows SPARKED vs local unlaunched posture (warning-only until receipt).
+Now bucket (top 3)
+- Apply edge-security headers through canonical hosting route.
+- Produce real received-message receipt for football@playfranchisearchitect.com (forwarding/copying proof).
+- Run verify-release-provenance.mjs against live workflow artifact; reconcile registry.
 
-Human-blocked (age)
-- Launch/SPARKED flip: blocked on email-delivery receipt + live-origin proof. Persistent since ~Session 32 (multi-session, ~16+ sessions). Do not flip posture without receipt.
+Blockers (top 3)
+- Missing complete edge-security headers on live origin.
+- No real received-message receipt for project-domain email.
+- Authoritative lifecycle registry/checker truth is sibling-owned (Ark receipt 01JTUQRA8780576DEF65968F04 sent; Studio Ops not editable here).
 
-Next session: Run inbound-mail route checker for the project domain to get a receipt; else start a fresh audit arc.
+Human-blocked (persistent)
+- Launch/SPARKED flip blocked pending email receipt + live-origin proof. Open and recurring since ~Session 33 (2026-07-02); unresolved ~17 days across Sessions 33-49.
+
+Next session pointer
+- Land edge-header/email evidence gates, then attest provenance and reconcile registry; else begin fresh live-code audit.

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0",
+  "slug": "franchise-architect-football",
+  "name": "Franchise Architect: Football",
+  "canonicalOrigin": "https://playfranchisearchitect.com",
+  "repository": "VaultSparkStudios/vaultspark-football-gm",
+  "repositoryUrl": "https://github.com/VaultSparkStudios/vaultspark-football-gm",
+  "issuesUrl": "https://github.com/VaultSparkStudios/vaultspark-football-gm/issues/new",
+  "discussionsUrl": "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions",
+  "contactEmail": "football@playfranchisearchitect.com",
+  "healthPath": "/_health",
+  "lifecycle": "FORGE",
+  "launchEvidenceRequired": [
+    "received on-domain email forwarding/copying receipt",
+    "current canonical-origin asset fingerprint",
+    "required edge security headers",
+    "founder launch approval"
+  ]
+}

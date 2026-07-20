@@ -1,10 +1,10 @@
 {
   "vectorVersion": "1.0",
-  "generatedAt": "2026-07-03",
-  "generatedAtMs": 1783116681567,
-  "session": 35,
-  "vectorHash": "952edd2c536253dc",
-  "silTotal": 984,
+  "generatedAt": "2026-07-20",
+  "generatedAtMs": 1784524419940,
+  "session": 49,
+  "vectorHash": "970cccc052c40a4b",
+  "silTotal": 994,
   "silAvg3": null,
   "velocity": null,
   "debt": null,
@@ -20,15 +20,15 @@
   "genome": null,
   "ignisScore": 41305,
   "ignisGrade": "FORGE",
-  "ignisAgeDays": 14,
+  "ignisAgeDays": 31,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "Obtain a real received-message receipt proving football@playfranchisearchitect.com forwards/copies to Studio operations, then verify current live origin/routing for playfranchisearchitect.com after deployment before any SPARKED flip.",
-  "currentFocus": "Session 35 shipped modal contract completion and Priority Inbox modal truth: high-frequency game overlays now use the shared modalManager lifecycle with dialog semantics, focus trapping, Escape behavior, and focus restoration; focused regressions cover the contract.",
+  "nextMilestone": "Configure and verify the canonical origin edge headers plus a real football@playfranchisearchitect.com forwarding receipt, run exact deploy provenance against the workflow artifact, then reconcile authoritative lifecycle truth.",
+  "currentFocus": "Session 49 shipped self-proving release evidence, shared weekly-command authority, transactional save compatibility/integrity, authority-keyed browser hydration, exact deploy provenance attestation, and read-only import preflight.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated until football@playfranchisearchitect.com forwarding/copying is verified with a real received-message receipt and current live origin/routing proves playfranchisearchitect.com serves the latest build."
+    "Launch/SPARKED remains evidence-gated until the canonical live origin has complete edge-security headers, football@playfranchisearchitect.com forwarding/copying has a real received-message receipt, deploy provenance matches the expected workflow artifact, and the authoritative registry is reconciled."
   ]
 }

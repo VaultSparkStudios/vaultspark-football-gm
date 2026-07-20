@@ -31,12 +31,13 @@ function createMemoryStorage() {
 
 const SNAPSHOT = {
   schemaVersion: 1,
+  rngSeed: 49020,
   currentYear: 2031,
   currentWeek: 4,
   phase: "regular-season",
   controlledTeamId: "BUF",
   seasonsSimulated: 5,
-  league: { teams: [{ id: "BUF", name: "Buffalo", abbrev: "BUF" }] }
+  league: { teams: [{ id: "BUF", name: "Buffalo", abbrev: "BUF" }], players: [] }
 };
 
 // ── Save integrity guard (S14) ───────────────────────────────────────────────
@@ -95,6 +96,6 @@ test("verifyIntegrityStamp helpers behave at the boundaries", () => {
   assert.equal(verifyIntegrityStamp(s, stamp), true);
   assert.equal(verifyIntegrityStamp(s + " ", stamp), false);
   assert.equal(verifyIntegrityStamp(s, null), true, "missing stamp = legacy = pass");
-  assert.equal(verifyIntegrityStamp(s, { algo: "unknown" }), true, "unknown algo = skip");
+  assert.equal(verifyIntegrityStamp(s, { algo: "unknown" }), false, "unknown algorithms never bypass verification");
   assert.equal(computeSnapshotChecksum(s), computeSnapshotChecksum(s), "deterministic");
 });

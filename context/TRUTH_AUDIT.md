@@ -262,3 +262,13 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Test truth: counted direct evidence is 358/358 Node tests and Playwright 18/18. One timed runtime wrapper and an earlier 17/18 browser run are retained as superseded diagnostic evidence, not claimed green.
 - Release truth: current public routes pass 8/8 and sitemap passes 10/10, but no real received-message receipt proves `football@playfranchisearchitect.com` forwarding/copying. Launch posture therefore remains FORGE regardless of the registry's stale SPARKED value.
 - Cost truth: all work remains browser/static compatible and zero variable cost; Max Plan accounting is notional and does not generate an alarm.
+## 2026-07-19 — Session 49 truth updates
+
+- Public identity truth: the deploy repository is `VaultSparkStudios/vaultspark-football-gm`, not the nonexistent `franchise-architect-football` path formerly embedded in public links. The canonical origin remains `https://playfranchisearchitect.com`.
+- Deploy truth: health and manifest artifacts identify source revision and hashed style asset, while the provenance attestor compares the live origin to an expected build artifact. Reachability alone is never treated as deploy currency.
+- Launch truth: operational health explicitly reports `launchReady:false`. Missing HSTS/frame/CSP edge headers and missing received-message forwarding evidence remain blockers; fixtures must contain explicit evidence to pass.
+- Runtime truth: server and browser weekly advancement now share one executor and receipt envelope. A server connection failure may establish browser authority once during bootstrap; concurrent failures coalesce, and established server authority is not silently forked.
+- Persistence truth: future schemas, malformed franchise roots, corruption, and unknown integrity algorithms cannot hydrate an active league. Preflight and failed imports prove the current franchise remains untouched.
+- Browser concurrency truth: high-risk async panel writes commit only under their captured authority/filter/sequence; `staleResponsesDiscarded` counts actual rejected writes. Same-authority refreshes remain valid after the Playwright root fix.
+- Queue/test truth: Session 49 audit is 4 shipped / 0 open; Innovation Pack shipped two second-order candidates. Counted final evidence is aggregate 370/370, long 3/3, Playwright 18/18, and Pages build/smoke.
+- Cost truth: every change remains deterministic, static-host compatible, and zero variable cost. Flat-rate plan accounting is not a product alarm or launch blocker.

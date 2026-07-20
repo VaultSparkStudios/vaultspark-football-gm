@@ -7,6 +7,7 @@ import {
   safeSlotName,
   verifyIntegrityStamp
 } from "./saveStoreShared.js";
+import { assertSnapshotCompatibility } from "../../runtime/snapshotMigration.js";
 
 function storageKeys(storage) {
   if (!storage || typeof storage.length !== "number" || typeof storage.key !== "function") return [];
@@ -90,6 +91,7 @@ export function createBrowserSaveStore({
   }
 
   function saveSessionToSlot(slot, snapshot) {
+    assertSnapshotCompatibility(snapshot);
     const safe = safeSlotName(slot);
     const updatedAt = now();
     const serialized = JSON.stringify(snapshot);
@@ -143,7 +145,9 @@ export function createBrowserSaveStore({
           "Restore from a rolling backup (Settings → Saves → Backups)."
       );
     }
-    return JSON.parse(raw);
+    const snapshot = JSON.parse(raw);
+    assertSnapshotCompatibility(snapshot);
+    return snapshot;
   }
 
   function deleteSaveSlot(slot) {

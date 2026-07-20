@@ -1,3 +1,34 @@
+## Session 49 Intent (2026-07-19)
+
+Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; exhaust every verified Unified Genius List item; generate and implement second-order innovations; preserve observability and launch truth; verify direct suites and static staging; then commit and push directly to `main` with Ark and zero-shell hygiene.
+
+## Where We Left Off — Session 49 Closeout (2026-07-19)
+
+Session 49 completed the requested mission. The four-item infrastructure-weighted audit is fully shipped, the Unified Genius List reports 0 open / 4 closed, and the expanded Innovation Pack shipped two concrete second-order improvements plus audit follow-through.
+
+### Shipped
+
+- Public origin contract: actual GitHub repository links, canonical identity, static/runtime health receipt, deploy manifest, hashed style provenance, real favicon, footer completeness manifest, responsive parity ledger, rollback runbook, and an origin evidence report that never turns missing edge/email evidence green.
+- Weekly command authority: one shared validated executor for server and browser adapters; known tactics only, validation before mutation, GM/tactic ordering, `finally` cleanup, versioned command/film receipts, same-seed parity, and a single coalesced server-to-client bootstrap fallback.
+- Save transaction boundary: future/invalid schemas fail with stable recovery codes; browser and file stores share integrity semantics; unknown algorithms fail closed; explicitly unstamped legacy slots remain supported; failed imports preserve the active franchise.
+- Hydration authority: league/team/year/week/phase identity plus per-panel sequence/filter keys fence high-risk async writes; actual stale drops increment a visible Settings metric. A Playwright-discovered over-fencing defect was root-fixed so same-authority refreshes can commit.
+- Second-order innovations: `verify-release-provenance.mjs` proves exact live revision/asset/repository/health identity, and `/api/snapshot/inspect` performs read-only compatibility preflight before local-file or Gist import.
+
+### Verification
+
+- Direct aggregate `npm test`: 370/370 with exit 0 (core 67, runtime 182, simulation contract 68, simulation realism 1, studio 52).
+- Long-run: 3/3. Playwright: 18/18 after the authority-key correction. Pages build/smoke pass.
+- Windows spawn and CANON-044 Wave guards pass; canon conformance is 51 applicable / 0 gaps; blocker preflight is empty; Genius cache is exhausted.
+- Doctor remains 5 passing / 1 nonblocking authoritative-registry warning / `blockingFailing: 0`.
+
+### Honest deferral
+
+- Do not flip local launch/SPARKED posture. The canonical live origin still needs complete edge-security headers and a real received-message receipt proving `football@playfranchisearchitect.com` forwarding/copying. Registry/checker truth is sibling-owned; Ark receipt `01JTUQRA8780576DEF65968F04` was shipped without editing Studio Ops.
+
+### Next best move
+
+Apply the edge-header/email evidence gates through the canonical hosting/inbound route, then run the new exact deploy provenance attestor against the workflow artifact and reconcile lifecycle registry truth. Otherwise begin a fresh live-code audit because Session 49 is exhausted.
+
 ## Session 48 Intent (2026-07-16)
 
 Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; exhaust the Unified Genius List; generate and implement second-order innovations; verify direct suite, staging, doctor, security, canon, and observability truth; then commit and push directly to `main` with Ark and zero-shell closeout hygiene.

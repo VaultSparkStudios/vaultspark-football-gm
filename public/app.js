@@ -1413,6 +1413,7 @@ function bindEvents() {
       const gistId = document.getElementById("gistIdInput")?.value?.trim() || getSavedGistId();
       if (!gistId) { setStatus("Enter a Gist ID to import."); return; }
       const { snapshot } = await importFromGist(gistId, token);
+      await api("/api/snapshot/inspect", { method: "POST", body: { snapshot } });
       await api("/api/snapshot/import", { method: "POST", body: { snapshot } });
       await loadState();
       setStatus("Imported from Gist.");

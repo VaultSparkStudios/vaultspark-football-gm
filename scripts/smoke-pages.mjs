@@ -129,6 +129,8 @@ async function main() {
     await assertStaticPath(`/agents.json`, /Proprietary - All Rights Reserved/);
     await assertStaticPath(`/.well-known/llms.txt`, /Franchise Architect: Football/);
     await assertStaticPath(`/sitemap.xml`, /contact\.html/);
+    await assertStaticPath(`/_health`, /"launchReady": false/);
+    await assertStaticPath(`/deploy-manifest.json`, /"repository": "VaultSparkStudios\/vaultspark-football-gm"/);
 
     await assertStaticFile(`${slug}/index.html`, /Franchise Architect: Football/);
     await assertStaticFile(`${slug}/game.html`, /Franchise Architect: Football/);
@@ -139,6 +141,8 @@ async function main() {
     await assertStaticFile(`${slug}/agents.json`, /Proprietary - All Rights Reserved/);
     await assertStaticFile(`${slug}/.well-known/llms.txt`, /Franchise Architect: Football/);
     await assertStaticFile(`${slug}/sitemap.xml`, /contact\.html/);
+    await assertStaticFile(`${slug}/_health`, /"styleAsset": "styles\.[a-f0-9]{10}\.css"/);
+    await assertStaticFile(`${slug}/deploy-manifest.json`, /"sourceRevision":/);
     await assertStaticFile(`games/vaultspark-football-gm/styles.css`, /:root/);
     await assertStaticFile(`games/vaultspark-football-gm/setup.js`, /createApiClient/);
     await assertStaticPath(`${legacyMountPath}/styles.css`, /:root/);

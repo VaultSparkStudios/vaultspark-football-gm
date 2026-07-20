@@ -1,0 +1,270 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-19",
+  "session": 49,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "profile": {
+    "type": "game/app",
+    "audience": "public-unlaunched",
+    "rubric": "infrastructure-weighted product rubric",
+    "staging": "github-pages",
+    "source": "live code, direct runtime shard, current startup brief, project skill profile, authoritative arc profile, and app release-gate evidence"
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.7,
+    "progression": 8.9,
+    "sessionEngagement": 8.5,
+    "retention": 8.3,
+    "soulFidelity": 9.0,
+    "overall": 8.7,
+    "evidence": "No current playtest corpus or private creative bible is available in this public repository. Scores are provisional and derive only from executable browser, simulation, persistence, and regression contracts; no user sentiment is fabricated."
+  },
+  "summary": {
+    "rankedItems": 4,
+    "combinedPriority": 143.5,
+    "topItem": "public-origin-release-contract",
+    "source": "live-code-audit"
+  },
+  "recommendedMoves": [
+    "Make the public origin prove its own deploy currency, repository identity, rollback path, static health, and footer/parity contract without mistaking skips for passes.",
+    "Replace duplicated week advancement with one shared command envelope so tactics, decisions, receipts, cleanup, and runtime behavior cannot drift.",
+    "Make every save cross the same version, structure, integrity, and recovery boundary before it can replace the active league."
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Release truth / web hardening / public trust",
+      "effortHours": 3.0,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 41.5,
+      "slug": "public-origin-release-contract",
+      "title": "Make the canonical public origin self-proving instead of registry-green and live-stale",
+      "status": "shipped",
+      "premise": "The read-only release gate is blocked: the last-five main CI window is 3/5, staging and production /_health return 404, the deployed CSS fingerprint differs from current HEAD, no rollback/parity/footer-manifest artifact exists, and the live landing/contact/game feedback links target a nonexistent franchise-architect-football GitHub repository instead of the actual vaultspark-football-gm remote. The registry-based hardening check selects vaultsparkstudios.com rather than playfranchisearchitect.com and therefore reports green while the canonical origin lacks required hardening evidence. Email delivery and edge headers remain external evidence gates and must not be fabricated.",
+      "evidence": [
+        "public/landing.html:233",
+        "public/landing.html:316",
+        "public/landing.html:325",
+        "public/contact.html:24",
+        "public/game.html:1506",
+        "public/lib/betaFeedback.js:17",
+        "context/PROJECT_STATUS.json:163",
+        "release gate: last-five main CI 3 success / 2 failure",
+        "release gate: staging and production /_health HTTP 404",
+        "release gate: canonical-origin CANON-051 73 percent"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.8,
+          "recipe": "Correct every public GitHub/discussion link and add a static health resource plus focused public-link smoke."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Create one public identity/deploy contract consumed by build and smoke checks; repair all repository/community links; ship a static health receipt, footer manifest, rollback runbook, and responsive parity ledger; make the artifact publish its commit/style fingerprint; add a canonical-origin release report that distinguishes source-fixable failures from external edge/email gates; and send the registry-origin checker defect through signed Ark cargo without touching Studio Ops."
+        },
+        "L3": {
+          "effortHours": 6.0,
+          "recipe": "Add post-deploy provenance attestation that compares live asset hashes and edge headers to the workflow artifact before any launch-state transition."
+        }
+      },
+      "verification": [
+        "all public repository links resolve to the actual remote",
+        "Pages build and static health smoke",
+        "footer completeness manifest",
+        "release parity and rollback artifacts exist",
+        "live-origin report never converts edge/email skips into passes",
+        "Ark receipt for authoritative checker correction"
+      ],
+      "executionEvidence": [
+        "Focused public/release tests: 29/29 pass",
+        "Pages build and static smoke pass",
+        "Footer manifest: 7/7 destinations complete",
+        "Ark repo-question receipt: 01JTUQRA8780576DEF65968F04",
+        "External edge-header and email-forwarding gates remain honestly blocked"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Runtime architecture / simulation truth / observability",
+      "effortHours": 5.0,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 39.0,
+      "slug": "weekly-command-parity-envelope",
+      "title": "Create one source-of-truth weekly command envelope with parity receipts and failure-safe cleanup",
+      "status": "shipped",
+      "premise": "The server and browser runtimes independently implement POST /api/advance-week. The browser runtime applies weeklyTacticOverride, builds a tactical film receipt, and restores the weekly plan only on the success path; the server runtime ignores the override entirely even though the browser always sends it. Both mutate a GM decision before simulation, yet there is no shared payload/result contract or parity regression, so the same visible action can produce different football state and receipts by runtime.",
+      "evidence": [
+        "src/server.js:493",
+        "src/server.js:500",
+        "src/server.js:507",
+        "src/app/api/localApiRuntime.js:571",
+        "src/app/api/localApiRuntime.js:578",
+        "src/app/api/localApiRuntime.js:609",
+        "src/app/api/localApiRuntime.js:625",
+        "public/app.js:455",
+        "test/browser-wiring.test.js:42"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.2,
+          "recipe": "Teach the server route to apply the existing tactic override and return the same receipt fields as the browser runtime, with one focused parity test."
+        },
+        "L2": {
+          "effortHours": 5.0,
+          "recipe": "Extract a shared weekly-command executor that validates the full payload before mutation, applies GM choice and ephemeral tactics in a deterministic order, restores temporary plans in finally, returns one versioned command/receipt envelope, and is used by both runtimes; add same-seed state/receipt parity, invalid-command non-mutation, and failure-cleanup tests."
+        },
+        "L3": {
+          "effortHours": 8.0,
+          "recipe": "Add persisted idempotency keys and replay-safe command receipts so a timed-out server action can be retried without double-advancing the franchise."
+        }
+      },
+      "verification": [
+        "shared command unit tests",
+        "same-seed local/server adapter parity",
+        "invalid choice and tactic leave state unchanged",
+        "temporary weekly plan restores on thrown simulation",
+        "browser tactic receipt remains visible"
+      ],
+      "executionEvidence": [
+        "Shared src/runtime/advanceWeekCommand.js used by both adapters",
+        "Invalid-command non-mutation, failure cleanup, and same-seed parity tests pass",
+        "Concurrent bootstrap fallback coalesces to one authority event",
+        "Complete runtime shard: 182/182 pass"
+      ]
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Persistence / security / compatibility",
+      "effortHours": 4.0,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 34.0,
+      "slug": "save-compatibility-integrity-boundary",
+      "title": "Turn every save load into a verified compatibility transaction with recovery evidence",
+      "status": "shipped",
+      "premise": "Snapshot migration only implements v1 to v2, but a snapshot declaring a future schema is silently relabeled as v2 rather than rejected. Browser saves verify integrity while server/file saves write metadata without an integrity stamp and load raw JSON without verification. Snapshot import and slot-load paths therefore do not share one explicit version/shape/integrity contract, and an incompatible future save can fail deep inside GameSession instead of producing an honest recovery-safe diagnosis.",
+      "evidence": [
+        "src/runtime/snapshotMigration.js:1",
+        "src/runtime/snapshotMigration.js:24",
+        "src/runtime/bootstrap.js:35",
+        "src/adapters/persistence/browserSaveStore.js:128",
+        "src/adapters/persistence/fileSaveStore.js:87",
+        "src/adapters/persistence/fileSaveStore.js:99",
+        "src/app/api/localApiRuntime.js:1303",
+        "src/server.js:1360"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Reject future schema versions and validate the minimum snapshot shape before GameSession hydration."
+        },
+        "L2": {
+          "effortHours": 4.0,
+          "recipe": "Create one snapshot compatibility inspector used by migration, import, browser saves, and file saves; reject future/invalid structures with stable recovery codes; stamp and verify file-save integrity like browser saves while preserving explicitly identified legacy slots; keep the active session untouched on failure; and surface actionable recovery evidence through both APIs and the browser."
+        },
+        "L3": {
+          "effortHours": 7.0,
+          "recipe": "Add a read-only repair preview that can explain and selectively normalize recoverable legacy fields before the user commits an import."
+        }
+      },
+      "verification": [
+        "future-schema rejection",
+        "invalid-shape rejection",
+        "file-save corruption detection",
+        "legacy unstamped save compatibility",
+        "failed import preserves active league",
+        "local/server error-envelope parity"
+      ],
+      "executionEvidence": [
+        "Future schema and malformed shape rejection tests pass",
+        "File corruption and unknown-integrity-algorithm tests pass",
+        "Legacy unstamped slots remain explicitly supported",
+        "Rejected browser import proves active-league preservation",
+        "Complete runtime shard: 182/182 pass"
+      ]
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Browser concurrency / speed / user trust",
+      "effortHours": 4.0,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 29.0,
+      "slug": "hydration-authority-epochs",
+      "title": "Fence background hydration by league authority so late data can never repaint a newer franchise state",
+      "status": "shipped",
+      "premise": "Startup launches 25 secondary loaders in background batches. Loader functions capture team, year, week, or filter values, await independently, then mutate the global state without an epoch or stale-response guard. A team switch, week advance, save load, runtime change, or faster later request can therefore be followed by an older response repainting roster, contracts, history, schedule, or settings state. AbortController exists only as a per-request timeout and no hydration generation is tracked.",
+      "evidence": [
+        "public/lib/gameFlow.js:131",
+        "public/lib/gameFlow.js:209",
+        "public/lib/gameFlow.js:333",
+        "public/lib/gameFlow.js:625",
+        "public/lib/gameFlow.js:642",
+        "public/lib/gameFlow.js:700",
+        "public/lib/api/createApiClient.js:109",
+        "public/lib/appState.js:3"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Add a dashboard generation counter and guard the roster/contracts loaders most exposed to controlled-team changes."
+        },
+        "L2": {
+          "effortHours": 4.0,
+          "recipe": "Introduce a small authority-epoch primitive keyed by league, runtime, controlled team, year, and week; advance it on authoritative dashboard replacement; make background and entity-scoped loaders commit only when their captured epoch/filter key remains current; count discarded stale responses in source-derived browser observability; and add deterministic deferred-response tests plus a visible sync-health row."
+        },
+        "L3": {
+          "effortHours": 7.0,
+          "recipe": "Propagate abort signals through the API layer and replace eager all-panel hydration with demand-aware prefetch driven by the active tab and idle budget."
+        }
+      },
+      "verification": [
+        "deferred old roster response cannot overwrite a new team",
+        "old week/history response is discarded",
+        "background failures remain visible",
+        "stale-discard metric derives from actual drops",
+        "focused browser and Playwright race proof"
+      ],
+      "executionEvidence": [
+        "Authority epoch primitive rejects old-team and slower same-filter responses",
+        "Roster, contracts, calendar, scouting, depth, history, settings, owner, and observability writes are fenced",
+        "Settings exposes source-derived authority epoch and stale-response discard count",
+        "Complete runtime shard: 182/182 pass"
+      ]
+    }
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Rebuild or re-list Rehab Command, Gist custody, tactical film, GM commitments, Potential, themes, or mobile decision work",
+      "reason": "Rejected as phantom work: each surface is present in live code and covered by direct runtime/browser tests from Sessions 46–48."
+    },
+    {
+      "candidate": "Flip FORGE/SPARKED or claim launch readiness",
+      "reason": "Deferred honestly: no received-message receipt proves football@playfranchisearchitect.com forwarding/copying, and authoritative registry drift is not launch evidence."
+    },
+    {
+      "candidate": "Extract every GameSession domain service in one rewrite",
+      "reason": "Culled as an unsafe façade-first refactor. The bound service scaffolds are not production delegates; the weekly command boundary is the smaller root seam with immediate parity evidence."
+    },
+    {
+      "candidate": "Add paid telemetry, hosted AI commentary, or a backend feedback service",
+      "reason": "Rejected by the internal-first, cost-neutral, and observability-honesty ladders; current gaps are deterministic local architecture problems."
+    },
+    {
+      "candidate": "Add weather or stadium systems before runtime truth is unified",
+      "reason": "Culled below the current infrastructure priority floor. It remains a valid future immersion direction only after command parity and save safety are proven."
+    },
+    {
+      "candidate": "Treat the passing baseline suite as proof that these contracts exist",
+      "reason": "Rejected: the direct runtime shard passes 175/175 but contains no weekly-command adapter parity test, future-schema rejection, file integrity verification, or stale-loader race test."
+    }
+  ]
+}

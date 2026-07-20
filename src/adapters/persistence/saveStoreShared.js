@@ -25,7 +25,8 @@ export function buildIntegrityStamp(serialized) {
 }
 
 export function verifyIntegrityStamp(serialized, integrity) {
-  if (!integrity || integrity.algo !== "fnv1a32") return true; // legacy saves: no stamp to verify
+  if (!integrity) return true; // explicitly supported legacy saves had no stamp
+  if (integrity.algo !== "fnv1a32") return false;
   const str = String(serialized);
   return integrity.length === str.length && integrity.checksum === computeSnapshotChecksum(str);
 }

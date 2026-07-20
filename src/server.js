@@ -14,7 +14,8 @@ import {
   saveSessionToSlot
 } from "./runtime/saveStore.js";
 import { getPersistenceDescriptor } from "./runtime/persistence.js";
-import { applyGmDecisionConsequence } from "./engine/gmDecisionConsequences.js";
+import { executeAdvanceWeekCommand } from "./runtime/advanceWeekCommand.js";
+import { inspectSnapshotCompatibility, snapshotErrorPayload } from "./runtime/snapshotMigration.js";
 
 const PORT = Number(process.env.PORT || 4173);
 const PUBLIC_DIR = path.resolve("public");
@@ -496,20 +497,15 @@ async function handleApi(req, res, url) {
       sendJson(res, 400, { ok: false, error: "Invalid JSON body." });
       return true;
     }
-    const count = Math.max(1, Math.min(40, toInt(body.count) || 1));
-    const gmDecision = body.gmDecisionChoice
-      ? applyGmDecisionConsequence(session, body.gmDecisionChoice)
-      : { ok: true, applied: false };
-    if (!gmDecision.ok) {
-      sendJson(res, 400, gmDecision);
+    const outcome = executeAdvanceWeekCommand(session, body);
+    if (!outcome.ok) {
+      sendJson(res, outcome.status || 400, outcome);
       return true;
     }
-    const results = [];
-    for (let i = 0; i < count; i += 1) results.push(session.advanceWeek());
-    const last = results[results.length - 1];
+    const last = outcome.results[outcome.results.length - 1];
     if (last?.phase === "offseason") writeAutoBackup("offseason-checkpoint");
     else writeAutoBackup("week");
-    sendJson(res, 200, { ok: true, count, results, gmDecision, state: session.getDashboardState() });
+    sendJson(res, 200, { ...outcome, state: session.getDashboardState() });
     return true;
   }
 
@@ -1364,9 +1360,26 @@ async function handleApi(req, res, url) {
       sendJson(res, 400, { ok: false, error: "snapshot object is required." });
       return true;
     }
-    session = createSessionFromSnapshot(body.snapshot);
+    let replacement;
+    try { replacement = createSessionFromSnapshot(body.snapshot); }
+    catch (error) { sendJson(res, error.status || 400, snapshotErrorPayload(error)); return true; }
+    session = replacement;
     writeAutoBackup("snapshot-import");
     sendJson(res, 200, { ok: true, state: session.getDashboardState() });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/snapshot/inspect") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!body || !body.snapshot || typeof body.snapshot !== "object") {
+      sendJson(res, 400, { ok: false, error: "snapshot object is required." });
+      return true;
+    }
+    const compatibility = inspectSnapshotCompatibility(body.snapshot);
+    sendJson(res, compatibility.ok ? 200 : compatibility.status || 400, {
+      ...compatibility,
+      activeLeaguePreserved: true
+    });
     return true;
   }
 
@@ -1392,12 +1405,17 @@ async function handleApi(req, res, url) {
       sendJson(res, 400, { ok: false, error: "slot is required." });
       return true;
     }
-    const snapshot = loadSessionFromSlot(String(body.slot));
+    let snapshot;
+    try { snapshot = loadSessionFromSlot(String(body.slot)); }
+    catch (error) { sendJson(res, error.status || 409, snapshotErrorPayload(error)); return true; }
     if (!snapshot) {
       sendJson(res, 404, { ok: false, error: "Save slot not found." });
       return true;
     }
-    session = createSessionFromSnapshot(snapshot);
+    let replacement;
+    try { replacement = createSessionFromSnapshot(snapshot); }
+    catch (error) { sendJson(res, error.status || 400, snapshotErrorPayload(error)); return true; }
+    session = replacement;
     sendJson(res, 200, { ok: true, state: session.getDashboardState(), slots: listSaveSlots() });
     return true;
   }
@@ -1408,12 +1426,17 @@ async function handleApi(req, res, url) {
       sendJson(res, 400, { ok: false, error: "slot is required." });
       return true;
     }
-    const snapshot = loadSessionFromSlot(String(body.slot));
+    let snapshot;
+    try { snapshot = loadSessionFromSlot(String(body.slot)); }
+    catch (error) { sendJson(res, error.status || 409, snapshotErrorPayload(error)); return true; }
     if (!snapshot) {
       sendJson(res, 404, { ok: false, error: "Backup slot not found." });
       return true;
     }
-    session = createSessionFromSnapshot(snapshot);
+    let replacement;
+    try { replacement = createSessionFromSnapshot(snapshot); }
+    catch (error) { sendJson(res, error.status || 400, snapshotErrorPayload(error)); return true; }
+    session = replacement;
     sendJson(res, 200, { ok: true, state: session.getDashboardState(), slots: listBackupSlots() });
     return true;
   }

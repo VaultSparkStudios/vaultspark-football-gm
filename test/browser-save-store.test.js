@@ -64,13 +64,14 @@ test("browser save store supports save, list, load, backup pruning, and delete",
   });
 
   const snapshot = {
-    schemaVersion: 3,
+    schemaVersion: 2,
+    rngSeed: 99,
     currentYear: 2026,
     currentWeek: 4,
     phase: "regular-season",
     controlledTeamId: "BUF",
     seasonsSimulated: 1,
-    league: { teams: [{ id: "BUF", abbrev: "AGU", name: "Austin Guardians" }] }
+    league: { teams: [{ id: "BUF", abbrev: "AGU", name: "Austin Guardians" }], players: [] }
   };
 
   const saved = store.saveSessionToSlot("primary", snapshot);
@@ -107,14 +108,15 @@ test("browser save store prunes old backups before failing on quota", () => {
   });
 
   const snapshot = {
-    schemaVersion: 3,
+    schemaVersion: 2,
+    rngSeed: 99,
     currentYear: 2026,
     currentWeek: 4,
     phase: "regular-season",
     controlledTeamId: "BUF",
     seasonsSimulated: 1,
     notes: "x".repeat(140),
-    league: { teams: [{ id: "BUF", abbrev: "AGU", name: "Austin Guardians" }] }
+    league: { teams: [{ id: "BUF", abbrev: "AGU", name: "Austin Guardians" }], players: [] }
   };
 
   store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 4, phase: "regular", maxBackups: 2 });
@@ -130,13 +132,14 @@ test("browser save store surfaces a helpful quota message when storage cannot re
   const storage = createQuotaStorage(80);
   const store = createBrowserSaveStore({ storage });
   const snapshot = {
-    schemaVersion: 3,
+    schemaVersion: 2,
+    rngSeed: 99,
     currentYear: 2026,
     currentWeek: 4,
     phase: "regular-season",
     controlledTeamId: "BUF",
     notes: "x".repeat(140),
-    league: { teams: [{ id: "BUF", abbrev: "AGU", name: "Austin Guardians" }] }
+    league: { teams: [{ id: "BUF", abbrev: "AGU", name: "Austin Guardians" }], players: [] }
   };
 
   assert.throws(() => store.saveSessionToSlot("primary", snapshot), /Browser storage is full/);

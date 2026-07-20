@@ -43,6 +43,67 @@ test("launch evidence reports ready only when routes and email evidence are both
   assert.equal(report.summary.status, "ready");
 });
 
+test("canonical-origin evidence requires an honest health receipt and edge headers", async () => {
+  const report = await buildLaunchEvidenceReport({
+    routes: ["/", "/_health"],
+    fixture: {
+      routes: {
+        "/": {
+          ok: true,
+          statusCode: 200,
+          detail: "HTTP 200",
+          headers: { "strict-transport-security": "max-age=31536000" }
+        },
+        "/_health": {
+          ok: true,
+          statusCode: 200,
+          detail: "HTTP 200",
+          body: JSON.stringify({ status: "ok", launchReady: false, sourceRevision: "abc123" })
+        }
+      },
+      emailEvidence: "Forwarding receipt copied to founder operations inbox."
+    }
+  });
+
+  assert.equal(report.summary.routesOk, true);
+  assert.equal(report.summary.originEvidenceVerified, false);
+  assert.equal(report.originEvidence.healthReceiptValid, true);
+  assert.equal(report.originEvidence.securityHeaders.strictTransportSecurity, true);
+  assert.equal(report.originEvidence.securityHeaders.frameProtection, false);
+  assert.equal(report.summary.status, "blocked");
+  assert.match(report.summary.blocker, /edge security headers/i);
+});
+
+test("canonical-origin evidence passes only with receipt plus every required header", async () => {
+  const report = await buildLaunchEvidenceReport({
+    routes: ["/", "/_health"],
+    fixture: {
+      routes: {
+        "/": {
+          ok: true,
+          statusCode: 200,
+          detail: "HTTP 200",
+          headers: {
+            "strict-transport-security": "max-age=31536000",
+            "x-frame-options": "DENY",
+            "content-security-policy": "default-src 'self'"
+          }
+        },
+        "/_health": {
+          ok: true,
+          statusCode: 200,
+          detail: "HTTP 200",
+          body: JSON.stringify({ status: "ok", launchReady: false, sourceRevision: "abc123" })
+        }
+      },
+      emailEvidence: "Forwarding receipt copied to founder operations inbox."
+    }
+  });
+
+  assert.equal(report.summary.originEvidenceVerified, true);
+  assert.equal(report.summary.status, "ready");
+});
+
 test("launch evidence keeps route failures distinct from email evidence", async () => {
   const report = await buildLaunchEvidenceReport({
     routes: ["/", "/terms.html"],

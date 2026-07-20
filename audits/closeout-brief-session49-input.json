@@ -1,0 +1,70 @@
+{
+  "session": "S49",
+  "date": "2026-07-19",
+  "repo": "Franchise Architect: Football",
+  "headline": "Session 49 exhausted release, runtime, persistence, and hydration authority work, then shipped exact deploy provenance and read-only save preflight with every direct suite green.",
+  "items": [
+    {
+      "title": "public-release-contract",
+      "projectImpact": 10,
+      "ecosystemImpact": 8,
+      "evidence": "Canonical identity, health/deploy/footer/parity/rollback artifacts and honest live edge/email gates replace stale registry-green assumptions."
+    },
+    {
+      "title": "weekly-command-authority",
+      "projectImpact": 10,
+      "ecosystemImpact": 8,
+      "evidence": "Both adapters execute one validated deterministic command and receipt envelope with failure-safe tactic cleanup and coalesced bootstrap fallback."
+    },
+    {
+      "title": "save-compatibility-transaction",
+      "projectImpact": 10,
+      "ecosystemImpact": 7,
+      "evidence": "Version, shape, integrity, migration, and hydration are one recovery-safe boundary that preserves the active franchise on failure."
+    },
+    {
+      "title": "hydration-authority",
+      "projectImpact": 9,
+      "ecosystemImpact": 8,
+      "evidence": "Late browser responses cannot repaint a new team/week/filter; actual discarded writes are visible and same-authority refreshes remain valid."
+    },
+    {
+      "title": "second-order-provenance-and-preflight",
+      "projectImpact": 9,
+      "ecosystemImpact": 9,
+      "evidence": "Exact live deploy currency and read-only save compatibility are now executable proofs, not release/import assumptions."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "external-release-evidence",
+      "evidence": "Configure canonical edge headers and produce a real received-message forwarding receipt, then verify the deployed workflow artifact exactly."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "launch/SPARKED",
+      "evidence": "External edge/email evidence and sibling registry reconciliation remain incomplete; they do not block this direct-main development checkpoint."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "superseded-failures",
+      "evidence": "The stale fixture and over-fencing browser failures remain recorded as diagnostics and were superseded only by explicit full green reruns."
+    },
+    {
+      "title": "health-is-not-launch",
+      "evidence": "The static health receipt explicitly reports launchReady false; no source-local artifact fabricates external readiness."
+    },
+    {
+      "title": "cost-discipline",
+      "evidence": "All work is local/static and zero variable cost; flat-rate plan accounting is not treated as a product alarm."
+    }
+  ],
+  "diffStat": {
+    "files": 62,
+    "insertions": 1948,
+    "deletions": 254,
+    "suite": "canonical 370/370; long 3/3; Playwright 18/18; Pages build/smoke; doctor blockingFailing 0; Genius cache 0 open"
+  }
+}

@@ -12,7 +12,7 @@ import {
 test("issue URL targets the public repo with the beta-feedback label", () => {
   const url = buildFeedbackIssueUrl({ year: 2031, week: 7, phase: "regular-season", tab: "overviewTab" });
   const parsed = new URL(url);
-  assert.equal(parsed.origin + parsed.pathname, "https://github.com/VaultSparkStudios/franchise-architect-football/issues/new");
+  assert.equal(parsed.origin + parsed.pathname, "https://github.com/VaultSparkStudios/vaultspark-football-gm/issues/new");
   assert.equal(parsed.searchParams.get("labels"), "beta-feedback");
 });
 

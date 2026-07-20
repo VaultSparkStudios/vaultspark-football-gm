@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-17 (Session 48 closeout) -->
+<!-- generated-at: 2026-07-20 (Session 49 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S48 ══════╗
-║  Date: 2026-07-17  ·  SIL: 994/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S49 ══════╗
+║  Date: 2026-07-20  ·  SIL: 994/1000  ·  Velocity: —              ║
+║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ One truthful injury clock with facilities-, age-, and reinju  ║
-║  ✓ GitHub Gist sync now keeps credentials in memory/tab session  ║
-║  ✓ A machine-readable lifecycle coherence contract, direct chec  ║
-║  ✓ Saturation root fixes: stale lookup indexes can no longer tr  ║
-║  ✓ Established server authority can no longer silently fall bac  ║
+║  ✓ Public origin contract: actual GitHub repository links, cano  ║
+║  ✓ Weekly command authority: one shared validated executor for   ║
+║  ✓ Save transaction boundary: future/invalid schemas fail with   ║
+║  ✓ Hydration authority: league/team/year/week/phase identity pl  ║
+║  ✓ Second-order innovations: `verify-release-provenance.mjs` pr  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 994/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 49 files  ·  M:37 A:0 D:0 ?:12                         ║
+║  Changes: 62 files  ·  M:43 A:19 D:0 ?:0                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         358/358                                          ║
-║  IGNIS:         28d ago                                          ║
+║  Tests:         373/373                                          ║
+║  IGNIS:         31d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  14d ago                                          ║
+║  Sanitization:  17d ago                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

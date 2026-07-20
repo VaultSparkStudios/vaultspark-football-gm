@@ -12,9 +12,28 @@ import { closeModal, openModal } from "./modalManager.js";
 import { buildTacticalMatchupBrief } from "./tacticalFilmRoom.js";
 import { ingestNewsIntoInbox, renderInboxBadge } from "./engagementFeatures.js";
 import { appendSimulationDigest, classifySimulationCheckpoint, formatSimulationDigest, hasPendingSimulationDecision } from "./simulationCheckpoints.js";
+import { createAuthorityEpochTracker } from "./authorityEpoch.js";
+
+const hydrationAuthority = createAuthorityEpochTracker();
+
+function dashboardAuthorityKey(dashboard = {}) {
+  return [dashboard.leagueId || dashboard.startYear || "league", dashboard.controlledTeamId || "none", dashboard.currentYear, dashboard.currentWeek, dashboard.phase].join(":");
+}
+
+function beginHydration(scope, key = "") {
+  return hydrationAuthority.begin(scope, key);
+}
+
+function commitHydration(token, key, callback) {
+  const committed = hydrationAuthority.commit(token, key, callback);
+  state.hydrationAuthority = hydrationAuthority.snapshot();
+  return committed;
+}
 
 export function applyDashboard(newState) {
   const previous = state.dashboard;
+  hydrationAuthority.replaceAuthority(dashboardAuthorityKey(newState));
+  state.hydrationAuthority = hydrationAuthority.snapshot();
   state.dashboard = newState;
   state.leagueSettings = newState.settings || state.leagueSettings;
   state.contractTools = {
@@ -145,11 +164,13 @@ export async function loadScheduleWeek(week) {
 
 export async function loadCalendar() {
   const selectedYear = Number(document.getElementById("calendarYearFilter").value || state.dashboard?.currentYear);
+  const token = beginHydration("calendar", selectedYear);
   const payload = await api(`/api/calendar?year=${selectedYear}`);
-  state.calendar = payload.calendar || null;
-  const selectedWeek = Number(document.getElementById("calendarWeekFilter").value || state.dashboard?.currentWeek || 1);
-  state.calendarWeek = selectedWeek;
-  renderCalendar();
+  commitHydration(token, Number(document.getElementById("calendarYearFilter").value || state.dashboard?.currentYear), () => {
+    state.calendar = payload.calendar || null;
+    state.calendarWeek = Number(document.getElementById("calendarWeekFilter").value || state.dashboard?.currentWeek || 1);
+    renderCalendar();
+  });
 }
 
 export async function loadTransactionLog() {
@@ -208,10 +229,13 @@ export async function loadNegotiations(teamId = null) {
 
 export async function loadContractsTeam() {
   const teamId = (document.getElementById("contractsTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
+  const token = beginHydration("contracts", teamId);
   const [rosterPayload, expiringPayload] = await Promise.all([
     api(`/api/roster?team=${encodeURIComponent(teamId)}`),
     api(`/api/contracts/expiring?team=${encodeURIComponent(teamId)}`)
   ]);
+  const currentTeamId = (document.getElementById("contractsTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
+  if (!commitHydration(token, currentTeamId, () => {
   state.contractTeamId = teamId;
   state.contractRoster = rosterPayload.roster || [];
   state.contractCap = rosterPayload.cap || null;
@@ -225,8 +249,9 @@ export async function loadContractsTeam() {
     state.selectedContractPlayerId = null;
   }
   renderExpiringContracts();
-  await loadNegotiations(teamId);
   renderContractsPage();
+  })) return;
+  await loadNegotiations(teamId);
 }
 
 export async function loadAnalytics() {
@@ -241,9 +266,12 @@ export async function loadAnalytics() {
 }
 
 export async function loadSettings() {
+  const token = beginHydration("settings", "league");
   const payload = await api("/api/settings");
-  state.leagueSettings = payload.settings || null;
-  applySettingsControls();
+  commitHydration(token, "league", () => {
+    state.leagueSettings = payload.settings || null;
+    applySettingsControls();
+  });
 }
 
 export async function loadStaff() {
@@ -255,7 +283,10 @@ export async function loadStaff() {
 
 export async function loadOwner() {
   const teamId = document.getElementById("ownerTeamSelect").value || state.dashboard?.controlledTeamId || "BUF";
+  const token = beginHydration("owner", teamId);
   const payload = await api(`/api/owner?team=${encodeURIComponent(teamId)}`);
+  const currentTeamId = document.getElementById("ownerTeamSelect").value || state.dashboard?.controlledTeamId || "BUF";
+  commitHydration(token, currentTeamId, () => {
   state.ownerState = payload.owner || null;
   const owner = state.ownerState?.owner;
   if (owner) {
@@ -266,12 +297,16 @@ export async function loadOwner() {
     document.getElementById("ownerAnalyticsInput").value = owner.facilities?.analytics ?? "";
   }
   renderOwner();
+  });
 }
 
 export async function loadObservability() {
+  const token = beginHydration("observability", "runtime");
   const payload = await api("/api/observability");
-  state.observability = payload || null;
-  renderObservability();
+  commitHydration(token, "runtime", () => {
+    state.observability = payload || null;
+    renderObservability();
+  });
 }
 
 export async function loadPersistence() {
@@ -341,7 +376,20 @@ export async function loadRoster() {
   if (minOverall) query.set("minOverall", minOverall);
   if (minAge) query.set("minAge", minAge);
   if (maxAge) query.set("maxAge", maxAge);
+  const requestKey = query.toString();
+  const token = beginHydration("roster", requestKey);
   const data = await api(`/api/roster?${query.toString()}`);
+  const currentTeamId = (document.getElementById("rosterTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
+  const currentKey = new URLSearchParams({ team: currentTeamId });
+  const currentPos = document.getElementById("rosterPosFilter").value;
+  const currentMinOverall = document.getElementById("rosterMinOverallFilter").value;
+  const currentMinAge = document.getElementById("rosterMinAgeFilter").value;
+  const currentMaxAge = document.getElementById("rosterMaxAgeFilter").value;
+  if (currentPos) currentKey.set("position", currentPos);
+  if (currentMinOverall) currentKey.set("minOverall", currentMinOverall);
+  if (currentMinAge) currentKey.set("minAge", currentMinAge);
+  if (currentMaxAge) currentKey.set("maxAge", currentMaxAge);
+  if (!commitHydration(token, currentKey.toString(), () => {
   state.roster = data.roster || [];
   setSelectedDesignationPlayer(state.selectedDesignationPlayerId);
   renderRoster();
@@ -350,6 +398,7 @@ export async function loadRoster() {
     state.contractRoster = data.roster || [];
     state.contractCap = data.cap || null;
   }
+  })) return;
 }
 
 export async function loadFreeAgency() {
@@ -460,6 +509,7 @@ export async function importSnapshot(file) {
   } catch {
     throw new Error("Invalid snapshot JSON.");
   }
+  await api("/api/snapshot/inspect", { method: "POST", body: { snapshot } });
   const payload = await api("/api/snapshot/import", { method: "POST", body: { snapshot } });
   applyDashboard(payload.state);
   await refreshEverything();
@@ -473,18 +523,25 @@ export async function loadDraftState() {
 
 export async function loadScouting() {
   const teamId = state.dashboard?.controlledTeamId || "BUF";
+  const token = beginHydration("scouting", teamId);
   const payload = await api(`/api/scouting?team=${encodeURIComponent(teamId)}&limit=140`);
-  state.scouting = payload.scouting || null;
-  renderScouting();
+  commitHydration(token, state.dashboard?.controlledTeamId || "BUF", () => {
+    state.scouting = payload.scouting || null;
+    renderScouting();
+  });
 }
 
 export async function loadDepthChart() {
   const teamId = (document.getElementById("depthTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
   const position = document.getElementById("depthPositionSelect").value;
+  const token = beginHydration("depth-chart", `${teamId}:${position}`);
   const [payload, rosterPayload] = await Promise.all([
     api(`/api/depth-chart?team=${encodeURIComponent(teamId)}`),
     api(`/api/roster?team=${encodeURIComponent(teamId)}`)
   ]);
+  const currentTeamId = (document.getElementById("depthTeamSelect").value || state.dashboard?.controlledTeamId || "BUF").toUpperCase();
+  const currentPosition = document.getElementById("depthPositionSelect").value;
+  commitHydration(token, `${currentTeamId}:${currentPosition}`, () => {
   state.depthChart = payload.depthChart || null;
   state.depthSnapShare = payload.snapShare || null;
   state.depthDefaultShares = Object.fromEntries(
@@ -506,6 +563,7 @@ export async function loadDepthChart() {
   state.depthRoster = rosterPayload.roster || [];
   state.depthOrder = [...(state.depthChart?.[position] || [])];
   renderDepthChart();
+  });
 }
 
 export async function loadSaves() {
@@ -532,7 +590,10 @@ export async function loadQa() {
 
 export async function loadTeamHistory() {
   const teamId = document.getElementById("teamHistorySelect").value || state.dashboard?.controlledTeamId;
+  const token = beginHydration("team-history", teamId);
   const payload = await api(`/api/history/team?team=${encodeURIComponent(teamId)}`);
+  const currentTeamId = document.getElementById("teamHistorySelect").value || state.dashboard?.controlledTeamId;
+  if (!commitHydration(token, currentTeamId, () => {
   state.teamHistory = payload.history || null;
   renderTeamHistorySpotlight(payload.history || null);
   renderTable(
@@ -546,6 +607,7 @@ export async function loadTeamHistory() {
       pa: season.pa
     }))
   );
+  })) return;
 }
 
 export async function loadPlayerTimeline() {

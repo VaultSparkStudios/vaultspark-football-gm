@@ -373,3 +373,10 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 **Rationale:** Newly drafted practice players could be absent from a stale index, making release fail while an unguarded `while` loop continued forever. Progress is now a checked invariant, not an assumption.
 
 **Pattern established:** Every state-reduction loop must either demonstrate a smaller measure on each iteration or emit an explicit bounded failure receipt.
+## 2026-07-19 — Session 49 authority and evidence decisions
+
+- Weekly advancement is one versioned command boundary shared by server and browser adapters. Runtime-specific backup/snapshot hooks may surround it, but payload validation, GM/tactic ordering, temporary-plan cleanup, simulation, and receipts may not diverge.
+- Save compatibility is transactional: inspect version and minimum shape, verify any declared integrity algorithm, migrate, hydrate a replacement, and only then replace the active league. Unknown algorithms fail closed; absence of a stamp remains an explicit legacy contract.
+- Browser background writes are authorized by dashboard identity plus panel request sequence/filter key. Authority advances only when the source identity changes; ordinary same-authority refreshes must remain committable.
+- Runtime health and launch readiness are separate truths. `/_health` must report operational source evidence with `launchReady:false`; launch requires independently verified edge headers, email delivery, and exact deploy provenance.
+- Repository/registry truth owned by Studio Ops is transported through signed Ark cargo. This repo never edits a sibling tree to make its own release gate green.

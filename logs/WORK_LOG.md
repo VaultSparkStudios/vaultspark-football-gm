@@ -363,3 +363,12 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Final direct evidence is 358/358 Node tests plus Playwright 18/18, Pages build/smoke, live routes 8/8, sitemap 10/10, secret scan 0, canon 0 gaps, and doctor 5 pass/1 warning/0 blocking.
 - The current-main CI failure was traced to a generated startup cost-label fixture mismatch; the Session 48 generated brief and local studio shard now pass. Deploy workflows failed only because they gate on that studio shard.
 - Launch truth remains unchanged: routes are green, but no real email-forwarding receipt exists, so no launch-state fabrication or SPARKED flip occurred.
+## 2026-07-19 — Session 49 continuous arc
+
+- Rebasing `main` first confirmed the tree was current; startup preflight, Windows guard, blocker discovery, canon checks, and canonical brief completed.
+- Generated and implemented `docs/AUDIT_2026-07-19_SESSION49.*`: public release truth, shared weekly-command authority, transactional save compatibility/integrity, and browser hydration epochs.
+- Corrected all public repository/community links to `VaultSparkStudios/vaultspark-football-gm`; added canonical public identity, health/deploy manifests, footer/parity/rollback evidence, favicon, and live evidence gates.
+- Unified server/browser weekly advancement, fixed concurrent bootstrap fallback, hardened save load/import boundaries, and added source-derived browser stale-response observability.
+- Exhausted the primary list, expanded the thin Innovation Pack, and shipped exact deploy provenance attestation plus read-only snapshot compatibility preflight.
+- Root-fixed the outdated ready fixture and a Playwright-discovered same-authority over-fencing regression; never weakened either gate.
+- Verification: `npm test` 370/370 exit 0, long 3/3, Playwright 18/18, Pages build/smoke, Windows/Wave guards, canon 0 gaps, doctor blockingFailing 0.

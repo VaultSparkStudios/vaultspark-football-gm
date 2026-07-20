@@ -613,3 +613,20 @@ Source: `docs/AUDIT_2026-07-16_SESSION48.json`.
 | launch/SPARKED flip | Deferred honestly — live routes pass, but no real project-domain email forwarding/copying receipt exists |
 
 **Verification:** direct canonical plus long shards 358/358 (core 64, runtime 175, sim-contract 68, sim-realism 1, long 3, studio 47); Playwright 18/18; Pages build/smoke; live routes 8/8; sitemap 10/10; current-repo secret scan 0; canon conformance 0 gaps; Windows/Wave guards green; doctor `blockingFailing: 0`; Genius cache exhausted 0 open.
+
+## Session 49 — Release, Runtime, Persistence, and Hydration Authority (2026-07-19)
+
+Source: `docs/AUDIT_2026-07-19_SESSION49.json`.
+
+| Item | Status |
+|---|---|
+| public-origin-release-contract | Done — canonical identity, repository links, health/deploy/footer/parity/rollback/provenance evidence; external gates stay red |
+| weekly-command-parity-envelope | Done — one validated executor across both adapters, deterministic receipts, tactic cleanup, fallback coalescing |
+| save-compatibility-integrity-boundary | Done — version/shape/integrity transaction, stable recovery envelopes, legacy compatibility, active-league preservation |
+| hydration-authority-epochs | Done — authority/filter/sequence fences plus visible actual-discard telemetry and Playwright root fix |
+| release-provenance-attestor | Done — exact live revision, hashed asset, repository, health, and launch-truth comparison |
+| transactional-save-preflight | Done — read-only compatibility inspection before local-file and Gist imports |
+| latest-audit-follow-through | Done — rendered sidecar and Genius cache agree at 0 open / 4 closed |
+| launch/SPARKED evidence | Deferred honestly — requires complete live edge headers, real on-domain forwarding receipt, and sibling registry reconciliation |
+
+**Verification:** aggregate canonical suite 370/370 with direct exit 0; long-run 3/3; Playwright 18/18; Pages build/smoke; Windows/Wave guards; canon conformance 51 applicable/0 gaps; blocker preflight empty; doctor `blockingFailing: 0`; Ark receipt `01JTUQRA8780576DEF65968F04`.
