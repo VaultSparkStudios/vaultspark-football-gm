@@ -99,3 +99,8 @@ test("landing page inline palette responds to light theme", () => {
   const landing = fs.readFileSync(new URL("../public/landing.html", import.meta.url), "utf8");
   assert.match(landing, /\[data-theme="light"\]/, "landing defines a light palette override");
 });
+
+test("private creative-direction ledger is absent from the public repository", () => {
+  const privateLedger = new URL("../docs/CREATIVE_DIRECTION_RECORD.md", import.meta.url);
+  assert.equal(fs.existsSync(privateLedger), false, "private Studio OS ledger is not committed publicly");
+});
