@@ -48,7 +48,7 @@ Audience: public-unlaunched · Live ACTIVE canons: 51 · Pending review: 44
 | CANON-038 | Shared Studio Self-Host Server (one Hetzner box · isolated p | review |  |
 | CANON-039 | Build-It-Ourselves, Internal-First, OSS-Research Discipline  | review |  |
 | CANON-040 | Agent-Deployed Migrations (AI agents apply database/infra mi | review |  |
-| CANON-041 | Website Mobile Parity + Elite Visual Craft (full desktop↔mob | review |  |
+| CANON-041 | Website Mobile Parity + Elite Visual Craft (full desktop↔mob | adopted | Side nav converts to horizontal scrollable pill strip at ≤640 px; 100dvh replaces 100vh on body/inbox/modal for mobile viewport accuracy; iOS safe-area-inset-bottom added; tests-ui/mobile-nav.spec.js covers overflow, tab-switch, and header-hide |
 | CANON-042 | Studio Branding System: approved usages, DBA rule, and the e | review |  |
 | CANON-043 | Baseline repository security hygiene (free-tier: Dependabot  | review |  |
 | CANON-044 | In-session task scaffolding (Phase/Wave lists), reconciled a | adopted (suggested) | Conformance checker passed: } |
