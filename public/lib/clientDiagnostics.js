@@ -15,6 +15,15 @@ function normalizeLabel(value, fallback) {
   return String(value || fallback).replace(/[^a-z0-9:._-]/gi, "-").slice(0, 80);
 }
 
+function isOptionalCapabilityAbsence(error) {
+  const status = Number(error?.status || error?.payload?.status || 0);
+  const reasonCode = String(error?.reasonCode || error?.payload?.reasonCode || "").toLowerCase();
+  return status === 404
+    || status === 501
+    || reasonCode === "capability-unavailable"
+    || reasonCode === "not-implemented";
+}
+
 export function createClientDiagnosticsLedger({ limit = DEFAULT_LIMIT, now = () => Date.now() } = {}) {
   const entries = [];
   const listeners = new Set();
@@ -115,3 +124,43 @@ export const clearClientDiagnostics = () => clientDiagnostics.clear();
 export const retryClientDiagnostics = () => clientDiagnostics.retryAll();
 export const getClientDiagnosticsSnapshot = () => clientDiagnostics.snapshot();
 export const subscribeClientDiagnostics = (listener) => clientDiagnostics.subscribe(listener);
+
+export async function observeBackgroundTask(taskOrFactory, {
+  surface = "background",
+  operation = "unknown",
+  authorityKey = "",
+  severity = "degraded",
+  retry = null,
+  optional = false,
+  onError = null,
+  onSuccess = null,
+  ledger = clientDiagnostics
+} = {}) {
+  const execute = typeof taskOrFactory === "function"
+    ? taskOrFactory
+    : () => taskOrFactory;
+  const retryHandler = typeof retry === "function"
+    ? retry
+    : (typeof taskOrFactory === "function" ? execute : null);
+  try {
+    const value = await execute();
+    ledger.resolve({ surface, operation });
+    if (typeof onSuccess === "function") onSuccess(value);
+    return value;
+  } catch (error) {
+    if (optional && isOptionalCapabilityAbsence(error)) {
+      ledger.resolve({ surface, operation });
+      return undefined;
+    }
+    ledger.record({
+      surface,
+      operation,
+      error,
+      authorityKey,
+      severity,
+      retry: retryHandler
+    });
+    if (typeof onError === "function") onError(error);
+    return undefined;
+  }
+}

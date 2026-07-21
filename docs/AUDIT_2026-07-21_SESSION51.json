@@ -171,7 +171,7 @@
       "priority": 31.0,
       "slug": "browser-promise-observability-contract",
       "title": "Close every silent browser promise sink with one enforced degradation contract",
-      "status": "open",
+      "status": "completed",
       "premise": "Session 50 added a source-derived client diagnostics ledger, but a direct live inventory still finds fourteen .catch(() => {}) sinks across setup warmup, GM legacy, stat leaders, speedrun, rewind, return digest, season epilogue, rivalry, sim-watch, and clipboard paths. These failures can disappear without entering the ledger, contradicting the shipped background-hydration coverage claim.",
       "evidence": [
         "public/setup.js:321 and :458 silently discard local-runtime warmup failures",
@@ -201,7 +201,8 @@
         "successful retry clears only the matching degradation",
         "Pages build fails on a reintroduced sink",
         "diagnostics remain local, sanitized, and cost-neutral"
-      ]
+      ],
+      "executionEvidence": "Added observeBackgroundTask with source-derived surface/operation/authority metadata, sanitized bounded recording, exact-operation resolution, raw retry rejection semantics, direct-action callbacks, and explicit 404/501 optional-capability handling. Migrated warmup, deferred saves, mobile decisions, legacy, stat leaders, speedrun, rewind, return digest, polling, season epilogue subloads, rivalry, sim-watch, and clipboard paths; truthful fallback UI is applied before recording. A dependency-free guard rejects every parameterless promise catch unless a documented narrow exception is adjacent; the sole exception is optional HTTP error-body parsing while the primary HTTP error still throws. Pages build and Studio shard enforce it. Syntax/build pass, focused diagnostics 6/6 pass, Studio 59/59 pass, and 39 browser modules report zero unallowlisted sinks."
     },
     {
       "rank": 5,

@@ -3,6 +3,7 @@ import path from "node:path";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { assertBrowserModuleReachability } from "./check-browser-module-reachability.mjs";
+import { assertBrowserPromiseObservability } from "./check-browser-promise-observability.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -267,6 +268,7 @@ async function emitDeployEvidence() {
 }
 
 async function main() {
+  await assertBrowserPromiseObservability({ publicDir });
   await assertBrowserModuleReachability({ publicDir });
   await ensureCleanDir(outDir);
   await copyDir(publicDir, outDir);

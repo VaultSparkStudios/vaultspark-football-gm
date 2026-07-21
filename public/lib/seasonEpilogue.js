@@ -14,6 +14,7 @@
 
 import { state, api } from "./appState.js";
 import { escapeHtml } from "./appCore.js";
+import { observeBackgroundTask } from "./clientDiagnostics.js";
 
 // ── Closing quote bank (deterministic, outcome-keyed) ────────────────────────
 
@@ -84,11 +85,20 @@ export async function buildSeasonEpilogue(dashboard) {
   const isChampion = Boolean(d.lastChampionTeamId && (d.lastChampionTeamId === (team.teamId || teamKey)));
   const madePlayoffs = Boolean(myRow.playoffSeed || myRow.playoffExit || myRow.madePlayoffs);
 
+  const authorityKey = [d.currentYear || "", d.currentWeek || "", teamKey].join(":");
+  const loadOptional = async (operation, loader, fallback) => {
+    const value = await observeBackgroundTask(loader, {
+      surface: "season-epilogue",
+      operation,
+      authorityKey
+    });
+    return value ?? fallback;
+  };
   const [arcs, records, fan, capsule] = await Promise.all([
-    api("/api/season-arcs").then((r) => r?.arcs || []).catch(() => []),
-    api("/api/records/franchise").then((r) => r?.records || null).catch(() => null),
-    api("/api/fan-sentiment").then((r) => r?.fanSentiment || null).catch(() => null),
-    api("/api/time-capsule").then((r) => r?.capsule || null).catch(() => null)
+    loadOptional("season-arcs", async () => (await api("/api/season-arcs"))?.arcs || [], []),
+    loadOptional("franchise-records", async () => (await api("/api/records/franchise"))?.records || null, null),
+    loadOptional("fan-sentiment", async () => (await api("/api/fan-sentiment"))?.fanSentiment || null, null),
+    loadOptional("time-capsule", async () => (await api("/api/time-capsule"))?.capsule || null, null)
   ]);
 
   // Arc verdicts: the generator reflects final standings after rollover.

@@ -3,6 +3,7 @@ import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, 
 import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
 import { renderTradeDeadlineFrenzy } from "./tradeDeadlineFrenzy.js";
 import { buildBoxScoreImpactLeaders, buildQuarterScoreboard } from "./boxScorePresentation.js";
+import { observeBackgroundTask, recordClientDiagnostic } from "./clientDiagnostics.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -357,7 +358,15 @@ export function renderSchedule() {
     });
   }
   renderTable("scheduleTable", rows);
-  renderRivalryStrip(schedule, controlledTeamId).catch(() => {});
+  observeBackgroundTask(() => renderRivalryStrip(schedule, controlledTeamId), {
+    surface: "overview",
+    operation: "rivalry-strip",
+    authorityKey: [
+      state.dashboard?.currentYear || "",
+      state.dashboard?.currentWeek || "",
+      controlledTeamId || ""
+    ].join(":")
+  });
 }
 
 // ── Rivalry DNA strip (engine: src/engine/rivalryDNA.js via /api/rivalry) ────
@@ -382,8 +391,12 @@ async function renderRivalryStrip(schedule, controlledTeamId) {
       `/api/rivalry?teamA=${encodeURIComponent(controlledTeamId)}&teamB=${encodeURIComponent(opponentId)}`
     );
     ctx = res?.rivalry || null;
-  } catch {
+  } catch (error) {
     ctx = null;
+    strip.hidden = true;
+    const intelContainer = document.getElementById("rivalCoachIntelContainer");
+    if (intelContainer) intelContainer.hidden = true;
+    throw error;
   }
   if (!ctx || !ctx.totalMeetings) {
     strip.hidden = true;
@@ -425,7 +438,20 @@ async function renderRivalryStrip(schedule, controlledTeamId) {
           ${intel.ovrNote ? `<div class="rci-alert rci-alert-high">${escapeHtml(intel.ovrNote)}</div>` : ""}
         </div>`;
     }
-  } catch { /* non-fatal — rivalry strip still shows */ }
+  } catch (error) {
+    const intelContainer = document.getElementById("rivalCoachIntelContainer");
+    if (intelContainer) intelContainer.hidden = true;
+    recordClientDiagnostic({
+      surface: "overview",
+      operation: "rival-coach-intel",
+      error,
+      authorityKey: [
+        state.dashboard?.currentYear || "",
+        state.dashboard?.currentWeek || "",
+        controlledTeamId || ""
+      ].join(":")
+    });
+  }
 }
 
 export function renderStandings() {
@@ -704,8 +730,9 @@ export async function renderGmLegacyScore() {
     } else if (repEl) {
       repEl.hidden = true;
     }
-  } catch {
-    // non-critical
+  } catch (error) {
+    card.hidden = true;
+    throw error;
   }
 }
 
@@ -850,8 +877,9 @@ export async function renderStatLeadersStrip() {
         ${fmt(defense, "Def Stars", "sacks", (v) => `${(defense[0]?.sacks || 0)} sck / ${(defense[0]?.int || 0)} int`)}
       </div>`;
     el.hidden = !passing?.length && !rushing?.length && !defense?.length;
-  } catch {
-    // non-critical
+  } catch (error) {
+    el.hidden = true;
+    throw error;
   }
 }
 

@@ -660,7 +660,7 @@ Source: `docs/AUDIT_2026-07-21_SESSION51.json`.
 |---|---|
 | public-process-ledger-quarantine | Done — forbidden private CDR path removed; focused test 8/8; live post-index sanitization scan 0 critical / 0 warning |
 | gm-legacy-truth-engine | Done — title records credit once; progress derives from tier authority; +4 earned destination pull reaches the controlled-team offer command; recognition-only benefits say so; 48 focused tests pass |
-| browser-promise-observability-contract | Open — migrate all silent browser promise sinks into one enforced local diagnostics contract |
+| browser-promise-observability-contract | Done — 39 modules / 0 unallowlisted parameterless catches; truthful fallbacks plus sanitized retry-aware ledger; Pages build and Studio 59/59 pass |
 | consequence-bearing-franchise-contract | Open — make tutorial identity/pressure/scouting choices persist and visibly affect both runtimes |
 | dual-runtime-route-authority | Open — close or explicitly gate all 26 UI-called server route gaps through a shared contract |
 | launch/SPARKED evidence | Deferred honestly — live staging/origin/email/edge/approval/registry evidence remains incomplete and sibling-owned where noted |

@@ -15,7 +15,7 @@ import {
 } from "./lib/gistSync.js";
 
 import { state, api } from "./lib/appState.js";
-import { clearClientDiagnostics, retryClientDiagnostics } from "./lib/clientDiagnostics.js";
+import { clearClientDiagnostics, observeBackgroundTask, recordClientDiagnostic, retryClientDiagnostics } from "./lib/clientDiagnostics.js";
 
 const SIMULATION_ACTION = {
   key: "franchise-simulation",
@@ -389,17 +389,24 @@ function syncMobileLoopOverlay() {
     const decisionSnapshotKey = mobileDecisionSnapshotKey();
     renderMobileOverlay(state, advanceFromMobile);
     if (state.dashboard?.phase === "regular-season") {
-      api("/api/gm-decision")
-        .then((data) => {
-          if (!isMobileModeEnabled() || decisionSnapshotKey !== mobileDecisionSnapshotKey()) return;
-          state.mobilePendingDecision = data?.decisions?.[0] || null;
-          renderMobileOverlay(state, advanceFromMobile);
-        })
-        .catch(() => {
-          if (decisionSnapshotKey !== mobileDecisionSnapshotKey()) return;
-          state.mobilePendingDecision = null;
-          if (isMobileModeEnabled()) renderMobileOverlay(state, advanceFromMobile);
-        });
+      observeBackgroundTask(
+        () => api("/api/gm-decision"),
+        {
+          surface: "mobile-loop",
+          operation: "pending-gm-decision",
+          authorityKey: decisionSnapshotKey,
+          onSuccess: (data) => {
+            if (!isMobileModeEnabled() || decisionSnapshotKey !== mobileDecisionSnapshotKey()) return;
+            state.mobilePendingDecision = data?.decisions?.[0] || null;
+            renderMobileOverlay(state, advanceFromMobile);
+          },
+          onError: () => {
+            if (decisionSnapshotKey !== mobileDecisionSnapshotKey()) return;
+            state.mobilePendingDecision = null;
+            if (isMobileModeEnabled()) renderMobileOverlay(state, advanceFromMobile);
+          }
+        }
+      );
     } else {
       state.mobilePendingDecision = null;
     }
@@ -1454,7 +1461,12 @@ function bindEvents() {
   document.getElementById("gistListBtn")?.addEventListener("click", renderGistList);
 
   document.getElementById("refreshRewindBtn")?.addEventListener("click", () =>
-    loadRewindHistory().catch(() => {})
+    observeBackgroundTask(loadRewindHistory, {
+      surface: "action",
+      operation: "refresh-rewind-history",
+      authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || "",
+      onError: presentActionError
+    })
   );
   document.getElementById("manualRewindSnapshotBtn")?.addEventListener("click", async () => {
     await api("/api/rewind/snapshot", { method: "POST", body: { label: "Manual snapshot" } });
@@ -1828,7 +1840,14 @@ async function copyChallengeCode() {
     showToast(bestYou
       ? `Challenge code copied — dare a friend to beat ${bestYou.seasons} seasons!`
       : "Challenge code copied — share your league seed!");
-  } catch {
+  } catch (error) {
+    recordClientDiagnostic({
+      surface: "action",
+      operation: "copy-challenge-code",
+      error,
+      authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || "",
+      severity: "error"
+    });
     prompt("Copy your challenge code:", code);
   }
 }
@@ -1903,11 +1922,22 @@ async function init() {
   injectTutorialStyles();
   mountTutorial({ onComplete: () => loadState(), onSkip: () => {} });
   mountBetaFeedback();
-  maybeShowReturnDigest(state.dashboard, { onJumpToInbox: () => openInbox() }).catch(() => {});
+  observeBackgroundTask(
+    () => maybeShowReturnDigest(state.dashboard, { onJumpToInbox: () => openInbox() }),
+    {
+      surface: "engagement",
+      operation: "return-digest",
+      authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || ""
+    }
+  );
   initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
   syncMobileLoopOverlay();
   setInterval(() => {
-    loadSimJobs().catch(() => {});
+    observeBackgroundTask(loadSimJobs, {
+      surface: "jobs",
+      operation: "poll-simulation-jobs",
+      authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || ""
+    });
   }, 8000);
 }
 

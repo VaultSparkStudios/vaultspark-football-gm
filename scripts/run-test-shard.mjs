@@ -79,6 +79,7 @@ export const SHARDS = {
   studio: [
     "test/audit-renderer.test.js",
     "test/browser-module-reachability.test.js",
+    "test/browser-promise-observability.test.js",
     "test/launch-evidence-report.test.js",
     "test/lifecycle-coherence.test.js",
     "test/public-compliance.test.js",

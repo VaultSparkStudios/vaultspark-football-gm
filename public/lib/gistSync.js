@@ -130,6 +130,7 @@ async function gistRequest(method, path, token, body = null) {
     body: body ? JSON.stringify(body) : undefined
   });
   if (!resp.ok) {
+    // observability-allow-silent: optional error-body parsing may fail; the primary HTTP error is always thrown below.
     const err = await resp.json().catch(() => ({}));
     throw new Error(err.message || `GitHub API error ${resp.status}`);
   }

@@ -7,6 +7,7 @@ import {
   warmLocalRuntime
 } from "./lib/api/createApiClient.js";
 import { decodeChallengeCode, saveRivalTarget } from "./lib/challengeCodes.js";
+import { observeBackgroundTask } from "./lib/clientDiagnostics.js";
 
 const state = {
   currentYear: new Date().getFullYear(),
@@ -318,7 +319,11 @@ async function loadSetup(retryCount = 0) {
   const started = performance.now();
   applyRuntimeModeUi();
   if (getRuntimeMode() === "client") {
-    warmLocalRuntime().catch(() => {});
+    observeBackgroundTask(warmLocalRuntime, {
+      surface: "setup",
+      operation: "warm-local-runtime",
+      authorityKey: getRuntimeMode()
+    });
   }
 
   const activeText = document.getElementById("activeLeagueText");
@@ -368,12 +373,20 @@ async function loadSetup(retryCount = 0) {
 
   if (state.savesDeferred) {
     queueMicrotask(() => {
-      refreshSaves({ preserveStatus: true, loadVersion }).catch(() => {
-        if (loadVersion !== setupLoadVersion) return;
-        state.savesDeferred = false;
-        renderSaves();
-        setStatus(setupStatusText("Ready"));
-      });
+      observeBackgroundTask(
+        () => refreshSaves({ preserveStatus: true, loadVersion }),
+        {
+          surface: "setup",
+          operation: "refresh-deferred-saves",
+          authorityKey: getRuntimeMode(),
+          onError: () => {
+            if (loadVersion !== setupLoadVersion) return;
+            state.savesDeferred = false;
+            renderSaves();
+            setStatus(setupStatusText("Ready"));
+          }
+        }
+      );
     });
   }
 }
@@ -455,7 +468,11 @@ function bindEvents() {
     renderSaves();
     setStatus(statusText);
     if (mode === "client") {
-      warmLocalRuntime().catch(() => {});
+      observeBackgroundTask(warmLocalRuntime, {
+        surface: "setup",
+        operation: "warm-local-runtime",
+        authorityKey: mode
+      });
     }
     loadSetup()
       .then(() => setStatus(setupStatusText("Ready")))
@@ -613,4 +630,3 @@ async function init() {
 init();
 
 initThemeCustomizer("setupThemeToggleBtn");
-

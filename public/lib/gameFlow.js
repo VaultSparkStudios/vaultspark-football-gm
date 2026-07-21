@@ -13,7 +13,7 @@ import { buildTacticalMatchupBrief } from "./tacticalFilmRoom.js";
 import { ingestNewsIntoInbox, renderInboxBadge } from "./engagementFeatures.js";
 import { appendSimulationDigest, classifySimulationCheckpoint, formatSimulationDigest, hasPendingSimulationDecision } from "./simulationCheckpoints.js";
 import { createAuthorityEpochTracker } from "./authorityEpoch.js";
-import { recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
+import { observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -94,11 +94,19 @@ export function applyDashboard(newState) {
   renderRecordsAndHistory();
   renderNewsTicker();
   renderSeasonPreviewPanel();
-  renderGmLegacyScore().catch(() => {});
+  observeBackgroundTask(renderGmLegacyScore, {
+    surface: "overview",
+    operation: "gm-legacy",
+    authorityKey: dashboardAuthorityKey(newState)
+  });
   renderCapAlertBanner();
   renderFanSentimentCard();
   renderInjuryOverlayCard();
-  renderStatLeadersStrip().catch(() => {});
+  observeBackgroundTask(renderStatLeadersStrip, {
+    surface: "overview",
+    operation: "stat-leaders",
+    authorityKey: dashboardAuthorityKey(newState)
+  });
   renderOwnerUltimatum();
   checkSeasonEndReview(previous);
   if (typeof globalThis._renderSpeedrunPanel === "function") globalThis._renderSpeedrunPanel();
@@ -106,7 +114,13 @@ export function applyDashboard(newState) {
   // Check speedrun completion on postseason → offseason transition
   if (previous && (previous.phase === "postseason" || previous.phase === "regular-season")
     && (newState.phase === "offseason" || newState.phase === "season-awards")) {
-    if (typeof globalThis._checkSpeedrunCompletion === "function") globalThis._checkSpeedrunCompletion().catch(() => {});
+    if (typeof globalThis._checkSpeedrunCompletion === "function") {
+      observeBackgroundTask(() => globalThis._checkSpeedrunCompletion(), {
+        surface: "challenge",
+        operation: "speedrun-completion",
+        authorityKey: dashboardAuthorityKey(newState)
+      });
+    }
   }
 
   const yearInput = document.getElementById("yearFilter");
@@ -143,8 +157,18 @@ export function activateTab(tabId) {
     });
   }
   if (tabId === "settingsTab") {
-    loadRewindHistory().catch(() => {});
-    if (typeof globalThis._loadSpeedrunStatus === "function") globalThis._loadSpeedrunStatus().catch(() => {});
+    observeBackgroundTask(loadRewindHistory, {
+      surface: "settings",
+      operation: "rewind-history",
+      authorityKey: dashboardAuthorityKey(state.dashboard)
+    });
+    if (typeof globalThis._loadSpeedrunStatus === "function") {
+      observeBackgroundTask(() => globalThis._loadSpeedrunStatus(), {
+        surface: "settings",
+        operation: "speedrun-status",
+        authorityKey: dashboardAuthorityKey(state.dashboard)
+      });
+    }
   }
 }
 
@@ -988,7 +1012,11 @@ export function showSeasonEndReview() {
     <div class="sr-call-to-action">A new season awaits. What will your legacy be?</div>
   `;
   appendWhatIfReplay(body);
-  appendSeasonEpilogue(body, d).catch(() => {});
+  observeBackgroundTask(() => appendSeasonEpilogue(body, d), {
+    surface: "season-review",
+    operation: "season-epilogue",
+    authorityKey: dashboardAuthorityKey(d)
+  });
   modal.hidden = false;
   modal.classList.add("active");
   openModal(modal, { onClose: closeSeasonReviewModal });

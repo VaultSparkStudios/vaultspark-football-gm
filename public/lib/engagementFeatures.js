@@ -17,6 +17,7 @@
 import { state, api } from "./appState.js";
 import { escapeHtml, fmtMoney, showToast, renderTable, teamCode } from "./appCore.js";
 import { closeModal, openModal } from "./modalManager.js";
+import { observeBackgroundTask } from "./clientDiagnostics.js";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PRIORITY INBOX SYSTEM
@@ -259,7 +260,20 @@ export function showFranchiseMomentCard(moment) {
   const shareBtn = document.getElementById("fmShareBtn");
   if (shareBtn) {
     shareBtn.onclick = () => {
-      navigator.clipboard?.writeText(moment.shareText || "").then(() => showToast("Copied to clipboard!")).catch(() => {});
+      observeBackgroundTask(
+        () => {
+          if (!navigator.clipboard?.writeText) throw new Error("Clipboard access is unavailable in this browser.");
+          return navigator.clipboard.writeText(moment.shareText || "");
+        },
+        {
+          surface: "action",
+          operation: "copy-franchise-moment",
+          authorityKey: moment.gameId || "",
+          severity: "error",
+          onSuccess: () => showToast("Copied to clipboard!"),
+          onError: () => showToast("Clipboard unavailable — select the story text to copy it manually.")
+        }
+      );
     };
   }
   modal.className = `franchise-moment-modal ${isWin ? "fm-win" : "fm-loss"}`;
@@ -367,7 +381,11 @@ export async function runSimWatch(gameId) {
     _simWatchActive = true;
     _simWatchSkip = false;
     renderSimWatchHeader(bs);
-    decorateSimWatchRivalry(bs).catch(() => {});
+    observeBackgroundTask(() => decorateSimWatchRivalry(bs), {
+      surface: "sim-watch",
+      operation: "rivalry-context",
+      authorityKey: bs.gameId || ""
+    });
     overlay.hidden = false;
     overlay.classList.add("sim-watch-open");
     const feed = document.getElementById("simWatchFeed");
