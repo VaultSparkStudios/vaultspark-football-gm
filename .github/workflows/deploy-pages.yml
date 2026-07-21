@@ -15,6 +15,8 @@ on:
       - "package.json"
       - "public/**"
       - "scripts/build-pages.mjs"
+      - "scripts/check-browser-module-reachability.mjs"
+      - "scripts/responsive-evidence.mjs"
       - "src/**"
 
 permissions:
@@ -100,6 +102,17 @@ jobs:
       - name: Smoke static Pages client
         timeout-minutes: 5
         run: npm run smoke:pages
+
+      - name: Capture responsive artifact evidence
+        timeout-minutes: 8
+        run: npm run evidence:responsive
+
+      - name: Upload responsive evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: responsive-evidence-${{ github.sha }}
+          path: output/playwright/responsive-*/
+          if-no-files-found: error
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

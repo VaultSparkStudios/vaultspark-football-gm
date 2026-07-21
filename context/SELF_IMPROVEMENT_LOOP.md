@@ -1,8 +1,27 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 49 closed at 994 / 1000 SIL v3.0. Verification: aggregate canonical suite 370/370, long 3/3, Playwright 18/18, Pages build/smoke, Windows/Wave guards, canon 51 applicable/0 gaps, blocker preflight empty, doctor blockingFailing 0, and Genius cache exhausted. Launch/SPARKED remains evidence-gated on complete live edge headers, verified on-domain forwarding/copying, and authoritative registry reconciliation.
+Rolling status: Session 50 closed at 994 / 1000 SIL v3.0. Verification: full canonical Node suite 390/390, Playwright 18/18, Pages build/all-mount MIME smoke, 20 responsive captures, and the Unified Genius List plus Innovation Pack exhausted. Launch/SPARKED remains evidence-gated on complete live edge headers, verified on-domain forwarding/copying, current deploy provenance, and authoritative registry reconciliation.
 <!-- rolling-status-end -->
+
+## 2026-07-20 — Session 50 Decision and Deployment Authority
+
+SIL v3.0: **994 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 94, Automation Coverage 100).
+
+- Dev Health: 100 — full Node suite 390/390, Playwright 18/18, Pages build/MIME smoke, and 20 responsive captures pass with direct exits.
+- Creative Alignment: 100 — high-stakes General Manager decisions remain explicit, persistent, and impossible for alternate runtimes to silently skip.
+- Momentum: 100 — five primary audit items and three source-derived second-order innovations shipped in one continuous mission, including the urgent production repair.
+- Engagement: 100 — atomic progression protects dynasty continuity while visible degradation and mobile-safe layouts keep the weekly command ritual trustworthy.
+- Process Quality: 100 — live console evidence was reproduced at the route/MIME boundary; two full-suite failures became root fixes instead of weakened gates.
+- Cross-Repo Coherence: 100 — no sibling tree was edited; host-owned integration remains an Ark contract if deploy verification proves it necessary.
+- Security Posture: 100 — decision inputs fail closed, diagnostics sanitize messages, no secrets/dependencies were added, and launch evidence remains honest.
+- Ecosystem Integration: 100 — audit, execution log, Innovation Pack, Genius cache, mount manifest, CI evidence, task board, handoff, and status converge.
+- Capital Efficiency: 94 — unchanged; all work remains deterministic/static-host-safe with zero variable cost, and no business impact is fabricated.
+- Automation Coverage: 100 — all new tests are canonically sharded; module reachability, responsive proof, mount existence, and MIME correctness block CI.
+
+Committed SIL follow-ups:
+- `[SIL]` Treat public mount aliases as versioned deploy inputs; never let host routing exist only as tribal knowledge.
+- `[SIL]` Any transactional adapter that replaces authority must reacquire the committed object before producing state or receipts.
 
 ## 2026-07-19 — Session 49 Release and State Authority
 

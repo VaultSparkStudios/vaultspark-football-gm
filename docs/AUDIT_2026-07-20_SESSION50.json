@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-20",
+  "session": 50,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "completed",
+  "profile": {
+    "type": "game/app",
+    "audience": "public-unlaunched",
+    "rubric": "infrastructure-weighted product rubric",
+    "staging": "github-pages artifact plus canonical-origin verification",
+    "source": "live code, direct focused tests, current startup brief, project skill profile, authoritative arc profile, infrastructure debt sweep, game-loop review, and app release-gate evidence"
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.8,
+    "progression": 9.0,
+    "sessionEngagement": 8.6,
+    "retention": 8.4,
+    "soulFidelity": 9.0,
+    "overall": 8.8,
+    "evidence": "No current playtest corpus or private creative bible is present in this public repository. Scores are provisional and derive only from executable browser, simulation, persistence, decision, and regression contracts; no user sentiment is fabricated."
+  },
+  "releaseGate": {
+    "verdict": "NO-GO for launch; GO for implementation",
+    "currentHeadCi": "latest two main CI and Pages runs green; strict last-five window remains 3/5 because two superseded commits failed",
+    "cost": "cost-neutral gate allowed",
+    "footer": "7/7 required destinations complete",
+    "responsive": "canonical responsive audit skipped because it imports an unavailable playwright package even though @playwright/test is installed",
+    "origin": "canonical origin serves 8/9 routes but /_health is 404 and edge headers are incomplete; email forwarding remains unverified",
+    "staging": "GitHub Pages URL redirects through an insecure target and cannot serve as independent remote staging evidence"
+  },
+  "summary": {
+    "rankedItems": 5,
+    "combinedPriority": 158.2,
+    "topItem": "gm-decision-authority-contract",
+    "source": "live-code-audit"
+  },
+  "recommendedMoves": [
+    "Make every General Manager decision one shared, league-scoped authority that cannot be bypassed by dismissal, storage collision, runtime drift, or a failed fetch.",
+    "Make weekly advancement clone-then-commit and single-flight so a failed or duplicate browser action cannot leave a half-applied franchise.",
+    "Turn browser degradation and responsive parity into source-derived, revision-stamped evidence visible to both the player and the release gate."
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Game-loop agency / runtime authority / feedback",
+      "effortHours": 4.0,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 34.8,
+      "slug": "gm-decision-authority-contract",
+      "title": "Make critical General Manager choices one shared, scoped, fail-closed authority",
+      "status": "completed",
+      "premise": "Server and browser runtimes independently generate the same three GM decision families. The browser helper catches decision-fetch failures and returns null, the single-week path catches again and advances anyway, dismissal marks the decision as shown, and the storage key omits league, team, and year. The command boundary validates a supplied choice but never proves that it matches a currently pending decision. A critical choice can therefore disappear through runtime drift, a transient error, dismissal, or cross-franchise storage collision.",
+      "evidence": [
+        "src/server.js:157",
+        "src/app/api/localApiRuntime.js:241",
+        "public/lib/engagementFeatures.js:287",
+        "public/lib/engagementFeatures.js:292",
+        "public/lib/engagementFeatures.js:301",
+        "public/app.js:458",
+        "src/runtime/advanceWeekCommand.js:22",
+        "direct focused baseline 36/36 contains no fetch-failure, dismissal, scope, or pending-choice enforcement proof"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Scope the shown key by league/year/team and stop swallowing decision-fetch errors before advancement."
+        },
+        "L2": {
+          "effortHours": 4.0,
+          "recipe": "Extract one shared GM decision authority used by both runtimes and dashboard state; give every decision a league/year/week/team occurrence key; distinguish choose, defer, no-decision, and unavailable results; make dismissal defer without suppressing the occurrence; require a matching pending choice at the shared weekly command boundary; keep mobile and accelerated simulation on the same contract; surface actionable availability errors; and add cross-runtime, cross-year, dismissal, mismatch, and fail-closed tests."
+        },
+        "L3": {
+          "effortHours": 7.0,
+          "recipe": "Add persisted decision occurrence receipts and an agent-safe decision queue schema so human and AI clients can resume the exact unresolved choice after reload."
+        }
+      },
+      "verification": [
+        "shared generator parity",
+        "pending choice required before mutation",
+        "wrong occurrence rejected",
+        "dismissal preserves pending choice",
+        "cross-year and cross-franchise keys do not collide",
+        "fetch failure is visible and non-mutating",
+        "desktop and mobile paths converge"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Transaction integrity / simulation reliability / security",
+      "effortHours": 5.0,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 32.1,
+      "slug": "atomic-weekly-command-transaction",
+      "title": "Make weekly advancement clone-then-commit with a single-flight browser mutation lease",
+      "status": "completed",
+      "premise": "executeAdvanceWeekCommand applies GM consequences, including roster/cap mutations and ledger writes, before session.advanceWeek. Its failure test proves only that the temporary tactic is restored; a thrown simulation can leave the GM decision, transaction log, news, commitments, depth chart, or contract mutation applied without advancing the calendar. Browser runAction also has no mutation lease, so repeated clicks can start overlapping weekly commands.",
+      "evidence": [
+        "src/runtime/advanceWeekCommand.js:35",
+        "src/runtime/advanceWeekCommand.js:42",
+        "src/runtime/advanceWeekCommand.js:53",
+        "test/advance-week-command.test.js:18",
+        "public/lib/appCore.js:1290",
+        "public/app.js:443",
+        "public/app.js:497"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Guard the week/fast-sim buttons with one mutation-in-flight lock and disable duplicate submissions."
+        },
+        "L2": {
+          "effortHours": 5.0,
+          "recipe": "Add a shared clone-then-commit weekly transaction wrapper that executes the full GM/tactic/simulation command on a snapshot-hydrated working session and replaces runtime authority only after success; preserve adapter hooks and receipts; return stable failure evidence without changing the active session; add a keyed single-flight action coordinator that disables all conflicting simulation controls, joins or rejects duplicates honestly, and always releases in finally; and prove full snapshot equality after injected failures plus one-advance behavior under rapid double submission."
+        },
+        "L3": {
+          "effortHours": 9.0,
+          "recipe": "Add bounded persisted idempotency receipts so explicit retries across transport timeouts can recover the original result without double-advancing."
+        }
+      },
+      "verification": [
+        "full snapshot unchanged after injected post-choice failure",
+        "successful transaction promotes the working session",
+        "local/server adapter parity",
+        "backup and rewind hooks observe committed state only",
+        "double submit advances once",
+        "all controls release after failure"
+      ]
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Observability honesty / UX / feedback loop",
+      "effortHours": 2.5,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 33.2,
+      "slug": "browser-degradation-ledger",
+      "title": "Replace console-only browser degradation with a visible source-derived failure ledger",
+      "status": "completed",
+      "premise": "Background hydration collects loader failures and writes only console.error, while multiple high-value renderers and status refreshes still end in empty catch handlers. The Settings observability table reports server counters and stale-response discards but no actual browser failure count, affected surface, retry state, or latest error. A degraded franchise screen can therefore look operational while its evidence is visible only to developer tools.",
+      "evidence": [
+        "public/lib/gameFlow.js:747",
+        "public/lib/gameFlow.js:751",
+        "public/lib/gameFlow.js:752",
+        "public/lib/gameFlow.js:96",
+        "public/lib/gameFlow.js:100",
+        "public/lib/tabSettings.js:291",
+        "public/lib/tabSettings.js:304",
+        "public/lib/appCore.js:1290"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.8,
+          "recipe": "Count background loader failures and show the latest message in Settings."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Create a bounded in-memory client diagnostics ledger with severity, surface, operation, authority key, occurrence count, timestamp, retryability, and sanitized message; route action errors and background hydration failures through it; expose actual degradation count and latest affected surface in Settings plus the status chip without replacing existing panel retry UI; publish a browser event for tests/agent clients; add clear/retry affordances and focused source-derived tests."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Attach a privacy-safe diagnostics digest to Tell the Commissioner and return-digest flows only after explicit user action."
+        }
+      },
+      "verification": [
+        "real failures increment the ledger",
+        "duplicate failures coalesce with occurrence count",
+        "messages are sanitized and bounded",
+        "successful retries resolve degradation",
+        "Settings and status chip derive from the same ledger",
+        "no fabricated zero or swallowed critical failure"
+      ]
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Release truth / responsive UX / automation",
+      "effortHours": 3.0,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 31.0,
+      "slug": "revision-stamped-responsive-evidence",
+      "title": "Make responsive release parity runnable from the dependency already installed",
+      "status": "completed",
+      "premise": "RELEASE_PARITY claims desktop, tablet, and mobile evidence, but the canonical responsive audit exits 78 because it imports playwright, which is not installed; the project intentionally depends on @playwright/test and already runs 18 browser tests. The skip is correctly not a pass, yet no project-local command emits revision-stamped 390/768/1440 overflow, theme, dialog, and screenshot evidence for the Pages artifact.",
+      "evidence": [
+        "docs/RELEASE_PARITY.md:5",
+        "package.json:29",
+        "playwright.config.mjs:1",
+        "tests-ui/theme.spec.js:52",
+        "responsive-audit direct exit 78: SKIP playwright not installed",
+        ".github/workflows/deploy-pages.yml:56"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.8,
+          "recipe": "Add a local wrapper that imports chromium from @playwright/test and checks the three required viewports."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Build a project-local responsive evidence runner on @playwright/test that serves the exact static artifact, checks 390/768/1440 viewport overflow and minimum target size, exercises dark/light themes plus drawer and decision/dialog surfaces, writes deterministic JSON and screenshots under output/playwright keyed to source revision and style asset, validates the evidence schema, and wires a non-skip npm release command plus CI artifact upload."
+        },
+        "L3": {
+          "effortHours": 6.0,
+          "recipe": "Compare the evidence fingerprint to the deployed health/manifest receipt and block promotion when the visual proof is from another revision."
+        }
+      },
+      "verification": [
+        "runner imports only existing dependencies",
+        "390/768/1440 screenshots and metrics",
+        "both themes exercised",
+        "overflow and touch targets checked",
+        "JSON revision/style fingerprint",
+        "CI cannot treat skip as pass"
+      ]
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Infrastructure debt / speed / organization",
+      "effortHours": 1.5,
+      "impact": 7,
+      "innovation": 7,
+      "priority": 27.1,
+      "slug": "browser-module-reachability-guard",
+      "title": "Turn orphan browser modules into a build-time reachability invariant",
+      "status": "completed",
+      "premise": "public/lib/turboSim.js and public/lib/themeMode.js have no live import or HTML entrypoint. turboSim targets the direct advance-season endpoint and bypasses the checkpointed browser loop, while themeMode was superseded by themeBoot/themeCustomizer. Pages build currently copies the browser tree without proving that every executable module is reachable or intentionally listed.",
+      "evidence": [
+        "public/lib/turboSim.js:1",
+        "public/lib/themeMode.js:1",
+        "public/lib/themeBoot.js:4",
+        "public/app.js imports no turboSim or themeMode",
+        "public/setup.js imports no turboSim or themeMode",
+        "scripts/build-pages.mjs copies browser modules without a reachability gate"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Remove the two verified orphan modules and add their absence to a focused smoke test."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Add a dependency-free browser-module reachability checker that starts from HTML module/script entrypoints, follows static imports, supports an explicit documented allowlist for worker/dynamic entrypoints, rejects unreachable executable modules, wire it into Pages build and the Studio shard, then remove the two verified orphans and prove every remaining public module is reachable."
+        },
+        "L3": {
+          "effortHours": 3.0,
+          "recipe": "Emit a module graph with byte weights and detect duplicated source trees in the built Pages artifact."
+        }
+      },
+      "verification": [
+        "orphan fixtures fail",
+        "dynamic and HTML entrypoints are supported",
+        "current public tree reaches every retained module",
+        "Pages build runs the guard",
+        "removed modules have no references"
+      ]
+    }
+  ],
+  "innovationPack": {
+    "status": "completed",
+    "candidatesGenerated": 3,
+    "candidatesShipped": 3,
+    "items": [
+      "production-asset-mount-contract",
+      "commissioner-transaction-authority-refinement",
+      "responsive-root-cause-ranking"
+    ]
+  },
+  "preverifiedSkips": [
+    {
+      "candidate": "Flip FORGE/SPARKED or claim launch readiness",
+      "reason": "Deferred honestly: canonical /_health is 404, required edge headers are incomplete, no received-message receipt proves football@playfranchisearchitect.com forwarding/copying, and the authoritative lifecycle registry is sibling-owned."
+    },
+    {
+      "candidate": "Treat the strict last-five CI gate as a new code defect",
+      "reason": "Rejected as phantom current work: the latest two CI and Pages runs for current and immediately prior main are green; two older failed commits remain historical gate residue and their root causes were already fixed."
+    },
+    {
+      "candidate": "Install playwright solely for responsive audit",
+      "reason": "Rejected by internal-first and package-trust discipline: @playwright/test is already pinned, installed, and exposes chromium; the correct fix is a project-local runner using the existing dependency."
+    },
+    {
+      "candidate": "Rewrite the 5,156-line GameSession as one audit item",
+      "reason": "Culled as unsafe facade-first debt paydown. Live authority failures are smaller and directly provable; module extraction should follow measured seams, not line-count anxiety."
+    },
+    {
+      "candidate": "Add paid telemetry, hosted AI commentary, or a backend feedback service",
+      "reason": "Rejected by cost-neutral, internal-first, and observability-honesty requirements; the identified gaps are deterministic browser/runtime contracts."
+    },
+    {
+      "candidate": "Re-list release provenance, save compatibility, hydration epochs, rehab, tactical film, commitments, themes, or mobile decisions",
+      "reason": "Rejected as phantom work: those Session 46-49 surfaces exist in live code and their direct regression tests pass."
+    },
+    {
+      "candidate": "Claim the Studio Oracle disproved the ranked premises",
+      "reason": "Rejected: the first oracle run was rooted in Studio Ops and reported project paths missing; the absolute-path retry returned no evidence lines. Direct source references and 36/36 focused baseline tests establish both the present behavior and the missing negative-path coverage."
+    }
+  ]
+}

@@ -45,9 +45,13 @@ test("advance-week browser wiring sends selected GM decision choice", () => {
 
   assert.match(engagementSource, /decisionId: active\.id/);
   assert.match(engagementSource, /choiceId: choice/);
-  assert.match(appSource, /const gmDecisionChoice = await checkAndShowGmDecision/);
-  assert.match(appSource, /body\.gmDecisionChoice = gmDecisionChoice/);
+  assert.match(engagementSource, /occurrenceKey: active\.occurrenceKey/);
+  assert.match(appSource, /const gmDecisionResult = await checkAndShowGmDecision/);
+  assert.match(appSource, /gmDecisionResult\.status === "deferred"/);
+  assert.match(appSource, /body\.gmDecisionChoice = gmDecisionResult\.choice/);
   assert.match(appSource, /response\.gmDecision\?\.applied/);
+  assert.match(appSource, /key: "franchise-simulation"/);
+  assert.match(appSource, /controls: \["advanceWeekBtn", "advance4WeeksBtn", "advanceSeasonBtn", "resumeSimBtn"\]/);
 });
 
 test("Rehab Command Center is visible, actionable, and routed through both runtimes", () => {

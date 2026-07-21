@@ -10,6 +10,7 @@ const staticDir = path.join(rootDir, "static");
 const slug = "franchise-architect-football";
 const mountPath = `/${slug}`;
 const legacyMountPath = "/games/vaultspark-football-gm";
+const productionMountPath = "/games/franchise-architect";
 const host = "127.0.0.1";
 const port = 4310;
 const baseUrl = `http://${host}:${port}/`;
@@ -45,14 +46,21 @@ function fetchStaticText(pathname) {
       let body = "";
       res.setEncoding("utf8");
       res.on("data", (chunk) => { body += chunk; });
-      res.on("end", () => resolve({ statusCode: res.statusCode, body }));
+      res.on("end", () => resolve({
+        statusCode: res.statusCode,
+        contentType: String(res.headers["content-type"] || ""),
+        body
+      }));
     }).on("error", reject);
   });
 }
 
-async function assertStaticPath(pathname, expectedPattern) {
+async function assertStaticPath(pathname, expectedPattern, expectedContentType) {
   const response = await fetchStaticText(pathname);
   if (response.statusCode !== 200) throw new Error(`Expected 200 for ${pathname}, received ${response.statusCode}`);
+  if (expectedContentType && !response.contentType.startsWith(expectedContentType)) {
+    throw new Error(`Expected ${pathname} to use ${expectedContentType}, received ${response.contentType || "no Content-Type"}`);
+  }
   if (expectedPattern && !expectedPattern.test(response.body)) {
     throw new Error(`Expected ${pathname} to match ${expectedPattern}`);
   }
@@ -88,6 +96,23 @@ async function createServer() {
     res.writeHead(200, { "Content-Type": contentType(filePath) });
     res.end(data);
   });
+}
+
+async function assertPublishedMountContract() {
+  const manifest = JSON.parse(await fs.readFile(path.join(staticDir, "deploy-manifest.json"), "utf8"));
+  if (!Array.isArray(manifest.publishedMounts) || !manifest.publishedMounts.includes(`${productionMountPath}/`)) {
+    throw new Error(`Deploy manifest is missing the production mount ${productionMountPath}/`);
+  }
+  for (const mount of manifest.publishedMounts) {
+    const relativeMount = String(mount).replace(/^\/+|\/+$/g, "");
+    const prefix = relativeMount ? `${relativeMount}/` : "";
+    await assertStaticFile(`${prefix}styles.css`, /:root/);
+    await assertStaticFile(`${prefix}setup.js`, /createApiClient/);
+    await assertStaticFile(`${prefix}favicon.ico`);
+    await assertStaticPath(`${mount}styles.css`, /:root/, "text/css");
+    await assertStaticPath(`${mount}setup.js`, /createApiClient/, "application/javascript");
+    await assertStaticPath(`${mount}favicon.ico`, null, "image/x-icon");
+  }
 }
 
 async function main() {
@@ -147,6 +172,13 @@ async function main() {
     await assertStaticFile(`games/vaultspark-football-gm/setup.js`, /createApiClient/);
     await assertStaticPath(`${legacyMountPath}/styles.css`, /:root/);
     await assertStaticPath(`${legacyMountPath}/setup.js`, /createApiClient/);
+    await assertStaticFile(`games/franchise-architect/styles.css`, /:root/);
+    await assertStaticFile(`games/franchise-architect/setup.js`, /createApiClient/);
+    await assertStaticFile(`games/franchise-architect/favicon.ico`);
+    await assertStaticPath(`${productionMountPath}/styles.css`, /:root/, "text/css");
+    await assertStaticPath(`${productionMountPath}/setup.js`, /createApiClient/, "application/javascript");
+    await assertStaticPath(`${productionMountPath}/favicon.ico`, null, "image/x-icon");
+    await assertPublishedMountContract();
     console.log("Static Pages smoke pass completed.");
   } finally {
     await browser.close();

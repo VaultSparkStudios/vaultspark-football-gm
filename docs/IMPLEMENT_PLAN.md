@@ -1,17 +1,19 @@
-# Session 49 Implementation Plan
+# Session 50 Implementation Plan
 
-Source: `docs/AUDIT_2026-07-19_SESSION49.json`.
+Source: `docs/AUDIT_2026-07-20_SESSION50.json`.
 
-1. Public identity and deploy foundation: `public-origin-release-contract` — correct canonical repository identity, add deterministic health/provenance/footer/parity/rollback evidence, and keep external edge/email gates explicitly red.
-2. Runtime authority seam: `weekly-command-parity-envelope` — coalesce bootstrap fallback, then move week advancement/tactics/receipts behind one shared validated executor used by both adapters.
-3. Persistence boundary: `save-compatibility-integrity-boundary` — one validate → integrity → migrate → hydrate contract across browser/file/import/load paths with recovery-safe errors.
-4. Browser concurrency: `hydration-authority-epochs` — fence background/entity loaders by current authority and expose only source-derived stale-discard telemetry.
-5. Refresh the Genius List to prove the primary queue is exhausted.
-6. Generate and implement the Innovation Pack plus compound refinements across the four shipped surfaces.
-7. Verify each item with focused behavior tests, then run direct canonical shards, Playwright, Pages staging, security, canon, release, and doctor gates.
+Efficiency order:
 
-Primary status: complete — Unified Genius List is exhausted at 0 open / 4 closed.
+1. [completed] Decision authority foundation: `gm-decision-authority-contract` — one shared generator/occurrence contract across server, browser, desktop, mobile, and fast sim; defer stays pending and unavailable decisions fail closed.
+2. [completed] Transaction boundary: `atomic-weekly-command-transaction` — execute on a snapshot-hydrated working session, promote only after success, and serialize conflicting browser mutations.
+3. [completed] Client truth surface: `browser-degradation-ledger` — source-derived bounded diagnostics in Settings/status with retry/clear semantics.
+4. [completed] Module graph hygiene: `browser-module-reachability-guard` — enforce public browser reachability and remove the verified orphans before building final evidence.
+5. [completed] Release evidence: `revision-stamped-responsive-evidence` — exercise the settled static artifact at 390/768/1440 in both themes and write revision/style-stamped JSON plus screenshots.
+6. [completed] Refresh the Unified Genius List, then generate and implement the Innovation Pack plus compound refinements.
+7. [completed] Verify each item with focused behavior tests, then run direct canonical shards, Playwright, Pages staging, security, canon, release, and doctor gates.
 
-Second-order status: complete — deploy provenance attestation and transactional save preflight are implemented with focused tests; audit follow-through is revalidated from the rendered sidecar.
+Primary status: complete — Unified Genius List exhausted at 0 open / 5 closed.
 
-Every audit item uses its L2 recipe or higher. Gameplay changes remain browser-visible and focused-test-covered; static-host and cost-neutral constraints are hard requirements; source-of-truth claims require direct evidence.
+Second-order status: complete — production mount/MIME contract, Commissioner transaction refinement, and responsive widest-offender ranking shipped.
+
+Every audit item targets L2 or higher. Browser-visible game changes require focused coverage; all work stays static-host-safe and cost-neutral. External email, edge-header, registry, and historical-CI evidence remains explicitly separate from source-fixable work.

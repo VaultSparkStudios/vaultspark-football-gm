@@ -1484,14 +1484,23 @@ export function createLocalApiRuntime({
             return res.payload;
           }
         });
-        await request("/api/advance-week", { method: "POST", body: {} });
-        recordAdvance(_lobby, s.currentYear, s.currentWeek, s.phase, intentResults);
-        openGate(_lobby, s.currentYear, s.currentWeek, s.phase);
+        const advanceResponse = await request("/api/advance-week", { method: "POST", body: body || {} });
+        const committedSession = ensureSession();
+        if (advanceResponse.status >= 400 || advanceResponse.payload?.ok === false) {
+          openGate(_lobby, committedSession.currentYear, committedSession.currentWeek, committedSession.phase);
+          _persistLobby();
+          return finish(jsonResponse(advanceResponse.status || 409, {
+            ...advanceResponse.payload,
+            lobby: lobbyStatus(_lobby)
+          }));
+        }
+        recordAdvance(_lobby, committedSession.currentYear, committedSession.currentWeek, committedSession.phase, intentResults);
+        openGate(_lobby, committedSession.currentYear, committedSession.currentWeek, committedSession.phase);
         _persistLobby();
         return finish(jsonResponse(200, {
           ok: true,
           intentResults,
-          state: getAugmentedState(s),
+          state: getAugmentedState(committedSession),
           lobby: lobbyStatus(_lobby)
         }));
       }

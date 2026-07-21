@@ -272,3 +272,14 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Browser concurrency truth: high-risk async panel writes commit only under their captured authority/filter/sequence; `staleResponsesDiscarded` counts actual rejected writes. Same-authority refreshes remain valid after the Playwright root fix.
 - Queue/test truth: Session 49 audit is 4 shipped / 0 open; Innovation Pack shipped two second-order candidates. Counted final evidence is aggregate 370/370, long 3/3, Playwright 18/18, and Pages build/smoke.
 - Cost truth: every change remains deterministic, static-host compatible, and zero variable cost. Flat-rate plan accounting is not a product alarm or launch blocker.
+## 2026-07-20 — Session 50 truth updates
+
+- Decision truth: every pending General Manager decision is generated and validated by one scoped occurrence authority; defer preserves the occurrence and unavailable/stale choices cannot mutate the league.
+- Transaction truth: weekly advancement occurs on a hydrated working copy and replaces runtime authority only after success. Refused Commissioner attempts reopen their gate and do not report stale state.
+- Browser observability truth: degradation count, latest affected surface, retry state, and status derive from one bounded sanitized ledger; no console-only failure is counted as healthy.
+- Build truth: all 39 retained browser modules are reachable from HTML/module entrypoints; proven orphans are removed and new ones block Pages build.
+- Responsive truth: the exact static artifact has 20 passing dark/light captures across 390/768/1440 with zero page overflow/runtime errors and compliant critical touch targets.
+- Deploy truth: `/games/franchise-architect/` is a physical published mount; every manifest-declared mount is checked for CSS, JavaScript, favicon existence and correct MIME. HTTP 200 HTML fallback is not accepted as asset health.
+- Test truth: final direct evidence is 390/390 Node plus Playwright 18/18. Earlier Commissioner and shard-coverage failures are retained as superseded root-fix evidence, not claimed green.
+- Launch truth unchanged: live launch/SPARKED remains gated on edge headers, received on-domain email evidence, current deploy provenance, and authoritative registry reconciliation.
+- Cost truth: all changes are deterministic, static-host compatible, and zero variable cost; flat-rate plan cost is not an alarm.

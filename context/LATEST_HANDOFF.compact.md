@@ -1,42 +1,41 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
 <!-- source-hash: 87c6bfef5ae0 -->
-<!-- generated-at: 2026-07-20T04:34:56.730Z -->
+<!-- generated-at: 2026-07-20T05:58:28.946Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION HANDOFF SUMMARY (Session 49, 2026-07-19)
+SESSION 49 HANDOFF SUMMARY
 
-Status
-- Mission complete. Genius List: 0 open / 4 closed. Innovation Pack exhausted.
+Session: 49 (2026-07-19)
 
-Shipped this session
-- Public origin contract: GitHub repo links, canonical identity, health receipt, deploy manifest, hashed style provenance, favicon, footer/responsive ledgers, rollback runbook, origin evidence report (never greens missing edge/email evidence).
-- Weekly command authority: shared validated executor (server+browser), known tactics only, validation-before-mutation, GM/tactic ordering, finally cleanup, versioned receipts, same-seed parity, coalesced bootstrap fallback.
-- Save transaction boundary: future/invalid schemas fail with stable recovery codes; shared integrity semantics; unknown algorithms fail closed; legacy unstamped slots supported; failed imports preserve active franchise.
-- Hydration authority: identity + per-panel sequence/filter keys fence async writes; stale drops tracked in Settings metric; over-fencing defect root-fixed.
-- Second-order: verify-release-provenance.mjs (proves live revision/asset/repo/health identity); /api/snapshot/inspect (read-only import preflight).
+Shipped
+- Public origin contract: real repo links, canonical identity, health receipt, deploy manifest, hashed style provenance, favicon, footer/responsive-parity ledgers, rollback runbook, origin evidence report that keeps missing edge/email evidence non-green.
+- Weekly command authority: shared validated executor (server+browser), validation-before-mutation, GM/tactic ordering, finally cleanup, versioned receipts, same-seed parity, coalesced bootstrap fallback.
+- Save transaction boundary: future/invalid schemas fail with stable recovery codes; shared integrity across browser/file; unknown algorithms fail closed; unstamped legacy slots supported; failed imports preserve active franchise.
+- Hydration authority: league/team/year/week/phase + per-panel keys fence async writes; stale drops increment visible Settings metric; Playwright over-fencing defect root-fixed.
+- Second-order: verify-release-provenance.mjs (exact live revision/asset/repo/health identity) and /api/snapshot/inspect (read-only import preflight).
 
-Verification
-- npm test: 370/370 exit 0 (core 67, runtime 182, sim-contract 68, sim-realism 1, studio 52).
-- Long-run 3/3; Playwright 18/18; Pages build/smoke pass.
-- Windows spawn + CANON-044 Wave guards pass; canon 51 applicable / 0 gaps; blocker preflight empty; Genius cache exhausted.
-- Doctor: 5 passing / 1 nonblocking registry warning / blockingFailing 0.
+Current Intent
+- Continuous /goal /arc from live evidence; exhaust Genius List (now 0 open/4 closed); ship second-order innovations; commit/push to main with Ark, zero-shell.
 
-Current intent
-- Complete edge-security-header and real-email-receipt evidence gates via canonical hosting/inbound route; run provenance attestor against workflow artifact; reconcile lifecycle registry truth. Otherwise start fresh audit.
+Now Bucket (Top 3)
+1. Apply edge-header + email evidence gates through canonical hosting/inbound route.
+2. Run exact deploy provenance attestor against workflow artifact.
+3. Reconcile lifecycle registry truth (SPARKED value); else start fresh live-code audit (Session 49 exhausted).
 
-Now bucket (top 3)
-- Apply edge-security headers through canonical hosting route.
-- Produce real received-message receipt for football@playfranchisearchitect.com (forwarding/copying proof).
-- Run verify-release-provenance.mjs against live workflow artifact; reconcile registry.
+Blockers (Top 3)
+1. Canonical live origin lacks complete edge-security headers.
+2. No real received-message receipt proving football@playfranchisearchitect.com forwarding/copying.
+3. Doctor: 1 nonblocking authoritative-registry warning; registry/checker truth is sibling-owned.
 
-Blockers (top 3)
-- Missing complete edge-security headers on live origin.
-- No real received-message receipt for project-domain email.
-- Authoritative lifecycle registry/checker truth is sibling-owned (Ark receipt 01JTUQRA8780576DEF65968F04 sent; Studio Ops not editable here).
+Human-Blocked (with age)
+- Email forwarding/copying receipt for football@playfranchisearchitect.com: unresolved since ~Session 33 (2026-07-02), ongoing ~17 days. Gates launch/SPARKED flip.
+- Live-origin edge-security headers via canonical hosting route: outstanding through Session 48-49.
 
-Human-blocked (persistent)
-- Launch/SPARKED flip blocked pending email receipt + live-origin proof. Open and recurring since ~Session 33 (2026-07-02); unresolved ~17 days across Sessions 33-49.
+Verification State
+- npm test 370/370 exit 0. Long-run 3/3. Playwright 18/18. Pages build/smoke pass. Windows spawn + CANON-044 guards pass. Canon 51 applicable/0 gaps. Blocker preflight empty. Genius cache exhausted. Doctor blockingFailing: 0.
 
-Next session pointer
-- Land edge-header/email evidence gates, then attest provenance and reconcile registry; else begin fresh live-code audit.
+Do Not
+- Do not flip local launch/SPARKED posture without email + edge-header evidence. Do not edit sibling Studio Ops tree.
+
+Next session: Apply edge-header/email gates via canonical route and run the deploy provenance attestor; otherwise begin a fresh live-code audit.

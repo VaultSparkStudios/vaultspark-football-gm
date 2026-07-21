@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { reportTrade } from "../src/engine/beatReporter.js";
 import { generatePressConference } from "../src/engine/pressConference.js";
 import { createLobby, addPlayerToLobby, queueIntent } from "../src/runtime/multiplayerSession.js";
-import { DraftWarRoom } from "../public/lib/draftWarRoom.js";
+import { buildDraftPressureModel } from "../public/lib/tabDraft.js";
 
 test("beat reporter news ids are deterministic from event fields", () => {
   const leagueA = { newsLog: [] };
@@ -49,14 +49,12 @@ test("multiplayer intent ids are deterministic queue positions", () => {
   assert.equal(second.id, "intent-1-0-BUF-release-2");
 });
 
-test("draft war room trade caller is deterministic for the same pick context", () => {
-  const prospects = [{ id: "wr-1", name: "Case Harper", position: "WR", overall: 82 }];
-  const a = new DraftWarRoom({});
-  const b = new DraftWarRoom({});
-
-  const callA = a.checkTradeCall(12, 15, prospects, "WR");
-  const callB = b.checkTradeCall(12, 15, prospects, "WR");
-
-  assert.equal(callA.callerTeam, callB.callerTeam);
-  assert.equal(callA.targetName, "Case Harper");
+test("live draft pressure model is deterministic for the same board context", () => {
+  const input = {
+    draft: { currentPick: 12, order: ["BUF"], available: [{ id: "wr-1", name: "Case Harper", position: "WR", overall: 82, scouting: { rank: 4 } }] },
+    scoutingBoard: ["wr-1"],
+    rosterNeeds: [{ position: "WR", need: 88 }],
+    controlledTeamId: "BUF"
+  };
+  assert.deepEqual(buildDraftPressureModel(input), buildDraftPressureModel(structuredClone(input)));
 });

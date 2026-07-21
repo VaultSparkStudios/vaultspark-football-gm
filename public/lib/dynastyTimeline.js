@@ -137,8 +137,8 @@ export function injectStyles() {
   const style = document.createElement("style");
   style.id = "dynasty-timeline-styles";
   style.textContent = `
-    .dynasty-timeline { display: flex; flex-direction: column; gap: 1rem; }
-    .tl-scroll-wrapper { overflow-x: auto; padding-bottom: .5rem; }
+    .dynasty-timeline { display: flex; flex-direction: column; gap: 1rem; min-width: 0; max-width: 100%; overflow: hidden; }
+    .tl-scroll-wrapper { width: 100%; min-width: 0; max-width: 100%; overflow-x: auto; padding-bottom: .5rem; }
     .tl-track { position: relative; padding: 1.5rem 40px; }
     .tl-connector { position: absolute; top: 50%; left: 40px; right: 40px; height: 4px; transform: translateY(-50%); border-radius: 2px; }
     .tl-nodes { display: flex; gap: 12px; position: relative; z-index: 1; }

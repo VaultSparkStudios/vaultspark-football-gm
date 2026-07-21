@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createSession } from "../src/runtime/bootstrap.js";
-import { executeAdvanceWeekCommand } from "../src/runtime/advanceWeekCommand.js";
+import { executeAdvanceWeekCommand, executeAdvanceWeekTransaction } from "../src/runtime/advanceWeekCommand.js";
 
 function deterministicSnapshot(session) {
   return JSON.parse(JSON.stringify(session.toSnapshot(), (key, value) =>
@@ -38,9 +38,33 @@ test("same-seed weekly commands produce identical state and versioned receipts",
   const rightResult = executeAdvanceWeekCommand(right, payload);
 
   assert.equal(leftResult.ok, true);
-  assert.equal(leftResult.commandReceipt.schemaVersion, "1.0");
+  assert.equal(leftResult.commandReceipt.schemaVersion, "2.0");
   assert.deepEqual(leftResult.results, rightResult.results);
   assert.deepEqual(leftResult.tacticalReceipt, rightResult.tacticalReceipt);
   assert.deepEqual(leftResult.commandReceipt, rightResult.commandReceipt);
   assert.deepEqual(deterministicSnapshot(left), deterministicSnapshot(right));
+});
+
+test("transaction failure after simulation begins preserves the authoritative session", () => {
+  const session = createSession({ seed: 49004, startYear: 2026, controlledTeamId: "BUF" });
+  const before = JSON.stringify(session.toSnapshot());
+  const result = executeAdvanceWeekTransaction(session, { count: 2 }, {
+    afterAdvance: ({ index }) => {
+      if (index === 0) throw new Error("injected post-week failure");
+    }
+  });
+  assert.equal(result.ok, false);
+  assert.equal(result.reasonCode, "ADVANCE_WEEK_TRANSACTION_FAILED");
+  assert.match(result.error, /remains unchanged/i);
+  assert.equal(JSON.stringify(session.toSnapshot()), before);
+});
+
+test("successful transaction returns a commit candidate without mutating its source", () => {
+  const session = createSession({ seed: 49005, startYear: 2026, controlledTeamId: "BUF" });
+  const before = JSON.stringify(session.toSnapshot());
+  const result = executeAdvanceWeekTransaction(session, { count: 1 });
+  assert.equal(result.ok, true);
+  assert.notEqual(result.committedSession, session);
+  assert.equal(JSON.stringify(session.toSnapshot()), before);
+  assert.notEqual(result.committedSession.currentWeek, session.currentWeek);
 });

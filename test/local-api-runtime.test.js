@@ -522,7 +522,23 @@ test("local api runtime accepts commissioner UI aliases and advances lobby", asy
   assert.equal(ready.status, 200);
   assert.equal(ready.payload.lobby.readyPlayers, 1);
 
-  const advanced = await runtime.request("/api/commissioner/advance", { method: "POST", body: {} });
+  const decisionResponse = await runtime.request("/api/gm-decision");
+  const pendingDecision = decisionResponse.payload.decisions[0] || null;
+  if (pendingDecision) {
+    const refused = await runtime.request("/api/commissioner/advance", { method: "POST", body: {} });
+    assert.equal(refused.status, 409);
+    assert.equal(refused.payload.reasonCode, "ADVANCE_WEEK_GM_DECISION_REQUIRED");
+    assert.equal(refused.payload.lobby.gateStatus, "open");
+    assert.equal((await runtime.request("/api/state")).payload.state.currentWeek, 1);
+  }
+  const advanceBody = pendingDecision ? {
+    gmDecisionChoice: {
+      decisionId: pendingDecision.id,
+      occurrenceKey: pendingDecision.occurrenceKey,
+      choiceId: pendingDecision.options[0].id
+    }
+  } : {};
+  const advanced = await runtime.request("/api/commissioner/advance", { method: "POST", body: advanceBody });
   assert.equal(advanced.status, 200);
   assert.equal(advanced.payload.lobby.gateStatus, "open");
   assert.equal(advanced.payload.lobby.readyPlayers, 0);

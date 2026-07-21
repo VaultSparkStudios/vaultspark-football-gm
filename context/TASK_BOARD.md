@@ -630,3 +630,22 @@ Source: `docs/AUDIT_2026-07-19_SESSION49.json`.
 | launch/SPARKED evidence | Deferred honestly — requires complete live edge headers, real on-domain forwarding receipt, and sibling registry reconciliation |
 
 **Verification:** aggregate canonical suite 370/370 with direct exit 0; long-run 3/3; Playwright 18/18; Pages build/smoke; Windows/Wave guards; canon conformance 51 applicable/0 gaps; blocker preflight empty; doctor `blockingFailing: 0`; Ark receipt `01JTUQRA8780576DEF65968F04`.
+
+## Session 50 — Decision, Transaction, Diagnostics, and Deploy-Mount Authority (2026-07-20)
+
+Source: `docs/AUDIT_2026-07-20_SESSION50.json`.
+
+| Item | Status |
+|---|---|
+| gm-decision-authority-contract | Done — one scoped occurrence authority across every runtime, decision surface, defer path, and Commissioner retry |
+| atomic-weekly-command-transaction | Done — clone-then-commit session promotion plus keyed single-flight browser mutations |
+| browser-degradation-ledger | Done — bounded sanitized diagnostics, visible Settings/status truth, retry/clear/events |
+| browser-module-reachability-guard | Done — 39 reachable modules, orphan fixtures block, three proven orphans removed |
+| revision-stamped-responsive-evidence | Done — 20 dark/light mobile/tablet/desktop captures; overflow, contrast, runtime errors, and touch targets green |
+| production-asset-mount-contract | Done — `/games/franchise-architect/` CSS/JS/favicon emitted and every manifest mount MIME-verified |
+| commissioner-transaction-authority-refinement | Done — refusal is non-mutating, gate reopens, valid retry reports committed state |
+| responsive-root-cause-ranking | Done — evidence ranks widest offenders and shared grid/table constraints are corrected |
+| latest-audit-follow-through | Done — audit JSON, Markdown execution log, Innovation Pack, Genius cache, and live tests agree |
+| launch/SPARKED evidence | Deferred honestly — requires complete edge headers, received on-domain forwarding proof, current deploy provenance, and sibling-owned registry reconciliation |
+
+**Verification:** full canonical Node suite 390/390 with direct exit 0; Playwright 18/18; Pages build plus all-mount MIME smoke; responsive evidence 20/20 captures; no new dependency or variable-cost service.

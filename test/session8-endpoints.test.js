@@ -169,12 +169,16 @@ test("POST /api/advance-week applies a GM decision choice to state and ledgers",
         decisionId: tradeDecision.id,
         choiceId: "buy",
         type: tradeDecision.type,
-        week: tradeDecision.week
+        year: tradeDecision.year,
+        week: tradeDecision.week,
+        teamId: tradeDecision.teamId,
+        occurrenceKey: tradeDecision.occurrenceKey
       }
     }
   });
 
   assert.equal(res.status, 200);
+  assert.equal("committedSession" in res.payload, false);
   assert.equal(res.payload.gmDecision.applied, true);
   assert.equal(res.payload.gmDecision.decision.choiceId, "buy");
   assert.equal(res.payload.state.latestGmDecision.choiceId, "buy");

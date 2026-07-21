@@ -193,7 +193,8 @@ test("mobile GM decision choices are rendered and submitted through the app shel
   assert.match(mobileSource, /vsfgm:mobile-decision/);
   assert.match(appSource, /vsfgm:mobile-decision/);
   assert.match(appSource, /event\.detail\?\.action !== "choose-gm-decision"/);
-  assert.match(appSource, /checkAndShowGmDecision\(\)\s*\.then\(\(choice\) =>/);
+  assert.match(appSource, /checkAndShowGmDecision\(\)\s*\.then\(\(result\) =>/);
+  assert.match(appSource, /result\?\.status === "chosen"/);
   assert.match(appSource, /submitMobileGmDecisionChoice/);
   assert.match(appSource, /gmDecisionChoice: choice/);
   assert.match(appSource, /Recording mobile GM decision/);

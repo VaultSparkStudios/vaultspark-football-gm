@@ -372,3 +372,10 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Exhausted the primary list, expanded the thin Innovation Pack, and shipped exact deploy provenance attestation plus read-only snapshot compatibility preflight.
 - Root-fixed the outdated ready fixture and a Playwright-discovered same-authority over-fencing regression; never weakened either gate.
 - Verification: `npm test` 370/370 exit 0, long 3/3, Playwright 18/18, Pages build/smoke, Windows/Wave guards, canon 0 gaps, doctor blockingFailing 0.
+## 2026-07-20 — Session 50 continuous arc and production asset recovery
+
+- Synced/rebased first, ran blocker/secrets/canon preflight, profiled the public browser game, and generated a five-item live-code audit.
+- Shipped shared GM decision authority, atomic weekly transactions, browser single-flight coordination, a visible client diagnostics ledger, browser module reachability, and revision-stamped responsive evidence.
+- Reproduced the live plain-text failure: the host requested `/games/franchise-architect/styles.css` and `setup.js`, which returned HTML/404 because the build omitted that mount. Added the exact mount plus a manifest-declared all-mount MIME contract and favicon coverage.
+- Full verification exposed and root-fixed stale Commissioner state after atomic session replacement, then exposed and closed four unsharded test files. Final direct evidence: Node 390/390, Playwright 18/18, Pages build/smoke, responsive captures 20/20.
+- No new dependency, secret, variable-cost service, fake data, or direct sibling-tree edit.

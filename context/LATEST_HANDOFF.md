@@ -1,3 +1,33 @@
+## Session 50 Intent (2026-07-20)
+
+Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; use the infrastructure rubric with public-app release and game-loop lenses; exhaust every verified Unified Genius List item; generate and implement second-order innovations; preserve observability, cost, and launch truth; verify direct suites and GitHub Pages staging; then commit and push directly to `main` with Ark and zero-shell hygiene.
+
+## Where We Left Off — Session 50 Closeout (2026-07-20)
+
+Session intent achieved. All five verified audit items and three second-order innovations are shipped. The reported plain-text production failure was traced to an undeclared `/games/franchise-architect/` asset mount; the build now publishes that exact path and self-verifies CSS/JavaScript/favicon MIME types from a manifest-declared mount contract.
+
+### Shipped
+
+- One fail-closed General Manager decision authority and occurrence key across all runtimes, mobile, fast sim, defer, and Commissioner Mode.
+- Atomic clone-then-commit weekly commands plus keyed browser single-flight coordination.
+- Source-derived browser degradation ledger with sanitized visible retry/clear truth.
+- Build-time browser reachability invariant; 39 retained modules reachable and three proven orphans removed.
+- Revision-stamped responsive evidence: 20 dark/light captures at 390/768/1440 with zero overflow/runtime errors and compliant critical targets.
+- Second-order mount/MIME contract, Commissioner committed-state refinement, and widest-offender diagnostic ranking.
+
+### Verification
+
+- Full Node suite 390/390, Playwright 18/18, Pages build/smoke, and responsive evidence 20/20 with direct exit 0.
+- No dependency, paid service, fabricated telemetry, or sibling-repo source edit.
+
+### Honest deferral
+
+- Launch/SPARKED remains gated on complete live edge headers, a received on-domain forwarding/copying receipt, current deploy provenance, and authoritative registry reconciliation.
+
+### Next best move
+
+Verify the pushed workflow and exact live `/games/franchise-architect/styles.css`, `setup.js`, and favicon MIME types. If the host still rewrites those paths to HTML, use the emitted mount manifest as the Ark-backed integration contract for the sibling-owned host router.
+
 ## Session 49 Intent (2026-07-19)
 
 Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; exhaust every verified Unified Genius List item; generate and implement second-order innovations; preserve observability and launch truth; verify direct suites and static staging; then commit and push directly to `main` with Ark and zero-shell hygiene.

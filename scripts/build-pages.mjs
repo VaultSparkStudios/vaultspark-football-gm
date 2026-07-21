@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { assertBrowserModuleReachability } from "./check-browser-module-reachability.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -11,7 +12,9 @@ const outDir = path.join(rootDir, "static");
 const slug = process.env.GAME_SLUG || "franchise-architect-football";
 const legacySlugs = [
   "vaultspark-football-gm",
+  "franchise-architect",
   "games/vaultspark-football-gm",
+  "games/franchise-architect",
   "games/franchise-architect-football"
 ];
 const runtimeDefault = process.env.VSFGM_RUNTIME_DEFAULT || "client";
@@ -52,6 +55,10 @@ function normalizeBasePath(value) {
 const basePath = normalizeBasePath(process.env.VITE_APP_BASE_PATH || "/");
 const canonicalBase = process.env.VITE_CANONICAL_URL || `https://playfranchisearchitect.com${basePath}`;
 const ogImageUrl = process.env.VITE_OG_IMAGE_URL || `https://playfranchisearchitect.com${basePath}images/cover.png`;
+const publishedMounts = [...new Set([
+  basePath,
+  ...[slug, ...legacySlugs].map((mount) => normalizeBasePath(mount))
+])];
 
 async function ensureCleanDir(dir) {
   await fs.rm(dir, { recursive: true, force: true });
@@ -236,6 +243,7 @@ async function emitDeployEvidence() {
     sourceRevision,
     styleAsset: hashedStyleHref,
     basePath,
+    publishedMounts,
     runtimeDefault,
     serverAvailable: serverAvailable === "true",
     generatedAt
@@ -254,6 +262,7 @@ async function emitDeployEvidence() {
 }
 
 async function main() {
+  await assertBrowserModuleReachability({ publicDir });
   await ensureCleanDir(outDir);
   await copyDir(publicDir, outDir);
   await copyBrowserModules();
@@ -271,4 +280,3 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
-

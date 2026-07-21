@@ -380,3 +380,14 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 - Browser background writes are authorized by dashboard identity plus panel request sequence/filter key. Authority advances only when the source identity changes; ordinary same-authority refreshes must remain committable.
 - Runtime health and launch readiness are separate truths. `/_health` must report operational source evidence with `launchReady:false`; launch requires independently verified edge headers, email delivery, and exact deploy provenance.
 - Repository/registry truth owned by Studio Ops is transported through signed Ark cargo. This repo never edits a sibling tree to make its own release gate green.
+## 2026-07-20 — Production asset routes are an emitted contract
+
+Decision: every supported public asset mount is declared in `deploy-manifest.json`, physically emitted by the Pages build, and smoke-tested for both body signature and MIME type. HTML fallback under a CSS/JavaScript URL is a blocking failure, even when the route returns HTTP 200.
+
+Rationale: production served plain text because `/games/franchise-architect/` was a host-visible base path but not a build artifact. A route alias alone fixes one incident; a manifest-driven invariant prevents the entire drift class.
+
+## 2026-07-20 — Commissioner Mode does not bypass General Manager decision authority
+
+Decision: Commissioner advance forwards the same explicit General Manager decision payload as normal weekly advancement. Missing/stale choices fail closed, leave the authoritative league unchanged, reopen the multiplayer gate, and return the shared refusal envelope. Successful responses derive only from the newly committed session.
+
+Rationale: auto-selecting a choice would erase player agency, while ignoring the refusal produced a false 200 and stale week. One authority and one transaction contract is both safer and more legible.

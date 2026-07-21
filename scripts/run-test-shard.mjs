@@ -19,12 +19,14 @@ export const SHARDS = {
     "test/world-state-next-step.test.js"
   ],
   runtime: [
+    "test/action-coordinator.test.js",
     "test/advance-week-command.test.js",
     "test/authority-epoch.test.js",
     "test/beta-feedback.test.js",
     "test/box-score-presentation.test.js",
     "test/browser-save-store.test.js",
     "test/browser-wiring.test.js",
+    "test/client-diagnostics.test.js",
     "test/button-action-contracts.test.js",
     "test/league-story-export.test.js",
     "test/challenge-codes.test.js",
@@ -34,6 +36,7 @@ export const SHARDS = {
     "test/file-save-store.test.js",
     "test/fast-sim-checkpoints.test.js",
     "test/gm-decision-commitments.test.js",
+    "test/gm-decision-authority.test.js",
     "test/gist-sync-security.test.js",
     "test/inbox-persistence.test.js",
     "test/injury-rehab-command.test.js",
@@ -75,6 +78,7 @@ export const SHARDS = {
   ],
   studio: [
     "test/audit-renderer.test.js",
+    "test/browser-module-reachability.test.js",
     "test/launch-evidence-report.test.js",
     "test/lifecycle-coherence.test.js",
     "test/public-compliance.test.js",

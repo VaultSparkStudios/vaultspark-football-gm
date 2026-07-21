@@ -1,0 +1,64 @@
+{
+  "session": "S50",
+  "date": "2026-07-20",
+  "repo": "Franchise Architect: Football",
+  "headline": "Session 50 exhausted decision, transaction, diagnostics, module, and responsive work, then repaired the production plain-text asset mount with a self-verifying MIME contract.",
+  "items": [
+    {
+      "title": "decision-and-transaction-authority",
+      "projectImpact": 10,
+      "ecosystemImpact": 8,
+      "evidence": "Every runtime shares one pending-decision occurrence contract and clone-then-commit weekly boundary; Commissioner refusal/retry now preserves that authority."
+    },
+    {
+      "title": "visible-browser-degradation",
+      "projectImpact": 9,
+      "ecosystemImpact": 8,
+      "evidence": "A bounded sanitized ledger drives Settings, status, retry, clear, coalescing, and agent-visible browser events from actual failures."
+    },
+    {
+      "title": "build-and-responsive-evidence",
+      "projectImpact": 9,
+      "ecosystemImpact": 9,
+      "evidence": "All 39 retained browser modules are reachable and 20 revision-stamped captures block overflow, runtime errors, low contrast, and undersized critical controls."
+    },
+    {
+      "title": "production-asset-mount-contract",
+      "projectImpact": 10,
+      "ecosystemImpact": 10,
+      "evidence": "The exact /games/franchise-architect mount now exists and every manifest-declared CSS, JavaScript, and favicon URL is signature- and MIME-verified."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "live-deploy-verification",
+      "evidence": "Wait for the pushed Pages workflow, then verify exact live asset MIME types; Ark the emitted contract to the host owner only if routing still falls back to HTML."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "launch/SPARKED",
+      "evidence": "Edge headers, received email evidence, current deploy provenance, and sibling registry truth remain separate external gates and were not fabricated green."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "superseded-failures",
+      "evidence": "Commissioner and shard-coverage failures remain diagnostic evidence and were superseded only by explicit root fixes plus full reruns."
+    },
+    {
+      "title": "visual-tool-limit",
+      "evidence": "Twenty automated screenshots passed numeric browser gates, but the separate image viewer failed with CryptUnprotectData and is not claimed as a completed human-like visual review."
+    },
+    {
+      "title": "cost-discipline",
+      "evidence": "All work is local/static and zero variable cost; flat-rate plan accounting is not treated as an alarm."
+    }
+  ],
+  "diffStat": {
+    "files": 35,
+    "insertions": 1206,
+    "deletions": 137,
+    "suite": "Node 390/390; Playwright 18/18; Pages build/all-mount MIME smoke; responsive evidence 20/20; Genius 0 open / 5 closed"
+  }
+}
