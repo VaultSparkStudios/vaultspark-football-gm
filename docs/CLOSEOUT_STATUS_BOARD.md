@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-21 (Session 50 closeout) -->
+<!-- generated-at: 2026-07-21 (Session 51 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S50 ══════╗
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S51 ══════╗
 ║  Date: 2026-07-21  ·  SIL: 994/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ One fail-closed General Manager decision authority and occur  ║
-║  ✓ Atomic clone-then-commit weekly commands plus keyed browser   ║
-║  ✓ Source-derived browser degradation ledger with sanitized vis  ║
-║  ✓ Build-time browser reachability invariant; 39 retained modul  ║
-║  ✓ Revision-stamped responsive evidence: 20 dark/light captures  ║
+║  ✓ Intent: run the product-rubric public-app/game-depth arc, ex  ║
+║  ✓ Cutoff: `dual-runtime-route-authority` was an uncommitted pa  ║
+║  ✓ Integrity: no changed JSON/NDJSON existed at recovery start;  ║
+║  ✓ Phantom-green check: the aggregate and initial serialized wr  ║
+║  ✓ One truthful General Manager career authority for object/str  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 994/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 1 files  ·  M:1 A:0 D:0 ?:0                            ║
+║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         390/390                                          ║
-║  IGNIS:         32d ago                                          ║
+║  Tests:         401/401                                          ║
+║  IGNIS:         33d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  18d ago                                          ║
+║  Sanitization:  19d ago                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
