@@ -45,6 +45,8 @@
       "full canonical Node suite 390/390 with direct exit 0",
       "Playwright 18/18",
       "Pages build and all-mount MIME smoke",
+      "GitHub Pages run 29805477684 deployed revision f5ecde2 green",
+      "GitHub CI run 29805477767 green across all six jobs including browser-gates",
       "responsive evidence 20/20 captures",
       "browser module graph 39 reachable and 0 orphaned",
       "Genius cache exhausted 0 open and 5 closed"
@@ -52,7 +54,8 @@
     "nonEvidence": [
       "initial Commissioner stale-state and shard-coverage failures were superseded only after root fixes and full direct green reruns",
       "runtime health and a local artifact do not prove external launch readiness or deploy currency",
-      "the visual-inspection helper failed with Windows CryptUnprotectData; numeric/browser evidence passed but this tool failure was not labeled visual approval"
+      "the visual-inspection helper failed with Windows CryptUnprotectData; numeric/browser evidence passed but this tool failure was not labeled visual approval",
+      "the apex Cloudflare Pages repo still serves its committed stale mount; Ark receipt 01JU1K4LB3C3400F371FD77B32 requests sibling-owned ingestion and live styling is not claimed fixed before that deploy"
     ]
   }
 }

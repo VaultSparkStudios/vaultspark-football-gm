@@ -4,7 +4,7 @@ Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -
 
 ## Where We Left Off — Session 50 Closeout (2026-07-20)
 
-Session intent achieved. All five verified audit items and three second-order innovations are shipped. The reported plain-text production failure was traced to an undeclared `/games/franchise-architect/` asset mount; the build now publishes that exact path and self-verifies CSS/JavaScript/favicon MIME types from a manifest-declared mount contract.
+All five verified audit items and three second-order innovations are source-shipped. Live verification refined the plain-text diagnosis: the separate apex host serves assets at `/franchise-architect/` but its HTML forces `/games/franchise-architect/`. Revision `f5ecde2` now emits a mount-relative base and self-verifies every alias; Pages run `29805477684` is green. The apex Cloudflare Pages copy is sibling-owned, so its required artifact ingestion was sent via Ark receipt `01JU1K4LB3C3400F371FD77B32` without editing that tree.
 
 ### Shipped
 
@@ -26,7 +26,7 @@ Session intent achieved. All five verified audit items and three second-order in
 
 ### Next best move
 
-Verify the pushed workflow and exact live `/games/franchise-architect/styles.css`, `setup.js`, and favicon MIME types. If the host still rewrites those paths to HTML, use the emitted mount manifest as the Ark-backed integration contract for the sibling-owned host router.
+Apply Ark cargo `01JU1K4LB3C3400F371FD77B32` in `vaultsparkstudios-website`, deploy its Cloudflare Pages tree, then prove `/franchise-architect/` computes non-default styling and its resolved hashed CSS, `setup.js`, and favicon each return the correct MIME type. Do not edit that sibling from this repo.
 
 ## Session 49 Intent (2026-07-19)
 

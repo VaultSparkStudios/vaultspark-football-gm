@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 50 shipped shared GM decision authority, atomic weekly transactions, visible client diagnostics, browser module reachability, revision-stamped responsive evidence, and a production all-mount MIME contract.",
-  "nextMilestone": "Verify the pushed workflow and exact live /games/franchise-architect asset MIME types; if host routing still falls back to HTML, deliver the emitted mount contract to the sibling-owned router through Ark.",
+  "currentFocus": "Session 50 shipped runtime authority and evidence systems plus a mount-relative production asset contract; GitHub Pages is green, while the sibling-owned apex copy awaits Ark-backed ingestion.",
+  "nextMilestone": "Apply Ark cargo 01JU1K4LB3C3400F371FD77B32 in vaultsparkstudios-website, deploy its Cloudflare Pages tree, and verify computed styling plus CSS/JavaScript/favicon MIME at /franchise-architect/.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until the canonical live origin has complete edge-security headers, football@playfranchisearchitect.com forwarding/copying has a real received-message receipt, deploy provenance matches the expected workflow artifact, and the authoritative registry is reconciled."
   ],
@@ -96,13 +96,15 @@
       "Playwright 18/18",
       "npm run build:pages",
       "npm run smoke:pages with all-mount MIME contract",
+      "GitHub Pages run 29805477684 deployed revision f5ecde2 green",
+      "GitHub CI run 29805477767 green across all six jobs including browser-gates",
       "responsive evidence 20/20 captures",
       "browser module graph 39 reachable / 0 orphaned",
       "Unified Genius List 0 open / 5 closed",
       "Innovation Pack 3 shipped"
     ],
     "date": "2026-07-20",
-    "diagnosticNote": "Earlier Commissioner stale-state and unsharded-test failures were root-fixed and superseded by direct green reruns."
+    "diagnosticNote": "Earlier Commissioner, shard, and brittle trade-fixture failures were root-fixed and superseded by direct green reruns. Apex styling is not claimed fixed until the sibling Cloudflare Pages mount ingests f5ecde2; Ark receipt 01JU1K4LB3C3400F371FD77B32 is the honest cross-repo handoff."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "T2_opusplan",

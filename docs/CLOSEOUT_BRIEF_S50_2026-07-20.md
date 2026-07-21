@@ -7,11 +7,11 @@
 - **decision-and-transaction-authority** (10/10 project, 8/10 ecosystem): Every runtime shares one pending-decision occurrence contract and clone-then-commit weekly boundary; Commissioner refusal/retry now preserves that authority.
 - **visible-browser-degradation** (9/10 project, 8/10 ecosystem): A bounded sanitized ledger drives Settings, status, retry, clear, coalescing, and agent-visible browser events from actual failures.
 - **build-and-responsive-evidence** (9/10 project, 9/10 ecosystem): All 39 retained browser modules are reachable and 20 revision-stamped captures block overflow, runtime errors, low contrast, and undersized critical controls.
-- **production-asset-mount-contract** (10/10 project, 10/10 ecosystem): The exact /games/franchise-architect mount now exists and every manifest-declared CSS, JavaScript, and favicon URL is signature- and MIME-verified.
+- **production-asset-mount-contract** (10/10 project, 10/10 ecosystem): Every declared alias now exists, uses a mount-relative asset base, and signature/MIME-verifies CSS, JavaScript, and favicon URLs. Pages run 29805477684 deployed the contract green.
 
 ## Follow-ups
 
-- **live-deploy-verification**: Wait for the pushed Pages workflow, then verify exact live asset MIME types; Ark the emitted contract to the host owner only if routing still falls back to HTML.
+- **apex-artifact-ingestion**: The sibling Cloudflare Pages tree still serves a stale hard-coded /games/franchise-architect/ base. Ark receipt 01JU1K4LB3C3400F371FD77B32 requests full mount ingestion from revision f5ecde2; apex styling remains degraded until that sibling deploy lands.
 
 ## Blockers
 
@@ -28,4 +28,4 @@
 - Files changed: 35
 - Insertions: 1206
 - Deletions: 137
-- Suite: Node 390/390; Playwright 18/18; Pages build/all-mount MIME smoke; responsive evidence 20/20; Genius 0 open / 5 closed
+- Suite: Node 390/390; Playwright 18/18; CI run 29805477767 green; Pages run 29805477684 green; all-mount MIME smoke; responsive evidence 20/20; Genius 0 open / 5 closed

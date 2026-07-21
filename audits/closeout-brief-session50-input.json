@@ -26,13 +26,13 @@
       "title": "production-asset-mount-contract",
       "projectImpact": 10,
       "ecosystemImpact": 10,
-      "evidence": "The exact /games/franchise-architect mount now exists and every manifest-declared CSS, JavaScript, and favicon URL is signature- and MIME-verified."
+      "evidence": "Every declared alias now exists, uses a mount-relative asset base, and signature/MIME-verifies CSS, JavaScript, and favicon URLs. Pages run 29805477684 deployed the contract green."
     }
   ],
   "followUps": [
     {
-      "title": "live-deploy-verification",
-      "evidence": "Wait for the pushed Pages workflow, then verify exact live asset MIME types; Ark the emitted contract to the host owner only if routing still falls back to HTML."
+      "title": "apex-artifact-ingestion",
+      "evidence": "The sibling Cloudflare Pages tree still serves a stale hard-coded /games/franchise-architect/ base. Ark receipt 01JU1K4LB3C3400F371FD77B32 requests full mount ingestion from revision f5ecde2; apex styling remains degraded until that sibling deploy lands."
     }
   ],
   "blockers": [
@@ -59,6 +59,6 @@
     "files": 35,
     "insertions": 1206,
     "deletions": 137,
-    "suite": "Node 390/390; Playwright 18/18; Pages build/all-mount MIME smoke; responsive evidence 20/20; Genius 0 open / 5 closed"
+    "suite": "Node 390/390; Playwright 18/18; CI run 29805477767 green; Pages run 29805477684 green; all-mount MIME smoke; responsive evidence 20/20; Genius 0 open / 5 closed"
   }
 }

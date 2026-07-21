@@ -649,3 +649,5 @@ Source: `docs/AUDIT_2026-07-20_SESSION50.json`.
 | launch/SPARKED evidence | Deferred honestly — requires complete edge headers, received on-domain forwarding proof, current deploy provenance, and sibling-owned registry reconciliation |
 
 **Verification:** full canonical Node suite 390/390 with direct exit 0; Playwright 18/18; Pages build plus all-mount MIME smoke; responsive evidence 20/20 captures; no new dependency or variable-cost service.
+
+**Apex follow-up:** revision `f5ecde2` and Pages run `29805477684` are green with mount-relative assets. The separate `VaultSparkStudios.github.io` Cloudflare Pages copy still serves the stale hard-coded base; Ark receipt `01JU1K4LB3C3400F371FD77B32` requests the sibling-owned full-mount ingestion. Live styling is not claimed fixed until that deploy lands.
