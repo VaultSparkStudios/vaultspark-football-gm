@@ -7,8 +7,8 @@ Efficiency order:
 1. [completed] Public boundary hard gate: `public-process-ledger-quarantine` — removed the forbidden private CDR path; focused test 8/8 and live post-index sanitization scan 0 critical.
 2. [completed] Shared progression authority: `gm-legacy-truth-engine` — object/string titles resolve once; persona progress is engine-derived; earned market pull reaches the real offer command; non-mechanical treatment is labeled recognition-only; 48 focused tests pass.
 3. [completed] Browser failure foundation: `browser-promise-observability-contract` — 39 modules have zero unallowlisted parameterless catches; local sanitized retry-aware diagnostics cover every migrated sink; Pages and 59 Studio tests pass.
-4. [in progress] Consequence-bearing first run: `consequence-bearing-franchise-contract` — persist the tutorial's identity, pressure, and scouting decisions through both runtimes and render the authoritative receipt.
-5. [open] Dual-runtime architecture: `dual-runtime-route-authority` — declare browser-call contracts, port the 26 enabled server gaps, and prove response/state parity without authority fallback.
+4. [completed] Consequence-bearing first run: `consequence-bearing-franchise-contract` — all nine choices mutate declared authorities; the versioned receipt persists/idempotently reloads; scouting waits for a real class; final tutorial and Overview render live consequences; 27 focused tests and Pages pass.
+5. [in progress] Dual-runtime architecture: `dual-runtime-route-authority` — declare browser-call contracts, port the 26 enabled server gaps, and prove response/state parity without authority fallback.
 6. [open] Refresh the Unified Genius List, generate the Innovation Pack, climb viable L3 rungs, and ship compound refinements until the context-meter—not task count—gates continuation.
 7. [open] Run focused verification after each item, then direct canonical shards, Playwright, Pages staging/evidence, sanitization, canon, release, and doctor gates.
 

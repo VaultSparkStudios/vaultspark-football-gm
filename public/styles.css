@@ -3483,6 +3483,41 @@ body.mobile-loop-active .mobile-loop-overlay {
   padding-left: 10px;
   border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
 }
+.opening-contract-card {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+}
+.opening-contract-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.opening-contract-effects {
+  display: grid;
+  gap: 7px;
+}
+.opening-contract-effect {
+  display: grid;
+  grid-template-columns: minmax(110px, .45fr) minmax(180px, 1fr);
+  gap: 3px 10px;
+  padding-left: 9px;
+  border-left: 2px solid var(--accent);
+}
+.opening-contract-effect strong { color: var(--ink-strong); }
+.opening-contract-effect span { color: var(--ink-dim); }
+.opening-contract-effect small {
+  grid-column: 2;
+  color: var(--muted);
+}
+@media (max-width: 720px) {
+  .opening-contract-effect { grid-template-columns: 1fr; }
+  .opening-contract-effect small { grid-column: 1; }
+}
 @keyframes confettiBurst { 0% { opacity:1; transform:scale(1) translateY(0); } 100% { opacity:0; transform:scale(1.5) translateY(-30px); } }
 .persona-tier-up-confetti { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; z-index:9999; font-size:48px; animation:confettiBurst 1s ease-out forwards; }
 

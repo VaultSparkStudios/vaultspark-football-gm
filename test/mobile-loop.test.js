@@ -181,7 +181,7 @@ test("mobile overlay refreshes pending GM decisions from the app shell", () => {
 test("mobile overlay clears stale pending decisions when refresh fails", () => {
   const appSource = fs.readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
 
-  assert.match(appSource, /\.catch\(\(\) => \{\s*if \(decisionSnapshotKey !== mobileDecisionSnapshotKey\(\)\) return;\s*state\.mobilePendingDecision = null;\s*if \(isMobileModeEnabled\(\)\) renderMobileOverlay\(state, advanceFromMobile\);/s);
+  assert.match(appSource, /observeBackgroundTask\([\s\S]*operation: "pending-gm-decision"[\s\S]*onError: \(\) => \{\s*if \(decisionSnapshotKey !== mobileDecisionSnapshotKey\(\)\) return;\s*state\.mobilePendingDecision = null;\s*if \(isMobileModeEnabled\(\)\) renderMobileOverlay\(state, advanceFromMobile\);/s);
 });
 
 test("mobile GM decision choices are rendered and submitted through the app shell", () => {

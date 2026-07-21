@@ -87,6 +87,7 @@ import {
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
 import { getGmBenefits, updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore.js";
+import { getStartScenarioPlan, validateStartScenario } from "../../public/lib/startScenarioContract.js";
 import { generatePressConference } from "../engine/pressConference.js";
 import { runNarrativeChecks } from "../engine/narrativeEvents.js";
 import { resolveThreads as resolveContinuityThreads } from "../engine/continuityLedger.js";
@@ -2569,6 +2570,160 @@ export class GameSession {
     return receipt;
   }
 
+  applyStartScenario(payload = {}) {
+    const validation = validateStartScenario(payload);
+    if (!validation.ok) return validation;
+    const teamId = this.controlledTeamId;
+    const team = teamById(this.league, teamId);
+    if (!team) {
+      return { ok: false, reasonCode: "START_SCENARIO_TEAM_MISSING", error: "Controlled team not found." };
+    }
+    const existing = this.league.startScenarioReceipt || null;
+    if (existing) {
+      const sameSelections = JSON.stringify(existing.selections) === JSON.stringify(validation.value.selections);
+      if (sameSelections) return { ok: true, idempotent: true, receipt: existing };
+      return {
+        ok: false,
+        reasonCode: "START_SCENARIO_ALREADY_APPLIED",
+        error: "The opening franchise contract has already been applied."
+      };
+    }
+
+    const plan = getStartScenarioPlan(validation.value.selections);
+    team.scheme = {
+      ...(team.scheme || {}),
+      passRate: plan.identity.passRate,
+      aggression: plan.identity.aggression
+    };
+    team.openingIdentity = plan.identity.id;
+    team.owner = buildOwnerProfile(this.rng, team.owner);
+    team.owner.patience = plan.pressure.patience;
+    team.owner.personality = plan.pressure.personality;
+    team.owner.priorities = {
+      ...(team.owner.priorities || {}),
+      ...plan.pressure.priorities
+    };
+    team.strategyProfile = plan.pressure.strategyProfile;
+    team.openingContractStrategy = {
+      profile: plan.pressure.strategyProfile,
+      activeThroughYear: this.startYear
+    };
+
+    const roster = teamPlayersAll(this.league, teamId);
+    for (const player of roster) player.schemeFit = computeSchemeFit(player, team);
+    team.chemistry = computeTeamChemistry(roster, team);
+    team.schemeIdentity = schemeIdentityLabel(team);
+    team.cultureProfile = cultureIdentity(team, roster);
+    team.owner.expectation = buildOwnerExpectation(team, roster, this.league.transactionLog || [], {
+      currentWeek: this.currentWeek
+    });
+    team.weeklyPlan = this.buildWeeklyPlan(teamId);
+
+    const scoutingState = this.ensureScoutingTeamState(teamId);
+    scoutingState.startScenarioDirective = {
+      mode: plan.scouting.mode,
+      status: plan.scouting.mode === "decline-director-first" ? "declined" : "pending-draft-class",
+      pointsReserved: Number(plan.scouting.pointsReserved || 0),
+      reservationCredited: false,
+      appliedProspectId: null
+    };
+
+    const receipt = {
+      schemaVersion: validation.value.schemaVersion,
+      receiptId: ["opening", this.startYear, teamId, "v" + validation.value.schemaVersion].join("-"),
+      teamId,
+      appliedAt: { year: this.currentYear, week: this.currentWeek },
+      selections: validation.value.selections,
+      effects: {
+        identity: {
+          id: plan.identity.id,
+          label: plan.identity.label,
+          description: plan.identity.description,
+          passRate: team.scheme.passRate,
+          aggression: team.scheme.aggression,
+          schemeIdentity: team.schemeIdentity
+        },
+        pressure: {
+          id: plan.pressure.id,
+          label: plan.pressure.label,
+          description: plan.pressure.description,
+          patience: team.owner.patience,
+          personality: team.owner.personality,
+          strategyProfile: team.strategyProfile,
+          mandate: team.owner.expectation?.mandate || null
+        },
+        scouting: {
+          id: plan.scouting.id,
+          label: plan.scouting.label,
+          description: plan.scouting.description,
+          status: scoutingState.startScenarioDirective.status,
+          pointsReserved: Number(plan.scouting.pointsReserved || 0),
+          pointsRemaining: scoutingState.points,
+          prospectId: null,
+          prospect: null
+        }
+      }
+    };
+    this.league.startScenarioReceipt = receipt;
+    this.applyPendingStartScenarioScoutingDirective();
+    this.logTransaction({
+      type: "opening-contract",
+      teamId,
+      details: {
+        identity: plan.identity.id,
+        pressure: plan.pressure.id,
+        firstCall: plan.scouting.id
+      }
+    });
+    return { ok: true, idempotent: false, receipt: this.league.startScenarioReceipt };
+  }
+
+  applyPendingStartScenarioScoutingDirective() {
+    const receipt = this.league.startScenarioReceipt;
+    const teamId = receipt?.teamId || this.controlledTeamId;
+    const state = teamId ? this.ensureScoutingTeamState(teamId) : null;
+    const directive = state?.startScenarioDirective;
+    if (!receipt || !directive || ["applied", "declined"].includes(directive.status)) {
+      return receipt?.effects?.scouting || null;
+    }
+    const prospects = this.league.pendingDraft?.available || [];
+    if (!prospects.length) {
+      directive.status = "pending-draft-class";
+      receipt.effects.scouting.status = directive.status;
+      return receipt.effects.scouting;
+    }
+    const prospect = prospects
+      .slice()
+      .sort((left, right) =>
+        Number(left.scouting?.rank || 999) - Number(right.scouting?.rank || 999)
+        || String(left.id).localeCompare(String(right.id))
+      )[0];
+    if (!prospect) return receipt.effects.scouting;
+
+    if (directive.mode === "pin-director-first") {
+      const result = this.lockDraftBoard({ teamId, playerIds: [prospect.id] });
+      if (!result.ok) return receipt.effects.scouting;
+    } else if (directive.mode === "invest-director-first") {
+      const spend = Math.max(1, Number(directive.pointsReserved || 0));
+      if (!directive.reservationCredited) {
+        state.points += spend;
+        directive.reservationCredited = true;
+      }
+      const result = this.allocateScoutingPoints({ teamId, playerId: prospect.id, points: spend });
+      if (!result.ok) return receipt.effects.scouting;
+    }
+    directive.status = "applied";
+    directive.appliedProspectId = prospect.id;
+    receipt.effects.scouting = {
+      ...receipt.effects.scouting,
+      status: "applied",
+      pointsRemaining: state.points,
+      prospectId: prospect.id,
+      prospect: prospect.name
+    };
+    return receipt.effects.scouting;
+  }
+
   ensureScoutingTeamState(teamId) {
     if (!this.league.scouting) this.league.scouting = { teams: {}, weeklyPoints: 12 };
     if (!this.league.scouting.teams[teamId]) {
@@ -3753,7 +3908,10 @@ export class GameSession {
       const roster = teamPlayersAll(this.league, team.id);
       team.scheme.passRate = Number(clamp((team.scheme?.passRate || 0.54) + era.passRateDelta * 0.02, 0.34, 0.72).toFixed(2));
       for (const player of roster) player.schemeFit = computeSchemeFit(player, team);
-      team.strategyProfile = computeTeamStrategyProfile(team, roster);
+      const openingStrategy = team.openingContractStrategy;
+      team.strategyProfile = openingStrategy && this.currentYear <= Number(openingStrategy.activeThroughYear)
+        ? openingStrategy.profile
+        : computeTeamStrategyProfile(team, roster);
       team.chemistry = computeTeamChemistry(roster, team);
       team.schemeIdentity = schemeIdentityLabel(team);
       team.cultureProfile = cultureIdentity(team, roster);
@@ -4185,6 +4343,7 @@ export class GameSession {
       selections: []
     };
     this.initializeDraftScouting();
+    this.applyPendingStartScenarioScoutingDirective();
     return this.league.pendingDraft;
   }
 
@@ -4619,6 +4778,10 @@ export class GameSession {
             overallRating: controlledTeam.overallRating,
             coaching: controlledTeam.coaching,
             scheme: controlledTeam.scheme,
+            schemeIdentity: controlledTeam.schemeIdentity || null,
+            strategyProfile: controlledTeam.strategyProfile || "balanced",
+            cultureProfile: controlledTeam.cultureProfile || null,
+            weeklyPlan: controlledTeam.weeklyPlan || null,
             chemistry: controlledTeam.chemistry || 70,
             owner: controlledTeam.owner || null
           }
@@ -4634,6 +4797,7 @@ export class GameSession {
         optionEligible: this.listFifthYearOptionCandidates(this.controlledTeamId)
       },
       scouting: this.getScoutingBoard({ teamId: this.controlledTeamId, limit: 40 }),
+      startScenarioReceipt: this.league.startScenarioReceipt || null,
       depthChartSnapShare: this.getDepthChartSnapShare(this.controlledTeamId),
       draftPickAssets: this.getDraftPickAssets(this.controlledTeamId),
       compPicks: this.getCompensatoryPicks({ teamId: this.controlledTeamId }),

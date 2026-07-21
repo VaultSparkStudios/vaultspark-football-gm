@@ -379,6 +379,20 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  if (req.method === "POST" && url.pathname === "/api/onboarding/start-scenario") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const result = session.applyStartScenario(body);
+    const status = result.ok
+      ? 200
+      : (result.reasonCode === "START_SCENARIO_ALREADY_APPLIED" ? 409 : 400);
+    if (result.ok && !result.idempotent) writeAutoBackup("opening-contract");
+    sendJson(res, status, {
+      ...result,
+      state: session.getDashboardState()
+    });
+    return true;
+  }
+
   if (req.method === "POST" && url.pathname === "/api/new-league") {
     const body = parseJsonBody(await readRequestBody(req));
     if (!body) {

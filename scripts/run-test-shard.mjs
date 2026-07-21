@@ -49,6 +49,7 @@ export const SHARDS = {
     "test/return-digest.test.js",
     "test/save-integrity.test.js",
     "test/session-lookup-indexes.test.js",
+    "test/start-scenario.test.js",
     "test/tactical-film-room.test.js",
     "test/session8-contract-edges.test.js",
     "test/session8-endpoints.test.js",

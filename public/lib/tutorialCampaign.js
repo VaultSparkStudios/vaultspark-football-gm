@@ -17,6 +17,7 @@
  */
 
 import { closeModal, openModal } from "./modalManager.js";
+import { buildStartScenarioRequest } from "./startScenarioContract.js";
 
 const TUTORIAL_SEEN_KEY = "vsfgm_tutorial_seen_v1";
 
@@ -97,13 +98,13 @@ const STEPS = [
       {
         id: "trust-scout",
         label: "Trust the Report",
-        sub: "Lock this prospect at the top of your board. Your scout's read is usually right if you've invested in the scouting department.",
+        sub: "Pin the first real prospect your director flags once the draft class exists.",
         scoutTip: "Scouting confidence is built by weekly points invested + staff skill. Low investment = low confidence."
       },
       {
         id: "wait-more-info",
         label: "Request More Scouting",
-        sub: "Spend weekly scouting points to get a higher-confidence report before committing.",
+        sub: "Reserve six points for a deeper read on the first real prospect your director flags.",
         scoutTip: "More points → higher reveal quality at draft time. The board rewards patience."
       },
       {
@@ -131,11 +132,60 @@ export function mountTutorial({ onComplete, onSkip }) {
   overlay.setAttribute("aria-labelledby", "tutorial-title");
   document.body.appendChild(overlay);
 
-  function closeTutorial(callback) {
+  function dismissTutorial(callback) {
     closeModal(overlay);
     markTutorialSeen();
     overlay.remove();
     callback?.(selections);
+  }
+
+  function renderReceipt(receipt) {
+    closeModal(overlay);
+    const modal = document.createElement("div");
+    modal.className = "tutorial-modal tutorial-receipt";
+
+    const header = document.createElement("div");
+    header.className = "tutorial-header";
+    const kicker = document.createElement("div");
+    kicker.className = "brand-kicker";
+    kicker.textContent = "Opening Contract Applied";
+    const title = document.createElement("h2");
+    title.id = "tutorial-title";
+    title.textContent = "Your franchise now carries these choices";
+    header.append(kicker, title);
+
+    const list = document.createElement("div");
+    list.className = "tutorial-receipt-list";
+    for (const key of ["identity", "pressure", "scouting"]) {
+      const effect = receipt.effects?.[key];
+      if (!effect) continue;
+      const row = document.createElement("article");
+      row.className = "tutorial-receipt-row";
+      const label = document.createElement("strong");
+      label.textContent = effect.label || key;
+      const detail = document.createElement("p");
+      detail.textContent = effect.description || "";
+      const status = document.createElement("span");
+      status.className = "small";
+      status.textContent = key === "scouting" && effect.status === "pending-draft-class"
+        ? "Pending: no draft prospect exists yet. This will apply to the real class when generated."
+        : "Applied from the current league state.";
+      row.append(label, detail, status);
+      list.appendChild(row);
+    }
+
+    const actions = document.createElement("div");
+    actions.className = "tutorial-actions";
+    const enter = document.createElement("button");
+    enter.type = "button";
+    enter.className = "btn-primary tutorial-next";
+    enter.textContent = "Enter the Franchise";
+    enter.addEventListener("click", () => dismissTutorial());
+    actions.appendChild(enter);
+
+    modal.append(header, list, actions);
+    overlay.replaceChildren(modal);
+    openModal(overlay, { onClose: () => dismissTutorial() });
   }
 
   function render() {
@@ -195,20 +245,39 @@ export function mountTutorial({ onComplete, onSkip }) {
     });
 
     overlay.querySelector("#tutSkipBtn").addEventListener("click", () => {
-      closeTutorial(onSkip);
+      dismissTutorial(onSkip);
     });
 
-    overlay.querySelector("#tutNextBtn").addEventListener("click", () => {
+    overlay.querySelector("#tutNextBtn").addEventListener("click", async () => {
       if (!selections[step.id]) return;
       if (isLast) {
-        closeTutorial(onComplete);
+        const nextButton = overlay.querySelector("#tutNextBtn");
+        nextButton.disabled = true;
+        nextButton.textContent = "Applying Contract…";
+        try {
+          const receipt = await onComplete?.(buildStartScenarioRequest(selections));
+          if (!receipt?.effects) throw new Error("The league did not return an opening-contract receipt.");
+          markTutorialSeen();
+          renderReceipt(receipt);
+        } catch (error) {
+          nextButton.disabled = false;
+          nextButton.textContent = "Retry Applying Contract";
+          let errorEl = overlay.querySelector(".tutorial-error");
+          if (!errorEl) {
+            errorEl = document.createElement("p");
+            errorEl.className = "tutorial-error";
+            errorEl.setAttribute("role", "alert");
+            overlay.querySelector(".tutorial-actions")?.before(errorEl);
+          }
+          errorEl.textContent = error?.message || "The opening contract could not be applied. Nothing was marked complete.";
+        }
       } else {
         currentStep++;
         render();
       }
     });
 
-    openModal(overlay, { onClose: () => closeTutorial(onSkip) });
+    openModal(overlay, { onClose: () => dismissTutorial(onSkip) });
   }
 
   render();
@@ -260,6 +329,11 @@ export function injectTutorialStyles() {
     .tutorial-choice.selected .choice-tip { color: var(--accent, #d7a24a); }
     .tutorial-actions { display: flex; justify-content: space-between; align-items: center; padding-top: .5rem; }
     .tutorial-next:disabled { opacity: .45; cursor: not-allowed; }
+    .tutorial-error { margin: 0; padding: .75rem; border: 1px solid var(--danger, #d45d5d); border-radius: 8px; color: var(--danger, #d45d5d); background: color-mix(in srgb, var(--danger, #d45d5d) 10%, transparent); }
+    .tutorial-receipt-list { display: grid; gap: .75rem; }
+    .tutorial-receipt-row { padding: .85rem 1rem; border: 1px solid var(--line, #2a3a4a); border-radius: 8px; background: var(--card-grad, #182028); }
+    .tutorial-receipt-row strong { display: block; color: var(--ink-strong, #f5f1e7); }
+    .tutorial-receipt-row p { margin: .3rem 0; color: var(--ink-dim, #a0b0b8); }
   `;
   document.head.appendChild(style);
 }

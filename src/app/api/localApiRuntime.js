@@ -468,6 +468,17 @@ export function createLocalApiRuntime({
         return finish(jsonResponse(200, getAugmentedState(session)));
       }
 
+      if (method === "POST" && pathname === "/api/onboarding/start-scenario") {
+        const result = session.applyStartScenario(body);
+        const status = result.ok
+          ? 200
+          : (result.reasonCode === "START_SCENARIO_ALREADY_APPLIED" ? 409 : 400);
+        return finish(jsonResponse(status, {
+          ...result,
+          state: getAugmentedState(session)
+        }));
+      }
+
       if (method === "POST" && pathname === "/api/new-league") {
         if (body?.pfrPath || body?.realismProfilePath || body?.careerRealismProfilePath) {
           return finish(

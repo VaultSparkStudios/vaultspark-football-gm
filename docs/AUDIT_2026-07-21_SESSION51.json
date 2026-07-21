@@ -130,7 +130,7 @@
       "priority": 31.3,
       "slug": "consequence-bearing-franchise-contract",
       "title": "Turn the first-run tutorial from decorative choices into the franchise's opening contract",
-      "status": "open",
+      "status": "completed",
       "premise": "tutorialCampaign.js collects identity, pressure, and first-call selections while copy says scheme, owner patience, and scouting shape the franchise, but public/app.js ignores the onComplete selections and only reloads state. The league therefore receives none of the promised consequences, and tests cover only modal wiring/theme behavior.",
       "evidence": [
         "public/lib/tutorialCampaign.js collects identity, pressure, and first-call selections",
@@ -159,7 +159,8 @@
         "server and browser responses match",
         "tutorial completion waits for a successful authoritative receipt",
         "Overview visibly explains the chosen opening contract"
-      ]
+      ],
+      "executionEvidence": "Added one versioned shared start-scenario contract and an idempotent GameSession mutation used by both adapters. Identity changes real pass-rate/aggression and scheme fit; pressure changes year-one owner patience/personality/strategy and recomputes the mandate; scouting records a source-derived directive, remains explicitly pending while no class exists, then pins or spends six reserved points on the first real ranked prospect when prepareDraft generates it. Invalid/conflicting payloads do not mutate state, the receipt survives snapshots, and duplicate identical requests return the same receipt. Tutorial completion now awaits the successful route, shows failure without marking seen, renders the receipt as the final step, and Overview shows live values plus the no-fabrication pending state. All nine individual choices, reload, idempotence, real-prospect fulfillment, local adapter shape, shared server route, focus trap, and observable mobile fallback pass 27/27 focused tests; Pages builds."
     },
     {
       "rank": 4,

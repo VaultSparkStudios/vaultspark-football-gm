@@ -1920,7 +1920,18 @@ async function init() {
   queueStartupHydration();
   initGistSyncUI();
   injectTutorialStyles();
-  mountTutorial({ onComplete: () => loadState(), onSkip: () => {} });
+  mountTutorial({
+    onComplete: async (request) => {
+      const result = await api("/api/onboarding/start-scenario", {
+        method: "POST",
+        body: request
+      });
+      applyDashboard(result.state);
+      showToast("Opening franchise contract applied.");
+      return result.receipt;
+    },
+    onSkip: () => {}
+  });
   mountBetaFeedback();
   observeBackgroundTask(
     () => maybeShowReturnDigest(state.dashboard, { onJumpToInbox: () => openInbox() }),

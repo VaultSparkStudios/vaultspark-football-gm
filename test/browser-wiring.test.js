@@ -72,8 +72,9 @@ test("first-run tutorial modal uses the shared focus trap", () => {
   const tutorialSource = read("../public/lib/tutorialCampaign.js");
 
   assert.match(tutorialSource, /import \{ closeModal, openModal \} from "\.\/modalManager\.js"/);
-  assert.match(tutorialSource, /openModal\(overlay, \{ onClose: \(\) => closeTutorial\(onSkip\) \}\)/);
+  assert.match(tutorialSource, /openModal\(overlay, \{ onClose: \(\) => dismissTutorial\(onSkip\) \}\)/);
   assert.match(tutorialSource, /closeModal\(overlay\);\s*markTutorialSeen\(\);\s*overlay\.remove\(\);/s);
+  assert.match(tutorialSource, /await onComplete\?\.[\s\S]*markTutorialSeen\(\);[\s\S]*renderReceipt\(receipt\)/);
 });
 test("first-run tutorial styles are injected before mounting onboarding", () => {
   const appSource = read("../public/app.js");

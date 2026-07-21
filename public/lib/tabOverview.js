@@ -34,11 +34,61 @@ export function renderOverview() {
     box.textContent = lines.join(" ") || "Weekly plan, locker-room pressure, and owner mandate updates will appear here.";
   }
   renderOverviewSpotlight();
+  renderOpeningContract();
   renderRehabCommandCenter();
   renderGmCommitmentBoard();
   renderTacticalFilmRoom();
   renderNarrativePanel();
   renderTradeDeadlineAlert();
+}
+
+export function renderOpeningContract() {
+  const card = document.getElementById("openingContractCard");
+  if (!card) return;
+  const receipt = state.dashboard?.startScenarioReceipt;
+  if (!receipt?.effects) {
+    card.hidden = true;
+    card.replaceChildren();
+    return;
+  }
+  const heading = document.createElement("div");
+  heading.className = "opening-contract-heading";
+  const kicker = document.createElement("span");
+  kicker.className = "brand-kicker";
+  kicker.textContent = "Opening Contract";
+  const receiptId = document.createElement("span");
+  receiptId.className = "small";
+  receiptId.textContent = receipt.receiptId || "";
+  heading.append(kicker, receiptId);
+
+  const rows = document.createElement("div");
+  rows.className = "opening-contract-effects";
+  for (const key of ["identity", "pressure", "scouting"]) {
+    const effect = receipt.effects[key];
+    if (!effect) continue;
+    const row = document.createElement("div");
+    row.className = "opening-contract-effect";
+    const label = document.createElement("strong");
+    label.textContent = effect.label || key;
+    const detail = document.createElement("span");
+    detail.textContent = effect.description || "";
+    const evidence = document.createElement("small");
+    if (key === "identity") {
+      evidence.textContent = "Live scheme: " + Math.round(Number(effect.passRate || 0) * 100) + "% pass · " + Math.round(Number(effect.aggression || 0) * 100) + "% aggression";
+    } else if (key === "pressure") {
+      evidence.textContent = "Live owner patience: " + Math.round(Number(effect.patience || 0) * 100) + "% · " + (effect.mandate || "Mandate pending");
+    } else {
+      evidence.textContent = effect.status === "pending-draft-class"
+        ? "Pending a real draft class — no prospect has been fabricated."
+        : effect.status === "declined"
+          ? "Applied: no opening prospect pinned or points spent."
+          : "Applied to " + (effect.prospect || effect.prospectId || "the director flag") + " · " + Number(effect.pointsRemaining || 0) + " points remain";
+    }
+    row.append(label, detail, evidence);
+    rows.appendChild(row);
+  }
+  card.replaceChildren(heading, rows);
+  card.hidden = false;
 }
 
 export function renderRehabCommandCenter() {
