@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-20 (Session 49 closeout) -->
+<!-- generated-at: 2026-07-21 (Session 50 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S49 ══════╗
-║  Date: 2026-07-20  ·  SIL: 994/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S50 ══════╗
+║  Date: 2026-07-21  ·  SIL: 994/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Public origin contract: actual GitHub repository links, cano  ║
-║  ✓ Weekly command authority: one shared validated executor for   ║
-║  ✓ Save transaction boundary: future/invalid schemas fail with   ║
-║  ✓ Hydration authority: league/team/year/week/phase identity pl  ║
-║  ✓ Second-order innovations: `verify-release-provenance.mjs` pr  ║
+║  ✓ One fail-closed General Manager decision authority and occur  ║
+║  ✓ Atomic clone-then-commit weekly commands plus keyed browser   ║
+║  ✓ Source-derived browser degradation ledger with sanitized vis  ║
+║  ✓ Build-time browser reachability invariant; 39 retained modul  ║
+║  ✓ Revision-stamped responsive evidence: 20 dark/light captures  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 994/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -29,19 +29,19 @@
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  ✓ context/CURRENT_STATE.md                                      ║
-║  ✓ context/TASK_BOARD.md                                         ║
-║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
-║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
-║  ✓ docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  ✓ context/TRUTH_AUDIT.md                                        ║
-║  ✓ context/PROJECT_STATUS.json                                   ║
+║  · context/CURRENT_STATE.md                                      ║
+║  · context/TASK_BOARD.md                                         ║
+║  · context/LATEST_HANDOFF.md                                     ║
+║  · logs/WORK_LOG.md                                              ║
+║  · context/DECISIONS.md                                          ║
+║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
+║  · context/TRUTH_AUDIT.md                                        ║
+║  · context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 62 files  ·  M:43 A:19 D:0 ?:0                         ║
+║  Changes: 1 files  ·  M:1 A:0 D:0 ?:0                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         373/373                                          ║
-║  IGNIS:         31d ago                                          ║
+║  Tests:         390/390                                          ║
+║  IGNIS:         32d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  17d ago                                          ║
+║  Sanitization:  18d ago                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
