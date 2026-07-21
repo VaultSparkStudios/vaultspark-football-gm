@@ -50,6 +50,50 @@ async function firstTableCell(page, selector, columnIndex = 1) {
   return (await page.locator(`${selector} tr:nth-child(2) td:nth-child(${columnIndex})`).textContent())?.trim();
 }
 
+async function findAcceptedOneForOneTrade(page, teamA, teamB) {
+  return page.evaluate(async ({ teamAId, teamBId }) => {
+    const [rosterAResponse, rosterBResponse] = await Promise.all([
+      fetch(`/api/roster?team=${encodeURIComponent(teamAId)}`),
+      fetch(`/api/roster?team=${encodeURIComponent(teamBId)}`)
+    ]);
+    const [rosterAResult, rosterBResult] = await Promise.all([rosterAResponse.json(), rosterBResponse.json()]);
+    const rosterA = rosterAResult.roster || [];
+    const rosterB = rosterBResult.roster || [];
+    const candidates = [];
+
+    for (const playerA of rosterA) {
+      for (const playerB of rosterB) {
+        candidates.push({
+          playerA,
+          playerB,
+          proximity:
+            Math.abs((playerA.overall || 0) - (playerB.overall || 0)) * 4 +
+            Math.abs((playerA.potential || 0) - (playerB.potential || 0)) * 2 +
+            Math.abs((playerA.age || 0) - (playerB.age || 0))
+        });
+      }
+    }
+    candidates.sort((left, right) => left.proximity - right.proximity);
+
+    for (const { playerA, playerB } of candidates) {
+      const response = await fetch("/api/trade/evaluate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          teamA: teamAId,
+          teamB: teamBId,
+          teamAPlayerIds: [playerA.id],
+          teamBPlayerIds: [playerB.id]
+        })
+      });
+      const result = await response.json();
+      if (result.ok) return { playerAId: playerA.id, playerBId: playerB.id };
+    }
+
+    throw new Error(`No accepted one-for-one trade found for ${teamAId} and ${teamBId}.`);
+  }, { teamAId: teamA, teamBId: teamB });
+}
+
 test("create league, advance week, and open player modal", async ({ page }) => {
   await createLeagueFromSetup(page);
 
@@ -225,8 +269,9 @@ test("contracts, trade, calendar, and transaction log are operational", async ({
   await waitGameReady(page);
   await page.selectOption("#tradeTeamB", "MIA");
   await waitGameReady(page);
-  await page.locator('#tradeTeamARosterTable button[data-trade-player-id]').first().click();
-  await page.locator('#tradeTeamBRosterTable button[data-trade-player-id]').first().click();
+  const acceptedTrade = await findAcceptedOneForOneTrade(page, "BUF", "MIA");
+  await page.locator(`#tradeTeamARosterTable button[data-trade-player-id="${acceptedTrade.playerAId}"]`).click();
+  await page.locator(`#tradeTeamBRosterTable button[data-trade-player-id="${acceptedTrade.playerBId}"]`).click();
   await expect(page.locator("#tradeSelectedAText")).not.toContainText("None");
   await expect(page.locator("#tradeSelectedBText")).not.toContainText("None");
   await page.click("#evaluateTradeBtn");

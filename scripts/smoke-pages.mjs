@@ -103,9 +103,13 @@ async function assertPublishedMountContract() {
   if (!Array.isArray(manifest.publishedMounts) || !manifest.publishedMounts.includes(`${productionMountPath}/`)) {
     throw new Error(`Deploy manifest is missing the production mount ${productionMountPath}/`);
   }
+  if (manifest.assetBasePath !== "./") {
+    throw new Error(`Deploy manifest must declare a mount-relative asset base; received ${manifest.assetBasePath}.`);
+  }
   for (const mount of manifest.publishedMounts) {
     const relativeMount = String(mount).replace(/^\/+|\/+$/g, "");
     const prefix = relativeMount ? `${relativeMount}/` : "";
+    await assertStaticFile(`${prefix}index.html`, /<base href="\.\/" \/>/);
     await assertStaticFile(`${prefix}styles.css`, /:root/);
     await assertStaticFile(`${prefix}setup.js`, /createApiClient/);
     await assertStaticFile(`${prefix}favicon.ico`);

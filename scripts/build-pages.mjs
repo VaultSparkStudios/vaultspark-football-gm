@@ -53,6 +53,10 @@ function normalizeBasePath(value) {
 }
 
 const basePath = normalizeBasePath(process.env.VITE_APP_BASE_PATH || "/");
+// The Studio host can mount this artifact at any declared alias. Keep browser
+// assets relative to the document directory so the same HTML remains valid at
+// /franchise-architect/, /games/franchise-architect/, and GitHub Pages paths.
+const assetBasePath = "./";
 const canonicalBase = process.env.VITE_CANONICAL_URL || `https://playfranchisearchitect.com${basePath}`;
 const ogImageUrl = process.env.VITE_OG_IMAGE_URL || `https://playfranchisearchitect.com${basePath}images/cover.png`;
 const publishedMounts = [...new Set([
@@ -134,7 +138,7 @@ function injectHtmlDefaults(html, pagePath) {
   const canonicalUrl = new URL(pagePath, canonicalBase).toString();
   let next = html;
   if (!next.includes("<base ")) {
-    next = next.replace("<head>", `<head>\n    <base href=\"${basePath}\" />`);
+    next = next.replace("<head>", `<head>\n    <base href=\"${assetBasePath}\" />`);
   }
   if (next.includes('meta name="vsfgm-runtime-default"')) {
     next = next.replace(
@@ -243,6 +247,7 @@ async function emitDeployEvidence() {
     sourceRevision,
     styleAsset: hashedStyleHref,
     basePath,
+    assetBasePath,
     publishedMounts,
     runtimeDefault,
     serverAvailable: serverAvailable === "true",
