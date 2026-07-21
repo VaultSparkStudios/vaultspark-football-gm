@@ -1,0 +1,288 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-21",
+  "session": 51,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "open",
+  "summary": {
+    "rankedItems": 5,
+    "combinedPriority": 148.4,
+    "topItem": "gm-legacy-truth-engine",
+    "source": "live-code-audit"
+  },
+  "profile": {
+    "type": "game/app",
+    "audience": "public-unlaunched",
+    "rubric": "founder-requested infrastructure-weighted product rubric",
+    "staging": "github-pages artifact plus canonical-origin verification",
+    "source": "live code, direct route/error inventories, current startup brief, project skill profile, authoritative arc profile, game-loop review, app release-gate evidence, and internal-tools registry"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for implementation",
+    "ci": "Last five workflow runs are green, but the current docs-only HEAD is one skip-ci commit beyond the latest tested revision.",
+    "staging": "Configured GitHub Pages staging health redirects to the apex and returns HTTP 403; staging-to-production parity is not provable.",
+    "cost": "Cost-neutral and cost-content gates allow; Max Plan cost is notional and not an alarm.",
+    "branding": "CANON-006 branding and the 7/7 footer manifest pass.",
+    "responsive": "Local revision-stamped evidence passes 20 captures, but live revision provenance is absent and local evidence is not production proof.",
+    "origin": "Canonical /_health and /deploy-manifest.json return 404 HTML; required edge headers and received email-forwarding proof are absent.",
+    "sanitization": "Control-plane release checker returns HOLD because docs/CREATIVE_DIRECTION_RECORD.md contains detailed founder/session process material in this public repository.",
+    "approval": "No founder launch/SPARKED approval is recorded."
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.2,
+    "progression": 6.4,
+    "sessionEngagement": 8.3,
+    "retention": 7.5,
+    "soulFidelity": 8.2,
+    "overall": 7.7,
+    "evidence": "Provisional executable-contract review only. context/GAME_LOOP.md and docs/PLAYTESTS/ do not exist, while context/SOUL.md is a public-safe placeholder; no claim about fun, churn, pacing, or player sentiment is made."
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Progression authority / observability honesty / retention",
+      "effortHours": 3.5,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 32.5,
+      "slug": "gm-legacy-truth-engine",
+      "title": "Make the General Manager career arc one truthful, consequence-bearing authority",
+      "status": "completed",
+      "premise": "GameSession stores champion objects, but updateGmLegacyAfterSeason compares the latest object and the champions array directly to a team-id string, so controlled-team championships are not credited. The persona API returns scoreNeeded but the browser divides by an absent threshold, rendering a new 0-score General Manager as 60% toward Tier 2. Five named tier unlock tokens have no consumers outside gmLegacyScore.js, so the UI promises benefits that do not exist.",
+      "evidence": [
+        "src/runtime/GameSession.js:4006 stores { championTeamId, ... } objects",
+        "src/engine/gmLegacyScore.js:51-52 compares champion entries to controlledTeamId strings",
+        "public/lib/tabOverview.js:669-670 falls back to threshold 100 even though next scoreNeeded is 40",
+        "repo-wide unlock-token search finds declarations but no entitlement consumers",
+        "test/s4-systems.test.js covers seasons/playoffs but no object-shaped champion ledger or persona progress"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Normalize the latest champion record and expose an engine-derived persona progress percentage; add championship and zero-progress regressions."
+        },
+        "L2": {
+          "effortHours": 3.5,
+          "recipe": "Create canonical champion-team and GM entitlement resolvers; credit object/string legacy snapshots without double-counting; derive current-floor, next-target, gap, and progressPct inside gmLegacyScore.js; make the browser consume progressPct only; turn every displayed unlock into either a real source-derived entitlement consumed by owner/free-agent/UI behavior or honest recognition-only copy; add season-to-dashboard-to-visible-card tests for championships, 0% starts, milestone overrides, tier transitions, and each effective entitlement."
+        },
+        "L3": {
+          "effortHours": 6.0,
+          "recipe": "Add an append-only career milestone receipt stream that explains exactly which season result or achievement changed tier, treatment, and market benefits, then surface the latest receipt beside the tier meter."
+        }
+      },
+      "verification": [
+        "object and legacy string champion records resolve identically",
+        "a controlled-team title increments exactly once",
+        "brand-new career displays 0% rather than 60%",
+        "milestone overrides still advance tiers honestly",
+        "every displayed entitlement has a tested consumer or is labeled recognition-only"
+      ],
+      "executionEvidence": "Normalized object/string champion records and made season updates idempotent by year; the engine now derives tier floors, next targets, gap, progressPct, and entitlement metadata. Proven-GM destination pull reaches the real controlled-team free-agent offer command as a +4 market-score input while opponent offers receive zero; owner/contract treatments are explicitly recognition-only. The browser consumes only engine-derived progress and renders earned entitlements/badges. Syntax checks and 48 focused engine/session tests pass, including championship-once, 0% start, milestone floor, and controlled-team-only mechanics."
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Security / public-repo boundary / release truth",
+      "effortHours": 1.0,
+      "impact": 10,
+      "innovation": 5,
+      "priority": 31.5,
+      "slug": "public-process-ledger-quarantine",
+      "title": "Remove private operating detail from the deployable public tree and make the boundary self-enforcing",
+      "status": "completed",
+      "premise": "The release checker returns HOLD with one critical sanitization finding because docs/CREATIVE_DIRECTION_RECORD.md contains detailed founder directives, session protocol expectations, internal remediation history, and operating rationale. AGENTS.md explicitly requires private planning and detailed studio process material to live in the private Studio OS repository.",
+      "evidence": [
+        "node ../vaultspark-studio-ops/scripts/check-release-gate.mjs --project franchise-architect-football --json returns decision hold and Sanitization clear=false",
+        "docs/CREATIVE_DIRECTION_RECORD.md contains dated founder/session process narratives through Session 50",
+        "AGENTS.md public-safe rule limits this repository to deployable code and public-safe documentation"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Replace the public CDR with a boundary-only pointer and record that the detailed ledger remains private."
+        },
+        "L2": {
+          "effortHours": 1.0,
+          "recipe": "Quarantine the public CDR to a minimal public-safe boundary document; extend the repo-local sanitization/public-compliance test so dated founder/session process entries cannot reappear; preserve only product-facing design principles that are independently safe; rerun the authoritative release checker and record the prior HOLD as an honest fixed gate rather than deleting its history claim."
+        },
+        "L3": {
+          "effortHours": 2.0,
+          "recipe": "Generate the public placeholder from an allowlisted schema and reject any future closeout write containing founder, session, credential, private roadmap, internal remediation, or operator-workflow markers."
+        }
+      },
+      "verification": [
+        "authoritative sanitization gate has zero critical findings",
+        "public CDR contains no dated internal session ledger",
+        "focused test fails on reintroduced process detail",
+        "private/source boundary is explicit rather than silently erased"
+      ],
+      "executionEvidence": "Removed the forbidden private CDR path from the tracked public tree; public-compliance test passes 8/8 and asserts the path remains absent; live post-index sanitization scan reports 0 critical, 0 warning, 0 findings. The central release summary remains cached/stale and will be refreshed through Ark rather than a sibling-tree edit."
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Onboarding agency / game-loop depth / UX",
+      "effortHours": 4.0,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 31.3,
+      "slug": "consequence-bearing-franchise-contract",
+      "title": "Turn the first-run tutorial from decorative choices into the franchise's opening contract",
+      "status": "open",
+      "premise": "tutorialCampaign.js collects identity, pressure, and first-call selections while copy says scheme, owner patience, and scouting shape the franchise, but public/app.js ignores the onComplete selections and only reloads state. The league therefore receives none of the promised consequences, and tests cover only modal wiring/theme behavior.",
+      "evidence": [
+        "public/lib/tutorialCampaign.js collects identity, pressure, and first-call selections",
+        "public/app.js:1904 mounts onComplete as a no-argument loadState call",
+        "no runtime route, snapshot field, receipt, or gameplay test references the three tutorial selections",
+        "test/browser-wiring.test.js proves focus/style wiring only"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Submit tutorial selections through one shared runtime mutation and persist an onboarding receipt."
+        },
+        "L2": {
+          "effortHours": 4.0,
+          "recipe": "Define and validate a versioned startScenario contract shared by browser and server runtimes; map identity into real scheme/culture state, pressure into owner patience/expectation settings, and the scout call into an actual initial scouting-board or points decision; make application idempotent and snapshot-persistent; return a source-derived receipt; render the receipt on Overview and the final tutorial step; make failure visible without marking the tutorial complete; test all nine choices, invalid payloads, reload, runtime parity, and browser-visible consequences."
+        },
+        "L3": {
+          "effortHours": 7.0,
+          "recipe": "Let the opening contract create a season-one objective chain with measured checkpoints and an end-of-year verdict tied back to the three original choices, without fabricating causal outcomes."
+        }
+      },
+      "verification": [
+        "all three selections mutate only their declared authorities",
+        "receipt persists through snapshot reload",
+        "duplicate submission is idempotent",
+        "server and browser responses match",
+        "tutorial completion waits for a successful authoritative receipt",
+        "Overview visibly explains the chosen opening contract"
+      ]
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "Observability honesty / browser resilience / feedback loop",
+      "effortHours": 3.0,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 31.0,
+      "slug": "browser-promise-observability-contract",
+      "title": "Close every silent browser promise sink with one enforced degradation contract",
+      "status": "open",
+      "premise": "Session 50 added a source-derived client diagnostics ledger, but a direct live inventory still finds fourteen .catch(() => {}) sinks across setup warmup, GM legacy, stat leaders, speedrun, rewind, return digest, season epilogue, rivalry, sim-watch, and clipboard paths. These failures can disappear without entering the ledger, contradicting the shipped background-hydration coverage claim.",
+      "evidence": [
+        "public/setup.js:321 and :458 silently discard local-runtime warmup failures",
+        "public/app.js:1457, :1906, and :1910 silently discard user-facing background failures",
+        "public/lib/gameFlow.js contains seven silent async sinks including GM legacy, stat leaders, rewind, speedrun, and season epilogue",
+        "public/lib/engagementFeatures.js:262 and :370 plus public/lib/tabOverview.js:360 discard share/rivalry failures",
+        "clientDiagnostics.js has a retry-capable ledger, but no static guard enforces adoption"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Replace silent sinks with recordClientDiagnostic calls and visible feedback for direct user actions."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Add one observeBackgroundTask helper that records sanitized surface/operation/authority/retry data, resolves recovered entries, distinguishes intentional optional capability absence from degradation, and shows direct-action failures; migrate all fourteen live sinks; add a dependency-free static guard with narrow documented allowlist for genuinely non-actionable quota/cache cleanup; wire it into Pages build and the Studio shard; verify coalescing, retry recovery, clipboard errors, warmup fallback, and no raw secret/message leakage."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Add operation correlation IDs and a self-validating exported diagnostics receipt that joins browser failures to the exact hydration/action authority without adding remote telemetry."
+        }
+      },
+      "verification": [
+        "zero unallowlisted silent promise sinks",
+        "all migrated failures enter the same bounded ledger",
+        "direct actions show a useful user message",
+        "successful retry clears only the matching degradation",
+        "Pages build fails on a reintroduced sink",
+        "diagnostics remain local, sanitized, and cost-neutral"
+      ]
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Runtime parity / infrastructure / API contract",
+      "effortHours": 7.0,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 22.1,
+      "slug": "dual-runtime-route-authority",
+      "title": "Make every browser-callable API route explicit and equivalent across server and static runtimes",
+      "status": "open",
+      "premise": "A source-derived inventory finds 102 browser API paths. The local runtime implements every server route plus additional static features, while the server lacks 26 UI-called routes including agent negotiation, brand identity, combine, commissioner mode, fan sentiment, GM legacy, mentorship, rewind, rivalry, speedrun, and stat leaders. The default source HTML advertises server-backed mode, so these controls can 404 after server authority is established.",
+      "evidence": [
+        "source inventory: 102 static browser API calls",
+        "server inventory: 91 method/path handlers; local runtime inventory: 121",
+        "26 browser-called paths are absent from src/server.js",
+        "public/index.html and public/game.html default vsfgm-runtime-default to server with server availability true",
+        "createApiClient intentionally refuses to fork an established server authority into browser-local state",
+        "no route-manifest parity test currently joins browser calls to both adapters"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2.0,
+          "recipe": "Generate a browser-call route inventory and fail on undocumented adapter gaps; visibly disable unsupported server-mode controls."
+        },
+        "L2": {
+          "effortHours": 7.0,
+          "recipe": "Create one dependency-free API contract manifest with method, path, authority, mutability, and response-shape identity; make browser call sites and both adapters self-validate against it; port the 26 currently UI-called missing server routes by extracting shared pure handlers where possible and using the authoritative server GameSession for mutations; explicitly classify storage-only exceptions; add response-shape and state-transition parity tests for agent, brand, combine, commissioner, fan, legacy, mentorship, rewind, rivalry, speedrun, and stat-leader families; preserve fail-closed server custody."
+        },
+        "L3": {
+          "effortHours": 11.0,
+          "recipe": "Replace duplicated route-condition ladders with a shared declarative dispatcher and adapter capabilities, then generate human/agent API documentation and contract fixtures from the same manifest."
+        }
+      },
+      "verification": [
+        "every browser-callable route is implemented by both advertised runtimes or explicitly mode-gated",
+        "zero server 404s for enabled controls",
+        "mutating route results preserve established authority",
+        "representative response shapes and state transitions match",
+        "new browser call paths cannot land without manifest and adapter coverage"
+      ]
+    }
+  ],
+  "recommendedMoves": [
+    "Repair the career arc first: championships, progress, and displayed benefits must all derive from one tested General Manager legacy authority.",
+    "Make the opening three choices the franchise's persisted first contract, then render their real consequences instead of educational theater.",
+    "Close the runtime and browser-observability drift classes with generated contracts so a new route or swallowed promise cannot silently regress."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Flip FORGE/SPARKED or claim launch readiness",
+      "reason": "Deferred honestly: staging health is 403, canonical health/deploy manifests are 404 HTML, edge headers and received email proof are absent, sanitization is red, approval is absent, and the authoritative registry drift is sibling-owned."
+    },
+    {
+      "candidate": "Apply the apex asset or lifecycle fix directly in a sibling repository",
+      "reason": "Rejected by CANON-018. Session 50 already shipped signed Ark cargo for the sibling-owned apex tree; this repo must not edit that tree to make its own gate green."
+    },
+    {
+      "candidate": "Add generic retention hooks",
+      "reason": "Rejected as a false premise: saves, return digest, Priority Inbox, challenges, speedrun, dynasty history, what-if replay, story exports, rivalry, and season epilogues already exist. Progression truth and consequence legibility are the actual gaps."
+    },
+    {
+      "candidate": "Claim playtest, fun, churn, or pacing outcomes",
+      "reason": "Rejected because context/GAME_LOOP.md and docs/PLAYTESTS/ do not exist and SOUL.md is only a public-safe placeholder. Code contracts are not player evidence."
+    },
+    {
+      "candidate": "Rewrite the 5,161-line GameSession as one item",
+      "reason": "Culled as unsafe line-count theater. The ranked route, legacy, onboarding, and promise contracts are measured seams with direct failure evidence."
+    },
+    {
+      "candidate": "Install esbuild or another bundler to chase startup size",
+      "reason": "Rejected for this primary pass: build-bundle.mjs references an uninstalled dependency while native ESM and dynamic import remain available. Performance work needs a measured first-decision baseline before choosing a tool."
+    },
+    {
+      "candidate": "Add paid telemetry or hosted AI commentary",
+      "reason": "Rejected by the cost-neutral, internal-first, privacy, and observability requirements. The selected intelligence and diagnostics remain deterministic and local."
+    },
+    {
+      "candidate": "Re-list Session 46-50 authority, save, hydration, rehab, diagnostics-ledger, responsive, or module-reachability work as unshipped",
+      "reason": "Rejected as phantom duplication: those surfaces and their direct tests exist. This audit targets newly verified defects and incomplete coverage."
+    }
+  ]
+}

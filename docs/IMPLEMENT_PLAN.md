@@ -1,19 +1,15 @@
-# Session 50 Implementation Plan
+# Session 51 Implementation Plan
 
-Source: `docs/AUDIT_2026-07-20_SESSION50.json`.
+Source: `docs/AUDIT_2026-07-21_SESSION51.json`.
 
 Efficiency order:
 
-1. [completed] Decision authority foundation: `gm-decision-authority-contract` — one shared generator/occurrence contract across server, browser, desktop, mobile, and fast sim; defer stays pending and unavailable decisions fail closed.
-2. [completed] Transaction boundary: `atomic-weekly-command-transaction` — execute on a snapshot-hydrated working session, promote only after success, and serialize conflicting browser mutations.
-3. [completed] Client truth surface: `browser-degradation-ledger` — source-derived bounded diagnostics in Settings/status with retry/clear semantics.
-4. [completed] Module graph hygiene: `browser-module-reachability-guard` — enforce public browser reachability and remove the verified orphans before building final evidence.
-5. [completed] Release evidence: `revision-stamped-responsive-evidence` — exercise the settled static artifact at 390/768/1440 in both themes and write revision/style-stamped JSON plus screenshots.
-6. [completed] Refresh the Unified Genius List, then generate and implement the Innovation Pack plus compound refinements.
-7. [completed] Verify each item with focused behavior tests, then run direct canonical shards, Playwright, Pages staging, security, canon, release, and doctor gates.
+1. [completed] Public boundary hard gate: `public-process-ledger-quarantine` — removed the forbidden private CDR path; focused test 8/8 and live post-index sanitization scan 0 critical.
+2. [completed] Shared progression authority: `gm-legacy-truth-engine` — object/string titles resolve once; persona progress is engine-derived; earned market pull reaches the real offer command; non-mechanical treatment is labeled recognition-only; 48 focused tests pass.
+3. [in progress] Browser failure foundation: `browser-promise-observability-contract` — one observable background-task contract plus a build guard, then migrate every current silent sink.
+4. [open] Consequence-bearing first run: `consequence-bearing-franchise-contract` — persist the tutorial's identity, pressure, and scouting decisions through both runtimes and render the authoritative receipt.
+5. [open] Dual-runtime architecture: `dual-runtime-route-authority` — declare browser-call contracts, port the 26 enabled server gaps, and prove response/state parity without authority fallback.
+6. [open] Refresh the Unified Genius List, generate the Innovation Pack, climb viable L3 rungs, and ship compound refinements until the context-meter—not task count—gates continuation.
+7. [open] Run focused verification after each item, then direct canonical shards, Playwright, Pages staging/evidence, sanitization, canon, release, and doctor gates.
 
-Primary status: complete — Unified Genius List exhausted at 0 open / 5 closed.
-
-Second-order status: complete — production mount/MIME contract, Commissioner transaction refinement, and responsive widest-offender ranking shipped.
-
-Every audit item targets L2 or higher. Browser-visible game changes require focused coverage; all work stays static-host-safe and cost-neutral. External email, edge-header, registry, and historical-CI evidence remains explicitly separate from source-fixable work.
+All primary items target L2 or higher. Gameplay changes must be browser-visible and focused-test covered. Work remains dependency-free, static-host-safe, local-first, and cost-neutral. Live edge headers, on-domain email delivery, apex ingestion, registry drift, and launch approval remain separate evidence gates and cannot be fabricated.

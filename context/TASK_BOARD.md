@@ -651,3 +651,16 @@ Source: `docs/AUDIT_2026-07-20_SESSION50.json`.
 **Verification:** full canonical Node suite 390/390 with direct exit 0; Playwright 18/18; Pages build plus all-mount MIME smoke; responsive evidence 20/20 captures; no new dependency or variable-cost service.
 
 **Apex follow-up:** revision `f5ecde2` and Pages run `29805477684` are green with mount-relative assets. The separate `VaultSparkStudios.github.io` Cloudflare Pages copy still serves the stale hard-coded base; Ark receipt `01JU1K4LB3C3400F371FD77B32` requests the sibling-owned full-mount ingestion. Live styling is not claimed fixed until that deploy lands.
+
+## Session 51 — Progression, Onboarding, Runtime, and Public-Boundary Truth (2026-07-21)
+
+Source: `docs/AUDIT_2026-07-21_SESSION51.json`.
+
+| Item | Status |
+|---|---|
+| public-process-ledger-quarantine | Done — forbidden private CDR path removed; focused test 8/8; live post-index sanitization scan 0 critical / 0 warning |
+| gm-legacy-truth-engine | Done — title records credit once; progress derives from tier authority; +4 earned destination pull reaches the controlled-team offer command; recognition-only benefits say so; 48 focused tests pass |
+| browser-promise-observability-contract | Open — migrate all silent browser promise sinks into one enforced local diagnostics contract |
+| consequence-bearing-franchise-contract | Open — make tutorial identity/pressure/scouting choices persist and visibly affect both runtimes |
+| dual-runtime-route-authority | Open — close or explicitly gate all 26 UI-called server route gaps through a shared contract |
+| launch/SPARKED evidence | Deferred honestly — live staging/origin/email/edge/approval/registry evidence remains incomplete and sibling-owned where noted |

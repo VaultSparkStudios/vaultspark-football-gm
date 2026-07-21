@@ -86,7 +86,7 @@ import {
 } from "../engine/beatReporter.js";
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
-import { updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore.js";
+import { getGmBenefits, updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore.js";
 import { generatePressConference } from "../engine/pressConference.js";
 import { runNarrativeChecks } from "../engine/narrativeEvents.js";
 import { resolveThreads as resolveContinuityThreads } from "../engine/continuityLedger.js";
@@ -564,7 +564,8 @@ function freeAgencyOfferScore(player, offer, team, roster = []) {
     profile.freeAgencyPull +
     contenderPull +
     developmentPull +
-    veteranPull
+    veteranPull +
+    Number(offer?.legacyMarketBonus || 0)
   );
 }
 
@@ -4952,6 +4953,7 @@ export class GameSession {
     }
     const offers = this.league.freeAgencyMarket.offers || [];
     const existingIndex = offers.findIndex((offer) => offer.teamId === teamId && offer.playerId === playerId);
+    const gmBenefits = teamId === this.controlledTeamId ? getGmBenefits(this.league.gmLegacy) : null;
     const payload = {
       id: `OFF-${this.currentYear}-${this.currentWeek}-${teamId}-${playerId}`,
       teamId,
@@ -4959,7 +4961,15 @@ export class GameSession {
       playerName: player.name,
       years: proposedYears,
       salary: proposedSalary,
-      expectedCap
+      expectedCap,
+      legacyMarketBonus: Number(gmBenefits?.freeAgencyOfferBonus || 0),
+      legacyBenefit: gmBenefits?.freeAgencyOfferBonus
+        ? {
+            id: "fa_discount",
+            label: "Destination pull",
+            marketScoreBonus: gmBenefits.freeAgencyOfferBonus
+          }
+        : null
     };
     if (existingIndex >= 0) offers[existingIndex] = payload;
     else offers.push(payload);

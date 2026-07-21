@@ -303,7 +303,10 @@ import {
   initGmLegacy,
   updateGmLegacyAfterSeason,
   computeGmLegacyScore,
-  getGmLegacySummary
+  getGmBenefits,
+  getGmLegacySummary,
+  getGmPersonaArc,
+  resolveChampionTeamId
 } from "../src/engine/gmLegacyScore.js";
 
 test("gmLegacyScore: initGmLegacy creates default legacy record", () => {
@@ -341,6 +344,58 @@ test("gmLegacyScore: updateGmLegacyAfterSeason records playoff appearance", () =
   };
   updateGmLegacyAfterSeason(league, "BUF", 2026);
   assert.equal(league.gmLegacy.playoffAppearances, 1);
+});
+
+test("gmLegacyScore: object-shaped championship records credit exactly once", () => {
+  const league = {
+    teams: [{ id: "BUF", season: { wins: 14, losses: 3, playoffSeed: 1 }, cap: {}, chemistry: 88 }],
+    champions: [{ year: 2026, championTeamId: "BUF" }],
+    currentYear: 2026
+  };
+  updateGmLegacyAfterSeason(league, "BUF", 2026);
+  updateGmLegacyAfterSeason(league, "BUF", 2026);
+  assert.equal(league.gmLegacy.superBowlWins, 1);
+  assert.equal(league.gmLegacy.seasonsServed, 1);
+  assert.equal(league.gmLegacy.seasonHistory[0].wonSuperBowl, true);
+  assert.equal(resolveChampionTeamId("BUF"), "BUF");
+  assert.equal(resolveChampionTeamId({ championTeamId: "BUF" }), "BUF");
+});
+
+test("gmLegacyScore: persona progress starts at zero and milestone floors do not lie", () => {
+  const rookie = initGmLegacy({});
+  assert.equal(getGmPersonaArc(rookie).progressPct, 0);
+
+  const playoffVeteran = {
+    seasonsServed: 2,
+    totalWins: 10,
+    totalLosses: 24,
+    playoffAppearances: 2,
+    superBowlWins: 0,
+    capGradeTotal: 80,
+    cultureGradeTotal: 80,
+    seasonHistory: []
+  };
+  const arc = getGmPersonaArc(playoffVeteran);
+  assert.equal(arc.current.tier, 3, "playoff milestone advances to Proven GM");
+  assert.equal(arc.progressPct, 0, "milestone tier begins at its truthful score floor");
+  assert.equal(arc.progressSource, "milestone-floor");
+});
+
+test("gmLegacyScore: only declared mechanical benefits alter simulation inputs", () => {
+  const proven = {
+    seasonsServed: 4,
+    totalWins: 44,
+    totalLosses: 24,
+    playoffAppearances: 2,
+    superBowlWins: 0,
+    capGradeTotal: 280,
+    cultureGradeTotal: 280,
+    seasonHistory: []
+  };
+  const benefits = getGmBenefits(proven);
+  assert.equal(benefits.freeAgencyOfferBonus, 4);
+  assert.equal(benefits.entitlements.find((entry) => entry.id === "fa_discount")?.kind, "mechanic");
+  assert.equal(benefits.entitlements.find((entry) => entry.id === "extended_contract_offer")?.kind, "recognition");
 });
 
 test("gmLegacyScore: computeGmLegacyScore returns zero state for empty legacy", () => {

@@ -43,14 +43,17 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year) {
   const legacy = initGmLegacy(league);
   const team = league.teams.find((t) => t.id === controlledTeamId);
   if (!team) return legacy;
+  if ((legacy.seasonHistory || []).some((entry) => Number(entry.year) === Number(year))) return legacy;
 
   const wins = team.season?.wins || 0;
   const losses = team.season?.losses || 0;
   const madePlayoffs = !!(team.season?.playoffSeed || team.season?.playoffExit);
-  const wonSuperBowl =
-    (league.champions || []).slice(-1)[0] === controlledTeamId ||
-    (league.champions || []).includes(controlledTeamId) &&
-      (league.currentYear || year) === year;
+  const latestChampion = (league.champions || [])
+    .slice()
+    .reverse()
+    .find((entry) => typeof entry !== "object" || entry == null || Number(entry.year ?? year) === Number(year));
+  const championTeamId = resolveChampionTeamId(latestChampion);
+  const wonSuperBowl = championTeamId === controlledTeamId;
 
   // Cap efficiency: high usage + low dead cap = good
   const capHardLimit = 224_800_000;
@@ -73,10 +76,27 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year) {
   legacy.cultureGradeTotal += cultureGrade;
 
   const seasonScore = _computeSeasonScore({ wins, losses, madePlayoffs, wonSuperBowl, capGrade, cultureGrade });
-  legacy.seasonHistory.push({ year, score: seasonScore, wins, losses, madePlayoffs, wonSuperBowl, capGrade, cultureGrade });
+  legacy.seasonHistory.push({
+    year,
+    teamId: controlledTeamId,
+    championTeamId,
+    score: seasonScore,
+    wins,
+    losses,
+    madePlayoffs,
+    wonSuperBowl,
+    capGrade,
+    cultureGrade
+  });
   if (legacy.seasonHistory.length > 30) legacy.seasonHistory.shift();
 
   return legacy;
+}
+
+export function resolveChampionTeamId(entry) {
+  if (typeof entry === "string") return entry;
+  if (!entry || typeof entry !== "object") return null;
+  return entry.championTeamId || entry.teamId || entry.champion || null;
 }
 
 function _computeSeasonScore({ wins, losses, madePlayoffs, wonSuperBowl, capGrade, cultureGrade }) {
@@ -169,8 +189,8 @@ const TIER_DEFS = [
     tier: 3,
     name: "Proven GM",
     scoreMin: 55,
-    description: "A track record of winning. Players want to play here. Free agents take less to sign.",
-    ownerTreatment: "Owner grants a longer leash after proven results. PR pressure is manageable.",
+    description: "A track record of winning. Equivalent free-agent offers carry real destination pull.",
+    ownerTreatment: "Recognition: the board describes your tenure as proven, without changing hidden owner math.",
     unlocks: ["fa_discount", "extended_contract_offer"]
   },
   {
@@ -178,7 +198,7 @@ const TIER_DEFS = [
     name: "Dynasty Architect",
     scoreMin: 68,
     description: "You are building something special. The franchise is a destination, not a doormat.",
-    ownerTreatment: "Owner defers to your judgment on major transactions. Patience is high.",
+    ownerTreatment: "Recognition: the owner publicly backs your football judgment.",
     unlocks: ["fa_discount", "extended_contract_offer", "owner_deference"]
   },
   {
@@ -186,7 +206,7 @@ const TIER_DEFS = [
     name: "Legend",
     scoreMin: 80,
     description: "Multiple championships. Your name is spoken alongside the all-time greats.",
-    ownerTreatment: "Owner is a partner, not a boss. Full autonomy on football decisions.",
+    ownerTreatment: "Recognition: the owner presents you as a franchise partner.",
     unlocks: ["fa_discount", "extended_contract_offer", "owner_deference", "legend_badge"]
   },
   {
@@ -194,7 +214,7 @@ const TIER_DEFS = [
     name: "Immortal",
     scoreMin: 90,
     description: "No franchise has done what you've done. History will remember this era forever.",
-    ownerTreatment: "Lifetime tenure offered. The stadium may one day bear your name.",
+    ownerTreatment: "Recognition: lifetime-tenure and stadium honors enter the career narrative.",
     unlocks: ["fa_discount", "extended_contract_offer", "owner_deference", "legend_badge", "immortal_aura"]
   }
 ];
@@ -221,6 +241,12 @@ export function getGmPersonaArc(legacy) {
   const current = getGmPersonaTier(legacy);
   const next = TIER_DEFS[current.tier] || null; // tier is 1-indexed
   const computed = computeGmLegacyScore(legacy);
+  const effectiveScore = Math.max(computed.score, current.scoreMin);
+  const span = next ? Math.max(1, next.scoreMin - current.scoreMin) : 1;
+  const progressPct = next
+    ? Math.max(0, Math.min(100, Math.round(((effectiveScore - current.scoreMin) / span) * 100)))
+    : 100;
+  const benefits = getGmBenefits(legacy);
 
   return {
     current: {
@@ -228,16 +254,81 @@ export function getGmPersonaArc(legacy) {
       name: current.name,
       description: current.description,
       ownerTreatment: current.ownerTreatment,
-      unlocks: current.unlocks
+      unlocks: current.unlocks,
+      scoreFloor: current.scoreMin,
+      entitlements: benefits.entitlements
     },
     next: next ? {
       tier: next.tier,
       name: next.name,
       scoreNeeded: next.scoreMin,
-      gapToNext: Math.max(0, next.scoreMin - computed.score)
+      scoreTarget: next.scoreMin,
+      threshold: next.scoreMin,
+      gapToNext: Math.max(0, next.scoreMin - effectiveScore)
     } : null,
     score: computed.score,
-    grade: computed.grade
+    grade: computed.grade,
+    progressPct,
+    progressSource: computed.score < current.scoreMin ? "milestone-floor" : "score",
+    benefits
+  };
+}
+
+const ENTITLEMENT_DEFS = Object.freeze({
+  extended_contract_offer: Object.freeze({
+    id: "extended_contract_offer",
+    kind: "recognition",
+    label: "Board tenure recognition",
+    description: "The career ledger recognizes the board's longer-term confidence; no hidden contract mechanic is claimed."
+  }),
+  fa_discount: Object.freeze({
+    id: "fa_discount",
+    kind: "mechanic",
+    label: "Destination pull",
+    description: "Equivalent controlled-team free-agent offers receive +4 market-score points.",
+    freeAgencyOfferBonus: 4
+  }),
+  owner_deference: Object.freeze({
+    id: "owner_deference",
+    kind: "recognition",
+    label: "Owner backing",
+    description: "The career card records public owner backing; owner heat remains source-derived from team results."
+  }),
+  legend_badge: Object.freeze({
+    id: "legend_badge",
+    kind: "mechanic",
+    label: "Legend crest",
+    description: "The General Manager identity card receives the earned Legend crest.",
+    badge: "legend"
+  }),
+  immortal_aura: Object.freeze({
+    id: "immortal_aura",
+    kind: "mechanic",
+    label: "Immortal crest",
+    description: "The General Manager identity card upgrades to the earned Immortal crest.",
+    badge: "immortal"
+  })
+});
+
+export function getGmBenefits(legacy) {
+  const tier = getGmPersonaTier(legacy);
+  const entitlements = (tier.unlocks || [])
+    .map((id) => ENTITLEMENT_DEFS[id])
+    .filter(Boolean)
+    .map((entry) => ({ ...entry }));
+  const freeAgencyOfferBonus = entitlements.reduce(
+    (sum, entry) => sum + Number(entry.freeAgencyOfferBonus || 0),
+    0
+  );
+  const badge = entitlements
+    .map((entry) => entry.badge)
+    .filter(Boolean)
+    .slice(-1)[0] || null;
+  return {
+    tier: tier.tier,
+    freeAgencyOfferBonus,
+    badge,
+    entitlements
   };
 }
 

@@ -6,7 +6,7 @@ import { GameSession } from "../../runtime/GameSession.js";
 import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { RNG } from "../../utils/rng.js";
 import { RNGStreams } from "../../utils/rngStreams.js";
-import { initGmLegacy, computeGmLegacyScore, getGmPersonaArc, buildGmReputationProfile } from "../../engine/gmLegacyScore.js";
+import { initGmLegacy, computeGmLegacyScore, getGmLegacySummary, getGmPersonaArc, buildGmReputationProfile } from "../../engine/gmLegacyScore.js";
 import { initRivalries, getRivalryContext, getTeamRivalries } from "../../engine/rivalryDNA.js";
 import { runLeagueCombine, getCombineSummary } from "../../engine/draftCombine.js";
 import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "../../engine/playerAgentAI.js";
@@ -1346,7 +1346,10 @@ export function createLocalApiRuntime({
       if (method === "GET" && pathname === "/api/gm-legacy") {
         const s = ensureSession();
         initGmLegacy(s.league);
-        const summary = computeGmLegacyScore(s.league.gmLegacy);
+        const summary = {
+          ...getGmLegacySummary(s.league),
+          reputation: buildGmReputationProfile(s.league.gmLegacy)
+        };
         return finish(jsonResponse(200, { ok: true, legacy: summary, raw: s.league.gmLegacy }));
       }
 

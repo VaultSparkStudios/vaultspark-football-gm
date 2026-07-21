@@ -666,11 +666,15 @@ export async function renderGmLegacyScore() {
       const tierDots = [1,2,3,4,5,6].map((t) =>
         `<span class="gm-tier-dot ${t <= persona.current.tier ? "active" : ""}" title="Tier ${t}"></span>`
       ).join("");
-      const progressPct = persona.next && persona.next.gapToNext != null
-        ? Math.max(0, Math.min(100, Math.round(100 - (persona.next.gapToNext / Math.max(1, persona.next.threshold || 100)) * 100)))
-        : persona.next ? 0 : 100;
+      const progressPct = Math.max(0, Math.min(100, Number(persona.progressPct ?? (persona.next ? 0 : 100))));
+      const badge = persona.benefits?.badge
+        ? `<span class="gm-persona-badge gm-persona-badge-${escapeHtml(persona.benefits.badge)}">${persona.benefits.badge === "immortal" ? "✦ IMMORTAL" : "★ LEGEND"}</span>`
+        : "";
+      const entitlements = (persona.current.entitlements || []).map((entry) =>
+        `<li><strong>${escapeHtml(entry.label)}</strong> · ${escapeHtml(entry.description)}</li>`
+      ).join("");
       personaEl.innerHTML = `
-        <div class="gm-persona-name">${escapeHtml(persona.current.name)}</div>
+        <div class="gm-persona-name">${escapeHtml(persona.current.name)} ${badge}</div>
         <div class="gm-tier-track">${tierDots}</div>
         <div class="gm-persona-progress-wrap">
           <div class="gm-persona-progress-track">
@@ -679,6 +683,7 @@ export async function renderGmLegacyScore() {
           <span class="gm-persona-progress-pct">${progressPct}%</span>
         </div>
         <div class="gm-persona-desc">${escapeHtml(persona.current.description)}</div>
+        ${entitlements ? `<ul class="gm-persona-entitlements">${entitlements}</ul>` : ""}
         ${persona.next ? `<div class="gm-persona-next">Next: <strong>${escapeHtml(persona.next.name)}</strong> · ${persona.next.gapToNext > 0 ? `+${persona.next.gapToNext} pts needed` : "Ready to advance"}</div>` : `<div class="gm-persona-next">🏆 Peak tier reached</div>`}
       `;
 

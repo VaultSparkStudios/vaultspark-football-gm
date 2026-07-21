@@ -137,6 +137,48 @@ test("feature pack v1: free agency AI can favor stronger team context over a sma
   assert.equal(signed.teamId, "BUF");
 });
 
+test("GM legacy destination pull is attached only when earned and only to the controlled team", () => {
+  const session = createSession({ seed: 1051, startYear: 2026, controlledTeamId: "BUF" });
+  const candidate = session.getRoster("BUF").find((player) => player.position !== "K" && player.position !== "P");
+  assert.ok(candidate);
+  assert.equal(session.releasePlayer({ teamId: "BUF", playerId: candidate.id, toWaivers: false }).ok, true);
+
+  session.league.gmLegacy = {
+    seasonsServed: 4,
+    totalWins: 44,
+    totalLosses: 24,
+    playoffAppearances: 2,
+    superBowlWins: 0,
+    capGradeTotal: 280,
+    cultureGradeTotal: 280,
+    seasonHistory: []
+  };
+
+  const controlled = session.submitFreeAgencyOffer({
+    teamId: "BUF",
+    playerId: candidate.id,
+    years: 2,
+    salary: 4_000_000
+  });
+  const opponent = session.submitFreeAgencyOffer({
+    teamId: "MIA",
+    playerId: candidate.id,
+    years: 2,
+    salary: 4_000_000
+  });
+
+  assert.equal(controlled.ok, true);
+  assert.equal(controlled.offer.legacyMarketBonus, 4);
+  assert.deepEqual(controlled.offer.legacyBenefit, {
+    id: "fa_discount",
+    label: "Destination pull",
+    marketScoreBonus: 4
+  });
+  assert.equal(opponent.ok, true);
+  assert.equal(opponent.offer.legacyMarketBonus, 0);
+  assert.equal(opponent.offer.legacyBenefit, null);
+});
+
 test("feature pack v1: owner expectation and hot-seat pressure use mandate context", () => {
   const session = createSession({ seed: 1003, startYear: 2026, controlledTeamId: "BUF" });
   const buf = session.league.teams.find((team) => team.id === "BUF");

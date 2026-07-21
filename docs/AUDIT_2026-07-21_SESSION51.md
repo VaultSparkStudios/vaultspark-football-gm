@@ -1,0 +1,50 @@
+# Audit — Franchise Architect: Football — Session 51
+
+Public-safe live-code audit. The JSON sidecar is the sole source of truth.
+
+## Profile and review lens
+
+- Product: public-unlaunched game/app
+- Rubric: founder-requested infrastructure-weighted product rubric; staging: github-pages artifact plus canonical-origin verification
+- Profile source: live code, direct route/error inventories, current startup brief, project skill profile, authoritative arc profile, game-loop review, app release-gate evidence, and internal-tools registry
+- Game-loop review: tightness 8.2 · progression 6.4 · session engagement 8.3 · retention 7.5 · soul fidelity 8.2 · overall 7.7
+- Evidence caveat: Provisional executable-contract review only. context/GAME_LOOP.md and docs/PLAYTESTS/ do not exist, while context/SOUL.md is a public-safe placeholder; no claim about fun, churn, pacing, or player sentiment is made.
+
+## Ranked implementation plan
+
+| Rank | Tier | Category | Effort | Impact | Innovation | Priority | Item and concrete recipe |
+|---:|---|---|---:|---:|---:|---:|---|
+| 1 | FIRE | Progression authority / observability honesty / retention | 3.5h | 10 | 8 | 32.5 | **gm-legacy-truth-engine** — Create canonical champion-team and GM entitlement resolvers; credit object/string legacy snapshots without double-counting; derive current-floor, next-target, gap, and progressPct inside gmLegacyScore.js; make the browser consume progressPct only; turn every displayed unlock into either a real source-derived entitlement consumed by owner/free-agent/UI behavior or honest recognition-only copy; add season-to-dashboard-to-visible-card tests for championships, 0% starts, milestone overrides, tier transitions, and each effective entitlement. |
+| 2 | FIRE | Security / public-repo boundary / release truth | 1.0h | 10 | 5 | 31.5 | **public-process-ledger-quarantine** — Quarantine the public CDR to a minimal public-safe boundary document; extend the repo-local sanitization/public-compliance test so dated founder/session process entries cannot reappear; preserve only product-facing design principles that are independently safe; rerun the authoritative release checker and record the prior HOLD as an honest fixed gate rather than deleting its history claim. |
+| 3 | FIRE | Onboarding agency / game-loop depth / UX | 4.0h | 9 | 9 | 31.3 | **consequence-bearing-franchise-contract** — Define and validate a versioned startScenario contract shared by browser and server runtimes; map identity into real scheme/culture state, pressure into owner patience/expectation settings, and the scout call into an actual initial scouting-board or points decision; make application idempotent and snapshot-persistent; return a source-derived receipt; render the receipt on Overview and the final tutorial step; make failure visible without marking the tutorial complete; test all nine choices, invalid payloads, reload, runtime parity, and browser-visible consequences. |
+| 4 | FIRE | Observability honesty / browser resilience / feedback loop | 3.0h | 9 | 8 | 31.0 | **browser-promise-observability-contract** — Add one observeBackgroundTask helper that records sanitized surface/operation/authority/retry data, resolves recovered entries, distinguishes intentional optional capability absence from degradation, and shows direct-action failures; migrate all fourteen live sinks; add a dependency-free static guard with narrow documented allowlist for genuinely non-actionable quota/cache cleanup; wire it into Pages build and the Studio shard; verify coalescing, retry recovery, clipboard errors, warmup fallback, and no raw secret/message leakage. |
+| 5 | HIGH | Runtime parity / infrastructure / API contract | 7.0h | 10 | 7 | 22.1 | **dual-runtime-route-authority** — Create one dependency-free API contract manifest with method, path, authority, mutability, and response-shape identity; make browser call sites and both adapters self-validate against it; port the 26 currently UI-called missing server routes by extracting shared pure handlers where possible and using the authoritative server GameSession for mutations; explicitly classify storage-only exceptions; add response-shape and state-transition parity tests for agent, brand, combine, commissioner, fan, legacy, mentorship, rewind, rivalry, speedrun, and stat-leader families; preserve fail-closed server custody. |
+
+Combined priority: **148.4**.
+
+## Premise verification and rejected phantom work
+
+- Rejected/deferred “Flip FORGE/SPARKED or claim launch readiness”: Deferred honestly: staging health is 403, canonical health/deploy manifests are 404 HTML, edge headers and received email proof are absent, sanitization is red, approval is absent, and the authoritative registry drift is sibling-owned.
+- Rejected/deferred “Apply the apex asset or lifecycle fix directly in a sibling repository”: Rejected by CANON-018. Session 50 already shipped signed Ark cargo for the sibling-owned apex tree; this repo must not edit that tree to make its own gate green.
+- Rejected/deferred “Add generic retention hooks”: Rejected as a false premise: saves, return digest, Priority Inbox, challenges, speedrun, dynasty history, what-if replay, story exports, rivalry, and season epilogues already exist. Progression truth and consequence legibility are the actual gaps.
+- Rejected/deferred “Claim playtest, fun, churn, or pacing outcomes”: Rejected because context/GAME_LOOP.md and docs/PLAYTESTS/ do not exist and SOUL.md is only a public-safe placeholder. Code contracts are not player evidence.
+- Rejected/deferred “Rewrite the 5,161-line GameSession as one item”: Culled as unsafe line-count theater. The ranked route, legacy, onboarding, and promise contracts are measured seams with direct failure evidence.
+- Rejected/deferred “Install esbuild or another bundler to chase startup size”: Rejected for this primary pass: build-bundle.mjs references an uninstalled dependency while native ESM and dynamic import remain available. Performance work needs a measured first-decision baseline before choosing a tool.
+- Rejected/deferred “Add paid telemetry or hosted AI commentary”: Rejected by the cost-neutral, internal-first, privacy, and observability requirements. The selected intelligence and diagnostics remain deterministic and local.
+- Rejected/deferred “Re-list Session 46-50 authority, save, hydration, rehab, diagnostics-ledger, responsive, or module-reachability work as unshipped”: Rejected as phantom duplication: those surfaces and their direct tests exist. This audit targets newly verified defects and incomplete coverage.
+
+## Three recommended design moves
+
+1. Repair the career arc first: championships, progress, and displayed benefits must all derive from one tested General Manager legacy authority.
+2. Make the opening three choices the franchise's persisted first contract, then render their real consequences instead of educational theater.
+3. Close the runtime and browser-observability drift classes with generated contracts so a new route or swallowed promise cannot silently regress.
+
+## Execution Log
+
+| Item | Status | Evidence |
+|---|---|---|
+| gm-legacy-truth-engine | completed | Normalized object/string champion records and made season updates idempotent by year; the engine now derives tier floors, next targets, gap, progressPct, and entitlement metadata. Proven-GM destination pull reaches the real controlled-team free-agent offer command as a +4 market-score input while opponent offers receive zero; owner/contract treatments are explicitly recognition-only. The browser consumes only engine-derived progress and renders earned entitlements/badges. Syntax checks and 48 focused engine/session tests pass, including championship-once, 0% start, milestone floor, and controlled-team-only mechanics. |
+| public-process-ledger-quarantine | completed | Removed the forbidden private CDR path from the tracked public tree; public-compliance test passes 8/8 and asserts the path remains absent; live post-index sanitization scan reports 0 critical, 0 warning, 0 findings. The central release summary remains cached/stale and will be refreshed through Ark rather than a sibling-tree edit. |
+| consequence-bearing-franchise-contract | open | all three selections mutate only their declared authorities; receipt persists through snapshot reload; duplicate submission is idempotent; server and browser responses match; tutorial completion waits for a successful authoritative receipt; Overview visibly explains the chosen opening contract |
+| browser-promise-observability-contract | open | zero unallowlisted silent promise sinks; all migrated failures enter the same bounded ledger; direct actions show a useful user message; successful retry clears only the matching degradation; Pages build fails on a reintroduced sink; diagnostics remain local, sanitized, and cost-neutral |
+| dual-runtime-route-authority | open | every browser-callable route is implemented by both advertised runtimes or explicitly mode-gated; zero server 404s for enabled controls; mutating route results preserve established authority; representative response shapes and state transitions match; new browser call paths cannot land without manifest and adapter coverage |
