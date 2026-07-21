@@ -391,3 +391,13 @@ Rationale: production served plain text because `/games/franchise-architect/` wa
 Decision: Commissioner advance forwards the same explicit General Manager decision payload as normal weekly advancement. Missing/stale choices fail closed, leave the authoritative league unchanged, reopen the multiplayer gate, and return the shared refusal envelope. Successful responses derive only from the newly committed session.
 
 Rationale: auto-selecting a choice would erase player agency, while ignoring the refusal produced a false 200 and stale week. One authority and one transaction contract is both safer and more legible.
+
+## 2026-07-21 — Browser API authority is an executable dual-runtime contract
+
+**Decision:** Every browser-callable API operation declares method, normalized path, authority, mutability, and response-shape identity in one dependency-free manifest. Both advertised runtimes must implement it or be explicitly mode-gated; successful responses for high-risk parity families must satisfy executable required-field contracts before browser code can consume them.
+
+**Rationale:** The public browser exposed 26 controls that worked in static mode but could 404 after server authority was established. Route existence alone also missed a rewind-envelope mismatch and cross-origin Commissioner DELETE omission. Joining call sites, adapters, CORS, success envelopes, and live state transitions prevents runtime mode from changing product capability or silently corrupting UI assumptions.
+
+**Pattern established:** New browser routes land atomically with manifest metadata, both adapter handlers, response attestation, and a representative parity test. Adapter-local persistence is explicit; it never authorizes fallback from an established server GameSession.
+
+---

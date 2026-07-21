@@ -6,7 +6,7 @@ import { GameSession } from "../../runtime/GameSession.js";
 import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { RNG } from "../../utils/rng.js";
 import { RNGStreams } from "../../utils/rngStreams.js";
-import { initGmLegacy, computeGmLegacyScore, getGmLegacySummary, getGmPersonaArc, buildGmReputationProfile } from "../../engine/gmLegacyScore.js";
+import { initGmLegacy, computeGmLegacyScore, getGmLegacySummary, getGmPersonaArc, buildGmReputationProfile, resolveChampionTeamId } from "../../engine/gmLegacyScore.js";
 import { initRivalries, getRivalryContext, getTeamRivalries } from "../../engine/rivalryDNA.js";
 import { runLeagueCombine, getCombineSummary } from "../../engine/draftCombine.js";
 import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "../../engine/playerAgentAI.js";
@@ -158,7 +158,7 @@ function _rwTakeSnapshot(storage, session, trigger, label) {
     meta.unshift(entry);
     _rwPruneOldest(storage, meta);
     _rwSetMeta(storage, meta);
-    return { ok: true, entry };
+    return { ok: true, entry, snapshots: meta };
   } catch (e) {
     return { ok: false, error: e?.message || "Snapshot failed (storage quota?)" };
   }
@@ -1340,7 +1340,7 @@ export function createLocalApiRuntime({
         if (!player) return finish(jsonResponse(404, { ok: false, error: "Player not found." }));
         if (!player.agentState) return finish(jsonResponse(400, { ok: false, error: "Player has no active agent." }));
         const result = evaluateTeamOffer(player, Number(salary) || 0, Number(years) || 1);
-        return finish(jsonResponse(200, { ok: true, result, agentState: player.agentState }));
+        return finish(jsonResponse(200, { ok: true, result, agentState: player.agentState || null }));
       }
 
       if (method === "POST" && pathname === "/api/agent/competing-offer") {
@@ -1350,7 +1350,7 @@ export function createLocalApiRuntime({
         const player = (s.league?.players || []).find((p) => p.id === playerId);
         if (!player) return finish(jsonResponse(404, { ok: false, error: "Player not found." }));
         const result = applyCompetingOffer(player, competingTeamId || "Unknown");
-        return finish(jsonResponse(200, { ok: true, result, agentState: player.agentState }));
+        return finish(jsonResponse(200, { ok: true, result, agentState: player.agentState || null }));
       }
 
       // ── GM Legacy routes ────────────────────────────────────────────────────
@@ -1367,7 +1367,8 @@ export function createLocalApiRuntime({
       // ── Rivalry routes ──────────────────────────────────────────────────────
       if (method === "GET" && pathname === "/api/rivalry") {
         const s = ensureSession();
-        const { teamA, teamB } = body || {};
+        const teamA = url.searchParams.get("teamA");
+        const teamB = url.searchParams.get("teamB");
         initRivalries(s.league);
         if (teamA && teamB) {
           const ctx = getRivalryContext(s.league, teamA, teamB);
@@ -1381,7 +1382,7 @@ export function createLocalApiRuntime({
       // ── Draft Combine routes ────────────────────────────────────────────────
       if (method === "POST" && pathname === "/api/combine/run") {
         const s = ensureSession();
-        const draftClass = s.league?.pendingDraft?.prospects || s.league?.draftClass || [];
+        const draftClass = s.league?.pendingDraft?.available || s.league?.draftClass || [];
         if (!draftClass.length) return finish(jsonResponse(400, { ok: false, error: "No draft class available." }));
         const rng = s.rng || new RNG(Date.now());
         const results = runLeagueCombine(draftClass, rng);
@@ -1391,8 +1392,10 @@ export function createLocalApiRuntime({
 
       if (method === "GET" && pathname === "/api/combine/results") {
         const s = ensureSession();
-        const draftClass = s.league?.pendingDraft?.prospects || s.league?.draftClass || [];
-        const boardIds = (s.league?.scoutingBoards?.[s.controlledTeamId] || []).map((p) => p.id);
+        const draftClass = s.league?.pendingDraft?.available || s.league?.draftClass || [];
+        const boardIds = s.controlledTeamId
+          ? s.ensureScoutingTeamState(s.controlledTeamId).board || []
+          : [];
         const summary = getCombineSummary(draftClass, boardIds);
         return finish(jsonResponse(200, { ok: true, summary, hasResults: summary.length > 0 }));
       }
@@ -1596,6 +1599,11 @@ export function createLocalApiRuntime({
         if (!tid) return finish(jsonResponse(400, { ok: false, error: "teamId required." }));
         const team = s.league?.teams?.find((t) => t.id === tid);
         if (!team) return finish(jsonResponse(404, { ok: false, error: `Team ${tid} not found.` }));
+        for (const [field, value] of [["primaryColor", primaryColor], ["secondaryColor", secondaryColor]]) {
+          if (value && !/^#[0-9a-f]{6}$/i.test(String(value))) {
+            return finish(jsonResponse(400, { ok: false, error: field + " must be a six-digit hex color." }));
+          }
+        }
         if (!team.brandOverride) team.brandOverride = {};
         if (customName)    team.brandOverride.name       = String(customName).slice(0, 30);
         if (customCity)    team.brandOverride.city       = String(customCity).slice(0, 24);
@@ -1641,7 +1649,8 @@ export function createLocalApiRuntime({
         const s = ensureSession();
         // Find the latest champion entry for the current year
         const latestChampion = (s.league.champions || []).slice(-1)[0] || null;
-        const postseasonResults = latestChampion ? { superBowl: { championTeamId: latestChampion.championTeamId } } : null;
+        const championTeamId = resolveChampionTeamId(latestChampion);
+        const postseasonResults = championTeamId ? { superBowl: { championTeamId } } : null;
         // Advance the season counter
         _speedrunChallenge = advanceChallengeSeason(_speedrunChallenge);
         const result = checkChallengeComplete(_speedrunChallenge, postseasonResults, s.controlledTeamId);
@@ -1659,7 +1668,7 @@ export function createLocalApiRuntime({
       }
 
       if (method === "GET" && pathname === "/api/speedrun/leaderboard") {
-        const raw = localStorage.getItem(SPEEDRUN_LB_KEY) || "[]";
+        const raw = storage.getItem(SPEEDRUN_LB_KEY) || "[]";
         const entries = parseLeaderboard(raw);
         return finish(jsonResponse(200, { ok: true, entries }));
       }
@@ -1670,10 +1679,10 @@ export function createLocalApiRuntime({
           return finish(jsonResponse(400, { ok: false, error: "No challenge state to submit." }));
         }
         const entry = formatLeaderboardEntry(_speedrunChallenge, playerName);
-        const raw = localStorage.getItem(SPEEDRUN_LB_KEY) || "[]";
+        const raw = storage.getItem(SPEEDRUN_LB_KEY) || "[]";
         const existing = parseLeaderboard(raw);
         const { rank, entries } = rankEntry(existing, entry);
-        localStorage.setItem(SPEEDRUN_LB_KEY, serializeLeaderboard(entries));
+        storage.setItem(SPEEDRUN_LB_KEY, serializeLeaderboard(entries));
         _speedrunChallenge = null;
         _persistSpeedrun();
         return finish(jsonResponse(200, { ok: true, rank, totalEntries: entries.length, entry }));

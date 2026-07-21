@@ -16,6 +16,36 @@ import {
 import { getPersistenceDescriptor } from "./runtime/persistence.js";
 import { executeAdvanceWeekTransaction } from "./runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, snapshotErrorPayload } from "./runtime/snapshotMigration.js";
+import {
+  initGmLegacy,
+  getGmLegacySummary,
+  buildGmReputationProfile,
+  resolveChampionTeamId
+} from "./engine/gmLegacyScore.js";
+import { initRivalries, getRivalryContext, getTeamRivalries } from "./engine/rivalryDNA.js";
+import { runLeagueCombine, getCombineSummary } from "./engine/draftCombine.js";
+import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "./engine/playerAgentAI.js";
+import { getFanSentiment, fanApprovalLabel } from "./engine/fanSentiment.js";
+import { getMentorshipStatus, getMentorshipHistory } from "./engine/veteranMentorship.js";
+import {
+  startChallenge,
+  advanceChallengeSeason,
+  checkChallengeComplete,
+  formatLeaderboardEntry,
+  rankEntry
+} from "./engine/speedrunChallenge.js";
+import {
+  createLobby,
+  addPlayerToLobby,
+  queueIntent,
+  markPlayerReady,
+  lockGate,
+  openGate,
+  applyIntents,
+  recordAdvance,
+  lobbyStatus,
+  ADVANCE_GATE_STATUS
+} from "./runtime/multiplayerSession.js";
 
 const PORT = Number(process.env.PORT || 4173);
 const PUBLIC_DIR = path.resolve("public");
@@ -51,6 +81,83 @@ const serverMetrics = {
   routeTiming: {}
 };
 const simJobs = new Map();
+let serverLobby = null;
+let serverSpeedrunChallenge = null;
+let serverSpeedrunLeaderboard = [];
+let serverRewindSequence = 0;
+let serverRewindSnapshots = [];
+const serverRewindStates = new Map();
+
+function takeServerRewindSnapshot(trigger = "manual", label = "Manual snapshot") {
+  const id = [
+    "server-rw",
+    ++serverRewindSequence,
+    session.currentYear,
+    session.currentWeek
+  ].join("-");
+  const meta = {
+    id,
+    trigger,
+    label,
+    year: session.currentYear,
+    week: session.currentWeek,
+    phase: session.phase,
+    createdAt: new Date().toISOString()
+  };
+  serverRewindStates.set(id, session.toSnapshot());
+  serverRewindSnapshots.unshift(meta);
+  while (serverRewindSnapshots.length > 10) {
+    const removed = serverRewindSnapshots.pop();
+    serverRewindStates.delete(removed.id);
+  }
+  return meta;
+}
+
+function commissionerIntentSessionAdapter() {
+  return {
+    call: async (action, params = {}) => {
+      if (action === "propose-trade") {
+        return session.tradePlayers({
+          teamA: String(params.teamA || "").toUpperCase(),
+          teamB: String(params.teamB || "").toUpperCase(),
+          teamAPlayerIds: (params.teamAPlayerIds || []).map(String),
+          teamBPlayerIds: (params.teamBPlayerIds || []).map(String),
+          teamAPickIds: (params.teamAPickIds || []).map(String),
+          teamBPickIds: (params.teamBPickIds || []).map(String)
+        });
+      }
+      if (action === "sign-free-agent") {
+        return session.signFreeAgent({
+          teamId: String(params.teamId || "").toUpperCase(),
+          playerId: String(params.playerId || "")
+        });
+      }
+      if (action === "release-player") {
+        return session.releasePlayer({
+          teamId: String(params.teamId || "").toUpperCase(),
+          playerId: String(params.playerId || ""),
+          june1: params.june1 === true,
+          toWaivers: params.toWaivers !== false
+        });
+      }
+      if (action === "update-depth-chart") {
+        return session.setDepthChart({
+          teamId: String(params.teamId || "").toUpperCase(),
+          position: String(params.position || "").toUpperCase(),
+          playerIds: (params.playerIds || []).map(String),
+          snapShares: params.snapShares || null
+        });
+      }
+      if (action === "restructure-contract") {
+        return session.restructurePlayerContract({
+          teamId: String(params.teamId || "").toUpperCase(),
+          playerId: String(params.playerId || "")
+        });
+      }
+      return { ok: false, error: "Unknown commissioner intent action: " + action };
+    }
+  };
+}
 
 // ── Rate limiter (token-bucket, 50 req/min per IP) ───────────────────────────
 // VSFGM_RATE_LIMIT_PER_MIN overrides the per-minute budget. UI test harnesses
@@ -180,7 +287,7 @@ function applyCorsHeaders(req, res) {
   if (!ALLOWED_ORIGINS.size || ALLOWED_ORIGINS.has(requestOrigin)) {
     res.setHeader("Access-Control-Allow-Origin", requestOrigin);
     res.setHeader("Vary", "Origin");
-    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,DELETE,OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   }
 }
@@ -1424,6 +1531,444 @@ async function handleApi(req, res, url) {
     }
     const deleted = deleteSaveSlot(String(body.slot));
     sendJson(res, 200, { ok: true, deleted, slots: listBackupSlots() });
+    return true;
+  }
+
+  // ── Rewind authority (server-memory adapter; GameSession remains canonical) ─
+  if (req.method === "GET" && url.pathname === "/api/rewind") {
+    sendJson(res, 200, { ok: true, snapshots: serverRewindSnapshots.map((entry) => ({ ...entry })) });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/rewind/snapshot") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const entry = takeServerRewindSnapshot("manual", body?.label ? String(body.label) : "Manual snapshot");
+    sendJson(res, 200, { ok: true, entry, snapshots: serverRewindSnapshots.map((item) => ({ ...item })) });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/rewind/restore") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!body?.id) {
+      sendJson(res, 400, { ok: false, error: "id is required." });
+      return true;
+    }
+    const stored = serverRewindStates.get(String(body.id));
+    if (!stored) {
+      sendJson(res, 404, { ok: false, error: "Snapshot not found." });
+      return true;
+    }
+    takeServerRewindSnapshot("pre-restore", "Before restore to " + String(body.id));
+    try {
+      session = createSessionFromSnapshot(structuredClone(stored));
+      sendJson(res, 200, { ok: true, state: session.getDashboardState() });
+    } catch (error) {
+      sendJson(res, error.status || 500, snapshotErrorPayload(error));
+    }
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/rewind/delete") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!body?.id) {
+      sendJson(res, 400, { ok: false, error: "id is required." });
+      return true;
+    }
+    const id = String(body.id);
+    serverRewindStates.delete(id);
+    serverRewindSnapshots = serverRewindSnapshots.filter((entry) => entry.id !== id);
+    sendJson(res, 200, { ok: true, snapshots: serverRewindSnapshots.map((entry) => ({ ...entry })) });
+    return true;
+  }
+
+  // ── Contract-year agent negotiation ────────────────────────────────────────
+  if (req.method === "GET" && url.pathname === "/api/agent/roster") {
+    const agents = (session.league.players || [])
+      .filter((player) => player.agentState?.negotiationStatus === "active")
+      .map((player) => agentSummary(player))
+      .filter(Boolean);
+    sendJson(res, 200, { ok: true, agents });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/agent/offer") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!body?.playerId) {
+      sendJson(res, 400, { ok: false, error: "playerId required." });
+      return true;
+    }
+    const player = (session.league.players || []).find((entry) => entry.id === String(body.playerId));
+    if (!player) {
+      sendJson(res, 404, { ok: false, error: "Player not found." });
+      return true;
+    }
+    if (!player.agentState) {
+      sendJson(res, 400, { ok: false, error: "Player has no active agent." });
+      return true;
+    }
+    const result = evaluateTeamOffer(player, Number(body.salary) || 0, Number(body.years) || 1);
+    sendJson(res, 200, { ok: true, result, agentState: player.agentState });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/agent/competing-offer") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!body?.playerId) {
+      sendJson(res, 400, { ok: false, error: "playerId required." });
+      return true;
+    }
+    const player = (session.league.players || []).find((entry) => entry.id === String(body.playerId));
+    if (!player) {
+      sendJson(res, 404, { ok: false, error: "Player not found." });
+      return true;
+    }
+    const result = applyCompetingOffer(player, body.competingTeamId || "Unknown");
+    sendJson(res, 200, { ok: true, result, agentState: player.agentState || null });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/gm-legacy") {
+    initGmLegacy(session.league);
+    sendJson(res, 200, {
+      ok: true,
+      legacy: {
+        ...getGmLegacySummary(session.league),
+        reputation: buildGmReputationProfile(session.league.gmLegacy)
+      },
+      raw: session.league.gmLegacy
+    });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/rivalry") {
+    initRivalries(session.league);
+    const teamA = url.searchParams.get("teamA");
+    const teamB = url.searchParams.get("teamB");
+    if (teamA && teamB) {
+      sendJson(res, 200, { ok: true, rivalry: getRivalryContext(session.league, teamA, teamB) });
+      return true;
+    }
+    const teamId = teamA || session.controlledTeamId;
+    sendJson(res, 200, { ok: true, rivalries: getTeamRivalries(session.league, teamId) });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/combine/run") {
+    const draftClass = session.league.pendingDraft?.available || session.league.draftClass || [];
+    if (!draftClass.length) {
+      sendJson(res, 400, { ok: false, error: "No draft class available." });
+      return true;
+    }
+    const results = runLeagueCombine(draftClass, session.rng);
+    session.league.combineResults = results;
+    sendJson(res, 200, { ok: true, results, count: results.length });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/combine/results") {
+    const draftClass = session.league.pendingDraft?.available || session.league.draftClass || [];
+    const boardIds = session.controlledTeamId
+      ? session.ensureScoutingTeamState(session.controlledTeamId).board || []
+      : [];
+    const summary = getCombineSummary(draftClass, boardIds);
+    sendJson(res, 200, { ok: true, summary, hasResults: summary.length > 0 });
+    return true;
+  }
+
+  // ── Commissioner turn gate (server-memory adapter) ─────────────────────────
+  if (req.method === "POST" && url.pathname === "/api/commissioner/create") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const commissionerId = body?.commissionerId || body?.userId || body?.gmId;
+    const controlledTeamId = body?.controlledTeamId || body?.teamId || session.controlledTeamId;
+    if (!commissionerId) {
+      sendJson(res, 400, { ok: false, error: "commissionerId required." });
+      return true;
+    }
+    serverLobby = createLobby({
+      leagueId: "lobby-" + Date.now(),
+      commissionerId,
+      leagueName: body?.leagueName || "VaultSpark League",
+      maxPlayers: Number(body?.maxPlayers) || 4
+    });
+    addPlayerToLobby(serverLobby, {
+      userId: commissionerId,
+      displayName: commissionerId,
+      controlledTeamId
+    });
+    sendJson(res, 200, { ok: true, lobby: lobbyStatus(serverLobby) });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/commissioner/lobby") {
+    if (!serverLobby) {
+      sendJson(res, 404, { ok: false, error: "No active lobby." });
+      return true;
+    }
+    sendJson(res, 200, { ok: true, lobby: lobbyStatus(serverLobby) });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/commissioner/join") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!serverLobby) {
+      sendJson(res, 404, { ok: false, error: "No active lobby." });
+      return true;
+    }
+    const userId = body?.userId || body?.gmId;
+    const controlledTeamId = body?.controlledTeamId || body?.teamId;
+    if (!userId || !controlledTeamId) {
+      sendJson(res, 400, { ok: false, error: "userId and controlledTeamId required." });
+      return true;
+    }
+    try {
+      addPlayerToLobby(serverLobby, {
+        userId,
+        displayName: body?.displayName || userId,
+        controlledTeamId
+      });
+      sendJson(res, 200, { ok: true, lobby: lobbyStatus(serverLobby) });
+    } catch (error) {
+      sendJson(res, 400, { ok: false, error: error.message });
+    }
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/commissioner/ready") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!serverLobby) {
+      sendJson(res, 404, { ok: false, error: "No active lobby." });
+      return true;
+    }
+    const userId = body?.userId || body?.gmId;
+    if (!userId) {
+      sendJson(res, 400, { ok: false, error: "userId required." });
+      return true;
+    }
+    try {
+      const allReady = markPlayerReady(serverLobby, userId);
+      sendJson(res, 200, { ok: true, allReady, lobby: lobbyStatus(serverLobby) });
+    } catch (error) {
+      sendJson(res, 400, { ok: false, error: error.message });
+    }
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/commissioner/intent") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!serverLobby) {
+      sendJson(res, 404, { ok: false, error: "No active lobby." });
+      return true;
+    }
+    if (!body?.userId || !body?.type) {
+      sendJson(res, 400, { ok: false, error: "userId and type required." });
+      return true;
+    }
+    try {
+      const intent = queueIntent(serverLobby, body.userId, body.type, body.payload || {});
+      sendJson(res, 200, { ok: true, intent, lobby: lobbyStatus(serverLobby) });
+    } catch (error) {
+      sendJson(res, 400, { ok: false, error: error.message });
+    }
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/commissioner/advance") {
+    const body = parseJsonBody(await readRequestBody(req)) || {};
+    if (!serverLobby) {
+      sendJson(res, 404, { ok: false, error: "No active lobby." });
+      return true;
+    }
+    if (serverLobby.gateStatus === ADVANCE_GATE_STATUS.ADVANCING) {
+      sendJson(res, 409, { ok: false, error: "Already advancing." });
+      return true;
+    }
+    try {
+      lockGate(serverLobby);
+      const intentResults = await applyIntents(serverLobby, commissionerIntentSessionAdapter());
+      const outcome = executeAdvanceWeekTransaction(session, body);
+      if (!outcome.ok) {
+        openGate(serverLobby, session.currentYear, session.currentWeek, session.phase);
+        sendJson(res, outcome.status || 409, { ...outcome, lobby: lobbyStatus(serverLobby) });
+        return true;
+      }
+      const { committedSession } = outcome;
+      session = committedSession;
+      recordAdvance(serverLobby, session.currentYear, session.currentWeek, session.phase, intentResults);
+      openGate(serverLobby, session.currentYear, session.currentWeek, session.phase);
+      writeAutoBackup("commissioner-advance");
+      sendJson(res, 200, {
+        ok: true,
+        intentResults,
+        state: session.getDashboardState(),
+        lobby: lobbyStatus(serverLobby)
+      });
+    } catch (error) {
+      if (serverLobby?.gateStatus !== ADVANCE_GATE_STATUS.OPEN) {
+        openGate(serverLobby, session.currentYear, session.currentWeek, session.phase);
+      }
+      sendJson(res, 400, { ok: false, error: error.message, lobby: lobbyStatus(serverLobby) });
+    }
+    return true;
+  }
+
+  if (req.method === "DELETE" && url.pathname === "/api/commissioner/lobby") {
+    serverLobby = null;
+    sendJson(res, 200, { ok: true });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/fan-sentiment") {
+    const teamId = (url.searchParams.get("team") || session.controlledTeamId || "").toUpperCase();
+    if (!teamId) {
+      sendJson(res, 400, { ok: false, error: "team required." });
+      return true;
+    }
+    const fanSentiment = getFanSentiment(session.league, teamId);
+    sendJson(res, 200, {
+      ok: true,
+      teamId,
+      fanSentiment: {
+        ...fanSentiment,
+        label: fanApprovalLabel(fanSentiment.approval)
+      }
+    });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/stat-leaders") {
+    const year = toInt(url.searchParams.get("year")) || session.currentYear;
+    const passing = session.statBook.getPlayerSeasonTable("passing", { year })
+      .sort((left, right) => (right.yds || 0) - (left.yds || 0)).slice(0, 3);
+    const rushing = session.statBook.getPlayerSeasonTable("rushing", { year })
+      .sort((left, right) => (right.yds || 0) - (left.yds || 0)).slice(0, 3);
+    const defense = session.statBook.getPlayerSeasonTable("defense", { year })
+      .sort((left, right) =>
+        ((right.sacks || 0) + (right.int || 0) * 1.5)
+        - ((left.sacks || 0) + (left.int || 0) * 1.5)
+      ).slice(0, 3);
+    sendJson(res, 200, { ok: true, year, leaders: { passing, rushing, defense } });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/mentorship") {
+    const teamId = (url.searchParams.get("team") || session.controlledTeamId || "").toUpperCase();
+    sendJson(res, 200, {
+      ok: true,
+      teamId,
+      pairs: getMentorshipStatus(session.league, teamId),
+      history: getMentorshipHistory(session.league, teamId)
+    });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/brand-identity") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const teamId = String(body?.teamId || session.controlledTeamId || "").toUpperCase();
+    if (!teamId) {
+      sendJson(res, 400, { ok: false, error: "teamId required." });
+      return true;
+    }
+    const team = (session.league.teams || []).find((entry) => entry.id === teamId);
+    if (!team) {
+      sendJson(res, 404, { ok: false, error: "Team " + teamId + " not found." });
+      return true;
+    }
+    const colorFields = ["primaryColor", "secondaryColor"];
+    for (const field of colorFields) {
+      if (body?.[field] && !/^#[0-9a-f]{6}$/i.test(String(body[field]))) {
+        sendJson(res, 400, { ok: false, error: field + " must be a six-digit hex color." });
+        return true;
+      }
+    }
+    team.brandOverride = { ...(team.brandOverride || {}) };
+    if (body?.customName) team.brandOverride.name = String(body.customName).slice(0, 30);
+    if (body?.customCity) team.brandOverride.city = String(body.customCity).slice(0, 24);
+    if (body?.customAbbrev) team.brandOverride.abbrev = String(body.customAbbrev).toUpperCase().slice(0, 3);
+    if (body?.primaryColor) team.brandOverride.primary = String(body.primaryColor);
+    if (body?.secondaryColor) team.brandOverride.secondary = String(body.secondaryColor);
+    team.brandOverrideActive = true;
+    sendJson(res, 200, {
+      ok: true,
+      teamId,
+      brandOverride: team.brandOverride,
+      state: session.getDashboardState()
+    });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/speedrun/start") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const teamId = body?.teamId || session.controlledTeamId;
+    if (!teamId) {
+      sendJson(res, 400, { ok: false, error: "teamId required." });
+      return true;
+    }
+    serverSpeedrunChallenge = startChallenge(teamId, {
+      startYear: session.currentYear,
+      difficulty: session.getLeagueSettings?.()?.difficulty || "normal"
+    });
+    sendJson(res, 200, { ok: true, challenge: serverSpeedrunChallenge });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/speedrun/status") {
+    sendJson(res, 200, {
+      ok: true,
+      challenge: serverSpeedrunChallenge,
+      leagueMeta: {
+        seed: session.rng?.seed ?? null,
+        startYear: session.startYear ?? session.currentYear ?? null,
+        controlledTeamId: session.controlledTeamId || null
+      }
+    });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/speedrun/check") {
+    if (!serverSpeedrunChallenge?.active) {
+      sendJson(res, 200, { ok: true, complete: false, challenge: null });
+      return true;
+    }
+    const latestChampion = (session.league.champions || []).slice(-1)[0] || null;
+    const championTeamId = resolveChampionTeamId(latestChampion);
+    serverSpeedrunChallenge = advanceChallengeSeason(serverSpeedrunChallenge);
+    const result = checkChallengeComplete(
+      serverSpeedrunChallenge,
+      championTeamId ? { superBowl: { championTeamId } } : null,
+      session.controlledTeamId
+    );
+    if (result.complete) serverSpeedrunChallenge.active = false;
+    sendJson(res, 200, { ok: true, ...result, challenge: serverSpeedrunChallenge });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/speedrun/abandon") {
+    serverSpeedrunChallenge = null;
+    sendJson(res, 200, { ok: true });
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/speedrun/leaderboard") {
+    sendJson(res, 200, { ok: true, entries: serverSpeedrunLeaderboard.map((entry) => ({ ...entry })) });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/speedrun/submit") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!serverSpeedrunChallenge) {
+      sendJson(res, 400, { ok: false, error: "No challenge state to submit." });
+      return true;
+    }
+    const entry = formatLeaderboardEntry(serverSpeedrunChallenge, body?.playerName);
+    const ranked = rankEntry(serverSpeedrunLeaderboard, entry);
+    serverSpeedrunLeaderboard = ranked.entries;
+    serverSpeedrunChallenge = null;
+    sendJson(res, 200, {
+      ok: true,
+      rank: ranked.rank,
+      totalEntries: serverSpeedrunLeaderboard.length,
+      entry
+    });
     return true;
   }
 

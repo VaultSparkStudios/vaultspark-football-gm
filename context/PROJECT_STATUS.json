@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 50 shipped runtime authority and evidence systems plus a mount-relative production asset contract; GitHub Pages is green, while the sibling-owned apex copy awaits Ark-backed ingestion.",
-  "nextMilestone": "Apply Ark cargo 01JU1K4LB3C3400F371FD77B32 in vaultsparkstudios-website, deploy its Cloudflare Pages tree, and verify computed styling plus CSS/JavaScript/favicon MIME at /franchise-architect/.",
+  "currentFocus": "Session 51 recovery completed five product-truth items: public/private boundary enforcement, General Manager career authority, consequence-bearing onboarding, browser promise observability, and explicit dual-runtime API parity; the queue and innovation surface are exhausted.",
+  "nextMilestone": "Begin a fresh live-code arc from the clean Session 51 checkpoint unless external edge-header, received-email, apex-ingestion, deploy-provenance, or registry-reconciliation evidence arrives first.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated until the canonical live origin has complete edge-security headers, football@playfranchisearchitect.com forwarding/copying has a real received-message receipt, deploy provenance matches the expected workflow artifact, and the authoritative registry is reconciled."
   ],
@@ -13,27 +13,26 @@
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-07-20",
+  "truthAuditLastRun": "2026-07-21",
   "ignisScore": 41305,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-06-19",
   "testSuiteStatus": {
-    "totalTests": 390,
-    "pass": 390,
+    "totalTests": 401,
+    "pass": 401,
     "fail": 0,
-    "lastRun": "2026-07-20",
+    "lastRun": "2026-07-21",
     "newTestFiles": [
-      "test/action-coordinator.test.js",
-      "test/browser-module-reachability.test.js",
-      "test/client-diagnostics.test.js",
-      "test/gm-decision-authority.test.js"
+      "test/start-scenario.test.js",
+      "test/browser-promise-observability.test.js",
+      "test/api-contract-parity.test.js"
     ],
-    "newTestCount": 13,
-    "coverage": "Session 50 final direct evidence: full canonical Node suite 390/390, Playwright 18/18, Pages build/all-mount MIME smoke, and 20 responsive captures across 390/768/1440 in both themes.",
-    "uiSuiteNote": "Playwright passed 18/18; responsive evidence passed 20/20 captures with zero overflow/runtime errors and compliant critical targets."
+    "newTestCount": 11,
+    "coverage": "Session 51 recovery final direct evidence: canonical Node shards 401/401 (70 core, 199 runtime, 69 simulation contract, 1 realism, 62 Studio), Playwright 18/18, Pages build/smoke, and live server/static API state-shape parity 3/3.",
+    "uiSuiteNote": "Playwright passed 18/18; the consequence-bearing tutorial, theme system, runtime switch, and core franchise flows remain green."
   },
-  "testsPassing": 390,
-  "testsTotal": 390,
+  "testsPassing": 401,
+  "testsTotal": 401,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -85,26 +84,28 @@
     "capitalEfficiency": 94,
     "automationCoverage": 100
   },
-  "currentSession": 50,
+  "currentSession": 51,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
-    "timedOut": [],
+    "timedOut": [
+      "aggregate npm test wrapper exceeded the initial five-minute evidence window",
+      "initial serialized shard wrapper exceeded a ten-minute tool window under concurrent machine load"
+    ],
     "failed": [],
     "passed": [
-      "full canonical Node suite 390/390 with exit 0",
+      "direct canonical Node shards 401/401 with exit 0 (70 core, 199 runtime, 69 simulation contract, 1 realism, 62 Studio)",
       "Playwright 18/18",
       "npm run build:pages",
-      "npm run smoke:pages with all-mount MIME contract",
-      "GitHub Pages run 29805477684 deployed revision f5ecde2 green",
-      "GitHub CI run 29805477767 green across all six jobs including browser-gates",
-      "responsive evidence 20/20 captures",
-      "browser module graph 39 reachable / 0 orphaned",
+      "npm run smoke:pages",
+      "API contract parity 140 browser calls / 111 contracts / 0 adapter gaps",
+      "live server/static response and state-transition parity 3/3",
+      "browser promise guard 39 modules / 0 unallowlisted silent sinks",
       "Unified Genius List 0 open / 5 closed",
-      "Innovation Pack 3 shipped"
+      "Innovation Pack classified and opening-contract response attestation shipped"
     ],
-    "date": "2026-07-20",
-    "diagnosticNote": "Earlier Commissioner, shard, and brittle trade-fixture failures were root-fixed and superseded by direct green reruns. Apex styling is not claimed fixed until the sibling Cloudflare Pages mount ingests f5ecde2; Ark receipt 01JU1K4LB3C3400F371FD77B32 is the honest cross-repo handoff."
+    "date": "2026-07-21",
+    "diagnosticNote": "The two early wrapper timeouts are non-evidence, not failures; every canonical shard was rerun directly and passed. Apex styling, live edge/email proof, deploy provenance, and authoritative registry coherence remain separate unverified launch gates."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "T2_opusplan",
@@ -153,10 +154,10 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-03",
-  "lastVerificationAt": "2026-07-20",
+  "lastVerificationAt": "2026-07-21",
   "stagingType": "github-pages",
   "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.114,
-  "entropyLastComputed": "2026-07-20"
+  "entropyLastComputed": "2026-07-21"
 }

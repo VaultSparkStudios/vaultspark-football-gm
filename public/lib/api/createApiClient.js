@@ -1,3 +1,5 @@
+import { assertApiContract, assertApiContractResponse } from "../apiContract.js";
+
 let localRuntimePromise = null;
 let runtimeModeCache = null;
 let fallbackAttempted = false;
@@ -220,14 +222,17 @@ async function retryInClientMode(path, options, error) {
 
 export function createApiClient() {
   return async function api(path, options = {}) {
+    const method = options.method || "GET";
+    assertApiContract(method, path);
+    const validateResponse = (payload) => assertApiContractResponse(method, path, payload);
     if (getRuntimeMode() === "client") {
-      return requestLocal(path, options);
+      return validateResponse(await requestLocal(path, options));
     }
     try {
-      return await requestHttp(path, options);
+      return validateResponse(await requestHttp(path, options));
     } catch (error) {
       if (canAutoFallbackToClient(error) || fallbackPromise) {
-        return await retryInClientMode(path, options, error);
+        return validateResponse(await retryInClientMode(path, options, error));
       }
       throw error;
     }

@@ -381,3 +381,14 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - No new dependency, secret, variable-cost service, fake data, or direct sibling-tree edit.
 - Post-push CI caught a legitimate AI trade rejection caused by a brittle first-row browser fixture. The test now discovers an accepted package through the real valuation endpoint before executing it through the UI; the full Playwright suite returned 18/18.
 - Live probing proved the apex host's playable copy is mounted at `/franchise-architect/` while its HTML hard-codes `/games/franchise-architect/`. The Pages artifact now uses a mount-relative base at every alias and deployed green in run `29805477684`; the separate Cloudflare Pages host needs to ingest the full revised mount. Signed Ark handoff `01JU1K4LB3C3400F371FD77B32` carries revision, live MIME evidence, and the exact verification contract to `vaultsparkstudios-website`.
+
+## 2026-07-21 — Session 51 recovery: career, onboarding, observability, and runtime parity
+
+- Reconstructed the cut-off from the Session 51 intent, Session 50 closeout, full dirty diff, five already-landed commits, audit sidecar, and stale session lock; classified death during `/implement` on item 5 of 5.
+- Integrity sweep found no changed JSON/NDJSON, no half-written JavaScript, no debris, and no Claude config corruption; `~/.claude.json` plus its guard reported valid/zero recent events.
+- Preserved committed public-boundary, General Manager legacy, browser promise, and onboarding work; completed the uncommitted dual-runtime contract instead of redoing or resetting it.
+- Closed all 26 enabled server route gaps under 111 explicit contracts covering 140 browser call sites; made successful envelopes fail closed; fixed rewind response drift and DELETE CORS; added live server/static state-transition parity.
+- Exhausted the Genius cache and Innovation Pack, then shipped opening-contract response attestation as the smallest viable compound refinement.
+- Verification is direct and real: Node 401/401 across five named shards, Playwright 18/18, Pages build/smoke, focused API parity 3/3, and doctor `blockingFailing: 0`.
+- Two early wrapper timeouts were retained as non-evidence and superseded only by direct shard exits; no dependency, paid service, sibling-tree edit, launch flip, or fabricated readiness evidence was introduced.
+- CDR reviewed: no new public entry; the founder supplied execution/quality instructions, while detailed operating records remain outside this public repository.

@@ -78,6 +78,7 @@ export const SHARDS = {
     "test/realism-career-regression.test.js"
   ],
   studio: [
+    "test/api-contract-parity.test.js",
     "test/audit-renderer.test.js",
     "test/browser-module-reachability.test.js",
     "test/browser-promise-observability.test.js",

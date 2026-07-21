@@ -1,8 +1,28 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 50 closed at 994 / 1000 SIL v3.0. Verification: full canonical Node suite 390/390, Playwright 18/18, Pages build/all-mount MIME smoke, 20 responsive captures, and the Unified Genius List plus Innovation Pack exhausted. Launch/SPARKED remains evidence-gated on complete live edge headers, verified on-domain forwarding/copying, current deploy provenance, and authoritative registry reconciliation.
+Rolling status: Session 51 recovery closed at 994 / 1000 SIL v3.0. Verification: direct canonical Node shards 401/401, Playwright 18/18, Pages build/smoke, 111 API contracts with 0 adapter gaps, and the Unified Genius List plus Innovation Pack exhausted. Launch/SPARKED remains evidence-gated on complete live edge headers, verified on-domain forwarding/copying, current deploy provenance/apex ingestion, and authoritative registry reconciliation.
 <!-- rolling-status-end -->
+
+## 2026-07-21 — Session 51 Recovery and Dual-Runtime Authority
+
+SIL v3.0: **994 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 94, Automation Coverage 100).
+
+- Dev Health: 100 — direct canonical shards pass 401/401, Playwright 18/18, Pages build/smoke, focused live parity 3/3, and doctor `blockingFailing: 0`.
+- Creative Alignment: 100 — opening choices, career reputation, and runtime behavior now reinforce one persistent consequence-bearing General Manager identity.
+- Momentum: 100 — recovered four committed items plus one incomplete branch, exhausted all five audit rows and the second-order surface, and reached a clean checkpoint without reset/overwrite.
+- Engagement: 100 — the opening contract and truthful career benefits make early agency and long-form progression visibly consequential rather than decorative.
+- Process Quality: 100 — full diff/integrity/history evidence classified the cutoff; short wrapper timeouts were rejected; direct exits and live adapter tests replaced phantom green.
+- Cross-Repo Coherence: 100 — public/private boundaries were enforced locally and no sibling repository tree was edited.
+- Security Posture: 100 — no dependency, secret, auth, or variable-cost surface was added; diagnostics remain sanitized and malformed API success envelopes fail closed.
+- Ecosystem Integration: 100 — audit sidecar/renderer, Genius cache, Innovation Pack, route manifest, task board, handoff, truth audit, status, and doctor converge.
+- Capital Efficiency: 94 — unchanged; all work is dependency-free, deterministic, static-host-compatible, and zero variable cost, but no business impact is fabricated.
+- Automation Coverage: 100 — static call/adapter/CORS checks and live server/static state-transition coverage make future route drift blocking.
+
+Committed SIL follow-ups:
+- `[SIL]` Every browser API addition must land with its manifest entry, both advertised adapters, success-envelope attestation, and a focused parity transition.
+- `[SIL]` Integration-test child processes must unref losing timers and prove teardown so harness duration remains evidence rather than noise.
+
 
 ## 2026-07-20 — Session 50 Decision and Deployment Authority
 

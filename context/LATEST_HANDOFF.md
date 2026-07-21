@@ -1,3 +1,41 @@
+## Session 51 Intent (2026-07-21)
+
+Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; use the product rubric with public-app release and game-depth lenses; exhaust every premise-verified Unified Genius List item; generate and implement second-order innovations until the list and innovation surface are exhausted or the context-meter gates continuation; preserve source-derived observability, treat Max Plan cost as notional, fabricate no gate evidence, record honest deferrals as wins, verify direct suites and GitHub Pages staging, then commit and push directly to `main` with Ark and zero-shell hygiene.
+
+
+## Where We Left Off — Session 51 Recovery Closeout (2026-07-21)
+
+Session 51 was cut off during `/implement`, after four bounded implementation commits but before the fifth audit item, innovation saturation, full verification, canonical closeout, or push. Recovery completed the intended arc and created a clean boundary without resetting or overwriting prior work.
+
+### Recovery ledger
+
+- Intent: run the product-rubric public-app/game-depth arc, exhaust five live-code audit items and second-order work, verify Pages/browser truth, then close out directly to `main`.
+- Cutoff: `dual-runtime-route-authority` was an uncommitted partial branch; Session 51 had no closeout commit. The five commits already present covered public-boundary quarantine, its guard, General Manager legacy, browser promise observability, and consequence-bearing onboarding.
+- Integrity: no changed JSON/NDJSON existed at recovery start; all six changed/untracked JavaScript files parsed; `~/.claude.json` and the JSON guard were valid with zero corruption events; the two untracked API-contract files were intentional and no command-output debris existed.
+- Phantom-green check: the aggregate and initial serialized wrappers exceeded short harness windows and were not counted. Direct canonical shards pass 401/401; doctor exits 0 with `blockingFailing: 0` and one known nonblocking registry warning.
+
+### Shipped
+
+- One truthful General Manager career authority for object/string champion ledgers, engine-derived tier progress, explicit recognition-only rewards, and a real controlled-team destination-pull mechanic.
+- One versioned, idempotent opening franchise contract whose identity/pressure/scouting choices mutate real scheme, owner, and prospect state and remain visible after reload.
+- One enforced browser promise-observability contract: sanitized/coalesced/retry-aware diagnostics, direct-action feedback, and a Pages/Studio static guard against silent catches.
+- One dependency-free dual-runtime API contract: 140 browser call sites, 111 method/path declarations, explicit authority/mutability/shape identities, all 26 former server gaps closed, fail-closed response validation, DELETE CORS, and live state/shape parity.
+- Public process-ledger quarantine with a self-enforcing public-compliance test; no private operating ledger was recreated in this deployable repo.
+- Second-order opening-contract response attestation after the latest-audit follow-through proved all five rows complete; the broad declarative dispatcher was rejected without a measured defect.
+
+### Verification
+
+- Node: 401/401 direct canonical tests (core 70, runtime 199, simulation contract 69, realism 1, Studio 62).
+- Browser/staging: Playwright 18/18; Pages build and static smoke exit 0; focused live API parity 3/3 in 6.1 seconds with clean server-child teardown.
+- Truth gates: Genius cache 0 open; Innovation Pack classified; doctor 5 pass / 1 nonblocking authoritative-registry warning / `blockingFailing: 0`.
+
+### Honest deferral
+
+- Launch/SPARKED remains gated on complete live edge headers, a real received-message receipt for `football@playfranchisearchitect.com`, current deploy provenance/apex ingestion, and authoritative registry reconciliation. No launch state was fabricated.
+
+### Next best move
+
+Begin the founder-requested fresh full arc from this recovery checkpoint unless the external edge/email/apex evidence arrives first.
 ## Session 50 Intent (2026-07-20)
 
 Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; use the infrastructure rubric with public-app release and game-loop lenses; exhaust every verified Unified Genius List item; generate and implement second-order innovations; preserve observability, cost, and launch truth; verify direct suites and GitHub Pages staging; then commit and push directly to `main` with Ark and zero-shell hygiene.

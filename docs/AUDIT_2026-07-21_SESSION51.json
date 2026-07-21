@@ -4,7 +4,7 @@
   "session": 51,
   "project": "franchise-architect-football",
   "displayName": "Franchise Architect: Football",
-  "status": "open",
+  "status": "completed",
   "summary": {
     "rankedItems": 5,
     "combinedPriority": 148.4,
@@ -215,7 +215,7 @@
       "priority": 22.1,
       "slug": "dual-runtime-route-authority",
       "title": "Make every browser-callable API route explicit and equivalent across server and static runtimes",
-      "status": "open",
+      "status": "completed",
       "premise": "A source-derived inventory finds 102 browser API paths. The local runtime implements every server route plus additional static features, while the server lacks 26 UI-called routes including agent negotiation, brand identity, combine, commissioner mode, fan sentiment, GM legacy, mentorship, rewind, rivalry, speedrun, and stat leaders. The default source HTML advertises server-backed mode, so these controls can 404 after server authority is established.",
       "evidence": [
         "source inventory: 102 static browser API calls",
@@ -245,7 +245,8 @@
         "mutating route results preserve established authority",
         "representative response shapes and state transitions match",
         "new browser call paths cannot land without manifest and adapter coverage"
-      ]
+      ],
+      "executionEvidence": "Declared 111 browser-callable method/path contracts with explicit authority, mutability, unique response-shape identity, and required success fields for the eleven parity families. The browser client now fails closed on undeclared routes and malformed successful envelopes; the build checker joins 140 live call sites to both adapters, rejects malformed/duplicate contracts, and enforces DELETE in server CORS. Ported all 26 previously missing enabled server routes against the authoritative GameSession, explicitly classified adapter-local storage families, and corrected local rivalry/combine/speedrun defects found during parity work. Live server-vs-static tests cover reads, errors, and state transitions across agent, brand, combine, Commissioner, fan, legacy, mentorship, rewind, rivalry, speedrun, and stat leaders; recovery additionally fixed mismatched rewind envelopes and missing DELETE CORS. Static parity reports 111 contracts / 0 adapter gaps and focused live parity passes 3/3 in 7.9 seconds with clean child-process teardown."
     }
   ],
   "recommendedMoves": [

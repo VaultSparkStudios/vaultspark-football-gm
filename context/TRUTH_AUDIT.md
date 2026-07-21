@@ -2,7 +2,7 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-07-04
+Last reviewed: 2026-07-21
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 2026-05-27 note:
@@ -283,3 +283,15 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Test truth: final direct evidence is 390/390 Node plus Playwright 18/18. Earlier Commissioner and shard-coverage failures are retained as superseded root-fix evidence, not claimed green.
 - Launch truth unchanged: live launch/SPARKED remains gated on edge headers, received on-domain email evidence, current deploy provenance, and authoritative registry reconciliation.
 - Cost truth: all changes are deterministic, static-host compatible, and zero variable cost; flat-rate plan cost is not an alarm.
+
+## 2026-07-21 — Session 51 recovery truth updates
+
+- Recovery truth: Session 51 stopped during `/implement` after four bounded feature commits; the fifth route-parity branch, innovation classification, verification, write-back, and push were only uncommitted or absent. The recovery preserved that boundary and did not recast partial work as a completed closeout.
+- Integrity truth: no changed JSON/NDJSON existed at recovery start; every changed/untracked JavaScript file parsed; `~/.claude.json` and its guard were valid with zero recent corruption events; no command-output debris was present.
+- Career truth: object/string champion records resolve through one helper, title credit is idempotent by season, persona progress is engine-derived, and only the declared destination-pull entitlement changes simulation inputs.
+- Onboarding truth: the three first-run choices persist as a versioned receipt and mutate actual scheme, owner, and scouting authorities; pending scouting explicitly waits for a real draft class.
+- Browser truth: silent promise sinks are statically blocked, failures enter one local sanitized/coalesced/retry-aware ledger, and direct-action errors remain visible.
+- Runtime truth: 140 browser call sites resolve to 111 explicit method/path contracts implemented by both advertised adapters. Live representative reads/errors/mutations match shapes and state transitions; adapter-local storage is explicit and established server authority never silently falls back.
+- Test truth: direct canonical Node evidence is 401/401 and Playwright is 18/18. Two short wrapper timeouts are non-evidence and are superseded only by direct named-shard exits; Pages build/smoke and focused API parity 3/3 also pass.
+- Launch truth unchanged: live edge headers, received on-domain email evidence, current apex/deploy provenance, and authoritative registry reconciliation remain unverified, so no SPARKED/launch claim is made.
+- Cost truth: all Session 51 work is dependency-free, deterministic/local or static-host-safe, and zero variable cost; flat-rate plan cost remains notional.
