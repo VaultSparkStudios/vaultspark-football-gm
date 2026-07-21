@@ -14,9 +14,9 @@
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
   "truthAuditLastRun": "2026-07-21",
-  "ignisScore": 41305,
+  "ignisScore": 42160,
   "ignisGrade": "FORGE",
-  "ignisLastComputed": "2026-06-19",
+  "ignisLastComputed": "2026-07-20",
   "testSuiteStatus": {
     "totalTests": 401,
     "pass": 401,

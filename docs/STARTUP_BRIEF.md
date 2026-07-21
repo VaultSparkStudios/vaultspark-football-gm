@@ -52,9 +52,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     37,442 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~18,721 tok/turn  ·  cache 50%  ·  47 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     9,147 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heuri  ║
+║     ~4,574 tok/turn  ·  cache 50%  ·  199 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -63,7 +63,7 @@
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ⛔  IGNIS         41305 FORGE  ·  32d old                        ║
+║  ✓  IGNIS         42160 FORGE  ·  1d old                         ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
