@@ -10,7 +10,10 @@ async function waitSetupReady(page) {
 }
 
 async function createLeague(page) {
+  // Disable mobile loop before creating the league so it doesn't activate on narrow viewports
+  // and intercept pointer events on the hamburger button / topbar.
   await page.goto("/");
+  await page.evaluate(() => localStorage.setItem("vsfgm_mobile_loop", "0"));
   await waitSetupReady(page);
   await page.click("#createLeagueBtn");
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
