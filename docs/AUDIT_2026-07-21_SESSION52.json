@@ -1,0 +1,304 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-21",
+  "session": 52,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "completed",
+  "summary": {
+    "rankedItems": 5,
+    "combinedPriority": 149.9,
+    "topItem": "controlled-draft-agency-checkpoint",
+    "source": "live-code-audit",
+    "openItems": 0
+  },
+  "profile": {
+    "type": "game/app",
+    "audience": "public-unlaunched",
+    "rubric": "founder-requested infrastructure-weighted product rubric",
+    "staging": "GitHub Pages artifact plus canonical-origin verification",
+    "source": "live code, direct runtime and parser traces, current project state, game-loop review, application release gate, infrastructure debt sweep, and public-safe internal-tool inventory"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for implementation",
+    "ci": "The last five workflow runs are green; current HEAD is a skip-CI audit checkpoint beyond the last code-bearing tested revision.",
+    "staging": "The configured GitHub Pages health and manifest URLs redirect away from the staging origin and finish at HTTP 403. A naive non-following health request can therefore exit successfully on the redirect while proving nothing.",
+    "cost": "Cost-neutral and cost-content gates allow. Flat-rate plan telemetry remains notional and is not an alarm.",
+    "branding": "Local public branding, legal, footer, and release-provenance tests pass 14/14; the footer manifest covers all seven destinations.",
+    "origin": "The canonical health route returns 404; deploy provenance is 0/7; required HSTS, frame, and content-security headers are absent; email delivery is unverified.",
+    "parity": "Revision-stamped responsive evidence is green in CI, but staging and canonical receipts cannot prove same-revision production parity.",
+    "approval": "No launch or lifecycle-promotion approval is recorded."
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.0,
+    "progression": 8.5,
+    "sessionEngagement": 8.2,
+    "retention": 7.7,
+    "soulFidelity": 8.4,
+    "overall": 8.2,
+    "evidence": "Executable-contract review only. No GAME_LOOP document or anonymized playtest receipts exist, and SOUL is a public-safe placeholder; no claim about fun, churn, pacing, or sentiment is made."
+  },
+  "recommendedMoves": [
+    "Preserve player agency before adding more content: accelerated simulation must stop before any controlled-team draft choice or material offseason stage can be delegated.",
+    "Make desktop and mobile submit the same explicit weekly command envelope so selecting a General Manager choice never advances time as a hidden second action.",
+    "Turn the opening contract into a source-derived one-week prologue that teaches pressure, plan, command, and consequence inside the live game rather than ending at configuration."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Mark the project launch-ready or promote lifecycle posture",
+      "reason": "Deferred honestly: staging redirects into a 403, canonical health is 404, provenance is 0/7, required edge headers and received email proof are absent, and launch approval is not recorded."
+    },
+    {
+      "candidate": "Repair the shared apex host or authoritative lifecycle registry directly",
+      "reason": "Rejected as sibling-owned work. This repository can emit exact evidence and signed transport, but it must not edit another repository to make its own gate green."
+    },
+    {
+      "candidate": "Add generic retention widgets, achievements, or save hooks",
+      "reason": "Rejected as a false premise: saves, return digest, inbox, challenges, dynasty history, replay, exports, rivalry, and epilogues already exist. The verified gaps are agency preservation, intent parity, and first-loop comprehension."
+    },
+    {
+      "candidate": "Claim that the game is fun, well-paced, or retaining players",
+      "reason": "Rejected because no anonymized playtest receipt set exists. Code coverage is not player evidence. A local-only receipt loop is reserved for the innovation pass."
+    },
+    {
+      "candidate": "Rewrite the entire GameSession class or both API adapters in one pass",
+      "reason": "Culled as unsafe decomposition theater. Existing parity tests are valuable, but a full migration is too broad to verify atomically beside the live player-agency defects."
+    },
+    {
+      "candidate": "Install a bundler or paid telemetry service",
+      "reason": "Rejected by the measurement-first, package-trust, cost-neutral, and privacy requirements. No current performance measurement proves a bundler is the optimal intervention."
+    },
+    {
+      "candidate": "Treat a redirecting HTTP 3xx staging response as a green health receipt",
+      "reason": "Rejected by live evidence: following the configured redirect chain ends at HTTP 403. Health requires a same-origin, schema-valid JSON receipt and exact deploy identity."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Player agency / simulation authority / retention",
+      "effortHours": 3.5,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 36.6,
+      "slug": "controlled-draft-agency-checkpoint",
+      "title": "Make accelerated simulation incapable of drafting for the controlled franchise without explicit delegation",
+      "status": "completed",
+      "premise": "The season accelerator repeatedly calls the weekly mutation until the next season. Its checkpoint classifier sees phase, year, General Manager decisions, and commitment receipts, but not offseason pipeline transitions or the controlled team being on the clock. At the draft pipeline stage the engine calls the CPU draft with untilUserPick false, so Resume Season can select the controlled franchise's entire class without a user command.",
+      "evidence": [
+        "public/lib/gameFlow.js:915-959 loops weekly commands until next-year Week 1",
+        "public/lib/simulationCheckpoints.js:32-64 has no pipeline-stage or controlled-pick checkpoint",
+        "src/runtime/GameSession.js:2038-2041 runs the CPU draft with untilUserPick false",
+        "the dashboard draft summary omits team-on-clock and controlled-team-on-clock authority",
+        "existing draft tests cover explicit user and CPU calls but not accelerated-season non-delegation"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Stop the draft pipeline at the controlled team's first pick and add a regression proving the CPU cannot consume it."
+        },
+        "L2": {
+          "effortHours": 3.5,
+          "recipe": "Expose source-derived offseason stage, team-on-clock, and controlled-team-on-clock state; make the draft pipeline run CPU picks only until the controlled pick; checkpoint fast simulation on every offseason stage and controlled pick; suppress Resume when a blocking user action is required; preserve the existing explicit Finish Draft button as the delegation command; add engine, checkpoint, and browser regressions."
+        },
+        "L3": {
+          "effortHours": 6.0,
+          "recipe": "Add per-stage delegation policies with a reviewable receipt showing which offseason decisions were user-made versus explicitly delegated."
+        }
+      },
+      "verification": [
+        "CPU draft stops before every controlled-team pick by default",
+        "accelerated season pauses on each offseason stage transition",
+        "blocking controlled-pick checkpoints offer no blind Resume action",
+        "explicit Finish Draft still delegates and completes",
+        "server and local runtime dashboards expose the same draft authority fields"
+      ],
+      "executionEvidence": "Completed — controlled picks now block CPU draft progression, every offseason stage checkpoints fast simulation, blocking Resume is suppressed, and explicit Finish Draft remains the delegation path; focused draft/checkpoint suites 14/14."
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Mobile parity / command clarity / transactional integrity",
+      "effortHours": 3.0,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 31.0,
+      "slug": "mobile-weekly-intent-parity",
+      "title": "Make mobile and desktop commit one identical, explicit weekly plan",
+      "status": "completed",
+      "premise": "Desktop Advance Week asks for a weekly tactic, resolves any General Manager decision, and then submits one weekly command. Mobile selecting a General Manager option directly posts advance-week with only that choice, so the tap both selects a decision and advances time without tactical intent. The same football week therefore has different semantics by viewport.",
+      "evidence": [
+        "public/app.js:456-478 gathers tactic and General Manager choice before desktop advance",
+        "public/app.js:321-327 posts advance-week immediately from a mobile choice",
+        "public/lib/mobileLoop.js dispatches the choice event separately from its visible Advance Week control",
+        "mobile-loop tests cover cards and pressure but not no-implicit-advance or combined intent",
+        "the shared weekly command already accepts both weeklyTacticOverride and gmDecisionChoice"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Store the mobile General Manager choice locally and require a second explicit Advance action."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Extract one browser weekly-command coordinator; let mobile selection stage a visible pending General Manager choice without mutation; open the same compact tactic chooser on Commit Plan and Advance; submit tactic plus decision in one envelope; clear intent only after authoritative success; route desktop through the same coordinator; add focused tests proving selection alone cannot advance and both surfaces send parity payloads."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Add a pre-commit mobile plan card with reversible tactic/decision edits and a postgame cause-to-outcome receipt tied to the submitted command ID."
+        }
+      },
+      "verification": [
+        "choosing a mobile General Manager option performs no API mutation",
+        "mobile Commit Plan asks for tactical intent and sends one command",
+        "desktop and mobile use the same coordinator and payload fields",
+        "pending intent survives rerender but clears after successful authoritative state",
+        "failure leaves intent available for a safe retry"
+      ],
+      "executionEvidence": "Completed — mobile choices stage without mutation, desktop/mobile share one weekly command coordinator and tactic chooser, intent clears only after success, and parity-focused suites pass 24/24."
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Onboarding / first-session comprehension / progression",
+      "effortHours": 3.0,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 27.6,
+      "slug": "opening-contract-playable-prologue",
+      "title": "Turn the opening contract into a one-week cause-and-consequence prologue",
+      "status": "completed",
+      "premise": "The repaired tutorial persists three real opening choices and renders a truthful receipt, but it ends at Enter the Franchise and hands the player to a dense command surface. It never guides pressure review, weekly tactic, first simulation, or result interpretation, and its scouting copy says Week 2 while the live league starts at Week 1.",
+      "evidence": [
+        "public/lib/tutorialCampaign.js defines three configuration choices and ends after the receipt",
+        "public/lib/tutorialCampaign.js scouting copy says Week 2",
+        "public/lib/tabOverview.js renders static opening effects but no progress or next action",
+        "getDashboardState already exposes the receipt, owner pressure, weekly plan, tactical film, and latest controlled result needed for a source-derived prologue",
+        "start-scenario and browser-wiring tests prove persistence but not first-loop completion"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Correct Week 1 copy and add an Overview call-to-action that invokes the real Advance Week flow."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Derive an opening-contract progress authority from persisted receipt, current phase/week, weekly plan, tactical film, and controlled result; render a three-step pressure-to-plan-to-receipt prologue in the existing card; make its action enter the shared weekly coordinator rather than a tutorial-only simulation; finish on a truthful score, tactic, owner-pressure, and next-decision receipt; add save/restore and browser tests."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Branch the first-week coaching copy by opening identity and mandate while keeping every completion state derived from live receipts rather than tutorial flags."
+        }
+      },
+      "verification": [
+        "tutorial and live league both identify the opening command as Week 1",
+        "prologue state survives save and restore because it derives from league state",
+        "the prologue button uses the production weekly-command path",
+        "completion displays the actual controlled-game result and tactical receipt",
+        "no fabricated completion flag can green the flow"
+      ],
+      "executionEvidence": "Completed — source-derived pressure→plan→receipt state renders actual score, tactic, tactical evidence, and owner heat; CTA delegates to production weekly flow; save/restore and browser suites pass 9/9."
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "Infrastructure / observability honesty / parser consolidation",
+      "effortHours": 1.5,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 29.9,
+      "slug": "single-task-board-parser-authority",
+      "title": "Make every local and portfolio queue consume one task-board parser",
+      "status": "completed",
+      "premise": "The current append-only task board has session tables but no Unified Genius List, Now, or Next heading. The shared local parser intentionally falls back to the whole document and sees rows, while the cross-repo parser only reads those named sections and reports zero. A third bespoke parser in the genius cache independently derives status. Queue observability can therefore disagree on the same file.",
+      "evidence": [
+        "context/TASK_BOARD.md has no Unified Genius List, Now, or Next heading",
+        "scripts/lib/task-board.mjs falls back to parsing all markdown",
+        "scripts/lib/cross-repo-tasks.mjs uses a separate section-only parser",
+        "scripts/cache-genius-list.mjs contains a third table/status parser",
+        "startup brief imports both parser families for different signal blocks"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Make cross-repo aggregation import the shared parser and add a live-format fixture."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Version and extend scripts/lib/task-board.mjs as the sole row/status normalizer; adapt cross-repo aggregation and genius-cache joins to its normalized output; preserve human-blocked rows and append-only duplicate history semantics; add fixture tests from the current session-table format plus local/cross-repo/cache count invariants."
+        },
+        "L3": {
+          "effortHours": 3.0,
+          "recipe": "Emit a normalized task-board JSON cache with source digest and make every brief, doctor, and portfolio reader reject mismatched digests."
+        }
+      },
+      "verification": [
+        "shared and cross-repo parsers return the same live rows",
+        "latest duplicate slug status wins without deleting history",
+        "human-blocked entries remain classified blocked",
+        "genius cache does not resurrect completed rows",
+        "startup portfolio counts are nonzero when the current board has open work"
+      ],
+      "executionEvidence": "Completed — one versioned parser now feeds local, cross-repo, and Genius cache readers with latest-status dedupe and blocked-row preservation; focused parser/studio suites pass 22/22."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Release infrastructure / identity / staging evidence",
+      "effortHours": 2.0,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 24.9,
+      "slug": "same-origin-staging-receipt-authority",
+      "title": "Replace redirect-success staging checks with same-origin, schema-valid deploy receipts",
+      "status": "completed",
+      "premise": "The local manifest names a nonexistent repository and declares no staging surface, while project status names the real GitHub Pages URL. A non-following health request exits successfully on the URL's redirect, but following it reaches a different origin and returns 403. Existing launch evidence correctly blocks the canonical host, yet no project-local staging command rejects cross-origin redirects and validates health plus deploy identity as one receipt.",
+      "evidence": [
+        "context/STUDIO_MANIFEST.json identity.repo and GitHub URL disagree with git remote and public/public-identity.json",
+        "context/STUDIO_MANIFEST.json staging surfaces are empty while context/PROJECT_STATUS.json has a GitHub Pages staging URL",
+        "configured staging /_health and /deploy-manifest.json redirect away and finish HTTP 403",
+        "scripts/launch-evidence-report.mjs validates canonical launch truth but does not expose a same-origin staging mode",
+        "public deploy artifacts already carry source revision, repository identity, asset fingerprint, and launchReady false fields"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Correct local repository identity and make the staging check follow redirects and fail on cross-origin transfer."
+        },
+        "L2": {
+          "effortHours": 2.0,
+          "recipe": "Reconcile local manifest repository and staging metadata with tracked truth; add a fixture-testable staging evidence command that requires every redirect to remain on the configured origin, parses health JSON, joins deploy-manifest revision/repository/style identity, and exits nonzero on HOLD; wire it into ops/package scripts and keep the live result red until a real preview exists."
+        },
+        "L3": {
+          "effortHours": 4.0,
+          "recipe": "Have the Pages workflow publish an immutable preview artifact receipt and attest it against the later production receipt before promotion."
+        }
+      },
+      "verification": [
+        "local manifest repository matches the actual remote",
+        "same-origin fixture with matching receipts passes",
+        "cross-origin redirect fixture fails even when the first response is 3xx",
+        "mismatched revision, repository, style asset, or launchReady claim fails",
+        "live staging remains an honest nonzero HOLD until infrastructure changes"
+      ],
+      "executionEvidence": "Completed — manifest identity reconciled and fixture-tested same-origin health/deploy receipt command wired through ops/npm; live command remains an honest nonzero HOLD because staging redirects cross-origin."
+    }
+  ],
+  "innovationPass": {
+    "generatedPack": "docs/INNOVATION_PACK.md",
+    "status": "exhausted",
+    "implemented": [
+      "local-playtest-receipt-loop",
+      "truthful-bundle-fallback",
+      "retire-dead-v5-renderer-path"
+    ],
+    "deferredEvidenceFamily": [
+      "sparked-flip",
+      "launch/SPARKED email and live-origin evidence",
+      "launch/SPARKED evidence",
+      "launch/SPARKED flip"
+    ],
+    "evidence": "Genius cache 0 open; 3 expansion candidates implemented; launch variants deferred on current external evidence without fabrication."
+  }
+}

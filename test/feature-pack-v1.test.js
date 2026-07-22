@@ -50,6 +50,9 @@ test("feature pack v1: offseason pipeline progresses and comp picks generate", (
 
   let guard = 0;
   while (session.phase === "offseason" && guard < 20) {
+    if (session.getOffseasonPipeline().stage === "draft" && session.getDraftAuthority().userActionRequired) {
+      session.runCpuDraft({ untilUserPick: false }); // Explicit delegation for this pipeline-completion fixture.
+    }
     session.advanceWeek();
     guard += 1;
   }

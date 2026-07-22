@@ -20,58 +20,88 @@ function normalizeStatus(statusText = '') {
   return text.trim() || 'open';
 }
 
-export function parseUnifiedItems(markdown) {
-  const section = extractSection(markdown, 'Unified Genius List') || String(markdown || '');
+function cleanCell(value = '') {
+  return String(value || '').replace(/\*\*/g, '').replace(/`/g, '').trim();
+}
 
-  const items = [];
-  for (const line of section.split(/\r?\n/)) {
-    if (!/^\|\s*[\d.]+\s*\|/.test(line)) continue;
-    const cells = line
-      .split('|')
-      .slice(1, -1)
-      .map((cell) => cell.trim());
-    if (cells.length < 3 || cells[0] === '#') continue;
+export function taskItemKey(value = '') {
+  return cleanCell(value)
+    .split(/\s+—\s+/)[0]
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
 
-    let rank = cells[0];
-    let tier = '';
-    let category = '';
-    let status = '';
-    let effort = '';
-    let item = '';
+function isTableHeader(cells) {
+  const first = cleanCell(cells[0]).toLowerCase();
+  return !first || first === '#' || first === 'item' || first === 'rank' || /^:?-{2,}:?$/.test(first);
+}
 
-    if (cells.length === 3) {
-      [, item, status] = cells;
-      category = 'Task Board';
-    } else {
-      [rank, tier, category, status = '', effort = '', item = category] = cells;
-    }
-
-    const titleMatch = item.match(/\*\*(.+?)\*\*/);
-    items.push({
-      rank,
-      rankNumber: parseFloat(rank),
-      tier,
-      category,
-      status: normalizeStatus(status),
-      statusText: status,
-      effort,
-      item: item.replace(/\*\*/g, ''),
-      rawItem: item,
-      title: (titleMatch ? titleMatch[1] : item).replace(/\*\*/g, '').replace(/\s+/g, ' ').trim(),
-    });
+function parseTableRow(line, fallbackRank) {
+  if (!/^\s*\|/.test(line)) return null;
+  const cells = line.split('|').slice(1, -1).map((cell) => cell.trim());
+  if (cells.length < 2 || isTableHeader(cells)) return null;
+  let rank = String(fallbackRank);
+  let tier = '';
+  let category = 'Task Board';
+  let status = '';
+  let effort = '';
+  let item = '';
+  if (/^[\d.]+$/.test(cells[0])) {
+    rank = cells[0];
+    if (cells.length >= 6) [, tier, category, status = '', effort = '', item = ''] = cells;
+    else [, item = '', status = ''] = cells;
+  } else {
+    [item = '', status = ''] = cells;
   }
+  const title = cleanCell(item).replace(/\s+/g, ' ').trim();
+  if (!title) return null;
+  return {
+    rank,
+    rankNumber: Number.parseFloat(rank) || fallbackRank,
+    tier,
+    category,
+    status: normalizeStatus(status),
+    statusText: status,
+    effort,
+    item: title,
+    rawItem: item,
+    title,
+    key: taskItemKey(title)
+  };
+}
+
+export function parseTaskBoardItems(markdown, { dedupe = true, includeHuman = true } = {}) {
+  const rows = [];
+  for (const line of String(markdown || '').split(/\r?\n/)) {
+    const parsed = parseTableRow(line, rows.length + 1);
+    if (parsed) rows.push(parsed);
+  }
+  const normalized = dedupe
+    ? [...rows.reduce((latest, item) => {
+        if (item.key) latest.set(item.key, item);
+        return latest;
+      }, new Map()).values()]
+    : rows;
+  if (!includeHuman) return normalized;
   const humanItems = parseHumanItems(markdown).map((item, index) => ({
     rank: `H${index + 1}`,
     rankNumber: 1000 + index,
     tier: 'human',
     category: 'Human Action Required',
     status: 'blocked',
+    statusText: 'human-blocked',
     effort: '',
     item: item.title,
     rawItem: item.raw,
     title: item.title,
+    key: taskItemKey(item.title)
   }));
-  return [...humanItems, ...items];
+  return [...humanItems, ...normalized];
+}
+
+export function parseUnifiedItems(markdown) {
+  return parseTaskBoardItems(markdown);
 }
 
 export function parseHumanItems(markdown) {

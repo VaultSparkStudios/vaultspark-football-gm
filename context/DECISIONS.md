@@ -401,3 +401,32 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Pattern established:** New browser routes land atomically with manifest metadata, both adapter handlers, response attestation, and a representative parity test. Adapter-local persistence is explicit; it never authorizes fallback from an established server GameSession.
 
 ---
+---
+
+## 2026-07-21 — Agency-preserving progression and explicit automation
+
+**Decision:** Generic week/offseason advancement stops before any controlled-team draft selection. `Finish Draft` and the named `simulateOneSeason`/multi-season commands are explicit delegation boundaries and may complete controlled picks; tests invoking those automation paths must declare that delegation.
+
+**Rationale:** A Resume control must never silently choose for the player, while an explicit full-season simulation command is unusable if it cannot complete the season it names. Naming the delegation boundary preserves both agency and deterministic simulation tooling.
+
+**Pattern established:** Default progression preserves agency; automation that delegates consequential choices must say so in its command semantics and regression fixtures.
+
+---
+
+## 2026-07-21 — Playtest evidence is explicit, local, and non-causal
+
+**Decision:** Playtest receipts collect only four bounded ratings, public-safe franchise context, and an optional short note. They stay in local storage until the player explicitly copies or attaches one; they contain no account identifier or save payload.
+
+**Rationale:** Executable coverage cannot prove fun, pace, comprehension, or return intent. A zero-backend opt-in receipt creates a real future evidence path without inventing telemetry, new custody, or variable cost.
+
+**Pattern established:** When adoption evidence is absent, ship an explicit evidence instrument and keep impact scores at zero until real receipts arrive.
+
+---
+
+## 2026-07-21 — Release success requires same-origin identity evidence
+
+**Decision:** HTTP redirects or route availability alone cannot green staging. Health, deploy manifest, and hashed asset must remain on the configured origin and agree on revision/repository/asset identity; unreachable data is HOLD, never an empty success.
+
+**Rationale:** The configured Pages URL redirected into an unrelated failing surface while naive status handling appeared successful. Source-derived release truth needs one joined receipt, not independent optimistic checks.
+
+**Pattern established:** Availability evidence and deploy-identity evidence are one fail-closed contract.

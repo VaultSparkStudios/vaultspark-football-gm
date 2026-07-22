@@ -392,3 +392,11 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Verification is direct and real: Node 401/401 across five named shards, Playwright 18/18, Pages build/smoke, focused API parity 3/3, and doctor `blockingFailing: 0`.
 - Two early wrapper timeouts were retained as non-evidence and superseded only by direct shard exits; no dependency, paid service, sibling-tree edit, launch flip, or fabricated readiness evidence was introduced.
 - CDR reviewed: no new public entry; the founder supplied execution/quality instructions, while detailed operating records remain outside this public repository.
+## 2026-07-21 — Session 52 continuous arc
+
+- Completed pull-first `/start`, live infrastructure-weighted product/game/release audit, all five ranked implementations, three second-order innovations, and canonical closeout verification.
+- Shipped draft-agency checkpoints, shared mobile/desktop weekly intent, live opening-contract prologue, one task-board parser authority, and same-origin staging receipts.
+- Shipped local playtest receipt capture/export, truthful build fallback, and dead startup-v5 removal.
+- Root-fixed three legacy fixtures/automation paths exposed by the new draft agency boundary; full direct suite is 423/423.
+- Verification: Playwright 18/18, Pages build/smoke, browser modules 41, responsive captures 20/20, secrets/sanitization 0, sitemap 10/10, cost-neutral allow, doctor blockingFailing 0.
+- Release HOLD preserved on canonical health/headers/staging/email/approval/registry evidence; no sibling edit or fabricated proof.

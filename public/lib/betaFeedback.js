@@ -15,6 +15,80 @@ import { exportSummary, isOptedIn } from "./analytics.js";
 import { buildLaunchReadinessRows } from "./tabSettings.js";
 
 const REPO_ISSUE_BASE = "https://github.com/VaultSparkStudios/vaultspark-football-gm/issues/new";
+export const PLAYTEST_RECEIPT_SCHEMA_VERSION = "1.0";
+export const PLAYTEST_RECEIPT_STORAGE_KEY = "vsfgm:playtest-receipts:v1";
+const PLAYTEST_RECEIPT_LIMIT = 20;
+
+function boundedRating(value, label) {
+  const rating = Number(value);
+  if (!Number.isInteger(rating) || rating < 1 || rating > 5) throw new Error(`${label} must be rated from 1 to 5.`);
+  return rating;
+}
+
+function publicSafeNote(value) {
+  return String(value || "").replace(/[\u0000-\u001f\u007f]/g, " ").replace(/\s+/g, " ").trim().slice(0, 280);
+}
+
+export function buildLocalPlaytestReceipt(input = {}, context = {}) {
+  const createdAt = input.createdAt || new Date().toISOString();
+  const teamId = String(context.teamId || "unknown").slice(0, 12);
+  return {
+    schemaVersion: PLAYTEST_RECEIPT_SCHEMA_VERSION,
+    kind: "local-playtest-receipt",
+    receiptId: `playtest-${createdAt}-${teamId}`,
+    createdAt,
+    context: {
+      year: Number(context.year) || null,
+      week: Number(context.week) || null,
+      phase: String(context.phase || "unknown").slice(0, 32),
+      teamId,
+      openingContractStatus: String(context.openingContractStatus || "not-observed").slice(0, 24)
+    },
+    ratings: {
+      clarity: boundedRating(input.clarity, "Clarity"),
+      agency: boundedRating(input.agency, "Agency"),
+      pace: boundedRating(input.pace, "Pace"),
+      returnIntent: boundedRating(input.returnIntent, "Return intent")
+    },
+    note: publicSafeNote(input.note),
+    privacy: {
+      localOnlyUntilShared: true,
+      personalIdentifiersCollected: false,
+      savePayloadIncluded: false
+    }
+  };
+}
+
+export function loadLocalPlaytestReceipts(storage = globalThis.localStorage) {
+  try {
+    const parsed = JSON.parse(storage?.getItem?.(PLAYTEST_RECEIPT_STORAGE_KEY) || "[]");
+    return Array.isArray(parsed)
+      ? parsed.filter((entry) => entry?.schemaVersion === PLAYTEST_RECEIPT_SCHEMA_VERSION && entry?.kind === "local-playtest-receipt").slice(0, PLAYTEST_RECEIPT_LIMIT)
+      : [];
+  } catch {
+    return [];
+  }
+}
+
+export function saveLocalPlaytestReceipt(receipt, storage = globalThis.localStorage) {
+  if (receipt?.schemaVersion !== PLAYTEST_RECEIPT_SCHEMA_VERSION || receipt?.kind !== "local-playtest-receipt") {
+    throw new Error("A valid local playtest receipt is required.");
+  }
+  const receipts = [receipt, ...loadLocalPlaytestReceipts(storage).filter((entry) => entry.receiptId !== receipt.receiptId)].slice(0, PLAYTEST_RECEIPT_LIMIT);
+  storage?.setItem?.(PLAYTEST_RECEIPT_STORAGE_KEY, JSON.stringify(receipts));
+  return receipts;
+}
+
+export function buildLocalPlaytestExport(receipts = []) {
+  const valid = receipts.filter((entry) => entry?.schemaVersion === PLAYTEST_RECEIPT_SCHEMA_VERSION && entry?.kind === "local-playtest-receipt").slice(0, PLAYTEST_RECEIPT_LIMIT);
+  return {
+    schemaVersion: PLAYTEST_RECEIPT_SCHEMA_VERSION,
+    kind: "local-playtest-receipt-pack",
+    count: valid.length,
+    receipts: valid,
+    privacy: "Explicit local receipts only; no account identifier or save payload is included."
+  };
+}
 
 /**
  * Build a prefilled GitHub new-issue URL.
@@ -34,7 +108,13 @@ export function buildFeedbackIssueUrl(ctx = {}) {
     "_Auto-attached game context:_",
     `- Season: ${ctx.year ?? "?"} · Week ${ctx.week ?? "?"} · ${ctx.phase ?? "?"}`,
     `- Screen: ${ctx.tab ?? "?"} · Runtime: ${ctx.runtimeMode ?? "?"}`,
-    ...fingerprintRows.map((row) => `- Franchise/${row.label}: ${row.value}`),
+    ...fingerprintRows.map((row) => `- Franchise/${row.label}: ${row.value}`),    ...(ctx.playtestReceipt ? [
+      `- Playtest/Clarity: ${ctx.playtestReceipt.ratings.clarity}/5`,
+      `- Playtest/Agency: ${ctx.playtestReceipt.ratings.agency}/5`,
+      `- Playtest/Pace: ${ctx.playtestReceipt.ratings.pace}/5`,
+      `- Playtest/Return intent: ${ctx.playtestReceipt.ratings.returnIntent}/5`,
+      ...(ctx.playtestReceipt.note ? [`- Playtest/Note: ${ctx.playtestReceipt.note}`] : [])
+    ] : []),
     ...readinessRows.map((row) => `- Readiness/${row.area}: ${row.status} — ${row.detail}`),
     ctx.analyticsAttached
       ? "- Analytics digest: copied to clipboard — paste below if you want to share it."
@@ -88,6 +168,7 @@ function gatherContext() {
     phase: d.phase,
     tab: state.activeTab || "unknown",
     runtimeMode,
+    playtestReceipt: loadLocalPlaytestReceipts()[0] || null,
     franchiseFingerprint: buildFeedbackContextFingerprint({
       dashboard: state.dashboard,
       newsRows: state.newsRows
@@ -182,11 +263,54 @@ export function mountBetaFeedback() {
       <h2>Tell the Commissioner</h2>
       <p class="small" style="opacity:0.75">Found a bug? Have an idea? Your report goes straight to the dev board —
         game context is attached automatically, never any personal data.</p>
-      <button id="betaFeedbackBtn" class="btn btn-accent" data-testid="beta-feedback-btn">Send Feedback</button>`;
+      <button id="betaFeedbackBtn" class="btn btn-accent" data-testid="beta-feedback-btn">Send Feedback</button>
+      <details class="playtest-receipt-panel">
+        <summary>Record a private playtest receipt</summary>
+        <p class="small">Nothing is sent automatically. Save a compact anonymous receipt locally, then choose whether to copy or attach it to feedback.</p>
+        <div class="playtest-rating-grid">
+          ${[["clarity", "Loop clarity"], ["agency", "Decision agency"], ["pace", "Pacing"], ["returnIntent", "Want another session"]].map(([id, label]) => `
+            <label>${label}<select id="playtest-${id}"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select></label>`).join("")}
+        </div>
+        <label>One useful moment or friction<textarea id="playtest-note" maxlength="280" rows="3" placeholder="Optional; keep it public-safe."></textarea></label>
+        <div class="row compact"><button id="savePlaytestReceiptBtn" type="button">Save Local Receipt</button><button id="copyPlaytestReceiptsBtn" type="button">Copy Receipt Pack</button><span id="playtestReceiptCount" class="small"></span></div>
+      </details>`;
     settingsTab.insertBefore(panel, settingsTab.firstElementChild);
     document.getElementById("betaFeedbackBtn")?.addEventListener("click", () => {
       openFeedback().catch(reportFeedbackError);
+    });    const refreshReceiptCount = () => {
+      const count = loadLocalPlaytestReceipts().length;
+      const target = document.getElementById("playtestReceiptCount");
+      if (target) target.textContent = `${count} local receipt${count === 1 ? "" : "s"}`;
+    };
+    document.getElementById("savePlaytestReceiptBtn")?.addEventListener("click", () => {
+      try {
+        const d = state.dashboard || {};
+        const value = (id) => document.getElementById(`playtest-${id}`)?.value;
+        const receipt = buildLocalPlaytestReceipt({
+          clarity: value("clarity"), agency: value("agency"), pace: value("pace"), returnIntent: value("returnIntent"),
+          note: document.getElementById("playtest-note")?.value
+        }, {
+          year: d.currentYear, week: d.currentWeek, phase: d.phase, teamId: d.controlledTeamId,
+          openingContractStatus: d.openingContractProgress?.status
+        });
+        saveLocalPlaytestReceipt(receipt);
+        refreshReceiptCount();
+        showToast("Private playtest receipt saved locally.");
+      } catch (error) {
+        reportFeedbackError(error);
+      }
     });
+    document.getElementById("copyPlaytestReceiptsBtn")?.addEventListener("click", async () => {
+      const pack = buildLocalPlaytestExport(loadLocalPlaytestReceipts());
+      if (!pack.count) return showToast("Record a playtest receipt before exporting.");
+      try {
+        await navigator.clipboard.writeText(JSON.stringify(pack, null, 2));
+        showToast(`${pack.count} private playtest receipt${pack.count === 1 ? "" : "s"} copied.`);
+      } catch (error) {
+        reportFeedbackError(error);
+      }
+    });
+    refreshReceiptCount();
   }
 
   const fmModal = document.getElementById("franchiseMomentModal");

@@ -899,7 +899,7 @@ export async function advanceWeeksSequential(totalWeeks, { digest: initialDigest
       digest = appendSimulationDigest(digest, { previous, next: response.state, checkpoint });
       if (checkpoint.shouldPause) {
         const remaining = safeWeeks - completed;
-        renderSimulationCheckpoint(checkpoint, digest, remaining > 0 ? { mode: "weeks", remaining, digest } : null);
+        renderSimulationCheckpoint(checkpoint, digest, remaining > 0 && !checkpoint.blocking ? { mode: "weeks", remaining, digest } : null);
         checkpointed = true;
         break;
       }
@@ -948,7 +948,7 @@ export async function advanceSeasonSequential({ startYear: requestedStartYear = 
         response.state.phase === "regular-season" &&
         response.state.currentWeek === 1;
       if (checkpoint.shouldPause) {
-        renderSimulationCheckpoint(checkpoint, digest, completedSeason ? null : {
+        renderSimulationCheckpoint(checkpoint, digest, completedSeason || checkpoint.blocking ? null : {
           mode: "season", startYear, steps, digest
         });
         checkpointed = true;

@@ -295,3 +295,11 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Test truth: direct canonical Node evidence is 401/401 and Playwright is 18/18. Two short wrapper timeouts are non-evidence and are superseded only by direct named-shard exits; Pages build/smoke and focused API parity 3/3 also pass.
 - Launch truth unchanged: live edge headers, received on-domain email evidence, current apex/deploy provenance, and authoritative registry reconciliation remain unverified, so no SPARKED/launch claim is made.
 - Cost truth: all Session 51 work is dependency-free, deterministic/local or static-host-safe, and zero variable cost; flat-rate plan cost remains notional.
+2026-07-21 note (Session 52):
+- Interactive fast simulation and direct offseason progression now stop before controlled-team draft choices; only explicit Finish Draft or the named whole-season simulation command delegates them.
+- Opening-contract completion is derived from persisted league receipt, weekly plan, controlled result, tactical film, and current owner expectation; no tutorial completion flag can fabricate progress.
+- Mobile General Manager choice selection is non-mutating; both mobile and desktop use one weekly command coordinator.
+- All task-board queue readers share one parser. The latest audit cache is exhausted at 0 open / 5 closed.
+- The optional bundle script no longer exits successfully without building; its tested fallback invokes the canonical Pages builder and propagates failure.
+- Fresh public sanitization is 0 critical / 0 warning. The portfolio release gate currently reads a stale 1-critical packet and expects a private CDR file that this public repository intentionally forbids.
+- Launch evidence remains blocked: canonical `/_health` 404, incomplete edge headers, unreachable same-origin staging receipts, absent received-email proof, absent approval, and registry SPARKED/local FORGE drift.

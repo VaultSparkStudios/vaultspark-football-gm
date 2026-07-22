@@ -184,7 +184,7 @@ test("mobile overlay clears stale pending decisions when refresh fails", () => {
   assert.match(appSource, /observeBackgroundTask\([\s\S]*operation: "pending-gm-decision"[\s\S]*onError: \(\) => \{\s*if \(decisionSnapshotKey !== mobileDecisionSnapshotKey\(\)\) return;\s*state\.mobilePendingDecision = null;\s*if \(isMobileModeEnabled\(\)\) renderMobileOverlay\(state, advanceFromMobile\);/s);
 });
 
-test("mobile GM decision choices are rendered and submitted through the app shell", () => {
+test("mobile GM decision choices are rendered, staged, and committed through the shared weekly shell", () => {
   const mobileSource = fs.readFileSync(new URL("../public/lib/mobileLoop.js", import.meta.url), "utf8");
   const appSource = fs.readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
 
@@ -196,8 +196,9 @@ test("mobile GM decision choices are rendered and submitted through the app shel
   assert.match(appSource, /checkAndShowGmDecision\(\)\s*\.then\(\(result\) =>/);
   assert.match(appSource, /result\?\.status === "chosen"/);
   assert.match(appSource, /submitMobileGmDecisionChoice/);
-  assert.match(appSource, /gmDecisionChoice: choice/);
-  assert.match(appSource, /Recording mobile GM decision/);
+  assert.match(appSource, /state\.mobilePendingDecisionChoice = \{ \.\.\.choice \}/);
+  assert.match(appSource, /advanceOneWeek\(\{ gmDecisionChoice: state\.mobilePendingDecisionChoice \}\)/);
+  assert.match(appSource, /Committing weekly plan/);
 });
 
 

@@ -13,6 +13,7 @@ function parseArgs(argv = process.argv.slice(2)) {
     else if (argv[index] === "--expected") args.expected = argv[++index];
     else if (argv[index] === "--fixture") args.fixture = argv[++index];
     else if (argv[index] === "--json") args.json = true;
+    else if (argv[index] === "--same-origin") args.sameOrigin = true;
   }
   return args;
 }
@@ -25,7 +26,15 @@ function parseBody(result) {
   try { return JSON.parse(result?.body || ""); } catch { return null; }
 }
 
-export async function buildReleaseProvenanceReport({ expected, baseUrl, fixture = null, probe = probeWithRedirects } = {}) {
+function stayedOnOrigin(result, origin) {
+  const chain = Array.isArray(result?.chain) ? result.chain : [];
+  if (!chain.length) return false;
+  return chain.every((entry) => {
+    try { return new URL(entry.url).origin === origin; } catch { return false; }
+  });
+}
+
+export async function buildReleaseProvenanceReport({ expected, baseUrl, fixture = null, probe = probeWithRedirects, requireSameOrigin = false } = {}) {
   const origin = String(baseUrl || expected?.canonicalOrigin || "").replace(/\/+$/, "");
   const fetchRoute = async (route) => fixture?.routes?.[route] || probe(`${origin}${route}`, 7000);
   const healthResult = await fetchRoute("/_health");
@@ -34,7 +43,13 @@ export async function buildReleaseProvenanceReport({ expected, baseUrl, fixture 
   const assetResult = await fetchRoute(assetRoute);
   const liveHealth = parseBody(healthResult);
   const liveManifest = parseBody(manifestResult);
+  const sameOriginChecks = requireSameOrigin ? [
+    { name: "health stayed on staging origin", ok: stayedOnOrigin(healthResult, new URL(origin).origin) },
+    { name: "manifest stayed on staging origin", ok: stayedOnOrigin(manifestResult, new URL(origin).origin) },
+    { name: "style asset stayed on staging origin", ok: stayedOnOrigin(assetResult, new URL(origin).origin) }
+  ] : [];
   const checks = [
+    ...sameOriginChecks,
     { name: "health reachable", ok: healthResult?.ok === true },
     { name: "manifest reachable", ok: manifestResult?.ok === true },
     { name: "style asset reachable", ok: assetResult?.ok === true },
@@ -59,7 +74,7 @@ async function main() {
   const args = parseArgs();
   const expected = await readJson(args.expected);
   const fixture = args.fixture ? await readJson(args.fixture) : null;
-  const report = await buildReleaseProvenanceReport({ expected, baseUrl: args.baseUrl, fixture });
+  const report = await buildReleaseProvenanceReport({ expected, baseUrl: args.baseUrl, fixture, requireSameOrigin: args.sameOrigin === true });
   console.log(args.json ? JSON.stringify(report, null, 2) : `${report.summary.status.toUpperCase()} — ${report.summary.checksPassed}/${report.summary.checksTotal} provenance checks`);
   process.exitCode = report.summary.status === "verified" ? 0 : 2;
 }

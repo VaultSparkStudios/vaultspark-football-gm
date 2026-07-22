@@ -32,6 +32,7 @@ export const SHARDS = {
     "test/challenge-codes.test.js",
     "test/create-api-client.test.js",
     "test/deterministic-ids.test.js",
+    "test/draft-agency.test.js",
     "test/draft-war-room.test.js",
     "test/file-save-store.test.js",
     "test/fast-sim-checkpoints.test.js",
@@ -43,7 +44,9 @@ export const SHARDS = {
     "test/launch-readiness.test.js",
     "test/local-api-runtime.test.js",
     "test/mobile-loop.test.js",
+    "test/mobile-weekly-intent.test.js",
     "test/modal-manager.test.js",
+    "test/opening-contract-prologue.test.js",
     "test/player-profile-narrative.test.js",
     "test/potential-visibility.test.js",
     "test/return-digest.test.js",
@@ -86,8 +89,11 @@ export const SHARDS = {
     "test/lifecycle-coherence.test.js",
     "test/public-compliance.test.js",
     "test/release-provenance.test.js",
+    "test/session52-innovations.test.js",
+    "test/staging-receipt.test.js",
     "test/shard-coverage.test.js",
-    "test/studio-protocol-smoke.test.js"
+    "test/studio-protocol-smoke.test.js",
+    "test/task-board-parser-authority.test.js"
   ]
 };
 

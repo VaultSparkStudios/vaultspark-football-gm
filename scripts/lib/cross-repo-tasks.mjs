@@ -8,6 +8,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { parseTaskBoardItems } from './task-board.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const STUDIO_ROOT = path.resolve(__dirname, '..', '..');
@@ -32,58 +33,16 @@ function tierFromCell(cell) {
 }
 
 export function parseTaskBoard(content) {
-  const items = [];
-  const unifiedSection = extractSection(content, 'Unified Genius List');
-  if (unifiedSection) {
-    const rows = unifiedSection.split(/\r?\n/).filter(l => /^\|\s*[\d.]+\s*\|/.test(l));
-    for (const row of rows) {
-      const cells = row.split('|').map(c => c.trim());
-      if (cells.length < 7) continue;
-      const [, rank, tierCell, cat, status, effort, item] = cells;
-      const tier = tierFromCell(tierCell);
-      const titleMatch = item.match(/\*\*(.+?)\*\*/);
-      const title = (titleMatch ? titleMatch[1] : item).slice(0, 120);
-      const isDone = /done/i.test(status) || /^done/i.test(status) || /✅/.test(tierCell);
-      items.push({
-        rank: parseFloat(rank),
-        tier,
-        cat: (cat || '').toLowerCase(),
-        status: (status || '').toLowerCase(),
-        effort,
-        title,
-        source: 'unified',
-        done: isDone,
-      });
-    }
-  }
-
-  // Fallback: legacy Now/Next buckets for repos that have not adopted the unified table.
-  if (items.length === 0) {
-    const nowLines = extractSection(content, 'Now').split(/\r?\n/).filter(l => /^- \[ \]/.test(l));
-    const nextLines = extractSection(content, 'Next').split(/\r?\n/).filter(l => /^- \[ \]/.test(l));
-    nowLines.forEach((l, i) => items.push({
-      rank: i + 1,
-      tier: 'critical',
-      cat: 'legacy',
-      status: 'unblocked',
-      effort: '',
-      title: l.replace(/^- \[ \]\s*/, '').replace(/\*\*/g, '').slice(0, 120),
-      source: 'legacy-now',
-      done: false,
-    }));
-    nextLines.forEach((l, i) => items.push({
-      rank: 100 + i,
-      tier: 'high',
-      cat: 'legacy',
-      status: 'unblocked',
-      effort: '',
-      title: l.replace(/^- \[ \]\s*/, '').replace(/\*\*/g, '').slice(0, 120),
-      source: 'legacy-next',
-      done: false,
-    }));
-  }
-
-  return items;
+  return parseTaskBoardItems(content).map((item) => ({
+    rank: item.rankNumber,
+    tier: tierFromCell(item.tier),
+    cat: String(item.category || '').toLowerCase(),
+    status: item.status,
+    effort: item.effort,
+    title: item.title.slice(0, 120),
+    source: 'shared-task-board-parser',
+    done: item.status === 'done'
+  }));
 }
 
 function classifyStatus(s) {

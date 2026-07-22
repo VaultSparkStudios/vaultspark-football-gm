@@ -15,7 +15,8 @@ const dispatch = {
   "brief": ["scripts/render-startup-brief.mjs"],
   "doctor": ["scripts/doctor.mjs"],
   "innovation-pack": ["scripts/generate-innovation-pack.mjs"],
-  "launch-evidence": ["scripts/launch-evidence-report.mjs"]
+  "launch-evidence": ["scripts/launch-evidence-report.mjs"],
+  "staging-evidence": ["scripts/verify-staging-receipt.mjs"]
 };
 
 const target = dispatch[command];

@@ -665,3 +665,24 @@ Source: `docs/AUDIT_2026-07-21_SESSION51.json`.
 | dual-runtime-route-authority | Done — 111 contracts cover 140 browser calls and both adapters; all 26 enabled server gaps are closed; live shape/state parity passes 3/3; rewind and DELETE CORS drift are fixed |
 | opening-contract-response-attestation | Done — first-run receipt/state success shape now fails closed and passes live server/static parity in the 3-test route-contract suite |
 | launch/SPARKED evidence | Deferred honestly — live staging/origin/email/edge/approval/registry evidence remains incomplete and sibling-owned where noted |
+## Session 52 — Agency, Command Parity, Evidence Authority, and Playtest Truth (2026-07-21)
+
+Source: `docs/AUDIT_2026-07-21_SESSION52.json` plus generated `docs/INNOVATION_PACK.md`.
+
+| Item | Status |
+|---|---|
+| controlled-draft-agency-checkpoint | Done — accelerated simulation stops at controlled picks and offseason stages; explicit Finish Draft remains the only delegation path |
+| mobile-weekly-intent-parity | Done — mobile stages decisions without mutation and shares the desktop tactic-plus-decision weekly command coordinator |
+| opening-contract-playable-prologue | Done — source-derived pressure→plan→actual-result receipt survives save/restore and uses the production weekly flow |
+| single-task-board-parser-authority | Done — local, cross-repo, and Genius cache readers share one normalized latest-status authority |
+| same-origin-staging-receipt-authority | Done — fixture-tested staging command rejects unreachable/cross-origin or identity-mismatched receipts; live staging remains red |
+| local-playtest-receipt-loop | Done — explicit 1–5 clarity/agency/pace/return receipts stay local, bounded, anonymous, exportable, and attach only by player choice |
+| truthful-bundle-fallback | Done — absent esbuild now executes and verifies canonical Pages build instead of exiting 0 without an artifact |
+| retire-dead-v5-renderer-path | Done — removed two branches to nonexistent render-startup-brief-v5.mjs and locked the invariant in tests |
+| latest-audit-follow-through | Done — live code, focused tests, audit execution log, and Genius cache agree at 0 open audited items |
+| Pages custom-domain cert remediation | Done — stale June certificate diagnosis superseded; current blocker is unreachable revision-stamped staging evidence, not the old certificate claim |
+| vendored-mirror-sync | Done — rejected on evidence; sibling mirror is not the canonical served product and is not edited to make this repo green |
+| sparked-flip | Deferred honestly — no reachable same-origin staging receipt, current canonical provenance/edge evidence, real received-message receipt, or founder launch approval |
+| launch/SPARKED email and live-origin evidence | Deferred honestly — Brevo credential files exist, but inbound mailbox connection/verification is an interactive provider flow and no received-message proof exists; no fabrication |
+
+**Focused verification:** parser 22/22; draft/checkpoint 14/14; mobile/browser 24/24; opening prologue/start scenario 9/9; playtest/feedback/studio innovation 31/31; canonical bundle fallback produced the Pages artifact with direct exit 0.

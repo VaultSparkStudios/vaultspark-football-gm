@@ -68,7 +68,8 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
   const decisionDeck = buildMobileDecisionDeck({
     dashboard: d,
     newsRows: state.newsRows || [],
-    pendingDecision: state.mobilePendingDecision || null
+    pendingDecision: state.mobilePendingDecision || null,
+    pendingChoice: state.mobilePendingDecisionChoice || null
   });
 
   overlay.innerHTML = `
@@ -115,7 +116,7 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
       </div>
 
       <div class="ml-actions">
-        <button class="ml-btn primary" id="mlAdvanceWeekBtn">⏭ Advance Week</button>
+        <button class="ml-btn primary" id="mlAdvanceWeekBtn">${state.mobilePendingDecisionChoice ? "Commit Plan & Advance" : "⏭ Advance Week"}</button>
         <button class="ml-btn" id="mlFullViewBtn">Full View</button>
       </div>
     </div>
@@ -295,7 +296,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
   return cards.slice(0, 4);
 }
 
-export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [], pendingDecision = null } = {}) {
+export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [], pendingDecision = null, pendingChoice = null } = {}) {
   const controlledTeamId = dashboard.controlledTeamId;
   const phase = String(dashboard.phase || "").toLowerCase();
   const capSpace = dashboard.cap?.capSpace ?? 0;
@@ -310,11 +311,15 @@ export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [], pending
 
   if (pendingDecision?.id) {
     const optionCount = Array.isArray(pendingDecision.options) ? pendingDecision.options.length : 0;
+    const stagedOption = (pendingDecision.options || []).find((option) => option.id === pendingChoice?.choiceId) || null;
     cards.push({
-      kicker: "GM decision",
+      kicker: pendingChoice ? "Weekly plan staged" : "GM decision",
       title: pendingDecision.label || pendingDecision.type || "Decision required",
-      detail: pendingDecision.prompt || `${optionCount || "Multiple"} option${optionCount === 1 ? "" : "s"} waiting before you advance.`,
+      detail: stagedOption
+        ? `${stagedOption.label || stagedOption.id} selected. Choose Commit Plan & Advance to add the weekly tactic.`
+        : pendingDecision.prompt || `${optionCount || "Multiple"} option${optionCount === 1 ? "" : "s"} waiting before you advance.`,
       action: "choose-gm-decision",
+      selectedChoiceId: pendingChoice?.choiceId || null,
       decisionId: pendingDecision.id,
       type: pendingDecision.type,
       year: pendingDecision.year,
@@ -403,7 +408,7 @@ function renderDecisionCard(card, index) {
         ${common}
         <div class="ml-decision-options" aria-label="GM decision options">
           ${card.choices.map((choice, choiceIndex) => `
-            <button class="ml-decision-option-btn" data-mobile-decision-choice-index="${index}" data-mobile-decision-choice-option="${choiceIndex}">
+            <button class="ml-decision-option-btn ${card.selectedChoiceId === choice.id ? "selected" : ""}" aria-pressed="${card.selectedChoiceId === choice.id}" data-mobile-decision-choice-index="${index}" data-mobile-decision-choice-option="${choiceIndex}">
               <span>${_esc(choice.label)}</span>
               ${choice.effect ? `<small>${_esc(choice.effect)}</small>` : ""}
             </button>

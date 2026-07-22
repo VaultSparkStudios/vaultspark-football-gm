@@ -319,37 +319,78 @@ import {
 
 
 async function submitMobileGmDecisionChoice(choice) {
-  if (!choice?.decisionId || !choice?.choiceId) return;
-  await runAction(async () => {
-    const response = await api("/api/advance-week", {
-      method: "POST",
-      body: { count: 1, gmDecisionChoice: choice }
-    });
-    applyDashboard(response.state);
-    state.mobilePendingDecision = null;
-    if (response.gmDecision?.applied) {
-      const label = response.gmDecision.decision?.label || "GM decision";
-      const effect = response.gmDecision.decision?.receipt?.summary || response.gmDecision.decision?.effect || "choice recorded";
-      showToast(`${label}: ${effect}`);
+  if (!choice?.decisionId || !choice?.choiceId) return { staged: false };
+  state.mobilePendingDecisionChoice = { ...choice };
+  syncMobileLoopOverlay();
+  showToast("GM choice staged — choose a tactic, then commit the weekly plan.");
+  return { staged: true, choice: state.mobilePendingDecisionChoice };
+}
+
+async function collectWeeklyCommandIntent({ gmDecisionChoice = null } = {}) {
+  const isRegularSeason = state.dashboard?.phase === "regular-season";
+  const weeklyTacticOverride = isRegularSeason
+    ? await new Promise((resolve) => showHalftimeAdjustModal(resolve))
+    : null;
+  const body = { count: 1 };
+  if (weeklyTacticOverride) body.weeklyTacticOverride = weeklyTacticOverride;
+  if (isRegularSeason) {
+    if (gmDecisionChoice) {
+      body.gmDecisionChoice = gmDecisionChoice;
+    } else {
+      const gmDecisionResult = await checkAndShowGmDecision();
+      if (gmDecisionResult.status === "deferred") {
+        return { deferred: true, body: null };
+      }
+      if (gmDecisionResult.status === "chosen") body.gmDecisionChoice = gmDecisionResult.choice;
     }
-    await Promise.all([
-      loadRoster(),
-      loadFreeAgency(),
-      loadRetiredPool(),
-      loadStats(),
-      loadDraftState(),
-      loadScouting(),
-      loadQa(),
-      loadTeamHistory(),
-      loadCalendar(),
-      loadTransactionLog(),
-      loadNews(),
-      loadOwner(),
-      loadPipeline(),
-      loadSimJobs()
-    ]);
-    syncMobileLoopOverlay();
-  }, "Recording mobile GM decision...", SIMULATION_ACTION);
+  }
+  return { deferred: false, body };
+}
+
+async function refreshAfterWeeklyCommand(response) {
+  applyDashboard(response.state);
+  if (response.gmDecision?.applied) {
+    const label = response.gmDecision.decision?.label || "GM decision";
+    const effect = response.gmDecision.decision?.receipt?.summary || response.gmDecision.decision?.effect || "choice recorded";
+    showToast(`${label}: ${effect}`);
+  }
+  await Promise.all([
+    loadRoster(), loadFreeAgency(), loadRetiredPool(), loadStats(), loadDraftState(), loadScouting(),
+    loadQa(), loadTeamHistory(), loadCalendar(), loadTransactionLog(), loadNews(), loadOwner(),
+    loadPipeline(), loadSimJobs()
+  ]);
+  const newsItems = state.dashboard?.newsLog || state.newsRows || [];
+  ingestNewsIntoInbox(newsItems);
+  renderInboxBadge();
+  renderSeasonArcs().catch((error) => renderPanelError("seasonArcsContent", "Season arcs", error, {
+    onRetry: () => renderSeasonArcs().catch((retryError) => renderPanelError("seasonArcsContent", "Season arcs", retryError))
+  }));
+  checkAndShowFranchiseMoment().catch(presentActionError);
+  checkAndPruneRewindStorage();
+  syncMobileLoopOverlay();
+}
+
+async function advanceOneWeek({ gmDecisionChoice = null } = {}) {
+  const intent = await collectWeeklyCommandIntent({ gmDecisionChoice });
+  if (intent.deferred) {
+    showToast("Decision deferred — the franchise has not advanced.");
+    return { actionStatus: "deferred", statusText: "GM decision deferred" };
+  }
+  const response = await api("/api/advance-week", { method: "POST", body: intent.body });
+  state.mobilePendingDecisionChoice = null;
+  await refreshAfterWeeklyCommand(response);
+  return response;
+}
+
+function advanceFromMobileLoop() {
+  return runAction(
+    () => advanceOneWeek({ gmDecisionChoice: state.mobilePendingDecisionChoice }),
+    "Committing weekly plan...",
+    SIMULATION_ACTION
+  ).then((result) => {
+    if (result?.actionStatus === "failed") setSimControl({ active: false, pauseRequested: false, mode: null });
+    return result;
+  });
 }
 
 function mobileDecisionSnapshotKey() {
@@ -369,7 +410,7 @@ function syncMobileLoopOverlay() {
   overlay.classList.toggle("hidden", !active);
   const toggle = document.getElementById("mobileLoopToggle");
   if (toggle) toggle.checked = active;
-  const advanceFromMobile = () => document.getElementById("advanceWeekBtn")?.click();
+  const advanceFromMobile = advanceFromMobileLoop;
   if (!overlay.dataset.mobileGmChoiceBound) {
     overlay.dataset.mobileGmChoiceBound = "1";
     overlay.addEventListener("vsfgm:mobile-decision", (event) => {
@@ -454,62 +495,17 @@ function bindEvents() {
   );
 
   document.getElementById("advanceWeekBtn").addEventListener("click", () =>
-    runAction(async () => {
-      // Show pre-game tactical modal during regular season
-      const isRegularSeason = state.dashboard?.phase === "regular-season";
-      const tactic = await new Promise((resolve) => {
-        if (isRegularSeason) {
-          showHalftimeAdjustModal(resolve);
-        } else {
-          resolve(null);
-        }
-      });
-      const body = { count: 1 };
-      if (tactic) body.weeklyTacticOverride = tactic;
-      // Check GM Decision before advancing (Session 8)
-      if (state.dashboard?.phase === "regular-season") {
-        const gmDecisionResult = await checkAndShowGmDecision();
-        if (gmDecisionResult.status === "deferred") {
-          showToast("Decision deferred — the franchise has not advanced.");
-          return { actionStatus: "deferred", statusText: "GM decision deferred" };
-        }
-        if (gmDecisionResult.status === "chosen") body.gmDecisionChoice = gmDecisionResult.choice;
-      }
-      const response = await api("/api/advance-week", { method: "POST", body });
-      applyDashboard(response.state);
-      if (response.gmDecision?.applied) {
-        const label = response.gmDecision.decision?.label || "GM decision";
-        const effect = response.gmDecision.decision?.receipt?.summary || response.gmDecision.decision?.effect || "choice recorded";
-        showToast(`${label}: ${effect}`);
-      }
-      await Promise.all([
-        loadRoster(),
-        loadFreeAgency(),
-        loadRetiredPool(),
-        loadStats(),
-        loadDraftState(),
-        loadScouting(),
-        loadQa(),
-        loadTeamHistory(),
-        loadCalendar(),
-        loadTransactionLog(),
-        loadNews(),
-        loadOwner(),
-        loadPipeline(),
-        loadSimJobs()
-      ]);
-      // Ingest news into Priority Inbox + show Franchise Moment (Session 8)
-      const newsItems = state.dashboard?.newsLog || state.newsRows || [];
-      ingestNewsIntoInbox(newsItems);
-      renderInboxBadge();
-      renderSeasonArcs().catch((error) => renderPanelError("seasonArcsContent", "Season arcs", error, {
-        onRetry: () => renderSeasonArcs().catch((retryError) => renderPanelError("seasonArcsContent", "Season arcs", retryError))
-      }));
-      checkAndShowFranchiseMoment().catch(presentActionError);
-      checkAndPruneRewindStorage();
-      syncMobileLoopOverlay();
-    }, "Advancing week...", SIMULATION_ACTION)
+    runAction(
+      () => advanceOneWeek(),
+      "Advancing week...",
+      SIMULATION_ACTION
+    )
   );
+  document.getElementById("openingContractCard")?.addEventListener("click", (event) => {
+    const action = event.target.closest?.("[data-opening-prologue-action='advance-week']");
+    if (!action) return;
+    document.getElementById("advanceWeekBtn")?.click();
+  });
 
   document.getElementById("advance4WeeksBtn").addEventListener("click", () =>
     runAction(
@@ -1941,7 +1937,7 @@ async function init() {
       authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || ""
     }
   );
-  initMobileLoop(state, () => document.getElementById("advanceWeekBtn")?.click());
+  initMobileLoop(state, advanceFromMobileLoop);
   syncMobileLoopOverlay();
   setInterval(() => {
     observeBackgroundTask(loadSimJobs, {

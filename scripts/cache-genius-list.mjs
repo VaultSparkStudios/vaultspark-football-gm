@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
+import { parseTaskBoardItems, taskItemKey } from "./lib/task-board.mjs";
 
 const root = process.cwd();
 const args = new Set(process.argv.slice(2));
@@ -89,25 +90,10 @@ function parseTaskBoardStatuses() {
   } catch {
     return statuses;
   }
-  for (const rawLine of text.split(/\r?\n/)) {
-    const line = rawLine.trim();
-    if (!line.startsWith("|")) continue;
-    const cols = line.split("|").slice(1, -1).map((col) => col.trim());
-    if (cols.length < 2) continue;
-    if (/^:?-{2,}:?$/.test(cols[0]) || /^item$/i.test(cols[0])) continue;
-
-    let title = "";
-    let status = "";
-    if (cols.length >= 3 && /^[\d.]+$/.test(cols[0])) {
-      title = cols[1];
-      status = cols[2];
-    } else if (cols.length >= 2) {
-      title = cols[0];
-      status = cols[1];
-    }
-    const slug = slugFromTaskTitle(title);
+  for (const item of parseTaskBoardItems(text)) {
+    const slug = taskItemKey(item.title);
     if (!slug) continue;
-    statuses.set(slug, normalizeTaskStatus(status));
+    statuses.set(slug, item.status);
   }
   return statuses;
 }
@@ -124,7 +110,7 @@ function parseAuditItems(auditFile) {
       const titleMatch = (cols[7] ?? "").match(/\*\*([^*]+)\*\*/);
       const slug = titleMatch?.[1]?.trim() ?? `audit-item-${cols[0]}`;
       const logStatus = (execLog.get(slug.toLowerCase()) ?? "").trim();
-      const taskStatus = taskBoardStatuses.get(slug.toLowerCase()) ?? "";
+      const taskStatus = taskBoardStatuses.get(taskItemKey(slug)) ?? "";
       const done = DONE_STATUS_RE.test(logStatus) || taskStatus === "done";
       const blocked = BLOCKED_STATUS_RE.test(logStatus) || (!done && taskStatus === "blocked");
       return {

@@ -46,7 +46,8 @@ export function renderOpeningContract() {
   const card = document.getElementById("openingContractCard");
   if (!card) return;
   const receipt = state.dashboard?.startScenarioReceipt;
-  if (!receipt?.effects) {
+  const progress = state.dashboard?.openingContractProgress;
+  if (!receipt?.effects || !progress) {
     card.hidden = true;
     card.replaceChildren();
     return;
@@ -55,42 +56,63 @@ export function renderOpeningContract() {
   heading.className = "opening-contract-heading";
   const kicker = document.createElement("span");
   kicker.className = "brand-kicker";
-  kicker.textContent = "Opening Contract";
+  kicker.textContent = progress.status === "completed" ? "Opening Contract · Receipt Earned" : "Opening Contract · Live Prologue";
   const receiptId = document.createElement("span");
   receiptId.className = "small";
   receiptId.textContent = receipt.receiptId || "";
   heading.append(kicker, receiptId);
 
-  const rows = document.createElement("div");
-  rows.className = "opening-contract-effects";
-  for (const key of ["identity", "pressure", "scouting"]) {
-    const effect = receipt.effects[key];
-    if (!effect) continue;
-    const row = document.createElement("div");
-    row.className = "opening-contract-effect";
+  const timeline = document.createElement("ol");
+  timeline.className = "opening-contract-timeline";
+  for (const step of progress.steps || []) {
+    const item = document.createElement("li");
+    item.className = `opening-contract-step ${step.complete ? "complete" : "pending"}`;
+    const marker = document.createElement("span");
+    marker.className = "opening-contract-marker";
+    marker.textContent = step.complete ? "✓" : "→";
+    const copy = document.createElement("span");
     const label = document.createElement("strong");
-    label.textContent = effect.label || key;
-    const detail = document.createElement("span");
-    detail.textContent = effect.description || "";
-    const evidence = document.createElement("small");
-    if (key === "identity") {
-      evidence.textContent = "Live scheme: " + Math.round(Number(effect.passRate || 0) * 100) + "% pass · " + Math.round(Number(effect.aggression || 0) * 100) + "% aggression";
-    } else if (key === "pressure") {
-      evidence.textContent = "Live owner patience: " + Math.round(Number(effect.patience || 0) * 100) + "% · " + (effect.mandate || "Mandate pending");
-    } else {
-      evidence.textContent = effect.status === "pending-draft-class"
-        ? "Pending a real draft class — no prospect has been fabricated."
-        : effect.status === "declined"
-          ? "Applied: no opening prospect pinned or points spent."
-          : "Applied to " + (effect.prospect || effect.prospectId || "the director flag") + " · " + Number(effect.pointsRemaining || 0) + " points remain";
-    }
-    row.append(label, detail, evidence);
-    rows.appendChild(row);
+    label.textContent = step.label;
+    const detail = document.createElement("small");
+    detail.textContent = step.detail;
+    copy.append(label, detail);
+    item.append(marker, copy);
+    timeline.appendChild(item);
   }
-  card.replaceChildren(heading, rows);
+
+  const evidence = document.createElement("div");
+  evidence.className = "opening-contract-evidence";
+  if (progress.result) {
+    const result = progress.result;
+    const owner = progress.ownerPressure;
+    evidence.textContent = `${result.verdict} ${result.teamScore}–${result.opponentScore} vs ${result.opponentId}`
+      + (result.tactic ? ` · ${result.tactic}` : "")
+      + (owner ? ` · Owner heat ${owner.heat ?? "–"} (${owner.trend})` : "");
+    if (result.tacticalVerdict) {
+      const film = document.createElement("small");
+      film.textContent = result.tacticalVerdict;
+      evidence.appendChild(film);
+    }
+  } else {
+    evidence.textContent = progress.nextAction;
+    const action = document.createElement("button");
+    action.type = "button";
+    action.className = "primary opening-contract-action";
+    action.dataset.openingPrologueAction = "advance-week";
+    action.textContent = "Choose Tactic & Play Week 1";
+    evidence.appendChild(action);
+  }
+const scoutingTruth = document.createElement("small");
+  scoutingTruth.className = "opening-contract-scouting-truth";
+  const scouting = receipt.effects.scouting;
+  scoutingTruth.textContent = scouting?.status === "pending-draft-class"
+    ? "Pending a real draft class — no prospect has been fabricated."
+    : scouting?.status === "declined"
+      ? "No opening prospect was pinned and no scouting points were spent."
+      : `First-call evidence applied to ${scouting?.prospect || scouting?.prospectId || "the live scouting board"}.`;
+  card.replaceChildren(heading, timeline, evidence, scoutingTruth);
   card.hidden = false;
 }
-
 export function renderRehabCommandCenter() {
   const panel = document.getElementById("rehabCommandCenter");
   if (!panel) return;

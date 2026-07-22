@@ -91,7 +91,7 @@ const STEPS = [
   {
     id: "first-call",
     title: "Your Scout Calls",
-    body: `It's Week 2 of your first season. Your scouting director flags a prospect.
+    body: `It's Week 1 of your first season. Your scouting director flags a prospect.
            You can act on this signal or wait — but scouting confidence decays if you ignore your board.
            This is how the world-state system works: invest in your staff and they surface better intel.`,
     choices: [

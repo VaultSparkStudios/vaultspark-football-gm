@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 51 recovery completed five product-truth items: public/private boundary enforcement, General Manager career authority, consequence-bearing onboarding, browser promise observability, and explicit dual-runtime API parity; the queue and innovation surface are exhausted.",
-  "nextMilestone": "Begin a fresh live-code arc from the clean Session 51 checkpoint unless external edge-header, received-email, apex-ingestion, deploy-provenance, or registry-reconciliation evidence arrives first.",
+  "currentFocus": "Session 52 completed five audited authority improvements and three second-order innovations: draft agency checkpoints, one weekly intent coordinator, a source-derived opening prologue, shared task-board parsing, same-origin staging receipts, local playtest evidence, truthful build fallback, and dead renderer retirement.",
+  "nextMilestone": "Begin a fresh live-code arc unless external same-origin staging, canonical health/edge, received-email, founder approval, or registry-reconciliation evidence arrives first.",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated until the canonical live origin has complete edge-security headers, football@playfranchisearchitect.com forwarding/copying has a real received-message receipt, deploy provenance matches the expected workflow artifact, and the authoritative registry is reconciled."
+    "Launch/SPARKED remains evidence-gated: canonical /_health is 404, HSTS/frame/CSP headers are incomplete, same-origin staging deploy receipts are unreachable, football@playfranchisearchitect.com lacks a real received-message receipt, founder approval is absent, and the authoritative registry is SPARKED while local truth remains FORGE."
   ],
-  "lastUpdated": "2026-07-21",
+  "lastUpdated": "2026-07-22",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,21 +18,24 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-07-20",
   "testSuiteStatus": {
-    "totalTests": 401,
-    "pass": 401,
+    "totalTests": 423,
+    "pass": 423,
     "fail": 0,
     "lastRun": "2026-07-21",
     "newTestFiles": [
-      "test/start-scenario.test.js",
-      "test/browser-promise-observability.test.js",
-      "test/api-contract-parity.test.js"
+      "test/draft-agency.test.js",
+      "test/mobile-weekly-intent.test.js",
+      "test/opening-contract-prologue.test.js",
+      "test/staging-receipt.test.js",
+      "test/task-board-parser-authority.test.js",
+      "test/session52-innovations.test.js"
     ],
-    "newTestCount": 11,
-    "coverage": "Session 51 recovery final direct evidence: canonical Node shards 401/401 (70 core, 199 runtime, 69 simulation contract, 1 realism, 62 Studio), Playwright 18/18, Pages build/smoke, and live server/static API state-shape parity 3/3.",
-    "uiSuiteNote": "Playwright passed 18/18; the consequence-bearing tutorial, theme system, runtime switch, and core franchise flows remain green."
+    "newTestCount": 20,
+    "coverage": "Session 52 direct evidence: full Node suite 423/423 including long realism, Playwright 18/18, Pages build/smoke, browser reachability 41 modules, and responsive evidence 20/20.",
+    "uiSuiteNote": "Playwright 18/18 plus 20 revision-stamped responsive captures; new player-facing prologue, mobile intent, and local playtest receipt paths have focused browser/source contract coverage."
   },
-  "testsPassing": 401,
-  "testsTotal": 401,
+  "testsPassing": 423,
+  "testsTotal": 423,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -71,7 +74,7 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 994,
+  "silScore": 995,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
@@ -81,31 +84,31 @@
     "crossRepoCoherence": 100,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
-    "capitalEfficiency": 94,
+    "capitalEfficiency": 95,
     "automationCoverage": 100
   },
-  "currentSession": 51,
+  "currentSession": 52,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
-    "timedOut": [
-      "aggregate npm test wrapper exceeded the initial five-minute evidence window",
-      "initial serialized shard wrapper exceeded a ten-minute tool window under concurrent machine load"
-    ],
+    "timedOut": [],
     "failed": [],
     "passed": [
-      "direct canonical Node shards 401/401 with exit 0 (70 core, 199 runtime, 69 simulation contract, 1 realism, 62 Studio)",
+      "full canonical Node suite 423/423 with direct exit 0",
       "Playwright 18/18",
-      "npm run build:pages",
-      "npm run smoke:pages",
-      "API contract parity 140 browser calls / 111 contracts / 0 adapter gaps",
-      "live server/static response and state-transition parity 3/3",
-      "browser promise guard 39 modules / 0 unallowlisted silent sinks",
+      "npm run build:pages and smoke:pages",
+      "responsive evidence 20/20",
+      "browser reachability 41 modules",
+      "working-tree secret scan 0 findings",
+      "fresh public sanitization 0 critical / 0 warning",
+      "sitemap compliance 10/10",
+      "cost gate allow / cost-neutral",
+      "doctor blockingFailing 0",
       "Unified Genius List 0 open / 5 closed",
-      "Innovation Pack classified and opening-contract response attestation shipped"
+      "3 second-order innovations implemented"
     ],
     "date": "2026-07-21",
-    "diagnosticNote": "The two early wrapper timeouts are non-evidence, not failures; every canonical shard was rerun directly and passed. Apex styling, live edge/email proof, deploy provenance, and authoritative registry coherence remain separate unverified launch gates."
+    "diagnosticNote": "Launch remains HOLD on canonical health/edge, same-origin staging, received-email, approval, and registry evidence. The portfolio release gate sanitization packet is stale; fresh scan is 0/0. The intentionally absent private Creative Direction Record remains excluded from this public repo."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "T2_opusplan",
@@ -132,14 +135,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 904,
+  "silHealth": 905,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-07-21",
+    "date": "2026-07-22",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -153,7 +156,7 @@
   },
   "complianceScore": 37,
   "complianceTotal": 37,
-  "sanitizationLastCleared": "2026-07-03",
+  "sanitizationLastCleared": "2026-07-21",
   "lastVerificationAt": "2026-07-21",
   "stagingType": "github-pages",
   "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",

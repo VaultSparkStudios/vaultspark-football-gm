@@ -24,6 +24,7 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import fs from "node:fs/promises";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "./lib/safe-spawn.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir   = path.resolve(__dirname, "..");
@@ -43,11 +44,23 @@ async function loadEsbuild() {
     return require("esbuild");
   } catch {
     console.warn("[build-bundle] esbuild not found. Run: npm install --save-dev esbuild");
-    console.warn("[build-bundle] Falling back to build:pages (file copy only).");
+    console.warn("[build-bundle] Executing the canonical build:pages fallback.");
     return null;
   }
 }
 
+
+function runCanonicalPagesFallback() {
+  if (isWatch) throw new Error("Watch mode requires esbuild; the canonical Pages fallback is a one-shot build.");
+  const result = spawnSync(process.execPath, [path.join(__dirname, "build-pages.mjs")], {
+    cwd: rootDir,
+    stdio: "inherit"
+  });
+  if (result.status !== 0) {
+    throw new Error(`Canonical build:pages fallback failed with exit ${result.status ?? "unknown"}.`);
+  }
+  console.log("[build-bundle] Canonical build:pages fallback completed.");
+}
 // ── Build options ─────────────────────────────────────────────────────────────
 
 function jsBuildOptions(entryFile, outFile) {
@@ -85,7 +98,10 @@ function cssBuildOptions(entryFile, outFile) {
 
 async function main() {
   const esbuild = await loadEsbuild();
-  if (!esbuild) process.exit(0); // graceful degradation
+if (!esbuild) {
+    runCanonicalPagesFallback();
+    return;
+  }
 
   await fs.mkdir(outDir, { recursive: true });
 

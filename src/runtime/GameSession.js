@@ -1872,6 +1872,50 @@ export class GameSession {
     const opponentRoster = opponent ? teamPlayersAll(this.league, opponentId) : [];
     return buildWeeklyMatchPlan(team, roster, opponent, opponentRoster);
   }
+  getOpeningContractProgress() {
+    const receipt = this.league.startScenarioReceipt || null;
+    if (!receipt || receipt.teamId !== this.controlledTeamId) return null;
+    const team = teamById(this.league, this.controlledTeamId);
+    const appliedYear = Number(receipt.appliedAt?.year ?? this.startYear);
+    const appliedWeek = Number(receipt.appliedAt?.week ?? 1);
+    const resultWeek = (this.weekResultsCurrentSeason || []).find((entry) =>
+      Number(entry.week) >= appliedWeek
+      && (entry.games || []).some((game) => game.homeTeamId === this.controlledTeamId || game.awayTeamId === this.controlledTeamId)
+    ) || null;
+    const game = resultWeek?.games?.find((entry) => entry.homeTeamId === this.controlledTeamId || entry.awayTeamId === this.controlledTeamId) || null;
+    const tacticalFilm = (this.league.tacticalFilmLog || []).find((entry) =>
+      entry.teamId === this.controlledTeamId && Number(entry.year) === appliedYear && Number(entry.week) >= appliedWeek
+    ) || null;
+    const weeklyPlan = team?.weeklyPlan || null;
+    const isHome = game?.homeTeamId === this.controlledTeamId;
+    const teamScore = game ? Number(isHome ? game.homeScore : game.awayScore) : null;
+    const opponentScore = game ? Number(isHome ? game.awayScore : game.homeScore) : null;
+    const opponentId = game ? (isHome ? game.awayTeamId : game.homeTeamId) : (weeklyPlan?.opponentId || null);
+    const result = game
+      ? {
+          verdict: game.isTie || teamScore === opponentScore ? "T" : teamScore > opponentScore ? "W" : "L",
+          teamScore,
+          opponentScore,
+          opponentId,
+          week: Number(resultWeek.week),
+          tactic: tacticalFilm?.label || null,
+          tacticalVerdict: tacticalFilm?.observed || null
+        }
+      : null;
+    const ownerExpectation = team?.owner?.expectation || null;
+    return {
+      status: result ? "completed" : "active",
+      appliedAt: { year: appliedYear, week: appliedWeek },
+      steps: [
+        { id: "pressure", label: "Accept the pressure", complete: true, detail: receipt.effects?.pressure?.mandate || ownerExpectation?.mandate || "Owner mandate accepted" },
+        { id: "plan", label: "Set the weekly intent", complete: Boolean(weeklyPlan), detail: weeklyPlan?.summary || "Matchup plan pending" },
+        { id: "receipt", label: "Earn the first receipt", complete: Boolean(result), detail: result ? `${result.verdict} ${result.teamScore}-${result.opponentScore} vs ${result.opponentId}` : `Week ${appliedWeek} is ready to play` }
+      ],
+      nextAction: result ? "Review the evidence and choose the next franchise decision." : "Commit your tactic and play the opening week.",
+      ownerPressure: ownerExpectation ? { mandate: ownerExpectation.mandate || null, trend: ownerExpectation.trend || "watch", heat: ownerExpectation.heat ?? null } : null,
+      result
+    };
+  }
 
   buildPlayerDevelopmentContext(teamId, player) {
     const team = teamId ? teamById(this.league, teamId) : null;
@@ -2037,7 +2081,26 @@ export class GameSession {
     }
     if (stage === "draft") {
       if (this.league.pendingDraft && !this.league.pendingDraft.completed) {
-        this.runCpuDraft({ untilUserPick: false });
+        this.runCpuDraft({ untilUserPick: true });
+      }
+      const authority = this.getDraftAuthority();
+      if (authority?.controlledTeamOnClock) {
+        return {
+          ...pipeline,
+          userActionRequired: true,
+          blockingReason: "controlled-team-on-clock",
+          draft: authority,
+          message: `${authority.teamOnClock} is on the clock. Make the pick or explicitly delegate with Finish Draft.`
+        };
+      }
+      if (!authority?.completed) {
+        return {
+          ...pipeline,
+          userActionRequired: true,
+          blockingReason: "draft-action-required",
+          draft: authority,
+          message: "Draft progress paused before an unresolved user action."
+        };
       }
       this.generateCompensatoryPicks();
       return next({ nextStage: "udfa", message: "Draft finished and compensatory picks generated." });
@@ -4275,6 +4338,10 @@ export class GameSession {
     if (runOffseasonAfter) {
       let guard = 0;
       while ((this.phase === "season-awards" || this.phase === "offseason") && guard < 18) {
+        if (this.getOffseasonPipeline().stage === "draft" && this.getDraftAuthority().userActionRequired) {
+          // simulateOneSeason is the explicit whole-season delegation command; interactive advance remains blocked.
+          this.runCpuDraft({ untilUserPick: false });
+        }
         this.advanceWeek();
         guard += 1;
       }
@@ -4731,6 +4798,23 @@ export class GameSession {
     this.statBook.reindexPlayers();
     return { ok: true, completedPicks: completed, draft };
   }
+  getDraftAuthority() {
+    const draft = this.league.pendingDraft;
+    if (!draft) return null;
+    const teamOnClock = draft.completed
+      ? null
+      : draft.order[(draft.currentPick - 1) % draft.order.length] || null;
+    return {
+      year: draft.year,
+      currentPick: draft.currentPick,
+      totalPicks: draft.totalPicks,
+      completed: draft.completed,
+      teamOnClock,
+      controlledTeamOnClock: Boolean(teamOnClock && teamOnClock === this.controlledTeamId),
+      userActionRequired: Boolean(teamOnClock && teamOnClock === this.controlledTeamId)
+    };
+  }
+
   getDashboardState() {
     const controlledTeam = this.getControlledTeam();
     const injuryModifierCache = new Map();
@@ -4798,6 +4882,7 @@ export class GameSession {
       },
       scouting: this.getScoutingBoard({ teamId: this.controlledTeamId, limit: 40 }),
       startScenarioReceipt: this.league.startScenarioReceipt || null,
+      openingContractProgress: this.getOpeningContractProgress(),
       depthChartSnapShare: this.getDepthChartSnapShare(this.controlledTeamId),
       draftPickAssets: this.getDraftPickAssets(this.controlledTeamId),
       compPicks: this.getCompensatoryPicks({ teamId: this.controlledTeamId }),
@@ -4842,14 +4927,8 @@ export class GameSession {
       lastCalibrationReport: this.lastCalibrationReport,
       lastCalibrationSnapshot: calibrationSnapshot,
       lastRealismVerificationReport: this.lastRealismVerificationReport,
-      draft: this.league.pendingDraft
-        ? {
-            year: this.league.pendingDraft.year,
-            currentPick: this.league.pendingDraft.currentPick,
-            totalPicks: this.league.pendingDraft.totalPicks,
-            completed: this.league.pendingDraft.completed
-          }
-        : null
+      draft: this.getDraftAuthority()
+
     };
     return {
       ...dashboard,

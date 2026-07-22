@@ -10,6 +10,7 @@ export const state = {
   dashboard: null,
   hydrationAuthority: { epoch: 0, identity: "uninitialized", staleResponsesDiscarded: 0 },
   mobilePendingDecision: null,
+  mobilePendingDecisionChoice: null,
   roster: [],
   freeAgents: [],
   contractRoster: [],

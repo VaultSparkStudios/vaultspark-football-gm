@@ -5,7 +5,7 @@
   "identity": {
     "slug": "franchise-architect-football",
     "name": "Franchise Architect: Football",
-    "repo": "VaultSparkStudios/franchise-architect-football",
+    "repo": "VaultSparkStudios/vaultspark-football-gm",
     "owner": "VaultSpark Studios",
     "type": "game",
     "lifecycle": "deployed",
@@ -43,7 +43,12 @@
         "path": "<dev-root>\\Franchise Architect: Football"
       }
     ],
-    "staging": [],
+    "staging": [
+      {
+        "label": "github-pages-preview",
+        "url": "https://vaultsparkstudios.github.io/vaultspark-football-gm/"
+      }
+    ],
     "production": [
       {
         "label": "live",
@@ -57,7 +62,7 @@
     "github": [
       {
         "label": "repo",
-        "url": "https://github.com/VaultSparkStudios/franchise-architect-football"
+        "url": "https://github.com/VaultSparkStudios/vaultspark-football-gm"
       }
     ],
     "testing": []
@@ -103,7 +108,7 @@
   "hosting": {
     "hostingProvider": "github-pages",
     "liveUrl": "https://playfranchisearchitect.com/",
-    "stagingUrl": null,
+    "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
     "privatePreviewUrl": null,
     "localDevUrl": null,
     "deployStatus": "deployed-unannounced",

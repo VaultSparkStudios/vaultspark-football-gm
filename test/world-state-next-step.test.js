@@ -7,6 +7,9 @@ function advanceToCampCuts(session) {
   session.resetOffseasonPipeline(session.currentYear);
   let guard = 0;
   while (session.getOffseasonPipeline().stage !== "camp-cuts" && guard < 12) {
+    if (session.getOffseasonPipeline().stage === "draft" && session.getDraftAuthority().userActionRequired) {
+      session.runCpuDraft({ untilUserPick: false }); // This fixture explicitly delegates controlled-team picks.
+    }
     session.advanceWeek();
     guard += 1;
   }

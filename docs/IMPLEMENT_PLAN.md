@@ -1,15 +1,13 @@
-# Session 51 Implementation Plan
+# Session 52 Implementation Plan
 
-Source: `docs/AUDIT_2026-07-21_SESSION51.json`.
+Source: `docs/AUDIT_2026-07-21_SESSION52.json`.
 
 Efficiency order:
 
-1. [completed] Public boundary hard gate: `public-process-ledger-quarantine` — removed the forbidden private CDR path; focused test 8/8 and live post-index sanitization scan 0 critical.
-2. [completed] Shared progression authority: `gm-legacy-truth-engine` — object/string titles resolve once; persona progress is engine-derived; earned market pull reaches the real offer command; non-mechanical treatment is labeled recognition-only; 48 focused tests pass.
-3. [completed] Browser failure foundation: `browser-promise-observability-contract` — 39 modules have zero unallowlisted parameterless catches; local sanitized retry-aware diagnostics cover every migrated sink; Pages and 59 Studio tests pass.
-4. [completed] Consequence-bearing first run: `consequence-bearing-franchise-contract` — all nine choices mutate declared authorities; the versioned receipt persists/idempotently reloads; scouting waits for a real class; final tutorial and Overview render live consequences; 27 focused tests and Pages pass.
-5. [completed] Dual-runtime architecture: `dual-runtime-route-authority` — 111 explicit contracts cover 140 browser call sites across both adapters; live state/shape parity passes 3/3; rewind envelopes and DELETE CORS are aligned without authority fallback.
-6. [completed] Refreshed the Unified Genius List to 0 open, classified the sole Innovation Pack candidate from live evidence, and shipped opening-contract response attestation as the smallest compounding refinement; the broad L3 dispatcher was rejected without a measured premise.
-7. [open] Run focused verification after each item, then direct canonical shards, Playwright, Pages staging/evidence, sanitization, canon, release, and doctor gates.
+1. `single-task-board-parser-authority` — repair the observability foundation used by every later progress surface.
+2. `same-origin-staging-receipt-authority` — reconcile identity and build the non-lying release evidence command independently of game code.
+3. `controlled-draft-agency-checkpoint` — establish safe simulation and draft authority before changing accelerated controls.
+4. `mobile-weekly-intent-parity` — converge desktop and mobile on one weekly command coordinator.
+5. `opening-contract-playable-prologue` — build the first-session path on the shared weekly coordinator and source-derived receipts.
 
-All primary items target L2 or higher. Gameplay changes must be browser-visible and focused-test covered. Work remains dependency-free, static-host-safe, local-first, and cost-neutral. Live edge headers, on-domain email delivery, apex ingestion, registry drift, and launch approval remain separate evidence gates and cannot be fabricated.
+Each item must pass focused syntax, behavior, and existing-surface tests before it is marked shipped. Full Node, browser, Pages, release, doctor, and protocol verification follows after the complete list and innovation expansion.
