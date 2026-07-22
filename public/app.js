@@ -1524,6 +1524,69 @@ function bindEvents() {
     }
   });
 
+  // Mobile nav drawer (CANON-041)
+  {
+    const sideMenu = document.getElementById("sideMenu");
+    const backdrop = document.getElementById("navBackdrop");
+    const toggleBtn = document.getElementById("navToggleBtn");
+    const closeBtn = document.getElementById("navDrawerCloseBtn");
+    const mobileNavMq = window.matchMedia("(max-width: 980px)");
+
+    function openNav() {
+      if (sideMenu) sideMenu.inert = false;
+      sideMenu?.classList.add("nav-open");
+      backdrop?.classList.add("visible");
+      toggleBtn?.setAttribute("aria-expanded", "true");
+      closeBtn?.focus();
+    }
+    function closeNav() {
+      sideMenu?.classList.remove("nav-open");
+      backdrop?.classList.remove("visible");
+      toggleBtn?.setAttribute("aria-expanded", "false");
+      // Re-inert the drawer on mobile so off-screen nav buttons aren't keyboard-reachable
+      if (mobileNavMq.matches && sideMenu) sideMenu.inert = true;
+      toggleBtn?.focus();
+    }
+
+    // Initial state: make the drawer inert on mobile so closed nav is never keyboard-reachable
+    if (mobileNavMq.matches && sideMenu) sideMenu.inert = true;
+
+    // Resize guard: if the viewport exits the mobile breakpoint while the drawer is open,
+    // clean up the backdrop/state so it doesn't stay stuck as a fullscreen scrim on desktop
+    mobileNavMq.addEventListener("change", (e) => {
+      if (!e.matches) {
+        // Exited mobile — remove drawer state and unblock desktop nav
+        sideMenu?.classList.remove("nav-open");
+        backdrop?.classList.remove("visible");
+        toggleBtn?.setAttribute("aria-expanded", "false");
+        if (sideMenu) sideMenu.inert = false;
+      } else {
+        // Entered mobile — inert the nav if it's currently closed
+        if (!sideMenu?.classList.contains("nav-open") && sideMenu) sideMenu.inert = true;
+      }
+    });
+
+    toggleBtn?.addEventListener("click", () => {
+      sideMenu?.classList.contains("nav-open") ? closeNav() : openNav();
+    });
+    closeBtn?.addEventListener("click", closeNav);
+    backdrop?.addEventListener("click", closeNav);
+
+    // Close drawer when a tab is activated (mobile only — no-op on desktop)
+    sideMenu?.addEventListener("click", (e) => {
+      if (e.target.closest(".menu-btn[data-tab]") && sideMenu.classList.contains("nav-open")) {
+        closeNav();
+      }
+    });
+
+    // Escape closes the drawer
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && sideMenu?.classList.contains("nav-open")) {
+        closeNav();
+      }
+    });
+  }
+
   // Roving-tabindex arrow navigation for the ARIA tablist (S29).
   document.querySelector('.side-menu[role="tablist"]')?.addEventListener("keydown", (event) => {
     if (!["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;

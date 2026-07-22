@@ -10,7 +10,10 @@ export default defineConfig({
     baseURL: "http://localhost:4273",
     headless: true,
     trace: "retain-on-failure",
-    screenshot: "only-on-failure"
+    screenshot: "only-on-failure",
+    launchOptions: {
+      executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH || undefined,
+    },
   },
   webServer: {
     command: "node scripts/dev-playwright-server.mjs",
