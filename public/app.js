@@ -1530,8 +1530,10 @@ function bindEvents() {
     const backdrop = document.getElementById("navBackdrop");
     const toggleBtn = document.getElementById("navToggleBtn");
     const closeBtn = document.getElementById("navDrawerCloseBtn");
+    const mobileNavMq = window.matchMedia("(max-width: 980px)");
 
     function openNav() {
+      if (sideMenu) sideMenu.inert = false;
       sideMenu?.classList.add("nav-open");
       backdrop?.classList.add("visible");
       toggleBtn?.setAttribute("aria-expanded", "true");
@@ -1541,8 +1543,28 @@ function bindEvents() {
       sideMenu?.classList.remove("nav-open");
       backdrop?.classList.remove("visible");
       toggleBtn?.setAttribute("aria-expanded", "false");
+      // Re-inert the drawer on mobile so off-screen nav buttons aren't keyboard-reachable
+      if (mobileNavMq.matches && sideMenu) sideMenu.inert = true;
       toggleBtn?.focus();
     }
+
+    // Initial state: make the drawer inert on mobile so closed nav is never keyboard-reachable
+    if (mobileNavMq.matches && sideMenu) sideMenu.inert = true;
+
+    // Resize guard: if the viewport exits the mobile breakpoint while the drawer is open,
+    // clean up the backdrop/state so it doesn't stay stuck as a fullscreen scrim on desktop
+    mobileNavMq.addEventListener("change", (e) => {
+      if (!e.matches) {
+        // Exited mobile — remove drawer state and unblock desktop nav
+        sideMenu?.classList.remove("nav-open");
+        backdrop?.classList.remove("visible");
+        toggleBtn?.setAttribute("aria-expanded", "false");
+        if (sideMenu) sideMenu.inert = false;
+      } else {
+        // Entered mobile — inert the nav if it's currently closed
+        if (!sideMenu?.classList.contains("nav-open") && sideMenu) sideMenu.inert = true;
+      }
+    });
 
     toggleBtn?.addEventListener("click", () => {
       sideMenu?.classList.contains("nav-open") ? closeNav() : openNav();

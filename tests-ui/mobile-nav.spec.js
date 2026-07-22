@@ -33,26 +33,29 @@ test("hamburger toggle is visible on mobile, hidden on desktop", async ({ page }
   await expect(toggle).toBeHidden();
 });
 
-test("mobile nav drawer opens and closes via hamburger", async ({ page }) => {
+test("mobile nav drawer opens and closes via hamburger; inert guards keyboard focus", async ({ page }) => {
   await page.setViewportSize(MOBILE_VIEWPORT);
   await createLeague(page);
 
   const sideMenu = page.locator("#sideMenu");
   const toggle = page.locator("#navToggleBtn");
 
-  // Drawer starts closed (off-screen: left offset, not visible in viewport)
+  // Drawer starts closed: off-screen and inert (no keyboard focus leak)
   await expect(sideMenu).not.toHaveClass(/nav-open/);
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  expect(await sideMenu.evaluate((el) => el.inert)).toBe(true);
 
-  // Open
+  // Open — inert removed so nav is keyboard-reachable
   await toggle.click();
   await expect(sideMenu).toHaveClass(/nav-open/);
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  expect(await sideMenu.evaluate((el) => el.inert)).toBe(false);
 
-  // Close via close button
+  // Close via close button — drawer inerted again
   await page.locator("#navDrawerCloseBtn").click();
   await expect(sideMenu).not.toHaveClass(/nav-open/);
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  expect(await sideMenu.evaluate((el) => el.inert)).toBe(true);
 });
 
 test("backdrop closes mobile nav drawer", async ({ page }) => {
