@@ -1524,6 +1524,47 @@ function bindEvents() {
     }
   });
 
+  // Mobile nav drawer (CANON-041)
+  {
+    const sideMenu = document.getElementById("sideMenu");
+    const backdrop = document.getElementById("navBackdrop");
+    const toggleBtn = document.getElementById("navToggleBtn");
+    const closeBtn = document.getElementById("navDrawerCloseBtn");
+
+    function openNav() {
+      sideMenu?.classList.add("nav-open");
+      backdrop?.classList.add("visible");
+      toggleBtn?.setAttribute("aria-expanded", "true");
+      closeBtn?.focus();
+    }
+    function closeNav() {
+      sideMenu?.classList.remove("nav-open");
+      backdrop?.classList.remove("visible");
+      toggleBtn?.setAttribute("aria-expanded", "false");
+      toggleBtn?.focus();
+    }
+
+    toggleBtn?.addEventListener("click", () => {
+      sideMenu?.classList.contains("nav-open") ? closeNav() : openNav();
+    });
+    closeBtn?.addEventListener("click", closeNav);
+    backdrop?.addEventListener("click", closeNav);
+
+    // Close drawer when a tab is activated (mobile only — no-op on desktop)
+    sideMenu?.addEventListener("click", (e) => {
+      if (e.target.closest(".menu-btn[data-tab]") && sideMenu.classList.contains("nav-open")) {
+        closeNav();
+      }
+    });
+
+    // Escape closes the drawer
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && sideMenu?.classList.contains("nav-open")) {
+        closeNav();
+      }
+    });
+  }
+
   // Roving-tabindex arrow navigation for the ARIA tablist (S29).
   document.querySelector('.side-menu[role="tablist"]')?.addEventListener("keydown", (event) => {
     if (!["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
