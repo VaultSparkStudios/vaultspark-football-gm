@@ -69,8 +69,10 @@ test("backdrop closes mobile nav drawer", async ({ page }) => {
   await page.locator("#navToggleBtn").click();
   await expect(sideMenu).toHaveClass(/nav-open/);
 
-  // Click backdrop
-  await page.locator("#navBackdrop").click();
+  // Click the backdrop at a point to the right of the open drawer.
+  // The drawer is min(285px, 88vw) wide; on a 390px viewport that's 285px.
+  // Clicking at x=350 avoids the drawer and hits the dimmed backdrop area.
+  await page.locator("#navBackdrop").click({ position: { x: 350, y: 400 } });
   await expect(sideMenu).not.toHaveClass(/nav-open/);
 });
 
