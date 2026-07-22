@@ -131,7 +131,14 @@ test("create league, advance week, and open player modal", async ({ page }) => {
     // a false schedule assumption.
     const playedTeam = (await page.locator("#weekTable tr").nth(1).locator("td").nth(1).textContent())?.trim();
     expect(playedTeam).toBeTruthy();
-    await page.selectOption("#teamSelect", playedTeam);
+    const playedTeamValue = await page.locator("#teamSelect option").evaluateAll((options, abbreviation) => {
+      const match = options.find((option) =>
+        option.textContent?.split(" - ")[0]?.trim() === abbreviation
+      );
+      return match?.value || null;
+    }, playedTeam);
+    expect(playedTeamValue).toBeTruthy();
+    await page.selectOption("#teamSelect", playedTeamValue);
     await waitGameReady(page);
     latestBoxScore = page.locator("#boxScoreTicker [data-boxscore-id]").first();
   }
