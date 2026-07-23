@@ -1593,6 +1593,70 @@
         </div>
       </div>
     </div>
+    <!-- ── Mobile Bottom Nav Bar (≤ 640px) ─────────────────────────────── -->
+    <nav class="mobile-nav-bar" id="mobileNavBar" aria-label="Quick navigation" hidden>
+      <button class="mobile-nav-btn" type="button" data-tab="overviewTab" aria-label="Overview">
+        <span class="nav-icon" aria-hidden="true">⚡</span>
+        <span>Overview</span>
+      </button>
+      <button class="mobile-nav-btn" type="button" data-tab="rosterTab" aria-label="Roster">
+        <span class="nav-icon" aria-hidden="true">👥</span>
+        <span>Roster</span>
+      </button>
+      <button class="mobile-nav-btn" type="button" data-tab="draftTab" aria-label="Draft">
+        <span class="nav-icon" aria-hidden="true">🏈</span>
+        <span>Draft</span>
+      </button>
+      <button class="mobile-nav-btn" type="button" data-tab="transactionsTab" aria-label="Trades">
+        <span class="nav-icon" aria-hidden="true">🔄</span>
+        <span>Trades</span>
+      </button>
+      <button class="mobile-nav-more" type="button" id="mobileNavMoreBtn"
+              aria-label="All sections" aria-expanded="false" aria-controls="mobileNavDrawer">
+        <span class="nav-icon" aria-hidden="true">☰</span>
+        <span>More</span>
+      </button>
+    </nav>
+
+    <!-- ── Mobile Nav Drawer (100dvh scrollable) ─────────────────────── -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer"
+         role="dialog" aria-modal="true" aria-label="All sections" aria-hidden="true">
+      <div class="mobile-nav-drawer-header">
+        <span class="mobile-nav-drawer-title">Sections</span>
+        <button class="mobile-nav-drawer-close" type="button" id="mobileNavCloseBtn"
+                aria-label="Close navigation">✕</button>
+      </div>
+      <div class="mobile-nav-drawer-body">
+        <div class="mobile-nav-drawer-group">
+          <div class="mobile-nav-drawer-group-label">Gameday</div>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="overviewTab">Overview</button>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="statsTab">Statistics</button>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="calendarTab">Calendar</button>
+        </div>
+        <div class="mobile-nav-drawer-group">
+          <div class="mobile-nav-drawer-group-label">Roster</div>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="rosterTab">Roster</button>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="faTab">Free Agents</button>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="depthTab">Depth Chart</button>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="contractsTab">Contracts</button>
+        </div>
+        <div class="mobile-nav-drawer-group">
+          <div class="mobile-nav-drawer-group-label">Builds</div>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="transactionsTab">Trades</button>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="scoutingTab">Scouting</button>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="draftTab">Draft</button>
+        </div>
+        <div class="mobile-nav-drawer-group">
+          <div class="mobile-nav-drawer-group-label">History &amp; Config</div>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="logTab">League Log</button>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="historyTab">Dynasty</button>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="rulesTab">Rules</button>
+          <button class="mobile-nav-drawer-item" type="button" data-tab="settingsTab">Settings</button>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-nav-backdrop" id="mobileNavBackdrop" aria-hidden="true"></div>
+
     <script type="module" src="./app.js"></script>
   </body>
 </html>

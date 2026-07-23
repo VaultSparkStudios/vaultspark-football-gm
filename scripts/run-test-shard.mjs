@@ -47,6 +47,7 @@ export const SHARDS = {
     "test/launch-readiness.test.js",
     "test/local-api-runtime.test.js",
     "test/mobile-loop.test.js",
+    "test/mobile-nav.test.js",
     "test/mobile-weekly-intent.test.js",
     "test/modal-manager.test.js",
     "test/opening-contract-prologue.test.js",

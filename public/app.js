@@ -1,5 +1,6 @@
 import { injectTutorialStyles, mountTutorial } from "./lib/tutorialCampaign.js";
 import { initThemeCustomizer } from "./lib/themeCustomizer.js";
+import { initMobileNav } from "./lib/mobileNav.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
 import { maybeShowReturnDigest } from "./lib/returnDigest.js";
@@ -992,6 +993,12 @@ function bindEvents() {
     delete state.depthManualShares?.[position]?.[resetButton.dataset.depthShareReset];
     renderDepthChart();
   });
+  document.getElementById("depthTable").addEventListener("input", (event) => {
+    const input = event.target.closest("input[data-depth-share-input]");
+    if (!input) return;
+    const position = document.getElementById("depthPositionSelect").value;
+    updateDepthShare(position, input.dataset.depthShareInput, input.value);
+  });
   document.getElementById("depthTable").addEventListener("change", (event) => {
     const input = event.target.closest("input[data-depth-share-input]");
     if (!input) return;
@@ -1972,6 +1979,7 @@ async function init() {
   );
   initMobileLoop(state, advanceFromMobileLoop);
   syncMobileLoopOverlay();
+  initMobileNav();
   setInterval(() => {
     observeBackgroundTask(loadSimJobs, {
       surface: "jobs",
