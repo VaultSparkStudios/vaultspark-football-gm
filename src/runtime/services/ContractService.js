@@ -13,39 +13,44 @@
  *   applyFranchiseTag, applyFifthYearOption, rollContracts, capSummary
  */
 
+import { NFL_STRUCTURE } from "../../config.js";
 import {
   applyFifthYearOption,
   applyFranchiseTag,
-  buildContract,
   computeReleaseDeadCap,
   normalizeContract,
   restructureContract
 } from "../../domain/contracts.js";
-import { clamp } from "../../utils/rng.js";
+import { getAllTeamPlayers } from "../../domain/teamFactory.js";
 
 export class ContractService {
-  constructor(league) {
-    this.league = league;
+  constructor(sessionOrLeague) {
+    this.session = sessionOrLeague?.league ? sessionOrLeague : null;
+    this.league = sessionOrLeague?.league || sessionOrLeague;
   }
 
   // ── Cap accounting ─────────────────────────────────────────────────────────
 
   getCapSummary(teamId) {
-    const team = this._team(teamId);
-    if (!team) return null;
-    const players = this._teamPlayers(teamId);
-    const capUsed = players
-      .filter((p) => p.rosterSlot === "active" || !p.rosterSlot)
-      .reduce((s, p) => s + (p.contract?.capHit || 0), 0);
-    const deadCap = team.deadCap || 0;
-    const capLimit = this.league.settings?.capHardLimit || 224_800_000;
+    const capLedger = this.league.capLedger?.[teamId] || {
+      rollover: 0,
+      deadCapCurrentYear: 0,
+      deadCapNextYear: 0
+    };
+    const usedCap = getAllTeamPlayers(this.league, teamId).reduce(
+      (sum, player) => sum + normalizeContract(player.contract).capHit,
+      0
+    );
+    const salaryCapBase = this.league.teamCapOverride?.[teamId] || NFL_STRUCTURE.salaryCap;
+    const salaryCap = salaryCapBase + (capLedger.rollover || 0);
+    const deadCap = capLedger.deadCapCurrentYear || 0;
     return {
-      teamId,
-      capUsed,
+      salaryCap,
+      usedCap,
       deadCap,
-      capLimit,
-      capRemaining: capLimit - capUsed - deadCap,
-      percentUsed: capLimit > 0 ? Math.round(((capUsed + deadCap) / capLimit) * 100) : 0
+      capSpace: salaryCap - usedCap - deadCap,
+      deadCapNextYear: capLedger.deadCapNextYear || 0,
+      rolloverNextYearEstimate: capLedger.rollover || 0
     };
   }
 

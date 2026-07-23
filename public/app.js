@@ -529,6 +529,17 @@ function bindEvents() {
         .catch(presentActionError);
     }
   });
+  document.getElementById("franchiseArchitecture")?.addEventListener("click", (event) => {
+    const action = event.target.closest?.("[data-blueprint-target-tab]");
+    if (!action) return;
+    activateTab(action.dataset.blueprintTargetTab || "overviewTab");
+    requestAnimationFrame(() => {
+      const target = document.getElementById(action.dataset.blueprintTargetId || "");
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (typeof target.focus === "function") target.focus({ preventScroll: true });
+    });
+  });
   document.getElementById("advance4WeeksBtn").addEventListener("click", () =>
     runAction(
       () => advanceWeeksSequential(4, { resolveDecision: checkAndShowGmDecision }),

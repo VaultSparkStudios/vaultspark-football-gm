@@ -70,6 +70,7 @@ import { clamp } from "../utils/rng.js";
 import { RNGStreams } from "../utils/rngStreams.js";
 import { createSessionModules } from "./modules/sessionModules.js";
 import { createServices } from "./services/index.js";
+import { architectLedgerForTeam } from "./architectLedger.js";
 import { LATEST_SNAPSHOT_SCHEMA_VERSION } from "./snapshotMigration.js";
 import {
   advanceInjuryRecovery,
@@ -2442,26 +2443,7 @@ export class GameSession {
   }
 
   getTeamCapSummary(teamId) {
-    const capLedger = this.league.capLedger[teamId] || {
-      rollover: 0,
-      deadCapCurrentYear: 0,
-      deadCapNextYear: 0
-    };
-    const usedCap = teamPlayersAll(this.league, teamId).reduce(
-      (sum, player) => sum + normalizeContract(player.contract).capHit,
-      0
-    );
-    const salaryCapBase = this.league.teamCapOverride?.[teamId] || NFL_STRUCTURE.salaryCap;
-    const salaryCap = salaryCapBase + (capLedger.rollover || 0);
-    const deadCap = capLedger.deadCapCurrentYear || 0;
-    return {
-      salaryCap,
-      usedCap,
-      deadCap,
-      capSpace: salaryCap - usedCap - deadCap,
-      deadCapNextYear: capLedger.deadCapNextYear || 0,
-      rolloverNextYearEstimate: capLedger.rollover || 0
-    };
+    return this.services.contracts.getCapSummary(teamId);
   }
 
   getRosterNeedSummary(teamId) {
@@ -4902,6 +4884,7 @@ export class GameSession {
       latestWeekResults: this.weekResultsCurrentSeason.slice(-1)[0] || null,
       latestTacticalFilm: (this.league.tacticalFilmLog || []).find((entry) => entry.teamId === this.controlledTeamId) || null,
       tacticalFilmLedger: (this.league.tacticalFilmLog || []).filter((entry) => entry.teamId === this.controlledTeamId).slice(0, 12),
+      architectLedger: architectLedgerForTeam(this.league, this.controlledTeamId, 12),
       recentBoxScores: this.getRecentBoxScores(this.controlledTeamId, 8),
       injuryReport: getInjuryReport(this.league, null, {
         getTeamModifiers: dashboardInjuryModifiers

@@ -25,7 +25,7 @@ export { ContractService, ScoutingService, OwnerService, DraftService, StatsServ
 export function createServices(sessionOrLeague) {
   const league = sessionOrLeague?.league || sessionOrLeague;
   return {
-    contracts: new ContractService(league),
+    contracts: new ContractService(sessionOrLeague),
     scouting:  new ScoutingService(league),
     owner:     new OwnerService(league),
     draft:     new DraftService(league),

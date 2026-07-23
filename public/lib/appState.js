@@ -1,6 +1,7 @@
 import { createApiClient } from "./api/createApiClient.js";
 
 export const state = {
+  gmLegacy: null,
   prevGmLegacyTier: null,
   prevDashboardPhase: null,
   halftimeTacticChoice: null,

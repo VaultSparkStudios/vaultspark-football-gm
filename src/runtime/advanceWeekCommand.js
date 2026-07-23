@@ -1,6 +1,7 @@
 import { applyGmDecisionConsequence, resolveGmDecisionConsequence } from "../engine/gmDecisionConsequences.js";
 import { validatePendingGmDecision } from "../engine/gmDecisionAuthority.js";
 import { buildTacticalFilmReceipt, tacticDefinition } from "../../public/lib/tacticalFilmRoom.js";
+import { appendArchitectLedger } from "./architectLedger.js";
 
 export const ADVANCE_WEEK_COMMAND_VERSION = "2.0";
 
@@ -38,16 +39,18 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
   if (!command.ok) return command;
 
   const started = { year: session.currentYear, week: session.currentWeek, phase: session.phase };
+  const controlledTeam = session.controlledTeamId
+    ? session.league.teams?.find((entry) => entry.id === session.controlledTeamId) || null
+    : null;
+  const teamBefore = controlledTeam ? { wins: controlledTeam.wins, losses: controlledTeam.losses, ties: controlledTeam.ties } : null;
   const gmDecision = command.gmDecisionChoice
     ? applyGmDecisionConsequence(session, command.gmDecisionChoice)
     : { ok: true, applied: false };
   if (!gmDecision.ok) return { ...gmDecision, status: 400, reasonCode: "ADVANCE_WEEK_GM_DECISION_FAILED" };
 
-  const team = command.tactic && session.controlledTeamId
-    ? session.league.teams?.find((entry) => entry.id === session.controlledTeamId)
-    : null;
-  const originalWeeklyPlan = team?.weeklyPlan ? { ...team.weeklyPlan } : null;
-  if (team?.weeklyPlan && command.tactic) Object.assign(team.weeklyPlan, tacticModifiers[command.tactic]);
+  const tacticTeam = command.tactic ? controlledTeam : null;
+  const originalWeeklyPlan = tacticTeam?.weeklyPlan ? { ...tacticTeam.weeklyPlan } : null;
+  if (tacticTeam?.weeklyPlan && command.tactic) Object.assign(tacticTeam.weeklyPlan, tacticModifiers[command.tactic]);
 
   const results = [];
   try {
@@ -58,7 +61,7 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
       afterAdvance?.({ result, before, session, index });
     }
   } finally {
-    if (team && originalWeeklyPlan) team.weeklyPlan = originalWeeklyPlan;
+    if (tacticTeam && originalWeeklyPlan) tacticTeam.weeklyPlan = originalWeeklyPlan;
   }
 
   const tacticalReceipt = command.tactic
@@ -75,6 +78,19 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
     session.league.tacticalFilmLog = session.league.tacticalFilmLog.slice(0, 40);
   }
 
+  const completed = { year: session.currentYear, week: session.currentWeek, phase: session.phase };
+  const teamAfter = controlledTeam ? { wins: controlledTeam.wins, losses: controlledTeam.losses, ties: controlledTeam.ties } : null;
+  const architectEntry = appendArchitectLedger(session, {
+    teamId: session.controlledTeamId,
+    command,
+    started,
+    completed,
+    gmDecision,
+    tacticalReceipt,
+    teamBefore,
+    teamAfter
+  });
+
   return {
     ok: true,
     count: command.count,
@@ -82,11 +98,12 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
     gmDecision,
     tacticApplied: command.tactic,
     tacticalReceipt,
+    architectEntry,
     commandReceipt: {
       schemaVersion: ADVANCE_WEEK_COMMAND_VERSION,
       kind: "advance-week",
       started,
-      completed: { year: session.currentYear, week: session.currentWeek, phase: session.phase },
+      completed,
       count: command.count,
       tactic: command.tactic,
       gmDecisionApplied: gmDecision.applied === true

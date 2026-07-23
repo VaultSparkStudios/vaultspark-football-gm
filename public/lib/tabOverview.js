@@ -6,6 +6,7 @@ import { buildBoxScoreImpactLeaders, buildQuarterScoreboard } from "./boxScorePr
 import { observeBackgroundTask, recordClientDiagnostic } from "./clientDiagnostics.js";
 import { buildFranchiseCommandStack } from "./franchiseCommandCenter.js";
 import { buildTacticalIdentityLedger } from "./tacticalFilmRoom.js";
+import { architectLedgerRows, buildArchitectureSignal, buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -37,6 +38,7 @@ export function renderOverview() {
   }
   renderOverviewSpotlight();
   renderFranchiseCommandCenter();
+  renderFranchiseArchitecture();
   renderOpeningContract();
   renderRehabCommandCenter();
   renderGmCommitmentBoard();
@@ -69,6 +71,63 @@ export function renderFranchiseCommandCenter() {
           <span class="franchise-command-reason">#${card.rank} · ${escapeHtml(card.reason)}</span>
         </button>
       `).join("")}
+    </div>
+  `;
+}
+export function renderFranchiseArchitecture() {
+  const content = document.getElementById("franchiseArchitectureContent");
+  if (!content) return;
+  const commands = buildFranchiseCommandStack({
+    dashboard: state.dashboard || {},
+    newsRows: state.newsRows || [],
+    pendingDecision: state.mobilePendingDecision || state.dashboard?.gmDecisionQueue?.[0] || null,
+    pendingChoice: state.mobilePendingDecisionChoice || null
+  });
+  const rawLedger = state.dashboard?.architectLedger || [];
+  const horizons = buildThreeHorizonBlueprint({
+    dashboard: state.dashboard || {},
+    commands,
+    gmLegacy: state.gmLegacy || state.dashboard?.gmLegacy || null,
+    architectLedger: rawLedger,
+  });
+  const ledger = architectLedgerRows(rawLedger);
+  const signal = buildArchitectureSignal(rawLedger);
+  content.innerHTML = `
+    <div class="franchise-horizon-grid">
+      ${horizons.map((lane) => `
+        <button type="button" class="franchise-horizon-card ${escapeHtml(lane.tone)}" data-blueprint-target-tab="${escapeHtml(lane.targetTab)}" data-blueprint-target-id="${escapeHtml(lane.targetId)}">
+          <span class="franchise-horizon-label">${escapeHtml(lane.label)}</span>
+          <small>${escapeHtml(lane.authority)}</small>
+          <strong>${escapeHtml(lane.title)}</strong>
+          <span>${escapeHtml(lane.detail)}</span>
+          <em>${escapeHtml(lane.milestone)}</em>
+        </button>
+      `).join("")}
+    </div>
+    <div class="architect-signal ${signal.ready ? "ready" : "awaiting"}">
+      <span class="franchise-horizon-label">Decision-memory signal · ${escapeHtml(signal.sampleSize)} receipt${signal.sampleSize === 1 ? "" : "s"}</span>
+      <strong>${escapeHtml(signal.title)}</strong>
+      <span>${escapeHtml(signal.detail)}</span>
+      <small>${escapeHtml(signal.disclaimer)}</small>
+    </div>
+    <div class="architect-ledger">
+      <div class="architect-ledger-head">
+        <strong>Architect's Ledger</strong>
+        <span class="small">Intent → execution → observed result → next adaptation</span>
+      </div>
+      ${ledger.length ? `
+        <ol class="architect-ledger-list">
+          ${ledger.map((row) => `
+            <li class="architect-ledger-row">
+              <span class="architect-ledger-authority">${escapeHtml(row.authority)}</span>
+              <strong>${escapeHtml(row.intent)}</strong>
+              <span>${escapeHtml(row.outcome || "No result recorded")}</span>
+              <small>Next: ${escapeHtml(row.adaptation)}</small>
+            </li>
+          `).join("")}
+        </ol>
+        <p class="architect-ledger-disclaimer">${escapeHtml(ledger[0].disclaimer || "The ledger reports sequence and alignment, not causation.")}</p>
+      ` : '<p class="architect-ledger-empty">Advance a week to record the first committed intent and its observed outcome. No result is invented before play.</p>'}
     </div>
   `;
 }
@@ -780,6 +839,8 @@ export async function renderGmLegacyScore() {
   try {
     const data = await api("/api/gm-legacy");
     const s = data.legacy;
+    state.gmLegacy = s;
+    renderFranchiseArchitecture();
     if (!s) { card.hidden = true; return; }
     card.hidden = false;
     const scoreEl = document.getElementById("gmLegacyScoreVal");
