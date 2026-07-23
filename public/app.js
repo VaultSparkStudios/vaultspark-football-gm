@@ -993,6 +993,12 @@ function bindEvents() {
     delete state.depthManualShares?.[position]?.[resetButton.dataset.depthShareReset];
     renderDepthChart();
   });
+  document.getElementById("depthTable").addEventListener("input", (event) => {
+    const input = event.target.closest("input[data-depth-share-input]");
+    if (!input) return;
+    const position = document.getElementById("depthPositionSelect").value;
+    updateDepthShare(position, input.dataset.depthShareInput, input.value);
+  });
   document.getElementById("depthTable").addEventListener("change", (event) => {
     const input = event.target.closest("input[data-depth-share-input]");
     if (!input) return;
