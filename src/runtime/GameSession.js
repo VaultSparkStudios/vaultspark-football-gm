@@ -4811,7 +4811,8 @@ export class GameSession {
       completed: draft.completed,
       teamOnClock,
       controlledTeamOnClock: Boolean(teamOnClock && teamOnClock === this.controlledTeamId),
-      userActionRequired: Boolean(teamOnClock && teamOnClock === this.controlledTeamId)
+      userActionRequired: Boolean(teamOnClock && teamOnClock === this.controlledTeamId),
+      controlledSelections: (draft.selections || []).filter((selection) => selection.teamId === this.controlledTeamId).slice(-3).reverse()
     };
   }
 
@@ -4900,6 +4901,7 @@ export class GameSession {
       latestStandings: standingsRows,
       latestWeekResults: this.weekResultsCurrentSeason.slice(-1)[0] || null,
       latestTacticalFilm: (this.league.tacticalFilmLog || []).find((entry) => entry.teamId === this.controlledTeamId) || null,
+      tacticalFilmLedger: (this.league.tacticalFilmLog || []).filter((entry) => entry.teamId === this.controlledTeamId).slice(0, 12),
       recentBoxScores: this.getRecentBoxScores(this.controlledTeamId, 8),
       injuryReport: getInjuryReport(this.league, null, {
         getTeamModifiers: dashboardInjuryModifiers

@@ -1337,6 +1337,16 @@ export async function runAction(fn, statusText = "Working...", { key = null, con
         setStatus(result.statusText || "Deferred");
         return result;
       }
+      if (result?.actionStatus === "committed-degraded") {
+        setStatus("Ready · refresh degraded");
+        showToast(result.statusText || "Committed · some panels need refresh");
+        return result;
+      }
+      if (result?.actionStatus === "committed") {
+        setStatus("Ready");
+        showToast(result.statusText || "Committed");
+        return result;
+      }
       setStatus("Ready");
       showToast("Done");
       return result;

@@ -28,6 +28,7 @@ import { isWarning } from './lib/doctor-predicates.mjs';
 import { sparkline as _sparkline } from './lib/visual-blocks.mjs';
 import { parseSilHistory, forecastNext } from './lib/sil-forecaster.mjs';
 import { BLOCKED_STATUSES_CORE } from './lib/shared-policies.mjs';
+import { inspectTestReceipt } from './lib/test-receipt.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
@@ -726,36 +727,16 @@ const runwayNum = runwayNumMatch ? parseFloat(runwayNumMatch[1])
                 : runwayQualitative ? 9
                 : runwayWeak ? 1
                 : 5;
-// G1 S121 — prefer fresh .cache/test-count.json (from refresh-test-count.mjs) over PROJECT_STATUS values.
-// S181 [audit #2] — freshness guard: the cache silently went stale (179 files cached
-// while the live suite had 225), so the brief reported a confident-but-wrong count.
-// Flag the count stale when the cache is >24h old OR predates the newest test file
-// — a stale count is surfaced as such, never as fresh truth (CANON-031).
-let testsStale = false;
-try {
-  const tcPath = path.join(root, '.cache', 'test-count.json');
-  if (fs.existsSync(tcPath)) {
-    const tc = JSON.parse(fs.readFileSync(tcPath, 'utf8'));
-    if (typeof tc.total === 'number' && typeof tc.passed === 'number') {
-      status.testsTotal = tc.total;
-      status.testsPassing = tc.passed;
-      if (tc.generatedAt) status.testsLastRun = tc.generatedAt.slice(0, 10);
-      const cacheMs = fs.statSync(tcPath).mtimeMs;
-      const ageH = (Date.now() - cacheMs) / 3.6e6;
-      let newestTestMs = 0;
-      try {
-        const td = path.join(root, 'scripts', 'test');
-        for (const f of fs.readdirSync(td)) {
-          if (!/\.(mjs|ts)$/.test(f)) continue;
-          const m = fs.statSync(path.join(td, f)).mtimeMs;
-          if (m > newestTestMs) newestTestMs = m;
-        }
-      } catch { /* no test dir */ }
-      testsStale = ageH > 24 || (newestTestMs > 0 && newestTestMs > cacheMs);
-    }
-  }
-} catch { /* non-fatal — fall through to PROJECT_STATUS values */ }
-function listSignalCount(value) {
+// Direct suite receipts are the only fresh test-count authority. PROJECT_STATUS remains
+// a historical fallback, but a missing/stale receipt is visibly marked (CANON-031).
+const testReceiptInspection = inspectTestReceipt(root);
+let testsStale = !testReceiptInspection.fresh;
+if (testReceiptInspection.valid) {
+  const receipt = testReceiptInspection.receipt;
+  status.testsTotal = receipt.total;
+  status.testsPassing = receipt.passed;
+  if (receipt.generatedAt) status.testsLastRun = receipt.generatedAt.slice(0, 10);
+}function listSignalCount(value) {
   return Array.isArray(value) ? value.length : (typeof value === 'number' ? value : 0);
 }
 
@@ -778,7 +759,7 @@ if (typeof status.testsPassing === 'number' && typeof status.testsTotal === 'num
   testsLabel = `${status.testsPassing}/${status.testsTotal} passing` + (status.testsLastRun ? ` (${status.testsLastRun})` : '');
   if (deferredCount) testsLabel += ` · ${deferredCount} deferred: ${compactFileList(status.testsDeferred)}`;
   if (envBlockedCount) testsLabel += ` · ${envBlockedCount} env-blocked: ${compactFileList(status.testsEnvBlocked)}`;
-  if (testsStale) testsLabel += ' · STALE — run node scripts/run-tests.mjs';
+  if (testsStale) testsLabel += ' · STALE — run node scripts/refresh-test-count.mjs';
 } else if (testsExempt) {
   sigTests = '✓';
   testsLabel = 'N/A (protocol repo)';

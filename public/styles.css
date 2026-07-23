@@ -820,7 +820,8 @@ body[data-theme="light"] .btn-primary {
   background:
     linear-gradient(145deg, rgba(var(--team-primary-rgb), 0.84), rgba(16, 19, 31, 0.98)),
     radial-gradient(circle at right, rgba(var(--team-secondary-rgb), 0.28), transparent 36%);
-  color: var(--ink-strong);
+  color: #fff9ef;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.72);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
@@ -4168,6 +4169,8 @@ html[data-theme="light"] .bg-layer {
 .film-headline { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .film-verdict { font-weight: 750; }
 .film-observed { color: var(--ink); font-variant-numeric: tabular-nums; }
+.film-identity { align-items: baseline; background: color-mix(in srgb, var(--panel) 82%, var(--accent)); border: 1px solid var(--border); border-radius: .65rem; display: flex; flex-wrap: wrap; gap: .35rem 1rem; justify-content: space-between; padding: .7rem .8rem; }
+.film-identity span { color: var(--muted); font-size: .78rem; }
 .gm-commitment-board { border-left: 4px solid var(--accent); display: grid; gap: .75rem; }
 .gm-commitment-kicker { color: var(--accent); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .gm-commitment-row { align-items: center; background: color-mix(in srgb, var(--panel) 82%, var(--accent)); border: 1px solid var(--border); border-radius: .65rem; display: flex; gap: 1rem; justify-content: space-between; padding: .8rem; }
@@ -4307,3 +4310,58 @@ html[data-theme="light"] .bg-layer {
 .playtest-rating-grid label, .playtest-receipt-panel > label { display: grid; gap: 5px; color: var(--ink-dim); font-size: .82rem; }
 .playtest-receipt-panel textarea { width: 100%; resize: vertical; }
 @media (max-width: 720px) { .playtest-rating-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.franchise-command-center {
+  display: grid;
+  gap: 12px;
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--line));
+}
+.franchise-command-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+}
+.franchise-command-head h3 { margin: 2px 0 0; }
+.franchise-command-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+}
+.franchise-command-card {
+  min-height: 132px;
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--card-grad);
+  color: var(--ink);
+}
+.franchise-command-card.danger { border-color: var(--danger); }
+.franchise-command-card.warning { border-color: var(--warning); }
+.franchise-command-card:disabled { opacity: .72; cursor: not-allowed; }
+.franchise-command-lane,
+.franchise-command-kicker {
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.franchise-command-lane { color: var(--accent); font-weight: 800; }
+.franchise-command-kicker { color: var(--muted); }
+.franchise-command-card small { color: var(--muted); line-height: 1.45; }
+.franchise-command-reason { color: var(--muted); font-size: .68rem; line-height: 1.35; }
+@media (max-width: 640px) {
+  .franchise-command-head { align-items: start; flex-direction: column; gap: 4px; }
+  .franchise-command-grid { grid-template-columns: 1fr; }
+}
+
+.contextual-evidence-prompt { background: color-mix(in srgb, var(--panel) 92%, var(--accent)); border: 1px solid var(--accent); border-radius: 1rem; box-shadow: var(--shadow-lg); display: grid; gap: .65rem; margin: 0 0 1rem; padding: 1rem; width: 100%; }
+.contextual-evidence-prompt h2, .contextual-evidence-prompt p { margin: 0; }
+.contextual-evidence-head { align-items: center; color: var(--accent-strong); display: flex; font-size: .72rem; font-weight: 850; justify-content: space-between; letter-spacing: .09em; text-transform: uppercase; }
+.contextual-evidence-head button { background: transparent; border: 0; color: var(--muted); font-size: 1.35rem; min-height: 2.25rem; min-width: 2.25rem; }
+.contextual-evidence-ratings { display: grid; gap: .5rem; grid-template-columns: repeat(4, 1fr); }
+.contextual-evidence-ratings label, .contextual-evidence-note { color: var(--muted); display: grid; font-size: .75rem; gap: .25rem; }
+.contextual-evidence-ratings select, .contextual-evidence-note textarea { width: 100%; }
+.contextual-evidence-privacy { color: var(--muted); font-size: .72rem; }
+.contextual-evidence-actions { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: flex-end; }
+@media (max-width: 560px) { .contextual-evidence-prompt { max-height: none; overflow: visible; } .contextual-evidence-ratings { grid-template-columns: repeat(2, 1fr); } }

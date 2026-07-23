@@ -430,3 +430,29 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Rationale:** The configured Pages URL redirected into an unrelated failing surface while naive status handling appeared successful. Source-derived release truth needs one joined receipt, not independent optimistic checks.
 
 **Pattern established:** Availability evidence and deploy-identity evidence are one fail-closed contract.
+
+## 2026-07-22 — Commit authority and hydration quality are separate receipts
+
+**Decision:** Once the weekly command boundary returns success, its state is authoritative. Follow-up loaders settle independently and may mark the screen committed-degraded with named retry actions, but they cannot recast the mutation as failed.
+
+**Rationale:** Secondary dashboard hydration is fallible and observational. Coupling it to commit semantics produced false failure language and encouraged duplicate submissions.
+
+**Pattern established:** Every mutation-plus-refresh workflow records commit identity first, then reports hydration quality as a separate bounded receipt.
+
+---
+
+## 2026-07-22 — Product feedback remains local, sparse, and epistemically labeled
+
+**Decision:** Contextual evidence prompts fire only from persisted source milestones, obey one seven-day global cadence plus occurrence deduplication, and never transmit automatically. Trends require at least three receipts and label sample size, self-selection, locality, and non-causality.
+
+**Rationale:** The project needs real learning signals, but fabricated telemetry or overinterpreted self-reports would violate observability truth and add data custody.
+
+**Pattern established:** Evidence instruments state what they can and cannot prove at the point of interpretation.
+
+---
+
+## 2026-07-22 — Launch posture is independent from local implementation completeness
+
+**Decision:** Session 53 can be complete while launch remains HOLD. Local same-revision evidence, shared-origin web hardening, credential readiness, and latest-run CI success cannot substitute for exact hosted-origin revision evidence, a real received-message receipt, literal 5/5 CI, founder approval, or authoritative lifecycle reconciliation.
+
+**Rationale:** Joining unlike evidence sources creates a polished but false release claim. External truth remains pending until its own receipt exists.

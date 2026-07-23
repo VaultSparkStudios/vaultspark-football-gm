@@ -15,7 +15,8 @@ import {
 } from "./lib/gistSync.js";
 
 import { state, api } from "./lib/appState.js";
-import { clearClientDiagnostics, observeBackgroundTask, recordClientDiagnostic, retryClientDiagnostics } from "./lib/clientDiagnostics.js";
+import { clearClientDiagnostics, observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic, retryClientDiagnostics } from "./lib/clientDiagnostics.js";
+import { coordinatePostCommitHydration } from "./lib/postCommitHydration.js";
 
 const SIMULATION_ACTION = {
   key: "franchise-simulation",
@@ -348,17 +349,24 @@ async function collectWeeklyCommandIntent({ gmDecisionChoice = null } = {}) {
 }
 
 async function refreshAfterWeeklyCommand(response) {
-  applyDashboard(response.state);
+  const hydration = await coordinatePostCommitHydration({
+    response,
+    applyDashboard,
+    loaders: [
+      ["roster", loadRoster], ["free-agency", loadFreeAgency], ["retired-pool", loadRetiredPool],
+      ["stats", loadStats], ["draft", loadDraftState], ["scouting", loadScouting],
+      ["qa", loadQa], ["team-history", loadTeamHistory], ["calendar", loadCalendar],
+      ["transactions", loadTransactionLog], ["news", loadNews], ["owner", loadOwner],
+      ["pipeline", loadPipeline], ["simulation-jobs", loadSimJobs]
+    ].map(([name, load]) => ({ name, load })),
+    recordFailure: recordClientDiagnostic,
+    resolveFailure: resolveClientDiagnostic
+  });
   if (response.gmDecision?.applied) {
     const label = response.gmDecision.decision?.label || "GM decision";
     const effect = response.gmDecision.decision?.receipt?.summary || response.gmDecision.decision?.effect || "choice recorded";
     showToast(`${label}: ${effect}`);
   }
-  await Promise.all([
-    loadRoster(), loadFreeAgency(), loadRetiredPool(), loadStats(), loadDraftState(), loadScouting(),
-    loadQa(), loadTeamHistory(), loadCalendar(), loadTransactionLog(), loadNews(), loadOwner(),
-    loadPipeline(), loadSimJobs()
-  ]);
   const newsItems = state.dashboard?.newsLog || state.newsRows || [];
   ingestNewsIntoInbox(newsItems);
   renderInboxBadge();
@@ -368,8 +376,8 @@ async function refreshAfterWeeklyCommand(response) {
   checkAndShowFranchiseMoment().catch(presentActionError);
   checkAndPruneRewindStorage();
   syncMobileLoopOverlay();
+  return hydration;
 }
-
 async function advanceOneWeek({ gmDecisionChoice = null } = {}) {
   const intent = await collectWeeklyCommandIntent({ gmDecisionChoice });
   if (intent.deferred) {
@@ -378,8 +386,8 @@ async function advanceOneWeek({ gmDecisionChoice = null } = {}) {
   }
   const response = await api("/api/advance-week", { method: "POST", body: intent.body });
   state.mobilePendingDecisionChoice = null;
-  await refreshAfterWeeklyCommand(response);
-  return response;
+  const postCommitReceipt = await refreshAfterWeeklyCommand(response);
+  return { ...response, ...postCommitReceipt, postCommitReceipt };
 }
 
 function advanceFromMobileLoop() {
@@ -507,6 +515,20 @@ function bindEvents() {
     document.getElementById("advanceWeekBtn")?.click();
   });
 
+  document.getElementById("franchiseCommandCenter")?.addEventListener("click", (event) => {
+    const action = event.target.closest?.("[data-command-action]");
+    if (!action || action.disabled) return;
+    const targetTab = action.dataset.targetTab;
+    if (targetTab) document.querySelector(`[data-tab="${targetTab}"]`)?.click();
+    if (action.dataset.commandAction === "advance-week") {
+      document.getElementById("advanceWeekBtn")?.click();
+    } else if (action.dataset.commandAction === "choose-gm-decision") {
+      checkAndShowGmDecision()
+        .then((result) => result?.status === "chosen" ? submitMobileGmDecisionChoice(result.choice) : null)
+        .then(() => renderOverview())
+        .catch(presentActionError);
+    }
+  });
   document.getElementById("advance4WeeksBtn").addEventListener("click", () =>
     runAction(
       () => advanceWeeksSequential(4, { resolveDecision: checkAndShowGmDecision }),

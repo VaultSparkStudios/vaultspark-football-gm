@@ -9,6 +9,8 @@
  *   import { isMobileModeEnabled, setMobileModeEnabled, renderMobileOverlay } from "./lib/mobileLoop.js";
  */
 
+import { buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "./franchiseCommandCenter.js";
+
 const MOBILE_PREF_KEY = "vsfgm_mobile_loop";
 
 // ── Mode detection ────────────────────────────────────────────────────────────
@@ -72,6 +74,7 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
     pendingChoice: state.mobilePendingDecisionChoice || null
   });
 
+  const blockingCommand = hasBlockingFranchiseCommand(decisionDeck);
   overlay.innerHTML = `
     <div class="ml-card">
       <div class="ml-header">
@@ -116,7 +119,7 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
       </div>
 
       <div class="ml-actions">
-        <button class="ml-btn primary" id="mlAdvanceWeekBtn">${state.mobilePendingDecisionChoice ? "Commit Plan & Advance" : "⏭ Advance Week"}</button>
+        <button class="ml-btn primary" id="mlAdvanceWeekBtn" ${blockingCommand ? "disabled aria-disabled=\"true\"" : ""}>${blockingCommand ? "Resolve Decision First" : state.mobilePendingDecisionChoice ? "Commit Plan & Advance" : "⏭ Advance Week"}</button>
         <button class="ml-btn" id="mlFullViewBtn">Full View</button>
       </div>
     </div>
@@ -296,106 +299,9 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
   return cards.slice(0, 4);
 }
 
-export function buildMobileDecisionDeck({ dashboard = {}, newsRows = [], pendingDecision = null, pendingChoice = null } = {}) {
-  const controlledTeamId = dashboard.controlledTeamId;
-  const phase = String(dashboard.phase || "").toLowerCase();
-  const capSpace = dashboard.cap?.capSpace ?? 0;
-  const injuries = (dashboard.injuryReport || []).filter((entry) => entry.teamId === controlledTeamId);
-  const rosterNeeds = (dashboard.rosterNeeds || []).map((need) => need.pos || need.position || need).filter(Boolean);
-  const topNeed = rosterNeeds[0] || "depth";
-  const draftActive = phase.includes("draft") || Boolean(dashboard.draft?.available?.length || dashboard.draftState?.available?.length);
-  const week = Number(dashboard.currentWeek || 0);
-  const newsHead = newsRows[0]?.headline || "";
-
-  const cards = [];
-
-  if (pendingDecision?.id) {
-    const optionCount = Array.isArray(pendingDecision.options) ? pendingDecision.options.length : 0;
-    const stagedOption = (pendingDecision.options || []).find((option) => option.id === pendingChoice?.choiceId) || null;
-    cards.push({
-      kicker: pendingChoice ? "Weekly plan staged" : "GM decision",
-      title: pendingDecision.label || pendingDecision.type || "Decision required",
-      detail: stagedOption
-        ? `${stagedOption.label || stagedOption.id} selected. Choose Commit Plan & Advance to add the weekly tactic.`
-        : pendingDecision.prompt || `${optionCount || "Multiple"} option${optionCount === 1 ? "" : "s"} waiting before you advance.`,
-      action: "choose-gm-decision",
-      selectedChoiceId: pendingChoice?.choiceId || null,
-      decisionId: pendingDecision.id,
-      type: pendingDecision.type,
-      year: pendingDecision.year,
-      week: pendingDecision.week,
-      occurrenceKey: pendingDecision.occurrenceKey,
-      choices: (pendingDecision.options || []).slice(0, 4).map((option) => ({
-        id: option.id,
-        label: option.label || option.id,
-        effect: option.effect || ""
-      })),
-      targetTab: null,
-      tone: "danger"
-    });
-  }
-  if (draftActive) {
-    cards.push({
-      kicker: "Draft room",
-      title: "Set your board",
-      detail: topNeed === "depth" ? "Review the board before the next pick." : `Protect the ${topNeed} plan before the next pick.`,
-      action: "open-tab",
-      targetTab: "draftTab",
-      tone: "danger"
-    });
-  }
-  if (capSpace < 0) {
-    cards.push({
-      kicker: "Cap alert",
-      title: "Clear cap pressure",
-      detail: `${_fmtMoney(capSpace)} space. Open contracts before advancing.`,
-      action: "open-tab",
-      targetTab: "contractsTab",
-      tone: "danger"
-    });
-  }
-  if (injuries.length) {
-    cards.push({
-      kicker: "Trainer report",
-      title: "Patch the depth chart",
-      detail: `${injuries.length} controlled-team injury${injuries.length === 1 ? "" : "ies"} need a roster check.`,
-      action: "open-tab",
-      targetTab: "rosterTab",
-      tone: cards.length ? "warning" : "danger"
-    });
-  }
-  if (week >= 8 && week <= 10 && !cards.some((card) => card.targetTab === "transactionsTab")) {
-    cards.push({
-      kicker: "Deadline window",
-      title: "Price the market",
-      detail: topNeed === "depth" ? "Check trade options before the deadline closes." : `Shop for ${topNeed} help before the deadline closes.`,
-      action: "open-tab",
-      targetTab: "transactionsTab",
-      tone: "warning"
-    });
-  }
-  if (newsHead && cards.length < 2) {
-    cards.push({
-      kicker: "League pulse",
-      title: "Read the room",
-      detail: newsHead,
-      action: "open-tab",
-      targetTab: "overviewTab",
-      tone: "neutral"
-    });
-  }
-  cards.push({
-    kicker: "Next snap",
-    title: "Advance the week",
-    detail: "Sim the next slate when your roster is set.",
-    action: "advance-week",
-    targetTab: null,
-    tone: cards.length ? "neutral" : "primary"
-  });
-
-  return cards.slice(0, 3);
+export function buildMobileDecisionDeck(input = {}) {
+  return buildFranchiseCommandStack(input);
 }
-
 function renderDecisionCard(card, index) {
   const common = `
     <span class="ml-decision-kicker">${_esc(card.kicker)}</span>

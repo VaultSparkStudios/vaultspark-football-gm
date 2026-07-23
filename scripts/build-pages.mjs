@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { assertBrowserModuleReachability } from "./check-browser-module-reachability.mjs";
 import { assertBrowserPromiseObservability } from "./check-browser-promise-observability.mjs";
 import { assertApiContractParity } from "./check-api-contract-parity.mjs";
+import { assertPublicFooterContract } from "./lib/public-footer.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -270,6 +271,7 @@ async function emitDeployEvidence() {
 
 async function main() {
   await assertApiContractParity({ rootDir });
+  assertPublicFooterContract(publicDir);
   await assertBrowserPromiseObservability({ publicDir });
   await assertBrowserModuleReachability({ publicDir });
   await ensureCleanDir(outDir);

@@ -1,0 +1,313 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-22",
+  "session": 53,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 6,
+    "combinedPriority": 193.9,
+    "topItem": "post-commit-hydration-truth",
+    "source": "live-code-audit",
+    "openItems": 0
+  },
+  "profile": {
+    "type": "game/app",
+    "audience": "public-unlaunched",
+    "rubric": "founder-requested infrastructure-grade product rubric",
+    "staging": "GitHub Pages artifact plus canonical-origin verification",
+    "source": "live code, direct 420-test baseline, game-loop review, application release gate, infrastructure debt sweep, and public-safe context"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for local implementation",
+    "ci": "Literal last-five CI gate is 3/5 green; the newest revision is green across browser and all unit shards, so history is not fabricated or rewritten.",
+    "staging": "Fresh staging probe is SKIP, not pass. Existing same-origin receipt remains HOLD; canonical /_health is 404.",
+    "cost": "Cost-neutral field and content gates pass. Flat-rate plan cost remains notional and is not an alarm.",
+    "branding": "Brand link and 7/7 footer navigation pass; the exact mandatory copyright line is absent and is actionable locally.",
+    "origin": "Canonical HSTS, frame, CSP, deploy provenance, email receipt, and founder approval remain red external evidence gates.",
+    "parity": "Responsive artifacts exist, but live same-revision provenance cannot be proven while origin health and manifest are unreachable.",
+    "approval": "No launch/lifecycle-promotion approval is recorded."
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.4,
+    "progression": 8.5,
+    "sessionEngagement": 8.6,
+    "retention": 8.2,
+    "soulFidelity": 8.7,
+    "overall": 8.5,
+    "evidence": "Executable-contract review only: 34/34 focused contracts and 1/1 Playwright play-mode smoke. No GAME_LOOP document, checked-in playtest corpus, or private SOUL ledger exists here; no claim about fun, churn, pacing, or sentiment is made."
+  },
+  "recommendedMoves": [
+    "Make successful franchise mutations irrevocably legible even when secondary panel hydration degrades.",
+    "Give desktop and mobile one shared ranked command authority so every blocking decision points to the exact next action.",
+    "Turn repeated tactical intent into a source-derived identity progression and ask for bounded local evidence only at real milestones."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Promote launch/SPARKED posture",
+      "reason": "Deferred honestly: canonical health is 404, HSTS/frame/CSP are incomplete, deploy provenance and received email proof are absent, literal CI last-five is 3/5, and founder approval is not recorded."
+    },
+    {
+      "candidate": "Repair the authoritative registry or apex host directly",
+      "reason": "Rejected as sibling-owned work. This repo may emit evidence and Ark cargo but cannot edit another repository to make its gate green."
+    },
+    {
+      "candidate": "Add generic retention widgets, achievements, saves, or telemetry",
+      "reason": "Rejected as false premise: return digest, inbox, challenges, rivalry, replay, history, epilogues, exports, and local receipts already exist; no measured need justifies new custody or variable cost."
+    },
+    {
+      "candidate": "Treat prior failing CI history as fixable local work",
+      "reason": "Rejected: current HEAD is green. Historical failures remain truthful inputs to the literal 5/5 gate and cannot be rewritten."
+    },
+    {
+      "candidate": "Rewrite GameSession or install a bundler",
+      "reason": "Culled as unsafe decomposition or unmeasured dependency work. The verified defects have narrower, testable authority boundaries."
+    },
+    {
+      "candidate": "Claim player delight or retention efficacy",
+      "reason": "Rejected because there is no real receipt corpus. The implementation may improve evidence discoverability but impact scores remain zero until actual receipts exist."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Infrastructure / transactional integrity / observability",
+      "effortHours": 2.0,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 40.0,
+      "slug": "post-commit-hydration-truth",
+      "title": "Separate authoritative week commits from fallible panel hydration",
+      "status": "implemented",
+      "premise": "advanceOneWeek commits /api/advance-week and applies the returned state, then awaits thirteen loaders in one Promise.all. A single loader rejection makes runAction label the action failed after time already advanced, inviting an accidental second advance.",
+      "evidence": [
+        "public/app.js:350-381 applies committed state before awaiting one fail-fast Promise.all",
+        "public/lib/gameFlow.js:721-778 already contains bounded all-settled hydration diagnostics but the weekly path bypasses it",
+        "the canonical suite has no regression for committed mutation plus degraded secondary hydration"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Replace fail-fast refresh with all-settled hydration and never reject after a valid commit."
+        },
+        "L2": {
+          "effortHours": 2.0,
+          "recipe": "Create one post-commit hydration coordinator that accepts the authoritative command receipt, applies state exactly once, runs named secondary loaders with all-settled diagnostics, returns a committed/degraded receipt, keeps failed panels retryable, and makes desktop/mobile action text distinguish committed state from refresh degradation; add focused failure-injection tests."
+        },
+        "L3": {
+          "effortHours": 4.0,
+          "recipe": "Add response-domain invalidation metadata so each command hydrates only impacted panels while preserving the same commit/degradation receipt."
+        }
+      },
+      "verification": [
+        "a failed secondary loader cannot reject or repeat an already committed week",
+        "degraded panels remain visible and retryable",
+        "command receipt retains started/completed identity",
+        "desktop and mobile share the same semantics"
+      ],
+      "executionEvidence": "Implemented: authoritative state applies once; named secondary loaders settle independently; degraded committed actions remain successful and retryable; focused hydration/browser tests pass."
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Infrastructure / test truth / automation",
+      "effortHours": 1.5,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 34.9,
+      "slug": "direct-test-receipt-authority",
+      "title": "Make direct suite completion the source of truth for every test count",
+      "status": "implemented",
+      "premise": "The direct suite passes 420/420 while PROJECT_STATUS and the startup brief claim 423/423. The brief prefers .cache/test-count.json from a missing refresh-test-count.mjs, its staleness scan points at scripts/test instead of test and tests-ui, and doctor remedies name the nonexistent producer.",
+      "evidence": [
+        "npm test direct exit 0: 70 core + 209 runtime + 69 sim-contract + 1 sim-realism + 71 studio = 420",
+        "context/PROJECT_STATUS.json records 423/423",
+        "scripts/render-startup-brief.mjs:729-757 references a missing producer and the wrong test directory",
+        "scripts/lib/doctor-remedies.mjs names refresh-test-count.mjs that is absent"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Add a producer that writes 420/420 after a direct all-shard pass."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Teach run-test-shard to aggregate direct per-shard pass/fail counts into a versioned atomic .cache/test-count.json receipt only when every requested shard exits; add refresh-test-count as a truthful verifier/repair entrypoint; scan real test and tests-ui mtimes; make startup and closeout renderers consume the receipt with digest/freshness checks; add fixture tests for pass, fail, stale, and partial runs."
+        },
+        "L3": {
+          "effortHours": 3.0,
+          "recipe": "Publish the same receipt as a CI artifact and join it to deploy provenance by commit SHA."
+        }
+      },
+      "verification": [
+        "failed or partial suites cannot overwrite the last green receipt",
+        "receipt count equals observed TAP summaries",
+        "new or modified tests mark the receipt stale",
+        "startup brief never silently falls back to a confident stale count"
+      ],
+      "executionEvidence": "Implemented: direct TAP aggregation writes an atomic digest-bound receipt only after a complete green run; stale/partial/failure fixtures and Studio shard pass."
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Game depth / progression / tactical identity",
+      "effortHours": 3.0,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 34.9,
+      "slug": "tactical-identity-arc",
+      "title": "Let executed weekly tactics compound into an honest franchise doctrine",
+      "status": "implemented",
+      "premise": "Four tactical choices change the simulated week and produce correlation-honest film receipts, but the plan is restored immediately and no source-derived mastery, streak, doctrine, or identity progression exists.",
+      "evidence": [
+        "public/lib/tacticalFilmRoom.js defines four tactics and honest observed-signal receipts",
+        "src/runtime/advanceWeekCommand.js applies a tactic temporarily, stores film, then restores the weekly plan",
+        "repo search finds no doctrine/mastery/tactic-streak authority",
+        "game-loop review rates progression 8.5 but identifies tactical identity as the clearest unshipped progression layer"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Display a derived same-tactic streak from existing film receipts."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Build a deterministic Tactical Identity ledger from executed film receipts: classify offensive/defensive doctrine, count recent commitment and observed alignment separately, expose a bounded three-tier mastery with explicit non-causal language, preserve it through snapshots because receipts are persisted, render progression and tradeoffs in Overview, and add same-seed/save-restore/browser tests without creating a new currency."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Allow an explicit multi-week doctrine commitment whose success is graded against repeated executed choices and staff/player fit, with a reversible pre-commit preview."
+        }
+      },
+      "verification": [
+        "identity derives only from executed persisted receipts",
+        "alignment and repetition are distinct",
+        "save/restore and same seed produce the same doctrine",
+        "copy never claims a tactic alone caused wins"
+      ],
+      "executionEvidence": "Implemented: persisted film receipts derive a deterministic bounded three-tier identity ledger; repetition and alignment remain distinct; save/restore and non-causal copy tests pass."
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "UI/UX / command clarity / desktop-mobile parity",
+      "effortHours": 2.5,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 33.2,
+      "slug": "shared-franchise-command-center",
+      "title": "Give every viewport one ranked next-action authority",
+      "status": "implemented",
+      "premise": "Mobile already ranks pending General Manager decisions, draft, cap, injury, deadline, news, and advance actions with exact tab targets. Desktop exposes fourteen peer tabs and no equivalent ranked Now / Before Advance / Optional orchestrator, forcing the user to infer the next action.",
+      "evidence": [
+        "public/lib/mobileLoop.js exports source-derived pressure and decision selectors",
+        "public/game.html:66-83 exposes fourteen peer navigation tabs",
+        "public/lib/tabOverview.js renders many specialist panels but no shared ranked next-action stack",
+        "34/34 focused loop contracts prove the underlying authorities already exist"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Render the existing mobile decision deck on desktop Overview."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Extract one viewport-neutral franchise command selector that ranks blocking, before-advance, and optional actions from live dashboard/news/pending-choice state; feed both mobile and a new accessible Overview command center; deep-link to exact tabs/actions, visibly gate Advance when a controlled blocking choice exists, and add selector, browser, keyboard, and parity tests."
+        },
+        "L3": {
+          "effortHours": 4.5,
+          "recipe": "Add a command-history receipt explaining why each recommendation entered or left the top three without introducing telemetry."
+        }
+      },
+      "verification": [
+        "mobile and desktop render the same ranked authority",
+        "blocking choices outrank optional actions",
+        "deep links activate real tabs or shared commands",
+        "keyboard semantics and narrow layouts remain intact"
+      ],
+      "executionEvidence": "Implemented: desktop and mobile consume one ranked selector; controlled decisions gate the terminal advance action; parity, deep-link wiring, and selector tests pass."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Feedback loop / privacy / evidence quality",
+      "effortHours": 2.0,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 32.0,
+      "slug": "contextual-evidence-moments",
+      "title": "Ask for local playtest evidence only when the player reaches a meaningful milestone",
+      "status": "implemented",
+      "premise": "The local-only four-rating receipt instrument exists but is buried in collapsed Settings and no receipt corpus exists. Real milestones such as opening prologue completion, first controlled draft pick, and first season end have stable receipts, yet none offers a bounded contextual reflection.",
+      "evidence": [
+        "public/lib/betaFeedback.js stores bounded local-only receipts and explicit exports",
+        "the receipt UI lives inside a Settings details element",
+        "no docs/PLAYTESTS corpus exists and impact metrics remain zero",
+        "opening contract, draft selection, and season review already expose source-derived milestone identities"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Deep-link milestone cards to the existing Settings receipt form."
+        },
+        "L2": {
+          "effortHours": 2.0,
+          "recipe": "Add a deterministic, frequency-capped contextual evidence prompt after three receipt-backed milestones; reuse the existing four ratings and local-only store, prefill only public-safe milestone context, support dismiss/snooze without dark patterns, never auto-send, and keep export explicit; add storage, frequency, accessibility, and milestone-dedup tests."
+        },
+        "L3": {
+          "effortHours": 3.5,
+          "recipe": "Render a local trend summary with sample-size warnings and no causal claims once at least three explicit receipts exist."
+        }
+      },
+      "verification": [
+        "a milestone prompts at most once per franchise",
+        "dismissal and snooze persist locally",
+        "no account/save payload or automatic network call exists",
+        "receipts retain explicit export semantics"
+      ],
+      "executionEvidence": "Implemented: authoritative opening/draft/season milestones trigger a seven-day-capped local-only receipt prompt with persistent snooze/dismiss and no network path; focused tests pass."
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Legal/IP / public compliance",
+      "effortHours": 0.5,
+      "impact": 8,
+      "innovation": 3,
+      "priority": 18.9,
+      "slug": "exact-proprietary-footer-contract",
+      "title": "Make every public footer carry the mandatory proprietary copyright line",
+      "status": "implemented",
+      "premise": "Source branding and 7/7 navigation completeness pass, but public footers omit the required exact © 2026 VaultSpark Studios LLC. All rights reserved. line.",
+      "evidence": [
+        "read-only release gate found brand links but no exact mandatory copyright text",
+        "public/footer-manifest.json passes 7/7 destinations",
+        "AGENTS.md public enforcement requires the exact line",
+        "package remains proprietary and UNLICENSED"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Add the exact copyright line to each public page footer."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Add one canonical auto-year proprietary footer helper/contract across game, index, landing, contact, privacy, terms, and IP surfaces; preserve brand links and navigation; extend public-compliance tests to fail on missing or open-source language."
+        },
+        "L3": {
+          "effortHours": 1.0,
+          "recipe": "Generate the footer from one manifest-driven source during Pages build and attest its route coverage."
+        }
+      },
+      "verification": [
+        "every public page carries the exact line",
+        "footer navigation remains 7/7",
+        "no LICENSE or open-source claim is introduced",
+        "public compliance and Pages smoke pass"
+      ],
+      "executionEvidence": "Implemented: all public HTML carries the exact proprietary line; the Pages build asserts the shared contract; public compliance, bundle build, and static smoke pass."
+    }
+  ]
+}

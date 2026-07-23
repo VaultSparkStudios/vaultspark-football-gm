@@ -39,10 +39,23 @@ function latestAudit() {
     .sort((a, b) => b.mtime - a.mtime)[0] || null;
 }
 
+function commentFragments(line) {
+  const fragments = [];
+  const html = line.match(/<!--(.*?)(?:-->|$)/);
+  if (html) fragments.push(html[1]);
+  const block = line.match(/\/\*(.*?)(?:\*\/|$)/);
+  if (block) fragments.push(block[1]);
+  const star = line.match(/^\s*\*\s+(.*)$/);
+  if (star) fragments.push(star[1]);
+  const slashIndex = line.indexOf("//");
+  if (slashIndex >= 0) fragments.push(line.slice(slashIndex + 2));
+  return fragments;
+}
+
 function markerCandidates() {
   const patterns = [
     { re: /\bTODO\b|\bFIXME\b|\bHACK\b/i, reason: "inline engineering marker" },
-    { re: /not implemented|stub/i, reason: "unfinished behavior marker" },
+    { re: /not implemented|\bstub\b/i, reason: "unfinished behavior marker" },
   ];
   const rows = [];
   for (const sourceDir of ["src", "public", "scripts", "test"]) {
@@ -51,11 +64,12 @@ function markerCandidates() {
       if (rel === "scripts/generate-innovation-pack.mjs") continue;
       const lines = readText(file).split(/\r?\n/);
       lines.forEach((line, idx) => {
-        if (/\b(pattern|re):\s*\//.test(line) || /^\s*\//.test(line)) return;
-        if (/\.test\(text\)|Client-only runtime not implemented|hasStub|unresolved computed-block stub/.test(line)) return;
-        const hit = patterns.find((p) => p.re.test(line));
-        if (!hit) return;
-        rows.push({ rel, line: idx + 1, reason: hit.reason, text: line.trim().slice(0, 120) });
+        const fragment = commentFragments(line).find((comment) => patterns.some((pattern) => pattern.re.test(comment)));
+        if (!fragment) return;
+        if (/Client-only runtime not implemented|unresolved computed-block stub/.test(fragment)) return;
+        const hit = patterns.find((pattern) => pattern.re.test(fragment));
+        if (sourceDir === "test" && hit.reason === "unfinished behavior marker") return;
+        rows.push({ rel, line: idx + 1, reason: hit.reason, text: fragment.trim().slice(0, 120) });
       });
     }
   }

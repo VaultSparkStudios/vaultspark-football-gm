@@ -24,6 +24,7 @@ import os from 'os';
 import path from 'path';
 import { spawnSync } from './lib/safe-spawn.mjs';
 import { fileURLToPath } from 'url';
+import { inspectTestReceipt } from './lib/test-receipt.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const STUDIO_ROOT = path.resolve(__dirname, '..');
@@ -303,9 +304,12 @@ function postSessionSignals(status) {
   const doctor = status?.doctorScore && typeof status.doctorScore === 'object'
     ? `${status.doctorScore.passing ?? '?'}/${status.doctorScore.total ?? '?'}`
     : (typeof status?.doctorScore === 'number' ? String(status.doctorScore) : '—');
-  const tests = status?.testsPassing != null && status?.testsTotal != null
-    ? `${status.testsPassing}/${status.testsTotal}`
-    : '—';
+  const testReceipt = inspectTestReceipt(PROJECT_ROOT);
+  const tests = testReceipt.valid
+    ? `${testReceipt.receipt.passed}/${testReceipt.receipt.total}${testReceipt.fresh ? "" : " · STALE"}`
+    : (status?.testsPassing != null && status?.testsTotal != null
+      ? `${status.testsPassing}/${status.testsTotal} · STALE`
+      : '—');
   const ignisDays = daysSinceISO(status?.ignisLastComputed);
   const ignisLabel = ignisDays == null ? '—' : `${ignisDays}d ago`;
   const truth = status?.truthAuditStatus || status?.truthGenome?.status || '—';

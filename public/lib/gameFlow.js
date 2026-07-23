@@ -9,11 +9,12 @@ import { renderCalendar, renderPlayerHistoryArchive, renderPlayerTimelineSearchR
 import { appendSeasonEpilogue } from "./seasonEpilogue.js";
 import { applySettingsControls, loadRewindHistory, renderAnalytics, renderCalibrationJobs, renderCommandPalette, renderNegotiationTargets, renderNews, renderObservability, renderOwner, renderPersistence, renderPickAssets, renderPipeline, renderRealismVerification, renderRulesTab, renderSettingsSpotlight, renderSimJobs, renderStaff, renderTransactionLog } from "./tabSettings.js";
 import { closeModal, openModal } from "./modalManager.js";
-import { buildTacticalMatchupBrief } from "./tacticalFilmRoom.js";
+import { buildTacticalMatchupBrief, previewTacticalIdentity } from "./tacticalFilmRoom.js";
 import { ingestNewsIntoInbox, renderInboxBadge } from "./engagementFeatures.js";
 import { appendSimulationDigest, classifySimulationCheckpoint, formatSimulationDigest, hasPendingSimulationDecision } from "./simulationCheckpoints.js";
 import { createAuthorityEpochTracker } from "./authorityEpoch.js";
 import { observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
+import { maybeMountContextualFeedback } from "./contextualFeedback.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -134,7 +135,8 @@ export function applyDashboard(newState) {
   const analyticsYearInput = document.getElementById("analyticsYearFilter");
   if (analyticsYearInput && (!analyticsYearInput.value || !previous || previous.currentYear !== newState.currentYear)) {
     analyticsYearInput.value = String(state.dashboard.currentYear);
-  }
+  }  maybeMountContextualFeedback(newState, { onSaved: () => showToast("Private playtest receipt saved locally.") });
+
 }
 
 export function activateTab(tabId) {
@@ -1066,7 +1068,10 @@ export function showHalftimeAdjustModal(onChoice) {
   modal.querySelectorAll(".tactic-option").forEach((btn) => {
     const option = optionById.get(btn.dataset.tactic);
     const desc = btn.querySelector(".to-desc");
-    if (desc && option) desc.textContent = `${option.matchup} Tradeoff: ${option.tradeoff}`;
+    if (desc && option) {
+      const identityPreview = previewTacticalIdentity(state.dashboard?.tacticalFilmLedger || [], option.id);
+      desc.textContent = `${option.matchup} Tradeoff: ${option.tradeoff} Identity preview: ${identityPreview.copy} ${identityPreview.disclaimer}`;
+    }
     btn.onclick = () => {
       modal.querySelectorAll(".tactic-option").forEach((b) => b.classList.remove("selected"));
       btn.classList.add("selected");

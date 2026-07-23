@@ -303,3 +303,14 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - The optional bundle script no longer exits successfully without building; its tested fallback invokes the canonical Pages builder and propagates failure.
 - Fresh public sanitization is 0 critical / 0 warning. The portfolio release gate currently reads a stale 1-critical packet and expects a private CDR file that this public repository intentionally forbids.
 - Launch evidence remains blocked: canonical `/_health` 404, incomplete edge headers, unreachable same-origin staging receipts, absent received-email proof, absent approval, and registry SPARKED/local FORGE drift.
+
+## 2026-07-22 — Session 53 truth updates
+
+- Mutation truth: a successful weekly command is committed even if secondary hydration fails; the UI reports committed-degraded state and retryable named loaders, never rollback.
+- Test truth: 444/444 is authorized by an atomic receipt bound to the verified source/test/config digest. Documentation-only closeout edits do not counterfeit freshness.
+- Tactical truth: identity tiers derive only from persisted executed film; previews describe directional fit and never predict results.
+- Command truth: desktop and mobile use the same deterministic ranking and versioned explanation receipt; controlled decisions still block generic advancement.
+- Evidence truth: contextual prompts are source-derived, local, snoozable/dismissible, and globally cadence-limited. Trends require three receipts and remain explicitly small-sample, self-selected, and non-causal.
+- Public-boundary truth: every public HTML route has the exact proprietary footer; the orphan broker had no caller and depended on absent private policy, so removal is safer than pretending it was an integration.
+- Release truth: local same-revision build/smoke/responsive evidence is green, but hosted staging is 3/10, current literal CI history is 3/5, canonical custom-origin health/headers and received email are unproved, approval is absent, and registry lifecycle conflicts. Launch is HOLD.
+- Cost truth: no variable-cost service or dependency was introduced; flat-rate Max Plan cost remains notional.

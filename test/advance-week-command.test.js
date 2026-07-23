@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createSession } from "../src/runtime/bootstrap.js";
+import { createSession, createSessionFromSnapshot } from "../src/runtime/bootstrap.js";
+import { buildTacticalIdentityLedger } from "../public/lib/tacticalFilmRoom.js";
 import { executeAdvanceWeekCommand, executeAdvanceWeekTransaction } from "../src/runtime/advanceWeekCommand.js";
 
 function deterministicSnapshot(session) {
@@ -67,4 +68,15 @@ test("successful transaction returns a commit candidate without mutating its sou
   assert.notEqual(result.committedSession, session);
   assert.equal(JSON.stringify(session.toSnapshot()), before);
   assert.notEqual(result.committedSession.currentWeek, session.currentWeek);
+});
+test("tactical identity evidence survives snapshot restore through the authoritative league ledger", () => {
+  const session = createSession({ seed: 49006, startYear: 2026, controlledTeamId: "BUF" });
+  executeAdvanceWeekCommand(session, { count: 1, weeklyTacticOverride: "run-heavy" });
+  const restored = createSessionFromSnapshot(session.toSnapshot());
+  const dashboard = restored.getDashboardState();
+  assert.equal(dashboard.tacticalFilmLedger.length, 1);
+  assert.deepEqual(
+    buildTacticalIdentityLedger(dashboard.tacticalFilmLedger),
+    buildTacticalIdentityLedger(session.getDashboardState().tacticalFilmLedger)
+  );
 });

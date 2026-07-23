@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildTacticalFilmReceipt, buildTacticalMatchupBrief, tacticDefinition } from "../public/lib/tacticalFilmRoom.js";
+import { buildTacticalFilmReceipt, buildTacticalIdentityLedger, buildTacticalMatchupBrief, tacticDefinition } from "../public/lib/tacticalFilmRoom.js";
 
 test("matchup brief derives opponent identity, tendencies, injury context, and tradeoffs", () => {
   const brief = buildTacticalMatchupBrief({
@@ -43,4 +43,33 @@ test("film receipt evaluates chosen intent against observed box-score telemetry 
 test("film receipt rejects unknown tactics and missing controlled games", () => {
   assert.equal(buildTacticalFilmReceipt({ tactic: "fake", results: [], controlledTeamId: "BUF" }), null);
   assert.equal(tacticDefinition("fake"), null);
+});
+test("tactical identity is deterministic, bounded, and separates repetition from alignment", () => {
+  const receipts = [
+    { tactic: "run-heavy", aligned: true },
+    { tactic: "pass-heavy", aligned: true },
+    { tactic: "run-heavy", aligned: false },
+    { tactic: "run-heavy", aligned: true },
+    { tactic: "blitz-heavy", aligned: true }
+  ];
+  const identity = buildTacticalIdentityLedger(receipts);
+  assert.equal(identity.tactic, "run-heavy");
+  assert.equal(identity.tier, "Established");
+  assert.equal(identity.repetitions, 3);
+  assert.equal(identity.alignedRepetitions, 2);
+  assert.equal(identity.sampleSize, 5);
+  assert.match(identity.disclaimer, /does not claim.*caused/i);
+  assert.deepEqual(identity, buildTacticalIdentityLedger(receipts));
+});
+
+test("tactical identity uses recent-choice order as a stable tie break and caps its evidence window", () => {
+  const receipts = [
+    { tactic: "prevent", aligned: false },
+    { tactic: "blitz-heavy", aligned: true },
+    ...Array.from({ length: 14 }, (_, index) => ({ tactic: index % 2 ? "blitz-heavy" : "prevent", aligned: true }))
+  ];
+  const identity = buildTacticalIdentityLedger(receipts);
+  assert.equal(identity.sampleSize, 12);
+  assert.equal(identity.tactic, "prevent");
+  assert.equal(buildTacticalIdentityLedger([]), null);
 });

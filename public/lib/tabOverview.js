@@ -4,6 +4,8 @@ import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
 import { renderTradeDeadlineFrenzy } from "./tradeDeadlineFrenzy.js";
 import { buildBoxScoreImpactLeaders, buildQuarterScoreboard } from "./boxScorePresentation.js";
 import { observeBackgroundTask, recordClientDiagnostic } from "./clientDiagnostics.js";
+import { buildFranchiseCommandStack } from "./franchiseCommandCenter.js";
+import { buildTacticalIdentityLedger } from "./tacticalFilmRoom.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -34,6 +36,7 @@ export function renderOverview() {
     box.textContent = lines.join(" ") || "Weekly plan, locker-room pressure, and owner mandate updates will appear here.";
   }
   renderOverviewSpotlight();
+  renderFranchiseCommandCenter();
   renderOpeningContract();
   renderRehabCommandCenter();
   renderGmCommitmentBoard();
@@ -42,6 +45,33 @@ export function renderOverview() {
   renderTradeDeadlineAlert();
 }
 
+export function renderFranchiseCommandCenter() {
+  const panel = document.getElementById("franchiseCommandCenter");
+  if (!panel) return;
+  const cards = buildFranchiseCommandStack({
+    dashboard: state.dashboard || {},
+    newsRows: state.newsRows || [],
+    pendingDecision: state.mobilePendingDecision || state.dashboard?.gmDecisionQueue?.[0] || null,
+    pendingChoice: state.mobilePendingDecisionChoice || null
+  });
+  panel.innerHTML = `
+    <div class="franchise-command-head">
+      <div><span class="brand-kicker">Live Franchise Authority</span><h3>What needs your call?</h3></div>
+      <span class="small">Ranked from current league state</span>
+    </div>
+    <div class="franchise-command-grid">
+      ${cards.map((card, index) => `
+        <button type="button" class="franchise-command-card ${escapeHtml(card.tone)}" data-command-index="${index}" data-command-action="${escapeHtml(card.action)}" data-target-tab="${escapeHtml(card.targetTab || "")}" ${card.disabled ? "disabled aria-disabled=\"true\"" : ""}>
+          <span class="franchise-command-lane">${escapeHtml(card.lane)}</span>
+          <span class="franchise-command-kicker">${escapeHtml(card.kicker)}</span>
+          <strong>${escapeHtml(card.title)}</strong>
+          <small>${escapeHtml(card.detail)}</small>
+          <span class="franchise-command-reason">#${card.rank} · ${escapeHtml(card.reason)}</span>
+        </button>
+      `).join("")}
+    </div>
+  `;
+}
 export function renderOpeningContract() {
   const card = document.getElementById("openingContractCard");
   if (!card) return;
@@ -187,6 +217,7 @@ function stateDashboardCommitments() {
 export function renderTacticalFilmRoom() {
   const card = document.getElementById("tacticalFilmRoom");
   const receipt = state.dashboard?.latestTacticalFilm;
+  const identity = buildTacticalIdentityLedger(state.dashboard?.tacticalFilmLedger || []);
   if (!card) return;
   if (!receipt) {
     card.hidden = true;
@@ -199,7 +230,8 @@ export function renderTacticalFilmRoom() {
     <div class="film-headline"><strong>${escapeHtml(receipt.label)}</strong><span>${escapeHtml(receipt.result.toUpperCase())} ${escapeHtml(receipt.score)} vs ${escapeHtml(receipt.opponentId)}</span></div>
     <div class="film-verdict">${receipt.aligned ? "Intent aligned with the observed signal" : "Observed signal was mixed against the chosen intent"}</div>
     <div class="film-observed">${escapeHtml(receipt.observed)}</div>
-    <div class="film-disclaimer">${escapeHtml(receipt.disclaimer)}</div>
+    ${identity ? `<div class="film-identity" aria-label="Tactical identity ledger"><strong>${escapeHtml(identity.summary)}</strong><span>${escapeHtml(String(identity.alignedRepetitions))} aligned repetitions · ${escapeHtml(String(identity.variety))} tactics in the ledger</span></div>` : ""}
+    <div class="film-disclaimer">${escapeHtml(identity?.disclaimer || receipt.disclaimer)}</div>
   `;
 }
 

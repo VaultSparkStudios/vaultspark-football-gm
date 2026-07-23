@@ -139,6 +139,77 @@ export function buildTacticalFilmReceipt({ tactic, results = [], controlledTeamI
   };
 }
 
+function tacticalIdentityTier(repetitions) {
+  return repetitions >= 6 ? "Signature" : repetitions >= 3 ? "Established" : "Installing";
+}
+
+export function previewTacticalIdentity(receipts = [], tactic) {
+  const definition = TACTICS[tactic];
+  if (!definition) return null;
+  const valid = receipts.filter((receipt) => receipt && TACTICS[receipt.tactic]).slice(0, 12);
+  const currentRepetitions = valid.filter((receipt) => receipt.tactic === tactic).length;
+  const projectedRepetitions = Math.min(12, currentRepetitions + 1);
+  const currentTier = tacticalIdentityTier(currentRepetitions);
+  const projectedTier = tacticalIdentityTier(projectedRepetitions);
+  const nextThreshold = projectedRepetitions < 3 ? 3 : projectedRepetitions < 6 ? 6 : null;
+  return {
+    tactic,
+    label: definition.label,
+    currentRepetitions,
+    projectedRepetitions,
+    currentTier,
+    projectedTier,
+    tierChange: currentRepetitions > 0 && currentTier !== projectedTier,
+    remainingToNext: nextThreshold == null ? 0 : nextThreshold - projectedRepetitions,
+    copy: currentRepetitions === 0
+      ? `First recorded ${definition.label} call would begin an Installing identity.`
+      : currentTier !== projectedTier
+        ? `If executed, this call would move ${definition.label} from ${currentTier} to ${projectedTier}.`
+        : nextThreshold == null
+          ? `If executed, this call would reinforce a Signature ${definition.label} identity.`
+          : `If executed, ${nextThreshold - projectedRepetitions} more ${definition.label} call${nextThreshold - projectedRepetitions === 1 ? "" : "s"} would remain before ${tacticalIdentityTier(nextThreshold)}.`,
+    disclaimer: "Only an executed call updates the identity ledger; the preview does not predict results."
+  };
+}
+export function buildTacticalIdentityLedger(receipts = []) {
+  const valid = receipts
+    .filter((receipt) => receipt && TACTICS[receipt.tactic])
+    .slice(0, 12);
+  if (!valid.length) return null;
+
+  const counts = new Map();
+  for (const receipt of valid) {
+    const current = counts.get(receipt.tactic) || { tactic: receipt.tactic, count: 0, aligned: 0, firstIndex: valid.length };
+    current.count += 1;
+    current.aligned += receipt.aligned === true ? 1 : 0;
+    current.firstIndex = Math.min(current.firstIndex, valid.indexOf(receipt));
+    counts.set(receipt.tactic, current);
+  }
+  const ranked = [...counts.values()].sort((left, right) =>
+    right.count - left.count || left.firstIndex - right.firstIndex || left.tactic.localeCompare(right.tactic)
+  );
+  const dominant = ranked[0];
+  const definition = TACTICS[dominant.tactic];
+  const tier = tacticalIdentityTier(dominant.count);
+  return {
+    version: 1,
+    tactic: dominant.tactic,
+    label: definition.label,
+    tier,
+    repetitions: dominant.count,
+    alignedRepetitions: dominant.aligned,
+    sampleSize: valid.length,
+    variety: ranked.length,
+    ledger: ranked.map((entry) => ({
+      tactic: entry.tactic,
+      label: TACTICS[entry.tactic].label,
+      repetitions: entry.count,
+      alignedRepetitions: entry.aligned
+    })),
+    summary: `${tier} ${definition.label} identity · ${dominant.count} of ${valid.length} recent calls`,
+    disclaimer: "Identity reflects repeated tactical choices and observed alignment. It does not claim those choices caused game results."
+  };
+}
 export function tacticDefinition(id) {
   return TACTICS[id] ? { id, ...TACTICS[id] } : null;
 }

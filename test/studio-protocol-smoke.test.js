@@ -352,4 +352,6 @@ test("innovation-pack marker scan ignores intentional guard sentinels", () => {
   assert.doesNotMatch(result.stdout, /Client-only runtime not implemented/);
   assert.doesNotMatch(result.stdout, /unresolved computed-block stub/);
   assert.doesNotMatch(result.stdout, /scripts\/lib\/task-board\.mjs/);
+  assert.doesNotMatch(result.stdout, /test-receipt\.mjs|test\/test-receipt\.test\.js/);
+  assert.doesNotMatch(result.stdout, /test\/return-digest\.test\.js/);
 });

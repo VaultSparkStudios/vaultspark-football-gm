@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-22 (Session 52 closeout) -->
+<!-- generated-at: 2026-07-23 (Session 53 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S52 ══════╗
-║  Date: 2026-07-22  ·  SIL: 995/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S53 ══════╗
+║  Date: 2026-07-23  ·  SIL: 995/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Controlled-team draft picks are blocking agency checkpoints   ║
-║  ✓ Mobile and desktop stage one weekly intent and submit the sa  ║
-║  ✓ The opening contract now teaches the real first loop with so  ║
-║  ✓ Local/cross-repo/Genius readers consume one versioned task-b  ║
-║  ✓ Second-order: private local playtest receipts, truthful Page  ║
+║  ✓ Successful weekly mutations now remain committed when second  ║
+║  ✓ Direct test truth is an atomic, source-bound receipt; produc  ║
+║  ✓ Executed tactical film builds a persistent Installing → Esta  ║
+║  ✓ Desktop and mobile share one explainable ranked Franchise Co  ║
+║  ✓ Source-derived franchise milestones can request bounded loca  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 45 files  ·  M:35 A:0 D:0 ?:10                         ║
+║  Changes: 62 files  ·  M:46 A:0 D:1 ?:15                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         423/423                                          ║
+║  Tests:         444/444                                          ║
 ║  IGNIS:         3d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  2d ago                                           ║
+║  Sanitization:  1d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

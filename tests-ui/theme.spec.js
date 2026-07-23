@@ -66,7 +66,8 @@ test("light theme keeps text and surfaces readable (opposite luminance ends)", a
     expect(val, `light --${name}-grad should be a light surface`).toBeGreaterThan(180);
     // Text and surface must contrast strongly (the original bug: ~0 gap).
     expect(val - ink, `light text/${name} contrast gap`).toBeGreaterThan(120);
-  }
+  }  const activeNavColor = await page.locator(".menu-btn.active").evaluate((element) => getComputedStyle(element).color);
+  expect(activeNavColor, "active navigation must keep inverse text over its dark accent gradient").toBe("rgb(255, 249, 239)");
 });
 
 test("dark theme keeps surfaces dark and text light", async ({ page }) => {

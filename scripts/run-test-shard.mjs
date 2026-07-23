@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { pathToFileURL } from "node:url";
 import { spawnSync } from "./lib/safe-spawn.mjs";
+import { buildTestReceipt, parseTapSummary, writeTestReceiptAtomic } from "./lib/test-receipt.mjs";
 
 export const SHARDS = {
   core: [
@@ -23,6 +24,7 @@ export const SHARDS = {
     "test/advance-week-command.test.js",
     "test/authority-epoch.test.js",
     "test/beta-feedback.test.js",
+    "test/contextual-feedback.test.js",
     "test/box-score-presentation.test.js",
     "test/browser-save-store.test.js",
     "test/browser-wiring.test.js",
@@ -35,6 +37,7 @@ export const SHARDS = {
     "test/draft-agency.test.js",
     "test/draft-war-room.test.js",
     "test/file-save-store.test.js",
+    "test/franchise-command-center.test.js",
     "test/fast-sim-checkpoints.test.js",
     "test/gm-decision-commitments.test.js",
     "test/gm-decision-authority.test.js",
@@ -48,6 +51,7 @@ export const SHARDS = {
     "test/modal-manager.test.js",
     "test/opening-contract-prologue.test.js",
     "test/player-profile-narrative.test.js",
+    "test/post-commit-hydration.test.js",
     "test/potential-visibility.test.js",
     "test/return-digest.test.js",
     "test/save-integrity.test.js",
@@ -90,7 +94,9 @@ export const SHARDS = {
     "test/public-compliance.test.js",
     "test/release-provenance.test.js",
     "test/session52-innovations.test.js",
+    "test/session53-innovations.test.js",
     "test/staging-receipt.test.js",
+    "test/test-receipt.test.js",
     "test/shard-coverage.test.js",
     "test/studio-protocol-smoke.test.js",
     "test/task-board-parser-authority.test.js"
@@ -108,16 +114,22 @@ function runShard(name) {
   const files = SHARDS[name];
   if (!files) {
     usage();
-    return 1;
+    return { name, status: 1, summary: { valid: false, reason: "unknown shard" } };
   }
 
   console.log(`\n== ${name} shard (${files.length} files) ==`);
   const result = spawnSync(
     process.execPath,
     ["--test", "--test-isolation=none", ...files],
-    { stdio: "inherit" }
+    { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 }
   );
-  return result.status ?? 1;
+  if (result.stdout) process.stdout.write(result.stdout);
+  if (result.stderr) process.stderr.write(result.stderr);
+  return {
+    name,
+    status: result.status ?? 1,
+    summary: parseTapSummary(result.stdout || "")
+  };
 }
 
 const isMainModule =
@@ -134,20 +146,25 @@ if (isMainModule) {
   }
 
   if (requested === "all") {
+    const completed = [];
     for (const name of DEFAULT_SHARDS) {
-      const status = runShard(name);
-      if (status !== 0) process.exit(status);
+      const result = runShard(name);
+      completed.push(result);
+      if (result.status !== 0) process.exit(result.status);
     }
+    const receipt = buildTestReceipt({ root: process.cwd(), command: "all", shards: completed });
+    const receiptPath = writeTestReceiptAtomic(process.cwd(), receipt);
+    console.log(`\nDirect test receipt: ${receipt.passed}/${receipt.total} -> ${receiptPath}`);
     process.exit(0);
   }
 
   if (requested === "full") {
     for (const name of Object.keys(SHARDS)) {
-      const status = runShard(name);
-      if (status !== 0) process.exit(status);
+      const result = runShard(name);
+      if (result.status !== 0) process.exit(result.status);
     }
     process.exit(0);
   }
 
-  process.exit(runShard(requested));
+  process.exit(runShard(requested).status);
 }

@@ -14,81 +14,24 @@ import { showToast } from "./appCore.js";
 import { exportSummary, isOptedIn } from "./analytics.js";
 import { buildLaunchReadinessRows } from "./tabSettings.js";
 
+import {
+  buildLocalPlaytestExport,
+  buildLocalPlaytestReceipt,
+  buildLocalPlaytestTrend,
+  loadLocalPlaytestReceipts,
+  saveLocalPlaytestReceipt
+} from "./playtestReceipts.js";
+export {
+  PLAYTEST_RECEIPT_SCHEMA_VERSION,
+  PLAYTEST_RECEIPT_STORAGE_KEY,
+  buildLocalPlaytestExport,
+  buildLocalPlaytestReceipt,
+  buildLocalPlaytestTrend,
+  loadLocalPlaytestReceipts,
+  saveLocalPlaytestReceipt
+} from "./playtestReceipts.js";
+
 const REPO_ISSUE_BASE = "https://github.com/VaultSparkStudios/vaultspark-football-gm/issues/new";
-export const PLAYTEST_RECEIPT_SCHEMA_VERSION = "1.0";
-export const PLAYTEST_RECEIPT_STORAGE_KEY = "vsfgm:playtest-receipts:v1";
-const PLAYTEST_RECEIPT_LIMIT = 20;
-
-function boundedRating(value, label) {
-  const rating = Number(value);
-  if (!Number.isInteger(rating) || rating < 1 || rating > 5) throw new Error(`${label} must be rated from 1 to 5.`);
-  return rating;
-}
-
-function publicSafeNote(value) {
-  return String(value || "").replace(/[\u0000-\u001f\u007f]/g, " ").replace(/\s+/g, " ").trim().slice(0, 280);
-}
-
-export function buildLocalPlaytestReceipt(input = {}, context = {}) {
-  const createdAt = input.createdAt || new Date().toISOString();
-  const teamId = String(context.teamId || "unknown").slice(0, 12);
-  return {
-    schemaVersion: PLAYTEST_RECEIPT_SCHEMA_VERSION,
-    kind: "local-playtest-receipt",
-    receiptId: `playtest-${createdAt}-${teamId}`,
-    createdAt,
-    context: {
-      year: Number(context.year) || null,
-      week: Number(context.week) || null,
-      phase: String(context.phase || "unknown").slice(0, 32),
-      teamId,
-      openingContractStatus: String(context.openingContractStatus || "not-observed").slice(0, 24)
-    },
-    ratings: {
-      clarity: boundedRating(input.clarity, "Clarity"),
-      agency: boundedRating(input.agency, "Agency"),
-      pace: boundedRating(input.pace, "Pace"),
-      returnIntent: boundedRating(input.returnIntent, "Return intent")
-    },
-    note: publicSafeNote(input.note),
-    privacy: {
-      localOnlyUntilShared: true,
-      personalIdentifiersCollected: false,
-      savePayloadIncluded: false
-    }
-  };
-}
-
-export function loadLocalPlaytestReceipts(storage = globalThis.localStorage) {
-  try {
-    const parsed = JSON.parse(storage?.getItem?.(PLAYTEST_RECEIPT_STORAGE_KEY) || "[]");
-    return Array.isArray(parsed)
-      ? parsed.filter((entry) => entry?.schemaVersion === PLAYTEST_RECEIPT_SCHEMA_VERSION && entry?.kind === "local-playtest-receipt").slice(0, PLAYTEST_RECEIPT_LIMIT)
-      : [];
-  } catch {
-    return [];
-  }
-}
-
-export function saveLocalPlaytestReceipt(receipt, storage = globalThis.localStorage) {
-  if (receipt?.schemaVersion !== PLAYTEST_RECEIPT_SCHEMA_VERSION || receipt?.kind !== "local-playtest-receipt") {
-    throw new Error("A valid local playtest receipt is required.");
-  }
-  const receipts = [receipt, ...loadLocalPlaytestReceipts(storage).filter((entry) => entry.receiptId !== receipt.receiptId)].slice(0, PLAYTEST_RECEIPT_LIMIT);
-  storage?.setItem?.(PLAYTEST_RECEIPT_STORAGE_KEY, JSON.stringify(receipts));
-  return receipts;
-}
-
-export function buildLocalPlaytestExport(receipts = []) {
-  const valid = receipts.filter((entry) => entry?.schemaVersion === PLAYTEST_RECEIPT_SCHEMA_VERSION && entry?.kind === "local-playtest-receipt").slice(0, PLAYTEST_RECEIPT_LIMIT);
-  return {
-    schemaVersion: PLAYTEST_RECEIPT_SCHEMA_VERSION,
-    kind: "local-playtest-receipt-pack",
-    count: valid.length,
-    receipts: valid,
-    privacy: "Explicit local receipts only; no account identifier or save payload is included."
-  };
-}
 
 /**
  * Build a prefilled GitHub new-issue URL.
@@ -273,6 +216,7 @@ export function mountBetaFeedback() {
         </div>
         <label>One useful moment or friction<textarea id="playtest-note" maxlength="280" rows="3" placeholder="Optional; keep it public-safe."></textarea></label>
         <div class="row compact"><button id="savePlaytestReceiptBtn" type="button">Save Local Receipt</button><button id="copyPlaytestReceiptsBtn" type="button">Copy Receipt Pack</button><span id="playtestReceiptCount" class="small"></span></div>
+        <div id="playtestTrend" class="playtest-trend small" aria-live="polite"></div>
       </details>`;
     settingsTab.insertBefore(panel, settingsTab.firstElementChild);
     document.getElementById("betaFeedbackBtn")?.addEventListener("click", () => {
@@ -281,6 +225,11 @@ export function mountBetaFeedback() {
       const count = loadLocalPlaytestReceipts().length;
       const target = document.getElementById("playtestReceiptCount");
       if (target) target.textContent = `${count} local receipt${count === 1 ? "" : "s"}`;
+      const trend = buildLocalPlaytestTrend(loadLocalPlaytestReceipts());
+      const trendTarget = document.getElementById("playtestTrend");
+      if (trendTarget) trendTarget.textContent = trend.available
+        ? `Local signal (${trend.count}): clarity ${trend.averages.clarity}/5 · agency ${trend.averages.agency}/5 · pace ${trend.averages.pace}/5 · another session ${trend.averages.returnIntent}/5. ${trend.warning}`
+        : `${trend.count}/${trend.minimum} receipts recorded before a local trend is shown. ${trend.warning}`;
     };
     document.getElementById("savePlaytestReceiptBtn")?.addEventListener("click", () => {
       try {

@@ -1,3 +1,32 @@
+## Where We Left Off — Session 53 Closeout (2026-07-22)
+
+Session 53 completed the requested continuous `/goal /arc`; six audited objectives and five second-order innovations are implemented and directly verified.
+
+### Shipped
+
+- Successful weekly mutations now remain committed when secondary hydration degrades, with named retryable diagnostics instead of false rollback language.
+- Direct test truth is an atomic, source-bound receipt; production/test/config changes invalidate it until a complete green direct run refreshes authority.
+- Executed tactical film builds a persistent Installing → Established → Signature identity arc, with separate repetition and alignment truth.
+- Desktop and mobile share one explainable ranked Franchise Command Center; staged tactical previews describe identity direction without predicting results.
+- Source-derived franchise milestones can request bounded local-only playtest receipts; trends require three samples and warn about small, self-selected, non-causal evidence.
+- Every public HTML route carries the exact proprietary footer, enforced at build/test time; phantom innovation markers were eliminated and an orphan private-policy broker was removed.
+
+### Verification
+
+- Direct Node: 444/444; source-bound receipt fresh.
+- Browser: Playwright 18/18; responsive evidence 20/20; dark/light desktop/mobile manually inspected.
+- Build/security: Pages build/smoke green; secret scan 0; sitemap 10/10; cost-neutral gates ALLOW; canon conformance 0 gaps.
+- Truth: Unified Genius List 0 open / 6 closed; five viable second-order innovations shipped.
+
+### Honest deferral
+
+Launch remains HOLD. Current hosted same-origin evidence scores 3/10, canonical custom-origin project health/headers remain incomplete, literal recent CI history is 3/5, no real received-message receipt proves the project-domain inbox, founder approval is absent, and authoritative registry SPARKED conflicts with local FORGE truth. Local same-revision staging is green, but it is not substituted for hosted proof.
+
+### Next best move
+
+After this revision deploys, collect exact hosted revision/asset/health evidence and a real received-message receipt, then reconcile lifecycle through Studio Ark before requesting founder launch approval.
+
+---
 ## Where We Left Off — Session 52 Closeout (2026-07-21)
 
 Session 52 completed the founder-requested continuous `/goal /arc`; all five audited objectives and three second-order innovations are shipped, verified, and ready on `main` pending the closeout commit/push.
@@ -31,7 +60,6 @@ Run the fresh continuous `/goal /arc` from the verified Session 51 recovery chec
 ## Session 51 Intent (2026-07-21)
 
 Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; use the product rubric with public-app release and game-depth lenses; exhaust every premise-verified Unified Genius List item; generate and implement second-order innovations until the list and innovation surface are exhausted or the context-meter gates continuation; preserve source-derived observability, treat Max Plan cost as notional, fabricate no gate evidence, record honest deferrals as wins, verify direct suites and GitHub Pages staging, then commit and push directly to `main` with Ark and zero-shell hygiene.
-
 
 ## Where We Left Off — Session 51 Recovery Closeout (2026-07-21)
 
@@ -69,7 +97,6 @@ Begin the founder-requested fresh full arc from this recovery checkpoint unless 
 ## Session 50 Intent (2026-07-20)
 
 Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; use the infrastructure rubric with public-app release and game-loop lenses; exhaust every verified Unified Genius List item; generate and implement second-order innovations; preserve observability, cost, and launch truth; verify direct suites and GitHub Pages staging; then commit and push directly to `main` with Ark and zero-shell hygiene.
-
 ## Where We Left Off — Session 50 Closeout (2026-07-20)
 
 All five verified audit items and three second-order innovations are source-shipped. Live verification refined the plain-text diagnosis: the separate apex host serves assets at `/franchise-architect/` but its HTML forces `/games/franchise-architect/`. Revision `f5ecde2` now emits a mount-relative base and self-verifies every alias; Pages run `29805477684` is green. The apex Cloudflare Pages copy is sibling-owned, so its required artifact ingestion was sent via Ark receipt `01JU1K4LB3C3400F371FD77B32` without editing that tree.
@@ -99,7 +126,6 @@ Apply Ark cargo `01JU1K4LB3C3400F371FD77B32` in `vaultsparkstudios-website`, dep
 ## Session 49 Intent (2026-07-19)
 
 Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; exhaust every verified Unified Genius List item; generate and implement second-order innovations; preserve observability and launch truth; verify direct suites and static staging; then commit and push directly to `main` with Ark and zero-shell hygiene.
-
 ## Where We Left Off — Session 49 Closeout (2026-07-19)
 
 Session 49 completed the requested mission. The four-item infrastructure-weighted audit is fully shipped, the Unified Genius List reports 0 open / 4 closed, and the expanded Innovation Pack shipped two concrete second-order improvements plus audit follow-through.
@@ -130,7 +156,6 @@ Apply the edge-header/email evidence gates through the canonical hosting/inbound
 ## Session 48 Intent (2026-07-16)
 
 Run the complete continuous `/goal /arc` from live evidence: `/start -> /audit -> /implement -> /closeout`; exhaust the Unified Genius List; generate and implement second-order innovations; verify direct suite, staging, doctor, security, canon, and observability truth; then commit and push directly to `main` with Ark and zero-shell closeout hygiene.
-
 ## Where We Left Off — Session 48 Closeout (2026-07-16)
 
 Session 48 completed the requested uninterrupted `/start -> /audit -> /implement -> /closeout` mission. The three-item infrastructure-weighted audit and the second-order Innovation Pack are exhausted; no ranked implementation item remains open.
@@ -158,7 +183,6 @@ Session 48 completed the requested uninterrupted `/start -> /audit -> /implement
 ### Next best move
 
 Obtain or generate a real received-message receipt for the project-domain address through an evidence-producing inbound route checker, then reconcile the authoritative lifecycle registry. Otherwise begin the next fresh audit because Session 48's Genius list and Innovation Pack are exhausted.
-
 ## Where We Left Off — Session 47 Recovery Closeout (2026-07-16)
 
 The previous Session 47 was cut off during `/implement`: four audit items were marked shipped in JSON, two implementation branches were present but still open, the Markdown execution log was stale, verification had not finished, and no closeout write-back/commit existed. Recovery completed the intended arc before creating a clean checkpoint.
@@ -193,7 +217,6 @@ The previous Session 47 was cut off during `/implement`: four audit items were m
 Start the next fresh `/start -> /audit -> /implement -> /closeout` arc from the now-exhausted Session 47 queue, unless launch evidence arrives first.
 
 Session Intent: Recover the interrupted Session 47, verify it from live evidence, complete the unfinished implementation/closeout, checkpoint it cleanly, then continue automatically into the next full saturated arc.
-
 ## Where We Left Off — Session 46 (2026-07-15)
 
 The requested continuous `/goal /arc` completed `/start -> /audit -> /implement -> /closeout` without a phase handback.
@@ -222,7 +245,6 @@ The requested continuous `/goal /arc` completed `/start -> /audit -> /implement 
 ### Next Best Move
 
 Obtain the real email receipt and live-origin proof before changing launch posture; otherwise continue with a new live-code audit because the Session 46 Unified Genius List and Innovation Pack are exhausted.
-
 ## Where We Left Off — Session 45 (2026-07-06)
 
 The requested `/goal /arc` ran continuously through `/start -> /audit -> /implement -> /closeout` for Session 45.
@@ -251,8 +273,7 @@ The requested `/goal /arc` ran continuously through `/start -> /audit -> /implem
 
 ### Next Best Move
 
-Obtain the real on-domain email delivery receipt, rerun launch evidence/live-origin proof, then decide whether to flip launch posture. Otherwise continue beta-polish arcs from fresh live-code audit evidence.
-## Where We Left Off — Session 44 (2026-07-06)
+Obtain the real on-domain email delivery receipt, rerun launch evidence/live-origin proof, then decide whether to flip launch posture. Otherwise continue beta-polish arcs from fresh live-code audit evidence.## Where We Left Off — Session 44 (2026-07-06)
 
 The requested `/goal /arc` ran continuously through `/start -> /audit -> /implement -> /closeout` for Session 44.
 
@@ -279,8 +300,7 @@ Next best work:
 - Obtain the on-domain email forwarding receipt and live-origin/routing evidence before any SPARKED flip.
 - If another build session runs before launch evidence arrives, continue with small browser-visible retention improvements that stay static-host-safe and source-of-truth tested.
 
----
-## Where We Left Off — 2026-07-06 Session 43 Closeout
+---## Where We Left Off — 2026-07-06 Session 43 Closeout
 
 The /goal /arc mission continued from a clean Session 42 closeout and completed startup, live audit, implementation, second-order innovation follow-through, verification, and closeout write-back.
 
@@ -316,8 +336,7 @@ Remaining blocker:
 Next best work:
 - Obtain the email receipt, rerun node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json, then verify live origin/routing after deployment.
 
-Session Intent: Complete the full /goal /arc mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
-## Where We Left Off — 2026-07-06 Session 42 Closeout
+Session Intent: Complete the full /goal /arc mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.## Where We Left Off — 2026-07-06 Session 42 Closeout
 
 The `/goal /arc` mission continued from a clean Session 41 closeout and completed startup, live infrastructure-rubric audit, implementation, second-order innovation follow-through, verification, and closeout write-back.
 
@@ -350,8 +369,7 @@ Remaining blocker:
 Next best work:
 - Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
 
-Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
-## Where We Left Off — 2026-07-04 Session 41 Closeout
+Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.## Where We Left Off — 2026-07-04 Session 41 Closeout
 
 The `/goal /arc` mission continued from a clean Session 40 closeout and completed startup, live audit, implementation, second-order innovation follow-through, verification, and closeout write-back.
 
@@ -384,8 +402,7 @@ Remaining blocker:
 Next best work:
 - Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
 
-Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
-## Where We Left Off — 2026-07-04 Session 40 Closeout
+Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.## Where We Left Off — 2026-07-04 Session 40 Closeout
 
 The `/goal /arc` mission continued from a clean Session 39 closeout and completed startup, live audit, implementation, second-order innovation follow-through, validation prep, and closeout write-back.
 
@@ -413,8 +430,7 @@ Remaining blocker:
 Next best work:
 - Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
 
-Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
-## Where We Left Off — 2026-07-04 Session 39 Closeout
+Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.## Where We Left Off — 2026-07-04 Session 39 Closeout
 
 The `/goal /arc` mission continued from a clean Session 38 closeout and completed startup, live audit, implementation, second-order innovation follow-through, validation, and closeout prep.
 
@@ -443,7 +459,6 @@ Next best work:
 - Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
 
 Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
-
 ## Where We Left Off — 2026-07-04 Session 38 Closeout
 
 The `/goal /arc` mission continued after the recovered Session 37 checkpoint and completed startup, live audit, implementation, validation, and closeout prep.
@@ -471,8 +486,7 @@ Remaining blocker:
 Next best work:
 - Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
 
-Session Intent: Recover the interrupted prior session, checkpoint it cleanly, then complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
-## Where We Left Off — 2026-07-04 Session 37 Recovery Closeout
+Session Intent: Recover the interrupted prior session, checkpoint it cleanly, then complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.## Where We Left Off — 2026-07-04 Session 37 Recovery Closeout
 
 The previous session cut off after implementing Session 37 but before canonical closeout. Recovery verified the uncommitted work, completed write-back, and checkpointed it as recovered Session 37 work.
 
@@ -498,8 +512,7 @@ Remaining blocker:
 Next best work:
 - Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
 
-Session Intent: Recover the interrupted prior session, checkpoint it cleanly, then continue into the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
-## Where We Left Off — 2026-07-04 Session 36
+Session Intent: Recover the interrupted prior session, checkpoint it cleanly, then continue into the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.## Where We Left Off — 2026-07-04 Session 36
 
 The `/goal /arc` mission ran continuously through startup, live audit, implementation, validation, and closeout prep.
 
@@ -553,8 +566,7 @@ Remaining blocker:
 Next best work:
 - Obtain the email receipt, rerun `node scripts\ops.mjs launch-evidence --email-evidence "<receipt>" --json --output audits\launch-evidence-<date>.json`, then verify live origin/routing after deployment.
 
-Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.
-## Where We Left Off — 2026-07-03 Session 34
+Session Intent: Complete the full `/goal /arc` mission through start, audit, implement, and closeout; exhaust the genius list plus second-order innovation candidates; commit and push direct to main.## Where We Left Off — 2026-07-03 Session 34
 
 The `/arc` sequence ran end-to-end through start, fresh audit, implementation, verification, and closeout prep.
 
@@ -685,7 +697,6 @@ Next best move:
 - The Playwright advance-week smoke now dismisses the expected GM Decision modal before waiting for `Ready`, so the real consequence loop no longer looks like a test hang.
 - Verification: `npm test` 172/172, `npm run test:ui` 9/9, focused browser/studio/session8 tests 34/34, `npm run build:pages`, `npm run smoke:pages`, `node scripts/check-windows-hide.mjs`, `node scripts/check-canon-044-waves.mjs`, startup brief validation, secrets audit, and blocker preflight.
 - Honesty note: the first UI aggregate exposed a real expected-modal test gap, not a protocol-patch regression. Launch/SPARKED still remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.
-
 ## Where We Left Off — 2026-07-01 (Session 27)
 
 The requested durable `/goal /arc` continued from a clean Session 26 closeout. The primary ranked queue was exhausted, so Session 27 performed a fresh live-code audit and implemented the next two verified truth/reliability issues instead of fabricating launch evidence.
@@ -728,7 +739,6 @@ Next best work:
 - Innovation-pack no longer resurrects completed task-board rows or intentional guard sentinels as work; dry-run is down to the latest-audit follow-through check.
 - Verification: `npm test` 170/170, `npm run test:ui` 9/9, `npm run build:pages`, `npm run smoke:pages`, `node scripts/check-windows-hide.mjs`, `node scripts/check-canon-044-waves.mjs`, `node scripts/check-secrets.mjs --audit`, and `node scripts/ops.mjs blocker-preflight`.
 - Honesty note: one `smoke:pages` run failed because it ran concurrently with `build:pages`; the sequential rerun after build passed. Launch/SPARKED still remains blocked until `football@playfranchisearchitect.com` forwarding/copying and post-push public route/domain evidence are verified.
-
 ## Where We Left Off — 2026-07-01 (Session 26)
 
 The requested durable `/goal /arc` ran continuously through `/start`, live-code `/audit`, `/implement`, second-order innovation-pack expansion, validation, and closeout prep. The primary queue was exhausted from Session 25, so Session 26 focused on verified second-order issues rather than fabricating new launch evidence.
@@ -769,7 +779,6 @@ Next best work:
 - Game UI now has a theme toggle, new brand lockup, scouting narrative/reveal signals, trade-deadline pressure cards, Hall of Fame ceremony sharing, and live sim-watch field position feedback.
 - Verification: `npm test` 166/166, `npm run test:ui` 9/9, `npm run build:pages`, `npm run smoke:pages`, `node scripts/check-windows-hide.mjs`, `node scripts/check-secrets.mjs --audit`, `node scripts/ops.mjs blocker-preflight`, canon adoption check, and canon conformance 0 gaps.
 - Honesty note: an earlier parallel aggregate test attempt produced nonzero/no-detail shard exits under overlapping Node pressure; direct and sequential reruns passed, including the canonical aggregate `npm test`.
-
 ## Where We Left Off — 2026-07-01 (Session 25)
 
 The requested durable `/goal /arc` continuation ran through profile/cutoff classification, live audit reconstruction, implementation repair, verification, and closeout. There was no session lock; the dirty tree was active Session 25 work, not a completed closeout.
@@ -805,7 +814,6 @@ Next best work:
 - Shipped all 4 items from `docs/AUDIT_2026-06-30_SESSION24.md`: project-local innovation-pack command, dynamic `child_process` guard coverage, startup SIL v3 category fallback, and stale task-board cleanup.
 - Shipped the second-order innovation pass recorded in `docs/INNOVATION_PACK.md`; rejected the generic client-runtime 501 sweep as a bad audit item because no missing endpoint was verified.
 - Verification: `npm run test:studio` 6/6, full `npm test` 166/166, `npm run build:pages`, `npm run smoke:pages`, and `npm run test:ui` 9/9. The first UI full-suite attempt had one transient timeout, then the failing test passed in isolation and the full suite passed on rerun.
-
 ## Where We Left Off — 2026-06-30 (Session 24)
 
 The requested `/goal /arc` ran through startup, live audit, implementation, expansion, verification, and closeout. The primary queue is exhausted except the known external custom-domain certificate/routing blocker.
@@ -840,7 +848,6 @@ Next best work:
 - Shipped all 5 items from `docs/AUDIT_2026-06-30_SESSION23.*`: Season Newsletter import, live news ticker selector repair, Commissioner lobby UI/runtime contract, Cap Casualty action wiring, and public contact/privacy/terms/agent/sitemap files.
 - Shipped a second-order innovation pass after the primary list: `scripts/build-pages.mjs` now canonicalizes every static HTML page, and `scripts/smoke-pages.mjs` verifies contact, privacy, terms, `agents.json`, `.well-known/llms.txt`, and `sitemap.xml` in the built Pages bundle.
 - Verification: focused browser/public/runtime tests 15/15, full `npm test` 165/165, Playwright UI 9/9, `npm run build:pages`, and `npm run smoke:pages`.
-
 ## Where We Left Off — 2026-06-30 (Session 23)
 
 The requested `/goal /arc` continued through startup, live audit, implementation, second-order innovation, verification, and closeout. The project-local `ops innovation-pack` command is still unsupported, so the expansion pass was manual and recorded in `docs/INNOVATION_PACK.md`.
@@ -872,7 +879,6 @@ Next best work:
 - Shipped all 3 items from `docs/AUDIT_2026-06-30_SESSION22.*`: mobile core loop wiring, deterministic runtime IDs/callers, and canon strong-gap repair.
 - Shipped the second-order innovation candidate in `docs/INNOVATION_PACK.md`: enabled mobile mode refreshes after Advance Week state mutation so decision cards do not go stale.
 - Verification: focused mobile/determinism 8/8, `npm run test:runtime` 81/81, `npm run test:studio` 5/5, full `npm test` 164/164, Pages build/smoke, and canon conformance 0 gaps.
-
 ## Where We Left Off — 2026-06-30 (Session 22)
 
 The requested `/goal /arc` ran through startup, live audit, implementation, expansion pass, verification, and closeout. The project-local `ops innovation-pack` command is not implemented, so the innovation expansion was manual and recorded in `docs/INNOVATION_PACK.md`.
@@ -907,7 +913,6 @@ Next best work:
 - Shipped all 4 items from `docs/AUDIT_2026-06-30_SESSION21.*`: safe-spawn/window-storm guard, CANON-044 Wave enforcement, blocker/parser truth repair, and honest SIL/context telemetry.
 - Rejected the stale Session 19 game-audit sidecar as the active plan for this arc because the founder requested the infrastructure rubric and the live diff was protocol infrastructure.
 - Verification: `npm run test:studio` 5/5, full `npm test` 162/162, Pages build, Pages smoke, windows-hide guard, CANON-044 guard, context meter, and SIL v6 probe.
-
 ## Where We Left Off — 2026-06-30 (Session 21)
 
 Follow-up deploy fix: remote CI exposed a null launch-readiness bootstrap bug; fixed and verified with Playwright UI 9/9 plus `npm test` 162/162.
@@ -945,7 +950,6 @@ Next best work:
 - Shipped all 6 items from `docs/AUDIT_2026-06-15_SESSION20.*`: narrative determinism fix, miracle-run arc, veteran farewell lore, GM reputation profile + CPU trade multiplier, Priority Inbox deeplinks, and Rival Coach Intel card.
 - Discovered and fixed a smart-quote encoding bug in `seasonEpilogue.js` that silently broke Node.js test parsing — caught by the test run, not by pre-flight.
 - Suite: 20 new focused tests; full `npm test` 184/184 passing.
-
 ## Where We Left Off — 2026-06-15 (Session 20)
 
 The requested `/start -> /audit -> /implement -> /closeout` chain ran from current repo evidence. Session 20 generated a new 6-item audit and shipped all items in one pass.
@@ -970,7 +974,6 @@ Verification passed:
 - Shipped all 3 items from `docs/AUDIT_2026-06-15.*`: mobile General Manager decision deck, beta feedback franchise fingerprint, and closeout cost/brief shims.
 - Verification expanded the known default-shard inventory to `161/161`: full `npm test`, runtime `79/79`, studio `5/5`, Pages build/smoke, and Playwright mobile screenshots all passed.
 - The Cloudflare/GitHub Pages public-domain blocker is unchanged; the game code is deployable and keeps surfacing the blocker truthfully until public URL evidence changes.
-
 ## Where We Left Off — 2026-06-15 (Session 19)
 
 The requested `/start -> /audit -> /implement -> /closeout` chain continued from current repo evidence. Session 19 generated a fresh audit because the Session 18 audit was already fully shipped.
@@ -1005,7 +1008,6 @@ Next best work:
 - Shipped all 3 items from `docs/AUDIT_2026-06-08.*`: live domain readiness states, draft steal-risk/urgency, and launch-readiness feedback packets.
 - Verification is broader than the changed surfaces: focused helper tests 10/10, `npm run test:runtime` 75/75, `npm run test:studio` 4/4, `npm run test:core` 54/54, full `npm test` 156/156, Pages build, and Pages smoke all passed.
 - The Cloudflare/GitHub Pages outage remains external, but Launch Readiness can now flip from `Blocked` to `Ready` only when explicit public-domain evidence changes.
-
 ## Where We Left Off — 2026-06-08 (Session 18)
 
 The requested `/start -> /audit -> /implement -> /closeout` chain continued from current repo evidence. Because the 2026-06-07 audit was already fully shipped, Session 18 generated a fresh audit instead of treating a completed plan as success.
@@ -1038,7 +1040,6 @@ Next best work:
 - Verification is current again: `npm test` passed 153/153, `npm run build:pages` passed, and `npm run smoke:pages` passed.
 - The latest audit remains complete: all four `docs/AUDIT_2026-06-07.*` items are shipped and evidenced in code, tests, and the execution log.
 - Local closeout protocol coverage is still partial: startup shims exist, but `scripts/record-skill-cost.mjs` and `scripts/render-closeout-brief.mjs` are not vendored in this public repo, so this closeout used public-safe manual write-back.
-
 ## Where We Left Off — 2026-06-07 (Session 17)
 
 The requested `/start -> /audit -> /implement -> /closeout` chain is complete from current evidence. Session 17 did not introduce new gameplay changes; it verified the shipped Session 15 work, preserved the propagated `AGENTS.md` lean canon rewrite, and recorded the missing closeout helper scripts as a process follow-up.
@@ -1064,7 +1065,6 @@ Next best work:
 - No abandoned worktree edits were found; Session 15 had already completed the audit, implementation, and closeout loop.
 - Verification now includes `npm test` at 153/153 across core, runtime, sim-contract, sim-realism, and studio, plus Pages build and static smoke.
 - GitHub Pages API still reports the inherited custom-domain certificate as `bad_authz`, expired 2026-06-02; repo-side game code is deployable, while public reachability still depends on the Cloudflare runbook or credentials.
-
 ## Where We Left Off — 2026-06-07 (Session 16)
 
 The resume pass found no mid-edit cutoff. The correct next step was verification, not another same-day audit rewrite.
@@ -1088,7 +1088,6 @@ Remaining public-safe blocker:
 - Shipped all 4 items from `docs/AUDIT_2026-06-07.*`: protocol shims, Draft War Room pressure, Launch Readiness cockpit, and regression coverage.
 - Test inventory is now 153 known default-shard tests; this session verified focused tests 7/7, studio 4/4, runtime 72/72, core 54/54, Pages build, and Pages smoke.
 - The custom-domain outage remains Cloudflare-side, but it is now surfaced in the browser Settings launch cockpit as an explicit beta-readiness blocker.
-
 ## Where We Left Off — 2026-06-07
 
 The `/start -> /audit -> /implement -> /closeout` chain ran end-to-end for Session 15 with a fresh four-item audit personalized to current repo evidence.
@@ -1121,7 +1120,6 @@ Next best work:
 - Shipped 7 of 8 audit items; the 8th (custom-domain cert) is fully diagnosed with a two-option founder runbook in TASK_BOARD.
 - Test suite grew 131 → 149 (18 new tests across challenge codes, save integrity, beta feedback), all five default shards green.
 - New player-facing surfaces: rivalry strip + RIVALRY WEEK banner, Season Epilogue ritual, shareable challenge codes, "Tell the Commissioner" feedback, save corruption detection.
-
 ## Where We Left Off — 2026-06-04
 
 The `/start -> /audit -> /implement -> /closeout` chain ran end-to-end for Session 14 with a fresh 8-item audit (`docs/AUDIT_2026-06-04.md`).
