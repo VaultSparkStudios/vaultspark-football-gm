@@ -1,31 +1,25 @@
-# Implementation Plan — Session 53
+# Implementation Plan — Session 54
 
-Source: docs/AUDIT_2026-07-22_SESSION53.json
+Source: `docs/AUDIT_2026-07-23_SESSION54.json`
 
-## Wave 3A — Truth foundations
+## Wave 3A — Source-of-truth foundations
 
-1. direct-test-receipt-authority — create the executable receipt authority first so every later verification is source-derived.
-2. exact-proprietary-footer-contract — close the deterministic public compliance gap across all routes.
-3. post-commit-hydration-truth — protect successful weekly mutations from fallible secondary refreshes.
+1. `session-truth-coherence-authority` — make status mutation and startup freshness one fail-closed authority before later closeout surfaces consume them.
+2. `contract-service-cap-authority` — establish one production service delegation seam while the full suite is already exercising every downstream cap check.
 
-## Wave 3B — Shared decision architecture
+## Wave 3B — Franchise learning architecture
 
-4. shared-franchise-command-center — extract one ranked selector and feed desktop/mobile from it.
-5. tactical-identity-arc — derive identity progression from persisted executed film receipts.
+3. `architect-ledger` — persist the authoritative weekly intent → execution → observed outcome → adaptation receipt.
+4. `three-horizon-blueprint` — render Now / Season / Legacy from existing sources and the new ledger without adding a currency or prediction.
 
-## Wave 3C — Evidence loop
+## Wave 3C — Public contract completion
 
-6. contextual-evidence-moments — reuse local receipt custody at real source-backed milestones.
+5. `studio-linkback-all-routes` — extend the canonical footer guard and repair every public route before Pages verification.
 
 ## Verification cadence
 
-- Run focused tests after each item.
-- Run browser/Pages gates after player-facing waves.
-- Run the direct canonical aggregate only after all primary and innovation work is complete.
-- Mark no item shipped without live behavior evidence.
-
-## Completion
-
-All six primary rows are implemented. The exhausted queue produced five viable second-order candidates and all five are implemented: explainable command receipts, tactical identity previews, local receipt trends, source-aware innovation scanning, and orphan public-boundary cleanup. The only deferred candidate is the external launch evidence bundle; its premise is real, but its required hosted/email/approval/registry receipts do not exist yet.
-
-Final evidence: direct Node 444/444, fresh digest-bound test receipt, Playwright 18/18, Pages build/smoke, responsive evidence 20/20, doctor `blockingFailing: 0`, and Unified Genius List 0 open / 6 closed.
+- Run focused pure/integration tests after each item; never treat the still-running aggregate wrapper as evidence.
+- Run direct named shards once the inherited aggregate process finishes; aggregate only direct exits and TAP summaries.
+- Run Playwright plus Pages build/smoke after player-facing work.
+- Re-run audit rendering, Genius cache, source receipts, doctor, security, canon, and release gates before closeout.
+- Mark no item implemented until its JSON execution evidence and live test surface agree.

@@ -29,6 +29,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { updateProjectStatus } from './lib/write-project-status.mjs';
 
 const ROOT = process.cwd();
 const args = process.argv.slice(2);
@@ -116,10 +117,12 @@ const result = {
 
 // Stamp status + lock
 try {
-  status.planModeDetected = result.status;
-  status.planModeCheckedAt = new Date().toISOString();
-  if (active) status.planModeLastActivatedAt = status.planModeLastActivatedAt || new Date().toISOString();
-  fs.writeFileSync(statusPath, JSON.stringify(status, null, 2) + '\n');
+  updateProjectStatus(ROOT, (current) => ({
+    ...current,
+    planModeDetected: result.status,
+    planModeCheckedAt: new Date().toISOString(),
+    planModeLastActivatedAt: active ? (current.planModeLastActivatedAt || new Date().toISOString()) : current.planModeLastActivatedAt
+  }));
 } catch { /* non-fatal */ }
 try {
   if (fs.existsSync(lockPath)) {

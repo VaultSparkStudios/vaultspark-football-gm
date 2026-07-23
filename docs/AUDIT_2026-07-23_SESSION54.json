@@ -1,0 +1,290 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-23",
+  "session": 54,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 5,
+    "combinedPriority": 155.1,
+    "topItem": "session-truth-coherence-authority",
+    "source": "live-code-audit",
+    "openItems": 0
+  },
+  "profile": {
+    "type": "game/app",
+    "audience": "public-unlaunched",
+    "rubric": "founder-requested infrastructure-grade product rubric",
+    "staging": "GitHub Pages artifact plus exact same-origin hosted verification",
+    "source": "live code, current direct test attempt, game-loop review, application release gate, infrastructure debt sweep, and public-safe context"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for local implementation",
+    "ci": "Literal current last-five workflow evidence is 5/5 green; status and handoff still claim 3/5, proving a freshness defect rather than a CI blocker.",
+    "staging": "Fresh same-origin staging receipt exits 2 at 3/10; health, manifest, revision, asset, repository, and launch truth are not joined.",
+    "cost": "Cost-neutral field and content gates pass. Flat-rate plan cost remains notional and is not an alarm.",
+    "branding": "Exact proprietary copyright passes 11/11 HTML files, but eight public routes display Studio text without the required VaultSpark link-back.",
+    "origin": "Canonical health is 404; HSTS, frame protection, CSP, received-message evidence, and founder approval remain red external gates.",
+    "parity": "Local responsive evidence is not bound to current HEAD or a working hosted staging origin.",
+    "approval": "No launch or lifecycle-promotion approval is recorded."
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.5,
+    "progression": 8.0,
+    "sessionEngagement": 8.5,
+    "retention": 6.5,
+    "soulFidelity": 6.0,
+    "overall": 7.5,
+    "evidence": "Implementation review only: 31/31 targeted contracts pass. No substantive public SOUL, GAME_LOOP document, checked-in playtest corpus, or retention telemetry exists; no claim about fun, pace, churn, or sentiment is made."
+  },
+  "recommendedMoves": [
+    "Make session identity, PROJECT_STATUS mutations, and startup-brief freshness one self-validating observability authority.",
+    "Turn existing weekly command receipts into an Architect's Ledger that joins intent, execution, observed outcome, and the next adaptation without causal overclaiming.",
+    "Unify the next controlled action, season contract, and career legacy into one Three-Horizon Blueprint instead of adding another disconnected progression currency."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Promote launch or SPARKED posture",
+      "reason": "Deferred honestly: same-origin staging is 3/10, canonical health and edge headers fail, email delivery proof and founder approval are absent, responsive evidence is not same-revision, and registry SPARKED conflicts with local FORGE/S0 truth."
+    },
+    {
+      "candidate": "Edit the authoritative registry, apex host, DNS, or sibling staging tree",
+      "reason": "Rejected as sibling-owned work. This repository may emit exact evidence and signed Ark cargo but may not edit another repository to make itself green."
+    },
+    {
+      "candidate": "Consolidate all 243 server and local-runtime route branches in one pass",
+      "reason": "Premise is real, but a broad rewrite would exceed a safe parity surface. This session establishes a proven service-delegation seam first; future router extraction must move one command family behind representative state-transition tests."
+    },
+    {
+      "candidate": "Add generic streaks, achievements, telemetry, or another retention widget",
+      "reason": "Rejected as speculative. The product already has return digest, legacy, tactics, inbox, challenges, rivalry, history, epilogues, and local feedback instruments; efficacy is unmeasured, so the audit joins existing authorities instead of inventing another reward layer."
+    },
+    {
+      "candidate": "Claim soul fidelity or player delight",
+      "reason": "Rejected because the public SOUL is intentionally minimal and no real playtest receipt corpus exists. Executable implementation quality is not substituted for player evidence."
+    },
+    {
+      "candidate": "Install or upgrade packages",
+      "reason": "Rejected on evidence: package.json and lock metadata already resolve the declared Playwright version; only the local install is stale, and no dependency is needed for the ranked work."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+  "secondOrderInnovations": [
+    {
+      "rank": "S54-I1",
+      "slug": "adaptation-loop-closure",
+      "status": "implemented",
+      "premise": "A persisted next-adaptation prompt has more loop value when it informs the next controlled horizon instead of remaining historical copy.",
+      "executionEvidence": "Three-Horizon Blueprint now uses the latest committed ledger adaptation as the non-blocking Now milestone while preserving live command authority; focused derivation test passes."
+    },
+    {
+      "rank": "S54-I2",
+      "slug": "noncausal-decision-memory-signal",
+      "status": "implemented",
+      "premise": "A bounded longitudinal summary can make franchise identity legible without fabricating telemetry or claiming tactics caused wins.",
+      "executionEvidence": "Overview derives dominant declared tactic, explicit sample size, consistency, and observed film alignment from at most eight ledger receipts, with empty-state and non-causation language; focused tests pass."
+    }
+  ],
+      "category": "Infrastructure / observability / source authority",
+      "effortHours": 2.0,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 35.0,
+      "slug": "session-truth-coherence-authority",
+      "title": "Make session status and startup freshness self-validating",
+      "status": "implemented",
+      "premise": "The startup checker declared a Session 53 brief fresh solely because its date was current even though the authoritative handoff/status had already closed Session 53 and the brief still described the Session 52 closeout. Three scripts also bypass the invariant-enforcing PROJECT_STATUS write authority.",
+      "evidence": [
+        "scripts/check-brief-staleness.mjs checks only generated-at age and returned FRESH for the stale session identity",
+        "docs/STARTUP_BRIEF.md says generated at Session 52 closeout while context/PROJECT_STATUS.json and LATEST_HANDOFF identify Session 53",
+        "scripts/detect-session-mode.mjs, scripts/verify-plan-mode.mjs, and scripts/render-startup-brief.mjs write PROJECT_STATUS.json directly",
+        "scripts/lib/write-project-status.mjs declares the single SIL-invariant authority"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Reject a brief whose rendered session does not equal PROJECT_STATUS.currentSession + 1."
+        },
+        "L2": {
+          "effortHours": 2.0,
+          "recipe": "Export a pure startup-freshness evaluator that joins generated age, rendered session, status currentSession, and coherent marker; route every PROJECT_STATUS mutation through updateProjectStatus; add fixture and static-authority tests; rerender and validate a truthful Session 54 brief."
+        },
+        "L3": {
+          "effortHours": 3.5,
+          "recipe": "Embed and verify a digest over every startup source so any truth-file mutation invalidates the brief without relying on timestamps."
+        }
+      },
+      "verification": [
+        "date-fresh but session-stale briefs fail closed",
+        "current session brief passes",
+        "all PROJECT_STATUS writers enforce SIL invariants",
+        "brief validator and staleness checker agree"
+      ],
+      "executionEvidence": "Pure freshness authority rejects session-stale/coherence-stale briefs; all three direct PROJECT_STATUS mutators use updateProjectStatus; Session 54 brief rerender, validator, and freshness checker pass."
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Game depth / learning loop / observability",
+      "effortHours": 3.0,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 34.9,
+      "slug": "architect-ledger",
+      "title": "Join weekly intent, execution, outcome, and adaptation",
+      "status": "implemented",
+      "premise": "The weekly command is transactional and tactical film is persisted, but command receipts are response-local and the product does not preserve one readable plan-to-result learning row per committed controlled week.",
+      "evidence": [
+        "src/runtime/advanceWeekCommand.js returns commandReceipt and tacticalReceipt but persists only tactical film",
+        "public/lib/postCommitHydration.js preserves the response receipt only for the current refresh",
+        "franchiseCommandCenter ranks the next action but cannot explain how the prior command changed the next plan",
+        "game-loop review identifies the plan-act-learn join as the highest-value loop refinement"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Render the latest tactic and command receipt together on Overview."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Persist a bounded deterministic Architect's Ledger for controlled weekly commits: record chosen General Manager decision and tactic as intent, exact started/completed authority, observed score/film alignment as outcome, and a non-causal next-adaptation prompt; expose it in both runtimes and render an accessible recent ledger on Overview with save/restore and transaction tests."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Add season-level pattern summaries with explicit sample size and no causal claims, linked to film and decision receipts."
+        }
+      },
+      "verification": [
+        "only successful committed controlled weeks append",
+        "failed transactions append nothing",
+        "entries survive snapshot restore and are bounded",
+        "copy distinguishes observed alignment from causation"
+      ],
+      "executionEvidence": "Canonical footer contract now requires a valid HTTPS vaultsparkstudios.com anchor inside every footer; all eight missing routes repaired; Pages build and 11/11 public compliance pass."
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Progression / UI-UX / command clarity",
+      "effortHours": 2.5,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 33.2,
+      "slug": "three-horizon-blueprint",
+      "title": "Unify weekly, season, and career progression",
+      "status": "implemented",
+      "premise": "Tactical identity, the opening contract and owner expectation, season epilogue, and six-tier General Manager legacy all exist, but they render as separate panels with no single Now / Season / Legacy architecture or next milestone.",
+      "evidence": [
+        "public/lib/franchiseCommandCenter.js owns the current controlled next action",
+        "GameSession dashboard exposes openingContractProgress and owner expectation",
+        "public/lib/tabOverview.js fetches and renders General Manager legacy separately",
+        "game-loop review scores progression 8.0 and finds fragmented presentation rather than missing mechanics"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Place links to existing weekly, season, and legacy panels in one Overview row."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Create one source-derived Three-Horizon Blueprint with Now, Season, and Legacy lanes; each lane names its authority, current state, exact next milestone, and real destination action. Reuse existing command, opening-contract/owner, tactical-identity, and legacy sources; add no currency or predicted outcome; cover missing-state, browser, keyboard, and narrow-layout behavior."
+        },
+        "L3": {
+          "effortHours": 4.0,
+          "recipe": "Add a season-close comparison that shows which declared blueprint milestones were observed, missed, or changed, without rewriting history."
+        }
+      },
+      "verification": [
+        "all three lanes derive from live authorities",
+        "missing sources degrade honestly",
+        "actions activate existing destinations",
+        "mobile and desktop present the same milestone truth"
+      ],
+      "executionEvidence": "Bounded transaction-only Architect's Ledger persists intent, command authority, observed result/alignment, and explicitly non-causal adaptation; rollback and snapshot tests pass; Overview renders accessible history."
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Infrastructure / decomposition / contract authority",
+      "effortHours": 2.0,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 24.0,
+      "slug": "contract-service-cap-authority",
+      "title": "Turn the dormant service bundle into one real delegation seam",
+      "status": "implemented",
+      "premise": "GameSession is 5,744 physical lines and constructs five services but calls none. ContractService's cap calculation also diverges from the production cap ledger, so the scaffold is dead architecture rather than a safe extraction path.",
+      "evidence": [
+        "src/runtime/GameSession.js constructs this.services in constructor and fromSnapshot but has zero this.services.* calls",
+        "GameSession.getTeamCapSummary uses capLedger, team overrides, rollover, and deadCapCurrentYear",
+        "ContractService.getCapSummary uses league.settings.capHardLimit and team.deadCap and returns a different shape",
+        "existing tests assert service construction, not production delegation or parity"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Make ContractService cap summary exactly match GameSession and delegate getTeamCapSummary."
+        },
+        "L2": {
+          "effortHours": 2.0,
+          "recipe": "Bind ContractService to the live session, move the exact cap-ledger computation behind it, delegate every production cap check through the service via GameSession.getTeamCapSummary, preserve the public response shape, and add override/rollover/dead-cap/snapshot parity plus a guard proving at least one real service delegation exists."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Extract one complete contract mutation family with transaction, index-refresh, and adapter parity before deleting the in-class implementation."
+        }
+      },
+      "verification": [
+        "cap summary is byte-equivalent before and after delegation",
+        "team overrides, rollover, and both dead-cap years remain correct",
+        "snapshot restoration rebinds the service",
+        "all production cap checks use the delegated authority"
+      ],
+      "executionEvidence": "Now, Season, and Legacy lanes derive from existing command, opening-contract/owner, and General Manager legacy authorities with honest missing states, actionable destinations, responsive layout, and focused tests."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Legal-IP / branding / public compliance",
+      "effortHours": 0.75,
+      "impact": 8,
+      "innovation": 3,
+      "priority": 28.0,
+      "slug": "studio-linkback-all-routes",
+      "title": "Enforce VaultSpark link-back on every public route",
+      "status": "implemented",
+      "premise": "The exact copyright contract passes, but eight of eleven public HTML pages render VaultSpark Studios as plain text without the CANON-006 link-back; the current helper and tests only enforce copyright/open-source language.",
+      "evidence": [
+        "read-only release audit found links only in game.html, index.html, and landing.html",
+        "about, changelog, contact, ip, play, privacy, status, and terms lack a vaultsparkstudios.com href",
+        "scripts/lib/public-footer.mjs inspects only copyright and open-source claims",
+        "context/CANON_ADOPTION.md currently overclaims linked branding across all routes"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Wrap the Studio name in a link on each missing page."
+        },
+        "L2": {
+          "effortHours": 0.75,
+          "recipe": "Extend the canonical public-footer contract to require a safe HTTPS VaultSpark Studios link-back inside every footer, repair all eight routes, and make Pages build plus public-compliance tests fail on missing, non-HTTPS, or off-domain branding links while preserving the proprietary line."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "Generate every footer from one manifest-backed source at build time and attest route coverage in deploy evidence."
+        }
+      },
+      "verification": [
+        "11/11 public HTML files have the exact copyright",
+        "11/11 footers contain the approved HTTPS Studio link",
+        "footer navigation remains complete",
+        "no open-source claim or license file is introduced"
+      ],
+      "executionEvidence": "GameSession.getTeamCapSummary delegates to a live-session ContractService that preserves the exact production response shape and cap-ledger/override semantics; parity test passes."
+    }
+  ]
+}

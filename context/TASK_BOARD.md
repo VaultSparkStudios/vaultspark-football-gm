@@ -714,3 +714,24 @@ Premises and implementation recipes: docs/AUDIT_2026-07-22_SESSION53.json (sole 
 | S53-I6 | Launch evidence bundle | Deferred honestly | Hosted revision/health/headers, CI 5/5, received email, approval, and registry reconciliation remain incomplete |
 
 Unified Genius List: **0 open / 6 primary closed**. Viable second-order innovation list: **0 open / 5 closed**.
+
+## Session 54 — Source Authority and Franchise Architecture (2026-07-23)
+
+Source: `docs/AUDIT_2026-07-23_SESSION54.json`.
+
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Infrastructure / observability / source authority | Done S54 | 2.0h | session-truth-coherence-authority |
+| FIRE | Game depth / learning loop / observability | Done S54 | 3.0h | architect-ledger |
+| FIRE | Progression / UI-UX / command clarity | Done S54 | 2.5h | three-horizon-blueprint |
+| HIGH | Infrastructure / decomposition / contract authority | Done S54 | 2.0h | contract-service-cap-authority |
+| HIGH | Legal-IP / branding / public compliance | Done S54 | 0.75h | studio-linkback-all-routes |
+
+## Session 54 - Second-order innovation saturation
+
+| Rank | Candidate | Status | Evidence |
+|---:|---|---|---|
+| S54-I1 | Adaptation loop closure | Done | Latest committed next-adaptation informs the non-blocking Now horizon without displacing command authority |
+| S54-I2 | Non-causal decision-memory signal | Done | Bounded tactic consistency and film alignment with sample size, honest empty state, and explicit no-causation copy |
+
+Unified Genius List: **0 open / 5 primary closed**. Viable second-order innovation list: **0 open / 2 closed**.

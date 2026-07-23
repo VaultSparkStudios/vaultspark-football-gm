@@ -2,7 +2,7 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-07-21
+Last reviewed: 2026-07-23
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 2026-05-27 note:
@@ -314,3 +314,14 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Public-boundary truth: every public HTML route has the exact proprietary footer; the orphan broker had no caller and depended on absent private policy, so removal is safer than pretending it was an integration.
 - Release truth: local same-revision build/smoke/responsive evidence is green, but hosted staging is 3/10, current literal CI history is 3/5, canonical custom-origin health/headers and received email are unproved, approval is absent, and registry lifecycle conflicts. Launch is HOLD.
 - Cost truth: no variable-cost service or dependency was introduced; flat-rate Max Plan cost remains notional.
+
+## 2026-07-23 — Session 54 truth updates
+
+- Session truth: startup freshness requires current date, coherent marker, closed-session identity, rendered next-session identity, and PROJECT_STATUS agreement; all known status mutators use the invariant writer.
+- Cap truth: GameSession and ContractService expose one exact cap-ledger authority including overrides, rollover, and both dead-cap years.
+- Learning-loop truth: only successful controlled weekly transactions append Architect's Ledger history; failed commands leave no row and save/restore preserves committed rows.
+- Interpretation truth: tactic consistency and film alignment are descriptive bounded signals with sample size and explicit non-causation language.
+- Public truth: all 11 HTML footers contain the exact proprietary notice and a valid HTTPS VaultSpark Studios link-back.
+- Test truth: direct shards pass 452/452 and Playwright 18/18; initial aggregate/short observation timeouts are retained as non-evidence and superseded only by direct exits.
+- Release truth: local Pages build/smoke and browser evidence are green, but hosted same-origin staging remains 3/10; no launch/SPARKED readiness is inferred.
+- Cost truth: no dependency or variable-cost service was added; flat-rate Max Plan cost remains notional.

@@ -456,3 +456,17 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Decision:** Session 53 can be complete while launch remains HOLD. Local same-revision evidence, shared-origin web hardening, credential readiness, and latest-run CI success cannot substitute for exact hosted-origin revision evidence, a real received-message receipt, literal 5/5 CI, founder approval, or authoritative lifecycle reconciliation.
 
 **Rationale:** Joining unlike evidence sources creates a polished but false release claim. External truth remains pending until its own receipt exists.
+
+## 2026-07-23 — Franchise architecture is descriptive decision memory, never causal telemetry
+
+**Decision:** Persist Architect's Ledger rows only inside successful controlled weekly transactions. A row may join declared tactic/General Manager intent, exact command boundaries, observed score/film alignment, and a next-adaptation prompt. Longitudinal summaries must state sample size and describe consistency/alignment only; they may not claim a tactic caused wins or losses.
+
+**Rationale:** The product needs a legible plan-act-learn loop, but no controlled experiment or player telemetry supports causal performance claims. Transaction-only persistence prevents failed attempts from becoming false history.
+
+**Pattern established:** Historical evidence can inform the next horizon without displacing the current live command authority.
+
+## 2026-07-23 — Session observability has one invariant-enforcing write path
+
+**Decision:** Every PROJECT_STATUS mutation routes through `updateProjectStatus`, and startup freshness joins date, coherence, closed-session authority, rendered-session identity, and status identity.
+
+**Rationale:** A current timestamp previously masked a one-session identity lag, while direct writers bypassed SIL invariants. Observability is trustworthy only when its sources agree and self-reject stale joins.

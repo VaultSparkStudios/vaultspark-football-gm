@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { inspectPublicFooterContract, PUBLIC_COPYRIGHT } from "../scripts/lib/public-footer.mjs";
+import { inspectPublicFooterContract, PUBLIC_COPYRIGHT, PUBLIC_STUDIO_ORIGIN } from "../scripts/lib/public-footer.mjs";
 
 const requiredFiles = [
   "../public/contact.html",
@@ -110,11 +110,15 @@ test("private creative-direction ledger is absent from the public repository", (
 test("every public HTML surface carries the exact proprietary copyright contract", () => {
   const publicDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../public");
   const report = inspectPublicFooterContract(publicDir);
+  assert.deepEqual(report.missingLinkbacks, []);
+  assert.deepEqual(report.invalidLinkbacks, []);
   assert.equal(report.htmlFiles.length > 0, true);
   assert.deepEqual(report.missing, []);
   assert.deepEqual(report.openSourceClaims, []);
   for (const name of report.htmlFiles) {
     const source = fs.readFileSync(path.join(publicDir, name), "utf8");
+    assert.match(source, new RegExp(`href=["']${PUBLIC_STUDIO_ORIGIN.replace(/[.*+?^\${}()|[\]\\]/g, "\\$&")}\\/?["']`), name + " links the Studio over HTTPS");
+    assert.equal(report.ok, true);
     assert.match(source, /<footer\b[\s\S]*© 2026 VaultSpark Studios LLC\. All rights reserved\.[\s\S]*<\/footer>/, name + " keeps the line inside a footer");
     assert.equal(source.includes(PUBLIC_COPYRIGHT), true);
   }

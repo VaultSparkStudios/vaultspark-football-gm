@@ -95,6 +95,7 @@ export const SHARDS = {
     "test/release-provenance.test.js",
     "test/session52-innovations.test.js",
     "test/session53-innovations.test.js",
+    "test/session54-innovations.test.js",
     "test/staging-receipt.test.js",
     "test/test-receipt.test.js",
     "test/shard-coverage.test.js",

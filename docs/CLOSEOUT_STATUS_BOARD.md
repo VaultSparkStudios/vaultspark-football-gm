@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-23 (Session 53 closeout) -->
+<!-- generated-at: 2026-07-23 (Session 54 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S53 ══════╗
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S54 ══════╗
 ║  Date: 2026-07-23  ·  SIL: 995/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Successful weekly mutations now remain committed when second  ║
-║  ✓ Direct test truth is an atomic, source-bound receipt; produc  ║
-║  ✓ Executed tactical film builds a persistent Installing → Esta  ║
-║  ✓ Desktop and mobile share one explainable ranked Franchise Co  ║
-║  ✓ Source-derived franchise milestones can request bounded loca  ║
+║  ✓ Startup freshness now joins date, coherent marker, closeout   ║
+║  ✓ ContractService is a real production seam: GameSession deleg  ║
+║  ✓ Successful controlled weekly commands persist a bounded Arch  ║
+║  ✓ One responsive Three-Horizon Blueprint unifies the live Now   ║
+║  ✓ Second-order closure routes the last observed adaptation int  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -41,8 +41,8 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 62 files  ·  M:46 A:0 D:1 ?:15                         ║
-║  Ahead: 0  ·  Behind: 0                                          ║
+║  Changes: 25 files  ·  M:19 A:0 D:0 ?:6                          ║
+║  Ahead: 1  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         444/444                                          ║
+║  Tests:         452/452                                          ║
 ║  IGNIS:         3d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  1d ago                                           ║
+║  Sanitization:  0d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
