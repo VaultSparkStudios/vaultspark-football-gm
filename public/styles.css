@@ -4460,6 +4460,13 @@ html[data-theme="light"] .bg-layer {
   -webkit-backdrop-filter: blur(14px);
 }
 
+/* Hide nav bar while any modal is open so it doesn't overlay dialog content */
+@media (max-width: 640px) {
+  body.has-mobile-nav:has(.modal:not(.hidden)) .mobile-nav-bar {
+    display: none;
+  }
+}
+
 /* Push game content above the 60px bar so nothing is hidden behind it */
 @media (max-width: 640px) {
   body.has-mobile-nav .game-shell {
