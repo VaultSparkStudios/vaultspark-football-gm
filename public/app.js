@@ -1,5 +1,6 @@
 import { injectTutorialStyles, mountTutorial } from "./lib/tutorialCampaign.js";
 import { initThemeCustomizer } from "./lib/themeCustomizer.js";
+import { initMobileNav } from "./lib/mobileNav.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
 import { maybeShowReturnDigest } from "./lib/returnDigest.js";
@@ -1972,6 +1973,7 @@ async function init() {
   );
   initMobileLoop(state, advanceFromMobileLoop);
   syncMobileLoopOverlay();
+  initMobileNav();
   setInterval(() => {
     observeBackgroundTask(loadSimJobs, {
       surface: "jobs",
