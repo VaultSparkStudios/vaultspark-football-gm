@@ -10,7 +10,12 @@ export default defineConfig({
     baseURL: "http://localhost:4273",
     headless: true,
     trace: "retain-on-failure",
-    screenshot: "only-on-failure"
+    screenshot: "only-on-failure",
+    // use pre-installed chromium when the version in PLAYWRIGHT_BROWSERS_PATH
+    // doesn't match the version expected by this @playwright/test pin
+    ...(process.env.PLAYWRIGHT_EXECUTABLE_PATH
+      ? { launchOptions: { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH } }
+      : {})
   },
   webServer: {
     command: "node scripts/dev-playwright-server.mjs",
