@@ -4,6 +4,10 @@ import { test, expect } from "@playwright/test";
 // must be visible, open/close the slide-in nav panel, and auto-close on
 // tab selection. Regression target: nav used to stack all 14 tabs inline
 // above the content, forcing users to scroll past nav to reach the game.
+//
+// Note: beforeAll sets localStorage "vsfgm_mobile_loop"="0" so the full-screen
+// mobile-loop overlay (active at ≤480px by default) does not intercept clicks
+// on the hamburger button during these tests.
 
 const MOBILE_VIEWPORT = { width: 375, height: 812 };
 
