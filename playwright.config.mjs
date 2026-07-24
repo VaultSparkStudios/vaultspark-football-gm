@@ -1,4 +1,9 @@
+import { existsSync } from "node:fs";
 import { defineConfig } from "@playwright/test";
+
+// Cloud sandbox pre-installs Chromium at a fixed path; CI installs its own.
+const CLOUD_CHROMIUM = "/opt/pw-browsers/chromium";
+const cloudChromium = existsSync(CLOUD_CHROMIUM) ? CLOUD_CHROMIUM : undefined;
 
 export default defineConfig({
   testDir: "./tests-ui",
@@ -10,7 +15,10 @@ export default defineConfig({
     baseURL: "http://localhost:4273",
     headless: true,
     trace: "retain-on-failure",
-    screenshot: "only-on-failure"
+    screenshot: "only-on-failure",
+    launchOptions: {
+      executablePath: cloudChromium
+    }
   },
   webServer: {
     command: "node scripts/dev-playwright-server.mjs",
