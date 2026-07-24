@@ -122,7 +122,10 @@ async function assertPublishedMountContract() {
 async function main() {
   const server = await createServer();
   await new Promise((resolve) => server.listen(port, host, resolve));
-  const browser = await chromium.launch({ headless: true });
+  const CLOUD_CHROMIUM = "/opt/pw-browsers/chromium";
+  const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
+    || (await fileExists(CLOUD_CHROMIUM) ? CLOUD_CHROMIUM : undefined);
+  const browser = await chromium.launch({ headless: true, executablePath });
   const page = await browser.newPage();
 
   try {

@@ -245,6 +245,7 @@ import { buildLeagueStoryFromDashboard, downloadLeagueStory } from "./lib/league
 import {
   applyDashboard,
   activateTab,
+  initMobileNavDrawer,
   loadState,
   loadScheduleWeek,
   loadCalendar,
@@ -471,6 +472,7 @@ function exposeLocalTestHooks() {
 
 function bindEvents() {
   bindMenuTabs(activateTab);
+  initMobileNavDrawer();
 
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();

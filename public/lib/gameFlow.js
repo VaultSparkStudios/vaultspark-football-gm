@@ -139,6 +139,45 @@ export function applyDashboard(newState) {
 
 }
 
+function closeMobileNav() {
+  const menu = document.getElementById("sideMenu");
+  const toggle = document.getElementById("mobileNavToggle");
+  if (!menu) return;
+  menu.classList.remove("nav-open");
+  document.body.classList.remove("mobile-nav-open");
+  if (toggle) toggle.setAttribute("aria-expanded", "false");
+}
+
+export function initMobileNavDrawer() {
+  const toggle = document.getElementById("mobileNavToggle");
+  const backdrop = document.getElementById("sideMenuBackdrop");
+  const menu = document.getElementById("sideMenu");
+  if (!toggle || !menu) return;
+
+  toggle.addEventListener("click", () => {
+    const isOpen = menu.classList.contains("nav-open");
+    if (isOpen) {
+      closeMobileNav();
+    } else {
+      menu.classList.add("nav-open");
+      document.body.classList.add("mobile-nav-open");
+      toggle.setAttribute("aria-expanded", "true");
+      menu.focus();
+    }
+  });
+
+  if (backdrop) {
+    backdrop.addEventListener("click", closeMobileNav);
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("mobile-nav-open")) {
+      closeMobileNav();
+      toggle.focus();
+    }
+  });
+}
+
 export function activateTab(tabId) {
   state.activeTab = tabId;
   document.querySelectorAll(".menu-btn").forEach((btn) => {
@@ -152,6 +191,7 @@ export function activateTab(tabId) {
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);
   });
+  closeMobileNav();
   applyShellTheme();
   if (tabId === "contractsTab") {
     loadContractsTeam().catch((error) => {
