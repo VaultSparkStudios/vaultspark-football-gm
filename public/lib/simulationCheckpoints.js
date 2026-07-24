@@ -92,7 +92,7 @@ export function classifySimulationCheckpoint({ previous = {}, next = {} } = {}) 
   };
 }
 
-export function appendSimulationDigest(digest = [], { previous = {}, next = {}, checkpoint = null } = {}) {
+export function appendSimulationDigest(digest = [], { previous = {}, next = {}, checkpoint = null, policyEvidence = null } = {}) {
   const entry = {
     id: `${next.currentYear ?? "?"}-${next.phase || "unknown"}-${next.currentWeek ?? "?"}-${offseasonStage(next) || "none"}-${next.draft?.currentPick || "none"}`,
     year: next.currentYear ?? null,
@@ -100,7 +100,8 @@ export function appendSimulationDigest(digest = [], { previous = {}, next = {}, 
     phase: next.phase || "unknown",
     result: gameDigest(next),
     checkpoint: checkpoint?.primary?.label || null,
-    from: previous.currentWeek ?? null
+    from: previous.currentWeek ?? null,
+    policy: policyEvidence || null
   };
   const withoutDuplicate = digest.filter((existing) => existing.id !== entry.id);
   return [...withoutDuplicate, entry].slice(-12);
@@ -109,7 +110,10 @@ export function appendSimulationDigest(digest = [], { previous = {}, next = {}, 
 export function formatSimulationDigest(digest = []) {
   return digest.slice(-5).map((entry) => {
     const location = `Y${entry.year ?? "?"} W${entry.week ?? "?"}`;
-    const details = [entry.result, entry.checkpoint].filter(Boolean).join(" · ");
+    const policy = entry.policy?.tactic
+      ? `Plan: ${entry.policy.tactic} · ${entry.policy.aligned === true ? "aligned" : entry.policy.aligned === false ? "not aligned" : "receipt pending"}`
+      : null;
+    const details = [entry.result, policy, entry.checkpoint].filter(Boolean).join(" · ");
     return `${location} · ${details || entry.phase}`;
   });
 }

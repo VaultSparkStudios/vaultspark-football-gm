@@ -295,6 +295,7 @@ import {
   closeSeasonReviewModal,
   showHalftimeAdjustModal
 } from "./lib/gameFlow.js";
+import { createFastSimulationPolicy } from "./lib/fastSimulationPolicy.js";
 
 import {
   ingestNewsIntoInbox,
@@ -318,6 +319,22 @@ import {
   checkAndPruneRewindStorage
 } from "./lib/engagementFeatures.js";
 
+async function collectAcceleratedStrategyPolicy(scope) {
+  const seasonScope = scope === "season";
+  const tactic = await new Promise((resolve) => showHalftimeAdjustModal(resolve, {
+    title: "Architect Auto-Plan",
+    subtitle: seasonScope
+      ? "Declare one regular-season identity for this run. The plan pauses with every material franchise checkpoint."
+      : "Declare one identity for the next four regular-season weeks. Each week earns its own Architect receipt.",
+    confirmLabel: seasonScope ? "Commit Season Plan" : "Commit Four-Week Plan",
+    skipLabel: "Sim Without A Plan"
+  }));
+  const policy = createFastSimulationPolicy(tactic, scope);
+  if (!policy) {
+    showToast("No auto-plan declared — simulation will advance without attributing a tactical intent.");
+  }
+  return policy;
+}
 
 async function submitMobileGmDecisionChoice(choice) {
   if (!choice?.decisionId || !choice?.choiceId) return { staged: false };
@@ -542,7 +559,10 @@ function bindEvents() {
   });
   document.getElementById("advance4WeeksBtn").addEventListener("click", () =>
     runAction(
-      () => advanceWeeksSequential(4, { resolveDecision: checkAndShowGmDecision }),
+      async () => {
+        const strategyPolicy = await collectAcceleratedStrategyPolicy("four-weeks");
+        return advanceWeeksSequential(4, { resolveDecision: checkAndShowGmDecision, strategyPolicy });
+      },
       "Advancing four weeks...",
       SIMULATION_ACTION
     ).then((result) => {
@@ -552,7 +572,10 @@ function bindEvents() {
 
   document.getElementById("advanceSeasonBtn").addEventListener("click", () =>
     runAction(
-      () => advanceSeasonSequential({ resolveDecision: checkAndShowGmDecision }),
+      async () => {
+        const strategyPolicy = await collectAcceleratedStrategyPolicy("season");
+        return advanceSeasonSequential({ resolveDecision: checkAndShowGmDecision, strategyPolicy });
+      },
       "Advancing season...",
       SIMULATION_ACTION
     ).then((result) => {
