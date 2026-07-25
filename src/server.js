@@ -369,8 +369,13 @@ function staticContentType(filePath) {
 
 function serveStatic(reqPath, res) {
   const safePath = reqPath === "/" ? "/index.html" : reqPath;
-  const baseDir = safePath.startsWith("/src/") ? SRC_DIR : PUBLIC_DIR;
-  const relativePath = safePath.startsWith("/src/") ? safePath.slice("/src".length) : safePath;
+  const moduleRoot = safePath.startsWith("/src/")
+    ? { baseDir: SRC_DIR, prefix: "/src" }
+    : safePath.startsWith("/public/")
+      ? { baseDir: PUBLIC_DIR, prefix: "/public" }
+      : { baseDir: PUBLIC_DIR, prefix: "" };
+  const { baseDir } = moduleRoot;
+  const relativePath = moduleRoot.prefix ? safePath.slice(moduleRoot.prefix.length) : safePath;
   const resolved = path.resolve(baseDir, `.${relativePath}`);
   if (!resolved.startsWith(baseDir)) {
     sendText(res, 403, "Forbidden");

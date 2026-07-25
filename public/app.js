@@ -296,6 +296,8 @@ import {
   showHalftimeAdjustModal
 } from "./lib/gameFlow.js";
 import { createFastSimulationPolicy } from "./lib/fastSimulationPolicy.js";
+import { composeWeeklyPlan, commitWeeklyPlanReceipt } from "./lib/weeklyPlanComposer.js";
+import { recordPlaytestJourneyCheckpoint, startPlaytestJourney } from "./lib/playtestJourney.js";
 
 import {
   ingestNewsIntoInbox,
@@ -345,24 +347,18 @@ async function submitMobileGmDecisionChoice(choice) {
 }
 
 async function collectWeeklyCommandIntent({ gmDecisionChoice = null } = {}) {
-  const isRegularSeason = state.dashboard?.phase === "regular-season";
-  const weeklyTacticOverride = isRegularSeason
-    ? await new Promise((resolve) => showHalftimeAdjustModal(resolve))
-    : null;
-  const body = { count: 1 };
-  if (weeklyTacticOverride) body.weeklyTacticOverride = weeklyTacticOverride;
-  if (isRegularSeason) {
-    if (gmDecisionChoice) {
-      body.gmDecisionChoice = gmDecisionChoice;
-    } else {
-      const gmDecisionResult = await checkAndShowGmDecision();
-      if (gmDecisionResult.status === "deferred") {
-        return { deferred: true, body: null };
-      }
-      if (gmDecisionResult.status === "chosen") body.gmDecisionChoice = gmDecisionResult.choice;
-    }
-  }
-  return { deferred: false, body };
+  return composeWeeklyPlan({
+    phase: state.dashboard?.phase || "unknown",
+    presetDecisionChoice: gmDecisionChoice || state.mobilePendingDecisionChoice || null,
+    collectDecision: checkAndShowGmDecision,
+    collectTactic: () => new Promise((resolve) => showHalftimeAdjustModal(resolve, {
+      title: "Weekly Plan Composer",
+      subtitle: "Confirm the football identity that follows your General Manager call. The command commits only after this review.",
+      confirmLabel: "Stage Tactic",
+      skipLabel: "Commit With No Tactic"
+    })),
+    onCheckpoint: (name) => recordPlaytestJourneyCheckpoint(name)
+  });
 }
 
 async function refreshAfterWeeklyCommand(response) {
@@ -397,13 +393,18 @@ async function refreshAfterWeeklyCommand(response) {
 }
 async function advanceOneWeek({ gmDecisionChoice = null } = {}) {
   const intent = await collectWeeklyCommandIntent({ gmDecisionChoice });
+  state.weeklyPlanReceipt = intent.receipt;
   if (intent.deferred) {
+    renderOverview();
     showToast("Decision deferred — the franchise has not advanced.");
     return { actionStatus: "deferred", statusText: "GM decision deferred" };
   }
   const response = await api("/api/advance-week", { method: "POST", body: intent.body });
+  state.weeklyPlanReceipt = commitWeeklyPlanReceipt(intent.receipt, response);
+  recordPlaytestJourneyCheckpoint("weekly-plan-committed");
   state.mobilePendingDecisionChoice = null;
   const postCommitReceipt = await refreshAfterWeeklyCommand(response);
+  recordPlaytestJourneyCheckpoint("weekly-debrief-ready");
   return { ...response, ...postCommitReceipt, postCommitReceipt };
 }
 
@@ -1953,6 +1954,7 @@ globalThis._checkSpeedrunCompletion = checkSpeedrunCompletion;
 globalThis._loadSpeedrunStatus = loadSpeedrunStatus;
 
 async function init() {
+  startPlaytestJourney();
   state.statsHiddenColumns = readStatsHiddenColumns();
   window.addEventListener("vsfgm:runtime-fallback", (event) => {
     const reason = event?.detail?.reason ? ` ${event.detail.reason}` : "";
@@ -1982,6 +1984,7 @@ async function init() {
         body: request
       });
       applyDashboard(result.state);
+      recordPlaytestJourneyCheckpoint("opening-contract-committed");
       showToast("Opening franchise contract applied.");
       return result.receipt;
     },

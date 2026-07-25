@@ -1,9 +1,9 @@
 {
   "vectorVersion": "1.0",
-  "generatedAt": "2026-07-23",
-  "generatedAtMs": 1784766977976,
-  "session": 53,
-  "vectorHash": "823a4e2fa2939165",
+  "generatedAt": "2026-07-25",
+  "generatedAtMs": 1785021700576,
+  "session": 56,
+  "vectorHash": "a29d87fd8d585334",
   "silTotal": 995,
   "silAvg3": null,
   "velocity": null,
@@ -20,15 +20,15 @@
   "genome": null,
   "ignisScore": 42160,
   "ignisGrade": "FORGE",
-  "ignisAgeDays": 3,
+  "ignisAgeDays": 5,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "Hold launch until same-origin hosted revision evidence, canonical custom-origin health/headers, a real received-message receipt, founder approval, and authoritative lifecycle reconciliation are all current.",
-  "currentFocus": "Session 53 exhausted six audited objectives and five second-order innovations: transactional post-commit hydration truth, source-bound direct-test receipts, a persistent tactical identity arc, one explainable desktop/mobile command center, contextual local evidence moments, exact proprietary footer enforcement, tactical previews, local evidence trends, source-aware innovation scanning, and public-boundary cleanup.",
+  "nextMilestone": "After this revision deploys, collect exact hosted same-origin provenance, canonical health/edge headers, a real received-message receipt, founder approval, and authoritative lifecycle reconciliation before any launch flip.",
+  "currentFocus": "Session 56 exhausted four live-code product/infrastructure objectives and three second-order innovations: one weekly-plan authority, consented session evidence, a progressive Week Room, truthful service boundaries, and cold-start runtime continuity.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated: current hosted staging scores 3/10, canonical project health/headers are incomplete, literal recent CI history is 3/5, football@playfranchisearchitect.com lacks a real received-message receipt, founder approval is absent, and authoritative registry SPARKED conflicts with local FORGE truth."
+    "Launch/SPARKED remains evidence-gated: hosted provenance, canonical edge headers, a real received-message receipt, founder approval, and sibling-owned registry reconciliation remain absent."
   ]
 }

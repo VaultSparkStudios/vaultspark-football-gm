@@ -1,47 +1,40 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 726f42072d72 -->
-<!-- generated-at: 2026-07-25T19:25:06.403Z -->
+<!-- source-hash: 2a1dd9307732 -->
+<!-- generated-at: 2026-07-25T23:20:02.919Z -->
 
 # LATEST_HANDOFF (compact)
 
-Summary compression note: The tail below (Sessions 40 and earlier) is truncated in source; compressing available signal.
+SESSION: 56 (2026-07-25), continuous /goal /arc
 
-SESSION HANDOFF SUMMARY (through Session 55)
+SHIPPED THIS SESSION
+- Decision-first weekly-plan composer unifying topbar, command center, mobile with defer/no-plan and versioned preview/commit receipts.
+- Bounded allowlisted relative-time tab-scoped session journey (no account/token/save/absolute-timestamp data).
+- Franchise Architecture as progressive Week Room: source-derived Now call, Season/Legacy horizons, Architecture Review disclosure.
+- Runtime bundle exposes only characterized ContractService/CoachingService; 4 divergent scaffolds removed.
+- Second-order: closed cold-start authority forking, added missing /public/ module root, resolved contract/session-storage evidence boundary.
 
-Session
-- Current: 55 (closeout 2026-07-24)
+VERIFICATION
+- Node 479/479 exit 0; Playwright 18/18; responsive 20/20; Pages build/smoke green; 49 reachable modules; secret scan 0; canon gaps 0; doctor blockingFailing 0 (one nonblocking sibling-registry warning). Queues exhausted (Genius 4 closed, second-order 3 closed); SIL v3 995/1000.
 
-Shipped (Session 55)
-- Scheduled realism verification preserves verifier exit code via tee, retains report artifact
-- Session routing consumes latest numbered intent and five-column task ledger
-- Accelerated simulation: scoped Architect Auto-Plan, per-week receipts, checkpoint-safe continuation, plan review before resume
-- CoachingService owns staff lifecycle and versioned team lineage (collision-safe identities, single-HC reconciliation, cycle guards, snapshot survival)
-- General Manager Legacy: four-path mastery portfolio with honest empty states, receipt counts, milestones, next focus, signature strength
+CURRENT INTENT
+Run full agent-neutral /goal /arc as one continuous mission: pull-first start, live audit, implement, exhaust queues, generate/implement second-order, closeout with direct evidence, staging-first, Ark broadcast, push direct to main. Preserve observability, flat-rate cost discipline, proprietary boundaries, try-first blocker discipline, no fabricated launch data.
 
-Current Intent
-- Run complete agent-neutral /goal /arc as one continuous mission: pull-first /start, live /audit, full /implement, primary Genius List exhaustion, second-order innovation, /closeout with direct evidence, staging-first delivery, Ark broadcast, direct push to main. Preserve source-derived observability, flat-rate cost discipline, proprietary boundaries, no fabricated launch data.
+NOW BUCKET (top 3)
+1. After revision deploys, collect exact hosted provenance and canonical edge/email receipts.
+2. Reconcile authoritative lifecycle drift through Studio Ark.
+3. If no external evidence arrives, begin fresh live-code arc from exhausted queue.
 
-Verification (Session 55)
-- Node 467/467 exit 0; Playwright 18/18; responsive 20/20; Pages build/smoke green; 47 modules reachable; Genius List 0 open/5 closed; second-order 0 open/2 closed; SIL v3 995/1000
+BLOCKERS (top 3)
+1. Launch HOLD: canonical origin lacks valid health/edge/provenance evidence; same-origin staging 3/10.
+2. No real received-message receipt for football@playfranchisearchitect.com inbox.
+3. Authoritative lifecycle drift (registry SPARKED vs local FORGE) is sibling-owned.
 
-Now-Bucket (Top 3)
-1. After revision deploys to GitHub Pages, collect exact hosted provenance (revision/asset/health)
-2. Collect canonical edge headers and a real received-message email receipt
-3. Reconcile lifecycle through Studio Ark before requesting founder launch approval
+HUMAN-BLOCKED (with age)
+- Founder launch approval absent: recurring since Session 44+ (~12 sessions).
+- Windows credential boundary blocks manual image inspection: recurred this session; only automated real-browser visual evidence claimed.
+- Sibling-owned registry/lifecycle reconciliation: recurring since Session 48+ (~8 sessions), routed via Ark.
 
-Blockers (Top 3)
-1. Hosted same-origin revision/asset/health proof incomplete; canonical edge/security headers incomplete
-2. No real received-message receipt proving football@playfranchisearchitect.com inbox
-3. Sibling-owned lifecycle reconciliation: authoritative registry SPARKED vs local FORGE mismatch
+DEPLOY
+Pending CI-on-push; source goes direct to main; confirm production currency from triggered Pages workflow. Deployment does not imply launch/SPARKED.
 
-Human-Blocked (with age)
-- Founder launch approval absent: recurring since at least Session 42 (~13 sessions)
-- Real on-domain email receipt: recurring since at least Session 42 (~13 sessions)
-- Sibling-repo Cloudflare Pages deploy / registry reconciliation via Ark: since Session 48 (~7 sessions)
-
-Standing Constraints
-- Launch remains HOLD; do not flip SPARKED or fabricate launch data
-- Do not edit sibling repos directly; transport corrections through Studio Ark
-- Do not weaken release gates; direct-named shards are source of truth (aggregate npm test wrapper unreliable/times out)
-
-Next-session pointer: Deploy current revision to Pages, then gather hosted provenance + edge/email receipts and reconcile lifecycle via Ark before seeking founder launch approval; otherwise begin a fresh live-code arc.
+NEXT SESSION: Deploy this revision, gather hosted provenance/edge/email receipts and reconcile lifecycle via Ark before requesting founder approval; else start a fresh audit arc.

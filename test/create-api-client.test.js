@@ -161,3 +161,36 @@ test("concurrent bootstrap failures coalesce into one client fallback authority"
   delete globalThis.window;
   delete globalThis.CustomEvent;
 });
+
+test("a cold-server timeout never forks bootstrap into browser authority", async () => {
+  const storage = createMemoryStorage();
+  const dispatched = [];
+  globalThis.CustomEvent = class CustomEvent {
+    constructor(type, init = {}) { this.type = type; this.detail = init.detail; }
+  };
+  globalThis.window = {
+    localStorage: storage,
+    location: { protocol: "http:" },
+    dispatchEvent(event) { dispatched.push(event); return true; }
+  };
+  globalThis.document = createMetaDocument({
+    "vsfgm-runtime-default": "server",
+    "vsfgm-server-available": "true",
+    "vsfgm-server-base-url": ""
+  });
+  globalThis.fetch = async (_url, { signal }) => new Promise((_, reject) => {
+    signal.addEventListener("abort", () => reject(Object.assign(new Error("aborted"), { name: "AbortError" })));
+  });
+
+  const { createApiClient, getRuntimeMode } = await importClientModule();
+  const api = createApiClient();
+  await assert.rejects(() => api("/api/state", { timeoutMs: 5 }), /timed out/i);
+  assert.equal(getRuntimeMode(), "server");
+  assert.equal(storage.getItem("vsfgm:runtime-mode"), null);
+  assert.equal(dispatched.length, 0);
+
+  delete globalThis.fetch;
+  delete globalThis.document;
+  delete globalThis.window;
+  delete globalThis.CustomEvent;
+});

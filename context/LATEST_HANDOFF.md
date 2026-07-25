@@ -1,3 +1,43 @@
+## Where We Left Off — Session 56 Closeout (2026-07-25)
+
+Session 56 completed the continuous `/goal /arc`: four live-code audit objectives and three second-order innovations are implemented, directly verified, and ready for direct-main delivery.
+
+### Shipped
+
+- One decision-first weekly-plan composer now governs topbar, command center, and mobile, with explicit defer/no-plan behavior and versioned preview/commit receipts.
+- A bounded, allowlisted, relative-time, tab-scoped session journey joins the explicit local receipt pack without account, token, save, or absolute timestamp data.
+- Franchise Architecture is now a progressive Week Room: one source-derived Now call, compact Season/Legacy horizons, and one native Architecture Review disclosure.
+- The runtime service bundle truthfully exposes only characterized ContractService and CoachingService authorities; four undelegated divergent scaffolds are removed.
+- Second-order browser evidence closed cold-start authority forking, the missing `/public/` module root, and the opening-contract/session-storage evidence boundary.
+
+### Verification
+
+- Canonical Node: 479/479, aggregate exit 0, fresh source-bound receipt.
+- Browser: Playwright 18/18; responsive evidence 20/20.
+- Build: Pages build/smoke green; browser reachability 49 modules.
+- Truth/security: bounded working-tree secret scan 0; canon gaps 0; doctor `blockingFailing: 0` with one nonblocking sibling-registry warning.
+- Queue: Unified Genius List 0 open / 4 closed; viable second-order list 0 open / 3 closed; SIL v3 995/1000.
+
+### Honest deferral
+
+Launch remains HOLD. Same-origin staging is 3/10; the canonical origin still lacks valid health/edge/provenance evidence and a real received-message receipt; founder approval is absent; authoritative lifecycle drift is sibling-owned. The Windows credential boundary blocked manual image inspection, so only automated real-browser visual evidence is claimed.
+
+### Deploy
+
+Pending CI-on-push for this revision. Source delivery goes directly to `main`; production currency must be confirmed from the triggered GitHub Pages workflow. Launch/SPARKED is not implied by deployment.
+
+### Next best move
+
+After this revision deploys, collect exact hosted provenance and canonical edge/email receipts, reconcile lifecycle through Studio Ark, then request founder launch approval. Otherwise begin a fresh live-code arc from the exhausted queue.
+
+---
+
+## Session 56 Intent (2026-07-25)
+
+Run the complete agent-neutral `/goal /arc` as one continuous mission: pull-first `/start`, infrastructure-grade live `/audit`, complete `/implement`, primary Genius List exhaustion, second-order innovation generation and implementation, then full `/closeout` with direct evidence, staging-first delivery, Ark broadcast, and direct push to `main`. Preserve source-derived observability, flat-rate Max Plan cost discipline, proprietary boundaries, try-first blocker discipline, and no fabricated launch data.
+
+---
+
 ## Where We Left Off — Session 55 Closeout (2026-07-24)
 
 Session 55 completed the continuous `/goal /arc`: five live-code audit objectives and two second-order innovations are implemented, directly verified, and ready for direct-main delivery.

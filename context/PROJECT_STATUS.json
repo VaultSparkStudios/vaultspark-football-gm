@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 55 exhausted five live-code infrastructure/game objectives and two second-order innovations: truthful CI exits, current intent routing, explicit fast-sim strategy, coaching lineage authority, and a receipt-backed mastery focus loop.",
-  "nextMilestone": "After this revision deploys, collect exact hosted same-origin provenance, canonical edge headers, a real received-message receipt, founder approval, and authoritative lifecycle reconciliation before any launch flip.",
+  "currentFocus": "Session 56 exhausted four live-code product/infrastructure objectives and three second-order innovations: one weekly-plan authority, consented session evidence, a progressive Week Room, truthful service boundaries, and cold-start runtime continuity.",
+  "nextMilestone": "After this revision deploys, collect exact hosted same-origin provenance, canonical health/edge headers, a real received-message receipt, founder approval, and authoritative lifecycle reconciliation before any launch flip.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated: hosted provenance, canonical edge headers, a real received-message receipt, founder approval, and sibling-owned registry reconciliation remain absent."
   ],
@@ -13,27 +13,28 @@
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-07-24",
+  "truthAuditLastRun": "2026-07-25",
   "ignisScore": 42160,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-07-20",
   "testSuiteStatus": {
-    "totalTests": 467,
-    "pass": 467,
+    "totalTests": 479,
+    "pass": 479,
     "fail": 0,
-    "lastRun": "2026-07-24",
+    "lastRun": "2026-07-25",
     "newTestFiles": [
-      "test/architect-mastery-portfolio.test.js",
-      "test/coaching-lineage-authority.test.js",
-      "test/fast-sim-architect-policy.test.js",
-      "test/session-intent-classifier.test.js"
+      "test/playtest-journey.test.js",
+      "test/progressive-week-room.test.js",
+      "test/service-authority.test.js",
+      "test/static-module-roots.test.js",
+      "test/weekly-plan-composer.test.js"
     ],
-    "newTestCount": 15,
-    "coverage": "Session 55 canonical aggregate Node evidence 467/467, Playwright 18/18, responsive evidence 20/20, Pages build/smoke, and 47 reachable browser modules.",
+    "newTestCount": 12,
+    "coverage": "Session 56 canonical aggregate Node evidence 479/479, Playwright 18/18, responsive evidence 20/20, Pages build/smoke, and 49 reachable browser modules.",
     "uiSuiteNote": "Playwright 18/18 and 20 responsive dark/light mobile/tablet/desktop captures passed automated contrast, overflow, runtime-error, and touch-target checks; manual AI image inspection was unavailable at the Windows credential boundary."
   },
-  "testsPassing": 467,
-  "testsTotal": 467,
+  "testsPassing": 479,
+  "testsTotal": 479,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -85,25 +86,28 @@
     "capitalEfficiency": 95,
     "automationCoverage": 100
   },
-  "currentSession": 55,
+  "currentSession": 56,
   "lastAgent": "codex",
   "sessionMode": "founder",
   "lastVerification": {
-    "timedOut": [
-      "first canonical aggregate observation at 10 minutes"
+    "timedOut": [],
+    "failed": [
+      "same-origin staging receipt remains 3/10",
+      "canonical launch evidence remains blocked"
     ],
-    "failed": [],
     "passed": [
-      "canonical aggregate Node 467/467 with exit 0",
+      "canonical aggregate Node 479/479 with exit 0",
       "fresh source-bound direct-test receipt",
       "Playwright 18/18",
       "responsive evidence 20/20 captures",
-      "Pages build, browser reachability 47 modules, and static smoke",
-      "Unified Genius List 0 open / 5 closed",
-      "2 second-order innovations implemented"
+      "Pages build, browser reachability 49 modules, and static smoke",
+      "bounded working-tree secret scan 0 findings",
+      "canon conformance 0 gaps and doctor blockingFailing 0",
+      "Unified Genius List 0 open / 4 closed",
+      "3 second-order innovations implemented"
     ],
-    "date": "2026-07-24",
-    "diagnosticNote": "The initial 10-minute observation timeout is non-evidence and was superseded by the canonical 467/467 direct exit. Launch remains HOLD; manual AI image inspection is not claimed because the viewer failed before file access."
+    "date": "2026-07-25",
+    "diagnosticNote": "A stale service-scaffold assertion failed once, was corrected to the live authority contract, and the full simulation-contract shard plus canonical aggregate reran green. Launch remains HOLD; manual AI image inspection is not claimed because the viewer failed before file access."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "T2_opusplan",
@@ -152,23 +156,23 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-23",
-  "lastVerificationAt": "2026-07-24",
+  "lastVerificationAt": "2026-07-25",
   "stagingType": "github-pages",
   "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.055,
-  "entropyLastComputed": "2026-07-23",
+  "entropyScore": 0.069,
+  "entropyLastComputed": "2026-07-25",
   "lastSessionSummary": {
-    "session": 55,
+    "session": 56,
     "shipped": [
-      "Truthful realism CI exit propagation and current task/intent routing",
-      "Explicit checkpoint-safe Architect Auto-Plan with adaptation review",
-      "CoachingService lineage authority with collision and cycle guards",
-      "Four-path mastery portfolio with focus and signature",
-      "Two second-order innovations after primary exhaustion"
+      "One decision-first weekly-plan composer with versioned receipts",
+      "Bounded tab-scoped consented journey evidence",
+      "Progressive Week Room with one Now call and compact horizons",
+      "Truthful ContractService and CoachingService-only runtime bundle",
+      "Three second-order runtime/evidence innovations after primary exhaustion"
     ],
-    "tests": "Node 467/467 · UI 18/18 · responsive 20/20",
-    "deploy": "Pages staging next · launch HOLD"
+    "tests": "Node 479/479 · UI 18/18 · responsive 20/20",
+    "deploy": "CI-on-push Pages pending · launch HOLD"
   },
   "testingSurfaces": [
     {

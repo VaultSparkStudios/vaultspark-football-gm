@@ -1,3 +1,5 @@
+import { buildPlaytestJourneySummary, loadPlaytestJourney } from "./playtestJourney.js";
+
 export const PLAYTEST_RECEIPT_SCHEMA_VERSION = "1.0";
 export const PLAYTEST_RECEIPT_STORAGE_KEY = "vsfgm:playtest-receipts:v1";
 const PLAYTEST_RECEIPT_LIMIT = 20;
@@ -78,13 +80,14 @@ export function buildLocalPlaytestTrend(receipts = []) {
   const friction = [...metrics].sort((left, right) => averages[left] - averages[right] || left.localeCompare(right))[0];
   return { available: true, count: valid.length, averages, strongest, friction, warning };
 }
-export function buildLocalPlaytestExport(receipts = []) {
+export function buildLocalPlaytestExport(receipts = [], journey = loadPlaytestJourney()) {
   const valid = receipts.filter((entry) => entry?.schemaVersion === PLAYTEST_RECEIPT_SCHEMA_VERSION && entry?.kind === "local-playtest-receipt").slice(0, PLAYTEST_RECEIPT_LIMIT);
   return {
     schemaVersion: PLAYTEST_RECEIPT_SCHEMA_VERSION,
     kind: "local-playtest-receipt-pack",
     count: valid.length,
     receipts: valid,
-    privacy: "Explicit local receipts only; no account identifier or save payload is included."
+    journey: buildPlaytestJourneySummary(journey),
+    privacy: "Explicit local receipts and relative journey checkpoints only; no account identifier or save payload is included; no token or absolute journey timestamp is included."
   };
 }

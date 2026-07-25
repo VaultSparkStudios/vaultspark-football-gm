@@ -2,8 +2,18 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-07-23
+Last reviewed: 2026-07-25
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-07-25 — Session 56 truth updates
+
+- Weekly planning has one decision-first composition authority across desktop and mobile; preview and commit receipts derive from the submitted command rather than interface copy.
+- Local playtest journey evidence is allowlisted, bounded, tab-scoped, relative-time only, and included solely in explicit receipt export. No retention, pace, or causal outcome lift is claimed.
+- The service bundle truthfully exposes only ContractService and CoachingService; four undelegated divergent scaffolds are removed instead of advertised as active architecture.
+- Overview's Franchise Architecture surface is a progressive Week Room with one Now call, compact Season/Legacy horizons, and one native disclosure; underlying source authorities remain unchanged.
+- A cold server required about 6.9 seconds to return `/api/state`. Timeouts no longer permit an automatic runtime fork, and `/public/` browser modules now resolve under the development server.
+- Verification authority is a fresh 479/479 source-bound Node receipt plus Playwright 18/18, responsive 20/20, Pages/reachability/smoke, zero bounded working-tree secret findings, canon conformance 0 gaps, and doctor `blockingFailing: 0`.
+- Release truth remains HOLD: same-origin staging is 3/10, `/_health` is 404 at the canonical origin, edge/provenance and received-mail evidence are incomplete, founder approval is absent, and the authoritative registry remains sibling-owned drift. Local green evidence is not substituted for launch proof.
 
 2026-05-27 note:
 - Public metadata now consistently reflects the proprietary rights posture.

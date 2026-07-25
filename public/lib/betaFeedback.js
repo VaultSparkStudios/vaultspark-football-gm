@@ -216,6 +216,7 @@ export function mountBetaFeedback() {
         </div>
         <label>One useful moment or friction<textarea id="playtest-note" maxlength="280" rows="3" placeholder="Optional; keep it public-safe."></textarea></label>
         <div class="row compact"><button id="savePlaytestReceiptBtn" type="button">Save Local Receipt</button><button id="copyPlaytestReceiptsBtn" type="button">Copy Receipt Pack</button><span id="playtestReceiptCount" class="small"></span></div>
+        <p id="playtestJourneyDisclosure" class="small">Export includes only your saved ratings plus allowlisted relative journey checkpoints. It excludes accounts, tokens, absolute journey timestamps, and save data.</p>
         <div id="playtestTrend" class="playtest-trend small" aria-live="polite"></div>
       </details>`;
     settingsTab.insertBefore(panel, settingsTab.firstElementChild);
@@ -224,7 +225,8 @@ export function mountBetaFeedback() {
     });    const refreshReceiptCount = () => {
       const count = loadLocalPlaytestReceipts().length;
       const target = document.getElementById("playtestReceiptCount");
-      if (target) target.textContent = `${count} local receipt${count === 1 ? "" : "s"}`;
+      const packet = buildLocalPlaytestExport(loadLocalPlaytestReceipts());
+      if (target) target.textContent = `${count} local receipt${count === 1 ? "" : "s"} · ${packet.journey.eventCount} journey checkpoint${packet.journey.eventCount === 1 ? "" : "s"}`;
       const trend = buildLocalPlaytestTrend(loadLocalPlaytestReceipts());
       const trendTarget = document.getElementById("playtestTrend");
       if (trendTarget) trendTarget.textContent = trend.available

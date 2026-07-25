@@ -12,6 +12,7 @@ export const state = {
   hydrationAuthority: { epoch: 0, identity: "uninitialized", staleResponsesDiscarded: 0 },
   mobilePendingDecision: null,
   mobilePendingDecisionChoice: null,
+  weeklyPlanReceipt: null,
   roster: [],
   freeAgents: [],
   contractRoster: [],

@@ -192,7 +192,6 @@ function canAutoFallbackToClient(error) {
   const message = String(error?.message || "").toLowerCase();
   return (
     message.includes("cannot reach the server") ||
-    message.includes("server request timed out") ||
     message.includes("server-backed mode is unavailable")
   );
 }

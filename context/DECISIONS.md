@@ -2,6 +2,16 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-07-25 — Runtime timeouts do not authorize state forks
+
+**Decision:** A timed-out server request must preserve server runtime authority. Automatic browser-runtime fallback is allowed only when the server is actually unreachable or the deployment explicitly declares server mode unavailable.
+
+**Rationale:** Real-browser cold-start evidence showed league hydration taking about 6.9 seconds, beyond the former four-second dashboard budget. Treating legitimate cold work as an outage silently created an unrelated browser league and made observability lie about which state the player controlled.
+
+**Pattern established:** Bootstrap waits within the standard 15-second request budget; timeouts surface as retryable server uncertainty. The development server exposes both `/src/` and `/public/` roots required by the client runtime graph so a genuine fallback can load completely.
+
+---
+
 ## 2026-07-16 — General Manager choices must execute or become falsifiable promises
 
 **Decision:** Every marquee General Manager choice must either execute immediately through an existing safe simulation primitive or create a persisted, expiring commitment with directionally valid success/failure evidence.

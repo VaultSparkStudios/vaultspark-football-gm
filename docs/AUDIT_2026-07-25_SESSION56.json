@@ -1,0 +1,280 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-25",
+  "session": 56,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 4,
+    "combinedPriority": 131.1,
+    "topItem": "consented-session-evidence-packet",
+    "source": "live-code-audit",
+    "openItems": 0
+  },
+  "profile": {
+    "type": "game/app",
+    "audience": "public-unlaunched",
+    "rubric": "founder-requested infrastructure-grade product rubric",
+    "staging": "GitHub Pages artifact plus exact same-origin hosted verification",
+    "source": "live code, game-loop review, application release gate, current CI/staging evidence, internal-tools registry, and public-safe context"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation",
+    "ci": "Live GitHub evidence is 5/5 successful and current CI/Deploy runs match HEAD 97bc7f4.",
+    "staging": "Fresh staging health returns HTTP 403 and the joined staging receipt remains 3/10.",
+    "cost": "CANON-029 and cost-content gates allow the cost-neutral browser product. Flat-rate Max Plan cost is notional and not an alarm.",
+    "branding": "Public compliance is 9/9 and footer completeness is 7/7.",
+    "origin": "Production /_health and /deploy-manifest.json return 404; complete HSTS/CSP/frame evidence is absent.",
+    "parity": "Automated local responsive evidence is 20/20 but cannot bind to a reachable matching hosted revision; manual AI image review remains unclaimed.",
+    "email": "No real received-message receipt proves football@playfranchisearchitect.com delivery.",
+    "approval": "No founder launch approval is recorded.",
+    "lifecycle": "Local public-unlaunched/FORGE truth conflicts with the sibling-owned SPARKED registry entry."
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.7,
+    "progression": 9.0,
+    "sessionEngagement": 8.1,
+    "retention": 8.3,
+    "soulFidelity": 9.0,
+    "overall": 8.6,
+    "evidence": "Implementation-contract review only. GAME_LOOP.md and checked-in playtests are absent, the public SOUL intentionally omits private pillars, and PROJECT_STATUS impact remains zero. Automated coverage proves contracts, not fun, pace, adoption, or retention."
+  },
+  "recommendedMoves": [
+    "Use one weekly-plan composition authority so every entry point follows pressure and General Manager choice, then tactic, then one explicit commit.",
+    "Export a bounded, consented session-evidence packet that joins local ratings to observed setup-to-plan-to-debrief timing without account or save data.",
+    "Turn Overview into a progressive-disclosure Week Room with one current call above the fold and architecture history behind an accessible review."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "feature-depth",
+      "candidate": "Add another generic rivalry, inbox, challenge, recap, or achievement system",
+      "reason": "Rejected as additive sprawl. Live code already contains each of those systems; the higher-value defect is inconsistent weekly-plan ritual and overly dense presentation."
+    },
+    {
+      "axis": "new-innovative-features",
+      "candidate": "Add a server-backed or large-language-model coach",
+      "reason": "Rejected on cost, custody, and evidence. The product is intentionally static-host-safe and cost-neutral, and no player evidence supports a variable-cost advisor."
+    },
+    {
+      "axis": "ui-ux",
+      "candidate": "Redesign all fourteen gameplay tabs",
+      "reason": "Rejected as an unbounded rewrite. Live evidence identifies the Overview decision hierarchy as the narrow, testable pressure point."
+    },
+    {
+      "axis": "feedback-loop",
+      "candidate": "Claim retention or engagement lift from existing local receipts",
+      "reason": "Rejected because no consented receipt pack is checked in and impact remains zero. Instrumentation is not outcome evidence."
+    },
+    {
+      "axis": "gamification-engagement",
+      "candidate": "Add rewards to force daily return",
+      "reason": "Rejected as misaligned. The product promise is consequential franchise memory, not streak coercion; source-derived season and legacy arcs already exist."
+    },
+    {
+      "axis": "ai-intelligence",
+      "candidate": "Predict which tactic will win",
+      "reason": "Rejected because the simulation has no causal experiment supporting that claim. Existing film and ledger signals correctly remain descriptive."
+    },
+    {
+      "axis": "security",
+      "candidate": "Launch or flip SPARKED after local green checks",
+      "reason": "Deferred honestly: hosted health/provenance, edge hardening, received email, same-revision parity, founder approval, and lifecycle coherence remain red."
+    },
+    {
+      "axis": "speed-organization",
+      "candidate": "Complete the entire GameSession strangler in one pass",
+      "reason": "Rejected as unsafe and unmeasured. Four service files are not delegated at all and advertise divergent shapes; removing that false surface is the bounded root fix."
+    },
+    {
+      "axis": "token-api-reduction",
+      "candidate": "Optimize model spend or add API response caching",
+      "reason": "Rejected: gameplay has no model calls, Max Plan cost is flat-rate/notional, API parity is 139 calls / 111 contracts / 0 adapter gaps, and no measured hot path supports caching."
+    },
+    {
+      "axis": "infrastructure",
+      "candidate": "Treat the lifecycle registry mismatch as a current-repo edit",
+      "reason": "Rejected by ownership. Registry truth belongs to Studio Ops and must move through signed Ark cargo, never a sibling tree edit."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Feedback loop / privacy / source-derived product evidence",
+      "effortHours": 2.5,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 37.3,
+      "slug": "consented-session-evidence-packet",
+      "title": "Join local ratings to a consented session journey packet",
+      "status": "done",
+      "premise": "The browser can save and export bounded local ratings at three source-derived moments, but the export contains no observed journey timings or composition/debrief checkpoints. With no checked-in packet, pace and return-intent claims remain untestable.",
+      "evidence": [
+        "public/lib/playtestReceipts.js exports ratings and public-safe franchise context only",
+        "public/lib/contextualFeedback.js names opening-contract, controlled-draft, and season-complete evidence moments",
+        "context/PROJECT_STATUS.json keeps retention and feedback-loop impact at zero",
+        "context/GAME_LOOP.md and docs/PLAYTESTS are absent"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Add bounded session-start, plan-open, plan-commit, and debrief timestamps to the explicit receipt export."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Create a local-only journey ledger with allowlisted checkpoint names, relative durations, occurrence deduplication, a hard event cap, and no account/save payload. Join its summary into the existing explicit Copy Receipt Pack action, expose exactly what will be shared, and add privacy, determinism, cap, and browser-wiring tests."
+        },
+        "L3": {
+          "effortHours": 4.0,
+          "recipe": "Add an import validator and anonymized aggregate script that can consume founder-approved packets into a checked-in PLAYTESTS corpus without accepting unexpected fields."
+        }
+      },
+      "verification": [
+        "journey checkpoints are allowlisted, bounded, local-only, and relative",
+        "the packet includes no account identifier, token, or save payload",
+        "export remains explicit and contains ratings plus journey evidence",
+        "no engagement or retention lift is claimed"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Game loop / command parity / transactional UX",
+      "effortHours": 3.0,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 34.5,
+      "slug": "weekly-plan-composer-authority",
+      "title": "Make one weekly-plan composer authoritative across entry points",
+      "status": "done",
+      "premise": "Mobile and command-center copy stage a General Manager choice before tactic and commit, while the direct advance path opens the tactic modal first and only then asks for the General Manager choice. State authority is shared, but the decision ritual changes by entry point.",
+      "evidence": [
+        "public/app.js submitMobileGmDecisionChoice says choose a tactic after staging a General Manager choice",
+        "public/app.js collectWeeklyCommandIntent currently resolves weeklyTacticOverride before checkAndShowGmDecision",
+        "all single-week entry points ultimately call advanceOneWeek",
+        "fast simulation already uses a separate explicit Architect Auto-Plan and should remain scoped"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Reorder the direct path to resolve the General Manager choice before tactic selection."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Create a pure weekly-plan composer that owns decision-first ordering, explicit defer/no-plan outcomes, versioned preview and commit receipts, and injected UI collectors. Route topbar, command center, and mobile through it; render one concise staged-plan status; preserve the transactional API boundary; add pure coordinator and browser-wiring tests."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Compose tactic tradeoffs and the latest source-derived adaptation into one accessible modal without making win predictions."
+        }
+      },
+      "verification": [
+        "every single-week entry point uses one composition authority",
+        "General Manager choice resolves before tactic selection",
+        "defer and explicit no-plan paths remain non-mutating and honest",
+        "a versioned preview/commit receipt is visible and tested"
+      ]
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Infrastructure / architecture truth / attack-surface reduction",
+      "effortHours": 1.5,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 29.9,
+      "slug": "delegated-service-authority-only",
+      "title": "Stop advertising four divergent domain-service scaffolds as live",
+      "status": "done",
+      "premise": "createServices instantiates ScoutingService, OwnerService, DraftService, and StatsService, yet no runtime delegates through them. Their shapes use worldState.owner, draftClass, draftOrder, and seasonStats conventions that diverge from the live GameSession authorities.",
+      "evidence": [
+        "repository search finds no this.services.scouting, owner, draft, or stats call",
+        "src/runtime/services/index.js labels Phase 2 active and constructs all six services",
+        "only ContractService and CoachingService are delegated by GameSession",
+        "dead service methods mutate live league objects if called despite having no parity characterization"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Stop constructing undelivered services and label the bundle truthfully."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Delete the four unreferenced divergent scaffolds, export and construct only characterized delegated services, add a machine-readable authority manifest plus a guard that rejects advertised-but-undelegated services, and cover the live bundle contract with focused tests."
+        },
+        "L3": {
+          "effortHours": 3.0,
+          "recipe": "Add a characterization harness that allows the next domain extraction only after old/new mutation and response receipts match."
+        }
+      },
+      "verification": [
+        "the service bundle exposes only contracts and coaching",
+        "no deleted service import or constructor remains",
+        "the authority manifest names exact delegated call sites",
+        "a regression test rejects future scaffold-only advertising"
+      ]
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "UI/UX / progression / mobile parity",
+      "effortHours": 3.5,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 29.4,
+      "slug": "progressive-week-room",
+      "title": "Turn Overview density into one progressive Week Room",
+      "status": "done",
+      "premise": "Opening Contract, Franchise Command Center, General Manager Legacy, four-path Mastery, Three-Horizon Blueprint, Architect signal, and ledger are all source-derived but stack simultaneously on Overview. The repeated evidence risks obscuring the next controlled call, especially on mobile.",
+      "evidence": [
+        "public/game.html places Opening Contract, Command Center, GM Legacy/Mastery, and Franchise Architecture in the first Overview region",
+        "public/lib/tabOverview.js renders Blueprint, signal, and ledger in full alongside separate mastery content",
+        "the navigation exposes fourteen tabs plus three simulation commands",
+        "the game-loop review scores depth highly but identifies Overview progression density as the principal UX risk"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Collapse ledger and architecture signal behind one accessible details element."
+        },
+        "L2": {
+          "effortHours": 3.5,
+          "recipe": "Refactor Franchise Architecture into a responsive Week Room: keep exactly one Now call and its reason above the fold, show compact Season and Legacy horizon chips, move signal/ledger/mastery detail into one accessible Architecture Review, preserve deep links and all source authorities, and add empty-state, accessibility, mobile, and browser-wiring tests."
+        },
+        "L3": {
+          "effortHours": 5.5,
+          "recipe": "Persist the user's open/closed review preference per device and add keyboard roving focus across horizon actions."
+        }
+      },
+      "verification": [
+        "one source-derived Now action is primary",
+        "Season and Legacy remain visible but compact",
+        "history and mastery are available through one accessible disclosure",
+        "desktop and mobile retain deep-link and keyboard behavior"
+      ]
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "delegated-service-authority-only",
+      "result": "Removed four undelegated service scaffolds; the live bundle and frozen manifest now expose only characterized contract and coaching authorities.",
+      "verification": "service authority focused tests green"
+    },
+    {
+      "slug": "weekly-plan-composer-authority",
+      "result": "Added one pure decision-first composer, versioned preview/commit receipts, and shared topbar, command-center, and mobile authority.",
+      "verification": "composer, mobile, and browser-wiring focused tests green"
+    },
+    {
+      "slug": "consented-session-evidence-packet",
+      "result": "Added an allowlisted, bounded, relative-time, tab-scoped journey and joined it to the explicit local receipt pack without account, token, save, or absolute-time data.",
+      "verification": "journey privacy and receipt tests green"
+    },
+    {
+      "slug": "progressive-week-room",
+      "result": "Rebuilt Franchise Architecture as one Now call, compact Season and Legacy horizons, and a single native Architecture Review disclosure.",
+      "verification": "focused Week Room tests green; real-browser snapshot shows one closed disclosure and zero console errors"
+    }
+  ]
+}

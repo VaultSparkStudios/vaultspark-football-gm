@@ -40,7 +40,7 @@ test("what-if replay is deterministic for the same archived games", () => {
 });
 test("GameSession constructs the domain service bundle honestly", () => {
   const session = createSession({ seed: 91, startYear: 2026, controlledTeamId: "BUF" });
-  assert.ok(session.services?.contracts);
-  assert.ok(session.services?.scouting);
+  assert.deepEqual(Object.keys(session.services).sort(), ["coaching", "contracts"]);
   assert.equal(session.services.contracts.league, session.league);
+  assert.equal(session.services.coaching.league, session.league);
 });

@@ -6,7 +6,8 @@ import { buildBoxScoreImpactLeaders, buildQuarterScoreboard } from "./boxScorePr
 import { observeBackgroundTask, recordClientDiagnostic } from "./clientDiagnostics.js";
 import { buildFranchiseCommandStack } from "./franchiseCommandCenter.js";
 import { buildTacticalIdentityLedger } from "./tacticalFilmRoom.js";
-import { architectLedgerRows, buildArchitectureSignal, buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
+import { architectLedgerRows, buildArchitectureSignal, buildProgressiveWeekRoom, buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
+import { describeWeeklyPlanReceipt } from "./weeklyPlanComposer.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -56,11 +57,13 @@ export function renderFranchiseCommandCenter() {
     pendingDecision: state.mobilePendingDecision || state.dashboard?.gmDecisionQueue?.[0] || null,
     pendingChoice: state.mobilePendingDecisionChoice || null
   });
+  const planReceipt = describeWeeklyPlanReceipt(state.weeklyPlanReceipt);
   panel.innerHTML = `
     <div class="franchise-command-head">
       <div><span class="brand-kicker">Live Franchise Authority</span><h3>What needs your call?</h3></div>
       <span class="small">Ranked from current league state</span>
     </div>
+    ${planReceipt ? `<div class="weekly-plan-receipt ${escapeHtml(planReceipt.tone)}" role="status"><strong>${escapeHtml(planReceipt.title)}</strong><span>${escapeHtml(planReceipt.detail)}</span></div>` : ""}
     <div class="franchise-command-grid">
       ${cards.map((card, index) => `
         <button type="button" class="franchise-command-card ${escapeHtml(card.tone)}" data-command-index="${index}" data-command-action="${escapeHtml(card.action)}" data-target-tab="${escapeHtml(card.targetTab || "")}" ${card.disabled ? "disabled aria-disabled=\"true\"" : ""}>
@@ -92,43 +95,66 @@ export function renderFranchiseArchitecture() {
   });
   const ledger = architectLedgerRows(rawLedger);
   const signal = buildArchitectureSignal(rawLedger);
+  const mastery = state.gmLegacy?.mastery || state.dashboard?.gmLegacy?.mastery || null;
+  const room = buildProgressiveWeekRoom({ horizons, signal, ledger, mastery });
+  const primary = room.primary;
   content.innerHTML = `
-    <div class="franchise-horizon-grid">
-      ${horizons.map((lane) => `
-        <button type="button" class="franchise-horizon-card ${escapeHtml(lane.tone)}" data-blueprint-target-tab="${escapeHtml(lane.targetTab)}" data-blueprint-target-id="${escapeHtml(lane.targetId)}">
+    ${primary ? `
+      <button type="button" class="week-room-primary ${escapeHtml(primary.tone)}" data-blueprint-target-tab="${escapeHtml(primary.targetTab)}" data-blueprint-target-id="${escapeHtml(primary.targetId)}">
+        <span class="franchise-horizon-label">This week's controlled call</span>
+        <small>${escapeHtml(primary.authority)}</small>
+        <strong>${escapeHtml(primary.title)}</strong>
+        <span>${escapeHtml(primary.detail)}</span>
+        <em>Why now · ${escapeHtml(primary.milestone)}</em>
+      </button>
+    ` : '<p class="architect-ledger-empty">Load the live franchise state to establish this week’s controlled call.</p>'}
+    <div class="week-room-horizons" aria-label="Season and legacy horizons">
+      ${room.horizonChips.map((lane) => `
+        <button type="button" class="week-room-horizon ${escapeHtml(lane.tone)}" data-blueprint-target-tab="${escapeHtml(lane.targetTab)}" data-blueprint-target-id="${escapeHtml(lane.targetId)}">
           <span class="franchise-horizon-label">${escapeHtml(lane.label)}</span>
-          <small>${escapeHtml(lane.authority)}</small>
           <strong>${escapeHtml(lane.title)}</strong>
-          <span>${escapeHtml(lane.detail)}</span>
-          <em>${escapeHtml(lane.milestone)}</em>
+          <small>${escapeHtml(lane.milestone)}</small>
         </button>
       `).join("")}
     </div>
-    <div class="architect-signal ${signal.ready ? "ready" : "awaiting"}">
-      <span class="franchise-horizon-label">Decision-memory signal · ${escapeHtml(signal.sampleSize)} receipt${signal.sampleSize === 1 ? "" : "s"}</span>
-      <strong>${escapeHtml(signal.title)}</strong>
-      <span>${escapeHtml(signal.detail)}</span>
-      <small>${escapeHtml(signal.disclaimer)}</small>
-    </div>
-    <div class="architect-ledger">
-      <div class="architect-ledger-head">
-        <strong>Architect's Ledger</strong>
-        <span class="small">Intent → execution → observed result → next adaptation</span>
+    <details class="architecture-review">
+      <summary><span>Architecture Review</span><small>${escapeHtml(signal.sampleSize)} decision receipt${signal.sampleSize === 1 ? "" : "s"} · ${escapeHtml(mastery?.label || "mastery forming")}</small></summary>
+      <div class="architecture-review-body">
+        <div class="architect-signal ${signal.ready ? "ready" : "awaiting"}">
+          <span class="franchise-horizon-label">Decision-memory signal · ${escapeHtml(signal.sampleSize)} receipt${signal.sampleSize === 1 ? "" : "s"}</span>
+          <strong>${escapeHtml(signal.title)}</strong>
+          <span>${escapeHtml(signal.detail)}</span>
+          <small>${escapeHtml(signal.disclaimer)}</small>
+        </div>
+        ${mastery ? `
+          <section class="architecture-mastery" aria-label="Architect mastery detail">
+            <div class="architect-ledger-head"><strong>${escapeHtml(mastery.label)}</strong><span>${escapeHtml(String(mastery.score))}/${escapeHtml(String(mastery.maxScore))}</span></div>
+            <div class="gm-mastery-paths">
+              ${(mastery.paths || []).map((path) => `
+                <div class="gm-mastery-path ${escapeHtml(path.status)}" title="${escapeHtml(path.evidence)}">
+                  <span>${escapeHtml(path.label)}</span><strong>${escapeHtml(String(path.score))}/${escapeHtml(String(path.maxScore))}</strong><small>${escapeHtml(String(path.evidenceCount))} receipt${path.evidenceCount === 1 ? "" : "s"}</small>
+                </div>`).join("")}
+            </div>
+            <small class="gm-mastery-disclaimer">${escapeHtml(mastery.disclaimer)}</small>
+          </section>
+        ` : '<p class="architect-ledger-empty">Mastery detail appears only after its source receipt loads.</p>'}
+        <div class="architect-ledger">
+          <div class="architect-ledger-head"><strong>Architect's Ledger</strong><span class="small">Intent → execution → observed result → next adaptation</span></div>
+          ${ledger.length ? `
+            <ol class="architect-ledger-list">
+              ${ledger.map((row) => `
+                <li class="architect-ledger-row">
+                  <span class="architect-ledger-authority">${escapeHtml(row.authority)}</span>
+                  <strong>${escapeHtml(row.intent)}</strong>
+                  <span>${escapeHtml(row.outcome || "No result recorded")}</span>
+                  <small>Next: ${escapeHtml(row.adaptation)}</small>
+                </li>`).join("")}
+            </ol>
+            <p class="architect-ledger-disclaimer">${escapeHtml(ledger[0].disclaimer || "The ledger reports sequence and alignment, not causation.")}</p>
+          ` : '<p class="architect-ledger-empty">Advance a week to record the first committed intent and its observed outcome. No result is invented before play.</p>'}
+        </div>
       </div>
-      ${ledger.length ? `
-        <ol class="architect-ledger-list">
-          ${ledger.map((row) => `
-            <li class="architect-ledger-row">
-              <span class="architect-ledger-authority">${escapeHtml(row.authority)}</span>
-              <strong>${escapeHtml(row.intent)}</strong>
-              <span>${escapeHtml(row.outcome || "No result recorded")}</span>
-              <small>Next: ${escapeHtml(row.adaptation)}</small>
-            </li>
-          `).join("")}
-        </ol>
-        <p class="architect-ledger-disclaimer">${escapeHtml(ledger[0].disclaimer || "The ledger reports sequence and alignment, not causation.")}</p>
-      ` : '<p class="architect-ledger-empty">Advance a week to record the first committed intent and its observed outcome. No result is invented before play.</p>'}
-    </div>
+    </details>
   `;
 }
 export function renderOpeningContract() {
@@ -852,26 +878,13 @@ export async function renderGmLegacyScore() {
     const masteryEl = document.getElementById("gmMasteryPortfolio");
     if (masteryEl && s.mastery) {
       masteryEl.innerHTML = `
-        <div class="gm-mastery-head">
-          <strong>${escapeHtml(s.mastery.label)}</strong>
-          <span>${escapeHtml(String(s.mastery.score))}/${escapeHtml(String(s.mastery.maxScore))}</span>
-        </div>
         ${s.mastery.focus ? `
           <div class="gm-mastery-focus">
             <span>Next Architect Focus · ${escapeHtml(s.mastery.focus.label)}</span>
             <strong>${escapeHtml(s.mastery.focus.nextMilestone)}</strong>
             <small>${escapeHtml(s.mastery.focus.reason)}</small>
           </div>` : ""}
-        <div class="gm-mastery-paths">
-          ${(s.mastery.paths || []).map((path) => `
-            <div class="gm-mastery-path ${escapeHtml(path.status)}" title="${escapeHtml(path.evidence)}">
-              <span>${escapeHtml(path.label)}</span>
-              <strong>${escapeHtml(String(path.score))}/25</strong>
-              <small>${path.evidenceCount ? `${escapeHtml(String(path.evidenceCount))} receipt${path.evidenceCount === 1 ? "" : "s"}` : "Awaiting evidence"}</small>
-            </div>
-          `).join("")}
-        </div>
-        <small class="gm-mastery-disclaimer">${escapeHtml(s.mastery.disclaimer)}</small>`;
+        <small class="gm-mastery-disclaimer">Full evidence paths are available in Architecture Review.</small>`;
     }
 
     // Persona tier arc
@@ -1088,5 +1101,3 @@ export function renderOwnerUltimatum() {
       </div>
     </div>`;
 }
-
-

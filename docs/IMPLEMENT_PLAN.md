@@ -54,3 +54,27 @@ All seven items are complete. Unified Genius List: **0 open / 5 primary closed**
 - Browser: Playwright **18/18**; responsive evidence **20/20** captures; automated contrast, overflow, runtime-error, and touch-target checks green.
 - Build: Pages bundle, browser reachability (**47 modules**), and static smoke exit 0.
 - Release remains HOLD because hosted same-origin provenance, edge headers, a real received-message receipt, founder approval, and lifecycle registry reconciliation are not complete.
+
+## Session 56 — Weekly decision and evidence architecture
+
+Source: `docs/AUDIT_2026-07-25_SESSION56.json`.
+
+### Wave 3A — Architecture truth foundation
+
+1. `delegated-service-authority-only` — remove four undelivered divergent service scaffolds, publish the exact delegated authority manifest, and enforce it with a focused guard.
+
+### Wave 3B — One plan / act / learn transaction
+
+2. `weekly-plan-composer-authority` — establish decision-first weekly composition with versioned preview/commit receipts across topbar, command-center, and mobile entry points.
+3. `consented-session-evidence-packet` — add a bounded local journey ledger and join its relative checkpoints to the existing explicit receipt-pack export.
+
+### Wave 3C — Progressive player presentation
+
+4. `progressive-week-room` — make one Now call primary, keep Season/Legacy compact, and place architecture history behind one accessible responsive review.
+
+### Verification cadence
+
+- Run focused pure and browser-wiring tests after each item.
+- Require the game-medium gate: every gameplay change is browser-visible and focused-tested.
+- After all player-facing work, run direct named Node shards, Playwright, responsive evidence, Pages build/reachability/smoke, doctor, security, canon, and release evidence.
+- Treat hosted/email/edge/approval/lifecycle reds as launch HOLD evidence, never as fabricated local passes.

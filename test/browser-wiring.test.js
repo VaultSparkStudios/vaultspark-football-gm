@@ -42,13 +42,15 @@ test("commissioner browser wiring uses local runtime payload contract", () => {
 test("advance-week browser wiring sends selected GM decision choice", () => {
   const appSource = read("../public/app.js");
   const engagementSource = read("../public/lib/engagementFeatures.js");
+  const composerSource = read("../public/lib/weeklyPlanComposer.js");
 
   assert.match(engagementSource, /decisionId: active\.id/);
   assert.match(engagementSource, /choiceId: choice/);
   assert.match(engagementSource, /occurrenceKey: active\.occurrenceKey/);
-  assert.match(appSource, /const gmDecisionResult = await checkAndShowGmDecision/);
-  assert.match(appSource, /gmDecisionResult\.status === "deferred"/);
-  assert.match(appSource, /body\.gmDecisionChoice = gmDecisionResult\.choice/);
+  assert.match(appSource, /collectDecision: checkAndShowGmDecision/);
+  assert.match(appSource, /presetDecisionChoice: gmDecisionChoice \|\| state\.mobilePendingDecisionChoice/);
+  assert.match(composerSource, /if \(decision\?\.status === "deferred"\)/);
+  assert.match(composerSource, /body\.gmDecisionChoice = decisionChoice/);
   assert.match(appSource, /response\.gmDecision\?\.applied/);
   assert.match(appSource, /key: "franchise-simulation"/);
   assert.match(appSource, /controls: \["advanceWeekBtn", "advance4WeeksBtn", "advanceSeasonBtn", "resumeSimBtn"\]/);

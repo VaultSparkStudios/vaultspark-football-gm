@@ -108,6 +108,27 @@ export function buildThreeHorizonBlueprint({ dashboard = {}, commands = [], gmLe
   return [nowLane(commands, architectLedger[0] || null), seasonLane(dashboard), legacyLane(gmLegacy)];
 }
 
+export function buildProgressiveWeekRoom({ horizons = [], signal = null, ledger = [], mastery = null } = {}) {
+  const primary = horizons.find((lane) => lane.id === "now") || horizons[0] || null;
+  const horizonChips = horizons.filter((lane) => lane && lane !== primary);
+  return {
+    schemaVersion: "1.0",
+    primary,
+    horizonChips,
+    review: {
+      signal: signal || {
+        ready: false,
+        sampleSize: 0,
+        title: "Decision memory awaiting evidence",
+        detail: "No committed architecture signal is available yet.",
+        disclaimer: "No result is inferred from an empty ledger."
+      },
+      ledger: Array.isArray(ledger) ? ledger : [],
+      mastery: mastery || null
+    }
+  };
+}
+
 export function architectLedgerRows(entries = [], limit = 6) {
   return entries.slice(0, Math.max(1, Number(limit) || 6)).map((entry) => ({
     id: entry.id,

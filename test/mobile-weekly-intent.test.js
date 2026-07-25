@@ -36,9 +36,12 @@ test("selecting a mobile GM choice cannot mutate or advance the league", () => {
 
 test("desktop and mobile converge on one weekly command coordinator", () => {
   const source = readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
+  const composer = readFileSync(new URL("../public/lib/weeklyPlanComposer.js", import.meta.url), "utf8");
   assert.match(source, /async function advanceOneWeek\(\{ gmDecisionChoice = null \} = \{\}\)/);
-  assert.match(source, /weeklyTacticOverride/);
-  assert.match(source, /body\.gmDecisionChoice = gmDecisionChoice/);
+  assert.match(source, /composeWeeklyPlan/);
+  assert.match(source, /presetDecisionChoice: gmDecisionChoice \|\| state\.mobilePendingDecisionChoice/);
+  assert.match(composer, /body\.weeklyTacticOverride = tacticId/);
+  assert.match(composer, /body\.gmDecisionChoice = decisionChoice/);
   assert.match(source, /\(\) => advanceOneWeek\(\)/);
   assert.match(source, /advanceOneWeek\(\{ gmDecisionChoice: state\.mobilePendingDecisionChoice \}\)/);
 });

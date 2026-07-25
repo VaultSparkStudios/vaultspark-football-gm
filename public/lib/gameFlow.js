@@ -713,7 +713,9 @@ export function syncBootFilters() {
 }
 
 export async function loadCoreDashboard() {
-  await loadState({ timeoutMs: 4000 });
+  // A cold in-process league can legitimately take several seconds to hydrate.
+  // Keep server authority intact instead of treating cold work as an outage.
+  await loadState({ timeoutMs: 15_000 });
   updateStatsControls();
   syncBootFilters();
   renderCommandPalette();
