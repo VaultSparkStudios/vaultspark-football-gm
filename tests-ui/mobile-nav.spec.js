@@ -47,8 +47,10 @@ test("mobile (375px): section headers are hidden in the bottom bar", async ({ pa
   }
 });
 
-test("mobile (375px): tab buttons remain clickable and switch active tab", async ({ page }) => {
-  await createLeagueAt(page, 375);
+test("mobile (560px): tab buttons remain clickable and switch active tab", async ({ page }) => {
+  // 560px: bottom tab bar active (≤640px) but mobile-loop overlay inactive (>480px),
+  // so the tab bar is visible and interactive.
+  await createLeagueAt(page, 560);
 
   const statsBtn = page.locator(".menu-btn[data-tab='statsTab']");
   await statsBtn.scrollIntoViewIfNeeded();
