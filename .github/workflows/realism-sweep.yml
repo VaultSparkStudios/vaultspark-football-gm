@@ -31,7 +31,10 @@ jobs:
 
       - name: Deep realism verification (24-season sample)
         timeout-minutes: 60
-        run: node src/data/scripts/verifyRealism.js --seasons 24 | tee realism-sweep-report.txt
+        shell: bash
+        run: |
+          set -o pipefail
+          node src/data/scripts/verifyRealism.js --seasons 24 | tee realism-sweep-report.txt
 
       - name: Upload sweep report
         if: always()

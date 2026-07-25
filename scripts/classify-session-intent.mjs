@@ -25,15 +25,47 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseTaskBoardItems } from './lib/task-board.mjs';
 
 function readText(p) { try { return fs.readFileSync(p, 'utf8'); } catch { return ''; } }
 
-// Pull Now bucket (top 3 lines under "## Now")
-function extractNow(md) {
-  const parts = md.split(/^## /m);
-  const now = parts.find(p => /^Now\b/i.test(p));
-  if (!now) return '';
-  return now.split('\n').slice(1, 30).join('\n');
+export function extractLatestSessionIntent(markdown = '') {
+  const matches = [...String(markdown).matchAll(
+    /^## Session(?:\s+(\d+))? Intent[^\n]*\n([\s\S]*?)(?=^## |\n---|(?![\s\S]))/gmi
+  )];
+  if (!matches.length) return '';
+  const numbered = matches
+    .filter((match) => match[1] != null)
+    .sort((left, right) => Number(right[1]) - Number(left[1]));
+  return String((numbered[0] || matches[0])[2] || '').trim();
+}
+
+function sessionSections(markdown = '') {
+  return String(markdown)
+    .split(/(?=^## Session \d+\b)/m)
+    .filter((section) => /^## Session \d+\b/m.test(section));
+}
+
+export function extractCurrentOpenTasks(markdown = '', limit = 3) {
+  const sections = sessionSections(markdown).reverse();
+  for (const section of sections) {
+    const items = parseTaskBoardItems(section, { includeHuman: false })
+      .filter((item) => item.status === 'open');
+    if (items.length) return items.slice(0, Math.max(1, limit));
+  }
+  return parseTaskBoardItems(markdown, { includeHuman: false })
+    .filter((item) => item.status === 'open')
+    .slice(-Math.max(1, limit));
+}
+
+export function buildIntentSample({ taskboard = '', handoff = '', limit = 3 } = {}) {
+  const intent = extractLatestSessionIntent(handoff);
+  const tasks = extractCurrentOpenTasks(taskboard, limit);
+  const taskText = tasks.map((item) => `${item.category}: ${item.title}`).join('\n');
+  return {
+    sample: [intent, taskText].filter(Boolean).join('\n').toLowerCase(),
+    sources: { intent, tasks: tasks.map((item) => item.title) }
+  };
 }
 
 // Scoring dictionaries
@@ -61,10 +93,10 @@ const OPS = [
 export function classifyIntent(rootDir = process.cwd()) {
   const taskboard = readText(path.join(rootDir, 'context', 'TASK_BOARD.md'));
   const handoff = readText(path.join(rootDir, 'context', 'LATEST_HANDOFF.md'));
-  const nowBucket = extractNow(taskboard);
-  const intentBlock = (handoff.match(/## Session Intent[\s\S]*?(?=\n## |$)/i) || [''])[0];
-  const sample = [intentBlock, nowBucket].join('\n').toLowerCase();
-  const score = (dict) => dict.reduce((a, kw) => a + (sample.split(kw).length - 1), 0);
+  const evidence = buildIntentSample({ taskboard, handoff });
+  const score = (dict) => dict.reduce(
+    (total, keyword) => total + (evidence.sample.split(keyword).length - 1), 0
+  );
   const scores = {
     planning:    score(PLANNING),
     execution:   score(EXECUTION),
@@ -75,7 +107,13 @@ export function classifyIntent(rootDir = process.cwd()) {
   let intent = order.reduce((best, k) => (scores[k] > scores[best] ? k : best), 'execution');
   if (scores[intent] === 0) intent = 'execution';
   const modelByIntent = { planning: 'opusplan', execution: 'sonnet', exploration: 'opus', ops: 'sonnet' };
-  return { intent, intentModel: modelByIntent[intent], scores, sampleChars: sample.length };
+  return {
+    intent,
+    intentModel: modelByIntent[intent],
+    scores,
+    sampleChars: evidence.sample.length,
+    sourceLedger: evidence.sources
+  };
 }
 
 // CLI wrapper — only when invoked directly.

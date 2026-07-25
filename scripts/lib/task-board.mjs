@@ -51,6 +51,8 @@ function parseTableRow(line, fallbackRank) {
     rank = cells[0];
     if (cells.length >= 6) [, tier, category, status = '', effort = '', item = ''] = cells;
     else [, item = '', status = ''] = cells;
+  } else if (cells.length >= 5) {
+    [tier = '', category = 'Task Board', status = '', effort = '', item = ''] = cells;
   } else {
     [item = '', status = ''] = cells;
   }
@@ -75,7 +77,7 @@ export function parseTaskBoardItems(markdown, { dedupe = true, includeHuman = tr
   const rows = [];
   for (const line of String(markdown || '').split(/\r?\n/)) {
     const parsed = parseTableRow(line, rows.length + 1);
-    if (parsed) rows.push(parsed);
+    if (parsed && parsed.title.toLowerCase() !== 'item') rows.push(parsed);
   }
   const normalized = dedupe
     ? [...rows.reduce((latest, item) => {

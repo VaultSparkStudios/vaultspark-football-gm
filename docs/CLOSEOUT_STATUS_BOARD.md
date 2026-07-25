@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-23 (Session 54 closeout) -->
+<!-- generated-at: 2026-07-25 (Session 55 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S54 ══════╗
-║  Date: 2026-07-23  ·  SIL: 995/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S55 ══════╗
+║  Date: 2026-07-25  ·  SIL: 995/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Startup freshness now joins date, coherent marker, closeout   ║
-║  ✓ ContractService is a real production seam: GameSession deleg  ║
-║  ✓ Successful controlled weekly commands persist a bounded Arch  ║
-║  ✓ One responsive Three-Horizon Blueprint unifies the live Now   ║
-║  ✓ Second-order closure routes the last observed adaptation int  ║
+║  ✓ Scheduled realism verification now preserves the verifier's   ║
+║  ✓ Session routing consumes the latest numbered intent and curr  ║
+║  ✓ Accelerated simulation carries an explicit scoped Architect   ║
+║  ✓ CoachingService owns staff lifecycle and versioned team line  ║
+║  ✓ General Manager Legacy now includes a separate four-path mas  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -38,10 +38,10 @@
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
-║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
+║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 25 files  ·  M:19 A:0 D:0 ?:6                          ║
+║  Changes: 38 files  ·  M:30 A:0 D:0 ?:8                          ║
 ║  Ahead: 1  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         452/452                                          ║
-║  IGNIS:         3d ago                                           ║
+║  Tests:         467/467                                          ║
+║  IGNIS:         6d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  0d ago                                           ║
+║  Sanitization:  3d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

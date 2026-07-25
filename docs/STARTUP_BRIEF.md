@@ -1,11 +1,11 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-07-23 (Session 54 closeout) -->
+<!-- generated-at: 2026-07-25 (Session 55 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 54 closeout · 2026-07-23.
+> **Fast-boot brief** — generated at Session 55 closeout · 2026-07-25.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -14,11 +14,25 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 55 · 2026-07-23 · FOUNDER MODE                          ║
+║  Session 56 · 2026-07-25 · FOUNDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
+╔══ LAST SESSION (S55) · WHAT SHIPPED ═══════════════════════════╗
+║  ✓ Truthful realism CI exit propagation and current task/intent  ║
+║  ✓ Explicit checkpoint-safe Architect Auto-Plan with adaptation  ║
+║  ✓ CoachingService lineage authority with collision and cycle g  ║
+║  ✓ Four-path mastery portfolio with focus and signature          ║
+║  ✓ Two second-order innovations after primary exhaustion         ║
+║  Tests  Node 467/467 · UI 18/18 · responsive 20/20               ║
+║  Deploy Pages staging next · launch HOLD                         ║
+╚════════════════════════════════════════════════════════════════╝
 
+╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
+║  Local dev     → http://127.0.0.1:3000/game.html ·               ║
+║  Staging       → https://vaultsparkstudios.github.io/vaultsp ·   ║
+║  Production    → https://playfranchisearchitect.com/ ·           ║
+╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
 ║  Profile · game · live-beta · arch=— · top-axis=—                ║
@@ -28,7 +42,7 @@
 ║                                                                  ║
 ║    995/1000   ███████████████████████░   100%                    ║
 ║    SIL v3.0  ·  Avg3: 995  ·  Velocity 0→                        ║
-║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
+║    Active 0d · closeout 1d · source: newest SIL/status/handoff   ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -46,24 +60,24 @@
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 54 ════════════════════════════╗
-║  Shipped:  Startup freshness now joins date, coherent marker, c  ║
-║  Tests:    452/452 passing  ·  Deploy: N/A                       ║
+╔══ WHERE WE LEFT OFF  ·  Session 55 ════════════════════════════╗
+║  Shipped:  Scheduled realism verification now preserves the ver  ║
+║  Tests:    467/467 passing  ·  Deploy: N/A                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     29,509 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~14,755 tok/turn  ·  cache 50%  ·  60 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
+║     35,600 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~17,800 tok/turn  ·  cache 50%  ·  49 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         452/452 passing (2026-07-23)                   ║
+║  ✓  Tests         467/467 passing (2026-07-25)                   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         42160 FORGE  ·  3d old                         ║
+║  ✓  IGNIS         42160 FORGE  ·  5d old                         ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
@@ -74,7 +88,7 @@
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
 ║  ⚠  Doctor        5/6 (83%)  ·  1 warn                           ║
-║  ✓  Cost          Max flat-rate · $4.22/7d notional · no alarm   ║
+║  ✓  Cost          Max flat-rate · $3.57/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -104,5 +118,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 54 closeout · 2026-07-23*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 55 closeout · 2026-07-25*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

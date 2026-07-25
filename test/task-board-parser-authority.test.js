@@ -48,3 +48,21 @@ test("two-column session tables are not invisible to portfolio observability", (
   assert.equal(rows[0].title, "visible-work");
   assert.equal(rows[0].done, false);
 });
+
+test("five-column live session tables retain their semantic columns", () => {
+  const rows = parseTaskBoardItems(`
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Architecture | Open | 2h | design-live-authority |
+| NEXT | Operations | Done | 1h | close-stale-ledger |
+`);
+  assert.deepEqual(
+    rows.map(({ tier, category, status, effort, title }) => (
+      { tier, category, status, effort, title }
+    )),
+    [
+      { tier: "FIRE", category: "Architecture", status: "open", effort: "2h", title: "design-live-authority" },
+      { tier: "NEXT", category: "Operations", status: "done", effort: "1h", title: "close-stale-ledger" }
+    ]
+  );
+});

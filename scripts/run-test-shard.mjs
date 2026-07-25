@@ -6,6 +6,7 @@ import { buildTestReceipt, parseTapSummary, writeTestReceiptAtomic } from "./lib
 export const SHARDS = {
   core: [
     "test/api.test.js",
+    "test/architect-mastery-portfolio.test.js",
     "test/calibration.test.js",
     "test/coverage-depth-ratings.test.js",
     "test/generated-league-presentation.test.js",
@@ -32,6 +33,7 @@ export const SHARDS = {
     "test/button-action-contracts.test.js",
     "test/league-story-export.test.js",
     "test/challenge-codes.test.js",
+    "test/coaching-lineage-authority.test.js",
     "test/create-api-client.test.js",
     "test/deterministic-ids.test.js",
     "test/draft-agency.test.js",
@@ -39,6 +41,7 @@ export const SHARDS = {
     "test/file-save-store.test.js",
     "test/franchise-command-center.test.js",
     "test/fast-sim-checkpoints.test.js",
+    "test/fast-sim-architect-policy.test.js",
     "test/gm-decision-commitments.test.js",
     "test/gm-decision-authority.test.js",
     "test/gist-sync-security.test.js",
@@ -100,6 +103,7 @@ export const SHARDS = {
     "test/test-receipt.test.js",
     "test/shard-coverage.test.js",
     "test/studio-protocol-smoke.test.js",
+    "test/session-intent-classifier.test.js",
     "test/task-board-parser-authority.test.js"
   ]
 };

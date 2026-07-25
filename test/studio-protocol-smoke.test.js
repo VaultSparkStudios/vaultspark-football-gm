@@ -355,3 +355,16 @@ test("innovation-pack marker scan ignores intentional guard sentinels", () => {
   assert.doesNotMatch(result.stdout, /test-receipt\.mjs|test\/test-receipt\.test\.js/);
   assert.doesNotMatch(result.stdout, /test\/return-digest\.test\.js/);
 });
+
+test("scheduled realism verification cannot be greened by tee", () => {
+  const workflow = readFileSync(
+    resolve(repoRoot, ".github/workflows/realism-sweep.yml"),
+    "utf8"
+  );
+  const step = workflow.match(
+    /- name: Deep realism verification[\s\S]*?(?=\n\s+- name: Upload sweep report)/
+  )?.[0] || "";
+  assert.match(step, /shell:\s*bash/);
+  assert.match(step, /set -o pipefail/);
+  assert.match(step, /verifyRealism\.js[\s\S]*\|\s*tee/);
+});

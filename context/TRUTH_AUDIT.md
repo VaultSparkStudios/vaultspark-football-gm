@@ -325,3 +325,15 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Test truth: direct shards pass 452/452 and Playwright 18/18; initial aggregate/short observation timeouts are retained as non-evidence and superseded only by direct exits.
 - Release truth: local Pages build/smoke and browser evidence are green, but hosted same-origin staging remains 3/10; no launch/SPARKED readiness is inferred.
 - Cost truth: no dependency or variable-cost service was added; flat-rate Max Plan cost remains notional.
+
+## 2026-07-24 — Session 55 truth updates
+
+- CI truth: the scheduled realism verifier runs under Bash `pipefail`; `tee` can no longer reclassify a failed verifier as green, while report upload remains `if: always()`.
+- Routing truth: session intent comes from the latest numbered intent and open rows in the latest session table; five-column task ledgers retain semantic columns.
+- Simulation truth: accelerated tactics exist only when explicitly declared; each regular-season command records its own Architect receipt and observed alignment.
+- Coaching truth: one session-bound authority owns staff lifecycle and lineage; role-aware IDs, duplicate-HC reconciliation, and traversal guards prevent false ancestry.
+- Mastery truth: Results, Stewardship, Promise, and Identity are bounded receipt-derived paths; empty paths score zero and the focus coach grants no hidden bonus.
+- Test truth: canonical aggregate Node suite passed 467/467 with direct exit 0 and a fresh source-bound receipt; Playwright passed 18/18.
+- Visual truth: 20 responsive captures passed automated contrast, overflow, runtime-error, and touch-target checks. Manual AI image inspection is not claimed because the connected viewer failed before reading the files.
+- Release truth: local evidence is green, but launch remains HOLD on hosted provenance, edge headers, received email, approval, and registry reconciliation.
+- Cost truth: dependency versions were restored from the existing lockfile after exact package trust approval; no new dependency or variable-cost service was introduced.

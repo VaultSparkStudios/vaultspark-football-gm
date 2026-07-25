@@ -1,0 +1,303 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-23",
+  "session": 55,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 5,
+    "combinedPriority": 161.2,
+    "topItem": "fast-sim-architect-policy",
+    "source": "live-code-audit",
+    "openItems": 0
+  },
+  "profile": {
+    "type": "game/app",
+    "audience": "public-unlaunched",
+    "rubric": "founder-requested infrastructure-grade product rubric",
+    "staging": "GitHub Pages artifact plus exact same-origin hosted verification",
+    "source": "live code, infrastructure debt sweep, game-loop review, application release gate, current CI and staging evidence, and public-safe context"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for local implementation",
+    "ci": "Live GitHub evidence is 5/5 completed/success for the latest workflow runs and 5/5 for Pages deploys.",
+    "staging": "Fresh same-origin staging receipt exits 2 at 3/10. Health, manifest, source revision, style asset, repository identity, and launch separation are not joined.",
+    "cost": "Release and content gates pass cost-neutral with estimated monthly cost at 1,000 free users equal to zero. Flat-rate Max Plan cost remains notional.",
+    "branding": "Project branding and the exact proprietary footer pass, including all seven required footer destinations.",
+    "origin": "Canonical health and deploy-manifest routes return 404; HSTS, frame protection, CSP, received-message evidence, and founder approval remain red.",
+    "parity": "The last local responsive artifact passed 20 captures but is not current-HEAD or same-revision hosted evidence; theme image review is therefore unverified.",
+    "secrets": "Local startup reports 0/0 declared capabilities. Completeness is skipped/unverified, not passed.",
+    "approval": "No founder launch approval is recorded.",
+    "lifecycle": "Local FORGE/S0 truth conflicts with the sibling-owned SPARKED registry entry and must be reconciled through Studio Ark."
+  },
+  "gameLoopReview": {
+    "loopTightness": 7.8,
+    "progression": 8.3,
+    "sessionEngagement": 7.6,
+    "retention": 6.7,
+    "soulFidelity": 8.7,
+    "overall": 7.8,
+    "evidence": "Implementation review only. context/GAME_LOOP.md and checked-in playtest files are absent, while the public SOUL intentionally contains no private creative pillars; no claim about actual fun, retention, churn, or player sentiment is made."
+  },
+  "recommendedMoves": [
+    "Preserve declared tactical intent across multi-week and season simulation so the fastest play modes still produce a real Architect plan-act-learn ledger.",
+    "Activate the dormant coaching-tree engine through a GameSession service and one truthful lineage adapter instead of leaving a hidden, shape-incompatible feature scaffold.",
+    "Make General Manager progression legible across results, stewardship, commitments, and tactical identity without weakening the existing outcome score or fabricating causality."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "feature-depth",
+      "candidate": "Add another generic rivalry, inbox, challenge, recap, or achievement widget",
+      "reason": "Rejected as additive sprawl. Live code already contains rivalry DNA, Priority Inbox, speedrun challenges, return digest, dynasty history, season epilogues, and local feedback instruments; the higher-value defect is that fast simulation bypasses the declared tactical loop."
+    },
+    {
+      "axis": "new-innovative-features",
+      "candidate": "Create an LLM coach or server-backed recommendation system",
+      "reason": "Rejected on cost, custody, and product evidence. The game is intentionally static-host-safe and cost-neutral, and no observed player demand justifies a variable-cost or data-custody surface."
+    },
+    {
+      "axis": "ui-ux",
+      "candidate": "Redesign every Overview panel in one pass",
+      "reason": "Rejected as an unsafe broad rewrite. The command center and Three-Horizon Blueprint are coherent; a focused Game Week lane may be evaluated as second-order work after intent parity is restored."
+    },
+    {
+      "axis": "feedback-loop",
+      "candidate": "Claim playtest trends or retention lift",
+      "reason": "Rejected because no checked-in playtest corpus or retention telemetry exists. Existing local receipts remain sparse, opt-in, and explicitly non-causal."
+    },
+    {
+      "axis": "gamification-engagement",
+      "candidate": "Replace the existing General Manager score",
+      "reason": "Rejected because historical score and tier semantics are already persisted. The ranked mastery item adds transparent parallel paths without rewriting prior career truth."
+    },
+    {
+      "axis": "ai-intelligence",
+      "candidate": "Use generated predictions to choose tactics",
+      "reason": "Rejected because tactical film records observed alignment, not causal effectiveness. Deterministic matchup context remains advice, never a prediction of results."
+    },
+    {
+      "axis": "security",
+      "candidate": "Launch or promote SPARKED",
+      "reason": "Deferred honestly: staging/provenance, web hardening, current hosted theme/parity proof, email delivery, approval, and lifecycle coherence are red. Local implementation cannot substitute for external receipts."
+    },
+    {
+      "axis": "speed-organization",
+      "candidate": "Consolidate both approximately 120-route adapters in one pass",
+      "reason": "Premise is real but the repository explicitly rejected an unmeasured broad dispatcher rewrite. Continue the GameSession strangler through one characterized domain at a time."
+    },
+    {
+      "axis": "token-api-reduction",
+      "candidate": "Optimize notional model spend or add runtime API caching",
+      "reason": "Rejected: Max Plan cost is flat-rate/notional, gameplay has no LLM calls, and no measured network hot path supports a cache claim."
+    },
+    {
+      "axis": "infrastructure",
+      "candidate": "Restore the obsolete ## Now task-board format",
+      "reason": "Rejected. The canonical format intentionally removed that bucket; the classifier must consume the shared live table parser instead of resurrecting stale structure."
+    },
+    {
+      "axis": "infrastructure",
+      "candidate": "Treat local Playwright 1.58.2 as repository dependency debt",
+      "reason": "Rejected: package.json and package-lock.json resolve 1.61.1, matching the registry. The local node_modules tree is stale, while the repository manifest is current."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Game loop / command parity / observability",
+      "effortHours": 3.0,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 38.8,
+      "slug": "fast-sim-architect-policy",
+      "title": "Keep declared tactical intent authoritative in fast simulation",
+      "status": "done",
+      "premise": "Single-week advance collects a weekly tactic before the General Manager decision, but four-week and season simulation send only count plus an optional decision. The most convenient play modes therefore append Architect ledger rows with no tactic, no tactical film, and no declared identity signal.",
+      "evidence": [
+        "public/app.js collectWeeklyCommandIntent opens the tactical brief and includes weeklyTacticOverride",
+        "public/lib/gameFlow.js fastSimRequestBody constructs only count and gmDecisionChoice",
+        "src/runtime/architectLedger.js emits the explicit no-tactic fallback when fast simulation advances",
+        "public/lib/franchiseArchitecture.js derives decision-memory identity from declared tactical ledger rows"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Collect one tactic at the start of a fast-simulation run and pass it to each weekly command."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Create a scoped, explicit Architect Auto-Plan for four-week and season runs: collect one tactic with copy that states its duration, carry it through checkpoint/resume state, attach it to every regular-season command, and include tactic plus observed alignment in the simulation digest. Preserve General Manager decision and draft checkpoints, allow an explicit no-plan choice, and add pure policy, continuation, and browser-wiring tests."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Add matchup-aware expiry that pauses only when a source-derived high-leverage opponent profile conflicts with the active plan, with an explicit player override before resuming."
+        }
+      },
+      "verification": [
+        "four-week and season commands carry the selected tactic only during regular-season games",
+        "checkpoint resume preserves the scoped policy",
+        "explicit no-plan remains honest and supported",
+        "simulation digest shows declared intent and observed alignment without causal claims"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Infrastructure / game depth / domain authority",
+      "effortHours": 4.0,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 31.3,
+      "slug": "coaching-lineage-authority",
+      "title": "Turn the dormant coaching tree into a real franchise system",
+      "status": "done",
+      "premise": "A complete coachingTree engine and Coaching Tree DNA card exist, but GameSession never imports or initializes the engine. The local adapter only forwards a possibly absent raw object, and the UI expects lineage/coaches shapes that do not match the engine's nodes/edges schema.",
+      "evidence": [
+        "src/engine/coachingTree.js defines initialization, coordinator registration, promotion, lineage, and carousel behavior",
+        "src/runtime/GameSession.js has no coachingTree import or call while random staff replacement remains in-class",
+        "src/app/api/localApiRuntime.js only exposes league.coachingTree when already present",
+        "public/lib/tabSettings.js reads lineage/coaches or Object.values(tree) even though the engine stores nodes and edges"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.25,
+          "recipe": "Initialize coachingTree and adapt nodes into a team-specific lineage card."
+        },
+        "L2": {
+          "effortHours": 4.0,
+          "recipe": "Add a session-bound CoachingService to the existing service bundle; reconcile current head coaches and coordinators into deterministic nodes, delegate staff lifecycle through the service, preserve mentor and replacement history across snapshot restore, expose a versioned team-specific lineage view from the dashboard, and render the exact schema in Coaching Tree DNA with empty-state, escaping, and focused service/UI tests."
+        },
+        "L3": {
+          "effortHours": 7.0,
+          "recipe": "Run a source-derived offseason carousel where earned coordinators can be promoted into vacancies, apply inherited scheme tendencies through the service transaction, and surface the move as league news plus rivalry context."
+        }
+      },
+      "verification": [
+        "new and restored leagues contain deterministic coaching lineage",
+        "staff replacements update lineage exactly once",
+        "dashboard and UI consume one versioned shape",
+        "lineage copy identifies scheme inheritance without claiming performance causation"
+      ]
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Progression / engagement / source-derived intelligence",
+      "effortHours": 3.0,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 31.0,
+      "slug": "architect-mastery-portfolio",
+      "title": "Make General Manager mastery multi-path and legible",
+      "status": "done",
+      "premise": "The persisted legacy score assigns 90 of 100 possible points to win percentage, playoff rate, and championship rate. Cap and culture receive ten points total, tradeNetAV is stored but not scored, and the new Architect ledger is not represented, so the career surface under-describes roster stewardship, promises, and declared tactical identity.",
+      "evidence": [
+        "src/engine/gmLegacyScore.js weights results 40/25/25 and cap/culture 5/5",
+        "gmLegacy stores tradeNetAV and commitment counters used elsewhere but the score omits them",
+        "league.architectLedger now preserves bounded declared tactics, decisions, and observed film alignment",
+        "current tier benefits intentionally keep most recognition narrative-only, so a descriptive portfolio can deepen progression without hidden math"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.0,
+          "recipe": "Expose separate result, stewardship, and identity summaries beside the legacy score."
+        },
+        "L2": {
+          "effortHours": 3.0,
+          "recipe": "Add a versioned Architect Mastery Portfolio alongside—not inside—the historical score. Derive bounded Results, Stewardship, Promise, and Identity paths from existing season, cap/culture/trade, commitment, and Architect ledger receipts; name each path's evidence count and next source-derived milestone; expose it in both runtimes and render it in the Legacy lane with honest empty states and no causal or predictive language."
+        },
+        "L3": {
+          "effortHours": 5.0,
+          "recipe": "Let the player select one season pursuit from the verified paths, bind its completion to existing owner/legacy receipts, and award a transparent recognition-only career chapter."
+        }
+      },
+      "verification": [
+        "historical legacy score and tier thresholds do not change",
+        "each path is deterministic and capped",
+        "missing evidence produces a named empty state rather than zero-as-failure",
+        "server and browser summaries are shape-equivalent"
+      ]
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "Infrastructure / parser authority / model routing",
+      "effortHours": 1.5,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 29.9,
+      "slug": "session-intent-task-authority",
+      "title": "Route session intent from the live task-board format",
+      "status": "done",
+      "premise": "classify-session-intent still extracts a removed ## Now section, while TASK_BOARD contains session tables and the canonical validator explicitly forbids the old bucket. It also looks for ## Session Intent even though current handoffs use ## Session N Intent, so routing silently defaults with little or no live work evidence.",
+      "evidence": [
+        "scripts/classify-session-intent.mjs extractNow searches only a ## Now bucket",
+        "context/TASK_BOARD.md has no ## Now section and records current work in tables",
+        "scripts/validate-brief-format.mjs documents the removal of Now",
+        "scripts/lib/task-board.mjs already provides the shared normalized table parser",
+        "context/LATEST_HANDOFF.md uses numbered Session 55 Intent headings"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Teach the classifier the current numbered intent heading."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Replace extractNow with parseTaskBoardItems, select the highest-priority open rows without resurrecting obsolete sections, parse the latest numbered Session Intent, export pure sampling helpers, and add fixtures proving current tables influence scores while done and human-blocked history do not pollute execution routing."
+        },
+        "L3": {
+          "effortHours": 2.5,
+          "recipe": "Emit an explainable source ledger naming which task and intent phrases contributed to every model-routing score."
+        }
+      },
+      "verification": [
+        "current numbered intent is discovered",
+        "open live task rows affect classification",
+        "completed historical rows are excluded",
+        "no obsolete ## Now heading is required"
+      ]
+    },
+    {
+      "rank": 5,
+      "tier": "FIRE",
+      "category": "Infrastructure / CI observability / security",
+      "effortHours": 0.5,
+      "impact": 10,
+      "innovation": 4,
+      "priority": 30.2,
+      "slug": "realism-workflow-exit-truth",
+      "title": "Prevent the scheduled realism gate from masking failures",
+      "status": "done",
+      "premise": "The scheduled realism workflow pipes verifyRealism through tee without pipefail or explicit status capture. Bash therefore reports tee's exit code and can publish a green workflow even when the verifier itself fails.",
+      "evidence": [
+        ".github/workflows/realism-sweep.yml runs node verifyRealism.js | tee realism-sweep-report.txt",
+        "the step has neither set -o pipefail nor PIPESTATUS handling",
+        "the arc and closeout protocols explicitly forbid trusting piped wrapper exits",
+        "the report artifact is useful and should remain available even on verifier failure"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Enable bash pipefail before the verifier pipeline."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Run the verifier under explicit bash pipefail, keep the report artifact upload under if: always(), add a Studio static regression test for the exact workflow contract, and verify the YAML command directly so a failed verifier cannot be reclassified by tee."
+        },
+        "L3": {
+          "effortHours": 1.0,
+          "recipe": "Emit a small machine-readable realism receipt with verifier exit, revision, profile identity, season count, and artifact hash."
+        }
+      },
+      "verification": [
+        "the verifier's nonzero status fails the step",
+        "the report still uploads on failure",
+        "a regression test rejects future unguarded verifier pipelines",
+        "no fabricated realism result is introduced"
+      ]
+    }
+  ]
+}

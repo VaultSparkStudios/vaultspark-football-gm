@@ -470,3 +470,21 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Decision:** Every PROJECT_STATUS mutation routes through `updateProjectStatus`, and startup freshness joins date, coherence, closed-session authority, rendered-session identity, and status identity.
 
 **Rationale:** A current timestamp previously masked a one-session identity lag, while direct writers bypassed SIL invariants. Observability is trustworthy only when its sources agree and self-reject stale joins.
+
+## 2026-07-24 — Accelerated simulation carries explicit intent, never inferred intent
+
+**Decision:** Four-week and season simulation may reuse one player-declared regular-season tactic only through a versioned scoped policy. No selection means no tactic attribution. Material regular-season checkpoints reopen the plan before continuation; offseason and draft phases never inherit it.
+
+**Rationale:** Convenience should compress clicks, not erase the product's plan-act-learn loop or fabricate strategic intent.
+
+## 2026-07-24 — Coaching lineage is a domain authority with collision-safe identity
+
+**Decision:** Staff lifecycle delegates through CoachingService and persists mentor/promotion history in `league.coachingTree`. Coach IDs include role plus a collision sequence; lineage readers guard cycles and reconcile exactly one head-coach authority per team.
+
+**Rationale:** Generic generated names previously allowed coordinator/head-coach identity overwrite and even self-mentorship. Long-lived franchise history needs deterministic identities and fail-safe traversal.
+
+## 2026-07-24 — Mastery is a portfolio, not a replacement score
+
+**Decision:** Preserve the historical General Manager Legacy score unchanged. Add a separate versioned Results/Stewardship/Promise/Identity portfolio derived only from existing receipts, with visible empty states, evidence counts, a lowest-path focus, and a separate strongest signature.
+
+**Rationale:** Outcome-heavy legacy scoring cannot express how a player architects a franchise. The new layer rewards legibility and direction without adding a hidden mechanic or claiming causation.

@@ -1,36 +1,47 @@
-<!-- generated-by: closeout deterministic compact handoff -->
-<!-- source-hash: a0703f50a839 -->
-<!-- generated-at: 2026-07-23 -->
+<!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
+<!-- source-hash: 726f42072d72 -->
+<!-- generated-at: 2026-07-25T19:25:06.403Z -->
 
 # LATEST_HANDOFF (compact)
 
-## Handoff Summary — Session 54 (2026-07-23)
+Summary compression note: The tail below (Sessions 40 and earlier) is truncated in source; compressing available signal.
 
-Session: 54 (continuous /goal /arc: start -> audit -> implement -> closeout)
+SESSION HANDOFF SUMMARY (through Session 55)
 
-Shipped:
-- Session freshness joins age, coherence, closeout/rendered/status identity; status mutations use the invariant writer.
-- ContractService owns the exact production cap-ledger response and GameSession delegates to it.
-- Successful controlled weekly commands persist a bounded Architect's Ledger of intent, execution, observed outcome/alignment, and non-causal adaptation.
-- A responsive Three-Horizon Blueprint unifies Now, Season, and Legacy authorities and destinations.
-- Second-order learning closes the latest adaptation into the next horizon and describes bounded tactic consistency/alignment without causal claims.
-- All 11 public footers enforce proprietary copyright plus a valid HTTPS Studio link-back.
+Session
+- Current: 55 (closeout 2026-07-24)
 
-Verification:
-- Direct Node 452/452; source-bound receipt fresh.
-- Playwright 18/18; Pages build/smoke; browser reachability 0 orphans.
-- Doctor blockingFailing 0; sanitizer and working-tree secret scan 0 findings.
-- Genius 0 open / 5 closed; second-order 0 open / 2 closed; SIL 995/1000.
+Shipped (Session 55)
+- Scheduled realism verification preserves verifier exit code via tee, retains report artifact
+- Session routing consumes latest numbered intent and five-column task ledger
+- Accelerated simulation: scoped Architect Auto-Plan, per-week receipts, checkpoint-safe continuation, plan review before resume
+- CoachingService owns staff lifecycle and versioned team lineage (collision-safe identities, single-HC reconciliation, cycle guards, snapshot survival)
+- General Manager Legacy: four-path mastery portfolio with honest empty states, receipt counts, milestones, next focus, signature strength
 
-Launch HOLD:
-- Hosted same-origin staging remains 3/10.
-- Canonical custom-origin health/edge headers are incomplete.
-- No real received-message receipt or founder approval exists.
-- Registry SPARKED/local FORGE reconciliation is sibling-owned.
+Current Intent
+- Run complete agent-neutral /goal /arc as one continuous mission: pull-first /start, live /audit, full /implement, primary Genius List exhaustion, second-order innovation, /closeout with direct evidence, staging-first delivery, Ark broadcast, direct push to main. Preserve source-derived observability, flat-rate cost discipline, proprietary boundaries, no fabricated launch data.
 
-Next:
-1. Collect exact hosted revision/asset/health evidence after deploy.
-2. Record a real project-domain received-message receipt.
-3. Reconcile lifecycle through Studio Ark, then request founder approval.
+Verification (Session 55)
+- Node 467/467 exit 0; Playwright 18/18; responsive 20/20; Pages build/smoke green; 47 modules reachable; Genius List 0 open/5 closed; second-order 0 open/2 closed; SIL v3 995/1000
 
-Constraints: do not weaken gates, fabricate evidence, or edit sibling host/registry trees. Otherwise begin a fresh live-code audit from the exhausted queue.
+Now-Bucket (Top 3)
+1. After revision deploys to GitHub Pages, collect exact hosted provenance (revision/asset/health)
+2. Collect canonical edge headers and a real received-message email receipt
+3. Reconcile lifecycle through Studio Ark before requesting founder launch approval
+
+Blockers (Top 3)
+1. Hosted same-origin revision/asset/health proof incomplete; canonical edge/security headers incomplete
+2. No real received-message receipt proving football@playfranchisearchitect.com inbox
+3. Sibling-owned lifecycle reconciliation: authoritative registry SPARKED vs local FORGE mismatch
+
+Human-Blocked (with age)
+- Founder launch approval absent: recurring since at least Session 42 (~13 sessions)
+- Real on-domain email receipt: recurring since at least Session 42 (~13 sessions)
+- Sibling-repo Cloudflare Pages deploy / registry reconciliation via Ark: since Session 48 (~7 sessions)
+
+Standing Constraints
+- Launch remains HOLD; do not flip SPARKED or fabricate launch data
+- Do not edit sibling repos directly; transport corrections through Studio Ark
+- Do not weaken release gates; direct-named shards are source of truth (aggregate npm test wrapper unreliable/times out)
+
+Next-session pointer: Deploy current revision to Pages, then gather hosted provenance + edge/email receipts and reconcile lifecycle via Ark before seeking founder launch approval; otherwise begin a fresh live-code arc.
