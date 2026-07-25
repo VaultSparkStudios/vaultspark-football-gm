@@ -1,3 +1,5 @@
+import { buildArchitectMasteryPortfolio } from "./architectMasteryPortfolio.js";
+
 /**
  * GM Legacy Score — Persistent Career Arc Rating
  *
@@ -392,9 +394,9 @@ export function buildGmReputationProfile(legacy) {
 
 // ── UI summary ────────────────────────────────────────────────────────────────
 
-export function getGmLegacySummary(league) {
+export function getGmLegacySummary(league, teamId = null) {
   const legacy = league.gmLegacy;
   if (!legacy) return null;
   const score = computeGmLegacyScore(legacy);
-  return { ...score, persona: getGmPersonaArc(legacy) };
+  return { ...score, persona: getGmPersonaArc(legacy), mastery: buildArchitectMasteryPortfolio(league, teamId) };
 }

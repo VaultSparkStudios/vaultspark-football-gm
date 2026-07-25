@@ -16,8 +16,9 @@ import { ScoutingService } from "./ScoutingService.js";
 import { OwnerService }    from "./OwnerService.js";
 import { DraftService }    from "./DraftService.js";
 import { StatsService }    from "./StatsService.js";
+import { CoachingService } from "./CoachingService.js";
 
-export { ContractService, ScoutingService, OwnerService, DraftService, StatsService };
+export { ContractService, ScoutingService, OwnerService, DraftService, StatsService, CoachingService };
 
 /**
  * Factory: create all services bound to the same live session/league object.
@@ -29,6 +30,7 @@ export function createServices(sessionOrLeague) {
     scouting:  new ScoutingService(league),
     owner:     new OwnerService(league),
     draft:     new DraftService(league),
-    stats:     new StatsService(league)
+    stats:     new StatsService(league),
+    coaching:  new CoachingService(sessionOrLeague)
   };
 }

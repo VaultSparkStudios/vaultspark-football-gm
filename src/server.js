@@ -1632,7 +1632,7 @@ async function handleApi(req, res, url) {
     sendJson(res, 200, {
       ok: true,
       legacy: {
-        ...getGmLegacySummary(session.league),
+        ...getGmLegacySummary(session.league, session.controlledTeamId),
         reputation: buildGmReputationProfile(session.league.gmLegacy)
       },
       raw: session.league.gmLegacy

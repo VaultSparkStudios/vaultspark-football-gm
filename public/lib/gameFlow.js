@@ -824,7 +824,11 @@ function renderSimulationCheckpoint(checkpoint, digest, continuation = null) {
   if (list) list.innerHTML = formatSimulationDigest(digest).map((line) => `<li>${escapeHtml(line)}</li>`).join("");
   if (resume) {
     resume.hidden = !continuation;
-    resume.textContent = continuation?.mode === "season" ? "Resolve & Resume Season" : "Resolve & Resume";
+    resume.textContent = continuation?.strategyPolicy
+      ? continuation.mode === "season"
+        ? "Review Plan & Resume Season"
+        : "Review Plan & Resume"
+      : continuation?.mode === "season" ? "Resolve & Resume Season" : "Resolve & Resume";
   }
   panel.hidden = false;
 }
@@ -834,14 +838,19 @@ export function dismissSimulationCheckpoint() {
   if (panel) panel.hidden = true;
 }
 
-export async function resumeSimulationFromCheckpoint({ resolveDecision = null } = {}) {
+export async function resumeSimulationFromCheckpoint({ resolveDecision = null, reviseStrategy = null } = {}) {
   const continuation = pendingSimulationResume;
   if (!continuation) return { resumed: false };
   pendingSimulationResume = null;
   dismissSimulationCheckpoint();
+  let strategyPolicy = continuation.strategyPolicy || null;
+  const canReviewPlan = strategyPolicy && state.dashboard?.phase === "regular-season" && typeof reviseStrategy === "function";
+  if (canReviewPlan) {
+    strategyPolicy = await reviseStrategy(strategyPolicy);
+  }
   if (continuation.mode === "weeks") {
     await advanceWeeksSequential(continuation.remaining, {
-      digest: continuation.digest, resolveDecision, strategyPolicy: continuation.strategyPolicy
+      digest: continuation.digest, resolveDecision, strategyPolicy
     });
   } else {
     await advanceSeasonSequential({
@@ -849,10 +858,10 @@ export async function resumeSimulationFromCheckpoint({ resolveDecision = null } 
       steps: continuation.steps,
       digest: continuation.digest,
       resolveDecision,
-      strategyPolicy: continuation.strategyPolicy
+      strategyPolicy
     });
   }
-  return { resumed: true };
+  return { resumed: true, strategyReviewed: Boolean(canReviewPlan) };
 }
 
 async function fastSimRequestBody(resolveDecision, strategyPolicy = null) {

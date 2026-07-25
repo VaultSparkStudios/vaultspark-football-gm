@@ -3966,19 +3966,11 @@ export class GameSession {
   }
 
   processStaffLifecycle() {
-    for (const team of this.league.teams) {
-      if (!team.staff) team.staff = buildStaffProfile(this.rng, team.staff);
-      for (const role of ["headCoach", "offensiveCoordinator", "defensiveCoordinator"]) {
-        const staffer = team.staff[role];
-        staffer.yearsRemaining = Math.max(0, (staffer.yearsRemaining || 1) - 1);
-        if (staffer.yearsRemaining <= 0) {
-          const replacement = buildStaffProfile(this.rng)[role];
-          team.staff[role] = replacement;
-          this.logNews(`${team.id} hired a new ${role}`, { teamId: team.id, role, name: replacement.name });
-        }
-      }
-      applyStaffToCoaching(team);
-    }
+    return this.services.coaching.processLifecycle({
+      createStaffProfile: () => buildStaffProfile(this.rng),
+      applyStaffToCoaching,
+      logNews: (headline, details) => this.logNews(headline, details)
+    });
   }
 
   generateWeekEvents(weekResult) {
@@ -4884,6 +4876,7 @@ export class GameSession {
       latestWeekResults: this.weekResultsCurrentSeason.slice(-1)[0] || null,
       latestTacticalFilm: (this.league.tacticalFilmLog || []).find((entry) => entry.teamId === this.controlledTeamId) || null,
       tacticalFilmLedger: (this.league.tacticalFilmLog || []).filter((entry) => entry.teamId === this.controlledTeamId).slice(0, 12),
+      coachingLineage: this.services.coaching.getTeamView(this.controlledTeamId),
       architectLedger: architectLedgerForTeam(this.league, this.controlledTeamId, 12),
       recentBoxScores: this.getRecentBoxScores(this.controlledTeamId, 8),
       injuryReport: getInjuryReport(this.league, null, {

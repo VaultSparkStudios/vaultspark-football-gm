@@ -589,7 +589,10 @@ function bindEvents() {
   });
   document.getElementById("resumeSimBtn").addEventListener("click", () => {
     runAction(
-      () => resumeSimulationFromCheckpoint({ resolveDecision: checkAndShowGmDecision }),
+      () => resumeSimulationFromCheckpoint({
+        resolveDecision: checkAndShowGmDecision,
+        reviseStrategy: (policy) => collectAcceleratedStrategyPolicy(policy.scope)
+      }),
       "Resuming simulation...",
       SIMULATION_ACTION
     ).then((result) => {

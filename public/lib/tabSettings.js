@@ -703,23 +703,30 @@ export function renderCoachingDnaCard() {
   const card = document.getElementById("coachingDnaCard");
   if (!card) return;
   const s = state.staffState;
-  const tree = s?.coachingTree || state.dashboard?.coachingTree;
-  if (!tree) { card.hidden = true; return; }
+  const view = s?.coachingLineage || state.dashboard?.coachingLineage;
+  if (!view) { card.hidden = true; return; }
   card.hidden = false;
   const body = card.querySelector(".coaching-dna-body");
   if (!body) return;
-  const lineage = tree.lineage || tree.coaches || Object.values(tree).filter((v) => v && v.coachName);
-  if (!lineage.length) {
+  const staff = view.currentStaff || [];
+  if (!staff.length) {
     body.innerHTML = `<div class="narrative-empty">No coaching lineage tracked yet.</div>`;
     return;
   }
-  body.innerHTML = lineage.slice(0, 6).map((entry) => `
+  const lineage = (view.lineage || []).slice(1);
+  body.innerHTML = `
+    <div class="coaching-dna-summary">
+      ${escapeHtml(String(view.familySize || 0))} active lineage member${view.familySize === 1 ? "" : "s"} · source: ${escapeHtml(view.source || "league coaching ledger")}
+    </div>
+    ${staff.slice(0, 3).map((entry) => `
     <div class="coaching-dna-row">
-      <span class="coaching-dna-name">${escapeHtml(entry.coachName || entry.name || "Unknown")}</span>
+      <span class="coaching-dna-name">${escapeHtml(entry.name || "Unknown")}</span>
       <span class="coaching-dna-role">${escapeHtml(entry.role || "")}</span>
-      <span class="coaching-dna-scheme">${escapeHtml(entry.scheme || entry.schemeDrift || "")}</span>
+      <span class="coaching-dna-scheme">${escapeHtml(entry.scheme || "")} · ${escapeHtml(entry.tempo || "")}</span>
       ${entry.mentor ? `<span class="coaching-dna-mentor">from ${escapeHtml(entry.mentor)}</span>` : ""}
-    </div>`).join("");
+    </div>`).join("")}
+    ${lineage.length ? `<div class="coaching-dna-mentor">Head-coach lineage: ${lineage.map((entry) => escapeHtml(entry.name)).join(" → ")}</div>` : ""}
+    <div class="coaching-dna-mentor">${escapeHtml(view.disclaimer || "")}</div>`;
 }
 
 export async function renderCommissionerLobby() {

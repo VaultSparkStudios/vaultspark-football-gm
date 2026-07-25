@@ -30,8 +30,16 @@ function pickWithDrift(options, parentValue, rng, driftChance = 0.25) {
   return rng.pick(options);
 }
 
-function coachId(name, teamId, year) {
-  return `coach-${name.replace(/\s+/g, "-").toLowerCase()}-${teamId}-${year}`;
+function coachId(name, teamId, year, role = "coach") {
+  return `coach-${name.replace(/\s+/g, "-").toLowerCase()}-${teamId}-${year}-${String(role).toLowerCase()}`;
+}
+
+function unusedCoachId(tree, name, teamId, year, role) {
+  const base = coachId(name, teamId, year, role);
+  if (!tree.nodes[base]) return base;
+  let sequence = 2;
+  while (tree.nodes[`${base}-${sequence}`]) sequence += 1;
+  return `${base}-${sequence}`;
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
@@ -44,7 +52,7 @@ export function initCoachingTree(league) {
   for (const team of league.teams) {
     const hc = team.staff?.headCoach;
     if (!hc) continue;
-    const id = coachId(hc.name || `HC-${team.id}`, team.id, league.currentYear || 1);
+    const id = coachId(hc.name || `HC-${team.id}`, team.id, league.currentYear || 1, "HC");
     if (!league.coachingTree.nodes[id]) {
       league.coachingTree.nodes[id] = {
         id,
@@ -63,6 +71,38 @@ export function initCoachingTree(league) {
   }
 }
 
+export function registerRootHeadCoach(league, team, staffer, year = league.currentYear || 1) {
+  if (!league.coachingTree) initCoachingTree(league);
+  const tree = league.coachingTree;
+  const name = staffer?.name || `Head Coach (${team.id})`;
+  const existing = Object.values(tree.nodes).find(
+    (node) => node.currentTeamId === team.id && node.role === "HC" && node.name === name
+  );
+  if (existing) return existing;
+  for (const node of Object.values(tree.nodes)) {
+    if (node.currentTeamId === team.id && node.role === "HC") {
+      node.role = "departed";
+      node.currentTeamId = null;
+    }
+  }
+  const id = unusedCoachId(tree, name, team.id, year, "HC");
+  const node = {
+    id,
+    name,
+    currentTeamId: team.id,
+    role: "HC",
+    hireYear: year,
+    offenseScheme: team.scheme?.offense || "balanced",
+    defenseScheme: team.scheme?.defense || "multiple",
+    tempo: team.scheme?.tempo || "measured",
+    generation: 0,
+    mentorId: null,
+    promotionHistory: []
+  };
+  tree.nodes[id] = node;
+  return node;
+}
+
 // ── Register a new coordinator (potential future HC) ─────────────────────────
 
 export function registerCoordinator(league, team, coordinatorName, role, rng) {
@@ -74,7 +114,7 @@ export function registerCoordinator(league, team, coordinatorName, role, rng) {
     (n) => n.currentTeamId === team.id && n.role === "HC"
   );
 
-  const id = coachId(coordinatorName, team.id, league.currentYear || 1);
+  const id = unusedCoachId(tree, coordinatorName, team.id, league.currentYear || 1, role);
   const mentor = hcNode || null;
 
   tree.nodes[id] = {
@@ -149,7 +189,9 @@ export function getTeamCoachingLineage(league, teamId) {
 
   const lineage = [];
   let current = hcNode;
-  while (current) {
+  const visited = new Set();
+  while (current && !visited.has(current.id)) {
+    visited.add(current.id);
     lineage.push({
       id: current.id,
       name: current.name,
@@ -171,7 +213,9 @@ export function getCoachingFamily(league, rootCoachId) {
   const family = [];
   for (const [id, node] of Object.entries(tree.nodes)) {
     let cursor = node;
-    while (cursor) {
+    const visited = new Set();
+    while (cursor && !visited.has(cursor.id)) {
+      visited.add(cursor.id);
       if (cursor.id === rootCoachId) { family.push(node); break; }
       cursor = cursor.mentorId ? tree.nodes[cursor.mentorId] : null;
     }
@@ -214,7 +258,7 @@ export function processCoachingCarousel(league, rng, firedCoachIds = []) {
     } else {
       // No tree candidate — generate a fresh root-level HC
       const name = `New HC (${team.id})`;
-      const id = coachId(name, team.id, year);
+      const id = unusedCoachId(tree, name, team.id, year, "HC");
       tree.nodes[id] = {
         id,
         name,

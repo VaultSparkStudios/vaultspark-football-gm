@@ -843,12 +843,36 @@ export async function renderGmLegacyScore() {
     renderFranchiseArchitecture();
     if (!s) { card.hidden = true; return; }
     card.hidden = false;
-    const scoreEl = document.getElementById("gmLegacyScoreVal");
+    const scoreEl = document.getElementById("gmLegacyScoreVal") || card;
     const gradeEl = document.getElementById("gmLegacyGradeVal");
     const labelEl = document.getElementById("gmLegacyLabel");
     if (scoreEl) scoreEl.textContent = s.score ?? "—";
     if (gradeEl) gradeEl.textContent = s.grade ?? "—";
     if (labelEl) labelEl.textContent = s.label ?? "";
+    const masteryEl = document.getElementById("gmMasteryPortfolio");
+    if (masteryEl && s.mastery) {
+      masteryEl.innerHTML = `
+        <div class="gm-mastery-head">
+          <strong>${escapeHtml(s.mastery.label)}</strong>
+          <span>${escapeHtml(String(s.mastery.score))}/${escapeHtml(String(s.mastery.maxScore))}</span>
+        </div>
+        ${s.mastery.focus ? `
+          <div class="gm-mastery-focus">
+            <span>Next Architect Focus · ${escapeHtml(s.mastery.focus.label)}</span>
+            <strong>${escapeHtml(s.mastery.focus.nextMilestone)}</strong>
+            <small>${escapeHtml(s.mastery.focus.reason)}</small>
+          </div>` : ""}
+        <div class="gm-mastery-paths">
+          ${(s.mastery.paths || []).map((path) => `
+            <div class="gm-mastery-path ${escapeHtml(path.status)}" title="${escapeHtml(path.evidence)}">
+              <span>${escapeHtml(path.label)}</span>
+              <strong>${escapeHtml(String(path.score))}/25</strong>
+              <small>${path.evidenceCount ? `${escapeHtml(String(path.evidenceCount))} receipt${path.evidenceCount === 1 ? "" : "s"}` : "Awaiting evidence"}</small>
+            </div>
+          `).join("")}
+        </div>
+        <small class="gm-mastery-disclaimer">${escapeHtml(s.mastery.disclaimer)}</small>`;
+    }
 
     // Persona tier arc
     const personaEl = document.getElementById("gmPersonaTier");

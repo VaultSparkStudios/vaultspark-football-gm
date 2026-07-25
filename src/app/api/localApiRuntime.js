@@ -1358,7 +1358,7 @@ export function createLocalApiRuntime({
         const s = ensureSession();
         initGmLegacy(s.league);
         const summary = {
-          ...getGmLegacySummary(s.league),
+          ...getGmLegacySummary(s.league, s.controlledTeamId),
           reputation: buildGmReputationProfile(s.league.gmLegacy)
         };
         return finish(jsonResponse(200, { ok: true, legacy: summary, raw: s.league.gmLegacy }));
