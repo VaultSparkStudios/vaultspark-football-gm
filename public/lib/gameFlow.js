@@ -16,12 +16,9 @@ import { applyFastSimulationPolicy, policyDigestEvidence } from "./fastSimulatio
 import { createAuthorityEpochTracker } from "./authorityEpoch.js";
 import { observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
 import { maybeMountContextualFeedback } from "./contextualFeedback.js";
+import { dashboardAuthorityKey } from "./franchiseScope.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
-
-function dashboardAuthorityKey(dashboard = {}) {
-  return [dashboard.leagueId || dashboard.startYear || "league", dashboard.controlledTeamId || "none", dashboard.currentYear, dashboard.currentWeek, dashboard.phase].join(":");
-}
 
 function beginHydration(scope, key = "") {
   return hydrationAuthority.begin(scope, key);
