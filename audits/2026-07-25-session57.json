@@ -50,7 +50,8 @@
       "Pages build, static smoke, and browser reachability 50 modules",
       "project-scoped working-tree secret scan 0 findings",
       "current Claude settings sanitizer 0 findings",
-      "Genius cache 0 open / 6 closed and viable second-order 0 open / 4 closed"
+      "Genius cache 0 open / 6 closed and viable second-order 0 open / 4 closed",
+      "implementation revision 9c24df0 completed CI, brief-format, backend runtime, and Pages 4/4 green"
     ],
     "nonEvidence": [
       "the initial unsharded-test aggregate failure is superseded only by the full 489/489 rerun",

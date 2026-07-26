@@ -26,7 +26,7 @@ Launch remains HOLD. Hosted same-origin revision/asset/health/repository proof, 
 
 ### Deploy
 
-Direct-main source delivery and the triggered GitHub Pages staging workflow remain to be completed in this closeout. A successful push/deploy does not imply launch/SPARKED.
+Implementation revision `9c24df0fc960daa04e6663796bc9c60a2aaf7172` was pushed directly to `main`; CI, brief-format, backend runtime, and Pages workflows completed 4/4 green. The post-deploy same-origin staging receipt remains honestly blocked at 3/10. Ark broadcast receipt: `01JUEGBE6JD354A7E5CF262B98`. Deployment does not imply launch/SPARKED.
 
 ### Next best move
 

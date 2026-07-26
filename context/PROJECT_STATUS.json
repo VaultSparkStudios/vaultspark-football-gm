@@ -106,7 +106,8 @@
       "bounded working-tree secret scan 0 findings",
       "canon conformance 0 gaps and doctor blockingFailing 0",
       "Unified Genius List 0 open / 6 closed",
-      "4 viable second-order innovations implemented"
+      "4 viable second-order innovations implemented",
+      "implementation revision 9c24df0 completed CI, brief-format, backend runtime, and Pages 4/4 green"
     ],
     "date": "2026-07-25",
     "diagnosticNote": "The first aggregate correctly failed because the new season-chapter test was unsharded; after assigning it to runtime, shard coverage and the full aggregate reran green. The first responsive matrix found 34px tutorial actions; after a shared 44px fix, all 53 captures passed. Launch remains HOLD."
@@ -174,7 +175,7 @@
       "Self-validating 53-capture visual authority and 44px tutorial root fix"
     ],
     "tests": "Node 489/489 · UI 19/19 · responsive 53 captures",
-    "deploy": "CI-on-push Pages pending · launch HOLD"
+    "deploy": "implementation 9c24df0 workflows 4/4 green · staging receipt 3/10 · launch HOLD"
   },
   "testingSurfaces": [
     {

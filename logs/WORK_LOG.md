@@ -453,3 +453,4 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - The first aggregate run correctly failed because the new chapter test was outside the shard manifest. The test was added to the runtime shard, shard coverage passed, and the complete aggregate reran green at 489/489 with a fresh source-bound receipt.
 - Playwright passed 19/19; Pages build, 50-module reachability, static smoke, project-scoped secret scan 0, and settings sanitizer 0 passed.
 - Launch remains HOLD on hosted provenance/edge/email/approval/lifecycle evidence; duplicate launch candidates were deferred honestly and no sibling tree was edited.
+- Direct-main implementation revision `9c24df0` completed CI, brief-format, backend runtime, and Pages 4/4 green; post-deploy staging evidence remained 3/10. Ark broadcast receipt `01JUEGBE6JD354A7E5CF262B98` carried the reusable authority/evidence patterns.
