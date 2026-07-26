@@ -245,6 +245,7 @@ import { buildLeagueStoryFromDashboard, downloadLeagueStory } from "./lib/league
 import {
   applyDashboard,
   activateTab,
+  closeMobileNav,
   loadState,
   loadScheduleWeek,
   loadCalendar,
@@ -485,6 +486,35 @@ function exposeLocalTestHooks() {
   const host = globalThis.location?.hostname || "";
   if (host !== "localhost" && host !== "127.0.0.1") return;
   globalThis.__VS_FA_APPLY_DASHBOARD__ = applyDashboard;
+}
+
+function initMobileNav() {
+  const toggle = document.getElementById("mobileNavToggle");
+  const backdrop = document.getElementById("mobileNavBackdrop");
+  if (!toggle || !backdrop) return;
+
+  function openNav() {
+    document.body.classList.add("mobile-nav-open");
+    toggle.setAttribute("aria-expanded", "true");
+    document.getElementById("gameNav")?.focus();
+  }
+
+  toggle.addEventListener("click", () => {
+    if (document.body.classList.contains("mobile-nav-open")) {
+      closeMobileNav();
+    } else {
+      openNav();
+    }
+  });
+
+  backdrop.addEventListener("click", () => closeMobileNav());
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && document.body.classList.contains("mobile-nav-open")) {
+      closeMobileNav();
+      toggle.focus();
+    }
+  });
 }
 
 function bindEvents() {
@@ -1999,6 +2029,7 @@ async function init() {
       authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || ""
     }
   );
+  initMobileNav();
   initMobileLoop(state, advanceFromMobileLoop);
   syncMobileLoopOverlay();
   setInterval(() => {

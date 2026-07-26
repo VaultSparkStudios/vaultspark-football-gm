@@ -140,6 +140,14 @@ export function applyDashboard(newState) {
 
 }
 
+function closeMobileNav() {
+  document.body.classList.remove("mobile-nav-open");
+  const toggle = document.getElementById("mobileNavToggle");
+  if (toggle) toggle.setAttribute("aria-expanded", "false");
+}
+
+export { closeMobileNav };
+
 export function activateTab(tabId) {
   state.activeTab = tabId;
   document.querySelectorAll(".menu-btn").forEach((btn) => {
@@ -150,6 +158,10 @@ export function activateTab(tabId) {
     btn.setAttribute("aria-selected", isActive ? "true" : "false");
     btn.setAttribute("tabindex", isActive ? "0" : "-1");
   });
+  // Close the mobile nav drawer when any tab is selected on narrow viewports.
+  if (window.innerWidth <= 640) {
+    closeMobileNav();
+  }
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);
   });
