@@ -1,11 +1,11 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-07-25 (Session 56 closeout) -->
+<!-- generated-at: 2026-07-26 (Session 57 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 56 closeout · 2026-07-25.
+> **Fast-boot brief** — generated at Session 57 closeout · 2026-07-26.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -14,17 +14,17 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 57 · 2026-07-25 · FOUNDER MODE                          ║
+║  Session 58 · 2026-07-26 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S56) · WHAT SHIPPED ═══════════════════════════╗
-║  ✓ One decision-first weekly-plan composer with versioned recei  ║
-║  ✓ Bounded tab-scoped consented journey evidence                 ║
-║  ✓ Progressive Week Room with one Now call and compact horizons  ║
-║  ✓ Truthful ContractService and CoachingService-only runtime bu  ║
-║  ✓ Three second-order runtime/evidence innovations after primar  ║
-║  Tests  Node 479/479 · UI 18/18 · responsive 20/20               ║
+╔══ LAST SESSION (S57) · WHAT SHIPPED ═══════════════════════════╗
+║  ✓ Exact bidirectional API, current-intent routing, and delegat  ║
+║  ✓ Deliberate identity mastery and one source-derived Season ch  ║
+║  ✓ Complete tutorial-to-week browser evidence journey            ║
+║  ✓ One canonical human-action parser and retired stale mutation  ║
+║  ✓ Self-validating 53-capture visual authority and 44px tutoria  ║
+║  Tests  Node 489/489 · UI 19/19 · responsive 53 captures         ║
 ║  Deploy CI-on-push Pages pending · launch HOLD                   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -42,7 +42,7 @@
 ║                                                                  ║
 ║    995/1000   ███████████████████████░   100%                    ║
 ║    SIL v3.0  ·  Avg3: 995  ·  Velocity 0→                        ║
-║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
+║    Active 0d · closeout 1d · source: newest SIL/status/handoff   ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -60,35 +60,35 @@
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 56 ════════════════════════════╗
-║  Shipped:  One decision-first weekly-plan composer now governs   ║
-║  Tests:    479/479 passing  ·  Deploy: N/A                       ║
+╔══ WHERE WE LEFT OFF  ·  Session 57 ════════════════════════════╗
+║  Shipped:  Bidirectional API parity now fails on missing or une  ║
+║  Tests:    489/489 passing  ·  Deploy: N/A                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     34,724 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~17,362 tok/turn  ·  cache 50%  ·  50 turns to compact       ║
+║     43,002 / 1,000,000 tok  ·  codex/codex-1m  ·  heuristic      ║
+║     ~21,501 tok/turn  ·  cache 50%  ·  40 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         479/479 passing (2026-07-25)                   ║
+║  ✓  Tests         489/489 passing (2026-07-26)                   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         42160 FORGE  ·  5d old                         ║
+║  ✓  IGNIS         42160 FORGE  ·  6d old                         ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
-║  ✓  Entropy       0.055  (healthy)                               ║
+║  ✓  Entropy       0.069  (healthy)                               ║
 ║  ✓  CDR           no gap detected                                ║
 ║  ✓  Patterns      no recurring pressure detected                 ║
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
 ║  ⚠  Doctor        5/6 (83%)  ·  1 warn                           ║
-║  ✓  Cost          Max flat-rate · $3.57/7d notional · no alarm   ║
+║  ✓  Cost          Max flat-rate · $4.52/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -118,5 +118,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 56 closeout · 2026-07-25*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 57 closeout · 2026-07-26*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

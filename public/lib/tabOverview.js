@@ -132,7 +132,7 @@ export function renderFranchiseArchitecture() {
             <div class="gm-mastery-paths">
               ${(mastery.paths || []).map((path) => `
                 <div class="gm-mastery-path ${escapeHtml(path.status)}" title="${escapeHtml(path.evidence)}">
-                  <span>${escapeHtml(path.label)}</span><strong>${escapeHtml(String(path.score))}/${escapeHtml(String(path.maxScore))}</strong><small>${escapeHtml(String(path.evidenceCount))} receipt${path.evidenceCount === 1 ? "" : "s"}</small>
+                  <span>${escapeHtml(path.label)}</span><strong>${escapeHtml(String(path.score))}/${escapeHtml(String(path.maxScore))}</strong><small>${escapeHtml(path.breakdown?.summary || `${path.evidenceCount} receipt${path.evidenceCount === 1 ? "" : "s"}`)}</small>
                 </div>`).join("")}
             </div>
             <small class="gm-mastery-disclaimer">${escapeHtml(mastery.disclaimer)}</small>

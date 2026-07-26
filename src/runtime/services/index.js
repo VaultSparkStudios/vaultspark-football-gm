@@ -18,11 +18,22 @@ export const SERVICE_AUTHORITY_MANIFEST = Object.freeze({
   services: Object.freeze({
     contracts: Object.freeze({
       delegated: true,
-      callSites: Object.freeze(["GameSession.getCapSummary"])
+      methods: Object.freeze({
+        getCapSummary: Object.freeze({
+          callSites: Object.freeze(["GameSession.getCapSummary"])
+        })
+      })
     }),
     coaching: Object.freeze({
       delegated: true,
-      callSites: Object.freeze(["GameSession.processStaffLifecycle", "GameSession.getDashboard"])
+      methods: Object.freeze({
+        processLifecycle: Object.freeze({
+          callSites: Object.freeze(["GameSession.processStaffLifecycle"])
+        }),
+        getTeamView: Object.freeze({
+          callSites: Object.freeze(["GameSession.getDashboard"])
+        })
+      })
     })
   })
 });

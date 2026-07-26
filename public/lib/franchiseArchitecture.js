@@ -32,45 +32,18 @@ function nowLane(commands = [], latestLedger = null) {
 }
 
 function seasonLane(dashboard = {}) {
-  const progress = dashboard.openingContractProgress || null;
-  const expectation = dashboard.controlledTeam?.owner?.expectation || null;
-  const nextStep = progress?.steps?.find((step) => !step.complete) || null;
-  if (progress) {
-    return {
-      id: "season",
-      label: "Season",
-      authority: "Opening Contract",
-      title: progress.status === "completed" ? "Opening promise observed" : safeText(nextStep?.label, "Advance the opening contract"),
-      detail: safeText(progress.nextAction, nextStep?.detail || "The season contract is current."),
-      milestone: nextStep ? `${nextStep.label}: ${safeText(nextStep.detail, "pending")}` : safeText(progress.result?.verdict, "Carry the contract into the season review."),
-      targetTab: "overviewTab",
-      targetId: "openingContractCard",
-      tone: progress.status === "completed" ? "positive" : "warning"
-    };
-  }
-  if (expectation?.mandate) {
-    return {
-      id: "season",
-      label: "Season",
-      authority: "Owner Expectation",
-      title: expectation.mandate,
-      detail: `${safeText(expectation.trend, "watch")} · heat ${expectation.heat ?? "—"}`,
-      milestone: safeText(expectation.reasons?.[0], "Reach the next owner evaluation with evidence."),
-      targetTab: "overviewTab",
-      targetId: "ownerUltimatumBanner",
-      tone: Number(expectation.heat || 0) >= 70 ? "danger" : "warning"
-    };
-  }
+  const active = buildSeasonChapter(dashboard);
   return {
     id: "season",
     label: "Season",
-    authority: "Season State",
-    title: "No season contract loaded",
-    detail: "Create a league and complete the opening contract to establish a season horizon.",
-    milestone: "Choose a franchise identity and owner promise.",
-    targetTab: "overviewTab",
-    targetId: "openingContractCard",
-    tone: "muted"
+    authority: `${active.label} · ${active.schemaVersion}`,
+    title: active.title,
+    detail: active.detail,
+    milestone: active.nextCall,
+    targetTab: active.targetTab,
+    targetId: active.targetId,
+    tone: active.tone,
+    chapter: active
   };
 }
 
@@ -174,3 +147,4 @@ export function buildArchitectureSignal(entries = [], limit = 8) {
     disclaimer: "This is a descriptive decision-memory signal, not evidence that a tactic caused wins or losses."
   };
 }
+import { buildSeasonChapter } from "./seasonChapters.js";

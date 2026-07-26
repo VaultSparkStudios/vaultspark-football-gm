@@ -4,7 +4,7 @@ function boundedScore(value, max = 25) {
   return Math.max(0, Math.min(max, Math.round(Number(value) || 0)));
 }
 
-function masteryPath({ id, label, score, evidenceCount, evidence, nextMilestone }) {
+function masteryPath({ id, label, score, evidenceCount, evidence, nextMilestone, breakdown = null }) {
   const safeScore = boundedScore(score);
   return {
     id,
@@ -14,7 +14,53 @@ function masteryPath({ id, label, score, evidenceCount, evidence, nextMilestone 
     evidenceCount,
     status: evidenceCount === 0 ? "awaiting-evidence" : safeScore >= 20 ? "signature-strength" : safeScore >= 12 ? "established" : "emerging",
     evidence,
-    nextMilestone
+    nextMilestone,
+    breakdown
+  };
+}
+
+export function buildAdaptiveIdentityEvidence(entries = []) {
+  const declared = entries.filter((entry) => entry.intent?.tactic || entry.intent?.gmDecision);
+  const tactics = entries
+    .filter((entry) => entry.intent?.tactic?.id)
+    .slice()
+    .reverse();
+  const transitions = tactics.slice(1).map((current, index) => {
+    const previous = tactics[index];
+    const from = previous.intent.tactic.id;
+    const to = current.intent.tactic.id;
+    const priorMisaligned = previous.outcome?.aligned === false;
+    return {
+      from,
+      to,
+      continuous: from === to,
+      adaptation: priorMisaligned ? (from === to ? "reinforce" : "counter") : null
+    };
+  });
+  const continuous = transitions.filter((entry) => entry.continuous).length;
+  const adaptations = transitions.filter((entry) => entry.adaptation);
+  const reinforce = adaptations.filter((entry) => entry.adaptation === "reinforce").length;
+  const counter = adaptations.filter((entry) => entry.adaptation === "counter").length;
+  const receiptScore = Math.min(10, declared.length * 2);
+  const continuityScore = transitions.length ? (continuous / transitions.length) * 8 : 0;
+  const adaptationScore = Math.min(7, adaptations.length * 3.5);
+  const score = boundedScore(receiptScore + continuityScore + adaptationScore);
+  return {
+    score,
+    declaredReceipts: declared.length,
+    tacticReceipts: tactics.length,
+    transitions: transitions.length,
+    continuous,
+    adaptations: adaptations.length,
+    reinforce,
+    counter,
+    components: {
+      committedEvidence: boundedScore(receiptScore, 10),
+      continuity: boundedScore(continuityScore, 8),
+      observedAdaptation: boundedScore(adaptationScore, 7)
+    },
+    summary: `${continuous}/${transitions.length} tactic transitions reinforced identity; ${adaptations.length} source-observed response${adaptations.length === 1 ? "" : "s"} after misaligned film (${reinforce} reinforce, ${counter} counter).`,
+    disclaimer: "Continuity and observed changes describe committed decisions. They do not prove a tactic caused results."
   };
 }
 
@@ -64,22 +110,17 @@ export function buildArchitectMasteryPortfolio(league = {}, teamId = null) {
 
   const architectEntries = (league.architectLedger || []).filter((entry) => !teamId || entry.teamId === teamId);
   const declared = architectEntries.filter((entry) => entry.intent?.tactic || entry.intent?.gmDecision);
-  const observed = declared.filter((entry) => entry.outcome?.aligned != null);
-  const aligned = observed.filter((entry) => entry.outcome.aligned === true).length;
-  const tacticIds = new Set(declared.map((entry) => entry.intent?.tactic?.id).filter(Boolean));
+  const identityEvidence = buildAdaptiveIdentityEvidence(architectEntries);
   const identity = masteryPath({
     id: "identity",
     label: "Architect Identity",
-    score: declared.length
-      ? Math.min(10, declared.length * 2) +
-        (observed.length ? (aligned / observed.length) * 10 : 0) +
-        Math.min(5, tacticIds.size * 1.25)
-      : 0,
+    score: identityEvidence.score,
     evidenceCount: declared.length,
     evidence: declared.length
-      ? `${declared.length} declared decision receipt${declared.length === 1 ? "" : "s"}; ${observed.length} tactic${observed.length === 1 ? "" : "s"} observed; ${aligned} aligned; ${tacticIds.size} distinct tactical identit${tacticIds.size === 1 ? "y" : "ies"}.`
+      ? `${declared.length} declared decision receipt${declared.length === 1 ? "" : "s"}. ${identityEvidence.summary}`
       : "No declared tactic or General Manager decision has a committed Architect receipt.",
-    nextMilestone: declared.length ? "Review the latest film receipt and deliberately reinforce or counter it." : "Declare a tactic, advance one week, and review its film receipt."
+    nextMilestone: declared.length ? "Review the latest film receipt and deliberately reinforce or counter it." : "Declare a tactic, advance one week, and review its film receipt.",
+    breakdown: identityEvidence
   });
 
   const paths = [results, stewardship, promise, identity];

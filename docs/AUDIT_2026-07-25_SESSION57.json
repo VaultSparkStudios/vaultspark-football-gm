@@ -1,0 +1,315 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-25",
+  "session": 57,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 6,
+    "combinedPriority": 216.2,
+    "topItem": "api-contract-bidirectional-authority",
+    "source": "live-code-audit",
+    "openItems": 0
+  },
+  "profile": {
+    "type": "public football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "founder-requested infrastructure rubric with product, game-loop, and release-gate lenses",
+    "staging": "GitHub Pages artifact plus exact same-origin hosted verification",
+    "source": "live source, direct script probes, current CI/staging evidence, release gate, game-loop review, infrastructure sweep, and public-safe context"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation",
+    "ci": "Five of five recent main workflow runs are complete and successful; the newest four bind to 50d8957.",
+    "staging": "Same-origin staging receipt is 3/10: health, deploy manifest, hashed asset, revision, and repository identity remain unverified.",
+    "production": "Release provenance is 0/7; canonical /_health is 404 and complete HSTS, CSP, and frame evidence is absent.",
+    "cost": "CANON-029 and cost-content gates allow the cost-neutral static product. Max Plan cost is notional, not an alarm.",
+    "branding": "Footer completeness is 7/7 and public proprietary compliance tests pass.",
+    "parity": "Local automated responsive evidence exists, but same-revision hosted parity remains unproved.",
+    "email": "No real received-message receipt proves football@playfranchisearchitect.com delivery.",
+    "approval": "No founder launch approval is recorded.",
+    "lifecycle": "Local public-unlaunched/FORGE truth conflicts with the sibling-owned SPARKED registry entry; current-repo edits cannot resolve it."
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.9,
+    "progression": 8.6,
+    "sessionEngagement": 8.0,
+    "retention": 8.2,
+    "soulFidelity": 8.7,
+    "overall": 8.5,
+    "evidence": "Implementation-contract review only. GAME_LOOP.md and checked-in playtests are absent, SOUL is intentionally public-safe, and project impact remains zero; no fun, pace, adoption, or retention lift is claimed."
+  },
+  "recommendedMoves": [
+    "Make API and runtime/service observability bidirectional: advertised and implemented surfaces must match exactly.",
+    "Teach deliberate identity: consistency plus source-observed adaptation, never random tactic variety as mastery.",
+    "Turn existing season systems into one source-derived chapter cadence and prove the full first-session path in a real browser."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "feature-depth",
+      "candidate": "Add another rivalry, inbox, achievement, recap, or generic retention system",
+      "reason": "Rejected as additive sprawl. Live code already has all five; the verified gap is orchestration of existing season milestones and an unambiguous identity lesson."
+    },
+    {
+      "axis": "ui-ux",
+      "candidate": "Redesign the fourteen-tab shell again",
+      "reason": "Rejected as a phantom rewrite. Session 56 already shipped the progressive Week Room; the next bounded surface is its Season horizon and first-session browser path."
+    },
+    {
+      "axis": "feedback-loop",
+      "candidate": "Claim learning or retention from the consented receipt instrument",
+      "reason": "Rejected because no checked-in player cohort exists. Instrumentation is an evidence path, not outcome evidence."
+    },
+    {
+      "axis": "gamification-engagement",
+      "candidate": "Reward daily streaks or raw tactic variety",
+      "reason": "Rejected as coercive or semantically contradictory. The product promise is deliberate franchise identity and source-derived chapters."
+    },
+    {
+      "axis": "ai-intelligence",
+      "candidate": "Add a large-language-model coach or tactic-win predictor",
+      "reason": "Rejected on cost, custody, and causal evidence. Existing deterministic receipts can explain state without fabricating predictions."
+    },
+    {
+      "axis": "security",
+      "candidate": "Flip launch/SPARKED from local green evidence",
+      "reason": "Deferred honestly: hosted provenance, edge headers, same-revision parity, received email, explicit approval, and registry coherence remain red or sibling-owned."
+    },
+    {
+      "axis": "speed-organization",
+      "candidate": "Merge all 111 server and local handlers in one high-risk rewrite",
+      "reason": "Rejected for this pass. The bidirectional parity gate and ghost-route removal are the bounded root fix; a shared dispatcher remains a future characterized extraction."
+    },
+    {
+      "axis": "token-api-reduction",
+      "candidate": "Optimize model/API spend",
+      "reason": "Rejected: gameplay has no model calls, free-tier cost is zero, and Max Plan spend is flat-rate/notional."
+    },
+    {
+      "axis": "infrastructure",
+      "candidate": "Perform a broad GameSession strangler or edit the sibling lifecycle registry",
+      "reason": "Rejected as unsafe or out of ownership. This pass tightens exact service/API surfaces and uses Ark for sibling truth."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Infrastructure / observability / dual-runtime contract",
+      "effortHours": 2.0,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 40.0,
+      "slug": "api-contract-bidirectional-authority",
+      "title": "Make zero-gap API parity an exact bidirectional claim",
+      "status": "done",
+      "premise": "The parity script reports 139 browser calls, 111 contracts, and zero adapter gaps while localApiRuntime implements two undeclared adapter-only routes: GET /api/storage/estimate and GET /api/injuries/active. Neither has a browser caller, manifest contract, nor server implementation.",
+      "evidence": [
+        "scripts/check-api-contract-parity.mjs checks missing declared routes but never unexpected adapter routes",
+        "src/app/api/localApiRuntime.js contains the two local-only handlers",
+        "repository search finds no other call or contract for either route",
+        "the current green summary therefore overstates parity"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Delete the two unreachable local-only handlers." },
+        "L2": { "effortHours": 2.0, "recipe": "Teach parity to fail on unexpected local/server routes, support a frozen explicit adapter-only allowlist with reasons, delete the two unreachable ghosts, expose exact local/server counts, and add fixture tests proving both missing and unexpected routes fail." },
+        "L3": { "effortHours": 6.0, "recipe": "Move transport-neutral handlers behind the contract manifest while keeping persistence translation at adapter edges." }
+      },
+      "verification": [
+        "unexpected adapter routes fail the gate",
+        "the two ghost routes are absent",
+        "declared browser/server/local surfaces join exactly",
+        "summary counts are derived from scanned sets"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Infrastructure / agent parity / routing observability",
+      "effortHours": 2.0,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 36.0,
+      "slug": "session-routing-agent-neutral-truth",
+      "title": "Route current intent without historical or agent-family contamination",
+      "status": "done",
+      "premise": "The current project-local Codex execution arc is classified FOUNDER because detect-session-mode scans historical handoff/task-board text and all old cross-project references. It then prints Claude-only 'prefers sonnet' and an Opus tier against a codex-1m session.",
+      "evidence": [
+        "live /start output was FOUNDER 6 / BUILDER 2 despite a single-repo implementation mission",
+        "detect-session-mode slices raw handoff/task-board history instead of using the newer current-intent source ledger",
+        "crossProjectRefs scans the entire append-only task board",
+        "model recommendations and prose are hard-coded to Claude model names"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Use latest intent/current open tasks for founder-vs-builder scoring." },
+        "L2": { "effortHours": 2.0, "recipe": "Share the current-intent/task source ledger with session-mode scoring, make agent identity explicit from the session lock, suppress incompatible model-family recommendations, emit explainable evidence, and cover historical-noise plus Codex/Claude cases." },
+        "L3": { "effortHours": 4.0, "recipe": "Move agent-family routing policies into a generated cross-agent manifest owned by Studio Ops." }
+      },
+      "verification": [
+        "the current mission classifies builder/execution",
+        "historical task-board references cannot flip mode",
+        "Codex output contains no Claude-only model directive",
+        "Claude behavior remains explicitly covered"
+      ]
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Infrastructure / architecture truth / attack-surface reduction",
+      "effortHours": 1.25,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 37.0,
+      "slug": "contract-service-exact-authority",
+      "title": "Make ContractService expose only its delegated production authority",
+      "status": "done",
+      "premise": "Session 56 claimed the service bundle contains only characterized delegated authorities, but ContractService still exposes release, restructure, tag, option, and rollover mutations that GameSession does not delegate through. The manifest marks the whole service delegated based on getCapSummary alone.",
+      "evidence": [
+        "SERVICE_AUTHORITY_MANIFEST lists only GameSession.getCapSummary for contracts",
+        "ContractService exports five additional public mutation methods",
+        "its own file comment says GameSession still owns those production mutations",
+        "the current service-authority test checks class presence, not exact public method surface"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Remove undelegated public methods and stale imports." },
+        "L2": { "effortHours": 1.25, "recipe": "Reduce ContractService to the exact cap-summary authority, declare method-level call sites in a frozen manifest, add reflection/static guards for unexpected public methods, and update comments to forbid scaffold methods before characterization." },
+        "L3": { "effortHours": 4.0, "recipe": "Characterize and delegate the next contract mutation atomically with response and mutation parity receipts." }
+      },
+      "verification": [
+        "ContractService has only constructor and getCapSummary as public production methods",
+        "manifest names exact methods and call sites",
+        "guard fails on a future undelegated method",
+        "cap summary behavior is unchanged"
+      ]
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "Game depth / progression / explainable intelligence",
+      "effortHours": 2.5,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 37.3,
+      "slug": "adaptive-identity-mastery",
+      "title": "Reward deliberate tactical identity and evidenced adaptation, not tactic churn",
+      "status": "done",
+      "premise": "Architect Identity adds up to five mastery points for distinct tactic IDs while Architecture Signal defines consistency as identity. Random tactic churn can therefore outscore a coherent declared philosophy even though the UI teaches reinforcement or a reasoned counter.",
+      "evidence": [
+        "architectMasteryPortfolio scores Math.min(5, tacticIds.size * 1.25)",
+        "franchiseArchitecture describes dominant-tactic consistency as the identity signal",
+        "ledger entries already contain alignment and nextAdaptation receipts",
+        "current tests do not compare random churn with coherent or adaptive histories"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Remove the distinct-tactic reward and clarify evidence copy." },
+        "L2": { "effortHours": 2.5, "recipe": "Add a pure identity evidence model that scores declared continuity plus source-observed reinforce/counter adaptation after film misalignment, exposes a transparent breakdown in the existing Mastery card, and proves random churn cannot beat deliberate identity." },
+        "L3": { "effortHours": 4.5, "recipe": "Add matchup-tagged adaptation arcs across a season without causal win claims." }
+      },
+      "verification": [
+        "random tactic variety earns no automatic mastery",
+        "consistent intent and evidenced adaptation are distinct explainable components",
+        "all scores remain bounded and source-derived",
+        "the browser-visible mastery evidence names the rule"
+      ]
+    },
+    {
+      "rank": 5,
+      "tier": "FIRE",
+      "category": "Engagement / progression / UI-UX",
+      "effortHours": 3.0,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 34.9,
+      "slug": "source-derived-season-chapters",
+      "title": "Compose existing milestones into one living season chapter",
+      "status": "done",
+      "premise": "Opening Contract, quarter markers, trade deadline, playoff gate, owner expectations, and season epilogue exist independently, but the Week Room Season horizon mostly repeats Opening Contract or owner status. It does not name the current chapter, completed transition, or next source-derived milestone.",
+      "evidence": [
+        "franchiseArchitecture.seasonLane reads only openingContractProgress and owner expectation",
+        "simulation checkpoints already identify week 5, trade-deadline, postseason, and commitment transitions",
+        "season arcs and epilogue already expose source events",
+        "adding another retention system was rejected; composition is the bounded gap"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1.0, "recipe": "Add a pure current-chapter label to the Season horizon." },
+        "L2": { "effortHours": 3.0, "recipe": "Create a versioned season-chapter composer from phase/week, Opening Contract, owner promise, deadline, playoff, and epilogue receipts; surface one active promise and one next call in Week Room and Return Digest; add transition, empty-state, mobile, and browser-wiring tests." },
+        "L3": { "effortHours": 5.0, "recipe": "Persist a compact chapter archive for long careers and season-to-season recall." }
+      },
+      "verification": [
+        "chapter state derives only from live dashboard receipts",
+        "exactly one active chapter and next call render",
+        "week/phase transitions are deterministic",
+        "no new telemetry or reward currency is introduced"
+      ]
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Automation / feedback loop / playable proof",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 31.0,
+      "slug": "first-session-playable-proof",
+      "title": "Prove the intended tutorial-to-debrief journey in a real browser",
+      "status": "done",
+      "premise": "The main Playwright helper always skips the tutorial, the play-mode smoke stops after the franchise screen loads, and Node tests prove opening-contract state without exercising the player-facing selection, receipt, weekly composer, and debrief path together.",
+      "evidence": [
+        "tests-ui/app.spec.js dismissTutorialIfVisible clicks Skip Tutorial",
+        "tests-ui/play-mode-smoke.spec.js asserts only URL, ready state, and year",
+        "opening-contract-prologue.test.js is source-level rather than browser-level",
+        "no existing UI test completes all three tutorial decisions and the first weekly command"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Add a Playwright test that completes tutorial choices and asserts the applied receipt." },
+        "L2": { "effortHours": 1.5, "recipe": "Add a deterministic first-session Playwright journey from setup through all tutorial choices, applied Opening Contract, decision-first weekly plan, committed week, debrief/ledger, and chapter transition; assert zero silent skip and preserve separate skip coverage." },
+        "L3": { "effortHours": 3.0, "recipe": "Attach explicit consented local receipt export validation without claiming comprehension or fun." }
+      },
+      "verification": [
+        "the tutorial is completed rather than skipped",
+        "the opening receipt is visible before entry",
+        "one weekly plan commits and advances authority",
+        "the debrief, ledger, and chapter transition are browser-visible"
+      ]
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "api-contract-bidirectional-authority",
+      "status": "done",
+      "receipt": "Exact parity now joins 111 browser contracts and 9 explicitly classified shared non-browser routes across both 120-route adapters; unexpected routes fail and the two unreachable local ghosts are removed.",
+      "verification": "node --test test/api-contract-parity.test.js (4/4); node scripts/check-api-contract-parity.mjs (exit 0)"
+    },
+    {
+      "slug": "session-routing-agent-neutral-truth",
+      "status": "done",
+      "receipt": "Current numbered intent and current open tasks now drive mode evidence; the active session-lock agent suppresses incompatible model-family advice and historical portfolio noise cannot flip the mission.",
+      "verification": "node --test test/session-intent-classifier.test.js (5/5); detect-session-mode --json/--explain (BUILDER, Codex model preserved, exit 0)"
+    },
+    {
+      "slug": "contract-service-exact-authority",
+      "status": "done",
+      "receipt": "ContractService exposes only getCapSummary, while a frozen method-level authority manifest and reflection guard make future undelegated scaffold methods fail.",
+      "verification": "node --test test/service-authority.test.js test/session54-innovations.test.js (11/11)"
+    },
+    {
+      "slug": "adaptive-identity-mastery",
+      "status": "done",
+      "receipt": "Mastery now scores bounded committed evidence, continuity, and source-observed reinforce/counter responses; raw tactic variety earns nothing and the visible breakdown disclaims causation.",
+      "verification": "node --test test/architect-mastery-portfolio.test.js test/progressive-week-room.test.js test/session54-innovations.test.js (15/15)"
+    },
+    {
+      "slug": "source-derived-season-chapters",
+      "status": "done",
+      "receipt": "A versioned pure composer names exactly one live season chapter and next call from phase/week plus opening, promise, owner, and offseason authorities; Week Room and Return Digest share it.",
+      "verification": "node --test test/season-chapters.test.js test/return-digest.test.js test/progressive-week-room.test.js test/browser-wiring.test.js (20/20)"
+    },
+    {
+      "slug": "first-session-playable-proof",
+      "status": "done",
+      "receipt": "A real-browser journey completes all three tutorial decisions, verifies the applied Opening Contract, commits a decision-first tactical week, and opens the resulting ledger and mastery evidence.",
+      "verification": "npx playwright test tests-ui/play-mode-smoke.spec.js (2/2)"
+    }
+  ]
+}

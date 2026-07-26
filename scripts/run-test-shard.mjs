@@ -59,6 +59,7 @@ export const SHARDS = {
     "test/potential-visibility.test.js",
     "test/progressive-week-room.test.js",
     "test/return-digest.test.js",
+    "test/season-chapters.test.js",
     "test/save-integrity.test.js",
     "test/session-lookup-indexes.test.js",
     "test/service-authority.test.js",

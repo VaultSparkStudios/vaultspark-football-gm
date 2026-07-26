@@ -498,3 +498,27 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Decision:** Preserve the historical General Manager Legacy score unchanged. Add a separate versioned Results/Stewardship/Promise/Identity portfolio derived only from existing receipts, with visible empty states, evidence counts, a lowest-path focus, and a separate strongest signature.
 
 **Rationale:** Outcome-heavy legacy scoring cannot express how a player architects a franchise. The new layer rewards legibility and direction without adding a hidden mechanic or claiming causation.
+
+## 2026-07-25 — Zero-gap observability is bidirectional and classified
+
+**Decision:** API parity joins browser contracts, explicitly classified shared non-browser routes, and both advertised adapters in both directions. An unexpected adapter route fails just like a missing route; adapter-only exceptions require a frozen named allowlist and reason.
+
+**Rationale:** A one-way declaration check could report zero gaps while local-only ghost handlers existed. Exact set equality prevents observability from overstating product parity.
+
+**Pattern established:** Every zero-gap claim names its scanned sets, classifications, counts, and failure modes.
+
+## 2026-07-25 — Mastery rewards deliberate identity, not raw variety
+
+**Decision:** Architect identity mastery derives from bounded committed evidence, tactical continuity, and an observed reinforce/counter response after prior film misalignment. Distinct tactic count grants no automatic score, and every presentation disclaims causal outcome claims and hidden bonuses.
+
+**Rationale:** Rewarding tactic variety contradicted the product's identity lesson and let random churn outscore coherent authorship.
+
+**Pattern established:** Progression may reward legible decision discipline and response evidence, never novelty for novelty's sake.
+
+## 2026-07-25 — Visual evidence has one self-validating artifact authority
+
+**Decision:** The static-artifact responsive runner owns required viewport, theme, core-tab, runtime-error, contrast, overflow, and touch-target evidence. One-off screenshot scripts that depend on an external server or swallow navigation failures are retired.
+
+**Rationale:** Screenshots are not evidence when missing panels can pass silently. A required-capture manifest made absence fail closed and immediately exposed a real cross-viewport tutorial defect.
+
+**Pattern established:** Visual evidence declares its required matrix, proves completion counts, and converts every discovered defect into a root fix before green.

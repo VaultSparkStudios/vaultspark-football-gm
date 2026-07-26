@@ -68,6 +68,43 @@ export function buildIntentSample({ taskboard = '', handoff = '', limit = 3 } = 
   };
 }
 
+const SCOPE_FOUNDER_PHRASES = [
+  /\bportfolio\b/i, /\ball\s+(projects|25)\b/i, /\bstudio[- ]wide\b/i,
+  /\bacross\s+projects\b/i, /\bcross[- ]project\b/i, /\bevery\s+project\b/i,
+  /\bfounder mode\b/i, /\bportfolio review\b/i, /\bstudio[- ]review\b/i
+];
+const SCOPE_BUILDER_PHRASES = [
+  /\bimplement\b/i, /\bfix\b/i, /\badd\s+feature\b/i, /\brefactor\b/i,
+  /\bship\b/i, /\bcomplete\b/i, /\bthis\s+(repo|project)\b/i
+];
+const CROSS_PROJECT_SLUG = /\b(mindframe|velaxis|call-of-doodie|vaultfront|voidfall|promogrind|vorn|ideaforge|scriptorium|social-dashboard|spark-funnel)\b/gi;
+const PORTFOLIO_COMMAND = /\b(studio[- ]review|portfolio[- ]ignis|propagate[- ]templates|studio[- ]brain|weekly[- ]digest|founder[- ]queue)\b/gi;
+
+export function classifySessionScope({ taskboard = '', handoff = '', userMessages = '', currentMode = 'builder' } = {}) {
+  const evidence = buildIntentSample({ taskboard, handoff });
+  const sample = [userMessages, evidence.sample].filter(Boolean).join('\n');
+  const matchedFounder = SCOPE_FOUNDER_PHRASES.flatMap((pattern) => sample.match(pattern)?.slice(0, 1) || []);
+  const matchedBuilder = SCOPE_BUILDER_PHRASES.flatMap((pattern) => sample.match(pattern)?.slice(0, 1) || []);
+  const crossProjectRefs = sample.match(CROSS_PROJECT_SLUG)?.length || 0;
+  const portfolioCommands = sample.match(PORTFOLIO_COMMAND)?.length || 0;
+  const founderScore = matchedFounder.length * 2 + Math.min(crossProjectRefs, 6) + portfolioCommands * 2;
+  const builderScore = matchedBuilder.length * 2 + (crossProjectRefs === 0 ? 3 : 0);
+  const recommended = founderScore > builderScore + 2 ? 'founder' : 'builder';
+  return {
+    currentMode,
+    recommended,
+    shouldFlip: recommended !== currentMode,
+    founderScore,
+    builderScore,
+    matchedFounder: [...new Set(matchedFounder)].slice(0, 8),
+    matchedBuilder: [...new Set(matchedBuilder)].slice(0, 8),
+    crossProjectRefs,
+    portfolioCommands,
+    sourceLedger: evidence.sources,
+    sampleChars: sample.length
+  };
+}
+
 // Scoring dictionaries
 const PLANNING = [
   'design', 'architect', 'architecture', 'spec ', 'specify', 'redesign',

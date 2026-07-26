@@ -14,6 +14,16 @@ const configuredViewports = [
   { name: "tablet", width: 768, height: 1024 },
   { name: "desktop", width: 1440, height: 1000 }
 ];
+const evidenceThemes = ["dark", "light"];
+const evidenceTabs = [
+  ["overviewTab", "overview"],
+  ["rosterTab", "roster"],
+  ["contractsTab", "contracts"],
+  ["scoutingTab", "scouting"],
+  ["historyTab", "history"],
+  ["statsTab", "stats"],
+  ["settingsTab", "settings"]
+];
 const viewports = process.env.EVIDENCE_VIEWPORT
   ? configuredViewports.filter((viewport) => viewport.name === process.env.EVIDENCE_VIEWPORT)
   : configuredViewports;
@@ -146,7 +156,7 @@ async function main() {
       await page.evaluate(() => localStorage.clear());
       await page.reload({ waitUntil: "networkidle" });
       await page.waitForSelector("#createLeagueBtn");
-      for (const theme of ["dark", "light"]) {
+      for (const theme of evidenceThemes) {
         await setTheme(page, theme);
         await capture(page, outputDir, `${viewport.name}-setup-${theme}`, ["#createLeagueBtn", "#themeToggleBtn"], records);
       }
@@ -156,13 +166,13 @@ async function main() {
       await page.waitForURL("**/game.html", { timeout: 90_000 });
       await page.waitForSelector("#statusChip");
       await page.waitForFunction(() => !/loading/i.test(document.getElementById("topMetaText")?.textContent || "Loading"));
-      const tutorialVisible = await page.locator("#tutorialModal").isVisible().catch(() => false);
+      const tutorialVisible = await page.locator(".tutorial-overlay").isVisible().catch(() => false);
       if (tutorialVisible) await capture(page, outputDir, `${viewport.name}-game-dialog-dark`, ["#tutSkipBtn"], records);
       const skip = page.locator("#tutSkipBtn");
       if (await skip.isVisible().catch(() => false)) await skip.click();
 
       if (viewport.name === "mobile") {
-        for (const theme of ["dark", "light"]) {
+        for (const theme of evidenceThemes) {
           await setTheme(page, theme);
           await capture(page, outputDir, `${viewport.name}-game-loop-${theme}`, ["#mlAdvanceWeekBtn", "#mlFullViewBtn", ".ml-pressure-card"], records);
         }
@@ -170,12 +180,18 @@ async function main() {
         await page.waitForFunction(() => document.getElementById("mobileLoopOverlay")?.classList.contains("hidden"));
       }
 
-      for (const theme of ["dark", "light"]) {
+      for (const theme of evidenceThemes) {
         await setTheme(page, theme);
-        await page.locator('[data-tab="overviewTab"]').click();
-        await capture(page, outputDir, `${viewport.name}-game-overview-${theme}`, ["#advanceWeekBtn", "#advance4WeeksBtn", "#advanceSeasonBtn", "#themeToggleBtn"], records);
-        await page.locator('[data-tab="settingsTab"]').click();
-        await capture(page, outputDir, `${viewport.name}-game-settings-${theme}`, ["#retryClientDiagnosticsBtn", "#clearClientDiagnosticsBtn", "#themeToggleBtn"], records);
+        for (const [tabId, label] of evidenceTabs) {
+          const tab = page.locator(`[data-tab="${tabId}"]`).first();
+          if (await tab.count() !== 1) throw new Error(`Missing responsive-evidence tab authority: ${tabId}`);
+          await tab.click();
+          await page.waitForFunction((id) => document.getElementById(id)?.classList.contains("active"), tabId);
+          const selectors = tabId === "overviewTab"
+            ? ["#advanceWeekBtn", "#advance4WeeksBtn", "#advanceSeasonBtn", "#themeToggleBtn"]
+            : ["#themeToggleBtn"];
+          await capture(page, outputDir, `${viewport.name}-game-${label}-${theme}`, selectors, records);
+        }
       }
       await context.close();
     }
@@ -184,7 +200,14 @@ async function main() {
     await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
   }
 
+  const requiredCaptureNames = viewports.flatMap((viewport) => [
+    ...evidenceThemes.map((theme) => `${viewport.name}-setup-${theme}`),
+    ...(viewport.name === "mobile" ? evidenceThemes.map((theme) => `${viewport.name}-game-loop-${theme}`) : []),
+    ...evidenceThemes.flatMap((theme) => evidenceTabs.map(([, label]) => `${viewport.name}-game-${label}-${theme}`))
+  ]);
+  const capturedNames = new Set(records.map((record) => record.name));
   const failures = [
+    ...requiredCaptureNames.filter((name) => !capturedNames.has(name)).map((name) => `${name}: required capture missing`),
     ...records.filter((record) => record.overflowX).map((record) => `${record.name}: horizontal overflow (${record.documentWidth}px > ${record.viewport.width}px); suspects ${record.overflowElements.map((item) => item.selector).join(", ")}`),
     ...records.filter((record) => record.bodyContrast < 4.5).map((record) => `${record.name}: body contrast ${record.bodyContrast}:1`),
     ...records.flatMap((record) => record.undersizedControls.map((control) => `${record.name}: ${control.selector} is ${control.width}x${control.height}, below 44x44`)),
@@ -196,6 +219,12 @@ async function main() {
     artifact: "static",
     generatedAt: new Date().toISOString(),
     viewports,
+    coverage: {
+      themes: evidenceThemes,
+      tabs: evidenceTabs.map(([id, label]) => ({ id, label })),
+      requiredCaptures: requiredCaptureNames.length,
+      completedRequiredCaptures: requiredCaptureNames.filter((name) => capturedNames.has(name)).length
+    },
     captures: records,
     runtimeErrors,
     status: failures.length ? "failed" : "passed",

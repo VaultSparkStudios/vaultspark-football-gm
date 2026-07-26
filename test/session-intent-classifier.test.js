@@ -6,6 +6,7 @@ import { join } from "node:path";
 import {
   buildIntentSample,
   classifyIntent,
+  classifySessionScope,
   extractCurrentOpenTasks,
   extractLatestSessionIntent
 } from "../scripts/classify-session-intent.mjs";
@@ -28,6 +29,36 @@ Old generic fallback.
     extractLatestSessionIntent(handoff),
     "Architect and implement the live feature blueprint."
   );
+});
+
+test("session scope ignores append-only historical portfolio noise", () => {
+  const result = classifySessionScope({
+    currentMode: "founder",
+    handoff: `
+## Session 57 Intent
+
+Implement and ship the current project audit.
+
+## Session 12 Intent
+
+Review the entire portfolio and studio-wide roadmap.
+`,
+    taskboard: `
+## Session 12 — Old
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Portfolio | Done | 1h | propagate-every-project |
+
+## Session 57 — Live
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Execution | Open | 2h | implement-current-authority |
+`
+  });
+  assert.equal(result.recommended, "builder");
+  assert.equal(result.shouldFlip, true);
+  assert.deepEqual(result.sourceLedger.tasks, ["implement-current-authority"]);
+  assert.equal(result.crossProjectRefs, 0);
 });
 
 test("current task sample consumes the latest live table without a Now bucket", () => {

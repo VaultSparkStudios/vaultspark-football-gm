@@ -15,7 +15,9 @@ import {
 } from "../public/lib/apiContract.js";
 import {
   assertApiContractParity,
-  extractBrowserApiCalls
+  compareAdapterContracts,
+  extractBrowserApiCalls,
+  SHARED_NON_BROWSER_CONTRACTS
 } from "../scripts/check-api-contract-parity.mjs";
 import { createLocalApiRuntime } from "../src/app/api/localApiRuntime.js";
 
@@ -130,6 +132,10 @@ test("API contract covers browser calls, both adapters, CORS, and response ident
   assert.ok(result.browserCallSites >= 100);
   assert.ok(result.contracts >= 100);
   assert.equal(result.responseShapes, result.contracts);
+  assert.equal(result.sharedNonBrowserRoutes, SHARED_NON_BROWSER_CONTRACTS.length);
+  assert.equal(result.localRoutes, result.contracts + result.sharedNonBrowserRoutes);
+  assert.equal(result.serverRoutes, result.contracts + result.sharedNonBrowserRoutes);
+  assert.ok(SHARED_NON_BROWSER_CONTRACTS.every((entry) => entry.key && entry.reason));
   assert.equal(new Set(API_CONTRACT.map((entry) => entry.key)).size, API_CONTRACT.length);
   assert.equal(getApiContract("GET", "/api/rivalry?teamA=BUF&teamB=MIA")?.key, "GET /api/rivalry");
   assert.equal(assertApiContract("DELETE", "/api/commissioner/lobby").authority, "adapter-storage");
@@ -143,6 +149,22 @@ test("API contract covers browser calls, both adapters, CORS, and response ident
     "GET /api/state",
     "DELETE /api/commissioner/lobby"
   ]);
+});
+
+test("API parity fails closed on missing and unexpected adapter routes", () => {
+  const diff = compareAdapterContracts({
+    manifestKeys: new Set(["GET /api/state", "POST /api/advance-week"]),
+    localKeys: new Set(["GET /api/state", "GET /api/local-ghost"]),
+    serverKeys: new Set(["GET /api/state", "POST /api/advance-week", "GET /api/server-ghost"])
+  });
+  assert.deepEqual(diff, {
+    missingLocal: ["POST /api/advance-week"],
+    missingServer: [],
+    missingSharedLocal: SHARED_NON_BROWSER_CONTRACTS.map((entry) => entry.key),
+    missingSharedServer: SHARED_NON_BROWSER_CONTRACTS.map((entry) => entry.key),
+    unexpectedLocal: ["GET /api/local-ghost"],
+    unexpectedServer: ["GET /api/server-ghost"]
+  });
 });
 
 test("response contracts fail closed on malformed success envelopes", () => {

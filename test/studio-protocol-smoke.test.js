@@ -8,6 +8,7 @@ import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseHumanItems, parseUnifiedItems } from "../scripts/lib/task-board.mjs";
+import { ensureAges } from "../scripts/lib/human-action-ages.mjs";
 import { classifyBlocker } from "../scripts/lib/blocker-rules.mjs";
 import { SCAN_ROOTS, scanDirectChildProcessImports } from "../scripts/check-windows-hide.mjs";
 
@@ -30,6 +31,27 @@ test("task board parser extracts table and human-blocked items", () => {
   assert.equal(Boolean(mapItem), true);
   assert.equal(mapItem.status, "open");
   assert.equal(parseHumanItems(markdown).length, 1);
+});
+
+test("human-action age ledger consumes the canonical task-board parser", () => {
+  const root = mkdtempSync(join(tmpdir(), "fa-human-ages-"));
+  const markdown = `## Human Action Required\n\n- [ ] **Received email receipt** — verify delivery (~3 sessions)\n`;
+  const ledger = ensureAges(markdown, { root, currentSession: 57 });
+  assert.deepEqual(Object.keys(ledger), ["Received email receipt"]);
+  assert.equal(ledger["Received email receipt"].session, 57);
+  const persisted = JSON.parse(readFileSync(join(root, "portfolio", "HUMAN_ACTION_AGES.json"), "utf8"));
+  assert.deepEqual(persisted, ledger);
+});
+
+test("architecture evidence uses non-mutating, self-validating authorities", () => {
+  assert.equal(existsSync(join(repoRoot, "scripts", "split-app.mjs")), false);
+  assert.equal(existsSync(join(repoRoot, "scripts", "capture-theme.mjs")), false);
+  const responsive = readFileSync(join(repoRoot, "scripts", "responsive-evidence.mjs"), "utf8");
+  for (const tab of ["overviewTab", "rosterTab", "contractsTab", "scoutingTab", "historyTab", "statsTab", "settingsTab"]) {
+    assert.match(responsive, new RegExp(`\\[\\\"${tab}\\\"`));
+  }
+  assert.match(responsive, /required capture missing/);
+  assert.match(responsive, /runtimeErrors/);
 });
 
 test("task board parser keeps completed three-column rows out of open queues", () => {

@@ -14,23 +14,9 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { parseHumanItems } from './task-board.mjs';
 
 const LEDGER_REL = 'portfolio/HUMAN_ACTION_AGES.json';
-
-function parseHumanItems(taskBoardText) {
-  const parts = taskBoardText.split(/^## /m);
-  const section = parts.find((p) => p.startsWith('Human Action Required'));
-  if (!section) return [];
-  const body = section.slice(section.indexOf('\n') + 1);
-  return body
-    .split(/\r?\n/)
-    .filter((l) => /^- \[ \]/.test(l))
-    .map((line) => {
-      const clean = line.replace(/^- \[ \]\s*/, '').replace(/\*\*/g, '');
-      const title = clean.split(/\s+—\s+/)[0].trim();
-      return { title, raw: line };
-    });
-}
 
 function readLedger(root) {
   const p = path.join(root, LEDGER_REL);

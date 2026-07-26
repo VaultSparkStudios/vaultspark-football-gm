@@ -78,3 +78,42 @@ Source: `docs/AUDIT_2026-07-25_SESSION56.json`.
 - Require the game-medium gate: every gameplay change is browser-visible and focused-tested.
 - After all player-facing work, run direct named Node shards, Playwright, responsive evidence, Pages build/reachability/smoke, doctor, security, canon, and release evidence.
 - Treat hosted/email/edge/approval/lifecycle reds as launch HOLD evidence, never as fabricated local passes.
+
+## Session 57 — Exact authority and season coherence
+
+Source: `docs/AUDIT_2026-07-25_SESSION57.json`.
+
+### Wave 3A — Exact infrastructure truth
+
+1. `api-contract-bidirectional-authority` — fail on unexpected adapter routes, remove two unreachable local ghosts, and make the zero-gap summary derive from both scanned sets.
+2. `contract-service-exact-authority` — reduce ContractService to its one delegated cap authority and guard its exact public surface.
+3. `session-routing-agent-neutral-truth` — score only current intent/open work, make agent family explicit, and suppress incompatible model recommendations.
+
+### Wave 3B — Deliberate franchise progression
+
+4. `adaptive-identity-mastery` — replace raw tactic-variety points with transparent continuity and source-observed adaptation evidence.
+5. `source-derived-season-chapters` — compose existing Opening Contract, quarter, deadline, playoff, and epilogue receipts into one active Season horizon and next call.
+
+### Wave 3C — Playable proof
+
+6. `first-session-playable-proof` — complete tutorial, applied contract, weekly composition, committed authority, debrief, and chapter transition in one deterministic Playwright journey.
+
+### Verification cadence
+
+- Run the focused contract/routing/service tests after Wave 3A; a green summary must name exact local and server route counts.
+- Run focused mastery/chapter/browser-wiring tests after Wave 3B; gameplay changes must be visible and static-host-safe.
+- Run the new first-session Playwright case in isolation before the full UI suite.
+- Re-run the context meter after each bounded item; then exhaust the Genius cache and Innovation Pack before closeout.
+
+### Primary result
+
+All six live-code items are implemented and individually verified. Exact dual-runtime API authority, agent-neutral current-intent routing, exact delegated service authority, deliberate identity mastery, source-derived season chapters, and the complete browser-playable first session now agree with the audit execution ledger. Unified Genius List primary pass: **0 open / 6 closed**.
+
+### Wave 4 — Second-order saturation result
+
+1. `latest-audit-follow-through` — rechecked all six receipts and made the browser proof observe the Season horizon transition.
+2. `single-human-action-parser-authority` — eliminated the remaining duplicate blocker-age parser.
+3. `retire-destructive-split-rewriter` — removed the stale no-caller module rewrite path and guarded its absence.
+4. `responsive-theme-evidence-authority` — unified visual evidence under one self-validating matrix; its first run found the tutorial action target defect, which was root-fixed before a 53-capture green rerun.
+
+Four duplicate launch candidates are deferred with identical external evidence requirements. No local artifact is presented as hosted/email/approval/lifecycle proof. Viable second-order list: **0 open / 4 closed**.

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildArchitectMasteryPortfolio } from "../src/engine/architectMasteryPortfolio.js";
+import { buildAdaptiveIdentityEvidence, buildArchitectMasteryPortfolio } from "../src/engine/architectMasteryPortfolio.js";
 import { getGmLegacySummary, initGmLegacy } from "../src/engine/gmLegacyScore.js";
 
 function leagueFixture() {
@@ -60,4 +60,31 @@ test("legacy summary adds mastery without changing the historical score contract
   assert.equal(typeof summary.score, "number");
   assert.equal(summary.mastery.maxScore, 100);
   assert.equal(summary.mastery.paths.length, 4);
+});
+
+test("random tactic churn cannot outscore coherent identity", () => {
+  const entry = (id, aligned = null) => ({ intent: { tactic: { id } }, outcome: { aligned } });
+  const churn = buildAdaptiveIdentityEvidence([
+    entry("pressure-front"), entry("air-raid"), entry("ground-control"), entry("balanced")
+  ]);
+  const coherent = buildAdaptiveIdentityEvidence([
+    entry("ground-control"), entry("ground-control"), entry("ground-control"), entry("ground-control")
+  ]);
+  assert.ok(coherent.score > churn.score);
+  assert.equal(churn.components.continuity, 0);
+  assert.equal(churn.components.observedAdaptation, 0);
+  assert.equal(coherent.components.continuity, 8);
+});
+
+test("identity evidence distinguishes reinforcement and counter adaptation", () => {
+  const evidence = buildAdaptiveIdentityEvidence([
+    { intent: { tactic: { id: "pass-heavy" } }, outcome: { aligned: true } },
+    { intent: { tactic: { id: "run-heavy" } }, outcome: { aligned: false } },
+    { intent: { tactic: { id: "run-heavy" } }, outcome: { aligned: false } }
+  ]);
+  assert.equal(evidence.adaptations, 2);
+  assert.equal(evidence.reinforce, 1);
+  assert.equal(evidence.counter, 1);
+  assert.match(evidence.summary, /reinforce.*counter/);
+  assert.match(evidence.disclaimer, /do not prove/i);
 });

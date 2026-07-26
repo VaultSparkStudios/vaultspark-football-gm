@@ -347,3 +347,17 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Visual truth: 20 responsive captures passed automated contrast, overflow, runtime-error, and touch-target checks. Manual AI image inspection is not claimed because the connected viewer failed before reading the files.
 - Release truth: local evidence is green, but launch remains HOLD on hosted provenance, edge headers, received email, approval, and registry reconciliation.
 - Cost truth: dependency versions were restored from the existing lockfile after exact package trust approval; no new dependency or variable-cost service was introduced.
+
+## 2026-07-25 — Session 57 truth updates
+
+- API truth: 111 browser contracts and 9 explicitly classified shared non-browser routes resolve across exact 120-route local and server adapters; missing and unexpected routes both fail parity.
+- Routing truth: only the latest numbered intent and current open tasks affect mode classification; active agent family comes from the session lock and Codex receives no Claude-only model advice.
+- Service truth: ContractService exposes only `getCapSummary`; the method-level manifest and reflection guard reject undelegated scaffolds.
+- Mastery truth: identity score derives from committed evidence, continuity, and observed reinforce/counter adaptation; random tactic variety grants no points and no causal result is claimed.
+- Season truth: one pure versioned chapter derives from phase/week and persisted opening/promise/owner/offseason receipts; unknown phase remains visibly unknown instead of guessed.
+- Browser truth: the first-session Playwright journey completes rather than skips onboarding, applies the real contract, commits one weekly plan, and observes ledger, mastery, and Season-horizon transition.
+- Visual truth: the required matrix covers 3 viewports × 2 themes × 7 core tabs plus setup/mobile/dialog evidence. The first run's 34px tutorial action failure is superseded by the 44px root fix and 53-capture direct rerun.
+- Test truth: the first aggregate's unsharded chapter-test failure remains diagnostic non-evidence. After assigning the test to runtime, shard coverage passed and the full aggregate passed 489/489 with a fresh source-bound receipt; Playwright passed 19/19.
+- Security truth: the project-scoped working-tree scan and current `.claude/settings.local.json` sanitizer each report zero findings. The earlier 8,005-hit scan was explicitly out-of-scope Studio Ops history and is not used as project evidence.
+- Release truth: local implementation is green, but hosted provenance, canonical edge headers, received email, founder approval, and sibling lifecycle reconciliation remain absent. Launch is HOLD.
+- Cost truth: no dependency, paid service, or variable-cost runtime was introduced; flat-rate Max Plan cost remains notional.

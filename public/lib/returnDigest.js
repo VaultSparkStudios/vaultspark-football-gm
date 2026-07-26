@@ -16,6 +16,7 @@
 import { api } from "./appState.js";
 import { escapeHtml } from "./appCore.js";
 import { getUnreadCount } from "./engagementFeatures.js";
+import { buildSeasonChapter } from "./seasonChapters.js";
 
 const STORAGE_KEY = "franchise-architect-last-seen";
 export const ABSENCE_THRESHOLD_MS = 6 * 60 * 60 * 1000; // 6 hours
@@ -79,7 +80,8 @@ export function buildReturnDigest(dashboard, priorVisit, now = Date.now()) {
     currentRecord,
     recordDelta,
     unreadCount: getUnreadCount(),
-    teamName: team.name || teamKey || "Your franchise"
+    teamName: team.name || teamKey || "Your franchise",
+    seasonChapter: buildSeasonChapter(dashboard)
   };
 }
 
@@ -136,6 +138,9 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
       ? `${digest.unreadCount} item${digest.unreadCount === 1 ? "" : "s"} waiting in your Priority Inbox.`
       : "Inbox is clear.";
   const decisionLine = pendingDecision ? `A GM decision is waiting: "${pendingDecision.prompt || "a call needs to be made"}".` : "";
+  const chapterLine = digest.seasonChapter
+    ? `${digest.seasonChapter.label}: ${digest.seasonChapter.title}. Next: ${digest.seasonChapter.nextCall}`
+    : "";
 
   const overlay = document.createElement("div");
   overlay.className = "return-digest-overlay";
@@ -150,6 +155,7 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
       <ul class="return-digest-list">
         ${weekLine ? `<li>${escapeHtml(weekLine)}</li>` : ""}
         ${recordLine ? `<li>${escapeHtml(recordLine)}</li>` : ""}
+        ${chapterLine ? `<li>${escapeHtml(chapterLine)}</li>` : ""}
         <li>${escapeHtml(inboxLine)}</li>
         ${decisionLine ? `<li class="return-digest-decision">${escapeHtml(decisionLine)}</li>` : ""}
       </ul>

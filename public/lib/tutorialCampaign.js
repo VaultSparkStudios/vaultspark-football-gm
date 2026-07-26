@@ -328,6 +328,7 @@ export function injectTutorialStyles() {
     .choice-tip { font-size: .75rem; color: var(--accent-2, #5a7a6a); font-style: italic; }
     .tutorial-choice.selected .choice-tip { color: var(--accent, #d7a24a); }
     .tutorial-actions { display: flex; justify-content: space-between; align-items: center; padding-top: .5rem; }
+    .tutorial-actions button { min-height: 44px; }
     .tutorial-next:disabled { opacity: .45; cursor: not-allowed; }
     .tutorial-error { margin: 0; padding: .75rem; border: 1px solid var(--danger, #d45d5d); border-radius: 8px; color: var(--danger, #d45d5d); background: color-mix(in srgb, var(--danger, #d45d5d) 10%, transparent); }
     .tutorial-receipt-list { display: grid; gap: .75rem; }

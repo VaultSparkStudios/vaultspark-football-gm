@@ -18,8 +18,11 @@ test("service bundle advertises only characterized production delegations", () =
   assert.deepEqual(Object.keys(SERVICE_AUTHORITY_MANIFEST.services).sort(), ["coaching", "contracts"]);
   for (const entry of Object.values(SERVICE_AUTHORITY_MANIFEST.services)) {
     assert.equal(entry.delegated, true);
-    assert.ok(entry.callSites.length > 0);
-    assert.equal(Object.isFrozen(entry.callSites), true);
+    assert.ok(Object.keys(entry.methods).length > 0);
+    for (const method of Object.values(entry.methods)) {
+      assert.ok(method.callSites.length > 0);
+      assert.equal(Object.isFrozen(method.callSites), true);
+    }
   }
 });
 
@@ -31,4 +34,13 @@ test("authority manifest call sites remain live and scaffold-only services stay 
   assert.match(gameSession, /this\.services\.coaching\.processLifecycle/);
   assert.match(gameSession, /this\.services\.coaching\.getTeamView/);
   assert.doesNotMatch(serviceIndex, /ScoutingService|OwnerService|DraftService|StatsService/);
+});
+
+test("ContractService public surface equals its exact delegated manifest", () => {
+  const publicMethods = Object.getOwnPropertyNames(ContractService.prototype)
+    .filter((name) => name !== "constructor" && !name.startsWith("_"))
+    .sort();
+  const declaredMethods = Object.keys(SERVICE_AUTHORITY_MANIFEST.services.contracts.methods).sort();
+  assert.deepEqual(publicMethods, ["getCapSummary"]);
+  assert.deepEqual(publicMethods, declaredMethods);
 });

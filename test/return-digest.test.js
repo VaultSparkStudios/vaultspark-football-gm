@@ -15,6 +15,7 @@ globalThis.document = globalThis.document || { getElementById: () => null, addEv
 
 function dashboard(overrides = {}) {
   return {
+    phase: "regular-season",
     currentYear: 2026,
     currentWeek: 5,
     controlledTeamId: "BUF",
@@ -53,6 +54,7 @@ test("digest fires immediately when the week advanced, even before the time thre
   assert.equal(digest.toWeek, 5);
   assert.equal(digest.recordDelta.wins, 1);
   assert.equal(digest.recordDelta.losses, 0);
+  assert.equal(digest.seasonChapter.id, "identity-test");
 });
 
 test("digest computes an honest win/loss delta since the last visit", () => {

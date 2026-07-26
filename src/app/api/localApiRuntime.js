@@ -1400,18 +1400,6 @@ export function createLocalApiRuntime({
         return finish(jsonResponse(200, { ok: true, summary, hasResults: summary.length > 0 }));
       }
 
-      // ── IndexedDB storage routes ────────────────────────────────────────────
-      if (method === "GET" && pathname === "/api/storage/estimate") {
-        const estimate = navigator?.storage?.estimate
-          ? await navigator.storage.estimate().then(({ usage, quota }) => ({
-              usedMb: (usage / 1_048_576).toFixed(1),
-              quotaMb: (quota / 1_048_576).toFixed(1),
-              pct: Math.round((usage / quota) * 100)
-            }))
-          : null;
-        return finish(jsonResponse(200, { ok: true, estimate }));
-      }
-
       // ── Commissioner / Multiplayer routes ───────────────────────────────────
       if (method === "POST" && pathname === "/api/commissioner/create") {
         const s = ensureSession();
@@ -1535,26 +1523,6 @@ export function createLocalApiRuntime({
         if (!teamId) return finish(jsonResponse(400, { ok: false, error: "team required." }));
         const fs = getFanSentiment(s.league, teamId);
         return finish(jsonResponse(200, { ok: true, teamId, fanSentiment: { ...fs, label: fanApprovalLabel(fs.approval) } }));
-      }
-
-      // ── Active Injuries ──────────────────────────────────────────────────────
-      if (method === "GET" && pathname === "/api/injuries/active") {
-        const s = ensureSession();
-        const teamId = (url.searchParams.get("team") || s.controlledTeamId || "").toUpperCase();
-        const roster = teamId ? s.getRoster(teamId) : [];
-        const injured = roster
-          .filter((p) => p.injuryStatus && p.injuryStatus !== "healthy" && (p.injuryWeeksRemaining || 0) > 0)
-          .map((p) => ({
-            playerId: p.id || p.playerId,
-            name: p.name,
-            pos: p.pos,
-            status: p.injuryStatus,
-            weeksRemaining: p.injuryWeeksRemaining || 0,
-            severity: p.injurySeverity || "minor",
-            overall: p.overall
-          }))
-          .sort((a, b) => (b.overall || 0) - (a.overall || 0));
-        return finish(jsonResponse(200, { ok: true, teamId, injured, count: injured.length }));
       }
 
       if (method === "POST" && pathname === "/api/injuries/rehab-plan") {

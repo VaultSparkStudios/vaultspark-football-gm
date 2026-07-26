@@ -23,6 +23,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { updateProjectStatus } from './lib/write-project-status.mjs';
+import { classifyIntent, classifySessionScope } from './classify-session-intent.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -39,52 +40,19 @@ const userMessages = msgIdx >= 0 ? args.slice(msgIdx + 1).join(' ') : '';
 function readText(p) { try { return fs.readFileSync(p, 'utf8'); } catch { return ''; } }
 function readJson(p, fb) { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return fb; } }
 
-// Founder-mode signals
-const FOUNDER_PHRASES = [
-  /\bportfolio\b/i, /\ball\s+(projects|25)\b/i, /\bstudio[- ]wide\b/i, /\bstudio[- ]hub\b/i,
-  /\bacross\s+projects\b/i, /\bcross[- ]project\b/i, /\bevery\s+project\b/i,
-  /\bfounder mode\b/i, /\bfounder[- ]level\b/i, /\bstudio[- ]owner\b/i,
-  /\bstrategic\b/i, /\bstrategy\b/i, /\broadmap\b/i, /\bportfolio review\b/i,
-  /\bstudio[- ]ops\s+itself\b/i, /\bstudio[- ]review\b/i,
-];
-
-// Builder-mode signals (this-project focus)
-const BUILDER_PHRASES = [
-  /\bimplement\b/i, /\bfix\s+bug\b/i, /\badd\s+feature\b/i, /\brefactor\b/i,
-  /\bship\s+this\b/i, /\bcomplete\s+task\b/i,
-];
-
 const status = readJson(STATUS, {});
 const handoff = readText(HANDOFF);
 const taskboard = readText(TASKBOARD);
 const currentMode = status.sessionMode || 'builder';
-
-// Collect text to analyze
-const text = [
-  userMessages,
-  handoff.slice(0, 3000),
-  taskboard.slice(0, 6000),
-].join('\n');
-
-// Count signals
-let founderHits = 0;
-let builderHits = 0;
-const matchedFounder = [];
-const matchedBuilder = [];
-for (const p of FOUNDER_PHRASES) {
-  const m = text.match(p);
-  if (m) { founderHits++; matchedFounder.push(m[0]); }
-}
-for (const p of BUILDER_PHRASES) {
-  const m = text.match(p);
-  if (m) { builderHits++; matchedBuilder.push(m[0]); }
-}
-
-// Cross-project references in TASK_BOARD = Founder signal
-const crossProjectRefs = (taskboard.match(/\b(mindframe|velaxis|call-of-doodie|football-gm|vaultfront|voidfall|promogrind|vorn|ideaforge|scriptorium|social-dashboard|spark-funnel)\b/gi) || []).length;
-
-// Portfolio-wide commands in recent intent = Founder
-const portfolioCommands = (userMessages + handoff.slice(0, 2000)).match(/\b(studio[- ]review|portfolio[- ]ignis|propagate[- ]templates|studio[- ]brain|weekly[- ]digest|pulse|founder[- ]queue)\b/gi)?.length || 0;
+const scopeClassification = classifySessionScope({ taskboard, handoff, userMessages, currentMode });
+const {
+  founderScore: lexicalFounderScore,
+  builderScore: lexicalBuilderScore,
+  matchedFounder,
+  matchedBuilder,
+  crossProjectRefs,
+  portfolioCommands
+} = scopeClassification;
 
 // Ledger-derived signal (v2): which Studio Ops scripts have consumed tokens
 // this session? Portfolio-scope scripts (rescore-ignis, studio-conductor,
@@ -122,8 +90,8 @@ try {
 const ledgerFounderSignal = ledgerPortfolioTokens > ledgerBuilderTokens ? 2 : 0;
 const ledgerBuilderSignal = ledgerBuilderTokens > 3 * ledgerPortfolioTokens && ledgerBuilderTokens > 2000 ? 2 : 0;
 
-const founderScore = founderHits * 2 + Math.min(crossProjectRefs, 6) + portfolioCommands * 2 + ledgerFounderSignal;
-const builderScore = builderHits * 2 + (crossProjectRefs === 0 ? 3 : 0) + ledgerBuilderSignal;
+const founderScore = lexicalFounderScore + ledgerFounderSignal;
+const builderScore = lexicalBuilderScore + ledgerBuilderSignal;
 
 const recommended = founderScore > builderScore + 2 ? 'founder' : 'builder';
 const shouldFlip = recommended !== currentMode;
@@ -136,9 +104,12 @@ let currentTier = status.modelTier || null;
 let currentTierModel = status.modelTierDefault || null;
 let planModeSlash = status.modelPlanModeSlash || null;
 let planModeActive = !!status.modelPlanMode;
+const lockText = readText(path.join(ROOT, 'context', '.session-lock'));
+const sessionAgent = lockText.match(/^agent:\s*(\S+)/mi)?.[1] || 'unknown';
+const claudeModelSurface = sessionAgent === 'claude-code';
 try {
   const routingPath = path.join(ROOT, 'portfolio', 'MODEL_ROUTING.json');
-  if (fs.existsSync(routingPath)) {
+  if (claudeModelSurface && fs.existsSync(routingPath)) {
     const routing = JSON.parse(fs.readFileSync(routingPath, 'utf8'));
     if (recommended === 'founder') {
       recommendedModel = routing.modeOverrides?.founderMode
@@ -151,7 +122,7 @@ try {
     }
   }
 } catch { /* best effort */ }
-const modelShiftSuggested = currentTierModel && recommendedModel && recommendedModel !== currentTierModel;
+const modelShiftSuggested = claudeModelSurface && currentTierModel && recommendedModel && recommendedModel !== currentTierModel;
 
 // ── Session-mode hints + intent classification (S63e) ──────────────────────
 let hint = null;
@@ -168,17 +139,13 @@ try {
 } catch { /* best-effort */ }
 
 let intentClassification = null;
-try {
-  const mod = await import('./classify-session-intent.mjs');
-  intentClassification = mod.classifyIntent(ROOT);
-} catch { /* non-fatal — defaults apply */ }
+try { intentClassification = classifyIntent(ROOT); } catch { /* non-fatal — defaults apply */ }
 
 // Auto-de-escalation: once plan-phase recorded + intent=execution + hint allows,
 // recommend dropping to sonnet mid-session.
 let autoDeescalateSuggested = false;
-if (hint?.autoDeescalate && intentClassification?.intent === 'execution' && currentTierModel === 'opus') {
+if (claudeModelSurface && hint?.autoDeescalate && intentClassification?.intent === 'execution' && currentTierModel === 'opus') {
   // Was plan-mode active earlier this session?
-  const lockText = (() => { try { return fs.readFileSync(path.join(ROOT, 'context', '.session-lock'), 'utf8'); } catch { return ''; } })();
   const planDetectedActive = /plan_mode_detected:\s*active/i.test(lockText) || !!status.planModeLastActivatedAt;
   if (planDetectedActive) autoDeescalateSuggested = true;
 }
@@ -190,7 +157,7 @@ let effectiveIntent = intentClassification?.intent || null;
 if (hint?.preferredIntent && (!effectiveIntent || (intentClassification?.scores?.[hint.preferredIntent] || 0) > 0)) {
   effectiveIntent = hint.preferredIntent;
 }
-const intentModel = intentClassification?.intentModel || null;
+const intentModel = claudeModelSurface ? intentClassification?.intentModel || null : null;
 
 // Sonnet down-routing discipline (S142 — usage-split training). The Max plan is
 // flat-rate, so the lever for Opus-heavy usage is NOT dollars — it is shared
@@ -198,12 +165,14 @@ const intentModel = intentClassification?.intentModel || null;
 // latency. Recommend Sonnet for routine execution work in builder mode even when
 // plan-mode was never toggled — generalizes autoDeescalate to the common case.
 const downRouteSuggested = recommended === 'builder'
+  && claudeModelSurface
   && currentTierModel === 'opus'
   && effectiveIntent === 'execution'
   && !autoDeescalateSuggested; // avoid double-printing with the plan-mode path
 
 const result = {
   currentMode,
+  agent: sessionAgent,
   recommended,
   shouldFlip,
   founderScore,
@@ -212,6 +181,7 @@ const result = {
   matchedBuilder: [...new Set(matchedBuilder)].slice(0, 8),
   crossProjectRefs,
   portfolioCommands,
+  scopeSourceLedger: scopeClassification.sourceLedger,
   ledgerScripts: [...new Set(ledgerScripts)],
   ledgerPortfolioTokens,
   ledgerBuilderTokens,
@@ -257,7 +227,7 @@ if (modelShiftSuggested) {
   console.log(`   Run /model ${recommendedModel} to apply, or keep current to continue.`);
 }
 
-if (planModeActive && planModeSlash && recommended !== 'founder') {
+if (claudeModelSurface && planModeActive && planModeSlash && recommended !== 'founder') {
   console.log(`ℹ Plan-mode reminder: this repo is ${currentTier} — run ${planModeSlash} once this session to activate Opus-plans-Sonnet-executes.`);
   console.log(`   (settings.json can only pin concrete models; plan-mode is a runtime slash-command toggle.)`);
   // Emit the literal slash string on its own line so Claude Code re-reads it
@@ -270,7 +240,9 @@ if (planModeActive && planModeSlash && recommended !== 'founder') {
 
 if (effectiveIntent) {
   const intentTag = intentClassification?.intent === effectiveIntent ? '' : ' (hint-overridden)';
-  console.log(`◆ Session intent: ${effectiveIntent.toUpperCase()}${intentTag} · prefers ${intentModel || '?'}`);
+  console.log(claudeModelSurface
+    ? `◆ Session intent: ${effectiveIntent.toUpperCase()}${intentTag} · prefers ${intentModel || '?'}`
+    : `◆ Session intent: ${effectiveIntent.toUpperCase()}${intentTag} · agent ${sessionAgent} · current model preserved`);
   if (hint?.note) console.log(`  hint: ${hint.note}`);
 }
 
@@ -292,6 +264,8 @@ if (explain) {
   console.log(`  • Builder phrases matched: ${matchedBuilder.join(', ') || '(none)'}`);
   console.log(`  • Cross-project refs: ${crossProjectRefs}`);
   console.log(`  • Portfolio commands: ${portfolioCommands}`);
+  console.log(`  • Scope source: latest intent + ${scopeClassification.sourceLedger.tasks.length} current open task(s)`);
+  console.log(`  • Agent surface: ${sessionAgent}`);
   if (currentTier) console.log(`  • Current tier: ${currentTier} (${currentTierModel}) · recommended: ${recommendedModel}`);
   if (ledgerScripts.length) {
     console.log(`  • Ledger scripts this session: ${[...new Set(ledgerScripts)].join(', ')}`);
