@@ -144,6 +144,9 @@ function closeMobileNav() {
   document.body.classList.remove("mobile-nav-open");
   const toggle = document.getElementById("mobileNavToggle");
   if (toggle) toggle.setAttribute("aria-expanded", "false");
+  // Remove collapsed drawer from focus order and AT tree at mobile widths.
+  const nav = document.getElementById("gameNav");
+  if (nav && window.innerWidth <= 640) nav.inert = true;
 }
 
 export { closeMobileNav };

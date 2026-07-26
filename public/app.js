@@ -491,12 +491,14 @@ function exposeLocalTestHooks() {
 function initMobileNav() {
   const toggle = document.getElementById("mobileNavToggle");
   const backdrop = document.getElementById("mobileNavBackdrop");
-  if (!toggle || !backdrop) return;
+  const nav = document.getElementById("gameNav");
+  if (!toggle || !backdrop || !nav) return;
 
   function openNav() {
+    nav.inert = false;
     document.body.classList.add("mobile-nav-open");
     toggle.setAttribute("aria-expanded", "true");
-    document.getElementById("gameNav")?.focus();
+    nav.focus();
   }
 
   toggle.addEventListener("click", () => {
@@ -515,6 +517,17 @@ function initMobileNav() {
       toggle.focus();
     }
   });
+
+  // Set initial inert state and sync on resize across the 640px breakpoint.
+  function syncNavInert() {
+    if (window.innerWidth <= 640 && !document.body.classList.contains("mobile-nav-open")) {
+      nav.inert = true;
+    } else {
+      nav.inert = false;
+    }
+  }
+  syncNavInert();
+  window.addEventListener("resize", syncNavInert, { passive: true });
 }
 
 function bindEvents() {
