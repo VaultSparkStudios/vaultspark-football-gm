@@ -23,6 +23,7 @@ export const SHARDS = {
   runtime: [
     "test/action-coordinator.test.js",
     "test/advance-week-command.test.js",
+    "test/architect-plan-rehearsal.test.js",
     "test/authority-epoch.test.js",
     "test/browser-memory-scope.test.js",
     "test/beta-feedback.test.js",
@@ -70,6 +71,7 @@ export const SHARDS = {
     "test/service-authority.test.js",
     "test/start-scenario.test.js",
     "test/tactical-film-room.test.js",
+    "test/tab-hydration.test.js",
     "test/session8-contract-edges.test.js",
     "test/session8-endpoints.test.js",
     "test/trade-deadline-frenzy.test.js",
@@ -136,7 +138,10 @@ function runShard(name) {
   console.log(`\n== ${name} shard (${files.length} files) ==`);
   const result = spawnSync(
     process.execPath,
-    ["--test", "--test-isolation=none", ...files],
+    // Several integration files intentionally own listeners/timers after their
+    // assertions finish. Node 24 otherwise waits forever even after emitting a
+    // complete green TAP summary, preventing the atomic receipt from existing.
+    ["--test", "--test-isolation=none", "--test-force-exit", ...files],
     { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 }
   );
   if (result.stdout) process.stdout.write(result.stdout);

@@ -17,6 +17,8 @@ import { createAuthorityEpochTracker } from "./authorityEpoch.js";
 import { observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
 import { maybeMountContextualFeedback } from "./contextualFeedback.js";
 import { dashboardAuthorityKey } from "./franchiseScope.js";
+import { planRehearsalEvidence } from "./architectPlanRehearsal.js";
+import { createTabHydrationAuthority } from "./tabHydration.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -152,11 +154,12 @@ export function activateTab(tabId) {
     panel.classList.toggle("active", panel.id === tabId);
   });
   applyShellTheme();
-  if (tabId === "contractsTab") {
-    loadContractsTeam().catch((error) => {
-      presentActionError(error);
-    });
-  }
+  observeBackgroundTask(() => hydrateTab(tabId), {
+    surface: "tab-hydration",
+    operation: tabId,
+    authorityKey: dashboardAuthorityKey(state.dashboard),
+    retry: () => hydrateTab(tabId, { force: true })
+  });
   if (tabId === "settingsTab") {
     observeBackgroundTask(loadRewindHistory, {
       surface: "settings",
@@ -722,91 +725,79 @@ export async function loadCoreDashboard() {
   renderRealismVerification();
 }
 
-async function runLoaderBatch(loaders = []) {
-  const results = await Promise.allSettled(loaders.map((loader) => loader.load()));
-  return results
-    .map((result, index) => {
-      const loader = loaders[index];
-      if (result.status === "fulfilled") {
-        resolveClientDiagnostic({ surface: "hydration", operation: loader.name });
-        return null;
-      }
-      const message = result.reason?.message || `${loader.name} failed.`;
-      recordClientDiagnostic({
-        surface: "hydration",
-        operation: loader.name,
-        error: message,
-        authorityKey: state.hydrationAuthority?.identity,
-        retry: loader.load
-      });
-      return message;
-    })
-    .filter(Boolean);
+const HYDRATION_LOADERS = Object.freeze({
+  roster: loadRoster,
+  contracts: loadContractsTeam,
+  "free-agency": loadFreeAgency,
+  "retired-pool": loadRetiredPool,
+  stats: loadStats,
+  draft: loadDraftState,
+  scouting: loadScouting,
+  "depth-chart": loadDepthChart,
+  saves: loadSaves,
+  qa: loadQa,
+  "team-history": loadTeamHistory,
+  calendar: loadCalendar,
+  transactions: loadTransactionLog,
+  news: loadNews,
+  "pick-assets": loadPickAssets,
+  negotiations: loadNegotiations,
+  analytics: loadAnalytics,
+  settings: loadSettings,
+  staff: loadStaff,
+  owner: loadOwner,
+  observability: loadObservability,
+  persistence: loadPersistence,
+  pipeline: loadPipeline,
+  "calibration-jobs": loadCalibrationJobs,
+  "simulation-jobs": loadSimJobs
+});
+
+const tabHydrationAuthority = createTabHydrationAuthority({
+  loaders: HYDRATION_LOADERS,
+  getAuthority: () => dashboardAuthorityKey(state.dashboard),
+  onSuccess: ({ name }) => resolveClientDiagnostic({ surface: "hydration", operation: name }),
+  onFailure: ({ name, authority, error }) => recordClientDiagnostic({
+    surface: "hydration",
+    operation: name,
+    error,
+    authorityKey: authority,
+    retry: () => tabHydrationAuthority.hydrateDomain(name, { force: true })
+  })
+});
+
+export function hydrateTab(tabId, options = {}) {
+  return tabHydrationAuthority.hydrateTab(tabId, options);
 }
 
-export async function loadSecondaryPanels({ background = false } = {}) {
-  const loaderFns = [
-    ["roster", loadRoster], ["contracts", loadContractsTeam], ["free-agency", loadFreeAgency],
-    ["retired-pool", loadRetiredPool], ["stats", loadStats], ["draft", loadDraftState],
-    ["scouting", loadScouting], ["depth-chart", loadDepthChart], ["saves", loadSaves],
-    ["qa", loadQa], ["team-history", loadTeamHistory], ["calendar", loadCalendar],
-    ["transactions", loadTransactionLog], ["news", loadNews], ["pick-assets", loadPickAssets],
-    ["negotiations", loadNegotiations], ["analytics", loadAnalytics], ["settings", loadSettings],
-    ["staff", loadStaff], ["owner", loadOwner], ["observability", loadObservability],
-    ["persistence", loadPersistence], ["pipeline", loadPipeline],
-    ["calibration-jobs", loadCalibrationJobs], ["simulation-jobs", loadSimJobs]
-  ].map(([name, load]) => ({ name, load }));
-  const batches = [];
-  for (let index = 0; index < loaderFns.length; index += 4) {
-    batches.push(loaderFns.slice(index, index + 4));
-  }
+export function invalidateHydrationDomains(names = null) {
+  tabHydrationAuthority.invalidate(names);
+}
 
-  if (!background) {
-    for (const batch of batches) {
-      const failures = await runLoaderBatch(batch);
-      if (failures.length) {
-        throw new Error(failures[0]);
-      }
-    }
-    return [];
-  }
-
-  const failures = [];
-  for (const batch of batches) {
-    failures.push(...(await runLoaderBatch(batch)));
-  }
-  if (failures.length) {
-    console.error("Background panel hydration failed:", failures.join(" | "));
-  }
-  return failures;
+export async function loadSecondaryPanels({ names = Object.keys(HYDRATION_LOADERS), force = false } = {}) {
+  const results = await tabHydrationAuthority.hydrateDomains(names, { force });
+  const failure = results.find((row) => row.status === "failed");
+  if (failure) throw failure.error;
+  return results;
 }
 
 export async function refreshEverything() {
   await loadCoreDashboard();
-  await loadSecondaryPanels();
+  invalidateHydrationDomains();
+  return hydrateTab(state.activeTab || "overviewTab", { force: true });
 }
 
 export function queueStartupHydration() {
-  void loadSecondaryPanels({ background: true });
+  return observeBackgroundTask(() => hydrateTab("overviewTab"), {
+    surface: "tab-hydration",
+    operation: "startup-overview",
+    authorityKey: dashboardAuthorityKey(state.dashboard)
+  });
 }
 
 export async function refreshPostSimulation() {
-  await Promise.all([
-    loadRoster(),
-    loadFreeAgency(),
-    loadRetiredPool(),
-    loadStats(),
-    loadDraftState(),
-    loadScouting(),
-    loadQa(),
-    loadTeamHistory(),
-    loadCalendar(),
-    loadTransactionLog(),
-    loadNews(),
-    loadOwner(),
-    loadPipeline(),
-    loadSimJobs()
-  ]);
+  invalidateHydrationDomains();
+  return hydrateTab(state.activeTab || "overviewTab", { force: true });
 }
 
 let pendingSimulationResume = null;
@@ -1119,4 +1110,42 @@ export function showHalftimeAdjustModal(onChoice, options = {}) {
   modal.hidden = false;
   modal.classList.add("active");
   openModal(modal, { onClose: () => finish(null) });
+}
+
+export function showArchitectPlanRehearsal(rehearsal, onChoice) {
+  const modal = document.getElementById("architectPlanRehearsalModal");
+  if (!modal || !rehearsal) {
+    onChoice({ status: "deferred", evidence: null });
+    return;
+  }
+  const finish = (status) => {
+    closeModal(modal);
+    modal.hidden = true;
+    modal.classList.remove("active");
+    onChoice({
+      status,
+      evidence: status === "commit" ? planRehearsalEvidence(rehearsal) : null
+    });
+  };
+  const set = (id, value) => {
+    const target = document.getElementById(id);
+    if (target) target.textContent = String(value || "—");
+  };
+  set("architectRehearsalTitle", rehearsal.title);
+  set("architectRehearsalDecision", rehearsal.decision?.label);
+  set("architectRehearsalTactic", rehearsal.tactic?.label);
+  set("architectRehearsalIntent", rehearsal.tactic?.intent);
+  set("architectRehearsalMatchup", rehearsal.tactic?.matchup);
+  set("architectRehearsalPromise", rehearsal.franchisePromise);
+  set("architectRehearsalPressure", rehearsal.activePressure);
+  set("architectRehearsalIdentity", rehearsal.identityPreview);
+  set("architectRehearsalCounterSource", rehearsal.counterSignal?.source);
+  set("architectRehearsalCounter", rehearsal.counterSignal?.text);
+  set("architectRehearsalDisclaimer", rehearsal.disclaimer);
+  document.getElementById("commitArchitectPlanBtn").onclick = () => finish("commit");
+  document.getElementById("reviseArchitectPlanBtn").onclick = () => finish("revise");
+  document.getElementById("deferArchitectPlanBtn").onclick = () => finish("deferred");
+  modal.hidden = false;
+  modal.classList.add("active");
+  openModal(modal, { onClose: () => finish("deferred") });
 }

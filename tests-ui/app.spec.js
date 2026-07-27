@@ -118,6 +118,10 @@ test("create league, advance week, and open player modal", async ({ page }) => {
   if (await gmDecisionSkip.isVisible({ timeout: 3_000 }).catch(() => false)) {
     await gmDecisionSkip.click();
   }
+  const commitPlan = page.locator("#commitArchitectPlanBtn");
+  if (await commitPlan.isVisible({ timeout: 3_000 }).catch(() => false)) {
+    await commitPlan.click();
+  }
   await waitGameReady(page, 120_000);
   const after = parseWeek(await page.locator("#yearCard").textContent());
   expect(after).not.toBeNull();

@@ -1,0 +1,280 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-27",
+  "session": 59,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "ready",
+  "summary": {
+    "rankedItems": 4,
+    "combinedPriority": 129.7,
+    "topItem": "consented-feedback-receipt-boundary",
+    "source": "live-code-audit",
+    "openItems": 0
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "product rubric with game-loop, infrastructure, and public-app release lenses",
+    "staging": "GitHub Pages artifact plus exact same-origin hosted verification",
+    "source": "live source, current tests, direct release probes, game-loop contract, canon conformance, and public-safe context"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation",
+    "ci": "Session 58 recorded the implementation revision at 4/4 green; current-session delivery evidence must be recollected after push.",
+    "staging": "The latest authoritative project state remains 3/10 for same-origin staging and 0/7 for exact hosted provenance.",
+    "production": "The canonical origin still lacks a passing /_health receipt and complete edge-header evidence.",
+    "cost": "The browser/static product is cost-neutral at $0 per 1,000 free users. Max Plan cost is flat-rate and notional.",
+    "branding": "Proprietary branding, legal pages, sitemap, agents.json, and Studio link-backs are present; no launch claim follows from local compliance.",
+    "parity": "The local 53-capture dark/light mobile/tablet/desktop matrix is authoritative for the prior revision only and must rerun after UI changes.",
+    "email": "Brevo is credential-ready, but no real received-message receipt proves project-domain delivery.",
+    "approval": "No founder launch approval is recorded.",
+    "lifecycle": "Local FORGE/public-unlaunched truth still conflicts with sibling registry SPARKED state; reconciliation belongs in Ark cargo, never a sibling edit."
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.8,
+    "progression": 8.9,
+    "sessionEngagement": 8.2,
+    "retention": 8.1,
+    "soulFidelity": 8.8,
+    "overall": 8.6,
+    "evidence": "Executable-contract review only. The public GAME_LOOP contract is falsifiable, but no checked-in consented cohort proves fun, comprehension, pacing, or retention outcomes."
+  },
+  "recommendedMoves": [
+    "Make local feedback attachment explicit and source-true before asking players to publish free text.",
+    "Give the weekly command one joined pre-commit rehearsal so the player can challenge or revise the plan before simulation.",
+    "Hydrate secondary panels by visited-tab demand instead of issuing twenty-four startup loads.",
+    "Bound and validate share-code input before any base64 or JSON work."
+  ],
+  "candidateMatrix": {
+    "feature-depth": [
+      "Pre-commit Architect rehearsal joining the selected decision, tactic, live pressure, and non-causal counter-signal.",
+      "Cross-domain decision graph spanning draft, cap, and weekly receipts — rejected for this pass because no shared non-week transaction receipt authority exists yet."
+    ],
+    "new-innovative-features": [
+      "Red-team plan rehearsal that argues the strongest source-derived countercase without predicting outcomes.",
+      "Three-year franchise thesis currency — rejected because the Opening Contract and mastery portfolio already own this conceptual territory."
+    ],
+    "ui-ux": [
+      "Explicit attach-preview control for local playtest receipts.",
+      "Demand hydration with honest loading/degraded states on first tab visit.",
+      "Fourteen-tab shell redesign — rejected because responsive navigation and mobile parity are already covered by the live shell."
+    ],
+    "feedback-loop": [
+      "Consent-gated local receipt attachment with no phantom analytics copy.",
+      "Remote automatic telemetry — rejected on custody, cost-neutrality, and lack of consent infrastructure."
+    ],
+    "gamification-engagement": [
+      "Weekly plan rehearsal that makes commitment pressure and revision visible.",
+      "Daily streaks or random reward currency — rejected as coercive and contrary to deliberate franchise identity."
+    ],
+    "ai-integration": [
+      "Deterministic source-derived red-team critique using existing film, pressure, and promise receipts.",
+      "Large-language-model coach or outcome predictor — rejected on variable cost, custody, and causal-honesty grounds."
+    ],
+    "security": [
+      "Explicit receipt publication consent and bounded note normalization.",
+      "Size- and shape-bounded challenge-code parsing before decode.",
+      "Generic innerHTML rewrite — rejected as a high-risk premise-free sweep; dynamic sinks require source-specific evidence."
+    ],
+    "speed-organization": [
+      "Tab-owned hydration registry with in-flight deduplication and explicit invalidation.",
+      "Another broad app.js split — rejected because reachability is green and file size alone does not prove a runtime defect."
+    ],
+    "token-api-reduction": [
+      "Cut twenty-four eager startup API calls to a small visited-tab demand set and measure request-count reduction.",
+      "Gameplay model-token optimization — rejected because gameplay makes no model calls and variable free-tier model cost is zero."
+    ]
+  },
+  "preverifiedSkips": [
+    {
+      "axis": "feature-depth",
+      "candidate": "Add another generic franchise subsystem or dashboard",
+      "reason": "Rejected as additive sprawl. The live product already has deep roster, cap, draft, weekly, season, and dynasty authorities; this pass strengthens decision quality and evidence boundaries."
+    },
+    {
+      "axis": "feedback-loop",
+      "candidate": "Claim improvement from local playtest ratings",
+      "reason": "Rejected because the receipts are local, self-selected, and below any consented cohort standard. Implementation may repair consent and truth, not claim impact."
+    },
+    {
+      "axis": "gamification-engagement",
+      "candidate": "Add streaks, random rewards, or tactic-variety bonuses",
+      "reason": "Rejected as coercive or contradictory to the deliberate-identity canon recorded in DECISIONS."
+    },
+    {
+      "axis": "ai-integration",
+      "candidate": "Add a hosted large-language-model coach",
+      "reason": "Rejected because it introduces variable free-tier cost and data custody without stronger evidence than a deterministic source-derived critique can provide."
+    },
+    {
+      "axis": "security",
+      "candidate": "Treat local green evidence as launch approval",
+      "reason": "Rejected. Hosted provenance, edge health, received email, approval, and lifecycle reconciliation remain independent evidence gates."
+    },
+    {
+      "axis": "speed-organization",
+      "candidate": "Rewrite the app shell because files are large",
+      "reason": "Rejected as a phantom premise. The demonstrated cost is eager loader fan-out, so the root fix belongs at the hydration dispatcher."
+    },
+    {
+      "axis": "token-api-reduction",
+      "candidate": "Alarm on Max Plan token cost",
+      "reason": "Rejected by the founder's flat-rate notional-cost rule. The measurable optimization target is browser request fan-out, not model spend."
+    },
+    {
+      "axis": "infrastructure",
+      "candidate": "Refresh release reports or edit the sibling registry to make gates green",
+      "reason": "Rejected by root-fix, observability-honesty, and Ark ownership rules."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Feedback loop / privacy / observability truth",
+      "effortHours": 2.0,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 40.0,
+      "slug": "consented-feedback-receipt-boundary",
+      "title": "Make every published feedback receipt an explicit player choice",
+      "status": "done",
+      "premise": "Tell the Commissioner says a player chooses whether to attach a local receipt, yet gatherContext automatically reads the newest receipt and buildFeedbackIssueUrl includes its ratings and free-text note. The same flow advertises a Settings analytics opt-in and clipboard digest, but analytics.js has no UI or tracker call sites, so this is a privacy and observability contradiction.",
+      "evidence": [
+        "betaFeedback.js gatherContext always loads receipt[0] before the feedback button is pressed",
+        "buildFeedbackIssueUrl emits the receipt note whenever playtestReceipt is present",
+        "the UI copy says choose whether to copy or attach, but no attach selection exists",
+        "analytics.js exports ten tracker functions and setOptIn; repository search finds no caller outside that module",
+        "betaFeedback.js still claims opt in via Settings → Analytics and can describe a copied digest"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Stop auto-attaching receipts and remove the phantom analytics language." },
+        "L2": { "effortHours": 2.0, "recipe": "Add an explicit unchecked attach control plus source preview, attach only the selected bounded receipt, normalize public free text, retire the unwired analytics path, and test consent-on/off URL and clipboard behavior." },
+        "L3": { "effortHours": 3.5, "recipe": "Add a per-receipt publication ledger that records only local consent state and lets the player revoke future selection without deleting the private source receipt." }
+      },
+      "verification": [
+        "opening feedback with saved receipts attaches none by default",
+        "the player can preview and explicitly select one receipt",
+        "only the selected bounded receipt enters the issue URL",
+        "no UI claims an analytics opt-in or digest that does not exist",
+        "focused browser and pure URL tests cover consent off/on"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Game depth / UI-UX / explainable intelligence",
+      "effortHours": 3.5,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 36.6,
+      "slug": "architect-plan-rehearsal",
+      "title": "Red-team the weekly plan before the franchise commits",
+      "status": "done",
+      "premise": "composeWeeklyPlan collects an optional General Manager choice and tactic, then immediately returns a ready body that advanceOneWeek submits. The player never sees one joined final plan, its strongest live counter-signal, or a revise/cancel boundary before mutation.",
+      "evidence": [
+        "weeklyPlanComposer.js transitions directly from collectTactic to body construction",
+        "advanceOneWeek submits the returned body without any plan-review callback",
+        "the existing receipt describes composition only after the sequential modals",
+        "live command, tactical film, Opening Contract, and chapter sources already provide deterministic evidence without a model call"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1.0, "recipe": "Add a final confirm/cancel review callback to composeWeeklyPlan." },
+        "L2": { "effortHours": 3.5, "recipe": "Build a pure source-derived rehearsal model, render a keyboard-safe modal joining decision, tactic, active pressure, franchise promise, strongest counter-signal, and no-causation disclaimer, allow revise/defer/commit, and persist the review outcome in the command receipt only after commit." },
+        "L3": { "effortHours": 5.5, "recipe": "Add a bounded contingency declaration and later compare it descriptively with actual film without awarding hidden bonuses or claiming causation." }
+      },
+      "verification": [
+        "no weekly API mutation occurs before explicit review commit",
+        "revise returns to composition and defer leaves state unchanged",
+        "the critique is deterministic and source-labeled",
+        "desktop and mobile share the same rehearsal contract",
+        "focused pure and Playwright tests cover commit/revise/defer"
+      ]
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Speed / organization / request authority",
+      "effortHours": 3.0,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 31.0,
+      "slug": "tab-demand-hydration-authority",
+      "title": "Load franchise panels when the player asks for them",
+      "status": "done",
+      "premise": "queueStartupHydration launches loadSecondaryPanels in the background, and that dispatcher invokes twenty-four loaders in six batches even though the player begins on Overview. There is no tab-to-loader registry, first-visit cache, or regression test for startup request count.",
+      "evidence": [
+        "gameFlow.js loadSecondaryPanels declares 24 loader functions",
+        "queueStartupHydration runs the full set immediately after loadCoreDashboard",
+        "activateTab does not own data hydration",
+        "repository search finds no focused test for queueStartupHydration or loadSecondaryPanels"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1.0, "recipe": "Restrict startup hydration to Overview-visible surfaces." },
+        "L2": { "effortHours": 3.0, "recipe": "Create one declarative tab-loader registry with per-authority loaded/in-flight state, hydrate Overview essentials at boot, load each remaining tab on first activation, invalidate exactly after imports/simulation, retain committed-degraded diagnostics, and test request ownership/counts." },
+        "L3": { "effortHours": 5.0, "recipe": "Add priority and idle-budget scheduling plus direct performance receipts for cold start, tab-ready latency, and duplicate-request suppression." }
+      },
+      "verification": [
+        "cold boot requests only Overview-visible authorities",
+        "first tab activation loads its exact dependencies once",
+        "concurrent repeated activation coalesces in flight",
+        "simulation/import invalidation refreshes only stale domains",
+        "failed loads remain visible and retryable"
+      ]
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Security / resilience / static-host input boundary",
+      "effortHours": 1.0,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 22.1,
+      "slug": "bounded-challenge-code-parser",
+      "title": "Reject oversized or malformed challenge codes before decode",
+      "status": "done",
+      "premise": "decodeChallengeCode trims and splits arbitrary-length input before base64 decode and JSON parse; the public input has no maxlength. A pasted megabyte-scale payload can force avoidable allocation and parsing work on the main browser thread.",
+      "evidence": [
+        "challengeCodes.js has no total-code or payload-body size ceiling",
+        "decode accepts any finite seed/year and any non-empty decoded teamId",
+        "index.html challengeCodeInput has no maxlength",
+        "current tests cover checksum garbage but not oversize, bounds, control characters, or decoded shape"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.4, "recipe": "Add a conservative input maxlength and an early decoder length guard." },
+        "L2": { "effortHours": 1.0, "recipe": "Define one versioned size/shape contract, reject before decode, bound team/year/seed/seasons/name and control characters, mirror the cap in HTML, and add adversarial tests." },
+        "L3": { "effortHours": 2.0, "recipe": "Return typed parse diagnostics for UI guidance while preserving a null-only compatibility adapter for existing callers." }
+      },
+      "verification": [
+        "oversized input exits before base64 decode",
+        "invalid numeric and string bounds reject",
+        "valid historical VSFC1 codes still round-trip",
+        "the setup input advertises the same maximum",
+        "no dependency or network service is added"
+      ]
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "consented-feedback-receipt-boundary",
+      "status": "done",
+      "evidence": "Explicit unchecked receipt attachment and bounded preview shipped; phantom analytics path retired. Pure privacy/URL contracts pass in the 35-test focused suite and the feedback browser flow passes in the 12-test app/play-mode suite."
+    },
+    {
+      "slug": "architect-plan-rehearsal",
+      "status": "done",
+      "evidence": "Deterministic source-labeled countercase with commit/revise/defer shipped through the shared composer; 35 focused contracts and the exact first-session Playwright rehearsal path pass."
+    },
+    {
+      "slug": "tab-demand-hydration-authority",
+      "status": "done",
+      "evidence": "All 14 tabs now declare owned domains with authority-scoped cache, in-flight coalescing, invalidation, retry-visible failures, and Overview-only cold boot; focused authority tests and 12 app/play-mode browser tests pass."
+    },
+    {
+      "slug": "bounded-challenge-code-parser",
+      "status": "done",
+      "evidence": "The VSFC1 parser now rejects overlong and malformed payloads before decode, enforces bounded fields, and mirrors the 512-character cap in HTML; adversarial and historical round-trip contracts pass."
+    }
+  ]
+}

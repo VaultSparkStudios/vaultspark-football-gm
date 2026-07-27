@@ -16,6 +16,28 @@
 
 const CODE_PREFIX = "VSFC1";
 const RIVAL_KEY = "vsfgm_challenge_rival_v1";
+export const CHALLENGE_CODE_MAX_LENGTH = 512;
+const CHALLENGE_BODY_MAX_LENGTH = 384;
+const TEAM_ID_RE = /^[A-Z0-9_-]{1,5}$/;
+const CONTROL_CHAR_RE = /[\u0000-\u001f\u007f]/;
+
+function validSeed(value) {
+  return Number.isSafeInteger(value) && value >= 0;
+}
+
+function validStartYear(value) {
+  return Number.isInteger(value) && value >= 1900 && value <= 3000;
+}
+
+function validRivalSeasons(value) {
+  return value == null || (Number.isInteger(value) && value >= 1 && value <= 200);
+}
+
+function boundedRivalName(value) {
+  if (value == null || value === "") return null;
+  const name = String(value).trim().slice(0, 24);
+  return name && !CONTROL_CHAR_RE.test(name) ? name : null;
+}
 
 // ── FNV-1a 32-bit checksum, base36, 4 chars ──────────────────────────────────
 
@@ -63,15 +85,18 @@ function fromBase64Url(b64url) {
 export function encodeChallengeCode({ seed, startYear, teamId, rivalSeasons, rivalName } = {}) {
   const s = Number(seed);
   const y = Number(startYear);
-  const t = String(teamId || "").toUpperCase().slice(0, 5);
-  if (!Number.isFinite(s) || !Number.isFinite(y) || !t) return null;
+  const t = String(teamId || "").toUpperCase();
+  const rs = rivalSeasons == null || rivalSeasons === "" ? null : Number(rivalSeasons);
+  const rn = boundedRivalName(rivalName);
+  if (!validSeed(s) || !validStartYear(y) || !TEAM_ID_RE.test(t) || !validRivalSeasons(rs)) return null;
+  if (rivalName && !rn) return null;
   const payload = { s, y, t };
-  if (Number.isFinite(Number(rivalSeasons)) && Number(rivalSeasons) > 0) {
-    payload.rs = Number(rivalSeasons);
-  }
-  if (rivalName) payload.rn = String(rivalName).slice(0, 24);
+  if (rs != null) payload.rs = rs;
+  if (rn) payload.rn = rn;
   const body = toBase64Url(JSON.stringify(payload));
-  return `${CODE_PREFIX}.${body}.${checksum4(`${CODE_PREFIX}.${body}`)}`;
+  if (body.length > CHALLENGE_BODY_MAX_LENGTH) return null;
+  const code = `${CODE_PREFIX}.${body}.${checksum4(`${CODE_PREFIX}.${body}`)}`;
+  return code.length <= CHALLENGE_CODE_MAX_LENGTH ? code : null;
 }
 
 /**
@@ -81,9 +106,12 @@ export function encodeChallengeCode({ seed, startYear, teamId, rivalSeasons, riv
 export function decodeChallengeCode(code) {
   if (typeof code !== "string") return null;
   const trimmed = code.trim();
+  if (!trimmed || trimmed.length > CHALLENGE_CODE_MAX_LENGTH || CONTROL_CHAR_RE.test(trimmed)) return null;
   const parts = trimmed.split(".");
   if (parts.length !== 3 || parts[0] !== CODE_PREFIX) return null;
   const [prefix, body, chk] = parts;
+  if (!body || body.length > CHALLENGE_BODY_MAX_LENGTH || !/^[A-Za-z0-9_-]+$/.test(body)) return null;
+  if (!/^[a-z0-9]{4}$/.test(chk)) return null;
   if (checksum4(`${prefix}.${body}`) !== chk) return null;
   let payload;
   try {
@@ -94,13 +122,17 @@ export function decodeChallengeCode(code) {
   const seed = Number(payload?.s);
   const startYear = Number(payload?.y);
   const teamId = String(payload?.t || "").toUpperCase();
-  if (!Number.isFinite(seed) || !Number.isFinite(startYear) || !teamId) return null;
+  const rivalSeasons = payload?.rs == null ? null : Number(payload.rs);
+  const rivalName = boundedRivalName(payload?.rn);
+  if (!validSeed(seed) || !validStartYear(startYear) || !TEAM_ID_RE.test(teamId)) return null;
+  if (!validRivalSeasons(rivalSeasons)) return null;
+  if (payload?.rn != null && !rivalName) return null;
   return {
     seed,
     startYear,
     teamId,
-    rivalSeasons: Number.isFinite(Number(payload.rs)) ? Number(payload.rs) : null,
-    rivalName: payload.rn ? String(payload.rn) : null
+    rivalSeasons,
+    rivalName
   };
 }
 

@@ -9,7 +9,7 @@ function decisionSummary(choice) {
   };
 }
 
-function previewReceipt({ status, compositionOrder, decisionChoice, tacticId, phase }) {
+function previewReceipt({ status, compositionOrder, decisionChoice, tacticId, phase, review = null }) {
   return {
     schemaVersion: WEEKLY_PLAN_RECEIPT_SCHEMA_VERSION,
     kind: "weekly-plan-preview",
@@ -20,7 +20,8 @@ function previewReceipt({ status, compositionOrder, decisionChoice, tacticId, ph
       gmDecision: decisionSummary(decisionChoice),
       tacticId: tacticId || null,
       explicitNoPlan: phase === "regular-season" && !tacticId
-    }
+    },
+    review
   };
 }
 
@@ -29,6 +30,7 @@ export async function composeWeeklyPlan({
   presetDecisionChoice = null,
   collectDecision = async () => ({ status: "none", choice: null }),
   collectTactic = async () => null,
+  reviewPlan = null,
   onCheckpoint = () => {}
 } = {}) {
   const regularSeason = phase === "regular-season";
@@ -60,10 +62,48 @@ export async function composeWeeklyPlan({
   }
 
   let tacticId = null;
+  let review = null;
   if (regularSeason) {
-    compositionOrder.push("tactic");
-    tacticId = await collectTactic();
-    onCheckpoint("tactic-resolved");
+    let revising = false;
+    while (true) {
+      compositionOrder.push(revising ? "tactic-revision" : "tactic");
+      tacticId = await collectTactic();
+      onCheckpoint("tactic-resolved");
+      if (typeof reviewPlan !== "function") break;
+      compositionOrder.push("review");
+      const reviewReceipt = await reviewPlan(previewReceipt({
+        status: "review",
+        compositionOrder: [...compositionOrder],
+        decisionChoice,
+        tacticId,
+        phase
+      }));
+      const reviewStatus = reviewReceipt?.status || "deferred";
+      if (reviewStatus === "revise") {
+        compositionOrder.push("review-revise");
+        onCheckpoint("weekly-plan-revision-requested");
+        revising = true;
+        continue;
+      }
+      if (reviewStatus !== "commit") {
+        onCheckpoint("weekly-plan-deferred");
+        return {
+          deferred: true,
+          body: null,
+          receipt: previewReceipt({
+            status: "deferred",
+            compositionOrder,
+            decisionChoice,
+            tacticId,
+            phase,
+            review: reviewReceipt?.evidence || null
+          })
+        };
+      }
+      review = reviewReceipt.evidence || { reviewed: true };
+      onCheckpoint("weekly-plan-reviewed");
+      break;
+    }
   }
 
   const body = { count: 1 };
@@ -77,7 +117,8 @@ export async function composeWeeklyPlan({
       compositionOrder,
       decisionChoice,
       tacticId,
-      phase
+      phase,
+      review
     })
   };
 }
@@ -108,9 +149,12 @@ export function describeWeeklyPlanReceipt(receipt) {
   if (receipt.status === "deferred") {
     return { title: "Weekly plan deferred", detail: "No command was committed.", tone: "warning" };
   }
+  const reviewSource = receipt.review?.counterSignalSource
+    ? ` · reviewed against ${String(receipt.review.counterSignalSource).slice(0, 80)}`
+    : "";
   return {
     title: receipt.status === "committed" ? "Weekly plan committed" : "Weekly plan staged",
-    detail: `${decision} · ${tactic} · ${receipt.compositionOrder.join(" → ") || "phase-only command"}`,
+    detail: `${decision} · ${tactic}${reviewSource} · ${receipt.compositionOrder.join(" → ") || "phase-only command"}`,
     tone: receipt.status === "committed" ? "positive" : "accent"
   };
 }

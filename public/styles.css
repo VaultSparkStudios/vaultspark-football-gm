@@ -3066,6 +3066,44 @@ body.mobile-loop-active .mobile-loop-overlay {
 .tactic-confirm-btn { flex: 1; }
 .tactic-skip-btn { background: var(--bg2, #1a1e28); border: 1px solid var(--line, #2e3448); }
 
+#architectPlanRehearsalModal {
+  position: fixed; inset: 0; z-index: 9050;
+  display: flex; align-items: center; justify-content: center;
+  padding: 18px; background: var(--scrim);
+}
+#architectPlanRehearsalModal[hidden] { display: none; }
+.architect-rehearsal-card {
+  width: min(720px, 96vw); max-height: min(88dvh, 760px); overflow: auto;
+  padding: clamp(18px, 3vw, 30px); border: 1px solid var(--line);
+  border-top: 4px solid var(--accent); border-radius: 14px; background: var(--panel);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .42);
+}
+.architect-rehearsal-kicker,
+.architect-rehearsal-grid span,
+.architect-counter-signal span {
+  color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+}
+.architect-rehearsal-card h2 { margin: 6px 0 18px; }
+.architect-rehearsal-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.architect-rehearsal-grid section {
+  display: grid; gap: 5px; padding: 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg2);
+}
+.architect-rehearsal-grid strong { font-size: 13px; line-height: 1.45; }
+.architect-rehearsal-grid small { color: var(--muted); line-height: 1.45; }
+.architect-counter-signal {
+  display: grid; gap: 7px; margin-top: 12px; padding: 14px;
+  border: 1px solid color-mix(in srgb, var(--warning) 55%, var(--line));
+  border-left: 4px solid var(--warning); border-radius: 9px; background: color-mix(in srgb, var(--warning) 8%, var(--bg2));
+}
+.architect-counter-signal strong { line-height: 1.5; }
+.architect-rehearsal-disclaimer { color: var(--muted); font-size: 11px; line-height: 1.5; }
+.architect-rehearsal-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.architect-rehearsal-actions #commitArchitectPlanBtn { flex: 1 1 230px; }
+@media (max-width: 620px) {
+  .architect-rehearsal-grid { grid-template-columns: 1fr; }
+  .architect-rehearsal-actions > * { flex: 1 1 100%; min-height: 44px; }
+}
+
 .gm-mastery-portfolio {
   margin-top: 10px;
   padding-top: 10px;

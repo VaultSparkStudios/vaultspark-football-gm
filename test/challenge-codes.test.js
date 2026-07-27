@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { encodeChallengeCode, decodeChallengeCode, fnv1a } from "../public/lib/challengeCodes.js";
+import { CHALLENGE_CODE_MAX_LENGTH, encodeChallengeCode, decodeChallengeCode, fnv1a } from "../public/lib/challengeCodes.js";
 
 // ── Shareable challenge codes (S14) ──────────────────────────────────────────
 
@@ -54,6 +54,12 @@ test("invalid encode inputs return null", () => {
   assert.equal(encodeChallengeCode({}), null);
   assert.equal(encodeChallengeCode({ seed: NaN, startYear: 2026, teamId: "BUF" }), null);
   assert.equal(encodeChallengeCode({ seed: 1, startYear: 2026, teamId: "" }), null);
+  assert.equal(encodeChallengeCode({ seed: -1, startYear: 2026, teamId: "BUF" }), null);
+  assert.equal(encodeChallengeCode({ seed: 1.5, startYear: 2026, teamId: "BUF" }), null);
+  assert.equal(encodeChallengeCode({ seed: 1, startYear: 1899, teamId: "BUF" }), null);
+  assert.equal(encodeChallengeCode({ seed: 1, startYear: 2026, teamId: "TOO-LONG" }), null);
+  assert.equal(encodeChallengeCode({ seed: 1, startYear: 2026, teamId: "BUF", rivalSeasons: 201 }), null);
+  assert.equal(encodeChallengeCode({ seed: 1, startYear: 2026, teamId: "BUF", rivalName: "bad\u0000name" }), null);
 });
 
 test("whitespace around a pasted code is tolerated", () => {
@@ -68,6 +74,14 @@ test("rival name is capped at 24 characters", () => {
     rivalSeasons: 2, rivalName: "X".repeat(60)
   });
   assert.equal(decodeChallengeCode(code).rivalName.length, 24);
+});
+
+test("oversized and malformed payloads reject before decode work", () => {
+  assert.equal(decodeChallengeCode(`VSFC1.${"A".repeat(CHALLENGE_CODE_MAX_LENGTH)}.0000`), null);
+  assert.equal(decodeChallengeCode(`VSFC1.${"A".repeat(385)}.0000`), null);
+  assert.equal(decodeChallengeCode("VSFC1.ab+c.0000"), null);
+  assert.equal(decodeChallengeCode("VSFC1.abc.0!00"), null);
+  assert.equal(decodeChallengeCode("VSFC1.abc.0000\u0000"), null);
 });
 
 test("fnv1a is stable for known input", () => {

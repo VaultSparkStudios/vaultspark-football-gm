@@ -1509,6 +1509,31 @@
     </div>
 
     <!-- ── Draft Pick Reveal Modal ─────────────────────────────────────────── -->
+    <div id="architectPlanRehearsalModal" hidden role="dialog" aria-modal="true" aria-labelledby="architectRehearsalTitle">
+      <div class="architect-rehearsal-card">
+        <div class="architect-rehearsal-kicker">Pre-commit review · no mutation yet</div>
+        <h2 id="architectRehearsalTitle">Architect's Red Team</h2>
+        <div class="architect-rehearsal-grid">
+          <section><span>General Manager call</span><strong id="architectRehearsalDecision"></strong></section>
+          <section><span>Football identity</span><strong id="architectRehearsalTactic"></strong><small id="architectRehearsalIntent"></small></section>
+          <section><span>Matchup read</span><strong id="architectRehearsalMatchup"></strong></section>
+          <section><span>Opening promise</span><strong id="architectRehearsalPromise"></strong></section>
+          <section><span>Owner pressure</span><strong id="architectRehearsalPressure"></strong></section>
+          <section><span>Identity path</span><strong id="architectRehearsalIdentity"></strong></section>
+        </div>
+        <aside class="architect-counter-signal">
+          <span id="architectRehearsalCounterSource">Strongest counter-signal</span>
+          <strong id="architectRehearsalCounter"></strong>
+        </aside>
+        <p id="architectRehearsalDisclaimer" class="architect-rehearsal-disclaimer"></p>
+        <div class="architect-rehearsal-actions">
+          <button id="commitArchitectPlanBtn" class="btn-primary">Commit Plan & Advance</button>
+          <button id="reviseArchitectPlanBtn" class="btn-sm">Revise Tactic</button>
+          <button id="deferArchitectPlanBtn" class="btn-sm">Defer Week</button>
+        </div>
+      </div>
+    </div>
+
     <div id="draftPickRevealModal" hidden role="dialog" aria-modal="true" aria-label="Draft pick reveal">
       <div class="draft-reveal-card">
         <div class="draft-reveal-body"></div>

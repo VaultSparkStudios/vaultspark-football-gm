@@ -1,10 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  buildFeedbackDisclosureReceipt,
   buildFeedbackContextFingerprint,
   buildFeedbackIssueUrl,
   commitFeedbackNavigation,
-  openFeedbackPlaceholder
+  openFeedbackPlaceholder,
+  selectPublishedPlaytestReceipt
 } from "../public/lib/betaFeedback.js";
 
 // ── Beta feedback URL builder (S14) ──────────────────────────────────────────
@@ -26,11 +28,31 @@ test("game context is embedded in title and body", () => {
   assert.match(params.get("body"), /Runtime: client/);
 });
 
-test("analytics attachment note reflects opt-in state", () => {
-  const withDigest = new URL(buildFeedbackIssueUrl({ analyticsAttached: true })).searchParams.get("body");
-  const without = new URL(buildFeedbackIssueUrl({ analyticsAttached: false })).searchParams.get("body");
-  assert.match(withDigest, /copied to clipboard/);
-  assert.match(without, /not attached/);
+test("local playtest receipts stay private unless explicitly supplied", () => {
+  const without = new URL(buildFeedbackIssueUrl()).searchParams.get("body");
+  assert.match(without, /not attached — local receipts stay private/);
+  assert.doesNotMatch(without, /Playtest\/Clarity/);
+
+  const receipt = selectPublishedPlaytestReceipt({
+    schemaVersion: "1.0",
+    kind: "local-playtest-receipt",
+    ratings: { clarity: 4, agency: 5, pace: 3, returnIntent: 4 },
+    note: "  Great\nweek\u0000 — keep it going.  "
+  });
+  const withReceipt = new URL(buildFeedbackIssueUrl({ playtestReceipt: receipt })).searchParams.get("body");
+  assert.match(withReceipt, /Playtest\/Clarity: 4\/5/);
+  assert.match(withReceipt, /Playtest\/Note: Great week — keep it going\./);
+  assert.match(withReceipt, /explicitly selected/);
+});
+
+test("published receipt selection rejects malformed or out-of-range local data", () => {
+  assert.equal(selectPublishedPlaytestReceipt(null), null);
+  assert.equal(selectPublishedPlaytestReceipt({ schemaVersion: "1.0", kind: "wrong" }), null);
+  assert.equal(selectPublishedPlaytestReceipt({
+    schemaVersion: "1.0",
+    kind: "local-playtest-receipt",
+    ratings: { clarity: 6, agency: 5, pace: 3, returnIntent: 4 }
+  }), null);
 });
 
 test("launch readiness rows are embedded in the beta issue body", () => {
@@ -67,6 +89,32 @@ test("franchise fingerprint rows are embedded without secret-like payloads", () 
   assert.match(body, /Franchise\/Top Need: CB/);
   assert.match(body, /quarterback questionable/);
   assert.doesNotMatch(body, /token|password|localStorage|snapshot|save payload/i);
+});
+
+test("public feedback disclosure is bounded, control-free, and receipt-visible", () => {
+  const disclosure = buildFeedbackDisclosureReceipt({
+    franchiseFingerprint: Array.from({ length: 11 }, (_, index) => ({
+      label: `Signal ${index}\u0000`,
+      value: "x".repeat(400)
+    })),
+    launchReadinessRows: Array.from({ length: 15 }, (_, index) => ({
+      area: `Gate ${index}`,
+      status: "Needs verification".repeat(5),
+      detail: "source-derived detail ".repeat(30)
+    }))
+  });
+  assert.equal(disclosure.kind, "feedback-disclosure-receipt");
+  assert.equal(disclosure.fingerprintRows.length, 8);
+  assert.equal(disclosure.readinessRows.length, 12);
+  assert.deepEqual(disclosure.omitted, { fingerprintRows: 3, readinessRows: 3 });
+  assert.equal(disclosure.fingerprintRows[0].value.length, 160);
+  assert.doesNotMatch(disclosure.fingerprintRows[0].label, /\u0000/);
+
+  const body = new URL(buildFeedbackIssueUrl({
+    franchiseFingerprint: Array.from({ length: 11 }, (_, index) => ({ label: `Signal ${index}`, value: "ok" })),
+    launchReadinessRows: Array.from({ length: 15 }, (_, index) => ({ area: `Gate ${index}`, status: "Hold", detail: "evidence" }))
+  })).searchParams.get("body");
+  assert.match(body, /Disclosure budget: 6 excess context rows were omitted/);
 });
 
 test("missing context degrades gracefully", () => {

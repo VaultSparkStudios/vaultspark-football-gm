@@ -1,3 +1,42 @@
+## Session 59 Intent (2026-07-27)
+
+Run the complete agent-neutral `/arc` as one continuous mission: pull-first `/start`, a premise-verified live-code `/audit` using the product rubric plus browser-game and public-app release lenses, complete `/implement` of every ranked item at the highest justified depth, exhaust the Unified Genius List, generate and implement viable second-order innovations, then execute full `/closeout` with direct test and doctor exit-code evidence, GitHub Pages staging verification, public sanitization, Ark broadcast, and direct push to `main`. Preserve source-derived observability, treat Max Plan cost as notional, fabricate no launch evidence, root-fix rather than refresh reports, and record any rejected or externally gated premise honestly.
+
+---
+
+## Where We Left Off — Session 59 Closeout (2026-07-27)
+
+Session 59 completed the continuous `/arc`: all four live-code audit objectives and four viable second-order innovations are implemented and directly verified.
+
+### Shipped
+
+- Tell the Commissioner keeps local receipts private by default, exposes an unchecked attach/preview choice, bounds every published field and row, and states when excess context was omitted; the dead phantom analytics path is removed.
+- Challenge codes enforce a 512-character envelope and bounded typed fields before base64/JSON work while preserving valid `VSFC1` round trips.
+- The weekly command now joins General Manager choice, tactic, franchise promise, live pressure, identity, and strongest source-derived counter-signal in one keyboard-safe review before mutation; revise, defer, and commit share one desktop/mobile contract.
+- Every public game tab declares exact data domains under an authority-scoped cache with in-flight coalescing, precise invalidation, retry-visible failures, and Overview-only cold boot.
+- Second-order saturation added a fail-closed hydration topology receipt, bounded feedback disclosure receipt, player-visible rehearsal provenance, and truthful Node 24 shard termination/ownership.
+
+### Verification
+
+- Canonical Node: 516/516, aggregate exit 0, fresh source-bound receipt.
+- Browser: Playwright 20/20; responsive evidence 53 captures across dark/light mobile/tablet/desktop.
+- Build/security: Pages build/smoke green; browser reachability 52 modules; project secret scan 0; sitemap 10/10; doctor `blockingFailing: 0`.
+- Queue: Unified Genius List 0 open / 4 closed; viable second-order list 0 open / 4 closed; SIL v3 995/1000.
+
+### Honest deferral
+
+Launch remains HOLD. The canonical origin still returns 404 for `/_health`, lacks HSTS/frame/CSP evidence, has no real received-message receipt or founder approval, and conflicts with sibling-owned SPARKED registry state. Brevo and Cloudflare DNS are credential-ready; Zoho/Gmail receipt-reading capability and a delivered-mail artifact are absent, so configuration is not recast as delivery proof.
+
+### Visual evidence boundary
+
+The automated 53-capture contrast, overflow, runtime-error, touch-target, viewport, and theme matrix is green. Manual AI image inspection is not claimed because both connected image paths failed at the Windows DPAPI boundary before reading any capture.
+
+### Next best move
+
+After this revision deploys, collect exact same-revision hosted provenance, canonical health/edge receipts, a delivered on-domain email receipt, founder approval, and lifecycle reconciliation through Ark. Otherwise begin a fresh live-code audit from the exhausted queue.
+
+---
+
 ## Where We Left Off — Session 57 Closeout (2026-07-25)
 
 Session 57 completed the continuous `/goal /arc`: six live-code audit objectives and four viable second-order innovations are implemented and directly verified.

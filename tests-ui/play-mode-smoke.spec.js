@@ -48,10 +48,14 @@ test("first session turns onboarding promises into a committed weekly evidence t
   await expect(tactic).toBeVisible({ timeout: 10_000 });
   await tactic.click();
   await page.locator("#halftimeAdjustModal .tactic-confirm-btn").click();
+  await expect(page.locator("#architectPlanRehearsalModal")).toBeVisible();
+  await expect(page.locator("#architectRehearsalCounter")).not.toBeEmpty();
+  await page.locator("#commitArchitectPlanBtn").click();
 
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 120_000 });
   await expect(page.locator(".weekly-plan-receipt")).toContainText("Weekly plan committed");
   await expect(page.locator(".weekly-plan-receipt")).toContainText("tactic run-heavy");
+  await expect(page.locator(".weekly-plan-receipt")).toContainText("reviewed against");
   await page.locator("details.architecture-review summary").click();
   await expect(page.locator(".architect-ledger-row").first()).toBeVisible();
   await expect(page.locator(".architecture-mastery")).toBeVisible();

@@ -467,3 +467,15 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Launch remains HOLD: staging 3/10, provenance 0/7, /_health 404, incomplete edge headers, no received-message receipt, no founder approval, and sibling-owned lifecycle drift. Brevo is credential-ready, but live probes show zero project inbound evidence.
 - Creative Direction Record reviewed: the founder supplied execution and quality discipline, not new public product canon, so no private creative record was recreated in this public repository.
 - Direct-main revision 8606587f606c synchronized 0/0; CI, brief-format, backend, and Pages completed 4/4 green. Post-deploy staging remained 3/10 and provenance 0/7. Ark broadcast receipt: 01JUHC9Q8067A8D21B730A25B2.
+
+## 2026-07-27 — Session 59 consent, rehearsal, and demand-authority arc
+
+- Completed pull-first startup, blocker/secrets/canon preflight, product/game/release live audit, all four ranked implementations, four second-order innovations, and canonical closeout without a phase handback.
+- Shipped explicit receipt publication consent and bounded disclosure, pre-decode challenge-code validation, one source-derived weekly plan rehearsal, and exact per-tab demand hydration.
+- Compounded the work with fail-closed hydration topology, player-visible rehearsal provenance, and a truthful Node 24 shard termination/ownership contract.
+- Trace evidence root-fixed an explicit-null startup authority crash; the exact play-mode suite then passed 3/3 and the full browser suite passed 20/20.
+- The first canonical aggregate correctly failed because two new test files were outside the shard manifest. After assigning both to runtime, the full aggregate reran green at 516/516 and wrote a fresh source-bound receipt.
+- Verification: responsive evidence 53 captures; Pages build, 52-module reachability, static smoke, project secret scan 0, sitemap 10/10, and doctor `blockingFailing: 0`.
+- Manual AI image inspection is not claimed because the viewer and Node bridge both failed at the Windows DPAPI credential boundary before reading a capture; automated real-browser visual gates remain green.
+- Launch remains HOLD on canonical health/headers, received email, approval, hosted provenance, and sibling-owned lifecycle truth. No dependency, variable-cost service, fabricated evidence, or sibling-tree edit was introduced.
+- CDR reviewed: the founder supplied execution and quality discipline rather than new public product canon; no private record was created in this deployable public repository.

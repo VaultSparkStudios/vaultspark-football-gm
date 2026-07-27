@@ -282,7 +282,8 @@ import {
   searchHistoryPlayers,
   syncBootFilters,
   loadCoreDashboard,
-  loadSecondaryPanels,
+  hydrateTab,
+  invalidateHydrationDomains,
   refreshEverything,
   queueStartupHydration,
   refreshPostSimulation,
@@ -293,10 +294,12 @@ import {
   checkSeasonEndReview,
   showSeasonEndReview,
   closeSeasonReviewModal,
-  showHalftimeAdjustModal
+  showHalftimeAdjustModal,
+  showArchitectPlanRehearsal
 } from "./lib/gameFlow.js";
 import { createFastSimulationPolicy } from "./lib/fastSimulationPolicy.js";
 import { composeWeeklyPlan, commitWeeklyPlanReceipt } from "./lib/weeklyPlanComposer.js";
+import { buildArchitectPlanRehearsal } from "./lib/architectPlanRehearsal.js";
 import { recordPlaytestJourneyCheckpoint, startPlaytestJourney } from "./lib/playtestJourney.js";
 
 import {
@@ -357,6 +360,14 @@ async function collectWeeklyCommandIntent({ gmDecisionChoice = null } = {}) {
       confirmLabel: "Stage Tactic",
       skipLabel: "Commit With No Tactic"
     })),
+    reviewPlan: (receipt) => new Promise((resolve) => showArchitectPlanRehearsal(
+      buildArchitectPlanRehearsal({
+        dashboard: state.dashboard,
+        decisionChoice: receipt.plan?.gmDecision,
+        tacticId: receipt.plan?.tacticId
+      }),
+      resolve
+    )),
     onCheckpoint: (name) => recordPlaytestJourneyCheckpoint(name)
   });
 }
@@ -365,13 +376,15 @@ async function refreshAfterWeeklyCommand(response) {
   const hydration = await coordinatePostCommitHydration({
     response,
     applyDashboard,
-    loaders: [
-      ["roster", loadRoster], ["free-agency", loadFreeAgency], ["retired-pool", loadRetiredPool],
-      ["stats", loadStats], ["draft", loadDraftState], ["scouting", loadScouting],
-      ["qa", loadQa], ["team-history", loadTeamHistory], ["calendar", loadCalendar],
-      ["transactions", loadTransactionLog], ["news", loadNews], ["owner", loadOwner],
-      ["pipeline", loadPipeline], ["simulation-jobs", loadSimJobs]
-    ].map(([name, load]) => ({ name, load })),
+    loaders: [{
+      name: `active-tab:${state.activeTab || "overviewTab"}`,
+      load: async () => {
+        invalidateHydrationDomains();
+        const receipt = await hydrateTab(state.activeTab || "overviewTab", { force: true });
+        if (receipt.failures.length) throw new Error(receipt.failures.map((row) => `${row.name}: ${row.message}`).join(" | "));
+        return receipt;
+      }
+    }],
     recordFailure: recordClientDiagnostic,
     resolveFailure: resolveClientDiagnostic
   });

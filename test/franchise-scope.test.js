@@ -36,3 +36,11 @@ test("legacy identity remains deterministic and storage keys are bounded", () =>
   assert.equal(franchiseStorageKey("vsfgm:test:v2", legacy), "vsfgm:test:v2:legacy-mia-2031");
   assert.equal(normalizeFranchiseScope("  Franchise / A!  "), "franchise-a");
 });
+
+test("pre-load identity is safe when the dashboard is explicitly null", () => {
+  assert.equal(franchiseScopeFromDashboard(null), "legacy-unassigned-unknown");
+  assert.equal(
+    dashboardAuthorityKey(null),
+    "legacy-unassigned-unknown:none:unknown:unknown:unknown"
+  );
+});

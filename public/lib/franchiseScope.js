@@ -11,6 +11,7 @@ export function normalizeFranchiseScope(value, fallback = "unassigned") {
 }
 
 export function franchiseScopeFromDashboard(dashboard = {}) {
+  dashboard = dashboard && typeof dashboard === "object" ? dashboard : {};
   const exact = dashboard.franchiseId || dashboard.franchiseKey;
   if (exact) return normalizeFranchiseScope(exact);
   const team = dashboard.controlledTeamId || dashboard.controlledTeam?.id || dashboard.controlledTeam?.teamId || "unassigned";
@@ -19,6 +20,7 @@ export function franchiseScopeFromDashboard(dashboard = {}) {
 }
 
 export function dashboardAuthorityKey(dashboard = {}) {
+  dashboard = dashboard && typeof dashboard === "object" ? dashboard : {};
   return [
     franchiseScopeFromDashboard(dashboard),
     dashboard.controlledTeamId || dashboard.controlledTeam?.id || "none",

@@ -370,3 +370,15 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Security truth: the project-scoped working-tree scan and current `.claude/settings.local.json` sanitizer each report zero findings. The earlier 8,005-hit scan was explicitly out-of-scope Studio Ops history and is not used as project evidence.
 - Release truth: local implementation is green, but hosted provenance, canonical edge headers, received email, founder approval, and sibling lifecycle reconciliation remain absent. Launch is HOLD.
 - Cost truth: no dependency, paid service, or variable-cost runtime was introduced; flat-rate Max Plan cost remains notional.
+
+## 2026-07-27 — Session 59 truth updates
+
+- Consent truth: saved local receipts are not published by default; only an explicitly selected bounded receipt enters feedback, and omitted excess context is disclosed.
+- Input truth: `VSFC1` payload length and field shape reject before decode/parse work; valid historical round trips remain green.
+- Plan truth: no weekly mutation occurs before source-derived review commit; revise recollects tactic and defer leaves league state unchanged.
+- Hydration truth: Overview requests no secondary domains; each public tab owns an exact self-validating loader set, and failed secondary loads stay visible/retryable without rewriting commit truth.
+- Test truth: early aggregate timeouts are non-evidence. The first complete repaired aggregate failed on two unsharded files; after exact ownership repair, direct canonical evidence passed 516/516 and wrote a fresh receipt. Playwright passed 20/20.
+- Visual truth: 53 automated real-browser captures passed contrast, overflow, runtime-error, touch-target, viewport, and theme gates. Manual AI image inspection is not claimed because both connected readers failed at the Windows DPAPI boundary.
+- Security truth: the absolute project-tree secret scan reports zero findings; an earlier sibling-root invocation is out of scope and not used as project evidence.
+- Release truth: routes other than `/_health` are reachable, but canonical health is 404, HSTS/frame/CSP evidence is absent, received email and approval are absent, and registry lifecycle is sibling-owned. Launch is HOLD.
+- Cost truth: no dependency, paid service, external model, or variable-cost runtime was introduced; flat-rate Max Plan accounting remains notional.

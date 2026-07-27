@@ -552,3 +552,21 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Rationale:** Screenshots are not evidence when missing panels can pass silently. A required-capture manifest made absence fail closed and immediately exposed a real cross-viewport tutorial defect.
 
 **Pattern established:** Visual evidence declares its required matrix, proves completion counts, and converts every discovered defect into a root fix before green.
+
+## 2026-07-27 — Feedback publication is a bounded disclosure transaction
+
+**Decision:** Local playtest receipts remain private unless the player selects an unchecked attachment control for the next report. Published ratings, notes, franchise context, and readiness rows pass one versioned bounded disclosure receipt that sanitizes fields, caps row counts, and explicitly reports omitted excess.
+
+**Rationale:** Consent without an exact payload boundary can still leak or over-expand context. Publication truth requires both affirmative choice and a falsifiable disclosure manifest.
+
+## 2026-07-27 — Weekly intent is challenged before mutation, never predicted
+
+**Decision:** Every regular-season weekly command passes one deterministic source-derived rehearsal before commit. It may join existing decision, tactic, promise, pressure, identity, and film receipts; it must allow revise/defer/commit, grant no hidden bonus, predict no result, and persist the counter-signal source in the visible commit receipt.
+
+**Rationale:** The franchise fantasy deepens when the player can challenge a joined plan before mutation. Existing evidence is sufficient for a red-team countercase without a hosted model, variable cost, or causal pretense.
+
+## 2026-07-27 — Tab hydration owns an exact self-validating topology
+
+**Decision:** Overview cold boot loads no secondary domains. Each public tab declares exact loader ownership under an authority-scoped cache with in-flight coalescing, explicit invalidation, retry-visible failure receipts, and startup validation that rejects missing, duplicate, orphaned, or unknown topology.
+
+**Rationale:** Broad eager loading spent work before player demand and let shell/loader drift hide. A self-validating topology makes request ownership observable and keeps committed state independent from secondary hydration quality.

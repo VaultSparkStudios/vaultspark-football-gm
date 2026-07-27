@@ -2,16 +2,14 @@
  * betaFeedback.js — "Tell the Commissioner" beta feedback capture (S14)
  *
  * Static-host compatible: no backend, no PII. Builds a prefilled GitHub issue
- * URL carrying game context (year/week/phase/tab/runtime), and — when the
- * player has opted into privacy-first analytics — copies the local analytics
- * digest to the clipboard so they can paste it into the issue if they choose.
+ * URL carrying game context (year/week/phase/tab/runtime). A local playtest
+ * receipt is included only when the player explicitly selects it.
  *
  * URL building is pure so Node tests can verify it without a DOM.
  */
 
 import { state } from "./appState.js";
 import { showToast } from "./appCore.js";
-import { exportSummary, isOptedIn } from "./analytics.js";
 import { buildLaunchReadinessRows } from "./tabSettings.js";
 
 import {
@@ -32,6 +30,59 @@ export {
 } from "./playtestReceipts.js";
 
 const REPO_ISSUE_BASE = "https://github.com/VaultSparkStudios/vaultspark-football-gm/issues/new";
+export const FEEDBACK_DISCLOSURE_LIMITS = Object.freeze({
+  fingerprintRows: 8,
+  readinessRows: 12,
+  label: 40,
+  status: 24,
+  value: 160,
+  detail: 220
+});
+
+function boundedPublicText(value, limit) {
+  return String(value || "")
+    .replace(/[\u0000-\u001f\u007f]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, limit);
+}
+
+export function buildFeedbackDisclosureReceipt(ctx = {}) {
+  const fingerprintSource = Array.isArray(ctx.franchiseFingerprint) ? ctx.franchiseFingerprint : [];
+  const readinessSource = Array.isArray(ctx.launchReadinessRows) ? ctx.launchReadinessRows : [];
+  const fingerprintRows = fingerprintSource.slice(0, FEEDBACK_DISCLOSURE_LIMITS.fingerprintRows).map((row) => ({
+    label: boundedPublicText(row?.label, FEEDBACK_DISCLOSURE_LIMITS.label) || "Context",
+    value: boundedPublicText(row?.value, FEEDBACK_DISCLOSURE_LIMITS.value) || "unknown"
+  }));
+  const readinessRows = readinessSource.slice(0, FEEDBACK_DISCLOSURE_LIMITS.readinessRows).map((row) => ({
+    area: boundedPublicText(row?.area, FEEDBACK_DISCLOSURE_LIMITS.label) || "Area",
+    status: boundedPublicText(row?.status, FEEDBACK_DISCLOSURE_LIMITS.status) || "Unknown",
+    detail: boundedPublicText(row?.detail, FEEDBACK_DISCLOSURE_LIMITS.detail) || "No detail supplied"
+  }));
+  return Object.freeze({
+    schemaVersion: "1.0",
+    kind: "feedback-disclosure-receipt",
+    fingerprintRows,
+    readinessRows,
+    omitted: Object.freeze({
+      fingerprintRows: Math.max(0, fingerprintSource.length - fingerprintRows.length),
+      readinessRows: Math.max(0, readinessSource.length - readinessRows.length)
+    })
+  });
+}
+
+export function selectPublishedPlaytestReceipt(receipt) {
+  if (receipt?.schemaVersion !== "1.0" || receipt?.kind !== "local-playtest-receipt") return null;
+  const metrics = ["clarity", "agency", "pace", "returnIntent"];
+  const ratings = Object.fromEntries(metrics.map((metric) => [metric, Number(receipt.ratings?.[metric])]));
+  if (Object.values(ratings).some((rating) => !Number.isInteger(rating) || rating < 1 || rating > 5)) return null;
+  return {
+    schemaVersion: "1.0",
+    kind: "published-playtest-receipt",
+    ratings,
+    note: boundedPublicText(receipt.note, 280)
+  };
+}
 
 /**
  * Build a prefilled GitHub new-issue URL.
@@ -39,8 +90,14 @@ const REPO_ISSUE_BASE = "https://github.com/VaultSparkStudios/vaultspark-footbal
  * @returns {string}
  */
 export function buildFeedbackIssueUrl(ctx = {}) {
-  const readinessRows = Array.isArray(ctx.launchReadinessRows) ? ctx.launchReadinessRows : [];
-  const fingerprintRows = Array.isArray(ctx.franchiseFingerprint) ? ctx.franchiseFingerprint : [];
+  const disclosure = buildFeedbackDisclosureReceipt(ctx);
+  const { readinessRows, fingerprintRows } = disclosure;
+  const phase = boundedPublicText(ctx.phase, 40) || "?";
+  const tab = boundedPublicText(ctx.tab, 48) || "?";
+  const runtimeMode = boundedPublicText(ctx.runtimeMode, 32) || "?";
+  const year = boundedPublicText(ctx.year, 8) || "?";
+  const week = boundedPublicText(ctx.week, 8) || "?";
+  const omittedCount = disclosure.omitted.fingerprintRows + disclosure.omitted.readinessRows;
   const lines = [
     "<!-- Tell the Commissioner: describe what happened, what you expected, and what you'd love to see. -->",
     "",
@@ -49,8 +106,8 @@ export function buildFeedbackIssueUrl(ctx = {}) {
     "",
     "---",
     "_Auto-attached game context:_",
-    `- Season: ${ctx.year ?? "?"} · Week ${ctx.week ?? "?"} · ${ctx.phase ?? "?"}`,
-    `- Screen: ${ctx.tab ?? "?"} · Runtime: ${ctx.runtimeMode ?? "?"}`,
+    `- Season: ${year} · Week ${week} · ${phase}`,
+    `- Screen: ${tab} · Runtime: ${runtimeMode}`,
     ...fingerprintRows.map((row) => `- Franchise/${row.label}: ${row.value}`),    ...(ctx.playtestReceipt ? [
       `- Playtest/Clarity: ${ctx.playtestReceipt.ratings.clarity}/5`,
       `- Playtest/Agency: ${ctx.playtestReceipt.ratings.agency}/5`,
@@ -59,12 +116,13 @@ export function buildFeedbackIssueUrl(ctx = {}) {
       ...(ctx.playtestReceipt.note ? [`- Playtest/Note: ${ctx.playtestReceipt.note}`] : [])
     ] : []),
     ...readinessRows.map((row) => `- Readiness/${row.area}: ${row.status} — ${row.detail}`),
-    ctx.analyticsAttached
-      ? "- Analytics digest: copied to clipboard — paste below if you want to share it."
-      : "- Analytics digest: not attached (opt in via Settings → Analytics)."
+    ...(omittedCount ? [`- Disclosure budget: ${omittedCount} excess context row${omittedCount === 1 ? " was" : "s were"} omitted.`] : []),
+    ctx.playtestReceipt
+      ? "- Playtest receipt: explicitly selected for this report."
+      : "- Playtest receipt: not attached — local receipts stay private unless selected."
   ];
   const params = new URLSearchParams({
-    title: `[Beta feedback] ${ctx.phase ?? "general"} — ${ctx.tab ?? "game"}`,
+    title: `[Beta feedback] ${phase === "?" ? "general" : phase} — ${tab === "?" ? "game" : tab}`,
     body: lines.join("\n"),
     labels: "beta-feedback"
   });
@@ -97,7 +155,7 @@ export function buildFeedbackContextFingerprint({ dashboard = {}, newsRows = [] 
   ];
 }
 
-function gatherContext() {
+function gatherContext({ includePlaytestReceipt = false } = {}) {
   const d = state.dashboard || {};
   let runtimeMode = "unknown";
   try {
@@ -111,7 +169,9 @@ function gatherContext() {
     phase: d.phase,
     tab: state.activeTab || "unknown",
     runtimeMode,
-    playtestReceipt: loadLocalPlaytestReceipts()[0] || null,
+    playtestReceipt: includePlaytestReceipt
+      ? selectPublishedPlaytestReceipt(loadLocalPlaytestReceipts()[0])
+      : null,
     franchiseFingerprint: buildFeedbackContextFingerprint({
       dashboard: state.dashboard,
       newsRows: state.newsRows
@@ -140,26 +200,13 @@ export async function openFeedback() {
   // the trusted click. Waiting for clipboard permission first causes popup
   // blockers to silently eat the Commissioner form.
   const popup = openFeedbackPlaceholder(window);
-  const ctx = gatherContext();
-  let analyticsAttached = false;
-  if (isOptedIn()) {
-    const digest = exportSummary();
-    if (digest) {
-      try {
-        await navigator.clipboard.writeText(JSON.stringify(digest, null, 2));
-        analyticsAttached = true;
-      } catch {
-        analyticsAttached = false;
-      }
-    }
-  }
-  const url = buildFeedbackIssueUrl({ ...ctx, analyticsAttached });
+  const includePlaytestReceipt = document.getElementById("attachLatestPlaytestReceiptInput")?.checked === true;
+  const ctx = gatherContext({ includePlaytestReceipt });
+  const url = buildFeedbackIssueUrl(ctx);
   commitFeedbackNavigation({ popup, url, browser: window });
-  showToast(
-    analyticsAttached
-      ? "Feedback form opened — analytics digest copied, paste it in if you'd like."
-      : "Feedback form opened — thanks for making the game better!"
-  );
+  showToast(includePlaytestReceipt && ctx.playtestReceipt
+    ? "Feedback form opened with the selected local receipt."
+    : "Feedback form opened — local receipts stayed private.");
 }
 
 export function openFeedbackPlaceholder(browser = globalThis.window) {
@@ -216,23 +263,38 @@ export function mountBetaFeedback() {
         </div>
         <label>One useful moment or friction<textarea id="playtest-note" maxlength="280" rows="3" placeholder="Optional; keep it public-safe."></textarea></label>
         <div class="row compact"><button id="savePlaytestReceiptBtn" type="button">Save Local Receipt</button><button id="copyPlaytestReceiptsBtn" type="button">Copy Receipt Pack</button><span id="playtestReceiptCount" class="small"></span></div>
+        <label class="playtest-attach-choice"><input id="attachLatestPlaytestReceiptInput" type="checkbox" /> Attach the latest local receipt to my next feedback report</label>
+        <p id="playtestAttachmentPreview" class="small" aria-live="polite">No receipt selected. Local ratings and notes remain on this device.</p>
         <p id="playtestJourneyDisclosure" class="small">Export includes only your saved ratings plus allowlisted relative journey checkpoints. It excludes accounts, tokens, absolute journey timestamps, and save data.</p>
         <div id="playtestTrend" class="playtest-trend small" aria-live="polite"></div>
       </details>`;
     settingsTab.insertBefore(panel, settingsTab.firstElementChild);
     document.getElementById("betaFeedbackBtn")?.addEventListener("click", () => {
       openFeedback().catch(reportFeedbackError);
-    });    const refreshReceiptCount = () => {
-      const count = loadLocalPlaytestReceipts().length;
+    });
+    const refreshReceiptCount = () => {
+      const receipts = loadLocalPlaytestReceipts();
+      const count = receipts.length;
       const target = document.getElementById("playtestReceiptCount");
-      const packet = buildLocalPlaytestExport(loadLocalPlaytestReceipts());
+      const packet = buildLocalPlaytestExport(receipts);
       if (target) target.textContent = `${count} local receipt${count === 1 ? "" : "s"} · ${packet.journey.eventCount} journey checkpoint${packet.journey.eventCount === 1 ? "" : "s"}`;
-      const trend = buildLocalPlaytestTrend(loadLocalPlaytestReceipts());
+      const trend = buildLocalPlaytestTrend(receipts);
       const trendTarget = document.getElementById("playtestTrend");
       if (trendTarget) trendTarget.textContent = trend.available
         ? `Local signal (${trend.count}): clarity ${trend.averages.clarity}/5 · agency ${trend.averages.agency}/5 · pace ${trend.averages.pace}/5 · another session ${trend.averages.returnIntent}/5. ${trend.warning}`
         : `${trend.count}/${trend.minimum} receipts recorded before a local trend is shown. ${trend.warning}`;
+      const attach = document.getElementById("attachLatestPlaytestReceiptInput");
+      if (attach) {
+        attach.disabled = count === 0;
+        if (!count) attach.checked = false;
+      }
+      const preview = document.getElementById("playtestAttachmentPreview");
+      const selected = attach?.checked ? selectPublishedPlaytestReceipt(receipts[0]) : null;
+      if (preview) preview.textContent = selected
+        ? `Selected for the next report: clarity ${selected.ratings.clarity}/5 · agency ${selected.ratings.agency}/5 · pace ${selected.ratings.pace}/5 · another session ${selected.ratings.returnIntent}/5${selected.note ? " · note included" : " · no note"}.`
+        : "No receipt selected. Local ratings and notes remain on this device.";
     };
+    document.getElementById("attachLatestPlaytestReceiptInput")?.addEventListener("change", refreshReceiptCount);
     document.getElementById("savePlaytestReceiptBtn")?.addEventListener("click", () => {
       try {
         const d = state.dashboard || {};
