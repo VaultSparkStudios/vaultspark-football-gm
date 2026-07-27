@@ -31,9 +31,13 @@ Launch remains HOLD. The canonical origin still returns 404 for `/_health`, lack
 
 The automated 53-capture contrast, overflow, runtime-error, touch-target, viewport, and theme matrix is green. Manual AI image inspection is not claimed because both connected image paths failed at the Windows DPAPI boundary before reading any capture.
 
+### Deploy
+
+Implementation revision `4e6e5353b17fbecbebb1bea8cb7e7021b965b904` was pushed directly to `main`; CI, brief-format, backend runtime, and Pages workflows completed 4/4 green. The canonical origin serves the revised hashed bundle, but the post-deploy same-origin staging receipt remains blocked at 3/10 and launch evidence remains HOLD. Ark broadcast receipt: `01JUIN5747129D32F9238E20E9`. Deployment does not imply launch/SPARKED.
+
 ### Next best move
 
-After this revision deploys, collect exact same-revision hosted provenance, canonical health/edge receipts, a delivered on-domain email receipt, founder approval, and lifecycle reconciliation through Ark. Otherwise begin a fresh live-code audit from the exhausted queue.
+Complete the canonical health/edge contract in its owning host, establish a real delivered on-domain email receipt, bind exact hosted revision provenance, reconcile lifecycle through Ark, and then request founder launch approval. Otherwise begin a fresh live-code audit from the exhausted queue.
 
 ---
 

@@ -1,40 +1,42 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: cb59703944c9 -->
-<!-- generated-at: 2026-07-27T21:05:36.542Z -->
+<!-- source-hash: 2ae0e07a721b -->
+<!-- generated-at: 2026-07-27T21:21:51.706Z -->
 
 # LATEST_HANDOFF (compact)
 
 SESSION 59 HANDOFF SUMMARY
 
-Session: 59 (2026-07-27)
+Session
+- Session 59, 2026-07-27. Completed continuous /arc: audit, implement, second-order innovations, closeout, direct push to main.
 
 Shipped
-- Tell the Commissioner: local receipts private by default, opt-in attach/preview, bounded fields/rows, omission disclosure; dead analytics path removed.
-- Challenge codes: 512-char envelope and bounded typed fields enforced before decode; valid VSFC1 round trips preserved.
-- Weekly command: GM choice, tactic, promise, pressure, identity, counter-signal unified in one keyboard-safe pre-mutation review; revise/defer/commit share one desktop/mobile contract.
-- Public game tabs: exact data domains under authority-scoped cache, in-flight coalescing, precise invalidation, retry-visible failures, Overview-only cold boot.
-- Second-order: fail-closed hydration receipt, bounded feedback disclosure receipt, player-visible rehearsal provenance, truthful Node 24 shard termination/ownership.
+- Tell the Commissioner: local receipts private by default, bounded published fields/rows, omission disclosure; dead analytics path removed.
+- Challenge codes: 512-char envelope and bounded typed fields before decode; valid VSFC1 round trips preserved.
+- Weekly command: unified GM choice, tactic, promise, pressure, identity, counter-signal in one keyboard-safe pre-mutation review; shared desktop/mobile contract.
+- Game tabs: declared data domains, authority-scoped cache, in-flight coalescing, precise invalidation, retry-visible failures, Overview-only cold boot.
+- Second-order: hydration topology receipt, bounded feedback disclosure, rehearsal provenance, truthful Node 24 shard termination.
 
 Current Intent
-- Continuous agent-neutral /arc: start, audit (product + browser-game + release lenses), full implement, exhaust Genius List, second-order innovations, full closeout with direct evidence, Pages staging, sanitization, Ark broadcast, push to main.
+- Complete canonical health/edge contract in owning host, establish real delivered on-domain email receipt, bind hosted revision provenance, reconcile lifecycle via Ark, then request founder launch approval. Otherwise start fresh live-code audit from exhausted queue.
 
 Verification
-- Node 516/516 exit 0; Playwright 20/20; 53 responsive captures; Pages build/smoke green; 52 modules reachable; secret scan 0; sitemap 10/10; doctor blockingFailing 0.
-- Queue: Genius List 0 open/4 closed; second-order 0 open/4 closed; SIL v3 995/1000.
+- Node 516/516 exit 0; Playwright 20/20; 53 responsive captures; Pages build/smoke green; secret scan 0; sitemap 10/10; doctor blockingFailing 0. Queues exhausted; SIL v3 995/1000.
 
 Now Bucket (top 3)
-- Collect same-revision hosted provenance after this revision deploys.
-- Obtain canonical health/edge receipts (fix /_health 404; add HSTS/frame/CSP).
-- Secure delivered on-domain email receipt plus founder approval.
+- Complete canonical /_health and edge headers (HSTS/frame/CSP) in owning host.
+- Produce real delivered on-domain email receipt (Zoho/Gmail read capability absent).
+- Bind exact hosted revision provenance and pass same-origin staging (stuck 3/10).
 
 Blockers (top 3)
-- Canonical origin /_health returns 404; no HSTS/frame/CSP evidence.
-- No real received-message receipt; Zoho/Gmail receipt-reading capability absent.
-- Registry conflict: sibling-owned SPARKED state vs local FORGE; needs Ark lifecycle reconciliation.
+- Canonical origin returns 404 for /_health; missing edge security headers.
+- No real received-message receipt; email read capability unavailable.
+- Sibling-owned SPARKED registry state conflicts with local FORGE; needs Ark reconciliation.
 
 External evidence and environment limits
-- Founder launch approval: absent, HOLD since at least Session 46 (~13 sessions).
-- Delivered on-domain email artifact: Brevo/Cloudflare DNS credential-ready but no delivery proof; open across multiple sessions.
-- Manual AI image inspection is an environment limitation, not a founder action or product blocker: both readers failed at Windows DPAPI before opening a capture; the automated 53-capture matrix is green.
+- Founder launch approval is an intentionally ungranted release gate, not an implementation blocker; launch remains HOLD.
+- Manual AI image inspection is an environment limitation, not a founder action: Windows DPAPI failed before either reader opened a capture.
 
-Next-session pointer: If hosted provenance/health/email/approval/lifecycle evidence arrives, reconcile and request launch; otherwise begin a fresh live-code audit from the exhausted queue.
+Deploy
+- Revision 4e6e5353 pushed to main; CI, brief-format, backend runtime, and Pages workflows are 4/4 green. Origin serves the revised bundle but launch remains HOLD. Ark receipt 01JUIN5747129D32F9238E20E9. Deploy does not imply launch/SPARKED.
+
+Next session: Resolve canonical health/edge and email receipt in owning host via Ark, else begin fresh audit from exhausted queue.
