@@ -498,6 +498,14 @@ test("mobile nav strip is horizontally scrollable and switches tabs", async ({ p
   await page.setViewportSize({ width: 375, height: 667 });
   await createLeagueFromSetup(page);
 
+  // The mobile-loop overlay auto-activates at ≤480px and intercepts pointer
+  // events. Dismiss it via Full View so we can interact with the nav strip.
+  const fullViewBtn = page.locator("#mlFullViewBtn");
+  if (await fullViewBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
+    await fullViewBtn.click();
+    await expect(page.locator("#mobileLoopOverlay")).toHaveClass(/hidden/);
+  }
+
   const sideMenu = page.locator(".side-menu");
   await expect(sideMenu).toBeVisible();
 

@@ -1986,10 +1986,15 @@ async function init() {
 // mobile nav strip can stick at exactly the right offset below it.
 function syncTopbarHeight() {
   const topbar = document.querySelector(".game-topbar");
+  const nav = document.querySelector(".side-menu");
   if (!topbar) return;
+  const syncOrientation = () => {
+    if (nav) nav.setAttribute("aria-orientation", window.innerWidth <= 640 ? "horizontal" : "vertical");
+  };
   const update = () => {
     const h = Math.round(topbar.getBoundingClientRect().height);
     document.documentElement.style.setProperty("--topbar-h", `${h}px`);
+    syncOrientation();
   };
   update();
   if (typeof ResizeObserver !== "undefined") {
@@ -1997,6 +2002,7 @@ function syncTopbarHeight() {
   } else {
     window.addEventListener("resize", update, { passive: true });
   }
+  window.addEventListener("resize", syncOrientation, { passive: true });
 }
 
 init();
