@@ -2,8 +2,17 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-07-25
+Last reviewed: 2026-07-27
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-07-27 - Session 58 truth updates
+
+- Exact franchiseId now owns all browser authority epochs and save-sensitive memory; league/team/year identity is a deterministic legacy fallback, not concurrent authority.
+- Return Digest continuation derives from the live Season chapter target. Exact focus and tab-only fallback are separately observable; neither claims game outcomes.
+- GAME_LOOP.md defines implementation and evidence boundaries. No fun, comprehension, pace, retention, or causal performance lift is claimed without a real approved cohort.
+- Four launch-evidence wording variants now collapse into one canonical external gate; the queue reports 0/3 viable innovations open rather than treating duplicates as new work.
+- Verification authority is a fresh 499/499 source-bound Node receipt plus Playwright 20/20, responsive 53/53, Pages build/51-module reachability/smoke, promise observability 0 silent sinks, secret scan 0, sanitization 0, sitemap 10/10, and doctor blockingFailing 0.
+- Release truth remains HOLD: staging 3/10, provenance 0/7, canonical /_health 404, incomplete edge headers, no received-message receipt or founder approval, and sibling-owned registry drift. Brevo credential readiness is recorded separately from zero observed project inbound evidence.
 
 ## 2026-07-25 — Session 56 truth updates
 

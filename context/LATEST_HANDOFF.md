@@ -1318,3 +1318,42 @@ Remaining public-safe blocker:
 ## Session 23 final live-domain evidence
 
 The follow-up Pages artifact for `3c3e795` contains the slug-prefixed route files, confirmed by listing `artifact.tar`. After the successful Pages deploy, live custom-domain route smoke still returned 404/fallback for the new `/vaultspark-football-gm/*` compliance routes. Treat the remaining launch blocker as custom-domain routing/certificate state, not missing repo files.
+## Where We Left Off - Session 58 Closeout (2026-07-27)
+
+Session 58 completed the continuous /goal /arc: four live-code audit objectives and three viable second-order innovations are implemented and directly verified.
+
+### Shipped
+
+- One shared exact-franchise scope authority now owns async hydration and background commits; switching between same-team/same-year franchises invalidates stale work.
+- Opening Contract, Return Digest, and trade-block browser memory are keyed to the exact franchise with deterministic legacy fallback and fail-closed cross-franchise reads.
+- Return Digest exposes one source-derived Season continuation, focuses the exact live panel when present, and reports a truthful tab-only fallback when it is not.
+- A public-safe GAME_LOOP contract defines plan, act, learn, and return evidence boundaries without causal outcome or retention claims; all 27 Opening Contract choice combinations are tested.
+- Second-order saturation canonicalizes duplicate innovation findings, guards every save-sensitive scope owner, and protects truthful Return target messaging.
+
+### Verification
+
+- Canonical Node: 499/499, aggregate exit 0, fresh source-bound receipt.
+- Browser: Playwright 20/20; responsive evidence 53/53 captures across required dark/light desktop/mobile/tablet states.
+- Build: Pages build/smoke green; browser reachability 51 modules; promise observability 51 files and 0 silent sinks.
+- Security/truth: project-tree secret scan 0; public sanitization critical/warning 0; sitemap 10/10; doctor blockingFailing 0 with one nonblocking lifecycle warning.
+- Queue: Unified Genius List 0 open / 4 closed; viable second-order list 0 open / 3 closed; SIL v3 995/1000.
+
+### Honest deferral
+
+Launch remains HOLD. The live staging receipt is 3/10, release provenance is 0/7, canonical /_health is 404 with incomplete edge headers, and no real received-message receipt or founder approval exists. Brevo credentials are READY, but live read-only probes found zero inbound events and no project-domain inbound webhook; credential presence is not delivery evidence. Authoritative registry drift remains sibling-owned.
+
+### Visual evidence boundary
+
+The automated real-browser matrix is green at 53/53. Manual AI image inspection is not claimed because both the local viewer and the Node image bridge failed at the Windows DPAPI credential boundary.
+
+### Next best move
+
+After this revision deploys, bind exact hosted revision/asset/health evidence, implement the canonical edge health/header contract in its owning host, establish a real on-domain inbound path and delivery receipt, reconcile lifecycle through Studio Ark, then request founder launch approval. Otherwise begin a fresh live-code audit from the exhausted queue.
+
+---
+
+## Session 58 Intent (2026-07-26)
+
+Run the complete agent-neutral /goal /arc as one continuous mission: pull-first /start, infrastructure-grade live /audit with game-loop and release lenses, complete /implement, exhaust every premise-verified Unified Genius List item, generate and implement second-order innovations, then run full /closeout with direct verification, public sanitization, direct-main delivery, and Ark broadcast. Preserve source-derived observability, flat-rate Max Plan cost discipline, try-first blocker handling, proprietary boundaries, and honest deferral of any evidence gate that cannot be made real.
+
+---

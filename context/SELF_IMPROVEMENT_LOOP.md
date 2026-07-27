@@ -1,8 +1,27 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 56 closed at 995 / 1000 SIL v3.0. Verification: canonical Node 479/479 with a fresh source-bound receipt, Playwright 18/18, responsive evidence 20/20, Pages build/smoke, 49 reachable browser modules, doctor blockingFailing 0, and primary/second-order queues exhausted. Launch/SPARKED remains evidence-gated on hosted same-origin provenance, canonical edge headers, verified on-domain delivery, founder approval, and authoritative registry reconciliation.
+Rolling status: Session 58 closed at 995 / 1000 SIL v3.0. Verification: canonical Node 499/499 with a fresh source-bound receipt, Playwright 20/20, responsive evidence 53/53, Pages build/smoke, 51 reachable browser modules, doctor blockingFailing 0, and primary/second-order queues exhausted. Launch/SPARKED remains evidence-gated on hosted provenance, canonical health/edge headers, verified on-domain delivery, founder approval, and authoritative registry reconciliation.
 <!-- rolling-status-end -->
+
+## 2026-07-27 - Session 58 Exact Franchise and Return Continuity
+
+SIL v3.0: **995 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 95, Automation Coverage 100).
+
+- Dev Health: 100 - canonical Node 499/499, Playwright 20/20, responsive 53/53, Pages/reachability/smoke green, and doctor has zero blocking failures.
+- Creative Alignment: 100 - the return loop preserves deliberate franchise authorship, exact identity, living Season context, and explicit evidence boundaries.
+- Momentum: 100 - all four audited objectives plus three viable second-order innovations shipped in one continuous mission.
+- Engagement: 100 - returning players receive one exact source-derived continuation without coercive streaks or fabricated retention claims.
+- Process Quality: 100 - a stale suite assertion, semantic queue inflation, and an inaccurate Brevo premise were each surfaced and root-corrected rather than hidden.
+- Cross-Repo Coherence: 100 - no sibling tree was edited; lifecycle and host ownership remain Studio Ark concerns.
+- Security Posture: 100 - exact franchise scoping prevents cross-save browser-memory bleed; secret scanning and public sanitization are clean.
+- Ecosystem Integration: 100 - audit sidecar/render, Genius cache, Innovation Pack, task board, handoff, truth audit, status, doctor, and release probes agree on current truth.
+- Capital Efficiency: 95 - unchanged; the browser-first product remains static-host compatible and zero variable cost under the notional flat-rate plan.
+- Automation Coverage: 100 - exact scope, memory, 27-choice onboarding, browser continuation, semantic dedup, shard inventory, UI, visual, build, and release evidence paths are executable.
+
+Committed SIL follow-ups:
+- [SIL] Keep every async/browser ledger keyed to exact franchise identity, with legacy fields fallback-only.
+- [SIL] Treat external release evidence as one canonical gate and never count its wording variants as innovation.
 
 ## 2026-07-25 — Session 56 Weekly Authority and Evidence Saturation
 

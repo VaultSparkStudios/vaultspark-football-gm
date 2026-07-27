@@ -23,6 +23,7 @@ export const state = {
   selectedDesignationPlayerId: null,
   selectedRetirementOverridePlayerId: null,
   tradeBlockIds: [],
+  tradeBlockScope: null,
   tradeAssets: {
     teamAPlayerIds: [],
     teamBPlayerIds: [],

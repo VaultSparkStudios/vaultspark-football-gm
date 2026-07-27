@@ -454,3 +454,15 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Playwright passed 19/19; Pages build, 50-module reachability, static smoke, project-scoped secret scan 0, and settings sanitizer 0 passed.
 - Launch remains HOLD on hosted provenance/edge/email/approval/lifecycle evidence; duplicate launch candidates were deferred honestly and no sibling tree was edited.
 - Direct-main implementation revision `9c24df0` completed CI, brief-format, backend runtime, and Pages 4/4 green; post-deploy staging evidence remained 3/10. Ark broadcast receipt `01JUEGBE6JD354A7E5CF262B98` carried the reusable authority/evidence patterns.
+## 2026-07-27 - Session 58 exact-franchise and return-continuity arc
+
+- Completed pull-first startup, blocker/secrets/canon preflight, infrastructure-weighted live audit with game-loop/release lenses, all four ranked implementations, three viable second-order innovations, and canonical closeout verification without a mid-phase handback.
+- Shipped one exact franchise-scope authority across browser hydration/background epochs and three save-sensitive memory ledgers.
+- Made Return Digest continuation executable, keyboard-accessible, target-focused, and explicit when only its tab can be opened.
+- Added a public-safe falsifiable GAME_LOOP contract and exhaustive 27-combination Opening Contract coverage without claiming player impact, fun, pace, or retention lift.
+- Root-fixed the innovation generator so four semantic launch-evidence duplicates become one canonical gate with merged provenance and an explicit collapsed count.
+- The first aggregate run exposed one stale tutorial source assertion; its exact scoped-persistence contract was corrected, the focused test passed 6/6, and the full aggregate reran green at 499/499.
+- Verification: Playwright 20/20; responsive evidence 53/53; Pages build, 51-module reachability, static smoke, 51-file promise observability, sitemap 10/10, project-tree secret scan 0, public sanitization 0, and doctor blockingFailing 0.
+- Manual AI image inspection is not claimed because the viewer and Node bridge both failed at the Windows DPAPI credential boundary; automated contrast, overflow, runtime-error, touch-target, viewport, and theme evidence is green.
+- Launch remains HOLD: staging 3/10, provenance 0/7, /_health 404, incomplete edge headers, no received-message receipt, no founder approval, and sibling-owned lifecycle drift. Brevo is credential-ready, but live probes show zero project inbound evidence.
+- Creative Direction Record reviewed: the founder supplied execution and quality discipline, not new public product canon, so no private creative record was recreated in this public repository.

@@ -17,6 +17,7 @@ import {
 import { state, api } from "./lib/appState.js";
 import { clearClientDiagnostics, observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic, retryClientDiagnostics } from "./lib/clientDiagnostics.js";
 import { coordinatePostCommitHydration } from "./lib/postCommitHydration.js";
+import { dashboardAuthorityKey } from "./lib/franchiseScope.js";
 
 const SIMULATION_ACTION = {
   key: "franchise-simulation",
@@ -38,7 +39,6 @@ import {
   shouldHideInternalColumn,
   readStatsHiddenColumns,
   saveStatsHiddenColumns,
-  readTradeBlockIds,
   saveTradeBlockIds,
   formatHeight,
   normalizeSeasonType,
@@ -1520,7 +1520,7 @@ function bindEvents() {
     observeBackgroundTask(loadRewindHistory, {
       surface: "action",
       operation: "refresh-rewind-history",
-      authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || "",
+      authorityKey: dashboardAuthorityKey(state.dashboard),
       onError: presentActionError
     })
   );
@@ -1901,7 +1901,7 @@ async function copyChallengeCode() {
       surface: "action",
       operation: "copy-challenge-code",
       error,
-      authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || "",
+      authorityKey: dashboardAuthorityKey(state.dashboard),
       severity: "error"
     });
     prompt("Copy your challenge code:", code);
@@ -1953,6 +1953,26 @@ globalThis._renderSpeedrunPanel = renderSpeedrunPanel;
 globalThis._checkSpeedrunCompletion = checkSpeedrunCompletion;
 globalThis._loadSpeedrunStatus = loadSpeedrunStatus;
 
+function continueSeasonChapter(action = {}) {
+  const targetTab = action.targetTab || "overviewTab";
+  activateTab(targetTab);
+  const focusTarget = () => {
+    const target = action.targetId ? document.getElementById(action.targetId) : null;
+    if (!target) {
+      showToast(`Opened ${targetTab}; the exact ${action.label || "Season chapter"} panel is unavailable.`);
+      return false;
+    }
+    target.scrollIntoView?.({ behavior: "smooth", block: "center" });
+    if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+    target.focus?.({ preventScroll: true });
+    showToast(`Continuing ${action.label || "the current Season chapter"}.`);
+    return true;
+  };
+  if (typeof requestAnimationFrame === "function") requestAnimationFrame(focusTarget);
+  else setTimeout(focusTarget, 0);
+  return { targetTab, targetId: action.targetId || null };
+}
+
 async function init() {
   startPlaytestJourney();
   state.statsHiddenColumns = readStatsHiddenColumns();
@@ -1978,6 +1998,8 @@ async function init() {
   initGistSyncUI();
   injectTutorialStyles();
   mountTutorial({
+    scope: state.dashboard,
+    completed: Boolean(state.dashboard?.startScenarioReceipt),
     onComplete: async (request) => {
       const result = await api("/api/onboarding/start-scenario", {
         method: "POST",
@@ -1992,11 +2014,14 @@ async function init() {
   });
   mountBetaFeedback();
   observeBackgroundTask(
-    () => maybeShowReturnDigest(state.dashboard, { onJumpToInbox: () => openInbox() }),
+    () => maybeShowReturnDigest(state.dashboard, {
+      onJumpToInbox: () => openInbox(),
+      onContinueChapter: continueSeasonChapter
+    }),
     {
       surface: "engagement",
       operation: "return-digest",
-      authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || ""
+      authorityKey: dashboardAuthorityKey(state.dashboard)
     }
   );
   initMobileLoop(state, advanceFromMobileLoop);
@@ -2005,7 +2030,7 @@ async function init() {
     observeBackgroundTask(loadSimJobs, {
       surface: "jobs",
       operation: "poll-simulation-jobs",
-      authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || ""
+      authorityKey: dashboardAuthorityKey(state.dashboard)
     });
   }, 8000);
 }

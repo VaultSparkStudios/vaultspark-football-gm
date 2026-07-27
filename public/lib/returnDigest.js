@@ -17,25 +17,35 @@ import { api } from "./appState.js";
 import { escapeHtml } from "./appCore.js";
 import { getUnreadCount } from "./engagementFeatures.js";
 import { buildSeasonChapter } from "./seasonChapters.js";
+import { franchiseScopeFromDashboard, franchiseStorageKey } from "./franchiseScope.js";
 
-const STORAGE_KEY = "franchise-architect-last-seen";
+const STORAGE_PREFIX = "franchise-architect-last-seen:v2";
 export const ABSENCE_THRESHOLD_MS = 6 * 60 * 60 * 1000; // 6 hours
 
-function readLastVisit() {
+export function returnDigestStorageKey(dashboard = {}) {
+  return franchiseStorageKey(STORAGE_PREFIX, dashboard);
+}
+
+export function readLastVisit(dashboard = {}, storage = globalThis.localStorage) {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = storage?.getItem?.(returnDigestStorageKey(dashboard));
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
   }
 }
 
-function writeLastVisit(entry) {
+export function writeLastVisit(dashboard = {}, entry = {}, storage = globalThis.localStorage) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(entry));
+    storage?.setItem?.(returnDigestStorageKey(dashboard), JSON.stringify({
+      ...entry,
+      scope: franchiseScopeFromDashboard(dashboard)
+    }));
+    return true;
   } catch {
     // Ignore storage failures (private browsing, quota) — the digest is a
     // nice-to-have, never a hard requirement to boot the game.
+    return false;
   }
 }
 
@@ -52,6 +62,8 @@ function controlledStandingsRow(dashboard) {
  */
 export function buildReturnDigest(dashboard, priorVisit, now = Date.now()) {
   if (!dashboard || !priorVisit) return null;
+  const scope = franchiseScopeFromDashboard(dashboard);
+  if (priorVisit.scope !== scope) return null;
   const elapsedMs = now - (priorVisit.timestamp || 0);
   const weekAdvanced =
     priorVisit.year != null &&
@@ -82,6 +94,18 @@ export function buildReturnDigest(dashboard, priorVisit, now = Date.now()) {
     unreadCount: getUnreadCount(),
     teamName: team.name || teamKey || "Your franchise",
     seasonChapter: buildSeasonChapter(dashboard)
+  };
+}
+
+export function buildReturnChapterAction(digest = {}) {
+  const chapter = digest.seasonChapter || null;
+  if (!chapter?.targetTab) return null;
+  return {
+    kind: "continue-season-chapter",
+    label: `Continue ${chapter.label || "Season Plan"}`,
+    targetTab: chapter.targetTab,
+    targetId: chapter.targetId || null,
+    chapterId: chapter.id || null
   };
 }
 
@@ -122,8 +146,9 @@ function ensureStyles() {
   document.head.appendChild(style);
 }
 
-export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpToInbox } = {}) {
+export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpToInbox, onContinueChapter } = {}) {
   ensureStyles();
+  const chapterAction = buildReturnChapterAction(digest);
 
   const recordLine = digest.recordDelta
     ? `Record moved to ${digest.currentRecord.wins}-${digest.currentRecord.losses} (${digest.recordDelta.wins >= 0 ? "+" : ""}${digest.recordDelta.wins}W since your last visit).`
@@ -160,6 +185,7 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
         ${decisionLine ? `<li class="return-digest-decision">${escapeHtml(decisionLine)}</li>` : ""}
       </ul>
       <div class="return-digest-actions">
+        ${chapterAction ? `<button type="button" data-action="continue-chapter">${escapeHtml(chapterAction.label)}</button>` : ""}
         <button type="button" data-action="jump-inbox">Open Priority Inbox</button>
         <button type="button" data-action="dismiss">Jump Back In</button>
       </div>
@@ -180,6 +206,11 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
     document.removeEventListener("keydown", escHandler);
     onJumpToInbox?.();
   });
+  overlay.querySelector('[data-action="continue-chapter"]')?.addEventListener("click", () => {
+    overlay.remove();
+    document.removeEventListener("keydown", escHandler);
+    onContinueChapter?.(chapterAction);
+  });
   document.addEventListener("keydown", escHandler);
 
   document.body.appendChild(overlay);
@@ -192,7 +223,7 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
  * Call once, after the dashboard has finished its first load.
  */
 export async function maybeShowReturnDigest(dashboard, options = {}) {
-  const priorVisit = readLastVisit();
+  const priorVisit = readLastVisit(dashboard);
   let shown = false;
   if (dashboard) {
     const digest = buildReturnDigest(dashboard, priorVisit);
@@ -202,7 +233,7 @@ export async function maybeShowReturnDigest(dashboard, options = {}) {
       shown = true;
     }
     const myRow = controlledStandingsRow(dashboard);
-    writeLastVisit({
+    writeLastVisit(dashboard, {
       timestamp: Date.now(),
       year: dashboard.currentYear ?? null,
       week: dashboard.currentWeek ?? null,

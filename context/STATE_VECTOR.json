@@ -1,9 +1,9 @@
 {
   "vectorVersion": "1.0",
-  "generatedAt": "2026-07-25",
-  "generatedAtMs": 1785021700576,
-  "session": 56,
-  "vectorHash": "a29d87fd8d585334",
+  "generatedAt": "2026-07-27",
+  "generatedAtMs": 1785135490985,
+  "session": 58,
+  "vectorHash": "03a50b5799edf88d",
   "silTotal": 995,
   "silAvg3": null,
   "velocity": null,
@@ -18,17 +18,17 @@
   "health": "green",
   "truthStatus": "green",
   "genome": null,
-  "ignisScore": 42160,
+  "ignisScore": 41900,
   "ignisGrade": "FORGE",
-  "ignisAgeDays": 5,
+  "ignisAgeDays": 0,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "After this revision deploys, collect exact hosted same-origin provenance, canonical health/edge headers, a real received-message receipt, founder approval, and authoritative lifecycle reconciliation before any launch flip.",
-  "currentFocus": "Session 56 exhausted four live-code product/infrastructure objectives and three second-order innovations: one weekly-plan authority, consented session evidence, a progressive Week Room, truthful service boundaries, and cold-start runtime continuity.",
+  "nextMilestone": "After this revision deploys, collect exact hosted provenance, canonical health/edge headers, a real received-message receipt, founder approval, and authoritative lifecycle reconciliation before any launch flip.",
+  "currentFocus": "Session 58 exhausted four exact-franchise/return-continuity objectives and three viable second-order innovations: exact authority epochs, scoped browser memory, actionable Season return, falsifiable loop evidence, semantic queue dedup, and regression guards.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated: hosted provenance, canonical edge headers, a real received-message receipt, founder approval, and sibling-owned registry reconciliation remain absent."
+    "Launch/SPARKED remains evidence-gated: staging 3/10, provenance 0/7, canonical health/edge headers, a real received-message receipt, founder approval, and sibling-owned registry reconciliation remain absent."
   ]
 }

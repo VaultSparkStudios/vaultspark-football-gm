@@ -117,3 +117,27 @@ All six live-code items are implemented and individually verified. Exact dual-ru
 4. `responsive-theme-evidence-authority` — unified visual evidence under one self-validating matrix; its first run found the tutorial action target defect, which was root-fixed before a 53-capture green rerun.
 
 Four duplicate launch candidates are deferred with identical external evidence requirements. No local artifact is presented as hosted/email/approval/lifecycle proof. Viable second-order list: **0 open / 4 closed**.
+
+## Session 58  -  Exact franchise scope and return continuity
+
+Source: `docs/AUDIT_2026-07-26.json`.
+
+### Wave 3A  -  Exact franchise authority
+
+1. `exact-franchise-authority-epoch`  -  make the dashboard's exact `franchiseId` own hydration and every background authority key, with a deterministic legacy fallback.
+2. `franchise-scoped-browser-memory`  -  scope tutorial, Return Digest, and trade-block ledgers to the exact franchise and fail closed across franchise switches.
+
+### Wave 3B  -  Deliberate return loop
+
+3. `actionable-return-horizon`  -  turn the source-derived Season chapter into one keyboard-accessible continuation that opens and focuses its real target with an honest fallback.
+4. `falsifiable-game-loop-contract`  -  document the plan/act/learn/return contract, evidence boundaries, and prohibited causal claims; exhaustively test all 27 Opening Contract choices.
+
+### Wave 4  -  Second-order saturation
+
+5. `semantic-innovation-candidate-dedup`  -  collapse wording variants into one canonical release-evidence gate while retaining all source/evidence provenance.
+6. `franchise-scope-contract-guard`  -  guard the complete save-sensitive scope ownership surface against future global-key regressions.
+7. `truthful-return-target-fallback`  -  prevent the UI from claiming an exact chapter panel opened when only its containing tab exists.
+
+### Result
+
+All four live-code audit items and all three viable second-order innovations are implemented and focused-tested. Unified Genius List: **0 open / 4 primary closed**. Viable second-order list: **0 open / 3 closed**. The canonical launch-readiness gate remains an evidence-based HOLD, not a local implementation claim.

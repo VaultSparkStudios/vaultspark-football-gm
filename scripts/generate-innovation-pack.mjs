@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { parseHumanItems, parseUnifiedItems } from "./lib/task-board.mjs";
+import { dedupeInnovationCandidates } from "./lib/innovation-candidates.mjs";
 
 const root = process.cwd();
 const today = new Date().toISOString().slice(0, 10);
@@ -120,7 +121,7 @@ function buildCandidates() {
     });
   }
 
-  return candidates;
+  return dedupeInnovationCandidates(candidates);
 }
 
 function render(candidates) {
@@ -140,6 +141,7 @@ function render(candidates) {
       lines.push(`   - Source: ${candidate.source}`);
       lines.push(`   - Action: ${candidate.action}`);
       lines.push(`   - Evidence: ${candidate.evidence || "n/a"}`);
+      if (candidate.duplicateCount > 1) lines.push(`   - Collapsed: ${candidate.duplicateCount} semantically equivalent candidates`);
     });
   }
   lines.push("", "## Shipped This Session", "", "- Pending implementation.", "", "## Rejected / Deferred", "", "- Pending classification.", "");

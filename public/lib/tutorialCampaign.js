@@ -18,19 +18,24 @@
 
 import { closeModal, openModal } from "./modalManager.js";
 import { buildStartScenarioRequest } from "./startScenarioContract.js";
+import { franchiseStorageKey } from "./franchiseScope.js";
 
-const TUTORIAL_SEEN_KEY = "vsfgm_tutorial_seen_v1";
+const TUTORIAL_SEEN_PREFIX = "vsfgm:tutorial-seen:v2";
 
-export function hasTutorialBeenSeen() {
-  return localStorage.getItem(TUTORIAL_SEEN_KEY) === "done";
+export function tutorialSeenKey(scope = {}) {
+  return franchiseStorageKey(TUTORIAL_SEEN_PREFIX, scope);
 }
 
-export function markTutorialSeen() {
-  localStorage.setItem(TUTORIAL_SEEN_KEY, "done");
+export function hasTutorialBeenSeen(scope = {}, storage = globalThis.localStorage) {
+  return storage?.getItem?.(tutorialSeenKey(scope)) === "done";
 }
 
-export function resetTutorial() {
-  localStorage.removeItem(TUTORIAL_SEEN_KEY);
+export function markTutorialSeen(scope = {}, storage = globalThis.localStorage) {
+  storage?.setItem?.(tutorialSeenKey(scope), "done");
+}
+
+export function resetTutorial(scope = {}, storage = globalThis.localStorage) {
+  storage?.removeItem?.(tutorialSeenKey(scope));
 }
 
 // ── Step definitions ──────────────────────────────────────────────────────────
@@ -119,8 +124,8 @@ const STEPS = [
 
 // ── Mount tutorial modal ──────────────────────────────────────────────────────
 
-export function mountTutorial({ onComplete, onSkip }) {
-  if (hasTutorialBeenSeen()) { onSkip?.(); return; }
+export function mountTutorial({ onComplete, onSkip, scope = {}, completed = false, storage = globalThis.localStorage }) {
+  if (completed || hasTutorialBeenSeen(scope, storage)) { onSkip?.(); return; }
 
   let currentStep = 0;
   const selections = {};
@@ -134,7 +139,7 @@ export function mountTutorial({ onComplete, onSkip }) {
 
   function dismissTutorial(callback) {
     closeModal(overlay);
-    markTutorialSeen();
+    markTutorialSeen(scope, storage);
     overlay.remove();
     callback?.(selections);
   }
@@ -257,7 +262,7 @@ export function mountTutorial({ onComplete, onSkip }) {
         try {
           const receipt = await onComplete?.(buildStartScenarioRequest(selections));
           if (!receipt?.effects) throw new Error("The league did not return an opening-contract receipt.");
-          markTutorialSeen();
+          markTutorialSeen(scope, storage);
           renderReceipt(receipt);
         } catch (error) {
           nextButton.disabled = false;

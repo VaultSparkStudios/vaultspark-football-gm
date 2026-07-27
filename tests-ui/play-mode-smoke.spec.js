@@ -59,3 +59,40 @@ test("first session turns onboarding promises into a committed weekly evidence t
   await expect(page.locator(".week-room-horizon").first()).not.toHaveText(beforeSeasonChapter || "");
   await expect(page.locator("#yearCard")).not.toHaveText(before || "");
 });
+
+test("returning player can continue the exact live Season chapter", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("#setupStatus")).toContainText("Ready", { timeout: 20_000 });
+  await page.click(".setup-details-toggle");
+  await page.selectOption("#modeInput", "play");
+  await page.click("#createLeagueBtn");
+  await expect(page).toHaveURL(/\/game\.html$/, { timeout: 45_000 });
+  await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
+
+  const skip = page.locator("#tutSkipBtn");
+  if (await skip.isVisible({ timeout: 5_000 }).catch(() => false)) await skip.click();
+  await expect(page.locator(".tutorial-overlay")).toHaveCount(0);
+
+  await page.evaluate(async () => {
+    const dashboard = await fetch("/api/state").then((response) => response.json());
+    const { franchiseScopeFromDashboard, franchiseStorageKey } = await import("./lib/franchiseScope.js");
+    const scope = franchiseScopeFromDashboard(dashboard);
+    const key = franchiseStorageKey("franchise-architect-last-seen:v2", dashboard);
+    localStorage.setItem(key, JSON.stringify({
+      scope,
+      timestamp: Date.now() - (7 * 60 * 60 * 1000),
+      year: dashboard.currentYear,
+      week: dashboard.currentWeek,
+      record: null
+    }));
+  });
+
+  await page.reload();
+  await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
+  const continueButton = page.locator('[data-action="continue-chapter"]');
+  await expect(continueButton).toBeVisible({ timeout: 20_000 });
+  await expect(continueButton).toContainText("Continue");
+  await continueButton.click();
+  await expect(page.locator(".return-digest-overlay")).toHaveCount(0);
+  await expect(page.locator("#franchiseCommandCenter")).toBeFocused();
+});

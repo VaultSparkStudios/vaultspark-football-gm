@@ -2,6 +2,36 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-07-27 - Exact franchise identity owns asynchronous and browser-memory authority
+
+**Decision:** The dashboard's exact franchiseId is the primary identity for every browser authority epoch and save-sensitive local ledger. League/team/year fields are legacy fallback inputs only.
+
+**Rationale:** Two franchises can share a team and start year. Using leagueId or startYear allowed a late response, tutorial receipt, Return Digest, or trade block from one franchise to appear authoritative in another.
+
+**Pattern established:** One shared scope normalizer builds authority and storage keys; cross-scope reads fail closed; franchise switches synchronously replace the epoch and memory scope.
+
+---
+
+## 2026-07-27 - Return guidance names only actions the interface actually completed
+
+**Decision:** A source-derived return horizon may claim an exact continuation only when the target panel exists and receives focus. If only the containing tab exists, the interface must name that fallback.
+
+**Rationale:** Opening a tab while claiming a specific panel opened makes observability lie at the point where a returning player most needs trustworthy orientation.
+
+**Pattern established:** Season chapter actions carry targetTab, targetId, and label from live state. Activation, focus, and fallback each have distinct user-visible receipts and regression coverage.
+
+---
+
+## 2026-07-27 - Innovation queues deduplicate semantic evidence gates
+
+**Decision:** Generated innovation candidates with different wording but the same external release-evidence obligation collapse into one canonical gate while preserving all sources, actions, evidence, and duplicate count.
+
+**Rationale:** Repeated wording inflated the apparent opportunity surface and encouraged repeated non-work instead of new second-order design.
+
+**Pattern established:** Candidate identity is semantic, not string-exact. A deduplicated HOLD is a truthful deferred item; queue saturation counts only viable implemented innovations.
+
+---
+
 ## 2026-07-25 — Runtime timeouts do not authorize state forks
 
 **Decision:** A timed-out server request must preserve server runtime authority. Automatic browser-runtime fallback is allowed only when the server is actually unreachable or the deployment explicitly declares server mode unavailable.

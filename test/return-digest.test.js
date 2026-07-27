@@ -31,13 +31,13 @@ test("no digest on a first-ever visit (no prior stamp)", () => {
 
 test("no digest when the player was barely away and the week hasn't advanced", () => {
   const now = 1_000_000_000_000;
-  const prior = { timestamp: now - 1000, year: 2026, week: 5, record: { wins: 3, losses: 1 } };
+  const prior = { scope: "legacy-buf-2026", timestamp: now - 1000, year: 2026, week: 5, record: { wins: 3, losses: 1 } };
   assert.equal(buildReturnDigest(dashboard(), prior, now), null);
 });
 
 test("digest fires once the absence threshold is crossed even with no week change", () => {
   const now = 1_000_000_000_000;
-  const prior = { timestamp: now - ABSENCE_THRESHOLD_MS - 1, year: 2026, week: 5, record: { wins: 3, losses: 1 } };
+  const prior = { scope: "legacy-buf-2026", timestamp: now - ABSENCE_THRESHOLD_MS - 1, year: 2026, week: 5, record: { wins: 3, losses: 1 } };
   const digest = buildReturnDigest(dashboard(), prior, now);
   assert.ok(digest);
   assert.equal(digest.weekAdvanced, false);
@@ -46,7 +46,7 @@ test("digest fires once the absence threshold is crossed even with no week chang
 
 test("digest fires immediately when the week advanced, even before the time threshold", () => {
   const now = 1_000_000_000_000;
-  const prior = { timestamp: now - 1000, year: 2026, week: 3, record: { wins: 2, losses: 1 } };
+  const prior = { scope: "legacy-buf-2026", timestamp: now - 1000, year: 2026, week: 3, record: { wins: 2, losses: 1 } };
   const digest = buildReturnDigest(dashboard({ currentWeek: 5 }), prior, now);
   assert.ok(digest);
   assert.equal(digest.weekAdvanced, true);
@@ -59,7 +59,7 @@ test("digest fires immediately when the week advanced, even before the time thre
 
 test("digest computes an honest win/loss delta since the last visit", () => {
   const now = 1_000_000_000_000;
-  const prior = { timestamp: now - ABSENCE_THRESHOLD_MS - 1, year: 2026, week: 2, record: { wins: 0, losses: 2 } };
+  const prior = { scope: "legacy-buf-2026", timestamp: now - ABSENCE_THRESHOLD_MS - 1, year: 2026, week: 2, record: { wins: 0, losses: 2 } };
   const digest = buildReturnDigest(dashboard({ currentWeek: 6, latestStandings: [{ team: "BUF", wins: 4, losses: 2 }] }), prior, now);
   assert.equal(digest.recordDelta.wins, 4);
   assert.equal(digest.recordDelta.losses, 0);

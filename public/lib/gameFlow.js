@@ -1,5 +1,5 @@
 import { state, api } from "./appState.js";
-import { applyShellTheme, escapeHtml, fmtMoney, presentActionError, renderPanelError, renderTable, selectedSeasonType, setSimControl, setStatus, shapeStatsRowsForDisplay, showToast, syncTeamSelects, teamCode, updateTopMeta } from "./appCore.js";
+import { applyShellTheme, escapeHtml, fmtMoney, presentActionError, renderPanelError, renderTable, selectedSeasonType, setSimControl, setStatus, shapeStatsRowsForDisplay, showToast, syncTeamSelects, syncTradeBlockScope, teamCode, updateTopMeta } from "./appCore.js";
 import { renderBoxScoreTicker, renderCapAlertBanner, renderFanSentimentCard, renderGmLegacyScore, renderInjuryOverlayCard, renderLeaders, renderNewsTicker, renderOverview, renderOwnerUltimatum, renderRosterNeeds, renderSchedule, renderSeasonPreviewPanel, renderStandings, renderStatLeadersStrip, renderWeekResults } from "./tabOverview.js";
 import { depthDefaultShares, renderDepthChart, renderFreeAgency, renderRetiredPool, renderRoster } from "./tabRoster.js";
 import { deriveContractToolsFromRoster, getTradeTeamId, renderContractsPage, renderExpiringContracts, renderTradeWorkspace, setSelectedDesignationPlayer, setSelectedRetirementOverridePlayer } from "./tabContracts.js";
@@ -35,6 +35,7 @@ export function applyDashboard(newState) {
   hydrationAuthority.replaceAuthority(dashboardAuthorityKey(newState));
   state.hydrationAuthority = hydrationAuthority.snapshot();
   state.dashboard = newState;
+  syncTradeBlockScope(newState);
   state.leagueSettings = newState.settings || state.leagueSettings;
   state.contractTools = {
     expiring: newState.contractTools?.expiring || [],

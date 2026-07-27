@@ -18,6 +18,7 @@ import { state, api } from "./appState.js";
 import { escapeHtml, fmtMoney, showToast, renderTable, teamCode } from "./appCore.js";
 import { closeModal, openModal } from "./modalManager.js";
 import { observeBackgroundTask } from "./clientDiagnostics.js";
+import { franchiseScopeFromDashboard } from "./franchiseScope.js";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PRIORITY INBOX SYSTEM
@@ -31,11 +32,7 @@ function browserStorage(storage) {
 }
 
 export function inboxScopeFromDashboard(dashboard = {}) {
-  const franchiseId = dashboard.franchiseId || dashboard.franchiseKey;
-  if (franchiseId) return String(franchiseId).replace(/[^a-z0-9_-]+/gi, "-").toLowerCase();
-  const team = dashboard.controlledTeamId || dashboard.controlledTeam?.id || "unassigned";
-  const start = dashboard.startYear || dashboard.currentYear || "unknown";
-  return `legacy-${team}-${start}`.toLowerCase();
+  return franchiseScopeFromDashboard(dashboard);
 }
 
 export function inboxItemKey(item = {}) {

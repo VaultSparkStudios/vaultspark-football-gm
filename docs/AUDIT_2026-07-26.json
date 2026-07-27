@@ -1,0 +1,246 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-26",
+  "session": 58,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 4,
+    "combinedPriority": 157.5,
+    "topItem": "exact-franchise-authority-epoch",
+    "source": "live-code-audit",
+    "openItems": 0
+  },
+  "profile": {
+    "type": "public football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "founder-requested infrastructure rubric with product, game-loop, and release-gate lenses",
+    "staging": "GitHub Pages artifact plus exact same-origin hosted verification",
+    "source": "live source, direct probes, CI/staging evidence, release gate, game-loop review, canon conformance, and public-safe context"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation",
+    "ci": "The latest five GitHub workflow runs are successful.",
+    "staging": "GitHub Pages /_health redirects to the organization root and ends 403; the deterministic receipt remains blocked at 3/10.",
+    "production": "Eight public routes return 200, but canonical /_health is 404 and HSTS, CSP, and frame-policy evidence is absent.",
+    "cost": "CANON-029 and the cost-content gate pass: the static/browser product is cost-neutral at $0 per 1,000 free users. Max Plan cost remains notional.",
+    "branding": "VaultSpark proprietary branding and the complete 7-destination footer pass.",
+    "parity": "Local 53-capture responsive evidence is green, but it is not bound to a verified hosted revision; production serves a different stylesheet hash.",
+    "email": "Secrets-gateway discovery reports Brevo READY. Read-only live probes found zero inbound events and zero project-domain inbound webhooks, so no real received-message receipt proves football@playfranchisearchitect.com delivery; credential presence is not delivery evidence.",
+    "approval": "No founder launch approval is recorded.",
+    "lifecycle": "Local FORGE/public-unlaunched truth conflicts with sibling registry SPARKED state; only Studio Ark may reconcile it."
+  },
+  "gameLoopReview": {
+    "loopTightness": 8.8,
+    "progression": 8.8,
+    "sessionEngagement": 8.2,
+    "retention": 8.1,
+    "soulFidelity": 8.6,
+    "overall": 8.5,
+    "evidence": "Implementation-contract review only. GAME_LOOP.md and checked-in playtest cohorts are absent, SOUL is intentionally public-safe, and no fun, comprehension, pace, or retention lift is claimed."
+  },
+  "recommendedMoves": [
+    "Make every asynchronous browser authority epoch use the exact franchise identity already emitted by the runtime.",
+    "Treat Opening Contract, Return Digest, and trade-block memory as franchise-scoped state rather than browser-global state.",
+    "Turn the Return Digest chapter target into one exact continuation action and publish a falsifiable game-loop contract."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "feature-depth",
+      "candidate": "Add another generic franchise system, achievement currency, or narrative feed",
+      "reason": "Rejected as additive sprawl. Live code already has a deep weekly, season, and dynasty stack; the verified defects are identity boundaries and orchestration."
+    },
+    {
+      "axis": "ui-ux",
+      "candidate": "Redesign the fourteen-tab shell",
+      "reason": "Rejected as a phantom rewrite. The progressive Week Room and mobile command stack already exist; the bounded gap is an exact return action."
+    },
+    {
+      "axis": "feedback-loop",
+      "candidate": "Claim retention or comprehension improvement from local receipts",
+      "reason": "Rejected because no checked-in consented cohort exists. The audit can improve evidence contracts, not fabricate outcomes."
+    },
+    {
+      "axis": "gamification-engagement",
+      "candidate": "Add daily streaks, random rewards, or tactic-variety bonuses",
+      "reason": "Rejected as coercive or contrary to deliberate franchise identity."
+    },
+    {
+      "axis": "ai-intelligence",
+      "candidate": "Add a large-language-model coach or outcome predictor",
+      "reason": "Rejected on cost, custody, and causal honesty. Deterministic source receipts already explain live state."
+    },
+    {
+      "axis": "security",
+      "candidate": "Flip launch from local green evidence or patch organization-root edge configuration in this repo",
+      "reason": "Deferred honestly: hosted provenance, edge headers, received email, approval, and lifecycle coherence are red or sibling-owned."
+    },
+    {
+      "axis": "speed-organization",
+      "candidate": "Perform another broad app-shell or GameSession rewrite",
+      "reason": "Rejected as high-risk and premise-free. The shared franchise-scope seam is the smaller compounding extraction."
+    },
+    {
+      "axis": "token-api-reduction",
+      "candidate": "Optimize gameplay model/API spend",
+      "reason": "Rejected: gameplay makes no model calls, free-tier variable cost is zero, and Max Plan cost is flat-rate/notional."
+    },
+    {
+      "axis": "infrastructure",
+      "candidate": "Refresh launch reports without fixing their sources or edit the sibling registry directly",
+      "reason": "Rejected by root-fix and Ark ownership rules. Reports remain honest reds until external evidence changes."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Infrastructure / concurrency / observability authority",
+      "effortHours": 1.5,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 44.3,
+      "slug": "exact-franchise-authority-epoch",
+      "title": "Key every browser authority epoch to the exact franchise",
+      "status": "done",
+      "premise": "The dashboard already exposes franchiseId, but gameFlow hydration and four app-level background tasks key authority to leagueId or startYear. Dashboard has no leagueId, so two franchises with the same start year and controlled team can share an authority identity and permit an old response to commit after an import or franchise switch.",
+      "evidence": [
+        "GameSession.getDashboardState emits franchiseId as fa-<seed>-<team>",
+        "gameFlow.dashboardAuthorityKey ignores franchiseId and begins with leagueId || startYear",
+        "app.js repeats leagueId || startYear in background-task authority keys at four call sites",
+        "authority-epoch tests cover team changes but not two same-year franchises"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Prefer franchiseId in the existing dashboard authority key." },
+        "L2": { "effortHours": 1.5, "recipe": "Create one pure franchise authority helper, use it in hydration and every background task, preserve a safe legacy fallback, and prove two same-year/team franchises reject stale commits." },
+        "L3": { "effortHours": 3.0, "recipe": "Attach authority identity to every loader receipt and expose per-scope stale-discard diagnostics." }
+      },
+      "verification": [
+        "franchiseId is the first authority component everywhere",
+        "same-year/team franchise switches advance the epoch",
+        "legacy dashboards retain deterministic fallback identity",
+        "all authority keys come from one helper"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Infrastructure / persistence / cross-save truth",
+      "effortHours": 3.0,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 34.5,
+      "slug": "franchise-scoped-browser-memory",
+      "title": "Give save-sensitive browser memory one franchise-scoped authority",
+      "status": "done",
+      "premise": "The Opening Contract tutorial uses one global seen key, Return Digest uses one global last-seen key, and trade-block IDs are written to one global key but never hydrated. A second franchise can therefore lose its Opening Contract offer, receive another franchise's record delta, or inherit/lose trade targets.",
+      "evidence": [
+        "tutorialCampaign hasTutorialBeenSeen reads vsfgm_tutorial_seen_v1 with no scope",
+        "mountTutorial runs after dashboard hydration but receives no franchise identity",
+        "returnDigest reads franchise-architect-last-seen without storing or checking franchise identity",
+        "readTradeBlockIds is imported by app.js but never called; saveTradeBlockIds writes vsfgm:trade-block globally",
+        "Priority Inbox already demonstrates a working franchise-scoped persistence pattern"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1.0, "recipe": "Scope Return Digest and tutorial keys by dashboard.franchiseId." },
+        "L2": { "effortHours": 3.0, "recipe": "Reuse the pure franchise-scope helper for tutorial, Return Digest, and trade-block persistence; skip tutorial from live startScenarioReceipt, hydrate/reset trade targets when scope changes, reject cross-franchise digest deltas, and add migration/corruption tests." },
+        "L3": { "effortHours": 5.0, "recipe": "Move all save-sensitive browser ledgers behind a versioned storage registry with quota and migration receipts." }
+      },
+      "verification": [
+        "a new franchise receives its own Opening Contract offer",
+        "an already-contracted franchise never repeats it",
+        "Return Digest never compares records across franchises",
+        "trade targets restore only inside their owning franchise",
+        "storage corruption fails open without blocking play"
+      ]
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Engagement / retention / exact-action UI",
+      "effortHours": 1.5,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 39.8,
+      "slug": "actionable-return-horizon",
+      "title": "Turn the living Season chapter into an exact return action",
+      "status": "done",
+      "premise": "Return Digest renders seasonChapter.nextCall, while the chapter already carries targetTab and targetId, but the digest discards both and offers only Inbox or dismiss. The product names the next decision without letting the player continue it.",
+      "evidence": [
+        "seasonChapters returns targetTab and targetId for every chapter",
+        "returnDigest stores the full seasonChapter but renderReturnDigest only interpolates label/title/nextCall",
+        "renderReturnDigest actions are limited to jump-inbox and dismiss",
+        "game-loop review independently ranked this as the highest bounded retention disconnect"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Add a third button that calls a supplied chapter callback." },
+        "L2": { "effortHours": 1.5, "recipe": "Render a chapter-labeled continuation CTA, pass the exact target as a typed action, activate the target tab, focus/scroll the target element with a safe tab fallback, preserve Inbox/dismiss actions, and cover all action paths." },
+        "L3": { "effortHours": 3.0, "recipe": "Add a non-blocking one-action return rail that also resolves active promise targets and accessibility announcements." }
+      },
+      "verification": [
+        "the CTA label derives from the live chapter",
+        "the exact target tab and element are honored",
+        "missing targets fall back safely without lying",
+        "Inbox and dismiss remain keyboard-accessible"
+      ]
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Feedback loop / game design contract / automation",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 38.9,
+      "slug": "falsifiable-game-loop-contract",
+      "title": "Publish and test the intended first-session decision contract",
+      "status": "done",
+      "premise": "The implementation has a strong weekly/season/dynasty loop, but context/GAME_LOOP.md and checked-in playtest evidence are absent. Existing first-session tests always choose the first tutorial option or one fixed combination, so they prove completion without proving all nine choice definitions remain executable and consequence-bearing.",
+      "evidence": [
+        "context/GAME_LOOP.md does not exist",
+        "docs/PLAYTESTS has no checked-in cohort",
+        "opening-contract-prologue tests only balanced/balanced-mandate/ignore",
+        "Playwright chooses the first choice on all three steps",
+        "startScenarioContract defines three choices in each of three dimensions"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Add a public-safe GAME_LOOP.md with explicit loop horizons and honesty caveats." },
+        "L2": { "effortHours": 1.5, "recipe": "Publish 30-second, five-minute, season, and dynasty contracts with falsifiable local evidence targets; add an exhaustive 27-combination test proving every Opening Contract choice validates, produces its exact receipt, and survives snapshot restore; document that player outcome claims require a real consented cohort." },
+        "L3": { "effortHours": 3.0, "recipe": "Run and check in a sanitized aggregate of 5-8 consented first-session playtests; never synthesize the cohort." }
+      },
+      "verification": [
+        "all 27 Opening Contract combinations execute and restore",
+        "each choice produces its declared effect",
+        "the public contract names measurable evidence without claiming current impact",
+        "no fabricated playtest rows are added"
+      ]
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "exact-franchise-authority-epoch",
+      "status": "done",
+      "receipt": "One pure franchiseScope authority now keys hydration and every app-level background diagnostic; same-year/team franchise changes advance the epoch and reject stale commits.",
+      "verification": "node --test test/franchise-scope.test.js test/authority-epoch.test.js; browser reachability 51 modules"
+    },
+    {
+      "slug": "franchise-scoped-browser-memory",
+      "status": "done",
+      "receipt": "Opening Contract seen state, Return Digest visits, and trade-block targets are isolated by exact franchise; live startScenarioReceipt suppresses repeats and corrupt or unknown legacy storage fails open.",
+      "verification": "node --test test/browser-memory-scope.test.js test/inbox-persistence.test.js test/return-digest.test.js"
+    },
+    {
+      "slug": "actionable-return-horizon",
+      "status": "done",
+      "receipt": "Return Digest renders a chapter-derived continuation action that activates and focuses the exact live target with a safe tab fallback while preserving Inbox and dismiss paths.",
+      "verification": "node --test test/browser-wiring.test.js test/return-digest.test.js; npx playwright test tests-ui/play-mode-smoke.spec.js (3/3)"
+    },
+    {
+      "slug": "falsifiable-game-loop-contract",
+      "status": "done",
+      "receipt": "The public-safe game-loop contract names four horizons and evidence limits; an exhaustive matrix executes, explains, idempotently reapplies, and snapshot-restores all 27 Opening Contract combinations without synthetic player data.",
+      "verification": "node --test test/opening-contract-choice-matrix.test.js test/opening-contract-prologue.test.js"
+    }
+  ]
+}

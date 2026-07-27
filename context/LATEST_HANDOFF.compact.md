@@ -1,40 +1,48 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 2a1dd9307732 -->
-<!-- generated-at: 2026-07-25T23:20:02.919Z -->
+<!-- source-hash: 5b37278f0083 -->
+<!-- generated-at: 2026-07-27T06:59:19.730Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION: 56 (2026-07-25), continuous /goal /arc
+## Handoff Summary — Session 57 (2026-07-25)
 
-SHIPPED THIS SESSION
-- Decision-first weekly-plan composer unifying topbar, command center, mobile with defer/no-plan and versioned preview/commit receipts.
-- Bounded allowlisted relative-time tab-scoped session journey (no account/token/save/absolute-timestamp data).
-- Franchise Architecture as progressive Week Room: source-derived Now call, Season/Legacy horizons, Architecture Review disclosure.
-- Runtime bundle exposes only characterized ContractService/CoachingService; 4 divergent scaffolds removed.
-- Second-order: closed cold-start authority forking, added missing /public/ module root, resolved contract/session-storage evidence boundary.
+Session
+- Latest: Session 57 closeout complete. Continuous /goal /arc executed end-to-end.
 
-VERIFICATION
-- Node 479/479 exit 0; Playwright 18/18; responsive 20/20; Pages build/smoke green; 49 reachable modules; secret scan 0; canon gaps 0; doctor blockingFailing 0 (one nonblocking sibling-registry warning). Queues exhausted (Genius 4 closed, second-order 3 closed); SIL v3 995/1000.
+Shipped (S57)
+- Bidirectional API parity fails on missing/unexpected routes with exact counts; local ghosts removed.
+- Agent-neutral session routing (Codex gets no Claude-only model rec).
+- ContractService method-level manifest with reflection guard.
+- Identity mastery rewards committed continuity and source-observed adaptation.
+- One versioned Season chapter authority feeds Week Room and Return Digest from live receipts.
+- Real-browser first-session onboarding verified through ledger/mastery/Season transition.
+- Second-order: unified human-action parsing, retired stale scripts, 53-capture fail-closed responsive matrix (closed tutorial touch-target defect).
 
-CURRENT INTENT
-Run full agent-neutral /goal /arc as one continuous mission: pull-first start, live audit, implement, exhaust queues, generate/implement second-order, closeout with direct evidence, staging-first, Ark broadcast, push direct to main. Preserve observability, flat-rate cost discipline, proprietary boundaries, try-first blocker discipline, no fabricated launch data.
+Current Intent
+- Collect exact same-revision hosted provenance, canonical edge/email receipts, and lifecycle reconciliation via Studio Ark before requesting founder launch approval; otherwise begin a new live-code audit from the exhausted queue.
 
-NOW BUCKET (top 3)
-1. After revision deploys, collect exact hosted provenance and canonical edge/email receipts.
-2. Reconcile authoritative lifecycle drift through Studio Ark.
-3. If no external evidence arrives, begin fresh live-code arc from exhausted queue.
+Now Bucket (top 3)
+- Collect hosted same-revision provenance (revision/asset/health).
+- Obtain canonical edge headers + real received-message receipt for football@playfranchisearchitect.com.
+- Reconcile sibling-owned lifecycle drift through Studio Ark.
 
-BLOCKERS (top 3)
-1. Launch HOLD: canonical origin lacks valid health/edge/provenance evidence; same-origin staging 3/10.
-2. No real received-message receipt for football@playfranchisearchitect.com inbox.
-3. Authoritative lifecycle drift (registry SPARKED vs local FORGE) is sibling-owned.
+Blockers (top 3)
+- Hosted same-origin staging receipt stuck at 3/10.
+- No real received-message/email receipt proving project inbox.
+- Founder launch approval absent.
 
-HUMAN-BLOCKED (with age)
-- Founder launch approval absent: recurring since Session 44+ (~12 sessions).
-- Windows credential boundary blocks manual image inspection: recurred this session; only automated real-browser visual evidence claimed.
-- Sibling-owned registry/lifecycle reconciliation: recurring since Session 48+ (~8 sessions), routed via Ark.
+Human-Blocked Items
+- Founder launch approval: open across S48–S57 (~10 sessions).
+- Sibling-owned lifecycle/registry SPARKED vs local FORGE reconciliation (Ark transport only): open S48–S57.
+- Windows credential boundary blocks manual image inspection (S55–S56): only automated visual evidence claimed.
 
-DEPLOY
-Pending CI-on-push; source goes direct to main; confirm production currency from triggered Pages workflow. Deployment does not imply launch/SPARKED.
+Verification (S57)
+- Node 489/489, exit 0. Playwright 19/19. Responsive 53 captures, coverage 52/52.
+- Pages build/smoke green; browser reachability 50 modules.
+- Secret scan 0; settings sanitizer 0; secrets gateway 0/0.
+- Genius List 0 open/6 closed; second-order 0 open/4 closed; SIL v3 995/1000.
 
-NEXT SESSION: Deploy this revision, gather hosted provenance/edge/email receipts and reconcile lifecycle via Ark before requesting founder approval; else start a fresh audit arc.
+Deploy
+- Revision 9c24df0fc960daa04e6663796bc9c60a2aaf7172 pushed to main; CI 4/4 green. Post-deploy same-origin staging receipt blocked at 3/10. Ark broadcast 01JUEGBE6JD354A7E5CF262B98. Deploy does not imply launch/SPARKED. Launch remains HOLD.
+
+Next session: Gather hosted provenance + edge/email/lifecycle evidence via Ark for founder approval, else start fresh live-code audit from exhausted queue.

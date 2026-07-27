@@ -756,6 +756,28 @@ Unified Genius List: **0 open / 5 primary closed**. Viable second-order innovati
 Unified Genius List: **0 open / 5 primary closed**. Viable second-order innovation list: **0 open / 2 closed**.
 Launch remains **HOLD** on external hosted/email/edge/approval/registry evidence; no launch evidence was fabricated.
 
+## Session 58  -  Exact franchise scope and return continuity (2026-07-26)
+
+Source: `docs/AUDIT_2026-07-26.json`.
+
+| Tier | Category | Status | Item |
+|---|---|---|---|
+| FIRE | Infrastructure / async authority / observability | Done S58 | exact-franchise-authority-epoch |
+| FIRE | Infrastructure / privacy / browser persistence | Done S58 | franchise-scoped-browser-memory |
+| FIRE | Engagement / progression / UI-UX | Done S58 | actionable-return-horizon |
+| HIGH | Game loop / evidence / product truth | Done S58 | falsifiable-game-loop-contract |
+
+## Session 58  -  Second-order innovation saturation
+
+| Rank | Candidate | Status | Evidence |
+|---:|---|---|---|
+| S58-I1 | Semantic innovation candidate dedup | Done S58 | Four launch-evidence wording variants collapse into one canonical gate with merged provenance and an explicit duplicate count |
+| S58-I2 | Franchise-scope contract guard | Done S58 | Static regression contract covers app authority plus tutorial, Return Digest, and trade-block persistence owners |
+| S58-I3 | Truthful Return target fallback | Done S58 | Exact panel focus and tab-only fallback produce distinct source-true messages |
+| S58-I4 | Launch readiness evidence gate | Deferred honestly | Hosted revision/asset parity, edge health/headers, received email, approval, and lifecycle evidence remain incomplete; no fabrication |
+
+Unified Genius List: **0 open / 4 primary closed**. Viable second-order innovation list: **0 open / 3 closed**.
+
 ## Session 57 — Exact authority and season coherence (2026-07-25)
 
 | Tier | Category | Status | Effort | Item |

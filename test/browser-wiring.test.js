@@ -75,14 +75,27 @@ test("first-run tutorial modal uses the shared focus trap", () => {
 
   assert.match(tutorialSource, /import \{ closeModal, openModal \} from "\.\/modalManager\.js"/);
   assert.match(tutorialSource, /openModal\(overlay, \{ onClose: \(\) => dismissTutorial\(onSkip\) \}\)/);
-  assert.match(tutorialSource, /closeModal\(overlay\);\s*markTutorialSeen\(\);\s*overlay\.remove\(\);/s);
-  assert.match(tutorialSource, /await onComplete\?\.[\s\S]*markTutorialSeen\(\);[\s\S]*renderReceipt\(receipt\)/);
+  assert.match(tutorialSource, /closeModal\(overlay\);\s*markTutorialSeen\(scope, storage\);\s*overlay\.remove\(\);/s);
+  assert.match(tutorialSource, /await onComplete\?\.[\s\S]*markTutorialSeen\(scope, storage\);[\s\S]*renderReceipt\(receipt\)/);
 });
 test("first-run tutorial styles are injected before mounting onboarding", () => {
   const appSource = read("../public/app.js");
 
   assert.match(appSource, /import \{ injectTutorialStyles, mountTutorial \} from "\.\/lib\/tutorialCampaign\.js"/);
   assert.match(appSource, /injectTutorialStyles\(\);\s*mountTutorial\(/s);
+  assert.match(appSource, /scope: state\.dashboard/);
+  assert.match(appSource, /completed: Boolean\(state\.dashboard\?\.startScenarioReceipt\)/);
+});
+
+test("Return Digest exposes one exact source-derived Season continuation", () => {
+  const appSource = read("../public/app.js");
+  const digestSource = read("../public/lib/returnDigest.js");
+  assert.match(digestSource, /data-action="continue-chapter"/);
+  assert.match(digestSource, /onContinueChapter\?\.\(chapterAction\)/);
+  assert.match(appSource, /onContinueChapter: continueSeasonChapter/);
+  assert.match(appSource, /activateTab\(targetTab\)/);
+  assert.match(appSource, /document\.getElementById\(action\.targetId\)/);
+  assert.match(appSource, /the exact .* panel is unavailable/);
 });
 test("game flow modals use the shared focus trap", () => {
   const gameFlowSource = read("../public/lib/gameFlow.js");

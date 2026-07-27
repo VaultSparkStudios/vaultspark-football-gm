@@ -4,39 +4,37 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 57 exhausted six exact-authority/season-coherence objectives and four second-order innovations: bidirectional API truth, agent-neutral routing, exact service authority, deliberate identity mastery, living Season chapters, and one self-validating visual evidence plane.",
-  "nextMilestone": "After this revision deploys, collect exact hosted same-origin provenance, canonical health/edge headers, a real received-message receipt, founder approval, and authoritative lifecycle reconciliation before any launch flip.",
+  "currentFocus": "Session 58 exhausted four exact-franchise/return-continuity objectives and three viable second-order innovations: exact authority epochs, scoped browser memory, actionable Season return, falsifiable loop evidence, semantic queue dedup, and regression guards.",
+  "nextMilestone": "After this revision deploys, collect exact hosted provenance, canonical health/edge headers, a real received-message receipt, founder approval, and authoritative lifecycle reconciliation before any launch flip.",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated: hosted provenance, canonical edge headers, a real received-message receipt, founder approval, and sibling-owned registry reconciliation remain absent."
+    "Launch/SPARKED remains evidence-gated: staging 3/10, provenance 0/7, canonical health/edge headers, a real received-message receipt, founder approval, and sibling-owned registry reconciliation remain absent."
   ],
-  "lastUpdated": "2026-07-26",
+  "lastUpdated": "2026-07-27",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-07-25",
-  "ignisScore": 42160,
+  "truthAuditLastRun": "2026-07-27",
+  "ignisScore": 41900,
   "ignisGrade": "FORGE",
-  "ignisLastComputed": "2026-07-20",
+  "ignisLastComputed": "2026-07-27",
   "testSuiteStatus": {
-    "totalTests": 489,
-    "pass": 489,
+    "totalTests": 499,
+    "pass": 499,
     "fail": 0,
-    "lastRun": "2026-07-25",
+    "lastRun": "2026-07-27",
     "newTestFiles": [
-      "test/api-contract-parity.test.js",
-      "test/architect-mastery-portfolio.test.js",
-      "test/season-chapters.test.js",
-      "test/service-authority.test.js",
-      "test/session-intent-classifier.test.js",
-      "test/studio-protocol-smoke.test.js",
-      "tests-ui/play-mode-smoke.spec.js"
+      "test/browser-memory-scope.test.js",
+      "test/franchise-scope-contract.test.js",
+      "test/franchise-scope.test.js",
+      "test/innovation-candidate-dedup.test.js",
+      "test/opening-contract-choice-matrix.test.js"
     ],
-    "newTestCount": 12,
-    "coverage": "Session 57 canonical aggregate Node evidence 489/489, Playwright 19/19, responsive evidence 53 captures, Pages build/smoke, and 50 reachable browser modules.",
-    "uiSuiteNote": "Playwright 19/19 and 53 responsive dark/light mobile/tablet/desktop captures passed the required viewport-theme-core-tab matrix plus contrast, overflow, runtime-error, and touch-target gates."
+    "newTestCount": 9,
+    "coverage": "Session 58 canonical aggregate Node evidence 499/499, Playwright 20/20, responsive evidence 53 captures, Pages build/smoke, and 51 reachable browser modules.",
+    "uiSuiteNote": "Playwright 20/20 and 53 responsive dark/light mobile/tablet/desktop captures passed automated viewport, contrast, overflow, runtime-error, and touch-target gates; manual AI inspection was unavailable at the Windows DPAPI boundary."
   },
-  "testsPassing": 489,
-  "testsTotal": 489,
+  "testsPassing": 499,
+  "testsTotal": 499,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -88,29 +86,32 @@
     "capitalEfficiency": 95,
     "automationCoverage": 100
   },
-  "currentSession": 57,
+  "currentSession": 58,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
     "timedOut": [],
     "failed": [
       "same-origin staging receipt remains 3/10",
+      "release provenance remains 0/7",
       "canonical launch evidence remains blocked"
     ],
     "passed": [
-      "canonical aggregate Node 489/489 with exit 0",
+      "canonical aggregate Node 499/499 with exit 0",
       "fresh source-bound direct-test receipt",
-      "Playwright 19/19",
+      "Playwright 20/20",
       "responsive evidence 53 captures with required matrix complete",
-      "Pages build, browser reachability 50 modules, and static smoke",
-      "bounded working-tree secret scan 0 findings",
-      "canon conformance 0 gaps and doctor blockingFailing 0",
-      "Unified Genius List 0 open / 6 closed",
-      "4 viable second-order innovations implemented",
-      "implementation revision 9c24df0 completed CI, brief-format, backend runtime, and Pages 4/4 green"
+      "Pages build, browser reachability 51 modules, and static smoke",
+      "browser promise observability 51 files and 0 silent sinks",
+      "bounded project-tree secret scan 0 findings",
+      "public sanitization critical/warning 0",
+      "sitemap 10/10",
+      "doctor blockingFailing 0",
+      "Unified Genius List 0 open / 4 closed",
+      "3 viable second-order innovations implemented"
     ],
-    "date": "2026-07-25",
-    "diagnosticNote": "The first aggregate correctly failed because the new season-chapter test was unsharded; after assigning it to runtime, shard coverage and the full aggregate reran green. The first responsive matrix found 34px tutorial actions; after a shared 44px fix, all 53 captures passed. Launch remains HOLD."
+    "date": "2026-07-27",
+    "diagnosticNote": "The first aggregate exposed one stale tutorial source assertion; after aligning it to scoped persistence, the focused test passed 6/6 and the full aggregate reran green. Launch remains HOLD. Brevo is READY, but inbound evidence is zero."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -144,7 +145,7 @@
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-07-26",
+    "date": "2026-07-27",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -158,43 +159,42 @@
   },
   "complianceScore": 37,
   "complianceTotal": 37,
-  "sanitizationLastCleared": "2026-07-25",
-  "lastVerificationAt": "2026-07-25",
+  "sanitizationLastCleared": "2026-07-27",
+  "lastVerificationAt": "2026-07-27",
   "stagingType": "github-pages",
   "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.069,
-  "entropyLastComputed": "2026-07-25",
+  "entropyScore": 0.066,
+  "entropyLastComputed": "2026-07-27",
   "lastSessionSummary": {
-    "session": 57,
+    "session": 58,
     "shipped": [
-      "Exact bidirectional API, current-intent routing, and delegated service authorities",
-      "Deliberate identity mastery and one source-derived Season chapter",
-      "Complete tutorial-to-week browser evidence journey",
-      "One canonical human-action parser and retired stale mutation/evidence paths",
-      "Self-validating 53-capture visual authority and 44px tutorial root fix"
+      "Exact franchise-scoped async authority and browser memory",
+      "Actionable source-derived Season return with truthful fallback",
+      "Falsifiable GAME_LOOP contract and 27-choice matrix",
+      "Semantic innovation dedup and exact-scope regression guards"
     ],
-    "tests": "Node 489/489 · UI 19/19 · responsive 53 captures",
-    "deploy": "implementation 9c24df0 workflows 4/4 green · staging receipt 3/10 · launch HOLD"
+    "tests": "Node 499/499 - UI 20/20 - responsive 53 captures",
+    "deploy": "pending direct-main implementation push - staging 3/10 - provenance 0/7 - launch HOLD"
   },
   "testingSurfaces": [
     {
       "type": "local",
       "label": "Local game",
       "url": "http://127.0.0.1:3000/game.html",
-      "lastChecked": "2026-07-25"
+      "lastChecked": "2026-07-27"
     },
     {
       "type": "staging",
       "label": "GitHub Pages",
       "url": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
-      "lastChecked": "2026-07-25"
+      "lastChecked": "2026-07-27"
     },
     {
       "type": "production",
       "label": "Public origin",
       "url": "https://playfranchisearchitect.com/",
-      "lastChecked": "2026-07-25"
+      "lastChecked": "2026-07-27"
     }
   ]
 }

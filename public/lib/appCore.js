@@ -2,6 +2,7 @@ import { state, api, DISPLAY_LABELS, GUIDE_SECTIONS, STATS_BENCHMARK_HINTS, TEAM
 import { buildPlayerProfileNarrative } from "./playerProfileNarrative.js";
 import { actionCoordinator } from "./actionCoordinator.js";
 import { getClientDiagnosticsSnapshot, recordClientDiagnostic, subscribeClientDiagnostics } from "./clientDiagnostics.js";
+import { franchiseScopeFromDashboard, franchiseStorageKey } from "./franchiseScope.js";
 
 export function escapeHtml(value) {
   return String(value)
@@ -351,22 +352,35 @@ export function saveStatsHiddenColumns(columns) {
   }
 }
 
-export function readTradeBlockIds() {
+const TRADE_BLOCK_STORAGE_PREFIX = "vsfgm:trade-block:v2";
+
+export function readTradeBlockIds(dashboard = state.dashboard || {}, storage = globalThis.localStorage) {
   try {
-    const parsed = JSON.parse(window.localStorage.getItem("vsfgm:trade-block") || "[]");
-    return Array.isArray(parsed) ? parsed : [];
+    const parsed = JSON.parse(storage?.getItem?.(franchiseStorageKey(TRADE_BLOCK_STORAGE_PREFIX, dashboard)) || "[]");
+    return Array.isArray(parsed) ? [...new Set(parsed.map(String).filter(Boolean))] : [];
   } catch {
     return [];
   }
 }
 
-export function saveTradeBlockIds(ids) {
-  state.tradeBlockIds = [...new Set(ids)];
+export function syncTradeBlockScope(dashboard = state.dashboard || {}, storage = globalThis.localStorage) {
+  const scope = franchiseScopeFromDashboard(dashboard);
+  if (state.tradeBlockScope === scope) return false;
+  state.tradeBlockScope = scope;
+  state.tradeBlockIds = readTradeBlockIds(dashboard, storage);
+  return true;
+}
+
+export function saveTradeBlockIds(ids, dashboard = state.dashboard || {}, storage = globalThis.localStorage) {
+  const scope = franchiseScopeFromDashboard(dashboard);
+  state.tradeBlockScope = scope;
+  state.tradeBlockIds = [...new Set((ids || []).map(String).filter(Boolean))];
   try {
-    window.localStorage.setItem("vsfgm:trade-block", JSON.stringify(state.tradeBlockIds));
+    storage?.setItem?.(franchiseStorageKey(TRADE_BLOCK_STORAGE_PREFIX, scope), JSON.stringify(state.tradeBlockIds));
   } catch {
     // Ignore persistence failures.
   }
+  return state.tradeBlockIds;
 }
 
 export function formatHeight(heightInches) {
