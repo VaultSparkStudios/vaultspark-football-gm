@@ -92,8 +92,8 @@
   "lastVerification": {
     "timedOut": [],
     "failed": [
-      "same-origin staging receipt remains 3/10",
-      "release provenance remains 0/7",
+      "post-deploy same-origin staging receipt remains 3/10",
+      "post-deploy release provenance remains 0/7",
       "canonical launch evidence remains blocked"
     ],
     "passed": [
@@ -108,10 +108,13 @@
       "sitemap 10/10",
       "doctor blockingFailing 0",
       "Unified Genius List 0 open / 4 closed",
-      "3 viable second-order innovations implemented"
+      "3 viable second-order innovations implemented",
+      "revision 8606587 completed CI, brief-format, backend runtime, and Pages 4/4 green",
+      "origin/main synchronized 0/0",
+      "Ark broadcast receipt 01JUHC9Q8067A8D21B730A25B2"
     ],
     "date": "2026-07-27",
-    "diagnosticNote": "The first aggregate exposed one stale tutorial source assertion; after aligning it to scoped persistence, the focused test passed 6/6 and the full aggregate reran green. Launch remains HOLD. Brevo is READY, but inbound evidence is zero."
+    "diagnosticNote": "The first aggregate exposed one stale tutorial source assertion; after alignment, focused 6/6 and aggregate 499/499 passed. Revision 8606587 deployed with workflows 4/4 green; hosted staging/provenance remained honestly red."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -164,7 +167,7 @@
   "stagingType": "github-pages",
   "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.066,
+  "entropyScore": 0.046,
   "entropyLastComputed": "2026-07-27",
   "lastSessionSummary": {
     "session": 58,
@@ -175,7 +178,7 @@
       "Semantic innovation dedup and exact-scope regression guards"
     ],
     "tests": "Node 499/499 - UI 20/20 - responsive 53 captures",
-    "deploy": "pending direct-main implementation push - staging 3/10 - provenance 0/7 - launch HOLD"
+    "deploy": "revision 8606587 workflows 4/4 green - synchronized 0/0 - staging 3/10 - provenance 0/7 - Ark 01JUHC9Q8067A8D21B730A25B2 - launch HOLD"
   },
   "testingSurfaces": [
     {

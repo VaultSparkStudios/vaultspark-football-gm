@@ -1346,6 +1346,10 @@ Launch remains HOLD. The live staging receipt is 3/10, release provenance is 0/7
 
 The automated real-browser matrix is green at 53/53. Manual AI image inspection is not claimed because both the local viewer and the Node image bridge failed at the Windows DPAPI credential boundary.
 
+### Deploy
+
+Revision 8606587f606cfdfae5c0afb05d057d3b6a1e9917 was pushed directly to main and synchronized 0/0. CI, brief-format, backend, and Pages completed 4/4 green. The post-deploy staging receipt remains 3/10 and release provenance remains 0/7, so deployment does not imply launch/SPARKED. Ark broadcast receipt: 01JUHC9Q8067A8D21B730A25B2.
+
 ### Next best move
 
 After this revision deploys, bind exact hosted revision/asset/health evidence, implement the canonical edge health/header contract in its owning host, establish a real on-domain inbound path and delivery receipt, reconcile lifecycle through Studio Ark, then request founder launch approval. Otherwise begin a fresh live-code audit from the exhausted queue.
