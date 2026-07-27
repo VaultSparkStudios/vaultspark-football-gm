@@ -492,3 +492,34 @@ test("switching runtime mode reloads setup state", async ({ page }) => {
   await expect(page.locator("#savesTable")).toContainText(slot, { timeout: 20_000 });
   await expect(page.locator("#resumeLatestBtn")).toBeEnabled();
 });
+
+test("mobile nav strip is horizontally scrollable and switches tabs", async ({ page }) => {
+  // Emulate a narrow phone viewport where the vertical nav would be unusable.
+  await page.setViewportSize({ width: 375, height: 667 });
+  await createLeagueFromSetup(page);
+
+  const sideMenu = page.locator(".side-menu");
+  await expect(sideMenu).toBeVisible();
+
+  // Confirm the strip is in flex layout (overflow-x: auto) at 375px.
+  const overflowX = await sideMenu.evaluate((el) => getComputedStyle(el).overflowX);
+  expect(overflowX).toBe("auto");
+
+  // Confirm the strip is sticky — it must have position: sticky.
+  const position = await sideMenu.evaluate((el) => getComputedStyle(el).position);
+  expect(position).toBe("sticky");
+
+  // Confirm --topbar-h is set (JS measurement ran).
+  const topbarH = await page.evaluate(() =>
+    getComputedStyle(document.documentElement).getPropertyValue("--topbar-h").trim()
+  );
+  expect(topbarH).toMatch(/^\d+px$/);
+
+  // Clicking a non-default tab in the strip switches the active panel.
+  const rosterBtn = page.locator('[data-testid="tab-roster"]');
+  await rosterBtn.click();
+  await expect(page.locator("#rosterTab")).toBeVisible();
+
+  // Active button must be aria-selected.
+  await expect(rosterBtn).toHaveAttribute("aria-selected", "true");
+});

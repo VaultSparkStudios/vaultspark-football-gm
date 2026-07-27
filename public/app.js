@@ -1979,6 +1979,24 @@ async function init() {
       authorityKey: state.dashboard?.leagueId || state.dashboard?.startYear || ""
     });
   }, 8000);
+  syncTopbarHeight();
+}
+
+// Measure the sticky topbar and expose its height as --topbar-h so the
+// mobile nav strip can stick at exactly the right offset below it.
+function syncTopbarHeight() {
+  const topbar = document.querySelector(".game-topbar");
+  if (!topbar) return;
+  const update = () => {
+    const h = Math.round(topbar.getBoundingClientRect().height);
+    document.documentElement.style.setProperty("--topbar-h", `${h}px`);
+  };
+  update();
+  if (typeof ResizeObserver !== "undefined") {
+    new ResizeObserver(update).observe(topbar);
+  } else {
+    window.addEventListener("resize", update, { passive: true });
+  }
 }
 
 init();

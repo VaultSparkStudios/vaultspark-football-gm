@@ -141,6 +141,7 @@ export function applyDashboard(newState) {
 
 export function activateTab(tabId) {
   state.activeTab = tabId;
+  let activeBtn = null;
   document.querySelectorAll(".menu-btn").forEach((btn) => {
     const isActive = btn.dataset.tab === tabId;
     btn.classList.toggle("active", isActive);
@@ -148,7 +149,12 @@ export function activateTab(tabId) {
     // otherwise announces whichever tab loaded first as selected forever.
     btn.setAttribute("aria-selected", isActive ? "true" : "false");
     btn.setAttribute("tabindex", isActive ? "0" : "-1");
+    if (isActive) activeBtn = btn;
   });
+  // On mobile strip mode, scroll the active pill into view horizontally.
+  if (activeBtn && window.innerWidth <= 640) {
+    activeBtn.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }
   document.querySelectorAll(".tab-panel").forEach((panel) => {
     panel.classList.toggle("active", panel.id === tabId);
   });
