@@ -32,7 +32,7 @@
       "title": "Truthful canonical verification",
       "projectImpact": 9,
       "ecosystemImpact": 9,
-      "evidence": "Node 24 shards terminate only after complete TAP, every test file has exact shard ownership, and the final atomic receipt proves 516/516."
+      "evidence": "Node 24 shards terminate only after complete TAP, every test file has exact shard ownership, and the final atomic receipt proves 517/517."
     }
   ],
   "followUps": [
@@ -69,6 +69,6 @@
     "files": 38,
     "insertions": 778,
     "deletions": 539,
-    "suite": "Node 516/516 · Playwright 20/20 · responsive 53 captures · Pages build/52-module reachability/smoke · secret scan 0 · sitemap 10/10 · doctor blockingFailing 0"
+    "suite": "Node 517/517 · Playwright 20/20 · responsive 53 captures · Pages build/52-module reachability/smoke · secret scan 0 · sitemap 10/10 · doctor blockingFailing 0"
   }
 }

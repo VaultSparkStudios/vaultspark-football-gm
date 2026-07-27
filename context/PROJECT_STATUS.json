@@ -18,20 +18,20 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-07-27",
   "testSuiteStatus": {
-    "totalTests": 516,
-    "pass": 516,
+    "totalTests": 517,
+    "pass": 517,
     "fail": 0,
     "lastRun": "2026-07-27",
     "newTestFiles": [
       "test/architect-plan-rehearsal.test.js",
       "test/tab-hydration.test.js"
     ],
-    "newTestCount": 17,
-    "coverage": "Session 59 canonical aggregate Node evidence 516/516, Playwright 20/20, responsive evidence 53 captures, Pages build/smoke, and 52 reachable browser modules.",
+    "newTestCount": 18,
+    "coverage": "Session 59 final canonical aggregate Node evidence 517/517, Playwright 20/20, responsive evidence 53 captures, Pages build/smoke, and 52 reachable browser modules.",
     "uiSuiteNote": "Playwright 20/20 and 53 responsive dark/light mobile/tablet/desktop captures passed automated viewport, contrast, overflow, runtime-error, and touch-target gates; manual AI inspection is not claimed because both connected readers failed at the Windows DPAPI boundary."
   },
-  "testsPassing": 516,
-  "testsTotal": 516,
+  "testsPassing": 517,
+  "testsTotal": 517,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -95,7 +95,7 @@
       "canonical launch evidence remains blocked on /_health 404, edge headers, email receipt, approval, provenance, and lifecycle drift"
     ],
     "passed": [
-      "canonical aggregate Node 516/516 with exit 0",
+      "canonical aggregate Node 517/517 with exit 0",
       "fresh source-bound direct-test receipt",
       "Playwright 20/20",
       "responsive evidence 53 captures with required matrix complete",
@@ -110,7 +110,7 @@
       "Ark session-impact receipt 01JUIN5747129D32F9238E20E9"
     ],
     "date": "2026-07-27",
-    "diagnosticNote": "Early aggregate timeouts are non-evidence. The first complete repaired aggregate exposed two unsharded new tests; after exact runtime ownership repair, the full aggregate passed 516/516 and wrote a fresh receipt. Deployment workflows are green, while hosted launch evidence remains honestly red."
+    "diagnosticNote": "Early aggregate timeouts are non-evidence. The first complete repaired aggregate exposed two unsharded new tests; after exact runtime ownership repair it passed 516/516. Post-push Linux CI then exposed weekly modal ordering and opening-bye source-truth gaps; both were root-fixed, and final direct evidence passes 517/517 plus Playwright 20/20. Hosted launch evidence remains honestly red."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -174,7 +174,7 @@
       "Exact demand-owned tab hydration and topology proof",
       "Truthful Node 24 shard termination and test ownership"
     ],
-    "tests": "Node 516/516 - UI 20/20 - responsive 53 captures",
+    "tests": "Node 517/517 - UI 20/20 - responsive 53 captures",
     "deploy": "4e6e535 direct-main; exact workflows 4/4 green; staging 3/10; Ark 01JUIN5747129D32F9238E20E9; launch HOLD"
   },
   "testingSurfaces": [

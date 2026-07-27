@@ -1888,6 +1888,18 @@ export class GameSession {
       entry.teamId === this.controlledTeamId && Number(entry.year) === appliedYear && Number(entry.week) >= appliedWeek
     ) || null;
     const weeklyPlan = team?.weeklyPlan || null;
+    const currentWeek = Math.max(appliedWeek, Number(this.currentWeek) || appliedWeek);
+    const appliedSchedule = (this.seasonSchedule || []).find((entry) => Number(entry.week) === appliedWeek) || null;
+    const appliedGameScheduled = Boolean(appliedSchedule?.games?.some((entry) =>
+      entry.homeTeamId === this.controlledTeamId || entry.awayTeamId === this.controlledTeamId
+    ));
+    const nextOpponent = weeklyPlan?.opponentId || null;
+    const waitingDetail = currentWeek > appliedWeek
+      ? `${appliedGameScheduled ? `No controlled-team result was recorded for Week ${appliedWeek}.` : `Week ${appliedWeek} was a scheduled bye.`} Week ${currentWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} is the next source gate.`
+      : `Week ${appliedWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} is ready to play`;
+    const waitingAction = currentWeek > appliedWeek
+      ? `Commit your tactic for Week ${currentWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} and earn the first game receipt.`
+      : "Commit your tactic and play the opening week.";
     const isHome = game?.homeTeamId === this.controlledTeamId;
     const teamScore = game ? Number(isHome ? game.homeScore : game.awayScore) : null;
     const opponentScore = game ? Number(isHome ? game.awayScore : game.homeScore) : null;
@@ -1910,9 +1922,9 @@ export class GameSession {
       steps: [
         { id: "pressure", label: "Accept the pressure", complete: true, detail: receipt.effects?.pressure?.mandate || ownerExpectation?.mandate || "Owner mandate accepted" },
         { id: "plan", label: "Set the weekly intent", complete: Boolean(weeklyPlan), detail: weeklyPlan?.summary || "Matchup plan pending" },
-        { id: "receipt", label: "Earn the first receipt", complete: Boolean(result), detail: result ? `${result.verdict} ${result.teamScore}-${result.opponentScore} vs ${result.opponentId}` : `Week ${appliedWeek} is ready to play` }
+        { id: "receipt", label: "Earn the first receipt", complete: Boolean(result), detail: result ? `${result.verdict} ${result.teamScore}-${result.opponentScore} vs ${result.opponentId}` : waitingDetail }
       ],
-      nextAction: result ? "Review the evidence and choose the next franchise decision." : "Commit your tactic and play the opening week.",
+      nextAction: result ? "Review the evidence and choose the next franchise decision." : waitingAction,
       ownerPressure: ownerExpectation ? { mandate: ownerExpectation.mandate || null, trend: ownerExpectation.trend || "watch", heat: ownerExpectation.heat ?? null } : null,
       result
     };
@@ -5717,4 +5729,3 @@ export class GameSession {
     };
   }
 }
-

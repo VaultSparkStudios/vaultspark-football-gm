@@ -838,7 +838,7 @@ Committed SIL follow-ups:
 
 SIL v3.0: **995 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 95, Automation Coverage 100).
 
-- Dev Health: 100 — canonical Node passes 516/516 with direct exit 0 and a fresh receipt; Playwright passes 20/20; Pages build/reachability/smoke and 53-capture responsive evidence pass.
+- Dev Health: 100 — canonical Node passes 517/517 with direct exit 0 and a fresh receipt; Playwright passes 20/20; Pages build/reachability/smoke and 53-capture responsive evidence pass. Two Linux CI findings were root-fixed rather than retried away.
 - Creative Alignment: 100 — the pre-commit red-team room strengthens deliberate General Manager authorship without predicting outcomes or awarding hidden power.
 - Momentum: 100 — all four audited objectives and all four viable second-order innovations shipped in one continuous mission.
 - Engagement: 100 — players can inspect, revise, defer, or commit one joined plan and later see which counter-signal source challenged it.

@@ -42,7 +42,7 @@
   },
   "verification": {
     "passed": [
-      "canonical aggregate Node 516/516 with exit 0 and fresh source-bound receipt",
+      "final canonical aggregate Node 517/517 with exit 0 and fresh source-bound receipt",
       "Playwright 20/20",
       "responsive evidence 53 captures with required matrix complete",
       "Pages build, static smoke, and browser reachability 52 modules",
@@ -53,7 +53,7 @@
     ],
     "nonEvidence": [
       "early wrapper timeouts are retained as non-evidence",
-      "the initial complete aggregate failure on unsharded tests is superseded only by the 516/516 rerun",
+      "the initial complete aggregate failure on unsharded tests is superseded by the 516/516 repair and final 517/517 post-CI root-fix rerun",
       "automated visual evidence does not substitute for unavailable manual AI image inspection",
       "credential readiness does not prove received mail",
       "local build/browser success does not prove hosted launch identity",

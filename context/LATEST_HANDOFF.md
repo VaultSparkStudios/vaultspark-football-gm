@@ -18,7 +18,7 @@ Session 59 completed the continuous `/arc`: all four live-code audit objectives 
 
 ### Verification
 
-- Canonical Node: 516/516, aggregate exit 0, fresh source-bound receipt.
+- Canonical Node: 517/517, aggregate exit 0, fresh source-bound receipt.
 - Browser: Playwright 20/20; responsive evidence 53 captures across dark/light mobile/tablet/desktop.
 - Build/security: Pages build/smoke green; browser reachability 52 modules; project secret scan 0; sitemap 10/10; doctor `blockingFailing: 0`.
 - Queue: Unified Genius List 0 open / 4 closed; viable second-order list 0 open / 4 closed; SIL v3 995/1000.
@@ -34,6 +34,8 @@ The automated 53-capture contrast, overflow, runtime-error, touch-target, viewpo
 ### Deploy
 
 Implementation revision `4e6e5353b17fbecbebb1bea8cb7e7021b965b904` was pushed directly to `main`; CI, brief-format, backend runtime, and Pages workflows completed 4/4 green. The canonical origin serves the revised hashed bundle, but the post-deploy same-origin staging receipt remains blocked at 3/10 and launch evidence remains HOLD. Ark broadcast receipt: `01JUIN5747129D32F9238E20E9`. Deployment does not imply launch/SPARKED.
+
+Post-push CI found two real Linux-only evidence gaps. The weekly browser journey now follows the product's optional General Manager decision → tactic → rehearsal order, and the Opening Contract reports a scheduled opening-week bye plus the next source week/opponent instead of repeating a stale instruction. Focused regressions and the complete suites pass at Node 517/517 and Playwright 20/20.
 
 ### Next best move
 

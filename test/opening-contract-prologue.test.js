@@ -43,6 +43,21 @@ test("opening prologue evidence survives save and restore without tutorial flags
   assert.deepEqual(restored.getOpeningContractProgress(), session.getOpeningContractProgress());
 });
 
+test("opening prologue advances honestly when the controlled team starts on a bye", () => {
+  const session = createSession({ seed: 52033, startYear: 2026, controlledTeamId: "BUF" });
+  const openingWeek = session.seasonSchedule.find((entry) => Number(entry.week) === 1);
+  openingWeek.games = openingWeek.games.filter((game) => game.homeTeamId !== "BUF" && game.awayTeamId !== "BUF");
+  session.applyStartScenario(openingRequest());
+
+  const command = executeAdvanceWeekCommand(session, { count: 1, weeklyTacticOverride: "run-heavy" });
+  assert.equal(command.ok, true);
+  const progress = session.getDashboardState().openingContractProgress;
+  assert.equal(progress.status, "active");
+  assert.match(progress.steps.find((step) => step.id === "receipt").detail, /Week 1 was a scheduled bye/i);
+  assert.match(progress.nextAction, /Week 2/i);
+  assert.doesNotMatch(progress.nextAction, /play the opening week/i);
+});
+
 test("opening contract CTA delegates to the shared weekly command coordinator", () => {
   const overview = readFileSync(new URL("../public/lib/tabOverview.js", import.meta.url), "utf8");
   const app = readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
