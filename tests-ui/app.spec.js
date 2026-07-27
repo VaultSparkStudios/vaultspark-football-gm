@@ -109,17 +109,19 @@ test("create league, advance week, and open player modal", async ({ page }) => {
 
   const before = parseWeek(await page.locator("#yearCard").textContent());
   await page.click("#advanceWeekBtn");
-  // Dismiss the pre-game tactical modal if it appears during regular season
+  // Weekly plan composition is ordered: optional GM decision → tactic → rehearsal.
+  // Choose (rather than dismiss) a live decision so the command remains eligible
+  // to advance, then drain each subsequently-created modal in contract order.
+  const gmDecisionChoice = page.locator("#gmDecisionOptions .gm-decision-option").first();
+  if (await gmDecisionChoice.isVisible({ timeout: 3_000 }).catch(() => false)) {
+    await gmDecisionChoice.click();
+  }
   const skipBtn = page.locator("#halftimeAdjustModal .tactic-skip-btn");
-  if (await skipBtn.isVisible({ timeout: 3_000 }).catch(() => false)) {
+  if (await skipBtn.isVisible({ timeout: 10_000 }).catch(() => false)) {
     await skipBtn.click();
   }
-  const gmDecisionSkip = page.locator("#gmDecisionDismissBtn");
-  if (await gmDecisionSkip.isVisible({ timeout: 3_000 }).catch(() => false)) {
-    await gmDecisionSkip.click();
-  }
   const commitPlan = page.locator("#commitArchitectPlanBtn");
-  if (await commitPlan.isVisible({ timeout: 3_000 }).catch(() => false)) {
+  if (await commitPlan.isVisible({ timeout: 10_000 }).catch(() => false)) {
     await commitPlan.click();
   }
   await waitGameReady(page, 120_000);

@@ -25,7 +25,7 @@
 ║  ✓ Exact demand-owned tab hydration and topology proof           ║
 ║  ✓ Truthful Node 24 shard termination and test ownership         ║
 ║  Tests  Node 516/516 - UI 20/20 - responsive 53 captures         ║
-║  Deploy local verification green - direct-main delivery pending  ║
+║  Deploy 4e6e535 direct-main; exact workflows 4/4 green; staging  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -66,9 +66,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    5% used                          ║
-║     47,420 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~23,710 tok/turn  ·  cache 50%  ·  36 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
+║     24,774 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~12,387 tok/turn  ·  cache 50%  ·  72 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
