@@ -4561,3 +4561,102 @@ html[data-theme="light"] .bg-layer {
 .weekly-plan-receipt.positive { border-color: color-mix(in srgb, var(--positive) 65%, var(--line)); }
 @media (max-width: 560px) { .weekly-plan-receipt { align-items: flex-start; flex-direction: column; } .weekly-plan-receipt span { text-align: left; } }
 @media (max-width: 560px) { .contextual-evidence-prompt { max-height: none; overflow: visible; } .contextual-evidence-ratings { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── Mobile Nav Drawer ──────────────────────────────────────────────────── */
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+.nav-close-btn {
+  display: none;
+}
+
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 905;
+  cursor: pointer;
+  animation: nav-fade-in 0.18s ease;
+}
+
+.nav-backdrop.nav-active {
+  display: block;
+}
+
+@keyframes nav-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+body.nav-open-active {
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .mobile-nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    padding: 0;
+    font-size: 1.35rem;
+    line-height: 1;
+    background: var(--raised);
+    border: 1px solid rgba(var(--team-tertiary-rgb), 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
+    order: -1;
+  }
+
+  .nav-close-btn {
+    display: flex !important;
+    align-self: flex-end;
+    margin-bottom: 0.6rem;
+    padding: 0 0.75rem;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.15rem;
+    background: transparent;
+    border: 1px solid rgba(var(--team-tertiary-rgb), 0.22);
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--ink-dim);
+  }
+
+  /* Override static/grid from the 980px breakpoint and convert to 100dvh drawer */
+  .side-menu {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: min(300px, 90vw);
+    height: 100dvh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 910;
+    transform: translateX(-100%);
+    transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0 18px 18px 0;
+    padding: 0.8rem 0.65rem 2rem;
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .side-menu.nav-open {
+    transform: translateX(0);
+    box-shadow: 8px 0 40px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Ensure the game-shell still collapses properly without the sidebar column */
+  .game-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

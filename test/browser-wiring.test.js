@@ -130,3 +130,33 @@ test("game modal markup exposes dialog semantics", () => {
   assert.match(gameHtml, /id="draftPickRevealModal" hidden role="dialog" aria-modal="true"/);
   assert.match(gameHtml, /id="franchiseMomentModal" hidden role="dialog" aria-modal="true"/);
 });
+
+test("mobile nav drawer: toggle button, sideMenu id, backdrop, and close button are wired", () => {
+  const gameHtml = read("../public/game.html");
+  const appSource = read("../public/app.js");
+  const cssSource = read("../public/styles.css");
+
+  // HTML: toggle button with aria contract
+  assert.match(gameHtml, /id="mobileNavToggleBtn".*aria-label="Open navigation menu".*aria-expanded="false".*aria-controls="sideMenu"/s);
+  // HTML: nav element carries the controlled id
+  assert.match(gameHtml, /id="sideMenu".*class="side-menu"/s);
+  // HTML: close button inside the drawer
+  assert.match(gameHtml, /id="navCloseBtn".*aria-label="Close navigation menu"/s);
+  // HTML: backdrop element
+  assert.match(gameHtml, /id="navBackdrop"/);
+
+  // JS: open/close/backdrop wiring
+  assert.match(appSource, /mobileNavToggleBtn/);
+  assert.match(appSource, /navCloseBtn/);
+  assert.match(appSource, /navBackdrop/);
+  assert.match(appSource, /nav-open-active/);
+  assert.match(appSource, /aria-expanded.*true/);
+  assert.match(appSource, /Escape.*nav\.classList\.contains\("nav-open"\)/s);
+
+  // CSS: 100dvh drawer and transition
+  assert.match(cssSource, /height: 100dvh/);
+  assert.match(cssSource, /\.side-menu\.nav-open/);
+  assert.match(cssSource, /translateX\(-100%\)/);
+  assert.match(cssSource, /\.mobile-nav-toggle/);
+  assert.match(cssSource, /\.nav-backdrop/);
+});

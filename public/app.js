@@ -2051,3 +2051,64 @@ async function init() {
 init();
 
 initThemeCustomizer("themeToggleBtn");
+
+// ── Mobile Nav Drawer ──────────────────────────────────────────────────────
+(function initMobileNavDrawer() {
+  const toggleBtn = document.getElementById("mobileNavToggleBtn");
+  const closeBtn  = document.getElementById("navCloseBtn");
+  const backdrop  = document.getElementById("navBackdrop");
+  const nav       = document.getElementById("sideMenu");
+  if (!toggleBtn || !nav) return;
+
+  function isDrawerActive() {
+    return window.matchMedia("(max-width: 640px)").matches;
+  }
+
+  function openNav() {
+    nav.classList.add("nav-open");
+    backdrop?.classList.add("nav-active");
+    document.body.classList.add("nav-open-active");
+    toggleBtn.setAttribute("aria-expanded", "true");
+    closeBtn?.focus();
+  }
+
+  function closeNav() {
+    nav.classList.remove("nav-open");
+    backdrop?.classList.remove("nav-active");
+    document.body.classList.remove("nav-open-active");
+    toggleBtn.setAttribute("aria-expanded", "false");
+    toggleBtn.focus();
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    if (nav.classList.contains("nav-open")) closeNav();
+    else openNav();
+  });
+
+  closeBtn?.addEventListener("click", closeNav);
+  backdrop?.addEventListener("click", closeNav);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.classList.contains("nav-open")) {
+      e.preventDefault();
+      closeNav();
+    }
+  });
+
+  // Close drawer after a tab is selected on narrow screens
+  nav.addEventListener("click", (e) => {
+    if (e.target.classList.contains("menu-btn") && isDrawerActive()) {
+      closeNav();
+    }
+  });
+
+  // On resize to wide screen, ensure no stale state
+  window.addEventListener("resize", () => {
+    if (!isDrawerActive() && nav.classList.contains("nav-open")) {
+      nav.classList.remove("nav-open");
+      backdrop?.classList.remove("nav-active");
+      document.body.classList.remove("nav-open-active");
+      toggleBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+})();
