@@ -2064,7 +2064,11 @@ initThemeCustomizer("themeToggleBtn");
     return window.matchMedia("(max-width: 640px)").matches;
   }
 
+  // Initialise inert so off-screen drawer isn't keyboard-reachable on load
+  if (isDrawerActive()) nav.setAttribute("inert", "");
+
   function openNav() {
+    nav.removeAttribute("inert");
     nav.classList.add("nav-open");
     backdrop?.classList.add("nav-active");
     document.body.classList.add("nav-open-active");
@@ -2078,6 +2082,8 @@ initThemeCustomizer("themeToggleBtn");
     document.body.classList.remove("nav-open-active");
     toggleBtn.setAttribute("aria-expanded", "false");
     toggleBtn.focus();
+    // Re-apply inert after the slide-out animation finishes (270ms > 260ms transition)
+    setTimeout(() => { if (!nav.classList.contains("nav-open")) nav.setAttribute("inert", ""); }, 270);
   }
 
   toggleBtn.addEventListener("click", () => {
@@ -2104,11 +2110,18 @@ initThemeCustomizer("themeToggleBtn");
 
   // On resize to wide screen, ensure no stale state
   window.addEventListener("resize", () => {
-    if (!isDrawerActive() && nav.classList.contains("nav-open")) {
-      nav.classList.remove("nav-open");
-      backdrop?.classList.remove("nav-active");
-      document.body.classList.remove("nav-open-active");
-      toggleBtn.setAttribute("aria-expanded", "false");
+    if (!isDrawerActive()) {
+      // Widen: clear any open state and remove inert so desktop nav is reachable
+      if (nav.classList.contains("nav-open")) {
+        nav.classList.remove("nav-open");
+        backdrop?.classList.remove("nav-active");
+        document.body.classList.remove("nav-open-active");
+        toggleBtn.setAttribute("aria-expanded", "false");
+      }
+      nav.removeAttribute("inert");
+    } else if (!nav.classList.contains("nav-open")) {
+      // Narrow: drawer is closed, ensure it is inert
+      nav.setAttribute("inert", "");
     }
   });
 })();

@@ -159,4 +159,12 @@ test("mobile nav drawer: toggle button, sideMenu id, backdrop, and close button 
   assert.match(cssSource, /translateX\(-100%\)/);
   assert.match(cssSource, /\.mobile-nav-toggle/);
   assert.match(cssSource, /\.nav-backdrop/);
+
+  // CSS: visibility hidden on closed drawer prevents off-screen keyboard focus
+  assert.match(cssSource, /\.side-menu\s*\{[^}]*visibility:\s*hidden/s);
+  assert.match(cssSource, /\.side-menu\.nav-open\s*\{[^}]*visibility:\s*visible/s);
+
+  // JS: inert attribute management keeps closed drawer out of tab order
+  assert.match(appSource, /nav\.setAttribute\("inert"/);
+  assert.match(appSource, /nav\.removeAttribute\("inert"\)/);
 });

@@ -4642,7 +4642,9 @@ body.nav-open-active {
     overflow-x: hidden;
     z-index: 910;
     transform: translateX(-100%);
-    transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+    /* visibility delay matches close animation so tab order is cleared after slide-out */
+    transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.26s;
+    visibility: hidden;
     border-radius: 0 18px 18px 0;
     padding: 0.8rem 0.65rem 2rem;
     display: flex !important;
@@ -4652,6 +4654,9 @@ body.nav-open-active {
 
   .side-menu.nav-open {
     transform: translateX(0);
+    /* visibility: visible fires immediately so the drawer is reachable before slide completes */
+    transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0s;
+    visibility: visible;
     box-shadow: 8px 0 40px rgba(0, 0, 0, 0.4);
   }
 
