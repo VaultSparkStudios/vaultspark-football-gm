@@ -1,4 +1,6 @@
 import crypto from "node:crypto";
+import fs from "node:fs";
+import path from "node:path";
 
 function digest(value) {
   return crypto.createHash("sha256").update(JSON.stringify(value)).digest("hex").slice(0, 16);
@@ -15,6 +17,7 @@ export function lifecycleAuthorityFingerprint(lifecycle = {}) {
 }
 
 export function geniusAuthorityFingerprint(cache = {}) {
+  cache = cache && typeof cache === "object" ? cache : {};
   return digest({
     status: cache.status || null,
     source: cache.source || null,
@@ -22,6 +25,46 @@ export function geniusAuthorityFingerprint(cache = {}) {
     closed: Array.isArray(cache.closed) ? cache.closed : [],
     exhaustedReason: cache.exhaustedReason || null
   });
+}
+
+export function readCommittedGeniusAuthority(root) {
+  const docsDir = path.join(root, "docs");
+  let names = [];
+  try {
+    names = fs.readdirSync(docsDir)
+      .filter((name) => /^AUDIT_\d{4}-\d{2}-\d{2}\.json$/i.test(name))
+      .sort()
+      .reverse();
+  } catch {
+    return {};
+  }
+  for (const name of names) {
+    try {
+      const audit = JSON.parse(fs.readFileSync(path.join(docsDir, name), "utf8"));
+      const items = Array.isArray(audit.items) ? audit.items : [];
+      const open = items.filter((item) => item?.status !== "done");
+      const closed = items.filter((item) => item?.status === "done")
+        .map((item) => item.slug || item.title)
+        .filter(Boolean);
+      return {
+        status: open.length === 0 && items.length > 0 ? "exhausted" : "open",
+        source: name,
+        items: open.map((item) => ({
+          slug: item.slug || null,
+          title: item.title || null,
+          rank: item.rank ?? null,
+          tier: item.tier || null
+        })),
+        closed,
+        exhaustedReason: open.length === 0 && items.length > 0
+          ? `All ${closed.length} live-premise-verified audit items are done.`
+          : null
+      };
+    } catch {
+      // A corrupt newest audit cannot silently shadow an older valid authority.
+    }
+  }
+  return {};
 }
 
 export function describeProjectProfile(profile = null, lifecycle = {}, now = new Date()) {
@@ -50,6 +93,7 @@ export function describeProjectProfile(profile = null, lifecycle = {}, now = new
 }
 
 export function describeGeniusCache(cache = {}) {
+  cache = cache && typeof cache === "object" ? cache : {};
   const items = Array.isArray(cache.items) ? cache.items : [];
   const closed = Array.isArray(cache.closed) ? cache.closed : [];
   return {

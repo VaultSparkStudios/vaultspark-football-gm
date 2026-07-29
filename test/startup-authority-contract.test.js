@@ -8,7 +8,8 @@ import {
   describeGeniusCache,
   describeProjectProfile,
   geniusAuthorityFingerprint,
-  lifecycleAuthorityFingerprint
+  lifecycleAuthorityFingerprint,
+  readCommittedGeniusAuthority
 } from "../scripts/lib/startup-authority.mjs";
 
 const root = resolve(new URL("..", import.meta.url).pathname.replace(/^\/(?:[A-Za-z]:)/, (match) => match.slice(1)));
@@ -41,6 +42,22 @@ test("exhausted genius authority remains an explicit receipt", () => {
   assert.equal(summary.exhausted, true);
   assert.equal(summary.closedCount, 2);
   assert.equal(summary.reason, "No open ranked items.");
+});
+
+test("missing ignored cache falls back to committed audit authority", () => {
+  assert.deepEqual(describeGeniusCache(null), {
+    status: "unknown",
+    source: "latest audit",
+    items: [],
+    closedCount: 0,
+    exhausted: false,
+    reason: null
+  });
+  const authority = readCommittedGeniusAuthority(root);
+  assert.equal(authority.status, "exhausted");
+  assert.equal(authority.items.length, 0);
+  assert.equal(authority.closed.length, 5);
+  assert.equal(authority.source, "AUDIT_2026-07-28.json");
 });
 
 test("brief freshness fails when lifecycle or genius authority changes", () => {
@@ -83,6 +100,6 @@ test("live renderer emits source-bound startup authority tiles", () => {
   assert.match(brief, /lifecycle-authority-fingerprint/);
   assert.match(brief, /genius-authority-fingerprint/);
   assert.match(brief, /Lifecycle authority · local FORGE · registry SPARKED · DRIFT/);
-  assert.match(brief, /cache stale .* refresh required/);
+  assert.match(brief, /Profile · game ·/);
   assert.match(brief, /GENIUS HIT LIST/);
 });

@@ -3,7 +3,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { inspectLifecycleCoherence } from "./lifecycle-coherence.mjs";
-import { geniusAuthorityFingerprint, lifecycleAuthorityFingerprint } from "./lib/startup-authority.mjs";
+import {
+  geniusAuthorityFingerprint,
+  lifecycleAuthorityFingerprint,
+  readCommittedGeniusAuthority
+} from "./lib/startup-authority.mjs";
 
 function parseDate(value) {
   const parsed = value ? new Date(`${value}T00:00:00Z`) : null;
@@ -75,15 +79,11 @@ function main() {
   } catch {
     status = null;
   }
-  const geniusCache = (() => {
-    try { return JSON.parse(fs.readFileSync(path.join(root, ".cache", "genius-list.json"), "utf8")); }
-    catch { return {}; }
-  })();
   const result = evaluateBriefFreshness({
     briefText: fs.readFileSync(briefPath, "utf8"),
     status,
     lifecycleFingerprint: lifecycleAuthorityFingerprint(inspectLifecycleCoherence(root)),
-    geniusFingerprint: geniusAuthorityFingerprint(geniusCache)
+    geniusFingerprint: geniusAuthorityFingerprint(readCommittedGeniusAuthority(root))
   });
   if (!result.fresh) {
     console.error(`STALE: ${result.reasons.join("; ")}`);

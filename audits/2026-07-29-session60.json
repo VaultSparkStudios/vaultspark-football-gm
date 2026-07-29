@@ -45,7 +45,7 @@
   },
   "verification": {
     "passed": [
-      "canonical aggregate Node 538/538 with exit 0 and fresh source-bound receipt",
+      "canonical aggregate Node 539/539 with exit 0 and fresh source-bound receipt",
       "Playwright 20/20",
       "responsive evidence 53 captures with required matrix complete",
       "Pages build, static smoke, and browser reachability 52 modules",
@@ -53,7 +53,7 @@
     ],
     "nonEvidence": [
       "initial 19/20 Playwright result is superseded only by the component-identity root fix and full 20/20 rerun",
-      "initial aggregate shard-coverage failure is superseded only by exact ownership and the full 538/538 rerun",
+      "initial aggregate shard-coverage failure is superseded only by exact ownership and the full 539/539 rerun",
       "automated visual evidence does not substitute for unavailable manual AI image inspection",
       "credential readiness does not prove received mail",
       "local build/browser success does not prove hosted launch identity",

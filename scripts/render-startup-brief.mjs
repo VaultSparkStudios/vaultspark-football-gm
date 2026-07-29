@@ -35,7 +35,8 @@ import {
   describeGeniusCache,
   describeProjectProfile,
   geniusAuthorityFingerprint,
-  lifecycleAuthorityFingerprint
+  lifecycleAuthorityFingerprint,
+  readCommittedGeniusAuthority
 } from './lib/startup-authority.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -1073,7 +1074,7 @@ if (!geniusBlock) {
 // validator turns into a hard /start stop.
 const statusLatest = (typeof status.currentSession === 'number') ? status.currentSession : null;
 const lifecycleAuthority = inspectLifecycleCoherence(root);
-const geniusAuthority = readJson(path.join(root, '.cache', 'genius-list.json'), {});
+const geniusAuthority = readCommittedGeniusAuthority(root);
 const lifecycleFingerprint = lifecycleAuthorityFingerprint(lifecycleAuthority);
 const geniusFingerprint = geniusAuthorityFingerprint(geniusAuthority);
 let briefCoherent = true;
