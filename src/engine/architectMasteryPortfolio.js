@@ -128,6 +128,9 @@ export function buildArchitectMasteryPortfolio(league = {}, teamId = null) {
   const focusPath = paths.slice().sort(
     (left, right) => left.score - right.score || left.evidenceCount - right.evidenceCount
   )[0];
+  const selectedFocusId = teamId ? league.architectTheses?.[teamId]?.focusPathId : null;
+  const selectedFocus = paths.find((path) => path.id === selectedFocusId) || null;
+  const activeFocus = selectedFocus || focusPath;
   const signaturePath = paths.filter((path) => path.evidenceCount > 0).sort(
     (left, right) => right.score - left.score || right.evidenceCount - left.evidenceCount
   )[0] || null;
@@ -139,13 +142,20 @@ export function buildArchitectMasteryPortfolio(league = {}, teamId = null) {
     evidenceCount: paths.reduce((sum, path) => sum + path.evidenceCount, 0),
     paths,
     focus: {
-      pathId: focusPath.id,
-      label: focusPath.label,
-      reason: focusPath.evidenceCount === 0
+      pathId: activeFocus.id,
+      label: activeFocus.label,
+      source: selectedFocus ? "player-authored" : "system-recommendation",
+      reason: selectedFocus ? "You selected this path as the current Architect thesis focus." : focusPath.evidenceCount === 0
         ? "This path has no committed evidence yet."
         : `This is the lowest current path at ${focusPath.score}/25.`,
-      nextMilestone: focusPath.nextMilestone
+      nextMilestone: activeFocus.nextMilestone
     },
+    recommendedFocus: {
+      pathId: focusPath.id,
+      label: focusPath.label,
+      reason: focusPath.evidenceCount === 0 ? "This path has no committed evidence yet." : `This is the lowest current path at ${focusPath.score}/25.`
+    },
+    thesis: teamId ? league.architectTheses?.[teamId] || null : null,
     signature: signaturePath ? {
       pathId: signaturePath.id,
       label: signaturePath.label,

@@ -12,7 +12,7 @@
  *   node scripts/check-secrets.mjs --for claude.api --json
  */
 
-import { listCapabilities, resolveCapability } from './lib/secrets.mjs';
+import { capabilityMapSource, listCapabilities, resolveCapability } from './lib/secrets.mjs';
 
 const args = process.argv.slice(2);
 const capArg = args.includes('--for') ? args[args.indexOf('--for') + 1] : null;
@@ -48,6 +48,7 @@ function render(rows) {
   console.log('');
   const ready = rows.filter(r => r.ok).length;
   console.log(`${ready}/${rows.length} capabilities ready. Missing → see docs/STUDIO_CANON.md + TASK_BOARD Human Action Required.`);
+  console.log(`Capability map authority: ${capabilityMapSource()}.`);
   console.log('');
 }
 

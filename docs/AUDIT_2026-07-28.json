@@ -1,0 +1,296 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-28",
+  "session": 60,
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 5,
+    "combinedPriority": 139.9,
+    "topItem": "canonical-capability-map-authority",
+    "source": "live-code-audit",
+    "openItems": 0
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "infrastructure rubric with product, browser-game, and public-app release lenses",
+    "staging": "GitHub Pages artifact plus exact same-origin hosted verification",
+    "source": "live source, direct focused tests, canonical secrets/status probes, CI and release evidence, game-loop contract, and public-safe context"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation",
+    "ci": "The latest five CI runs and latest three Pages deploys are green; current HEAD equals origin/main before implementation.",
+    "staging": "The same-origin staging receipt is blocked at 3/10.",
+    "production": "The canonical origin returns 404 for /_health and lacks HSTS, frame-protection, and Content Security Policy evidence.",
+    "cost": "Canonical release and cost gates allow: the static browser product is cost-neutral at $0 per 1,000 free users. Max Plan cost is flat-rate and notional.",
+    "branding": "Focused release contracts pass 31/31; proprietary branding, footer completeness, legal pages, sitemap, agents.json, and rollback documentation are present.",
+    "parity": "Local responsive evidence belongs to the prior revision; exact hosted revision parity remains blocked with the staging receipt.",
+    "email": "Brevo and Cloudflare DNS capabilities are canonically READY, but no real received-message receipt proves project-domain delivery.",
+    "approval": "No founder launch approval is recorded.",
+    "lifecycle": "Local FORGE/public-unlaunched truth conflicts with sibling registry SPARKED state; reconciliation belongs in signed Ark cargo, never a sibling edit."
+  },
+  "gameLoopReview": {
+    "loopTightness": 9.0,
+    "progression": 8.4,
+    "sessionEngagement": 8.6,
+    "retention": 7.8,
+    "soulFidelity": 9.2,
+    "overall": 8.6,
+    "evidence": "Structural implementation review plus 29/29 targeted executable contracts. Outcome confidence remains low-medium because no consented docs/PLAYTESTS cohort exists."
+  },
+  "recommendedMoves": [
+    "Make every repo-local credential verdict derive its capability shape from the canonical gateway instead of reporting a phantom 0/0 world.",
+    "Turn inferred Architect adaptation and auto-lowest mastery focus into one explicit, persisted player-authored thesis without hidden bonuses.",
+    "Make the sole startup brief surface lifecycle authority drift, stale profile evidence, and an honestly exhausted genius queue.",
+    "Collapse context-window and price knowledge into the declared model-router chokepoint with direct boundary tests.",
+    "Protect canonical closeout truth with temp-repo fixture coverage instead of relying on source inspection."
+  ],
+  "candidateMatrix": {
+    "feature-depth": [
+      "Player-authored Architect thesis joining mastery focus and the next Reinforce/Counter/Investigate hypothesis.",
+      "Full GameSession domain extraction — valid debt, rejected from this pass because the seam and migration order need a dedicated staged plan."
+    ],
+    "new-innovative-features": [
+      "A versioned adaptation contract resolved by the next source film receipt without predicting or buffing outcomes.",
+      "Hosted model coach — rejected because deterministic receipts cover the need without variable cost or custody expansion."
+    ],
+    "ui-ux": [
+      "Accessible Architect Focus and adaptation controls inside the existing Architecture Review, with exact selected/recommended distinctions.",
+      "Another navigation or modal layer — rejected because weekly ritual load is already an unmeasured pacing risk."
+    ],
+    "feedback-loop": [
+      "Persist authored thesis and show the next film resolution in the existing ledger/rehearsal loop.",
+      "Claim retention improvement from local instruments — rejected because no consented cohort evidence exists."
+    ],
+    "gamification-engagement": [
+      "Make long-term identity possessive through a chosen thesis, never a hidden reward multiplier.",
+      "Streaks or tactic-variety rewards — rejected as coercive and contrary to deliberate identity."
+    ],
+    "ai-integration": [
+      "Deterministic source-derived adaptation resolution as explainable game intelligence.",
+      "Large-language-model outcome prediction — rejected on cost, custody, and causal honesty."
+    ],
+    "security": [
+      "Canonical capability-map fallback with status-only output and existing redaction/audit boundaries.",
+      "Treat READY credentials as proof of email delivery — rejected because configuration is not receipt evidence."
+    ],
+    "speed-organization": [
+      "One model/context/pricing authority imported by the context meter.",
+      "Shared transport-neutral API router — real, but deferred until a staged endpoint-family migration plan can preserve both adapters."
+    ],
+    "token-api-reduction": [
+      "Remove duplicate model metadata and test verdict thresholds without alarming on flat-rate Max Plan cost.",
+      "Gameplay model-token optimization — rejected because gameplay makes no model calls."
+    ]
+  },
+  "preverifiedSkips": [
+    {
+      "axis": "release",
+      "candidate": "Make launch green from this repository",
+      "reason": "Rejected. The owning canonical host, real mailbox receipt, founder approval, and sibling registry are independent authorities; current-repo reports cannot manufacture them."
+    },
+    {
+      "axis": "infrastructure",
+      "candidate": "Decompose the 5,395-line GameSession in one pass",
+      "reason": "The premise is real, but a one-pass rewrite would exceed a safe bounded seam. A future audit should specify domain order, compatibility facade, and characterization gates before implementation."
+    },
+    {
+      "axis": "infrastructure",
+      "candidate": "Unify both 120-route adapters immediately",
+      "reason": "The duplicated authority is real, but full consolidation is unsafe without incremental endpoint-family migration under exact parity tests."
+    },
+    {
+      "axis": "feedback-loop",
+      "candidate": "Check in fabricated playtest outcomes",
+      "reason": "Rejected. Instrumentation exists, but no consented 8–12-player cohort exists; structural scores are not player-outcome evidence."
+    },
+    {
+      "axis": "dependencies",
+      "candidate": "Upgrade Playwright 1.61.1 to 1.62.0",
+      "reason": "Deferred as low leverage; any future bump must pass package-trust before installation and the full UI evidence suite afterward."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Security / credential truth / observability",
+      "effortHours": 1.5,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 38.7,
+      "slug": "canonical-capability-map-authority",
+      "title": "Make the repo-local secrets gateway inherit canonical capability truth",
+      "status": "done",
+      "premise": "scripts/lib/secrets.mjs merges sibling Studio Ops env files but fixes CAP_MAP_PATH to this repo's absent secrets/CAPABILITY_MAP.json. As a result, node scripts/check-secrets.mjs --audit prints 0/0 and named capabilities have empty requirements even while the canonical gateway proves brevo and cloudflare.dns READY. This is a phantom-missing and observability contradiction.",
+      "evidence": [
+        "CAP_MAP_PATH is path.join(SECRETS_DIR, CAPABILITY_MAP.json), while STUDIO_OPS_SECRETS_DIR is discovered separately only for env loading",
+        "loadCapMap returns an empty capabilities object when the local map is absent",
+        "repo-local check-secrets --audit printed 0/0 during /start",
+        "canonical checks proved brevo 2/2 and cloudflare.dns 2/2 READY without exposing values"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Fall back to the sibling canonical CAPABILITY_MAP.json when no local map exists." },
+        "L2": { "effortHours": 1.5, "recipe": "Resolve map authority with explicit local-override/canonical-fallback precedence, preserve env merging and redaction, expose only status metadata, add temp-directory tests for local override, sibling fallback, named readiness, and corrupt-map fail-loud behavior, then rerun real status-only probes." },
+        "L3": { "effortHours": 2.5, "recipe": "Add a machine-readable gateway-source receipt so every blocker preflight can self-validate which map and env authorities produced its verdict." }
+      },
+      "verification": [
+        "repo-local --audit lists canonical capabilities instead of 0/0",
+        "brevo and cloudflare.dns status matches the canonical checker without printing values",
+        "local maps remain explicit higher-precedence overrides",
+        "corrupt present maps still fail loud",
+        "focused gateway tests run with isolated fixture directories"
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Game depth / progression / explainable intelligence",
+      "effortHours": 5.0,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 32.1,
+      "slug": "player-authored-architect-thesis",
+      "title": "Let the player author the thesis the next film receipt will test",
+      "status": "done",
+      "premise": "Architect mastery currently auto-selects the lowest path as focus, while adaptation is inferred after the fact from tactic transitions. The player chooses tactics but cannot explicitly choose Results, Stewardship, Promise, or Identity as a thesis, nor declare Reinforce, Counter, or Investigate as the next source-bound hypothesis.",
+      "evidence": [
+        "buildArchitectMasteryPortfolio sorts paths and always assigns the lowest-scoring path as focus",
+        "buildAdaptiveIdentityEvidence infers reinforce/counter only from tactic continuity after misaligned film",
+        "Architecture Review renders mastery paths and a generated Next adaptation but has no authored controls",
+        "weekly rehearsal already reads the latest Architect review and is the correct non-causal place to surface a pending thesis"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1.5, "recipe": "Make focus selection client-visible and persist it with no score effect." },
+        "L2": { "effortHours": 5.0, "recipe": "Create one versioned per-team Architect Thesis authority with selected mastery focus and optional Reinforce/Counter/Investigate hypothesis, validate and persist it through both adapters, render accessible controls in Architecture Review, surface it in rehearsal, consume it into the next committed ledger entry, resolve it descriptively from observed film, and retain auto-lowest only as a labeled recommendation." },
+        "L3": { "effortHours": 7.0, "recipe": "Close each season with a thesis receipt that compares declared focus to exact source milestones while granting no hidden bonus and making missing evidence explicit." }
+      },
+      "verification": [
+        "selected focus survives snapshot round trip and differs visibly from the recommended lowest path",
+        "invalid focus/adaptation values reject without mutation",
+        "both server and browser adapters expose the same endpoint and response shape",
+        "the next weekly rehearsal includes the pending hypothesis",
+        "the committed ledger records and resolves the authored hypothesis without causal claims",
+        "focused pure, runtime, API parity, and browser wiring tests pass"
+      ],
+      "executionEvidence": "versioned per-team thesis authority persists selected focus and source-bound Reinforce/Counter/Investigate hypotheses; auto-lowest remains separately labeled as the recommendation; rehearsal and the next committed ledger carry the declaration; resolution is observation-only with an explicit non-causation disclaimer; invalid and no-film mutations fail closed; focused domain, mastery, rehearsal, browser-wiring, browser-module, and live server/static parity checks pass"
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Infrastructure / startup truth / lifecycle coherence",
+      "effortHours": 2.5,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 29.0,
+      "slug": "startup-brief-authority-drift-contract",
+      "title": "Make the sole startup brief show authority drift and queue exhaustion truthfully",
+      "status": "done",
+      "premise": "The canonical startup brief is the sole /start context, yet it silently renders local game/FORGE identity while the authoritative registry says app/SPARKED, presents an eight-day-old project-profile cache as live-beta without age, and converts an explicitly exhausted genius cache into an instruction to generate recommendations rather than an exhausted receipt.",
+      "evidence": [
+        "context/LIFECYCLE_COHERENCE.json already declares the sibling registry path and Ark-only drift policy",
+        "inspectLifecycleCoherence reports registry SPARKED versus local FORGE as a warning",
+        ".cache/project-profile.json generatedAt is 2026-07-20 but renderProfileLensHeader performs no age or authority check",
+        ".cache/genius-list.json says status exhausted with four closed items, but buildGeniusBoxFromCache returns empty when items is empty and the renderer falls through to a generic run command"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Render an explicit exhausted genius box and mark stale profile cache age." },
+        "L2": { "effortHours": 2.5, "recipe": "Reuse lifecycle-coherence as the authority join, render local and registry statuses plus Ark-only drift warning, age-gate the cached project profile, render exhausted cache source/closed count/reason, extend brief freshness to reject changed lifecycle or queue fingerprints, and cover all states with pure and CLI tests." },
+        "L3": { "effortHours": 4.0, "recipe": "Generate a signed compact startup truth receipt whose fingerprints bind status, lifecycle contract, registry snapshot, profile cache, genius cache, and rendered tiles." }
+      },
+      "verification": [
+        "startup brief names local FORGE and registry SPARKED without choosing a false winner",
+        "stale profile metadata is labeled stale or omitted",
+        "exhausted genius cache renders source, closed count, and reason",
+        "freshness changes when lifecycle or genius authority changes",
+        "canonical brief validator remains green"
+      ]
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Infrastructure / model routing / observability",
+      "effortHours": 2.0,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 24.0,
+      "slug": "context-meter-model-authority",
+      "title": "Make the model router the actual context and pricing authority",
+      "status": "done",
+      "premise": "scripts/context-meter.mjs locally duplicates contextWindowForAgent, model ID prefixes, price tables, tier parsing, and cost arithmetic even though scripts/lib/model-router.mjs declares itself the single model/context/pricing chokepoint. Values match today by coincidence, and no focused local test proves verdict boundaries or notional-cost semantics.",
+      "evidence": [
+        "context-meter defines its own contextWindowForAgent and PRICING/PRICING_BY_ID tables",
+        "model-router exports CONTEXT_WINDOWS, contextWindowForAgent, PRICING_PER_MTOK, and FALLBACK_PRICE",
+        "context-meter comments that tables must be kept in sync manually",
+        "existing tests assert display fragments but do not fixture 50/75/95 percent, Sonnet guardrail, or exit codes"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Import context windows and prices from model-router and remove duplicate constants." },
+        "L2": { "effortHours": 2.0, "recipe": "Export pure model-price and token-cost helpers from the router, consume them in context-meter, extract a pure recommendation function, and fixture-test 50/75/95 percent boundaries, Sonnet guardrail, context overrides, per-model ledger cost, Max Plan notional labeling, and process exit codes." },
+        "L3": { "effortHours": 3.5, "recipe": "Emit a versioned meter receipt that fingerprints the routing table version and input authorities for downstream brief self-validation." }
+      },
+      "verification": [
+        "no model/context/price constant is duplicated in context-meter",
+        "router helpers cover exact IDs and safe tier fallbacks",
+        "verdict vocabulary and exit codes remain canonical",
+        "Max Plan dollars remain explicitly notional and never trigger an alarm",
+        "focused boundary tests and live context-meter JSON pass"
+      ]
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Infrastructure / closeout process / test depth",
+      "effortHours": 2.5,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 16.1,
+      "slug": "closeout-board-truth-fixtures",
+      "title": "Prove the canonical closeout board against real temporary repositories",
+      "status": "done",
+      "premise": "scripts/render-closeout-board.mjs derives founder-facing branch, commit, dirty, push, receipt, and verification truth through shell probes, but it has no focused temp-repo test. A renderer regression can therefore lie at the final gate while source-inspection tests remain green.",
+      "evidence": [
+        "render-closeout-board.mjs is 422 lines and shells through a generic command helper",
+        "validate-closeout-board-format.mjs validates shape, not the underlying derived state",
+        "repository test search finds no focused invocation of render-closeout-board.mjs",
+        "closeout truth is operationally higher risk than its current coverage suggests"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Add one clean-repo rendering fixture and validate its board shape." },
+        "L2": { "effortHours": 2.5, "recipe": "Add Windows-safe temp-repo CLI fixtures for clean/synchronized, dirty, ahead/unpushed, missing or stale verification receipts, malformed inputs, and dry-run/no-write behavior; assert both rendered fields and validator acceptance without network access." },
+        "L3": { "effortHours": 4.0, "recipe": "Extract all Git/receipt probes behind a pure evidence adapter and property-test contradictory states fail closed." }
+      },
+      "verification": [
+        "fixtures create isolated git repositories and never touch the working repo",
+        "dirty and ahead states cannot render synchronized/clean",
+        "missing or stale receipts remain visibly non-green",
+        "candidate boards pass the canonical format validator",
+        "tests use the hidden-window safe spawner"
+      ]
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "canonical-capability-map-authority",
+      "status": "done",
+      "evidence": "Canonical-fallback/local-override/corrupt-local fixtures pass 3/3. Repo-local status-only probes now resolve brevo and cloudflare.dns at 2/2 READY from canonical map authority without printing values."
+    },
+    {
+      "slug": "context-meter-model-authority",
+      "status": "done",
+      "evidence": "Router price/context helpers, pure recommendation boundaries, real CLI exit 0/3 fixtures, and no-duplicate-source assertions pass 4/4; live JSON is CONTINUE and labels list-price dollars notional under flat-rate Max Plan."
+    },
+    {
+      "slug": "startup-brief-authority-drift-contract",
+      "status": "done",
+      "evidence": "Startup authority and prior session contracts pass 12/12. The live brief labels its stale profile cache, local FORGE ↔ registry SPARKED Ark-only drift, binds lifecycle/Genius fingerprints, renders the five-item cache, and passes canonical format plus freshness validation."
+    },
+    {
+      "slug": "closeout-board-truth-fixtures",
+      "status": "done",
+      "evidence": "Three isolated CLI scenarios create real temporary Git repositories and prove clean/synchronized, dirty, ahead/unpushed, stale-test-receipt, malformed-input, canonical-validator, and --stdout no-write truth."
+    }
+  ]
+}

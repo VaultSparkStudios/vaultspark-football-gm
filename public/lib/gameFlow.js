@@ -1139,6 +1139,9 @@ export function showArchitectPlanRehearsal(rehearsal, onChoice) {
   set("architectRehearsalPromise", rehearsal.franchisePromise);
   set("architectRehearsalPressure", rehearsal.activePressure);
   set("architectRehearsalIdentity", rehearsal.identityPreview);
+  set("architectRehearsalThesis", rehearsal.architectThesis
+    ? `${rehearsal.architectThesis.label} · ${rehearsal.architectThesis.text}`
+    : "No player-authored adaptation hypothesis");
   set("architectRehearsalCounterSource", rehearsal.counterSignal?.source);
   set("architectRehearsalCounter", rehearsal.counterSignal?.text);
   set("architectRehearsalDisclaimer", rehearsal.disclaimer);

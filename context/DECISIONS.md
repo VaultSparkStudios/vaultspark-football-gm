@@ -570,3 +570,14 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Decision:** Overview cold boot loads no secondary domains. Each public tab declares exact loader ownership under an authority-scoped cache with in-flight coalescing, explicit invalidation, retry-visible failure receipts, and startup validation that rejects missing, duplicate, orphaned, or unknown topology.
 
 **Rationale:** Broad eager loading spent work before player demand and let shell/loader drift hide. A self-validating topology makes request ownership observable and keeps committed state independent from secondary hydration quality.
+## 2026-07-29 — Architect focus is authored intent, not an automatic score instruction
+
+**Decision:** Preserve auto-lowest mastery as a separately labeled recommendation while letting the player persist a chosen Results, Stewardship, Promise, or Identity focus. Reinforce/Counter/Investigate may be declared only from a real prior film receipt, enters the next successful weekly ledger transaction, and resolves with observed source text plus an explicit non-causation disclaimer.
+
+**Rationale:** A franchise-architecture fantasy needs deliberate authorship, but selecting a thesis must not secretly alter simulation strength, predict outcomes, or recast sequence as causation.
+
+## 2026-07-29 — Mutable evidence authorities require conflict and lineage receipts
+
+**Decision:** Architect Thesis writes carry a monotonic revision and may fail closed on an expected-revision mismatch. Pending and resolved hypotheses expose a live lineage verdict derived from Architect ledger IDs and exact observed text; missing endpoints, duplicates, or observation drift are explicit issues.
+
+**Rationale:** A plausible UI receipt is not observability truth. Multi-view mutation and cross-receipt joins need machine-detectable stale-write and provenance failure modes.

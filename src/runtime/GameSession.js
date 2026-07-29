@@ -71,6 +71,7 @@ import { RNGStreams } from "../utils/rngStreams.js";
 import { createSessionModules } from "./modules/sessionModules.js";
 import { createServices } from "./services/index.js";
 import { architectLedgerForTeam } from "./architectLedger.js";
+import { getArchitectThesis, setArchitectThesis } from "../engine/architectThesis.js";
 import { LATEST_SNAPSHOT_SCHEMA_VERSION } from "./snapshotMigration.js";
 import {
   advanceInjuryRecovery,
@@ -1135,6 +1136,7 @@ function ensurePlayerRuntime(player, rng = null) {
 
 function ensureLeagueRuntime(league) {
   if (!league.weeklyHistory) league.weeklyHistory = [];
+  if (!league.architectTheses || typeof league.architectTheses !== "object") league.architectTheses = {};
   if (!Array.isArray(league.gameArchive)) league.gameArchive = [];
   if (!league.awards) league.awards = [];
   if (!league.capLedger) league.capLedger = {};
@@ -4890,6 +4892,7 @@ export class GameSession {
       tacticalFilmLedger: (this.league.tacticalFilmLog || []).filter((entry) => entry.teamId === this.controlledTeamId).slice(0, 12),
       coachingLineage: this.services.coaching.getTeamView(this.controlledTeamId),
       architectLedger: architectLedgerForTeam(this.league, this.controlledTeamId, 12),
+      architectThesis: getArchitectThesis(this.league, this.controlledTeamId),
       recentBoxScores: this.getRecentBoxScores(this.controlledTeamId, 8),
       injuryReport: getInjuryReport(this.league, null, {
         getTeamModifiers: dashboardInjuryModifiers
@@ -4924,6 +4927,15 @@ export class GameSession {
       ...dashboard,
       gmDecisionQueue: generateGmDecisions(dashboard, { ledger: this.league.gmDecisionLedger })
     };
+  }
+
+  setArchitectThesis(input = {}) {
+    return setArchitectThesis(this.league, {
+      ...input,
+      teamId: this.controlledTeamId,
+      year: this.currentYear,
+      week: this.currentWeek
+    });
   }
 
   getRoster(teamId = this.controlledTeamId) {

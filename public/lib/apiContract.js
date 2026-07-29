@@ -1,6 +1,7 @@
 const GET_PATHS = [
   "/api/agent/roster",
   "/api/analytics",
+  "/api/architect-thesis",
   "/api/backups",
   "/api/boxscore",
   "/api/calendar",
@@ -58,6 +59,7 @@ const GET_PATHS = [
 
 const POST_PATHS = [
   "/api/advance-week",
+  "/api/architect-thesis",
   "/api/agent/competing-offer",
   "/api/agent/offer",
   "/api/backups/delete",
@@ -123,6 +125,8 @@ const SUCCESS_SHAPES = Object.freeze({
   "POST /api/agent/offer": { required: ["ok", "result", "agentState"] },
   "POST /api/agent/competing-offer": { required: ["ok", "result", "agentState"] },
   "GET /api/gm-legacy": { required: ["ok", "legacy", "raw"] },
+  "GET /api/architect-thesis": { required: ["ok", "thesis"] },
+  "POST /api/architect-thesis": { required: ["ok", "thesis", "state"] },
   "POST /api/onboarding/start-scenario": { required: ["ok", "receipt", "state"] },
   "GET /api/rivalry": { required: ["ok"], anyOf: ["rivalry", "rivalries"] },
   "POST /api/combine/run": { required: ["ok", "results", "count"] },

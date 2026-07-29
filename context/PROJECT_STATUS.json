@@ -4,34 +4,38 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 59 exhausted four consent/rehearsal/demand-authority objectives and four second-order innovations: bounded feedback publication, pre-decode challenge parsing, pre-commit plan red-teaming, exact tab hydration, topology/provenance receipts, and truthful shard ownership.",
+  "currentFocus": "Session 60 exhausted five canonical-truth/player-authorship objectives and two second-order innovations: capability-map authority, model/context authority, startup/closeout truth fixtures, player-authored Architect Thesis, revision conflicts, and self-auditing lineage.",
   "nextMilestone": "Complete canonical health/edge evidence, a delivered on-domain email receipt, exact hosted revision provenance, founder approval, and authoritative lifecycle reconciliation before any launch flip.",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated: canonical /_health is 404, HSTS/frame/CSP evidence is absent, a real received-message receipt and founder approval are absent, hosted provenance is incomplete, and sibling-owned registry reconciliation remains pending."
+    "Launch/SPARKED remains evidence-gated: canonical /_health and edge headers, a real received-message receipt, exact hosted provenance, founder approval, and sibling-owned registry reconciliation remain absent."
   ],
-  "lastUpdated": "2026-07-27",
+  "lastUpdated": "2026-07-29",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-07-27",
+  "truthAuditLastRun": "2026-07-29",
   "ignisScore": 41900,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-07-27",
   "testSuiteStatus": {
-    "totalTests": 517,
-    "pass": 517,
+    "totalTests": 538,
+    "pass": 538,
     "fail": 0,
-    "lastRun": "2026-07-27",
+    "lastRun": "2026-07-29",
     "newTestFiles": [
-      "test/architect-plan-rehearsal.test.js",
-      "test/tab-hydration.test.js"
+      "test/architect-thesis.test.js",
+      "test/architect-thesis-browser-wiring.test.js",
+      "test/secrets-gateway-authority.test.js",
+      "test/context-meter-authority.test.js",
+      "test/startup-authority-contract.test.js",
+      "test/closeout-board-truth.test.js"
     ],
-    "newTestCount": 18,
-    "coverage": "Session 59 final canonical aggregate Node evidence 517/517, Playwright 20/20, responsive evidence 53 captures, Pages build/smoke, and 52 reachable browser modules.",
-    "uiSuiteNote": "Playwright 20/20 and 53 responsive dark/light mobile/tablet/desktop captures passed automated viewport, contrast, overflow, runtime-error, and touch-target gates; manual AI inspection is not claimed because both connected readers failed at the Windows DPAPI boundary."
+    "newTestCount": 21,
+    "coverage": "Session 60 canonical aggregate Node 538/538, Playwright 20/20, responsive evidence 53 captures, Pages build/smoke, and 52 reachable browser modules.",
+    "uiSuiteNote": "Playwright 20/20 and 53 responsive dark/light mobile/tablet/desktop captures passed automated viewport, contrast, overflow, runtime-error, and touch-target gates; manual AI inspection is not claimed because all connected image paths failed before inspection."
   },
-  "testsPassing": 517,
-  "testsTotal": 517,
+  "testsPassing": 538,
+  "testsTotal": 538,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -83,34 +87,27 @@
     "capitalEfficiency": 95,
     "automationCoverage": 100
   },
-  "currentSession": 59,
+  "currentSession": 60,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
-    "timedOut": [
-      "initial aggregate before Node 24 completed-TAP force-exit repair",
-      "bounded runtime/group diagnostics used to distinguish slow integration work from retained handles"
-    ],
+    "timedOut": [],
     "failed": [
-      "canonical launch evidence remains blocked on /_health 404, edge headers, email receipt, approval, provenance, and lifecycle drift"
+      "initial Playwright 19/20 duplicate component identity (root-fixed and superseded by full 20/20 rerun)",
+      "initial aggregate shard-coverage failure for six unowned tests (root-fixed and superseded by full 538/538 rerun)",
+      "canonical launch evidence remains blocked on health/headers, email receipt, approval, provenance, and lifecycle drift"
     ],
     "passed": [
-      "canonical aggregate Node 517/517 with exit 0",
+      "canonical aggregate Node 538/538 with exit 0",
       "fresh source-bound direct-test receipt",
       "Playwright 20/20",
       "responsive evidence 53 captures with required matrix complete",
       "Pages build, browser reachability 52 modules, and static smoke",
-      "absolute project-tree secret scan 0 findings",
-      "sitemap 10/10",
-      "doctor blockingFailing 0",
-      "Unified Genius List 0 open / 4 closed",
-      "4 viable second-order innovations implemented",
-      "implementation revision 4e6e5353b17fbecbebb1bea8cb7e7021b965b904 synchronized to origin/main",
-      "CI, brief-format, backend runtime, and Pages workflows 4/4 green",
-      "Ark session-impact receipt 01JUIN5747129D32F9238E20E9"
+      "Unified Genius List 0 open / 5 closed",
+      "2 viable second-order innovations implemented"
     ],
-    "date": "2026-07-27",
-    "diagnosticNote": "Early aggregate timeouts are non-evidence. The first complete repaired aggregate exposed two unsharded new tests; after exact runtime ownership repair it passed 516/516. Post-push Linux CI then exposed weekly modal ordering and opening-bye source-truth gaps; both were root-fixed, and final direct evidence passes 517/517 plus Playwright 20/20. Hosted launch evidence remains honestly red."
+    "date": "2026-07-29",
+    "diagnosticNote": "Initial browser and shard-coverage failures remain diagnostic non-evidence. Root fixes were followed by full direct reruns. Manual AI image inspection remains unavailable and unclaimed. Hosted launch evidence remains honestly red."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -137,14 +134,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 905,
+  "silHealth": 875,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-07-27",
+    "date": "2026-07-29",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -159,23 +156,23 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-27",
-  "lastVerificationAt": "2026-07-27",
+  "lastVerificationAt": "2026-07-29",
   "stagingType": "github-pages",
   "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.046,
-  "entropyLastComputed": "2026-07-27",
+  "entropyScore": 0.05,
+  "entropyLastComputed": "2026-07-29",
   "lastSessionSummary": {
-    "session": 59,
+    "session": 60,
     "shipped": [
-      "Explicit bounded feedback publication consent",
-      "Pre-decode challenge-code trust boundary",
-      "Source-derived pre-commit Architect plan rehearsal",
-      "Exact demand-owned tab hydration and topology proof",
-      "Truthful Node 24 shard termination and test ownership"
+      "Canonical capability-map authority",
+      "Single model/context/notional-price authority",
+      "Startup and closeout truth contracts",
+      "Player-authored Architect Thesis",
+      "Conflict-aware revisions and self-auditing evidence lineage"
     ],
-    "tests": "Node 517/517 - UI 20/20 - responsive 53 captures",
-    "deploy": "4e6e535 direct-main; exact workflows 4/4 green; staging 3/10; Ark 01JUIN5747129D32F9238E20E9; launch HOLD"
+    "tests": "Node 538/538 - UI 20/20 - responsive 53 captures",
+    "deploy": "pending direct-main closeout push; local implementation green; launch HOLD"
   },
   "testingSurfaces": [
     {
@@ -195,6 +192,20 @@
       "label": "Public origin",
       "url": "https://playfranchisearchitect.com/",
       "lastChecked": "2026-07-27"
+    }
+  ],
+  "lastSession": 60,
+  "silLastSession": "60",
+  "bootAmortization": {
+    "ratio": 0,
+    "verdict": "wasted",
+    "ranAt": "2026-07-29T07:32:56.464Z"
+  },
+  "bootAmortizationHistory": [
+    {
+      "ratio": 0,
+      "verdict": "wasted",
+      "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ]
 }

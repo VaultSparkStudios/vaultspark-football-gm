@@ -33,7 +33,8 @@ export function buildArchitectLedgerEntry({
   gmDecision = null,
   tacticalReceipt = null,
   teamBefore = null,
-  teamAfter = null
+  teamAfter = null,
+  architectThesis = null
 } = {}) {
   if (!teamId || !command?.ok || !started || !completed) return null;
   const tactic = command.tactic ? tacticDefinition(command.tactic) : null;
@@ -52,6 +53,11 @@ export function buildArchitectLedgerEntry({
         label: decision.label,
         choiceId: decision.choiceId,
         summary: decision.receipt?.summary || decision.effect || "Choice committed."
+      } : null,
+      architectThesis: architectThesis?.pendingAdaptation ? {
+        mode: architectThesis.pendingAdaptation.mode,
+        label: architectThesis.pendingAdaptation.label,
+        sourceEntryId: architectThesis.pendingAdaptation.sourceEntryId
       } : null
     },
     execution: {

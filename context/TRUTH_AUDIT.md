@@ -382,3 +382,15 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Security truth: the absolute project-tree secret scan reports zero findings; an earlier sibling-root invocation is out of scope and not used as project evidence.
 - Release truth: routes other than `/_health` are reachable, but canonical health is 404, HSTS/frame/CSP evidence is absent, received email and approval are absent, and registry lifecycle is sibling-owned. Launch is HOLD.
 - Cost truth: no dependency, paid service, external model, or variable-cost runtime was introduced; flat-rate Max Plan accounting remains notional.
+## 2026-07-29 — Session 60 truth updates
+
+- Credential truth: repo-local capability checks derive shape from the canonical Studio capability map unless an explicit local map exists; corrupt local authority fails loud; outputs remain status-only.
+- Context truth: model windows and notional token prices come from one model-router authority; flat-rate Max Plan accounting never triggers a cost alarm.
+- Startup truth: profile age, local/registry lifecycle drift, and Genius queue exhaustion are fingerprinted source authorities rather than prose inferred from mtime alone.
+- Thesis truth: player focus and adaptations are persisted intent only. They grant no score or simulation bonus; an adaptation requires prior film and resolves only in the next successful controlled transaction.
+- Concurrency truth: expected-revision mismatch returns 409 with current thesis authority and leaves newer intent intact in both advertised runtimes.
+- Lineage truth: pending and resolved thesis receipts derive a live validity verdict from ledger endpoints and exact observed-film text; tampered or missing evidence cannot remain green.
+- Test truth: the initial 19/20 Playwright and aggregate shard-coverage failure are retained as non-evidence. Root fixes reran to Playwright 20/20 and canonical Node 538/538 with a fresh digest-bound receipt.
+- Visual truth: automated 53-capture dark/light responsive gates passed. Manual AI inspection is not claimed because viewer, Node runtime, and fallback image processing all failed before inspection.
+- Release truth: local implementation is green, but canonical health/headers, delivered email, exact hosted provenance, founder approval, and sibling lifecycle authority remain absent. Launch is HOLD.
+- Cost truth: no dependency, paid service, or variable-cost runtime was introduced; flat-rate Max Plan cost remains notional.

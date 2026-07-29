@@ -1364,6 +1364,18 @@ export function createLocalApiRuntime({
         return finish(jsonResponse(200, { ok: true, legacy: summary, raw: s.league.gmLegacy }));
       }
 
+      if (method === "GET" && pathname === "/api/architect-thesis") {
+        const s = ensureSession();
+        return finish(jsonResponse(200, { ok: true, thesis: s.getDashboardState().architectThesis }));
+      }
+      if (method === "POST" && pathname === "/api/architect-thesis") {
+        const s = ensureSession();
+        const result = s.setArchitectThesis(body || {});
+        return finish(jsonResponse(result.status || (result.ok ? 200 : 400), result.ok
+          ? { ok: true, thesis: result.thesis, state: getAugmentedState(s) }
+          : result));
+      }
+
       // ── Rivalry routes ──────────────────────────────────────────────────────
       if (method === "GET" && pathname === "/api/rivalry") {
         const s = ensureSession();

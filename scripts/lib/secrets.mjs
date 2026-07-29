@@ -44,8 +44,29 @@ function findStudioOpsSecretsDir() {
   return null;
 }
 const STUDIO_OPS_SECRETS_DIR = findStudioOpsSecretsDir();
-const CAP_MAP_PATH = path.join(SECRETS_DIR, 'CAPABILITY_MAP.json');
 const ACCESS_LOG = path.join(SECRETS_DIR, '.access.log');
+
+// Capability shape follows the same authority model as secret values, but a
+// present local map is an explicit override rather than something to merge.
+// This matters in project repos: they normally have no local map and must not
+// degrade the canonical Studio gateway into a phantom 0/0 capability world.
+// A corrupt present local map remains authoritative and fails loud; silently
+// falling through to the sibling map would hide damage at the higher-priority
+// boundary.
+function resolveCapabilityMapAuthority() {
+  const localPath = path.join(SECRETS_DIR, 'CAPABILITY_MAP.json');
+  if (fs.existsSync(localPath)) return { source: 'local', path: localPath };
+  const canonicalPath = STUDIO_OPS_SECRETS_DIR
+    ? path.join(STUDIO_OPS_SECRETS_DIR, 'CAPABILITY_MAP.json')
+    : null;
+  if (canonicalPath && fs.existsSync(canonicalPath)) {
+    return { source: 'canonical', path: canonicalPath };
+  }
+  return { source: 'absent', path: localPath };
+}
+
+const CAP_MAP_AUTHORITY = resolveCapabilityMapAuthority();
+const CAP_MAP_PATH = CAP_MAP_AUTHORITY.path;
 
 let _cache = null;         // flat merged env
 let _cacheStamp = 0;
@@ -122,6 +143,11 @@ function loadCapMap() {
     _capMap = { capabilities: {}, _corrupt: true, _corruptError: e.message };
   }
   return _capMap;
+}
+
+/** Status-only capability-map provenance. Never exposes credential values. */
+export function capabilityMapSource() {
+  return CAP_MAP_AUTHORITY.source;
 }
 
 function audit(entry) {

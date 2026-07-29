@@ -798,6 +798,20 @@ Source: `docs/AUDIT_2026-07-27.json`.
 | HIGH | Explainable feedback loop | Done S59 | rehearsal-provenance-loop |
 | FIRE | Test truth / CI ownership | Done S59 | truthful-shard-termination-and-ownership |
 
+## Session 60 — Canonical Truth and Player-Authored Architecture (2026-07-28)
+
+Source: `docs/AUDIT_2026-07-28.json`.
+
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Security / credential truth / observability | Done S60 — canonical map fallback, local override, and corrupt-map fail-loud fixtures 3/3; live Brevo/Cloudflare status matches canonical authority | 1.5h | canonical-capability-map-authority |
+| FIRE | Game depth / progression / explainable intelligence | Done S60 — player-selected focus remains distinct from the recommended-lowest path; source-bound adaptation hypotheses persist through both adapters, surface in rehearsal, resolve descriptively in the next ledger receipt, and pass focused domain/browser/live parity checks | 5.0h | player-authored-architect-thesis |
+| FIRE | Infrastructure / startup truth / lifecycle coherence | Done S60 — lifecycle/Genius fingerprints, stale profile labeling, Ark-only drift, and exact queue rendering verified 12/12 plus brief validators | 2.5h | startup-brief-authority-drift-contract |
+| HIGH | Infrastructure / model routing / observability | Done S60 — single router authority plus boundary, Sonnet guardrail, notional-cost, and direct exit-code fixtures 4/4 | 2.0h | context-meter-model-authority |
+| HIGH | Infrastructure / closeout process / test depth | Done S60 — isolated clean/dirty/ahead/stale/malformed/no-write fixtures pass 3/3 and validate canonical board shape | 2.5h | closeout-board-truth-fixtures |
+| INNOVATION | Explainable authority / concurrency | Done S60 — monotonic thesis revisions and expected-revision mutations prevent stale tabs from overwriting newer intent; both adapters return the same fail-closed 409 authority | 1.0h | conflict-aware-architect-thesis-authority |
+| INNOVATION | Observability / evidence lineage | Done S60 — pending sources and resolved observations self-validate against the live Architect ledger; visible lineage verdict and tamper fixtures prevent plausible-but-false receipts | 1.0h | self-auditing-architect-thesis-lineage |
+
 ## Session 57 — Exact authority and season coherence (2026-07-25)
 
 | Tier | Category | Status | Effort | Item |

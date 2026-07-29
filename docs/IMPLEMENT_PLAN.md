@@ -1,12 +1,13 @@
-# Implementation Plan — Session 59
+# Session 60 Implementation Plan
 
-Source of truth: `docs/AUDIT_2026-07-27.json`.
+Source of truth: `docs/AUDIT_2026-07-28.json`. Default rung: L2. Order is optimized for dependency and verification efficiency, not raw audit rank.
 
-| Order | Audit rank | Item | Depth | Why this order |
-|---:|---:|---|---|---|
-| 1 | 1 | consented-feedback-receipt-boundary | L2 | Closes a live privacy and observability contradiction before adding new player-facing behavior. |
-| 2 | 4 | bounded-challenge-code-parser | L2 | Small, isolated trust-boundary work shares the focused browser-test surface. |
-| 3 | 2 | architect-plan-rehearsal | L2 | Builds on established weekly-plan and modal authorities after trust boundaries are green. |
-| 4 | 3 | tab-demand-hydration-authority | L2 | Broadest dispatcher change lands last so request-count evidence measures the settled feature set. |
+| Wave | Audit item | Rung | Status | Why this order |
+|---:|---|---|---|---|
+| 1 | `canonical-capability-map-authority` | L2 | Done | Repairs the startup/blocker credential truth used by every later gate. |
+| 2 | `context-meter-model-authority` | L2 | Done | Collapses model metadata before further context-gated waves. |
+| 3 | `startup-brief-authority-drift-contract` | L2 | Done | Builds on the repaired meter and existing lifecycle authority. |
+| 4 | `closeout-board-truth-fixtures` | L2 | Done | Hardens the final reporting gate before closeout. |
+| 5 | `player-authored-architect-thesis` | L2 | Done | Versioned thesis authority, both adapters, accessible Architecture Review controls, rehearsal, ledger consumption/resolution, and cross-runtime parity are verified. |
 
-All four items are complete. Each passed focused contracts, browser reachability, and the exact app/play-mode browser suite before the second-order innovation wave began.
+Every wave requires focused behavior tests and a direct context-meter `CONTINUE` receipt before the next begins. No item is complete until its audit execution log and Unified Genius cache agree.

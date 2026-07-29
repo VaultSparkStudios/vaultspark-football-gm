@@ -561,6 +561,24 @@ function bindEvents() {
     }
   });
   document.getElementById("franchiseArchitecture")?.addEventListener("click", (event) => {
+    const focusAction = event.target.closest?.("[data-architect-save-focus]");
+    const adaptationAction = event.target.closest?.("[data-architect-adaptation]");
+    if (focusAction || adaptationAction) {
+      const expectedRevision = state.dashboard?.architectThesis?.revision || 0;
+      const body = focusAction
+        ? { focusPathId: document.querySelector("[data-architect-focus-select]")?.value || null, expectedRevision }
+        : { adaptationMode: adaptationAction.dataset.architectAdaptation || null, expectedRevision };
+      runAction(async () => {
+        const response = await api("/api/architect-thesis", { method: "POST", body });
+        applyDashboard(response.state);
+        await renderGmLegacyScore();
+        showToast(adaptationAction
+          ? (body.adaptationMode ? `${response.thesis.pendingAdaptation.label} hypothesis declared.` : "Adaptation hypothesis cleared.")
+          : "Architect mastery focus saved.");
+        return response;
+      }, "Saving Architect thesis...").catch(presentActionError);
+      return;
+    }
     const action = event.target.closest?.("[data-blueprint-target-tab]");
     if (!action) return;
     activateTab(action.dataset.blueprintTargetTab || "overviewTab");

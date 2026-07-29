@@ -27,56 +27,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from './lib/safe-spawn.mjs';
 import { VERDICT_EXITS } from './lib/context-verdicts.mjs';
-// Inline context window sizes — keeps this script self-contained for propagation to all project repos.
-// Update here if new models are added to the studio fleet.
-function contextWindowForAgent(agent) {
-  if (process.env.CLAUDE_CONTEXT_LIMIT) return parseInt(process.env.CLAUDE_CONTEXT_LIMIT, 10);
-  if (agent === 'codex') return 1_000_000;
-  if (agent === 'claude-code') return 1_000_000;
-  return 200_000;
-}
+import { contextWindowForAgent, shortModelName, tokenUsageCost } from './lib/model-router.mjs';
+import { recommendContext } from './lib/context-recommendation.mjs';
 
-// Price table per model — kept in sync with scripts/lib/model-router.mjs PRICING_PER_MTOK.
-// Per 1M tokens (list price, non-batch). Keyed first by exact model-ID prefix
-// (so a future Opus 4.8 with a different price shows up correctly), falling
-// back to tier substring match.
-const PRICING = {
-  opus:   { input: 15.00, cacheWrite: 18.75, cacheRead: 1.50, output: 75.00 },
-  sonnet: { input:  3.00, cacheWrite:  3.75, cacheRead: 0.30, output: 15.00 },
-  haiku:  { input:  1.00, cacheWrite:  1.25, cacheRead: 0.10, output:  5.00 },
-};
-// Exact-prefix overrides for known model IDs. Add to this map when pricing
-// diverges for a specific generation; fallback below keeps the tier default.
-const PRICING_BY_ID = {
-  'claude-opus-4-8':         PRICING.opus,
-  'claude-opus-4-7':         PRICING.opus,
-  'claude-opus-4-6':         PRICING.opus,
-  'claude-sonnet-4-6':       PRICING.sonnet,
-  'claude-haiku-4-5':        PRICING.haiku,
-};
-function priceFor(modelId) {
-  if (!modelId) return PRICING.sonnet;
-  for (const [prefix, p] of Object.entries(PRICING_BY_ID)) {
-    if (modelId.startsWith(prefix)) return p;
-  }
-  if (modelId.includes('opus'))   return PRICING.opus;
-  if (modelId.includes('haiku'))  return PRICING.haiku;
-  return PRICING.sonnet;
-}
-function tierOf(modelId) {
-  if (!modelId) return 'unknown';
-  if (modelId.includes('opus'))   return 'opus';
-  if (modelId.includes('haiku'))  return 'haiku';
-  if (modelId.includes('sonnet')) return 'sonnet';
-  return modelId;
-}
-function costOfEntry(e) {
-  const p = priceFor(e.model);
-  return ((e.input        || 0) * p.input      +
-          (e.output       || 0) * p.output     +
-          (e.cache_read   || 0) * p.cacheRead  +
-          (e.cache_create || 0) * p.cacheWrite) / 1_000_000;
-}
+const tierOf = (modelId) => shortModelName(modelId);
+const costOfEntry = (entry) => tokenUsageCost(entry, entry.model);
 
 const ROOT = process.cwd();
 const args = process.argv.slice(2);
@@ -298,27 +253,17 @@ const isSonnetExecTier = /sonnet|opusplan/i.test(tierModel);
 const sonnetBreachPct = isSonnetExecTier ? usedTokens / 200_000 : 0;
 
 // --- Recommendation
-let recommendation;
-let reason;
-if (pctUsed >= 0.95) {
-  recommendation = 'CLOSEOUT';
-  reason = 'context effectively exhausted — continuation risks truncation';
-} else if (isSonnetExecTier && sonnetBreachPct >= 0.80) {
-  recommendation = 'CONSIDER_CLOSEOUT';
-  reason = `Sonnet 200K guardrail — ${(sonnetBreachPct*100).toFixed(0)}% of execute-tier limit · switch to opus or /closeout`;
-} else if (compactImminent) {
-  recommendation = 'WARN_COMPACT_SOON';
-  reason = `compaction predicted in ~${turnsToCompact} turn(s) at current burn rate — proactive autosave recommended`;
-} else if (pctUsed >= WARN_AT) {
-  recommendation = 'CONSIDER_CLOSEOUT';
-  reason = `context ${(pctUsed * 100).toFixed(0)}% used — fresh session saves ~${continueCostPerTurn} tokens/turn after ${breakEvenTurns} turns`;
-} else if (pctUsed >= 0.50 && breakEvenTurns <= 3) {
-  recommendation = 'CONTINUE';
-  reason = `fresh would pay off after ${breakEvenTurns} turns but you\'re only at ${(pctUsed * 100).toFixed(0)}% — keep going`;
-} else {
-  recommendation = 'CONTINUE';
-  reason = `${(pctUsed * 100).toFixed(0)}% used · ${remaining.toLocaleString()} tokens remaining`;
-}
+const { recommendation, reason } = recommendContext({
+  pctUsed,
+  isSonnetExecTier,
+  sonnetBreachPct,
+  compactImminent,
+  turnsToCompact,
+  warnAt: WARN_AT,
+  continueCostPerTurn,
+  breakEvenTurns,
+  remaining
+});
 
 // --- Adaptive action menu (I from the redesign memo)
 // Instead of a single verdict, emit a ranked list of viable next moves with
@@ -430,6 +375,7 @@ const out = {
     heuristicTokens,
     ledgerTokens,
     ledgerUSD: +ledgerUSD.toFixed(4),
+    ledgerCostBasis: 'notional list price; Max Plan is flat-rate and this field never triggers an alarm',
     byScript: Object.entries(ledger.reduce((a, e) => {
       const k = e.script || 'unknown';
       a[k] = (a[k] || 0) + (e.input || 0) + (e.output || 0) + (e.cache_read || 0) + (e.cache_create || 0);
@@ -460,9 +406,9 @@ if (asJson) {
   console.log(`  verdict:     ${out.recommendation} — ${out.reason}`);
   if (interactive.length > 0) {
     console.log(`  measured:    ${interactive.length} interactive turn(s) · last=${measuredContextTokens.toLocaleString()} ctx tokens · +${ledger.length - interactive.length} Studio Ops call(s)`);
-    console.log(`               ledger $${ledgerUSD.toFixed(4)} total this session (priced per-model)`);
+    console.log(`               ledger $${ledgerUSD.toFixed(4)} notional total (Max Plan flat-rate · no alarm)`);
   } else if (ledger.length > 0) {
-    console.log(`  measured:    ${ledger.length} Studio Ops call(s) · ${ledgerTokens.toLocaleString()} tokens · $${ledgerUSD.toFixed(4)}`);
+    console.log(`  measured:    ${ledger.length} Studio Ops call(s) · ${ledgerTokens.toLocaleString()} tokens · $${ledgerUSD.toFixed(4)} notional`);
     console.log(`               (no interactive turns yet — Stop hook fires after this response)`);
   } else {
     console.log(`  measured:    (no ledger entries yet — heuristic estimate only)`);

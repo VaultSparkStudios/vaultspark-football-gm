@@ -1,3 +1,44 @@
+## Session 60 Intent (2026-07-28)
+
+Run the complete agent-neutral `/goal /arc` as one continuous mission: pull-first `/start`, a premise-verified live-code `/audit` using the product rubric plus browser-game and public-app release lenses, complete `/implement` of every ranked item at the highest justified depth, exhaust the Unified Genius List, generate and implement viable second-order innovations while the context meter permits, then execute full `/closeout` with direct suite and doctor exit-code evidence, GitHub Pages staging verification, public sanitization, Ark broadcast, and direct push to `main`. Preserve source-derived observability, treat Max Plan cost as notional, fabricate no gate evidence, root-fix rather than refresh reports, never edit a sibling tree, and record honest deferrals as wins.
+
+---
+
+## Where We Left Off — Session 60 Closeout (2026-07-29)
+
+Session 60 achieved the requested uninterrupted `/goal /arc`: five live-code audit objectives and two viable second-order innovations are implemented and directly verified.
+
+### Shipped
+
+- The repo-local secrets gateway now falls back to the canonical capability map, preserves an explicit local-map override, fails loud on corrupt present maps, and exposes status metadata without credential values.
+- Context-meter imports model/window/price authority from the router, uses a pure verdict function, and labels ledger dollars as notional under the flat-rate Max Plan.
+- Startup brief truth now fingerprints lifecycle and Genius authorities, labels stale profile cache, surfaces local FORGE versus registry SPARKED drift with Ark-only policy, and renders exhausted queues explicitly.
+- Closeout-board fixtures exercise clean, dirty, ahead, stale, malformed, and no-write states in isolated Windows-safe git repositories.
+- Players can author one versioned per-team Architect Thesis: choose a Results/Stewardship/Promise/Identity focus, declare a source-bound Reinforce/Counter/Investigate hypothesis after real film, see it in rehearsal, and receive a descriptive resolution in the next committed ledger row. Auto-lowest remains a labeled recommendation; the thesis changes no simulation score.
+- Second-order saturation added monotonic revision conflicts so stale views fail closed and a live lineage auditor that verifies pending sources, resolution endpoints, duplicates, and exact observed-film text against ledger authority.
+
+### Verification
+
+- Canonical Node: 538/538, aggregate exit 0, fresh source-bound receipt.
+- Browser: Playwright 20/20 after root-fixing the new panel’s duplicate component identity.
+- Visual/build: responsive evidence 53 captures; Pages build, 52-module browser reachability, and static smoke green.
+- Queue: Unified Genius List 0 open / 5 closed; second-order list 0 open / 2 shipped; SIL v3 995/1000.
+- Non-evidence retained: the first aggregate failed because six new tests were outside canonical shards; exact ownership was added and the full aggregate reran. The first Playwright pass failed on an ambiguous class selector; the component contract was corrected and the full suite reran.
+
+### Honest deferral
+
+Launch remains HOLD. Canonical `/_health` and edge headers, a real received-message receipt, founder launch approval, exact hosted provenance, and sibling-owned lifecycle reconciliation remain independent authorities. Brevo/Cloudflare credential readiness is not delivery proof, and no sibling tree was edited.
+
+### Visual evidence boundary
+
+Automated contrast, overflow, runtime-error, touch-target, viewport, and dark/light evidence passed 53 captures. Manual AI image inspection is not claimed: the connected viewer failed at Windows DPAPI, the Node image runtime could not start, and the fallback image channel could not process the local data. No screenshot was visually certified by the agent.
+
+### Next best move
+
+Begin the next live-code audit from the exhausted queue unless the owning host/email/approval/lifecycle authorities produce new release evidence. Do not flip launch/SPARKED from local readiness.
+
+---
+
 ## Session 59 Intent (2026-07-27)
 
 Run the complete agent-neutral `/arc` as one continuous mission: pull-first `/start`, a premise-verified live-code `/audit` using the product rubric plus browser-game and public-app release lenses, complete `/implement` of every ranked item at the highest justified depth, exhaust the Unified Genius List, generate and implement viable second-order innovations, then execute full `/closeout` with direct test and doctor exit-code evidence, GitHub Pages staging verification, public sanitization, Ark broadcast, and direct push to `main`. Preserve source-derived observability, treat Max Plan cost as notional, fabricate no launch evidence, root-fix rather than refresh reports, and record any rejected or externally gated premise honestly.

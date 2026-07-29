@@ -1,46 +1,45 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 2e43734d393c -->
-<!-- generated-at: 2026-07-27T23:40:18.288Z -->
+<!-- source-hash: f49e7f10c1a1 -->
+<!-- generated-at: 2026-07-29T06:24:16.005Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 59 HANDOFF SUMMARY
+HANDOFF SUMMARY
 
-Session: 59 (2026-07-27)
+Session: 60 (2026-07-29)
 
-What shipped this session
-- Tell the Commissioner: local receipts private by default; bounded published fields/rows; omission disclosure; dead analytics path removed.
-- Challenge codes: 512-char envelope and bounded typed fields before decode; VSFC1 round trips preserved.
-- Weekly command: unified GM choice, tactic, promise, pressure, identity, counter-signal into one keyboard-safe review; shared revise/defer/commit contract across desktop/mobile.
-- Public game tabs: authority-scoped cache with in-flight coalescing, precise invalidation, retry-visible failures, Overview-only cold boot.
-- Second-order (4): fail-closed hydration topology receipt, bounded feedback disclosure receipt, player-visible rehearsal provenance, truthful Node 24 shard termination/ownership.
-- Post-push fixes: weekly browser journey follows GM decision -> tactic -> rehearsal order; Opening Contract reports scheduled bye plus next source week/opponent.
+Shipped this session:
+- Secrets gateway falls back to canonical capability map, preserves local override, fails loud on corrupt maps, exposes status without credentials.
+- Context-meter imports model/window/price authority from router; labels ledger dollars notional (flat-rate Max Plan).
+- Startup brief fingerprints lifecycle/Genius authorities, labels stale cache, surfaces FORGE-vs-SPARKED drift (Ark-only policy), renders exhausted queues explicitly.
+- Closeout-board fixtures cover clean/dirty/ahead/stale/malformed/no-write in isolated Windows-safe repos.
+- Architect Thesis feature: one versioned per-team thesis (Results/Stewardship/Promise/Identity), source-bound hypothesis after real film, descriptive resolution in next ledger row; changes no sim score.
+- Second-order: monotonic revision conflicts (stale views fail closed); live lineage auditor verifying sources, resolution endpoints, duplicates, observed-film text vs ledger.
 
-Current intent
-- Run complete agent-neutral /arc as one continuous mission through /closeout with direct evidence, Pages staging verification, sanitization, Ark broadcast, and direct push to main. Fabricate no launch evidence; record honest deferrals.
+Verification:
+- Node 538/538, exit 0, fresh receipt.
+- Playwright 20/20 (after root-fixing duplicate component identity).
+- 53 responsive captures; Pages build, 52-module reachability, static smoke green.
+- Genius List 0 open/5 closed; second-order 0 open/2 shipped; SIL v3 995/1000.
 
-Now bucket (top items)
-- Complete canonical health/edge contract in its owning host.
-- Establish a real delivered on-domain email receipt.
-- Bind exact hosted revision provenance and reconcile lifecycle through Ark, then request founder launch approval.
+Current intent:
+- Continue agent-neutral /goal /arc: pull-first start, live-code audit, full implement, exhaust Genius List, ship second-order innovations, full closeout with direct evidence, Pages staging, sanitization, Ark broadcast, push to main. Root-fix over report-refresh; no fabricated gate evidence; honest deferrals as wins.
 
-Blockers (top 3)
-- Canonical origin returns 404 for /_health; missing HSTS/frame/CSP evidence.
-- No real received-message receipt or founder launch approval; post-deploy same-origin staging stuck at 3/10.
-- Sibling-owned SPARKED registry conflicts with local FORGE state.
+Now bucket (top 3):
+- Begin next live-code audit from the exhausted queue.
+- Do not flip launch/SPARKED from local readiness.
+- Await owning-host/email/approval/lifecycle authorities for new release evidence.
 
-External evidence and environment limits
-- Founder launch approval is an intentionally ungranted release gate, not an implementation blocker.
-- Real on-domain delivery evidence is absent; provider configuration is not recast as a received-message receipt.
-- Lifecycle registry reconciliation is sibling-owned and must travel through Ark rather than a direct tree edit.
-- Windows DPAPI blocked manual AI image inspection before either reader opened a capture; automated 53-capture evidence is green.
+Blockers (top 3):
+- Canonical /_health and edge headers absent (sibling-owned host).
+- No real received-message email receipt; credential readiness is not delivery proof.
+- Sibling-owned lifecycle reconciliation (local FORGE vs registry SPARKED) outstanding.
 
-Verification (Session 59)
-- Node canonical 517/517, exit 0. Playwright 20/20. Responsive 53 captures.
-- Pages build/smoke green; reachability 52 modules; secret scan 0; sitemap 10/10; doctor blockingFailing 0.
-- Queues exhausted: Genius List 0 open/4 closed; second-order 0 open/4 closed; SIL v3 995/1000.
+Human-blocked items:
+- Founder launch approval: outstanding, persisting across sessions 48-60 (~13 sessions).
+- On-domain delivered-email receipt: outstanding since session 48+.
+- Exact hosted provenance / edge-header + email gates via canonical host: outstanding, multi-session.
 
-Deploy state
-- Revision 4e6e5353 pushed to main; CI, brief-format, backend runtime, and Pages workflows were 4/4 green. Origin serves the revised hashed bundle. Launch remains HOLD; deployment does not imply launch/SPARKED. Ark receipt 01JUIN5747129D32F9238E20E9.
+Visual evidence boundary: automated 53-capture matrix passed; manual AI image inspection NOT claimed (Windows DPAPI failure, image runtime unavailable).
 
-Next session pointer: Chase external gates (health/edge headers, delivered email receipt, hosted provenance, Ark lifecycle reconcile, founder approval); else start a fresh live-code audit from the exhausted queue.
+Next session: Start a fresh live-code audit from the exhausted queue unless new host/email/approval/lifecycle evidence has arrived; never elevate launch from local readiness.

@@ -1,9 +1,9 @@
 {
   "vectorVersion": "1.0",
-  "generatedAt": "2026-07-27",
-  "generatedAtMs": 1785186211182,
-  "session": 59,
-  "vectorHash": "edd8a9053fbb98e9",
+  "generatedAt": "2026-07-29",
+  "generatedAtMs": 1785307710105,
+  "session": 60,
+  "vectorHash": "062b89b9e306d754",
   "silTotal": 995,
   "silAvg3": null,
   "velocity": null,
@@ -20,15 +20,15 @@
   "genome": null,
   "ignisScore": 41900,
   "ignisGrade": "FORGE",
-  "ignisAgeDays": 0,
+  "ignisAgeDays": 2,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "After this revision deploys, collect exact hosted provenance, canonical health/edge headers, a delivered on-domain email receipt, founder approval, and authoritative lifecycle reconciliation before any launch flip.",
-  "currentFocus": "Session 59 exhausted four consent/rehearsal/demand-authority objectives and four second-order innovations: bounded feedback publication, pre-decode challenge parsing, pre-commit plan red-teaming, exact tab hydration, topology/provenance receipts, and truthful shard ownership.",
+  "nextMilestone": "Complete canonical health/edge evidence, a delivered on-domain email receipt, exact hosted revision provenance, founder approval, and authoritative lifecycle reconciliation before any launch flip.",
+  "currentFocus": "Session 60 exhausted five canonical-truth/player-authorship objectives and two second-order innovations: capability-map authority, model/context authority, startup/closeout truth fixtures, player-authored Architect Thesis, revision conflicts, and self-auditing lineage.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated: canonical /_health is 404, HSTS/frame/CSP evidence is absent, a real received-message receipt and founder approval are absent, hosted provenance is incomplete, and sibling-owned registry reconciliation remains pending."
+    "Launch/SPARKED remains evidence-gated: canonical /_health and edge headers, a real received-message receipt, exact hosted provenance, founder approval, and sibling-owned registry reconciliation remain absent."
   ]
 }

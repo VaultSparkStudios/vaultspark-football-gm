@@ -90,6 +90,33 @@ export const BATCH_PRICING_PER_MTOK = Object.fromEntries(
 );
 export const FALLBACK_PRICE = PRICING_PER_MTOK[MODELS.sonnet];
 
+/** Resolve list-price metadata through the one model authority. */
+export function priceForModel(modelId) {
+  if (modelId && PRICING_PER_MTOK[modelId]) return PRICING_PER_MTOK[modelId];
+  const tier = shortModelName(modelId);
+  const canonicalId = MODELS[tier];
+  return (canonicalId && PRICING_PER_MTOK[canonicalId]) || FALLBACK_PRICE;
+}
+
+/**
+ * Compute notional list-price cost for either ledger-style or API-style usage.
+ * Studio Max-plan sessions remain flat-rate; consumers must never turn this
+ * informational estimate into a spend alarm.
+ */
+export function tokenUsageCost(usage = {}, modelId = null) {
+  const price = priceForModel(modelId);
+  const input = usage.input ?? usage.input_tokens ?? 0;
+  const output = usage.output ?? usage.output_tokens ?? 0;
+  const cacheRead = usage.cache_read ?? usage.cache_read_input_tokens ?? 0;
+  const cacheWrite = usage.cache_create ?? usage.cache_creation_input_tokens ?? 0;
+  return (
+    input * price.input
+    + output * price.output
+    + cacheRead * price.cacheRead
+    + cacheWrite * price.cacheWrite
+  ) / 1_000_000;
+}
+
 /**
  * Short human-friendly name for a model ID ("opus" / "sonnet" / "haiku").
  */
@@ -669,12 +696,7 @@ export function uploadFile({ apiKey, filename, content, mimeType = 'text/plain' 
  * Returns `{ spent, remaining, overBudget }`.
  */
 export function trackSessionBudget({ usage, model, cap = 5.0 }) {
-  const price = PRICING_PER_MTOK[model] || FALLBACK_PRICE;
-  const cost =
-    (usage.input_tokens || 0)                 * price.input       / 1_000_000 +
-    (usage.output_tokens || 0)                * price.output      / 1_000_000 +
-    (usage.cache_read_input_tokens || 0)      * price.cacheRead   / 1_000_000 +
-    (usage.cache_creation_input_tokens || 0)  * price.cacheWrite  / 1_000_000;
+  const cost = tokenUsageCost(usage, model);
 
   const file = path.resolve(__dirname, '..', '..', '.ops-cache', 'session-budget.json');
   let state;

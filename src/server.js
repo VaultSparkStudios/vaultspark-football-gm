@@ -1645,6 +1645,19 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  if (req.method === "GET" && url.pathname === "/api/architect-thesis") {
+    sendJson(res, 200, { ok: true, thesis: session.getDashboardState().architectThesis });
+    return true;
+  }
+  if (req.method === "POST" && url.pathname === "/api/architect-thesis") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const result = session.setArchitectThesis(body || {});
+    sendJson(res, result.status || (result.ok ? 200 : 400), result.ok
+      ? { ok: true, thesis: result.thesis, state: session.getDashboardState() }
+      : result);
+    return true;
+  }
+
   if (req.method === "GET" && url.pathname === "/api/rivalry") {
     initRivalries(session.league);
     const teamA = url.searchParams.get("teamA");

@@ -30,6 +30,13 @@ import { parseSilHistory, forecastNext } from './lib/sil-forecaster.mjs';
 import { BLOCKED_STATUSES_CORE } from './lib/shared-policies.mjs';
 import { inspectTestReceipt } from './lib/test-receipt.mjs';
 import { updateProjectStatus } from './lib/write-project-status.mjs';
+import { inspectLifecycleCoherence } from './lifecycle-coherence.mjs';
+import {
+  describeGeniusCache,
+  describeProjectProfile,
+  geniusAuthorityFingerprint,
+  lifecycleAuthorityFingerprint
+} from './lib/startup-authority.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
@@ -60,16 +67,17 @@ if (!process.env.STUDIO_BRIEF_NO_DOCTOR_FIX) {
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 // S126 audit #28: PROJECT_PROFILE lens — one-line header above SCORE
-function renderProfileLensHeader() {
+function renderProfileLensHeader(lifecycleAuthority) {
   try {
     const p = readJson(path.join(root, '.cache', 'project-profile.json'), null);
-    if (!p) return '';
-    const m = p.medium || '—';
-    const stage = p.stage || '—';
-    const arch = p.archetype || '—';
-    const ax = (p.ignisTopAxes || [])[0] || '—';
-    const line = `Profile · ${m} · ${stage} · arch=${arch} · top-axis=${ax}`;
-    return [top('PROJECT PROFILE'), row(line), bot()].join('\n');
+    const summary = describeProjectProfile(p, lifecycleAuthority);
+    return [
+      top('PROJECT PROFILE'),
+      row(summary.profileLine),
+      row(summary.authorityLine),
+      ...(summary.policyLine ? [row(summary.policyLine)] : []),
+      bot()
+    ].join('\n');
   } catch { return ''; }
 }
 
@@ -844,7 +852,17 @@ function buildGeniusBoxFromMarkdown(markdown) {
 }
 
 function buildGeniusBoxFromCache(cache) {
-  const items = Array.isArray(cache?.items) ? cache.items.slice(0, 5) : [];
+  const summary = describeGeniusCache(cache);
+  const items = summary.items.slice(0, 5);
+  if (summary.exhausted) {
+    return [
+      top('GENIUS HIT LIST'),
+      row(`✓ queue exhausted · source: ${textForBox(summary.source, 37)}`),
+      row(`Closed: ${summary.closedCount} · Open: 0`),
+      ...(summary.reason ? [row(textForBox(summary.reason, W))] : []),
+      bot()
+    ].join('\n');
+  }
   if (!items.length) return '';
   const out = [top('GENIUS HIT LIST')];
   out.push(row(`✓ cache source: ${textForBox(cache.source || 'latest audit', 45)}`));
@@ -1054,6 +1072,10 @@ if (!geniusBlock) {
 // self-heal (PROJECT_STATUS lag) or render a ⛔ STALE BRIEF banner that the
 // validator turns into a hard /start stop.
 const statusLatest = (typeof status.currentSession === 'number') ? status.currentSession : null;
+const lifecycleAuthority = inspectLifecycleCoherence(root);
+const geniusAuthority = readJson(path.join(root, '.cache', 'genius-list.json'), {});
+const lifecycleFingerprint = lifecycleAuthorityFingerprint(lifecycleAuthority);
+const geniusFingerprint = geniusAuthorityFingerprint(geniusAuthority);
 let briefCoherent = true;
 let staleReason = '';
 if (silMaxSession == null) {
@@ -1089,6 +1111,8 @@ const lines = [
   `<!-- generated-at: ${today} (Session ${currentSession - 1} closeout) -->`,
   `<!-- fast-boot-valid-until: next session if within 24h -->`,
   `<!-- brief-coherent: ${briefCoherent} -->`,
+  `<!-- lifecycle-authority-fingerprint: ${lifecycleFingerprint} -->`,
+  `<!-- genius-authority-fingerprint: ${geniusFingerprint} -->`,
   ``,
   `# Startup Brief — ${status.name || 'Studio Ops'}`,
   ``,
@@ -1120,7 +1144,7 @@ const lines = [
     ? [renderTestItNow({ name: status.name || 'Studio Ops', testingSurfaces: status.testingSurfaces }), ``]
     : []),
   // S126 audit #28: PROJECT_PROFILE lens header
-  renderProfileLensHeader(),
+  renderProfileLensHeader(lifecycleAuthority),
   ``,
   // ── SCORE box (v4.0 — 10-category breakdown + sparklines) ──────────────────
   top('SCORE'),

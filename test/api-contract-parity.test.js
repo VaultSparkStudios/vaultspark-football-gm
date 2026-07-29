@@ -208,6 +208,7 @@ test("server and static runtimes preserve representative route shapes and state 
 
     const reads = [
       "/api/agent/roster",
+      "/api/architect-thesis",
       "/api/fan-sentiment?team=BUF",
       "/api/gm-legacy",
       "/api/mentorship?team=BUF",
@@ -222,6 +223,30 @@ test("server and static runtimes preserve representative route shapes and state 
       assertApiContractResponse("GET", route, pair.local.payload);
       assertApiContractResponse("GET", route, pair.remote.payload);
     }
+
+    const thesisFocus = await requestPair(runtime, server, "/api/architect-thesis", {
+      method: "POST",
+      body: { focusPathId: "identity" }
+    });
+    assert.equal(thesisFocus.local.payload.thesis.focusPathId, "identity");
+    assert.equal(thesisFocus.remote.payload.thesis.focusPathId, "identity");
+    assertApiContractResponse("POST", "/api/architect-thesis", thesisFocus.local.payload);
+    assertApiContractResponse("POST", "/api/architect-thesis", thesisFocus.remote.payload);
+
+    const staleThesis = await requestPair(runtime, server, "/api/architect-thesis", {
+      method: "POST",
+      body: { focusPathId: "results", expectedRevision: 0 }
+    });
+    assert.equal(staleThesis.local.status, 409);
+    assert.equal(staleThesis.local.payload.reasonCode, "ARCHITECT_THESIS_REVISION_CONFLICT");
+    assert.equal(staleThesis.remote.payload.thesis.focusPathId, "identity");
+
+    const thesisWithoutFilm = await requestPair(runtime, server, "/api/architect-thesis", {
+      method: "POST",
+      body: { adaptationMode: "counter" }
+    });
+    assert.equal(thesisWithoutFilm.local.status, 409);
+    assert.equal(thesisWithoutFilm.local.payload.reasonCode, "ARCHITECT_THESIS_NEEDS_FILM");
 
     const invalidOffer = await requestPair(runtime, server, "/api/agent/offer", { method: "POST", body: {} });
     assert.equal(invalidOffer.local.status, 400);

@@ -2,6 +2,7 @@ import { applyGmDecisionConsequence, resolveGmDecisionConsequence } from "../eng
 import { validatePendingGmDecision } from "../engine/gmDecisionAuthority.js";
 import { buildTacticalFilmReceipt, tacticDefinition } from "../../public/lib/tacticalFilmRoom.js";
 import { appendArchitectLedger } from "./architectLedger.js";
+import { getArchitectThesis, resolveArchitectThesis } from "../engine/architectThesis.js";
 
 export const ADVANCE_WEEK_COMMAND_VERSION = "2.0";
 
@@ -39,6 +40,7 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
   if (!command.ok) return command;
 
   const started = { year: session.currentYear, week: session.currentWeek, phase: session.phase };
+  const architectThesis = getArchitectThesis(session.league, session.controlledTeamId);
   const controlledTeam = session.controlledTeamId
     ? session.league.teams?.find((entry) => entry.id === session.controlledTeamId) || null
     : null;
@@ -88,8 +90,11 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
     gmDecision,
     tacticalReceipt,
     teamBefore,
-    teamAfter
+    teamAfter,
+    architectThesis
   });
+  const thesisResolution = resolveArchitectThesis(session.league, session.controlledTeamId, architectEntry);
+  if (architectEntry && thesisResolution) architectEntry.thesisResolution = thesisResolution;
 
   return {
     ok: true,
@@ -99,6 +104,7 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
     tacticApplied: command.tactic,
     tacticalReceipt,
     architectEntry,
+    thesisResolution,
     commandReceipt: {
       schemaVersion: ADVANCE_WEEK_COMMAND_VERSION,
       kind: "advance-week",

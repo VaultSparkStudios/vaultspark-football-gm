@@ -96,6 +96,7 @@ export function renderFranchiseArchitecture() {
   const ledger = architectLedgerRows(rawLedger);
   const signal = buildArchitectureSignal(rawLedger);
   const mastery = state.gmLegacy?.mastery || state.dashboard?.gmLegacy?.mastery || null;
+  const thesis = state.dashboard?.architectThesis || {};
   const room = buildProgressiveWeekRoom({ horizons, signal, ledger, mastery });
   const primary = room.primary;
   content.innerHTML = `
@@ -120,6 +121,22 @@ export function renderFranchiseArchitecture() {
     <details class="architecture-review">
       <summary><span>Architecture Review</span><small>${escapeHtml(signal.sampleSize)} decision receipt${signal.sampleSize === 1 ? "" : "s"} · ${escapeHtml(mastery?.label || "mastery forming")}</small></summary>
       <div class="architecture-review-body">
+        <section class="architect-thesis" aria-label="Player-authored Architect thesis">
+          <div class="architect-ledger-head"><strong>Your Architect Thesis</strong><span class="small">Revision ${escapeHtml(String(thesis.revision || 0))} · ${thesis.lineage?.valid === false ? `${escapeHtml(String(thesis.lineage.issues.length))} lineage issue${thesis.lineage.issues.length === 1 ? "" : "s"}` : "lineage verified"} · no hidden bonus</span></div>
+          <label for="architectFocusSelect">Mastery focus</label>
+          <div class="architect-thesis-controls">
+            <select id="architectFocusSelect" data-architect-focus-select aria-label="Architect mastery focus">
+              ${(mastery?.paths || []).map((path) => `<option value="${escapeHtml(path.id)}" ${thesis.focusPathId === path.id ? "selected" : ""}>${escapeHtml(path.label)}</option>`).join("")}
+            </select>
+            <button type="button" class="btn-sm" data-architect-save-focus>Save focus</button>
+          </div>
+          <div class="architect-thesis-controls" role="group" aria-label="Next adaptation hypothesis">
+            ${["reinforce", "counter", "investigate"].map((mode) => `<button type="button" class="btn-sm ${thesis.pendingAdaptation?.mode === mode ? "active" : ""}" data-architect-adaptation="${mode}">${escapeHtml(mode[0].toUpperCase() + mode.slice(1))}</button>`).join("")}
+            <button type="button" class="btn-sm" data-architect-adaptation="">Clear</button>
+          </div>
+          <p class="small">${thesis.pendingAdaptation ? `${escapeHtml(thesis.pendingAdaptation.label)} from ${escapeHtml(thesis.pendingAdaptation.sourceEntryId)} · ${escapeHtml(thesis.pendingAdaptation.sourceObserved)}` : "Choose an adaptation only after committed film exists. The next ledger receipt will resolve it descriptively."}</p>
+          <small class="gm-mastery-disclaimer">${escapeHtml(thesis.disclaimer || "Your thesis changes the review lens, never simulation outcomes.")}</small>
+        </section>
         <div class="architect-signal ${signal.ready ? "ready" : "awaiting"}">
           <span class="franchise-horizon-label">Decision-memory signal · ${escapeHtml(signal.sampleSize)} receipt${signal.sampleSize === 1 ? "" : "s"}</span>
           <strong>${escapeHtml(signal.title)}</strong>

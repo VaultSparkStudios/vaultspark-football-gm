@@ -2,13 +2,21 @@
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { inspectLifecycleCoherence } from "./lifecycle-coherence.mjs";
+import { geniusAuthorityFingerprint, lifecycleAuthorityFingerprint } from "./lib/startup-authority.mjs";
 
 function parseDate(value) {
   const parsed = value ? new Date(`${value}T00:00:00Z`) : null;
   return parsed && Number.isFinite(parsed.getTime()) ? parsed : null;
 }
 
-export function evaluateBriefFreshness({ briefText = "", status = null, now = new Date() } = {}) {
+export function evaluateBriefFreshness({
+  briefText = "",
+  status = null,
+  now = new Date(),
+  lifecycleFingerprint = null,
+  geniusFingerprint = null
+} = {}) {
   const generatedAt = briefText.match(/generated-at:\s*([0-9-]+)/)?.[1] || null;
   const generated = parseDate(generatedAt);
   const ageDays = generated ? Math.floor((now - generated) / 86400000) : 999;
@@ -16,6 +24,8 @@ export function evaluateBriefFreshness({ briefText = "", status = null, now = ne
   const renderedSession = Number(briefText.match(/║\s+Session\s+(\d+)\s+·/i)?.[1] || NaN);
   const statusSession = Number(status?.currentSession);
   const coherent = /<!--\s*brief-coherent:\s*true\s*-->/i.test(briefText);
+  const renderedLifecycleFingerprint = briefText.match(/lifecycle-authority-fingerprint:\s*([a-f0-9]+)/i)?.[1] || null;
+  const renderedGeniusFingerprint = briefText.match(/genius-authority-fingerprint:\s*([a-f0-9]+)/i)?.[1] || null;
   const reasons = [];
 
   if (ageDays > 1) reasons.push(`brief is ${ageDays} days old`);
@@ -29,6 +39,12 @@ export function evaluateBriefFreshness({ briefText = "", status = null, now = ne
   if (Number.isInteger(statusSession) && Number.isInteger(renderedSession) && renderedSession !== statusSession + 1) {
     reasons.push(`rendered session S${renderedSession} != expected S${statusSession + 1}`);
   }
+  if (lifecycleFingerprint && renderedLifecycleFingerprint !== lifecycleFingerprint) {
+    reasons.push("lifecycle authority changed since brief render");
+  }
+  if (geniusFingerprint && renderedGeniusFingerprint !== geniusFingerprint) {
+    reasons.push("genius authority changed since brief render");
+  }
 
   return {
     fresh: reasons.length === 0,
@@ -38,7 +54,9 @@ export function evaluateBriefFreshness({ briefText = "", status = null, now = ne
     closeoutSession: Number.isInteger(closeoutSession) ? closeoutSession : null,
     renderedSession: Number.isInteger(renderedSession) ? renderedSession : null,
     statusSession: Number.isInteger(statusSession) ? statusSession : null,
-    coherent
+    coherent,
+    renderedLifecycleFingerprint,
+    renderedGeniusFingerprint
   };
 }
 
@@ -57,7 +75,16 @@ function main() {
   } catch {
     status = null;
   }
-  const result = evaluateBriefFreshness({ briefText: fs.readFileSync(briefPath, "utf8"), status });
+  const geniusCache = (() => {
+    try { return JSON.parse(fs.readFileSync(path.join(root, ".cache", "genius-list.json"), "utf8")); }
+    catch { return {}; }
+  })();
+  const result = evaluateBriefFreshness({
+    briefText: fs.readFileSync(briefPath, "utf8"),
+    status,
+    lifecycleFingerprint: lifecycleAuthorityFingerprint(inspectLifecycleCoherence(root)),
+    geniusFingerprint: geniusAuthorityFingerprint(geniusCache)
+  });
   if (!result.fresh) {
     console.error(`STALE: ${result.reasons.join("; ")}`);
     process.exitCode = 1;
