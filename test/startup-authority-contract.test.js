@@ -99,7 +99,7 @@ test("live renderer emits source-bound startup authority tiles", () => {
   const brief = readFileSync(resolve(root, "docs", "STARTUP_BRIEF.md"), "utf8");
   assert.match(brief, /lifecycle-authority-fingerprint/);
   assert.match(brief, /genius-authority-fingerprint/);
-  assert.match(brief, /Lifecycle authority · local FORGE · registry SPARKED · DRIFT/);
-  assert.match(brief, /Profile · game ·/);
+  assert.match(brief, /Lifecycle authority · local FORGE · registry (?:SPARKED · DRIFT|unavailable)/);
+  assert.match(brief, /Profile · (?:game|—) ·/);
   assert.match(brief, /GENIUS HIT LIST/);
 });

@@ -37,7 +37,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · live-beta · arch=— · top-axis=—                ║
+║  Profile · game · cache stale 0d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -71,13 +71,13 @@
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,735 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,368 tok/turn  ·  cache 50%  ·  132 turns to compact       ║
+║     2,734 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,367 tok/turn  ·  cache 50%  ·  132 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         539/539 passing (2026-07-29)                   ║
+║  ⚠  Tests         539/539 passing (2026-07-29) · STALE — run no  ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
