@@ -75,7 +75,7 @@ test.describe("Mobile bottom nav (CANON-041)", () => {
     await expect(moreBtn).toHaveAttribute("aria-expanded", "true");
 
     // Secondary tabs are visible in the sheet
-    await expect(page.locator("#mobileMoreSheet .mobile-more-item[data-tab='settingsTab']")).toBeVisible();
+    await expect(page.locator("#mobileMoreSheet .mobile-more-item[data-target-tab='settingsTab']")).toBeVisible();
 
     // Close via close button
     await page.locator("#mobileMoreCloseBtn").click();
@@ -90,7 +90,7 @@ test.describe("Mobile bottom nav (CANON-041)", () => {
     await expect(page.locator("#mobileMoreSheet")).toHaveClass(/open/);
 
     // Click Settings from the more sheet
-    await page.locator("#mobileMoreSheet .mobile-more-item[data-tab='settingsTab']").click();
+    await page.locator("#mobileMoreSheet .mobile-more-item[data-target-tab='settingsTab']").click();
 
     // Settings panel is now active
     await expect(page.locator("#settingsTab")).toBeVisible();
