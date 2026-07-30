@@ -474,6 +474,17 @@ function bindEvents() {
   bindMenuTabs(activateTab);
   initMobileBottomNav();
 
+  // Tapping any primary bottom-nav tab exits mobile-loop mode so content
+  // is visible rather than obscured by the mobileLoopOverlay.
+  document.querySelectorAll(".mobile-nav-btn[data-tab]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (isMobileModeEnabled()) {
+        setMobileModeEnabled(false);
+        syncMobileLoopOverlay();
+      }
+    });
+  });
+
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();
   });
@@ -1558,7 +1569,7 @@ function bindEvents() {
   // Roving-tabindex arrow navigation for the ARIA tablist (S29).
   document.querySelector('.side-menu[role="tablist"]')?.addEventListener("keydown", (event) => {
     if (!["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
-    const tabs = Array.from(document.querySelectorAll(".menu-btn[data-tab]"));
+    const tabs = Array.from(document.querySelectorAll(".side-menu .menu-btn[data-tab]"));
     const currentIndex = tabs.indexOf(document.activeElement);
     if (currentIndex === -1) return;
     event.preventDefault();

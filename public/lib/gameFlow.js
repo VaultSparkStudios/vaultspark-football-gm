@@ -145,8 +145,8 @@ export function activateTab(tabId) {
     const isActive = btn.dataset.tab === tabId;
     btn.classList.toggle("active", isActive);
     btn.setAttribute("aria-selected", isActive ? "true" : "false");
-    // Bottom nav items are always touch-reachable — skip roving tabindex.
-    if (!btn.classList.contains("mobile-nav-btn")) {
+    // Bottom nav items and More-sheet items manage their own tabindex.
+    if (!btn.classList.contains("mobile-nav-btn") && !btn.classList.contains("mobile-more-item")) {
       btn.setAttribute("tabindex", isActive ? "0" : "-1");
     }
   });
