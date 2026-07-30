@@ -141,7 +141,7 @@ export function applyDashboard(newState) {
 
 export function activateTab(tabId) {
   state.activeTab = tabId;
-  document.querySelectorAll(".menu-btn").forEach((btn) => {
+  document.querySelectorAll(".menu-btn, .mobile-nav-btn[data-tab]").forEach((btn) => {
     const isActive = btn.dataset.tab === tabId;
     btn.classList.toggle("active", isActive);
     btn.setAttribute("aria-selected", isActive ? "true" : "false");
