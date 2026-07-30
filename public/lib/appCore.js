@@ -1318,6 +1318,9 @@ export function bindMenuTabs(activateTabFn) {
   document.querySelectorAll(".menu-btn").forEach((button) => {
     button.addEventListener("click", () => activateTabFn(button.dataset.tab));
   });
+  document.querySelectorAll(".mobile-more-item[data-target-tab]").forEach((button) => {
+    button.addEventListener("click", () => activateTabFn(button.dataset.targetTab));
+  });
 }
 
 export function initMobileBottomNav() {
