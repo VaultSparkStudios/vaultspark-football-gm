@@ -500,7 +500,9 @@ test("switching runtime mode reloads setup state", async ({ page }) => {
 });
 
 test("mobile: hamburger opens nav drawer and tab selection closes it", async ({ page }) => {
-  await page.setViewportSize({ width: 375, height: 812 });
+  // 600px: below the 768px hamburger breakpoint but above the 480px
+  // mobile-loop auto-activation threshold, so the overlay doesn't cover the topbar.
+  await page.setViewportSize({ width: 600, height: 900 });
   await createLeagueFromSetup(page);
 
   const toggle = page.locator("#mobileNavToggle");

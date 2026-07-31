@@ -1331,19 +1331,48 @@ export function closePlayerModal() {
 export function bindMobileNav() {
   const toggle = document.getElementById("mobileNavToggle");
   const scrim = document.getElementById("mobileNavScrim");
+  const sideMenu = document.getElementById("sideMenu");
   if (!toggle || !scrim) return null;
+
+  // True when the hamburger is rendered (mobile breakpoint active).
+  function isMobileNav() {
+    return window.getComputedStyle(toggle).display !== "none";
+  }
 
   function closeNav() {
     document.body.classList.remove("mobile-nav-open");
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Open navigation");
+    if (sideMenu && isMobileNav()) {
+      // Hide from keyboard and AT while off-screen.
+      sideMenu.setAttribute("inert", "");
+      toggle.focus();
+    }
   }
 
   function openNav() {
     document.body.classList.add("mobile-nav-open");
     toggle.setAttribute("aria-expanded", "true");
     toggle.setAttribute("aria-label", "Close navigation");
+    if (sideMenu) {
+      sideMenu.removeAttribute("inert");
+      // Move focus into the drawer so keyboard users can navigate tabs.
+      sideMenu.querySelector(".menu-btn")?.focus();
+    }
   }
+
+  // Initialize inert on mobile so the hidden drawer is never keyboard-reachable.
+  if (sideMenu && isMobileNav()) {
+    sideMenu.setAttribute("inert", "");
+  }
+
+  // Re-sync inert when the viewport crosses the breakpoint.
+  window.addEventListener("resize", () => {
+    if (!sideMenu) return;
+    if (document.body.classList.contains("mobile-nav-open")) return;
+    if (isMobileNav()) sideMenu.setAttribute("inert", "");
+    else sideMenu.removeAttribute("inert");
+  }, { passive: true });
 
   toggle.addEventListener("click", () => {
     if (document.body.classList.contains("mobile-nav-open")) closeNav();
