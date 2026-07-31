@@ -90,7 +90,8 @@ import {
   reportRehabClearance,
   reportOwnerUltimatum,
   reportInboundTradeOffer,
-  reportFreeAgencyOutbid
+  reportFreeAgencyOutbid,
+  reportMilestone
 } from "../engine/beatReporter.js";
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
@@ -4210,6 +4211,47 @@ export class GameSession {
         runnerUpTeamId: playoffResult.superBowl.runnerUpTeamId,
         score: `${playoffResult.superBowl.homeScore}-${playoffResult.superBowl.awayScore}`
       });
+      // Milestone celebrations (S62): titles, playoff wins, and eliminations
+      // announce themselves through the inbox instead of dying in a table.
+      if (this.controlledTeamId) {
+        const controlledId = this.controlledTeamId;
+        const superBowl = playoffResult.superBowl;
+        const controlledGames = (playoffResult.gameArchiveEntries || []).filter(
+          (game) => game.homeTeamId === controlledId || game.awayTeamId === controlledId
+        );
+        for (const game of controlledGames) {
+          if (game.winnerId === controlledId && game.label !== "super-bowl") {
+            reportMilestone(this.league, {
+              type: "playoff-win",
+              year: this.currentYear,
+              teamIds: [controlledId],
+              headline: `Playoff win: ${controlledId} take the ${game.label || "playoff round"}`,
+              detail: `${game.homeTeamId} ${game.homeScore} — ${game.awayScore} ${game.awayTeamId}. The run continues.`
+            });
+          }
+        }
+        if (superBowl.championTeamId === controlledId) {
+          reportMilestone(this.league, {
+            type: "championship",
+            year: this.currentYear,
+            teamIds: [controlledId],
+            headline: `🏆 ${controlledId} are world champions`,
+            detail: `Final: ${superBowl.homeScore}-${superBowl.awayScore} over ${superBowl.runnerUpTeamId}. A season for the ages.`
+          });
+        } else {
+          const lastGame = controlledGames[controlledGames.length - 1];
+          if (lastGame && lastGame.winnerId && lastGame.winnerId !== controlledId) {
+            const round = lastGame.label === "super-bowl" ? "the Super Bowl" : `the ${lastGame.label || "playoffs"}`;
+            reportMilestone(this.league, {
+              type: "playoff-elimination",
+              year: this.currentYear,
+              teamIds: [controlledId],
+              headline: `Season ends in ${round}`,
+              detail: `${lastGame.homeTeamId} ${lastGame.homeScore} — ${lastGame.awayScore} ${lastGame.awayTeamId}. The locker room will carry this one into the offseason.`
+            });
+          }
+        }
+      }
       this.league.history.push({
         year: this.currentYear,
         standings: playoffResult.standings,
@@ -4260,6 +4302,21 @@ export class GameSession {
     }
 
     if (this.phase === "season-awards") {
+      // Hall of Fame inductions announce themselves (S62): diff the hall
+      // before/after refresh and celebrate new members through the inbox.
+      const hofBefore = new Set((this.league.hallOfFame || []).map((entry) => entry.playerId));
+      this.refreshHallOfFame();
+      const inducted = (this.league.hallOfFame || []).filter((entry) => !hofBefore.has(entry.playerId));
+      for (const entry of inducted.slice(0, 3)) {
+        reportMilestone(this.league, {
+          type: "hof-induction",
+          year: this.currentYear,
+          teamIds: (entry.teams || []).slice(0, 1),
+          playerIds: [entry.playerId],
+          headline: `🏛️ ${entry.player} elected to the Hall of Fame`,
+          detail: `Career AV ${entry.careerAv} · ${entry.championships} title${entry.championships === 1 ? "" : "s"} · Class of ${this.currentYear}. Open the Hall to hold the induction ceremony.`
+        });
+      }
       this.prepareDraft();
       this.seedCompLedgerForUpcomingOffseason();
       this.resetOffseasonPipeline(this.currentYear);
@@ -5622,6 +5679,14 @@ export class GameSession {
     };
     team.retiredNumbers.push(record);
     team.retiredNumbers.sort((a, b) => (a.number || 0) - (b.number || 0));
+    reportMilestone(this.league, {
+      type: "jersey-retirement",
+      year: this.currentYear,
+      teamIds: [teamId],
+      playerIds: [playerId],
+      headline: `🎽 ${teamId} retire #${player.jerseyNumber} for ${player.name}`,
+      detail: `No one wears #${player.jerseyNumber} in ${teamId} colors again. Career AV ${careerAv}, ${record.championships} title${record.championships === 1 ? "" : "s"}.`
+    });
     this.logTransaction({
       type: "retired-number",
       teamId,

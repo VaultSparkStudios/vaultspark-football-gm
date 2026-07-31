@@ -231,6 +231,12 @@ export function reportInboundTradeOffer(league, offer) {
   return league.newsLog[0];
 }
 
+export function reportMilestone(league, { type, year, week = 0, teamIds = [], playerIds = [], headline, detail }) {
+  initNewsLog(league);
+  push(league, { type, year, week, teamIds, playerIds, headline, detail });
+  return league.newsLog[0];
+}
+
 export function reportFreeAgencyOutbid(league, {
   playerName, playerId, winnerTeamId, winningYears, winningSalary,
   losingYears, losingSalary, year, week

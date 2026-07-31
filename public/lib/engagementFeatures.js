@@ -93,6 +93,9 @@ export function classifyNewsItem(item) {
   if (type === "gm-commitment-resolution") return "IMPORTANT";
   if (type === "trade-offer") return headline.includes("deadline") ? "CRITICAL" : "IMPORTANT";
   if (type === "fa-outbid") return "IMPORTANT";
+  if (type === "championship") return "CRITICAL";
+  if (type === "playoff-win" || type === "playoff-elimination") return "IMPORTANT";
+  if (type === "hof-induction" || type === "jersey-retirement") return "IMPORTANT";
   if (type === "trade" || type === "signing" || type === "milestone") return "IMPORTANT";
   if (type === "injury") return "IMPORTANT";
   if (type === "rehab-clearance") return "IMPORTANT";
@@ -175,6 +178,11 @@ const INBOX_ACTION_TABS = {
   "cap_alert":  "contractsTab",
   injury:       "rosterTab",
   trade:        "contractsTab",
+  "trade-offer": "transactionsTab",
+  "fa-outbid": "faTab",
+  "hof-induction": "historyTab",
+  "jersey-retirement": "historyTab",
+  "owner-ultimatum": "overviewTab",
 };
 
 export function getInboxActionTab(item) {
@@ -194,7 +202,9 @@ function renderInboxContent() {
     injury: "🚑", trade: "🔄", blowout: "💥", upset: "⚡", milestone: "🌟",
     streak: "🔥", standings: "📊", retirement: "👋", signing: "✍️",
     "press-conference": "🎤", championship: "🏆", "cap-alert": "💰", "cap_alert": "💰",
-    "rehab-clearance": "✅",
+    "rehab-clearance": "✅", "trade-offer": "📞", "fa-outbid": "🏷️",
+    "hof-induction": "🏛️", "jersey-retirement": "🎽", "owner-ultimatum": "⚠️",
+    "playoff-elimination": "🚪", "playoff-win": "🎯",
   };
   list.innerHTML = _inbox.items.slice(0, 30).map((item) => {
     const typeIcon = typeIcons[item.type?.toLowerCase()] || "📰";

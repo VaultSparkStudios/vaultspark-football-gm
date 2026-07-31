@@ -21,6 +21,7 @@ import { executeAdvanceWeekTransaction } from "../../runtime/advanceWeekCommand.
 import { inspectSnapshotCompatibility, migrateSnapshot, snapshotErrorPayload } from "../../runtime/snapshotMigration.js";
 import { handleArchitectThesisRequest } from "../../runtime/handlers/architectThesisHandler.js";
 import { handleTradeOffersRequest } from "../../runtime/handlers/tradeOffersHandler.js";
+import { handleFranchiseMomentRequest } from "../../runtime/handlers/franchiseMomentHandler.js";
 import {
   createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
   lockGate, openGate, applyIntents, recordAdvance, lobbyStatus,
@@ -1739,40 +1740,9 @@ export function createLocalApiRuntime({
 
       // ── Franchise Moment ─────────────────────────────────────────────────
       if (method === "GET" && pathname === "/api/franchise-moment") {
-        const fmTeamId = (url.searchParams.get("team") || session.controlledTeamId || "").toUpperCase();
-        const recentGames = session.getRecentBoxScores(fmTeamId, 3);
-        let moment = null;
-        for (const game of (recentGames || [])) {
-          const boxScore = session.getBoxScore(game.gameId);
-          if (!boxScore) continue;
-          const scoring = boxScore.scoringSummary || [];
-          const pbp = boxScore.playByPlay || [];
-          const margin = Math.abs((boxScore.homeTeam?.score || 0) - (boxScore.awayTeam?.score || 0));
-          const isUpset = game.winnerId && game.winnerId === fmTeamId && margin < 4;
-          const walkoff = scoring.slice(-1)[0];
-          const dramaScore = (isUpset ? 3 : 0) + (margin <= 3 ? 2 : 0) + (scoring.length > 8 ? 1 : 0);
-          if (!moment || dramaScore > (moment.dramaScore || 0)) {
-            const homeIsControlled = game.homeTeamId === fmTeamId;
-            const teamScore = homeIsControlled ? boxScore.homeTeam?.score : boxScore.awayTeam?.score;
-            const oppScore = homeIsControlled ? boxScore.awayTeam?.score : boxScore.homeTeam?.score;
-            const won = (teamScore || 0) > (oppScore || 0);
-            moment = {
-              gameId: game.gameId,
-              week: game.week || boxScore.week,
-              year: game.year || boxScore.year,
-              dramaScore,
-              headline: won
-                ? (margin <= 3 ? `Clutch ${margin === 0 ? "tie" : `${teamScore}-${oppScore} thriller`} — your team wins it!` : `Dominant ${teamScore}-${oppScore} victory`)
-                : `Tough ${teamScore}-${oppScore} loss — narrowly missed`,
-              highlight: walkoff ? `${walkoff.type} by ${walkoff.description?.split(" ")[0] || "your team"} — ${walkoff.quarterLabel}` : "Big moments on both sides",
-              result: won ? "win" : "loss",
-              score: `${teamScore}-${oppScore}`,
-              shareText: `🏈 Week ${game.week} ${won ? "Win" : "Loss"} — ${teamScore}-${oppScore}. Playing Franchise Architect: Football — best GM sim around! #VaultSpark`,
-              topPlay: pbp.find((p) => p.description?.toLowerCase().includes("touchdown") || p.description?.toLowerCase().includes("interception"))?.description || null
-            };
-          }
-        }
-        return finish(jsonResponse(200, { ok: true, moment }));
+        const s = ensureSession();
+        const response = handleFranchiseMomentRequest({ session: s, teamId: url.searchParams.get("team") });
+        return finish(jsonResponse(response.status, response.body));
       }
 
       return finish(jsonResponse(501, { ok: false, error: `Client-only runtime not implemented for ${method} ${pathname}.` }));

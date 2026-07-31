@@ -165,13 +165,14 @@ test("signing a free agent with max roster triggers an error or roster cap", () 
   // Fill the roster to the limit by releasing one player then signing someone
   // (just verify the sign flow works when there's room)
   const before = session.getRoster("BUF").length;
-  session.releasePlayer({ teamId: "BUF", playerId: session.getRoster("BUF")[0].id, toWaivers: false });
+  // Premium free agents (74+) route through the competing-offer market (S62);
+  // this instant-sign flow check uses the depth tier.
+  const releasable = session.getRoster("BUF").find((entry) => (entry.overall || 0) < 74)
+    || session.getRoster("BUF").at(-1);
+  session.releasePlayer({ teamId: "BUF", playerId: releasable.id, toWaivers: false });
 
-  const fa = session.getFreeAgents({ limit: 1 })[0];
-  if (!fa) return; // No FAs available in this seed context
-
-  const signed = session.signFreeAgent({ teamId: "BUF", playerId: fa.id });
-  assert.equal(signed.ok, true);
+  const signed = session.signFreeAgent({ teamId: "BUF", playerId: releasable.id });
+  assert.equal(signed.ok, true, JSON.stringify(signed));
   assert.equal(session.getRoster("BUF").length, before);
 });
 

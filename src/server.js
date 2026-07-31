@@ -18,6 +18,7 @@ import { executeAdvanceWeekTransaction } from "./runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, snapshotErrorPayload } from "./runtime/snapshotMigration.js";
 import { handleArchitectThesisRequest } from "./runtime/handlers/architectThesisHandler.js";
 import { handleTradeOffersRequest } from "./runtime/handlers/tradeOffersHandler.js";
+import { handleFranchiseMomentRequest } from "./runtime/handlers/franchiseMomentHandler.js";
 import {
   initGmLegacy,
   getGmLegacySummary,
@@ -2054,42 +2055,10 @@ async function handleApi(req, res, url) {
     return true;
   }
 
-  // ── Franchise Moment (most recent dramatic game event) ─────────────────────
+  // ── Franchise Moment — shared drama authority (S62) ────────────────────────
   if (req.method === "GET" && url.pathname === "/api/franchise-moment") {
-    const teamId = (url.searchParams.get("team") || session.controlledTeamId).toUpperCase();
-    const recentGames = session.getRecentBoxScores(teamId, 3);
-    let moment = null;
-    for (const game of (recentGames || [])) {
-      const boxScore = session.getBoxScore(game.gameId);
-      if (!boxScore) continue;
-      const scoring = boxScore.scoringSummary || [];
-      const pbp = boxScore.playByPlay || [];
-      const margin = Math.abs((boxScore.homeTeam?.score || 0) - (boxScore.awayTeam?.score || 0));
-      const isUpset = game.winnerId && game.winnerId === teamId && margin < 4;
-      const walkoff = scoring.slice(-1)[0];
-      const dramaScore = (isUpset ? 3 : 0) + (margin <= 3 ? 2 : 0) + (scoring.length > 8 ? 1 : 0);
-      if (!moment || dramaScore > (moment.dramaScore || 0)) {
-        const homeIsControlled = game.homeTeamId === teamId;
-        const teamScore = homeIsControlled ? boxScore.homeTeam?.score : boxScore.awayTeam?.score;
-        const oppScore = homeIsControlled ? boxScore.awayTeam?.score : boxScore.homeTeam?.score;
-        const won = (teamScore || 0) > (oppScore || 0);
-        moment = {
-          gameId: game.gameId,
-          week: game.week || boxScore.week,
-          year: game.year || boxScore.year,
-          dramaScore,
-          headline: won
-            ? (margin <= 3 ? `Clutch ${margin === 0 ? "tie" : `${teamScore}-${oppScore} thriller`} — your team wins it!` : `Dominant ${teamScore}-${oppScore} victory`)
-            : `Tough ${teamScore}-${oppScore} loss — narrowly missed`,
-          highlight: walkoff ? `${walkoff.type} by ${walkoff.description?.split(" ")[0] || "your team"} — ${walkoff.quarterLabel}` : "Big moments on both sides",
-          result: won ? "win" : "loss",
-          score: `${teamScore}-${oppScore}`,
-          shareText: `🏈 Week ${game.week} ${won ? "Win" : "Loss"} — ${teamScore}-${oppScore}. Playing Franchise Architect: Football — best GM sim around! #VaultSpark`,
-          topPlay: pbp.find((p) => p.description?.toLowerCase().includes("touchdown") || p.description?.toLowerCase().includes("interception"))?.description || null
-        };
-      }
-    }
-    sendJson(res, 200, { ok: true, moment });
+    const response = handleFranchiseMomentRequest({ session, teamId: url.searchParams.get("team") });
+    sendJson(res, response.status, response.body);
     return true;
   }
 
