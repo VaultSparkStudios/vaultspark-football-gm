@@ -7,6 +7,7 @@ import { assertBrowserPromiseObservability } from "./check-browser-promise-obser
 import { assertApiContractParity } from "./check-api-contract-parity.mjs";
 import { assertPublicFooterContract } from "./lib/public-footer.mjs";
 import { emitEdgeSecurityPolicy } from "./lib/edge-security-policy.mjs";
+import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -194,6 +195,12 @@ function injectHtmlDefaults(html, pagePath) {
   } else {
     next = next.replace(/<meta property="og:image" content="[^"]*" \/>/, `<meta property=\"og:image\" content=\"${ogImageUrl}\" />`);
   }
+  // Precache service worker (S62): registered only in built app shells, never
+  // in dev public/. Mount-relative scope; the edge policy hashes this inline
+  // snippet like every other.
+  if (["index.html", "game.html"].includes(pagePath) && !next.includes("navigator.serviceWorker.register")) {
+    next = next.replace("</body>", `${SW_REGISTRATION_SNIPPET}\n</body>`);
+  }
   return next;
 }
 
@@ -291,6 +298,10 @@ async function main() {
   ).trim();
   const edgePolicy = await emitEdgeSecurityPolicy({ outDir, htmlPages, sourceRevision });
   await emitDeployEvidence(edgePolicy);
+  const swManifest = await emitServiceWorker(outDir);
+  console.log(
+    `Service worker precache v${swManifest.version}: ${swManifest.assetCount} assets · ${Math.round(swManifest.totalBytes / 1024)} KB (repeat loads serve from cache)`
+  );
   await fs.copyFile(path.join(outDir, "index.html"), path.join(outDir, "404.html"));
   await mirrorProjectPaths();
   console.log(`Built Pages bundle in ${outDir}`);

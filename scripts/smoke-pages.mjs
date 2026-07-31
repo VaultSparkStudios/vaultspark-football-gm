@@ -114,6 +114,9 @@ async function assertPublishedMountContract() {
     await assertStaticFile(`${prefix}setup.js`, /createApiClient/);
     await assertStaticFile(`${prefix}favicon.ico`);
     await assertStaticFile(`${prefix}_headers`, /Content-Security-Policy:[^\n]*script-src 'self' 'sha256-/);
+    await assertStaticFile(`${prefix}sw.js`, /vsfgm-precache-/);
+    await assertStaticFile(`${prefix}precache-manifest.json`, /"assetCount"/);
+    await assertStaticFile(`${prefix}game.html`, /navigator\.serviceWorker\.register/);
     await assertStaticFile(`${prefix}edge-policy-receipt.json`, /"appliedToHostedOrigin": false/);
     await assertStaticFile(`${prefix}.well-known/security.txt`, /football@playfranchisearchitect\.com/);
     await assertStaticPath(`${mount}styles.css`, /:root/, "text/css");

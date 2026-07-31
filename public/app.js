@@ -808,7 +808,11 @@ function bindEvents() {
       } catch (error) {
         // A stale offer (league changed since it was made) resolves itself
         // with an honest receipt — refresh so the resolution is visible.
-        await loadTradeOffers().catch(() => {});
+        try {
+          await loadTradeOffers();
+        } catch {
+          // The original response error below remains the surfaced failure.
+        }
         throw error;
       }
       if (action === "counter" && result.counterPrefill) {
@@ -2110,6 +2114,9 @@ async function init() {
   }
   launchOpeningContract({ auto: true });
   document.addEventListener("vsfgm:run-opening-contract", () => launchOpeningContract({ auto: false }));
+  document.addEventListener("vsfgm:sw-updated", () => {
+    showToast("A new version is cached — reload to play the latest build.");
+  });
   mountBetaFeedback();
   observeBackgroundTask(
     () => maybeShowReturnDigest(state.dashboard, {
