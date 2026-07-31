@@ -32,6 +32,7 @@ import {
   createLeagueBase,
   ensureTeamIdentity,
   getAllTeamPlayers,
+  getTeamPlayers,
   initializeLeagueRoster,
   recalculateAllTeamRatings,
   resetTeamSeasonState
@@ -3985,12 +3986,11 @@ export class GameSession {
         return modifiers;
       };
       for (const game of weekResult.games) {
-        const homePlayers = this.league.players.filter(
-          (p) => p.teamId === game.homeTeamId && p.status === "active"
-        );
-        const awayPlayers = this.league.players.filter(
-          (p) => p.teamId === game.awayTeamId && p.status === "active"
-        );
+        // Injury exposure is limited to players who actually dressed: the same
+        // dressed-roster authority that builds lineups (active slot, not IR/PUP/NFI,
+        // not game-day inactive, not already out) owns candidate selection.
+        const homePlayers = getTeamPlayers(this.league, game.homeTeamId);
+        const awayPlayers = getTeamPlayers(this.league, game.awayTeamId);
         const injured = rollGameInjuries(homePlayers, awayPlayers, this.rng, injuryMultiplier, {
           getTeamModifiers: injuryModifiers
         });
