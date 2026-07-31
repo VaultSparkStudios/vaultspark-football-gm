@@ -1,216 +1,208 @@
 #!/usr/bin/env node
 /**
- * probe-capability.mjs — live-provider capability acceptance tests (S63e #2).
+ * Live, read-only provider credential probes.
  *
- * `check-secrets.mjs` tells us whether the .env file contains the required
- * variables. It does NOT prove the credential actually authenticates with the
- * provider — a fat-fingered paste or a revoked key still presents as READY.
- *
- * This script closes that gap by issuing a lightweight, non-destructive API
- * call per capability and recording the outcome:
- *
- *   ok          — provider responded 2xx (credential authenticated)
- *   auth-error  — provider responded 401/403 (credential invalid/revoked)
- *   unreachable — network error / timeout / 5xx
- *   skipped     — capability not yet READY, or no probe implemented
- *
- * Results append to `portfolio/ops/capability-probes.ndjson` and refresh the
- * `lastProbeAt` / `lastProbeStatus` fields on `secrets/CAPABILITY_MAP.json`.
- *
- * Probes are defined inline per capability so the script has zero surprise
- * dependencies. Every probe:
- *   - uses a READ-ONLY endpoint (no mutation)
- *   - has an 8-second timeout
- *   - redacts the credential from all output
- *
- * Usage:
- *   node scripts/probe-capability.mjs --all
- *   node scripts/probe-capability.mjs --for claude.api
- *   node scripts/probe-capability.mjs --all --json
+ * Capability definitions and values come only from the secrets gateway.
+ * Status receipts are redacted and written under ignored .cache; read-only
+ * probes never stamp a canonical or project capability map.
  */
 
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { resolveCapability, getSecret, redact } from './lib/secrets.mjs';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '..');
-const CAP_MAP_PATH = path.join(ROOT, 'secrets', 'CAPABILITY_MAP.json');
-const LEDGER = path.join(ROOT, 'portfolio', 'ops', 'capability-probes.ndjson');
+import fs from "node:fs";
+import https from "node:https";
+import path from "node:path";
+import {
+  capabilityDefinition,
+  capabilityDefinitions,
+  capabilityOperationReceipt,
+  capabilityProbeLedgerPath
+} from "./lib/capability-operations.mjs";
+import { callAnthropicRaw } from "./lib/model-router.mjs";
+import { getSecret, redact } from "./lib/secrets.mjs";
 
 const args = process.argv.slice(2);
-const JSON_MODE = args.includes('--json');
-const ALL = args.includes('--all');
-const forIdx = args.indexOf('--for');
-const FILTER = forIdx >= 0 ? args[forIdx + 1] : null;
-const TIMEOUT_MS = 8000;
+const jsonMode = args.includes("--json");
+const all = args.includes("--all");
+const filterIndex = args.indexOf("--for");
+const filter = filterIndex >= 0 ? args[filterIndex + 1] : null;
+const timeoutMs = 8_000;
 
-if (!ALL && !FILTER) {
-  console.log('usage: probe-capability --all  |  --for <capability>  [--json]');
+if (!all && !filter) {
+  console.log("usage: probe-capability --all | --for <capability> [--json]");
   process.exit(1);
 }
 
-// ── Probe registry ────────────────────────────────────────────────────────
-// Each entry returns { ok, status, detail } after calling the provider.
-const PROBES = {
-  'claude.api': async () => {
-    const key = getSecret('ANTHROPIC_API_KEY', 'claude.api');
-    const r = await httpFetch('https://api.anthropic.com/v1/models', { headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01' } });
-    return interpret(r);
+async function httpFetch(url, options = {}) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    return { status: response.status, ok: response.ok };
+  } catch (error) {
+    return {
+      status: 0,
+      ok: false,
+      error: error.name === "AbortError" ? "timeout" : error.message
+    };
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+function interpret(result) {
+  if (result.error) return { ok: false, status: "unreachable", detail: result.error };
+  if (result.status === 401 || result.status === 403) {
+    return { ok: false, status: "auth-error", detail: `HTTP ${result.status}` };
+  }
+  if (result.status >= 500) {
+    return { ok: false, status: "unreachable", detail: `HTTP ${result.status}` };
+  }
+  if (result.status >= 200 && result.status < 300) {
+    return { ok: true, status: "ok", detail: `HTTP ${result.status}` };
+  }
+  return { ok: false, status: "auth-error", detail: `HTTP ${result.status}` };
+}
+
+function bearer(key) {
+  return { Authorization: `Bearer ${key}` };
+}
+
+async function probeAnthropicCredential() {
+  try {
+    const result = await callAnthropicRaw({
+      apiKey: getSecret("ANTHROPIC_API_KEY", "claude.api"),
+      method: "GET",
+      path: "/v1/models?limit=1",
+      timeoutMs
+    }, https);
+    return interpret({ status: result.status, ok: result.status >= 200 && result.status < 300 });
+  } catch (error) {
+    return interpret({
+      status: 0,
+      ok: false,
+      error: error.name === "AbortError" ? "timeout" : error.message
+    });
+  }
+}
+
+const probes = {
+  "claude.api": probeAnthropicCredential,
+  "stripe.checkout": async () => interpret(await httpFetch("https://api.stripe.com/v1/balance", {
+    headers: bearer(getSecret("STRIPE_SECRET_KEY", "stripe.checkout"))
+  })),
+  "cloudflare.deploy": async () => interpret(await httpFetch("https://api.cloudflare.com/client/v4/user/tokens/verify", {
+    headers: bearer(getSecret("CLOUDFLARE_API_TOKEN", "cloudflare.deploy"))
+  })),
+  "cloudflare.dns": async () => interpret(await httpFetch("https://api.cloudflare.com/client/v4/user/tokens/verify", {
+    headers: bearer(getSecret("CLOUDFLARE_DNS_TOKEN", "cloudflare.dns"))
+  })),
+  "cloudflare.r2": async () => {
+    const token = getSecret("CLOUDFLARE_API_TOKEN", "cloudflare.deploy")
+      || getSecret("CLOUDFLARE_DNS_TOKEN", "cloudflare.dns");
+    const accountId = getSecret("R2_ACCOUNT_ID", "cloudflare.r2");
+    if (!token || !accountId) return { ok: false, status: "auth-error", detail: "required R2 authority missing" };
+    return interpret(await httpFetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}`, {
+      headers: bearer(token)
+    }));
   },
-  'stripe.checkout': async () => {
-    const key = getSecret('STRIPE_SECRET_KEY', 'stripe.checkout');
-    const r = await httpFetch('https://api.stripe.com/v1/balance', { headers: { Authorization: `Bearer ${key}` } });
-    return interpret(r);
+  "resend.email": async () => interpret(await httpFetch("https://api.resend.com/domains", {
+    headers: bearer(getSecret("RESEND_API_KEY", "resend.email"))
+  })),
+  "github.org": async () => interpret(await httpFetch("https://api.github.com/user", {
+    headers: {
+      ...bearer(getSecret("GITHUB_TOKEN", "github.org") || getSecret("GH_TOKEN", "github.org")),
+      "User-Agent": "vaultspark-probe"
+    }
+  })),
+  "openai.api": async () => interpret(await httpFetch("https://api.openai.com/v1/models", {
+    headers: bearer(getSecret("OPENAI_API_KEY", "openai.api"))
+  })),
+  "supabase.admin": async () => {
+    const url = getSecret("SUPABASE_URL", "supabase.admin");
+    const key = getSecret("SUPABASE_SERVICE_KEY", "supabase.admin")
+      || getSecret("SUPABASE_ANON_KEY", "supabase.admin");
+    if (!url || !key) return { ok: false, status: "auth-error", detail: "required Supabase authority missing" };
+    return interpret(await httpFetch(`${url.replace(/\/$/, "")}/rest/v1/`, {
+      headers: { apikey: key, Authorization: `Bearer ${key}` }
+    }));
   },
-  'cloudflare.deploy': async () => {
-    const key = getSecret('CLOUDFLARE_API_TOKEN', 'cloudflare.deploy');
-    const r = await httpFetch('https://api.cloudflare.com/client/v4/user/tokens/verify', { headers: { Authorization: `Bearer ${key}` } });
-    return interpret(r);
-  },
-  'cloudflare.dns': async () => {
-    const key = getSecret('CLOUDFLARE_DNS_TOKEN', 'cloudflare.dns');
-    const r = await httpFetch('https://api.cloudflare.com/client/v4/user/tokens/verify', { headers: { Authorization: `Bearer ${key}` } });
-    return interpret(r);
-  },
-  'cloudflare.r2': async () => {
-    // R2 S3-compat endpoint requires AWS SigV4 — probe via account metadata instead.
-    const token = getSecret('CLOUDFLARE_API_TOKEN', 'cloudflare.deploy') || getSecret('CLOUDFLARE_DNS_TOKEN', 'cloudflare.dns');
-    if (!token) return { ok: false, status: 'skipped', detail: 'no CF token to verify R2 account' };
-    const accountId = getSecret('R2_ACCOUNT_ID', 'cloudflare.r2');
-    if (!accountId) return { ok: false, status: 'auth-error', detail: 'R2_ACCOUNT_ID missing' };
-    const r = await httpFetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}`, { headers: { Authorization: `Bearer ${token}` } });
-    return interpret(r);
-  },
-  'resend.email': async () => {
-    const key = getSecret('RESEND_API_KEY', 'resend.email');
-    const r = await httpFetch('https://api.resend.com/domains', { headers: { Authorization: `Bearer ${key}` } });
-    return interpret(r);
-  },
-  'github.api': async () => {
-    const key = getSecret('GITHUB_TOKEN', 'github.api') || getSecret('GH_TOKEN', 'github.api');
-    const r = await httpFetch('https://api.github.com/user', { headers: { Authorization: `Bearer ${key}`, 'User-Agent': 'vaultspark-probe' } });
-    return interpret(r);
-  },
-  'openai.api': async () => {
-    const key = getSecret('OPENAI_API_KEY', 'openai.api');
-    const r = await httpFetch('https://api.openai.com/v1/models', { headers: { Authorization: `Bearer ${key}` } });
-    return interpret(r);
-  },
-  'supabase.admin': async () => {
-    const url = getSecret('SUPABASE_URL', 'supabase.admin');
-    const key = getSecret('SUPABASE_SERVICE_KEY', 'supabase.admin') || getSecret('SUPABASE_ANON_KEY', 'supabase.admin');
-    if (!url || !key) return { ok: false, status: 'auth-error', detail: 'SUPABASE_URL or key missing' };
-    const r = await httpFetch(`${url.replace(/\/$/, '')}/rest/v1/`, { headers: { apikey: key, Authorization: `Bearer ${key}` } });
-    return interpret(r);
-  },
-  'posthog.api': async () => {
-    const key = getSecret('POSTHOG_PERSONAL_API_KEY', 'posthog.api') || getSecret('POSTHOG_API_KEY', 'posthog.api');
-    const r = await httpFetch('https://app.posthog.com/api/users/@me/', { headers: { Authorization: `Bearer ${key}` } });
-    return interpret(r);
-  },
-  'hetzner.cloud': async () => {
-    const key = getSecret('HETZNER_API_TOKEN', 'hetzner.cloud');
-    const r = await httpFetch('https://api.hetzner.cloud/v1/locations', { headers: { Authorization: `Bearer ${key}` } });
-    return interpret(r);
-  },
-  'brevo.email': async () => {
-    const key = getSecret('BREVO_API_KEY', 'brevo.email');
-    const r = await httpFetch('https://api.brevo.com/v3/account', { headers: { 'api-key': key } });
-    return interpret(r);
-  },
-  'namecheap.api': async () => {
-    return { ok: false, status: 'skipped', detail: 'Namecheap API requires per-call IP allowlist — probe not safe' };
-  },
-  'google.gmail': async () => {
-    // OAuth flow not probable without interactive consent.
-    return { ok: false, status: 'skipped', detail: 'OAuth bearer; probed via scripts/test-gmail-send.mjs' };
-  },
-  'google.calendar': async () => {
-    return { ok: false, status: 'skipped', detail: 'OAuth bearer; probed via scripts/test-calendar-read.mjs' };
-  },
-  'google.drive': async () => {
-    return { ok: false, status: 'skipped', detail: 'OAuth bearer; probed via scripts/test-drive-read.mjs' };
-  },
+  "brevo": async () => interpret(await httpFetch("https://api.brevo.com/v3/account", {
+    headers: { "api-key": getSecret("BREVO_API_KEY", "brevo") }
+  }))
 };
 
-async function httpFetch(url, opts = {}) {
-  const ctrl = new AbortController();
-  const to = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
-  try {
-    const r = await fetch(url, { ...opts, signal: ctrl.signal });
-    const text = await r.text().catch(() => '');
-    return { status: r.status, ok: r.ok, bodyPreview: text.slice(0, 200) };
-  } catch (e) {
-    return { status: 0, ok: false, error: e.name === 'AbortError' ? 'timeout' : e.message };
-  } finally { clearTimeout(to); }
+const authority = capabilityOperationReceipt();
+if (authority.capabilityCount === 0) {
+  if (jsonMode) console.log("[]");
+  console.error("⚠ capability map absent or corrupt — probe skipped (SKIPPED=no-capability-map)");
+  process.exit(0);
 }
 
-function interpret(r) {
-  if (r.error) return { ok: false, status: 'unreachable', detail: r.error };
-  if (r.status === 401 || r.status === 403) return { ok: false, status: 'auth-error', detail: `HTTP ${r.status}` };
-  if (r.status >= 500) return { ok: false, status: 'unreachable', detail: `HTTP ${r.status}` };
-  if (r.status >= 200 && r.status < 300) return { ok: true, status: 'ok', detail: `HTTP ${r.status}` };
-  return { ok: false, status: 'auth-error', detail: `HTTP ${r.status}` };
-}
-
-// ── Main ────────────────────────────────────────────────────────────────
-// S157 #8 — the map is gitignored, so CI checkouts (and fresh machines) lack
-// it. Exit with an explicit honest skip instead of an ENOENT stack trace.
-let capMap;
-try {
-  capMap = JSON.parse(fs.readFileSync(CAP_MAP_PATH, 'utf8'));
-} catch (e) {
-  if (e.code === 'ENOENT') {
-    if (JSON_MODE) console.log('[]');
-    console.error('⚠ secrets/CAPABILITY_MAP.json missing — probe skipped (SKIPPED=no-capability-map)');
-    process.exit(0);
-  }
-  throw e;
-}
-const caps = FILTER ? [FILTER] : Object.keys(capMap.capabilities);
-
+const names = filter ? [filter] : capabilityDefinitions().map((row) => row.capability);
 const results = [];
-for (const cap of caps) {
-  const resolved = resolveCapability(cap);
-  if (!resolved.ok) {
-    results.push({ cap, status: 'skipped', detail: `missing env: ${resolved.missing.join(', ')}`, checkedAt: new Date().toISOString() });
+for (const name of names) {
+  const definition = capabilityDefinition(name);
+  const checkedAt = new Date().toISOString();
+  if (!definition.known) {
+    results.push({
+      cap: name,
+      status: "skipped",
+      detail: "unknown capability",
+      definitionSource: authority.definitionSource,
+      checkedAt
+    });
     continue;
   }
-  const probe = PROBES[cap];
+  if (!definition.ok) {
+    results.push({
+      cap: name,
+      status: "skipped",
+      detail: `missing env: ${definition.missing.join(", ")}`,
+      definitionSource: authority.definitionSource,
+      checkedAt
+    });
+    continue;
+  }
+  const probe = probes[name];
   if (!probe) {
-    results.push({ cap, status: 'skipped', detail: 'no probe implemented', checkedAt: new Date().toISOString() });
+    results.push({
+      cap: name,
+      status: "skipped",
+      detail: "no read-only probe implemented",
+      definitionSource: authority.definitionSource,
+      checkedAt
+    });
     continue;
   }
-  let result;
+  let outcome;
   try {
-    result = await probe();
-  } catch (e) {
-    result = { ok: false, status: 'unreachable', detail: e.message };
+    outcome = await probe();
+  } catch (error) {
+    outcome = { ok: false, status: "unreachable", detail: error.message };
   }
-  const entry = { cap, status: result.status, ok: result.ok, detail: redact(result.detail || ''), checkedAt: new Date().toISOString() };
-  results.push(entry);
-  // Stamp capability map
-  capMap.capabilities[cap].lastProbeAt = entry.checkedAt;
-  capMap.capabilities[cap].lastProbeStatus = entry.status;
+  results.push({
+    cap: name,
+    status: outcome.status,
+    ok: outcome.ok,
+    detail: redact(outcome.detail || ""),
+    definitionSource: authority.definitionSource,
+    checkedAt
+  });
 }
 
-// Persist
 try {
-  fs.mkdirSync(path.dirname(LEDGER), { recursive: true });
-  for (const r of results) fs.appendFileSync(LEDGER, JSON.stringify(r) + '\n');
-} catch { /* non-fatal */ }
-try { fs.writeFileSync(CAP_MAP_PATH, JSON.stringify(capMap, null, 2) + '\n'); } catch { /* non-fatal */ }
-
-if (JSON_MODE) { console.log(JSON.stringify(results, null, 2)); process.exit(0); }
-
-const counts = results.reduce((a, r) => { a[r.status] = (a[r.status] || 0) + 1; return a; }, {});
-console.log(`probe-capability · ${results.length} probed`);
-console.log('─'.repeat(72));
-for (const r of results) {
-  const badge = { ok: '✓ ok        ', 'auth-error': '⛔ auth-error', unreachable: '⚠ unreachable', skipped: '= skipped   ' }[r.status] || r.status;
-  console.log(`  ${badge} ${r.cap.padEnd(28)} ${r.detail}`);
+  const ledger = capabilityProbeLedgerPath();
+  fs.mkdirSync(path.dirname(ledger), { recursive: true });
+  for (const result of results) fs.appendFileSync(ledger, `${JSON.stringify(result)}\n`);
+} catch {
+  // A receipt failure never changes the provider verdict.
 }
-console.log('─'.repeat(72));
-console.log('summary:', Object.entries(counts).map(([k, v]) => `${k}=${v}`).join(' · '));
+
+if (jsonMode) {
+  console.log(JSON.stringify(results, null, 2));
+  process.exitCode = 0;
+} else {
+  console.log(`probe-capability · ${results.length} probed · definitions ${authority.definitionSource}`);
+  for (const result of results) {
+    console.log(`  ${result.status.padEnd(12)} ${result.cap.padEnd(28)} ${result.detail}`);
+  }
+}

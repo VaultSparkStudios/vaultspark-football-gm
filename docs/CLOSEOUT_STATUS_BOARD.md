@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-29 (Session 60 closeout) -->
+<!-- generated-at: 2026-07-31 (Session 61 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S60 ══════╗
-║  Date: 2026-07-29  ·  SIL: 995/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S61 ══════╗
+║  Date: 2026-07-31  ·  SIL: 995/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ The repo-local secrets gateway now falls back to the canonic  ║
-║  ✓ Context-meter imports model/window/price authority from the   ║
-║  ✓ Startup brief truth now fingerprints lifecycle and Genius au  ║
-║  ✓ Closeout-board fixtures exercise clean, dirty, ahead, stale,  ║
-║  ✓ Players can author one versioned per-team Architect Thesis:   ║
+║  ✓ One canonical capability-operations authority now owns capab  ║
+║  ✓ Both advertised runtimes delegate Architect Thesis GET/POST   ║
+║  ✓ Architecture Review compares the player’s declared focus wit  ║
+║  ✓ Trade evaluation and commit now use an exact TradeService au  ║
+║  ✓ Static builds generate exact inline CSP hashes, hardening he  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -30,10 +30,10 @@
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
+║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
@@ -41,7 +41,7 @@
 ║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 15 files  ·  M:15 A:0 D:0 ?:0                          ║
+║  Changes: 60 files  ·  M:38 A:22 D:0 ?:0                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         539/539                                          ║
-║  IGNIS:         2d ago                                           ║
+║  Tests:         560/560                                          ║
+║  IGNIS:         4d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  2d ago                                           ║
+║  Sanitization:  4d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

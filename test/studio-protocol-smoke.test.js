@@ -376,6 +376,11 @@ test("innovation-pack marker scan ignores intentional guard sentinels", () => {
   assert.doesNotMatch(result.stdout, /scripts\/lib\/task-board\.mjs/);
   assert.doesNotMatch(result.stdout, /test-receipt\.mjs|test\/test-receipt\.test\.js/);
   assert.doesNotMatch(result.stdout, /test\/return-digest\.test\.js/);
+  assert.match(result.stdout, /No unclassified live innovation candidates remain/);
+  assert.match(result.stdout, /stale-trade-plan-authority-receipt/);
+  assert.match(result.stdout, /hosted-edge-policy-attestation/);
+  assert.match(result.stdout, /inline-style-policy-saturation/);
+  assert.doesNotMatch(result.stdout, /Pending implementation|Pending classification/);
 });
 
 test("scheduled realism verification cannot be greened by tee", () => {

@@ -357,6 +357,7 @@ export function setTradeEvalCards({ fairness = null, capDeltaA = null, capDeltaB
 }
 
 export function clearTradePackages({ keepMessage = false } = {}) {
+  state.tradePlanFingerprint = null;
   state.tradeAssets = createEmptyTradeAssets();
   renderTradeWorkspace();
   if (!keepMessage) {
@@ -393,6 +394,7 @@ export function setTradePackageText(side) {
 }
 
 export function toggleTradeAsset(side, type, id) {
+  state.tradePlanFingerprint = null;
   const { playerKey, pickKey } = tradeAssetKeys(side);
   const key = type === "pick" ? pickKey : playerKey;
   const current = state.tradeAssets[key] || [];

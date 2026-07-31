@@ -6,8 +6,8 @@ export function createSessionModules(session) {
       setPracticeSquad: (payload) => session.setPracticeSquad(payload)
     },
     transactions: {
-      trade: (payload) => session.tradePlayers(payload),
-      evaluateTrade: (payload) => session.evaluateTradePackage(payload),
+      trade: (payload) => session.services.trades.commit(payload),
+      evaluateTrade: (payload) => session.services.trades.evaluate(payload),
       log: (filters) => session.getTransactionLog(filters)
     },
     offseason: {

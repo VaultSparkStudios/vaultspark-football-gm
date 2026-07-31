@@ -72,6 +72,11 @@ import { createSessionModules } from "./modules/sessionModules.js";
 import { createServices } from "./services/index.js";
 import { architectLedgerForTeam } from "./architectLedger.js";
 import { getArchitectThesis, setArchitectThesis } from "../engine/architectThesis.js";
+import { buildArchitectMasteryPortfolio } from "../engine/architectMasteryPortfolio.js";
+import {
+  buildArchitectFocusReview,
+  captureArchitectFocusBaseline
+} from "../engine/architectFocusReview.js";
 import { LATEST_SNAPSHOT_SCHEMA_VERSION } from "./snapshotMigration.js";
 import {
   advanceInjuryRecovery,
@@ -1574,7 +1579,16 @@ export class GameSession {
     this.careerRealismProfile = careerRealismProfile || PFR_CAREER_WEIGHTED_PROFILE;
 
     this.league = createLeagueBase(startYear, this.rng);
-    this.services = createServices(this);
+    this.services = createServices(this, {
+      clamp,
+      ensureDepthCharts,
+      isTradeValueAcceptable,
+      pickTradeValueForTeam,
+      playerTradeValueForTeam,
+      recalculateAllTeamRatings,
+      teamPlayersAll,
+      teamTransactionAiProfile
+    });
     initializeLeagueRoster({ league: this.league, importedPlayers, rng: this.rng });
     ensureLeagueRuntime(this.league);
     this.initializeLeagueSystems();
@@ -3376,189 +3390,12 @@ export class GameSession {
     this.rebuildLookupIndexes();
   }
 
-  evaluateTradePackage({ teamA, teamB, teamAPlayerIds = [], teamBPlayerIds = [], teamAPickIds = [], teamBPickIds = [] }) {
-    if (!this.getTeamById(teamA) || !this.getTeamById(teamB)) {
-      return { ok: false, error: "Invalid team IDs.", reasonCode: "invalid-team" };
-    }
-    if (teamA === teamB) return { ok: false, error: "Teams must be different.", reasonCode: "same-team" };
-
-    const fromA = teamAPlayerIds
-      .map((id) => this.getPlayerById(id))
-      .filter((player) => player?.teamId === teamA)
-      .filter(Boolean);
-    const fromB = teamBPlayerIds
-      .map((id) => this.getPlayerById(id))
-      .filter((player) => player?.teamId === teamB)
-      .filter(Boolean);
-    const picksA = teamAPickIds
-      .map((id) => this.getDraftPickById(id))
-      .filter((pick) => pick?.ownerTeamId === teamA)
-      .filter(Boolean);
-    const picksB = teamBPickIds
-      .map((id) => this.getDraftPickById(id))
-      .filter((pick) => pick?.ownerTeamId === teamB)
-      .filter(Boolean);
-
-    if (
-      fromA.length !== teamAPlayerIds.length ||
-      fromB.length !== teamBPlayerIds.length ||
-      picksA.length !== teamAPickIds.length ||
-      picksB.length !== teamBPickIds.length
-    ) {
-      return { ok: false, error: "Invalid asset in trade package.", reasonCode: "invalid-asset" };
-    }
-
-    const challengeA = this.getChallengeRestrictions(teamA);
-    const challengeB = this.getChallengeRestrictions(teamB);
-    const incomingTop10ToA = picksB.filter((pick) => (pick.originalPickIndex || 99) <= 10);
-    const incomingTop10ToB = picksA.filter((pick) => (pick.originalPickIndex || 99) <= 10);
-    if (!challengeA.allowTop10PickTrading && incomingTop10ToA.length) {
-      return {
-        ok: false,
-        error: "This challenge mode blocks acquiring top-10 draft picks.",
-        reasonCode: "challenge-top10-picks"
-      };
-    }
-    if (!challengeB.allowTop10PickTrading && incomingTop10ToB.length) {
-      return {
-        ok: false,
-        error: "This challenge mode blocks acquiring top-10 draft picks.",
-        reasonCode: "challenge-top10-picks"
-      };
-    }
-
-    const capA = this.getTeamCapSummary(teamA).capSpace;
-    const capB = this.getTeamCapSummary(teamB).capSpace;
-    const outgoingA = fromA.reduce((sum, player) => sum + player.contract.capHit, 0);
-    const incomingA = fromB.reduce((sum, player) => sum + player.contract.capHit, 0);
-    const outgoingB = fromB.reduce((sum, player) => sum + player.contract.capHit, 0);
-    const incomingB = fromA.reduce((sum, player) => sum + player.contract.capHit, 0);
-
-    if (capA + outgoingA - incomingA < 0 || capB + outgoingB - incomingB < 0) {
-      return {
-        ok: false,
-        error: "Trade failed cap check.",
-        reasonCode: "cap-failed",
-        capAfter: {
-          [teamA]: capA + outgoingA - incomingA,
-          [teamB]: capB + outgoingB - incomingB
-        }
-      };
-    }
-
-    const teamAObj = this.getTeamById(teamA);
-    const teamBObj = this.getTeamById(teamB);
-    const pickValueA = picksA.reduce((sum, pick) => sum + pickAssetValue(pick), 0);
-    const pickValueB = picksB.reduce((sum, pick) => sum + pickAssetValue(pick), 0);
-    const rosterA = teamPlayersAll(this.league, teamA);
-    const rosterB = teamPlayersAll(this.league, teamB);
-    const playerValueOutA = fromA.reduce((sum, player) => sum + playerTradeValueForTeam(player, teamAObj, rosterA, { incoming: false }), 0);
-    const playerValueInA = fromB.reduce((sum, player) => sum + playerTradeValueForTeam(player, teamAObj, rosterA, { incoming: true }), 0);
-    const playerValueOutB = fromB.reduce((sum, player) => sum + playerTradeValueForTeam(player, teamBObj, rosterB, { incoming: false }), 0);
-    const playerValueInB = fromA.reduce((sum, player) => sum + playerTradeValueForTeam(player, teamBObj, rosterB, { incoming: true }), 0);
-    const adjustedPickValueA = picksA.reduce((sum, pick) => sum + pickTradeValueForTeam(pick, teamAObj, rosterA), 0);
-    const adjustedPickValueB = picksB.reduce((sum, pick) => sum + pickTradeValueForTeam(pick, teamBObj, rosterB), 0);
-    const incomingPickValueA = picksB.reduce((sum, pick) => sum + pickTradeValueForTeam(pick, teamAObj, rosterA), 0);
-    const incomingPickValueB = picksA.reduce((sum, pick) => sum + pickTradeValueForTeam(pick, teamBObj, rosterB), 0);
-
-    const outgoingValueA = playerValueOutA + adjustedPickValueA;
-    const incomingValueA = playerValueInA + incomingPickValueA;
-    const outgoingValueB = playerValueOutB + adjustedPickValueB;
-    const incomingValueB = playerValueInB + incomingPickValueB;
-
-    const strategyTolerance = (team) => {
-      const aggression = this.getLeagueSettings().cpuTradeAggression;
-      const aggressionAdj = clamp((aggression - 0.5) * 0.24, -0.12, 0.12);
-      const profile = teamTransactionAiProfile(team, teamPlayersAll(this.league, team.id));
-      if (team.strategyProfile === "rebuild") return clamp(0.4 + aggressionAdj + profile.tradeToleranceDelta, 0.2, 0.55);
-      if (team.strategyProfile === "contender") return clamp(0.25 + aggressionAdj + profile.tradeToleranceDelta, 0.12, 0.4);
-      return clamp(0.32 + aggressionAdj + profile.tradeToleranceDelta, 0.15, 0.5);
-    };
-
-    const aiAcceptableA =
-      isTradeValueAcceptable({ outgoing: fromA, incoming: fromB, team: teamAObj, tolerance: strategyTolerance(teamAObj) }) ||
-      incomingValueA >= outgoingValueA * (1 - strategyTolerance(teamAObj));
-    const aiAcceptableB =
-      isTradeValueAcceptable({ outgoing: fromB, incoming: fromA, team: teamBObj, tolerance: strategyTolerance(teamBObj) }) ||
-      incomingValueB >= outgoingValueB * (1 - strategyTolerance(teamBObj));
-
-    if (!aiAcceptableA || !aiAcceptableB) {
-      return {
-        ok: false,
-        error: "Trade rejected by AI valuation.",
-        reasonCode: "valuation-failed",
-        valuation: {
-          [teamA]: { outgoingValue: outgoingValueA, incomingValue: incomingValueA, delta: incomingValueA - outgoingValueA },
-          [teamB]: { outgoingValue: outgoingValueB, incomingValue: incomingValueB, delta: incomingValueB - outgoingValueB }
-        }
-      };
-    }
-
-    return {
-      ok: true,
-      teamA,
-      teamB,
-      players: { fromA, fromB },
-      picks: { fromA: picksA, fromB: picksB },
-      capAfter: {
-        [teamA]: capA + outgoingA - incomingA,
-        [teamB]: capB + outgoingB - incomingB
-      },
-      valuation: {
-        [teamA]: { outgoingValue: outgoingValueA, incomingValue: incomingValueA, delta: incomingValueA - outgoingValueA },
-        [teamB]: { outgoingValue: outgoingValueB, incomingValue: incomingValueB, delta: incomingValueB - outgoingValueB }
-      }
-    };
+  evaluateTradePackage(input) {
+    return this.services.trades.evaluate(input);
   }
 
-  tradePlayers({ teamA, teamB, teamAPlayerIds = [], teamBPlayerIds = [], teamAPickIds = [], teamBPickIds = [] }) {
-    const evalResult = this.evaluateTradePackage({
-      teamA,
-      teamB,
-      teamAPlayerIds,
-      teamBPlayerIds,
-      teamAPickIds,
-      teamBPickIds
-    });
-    if (!evalResult.ok) return evalResult;
-
-    const fromA = evalResult.players.fromA;
-    const fromB = evalResult.players.fromB;
-    const picksA = evalResult.picks.fromA;
-    const picksB = evalResult.picks.fromB;
-
-    for (const player of fromA) player.teamId = teamB;
-    for (const player of fromB) player.teamId = teamA;
-    for (const pick of picksA) pick.ownerTeamId = teamB;
-    for (const pick of picksB) pick.ownerTeamId = teamA;
-
-    this.logTransaction({
-      type: "trade",
-      teamA,
-      teamB,
-      details: {
-        fromA: fromA.map((player) => ({ playerId: player.id, player: player.name, capHit: player.contract.capHit })),
-        fromB: fromB.map((player) => ({ playerId: player.id, player: player.name, capHit: player.contract.capHit })),
-        picksFromA: picksA.map((pick) => ({ id: pick.id, year: pick.year, round: pick.round, originalTeamId: pick.originalTeamId })),
-        picksFromB: picksB.map((pick) => ({ id: pick.id, year: pick.year, round: pick.round, originalTeamId: pick.originalTeamId }))
-      }
-    });
-    this.logNews(`${teamA} and ${teamB} completed a trade`, { teamA, teamB, playersMoved: fromA.length + fromB.length });
-
-    ensureDepthCharts(this.league);
-    recalculateAllTeamRatings(this.league);
-    this.statBook.reindexPlayers();
-    this.rebuildLookupIndexes();
-    return {
-      ok: true,
-      teamA,
-      teamB,
-      movedA: fromA.map((player) => player.id),
-      movedB: fromB.map((player) => player.id),
-      movedPicksA: picksA.map((pick) => pick.id),
-      movedPicksB: picksB.map((pick) => pick.id),
-      valuation: evalResult.valuation
-    };
+  tradePlayers(input) {
+    return this.services.trades.commit(input);
   }
 
   listExpiringContracts(teamId = this.controlledTeamId) {
@@ -4892,7 +4729,7 @@ export class GameSession {
       tacticalFilmLedger: (this.league.tacticalFilmLog || []).filter((entry) => entry.teamId === this.controlledTeamId).slice(0, 12),
       coachingLineage: this.services.coaching.getTeamView(this.controlledTeamId),
       architectLedger: architectLedgerForTeam(this.league, this.controlledTeamId, 12),
-      architectThesis: getArchitectThesis(this.league, this.controlledTeamId),
+      architectThesis: this.getArchitectThesisReview(),
       recentBoxScores: this.getRecentBoxScores(this.controlledTeamId, 8),
       injuryReport: getInjuryReport(this.league, null, {
         getTeamModifiers: dashboardInjuryModifiers
@@ -4929,13 +4766,38 @@ export class GameSession {
     };
   }
 
+  getArchitectThesisReview() {
+    const portfolio = buildArchitectMasteryPortfolio(this.league, this.controlledTeamId);
+    const thesis = getArchitectThesis(this.league, this.controlledTeamId);
+    return {
+      ...thesis,
+      review: buildArchitectFocusReview({
+        thesis,
+        portfolio,
+        year: this.currentYear,
+        week: this.currentWeek,
+        phase: this.phase
+      })
+    };
+  }
+
   setArchitectThesis(input = {}) {
-    return setArchitectThesis(this.league, {
+    const portfolio = buildArchitectMasteryPortfolio(this.league, this.controlledTeamId);
+    const focusBaseline = Object.prototype.hasOwnProperty.call(input, "focusPathId")
+      ? captureArchitectFocusBaseline(portfolio, input.focusPathId, {
+          year: this.currentYear,
+          week: this.currentWeek,
+          phase: this.phase
+        })
+      : undefined;
+    const result = setArchitectThesis(this.league, {
       ...input,
       teamId: this.controlledTeamId,
       year: this.currentYear,
-      week: this.currentWeek
+      week: this.currentWeek,
+      focusBaseline
     });
+    return result.ok ? { ...result, thesis: this.getArchitectThesisReview() } : result;
   }
 
   getRoster(teamId = this.controlledTeamId) {

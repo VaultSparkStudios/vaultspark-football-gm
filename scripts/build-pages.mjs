@@ -6,6 +6,7 @@ import { assertBrowserModuleReachability } from "./check-browser-module-reachabi
 import { assertBrowserPromiseObservability } from "./check-browser-promise-observability.mjs";
 import { assertApiContractParity } from "./check-api-contract-parity.mjs";
 import { assertPublicFooterContract } from "./lib/public-footer.mjs";
+import { emitEdgeSecurityPolicy } from "./lib/edge-security-policy.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -236,7 +237,7 @@ async function emitHashedStylesheet() {
   return hashedStyleHref;
 }
 
-async function emitDeployEvidence() {
+async function emitDeployEvidence(edgePolicy) {
   const identity = JSON.parse(await fs.readFile(path.join(publicDir, "public-identity.json"), "utf8"));
   const sourceRevision = String(
     process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || process.env.SOURCE_REVISION || "local-worktree"
@@ -254,6 +255,8 @@ async function emitDeployEvidence() {
     publishedMounts,
     runtimeDefault,
     serverAvailable: serverAvailable === "true",
+    edgePolicyFingerprint: edgePolicy.policyFingerprint,
+    edgePolicyStatus: "source-authored-not-host-observed",
     generatedAt
   };
   const health = {
@@ -261,6 +264,8 @@ async function emitDeployEvidence() {
     service: identity.slug,
     sourceRevision,
     styleAsset: hashedStyleHref,
+    edgePolicyFingerprint: edgePolicy.policyFingerprint,
+    edgePolicyAppliedToHostedOrigin: false,
     generatedAt,
     launchReady: false,
     launchNote: "Runtime health is green; launch readiness still requires separate email, edge-header, deploy-currency, and founder-approval evidence."
@@ -281,7 +286,11 @@ async function main() {
   for (const pageName of htmlPages) {
     await writeHtml(pageName);
   }
-  await emitDeployEvidence();
+  const sourceRevision = String(
+    process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || process.env.SOURCE_REVISION || "local-worktree"
+  ).trim();
+  const edgePolicy = await emitEdgeSecurityPolicy({ outDir, htmlPages, sourceRevision });
+  await emitDeployEvidence(edgePolicy);
   await fs.copyFile(path.join(outDir, "index.html"), path.join(outDir, "404.html"));
   await mirrorProjectPaths();
   console.log(`Built Pages bundle in ${outDir}`);

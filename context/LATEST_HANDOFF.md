@@ -1,3 +1,40 @@
+# Session 61 Intent (2026-07-29)
+
+Run the complete agent-neutral `/goal /arc` as one continuous mission: pull-first `/start`, premise-verified infrastructure/game/release `/audit`, full `/implement`, primary-list exhaustion, viable second-order innovation and implementation, then canonical `/closeout` with direct suite/doctor evidence, public sanitization, Ark broadcast, and direct push to `main`. Preserve source-derived observability, notional flat-rate Max Plan accounting, try-first blocker handling, proprietary boundaries, and honest evidence gates.
+
+---
+
+## Where We Left Off — Session 61 Closeout (2026-07-29)
+
+Session 61 achieved the requested uninterrupted `/goal /arc`: all five live-code audit objectives and all three viable second-order innovations are implemented and directly verified.
+
+### Shipped
+
+- One canonical capability-operations authority now owns capability definitions, status, probes, and remediation while keeping every output status-only.
+- Both advertised runtimes delegate Architect Thesis GET/POST semantics to one shared handler.
+- Architecture Review compares the player’s declared focus with current source-derived mastery, exposes an exact next action, and distinguishes “no new receipt” from evidence without predicting results.
+- Trade evaluation and commit now use an exact TradeService authority; evaluation returns a state-bound plan fingerprint and commit rejects stale plans with 409 before mutation.
+- Static builds generate exact inline CSP hashes, hardening headers, `security.txt`, and a fingerprinted edge receipt.
+- A hosted verifier joins the generated artifact, exact revision, `/_health`, and live header application and produces an Ark-ready owning-host request.
+
+### Verification
+
+- Canonical Node: 560/560, aggregate exit 0, fresh source-bound receipt.
+- Browser: Playwright 20/20.
+- Visual/build: responsive evidence 53 captures; Pages build, 52-module reachability, 52-file promise-observability, and static smoke green.
+- Security/release: public sanitization 0 critical/0 warning, sitemap 10/10, cost-neutral release gate ALLOW, canon conformance 0 gaps, doctor `blockingFailing: 0`.
+- Queue: Unified Genius List 0 open / 5 closed; viable second-order list 0 open / 3 closed; SIL v3 995/1000.
+
+### Honest HOLD
+
+The generated policy is green; deployment application is not. The canonical origin still returns 404 for `/_health`, lacks HSTS, Content Security Policy, frame, and permissions headers, and exposes no exact deployed revision. Delivered-email proof, founder approval, and sibling-owned lifecycle reconciliation also remain absent. No credential readiness, local artifact, or registry prose was substituted for those authorities.
+
+### Next best move
+
+Begin the next live-code audit from the exhausted queues unless the owning host/email/approval/lifecycle authorities produce new evidence. When hosting ownership is available, apply the emitted edge contract and rerun the exact fingerprint/revision verifier; do not flip launch/SPARKED from local success.
+
+---
+
 ## Session 60 Intent (2026-07-28)
 
 Run the complete agent-neutral `/goal /arc` as one continuous mission: pull-first `/start`, a premise-verified live-code `/audit` using the product rubric plus browser-game and public-app release lenses, complete `/implement` of every ranked item at the highest justified depth, exhaust the Unified Genius List, generate and implement viable second-order innovations while the context meter permits, then execute full `/closeout` with direct suite and doctor exit-code evidence, GitHub Pages staging verification, public sanitization, Ark broadcast, and direct push to `main`. Preserve source-derived observability, treat Max Plan cost as notional, fabricate no gate evidence, root-fix rather than refresh reports, never edit a sibling tree, and record honest deferrals as wins.

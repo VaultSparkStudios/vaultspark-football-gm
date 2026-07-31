@@ -34,10 +34,19 @@ function walk(dir, out = []) {
 function latestAudit() {
   const docs = path.join(root, "docs");
   if (!fs.existsSync(docs)) return null;
-  return fs.readdirSync(docs)
+  const latest = fs.readdirSync(docs)
     .filter((name) => /^AUDIT_.*\.md$/.test(name))
     .map((name) => ({ name, file: path.join(docs, name), mtime: fs.statSync(path.join(docs, name)).mtimeMs }))
     .sort((a, b) => b.mtime - a.mtime)[0] || null;
+  if (!latest) return null;
+  const sidecar = readJson(latest.file.replace(/\.md$/i, ".json"), {});
+  const items = Array.isArray(sidecar.items) ? sidecar.items : [];
+  return {
+    ...latest,
+    openItems: items.filter((item) => !/^(?:done|complete|completed|shipped)$/i.test(String(item.status || ""))),
+    shippedInnovations: (Array.isArray(sidecar.secondOrderCandidates) ? sidecar.secondOrderCandidates : [])
+      .filter((item) => /^(?:done|complete|completed|shipped|second-order-shipped)$/i.test(String(item.status || "")))
+  };
 }
 
 function commentFragments(line) {
@@ -77,7 +86,7 @@ function markerCandidates() {
   return rows;
 }
 
-function buildCandidates() {
+function buildPack() {
   const board = readText(path.join(root, "context", "TASK_BOARD.md"));
   const openBoard = parseUnifiedItems(board).filter((item) => item.status !== "done");
   const human = parseHumanItems(board);
@@ -91,6 +100,9 @@ function buildCandidates() {
       source: "TASK_BOARD open item",
       action: item.description || item.statusText || "Verify current premise against live code, then ship or close honestly.",
       evidence: item.rawItem || item.item,
+      disposition: /defer|hold|blocked/i.test(String(item.description || item.statusText || ""))
+        ? "deferred"
+        : "ranked",
     });
   }
 
@@ -103,12 +115,12 @@ function buildCandidates() {
     });
   }
 
-  if (audit) {
+  if (audit?.openItems?.length) {
     candidates.push({
       title: `latest-audit-follow-through (${audit.name})`,
       source: "latest audit artifact",
-      action: "Re-check the latest audit execution log against live code before adding new work.",
-      evidence: `mtime ${new Date(audit.mtime).toISOString()}`,
+      action: "Re-check the open audit execution rows against live code before adding new work.",
+      evidence: `${audit.openItems.length} open item${audit.openItems.length === 1 ? "" : "s"} · mtime ${new Date(audit.mtime).toISOString()}`,
     });
   }
 
@@ -121,10 +133,21 @@ function buildCandidates() {
     });
   }
 
-  return dedupeInnovationCandidates(candidates);
+  const deduped = dedupeInnovationCandidates(candidates);
+  return {
+    ranked: deduped.filter((candidate) => candidate.disposition !== "deferred"),
+    shipped: (audit?.shippedInnovations || []).map((item) => ({
+      title: item.slug || item.title,
+      evidence: item.implementationEvidence?.join(" ")
+        || item.evidence?.join(" ")
+        || item.executionLog?.at(-1)?.evidence
+        || "Shipped in the latest audit."
+    })),
+    deferred: deduped.filter((candidate) => candidate.disposition === "deferred")
+  };
 }
 
-function render(candidates) {
+function render(pack) {
   const lines = [
     `# Innovation Pack - Session ${session}`,
     "",
@@ -133,10 +156,10 @@ function render(candidates) {
     "## Ranked Candidates",
     "",
   ];
-  if (!candidates.length) {
-    lines.push("- No live innovation candidates found. Keep the existing blocker queue honest and re-run after new code changes.");
+  if (!pack.ranked.length) {
+    lines.push("- No unclassified live innovation candidates remain. Re-run after new code or authority evidence changes.");
   } else {
-    candidates.forEach((candidate, idx) => {
+    pack.ranked.forEach((candidate, idx) => {
       lines.push(`${idx + 1}. **${candidate.title}**`);
       lines.push(`   - Source: ${candidate.source}`);
       lines.push(`   - Action: ${candidate.action}`);
@@ -144,17 +167,32 @@ function render(candidates) {
       if (candidate.duplicateCount > 1) lines.push(`   - Collapsed: ${candidate.duplicateCount} semantically equivalent candidates`);
     });
   }
-  lines.push("", "## Shipped This Session", "", "- Pending implementation.", "", "## Rejected / Deferred", "", "- Pending classification.", "");
+  lines.push("", "## Shipped This Session", "");
+  if (!pack.shipped.length) lines.push("- No shipped innovation rows found in the latest audit sidecar.");
+  else {
+    for (const item of pack.shipped) {
+      lines.push(`- **${item.title}**: ${item.evidence}`);
+    }
+  }
+  lines.push("", "## Rejected / Deferred", "");
+  if (!pack.deferred.length) lines.push("- No source-classified deferrals.");
+  else {
+    for (const item of pack.deferred) {
+      lines.push(`- **${item.title}**: ${item.action}`);
+      lines.push(`  - Evidence: ${item.evidence || "n/a"}`);
+      if (item.duplicateCount > 1) lines.push(`  - Collapsed: ${item.duplicateCount} semantically equivalent candidates`);
+    }
+  }
   return `${lines.join("\n")}\n`;
 }
 
-const candidates = buildCandidates();
-const body = render(candidates);
+const pack = buildPack();
+const body = render(pack);
 if (dryRun) {
   console.log(body);
-  console.error(`innovation-pack: dry run (${candidates.length} candidate${candidates.length === 1 ? "" : "s"})`);
+  console.error(`innovation-pack: dry run (${pack.ranked.length} open, ${pack.shipped.length} shipped, ${pack.deferred.length} deferred)`);
 } else {
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, body, "utf8");
-  console.log(`innovation-pack: wrote docs/INNOVATION_PACK.md (${candidates.length} candidate${candidates.length === 1 ? "" : "s"})`);
+  console.log(`innovation-pack: wrote docs/INNOVATION_PACK.md (${pack.ranked.length} open, ${pack.shipped.length} shipped, ${pack.deferred.length} deferred)`);
 }

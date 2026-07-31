@@ -7,7 +7,8 @@ function buildSessionWithLoss() {
   for (let seed = 2026; seed < 2100; seed += 1) {
     const session = createSession({ seed, startYear: 2026, controlledTeamId: "BUF" });
     for (let week = 0; week < 10; week += 1) session.advanceWeek();
-    const losses = session.getRecentBoxScores("BUF", 10).filter((game) => game.winnerId && game.winnerId !== "BUF");
+    const losses = session.getRecentBoxScores("BUF", 10)
+      .filter((game) => game.winnerId && game.winnerId !== "BUF");
     if (losses.length) return session;
   }
   throw new Error("Fixture could not find a BUF loss in seed range.");
@@ -38,9 +39,11 @@ test("what-if replay is deterministic for the same archived games", () => {
 
   assert.deepEqual(buildWhatIfReplay(args), buildWhatIfReplay(args));
 });
-test("GameSession constructs the domain service bundle honestly", () => {
+
+test("GameSession constructs the characterized domain service bundle honestly", () => {
   const session = createSession({ seed: 91, startYear: 2026, controlledTeamId: "BUF" });
-  assert.deepEqual(Object.keys(session.services).sort(), ["coaching", "contracts"]);
+  assert.deepEqual(Object.keys(session.services).sort(), ["coaching", "contracts", "trades"]);
   assert.equal(session.services.contracts.league, session.league);
   assert.equal(session.services.coaching.league, session.league);
+  assert.equal(session.services.trades.session, session);
 });

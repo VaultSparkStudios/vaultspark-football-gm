@@ -42,8 +42,9 @@ export function readCommittedGeniusAuthority(root) {
     try {
       const audit = JSON.parse(fs.readFileSync(path.join(docsDir, name), "utf8"));
       const items = Array.isArray(audit.items) ? audit.items : [];
-      const open = items.filter((item) => item?.status !== "done");
-      const closed = items.filter((item) => item?.status === "done")
+      const isClosed = (item) => ["done", "shipped"].includes(item?.status);
+      const open = items.filter((item) => !isClosed(item));
+      const closed = items.filter(isClosed)
         .map((item) => item.slug || item.title)
         .filter(Boolean);
       return {

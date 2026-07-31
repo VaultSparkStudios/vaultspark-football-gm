@@ -113,6 +113,9 @@ async function assertPublishedMountContract() {
     await assertStaticFile(`${prefix}styles.css`, /:root/);
     await assertStaticFile(`${prefix}setup.js`, /createApiClient/);
     await assertStaticFile(`${prefix}favicon.ico`);
+    await assertStaticFile(`${prefix}_headers`, /Content-Security-Policy:[^\n]*script-src 'self' 'sha256-/);
+    await assertStaticFile(`${prefix}edge-policy-receipt.json`, /"appliedToHostedOrigin": false/);
+    await assertStaticFile(`${prefix}.well-known/security.txt`, /football@playfranchisearchitect\.com/);
     await assertStaticPath(`${mount}styles.css`, /:root/, "text/css");
     await assertStaticPath(`${mount}setup.js`, /createApiClient/, "application/javascript");
     await assertStaticPath(`${mount}favicon.ico`, null, "image/x-icon");
@@ -160,6 +163,9 @@ async function main() {
     await assertStaticPath(`/sitemap.xml`, /contact\.html/);
     await assertStaticPath(`/_health`, /"launchReady": false/);
     await assertStaticPath(`/deploy-manifest.json`, /"repository": "VaultSparkStudios\/vaultspark-football-gm"/);
+    await assertStaticPath(`/_headers`, /Strict-Transport-Security:[^\n]*includeSubDomains/);
+    await assertStaticPath(`/edge-policy-receipt.json`, /"status": "source-authored"/);
+    await assertStaticPath(`/.well-known/security.txt`, /Canonical: https:\/\/playfranchisearchitect\.com/);
 
     await assertStaticFile(`${slug}/index.html`, /Franchise Architect: Football/);
     await assertStaticFile(`${slug}/game.html`, /Franchise Architect: Football/);

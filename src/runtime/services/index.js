@@ -3,15 +3,12 @@
  *
  * Only characterized, production-delegated services are bound here. A domain
  * is not advertised merely because an extraction scaffold exists.
- *
- * Usage in GameSession: bind createServices(this), then delegate through
- *   services.contracts.releasePlayer(id) or services.scouting.getWeeklyPoints(teamId).
  */
-
 import { ContractService } from "./ContractService.js";
 import { CoachingService } from "./CoachingService.js";
+import { TradeService } from "./TradeService.js";
 
-export { ContractService, CoachingService };
+export { ContractService, CoachingService, TradeService };
 
 export const SERVICE_AUTHORITY_MANIFEST = Object.freeze({
   schemaVersion: "1.0",
@@ -34,16 +31,31 @@ export const SERVICE_AUTHORITY_MANIFEST = Object.freeze({
           callSites: Object.freeze(["GameSession.getDashboard"])
         })
       })
+    }),
+    trades: Object.freeze({
+      delegated: true,
+      methods: Object.freeze({
+        evaluate: Object.freeze({
+          callSites: Object.freeze([
+            "GameSession.evaluateTradePackage",
+            "sessionModules.transactions.evaluateTrade"
+          ])
+        }),
+        commit: Object.freeze({
+          callSites: Object.freeze([
+            "GameSession.tradePlayers",
+            "sessionModules.transactions.trade"
+          ])
+        })
+      })
     })
   })
 });
 
-/**
- * Factory: create all services bound to the same live session/league object.
- */
-export function createServices(sessionOrLeague) {
+export function createServices(sessionOrLeague, strategies = {}) {
   return {
     contracts: new ContractService(sessionOrLeague),
-    coaching:  new CoachingService(sessionOrLeague)
+    coaching: new CoachingService(sessionOrLeague),
+    trades: new TradeService(sessionOrLeague, strategies)
   };
 }

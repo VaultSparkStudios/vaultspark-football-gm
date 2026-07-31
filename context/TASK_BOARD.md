@@ -856,3 +856,22 @@ Unified Genius List: **0 open / 6 primary closed**. Viable second-order innovati
 
 Unified Genius List: **0 open / 4 primary closed**. Viable second-order innovation list: **0 open / 3 closed**.
 Launch remains **HOLD** on external hosted/email/edge/approval/registry evidence; no launch evidence was fabricated.
+
+## Session 61 — Runtime Authorities, Stale-Plan Safety, and Edge Attestation (2026-07-29)
+
+Source: `docs/AUDIT_2026-07-29.json`.
+
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Infrastructure / credential operations / observability | Done S61 — canonical definitions, status, probes, and remediation share one authority; focused and live status-only evidence pass | 2.0h | canonical-capability-operations-authority |
+| FIRE | Infrastructure / dual-runtime API authority | Done S61 — server and local adapter delegate identical GET/POST behavior to one Architect Thesis handler; parity is green | 2.0h | shared-architect-thesis-handler |
+| FIRE | Game depth / progression / UI-UX | Done S61 — declared focus is compared with source-derived current mastery, with exact next action, explicit empty state, and no causal claim | 3.0h | architect-declaration-to-now-review |
+| FIRE | Infrastructure / transaction authority / maintainability | Done S61 — trade evaluation and commit moved behind an exact TradeService seam; GameSession is a thin delegator | 4.0h | trade-service-authority |
+| FIRE | Security / deploy observability / static hosting | Done S61 — build emits exact CSP hashes, security headers, security.txt, and a fingerprinted edge receipt | 3.0h | generated-edge-security-contract |
+| INNOVATION | Transaction integrity / concurrency | Done S61 — evaluation fingerprints bind roster, pick, cap, rule, and phase truth; stale commits return 409 before mutation | 2.0h | stale-trade-plan-receipt |
+| INNOVATION | Release truth / hosted attestation | Done S61 — live verifier joins artifact fingerprint, revision, health, and response headers and emits an Ark-ready owning-host request | 1.5h | hosted-edge-policy-attestation |
+| INNOVATION | Security / generated-policy completeness | Done S61 — every emitted inline script and style block receives an exact hash while style attributes remain separately scoped | 1.0h | inline-style-policy-saturation |
+
+Unified Genius List: **0 open / 5 primary closed**. Viable second-order innovation list: **0 open / 3 closed**.
+
+Launch remains **HOLD** on live health/header/revision, delivered-email, founder-approval, and sibling-owned lifecycle evidence; no launch evidence was fabricated.

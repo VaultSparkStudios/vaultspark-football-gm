@@ -760,18 +760,21 @@ function bindEvents() {
     }, "Clearing designation...")
   );
 
-  const buildTradePayload = () => ({
+  const buildTradePayload = ({ includeAuthority = false } = {}) => ({
     teamA: getTradeTeamId("A").toUpperCase(),
     teamB: getTradeTeamId("B").toUpperCase(),
     teamAPlayerIds: [...state.tradeAssets.teamAPlayerIds],
     teamBPlayerIds: [...state.tradeAssets.teamBPlayerIds],
     teamAPickIds: [...state.tradeAssets.teamAPickIds],
-    teamBPickIds: [...state.tradeAssets.teamBPickIds]
+    teamBPickIds: [...state.tradeAssets.teamBPickIds],
+    ...(includeAuthority && state.tradePlanFingerprint
+      ? { expectedPlanFingerprint: state.tradePlanFingerprint }
+      : {})
   });
 
   document.getElementById("tradeBtn").addEventListener("click", () =>
     runAction(async () => {
-      const payload = buildTradePayload();
+      const payload = buildTradePayload({ includeAuthority: true });
       if (payload.teamA === payload.teamB) throw new Error("Select two different teams.");
       const result = await api("/api/trade", { method: "POST", body: payload });
       const a = result.valuation?.[payload.teamA] || {};
@@ -798,6 +801,7 @@ function bindEvents() {
           state.tradeAssets.teamBPlayerIds = [];
           state.tradeAssets.teamBPickIds = [];
         }
+        state.tradePlanFingerprint = null;
         setTradeEvalText("Use evaluate to see cap/value impact.");
         setTradeEvalCards();
         await loadPickAssets();
@@ -810,6 +814,7 @@ function bindEvents() {
       const payload = buildTradePayload();
       if (payload.teamA === payload.teamB) throw new Error("Select two different teams.");
       const result = await api("/api/trade/evaluate", { method: "POST", body: payload });
+      state.tradePlanFingerprint = result.plan?.fingerprint || null;
       const a = result.valuation?.[payload.teamA] || {};
       const b = result.valuation?.[payload.teamB] || {};
       const fairness = Math.max(0, 100 - Math.abs((a.delta || 0) - (b.delta || 0)) * 4);

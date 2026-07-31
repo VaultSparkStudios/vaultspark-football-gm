@@ -394,3 +394,14 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Visual truth: automated 53-capture dark/light responsive gates passed. Manual AI inspection is not claimed because viewer, Node runtime, and fallback image processing all failed before inspection.
 - Release truth: local implementation is green, but canonical health/headers, delivered email, exact hosted provenance, founder approval, and sibling lifecycle authority remain absent. Launch is HOLD.
 - Cost truth: no dependency, paid service, or variable-cost runtime was introduced; flat-rate Max Plan cost remains notional.
+
+## 2026-07-29 — Session 61 truth updates
+
+- Capability truth: definitions, status, live probes, and remediation instructions derive from one canonical operations authority; outputs expose no credential values.
+- API truth: both advertised runtimes delegate Architect Thesis HTTP semantics to one shared handler; route-list parity is no longer the only equivalence claim.
+- Architecture truth: the player’s declared focus baseline and current mastery portfolio are distinct source authorities; the review reports evidence delta and exact next action without predicting outcomes or claiming causation.
+- Trade truth: TradeService owns evaluation and commit; a plan fingerprint binds mutable roster/pick/cap/rule/phase state and stale commit fails before mutation.
+- Edge truth: generated policy fingerprint `sha256:33e2bee21d929395d5ee85d54bc76abbb8ea464926f22cd5747e27c309d8d883` covers exact inline script/style hashes and hardening headers. The live origin does not yet prove application.
+- Test truth: the complete repaired aggregate passes 560/560 with a fresh source-bound receipt; Playwright passes 20/20; responsive evidence passes 53 captures; Pages build/reachability/promise-observability/smoke pass.
+- Release truth: `/_health` is invalid, deployed revision is unknown, and HSTS/CSP/frame/permissions headers are absent. Delivered email, approval, and lifecycle reconciliation remain independent; launch is HOLD.
+- Cost truth: no dependency, paid service, or variable-cost runtime was introduced; flat-rate Max Plan accounting remains notional.

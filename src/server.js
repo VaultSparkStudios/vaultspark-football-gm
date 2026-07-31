@@ -16,6 +16,7 @@ import {
 import { getPersistenceDescriptor } from "./runtime/persistence.js";
 import { executeAdvanceWeekTransaction } from "./runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, snapshotErrorPayload } from "./runtime/snapshotMigration.js";
+import { handleArchitectThesisRequest } from "./runtime/handlers/architectThesisHandler.js";
 import {
   initGmLegacy,
   getGmLegacySummary,
@@ -1646,15 +1647,23 @@ async function handleApi(req, res, url) {
   }
 
   if (req.method === "GET" && url.pathname === "/api/architect-thesis") {
-    sendJson(res, 200, { ok: true, thesis: session.getDashboardState().architectThesis });
+    const response = handleArchitectThesisRequest({
+      method: "GET",
+      session,
+      projectState: (activeSession) => activeSession.getDashboardState()
+    });
+    sendJson(res, response.status, response.body);
     return true;
   }
   if (req.method === "POST" && url.pathname === "/api/architect-thesis") {
-    const body = parseJsonBody(await readRequestBody(req));
-    const result = session.setArchitectThesis(body || {});
-    sendJson(res, result.status || (result.ok ? 200 : 400), result.ok
-      ? { ok: true, thesis: result.thesis, state: session.getDashboardState() }
-      : result);
+    const input = parseJsonBody(await readRequestBody(req));
+    const response = handleArchitectThesisRequest({
+      method: "POST",
+      session,
+      input,
+      projectState: (activeSession) => activeSession.getDashboardState()
+    });
+    sendJson(res, response.status, response.body);
     return true;
   }
 

@@ -51,6 +51,7 @@ export function getArchitectThesis(league = {}, teamId = null) {
     teamId,
     revision: Number(stored?.revision || 0),
     focusPathId: stored?.focusPathId || null,
+    focusBaseline: stored?.focusBaseline || null,
     pendingAdaptation: stored?.pendingAdaptation || null,
     resolutions: Array.isArray(stored?.resolutions) ? stored.resolutions.slice(0, MAX_RESOLUTIONS) : [],
     updatedAt: stored?.updatedAt || null,
@@ -108,6 +109,7 @@ export function setArchitectThesis(league, input = {}) {
     teamId,
     revision: currentRevision + 1,
     focusPathId: hasFocus ? focusPathId : previous.focusPathId || null,
+    focusBaseline: hasFocus ? input.focusBaseline || null : previous.focusBaseline || null,
     pendingAdaptation,
     resolutions: Array.isArray(previous.resolutions) ? previous.resolutions.slice(0, MAX_RESOLUTIONS) : [],
     updatedAt: { year, week }

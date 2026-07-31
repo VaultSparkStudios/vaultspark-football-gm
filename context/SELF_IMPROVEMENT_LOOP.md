@@ -870,3 +870,22 @@ SIL v3.0: **995 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, 
 Committed SIL follow-ups:
 - `[SIL]` Every new mutable player-authored authority must define stale-write behavior before adding a second UI entry point.
 - `[SIL]` Any receipt that joins historical evidence must self-validate its source endpoints and exact observed payload, not only display source IDs.
+
+## 2026-07-29 — Session 61 Runtime Authority and Edge Attestation
+
+SIL v3.0: **995 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 95, Automation Coverage 100).
+
+- Dev Health: 100 — canonical Node passes 560/560 with direct exit 0 and a fresh receipt; Playwright passes 20/20; Pages build/reachability/smoke and 53-capture responsive evidence pass.
+- Creative Alignment: 100 — Architecture Review strengthens deliberate General Manager authorship while distinguishing intent, current evidence, and non-causal interpretation.
+- Momentum: 100 — all five audited objectives and all three viable second-order innovations shipped in one continuous mission.
+- Engagement: 100 — declared philosophy now closes into a visible “then versus now” review and one exact next action instead of a static preference.
+- Process Quality: 100 — capability, route, service, trade-plan, build-policy, and hosted-application authorities are explicit; every early schema/test finding was root-fixed and fully rerun.
+- Cross-Repo Coherence: 100 — no sibling tree was edited; the owning-host and lifecycle work is expressed as Ark cargo with exact missing evidence.
+- Security Posture: 100 — exact generated CSP hashes, hardening headers, status-only credential operations, stale-plan rejection, and zero-finding public sanitization strengthen the boundary without new custody.
+- Ecosystem Integration: 100 — audit sidecar/render, Genius queue, implementation plan, test receipt, status, truth audit, closeout surfaces, and Ark payload agree on completion versus release HOLD.
+- Capital Efficiency: 95 — unchanged; all shipped behavior is deterministic, static-host compatible, adds no dependency or variable cost, and Max Plan cost remains notional.
+- Automation Coverage: 100 — every new handler/service/security/transaction contract belongs to canonical shards; hosted verification fails closed when application or revision proof is absent.
+
+Committed SIL follow-ups:
+- `[SIL]` Any evaluate/commit workflow over mutable authority must bind the evaluated state and reject a stale commit before mutation.
+- `[SIL]` Never report generated security policy as deployed policy; join artifact fingerprint, exact revision, canonical health, and live response evidence.

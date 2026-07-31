@@ -581,3 +581,25 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Decision:** Architect Thesis writes carry a monotonic revision and may fail closed on an expected-revision mismatch. Pending and resolved hypotheses expose a live lineage verdict derived from Architect ledger IDs and exact observed text; missing endpoints, duplicates, or observation drift are explicit issues.
 
 **Rationale:** A plausible UI receipt is not observability truth. Multi-view mutation and cross-receipt joins need machine-detectable stale-write and provenance failure modes.
+
+## 2026-07-29 — Evaluate/commit workflows carry state-bound plan receipts
+
+**Decision:** Trade evaluation returns a deterministic fingerprint over the exact roster, pick, cap, rule, and phase authority used to form the proposal. Commit may require that fingerprint and fails closed with 409 before mutation when current authority differs.
+
+**Rationale:** A proposal can be internally valid when evaluated and unsafe seconds later. Validation at commit must prove it is committing the evaluated world, not merely rerun generic input checks.
+
+**Pattern established:** Any split evaluate/commit workflow over mutable state should expose a bounded plan receipt and define stale-plan behavior before adding another caller.
+
+## 2026-07-29 — Build policy and hosted application are separate authorities
+
+**Decision:** The static build generates one fingerprinted edge-security artifact with exact inline script/style hashes. A separate live verifier joins that artifact to the deployed revision, canonical health, and actual response headers; it cannot infer application from the presence of `_headers`.
+
+**Rationale:** GitHub Pages and other hosts may ignore repository policy files. Artifact correctness is necessary but cannot prove edge enforcement.
+
+**Pattern established:** Release observability names both the generated contract and the owning host’s application receipt; absence in either authority remains HOLD.
+
+## 2026-07-29 — Runtime route semantics delegate to domain handlers
+
+**Decision:** Architect Thesis HTTP behavior lives in a shared handler imported by both the server and local browser adapter. Transport shells own routing only; domain status codes and payload semantics remain single-source.
+
+**Rationale:** Matching route lists do not prevent handler semantics from drifting. Exact delegation converts parity from repeated code into one authority.

@@ -135,6 +135,33 @@ export function renderFranchiseArchitecture() {
             <button type="button" class="btn-sm" data-architect-adaptation="">Clear</button>
           </div>
           <p class="small">${thesis.pendingAdaptation ? `${escapeHtml(thesis.pendingAdaptation.label)} from ${escapeHtml(thesis.pendingAdaptation.sourceEntryId)} · ${escapeHtml(thesis.pendingAdaptation.sourceObserved)}` : "Choose an adaptation only after committed film exists. The next ledger receipt will resolve it descriptively."}</p>
+          ${thesis.review?.baseline ? `
+            <section class="architect-focus-review ${escapeHtml(thesis.review.status || "awaiting-declaration")}" aria-label="Focus declaration review">
+              <div class="architect-ledger-head">
+                <strong>Declaration → now</strong>
+                <span class="small">${escapeHtml(thesis.review.summary)}</span>
+              </div>
+              <div class="architect-focus-review-grid">
+                <div>
+                  <span class="franchise-horizon-label">Declaration</span>
+                  <strong>${escapeHtml(String(thesis.review.baseline.score))}/25 · ${escapeHtml(String(thesis.review.baseline.evidenceCount))} receipt${thesis.review.baseline.evidenceCount === 1 ? "" : "s"}</strong>
+                  <small>Year ${escapeHtml(String(thesis.review.baseline.declaredAt?.year ?? "—"))} · Week ${escapeHtml(String(thesis.review.baseline.declaredAt?.week ?? "—"))}</small>
+                </div>
+                <div>
+                  <span class="franchise-horizon-label">Current</span>
+                  <strong>${escapeHtml(String(thesis.review.current?.score ?? 0))}/25 · ${escapeHtml(String(thesis.review.current?.evidenceCount ?? 0))} receipt${thesis.review.current?.evidenceCount === 1 ? "" : "s"}</strong>
+                  <small>${escapeHtml(thesis.review.current?.evidence || "No source evidence recorded.")}</small>
+                </div>
+                <div>
+                  <span class="franchise-horizon-label">Evidence delta</span>
+                  <strong>${thesis.review.delta?.evidenceCount > 0 ? "+" : ""}${escapeHtml(String(thesis.review.delta?.evidenceCount ?? 0))} receipt${thesis.review.delta?.evidenceCount === 1 ? "" : "s"} · ${thesis.review.delta?.score > 0 ? "+" : ""}${escapeHtml(String(thesis.review.delta?.score ?? 0))} score</strong>
+                  <small>${escapeHtml(thesis.review.newReceipt ? "New source evidence exists." : "No new source receipt since declaration.")}</small>
+                </div>
+              </div>
+              ${thesis.review.nextAction ? `<button type="button" class="btn-sm architect-focus-next" data-blueprint-target-tab="${escapeHtml(thesis.review.nextAction.targetTab)}" data-blueprint-target-id="${escapeHtml(thesis.review.nextAction.targetId)}">${escapeHtml(thesis.review.nextAction.label)} →</button>` : ""}
+              <small class="gm-mastery-disclaimer">${escapeHtml(thesis.review.disclaimer)}</small>
+            </section>
+          ` : '<p class="architect-ledger-empty">No declaration baseline yet. Save a mastery focus to begin a source-bound review.</p>'}
           <small class="gm-mastery-disclaimer">${escapeHtml(thesis.disclaimer || "Your thesis changes the review lens, never simulation outcomes.")}</small>
         </section>
         <div class="architect-signal ${signal.ready ? "ready" : "awaiting"}">

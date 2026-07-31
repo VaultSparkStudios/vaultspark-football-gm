@@ -491,3 +491,14 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Clean-checkout CI then exposed an ignored-cache null assumption and pre-closeout startup metadata. The committed audit became the stable Genius authority, null cache became explicit unknown, the S61 brief regenerated coherently, and the complete aggregate reran 539/539 with a new digest-bound receipt.
 - Pages build, browser reachability 52 modules, static smoke, and responsive evidence 53 captures pass. Manual AI image inspection is not claimed because every connected image path failed before inspection.
 - No dependency, paid/variable-cost service, secret custody, fabricated playtest outcome, causal gameplay claim, or sibling-tree edit was introduced. Launch remains HOLD on independent hosted/email/approval/lifecycle evidence.
+
+## 2026-07-29 — Session 61 runtime-authority and edge-attestation arc
+
+- Completed pull/rebase-first startup, blocker/secrets/canon preflight, infrastructure-weighted live audit with game-loop and release lenses, all five ranked implementations, three premise-checked second-order innovations, and canonical closeout without a phase handback.
+- Shipped one capability-operations authority, one cross-runtime Architect handler, a source-derived declaration-to-now Architecture Review, an exact TradeService seam, generated static edge policy, stale trade-plan protection, hosted policy attestation, and complete inline script/style hashes.
+- Reduced `GameSession` trade implementation by more than 200 lines while preserving its public API; every service entry is registered and characterized.
+- Bound evaluated trades to roster, pick, cap, rule, and phase authority so a changed league cannot commit an obsolete plan.
+- The final canonical aggregate passes 560/560 with a fresh digest-bound receipt; Playwright passes 20/20; responsive evidence passes 53 captures; Pages build, 52-module reachability, 52-file promise observability, and smoke pass.
+- Public sanitization reports 0 critical/0 warning; sitemap is 10/10; cost-neutral release gate is ALLOW; canon conformance has 0 gaps; doctor reports `blockingFailing: 0`.
+- Live policy attestation remains HOLD: `/_health` is invalid, exact deployed revision is absent, and HSTS/CSP/frame/permissions headers are not applied. Email, approval, and lifecycle evidence remain independent. No launch claim, sibling edit, variable-cost service, or fabricated proof was introduced.
+- CDR reviewed: the founder supplied execution and quality discipline, not new public product canon; no private Creative Direction Record was recreated in this deployable public repository.

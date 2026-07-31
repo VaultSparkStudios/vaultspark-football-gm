@@ -1,0 +1,675 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-29",
+  "session": 61,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 8,
+    "combinedPriority": 226.4,
+    "topItem": "canonical-capability-operations-authority",
+    "source": "live-code-audit",
+    "openItems": 0,
+    "completedItems": 8
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "product rubric plus founder-requested infrastructure weighting, browser-game loop review, and public-app release gate",
+    "staging": "GitHub Pages artifact with exact same-origin hosted verification before direct-to-main promotion",
+    "source": "live source, direct provider/status probes, current CI history, structural game-loop review, current build artifact, public release contracts, and public-safe context"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation",
+    "ci": "Current HEAD has green CI, Pages, and backend runs, but the literal recent-run window still contains superseded red runs; no all-green five-run claim is made.",
+    "staging": "The direct same-origin staging command exits blocked at 3/10.",
+    "production": "Eight public routes are reachable, while canonical /_health is HTTP 404 and HSTS, frame protection, and Content Security Policy evidence are absent.",
+    "cost": "Both canonical cost gates allow: cost-neutral static browser product. Max Plan accounting remains flat-rate and notional.",
+    "branding": "Footer completeness is green with 7/7 required destinations; proprietary identity, legal pages, sitemap, agents.json, and rollback documentation are present.",
+    "sitemap": "Canonical sitemap compliance is 10/10.",
+    "hardening": "The portfolio hardening checker still resolves the wrong vaultsparkstudios.com origin and reports 55%; the project-local launch probe correctly targets playfranchisearchitect.com and remains red.",
+    "email": "Brevo and Cloudflare DNS capabilities are declared READY, but no real received-message receipt proves football@playfranchisearchitect.com delivery.",
+    "approval": "No founder launch approval is recorded.",
+    "lifecycle": "Local FORGE/public-unlaunched truth conflicts with the sibling registry SPARKED state; correction remains Ark-only."
+  },
+  "gameLoopReview": {
+    "loopTightness": 9.1,
+    "progression": 8.7,
+    "sessionEngagement": 8.8,
+    "retention": 7.9,
+    "soulFidelity": 9.4,
+    "overall": 8.8,
+    "evidence": "The 30-second, five-minute, season, and dynasty loops have explicit source contracts and browser surfaces. Outcome confidence remains low-medium because no consented docs/PLAYTESTS cohort exists.",
+    "nextMoves": [
+      "Turn the authored Architect focus into a checkpoint review that compares its declaration baseline with current source evidence.",
+      "Preserve the one-call weekly room while making longer-horizon progress observable without inventing causal impact.",
+      "Keep every new ritual inside the existing Architecture Review rather than adding another navigation layer."
+    ]
+  },
+  "recommendedMoves": [
+    "Make every credential operation consume the canonical secrets gateway instead of falling back to a phantom project-local capability map.",
+    "Ship a deployable, self-validating edge-security policy artifact without claiming the current external host has applied it.",
+    "Give the Architect Thesis a source-bound checkpoint review with declaration baseline, evidence delta, and exact next action.",
+    "Prove a shared transport-neutral handler seam on the Architect endpoint family before attempting broader adapter consolidation.",
+    "Extract trade evaluation and commit into a real transaction service behind characterization tests while preserving the GameSession facade."
+  ],
+  "candidateMatrix": {
+    "feature-depth": [
+      "Architect checkpoint review comparing a player-authored focus declaration with current source receipts.",
+      "A player-authored franchise constitution spanning cap, picks, and development; deferred because it needs a separate conflict-policy design rather than another shallow preference."
+    ],
+    "new-innovative-features": [
+      "A monotonic design-review cadence that records evidence change without granting a hidden bonus.",
+      "A causal outcome-prediction coach; rejected because deterministic source receipts already cover the decision need without variable cost or false certainty."
+    ],
+    "ui-ux": [
+      "Extend the existing Architecture Review with a compact declaration-to-now review card and exact tab/action target.",
+      "Add another navigation layer for strategy; rejected because the product already has a progressive Week Room and an unmeasured pacing burden."
+    ],
+    "feedback-loop": [
+      "Baseline the selected mastery path when authored and show honest evidence delta at phase/week checkpoints.",
+      "Claim improved retention from the new review; rejected because no consented cohort exists."
+    ],
+    "gamification-engagement": [
+      "Make long-horizon progress legible as evidence change while keeping mastery and historical Legacy scores untouched.",
+      "Award streaks or tactical bonuses for thesis compliance; rejected as coercive and causally unsupported."
+    ],
+    "ai-integration": [
+      "Use deterministic source joins to recommend the next exact evidence-producing action.",
+      "Hosted large-language-model coaching; rejected on cost, custody, and explainability."
+    ],
+    "security": [
+      "Canonical capability operations plus cache-only redacted probe receipts.",
+      "A hash-bound static edge policy with security.txt, CSP, HSTS, frame, referrer, permissions, and MIME protections."
+    ],
+    "speed-organization": [
+      "Incrementally extract TradeService from the 5,406-line GameSession god object.",
+      "Create a shared Architect handler kernel to remove fresh dual-adapter drift.",
+      "Lazy-load optional browser exports; retained as a second-order candidate after higher-risk authority seams."
+    ],
+    "token-api-reduction": [
+      "One shared Architect response projection replaces duplicated server/static payload assembly.",
+      "Initial-module graph measurement and optional-module deferral; retained for expansion after primary authority work.",
+      "Gameplay model-token optimization; rejected because gameplay makes no model calls."
+    ]
+  },
+  "preverifiedSkips": [
+    {
+      "axis": "release",
+      "candidate": "Mark launch or lifecycle green from this repository",
+      "reason": "Rejected. Hosted health, applied edge headers, received mailbox evidence, founder approval, and sibling lifecycle truth are independent authorities."
+    },
+    {
+      "axis": "infrastructure",
+      "candidate": "Decompose all of GameSession in one pass",
+      "reason": "Rejected. The 5,406-line premise is real, but a wholesale rewrite would destroy the bounded characterization seam. This audit extracts one transaction authority."
+    },
+    {
+      "axis": "feedback-loop",
+      "candidate": "Create synthetic playtest rows to move outcome confidence",
+      "reason": "Rejected. The repository has no consented PLAYTESTS cohort and structural tests cannot prove fun, comprehension, or return intent."
+    },
+    {
+      "axis": "dependencies",
+      "candidate": "Install a router, schema, or CSP package",
+      "reason": "Rejected. Existing dependency-free internal primitives cover the work; no package-trust or supply-chain expansion is justified."
+    },
+    {
+      "axis": "portfolio",
+      "candidate": "Edit the sibling registry or owning host repository",
+      "reason": "Rejected. Cross-repo truth moves only by signed Studio Ark cargo."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Security / secrets / blocker observability",
+      "effortHours": 2.5,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 36.9,
+      "slug": "canonical-capability-operations-authority",
+      "title": "Make capability probes and intake obey the canonical secrets gateway",
+      "status": "shipped",
+      "premise": "Session 60 repaired check-secrets, but probe-capability and paste-credential still hard-code this public repo's absent secrets/CAPABILITY_MAP.json. The live cloudflare.dns probe therefore prints an empty array and an honest skip despite canonical readiness; the probe also attempts to write private operational receipts under public portfolio/ and to stamp whichever map it reads.",
+      "evidence": [
+        "node scripts/probe-capability.mjs --for cloudflare.dns --json exits 0 with [] and SKIPPED=no-capability-map",
+        "probe-capability imports resolveCapability/getSecret but independently hard-codes CAP_MAP_PATH and portfolio/ops ledger",
+        "paste-credential independently hard-codes project-local secrets and reports no canonical capabilities",
+        "scripts/lib/secrets.mjs already owns local-override/canonical-fallback capability authority and status-only redaction"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Expose a read-only capability-map snapshot/path contract from secrets.mjs and consume it in probe-capability."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Create explicit secrets-gateway authority exports, make probes and intake list/parse use them, keep probe receipts in ignored project cache, never mutate a canonical sibling map during a read-only probe, retain deliberate canonical intake writes only when the founder invokes intake, add isolated local/canonical/no-map tests, and rerun a real status-only cloudflare.dns token verification."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Add a versioned redacted operation receipt that binds capability definition source, credential-source classes, probe endpoint, and write authority without exposing paths or values."
+        }
+      },
+      "verification": [
+        "cloudflare.dns no longer phantom-skips when canonical definitions exist",
+        "read-only probes cannot alter sibling CAPABILITY_MAP.json",
+        "public tracked paths never receive capability probe ledgers or secret material",
+        "local override, canonical fallback, missing map, and corrupt map remain distinguishable",
+        "no raw credential value reaches stdout or tests"
+      ],
+      "completedAt": "2026-07-29",
+      "implementationEvidence": [
+        "Canonical/local/corrupt authority fixtures pass 6/6 with no raw values.",
+        "Live cloudflare.dns status-only token verification returns HTTP 200 from canonical definition authority.",
+        "Read-only probe receipts are redacted and cache-only; no capability map is stamped."
+      ],
+      "id": 1,
+      "axis": "Security / secrets / blocker observability",
+      "why": "Session 60 repaired check-secrets, but probe-capability and paste-credential still hard-code this public repo's absent secrets/CAPABILITY_MAP.json. The live cloudflare.dns probe therefore prints an empty array and an honest skip despite canonical readiness; the probe also attempts to write private operational receipts under public portfolio/ and to stamp whichever map it reads.",
+      "recipe": "Create explicit secrets-gateway authority exports, make probes and intake list/parse use them, keep probe receipts in ignored project cache, never mutate a canonical sibling map during a read-only probe, retain deliberate canonical intake writes only when the founder invokes intake, add isolated local/canonical/no-map tests, and rerun a real status-only cloudflare.dns token verification.",
+      "executionLog": [
+        {
+          "date": "2026-07-29",
+          "status": "shipped",
+          "evidence": "Canonical/local/corrupt authority fixtures pass 6/6 with no raw values. Live cloudflare.dns status-only token verification returns HTTP 200 from canonical definition authority. Read-only probe receipts are redacted and cache-only; no capability map is stamped."
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Public security / release engineering / observability",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 31,
+      "slug": "source-authored-edge-hardening-artifact",
+      "title": "Make the Pages artifact carry a self-validating edge-security policy",
+      "status": "shipped",
+      "premise": "The canonical origin exposes nosniff and referrer policy only; HSTS, frame protection, and CSP remain absent. The source artifact has no _headers or security.txt contract, so even an authorized owning-host ingest lacks a project-authored policy to apply. A local artifact can close that source gap without pretending the current Cloudflare host applied it.",
+      "evidence": [
+        "live launch evidence reports /_health HTTP 404 and all three required edge-security booleans false",
+        "public contains health, identity, legal, agent, and sitemap files but no _headers or .well-known/security.txt",
+        "the only inline script blocks are JSON-LD in index and landing; their exact hashes can be generated",
+        "style attributes require an explicit style-src policy while script execution can remain hash-bound"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Add public security.txt and a documented header policy template."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Generate an artifact _headers policy from exact inline-script hashes during build, include HSTS, CSP, frame, MIME, referrer, permissions, base/object/form, and upgrade contracts, emit security.txt and a machine-readable policy receipt to every supported mount, fail the build on an unhashed inline script or unsafe source, and extend static smoke plus release fixtures while keeping live origin status red until external application is observed."
+        },
+        "L3": {
+          "effortHours": 4.5,
+          "recipe": "Add a hosted header-attestation receipt that joins policy fingerprint, deployed revision, health receipt, and live headers and produces an Ark-ready owning-host application payload."
+        }
+      },
+      "verification": [
+        "every inline script hash in built HTML is represented in CSP",
+        "all supported mounts contain identical policy/security receipts",
+        "static smoke rejects policy drift or unsafe inline execution",
+        "local artifact security can be green while external launch remains honestly HOLD",
+        "no production-host application is claimed without a live response header"
+      ],
+      "completedAt": "2026-07-29",
+      "implementationEvidence": [
+        "Pages build emits hash-bound _headers, security.txt, and edge-policy-receipt.json to every declared mount.",
+        "Exact inline script and style-element hashes are in Content Security Policy; unsafe executable sources fail the build.",
+        "Static smoke passes while live attestation truthfully remains HOLD on missing hosted HSTS/CSP/frame/permissions headers and revision binding."
+      ],
+      "id": 2,
+      "axis": "Public security / release engineering / observability",
+      "why": "The canonical origin exposes nosniff and referrer policy only; HSTS, frame protection, and CSP remain absent. The source artifact has no _headers or security.txt contract, so even an authorized owning-host ingest lacks a project-authored policy to apply. A local artifact can close that source gap without pretending the current Cloudflare host applied it.",
+      "recipe": "Generate an artifact _headers policy from exact inline-script hashes during build, include HSTS, CSP, frame, MIME, referrer, permissions, base/object/form, and upgrade contracts, emit security.txt and a machine-readable policy receipt to every supported mount, fail the build on an unhashed inline script or unsafe source, and extend static smoke plus release fixtures while keeping live origin status red until external application is observed.",
+      "executionLog": [
+        {
+          "date": "2026-07-29",
+          "status": "shipped",
+          "evidence": "Pages build emits hash-bound _headers, security.txt, and edge-policy-receipt.json to every declared mount. Exact inline script and style-element hashes are in Content Security Policy; unsafe executable sources fail the build. Static smoke passes while live attestation truthfully remains HOLD on missing hosted HSTS/CSP/frame/permissions headers and revision binding."
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Game depth / feedback loop / progression",
+      "effortHours": 5,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 32.1,
+      "slug": "architect-design-review-cadence",
+      "title": "Turn the Architect Thesis into a source-bound declaration-to-now review",
+      "status": "shipped",
+      "premise": "Players can author a mastery focus and one adaptation hypothesis, but the focus has no declaration baseline or checkpoint review. Architecture Review shows current mastery and ledger rows without answering what evidence changed since the player chose the thesis, whether nothing changed, or which exact action can produce the next relevant receipt.",
+      "evidence": [
+        "architectThesis stores focusPathId, revision, pending adaptation, and resolutions but no focus baseline",
+        "mastery paths expose exact score, evidence count, evidence, and nextMilestone from source authorities",
+        "Architecture Review already owns the right responsive disclosure surface",
+        "the public game-loop contract requires long-horizon explainability without causal telemetry"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Capture focus score/evidence baseline on selection and display the current delta."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Persist a versioned source-bound focus declaration baseline, derive deterministic phase/week review checkpoints, compare current path score/evidence to declaration with explicit no-change states, identify exact source receipts and next action/tab, expose the review through dashboard and both adapters, render it inside Architecture Review with mobile parity, and preserve historical Legacy/mastery scoring unchanged."
+        },
+        "L3": {
+          "effortHours": 7,
+          "recipe": "Persist monotonic checkpoint receipts with lineage validation, season-close rollup, and compare-two-theses history without hidden rewards."
+        }
+      },
+      "verification": [
+        "focus baseline is computed by the runtime rather than accepted from browser input",
+        "unchanged evidence renders honestly as no new source receipt",
+        "review checkpoint and next action derive from current phase/week and focus path",
+        "snapshot and both adapter paths preserve exact review truth",
+        "the browser UI exposes declaration/current/delta and a working exact target",
+        "historical Legacy and mastery score formulas remain byte-for-byte behaviorally unchanged"
+      ],
+      "completedAt": "2026-07-29",
+      "implementationEvidence": [
+        "Runtime captures the focus baseline from source mastery authority, never browser input.",
+        "Architecture Review renders declaration/current/delta, explicit no-new-receipt state, and an exact next action with mobile parity.",
+        "Focused domain, handler, API parity, browser-wiring, and lineage tests pass without changing mastery or Legacy formulas."
+      ],
+      "id": 3,
+      "axis": "Game depth / feedback loop / progression",
+      "why": "Players can author a mastery focus and one adaptation hypothesis, but the focus has no declaration baseline or checkpoint review. Architecture Review shows current mastery and ledger rows without answering what evidence changed since the player chose the thesis, whether nothing changed, or which exact action can produce the next relevant receipt.",
+      "recipe": "Persist a versioned source-bound focus declaration baseline, derive deterministic phase/week review checkpoints, compare current path score/evidence to declaration with explicit no-change states, identify exact source receipts and next action/tab, expose the review through dashboard and both adapters, render it inside Architecture Review with mobile parity, and preserve historical Legacy/mastery scoring unchanged.",
+      "executionLog": [
+        {
+          "date": "2026-07-29",
+          "status": "shipped",
+          "evidence": "Runtime captures the focus baseline from source mastery authority, never browser input. Architecture Review renders declaration/current/delta, explicit no-new-receipt state, and an exact next action with mobile parity. Focused domain, handler, API parity, browser-wiring, and lineage tests pass without changing mastery or Legacy formulas."
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Infrastructure / API parity / duplication",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 28,
+      "slug": "shared-architect-handler-kernel",
+      "title": "Prove transport-neutral API authority on the Architect endpoint family",
+      "status": "shipped",
+      "premise": "Server and static adapters independently assemble GET/POST /api/architect-thesis responses. The fresh endpoint already differs in its state projection function, and the new review fields would double the drift surface unless one transport-neutral handler owns status and payload semantics.",
+      "evidence": [
+        "src/server.js and src/app/api/localApiRuntime.js contain parallel Architect GET/POST branches",
+        "both call the same GameSession methods but independently choose response status and success payload",
+        "apiContract checks required fields but cannot prove both adapters assembled identical semantic payloads",
+        "the previous audit explicitly deferred full router consolidation until an incremental endpoint-family seam existed"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Extract one pure response projection used by both branches."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Create a dependency-free Architect handler kernel that accepts session and state projection capabilities, owns GET/POST status and body semantics including 400/404/409, wire both adapters through it, declare the family in the executable contract, and add semantic parity fixtures for success, validation, stale revision, and review fields."
+        },
+        "L3": {
+          "effortHours": 3.5,
+          "recipe": "Generalize a manifest-driven handler-family registry and migrate the adjacent GM Legacy and rivalry read families under exact parity metrics."
+        }
+      },
+      "verification": [
+        "no adapter independently assembles an Architect response",
+        "server and static runtimes return equal status and semantic body for the same session/input",
+        "stale revisions remain fail-closed 409",
+        "review fields cannot exist in one runtime only",
+        "bidirectional route and response-shape authority remains green"
+      ],
+      "completedAt": "2026-07-29",
+      "implementationEvidence": [
+        "Both adapters delegate GET/POST semantics to one dependency-free Architect handler.",
+        "Success, validation, missing-session, and stale-revision response authority is transport-neutral.",
+        "API route/shape parity remains green with review fields carried by both runtimes."
+      ],
+      "id": 4,
+      "axis": "Infrastructure / API parity / duplication",
+      "why": "Server and static adapters independently assemble GET/POST /api/architect-thesis responses. The fresh endpoint already differs in its state projection function, and the new review fields would double the drift surface unless one transport-neutral handler owns status and payload semantics.",
+      "recipe": "Create a dependency-free Architect handler kernel that accepts session and state projection capabilities, owns GET/POST status and body semantics including 400/404/409, wire both adapters through it, declare the family in the executable contract, and add semantic parity fixtures for success, validation, stale revision, and review fields.",
+      "executionLog": [
+        {
+          "date": "2026-07-29",
+          "status": "shipped",
+          "evidence": "Both adapters delegate GET/POST semantics to one dependency-free Architect handler. Success, validation, missing-session, and stale-revision response authority is transport-neutral. API route/shape parity remains green with review fields carried by both runtimes."
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Infrastructure / domain authority / maintainability",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 24.4,
+      "slug": "trade-service-transaction-authority",
+      "title": "Extract trade evaluation and commit into one characterized transaction service",
+      "status": "shipped",
+      "premise": "GameSession remains a 5,406-line god object. Its 200-plus-line evaluateTradePackage and tradePlayers block owns asset validation, challenge restrictions, cap checks, AI valuation, mutation, news, logging, depth, ratings, stat, and lookup refresh in one class; the existing transaction module is only a facade back into those methods.",
+      "evidence": [
+        "GameSession spans 5,406 measured source lines and more than 100 public methods",
+        "ContractService currently owns only exact cap summary authority and establishes the safe delegated-service pattern",
+        "createSessionModules.transactions forwards directly to GameSession instead of a transaction service",
+        "trade code has focused API/runtime coverage that can characterize response and mutation parity"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Create TradeService as a facade without moving authority."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Extract shared transaction-strategy helpers and the complete evaluate/commit transaction into TradeService, keep thin backward-compatible GameSession delegators, expose the service through the module bundle, enforce clone-free atomic refusal semantics, and add characterization fixtures for invalid assets, challenge restrictions, cap failure, valuation failure, player/pick mutation, logs, news, and all derived-index refreshes."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Add an immutable staged TradePlan receipt with expected authority revision and commit-time revalidation so stale trade previews cannot mutate newer rosters."
+        }
+      },
+      "verification": [
+        "GameSession trade methods are thin delegators",
+        "service refusal paths mutate nothing",
+        "successful player and pick moves preserve existing response shape and every derived refresh",
+        "transaction module calls the service authority directly",
+        "existing API/browser trade flows remain unchanged",
+        "focused runtime, transaction, API parity, and full shards pass"
+      ],
+      "completedAt": "2026-07-29",
+      "implementationEvidence": [
+        "Trade evaluation and commit moved from GameSession into characterized TradeService; GameSession retains two thin delegators.",
+        "Transaction modules call service authority directly and manifest surface is exact.",
+        "Focused refusal, mutation, service, endpoint, season, and adapter tests pass; GameSession shrank by more than 200 source lines."
+      ],
+      "id": 5,
+      "axis": "Infrastructure / domain authority / maintainability",
+      "why": "GameSession remains a 5,406-line god object. Its 200-plus-line evaluateTradePackage and tradePlayers block owns asset validation, challenge restrictions, cap checks, AI valuation, mutation, news, logging, depth, ratings, stat, and lookup refresh in one class; the existing transaction module is only a facade back into those methods.",
+      "recipe": "Extract shared transaction-strategy helpers and the complete evaluate/commit transaction into TradeService, keep thin backward-compatible GameSession delegators, expose the service through the module bundle, enforce clone-free atomic refusal semantics, and add characterization fixtures for invalid assets, challenge restrictions, cap failure, valuation failure, player/pick mutation, logs, news, and all derived-index refreshes.",
+      "executionLog": [
+        {
+          "date": "2026-07-29",
+          "status": "shipped",
+          "evidence": "Trade evaluation and commit moved from GameSession into characterized TradeService; GameSession retains two thin delegators. Transaction modules call service authority directly and manifest surface is exact. Focused refusal, mutation, service, endpoint, season, and adapter tests pass; GameSession shrank by more than 200 source lines."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "rank": 6,
+      "tier": "FIRE",
+      "axis": "Infrastructure / transaction integrity / browser trust",
+      "category": "Infrastructure / transaction integrity / browser trust",
+      "effortHours": 2,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 29,
+      "slug": "stale-trade-plan-authority-receipt",
+      "title": "Bind trade commit to the exact authority that produced its preview",
+      "why": "Once evaluation and commit share one service, the preview can be bound to the exact roster, pick ownership, cap, rule, and phase authority it evaluated.",
+      "premise": "Once evaluation and commit share one service, the preview can be bound to the exact roster, pick ownership, cap, rule, and phase authority it evaluated.",
+      "recipe": "Evaluations emit a serializable deterministic trade fingerprint. Browser commits the exact receipt and invalidates it on any package/team change. Stale authority returns 409 before mutation; focused service and browser tests pass.",
+      "status": "shipped",
+      "completedAt": "2026-07-29",
+      "implementationEvidence": [
+        "Evaluations emit a serializable deterministic trade fingerprint.",
+        "Browser commits the exact receipt and invalidates it on any package/team change.",
+        "Stale authority returns 409 before mutation; focused service and browser tests pass."
+      ],
+      "executionLog": [
+        {
+          "date": "2026-07-29",
+          "status": "shipped",
+          "evidence": "Evaluations emit a serializable deterministic trade fingerprint. Browser commits the exact receipt and invalidates it on any package/team change. Stale authority returns 409 before mutation; focused service and browser tests pass."
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.8,
+          "recipe": "Evaluations emit a serializable deterministic trade fingerprint. Browser commits the exact receipt and invalidates it on any package/team change. Stale authority returns 409 before mutation; focused service and browser tests pass."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Evaluations emit a serializable deterministic trade fingerprint. Browser commits the exact receipt and invalidates it on any package/team change. Stale authority returns 409 before mutation; focused service and browser tests pass."
+        },
+        "L3": {
+          "effortHours": 3.2,
+          "recipe": "Extend stale-trade-plan-authority-receipt with monotonic cross-session receipts and independent hosted/browser verification without weakening its current fail-closed contract."
+        }
+      }
+    },
+    {
+      "id": 7,
+      "rank": 7,
+      "tier": "FIRE",
+      "axis": "Public security / hosted observability / release proof",
+      "category": "Public security / hosted observability / release proof",
+      "effortHours": 2.5,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 27,
+      "slug": "hosted-edge-policy-attestation",
+      "title": "Join source policy to live headers, health, and deployed revision",
+      "why": "A source-green edge policy needs an independent live-origin join before any release surface may claim application.",
+      "premise": "A source-green edge policy needs an independent live-origin join before any release surface may claim application.",
+      "recipe": "Read-only verifier joins artifact fingerprint, inline hashes, exact revision, health, and live headers. Verifier emits an Ark-ready owning-host application payload. Live canonical run remains honest HOLD with four missing header families, absent revision binding, and invalid health.",
+      "status": "shipped",
+      "completedAt": "2026-07-29",
+      "implementationEvidence": [
+        "Read-only verifier joins artifact fingerprint, inline hashes, exact revision, health, and live headers.",
+        "Verifier emits an Ark-ready owning-host application payload.",
+        "Live canonical run remains honest HOLD with four missing header families, absent revision binding, and invalid health."
+      ],
+      "executionLog": [
+        {
+          "date": "2026-07-29",
+          "status": "shipped",
+          "evidence": "Read-only verifier joins artifact fingerprint, inline hashes, exact revision, health, and live headers. Verifier emits an Ark-ready owning-host application payload. Live canonical run remains honest HOLD with four missing header families, absent revision binding, and invalid health."
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Read-only verifier joins artifact fingerprint, inline hashes, exact revision, health, and live headers. Verifier emits an Ark-ready owning-host application payload. Live canonical run remains honest HOLD with four missing header families, absent revision binding, and invalid health."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Read-only verifier joins artifact fingerprint, inline hashes, exact revision, health, and live headers. Verifier emits an Ark-ready owning-host application payload. Live canonical run remains honest HOLD with four missing header families, absent revision binding, and invalid health."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Extend hosted-edge-policy-attestation with monotonic cross-session receipts and independent hosted/browser verification without weakening its current fail-closed contract."
+        }
+      }
+    },
+    {
+      "id": 8,
+      "rank": 8,
+      "tier": "HIGH",
+      "axis": "Public security / hosted observability / release proof",
+      "category": "Public security / hosted observability / release proof",
+      "effortHours": 0.75,
+      "impact": 7,
+      "innovation": 7,
+      "priority": 18,
+      "slug": "inline-style-policy-saturation",
+      "title": "Hash legitimate inline style elements without broadening style execution",
+      "why": "The landing page's intentional inline style block would be blocked by a script-only hash policy.",
+      "premise": "The landing page's intentional inline style block would be blocked by a script-only hash policy.",
+      "recipe": "Inline style elements now receive exact SHA-256 hashes in style-src-elem. Style attributes remain separately and explicitly scoped; style-src-elem never uses unsafe-inline. Build and all-mount Pages smoke pass with the stricter policy.",
+      "status": "shipped",
+      "completedAt": "2026-07-29",
+      "implementationEvidence": [
+        "Inline style elements now receive exact SHA-256 hashes in style-src-elem.",
+        "Style attributes remain separately and explicitly scoped; style-src-elem never uses unsafe-inline.",
+        "Build and all-mount Pages smoke pass with the stricter policy."
+      ],
+      "executionLog": [
+        {
+          "date": "2026-07-29",
+          "status": "shipped",
+          "evidence": "Inline style elements now receive exact SHA-256 hashes in style-src-elem. Style attributes remain separately and explicitly scoped; style-src-elem never uses unsafe-inline. Build and all-mount Pages smoke pass with the stricter policy."
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.30000000000000004,
+          "recipe": "Inline style elements now receive exact SHA-256 hashes in style-src-elem. Style attributes remain separately and explicitly scoped; style-src-elem never uses unsafe-inline. Build and all-mount Pages smoke pass with the stricter policy."
+        },
+        "L2": {
+          "effortHours": 0.75,
+          "recipe": "Inline style elements now receive exact SHA-256 hashes in style-src-elem. Style attributes remain separately and explicitly scoped; style-src-elem never uses unsafe-inline. Build and all-mount Pages smoke pass with the stricter policy."
+        },
+        "L3": {
+          "effortHours": 1.2,
+          "recipe": "Extend inline-style-policy-saturation with monotonic cross-session receipts and independent hosted/browser verification without weakening its current fail-closed contract."
+        }
+      }
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "canonical-capability-operations-authority",
+      "status": "shipped",
+      "completedAt": "2026-07-29",
+      "evidence": [
+        "Canonical/local/corrupt authority fixtures pass 6/6 with no raw values.",
+        "Live cloudflare.dns status-only token verification returns HTTP 200 from canonical definition authority.",
+        "Read-only probe receipts are redacted and cache-only; no capability map is stamped."
+      ]
+    },
+    {
+      "slug": "source-authored-edge-hardening-artifact",
+      "status": "shipped",
+      "completedAt": "2026-07-29",
+      "evidence": [
+        "Pages build emits hash-bound _headers, security.txt, and edge-policy-receipt.json to every declared mount.",
+        "Exact inline script and style-element hashes are in Content Security Policy; unsafe executable sources fail the build.",
+        "Static smoke passes while live attestation truthfully remains HOLD on missing hosted HSTS/CSP/frame/permissions headers and revision binding."
+      ]
+    },
+    {
+      "slug": "architect-design-review-cadence",
+      "status": "shipped",
+      "completedAt": "2026-07-29",
+      "evidence": [
+        "Runtime captures the focus baseline from source mastery authority, never browser input.",
+        "Architecture Review renders declaration/current/delta, explicit no-new-receipt state, and an exact next action with mobile parity.",
+        "Focused domain, handler, API parity, browser-wiring, and lineage tests pass without changing mastery or Legacy formulas."
+      ]
+    },
+    {
+      "slug": "shared-architect-handler-kernel",
+      "status": "shipped",
+      "completedAt": "2026-07-29",
+      "evidence": [
+        "Both adapters delegate GET/POST semantics to one dependency-free Architect handler.",
+        "Success, validation, missing-session, and stale-revision response authority is transport-neutral.",
+        "API route/shape parity remains green with review fields carried by both runtimes."
+      ]
+    },
+    {
+      "slug": "trade-service-transaction-authority",
+      "status": "shipped",
+      "completedAt": "2026-07-29",
+      "evidence": [
+        "Trade evaluation and commit moved from GameSession into characterized TradeService; GameSession retains two thin delegators.",
+        "Transaction modules call service authority directly and manifest surface is exact.",
+        "Focused refusal, mutation, service, endpoint, season, and adapter tests pass; GameSession shrank by more than 200 source lines."
+      ]
+    },
+    {
+      "slug": "stale-trade-plan-authority-receipt",
+      "status": "second-order-shipped",
+      "completedAt": "2026-07-29",
+      "evidence": [
+        "Evaluations emit a serializable deterministic trade fingerprint.",
+        "Browser commits the exact receipt and invalidates it on any package/team change.",
+        "Stale authority returns 409 before mutation; focused service and browser tests pass."
+      ]
+    },
+    {
+      "slug": "hosted-edge-policy-attestation",
+      "status": "second-order-shipped",
+      "completedAt": "2026-07-29",
+      "evidence": [
+        "Read-only verifier joins artifact fingerprint, inline hashes, exact revision, health, and live headers.",
+        "Verifier emits an Ark-ready owning-host application payload.",
+        "Live canonical run remains honest HOLD with four missing header families, absent revision binding, and invalid health."
+      ]
+    },
+    {
+      "slug": "inline-style-policy-saturation",
+      "status": "second-order-shipped",
+      "completedAt": "2026-07-29",
+      "evidence": [
+        "Inline style elements now receive exact SHA-256 hashes in style-src-elem.",
+        "Style attributes remain separately and explicitly scoped; style-src-elem never uses unsafe-inline.",
+        "Build and all-mount Pages smoke pass with the stricter policy."
+      ]
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "stale-trade-plan-authority-receipt",
+      "status": "done",
+      "sourceItem": "trade-service-transaction-authority",
+      "premise": "Once evaluation and commit share one service, the preview can be bound to the exact roster, pick ownership, cap, rule, and phase authority it evaluated.",
+      "evidence": [
+        "Evaluations emit a serializable deterministic trade fingerprint.",
+        "Browser commits the exact receipt and invalidates it on any package/team change.",
+        "Stale authority returns 409 before mutation; focused service and browser tests pass."
+      ]
+    },
+    {
+      "slug": "hosted-edge-policy-attestation",
+      "status": "done",
+      "sourceItem": "source-authored-edge-hardening-artifact",
+      "premise": "A source-green edge policy needs an independent live-origin join before any release surface may claim application.",
+      "evidence": [
+        "Read-only verifier joins artifact fingerprint, inline hashes, exact revision, health, and live headers.",
+        "Verifier emits an Ark-ready owning-host application payload.",
+        "Live canonical run remains honest HOLD with four missing header families, absent revision binding, and invalid health."
+      ]
+    },
+    {
+      "slug": "inline-style-policy-saturation",
+      "status": "done",
+      "sourceItem": "source-authored-edge-hardening-artifact",
+      "premise": "The landing page's intentional inline style block would be blocked by a script-only hash policy.",
+      "evidence": [
+        "Inline style elements now receive exact SHA-256 hashes in style-src-elem.",
+        "Style attributes remain separately and explicitly scoped; style-src-elem never uses unsafe-inline.",
+        "Build and all-mount Pages smoke pass with the stricter policy."
+      ]
+    }
+  ],
+  "totals": {
+    "count": 8,
+    "priority": 226.4,
+    "top3": [
+      "canonical-capability-operations-authority",
+      "architect-design-review-cadence",
+      "source-authored-edge-hardening-artifact"
+    ]
+  }
+}

@@ -4549,6 +4549,32 @@ html[data-theme="light"] .bg-layer {
 .architect-signal span:not(.franchise-horizon-label),
 .architect-signal small { color: var(--muted); line-height: 1.4; }
 .architect-ledger-empty { margin: 0; color: var(--muted); font-size: .76rem; }
+.architect-focus-review {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--panel) 92%, var(--accent));
+}
+.architect-focus-review.new-source-receipt { border-color: color-mix(in srgb, var(--positive) 60%, var(--line)); }
+.architect-focus-review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.architect-focus-review-grid > div {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  min-width: 0;
+  padding: 9px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface) 92%, var(--accent));
+}
+.architect-focus-review-grid small { color: var(--muted); overflow-wrap: anywhere; }
+.architect-focus-next { justify-self: start; text-align: left; }
 @media (max-width: 900px) {
   .franchise-horizon-grid { grid-template-columns: 1fr; }
   .franchise-horizon-card { min-height: 0; }
@@ -4562,6 +4588,7 @@ html[data-theme="light"] .bg-layer {
   .architecture-review summary { align-items: flex-start; flex-direction: column; gap: 3px; }
   .architect-thesis-controls { flex-direction: column; }
   .architect-thesis-controls select, .architect-thesis-controls .btn-sm { flex-basis: auto; width: 100%; }
+  .architect-focus-review-grid { grid-template-columns: 1fr; }
 }
 .contextual-evidence-prompt { background: color-mix(in srgb, var(--panel) 92%, var(--accent)); border: 1px solid var(--accent); border-radius: 1rem; box-shadow: var(--shadow-lg); display: grid; gap: .65rem; margin: 0 0 1rem; padding: 1rem; width: 100%; }
 .contextual-evidence-prompt h2, .contextual-evidence-prompt p { margin: 0; }

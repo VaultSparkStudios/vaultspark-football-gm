@@ -56,8 +56,9 @@ test("missing ignored cache falls back to committed audit authority", () => {
   const authority = readCommittedGeniusAuthority(root);
   assert.equal(authority.status, "exhausted");
   assert.equal(authority.items.length, 0);
-  assert.equal(authority.closed.length, 5);
-  assert.equal(authority.source, "AUDIT_2026-07-28.json");
+  assert.ok(authority.closed.length >= 5);
+  assert.ok(authority.closed.includes("canonical-capability-operations-authority"));
+  assert.match(authority.source, /^AUDIT_\d{4}-\d{2}-\d{2}\.json$/);
 });
 
 test("brief freshness fails when lifecycle or genius authority changes", () => {

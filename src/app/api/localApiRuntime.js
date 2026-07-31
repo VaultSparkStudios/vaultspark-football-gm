@@ -19,6 +19,7 @@ import { getFanSentiment, fanApprovalLabel } from "../../engine/fanSentiment.js"
 import { getMentorshipStatus, getMentorshipHistory } from "../../engine/veteranMentorship.js";
 import { executeAdvanceWeekTransaction } from "../../runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, migrateSnapshot, snapshotErrorPayload } from "../../runtime/snapshotMigration.js";
+import { handleArchitectThesisRequest } from "../../runtime/handlers/architectThesisHandler.js";
 import {
   createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
   lockGate, openGate, applyIntents, recordAdvance, lobbyStatus,
@@ -1366,14 +1367,22 @@ export function createLocalApiRuntime({
 
       if (method === "GET" && pathname === "/api/architect-thesis") {
         const s = ensureSession();
-        return finish(jsonResponse(200, { ok: true, thesis: s.getDashboardState().architectThesis }));
+        const response = handleArchitectThesisRequest({
+          method: "GET",
+          session: s,
+          projectState: getAugmentedState
+        });
+        return finish(jsonResponse(response.status, response.body));
       }
       if (method === "POST" && pathname === "/api/architect-thesis") {
         const s = ensureSession();
-        const result = s.setArchitectThesis(body || {});
-        return finish(jsonResponse(result.status || (result.ok ? 200 : 400), result.ok
-          ? { ok: true, thesis: result.thesis, state: getAugmentedState(s) }
-          : result));
+        const response = handleArchitectThesisRequest({
+          method: "POST",
+          session: s,
+          input: body || {},
+          projectState: getAugmentedState
+        });
+        return finish(jsonResponse(response.status, response.body));
       }
 
       // ── Rivalry routes ──────────────────────────────────────────────────────

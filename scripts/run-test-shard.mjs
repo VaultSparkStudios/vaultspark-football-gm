@@ -23,7 +23,10 @@ export const SHARDS = {
   runtime: [
     "test/action-coordinator.test.js",
     "test/advance-week-command.test.js",
+    "test/architect-focus-review.test.js",
+    "test/architect-focus-review-browser.test.js",
     "test/architect-plan-rehearsal.test.js",
+    "test/architect-thesis-handler.test.js",
     "test/architect-thesis.test.js",
     "test/architect-thesis-browser-wiring.test.js",
     "test/authority-epoch.test.js",
@@ -77,6 +80,8 @@ export const SHARDS = {
     "test/session8-contract-edges.test.js",
     "test/session8-endpoints.test.js",
     "test/trade-deadline-frenzy.test.js",
+    "test/trade-plan-authority.test.js",
+    "test/trade-plan-browser-wiring.test.js",
     "test/weekly-plan-composer.test.js"
   ],
   "sim-contract": [
@@ -106,8 +111,12 @@ export const SHARDS = {
     "test/audit-renderer.test.js",
     "test/browser-module-reachability.test.js",
     "test/browser-promise-observability.test.js",
+    "test/capability-operations-authority.test.js",
     "test/closeout-board-truth.test.js",
     "test/context-meter-authority.test.js",
+    "test/edge-security-policy.test.js",
+    "test/edge-style-hash.test.js",
+    "test/edge-policy-application.test.js",
     "test/launch-evidence-report.test.js",
     "test/lifecycle-coherence.test.js",
     "test/public-compliance.test.js",

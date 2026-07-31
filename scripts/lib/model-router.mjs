@@ -761,7 +761,14 @@ export function logMetrics({ script, model, usage, mode = null, logPath = null }
  * @param {string} [opts.betaHeader] - extra anthropic-beta value(s)
  * @returns {Promise<{ status: number, body: object }>}
  */
-export function callAnthropicRaw({ apiKey, method, path, body = null, betaHeader = null }, httpsModule) {
+export function callAnthropicRaw({
+  apiKey,
+  method,
+  path,
+  body = null,
+  betaHeader = null,
+  timeoutMs = null
+}, httpsModule) {
   const headers = buildHeaders(apiKey);
   if (betaHeader) headers['anthropic-beta'] = betaHeader;
   const payload = body ? JSON.stringify(body) : null;
@@ -780,6 +787,13 @@ export function callAnthropicRaw({ apiKey, method, path, body = null, betaHeader
       }
     );
     req.on('error', reject);
+    if (Number.isFinite(timeoutMs) && timeoutMs > 0) {
+      req.setTimeout(timeoutMs, () => {
+        const error = new Error('Anthropic request timed out');
+        error.name = 'AbortError';
+        req.destroy(error);
+      });
+    }
     if (payload) req.write(payload);
     req.end();
   });
