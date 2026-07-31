@@ -10,7 +10,6 @@
  *   RIVAL_OFFER          — CPU team makes public overture to a pending free agent
  *   CULTURE_CRISIS       — team chemistry collapse triggers locker-room event
  *   OWNER_ULTIMATUM      — owner patience hits critical floor
- *   STREAK_CEREMONY      — milestone win/loss streak crossing a threshold
  *   LEGEND_FAREWELL      — high-AV veteran in final contract year signals retirement intent
  *
  * Events attach to league.narrativeLog (rolling 30-item window, newest first).

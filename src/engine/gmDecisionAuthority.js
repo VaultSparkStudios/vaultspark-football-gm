@@ -27,6 +27,34 @@ export const GM_DECISION_CATALOG = Object.freeze({
       release: Object.freeze({ label: "Release a high-salary player", headline: "GM mandate: cut salary now", effect: "release a player through the contract desk", transactionType: "gm-decision-cap-release", momentum: -2, risk: -1, targetTab: "contractsTab", mode: "commitment", deadlineOffset: 2 }),
       wait: Object.freeze({ label: "Let it play out — monitor closely", headline: "GM mandate: monitor the cap crisis", effect: "restore non-negative cap space without an immediate cut", transactionType: "gm-decision-cap-wait", momentum: 0, risk: 3, targetTab: "settingsTab", mode: "commitment", deadlineOffset: 2 })
     })
+  }),
+  // ── S62 expansion: live narrative events become answerable decisions ──────
+  "star-trade-request": Object.freeze({
+    type: "STAR_TRADE_REQUEST",
+    priority: 85,
+    choices: Object.freeze({
+      shop: Object.freeze({ label: "Shop him — get value while demand is hot", headline: "GM mandate: trade the disgruntled star", effect: "complete a trade sending the requesting player out", transactionType: "gm-decision-shop-star", momentum: 1, risk: 2, targetTab: "contractsTab", mode: "commitment", deadlineOffset: 3 }),
+      extend: Object.freeze({ label: "Negotiate — repair it with a new deal", headline: "GM mandate: re-sign the disgruntled star", effect: "complete a re-sign or restructure for the requesting player", transactionType: "gm-decision-extend-star", momentum: 1, risk: 1, targetTab: "contractsTab", mode: "commitment", deadlineOffset: 3 }),
+      deny: Object.freeze({ label: "Deny the request — he plays for us", headline: "GM mandate: hold the line on the trade request", effect: "publicly deny the trade request and absorb the morale cost", transactionType: "gm-decision-deny-star", momentum: -1, risk: 2, targetTab: "rosterTab", mode: "immediate" })
+    })
+  }),
+  "culture-crisis": Object.freeze({
+    type: "CULTURE_CRISIS",
+    priority: 70,
+    choices: Object.freeze({
+      "address-room": Object.freeze({ label: "Address the room — players-only meeting", headline: "GM mandate: confront the locker-room collapse", effect: "hold a team meeting to steady the lowest-morale players", transactionType: "gm-decision-culture-address", momentum: 1, risk: 1, targetTab: "overviewTab", mode: "immediate" }),
+      "back-staff": Object.freeze({ label: "Back the coaching staff publicly", headline: "GM mandate: stand behind the staff", effect: "publicly back the staff and accept the standings pressure", transactionType: "gm-decision-culture-back-staff", momentum: 0, risk: 2, targetTab: "settingsTab", mode: "immediate" }),
+      "shake-up": Object.freeze({ label: "Shake up the roster — someone goes", headline: "GM mandate: roster shake-up", effect: "complete a trade or release inside two weeks", transactionType: "gm-decision-culture-shake-up", momentum: -1, risk: 3, targetTab: "contractsTab", mode: "commitment", deadlineOffset: 2 })
+    })
+  }),
+  "legend-farewell": Object.freeze({
+    type: "LEGEND_FAREWELL",
+    priority: 60,
+    choices: Object.freeze({
+      ceremony: Object.freeze({ label: "Plan a farewell ceremony season", headline: "GM mandate: honor the departing legend", effect: "announce a farewell celebration for the retiring veteran", transactionType: "gm-decision-legend-ceremony", momentum: 1, risk: 0, targetTab: "historyTab", mode: "immediate" }),
+      "feature-role": Object.freeze({ label: "Feature him — one last ride", headline: "GM mandate: feature the legend", effect: "publicly commit a featured role for the final season", transactionType: "gm-decision-legend-feature", momentum: 1, risk: 1, targetTab: "rosterTab", mode: "immediate" }),
+      "quiet-exit": Object.freeze({ label: "Keep it quiet — business as usual", headline: "GM mandate: no farewell tour", effect: "decline a public farewell and keep focus on the season", transactionType: "gm-decision-legend-quiet", momentum: -1, risk: 1, targetTab: "overviewTab", mode: "immediate" })
+    })
   })
 });
 
@@ -135,6 +163,44 @@ export function generateGmDecisions(state = {}, { ledger = [] } = {}) {
       "trade-deadline",
       `Trade deadline closes end of Week 11 (current: Week ${week}). Record: ${myRow.wins || 0}-${myRow.losses || 0}. What's your priority?`,
       `deadline-${state.currentYear || state.startYear || "unknown"}`
+    ));
+  }
+
+  // Live narrative events for the controlled team become answerable decisions
+  // (S62). Each event fires at most one decision per player/team per season via
+  // the occurrence ledger; the contextKey carries the subject playerId so the
+  // consequence layer can act on the exact player.
+  const teamId = normalizedTeamId(state);
+  const year = Number(state.currentYear || state.startYear || 0);
+  const narrativeRows = (Array.isArray(state.narrativeLog) ? state.narrativeLog : [])
+    .filter((event) => event?.year === year && (event.teamIds || []).map((id) => String(id).toUpperCase()).includes(teamId));
+  const tradeRequest = narrativeRows.find((event) => event.type === "TRADE_REQUEST");
+  if (tradeRequest) {
+    const playerId = (tradeRequest.playerIds || [])[0] || "unknown";
+    candidates.push(decisionRecord(
+      state,
+      "star-trade-request",
+      `${tradeRequest.headline}. ${tradeRequest.impact || ""}`.trim(),
+      playerId
+    ));
+  }
+  const cultureCrisis = narrativeRows.find((event) => event.type === "CULTURE_CRISIS");
+  if (cultureCrisis) {
+    candidates.push(decisionRecord(
+      state,
+      "culture-crisis",
+      `${cultureCrisis.headline}. ${cultureCrisis.impact || ""}`.trim(),
+      `culture-${year}-week-${cultureCrisis.week || week}`
+    ));
+  }
+  const legendFarewell = narrativeRows.find((event) => event.type === "LEGEND_FAREWELL");
+  if (legendFarewell) {
+    const playerId = (legendFarewell.playerIds || [])[0] || "unknown";
+    candidates.push(decisionRecord(
+      state,
+      "legend-farewell",
+      `${legendFarewell.headline}. ${legendFarewell.impact || ""}`.trim(),
+      playerId
     ));
   }
 

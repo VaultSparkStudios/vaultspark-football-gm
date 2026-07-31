@@ -52,7 +52,65 @@ function attemptImmediateAction(session, consequence, teamId) {
     const result = session.restructurePlayerContract({ teamId, playerId: candidate.id });
     return result.ok ? { ...result, summary: `${candidate.name}'s contract was restructured.`, playerName: candidate.name } : result;
   }
+  // ── S62 narrative-decision consequences — bounded, deterministic, visible ──
+  const clampMorale = (value) => Math.max(0, Math.min(100, value));
+  const subjectPlayer = () => {
+    const playerId = contextKeyFromOccurrence(consequence.occurrenceKey);
+    return teamPlayers(session, teamId).find((player) => player.id === playerId) || null;
+  };
+  if (consequence.choiceId === "deny") {
+    const player = subjectPlayer();
+    if (!player) return { ok: false, error: "The requesting player is no longer on the roster." };
+    player.morale = clampMorale(Number(player.morale ?? 60) - 4);
+    session.logNews?.(`${player.name}'s trade request denied — front office holds the line.`, {
+      type: "gm-decision-deny-star", teamId, playerId: player.id
+    });
+    return { ok: true, summary: `${player.name} stays — morale absorbed a visible hit (now ${player.morale}).`, playerName: player.name };
+  }
+  if (consequence.choiceId === "address-room") {
+    const steadied = teamPlayers(session, teamId)
+      .filter((player) => Number.isFinite(player.morale))
+      .sort((a, b) => (a.morale || 0) - (b.morale || 0))
+      .slice(0, 5);
+    if (!steadied.length) return { ok: false, error: "No roster morale to address." };
+    for (const player of steadied) player.morale = clampMorale(Number(player.morale ?? 60) + 2);
+    session.logNews?.("Players-only meeting held — the room's lowest voices were heard.", {
+      type: "gm-decision-culture-address", teamId
+    });
+    return { ok: true, summary: `Team meeting steadied ${steadied.length} lowest-morale players (+2 each).` };
+  }
+  if (consequence.choiceId === "back-staff") {
+    session.logNews?.("Front office publicly backs the coaching staff through the culture crisis.", {
+      type: "gm-decision-culture-back-staff", teamId
+    });
+    return { ok: true, summary: "The staff was publicly backed; the standings pressure is now yours to carry." };
+  }
+  if (consequence.choiceId === "ceremony" || consequence.choiceId === "feature-role" || consequence.choiceId === "quiet-exit") {
+    const player = subjectPlayer();
+    const label =
+      consequence.choiceId === "ceremony"
+        ? "farewell ceremony season announced"
+        : consequence.choiceId === "feature-role"
+          ? "featured one-last-ride role committed"
+          : "quiet exit — no farewell tour";
+    if (player && consequence.choiceId !== "quiet-exit") {
+      player.morale = clampMorale(Number(player.morale ?? 60) + 3);
+    }
+    session.logNews?.(`${player ? `${player.name}: ` : ""}${label}.`, {
+      type: consequence.transactionType, teamId, playerId: player?.id || null
+    });
+    return { ok: true, summary: `${player ? `${player.name} — ` : ""}${label}.`, playerName: player?.name };
+  }
   return { ok: false, error: "This choice requires a follow-through action." };
+}
+
+function contextKeyFromOccurrence(occurrenceKey) {
+  const raw = String(occurrenceKey || "").split(":").pop() || "";
+  try {
+    return decodeURIComponent(raw);
+  } catch {
+    return raw;
+  }
 }
 
 export function resolveGmDecisionConsequence(payload = {}) {
@@ -71,7 +129,8 @@ function createCommitment(session, consequence, teamId, entryId, immediateError 
     label: consequence.label, promise: consequence.effect, status: "active", createdYear: session.currentYear,
     createdWeek: session.currentWeek, deadlineYear: deadline.year, deadlineWeek: deadline.week,
     baselineTransactionSeq: Number(session.league.transactionSeq || 0), baselineQbIds,
-    baselineCapSpace: Number(session.getTeamCapSummary?.(teamId)?.capSpace || 0), immediateError
+    baselineCapSpace: Number(session.getTeamCapSummary?.(teamId)?.capSpace || 0), immediateError,
+    subjectPlayerId: contextKeyFromOccurrence(consequence.occurrenceKey) || null
   };
   session.league.gmCommitments.push(commitment);
   session.league.gmCommitments = session.league.gmCommitments.slice(-120);
@@ -113,6 +172,31 @@ function evaluateCommitment(session, commitment) {
   if (commitment.choiceId === "restructure" && has("restructure")) return { status: "succeeded", evidence: "A contract restructure created a cap response." };
   if (commitment.choiceId === "release" && has("release")) return { status: "succeeded", evidence: "A player release completed the cap mandate." };
   if (commitment.choiceId === "wait" && atDeadline && Number(session.getTeamCapSummary?.(commitment.teamId)?.capSpace || 0) >= 0) return { status: "succeeded", evidence: "Cap space returned to a non-negative position." };
+  if (commitment.choiceId === "shop") {
+    const subject = String(commitment.subjectPlayerId || "");
+    const shipped = tx.some((entry) => {
+      if (entry.type !== "trade") return false;
+      const flow = tradeFlow(entry, commitment.teamId);
+      return flow ? flow.outgoingPlayers.some((row) => (row?.id || row?.playerId || row) === subject) : false;
+    });
+    if (shipped) return { status: "succeeded", evidence: "The requesting player was traded while his value was elevated." };
+    if (atDeadline) return { status: "failed", evidence: `No trade moved the requesting player by Week ${commitment.deadlineWeek}.` };
+    return null;
+  }
+  if (commitment.choiceId === "extend") {
+    const subject = String(commitment.subjectPlayerId || "");
+    const repaired = tx.some(
+      (entry) => ["resign", "re-sign", "restructure", "extension"].includes(entry.type) && (entry.playerId === subject || !subject)
+    );
+    if (repaired) return { status: "succeeded", evidence: "A new deal repaired the trade request." };
+    if (atDeadline) return { status: "failed", evidence: `No extension or restructure landed by Week ${commitment.deadlineWeek}.` };
+    return null;
+  }
+  if (commitment.choiceId === "shake-up") {
+    if (has("trade", "release")) return { status: "succeeded", evidence: "A roster move answered the culture crisis." };
+    if (atDeadline) return { status: "failed", evidence: `No shake-up move landed by Week ${commitment.deadlineWeek}.` };
+    return null;
+  }
   if (commitment.choiceId === "owner-ultimatum") {
     const team = session.league.teams?.find((entry) => entry.id === commitment.teamId);
     const wins = Number(team?.season?.wins || 0);
@@ -204,7 +288,9 @@ export function applyGmDecisionConsequence(session, payload = {}) {
   entry.commitmentId = commitment?.id || null;
   entry.receipt = execution?.ok
     ? { status: "completed", summary: execution.summary }
-    : { status: "committed", summary: `${consequence.effect}; due Week ${commitment.deadlineWeek}.` };
+    : commitment
+      ? { status: "committed", summary: `${consequence.effect}; due Week ${commitment.deadlineWeek}.` }
+      : { status: "failed", summary: execution?.error || "The immediate action could not be completed." };
   session.league.gmDecisionLedger.push(entry);
   session.league.gmDecisionLedger = session.league.gmDecisionLedger.slice(-120);
   session.logTransaction?.({ type: consequence.transactionType, teamId, details: { decisionId: consequence.decisionId, choiceId: consequence.choiceId, label: consequence.label, effect: consequence.effect, momentum: consequence.momentum, risk: consequence.risk, execution: entry.execution, commitmentId: entry.commitmentId } });

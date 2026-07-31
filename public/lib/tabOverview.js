@@ -388,16 +388,20 @@ export function renderNarrativePanel() {
     feed.innerHTML = `<div class="narrative-empty">Simulate weeks to generate franchise story events.</div>`;
     return;
   }
+  // Maps cover exactly the live engine event set (src/engine/narrativeEvents.js):
+  // TRADE_REQUEST · BREAKOUT_FLAG · RIVAL_OFFER · CULTURE_CRISIS ·
+  // OWNER_ULTIMATUM · LEGEND_FAREWELL. No phantom types, no generic fallbacks
+  // for real events.
   const iconMap = {
-    TRADE_REQUEST: "🔀", BREAKOUT_FLAG: "⚡", INJURY_SCARE: "🩹",
-    MVP_RACE: "🏆", CULTURE_SHIFT: "🎭", SALARY_DISPUTE: "💰",
-    DRAFT_STEAL: "💎", RIVAL_SURGE: "🔥", default: "📰"
+    TRADE_REQUEST: "🔀", BREAKOUT_FLAG: "⚡", RIVAL_OFFER: "🏦",
+    CULTURE_CRISIS: "🎭", OWNER_ULTIMATUM: "⚠️", LEGEND_FAREWELL: "🎖️",
+    default: "📰"
   };
   const toneMap = {
-    BREAKOUT_FLAG: "positive", DRAFT_STEAL: "positive", MVP_RACE: "positive",
-    TRADE_REQUEST: "warning", SALARY_DISPUTE: "warning", RIVAL_SURGE: "warning",
-    INJURY_SCARE: "negative",
-    CULTURE_SHIFT: "info", default: "info"
+    BREAKOUT_FLAG: "positive", LEGEND_FAREWELL: "positive",
+    TRADE_REQUEST: "warning", RIVAL_OFFER: "warning",
+    CULTURE_CRISIS: "negative", OWNER_ULTIMATUM: "negative",
+    default: "info"
   };
   const recent = events.slice(0, 8);
   feed.innerHTML = recent.map((ev) => {

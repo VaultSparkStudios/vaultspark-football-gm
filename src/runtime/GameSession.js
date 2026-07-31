@@ -4807,6 +4807,7 @@ export class GameSession {
       scouting: this.getScoutingBoard({ teamId: this.controlledTeamId, limit: 40 }),
       startScenarioReceipt: this.league.startScenarioReceipt || null,
       openingContractProgress: this.getOpeningContractProgress(),
+      narrativeLog: (this.league.narrativeLog || []).slice(0, 30),
       depthChartSnapShare: this.getDepthChartSnapShare(this.controlledTeamId),
       draftPickAssets: this.getDraftPickAssets(this.controlledTeamId),
       compPicks: this.getCompensatoryPicks({ teamId: this.controlledTeamId }),
