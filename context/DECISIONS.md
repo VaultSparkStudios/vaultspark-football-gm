@@ -603,3 +603,47 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Decision:** Architect Thesis HTTP behavior lives in a shared handler imported by both the server and local browser adapter. Transport shells own routing only; domain status codes and payload semantics remain single-source.
 
 **Rationale:** Matching route lists do not prevent handler semantics from drifting. Exact delegation converts parity from repeated code into one authority.
+
+## 2026-07-31 — Premium free agents sign only through the competing-offer market
+
+**Decision:** Free agents at or above 74 overall are market property: the instant sign path and CPU greedy maintenance keep only the depth tier, rival teams submit deterministic archetype-shaped bids, and resolution runs every weekly advance with an exact outbid receipt when the controlled team loses.
+
+**Rationale:** A market with one possible bidder is scenery, not pressure. Competition must be real enough to lose, and losing must teach exact terms.
+
+**Pattern established:** Any player-facing scarcity system must have at least one autonomous competitor operating through the same authority the player uses.
+
+## 2026-07-31 — Venue effects are bounded per-game rating boosts with receipts
+
+**Decision:** Home field (+1.2) and bye rest (+0.8) enter as per-game unit-rating boosts on the sim context, never the shared team object; every result and box score carries an explicit venue receipt; the Super Bowl is a neutral site.
+
+**Rationale:** Boosting both sides of the home team's game keeps league-wide distributions calibration-neutral while shifting win share, and receipts keep the asymmetry observable instead of inferred.
+
+## 2026-07-31 — Award selection is deterministic and skill-position scoped
+
+**Decision:** `sortRowsByAv` carries a final playerId tie-break; MVP/OPOY/ROY pools admit only QB/RB/WR/TE; award tests recompute leaders on the pre-honor AV surface the engine actually selected from.
+
+**Rationale:** All-Pro/Pro-Bowl honors feed AV after selection, so post-award recomputation compares against an inflated surface and only agreed by luck; and an offensive lineman with one recorded catch must not win MVP carrying blocking-derived AV.
+
+## 2026-07-31 — Narrative events are decision surfaces, not headlines
+
+**Decision:** The GM decision catalog doubled (star-trade-request, culture-crisis, legend-farewell) with triggers reading the live narrative log; immediate consequences are bounded, deterministic, and visible (exact morale deltas, news receipts); transactional promises resolve as commitments bound to the exact subject player.
+
+**Rationale:** An event the player cannot answer is scenery; an answer without a receipt is fiction.
+
+## 2026-07-31 — GM termination is founder canon, honestly deferred
+
+**Decision:** The owner-pressure loop ships live patience, receipts, a reachable ultimatum, and a season-end failed-mandate consequence — but no firing/game-over state. That ending is new public product canon reserved for founder creative direction.
+
+**Rationale:** Autonomous invention of the player character's termination would exceed the agent's creative authority; deferral recorded as a win, not a silent skip.
+
+## 2026-07-31 — Restored sessions construct services exactly like new sessions
+
+**Decision:** `GameSession.fromSnapshot` passes the same strategy bag to `createServices` as the constructor. A latent crash (TradeService.evaluate on any snapshot-restored session) existed since the services split and surfaced when S62's weekly market hooks ran inside the advance-week transaction clone.
+
+**Pattern established:** Every session construction path must produce an identical service surface; a restore path with fewer capabilities is a dormant crash.
+
+## 2026-07-31 — The precache worker never caches truth surfaces
+
+**Decision:** The build-generated service worker precaches the static module graph (cache-first, background revalidate) but is network-only for `/api/`, `_health`, `deploy-manifest.json`, and `edge-policy-receipt.json`.
+
+**Rationale:** Instant boot must never make freshness evidence lie; a cached health receipt is a fabricated one.

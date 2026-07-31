@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 61 exhausted five runtime/security/player-review objectives and three second-order innovations: capability operations, shared route semantics, Architecture Review, TradeService authority, generated edge policy, stale-plan protection, hosted attestation, and inline hash saturation.",
-  "nextMilestone": "Apply the exact generated edge contract at the owning host and prove its fingerprint, deployed revision, /_health, required headers, delivered email, approval, and authoritative lifecycle before any launch flip.",
+  "currentFocus": "Session 62 exhausted ten primary objectives and three second-order innovations centered on rival agency: inbound CPU trade offers, a competitive premium free-agency market, a doubled narrative decision catalog, a live owner-pressure loop, venue effects, one celebration/moment authority, Opening Contract recovery, fail-closed gist integrity, dressed-only injuries, and a precache service worker for instant boot.",
+  "nextMilestone": "Apply the exact generated edge contract at the owning host and prove its fingerprint, deployed revision, /_health, required headers, delivered email, approval, and authoritative lifecycle before any launch flip; then take up the deferred mobile/tablet nav parity with a visual re-baseline budget.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated: canonical /_health is invalid, exact deployed revision is absent, required HSTS/CSP/frame/permissions headers are missing, and delivered-email, founder-approval, and sibling lifecycle authorities remain absent."
   ],
@@ -18,27 +18,28 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-07-27",
   "testSuiteStatus": {
-    "totalTests": 560,
-    "pass": 560,
+    "totalTests": 613,
+    "pass": 613,
     "fail": 0,
-    "lastRun": "2026-07-29",
+    "lastRun": "2026-07-31",
     "newTestFiles": [
-      "test/architect-focus-review-browser.test.js",
-      "test/architect-focus-review.test.js",
-      "test/architect-thesis-handler.test.js",
-      "test/capability-operations-authority.test.js",
-      "test/edge-policy-application.test.js",
-      "test/edge-security-policy.test.js",
-      "test/edge-style-hash.test.js",
-      "test/trade-plan-authority.test.js",
-      "test/trade-plan-browser-wiring.test.js"
+      "test/injury-eligibility.test.js",
+      "test/opening-contract-recovery.test.js",
+      "test/home-field-advantage.test.js",
+      "test/owner-confidence.test.js",
+      "test/gm-decision-expansion.test.js",
+      "test/rival-trade-offers.test.js",
+      "test/fa-market-competition.test.js",
+      "test/milestone-moments.test.js",
+      "test/service-worker-precache.test.js",
+      "test/second-order-s62.test.js"
     ],
-    "newTestCount": 21,
-    "coverage": "Session 61 canonical aggregate Node 560/560, Playwright 20/20, responsive evidence 53 captures, Pages build/smoke, 52 reachable browser modules, and 52-file promise observability.",
+    "newTestCount": 53,
+    "coverage": "Session 62 canonical aggregate Node 613/613, Playwright 20/20, responsive evidence 53 captures, Pages build/smoke with per-mount service-worker assertions, sim-contract and sim-realism shards green under venue effects.",
     "uiSuiteNote": "Playwright 20/20 and 53 responsive dark/light mobile/tablet/desktop captures passed automated viewport, contrast, overflow, runtime-error, and touch-target gates."
   },
-  "testsPassing": 560,
-  "testsTotal": 560,
+  "testsPassing": 613,
+  "testsTotal": 613,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -90,31 +91,28 @@
     "capitalEfficiency": 95,
     "automationCoverage": 100
   },
-  "currentSession": 61,
-  "lastAgent": "codex",
+  "currentSession": 62,
+  "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
     "timedOut": [],
     "failed": [
-      "initial startup-authority fixture rejected canonical shipped status (root-fixed and superseded by full 560/560 rerun)",
-      "canonical hosted edge attestation remains HOLD on health, revision, and required headers"
+      "canonical hosted edge attestation remains HOLD on health, revision, and required headers (external authorities)"
     ],
     "passed": [
-      "canonical aggregate Node 560/560 with exit 0 and fresh source-bound receipt",
+      "canonical aggregate Node 613/613 with exit 0 and fresh source-bound receipt",
       "Playwright 20/20",
       "responsive evidence 53 captures with required matrix complete",
-      "Pages build, static smoke, browser reachability 52 modules, and promise observability 52 files",
-      "Unified Genius List 0 open / 5 closed and three second-order innovations shipped",
-      "doctor blockingFailing 0, sitemap 10/10, cost-neutral release gate ALLOW, public sanitization 0 critical/0 warning",
-      "direct-main implementation 5532c4e and clean-checkout fix 3240ed7 synchronized",
-      "current-head CI, brief-format, manually dispatched Pages, and non-server backend image workflows completed green",
-      "Ark impact 01JUSPSI9GD55ADFA537A709D2 and owning-host request 01JUSPSIHR219CDE9DB8F2CCC6 signed"
+      "Pages build and static smoke green including per-mount service-worker/precache assertions",
+      "sim-contract and sim-realism shards green under home-field/bye-rest venue effects",
+      "Unified Genius List 0 open / 10 closed and three second-order innovations shipped",
+      "shard coverage, startup authority, and innovation-pack scans agree with the live S62 audit authority"
     ],
-    "date": "2026-07-29",
-    "diagnosticNote": "Generated edge policy is green; hosted application is not inferred. Canonical health, deployed revision, several required response headers, delivered email, approval, and lifecycle reconciliation remain absent."
+    "date": "2026-07-31",
+    "diagnosticNote": "All current-repo gates are green. Hosted application, delivered email, founder approval, and sibling lifecycle reconciliation remain external and launch stays HOLD."
   },
   "silScoreV3MigratedAt": "2026-04-21",
-  "modelTier": "codex-1m",
+  "modelTier": "claude-fable-5",
   "modelTierDefault": "codex-1m",
   "modelTierCtxLimit": 1000000,
   "modelPlanMode": false,

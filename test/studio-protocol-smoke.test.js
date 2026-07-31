@@ -377,9 +377,9 @@ test("innovation-pack marker scan ignores intentional guard sentinels", () => {
   assert.doesNotMatch(result.stdout, /test-receipt\.mjs|test\/test-receipt\.test\.js/);
   assert.doesNotMatch(result.stdout, /test\/return-digest\.test\.js/);
   assert.match(result.stdout, /No unclassified live innovation candidates remain/);
-  assert.match(result.stdout, /stale-trade-plan-authority-receipt/);
-  assert.match(result.stdout, /hosted-edge-policy-attestation/);
-  assert.match(result.stdout, /inline-style-policy-saturation/);
+  assert.match(result.stdout, /dashboard-payload-parity/);
+  assert.match(result.stdout, /continuity-threads-visible/);
+  assert.match(result.stdout, /hot-path-index-adoption/);
   assert.doesNotMatch(result.stdout, /Pending implementation|Pending classification/);
 });
 

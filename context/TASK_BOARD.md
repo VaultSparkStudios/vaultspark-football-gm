@@ -875,3 +875,34 @@ Source: `docs/AUDIT_2026-07-29.json`.
 Unified Genius List: **0 open / 5 primary closed**. Viable second-order innovation list: **0 open / 3 closed**.
 
 Launch remains **HOLD** on live health/header/revision, delivered-email, founder-approval, and sibling-owned lifecycle evidence; no launch evidence was fabricated.
+
+## Session 62 — Rival Agency, Living Pressure, and Instant Boot (2026-07-31)
+
+Source: `docs/AUDIT_2026-07-31.json`.
+
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Gamification / AI adversaries / decision pressure | Done S62 — rival GMs generate bounded deterministic inbound trade offers endorsed by TradeService; accept/counter/decline with fresh-fingerprint discipline; 9/9 focused tests | 4.0h | cpu-inbound-trade-offers |
+| FIRE | Feedback loop / decision catalog / narrative agency | Done S62 — catalog doubled to 6 archetypes fed by live narrative events with deterministic visible consequences; icon/tone maps match the live engine set | 3.5h | decision-pressure-catalog-expansion |
+| FIRE | Feature depth / AI market competition | Done S62 — premium FAs (74+) are market property; CPU teams bid archetype-shaped offers weekly; outbid receipts name winning terms; FA tab market surface + years selector | 5.0h | cpu-free-agency-market-competition |
+| FIRE | Gamification / owner pressure / failure legibility | Done S62 — patience drifts weekly with receipts; always-on Owner Confidence meter; ultimatum reachable from every opening plan and resolves on the commitment board | 3.0h | owner-pressure-live-loop |
+| HIGH | Speed / mobile boot / offline | Done S62 — build-generated precache service worker on every mount; 137 assets / 2020 KB served from cache on repeat loads; freshness surfaces stay network-only | 3.0h | service-worker-instant-boot |
+| HIGH | Gamification / celebration / retention payoff | Done S62 — one shared moment authority (adapter drift twin removed); statement wins, playoff games, titles, eliminations, HoF inductions, and jersey retirements all announce themselves | 2.5h | celebration-milestone-authority |
+| HIGH | Feature depth / simulation realism | Done S62 — calibrated home edge + bye rest with explicit venue receipts; Super Bowl neutral site; realism shards green | 1.5h | home-field-advantage |
+| HIGH | UX / dead-end recovery / onboarding | Done S62 — skip records deferral; Overview CTA + Settings + command palette recovery paths; palette dispatch itself was dead UI and is repaired | 1.0h | opening-contract-recovery |
+| HIGH | Security / save integrity | Done S62 — gist remote-import verification fails closed on forged/unreadable sidecars in exact parity with the canonical store | 0.75h | gist-integrity-fail-closed |
+| HIGH | Correctness / injury eligibility | Done S62 — only dressed players can suffer in-game injuries; deterministic regression over a 60+ demoted sample | 1.0h | injury-eligibility-dressed-only |
+| INNOVATION | Infrastructure / payload truth | Done S62 — one dashboard authority for both adapters; getAugmentedState is a passthrough; fromSnapshot latent TradeService crash root-fixed | 1.5h | dashboard-payload-parity |
+| INNOVATION | Feedback loop / storyline visibility | Done S62 — open continuity threads render with source-derived close conditions | 1.0h | continuity-threads-visible |
+| INNOVATION | Speed / hot paths | Done S62 — AI-maintenance FA pool cached per invalidation with scan-counter receipts; eight linear player scans routed through the Map index | 1.5h | hot-path-index-adoption |
+
+## Next (carried from S62 second-order pool, honest deferrals)
+
+- [ ] Mobile nav + 481–980px tablet parity with touch affordances — deferred S62: needs a dedicated visual-evidence re-baseline budget for the 53-capture responsive authority.
+- [ ] Interactive press conference consuming the existing press-memory ledger — deferred S62: creative design surface pending founder direction.
+- [ ] GM firing / terminal game-over state — founder creative direction required (recorded in DECISIONS 2026-07-31); the owner-pressure loop ships the pressure without inventing the ending.
+- [ ] Opponent-aware gameplanning (buildTeamContext never sees the opponent) — needs its own realism-tolerance budget.
+
+Unified Genius List: **0 open / 10 primary closed**. Viable second-order innovation list: **0 open / 3 closed, 2 honestly deferred to Next**.
+
+Launch remains **HOLD** on external hosted/email/edge/approval/registry evidence; no launch evidence was fabricated.

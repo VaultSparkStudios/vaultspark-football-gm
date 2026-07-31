@@ -553,54 +553,59 @@
   "secondOrderCandidates": [
     {
       "slug": "mobile-nav-tablet-parity",
-      "status": "open",
+      "status": "deferred",
       "sourceItem": "service-worker-instant-boot",
       "premise": "≤640px renders a ~570px stacked 14-item nav above content; the mobile decision deck activates only ≤480px leaving a 481-980px coverage hole; zero touch-gesture affordances exist.",
       "evidence": [
         "public/styles.css:1857-1866 single-column side-menu at 640px",
         "public/lib/mobileLoop.js:22 innerWidth <= 480 gate",
         "grep touchstart|swipe|pointerdown public/ -> 0 hits"
-      ]
+      ],
+      "outcome": "Needs a dedicated visual-evidence re-baseline budget (53-capture responsive authority); carried to TASK_BOARD Next."
     },
     {
       "slug": "continuity-threads-visible",
-      "status": "open",
+      "status": "shipped",
       "sourceItem": "decision-pressure-catalog-expansion",
       "premise": "continuityLedger tracks openThreads but the dashboard payload omits them and public/ has zero references — the player can never see pending storylines or what closes them.",
       "evidence": [
         "src/runtime/continuityLedger.js:161-182 openThreads tracked",
         "GameSession dashboard payload omits continuityLedger; grep public/ -> 0 references"
-      ]
+      ],
+      "outcome": "Open storylines render in the Franchise Story panel with source-derived close conditions; dashboard carries continuityThreads."
     },
     {
       "slug": "dashboard-payload-parity",
-      "status": "open",
+      "status": "shipped",
       "sourceItem": "cpu-inbound-trade-offers",
       "premise": "server.js returns getDashboardState() while localApiRuntime returns getAugmentedState() with 6 extra fields on the same route; the parity checker compares route keys only, so response-shape drift is invisible.",
       "evidence": [
         "src/server.js:679 vs src/app/api/localApiRuntime.js:642,36",
         "scripts/check-api-contract-parity.mjs:47 extracts route keys only"
-      ]
+      ],
+      "outcome": "One dashboard authority; getAugmentedState is a passthrough; cap-crisis trigger scoped to real money pressure; fromSnapshot latent TradeService crash root-fixed; 5/5 tests."
     },
     {
       "slug": "hot-path-index-adoption",
-      "status": "open",
+      "status": "shipped",
       "sourceItem": "cpu-free-agency-market-competition",
       "premise": "23 call sites bypass the existing Map indexes with league.players.find; freeAgentPool() re-filters the full player array inside position loops; activeRosterPlayers re-scans in while-conditions — ~1-3M comparisons per simulated week.",
       "evidence": [
         "GameSession.js:2500-2644 runAiTeamMaintenance loop structure",
         "league.players.find at GameSession.js:2568,3044,3462,3531,3634,3666,3687,3718,5045,5106,5316"
-      ]
+      ],
+      "outcome": "FA pool cached per invalidation (fa-pool-scans counter receipt); eight linear player scans routed through Map-backed activePlayerOnTeam."
     },
     {
       "slug": "press-conference-decision",
-      "status": "open",
+      "status": "deferred",
       "sourceItem": "decision-pressure-catalog-expansion",
       "premise": "Press conferences are passive quotes despite continuityLedger maintaining press memory of last week's tone specifically so the coach can be held to promises.",
       "evidence": [
         "GameSession.js:4008 single call site; rendered as read-only news row",
         "continuityLedger.js:184-201 press-memory ledger exists unused by any decision surface"
-      ]
+      ],
+      "outcome": "Interactive presser is a creative design surface; carried to TASK_BOARD Next pending founder direction."
     }
   ],
   "totals": {

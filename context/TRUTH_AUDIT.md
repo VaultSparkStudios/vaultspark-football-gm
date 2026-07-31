@@ -405,3 +405,14 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - Test truth: the complete repaired aggregate passes 560/560 with a fresh source-bound receipt; Playwright passes 20/20; responsive evidence passes 53 captures; Pages build/reachability/promise-observability/smoke pass.
 - Release truth: `/_health` is invalid, deployed revision is unknown, and HSTS/CSP/frame/permissions headers are absent. Delivered email, approval, and lifecycle reconciliation remain independent; launch is HOLD.
 - Cost truth: no dependency, paid service, or variable-cost runtime was introduced; flat-rate Max Plan accounting remains notional.
+
+## 2026-07-31 — Session 62 truth surface changes
+
+- Dashboard truth: `GameSession.getDashboardState()` is the single payload authority; the browser adapter's augmentation layer is a passthrough, so `/api/state` and the client dashboard can no longer serve different shapes for the same route.
+- Market truth: premium free agency resolves through one multi-bid market; outbid receipts name the exact winning terms; synthetic offseason players carry an `emergency-depth-signing` provenance receipt instead of appearing silently.
+- Venue truth: every game result and box score carries an explicit venue receipt (home edge applied / rested / neutral site); the effect exists only as bounded per-game context boosts.
+- Award truth: selection order is fully deterministic (playerId final tie-break), MVP pools are skill-position scoped, and the award-selection AV surface (pre-honor) is distinguished from the post-honor display surface.
+- Owner truth: patience is a live weekly authority with per-week receipts naming why it moved; the ultimatum consequence lives on the commitment board and resolves with evidence at season end.
+- Boot truth: the precache service worker serves static assets cache-first but never caches `/api/`, `_health`, `deploy-manifest.json`, or `edge-policy-receipt.json` — freshness evidence always comes from the network.
+- Restore truth: snapshot-restored sessions construct the same service surface as new sessions; the restore path can no longer silently lack trade authority.
+- Release truth: unchanged and still HOLD — hosted `/_health`, applied edge headers, received email, founder approval, and sibling lifecycle reconciliation remain independent external authorities.
