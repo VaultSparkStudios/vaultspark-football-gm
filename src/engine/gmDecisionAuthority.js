@@ -144,7 +144,12 @@ export function generateGmDecisions(state = {}, { ledger = [] } = {}) {
     ));
   }
 
-  const criticalCap = capAlertRows(state).find((alert) => alert.severity === "critical");
+  // A cap CRISIS decision is real money pressure (cap-pressure / dead-cap),
+  // never an expiring-key roster note — an expiring star at week 1 must not
+  // gate the season behind a phantom "cap emergency" (S62 parity fix fallout).
+  const criticalCap = capAlertRows(state).find(
+    (alert) => alert.severity === "critical" && ["cap-pressure", "dead-cap"].includes(alert.type)
+  );
   if (criticalCap) {
     candidates.push(decisionRecord(
       state,

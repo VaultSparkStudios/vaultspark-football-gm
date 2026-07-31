@@ -6,11 +6,10 @@ import { GameSession } from "../../runtime/GameSession.js";
 import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { RNG } from "../../utils/rng.js";
 import { RNGStreams } from "../../utils/rngStreams.js";
-import { initGmLegacy, computeGmLegacyScore, getGmLegacySummary, getGmPersonaArc, buildGmReputationProfile, resolveChampionTeamId } from "../../engine/gmLegacyScore.js";
+import { initGmLegacy, getGmLegacySummary, buildGmReputationProfile, resolveChampionTeamId } from "../../engine/gmLegacyScore.js";
 import { initRivalries, getRivalryContext, getTeamRivalries } from "../../engine/rivalryDNA.js";
 import { runLeagueCombine, getCombineSummary } from "../../engine/draftCombine.js";
 import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "../../engine/playerAgentAI.js";
-import { getCapAlerts } from "../../engine/capAlerts.js";
 import {
   startChallenge, advanceChallengeSeason, checkChallengeComplete,
   formatLeaderboardEntry, parseLeaderboard, serializeLeaderboard, rankEntry
@@ -33,55 +32,13 @@ function jsonResponse(status, payload) {
 }
 
 // ── Augmented dashboard state ─────────────────────────────────────────────────
-// Extends getDashboardState() with new world-state layers not yet in GameSession.
+// S62 payload-parity root fix: GameSession.getDashboardState() now owns every
+// world-state layer this adapter used to bolt on, so server and static play
+// serve the identical dashboard shape. This wrapper survives only as a named
+// seam for the runtime's call sites.
 
 function getAugmentedState(session) {
-  const base = session.getDashboardState();
-  const league = session.league;
-  const capSummary = session.controlledTeamId
-    ? session.getTeamCapSummary(session.controlledTeamId)
-    : null;
-  const roster = session.controlledTeamId
-    ? session.getRoster(session.controlledTeamId)
-    : [];
-  // Active injuries for controlled team
-  const activeInjuries = roster
-    .filter((p) => p.injuryStatus && p.injuryStatus !== "healthy" && p.injuryWeeksRemaining > 0)
-    .map((p) => ({
-      playerId: p.id || p.playerId,
-      name: p.name,
-      pos: p.position || p.pos,
-      status: p.injuryStatus,
-      weeksRemaining: p.injuryWeeksRemaining || 0,
-      severity: p.injurySeverity || "minor"
-    }));
-
-  // Fan sentiment for controlled team
-  const fanSentimentData = session.controlledTeamId
-    ? (() => {
-        const fs = getFanSentiment(league, session.controlledTeamId);
-        return { ...fs, label: fanApprovalLabel(fs.approval) };
-      })()
-    : null;
-
-  const augmented = {
-    ...base,
-    narrativeLog:   league?.narrativeLog  || [],
-    franchiseLore:  league?.franchiseLore || [],
-    newsLog:        league?.newsLog       || [],
-    coachingTree:   league?.coachingTree  || null,
-    gmLegacy:       league?.gmLegacy      ? {
-      ...computeGmLegacyScore(league.gmLegacy),
-      persona: getGmPersonaArc(league.gmLegacy),
-      reputation: buildGmReputationProfile(league.gmLegacy)
-    } : null,
-    rivalries:      league?.rivalries     || {},
-    combineResults: league?.combineResults || [],
-    capAlerts:      getCapAlerts(capSummary, roster, session.currentYear),
-    activeInjuries,
-    fanSentiment:   fanSentimentData
-  };
-  return augmented;
+  return session.getDashboardState();
 }
 
 // ── Commissioner lobby (persisted via localStorage) ────────────────────────────

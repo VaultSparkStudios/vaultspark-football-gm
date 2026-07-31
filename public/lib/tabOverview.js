@@ -384,8 +384,25 @@ export function renderNarrativePanel() {
   const feed = document.getElementById("narrativeEventsFeed");
   if (!feed) return;
   const events = state.dashboard?.narrativeLog || [];
-  if (!events.length) {
+  // Open storylines render first: which threads are pending and exactly what
+  // would close them (source-derived from the continuity ledger, S62).
+  const threads = state.dashboard?.continuityThreads || [];
+  const threadsHtml = threads.length
+    ? `<div class="continuity-threads">
+        <div class="continuity-threads-title">Open storylines · ${threads.length}</div>
+        ${threads.slice(0, 4).map((thread) => `
+          <div class="continuity-thread">
+            <strong>${escapeHtml(thread.headline || thread.type)}</strong>
+            <small>Opened wk ${thread.openedWeek ?? "—"} · ${escapeHtml(thread.closesWhen || "")}</small>
+          </div>`).join("")}
+      </div>`
+    : "";
+  if (!events.length && !threads.length) {
     feed.innerHTML = `<div class="narrative-empty">Simulate weeks to generate franchise story events.</div>`;
+    return;
+  }
+  if (!events.length) {
+    feed.innerHTML = threadsHtml;
     return;
   }
   // Maps cover exactly the live engine event set (src/engine/narrativeEvents.js):
@@ -404,7 +421,7 @@ export function renderNarrativePanel() {
     default: "info"
   };
   const recent = events.slice(0, 8);
-  feed.innerHTML = recent.map((ev) => {
+  feed.innerHTML = threadsHtml + recent.map((ev) => {
     const icon = iconMap[ev.type] || iconMap.default;
     const tone = toneMap[ev.type] || toneMap.default;
     return `

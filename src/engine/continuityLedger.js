@@ -104,6 +104,26 @@ export function applyEventFeedback(league, event) {
 
 const THREAD_TYPES = new Set(["TRADE_REQUEST", "CULTURE_CRISIS", "OWNER_ULTIMATUM"]);
 
+// Player-facing description of what would close each thread type — derived
+// from the exact conditions threadResolution() checks, never invented (S62).
+const THREAD_CLOSES_WHEN = Object.freeze({
+  TRADE_REQUEST: "Closes when he is traded away or morale mends (55+).",
+  CULTURE_CRISIS: "Closes when chemistry recovers (48+) or the team wins two straight.",
+  OWNER_ULTIMATUM: "Closes when the win column climbs back within reach of the owner's target."
+});
+
+/**
+ * Open storylines with their close conditions — the player can finally see
+ * which threads are pending and what would resolve them.
+ */
+export function getOpenThreads(league) {
+  const ledger = ensureLedger(league);
+  return ledger.openThreads.map((thread) => ({
+    ...thread,
+    closesWhen: THREAD_CLOSES_WHEN[thread.type] || "Closes when the situation resolves on the field."
+  }));
+}
+
 export function openThreadForEvent(league, event) {
   if (!THREAD_TYPES.has(event.type)) return null;
   const ledger = ensureLedger(league);

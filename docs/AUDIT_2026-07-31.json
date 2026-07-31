@@ -1,0 +1,615 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-07-31",
+  "session": 62,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 10,
+    "combinedPriority": 258.4,
+    "topItem": "cpu-inbound-trade-offers",
+    "source": "live-code-audit",
+    "openItems": 0,
+    "completedItems": 10
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "product rubric with game-medium overlay: retention, emotional payoff, fast playable proof, mobile browser polish, vivid General Manager decision pressure, zero-backend loops",
+    "staging": "GitHub Pages artifact with exact same-origin hosted verification before direct-to-main promotion",
+    "source": "two very-thorough live-source surveys (UX/engagement + domain/engine), direct premise greps, current build artifact, hosted staging probe, and public-safe context"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation",
+    "ci": "Baseline canonical suite passes 560/560 with a fresh source-bound receipt before any change this session.",
+    "staging": "Direct same-origin staging verification exits BLOCKED at 3/10 (probed 2026-07-31).",
+    "production": "Canonical /_health remains invalid and HSTS/CSP/frame/permissions header application is unproven at the hosted origin; edge-policy-receipt self-reports appliedToHostedOrigin=false. All remaining launch evidence is owned by sibling/host/human authorities and is not claimable from this repository.",
+    "secrets": "Gateway healthy for required capabilities; 0 human-blocked items in preflight."
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 8.5,
+    "sessionEngagement": 7.8,
+    "retention": 7.2,
+    "soulFidelity": 9.2,
+    "overall": 8.3,
+    "evidence": "The 30-second/five-minute/season/dynasty loops have deep source contracts and browser surfaces, but decision pressure is one-directional: the CPU never initiates trades or free-agency competition, the GM decision catalog has exactly 3 archetypes, owner patience is immutable after setup, championships and Hall of Fame inductions produce no celebration, and legacy tiers 5-6 render nothing. No consented playtest cohort exists; outcome confidence remains structural.",
+    "nextMoves": [
+      "Make rival GMs act on the player: inbound archetype-driven trade offers and competing free-agency bids through the existing market machinery.",
+      "Convert read-only narrative headlines into decisions with consequence receipts and widen the 3-entry GM decision catalog.",
+      "Pay off milestones: widened drama scoring, auto-announced Hall of Fame/jersey ceremonies, rendered top-tier legacy unlocks."
+    ]
+  },
+  "recommendedMoves": [
+    "Turn the simulation's other 31 GMs into visible adversaries: inbound trade offers and competing free-agency bids that arrive as Priority Inbox decision pressure.",
+    "Make failure and success both legible: a live owner-confidence loop with receipts, and celebration moments for the games and careers that deserve them.",
+    "Ship the zero-dependency mobile win: a build-generated precache service worker so the 1.9 MB / ~110-request module graph loads once, then boots instantly offline."
+  ],
+  "candidateMatrix": {
+    "feature-depth": [
+      "CPU free-agency market competition through the existing multi-bid machinery (ranked #3).",
+      "Home-field advantage and bye-rest effects, currently absent entirely from the simulator (ranked #8).",
+      "Full cross-drive field-position engine; rejected this session — playCalling.js:22-28 documents the synthetic per-drive estimate as a deliberate bounded ceiling and a rewrite risks the calibrated realism corpus without a dedicated recalibration budget."
+    ],
+    "new-innovative-features": [
+      "Inbound archetype-driven CPU trade offers with accept/counter/decline (ranked #1).",
+      "Live owner-pressure loop with confidence receipts making the ultimatum reachable from every opening plan (ranked #4).",
+      "GM firing / terminal game-over state; deferred — termination is new public product canon requiring founder creative direction, recorded as an honest deferral, not designed autonomously."
+    ],
+    "ui-ux": [
+      "Opening Contract recovery path — skipping the tutorial currently kills the Opening Contract, its season chapter, and the rehearsal promise permanently (ranked #6).",
+      "Mobile nav + 481-980px tablet parity with touch affordances (second-order pool).",
+      "First-boot overlay sequencing queue through modalManager (second-order pool).",
+      "Keyboard shortcuts for tabs 10-14 and the command palette (second-order pool)."
+    ],
+    "feedback-loop": [
+      "Narrative events become decisions with consequence receipts; icon/tone map desync fixed (ranked #2).",
+      "Continuity ledger open threads surfaced with what-would-close-this hints (second-order pool).",
+      "Interactive press conference consuming the existing press-memory ledger (second-order pool)."
+    ],
+    "gamification-engagement-immersion": [
+      "Celebration and milestone authority: widened drama scoring, auto-announced Hall of Fame/jersey ceremonies, rendered tier 5-6 legacy unlocks (ranked #7).",
+      "Trade Deadline Frenzy cards wired to real actions instead of bare tab clicks; folded into ranked #1's inbox deeplink work where overlapping, remainder in second-order pool."
+    ],
+    "ai-intelligence": [
+      "Archetype trait vectors deepening rebuild/contender/balanced into risk, positional value, and deadline aggression; folded into ranked #1 and #3 valuation inputs.",
+      "Opponent-aware gameplanning (buildTeamContext currently never sees the opponent); second-order pool — touches the calibrated simulator core, needs its own realism-tolerance budget.",
+      "Causal outcome-prediction coach; rejected — deterministic source receipts already cover the decision need without false certainty (standing canon from S60/S61)."
+    ],
+    "security": [
+      "Gist remote-import integrity verification fails open on unknown algo, contradicting the canonical fail-closed store (ranked #9).",
+      "In-game injury selection ignores roster-slot/game-day-inactive filters so undressed players get injured (ranked #10, correctness).",
+      "sessionStorage PAT hardening; second-order pool — existing mitigations (purged localStorage, masked-input rejection, pinned connect-src, hash-pinned script-src) already bound the risk."
+    ],
+    "speed-organization-efficiency": [
+      "Build-generated precache service worker + styles.css double-ship removal (ranked #5).",
+      "Hot-path index adoption: 23 linear-scan bypasses of the existing Map indexes, freeAgentPool() re-filtered inside loops, full-array rescans in while-conditions (second-order pool with before/after timing plan).",
+      "esbuild minification; rejected — new dependency requires package-trust + CANON-039 ladder review, and the service worker captures most of the repeat-load win dependency-free."
+    ],
+    "token-api-cost-reduction": [
+      "No candidate above the cull line: the game has zero runtime API cost by design (static-host, zero-backend), the canonical suite completes in ~57s wall, and session cost is notional flat-rate Max Plan. Measurement note recorded; nothing to optimize this session."
+    ]
+  },
+  "preverifiedSkips": [
+    {
+      "axis": "release",
+      "candidate": "Mark launch or lifecycle green from this repository",
+      "reason": "Rejected. Hosted health, applied edge headers, received mailbox evidence, founder approval, and sibling lifecycle truth are independent authorities; staging probe still exits BLOCKED 3/10."
+    },
+    {
+      "axis": "feature-depth",
+      "candidate": "Full cross-drive field-position engine",
+      "reason": "Premise is real (fieldPosition resets to 25 per drive, gameSimulator.js:678-690), but playCalling.js:22-28 documents this as a deliberate bounded ceiling; a rewrite risks the calibrated sim-realism corpus without a dedicated recalibration budget. Deferred with evidence, not skipped silently."
+    },
+    {
+      "axis": "new-innovative-features",
+      "candidate": "GM firing / terminal game-over state",
+      "reason": "Deferred. Termination of the player character is new public product canon; owner-pressure loop (#4) ships the live pressure without inventing the ending autonomously. Founder creative direction requested."
+    },
+    {
+      "axis": "organization",
+      "candidate": "Decompose all of GameSession (5605 lines) in one pass",
+      "reason": "Rejected again (standing S61 reasoning): wholesale rewrite would destroy the bounded characterization seam. Extractions continue one authority at a time."
+    },
+    {
+      "axis": "speed",
+      "candidate": "Adopt esbuild minification via build-bundle.mjs",
+      "reason": "Rejected. esbuild is not installed (build-bundle.mjs is orphaned with no npm script); adding it is a supply-chain decision requiring package-trust + CANON-039 review, and the precache service worker captures the repeat-load win dependency-free."
+    },
+    {
+      "axis": "feedback-loop",
+      "candidate": "Bulk /api/advance-season adoption in the client",
+      "reason": "Rejected. The weekly advance loop is the product's evidence spine (plan/film/ledger receipts per week); the bulk endpoint bypasses those receipts, and the fast-sim checkpoint path already covers multi-week acceleration honestly."
+    },
+    {
+      "axis": "evidence",
+      "candidate": "Create synthetic playtest rows to raise outcome confidence",
+      "reason": "Rejected. No consented docs/PLAYTESTS cohort exists; structural tests cannot prove fun, comprehension, or return intent, and fabricating rows violates the no-fabricated-data gate."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Gamification / AI adversaries / decision pressure",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 34.8,
+      "slug": "cpu-inbound-trade-offers",
+      "title": "Rival GMs make inbound trade offers the player must answer",
+      "status": "shipped",
+      "premise": "Trades are 100% player-initiated: grep for proposeTrade/inboundTrade/cpuTradeProposal across src/ and public/ returns zero hits; TradeService exposes only evaluate() and commit(); rival GM archetypes are a read-only scouting table that never acts on the player; the 9 Trade Deadline Frenzy action cards resolve to bare tab clicks.",
+      "evidence": [
+        "grep proposeTrade|inboundTrade|incomingTrade|cpuTradeProposal|aiTradeOffer src/ public/ -> 0 hits (verified 2026-07-31)",
+        "src/runtime/services/TradeService.js:19 evaluate, :197 commit — no offer-generation entry point",
+        "public/lib/tradeDeadlineFrenzy.js:216-220 — data-deadline-action ids are dead data; handler only clicks a tab",
+        "src/engine/aiTeamStrategy.js — entire CPU GM brain is 93 lines; strategyProfile applied at only 4 sites"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Deadline-week-only: generate one need-driven inbound offer per deadline window from a rival team, deliver as a Priority Inbox CRITICAL item with accept/decline through TradeService.evaluate/commit, deterministic RNG, focused test."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Weekly archetype-driven inbound-offer engine: rival GMs with roster needs and archetype-shaped valuation (rebuild/contender/balanced trait deltas) generate bounded inbound offers (deterministic RNG, frequency spiking near the deadline), delivered as Priority Inbox items and a Trades-tab offer card with accept / decline / counter (counter re-prices via TradeService.evaluate and binds the state fingerprint so a stale league 409s before commit). Offers expire with receipts. Both adapters serve the same offer routes through a shared handler. Focused engine + service + browser tests; existing 560-test suite stays green."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "L2 plus per-counterparty relationship memory: repeated lowballs and reneged counters sour a rival GM's willingness receipts, cooling future offers, with the relationship visible in the scouting archetype table."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Feedback loop / decision catalog / narrative agency",
+      "effortHours": 3.5,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 29.3,
+      "slug": "decision-pressure-catalog-expansion",
+      "title": "Narrative events become answerable decisions and the 3-entry GM catalog grows",
+      "status": "shipped",
+      "premise": "GM_DECISION_CATALOG contains exactly 3 archetypes (trade-deadline, qb-injury, cap-crisis) for an unlimited-season dynasty; narrative events are read-only headlines with no player response; the UI icon/tone map names 8 event types of which 4 never fire while 4 real engine types (RIVAL_OFFER, CULTURE_CRISIS, OWNER_ULTIMATUM, LEGEND_FAREWELL) fall through to a generic newspaper icon.",
+      "evidence": [
+        "src/engine/gmDecisionAuthority.js:3-31 — exactly 3 frozen catalog entries (read directly 2026-07-31)",
+        "public/lib/tabOverview.js:376-385 vs src/engine/narrativeEvents.js:8-14 — map/engine type sets disjoint on 4+4 types",
+        "src/engine/narrativeEvents.js:25-34 pushEvent writes headline/detail/impact only; renderer emits non-interactive divs",
+        "narrativeEvents.js:60-67 TRADE_REQUEST warns of locker-room damage but offers no grant/deny/negotiate affordance"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Fix the icon/tone map to the real engine event set and add one new decision archetype (star trade request with grant/deny/hold choices)."
+        },
+        "L2": {
+          "effortHours": 3.5,
+          "recipe": "Align the icon/tone map with the live engine event set (delete never-fires entries, add the 4 real types). Extend GM_DECISION_CATALOG with 3 new frozen archetypes fed by live narrative events: star-trade-request (grant/shop/deny with morale receipts), culture-crisis (address/back-staff/shake-up), legend-farewell (ceremony/feature-role/quiet-exit). Each flows through the existing gmDecisionAuthority decision-record + commitment machinery, the GM Decision modal, and Priority Inbox deeplinks, with deterministic consequence receipts (no hidden bonuses, no outcome prediction). Focused authority + browser tests."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus decision-history texture: the Season Reckoning chapter and Architecture Review cite how the GM answered each narrative decision, descriptively and non-causally."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Feature depth / AI market competition",
+      "effortHours": 5,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 28.5,
+      "slug": "cpu-free-agency-market-competition",
+      "title": "CPU teams compete in the free-agency market the engine already has",
+      "status": "shipped",
+      "premise": "The multi-bid free-agency market machinery (stages legal-tampering/open-market/post-draft, competing offers, offer scoring) exists but has exactly one possible bidder: submitFreeAgencyOffer's only non-test call sites are the two user-initiated HTTP routes; no CPU code path ever submits an offer; /api/free-agency/market has zero public/ callers; the player-facing sign action hardcodes years:2; offseason FA fabricates synthetic players instead of modeling competition.",
+      "evidence": [
+        "grep 'free-agency/market' public/ -> 0 hits; implemented at src/app/api/localApiRuntime.js:622 and src/server.js (verified 2026-07-31)",
+        "src/runtime/GameSession.js:5094 processFreeAgencyMarket iterates only player-submitted offers; :5039 submitFreeAgencyOffer has 2 route call sites",
+        "public/app.js:688 sign action hardcodes years: 2",
+        "src/engine/offseasonSimulator.js:237-269 — raw team-order iteration, first-match greedy, createSyntheticPlayer at :249 conjures players when none match"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "CPU teams with roster needs submit archetype-scored offers into the existing market weekly; Free Agents tab shows the live market stage and competing-offer counts read-only."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "CPU bidding: each week, teams with genuine needs and cap room submit offers into the existing market with archetype-shaped years/value; market resolution uses the existing multi-bid scoring so the player can be outbid and receives an outbid receipt naming the winning terms. Free Agents tab gains the market surface: stage banner, per-player rival-offer badges, and a sign flow with player-chosen years (hardcoded years:2 removed) that routes through the market. Offseason greedy fill and synthetic-player fabrication demoted to a last-resort roster-legality step that emits an explicit receipt when it fires. Focused market + adapter-parity + browser tests; suite green."
+        },
+        "L3": {
+          "effortHours": 7,
+          "recipe": "L2 plus player-side preference: free agents weight contender status, scheme fit, and mentor presence in offer scoring, with the reason surfaced in the rejection/acceptance receipt."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "Gamification / owner pressure / failure legibility",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 27.6,
+      "slug": "owner-pressure-live-loop",
+      "title": "Owner patience becomes a live loop with receipts and a reachable ultimatum",
+      "status": "shipped",
+      "premise": "owner.patience is written only at league setup (applyLeagueSetup.js:64) and opening-contract application (GameSession.js:2673) and never mutated by results; the ultimatum gate requires patience <= 0.35 while opening plans set 0.28/0.55/0.78, so two of three opening choices make the Owner Ultimatum banner permanently dead UI; the constructed ultimatum.consequence field has no consumer.",
+      "evidence": [
+        "grep '.patience' src/ — assignments only at applyLeagueSetup.js:64 and GameSession.js:2673 (verified 2026-07-31)",
+        "GameSession.js:650 — gate heat>=75 && gamesPlayed>=6 && patience<=0.35",
+        "src/runtime/startScenarioContract.js:33,44,51 — plan patience 0.28/0.55/0.78",
+        "GameSession.js:649-661 ultimatum.consequence constructed, grep shows no consumer"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Patience drifts with weekly results relative to the opening-contract promise (bounded, deterministic), making the ultimatum reachable from every plan; banner logic unchanged."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Owner-confidence authority: patience moves each week from results vs the opening-contract promise, streaks, and kept/missed GM commitments, bounded and deterministic with a receipt naming exactly why it moved. Overview gains an Owner Confidence meter with the latest receipt; the ultimatum becomes reachable from every opening plan and its consequence field is consumed as a real decision-pressure record (coaching-overhaul/rebuild mandate entering the commitment board). No firing/game-over is invented — termination is founder canon, honestly deferred. Focused authority tests cover drift bounds, receipt truth, and ultimatum reachability."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus owner personality (patience regeneration style, media sensitivity) seeded at league creation and visible in the franchise profile."
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Speed / mobile boot / offline",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 27.1,
+      "slug": "service-worker-instant-boot",
+      "title": "Build-generated precache service worker: load once, boot instantly, play offline",
+      "status": "shipped",
+      "premise": "The browser downloads ~1.9 MB across ~110 separate unminified ES modules on every cold load; no service worker exists anywhere in the repo while the CSP already budgets worker-src 'self'; styles.css ships twice (raw + fingerprinted, 277 KB combined).",
+      "evidence": [
+        "find sw.js/service-worker* -> 0 results; grep serviceWorker public/ -> 0 hits (verified 2026-07-31)",
+        "static/franchise-architect/lib 724 KB (50 files) + src 956 KB (58 files) incl. 234 KB GameSession.js, unminified",
+        "static/_headers:3 already allocates worker-src 'self' and manifest-src 'self'",
+        "styles.css shipped as both styles.css and styles.99b5514c37.css (138,857 B each)"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Hand-rolled precache SW with a build-generated manifest of hashed URLs, cache-first for same-origin GETs, registered from game.html; kill the duplicate styles.css emission."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "build-pages.mjs generates a versioned precache manifest (content-hash of every emitted file) baked into a dependency-free sw.js: cache-first with background revalidate for same-origin static assets, network-only for /api/, atomic cache swap on version change with a quiet 'updated — reload for the new version' toast. Registered from index.html and game.html for every mount (mount-relative scope). Duplicate styles.css emission removed. Static smoke asserts sw.js + manifest on every mount; edge-policy receipt covers the new file; measurement plan: request count and transferred bytes on repeat load, before vs after, recorded in the execution log. Suite + Pages build/smoke green."
+        },
+        "L3": {
+          "effortHours": 4.5,
+          "recipe": "L2 plus offline-first boot badge in Launch Readiness (SW status, cached version, storage estimate) and a cache-integrity self-check receipt."
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Gamification / celebration / retention payoff",
+      "effortHours": 2.5,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 25.8,
+      "slug": "celebration-milestone-authority",
+      "title": "One milestone authority: dramatic wins, clinches, titles, and Hall of Fame nights announce themselves",
+      "status": "shipped",
+      "premise": "Franchise Moment drama scoring only fires on close games (a championship, a clinch, an elimination, and a 45-3 statement all score below the display gate); Hall of Fame induction and jersey retirement never announce themselves (ceremony overlay opens only from a button 3 levels deep in Dynasty); legacy tiers 5-6 unlocks (legend_badge, immortal_aura) have zero consumers in public/.",
+      "evidence": [
+        "src/server.js:2057 dramaScore = upset(margin<4)+close(margin<=3)+volume; public/lib/engagementFeatures.js:236 suppresses dramaScore<2 (verified 2026-07-31)",
+        "public/lib/hallOfFameCeremony.js:70-77 — overlay opened only by per-player button; no auto-trigger, inbox item, or toast on induction",
+        "src/engine/gmLegacyScore.js:280-334 — legend_badge/immortal_aura defined; grep shows no consumer outside the module",
+        "Exactly one celebration animation exists (persona tier-up confetti); zero audio by design (static-safe)"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Widen drama scoring with clinch/title/elimination/blowout-statement terms and auto-push a Priority Inbox item on Hall of Fame induction."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Milestone authority module scoring game and career moments from live state: playoff clinch, playoff win, championship, elimination, statement blowout, broken franchise record, Hall of Fame induction, jersey retirement. Each emits a deterministic receipt into the existing Franchise Moment / Priority Inbox / toast surfaces; HoF induction and jersey retirement auto-offer the existing ceremony overlay; legacy tier 5-6 badges render on the Identity Card. CSS-only celebration treatment (no audio assets, static-safe). Focused scoring + announcement tests; shared handler parity across both adapters where routes are touched."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "L2 plus a Dynasty 'Nights to Remember' reel: the milestone ledger renders a season-by-season highlight strip in the Dynasty tab."
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "tier": "HIGH",
+      "category": "Feature depth / simulation realism",
+      "effortHours": 1.5,
+      "impact": 7,
+      "innovation": 6,
+      "priority": 23.2,
+      "slug": "home-field-advantage",
+      "title": "Home-field advantage and bye-week rest exist",
+      "status": "shipped",
+      "premise": "The simulator has no home-field effect of any kind: grep for homeField/homeAdvantage/homeBoost in src/engine returns zero; home/away are pure labels; the only asymmetry is the opening coin flip; bye weeks confer nothing.",
+      "evidence": [
+        "grep homeField|homeAdvantage|homeBoost src/engine/ -> 0 hits (verified 2026-07-31)",
+        "src/engine/gameSimulator.js:1661-1662 buildTeamContext per team with no venue input; :1700 homeBall = rng.chance(0.5) is the sole asymmetry",
+        "NFL empirical home edge ~55-57% win share is entirely absent from calibrated output"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Small calibrated home efficiency term in team context with a fixed constant; realism shard tolerance verified."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Venue context enters buildTeamContext: a small calibrated home boost (offensive efficiency + composure/turnover edge) and a bye-week rest freshness term, both deterministic and documented against the realism profile with sim-realism shard tolerances kept green. Matchup preview and box score label home edge and rest where present. Focused distribution test proves home win share lands in the calibrated band without breaking existing realism assertions."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus per-stadium personality (crowd factor seeded per franchise) surfaced in Rival Coach Intel."
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "tier": "HIGH",
+      "category": "UX / dead-end recovery / onboarding",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 22.1,
+      "slug": "opening-contract-recovery",
+      "title": "Skipping the tutorial no longer permanently kills the Opening Contract",
+      "status": "shipped",
+      "premise": "Dismissing the tutorial (backdrop click or ESC) calls markTutorialSeen permanently; resetTutorial has zero callers outside the module; with startScenarioReceipt null the Opening Contract card hides forever, the opening-contract season chapter never fires, and the plan rehearsal loses its promise — with no menu, settings, or command-palette recovery path.",
+      "evidence": [
+        "public/lib/tutorialCampaign.js:252,285 dismiss paths -> markTutorialSeen at :142; app.js:2055 onSkip is a no-op (verified 2026-07-31)",
+        "grep resetTutorial outside tutorialCampaign.js -> 0 callers",
+        "public/lib/tabOverview.js:209-212 hides the Opening Contract card when receipt is null; seasonChapters.js:33 chapter gate"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Settings gains 'Run Opening Contract' wired to resetTutorial + mountTutorial when no receipt exists."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Skip records an explicit deferral receipt instead of a bare seen-flag; the Overview Opening Contract card renders a 'You deferred your opening mandate — declare it now' call-to-action when deferred, and Settings + command palette both expose 'Run Opening Contract'. Re-running after deferral is idempotent and produces the same receipt shape as first-run. Focused browser test proves skip -> recover -> chapter fires."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 plus a week-4 one-time inbox nudge if the mandate is still undeclared, expiring quietly."
+        }
+      }
+    },
+    {
+      "rank": 9,
+      "tier": "HIGH",
+      "category": "Security / save integrity",
+      "effortHours": 0.75,
+      "impact": 6,
+      "innovation": 5,
+      "priority": 20.6,
+      "slug": "gist-integrity-fail-closed",
+      "title": "Remote gist imports verify integrity fail-closed like the canonical store",
+      "status": "shipped",
+      "premise": "gistSync's verifyIntegrityStamp returns true for any unknown integrity algo (fail-open) while saveStoreShared returns false (fail-closed) — the comment claims it mirrors saveStoreShared but a forged algo field bypasses remote-import verification entirely.",
+      "evidence": [
+        "public/lib/gistSync.js:40 — if (!integrity || integrity.algo !== \"fnv1a32\") return true (verified 2026-07-31)",
+        "src/adapters/persistence/saveStoreShared.js:29 — unknown algo returns false",
+        "gistSync.js:22 comment: 'Mirrors saveStoreShared.js' — it does not",
+        "gistSync.js:219 gates remote imports on this check"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Unknown algo rejects; absent integrity block stays accepted for legacy payloads; focused test for forged-algo rejection."
+        },
+        "L2": {
+          "effortHours": 0.75,
+          "recipe": "gistSync imports the canonical shared verification (or an exact browser-safe mirror with a parity test pinning both implementations to identical verdicts across present/absent/forged/corrupt cases): absent integrity = legacy-accept with a visible 'unverified legacy save' notice on import, unknown algo = reject, checksum mismatch = reject. Focused tests cover all four classes on both implementations."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "L2 plus an import provenance receipt (source gist id, verification verdict, size) shown in the saves panel."
+        }
+      }
+    },
+    {
+      "rank": 10,
+      "tier": "HIGH",
+      "category": "Correctness / injury eligibility",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 5,
+      "priority": 18.9,
+      "slug": "injury-eligibility-dressed-only",
+      "title": "Only players who actually dressed can be injured in a game",
+      "status": "shipped",
+      "premise": "In-game injury candidate selection filters only on teamId + status==='active', missing the rosterSlot and game-day-inactive filters that getTeamPlayers applies — practice-squad and inactive players can be injured in games they never played.",
+      "evidence": [
+        "src/runtime/GameSession.js:3988-3993 — candidate filter is teamId + status only (read directly 2026-07-31)",
+        "src/runtime/teamFactory.js:372-384 getTeamPlayers applies rosterSlot === 'active' and designations.gameDayInactive filters",
+        "rollGameInjuries receives the unfiltered arrays"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Reuse the dressed-roster filter for injury candidates; regression test that a practice-squad player is never injured in-game."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Injury candidates derive from the same dressed-roster authority as lineups (rosterSlot active, not game-day inactive), applied at the selection site with a named helper so future callers cannot re-fork the filter; deterministic regression test seeds a roster with practice-squad/inactive players and proves zero in-game injuries across simulated weeks while training-camp/practice injury paths (if any) remain unchanged."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 plus snap-weighted exposure: injury probability scales with depth-chart usage tier, keeping severity tables untouched and realism shard green."
+        }
+      }
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "cpu-inbound-trade-offers",
+      "status": "shipped",
+      "completedAt": "2026-07-31",
+      "evidence": [
+        "Deterministic archetype-driven inbound offers endorsed by TradeService.evaluate; Priority Inbox CRITICAL in deadline window; accept commits with fresh fingerprint, stale league 409s; counter prefills trade desk; 9/9 focused tests.",
+        "Trades tab offer cards + inbox items visible in browser; /api/trade-offers in executable contract, both adapters via shared handler."
+      ]
+    },
+    {
+      "slug": "decision-pressure-catalog-expansion",
+      "status": "shipped",
+      "completedAt": "2026-07-31",
+      "evidence": [
+        "GM decision catalog 3 -> 6 archetypes fed by live narrative events; deny/address-room/ceremony consequences deterministic and visible; shop/extend/shake-up resolve as commitments on real transactions; icon/tone maps match live engine set; 7/7 focused tests.",
+        "Phantom STREAK_CEREMONY doc removed; failed pure-immediate receipt crash guarded."
+      ]
+    },
+    {
+      "slug": "cpu-free-agency-market-competition",
+      "status": "shipped",
+      "completedAt": "2026-07-31",
+      "evidence": [
+        "Premium FAs (74+) are market property; CPU teams bid archetype-shaped offers weekly; resolution weekly with exact outbid receipts; FA tab market banner + pursuit badges + years selector; offseason synthetic players demoted to receipted last resort; 6/6 focused tests.",
+        "/api/free-agency/market promoted to browser contract."
+      ]
+    },
+    {
+      "slug": "owner-pressure-live-loop",
+      "status": "shipped",
+      "completedAt": "2026-07-31",
+      "evidence": [
+        "Patience drifts weekly from results/pace/commitments with bounded deterministic receipts; Owner Confidence meter always-on in Overview; ultimatum reachable from every opening plan and enters the commitment board, failing at season end naming its consequence; 5/5 focused tests."
+      ]
+    },
+    {
+      "slug": "service-worker-instant-boot",
+      "status": "shipped",
+      "completedAt": "2026-07-31",
+      "evidence": [
+        "Build-generated dependency-free sw.js + content-versioned manifest on every mount; cache-first/revalidate static, network-only /api + evidence; measurement receipt: precache vfb9802cc04aa, 137 assets, 2020 KB served from cache on repeat loads; build+smoke green; 5/5 focused tests.",
+        "styles.css dual emission kept: documented cache-bust back-compat, clients fetch only the hashed copy (corrected premise)."
+      ]
+    },
+    {
+      "slug": "celebration-milestone-authority",
+      "status": "shipped",
+      "completedAt": "2026-07-31",
+      "evidence": [
+        "Shared franchise-moment authority replaces the adapter drift twin; drama scoring pays off statement wins/playoffs/titles/eliminations; HoF inductions and jersey retirements announce themselves; inbox tiers/icons/deeplinks added; 6/6 focused tests.",
+        "Corrected premise: legacy tier 5-6 badges already rendered via persona.benefits.badge — sub-scope dropped honestly."
+      ]
+    },
+    {
+      "slug": "home-field-advantage",
+      "status": "shipped",
+      "completedAt": "2026-07-31",
+      "evidence": [
+        "Calibrated venue edge (+1.2 home, +0.8 bye rest) on per-game unit ratings with explicit venue receipts; Super Bowl neutral site; rest derived from schedule in weekly and season paths; box score labels venue; sim-contract and sim-realism shards green; 3/3 focused tests.",
+        "Exposed + root-fixed latent award nondeterminism: playerId tie-break in sortRowsByAv, pre-award AV comparison in the test, skill-position MVP pool (OL with one catch could win MVP)."
+      ]
+    },
+    {
+      "slug": "opening-contract-recovery",
+      "status": "shipped",
+      "completedAt": "2026-07-31",
+      "evidence": [
+        "Skip records deferral, never permanent done; Overview CTA + Settings Onboarding + command palette recovery paths; completion never downgraded; 5/5 focused tests.",
+        "Root-fixed en route: command palette Run buttons had no dispatch handler and filter input was never wired (dead UI)."
+      ]
+    },
+    {
+      "slug": "gist-integrity-fail-closed",
+      "status": "shipped",
+      "completedAt": "2026-07-31",
+      "evidence": [
+        "Unknown algo and unreadable sidecars fail closed matching the canonical store; legacy no-sidecar imports carry an explicit unverified notice; parity test pins both implementations across 5 cases."
+      ]
+    },
+    {
+      "slug": "injury-eligibility-dressed-only",
+      "status": "shipped",
+      "completedAt": "2026-07-31",
+      "evidence": [
+        "Injury candidates derive from the dressed-roster authority (getTeamPlayers); deterministic regression proves 60+ demoted players stay uninjured across 25x-multiplier weeks."
+      ]
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "mobile-nav-tablet-parity",
+      "status": "open",
+      "sourceItem": "service-worker-instant-boot",
+      "premise": "≤640px renders a ~570px stacked 14-item nav above content; the mobile decision deck activates only ≤480px leaving a 481-980px coverage hole; zero touch-gesture affordances exist.",
+      "evidence": [
+        "public/styles.css:1857-1866 single-column side-menu at 640px",
+        "public/lib/mobileLoop.js:22 innerWidth <= 480 gate",
+        "grep touchstart|swipe|pointerdown public/ -> 0 hits"
+      ]
+    },
+    {
+      "slug": "continuity-threads-visible",
+      "status": "open",
+      "sourceItem": "decision-pressure-catalog-expansion",
+      "premise": "continuityLedger tracks openThreads but the dashboard payload omits them and public/ has zero references — the player can never see pending storylines or what closes them.",
+      "evidence": [
+        "src/runtime/continuityLedger.js:161-182 openThreads tracked",
+        "GameSession dashboard payload omits continuityLedger; grep public/ -> 0 references"
+      ]
+    },
+    {
+      "slug": "dashboard-payload-parity",
+      "status": "open",
+      "sourceItem": "cpu-inbound-trade-offers",
+      "premise": "server.js returns getDashboardState() while localApiRuntime returns getAugmentedState() with 6 extra fields on the same route; the parity checker compares route keys only, so response-shape drift is invisible.",
+      "evidence": [
+        "src/server.js:679 vs src/app/api/localApiRuntime.js:642,36",
+        "scripts/check-api-contract-parity.mjs:47 extracts route keys only"
+      ]
+    },
+    {
+      "slug": "hot-path-index-adoption",
+      "status": "open",
+      "sourceItem": "cpu-free-agency-market-competition",
+      "premise": "23 call sites bypass the existing Map indexes with league.players.find; freeAgentPool() re-filters the full player array inside position loops; activeRosterPlayers re-scans in while-conditions — ~1-3M comparisons per simulated week.",
+      "evidence": [
+        "GameSession.js:2500-2644 runAiTeamMaintenance loop structure",
+        "league.players.find at GameSession.js:2568,3044,3462,3531,3634,3666,3687,3718,5045,5106,5316"
+      ]
+    },
+    {
+      "slug": "press-conference-decision",
+      "status": "open",
+      "sourceItem": "decision-pressure-catalog-expansion",
+      "premise": "Press conferences are passive quotes despite continuityLedger maintaining press memory of last week's tone specifically so the coach can be held to promises.",
+      "evidence": [
+        "GameSession.js:4008 single call site; rendered as read-only news row",
+        "continuityLedger.js:184-201 press-memory ledger exists unused by any decision surface"
+      ]
+    }
+  ],
+  "totals": {
+    "count": 10,
+    "priority": 258.4,
+    "top3": [
+      "cpu-inbound-trade-offers",
+      "decision-pressure-catalog-expansion",
+      "cpu-free-agency-market-competition"
+    ]
+  }
+}

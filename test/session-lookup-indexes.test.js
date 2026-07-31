@@ -28,7 +28,9 @@ test("GameSession lookup indexes track releases, signings, and trades", () => {
   const session = createSession({ seed: 9100, startYear: 2026, controlledTeamId: "BUF" });
   const buf = session.getRoster("BUF");
   const mia = session.getRoster("MIA");
-  const released = buf[0];
+  // Premium free agents (74+) route through the competing-offer market (S62);
+  // the instant release/sign index check uses the depth tier.
+  const released = buf.find((player) => (player.overall || 0) < 74) || buf.at(-1);
 
   assert.equal(session.getPlayerById(released.id)?.teamId, "BUF");
   assert.equal(session.releasePlayer({ teamId: "BUF", playerId: released.id, toWaivers: false }).ok, true);

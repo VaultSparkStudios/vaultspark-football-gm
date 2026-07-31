@@ -95,12 +95,13 @@ import {
 } from "../engine/beatReporter.js";
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
-import { getGmBenefits, updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore.js";
+import { buildGmReputationProfile, computeGmLegacyScore, getGmBenefits, getGmPersonaArc, updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore.js";
+import { getCapAlerts } from "../engine/capAlerts.js";
 import { getStartScenarioPlan, validateStartScenario } from "../../public/lib/startScenarioContract.js";
 import { generatePressConference } from "../engine/pressConference.js";
 import { runNarrativeChecks } from "../engine/narrativeEvents.js";
-import { resolveThreads as resolveContinuityThreads } from "../engine/continuityLedger.js";
-import { updateFanSentiment } from "../engine/fanSentiment.js";
+import { getOpenThreads, resolveThreads as resolveContinuityThreads } from "../engine/continuityLedger.js";
+import { fanApprovalLabel, getFanSentiment, updateFanSentiment } from "../engine/fanSentiment.js";
 import { applyMentorshipBonuses } from "../engine/veteranMentorship.js";
 import { getGmCommitmentState, latestGmDecision, resolveGmDecisionCommitments } from "../engine/gmDecisionConsequences.js";
 import { applyWeeklyOwnerConfidence, getOwnerConfidenceSummary } from "../engine/ownerConfidence.js";
@@ -1642,7 +1643,20 @@ export class GameSession {
       session.rng.constructor
     );
     session.modules = createSessionModules(session);
-    session.services = createServices(session);
+    // Restored sessions must carry the same strategy bag as constructed ones —
+    // without it TradeService.evaluate crashes on any snapshot-restored session
+    // (browser reload, advance-week transaction clone). Latent until S62's
+    // weekly market/offer hooks exercised trades inside the transaction clone.
+    session.services = createServices(session, {
+      clamp,
+      ensureDepthCharts,
+      isTradeValueAcceptable,
+      pickTradeValueForTeam,
+      playerTradeValueForTeam,
+      recalculateAllTeamRatings,
+      teamPlayersAll,
+      teamTransactionAiProfile
+    });
     session.statBook = new StatBook(session.league);
     session.statBook.teamSeasonArchive = snapshot.teamSeasonArchive || [];
     session.realismProfile = snapshot.realismProfile || PFR_RECENT_WEIGHTED_PROFILE;
@@ -2609,13 +2623,29 @@ export class GameSession {
     // Premium free agents belong to the competing-offer market (S62): greedy
     // maintenance only shops the depth tier so no CPU (or the player) can
     // bypass market competition for difference-makers.
-    const freeAgentPool = () =>
-      this.league.players.filter(
-        (player) =>
-          player.status === "active" &&
-          player.teamId === "FA" &&
-          (player.overall || 0) < PREMIUM_FA_OVERALL
-      );
+    // Hot path (S62): the pool was re-filtered from the full player array on
+    // EVERY call inside per-team position loops (~1-3M comparisons per week).
+    // One cached scan now serves the walk; signings remove the player from the
+    // cache, releases invalidate it so cut players stay signable this week.
+    let faPoolCache = null;
+    const freeAgentPool = () => {
+      if (!faPoolCache) {
+        this.trackCounter("fa-pool-scans", 1);
+        faPoolCache = this.league.players.filter(
+          (player) =>
+            player.status === "active" &&
+            player.teamId === "FA" &&
+            (player.overall || 0) < PREMIUM_FA_OVERALL
+        );
+      }
+      return faPoolCache;
+    };
+    const consumeFreeAgent = (player) => {
+      if (faPoolCache && player) faPoolCache = faPoolCache.filter((row) => row.id !== player.id);
+    };
+    const invalidateFreeAgentPool = () => {
+      faPoolCache = null;
+    };
 
     const findBestPracticePlayer = (teamId, position = null) =>
       sortPlayersForDepth(
@@ -2654,6 +2684,7 @@ export class GameSession {
         const cutCandidate = findWorstActivePlayer(team.id);
         if (!cutCandidate) break;
         const released = this.releasePlayer({ teamId: team.id, playerId: cutCandidate.id, toWaivers: false, deferReindex: true });
+        if (released.ok) invalidateFreeAgentPool();
         if (!released.ok) {
           recordStall(team.id, "active-cuts", cutCandidate.id, released);
           break;
@@ -2672,9 +2703,7 @@ export class GameSession {
           .filter((row) => row.snapShare >= coreThreshold)
           .slice(0, 3);
         for (const row of coreRows) {
-          const current = this.league.players.find(
-            (player) => player.id === row.playerId && player.teamId === team.id && player.status === "active"
-          );
+          const current = this.activePlayerOnTeam(row.playerId, team.id);
           if (!current) continue;
           const floor =
             strategy === "contender" ? 74 : strategy === "rebuild" ? 68 : 71;
@@ -2686,7 +2715,9 @@ export class GameSession {
           if (!candidate) continue;
           const sign = this.signFreeAgent({ teamId: team.id, playerId: candidate.id, deferReindex: true });
           if (!sign.ok) continue;
-          this.releasePlayer({ teamId: team.id, playerId: current.id, toWaivers: false, deferReindex: true });
+          consumeFreeAgent(candidate);
+          const swapped = this.releasePlayer({ teamId: team.id, playerId: current.id, toWaivers: false, deferReindex: true });
+          if (swapped.ok) invalidateFreeAgentPool();
         }
       }
 
@@ -2712,6 +2743,7 @@ export class GameSession {
           if (!best) break;
           const signed = this.signFreeAgent({ teamId: team.id, playerId: best.id, deferReindex: true });
           if (!signed.ok) break;
+          consumeFreeAgent(best);
         }
       }
 
@@ -2725,6 +2757,7 @@ export class GameSession {
         if (!bestOverallFa) break;
         const signed = this.signFreeAgent({ teamId: team.id, playerId: bestOverallFa.id, deferReindex: true });
         if (!signed.ok) break;
+        consumeFreeAgent(bestOverallFa);
       }
 
       while (practicePlayers(this.league, team.id).length > MAX_PRACTICE_SQUAD) {
@@ -2733,6 +2766,7 @@ export class GameSession {
           .sort((a, b) => a.overall - b.overall || b.age - a.age)[0];
         if (!practiceCut) break;
         const released = this.releasePlayer({ teamId: team.id, playerId: practiceCut.id, toWaivers: false, deferReindex: true });
+        if (released.ok) invalidateFreeAgentPool();
         if (!released.ok) {
           recordStall(team.id, "practice-cuts", practiceCut.id, released);
           break;
@@ -3148,9 +3182,7 @@ export class GameSession {
   }
 
   setPlayerDesignation({ teamId, playerId, designation, active = true }) {
-    const player = this.league.players.find(
-      (entry) => entry.id === playerId && entry.teamId === teamId && entry.status === "active"
-    );
+    const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
     if (!["ir", "pup", "nfi", "gameDayInactive"].includes(designation)) {
       return { ok: false, error: "Invalid designation." };
@@ -3578,9 +3610,7 @@ export class GameSession {
   }
 
   getNegotiationDemand({ teamId, playerId }) {
-    const player = this.league.players.find(
-      (entry) => entry.id === playerId && entry.teamId === teamId && entry.status === "active"
-    );
+    const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
     const contract = normalizeContract(player.contract);
     const baseSalary = Math.max(850_000, Math.round(player.overall * player.overall * 510));
@@ -3647,9 +3677,7 @@ export class GameSession {
     const demand = demandPayload.demand;
     const offerYears = clamp(Number(years ?? demand.years), 1, 5);
     const offerSalary = Math.max(850_000, Math.round(Number(salary ?? demand.salary)));
-    const player = this.league.players.find(
-      (entry) => entry.id === playerId && entry.teamId === teamId && entry.status === "active"
-    );
+    const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
 
     const yearsGap = Math.abs(offerYears - demand.years);
@@ -3750,9 +3778,7 @@ export class GameSession {
   }
 
   resignPlayer({ teamId, playerId, years = 3, salary = null }) {
-    const player = this.league.players.find(
-      (entry) => entry.id === playerId && entry.teamId === teamId && entry.status === "active"
-    );
+    const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
     const contract = buildContract({
       overall: player.overall,
@@ -3782,9 +3808,7 @@ export class GameSession {
   }
 
   restructurePlayerContract({ teamId, playerId }) {
-    const player = this.league.players.find(
-      (entry) => entry.id === playerId && entry.teamId === teamId && entry.status === "active"
-    );
+    const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
     const oldContract = normalizeContract(player.contract);
     player.contract = restructureContract(player.contract, this.rng);
@@ -3803,9 +3827,7 @@ export class GameSession {
   }
 
   applyFranchiseTagToPlayer({ teamId, playerId, salary = null }) {
-    const player = this.league.players.find(
-      (entry) => entry.id === playerId && entry.teamId === teamId && entry.status === "active"
-    );
+    const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
     const eligible = this.listFranchiseTagCandidates(teamId).some((candidate) => candidate.id === playerId);
     if (!eligible) {
@@ -3834,9 +3856,7 @@ export class GameSession {
   }
 
   applyFifthYearOptionToPlayer({ teamId, playerId, salary = null }) {
-    const player = this.league.players.find(
-      (entry) => entry.id === playerId && entry.teamId === teamId && entry.status === "active"
-    );
+    const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
     const eligible = this.listFifthYearOptionCandidates(teamId).some((candidate) => candidate.id === playerId);
     if (!eligible) {
@@ -4852,6 +4872,12 @@ export class GameSession {
     };
   }
 
+  activePlayerOnTeam(playerId, teamId) {
+    // Indexed lookup (S62): replaces repeated full-array linear scans.
+    const player = this.getPlayerById(playerId);
+    return player && player.teamId === teamId && player.status === "active" ? player : null;
+  }
+
   getDashboardState() {
     const controlledTeam = this.getControlledTeam();
     const injuryModifierCache = new Map();
@@ -4921,6 +4947,7 @@ export class GameSession {
       startScenarioReceipt: this.league.startScenarioReceipt || null,
       openingContractProgress: this.getOpeningContractProgress(),
       narrativeLog: (this.league.narrativeLog || []).slice(0, 30),
+      continuityThreads: getOpenThreads(this.league),
       depthChartSnapShare: this.getDepthChartSnapShare(this.controlledTeamId),
       draftPickAssets: this.getDraftPickAssets(this.controlledTeamId),
       compPicks: this.getCompensatoryPicks({ teamId: this.controlledTeamId }),
@@ -4973,6 +5000,41 @@ export class GameSession {
       draft: this.getDraftAuthority()
 
     };
+    // S62 payload-parity root fix: the world-state layers the browser adapter
+    // used to bolt on via getAugmentedState now live in the one authority, so
+    // server and static play serve the same dashboard shape on the same route.
+    const capSummary = this.controlledTeamId ? this.getTeamCapSummary(this.controlledTeamId) : null;
+    const rosterRows = this.controlledTeamId ? this.getRoster(this.controlledTeamId) : [];
+    const fanSentimentData = this.controlledTeamId
+      ? (() => {
+          const sentiment = getFanSentiment(this.league, this.controlledTeamId);
+          return { ...sentiment, label: fanApprovalLabel(sentiment.approval) };
+        })()
+      : null;
+    dashboard.franchiseLore = this.league.franchiseLore || [];
+    dashboard.newsLog = this.league.newsLog || [];
+    dashboard.coachingTree = this.league.coachingTree || null;
+    dashboard.gmLegacy = this.league.gmLegacy
+      ? {
+          ...computeGmLegacyScore(this.league.gmLegacy),
+          persona: getGmPersonaArc(this.league.gmLegacy),
+          reputation: buildGmReputationProfile(this.league.gmLegacy)
+        }
+      : null;
+    dashboard.rivalries = this.league.rivalries || {};
+    dashboard.combineResults = this.league.combineResults || [];
+    dashboard.capAlerts = getCapAlerts(capSummary, rosterRows, this.currentYear);
+    dashboard.activeInjuries = rosterRows
+      .filter((row) => row.injuryStatus && row.injuryStatus !== "healthy" && row.injuryWeeksRemaining > 0)
+      .map((row) => ({
+        playerId: row.id || row.playerId,
+        name: row.name,
+        pos: row.position || row.pos,
+        status: row.injuryStatus,
+        weeksRemaining: row.injuryWeeksRemaining || 0,
+        severity: row.injurySeverity || "minor"
+      }));
+    dashboard.fanSentiment = fanSentimentData;
     return {
       ...dashboard,
       gmDecisionQueue: generateGmDecisions(dashboard, { ledger: this.league.gmDecisionLedger })
