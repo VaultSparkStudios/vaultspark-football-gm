@@ -20,6 +20,7 @@ import { getMentorshipStatus, getMentorshipHistory } from "../../engine/veteranM
 import { executeAdvanceWeekTransaction } from "../../runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, migrateSnapshot, snapshotErrorPayload } from "../../runtime/snapshotMigration.js";
 import { handleArchitectThesisRequest } from "../../runtime/handlers/architectThesisHandler.js";
+import { handleTradeOffersRequest } from "../../runtime/handlers/tradeOffersHandler.js";
 import {
   createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
   lockGate, openGate, applyIntents, recordAdvance, lobbyStatus,
@@ -1377,6 +1378,26 @@ export function createLocalApiRuntime({
       if (method === "POST" && pathname === "/api/architect-thesis") {
         const s = ensureSession();
         const response = handleArchitectThesisRequest({
+          method: "POST",
+          session: s,
+          input: body || {},
+          projectState: getAugmentedState
+        });
+        return finish(jsonResponse(response.status, response.body));
+      }
+
+      if (method === "GET" && pathname === "/api/trade-offers") {
+        const s = ensureSession();
+        const response = handleTradeOffersRequest({
+          method: "GET",
+          session: s,
+          projectState: getAugmentedState
+        });
+        return finish(jsonResponse(response.status, response.body));
+      }
+      if (method === "POST" && pathname === "/api/trade-offers") {
+        const s = ensureSession();
+        const response = handleTradeOffersRequest({
           method: "POST",
           session: s,
           input: body || {},

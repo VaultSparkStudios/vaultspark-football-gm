@@ -2,7 +2,7 @@ import { state, api } from "./appState.js";
 import { applyShellTheme, escapeHtml, fmtMoney, presentActionError, renderPanelError, renderTable, selectedSeasonType, setSimControl, setStatus, shapeStatsRowsForDisplay, showToast, syncTeamSelects, syncTradeBlockScope, teamCode, updateTopMeta } from "./appCore.js";
 import { renderBoxScoreTicker, renderCapAlertBanner, renderFanSentimentCard, renderGmLegacyScore, renderInjuryOverlayCard, renderLeaders, renderNewsTicker, renderOverview, renderOwnerUltimatum, renderRosterNeeds, renderSchedule, renderSeasonPreviewPanel, renderStandings, renderStatLeadersStrip, renderWeekResults } from "./tabOverview.js";
 import { depthDefaultShares, renderDepthChart, renderFreeAgency, renderRetiredPool, renderRoster } from "./tabRoster.js";
-import { deriveContractToolsFromRoster, getTradeTeamId, renderContractsPage, renderExpiringContracts, renderTradeWorkspace, setSelectedDesignationPlayer, setSelectedRetirementOverridePlayer } from "./tabContracts.js";
+import { deriveContractToolsFromRoster, getTradeTeamId, renderContractsPage, renderExpiringContracts, renderInboundTradeOffers, renderTradeWorkspace, setSelectedDesignationPlayer, setSelectedRetirementOverridePlayer } from "./tabContracts.js";
 import { renderDraft, renderScouting } from "./tabDraft.js";
 import { applyStatsSort, renderAnalyticsChart, renderComparePlayers, renderCompareSearchResults, updateStatsControls } from "./tabStats.js";
 import { renderCalendar, renderPlayerHistoryArchive, renderPlayerTimelineSearchResults, renderRecordsAndHistory, renderTeamHistorySpotlight, setSelectedHistoryPlayer } from "./tabHistory.js";
@@ -248,6 +248,11 @@ export async function loadPickAssets() {
   state.tradeAssets.teamBPickIds = state.tradeAssets.teamBPickIds.filter((id) => teamBPickIds.has(id));
   renderTradeWorkspace();
   renderPickAssets();
+}
+
+export async function loadTradeOffers() {
+  state.tradeOffers = await api("/api/trade-offers");
+  renderInboundTradeOffers();
 }
 
 export async function loadNegotiations(teamId = null) {
@@ -741,6 +746,7 @@ const HYDRATION_LOADERS = Object.freeze({
   transactions: loadTransactionLog,
   news: loadNews,
   "pick-assets": loadPickAssets,
+  "trade-offers": loadTradeOffers,
   negotiations: loadNegotiations,
   analytics: loadAnalytics,
   settings: loadSettings,

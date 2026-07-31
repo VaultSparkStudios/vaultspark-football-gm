@@ -91,7 +91,8 @@ import {
   reportStreaks,
   reportSignificantInjury,
   reportRehabClearance,
-  reportOwnerUltimatum
+  reportOwnerUltimatum,
+  reportInboundTradeOffer
 } from "../engine/beatReporter.js";
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
@@ -104,6 +105,7 @@ import { updateFanSentiment } from "../engine/fanSentiment.js";
 import { applyMentorshipBonuses } from "../engine/veteranMentorship.js";
 import { getGmCommitmentState, latestGmDecision, resolveGmDecisionCommitments } from "../engine/gmDecisionConsequences.js";
 import { applyWeeklyOwnerConfidence, getOwnerConfidenceSummary } from "../engine/ownerConfidence.js";
+import { generateInboundTradeOffers, getInboundTradeOffers, respondToInboundTradeOffer } from "../engine/rivalTradeOffers.js";
 import { generateGmDecisions } from "../engine/gmDecisionAuthority.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 
@@ -2346,6 +2348,21 @@ export class GameSession {
     return { ok: true, owner: team.owner };
   }
 
+  getTradeOffers() {
+    return getInboundTradeOffers(this);
+  }
+
+  respondToTradeOffer(payload = {}) {
+    const result = respondToInboundTradeOffer(this, payload);
+    if (result.ok && result.offer?.status === "accepted") {
+      this.logNews(
+        `${result.offer.fromTeamId}'s trade offer accepted — ${result.offer.requestedPlayers?.[0]?.name || "the player"} is on the move.`,
+        { type: "trade", teamId: this.controlledTeamId, offerId: result.offer.id }
+      );
+    }
+    return result;
+  }
+
   registerOwnerUltimatumPressure() {
     const team = teamById(this.league, this.controlledTeamId);
     if (!team?.owner) return null;
@@ -4107,6 +4124,12 @@ export class GameSession {
       }
       // Fan sentiment update (uses current standings snapshot)
       updateFanSentiment(this.league, weekResult, this.currentYear);
+      // Rival GMs act on the player: bounded, deterministic inbound trade
+      // offers arrive through the news/inbox pipeline (S62).
+      const inboundOffer = generateInboundTradeOffers(this);
+      if (inboundOffer) {
+        reportInboundTradeOffer(this.league, inboundOffer);
+      }
       // ─────────────────────────────────────────────────────────────────────
 
       this.weekResultsCurrentSeason.push(weekResult);

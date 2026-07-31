@@ -213,6 +213,24 @@ export function reportOwnerUltimatum(league, { teamId, message, targetWins, cons
   return league.newsLog[0];
 }
 
+export function reportInboundTradeOffer(league, offer) {
+  initNewsLog(league);
+  const assets = [
+    ...(offer.offeredPlayers || []).map((row) => `${row.name} (${row.pos})`),
+    ...(offer.offeredPicks || []).map((row) => `${row.year} R${row.round} pick`)
+  ].join(" + ") || "assets";
+  push(league, {
+    type: "trade-offer",
+    year: offer.year,
+    week: offer.week,
+    teamIds: [offer.fromTeamId, offer.toTeamId],
+    playerIds: offer.requestedPlayerIds || [],
+    headline: `${offer.fromTeamId} call${offer.deadlineWindow ? " before the deadline" : ""}: they want ${offer.requestedPlayers?.[0]?.name || "your player"}`,
+    detail: `${offer.rationale} On the table: ${assets}. The offer expires after Week ${offer.expiresWeek}.`
+  });
+  return league.newsLog[0];
+}
+
 export function reportTrade(league, fromTeamId, toTeamId, playerName, year, week) {
   initNewsLog(league);
   push(league, {

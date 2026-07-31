@@ -54,6 +54,7 @@ const GET_PATHS = [
   "/api/tables/team-season",
   "/api/team-archetypes",
   "/api/time-capsule",
+  "/api/trade-offers",
   "/api/transactions"
 ];
 
@@ -112,6 +113,7 @@ const POST_PATHS = [
   "/api/speedrun/submit",
   "/api/staff",
   "/api/trade",
+  "/api/trade-offers",
   "/api/trade/evaluate",
   "/api/waiver-claim"
 ];

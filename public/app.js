@@ -165,7 +165,8 @@ import {
   closeAgentModal,
   renderAgentModal,
   submitAgentOffer,
-  signalCompetingOffer
+  signalCompetingOffer,
+  applyCounterPrefill
 } from "./lib/tabContracts.js";
 
 import {
@@ -251,6 +252,7 @@ import {
   loadTransactionLog,
   loadNews,
   loadPickAssets,
+  loadTradeOffers,
   loadNegotiations,
   loadContractsTeam,
   loadAnalytics,
@@ -789,6 +791,35 @@ function bindEvents() {
 
   document.getElementById("clearTradePackageBtn").addEventListener("click", () => {
     clearTradePackages();
+  });
+
+  document.getElementById("inboundTradeOffersList")?.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-offer-action]");
+    if (!button) return;
+    const offerId = button.dataset.offerId;
+    const action = button.dataset.offerAction;
+    runAction(async () => {
+      let result;
+      try {
+        result = await api("/api/trade-offers", { method: "POST", body: { offerId, action } });
+      } catch (error) {
+        // A stale offer (league changed since it was made) resolves itself
+        // with an honest receipt — refresh so the resolution is visible.
+        await loadTradeOffers().catch(() => {});
+        throw error;
+      }
+      if (action === "counter" && result.counterPrefill) {
+        await applyCounterPrefill(result.counterPrefill);
+        showToast("Counter loaded at the trade desk — reshape the package and evaluate.");
+      } else if (action === "accept") {
+        applyDashboard(result.state);
+        showToast("Trade completed — the rival's offer is now roster truth.");
+        await loadRoster();
+      } else {
+        showToast("Offer declined.");
+      }
+      await loadTradeOffers();
+    }, "Responding to trade offer...");
   });
 
   ["tradeTeamA", "tradeTeamB"].forEach((id) => {

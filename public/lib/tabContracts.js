@@ -665,3 +665,66 @@ export async function signalCompetingOffer() {
     if (box) box.textContent = "Error.";
   }
 }
+
+// ── Inbound trade offers (S62) — rival GMs act on the player ─────────────────
+
+export function renderInboundTradeOffers() {
+  const list = document.getElementById("inboundTradeOffersList");
+  if (!list) return;
+  const payload = state.tradeOffers || {};
+  const offers = payload.offers || [];
+  const kicker = document.getElementById("inboundTradeOffersKicker");
+  if (kicker && payload.deadlineWindow) {
+    kicker.textContent = "Deadline window — rival urgency is spiking. Offers expire fast.";
+  }
+  if (!offers.length) {
+    list.innerHTML = `<div class="narrative-empty">No rival offers on the table this week.</div>`;
+    return;
+  }
+  list.innerHTML = offers.slice(0, 6).map((offer) => {
+    const wanted = (offer.requestedPlayers || [])
+      .map((row) => `${escapeHtml(row.name)} (${escapeHtml(row.pos)} · ${row.ovr} OVR)`).join(", ");
+    const given = [
+      ...(offer.offeredPlayers || []).map((row) => `${escapeHtml(row.name)} (${escapeHtml(row.pos)} · ${row.ovr} OVR)`),
+      ...(offer.offeredPicks || []).map((row) => `${row.year} Round ${row.round} pick`)
+    ].join(" + ") || "—";
+    const pending = offer.status === "pending";
+    const statusChip = pending
+      ? `<span class="chip">expires after Week ${offer.expiresWeek}</span>`
+      : `<span class="chip">${escapeHtml(offer.status)}${offer.resolution ? ` — ${escapeHtml(offer.resolution)}` : ""}</span>`;
+    const actions = pending
+      ? `<div class="row inbound-offer-actions">
+           <button data-offer-action="accept" data-offer-id="${escapeHtml(offer.id)}">Accept</button>
+           <button data-offer-action="counter" data-offer-id="${escapeHtml(offer.id)}" class="secondary">Counter at Trade Desk</button>
+           <button data-offer-action="decline" data-offer-id="${escapeHtml(offer.id)}" class="secondary">Decline</button>
+         </div>`
+      : "";
+    return `
+      <div class="inbound-offer-card ${pending ? "pending" : "resolved"}">
+        <div class="inbound-offer-head">
+          <strong>${escapeHtml(offer.fromTeamId)} want ${wanted}</strong>
+          ${statusChip}
+        </div>
+        <p class="small">${escapeHtml(offer.rationale || "")}</p>
+        <p class="small"><strong>Their package:</strong> ${given}</p>
+        ${actions}
+      </div>`;
+  }).join("");
+}
+
+export async function applyCounterPrefill(prefill) {
+  if (!prefill) return;
+  const teamASelect = document.getElementById("tradeTeamA");
+  const teamBSelect = document.getElementById("tradeTeamB");
+  if (teamASelect) teamASelect.value = prefill.teamA;
+  if (teamBSelect) teamBSelect.value = prefill.teamB;
+  state.tradeAssets = {
+    ...createEmptyTradeAssets(),
+    teamAPlayerIds: [...(prefill.teamAPlayerIds || [])],
+    teamBPlayerIds: [...(prefill.teamBPlayerIds || [])],
+    teamBPickIds: [...(prefill.teamBPickIds || [])]
+  };
+  state.tradePlanFingerprint = null;
+  await loadPickAssets();
+  setTradeEvalText("Counter loaded from the rival's offer — adjust the packages, then evaluate.");
+}

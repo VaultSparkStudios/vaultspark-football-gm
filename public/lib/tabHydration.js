@@ -4,7 +4,7 @@ export const TAB_HYDRATION_DOMAINS = Object.freeze({
   faTab: ["free-agency"],
   depthTab: ["depth-chart"],
   contractsTab: ["contracts", "negotiations"],
-  transactionsTab: ["transactions", "pick-assets", "roster"],
+  transactionsTab: ["transactions", "pick-assets", "roster", "trade-offers"],
   scoutingTab: ["scouting"],
   draftTab: ["draft", "scouting"],
   statsTab: ["stats", "analytics"],

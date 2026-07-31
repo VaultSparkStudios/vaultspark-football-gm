@@ -17,6 +17,7 @@ import { getPersistenceDescriptor } from "./runtime/persistence.js";
 import { executeAdvanceWeekTransaction } from "./runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, snapshotErrorPayload } from "./runtime/snapshotMigration.js";
 import { handleArchitectThesisRequest } from "./runtime/handlers/architectThesisHandler.js";
+import { handleTradeOffersRequest } from "./runtime/handlers/tradeOffersHandler.js";
 import {
   initGmLegacy,
   getGmLegacySummary,
@@ -1663,6 +1664,18 @@ async function handleApi(req, res, url) {
       input,
       projectState: (activeSession) => activeSession.getDashboardState()
     });
+    sendJson(res, response.status, response.body);
+    return true;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/trade-offers") {
+    const response = handleTradeOffersRequest({ method: "GET", session });
+    sendJson(res, response.status, response.body);
+    return true;
+  }
+  if (req.method === "POST" && url.pathname === "/api/trade-offers") {
+    const input = parseJsonBody(await readRequestBody(req));
+    const response = handleTradeOffersRequest({ method: "POST", session, input });
     sendJson(res, response.status, response.body);
     return true;
   }
