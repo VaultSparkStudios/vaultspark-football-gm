@@ -98,22 +98,39 @@ test("season awards follow regular-season AV leaders", () => {
   const session = createSession({ seed: 2126, startYear: 2026, controlledTeamId: "BUF" });
   session.simulateSeasons(1, { runOffseasonAfterLast: false });
 
-  const offensiveLeader = [
-    ...session.statBook.getPlayerSeasonTable("passing", { year: 2026, seasonType: "regular" }),
-    ...session.statBook.getPlayerSeasonTable("rushing", { year: 2026, seasonType: "regular" }),
-    ...session.statBook.getPlayerSeasonTable("receiving", { year: 2026, seasonType: "regular" })
-  ]
-    .filter((row) => ["QB", "RB", "WR", "TE"].includes(row.pos))
-    .sort((a, b) => (b.av || 0) - (a.av || 0))[0];
-  const defensiveLeader = session.statBook
-    .getPlayerSeasonTable("defense", { year: 2026, seasonType: "regular" })
-    .filter((row) => ["DL", "LB", "DB"].includes(row.pos))
-    .sort((a, b) => (b.av || 0) - (a.av || 0))[0];
   const awards = session.league.awards.at(-1);
-
   assert.ok(awards);
-  assert.equal(awards.MVP?.playerId, offensiveLeader?.playerId);
-  assert.equal(awards.DPOY?.playerId, defensiveLeader?.playerId);
+
+  // Award winners are selected from PRE-award AV — All-Pro/Pro-Bowl honors
+  // feed AV afterward (statBook.seasonAwardHonorMap), so recomputing leaders
+  // from the live table would compare against an award-inflated surface.
+  // Strip this year's award entry to reproduce the exact selection view.
+  const awardIndex = session.league.awards.indexOf(awards);
+  session.league.awards.splice(awardIndex, 1);
+  try {
+    const offensiveLeader = [
+      ...session.statBook.getPlayerSeasonTable("passing", { year: 2026, seasonType: "regular" }),
+      ...session.statBook.getPlayerSeasonTable("rushing", { year: 2026, seasonType: "regular" }),
+      ...session.statBook.getPlayerSeasonTable("receiving", { year: 2026, seasonType: "regular" })
+    ]
+      .filter((row) => ["QB", "RB", "WR", "TE"].includes(row.pos))
+      .sort((a, b) => (b.av || 0) - (a.av || 0))[0];
+    const defensiveLeader = session.statBook
+      .getPlayerSeasonTable("defense", { year: 2026, seasonType: "regular" })
+      .filter((row) => ["DL", "LB", "DB"].includes(row.pos))
+      // Mirror the engine's deterministic tie-break: av, then yds, then playerId.
+      .sort(
+        (a, b) =>
+          (b.av || 0) - (a.av || 0) ||
+          (b.yds || 0) - (a.yds || 0) ||
+          String(a.playerId || "").localeCompare(String(b.playerId || ""))
+      )[0];
+
+    assert.equal(awards.MVP?.playerId, offensiveLeader?.playerId);
+    assert.equal(awards.DPOY?.playerId, defensiveLeader?.playerId);
+  } finally {
+    session.league.awards.splice(awardIndex, 0, awards);
+  }
 });
 
 test("regular season keeps 18 weeks, one bye, and 17 games per team", () => {

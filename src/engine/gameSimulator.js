@@ -1644,6 +1644,20 @@ function buildPlayerStatGroups(entries) {
   };
 }
 
+// ── Venue effects (S62) ───────────────────────────────────────────────────────
+// Home-field advantage and bye-week rest enter as small calibrated boosts to a
+// context's per-game unit ratings (never the shared team object). Boosting both
+// sides of the home team's game keeps league-wide scoring/yardage distributions
+// neutral while shifting win share toward the calibrated NFL home band.
+export const VENUE_EDGE = Object.freeze({ homeRatingBoost: 1.2, restRatingBoost: 0.8 });
+
+function applyVenueRatingEdge(context, boost) {
+  if (!boost || !context?.unitRatings) return;
+  for (const key of Object.keys(context.unitRatings)) {
+    if (typeof context.unitRatings[key] === "number") context.unitRatings[key] += boost;
+  }
+}
+
 export function simulateGame({
   league,
   statBook,
@@ -1655,10 +1669,22 @@ export function simulateGame({
   mode = "drive",
   allowTie = true,
   seasonType = "regular",
-  label = "game"
+  label = "game",
+  neutralSite = false,
+  homeRested = false,
+  awayRested = false
 }) {
   const homeContext = buildTeamContext(league, homeTeamId, rng);
   const awayContext = buildTeamContext(league, awayTeamId, rng);
+  if (!neutralSite) applyVenueRatingEdge(homeContext, VENUE_EDGE.homeRatingBoost);
+  if (homeRested) applyVenueRatingEdge(homeContext, VENUE_EDGE.restRatingBoost);
+  if (awayRested) applyVenueRatingEdge(awayContext, VENUE_EDGE.restRatingBoost);
+  const venue = {
+    neutralSite: Boolean(neutralSite),
+    homeEdgeApplied: !neutralSite,
+    homeRested: Boolean(homeRested),
+    awayRested: Boolean(awayRested)
+  };
   const homeTeam = homeContext.team;
   const awayTeam = awayContext.team;
   const gameId = buildGameId({ year, week, seasonType, homeTeamId, awayTeamId, label });
@@ -1885,6 +1911,7 @@ export function simulateGame({
     week,
     seasonType,
     label,
+    venue,
     homeTeam: teamGameSummary(
       homeTeamId, homeScore, homeYards, homeTurnovers, homePassPlays, homeRushPlays,
       playerEntries, playByPlay, homeDriveSequence, homePossessionSeconds
@@ -1929,6 +1956,7 @@ export function simulateGame({
     awayTurnovers,
     homeStrategy: homeContext.weeklyPlan || null,
     awayStrategy: awayContext.weeklyPlan || null,
+    venue,
     isTie: homeScore === awayScore,
     winnerId: homeScore === awayScore ? null : homeScore > awayScore ? homeTeamId : awayTeamId,
     boxScore

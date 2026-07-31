@@ -7,10 +7,12 @@ export function simulateRegularSeasonWeek({
   year,
   weekBlock,
   rng,
-  mode = "drive"
+  mode = "drive",
+  restedTeamIds = []
 }) {
   const games = [];
   const activeTeams = new Set();
+  const rested = restedTeamIds instanceof Set ? restedTeamIds : new Set(restedTeamIds);
   for (const matchup of weekBlock.games) {
     activeTeams.add(matchup.homeTeamId);
     activeTeams.add(matchup.awayTeamId);
@@ -25,7 +27,9 @@ export function simulateRegularSeasonWeek({
       mode,
       allowTie: true,
       seasonType: "regular",
-      label: "regular-season"
+      label: "regular-season",
+      homeRested: rested.has(matchup.homeTeamId),
+      awayRested: rested.has(matchup.awayTeamId)
     });
     applyRegularSeasonResult(league, weekBlock.week, game);
     games.push({

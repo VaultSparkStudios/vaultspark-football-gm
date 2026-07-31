@@ -200,6 +200,19 @@ export function reportRehabClearance(league, receipt, year, week) {
 
 // ── Trades ───────────────────────────────────────────────────────────────────
 
+export function reportOwnerUltimatum(league, { teamId, message, targetWins, consequence, year, week }) {
+  initNewsLog(league);
+  push(league, {
+    type: "owner-ultimatum",
+    year,
+    week,
+    teamIds: [teamId],
+    headline: `Ownership issues ultimatum to ${teamId}`,
+    detail: `${message} Consequence on the table: ${consequence || "major changes"} (target: ${targetWins} wins).`
+  });
+  return league.newsLog[0];
+}
+
 export function reportTrade(league, fromTeamId, toTeamId, playerName, year, week) {
   initNewsLog(league);
   push(league, {

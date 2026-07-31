@@ -89,6 +89,8 @@ export function classifyNewsItem(item) {
   const headline = (item.headline || "").toLowerCase();
   if (type === "injury" && (headline.includes("out for season") || headline.includes("severe"))) return "CRITICAL";
   if (type === "cap-alert" || type === "cap_alert") return "CRITICAL";
+  if (type === "owner-ultimatum") return "CRITICAL";
+  if (type === "gm-commitment-resolution") return "IMPORTANT";
   if (type === "trade" || type === "signing" || type === "milestone") return "IMPORTANT";
   if (type === "injury") return "IMPORTANT";
   if (type === "rehab-clearance") return "IMPORTANT";

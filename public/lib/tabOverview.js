@@ -775,8 +775,14 @@ export async function loadBoxScore(gameId) {
   const boxScore = payload.boxScore;
   document.getElementById("boxScoreModalTitle").textContent =
     `${boxScore.awayTeamName} at ${boxScore.homeTeamName}`;
+  const venueBits = [];
+  if (boxScore.venue?.neutralSite) venueBits.push("Neutral site");
+  else if (boxScore.venue?.homeEdgeApplied) venueBits.push(`Home edge: ${boxScore.homeTeamName}`);
+  if (boxScore.venue?.homeRested) venueBits.push(`${boxScore.homeTeamName} off bye`);
+  if (boxScore.venue?.awayRested) venueBits.push(`${boxScore.awayTeamName} off bye`);
   document.getElementById("boxScoreModalMeta").textContent =
-    `${boxScore.year} | Week ${boxScore.week || "-"} | ${boxScore.seasonType}`;
+    `${boxScore.year} | Week ${boxScore.week || "-"} | ${boxScore.seasonType}` +
+    (venueBits.length ? ` | ${venueBits.join(" · ")}` : "");
   document.getElementById("boxScoreAwayTitle").textContent = `${boxScore.awayTeamName} Player Stats`;
   document.getElementById("boxScoreHomeTitle").textContent = `${boxScore.homeTeamName} Player Stats`;
 
@@ -1149,9 +1155,27 @@ export function renderOwnerUltimatum() {
   const el = document.getElementById("ownerUltimatumBanner");
   if (!el) return;
   const ult = state.dashboard?.controlledTeam?.owner?.expectation?.ultimatum;
-  if (!ult?.active) { el.hidden = true; return; }
-  el.hidden = false;
-  el.innerHTML = `
+  const confidence = state.dashboard?.ownerConfidence;
+  const blocks = [];
+  if (confidence) {
+    // Patience is now a live weekly loop — always show the meter with the
+    // latest receipt so the player can see exactly why it moved.
+    const bandIcon = { critical: "🔥", strained: "⚠️", steady: "🤝", secure: "🛡️" }[confidence.band] || "🤝";
+    const latest = confidence.latest;
+    const deltaText = latest
+      ? `${latest.delta > 0 ? "+" : ""}${(latest.delta * 100).toFixed(1)} wk ${latest.week}: ${(latest.reasons || []).join("; ")}`
+      : "no confidence movement recorded yet";
+    blocks.push(`
+      <div class="owner-confidence-meter" data-band="${escapeHtml(confidence.band)}">
+        <span class="owner-confidence-icon">${bandIcon}</span>
+        <div class="ultimatum-body">
+          <strong>Owner Confidence · ${confidence.percent}% (${escapeHtml(confidence.band)})</strong>
+          <span class="ultimatum-detail">${escapeHtml(deltaText)}</span>
+        </div>
+      </div>`);
+  }
+  if (ult?.active) {
+    blocks.push(`
     <div class="ultimatum-banner">
       <span class="ultimatum-icon">⚠️</span>
       <div class="ultimatum-body">
@@ -1159,5 +1183,9 @@ export function renderOwnerUltimatum() {
         <span>${escapeHtml(ult.message)}</span>
         <span class="ultimatum-detail">${ult.weeksLeft} week${ult.weeksLeft !== 1 ? "s" : ""} remaining · Consequence: ${escapeHtml(ult.consequence || "major changes")}</span>
       </div>
-    </div>`;
+    </div>`);
+  }
+  if (!blocks.length) { el.hidden = true; el.replaceChildren(); return; }
+  el.hidden = false;
+  el.innerHTML = blocks.join("");
 }

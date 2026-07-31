@@ -90,7 +90,8 @@ import {
   reportPlayerMilestones,
   reportStreaks,
   reportSignificantInjury,
-  reportRehabClearance
+  reportRehabClearance,
+  reportOwnerUltimatum
 } from "../engine/beatReporter.js";
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
@@ -102,6 +103,7 @@ import { resolveThreads as resolveContinuityThreads } from "../engine/continuity
 import { updateFanSentiment } from "../engine/fanSentiment.js";
 import { applyMentorshipBonuses } from "../engine/veteranMentorship.js";
 import { getGmCommitmentState, latestGmDecision, resolveGmDecisionCommitments } from "../engine/gmDecisionConsequences.js";
+import { applyWeeklyOwnerConfidence, getOwnerConfidenceSummary } from "../engine/ownerConfidence.js";
 import { generateGmDecisions } from "../engine/gmDecisionAuthority.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 
@@ -1357,9 +1359,18 @@ function uniqueBestRows(rows = []) {
 }
 
 function sortRowsByAv(rows, fallback = () => 0) {
+  // Final playerId tie-break makes award selection fully deterministic even
+  // when two candidates tie on every stat term (otherwise the winner depends
+  // on incidental stat-table ordering).
   return rows
     .slice()
-    .sort((a, b) => (b.av || 0) - (a.av || 0) || fallback(b) - fallback(a) || (b.yds || 0) - (a.yds || 0));
+    .sort(
+      (a, b) =>
+        (b.av || 0) - (a.av || 0) ||
+        fallback(b) - fallback(a) ||
+        (b.yds || 0) - (a.yds || 0) ||
+        String(a.playerId || "").localeCompare(String(b.playerId || ""))
+    );
 }
 
 function collectSeasonAvMap(session, year, seasonType = "regular") {
@@ -2333,6 +2344,69 @@ export class GameSession {
       }
     });
     return { ok: true, owner: team.owner };
+  }
+
+  registerOwnerUltimatumPressure() {
+    const team = teamById(this.league, this.controlledTeamId);
+    if (!team?.owner) return null;
+    const roster = teamPlayersAll(this.league, team.id);
+    // Recompute with post-drift patience so the ultimatum gate sees live truth.
+    team.owner.expectation = buildOwnerExpectation(team, roster, this.league.transactionLog || [], {
+      currentWeek: this.currentWeek
+    });
+    const ultimatum = team.owner.expectation?.ultimatum;
+    if (!ultimatum?.active) return null;
+    if (!Array.isArray(this.league.gmCommitments)) this.league.gmCommitments = [];
+    const existing = this.league.gmCommitments.find(
+      (entry) =>
+        entry.teamId === team.id &&
+        entry.choiceId === "owner-ultimatum" &&
+        entry.status === "active" &&
+        entry.createdYear === this.currentYear
+    );
+    if (existing) return existing;
+    // The ultimatum's consequence enters the commitment board as a real
+    // decision-pressure record with a season-end deadline and win target.
+    const commitment = {
+      id: `OWNER-ULT-${this.currentYear}-${team.id}`,
+      decisionEntryId: null,
+      teamId: team.id,
+      decisionId: "owner-ultimatum",
+      choiceId: "owner-ultimatum",
+      label: `Owner ultimatum: reach ${ultimatum.targetWins} wins`,
+      promise: ultimatum.message,
+      status: "active",
+      createdYear: this.currentYear,
+      createdWeek: this.currentWeek,
+      deadlineYear: this.currentYear,
+      deadlineWeek: NFL_STRUCTURE.regularSeasonWeeks + 1,
+      baselineTransactionSeq: Number(this.league.transactionSeq || 0),
+      baselineQbIds: [],
+      baselineCapSpace: 0,
+      immediateError: null,
+      targetWins: ultimatum.targetWins,
+      consequence: ultimatum.consequence
+    };
+    this.league.gmCommitments.push(commitment);
+    this.league.gmCommitments = this.league.gmCommitments.slice(-120);
+    // beatReporter's newsLog is the Priority Inbox source; logNews feeds the
+    // transaction-style feed. Announce through both so the CRITICAL inbox item
+    // and the news trail both exist.
+    reportOwnerUltimatum(this.league, {
+      teamId: team.id,
+      message: ultimatum.message,
+      targetWins: ultimatum.targetWins,
+      consequence: ultimatum.consequence,
+      year: this.currentYear,
+      week: this.currentWeek
+    });
+    this.logNews(`Owner ultimatum issued: ${ultimatum.message}`, {
+      type: "owner-ultimatum",
+      teamId: team.id,
+      targetWins: ultimatum.targetWins,
+      consequence: ultimatum.consequence
+    });
+    return commitment;
   }
 
   refreshChemistryAndSchemeFit() {
@@ -3957,13 +4031,26 @@ export class GameSession {
       }
 
       const simStart = Date.now();
+      // Teams coming off a scheduled bye carry a rest edge into this week,
+      // derived from the previous week block's absences (source schedule truth).
+      const previousBlock = this.seasonSchedule[this.currentWeek - 2] || null;
+      const restedTeamIds = previousBlock
+        ? this.league.teams
+            .map((team) => team.id)
+            .filter((teamId) =>
+              !previousBlock.games.some(
+                (game) => game.homeTeamId === teamId || game.awayTeamId === teamId
+              )
+            )
+        : [];
       const weekResult = simulateRegularSeasonWeek({
         league: this.league,
         statBook: this.statBook,
         year: this.currentYear,
         weekBlock,
         rng: this.rng,
-        mode: this.mode
+        mode: this.mode,
+        restedTeamIds
       });
       this.trackTiming("simulate-week", Date.now() - simStart);
       this.trackCounter("weeks-simulated", 1);
@@ -4029,6 +4116,17 @@ export class GameSession {
       this.currentWeek += 1;
       if (this.currentWeek > NFL_STRUCTURE.regularSeasonWeeks) this.phase = "postseason";
       resolveGmDecisionCommitments(this);
+      // Owner confidence drifts from this week's observable results and any
+      // commitment resolutions just recorded; the controlled team's receipt is
+      // kept for the dashboard. Patience changes feed next week's heat.
+      this.lastOwnerConfidenceReceipt = applyWeeklyOwnerConfidence({
+        league: this.league,
+        weekResult,
+        currentYear: this.currentYear,
+        commitmentWeek: this.currentWeek,
+        controlledTeamId: this.controlledTeamId
+      }) || this.lastOwnerConfidenceReceipt || null;
+      this.registerOwnerUltimatumPressure();
       return { ok: true, phase: this.phase, week: weekResult.week, games: weekResult.games, events };
     }
 
@@ -4716,6 +4814,7 @@ export class GameSession {
       eventLog: this.getEventLog({ limit: 30 }),
       latestGmDecision: latestGmDecision(this.league),
       gmCommitments: getGmCommitmentState(this.league, this.controlledTeamId),
+      ownerConfidence: getOwnerConfidenceSummary(teamById(this.league, this.controlledTeamId)),
       observability: this.getObservability(),
       calibrationJobs: this.listCalibrationJobs(10),
       teams: this.league.teams.map(toDashboardTeam),

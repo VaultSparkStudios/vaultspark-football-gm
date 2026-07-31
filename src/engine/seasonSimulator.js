@@ -370,7 +370,8 @@ export function runPlayoffsAndSuperBowl({ league, statBook, year, rng, mode = "d
     mode,
     allowTie: false,
     seasonType: "playoffs",
-    label: "super-bowl"
+    label: "super-bowl",
+    neutralSite: true
   });
 
   const champion = superBowlResult.winnerId === afcChampion.id ? afcChampion : nfcChampion;
@@ -435,7 +436,19 @@ export function simulateSeason({
 }) {
   const schedule = buildSeasonSchedule({ league, year, previousDivisionRanks, rng });
 
+  let previousBlock = null;
   for (const weekBlock of schedule) {
+    const rested = new Set(
+      previousBlock
+        ? league.teams
+            .map((team) => team.id)
+            .filter((teamId) =>
+              !previousBlock.games.some(
+                (game) => game.homeTeamId === teamId || game.awayTeamId === teamId
+              )
+            )
+        : []
+    );
     for (const matchup of weekBlock.games) {
       const game = simulateGame({
         league,
@@ -446,10 +459,13 @@ export function simulateSeason({
         rng,
         mode,
         allowTie: true,
-        seasonType: "regular"
+        seasonType: "regular",
+        homeRested: rested.has(matchup.homeTeamId),
+        awayRested: rested.has(matchup.awayTeamId)
       });
       applyRegularSeasonResult(league, weekBlock.week, game);
     }
+    previousBlock = weekBlock;
   }
 
   const playoffResult = runPlayoffsAndSuperBowl({ league, statBook, year, rng, mode });

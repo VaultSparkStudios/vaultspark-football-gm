@@ -113,6 +113,21 @@ function evaluateCommitment(session, commitment) {
   if (commitment.choiceId === "restructure" && has("restructure")) return { status: "succeeded", evidence: "A contract restructure created a cap response." };
   if (commitment.choiceId === "release" && has("release")) return { status: "succeeded", evidence: "A player release completed the cap mandate." };
   if (commitment.choiceId === "wait" && atDeadline && Number(session.getTeamCapSummary?.(commitment.teamId)?.capSpace || 0) >= 0) return { status: "succeeded", evidence: "Cap space returned to a non-negative position." };
+  if (commitment.choiceId === "owner-ultimatum") {
+    const team = session.league.teams?.find((entry) => entry.id === commitment.teamId);
+    const wins = Number(team?.season?.wins || 0);
+    const target = Number(commitment.targetWins || 0);
+    if (target > 0 && wins >= target) {
+      return { status: "succeeded", evidence: `The club reached ${wins} wins against the owner's ${target}-win demand.` };
+    }
+    if (atDeadline) {
+      return {
+        status: "failed",
+        evidence: `The season ended at ${wins} wins, short of the owner's ${target}-win demand — consequence: ${commitment.consequence || "major changes"}.`
+      };
+    }
+    return null;
+  }
   if (atDeadline) return { status: "failed", evidence: `The promised action was not completed by Week ${commitment.deadlineWeek}.` };
   return null;
 }

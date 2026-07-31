@@ -2983,6 +2983,17 @@ body.mobile-loop-active .mobile-loop-overlay {
 .ultimatum-body span { font-size: 13px; }
 .ultimatum-detail { font-size: 11px; color: var(--muted, #7a8299); margin-top: 2px; }
 
+/* Owner Confidence meter (S62) — always-on companion above the ultimatum */
+.owner-confidence-meter {
+  display: flex; align-items: flex-start; gap: 10px;
+  background: rgba(90,140,224,0.08); border: 1px solid var(--line, #2a3146);
+  border-radius: 8px; padding: 10px 16px; margin-bottom: 8px;
+}
+.owner-confidence-meter[data-band="critical"] { border-color: var(--danger, #e05a5a); background: rgba(224,90,90,0.12); }
+.owner-confidence-meter[data-band="strained"] { border-color: var(--warn, #e0b45a); background: rgba(224,180,90,0.1); }
+.owner-confidence-meter .ultimatum-body strong { color: var(--text, #e8ebf4); }
+.owner-confidence-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+
 /* ── Season Review Modal ─────────────────────────────────────────────────── */
 #seasonReviewModal {
   position: fixed; inset: 0; z-index: 9000;
