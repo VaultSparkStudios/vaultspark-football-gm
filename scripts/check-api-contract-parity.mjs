@@ -20,7 +20,6 @@ export const ADAPTER_ONLY_CONTRACTS = Object.freeze({
 // Classification is exact: each route must exist in BOTH adapters or parity fails.
 export const SHARED_NON_BROWSER_CONTRACTS = Object.freeze([
   { key: "POST /api/advance-season", reason: "explicit simulation harness command" },
-  { key: "GET /api/free-agency/market", reason: "legacy operator inspection surface" },
   { key: "GET /api/boxscores", reason: "direct API archive query used by runtime tests" },
   { key: "GET /api/what-if-replay", reason: "explicit non-canon replay API" },
   { key: "GET /api/events", reason: "operator event-ledger inspection" },

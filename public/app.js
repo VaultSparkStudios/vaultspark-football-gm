@@ -687,7 +687,10 @@ function bindEvents() {
       if (button.dataset.act === "sign") {
         await api("/api/sign", { method: "POST", body: { teamId, playerId } });
       } else if (button.dataset.act === "offer") {
-        await api("/api/free-agency/offer", { method: "POST", body: { teamId, playerId, years: 2 } });
+        const yearsSelect = button.parentElement?.querySelector("[data-offer-years]");
+        const years = Number(yearsSelect?.value || 3);
+        await api("/api/free-agency/offer", { method: "POST", body: { teamId, playerId, years } });
+        showToast(`Offer submitted (${years}yr) — the market resolves on the next advance.`);
       } else {
         await api("/api/waiver-claim", { method: "POST", body: { teamId, playerId } });
       }

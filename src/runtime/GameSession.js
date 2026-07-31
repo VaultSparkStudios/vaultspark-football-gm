@@ -56,10 +56,7 @@ import { buildSeasonSchedule } from "../engine/schedule.js";
 import { runPlayoffsAndSuperBowl, sortStandings } from "../engine/seasonSimulator.js";
 import { simulateRegularSeasonWeek } from "../engine/weeklySimulator.js";
 import { StatBook } from "../stats/statBook.js";
-import {
-  DEFENSIVE_AV_POSITIONS,
-  OFFENSIVE_AV_POSITIONS
-} from "../stats/approximateValue.js";
+import { DEFENSIVE_AV_POSITIONS } from "../stats/approximateValue.js";
 import {
   applySeasonRealismCalibration,
   buildCareerCalibrationSnapshot,
@@ -92,7 +89,8 @@ import {
   reportSignificantInjury,
   reportRehabClearance,
   reportOwnerUltimatum,
-  reportInboundTradeOffer
+  reportInboundTradeOffer,
+  reportFreeAgencyOutbid
 } from "../engine/beatReporter.js";
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
@@ -112,6 +110,9 @@ import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 const TABLE_CATEGORIES = ["passing", "rushing", "receiving", "defense", "blocking", "kicking", "punting", "snaps"];
 const MAX_ACTIVE_ROSTER = 53;
 const MAX_PRACTICE_SQUAD = 16;
+// Free agents at or above this overall are market property (S62): they sign
+// through the competing-offer market, never through instant or greedy paths.
+const PREMIUM_FA_OVERALL = 74;
 const MAX_GAME_DAY_INACTIVES = 7;
 const DRAFT_ROUNDS = 7;
 const PICK_ASSET_HORIZON_YEARS = 3;
@@ -1495,8 +1496,12 @@ function estimateAwards(session, year, playoffResult = null) {
   const rookies = new Set(
     session.league.players.filter((player) => player.seasonsPlayed <= 1 && player.status === "active").map((p) => p.id)
   );
+  // MVP/OPOY/ROY are skill-position awards: an OL who recorded a single catch
+  // must not enter this pool carrying blocking-derived AV (OL are honored via
+  // the All-Pro/Pro-Bowl position rows built from the blocking table).
+  const skillPositions = new Set(["QB", "RB", "WR", "TE"]);
   const offensivePool = uniqueBestRows(
-    [...passing, ...rushing, ...receiving].filter((row) => OFFENSIVE_AV_POSITIONS.has(row.pos))
+    [...passing, ...rushing, ...receiving].filter((row) => skillPositions.has(row.pos))
   );
   const defensivePool = uniqueBestRows(defense.filter((row) => DEFENSIVE_AV_POSITIONS.has(row.pos)));
   const specialPool = [...kicking, ...punting];
@@ -2149,6 +2154,7 @@ export class GameSession {
       return next({ nextStage: "udfa", message: "Draft finished and compensatory picks generated." });
     }
     if (stage === "udfa") {
+      this.submitCpuFreeAgencyOffers({ maxOffers: 10 });
       this.processFreeAgencyMarket();
       const settings = this.getLeagueSettings();
       runOffseason({
@@ -2599,8 +2605,16 @@ export class GameSession {
       warnings.push(warning);
       this.appendEvent("roster-maintenance-stalled", warning);
     };
+    // Premium free agents belong to the competing-offer market (S62): greedy
+    // maintenance only shops the depth tier so no CPU (or the player) can
+    // bypass market competition for difference-makers.
     const freeAgentPool = () =>
-      this.league.players.filter((player) => player.status === "active" && player.teamId === "FA");
+      this.league.players.filter(
+        (player) =>
+          player.status === "active" &&
+          player.teamId === "FA" &&
+          (player.overall || 0) < PREMIUM_FA_OVERALL
+      );
 
     const findBestPracticePlayer = (teamId, position = null) =>
       sortPlayersForDepth(
@@ -3295,6 +3309,18 @@ export class GameSession {
       return { ok: false, error: "Free agent not found." };
     }
     if (!player) return { ok: false, error: "Free agent not found." };
+    if (
+      teamId === this.controlledTeamId &&
+      this.phase === "regular-season" &&
+      player.teamId === "FA" &&
+      (player.overall || 0) >= PREMIUM_FA_OVERALL
+    ) {
+      return {
+        ok: false,
+        reasonCode: "market-pursuit",
+        error: `${player.name} is weighing market offers — submit a bid and win the week's resolution.`
+      };
+    }
     if (activeRosterPlayers(this.league, teamId).length >= MAX_ACTIVE_ROSTER) {
       return { ok: false, error: "Active roster full (53)." };
     }
@@ -4015,8 +4041,10 @@ export class GameSession {
       const passing = this.statBook.getPlayerSeasonTable("passing", { year: this.currentYear, seasonType: "regular" });
       const rushing = this.statBook.getPlayerSeasonTable("rushing", { year: this.currentYear, seasonType: "regular" });
       const receiving = this.statBook.getPlayerSeasonTable("receiving", { year: this.currentYear, seasonType: "regular" });
+      // Same skill-position rule as the MVP award itself — the watch headline
+      // must never name an OL who happened to catch one pass.
       const offensiveWatch = [...passing, ...rushing, ...receiving]
-        .filter((row) => OFFENSIVE_AV_POSITIONS.has(row.pos))
+        .filter((row) => ["QB", "RB", "WR", "TE"].includes(row.pos))
         .sort((a, b) => (b.av || 0) - (a.av || 0) || (b.td || 0) - (a.td || 0))[0];
       const rushLeader = rushing[0];
       if (offensiveWatch) {
@@ -4041,6 +4069,11 @@ export class GameSession {
       this.decrementAvailability();
       this.processWaivers();
       this.runAiTeamMaintenance();
+      // Premium free agency is a live weekly market (S62): rivals bid, then
+      // the multi-offer resolution runs — the player can be outbid and learns
+      // exactly what won.
+      this.submitCpuFreeAgencyOffers();
+      this.processFreeAgencyMarket();
       const weekBlock = this.seasonSchedule[this.currentWeek - 1];
       if (!weekBlock) {
         this.phase = "postseason";
@@ -5149,12 +5182,22 @@ export class GameSession {
   getFreeAgencyMarket({ teamId = this.controlledTeamId, limit = 60 } = {}) {
     const safeLimit = normalizeCount(limit, 5, 200, 60);
     const freeAgents = this.getFreeAgents({ limit: safeLimit });
-    const offers = (this.league.freeAgencyMarket?.offers || []).filter((offer) => offer.teamId === teamId);
+    const allOffers = this.league.freeAgencyMarket?.offers || [];
+    const offers = allOffers.filter((offer) => offer.teamId === teamId);
+    // Rival pursuit is visible as counts only — terms stay private until the
+    // market resolves (the outbid receipt reveals the winning bid).
+    const pursuit = {};
+    for (const offer of allOffers) {
+      if (offer.teamId === teamId) continue;
+      pursuit[offer.playerId] = (pursuit[offer.playerId] || 0) + 1;
+    }
     return {
       phase: this.phase,
       stage: this.league.freeAgencyMarket?.stage || "open-market",
       teamId,
       offers,
+      pursuit,
+      premiumOverall: PREMIUM_FA_OVERALL,
       freeAgents
     };
   }
@@ -5214,6 +5257,66 @@ export class GameSession {
     return { ok: true, offer: payload };
   }
 
+  submitCpuFreeAgencyOffers({ maxOffers = 6 } = {}) {
+    // Rival front offices bid on premium free agents through the same market
+    // the player uses. Deterministic (session RNG), bounded, archetype-shaped.
+    const premium = this.league.players
+      .filter(
+        (player) =>
+          player.status === "active" &&
+          player.teamId === "FA" &&
+          (player.overall || 0) >= PREMIUM_FA_OVERALL
+      )
+      .sort((a, b) => (b.overall || 0) - (a.overall || 0) || String(a.id).localeCompare(String(b.id)))
+      .slice(0, 10);
+    let submitted = 0;
+    for (const player of premium) {
+      if (submitted >= maxOffers) break;
+      const bidders = this.league.teams
+        .filter((team) => team.id !== this.controlledTeamId)
+        .map((team) => {
+          const bestAtPosition = this.league.players
+            .filter(
+              (row) =>
+                row.teamId === team.id &&
+                row.status === "active" &&
+                (row.rosterSlot || "active") === "active" &&
+                row.position === player.position
+            )
+            .reduce((best, row) => Math.max(best, row.overall || 0), 0);
+          const gap = (player.overall || 0) - bestAtPosition;
+          if (gap < 3) return null;
+          const strategy = team.strategyProfile || "balanced";
+          if (strategy === "rebuild" && (player.age || 27) > 26) return null;
+          return { team, gap, strategy };
+        })
+        .filter(Boolean)
+        .sort(
+          (a, b) =>
+            b.gap - a.gap ||
+            (b.team.overallRating || 0) - (a.team.overallRating || 0) ||
+            String(a.team.id).localeCompare(String(b.team.id))
+        )
+        .slice(0, 3);
+      for (const { team, strategy } of bidders.slice(0, 2)) {
+        const bidChance = strategy === "contender" ? 0.55 : strategy === "rebuild" ? 0.3 : 0.4;
+        if (!this.rng.chance(bidChance)) continue;
+        const baseSalary = Math.max(1_000_000, player.overall * player.overall * 480);
+        const salary =
+          strategy === "contender"
+            ? Math.round(baseSalary * 1.08)
+            : strategy === "rebuild"
+              ? Math.round(baseSalary * 0.95)
+              : baseSalary;
+        const years =
+          strategy === "rebuild" ? 4 : (player.age || 27) >= 29 ? 2 : 3;
+        const offer = this.submitFreeAgencyOffer({ teamId: team.id, playerId: player.id, years, salary });
+        if (offer.ok) submitted += 1;
+      }
+    }
+    return { ok: true, submitted };
+  }
+
   processFreeAgencyMarket() {
     const offers = this.league.freeAgencyMarket?.offers || [];
     if (!offers.length) return { ok: true, signed: 0 };
@@ -5270,6 +5373,24 @@ export class GameSession {
           value: Math.round(offer.salary / 250_000)
         });
         this.logNews(`${player.name} signed with ${offer.teamId}`, { teamId: offer.teamId, playerId });
+        // Outbid receipt (S62): if the controlled team bid on this player and
+        // lost, the GM learns exactly what won — visible market pressure.
+        const controlledLoss = ranked.find(
+          (row) => row.teamId === this.controlledTeamId && row !== offer
+        );
+        if (controlledLoss && offer.teamId !== this.controlledTeamId) {
+          reportFreeAgencyOutbid(this.league, {
+            playerName: player.name,
+            playerId,
+            winnerTeamId: offer.teamId,
+            winningYears: offer.years,
+            winningSalary: offer.salary,
+            losingYears: controlledLoss.years,
+            losingSalary: controlledLoss.salary,
+            year: this.currentYear,
+            week: this.currentWeek
+          });
+        }
         break;
       }
     }

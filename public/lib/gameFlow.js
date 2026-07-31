@@ -447,6 +447,13 @@ export async function loadFreeAgency() {
   if (maxAge) query.set("maxAge", maxAge);
   const data = await api(`/api/free-agents?${query.toString()}`);
   state.freeAgents = data.freeAgents || [];
+  // Market surface (S62): rival pursuit counts, the GM's live offers, and the
+  // premium threshold that routes stars through the competing-offer market.
+  try {
+    state.faMarket = await api("/api/free-agency/market");
+  } catch {
+    state.faMarket = null;
+  }
   renderFreeAgency();
 }
 

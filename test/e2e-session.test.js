@@ -11,14 +11,14 @@ test("session e2e: core flows are operational", () => {
   assert.ok(session.getDashboardState().currentWeek >= 2);
 
   const roster = session.getRoster("BUF");
-  const releasePlayerId = roster[0].id;
-  const released = session.releasePlayer({ teamId: "BUF", playerId: releasePlayerId, toWaivers: false });
+  // Premium free agents (74+) sign through the competing-offer market (S62);
+  // the instant sign path in this flow uses a depth player.
+  const releasable = roster.find((entry) => (entry.overall || 0) < 74) || roster.at(-1);
+  const released = session.releasePlayer({ teamId: "BUF", playerId: releasable.id, toWaivers: false });
   assert.equal(released.ok, true);
 
-  const freeAgents = session.getFreeAgents({ limit: 1 });
-  assert.ok(freeAgents.length > 0);
-  const signed = session.signFreeAgent({ teamId: "BUF", playerId: freeAgents[0].id });
-  assert.equal(signed.ok, true);
+  const signed = session.signFreeAgent({ teamId: "BUF", playerId: releasable.id });
+  assert.equal(signed.ok, true, JSON.stringify(signed));
 
   const snapshot = session.toSnapshot();
   const loaded = createSessionFromSnapshot(snapshot);

@@ -92,6 +92,7 @@ export function classifyNewsItem(item) {
   if (type === "owner-ultimatum") return "CRITICAL";
   if (type === "gm-commitment-resolution") return "IMPORTANT";
   if (type === "trade-offer") return headline.includes("deadline") ? "CRITICAL" : "IMPORTANT";
+  if (type === "fa-outbid") return "IMPORTANT";
   if (type === "trade" || type === "signing" || type === "milestone") return "IMPORTANT";
   if (type === "injury") return "IMPORTANT";
   if (type === "rehab-clearance") return "IMPORTANT";

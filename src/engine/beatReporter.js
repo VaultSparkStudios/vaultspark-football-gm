@@ -231,6 +231,23 @@ export function reportInboundTradeOffer(league, offer) {
   return league.newsLog[0];
 }
 
+export function reportFreeAgencyOutbid(league, {
+  playerName, playerId, winnerTeamId, winningYears, winningSalary,
+  losingYears, losingSalary, year, week
+}) {
+  initNewsLog(league);
+  push(league, {
+    type: "fa-outbid",
+    year,
+    week,
+    teamIds: [winnerTeamId],
+    playerIds: playerId ? [playerId] : [],
+    headline: `Outbid: ${playerName} signs with ${winnerTeamId}`,
+    detail: `Your offer (${losingYears}yr / $${Math.round(losingSalary / 1_000_000)}M) lost to ${winnerTeamId}'s ${winningYears}yr / $${Math.round(winningSalary / 1_000_000)}M. The market moved without you.`
+  });
+  return league.newsLog[0];
+}
+
 export function reportTrade(league, fromTeamId, toTeamId, playerName, year, week) {
   initNewsLog(league);
   push(league, {

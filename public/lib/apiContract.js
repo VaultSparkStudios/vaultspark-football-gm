@@ -15,6 +15,7 @@ const GET_PATHS = [
   "/api/draft",
   "/api/fan-sentiment",
   "/api/franchise-moment",
+  "/api/free-agency/market",
   "/api/free-agents",
   "/api/gm-decision",
   "/api/gm-legacy",

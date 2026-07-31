@@ -5,15 +5,16 @@ import { createSession } from "../src/runtime/bootstrap.js";
 test("release then sign free agent obeys roster constraints", () => {
   const session = createSession({ seed: 100, startYear: 2026, controlledTeamId: "BUF" });
   const rosterBefore = session.getRoster("BUF").length;
-  const releaseId = session.getRoster("BUF")[0].id;
-  const released = session.releasePlayer({ teamId: "BUF", playerId: releaseId, toWaivers: false });
+  // Premium free agents (74+) route through the competing-offer market (S62);
+  // the instant release/sign constraint check uses the depth tier.
+  const releasable = session.getRoster("BUF").find((entry) => (entry.overall || 0) < 74)
+    || session.getRoster("BUF").at(-1);
+  const released = session.releasePlayer({ teamId: "BUF", playerId: releasable.id, toWaivers: false });
   assert.equal(released.ok, true);
   assert.equal(session.getRoster("BUF").length, rosterBefore - 1);
 
-  const freeAgent = session.getFreeAgents({ limit: 1 })[0];
-  assert.ok(freeAgent);
-  const signed = session.signFreeAgent({ teamId: "BUF", playerId: freeAgent.id });
-  assert.equal(signed.ok, true);
+  const signed = session.signFreeAgent({ teamId: "BUF", playerId: releasable.id });
+  assert.equal(signed.ok, true, JSON.stringify(signed));
   assert.equal(session.getRoster("BUF").length, rosterBefore);
 });
 

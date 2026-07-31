@@ -239,13 +239,24 @@ function runFreeAgency(league, year, rng) {
     .filter((p) => p.status === "active" && p.teamId === "FA")
     .sort((a, b) => b.overall - a.overall);
 
-  for (const team of league.teams) {
+  // Worst teams shop first (reverse standings) instead of raw array order —
+  // the market models competition, not alphabet privilege (S62).
+  const shoppingOrder = [...league.teams].sort(
+    (a, b) =>
+      (a.season?.wins || 0) - (b.season?.wins || 0) ||
+      (b.season?.losses || 0) - (a.season?.losses || 0) ||
+      String(a.id).localeCompare(String(b.id))
+  );
+  for (const team of shoppingOrder) {
     const needs = teamNeeds(league, team.id);
     for (const need of needs) {
       for (let slot = 0; slot < need.missing; slot += 1) {
         let candidateIndex = faPool.findIndex((p) => p.position === need.position && p.contract.capHit === 0);
         if (candidateIndex < 0) candidateIndex = faPool.findIndex((p) => p.position === need.position);
         if (candidateIndex < 0) {
+          // Fabricating a player is a last resort for roster legality only,
+          // and it leaves an explicit receipt instead of silently conjuring
+          // talent out of thin air.
           const replacement = createSyntheticPlayer({
             teamId: team.id,
             position: need.position,
@@ -254,7 +265,18 @@ function runFreeAgency(league, year, rng) {
           });
           replacement.overall = clamp(replacement.overall - rng.int(4, 14), 52, 78);
           replacement.contract = veteranContract(replacement.overall, rng);
+          replacement.provenance = "emergency-depth-signing";
           league.players.push(replacement);
+          if (Array.isArray(league.newsLog)) {
+            league.newsLog.unshift({
+              id: `news-emergency-depth-${year}-${team.id}-${need.position}-${league.newsLog.length}`,
+              type: "emergency-depth-signing",
+              year,
+              teamIds: [team.id],
+              headline: `${team.id} sign emergency ${need.position} depth off the street`,
+              detail: `The ${need.position} market was empty — a journeyman was signed to keep the roster legal.`
+            });
+          }
           continue;
         }
         const candidate = faPool[candidateIndex];

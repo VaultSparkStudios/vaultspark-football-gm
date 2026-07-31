@@ -42,7 +42,21 @@ function attemptImmediateAction(session, consequence, teamId) {
       .sort((a, b) => (b.overall || 0) - (a.overall || 0))[0];
     if (!candidate) return { ok: false, error: "No veteran quarterback is available." };
     const result = session.signFreeAgent({ teamId, playerId: candidate.id });
-    return result.ok ? { ...result, summary: `${candidate.name} signed as the veteran quarterback response.`, playerName: candidate.name } : result;
+    if (result.ok) {
+      return { ...result, summary: `${candidate.name} signed as the veteran quarterback response.`, playerName: candidate.name };
+    }
+    if (result.reasonCode === "market-pursuit") {
+      // Premium QBs route through the competing-offer market (S62): the
+      // decision becomes a commitment backed by a real submitted bid.
+      const bid = session.submitFreeAgencyOffer?.({ teamId, playerId: candidate.id, years: 2 });
+      return {
+        ok: false,
+        error: bid?.ok
+          ? `${candidate.name} is weighing market offers — your bid is in; the market resolves on the next advance.`
+          : result.error
+      };
+    }
+    return result;
   }
   if (consequence.choiceId === "restructure") {
     const candidate = teamPlayers(session, teamId)
@@ -167,7 +181,7 @@ function evaluateCommitment(session, commitment) {
   if (commitment.choiceId === "sell" && tradeFlows.some((flow) => flow.incomingPicks.length > 0)) return { status: "succeeded", evidence: "Future draft capital was acquired before the deadline." };
   if (commitment.choiceId === "hold" && has("trade")) return { status: "failed", evidence: "A trade broke the hold mandate." };
   if (commitment.choiceId === "hold" && atDeadline) return { status: "succeeded", evidence: "The roster was held through the deadline." };
-  if (commitment.choiceId === "fa-qb" && newQb && has("signing", "waiver-award")) return { status: "succeeded", evidence: `${newQb.name} joined the quarterback room.` };
+  if (commitment.choiceId === "fa-qb" && newQb && has("signing", "fa-signing", "waiver-award")) return { status: "succeeded", evidence: `${newQb.name} joined the quarterback room.` };
   if (commitment.choiceId === "trade-qb" && newQb && has("trade")) return { status: "succeeded", evidence: `${newQb.name} was acquired by trade.` };
   if (commitment.choiceId === "restructure" && has("restructure")) return { status: "succeeded", evidence: "A contract restructure created a cap response." };
   if (commitment.choiceId === "release" && has("release")) return { status: "succeeded", evidence: "A player release completed the cap mandate." };
