@@ -105,7 +105,10 @@
       "responsive evidence 53 captures with required matrix complete",
       "Pages build, static smoke, browser reachability 52 modules, and promise observability 52 files",
       "Unified Genius List 0 open / 5 closed and three second-order innovations shipped",
-      "doctor blockingFailing 0, sitemap 10/10, cost-neutral release gate ALLOW, public sanitization 0 critical/0 warning"
+      "doctor blockingFailing 0, sitemap 10/10, cost-neutral release gate ALLOW, public sanitization 0 critical/0 warning",
+      "direct-main implementation 5532c4e and clean-checkout fix 3240ed7 synchronized",
+      "current-head CI, brief-format, manually dispatched Pages, and non-server backend image workflows completed green",
+      "Ark impact 01JUSPSI9GD55ADFA537A709D2 and owning-host request 01JUSPSIHR219CDE9DB8F2CCC6 signed"
     ],
     "date": "2026-07-29",
     "diagnosticNote": "Generated edge policy is green; hosted application is not inferred. Canonical health, deployed revision, several required response headers, delivered email, approval, and lifecycle reconciliation remain absent."
@@ -156,8 +159,8 @@
   },
   "complianceScore": 37,
   "complianceTotal": 37,
-  "sanitizationLastCleared": "2026-07-27",
-  "lastVerificationAt": "2026-07-29",
+  "sanitizationLastCleared": "2026-07-31",
+  "lastVerificationAt": "2026-07-31",
   "stagingType": "github-pages",
   "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
   "runtimeUrl": "https://playfranchisearchitect.com/",
@@ -176,26 +179,26 @@
       "Inline style-policy saturation"
     ],
     "tests": "Node 560/560 - UI 20/20 - responsive 53 captures",
-    "deploy": "pending direct-main closeout push; generated policy green; hosted application and launch HOLD"
+    "deploy": "implementation 5532c4e + clean-checkout fix 3240ed7 synchronized; CI/brief/Pages/backend green; launch HOLD"
   },
   "testingSurfaces": [
     {
       "type": "local",
       "label": "Local game",
       "url": "http://127.0.0.1:3000/game.html",
-      "lastChecked": "2026-07-27"
+      "lastChecked": "2026-07-31"
     },
     {
       "type": "staging",
       "label": "GitHub Pages",
       "url": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
-      "lastChecked": "2026-07-27"
+      "lastChecked": "2026-07-31"
     },
     {
       "type": "production",
       "label": "Public origin",
       "url": "https://playfranchisearchitect.com/",
-      "lastChecked": "2026-07-27"
+      "lastChecked": "2026-07-31"
     }
   ],
   "lastSession": 61,

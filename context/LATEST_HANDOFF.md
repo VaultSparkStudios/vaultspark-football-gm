@@ -17,6 +17,12 @@ Session 61 achieved the requested uninterrupted `/goal /arc`: all five live-code
 - Static builds generate exact inline CSP hashes, hardening headers, `security.txt`, and a fingerprinted edge receipt.
 - A hosted verifier joins the generated artifact, exact revision, `/_health`, and live header application and produces an Ark-ready owning-host request.
 
+### Delivery receipt
+
+- Implementation `5532c4e320aa7d3554d6af251db68500ec63b166` plus clean-checkout fix `3240ed7540b20a46f4aacfeeaf12691e13b99254` are synchronized to `origin/main`.
+- Current-head CI, brief-format, manually dispatched Pages, and non-server backend image workflows completed green; Pages deployed the corrective revision.
+- Ark broadcast: `01JUSPSI9GD55ADFA537A709D2`; owning-host/lifecycle request: `01JUSPSIHR219CDE9DB8F2CCC6`.
+
 ### Verification
 
 - Canonical Node: 560/560, aggregate exit 0, fresh source-bound receipt.

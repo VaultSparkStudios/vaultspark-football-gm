@@ -55,5 +55,25 @@
       "local build/browser success does not prove hosted revision identity",
       "no launch/SPARKED state was changed"
     ]
+  },
+  "delivery": {
+    "implementationRevision": "5532c4e320aa7d3554d6af251db68500ec63b166",
+    "correctiveRevision": "3240ed7540b20a46f4aacfeeaf12691e13b99254",
+    "synchronized": true,
+    "workflows": {
+      "ci": "success",
+      "briefFormat": "success",
+      "pages": "success",
+      "backendImages": "success",
+      "backendServerDeployRequested": false
+    },
+    "arkReceipts": [
+      "01JUSPSI9GD55ADFA537A709D2",
+      "01JUSPSIHR219CDE9DB8F2CCC6"
+    ],
+    "postDeploy": {
+      "stagingChecks": "3/10",
+      "edgeAttestation": "HOLD"
+    }
   }
 }

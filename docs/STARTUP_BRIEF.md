@@ -27,7 +27,7 @@
 ║  ✓ Exact TradeService authority                                  ║
 ║  ✓ Generated edge-security contract                              ║
 ║  Tests  Node 560/560 - UI 20/20 - responsive 53 captures         ║
-║  Deploy pending direct-main closeout push; generated policy gre  ║
+║  Deploy implementation 5532c4e + clean-checkout fix 3240ed7 syn  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -70,9 +70,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     27,297 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~13,649 tok/turn  ·  cache 50%  ·  65 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     2,733 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,367 tok/turn  ·  cache 50%  ·  132 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
