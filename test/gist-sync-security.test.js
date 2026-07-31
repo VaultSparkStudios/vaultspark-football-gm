@@ -85,3 +85,73 @@ test("remote integrity sidecars are fetched and corrupt cloud saves are rejected
   const gist = await freshModule("remote-integrity");
   await assert.rejects(() => gist.importFromGist("remote", "token"), /failed integrity verification/);
 });
+
+// ── S62: remote-import integrity fails closed, in parity with the canonical store ──
+
+import {
+  buildIntegrityStamp,
+  verifyIntegrityStamp as storeVerify
+} from "../src/adapters/persistence/saveStoreShared.js";
+
+function gistFetchFor(save, sidecar) {
+  return async (url) => {
+    const value = String(url);
+    if (value === "https://api.github.com/gists/parity") {
+      const files = { "vsfgm-save.json": { content: save } };
+      if (sidecar !== undefined) {
+        files["vsfgm-save.integrity.json"] = { content: sidecar };
+      }
+      return new Response(JSON.stringify({ files }), {
+        status: 200,
+        headers: { "content-type": "application/json" }
+      });
+    }
+    return new Response("", { status: 404 });
+  };
+}
+
+const PARITY_SAVE = JSON.stringify({ league: { year: 2051 } });
+
+test("gist import verdicts are in exact parity with the canonical fail-closed store", async () => {
+  globalThis.localStorage = storage();
+  globalThis.sessionStorage = storage();
+
+  const validStamp = buildIntegrityStamp(PARITY_SAVE);
+  const forgedAlgo = { ...validStamp, algo: "totally-legit" };
+  const corrupt = { ...validStamp, checksum: "00000000" };
+
+  // Canonical store verdicts (the contract gistSync claims to mirror).
+  assert.equal(storeVerify(PARITY_SAVE, null), true, "store: absent stamp = legacy accept");
+  assert.equal(storeVerify(PARITY_SAVE, validStamp), true, "store: valid stamp verifies");
+  assert.equal(storeVerify(PARITY_SAVE, forgedAlgo), false, "store: unknown algo fails closed");
+  assert.equal(storeVerify(PARITY_SAVE, corrupt), false, "store: checksum mismatch fails closed");
+
+  // gistSync verdicts, exercised through the real import gate.
+  globalThis.fetch = gistFetchFor(PARITY_SAVE, JSON.stringify(validStamp));
+  const verified = await (await freshModule("parity-valid")).importFromGist("parity", "");
+  assert.equal(verified.integrity, "verified");
+
+  globalThis.fetch = gistFetchFor(PARITY_SAVE, undefined);
+  const legacy = await (await freshModule("parity-legacy")).importFromGist("parity", "");
+  assert.equal(legacy.integrity, "legacy-unverified");
+
+  globalThis.fetch = gistFetchFor(PARITY_SAVE, JSON.stringify(forgedAlgo));
+  await assert.rejects(
+    () => freshModule("parity-forged").then((m) => m.importFromGist("parity", "")),
+    /failed integrity verification/,
+    "forged algo must reject, not bypass"
+  );
+
+  globalThis.fetch = gistFetchFor(PARITY_SAVE, JSON.stringify(corrupt));
+  await assert.rejects(
+    () => freshModule("parity-corrupt").then((m) => m.importFromGist("parity", "")),
+    /failed integrity verification/
+  );
+
+  globalThis.fetch = gistFetchFor(PARITY_SAVE, "{not json");
+  await assert.rejects(
+    () => freshModule("parity-unreadable").then((m) => m.importFromGist("parity", "")),
+    /failed integrity verification/,
+    "a present-but-unreadable sidecar is corruption evidence, never absence"
+  );
+});

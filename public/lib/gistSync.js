@@ -37,7 +37,8 @@ function buildIntegrityStamp(serialized) {
 }
 
 function verifyIntegrityStamp(serialized, integrity) {
-  if (!integrity || integrity.algo !== "fnv1a32") return true; // legacy payloads: nothing to verify
+  if (!integrity) return true; // explicitly supported legacy saves had no stamp
+  if (integrity.algo !== "fnv1a32") return false; // unknown algo fails closed — a forged sidecar is not "nothing to verify"
   const str = String(serialized);
   return integrity.length === str.length && integrity.checksum === computeSnapshotChecksum(str);
 }
@@ -206,26 +207,30 @@ export async function importFromGist(gistId, token) {
   const raw = await readGistFile(file, "cloud save");
   if (!raw) throw new Error("Could not read Gist file content.");
 
-  // Verify integrity sidecar when present (legacy gists without one still import).
+  // Verify integrity sidecar when present (legacy gists without one still import,
+  // but the caller is told the save is unverified). A present-but-unreadable or
+  // forged sidecar fails closed: corruption evidence is never treated as absence.
   const integrityFile = data.files?.[INTEGRITY_FILENAME];
+  let integrity = "legacy-unverified";
   if (integrityFile) {
-    let integrity = null;
+    let stamp = null;
     try {
       const integrityRaw = await readGistFile(integrityFile, "integrity sidecar");
-      integrity = integrityRaw ? JSON.parse(integrityRaw) : null;
+      stamp = integrityRaw ? JSON.parse(integrityRaw) : null;
     } catch {
-      integrity = null;
+      stamp = null;
     }
-    if (!verifyIntegrityStamp(raw, integrity)) {
+    if (!stamp || !verifyIntegrityStamp(raw, stamp)) {
       throw new Error(
-        "Cloud save failed integrity verification — the synced data is corrupt or was truncated. " +
+        "Cloud save failed integrity verification — the synced data is corrupt, forged, or was truncated. " +
           "Your local saves are unaffected; re-export from the device that has the good copy."
       );
     }
+    integrity = "verified";
   }
 
   const snapshot = JSON.parse(raw);
-  return { snapshot, description: data.description };
+  return { snapshot, description: data.description, integrity };
 }
 
 // ── List user's VSFGM gists ───────────────────────────────────────────────────

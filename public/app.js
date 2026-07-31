@@ -1548,12 +1548,17 @@ function bindEvents() {
       const token = getSavedToken();
       const gistId = document.getElementById("gistIdInput")?.value?.trim() || getSavedGistId();
       if (!gistId) { setStatus("Enter a Gist ID to import."); return; }
-      const { snapshot } = await importFromGist(gistId, token);
+      const { snapshot, integrity } = await importFromGist(gistId, token);
       await api("/api/snapshot/inspect", { method: "POST", body: { snapshot } });
       await api("/api/snapshot/import", { method: "POST", body: { snapshot } });
       await loadState();
-      setStatus("Imported from Gist.");
-      renderGistSyncStatus("✅ Imported successfully.");
+      if (integrity === "legacy-unverified") {
+        setStatus("Imported legacy Gist save (no integrity sidecar — unverified).");
+        renderGistSyncStatus("⚠️ Imported an unverified legacy save — no integrity sidecar was present. Re-export to add one.");
+      } else {
+        setStatus("Imported from Gist.");
+        renderGistSyncStatus("✅ Imported successfully (integrity verified).");
+      }
     }, "Importing from Gist…")
   );
   document.getElementById("gistListBtn")?.addEventListener("click", renderGistList);
