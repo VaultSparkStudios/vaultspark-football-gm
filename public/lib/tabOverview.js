@@ -207,8 +207,24 @@ export function renderOpeningContract() {
   const receipt = state.dashboard?.startScenarioReceipt;
   const progress = state.dashboard?.openingContractProgress;
   if (!receipt?.effects || !progress) {
-    card.hidden = true;
-    card.replaceChildren();
+    // No receipt means the opening mandate was deferred (skipped tutorial or a
+    // legacy skip) — a dead-end until declared. Render the recovery CTA instead
+    // of hiding the franchise's founding decision forever.
+    card.hidden = false;
+    const kicker = document.createElement("span");
+    kicker.className = "brand-kicker";
+    kicker.textContent = "Opening Contract · Undeclared";
+    const copy = document.createElement("p");
+    copy.textContent =
+      "You deferred your opening mandate. Declare it now to set your franchise identity, owner patience, and first-season promise.";
+    const declare = document.createElement("button");
+    declare.type = "button";
+    declare.className = "btn-primary";
+    declare.textContent = "Declare Opening Contract";
+    declare.addEventListener("click", () => {
+      document.dispatchEvent(new CustomEvent("vsfgm:run-opening-contract"));
+    });
+    card.replaceChildren(kicker, copy, declare);
     return;
   }
   const heading = document.createElement("div");

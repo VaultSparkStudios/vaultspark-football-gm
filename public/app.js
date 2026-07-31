@@ -1,4 +1,4 @@
-import { injectTutorialStyles, mountTutorial } from "./lib/tutorialCampaign.js";
+import { injectTutorialStyles, mountTutorial, resetTutorial } from "./lib/tutorialCampaign.js";
 import { initThemeCustomizer } from "./lib/themeCustomizer.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
@@ -1563,6 +1563,14 @@ function bindEvents() {
   );
   document.getElementById("gistListBtn")?.addEventListener("click", renderGistList);
 
+  document.getElementById("runOpeningContractBtn")?.addEventListener("click", () => {
+    if (state.dashboard?.startScenarioReceipt) {
+      showToast("Your Opening Contract is already declared — see the Overview receipt.");
+      return;
+    }
+    document.dispatchEvent(new CustomEvent("vsfgm:run-opening-contract"));
+  });
+
   document.getElementById("refreshRewindBtn")?.addEventListener("click", () =>
     observeBackgroundTask(loadRewindHistory, {
       surface: "action",
@@ -2044,21 +2052,30 @@ async function init() {
   queueStartupHydration();
   initGistSyncUI();
   injectTutorialStyles();
-  mountTutorial({
-    scope: state.dashboard,
-    completed: Boolean(state.dashboard?.startScenarioReceipt),
-    onComplete: async (request) => {
-      const result = await api("/api/onboarding/start-scenario", {
-        method: "POST",
-        body: request
-      });
-      applyDashboard(result.state);
-      recordPlaytestJourneyCheckpoint("opening-contract-committed");
-      showToast("Opening franchise contract applied.");
-      return result.receipt;
-    },
-    onSkip: () => {}
-  });
+  // One launcher owns both the first-boot mount and every later recovery path
+  // (Overview CTA, Settings, command palette), so re-running a deferred
+  // Opening Contract is idempotent and yields the same receipt shape.
+  function launchOpeningContract({ auto }) {
+    if (!auto) resetTutorial(state.dashboard);
+    mountTutorial({
+      scope: state.dashboard,
+      completed: Boolean(state.dashboard?.startScenarioReceipt),
+      onComplete: async (request) => {
+        const result = await api("/api/onboarding/start-scenario", {
+          method: "POST",
+          body: request
+        });
+        applyDashboard(result.state);
+        recordPlaytestJourneyCheckpoint("opening-contract-committed");
+        showToast("Opening franchise contract applied.");
+        renderOverview();
+        return result.receipt;
+      },
+      onSkip: () => { renderOverview(); }
+    });
+  }
+  launchOpeningContract({ auto: true });
+  document.addEventListener("vsfgm:run-opening-contract", () => launchOpeningContract({ auto: false }));
   mountBetaFeedback();
   observeBackgroundTask(
     () => maybeShowReturnDigest(state.dashboard, {

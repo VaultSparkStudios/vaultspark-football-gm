@@ -26,12 +26,17 @@ export function tutorialSeenKey(scope = {}) {
   return franchiseStorageKey(TUTORIAL_SEEN_PREFIX, scope);
 }
 
-export function hasTutorialBeenSeen(scope = {}, storage = globalThis.localStorage) {
-  return storage?.getItem?.(tutorialSeenKey(scope)) === "done";
+export function getTutorialState(scope = {}, storage = globalThis.localStorage) {
+  const value = storage?.getItem?.(tutorialSeenKey(scope));
+  return value === "done" || value === "deferred" ? value : null;
 }
 
-export function markTutorialSeen(scope = {}, storage = globalThis.localStorage) {
-  storage?.setItem?.(tutorialSeenKey(scope), "done");
+export function hasTutorialBeenSeen(scope = {}, storage = globalThis.localStorage) {
+  return getTutorialState(scope, storage) !== null;
+}
+
+export function markTutorialSeen(scope = {}, storage = globalThis.localStorage, status = "done") {
+  storage?.setItem?.(tutorialSeenKey(scope), status === "deferred" ? "deferred" : "done");
 }
 
 export function resetTutorial(scope = {}, storage = globalThis.localStorage) {
@@ -139,7 +144,13 @@ export function mountTutorial({ onComplete, onSkip, scope = {}, completed = fals
 
   function dismissTutorial(callback) {
     closeModal(overlay);
-    markTutorialSeen(scope, storage);
+    // Skipping is an explicit deferral receipt, not completion — the Opening
+    // Contract stays declarable later (Overview CTA, Settings, command palette).
+    // A contract that was applied stays "done": the receipt screen's own
+    // dismiss must never downgrade completion to deferral.
+    if (getTutorialState(scope, storage) !== "done") {
+      markTutorialSeen(scope, storage, "deferred");
+    }
     overlay.remove();
     callback?.(selections);
   }

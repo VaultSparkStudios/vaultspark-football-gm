@@ -75,14 +75,15 @@ test("first-run tutorial modal uses the shared focus trap", () => {
 
   assert.match(tutorialSource, /import \{ closeModal, openModal \} from "\.\/modalManager\.js"/);
   assert.match(tutorialSource, /openModal\(overlay, \{ onClose: \(\) => dismissTutorial\(onSkip\) \}\)/);
-  assert.match(tutorialSource, /closeModal\(overlay\);\s*markTutorialSeen\(scope, storage\);\s*overlay\.remove\(\);/s);
+  assert.match(tutorialSource, /markTutorialSeen\(scope, storage, "deferred"\);/, "dismiss records deferral, not completion");
+  assert.match(tutorialSource, /getTutorialState\(scope, storage\) !== "done"/, "completed contracts are never downgraded");
   assert.match(tutorialSource, /await onComplete\?\.[\s\S]*markTutorialSeen\(scope, storage\);[\s\S]*renderReceipt\(receipt\)/);
 });
 test("first-run tutorial styles are injected before mounting onboarding", () => {
   const appSource = read("../public/app.js");
 
-  assert.match(appSource, /import \{ injectTutorialStyles, mountTutorial \} from "\.\/lib\/tutorialCampaign\.js"/);
-  assert.match(appSource, /injectTutorialStyles\(\);\s*mountTutorial\(/s);
+  assert.match(appSource, /import \{ injectTutorialStyles, mountTutorial, resetTutorial \} from "\.\/lib\/tutorialCampaign\.js"/);
+  assert.match(appSource, /injectTutorialStyles\(\);[\s\S]*?launchOpeningContract\(\{ auto: true \}\)/);
   assert.match(appSource, /scope: state\.dashboard/);
   assert.match(appSource, /completed: Boolean\(state\.dashboard\?\.startScenarioReceipt\)/);
 });

@@ -389,20 +389,44 @@ export function renderCommandPalette() {
     { id: "guide", label: "Open Game Guide", run: () => openGuideModal() },
     { id: "settings", label: "Open Settings", run: () => activateTab("settingsTab") },
     { id: "advance-week", label: "Advance Week", run: () => document.getElementById("advanceWeekBtn").click() },
-    { id: "refresh", label: "Refresh All", run: () => document.getElementById("refreshBtn").click() }
+    { id: "refresh", label: "Refresh All", run: () => document.getElementById("refreshBtn").click() },
+    // Recovery path for a deferred opening mandate — only offered while undeclared.
+    ...(state.dashboard?.startScenarioReceipt
+      ? []
+      : [{
+          id: "opening-contract",
+          label: "Run Opening Contract",
+          run: () => document.dispatchEvent(new CustomEvent("vsfgm:run-opening-contract"))
+        }])
   ];
+  const input = document.getElementById("commandInput");
+  if (input && input.dataset.filterBound !== "true") {
+    input.dataset.filterBound = "true";
+    input.addEventListener("input", () => {
+      state.commandFilter = input.value || "";
+      renderCommandPalette();
+    });
+  }
   const needle = (state.commandFilter || "").trim().toLowerCase();
-  const rows = commands
-    .filter((cmd) => (!needle ? true : cmd.label.toLowerCase().includes(needle) || cmd.id.includes(needle)))
-    .map((cmd) => ({ id: cmd.id, command: cmd.label, run: "Run" }));
+  const visible = commands.filter(
+    (cmd) => (!needle ? true : cmd.label.toLowerCase().includes(needle) || cmd.id.includes(needle))
+  );
+  const rows = visible.map((cmd) => ({ id: cmd.id, command: cmd.label, run: "Run" }));
   renderTable("commandTable", rows);
   const table = document.getElementById("commandTable");
   table?.querySelectorAll("tr").forEach((tr, index) => {
     if (index === 0) return;
-    const row = rows[index - 1];
+    const command = visible[index - 1];
     const cell = tr.lastElementChild;
-    if (!cell || !row) return;
-    cell.innerHTML = `<button data-command-id="${escapeHtml(row.id)}">Run</button>`;
+    if (!cell || !command) return;
+    const button = document.createElement("button");
+    button.dataset.commandId = command.id;
+    button.textContent = "Run";
+    button.addEventListener("click", () => {
+      document.getElementById("commandPalette")?.classList.add("hidden");
+      command.run();
+    });
+    cell.replaceChildren(button);
   });
 }
 
@@ -436,6 +460,8 @@ export function applySettingsControls() {
   document.getElementById("settingHallOfFameInductionScoreMin").value = settings.hallOfFameInductionScoreMin ?? 240;
   document.getElementById("settingHallOfFameYearsRetiredMin").value = settings.hallOfFameYearsRetiredMin ?? 0;
   document.getElementById("settingRetiredNumberCareerAvMin").value = settings.retiredNumberCareerAvMin ?? 0;
+  const onboardingPanel = document.getElementById("onboardingPanel");
+  if (onboardingPanel) onboardingPanel.hidden = Boolean(state.dashboard?.startScenarioReceipt);
   renderSettingsSpotlight();
 }
 
