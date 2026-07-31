@@ -1328,9 +1328,43 @@ export function closePlayerModal() {
   document.getElementById("playerModal").classList.add("hidden");
 }
 
-export function bindMenuTabs(activateTabFn) {
+export function bindMobileNav() {
+  const toggle = document.getElementById("mobileNavToggle");
+  const scrim = document.getElementById("mobileNavScrim");
+  if (!toggle || !scrim) return null;
+
+  function closeNav() {
+    document.body.classList.remove("mobile-nav-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open navigation");
+  }
+
+  function openNav() {
+    document.body.classList.add("mobile-nav-open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Close navigation");
+  }
+
+  toggle.addEventListener("click", () => {
+    if (document.body.classList.contains("mobile-nav-open")) closeNav();
+    else openNav();
+  });
+
+  scrim.addEventListener("click", closeNav);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("mobile-nav-open")) closeNav();
+  });
+
+  return closeNav;
+}
+
+export function bindMenuTabs(activateTabFn, closeMobileNav) {
   document.querySelectorAll(".menu-btn").forEach((button) => {
-    button.addEventListener("click", () => activateTabFn(button.dataset.tab));
+    button.addEventListener("click", () => {
+      activateTabFn(button.dataset.tab);
+      closeMobileNav?.();
+    });
   });
 }
 

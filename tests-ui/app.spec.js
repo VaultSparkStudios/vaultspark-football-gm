@@ -498,3 +498,28 @@ test("switching runtime mode reloads setup state", async ({ page }) => {
   await expect(page.locator("#savesTable")).toContainText(slot, { timeout: 20_000 });
   await expect(page.locator("#resumeLatestBtn")).toBeEnabled();
 });
+
+test("mobile: hamburger opens nav drawer and tab selection closes it", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await createLeagueFromSetup(page);
+
+  const toggle = page.locator("#mobileNavToggle");
+  const body = page.locator("body");
+
+  // Hamburger visible on mobile
+  await expect(toggle).toBeVisible();
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+
+  // Nav drawer starts closed
+  await expect(body).not.toHaveClass(/mobile-nav-open/);
+
+  // Open drawer
+  await toggle.click();
+  await expect(body).toHaveClass(/mobile-nav-open/);
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+
+  // Select a tab — drawer should close
+  await page.locator('[data-tab="rosterTab"]').click();
+  await expect(body).not.toHaveClass(/mobile-nav-open/);
+  await expect(page.locator("#rosterTab")).toHaveClass(/active/);
+});
