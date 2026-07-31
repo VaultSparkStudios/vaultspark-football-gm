@@ -36,10 +36,27 @@ function latestAudit() {
   if (!fs.existsSync(docs)) return null;
   const latest = fs.readdirSync(docs)
     .filter((name) => /^AUDIT_.*\.md$/.test(name))
-    .map((name) => ({ name, file: path.join(docs, name), mtime: fs.statSync(path.join(docs, name)).mtimeMs }))
-    .sort((a, b) => b.mtime - a.mtime)[0] || null;
+    .map((name) => {
+      const file = path.join(docs, name);
+      const sidecar = readJson(file.replace(/\.md$/i, ".json"), {});
+      const fileDate = name.match(/^AUDIT_(\d{4}-\d{2}-\d{2})/)?.[1] || "";
+      const fileSession = Number(name.match(/_SESSION(\d+)/i)?.[1] || 0);
+      return {
+        name,
+        file,
+        mtime: fs.statSync(file).mtimeMs,
+        sidecar,
+        authorityDate: String(sidecar.date || fileDate),
+        authoritySession: Number(sidecar.session || fileSession || 0)
+      };
+    })
+    .sort((a, b) =>
+      b.authorityDate.localeCompare(a.authorityDate)
+      || b.authoritySession - a.authoritySession
+      || b.name.localeCompare(a.name)
+    )[0] || null;
   if (!latest) return null;
-  const sidecar = readJson(latest.file.replace(/\.md$/i, ".json"), {});
+  const sidecar = latest.sidecar;
   const items = Array.isArray(sidecar.items) ? sidecar.items : [];
   return {
     ...latest,
