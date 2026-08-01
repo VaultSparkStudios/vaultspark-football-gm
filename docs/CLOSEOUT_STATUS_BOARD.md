@@ -1,26 +1,26 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-01 (Session 63 closeout) -->
+<!-- generated-at: 2026-08-01 (Session 64 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S63 ══════╗
-║  Date: 2026-08-01  ·  SIL: 995/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S64 ══════╗
+║  Date: 2026-08-01  ·  SIL: 981/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ **Franchise authority boundary.** No mutating command in the  ║
-║  ✓ **Press-room truth.** The quote seed was `gameId.charCodeAt(  ║
-║  ✓ **Opponent-aware gameplanning.** `choosePlayType` never saw   ║
-║  ✓ **Interactive press conference.** The podium is a decision:   ║
-║  ✓ **Coaching market.** The raw 40–99 numeric staff editor is r  ║
+║  ✓ **Deploy Pages CI failure — an S63 regression.** Widening th  ║
+║  ✓ **`POST /api/press-conference` returned HTTP 500.** `sendJso  ║
+║  ✓ **The S63 matchup-edge receipt never rendered.** `toDashboar  ║
+║  ✓ **A shared-global `fetch` leak between test files.** `create  ║
+║  ✓ `test/server-routes.test.js` — **`src/server.js` had no exec  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
-║    Dev Health         100  ██████████                            ║
+╔══ SCORES · SIL 981/1000 ═══════════════════════════════════════╗
+║    Dev Health         96   ██████████                            ║
 ║    Alignment          100  ██████████                            ║
-║    Momentum           100  ██████████                            ║
-║    Engagement         100  ██████████                            ║
+║    Momentum           92   █████████░                            ║
+║    Engagement         98   ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          100  ██████████                            ║
 ║    Security           100  ██████████                            ║
@@ -31,17 +31,17 @@
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  · context/CURRENT_STATE.md                                      ║
 ║  · context/TASK_BOARD.md                                         ║
-║  · context/LATEST_HANDOFF.md                                     ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  · logs/WORK_LOG.md                                              ║
 ║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  · context/TRUTH_AUDIT.md                                        ║
-║  · context/PROJECT_STATUS.json                                   ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 4 files  ·  M:4 A:0 D:0 ?:0                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,7 +52,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         725/725                                          ║
+║  Tests:         737/737                                          ║
 ║  IGNIS:         5d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  1d ago                                           ║

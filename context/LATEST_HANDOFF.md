@@ -1,3 +1,50 @@
+# Session 64 Closeout (2026-08-01)
+
+## Where We Left Off — Session 64 Closeout (2026-08-01)
+
+Session 64 was a production-readiness audit, not a feature session. It began by checking CI rather than trusting the previous session's green — and **Deploy Pages had failed on the S63 push**. Everything below followed from pulling that thread.
+
+Session Intent: fix flags and errors, audit the project, add test coverage where needed, get to production readiness. **Partially achieved** — every in-repo defect found was fixed and the pipeline is green, but production readiness is explicitly **not** claimed: see the open blocker below.
+
+### Fixed
+
+- **Deploy Pages CI failure — an S63 regression.** Widening the mobile decision-deck band to ≤980px put a `position:fixed; inset:0; z-index:1000` full-screen overlay over the 768px responsive capture, so every tab click hit the overlay. The underlying defect was a product one: that band had silently taken the entire desktop game UI away from tablets and small laptops. Narrowed to **640px**, the width at which `styles.css` actually collapses `.side-menu`.
+- **`POST /api/press-conference` returned HTTP 500.** `sendJson` was called without its `res` argument. Invisible to the node suite, which drives only the browser adapter; it surfaced as `res.writeHead is not a function` in a real browser session. All `sendJson` call sites swept — no others.
+- **The S63 matchup-edge receipt never rendered.** `toDashboardTeam` projects a reduced team shape that omitted `runDefenseRating`/`passDefenseRating`, so `buildMatchupEdgeRead` always returned its honest "unknown" state. The engine half shipped and was measured; the player-facing half was dead.
+- **A shared-global `fetch` leak between test files.** `create-api-client` and `gist-sync-security` stubbed `globalThis.fetch` and never restored it; the shard runs all 78 files in one process (`--test-isolation=none`), so the stubs poisoned every later file. Both now restore it, and the server tests bind the real implementation at load.
+
+### Coverage added (18 tests)
+
+- `test/server-routes.test.js` — **`src/server.js` had no executing coverage at all**; six test files referenced it and none ran it. Now boots the real server and speaks HTTP: core routes, both S63 route families, authority-boundary parity with the browser adapter, non-mutation after denial, and a guard that no mutating route answers with a leaked runtime exception. This is the gap that let the 500 ship green.
+- `tests-ui/s63-surfaces.spec.js` — browser coverage for the press room and coaching market, which had none despite the market *replacing* a live control. Two of the six failed on first run and produced the two defects above.
+- `test/save-payload-budget.test.js` — pins snapshot, weekly-history and per-game weight.
+- `test/tablet-decision-deck.test.js` (+1) — binds the deck band to the responsive-evidence viewports so that CI failure cannot recur.
+
+### Verification
+
+- `npm test` **737/737**, direct exit 0 (core 75 · runtime 457 · sim-contract 75 · sim-realism 1 · studio 129)
+- Playwright **26/26** exit 0 (was 20)
+- `evidence:responsive` **53/53** — 0 runtime errors, 0 overflow, 0 undersized touch targets
+- Pages build + smoke green · 54 browser modules reachable · doctor `blockingFailing` 0
+- `npm audit` 0 vulnerabilities across **zero production dependencies**
+- **Post-push CI green across all four workflows** — including Deploy Pages, the flag this session started with
+
+### OPEN BLOCKER — save payload exceeds a browser storage budget
+
+Measured `mode:"play"` after 6 regular-season weeks: full snapshot **~30.7 MB**, `league.weeklyHistory` **~7.9 MB** (**~24 MB** projected across a season), per retained game **~84 KB** of which `boxScore` is **~98%**. A typical localStorage origin budget is 5–10 MB, so **a franchise cannot finish one season**. The `Auto-backup skipped: Browser storage is full` messages already in test output are that symptom.
+
+Causes: per-game play-by-play box scores retained in `league.weeklyHistory` for the whole season, plus a duplicate copy of current-season games in `weekResultsCurrentSeason`.
+
+**Deliberately not fixed.** Reshaping persistence touches replay, what-if, box-score and history surfaces and needs its own session with explicit save migration for existing franchises. Ceilings are pinned by `test/save-payload-budget.test.js` so it cannot worsen and the fix has a number to beat.
+
+### External, re-verified this session
+
+`/_health` still returns 404 on `playfranchisearchitect.com`, along with `deploy-manifest.json` and `edge-policy-receipt.json`. Re-confirmed as the S33 origin-binding finding rather than an in-repo packaging fault: the live site serves a build from between 2026-07-02 and 2026-07-20 (it has S33's JSON-LD but not S62's `sw.js`). Resolving it needs Cloudflare zone access for that domain, which is not in the secrets gateway. Email-forwarding receipt, founder approval and registry lifecycle reconciliation remain external authorities.
+
+### Next session
+
+Two candidates, in order: (1) the save-payload reshape above, which is the single largest thing between this build and production; (2) the deferred tablet layout and touch affordances, which need their own visual-evidence baseline. Run `/audit` for a fresh ranked list.
+
 # Session 63 Closeout (2026-08-01)
 
 ## Where We Left Off — Session 63 Closeout (2026-08-01)

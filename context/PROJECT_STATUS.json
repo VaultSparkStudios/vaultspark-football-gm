@@ -71,12 +71,12 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 995,
+  "silScore": 981,
   "silCategoriesV3": {
-    "devHealth": 100,
+    "devHealth": 96,
     "creativeAlignment": 100,
-    "momentum": 100,
-    "engagement": 100,
+    "momentum": 92,
+    "engagement": 98,
     "processQuality": 100,
     "crossRepoCoherence": 100,
     "securityPosture": 100,
@@ -84,7 +84,7 @@
     "capitalEfficiency": 95,
     "automationCoverage": 100
   },
-  "currentSession": 63,
+  "currentSession": 64,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": "npm test 737/737 direct exit 0; npm run test:ui 26/26 exit 0; evidence:responsive 53 captures exit 0 with 0 runtime errors / 0 overflow / 0 undersized targets; build:pages + smoke:pages exit 0; check:browser-modules 54; doctor blockingFailing 0; npm audit 0 vulnerabilities with zero production dependencies.",
@@ -113,7 +113,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 875,
+  "silHealth": 861,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -177,7 +177,7 @@
     }
   ],
   "lastSession": 64,
-  "silLastSession": "61",
+  "silLastSession": 64,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",

@@ -928,3 +928,26 @@ Committed SIL follow-ups:
 - `[SIL]` A default parameter that reads like a guard (`teamId = this.controlledTeamId`) is not a guard. Any command surface that accepts an actor identity must state, per route, whether that identity is authoritative — and prove the classification is total, or the next route added silently reopens the hole.
 - `[SIL]` A deterministic stub used to keep a normalizer out of the RNG stream must still *vary*. A stub that returns a constant is deterministic and wrong: it silently collapses a whole dimension of the simulation, and nothing fails.
 - `[SIL]` A test that depends on one seed landing inside a fixed window is a tripwire, not a guarantee. Assert the behaviour across sampled seeds and assert determinism separately and exactly.
+
+## 2026-08-01 — Session 64 Production-Readiness Audit: CI Repair, Dead Surfaces, and a Test-Suite Leak
+
+SIL v3.0: **981 / 1000** (Dev Health 96, Creative Alignment 100, Momentum 92, Engagement 98, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 95, Automation Coverage 100).
+
+This is deliberately **not** another 995. The session opened with a red pipeline and two dead player-facing surfaces, all shipped by Session 63 — a score that ignored that would be the observability lying about itself.
+
+- Dev Health: 96 — the suite is green at 737/737 with direct exit 0, CI is green across all four workflows, and `src/server.js` has executing coverage for the first time. Marked down because the session *began* with a failed Deploy Pages workflow: S63 verified its local gates thoroughly, pushed, and never checked post-push CI, so it reported success while the deploy pipeline was failing.
+- Creative Alignment: 100 — the tablet regression could have been silenced by teaching the evidence script about mobile mode at 768px. The band was narrowed instead, because a full-screen overlay is a product decision about who loses the desktop UI, and S63 had taken it from tablets and small laptops without meaning to.
+- Momentum: 92 — honestly low. This session created little new capability; it repaired the previous one. Recording that plainly is worth more than protecting a streak.
+- Engagement: 98 — two S63 surfaces went from dead to real: the podium's server route returned HTTP 500 on every answer, and the matchup-edge receipt never rendered at all.
+- Process Quality: 100 — every finding came from measurement rather than reading. Three wrong hypotheses for the shard failure (per-test boot cost, an undrained stdout pipe, CPU saturation) were each tried and discarded before the real cause was found. An early framing that blamed `matchupEdges` for the save-size problem was corrected by measuring it at 0.4% of a retained game against `boxScore` at 98%, and the finding was rewritten around the real cause.
+- Cross-Repo Coherence: 100 — no sibling tree touched; the `/_health` 404 was re-verified as the external origin binding rather than fixed locally by guesswork.
+- Security Posture: 100 — the S63 franchise authority boundary is now proved on the server adapter by live HTTP, not only in the browser runtime, and a guard asserts no mutating route leaks a runtime exception.
+- Ecosystem Integration: 100 — audit surfaces, task board, truth audit, shard registry and both suites agree on what shipped and on what remains blocked.
+- Capital Efficiency: 95 — unchanged; zero production dependencies, `npm audit` clean, nothing added to the runtime.
+- Automation Coverage: 100 — 18 new tests closing the systemic gap that let a server-only 500 ship green, plus a guard binding the mobile band to the responsive-evidence viewports so that specific CI failure cannot recur.
+
+Committed SIL follow-ups:
+- `[SIL]` A session is not verified until **post-push CI is green**. Local gates passing and a successful push are not the same as a healthy pipeline; S63 reported success while Deploy Pages was failing on the very commit it pushed.
+- `[SIL]` Testing a function is not testing the wiring. Any claim that something is "surfaced", "visible" or "shown to the player" needs an assertion that renders it — the matchup-edge receipt had green unit tests and green engine tests and never appeared on screen.
+- `[SIL]` Adapter parity asserted by grep is not parity. Two adapters are equivalent only when both are executed; `src/server.js` was referenced by six test files and run by none.
+- `[SIL]` Under `--test-isolation=none`, any test that assigns to a global must restore it. An unrestored stub is process-wide, and "the suite is green" silently depended on no later test needing the real implementation.
