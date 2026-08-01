@@ -1,20 +1,20 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-07-31 (Session 62 closeout) -->
+<!-- generated-at: 2026-08-01 (Session 63 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S62 ══════╗
-║  Date: 2026-07-31  ·  SIL: 995/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S63 ══════╗
+║  Date: 2026-08-01  ·  SIL: 995/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Rival GMs make inbound trade offers (deterministic, TradeSer  ║
-║  ✓ Premium free agency (74+ OVR) is a live weekly market: CPU t  ║
-║  ✓ The GM decision catalog doubled to six archetypes fed by liv  ║
-║  ✓ Owner patience is a live loop: bounded weekly drift with rec  ║
-║  ✓ Home-field advantage and bye rest exist as calibrated, recei  ║
+║  ✓ **Franchise authority boundary.** No mutating command in the  ║
+║  ✓ **Press-room truth.** The quote seed was `gameId.charCodeAt(  ║
+║  ✓ **Opponent-aware gameplanning.** `choosePlayType` never saw   ║
+║  ✓ **Interactive press conference.** The podium is a decision:   ║
+║  ✓ **Coaching market.** The raw 40–99 numeric staff editor is r  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -52,7 +52,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         613/613                                          ║
+║  Tests:         725/725                                          ║
 ║  IGNIS:         5d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  1d ago                                           ║
