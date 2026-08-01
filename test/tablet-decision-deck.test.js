@@ -29,21 +29,51 @@ function withEnvironment({ stored = null, innerWidth = 1280 }, run) {
 
 const loadGate = async () => (await import("../public/lib/mobileLoop.js"));
 
-test("the tablet band now reaches the decision deck", async () => {
+test("large phones now reach the decision deck", async () => {
   const { isMobileModeEnabled, MOBILE_AUTO_MAX_WIDTH } = await loadGate();
-  assert.equal(MOBILE_AUTO_MAX_WIDTH, 980);
+  assert.equal(MOBILE_AUTO_MAX_WIDTH, 640);
 
-  for (const width of [320, 480, 481, 640, 768, 834, 980]) {
+  // 481-640 is the band the original <=480 gate missed: large phones sitting on
+  // a desktop shell whose navigation had already collapsed to one column.
+  for (const width of [320, 390, 480, 481, 560, 639, 640]) {
     const on = withEnvironment({ innerWidth: width }, () => isMobileModeEnabled());
     assert.equal(on, true, `${width}px should auto-enable the deck`);
   }
 });
 
-test("desktop widths still get the full shell", async () => {
+test("tablets and laptops keep the full game UI", async () => {
   const { isMobileModeEnabled } = await loadGate();
-  for (const width of [981, 1024, 1440, 1920]) {
+  // The overlay is a full-screen replacement, so auto-enabling it here would
+  // take the entire desktop shell away from these viewports by default.
+  for (const width of [641, 768, 834, 980, 1024, 1440, 1920]) {
     const on = withEnvironment({ innerWidth: width }, () => isMobileModeEnabled());
     assert.equal(on, false, `${width}px must stay on the desktop layout`);
+  }
+});
+
+test("the deck never swallows a viewport the responsive evidence drives as desktop", async () => {
+  // Binding the two together is the actual regression guard. S63 widened the
+  // band to 980px, which silently put the 768px tablet capture behind a
+  // full-screen overlay; every tab click in CI then hit the overlay instead.
+  // If either side moves again, this fails before CI does.
+  const { isMobileModeEnabled } = await loadGate();
+  const evidence = readFileSync(new URL("../scripts/responsive-evidence.mjs", import.meta.url), "utf8");
+
+  const viewports = [...evidence.matchAll(/\{\s*name:\s*"([a-z]+)",\s*width:\s*(\d+)/g)]
+    .map(([, name, width]) => ({ name, width: Number(width) }));
+  assert.ok(viewports.length >= 3, `expected the evidence viewports, parsed ${viewports.length}`);
+
+  for (const viewport of viewports) {
+    const deckOn = withEnvironment({ innerWidth: viewport.width }, () => isMobileModeEnabled());
+    if (viewport.name === "mobile") {
+      assert.equal(deckOn, true, "the mobile capture drives the decision deck and must reach it");
+    } else {
+      assert.equal(
+        deckOn,
+        false,
+        `the ${viewport.name} capture (${viewport.width}px) drives desktop tabs and must not be covered by the overlay`
+      );
+    }
   }
 });
 
@@ -58,7 +88,7 @@ test("an explicit preference wins in both directions, at every width", async () 
 
 test("the gate accepts an explicit width so it is testable without a window", async () => {
   const { isMobileModeEnabled } = await loadGate();
-  assert.equal(withEnvironment({ innerWidth: 1920 }, () => isMobileModeEnabled(700)), true);
+  assert.equal(withEnvironment({ innerWidth: 1920 }, () => isMobileModeEnabled(500)), true);
   assert.equal(withEnvironment({ innerWidth: 320 }, () => isMobileModeEnabled(1400)), false);
 });
 
@@ -89,5 +119,10 @@ test("the 480px gate is gone from live code, and only survives as history", () =
 });
 
 test("the documented band matches the implemented band", () => {
-  assert.match(source, /≤ 980px/, "the module header must state the band it actually enforces");
+  assert.match(source, /≤ 640px/, "the module header must state the band it actually enforces");
+  assert.match(
+    source,
+    /overcorrected to 980px/,
+    "and must record why the band was narrowed, so it is not widened again by accident"
+  );
 });

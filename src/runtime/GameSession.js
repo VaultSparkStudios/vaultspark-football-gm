@@ -1240,6 +1240,12 @@ function toDashboardTeam(team) {
   return {
     ...toTeamIdentity(team),
     overallRating: team.overallRating,
+    // S63 split unit ratings. The pre-game tactical brief derives its soft-side
+    // read from these; without them `buildMatchupEdgeRead` returns its honest
+    // "unknown" state and the receipt silently never renders, so the opponent
+    // read the drive engine acts on stays invisible to the player.
+    runDefenseRating: team.runDefenseRating ?? null,
+    passDefenseRating: team.passDefenseRating ?? null,
     coaching: team.coaching,
     scheme: team.scheme,
     schemeIdentity: team.schemeIdentity || null,

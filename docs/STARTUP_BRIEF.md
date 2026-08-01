@@ -66,18 +66,18 @@
 
 ╔══ WHERE WE LEFT OFF  ·  Session 63 ════════════════════════════╗
 ║  Shipped:  **Franchise authority boundary.** No mutating comman  ║
-║  Tests:    725/725 passing  ·  Deploy: N/A                       ║
+║  Tests:    737/737 passing  ·  Deploy: N/A                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     29,381 / 1,000,000 tok  ·  claude-code/opus-4-8-1m  ·  meas  ║
-║     ~14,691 tok/turn  ·  cache 50%  ·  60 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
+║     22,095 / 1,000,000 tok  ·  claude-code/opus-4-8-1m  ·  heur  ║
+║     ~11,048 tok/turn  ·  cache 50%  ·  81 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         725/725 passing (2026-08-01)                   ║
+║  ✓  Tests         737/737 passing (2026-08-01)                   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║

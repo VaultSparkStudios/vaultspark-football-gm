@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 63 shipped six ranked items plus one second-order innovation: a franchise authority boundary closing a trust-the-client hole across every mutating command and multiplayer intent; press-room truth (a degenerate quote seed and a structurally unreachable top-performer lookup, both root-fixed behind one shared game-impact authority); opponent-aware gameplanning measured to improve career realism 3 out-of-range to 1; an interactive post-game podium whose promises the next week settles; a deterministic priced coaching market replacing the raw numeric staff editor; tablet decision-deck reachability; and the discovery that the deployed browser league generated all 32 teams with identical coaching and identical owner economics.",
+  "currentFocus": "Session 64 was a production-readiness audit. It repaired a failing Deploy Pages workflow caused by an S63 regression that had taken the desktop UI away from tablets, fixed an HTTP 500 on the server press-conference route and a matchup-edge receipt that never rendered, closed the systemic gap that let both ship by giving src/server.js executing HTTP coverage, and repaired a shared-global fetch leak between test files. The open blocker is save payload: a play-mode snapshot is ~30.7 MB after six weeks against a 5-10 MB localStorage budget, now pinned by a budget guard and recorded for a dedicated persistence session.",
   "nextMilestone": "Apply the exact generated edge contract at the owning host and prove its fingerprint, deployed revision, /_health, required headers, delivered email, approval, and authoritative lifecycle before any launch flip; then take up the deferred mobile/tablet nav parity with a visual re-baseline budget.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated: canonical /_health is invalid, exact deployed revision is absent, required HSTS/CSP/frame/permissions headers are missing, and delivered-email, founder-approval, and sibling lifecycle authorities remain absent."
@@ -18,25 +18,21 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-07-27",
   "testSuiteStatus": {
-    "totalTests": 725,
-    "pass": 725,
+    "totalTests": 737,
+    "pass": 737,
     "fail": 0,
     "lastRun": "2026-08-01",
     "newTestFiles": [
-      "test/franchise-authority.test.js",
-      "test/press-room-truth.test.js",
-      "test/opponent-aware-gameplanning.test.js",
-      "test/interactive-press-conference.test.js",
-      "test/coaching-market.test.js",
-      "test/tablet-decision-deck.test.js",
-      "test/second-order-s63.test.js"
+      "test/server-routes.test.js",
+      "test/save-payload-budget.test.js",
+      "tests-ui/s63-surfaces.spec.js"
     ],
-    "newTestCount": 98,
-    "coverage": "Session 63 canonical aggregate Node 725/725 with direct exit 0 (core 75, runtime 445, sim-contract 75, sim-realism 1, studio 129), Playwright 20/20 exit 0, Pages build + static smoke green, browser module reachability 54/54. Realism additionally measured against a purpose-built baseline probe over 12 seasons: season 44 on-target / 0 out unchanged, career out-of-range 3 -> 1 with the new matchup lean.",
-    "uiSuiteNote": "Playwright 20/20 passed unchanged; the new press-room and coaching-market surfaces are covered by node-level adapter and contract tests plus browser module reachability."
+    "newTestCount": 18,
+    "coverage": "Session 64 canonical aggregate Node 737/737 direct exit 0 (core 75, runtime 457, sim-contract 75, sim-realism 1, studio 129), Playwright 26/26 exit 0, responsive evidence 53/53, Pages build/smoke green, 54 browser modules reachable.",
+    "uiSuiteNote": "Playwright grew 20 -> 26 with browser coverage for the S63 press room and coaching market; two of those six failed on first run and found a server 500 and a receipt that never rendered."
   },
-  "testsPassing": 725,
-  "testsTotal": 725,
+  "testsPassing": 737,
+  "testsTotal": 737,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -91,7 +87,7 @@
   "currentSession": 63,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
-  "lastVerification": "npm test 725/725 direct exit 0; npm run test:ui 20/20 exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54 modules; doctor blockingFailing 0; windows-hide and CANON-044 wave guards green; secrets gateway audit exit 0; zero credential hits across the working diff.",
+  "lastVerification": "npm test 737/737 direct exit 0; npm run test:ui 26/26 exit 0; evidence:responsive 53 captures exit 0 with 0 runtime errors / 0 overflow / 0 undersized targets; build:pages + smoke:pages exit 0; check:browser-modules 54; doctor blockingFailing 0; npm audit 0 vulnerabilities with zero production dependencies.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "claude-fable-5",
   "modelTierDefault": "codex-1m",
@@ -180,7 +176,7 @@
       "lastChecked": "2026-07-31"
     }
   ],
-  "lastSession": 63,
+  "lastSession": 64,
   "silLastSession": "61",
   "bootAmortization": {
     "ratio": 0,

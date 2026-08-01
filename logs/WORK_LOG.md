@@ -537,3 +537,23 @@ Continuous mission: `/start` → `/audit` → `/implement` → `/closeout`. Six 
 **Regression handled honestly.** The S62 rival-offers test failed mid-session. Measured across ten seeds: offers still arrive in 8/10 within 18 weeks, median week 8 — the engine was healthy and the test was pinned to one lucky seed that this session's legitimate simulation changes had moved. Hardened to sample seeds for behaviour while asserting determinism separately and exactly.
 
 **Deferred, at true size.** GM firing (founder creative direction, unchanged). Tablet touch gestures (0 handlers exist; needs a dedicated 53-capture responsive re-baseline).
+
+## 2026-08-01 — Session 64 (production-readiness audit)
+
+Started by checking CI rather than trusting the prior session's green: **Deploy Pages had failed on the S63 push.**
+
+**Fixed (3 real defects, all found by evidence rather than reading):**
+
+1. **CI Deploy Pages failure — my own S63 regression.** Widening the mobile deck band to ≤980px put a full-screen overlay over the 768px responsive capture. The real defect was a product decision, not a broken test: tablets and small laptops had lost the entire desktop UI. Narrowed to 640px, matching where `.side-menu` actually collapses. `evidence:responsive` 53/53 locally.
+2. **`POST /api/press-conference` → HTTP 500.** `sendJson` called without `res`. Node tests exercise the browser adapter, so it was invisible to them; it surfaced as `res.writeHead is not a function` in a browser session. Swept every `sendJson` call site — no others.
+3. **The S63 matchup-edge receipt never rendered.** `toDashboardTeam` omitted the split run/pass defense ratings, so `buildMatchupEdgeRead` always returned its "unknown" state. I had tested the function, not the wiring.
+
+**Coverage added (18 tests):**
+- `test/server-routes.test.js` (6) — boots the real HTTP server on a free port. `src/server.js` previously had *no executing coverage*; other tests only grep it as text. Includes a guard that no mutating route answers with a leaked runtime exception, which is the exact class of the 500 above.
+- `tests-ui/s63-surfaces.spec.js` (6) — browser coverage for the press room and coaching market. Two of the six failed on first run and produced defects 2 and 3.
+- `test/save-payload-budget.test.js` (5) — pins save weight.
+- `test/tablet-decision-deck.test.js` (+1) — binds the deck band to the responsive-evidence viewports.
+
+**Largest finding, deliberately not fixed:** save payload exceeds a browser storage budget — ~30.7 MB snapshot after 6 weeks, `weeklyHistory` projecting ~24 MB per season against 5–10 MB of localStorage. A franchise cannot finish one season. Causes are per-game play-by-play retained in weekly history and a duplicate copy of current-season games. Reshaping persistence touches replay/what-if/history and needs its own session with save migration; ceilings are pinned so it cannot worsen.
+
+**Corrected myself mid-audit:** first framed `matchupEdges` as the storage problem; measured it at 0.4% of per-game weight versus `boxScore` at 98%, and re-scoped the finding accordingly.

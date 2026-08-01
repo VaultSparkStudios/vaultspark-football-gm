@@ -2146,7 +2146,7 @@ async function handleApi(req, res, url) {
       responseId: String(body.responseId),
       questionId: body.questionId ? String(body.questionId) : null
     });
-    sendJson(result.ok ? 200 : result.reasonCode === "press-stale-question" ? 409 : 400, {
+    sendJson(res, result.ok ? 200 : result.reasonCode === "press-stale-question" ? 409 : 400, {
       ...result,
       pressRoom: session.getPressRoom(),
       state: session.getDashboardState()

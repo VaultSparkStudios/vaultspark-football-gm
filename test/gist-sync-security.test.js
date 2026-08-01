@@ -1,7 +1,18 @@
-import test from "node:test";
+import test, { after } from "node:test";
 import assert from "node:assert/strict";
 import { pathToFileURL } from "node:url";
 import path from "node:path";
+
+/**
+ * These tests replace `globalThis.fetch` with stubs. The runtime shard runs every
+ * file in a single process (`--test-isolation=none`), so a stub left installed
+ * leaks into every file that loads afterwards — it silently broke the live server
+ * tests in test/server-routes.test.js, which need the real implementation.
+ * Restoring it after this file's tests keeps the shared global honest.
+ */
+const REAL_FETCH = globalThis.fetch;
+after(() => { globalThis.fetch = REAL_FETCH; });
+
 
 function storage(initial = {}) {
   const data = new Map(Object.entries(initial));

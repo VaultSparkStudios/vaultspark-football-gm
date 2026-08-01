@@ -83,6 +83,8 @@ export const SHARDS = {
     "test/save-integrity.test.js",
     "test/session-lookup-indexes.test.js",
     "test/franchise-authority.test.js",
+    "test/server-routes.test.js",
+    "test/save-payload-budget.test.js",
     "test/press-room-truth.test.js",
     "test/opponent-aware-gameplanning.test.js",
     "test/interactive-press-conference.test.js",

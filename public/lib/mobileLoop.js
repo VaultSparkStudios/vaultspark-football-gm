@@ -1,27 +1,37 @@
 /**
  * Mobile Core Loop — Simplified Single-Column Daily Decision View
  *
- * Activates on narrow and mid-width viewports (≤ 980px) or via Settings toggle.
+ * Activates on phone-width viewports (≤ 640px) or via the Settings toggle.
  * Shows: team record, next game, cap space, top roster needs, and 2-3 actions.
  * The full game UI remains accessible via "Full View" button.
  *
- * ── S63: the tablet band ────────────────────────────────────────────────────
+ * ── The auto-enable band, and why it is 640 ────────────────────────────────
  *
- * This gate used to read `innerWidth <= 480`, so every tablet fell through to
- * the desktop shell — and the desktop shell collapses `.side-menu` to a single
- * column at 640px. The 481–980px band therefore received the worst of both
- * layouts: a tall stacked nav *and* no decision deck, despite S37–S41 spending
- * five sessions building that deck, its pressure stack, and its pending-decision
- * flow. The work was shipped and tested; it was simply gated off.
+ * This overlay is `position: fixed; inset: 0; z-index: 1000` — it *replaces* the
+ * entire game UI rather than layering on it. That makes the auto-enable width a
+ * product decision, not a styling one: every viewport inside the band loses the
+ * full desktop shell by default.
  *
- * 980px matches the breakpoint the layout already uses (`styles.css` switches
- * the desktop grid at `min-width: 980px`), so the deck now covers exactly the
- * band where the desktop layout is not yet in play.
+ * The gate originally read `innerWidth <= 480`, which left large phones on a
+ * desktop layout whose `.side-menu` had already collapsed to a single stacked
+ * column at 640px — the worst of both worlds. S63 corrected that, but
+ * overcorrected to 980px, which swept in tablets *and* small laptops and took
+ * the whole game UI away from them; CI caught it as the overlay intercepting
+ * pointer events during responsive capture at 768px.
+ *
+ * 640px is the honest boundary: it is exactly where `styles.css` collapses the
+ * desktop navigation, so it marks the point at which the full shell genuinely
+ * stops working rather than an arbitrary device guess. Anything wider keeps the
+ * real UI.
+ *
+ * A dedicated *tablet* layout — as opposed to a phone overlay stretched over
+ * tablets — remains deliberately deferred (TASK_BOARD → Next) alongside touch
+ * affordances, because it needs its own visual-evidence baseline.
  *
  * The explicit Settings toggle stays authoritative in *both* directions: a
- * player who chose full view on a phone keeps it, and a player who chose the
- * deck on a desktop keeps that too. Auto-detection only decides for players who
- * never expressed a preference.
+ * player who chose full view on a phone keeps it, and a tablet or desktop player
+ * who prefers the deck can opt in and keep it. Auto-detection only decides for
+ * players who never expressed a preference.
  *
  * Usage:
  *   import { isMobileModeEnabled, setMobileModeEnabled, renderMobileOverlay } from "./lib/mobileLoop.js";
@@ -35,9 +45,14 @@ const MOBILE_PREF_KEY = "vsfgm_mobile_loop";
 
 /**
  * Widest viewport that auto-enables the decision deck.
- * Matches the `min-width: 980px` desktop-grid breakpoint in styles.css.
+ *
+ * Matches the `max-width: 640px` breakpoint at which styles.css collapses
+ * `.side-menu` to a single column — the point where the desktop shell stops
+ * being usable. Kept in sync with scripts/responsive-evidence.mjs by
+ * test/tablet-decision-deck.test.js, so the deck can never silently swallow a
+ * viewport the evidence capture expects to drive as desktop.
  */
-export const MOBILE_AUTO_MAX_WIDTH = 980;
+export const MOBILE_AUTO_MAX_WIDTH = 640;
 
 export function isMobileModeEnabled(width = null) {
   const stored = localStorage.getItem(MOBILE_PREF_KEY);

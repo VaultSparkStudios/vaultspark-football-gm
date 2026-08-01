@@ -931,3 +931,58 @@ Source: `docs/AUDIT_2026-08-01_SESSION63.json` · analysis companion: `docs/AUDI
 Unified Genius List: **0 open / 6 primary closed**. Viable second-order innovation list: **0 open / 1 closed, 2 honestly deferred to Next**.
 
 Launch remains **HOLD** on external hosted/email/edge/approval/registry evidence; no launch evidence was fabricated.
+
+## Session 64 — Production-readiness audit: CI repair, dead surfaces, and the save-size blocker (2026-08-01)
+
+### Fixed
+
+| Severity | Item | Evidence |
+|---|---|---|
+| BLOCKER | Deploy Pages CI failed on the S63 push | S63 widened the mobile deck auto-enable band to ≤980px; the overlay is `position:fixed; inset:0; z-index:1000`, so it covered the 768px responsive capture and intercepted every tab click. Band narrowed to **640px** (where `styles.css` actually collapses `.side-menu`), which also restores the full game UI to tablets and small laptops that S63 had taken it from. `evidence:responsive` now passes 53/53 locally. |
+| HIGH | `/api/press-conference` POST returned HTTP 500 on the server adapter | `sendJson(status, payload)` was called without its `res` argument — surfaced only as `res.writeHead is not a function` in a real browser. Every node test passed over it because they exercise the browser adapter. Swept all `sendJson` call sites: no others affected. |
+| HIGH | The S63 matchup-edge receipt never rendered | `toDashboardTeam` projects a reduced team shape that omitted `runDefenseRating`/`passDefenseRating`, so `buildMatchupEdgeRead` always returned its honest "unknown" state and the pre-game brief showed nothing. The engine half worked; the player-facing half was dead. Split ratings added to the projection. |
+
+### Test coverage added
+
+| Surface | Gap it closes |
+|---|---|
+| `test/server-routes.test.js` (6) | **`src/server.js` had no executing coverage at all** — other tests only grep it as source text. Boots the real server on a free port and speaks HTTP: core routes, both S63 route families, authority-boundary parity with the browser adapter, non-mutation after denial, and a guard that no mutating route answers with a leaked runtime exception. This is the gap that let the 500 ship. |
+| `tests-ui/s63-surfaces.spec.js` (6) | The press room and coaching market shipped with **no browser coverage**, despite the market *replacing* a live control. Proves candidates render with real money, the numeric editor is gone, a hire reaches the staff sheet, a rival's staff is view-only, the podium opens and records a receipt, and the matchup-edge line reaches the player. Two of these failed on first run and found the two HIGH defects above. |
+| `test/save-payload-budget.test.js` (5) | Pins snapshot/weeklyHistory/per-game weight so the blocker below cannot get worse. |
+| `test/tablet-decision-deck.test.js` (+1) | Binds the deck's auto-enable band to the responsive-evidence viewports, so the two can never drift apart and repeat the CI failure. |
+
+### BLOCKER — save payload exceeds a browser storage budget
+
+Measured 2026-08-01, `mode: "play"`, after 6 regular-season weeks:
+
+- full snapshot **~30.7 MB**
+- `league.weeklyHistory` **~7.9 MB** (**~24 MB** projected across an 18-week season)
+- per retained game **~84 KB**, of which `boxScore` (with full play-by-play) is **~98%**
+
+A typical localStorage origin budget is 5–10 MB, so **a franchise cannot finish one season inside it**. The symptom is already visible in test output as `Auto-backup skipped: Browser storage is full`. For a zero-backend browser game whose whole premise is local saves, this is the single largest thing standing between the current build and production.
+
+Two structural causes, both guarded by `test/save-payload-budget.test.js`:
+
+1. `boxScore` including full play-by-play is retained for every game in `league.weeklyHistory` for the entire season, while `gameArchive` already keeps a capped (800) box-score archive for the history UI.
+2. `weekResultsCurrentSeason` persists a **second copy** of the same current-season games `league.weeklyHistory` already holds.
+
+**Deliberately not fixed this session.** Reshaping persistence touches replay, what-if, box-score and history surfaces and needs its own session with explicit save-migration handling and a compatibility path for existing saves. Doing it unscoped at the end of an audit would risk the very saves it is meant to protect. Ceilings are pinned just above today's numbers so the problem cannot quietly worsen and the fix has a number to beat.
+
+### Deferred / external (unchanged, re-verified)
+
+- `/_health` returns **404** on `playfranchisearchitect.com`, along with `deploy-manifest.json` and `edge-policy-receipt.json`. Root cause re-confirmed as the S33 finding, not an in-repo bug: the live origin serves a build from between 2026-07-02 and 2026-07-20 (it has S33's JSON-LD but not S62's `sw.js`). Resolving it needs Cloudflare zone access for that domain, which is not in the secrets gateway.
+- Email-forwarding receipt, founder approval, and registry lifecycle reconciliation remain external authorities.
+
+### Session 64 addendum — a shared-global `fetch` leak in the test suite
+
+The new live-server tests passed in isolation and failed six-for-six inside the runtime shard. Three hypotheses were tried and discarded by measurement (per-test server boots exhausting the readiness window; an undrained stdout pipe blocking the child; CPU saturation). The real cause:
+
+`test/create-api-client.test.js` and `test/gist-sync-security.test.js` replace `globalThis.fetch` with stubs and **never restore it**. The runtime shard runs all 78 files in a single process (`--test-isolation=none`), so those stubs leaked into every file loaded afterwards. `test/server-routes.test.js` then "fetched" a stub, resolving in under a millisecond with an empty body — `SyntaxError: Unexpected end of JSON input`.
+
+Fixed on both sides:
+- Both stubbing files now capture and restore `globalThis.fetch` in an `after` hook. This was a latent defect that would have silently broken any future test needing real network, not just this one.
+- `test/server-routes.test.js` binds the real implementation at module load, so it cannot be poisoned by a future stub that forgets to restore.
+
+Also hardened while diagnosing: the file now boots **one** shared server rather than one per test (six full league generations on a shared event loop), and discards the child's stdout rather than piping a stream nobody drains.
+
+Runtime shard after the fix: **457 pass / 0 fail, exit 0.**
