@@ -1573,6 +1573,38 @@ function estimateAwards(session, year, playoffResult = null) {
   return award;
 }
 
+// Strip boxScore from every game in a week's games array, returning new
+// objects so the live in-memory state is not mutated. This keeps saves lean
+// while the session retains full boxScores for live features (tactical film
+// room reads game.boxScore through getBoxScore(gameId) → gameArchive).
+function stripWeekHistoryBoxScores(weeks) {
+  if (!Array.isArray(weeks)) return weeks;
+  return weeks.map((week) => {
+    if (!week || !Array.isArray(week.games)) return week;
+    return {
+      ...week,
+      games: week.games.map(({ boxScore: _box, ...rest }) => rest)
+    };
+  });
+}
+
+// Migration helper: strip boxScore in-place from loaded snapshot data.
+// Pre-fix saves carry boxScore in weeklyHistory/weekResultsCurrentSeason/
+// history[].weekly — they are already archived in league.gameArchive.
+function migrateStripWeekBoxScores(session) {
+  for (const week of session.league?.weeklyHistory || []) {
+    for (const game of week?.games || []) delete game.boxScore;
+  }
+  for (const week of session.weekResultsCurrentSeason || []) {
+    for (const game of week?.games || []) delete game.boxScore;
+  }
+  for (const season of session.league?.history || []) {
+    for (const week of season?.weekly || []) {
+      for (const game of week?.games || []) delete game.boxScore;
+    }
+  }
+}
+
 export class GameSession {
   constructor({
     rng,
@@ -1634,6 +1666,9 @@ export class GameSession {
   static fromSnapshot(snapshot, rngFactory) {
     const session = Object.create(GameSession.prototype);
     Object.assign(session, snapshot);
+    // Migration: pre-fix saves carry boxScore in week history arrays; strip them
+    // so the loaded session matches what a freshly-saved session would produce.
+    migrateStripWeekBoxScores(session);
     session.schemaVersion = Number(snapshot.schemaVersion || LATEST_SNAPSHOT_SCHEMA_VERSION);
     session.rng = rngFactory(snapshot.rngSeed);
     session.rngStreams = RNGStreams.fromSnapshot(
@@ -1713,6 +1748,19 @@ export class GameSession {
 
   toSnapshot() {
     const controlledTeam = this.getControlledTeam();
+    // Strip boxScore from game entries in persisted week history. boxScores remain
+    // in league.gameArchive (capped at 800 entries) for the historical box-score
+    // viewer. Stripping here rather than in-memory preserves full boxScores for
+    // live features (tactical film room, press conference) during the session.
+    const league = this.league;
+    const leagueForSnapshot = {
+      ...league,
+      weeklyHistory: stripWeekHistoryBoxScores(league.weeklyHistory),
+      history: (league.history || []).map((season) => ({
+        ...season,
+        weekly: stripWeekHistoryBoxScores(season.weekly)
+      }))
+    };
     return {
       schemaVersion: LATEST_SNAPSHOT_SCHEMA_VERSION,
       rngSeed: this.rng.seed,
@@ -1726,14 +1774,14 @@ export class GameSession {
       lastRealismVerificationReport: this.lastRealismVerificationReport,
       realismProfile: this.realismProfile,
       careerRealismProfile: this.careerRealismProfile,
-      league: this.league,
+      league: leagueForSnapshot,
       controlledTeamId: this.controlledTeamId,
       controlledTeamName: controlledTeam?.name || null,
       controlledTeamAbbrev: controlledTeam?.abbrev || controlledTeam?.id || null,
       phase: this.phase,
       currentWeek: this.currentWeek,
       seasonSchedule: this.seasonSchedule,
-      weekResultsCurrentSeason: this.weekResultsCurrentSeason,
+      weekResultsCurrentSeason: stripWeekHistoryBoxScores(this.weekResultsCurrentSeason),
       latestPostseason: this.latestPostseason,
       lastAwardSummary: this.lastAwardSummary,
       pendingSeasonWrap: this.pendingSeasonWrap,

@@ -6,37 +6,34 @@ import { createSession } from "../src/runtime/bootstrap.js";
 /**
  * Save-payload budget guard.
  *
- * This is a *characterization* test, not a passing grade. It records what the
- * snapshot actually weighs today and fails if that grows, because the current
- * numbers are already a live production problem for a zero-backend browser game:
+ * Records what the snapshot weighs and fails if that grows.
  *
- *   measured 2026-08-01, mode "play", after 6 regular-season weeks
- *     full snapshot                     ~30.7 MB
- *     league.weeklyHistory               ~7.9 MB  (~24 MB projected over 18 weeks)
- *     per archived game                  ~84 KB, of which boxScore is ~98%
+ * Fix shipped (this session):
+ *   toSnapshot() now strips boxScore from every game in weeklyHistory,
+ *   weekResultsCurrentSeason, and history[].weekly before serialization.
+ *   boxScores remain in league.gameArchive (capped at 800) for the historical
+ *   box-score viewer. The in-memory session retains full boxScores for live
+ *   features (tactical film room, press conference).
  *
- * A typical localStorage origin budget is 5–10 MB, so a franchise cannot finish
- * one season inside it. The symptom is already visible in test output as
- * "Auto-backup skipped: Browser storage is full".
+ * Measured 2026-08-01, mode "play", after 6 regular-season weeks (post-fix):
+ *   full snapshot (toSnapshot())              ~15 MB  (was ~30.7 MB)
+ *   snapshot.league.weeklyHistory             ~0.2 MB (was ~7.9 MB)
+ *   snapshot game entry (no boxScore)         ~2 KB   (was ~84 KB)
  *
- * Two structural causes, both recorded on the task board rather than changed
- * here — reshaping persistence needs its own session with save-migration care:
- *   1. `boxScore` (including full play-by-play) is retained for every game in
- *      `league.weeklyHistory` for the whole season.
- *   2. `weekResultsCurrentSeason` holds a second copy of the same current-season
- *      games that `league.weeklyHistory` already has.
- *
- * The ceilings below sit just above today's measurements. They exist so the
- * problem cannot quietly get worse, and so the eventual fix has a number to beat.
+ * Remaining cause still recorded on the task board:
+ *   weekResultsCurrentSeason still duplicates the same game records that
+ *   league.weeklyHistory holds — neither has boxScore after the fix, so the
+ *   duplication is small. Resolving it requires more structural work.
  */
 
 const MB = 1024 * 1024;
+const KB = 1024;
 
-// Ceilings are deliberately close to measured values — headroom is for
-// incidental churn, not for new payload.
-const SNAPSHOT_CEILING_MB = 34;
-const WEEKLY_HISTORY_CEILING_MB = 9;
-const PER_GAME_CEILING_KB = 95;
+// Ceilings sit above post-fix measurements with modest headroom for incidental
+// churn. Tightening requires a re-measurement commit.
+const SNAPSHOT_CEILING_MB = 20;
+const WEEKLY_HISTORY_SNAPSHOT_CEILING_MB = 0.5;
+const PER_GAME_SNAPSHOT_CEILING_KB = 10;
 
 function sessionAfterWeeks(weeks) {
   const session = createSession({ seed: 99, startYear: 2026, controlledTeamId: "BUF", mode: "play" });
@@ -55,54 +52,66 @@ test("the six-week snapshot has not grown past its recorded ceiling", () => {
   assert.ok(
     megabytes <= SNAPSHOT_CEILING_MB,
     `snapshot grew to ${megabytes.toFixed(1)} MB (ceiling ${SNAPSHOT_CEILING_MB} MB). ` +
-    "Saves are already over a browser localStorage budget; do not add payload here."
+    "Saves must fit in a browser localStorage budget."
   );
 });
 
-test("weekly history has not grown past its recorded ceiling", () => {
+test("weeklyHistory in the snapshot has not grown past its recorded ceiling", () => {
   const session = sessionAfterWeeks(6);
-  const megabytes = JSON.stringify(session.league.weeklyHistory).length / MB;
+  const snap = session.toSnapshot();
+  const megabytes = JSON.stringify(snap.league.weeklyHistory).length / MB;
   assert.ok(
-    megabytes <= WEEKLY_HISTORY_CEILING_MB,
-    `weeklyHistory grew to ${megabytes.toFixed(1)} MB (ceiling ${WEEKLY_HISTORY_CEILING_MB} MB)`
+    megabytes <= WEEKLY_HISTORY_SNAPSHOT_CEILING_MB,
+    `snapshot weeklyHistory grew to ${megabytes.toFixed(2)} MB (ceiling ${WEEKLY_HISTORY_SNAPSHOT_CEILING_MB} MB). ` +
+    "boxScore must be stripped from week history before saving."
   );
 });
 
-test("a single retained game has not grown past its recorded ceiling", () => {
+test("a single game entry in the snapshot has no boxScore and fits the lean ceiling", () => {
+  const session = sessionAfterWeeks(1);
+  const snap = session.toSnapshot();
+  const game = snap.league.weeklyHistory[0]?.games?.[0];
+  assert.ok(game, "a played week must retain its games in the snapshot");
+  assert.ok(!game.boxScore, "game.boxScore must be absent from snapshot weeklyHistory — it lives in gameArchive");
+  assert.ok(game.gameId, "gameId must be present");
+  assert.ok(typeof game.homeScore === "number", "homeScore must be present");
+  const kilobytes = JSON.stringify(game).length / KB;
+  assert.ok(
+    kilobytes <= PER_GAME_SNAPSHOT_CEILING_KB,
+    `a snapshot game entry grew to ${kilobytes.toFixed(1)} KB (ceiling ${PER_GAME_SNAPSHOT_CEILING_KB} KB)`
+  );
+});
+
+test("gameArchive retains boxScore for the historical box-score viewer", () => {
+  const session = sessionAfterWeeks(1);
+  const snap = session.toSnapshot();
+  const game = snap.league.weeklyHistory[0]?.games?.[0];
+  assert.ok(game, "a played week must exist");
+  const archived = (snap.league.gameArchive || []).find((entry) => entry.gameId === game.gameId);
+  assert.ok(archived, "the game must appear in gameArchive");
+  assert.ok(archived.boxScore, "gameArchive entry must retain boxScore for the box-score viewer");
+});
+
+test("in-memory weeklyHistory retains boxScore for live features", () => {
+  // The session's live weeklyHistory keeps full boxScores so the tactical film
+  // room, press conference, and other in-session features can read them without
+  // a gameArchive lookup. Only toSnapshot() strips them before serialization.
   const session = sessionAfterWeeks(1);
   const game = session.league.weeklyHistory[0]?.games?.[0];
-  assert.ok(game, "a played week must retain its games");
-  const kilobytes = JSON.stringify(game).length / 1024;
-  assert.ok(
-    kilobytes <= PER_GAME_CEILING_KB,
-    `a retained game grew to ${kilobytes.toFixed(1)} KB (ceiling ${PER_GAME_CEILING_KB} KB)`
-  );
+  assert.ok(game, "a played week must exist in memory");
+  assert.ok(game.boxScore, "in-memory game.boxScore must be present for live features");
 });
 
-test("the box score is named as the dominant cost, so the fix targets the right thing", () => {
-  const session = sessionAfterWeeks(1);
-  const game = session.league.weeklyHistory[0].games[0];
-  const total = JSON.stringify(game).length;
-  const boxScore = JSON.stringify(game.boxScore).length;
-
-  assert.ok(
-    boxScore / total > 0.9,
-    `boxScore is ${((boxScore / total) * 100).toFixed(1)}% of a retained game; ` +
-    "if this drops, the persistence shape changed and the recorded finding needs re-measuring."
-  );
-});
-
-test("current-season games are still duplicated across two persisted fields", () => {
-  // Documents cause (2) above. When the duplication is removed this test should
-  // be updated to assert the opposite — it is here so the redundancy cannot be
-  // forgotten, not to bless it.
+test("game records are still stored in both weeklyHistory and weekResultsCurrentSeason", () => {
+  // Documents the remaining duplication. Without boxScore the overhead is small;
+  // eliminating it requires structural work deferred to a dedicated session.
   const session = sessionAfterWeeks(2);
   const snapshot = session.toSnapshot();
 
   const inHistory = (JSON.stringify(snapshot.league.weeklyHistory).match(/"gameId"/g) || []).length;
   const inCurrentSeason = (JSON.stringify(snapshot.weekResultsCurrentSeason).match(/"gameId"/g) || []).length;
 
-  assert.ok(inHistory > 0 && inCurrentSeason > 0);
+  assert.ok(inHistory > 0 && inCurrentSeason > 0, "both fields must have game records");
   assert.equal(
     inCurrentSeason,
     inHistory,
