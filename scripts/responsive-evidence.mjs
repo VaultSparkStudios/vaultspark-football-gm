@@ -185,6 +185,17 @@ async function main() {
         for (const [tabId, label] of evidenceTabs) {
           const tab = page.locator(`[data-tab="${tabId}"]`).first();
           if (await tab.count() !== 1) throw new Error(`Missing responsive-evidence tab authority: ${tabId}`);
+          // CANON-041: below 980px the section nav is an off-canvas drawer that
+          // is closed and `inert` by default, so reaching a tab means opening it
+          // first — exactly what a real tablet user does. The drawer closes
+          // itself on selection, so each tab needs its own open.
+          const navToggle = page.locator("#mobileNavToggle");
+          if (await navToggle.isVisible().catch(() => false)) {
+            await navToggle.click();
+            await page.waitForFunction(
+              () => document.body.classList.contains("mobile-nav-open")
+            );
+          }
           await tab.click();
           await page.waitForFunction((id) => document.getElementById(id)?.classList.contains("active"), tabId);
           const selectors = tabId === "overviewTab"

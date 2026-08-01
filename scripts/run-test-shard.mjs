@@ -149,6 +149,7 @@ export const SHARDS = {
     "test/service-worker-precache.test.js",
     "test/test-receipt.test.js",
     "test/shard-coverage.test.js",
+    "test/duplicate-pr-guard.test.js",
     "test/studio-protocol-smoke.test.js",
     "test/startup-authority-contract.test.js",
     "test/session-intent-classifier.test.js",

@@ -69,6 +69,11 @@ export function setMobileModeEnabled(enabled) {
 
 function _applyBodyClass(enabled) {
   document.body.classList.toggle("mobile-loop-active", !!enabled);
+  // The deck is a full-screen replacement, so it owns the viewport outright.
+  // Dismiss the CANON-041 nav drawer rather than leaving it open underneath —
+  // otherwise exiting via "Full View" reveals an already-open drawer the player
+  // never asked for.
+  if (enabled) document.body.classList.remove("mobile-nav-open");
 }
 
 // ── Render the mobile overlay ─────────────────────────────────────────────────

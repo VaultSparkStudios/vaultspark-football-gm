@@ -1328,9 +1328,77 @@ export function closePlayerModal() {
   document.getElementById("playerModal").classList.add("hidden");
 }
 
-export function bindMenuTabs(activateTabFn) {
+/**
+ * Mobile navigation drawer (CANON-041).
+ *
+ * Below the desktop breakpoint the 14-button `.side-menu` rendered as a static
+ * grid *above* the content, so a phone or tablet user scrolled past the whole
+ * nav before reaching any game. This turns it into a hamburger-triggered
+ * off-canvas drawer.
+ *
+ * The drawer deliberately yields to the mobile decision deck: when
+ * `body.mobile-loop-active` is set the deck is a full-screen replacement that
+ * owns the viewport, so the toggle is hidden and any open drawer is closed. The
+ * two mobile surfaces are never on screen together.
+ *
+ * @returns {(() => void)|null} a close function, so tab selection can dismiss it
+ */
+export function bindMobileNav() {
+  const toggle = document.getElementById("mobileNavToggle");
+  const scrim = document.getElementById("mobileNavScrim");
+  const sideMenu = document.getElementById("sideMenu");
+  if (!toggle || !scrim) return null;
+
+  /** True when the hamburger is actually rendered, i.e. the drawer breakpoint is live. */
+  const isDrawerActive = () => window.getComputedStyle(toggle).display !== "none";
+
+  function closeNav() {
+    document.body.classList.remove("mobile-nav-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open navigation");
+    // Keep the off-screen drawer out of the tab order and away from screen readers.
+    if (sideMenu && isDrawerActive()) sideMenu.setAttribute("inert", "");
+  }
+
+  function openNav() {
+    document.body.classList.add("mobile-nav-open");
+    toggle.setAttribute("aria-expanded", "true");
+    toggle.setAttribute("aria-label", "Close navigation");
+    if (sideMenu) {
+      sideMenu.removeAttribute("inert");
+      sideMenu.querySelector(".menu-btn")?.focus();
+    }
+  }
+
+  function syncInert() {
+    if (!sideMenu) return;
+    if (document.body.classList.contains("mobile-nav-open")) return;
+    if (isDrawerActive()) sideMenu.setAttribute("inert", "");
+    else sideMenu.removeAttribute("inert");
+  }
+
+  syncInert();
+  window.addEventListener("resize", syncInert, { passive: true });
+
+  toggle.addEventListener("click", () => {
+    if (document.body.classList.contains("mobile-nav-open")) closeNav();
+    else openNav();
+  });
+  scrim.addEventListener("click", closeNav);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && document.body.classList.contains("mobile-nav-open")) closeNav();
+  });
+
+  return closeNav;
+}
+
+export function bindMenuTabs(activateTabFn, closeMobileNav) {
   document.querySelectorAll(".menu-btn").forEach((button) => {
-    button.addEventListener("click", () => activateTabFn(button.dataset.tab));
+    button.addEventListener("click", () => {
+      activateTabFn(button.dataset.tab);
+      // Selecting a section is the drawer's job done — get it off the screen.
+      closeMobileNav?.();
+    });
   });
 }
 

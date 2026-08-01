@@ -91,6 +91,7 @@ import {
   loadPlayerModal,
   closePlayerModal,
   bindMenuTabs,
+  bindMobileNav,
   runAction
 } from "./lib/appCore.js";
 
@@ -506,7 +507,10 @@ function exposeLocalTestHooks() {
 }
 
 function bindEvents() {
-  bindMenuTabs(activateTab);
+  // The drawer close handle is threaded into tab binding so choosing a section
+  // dismisses the nav (CANON-041).
+  const closeMobileNav = bindMobileNav();
+  bindMenuTabs(activateTab, closeMobileNav);
 
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();

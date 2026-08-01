@@ -70,14 +70,14 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     37,275 / 1,000,000 tok  ·  claude-code/opus-4-8-1m  ·  heur  ║
-║     ~18,638 tok/turn  ·  cache 50%  ·  47 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     2,734 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,367 tok/turn  ·  cache 50%  ·  132 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         746/746 passing (2026-08-01)                   ║
+║  ⚠  Tests         746/746 passing (2026-08-01) · STALE — run no  ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
