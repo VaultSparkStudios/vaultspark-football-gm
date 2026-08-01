@@ -906,3 +906,28 @@ Source: `docs/AUDIT_2026-07-31.json`.
 Unified Genius List: **0 open / 10 primary closed**. Viable second-order innovation list: **0 open / 3 closed, 2 honestly deferred to Next**.
 
 Launch remains **HOLD** on external hosted/email/edge/approval/registry evidence; no launch evidence was fabricated.
+
+## Session 63 — Franchise Authority, Press-Room Truth, and a League That Was Secretly Flat (2026-08-01)
+
+Source: `docs/AUDIT_2026-08-01_SESSION63.json` · analysis companion: `docs/AUDIT_2026-08-01_SESSION63_ANALYSIS.md`.
+
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Security / competitive integrity / multiplayer | Done S63 — one seam classifies all 58 POST routes (22 guarded, 36 exempt with reasons), enforced pre-dispatch in both adapters; multiplayer intents bound to the author's slot; completeness test fails on any unclassified new route; CPU AI unaffected | 3.5h | franchise-authority-boundary |
+| FIRE | Correctness / narrative fidelity | Done S63 — degenerate char-sum quote seed replaced with a real hash over gameId+year+week+tone; topPerformer reads the true box-score shape via a shared impact authority that also replaces the inline MVP scorer | 2.0h | press-room-truth |
+| FIRE | Simulation realism / depth | Done S63 — bounded, coaching-gated soft-side read drives run/pass lean with a visible receipt; 12-season measurement both ways shows career out-of-range 3 → 1, season unchanged at 44/0 | 3.5h | opponent-aware-gameplanning |
+| FIRE | Engagement / narrative agency | Done S63 — three postures plus an honest skip with deterministic receipted consequences; a promise made after a loss is what next week's follow-up resolves against | 3.5h | interactive-press-conference |
+| HIGH | Game depth / progression / integrity | Done S63 — numeric staff editor replaced by a deterministic priced market of named candidates; ratings are now read-only; root-fixed the coaching-tree name resync that would have reverted every new hire | 4.0h | coaching-market-authority |
+| HIGH | UX / mobile and tablet reach | Done S63 — decision-deck auto-enable widened 480 → 980px, explicit override authoritative both ways, gate re-evaluates on resize | 1.5h | tablet-decision-deck-parity |
+| INNOVATION | Simulation integrity / league generation | Done S63 — the normalizer's constant-returning stub RNG made all 32 teams identical in coaching and owner economics across the entire deployed browser game; replaced with a shared derived RNG and per-club derived economics, holding league averages while restoring spread | 2.5h | flat-league-generation |
+
+## Next (carried honest deferrals)
+
+- [ ] GM firing / terminal game-over state — founder creative direction required (recorded in DECISIONS 2026-07-31; re-verified live S63: patience still floors at 0.05 with no terminal consequence). Item 5 was deliberately scoped to stop short of it rather than let it drift in through the coaching market.
+- [ ] Tablet touch affordances — `grep touchstart|swipe|pointerdown|touchend public/` returns 0 hits (verified S63). Needs a dedicated visual-evidence re-baseline budget for the 53-capture responsive authority. The *reachability* half of S62's `mobile-nav-tablet-parity` shipped as S63 item 6; this is the remainder, at its true size.
+- [ ] Interactive press conference is shipped, so S62's carried entry for it is closed.
+- [ ] Opponent-aware gameplanning is shipped, so S62's carried entry for it is closed.
+
+Unified Genius List: **0 open / 6 primary closed**. Viable second-order innovation list: **0 open / 1 closed, 2 honestly deferred to Next**.
+
+Launch remains **HOLD** on external hosted/email/edge/approval/registry evidence; no launch evidence was fabricated.

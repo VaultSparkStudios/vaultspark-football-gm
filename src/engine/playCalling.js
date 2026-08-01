@@ -46,12 +46,18 @@ export function isClockUrgent(elapsedSeconds) {
  * @returns {"pass"|"run"}
  */
 export function choosePlayType(
-  { down, distance, fieldPosition, scoreDifferential = 0, elapsedSeconds = 0 },
+  { down, distance, fieldPosition, scoreDifferential = 0, elapsedSeconds = 0, matchupLean = 0 },
   offenseContext,
   rng
 ) {
   let lean = offenseContext.passLean;
   const clockUrgent = isClockUrgent(elapsedSeconds);
+
+  // Opponent read (S63): where this specific defense is soft. Bounded and
+  // coaching-gated upstream in matchupEdge.js, and applied before situational
+  // pressure so down/distance/clock still dominate — a gameplan is a starting
+  // point, not a script that survives third-and-long.
+  lean += Number(matchupLean) || 0;
 
   // Distance pressure: long yardage tilts pass, short/goal-line tilts run.
   if (distance >= LONG_DISTANCE) lean += 0.16;

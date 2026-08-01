@@ -4282,6 +4282,21 @@ html[data-theme="light"] .bg-layer {
   line-height: 1.45;
 }
 
+/* S63 — the soft-side read the drive engine gameplans around. Uses the shared
+   accent tokens so it stays legible in both themes and every accent preset. */
+.tactical-matchup-brief span.tactical-matchup-edge {
+  margin-top: 0.15rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--line);
+  color: var(--section-accent-strong, var(--accent));
+  font-weight: 600;
+}
+
+.tactical-matchup-brief span.tactical-matchup-edge[data-edge-direction="none"] {
+  color: var(--muted);
+  font-weight: 500;
+}
+
 .tactical-film-room {
   display: grid;
   gap: 0.55rem;
@@ -4636,3 +4651,187 @@ html[data-theme="light"] .bg-layer {
 .weekly-plan-receipt.positive { border-color: color-mix(in srgb, var(--positive) 65%, var(--line)); }
 @media (max-width: 560px) { .weekly-plan-receipt { align-items: flex-start; flex-direction: column; } .weekly-plan-receipt span { text-align: left; } }
 @media (max-width: 560px) { .contextual-evidence-prompt { max-height: none; overflow: visible; } .contextual-evidence-ratings { grid-template-columns: repeat(2, 1fr); } }
+
+/* ── Press Room (S63) ───────────────────────────────────────────────────────
+   The post-game podium. Built on the same accent/surface tokens the opening
+   contract card uses, so it inherits every theme and accent preset without a
+   hardcoded colour of its own. */
+.press-room-card {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+}
+.press-room-card[hidden] { display: none; }
+
+.press-room-kicker {
+  color: var(--section-accent-strong, var(--accent));
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.press-room-question {
+  margin: 0.5rem 0 0.75rem;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.press-room-options {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.press-room-option,
+.press-room-skip {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  background: var(--inset);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  /* 44px minimum touch target — matches the S29 mobile affordance contract. */
+  min-height: 44px;
+}
+
+.press-room-option:hover:not(:disabled),
+.press-room-skip:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--inset));
+}
+
+.press-room-option:disabled,
+.press-room-skip:disabled { cursor: default; opacity: 0.55; }
+
+.press-room-option:focus-visible,
+.press-room-skip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.press-room-skip {
+  margin-top: 0.5rem;
+  border-style: dashed;
+  background: transparent;
+  color: var(--muted);
+}
+
+.press-option-label { font-weight: 650; font-size: 0.86rem; }
+.press-option-preview { color: var(--ink-dim, var(--muted)); font-size: 0.78rem; font-style: italic; line-height: 1.4; }
+.press-option-consequence { color: var(--muted); font-size: 0.72rem; }
+
+.press-room-last {
+  margin-top: 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 0.3rem;
+}
+.press-room-last-head { color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.press-room-quote { margin: 0; color: var(--ink); font-size: 0.82rem; font-style: italic; line-height: 1.45; }
+.press-room-reasons { color: var(--muted); font-size: 0.72rem; }
+.press-room-note { margin-top: 0.5rem; color: var(--muted); font-size: 0.74rem; }
+
+.press-promise-flag {
+  color: var(--section-accent-strong, var(--accent));
+  font-size: 0.73rem;
+  font-weight: 650;
+}
+
+@media (max-width: 560px) {
+  .press-room-option, .press-room-skip { padding: 0.7rem; }
+  .press-room-question { font-size: 0.9rem; }
+}
+
+/* ── Coaching Market (S63) ──────────────────────────────────────────────────
+   Replaces the raw numeric staff editor. Token-driven so it inherits every
+   theme and accent preset. */
+.coaching-market {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0.8rem 0;
+  padding: 0.85rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--inset);
+}
+
+.coaching-market-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.coaching-market-head h3 { margin: 0; font-size: 0.95rem; color: var(--ink); }
+
+.coaching-market-budget { color: var(--muted); font-size: 0.76rem; }
+.coaching-market-budget.over { color: var(--danger, #d9534f); font-weight: 650; }
+
+.coaching-market-empty { color: var(--muted); font-size: 0.8rem; }
+
+.coaching-market-incumbent {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+}
+.cm-label { color: var(--muted); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; }
+.cm-meta { color: var(--muted); font-size: 0.75rem; }
+.cm-note { color: var(--ink-dim, var(--muted)); font-size: 0.73rem; font-style: italic; }
+.cm-origin { color: var(--section-accent-strong, var(--accent)); font-size: 0.7rem; font-weight: 650; }
+
+.cm-candidates {
+  display: grid;
+  gap: 0.55rem;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.cm-candidate {
+  display: grid;
+  gap: 0.28rem;
+  align-content: start;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+}
+.cm-candidate.cm-blocked { opacity: 0.72; }
+.cm-candidate-head { display: flex; justify-content: space-between; gap: 0.4rem; flex-wrap: wrap; }
+
+.cm-hire, .cm-fire {
+  margin-top: 0.25rem;
+  min-height: 44px;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  color: var(--ink);
+  cursor: pointer;
+  font-weight: 650;
+  font-size: 0.8rem;
+}
+.cm-fire { border-color: var(--line-strong); background: transparent; color: var(--muted); font-weight: 550; }
+.cm-hire:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 22%, var(--surface)); }
+.cm-fire:hover:not(:disabled) { border-color: var(--danger, #d9534f); color: var(--danger, #d9534f); }
+.cm-hire:disabled, .cm-fire:disabled { cursor: default; opacity: 0.5; }
+.cm-hire:focus-visible, .cm-fire:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.cm-blocked-reason { color: var(--muted); font-size: 0.72rem; }
+
+.cm-receipts { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: 0.72rem; }
+.cm-receipts li { margin-bottom: 0.2rem; }
+
+@media (max-width: 560px) {
+  .cm-candidates { grid-template-columns: 1fr; }
+}

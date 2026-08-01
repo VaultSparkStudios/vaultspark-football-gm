@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 62 exhausted ten primary objectives and three second-order innovations centered on rival agency: inbound CPU trade offers, a competitive premium free-agency market, a doubled narrative decision catalog, a live owner-pressure loop, venue effects, one celebration/moment authority, Opening Contract recovery, fail-closed gist integrity, dressed-only injuries, and a precache service worker for instant boot.",
+  "currentFocus": "Session 63 shipped six ranked items plus one second-order innovation: a franchise authority boundary closing a trust-the-client hole across every mutating command and multiplayer intent; press-room truth (a degenerate quote seed and a structurally unreachable top-performer lookup, both root-fixed behind one shared game-impact authority); opponent-aware gameplanning measured to improve career realism 3 out-of-range to 1; an interactive post-game podium whose promises the next week settles; a deterministic priced coaching market replacing the raw numeric staff editor; tablet decision-deck reachability; and the discovery that the deployed browser league generated all 32 teams with identical coaching and identical owner economics.",
   "nextMilestone": "Apply the exact generated edge contract at the owning host and prove its fingerprint, deployed revision, /_health, required headers, delivered email, approval, and authoritative lifecycle before any launch flip; then take up the deferred mobile/tablet nav parity with a visual re-baseline budget.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated: canonical /_health is invalid, exact deployed revision is absent, required HSTS/CSP/frame/permissions headers are missing, and delivered-email, founder-approval, and sibling lifecycle authorities remain absent."
   ],
-  "lastUpdated": "2026-07-31",
+  "lastUpdated": "2026-08-01",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,28 +18,25 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-07-27",
   "testSuiteStatus": {
-    "totalTests": 613,
-    "pass": 613,
+    "totalTests": 725,
+    "pass": 725,
     "fail": 0,
-    "lastRun": "2026-07-31",
+    "lastRun": "2026-08-01",
     "newTestFiles": [
-      "test/injury-eligibility.test.js",
-      "test/opening-contract-recovery.test.js",
-      "test/home-field-advantage.test.js",
-      "test/owner-confidence.test.js",
-      "test/gm-decision-expansion.test.js",
-      "test/rival-trade-offers.test.js",
-      "test/fa-market-competition.test.js",
-      "test/milestone-moments.test.js",
-      "test/service-worker-precache.test.js",
-      "test/second-order-s62.test.js"
+      "test/franchise-authority.test.js",
+      "test/press-room-truth.test.js",
+      "test/opponent-aware-gameplanning.test.js",
+      "test/interactive-press-conference.test.js",
+      "test/coaching-market.test.js",
+      "test/tablet-decision-deck.test.js",
+      "test/second-order-s63.test.js"
     ],
-    "newTestCount": 53,
-    "coverage": "Session 62 canonical aggregate Node 613/613, Playwright 20/20, responsive evidence 53 captures, Pages build/smoke with per-mount service-worker assertions, sim-contract and sim-realism shards green under venue effects.",
-    "uiSuiteNote": "Playwright 20/20 and 53 responsive dark/light mobile/tablet/desktop captures passed automated viewport, contrast, overflow, runtime-error, and touch-target gates."
+    "newTestCount": 98,
+    "coverage": "Session 63 canonical aggregate Node 725/725 with direct exit 0 (core 75, runtime 445, sim-contract 75, sim-realism 1, studio 129), Playwright 20/20 exit 0, Pages build + static smoke green, browser module reachability 54/54. Realism additionally measured against a purpose-built baseline probe over 12 seasons: season 44 on-target / 0 out unchanged, career out-of-range 3 -> 1 with the new matchup lean.",
+    "uiSuiteNote": "Playwright 20/20 passed unchanged; the new press-room and coaching-market surfaces are covered by node-level adapter and contract tests plus browser module reachability."
   },
-  "testsPassing": 613,
-  "testsTotal": 613,
+  "testsPassing": 725,
+  "testsTotal": 725,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -91,26 +88,10 @@
     "capitalEfficiency": 95,
     "automationCoverage": 100
   },
-  "currentSession": 62,
+  "currentSession": 63,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
-  "lastVerification": {
-    "timedOut": [],
-    "failed": [
-      "canonical hosted edge attestation remains HOLD on health, revision, and required headers (external authorities)"
-    ],
-    "passed": [
-      "canonical aggregate Node 613/613 with exit 0 and fresh source-bound receipt",
-      "Playwright 20/20",
-      "responsive evidence 53 captures with required matrix complete",
-      "Pages build and static smoke green including per-mount service-worker/precache assertions",
-      "sim-contract and sim-realism shards green under home-field/bye-rest venue effects",
-      "Unified Genius List 0 open / 10 closed and three second-order innovations shipped",
-      "shard coverage, startup authority, and innovation-pack scans agree with the live S62 audit authority"
-    ],
-    "date": "2026-07-31",
-    "diagnosticNote": "All current-repo gates are green. Hosted application, delivered email, founder approval, and sibling lifecycle reconciliation remain external and launch stays HOLD."
-  },
+  "lastVerification": "npm test 725/725 direct exit 0; npm run test:ui 20/20 exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54 modules; doctor blockingFailing 0; windows-hide and CANON-044 wave guards green; secrets gateway audit exit 0; zero credential hits across the working diff.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "claude-fable-5",
   "modelTierDefault": "codex-1m",
@@ -143,7 +124,7 @@
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-07-31",
+    "date": "2026-08-01",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -158,7 +139,7 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-31",
-  "lastVerificationAt": "2026-07-31",
+  "lastVerificationAt": "2026-08-01",
   "stagingType": "github-pages",
   "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
   "runtimeUrl": "https://playfranchisearchitect.com/",
@@ -199,7 +180,7 @@
       "lastChecked": "2026-07-31"
     }
   ],
-  "lastSession": 61,
+  "lastSession": 63,
   "silLastSession": "61",
   "bootAmortization": {
     "ratio": 0,

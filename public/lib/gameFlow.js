@@ -19,6 +19,7 @@ import { maybeMountContextualFeedback } from "./contextualFeedback.js";
 import { dashboardAuthorityKey } from "./franchiseScope.js";
 import { planRehearsalEvidence } from "./architectPlanRehearsal.js";
 import { createTabHydrationAuthority } from "./tabHydration.js";
+import { renderCoachingMarketPanel } from "./coachingMarketPanel.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -313,6 +314,34 @@ export async function loadStaff() {
   const payload = await api(`/api/staff?team=${encodeURIComponent(teamId)}`);
   state.staffState = payload.staff || null;
   renderStaff();
+  await loadCoachingMarket(teamId);
+}
+
+/**
+ * S63 — the coaching market for the selected role.
+ *
+ * Only the franchise you control has a market: the authority boundary refuses
+ * hires for anyone else, so offering the UI for a rival would be a lie. Viewing
+ * a rival's staff sheet stays available.
+ */
+export async function loadCoachingMarket(teamId = null) {
+  const team = teamId || document.getElementById("staffTeamSelect")?.value || state.dashboard?.controlledTeamId;
+  const role = document.getElementById("staffRoleSelect")?.value || "headCoach";
+  if (team && state.dashboard?.controlledTeamId && team !== state.dashboard.controlledTeamId) {
+    renderCoachingMarketPanel({
+      ok: false,
+      error: `You control ${state.dashboard.controlledTeamId}. ${team}'s staff is visible, but only its own front office can change it.`
+    });
+    return;
+  }
+  try {
+    const market = await api(
+      `/api/coaching-market?team=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}`
+    );
+    renderCoachingMarketPanel(market);
+  } catch (error) {
+    renderCoachingMarketPanel({ ok: false, error: error?.message || "Coaching market unavailable." });
+  }
 }
 
 export async function loadOwner() {
@@ -1094,7 +1123,11 @@ export function showHalftimeAdjustModal(onChoice, options = {}) {
   const brief = buildTacticalMatchupBrief(state.dashboard || {});
   const briefEl = document.getElementById("tacticalMatchupBrief");
   if (briefEl) {
-    briefEl.innerHTML = `<strong>${escapeHtml(brief.headline)}</strong><span>${escapeHtml(brief.read)}</span>`;
+    const edge = brief.matchupEdge;
+    const edgeLine = edge?.available && edge.label
+      ? `<span class="tactical-matchup-edge" data-edge-direction="${escapeHtml(edge.direction)}">${escapeHtml(edge.label)}</span>`
+      : "";
+    briefEl.innerHTML = `<strong>${escapeHtml(brief.headline)}</strong><span>${escapeHtml(brief.read)}</span>${edgeLine}`;
   }
   const optionById = new Map(brief.options.map((option) => [option.id, option]));
   modal.querySelectorAll(".tactic-option").forEach((btn) => btn.classList.remove("selected"));

@@ -30,6 +30,7 @@ import { runLeagueCombine, getCombineSummary } from "./engine/draftCombine.js";
 import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "./engine/playerAgentAI.js";
 import { getFanSentiment, fanApprovalLabel } from "./engine/fanSentiment.js";
 import { getMentorshipStatus, getMentorshipHistory } from "./engine/veteranMentorship.js";
+import { authorizeCommand, TEAM_SCOPED_COMMANDS } from "./runtime/franchiseAuthority.js";
 import {
   startChallenge,
   advanceChallengeSeason,
@@ -295,14 +296,29 @@ function applyCorsHeaders(req, res) {
   }
 }
 
+const BUFFERED_BODY = Symbol("vsfgm.bufferedBody");
+
+/**
+ * Read the request body, once.
+ *
+ * The franchise authority boundary (S63) has to inspect the body before any
+ * mutating route acts on it, but the stream can only be consumed a single time
+ * and every route already calls this helper for itself. Memoizing on the request
+ * lets the guard read the body up front while each route's existing call site
+ * keeps working unchanged.
+ */
 function readRequestBody(req) {
+  if (req[BUFFERED_BODY] !== undefined) return Promise.resolve(req[BUFFERED_BODY]);
   return new Promise((resolve, reject) => {
     let body = "";
     req.on("data", (chunk) => {
       body += chunk;
       if (body.length > 1_000_000) reject(new Error("Body too large"));
     });
-    req.on("end", () => resolve(body));
+    req.on("end", () => {
+      req[BUFFERED_BODY] = body;
+      resolve(body);
+    });
     req.on("error", reject);
   });
 }
@@ -441,6 +457,25 @@ function createSimulationJob(totalSeasons) {
 
 async function handleApi(req, res, url) {
   ensureSession();
+
+  // ── Franchise authority boundary (S63) ──────────────────────────────────────
+  // One seam, checked before any mutating route body is acted on, shared verbatim
+  // with src/app/api/localApiRuntime.js so the two adapters cannot drift. The body
+  // is buffered on the request, so each route's own readRequestBody call is
+  // unaffected.
+  if (req.method === "POST" && TEAM_SCOPED_COMMANDS[url.pathname]) {
+    const authorityDenial = authorizeCommand({
+      session,
+      route: url.pathname,
+      body: parseJsonBody(await readRequestBody(req)),
+      lobby: serverLobby
+    });
+    if (authorityDenial) {
+      sendJson(res, authorityDenial.status, authorityDenial.payload);
+      return true;
+    }
+  }
+
   if (req.method === "GET" && url.pathname === "/api/setup/init") {
     const setupStarted = Date.now();
     const setup = session.getSetupState();
@@ -2059,6 +2094,63 @@ async function handleApi(req, res, url) {
   if (req.method === "GET" && url.pathname === "/api/franchise-moment") {
     const response = handleFranchiseMomentRequest({ session, teamId: url.searchParams.get("team") });
     sendJson(res, response.status, response.body);
+    return true;
+  }
+
+  // ── Coaching market — hire people, not numbers (S63) ───────────────────────
+  if (req.method === "GET" && url.pathname === "/api/coaching-market") {
+    const teamId = (url.searchParams.get("team") || session.controlledTeamId).toUpperCase();
+    const role = url.searchParams.get("role") || "headCoach";
+    const market = session.getCoachingMarket({ teamId, role });
+    sendJson(res, market.ok ? 200 : 400, market);
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/coaching-market") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const check = assertFields(body, ["teamId", "role", "action"]);
+    if (!check.ok) {
+      sendJson(res, 400, { ok: false, error: check.error });
+      return true;
+    }
+    const teamId = String(body.teamId).toUpperCase();
+    const role = String(body.role);
+    const result =
+      String(body.action) === "fire"
+        ? session.fireCoach({ teamId, role })
+        : session.hireCoach({ teamId, role, candidateId: String(body.candidateId || "") });
+    sendJson(res, result.ok ? 200 : 400, {
+      ...result,
+      market: session.getCoachingMarket({ teamId, role }),
+      state: session.getDashboardState()
+    });
+    return true;
+  }
+
+  // ── Press room — the GM answers the question (S63) ─────────────────────────
+  if (req.method === "GET" && url.pathname === "/api/press-conference") {
+    const teamId = (url.searchParams.get("team") || session.controlledTeamId).toUpperCase();
+    sendJson(res, 200, { ok: true, ...session.getPressRoom(teamId) });
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/press-conference") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const check = assertFields(body, ["teamId", "responseId"]);
+    if (!check.ok) {
+      sendJson(res, 400, { ok: false, error: check.error });
+      return true;
+    }
+    const result = session.answerPressQuestion({
+      teamId: String(body.teamId).toUpperCase(),
+      responseId: String(body.responseId),
+      questionId: body.questionId ? String(body.questionId) : null
+    });
+    sendJson(result.ok ? 200 : result.reasonCode === "press-stale-question" ? 409 : 400, {
+      ...result,
+      pressRoom: session.getPressRoom(),
+      state: session.getDashboardState()
+    });
     return true;
   }
 

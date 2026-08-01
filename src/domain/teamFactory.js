@@ -1,6 +1,7 @@
 import { NFL_STRUCTURE, ROSTER_TEMPLATE, TEAM_METADATA } from "../config.js";
 import { buildSyntheticTeamRoster, createSyntheticPlayer } from "./playerFactory.js";
 import { calcTeamOffenseDefense } from "./ratings.js";
+import { derivedRng } from "../utils/rng.js";
 
 const TEAM_ID_ALIASES = {
   JAC: "JAX",
@@ -249,21 +250,43 @@ function createTeam(meta, year, randomizedIdentities = null) {
       aggression: 0.5
     },
     chemistry: 70,
-    owner: {
-      marketSize: 1,
-      ticketPrice: 120,
-      fanInterest: 70,
-      cash: 150_000_000,
-      staffBudget: 28_000_000,
-      facilities: {
-        training: 72,
-        rehab: 72,
-        analytics: 72
-      },
-      finances: {
-        revenueYtd: 0,
-        expensesYtd: 0
-      }
+    owner: buildFranchiseEconomics(meta.id)
+  };
+}
+
+/**
+ * Starting franchise economics, differentiated per club (S63 second-order).
+ *
+ * Every team used to be born with byte-identical owner economics — market size
+ * 1, ticket price 120, cash 150M, staff budget 28M, facilities 72 — and the
+ * owner-profile builder preserves whatever is already present, so those
+ * constants survived every later generation step. The result was a league with
+ * no big-market/small-market axis at all: the revenue model
+ * (`marketSize × ticketPrice × attendance`) returned the same number for all
+ * thirty-two clubs, the owner-pressure loop had nothing to differentiate, and
+ * every front office shopped the coaching market with the same budget.
+ *
+ * Values are derived from the team id, so they are stable across reloads,
+ * saves and both adapters without consuming any RNG stream. Each band is
+ * centred on the previous constant, so the league average is unchanged and this
+ * adds spread rather than shifting balance.
+ */
+export function buildFranchiseEconomics(teamId) {
+  const rng = derivedRng(`economics|${teamId}`);
+  return {
+    marketSize: Number(rng.float(0.82, 1.24).toFixed(3)),
+    ticketPrice: rng.int(96, 148),
+    fanInterest: rng.int(62, 80),
+    cash: rng.int(112, 190) * 1_000_000,
+    staffBudget: rng.int(22, 35) * 1_000_000,
+    facilities: {
+      training: rng.int(64, 82),
+      rehab: rng.int(64, 82),
+      analytics: rng.int(64, 82)
+    },
+    finances: {
+      revenueYtd: 0,
+      expensesYtd: 0
     }
   };
 }
@@ -394,6 +417,8 @@ export function recalculateAllTeamRatings(league) {
     const ratings = calcTeamOffenseDefense(roster);
     team.offenseRating = ratings.offenseRating;
     team.defenseRating = ratings.defenseRating;
+    team.runDefenseRating = ratings.runDefenseRating;
+    team.passDefenseRating = ratings.passDefenseRating;
     team.overallRating = ratings.overallRating;
   }
 }

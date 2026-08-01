@@ -57,6 +57,7 @@ import { runPlayoffsAndSuperBowl, sortStandings } from "../engine/seasonSimulato
 import { simulateRegularSeasonWeek } from "../engine/weeklySimulator.js";
 import { StatBook } from "../stats/statBook.js";
 import { DEFENSIVE_AV_POSITIONS } from "../stats/approximateValue.js";
+import { topGamePerformer } from "../stats/gameImpact.js";
 import {
   applySeasonRealismCalibration,
   buildCareerCalibrationSnapshot,
@@ -107,6 +108,10 @@ import { getGmCommitmentState, latestGmDecision, resolveGmDecisionCommitments } 
 import { applyWeeklyOwnerConfidence, getOwnerConfidenceSummary } from "../engine/ownerConfidence.js";
 import { generateInboundTradeOffers, getInboundTradeOffers, respondToInboundTradeOffer } from "../engine/rivalTradeOffers.js";
 import { generateGmDecisions } from "../engine/gmDecisionAuthority.js";
+import { answerPressQuestion, getPendingPressQuestion, getPressReceipts } from "../engine/pressRoom.js";
+import { buildCoachingMarket, fireCoach, getCoachingMarketReceipts, hireCoach } from "../engine/coachingMarket.js";
+import { initCoachingTree, registerRootHeadCoach } from "../engine/coachingTree.js";
+import { derivedStaffRng, staffSeedKey } from "../engine/staffGeneration.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 
 const TABLE_CATEGORIES = ["passing", "rushing", "receiving", "defense", "blocking", "kicking", "punting", "snaps"];
@@ -1198,10 +1203,22 @@ function ensureLeagueRuntime(league) {
     if (!Array.isArray(team.retiredNumbers)) team.retiredNumbers = [];
     Object.assign(team, ensureTeamIdentity(team));
     if (!team.staff || STAFF_ROLE_KEYS.some((role) => !team.staff?.[role])) {
-      team.staff = buildStaffProfile({ int: () => 76, pick: (items) => items[0] }, team.staff);
+      // S63 — describes a fixed defect, not live debt. innovation-pack:ignore
+      // Was `{ int: () => 76, pick: (items) => items[0] }`, which gave every
+      // team in every browser-created league identical 76-rated staff, one shared
+      // tendency archetype, and a corrupt `yearsRemaining: 76`. The stub existed
+      // because a normalizer must not draw from the session RNG stream; the
+      // derived source keeps that guarantee and still varies by team.
+      team.staff = buildStaffProfile(derivedStaffRng(staffSeedKey(league, team.id)), team.staff);
     }
     if (!team.strategyProfile) team.strategyProfile = "balanced";
-    team.owner = buildOwnerProfile({ int: () => 76, float: () => 1, chance: () => false, pick: (items) => items[0] }, team.owner);
+    // S63 — describes a fixed defect, not live debt. innovation-pack:ignore
+    // The same flat stub, with a wider blast radius. Every owner in every
+    // browser league shared one market size, ticket price, staff budget, cash
+    // position, facility level and personality, so big-market vs small-market,
+    // the revenue model, the owner-pressure loop and the staff budget were all
+    // constants. Derived per team, still session-RNG-free.
+    team.owner = buildOwnerProfile(derivedStaffRng(`owner|${staffSeedKey(league, team.id)}`), team.owner);
     if (!Number.isFinite(team.chemistry)) team.chemistry = 70;
     applyStaffToCoaching(team);
   }
@@ -1430,35 +1447,10 @@ function buildSuperBowlAwardSummary(session, playoffResult) {
     };
   }
 
-  const playerScores = new Map();
-  const applyRows = (rows, scorer, teamId) => {
-    for (const row of rows || []) {
-      const current = playerScores.get(row.playerId) || {
-        playerId: row.playerId,
-        player: row.player,
-        team: teamId,
-        pos: row.pos,
-        score: 0
-      };
-      current.score += scorer(row);
-      playerScores.set(row.playerId, current);
-    }
-  };
-
-  applyRows(boxScore.playerStats?.home?.passing, (row) => (row.yds || 0) / 25 + (row.td || 0) * 4 - (row.int || 0) * 2, boxScore.homeTeam?.teamId);
-  applyRows(boxScore.playerStats?.away?.passing, (row) => (row.yds || 0) / 25 + (row.td || 0) * 4 - (row.int || 0) * 2, boxScore.awayTeam?.teamId);
-  applyRows(boxScore.playerStats?.home?.rushing, (row) => (row.yds || 0) / 10 + (row.td || 0) * 6, boxScore.homeTeam?.teamId);
-  applyRows(boxScore.playerStats?.away?.rushing, (row) => (row.yds || 0) / 10 + (row.td || 0) * 6, boxScore.awayTeam?.teamId);
-  applyRows(boxScore.playerStats?.home?.receiving, (row) => (row.yds || 0) / 10 + (row.td || 0) * 6, boxScore.homeTeam?.teamId);
-  applyRows(boxScore.playerStats?.away?.receiving, (row) => (row.yds || 0) / 10 + (row.td || 0) * 6, boxScore.awayTeam?.teamId);
-  applyRows(boxScore.playerStats?.home?.defense, (row) => (row.tkl || 0) * 0.45 + (row.sacks || 0) * 2 + (row.int || 0) * 3 + (row.pd || 0) * 0.75, boxScore.homeTeam?.teamId);
-  applyRows(boxScore.playerStats?.away?.defense, (row) => (row.tkl || 0) * 0.45 + (row.sacks || 0) * 2 + (row.int || 0) * 3 + (row.pd || 0) * 0.75, boxScore.awayTeam?.teamId);
-  applyRows(boxScore.playerStats?.home?.kicking, (row) => (row.fgm || 0) * 1.5 + (row.xpm || 0) * 0.25, boxScore.homeTeam?.teamId);
-  applyRows(boxScore.playerStats?.away?.kicking, (row) => (row.fgm || 0) * 1.5 + (row.xpm || 0) * 0.25, boxScore.awayTeam?.teamId);
-
-  const mvp = [...playerScores.values()]
-    .filter((row) => !championTeamId || row.team === championTeamId)
-    .sort((a, b) => b.score - a.score)[0] || null;
+  // S63: the impact weights moved to src/stats/gameImpact.js so the post-game
+  // press room resolves the same top performer this ballot does. One game, one
+  // most-valuable performance — the podium and the MVP cannot disagree.
+  const mvp = topGamePerformer(boxScore, { teamId: championTeamId || null });
 
   const scoringSummary = boxScore.scoringSummary || [];
   const pivotalMoment = [...scoringSummary]
@@ -2307,14 +2299,37 @@ export class GameSession {
       return { ok: false, error: "Invalid staff role." };
     }
     const current = team.staff[role];
+
+    // S63 — coaching ability is no longer typed in.
+    //
+    // This endpoint used to accept `playcalling` / `development` / `discipline`
+    // and write them straight into the simulation, clamped 40–99. That made the
+    // Coaching Staff panel a god-mode surface: three number boxes, free, any
+    // value. Ability now comes only from hiring a real candidate through
+    // `/api/coaching-market`, which is priced against the owner's staff budget.
+    // Renaming a staffer stays open — it is cosmetic and players like it.
+    const attemptedRatingChange = [
+      [playcalling, current.playcalling],
+      [development, current.development],
+      [discipline, current.discipline],
+      [yearsRemaining, current.yearsRemaining]
+    ].some(([next, existing]) => next != null && Math.round(Number(next)) !== Math.round(Number(existing)));
+
+    if (attemptedRatingChange) {
+      return {
+        ok: false,
+        error: "Coaching ability is set by who you hire, not by hand. Use the coaching market to change this role.",
+        reasonCode: "staff-ratings-readonly"
+      };
+    }
+
     team.staff[role] = {
-      name: name || current.name,
-      playcalling: clamp(Math.round(Number(playcalling ?? current.playcalling)), 40, 99),
-      development: clamp(Math.round(Number(development ?? current.development)), 40, 99),
-      discipline: clamp(Math.round(Number(discipline ?? current.discipline)), 40, 99),
-      yearsRemaining: clamp(Math.round(Number(yearsRemaining ?? current.yearsRemaining)), 1, 7),
-      specialty: current.specialty || null
+      ...current,
+      name: name || current.name
     };
+    // The coaching tree owns head-coach names (see syncHeadCoachIdentity), so a
+    // rename that only touched the staff sheet was reverted on the next build.
+    if (role === "headCoach") this.syncHeadCoachIdentity(team);
     applyStaffToCoaching(team);
     team.schemeIdentity = schemeIdentityLabel(team);
     team.cultureProfile = cultureIdentity(team, teamPlayersAll(this.league, teamId));
@@ -2367,6 +2382,101 @@ export class GameSession {
       }
     });
     return { ok: true, owner: team.owner };
+  }
+
+  /**
+   * The coaching market (S63) — named candidates, priced against the staff
+   * budget, in place of the raw numeric staff editor.
+   */
+  getCoachingMarket({ teamId = this.controlledTeamId, role = "headCoach" } = {}) {
+    const market = buildCoachingMarket(this.league, teamId, role);
+    if (!market.ok) return market;
+    return { ...market, receipts: getCoachingMarketReceipts(this.league) };
+  }
+
+  /**
+   * Keep the coaching tree's head-coach node in step with the staff sheet.
+   *
+   * The tree is the *name authority* for head coaches: `CoachingService`
+   * re-syncs `team.staff.headCoach.name` from its node every time it builds
+   * (`ensureAuthority`). So changing the staff sheet alone is not a change at
+   * all — the next dashboard build silently reverts it, which is why a hire had
+   * to touch both or ship a coach whose name reverted to his predecessor's.
+   *
+   * Retiring the old node and registering the new one keeps the lineage honest
+   * too: the departing coach stays in the tree as a real career, rather than
+   * being overwritten by whoever replaced him.
+   */
+  syncHeadCoachIdentity(team) {
+    if (!team?.staff?.headCoach) return;
+    if (!this.league.coachingTree) initCoachingTree(this.league);
+    const nodes = this.league.coachingTree.nodes || {};
+    for (const node of Object.values(nodes)) {
+      if (node.currentTeamId === team.id && node.role === "HC") {
+        node.role = "departed";
+        node.currentTeamId = null;
+      }
+    }
+    registerRootHeadCoach(this.league, team, team.staff.headCoach, this.currentYear);
+  }
+
+  hireCoach({ teamId = this.controlledTeamId, role, candidateId } = {}) {
+    const result = hireCoach(this.league, { teamId, role, candidateId });
+    if (result.ok) {
+      const team = teamById(this.league, teamId);
+      if (role === "headCoach") this.syncHeadCoachIdentity(team);
+      applyStaffToCoaching(team);
+      team.schemeIdentity = schemeIdentityLabel(team);
+      team.cultureProfile = cultureIdentity(team, teamPlayersAll(this.league, teamId));
+      this.logTransaction({ type: "coach-hire", teamId, details: { role, name: result.receipt.name } });
+      this.logNews(`${teamId} hires ${result.receipt.name} as ${result.receipt.roleLabel}.`, {
+        teamId,
+        kind: "coach-hire"
+      });
+    }
+    return result;
+  }
+
+  fireCoach({ teamId = this.controlledTeamId, role } = {}) {
+    const result = fireCoach(this.league, { teamId, role });
+    if (result.ok) {
+      const team = teamById(this.league, teamId);
+      if (role === "headCoach") this.syncHeadCoachIdentity(team);
+      applyStaffToCoaching(team);
+      team.schemeIdentity = schemeIdentityLabel(team);
+      team.cultureProfile = cultureIdentity(team, teamPlayersAll(this.league, teamId));
+      this.logTransaction({ type: "coach-fire", teamId, details: { role, name: result.receipt.name } });
+      this.logNews(`${teamId} parts ways with ${result.receipt.name}.`, { teamId, kind: "coach-fire" });
+    }
+    return result;
+  }
+
+  /**
+   * The post-game podium (S63) — the pending question and the GM's own record.
+   */
+  getPressRoom(teamId = this.controlledTeamId) {
+    return {
+      teamId,
+      pending: getPendingPressQuestion(this.league, teamId),
+      receipts: getPressReceipts(this.league)
+    };
+  }
+
+  answerPressQuestion({ teamId = this.controlledTeamId, responseId, questionId = null } = {}) {
+    const result = answerPressQuestion(this.league, { teamId, responseId, questionId });
+    if (result.ok) {
+      this.logTransaction({
+        type: "press-response",
+        teamId,
+        details: { responseId: result.receipt.responseId, week: result.receipt.week, promised: result.promised }
+      });
+      this.logNews(`${teamId} at the podium: ${result.receipt.label}.`, {
+        teamId,
+        kind: "press-response",
+        week: result.receipt.week
+      });
+    }
+    return result;
   }
 
   getTradeOffers() {
@@ -5037,7 +5147,8 @@ export class GameSession {
     dashboard.fanSentiment = fanSentimentData;
     return {
       ...dashboard,
-      gmDecisionQueue: generateGmDecisions(dashboard, { ledger: this.league.gmDecisionLedger })
+      gmDecisionQueue: generateGmDecisions(dashboard, { ledger: this.league.gmDecisionLedger }),
+      pressRoom: this.getPressRoom()
     };
   }
 

@@ -513,3 +513,27 @@ This public repo no longer carries the detailed internal work log. Internal sess
 - Direct evidence: canonical Node 613/613 with a fresh source-bound receipt; Playwright 20/20; responsive evidence 53 captures; Pages build/smoke green with per-mount service-worker assertions; sim-contract and sim-realism shards green under venue effects.
 - Honest deferrals recorded as wins: GM termination (founder canon), mobile/tablet nav parity (visual re-baseline budget), interactive press conferences (creative surface), opponent-aware gameplanning (realism budget), esbuild (supply-chain gate), field-position engine (documented ceiling). No fabricated evidence, no sibling-tree edits, no new dependencies, no variable-cost services. Launch remains HOLD on external hosted/email/approval/lifecycle evidence.
 - CDR reviewed: the founder supplied execution and quality discipline (the /goal /arc mandate), not new public product canon; no private Creative Direction Record is recreated in this deployable public repository. GM-termination design was explicitly reserved for founder direction in DECISIONS.
+
+## 2026-08-01 — Session 63 (`/goal /arc`, saturated)
+
+Continuous mission: `/start` → `/audit` → `/implement` → `/closeout`. Six ranked items plus one second-order innovation shipped.
+
+**Start.** Pull clean. Context meter 0%. Doctor `blockingFailing 0` with one correctly non-blocking sibling-owned lifecycle warning. 0 human-blocked items. S62 genius queue exhausted, so the session needed a fresh audit.
+
+**Baseline honesty.** The first full-suite run was **not** green — `TEST_EXIT=1`, two studio-shard failures. Both were caused by this session's own new audit artifacts: `render-audit-md.mjs --check` correctly reported the hand-written `AUDIT_*.md` as stale against its JSON sidecar. The repo has a canonical audit renderer and the JSON is the source of truth, so the hand-written prose was moved to `docs/AUDIT_2026-08-01_SESSION63_ANALYSIS.md` and the markdown re-rendered canonically.
+
+**Audit.** Every premise verified against live code; four candidates rejected on live evidence (owner finances, staffBudget/facilities, a TODO sweep, and any launch/lifecycle green). Two deferrals recorded honestly.
+
+**Implementation.**
+1. `franchise-authority-boundary` — one seam classifying all 58 POST routes, enforced pre-dispatch in both adapters, with the guard deliberately at the command boundary so CPU AI still mutates all 31 rivals. Multiplayer intents bound to the author's slot.
+2. `press-room-truth` — proved the quote seed degenerate numerically (`BUF-NYJ-3`, `BUF-NYJ-11` and `BUF-MIA-7` all hash to 111 → index 0), then replaced it; fixed a `topPerformer` lookup that read a box-score shape the simulator has never produced.
+3. `opponent-aware-gameplanning` — measured against a purpose-built baseline probe: the matchup lean was temporarily neutralised and 12-season realism re-run. Season 44 on-target / 0 out both ways; career out-of-range **3 → 1 with** the lean. Calibration improved.
+4. `interactive-press-conference` — the podium became a decision; a promise made after a loss is what next week's follow-up resolves against.
+5. `coaching-market-authority` — numeric staff editor replaced by a deterministic priced market. Root-fixed a latent bug that would have shipped it broken: `CoachingService` re-syncs `headCoach.name` from the coaching tree on every dashboard build, so every new hire reverted to his predecessor's name.
+6. `tablet-decision-deck-parity` — deck gate widened 480 → 980px with override precedence and resize re-evaluation.
+
+**Second-order.** Debugging item 5 surfaced that the league normalizer generated staff and owners from a stub RNG returning a constant. In the entire deployed browser game all 32 teams had identical 76-rated coaching, one tendency archetype, a corrupt `yearsRemaining: 76`, and byte-identical owner economics — no big-market/small-market axis existed. Replaced with a shared derived RNG in the utils layer plus per-club derived economics, holding league averages (marketSize 1.001 vs 1, ticket 118 vs 120, staff budget 28.3M vs 28M) while restoring spread.
+
+**Regression handled honestly.** The S62 rival-offers test failed mid-session. Measured across ten seeds: offers still arrive in 8/10 within 18 weeks, median week 8 — the engine was healthy and the test was pinned to one lucky seed that this session's legitimate simulation changes had moved. Hardened to sample seeds for behaviour while asserting determinism separately and exactly.
+
+**Deferred, at true size.** GM firing (founder creative direction, unchanged). Tablet touch gestures (0 handlers exist; needs a dedicated 53-capture responsive re-baseline).

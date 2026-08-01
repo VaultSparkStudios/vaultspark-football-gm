@@ -1,3 +1,41 @@
+# Session 63 Closeout (2026-08-01)
+
+## Where We Left Off — Session 63 Closeout (2026-08-01)
+
+Session 63 ran the requested uninterrupted `/goal /arc`. All six live-code audit objectives plus one second-order innovation are implemented and directly verified. The theme was not new surface area — it was three systems that ran every week and were wrong or inert in ways nothing asserted and no report surfaced.
+
+Session Intent: run the complete `/arc` as one continuous mission, saturate the session, ship every item at the highest quality bar. **Achieved.**
+
+### Shipped
+
+- **Franchise authority boundary.** No mutating command in the game checked which team you were acting for. `POST /api/staff` and `POST /api/owner` accepted an arbitrary `teamId` and wrote live simulation inputs — staff ratings, staff budget, ticket price, facilities — for any franchise; roster, depth-chart, waiver, contract and trade routes were the same shape. `grep controlledTeamId GameSession.js` returned 40 hits and not one was an authorization check; every hit was a default parameter that *looks* like a guard. Multiplayer stamped the authoritative slot onto each intent and discarded it one function later. Closed with one seam (`src/runtime/franchiseAuthority.js`) classifying all 58 POST routes — 22 team-scoped, 36 exempt with recorded reasons — checked pre-dispatch in both adapters. The guard is at the command boundary, not inside `GameSession`, so CPU AI maintenance still mutates all 31 rivals.
+- **Press-room truth.** The quote seed was `gameId.charCodeAt(0) + gameId.charCodeAt(3)`; every team code is three characters, so that is the home initial plus a hyphen and the week never entered it. Proved numerically: `BUF-NYJ-3`, `BUF-NYJ-11` and `BUF-MIA-7` all hash to 111 → index 0. A franchise saw one quote per tone forever. Separately `topPerformer` read `game.playerStats[teamId]`, a shape the simulator has never produced, so it was always null and six of twelve templates silently took their degraded branch. Both root-fixed; the MVP scorer was extracted to a shared `src/stats/gameImpact.js` so the podium and the ballot cannot disagree.
+- **Opponent-aware gameplanning.** `choosePlayType` never saw the defense. A bounded, coaching-gated soft-side read now shifts run/pass lean with a visible receipt in the pre-game brief.
+- **Interactive press conference.** The podium is a decision: three postures plus an honest skip, deterministic receipted consequences, and a promise made after a loss is what next week's follow-up actually settles. The continuity ledger had modelled promise-kept/broken since S29 for promises no player could make.
+- **Coaching market.** The raw 40–99 numeric staff editor is replaced by a deterministic priced market of named candidates — coordinator poaches from the live league plus externals, priced against `owner.staffBudget`, firing charging dead money and owner patience. Ratings are now read-only.
+- **Tablet decision-deck parity.** The deck gated at ≤480px, so no tablet could reach a loop S37–S41 spent five sessions building. Widened to ≤980px with the explicit override authoritative in both directions and re-evaluation on resize.
+- **Second-order — the league was secretly flat.** The normalizer generated staff and owners from a stub RNG returning a constant. In the entire deployed browser game all 32 teams had identical 76-rated coaching, one tendency archetype, a corrupt `yearsRemaining: 76`, and byte-identical owner economics — there was no big-market/small-market axis at all. Replaced with a shared derived RNG in `src/utils/rng.js` plus per-club derived economics.
+
+### Verification
+
+- **Realism was measured, not asserted.** The matchup lean was temporarily neutralised in the working tree and 12-season verification re-run to build a baseline. Season metrics unchanged both ways (44 on-target / 0 out); career out-of-range **3 → 1 with** the lean — calibration improved. The one remaining out-of-range metric (DB career passes-defended) is pre-existing and was left alone rather than tuned to look better.
+- **Balance held under differentiation.** League averages essentially unchanged: marketSize 1.001 (was 1), ticket 118.0 (was 120), staff budget 28.3M (was 28M), facilities 71.7 (was 72).
+- 96 new tests across seven focused files, all shard-registered.
+
+### Root-fixed en route (exposed, not caused, by this session)
+
+- `CoachingService` re-syncs `headCoach.name` from the coaching tree on every dashboard build, so any staff-sheet change reverted silently. This would have shipped the coaching market broken — every new hire reverting to his predecessor's name. Fixed with `syncHeadCoachIdentity` on hire, fire and rename.
+- The baseline suite was **not** green at session start: `render-audit-md.mjs --check` correctly flagged a hand-written audit markdown as stale against its JSON sidecar. The narrative was preserved as `docs/AUDIT_2026-08-01_SESSION63_ANALYSIS.md` and the canonical markdown is now generated.
+- The S62 rival-offers test was pinned to one seed landing inside a fixed window. Before touching it, offer generation was measured across ten seeds (8/10 within 18 weeks, median week 8), confirming the engine was healthy and the test over-fitted. Hardened to sample seeds for behaviour, with determinism asserted separately and exactly.
+
+### Deferred honestly (TASK_BOARD → Next)
+
+- **GM firing / terminal game-over state** — founder creative direction required (recorded 2026-07-31; re-verified live this session: patience still floors at 0.05 with no terminal consequence). The coaching market was deliberately scoped to staff so a game-over state could not drift in as a side effect.
+- **Tablet touch affordances** — `grep touchstart|swipe|pointerdown|touchend public/` returns 0 hits. Needs a dedicated visual-evidence re-baseline budget for the 53-capture responsive authority. The *reachability* half of S62's carried item shipped this session; this is the remainder, at its true size.
+
+### Next session
+
+Unified Genius List is exhausted (6/6 primary, 1/1 second-order). Run `/audit` for a fresh ranked list. Launch remains **HOLD** on external hosted/email/edge/approval/registry evidence; no launch evidence was fabricated.
 # Session 62 Closeout (2026-07-31)
 
 ## Where We Left Off — Session 62 Closeout (2026-07-31)

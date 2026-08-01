@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {
   buildMeritAdjustedRoomShares,
+  resolveDepthChartRoomShares,
   rotationMeritScore
 } from "../src/engine/depthChartUsage.js";
 import { simulateGame } from "../src/engine/gameSimulator.js";
@@ -116,4 +117,43 @@ test("box score situational conversions are observed from stamped plays and rich
   assert.ok(Number.isFinite(seasonPasser.pot));
   assert.ok(Object.hasOwn(seasonPasser, "tdPct"));
   assert.ok(Object.hasOwn(seasonPasser, "anya"));
+});
+
+test("a hand-set snap share is honoured exactly, not shifted by rounding (S63)", () => {
+  // The rounding remainder used to be absorbed by a manual row before any
+  // automatic row, so a value the user typed came back a thousandth off. Assert
+  // the contract directly across many room shapes and targets, rather than
+  // relying on whichever seed happened to expose it.
+  for (const roomSize of [2, 3, 4, 5, 6]) {
+    for (const manualShare of [0.05, 0.12, 0.18, 0.25, 0.33, 0.47]) {
+      const playerIds = Array.from({ length: roomSize }, (_, i) => `p${i}`);
+      const baseShares = Array.from({ length: roomSize }, (_, i) => Number((0.9 / roomSize + i * 0.007).toFixed(3)));
+      const rows = resolveDepthChartRoomShares({
+        position: "RB",
+        playerIds,
+        baseShares,
+        manualSharesByPlayer: { p0: manualShare }
+      });
+
+      const manualRow = rows.find((row) => row.playerId === "p0");
+      assert.equal(
+        manualRow.snapShare,
+        manualShare,
+        `room ${roomSize}, manual ${manualShare}: a hand-set share must be exact`
+      );
+      assert.equal(manualRow.manual, true);
+    }
+  }
+});
+
+test("the room still totals correctly when a manual share forces a remainder (S63)", () => {
+  const rows = resolveDepthChartRoomShares({
+    position: "RB",
+    playerIds: ["p0", "p1", "p2"],
+    baseShares: [0.5, 0.31, 0.19],
+    manualSharesByPlayer: { p0: 0.18 }
+  });
+  const total = Number(rows.reduce((sum, row) => sum + row.snapShare, 0).toFixed(3));
+  assert.equal(total, 1);
+  assert.equal(rows.find((row) => row.playerId === "p0").snapShare, 0.18);
 });

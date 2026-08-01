@@ -1,9 +1,27 @@
 /**
  * Mobile Core Loop — Simplified Single-Column Daily Decision View
  *
- * Activates on narrow viewports (≤ 480px) or via Settings toggle.
+ * Activates on narrow and mid-width viewports (≤ 980px) or via Settings toggle.
  * Shows: team record, next game, cap space, top roster needs, and 2-3 actions.
  * The full game UI remains accessible via "Full View" button.
+ *
+ * ── S63: the tablet band ────────────────────────────────────────────────────
+ *
+ * This gate used to read `innerWidth <= 480`, so every tablet fell through to
+ * the desktop shell — and the desktop shell collapses `.side-menu` to a single
+ * column at 640px. The 481–980px band therefore received the worst of both
+ * layouts: a tall stacked nav *and* no decision deck, despite S37–S41 spending
+ * five sessions building that deck, its pressure stack, and its pending-decision
+ * flow. The work was shipped and tested; it was simply gated off.
+ *
+ * 980px matches the breakpoint the layout already uses (`styles.css` switches
+ * the desktop grid at `min-width: 980px`), so the deck now covers exactly the
+ * band where the desktop layout is not yet in play.
+ *
+ * The explicit Settings toggle stays authoritative in *both* directions: a
+ * player who chose full view on a phone keeps it, and a player who chose the
+ * deck on a desktop keeps that too. Auto-detection only decides for players who
+ * never expressed a preference.
  *
  * Usage:
  *   import { isMobileModeEnabled, setMobileModeEnabled, renderMobileOverlay } from "./lib/mobileLoop.js";
@@ -15,11 +33,18 @@ const MOBILE_PREF_KEY = "vsfgm_mobile_loop";
 
 // ── Mode detection ────────────────────────────────────────────────────────────
 
-export function isMobileModeEnabled() {
+/**
+ * Widest viewport that auto-enables the decision deck.
+ * Matches the `min-width: 980px` desktop-grid breakpoint in styles.css.
+ */
+export const MOBILE_AUTO_MAX_WIDTH = 980;
+
+export function isMobileModeEnabled(width = null) {
   const stored = localStorage.getItem(MOBILE_PREF_KEY);
   if (stored === "1") return true;
   if (stored === "0") return false;
-  return window.innerWidth <= 480;
+  const viewport = Number.isFinite(width) ? width : window.innerWidth;
+  return viewport <= MOBILE_AUTO_MAX_WIDTH;
 }
 
 export function setMobileModeEnabled(enabled) {
@@ -187,14 +212,42 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
 
 // ── Init on load ──────────────────────────────────────────────────────────────
 
-export function initMobileLoop(state, onAdvanceWeek) {
+/**
+ * Apply the current gate verdict to the overlay.
+ * Exported so the resize listener and the Settings toggle share one path.
+ */
+export function syncMobileMode(state, onAdvanceWeek) {
   const overlay = document.getElementById("mobileLoopOverlay");
-  if (!overlay) return;
+  if (!overlay) return false;
   const active = isMobileModeEnabled();
   _applyBodyClass(active);
   if (active) {
     overlay.classList.remove("hidden");
     renderMobileOverlay(state, onAdvanceWeek);
+  } else {
+    overlay.classList.add("hidden");
+  }
+  return active;
+}
+
+export function initMobileLoop(state, onAdvanceWeek) {
+  const overlay = document.getElementById("mobileLoopOverlay");
+  if (!overlay) return;
+  syncMobileMode(state, onAdvanceWeek);
+
+  // Re-evaluate on viewport change. The gate used to run only at boot, so
+  // rotating a tablet or resizing a window left the player in whichever mode
+  // they happened to load in.
+  if (!overlay.dataset.resizeWired && typeof window.addEventListener === "function") {
+    overlay.dataset.resizeWired = "1";
+    let frame = null;
+    window.addEventListener("resize", () => {
+      if (frame) return;
+      frame = setTimeout(() => {
+        frame = null;
+        syncMobileMode(state, onAdvanceWeek);
+      }, 150);
+    });
   }
 }
 

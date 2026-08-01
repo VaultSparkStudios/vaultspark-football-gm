@@ -197,7 +197,19 @@ export function resolveDepthChartShareValues({
   const rounded = shares.map((value) => roundToDepthShare(value));
   const delta = Number((targetTotal - total(rounded)).toFixed(3));
   if (Math.abs(delta) >= 0.001) {
-    const adjustmentIndex = [...autoIndexes, ...manualIndexes].reverse().find((index) => rounded[index] + delta >= 0);
+    // Absorb the rounding remainder on an auto row first, and only fall back to
+    // a manually set row if no auto row can take it.
+    //
+    // This previously read `[...autoIndexes, ...manualIndexes].reverse()`, which
+    // reverses the *concatenation* and therefore tries manual rows first — the
+    // exact opposite of the ordering the concatenation was written to express.
+    // The visible effect is that a share the user typed by hand comes back a
+    // thousandth off (set 0.18, read 0.181). Reversing each group independently
+    // keeps the original back-to-front preference within a group while making a
+    // manual share genuinely last-resort, so a hand-set value is honoured exactly
+    // whenever any automatic row can carry the remainder.
+    const absorbOrder = [...autoIndexes].reverse().concat([...manualIndexes].reverse());
+    const adjustmentIndex = absorbOrder.find((index) => rounded[index] + delta >= 0);
     if (Number.isInteger(adjustmentIndex)) rounded[adjustmentIndex] = roundToDepthShare(rounded[adjustmentIndex] + delta);
   }
   return rounded;

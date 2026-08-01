@@ -647,3 +647,27 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Decision:** The build-generated service worker precaches the static module graph (cache-first, background revalidate) but is network-only for `/api/`, `_health`, `deploy-manifest.json`, and `edge-policy-receipt.json`.
 
 **Rationale:** Instant boot must never make freshness evidence lie; a cached health receipt is a fabricated one.
+
+## 2026-08-01 — Session 63
+
+**The authority guard belongs at the command boundary, not in `GameSession`.** Every mutating method (`releasePlayer`, `setDepthChart`, `setPracticeSquad`, …) is also called internally by CPU AI maintenance for all 31 rival teams. Placing a `teamId === controlledTeamId` check inside those methods — the obvious fix — would have broken the AI silently. `src/runtime/franchiseAuthority.js` therefore guards the shared command layer, matching S61's Architect Thesis handler and S62's dashboard payload parity, so both adapters inherit one verdict structurally. A regression test asserts `GameSession` itself carries no `team-authority` reason code, so the boundary cannot drift inward later.
+
+**Route classification must be total, not best-effort.** The original hole was created silently — routes were added without anyone deciding whether they carried franchise authority. Rather than guard a list, all 58 POST routes are classified as either team-scoped or explicitly exempt *with a recorded reason*, and a test fails on any newly added unclassified route. An exemption with no real justification also fails. This is what makes the fix durable rather than a snapshot.
+
+**Coaching ability became read-only rather than merely guarded.** Closing the authority hole would have left `POST /api/staff` as god-mode for your *own* team — three number boxes writing live simulation inputs at zero cost. `updateStaff` now refuses rating writes with `reasonCode: staff-ratings-readonly` and ability comes only from hiring a priced candidate. Renaming stays open because it is cosmetic and players like it.
+
+**Coach salary is a pure function of ratings, so no save migration was needed.** Existing saves have staff with no salary field. Deriving price from ratings means every coach in every existing franchise already has a consistent, well-defined value, and `owner.staffBudget` — already a live simulation input — finally binds.
+
+**The coaching market is derived, not rolled.** Candidates come from a deterministic hash of (league identity, year, team, role). A market that rerolled on fetch would be its own cheat surface: refresh until an elite coordinator appears.
+
+**Realism was measured, not asserted.** Item 3 changes play calling, so a claim that calibration held would have been unfalsifiable without a baseline. The matchup lean was temporarily neutralised in the working tree and the 12-season verification re-run to establish one. Result: season metrics unchanged (44 on-target / 0 out); career out-of-range **3 → 1 with** the lean. The remaining out-of-range metric (DB career passes-defended) is pre-existing and was left alone rather than tuned to look better.
+
+**A deterministic stub is not automatically a safe stub.** The league normalizer used `{ int: () => 76, pick: (items) => items[0] }` to avoid consuming the session RNG stream — a correct constraint, since a normalizer that draws from the stream desyncs replays. But `createLeagueBase` does not build staff, so in the browser runtime the safety net became the primary generator and every team in the deployed game had identical coaching and identical owner economics. The constraint is kept and the constant dropped: `derivedRng` in `src/utils/rng.js` derives values from a seed key instead of drawing from a stream.
+
+**Franchise economics were differentiated at the factory, centred on the values they replaced.** `createTeam` hardcoded identical owner economics for all 32 clubs, which the profile builder then preserved — so there was no big-market/small-market axis anywhere in the game. Each new band is centred on the old constant (marketSize ~1, ticket ~120, staff budget ~28M, facilities ~72), so this adds spread without moving league balance.
+
+**GM firing remains unshipped, deliberately.** Re-verified live: `ownerConfidence.js` still floors patience at 0.05 and bands `<= 0.2` as critical with no terminal consequence. Founder creative direction is still required (recorded 2026-07-31). The coaching market was explicitly scoped to hiring and firing *staff* so a game-over state could not drift in as a side effect.
+
+**A seed-pinned test was hardened, not silenced.** The S62 rival-offers test broke because this session legitimately changed simulation outcomes. Before touching it, offer generation was measured across ten seeds — 8/10 produce an offer within 18 weeks, median week 8 — confirming the engine was healthy and the test was over-fitted to one league. It now samples seeds for behaviour and asserts determinism separately and exactly.
+
+**The canonical audit renderer is the authority; the JSON sidecar is the source of truth.** The session initially hand-wrote `AUDIT_2026-08-01_SESSION63.md`, which the studio smoke test correctly flagged as stale against its sidecar. The narrative analysis was preserved as a companion document rather than discarded, and the canonical markdown is now generated.

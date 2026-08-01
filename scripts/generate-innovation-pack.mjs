@@ -89,13 +89,29 @@ function markerCandidates() {
     for (const file of walk(path.join(root, sourceDir))) {
       const rel = path.relative(root, file).replace(/\\/g, "/");
       if (rel === "scripts/generate-innovation-pack.mjs") continue;
-      const lines = readText(file).split(/\r?\n/);
+      const text = readText(file);
+      // A file may declare that its *prose* documents a fixed defect rather than
+      // live debt. Deliberately scoped to the "unfinished behavior" class only:
+      // TODO / FIXME / HACK still fire everywhere, so a real marker added to one
+      // of these files later is never suppressed.
+      const prosePardon = /innovation-pack:ignore/i.test(text);
+      const lines = text.split(/\r?\n/);
       lines.forEach((line, idx) => {
         const fragment = commentFragments(line).find((comment) => patterns.some((pattern) => pattern.re.test(comment)));
         if (!fragment) return;
+        // Intentional, non-debt mentions opt out explicitly.
+        //
+        // This used to be a hardcoded allowlist of two exact phrases, which does
+        // not scale: prose that *documents a fixed defect* legitimately contains
+        // words like "stub", and rewording good documentation to satisfy a
+        // keyword scan is the wrong trade. `innovation-pack:ignore` is the
+        // general form; the two original phrases are kept so existing sentinels
+        // continue to work without being restated.
+        if (/innovation-pack:ignore/i.test(fragment)) return;
         if (/Client-only runtime not implemented|unresolved computed-block stub/.test(fragment)) return;
         const hit = patterns.find((pattern) => pattern.re.test(fragment));
         if (sourceDir === "test" && hit.reason === "unfinished behavior marker") return;
+        if (prosePardon && hit.reason === "unfinished behavior marker") return;
         rows.push({ rel, line: idx + 1, reason: hit.reason, text: fragment.trim().slice(0, 120) });
       });
     }

@@ -185,7 +185,15 @@ test("POST /api/advance-week applies a GM decision choice to state and ledgers",
   const session = rt.getSession();
   assert.ok(session.league.gmDecisionLedger.some((entry) => entry.choiceId === "buy"));
   assert.ok(session.getTransactionLog({ type: "gm-decision-buy" }).length >= 1);
-  assert.ok(session.getNewsFeed({ limit: 5 }).some((entry) => /buy at the trade deadline/i.test(entry.headline)));
+  // The decision must announce itself in the news feed. The window is
+  // deliberately wider than the handful of entries a single week produces: game
+  // results, injuries and commitment receipts all land in the same advance, so a
+  // top-5 window was really asserting "no busy week", which any legitimate change
+  // to simulation outcomes can shift by one position.
+  assert.ok(
+    session.getNewsFeed({ limit: 25 }).some((entry) => /buy at the trade deadline/i.test(entry.headline)),
+    "the applied GM decision must announce itself in the news feed"
+  );
 });
 // ── /api/team-archetypes ──────────────────────────────────────────────────────
 

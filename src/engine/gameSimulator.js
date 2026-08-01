@@ -3,6 +3,7 @@ import { createZeroedSeasonStats, mergeStats } from "../domain/playerFactory.js"
 import { coverageDepthRating, quarterbackDepthAccuracy } from "../domain/ratings.js";
 import { clamp, mean } from "../utils/rng.js";
 import { choosePlayType, chooseFourthDownDecision, fieldGoalDistanceFromPosition } from "./playCalling.js";
+import { matchupEdgeFromContexts } from "./matchupEdge.js";
 import { getTeamPlayers } from "../domain/teamFactory.js";
 import {
   buildMeritAdjustedRoomShares,
@@ -717,6 +718,14 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
   const coverage = defenseContext.unitRatings?.coverage || 70;
   const tackling = defenseContext.unitRatings?.tackling || 70;
 
+  // ── Opponent-aware gameplanning (S63) ───────────────────────────────────────
+  // These unit ratings already decided how well a play *worked*; until now they
+  // never decided which play was *called*. The edge is relative (where is this
+  // defense soft, not how good is it), bounded, and gated on coaching quality —
+  // see src/engine/matchupEdge.js.
+  const matchupEdge = matchupEdgeFromContexts(offenseContext, defenseContext);
+  const matchupLean = matchupEdge.delta;
+
   const addPlay = (entry) => {
     playLog.push({
       offenseTeamId: offenseContext.team.id,
@@ -756,7 +765,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
 
     const yardsBeforePlay = driveYards;
     const playType = choosePlayType(
-      { down, distance, fieldPosition, scoreDifferential, elapsedSeconds },
+      { down, distance, fieldPosition, scoreDifferential, elapsedSeconds, matchupLean },
       offenseContext,
       rng
     );
@@ -1956,6 +1965,12 @@ export function simulateGame({
     awayTurnovers,
     homeStrategy: homeContext.weeklyPlan || null,
     awayStrategy: awayContext.weeklyPlan || null,
+    // S63 receipt: the opponent read each offense actually gameplanned around.
+    // Derived from the same unit ratings the drive engine used — no hidden math.
+    matchupEdges: {
+      home: matchupEdgeFromContexts(homeContext, awayContext),
+      away: matchupEdgeFromContexts(awayContext, homeContext)
+    },
     venue,
     isTie: homeScore === awayScore,
     winnerId: homeScore === awayScore ? null : homeScore > awayScore ? homeTeamId : awayTeamId,

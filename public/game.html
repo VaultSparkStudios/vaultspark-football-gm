@@ -95,6 +95,8 @@
                 </div>
                 <div id="weeklyPlanSummaryText" class="small">The weekly game plan and organizational pressure summary will appear here.</div>
                 <section id="openingContractCard" class="opening-contract-card" aria-live="polite" hidden></section>
+                <!-- S63 — the post-game podium, where the GM answers the room. -->
+                <section id="pressRoomCard" class="press-room-card" aria-live="polite" aria-label="Post-game press conference" hidden></section>
               </div>
               <div class="overview-hero-side">
                 <div class="row">
@@ -1212,14 +1214,12 @@
                 </select>
               </label>
               <label>Name <input id="staffNameInput" type="text" placeholder="name" /></label>
+              <button id="updateStaffBtn">Rename</button>
             </div>
-            <div class="row">
-              <label>Playcalling <input id="staffPlaycallingInput" type="number" value="75" /></label>
-              <label>Development <input id="staffDevelopmentInput" type="number" value="75" /></label>
-              <label>Discipline <input id="staffDisciplineInput" type="number" value="75" /></label>
-              <label>Years <input id="staffYearsInput" type="number" value="3" /></label>
-              <button id="updateStaffBtn">Update Staff</button>
-            </div>
+            <!-- S63 — coaching ability is hired, not typed. The numeric editor
+                 that used to live here wrote straight into the simulation for any
+                 team, at no cost; the market below replaces it. -->
+            <section id="coachingMarketPanel" class="coaching-market" aria-label="Coaching market"></section>
             <div class="table-wrap"><table id="staffTable"></table></div>
             <!-- ── Coaching DNA Card ─────────────────────────────────────── -->
             <div id="coachingDnaCard" class="coaching-dna-card" hidden>

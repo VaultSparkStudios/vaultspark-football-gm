@@ -64,12 +64,61 @@ export function buildTacticalMatchupBrief(dashboard = {}) {
       ? `Prioritize explosive-pass prevention against a ${Math.round(passRate * 100)}% pass tendency.`
       : `Trade short gains for lower explosive-play exposure.`
   };
+  // S63 — the opponent read the drive engine actually gameplans around.
+  // Source-derived from the same split unit ratings the sim uses, so the brief
+  // states the edge rather than implying one. Absent ratings render nothing at
+  // all: an empty state is honest, an invented edge is not.
+  const matchupEdge = buildMatchupEdgeRead(opponent, dashboard.controlledTeam);
+
   return {
     available: true,
     opponentId,
     headline: `Week ${dashboard.currentWeek ?? "?"}: ${dashboard.controlledTeam?.abbrev || controlled} vs ${opponentName}`,
     read: `${opponentId} profiles as ${identity}, ${pressure}, ${opponent.overallRating ?? "?"} OVR${injured ? `, with ${injured} listed injur${injured === 1 ? "y" : "ies"}` : ""}.`,
+    matchupEdge,
     options: Object.entries(TACTICS).map(([id, tactic]) => ({ id, ...tactic, matchup: optionReads[id] }))
+  };
+}
+
+/**
+ * The soft-side read, mirrored from src/engine/matchupEdge.js.
+ *
+ * The engine owns the number that changes play calling; this states the same
+ * comparison in words so the player can see why their offense leans the way it
+ * does. Both read the opponent's split run/pass defense ratings, which come from
+ * one source-of-truth computation in src/domain/ratings.js.
+ */
+export function buildMatchupEdgeRead(opponent = {}, controlledTeam = {}) {
+  const runDefense = Number(opponent.runDefenseRating);
+  const coverage = Number(opponent.passDefenseRating);
+  if (!Number.isFinite(runDefense) || !Number.isFinite(coverage)) {
+    return { available: false, direction: "none", label: "" };
+  }
+  const gap = coverage - runDefense;
+  if (Math.abs(gap) < 2) {
+    return {
+      available: true,
+      direction: "none",
+      gap: 0,
+      label: "Even front and secondary — no soft side to attack. Your call, not theirs."
+    };
+  }
+  const attackRun = gap > 0;
+  const staff = Number(controlledTeam?.coaching?.offense);
+  const staffNote = Number.isFinite(staff)
+    ? staff >= 85
+      ? " Your staff is good enough to lean into it hard."
+      : staff <= 66
+        ? " Your staff will only partly exploit it."
+        : ""
+    : "";
+  return {
+    available: true,
+    direction: attackRun ? "run" : "pass",
+    gap: Math.abs(Math.round(gap)),
+    label: attackRun
+      ? `Soft side: their run defense grades ${Math.abs(Math.round(gap))} below their coverage.${staffNote}`
+      : `Soft side: their coverage grades ${Math.abs(Math.round(gap))} below their front.${staffNote}`
   };
 }
 

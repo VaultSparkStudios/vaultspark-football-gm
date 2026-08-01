@@ -3,6 +3,8 @@ import { initThemeCustomizer } from "./lib/themeCustomizer.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
 import { maybeShowReturnDigest } from "./lib/returnDigest.js";
+import { initPressRoomPanel } from "./lib/pressRoomPanel.js";
+import { initCoachingMarketPanel } from "./lib/coachingMarketPanel.js";
 import {
   initMobileLoop,
   isMobileModeEnabled,
@@ -258,6 +260,7 @@ import {
   loadAnalytics,
   loadSettings,
   loadStaff,
+  loadCoachingMarket,
   loadOwner,
   loadObservability,
   loadPersistence,
@@ -547,6 +550,25 @@ function bindEvents() {
     if (!action) return;
     document.getElementById("advanceWeekBtn")?.click();
   });
+
+  // S63 — answering the post-game podium. The question id rides along so a stale
+  // card (answered in another tab, or left open across an advance) is rejected
+  // with a 409 instead of applying consequences to the wrong game.
+  initPressRoomPanel(({ responseId, questionId }) =>
+    runAction(async () => {
+      const payload = await api("/api/press-conference", {
+        method: "POST",
+        body: {
+          teamId: state.dashboard?.controlledTeamId,
+          responseId,
+          questionId
+        }
+      });
+      applyDashboard(payload.state);
+      renderOverview();
+      await loadNews();
+    }, "Answering the room...")
+  );
 
   document.getElementById("franchiseCommandCenter")?.addEventListener("click", (event) => {
     const action = event.target.closest?.("[data-command-action]");
@@ -1408,24 +1430,46 @@ function bindEvents() {
     runAction(loadStaff, "Loading staff...")
   );
 
+  // S63 — this button used to post four raw numbers straight into the
+  // simulation. Ability is now hired through the coaching market; only the
+  // cosmetic rename remains here.
   document.getElementById("updateStaffBtn").addEventListener("click", () =>
     runAction(async () => {
+      const name = document.getElementById("staffNameInput").value.trim();
+      if (!name) throw new Error("Enter a name to rename this staffer.");
       const payload = await api("/api/staff", {
         method: "POST",
         body: {
           teamId: document.getElementById("staffTeamSelect").value || state.dashboard?.controlledTeamId,
           role: document.getElementById("staffRoleSelect").value,
-          name: document.getElementById("staffNameInput").value.trim() || null,
-          playcalling: Number(document.getElementById("staffPlaycallingInput").value || 75),
-          development: Number(document.getElementById("staffDevelopmentInput").value || 75),
-          discipline: Number(document.getElementById("staffDisciplineInput").value || 75),
-          yearsRemaining: Number(document.getElementById("staffYearsInput").value || 3)
+          name
         }
       });
       state.staffState = payload.team || state.staffState;
       renderStaff();
       applyDashboard(payload.state);
-    }, "Updating staff...")
+      await loadCoachingMarket();
+    }, "Renaming staff...")
+  );
+
+  document.getElementById("staffRoleSelect")?.addEventListener("change", () =>
+    runAction(() => loadCoachingMarket(), "Loading coaching market...")
+  );
+
+  initCoachingMarketPanel(({ action, role, candidateId }) =>
+    runAction(async () => {
+      const payload = await api("/api/coaching-market", {
+        method: "POST",
+        body: {
+          teamId: document.getElementById("staffTeamSelect").value || state.dashboard?.controlledTeamId,
+          role,
+          action,
+          candidateId
+        }
+      });
+      applyDashboard(payload.state);
+      await loadStaff();
+    }, action === "fire" ? "Parting ways..." : "Hiring...")
   );
 
   document.getElementById("startSimJobBtn").addEventListener("click", () =>

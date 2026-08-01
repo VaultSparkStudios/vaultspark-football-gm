@@ -11,6 +11,8 @@
 
 import { initNewsLog } from "./beatReporter.js";
 import { getLastPress, recordPress } from "./continuityLedger.js";
+import { topGamePerformer } from "../stats/gameImpact.js";
+import { openPressQuestion, getLastPressResponse } from "./pressRoom.js";
 
 // ── Tone assignment ────────────────────────────────────────────────────────────
 
@@ -72,7 +74,21 @@ const FOLLOWUP_QUOTES = {
   ]
 };
 
-function followupKey(lastPress, isWin) {
+/**
+ * Which follow-up the room opens with.
+ *
+ * `lastResponse` is the GM's own answer from last week's podium (S63) and always
+ * wins when present: these quote banks say "I stood here last week and told
+ * you", and until the GM could actually speak, that line was attributed to words
+ * the player never said. The engine-tone path below remains for weeks the GM
+ * skipped or for saves that predate the interactive podium.
+ */
+function followupKey(lastPress, isWin, lastResponse = null) {
+  if (lastResponse) {
+    if (lastResponse.promised) return isWin ? "promise-kept" : "promise-broken";
+    if (lastResponse.isWin && lastResponse.posture === "demanding" && !isWin) return "humbled";
+    return null;
+  }
   if (!lastPress) return null;
   const promised = !lastPress.isWin && (lastPress.tone === "fiery" || lastPress.tone === "disappointed");
   if (promised && isWin) return "promise-kept";
@@ -88,9 +104,31 @@ const ANALYST_QUOTES = [
 
 // ── Pick a deterministic quote using game seed ─────────────────────────────────
 
-function pickQuote(bank, gameId, slot) {
-  const seed = (gameId?.charCodeAt?.(0) || 0) + (gameId?.charCodeAt?.(3) || 0) + slot;
-  return bank[seed % bank.length];
+/**
+ * FNV-1a over the full quote key.
+ *
+ * The original seed was `gameId.charCodeAt(0) + gameId.charCodeAt(3) + slot`.
+ * Every team code is three characters, so `charCodeAt(3)` was always the hyphen
+ * in `${home}-${away}-${week}` and `charCodeAt(0)` was the home team's first
+ * letter — the week never entered the seed at all. `BUF-NYJ-3`, `BUF-NYJ-11` and
+ * `BUF-MIA-7` all produced seed 111, which is index 0 in every bank. The result
+ * was that a franchise saw exactly one quote per tone for its entire history:
+ * twelve authored quotes collapsed to five.
+ *
+ * Determinism was the right goal — replays must stay byte-identical — but it has
+ * to come from a hash that actually reads its input.
+ */
+function quoteHash(key) {
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < key.length; i += 1) {
+    hash ^= key.charCodeAt(i);
+    hash = Math.imul(hash, 0x01000193) >>> 0;
+  }
+  return hash >>> 0;
+}
+
+function pickQuote(bank, quoteKey, slot) {
+  return bank[quoteHash(`${quoteKey}|${slot}`) % bank.length];
 }
 
 function pressConferenceId(item, gameId, slot) {
@@ -129,29 +167,34 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
   const team   = league.teams?.find((t) => t.id === controlledTeamId);
   const streak = team?.season?.streak || 0;
 
-  // Find top performer from game stats (best by fantasy proxy: QB yards, RB yards, etc.)
-  let topPerformer = null;
-  const gameStats = game.playerStats?.[controlledTeamId] || game.stats?.[controlledTeamId];
-  if (gameStats) {
-    const candidates = Object.values(gameStats).filter((s) => s?.name);
-    const top = candidates.sort((a, b) => {
-      const scoreA = (a.passingYards || 0) * 0.04 + (a.rushingYards || 0) * 0.1 + (a.receivingYards || 0) * 0.1 + (a.touchdowns || 0) * 6;
-      const scoreB = (b.passingYards || 0) * 0.04 + (b.rushingYards || 0) * 0.1 + (b.receivingYards || 0) * 0.1 + (b.touchdowns || 0) * 6;
-      return scoreB - scoreA;
-    })[0];
-    topPerformer = top?.name || null;
-  }
+  // Find the top performer from the game's real box score.
+  //
+  // This used to read `game.playerStats[controlledTeamId]`, a shape the simulator
+  // has never produced — the returned game object carries no `playerStats` key at
+  // all, and the real rows live at `game.boxScore.playerStats.{home,away}` grouped
+  // by category. `gameStats` was therefore always undefined, `topPerformer` was
+  // always null, and six of the twelve quote templates silently took their
+  // degraded branch: "The whole unit showed up." instead of naming the player who
+  // actually won the game. It now shares the box score's own impact authority, so
+  // the podium and the MVP ballot agree.
+  const topPerformer =
+    topGamePerformer(game.boxScore, { teamId: controlledTeamId })?.player || null;
 
   const tone = getTone(margin, isWin, streak);
   const ctx  = { opponent, score, isWin, margin, topPerformer, week };
   const gameId = `${game.homeTeamId}-${game.awayTeamId}-${week}`;
+  // The quote key carries every dimension that should vary the room: which game,
+  // which season, which week, and what mood the coach is in.
+  const quoteKey = `${gameId}|${year}|${week}|${tone}|${isWin ? "W" : "L"}`;
 
-  const headCoachQ = pickQuote(QUOTES[tone], gameId, 0)(ctx);
-  const analystQ   = pickQuote(ANALYST_QUOTES, gameId, 1)(ctx);
+  const headCoachQ = pickQuote(QUOTES[tone], quoteKey, 0)(ctx);
+  const analystQ   = pickQuote(ANALYST_QUOTES, quoteKey, 1)(ctx);
 
   // Continuity: does the room remember something from last week's podium?
+  // The GM's own answer takes precedence over the engine's inferred tone.
   const lastPress = getLastPress(league, { year, week });
-  const fKey = followupKey(lastPress, isWin);
+  const lastResponse = getLastPressResponse(league, { year, week });
+  const fKey = followupKey(lastPress, isWin, lastResponse);
 
   const items = [
     {
@@ -188,7 +231,7 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
       week,
       year,
       headline: `Week ${week} Post-Game: The Room Remembers (${fKey.replace(/-/g, " ")})`,
-      quote: pickQuote(FOLLOWUP_QUOTES[fKey], gameId, 2)(ctx),
+      quote: pickQuote(FOLLOWUP_QUOTES[fKey], quoteKey, 2)(ctx),
       teamIds: [controlledTeamId],
       score,
       isWin,
@@ -206,4 +249,19 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
 
   // Remember this podium for next week's room.
   recordPress(league, { year, week, tone, isWin, opponent, score });
+
+  // S63 — and open the question the GM actually gets to answer. The room asks
+  // once per controlled-team game; an unanswered question simply expires when
+  // the next one opens, which is its own kind of answer.
+  openPressQuestion(league, {
+    teamId: controlledTeamId,
+    year,
+    week,
+    isWin,
+    margin,
+    streak,
+    opponent,
+    score,
+    topPerformer
+  });
 }

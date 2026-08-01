@@ -18,6 +18,7 @@ import { getFanSentiment, fanApprovalLabel } from "../../engine/fanSentiment.js"
 import { getMentorshipStatus, getMentorshipHistory } from "../../engine/veteranMentorship.js";
 import { executeAdvanceWeekTransaction } from "../../runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, migrateSnapshot, snapshotErrorPayload } from "../../runtime/snapshotMigration.js";
+import { authorizeCommand } from "../../runtime/franchiseAuthority.js";
 import { handleArchitectThesisRequest } from "../../runtime/handlers/architectThesisHandler.js";
 import { handleTradeOffersRequest } from "../../runtime/handlers/tradeOffersHandler.js";
 import { handleFranchiseMomentRequest } from "../../runtime/handlers/franchiseMomentHandler.js";
@@ -423,6 +424,16 @@ export function createLocalApiRuntime({
       }
 
       ensureSession();
+
+      // ── Franchise authority boundary (S63) ────────────────────────────────
+      // One seam, checked before any mutating route body is acted on, shared
+      // verbatim with src/server.js so the two adapters cannot drift.
+      if (method === "POST") {
+        const authorityDenial = authorizeCommand({ session, route: pathname, body, lobby: _lobby });
+        if (authorityDenial) {
+          return finish(jsonResponse(authorityDenial.status, authorityDenial.payload));
+        }
+      }
 
       if (method === "GET" && pathname === "/api/state") {
         return finish(jsonResponse(200, getAugmentedState(session)));
@@ -1700,6 +1711,59 @@ export function createLocalApiRuntime({
         const s = ensureSession();
         const response = handleFranchiseMomentRequest({ session: s, teamId: url.searchParams.get("team") });
         return finish(jsonResponse(response.status, response.body));
+      }
+
+      // ── Coaching market — hire people, not numbers (S63) ──────────────────
+      if (method === "GET" && pathname === "/api/coaching-market") {
+        const s = ensureSession();
+        const teamId = (url.searchParams.get("team") || s.controlledTeamId).toUpperCase();
+        const role = url.searchParams.get("role") || "headCoach";
+        const market = s.getCoachingMarket({ teamId, role });
+        return finish(jsonResponse(market.ok ? 200 : 400, market));
+      }
+
+      if (method === "POST" && pathname === "/api/coaching-market") {
+        const s = ensureSession();
+        const check = assertFields(body, ["teamId", "role", "action"]);
+        if (!check.ok) return finish(jsonResponse(400, { ok: false, error: check.error }));
+        const teamId = String(body.teamId).toUpperCase();
+        const role = String(body.role);
+        const result =
+          String(body.action) === "fire"
+            ? s.fireCoach({ teamId, role })
+            : s.hireCoach({ teamId, role, candidateId: String(body.candidateId || "") });
+        return finish(
+          jsonResponse(result.ok ? 200 : 400, {
+            ...result,
+            market: s.getCoachingMarket({ teamId, role }),
+            state: getAugmentedState(s)
+          })
+        );
+      }
+
+      // ── Press room — the GM answers the question (S63) ────────────────────
+      if (method === "GET" && pathname === "/api/press-conference") {
+        const s = ensureSession();
+        const teamId = (url.searchParams.get("team") || s.controlledTeamId).toUpperCase();
+        return finish(jsonResponse(200, { ok: true, ...s.getPressRoom(teamId) }));
+      }
+
+      if (method === "POST" && pathname === "/api/press-conference") {
+        const s = ensureSession();
+        const check = assertFields(body, ["teamId", "responseId"]);
+        if (!check.ok) return finish(jsonResponse(400, { ok: false, error: check.error }));
+        const result = s.answerPressQuestion({
+          teamId: String(body.teamId).toUpperCase(),
+          responseId: String(body.responseId),
+          questionId: body.questionId ? String(body.questionId) : null
+        });
+        return finish(
+          jsonResponse(result.ok ? 200 : result.reasonCode === "press-stale-question" ? 409 : 400, {
+            ...result,
+            pressRoom: s.getPressRoom(),
+            state: getAugmentedState(s)
+          })
+        );
       }
 
       return finish(jsonResponse(501, { ok: false, error: `Client-only runtime not implemented for ${method} ${pathname}.` }));

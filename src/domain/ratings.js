@@ -256,9 +256,18 @@ export function calcTeamOffenseDefense(teamPlayers) {
       db * TEAM_RATING_WEIGHTS.defense.DB
   );
 
+  // S63: the aggregate defense rating hides *where* a defense is soft, which is
+  // exactly what an offense gameplans against. These split the same source
+  // players the aggregate already uses, so the pre-game tactical brief can show
+  // the player the read the drive engine now acts on.
+  const runDefenseRating = Math.round(dl * 0.58 + lb * 0.42);
+  const passDefenseRating = Math.round(db * 0.68 + lb * 0.32);
+
   return {
     offenseRating: clamp(offenseRating, 40, 99),
     defenseRating: clamp(defenseRating, 40, 99),
+    runDefenseRating: clamp(runDefenseRating, 40, 99),
+    passDefenseRating: clamp(passDefenseRating, 40, 99),
     overallRating: clamp(Math.round((offenseRating + defenseRating) / 2), 40, 99)
   };
 }

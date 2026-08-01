@@ -1,0 +1,423 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-01",
+  "session": 63,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 6,
+    "combinedPriority": 147.7,
+    "analysisCompanion": "docs/AUDIT_2026-08-01_SESSION63_ANALYSIS.md",
+    "topItem": "franchise-authority-boundary",
+    "source": "live-code-audit",
+    "openItems": 0,
+    "completedItems": 6
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "product rubric with game-medium overlay: retention, emotional payoff, fast playable proof, mobile browser polish, vivid General Manager decision pressure, zero-backend loops",
+    "staging": "GitHub Pages artifact with exact same-origin hosted verification before direct-to-main promotion",
+    "source": "live execution-path reading of the mutation command layer, the drive simulator, the press/narrative engines, the coaching services, and the mobile loop; every premise re-verified against the working tree this session"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation",
+    "ci": "Baseline canonical suite re-run this session before any change.",
+    "staging": "Unchanged from S62 — direct same-origin staging verification remains BLOCKED; not re-probed as no ranked item touches the hosted surface.",
+    "production": "Hosted health, applied edge headers, delivered-email receipt, founder approval, and sibling-owned lifecycle truth remain external authorities. No launch evidence fabricated.",
+    "secrets": "Gateway healthy for required capabilities; 0 human-blocked items in preflight; no ranked item requires a credential."
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 8.5,
+    "sessionEngagement": 8.2,
+    "retention": 7.8,
+    "soulFidelity": 8.6,
+    "overall": 8.4,
+    "evidence": "S62 closed the one-directional-pressure gap: rival GMs now initiate, owners drift on receipts, milestones announce themselves. What this audit found instead is three systems that run every week and are wrong or inert in ways nothing asserts — the command layer has no concept of which team you may act for, the press room prints one quote forever with its star-player clause structurally blank, and the offense never reads the opponent it is playing. Soul fidelity is marked below S62's 9.2 specifically because the press room is the franchise's narrative voice and it has been repeating itself since it shipped.",
+    "nextMoves": [
+      "Give the command layer an authority boundary so the competitive premise of the game is actually enforced, in both adapters and in multiplayer intents.",
+      "Repair the press room's determinism collapse and its unreachable top-performer lookup, then make the podium a decision the GM actually makes.",
+      "Let offenses read the defense they are facing when choosing run versus pass, inside the existing calibration envelope."
+    ]
+  },
+  "recommendedMoves": [
+    "Close the trust-the-client hole at one seam shared by both adapters rather than route by route, so the fourth parity gap in three sessions does not become a fifth.",
+    "Fix the narrative engine that is already authored and being thrown away at two lines before building anything new on top of it.",
+    "Extract the shippable half of a wholesale-deferred item instead of carrying the whole thing forward again."
+  ],
+  "candidateMatrix": [
+    {
+      "axis": "security",
+      "candidate": "franchise-authority-boundary",
+      "verdict": "ranked 1",
+      "reason": "Verified live: no mutation seam checks the acting team; multiplayer stamps the authoritative team and discards it one function later."
+    },
+    {
+      "axis": "correctness",
+      "candidate": "press-room-truth",
+      "verdict": "ranked 2",
+      "reason": "Verified numerically: quote seed collapses to index 0 for all weeks; topPerformer reads a box-score shape that does not exist on the game object."
+    },
+    {
+      "axis": "realism",
+      "candidate": "opponent-aware-gameplanning",
+      "verdict": "ranked 3",
+      "reason": "Verified live: buildTeamContext takes no opponent; choosePlayType receives offenseContext only."
+    },
+    {
+      "axis": "engagement",
+      "candidate": "interactive-press-conference",
+      "verdict": "ranked 4",
+      "reason": "Verified live: podium is fully passive; continuity ledger already models promise-kept/broken for promises no player can make."
+    },
+    {
+      "axis": "depth",
+      "candidate": "coaching-market-authority",
+      "verdict": "ranked 5",
+      "reason": "Verified live: staff panel is a raw numeric editor writing simulation inputs for any team at zero cost, while coachingTree already models the career world it bypasses."
+    },
+    {
+      "axis": "ux",
+      "candidate": "tablet-decision-deck-parity",
+      "verdict": "ranked 6",
+      "reason": "Verified live: mobile decision deck gates at innerWidth <= 480, so the entire tablet band cannot reach a loop five sessions were spent building."
+    }
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "release",
+      "candidate": "Mark launch or lifecycle green from this repository",
+      "reason": "Rejected. Hosted health, applied edge headers, received mailbox evidence, founder approval, and sibling lifecycle truth are independent authorities. The doctor warning 'registry SPARKED · local contract FORGE' is sibling-owned drift and is correctly non-blocking; it is not to be resolved by editing a sibling tree."
+    },
+    {
+      "axis": "depth",
+      "candidate": "Owner finances are stubbed / revenueYtd is dead state",
+      "reason": "Rejected on live evidence. GameSession.js:2468-2514 accrues per-game revenue from market size, ticket price and a fan-interest attendance factor, debits weekly staff budget, moves owner.cash, and resets at :2528. The loop is live."
+    },
+    {
+      "axis": "depth",
+      "candidate": "staffBudget and facilities are cosmetic",
+      "reason": "Rejected on live evidence. staffBudget drives a development bonus (:349-350) and a staff-quality threshold (:536); facilities feed training (:488), rehab recovery (:504) and analytics (:261). All are simulation inputs. What is wrong about them is that they are free to set, which is ranked item 1."
+    },
+    {
+      "axis": "debt",
+      "candidate": "Codebase-wide TODO/FIXME sweep",
+      "reason": "Rejected on live evidence. Exactly one marker hit across src/ and public/lib/, and it is an intentional 501 guard for unsupported client-only methods (localApiRuntime.js:1705). The real debt is behavioral, which is why every ranked item came from reading execution paths rather than grepping markers."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Security / competitive integrity / multiplayer",
+      "effortHours": 3.5,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 32,
+      "slug": "franchise-authority-boundary",
+      "title": "The command layer learns which team you are allowed to act for",
+      "status": "shipped",
+      "premise": "No mutating command checks that the acting team is the controlled team. POST /api/owner and POST /api/staff accept an arbitrary teamId and write live simulation inputs (staff ratings, staffBudget, ticketPrice, facilities) for any franchise. releasePlayer, setDepthChart, setPracticeSquad and claimWaiver validate the roster but never the actor. grep -n controlledTeamId src/runtime/GameSession.js returns 40 hits and not one is an authorization check on a mutation — every hit is a default-parameter convenience that looks like a guard.",
+      "evidence": [
+        "src/server.js:1209 POST /api/owner -> updateOwnerState({ teamId: body.teamId }) with no actor check (verified 2026-08-01)",
+        "src/server.js:1150 POST /api/staff -> updateStaff({ teamId: body.teamId }) with no actor check",
+        "src/runtime/GameSession.js:2348 updateOwnerState, :2302 updateStaff, :3286 setDepthChart, :3394 releasePlayer, :3142 setPracticeSquad, :3464 claimWaiver — no actor authorization in any",
+        "src/runtime/GameSession.js:349,520,2487,2505 — staffBudget/staff quality/ticketPrice/fanInterest are live simulation and revenue inputs, so the hole is not cosmetic",
+        "src/runtime/multiplayerSession.js:98 stamps the authoritative controlledTeamId onto each intent; :156 applyIntents then passes intent.payload to session.call without using it"
+      ],
+      "constraint": "releasePlayer/setDepthChart and peers are also called internally by CPU AI maintenance for all 31 rival teams. The guard belongs at the command boundary, not inside GameSession, or CPU AI breaks.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Guard POST /api/owner and POST /api/staff only, in src/server.js, returning 403 for a foreign teamId."
+        },
+        "L2": {
+          "effortHours": 3.5,
+          "recipe": "src/runtime/franchiseAuthority.js as a single seam: a declarative map of guarded command -> the body field carrying the acting team, authorizedTeamIds(session) derived from the controlled team plus every claimed lobby team in Commissioner Mode, and a 403 carrying reasonCode 'team-authority' that names what the caller may act for. Wired into src/server.js and src/app/api/localApiRuntime.js so parity is structural. applyIntents binds teamId from the intent slot, overriding payload. Regression coverage asserts identical verdicts from both adapters for every guarded route and asserts CPU AI maintenance still mutates rival teams freely."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus a per-session authority receipt log surfaced in observability, so a denied command is visible rather than only rejected."
+        }
+      },
+      "executionEvidence": "src/runtime/franchiseAuthority.js: one seam classifying all 58 POST routes (22 team-scoped, 36 exempt with recorded reasons), wired pre-dispatch into both adapters; multiplayer applyIntents binds teamId from the member slot. 18/18 focused tests incl. live 403s on every guarded route from both adapters, provable non-mutation after denial, CPU AI still free, and a completeness guard that fails on any newly added unclassified route."
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Correctness / narrative fidelity",
+      "effortHours": 2,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 27,
+      "slug": "press-room-truth",
+      "title": "The press room stops printing the same quote forever with a blank star clause",
+      "status": "shipped",
+      "premise": "Two independent defects make the post-game press room repeat one quote per tone for an entire franchise, with its best clause permanently empty. (a) pickQuote seeds on gameId.charCodeAt(0) + gameId.charCodeAt(3); every team code is three characters so charCodeAt(3) is always the hyphen and the week never enters the seed — every bank resolves to index 0. (b) topPerformer reads game.playerStats[teamId], but simulateGame returns no playerStats key at all; the real shape is game.boxScore.playerStats.{home,away} grouped by category with yds/td rows, so gameStats is always undefined and six of twelve templates silently take their degraded branch.",
+      "evidence": [
+        "src/engine/pressConference.js:91-94 pickQuote seed; :147 gameId = `${home}-${away}-${week}`",
+        "Executed 2026-08-01: BUF-NYJ-3, BUF-NYJ-11 and BUF-MIA-7 all produce seed 111 -> index 0 in a 3-quote bank; NYJ-BUF-3 produces 123 -> index 0",
+        "src/engine/pressConference.js:134 reads game.playerStats?.[controlledTeamId] || game.stats?.[controlledTeamId]",
+        "src/engine/gameSimulator.js:1935-1963 returned game object has neither key; :1929 real stats live at boxScore.playerStats.{home,away} via buildPlayerStatGroups",
+        "12 authored quotes across 6 banks are reduced to 1 per tone per franchise"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Fix the seed to hash the full gameId plus year/week/slot; leave topPerformer alone."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Replace the character-sum seed with a real deterministic hash over gameId + year + week + tone + slot so variety is wide and replays stay byte-identical. Read the top performer from the true box-score shape, scoring across passing/rushing/receiving/defense rows and resolving the controlled team's home/away side. Regression coverage asserts a 17-week season produces materially varied quotes per tone, that the same seed replays identically, and that topPerformer resolves to a real player name from a real simulated game."
+        },
+        "L3": {
+          "effortHours": 3.5,
+          "recipe": "L2 plus a no-immediate-repeat rule across consecutive weeks per tone, and widened quote banks."
+        }
+      },
+      "executionEvidence": "src/engine/pressConference.js: FNV-1a quote key over gameId+year+week+tone+slot replaces the char-sum seed that resolved to index 0 for every week; topPerformer reads the real boxScore.playerStats shape via the new shared src/stats/gameImpact.js, which also replaces the inline MVP scorer so podium and ballot cannot disagree. 10/10 focused tests over real simulated seasons."
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Simulation realism / depth",
+      "effortHours": 3.5,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 25.7,
+      "slug": "opponent-aware-gameplanning",
+      "title": "Offenses read the defense they are actually facing",
+      "status": "shipped",
+      "premise": "Carried honest deferral from S62, re-verified live rather than trusted. buildTeamContext(league, teamId, rng) takes no opponent and returns no opponent-derived field; both contexts are built independently at the call site; choosePlayType is then invoked with offenseContext only. The drive engine already computes defenseContext.unitRatings (runDefense, coverageShort/Medium/Deep, passRush, tackling) and uses them to resolve how well a play works — but never to decide which play to call. A team facing an elite secondary and a porous run front throws exactly as often as against the inverse.",
+      "evidence": [
+        "src/engine/gameSimulator.js:501 buildTeamContext signature takes (league, teamId, rng) — no opponent",
+        "src/engine/gameSimulator.js:1677-1678 homeContext and awayContext built independently",
+        "src/engine/gameSimulator.js:758-762 choosePlayType({down,distance,fieldPosition,scoreDifferential,elapsedSeconds}, offenseContext, rng)",
+        "src/engine/gameSimulator.js:715-718 defenseContext.unitRatings computed and used only for play resolution",
+        "src/engine/playCalling.js:48-72 lean derives from offenseContext.passLean plus situational pressure only",
+        "Contrast: chooseRouteFamily (:337), choosePassTargetProfile (:399) and buildCoverageShell (:265) are already opponent-aware — the gap is specifically run/pass selection"
+      ],
+      "constraint": "sim-realism shards must stay green before and after; the item is not shippable if realism moves outside tolerance.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Add a small opponent-weakness delta to passLean inside buildTeamContext, no UI."
+        },
+        "L2": {
+          "effortHours": 3.5,
+          "recipe": "A bounded matchup lean derived from the opponent's relative unit strengths, added to the existing situational stack in playCalling.js and clamped inside the current 0.22-0.86 envelope so calibration is preserved. Coaching quality gates how much of the edge a staff can exploit, making a good coordinator worth something concrete. The edge is surfaced in the pre-game tactical brief with a source-derived receipt naming the unit and direction — no hidden math. Realism shards verified green before and after."
+        },
+        "L3": {
+          "effortHours": 5.5,
+          "recipe": "L2 plus in-game adaptation: the offense re-reads what is actually working this game and shifts lean at halftime with a visible adjustment receipt."
+        }
+      },
+      "executionEvidence": "src/engine/matchupEdge.js: relative, bounded (±0.055), coaching-gated soft-side read wired into choosePlayType; split runDefenseRating/passDefenseRating exposed from src/domain/ratings.js; receipt on every game and in the pre-game tactical brief. 15/15 focused tests. Realism measured both ways over 12 seasons: season 44 on-target/0 out unchanged; career out-of-range 3 -> 1 WITH the lean, i.e. calibration improved rather than degraded."
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "Engagement / narrative agency",
+      "effortHours": 3.5,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 25.7,
+      "slug": "interactive-press-conference",
+      "title": "The GM finally gets to answer the question",
+      "status": "shipped",
+      "premise": "Carried honest deferral from S62, re-verified live. generatePressConference picks a tone from the result, unshifts 2-3 items into league.newsLog and records the podium; the GM never chooses anything. The machinery this needs is already built and half-idle: continuityLedger exports recordPress and getLastPress, and followupKey already models promise-kept / promise-broken / humbled transitions with authored quote banks — a system designed for a GM who makes promises, where no GM has ever been able to make one. Every follow-up currently resolves against a tone the engine chose, not a commitment the player made.",
+      "evidence": [
+        "src/engine/pressConference.js:110-209 generatePressConference is write-only; no choice is ever solicited",
+        "src/engine/continuityLedger.js:206 recordPress, :222 getLastPress — both live, both fed only by engine-chosen tone",
+        "src/engine/pressConference.js:75-82 followupKey models promise-kept/promise-broken/humbled; :60-73 FOLLOWUP_QUOTES banks authored for all three",
+        "Consequence surfaces exist and are already receipted: ownerConfidence.js:88 applyWeeklyOwnerConfidence, GameSession.js:2505 fanInterest, team chemistry"
+      ],
+      "dependsOn": "press-room-truth",
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Two-option podium choice affecting owner patience only."
+        },
+        "L2": {
+          "effortHours": 3.5,
+          "recipe": "After a controlled-team game the GM picks one of three deterministic responses, each with a distinct posture (back the room / take the blame / put the team on notice) and bounded receipted consequences on owner patience, fan interest and chemistry. A response that makes a promise records it, and next week's followupKey resolves against the player's own words instead of the engine's. Skipping is a first-class choice with its own honest consequence, never a dead end. Deterministic from game state and choice — no randomness, no hidden bonuses."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus beat-reporter follow-up questions that escalate when a promise is broken twice, and a season-end press-room retrospective."
+        }
+      },
+      "executionEvidence": "src/engine/pressRoom.js: three postures plus an honest skip, deterministic bounded receipted consequences on owner patience, fan interest and chemistry; a promise after a loss is recorded and next week's followupKey resolves against the player's own words instead of the engine's inferred tone. GET/POST /api/press-conference on both adapters behind the S63 authority seam, stale questions 409. 20/20 focused tests."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Game depth / progression / integrity",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 9,
+      "priority": 21.3,
+      "slug": "coaching-market-authority",
+      "title": "Hiring a coach becomes a choice between people, not a number you type",
+      "status": "shipped",
+      "premise": "The Coaching Staff panel is a raw numeric editor: a team dropdown, a role dropdown, and number inputs for playcalling, development, discipline and yearsRemaining posted straight to POST /api/staff, which clamps them to 40-99 and applies them to the simulation. The GM types 99 into three boxes, for free, for any team, with no candidate, no salary, no contract and no market. These are live simulation inputs. Meanwhile coachingTree already models the coaching-career world the hiring surface completely bypasses.",
+      "evidence": [
+        "public/game.html:1200-1223 team select, role select, and raw number inputs for playcalling/development/discipline/years",
+        "public/app.js:1411-1428 updateStaffBtn posts those raw numbers to /api/staff",
+        "src/runtime/GameSession.js:2302-2328 updateStaff clamps 40-99 and calls applyStaffToCoaching",
+        "src/runtime/GameSession.js:349,520,536 staff quality and budget are simulation inputs",
+        "src/engine/coachingTree.js:108 registerCoordinator, :147 promoteToHeadCoach, :182 getTeamCoachingLineage, :228 processCoachingCarousel — all live via src/runtime/services/CoachingService.js and all bypassed by the hiring surface"
+      ],
+      "dependsOn": "franchise-authority-boundary",
+      "scopeGuard": "Ships hiring and firing of your own staff against a real market. Does NOT ship GM firing — that remains founder-direction-blocked and must not drift in through this item.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Replace free numeric entry with a fixed candidate list per role; no salary or cap coupling."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "A deterministic coaching market: a candidate pool drawn from the live coaching tree (coordinators ready for promotion, recently displaced head coaches) plus external candidates, each with derived ratings, scheme fit, salary and contract length. Hiring is priced against owner.staffBudget and cash; firing carries dead money and an owner-confidence receipt. The numeric editor is replaced by a choice between named people with tradeoffs, operating only on the team you control via item 1's seam."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "L2 plus rival teams competing for the same candidates, so a coordinator you waited on gets hired away."
+        }
+      },
+      "executionEvidence": "src/engine/coachingMarket.js: deterministic derived candidate market (coordinator poaches from the live league plus externals), salary as a pure function of ratings so no save migration is needed, hiring priced against owner.staffBudget, firing charging dead money and owner patience. updateStaff now refuses rating writes with reasonCode staff-ratings-readonly; the numeric editor is replaced by the market UI. Root-fixed a latent bug that would have shipped broken: CoachingService re-syncs headCoach.name from the coaching tree every dashboard build, so a hire reverted to its predecessor's name until syncHeadCoachIdentity was added. 23/23 focused tests."
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "UX / mobile and tablet reach",
+      "effortHours": 1.5,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 16,
+      "slug": "tablet-decision-deck-parity",
+      "title": "Tablets can finally reach the decision deck five sessions were spent building",
+      "status": "shipped",
+      "premise": "isMobileModeEnabled auto-enables only at window.innerWidth <= 480, so every tablet gets the desktop shell and never sees the prioritized GM decision deck. The desktop .side-menu collapses to a single column at 640px, so the band above 480px receives the worst of both layouts: a tall stacked nav and no deck. This is the shippable half of S62's deferred mobile-nav-tablet-parity, separable because it changes a reachability gate and its breakpoint rather than the visual-evidence baseline.",
+      "evidence": [
+        "public/lib/mobileLoop.js:18-23 isMobileModeEnabled returns window.innerWidth <= 480 when unset",
+        "public/styles.css:1857 .side-menu collapses to grid-template-columns: 1fr at max-width 640px",
+        "The deck, pressure stack and pending-decision flow are already built and tested (test/mobile-loop.test.js) — they are gated off, not missing"
+      ],
+      "scopeGuard": "Explicitly excludes touch gestures and the 53-capture responsive re-baseline; extracting this half does not license absorbing the other.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Raise the auto-enable breakpoint only."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Widen the auto-enable band to the tablet range using a breakpoint matching the CSS the layout already uses, keep the explicit MOBILE_PREF_KEY override authoritative in both directions so nobody is trapped in a mode they did not choose, and re-evaluate the gate on viewport change rather than only at boot. Regression coverage asserts band boundaries and override precedence."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus a dedicated tablet layout distinct from both phone and desktop."
+        }
+      },
+      "executionEvidence": "public/lib/mobileLoop.js: auto-enable band widened from <=480px to <=980px matching the existing desktop-grid breakpoint, explicit MOBILE_PREF_KEY override authoritative in both directions, and the gate re-evaluates on viewport change via a once-bound resize listener through the shared syncMobileMode path. 8/8 focused tests. Touch gestures and the 53-capture responsive re-baseline remain explicitly deferred."
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "franchise-authority-boundary",
+      "status": "shipped",
+      "completedAt": "2026-08-01",
+      "evidence": [
+        "src/runtime/franchiseAuthority.js: one seam classifying all 58 POST routes (22 team-scoped, 36 exempt with recorded reasons), wired pre-dispatch into both adapters; multiplayer applyIntents binds teamId from the member slot. 18/18 focused tests incl. live 403s on every guarded route from both adapters, provable non-mutation after denial, CPU AI still free, and a completeness guard that fails on any newly added unclassified route."
+      ]
+    },
+    {
+      "slug": "press-room-truth",
+      "status": "shipped",
+      "completedAt": "2026-08-01",
+      "evidence": [
+        "src/engine/pressConference.js: FNV-1a quote key over gameId+year+week+tone+slot replaces the char-sum seed that resolved to index 0 for every week; topPerformer reads the real boxScore.playerStats shape via the new shared src/stats/gameImpact.js, which also replaces the inline MVP scorer so podium and ballot cannot disagree. 10/10 focused tests over real simulated seasons."
+      ]
+    },
+    {
+      "slug": "opponent-aware-gameplanning",
+      "status": "shipped",
+      "completedAt": "2026-08-01",
+      "evidence": [
+        "src/engine/matchupEdge.js: relative, bounded (±0.055), coaching-gated soft-side read wired into choosePlayType; split runDefenseRating/passDefenseRating exposed from src/domain/ratings.js; receipt on every game and in the pre-game tactical brief. 15/15 focused tests. Realism measured both ways over 12 seasons: season 44 on-target/0 out unchanged; career out-of-range 3 -> 1 WITH the lean, i.e. calibration improved rather than degraded."
+      ]
+    },
+    {
+      "slug": "interactive-press-conference",
+      "status": "shipped",
+      "completedAt": "2026-08-01",
+      "evidence": [
+        "src/engine/pressRoom.js: three postures plus an honest skip, deterministic bounded receipted consequences on owner patience, fan interest and chemistry; a promise after a loss is recorded and next week's followupKey resolves against the player's own words instead of the engine's inferred tone. GET/POST /api/press-conference on both adapters behind the S63 authority seam, stale questions 409. 20/20 focused tests."
+      ]
+    },
+    {
+      "slug": "coaching-market-authority",
+      "status": "shipped",
+      "completedAt": "2026-08-01",
+      "evidence": [
+        "src/engine/coachingMarket.js: deterministic derived candidate market (coordinator poaches from the live league plus externals), salary as a pure function of ratings so no save migration is needed, hiring priced against owner.staffBudget, firing charging dead money and owner patience. updateStaff now refuses rating writes with reasonCode staff-ratings-readonly; the numeric editor is replaced by the market UI. Root-fixed a latent bug that would have shipped broken: CoachingService re-syncs headCoach.name from the coaching tree every dashboard build, so a hire reverted to its predecessor's name until syncHeadCoachIdentity was added. 23/23 focused tests."
+      ]
+    },
+    {
+      "slug": "tablet-decision-deck-parity",
+      "status": "shipped",
+      "completedAt": "2026-08-01",
+      "evidence": [
+        "public/lib/mobileLoop.js: auto-enable band widened from <=480px to <=980px matching the existing desktop-grid breakpoint, explicit MOBILE_PREF_KEY override authoritative in both directions, and the gate re-evaluates on viewport change via a once-bound resize listener through the shared syncMobileMode path. 8/8 focused tests. Touch gestures and the 53-capture responsive re-baseline remain explicitly deferred."
+      ]
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "flat-league-generation",
+      "status": "shipped",
+      "sourceItem": "coaching-market-authority",
+      "premise": "Discovered while debugging the coaching market. GameSession’s league normalizer filled missing staff and rebuilt every owner with a stub RNG returning a constant ({ int: () => 76, pick: items => items[0] }). The stub exists because a normalizer must not consume the session RNG stream, but createLeagueBase does not build staff — so in the browser runtime, which is the entire deployed zero-backend product, the safety net became the primary generator.",
+      "evidence": [
+        "Measured on a fresh browser league 2026-08-01: distinct playcalling across 32 teams [76]; distinct yearsRemaining [76] against a documented 1-7 domain; 3 distinct staff names league-wide; distinct team.coaching.offense [76]; distinct owner personality [\"profit-first\"].",
+        "Root cause 2: src/domain/teamFactory.js createTeam hardcoded identical owner economics (marketSize 1, ticketPrice 120, cash 150M, staffBudget 28M, facilities 72), which buildOwnerProfile then preserved — so the revenue model marketSize x ticketPrice x attendance returned the same number for all 32 clubs and there was no big-market/small-market axis at all.",
+        "Fix: derivedRng + fnv1a added to src/utils/rng.js (lowest layer, one implementation); src/engine/staffGeneration.js delegates to it; buildFranchiseEconomics derives per-club economics from the team id.",
+        "After: playcalling spans 62-93, yearsRemaining 2-5, 4 tendency archetypes, 14 distinct team.coaching.offense values, and 12-26 distinct values across every owner economic field.",
+        "Balance preserved — league averages essentially unchanged: marketSize 1.001 (was 1), ticketPrice 118.0 (was 120), staffBudget 28.3M (was 28M), facilities 71.7 (was 72). Existing saves untouched: both profile builders preserve values already present.",
+        "16/16 focused tests including determinism, band conformance, save preservation, and a guard that the normalizer still draws no session RNG."
+      ],
+      "outcome": "Shipped. Coaching quality and franchise economics are live differentiators in the deployed browser game for the first time; the S62 owner-pressure loop, the revenue model, the coaching tree and the S63 coaching-quality gate on the matchup edge all now have real variance to act on."
+    }
+  ],
+  "deferrals": [
+    {
+      "slug": "gm-firing-terminal-state",
+      "status": "deferred",
+      "carriedFrom": "S62",
+      "premise": "ownerConfidence.js floors patience at 0.05 and bands <= 0.2 as critical with no terminal consequence — the premise is still accurate on live code.",
+      "reason": "Founder creative direction required (recorded in context/DECISIONS.md 2026-07-31). The owner-pressure loop deliberately ships the pressure without inventing the ending. Deliberately not ranked; item 5 was scoped to stop short of it rather than let it drift in."
+    },
+    {
+      "slug": "tablet-touch-affordances",
+      "status": "deferred",
+      "carriedFrom": "S62",
+      "premise": "grep -rn touchstart|swipe|pointerdown|touchend public/ --include=*.js returns 0 hits — there is no gesture surface at all (verified 2026-08-01).",
+      "reason": "Adding one requires re-baselining the 53-capture responsive evidence authority, a visual-evidence budget rather than a code fix. An earlier draft of this audit nearly deferred the whole parent item on the wrong grounds that 19 CSS breakpoints mean the band is covered; re-verifying the premise instead of arguing it down is what promoted the reachability half to ranked item 6. The gesture half stays deferred at its true size."
+    }
+  ],
+  "totals": {
+    "count": 6,
+    "priority": 147.7,
+    "top3": [
+      "franchise-authority-boundary",
+      "press-room-truth",
+      "opponent-aware-gameplanning"
+    ],
+    "shipped": 6
+  }
+}

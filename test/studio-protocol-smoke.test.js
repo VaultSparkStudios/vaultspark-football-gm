@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 // S186 window-storm guard: spawnSync comes from the hardened wrapper (forces
 // windowsHide:true), never raw node:child_process — this file spawns ~15 children.
 import { spawnSync } from "../scripts/lib/safe-spawn.mjs";
-import { mkdtempSync, mkdirSync, writeFileSync, existsSync, readFileSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, existsSync, readFileSync, readdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -377,9 +377,41 @@ test("innovation-pack marker scan ignores intentional guard sentinels", () => {
   assert.doesNotMatch(result.stdout, /test-receipt\.mjs|test\/test-receipt\.test\.js/);
   assert.doesNotMatch(result.stdout, /test\/return-digest\.test\.js/);
   assert.match(result.stdout, /No unclassified live innovation candidates remain/);
-  assert.match(result.stdout, /dashboard-payload-parity/);
-  assert.match(result.stdout, /continuity-threads-visible/);
-  assert.match(result.stdout, /hot-path-index-adoption/);
+
+  // The pack must report the shipped second-order work from the *latest* audit.
+  // This used to hardcode S62's three slugs, which made the assertion fail for
+  // every session afterwards by construction rather than because anything broke.
+  // Deriving the expectation from the sidecar keeps the real guarantee — shipped
+  // innovations are surfaced — without pinning it to one session's content.
+  const auditDir = resolve(repoRoot, "docs");
+  // Older sidecars predate the `date`/`session` fields, so fall back to the
+  // filename exactly as scripts/generate-innovation-pack.mjs does. Sorting on a
+  // raw `String(undefined)` puts "undefined" above every real date.
+  const latestSidecar = readdirSync(auditDir)
+    .filter((name) => /^AUDIT_\d{4}-\d{2}-\d{2}(_SESSION\d+)?\.json$/i.test(name))
+    .map((name) => {
+      const audit = JSON.parse(readFileSync(resolve(auditDir, name), "utf8"));
+      return {
+        name,
+        audit,
+        date: String(audit.date || name.match(/^AUDIT_(\d{4}-\d{2}-\d{2})/)?.[1] || ""),
+        session: Number(audit.session || name.match(/_SESSION(\d+)/i)?.[1] || 0)
+      };
+    })
+    .sort((a, b) => b.date.localeCompare(a.date) || b.session - a.session)[0];
+  assert.ok(latestSidecar, "an audit sidecar must exist");
+
+  const shippedSlugs = (latestSidecar.audit.secondOrderCandidates || [])
+    .filter((item) => /^(?:done|complete|completed|shipped|second-order-shipped)$/i.test(String(item.status || "")))
+    .map((item) => item.slug)
+    .filter(Boolean);
+  assert.ok(shippedSlugs.length > 0, "the latest audit must record its shipped second-order work");
+  for (const slug of shippedSlugs) {
+    assert.ok(
+      result.stdout.includes(slug),
+      `innovation pack must surface shipped second-order item "${slug}"`
+    );
+  }
   assert.doesNotMatch(result.stdout, /Pending implementation|Pending classification/);
 });
 

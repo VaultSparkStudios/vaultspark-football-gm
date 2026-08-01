@@ -8,6 +8,7 @@ import { buildFranchiseCommandStack } from "./franchiseCommandCenter.js";
 import { buildTacticalIdentityLedger } from "./tacticalFilmRoom.js";
 import { architectLedgerRows, buildArchitectureSignal, buildProgressiveWeekRoom, buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
 import { describeWeeklyPlanReceipt } from "./weeklyPlanComposer.js";
+import { renderPressRoomPanel } from "./pressRoomPanel.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -41,6 +42,7 @@ export function renderOverview() {
   renderFranchiseCommandCenter();
   renderFranchiseArchitecture();
   renderOpeningContract();
+  renderPressRoomPanel(state.dashboard?.pressRoom);
   renderRehabCommandCenter();
   renderGmCommitmentBoard();
   renderTacticalFilmRoom();

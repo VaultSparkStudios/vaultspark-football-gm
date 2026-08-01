@@ -153,6 +153,26 @@ export function openGate(lobby, year, week, phase) {
  * Apply all queued intents to the GameSession before advancing.
  * Returns a list of results (success/failure per intent).
  */
+/**
+ * Bind an intent's payload to the franchise its author actually claimed.
+ *
+ * `queueIntent` already stamps the authoritative `controlledTeamId` from the
+ * member's lobby slot. Before S63 that stamp was recorded and then discarded one
+ * function later — `applyIntents` passed the raw payload through, so any member
+ * could queue a `release` against another member's roster. The slot is the
+ * authority; the payload is a request.
+ *
+ * Trades name two sides. The author is bound to `teamA` (the proposing side) and
+ * may not rewrite it; `teamB` is the counterparty and stays as submitted.
+ */
+function bindIntentToSlot(intent) {
+  const payload = { ...(intent.payload || {}) };
+  if (!intent.controlledTeamId) return payload;
+  if (intent.type === "trade") payload.teamA = intent.controlledTeamId;
+  else payload.teamId = intent.controlledTeamId;
+  return payload;
+}
+
 export async function applyIntents(lobby, session) {
   const results = [];
   const pending = lobby.intentQueue.filter((i) => !i.applied);
@@ -160,21 +180,22 @@ export async function applyIntents(lobby, session) {
   for (const intent of pending) {
     try {
       let result;
+      const payload = bindIntentToSlot(intent);
       switch (intent.type) {
         case "trade":
-          result = await session.call("propose-trade", intent.payload);
+          result = await session.call("propose-trade", payload);
           break;
         case "sign-fa":
-          result = await session.call("sign-free-agent", intent.payload);
+          result = await session.call("sign-free-agent", payload);
           break;
         case "release":
-          result = await session.call("release-player", intent.payload);
+          result = await session.call("release-player", payload);
           break;
         case "depth-reorder":
-          result = await session.call("update-depth-chart", intent.payload);
+          result = await session.call("update-depth-chart", payload);
           break;
         case "restructure":
-          result = await session.call("restructure-contract", intent.payload);
+          result = await session.call("restructure-contract", payload);
           break;
         default:
           result = { ok: false, error: `Unknown intent type: ${intent.type}` };
