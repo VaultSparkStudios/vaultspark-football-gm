@@ -986,3 +986,29 @@ Fixed on both sides:
 Also hardened while diagnosing: the file now boots **one** shared server rather than one per test (six full league generations on a shared event loop), and discards the child's stdout rather than piping a stream nobody drains.
 
 Runtime shard after the fix: **457 pass / 0 fail, exit 0.**
+
+## Session 65 — Save-payload blocker cleared (2026-08-01)
+
+The S64 blocker is **closed**. A full season of realistic play (advance + rolling backup every week, plus a named save) now occupies **3.95 MB** of localStorage, inside the smallest common 5 MB origin budget.
+
+| Layer | Change | Measured |
+|---|---|---|
+| Stored week records | `weeklyHistory` / `weekResultsCurrentSeason` / `league.history[].weekly` keep only identity + scoreline fields; box scores live once in `gameArchive` | per retained game **84,747 → 215 bytes**; weeklyHistory **7.93 MB → 0.020 MB** |
+| Weekly-history retention | pruned to the active season at season start (completed seasons already served from `league.history`) | unbounded growth → one season |
+| Game archive | cap 800 → 272; play-by-play retained for the most recent 48 only, trimmed entries marked and disclosed in the box-score modal | archive entry ~84 KB → ~24 KB once trimmed |
+| Snapshot encoding | gzip+base64 via `snapshotCodec.js`, legacy plain-JSON decoded transparently, plain-JSON fallback when `CompressionStream` is absent | **16.83 MB → 1.97 MB (8.5×)** |
+| Backup retention | 40 full snapshots → count **and** byte bounded, always keeping at least one | the dominant quota multiplier removed |
+
+Root-fixed while here: `/api/rewind/restore` loaded a persisted snapshot **without** going through `migrateSnapshot`, so an older-schema rewind point restored unmigrated. It now uses the same seam, which also means legacy franchises reclaim their space the moment they are opened.
+
+Coverage added: `test/snapshot-codec.test.js` (8) and a rewritten `test/save-payload-budget.test.js` (6) that now guards the fix instead of characterizing the defect — including an end-to-end test that plays a full season, backs up every week, and asserts the whole footprint stays under 5 MB and still loads back into a working session.
+
+**Deliberate trade, disclosed:** older archived games no longer store a drive log. Their statistical box score is complete, and the modal says so rather than showing an empty table. A degraded historical detail is the right price for a save system that works.
+
+Verification: `npm test` **746/746** direct exit 0 · Playwright **26/26** · `evidence:responsive` **53/53** · Pages build + smoke · 54 browser modules · doctor `blockingFailing` 0.
+
+## Next
+
+- [ ] GM firing / terminal game-over state — founder creative direction required (carried, unchanged).
+- [ ] Tablet touch affordances and a dedicated tablet layout — needs its own visual-evidence baseline (carried, unchanged).
+- [ ] External launch gates remain owned elsewhere: `/_health` 404 on the live domain (stale origin binding, needs Cloudflare zone access), delivered-email receipt, founder approval, registry lifecycle reconciliation.

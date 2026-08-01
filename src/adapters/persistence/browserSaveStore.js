@@ -8,6 +8,7 @@ import {
   verifyIntegrityStamp
 } from "./saveStoreShared.js";
 import { assertSnapshotCompatibility } from "../../runtime/snapshotMigration.js";
+import { decodeSnapshot, encodeSnapshot } from "./snapshotCodec.js";
 
 function storageKeys(storage) {
   if (!storage || typeof storage.length !== "number" || typeof storage.key !== "function") return [];
@@ -18,6 +19,18 @@ function storageKeys(storage) {
   }
   return keys;
 }
+
+/**
+ * Rolling-backup retention (S65).
+ *
+ * The previous default kept **40 full snapshots**. At a full-season size that is
+ * hundreds of megabytes against a 5-10 MB localStorage budget, and it was the
+ * dominant reason "Browser storage is full" appeared in normal play. Backups
+ * are a short undo runway, not an archive: a handful of recent checkpoints,
+ * bounded by bytes as well as by count so the cap holds as a franchise grows.
+ */
+const DEFAULT_MAX_BACKUPS = 6;
+const DEFAULT_MAX_BACKUP_BYTES = 2 * 1024 * 1024;
 
 function isQuotaExceededError(error) {
   return error?.name === "QuotaExceededError" || error?.code === 22 || error?.code === 1014;
@@ -90,11 +103,13 @@ export function createBrowserSaveStore({
     return removed;
   }
 
-  function saveSessionToSlot(slot, snapshot) {
+  async function saveSessionToSlot(slot, snapshot) {
     assertSnapshotCompatibility(snapshot);
     const safe = safeSlotName(slot);
     const updatedAt = now();
-    const serialized = JSON.stringify(snapshot);
+    // Compressed before stamping, so the integrity stamp continues to describe
+    // exactly the bytes that land in storage (see ./snapshotCodec.js).
+    const serialized = await encodeSnapshot(snapshot);
     const write = () => {
       try {
         storage.setItem(dataKey(safe), serialized);
@@ -129,7 +144,7 @@ export function createBrowserSaveStore({
     }
   }
 
-  function loadSessionFromSlot(slot) {
+  async function loadSessionFromSlot(slot) {
     const raw = storage.getItem(dataKey(slot));
     if (!raw) return null;
     let integrity = null;
@@ -145,7 +160,7 @@ export function createBrowserSaveStore({
           "Restore from a rolling backup (Settings → Saves → Backups)."
       );
     }
-    const snapshot = JSON.parse(raw);
+    const snapshot = await decodeSnapshot(raw);
     assertSnapshotCompatibility(snapshot);
     return snapshot;
   }
@@ -159,9 +174,25 @@ export function createBrowserSaveStore({
     return exists;
   }
 
-  function saveRollingBackup(
+  /** Total bytes currently held by rolling backups. */
+  function backupBytes() {
+    let bytes = 0;
+    for (const backup of listBackupSlots()) {
+      bytes += (storage.getItem(dataKey(backup.slot)) || "").length;
+    }
+    return bytes;
+  }
+
+  async function saveRollingBackup(
     snapshot,
-    { reason = "checkpoint", year = 0, week = 0, phase = "unknown", maxBackups = 40 } = {}
+    {
+      reason = "checkpoint",
+      year = 0,
+      week = 0,
+      phase = "unknown",
+      maxBackups = DEFAULT_MAX_BACKUPS,
+      maxBackupBytes = DEFAULT_MAX_BACKUP_BYTES
+    } = {}
   ) {
     const stamp = now().replace(/[:.]/g, "-");
     const slot = safeSlotName(`${backupPrefix}${reason}-y${year}-w${week}-${phase}-${stamp}`);
@@ -170,13 +201,20 @@ export function createBrowserSaveStore({
     if (existingBackups.length > retainCount) {
       clearOldestBackups(existingBackups.length - retainCount);
     }
-    const saved = saveSessionToSlot(slot, snapshot);
+    const saved = await saveSessionToSlot(slot, snapshot);
 
     const backups = listBackupSlots();
     if (backups.length > maxBackups) {
       for (const old of backups.slice(maxBackups)) {
         deleteSaveSlot(old.slot);
       }
+    }
+
+    // A count-based cap alone cannot bound storage, because a backup's size
+    // grows with the franchise. Evict oldest until the backups fit their byte
+    // budget, always keeping the one just written.
+    while (backupBytes() > maxBackupBytes && listBackupSlots().length > 1) {
+      if (clearOldestBackups(1, { exclude: [slot] }) === 0) break;
     }
     return saved;
   }

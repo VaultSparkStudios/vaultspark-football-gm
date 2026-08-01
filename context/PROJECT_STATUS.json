@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 64 was a production-readiness audit. It repaired a failing Deploy Pages workflow caused by an S63 regression that had taken the desktop UI away from tablets, fixed an HTTP 500 on the server press-conference route and a matchup-edge receipt that never rendered, closed the systemic gap that let both ship by giving src/server.js executing HTTP coverage, and repaired a shared-global fetch leak between test files. The open blocker is save payload: a play-mode snapshot is ~30.7 MB after six weeks against a 5-10 MB localStorage budget, now pinned by a budget guard and recorded for a dedicated persistence session.",
+  "currentFocus": "Session 65 cleared the save-payload blocker: a full season of realistic play now occupies 3.95 MB of localStorage (from not persistable at all) via lean stored week records, a bounded game archive with a recent-only drive-log window, gzip+base64 snapshot encoding, and byte-bounded backup retention. Remaining launch gates are external: the stale live-origin binding behind the /_health 404, delivered-email receipt, founder approval, and registry lifecycle reconciliation.",
   "nextMilestone": "Apply the exact generated edge contract at the owning host and prove its fingerprint, deployed revision, /_health, required headers, delivered email, approval, and authoritative lifecycle before any launch flip; then take up the deferred mobile/tablet nav parity with a visual re-baseline budget.",
   "blockers": [
     "Launch/SPARKED remains evidence-gated: canonical /_health is invalid, exact deployed revision is absent, required HSTS/CSP/frame/permissions headers are missing, and delivered-email, founder-approval, and sibling lifecycle authorities remain absent."
@@ -18,21 +18,19 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-07-27",
   "testSuiteStatus": {
-    "totalTests": 737,
-    "pass": 737,
+    "totalTests": 746,
+    "pass": 746,
     "fail": 0,
     "lastRun": "2026-08-01",
     "newTestFiles": [
-      "test/server-routes.test.js",
-      "test/save-payload-budget.test.js",
-      "tests-ui/s63-surfaces.spec.js"
+      "test/snapshot-codec.test.js"
     ],
-    "newTestCount": 18,
-    "coverage": "Session 64 canonical aggregate Node 737/737 direct exit 0 (core 75, runtime 457, sim-contract 75, sim-realism 1, studio 129), Playwright 26/26 exit 0, responsive evidence 53/53, Pages build/smoke green, 54 browser modules reachable.",
-    "uiSuiteNote": "Playwright grew 20 -> 26 with browser coverage for the S63 press room and coaching market; two of those six failed on first run and found a server 500 and a receipt that never rendered."
+    "newTestCount": 14,
+    "coverage": "Session 65 canonical aggregate Node 746/746 direct exit 0 (core 75, runtime 466, sim-contract 75, sim-realism 1, studio 129), Playwright 26/26, responsive evidence 53/53, Pages build/smoke, 54 browser modules reachable.",
+    "uiSuiteNote": "Playwright unchanged at 26/26; the save-payload work is covered at the node level end-to-end, including a full simulated season persisted and reloaded."
   },
-  "testsPassing": 737,
-  "testsTotal": 737,
+  "testsPassing": 746,
+  "testsTotal": 746,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -71,23 +69,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 981,
+  "silScore": 991,
   "silCategoriesV3": {
-    "devHealth": 96,
+    "devHealth": 100,
     "creativeAlignment": 100,
-    "momentum": 92,
-    "engagement": 98,
+    "momentum": 98,
+    "engagement": 96,
     "processQuality": 100,
     "crossRepoCoherence": 100,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
-    "capitalEfficiency": 95,
+    "capitalEfficiency": 97,
     "automationCoverage": 100
   },
-  "currentSession": 64,
+  "currentSession": 65,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
-  "lastVerification": "npm test 737/737 direct exit 0; npm run test:ui 26/26 exit 0; evidence:responsive 53 captures exit 0 with 0 runtime errors / 0 overflow / 0 undersized targets; build:pages + smoke:pages exit 0; check:browser-modules 54; doctor blockingFailing 0; npm audit 0 vulnerabilities with zero production dependencies.",
+  "lastVerification": "npm test 746/746 direct exit 0; npm run test:ui 26/26 exit 0; evidence:responsive 53 captures exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54; doctor blockingFailing 0; full-season persistence measured at 3.95 MB total footprint with successful reload.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "claude-fable-5",
   "modelTierDefault": "codex-1m",
@@ -113,7 +111,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 861,
+  "silHealth": 871,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -176,8 +174,8 @@
       "lastChecked": "2026-07-31"
     }
   ],
-  "lastSession": 64,
-  "silLastSession": 64,
+  "lastSession": 65,
+  "silLastSession": 65,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",

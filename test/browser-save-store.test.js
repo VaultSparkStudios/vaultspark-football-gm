@@ -55,7 +55,7 @@ function createQuotaStorage(limitBytes) {
   };
 }
 
-test("browser save store supports save, list, load, backup pruning, and delete", () => {
+test("browser save store supports save, list, load, backup pruning, and delete", async () => {
   const storage = createMemoryStorage();
   let tick = 0;
   const store = createBrowserSaveStore({
@@ -74,9 +74,9 @@ test("browser save store supports save, list, load, backup pruning, and delete",
     league: { teams: [{ id: "BUF", abbrev: "AGU", name: "Austin Guardians" }], players: [] }
   };
 
-  const saved = store.saveSessionToSlot("primary", snapshot);
+  const saved = await store.saveSessionToSlot("primary", snapshot);
   assert.equal(saved.slot, "primary");
-  assert.equal(store.loadSessionFromSlot("primary").currentWeek, 4);
+  assert.equal((await store.loadSessionFromSlot("primary")).currentWeek, 4);
 
   const saves = store.listSaveSlots();
   assert.equal(saves.length, 1);
@@ -88,17 +88,17 @@ test("browser save store supports save, list, load, backup pruning, and delete",
   assert.equal(metaOnlySaves[0].meta.controlledTeamName, "Austin Guardians");
   assert.equal(metaOnlySaves[0].meta.controlledTeamAbbrev, "AGU");
 
-  store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 4, phase: "regular", maxBackups: 2 });
-  store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 5, phase: "regular", maxBackups: 2 });
-  store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 6, phase: "regular", maxBackups: 2 });
+  await store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 4, phase: "regular", maxBackups: 2 });
+  await store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 5, phase: "regular", maxBackups: 2 });
+  await store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 6, phase: "regular", maxBackups: 2 });
   assert.equal(store.listSaveSlots().length, 1);
   assert.equal(store.listBackupSlots().length, 2);
 
   assert.equal(store.deleteSaveSlot("primary"), true);
-  assert.equal(store.loadSessionFromSlot("primary"), null);
+  assert.equal(await store.loadSessionFromSlot("primary"), null);
 });
 
-test("browser save store prunes old backups before failing on quota", () => {
+test("browser save store prunes old backups before failing on quota", async () => {
   // Budget fits two slot records including the S14 integrity stamp (~65 bytes each).
   const storage = createQuotaStorage(1400);
   let tick = 0;
@@ -119,16 +119,16 @@ test("browser save store prunes old backups before failing on quota", () => {
     league: { teams: [{ id: "BUF", abbrev: "AGU", name: "Austin Guardians" }], players: [] }
   };
 
-  store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 4, phase: "regular", maxBackups: 2 });
-  store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 5, phase: "regular", maxBackups: 2 });
-  store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 6, phase: "regular", maxBackups: 2 });
+  await store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 4, phase: "regular", maxBackups: 2 });
+  await store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 5, phase: "regular", maxBackups: 2 });
+  await store.saveRollingBackup(snapshot, { reason: "weekly", year: 2026, week: 6, phase: "regular", maxBackups: 2 });
 
   const backups = store.listBackupSlots();
   assert.equal(backups.length, 2);
   assert.ok(backups.some((entry) => entry.slot.includes("w6")));
 });
 
-test("browser save store surfaces a helpful quota message when storage cannot recover", () => {
+test("browser save store surfaces a helpful quota message when storage cannot recover", async () => {
   const storage = createQuotaStorage(80);
   const store = createBrowserSaveStore({ storage });
   const snapshot = {
@@ -142,5 +142,5 @@ test("browser save store surfaces a helpful quota message when storage cannot re
     league: { teams: [{ id: "BUF", abbrev: "AGU", name: "Austin Guardians" }], players: [] }
   };
 
-  assert.throws(() => store.saveSessionToSlot("primary", snapshot), /Browser storage is full/);
+  await assert.rejects(() => store.saveSessionToSlot("primary", snapshot), /Browser storage is full/);
 });

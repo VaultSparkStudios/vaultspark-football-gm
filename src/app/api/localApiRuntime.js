@@ -289,15 +289,20 @@ export function createLocalApiRuntime({
     runtimeMetrics.routeTiming[route] = timing;
   }
 
-  function writeAutoBackup(reason) {
-    const activeSession = ensureSession();
+  /**
+   * Fire-and-forget: callers do not await this, so it must never reject.
+   * `ensureSession()` is inside the try for that reason.
+   */
+  async function writeAutoBackup(reason) {
     try {
-      const saved = saveStore.saveRollingBackup(activeSession.toSnapshot(), {
+      const activeSession = ensureSession();
+      // maxBackups is intentionally left to the store's default, which is now
+      // both count- and byte-bounded. The old 60 here defeated the cap.
+      const saved = await saveStore.saveRollingBackup(activeSession.toSnapshot(), {
         reason,
         year: activeSession.currentYear,
         week: activeSession.currentWeek,
-        phase: activeSession.phase,
-        maxBackups: 60
+        phase: activeSession.phase
       });
       runtimeMetrics.lastAutoBackupWarning = null;
       return saved;
@@ -1214,14 +1219,14 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/saves/save") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
-        const saved = saveStore.saveSessionToSlot(String(body.slot), session.toSnapshot());
+        const saved = await saveStore.saveSessionToSlot(String(body.slot), session.toSnapshot());
         return finish(jsonResponse(200, { ok: true, saved, slots: saveStore.listSaveSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/saves/load") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
         let snapshot;
-        try { snapshot = saveStore.loadSessionFromSlot(String(body.slot)); }
+        try { snapshot = await saveStore.loadSessionFromSlot(String(body.slot)); }
         catch (error) { return finish(jsonResponse(error.status || 409, snapshotErrorPayload(error))); }
         if (!snapshot) return finish(jsonResponse(404, { ok: false, error: "Save slot not found." }));
         let replacement;
@@ -1234,7 +1239,7 @@ export function createLocalApiRuntime({
       if (method === "POST" && pathname === "/api/backups/load") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
         let snapshot;
-        try { snapshot = saveStore.loadSessionFromSlot(String(body.slot)); }
+        try { snapshot = await saveStore.loadSessionFromSlot(String(body.slot)); }
         catch (error) { return finish(jsonResponse(error.status || 409, snapshotErrorPayload(error))); }
         if (!snapshot) return finish(jsonResponse(404, { ok: false, error: "Backup slot not found." }));
         let replacement;
@@ -1272,7 +1277,10 @@ export function createLocalApiRuntime({
         // Auto-backup current state before restoring
         _rwTakeSnapshot(storage, session, "pre-restore", `Before restore to ${String(body.id)}`);
         try {
-          const snapshot = JSON.parse(snapshotJson);
+          // Rewind snapshots are persisted payloads like any save, so they go
+          // through the same migration seam — this path previously skipped it,
+          // which meant an older-schema rewind point restored unmigrated.
+          const snapshot = migrateSnapshot(JSON.parse(snapshotJson));
           const rngFactory = (seed) => new session.rng.constructor(seed);
           const restored = GameSession.fromSnapshot(snapshot, rngFactory);
           // Replace active session internals

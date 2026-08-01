@@ -1,3 +1,48 @@
+# Session 65 Closeout (2026-08-01)
+
+## Where We Left Off — Session 65 Closeout (2026-08-01)
+
+Single objective, achieved: **the save-payload blocker recorded by Session 64 is cleared.** A full season of realistic play — advancing and taking a rolling backup every week, plus a named save — now occupies **3.95 MB** of localStorage and loads back into a working session. Before this session, a franchise could not be persisted at all.
+
+Session Intent: get the project production ready, then close out. **Achieved for everything in this repository's control.** The remaining launch gates are external and unchanged; see below.
+
+### How it was fixed — four layers, each measured
+
+| Layer | Measured |
+|---|---|
+| Stored week records keep only ids + scorelines (box scores live once, in `gameArchive`) | per retained game **84,747 → 215 bytes**; `weeklyHistory` **7.93 MB → 0.020 MB** |
+| `weeklyHistory` pruned to the active season at season start | unbounded → one season |
+| Archive cap 800 → 272, drive log retained for the most recent 48 only | archived entry ~84 KB → ~24 KB when trimmed |
+| Snapshots gzip+base64 encoded on the way into storage | **16.83 MB → 1.97 MB (8.5×)** |
+| Rolling backups bounded by **bytes** as well as count (was 40 full snapshots) | the dominant quota multiplier removed |
+
+The order mattered and was driven by measurement, not planning: leaning week records exposed `gameArchive` as the new dominant cost; bounding the archive exposed the real floor — `league.players` is ~6.8 MB of genuine game state — which proved pruning alone could never fit a 5–10 MB origin and forced the move to encoding.
+
+### Safety
+
+Every consumer was mapped before the first edit. Box scores are read exclusively through `getBoxScore(gameId)` → `gameArchive`; the tactical film receipt reads `game.boxScore` but is built from the **live** `advanceWeek()` return, before persistence. Encoded payloads are self-describing via a magic prefix, so **existing saves load unchanged**, and a runtime without `CompressionStream` writes plain JSON rather than failing. The integrity stamp still covers the stored bytes, so its meaning is unchanged.
+
+Root-fixed en route: `/api/rewind/restore` loaded a persisted snapshot without `migrateSnapshot`, so an older-schema rewind point restored unmigrated. It now uses the same seam — which also means legacy franchises reclaim their stored payload the moment they are opened.
+
+### Deliberate trade, disclosed
+
+Older archived games no longer store a drive log. Their statistical box score stays complete, and the box-score modal says so rather than rendering an empty play table. A degraded historical detail is the right price for a save system that works.
+
+### Verification
+
+- `npm test` **746/746**, direct exit 0 (core 75 · runtime 466 · sim-contract 75 · sim-realism 1 · studio 129)
+- Playwright **26/26** · `evidence:responsive` **53/53** · Pages build + smoke · 54 browser modules reachable
+- doctor `blockingFailing` **0** · `npm audit` clean across zero production dependencies
+- End-to-end: full season played, persisted, reloaded, total footprint asserted under 5 MB
+
+### Still external — not claimable from this repo
+
+`/_health` returns 404 on `playfranchisearchitect.com` because the live origin serves a build from ~2026-07-02–20 (it has S33's JSON-LD but not S62's `sw.js`). Resolving it needs Cloudflare zone access for that domain, which is not in the secrets gateway. Delivered-email receipt, founder approval and registry lifecycle reconciliation are likewise owned elsewhere. No launch evidence was fabricated.
+
+### Next session
+
+Both carried items are unchanged and both need founder input or a dedicated evidence budget: GM firing / terminal game-over state (creative direction), and tablet touch affordances plus a real tablet layout (visual-evidence baseline). Run `/audit` for a fresh ranked list.
+
 # Session 64 Closeout (2026-08-01)
 
 ## Where We Left Off — Session 64 Closeout (2026-08-01)

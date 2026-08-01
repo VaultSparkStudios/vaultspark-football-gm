@@ -112,6 +112,7 @@ import { answerPressQuestion, getPendingPressQuestion, getPressReceipts } from "
 import { buildCoachingMarket, fireCoach, getCoachingMarketReceipts, hireCoach } from "../engine/coachingMarket.js";
 import { initCoachingTree, registerRootHeadCoach } from "../engine/coachingTree.js";
 import { derivedStaffRng, staffSeedKey } from "../engine/staffGeneration.js";
+import { applyArchiveRetention, pruneWeeklyHistory, toLeanWeekResult } from "./weekResultProjection.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 
 const TABLE_CATEGORIES = ["passing", "rushing", "receiving", "defense", "blocking", "kicking", "punting", "snaps"];
@@ -2650,6 +2651,9 @@ export class GameSession {
     this.phase = "regular-season";
     this.currentWeek = 1;
     this.weekResultsCurrentSeason = [];
+    // Completed seasons are served from league.history[].weekly; keeping them in
+    // weeklyHistory too made it grow without bound for the life of the franchise.
+    pruneWeeklyHistory(this.league, year);
     this.latestPostseason = null;
     this.lastAwardSummary = null;
     this.pendingSeasonWrap = null;
@@ -4302,9 +4306,15 @@ export class GameSession {
       }
       // ─────────────────────────────────────────────────────────────────────
 
-      this.weekResultsCurrentSeason.push(weekResult);
-      this.league.weeklyHistory.push({ year: this.currentYear, week: weekResult.week, ...weekResult });
+      // Archive first: gameArchive is the box-score authority every consumer
+      // reads through, and the stored week records below keep only identity and
+      // scoreline fields (see src/runtime/weekResultProjection.js). The live
+      // `weekResult` returned to callers is untouched and still carries full
+      // box scores for post-game consumers.
       this.archiveGameResults(weekResult.games);
+      const leanWeek = toLeanWeekResult(weekResult);
+      this.weekResultsCurrentSeason.push(leanWeek);
+      this.league.weeklyHistory.push({ ...leanWeek, year: this.currentYear, week: weekResult.week });
 
       this.currentWeek += 1;
       if (this.currentWeek > NFL_STRUCTURE.regularSeasonWeeks) this.phase = "postseason";
@@ -4654,9 +4664,7 @@ export class GameSession {
       if (existing >= 0) this.league.gameArchive.splice(existing, 1, summary);
       else this.league.gameArchive.push(summary);
     }
-    if (this.league.gameArchive.length > 800) {
-      this.league.gameArchive = this.league.gameArchive.slice(-800);
-    }
+    applyArchiveRetention(this.league);
   }
 
   getRecentBoxScores(teamId = this.controlledTeamId, limit = 8) {

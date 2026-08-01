@@ -557,3 +557,25 @@ Started by checking CI rather than trusting the prior session's green: **Deploy 
 **Largest finding, deliberately not fixed:** save payload exceeds a browser storage budget — ~30.7 MB snapshot after 6 weeks, `weeklyHistory` projecting ~24 MB per season against 5–10 MB of localStorage. A franchise cannot finish one season. Causes are per-game play-by-play retained in weekly history and a duplicate copy of current-season games. Reshaping persistence touches replay/what-if/history and needs its own session with save migration; ceilings are pinned so it cannot worsen.
 
 **Corrected myself mid-audit:** first framed `matchupEdges` as the storage problem; measured it at 0.4% of per-game weight versus `boxScore` at 98%, and re-scoped the finding accordingly.
+
+## 2026-08-01 — Session 65 (save-payload blocker)
+
+Single objective: clear the blocker S64 recorded and deliberately left open.
+
+**Method — measure, then cut in order of size.** Mapped every consumer of the fat fields before touching anything: `weeklyHistory` and `weekResultsCurrentSeason` readers use only ids and scorelines; every box-score consumer already goes through `getBoxScore(gameId)` → `gameArchive`; the tactical film receipt reads `game.boxScore` but is built from the **live** `advanceWeek()` return, before persistence. That made the lean projection provably safe rather than hopefully safe.
+
+Then measured after each cut, which repeatedly redirected the work:
+- lean week records: 30.73 → 12.24 MB at six weeks; weeklyHistory 7.93 → 0.020 MB
+- revealed `gameArchive` as the new dominant cost (7.78 MB for 93 games, capped at 800 → ~67 MB at cap)
+- archive retention + play-by-play window: full season 16.83 MB
+- revealed the true floor: `league.players` alone is 6.8 MB, so **raw JSON could never fit** a 5–10 MB origin
+
+That last measurement is what changed the approach. Trimming derived data was never going to be enough; the fix had to be encoding. gzip measured 11.4× (1.48 MB), 8.5× after base64.
+
+**And the real multiplier was hiding in retention:** `maxBackups = 40`, i.e. up to forty full snapshots — hundreds of megabytes against a 5 MB quota, which is what actually produced "Browser storage is full" in normal play. Now bounded by bytes as well as count.
+
+**Result:** full season, backup every week, plus a named save → **3.95 MB**, loads back into a working session.
+
+**Corrections I made to my own work:** the byte-budget test initially asserted something unachievable (a budget smaller than a single snapshot); the rule is evict-until-fits *but never drop the last backup*, and the test now says that. A blanket `await` insertion also produced `await store.load(...).currentWeek`, awaiting a property — caught immediately by the test.
+
+Verification: `npm test` 746/746 exit 0 · Playwright 26/26 · responsive evidence 53/53 · Pages build/smoke · doctor blockingFailing 0.

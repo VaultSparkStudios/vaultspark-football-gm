@@ -877,6 +877,26 @@ export async function loadBoxScore(gameId) {
     }))
   );
 
+  // S65 — an older archived game keeps its statistical box score but no longer
+  // stores a drive log (see src/runtime/weekResultProjection.js). Say so rather
+  // than rendering an empty table, which would read as "this game had no plays".
+  const playTable = document.getElementById("boxScorePlayTable");
+  if (playTable) {
+    const trimmedNote = playTable.closest(".table-wrap")?.querySelector(".box-score-trim-note")
+      || (() => {
+        const note = document.createElement("div");
+        note.className = "box-score-trim-note small";
+        playTable.closest(".table-wrap")?.appendChild(note);
+        return note;
+      })();
+    if (trimmedNote) {
+      trimmedNote.textContent = boxScore.playByPlayTrimmed
+        ? "Drive log not retained for older games — the full statistical box score above is complete."
+        : "";
+      trimmedNote.hidden = !boxScore.playByPlayTrimmed;
+    }
+  }
+
   renderTable(
     "boxScorePlayTable",
     (boxScore.playByPlay || []).map((entry) => ({

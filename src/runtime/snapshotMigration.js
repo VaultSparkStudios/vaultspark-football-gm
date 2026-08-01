@@ -1,3 +1,5 @@
+import { leanifySnapshot } from "./weekResultProjection.js";
+
 export const LATEST_SNAPSHOT_SCHEMA_VERSION = 2;
 
 export class SnapshotCompatibilityError extends Error {
@@ -99,6 +101,17 @@ export function migrateSnapshot(snapshot) {
     }
     break;
   }
+
+  // Reclaim stored week payload on every load, at any schema version (S65).
+  //
+  // Deliberately not gated behind a schema bump: this is lossless rather than a
+  // format break. Box scores continue to live in `league.gameArchive`, which is
+  // where every consumer already reads them from, so a leaned save stays
+  // readable by builds that predate this change. Loading is simply the moment a
+  // legacy franchise can shed history it was never going to read again.
+  // `leanifySnapshot` is idempotent, so re-loading a lean save is a no-op.
+  leanifySnapshot(current);
+
   current.schemaVersion = LATEST_SNAPSHOT_SCHEMA_VERSION;
   assertSnapshotCompatibility(current);
   return current;

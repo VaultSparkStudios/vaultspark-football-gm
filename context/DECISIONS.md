@@ -685,3 +685,17 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **The save-size blocker was measured and recorded, not fixed.** A `mode:"play"` snapshot is ~30.7 MB after six weeks and `weeklyHistory` projects ~24 MB per season against a 5–10 MB localStorage budget, so a zero-backend franchise cannot survive one season. The fix is a persistence reshape touching replay, what-if, box-score and history surfaces, and it needs explicit save migration for existing franchises. Attempting it unscoped at the end of an audit would risk the saves it is meant to protect. Ceilings pinned just above today's measurements keep it from worsening and give the eventual fix a number to beat. Production readiness is therefore **not** claimed on this axis.
 
 **A first framing was corrected by measurement.** `matchupEdges` was initially treated as the storage problem because it was dead payload I had added. Measured, it is 0.4% of a retained game against `boxScore` at 98%. The finding was rewritten around the real cause rather than the convenient one.
+
+## 2026-08-01 — Session 65
+
+**Trimming derived data was necessary but could never be sufficient.** After leaning week records and bounding the archive, a full-season snapshot was still 16.83 MB — and `league.players` alone is ~6.8 MB. That is real game state, not waste. Once measured, the conclusion was forced: raw JSON cannot fit a 5–10 MB localStorage origin at this game's scale, so the fix had to be encoding rather than more pruning.
+
+**Compression, not IndexedDB.** IndexedDB would raise the ceiling further and is the eventual right home for a 100-year franchise, but it is an async, multi-store migration of the whole persistence adapter. gzip+base64 achieves 8.5× behind three method signatures and four call sites, keeps the existing store, and — because the payload is self-describing via a magic prefix — leaves every existing save loadable. That is a far better risk-to-benefit trade for the blocker actually in front of us. IndexedDB remains available later if franchises outgrow this.
+
+**The integrity stamp now covers the encoded bytes.** It always meant "the bytes on disk are the bytes we wrote", and stamping after encoding preserves exactly that. Legacy saves stamped over plain JSON still verify, because plain JSON is still what is stored for them.
+
+**Backups are an undo runway, not an archive.** Retention was 40 full snapshots, which at franchise scale is hundreds of megabytes and was the dominant cause of quota failures. A count cap alone cannot bound storage when the item size grows with the save, so retention is now bounded by bytes as well — and always keeps at least one backup even if a single snapshot exceeds the budget, because one undo point beats none.
+
+**Older games lose their drive log, and the UI says so.** Play-by-play is 68% of an archived box score. Retaining it for every game is what broke saves; retaining it only for a recent window keeps sim-watch and recent replays intact. The statistical box score stays complete for every archived game, and the modal states plainly when a drive log is not stored — a silent empty table would have been the same class of defect this work has been removing.
+
+**`/api/rewind/restore` was routed through the migration seam.** It loaded a persisted snapshot with `fromSnapshot` directly, so an older-schema rewind point restored unmigrated — a pre-existing gap found while wiring the reclaim. Routing it through `migrateSnapshot` fixes that and means legacy franchises shrink the moment they are opened.

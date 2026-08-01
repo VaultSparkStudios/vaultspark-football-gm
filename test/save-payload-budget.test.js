@@ -2,41 +2,41 @@ import test from "node:test";
 import assert from "node:assert/strict";
 
 import { createSession } from "../src/runtime/bootstrap.js";
+import { createBrowserSaveStore } from "../src/adapters/persistence/browserSaveStore.js";
 
 /**
  * Save-payload budget guard.
  *
- * This is a *characterization* test, not a passing grade. It records what the
- * snapshot actually weighs today and fails if that grows, because the current
- * numbers are already a live production problem for a zero-backend browser game:
+ * Session 64 recorded this as an open blocker: a `mode:"play"` snapshot weighed
+ * ~30.7 MB after six weeks, so a franchise could not finish a season inside a
+ * browser storage quota. Session 65 fixed it in three layers, and this file is
+ * now the guard that keeps it fixed rather than a characterization of a defect:
  *
- *   measured 2026-08-01, mode "play", after 6 regular-season weeks
- *     full snapshot                     ~30.7 MB
- *     league.weeklyHistory               ~7.9 MB  (~24 MB projected over 18 weeks)
- *     per archived game                  ~84 KB, of which boxScore is ~98%
+ *   1. Stored week records keep only identity and scoreline fields — box scores
+ *      live once, in `league.gameArchive` (src/runtime/weekResultProjection.js).
+ *   2. The archive is bounded, and play-by-play is retained only for a recent
+ *      window; the box-score modal says so when a drive log is not stored.
+ *   3. Snapshots are gzip+base64 encoded on the way into storage, and rolling
+ *      backups are bounded by bytes as well as count
+ *      (src/adapters/persistence/snapshotCodec.js).
  *
- * A typical localStorage origin budget is 5–10 MB, so a franchise cannot finish
- * one season inside it. The symptom is already visible in test output as
- * "Auto-backup skipped: Browser storage is full".
- *
- * Two structural causes, both recorded on the task board rather than changed
- * here — reshaping persistence needs its own session with save-migration care:
- *   1. `boxScore` (including full play-by-play) is retained for every game in
- *      `league.weeklyHistory` for the whole season.
- *   2. `weekResultsCurrentSeason` holds a second copy of the same current-season
- *      games that `league.weeklyHistory` already has.
- *
- * The ceilings below sit just above today's measurements. They exist so the
- * problem cannot quietly get worse, and so the eventual fix has a number to beat.
+ * The end-to-end number that matters is the last test: a full season of
+ * realistic play, backing up every week, inside a 5 MB origin.
  */
 
 const MB = 1024 * 1024;
 
-// Ceilings are deliberately close to measured values — headroom is for
-// incidental churn, not for new payload.
-const SNAPSHOT_CEILING_MB = 34;
-const WEEKLY_HISTORY_CEILING_MB = 9;
-const PER_GAME_CEILING_KB = 95;
+function memoryStorage() {
+  const data = new Map();
+  return {
+    get length() { return data.size; },
+    key(i) { return [...data.keys()][i] ?? null; },
+    getItem(k) { return data.has(k) ? data.get(k) : null; },
+    setItem(k, v) { data.set(String(k), String(v)); },
+    removeItem(k) { data.delete(String(k)); },
+    totalBytes() { return [...data.values()].reduce((sum, v) => sum + String(v).length, 0); }
+  };
+}
 
 function sessionAfterWeeks(weeks) {
   const session = createSession({ seed: 99, startYear: 2026, controlledTeamId: "BUF", mode: "play" });
@@ -47,65 +47,94 @@ function sessionAfterWeeks(weeks) {
   return session;
 }
 
-test("the six-week snapshot has not grown past its recorded ceiling", () => {
-  const session = sessionAfterWeeks(6);
-  const bytes = JSON.stringify(session.toSnapshot()).length;
-  const megabytes = bytes / MB;
-
-  assert.ok(
-    megabytes <= SNAPSHOT_CEILING_MB,
-    `snapshot grew to ${megabytes.toFixed(1)} MB (ceiling ${SNAPSHOT_CEILING_MB} MB). ` +
-    "Saves are already over a browser localStorage budget; do not add payload here."
-  );
+test("stored week records carry no box scores", () => {
+  const session = sessionAfterWeeks(2);
+  for (const week of session.league.weeklyHistory) {
+    for (const game of week.games || []) {
+      assert.equal(game.boxScore, undefined, "weeklyHistory must not retain box scores");
+      assert.ok(game.gameId, "but must keep the id that resolves one from the archive");
+    }
+  }
+  for (const week of session.weekResultsCurrentSeason) {
+    for (const game of week.games || []) {
+      assert.equal(game.boxScore, undefined, "weekResultsCurrentSeason must not retain box scores");
+    }
+  }
 });
 
-test("weekly history has not grown past its recorded ceiling", () => {
-  const session = sessionAfterWeeks(6);
-  const megabytes = JSON.stringify(session.league.weeklyHistory).length / MB;
-  assert.ok(
-    megabytes <= WEEKLY_HISTORY_CEILING_MB,
-    `weeklyHistory grew to ${megabytes.toFixed(1)} MB (ceiling ${WEEKLY_HISTORY_CEILING_MB} MB)`
-  );
-});
-
-test("a single retained game has not grown past its recorded ceiling", () => {
+test("a retained week game is tiny, and its box score is still reachable", () => {
   const session = sessionAfterWeeks(1);
   const game = session.league.weeklyHistory[0]?.games?.[0];
-  assert.ok(game, "a played week must retain its games");
-  const kilobytes = JSON.stringify(game).length / 1024;
+  assert.ok(game);
+
+  const bytes = JSON.stringify(game).length;
+  assert.ok(bytes < 600, `a retained game grew to ${bytes} bytes (was ~84,000 before S65)`);
+  assert.ok(session.getBoxScore(game.gameId), "the full box score must still resolve from gameArchive");
+});
+
+test("weekly history is pruned to the current season", () => {
+  const session = sessionAfterWeeks(3);
+  const years = new Set(session.league.weeklyHistory.map((entry) => entry.year));
+  assert.ok(years.size <= 1, "weeklyHistory should only ever hold the active season");
+
+  // Past seasons remain playable from league.history, which is what getSeasonWeeks reads.
+  session.league.weeklyHistory.push({ year: session.currentYear - 5, week: 1, games: [] });
+  session.startSeason(session.currentYear + 1);
   assert.ok(
-    kilobytes <= PER_GAME_CEILING_KB,
-    `a retained game grew to ${kilobytes.toFixed(1)} KB (ceiling ${PER_GAME_CEILING_KB} KB)`
+    session.league.weeklyHistory.every((entry) => entry.year === session.currentYear),
+    "starting a season must drop other seasons from weeklyHistory"
   );
 });
 
-test("the box score is named as the dominant cost, so the fix targets the right thing", () => {
-  const session = sessionAfterWeeks(1);
-  const game = session.league.weeklyHistory[0].games[0];
-  const total = JSON.stringify(game).length;
-  const boxScore = JSON.stringify(game.boxScore).length;
+test("the archive is bounded and only recent games keep a drive log", () => {
+  const session = sessionAfterWeeks(6);
+  const archive = session.league.gameArchive;
+  assert.ok(archive.length > 0);
+  assert.ok(archive.length <= 272, `archive grew to ${archive.length} entries`);
 
+  const trimmed = archive.filter((entry) => entry.boxScore?.playByPlayTrimmed);
+  for (const entry of trimmed) {
+    assert.equal(entry.boxScore.playByPlay, undefined);
+    // A trimmed entry is still a real box score — only the drive log is gone.
+    assert.ok(entry.boxScore.playerStats, "trimmed entries keep their statistical box score");
+  }
+});
+
+test("a six-week snapshot is far below its former weight", () => {
+  const session = sessionAfterWeeks(6);
+  const megabytes = JSON.stringify(session.toSnapshot()).length / MB;
   assert.ok(
-    boxScore / total > 0.9,
-    `boxScore is ${((boxScore / total) * 100).toFixed(1)}% of a retained game; ` +
-    "if this drops, the persistence shape changed and the recorded finding needs re-measuring."
+    megabytes < 16,
+    `raw snapshot is ${megabytes.toFixed(1)} MB (was 30.7 MB at S64); the payload reductions have regressed`
   );
 });
 
-test("current-season games are still duplicated across two persisted fields", () => {
-  // Documents cause (2) above. When the duplication is removed this test should
-  // be updated to assert the opposite — it is here so the redundancy cannot be
-  // forgotten, not to bless it.
-  const session = sessionAfterWeeks(2);
-  const snapshot = session.toSnapshot();
+test("a full season of realistic play fits a 5 MB browser origin", async () => {
+  // The guarantee the whole effort exists for: play a season, back up every
+  // week, keep a named save — and stay inside the smallest common quota.
+  const storage = memoryStorage();
+  const store = createBrowserSaveStore({ storage });
+  const session = createSession({ seed: 99, startYear: 2026, controlledTeamId: "BUF", mode: "play" });
 
-  const inHistory = (JSON.stringify(snapshot.league.weeklyHistory).match(/"gameId"/g) || []).length;
-  const inCurrentSeason = (JSON.stringify(snapshot.weekResultsCurrentSeason).match(/"gameId"/g) || []).length;
+  let week = 0;
+  while (session.phase === "regular-season") {
+    session.advanceWeek();
+    week += 1;
+    await store.saveRollingBackup(session.toSnapshot(), {
+      reason: "weekly", year: 2026, week, phase: "regular"
+    });
+  }
+  await store.saveSessionToSlot("dynasty", session.toSnapshot());
 
-  assert.ok(inHistory > 0 && inCurrentSeason > 0);
-  assert.equal(
-    inCurrentSeason,
-    inHistory,
-    "weekResultsCurrentSeason and league.weeklyHistory hold the same current-season games"
+  assert.ok(week >= 17, `expected a full season, played ${week} weeks`);
+  const totalMb = storage.totalBytes() / MB;
+  assert.ok(
+    totalMb < 5,
+    `a played season plus backups reached ${totalMb.toFixed(2)} MB, over a 5 MB origin budget`
   );
+
+  // And the save must still load back into a working session.
+  const loaded = await store.loadSessionFromSlot("dynasty");
+  assert.equal(loaded.currentYear, session.currentYear);
+  assert.equal(loaded.league.players.length, session.league.players.length);
 });

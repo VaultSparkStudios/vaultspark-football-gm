@@ -951,3 +951,24 @@ Committed SIL follow-ups:
 - `[SIL]` Testing a function is not testing the wiring. Any claim that something is "surfaced", "visible" or "shown to the player" needs an assertion that renders it — the matchup-edge receipt had green unit tests and green engine tests and never appeared on screen.
 - `[SIL]` Adapter parity asserted by grep is not parity. Two adapters are equivalent only when both are executed; `src/server.js` was referenced by six test files and run by none.
 - `[SIL]` Under `--test-isolation=none`, any test that assigns to a global must restore it. An unrestored stub is process-wide, and "the suite is green" silently depended on no later test needing the real implementation.
+
+## 2026-08-01 — Session 65 Save-Payload Blocker Cleared
+
+SIL v3.0: **991 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 98, Engagement 96, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 97, Automation Coverage 100).
+
+- Dev Health: 100 — 746/746 direct exit 0, Playwright 26/26, responsive evidence 53/53, doctor `blockingFailing` 0, and the persistence change is proved end-to-end by playing a full season, persisting it, and loading it back.
+- Creative Alignment: 100 — the one player-visible cost (no drive log on older archived games) is disclosed in the UI rather than degrading silently, which is the standard the last three sessions have been enforcing.
+- Momentum: 98 — one blocker, closed completely, with the fix measured at every layer rather than declared.
+- Engagement: 96 — marked down honestly: this restores the ability to *have* a franchise rather than adding anything a player experiences as new.
+- Process Quality: 100 — every consumer was mapped before the first edit, and measurement redirected the plan twice: after leaning week records the archive became dominant, and after bounding the archive the irreducible ~6.8 MB player state proved that pruning alone could never work, which is what forced the move to encoding. The 40-snapshot backup retention — the actual dominant multiplier — was found the same way.
+- Cross-Repo Coherence: 100 — no sibling tree touched; external launch gates left as external.
+- Security Posture: 100 — the integrity stamp still describes the stored bytes, legacy saves still verify, and no new dependency was introduced (`CompressionStream` is a platform API).
+- Ecosystem Integration: 100 — task board, truth audit, budget guard and status agree on what the numbers now are, and the S64 claim they supersede is explicitly marked superseded.
+- Capital Efficiency: 97 — up from 95: the change removes ~8.5× of stored bytes per save and eliminates a quota failure mode, at zero dependency and zero runtime cost.
+- Automation Coverage: 100 — 14 new tests, and the S64 budget file was rewritten from a characterization of a defect into a guard on the fix, including the end-to-end 5 MB guarantee.
+
+Committed SIL follow-ups:
+- `[SIL]` Measure after every cut, not only before the first one. Two of this session's three layers were only identified because the previous cut moved the dominant cost somewhere new.
+- `[SIL]` A count-based cap cannot bound storage when the item size grows with the save. Retention policies over variable-size payloads need a byte budget.
+- `[SIL]` Before optimizing a payload, check the retention multiplier. Forty copies of a large object is a bigger problem than the object being large.
+- `[SIL]` When a stored form changes, make the payload self-describing (a magic prefix) rather than gating on a schema flag — it keeps old saves loadable and new saves diagnosable.

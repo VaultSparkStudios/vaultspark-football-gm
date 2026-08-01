@@ -1,47 +1,46 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-01 (Session 64 closeout) -->
+<!-- generated-at: 2026-08-01 (Session 65 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S64 ══════╗
-║  Date: 2026-08-01  ·  SIL: 981/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S65 ══════╗
+║  Date: 2026-08-01  ·  SIL: 991/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ **Deploy Pages CI failure — an S63 regression.** Widening th  ║
-║  ✓ **`POST /api/press-conference` returned HTTP 500.** `sendJso  ║
-║  ✓ **The S63 matchup-edge receipt never rendered.** `toDashboar  ║
-║  ✓ **A shared-global `fetch` leak between test files.** `create  ║
-║  ✓ `test/server-routes.test.js` — **`src/server.js` had no exec  ║
+║  ✓ `npm test` **746/746**, direct exit 0 (core 75 · runtime 466  ║
+║  ✓ Playwright **26/26** · `evidence:responsive` **53/53** · Pag  ║
+║  ✓ doctor `blockingFailing` **0** · `npm audit` clean across ze  ║
+║  ✓ End-to-end: full season played, persisted, reloaded, total f  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 981/1000 ═══════════════════════════════════════╗
-║    Dev Health         96   ██████████                            ║
+╔══ SCORES · SIL 991/1000 ═══════════════════════════════════════╗
+║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
-║    Momentum           92   █████████░                            ║
-║    Engagement         98   ██████████                            ║
+║    Momentum           98   ██████████                            ║
+║    Engagement         96   ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          100  ██████████                            ║
 ║    Security           100  ██████████                            ║
 ║    Ecosystem          100  ██████████                            ║
-║    Capital            95   ██████████                            ║
+║    Capital            97   ██████████                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 4 files  ·  M:4 A:0 D:0 ?:0                            ║
+║  Changes: 22 files  ·  M:19 A:0 D:0 ?:3                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,7 +51,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         737/737                                          ║
+║  Tests:         746/746                                          ║
 ║  IGNIS:         5d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  1d ago                                           ║
