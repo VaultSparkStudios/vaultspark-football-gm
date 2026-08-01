@@ -119,6 +119,29 @@ jobs:
         with:
           path: static
 
+      # ── Live origin (S65) ──────────────────────────────────────────────────
+      # playfranchisearchitect.com is a CNAME to franchise-architect-football
+      # .pages.dev — a *Cloudflare* Pages project — while everything above
+      # publishes to *GitHub* Pages. That project had no git connection and only
+      # two ad-hoc manual uploads (2026-07-01 and 2026-07-03), so the live domain
+      # served a month-old build: /_health, /sw.js, /deploy-manifest.json and
+      # /edge-policy-receipt.json all 404'd simply because they were added after
+      # 2026-07-03, and the generated _headers file was never applied because
+      # GitHub Pages ignores it.
+      #
+      # Publishing the *same* `static/` directory that was just uploaded above
+      # keeps both origins byte-identical, and --commit-hash stamps the real
+      # revision into the health receipt instead of "local-worktree".
+      - name: Publish to Cloudflare Pages (live origin)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4.80.0 pages deploy static             --project-name=franchise-architect-football             --branch=main             --commit-hash="${GITHUB_SHA}"
+
+      - name: Verify the live origin serves this build
+        run: node scripts/verify-live-origin.mjs
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
