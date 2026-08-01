@@ -137,11 +137,34 @@ async function copyBrowserModules() {
   }
 }
 
+// Applies to all built pages. style-src keeps 'unsafe-inline' for inline
+// style="" attributes in static HTML and dynamically-rendered innerHTML
+// templates. frame-ancestors is not supported in meta CSP (HTTP header only);
+// that gap is noted in _health and requires a Cloudflare Transform Rule.
+const CSP_META = [
+  "default-src 'self'",
+  "script-src 'self'",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob:",
+  "font-src 'self'",
+  "connect-src 'self'",
+  "worker-src 'none'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'"
+].join("; ");
+
 function injectHtmlDefaults(html, pagePath) {
   const canonicalUrl = new URL(pagePath, canonicalBase).toString();
   let next = html;
   if (!next.includes("<base ")) {
     next = next.replace("<head>", `<head>\n    <base href=\"${assetBasePath}\" />`);
+  }
+  if (!next.includes('http-equiv="Content-Security-Policy"')) {
+    next = next.replace(
+      "<head>",
+      `<head>\n    <meta http-equiv="Content-Security-Policy" content="${CSP_META}" />\n    <meta name="referrer" content="strict-origin-when-cross-origin" />`
+    );
   }
   if (next.includes('meta name="vsfgm-runtime-default"')) {
     next = next.replace(
@@ -263,7 +286,14 @@ async function emitDeployEvidence() {
     styleAsset: hashedStyleHref,
     generatedAt,
     launchReady: false,
-    launchNote: "Runtime health is green; launch readiness still requires separate email, edge-header, deploy-currency, and founder-approval evidence."
+    launchNote: "Runtime health is green; launch readiness still requires separate email, edge-header, deploy-currency, and founder-approval evidence.",
+    securityPosture: {
+      cspMetaPolicy: "applied",
+      referrerPolicy: "strict-origin-when-cross-origin",
+      frameProtection: "pending-cloudflare-header",
+      hsts: "pending-cloudflare-header",
+      note: "script-src 'self' and referrer-policy are applied via meta tags on every built page. frame-ancestors and HSTS require Cloudflare HTTP response headers (Transform Rule)."
+    }
   };
   await fs.writeFile(path.join(outDir, "deploy-manifest.json"), `${JSON.stringify(deployManifest, null, 2)}\n`, "utf8");
   await fs.writeFile(path.join(outDir, "_health"), `${JSON.stringify(health, null, 2)}\n`, "utf8");

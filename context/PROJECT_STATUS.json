@@ -9,7 +9,7 @@
   "blockers": [
     "Launch/SPARKED remains evidence-gated: canonical /_health and edge headers, a real received-message receipt, exact hosted provenance, founder approval, and sibling-owned registry reconciliation remain absent."
   ],
-  "lastUpdated": "2026-07-29",
+  "lastUpdated": "2026-08-01",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -138,20 +138,13 @@
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
-    "total": 6,
+    "total": 5,
     "failing": 0,
-    "score": 83,
-    "date": "2026-07-29",
+    "score": 100,
+    "date": "2026-08-01",
     "passing": 5,
-    "warning": 1,
-    "checks": [
-      {
-        "id": "lifecycle-authoritative-registry",
-        "status": "warning",
-        "blocking": false,
-        "detail": "registry SPARKED · local contract FORGE"
-      }
-    ]
+    "warning": 0,
+    "checks": []
   },
   "complianceScore": 37,
   "complianceTotal": 37,

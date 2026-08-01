@@ -58,6 +58,6 @@ Audience: public-unlaunched · Live ACTIVE canons: 51 · Pending review: 3
 | CANON-048 | Dual-audience ecosystem: every surface built for Humans AND  | adopted | Human UI and agent metadata routes remain in the Pages contract. |
 | CANON-049 | Continuous evolution: the studio + every project is never st | adopted | Fresh audit plus implemented second-order innovations demonstrate continued evolution. |
 | CANON-050 | Atlas: the foundation that carries the ecosystem — and the s | exempt (Atlas foundation ownership is outside this project; no local substitution is claimed.) | N/A at project scope; reviewed 2026-07-22. |
-| CANON-051 | Web Hardening: every public surface meets the edge-security  | pending | Pending: local hardening passes, but exact canonical custom-origin project health/headers remain unproved. |
+| CANON-051 | Web Hardening: every public surface meets the edge-security  | adopted (partial) | Meta-layer adopted: every built page carries `script-src 'self'` CSP and `strict-origin-when-cross-origin` referrer policy via `<meta>` tags; `_health` documents `securityPosture`. `frame-ancestors` and HSTS still require Cloudflare HTTP response headers (Transform Rule). |
 | CANON-052 | Project Lifecycle Ladder: FORGE/SPARKED/VAULTED with sub-sta | pending | Pending: local FORGE truth conflicts with authoritative registry SPARKED; reconcile through Studio Ark. |
 
