@@ -141,13 +141,24 @@ async function copyBrowserModules() {
 // style="" attributes in static HTML and dynamically-rendered innerHTML
 // templates. frame-ancestors is not supported in meta CSP (HTTP header only);
 // that gap is noted in _health and requires a Cloudflare Transform Rule.
+//
+// connect-src must include GitHub endpoints for the Gist Cloud Sync feature
+// (gistSync.js fetches https://api.github.com/gists and raw file download
+// URLs from https://gist.githubusercontent.com). The optional server origin
+// is appended when VITE_API_ORIGIN/API_ORIGIN is configured.
+const connectSrcOrigins = [
+  "'self'",
+  "https://api.github.com",
+  "https://gist.githubusercontent.com",
+  ...(explicitServerBaseUrl ? [explicitServerBaseUrl] : [])
+];
 const CSP_META = [
   "default-src 'self'",
   "script-src 'self'",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  "connect-src 'self'",
+  `connect-src ${connectSrcOrigins.join(" ")}`,
   "worker-src 'none'",
   "object-src 'none'",
   "base-uri 'self'",
