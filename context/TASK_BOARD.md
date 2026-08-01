@@ -1012,3 +1012,39 @@ Verification: `npm test` **746/746** direct exit 0 · Playwright **26/26** · `e
 - [ ] GM firing / terminal game-over state — founder creative direction required (carried, unchanged).
 - [ ] Tablet touch affordances and a dedicated tablet layout — needs its own visual-evidence baseline (carried, unchanged).
 - [ ] External launch gates remain owned elsewhere: `/_health` 404 on the live domain (stale origin binding, needs Cloudflare zone access), delivered-email receipt, founder approval, registry lifecycle reconciliation.
+
+## Session 66 — CANON-041 landed, duplicate-PR loop closed (2026-08-01)
+
+### The finding
+
+42 open PRs, **33 of them the same feature**, opened one per day at ~08:15 UTC between 2026-06-16 and 2026-07-31 by a scheduled agent. The PRs **passed CI**. Nothing ever merged or closed them, so each new day's branch left the previous day's PR conflicting — 31 of 33 ended `DIRTY`, and **93 of the last 200 workflow runs** were spent re-validating rejected-by-inaction work.
+
+Root cause: an open-loop automation with a *create* step, no *land* step, and no *stop* condition. It could not detect that thirty-two identical PRs already existed.
+
+Two contributing factors worth recording:
+- **CANON-041 appeared nowhere in this task board**, so `/audit` and `/go` never saw it. Two automations were working the same repo with no shared backlog — which is why ~65 sessions of audit cycles never touched mobile nav while an external agent hammered it daily.
+- The gap was genuinely real. No drawer existed in main; below 980px the 14-button `.side-menu` rendered as a static grid *above* content.
+
+### Shipped
+
+| Item | Detail |
+|---|---|
+| CANON-041 mobile nav drawer | Landed on main as `2bdde85`, not merged from any single PR — the best candidate (#40) predated the S65 decision-deck work and would have collided |
+| Breakpoint reconciliation | 980px, not the PRs' 768px; `.side-menu` stays a two-column static grid to 980px, so 769–980px was still stacking nav above content |
+| Deck coexistence | Drawer stacks at z-index 1100 vs the deck overlay at 1000; when `body.mobile-loop-active` the toggle hides and the drawer is forced shut, and the deck clears `mobile-nav-open` so exiting via "Full View" reveals a closed drawer |
+| Accessibility (kept from the PR series) | `aria-expanded`/`aria-controls`, label swap, `inert` on the off-screen drawer, inert re-sync on resize, scrim + Escape dismiss, close-on-tab-selection |
+| `scripts/responsive-evidence.mjs` | Opens the drawer before driving tabs below 980px — the real journey on those viewports |
+| `scripts/check-duplicate-prs.mjs` | The stop condition the loop never had. Clusters open PRs by title **token overlap** (exact signatures fail: the same feature arrived as "nav drawer", "bottom nav", "nav strip") and fails when a group exceeds a threshold |
+| PR queue | **42 → 9 open.** All 33 duplicates closed with a comment crediting the series and explaining the two reconciliations |
+
+Coverage: `tests-ui/mobile-nav.spec.js` (7) and `test/duplicate-pr-guard.test.js` (6, seeded with the real duplicate titles).
+
+Verification: `npm test` **746/746** exit 0 · Playwright **33/33** · `evidence:responsive` **53 captures**, 0 runtime errors / 0 overflow / 0 undersized touch targets · Pages build + smoke · 54 browser modules.
+
+### Owner action required
+
+- **Retire or gate the scheduled agent that opens CANON-041 PRs.** It is external to this repo — the only cron workflows here are `brief-format-check` and `realism-sweep`, neither of which opens PRs. Now that the feature has landed, a daily job re-implementing it is pure waste.
+
+### Still open, and worth triage rather than another daily attempt
+
+9 PRs remain, several genuinely useful: #35 (`CLEAN`, landing brand harmonization + Playwright), #30 (wires dead analytics), #11 (mobile-loop import fix), #9/#15 (press-conference determinism — likely superseded by S63's press-room work), #50 (superseded by S65 on main; recommend closing).
