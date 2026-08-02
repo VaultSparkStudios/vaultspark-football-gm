@@ -262,6 +262,16 @@ function agentMemoryRecentlyTouched() {
   return false;
 }
 
+function sessionLockStartDate() {
+  try {
+    const lock = fs.readFileSync(path.join(ROOT, 'context', '.session-lock'), 'utf8');
+    const match = lock.match(/session_start:\s*(\d{4}-\d{2}-\d{2})/);
+    return match ? match[1] : null;
+  } catch {
+    return null;
+  }
+}
+
 function writeBackCoverage() {
   const TARGETS = [
     'context/CURRENT_STATE.md',
@@ -274,16 +284,37 @@ function writeBackCoverage() {
     'context/TRUTH_AUDIT.md',
     'context/PROJECT_STATUS.json',
   ];
-  const s = sh('git status --short');
+  // Write-back is "did this session write the file", not "is the file still
+  // dirty". Deriving it from `git status` alone reported every target as
+  // pending the moment closeout committed — so a complete write-back rendered
+  // as a completely skipped one, which is exactly backwards (S67 fix).
+  // Source of truth is the union of the working tree and the files carried by
+  // HEAD when HEAD is this session's own commit.
   const touched = new Set();
-  for (const ln of s.out.split('\n')) {
-    const fileMatch = ln.match(/^.{2,3}\s+(.+)$/);
-    if (!fileMatch) continue;
-    const file = fileMatch[1].replace(/\\/g, '/').replace(/^"|"$/g, '');
+  const noteTouched = (raw) => {
+    const file = String(raw).replace(/\\/g, '/').replace(/^"|"$/g, '').trim();
+    if (!file) return;
     for (const t of TARGETS) {
       if (file.endsWith(t)) touched.add(t);
     }
+  };
+
+  for (const ln of sh('git status --short').out.split('\n')) {
+    const fileMatch = ln.match(/^.{2,3}\s+(.+)$/);
+    if (fileMatch) noteTouched(fileMatch[1]);
   }
+
+  // Only credit HEAD when it is this session's commit — i.e. it lands on or
+  // after the session lock's start date. Otherwise a fresh session would
+  // inherit the previous session's write-back as its own.
+  const sessionStart = sessionLockStartDate();
+  if (sessionStart) {
+    const headDate = sh('git log -1 --format=%cs').out.trim();
+    if (headDate && headDate >= sessionStart) {
+      for (const ln of sh('git show --name-only --format= HEAD').out.split('\n')) noteTouched(ln);
+    }
+  }
+
   const result = TARGETS.map((t) => ({ file: t, touched: touched.has(t) }));
   // 10th item (per closeout spec): agent memory at ~/.claude/projects/<slug>/memory/
   result.push({
