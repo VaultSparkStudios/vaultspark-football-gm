@@ -187,7 +187,10 @@ describe("indexedDbBrowserStore", () => {
     let tick = 0;
     const store = createIndexedDbBrowserStore({
       backupPrefix: "auto-",
-      now: () => `2026-01-01T00:00:0${tick++}.000Z`
+      // now() is called twice per saveRollingBackup: once for the slot-name stamp
+      // and once inside saveSessionToSlot for savedAt. 8 rounds = 16 calls, so
+      // zero-pad to two digits to keep valid ISO-8601 dates past call 9.
+      now: () => `2026-01-01T00:00:${String(tick++).padStart(2, "0")}.000Z`
     });
 
     for (let i = 0; i < 8; i++) {
