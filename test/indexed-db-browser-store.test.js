@@ -185,11 +185,14 @@ describe("indexedDbBrowserStore", () => {
 
   test("indexedDbBrowserStore: saveRollingBackup keeps count within maxBackups", async () => {
     let tick = 0;
+    // Use a distinct prefix so the 2 "auto-" backup slots left by the
+    // listBackupSlots tests (which are always newer) don't count toward
+    // maxBackups and escape eviction, inflating the final count.
+    // now() is called twice per saveRollingBackup: once for the slot-name stamp
+    // and once inside saveSessionToSlot for savedAt. 8 rounds = 16 calls, so
+    // zero-pad to two digits to keep valid ISO-8601 dates past call 9.
     const store = createIndexedDbBrowserStore({
-      backupPrefix: "auto-",
-      // now() is called twice per saveRollingBackup: once for the slot-name stamp
-      // and once inside saveSessionToSlot for savedAt. 8 rounds = 16 calls, so
-      // zero-pad to two digits to keep valid ISO-8601 dates past call 9.
+      backupPrefix: "ckpt-",
       now: () => `2026-01-01T00:00:${String(tick++).padStart(2, "0")}.000Z`
     });
 
