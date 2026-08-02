@@ -142,32 +142,6 @@ async function requestHttp(path, options = {}) {
   return payload;
 }
 
-// Resolve the best browser save store at runtime: IndexedDB (~250 MB) when
-// available, localStorage (~5 MB) otherwise. The store is resolved once and
-// cached; migration from localStorage runs in the background on first use.
-const storeCandidates = [
-  new URL("../../src/adapters/persistence/indexedDbBrowserStore.js", import.meta.url),
-  new URL("../../../src/adapters/persistence/indexedDbBrowserStore.js", import.meta.url)
-];
-
-async function resolveSaveStore() {
-  for (const candidate of storeCandidates) {
-    try {
-      const mod = await import(candidate);
-      if (mod.isIndexedDbAvailable && mod.isIndexedDbAvailable()) {
-        const store = mod.createIndexedDbBrowserStore();
-        // Fire-and-forget migration — existing localStorage saves move to IDB
-        // observability-allow-silent: migration failure leaves LS saves intact — user loses nothing
-        mod.migrateLocalStorageToIndexedDb(window.localStorage, store).catch(() => {});
-        return store;
-      }
-    } catch {
-      // Module not reachable from this path; try next candidate
-    }
-  }
-  return null; // signals createLocalApiRuntime to use its localStorage fallback
-}
-
 async function getLocalRuntime() {
   if (!localRuntimePromise) {
     const moduleCandidates = [
@@ -175,15 +149,11 @@ async function getLocalRuntime() {
       new URL("../../../src/app/api/localApiRuntime.js", import.meta.url)
     ];
     localRuntimePromise = (async () => {
-      const saveStore = await resolveSaveStore();
       let lastError = null;
       for (const candidate of moduleCandidates) {
         try {
           const { createLocalApiRuntime } = await import(candidate);
-          return createLocalApiRuntime({
-            storage: window.localStorage,
-            ...(saveStore ? { saveStore } : {})
-          });
+          return createLocalApiRuntime({ storage: window.localStorage });
         } catch (error) {
           lastError = error;
         }

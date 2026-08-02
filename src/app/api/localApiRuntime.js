@@ -1,4 +1,9 @@
 import { createBrowserSaveStore } from "../../adapters/persistence/browserSaveStore.js";
+import {
+  createIndexedDbBrowserStore,
+  isIndexedDbAvailable,
+  migrateLocalStorageToIndexedDb
+} from "../../adapters/persistence/indexedDbBrowserStore.js";
 import { createPersistenceDescriptor } from "../../adapters/persistence/saveStoreShared.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "../../config/leagueSetup.js";
 import { createLeagueBase } from "../../domain/teamFactory.js";
@@ -247,10 +252,16 @@ export function createLocalApiRuntime({
   currentYear = new Date().getFullYear(),
   scheduler = (fn) => setTimeout(fn, 0)
 } = {}) {
-  const saveStore = saveStoreOverride || createBrowserSaveStore({
-    storage,
-    now: () => new Date(now()).toISOString()
-  });
+  let saveStore;
+  if (saveStoreOverride) {
+    saveStore = saveStoreOverride;
+  } else if (isIndexedDbAvailable()) {
+    saveStore = createIndexedDbBrowserStore();
+    // observability-allow-silent: migration failure leaves LS saves intact — user loses nothing
+    migrateLocalStorageToIndexedDb(storage, saveStore).catch(() => {});
+  } else {
+    saveStore = createBrowserSaveStore({ storage, now: () => new Date(now()).toISOString() });
+  }
   const setupBootstrap = createLeagueBase(currentYear);
   const defaultSettings = resolveLeagueSettings();
   const defaultSetupState = {

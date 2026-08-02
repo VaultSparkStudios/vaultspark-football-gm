@@ -4,15 +4,29 @@
  * IndexedDB is not available in Node.js, so we patch the global with a
  * minimal in-memory implementation before importing the module under test.
  */
-import test from "node:test";
+import test, { after } from "node:test";
 import assert from "node:assert/strict";
+
+// Save originals — this shard runs with --test-isolation=none, so permanent
+// overwrites leak into snapshot-codec.test.js and other files that follow.
+const _origCompressionStream   = globalThis.CompressionStream;
+const _origDecompressionStream = globalThis.DecompressionStream;
+
+// CompressionStream not available in Node — snapshotCodec falls back to plain JSON
+globalThis.CompressionStream   = undefined;
+globalThis.DecompressionStream = undefined;
+
+after(() => {
+  globalThis.CompressionStream   = _origCompressionStream;
+  globalThis.DecompressionStream = _origDecompressionStream;
+});
 
 // ── In-memory IndexedDB mock ──────────────────────────────────────────────────
 
 function createMockIndexedDb() {
   const stores = new Map(); // dbName -> Map<slot, record>
 
-  function makeObjectStore(data) {
+  function makeObjectStore(data, tx) {
     return {
       put(record) {
         const req = {};
@@ -20,6 +34,7 @@ function createMockIndexedDb() {
           data.set(record.slot, record);
           req.result = record;
           req.onsuccess?.();
+          tx?.oncomplete?.();
         });
         return req;
       },
@@ -28,6 +43,7 @@ function createMockIndexedDb() {
         Promise.resolve().then(() => {
           req.result = data.get(slot) ?? undefined;
           req.onsuccess?.();
+          tx?.oncomplete?.();
         });
         return req;
       },
@@ -37,6 +53,7 @@ function createMockIndexedDb() {
           data.delete(slot);
           req.result = undefined;
           req.onsuccess?.();
+          tx?.oncomplete?.();
         });
         return req;
       },
@@ -45,6 +62,7 @@ function createMockIndexedDb() {
         Promise.resolve().then(() => {
           req.result = [...data.values()];
           req.onsuccess?.();
+          tx?.oncomplete?.();
         });
         return req;
       }
@@ -59,10 +77,10 @@ function createMockIndexedDb() {
       Promise.resolve().then(() => {
         const db = {
           objectStoreNames: { contains: () => true },
-          transaction(_storeName, mode) {
-            return {
-              objectStore: () => makeObjectStore(data)
-            };
+          transaction(_storeName, _mode) {
+            const tx = { oncomplete: null, onerror: null, onabort: null };
+            tx.objectStore = () => makeObjectStore(data, tx);
+            return tx;
           }
         };
         req.result = db;
@@ -76,10 +94,6 @@ function createMockIndexedDb() {
 // Install mock before the module loads
 const mockIdb = createMockIndexedDb();
 globalThis.indexedDB = mockIdb;
-
-// CompressionStream not available in Node — snapshotCodec falls back to plain JSON
-globalThis.CompressionStream   = undefined;
-globalThis.DecompressionStream = undefined;
 
 // ── Import module under test ──────────────────────────────────────────────────
 

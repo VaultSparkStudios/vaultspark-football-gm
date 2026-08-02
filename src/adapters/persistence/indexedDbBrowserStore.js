@@ -57,8 +57,12 @@ function idbRun(mode, fn) {
         const tx    = db.transaction("saves", mode);
         const store = tx.objectStore("saves");
         const req   = fn(store);
-        req.onsuccess = () => resolve(req.result);
-        req.onerror   = () => reject(req.error);
+        let result;
+        req.onsuccess = () => { result = req.result; };
+        req.onerror   = () => reject(req.error ?? new Error("IDB request failed"));
+        tx.oncomplete = () => resolve(result);
+        tx.onerror    = () => reject(tx.error   ?? new Error("IDB transaction failed"));
+        tx.onabort    = () => reject(new Error("IDB transaction aborted"));
       })
   );
 }
@@ -73,8 +77,12 @@ function idbGetAll() {
       new Promise((resolve, reject) => {
         const tx  = db.transaction("saves", "readonly");
         const req = tx.objectStore("saves").getAll();
-        req.onsuccess = () => resolve(req.result);
-        req.onerror   = () => reject(req.error);
+        let result;
+        req.onsuccess = () => { result = req.result; };
+        req.onerror   = () => reject(req.error ?? new Error("IDB request failed"));
+        tx.oncomplete = () => resolve(result);
+        tx.onerror    = () => reject(tx.error   ?? new Error("IDB transaction failed"));
+        tx.onabort    = () => reject(new Error("IDB transaction aborted"));
       })
   );
 }
