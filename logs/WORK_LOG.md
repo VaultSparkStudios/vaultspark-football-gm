@@ -579,3 +579,35 @@ That last measurement is what changed the approach. Trimming derived data was ne
 **Corrections I made to my own work:** the byte-budget test initially asserted something unachievable (a budget smaller than a single snapshot); the rule is evict-until-fits *but never drop the last backup*, and the test now says that. A blanket `await` insertion also produced `await store.load(...).currentWeek`, awaiting a property — caught immediately by the test.
 
 Verification: `npm test` 746/746 exit 0 · Playwright 26/26 · responsive evidence 53/53 · Pages build/smoke · doctor blockingFailing 0.
+
+---
+
+## Session 67 — 2026-08-01 — the offseason was a facade
+
+I went looking for depth gaps in a franchise sim that has had twenty sessions of polish, and found that the half of the game where a GM builds a team did not work.
+
+The way in was a probe, not a grep. I drove the real engine in-process and printed the free-agent pool at each of the seven offseason stages: `0 0 0 0 0 0 0`, while 295 contracts sat pending expiry. That is not a subtle number.
+
+Chasing it: the pipeline's stages were labels. Six of the seven did nothing to the roster; `udfa` ran one monolithic `runOffseason()` blob — aging, retirement, contract expiry, free agency, cap rollover — *after* the draft had already been held and one line *after* `processFreeAgencyMarket()`. So the market resolved before the free agents existed. That was my audit premise, and it was real.
+
+It was also not the cause. After I reordered everything, the pool was still zero.
+
+`normalizeContract` reads `Number(contract.yearsRemaining || 1)`, and clamps to a floor of `0` on the same line. The clamp says zero is legal. The default makes it unreachable. Because the normalizer runs on every read, `advanceContractYear` returning a zero-year contract came straight back as a one-year contract, so **no contract in this game had ever expired**. A three-year deal was a permanent rolling one-year deal.
+
+Five layers were downstream of that and every one of them looked correct in isolation. The S62 competing-offer market — CPU archetype bidding, outbid receipts, the stage machine — has been shipped and structurally unreachable for five sessions, because it filters on `teamId === "FA"` and that set was always empty. `listExpiringContracts` and the Re-sign button have had nothing at stake since S8. Not one test failed.
+
+**What the fix exposed next.** With contracts finally expiring, all 295 hit the market at once and every club read as a catastrophic net loser to the compensatory formula. The reason: no CPU team has any way to re-sign its own players. I added a retention window — rivals keep their own first, weighted by quality, age and strategy — and deliberately excluded the controlled franchise, because deciding who to keep is the entire point of the Re-sign action. 295 expiring → 169 retained → **126 genuine free agents, 97 of them premium**.
+
+**The second dead system.** Compensatory picks. `Math.max(50, player.value || player.capHit / 120_000)` against a projection that has neither `value` nor `capHit` — the deal is nested under `contract`. Every row was written `NaN`. And then `sum + (row.value || 0)` laundered each `NaN` into a clean `0`, so `net` was always `0`, `net <= 0` always continued, and the feature — with a setup toggle, a league setting, a ledger and a dashboard field — had never produced a single pick. The read-side coercion is exactly what hid it. Ledger values are now validated finite at *write*.
+
+**The third.** Draft picks are a fully built, priced, tradeable asset class: `TradeService.commit` really does move `ownerTeamId`, rival GMs offer them, the dashboard publishes them. And `prepareDraft` built the order as `sortStandings(teams).reverse()` — 32 team ids, walked with `% 32` for all seven rounds. Ownership was never read. I proved it before touching anything: moved BUF's three future firsts to MIA, ran a season, and BUF still picked at slot 5 while MIA appeared exactly once.
+
+The `% 32` was also quietly wrong in a second way. Two consumers in `public/lib/tabDraft.js` used it, so the war room named the wrong team for every round after the first. That bug could not fail loudly — modulo over a short array always returns *something*.
+
+**What I did not do.** The audit listed deleting three zero-importer modules as a second-order candidate. I read them first. `indexedDbSaveStore.js` is a complete, working ~250 MB persistence layer — against the 5–10 MB localStorage ceiling S65 spent an entire session fighting, and S65's move to async store methods made it reachable for the first time. Deleting that would have been the single worst change available. It is recorded as a deferral with the reasoning, not removed and not quietly skipped.
+
+I also deferred `getDashboardState()` memoization *with its measurement* — 24.7 ms — rather than with a guess, because a cache runs straight into the S49 authority-keyed hydration fences.
+
+**One test I changed rather than satisfied.** `draft-war-room.test.js` paired a two-entry `order` array with `currentPick: 33` and expected `BUF` — a fixture that was only ever coherent under the `% 32` bug. I updated it and said so here, rather than preserving a broken semantic to keep a green tick.
+
+Coverage: `test/offseason-calendar.test.js` (22) and `test/offseason-surfaces.test.js` (7), the second driving the browser modules against live dashboard state — S64's lesson that an engine half ships green while its UI half is dead.

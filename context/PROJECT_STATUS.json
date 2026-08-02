@@ -9,7 +9,7 @@
   "blockers": [
     "Launch/SPARKED remains evidence-gated: canonical /_health is invalid, exact deployed revision is absent, required HSTS/CSP/frame/permissions headers are missing, and delivered-email, founder-approval, and sibling lifecycle authorities remain absent."
   ],
-  "lastUpdated": "2026-08-01",
+  "lastUpdated": "2026-08-02",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -69,20 +69,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 991,
+  "silScore": 995,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
-    "momentum": 98,
-    "engagement": 96,
-    "processQuality": 100,
+    "momentum": 100,
+    "engagement": 100,
+    "processQuality": 98,
     "crossRepoCoherence": 100,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
     "capitalEfficiency": 97,
     "automationCoverage": 100
   },
-  "currentSession": 65,
+  "currentSession": 67,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": "npm test 746/746 direct exit 0; npm run test:ui 26/26 exit 0; evidence:responsive 53 captures exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54; doctor blockingFailing 0; full-season persistence measured at 3.95 MB total footprint with successful reload.",
@@ -111,14 +111,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 871,
+  "silHealth": 875,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-01",
+    "date": "2026-08-02",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -187,5 +187,6 @@
       "verdict": "wasted",
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
-  ]
+  ],
+  "session": 67
 }

@@ -121,10 +121,16 @@ function progressPlayer(player, rng, context = {}) {
   player.reinjuryRisk = clamp((player.reinjuryRisk || 0) - Number(context.recoveryBonus || 0), 0, 0.55);
 }
 
-function expireContracts(league) {
+export function expireContracts(league) {
   for (const player of activePlayers(league)) {
     player.contract = advanceContractYear(player.contract);
     if (player.contract.yearsRemaining <= 0) {
+      // Remember where he played: the incumbent club gets first refusal in the
+      // retention window, and the compensatory formula needs to know who lost
+      // him. (S67)
+      if (player.teamId && player.teamId !== "FA" && player.teamId !== "WAIVER") {
+        player.lastTeamId = player.teamId;
+      }
       player.teamId = "FA";
       player.contract = {
         salary: 0,
@@ -140,7 +146,7 @@ function expireContracts(league) {
   }
 }
 
-function applyAgingProgressionAndRetirements(league, year, rng, options = {}) {
+export function applyAgingProgressionAndRetirements(league, year, rng, options = {}) {
   const keep = [];
   const teamsById = new Map(league.teams.map((team) => [team.id, team]));
   for (const player of activePlayers(league)) {
@@ -234,10 +240,32 @@ function runDraft(league, year, rng) {
   }
 }
 
-function runFreeAgency(league, year, rng) {
+/**
+ * Roster-legality backstop — NOT the free-agency market.
+ *
+ * Until S67 this function was the only thing that ever moved an expiring player
+ * to a new club, which meant the league's entire free-agent class was assigned
+ * by roster-template arithmetic in the same tick that expired it. It now runs
+ * *after* the real market has closed (GameSession's `free-agency` stage) and
+ * exists only to keep clubs roster-legal with whatever the market left behind.
+ *
+ * Two authority rules hold:
+ *   - `excludeTeamIds` teams are never signed for. The controlled franchise is
+ *     passed in by GameSession, so the backstop cannot write a roster the GM
+ *     owns (the S63 franchise-authority boundary guards the command seam; this
+ *     engine is not a command and would otherwise walk straight past it).
+ *   - Every signing it does make is announced through `onSigning`, so 200+
+ *     league-wide moves stop being invisible to the transaction ledger.
+ */
+export function runFreeAgencyBackstop(league, year, rng, { excludeTeamIds = [], onSigning = null } = {}) {
+  const excluded = new Set(excludeTeamIds.filter(Boolean));
   const faPool = league.players
     .filter((p) => p.status === "active" && p.teamId === "FA")
     .sort((a, b) => b.overall - a.overall);
+
+  const announce = (payload) => {
+    if (typeof onSigning === "function") onSigning(payload);
+  };
 
   // Worst teams shop first (reverse standings) instead of raw array order —
   // the market models competition, not alphabet privilege (S62).
@@ -247,8 +275,19 @@ function runFreeAgency(league, year, rng) {
       (b.season?.losses || 0) - (a.season?.losses || 0) ||
       String(a.id).localeCompare(String(b.id))
   );
+  const shortfalls = [];
   for (const team of shoppingOrder) {
     const needs = teamNeeds(league, team.id);
+    if (excluded.has(team.id)) {
+      // The GM owns this roster. Report the hole; do not fill it for them.
+      if (needs.length) {
+        shortfalls.push({
+          teamId: team.id,
+          positions: needs.map((need) => ({ position: need.position, missing: need.missing }))
+        });
+      }
+      continue;
+    }
     for (const need of needs) {
       for (let slot = 0; slot < need.missing; slot += 1) {
         let candidateIndex = faPool.findIndex((p) => p.position === need.position && p.contract.capHit === 0);
@@ -277,6 +316,7 @@ function runFreeAgency(league, year, rng) {
               detail: `The ${need.position} market was empty — a journeyman was signed to keep the roster legal.`
             });
           }
+          announce({ teamId: team.id, player: replacement, contract: replacement.contract, emergency: true });
           continue;
         }
         const candidate = faPool[candidateIndex];
@@ -285,12 +325,14 @@ function runFreeAgency(league, year, rng) {
         candidate.teamId = team.id;
         candidate.contract = contract;
         faPool.splice(candidateIndex, 1);
+        announce({ teamId: team.id, player: candidate, contract, emergency: false });
       }
     }
   }
+  return { shortfalls, remainingFreeAgents: faPool.length };
 }
 
-function normalizeRosterSlots(league) {
+export function normalizeRosterSlots(league) {
   for (const team of league.teams) {
     const roster = getAllTeamPlayers(league, team.id).sort((a, b) => b.overall - a.overall);
     roster.forEach((player, index) => {
@@ -299,7 +341,7 @@ function normalizeRosterSlots(league) {
   }
 }
 
-function applyCapRollover(league) {
+export function applyCapRollover(league) {
   if (!league.capLedger) league.capLedger = {};
   for (const team of league.teams) {
     const roster = getAllTeamPlayers(league, team.id);
@@ -320,16 +362,35 @@ function applyCapRollover(league) {
   }
 }
 
-export function runOffseason({ league, year, rng, skipDraft = false, retirementSettings = {}, developmentContext = null }) {
+/**
+ * Whole-offseason façade.
+ *
+ * The interactive game no longer calls this — GameSession drives the individual
+ * phases from its own pipeline so each named stage does the thing it is named
+ * for (S67). This composition is preserved verbatim for the headless callers
+ * that still want one call: `src/engine/leagueSimulator.js` and the 100-year
+ * realism career regression. Changing the order here changes calibration.
+ */
+export function runOffseason({
+  league,
+  year,
+  rng,
+  skipDraft = false,
+  retirementSettings = {},
+  developmentContext = null,
+  excludeTeamIds = [],
+  onSigning = null
+}) {
   expireContracts(league);
   applyAgingProgressionAndRetirements(league, year, rng, {
     ...retirementSettings,
     developmentContext
   });
   if (!skipDraft) runDraft(league, year, rng);
-  runFreeAgency(league, year, rng);
+  const backstop = runFreeAgencyBackstop(league, year, rng, { excludeTeamIds, onSigning });
   normalizeRosterSlots(league);
   applyCapRollover(league);
   recalculateAllTeamRatings(league);
+  return backstop;
 }
 

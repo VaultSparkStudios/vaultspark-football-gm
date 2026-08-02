@@ -5,6 +5,17 @@ Overall status: green
 Last reviewed: 2026-07-27
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
+## 2026-08-01 - Session 67 truth updates
+
+- **Contracts expire.** `normalizeContract` defaults `yearsRemaining` with `??`, not `||`, so a zero-year deal stays zero. Until this session no contract in the game had ever run out, which made `advanceContractYear`'s expiry branch, `expireContracts`' `<= 0` check, and the entire S62 competing-offer free-agency market unreachable code. The surfaces that reported on those systems were not lying about their own state — they were correctly reporting a state that could never change.
+- **The offseason pipeline's stage names now describe what the stage does.** `retirements` ages, retires and expires; a `free-agency` stage exists and holds for the GM across three bidding waves; `udfa` runs only the roster-legality backstop, normalization and cap rollover. `runOffseason` survives as a composed façade so `leagueSimulator` and the 100-year career regression are unchanged. Free-agent pool by stage moved from 0/0/0/0/0/0/0 to 126/126/126/126/109/105/102 — measured, not projected.
+- **The draft order is derived from pick ownership.** `league.draftPicks[].ownerTeamId` plus awarded compensatory picks produce one slot per selection carrying its own provenance; `totalPicks` is derived, not the 224 constant. A save with no ledger falls back deterministically to the standings round-robin rather than stalling. `draftPickAssets` and `compPicks` were already published to the player; they now describe something the engine honours.
+- **Compensatory picks are awarded on one finite-validated scale.** Loss and gain values previously used different denominators and the loss side was NaN, laundered to 0 on read. Ledger rows are validated finite at write; 19 awards league-wide in the measured season, all present as draft slots.
+- **The offseason does not write the controlled roster.** `runFreeAgencyBackstop` takes an explicit authority parameter; the CPU retention window likewise excludes the GM's franchise. Backstop signings are recorded one aggregated row per club, so the transaction ledger accounts for movement it previously performed silently. An unfilled controlled roster returns a shortfall receipt naming exact positions and counts.
+- **Pick assets are bounded and honest.** Picks are consumed at selection and elapsed drafts retired self-healingly; both the trade desk and `TradeService` floor at `year > currentYear`, so a spent or elapsed pick is neither listed nor tradeable.
+- Player-facing surfaces are covered by tests that drive the browser modules against live dashboard state rather than fixtures, per the Session 64 finding that an engine half can ship green with its UI half dead.
+- Release truth is unchanged and remains HOLD: canonical `/_health` 404 (stale external origin binding), incomplete edge headers, no received-message receipt, no founder approval, sibling-owned registry lifecycle drift. No ranked item this session touched the hosted surface and no external readiness was fabricated.
+
 ## 2026-07-27 - Session 58 truth updates
 
 - Exact franchiseId now owns all browser authority epochs and save-sensitive memory; league/team/year identity is a deterministic legacy fallback, not concurrent authority.

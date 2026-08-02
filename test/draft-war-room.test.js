@@ -9,7 +9,11 @@ test("draft pressure model highlights user on-clock target", () => {
     scoutingBoard: ["p2"],
     rosterNeeds: [{ position: "WR", delta: -2 }],
     draft: {
-      currentPick: 33,
+      // S67: `order` carries one entry per selection, so the team on the clock
+      // is `order[currentPick - 1]`. This fixture previously paired a two-entry
+      // order with pick 33 and relied on the `% 32` wrap that made pick
+      // ownership unreadable.
+      currentPick: 1,
       totalPicks: 224,
       order: ["BUF", "MIA"],
       available: [

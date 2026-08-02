@@ -8,7 +8,14 @@ function rounded(value) {
 }
 
 export function normalizeContract(contract = {}) {
-  const yearsRemaining = clamp(Number(contract.yearsRemaining || 1), 0, 10);
+  // `|| 1` here meant an expired contract (yearsRemaining 0) was silently
+  // resurrected to a one-year deal on every normalize — and normalize runs on
+  // every read. The clamp floor of 0 shows 0 was always meant to be legal, but
+  // the falsy default made it unreachable, so `advanceContractYear`'s expiry
+  // branch and `expireContracts`' `<= 0` check were both dead code and no
+  // contract in this game had ever run out. Nullish coalescing keeps the
+  // "field absent" default while letting zero mean zero. (S67)
+  const yearsRemaining = clamp(Number(contract.yearsRemaining ?? 1), 0, 10);
   const voidYears = clamp(Number(contract.voidYears || 0), 0, 4);
   const salary = rounded(contract.salary ?? contract.capHit ?? MIN_SALARY);
   const baseSalary = rounded(contract.baseSalary ?? salary * 0.82);

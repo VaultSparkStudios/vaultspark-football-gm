@@ -2,6 +2,44 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-01 - A falsy default may never stand in for an absent field when zero is meaningful
+
+**Decision:** Where zero is a legal, meaningful value, defaults use `??`, not `||`. `normalizeContract` used `Number(contract.yearsRemaining || 1)` while clamping to a floor of `0` on the same line — the clamp declared zero legal and the default made it unreachable.
+
+**Rationale:** Because the normalizer runs on every read, the resurrection was total: `advanceContractYear`'s expiry branch and `expireContracts`' `<= 0` check were both dead code, and no contract in the game's history had ever run out. The visible symptom (no free agency) was five call-stack layers away from the cause, and every intermediate layer looked correct in isolation. A whole shipped subsystem — the S62 competing-offer market — was structurally unreachable for five sessions without a single test failing.
+
+**Pattern established:** When a normalizer's clamp or validation range admits a value, its default must admit that value too. Where an engine's terminal condition is unreachable in practice, prove reachability with a test that drives the real engine rather than the unit in isolation.
+
+---
+
+## 2026-08-01 - A silent `|| 0` on a read is a defect, not a safety net
+
+**Decision:** Ledger values are validated finite at the point of **write**, not coerced at the point of read.
+
+**Rationale:** The compensatory formula summed loss rows with `sum + (row.value || 0)`. Every row had been written `NaN` (from reading `player.value`/`player.capHit` off a projection carrying neither field), and the read-side coercion turned each one into a clean `0`. Nothing ever threw, nothing ever logged, and the feature — with a setup toggle, a league setting, a ledger, and a dashboard field — had never produced a single pick. The coercion is precisely what hid it.
+
+**Pattern established:** Coerce on write and assert finiteness there; let a read surface a bad value rather than laundering it. Regression coverage asserts the ledger cannot be written a non-finite value.
+
+---
+
+## 2026-08-01 - Roster-building decisions belong to the GM, including the ones the engine finds convenient
+
+**Decision:** The offseason engine never signs, re-signs, or fills for the controlled franchise. Where the GM's roster is short, the engine emits an actionable receipt instead of resolving it.
+
+**Rationale:** Session 63 put an authority boundary on the command seam. The offseason engine is not a command and walked straight past it, adding five players per offseason to the player's roster with nothing issued. Roster legality is a real constraint, but satisfying it on the GM's behalf silently removes the decision the game is about.
+
+**Pattern established:** Engines that mutate team state take an explicit authority parameter naming who they may act for. The controlled franchise's shortfall is surfaced through the existing inbox/news path with the exact positions and counts, so an exemption is actionable rather than a trap. The same rule governs the new CPU retention window: rivals keep their own; the GM decides.
+
+---
+
+## 2026-08-01 - Derived boards index directly; a modulo over a short array is a silent wrong answer
+
+**Decision:** The draft board carries one entry per selection, and consumers index it directly. `league.draftPicks[].ownerTeamId` is the draft's source of truth.
+
+**Rationale:** `draft.order` held 32 team ids and every consumer computed `(currentPick - 1) % 32`. That made pick ownership unreadable — a fully built, priced, tradeable asset class that the draft ignored entirely — and it also silently returned the wrong team for every round after the first in any consumer that tried to look past round one. Modulo over a short array cannot fail loudly; it always returns something.
+
+**Pattern established:** Boards derived from a ledger are emitted as explicit slots carrying their own provenance (round, original club, acquired, compensatory). A deterministic fallback covers saves written before the ledger was load-bearing, so an old snapshot degrades to the previous behaviour rather than stalling.
+
 ## 2026-07-27 - Exact franchise identity owns asynchronous and browser-memory authority
 
 **Decision:** The dashboard's exact franchiseId is the primary identity for every browser authority epoch and save-sensitive local ledger. League/team/year fields are legacy fallback inputs only.

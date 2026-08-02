@@ -37,7 +37,13 @@ import {
   recalculateAllTeamRatings,
   resetTeamSeasonState
 } from "../domain/teamFactory.js";
-import { runOffseason } from "../engine/offseasonSimulator.js";
+import {
+  applyAgingProgressionAndRetirements,
+  applyCapRollover,
+  expireContracts,
+  normalizeRosterSlots,
+  runFreeAgencyBackstop
+} from "../engine/offseasonSimulator.js";
 import {
   buildMeritAdjustedRoomShares,
   buildTeamUsageProfile,
@@ -121,6 +127,14 @@ const MAX_PRACTICE_SQUAD = 16;
 // Free agents at or above this overall are market property (S62): they sign
 // through the competing-offer market, never through instant or greedy paths.
 const PREMIUM_FA_OVERALL = 74;
+// Bidding waves in the offseason free-agency window (S67). Three is enough for
+// a market to visibly move without turning the offseason into a clicking chore:
+// wave 1 is legal tampering and takes the headline names, waves 2-3 are where a
+// patient GM finds value the contenders passed on.
+const FREE_AGENCY_WAVES = 3;
+// The real formula caps a club at four compensatory selections in a draft.
+const COMP_PICKS_PER_TEAM_MAX = 4;
+const COMP_PICK_QUALIFYING_NET = 350;
 const MAX_GAME_DAY_INACTIVES = 7;
 const DRAFT_ROUNDS = 7;
 const PICK_ASSET_HORIZON_YEARS = 3;
@@ -1096,13 +1110,87 @@ function defaultRulebookRows() {
   ];
 }
 
+/**
+ * The offseason calendar, declared once (S67).
+ *
+ * Before S67 these stage names were labels: every stage except `udfa` did
+ * nothing to the roster, and `udfa` ran the whole `runOffseason()` blob —
+ * aging, retirement, contract expiry, free agency and cap rollover — in one
+ * synchronous call, after the draft had already been held. The consequence was
+ * that the free-agent pool was empty at all seven stages while ~295 contracts
+ * sat pending expiry, so no GM ever saw a free agent.
+ *
+ * The order below is the real league calendar: bodies leave first, the market
+ * opens on the class that just hit it, and only then does anyone draft.
+ */
+const OFFSEASON_STAGES = Object.freeze([
+  "retirements",
+  "coaching-carousel",
+  "combine",
+  "pro-days",
+  "free-agency",
+  "draft",
+  "udfa",
+  "camp-cuts",
+  "complete"
+]);
+
 function defaultOffseasonPipeline(year) {
   return {
     year,
     stage: "retirements",
     completed: false,
+    stages: [...OFFSEASON_STAGES],
     history: []
   };
+}
+
+/**
+ * Draft-board accessors (S67).
+ *
+ * `order` is one entry per selection, so the team on the clock is a direct
+ * index. Every call site used to compute `(currentPick - 1) % 32` against a
+ * 32-entry array, which is why the pick ledger could never influence anything
+ * and why any consumer that looked past round one read the wrong team.
+ */
+function draftSlotForPick(draft, pick = draft?.currentPick) {
+  if (!draft || !Array.isArray(draft.slots)) return null;
+  return draft.slots[Number(pick) - 1] || null;
+}
+
+function draftTeamOnClock(draft, pick = draft?.currentPick) {
+  if (!draft) return null;
+  const index = Number(pick) - 1;
+  if (!Number.isInteger(index) || index < 0) return null;
+  return draft.order?.[index] || draftSlotForPick(draft, pick)?.teamId || null;
+}
+
+function draftRoundForPick(draft, pick = draft?.currentPick) {
+  const slot = draftSlotForPick(draft, pick);
+  if (slot?.round) return slot.round;
+  // Legacy boards carry no slot metadata; fall back to the flat 32-per-round
+  // assumption they were built on.
+  return Math.floor((Number(pick) - 1) / 32) + 1;
+}
+
+/**
+ * Compensatory-formula valuation of a departing or arriving free agent (S67).
+ *
+ * Derived from the two things that actually price a free agent — what the deal
+ * pays and how good he is — and validated finite at the point of write, so a
+ * missing field can never again silently poison the whole ledger.
+ */
+function compLossValue(player) {
+  const contract = normalizeContract(player?.contract || {});
+  const capHit = Number(contract.capHit || contract.salary || 0);
+  const overall = Number(player?.overall || 0);
+  const value = Math.round(capHit / 120_000 + Math.max(0, overall - 60) * 4);
+  return Number.isFinite(value) ? Math.max(50, value) : 50;
+}
+
+function compGainValue({ salary = 0, overall = 0 } = {}) {
+  const value = Math.round(Number(salary || 0) / 120_000 + Math.max(0, Number(overall || 0) - 60) * 4);
+  return Number.isFinite(value) ? Math.max(50, value) : 50;
 }
 
 function pickAssetValue(pick) {
@@ -1842,6 +1930,16 @@ export class GameSession {
 
   ensureDraftPickAssets() {
     if (!Array.isArray(this.league.draftPicks)) this.league.draftPicks = [];
+    // Retire picks whose draft has been held. Nothing ever consumed a pick
+    // before S67 and nothing ever pruned one, so the ledger grew by 224 rows a
+    // season forever — 1,344 rows after three seasons, inside the save budget
+    // S65 spent a whole session reclaiming. Self-healing: a legacy snapshot
+    // reclaims its accumulated rows the first time this runs.
+    const retained = this.league.draftPicks.filter((pick) => Number(pick.year) > this.currentYear);
+    if (retained.length !== this.league.draftPicks.length) {
+      this.league.draftPicks = retained;
+      this.lookupIndexes = null;
+    }
     const existing = new Set(this.league.draftPicks.map((pick) => `${pick.year}-${pick.originalTeamId}-${pick.round}`));
     for (let year = this.currentYear + 1; year <= this.currentYear + PICK_ASSET_HORIZON_YEARS; year += 1) {
       for (const team of this.league.teams) {
@@ -1863,10 +1961,93 @@ export class GameSession {
     }
   }
 
+  /**
+   * The draft order, derived from who owns the picks (S67).
+   *
+   * Until S67 this was `sortStandings(teams).reverse()` — a bare 32-team
+   * round-robin walked with `% 32` for all seven rounds — so `ownerTeamId` was
+   * never read and a traded first round pick still selected for the team that
+   * traded it away. Slot within a round comes from the ORIGINAL team's finish,
+   * which is what makes a pick worth trading for. Compensatory picks are
+   * appended to the end of their round, as in the real draft.
+   *
+   * If the ledger has no picks for the year (a pre-ledger save, or a year past
+   * the asset horizon) the legacy standings round-robin is synthesized instead,
+   * so an old snapshot still drafts rather than stalling on an empty board.
+   */
+  buildDraftOrder(year) {
+    const standings = sortStandings(this.league.teams).slice().reverse();
+    const slotByTeam = new Map(standings.map((team, index) => [team.id, index + 1]));
+    const fallbackOrder = standings.map((team) => team.id);
+    const ledgerPicks = (this.league.draftPicks || []).filter(
+      (pick) => pick.year === year && pick.consumed !== true
+    );
+
+    if (!ledgerPicks.length) {
+      const slots = [];
+      for (let round = 1; round <= DRAFT_ROUNDS; round += 1) {
+        fallbackOrder.forEach((teamId, index) => {
+          slots.push({
+            pickId: null,
+            round,
+            slot: index + 1,
+            teamId,
+            originalTeamId: teamId,
+            acquired: false,
+            compensatory: false
+          });
+        });
+      }
+      return { slots, source: "standings-fallback" };
+    }
+
+    const slots = ledgerPicks
+      .map((pick) => ({
+        pickId: pick.id,
+        round: pick.round,
+        slot: slotByTeam.get(pick.originalTeamId) ?? (pick.originalPickIndex || 32),
+        teamId: pick.ownerTeamId || pick.originalTeamId,
+        originalTeamId: pick.originalTeamId,
+        acquired: (pick.ownerTeamId || pick.originalTeamId) !== pick.originalTeamId,
+        compensatory: false
+      }))
+      .sort(
+        (a, b) =>
+          a.round - b.round ||
+          a.slot - b.slot ||
+          String(a.originalTeamId).localeCompare(String(b.originalTeamId))
+      );
+
+    const comp = (this.league.compensatoryPicks || [])
+      .filter((pick) => pick.year === year)
+      .map((pick) => ({
+        pickId: pick.id,
+        round: pick.round,
+        // Compensatory picks sit after every regular selection in their round.
+        slot: 1000 + (slotByTeam.get(pick.teamId) ?? 32),
+        teamId: pick.teamId,
+        originalTeamId: pick.teamId,
+        acquired: false,
+        compensatory: true
+      }));
+
+    const merged = [...slots, ...comp].sort(
+      (a, b) =>
+        a.round - b.round ||
+        a.slot - b.slot ||
+        String(a.originalTeamId).localeCompare(String(b.originalTeamId))
+    );
+    return { slots: merged, source: "pick-ledger" };
+  }
+
   getDraftPickAssets(teamId = null, { year = null } = {}) {
     this.ensureDraftPickAssets();
     return this.league.draftPicks
       .filter((pick) => (teamId ? pick.ownerTeamId === teamId : true))
+      // S67: a pick for a draft that already happened is not an asset. Before
+      // the year floor a 2027 first round pick was still a live trade chip in
+      // 2029, priced normally by pickTradeValueForTeam.
+      .filter((pick) => pick.consumed !== true && pick.year > this.currentYear)
       .filter((pick) => (year == null ? true : pick.year === year))
       .sort((a, b) => a.year - b.year || a.round - b.round || a.originalPickIndex - b.originalPickIndex)
       .map((pick) => ({
@@ -2026,6 +2207,10 @@ export class GameSession {
     this.league.compFormulaLedger.gains = {};
     for (const team of this.league.teams) {
       const potentialLosses = this.listExpiringContracts(team.id)
+        // Rank by what the departure is worth before capping, so the formula
+        // measures a club's biggest losses rather than its first eight rows.
+        .slice()
+        .sort((a, b) => compLossValue(b) - compLossValue(a) || String(a.id).localeCompare(String(b.id)))
         .slice(0, 8)
         .map((player) => ({
           id: `LOSS-${team.id}-${player.id}`,
@@ -2034,7 +2219,12 @@ export class GameSession {
           teamId: team.id,
           direction: "losses",
           playerId: player.id,
-          value: Math.round(Math.max(50, player.value || player.capHit / 120_000))
+          // `player.value || player.capHit / 120_000` read two fields that this
+          // projection has never had — listExpiringContracts nests the deal
+          // under `contract` — so every row was written NaN, `sum + (v || 0)`
+          // laundered it to 0, and no compensatory pick had ever been awarded
+          // in the game's history. Valuation is now source-derived. (S67)
+          value: compLossValue(player)
         }));
       this.league.compFormulaLedger.losses[team.id] = potentialLosses;
       this.league.compFormulaLedger.gains[team.id] = [];
@@ -2048,22 +2238,39 @@ export class GameSession {
     const existing = (this.league.compensatoryPicks || []).filter((pick) => pick.year === draftYear);
     if (existing.length) return existing;
 
+    // Only players who actually left count as losses. Before S67 nothing ever
+    // expired, so "potential losses" seeded at season end were the whole story;
+    // now the ledger is reconciled against where the player finished the
+    // offseason, which is what a compensatory formula is supposed to measure.
+    const departed = (row) => {
+      const player = this.getPlayerById(row.playerId, true);
+      if (!player) return true; // retired or gone from the league entirely
+      return player.teamId !== row.teamId;
+    };
+    const finiteValue = (row) => (Number.isFinite(Number(row?.value)) ? Number(row.value) : 0);
+
     const picks = [];
     for (const team of this.league.teams) {
-      const losses = this.league.compFormulaLedger?.losses?.[team.id] || [];
+      const losses = (this.league.compFormulaLedger?.losses?.[team.id] || []).filter(departed);
       const gains = this.league.compFormulaLedger?.gains?.[team.id] || [];
-      const lossValue = losses.reduce((sum, row) => sum + (row.value || 0), 0);
-      const gainValue = gains.reduce((sum, row) => sum + (row.value || 0), 0);
+      const lossValue = losses.reduce((sum, row) => sum + finiteValue(row), 0);
+      const gainValue = gains.reduce((sum, row) => sum + finiteValue(row), 0);
       const net = lossValue - gainValue;
-      if (net <= 0) continue;
-      const rounds = net >= 280 ? [3, 5] : net >= 170 ? [4] : net >= 90 ? [5] : [6];
-      for (const round of rounds) {
+      // Bands are on the S67 unified scale (cap hit / 120k + quality premium),
+      // calibrated against the measured post-retention league distribution: a
+      // single mid-tier starter walking is roughly 120-180 points, and the
+      // qualifying floor keeps the award to clubs that genuinely lost more than
+      // they replaced rather than to almost everyone.
+      if (net < COMP_PICK_QUALIFYING_NET) continue;
+      const rounds =
+        net >= 850 ? [3, 4, 5, 6] : net >= 700 ? [3, 5] : net >= 550 ? [4] : net >= 450 ? [5] : [6];
+      for (const round of rounds.slice(0, COMP_PICKS_PER_TEAM_MAX)) {
         picks.push({
           id: `COMP-${draftYear}-${team.id}-${round}-${picks.length + 1}`,
           year: draftYear,
           teamId: team.id,
           round,
-          reason: `Net FA loss ${net}`
+          reason: `Net free-agency loss ${net} (${losses.length} out / ${gains.length} in)`
         });
       }
     }
@@ -2082,6 +2289,310 @@ export class GameSession {
       .sort((a, b) => a.year - b.year || a.round - b.round || a.teamId.localeCompare(b.teamId));
   }
 
+  /**
+   * Phase 1 of the offseason calendar: bodies leave.
+   *
+   * Ages every active player, credits accrued seasons, runs development, expires
+   * contracts and resolves retirements. Idempotent per offseason year so a
+   * pre-S67 snapshot resuming at `udfa` reconciles exactly once instead of
+   * either double-aging the league or never aging it at all.
+   */
+  runRosterYearRollover() {
+    const pipeline = this.getOffseasonPipeline();
+    if (pipeline.rosterRolloverYear === this.currentYear) {
+      return { ok: true, alreadyRun: true, retired: 0, expired: 0 };
+    }
+    const settings = this.getLeagueSettings();
+    const pendingExpiry = new Set(
+      this.league.players
+        .filter(
+          (player) =>
+            player.status === "active" &&
+            player.teamId !== "FA" &&
+            player.teamId !== "WAIVER" &&
+            normalizeContract(player.contract).yearsRemaining <= 1
+        )
+        .map((player) => player.id)
+    );
+    const retiredBefore = this.league.retiredPlayers.length;
+
+    expireContracts(this.league);
+    applyAgingProgressionAndRetirements(this.league, this.currentYear, this.rng, {
+      winningRetention: settings.retirementWinningRetention !== false,
+      developmentContext: (player, team) => this.buildPlayerDevelopmentContext(team?.id || player.teamId, player)
+    });
+
+    const retired = this.league.retiredPlayers.length - retiredBefore;
+    const expired = this.league.players.filter(
+      (player) => player.status === "active" && player.teamId === "FA" && pendingExpiry.has(player.id)
+    ).length;
+
+    pipeline.rosterRolloverYear = this.currentYear;
+    this.statBook.reindexPlayers();
+    this.rebuildLookupIndexes();
+    this.appendEvent("offseason-roster-rollover", { year: this.currentYear, retired, expired });
+    return { ok: true, alreadyRun: false, retired, expired };
+  }
+
+  /**
+   * Retention window (S67) — rival clubs re-sign their own before the market.
+   *
+   * Without this every expiring contract in the league hit free agency, which is
+   * both unrealistic (most NFL players re-sign with the incumbent) and quietly
+   * destructive: 32 rosters churned wholesale every offseason, the free-agent
+   * board became an undifferentiated 295-player pile, and the compensatory
+   * formula saw every club as a catastrophic net loser.
+   *
+   * The controlled franchise is deliberately excluded. Deciding who to keep is
+   * the GM's job, and `listExpiringContracts` plus the Re-sign action have
+   * existed for that purpose since S8 — before S67 nothing was ever actually at
+   * stake there, because no contract ran out.
+   */
+  runRetentionWindow() {
+    const pipeline = this.getOffseasonPipeline();
+    if (pipeline.retentionYear === this.currentYear) return { ok: true, alreadyRun: true, retained: 0 };
+
+    const byFormerTeam = new Map();
+    for (const player of this.league.players) {
+      if (player.status !== "active" || player.teamId !== "FA") continue;
+      const former = player.lastTeamId;
+      if (!former || former === this.controlledTeamId) continue;
+      if (!byFormerTeam.has(former)) byFormerTeam.set(former, []);
+      byFormerTeam.get(former).push(player);
+    }
+
+    let retained = 0;
+    for (const teamId of [...byFormerTeam.keys()].sort()) {
+      const team = teamById(this.league, teamId);
+      if (!team) continue;
+      const candidates = byFormerTeam
+        .get(teamId)
+        .sort((a, b) => (b.overall || 0) - (a.overall || 0) || String(a.id).localeCompare(String(b.id)));
+      const strategy = team.strategyProfile || "balanced";
+      for (const player of candidates) {
+        // A contender keeps its veterans; a rebuild lets them walk and takes the
+        // compensatory pick. Quality is the dominant term either way.
+        const quality = clamp(((player.overall || 60) - 58) / 42, 0, 1);
+        const strategyBias = strategy === "contender" ? 0.14 : strategy === "rebuild" ? -0.16 : 0;
+        const ageDrag = (player.age || 27) >= 31 ? -0.18 : (player.age || 27) >= 29 ? -0.08 : 0;
+        const chance = clamp(0.34 + quality * 0.48 + strategyBias + ageDrag, 0.05, 0.92);
+        if (!this.rng.chance(chance)) continue;
+        const contract = buildContract({
+          overall: player.overall,
+          years: this.rng.int(2, 4),
+          minSalary: 850_000,
+          maxSalary: 32_000_000,
+          rng: this.rng
+        });
+        if (this.getTeamCapSummary(teamId).capSpace < contract.capHit) continue;
+        player.teamId = teamId;
+        player.contract = contract;
+        player.rosterSlot = "active";
+        retained += 1;
+        this.logTransaction({
+          type: "re-sign",
+          teamId,
+          playerId: player.id,
+          playerName: player.name,
+          details: { years: contract.yearsRemaining, salary: contract.salary, capHit: contract.capHit, retention: true }
+        });
+      }
+    }
+
+    pipeline.retentionYear = this.currentYear;
+    this.statBook.reindexPlayers();
+    this.rebuildLookupIndexes();
+    this.appendEvent("offseason-retention", { year: this.currentYear, retained });
+    return { ok: true, alreadyRun: false, retained };
+  }
+
+  countPremiumFreeAgents() {
+    return this.league.players.filter(
+      (player) =>
+        player.status === "active" && player.teamId === "FA" && (player.overall || 0) >= PREMIUM_FA_OVERALL
+    ).length;
+  }
+
+  isFreeAgencyWindowOpen() {
+    const pipeline = this.league.offseasonPipeline;
+    if (!pipeline || pipeline.completed) return false;
+    if (pipeline.stage !== "free-agency") return false;
+    return pipeline.freeAgency?.closed !== true;
+  }
+
+  getFreeAgencyWindow() {
+    const pipeline = this.getOffseasonPipeline();
+    const state = pipeline.freeAgency?.year === this.currentYear ? pipeline.freeAgency : null;
+    return {
+      open: this.isFreeAgencyWindowOpen(),
+      year: this.currentYear,
+      wave: state?.wave || 0,
+      totalWaves: FREE_AGENCY_WAVES,
+      signed: state?.signed || 0,
+      closed: state?.closed === true,
+      premiumAvailable: this.countPremiumFreeAgents(),
+      poolSize: this.league.players.filter((player) => player.status === "active" && player.teamId === "FA").length
+    };
+  }
+
+  /**
+   * Phase 2 of the offseason calendar: the market the class actually reaches.
+   *
+   * Runs one bidding wave per call. Rival front offices submit archetype-shaped
+   * competing offers through the same seam the GM bids through, and the market
+   * resolves with the S62 outbid receipts. Before S67 this machinery existed and
+   * could never fire in an offseason, because it was invoked one line before the
+   * call that created the free agents it filters for.
+   */
+  runFreeAgencyWindow() {
+    const pipeline = this.getOffseasonPipeline();
+    if (pipeline.freeAgency?.year !== this.currentYear) {
+      pipeline.freeAgency = { year: this.currentYear, wave: 0, signed: 0, closed: false };
+    }
+    const state = pipeline.freeAgency;
+    if (state.closed) {
+      return { ...state, ok: true, alreadyRun: true, message: "Free agency is closed." };
+    }
+
+    const before = this.countPremiumFreeAgents();
+    if (state.wave === 0 && before > 0) {
+      reportMilestone(this.league, {
+        type: "free-agency-open",
+        year: this.currentYear,
+        teamIds: this.controlledTeamId ? [this.controlledTeamId] : [],
+        headline: `Free agency is open — ${before} premium free agents available`,
+        detail: `${FREE_AGENCY_WAVES} bidding waves. Rival clubs are submitting offers on the same names; submit yours before each wave resolves.`
+      });
+    }
+    this.league.freeAgencyMarket.stage = state.wave === 0 ? "legal-tampering" : "open-market";
+    // A real class needs a real board: 40 headline names per wave, up to 60
+    // competing offers. The in-season weekly call keeps its tight defaults.
+    this.submitCpuFreeAgencyOffers({ maxOffers: 60, poolSize: 40 });
+    const resolved = this.processFreeAgencyMarket();
+    state.wave += 1;
+    state.signed += resolved.signed || 0;
+
+    const remaining = this.countPremiumFreeAgents();
+    // The window closes when the waves are spent or the premium board is bare.
+    // A wave that moves nobody with names still on the board is not a reason to
+    // close — the GM may simply not have bid yet.
+    state.closed = state.wave >= FREE_AGENCY_WAVES || remaining === 0;
+    if (state.closed) this.league.freeAgencyMarket.stage = "open-market";
+
+    this.appendEvent("free-agency-wave", {
+      year: this.currentYear,
+      wave: state.wave,
+      signed: resolved.signed || 0,
+      premiumBefore: before,
+      premiumAfter: remaining
+    });
+
+    return {
+      ...state,
+      ok: true,
+      alreadyRun: false,
+      waveSigned: resolved.signed || 0,
+      premiumAvailable: remaining,
+      message: state.closed
+        ? `Free agency closed after ${state.wave} wave${state.wave === 1 ? "" : "s"} — ${state.signed} signing${state.signed === 1 ? "" : "s"} league-wide.`
+        : `Free agency wave ${state.wave} of ${FREE_AGENCY_WAVES} resolved — ${resolved.signed || 0} signed, ${remaining} premium free agents still on the board.`
+    };
+  }
+
+  /**
+   * Phase 3 of the offseason calendar: keep the league legal, and only that.
+   *
+   * The controlled franchise is excluded by construction — the S63 authority
+   * boundary guards the command seam, and this engine is not a command, so the
+   * exclusion has to be explicit here or the offseason writes a roster the GM
+   * owns. What the backstop does for CPU clubs is logged; what it declines to do
+   * for the GM comes back as an actionable shortfall receipt.
+   */
+  runRosterLegalityBackstop() {
+    const signingsByTeam = new Map();
+    const backstop = runFreeAgencyBackstop(this.league, this.currentYear, this.rng, {
+      excludeTeamIds: this.controlledTeamId ? [this.controlledTeamId] : [],
+      onSigning: ({ teamId, player, contract, emergency }) => {
+        // A replacement signed off the street is still a free-agency gain. Not
+        // crediting it made every club look like a catastrophic net loser to
+        // the compensatory formula.
+        if (!emergency) {
+          this.registerFreeAgencyMove({
+            teamId,
+            direction: "gains",
+            playerId: player.id,
+            value: compGainValue({ salary: contract?.salary || 0, overall: player.overall })
+          });
+        }
+        if (!signingsByTeam.has(teamId)) signingsByTeam.set(teamId, []);
+        signingsByTeam.get(teamId).push({
+          playerId: player.id,
+          player: player.name,
+          pos: player.position,
+          overall: player.overall,
+          capHit: contract?.capHit || 0,
+          emergency: emergency === true
+        });
+      }
+    });
+
+    normalizeRosterSlots(this.league);
+    applyCapRollover(this.league);
+    recalculateAllTeamRatings(this.league);
+    this.statBook.reindexPlayers();
+    this.rebuildLookupIndexes();
+
+    // One row per club rather than one per body: 200+ individual entries would
+    // evict the meaningful history from a 5,000-entry log inside 25 seasons,
+    // and the truth being recorded is "this club filled these holes".
+    let total = 0;
+    for (const [teamId, signings] of [...signingsByTeam.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+      total += signings.length;
+      this.logTransaction({
+        type: "roster-legality-signings",
+        teamId,
+        details: {
+          count: signings.length,
+          emergency: signings.filter((row) => row.emergency).length,
+          players: signings
+        }
+      });
+    }
+    if (total) {
+      this.logNews(`${total} depth signings closed out roster legality across the league`, {
+        year: this.currentYear,
+        clubs: signingsByTeam.size
+      });
+    }
+
+    const ownShortfall = backstop.shortfalls.find((row) => row.teamId === this.controlledTeamId) || null;
+    if (ownShortfall) {
+      const summary = ownShortfall.positions
+        .map((row) => `${row.missing}× ${row.position}`)
+        .join(", ");
+      reportMilestone(this.league, {
+        type: "roster-shortfall",
+        year: this.currentYear,
+        teamIds: [this.controlledTeamId],
+        headline: `Your roster is short: ${summary}`,
+        detail:
+          "The league's depth backstop does not sign for your franchise. Fill these holes from free agency, the waiver wire, or the draft before camp breaks."
+      });
+    }
+    this.league.rosterShortfall = ownShortfall;
+
+    return {
+      ok: true,
+      signings: total,
+      clubs: signingsByTeam.size,
+      shortfall: ownShortfall,
+      remainingFreeAgents: backstop.remainingFreeAgents,
+      message: ownShortfall
+        ? `Roster legality closed for 31 clubs (${total} depth signings). Your roster is still short ${ownShortfall.positions.reduce((sum, row) => sum + row.missing, 0)} spot(s).`
+        : `Roster legality closed (${total} depth signings). Every roster is legal.`
+    };
+  }
+
   advanceOffseasonPipeline() {
     const pipeline = this.getOffseasonPipeline();
     if (pipeline.completed) return { ...pipeline, message: "Offseason pipeline complete." };
@@ -2095,8 +2606,18 @@ export class GameSession {
 
     if (stage === "retirements") {
       this.processStaffLifecycle();
-      this.logNews(`Retirement processing complete for ${this.currentYear}`, { year: this.currentYear });
-      return next({ nextStage: "coaching-carousel", message: "Retirements and contract aging processed." });
+      const rollover = this.runRosterYearRollover();
+      const retention = this.runRetentionWindow();
+      this.logNews(`Retirement processing complete for ${this.currentYear}`, {
+        year: this.currentYear,
+        retired: rollover.retired,
+        expired: rollover.expired,
+        retained: retention.retained
+      });
+      return next({
+        nextStage: "coaching-carousel",
+        message: `${rollover.retired} retired, ${rollover.expired} contracts expired, ${retention.retained} re-signed by their own club.`
+      });
     }
     if (stage === "coaching-carousel") {
       this.processStaffLifecycle();
@@ -2139,7 +2660,35 @@ export class GameSession {
           }
         }
       }
-      return next({ nextStage: "draft", message: "Pro day updates merged." });
+      return next({ nextStage: "free-agency", message: "Pro day updates merged." });
+    }
+    if (stage === "free-agency") {
+      const market = this.runFreeAgencyWindow();
+      if (!market.closed) {
+        // Hold the stage between waves so the GM can actually bid. Each call
+        // advances the wave counter, so this pauses without ever deadlocking.
+        return {
+          ...pipeline,
+          userActionRequired: true,
+          blockingReason: "free-agency-open",
+          freeAgency: this.getFreeAgencyWindow(),
+          message: market.message
+        };
+      }
+      // The formula can only be resolved once the market has closed, and the
+      // awards have to exist before the board is built or they are decoration.
+      const comp = this.generateCompensatoryPicks();
+      // Rebuild the board here, at the close of the market, rather than on
+      // entry to the draft: the awards have to be selections, and any pick
+      // traded during the offseason has to be honoured, but once the draft
+      // stage owns the board nothing may re-sort it underneath the clock.
+      this.refreshDraftOrder();
+      return next({
+        nextStage: "draft",
+        message: comp.length
+          ? `${market.message} ${comp.length} compensatory pick${comp.length === 1 ? "" : "s"} awarded.`
+          : market.message
+      });
     }
     if (stage === "draft") {
       if (this.league.pendingDraft && !this.league.pendingDraft.completed) {
@@ -2164,24 +2713,20 @@ export class GameSession {
           message: "Draft progress paused before an unresolved user action."
         };
       }
-      this.generateCompensatoryPicks();
-      return next({ nextStage: "udfa", message: "Draft finished and compensatory picks generated." });
+      return next({ nextStage: "udfa", message: "Draft complete." });
     }
     if (stage === "udfa") {
-      this.submitCpuFreeAgencyOffers({ maxOffers: 10 });
-      this.processFreeAgencyMarket();
-      const settings = this.getLeagueSettings();
-      runOffseason({
-        league: this.league,
-        year: this.currentYear,
-        rng: this.rng,
-        skipDraft: true,
-        developmentContext: (player, team) => this.buildPlayerDevelopmentContext(team?.id || player.teamId, player),
-        retirementSettings: {
-          winningRetention: settings.retirementWinningRetention !== false
-        }
+      // Legacy-save safety: a snapshot written before S67 can resume at `udfa`
+      // having never passed the new `retirements`/`free-agency` stages, so both
+      // are idempotently reconciled here rather than silently skipped.
+      this.runRosterYearRollover();
+      this.runRetentionWindow();
+      this.runFreeAgencyWindow();
+      const backstop = this.runRosterLegalityBackstop();
+      return next({
+        nextStage: "camp-cuts",
+        message: backstop.message
       });
-      return next({ nextStage: "camp-cuts", message: "UDFA and free agency pass completed." });
     }
     if (stage === "camp-cuts") {
       this.runAiTeamMaintenance();
@@ -3464,7 +4009,9 @@ export class GameSession {
     if (!player) return { ok: false, error: "Free agent not found." };
     if (
       teamId === this.controlledTeamId &&
-      this.phase === "regular-season" &&
+      // S67: the offseason window is the market's busiest moment; before it
+      // existed this gate only had to cover the regular season.
+      (this.phase === "regular-season" || this.isFreeAgencyWindowOpen()) &&
       player.teamId === "FA" &&
       (player.overall || 0) >= PREMIUM_FA_OVERALL
     ) {
@@ -4497,7 +5044,9 @@ export class GameSession {
       if (this.getLeagueSettings().autoProgressOffseason) {
         let guard = 0;
         let auto = stageResult;
-        while (!auto.completed && guard < 10) {
+        // Stop on a stage that wants the GM (draft clock, open free-agency wave)
+        // instead of burning the guard against a stage that will not advance.
+        while (!auto.completed && !auto.userActionRequired && guard < 24) {
           auto = this.advanceOffseasonPipeline();
           guard += 1;
         }
@@ -4519,7 +5068,7 @@ export class GameSession {
     const post = this.advanceWeek();
     if (runOffseasonAfter) {
       let guard = 0;
-      while ((this.phase === "season-awards" || this.phase === "offseason") && guard < 18) {
+      while ((this.phase === "season-awards" || this.phase === "offseason") && guard < 32) {
         if (this.getOffseasonPipeline().stage === "draft" && this.getDraftAuthority().userActionRequired) {
           // simulateOneSeason is the explicit whole-season delegation command; interactive advance remains blocked.
           this.runCpuDraft({ untilUserPick: false });
@@ -4569,11 +5118,14 @@ export class GameSession {
       }
     }));
 
-    const order = sortStandings(this.league.teams)
-      .slice()
-      .reverse()
-      .map((team) => team.id);
-    const mockDraft = prospects.slice(0, 32).map((prospect, idx) => ({
+    this.ensureDraftPickAssets();
+    const { slots, source } = this.buildDraftOrder(draftYear);
+    // `order` stays a flat team-per-selection list so every consumer indexes it
+    // the same way; before S67 it held 32 entries and was walked with `% 32`,
+    // which silently discarded pick ownership and broke any consumer that tried
+    // to look past round one.
+    const order = slots.map((slot) => slot.teamId);
+    const mockDraft = prospects.slice(0, Math.min(32, slots.length)).map((prospect, idx) => ({
       pick: idx + 1,
       teamId: order[idx],
       playerId: prospect.id,
@@ -4585,8 +5137,10 @@ export class GameSession {
       year: draftYear,
       available: prospects,
       order,
+      slots,
+      orderSource: source,
       currentPick: 1,
-      totalPicks: 224,
+      totalPicks: slots.length,
       completed: false,
       mockDraft,
       selections: []
@@ -4594,6 +5148,33 @@ export class GameSession {
     this.initializeDraftScouting();
     this.applyPendingStartScenarioScoutingDirective();
     return this.league.pendingDraft;
+  }
+
+  /**
+   * Re-derive the pending draft's board from the live ledger (S67).
+   *
+   * Safe to call at any time before the first selection. Once a pick has been
+   * made the board is frozen, because re-sorting mid-draft would change which
+   * team already picked.
+   */
+  refreshDraftOrder() {
+    const draft = this.league.pendingDraft;
+    if (!draft || draft.completed) return null;
+    if ((draft.currentPick || 1) > 1) return draft;
+    const { slots, source } = this.buildDraftOrder(draft.year);
+    if (!slots.length) return draft;
+    draft.slots = slots;
+    draft.order = slots.map((slot) => slot.teamId);
+    draft.orderSource = source;
+    draft.totalPicks = slots.length;
+    draft.mockDraft = (draft.available || []).slice(0, Math.min(32, slots.length)).map((prospect, idx) => ({
+      pick: idx + 1,
+      teamId: draft.order[idx],
+      playerId: prospect.id,
+      player: prospect.name,
+      pos: prospect.position
+    }));
+    return draft;
   }
 
   getDraftState() {
@@ -4880,7 +5461,7 @@ export class GameSession {
   draftUserPick({ playerId }) {
     const draft = this.league.pendingDraft;
     if (!draft || draft.completed) return { ok: false, error: "No active draft." };
-    const teamOnClock = draft.order[(draft.currentPick - 1) % 32];
+    const teamOnClock = draftTeamOnClock(draft);
     if (teamOnClock !== this.controlledTeamId) return { ok: false, error: "User team is not on the clock." };
     const restrictions = this.getChallengeRestrictions(teamOnClock);
     if (!restrictions.allowTop10PickTrading && draft.currentPick <= 10) {
@@ -4890,7 +5471,7 @@ export class GameSession {
         reasonCode: "challenge-top10-picks"
       };
     }
-    const round = Math.floor((draft.currentPick - 1) / 32) + 1;
+    const round = draftRoundForPick(draft);
     const pickIndex = draft.available.findIndex((prospect) => prospect.id === playerId);
     if (pickIndex < 0) return { ok: false, error: "Prospect not available." };
 
@@ -4901,17 +5482,23 @@ export class GameSession {
     prospect.profile.source = "drafted";
     this.league.players.push(prospect);
 
+    const slot = draftSlotForPick(draft);
     draft.selections.push({
       pick: draft.currentPick,
       round,
       teamId: teamOnClock,
+      originalTeamId: slot?.originalTeamId || teamOnClock,
+      acquired: slot?.acquired === true,
+      compensatory: slot?.compensatory === true,
       playerId: prospect.id,
       player: prospect.name,
       pos: prospect.position
     });
+    this.consumeDraftPick(slot);
     draft.currentPick += 1;
     if (draft.currentPick > draft.totalPicks || draft.available.length === 0) draft.completed = true;
     this.statBook.reindexPlayers();
+    this.rebuildLookupIndexes();
     return { ok: true, selection: draft.selections[draft.selections.length - 1], draft };
   }
 
@@ -4920,12 +5507,16 @@ export class GameSession {
     if (!draft || draft.completed) return { ok: false, error: "No active draft." };
     let completed = 0;
     while (!draft.completed && completed < picks) {
-      const teamOnClock = draft.order[(draft.currentPick - 1) % 32];
+      const teamOnClock = draftTeamOnClock(draft);
+      if (!teamOnClock) {
+        draft.completed = true;
+        break;
+      }
       if (untilUserPick && teamOnClock === this.controlledTeamId) {
         const restrictions = this.getChallengeRestrictions(teamOnClock);
         if (restrictions.allowTop10PickTrading || draft.currentPick > 10) break;
       }
-      const round = Math.floor((draft.currentPick - 1) / 32) + 1;
+      const round = draftRoundForPick(draft);
 
       const needs = this.getRosterNeedSummary(teamOnClock)
         .filter((item) => item.delta < 0)
@@ -4963,32 +5554,52 @@ export class GameSession {
       prospect.profile.source = "drafted";
       this.league.players.push(prospect);
 
+      const slot = draftSlotForPick(draft);
       draft.selections.push({
         pick: draft.currentPick,
         round,
         teamId: teamOnClock,
+        originalTeamId: slot?.originalTeamId || teamOnClock,
+        acquired: slot?.acquired === true,
+        compensatory: slot?.compensatory === true,
         playerId: prospect.id,
         player: prospect.name,
         pos: prospect.position
       });
+      this.consumeDraftPick(slot);
       draft.currentPick += 1;
       completed += 1;
       if (draft.currentPick > draft.totalPicks || draft.available.length === 0) draft.completed = true;
     }
     this.statBook.reindexPlayers();
+    this.rebuildLookupIndexes();
     return { ok: true, completedPicks: completed, draft };
   }
+
+  consumeDraftPick(slot) {
+    if (!slot?.pickId) return false;
+    const pick = this.getDraftPickById(slot.pickId);
+    if (!pick || pick.consumed === true) return false;
+    pick.consumed = true;
+    pick.consumedYear = slot.round != null ? this.currentYear : this.currentYear;
+    return true;
+  }
+
   getDraftAuthority() {
     const draft = this.league.pendingDraft;
     if (!draft) return null;
-    const teamOnClock = draft.completed
-      ? null
-      : draft.order[(draft.currentPick - 1) % draft.order.length] || null;
+    const teamOnClock = draft.completed ? null : draftTeamOnClock(draft);
+    const slot = draft.completed ? null : draftSlotForPick(draft);
     return {
       year: draft.year,
       currentPick: draft.currentPick,
       totalPicks: draft.totalPicks,
       completed: draft.completed,
+      orderSource: draft.orderSource || "standings-fallback",
+      round: draft.completed ? null : draftRoundForPick(draft),
+      pickAcquired: slot?.acquired === true,
+      pickCompensatory: slot?.compensatory === true,
+      pickOriginalTeamId: slot?.originalTeamId || teamOnClock,
       teamOnClock,
       controlledTeamOnClock: Boolean(teamOnClock && teamOnClock === this.controlledTeamId),
       userActionRequired: Boolean(teamOnClock && teamOnClock === this.controlledTeamId),
@@ -5061,6 +5672,8 @@ export class GameSession {
       settings: this.getLeagueSettings(),
       eraProfile: this.getEraProfile(),
       offseasonPipeline: this.getOffseasonPipeline(),
+      freeAgencyWindow: this.getFreeAgencyWindow(),
+      rosterShortfall: this.league.rosterShortfall || null,
       rosterNeeds: this.getRosterNeedSummary(this.controlledTeamId),
       contractTools: {
         expiring: this.listExpiringContracts(this.controlledTeamId),
@@ -5501,7 +6114,7 @@ export class GameSession {
     return { ok: true, offer: payload };
   }
 
-  submitCpuFreeAgencyOffers({ maxOffers = 6 } = {}) {
+  submitCpuFreeAgencyOffers({ maxOffers = 6, poolSize = 10 } = {}) {
     // Rival front offices bid on premium free agents through the same market
     // the player uses. Deterministic (session RNG), bounded, archetype-shaped.
     const premium = this.league.players
@@ -5512,22 +6125,32 @@ export class GameSession {
           (player.overall || 0) >= PREMIUM_FA_OVERALL
       )
       .sort((a, b) => (b.overall || 0) - (a.overall || 0) || String(a.id).localeCompare(String(b.id)))
-      .slice(0, 10);
+      .slice(0, normalizeCount(poolSize, 1, 120, 10));
+
+    // One pass over the league instead of one pass per (candidate × team). The
+    // in-season call only ever considered 10 names so the nested scan was
+    // survivable; the S67 offseason window puts a real free-agent class through
+    // here and it is not.
+    const bestAtPositionByTeam = new Map();
+    for (const row of this.league.players) {
+      if (row.status !== "active") continue;
+      if ((row.rosterSlot || "active") !== "active") continue;
+      let byPosition = bestAtPositionByTeam.get(row.teamId);
+      if (!byPosition) {
+        byPosition = new Map();
+        bestAtPositionByTeam.set(row.teamId, byPosition);
+      }
+      const current = byPosition.get(row.position) || 0;
+      if ((row.overall || 0) > current) byPosition.set(row.position, row.overall || 0);
+    }
+
     let submitted = 0;
     for (const player of premium) {
       if (submitted >= maxOffers) break;
       const bidders = this.league.teams
         .filter((team) => team.id !== this.controlledTeamId)
         .map((team) => {
-          const bestAtPosition = this.league.players
-            .filter(
-              (row) =>
-                row.teamId === team.id &&
-                row.status === "active" &&
-                (row.rosterSlot || "active") === "active" &&
-                row.position === player.position
-            )
-            .reduce((best, row) => Math.max(best, row.overall || 0), 0);
+          const bestAtPosition = bestAtPositionByTeam.get(team.id)?.get(player.position) || 0;
           const gap = (player.overall || 0) - bestAtPosition;
           if (gap < 3) return null;
           const strategy = team.strategyProfile || "balanced";
@@ -5614,7 +6237,10 @@ export class GameSession {
           teamId: offer.teamId,
           direction: "gains",
           playerId,
-          value: Math.round(offer.salary / 250_000)
+          // Same scale as the loss side (S67) — the two were divided by
+          // different denominators, so `losses - gains` was never a comparison
+          // of like with like even before the NaN made it moot.
+          value: compGainValue({ salary: offer.salary, overall: player.overall })
         });
         this.logNews(`${player.name} signed with ${offer.teamId}`, { teamId: offer.teamId, playerId });
         // Outbid receipt (S62): if the controlled team bid on this player and

@@ -1048,3 +1048,48 @@ Verification: `npm test` **746/746** exit 0 · Playwright **33/33** · `evidence
 ### Still open, and worth triage rather than another daily attempt
 
 9 PRs remain, several genuinely useful: #35 (`CLEAN`, landing brand harmonization + Playwright), #30 (wires dead analytics), #11 (mobile-loop import fix), #9/#15 (press-conference determinism — likely superseded by S63's press-room work), #50 (superseded by S65 on main; recommend closing).
+
+## Session 67 — the offseason was a facade (2026-08-01)
+
+### The finding, in one line
+
+`normalizeContract` read `Number(contract.yearsRemaining || 1)`. Zero is falsy. **No contract in this game had ever expired.**
+
+The clamp on that same line floors at 0, so zero was always meant to be legal — the falsy default just made it unreachable. Because normalize runs on every read, `advanceContractYear`'s expiry branch and `expireContracts`' `<= 0` check were both dead code, and everything downstream had been quietly inert for the project's whole history:
+
+- The free-agent pool measured **0 players at all seven offseason stages**, so the entire S62 competing-offer market — CPU archetype bidding, outbid receipts, the `legal-tampering` → `post-draft` stage machine — was structurally unreachable in an offseason. It filters on `teamId === "FA"`.
+- `listExpiringContracts` and the Re-sign action had nothing at stake since S8.
+- The compensatory ledger measured departures that never happened.
+
+The audit's stated premise (ordering) was real but **secondary**, and is recorded that way rather than retrofitted.
+
+### Shipped — six ranked items
+
+| # | Item | Detail |
+|---|---|---|
+| 1 | Offseason calendar order | `runOffseason` decomposed into named exported phases; the composed façade preserved **verbatim** for `leagueSimulator` and the 100-year career regression. Each stage bound to the phase it is named for. The `retirements` stage retired nobody — its entire body was `processStaffLifecycle()` plus a news line, the same call the next stage made again. A new `free-agency` stage sits between pro-days and the draft. A pre-S67 snapshot resuming at `udfa` reconciles idempotently. |
+| 2 | Free agency exists | Root fix above, plus a 3-wave window that **holds for the GM between waves** (`blockingReason: "free-agency-open"`). Premium signings gated through the market in the window, not just the regular season. `submitCpuFreeAgencyOffers` gained a `poolSize` (40 in-window, 10 in-season) and a one-pass position index replacing an O(candidates × teams × players) scan. **0 → 36 competitive signings.** |
+| 3 | Draft honours the pick ledger | `buildDraftOrder(year)` emits one slot per **owned** pick, ordered by the original club's finish, comp picks closing their round, `totalPicks` derived not the 224 constant. Every `(currentPick - 1) % 32` became a direct index — including two in `public/lib/tabDraft.js` that had been reading the wrong team for every round after the first. Picks consumed on selection. Standings fallback keeps pre-ledger saves drafting. |
+| 4 | Compensatory picks can be awarded at all | Loss value read `player.value \|\| player.capHit / 120_000` off a projection carrying **neither** field → NaN → `sum + (v \|\| 0)` laundered it to 0 → `net <= 0` always continued. The gains side divided by a *different* denominator, so the two were never comparable even before the NaN. One finite-validated scale, reconciled against where the player actually finished, capped at 4/club. **0 → 19 awards**, totalPicks 224 → 243. |
+| 5 | Offseason actor authority | `runFreeAgencyBackstop` takes an explicit authority parameter; the controlled team is excluded. **5 players per offseason used to arrive on the GM's roster with no command issued** — the S63 boundary guards the command seam and this engine is not a command. Every backstop signing logged one aggregated row per club (not 200+ rows that would evict real history from a 5,000-entry log inside 25 seasons). Unfilled controlled roster → actionable inbox shortfall receipt. |
+| 6 | Pick assets bounded | Consumed on selection, elapsed drafts retired self-healingly, floored at `year > currentYear` in both the trade desk and `TradeService`. Before: **42 BUF assets across six years, 21 for drafts already held**, against a 1,344-row ledger growing 224/season forever — inside the save budget S65 spent a session reclaiming. |
+
+### Second-order — four shipped
+
+- **Contract-expiry root cause** (above) — the finding the audit's premise was standing on.
+- **CPU retention window.** With contracts finally expiring, every club read as a catastrophic net loser because no CPU team could re-sign its own. Rival clubs now keep their own first, weighted by quality/age/strategy — and the controlled franchise is deliberately excluded, because who to keep is the GM's decision. **295 expiring → 169 retained → 126 genuine free agents (97 premium).** Comp net distribution went from +906..−129 (everyone a loser) to +787..−461, median 356.
+- **Free-agency market index** — see item 2.
+- **Player-facing surfaces**, per the S64 lesson that an engine half can ship green with its UI half dead: Free Agency season chapter with live wave/premium counts routing to the FA tab, inbox announcement when the market opens, roster-shortfall chapter, war-room chips naming an acquired or compensatory pick. Covered by tests driving the browser modules against **live dashboard state**.
+
+Coverage: `test/offseason-calendar.test.js` (22) and `test/offseason-surfaces.test.js` (7), both registered in the `core` shard.
+
+### Honest deferrals — recorded, not skipped
+
+- **`indexedDbSaveStore.js` / `modLoader.js` / `rewindManager.js` have zero importers.** The audit listed deletion as a second-order candidate. Reading them first showed that is the wrong call: `indexedDbSaveStore` is a complete, working **~250 MB** persistence layer against the 5–10 MB localStorage ceiling S65 spent an entire session fighting, and S65's move to async store methods made it architecturally reachable for the first time. `modLoader` is a complete public mod/plugin API. **Assets, not debt.** Wiring IndexedDB is a dedicated session with migration and fallback handling.
+- **`getDashboardState()` memoization** — deferred with its measurement rather than its guess: **24.7 ms** per build. Real, not player-visible at current polling rates, and a cache runs straight into the S49 authority-keyed hydration fences.
+- **GM firing / terminal game-over** — founder creative direction, carried unchanged from S62/S63.
+
+### Rejected as phantom work
+
+- *"`runCpuDraft` auto-picks for the user when `allowTop10PickTrading` is false — inverted logic."* Read in isolation it looks inverted; `GameSession.js` blocks the **user** from selecting inside the top 10 under the same flag with an explicit "trade down or let the CPU resolve the pick" message. The branches agree. (Noted separately and not raised as work: no `CHALLENGE_MODES` entry actually sets it false, so the restriction is unreachable configuration.)
+- *"Playoff seeding and tiebreakers are naive."* `src/engine/seasonSimulator.js` implements head-to-head, division and conference tiebreakers with a proper tie-group walk. Premise false against live code.

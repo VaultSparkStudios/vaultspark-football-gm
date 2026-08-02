@@ -118,6 +118,54 @@ export function buildSeasonChapter(dashboard = {}) {
   });
 
   if (phase === "offseason") {
+    // The free-agency window is the one offseason stage that holds for the GM,
+    // so it gets its own call rather than the generic build-through-a-stage
+    // copy. Every number is read from the window itself — no projection.
+    const window = dashboard.freeAgencyWindow || null;
+    if (window?.open) {
+      const wave = Math.max(1, Number(window.wave) || 1);
+      const total = Math.max(wave, Number(window.totalWaves) || wave);
+      const premium = Math.max(0, Number(window.premiumAvailable) || 0);
+      return chapter({
+        id: "free-agency-window",
+        label: "Free Agency",
+        title: `Wave ${wave} of ${total} — ${premium} premium free agent${premium === 1 ? "" : "s"} on the board`,
+        detail:
+          "Rival front offices are bidding on the same names. A premium free agent signs through the market, not on demand, so an offer that wins is the only offer that counts.",
+        nextCall:
+          premium > 0
+            ? "Open Free Agency, submit offers, then advance to resolve the wave."
+            : "The premium board is clear — advance to close the window.",
+        targetTab: "faTab",
+        targetId: "faTable",
+        tone: "warning",
+        evidence: [
+          ...evidence,
+          `stage:free-agency`,
+          `wave:${wave}/${total}`,
+          `premium:${premium}`,
+          `signed:${Math.max(0, Number(window.signed) || 0)}`
+        ]
+      });
+    }
+
+    const shortfall = dashboard.rosterShortfall || null;
+    if (shortfall?.positions?.length) {
+      const summary = shortfall.positions.map((row) => `${row.missing}× ${row.position}`).join(", ");
+      return chapter({
+        id: "roster-shortfall",
+        label: "Roster Shortfall",
+        title: `Your roster is short: ${summary}`,
+        detail:
+          "The league's depth backstop fills rival rosters but never yours — those are your decisions. Sign, claim, or draft to reach a legal roster.",
+        nextCall: "Fill the named holes from free agency, waivers, or the draft before camp breaks.",
+        targetTab: "faTab",
+        targetId: "faTable",
+        tone: "warning",
+        evidence: [...evidence, `shortfall:${shortfall.positions.length}`]
+      });
+    }
+
     const stage = text(dashboard.offseasonPipeline?.stage, "offseason reset");
     return chapter({
       id: "offseason-blueprint",

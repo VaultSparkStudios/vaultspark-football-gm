@@ -1,45 +1,46 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 3da09f5d64aa -->
-<!-- generated-at: 2026-08-01T01:46:50.638Z -->
+<!-- source-hash: 7dc283b80d05 -->
+<!-- generated-at: 2026-08-02T00:56:50.490Z -->
 
 # LATEST_HANDOFF (compact)
 
-Where We Left Off — Session 62 (2026-07-31)
+Session 67 Closeout (2026-08-01)
 
-Session
-- Session 62 closeout. Full /goal /arc completed uninterrupted; 10/10 audit items and 3/3 viable second-order innovations shipped and verified.
+Intent: Run full arc continuously, saturate genius list, ship second-order innovation. Achieved: six ranked items + four second-order innovations; three deferrals recorded.
 
-Shipped
-- Rival GM inbound trade offers (deterministic, deadline-aware, stale-plan 409 discipline, Priority Inbox).
-- Premium free agency (74+ OVR) live weekly market with CPU bidding and exact receipts.
-- GM decision catalog doubled to six archetypes driven by live narrative events.
-- Owner patience loop: weekly drift, Owner Confidence meter, reachable ultimatum with named season-end consequence.
-- Home-field/bye-rest venue effects (neutral Super Bowl); milestone announcement authority; opening-contract recovery from three surfaces.
-- Second-order: single dashboard authority (payload drift + fromSnapshot crash root-fixed), continuity storylines, hot-path index adoption.
+Root Finding
 
-Verification
-- Node 613/613 exit 0; Playwright 20/20; Pages build + static smoke green; sim-contract/realism shards green.
-- Root-fixed en route: award-selection nondeterminism, award post-honor AV comparison, OL-MVP pool defect, fromSnapshot service-bag gap.
+src/domain/contracts.js: clamp(Number(contract.yearsRemaining || 1), 0, 10). Zero is falsy, so zero-year contracts always became one-year on read. No contract ever expired in five sessions. Five downstream layers looked correct in isolation: free-agent pool held zero players at all seven offseason stages, competing-offer market unreachable, Re-sign action inert, compensatory ledger measuring phantom departures.
 
-Current Intent
-- Arc achieved. Next session begins a fresh live-code audit from exhausted queues unless external launch authorities produce new evidence.
+Shipped — Six Ranked Items
 
-Now (top 3)
-- Mobile nav / 481–980px tablet parity (needs visual-evidence re-baseline budget).
-- Opponent-aware gameplanning (needs its own realism-tolerance budget).
-- Interactive press conferences (creative design surface).
+1. Offseason calendar order: runOffseason decomposed into named exported phases; each stage bound to its phase; new free-agency stage. FA pool by stage 0/0/0/0/0/0/0 → 126/126/126/126/109/105/102.
+2. Free agency exists: root fix above + 3-wave window; premium signings gated through market. 0 → 36 competitive signings with outbid receipts.
+3. Draft honours pick ledger: buildDraftOrder emits one slot per owned pick ordered by original club finish; comp picks close their round. BUF's 7 traded picks now correctly held by MIA.
+4. Compensatory picks can be awarded: player.value read neither field → NaN → 0. Gains used different denominator. 0 → 19 awards; totalPicks 224 → 243.
+5. Offseason actor authority: runFreeAgencyBackstop takes explicit authority; controlled team excluded; every signing logged. 5 players/offseason arrived unbidden → 0.
+6. Pick assets bounded: consumed on selection; elapsed drafts self-heal; floored year > currentYear in trade desk and TradeService.
 
-Blockers (top 3)
-- Hosted /_health returns 404; edge headers (HSTS/CSP/frame/permissions) unapplied; no exact deployed revision.
-- No delivered on-domain email receipt.
-- Sibling-owned lifecycle reconciliation outstanding; staging probe BLOCKED 3/10.
+Verification: npm test 781/781, exit code 0. +35 new tests from S63 baseline.
 
-Human-Blocked (with age)
-- Founder launch approval — open since ~Session 50 (2026-07-20), ~11 sessions.
-- GM firing / terminal state — founder canon decision, deferred Session 62 (2026-07-31).
-- Owning-host/email/lifecycle reconciliation via Ark — outstanding since ~Session 50, ~11 sessions.
+Second-Order Shipped
 
-Launch Posture
-- HOLD. Nothing external fabricated; local success does not flip launch/SPARKED.
+Contract-expiry root cause (the finding the audit premise stood on). CPU retention window: 295 expiring → 169 retained → 126 genuine free agents (97 premium). Free-agency market index. Player-facing surfaces: Free Agency season chapter, FA tab routing, inbox announcement, roster-shortfall chapter, war-room chips for acquired/comp picks. Covered by test/offseason-calendar.test.js (22) + test/offseason-surfaces.test.js (7).
 
-Next session: Start fresh live-code audit from exhausted queues unless host/email/approval/lifecycle evidence arrives.
+Honest Deferrals — Recorded, Not Skipped
+
+indexedDbSaveStore / modLoader / rewindManager have zero importers but are complete assets: ~250 MB persistence layer and public plugin API, not debt. getDashboardState memoization deferred with measurement (24.7 ms/build); real but not player-visible. GM firing / terminal game-over carried from S62/S63 pending founder creative direction.
+
+Blockers
+
+GM firing / terminal game-over: awaits founder creative direction. indexedDbSaveStore wiring: needs migration + graceful fallback (S68 priority). Tablet affordances: needs visual-evidence baseline.
+
+One Test Reconciled
+
+test/draft-war-room.test.js: fixture coherent only under % 32 bug. Updated deliberately with rationale stated.
+
+Next Session Order
+
+1. Wire indexedDbSaveStore as browser store of record (highest-value carry). 2. Tablet touch affordances / dedicated layout. 3. External: /_health 404 on live domain (stale Cloudflare binding); no delivered-email receipt; no founder approval.
+
+S68: prioritize indexedDbSaveStore wiring; tablet affordances visual baseline; confirm GM-firing creative direction from founder.

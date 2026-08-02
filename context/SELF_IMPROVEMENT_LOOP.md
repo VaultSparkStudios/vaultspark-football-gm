@@ -1,8 +1,31 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 58 closed at 995 / 1000 SIL v3.0. Verification: canonical Node 499/499 with a fresh source-bound receipt, Playwright 20/20, responsive evidence 53/53, Pages build/smoke, 51 reachable browser modules, doctor blockingFailing 0, and primary/second-order queues exhausted. Launch/SPARKED remains evidence-gated on hosted provenance, canonical health/edge headers, verified on-domain delivery, founder approval, and authoritative registry reconciliation.
+Rolling status: Session 67 closed at 995 / 1000 SIL v3.0. Six ranked items and four second-order innovations shipped in one continuous mission; the root finding was that `normalizeContract`'s `|| 1` default made contract expiry unreachable, so no contract in the game's history had ever run out and the entire S62 free-agency market was structurally dead. The offseason is now a calendar with a real market window, the draft honours the pick ledger, compensatory picks can be awarded at all, and the offseason engine no longer writes the controlled roster. Three honest deferrals recorded with their reasoning and measurements. Launch/SPARKED remains evidence-gated on hosted `/_health`, edge headers, a delivered-email receipt, founder approval, and sibling-owned registry reconciliation.
+
+Previously — Session 58 closed at 995 / 1000 SIL v3.0. Verification: canonical Node 499/499 with a fresh source-bound receipt, Playwright 20/20, responsive evidence 53/53, Pages build/smoke, 51 reachable browser modules, doctor blockingFailing 0, and primary/second-order queues exhausted. Launch/SPARKED remains evidence-gated on hosted provenance, canonical health/edge headers, verified on-domain delivery, founder approval, and authoritative registry reconciliation.
 <!-- rolling-status-end -->
+
+## 2026-08-01 — Session 67 The Offseason Was a Facade
+
+SIL v3.0: **995 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 98, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 97, Automation Coverage 100).
+
+- **Dev Health: 100** — full canonical Node suite green with the exit code read directly rather than through a pipe, plus Playwright, Pages build/reachability/smoke, and doctor `blockingFailing` 0. Twenty-nine new tests, all passing on first run.
+- **Creative Alignment: 100** — the session restored the half of a franchise game the genre exists for. Free agency, the draft and compensatory picks are now decisions the GM makes rather than results delivered to them, and the retention window deliberately leaves the controlled franchise's keep-or-lose calls to the player.
+- **Momentum: 100** — all six ranked items plus four second-order innovations shipped in one continuous mission, with no partial state and no mid-task handback.
+- **Engagement: 100** — the offseason gained a market that holds for the player across three waves, an inbox announcement when it opens, a shortfall receipt that is actionable rather than punitive, and draft-board provenance that makes a traded pick legible. No coercive mechanics, no fabricated retention claim.
+- **Process Quality: 98** — scored down deliberately and specifically. The audit's rank-1/2 premise (offseason ordering) was verified by execution and was a real defect, but it was **not the dominant cause**; the dominant cause was a single `||` in `normalizeContract` that I only found after reordering everything and watching the pool stay at zero. The correction is recorded as a correction, not retrofitted into the original premise. Everything else in the process held: deferrals carry measurements rather than guesses, one test fixture was changed rather than satisfied and the change was stated, and reading the "dead" modules before deleting them prevented the worst change available this session.
+- **Cross-Repo Coherence: 100** — no sibling tree was edited. Lifecycle drift (`registry SPARKED · local contract FORGE`) remains correctly non-blocking and sibling-owned.
+- **Security Posture: 100** — the S63 franchise-authority boundary was extended from the command seam into the engine layer, closing a path that wrote the controlled roster with no command issued. Secret scan and settings sanitization clean.
+- **Ecosystem Integration: 100** — audit sidecar and rendered markdown, genius cache, innovation pack, task board, handoff, truth audit, decisions, work log and doctor all agree on the same exhaustion state.
+- **Capital Efficiency: 97** — unchanged. The browser-first product stays deterministic, static-host compatible and zero variable cost under the notional flat-rate plan. The pick-ledger pruning also removed an unbounded array from the save budget.
+- **Automation Coverage: 100** — the calendar order, market waves, actor authority, pick-ledger board, compensatory finiteness, ledger bounds and both player-facing surfaces are all in the canonical suite and registered in the `core` shard.
+
+Committed SIL follow-ups:
+- `[SIL]` Where a clamp or validation range admits zero, the default must admit zero too — use `??`, never `||`. Audit normalizers for this class.
+- `[SIL]` Validate ledger values finite at **write**; a `|| 0` on read is what hides a dead feature, not what protects it.
+- `[SIL]` Prove an engine's terminal condition is reachable with a test that drives the real engine. Five layers of correct-looking code sat on an unreachable branch for the project's entire history without one test failing.
+- `[SIL]` Read a zero-importer module before proposing its deletion. `indexedDbSaveStore.js` is a ~250 MB persistence layer against the ceiling S65 spent a session fighting.
 
 ## 2026-07-27 - Session 58 Exact Franchise and Return Continuity
 

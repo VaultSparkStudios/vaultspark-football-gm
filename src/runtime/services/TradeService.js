@@ -47,14 +47,13 @@ export class TradeService {
       .map((id) => session.getPlayerById(id))
       .filter((player) => player?.teamId === teamB)
       .filter(Boolean);
-    const picksA = teamAPickIds
-      .map((id) => session.getDraftPickById(id))
-      .filter((pick) => pick?.ownerTeamId === teamA)
-      .filter(Boolean);
-    const picksB = teamBPickIds
-      .map((id) => session.getDraftPickById(id))
-      .filter((pick) => pick?.ownerTeamId === teamB)
-      .filter(Boolean);
+    // A pick is only an asset while its draft is still ahead of us and it has
+    // not been used. Before S67 nothing consumed picks and nothing floored the
+    // year, so an already-spent 2027 first was still tradeable in 2029.
+    const tradeable = (pick, owner) =>
+      Boolean(pick) && pick.ownerTeamId === owner && pick.consumed !== true && pick.year > session.currentYear;
+    const picksA = teamAPickIds.map((id) => session.getDraftPickById(id)).filter((pick) => tradeable(pick, teamA));
+    const picksB = teamBPickIds.map((id) => session.getDraftPickById(id)).filter((pick) => tradeable(pick, teamB));
 
     if (
       fromA.length !== teamAPlayerIds.length ||

@@ -27,7 +27,12 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
     };
   }
 
-  const currentTeam = draft.order?.[(draft.currentPick - 1) % 32] || null;
+  // `order` carries one entry per selection (S67). The old `% 32` read the
+  // wrong team for every round after the first.
+  const currentTeam = draft.order?.[draft.currentPick - 1] || null;
+  // S67: the board carries per-slot provenance, so a pick that was traded for
+  // or awarded says so instead of looking like any other selection.
+  const currentSlot = draft.slots?.[draft.currentPick - 1] || null;
   const isUserPick = Boolean(controlledTeamId && currentTeam === controlledTeamId && !draft.completed);
   const picksUntilUser = draft.completed
     ? 0
@@ -44,7 +49,7 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
       const needGap = needByPosition.get(position) || 0;
       const rank = Number(prospect.scouting?.rank || index + 1);
       const projectedRound = Number(prospect.scouting?.projectedRound || 9);
-      const currentRound = Math.max(1, Math.ceil((draft.currentPick || 1) / 32));
+          const currentRound = currentSlot?.round || Math.max(1, Math.ceil((draft.currentPick || 1) / 32));
       const value = (100 - rank) + (board ? 35 - board : 0) + (needGap < 0 ? Math.abs(needGap) * 8 : 0) + Math.max(0, projectedRound - currentRound) * 4;
       const boardPressure = board ? Math.max(0, 22 - board) : 0;
       const waitWindow = isUserPick ? 0 : picksUntilUser;
@@ -77,8 +82,14 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
         ? `${picksUntilUser} picks until your room`
         : "CPU pick in progress";
   const tone = isUserPick ? "danger" : picksUntilUser <= 5 ? "warning" : "accent";
+  const provenance = currentSlot?.compensatory
+    ? `Compensatory pick (${currentSlot.teamId})`
+    : currentSlot?.acquired
+      ? `Acquired from ${currentSlot.originalTeamId}`
+      : null;
   const chips = [
     status,
+    ...(provenance ? [provenance] : []),
     `${(draft.available || []).length} prospects left`,
     candidates[0] ? `Steal risk ${candidates[0].stealRisk}` : "Steal risk none",
     candidates[0]?.needGap < 0 ? `Top need ${candidates[0].pos}` : "Best value watch",
@@ -107,7 +118,7 @@ export function renderDraft() {
     return;
   }
 
-  const currentTeam = draft.order?.[(draft.currentPick - 1) % 32] || "-";
+  const currentTeam = draft.order?.[draft.currentPick - 1] || "-";
   const isUserPick = currentTeam === state.dashboard?.controlledTeamId;
   const availableProspects = (draft.available || []).slice(0, 60);
   if (state.selectedDraftProspectId && !availableProspects.some((prospect) => prospect.id === state.selectedDraftProspectId)) {

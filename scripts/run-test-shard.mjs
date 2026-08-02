@@ -10,6 +10,8 @@ export const SHARDS = {
     "test/calibration.test.js",
     "test/coverage-depth-ratings.test.js",
     "test/generated-league-presentation.test.js",
+    "test/offseason-calendar.test.js",
+    "test/offseason-surfaces.test.js",
     "test/pass-structure-regression.test.js",
     "test/quarterback-depth-ratings.test.js",
     "test/ratings-regression.test.js",

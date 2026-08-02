@@ -1,0 +1,453 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-01",
+  "session": 67,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 6,
+    "combinedPriority": 145.9,
+    "topItem": "offseason-calendar-order",
+    "source": "live-code-audit",
+    "openItems": 0,
+    "completedItems": 6,
+    "priorityFormula": "priority = round(impact * innovation / effortHours, 1). `rank` is optimal EXECUTION order (dependency-aware), not a re-sort of priority — the cheap high-ratio repairs at ranks 4-6 are only correct once ranks 1-3 have reshaped the surface they measure.",
+    "theme": "The offseason is a facade. Six of the seven pipeline stages the player clicks through are labels over one monolithic call that fires at the second-to-last stage, in the wrong order, with no player agency and no receipts."
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "product rubric with game-medium overlay: retention, emotional payoff, fast playable proof, mobile browser polish, vivid General Manager decision pressure, zero-backend loops",
+    "staging": "GitHub Pages artifact with exact same-origin hosted verification before direct-to-main promotion",
+    "source": "live execution-path reading of the offseason pipeline, the draft authority, the pick-asset ledger, the trade service and the free-agency market, with every premise re-proven by running the real engine in-process rather than by grep"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation",
+    "ci": "Baseline canonical suite re-run this session before any change.",
+    "staging": "Unchanged from S66 — direct same-origin staging verification remains BLOCKED; no ranked item touches the hosted surface.",
+    "production": "Hosted /_health, applied edge headers, delivered-email receipt, founder approval, and sibling-owned lifecycle truth remain external authorities. No launch evidence fabricated.",
+    "secrets": "Gateway healthy for required capabilities; 0 human-blocked items in preflight; no ranked item requires a credential."
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 5.5,
+    "sessionEngagement": 8.4,
+    "retention": 6.5,
+    "soulFidelity": 7.4,
+    "overall": 7.4,
+    "evidence": "The in-season loop is genuinely strong and twenty sessions of work show. The offseason — the half of a franchise game where a GM actually builds a team — is where this audit found the floor missing. Driving the real pipeline in-process: the free-agent pool is exactly 0 players at every one of the seven offseason stages, while 295 contracts (239 of them 74+ overall) expire inside a single synchronous call at the `udfa` stage and 219 of those players are handed to CPU clubs in the same tick, before the market the player bids in has ever been consulted. Progression and retention are marked down hard because roster building — the reason to start season two — currently happens to the player rather than by them. Soul fidelity drops from S63's 8.6 because the franchise's most consequential decisions are the ones it does not let you make.",
+    "nextMoves": [
+      "Make the offseason a calendar: retire, age and expire before the draft and the market, not after both.",
+      "Give the expiring class a real market window with the competing-offer machinery that already exists and currently cannot fire.",
+      "Make the pick ledger the draft's source of truth so trading picks is a decision with a consequence."
+    ]
+  },
+  "recommendedMoves": [
+    "Split the monolithic `runOffseason()` blob out of the `udfa` stage and let each named pipeline stage do the thing it is named for — the fix is an ordering fix, not new simulation.",
+    "Open a real free-agency window between expiry and the draft, resolved by the S62 competing-offer market that has been shipped and unreachable for five sessions.",
+    "Derive the draft order from `league.draftPicks[].ownerTeamId` plus compensatory picks, and consume each pick as it is used, so a traded first round pick is actually gone."
+  ],
+  "candidateMatrix": [
+    {
+      "axis": "features/depth",
+      "finding": "Offseason calendar order, free-agency window, pick-ledger draft authority, compensatory picks",
+      "ranked": [
+        "offseason-calendar-order",
+        "free-agency-market-window",
+        "draft-pick-ledger-authority",
+        "compensatory-picks-dead"
+      ]
+    },
+    {
+      "axis": "UI/UX + feedback loop",
+      "finding": "The dashboard already publishes `draftPickAssets` and `compPicks` the engine ignores; 219 league-wide signings produce zero transaction rows",
+      "ranked": [
+        "free-agency-market-window",
+        "compensatory-picks-dead",
+        "stale-pick-assets"
+      ]
+    },
+    {
+      "axis": "gamification + immersion",
+      "finding": "Free agency and the draft are the two rituals a franchise game is bought for; both currently resolve off-screen",
+      "ranked": [
+        "free-agency-market-window",
+        "draft-pick-ledger-authority"
+      ]
+    },
+    {
+      "axis": "AI/intelligence",
+      "finding": "`submitCpuFreeAgencyOffers` is archetype-shaped, bounded and deterministic — and structurally unreachable in the offseason because it filters on an empty pool",
+      "ranked": [
+        "free-agency-market-window"
+      ]
+    },
+    {
+      "axis": "security/authority",
+      "finding": "The S63 franchise-authority boundary guards the HTTP command seam; the offseason engine writes the controlled roster without passing through it",
+      "ranked": [
+        "offseason-actor-authority"
+      ]
+    },
+    {
+      "axis": "speed/organization/efficiency",
+      "finding": "The pick ledger grows 224 rows/season and is never pruned — 1,344 rows and 21 elapsed-year tradeable picks after three seasons, against S65's hard-won save budget",
+      "ranked": [
+        "stale-pick-assets",
+        "dead-runtime-modules"
+      ]
+    },
+    {
+      "axis": "token-cost reduction",
+      "finding": "No ranked item; audit discovery used in-process probes rather than broad file reads",
+      "ranked": []
+    }
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "draft",
+      "candidate": "`runCpuDraft` auto-picks for the controlled team when `allowTop10PickTrading` is false — inverted challenge logic",
+      "reason": "Rejected as a phantom. Read in isolation the branch at GameSession.js:4926 looks inverted, but GameSession.js:4886 blocks the *user* from selecting inside the top 10 under the same flag with an explicit message ('Trade down or let the CPU resolve the pick'). The two branches agree; the behaviour is deliberate. Separately noted and not raised as work: no entry in CHALLENGE_MODES actually sets `allowTop10PickTrading: false`, so the restriction is currently unreachable configuration rather than a defect."
+    },
+    {
+      "axis": "realism",
+      "candidate": "Playoff seeding and division tiebreakers are naive",
+      "reason": "Rejected. `src/engine/seasonSimulator.js:28-89` implements head-to-head, division and conference record tiebreakers with a proper tie-group walk. Premise false against live code."
+    },
+    {
+      "axis": "release",
+      "candidate": "Mark launch or lifecycle green from this repository",
+      "reason": "Rejected. Hosted health, applied edge headers, received mailbox evidence, founder approval and sibling lifecycle truth are independent authorities. The doctor warning 'registry SPARKED · local contract FORGE' is sibling-owned drift, correctly non-blocking, and is not to be resolved by editing a sibling tree."
+    },
+    {
+      "axis": "product",
+      "candidate": "General Manager firing / job-security termination arc",
+      "reason": "Deferred again, honestly. Carried from S62 and S63 as founder creative direction, unchanged. Recording the deferral rather than silently skipping it."
+    },
+    {
+      "axis": "performance",
+      "candidate": "Memoize `getDashboardState()`",
+      "reason": "Deferred. Measured at 24.7 ms per build on a live session — real but not a player-visible cost at current polling rates, and a cache introduces a staleness class of bug directly against the S49 authority-keyed hydration fences. Not worth the risk this session; recorded with its measurement so a future session inherits the number rather than the guess."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Core loop / franchise depth / simulation order",
+      "effortHours": 3.5,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 20,
+      "slug": "offseason-calendar-order",
+      "title": "The offseason becomes a calendar instead of one blind call at the end of it",
+      "status": "shipped",
+      "premise": "The seven-stage offseason pipeline the player clicks through is a label over a single monolithic `runOffseason()` invocation that fires at the second-to-last stage. The stage literally named `retirements` retires nobody: its whole body is `processStaffLifecycle()` plus a news line — the identical call the very next stage (`coaching-carousel`) makes again. Player aging, contract expiry and retirement all live inside `runOffseason()`, which is invoked at the `udfa` stage — after the combine, after pro days, after the entire draft, and one line after `processFreeAgencyMarket()`. So the draft evaluates roster needs against a roster that still contains every player about to retire and every contract about to expire, and free agency resolves before the free agents exist.",
+      "evidence": [
+        "src/runtime/GameSession.js:2096-2100 — stage `retirements` body is processStaffLifecycle() + logNews only; src/runtime/GameSession.js:2102 makes the same call for `coaching-carousel` (verified 2026-08-01)",
+        "src/engine/offseasonSimulator.js:323-334 — runOffseason = expireContracts -> applyAgingProgressionAndRetirements -> runDraft(skipped) -> runFreeAgency -> normalizeRosterSlots -> applyCapRollover, all synchronous in one call",
+        "src/runtime/GameSession.js:2174 — that call is made at stage `udfa`, i.e. after stage `draft` completed at :2144-2168",
+        "In-process probe (seed 4242, BUF, 2026): stage-by-stage free-agent pool is 0 / 0 / 0 / 0 / 0 / 0 / 0 across retirements, coaching-carousel, combine, pro-days, draft, udfa, camp-cuts — while 295 contracts and 239 players rated 74+ were pending expiry the whole time"
+      ],
+      "constraint": "`runOffseason` is also the headless CLI/leagueSimulator path (src/engine/leagueSimulator.js:21) and is called directly by test/realism-career-regression.test.js with `skipDraft: true`. The decomposition must keep a whole-offseason entry point that behaves identically for those callers, or 100-year realism calibration moves under us.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Move the `runOffseason` call from the `udfa` stage to the `retirements` stage so expiry and retirement precede the draft."
+        },
+        "L2": {
+          "effortHours": 3.5,
+          "recipe": "Decompose `runOffseason` into named, individually exported phases (`expireContracts`, `applyAgingProgressionAndRetirements`, `runFreeAgency`, `normalizeRosterSlots`, `applyCapRollover`) and keep `runOffseason` as a composed façade so leagueSimulator and the realism regression are byte-identical. Bind each offseason pipeline stage to the phase it is named for: `retirements` performs aging + accrued-season credit + retirement + contract expiry; a new `free-agency` stage sits between `coaching-carousel` and `combine`; `udfa` keeps only the roster-legality backstop, normalization and cap rollover. Assert the new order with a test that walks the real pipeline and pins the free-agent pool size at each stage, so the two can never silently re-order again."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus a player-facing offseason calendar surface that names each stage, what resolved in it, and what the GM still has to decide before it closes."
+        }
+      },
+      "executionEvidence": "OFFSEASON_STAGES declared once in src/runtime/GameSession.js; runOffseason decomposed into exported phases in src/engine/offseasonSimulator.js with the composed façade preserved verbatim for leagueSimulator and the career regression. `retirements` now runs runRosterYearRollover() (expire + age + retire) and runRetentionWindow(); a new `free-agency` stage sits between pro-days and draft; `udfa` keeps only the legality backstop, normalization and cap rollover, and idempotently reconciles a pre-S67 snapshot that resumes there. Measured stage-by-stage free-agent pool went 0/0/0/0/0/0/0 to 126/126/126/126/109/105/102. test/offseason-calendar.test.js pins the declared calendar, the non-empty pool from `retirements` onward, and rollover idempotence."
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Core loop / player agency / AI market",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 22.5,
+      "slug": "free-agency-market-window",
+      "title": "Free agency exists — the expiring class reaches a market the GM can compete in",
+      "status": "shipped",
+      "premise": "There is no free agency in this game. Not a weak one — none. Driving the real pipeline in-process, the free-agent pool is exactly 0 players at every offseason stage. 239 players rated 74+ expire, and 219 of them are assigned to CPU clubs inside `runFreeAgency` in the same synchronous tick that expired their contracts, by a loop that walks teams in reverse-standings order and takes the highest-overall body matching a `ROSTER_TEMPLATE` shortfall. The player is never offered one of them. The consequence is that the entire S62 competing-offer market — `submitCpuFreeAgencyOffers`, `processFreeAgencyMarket`, `freeAgencyOfferScore`, the archetype-shaped CPU bidding, the outbid receipts, the `legal-tampering` -> `post-draft` stage machine — is structurally unreachable in the offseason, because it filters on `teamId === 'FA'` against an empty pool one line before the pool is created.",
+      "evidence": [
+        "In-process probe (seed 4242, BUF): premium (74+) expiring class = 239; after the pipeline -> retired 14, auto-signed by a club 219, still free 0; `fa-signing` transactions logged during the whole offseason = 0; outstanding market offers = 0",
+        "src/runtime/GameSession.js:2171-2183 — submitCpuFreeAgencyOffers() and processFreeAgencyMarket() run immediately before runOffseason(), which is what calls expireContracts()",
+        "src/runtime/GameSession.js:5507-5515 — submitCpuFreeAgencyOffers filters `player.teamId === 'FA' && overall >= PREMIUM_FA_OVERALL`; at that moment the set is empty",
+        "src/engine/offseasonSimulator.js:237-291 — runFreeAgency assigns by roster-template shortfall with no bidding, no market, no transaction log and no news",
+        "src/runtime/GameSession.js:3465-3475 — in-season, a premium free agent correctly refuses a direct signing and routes the GM into the market ('weighing market offers'), proving the market is the intended authority"
+      ],
+      "constraint": "`runFreeAgency`'s emergency synthetic-player path exists to keep rosters legal and must survive — a league that cannot field 11 players is worse than one with a thin market. The backstop has to run last, after the real market, and stay visible as a receipt rather than becoming the primary signing mechanism again.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Run the market after expiry and before the backstop, so at least the premium class passes through `processFreeAgencyMarket`."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "A real `free-agency` stage that resolves in bounded waves: expiry has already populated the pool (item 1), CPU clubs submit archetype-shaped competing bids through the existing `submitFreeAgencyOffer` seam, the controlled GM's own bids are carried in, and `processFreeAgencyMarket` resolves each wave with the existing outbid receipts. `runFreeAgency` is demoted to a roster-legality backstop that runs only after the market has closed, never signs for the controlled team, and logs every signing it does make as a transaction plus a news row so the transactions surface stops lying about 219 invisible moves. Regression coverage pins: pool non-empty at the free-agency stage, controlled roster unchanged by the backstop, market signings logged, and every team still roster-legal at camp-cuts."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "L2 plus a player-facing free-agency board with wave countdown, rival interest reads derived from the same bid scoring, and a visible 'you were outbid' ledger for the whole window."
+        }
+      },
+      "executionEvidence": "ROOT CAUSE was deeper than the audit premise and is recorded honestly: src/domain/contracts.js normalizeContract read `Number(contract.yearsRemaining || 1)`, so an expired deal (0) was resurrected to 1 on every read — normalize runs on every read — which made advanceContractYear's expiry branch and expireContracts' `<= 0` check both unreachable. No contract in this game had ever run out; the ordering defect was real but secondary. Fixed to `?? 1` (the clamp floor of 0 shows zero was always meant to be legal). With expiry working, the free-agency stage resolves 3 bidding waves through the existing submitFreeAgencyOffer/processFreeAgencyMarket seam, holding for the GM between waves with blockingReason 'free-agency-open'. submitCpuFreeAgencyOffers gained a poolSize parameter (40 in the window, 10 in-season) and a one-pass best-at-position index replacing an O(candidates × teams × players) nested scan. The premium-signing market gate was extended from regular-season-only to the open window. Measured: 295 contracts expire, 169 are re-signed by their own club, 126 real free agents (97 premium) reach the board, and 24-36 sign through competitive bidding with outbid receipts — from 0 before."
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Core loop / trade economy / decision consequence",
+      "effortHours": 3.5,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 22.9,
+      "slug": "draft-pick-ledger-authority",
+      "title": "The draft honours the pick ledger — a traded first round pick is actually gone",
+      "status": "shipped",
+      "premise": "Draft picks are a fully built, fully valued, fully tradeable asset class that the draft ignores. `ensureDraftPickAssets()` maintains `league.draftPicks` with `originalTeamId` and `ownerTeamId`; `TradeService.commit` moves ownership (`pick.ownerTeamId = teamB`); `pickTradeValueForTeam` prices them; rival front offices offer them; the dashboard publishes them as `draftPickAssets`. And then `prepareDraft()` builds the draft order as `sortStandings(this.league.teams).reverse().map(t => t.id)` — a bare 32-entry list of team ids — and `runCpuDraft` selects the team on the clock with `draft.order[(currentPick - 1) % 32]`, a pure round-robin over those same 32 teams for all seven rounds. Ownership is never read. Compensatory picks land in a separate `league.compensatoryPicks` array that `prepareDraft` never consults, and `totalPicks` is hard-coded 224 = 32 x 7.",
+      "evidence": [
+        "In-process probe (seed 4242): moved all three BUF future first-round picks to MIA on the ledger, ran a season into the offseason — draft order still contains BUF at slot 5, and MIA appears exactly once. Pick ownership had zero effect.",
+        "src/runtime/GameSession.js:4572-4593 — prepareDraft builds `order` from standings only; totalPicks hard-coded 224",
+        "src/runtime/GameSession.js:4923 and :4986 — team on the clock is `draft.order[(currentPick - 1) % 32]`",
+        "src/runtime/services/TradeService.js:220-221 — commit really does transfer `ownerTeamId`, so the asset side is honest and only the draft side is not",
+        "src/runtime/GameSession.js:5076-5077 — the dashboard publishes `draftPickAssets` and `compPicks` to the player as if they mattered"
+      ],
+      "constraint": "The draft must stay resolvable when the ledger is incomplete — snapshots saved before this change have no per-pick slot data, and `prepareDraft` can be reached for a year the asset horizon has not covered. The order builder needs a deterministic fall-back to the standings round-robin for any round it cannot resolve from the ledger, or old saves break at the draft.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Build `order` from `league.draftPicks` for the draft year, falling back to standings when a slot is unresolved."
+        },
+        "L2": {
+          "effortHours": 3.5,
+          "recipe": "Make the pick ledger the draft's source of truth: a `buildDraftOrder(year)` authority that emits one ordered slot per owned pick (round, original slot, owner, whether it was acquired), appends compensatory picks at the end of their round, derives `totalPicks` from the slot list rather than a constant, and records the owning team on every selection. `runCpuDraft`, `draftPlayer` and `getDraftAuthority` all read the slot list, so the team on the clock is the team that owns the pick. Each slot is consumed as it is used. Deterministic standings fall-back for unresolved years keeps legacy saves working. Regression coverage asserts a traded first genuinely moves the selection, that a team owning two firsts picks twice, and that a legacy save with an empty ledger still drafts 224 times."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus in-draft pick trading — trade up or down while on the clock, priced by the same `pickTradeValueForTeam` curve."
+        }
+      },
+      "executionEvidence": "buildDraftOrder(year) emits one slot per owned pick with round, slot derived from the ORIGINAL club's finish, owner, acquired and compensatory flags; compensatory picks close out their round; totalPicks is derived, not the 224 constant. `order` became a flat team-per-selection list and every `(currentPick - 1) % 32` call site was replaced with a direct index — GameSession runCpuDraft/draftUserPick/getDraftAuthority and public/lib/tabDraft.js, whose two sites had also been silently reading the wrong team for every round after the first. Picks are consumed on selection. Deterministic standings fallback keeps a pre-ledger save drafting 224 times. Measured: BUF's seven 2027 picks moved to MIA and the board now gives MIA BUF's round-1 slot #5 marked acquired, MIA 15 selections, BUF 2 (its own compensatory awards) — before the change BUF still picked at slot 5 and MIA appeared exactly once."
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Franchise depth / dead feature repair",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 35,
+      "slug": "compensatory-picks-dead",
+      "title": "Compensatory picks can be awarded at all",
+      "status": "shipped",
+      "premise": "Compensatory picks have never been awarded in this game and cannot be. `seedCompLedgerForUpcomingOffseason` builds each loss row as `value: Math.round(Math.max(50, player.value || player.capHit / 120_000))` — but the rows it maps over come from `listExpiringContracts()`, whose projection is `{ id, name, pos, overall, potential, contract }`. There is no `value` and no `capHit` on that shape; the cap hit lives at `contract.capHit`. So `undefined || (undefined / 120000)` is `NaN`, `Math.max(50, NaN)` is `NaN`, and every loss row is written with `value: NaN`. `generateCompensatoryPicks` then computes `lossValue` with `sum + (row.value || 0)`, which turns every NaN into 0, so `net` is always 0, `net <= 0` always continues, and no team ever receives a pick. The setup screen ships a 'Comp Picks' checkbox, defaulted on, for a system that has never produced a pick.",
+      "evidence": [
+        "In-process probe (seed 4242, BUF): loss rows serialize as `\"value\": null` (NaN); ledger sum 0; `generateCompensatoryPicks()` returns [] with `enableCompPicks: true` and 8 recorded losses",
+        "src/runtime/GameSession.js:2037 — `Math.max(50, player.value || player.capHit / 120_000)` against a row from listExpiringContracts",
+        "src/runtime/GameSession.js:3672-3683 — listExpiringContracts projects no `value` and no top-level `capHit`",
+        "src/runtime/GameSession.js:2055-2058 — `sum + (row.value || 0)` silently launders NaN into 0, which is why nothing ever threw",
+        "public/index.html:148 — the 'Comp Picks' setup toggle, checked by default"
+      ],
+      "constraint": "The gains side of the ledger is populated only by `registerFreeAgencyMove`, which is called from `processFreeAgencyMarket` — unreachable in the offseason until item 2 lands. Fixing the loss arithmetic alone would award comp picks to every team for every departure with nothing ever offsetting them, which is worse than awarding none. This item must land after item 2 and must credit gains from real signings.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.3,
+          "recipe": "Read `player.contract.capHit` and stop laundering NaN into 0."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Derive loss value from a real source-of-truth valuation (contract cap hit and overall, floored), make the NaN path impossible by validating at write time rather than swallowing at read time, credit gains from the free-agency signings item 2 now produces, and feed the awarded compensatory picks into the item-3 draft order so they are selections rather than decoration. Regression coverage asserts a team that loses more than it gains receives a pick, that a team that breaks even receives none, and that no ledger row can be written with a non-finite value."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 plus a projected-comp-picks readout during the season so the GM can weigh letting a free agent walk against re-signing him."
+        }
+      },
+      "executionEvidence": "The loss valuation read `player.value || player.capHit / 120_000` off listExpiringContracts rows that carry neither field (the deal is nested under `contract`), producing NaN, which `sum + (row.value || 0)` laundered to 0 — so net was always 0, `net <= 0` always continued, and no compensatory pick had ever been awarded. Replaced with compLossValue()/compGainValue() on one unified scale (the gains side had been dividing by 250k against the loss side's 120k, so the two were never comparable even before the NaN), finite-validated at write, ranked by value before the eight-row cap, reconciled against where the player actually finished the offseason, capped at four per club, and generated at the close of free agency so the awards reach the board. Bands recalibrated against the measured post-retention distribution (net range +787..-461, median 356). Measured: 19 awards league-wide, totalPicks 224 -> 243, every award present as a slot."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Authority / observability",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 32,
+      "slug": "offseason-actor-authority",
+      "title": "The offseason stops signing players onto your team without asking",
+      "status": "shipped",
+      "premise": "Session 63 established a franchise-authority boundary so no command can mutate a franchise you do not control. It guards the HTTP command seam in both adapters. The offseason engine does not pass through that seam: `runFreeAgency` iterates every team in the league including the controlled one and signs players straight onto the player's roster. Measured on a live session, 5 players were added to the controlled roster during one offseason without any command being issued. The same loop performs 219 league-wide signings that produce no transaction row, no news entry and no free-agency move record, so the game's own transaction ledger — a surface the GM reads to understand the league — is silent about the single largest movement of players in the calendar.",
+      "evidence": [
+        "In-process probe (seed 4242, BUF): 12 players added to BUF during the offseason, 7 drafted and 5 auto-signed with `src=generated-roster`; the GM issued no command for any of the 5",
+        "src/engine/offseasonSimulator.js:250 — `for (const team of shoppingOrder)` walks all 32 teams with no controlled-team exemption and no authority check",
+        "src/engine/offseasonSimulator.js:282-288 — signing is a bare `candidate.teamId = team.id` mutation; no logTransaction, no logNews, no registerFreeAgencyMove",
+        "src/runtime/franchiseAuthority.js — classifies 58 POST routes; the offseason engine is not a route and never reaches it"
+      ],
+      "constraint": "The controlled team must still finish the offseason roster-legal. Exempting it from the backstop without giving the GM a way to fill holes would strand a franchise below the roster minimum and break the season start. The exemption has to be paired with a visible, actionable shortfall receipt.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Skip the controlled team in `runFreeAgency` and log the signings it does make."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Pass the controlled team id into `runOffseason` as an explicit authority parameter; the backstop never signs for it, and instead emits a roster-shortfall receipt naming the exact positions and counts still unfilled, surfaced through the existing news/inbox path so the GM can act on it before camp-cuts. Every backstop signing for a CPU club is logged as a transaction and a news row. Regression coverage asserts the controlled roster is byte-identical across the backstop, that the shortfall receipt names real positions, and that CPU clubs remain roster-legal."
+        },
+        "L3": {
+          "effortHours": 2.5,
+          "recipe": "L2 plus an opt-in 'delegate my offseason' setting so a player who wants the old behaviour can have it explicitly rather than by default."
+        }
+      },
+      "executionEvidence": "runFreeAgency renamed runFreeAgencyBackstop and given an explicit excludeTeamIds authority parameter plus an onSigning receipt hook; GameSession passes the controlled team, so the offseason engine can no longer write a roster the GM owns — the S63 boundary guards the command seam and this engine is not a command. Backstop signings are recorded one aggregated row per club (`roster-legality-signings`, naming every player) rather than 200+ individual rows that would evict the meaningful history from a 5,000-entry log inside 25 seasons, plus a league news row. An unfilled controlled roster returns a shortfall receipt through reportMilestone into the Priority Inbox and onto the dashboard as rosterShortfall. Measured: 5 players were previously added to the controlled roster per offseason with no command issued; now zero, asserted by test."
+    },
+    {
+      "rank": 6,
+      "tier": "MEDIUM",
+      "category": "Efficiency / save payload / hygiene",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 4,
+      "priority": 24,
+      "slug": "stale-pick-assets",
+      "title": "Picks are consumed when used and elapsed drafts stop being tradeable",
+      "status": "shipped",
+      "premise": "No draft ever consumes a pick. `ensureDraftPickAssets` only appends rows for years beyond the current one, and neither `runCpuDraft` nor `draftPlayer` removes the pick it just used, so `league.draftPicks` grows by 224 rows every season forever and never shrinks. `getDraftPickAssets(teamId)` applies no year floor, so the trade desk lists picks for drafts that already happened — and because `pickTradeValueForTeam` prices them normally, a 2027 first round pick is still a live, valuable trade chip in 2029. Measured after three seasons: BUF's asset list is 42 picks spanning 2027-2032, 21 of them for elapsed drafts, against a league ledger of 1,344 rows. Session 65 fought a full session to bring a franchise save to 3.95 MB; this is an unbounded array inside that budget.",
+      "evidence": [
+        "In-process probe (seed 77, BUF, 3 seasons to 2029): 42 BUF pick assets across 2027-2032, 21 for drafts already held; total ledger 1,344 rows",
+        "src/runtime/GameSession.js:1843-1864 — ensureDraftPickAssets appends only for `year > currentYear` and never prunes",
+        "src/runtime/GameSession.js:1866-1872 — getDraftPickAssets filters by owner and optional exact year, never by `year > currentYear`",
+        "src/runtime/GameSession.js:4918-4980 and :4880-4917 — neither draft path references league.draftPicks",
+        "src/runtime/services/TradeService.js:50-57 — an elapsed pick passes the ownership filter and trades normally"
+      ],
+      "constraint": "Pruning must not delete a pick the in-progress draft still needs (item 3 makes the ledger load-bearing), and legacy snapshots carry years of accumulated rows that have to be reclaimed on migration without breaking a save mid-draft.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.3,
+          "recipe": "Add a `year > currentYear` floor to getDraftPickAssets so elapsed picks stop appearing in the trade desk."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Mark each pick consumed as its selection is made (item 3 already walks the ledger), retire consumed and elapsed picks at season start through the existing snapshot-migration seam so legacy saves reclaim their rows on load, and floor `getDraftPickAssets` at the current draft year so an expired pick is neither listed nor tradeable. Regression coverage asserts the ledger size is bounded across ten simulated seasons, that an elapsed pick is rejected by TradeService, and that a mid-draft save still resolves every remaining slot."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "L2 plus a pick-capital summary on the trade desk — total future draft capital by year, valued on the same curve, so a rebuild has a number to point at."
+        }
+      },
+      "executionEvidence": "Picks are consumed at selection (consumeDraftPick), ensureDraftPickAssets retires every pick whose draft has been held — self-healing, so a legacy snapshot reclaims its accumulated rows on first call — and both getDraftPickAssets and TradeService floor on `year > currentYear && consumed !== true`, so a spent or elapsed pick is neither listed nor tradeable. Measured before: 42 BUF assets across six years of which 21 were for drafts already held, against a 1,344-row league ledger growing 224/season forever. Now bounded, asserted across three simulated seasons."
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "contract-expiry-root-cause",
+      "status": "shipped",
+      "sourceItem": "free-agency-market-window",
+      "premise": "Discovered while implementing the free-agency window: the audit's ordering premise was correct but secondary. normalizeContract's `Number(contract.yearsRemaining || 1)` turned every expired contract back into a one-year deal on read, so no contract in the game's history had ever run out — which is why the free-agent pool was empty at all seven offseason stages, why listExpiringContracts and the Re-sign action had nothing at stake, and why the compensatory formula's loss ledger measured departures that never happened.",
+      "evidence": [
+        "src/domain/contracts.js:11 — `clamp(Number(contract.yearsRemaining || 1), 0, 10)`; the clamp floor of 0 proves zero was always intended to be legal",
+        "Direct probe: 295 players at yearsRemaining 1, expireContracts() produced 0 free agents; after the `?? 1` fix, 295"
+      ]
+    },
+    {
+      "slug": "cpu-retention-window",
+      "status": "shipped",
+      "sourceItem": "compensatory-picks-dead",
+      "premise": "Exposed by the repaired compensatory formula: with contracts finally expiring, every club showed as a catastrophic net loser because no CPU team had any way to re-sign its own players — all 295 expiring contracts hit the market and 32 rosters churned wholesale every offseason. A retention window now lets rival clubs keep their own first, weighted by quality, age and strategy profile, and deliberately excludes the controlled franchise because deciding who to keep is the GM's job and is what listExpiringContracts has existed for since S8.",
+      "evidence": [
+        "Measured: 295 expiring -> 169 retained by the incumbent -> 126 genuine free agents reach the board",
+        "Compensatory net distribution went from +906..-129 (every club a net loser) to +787..-461 with a median of 356"
+      ]
+    },
+    {
+      "slug": "fa-market-index",
+      "status": "shipped",
+      "sourceItem": "free-agency-market-window",
+      "premise": "submitCpuFreeAgencyOffers scanned the whole player array once per (candidate × team) to find each club's best man at a position. At the in-season pool size of 10 that was survivable; the offseason window puts a 40-name board through it three times, which is ~1.9M operations per wave. Replaced with a single pass building a team -> position -> best-overall index.",
+      "evidence": [
+        "src/runtime/GameSession.js submitCpuFreeAgencyOffers — nested filter/reduce replaced by one bestAtPositionByTeam pass"
+      ]
+    },
+    {
+      "slug": "offseason-player-surfaces",
+      "status": "shipped",
+      "sourceItem": "free-agency-market-window",
+      "premise": "Session 64's lesson was an engine half shipping green with its player-facing half dead. The free-agency window, the shortfall receipt and the draft board's pick provenance are surfaced and covered by tests that drive the browser modules against a real session's dashboard: a dedicated Free Agency season chapter with live wave and premium counts routing to the FA tab, an inbox announcement when the market opens, an actionable roster-shortfall chapter, and war-room chips naming an acquired or compensatory pick.",
+      "evidence": [
+        "test/offseason-surfaces.test.js — 7 tests over public/lib/seasonChapters.js and public/lib/tabDraft.js against live dashboard state"
+      ]
+    }
+  ],
+  "deferrals": [
+    {
+      "slug": "indexeddb-save-store",
+      "reason": "HONEST DEFERRAL, recorded as a win rather than a silent skip. src/adapters/persistence/indexedDbSaveStore.js, src/runtime/modLoader.js and src/runtime/rewindManager.js have zero importers anywhere in the tree. The audit listed removing them as a second-order candidate; reading them first showed that is the wrong call. indexedDbSaveStore is a complete, working ~250 MB persistence layer against the 5-10 MB localStorage ceiling that Session 65 spent an entire session fighting, and S65's move to async store methods made it architecturally reachable for the first time. Wiring it is a dedicated session with migration and fallback handling, not an end-of-session change. modLoader is a complete public mod/plugin API. Both are assets, not debt; they are recorded here so a future session inherits the finding.",
+      "effortHours": 4
+    },
+    {
+      "slug": "gm-firing-arc",
+      "reason": "Deferred again, unchanged from S62/S63. Founder creative direction; not an agent decision.",
+      "effortHours": null
+    },
+    {
+      "slug": "dashboard-memoization",
+      "reason": "Deferred with its measurement rather than its guess: getDashboardState() builds in 24.7 ms on a live session. Real but not player-visible at current polling rates, and a cache introduces a staleness class of bug directly against the S49 authority-keyed hydration fences.",
+      "effortHours": 2
+    }
+  ],
+  "executionLog": [
+    {
+      "slug": "offseason-calendar-order",
+      "status": "shipped",
+      "rank": 1
+    },
+    {
+      "slug": "free-agency-market-window",
+      "status": "shipped",
+      "rank": 2
+    },
+    {
+      "slug": "draft-pick-ledger-authority",
+      "status": "shipped",
+      "rank": 3
+    },
+    {
+      "slug": "compensatory-picks-dead",
+      "status": "shipped",
+      "rank": 4
+    },
+    {
+      "slug": "offseason-actor-authority",
+      "status": "shipped",
+      "rank": 5
+    },
+    {
+      "slug": "stale-pick-assets",
+      "status": "shipped",
+      "rank": 6
+    }
+  ],
+  "totals": {
+    "count": 6,
+    "priority": 145.9,
+    "top3": [
+      "offseason-calendar-order",
+      "free-agency-market-window",
+      "draft-pick-ledger-authority"
+    ],
+    "shipped": 6
+  }
+}
