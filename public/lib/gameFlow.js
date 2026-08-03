@@ -1132,7 +1132,7 @@ export function showHalftimeAdjustModal(onChoice, options = {}) {
   const optionById = new Map(brief.options.map((option) => [option.id, option]));
   modal.querySelectorAll(".tactic-option").forEach((btn) => btn.classList.remove("selected"));
   const confirmBtn = modal.querySelector(".tactic-confirm-btn");
-  let choice = null;
+  let choice = optionById.has(options.initialChoice) ? options.initialChoice : null;
   modal.querySelectorAll(".tactic-option").forEach((btn) => {
     const option = optionById.get(btn.dataset.tactic);
     const desc = btn.querySelector(".to-desc");
@@ -1140,6 +1140,7 @@ export function showHalftimeAdjustModal(onChoice, options = {}) {
       const identityPreview = previewTacticalIdentity(state.dashboard?.tacticalFilmLedger || [], option.id);
       desc.textContent = `${option.matchup} Tradeoff: ${option.tradeoff} Identity preview: ${identityPreview.copy} ${identityPreview.disclaimer}`;
     }
+    if (btn.dataset.tactic === choice) btn.classList.add("selected");
     btn.onclick = () => {
       modal.querySelectorAll(".tactic-option").forEach((b) => b.classList.remove("selected"));
       btn.classList.add("selected");

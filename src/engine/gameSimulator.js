@@ -267,7 +267,7 @@ function buildCoverageShell(team, weeklyPlan = null) {
   const tendencies = team?.coaching?.tendencies || {};
   const blitzRate = Number(tendencies.blitzRate || 1);
   const aggression = Number(team?.scheme?.aggression ?? 0.5);
-  const aggressionDelta = Number(weeklyPlan?.aggressionDelta || 0);
+  const aggressionDelta = weeklyPlanUnitAggression(weeklyPlan, "defense");
   const defenseStyle = team?.schemeIdentity?.defense || "multiple";
   const defenseFocus = weeklyPlan?.defenseFocus || "stay-multiple";
   const manRate = clamp(
@@ -298,6 +298,13 @@ function buildCoverageShell(team, weeklyPlan = null) {
     primary: manRate >= 0.26 ? "man" : "zone",
     shell: middleOpenRate >= 0.5 ? "split-safety" : "single-high"
   };
+}
+
+export function weeklyPlanUnitAggression(weeklyPlan = null, unit = "offense") {
+  const base = Number(weeklyPlan?.aggressionDelta || 0);
+  const scopedKey = unit === "defense" ? "defenseAggressionDelta" : "offenseAggressionDelta";
+  const scoped = Number(weeklyPlan?.[scopedKey] || 0);
+  return (Number.isFinite(base) ? base : 0) + (Number.isFinite(scoped) ? scoped : 0);
 }
 
 function choosePassDepthBucket(rng, receiver, qb, routeFamily = "breaker", coverageShell = null) {
@@ -748,7 +755,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
           fieldPosition,
           scoreDifferential,
           elapsedSeconds,
-          aggressionDelta: offenseContext.weeklyPlan?.aggressionDelta || 0
+          aggressionDelta: weeklyPlanUnitAggression(offenseContext.weeklyPlan, "offense")
         },
         rng
       );
@@ -899,7 +906,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
             (passRush - linePass) / 310 +
             (defenseContext.team.defenseRating - offenseContext.team.offenseRating) / 520 +
             depthProfile.sackDelta +
-            (defenseContext.weeklyPlan?.aggressionDelta || 0) * 0.08 -
+            weeklyPlanUnitAggression(defenseContext.weeklyPlan, "defense") * 0.08 -
             (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.008,
           0.05,
           0.24
@@ -1094,7 +1101,7 @@ function simulateDrive(offenseContext, defenseContext, rng, mode, situational = 
     (offenseContext.weeklyPlan?.disciplineBoost || 0) * 0.25;
   const defenseStrategyBoost =
     (defenseContext.weeklyPlan?.defenseBoost || 0) +
-    (defenseContext.weeklyPlan?.aggressionDelta || 0) * 8 +
+    weeklyPlanUnitAggression(defenseContext.weeklyPlan, "defense") * 8 +
     (defenseContext.weeklyPlan?.disciplineBoost || 0) * 0.18;
   const defensePower = defenseContext.team.defenseRating + rng.int(-5, 5);
   const adjustedOffensePower = offensePower + offenseCoachBoost + moraleOffset + fitOffset + chemistryOffset + offenseStrategyBoost;

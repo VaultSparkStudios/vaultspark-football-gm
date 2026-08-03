@@ -1,8 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  assessPlanRehearsalNeed,
   buildArchitectPlanRehearsal,
-  planRehearsalEvidence
+  planRehearsalEvidence,
+  standingReinforcementEvidence,
+  standingTacticFromDashboard
 } from "../public/lib/architectPlanRehearsal.js";
 
 const dashboard = {
@@ -57,4 +60,56 @@ test("no-plan rehearsal is explicit and still produces bounded review evidence",
 
 test("review evidence rejects non-rehearsal payloads", () => {
   assert.equal(planRehearsalEvidence({ schemaVersion: "1.0", kind: "other" }), null);
+});
+
+test("standing-plan reinforcement skips ceremony only when every red flag is absent", () => {
+  const stable = {
+    ...dashboard,
+    tacticalFilmLedger: [{
+      id: "film-2031-7-BUF-run-heavy",
+      tactic: "run-heavy",
+      aligned: true,
+      observed: "52% rush share"
+    }],
+    architectLedger: [],
+    architectThesis: null,
+    controlledTeam: { owner: { expectation: { heat: 30, ultimatum: null } } },
+    injuryReport: []
+  };
+  assert.equal(standingTacticFromDashboard(stable).id, "run-heavy");
+  const assessment = assessPlanRehearsalNeed({ dashboard: stable, tacticId: "run-heavy" });
+  assert.equal(assessment.required, false);
+  assert.deepEqual(assessment.reasons, ["standing-plan-stable"]);
+  const evidence = standingReinforcementEvidence(assessment);
+  assert.equal(evidence.reviewed, false);
+  assert.equal(evidence.mode, "standing-reinforcement");
+  assert.equal(evidence.sourceReceiptId, "film-2031-7-BUF-run-heavy");
+});
+
+test("standing-plan assessor fails closed on material counter-signals", () => {
+  const base = {
+    ...dashboard,
+    tacticalFilmLedger: [{ id: "film-1", tactic: "run-heavy", aligned: true }],
+    architectLedger: [],
+    architectThesis: null,
+    controlledTeam: { owner: { expectation: { heat: 30 } } },
+    injuryReport: []
+  };
+  assert.deepEqual(
+    assessPlanRehearsalNeed({ dashboard: base, tacticId: "pass-heavy" }).reasons,
+    ["plan-changed"]
+  );
+  assert.ok(assessPlanRehearsalNeed({
+    dashboard: base,
+    tacticId: "run-heavy",
+    decisionChoice: { choiceId: "protect-the-core" }
+  }).reasons.includes("gm-decision"));
+  assert.ok(assessPlanRehearsalNeed({
+    dashboard: { ...base, tacticalFilmLedger: [{ id: "film-1", tactic: "run-heavy", aligned: false }] },
+    tacticId: "run-heavy"
+  }).reasons.includes("failed-matching-film"));
+  assert.ok(assessPlanRehearsalNeed({
+    dashboard: { ...base, controlledTeam: { owner: { expectation: { ultimatum: { active: true } } } } },
+    tacticId: "run-heavy"
+  }).reasons.includes("owner-red-flag"));
 });

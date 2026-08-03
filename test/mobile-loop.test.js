@@ -184,6 +184,12 @@ test("mobile overlay clears stale pending decisions when refresh fails", () => {
   assert.match(appSource, /observeBackgroundTask\([\s\S]*operation: "pending-gm-decision"[\s\S]*onError: \(\) => \{\s*if \(decisionSnapshotKey !== mobileDecisionSnapshotKey\(\)\) return;\s*state\.mobilePendingDecision = null;\s*if \(isMobileModeEnabled\(\)\) renderMobileOverlay\(state, advanceFromMobile\);/s);
 });
 
+test("mobile overlay formats position-shaped roster needs instead of object coercion", () => {
+  const source = fs.readFileSync(new URL("../public/lib/mobileLoop.js", import.meta.url), "utf8");
+  assert.match(source, /need\?\.pos \|\| need\?\.position/);
+  assert.doesNotMatch(source, /map\(\(n\) => n\.pos \|\| n\)/);
+});
+
 test("mobile GM decision choices are rendered, staged, and committed through the shared weekly shell", () => {
   const mobileSource = fs.readFileSync(new URL("../public/lib/mobileLoop.js", import.meta.url), "utf8");
   const appSource = fs.readFileSync(new URL("../public/app.js", import.meta.url), "utf8");

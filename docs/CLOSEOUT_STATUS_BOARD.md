@@ -1,31 +1,31 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-02 (Session 67 closeout) -->
+<!-- generated-at: 2026-08-03 (Session 68 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S67 ══════╗
-║  Date: 2026-08-02  ·  SIL: 995/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: claude-code                            ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S68 ══════╗
+║  Date: 2026-08-03  ·  SIL: 995/1000  ·  Velocity: —              ║
+║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ fix(observability): closeout write-back must not report a co  ║
 ║  ✓ feat(offseason): contracts finally expire — free agency, the  ║
 ║  ✓ docs: record the duplicate-PR audit and CANON-041 landing     ║
 ║  ✓ feat(mobile): land CANON-041 nav drawer and guard against du  ║
 ║  ✓ fix(deploy): publish to the origin the live domain actually   ║
-║  ✓ perf(save): make a franchise persistable — full season now 3  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
-║    Process Qual       98   ██████████                            ║
-║    Coherence          100  ██████████                            ║
+║    Process Qual       100  ██████████                            ║
+║    Coherence          98   ██████████                            ║
 ║    Security           100  ██████████                            ║
-║    Ecosystem          100  ██████████                            ║
-║    Capital            97   ██████████                            ║
+║    Ecosystem          98   ██████████                            ║
+║    Capital            99   ██████████                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 2 files  ·  M:2 A:0 D:0 ?:0                            ║
+║  Changes: 47 files  ·  M:38 A:0 D:0 ?:9                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         781/781 · STALE                                  ║
-║  IGNIS:         6d ago                                           ║
+║  Tests:         800/800                                          ║
+║  IGNIS:         7d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  2d ago                                           ║
+║  Sanitization:  3d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

@@ -1,13 +1,13 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-02 (Session 67 closeout) -->
+<!-- generated-at: 2026-08-03 (Session 68 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
-<!-- genius-authority-fingerprint: 854ec5127a4b370a -->
+<!-- genius-authority-fingerprint: 9bad1eccde076829 -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 67 closeout · 2026-08-02.
+> **Fast-boot brief** — generated at Session 68 closeout · 2026-08-03.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -16,18 +16,18 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 68 · 2026-08-02 · BUILDER MODE                          ║
+║  Session 69 · 2026-08-03 · FOUNDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S61) · WHAT SHIPPED ═══════════════════════════╗
-║  ✓ Canonical capability operations authority                     ║
-║  ✓ Shared Architect Thesis HTTP handler                          ║
-║  ✓ Declaration-to-now Architecture Review                        ║
-║  ✓ Exact TradeService authority                                  ║
-║  ✓ Generated edge-security contract                              ║
-║  Tests  Node 560/560 - UI 20/20 - responsive 53 captures         ║
-║  Deploy implementation 5532c4e + clean-checkout fix 3240ed7 syn  ║
+╔══ LAST SESSION (S68) · WHAT SHIPPED ═══════════════════════════╗
+║  ✓ Unit-typed versioned tactic authority                         ║
+║  ✓ Exception-driven standing-plan rehearsal                      ║
+║  ✓ Exact Season thesis and checkpoint ledger                     ║
+║  ✓ Non-authoritative live test-shard progress                    ║
+║  ✓ Replay-verifiable structured release truth                    ║
+║  Tests  Node 800/800 - UI 33/33 - responsive 53/53 - visual 4/4  ║
+║  Deploy Implementation ready for direct-main push; production r  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -37,7 +37,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 3d · refresh required              ║
+║  Profile · game · cache stale 4d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -45,8 +45,8 @@
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
 ║    995/1000   ███████████████████████░   100%                    ║
-║    SIL v3.0  ·  Avg3: 989  ·  Velocity 0→                        ║
-║    Active 20666d · closeout 1d · source: newest SIL/status/hand  ║
+║    SIL v3.0  ·  Avg3: 995  ·  Velocity 0→                        ║
+║    Active 20667d · closeout 1d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -56,43 +56,43 @@
 ║    Momentum         100    ██████████  ████████ →                ║
 ║    Engagement       100    ██████████  ████████ →                ║
 ║    Process Qual     100    ██████████  ████████ →                ║
-║    Coherence        100    ██████████  ········ →                ║
+║    Coherence         98    ██████████  ········ →                ║
 ║    Security         100    ██████████  ········ →                ║
-║    Ecosystem        100    ██████████  ········ →                ║
-║    Capital           97    ██████████  ········ →                ║
+║    Ecosystem         98    ██████████  ········ →                ║
+║    Capital           99    ██████████  ········ →                ║
 ║    Automation       100    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 67 ════════════════════════════╗
-║  Shipped:  Session 65 cleared the save-payload blocker: a full   ║
-║  Tests:    781/781 passing  ·  Deploy: N/A                       ║
+╔══ WHERE WE LEFT OFF  ·  Session 68 ════════════════════════════╗
+║  Shipped:  Release truth is receipt-derived: 9 production route  ║
+║  Tests:    800/800 passing  ·  Deploy: N/A                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     27,267 / 1,000,000 tok  ·  claude-code/opus-4-8-1m  ·  meas  ║
-║     ~13,634 tok/turn  ·  cache 50%  ·  65 turns to compact       ║
+║  ✓  █████░░░░░░░░░░░░░░░░░░░   20% used                          ║
+║     53,523 / 272,000 tok  ·  codex/codex-272k  ·  measured+heur  ║
+║     ~26,762 tok/turn  ·  cache 50%  ·  7 turns to compact        ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         781/781 passing (2026-08-02) · STALE — run no  ║
+║  ✓  Tests         800/800 passing (2026-08-03)                   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         41900 FORGE  ·  6d old                         ║
+║  ⚠  IGNIS         41900 FORGE  ·  7d old                         ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
-║  ✓  Entropy       0.067  (healthy)                               ║
+║  ✓  Entropy       0.029  (healthy)                               ║
 ║  ✓  CDR           no gap detected                                ║
 ║  ✓  Patterns      no recurring pressure detected                 ║
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
 ║  ⚠  Doctor        5/6 (83%)  ·  1 warn                           ║
-║  ✓  Cost          Max flat-rate · $4.38/7d notional · no alarm   ║
+║  ✓  Cost          Max flat-rate · $4.08/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -115,8 +115,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-01_SESSION67.md       ║
-║  Closed: 6 · Open: 0                                             ║
+║  ✓ queue exhausted · source: AUDIT_2026-08-02.md                 ║
+║  Closed: 5 · Open: 0                                             ║
 ║  Latest audit has no open ranked items; run /audit for a new li  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -124,5 +124,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 67 closeout · 2026-08-02*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 68 closeout · 2026-08-03*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

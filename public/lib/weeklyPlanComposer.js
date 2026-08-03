@@ -78,6 +78,9 @@ export async function composeWeeklyPlan({
         tacticId,
         phase
       }));
+      if (reviewReceipt?.mode === "standing-reinforcement") {
+        compositionOrder[compositionOrder.length - 1] = "standing-plan-reinforced";
+      }
       const reviewStatus = reviewReceipt?.status || "deferred";
       if (reviewStatus === "revise") {
         compositionOrder.push("review-revise");
@@ -152,9 +155,12 @@ export function describeWeeklyPlanReceipt(receipt) {
   const reviewSource = receipt.review?.counterSignalSource
     ? ` · reviewed against ${String(receipt.review.counterSignalSource).slice(0, 80)}`
     : "";
+  const reinforcement = receipt.review?.mode === "standing-reinforcement"
+    ? ` · reinforced from ${receipt.review.sourceReceiptId || "last executed film"}`
+    : reviewSource;
   return {
     title: receipt.status === "committed" ? "Weekly plan committed" : "Weekly plan staged",
-    detail: `${decision} · ${tactic}${reviewSource} · ${receipt.compositionOrder.join(" → ") || "phase-only command"}`,
+    detail: `${decision} · ${tactic}${reinforcement} · ${receipt.compositionOrder.join(" → ") || "phase-only command"}`,
     tone: receipt.status === "committed" ? "positive" : "accent"
   };
 }

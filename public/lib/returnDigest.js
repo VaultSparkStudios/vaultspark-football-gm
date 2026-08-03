@@ -100,13 +100,25 @@ export function buildReturnDigest(dashboard, priorVisit, now = Date.now()) {
 export function buildReturnChapterAction(digest = {}) {
   const chapter = digest.seasonChapter || null;
   if (!chapter?.targetTab) return null;
-  return {
+  const action = {
     kind: "continue-season-chapter",
     label: `Continue ${chapter.label || "Season Plan"}`,
     targetTab: chapter.targetTab,
     targetId: chapter.targetId || null,
     chapterId: chapter.id || null
   };
+  if (chapter.seasonThesis?.thesisId) {
+    action.thesisId = chapter.seasonThesis.thesisId;
+    action.thesisCheckpoint = chapter.seasonThesis.checkpointId || null;
+  }
+  return action;
+}
+
+export function formatSeasonThesisContinuation(chapter = {}) {
+  const thesis = chapter.seasonThesis || null;
+  if (!thesis) return "";
+  if (!thesis.thesisId) return "Season thesis remains unproven; no Opening Contract receipt is available.";
+  return `Thesis ${thesis.identity?.label || thesis.thesisId}: ${thesis.checkpointId} is ${thesis.checkpointStatus}.`;
 }
 
 export function formatElapsed(ms) {
@@ -164,7 +176,7 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
       : "Inbox is clear.";
   const decisionLine = pendingDecision ? `A GM decision is waiting: "${pendingDecision.prompt || "a call needs to be made"}".` : "";
   const chapterLine = digest.seasonChapter
-    ? `${digest.seasonChapter.label}: ${digest.seasonChapter.title}. Next: ${digest.seasonChapter.nextCall}`
+    ? `${digest.seasonChapter.label}: ${digest.seasonChapter.title}. ${formatSeasonThesisContinuation(digest.seasonChapter)} Next: ${digest.seasonChapter.nextCall}`
     : "";
 
   const overlay = document.createElement("div");

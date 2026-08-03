@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-02T21:42:53.5258839-04:00",
+  "sourceRevision": "04ca29aac10c-worktree",
+  "artifact": "static Pages bundle rebuilt after the visual fix",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "captures": [
+    {
+      "file": "desktop-overview-dark.png",
+      "sha256": "c3cda4c4e62fb06ef4e4e6d4b6b166ae7f71eff3bfd4e84a1292103811dff5af",
+      "theme": "dark",
+      "viewport": { "width": 1440, "height": 1000 },
+      "page": "Franchise overview and Season/Architecture command surfaces"
+    },
+    {
+      "file": "desktop-overview-light.png",
+      "sha256": "b467df73b9c4496fa7c192dde04be2660e050fcd18f10f987ee5013e7ea64cf1",
+      "theme": "light",
+      "viewport": { "width": 1440, "height": 1000 },
+      "page": "Franchise overview and Season/Architecture command surfaces"
+    },
+    {
+      "file": "mobile-weekly-loop-dark.png",
+      "sha256": "e4b8aae9e0b2a163392c0a1c59a45420f887f906d0dacd248d04fb53bb9b6500",
+      "theme": "dark",
+      "viewport": { "width": 390, "height": 844 },
+      "page": "Mobile weekly decision deck, Week Room, and season chapter"
+    },
+    {
+      "file": "mobile-weekly-loop-light.png",
+      "sha256": "453db96aa83853ba5ce68e1ca9498fe9edc909368f057837525c8a2f849d2a09",
+      "theme": "light",
+      "viewport": { "width": 390, "height": 844 },
+      "page": "Mobile weekly decision deck, Week Room, and season chapter"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-gpt-5",
+    "findings": [
+      "The first real-browser pass exposed `Roster Needs: [object Object]` four times in the mobile weekly deck in both dark and light themes.",
+      "Desktop overview hierarchy, dense tables, command cards, and footer remained readable without horizontal clipping in both themes.",
+      "Mobile dark/light cards, controls, Week Room hierarchy, season chapter, tables, and footer remained readable and within the 390px viewport after correction."
+    ],
+    "fixesApplied": [
+      "Normalized roster-need objects through `pos` or `position`, rejected non-string fallbacks, rebuilt the static Pages bundle, and recaptured all responsive evidence.",
+      "Added a focused regression proving the mobile formatter cannot fall back to object coercion."
+    ],
+    "blockingDefectsOpen": 0
+  }
+}

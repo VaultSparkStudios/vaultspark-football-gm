@@ -95,7 +95,11 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
   const capSpace    = d.cap?.capSpace ?? null;
   const phase       = d.phase || "";
   const newsHead    = (state.newsRows || [])[0]?.headline || "";
-  const needs       = (d.rosterNeeds || []).slice(0, 4).map((n) => n.pos || n).join(", ");
+  const needs       = (d.rosterNeeds || [])
+    .slice(0, 4)
+    .map((need) => need?.pos || need?.position || (typeof need === "string" ? need : null))
+    .filter(Boolean)
+    .join(", ");
 
   // Next game from current week schedule
   const games   = d.currentWeekSchedule?.games || [];

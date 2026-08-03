@@ -305,7 +305,12 @@ import {
 } from "./lib/gameFlow.js";
 import { createFastSimulationPolicy } from "./lib/fastSimulationPolicy.js";
 import { composeWeeklyPlan, commitWeeklyPlanReceipt } from "./lib/weeklyPlanComposer.js";
-import { buildArchitectPlanRehearsal } from "./lib/architectPlanRehearsal.js";
+import {
+  assessPlanRehearsalNeed,
+  buildArchitectPlanRehearsal,
+  standingReinforcementEvidence,
+  standingTacticFromDashboard
+} from "./lib/architectPlanRehearsal.js";
 import { recordPlaytestJourneyCheckpoint, startPlaytestJourney } from "./lib/playtestJourney.js";
 
 import {
@@ -356,24 +361,39 @@ async function submitMobileGmDecisionChoice(choice) {
 }
 
 async function collectWeeklyCommandIntent({ gmDecisionChoice = null } = {}) {
+  const standingTactic = standingTacticFromDashboard(state.dashboard || {});
   return composeWeeklyPlan({
     phase: state.dashboard?.phase || "unknown",
     presetDecisionChoice: gmDecisionChoice || state.mobilePendingDecisionChoice || null,
     collectDecision: checkAndShowGmDecision,
     collectTactic: () => new Promise((resolve) => showHalftimeAdjustModal(resolve, {
       title: "Weekly Plan Composer",
-      subtitle: "Confirm the football identity that follows your General Manager call. The command commits only after this review.",
-      confirmLabel: "Stage Tactic",
+      subtitle: standingTactic
+        ? `Reinforce ${standingTactic.label} in one deliberate click, or choose a change that the Architect will red-team.`
+        : "Choose the football identity that follows your General Manager call. A first plan receives a full Architect review.",
+      confirmLabel: standingTactic ? `Reinforce ${standingTactic.label}` : "Stage Tactic",
+      initialChoice: standingTactic?.id || null,
       skipLabel: "Commit With No Tactic"
     })),
-    reviewPlan: (receipt) => new Promise((resolve) => showArchitectPlanRehearsal(
-      buildArchitectPlanRehearsal({
+    reviewPlan: (receipt) => {
+      const reviewInput = {
         dashboard: state.dashboard,
         decisionChoice: receipt.plan?.gmDecision,
         tacticId: receipt.plan?.tacticId
-      }),
-      resolve
-    )),
+      };
+      const assessment = assessPlanRehearsalNeed(reviewInput);
+      if (!assessment.required) {
+        return Promise.resolve({
+          status: "commit",
+          mode: "standing-reinforcement",
+          evidence: standingReinforcementEvidence(assessment)
+        });
+      }
+      return new Promise((resolve) => showArchitectPlanRehearsal(
+        buildArchitectPlanRehearsal(reviewInput),
+        resolve
+      ));
+    },
     onCheckpoint: (name) => recordPlaytestJourneyCheckpoint(name)
   });
 }

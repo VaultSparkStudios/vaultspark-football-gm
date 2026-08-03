@@ -18,6 +18,82 @@ function authorityFor(dashboard = {}) {
   ].join(":");
 }
 
+export function standingTacticFromDashboard(dashboard = {}) {
+  const receipt = (dashboard.tacticalFilmLedger || []).find((entry) => tacticDefinition(entry?.tactic));
+  if (!receipt) return null;
+  const definition = tacticDefinition(receipt.tactic);
+  return {
+    id: definition.id,
+    label: definition.label,
+    unit: definition.unit,
+    receiptId: receipt.id || null,
+    aligned: receipt.aligned === true,
+    observed: receipt.observed || null
+  };
+}
+
+function majorControlledInjury(dashboard = {}) {
+  const teamId = dashboard.controlledTeamId;
+  return (dashboard.injuryReport || []).find((entry) => {
+    if (teamId && entry?.teamId !== teamId) return false;
+    const severity = String(entry?.severity || entry?.status || "").toLowerCase();
+    return Number(entry?.weeksOut || entry?.durationWeeks || 0) >= 3
+      || ["major", "severe", "out"].includes(severity);
+  }) || null;
+}
+
+export function assessPlanRehearsalNeed({
+  dashboard = {},
+  decisionChoice = null,
+  tacticId = null,
+  standingTacticId = standingTacticFromDashboard(dashboard)?.id || null
+} = {}) {
+  const reasons = [];
+  const matchingFilm = (dashboard.tacticalFilmLedger || []).find((entry) => entry?.tactic === tacticId) || null;
+  const expectation = dashboard.controlledTeam?.owner?.expectation
+    || dashboard.ownerState?.owner?.expectation
+    || null;
+  const latestArchitecture = dashboard.architectLedger?.[0] || null;
+  const pendingThesis = dashboard.architectThesis?.pendingAdaptation || null;
+  const injury = majorControlledInjury(dashboard);
+
+  if (!tacticDefinition(tacticId)) reasons.push("explicit-no-plan");
+  if (!standingTacticId) reasons.push("first-plan");
+  else if (tacticId !== standingTacticId) reasons.push("plan-changed");
+  if (decisionChoice?.choiceId) reasons.push("gm-decision");
+  if (matchingFilm?.aligned === false) reasons.push("failed-matching-film");
+  if (expectation?.ultimatum?.active || Number(expectation?.heat || 0) >= 75) reasons.push("owner-red-flag");
+  if (pendingThesis) reasons.push("pending-architect-thesis");
+  if (latestArchitecture?.nextAdaptation) reasons.push("adaptation-signal");
+  if (injury) reasons.push("major-injury");
+
+  const uniqueReasons = [...new Set(reasons)];
+  return {
+    schemaVersion: "1.0",
+    kind: "plan-rehearsal-need",
+    authority: authorityFor(dashboard),
+    required: uniqueReasons.length > 0,
+    reasons: uniqueReasons.length ? uniqueReasons : ["standing-plan-stable"],
+    standingTacticId,
+    tacticId: tacticDefinition(tacticId)?.id || null,
+    sourceReceiptId: standingTacticFromDashboard(dashboard)?.receiptId || null
+  };
+}
+
+export function standingReinforcementEvidence(assessment = {}) {
+  if (assessment?.kind !== "plan-rehearsal-need" || assessment.required) return null;
+  return {
+    schemaVersion: "1.0",
+    mode: "standing-reinforcement",
+    authority: String(assessment.authority || "unknown").slice(0, 160),
+    tacticId: assessment.tacticId || null,
+    sourceReceiptId: assessment.sourceReceiptId || null,
+    counterSignalSource: "Standing plan unchanged",
+    reasonCodes: [...(assessment.reasons || [])],
+    reviewed: false
+  };
+}
+
 export function buildArchitectPlanRehearsal({ dashboard = {}, decisionChoice = null, tacticId = null } = {}) {
   const tactic = tacticDefinition(tacticId);
   const brief = buildTacticalMatchupBrief(dashboard);

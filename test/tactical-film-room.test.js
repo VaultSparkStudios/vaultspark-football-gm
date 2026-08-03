@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildTacticalFilmReceipt, buildTacticalIdentityLedger, buildTacticalMatchupBrief, tacticDefinition } from "../public/lib/tacticalFilmRoom.js";
+import { buildTacticalFilmReceipt, buildTacticalIdentityLedger, buildTacticalMatchupBrief, tacticDefinition, TACTIC_MODEL_VERSION } from "../public/lib/tacticalFilmRoom.js";
 
 test("matchup brief derives opponent identity, tendencies, injury context, and tradeoffs", () => {
   const brief = buildTacticalMatchupBrief({
@@ -36,6 +36,8 @@ test("film receipt evaluates chosen intent against observed box-score telemetry 
   });
   assert.equal(receipt.aligned, true);
   assert.equal(receipt.result, "win");
+  assert.equal(receipt.definitionVersion, TACTIC_MODEL_VERSION);
+  assert.equal(receipt.tacticAuthorityId, "tactical-plan@2.0:run-heavy");
   assert.match(receipt.observed, /57% rush share · 171 rushing yards/);
   assert.match(receipt.disclaimer, /does not claim/);
 });
@@ -43,6 +45,18 @@ test("film receipt evaluates chosen intent against observed box-score telemetry 
 test("film receipt rejects unknown tactics and missing controlled games", () => {
   assert.equal(buildTacticalFilmReceipt({ tactic: "fake", results: [], controlledTeamId: "BUF" }), null);
   assert.equal(tacticDefinition("fake"), null);
+});
+
+test("tactic definitions expose one unit-scoped modifier authority", () => {
+  const run = tacticDefinition("run-heavy");
+  const blitz = tacticDefinition("blitz-heavy");
+  assert.equal(run.unit, "offense");
+  assert.equal(blitz.unit, "defense");
+  assert.equal(run.authorityId, "tactical-plan@2.0:run-heavy");
+  assert.equal(blitz.definitionVersion, TACTIC_MODEL_VERSION);
+  assert.equal("defenseAggressionDelta" in run.modifiers, false);
+  assert.equal("passLeanDelta" in blitz.modifiers, false);
+  assert.equal("offenseAggressionDelta" in blitz.modifiers, false);
 });
 test("tactical identity is deterministic, bounded, and separates repetition from alignment", () => {
   const receipts = [

@@ -4,33 +4,33 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 65 cleared the save-payload blocker: a full season of realistic play now occupies 3.95 MB of localStorage (from not persistable at all) via lean stored week records, a bounded game archive with a recent-only drive-log window, gzip+base64 snapshot encoding, and byte-bounded backup retention. Remaining launch gates are external: the stale live-origin binding behind the /_health 404, delivered-email receipt, founder approval, and registry lifecycle reconciliation.",
-  "nextMilestone": "Apply the exact generated edge contract at the owning host and prove its fingerprint, deployed revision, /_health, required headers, delivered email, approval, and authoritative lifecycle before any launch flip; then take up the deferred mobile/tablet nav parity with a visual re-baseline budget.",
+  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 0ad328d790428effd212023b0416915d90ab03aa, required edge headers verified. Launch remains HOLD; independent gates are not collapsed.",
+  "nextMilestone": "Verify an independent staging origin at the exact candidate revision, then prove production revision parity, delivered on-domain email, founder approval, and authoritative lifecycle before any launch flip.",
   "blockers": [
-    "Launch/SPARKED remains evidence-gated: canonical /_health is invalid, exact deployed revision is absent, required HSTS/CSP/frame/permissions headers are missing, and delivered-email, founder-approval, and sibling lifecycle authorities remain absent."
+    "Launch HOLD — email-delivery-unverified, exact-revision-mismatch, independent-staging-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-02",
+  "lastUpdated": "2026-08-03",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-07-29",
+  "truthAuditLastRun": "2026-08-03",
   "ignisScore": 41900,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-07-27",
   "testSuiteStatus": {
-    "totalTests": 746,
-    "pass": 746,
+    "totalTests": 800,
+    "pass": 800,
     "fail": 0,
     "lastRun": "2026-08-01",
     "newTestFiles": [
       "test/snapshot-codec.test.js"
     ],
-    "newTestCount": 14,
-    "coverage": "Session 65 canonical aggregate Node 746/746 direct exit 0 (core 75, runtime 466, sim-contract 75, sim-realism 1, studio 129), Playwright 26/26, responsive evidence 53/53, Pages build/smoke, 54 browser modules reachable.",
-    "uiSuiteNote": "Playwright unchanged at 26/26; the save-payload work is covered at the node level end-to-end, including a full simulated season persisted and reloaded."
+    "newTestCount": 19,
+    "coverage": "Session 68 canonical aggregate Node 800/800 direct exit 0 (core 104, runtime 477, sim-contract 75, sim-realism 1, studio 143), Playwright 33/33, responsive evidence 53/53, Pages build/smoke, 54 browser modules reachable, four dark/light desktop/mobile images manually inspected.",
+    "uiSuiteNote": "Playwright 33/33, including authoritative bye-week empty-state semantics and Session 68 weekly-plan surfaces."
   },
-  "testsPassing": 746,
-  "testsTotal": 746,
+  "testsPassing": 800,
+  "testsTotal": 800,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -75,26 +75,26 @@
     "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 100,
-    "processQuality": 98,
-    "crossRepoCoherence": 100,
+    "processQuality": 100,
+    "crossRepoCoherence": 98,
     "securityPosture": 100,
-    "ecosystemIntegration": 100,
-    "capitalEfficiency": 97,
+    "ecosystemIntegration": 98,
+    "capitalEfficiency": 99,
     "automationCoverage": 100
   },
-  "currentSession": 67,
-  "lastAgent": "claude-code",
-  "sessionMode": "builder",
-  "lastVerification": "npm test 746/746 direct exit 0; npm run test:ui 26/26 exit 0; evidence:responsive 53 captures exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54; doctor blockingFailing 0; full-season persistence measured at 3.95 MB total footprint with successful reload.",
+  "currentSession": 68,
+  "lastAgent": "codex",
+  "sessionMode": "founder",
+  "lastVerification": "npm test 800/800 direct exit 0; npm run test:ui 33/33 exit 0; evidence:responsive 53/53 exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54; visual receipt 4 inspected captures / 0 blocking defects; canon 0 gaps; doctor blockingFailing 0.",
   "silScoreV3MigratedAt": "2026-04-21",
-  "modelTier": "claude-fable-5",
+  "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
   "modelTierCtxLimit": 1000000,
   "modelPlanMode": false,
   "modelPlanModeSlash": null,
   "planModeDetected": "missing",
   "planModeCheckedAt": "2026-07-01T05:54:57.303Z",
-  "sessionModeAutoShiftedAt": "2026-07-25T23:58:43.454Z",
+  "sessionModeAutoShiftedAt": "2026-08-02T23:55:55.899Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-05-22",
@@ -118,7 +118,7 @@
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-02",
+    "date": "2026-08-03",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -133,49 +133,50 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-31",
-  "lastVerificationAt": "2026-08-01",
+  "lastVerificationAt": "2026-08-03",
   "stagingType": "github-pages",
   "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.067,
-  "entropyLastComputed": "2026-07-31",
+  "entropyScore": 0.029,
+  "entropyLastComputed": "2026-08-03",
   "lastSessionSummary": {
-    "session": 61,
+    "session": 68,
     "shipped": [
-      "Canonical capability operations authority",
-      "Shared Architect Thesis HTTP handler",
-      "Declaration-to-now Architecture Review",
-      "Exact TradeService authority",
-      "Generated edge-security contract",
-      "Stale trade-plan rejection",
-      "Hosted edge-policy attestation",
-      "Inline style-policy saturation"
+      "Unit-typed versioned tactic authority",
+      "Exception-driven standing-plan rehearsal",
+      "Exact Season thesis and checkpoint ledger",
+      "Non-authoritative live test-shard progress",
+      "Replay-verifiable structured release truth",
+      "Tactic receipt lineage",
+      "Return-thesis continuity",
+      "Release contract replay validation",
+      "Mobile roster-needs rendering repair"
     ],
-    "tests": "Node 560/560 - UI 20/20 - responsive 53 captures",
-    "deploy": "implementation 5532c4e + clean-checkout fix 3240ed7 synchronized; CI/brief/Pages/backend green; launch HOLD"
+    "tests": "Node 800/800 - UI 33/33 - responsive 53/53 - visual 4/4 inspected",
+    "deploy": "Implementation ready for direct-main push; production remains at 0ad328d with routes/health/headers green and launch HOLD on independent gates"
   },
   "testingSurfaces": [
     {
       "type": "local",
       "label": "Local game",
       "url": "http://127.0.0.1:3000/game.html",
-      "lastChecked": "2026-07-31"
+      "lastChecked": "2026-08-03"
     },
     {
       "type": "staging",
       "label": "GitHub Pages",
       "url": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
-      "lastChecked": "2026-07-31"
+      "lastChecked": "2026-08-03"
     },
     {
       "type": "production",
       "label": "Public origin",
       "url": "https://playfranchisearchitect.com/",
-      "lastChecked": "2026-07-31"
+      "lastChecked": "2026-08-03"
     }
   ],
-  "lastSession": 65,
-  "silLastSession": 65,
+  "lastSession": 68,
+  "silLastSession": 68,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",
@@ -188,5 +189,54 @@
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ],
-  "session": 67
+  "session": 68,
+  "releaseEvidence": {
+    "schemaVersion": "1.0",
+    "kind": "structured-release-evidence",
+    "source": "scripts/launch-evidence-report.mjs",
+    "receiptSha256": "8dd0340414b11adf07f81404085c6accccfae634467de01155cd4ecbcc1e897a",
+    "checkedAt": "2026-08-03T00:36:05.112Z",
+    "runtimeUrl": "https://playfranchisearchitect.com",
+    "deployedRevision": "0ad328d790428effd212023b0416915d90ab03aa",
+    "routes": {
+      "verified": true,
+      "checked": 9
+    },
+    "originHealth": {
+      "verified": true,
+      "launchReadyClaim": false
+    },
+    "securityHeaders": {
+      "strictTransportSecurity": true,
+      "frameProtection": true,
+      "contentSecurityPolicy": true,
+      "verified": true
+    },
+    "emailDelivery": {
+      "verified": false,
+      "address": "football@playfranchisearchitect.com"
+    },
+    "exactRevision": {
+      "verified": false,
+      "expected": "04ca29aac10cc223cfec2bb528d761e3bccc0af1"
+    },
+    "independentStaging": {
+      "verified": false
+    },
+    "founderApproval": {
+      "verified": false
+    },
+    "lifecycleAuthority": {
+      "verified": false
+    },
+    "evidenceValid": true,
+    "launchReady": false,
+    "blockerCodes": [
+      "email-delivery-unverified",
+      "exact-revision-mismatch",
+      "independent-staging-unverified",
+      "founder-approval-unverified",
+      "lifecycle-authority-unverified"
+    ]
+  }
 }

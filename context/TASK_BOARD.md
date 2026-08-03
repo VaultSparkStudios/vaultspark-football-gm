@@ -1067,12 +1067,12 @@ The audit's stated premise (ordering) was real but **secondary**, and is recorde
 
 | # | Item | Detail |
 |---|---|---|
-| 1 | Offseason calendar order | `runOffseason` decomposed into named exported phases; the composed façade preserved **verbatim** for `leagueSimulator` and the 100-year career regression. Each stage bound to the phase it is named for. The `retirements` stage retired nobody — its entire body was `processStaffLifecycle()` plus a news line, the same call the next stage made again. A new `free-agency` stage sits between pro-days and the draft. A pre-S67 snapshot resuming at `udfa` reconciles idempotently. |
-| 2 | Free agency exists | Root fix above, plus a 3-wave window that **holds for the GM between waves** (`blockingReason: "free-agency-open"`). Premium signings gated through the market in the window, not just the regular season. `submitCpuFreeAgencyOffers` gained a `poolSize` (40 in-window, 10 in-season) and a one-pass position index replacing an O(candidates × teams × players) scan. **0 → 36 competitive signings.** |
-| 3 | Draft honours the pick ledger | `buildDraftOrder(year)` emits one slot per **owned** pick, ordered by the original club's finish, comp picks closing their round, `totalPicks` derived not the 224 constant. Every `(currentPick - 1) % 32` became a direct index — including two in `public/lib/tabDraft.js` that had been reading the wrong team for every round after the first. Picks consumed on selection. Standings fallback keeps pre-ledger saves drafting. |
-| 4 | Compensatory picks can be awarded at all | Loss value read `player.value \|\| player.capHit / 120_000` off a projection carrying **neither** field → NaN → `sum + (v \|\| 0)` laundered it to 0 → `net <= 0` always continued. The gains side divided by a *different* denominator, so the two were never comparable even before the NaN. One finite-validated scale, reconciled against where the player actually finished, capped at 4/club. **0 → 19 awards**, totalPicks 224 → 243. |
-| 5 | Offseason actor authority | `runFreeAgencyBackstop` takes an explicit authority parameter; the controlled team is excluded. **5 players per offseason used to arrive on the GM's roster with no command issued** — the S63 boundary guards the command seam and this engine is not a command. Every backstop signing logged one aggregated row per club (not 200+ rows that would evict real history from a 5,000-entry log inside 25 seasons). Unfilled controlled roster → actionable inbox shortfall receipt. |
-| 6 | Pick assets bounded | Consumed on selection, elapsed drafts retired self-healingly, floored at `year > currentYear` in both the trade desk and `TradeService`. Before: **42 BUF assets across six years, 21 for drafts already held**, against a 1,344-row ledger growing 224/season forever — inside the save budget S65 spent a session reclaiming. |
+| 6701 | Offseason calendar order | `runOffseason` decomposed into named exported phases; the composed façade preserved **verbatim** for `leagueSimulator` and the 100-year career regression. Each stage bound to the phase it is named for. The `retirements` stage retired nobody — its entire body was `processStaffLifecycle()` plus a news line, the same call the next stage made again. A new `free-agency` stage sits between pro-days and the draft. A pre-S67 snapshot resuming at `udfa` reconciles idempotently. |
+| 6702 | Free agency exists | Root fix above, plus a 3-wave window that **holds for the GM between waves** (`blockingReason: "free-agency-open"`). Premium signings gated through the market in the window, not just the regular season. `submitCpuFreeAgencyOffers` gained a `poolSize` (40 in-window, 10 in-season) and a one-pass position index replacing an O(candidates × teams × players) scan. **0 → 36 competitive signings.** |
+| 6703 | Draft honours the pick ledger | `buildDraftOrder(year)` emits one slot per **owned** pick, ordered by the original club's finish, comp picks closing their round, `totalPicks` derived not the 224 constant. Every `(currentPick - 1) % 32` became a direct index — including two in `public/lib/tabDraft.js` that had been reading the wrong team for every round after the first. Picks consumed on selection. Standings fallback keeps pre-ledger saves drafting. |
+| 6704 | Compensatory picks can be awarded at all | Loss value read `player.value \|\| player.capHit / 120_000` off a projection carrying **neither** field → NaN → `sum + (v \|\| 0)` laundered it to 0 → `net <= 0` always continued. The gains side divided by a *different* denominator, so the two were never comparable even before the NaN. One finite-validated scale, reconciled against where the player actually finished, capped at 4/club. **0 → 19 awards**, totalPicks 224 → 243. |
+| 6705 | Offseason actor authority | `runFreeAgencyBackstop` takes an explicit authority parameter; the controlled team is excluded. **5 players per offseason used to arrive on the GM's roster with no command issued** — the S63 boundary guards the command seam and this engine is not a command. Every backstop signing logged one aggregated row per club (not 200+ rows that would evict real history from a 5,000-entry log inside 25 seasons). Unfilled controlled roster → actionable inbox shortfall receipt. |
+| 6706 | Pick assets bounded | Consumed on selection, elapsed drafts retired self-healingly, floored at `year > currentYear` in both the trade desk and `TradeService`. Before: **42 BUF assets across six years, 21 for drafts already held**, against a 1,344-row ledger growing 224/season forever — inside the save budget S65 spent a session reclaiming. |
 
 ### Second-order — four shipped
 
@@ -1093,3 +1093,21 @@ Coverage: `test/offseason-calendar.test.js` (22) and `test/offseason-surfaces.te
 
 - *"`runCpuDraft` auto-picks for the user when `allowTop10PickTrading` is false — inverted logic."* Read in isolation it looks inverted; `GameSession.js` blocks the **user** from selecting inside the top 10 under the same flag with an explicit "trade down or let the CPU resolve the pick" message. The branches agree. (Noted separately and not raised as work: no `CHALLENGE_MODES` entry actually sets it false, so the restriction is unreachable configuration.)
 - *"Playoff seeding and tiebreakers are naive."* `src/engine/seasonSimulator.js` implements head-to-head, division and conference tiebreakers with a proper tie-group walk. Premise false against live code.
+
+## Session 68 — Unit-Safe Strategy, Season Thesis, and Observable Proof (2026-08-02)
+
+Source: `docs/AUDIT_2026-08-02.json`.
+
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Simulation authority / core loop | Done | 3.0h | weekly-tactic-unit-authority |
+| FIRE | UI/UX / engagement / decision compression | Done | 3.0h | standing-plan-red-flag-rehearsal |
+| FIRE | Progression / narrative authority | Done | 4.0h | season-thesis-ledger |
+| HIGH | Infrastructure / test observability | Done | 2.0h | test-shard-progress-proof |
+| HIGH | Release observability / coherence | Done | 2.5h | structured-release-truth |
+
+### Session 69 preload (not part of the exhausted Session 68 Genius List)
+
+- [ ] Establish a valid independent staging origin at the exact candidate revision, then replay the structured release contract against it.
+- [ ] Provision and prove on-domain email delivery/forwarding through the canonical Brevo path, retaining a received-message receipt without exposing message content.
+- [ ] Reconcile registry SPARKED/local FORGE and refresh stale IGNIS through the Studio Ops Ark owner; request receipt `01JV2S5KC5235D4C02269A28B4`.

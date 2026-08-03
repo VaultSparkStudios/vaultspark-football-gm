@@ -6,13 +6,6 @@ import { getArchitectThesis, resolveArchitectThesis } from "../engine/architectT
 
 export const ADVANCE_WEEK_COMMAND_VERSION = "2.0";
 
-const tacticModifiers = Object.freeze({
-  "run-heavy": { passLeanDelta: -0.15, aggressionDelta: 0.05, summary: "Ground game focus" },
-  "pass-heavy": { passLeanDelta: 0.15, aggressionDelta: 0.05, summary: "Air attack tempo" },
-  "blitz-heavy": { passLeanDelta: -0.05, aggressionDelta: 0.2, summary: "Pressure package" },
-  prevent: { passLeanDelta: -0.1, aggressionDelta: -0.15, summary: "Prevent defense" }
-});
-
 function normalizeCount(value) {
   const parsed = Number.parseInt(value, 10);
   return Number.isFinite(parsed) ? Math.max(1, Math.min(40, parsed)) : 1;
@@ -23,7 +16,8 @@ export function validateAdvanceWeekCommand(session, payload = {}) {
     return { ok: false, status: 409, reasonCode: "ADVANCE_WEEK_NO_SESSION", error: "No active league can advance." };
   }
   const tactic = payload.weeklyTacticOverride ? String(payload.weeklyTacticOverride) : null;
-  if (tactic && !tacticDefinition(tactic)) {
+  const tacticPlan = tactic ? tacticDefinition(tactic) : null;
+  if (tactic && !tacticPlan) {
     return { ok: false, status: 400, reasonCode: "ADVANCE_WEEK_UNKNOWN_TACTIC", error: `Unknown weekly tactic: ${tactic}.` };
   }
   const pendingDecision = session.getDashboardState?.().gmDecisionQueue?.[0] || null;
@@ -32,7 +26,22 @@ export function validateAdvanceWeekCommand(session, payload = {}) {
   if (payload.gmDecisionChoice && !resolveGmDecisionConsequence(payload.gmDecisionChoice)) {
     return { ok: false, status: 400, reasonCode: "ADVANCE_WEEK_UNKNOWN_GM_DECISION", error: "Unknown GM decision choice." };
   }
-  return { ok: true, count: normalizeCount(payload.count), tactic, gmDecisionChoice: pendingValidation.choice };
+  return { ok: true, count: normalizeCount(payload.count), tactic, tacticPlan, gmDecisionChoice: pendingValidation.choice };
+}
+
+function applyTacticOverride(weeklyPlan, tacticPlan) {
+  if (!weeklyPlan || !tacticPlan) return;
+  for (const [key, delta] of Object.entries(tacticPlan.modifiers || {})) {
+    weeklyPlan[key] = Number(weeklyPlan[key] || 0) + Number(delta || 0);
+  }
+  weeklyPlan.tacticalOverride = {
+    id: tacticPlan.id,
+    definitionVersion: tacticPlan.definitionVersion,
+    authorityId: tacticPlan.authorityId,
+    label: tacticPlan.label,
+    unit: tacticPlan.unit,
+    summary: tacticPlan.summary
+  };
 }
 
 export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance } = {}) {
@@ -52,7 +61,7 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
 
   const tacticTeam = command.tactic ? controlledTeam : null;
   const originalWeeklyPlan = tacticTeam?.weeklyPlan ? { ...tacticTeam.weeklyPlan } : null;
-  if (tacticTeam?.weeklyPlan && command.tactic) Object.assign(tacticTeam.weeklyPlan, tacticModifiers[command.tactic]);
+  if (tacticTeam?.weeklyPlan && command.tacticPlan) applyTacticOverride(tacticTeam.weeklyPlan, command.tacticPlan);
 
   const results = [];
   try {
@@ -112,6 +121,8 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
       completed,
       count: command.count,
       tactic: command.tactic,
+      tacticUnit: command.tacticPlan?.unit || null,
+      tacticAuthorityId: command.tacticPlan?.authorityId || null,
       gmDecisionApplied: gmDecision.applied === true
     }
   };

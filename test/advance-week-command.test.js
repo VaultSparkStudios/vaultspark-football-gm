@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { createSession, createSessionFromSnapshot } from "../src/runtime/bootstrap.js";
 import { buildTacticalIdentityLedger } from "../public/lib/tacticalFilmRoom.js";
 import { executeAdvanceWeekCommand, executeAdvanceWeekTransaction } from "../src/runtime/advanceWeekCommand.js";
+import { weeklyPlanUnitAggression } from "../src/engine/gameSimulator.js";
 
 function deterministicSnapshot(session) {
   return JSON.parse(JSON.stringify(session.toSnapshot(), (key, value) =>
@@ -29,6 +30,42 @@ test("temporary weekly plans restore even when simulation throws", () => {
     /injected simulation failure/
   );
   assert.deepEqual(team.weeklyPlan, before);
+});
+
+test("player tactics layer over the matchup plan and stay inside their unit authority", () => {
+  const capture = (tactic) => {
+    const session = createSession({ seed: 49008, startYear: 2026, controlledTeamId: "BUF" });
+    const team = session.league.teams.find((entry) => entry.id === "BUF");
+    const base = structuredClone(team.weeklyPlan);
+    let applied = null;
+    session.advanceWeek = () => {
+      applied = structuredClone(team.weeklyPlan);
+      return { year: session.currentYear, week: session.currentWeek, games: [] };
+    };
+    const result = executeAdvanceWeekCommand(session, { weeklyTacticOverride: tactic });
+    assert.deepEqual(team.weeklyPlan, base);
+    return { base, applied, result };
+  };
+
+  const run = capture("run-heavy");
+  assert.equal(run.applied.passLeanDelta, run.base.passLeanDelta - 0.15);
+  assert.equal(weeklyPlanUnitAggression(run.applied, "offense"), run.base.aggressionDelta + 0.05);
+  assert.equal(weeklyPlanUnitAggression(run.applied, "defense"), run.base.aggressionDelta);
+  assert.equal(run.result.commandReceipt.tacticUnit, "offense");
+  assert.equal(run.result.commandReceipt.tacticAuthorityId, "tactical-plan@2.0:run-heavy");
+  assert.equal(run.result.tacticalReceipt, null);
+
+  const blitz = capture("blitz-heavy");
+  assert.equal(blitz.applied.passLeanDelta, blitz.base.passLeanDelta);
+  assert.equal(weeklyPlanUnitAggression(blitz.applied, "offense"), blitz.base.aggressionDelta);
+  assert.equal(weeklyPlanUnitAggression(blitz.applied, "defense"), blitz.base.aggressionDelta + 0.2);
+  assert.equal(blitz.result.commandReceipt.tacticUnit, "defense");
+  assert.equal(blitz.applied.tacticalOverride.authorityId, "tactical-plan@2.0:blitz-heavy");
+
+  const prevent = capture("prevent");
+  assert.equal(prevent.applied.passLeanDelta, prevent.base.passLeanDelta);
+  assert.equal(weeklyPlanUnitAggression(prevent.applied, "offense"), prevent.base.aggressionDelta);
+  assert.equal(weeklyPlanUnitAggression(prevent.applied, "defense"), prevent.base.aggressionDelta - 0.15);
 });
 
 test("same-seed weekly commands produce identical state and versioned receipts", () => {

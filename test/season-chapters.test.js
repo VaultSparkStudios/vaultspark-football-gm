@@ -1,7 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { buildSeasonChapter, SEASON_CHAPTER_SCHEMA_VERSION } from "../public/lib/seasonChapters.js";
+import {
+  buildSeasonChapter,
+  buildSeasonThesisLedger,
+  SEASON_CHAPTER_SCHEMA_VERSION,
+  SEASON_THESIS_SCHEMA_VERSION
+} from "../public/lib/seasonChapters.js";
 import { buildThreeHorizonBlueprint } from "../public/lib/franchiseArchitecture.js";
 
 function dashboard(overrides = {}) {
@@ -10,6 +15,13 @@ function dashboard(overrides = {}) {
     currentYear: 2026,
     currentWeek: 1,
     gmCommitments: { active: [] },
+    startScenarioReceipt: {
+      receiptId: "opening-2026-BUF-v1",
+      selections: { identity: "trench-builder" },
+      effects: { identity: { id: "trench-builder", label: "Build through the trenches" } }
+    },
+    tacticalFilmLedger: [],
+    architectLedger: [],
     ...overrides
   };
 }
@@ -22,6 +34,67 @@ test("season chapter transitions are deterministic across the live calendar", ()
   assert.equal(buildSeasonChapter(dashboard({ currentWeek: 17 })).id, "playoff-push");
   assert.equal(buildSeasonChapter(dashboard({ phase: "postseason", currentWeek: 19 })).id, "postseason");
   assert.equal(buildSeasonChapter(dashboard({ phase: "season-awards", currentWeek: 19 })).id, "season-reckoning");
+});
+
+test("season thesis keeps one exact Opening Contract authority across every season chapter", () => {
+  const cases = [
+    [2, "foundation"],
+    [6, "identity-test"],
+    [10, "deadline-pressure"],
+    [13, "separation"],
+    [17, "playoff-push"]
+  ];
+  for (const [currentWeek, checkpointId] of cases) {
+    const result = buildSeasonChapter(dashboard({ currentWeek }));
+    assert.equal(result.seasonThesis.thesisId, "opening-2026-BUF-v1:season:2026");
+    assert.equal(result.seasonThesis.checkpointId, checkpointId);
+    assert.ok(result.evidence.includes("thesis:opening-2026-BUF-v1:season:2026"));
+  }
+  const postseason = buildSeasonChapter(dashboard({ phase: "postseason", currentWeek: 19 }));
+  const reckoning = buildSeasonChapter(dashboard({ phase: "season-awards", currentWeek: 19 }));
+  assert.equal(postseason.seasonThesis.checkpointId, "postseason");
+  assert.equal(reckoning.seasonThesis.checkpointId, "season-reckoning");
+  assert.match(reckoning.seasonThesis.reckoning.disclaimer, /does not claim.*caused/i);
+});
+
+test("season thesis binds bounded receipts without inventing causal evidence", () => {
+  const result = buildSeasonThesisLedger(dashboard({
+    currentWeek: 10,
+    tacticalFilmLedger: [
+      { id: "film-w2", year: 2026, week: 2, tactic: "run-heavy", aligned: true },
+      { id: "film-w6", year: 2026, week: 6, tactic: "pass-heavy", aligned: false }
+    ],
+    architectLedger: [{ id: "architect-w7", year: 2026, week: 7 }],
+    gmCommitments: {
+      active: [{ id: "promise-w10", createdYear: 2026, createdWeek: 10 }],
+      latestReceipt: { id: "promise-receipt", year: 2026, status: "active" }
+    }
+  }));
+  assert.equal(result.schemaVersion, SEASON_THESIS_SCHEMA_VERSION);
+  assert.equal(result.status, "established");
+  assert.deepEqual(result.checkpoints.find((row) => row.id === "foundation").evidenceIds, ["film-w2"]);
+  assert.deepEqual(
+    result.checkpoints.find((row) => row.id === "identity-test").evidenceIds,
+    ["film-w6", "architect-w7"]
+  );
+  assert.deepEqual(
+    result.checkpoints.find((row) => row.id === "deadline-pressure").evidenceIds,
+    ["promise-w10", "promise-receipt"]
+  );
+  assert.match(result.reckoning.summary, /2 executed tactical calls/);
+  assert.match(result.reckoning.disclaimer, /does not claim.*caused/i);
+});
+
+test("missing Opening Contract receipt stays visibly unproven", () => {
+  const input = dashboard({ startScenarioReceipt: null, currentWeek: 6 });
+  const ledger = buildSeasonThesisLedger(input);
+  const result = buildSeasonChapter(input);
+  assert.equal(ledger.available, false);
+  assert.equal(ledger.thesisId, null);
+  assert.equal(ledger.status, "unproven");
+  assert.equal(result.seasonThesis.thesisId, null);
+  assert.match(result.detail, /unproven/i);
+  assert.ok(!result.evidence.some((entry) => entry.startsWith("thesis:")));
 });
 
 test("opening contract and active deadline promise remain exact source authorities", () => {

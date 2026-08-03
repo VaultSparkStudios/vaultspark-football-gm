@@ -102,9 +102,19 @@
     "founderQueue": {
       "enabled": true,
       "mode": "private"
+    },
+    "obelisk": {
+      "enabled": false,
+      "phase": "phase-0-public-anonymous",
+      "authority": "Obelisk",
+      "identityRequired": false,
+      "detail": "Public static play remains anonymous in Phase 0; any future account or agent capability must adopt the Studio-wide Obelisk identity plane before activation."
     }
   },
-  "secretsCapabilities": [],
+  "secretsCapabilities": [
+    "cloudflare.deploy",
+    "zoho.mail.admin"
+  ],
   "hosting": {
     "hostingProvider": "github-pages",
     "liveUrl": "https://playfranchisearchitect.com/",

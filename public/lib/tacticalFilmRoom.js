@@ -1,29 +1,43 @@
-const TACTICS = {
+export const TACTIC_MODEL_VERSION = "2.0";
+
+const TACTICS = Object.freeze({
   "run-heavy": {
     label: "Run-Heavy",
+    unit: "offense",
+    summary: "Ground game focus",
     intent: "control possession and force the defense to fit the run",
     tradeoff: "Fewer downfield attempts if the box stays light.",
-    target: "rush share"
+    target: "rush share",
+    modifiers: Object.freeze({ passLeanDelta: -0.15, offenseAggressionDelta: 0.05 })
   },
   "pass-heavy": {
     label: "Pass-Heavy",
+    unit: "offense",
+    summary: "Air attack tempo",
     intent: "stress coverage horizontally and vertically",
     tradeoff: "More dropbacks expose protection and turnover risk.",
-    target: "pass share"
+    target: "pass share",
+    modifiers: Object.freeze({ passLeanDelta: 0.15, offenseAggressionDelta: 0.05 })
   },
   "blitz-heavy": {
     label: "Blitz Package",
+    unit: "defense",
+    summary: "Pressure package",
     intent: "speed up the opposing quarterback",
     tradeoff: "Extra rushers leave fewer defenders behind the pressure.",
-    target: "pressure outcomes"
+    target: "pressure outcomes",
+    modifiers: Object.freeze({ defenseAggressionDelta: 0.2 })
   },
   prevent: {
     label: "Prevent Defense",
+    unit: "defense",
+    summary: "Prevent defense",
     intent: "limit explosive passes and keep the game in front",
     tradeoff: "Short completions and long drives remain available.",
-    target: "explosive passes allowed"
+    target: "explosive passes allowed",
+    modifiers: Object.freeze({ defenseAggressionDelta: -0.15 })
   }
-};
+});
 
 function teamId(team = {}) {
   return team.id || team.teamId || team.abbrev || null;
@@ -173,6 +187,9 @@ export function buildTacticalFilmReceipt({ tactic, results = [], controlledTeamI
   return {
     id: `film-${year ?? result.year ?? "?"}-${result.week ?? "?"}-${controlledTeamId}-${tactic}`,
     tactic,
+    definitionVersion: TACTIC_MODEL_VERSION,
+    tacticAuthorityId: `tactical-plan@${TACTIC_MODEL_VERSION}:${tactic}`,
+    unit: meta.unit,
     label: meta.label,
     intent: meta.intent,
     target: meta.target,
@@ -260,5 +277,7 @@ export function buildTacticalIdentityLedger(receipts = []) {
   };
 }
 export function tacticDefinition(id) {
-  return TACTICS[id] ? { id, ...TACTICS[id] } : null;
+  return TACTICS[id]
+    ? { id, definitionVersion: TACTIC_MODEL_VERSION, authorityId: `tactical-plan@${TACTIC_MODEL_VERSION}:${id}`, ...TACTICS[id] }
+    : null;
 }

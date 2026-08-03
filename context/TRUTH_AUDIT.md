@@ -457,3 +457,25 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - **Backup truth:** rolling backups are bounded by bytes as well as count, and always retain at least one. The previous default retained up to 40 full snapshots, which is what produced `Auto-backup skipped: Browser storage is full` during ordinary play.
 - **Migration truth:** every persisted-snapshot load path now goes through `migrateSnapshot`, including `/api/rewind/restore`, which previously restored without migrating. Loading a legacy franchise reclaims its stored payload rather than only affecting games played from that point on.
 - **Release truth:** unchanged and still HOLD on external authorities. `/_health` remains 404 on `playfranchisearchitect.com` (stale origin binding, re-verified S64), and the delivered-email receipt, founder approval and registry lifecycle reconciliation are owned elsewhere.
+
+## 2026-08-02 — Session 68 truth surface changes
+
+- **Tactic truth:** one frozen authority owns tactic unit, modifiers, description, and model version; simulator, command, browser, and film receipts consume it rather than reclassifying names independently.
+- **Plan truth:** the previous tactic is only a standing proposal. Source-derived red flags force rehearsal; a stable week may reinforce without falsely claiming new analysis.
+- **Season truth:** the thesis ledger persists exact Opening Contract and checkpoint receipts. Its reckoning is descriptive and explicitly non-causal.
+- **Test truth:** partial shard progress is atomic but `authoritative:false`; the final complete digest-bound receipt passes 800/800. Browser truth passes 33/33 and responsive truth 53/53.
+- **Visual truth:** manual inspection of four retained dark/light desktop/mobile captures found mobile objects rendered as text despite green automated metrics. The projection was fixed, static assets rebuilt, and the corrected images re-inspected with zero blocking defects.
+- **Release truth:** the production origin now proves 9/9 routes, `/_health`, HSTS, frame protection, and CSP at deployed revision `0ad328d790428effd212023b0416915d90ab03aa`. Launch remains HOLD because the candidate revision is different, staging is not independent, received email and founder approval are absent, and authoritative lifecycle disagrees. Production health is not launch readiness.
+- **Propagation truth:** generic Studio files that removed project-specific startup authority were rolled back after executing tests proved the regression. No sibling tree was changed.
+- **Cost truth:** no dependency, paid service, external model, or variable-cost runtime was introduced; flat-rate Max Plan accounting remains notional.
+
+## 2026-08-02 — Session 68 truth surface changes
+
+- **Tactic truth:** one frozen authority owns tactic unit, modifiers, description, and model version; simulator, command, browser, and film receipts consume it rather than reclassifying names independently.
+- **Plan truth:** the previous tactic is only a standing proposal. Source-derived red flags force rehearsal; a stable week may reinforce without falsely claiming new analysis.
+- **Season truth:** the thesis ledger persists exact Opening Contract and checkpoint receipts. Its reckoning is descriptive and explicitly non-causal.
+- **Test truth:** partial shard progress is atomic but `authoritative:false`; the final complete digest-bound receipt passes 800/800. Browser truth passes 33/33 and responsive truth 53/53.
+- **Visual truth:** manual inspection of four retained dark/light desktop/mobile captures found mobile objects rendered as text despite green automated metrics. The projection was fixed, static assets rebuilt, and the corrected images re-inspected with zero blocking defects.
+- **Release truth:** the production origin now proves 9/9 routes, `/_health`, HSTS, frame protection, and CSP at deployed revision `0ad328d790428effd212023b0416915d90ab03aa`. Launch remains HOLD because the candidate revision is different, staging is not independent, received email and founder approval are absent, and authoritative lifecycle disagrees. Production health is not launch readiness.
+- **Propagation truth:** generic Studio files that removed project-specific startup authority were rolled back after executing tests proved the regression. No sibling tree was changed.
+- **Cost truth:** no dependency, paid service, external model, or variable-cost runtime was introduced; flat-rate Max Plan accounting remains notional.

@@ -5,7 +5,7 @@
 > Suggest: `node ../vaultspark-studio-ops/scripts/check-canon-adoption.mjs --project . --suggest` uses conformance evidence to pre-fill safe suggestions.
 > Mark each: **adopted** · **pending** · **review** · **exempt (reason)**. This file is maintained, not auto-trusted.
 
-Audience: public-unlaunched · Live ACTIVE canons: 51 · Pending review: 3
+Audience: public-unlaunched · Live ACTIVE canons: 52 · Pending review: 3
 
 | Canon | Title | Status | Evidence / note |
 |---|---|---|---|
@@ -60,4 +60,5 @@ Audience: public-unlaunched · Live ACTIVE canons: 51 · Pending review: 3
 | CANON-050 | Atlas: the foundation that carries the ecosystem — and the s | exempt (Atlas foundation ownership is outside this project; no local substitution is claimed.) | N/A at project scope; reviewed 2026-07-22. |
 | CANON-051 | Web Hardening: every public surface meets the edge-security  | pending | Pending: local hardening passes, but exact canonical custom-origin project health/headers remain unproved. |
 | CANON-052 | Project Lifecycle Ladder: FORGE/SPARKED/VAULTED with sub-sta | pending | Pending: local FORGE truth conflicts with authoritative registry SPARKED; reconcile through Studio Ark. |
+| CANON-053 | Rendered-Pixel UI Discipline: look at the real interface whi | adopted (suggested) | Conformance checker passed: no UI/UX files changed |
 

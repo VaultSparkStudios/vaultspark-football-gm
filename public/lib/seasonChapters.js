@@ -1,4 +1,7 @@
-export const SEASON_CHAPTER_SCHEMA_VERSION = "1.0";
+import { buildTacticalIdentityLedger } from "./tacticalFilmRoom.js";
+
+export const SEASON_CHAPTER_SCHEMA_VERSION = "1.1";
+export const SEASON_THESIS_SCHEMA_VERSION = "1.0";
 
 function text(value, fallback) {
   const rendered = String(value ?? "").trim();
@@ -21,6 +24,143 @@ function chapter({ id, label, title, detail, nextCall, targetTab = "overviewTab"
   };
 }
 
+function boundedIds(rows = [], limit = 12) {
+  return [...new Set(rows.map((entry) => entry?.id || entry?.receiptId).filter(Boolean))].slice(0, limit);
+}
+
+function receiptWeek(entry = {}) {
+  return Number(entry.week ?? entry.execution?.started?.week ?? 0);
+}
+
+function inWeekWindow(entry, start, end) {
+  const week = receiptWeek(entry);
+  return week >= start && week <= end;
+}
+
+function checkpointStatus({ currentWeek, start, end, evidenceIds, phase, phaseGate = null }) {
+  if (evidenceIds.length) return "evidenced";
+  if (phaseGate) return phase === phaseGate ? "open" : phase === "season-awards" ? "unproven" : "upcoming";
+  if (currentWeek < start) return "upcoming";
+  if (currentWeek > end) return "unproven";
+  return "open";
+}
+
+export function buildSeasonThesisLedger(dashboard = {}) {
+  const year = Number(dashboard.currentYear) || null;
+  const currentWeek = Math.max(0, Number(dashboard.currentWeek) || 0);
+  const phase = text(dashboard.phase, "unknown");
+  const opening = dashboard.startScenarioReceipt || null;
+  const identity = opening?.effects?.identity || null;
+  const openingReceiptId = opening?.receiptId || null;
+  const thesisId = openingReceiptId && year ? `${openingReceiptId}:season:${year}` : null;
+  const film = (dashboard.tacticalFilmLedger || []).filter((entry) =>
+    Number(entry?.year) === year || (!entry?.year && currentWeek <= 1)
+  );
+  const architect = (dashboard.architectLedger || []).filter((entry) => Number(entry?.year) === year);
+  const activeCommitments = (dashboard.gmCommitments?.active || []).filter((entry) =>
+    !entry?.createdYear || Number(entry.createdYear) === year
+  );
+  const latestCommitment = Number(dashboard.gmCommitments?.latestReceipt?.year) === year
+    ? dashboard.gmCommitments.latestReceipt
+    : null;
+  const checkpointRows = [
+    { id: "opening-contract", start: 0, end: 1, rows: openingReceiptId ? [{ id: openingReceiptId }] : [] },
+    { id: "foundation", start: 1, end: 4, rows: [...film, ...architect].filter((entry) => inWeekWindow(entry, 1, 4)) },
+    { id: "identity-test", start: 5, end: 8, rows: [...film, ...architect].filter((entry) => inWeekWindow(entry, 5, 8)) },
+    { id: "deadline-pressure", start: 9, end: 11, rows: [...activeCommitments, ...(latestCommitment ? [latestCommitment] : [])] },
+    { id: "separation", start: 12, end: 14, rows: [...film, ...architect].filter((entry) => inWeekWindow(entry, 12, 14)) },
+    { id: "playoff-push", start: 15, end: 18, rows: [...film, ...architect].filter((entry) => receiptWeek(entry) >= 15) },
+    { id: "postseason", phaseGate: "postseason", rows: [...film, ...architect].filter((entry) => receiptWeek(entry) >= 19) },
+    { id: "season-reckoning", phaseGate: "season-awards", rows: [...film, ...architect, ...(latestCommitment ? [latestCommitment] : [])] }
+  ];
+  const checkpoints = checkpointRows.map((entry) => {
+    const evidenceIds = boundedIds(entry.rows, 8);
+    return {
+      id: entry.id,
+      status: checkpointStatus({
+        currentWeek,
+        start: entry.start ?? 0,
+        end: entry.end ?? Number.MAX_SAFE_INTEGER,
+        evidenceIds,
+        phase,
+        phaseGate: entry.phaseGate || null
+      }),
+      evidenceIds
+    };
+  });
+  const identityLedger = buildTacticalIdentityLedger(film);
+  const aligned = film.filter((entry) => entry?.aligned === true).length;
+  const sourceIds = boundedIds([
+    ...(openingReceiptId ? [{ id: openingReceiptId }] : []),
+    ...film,
+    ...architect,
+    ...activeCommitments,
+    ...(latestCommitment ? [latestCommitment] : [])
+  ]);
+  const status = !thesisId
+    ? "unproven"
+    : film.length + architect.length >= 3
+      ? "established"
+      : film.length + architect.length > 0
+        ? "installing"
+        : "declared";
+  return {
+    schemaVersion: SEASON_THESIS_SCHEMA_VERSION,
+    kind: "season-thesis-ledger",
+    thesisId,
+    available: Boolean(thesisId),
+    year,
+    openingReceiptId,
+    identity: {
+      id: identity?.id || opening?.selections?.identity || null,
+      label: text(identity?.label, "Opening Contract identity not available")
+    },
+    status,
+    checkpoints,
+    receipts: {
+      sourceIds,
+      tacticalFilm: film.length,
+      alignedTargets: aligned,
+      architectReviews: architect.length,
+      activeCommitments: activeCommitments.length,
+      latestCommitmentStatus: latestCommitment?.status || null
+    },
+    reckoning: {
+      status,
+      summary: thesisId
+        ? `${film.length} executed tactical call${film.length === 1 ? "" : "s"} · ${aligned} matched declared target${aligned === 1 ? "" : "s"} · ${architect.length} Architect review${architect.length === 1 ? "" : "s"}${identityLedger ? ` · ${identityLedger.summary}` : ""}`
+        : "No exact Opening Contract receipt is available; the season thesis remains unproven.",
+      disclaimer: "The reckoning summarizes bounded source receipts. It does not claim the thesis caused results, predict an outcome, or grant a hidden bonus."
+    }
+  };
+}
+
+function bindChapterToThesis(base, thesis, checkpointId) {
+  const checkpoint = thesis.checkpoints.find((entry) => entry.id === checkpointId)
+    || { id: checkpointId, status: "unproven", evidenceIds: [] };
+  const thesisLine = thesis.available
+    ? `Season thesis: ${thesis.identity.label} · checkpoint ${checkpoint.status}.`
+    : "Season thesis: unproven — no exact Opening Contract receipt is available.";
+  return {
+    ...base,
+    detail: `${base.detail} ${thesisLine}`,
+    evidence: [...new Set([
+      ...(base.evidence || []),
+      ...(thesis.thesisId ? [`thesis:${thesis.thesisId}`] : []),
+      ...checkpoint.evidenceIds.map((id) => `receipt:${id}`)
+    ])],
+    seasonThesis: {
+      schemaVersion: thesis.schemaVersion,
+      thesisId: thesis.thesisId,
+      identity: thesis.identity,
+      checkpointId,
+      checkpointStatus: checkpoint.status,
+      evidenceIds: checkpoint.evidenceIds,
+      reckoning: checkpointId === "season-reckoning" ? thesis.reckoning : null
+    }
+  };
+}
+
 export function buildSeasonChapter(dashboard = {}) {
   const phase = text(dashboard.phase, "unknown");
   const week = Math.max(0, Number(dashboard.currentWeek) || 0);
@@ -29,10 +169,11 @@ export function buildSeasonChapter(dashboard = {}) {
   const activePromise = dashboard.gmCommitments?.active?.[0] || null;
   const owner = dashboard.controlledTeam?.owner?.expectation || null;
   const evidence = [`phase:${phase}`, `week:${week || "unknown"}`, `year:${year || "unknown"}`];
+  const thesis = buildSeasonThesisLedger(dashboard);
 
   if (opening && opening.status !== "completed") {
     const nextStep = opening.steps?.find((entry) => !entry.complete) || null;
-    return chapter({
+    return bindChapterToThesis(chapter({
       id: "opening-contract",
       label: "Opening Contract",
       title: text(nextStep?.label, "Establish the opening promise"),
@@ -41,27 +182,27 @@ export function buildSeasonChapter(dashboard = {}) {
       targetId: "openingContractCard",
       tone: "warning",
       evidence: [...evidence, `opening:${opening.status}`]
-    });
+    }), thesis, "opening-contract");
   }
 
   if (phase === "regular-season") {
-    if (week <= 4) return chapter({
+    if (week <= 4) return bindChapterToThesis(chapter({
       id: "foundation",
       label: "Foundation",
       title: "Prove the opening identity",
       detail: "The first month establishes whether the declared football identity survives live personnel and opponent pressure.",
       nextCall: "Reach the Week 5 checkpoint with a committed tactic and film receipt.",
       evidence
-    });
-    if (week <= 8) return chapter({
+    }), thesis, "foundation");
+    if (week <= 8) return bindChapterToThesis(chapter({
       id: "identity-test",
       label: "Identity Test",
       title: "Reinforce or counter the first film pattern",
       detail: "The opening sample now supports a deliberate continuity or adaptation call; it does not support a causal tactic claim.",
       nextCall: "Carry one explicit identity response into the trade-deadline window.",
       evidence
-    });
-    if (week <= 11) return chapter({
+    }), thesis, "identity-test");
+    if (week <= 11) return bindChapterToThesis(chapter({
       id: "deadline-pressure",
       label: "Deadline Pressure",
       title: activePromise ? text(activePromise.label, "Honor the active General Manager promise") : "Choose what this roster is becoming",
@@ -75,16 +216,16 @@ export function buildSeasonChapter(dashboard = {}) {
       targetId: "tradeDeadlineFrenzy",
       tone: "warning",
       evidence: [...evidence, `promise:${activePromise?.id || "none"}`]
-    });
-    if (week <= 14) return chapter({
+    }), thesis, "deadline-pressure");
+    if (week <= 14) return bindChapterToThesis(chapter({
       id: "separation",
       label: "Separation",
       title: text(owner?.mandate, "Turn the roster decision into a finish"),
       detail: owner ? `${text(owner.trend, "watch")} owner trend · heat ${owner.heat ?? "?"}.` : "The deadline has passed; the next evidence is the team's late-season response.",
       nextCall: "Reach the final-month checkpoint with the active promise resolved.",
       evidence
-    });
-    return chapter({
+    }), thesis, "separation");
+    return bindChapterToThesis(chapter({
       id: "playoff-push",
       label: "Playoff Push",
       title: text(owner?.mandate, "Close the regular season"),
@@ -92,10 +233,10 @@ export function buildSeasonChapter(dashboard = {}) {
       nextCall: "Commit the next weekly plan and reach the postseason gate without inferring the result.",
       tone: "danger",
       evidence
-    });
+    }), thesis, "playoff-push");
   }
 
-  if (phase === "postseason") return chapter({
+  if (phase === "postseason") return bindChapterToThesis(chapter({
     id: "postseason",
     label: "Postseason",
     title: "The season promise is under elimination pressure",
@@ -103,9 +244,9 @@ export function buildSeasonChapter(dashboard = {}) {
     nextCall: "Review the matchup, declare the plan, and advance the next playoff gate.",
     tone: "danger",
     evidence
-  });
+  }), thesis, "postseason");
 
-  if (phase === "season-awards") return chapter({
+  if (phase === "season-awards") return bindChapterToThesis(chapter({
     id: "season-reckoning",
     label: "Season Reckoning",
     title: "Turn the completed season into an architectural lesson",
@@ -115,7 +256,7 @@ export function buildSeasonChapter(dashboard = {}) {
     targetId: "seasonAwardsSpotlight",
     tone: "positive",
     evidence
-  });
+  }), thesis, "season-reckoning");
 
   if (phase === "offseason") {
     // The free-agency window is the one offseason stage that holds for the GM,

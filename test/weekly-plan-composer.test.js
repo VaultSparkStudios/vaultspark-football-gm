@@ -105,3 +105,26 @@ test("committed receipt keeps the source used to red-team the plan visible", asy
   const committed = commitWeeklyPlanReceipt(preview.receipt, { state: { currentYear: 2030, currentWeek: 8, controlledTeamId: "BUF" } });
   assert.match(describeWeeklyPlanReceipt(committed).detail, /reviewed against Latest matching film/);
 });
+
+test("stable standing plans emit an honest reinforcement step instead of a fabricated review", async () => {
+  const preview = await composeWeeklyPlan({
+    phase: "regular-season",
+    collectTactic: async () => "run-heavy",
+    reviewPlan: async () => ({
+      status: "commit",
+      mode: "standing-reinforcement",
+      evidence: {
+        mode: "standing-reinforcement",
+        reviewed: false,
+        sourceReceiptId: "film-2030-7-BUF-run-heavy"
+      }
+    })
+  });
+  assert.deepEqual(preview.receipt.compositionOrder, [
+    "gm-decision",
+    "tactic",
+    "standing-plan-reinforced"
+  ]);
+  assert.equal(preview.receipt.review.reviewed, false);
+  assert.match(describeWeeklyPlanReceipt(preview.receipt).detail, /reinforced from film-2030-7-BUF-run-heavy/);
+});

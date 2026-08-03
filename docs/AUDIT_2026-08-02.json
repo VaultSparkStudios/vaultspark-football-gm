@@ -1,0 +1,295 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-02",
+  "session": 68,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 5,
+    "combinedPriority": 145.3,
+    "topItem": "weekly-tactic-unit-authority",
+    "source": "live-code-audit",
+    "openItems": 0,
+    "completedItems": 5,
+    "priorityFormula": "Priority = Impact × Innovation / log2(EffortHours + 2); execution rank is dependency-aware.",
+    "theme": "The simulation has become deep enough that the next defects live at authority boundaries: a defensive call mutates the offense, repeated intent is treated as ceremony instead of identity, season promises lose their source ID, and release/test observability requires process forensics."
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "product rubric with game-medium overlay and infrastructure-grade authority checks",
+    "staging": "GitHub Pages configured, but live probe is not an independent valid staging origin; launch remains HOLD",
+    "source": "live code, dynamic in-process tactic probe, direct suite attempt, public-origin release probes, app-release gate, and game-loop review"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation",
+    "ci": "Current main CI is green, but the literal last-five-repository-runs gate is red because three non-main runs failed.",
+    "staging": "Configured Pages staging fails 9/9 route probes through insecure redirect targets and is not an independent staging origin.",
+    "production": "Production health and required edge headers are green, but deployed revision 0ad328d trails main 04ca29a.",
+    "secrets": "cloudflare.deploy READY; zoho.mail.admin MISSING. Email delivery/reply receipt and founder approval remain independent blockers."
+  },
+  "gameLoopReview": {
+    "loopTightness": 7,
+    "progression": 8,
+    "sessionEngagement": 7,
+    "retention": 5,
+    "soulFidelity": 6,
+    "overall": 6.6,
+    "evidence": "Structural scores only. Outcome confidence is low because docs/PLAYTESTS is absent and the public SOUL is intentionally only a summary. The tactic cross-coupling is high-confidence live code evidence; modal-tax and retention findings are explicitly framed as structural risks, not player-impact claims."
+  },
+  "recommendedMoves": [
+    "Split tactical effects by offensive and defensive authority, while preserving the opponent-derived base weekly plan and proving semantic isolation in focused tests.",
+    "Turn repeated identity into a one-click standing-plan reinforcement and reserve the full red-team rehearsal for source-derived counter-signals.",
+    "Carry one exact Opening Contract thesis ID through every season chapter and render the reckoning from bounded receipts only."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "release",
+      "candidate": "Flip lifecycle or declare launch ready from this repo",
+      "reason": "Rejected. Staging, deployed revision, email delivery/reply, founder approval, and registry/local lifecycle authorities are independently red. No launch evidence may be fabricated."
+    },
+    {
+      "axis": "creative",
+      "candidate": "General Manager firing / terminal game-over",
+      "reason": "Honestly deferred again: founder creative direction is still required. Owner pressure may remain live without autonomously inventing the player's ending."
+    },
+    {
+      "axis": "persistence",
+      "candidate": "Delete zero-importer IndexedDB/mod/rewind modules",
+      "reason": "Rejected as harmful phantom cleanup. The IndexedDB adapter is a complete high-capacity migration option and the mod loader is a complete public extension seam."
+    },
+    {
+      "axis": "performance",
+      "candidate": "Memoize getDashboardState immediately",
+      "reason": "Deferred with its measured 24.7 ms cost. Current polling does not make it player-visible, while caching risks stale authority against the hydration fences."
+    },
+    {
+      "axis": "platform",
+      "candidate": "Add docs/CREATIVE_DIRECTION_RECORD.md to satisfy the canonical release gate",
+      "reason": "Rejected. This public repo explicitly tests that the private creative ledger is absent. The gate requirement is a sibling-owned mechanization defect and must be routed through signed Ark cargo."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Simulation authority / core loop correctness",
+      "effortHours": 3,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 34.5,
+      "slug": "weekly-tactic-unit-authority",
+      "title": "A defensive call can no longer rewrite the offense",
+      "status": "shipped",
+      "premise": "The four player-facing tactics share passLeanDelta and aggressionDelta. The simulator consumes those same fields on offensive run/pass choice, offensive fourth-down aggression, defensive coverage, defensive sack rate, and defensive power. Dynamic proof on seed 49008: blitz-heavy writes passLeanDelta -0.05 and aggressionDelta +0.20; prevent writes -0.10 and -0.15, so both defensive calls alter the controlled offense. Object.assign also overwrites the source-derived weekly matchup deltas instead of layering a unit-scoped override.",
+      "evidence": [
+        "src/runtime/advanceWeekCommand.js:9-13",
+        "src/engine/gameSimulator.js:266-276,563-569,743-752,897-903,1091-1101",
+        "Dynamic in-process capture: run-heavy {-0.15,+0.05}; pass-heavy {+0.15,+0.05}; blitz-heavy {-0.05,+0.20}; prevent {-0.10,-0.15}"
+      ],
+      "constraint": "The opponent-derived base weekly plan intentionally carries one strategic aggression delta across both units. The repair must preserve that base behavior, add unit-scoped player overrides, restore the original plan after simulation failure, and keep snapshots deterministic.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Remove passLeanDelta from defensive tactics and stop using their aggression value on offensive call sites."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Make tacticalFilmRoom the one tactic-definition authority, label every tactic offense/defense, and expose unit-scoped modifiers. Layer offenseAggressionDelta or defenseAggressionDelta over the opponent-derived base plan rather than overwriting it. Route every simulator consumer through a pure unit resolver; add command-seam and engine semantic-isolation tests proving defensive calls cannot alter offensive pass lean/fourth-down aggression and offensive calls cannot alter defensive pressure/power. Surface the unit in film and command receipts."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus a two-slot gameplan matrix that lets the player declare both an offensive identity and defensive shell in one bounded weekly command."
+        }
+      },
+      "executionEvidence": "Shipped one frozen tactic-definition authority with offense/defense units and layered modifiers; every simulator consumer now resolves the correct unit while preserving the opponent-derived base plan. Command-seam and focused tests prove cross-unit isolation, restoration on failure, deterministic receipts, and versioned tactic authority."
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "UI/UX / engagement / decision compression",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 9,
+      "priority": 31,
+      "slug": "standing-plan-red-flag-rehearsal",
+      "title": "Repetition becomes deliberate identity instead of modal tax",
+      "status": "shipped",
+      "premise": "Every regular-season advance unconditionally opens tactic collection and the full Architect red-team modal, even when the player is reinforcing the same executed plan and no source-derived counter-signal changed. This is a structural pacing risk, not a claimed retention outcome. The tactical film ledger already provides an authoritative last executed tactic, so no new hidden state is required.",
+      "evidence": [
+        "public/app.js:358-377 unconditionally wires collectTactic and reviewPlan",
+        "public/lib/weeklyPlanComposer.js:64-106 requires the same review loop every regular-season week",
+        "public/lib/tacticalFilmRoom.js already publishes bounded recent executed-tactic receipts"
+      ],
+      "constraint": "Skipping ceremony must never skip a real decision. A new GM choice, failed matching film, owner ultimatum, pending Architect thesis, material adaptation signal, explicit plan change, or first plan must still require full review.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Preselect the most recent executed tactic in the modal and relabel confirmation as Reinforce."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Derive a standing plan from the latest bounded tactical-film receipt, preselect it in the browser UI, and add a pure red-flag assessor over live dashboard evidence. A same-plan reinforcement with no material counter-signal commits after one explicit click and emits an honest standing-reinforcement receipt; any first/change/decision/failed-film/ultimatum/thesis/adaptation case opens the full red-team rehearsal. Test composition order, source reasons, UI preselection, and non-mutation on defer."
+        },
+        "L3": {
+          "effortHours": 4.5,
+          "recipe": "L2 plus user-authored persistence rules such as reinforce until opponent soft-side changes or owner pressure crosses a named band."
+        }
+      },
+      "executionEvidence": "Shipped a live-evidence standing-plan assessor, visible preselection, one-click Reinforce path, and exact standing-reinforcement receipt. First plans, changes, failed film, GM calls, owner pressure, thesis/adaptation signals, and controlled injuries still force the full Architect rehearsal. Focused UI/composition tests are green."
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Progression / narrative authority / retention",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 31.3,
+      "slug": "season-thesis-ledger",
+      "title": "One exact promise survives every chapter into the reckoning",
+      "status": "shipped",
+      "premise": "The GAME_LOOP contract promises a season thesis carried through chapters, but Foundation and Identity Test are week-threshold copy, the exact active promise appears only in Deadline Pressure, Separation drops its ID, Postseason becomes generic, and Reckoning names evidence without deriving a verdict. The dashboard already exposes the Opening Contract receipt, bounded tactical film, Architect ledger, commitments, owner state, and season authority.",
+      "evidence": [
+        "context/GAME_LOOP.md:23-30",
+        "public/lib/seasonChapters.js:47-117",
+        "test/season-chapters.test.js currently pins calendar transitions and one deadline promise only"
+      ],
+      "constraint": "The ledger may organize and summarize source receipts but must never infer causation, predict results, or award a hidden bonus. Missing evidence must render as unproven rather than guessed.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Carry the Opening Contract receipt ID and identity label into every chapter's evidence array."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Create one pure season-thesis ledger derived from the exact Opening Contract receipt and current season. Bind each chapter to a named checkpoint, exact thesis ID, bounded tactical/Architect/commitment receipt IDs, and an honest achieved/open/unproven status. Rewrite chapter titles, details, and next calls around that same authority; Season Reckoning renders a bounded receipt summary and non-causal verdict. Drive Week Room and return digest from the same object and add source-ID, missing-evidence, restore, and no-causation tests."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "L2 plus a visual season blueprint timeline with selectable receipt provenance for each checkpoint."
+        }
+      },
+      "executionEvidence": "Shipped a pure season-thesis ledger rooted in the exact Opening Contract receipt. Every season chapter carries one thesis ID, checkpoint status, and bounded receipt IDs; missing evidence is unproven, and Season Reckoning is explicitly non-causal. Chapter, return, and world-state focused tests are green."
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Infrastructure / test observability / efficiency",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 28,
+      "slug": "test-shard-progress-proof",
+      "title": "A long suite proves where it is without process-table forensics",
+      "status": "shipped",
+      "premise": "npm test delegates to run-test-shard.mjs, which captures each entire shard through spawnSync with no timeout and writes the aggregate receipt only after all five shards finish. The current direct baseline exceeded sixteen minutes with no durable partial receipt; the active sim-contract shard was discoverable only from Win32 process command lines. This is an observability defect, not a test failure.",
+      "evidence": [
+        "scripts/run-test-shard.mjs runShard uses spawnSync with maxBuffer but no timeout",
+        "Atomic receipt is written only after every DEFAULT_SHARDS entry succeeds",
+        "2026-08-02 baseline: core + runtime consumed about fourteen minutes under host load before sim-contract began; no partial receipt existed"
+      ],
+      "constraint": "Partial progress can never be read as a green suite. Exit codes and TAP summaries remain authoritative, and timed-out shards must fail explicitly with their captured diagnostic tail.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Add a bounded per-shard timeout and print start/end timestamps."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Add a versioned atomic partial receipt before and after every shard, including PID, start/end, elapsed time, parsed TAP totals, exit/signal/timeout, completed list, and current shard. Add a configurable bounded timeout with explicit timeout classification and preserve direct exit codes. Delete the partial receipt only after the final authoritative aggregate receipt is written. Add focused tests for progress transitions, timeout honesty, and no partial-green interpretation."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus resumable same-revision shard proofs keyed to the exact source/test manifest."
+        }
+      },
+      "executionEvidence": "Shipped versioned atomic .cache/test-progress.json transitions, runner PID, elapsed/TAP summaries, a configurable 20-minute per-shard bound, explicit timeout/failure classification, stale inspection, and a status CLI. The artifact is structurally authoritative:false and is removed only after a successful final receipt. Focused receipt/coverage tests are green."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Release observability / security declarations / coherence",
+      "effortHours": 2.5,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 20.5,
+      "slug": "structured-release-truth",
+      "title": "Checked-in launch truth cannot contradict the live origin silently",
+      "status": "shipped",
+      "premise": "PROJECT_STATUS still says /_health is 404 and required headers are missing, while the live report now proves all nine production routes, health receipt, HSTS, CSP, frame protection, nosniff, and referrer policy green. Production is nevertheless not current and launch is still HOLD. The manifest also declares no capabilities despite Cloudflare deploy and on-domain mail administration being real release dependencies, and it lacks an Obelisk architecture declaration.",
+      "evidence": [
+        "Live scripts/launch-evidence-report.mjs: production routes and origin evidence green; email unverified",
+        "verify-release-provenance: 6/7, live 0ad328d vs main 04ca29a",
+        "context/PROJECT_STATUS.json currentFocus/blocker prose still names stale 404/header failures",
+        "context/STUDIO_MANIFEST.json requiredSecretCapabilities is empty; zoho.mail.admin is MISSING"
+      ],
+      "constraint": "A route-green report cannot imply launch-ready. Email delivery/reply, exact deployed revision, valid staging, founder approval, and lifecycle authority remain separately red. Secret values never enter the repo.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Refresh the stale status prose from today's exact live report and declare required capability names in the manifest."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Add a structured releaseEvidence contract to PROJECT_STATUS populated only from an exact launch-evidence JSON receipt whose generator, runtime URL, timestamp, health sourceRevision, and required header fields validate. Keep independent gates as explicit structured booleans/unknowns, update human prose from that contract, and declare cloudflare.deploy, zoho.mail.admin, and the Phase-0 Obelisk architecture in STUDIO_MANIFEST. Add validation tests that reject stale, wrong-origin, missing-revision, or route-green-but-email/approval-red receipts. Do not add the private CDR file or flip lifecycle."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "L2 plus a generated public release-evidence page that explains every HOLD gate with receipt provenance."
+        }
+      },
+      "executionEvidence": "Shipped a receipt-validated PROJECT_STATUS releaseEvidence contract and reconciler. Fresh live proof now records 9/9 routes, origin health, exact deployed revision 0ad328d, and required headers green while preserving email, revision parity, independent staging, founder approval, and lifecycle as separate HOLD gates. Manifest declares Cloudflare, mail-admin, and Phase-0 Obelisk architecture."
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "versioned-tactic-receipt-authority",
+      "status": "shipped",
+      "premise": "Once unit-scoped tactic semantics became authoritative, saved film and command receipts needed a stable semantic identity so future migrations can distinguish historical definitions.",
+      "evidence": ["TACTIC_MODEL_VERSION plus tactical-plan@2.0:<tactic> now flows through definitions, applied weekly plans, command receipts, and film receipts; focused tests pin it."]
+    },
+    {
+      "slug": "return-thesis-continuity",
+      "status": "shipped",
+      "premise": "The new thesis authority would still disappear at the highest-value re-entry moment unless the return action and digest copy carried it.",
+      "evidence": ["Return actions now carry exact thesis/checkpoint IDs and render an honest established/open/unproven continuation line; focused tests pin the Opening Contract source ID."]
+    },
+    {
+      "slug": "release-contract-replay-validation",
+      "status": "shipped",
+      "premise": "A hashed release receipt is useful only if checked-in status can prove it still describes that exact receipt.",
+      "evidence": ["verifyReleaseEvidenceContract recomputes the contract and rejects hash, origin, revision, readiness, or blocker drift; reconcile --check exercises the replay path."]
+    },
+    {
+      "slug": "obelisk-broker-risk-engine",
+      "status": "deferred",
+      "disposition": "rejected-as-inapplicable",
+      "premise": "The innovation generator found a P0 risk stub in an untracked propagated Studio-OS broker file.",
+      "evidence": ["Rejected as a verified phantom for this public Phase-0 anonymous game: the file is byte-identical to sibling Studio Ops infrastructure, not referenced by product code, and test/session53-innovations.test.js requires the private broker absent. No sibling tree was edited."]
+    }
+  ],
+  "executionLog": [
+    "Primary 1/5: unit-safe tactical authority shipped and focused semantic-isolation tests passed.",
+    "Primary 2/5: standing-plan reinforcement and red-flag rehearsal shipped with browser wiring proof.",
+    "Primary 3/5: season-thesis ledger shipped with exact-source and missing-evidence proofs.",
+    "Primary 4/5: bounded non-authoritative shard progress proof shipped and tested.",
+    "Primary 5/5: live-receipt release truth reconciled without collapsing launch gates.",
+    "Second order: three viable candidates shipped; one propagated private-infrastructure phantom rejected with evidence."
+  ],
+  "totals": {
+    "count": 5,
+    "priority": 145.3,
+    "top3": [
+      "weekly-tactic-unit-authority",
+      "standing-plan-red-flag-rehearsal",
+      "season-thesis-ledger"
+    ],
+    "shipped": 5
+  }
+}

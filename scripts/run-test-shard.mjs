@@ -2,6 +2,13 @@
 import { pathToFileURL } from "node:url";
 import { spawnSync } from "./lib/safe-spawn.mjs";
 import { buildTestReceipt, parseTapSummary, writeTestReceiptAtomic } from "./lib/test-receipt.mjs";
+import {
+  buildTestProgress,
+  clearTestProgress,
+  inspectTestProgress,
+  resolveShardTimeoutMs,
+  writeTestProgressAtomic
+} from "./lib/test-progress.mjs";
 
 export const SHARDS = {
   core: [
@@ -142,6 +149,7 @@ export const SHARDS = {
     "test/lifecycle-coherence.test.js",
     "test/public-compliance.test.js",
     "test/release-provenance.test.js",
+    "test/release-truth.test.js",
     "test/secrets-gateway-authority.test.js",
     "test/session52-innovations.test.js",
     "test/session53-innovations.test.js",
@@ -150,6 +158,7 @@ export const SHARDS = {
     "test/static-module-roots.test.js",
     "test/service-worker-precache.test.js",
     "test/test-receipt.test.js",
+    "test/test-shard-progress.test.js",
     "test/shard-coverage.test.js",
     "test/duplicate-pr-guard.test.js",
     "test/studio-protocol-smoke.test.js",
@@ -166,7 +175,7 @@ function usage() {
   console.error(`Usage: node scripts/run-test-shard.mjs <${names}|all|list>`);
 }
 
-function runShard(name) {
+export function runShard(name, { timeoutMs = resolveShardTimeoutMs() } = {}) {
   const files = SHARDS[name];
   if (!files) {
     usage();
@@ -174,21 +183,72 @@ function runShard(name) {
   }
 
   console.log(`\n== ${name} shard (${files.length} files) ==`);
+  const startedAt = Date.now();
   const result = spawnSync(
     process.execPath,
     // Several integration files intentionally own listeners/timers after their
     // assertions finish. Node 24 otherwise waits forever even after emitting a
     // complete green TAP summary, preventing the atomic receipt from existing.
     ["--test", "--test-isolation=none", "--test-force-exit", ...files],
-    { encoding: "utf8", maxBuffer: 16 * 1024 * 1024 }
+    { encoding: "utf8", maxBuffer: 16 * 1024 * 1024, timeout: timeoutMs, killSignal: "SIGTERM" }
   );
   if (result.stdout) process.stdout.write(result.stdout);
   if (result.stderr) process.stderr.write(result.stderr);
+  const durationMs = Date.now() - startedAt;
+  const timedOut = result.error?.code === "ETIMEDOUT";
+  const summary = parseTapSummary(result.stdout || "");
+  summary.durationMs = durationMs;
+  if (timedOut) {
+    summary.valid = false;
+    summary.reason = `Shard exceeded the bounded ${timeoutMs}ms timeout.`;
+  }
   return {
     name,
-    status: result.status ?? 1,
-    summary: parseTapSummary(result.stdout || "")
+    status: timedOut ? 124 : (result.status ?? 1),
+    timedOut,
+    durationMs,
+    summary
   };
+}
+
+function executeWithProgress(command, shardNames, { writeGreenReceipt = false } = {}) {
+  const root = process.cwd();
+  const startedAt = new Date().toISOString();
+  const timeoutMs = resolveShardTimeoutMs();
+  const completed = [];
+  const update = (status, currentShard, failure = null) => writeTestProgressAtomic(root, buildTestProgress({
+    command,
+    requestedShards: shardNames,
+    completedShards: completed,
+    currentShard,
+    status,
+    startedAt,
+    timeoutMs,
+    failure
+  }));
+
+  for (const name of shardNames) {
+    update("running", name);
+    const result = runShard(name, { timeoutMs });
+    completed.push(result);
+    if (result.status !== 0) {
+      update(result.timedOut ? "timed-out" : "failed", name, {
+        shard: name,
+        exitCode: result.status,
+        reason: result.summary?.reason || "shard failed"
+      });
+      return result.status;
+    }
+    update("running", null);
+  }
+
+  if (writeGreenReceipt) {
+    const receipt = buildTestReceipt({ root, command, shards: completed });
+    const receiptPath = writeTestReceiptAtomic(root, receipt);
+    console.log(`\nDirect test receipt: ${receipt.passed}/${receipt.total} -> ${receiptPath}`);
+  }
+  clearTestProgress(root);
+  return 0;
 }
 
 const isMainModule =
@@ -204,26 +264,18 @@ if (isMainModule) {
     process.exit(0);
   }
 
-  if (requested === "all") {
-    const completed = [];
-    for (const name of DEFAULT_SHARDS) {
-      const result = runShard(name);
-      completed.push(result);
-      if (result.status !== 0) process.exit(result.status);
-    }
-    const receipt = buildTestReceipt({ root: process.cwd(), command: "all", shards: completed });
-    const receiptPath = writeTestReceiptAtomic(process.cwd(), receipt);
-    console.log(`\nDirect test receipt: ${receipt.passed}/${receipt.total} -> ${receiptPath}`);
+  if (requested === "status") {
+    console.log(JSON.stringify(inspectTestProgress(process.cwd()), null, 2));
     process.exit(0);
+  }
+
+  if (requested === "all") {
+    process.exit(executeWithProgress("all", DEFAULT_SHARDS, { writeGreenReceipt: true }));
   }
 
   if (requested === "full") {
-    for (const name of Object.keys(SHARDS)) {
-      const result = runShard(name);
-      if (result.status !== 0) process.exit(result.status);
-    }
-    process.exit(0);
+    process.exit(executeWithProgress("full", Object.keys(SHARDS)));
   }
 
-  process.exit(runShard(requested).status);
+  process.exit(executeWithProgress(requested, [requested]));
 }

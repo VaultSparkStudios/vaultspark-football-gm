@@ -57,7 +57,7 @@ test("missing ignored cache falls back to committed audit authority", () => {
   assert.equal(authority.status, "exhausted");
   assert.equal(authority.items.length, 0);
   assert.ok(authority.closed.length >= 5);
-  assert.ok(authority.closed.includes("cpu-inbound-trade-offers"));
+  assert.ok(authority.closed.includes("weekly-tactic-unit-authority"));
   assert.match(authority.source, /^AUDIT_\d{4}-\d{2}-\d{2}\.json$/);
 });
 

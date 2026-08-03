@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildReturnDigest, formatElapsed, ABSENCE_THRESHOLD_MS } from "../public/lib/returnDigest.js";
+import { buildReturnChapterAction, buildReturnDigest, formatElapsed, formatSeasonThesisContinuation, ABSENCE_THRESHOLD_MS } from "../public/lib/returnDigest.js";
 
 // buildReturnDigest is pure (no DOM) except for getUnreadCount(), which reads
 // localStorage — stub a minimal global so the module under test can import
@@ -71,4 +71,37 @@ test("formatElapsed renders hours under two days, days beyond that", () => {
   assert.equal(formatElapsed(3 * 60 * 60 * 1000), "3h");
   assert.equal(formatElapsed(30 * 60 * 60 * 1000), "30h");
   assert.equal(formatElapsed(3 * 24 * 60 * 60 * 1000), "3d");
+});
+
+test("return continuation carries the exact season thesis authority", () => {
+  const now = 1_000_000_000_000;
+  const prior = { scope: "legacy-buf-2026", timestamp: now - ABSENCE_THRESHOLD_MS - 1, year: 2026, week: 4 };
+  const digest = buildReturnDigest(dashboard({
+    currentWeek: 6,
+    startScenarioReceipt: {
+      receiptId: "opening-2026-BUF-v1",
+      effects: { identity: { id: "trench-builder", label: "Build through the trenches" } }
+    }
+  }), prior, now);
+  const action = buildReturnChapterAction(digest);
+  assert.equal(action.thesisId, "opening-2026-BUF-v1:season:2026");
+  assert.equal(action.thesisCheckpoint, "identity-test");
+  assert.match(formatSeasonThesisContinuation(digest.seasonChapter), /Build through the trenches.*identity-test is open/i);
+});
+
+test("legacy chapter actions keep their original shape when no thesis authority exists", () => {
+  assert.deepEqual(buildReturnChapterAction({
+    seasonChapter: {
+      id: "deadline-pressure",
+      label: "Deadline Pressure",
+      targetTab: "transactionsTab",
+      targetId: "tradeDeadlineFrenzy"
+    }
+  }), {
+    kind: "continue-season-chapter",
+    label: "Continue Deadline Pressure",
+    targetTab: "transactionsTab",
+    targetId: "tradeDeadlineFrenzy",
+    chapterId: "deadline-pressure"
+  });
 });
