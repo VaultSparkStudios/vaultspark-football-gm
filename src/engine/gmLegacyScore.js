@@ -238,16 +238,40 @@ export function getGmPersonaTier(legacy) {
   return TIER_DEFS[0];
 }
 
+const PERSONA_ADVANCEMENT_PATHS = Object.freeze({
+  2: Object.freeze([{ kind: "score", field: "score", target: 40, label: "Legacy score" }, { kind: "playoffs", field: "playoffAppearances", target: 1, label: "Playoff berths" }, { kind: "tenure", field: "seasonsServed", target: 3, label: "Seasons served" }]),
+  3: Object.freeze([{ kind: "score", field: "score", target: 55, label: "Legacy score" }, { kind: "playoffs", field: "playoffAppearances", target: 2, label: "Playoff berths" }]),
+  4: Object.freeze([{ kind: "score", field: "score", target: 68, label: "Legacy score" }, { kind: "playoffs", field: "playoffAppearances", target: 4, label: "Playoff berths" }, { kind: "titles", field: "superBowlWins", target: 1, label: "Championships" }]),
+  5: Object.freeze([{ kind: "score", field: "score", target: 80, label: "Legacy score" }, { kind: "titles", field: "superBowlWins", target: 3, label: "Championships" }]),
+  6: Object.freeze([{ kind: "score", field: "score", target: 90, label: "Legacy score" }, { kind: "titles", field: "superBowlWins", target: 5, label: "Championships" }])
+});
+
+function personaAdvancementPaths(nextTier, legacy, score) {
+  if (!nextTier) return [];
+  return (PERSONA_ADVANCEMENT_PATHS[nextTier.tier] || []).map((definition) => {
+    const current = definition.field === "score" ? score : Number(legacy?.[definition.field] || 0);
+    const remaining = Math.max(0, definition.target - current);
+    const progressPct = Math.max(0, Math.min(100, Math.round((current / Math.max(1, definition.target)) * 100)));
+    return {
+      kind: definition.kind,
+      label: definition.label,
+      current,
+      target: definition.target,
+      remaining,
+      progressPct,
+      satisfied: remaining === 0,
+      summary: `${definition.label}: ${current}/${definition.target}${remaining ? ` · ${remaining} remaining` : " · achieved"}`
+    };
+  });
+}
+
 export function getGmPersonaArc(legacy) {
   if (!legacy) return null;
   const current = getGmPersonaTier(legacy);
   const next = TIER_DEFS[current.tier] || null; // tier is 1-indexed
   const computed = computeGmLegacyScore(legacy);
-  const effectiveScore = Math.max(computed.score, current.scoreMin);
-  const span = next ? Math.max(1, next.scoreMin - current.scoreMin) : 1;
-  const progressPct = next
-    ? Math.max(0, Math.min(100, Math.round(((effectiveScore - current.scoreMin) / span) * 100)))
-    : 100;
+  const advancementPaths = personaAdvancementPaths(next, legacy, computed.score);
+  const activePath = advancementPaths.reduce((best, path) => !best || path.progressPct > best.progressPct ? path : best, null);
   const benefits = getGmBenefits(legacy);
 
   return {
@@ -266,12 +290,15 @@ export function getGmPersonaArc(legacy) {
       scoreNeeded: next.scoreMin,
       scoreTarget: next.scoreMin,
       threshold: next.scoreMin,
-      gapToNext: Math.max(0, next.scoreMin - effectiveScore)
+      gapToNext: Math.max(0, next.scoreMin - computed.score),
+      advancementRule: "any",
+      advancementPaths
     } : null,
     score: computed.score,
     grade: computed.grade,
-    progressPct,
-    progressSource: computed.score < current.scoreMin ? "milestone-floor" : "score",
+    progressPct: next ? (activePath?.progressPct || 0) : 100,
+    progressSource: next ? (activePath?.kind || "unstarted") : "complete",
+    progress: activePath ? { ...activePath } : null,
     benefits
   };
 }

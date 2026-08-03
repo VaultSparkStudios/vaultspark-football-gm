@@ -20,6 +20,7 @@ import { dashboardAuthorityKey } from "./franchiseScope.js";
 import { planRehearsalEvidence } from "./architectPlanRehearsal.js";
 import { createTabHydrationAuthority } from "./tabHydration.js";
 import { renderCoachingMarketPanel } from "./coachingMarketPanel.js";
+import { recordReturnBoundary } from "./returnDigest.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -941,6 +942,7 @@ export async function advanceWeeksSequential(totalWeeks, { digest: initialDigest
       const previous = state.dashboard;
       const response = await api("/api/advance-week", { method: "POST", body });
       applyDashboard(response.state);
+      recordReturnBoundary(response.state, { reason: "fast-sim-commit" });
       ingestFastSimNews(response.state);
       completed += 1;
       const checkpoint = classifySimulationCheckpoint({ previous, next: response.state });
@@ -992,6 +994,7 @@ export async function advanceSeasonSequential({ startYear: requestedStartYear = 
       const previous = state.dashboard;
       const response = await api("/api/advance-week", { method: "POST", body });
       applyDashboard(response.state);
+      recordReturnBoundary(response.state, { reason: "fast-sim-commit" });
       ingestFastSimNews(response.state);
       steps += 1;
       const checkpoint = classifySimulationCheckpoint({ previous, next: response.state });

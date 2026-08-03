@@ -1004,6 +1004,10 @@ export async function renderGmLegacyScore() {
         `<span class="gm-tier-dot ${t <= persona.current.tier ? "active" : ""}" title="Tier ${t}"></span>`
       ).join("");
       const progressPct = Math.max(0, Math.min(100, Number(persona.progressPct ?? (persona.next ? 0 : 100))));
+      const progressLabel = persona.progress?.label || "Tier complete";
+      const advancementPaths = (persona.next?.advancementPaths || []).map((path) =>
+        `<li class="gm-persona-path ${path.satisfied ? "complete" : "open"}"><span>${escapeHtml(path.label)}</span><strong>${escapeHtml(String(path.current))}/${escapeHtml(String(path.target))}</strong><small>${escapeHtml(path.remaining ? `${path.remaining} remaining` : "achieved")}</small></li>`
+      ).join("");
       const badge = persona.benefits?.badge
         ? `<span class="gm-persona-badge gm-persona-badge-${escapeHtml(persona.benefits.badge)}">${persona.benefits.badge === "immortal" ? "✦ IMMORTAL" : "★ LEGEND"}</span>`
         : "";
@@ -1014,14 +1018,14 @@ export async function renderGmLegacyScore() {
         <div class="gm-persona-name">${escapeHtml(persona.current.name)} ${badge}</div>
         <div class="gm-tier-track">${tierDots}</div>
         <div class="gm-persona-progress-wrap">
-          <div class="gm-persona-progress-track">
+          <div class="gm-persona-progress-track" role="progressbar" aria-label="${escapeHtml(progressLabel)} path" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progressPct}">
             <div class="gm-persona-progress-fill" style="width:${progressPct}%"></div>
           </div>
           <span class="gm-persona-progress-pct">${progressPct}%</span>
         </div>
         <div class="gm-persona-desc">${escapeHtml(persona.current.description)}</div>
         ${entitlements ? `<ul class="gm-persona-entitlements">${entitlements}</ul>` : ""}
-        ${persona.next ? `<div class="gm-persona-next">Next: <strong>${escapeHtml(persona.next.name)}</strong> · ${persona.next.gapToNext > 0 ? `+${persona.next.gapToNext} pts needed` : "Ready to advance"}</div>` : `<div class="gm-persona-next">🏆 Peak tier reached</div>`}
+        ${persona.next ? `<div class="gm-persona-next">Next: <strong>${escapeHtml(persona.next.name)}</strong> · complete any one path</div><ul class="gm-persona-paths" aria-label="Independent advancement paths">${advancementPaths}</ul>` : `<div class="gm-persona-next">🏆 Peak tier reached</div>`}
       `;
 
       // Persona tier unlock toast

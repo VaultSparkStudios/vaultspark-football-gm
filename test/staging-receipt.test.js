@@ -1,12 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { buildStagingReceiptReport } from "../scripts/verify-staging-receipt.mjs";
+import { buildStagingAuthorityReceipt, selectDeployment, STAGING_DOMAIN, STAGING_PROJECT } from "../scripts/deploy-staging.mjs";
 
 const baseUrl = "https://staging.example.test/preview/";
 const expected = {
   canonicalOrigin: "https://playfranchisearchitect.com",
   repository: "VaultSparkStudios/vaultspark-football-gm",
   sourceRevision: "session52",
+  artifactFingerprint: { algorithm: "sha256", digest: "a".repeat(64), files: 42, exclusions: ["_health", "deploy-manifest.json"] },
   styleAsset: "styles.session52.css"
 };
 
@@ -28,6 +30,7 @@ function fixture({ crossOriginHealth = false } = {}) {
     "/_health": response("/_health", {
       status: "ok",
       sourceRevision: expected.sourceRevision,
+      artifactFingerprint: expected.artifactFingerprint,
       styleAsset: expected.styleAsset,
       launchReady: false
     }, crossOriginHealth ? { origin: "https://production.example.test", redirect: true } : {}),
@@ -51,4 +54,33 @@ test("cross-origin redirect is HOLD even when the final body looks healthy", asy
   const report = await buildStagingReceiptReport({ expected, baseUrl, fixture: fixture({ crossOriginHealth: true }) });
   assert.equal(report.summary.status, "blocked");
   assert.equal(report.checks.find((check) => check.name === "health stayed on staging origin").ok, false);
+});
+
+test("Cloudflare staging authority binds the stable domain to the exact candidate deployment", () => {
+  const deployments = [
+    { id: "old", deployment_trigger: { metadata: { commit_hash: "aaa1111" } } },
+    { id: "candidate", url: "https://candidate.pages.dev", deployment_trigger: { metadata: { commit_hash: "bbb2222" } } }
+  ];
+  const deployment = selectDeployment(deployments, "bbb2222");
+  const receipt = buildStagingAuthorityReceipt({ sourceRevision: "bbb2222", artifactFingerprint: expected.artifactFingerprint, deployment, previousDeployment: deployments[0], domainState: { status: "active" }, provenanceReport: { checkedAt: "2026-08-03T00:00:00.000Z", summary: { status: "verified", checksPassed: 11, checksTotal: 11 } } });
+  assert.equal(receipt.project, STAGING_PROJECT);
+  assert.equal(receipt.stableUrl, `https://${STAGING_DOMAIN}`);
+  assert.equal(receipt.exactRevision, true);
+  assert.equal(receipt.independent, true);
+  assert.equal(receipt.verified, true);
+  assert.match(receipt.promotionIdentity, /^bbb2222:[a-f0-9]{64}$/);
+  assert.equal(receipt.provenance.checksPassed, 11);
+  assert.equal(receipt.rollback.previousDeploymentId, "old");
+});
+
+test("an active hostname cannot hide the wrong deployed candidate", () => {
+  const receipt = buildStagingAuthorityReceipt({
+    sourceRevision: "candidate",
+    artifactFingerprint: expected.artifactFingerprint,
+    deployment: { id: "wrong", deployment_trigger: { metadata: { commit_hash: "other" } } },
+    domainState: { status: "active" },
+    provenanceReport: { summary: { status: "verified", checksPassed: 11, checksTotal: 11 } }
+  });
+  assert.equal(receipt.exactRevision, false);
+  assert.equal(receipt.verified, false);
 });

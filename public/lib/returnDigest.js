@@ -1,16 +1,9 @@
 /**
- * returnDigest.js — "While You Were Away" Return Hook (S29)
+ * returnDigest.js — session-bound Welcome Back continuity hook
  *
- * All prior engagement in this game was in-session (inbox badge, ticker,
- * moment cards) — there was no return/retention loop of any kind. This adds
- * a zero-backend one: the last-visit timestamp + week/year are stamped in
- * localStorage, and on the next load after a real absence a compact digest
- * — what changed in your franchise, in three lines — surfaces before the
- * player dives back into the dashboard.
- *
- * Trigger: more than ABSENCE_THRESHOLD_MS has elapsed since the last visit,
- * OR the league's current week/year has advanced since then. A first-ever
- * visit never shows a digest (there is nothing to report yet).
+ * Persists an authoritative franchise boundary after each committed action and
+ * at pagehide. The next session only surfaces a digest when live state differs
+ * from that boundary; elapsed time alone never invents activity or urgency.
  */
 
 import { api } from "./appState.js";
@@ -19,7 +12,8 @@ import { getUnreadCount } from "./engagementFeatures.js";
 import { buildSeasonChapter } from "./seasonChapters.js";
 import { franchiseScopeFromDashboard, franchiseStorageKey } from "./franchiseScope.js";
 
-const STORAGE_PREFIX = "franchise-architect-last-seen:v2";
+const STORAGE_PREFIX = "franchise-architect-session-boundary:v3";
+export const RETURN_BOUNDARY_SCHEMA_VERSION = "1.0";
 export const ABSENCE_THRESHOLD_MS = 6 * 60 * 60 * 1000; // 6 hours
 
 export function returnDigestStorageKey(dashboard = {}) {
@@ -38,13 +32,14 @@ export function readLastVisit(dashboard = {}, storage = globalThis.localStorage)
 export function writeLastVisit(dashboard = {}, entry = {}, storage = globalThis.localStorage) {
   try {
     storage?.setItem?.(returnDigestStorageKey(dashboard), JSON.stringify({
+      schemaVersion: RETURN_BOUNDARY_SCHEMA_VERSION,
       ...entry,
       scope: franchiseScopeFromDashboard(dashboard)
     }));
     return true;
   } catch {
-    // Ignore storage failures (private browsing, quota) — the digest is a
-    // nice-to-have, never a hard requirement to boot the game.
+    // Ignore storage failures (private browsing, quota) — the boundary is a
+    // useful continuity receipt, never a hard requirement to boot the game.
     return false;
   }
 }
@@ -54,6 +49,54 @@ function controlledStandingsRow(dashboard) {
   const teamKey = team.abbrev || team.teamId || dashboard?.controlledTeamId || "";
   const standings = dashboard?.latestStandings || [];
   return standings.find((r) => r.team === teamKey) || null;
+}
+
+const activeReturnSessions = new Map();
+let lifecycleBound = false;
+
+function returnSessionId(dashboard = {}, now = Date.now()) {
+  const scope = franchiseScopeFromDashboard(dashboard);
+  if (!activeReturnSessions.has(scope)) activeReturnSessions.set(scope, `${scope}:${now}`);
+  return activeReturnSessions.get(scope);
+}
+
+export function buildReturnBoundary(dashboard = {}, {
+  timestamp = Date.now(),
+  reason = "session-boundary",
+  sessionId = returnSessionId(dashboard, timestamp),
+  sequence = 1
+} = {}) {
+  const row = controlledStandingsRow(dashboard);
+  const chapter = buildSeasonChapter(dashboard);
+  return {
+    schemaVersion: RETURN_BOUNDARY_SCHEMA_VERSION,
+    kind: "return-session-boundary",
+    timestamp,
+    reason,
+    sessionId,
+    sequence,
+    year: dashboard.currentYear ?? null,
+    week: dashboard.currentWeek ?? null,
+    record: row ? { wins: row.wins || 0, losses: row.losses || 0 } : null,
+    chapterId: chapter?.id || null,
+    chapterCheckpointStatus: chapter?.seasonThesis?.checkpointStatus || null
+  };
+}
+
+export function recordReturnBoundary(dashboard = {}, options = {}, storage = globalThis.localStorage) {
+  if (!dashboard) return false;
+  const prior = readLastVisit(dashboard, storage);
+  const sequence = Math.max(0, Number(prior?.sequence || 0)) + 1;
+  return writeLastVisit(dashboard, buildReturnBoundary(dashboard, { ...options, sequence }), storage);
+}
+
+export function bindReturnBoundaryLifecycle(getDashboard, windowObject = globalThis.window, storage = globalThis.localStorage) {
+  if (lifecycleBound || typeof getDashboard !== "function" || !windowObject?.addEventListener) return false;
+  lifecycleBound = true;
+  windowObject.addEventListener("pagehide", () => {
+    recordReturnBoundary(getDashboard(), { reason: "pagehide" }, storage);
+  });
+  return true;
 }
 
 /**
@@ -69,34 +112,47 @@ export function buildReturnDigest(dashboard, priorVisit, now = Date.now()) {
     priorVisit.year != null &&
     (dashboard.currentYear > priorVisit.year ||
       (dashboard.currentYear === priorVisit.year && dashboard.currentWeek > priorVisit.week));
-  if (elapsedMs < ABSENCE_THRESHOLD_MS && !weekAdvanced) return null;
 
   const team = dashboard.controlledTeam || {};
   const teamKey = team.abbrev || team.teamId || dashboard.controlledTeamId || "";
   const myRow = controlledStandingsRow(dashboard);
-
   const priorRecord = priorVisit.record || null;
   const currentRecord = myRow ? { wins: myRow.wins || 0, losses: myRow.losses || 0 } : null;
   const recordDelta =
     priorRecord && currentRecord
       ? { wins: currentRecord.wins - priorRecord.wins, losses: currentRecord.losses - priorRecord.losses }
       : null;
+  const seasonChapter = buildSeasonChapter(dashboard);
+  const chapterChanged = Boolean(
+    priorVisit.chapterId &&
+    (priorVisit.chapterId !== seasonChapter?.id ||
+      priorVisit.chapterCheckpointStatus !== seasonChapter?.seasonThesis?.checkpointStatus)
+  );
+  const recordChanged = Boolean(recordDelta && (recordDelta.wins !== 0 || recordDelta.losses !== 0));
+  const unreadCount = getUnreadCount();
+  const hasAuthoritativeDelta = weekAdvanced || recordChanged || chapterChanged || unreadCount > 0;
+  if (!hasAuthoritativeDelta) return null;
 
   return {
+    schemaVersion: RETURN_BOUNDARY_SCHEMA_VERSION,
+    kind: "return-session-digest",
     elapsedMs,
+    boundaryReason: priorVisit.reason || "unknown",
+    boundarySessionId: priorVisit.sessionId || null,
+    boundarySequence: Number(priorVisit.sequence || 0) || null,
     weekAdvanced,
+    chapterChanged,
     fromWeek: priorVisit.week ?? null,
     fromYear: priorVisit.year ?? null,
     toWeek: dashboard.currentWeek ?? null,
     toYear: dashboard.currentYear ?? null,
     currentRecord,
     recordDelta,
-    unreadCount: getUnreadCount(),
+    unreadCount,
     teamName: team.name || teamKey || "Your franchise",
-    seasonChapter: buildSeasonChapter(dashboard)
+    seasonChapter
   };
 }
-
 export function buildReturnChapterAction(digest = {}) {
   const chapter = digest.seasonChapter || null;
   if (!chapter?.targetTab) return null;
@@ -163,12 +219,12 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
   const chapterAction = buildReturnChapterAction(digest);
 
   const recordLine = digest.recordDelta
-    ? `Record moved to ${digest.currentRecord.wins}-${digest.currentRecord.losses} (${digest.recordDelta.wins >= 0 ? "+" : ""}${digest.recordDelta.wins}W since your last visit).`
+    ? `Record is now ${digest.currentRecord.wins}-${digest.currentRecord.losses} (${digest.recordDelta.wins >= 0 ? "+" : ""}${digest.recordDelta.wins}W since the recorded session boundary).`
     : digest.currentRecord
       ? `Current record: ${digest.currentRecord.wins}-${digest.currentRecord.losses}.`
       : "";
   const weekLine = digest.weekAdvanced
-    ? `The league moved from Year ${digest.fromYear} Week ${digest.fromWeek} to Year ${digest.toYear} Week ${digest.toWeek}.`
+    ? `Your saved franchise moved from Year ${digest.fromYear} Week ${digest.fromWeek} to Year ${digest.toYear} Week ${digest.toWeek} since the recorded session boundary.`
     : "";
   const inboxLine =
     digest.unreadCount > 0
@@ -184,11 +240,11 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
   overlay.id = "returnDigestOverlay";
   overlay.setAttribute("role", "status");
   overlay.setAttribute("aria-live", "polite");
-  overlay.setAttribute("aria-label", "While you were away");
+  overlay.setAttribute("aria-label", "Welcome back to your franchise");
   overlay.innerHTML = `
     <div class="return-digest-card">
-      <div class="return-digest-header">While You Were Away</div>
-      <div class="return-digest-sub">${escapeHtml(formatElapsed(digest.elapsedMs))} since your last visit to ${escapeHtml(digest.teamName)}.</div>
+      <div class="return-digest-header">Welcome Back</div>
+      <div class="return-digest-sub">Session boundary recorded ${escapeHtml(formatElapsed(digest.elapsedMs))} ago for ${escapeHtml(digest.teamName)}.</div>
       <ul class="return-digest-list">
         ${weekLine ? `<li>${escapeHtml(weekLine)}</li>` : ""}
         ${recordLine ? `<li>${escapeHtml(recordLine)}</li>` : ""}
@@ -244,13 +300,8 @@ export async function maybeShowReturnDigest(dashboard, options = {}) {
       renderReturnDigest(digest, pendingDecision, options);
       shown = true;
     }
-    const myRow = controlledStandingsRow(dashboard);
-    writeLastVisit(dashboard, {
-      timestamp: Date.now(),
-      year: dashboard.currentYear ?? null,
-      week: dashboard.currentWeek ?? null,
-      record: myRow ? { wins: myRow.wins || 0, losses: myRow.losses || 0 } : null
-    });
+    recordReturnBoundary(dashboard, { reason: "session-open" });
+    bindReturnBoundaryLifecycle(options.getDashboard || (() => dashboard));
   }
   return shown;
 }

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "project": "franchise-architect-football",
+  "purpose": "Fail closed when generic Studio propagation erases project-specific authority contracts.",
+  "requiredExports": {
+    "scripts/lib/task-board.mjs": [
+      "parseTaskBoardItems",
+      "parseUnifiedItems",
+      "taskItemKey"
+    ]
+  },
+  "statusMutators": [
+    "scripts/detect-session-mode.mjs",
+    "scripts/verify-plan-mode.mjs",
+    "scripts/render-startup-brief.mjs"
+  ],
+  "requiredSourceTokens": {
+    "scripts/render-startup-brief.mjs": [
+      "lifecycleAuthorityFingerprint",
+      "geniusAuthorityFingerprint"
+    ],
+    "scripts/check-brief-staleness.mjs": [
+      "lifecycle authority changed",
+      "genius authority changed"
+    ],
+    "scripts/lib/cross-repo-tasks.mjs": [
+      "parseTaskBoardItems",
+      "shared-task-board-parser"
+    ]
+  },
+  "forbiddenFiles": [
+    "scripts/run-tests.mjs",
+    "scripts/check-last-session-summary.mjs"
+  ],
+  "canonicalTestCommand": "node scripts/run-test-shard.mjs all"
+}

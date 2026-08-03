@@ -1,17 +1,14 @@
-# Session 68 Implementation Plan
+# Implementation Plan — Session 69
 
-Source: `docs/AUDIT_2026-08-02.json` (sole truth).
+Source: `docs/AUDIT_2026-08-03.json`.
 
-Execution order is dependency-aware and uses each item's L2 recipe:
+Execution is dependency-ordered rather than audit-ranked:
 
-1. **weekly-tactic-unit-authority** — establish one tactic authority and unit-scoped simulation modifiers.
-2. **standing-plan-red-flag-rehearsal** — build on the corrected tactic model to compress repeated weekly intent honestly.
-3. **season-thesis-ledger** — carry one exact Opening Contract authority through the season.
-4. **test-shard-progress-proof** — make long verification bounded and self-observing before final suites.
-5. **structured-release-truth** — reconcile the live origin without collapsing independent launch gates.
+1. `project-propagation-compatibility-firewall` — restore the project authorities needed by every later generator and gate; add fail-closed regression proof.
+2. `phase-aware-season-thesis-evidence` — repair the season evidence state machine and exact chapter copy.
+3. `session-bound-return-digest` — bind return semantics to authoritative session boundaries and the corrected thesis states.
+4. `multi-path-gm-persona-progress` — expose exact alternative promotion paths in engine and UI.
+5. `expiring-release-evidence-snapshot` — add freshness/unknown semantics before producing new hosted evidence.
+6. `independent-cloudflare-staging-authority` — build, deploy, and verify the stabilized candidate on a dedicated static, cost-neutral origin; production remains untouched.
 
-Per-item gate: focused tests + behavior proof + browser-visible coverage where applicable. No row becomes shipped from code presence alone.
-
-## Execution result
-
-All five primary rows shipped at L2 depth in the planned order. The saturation pass then shipped three premise-verified second-order innovations: versioned tactic receipt authority, return-thesis continuity, and release-contract replay validation. The generated Obelisk broker stub was rejected as sibling-owned private infrastructure that this public project explicitly requires absent.
+Every item uses its L2 recipe. Verification is focused after each item, then canonical Node, browser, Pages, responsive/theme, doctor, release, and staging gates at closeout. Partial work is never marked shipped.

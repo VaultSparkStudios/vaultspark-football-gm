@@ -71,7 +71,7 @@ test("season thesis binds bounded receipts without inventing causal evidence", (
     }
   }));
   assert.equal(result.schemaVersion, SEASON_THESIS_SCHEMA_VERSION);
-  assert.equal(result.status, "established");
+  assert.equal(result.status, "installing");
   assert.deepEqual(result.checkpoints.find((row) => row.id === "foundation").evidenceIds, ["film-w2"]);
   assert.deepEqual(
     result.checkpoints.find((row) => row.id === "identity-test").evidenceIds,
@@ -128,6 +128,53 @@ test("Week Room and return digest consume one season chapter authority", () => {
   const architecture = readFileSync(new URL("../public/lib/franchiseArchitecture.js", import.meta.url), "utf8");
   const digest = readFileSync(new URL("../public/lib/returnDigest.js", import.meta.url), "utf8");
   assert.match(architecture, /buildSeasonChapter/);
-  assert.match(digest, /seasonChapter: buildSeasonChapter/);
+  assert.match(digest, /const seasonChapter = buildSeasonChapter/);
   assert.match(digest, /chapterLine/);
+});
+
+test("future phase evidence cannot certify postseason or season reckoning", () => {
+  const result = buildSeasonThesisLedger(dashboard({
+    currentWeek: 3,
+    tacticalFilmLedger: [
+      { id: "future-film", year: 2026, week: 20, aligned: true }
+    ]
+  }));
+  assert.equal(result.status, "declared");
+  assert.equal(result.checkpoints.find((row) => row.id === "postseason").status, "upcoming");
+  assert.equal(result.checkpoints.find((row) => row.id === "season-reckoning").status, "upcoming");
+});
+
+test("contested receipts install but never establish a season thesis", () => {
+  const result = buildSeasonThesisLedger(dashboard({
+    currentWeek: 4,
+    tacticalFilmLedger: [1, 2, 3].map((week) => ({
+      id: `failed-w${week}`,
+      year: 2026,
+      week,
+      aligned: false
+    }))
+  }));
+  const foundation = result.checkpoints.find((row) => row.id === "foundation");
+  assert.equal(result.status, "installing");
+  assert.equal(foundation.status, "evidenced-contested");
+  assert.deepEqual(foundation.alignedEvidenceIds, []);
+  assert.deepEqual(foundation.contestedEvidenceIds, ["failed-w1", "failed-w2", "failed-w3"]);
+  assert.equal(result.receipts.alignedTargets, 0);
+  assert.equal(result.receipts.contestedTargets, 3);
+});
+
+test("established requires aligned evidence across eligible checkpoints", () => {
+  const input = dashboard({
+    currentWeek: 7,
+    tacticalFilmLedger: [
+      { id: "aligned-w2", year: 2026, week: 2, aligned: true },
+      { id: "aligned-w3", year: 2026, week: 3, aligned: true },
+      { id: "aligned-w6", year: 2026, week: 6, aligned: true }
+    ]
+  });
+  const result = buildSeasonThesisLedger(input);
+  assert.equal(result.status, "established");
+  assert.equal(result.checkpoints.find((row) => row.id === "foundation").status, "evidenced-aligned");
+  assert.equal(result.checkpoints.find((row) => row.id === "identity-test").status, "evidenced-aligned");
+  assert.deepEqual(buildSeasonThesisLedger(JSON.parse(JSON.stringify(input))), result, "restore preserves exact evidence semantics");
 });

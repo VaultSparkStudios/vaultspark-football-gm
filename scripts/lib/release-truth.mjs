@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 
-export const RELEASE_TRUTH_SCHEMA_VERSION = "1.0";
+export const RELEASE_TRUTH_SCHEMA_VERSION = "1.1";
 export const RELEASE_EVIDENCE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
 const REQUIRED_HEADERS = ["strictTransportSecurity", "frameProtection", "contentSecurityPolicy"];
 
@@ -19,6 +19,44 @@ function healthReceipt(report) {
   } catch {
     return null;
   }
+}
+
+export function evaluateReleaseEvidenceFreshness({ contract, now = Date.now(), liveReport = null, expectedRevision = null } = {}) {
+  const observedAt = contract?.evidenceWindow?.observedAt || contract?.checkedAt || null;
+  const observedAtMs = Date.parse(observedAt);
+  const maxAgeMs = Number(contract?.evidenceWindow?.maxAgeMs || RELEASE_EVIDENCE_MAX_AGE_MS);
+  const reasons = [];
+  if (!Number.isFinite(observedAtMs)) reasons.push("observed-at-invalid");
+  else if (now - observedAtMs > maxAgeMs) reasons.push("evidence-expired");
+  else if (observedAtMs > now + 5 * 60 * 1000) reasons.push("observed-at-future");
+
+  let liveRevision = null;
+  if (liveReport) {
+    liveRevision = healthReceipt(liveReport)?.sourceRevision || null;
+    if (normalizeUrl(liveReport.baseUrl) !== normalizeUrl(contract?.runtimeUrl)) reasons.push("live-origin-mismatch");
+    if (!liveRevision) reasons.push("live-revision-missing");
+    else if (contract?.deployedRevision && liveRevision !== contract.deployedRevision) reasons.push("deployed-revision-drift");
+    if (expectedRevision && liveRevision !== expectedRevision) reasons.push("candidate-revision-mismatch");
+  }
+
+  const status = reasons.some((reason) => reason === "evidence-expired")
+    ? "expired"
+    : reasons.some((reason) => reason.includes("revision") || reason.includes("origin"))
+      ? "revision-drift"
+      : reasons.length
+        ? "unknown"
+        : "current";
+  return {
+    status,
+    current: status === "current",
+    observedAt,
+    expiresAt: Number.isFinite(observedAtMs) ? new Date(observedAtMs + maxAgeMs).toISOString() : null,
+    maxAgeMs,
+    deployedRevision: contract?.deployedRevision || null,
+    liveRevision,
+    expectedRevision,
+    reasons
+  };
 }
 
 export function validateReleaseEvidence({
@@ -81,6 +119,12 @@ export function validateReleaseEvidence({
       source: report?.generatedBy || null,
       receiptSha256: report ? stableReceiptHash(report) : null,
       checkedAt: report?.checkedAt || null,
+      evidenceWindow: {
+        observedAt: report?.checkedAt || null,
+        maxAgeMs,
+        expiresAt: Number.isFinite(checkedAtMs) ? new Date(checkedAtMs + maxAgeMs).toISOString() : null,
+        statusAtIssue: evidenceValid ? "current" : "invalid"
+      },
       runtimeUrl: normalizeUrl(report?.baseUrl),
       deployedRevision,
       routes: { verified: routesVerified, checked: report?.routeChecks?.length || 0 },
@@ -104,10 +148,12 @@ export function releaseTruthProse(contract) {
   if (contract.originHealth.verified) green.push(`origin health at ${contract.deployedRevision}`);
   if (contract.securityHeaders.verified) green.push("required edge headers");
   const proven = green.length ? `${green.join(", ")} verified` : "no production surface proof verified";
+  const freshness = evaluateReleaseEvidenceFreshness({ contract });
+  const freshnessPhrase = freshness.current ? `evidence current through ${freshness.expiresAt}` : `evidence ${freshness.status}`;
   return {
-    currentFocus: `Release truth is receipt-derived: ${proven}. Launch remains ${contract.launchReady ? "READY" : "HOLD"}; independent gates are not collapsed.`,
+    currentFocus: `Release truth is receipt-derived: ${proven}; ${freshnessPhrase}. Launch remains ${contract.launchReady && freshness.current ? "READY" : "HOLD"}; independent gates are not collapsed.`,
     nextMilestone: "Verify an independent staging origin at the exact candidate revision, then prove production revision parity, delivered on-domain email, founder approval, and authoritative lifecycle before any launch flip.",
-    blockers: contract.launchReady ? [] : [`Launch HOLD — ${contract.blockerCodes.join(", ")}.`]
+    blockers: contract.launchReady && freshness.current ? [] : [`Launch HOLD — ${[...new Set([...contract.blockerCodes, ...freshness.reasons])].join(", ")}.`]
   };
 }
 
@@ -126,6 +172,9 @@ export function verifyReleaseEvidenceContract({ report, contract, projectStatus 
   const mismatches = [...recomputed.errors];
   for (const key of ["receiptSha256", "runtimeUrl", "deployedRevision", "evidenceValid", "launchReady"]) {
     if (recomputed.contract[key] !== contract[key]) mismatches.push(`contract-drift:${key}`);
+  }
+  if (JSON.stringify(recomputed.contract.evidenceWindow) !== JSON.stringify(contract.evidenceWindow)) {
+    mismatches.push("contract-drift:evidenceWindow");
   }
   if (JSON.stringify(recomputed.contract.blockerCodes) !== JSON.stringify(contract.blockerCodes)) {
     mismatches.push("contract-drift:blockerCodes");

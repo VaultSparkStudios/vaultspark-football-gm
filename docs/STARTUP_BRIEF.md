@@ -3,7 +3,7 @@
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
-<!-- genius-authority-fingerprint: 9bad1eccde076829 -->
+<!-- genius-authority-fingerprint: 70d4551d9307dee2 -->
 
 # Startup Brief — Franchise Architect: Football
 
@@ -37,7 +37,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 4d · refresh required              ║
+║  Profile · game · cache stale 5d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -70,18 +70,18 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █████░░░░░░░░░░░░░░░░░░░   20% used                          ║
-║     53,523 / 272,000 tok  ·  codex/codex-272k  ·  measured+heur  ║
-║     ~26,762 tok/turn  ·  cache 50%  ·  7 turns to compact        ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
+║     25,467 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~12,734 tok/turn  ·  cache 50%  ·  70 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         800/800 passing (2026-08-03)                   ║
+║  ⚠  Tests         800/800 passing (2026-08-03) · STALE — run no  ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ⚠  IGNIS         41900 FORGE  ·  7d old                         ║
+║  ✓  IGNIS         42230 FORGE  ·  0d old                         ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
@@ -115,9 +115,11 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-02.md                 ║
-║  Closed: 5 · Open: 0                                             ║
-║  Latest audit has no open ranked items; run /audit for a new li  ║
+║  ✓ cache source: AUDIT_2026-08-03.md                             ║
+║                                                                  ║
+║  #4 · FIRE · independent-cloudflare-staging-authority            ║
+║  independent-cloudflare-staging-authority — Add a deterministic  ║
+║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```

@@ -2,7 +2,7 @@ import { injectTutorialStyles, mountTutorial, resetTutorial } from "./lib/tutori
 import { initThemeCustomizer } from "./lib/themeCustomizer.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
 import { mountBetaFeedback } from "./lib/betaFeedback.js";
-import { maybeShowReturnDigest } from "./lib/returnDigest.js";
+import { maybeShowReturnDigest, recordReturnBoundary } from "./lib/returnDigest.js";
 import { initPressRoomPanel } from "./lib/pressRoomPanel.js";
 import { initCoachingMarketPanel } from "./lib/coachingMarketPanel.js";
 import {
@@ -443,6 +443,7 @@ async function advanceOneWeek({ gmDecisionChoice = null } = {}) {
   recordPlaytestJourneyCheckpoint("weekly-plan-committed");
   state.mobilePendingDecisionChoice = null;
   const postCommitReceipt = await refreshAfterWeeklyCommand(response);
+  recordReturnBoundary(state.dashboard, { reason: "weekly-commit" });
   recordPlaytestJourneyCheckpoint("weekly-debrief-ready");
   return { ...response, ...postCommitReceipt, postCommitReceipt };
 }
@@ -2188,6 +2189,7 @@ async function init() {
   mountBetaFeedback();
   observeBackgroundTask(
     () => maybeShowReturnDigest(state.dashboard, {
+      getDashboard: () => state.dashboard,
       onJumpToInbox: () => openInbox(),
       onContinueChapter: continueSeasonChapter
     }),

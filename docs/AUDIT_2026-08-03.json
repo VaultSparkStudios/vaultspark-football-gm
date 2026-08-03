@@ -1,0 +1,322 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-03",
+  "session": 69,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "in-progress",
+  "summary": {
+    "rankedItems": 6,
+    "combinedPriority": 172.8,
+    "topItem": "phase-aware-season-thesis-evidence",
+    "source": "live-code-audit",
+    "openItems": 6,
+    "completedItems": 0,
+    "priorityFormula": "Priority = axis-weighted Impact × Innovation / log2(EffortHours + 2); execution rank is dependency-aware.",
+    "theme": "The game now has deep authorities, but three presentation layers overstate what their evidence means, while generic Studio propagation and release/staging surfaces can still replace or outlive the exact project truth they claim to report."
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "founder-requested infrastructure rubric with game-medium, release, and rendered-pixel overlays",
+    "staging": "Configured GitHub Pages URL redirects away and is not an independent staging authority; cloudflare.deploy and cloudflare.dns are READY",
+    "source": "live code, focused pure probes, canonical suite partial direct evidence, infrastructure sweep, app-release gate, and game-loop review"
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation and independent staging establishment",
+    "ci": "Latest five committed-head CI runs are green; the dirty candidate is not yet covered.",
+    "staging": "Configured Pages origin redirects and fails independent same-origin proof.",
+    "production": "Nine routes, health, and edge headers are green at c92e389; current HEAD is 7da84a1 and checked-in observed revision 0ad328d is stale.",
+    "secrets": "cloudflare.deploy READY; cloudflare.dns READY; zoho.mail.admin MISSING. Email receive/reply proof and founder approval remain independent blockers."
+  },
+  "gameLoopReview": {
+    "loopTightness": 8,
+    "progression": 6,
+    "sessionEngagement": 8,
+    "retention": 4,
+    "soulFidelity": 7,
+    "overall": 6.6,
+    "evidence": "Structural scores only. Outcome confidence is low because docs/PLAYTESTS is absent and GAME_LOOP forbids treating local receipts as cohort evidence. The three ranked defects are high-confidence source and pure-probe findings."
+  },
+  "recommendedMoves": [
+    "Make season thesis checkpoints phase-gated and evidence-semantic, so failed receipts cannot establish a thesis or certify the future.",
+    "Replace the false while-away delta with a versioned session boundary that is refreshed after every authoritative advance.",
+    "Make generic propagation and release infrastructure fail closed against project-specific parser, invariant-writer, and nonzero-test authorities."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "release",
+      "candidate": "Claim launch readiness or flip lifecycle",
+      "reason": "Rejected. Zoho receive/reply proof, SHA-bound founder approval, and authoritative registry reconciliation remain independently red."
+    },
+    {
+      "axis": "email",
+      "candidate": "Provision the Zoho alias autonomously",
+      "reason": "Honestly deferred after canonical secrets discovery: zoho.mail.admin is MISSING four required keys. The public contact route exists, but expected forwarding is not delivery proof."
+    },
+    {
+      "axis": "ecosystem",
+      "candidate": "Edit Studio Ops propagation or registry files directly",
+      "reason": "Rejected by CANON-018 and founder instruction. Current-repo compatibility is repaired locally; the mechanizer root cause is returned by signed Ark cargo."
+    },
+    {
+      "axis": "architecture",
+      "candidate": "Decompose all 6,728 GameSession lines or both 100-plus-route adapters in one sprint",
+      "reason": "Real debt, deliberately not ranked into this complete-all sprint. A one-pass split would exceed safe migration proof; incremental shared-handler extraction remains the established path."
+    },
+    {
+      "axis": "engagement",
+      "candidate": "Assert retention gains from the return hook",
+      "reason": "Rejected. No consented cohort exists; this audit repairs temporal semantics only and makes no outcome claim."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Progression / narrative authority / observability truth",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 34.9,
+      "slug": "phase-aware-season-thesis-evidence",
+      "title": "A failed week cannot establish a thesis or certify the future",
+      "status": "shipped",
+      "premise": "checkpointStatus returns evidenced before evaluating phaseGate, season-reckoning consumes all current film in every phase, and overall status becomes established from three receipts regardless of alignedTargets. A pure Week 3 probe with three aligned:false calls reports status established and season-reckoning evidenced.",
+      "evidence": [
+        "public/lib/seasonChapters.js:34-42,73-105",
+        "test/season-chapters.test.js lacks all-failed and future-phase cases",
+        "Pure probe: three failed tactical receipts at Weeks 1-3 => established + future reckoning evidenced"
+      ],
+      "constraint": "Evidence remains descriptive and non-causal. Missing or contested proof must be named, not converted into a score or hidden bonus.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Evaluate phase gates before evidence and require one aligned receipt for established."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Introduce declared/open/evidenced-contested/evidenced-aligned/unproven checkpoint semantics. Only eligible phase evidence may populate a checkpoint; installing/established derive from eligible aligned evidence plus bounded checkpoint coverage. Preserve exact receipt lineage and update chapter/return copy. Add all-failed, future-gate, mixed, restore, and missing-ID tests."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus an inspectable season blueprint showing aligned and contested receipts per checkpoint."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Retention hook / temporal authority / UI truth",
+      "effortHours": 2.5,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 33.2,
+      "slug": "session-bound-return-digest",
+      "title": "Welcome back without pretending the zero-backend league advanced itself",
+      "status": "shipped",
+      "premise": "The only writeLastVisit call runs during initial load. Player-authored weeks later in that session are compared with the opening snapshot next load and rendered as The league moved while away, although this zero-backend app cannot advance while closed.",
+      "evidence": [
+        "public/lib/returnDigest.js:68-72,170-171,237-255",
+        "public/app.js:2190 is the only product orchestration call",
+        "Pure W1/0-0 -> W4/3-1 probe yields weekAdvanced true and +3W since last visit"
+      ],
+      "constraint": "Keep a useful zero-backend return ritual, but separate elapsed absence from prior-session actions and never infer external simulation.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Rename the modal Welcome Back and remove while-away league-movement copy."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Version a session-boundary receipt with opening/current snapshots and boundary reason. Refresh it after every successful authoritative weekly command and on pagehide. On return, render only genuine persisted deltas with during-your-last-session wording, suppress empty six-hour ceremony, and retain inbox/chapter continuity. Add commit, fast-sim, restore, no-delta, and cross-franchise tests."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "L2 plus a bounded Last Session decision ledger with exact command receipt links."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Infrastructure / propagation safety / test truth",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 31.0,
+      "slug": "project-propagation-compatibility-firewall",
+      "title": "Generic propagation cannot erase project authorities or stamp zero tests green",
+      "status": "shipped",
+      "premise": "Today start-canon-sync replaced project-specific protocol files. task-board.mjs lost exports still imported by cache-genius-list; four scripts bypass the invariant PROJECT_STATUS writer; and new run-tests.mjs discovers zero app tests yet exits 0 and can write 0/0 fresh evidence. Focused tests already fail.",
+      "evidence": [
+        "node --test test/task-board-parser-authority.test.js exits 1: missing parseTaskBoardItems export",
+        "session54 PROJECT_STATUS mutator guard exits 1",
+        "scripts/run-tests.mjs discovers 0 canonical test/*.test.js while package.json owns run-test-shard.mjs"
+      ],
+      "constraint": "Do not edit the sibling Studio Ops tree. Restore exact project authorities, add a local fail-closed contract, and ship mechanizer evidence through Ark.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Restore overwritten files from the last green project revision and remove the incompatible zero-test runner."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Restore shared TASK_BOARD parsing, invariant status writes, project-specific startup authority, and the canonical shard runner. Add a propagation compatibility manifest/test that requires exported parsers, all status mutators through updateProjectStatus, nonzero canonical test discovery, and startup lifecycle/Genius fingerprints. Keep only compatible new universal utilities. Return exact overwrite evidence via signed Ark cargo."
+        },
+        "L3": {
+          "effortHours": 7,
+          "recipe": "L2 plus a central three-way propagation merge contract implemented by the Studio Ops mechanizer owner."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "Release architecture / staging / deploy proof",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 27.1,
+      "slug": "independent-cloudflare-staging-authority",
+      "title": "The candidate earns a real independent staging origin before main",
+      "status": "open",
+      "premise": "The configured GitHub Pages staging URL redirects away, fails all same-origin route checks, and shares production authority. cloudflare.deploy and cloudflare.dns are READY, and a global Wrangler client is already installed, so staging is agent-attemptable rather than human-blocked.",
+      "evidence": [
+        "verify-staging-receipt reports configured Pages origin invalid",
+        "context/PROJECT_STATUS.json stagingType github-pages and redirecting stagingUrl",
+        "Canonical secrets gateway: cloudflare.deploy READY; cloudflare.dns READY"
+      ],
+      "constraint": "Use the secrets gateway, static/cost-neutral hosting, no package install, and a rollbackable dedicated staging resource. Deployment receipt must bind the built asset fingerprint and candidate revision; production remains untouched.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Deploy the current static artifact to a dedicated pages.dev project and record exact route/health/revision proof."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Add a deterministic gateway-backed staging deploy command for a dedicated Cloudflare Pages project, establish staging.playfranchisearchitect.com, verify same-origin routes/health/manifest/assets and exact candidate identity, record rollback, and update local staging authority only from the signed deployment receipt."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "L2 plus promotion automation that refuses main push unless the staged artifact fingerprint equals the candidate tree."
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Progression / player communication / mathematical truth",
+      "effortHours": 2,
+      "impact": 7,
+      "innovation": 7,
+      "priority": 24.5,
+      "slug": "multi-path-gm-persona-progress",
+      "title": "A milestone-promoted General Manager sees every real path forward",
+      "status": "shipped",
+      "premise": "Persona tiers allow playoff and championship promotion, but getGmPersonaArc floors score to the current tier minimum and the UI renders a single pseudo-gap. A one-title score-50 GM is Tier 4 yet reports +12 points to Tier 5; the real score path is +30 or two more titles.",
+      "evidence": [
+        "src/engine/gmLegacyScore.js:233-274",
+        "public/lib/tabOverview.js:1024",
+        "Existing tests pin milestone floor but not truthful next-path language"
+      ],
+      "constraint": "Preserve milestone promotions and existing entitlements. Progress copy must be exact, pluralized, and must not invent a hidden score equivalence.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Show the unfloored score gap and label milestone-promoted progress separately."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Return explicit score, playoff, title, and tenure advancement paths for the next tier; calculate each from live totals, render OR semantics, and make progress percentage name its active source. Add threshold, milestone-below-floor, maximum-tier, and browser-copy tests."
+        },
+        "L3": {
+          "effortHours": 3.5,
+          "recipe": "L2 plus a career-roadmap panel with exact earned evidence and remaining paths."
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Release observability / freshness / coherence",
+      "effortHours": 2.5,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 22.1,
+      "slug": "expiring-release-evidence-snapshot",
+      "title": "A once-true production revision expires instead of masquerading as current",
+      "status": "shipped",
+      "premise": "PROJECT_STATUS releaseEvidence still names deployed revision 0ad328d while live production health names c92e389 and HEAD is 7da84a1. Replay validation proves internal hash consistency but has no freshness/observed-origin expiry, so a structurally valid old snapshot remains displayable as live truth.",
+      "evidence": [
+        "context/PROJECT_STATUS.json releaseEvidence.deployedRevision is 0ad328d",
+        "Live launch-evidence-report at audit time reports c92e389",
+        "scripts/lib/release-truth.mjs replay verifier checks contract recomputation, not temporal/live freshness"
+      ],
+      "constraint": "Do not collapse production health, candidate parity, staging, email, approval, or lifecycle. Network unavailability becomes unknown/stale, never pass or fail by guess.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Add observedAt age and stale labeling to the release contract prose."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "Version release evidence with observedAt, maxAge, source origin, and freshness verdict. Add a live comparison mode that produces a separate receipt; startup/doctor/release surfaces downgrade expired or revision-drifted snapshots to stale/unknown while preserving every independent gate. Add wrong-revision, expired, offline, and replay-hash tests."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "L2 plus post-deploy CI artifact publication and signed receipt ingestion on the next start."
+        }
+      }
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "deployable-artifact-fingerprint",
+      "status": "shipped",
+      "premise": "Git revision alone cannot distinguish deployable-byte identity from later documentation-only closeout commits.",
+      "evidence": [
+        "Pages build now hashes every deployable file in deterministic path order while excluding only the circular health/manifest evidence files; health, manifest, provenance, staging, and promotion receipts require the exact SHA-256 identity."
+      ]
+    },
+    {
+      "slug": "per-franchise-return-boundary-lineage",
+      "status": "shipped",
+      "premise": "A scoped boundary still lacked monotonic lineage, and one module-global session identifier could cross franchise saves.",
+      "evidence": [
+        "Return boundaries now increment a per-franchise sequence, retain one session identity per exact franchise scope, and expose boundarySequence in the digest; focused tests prove cross-save isolation."
+      ]
+    },
+    {
+      "slug": "staging-provenance-replay-and-rollback",
+      "status": "shipped",
+      "premise": "A successful upload is not a verified staging authority unless the stable origin replays the exact manifest, and rollback remains operationally weak without a prior deployment handle.",
+      "evidence": [
+        "The brokered deploy command now refuses a verified receipt until same-origin revision, artifact, style, repository, and launch-separation checks all pass; the receipt preserves the previous deployment ID as rollback authority."
+      ]
+    }
+  ],
+  "executionLog": [
+    "Primary 1/6: phase-aware thesis evidence shipped; future and contested receipts cannot establish the season thesis.",
+    "Primary 2/6: session-bound return digest shipped; elapsed time cannot fabricate off-session activity.",
+    "Primary 3/6: project propagation compatibility firewall restored and regression-covered.",
+    "Primary 4/6: independent Cloudflare staging deploy authority implemented and authenticated; live exact-candidate execution remains the closeout gate.",
+    "Primary 5/6: GM persona now exposes every independent advancement path with real source values.",
+    "Primary 6/6: release evidence now expires and detects live origin/revision drift.",
+    "Second order: deterministic deployable fingerprint, per-franchise boundary lineage, and staging provenance replay plus rollback authority shipped."
+  ],
+  "totals": {
+    "count": 6,
+    "priority": 172.8,
+    "top3": [
+      "phase-aware-season-thesis-evidence",
+      "session-bound-return-digest",
+      "project-propagation-compatibility-firewall"
+    ],
+    "shipped": 5
+  }
+}

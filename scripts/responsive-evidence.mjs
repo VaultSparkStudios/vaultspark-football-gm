@@ -137,6 +137,19 @@ async function capture(page, outputDir, name, selectors, records) {
   records.push({ name, file, url: page.url(), ...audit });
 }
 
+async function captureElement(page, outputDir, name, selector, records) {
+  const audit = await inspectSurface(page, []);
+  const file = `${name}.png`;
+  const element = page.locator(selector).first();
+  await element.waitFor({ state: "visible" });
+  await element.evaluate((node) => node.scrollIntoView({ block: "center", inline: "nearest" }));
+  await page.waitForTimeout(100);
+  const box = await element.boundingBox();
+  if (!box) throw new Error(`Element capture box unavailable: ${selector}`);
+  await page.screenshot({ path: path.join(outputDir, file), clip: box });
+  records.push({ name, file, url: page.url(), elementCapture: selector, ...audit });
+}
+
 async function main() {
   const revision = await sourceRevision();
   const outputDir = path.join(outputRoot, `responsive-${revision.replace(/[^a-z0-9._-]/gi, "-")}`);
@@ -197,13 +210,54 @@ async function main() {
             );
           }
           await tab.click();
+          if (await navToggle.isVisible().catch(() => false)) {
+            await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
+            await page.waitForTimeout(320);
+          }
           await page.waitForFunction((id) => document.getElementById(id)?.classList.contains("active"), tabId);
           const selectors = tabId === "overviewTab"
-            ? ["#advanceWeekBtn", "#advance4WeeksBtn", "#advanceSeasonBtn", "#themeToggleBtn"]
+            ? ["#advanceWeekBtn", "#advance4WeeksBtn", "#advanceSeasonBtn", "#themeToggleBtn", "#gmPersonaTier"]
             : ["#themeToggleBtn"];
           await capture(page, outputDir, `${viewport.name}-game-${label}-${theme}`, selectors, records);
         }
       }
+      const overviewTab = page.locator(`[data-tab="overviewTab"]`).first();
+      const returnNavToggle = page.locator("#mobileNavToggle");
+      if (await returnNavToggle.isVisible().catch(() => false)) {
+        await returnNavToggle.click();
+        await page.waitForFunction(() => document.body.classList.contains("mobile-nav-open"));
+      }
+      await overviewTab.click();
+      if (await returnNavToggle.isVisible().catch(() => false)) {
+        await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
+        await page.waitForTimeout(320);
+      }
+      await page.waitForFunction(() => document.getElementById("overviewTab")?.classList.contains("active"));
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureElement(page, outputDir, `${viewport.name}-gm-persona-${theme}`, "#gmLegacyCardWrap", records);
+      }
+      await page.evaluate(async () => {
+        const [{ state }, digestModule] = await Promise.all([
+          import("./lib/appState.js"),
+          import("./lib/returnDigest.js")
+        ]);
+        const key = Object.keys(localStorage).find((entry) => entry.startsWith("franchise-architect-session-boundary:v3"));
+        if (!key || !state.dashboard) throw new Error("Live return authority missing after game boot");
+        const prior = JSON.parse(localStorage.getItem(key));
+        prior.timestamp = Date.now() - (8 * 60 * 60 * 1000);
+        prior.week = Number(prior.week || 0) - 1;
+        prior.chapterId = "visual-qa-prior-chapter";
+        const digest = digestModule.buildReturnDigest(state.dashboard, prior);
+        if (!digest) throw new Error("Live dashboard did not produce a visual return digest");
+        digestModule.renderReturnDigest(digest, null, {});
+      });
+      await page.waitForSelector(".return-digest-overlay", { state: "visible" });
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureElement(page, outputDir, `${viewport.name}-return-digest-${theme}`, ".return-digest-card", records);
+      }
+      await page.locator(`.return-digest-actions button[data-action="dismiss"]`).click();
       await context.close();
     }
   } finally {
@@ -214,6 +268,8 @@ async function main() {
   const requiredCaptureNames = viewports.flatMap((viewport) => [
     ...evidenceThemes.map((theme) => `${viewport.name}-setup-${theme}`),
     ...(viewport.name === "mobile" ? evidenceThemes.map((theme) => `${viewport.name}-game-loop-${theme}`) : []),
+    ...evidenceThemes.map((theme) => `${viewport.name}-return-digest-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-gm-persona-${theme}`),
     ...evidenceThemes.flatMap((theme) => evidenceTabs.map(([, label]) => `${viewport.name}-game-${label}-${theme}`))
   ]);
   const capturedNames = new Set(records.map((record) => record.name));

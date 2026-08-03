@@ -54,13 +54,14 @@ export async function buildReleaseProvenanceReport({ expected, baseUrl, fixture 
     { name: "manifest reachable", ok: manifestResult?.ok === true },
     { name: "style asset reachable", ok: assetResult?.ok === true },
     { name: "source revision", ok: Boolean(expected?.sourceRevision && liveHealth?.sourceRevision === expected.sourceRevision && liveManifest?.sourceRevision === expected.sourceRevision), expected: expected?.sourceRevision, observed: liveManifest?.sourceRevision || liveHealth?.sourceRevision || null },
+    { name: "artifact fingerprint", ok: Boolean(expected?.artifactFingerprint?.digest && JSON.stringify(liveHealth?.artifactFingerprint) === JSON.stringify(expected.artifactFingerprint) && JSON.stringify(liveManifest?.artifactFingerprint) === JSON.stringify(expected.artifactFingerprint)), expected: expected?.artifactFingerprint?.digest || null, observed: liveManifest?.artifactFingerprint?.digest || liveHealth?.artifactFingerprint?.digest || null },
     { name: "style asset identity", ok: Boolean(expected?.styleAsset && liveHealth?.styleAsset === expected.styleAsset && liveManifest?.styleAsset === expected.styleAsset), expected: expected?.styleAsset, observed: liveManifest?.styleAsset || liveHealth?.styleAsset || null },
     { name: "repository identity", ok: Boolean(expected?.repository && liveManifest?.repository === expected.repository), expected: expected?.repository, observed: liveManifest?.repository || null },
     { name: "launch truth separation", ok: liveHealth?.launchReady === false, expected: false, observed: liveHealth?.launchReady }
   ];
   const ready = checks.every((check) => check.ok);
   return {
-    schemaVersion: "1.0",
+    schemaVersion: "1.1",
     generatedBy: "scripts/verify-release-provenance.mjs",
     checkedAt: new Date().toISOString(),
     baseUrl: origin,

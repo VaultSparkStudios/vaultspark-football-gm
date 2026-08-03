@@ -1,7 +1,7 @@
 import { buildTacticalIdentityLedger } from "./tacticalFilmRoom.js";
 
 export const SEASON_CHAPTER_SCHEMA_VERSION = "1.1";
-export const SEASON_THESIS_SCHEMA_VERSION = "1.0";
+export const SEASON_THESIS_SCHEMA_VERSION = "1.1";
 
 function text(value, fallback) {
   const rendered = String(value ?? "").trim();
@@ -37,10 +37,53 @@ function inWeekWindow(entry, start, end) {
   return week >= start && week <= end;
 }
 
-function checkpointStatus({ currentWeek, start, end, evidenceIds, phase, phaseGate = null }) {
-  if (evidenceIds.length) return "evidenced";
-  if (phaseGate) return phase === phaseGate ? "open" : phase === "season-awards" ? "unproven" : "upcoming";
-  if (currentWeek < start) return "upcoming";
+const PHASE_ORDER = new Map([
+  ["preseason", 0],
+  ["regular-season", 10],
+  ["postseason", 20],
+  ["season-awards", 30],
+  ["retirements", 40],
+  ["staff", 41],
+  ["combine", 42],
+  ["pro-days", 43],
+  ["free-agency", 44],
+  ["draft", 45],
+  ["udfa", 46],
+  ["roster-cuts", 47],
+  ["offseason-complete", 48]
+]);
+
+function phaseGateState(phase, phaseGate) {
+  if (!phaseGate) return null;
+  if (phase === phaseGate) return "at";
+  const current = PHASE_ORDER.get(phase);
+  const target = PHASE_ORDER.get(phaseGate);
+  if (current == null || target == null) return "unknown";
+  return current < target ? "before" : "after";
+}
+
+function evidenceAlignment(entry = {}) {
+  if (typeof entry.aligned === "boolean") return entry.aligned;
+  if (typeof entry.outcome?.aligned === "boolean") return entry.outcome.aligned;
+  return null;
+}
+
+function classifyCheckpointEvidence(rows = []) {
+  const evidenceIds = boundedIds(rows, 8);
+  const alignedEvidenceIds = boundedIds(rows.filter((entry) => evidenceAlignment(entry) === true), 8);
+  const contestedEvidenceIds = boundedIds(rows.filter((entry) => evidenceAlignment(entry) === false), 8);
+  return { evidenceIds, alignedEvidenceIds, contestedEvidenceIds };
+}
+
+function checkpointStatus({ currentWeek, start, end, evidence, phase, phaseGate = null, kind = "evaluative" }) {
+  const gateState = phaseGateState(phase, phaseGate);
+  if (phaseGate && (gateState === "before" || gateState === "unknown")) return "upcoming";
+  if (!phaseGate && currentWeek < start) return "upcoming";
+  if (kind === "declaration") return evidence.evidenceIds.length ? "declared" : "unproven";
+  if (evidence.alignedEvidenceIds.length) return "evidenced-aligned";
+  if (evidence.contestedEvidenceIds.length) return "evidenced-contested";
+  if (evidence.evidenceIds.length) return "evidenced";
+  if (phaseGate) return gateState === "at" ? "open" : "unproven";
   if (currentWeek > end) return "unproven";
   return "open";
 }
@@ -64,32 +107,37 @@ export function buildSeasonThesisLedger(dashboard = {}) {
     ? dashboard.gmCommitments.latestReceipt
     : null;
   const checkpointRows = [
-    { id: "opening-contract", start: 0, end: 1, rows: openingReceiptId ? [{ id: openingReceiptId }] : [] },
+    { id: "opening-contract", start: 0, end: 1, kind: "declaration", rows: openingReceiptId ? [{ id: openingReceiptId }] : [] },
     { id: "foundation", start: 1, end: 4, rows: [...film, ...architect].filter((entry) => inWeekWindow(entry, 1, 4)) },
     { id: "identity-test", start: 5, end: 8, rows: [...film, ...architect].filter((entry) => inWeekWindow(entry, 5, 8)) },
-    { id: "deadline-pressure", start: 9, end: 11, rows: [...activeCommitments, ...(latestCommitment ? [latestCommitment] : [])] },
+    { id: "deadline-pressure", start: 9, end: 11, kind: "observational", rows: [...activeCommitments, ...(latestCommitment ? [latestCommitment] : [])] },
     { id: "separation", start: 12, end: 14, rows: [...film, ...architect].filter((entry) => inWeekWindow(entry, 12, 14)) },
-    { id: "playoff-push", start: 15, end: 18, rows: [...film, ...architect].filter((entry) => receiptWeek(entry) >= 15) },
+    { id: "playoff-push", start: 15, end: 18, rows: [...film, ...architect].filter((entry) => inWeekWindow(entry, 15, 18)) },
     { id: "postseason", phaseGate: "postseason", rows: [...film, ...architect].filter((entry) => receiptWeek(entry) >= 19) },
     { id: "season-reckoning", phaseGate: "season-awards", rows: [...film, ...architect, ...(latestCommitment ? [latestCommitment] : [])] }
   ];
   const checkpoints = checkpointRows.map((entry) => {
-    const evidenceIds = boundedIds(entry.rows, 8);
+    const evidence = classifyCheckpointEvidence(entry.rows);
     return {
       id: entry.id,
       status: checkpointStatus({
         currentWeek,
         start: entry.start ?? 0,
         end: entry.end ?? Number.MAX_SAFE_INTEGER,
-        evidenceIds,
+        evidence,
         phase,
-        phaseGate: entry.phaseGate || null
+        phaseGate: entry.phaseGate || null,
+        kind: entry.kind || "evaluative"
       }),
-      evidenceIds
+      ...evidence
     };
   });
   const identityLedger = buildTacticalIdentityLedger(film);
-  const aligned = film.filter((entry) => entry?.aligned === true).length;
+  const evaluatedRows = [...film, ...architect];
+  const aligned = evaluatedRows.filter((entry) => evidenceAlignment(entry) === true).length;
+  const contested = evaluatedRows.filter((entry) => evidenceAlignment(entry) === false).length;
+  const alignedCheckpoints = checkpoints.filter((entry) => entry.status === "evidenced-aligned").length;
+  const evidencedCheckpoints = checkpoints.filter((entry) => entry.status.startsWith("evidenced-") || entry.status === "evidenced").length;
   const sourceIds = boundedIds([
     ...(openingReceiptId ? [{ id: openingReceiptId }] : []),
     ...film,
@@ -99,9 +147,9 @@ export function buildSeasonThesisLedger(dashboard = {}) {
   ]);
   const status = !thesisId
     ? "unproven"
-    : film.length + architect.length >= 3
+    : aligned >= 3 && alignedCheckpoints >= 2
       ? "established"
-      : film.length + architect.length > 0
+      : evidencedCheckpoints > 0
         ? "installing"
         : "declared";
   return {
@@ -121,6 +169,7 @@ export function buildSeasonThesisLedger(dashboard = {}) {
       sourceIds,
       tacticalFilm: film.length,
       alignedTargets: aligned,
+      contestedTargets: contested,
       architectReviews: architect.length,
       activeCommitments: activeCommitments.length,
       latestCommitmentStatus: latestCommitment?.status || null
@@ -128,7 +177,7 @@ export function buildSeasonThesisLedger(dashboard = {}) {
     reckoning: {
       status,
       summary: thesisId
-        ? `${film.length} executed tactical call${film.length === 1 ? "" : "s"} · ${aligned} matched declared target${aligned === 1 ? "" : "s"} · ${architect.length} Architect review${architect.length === 1 ? "" : "s"}${identityLedger ? ` · ${identityLedger.summary}` : ""}`
+        ? `${film.length} executed tactical call${film.length === 1 ? "" : "s"} · ${aligned} aligned source receipt${aligned === 1 ? "" : "s"} · ${contested} contested source receipt${contested === 1 ? "" : "s"} · ${architect.length} Architect review${architect.length === 1 ? "" : "s"}${identityLedger ? ` · ${identityLedger.summary}` : ""}`
         : "No exact Opening Contract receipt is available; the season thesis remains unproven.",
       disclaimer: "The reckoning summarizes bounded source receipts. It does not claim the thesis caused results, predict an outcome, or grant a hidden bonus."
     }
@@ -156,6 +205,8 @@ function bindChapterToThesis(base, thesis, checkpointId) {
       checkpointId,
       checkpointStatus: checkpoint.status,
       evidenceIds: checkpoint.evidenceIds,
+      alignedEvidenceIds: checkpoint.alignedEvidenceIds || [],
+      contestedEvidenceIds: checkpoint.contestedEvidenceIds || [],
       reckoning: checkpointId === "season-reckoning" ? thesis.reckoning : null
     }
   };

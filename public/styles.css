@@ -3610,6 +3610,28 @@ body.mobile-loop-active .mobile-loop-overlay {
   padding-left: 10px;
   border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
 }
+.gm-persona-paths {
+  display: grid;
+  gap: 5px;
+  margin: 7px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.gm-persona-path {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1px 8px;
+  align-items: baseline;
+  padding: 6px 8px;
+  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--surface) 88%, var(--accent) 12%);
+  font-size: 0.68rem;
+}
+.gm-persona-path span { color: var(--ink); }
+.gm-persona-path strong { color: var(--accent-strong); font-variant-numeric: tabular-nums; }
+.gm-persona-path small { grid-column: 1 / -1; color: var(--muted); }
+.gm-persona-path.complete { border-color: color-mix(in srgb, var(--positive) 55%, var(--line)); }
 .opening-contract-card {
   margin-top: 12px;
   padding: 12px;

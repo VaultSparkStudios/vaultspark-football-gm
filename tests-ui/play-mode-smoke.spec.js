@@ -79,16 +79,19 @@ test("returning player can continue the exact live Season chapter", async ({ pag
 
   await page.evaluate(async () => {
     const dashboard = await fetch("/api/state").then((response) => response.json());
-    const { franchiseScopeFromDashboard, franchiseStorageKey } = await import("./lib/franchiseScope.js");
-    const scope = franchiseScopeFromDashboard(dashboard);
-    const key = franchiseStorageKey("franchise-architect-last-seen:v2", dashboard);
-    localStorage.setItem(key, JSON.stringify({
-      scope,
-      timestamp: Date.now() - (7 * 60 * 60 * 1000),
-      year: dashboard.currentYear,
-      week: dashboard.currentWeek,
-      record: null
-    }));
+    const { recordReturnBoundary } = await import("./lib/returnDigest.js");
+    recordReturnBoundary(dashboard, { reason: "browser-test-prior-session" });
+  });
+  await page.addInitScript(() => {
+    if (sessionStorage.getItem("return-digest-browser-test")) return;
+    const key = Object.keys(localStorage).find((entry) => entry.startsWith("franchise-architect-session-boundary:v3"));
+    if (!key) throw new Error("Versioned return boundary missing");
+    const prior = JSON.parse(localStorage.getItem(key));
+    prior.timestamp = Date.now() - (7 * 60 * 60 * 1000);
+    prior.week = Number(prior.week || 0) - 1;
+    prior.chapterId = "browser-test-prior-chapter";
+    localStorage.setItem(key, JSON.stringify(prior));
+    sessionStorage.setItem("return-digest-browser-test", "applied");
   });
 
   await page.reload();

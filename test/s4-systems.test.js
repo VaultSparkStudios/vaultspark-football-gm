@@ -361,9 +361,11 @@ test("gmLegacyScore: object-shaped championship records credit exactly once", ()
   assert.equal(resolveChampionTeamId({ championTeamId: "BUF" }), "BUF");
 });
 
-test("gmLegacyScore: persona progress starts at zero and milestone floors do not lie", () => {
+test("gmLegacyScore: persona progression exposes truthful independent paths", () => {
   const rookie = initGmLegacy({});
-  assert.equal(getGmPersonaArc(rookie).progressPct, 0);
+  const rookieArc = getGmPersonaArc(rookie);
+  assert.equal(rookieArc.progressPct, 0);
+  assert.deepEqual(rookieArc.next.advancementPaths.map((path) => path.kind), ["score", "playoffs", "tenure"]);
 
   const playoffVeteran = {
     seasonsServed: 2,
@@ -377,8 +379,23 @@ test("gmLegacyScore: persona progress starts at zero and milestone floors do not
   };
   const arc = getGmPersonaArc(playoffVeteran);
   assert.equal(arc.current.tier, 3, "playoff milestone advances to Proven GM");
-  assert.equal(arc.progressPct, 0, "milestone tier begins at its truthful score floor");
-  assert.equal(arc.progressSource, "milestone-floor");
+  const strongestPath = arc.next.advancementPaths.reduce((best, path) => path.progressPct > best.progressPct ? path : best);
+  assert.equal(arc.progressSource, strongestPath.kind);
+  assert.equal(arc.progressPct, strongestPath.progressPct, "bar names the strongest real path instead of a milestone floor");
+  assert.deepEqual(arc.next.advancementPaths.map(({ kind, current, target, remaining }) => ({ kind, current, target, remaining })), [
+    { kind: "score", current: arc.score, target: 68, remaining: 68 - arc.score },
+    { kind: "playoffs", current: 2, target: 4, remaining: 2 },
+    { kind: "titles", current: 0, target: 1, remaining: 1 }
+  ]);
+
+  const champion = { ...playoffVeteran, playoffAppearances: 1, superBowlWins: 1 };
+  const championArc = getGmPersonaArc(champion);
+  assert.equal(championArc.current.tier, 4);
+  const scorePath = championArc.next.advancementPaths.find((path) => path.kind === "score");
+  const titlePath = championArc.next.advancementPaths.find((path) => path.kind === "titles");
+  assert.equal(scorePath.remaining, 80 - championArc.score, "score path uses the computed score, never the tier floor");
+  assert.equal(titlePath.remaining, 2, "one title truthfully requires two more for Legend");
+  assert.equal(championArc.next.advancementRule, "any");
 });
 
 test("gmLegacyScore: only declared mechanical benefits alter simulation inputs", () => {

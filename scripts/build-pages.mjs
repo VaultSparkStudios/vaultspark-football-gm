@@ -8,6 +8,7 @@ import { assertApiContractParity } from "./check-api-contract-parity.mjs";
 import { assertPublicFooterContract } from "./lib/public-footer.mjs";
 import { emitEdgeSecurityPolicy } from "./lib/edge-security-policy.mjs";
 import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker.mjs";
+import { fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -244,18 +245,19 @@ async function emitHashedStylesheet() {
   return hashedStyleHref;
 }
 
-async function emitDeployEvidence(edgePolicy) {
+async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
   const identity = JSON.parse(await fs.readFile(path.join(publicDir, "public-identity.json"), "utf8"));
   const sourceRevision = String(
     process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || process.env.SOURCE_REVISION || "local-worktree"
   ).trim();
   const generatedAt = new Date().toISOString();
   const deployManifest = {
-    schemaVersion: "1.0",
+    schemaVersion: "1.1",
     service: identity.slug,
     canonicalOrigin: identity.canonicalOrigin,
     repository: identity.repository,
     sourceRevision,
+    artifactFingerprint,
     styleAsset: hashedStyleHref,
     basePath,
     assetBasePath,
@@ -270,6 +272,7 @@ async function emitDeployEvidence(edgePolicy) {
     status: "ok",
     service: identity.slug,
     sourceRevision,
+    artifactFingerprint,
     styleAsset: hashedStyleHref,
     edgePolicyFingerprint: edgePolicy.policyFingerprint,
     edgePolicyAppliedToHostedOrigin: false,
@@ -297,12 +300,13 @@ async function main() {
     process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || process.env.SOURCE_REVISION || "local-worktree"
   ).trim();
   const edgePolicy = await emitEdgeSecurityPolicy({ outDir, htmlPages, sourceRevision });
-  await emitDeployEvidence(edgePolicy);
   const swManifest = await emitServiceWorker(outDir);
   console.log(
     `Service worker precache v${swManifest.version}: ${swManifest.assetCount} assets · ${Math.round(swManifest.totalBytes / 1024)} KB (repeat loads serve from cache)`
   );
   await fs.copyFile(path.join(outDir, "index.html"), path.join(outDir, "404.html"));
+  const artifactFingerprint = await fingerprintArtifactDirectory(outDir);
+  await emitDeployEvidence(edgePolicy, artifactFingerprint);
   await mirrorProjectPaths();
   console.log(`Built Pages bundle in ${outDir}`);
 }

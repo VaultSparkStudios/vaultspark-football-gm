@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { validateReleaseEvidence, verifyReleaseEvidenceContract } from "../scripts/lib/release-truth.mjs";
+import { evaluateReleaseEvidenceFreshness, validateReleaseEvidence, verifyReleaseEvidenceContract } from "../scripts/lib/release-truth.mjs";
 
 const NOW = Date.parse("2026-08-02T16:00:00.000Z");
 
@@ -47,6 +47,35 @@ test("route-green evidence remains launch HOLD when independent gates are red", 
     "lifecycle-authority-unverified"
   ]);
   assert.match(result.contract.receiptSha256, /^[a-f0-9]{64}$/);
+});
+
+test("release evidence carries an explicit expiring observation window", () => {
+  const result = validate(report());
+  assert.equal(result.contract.schemaVersion, "1.1");
+  assert.deepEqual(result.contract.evidenceWindow, {
+    observedAt: "2026-08-02T15:30:00.000Z",
+    maxAgeMs: 24 * 60 * 60 * 1000,
+    expiresAt: "2026-08-03T15:30:00.000Z",
+    statusAtIssue: "current"
+  });
+  const expired = evaluateReleaseEvidenceFreshness({ contract: result.contract, now: NOW + 25 * 60 * 60 * 1000 });
+  assert.equal(expired.status, "expired");
+  assert.deepEqual(expired.reasons, ["evidence-expired"]);
+});
+
+test("live freshness detects origin, deployed, and candidate revision drift", () => {
+  const contract = validate(report()).contract;
+  const liveReport = report({
+    routeChecks: [
+      { route: "/", ok: true },
+      { route: "/_health", ok: true, body: JSON.stringify({ status: "ok", sourceRevision: "def456" }) }
+    ]
+  });
+  const drift = evaluateReleaseEvidenceFreshness({ contract, liveReport, expectedRevision: "candidate789", now: NOW });
+  assert.equal(drift.status, "revision-drift");
+  assert.ok(drift.reasons.includes("deployed-revision-drift"));
+  assert.ok(drift.reasons.includes("candidate-revision-mismatch"));
+  assert.equal(drift.liveRevision, "def456");
 });
 
 test("wrong origin, stale evidence, and missing revisions are rejected", () => {
