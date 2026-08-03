@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "1.0",
+  "generatedBy": "scripts/launch-evidence-report.mjs",
+  "checkedAt": "2026-08-03T23:14:17.080Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "summary": {
+    "status": "blocked",
+    "routesOk": true,
+    "emailForwardingVerified": false,
+    "originEvidenceVerified": true,
+    "blocker": "On-domain email forwarding/copying is unverified."
+  },
+  "routeChecks": [
+    {
+      "route": "/",
+      "url": "https://playfranchisearchitect.com/",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "statusCode": 200
+        }
+      ],
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-frame-options": "DENY",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-F/gzb1V7qLo4k574OEllprXSC8gGx8HqTgGTtZQz+ms=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      }
+    },
+    {
+      "route": "/game.html",
+      "url": "https://playfranchisearchitect.com/game.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /game → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/game.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/contact.html",
+      "url": "https://playfranchisearchitect.com/contact.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /contact → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/contact.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/contact",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/privacy.html",
+      "url": "https://playfranchisearchitect.com/privacy.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /privacy → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/privacy.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/privacy",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/terms.html",
+      "url": "https://playfranchisearchitect.com/terms.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /terms → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/terms.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/terms",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/agents.json",
+      "url": "https://playfranchisearchitect.com/agents.json",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/agents.json",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/.well-known/llms.txt",
+      "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/sitemap.xml",
+      "url": "https://playfranchisearchitect.com/sitemap.xml",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/sitemap.xml",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/_health",
+      "url": "https://playfranchisearchitect.com/_health",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/_health",
+          "statusCode": 200
+        }
+      ],
+      "headers": {
+        "content-type": "application/octet-stream",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-frame-options": "DENY",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-F/gzb1V7qLo4k574OEllprXSC8gGx8HqTgGTtZQz+ms=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      },
+      "body": "{\n  \"status\": \"ok\",\n  \"service\": \"franchise-architect-football\",\n  \"sourceRevision\": \"c92e389384b9fa51e7b4e7af69887831b61d2fe8\",\n  \"styleAsset\": \"styles.c063feedc0.css\",\n  \"edgePolicyFingerprint\": \"sha256:4006892bee724b58bd0caa71ee9e0eb68a79bd21e02c775d7ad898b0e10c8225\",\n  \"edgePolicyAppliedToHostedOrigin\": false,\n  \"generatedAt\": \"2026-08-03T04:18:03.447Z\",\n  \"launchReady\": false,\n  \"launchNote\": \"Runtime health is green; launch readiness still requires separate email, edge-header, deploy-currency, and founder-approval evidence.\"\n}\n"
+    }
+  ],
+  "emailForwarding": {
+    "status": "unverified",
+    "address": "football@playfranchisearchitect.com",
+    "detail": "No delivery/forwarding evidence supplied. Do not mark SPARKED from route checks alone."
+  },
+  "originEvidence": {
+    "required": true,
+    "healthReceiptValid": true,
+    "securityHeaders": {
+      "strictTransportSecurity": true,
+      "frameProtection": true,
+      "contentSecurityPolicy": true
+    },
+    "status": "verified"
+  }
+}

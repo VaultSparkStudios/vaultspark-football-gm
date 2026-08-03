@@ -1121,6 +1121,6 @@ Source: `docs/AUDIT_2026-08-03.json`.
 | FIRE | Progression / narrative authority | Done | 3.0h | phase-aware-season-thesis-evidence |
 | FIRE | Retention hook / temporal authority | Done | 2.5h | session-bound-return-digest |
 | FIRE | Infrastructure / propagation safety | Done | 4.0h | project-propagation-compatibility-firewall |
-| FIRE | Release architecture / staging | In progress | 4.0h | independent-cloudflare-staging-authority |
+| FIRE | Release architecture / staging | Done | 4.0h | independent-cloudflare-staging-authority |
 | HIGH | Progression / mathematical truth | Done | 2.0h | multi-path-gm-persona-progress |
 | HIGH | Release observability / freshness | Done | 2.5h | expiring-release-evidence-snapshot |

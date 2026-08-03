@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.1",
+  "kind": "independent-staging-authority",
+  "project": "franchise-architect-staging",
+  "branch": "staging",
+  "sourceRevision": "833779e836cb977d614033b74117956b68530816",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "2a83b18b9cec635b2fd850327bc593b3e97e1974ab295fb21a4f4fa8038bf77f",
+    "files": 155,
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json"
+    ]
+  },
+  "promotionIdentity": "833779e836cb977d614033b74117956b68530816:2a83b18b9cec635b2fd850327bc593b3e97e1974ab295fb21a4f4fa8038bf77f",
+  "deploymentId": "c5af329b-ae2d-4fbd-9470-d513140088df",
+  "deploymentUrl": "https://c5af329b.franchise-architect-staging.pages.dev",
+  "stableUrl": "https://staging.playfranchisearchitect.com",
+  "domainStatus": "active",
+  "independent": true,
+  "exactRevision": true,
+  "exactArtifact": true,
+  "provenance": {
+    "status": "verified",
+    "checksPassed": 11,
+    "checksTotal": 11,
+    "checkedAt": "2026-08-03T23:01:21.740Z"
+  },
+  "rollback": {
+    "previousDeploymentId": "0afb9434-6785-4ad8-af36-60ba957c6059",
+    "available": true
+  },
+  "verified": true,
+  "observedAt": "2026-08-03T23:01:21.740Z"
+}

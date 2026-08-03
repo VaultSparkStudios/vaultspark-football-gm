@@ -4,10 +4,10 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 0ad328d790428effd212023b0416915d90ab03aa, required edge headers verified. Launch remains HOLD; independent gates are not collapsed.",
+  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at c92e389384b9fa51e7b4e7af69887831b61d2fe8, required edge headers verified; evidence current through 2026-08-04T23:14:17.080Z. Launch remains HOLD; independent gates are not collapsed.",
   "nextMilestone": "Verify an independent staging origin at the exact candidate revision, then prove production revision parity, delivered on-domain email, founder approval, and authoritative lifecycle before any launch flip.",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, exact-revision-mismatch, independent-staging-unverified, founder-approval-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — email-delivery-unverified, exact-revision-mismatch, founder-approval-unverified, lifecycle-authority-unverified."
   ],
   "lastUpdated": "2026-08-03",
   "lifecycle": "deployed",
@@ -134,8 +134,8 @@
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-31",
   "lastVerificationAt": "2026-08-03",
-  "stagingType": "github-pages",
-  "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
+  "stagingType": "cloudflare-pages",
+  "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.029,
   "entropyLastComputed": "2026-08-03",
@@ -163,15 +163,15 @@
       "lastChecked": "2026-08-03"
     },
     {
-      "type": "staging",
-      "label": "GitHub Pages",
-      "url": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
-      "lastChecked": "2026-08-03"
-    },
-    {
       "type": "production",
       "label": "Public origin",
       "url": "https://playfranchisearchitect.com/",
+      "lastChecked": "2026-08-03"
+    },
+    {
+      "type": "staging",
+      "label": "Cloudflare Pages",
+      "url": "https://staging.playfranchisearchitect.com",
       "lastChecked": "2026-08-03"
     }
   ],
@@ -191,13 +191,19 @@
   ],
   "session": 68,
   "releaseEvidence": {
-    "schemaVersion": "1.0",
+    "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "8dd0340414b11adf07f81404085c6accccfae634467de01155cd4ecbcc1e897a",
-    "checkedAt": "2026-08-03T00:36:05.112Z",
+    "receiptSha256": "afeebb18d8c11bd1f2c3c1617febefdf1cf36b99d3ab8251302708109a77a26c",
+    "checkedAt": "2026-08-03T23:14:17.080Z",
+    "evidenceWindow": {
+      "observedAt": "2026-08-03T23:14:17.080Z",
+      "maxAgeMs": 86400000,
+      "expiresAt": "2026-08-04T23:14:17.080Z",
+      "statusAtIssue": "current"
+    },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "0ad328d790428effd212023b0416915d90ab03aa",
+    "deployedRevision": "c92e389384b9fa51e7b4e7af69887831b61d2fe8",
     "routes": {
       "verified": true,
       "checked": 9
@@ -218,10 +224,10 @@
     },
     "exactRevision": {
       "verified": false,
-      "expected": "04ca29aac10cc223cfec2bb528d761e3bccc0af1"
+      "expected": "833779e836cb977d614033b74117956b68530816"
     },
     "independentStaging": {
-      "verified": false
+      "verified": true
     },
     "founderApproval": {
       "verified": false
@@ -234,9 +240,37 @@
     "blockerCodes": [
       "email-delivery-unverified",
       "exact-revision-mismatch",
-      "independent-staging-unverified",
       "founder-approval-unverified",
       "lifecycle-authority-unverified"
     ]
+  },
+  "stagingAuthority": {
+    "schemaVersion": "1.0",
+    "receiptSha256": "8255058899858246f76ec3eeaadaaa0a488ca03617e42fcb15dc7e8cedd01ac8",
+    "sourceRevision": "833779e836cb977d614033b74117956b68530816",
+    "artifactFingerprint": {
+      "algorithm": "sha256",
+      "digest": "2a83b18b9cec635b2fd850327bc593b3e97e1974ab295fb21a4f4fa8038bf77f",
+      "files": 155,
+      "exclusions": [
+        "_health",
+        "deploy-manifest.json"
+      ]
+    },
+    "deploymentId": "c5af329b-ae2d-4fbd-9470-d513140088df",
+    "stableUrl": "https://staging.playfranchisearchitect.com",
+    "domainStatus": "active",
+    "provenance": {
+      "status": "verified",
+      "checksPassed": 11,
+      "checksTotal": 11,
+      "checkedAt": "2026-08-03T23:01:21.740Z"
+    },
+    "rollback": {
+      "previousDeploymentId": "0afb9434-6785-4ad8-af36-60ba957c6059",
+      "available": true
+    },
+    "verified": true,
+    "observedAt": "2026-08-03T23:01:21.740Z"
   }
 }

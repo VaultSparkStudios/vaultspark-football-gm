@@ -8,14 +8,14 @@
     "type": "public browser football game/app"
   },
   "displayName": "Franchise Architect: Football",
-  "status": "in-progress",
+  "status": "complete",
   "summary": {
     "rankedItems": 6,
     "combinedPriority": 172.8,
     "topItem": "phase-aware-season-thesis-evidence",
     "source": "live-code-audit",
-    "openItems": 6,
-    "completedItems": 0,
+    "openItems": 0,
+    "completedItems": 6,
     "priorityFormula": "Priority = axis-weighted Impact × Innovation / log2(EffortHours + 2); execution rank is dependency-aware.",
     "theme": "The game now has deep authorities, but three presentation layers overstate what their evidence means, while generic Studio propagation and release/staging surfaces can still replace or outlive the exact project truth they claim to report."
   },
@@ -184,7 +184,7 @@
       "priority": 27.1,
       "slug": "independent-cloudflare-staging-authority",
       "title": "The candidate earns a real independent staging origin before main",
-      "status": "open",
+      "status": "shipped",
       "premise": "The configured GitHub Pages staging URL redirects away, fails all same-origin route checks, and shares production authority. cloudflare.deploy and cloudflare.dns are READY, and a global Wrangler client is already installed, so staging is agent-attemptable rather than human-blocked.",
       "evidence": [
         "verify-staging-receipt reports configured Pages origin invalid",
@@ -304,7 +304,7 @@
     "Primary 1/6: phase-aware thesis evidence shipped; future and contested receipts cannot establish the season thesis.",
     "Primary 2/6: session-bound return digest shipped; elapsed time cannot fabricate off-session activity.",
     "Primary 3/6: project propagation compatibility firewall restored and regression-covered.",
-    "Primary 4/6: independent Cloudflare staging deploy authority implemented and authenticated; live exact-candidate execution remains the closeout gate.",
+    "Primary 4/6: independent Cloudflare staging verified at the exact candidate revision with stable same-origin provenance, deterministic artifact identity, exact DNS-zone authority, and rollback receipt.",
     "Primary 5/6: GM persona now exposes every independent advancement path with real source values.",
     "Primary 6/6: release evidence now expires and detects live origin/revision drift.",
     "Second order: deterministic deployable fingerprint, per-franchise boundary lineage, and staging provenance replay plus rollback authority shipped."
@@ -317,6 +317,6 @@
       "session-bound-return-digest",
       "project-propagation-compatibility-firewall"
     ],
-    "shipped": 5
+    "shipped": 6
   }
 }
