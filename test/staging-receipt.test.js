@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { buildStagingReceiptReport } from "../scripts/verify-staging-receipt.mjs";
-import { buildStagingAuthorityReceipt, ensureStagingDns, selectDeployment, STAGING_DOMAIN, STAGING_PROJECT } from "../scripts/deploy-staging.mjs";
+import { buildStagingAuthorityReceipt, ensureStagingDns, resolveStagingZoneId, selectDeployment, STAGING_DOMAIN, STAGING_PROJECT } from "../scripts/deploy-staging.mjs";
 
 const baseUrl = "https://staging.example.test/preview/";
 const expected = {
@@ -108,4 +108,25 @@ test("staging DNS authority creates the exact proxied Pages CNAME and is idempot
   };
   assert.deepEqual(await ensureStagingDns(existingDns, "zone-1"), createdRecord);
   assert.equal(existingCalls.length, 1);
+});
+test("staging zone authority resolves the exact active project domain", async () => {
+  const deploy = async (action, apiPath) => {
+    assert.equal(action, "franchise-staging-zone-lookup");
+    assert.equal(apiPath, "/zones?name=playfranchisearchitect.com");
+    return {
+      ok: true,
+      status: 200,
+      body: {
+        result: [
+          { id: "zone-exact", name: "playfranchisearchitect.com", status: "active" },
+          { id: "zone-wrong", name: "vaultsparkstudios.com", status: "active" }
+        ]
+      }
+    };
+  };
+  assert.equal(await resolveStagingZoneId(deploy), "zone-exact");
+  await assert.rejects(
+    () => resolveStagingZoneId(async () => ({ ok: true, status: 200, body: { result: [] } })),
+    /Expected one active/
+  );
 });

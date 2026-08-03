@@ -103,6 +103,16 @@ async function readDomain(cfDeploy, accountId) {
   return assertOk(result, "verify Pages custom domain").body.result;
 }
 
+export async function resolveStagingZoneId(cfDeploy) {
+  const result = assertOk(
+    await cfDeploy("franchise-staging-zone-lookup", "/zones?name=playfranchisearchitect.com"),
+    "resolve staging DNS zone"
+  );
+  const zones = (result.body.result || []).filter((zone) => zone?.name === "playfranchisearchitect.com" && zone?.status === "active");
+  if (zones.length !== 1 || !zones[0]?.id) throw new Error(`Expected one active playfranchisearchitect.com zone, found ${zones.length}.`);
+  return zones[0].id;
+}
+
 export async function ensureStagingDns(cfDns, zoneId) {
   if (!zoneId) throw new Error("Cloudflare DNS zone id is unavailable.");
   const target = `${STAGING_PROJECT}.pages.dev`;
@@ -136,7 +146,7 @@ export async function deployStaging({ root = process.cwd(), sourceRevision } = {
   const head = run("git", ["rev-parse", "HEAD"], { cwd: root });
   if (head !== sourceRevision) throw new Error(`Candidate revision ${sourceRevision} is not current HEAD ${head}.`);
 
-  const { cfDeploy, cfAccountId, withPagesDeployEnv, cfDns, cfZoneId } = await loadCloudflarePlane(root);
+  const { cfDeploy, cfAccountId, withPagesDeployEnv } = await loadCloudflarePlane(root);
   const accountId = await cfAccountId();
   await ensureProject(cfDeploy, accountId);
 
@@ -150,7 +160,11 @@ export async function deployStaging({ root = process.cwd(), sourceRevision } = {
   });
 
   await ensureDomain(cfDeploy, accountId);
-  await ensureStagingDns(cfDns, cfZoneId());
+  const zoneId = await resolveStagingZoneId(cfDeploy);
+  await ensureStagingDns(
+    (apiPath, init) => cfDeploy("franchise-staging-dns-authority", apiPath, init),
+    zoneId
+  );
   let domainState = await readDomain(cfDeploy, accountId);
   for (let attempt = 0; attempt < 48 && String(domainState?.status).toLowerCase() !== "active"; attempt += 1) {
     await new Promise((resolve) => setTimeout(resolve, 2500));
