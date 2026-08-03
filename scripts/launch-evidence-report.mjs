@@ -45,7 +45,7 @@ const maxRedirectHops = 5;
 
 function probeOnceHttps(url, timeoutMs) {
   return new Promise((resolve) => {
-    const request = https.get(url, { timeout: timeoutMs }, (response) => {
+    const request = https.get(url, { timeout: timeoutMs, signal: AbortSignal.timeout(timeoutMs) }, (response) => {
       const chunks = [];
       let size = 0;
       response.on("data", (chunk) => {
