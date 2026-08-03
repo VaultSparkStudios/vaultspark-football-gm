@@ -103,6 +103,19 @@ async function readDomain(cfDeploy, accountId) {
   return assertOk(result, "verify Pages custom domain").body.result;
 }
 
+export async function ensureStagingDns(cfDns, zoneId) {
+  if (!zoneId) throw new Error("Cloudflare DNS zone id is unavailable.");
+  const target = `${STAGING_PROJECT}.pages.dev`;
+  const listed = assertOk(await cfDns(`/zones/${zoneId}/dns_records?name=${encodeURIComponent(STAGING_DOMAIN)}`), "read staging DNS");
+  const record = (listed.body.result || [])[0] || null;
+  if (record?.type === "CNAME" && record?.content === target && record?.proxied === true) return record;
+  const body = JSON.stringify({ type: "CNAME", name: STAGING_DOMAIN, content: target, proxied: true });
+  const written = record
+    ? await cfDns(`/zones/${zoneId}/dns_records/${record.id}`, { method: "PUT", body })
+    : await cfDns(`/zones/${zoneId}/dns_records`, { method: "POST", body });
+  return assertOk(written, record ? "update staging DNS" : "create staging DNS").body.result;
+}
+
 export async function inspectStaging({ root = process.cwd() } = {}) {
   const { cfDeploy, cfAccountId, withPagesDeployEnv } = await loadCloudflarePlane(root);
   const accountId = await cfAccountId();
@@ -123,7 +136,7 @@ export async function deployStaging({ root = process.cwd(), sourceRevision } = {
   const head = run("git", ["rev-parse", "HEAD"], { cwd: root });
   if (head !== sourceRevision) throw new Error(`Candidate revision ${sourceRevision} is not current HEAD ${head}.`);
 
-  const { cfDeploy, cfAccountId, withPagesDeployEnv } = await loadCloudflarePlane(root);
+  const { cfDeploy, cfAccountId, withPagesDeployEnv, cfDns, cfZoneId } = await loadCloudflarePlane(root);
   const accountId = await cfAccountId();
   await ensureProject(cfDeploy, accountId);
 
@@ -137,6 +150,7 @@ export async function deployStaging({ root = process.cwd(), sourceRevision } = {
   });
 
   await ensureDomain(cfDeploy, accountId);
+  await ensureStagingDns(cfDns, cfZoneId());
   let domainState = await readDomain(cfDeploy, accountId);
   for (let attempt = 0; attempt < 48 && String(domainState?.status).toLowerCase() !== "active"; attempt += 1) {
     await new Promise((resolve) => setTimeout(resolve, 2500));

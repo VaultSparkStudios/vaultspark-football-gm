@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { buildStagingReceiptReport } from "../scripts/verify-staging-receipt.mjs";
-import { buildStagingAuthorityReceipt, selectDeployment, STAGING_DOMAIN, STAGING_PROJECT } from "../scripts/deploy-staging.mjs";
+import { buildStagingAuthorityReceipt, ensureStagingDns, selectDeployment, STAGING_DOMAIN, STAGING_PROJECT } from "../scripts/deploy-staging.mjs";
 
 const baseUrl = "https://staging.example.test/preview/";
 const expected = {
@@ -83,4 +83,29 @@ test("an active hostname cannot hide the wrong deployed candidate", () => {
   });
   assert.equal(receipt.exactRevision, false);
   assert.equal(receipt.verified, false);
+});
+test("staging DNS authority creates the exact proxied Pages CNAME and is idempotent", async () => {
+  const calls = [];
+  const createdRecord = { id: "dns-1", type: "CNAME", name: "staging.playfranchisearchitect.com", content: "franchise-architect-staging.pages.dev", proxied: true };
+  const createDns = async (apiPath, init = {}) => {
+    calls.push({ apiPath, init });
+    if (init.method === "POST") return { ok: true, status: 200, body: { result: createdRecord } };
+    return { ok: true, status: 200, body: { result: [] } };
+  };
+  assert.deepEqual(await ensureStagingDns(createDns, "zone-1"), createdRecord);
+  assert.equal(calls[1].init.method, "POST");
+  assert.deepEqual(JSON.parse(calls[1].init.body), {
+    type: "CNAME",
+    name: "staging.playfranchisearchitect.com",
+    content: "franchise-architect-staging.pages.dev",
+    proxied: true
+  });
+
+  const existingCalls = [];
+  const existingDns = async (apiPath, init = {}) => {
+    existingCalls.push({ apiPath, init });
+    return { ok: true, status: 200, body: { result: [createdRecord] } };
+  };
+  assert.deepEqual(await ensureStagingDns(existingDns, "zone-1"), createdRecord);
+  assert.equal(existingCalls.length, 1);
 });
