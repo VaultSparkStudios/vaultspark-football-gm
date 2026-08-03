@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { buildStagingReceiptReport } from "../scripts/verify-staging-receipt.mjs";
-import { buildStagingAuthorityReceipt, ensureStagingDns, resolveStagingZoneId, selectDeployment, STAGING_DOMAIN, STAGING_PROJECT } from "../scripts/deploy-staging.mjs";
+import { buildStagingAuthorityReceipt, ensureStagingDns, resolveStagingZoneId, selectDeployment, STAGING_DOMAIN, STAGING_PROJECT, waitForStagingProvenance } from "../scripts/deploy-staging.mjs";
 
 const baseUrl = "https://staging.example.test/preview/";
 const expected = {
@@ -129,4 +129,23 @@ test("staging zone authority resolves the exact active project domain", async ()
     () => resolveStagingZoneId(async () => ({ ok: true, status: 200, body: { result: [] } })),
     /Expected one active/
   );
+});
+test("stable staging provenance waits for the new deployment to converge", async () => {
+  const reports = [
+    { summary: { status: "blocked" }, expectedRevision: "previous" },
+    { summary: { status: "blocked" }, expectedRevision: "previous" },
+    { summary: { status: "verified" }, expectedRevision: "candidate" }
+  ];
+  let builds = 0;
+  let sleeps = 0;
+  const result = await waitForStagingProvenance({
+    expected: { sourceRevision: "candidate" },
+    attempts: 5,
+    delayMs: 1,
+    buildReport: async () => reports[builds++],
+    sleep: async () => { sleeps += 1; }
+  });
+  assert.equal(result.summary.status, "verified");
+  assert.equal(builds, 3);
+  assert.equal(sleeps, 2);
 });

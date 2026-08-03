@@ -139,6 +139,22 @@ export async function inspectStaging({ root = process.cwd() } = {}) {
   return { authenticated: true, accountIdPresent: Boolean(accountId), projectExists: project.ok, domainStatus: domain?.body?.result?.status || null, stableUrl: STAGING_URL };
 }
 
+export async function waitForStagingProvenance({
+  expected,
+  attempts = 24,
+  delayMs = 2500,
+  buildReport = buildStagingReceiptReport,
+  sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+} = {}) {
+  let report = null;
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    report = await buildReport({ expected, baseUrl: STAGING_URL });
+    if (report?.summary?.status === "verified") return report;
+    if (attempt + 1 < attempts) await sleep(delayMs);
+  }
+  return report;
+}
+
 export async function deployStaging({ root = process.cwd(), sourceRevision } = {}) {
   if (!/^[a-f0-9]{7,64}$/i.test(sourceRevision || "")) throw new Error("--source-revision must be a candidate commit SHA.");
   const dirty = run("git", ["status", "--porcelain"], { cwd: root });
@@ -175,7 +191,7 @@ export async function deployStaging({ root = process.cwd(), sourceRevision } = {
   const deployments = assertOk(deploymentsResult, "list Pages deployments").body.result;
   const deployment = selectDeployment(deployments, sourceRevision);
   const previousDeployment = (deployments || []).find((entry) => entry?.id && entry.id !== deployment?.id) || null;
-  const provenanceReport = await buildStagingReceiptReport({ expected: manifest, baseUrl: STAGING_URL });
+  const provenanceReport = await waitForStagingProvenance({ expected: manifest });
   const receipt = buildStagingAuthorityReceipt({ sourceRevision, artifactFingerprint: manifest.artifactFingerprint, deployment, previousDeployment, domainState, provenanceReport });
   if (!receipt.verified) throw new Error(`Staging authority is not verified (domain=${receipt.domainStatus}, exactRevision=${receipt.exactRevision}).`);
   return receipt;
