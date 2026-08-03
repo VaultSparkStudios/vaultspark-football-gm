@@ -10,11 +10,11 @@
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ feat: make weekly strategy source-bound and observable        ║
 ║  ✓ fix(observability): closeout write-back must not report a co  ║
 ║  ✓ feat(offseason): contracts finally expire — free agency, the  ║
 ║  ✓ docs: record the duplicate-PR audit and CANON-041 landing     ║
 ║  ✓ feat(mobile): land CANON-041 nav drawer and guard against du  ║
-║  ✓ fix(deploy): publish to the origin the live domain actually   ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 47 files  ·  M:38 A:0 D:0 ?:9                          ║
+║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
