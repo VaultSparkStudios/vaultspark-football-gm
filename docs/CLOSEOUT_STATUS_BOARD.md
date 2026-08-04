@@ -1,38 +1,38 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-03 (Session 68 closeout) -->
+<!-- generated-at: 2026-08-04 (Session 69 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S68 ══════╗
-║  Date: 2026-08-03  ·  SIL: 995/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S69 ══════╗
+║  Date: 2026-08-04  ·  SIL: 996/1000  ·  Velocity: —              ║
 ║  Mode: FOUNDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
-║  ✓ feat: make weekly strategy source-bound and observable        ║
-║  ✓ fix(observability): closeout write-back must not report a co  ║
-║  ✓ feat(offseason): contracts finally expire — free agency, the  ║
-║  ✓ docs: record the duplicate-PR audit and CANON-041 landing     ║
-║  ✓ feat(mobile): land CANON-041 nav drawer and guard against du  ║
+║  ✓ docs: record verified staging authority                       ║
+║  ✓ fix: await stable staging provenance                          ║
+║  ✓ fix: bound release provenance probes                          ║
+║  ✓ fix: resolve the exact staging DNS zone                       ║
+║  ✓ fix: establish staging DNS authority                          ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 996/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
-║    Process Qual       100  ██████████                            ║
-║    Coherence          98   ██████████                            ║
+║    Process Qual       98   ██████████                            ║
+║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
-║    Ecosystem          98   ██████████                            ║
-║    Capital            99   ██████████                            ║
+║    Ecosystem          99   ██████████                            ║
+║    Capital            100  ██████████                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  ✓ logs/WORK_LOG.md                                              ║
+║  · logs/WORK_LOG.md                                              ║
 ║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
@@ -41,21 +41,21 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
-║  Ahead: 0  ·  Behind: 0                                          ║
+║  Changes: 21 files  ·  M:12 A:9 D:0 ?:0                          ║
+║  Ahead: 6  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
-║  Staging:  https://vaultsparkstudios.github.io/vaultspark-footb  ║
+║  Staging:  https://staging.playfranchisearchitect.com  ·  cloud  ║
 ║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         800/800                                          ║
-║  IGNIS:         7d ago                                           ║
+║  Tests:         819/819                                          ║
+║  IGNIS:         1d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  3d ago                                           ║
+║  Sanitization:  4d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

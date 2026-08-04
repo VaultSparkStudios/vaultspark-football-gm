@@ -479,3 +479,16 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - **Release truth:** the production origin now proves 9/9 routes, `/_health`, HSTS, frame protection, and CSP at deployed revision `0ad328d790428effd212023b0416915d90ab03aa`. Launch remains HOLD because the candidate revision is different, staging is not independent, received email and founder approval are absent, and authoritative lifecycle disagrees. Production health is not launch readiness.
 - **Propagation truth:** generic Studio files that removed project-specific startup authority were rolled back after executing tests proved the regression. No sibling tree was changed.
 - **Cost truth:** no dependency, paid service, external model, or variable-cost runtime was introduced; flat-rate Max Plan accounting remains notional.
+
+## 2026-08-03 — Session 69 truth surface changes
+
+- **Season truth:** phase eligibility is evaluated before receipt presence. Contested or failed evidence remains visible but cannot establish a thesis; future checkpoints cannot certify the present.
+- **Return truth:** Welcome Back is derived from a versioned per-franchise session boundary. Elapsed absence alone creates no league-movement claim, and boundary sequence exposes exact lineage.
+- **Legacy truth:** score, playoffs, titles, and tenure are independent General Manager advancement authorities; the player sees every exact remaining OR path.
+- **Propagation truth:** a local compatibility contract proves project parser exports, invariant status writes, nonzero canonical tests, and startup fingerprints before generic payloads can be accepted.
+- **Artifact truth:** health, deploy manifest, staging, and promotion receipts bind one deterministic SHA-256 over 155 deployable files while excluding only the two circular evidence files.
+- **Staging truth:** https://staging.playfranchisearchitect.com is a dedicated Cloudflare Pages origin at 833779e836cb977d614033b74117956b68530816, exact artifact 2a83b18b9cec635b2fd850327bc593b3e97e1974ab295fb21a4f4fa8038bf77f, 11/11 same-origin checks, active exact-zone CNAME, and rollback deployment 0afb9434-6785-4ad8-af36-60ba957c6059.
+- **Probe truth:** release network probes have a real wall-clock abort bound, and staging verification waits for stable-origin promotion convergence rather than sampling a stale first frame.
+- **Test truth:** the complete source-bound aggregate passes 819/819 with direct exit 0; Playwright passes 33/33; responsive evidence passes 65/65; six representative originals were manually inspected across both themes with zero blocking defects.
+- **Release truth:** production remains healthy at c92e389384b9fa51e7b4e7af69887831b61d2fe8, but launch remains HOLD on email delivery/reply identity, exact production parity, founder approval, and authoritative lifecycle. Independent staging is green and is not collapsed with those gates.
+- **Cost truth:** no dependency or variable-cost runtime was added. Dedicated static staging remains cost-neutral; flat-rate Max Plan cost is notional.

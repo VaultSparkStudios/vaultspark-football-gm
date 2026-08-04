@@ -771,3 +771,21 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Generic propagation may not erase project startup authority.** A pre-existing Studio propagation payload was byte-identical to the sibling template but removed the project's exported scan roots and broke startup-authority tests. It was rolled back rather than normalized into this public tree; mechanization issues are returned through Ark.
 
 **Visual QA must inspect pixels, not only metrics.** The automated responsive matrix was green while both mobile themes visibly rendered roster needs as `[object Object]`. The object projection was fixed, the Pages artifact rebuilt, and the exact corrected captures were retained in `docs/visual-qa/`.
+
+## 2026-08-03 — Session 69
+
+**Evidence semantics precede receipt presence.** A checkpoint is not “evidenced” merely because a receipt exists. Eligibility is phase-gated first, then proof is classified aligned or contested; only aligned proof across at least two eligible checkpoints can establish the season thesis.
+
+**Return continuity is a session boundary, not an elapsed-time simulation claim.** This zero-backend game cannot advance while closed. Every authoritative advance and pagehide refreshes a versioned, per-franchise monotonic boundary; Welcome Back reports only the persisted deltas authored in the prior session.
+
+**General Manager promotion paths remain independent.** Score, playoff appearances, championships, and tenure are separate OR paths. The UI states every exact remaining path and never converts a milestone promotion into fictional score credit.
+
+**Project authority must survive generic propagation.** Parser exports, the invariant PROJECT_STATUS writer, nonzero canonical shard discovery, and startup lifecycle/Genius fingerprints are a local fail-closed compatibility contract. The sibling mechanizer root cause travels through signed Ark cargo; this public repo never edits the Studio Ops tree directly.
+
+**Staging authority resolves its DNS zone by exact domain name.** A configured global zone id can name another Studio zone. The deployer resolves exactly one active playfranchisearchitect.com zone through the brokered Cloudflare plane before any CNAME write, then requires the stable custom hostname—not an ephemeral Pages URL—to replay exact SHA and artifact identity.
+
+**Hosted verification is bounded and convergence-aware.** Node HTTPS probes carry a wall-clock abort deadline in addition to socket timeout, and staging promotion polls the stable origin until the exact manifest converges. A deployment upload or active certificate alone cannot mint a verified receipt.
+
+**Launch remains an AND of independent gates.** Verified independent staging closes one gate only. Healthy production routes/headers do not replace exact production parity, received-and-reply-capable email, SHA-bound founder approval, or authoritative lifecycle reconciliation.
+
+**No Creative Direction Record was added.** The founder direction concerned execution quality, persistence, evidence honesty, and cost discipline rather than a new product creative decision; this public repository retains its intentional CDR omission.

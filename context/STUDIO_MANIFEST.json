@@ -45,8 +45,8 @@
     ],
     "staging": [
       {
-        "label": "github-pages-preview",
-        "url": "https://vaultsparkstudios.github.io/vaultspark-football-gm/"
+        "label": "cloudflare-pages",
+        "url": "https://staging.playfranchisearchitect.com/"
       }
     ],
     "production": [
@@ -118,7 +118,7 @@
   "hosting": {
     "hostingProvider": "github-pages",
     "liveUrl": "https://playfranchisearchitect.com/",
-    "stagingUrl": "https://vaultsparkstudios.github.io/vaultspark-football-gm/",
+    "stagingUrl": "https://staging.playfranchisearchitect.com/",
     "privatePreviewUrl": null,
     "localDevUrl": null,
     "deployStatus": "deployed-unannounced",

@@ -1,10 +1,10 @@
 {
   "vectorVersion": "1.0",
-  "generatedAt": "2026-08-03",
-  "generatedAtMs": 1785730253266,
-  "session": 68,
-  "vectorHash": "cd8157bb1c189f2f",
-  "silTotal": 995,
+  "generatedAt": "2026-08-04",
+  "generatedAtMs": 1785801774421,
+  "session": 69,
+  "vectorHash": "15325b09224fd9bd",
+  "silTotal": 996,
   "silAvg3": null,
   "velocity": null,
   "debt": null,
@@ -18,17 +18,17 @@
   "health": "green",
   "truthStatus": "green",
   "genome": null,
-  "ignisScore": 41900,
+  "ignisScore": 42230,
   "ignisGrade": "FORGE",
-  "ignisAgeDays": 7,
+  "ignisAgeDays": 1,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "Verify an independent staging origin at the exact candidate revision, then prove production revision parity, delivered on-domain email, founder approval, and authoritative lifecycle before any launch flip.",
-  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 0ad328d790428effd212023b0416915d90ab03aa, required edge headers verified. Launch remains HOLD; independent gates are not collapsed.",
+  "nextMilestone": "Prove delivered and reply-capable on-domain email, promote the exact candidate to production, obtain SHA-bound founder approval, and reconcile authoritative lifecycle before any launch flip.",
+  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at c92e389384b9fa51e7b4e7af69887831b61d2fe8, and required edge headers verified; independent staging is exact and verified at 833779e836cb977d614033b74117956b68530816. Launch remains HOLD; independent gates are not collapsed.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, exact-revision-mismatch, independent-staging-unverified, founder-approval-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — email-delivery-unverified, exact-revision-mismatch, founder-approval-unverified, lifecycle-authority-unverified."
   ]
 }

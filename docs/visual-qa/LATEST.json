@@ -1,53 +1,87 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-08-02T21:42:53.5258839-04:00",
-  "sourceRevision": "04ca29aac10c-worktree",
-  "artifact": "static Pages bundle rebuilt after the visual fix",
+  "capturedAt": "2026-08-03T19:18:28.9656644-04:00",
+  "sourceRevision": "6282ad141c4c-worktree",
+  "artifact": "Cloudflare staging promotion 833779e836cb977d614033b74117956b68530816:2a83b18b9cec635b2fd850327bc593b3e97e1974ab295fb21a4f4fa8038bf77f",
   "themes": [
     "dark",
     "light"
   ],
   "captures": [
     {
-      "file": "desktop-overview-dark.png",
-      "sha256": "c3cda4c4e62fb06ef4e4e6d4b6b166ae7f71eff3bfd4e84a1292103811dff5af",
+      "file": "s69-desktop-gm-persona-dark.png",
+      "sha256": "6fceb8a7121d7c6ebe4d5bb955fd2be60b49d247dc97b43bcc00860a909a5bc5",
       "theme": "dark",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "Franchise overview and Season/Architecture command surfaces"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "GM Legacy explicit independent advancement paths"
     },
     {
-      "file": "desktop-overview-light.png",
-      "sha256": "b467df73b9c4496fa7c192dde04be2660e050fcd18f10f987ee5013e7ea64cf1",
+      "file": "s69-desktop-gm-persona-light.png",
+      "sha256": "c12761a18775fc743a8c20e865e6654d0a66751823d7aca17e2afcd15085cfc7",
       "theme": "light",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "Franchise overview and Season/Architecture command surfaces"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "GM Legacy explicit independent advancement paths"
     },
     {
-      "file": "mobile-weekly-loop-dark.png",
-      "sha256": "e4b8aae9e0b2a163392c0a1c59a45420f887f906d0dacd248d04fb53bb9b6500",
+      "file": "s69-mobile-return-digest-dark.png",
+      "sha256": "9576b7049c892793f2cc6b514e979698d8599c28e82ba0711aacff5a12f8355d",
       "theme": "dark",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Mobile weekly decision deck, Week Room, and season chapter"
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Session-bound Welcome Back digest"
     },
     {
-      "file": "mobile-weekly-loop-light.png",
-      "sha256": "453db96aa83853ba5ce68e1ca9498fe9edc909368f057837525c8a2f849d2a09",
+      "file": "s69-mobile-return-digest-light.png",
+      "sha256": "43ffbe57c39847bb40195563c71bf64363ff47b5505473019a2f207d2a2237de",
       "theme": "light",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Mobile weekly decision deck, Week Room, and season chapter"
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Session-bound Welcome Back digest"
+    },
+    {
+      "file": "s69-mobile-overview-dark.png",
+      "sha256": "9e7987ea144f2f0b19cf8cad4692e94453d11424ea37e5ccd509a9e4d645829e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Mobile franchise command overview with drawer closed"
+    },
+    {
+      "file": "s69-mobile-overview-light.png",
+      "sha256": "798b9f0a5b12f1c1959578b59762d789fda81c39e9d642cb52628d48accbc6e1",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Mobile franchise command overview with drawer closed"
     }
   ],
   "inspection": {
     "renderedPixelsReviewed": true,
     "reviewer": "codex-gpt-5",
     "findings": [
-      "The first real-browser pass exposed `Roster Needs: [object Object]` four times in the mobile weekly deck in both dark and light themes.",
-      "Desktop overview hierarchy, dense tables, command cards, and footer remained readable without horizontal clipping in both themes.",
-      "Mobile dark/light cards, controls, Week Room hierarchy, season chapter, tables, and footer remained readable and within the 390px viewport after correction."
+      "GM Legacy advancement paths are readable, correctly separated by OR semantics, and unclipped in dark and light desktop captures.",
+      "The session-bound Welcome Back digest names the recorded boundary, preserves truthful chapter continuity, and keeps all three actions usable at 390px in both themes.",
+      "The mobile overview renders with the navigation drawer closed, command controls visible, and the franchise command hierarchy readable in dark and light themes.",
+      "The complete automated matrix produced 65 captures across mobile, tablet, desktop, dark, light, touched panels, and primary tabs with zero runtime or selector failures."
     ],
     "fixesApplied": [
-      "Normalized roster-need objects through `pos` or `position`, rejected non-string fallbacks, rebuilt the static Pages bundle, and recaptured all responsive evidence.",
-      "Added a focused regression proving the mobile formatter cannot fall back to object coercion."
+      "Prevented the evidence fixture pagehide path from overwriting its prepared return boundary before capture.",
+      "Targeted the complete GM Legacy wrapper rather than a nested paragraph and waited through the mobile drawer exit transition before screenshots.",
+      "Correctly classified the first-frame drawer artifact as evidence-harness timing after source and recapture proved synchronous product closure."
     ],
     "blockingDefectsOpen": 0
   }

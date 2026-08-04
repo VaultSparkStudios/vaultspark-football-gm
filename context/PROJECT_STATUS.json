@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at c92e389384b9fa51e7b4e7af69887831b61d2fe8, required edge headers verified; evidence current through 2026-08-04T23:14:17.080Z. Launch remains HOLD; independent gates are not collapsed.",
-  "nextMilestone": "Verify an independent staging origin at the exact candidate revision, then prove production revision parity, delivered on-domain email, founder approval, and authoritative lifecycle before any launch flip.",
+  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at c92e389384b9fa51e7b4e7af69887831b61d2fe8, and required edge headers verified; independent staging is exact and verified at 833779e836cb977d614033b74117956b68530816. Launch remains HOLD; independent gates are not collapsed.",
+  "nextMilestone": "Prove delivered and reply-capable on-domain email, promote the exact candidate to production, obtain SHA-bound founder approval, and reconcile authoritative lifecycle before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, exact-revision-mismatch, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-03",
+  "lastUpdated": "2026-08-04",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,19 +18,20 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-03",
   "testSuiteStatus": {
-    "totalTests": 800,
-    "pass": 800,
+    "totalTests": 819,
+    "pass": 819,
     "fail": 0,
-    "lastRun": "2026-08-01",
+    "lastRun": "2026-08-03",
     "newTestFiles": [
-      "test/snapshot-codec.test.js"
+      "test/project-authority-contract.test.js",
+      "test/staging-authority-reconcile.test.js"
     ],
     "newTestCount": 19,
-    "coverage": "Session 68 canonical aggregate Node 800/800 direct exit 0 (core 104, runtime 477, sim-contract 75, sim-realism 1, studio 143), Playwright 33/33, responsive evidence 53/53, Pages build/smoke, 54 browser modules reachable, four dark/light desktop/mobile images manually inspected.",
-    "uiSuiteNote": "Playwright 33/33, including authoritative bye-week empty-state semantics and Session 68 weekly-plan surfaces."
+    "coverage": "Session 69 canonical aggregate Node 819/819 direct exit 0 (core 104, runtime 484, sim-contract 75, sim-realism 1, studio 155), Playwright 33/33, responsive evidence 65/65, Pages build/smoke, 54 browser modules reachable, six dark/light desktop/mobile images manually inspected.",
+    "uiSuiteNote": "Playwright 33/33 and CANON-053 visual QA PASS with truthful return digest, multi-path GM progress, and mobile drawer state."
   },
-  "testsPassing": 800,
-  "testsTotal": 800,
+  "testsPassing": 819,
+  "testsTotal": 819,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -69,23 +70,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 995,
+  "silScore": 996,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 100,
-    "processQuality": 100,
-    "crossRepoCoherence": 98,
+    "processQuality": 98,
+    "crossRepoCoherence": 99,
     "securityPosture": 100,
-    "ecosystemIntegration": 98,
-    "capitalEfficiency": 99,
+    "ecosystemIntegration": 99,
+    "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 68,
+  "currentSession": 69,
   "lastAgent": "codex",
   "sessionMode": "founder",
-  "lastVerification": "npm test 800/800 direct exit 0; npm run test:ui 33/33 exit 0; evidence:responsive 53/53 exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54; visual receipt 4 inspected captures / 0 blocking defects; canon 0 gaps; doctor blockingFailing 0.",
+  "lastVerification": "npm test 819/819 direct exit 0; npm run test:ui 33/33 exit 0; evidence:responsive 65/65 exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54; staging provenance 11/11; visual receipt 6 inspected captures / 0 blocking defects.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -111,14 +112,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 875,
+  "silHealth": 846,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-03",
+    "date": "2026-08-04",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -140,20 +141,19 @@
   "entropyScore": 0.029,
   "entropyLastComputed": "2026-08-03",
   "lastSessionSummary": {
-    "session": 68,
+    "session": 69,
     "shipped": [
-      "Unit-typed versioned tactic authority",
-      "Exception-driven standing-plan rehearsal",
-      "Exact Season thesis and checkpoint ledger",
-      "Non-authoritative live test-shard progress",
-      "Replay-verifiable structured release truth",
-      "Tactic receipt lineage",
-      "Return-thesis continuity",
-      "Release contract replay validation",
-      "Mobile roster-needs rendering repair"
+      "Phase-aware aligned/contested season thesis evidence",
+      "Monotonic per-franchise session-bound return digest",
+      "Project propagation compatibility firewall",
+      "Independent Cloudflare staging authority",
+      "Truthful multi-path General Manager progression",
+      "Expiring live release evidence",
+      "Deterministic deployable artifact fingerprint",
+      "Stable-origin provenance convergence and rollback authority"
     ],
-    "tests": "Node 800/800 - UI 33/33 - responsive 53/53 - visual 4/4 inspected",
-    "deploy": "Implementation ready for direct-main push; production remains at 0ad328d with routes/health/headers green and launch HOLD on independent gates"
+    "tests": "Node 819/819 - UI 33/33 - responsive 65/65 - visual 6/6 inspected",
+    "deploy": "Independent staging verified at 833779e; production remains at c92e389 and launch HOLD on four independent gates"
   },
   "testingSurfaces": [
     {
@@ -175,8 +175,8 @@
       "lastChecked": "2026-08-03"
     }
   ],
-  "lastSession": 68,
-  "silLastSession": 68,
+  "lastSession": 69,
+  "silLastSession": 69,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",
@@ -189,7 +189,7 @@
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ],
-  "session": 68,
+  "session": 69,
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
