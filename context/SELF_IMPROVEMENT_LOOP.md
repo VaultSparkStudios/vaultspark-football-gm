@@ -1078,3 +1078,25 @@ Committed SIL follow-ups:
 - [SIL] Artifact fingerprints must be platform-independent by construction; normalize line endings at emission, not in contributor configuration.
 - [SIL] Before diagnosing telemetry as dead, list every file the name could plausibly mean — a stale legacy twin beside a live ledger reproduces the exact symptom.
 - [SIL] A slow hook is not a deadlocked hook; measure with an idle machine before invoking any bypass precedent.
+
+## 2026-08-04 — Session 71
+
+SIL v3.0: **995 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 97, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 99).
+
+- Dev Health 100 — canonical Node 851/851 with a fresh source-bound receipt and direct exit 0, Playwright green, Pages build/smoke green, doctor `blockingFailing` 0. The session closed a defect class the suite had never been able to see, because nothing asserted anything about the *scale* of the numbers the game ranks its players by.
+- Creative Alignment 100 — the honours the game awards now mean what they say. An MVP is the best player, a Hall of Famer is one of ~1.4% of everyone who retires, a rookie award goes to a rookie, and a champion's scoreline shows the champion winning.
+- Momentum 100 — all six ranked items plus four second-order items shipped in one continuous mission; the Genius List closed 6/6 with zero open.
+- Engagement 100 — a franchise game's long arc is its honours and its archive. Both were decided by a formula artefact and are now decided by the season. The Hall reads as dated classes because induction finally became scarce enough for a class to mean something.
+- Process Quality 97 — every defect was found by running the engine and measuring it rather than by reading it, and two plausible audit candidates were rejected against that same measurement instead of shipped as phantom work. Three points are withheld honestly: the audit **overstated item 5's causal weight** (the audited constant turned out to be ~5% of the measured drift, and two further causes were only found during implementation), and item 1's stated premise was real but **secondary** to an upstream NaN it did not name. Both corrections were caught by measurement before shipping, and both are recorded in the audit sidecar as `premiseCorrection` rather than retrofitted.
+- Cross-Repo Coherence 99 — no sibling tree was edited; four drifted registry fields were returned as signed Ark cargo `01JV62KEPG9B017D2712C0F8F5` with their local provenance receipts. One point remains withheld for the still-unreconciled registry lifecycle authority, which stays a visible doctor warning rather than a suppressed one.
+- Security Posture 100 — no new dependencies, no secret custody, no credential surface touched; the outgoing push is sanitized and the pre-push hook honored rather than bypassed.
+- Ecosystem Integration 100 — audit sidecar, rendered plan, task board, handoff, decisions, truth audit, work log, and status all carry the same numbers, including the two deferrals and their measurements.
+- Capital Efficiency 100 — every fix is pure logic in existing modules; zero dependencies added, zero runtime cost, no change to the static-host posture.
+- Automation Coverage 99 — ten new tests pin every defect closed, including the two that were only visible in aggregate (cross-position value comparability and Hall scarcity). One point is withheld because the residual league-inflation drift is guarded only at the curve level, not at the league level: a multi-season drift bound is too slow for the default shards and has not yet been given a home.
+
+Committed SIL follow-ups:
+- [SIL] A shape declared twice will drift. When two literals describe the same record, the defect is the duplication, not the field that went missing from one of them.
+- [SIL] Validate at the write site. Three sessions in a row have now lost a system to a `|| 0` on read converting a `NaN` or a `0` into something plausible — contract expiry (S67), compensatory picks (S67), and now every offensive player's value. A read-side default is a silencer, not a guard.
+- [SIL] Audit by running the thing. Every real finding this session came from simulating seasons and measuring distributions; every candidate that came from reading code alone was either secondary or a phantom.
+- [SIL] When a fix moves the measurement less than the premise predicted, that is the finding — keep measuring instead of declaring the item closed. Item 5's audited constant explained only ~5% of the drift, and chasing the gap found two more causes.
+- [SIL] Rounding a sum whose noise term is an integer discards every fractional term in the model. A curve expressed in tenths needs a continuous draw, or its resolution is decorative.

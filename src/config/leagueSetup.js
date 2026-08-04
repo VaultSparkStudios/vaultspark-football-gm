@@ -50,8 +50,9 @@ export const DEFAULT_LEAGUE_SETTINGS = {
   allowTop10PickTrading: true,
   smallMarketMode: false,
   ownerMandateWinNow: false,
-  hallOfFameInductionScoreMin: 240,
+  hallOfFameInductionScoreMin: 450,
   hallOfFameYearsRetiredMin: 0,
+  hallOfFameMaxClassSize: 6,
   retiredNumberRequireRetiredPlayer: true,
   retiredNumberRequireHallOfFame: false,
   retiredNumberCareerAvMin: 0
@@ -399,7 +400,10 @@ export function resolveLeagueSettings(patch = {}, current = DEFAULT_LEAGUE_SETTI
   }
   if (patch.scoutingWeeklyPoints != null) next.scoutingWeeklyPoints = clampInt(patch.scoutingWeeklyPoints, 4, 24, 12);
   if (patch.hallOfFameInductionScoreMin != null) {
-    next.hallOfFameInductionScoreMin = clampInt(patch.hallOfFameInductionScoreMin, 120, 500, 240);
+    next.hallOfFameInductionScoreMin = clampInt(patch.hallOfFameInductionScoreMin, 120, 800, 450);
+  }
+  if (patch.hallOfFameMaxClassSize != null) {
+    next.hallOfFameMaxClassSize = clampInt(patch.hallOfFameMaxClassSize, 1, 40, 6);
   }
   if (patch.hallOfFameYearsRetiredMin != null) {
     next.hallOfFameYearsRetiredMin = clampInt(patch.hallOfFameYearsRetiredMin, 0, 10, 0);

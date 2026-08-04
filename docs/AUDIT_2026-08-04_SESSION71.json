@@ -1,0 +1,329 @@
+{
+ "schemaVersion": "1.0",
+ "date": "2026-08-04",
+ "session": 71,
+ "project": {
+  "slug": "franchise-architect-football",
+  "name": "Franchise Architect: Football",
+  "type": "public browser football game/app"
+ },
+ "displayName": "Franchise Architect: Football",
+ "status": "complete",
+ "summary": {
+  "rankedItems": 6,
+  "combinedPriority": 186.4,
+  "topItem": "approximate-value-line-share-authority",
+  "source": "live-code-audit",
+  "openItems": 0,
+  "completedItems": 6,
+  "priorityFormula": "Priority = axis-weighted Impact × Innovation / log2(EffortHours + 2); execution rank is dependency-aware.",
+  "theme": "The simulation's statistics are calibrated to the NFL, but the layer that turns statistics into *meaning* is not. One unnormalized formula makes an offensive lineman worth six MVP quarterbacks, and every honour the game awards — MVP, Offensive Player of the Year, Rookie of the Year, the Hall of Fame — inherits that distortion. The season's single most-shared artefact, the championship scoreline, is printed backwards half the time. Fixing the value scale is what makes the game's history worth reading."
+ },
+ "profile": {
+  "type": "public browser football game/app",
+  "audience": "public-unlaunched",
+  "rubric": "product rubric (CANON-009) with app-release-gate and web-canon overlays, plus a game-loop review lens",
+  "staging": "cloudflare-pages at https://staging.playfranchisearchitect.com, verified 11/11 provenance at 870382c",
+  "source": "live code, in-process engine probes over 10 simulated seasons, a direct probe of the approximate-value authority with NFL-realistic season lines, and the committed realism-verification baselines"
+ },
+ "releaseGate": {
+  "verdict": "GO for current-repo implementation; launch remains HOLD on the same three human gates as Session 70",
+  "ci": "Baseline re-verified this session: npm test 842/842, direct exit 0.",
+  "staging": "Independent Cloudflare Pages staging authority verified 11/11 at candidate 870382c with a rollback receipt.",
+  "production": "Provenance 8/8 at 870382c with exact artifact fingerprint parity.",
+  "secrets": "41/68 capabilities ready; zoho.mail.admin remains MISSING, so delivered on-domain email stays unproven. Founder approval and authoritative registry lifecycle are unchanged and remain owned outside this repo."
+ },
+ "gameLoopReview": {
+  "loopTightness": 8,
+  "progression": 4,
+  "sessionEngagement": 8,
+  "retention": 5,
+  "soulFidelity": 6,
+  "overall": 6.2,
+  "evidence": "Structural scores only; no cohort evidence is claimed. Progression and soul fidelity are marked down on measured findings, not impressions: across 10 simulated seasons a tight end won MVP, Offensive Player of the Year and Offensive Rookie of the Year in 10 of 10 years, and 23.2% of all retirees entered the Hall of Fame. A franchise game whose highest honours are decided by a formula artefact cannot tell a credible long-term story."
+ },
+ "recommendedMoves": [
+  "Distribute the offensive-line value bucket the way the defensive buckets are already distributed — the denominators for it are already accumulated and have never been read.",
+  "Re-derive Hall of Fame scarcity from the corrected value scale rather than re-tuning a threshold against a broken one.",
+  "Publish the championship scoreline from one champion-oriented authority, because it is the single most-shared line the game produces."
+ ],
+ "preverifiedSkips": [
+  {
+   "axis": "simulation",
+   "candidate": "Roster sizes grow unbounded across seasons",
+   "reason": "Rejected as a phantom. Measured per-team totals converge on exactly 69 (53 active + 16 practice), which is the intended limit. The apparent growth is practice squads filling from an initial ~54, not a leak."
+  },
+  {
+   "axis": "simulation",
+   "candidate": "Season statistics are unrealistic",
+   "reason": "Rejected on evidence. The realism calibrator holds QB/RB/WR/TE season lines at 0.0-2.3% drift against the Pro Football Reference weighted baseline over 20 observed years. The statistics are sound; only the value formula that reads them is not."
+  },
+  {
+   "axis": "release",
+   "candidate": "Flip lifecycle to SPARKED / claim launch readiness",
+   "reason": "Rejected. Delivered on-domain email, SHA-bound founder approval, and authoritative registry lifecycle are unchanged human gates. No code-side fabrication attempted."
+  }
+ ],
+ "items": [
+  {
+   "rank": 1,
+   "tier": "FIRE",
+   "category": "Simulation authority / statistical truth",
+   "effortHours": 4,
+   "impact": 10,
+   "innovation": 9,
+   "priority": 38.8,
+   "slug": "approximate-value-line-share-authority",
+   "title": "An offensive lineman is worth six MVP quarterbacks",
+   "status": "shipped",
+   "premise": "offensiveLineValue() in src/stats/approximateValue.js returns an absolute — roundAv((16 * (games + 5*starts*posMul*allProMul)) / team.games) — instead of the player's share of the team's offensive-line points bucket. The bucket exists: offensiveBuckets() computes linePoints = (5/11) * total and returns it, and statBook accumulates team.olLineWeight and team.teLineWeight for exactly this distribution. All three are written and never read anywhere in the repository. Every other position group is normalized correctly: defensiveValue() divides teamBucketPoints by team.frontSevenPoints / team.secondaryPoints. The offensive line branch was scaffolded on both sides and never connected. offensiveSkillValue() then adds the same unnormalized absolute to every tight end (line 120).",
+   "evidence": [
+    "src/stats/approximateValue.js:70-76 — linePoints computed, returned, never consumed",
+    "src/stats/approximateValue.js:124-132 — offensiveLineValue returns an absolute, takes no bucket",
+    "src/stats/approximateValue.js:120 — TE skill value additively inherits the same absolute",
+    "src/stats/approximateValue.js:134-152 — defensiveValue shows the intended bucket/denominator pattern",
+    "src/stats/statBook.js:295-296 — team.olLineWeight / team.teLineWeight accumulated; grep proves zero readers",
+    "Direct probe, NFL-realistic 17-game lines: OL full-season starter AV 96 · TE with zero catches AV 32 · elite TE AV 41 · MVP-calibre QB AV 16 · elite WR AV 14 · elite DL AV 13",
+    "10-season engine probe: a tight end won MVP, OPOY and OROY in 10 of 10 seasons, MVP AV 30-34 every year",
+    "10-season engine probe: Hall of Fame composition OL 81 / DB 45 / DL 41 / LB 33 / TE 17 / WR 9 / RB 7 / QB 6; a HOF lineman carried careerAv 988, consistent with ~96 per season"
+   ],
+   "constraint": "The composed facade must stay verbatim for leagueSimulator and the 100-year career regression. Season statistics are already calibrated and must not move; only the valuation of those statistics changes. Existing saves carry seasonStats, so career AV must remain recomputable from stored stats without a migration.",
+   "ladder": {
+    "L1": {
+     "effortHours": 1,
+     "recipe": "Scale the offensive-line absolute down by a constant so the position ordering stops inverting."
+    },
+    "L2": {
+     "effortHours": 4,
+     "recipe": "Distribute linePoints across the team's line weight exactly as defensiveValue distributes defenseTotal: offensiveLineValue takes the bucket and the accumulated olLineWeight + weighted teLineWeight denominator, returns the player's proportional share, and the tight-end branch draws its blocking share from the same bucket at its existing 0.2 weight instead of adding an absolute. Add a cross-position AV comparability test asserting that a full-season line starter cannot out-value an MVP-calibre quarterback."
+    },
+    "L3": {
+     "effortHours": 7,
+     "recipe": "L2 plus a per-position AV calibration report joined to the realism verifier, so the value scale is regression-guarded the same way the statistics already are."
+    }
+   },
+   "premiseCorrection": "The stated premise (offensiveLineValue is unnormalized) was real and is fixed, but it was SECONDARY. Implementation found the upstream cause: resetTeamSeasonState rebuilt team.season without drivesFor/drivesAgainst, so the first accumulation of every season pinned both at NaN. Every reader took them as `x || 0`, which laundered the NaN into a zero drive count, collapsing offensivePoints to about 2 and pinning the defensive multiplier at its 0.15 clamp floor, which inflated defenceTotal to about 426. Measured league-wide before the fix: QB AV 2, WR AV 0, RB AV 0, OL AV 0 against LB AV 76. Offensive approximate value had been near zero for the project's entire history, which is why an unnormalized tight-end blocking constant of 32 was enough to win MVP ten years running: it was the only nonzero offensive value in the league. Both defects are fixed and the season-record shape is declared once."
+  },
+  {
+   "rank": 2,
+   "tier": "FIRE",
+   "category": "Progression / narrative authority",
+   "effortHours": 3,
+   "impact": 9,
+   "innovation": 9,
+   "priority": 36.5,
+   "slug": "award-ballot-position-integrity",
+   "title": "The same position wins every offensive award, every year, forever",
+   "status": "shipped",
+   "premise": "estimateAwards() ranks the offensive pool purely by AV with a QB bonus used only as a tie-break (src/runtime/GameSession.js:1598). Because item 1 gives every starting tight end a floor of AV 32 against an MVP quarterback's 16, the tie-break never fires and the ballot is decided before it is cast. Measured: TE won MVP in 10/10 simulated seasons, OPOY in 10/10, OROY in 10/10. This is a symptom of item 1 and must be re-measured after it lands rather than patched independently — but the ballot also needs its own regression net, because a value-scale change must never be able to silently re-monopolize the awards.",
+   "evidence": [
+    "src/runtime/GameSession.js:1592-1606 — offensive pool, QB tie-break, OPOY/OROY derived from the same pool",
+    "10-season probe award table: MVP TE ×10, OPOY TE ×10, OROY TE ×10, DPOY LB ×8 / DL ×2",
+    "MVP winning AV was 30-34 in every season — within rounding of the 32 blocking constant alone"
+   ],
+   "constraint": "Do not hard-code a position quota. The ballot must stay AV-driven and deterministic (playerId tie-break preserved); the fix is that AV becomes comparable, and the test asserts distribution over many seasons rather than a mandated winner.",
+   "ladder": {
+    "L1": {
+     "effortHours": 1,
+     "recipe": "Re-run the ballot after item 1 and record the new distribution."
+    },
+    "L2": {
+     "effortHours": 3,
+     "recipe": "Re-measure post-fix, then add a multi-season award-integrity test asserting no single position may take MVP in every season of a simulated run, and that OROY winners are actually rookies. Surface the MVP's AV and the runner-up gap in the season awards payload so the ballot is inspectable rather than assertable."
+    },
+    "L3": {
+     "effortHours": 5,
+     "recipe": "L2 plus a visible ballot breakdown in the History tab showing the top five vote-getters and their AV, so a player can disagree with the voters."
+    }
+   }
+  },
+  {
+   "rank": 3,
+   "tier": "FIRE",
+   "category": "Progression / legacy scarcity",
+   "effortHours": 3,
+   "impact": 9,
+   "innovation": 8,
+   "priority": 32.4,
+   "slug": "hall-of-fame-scarcity-authority",
+   "title": "23% of everyone who ever retires is a Hall of Famer",
+   "status": "shipped",
+   "premise": "refreshHallOfFame() admits any retiree whose inductionScore clears hallOfFameInductionScoreMin (default 240), where inductionScore is dominated by careerAv * 1.4. Under item 1's scale a lineman clears 240 in two seasons. Measured over 6 simulated seasons: 239 inductees from 1,028 retirees (23.2%); over 10 seasons: 671 from 1,737. The Hall gallery renders the top 120 by careerAv, so the player-visible Hall is effectively 120 offensive linemen. The real Hall inducts a handful a year. Correcting item 1 changes the scale under this threshold, so the threshold must be re-derived from the corrected distribution — not re-tuned against the broken one.",
+   "evidence": [
+    "src/runtime/GameSession.js:6407-6450 — refreshHallOfFame, inductionScore composition, default min 240",
+    "public/lib/tabHistory.js:372-434 — gallery renders dashboard.hallOfFame; GameSession.js:5728 slices to 120",
+    "6-season probe: 239/1028 retirees inducted (23.2%), OL 81 of 239",
+    "10-season probe: 671 inducted, cumulative"
+   ],
+   "constraint": "hallOfFameInductionScoreMin and hallOfFameYearsRetiredMin are league settings and must remain player-adjustable. Existing saves must not lose an already-inducted resume without the change being visible; re-derivation is idempotent because the Hall is rebuilt from retirees each refresh.",
+   "ladder": {
+    "L1": {
+     "effortHours": 1,
+     "recipe": "Raise the default threshold to match the corrected scale."
+    },
+    "L2": {
+     "effortHours": 3,
+     "recipe": "Re-derive the default threshold from the corrected AV distribution and add a bounded class-size cap per induction year so scarcity holds even if a future scale change drifts. Assert an induction-rate band in a multi-season test rather than a fixed number. Surface the class of each year in the Hall so induction reads as an event."
+    },
+    "L3": {
+     "effortHours": 5,
+     "recipe": "L2 plus a modelled ballot — eligible-but-not-inducted resumes stay visible as a waiting list with the gap to induction, giving retirement an afterlife."
+    }
+   }
+  },
+  {
+   "rank": 4,
+   "tier": "HIGH",
+   "category": "Observability truth / shareable surface",
+   "effortHours": 2,
+   "impact": 8,
+   "innovation": 7,
+   "priority": 28,
+   "slug": "champion-scoreline-orientation",
+   "title": "The championship scoreline is printed backwards whenever the NFC wins",
+   "status": "shipped",
+   "premise": "The Super Bowl scoreline is assembled as `${homeScore}-${awayScore}`, where home is always the AFC champion and away always the NFC champion, and is then published next to championTeamId/runnerUpTeamId as though it were champion-first. Whenever an NFC team wins, every surface reads as the champion losing its own title game. Measured over 10 simulated seasons the champion's score was printed second in 8 of them — including 'NO def LAC (10-48)' and 'LAR def MIA 48-62'. This reaches the most-shared artefacts the game produces.",
+   "evidence": [
+    "src/runtime/GameSession.js:4930 — league.champions[].score built home-away",
+    "src/runtime/GameSession.js:4986 — championship transaction detail, same construction",
+    "src/runtime/GameSession.js:1540 and 1561 — SuperBowl.finalScore, same construction",
+    "src/engine/seasonSimulator.js:403-417 — superBowl.homeTeamId is the AFC champion, awayTeamId the NFC champion",
+    "Player-visible readers: public/lib/tabHistory.js:119,333-334,363,555,586,604 · public/lib/franchiseNewsletter.js:44 · public/lib/leagueStoryExport.js:69 (the shareable League Story Card) · public/lib/appCore.js:1087 ('beat MIA | 48-62')",
+    "src/index.js:69 — the CLI prints 'CHAMP def RUNNER-UP (score)' with the same reversed string"
+   ],
+   "constraint": "Historical saves already carry the reversed strings. The fix must be a forward-looking shared authority plus a read-side orientation that repairs stored rows from the champion/runner-up ids they are stored beside, without rewriting save data in place.",
+   "ladder": {
+    "L1": {
+     "effortHours": 0.5,
+     "recipe": "Swap the operands at the four construction sites."
+    },
+    "L2": {
+     "effortHours": 2,
+     "recipe": "One exported championScoreline(superBowl) authority that orients on championTeamId and is used by all four writers, plus a read-side orientation helper applied where stored champion rows are rendered so existing saves display correctly. The Super Bowl is a neutral-site game (S62), so home/away is presentation-meaningless and must never leak to a player-facing surface. Cover with a test that fails when either conference wins and the orientation is wrong."
+    },
+    "L3": {
+     "effortHours": 4,
+     "recipe": "L2 plus a full scoreline contract for every archived game so no surface can ever assemble a scoreline from raw home/away again."
+    }
+   }
+  },
+  {
+   "rank": 5,
+   "tier": "HIGH",
+   "category": "Simulation authority / long-run balance",
+   "effortHours": 3,
+   "impact": 8,
+   "innovation": 7,
+   "priority": 26.2,
+   "slug": "development-variance-bias",
+   "title": "Every offseason quietly hands the whole league half a rating point",
+   "status": "shipped",
+   "premise": "developmentDelta() adds variance = rng.int(-2, 3). RNG.int is inclusive at both ends, so the variance draw has a mean of +0.5 rather than 0 — a permanent upward bias applied to four ratings plus half of awareness, for every player, every offseason. Combined with a trait factor of (potential - 70)/20 that is positive for most of the league, even the decline-age branch (ageFactor -1.3 at 30+) nets close to zero. Measured across 10 simulated seasons: league mean overall 77.49 to 81.83, median 77 to 81, and players rated 90+ growing from 13 to 117. This is the one finding whose long-run magnitude is still being measured; a 25-season probe is in flight and its result — not an extrapolation — decides the ladder rung.",
+   "evidence": [
+    "src/domain/ratings.js:275-284 — developmentDelta, variance rng.int(-2, 3)",
+    "src/utils/rng.js:11-13 — int(min, max) is inclusive of both bounds, so the draw mean is +0.5",
+    "src/engine/offseasonSimulator.js:109-122 — progressPlayer applies delta to four ratings and delta/2 to awareness",
+    "10-season probe: ovrAvg 77.49 → 81.83, ovrMed 77 → 81, 90+ count 13 → 117, 80+ count 555 → 1469"
+   ],
+   "constraint": "This is a 100-year franchise simulation and its determinism contract is load-bearing: the same seed must still produce the same league. Any change to the RNG draw shifts every downstream stream, so the sim-realism and determinism shards must be re-baselined deliberately and the change recorded, not absorbed silently. Do not fix by clamping overall — fix the draw.",
+   "ladder": {
+    "L1": {
+     "effortHours": 1,
+     "recipe": "Make the variance draw symmetric and record the re-baseline."
+    },
+    "L2": {
+     "effortHours": 3,
+     "recipe": "Make the draw mean-zero at the same width, verify with a direct distribution probe rather than by inspection, re-measure the multi-season league-overall trend, and add a progression-drift regression test that bounds league mean overall movement across a simulated decade so the bias cannot silently return."
+    },
+    "L3": {
+     "effortHours": 6,
+     "recipe": "L2 plus an explicit league-parity target in the realism profile, so overall inflation is calibrated the way the statistics already are."
+    }
+   },
+   "premiseCorrection": "The stated premise (rng.int(-2, 3) averages +0.5) was correct, but removing it alone moved the measured 10-season drift only from +4.34 to +4.11 overall, about 5% of the effect rather than the dominant driver. Implementation measured the league and found a SECOND constant of the same shape: traitFactor referenced a potential of 70 against a league whose measured mean potential is 79.92, so every player collected another +0.50 every offseason regardless of talent. A third defect surfaced under test: because the variance draw was a whole number, rounding the sum discarded every fractional term, so a prime-age player's +0.4 and any trait edge under half a point rounded away to exactly nothing. All three are fixed. Residual inflation is reported in honestDeferrals rather than claimed closed."
+  },
+  {
+   "rank": 6,
+   "tier": "HIGH",
+   "category": "Cross-repo coherence / release authority",
+   "effortHours": 1.5,
+   "impact": 7,
+   "innovation": 6,
+   "priority": 24.5,
+   "slug": "registry-authority-drift-cargo",
+   "title": "The portfolio registry describes a staging origin and a live URL that do not exist",
+   "status": "shipped",
+   "premise": "The authoritative row in vaultspark-studio-ops/portfolio/PROJECT_REGISTRY.json disagrees with verified local truth on four fields: stagingType 'github-pages' against a verified Cloudflare Pages authority; stagingUrl null against https://staging.playfranchisearchitect.com verified 11/11 at 870382c with a rollback receipt; liveUrl 'https://vaultsparkstudios.com/vaultspark-football-gm/', a pre-rebrand path that Session 33 already established is not served; and vaultStatus 'sparked' against local FORGE, which is the standing doctor warning. The drift is real and is not this repo's to edit.",
+   "evidence": [
+    "../vaultspark-studio-ops/portfolio/PROJECT_REGISTRY.json — stagingType, stagingUrl, liveUrl, vaultStatus as above",
+    "context/PROJECT_STATUS.json — stagingType cloudflare-pages, stagingUrl https://staging.playfranchisearchitect.com, stagingAuthority provenance 11/11 at 870382c",
+    "node scripts/arc-profile.mjs — resolves stagingType github-pages from the registry, so the drift reaches the session profile itself",
+    "doctor: lifecycle-authoritative-registry warning, 'registry SPARKED · local contract FORGE'"
+   ],
+   "constraint": "CANON-018: never edit a sibling repository's tree. The correction ships as signed Ark cargo with a receipt, and this repo records the request rather than the resolution. Local FORGE stays authoritative here until the sibling reconciles.",
+   "ladder": {
+    "L1": {
+     "effortHours": 0.5,
+     "recipe": "Ship one Ark cargo naming the four drifted fields."
+    },
+    "L2": {
+     "effortHours": 1.5,
+     "recipe": "Ship signed Ark cargo carrying the verified local values, their provenance receipts, and the exact fields to reconcile; record the receipt id in the task board and decisions so the request is auditable, and keep the doctor warning honest rather than suppressing it."
+    },
+    "L3": {
+     "effortHours": 3,
+     "recipe": "L2 plus a local drift detector that fails a studio check when registry-derived profile fields contradict verified local release authority, so the next session sees the drift at /start."
+    }
+   }
+  }
+ ],
+ "secondOrderCandidates": [
+  {
+   "slug": "hall-of-fame-induction-classes",
+   "status": "shipped",
+   "why": "Only reachable once induction became scarce. With about 2.5 inductions a year and a classYear stamped on every entry, the Hall can be read the way a real Hall is read: by the class you went in with. Shipped as hallOfFameClasses() plus a Latest Class spotlight card and a class chip on every resume. Inductees from saves written before classes existed keep their place in an undated group rather than being given an invented year."
+  },
+  {
+   "slug": "season-record-declared-once",
+   "status": "shipped",
+   "why": "The NaN was possible because the shape of team.season was declared twice and drifted. createTeamSeasonState() is now the single declaration, and season counters accumulate through a finite guard so a damaged record from an older save self-heals instead of poisoning the year."
+  },
+  {
+   "slug": "rookie-eligibility-from-the-record",
+   "status": "shipped",
+   "why": "Rookie of the Year read a counter advanced at a different point in the calendar. It now derives from the player's first recorded season, which cannot drift against the offseason."
+  },
+  {
+   "slug": "cross-runtime-scoreline-parity",
+   "status": "shipped",
+   "why": "The browser repairs stored scorelines without a save migration, and a test holds its implementation identical to the engine's: the same one-contract-two-runtimes discipline the project already applies to its API adapters."
+  }
+ ],
+ "executionLog": [
+  "Primary 1/6 approximate-value-line-share-authority: SHIPPED, and the stated premise turned out to be secondary. offensiveLineValue now distributes the team's line bucket through the olLineWeight/teLineWeight denominators statBook had been accumulating and nothing had ever read, exactly as defensiveValue distributes its own. The upstream cause was a NaN drive count from a drifted season-record shape. Measured with NFL-realistic season lines: OL starter 96 to 8, tight end with no catches 32 to 2, elite tight end 41 to 11, MVP-calibre QB 16 unchanged. Measured live in-engine: QB 2 to 25, WR 0 to 17, LB 76 to 24.",
+  "Primary 2/6 award-ballot-position-integrity: SHIPPED. With approximate value comparable, a quarterback won MVP in 10 of 10 simulated seasons at AV 16-24 (the real award sits at 18-22), replacing a tight end winning MVP, OPOY and OROY in 10 of 10. Rookie eligibility root-fixed from seasonsPlayed <= 1, which admitted second-year players and let the MVP also win Rookie of the Year in 7 of 8 seasons, to the player's first recorded season.",
+  "Primary 3/6 hall-of-fame-scarcity-authority: SHIPPED. The Hall is rebuilt rather than accumulated, so a corrected value scale repairs an existing save instead of freezing its mistakes, and admission runs year by year under a class-size cap with a deterministic tie-break. Induction fell from 24.5% of all retirees to 1.4%; the real Pro Football Hall of Fame holds about 1.36% of everyone who has played. Threshold re-derived to 450 with a new hallOfFameMaxClassSize setting (default 6), both player-adjustable and surfaced in the History policy line.",
+  "Primary 4/6 champion-scoreline-orientation: SHIPPED. One championScoreline() authority replaced four separate home-first assemblies; the champion's points now lead whichever conference wins. Verified in-engine across 10 seasons: 'NO def LAC 10-48' now reads 'NO def LAC 48-10'. Nine player-facing readers repair stored scorelines on read, so existing saves display correctly without a migration.",
+  "Primary 5/6 development-variance-bias: SHIPPED with an honest residual. Three defects fixed rather than the one audited: the inclusive rng.int(-2, 3) averaging +0.5, a trait reference of 70 against a measured league mean potential of 79.92 (a second +0.50 for every player), and an integer variance whose rounding discarded every fractional term in the curve. 90-plus players across 10 seasons fell from 117 to 79. Residual drift of +0.38/season is recorded in honestDeferrals with its measurement rather than claimed closed.",
+  "Primary 6/6 registry-authority-drift-cargo: SHIPPED as signed Ark cargo 01JV62KEPG9B017D2712C0F8F5 (registry-delta to vaultspark-studio-ops), carrying all four drifted fields with their local provenance receipts. No sibling tree was edited (CANON-018). Local FORGE remains authoritative here until the sibling reconciles, and the doctor warning stays honest rather than suppressed.",
+  "Regression net: test/season-value-authority.test.js (10 tests, registered in the core shard) pins every defect above: cross-position AV comparability, line-bucket conservation and its fallback bound, season-record shape parity, NaN-proof accumulation, champion-first scorelines across both conferences, cross-runtime scoreline parity, no hidden constant in the development curve, fractional resolution surviving rounding, rookie eligibility, and Hall class-cap plus rebuild idempotence."
+ ],
+ "totals": {
+  "effortHours": 16.5,
+  "combinedPriority": 186.4
+ },
+ "honestDeferrals": [
+  {
+   "slug": "residual-league-overall-inflation",
+   "measured": "After all three progression fixes, league mean overall still rises 77.25 to 80.70 across 10 simulated seasons (+0.38/season, down from +0.43), and the count of 90-plus players rises 9 to 79 (down from 13 to 117, a 32% reduction).",
+   "whyDeferred": "The two constants that were unambiguous defects are fixed and regression-guarded. What remains is not a bug but a balance question: the age curve (+1.5 under 26, +0.4 to 29, -1.3 after) is net-positive across this league's actual age distribution. Re-shaping it is a calibration exercise that belongs with the realism profile and its own multi-season baseline (item 5's L3 rung), not a value silently nudged at the end of a session. Recorded with its measurement so the next session starts from a number rather than an impression.",
+   "nextStep": "Add an explicit league-parity target to the realism profile and calibrate the age curve against it, the way season statistics are already calibrated."
+  },
+  {
+   "slug": "long-run-inflation-beyond-10-seasons",
+   "measured": "Not measured. A 25-season probe ran for roughly 50 minutes without producing output and was stopped; simulated-state growth makes it far more than 2.5x the cost of a 10-season run.",
+   "whyDeferred": "Rather than extrapolate the 10-season trend to the project's stated 100-year horizon, the trend is reported only over the window that was actually observed.",
+   "nextStep": "Measure the long-run curve in a dedicated run, in the same session as the age-curve calibration above."
+  }
+ ]
+}

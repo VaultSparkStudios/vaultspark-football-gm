@@ -1,5 +1,5 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-04 (Session 70 closeout) -->
+<!-- generated-at: 2026-08-04 (Session 71 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
@@ -7,7 +7,7 @@
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 70 closeout · 2026-08-04.
+> **Fast-boot brief** — generated at Session 71 closeout · 2026-08-04.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -16,18 +16,18 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 71 · 2026-08-04 · BUILDER MODE                          ║
+║  Session 72 · 2026-08-04 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S69) · WHAT SHIPPED ═══════════════════════════╗
-║  ✓ Phase-aware aligned/contested season thesis evidence          ║
-║  ✓ Monotonic per-franchise session-bound return digest           ║
-║  ✓ Project propagation compatibility firewall                    ║
-║  ✓ Independent Cloudflare staging authority                      ║
-║  ✓ Truthful multi-path General Manager progression               ║
-║  Tests  Node 819/819 - UI 33/33 - responsive 65/65 - visual 6/6  ║
-║  Deploy Independent staging verified at 833779e; production rem  ║
+╔══ LAST SESSION (S71) · WHAT SHIPPED ═══════════════════════════╗
+║  ✓ Approximate-value line-share authority (upstream NaN drive c  ║
+║  ✓ Season record declared once, counters validated at the write  ║
+║  ✓ Award ballot integrity — a quarterback wins MVP 10 of 10 sea  ║
+║  ✓ Rookie of the Year eligibility derived from the stat record   ║
+║  ✓ Hall of Fame scarcity — 24.5% of retirees to 1.4%, dated ind  ║
+║  Tests  Node 852/852 direct exit 0 · Playwright 38/38 · Pages b  ║
+║  Deploy No deploy this session; production and staging remain a  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -44,7 +44,7 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    997/1000   ███████████████████████░   100%                    ║
+║    995/1000   ███████████████████████░   100%                    ║
 ║    SIL v3.0  ·  Avg3: 996  ·  Velocity 0→                        ║
 ║    Active 20668d · closeout 0d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
@@ -64,20 +64,20 @@
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 70 ════════════════════════════╗
-║  Shipped:  Session 70 complete: 12/12 full-scope audit executed  ║
-║  Tests:    842/842 passing  ·  Deploy: N/A                       ║
+╔══ WHERE WE LEFT OFF  ·  Session 71 ════════════════════════════╗
+║  Shipped:  Session 71 complete: 6/6 live-code audit executed pl  ║
+║  Tests:    852/852 passing  ·  Deploy: N/A                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,734 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,367 tok/turn  ·  cache 50%  ·  132 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    5% used                          ║
+║     49,842 / 1,000,000 tok  ·  claude-code/opus-4-8-1m  ·  meas  ║
+║     ~24,921 tok/turn  ·  cache 50%  ·  34 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         842/842 passing (2026-08-04) · STALE — run no  ║
+║  ✓  Tests         852/852 passing (2026-08-04)                   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -115,8 +115,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-03_SESSION70.md       ║
-║  Closed: 12 · Open: 0                                            ║
+║  ✓ queue exhausted · source: AUDIT_2026-08-04_SESSION71.md       ║
+║  Closed: 6 · Open: 0                                             ║
 ║  Latest audit has no open ranked items; run /audit for a new li  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -124,5 +124,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 70 closeout · 2026-08-04*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 71 closeout · 2026-08-04*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

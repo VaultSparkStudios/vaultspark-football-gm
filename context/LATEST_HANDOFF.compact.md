@@ -1,32 +1,36 @@
-<!-- manually compacted at closeout; no paid API used -->
+<!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
+<!-- source-hash: 791b86a34d01 -->
+<!-- generated-at: 2026-08-04T08:09:10.068Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 68 CLOSEOUT — 2026-08-02
+SESSION 70 HANDOFF SUMMARY
 
-Outcome
-- Continuous `/start → /audit → /implement → /closeout` mission achieved.
-- Five ranked items shipped; Genius list 0 open / 5 closed.
-- Three second-order innovations shipped; one incompatible private-ops candidate rejected with evidence.
+Session
+- Session 70, closed 2026-08-04. Continuous /start → /audit → /implement → /closeout mission complete. Unified Genius List exhausted: 0 open / 12 closed (12/12 + 6 second-order root fixes).
 
-Shipped
-- One unit-typed, versioned tactic authority (`tactical-plan@2.0`) across command, simulator, browser, and film.
-- Standing weekly plan with source-derived red-flag rehearsal and stable-plan reinforcement.
-- Persisted exact Opening Contract thesis/checkpoint ledger with non-causal reckoning.
-- Atomic live shard progress explicitly marked non-authoritative.
-- Hash-bound, replay-verifiable structured release evidence with independent gates.
-- Mobile roster-needs object rendering root-fixed after manual dark/light visual inspection.
+What Shipped
+- Front door: one-click instant start (random-team default), quick-start cards that start leagues, returning-player affordances gated on save existence, build-gated public-truth contract (derived stats, no retired/internal-lifecycle claims, real og:image).
+- Site IA: dated Status & Updates, merged rights pages, lastmod sitemap, real 404.
+- Reward layer: receipt-derived beat cards (sim/draft/trade), 29-trophy cross-save achievement case, zero-asset WebAudio + haptics, un-dead mentorship badge.
+- Rivals: 31 named GM personas with bounded receipted grudge memory at offer card, pre-game intel, outbid news.
+- Difficulty: mid-game presets via shared GameSession seam with receipts, opt-in bounded Adaptive League.
+- Persistence: hybrid IndexedDB store, verified copy-forward migration, fail-closed localStorage fallback, full-archive drive logs (272 games), 12/64 MB backup runway, live storage meter.
+- Service worker: per-URL resilient precache, duplicate stylesheet dropped, SW registration root-fixed onto index.html; deploy manifest carries bootPayload receipt (boot 821 KB vs lazy engine 1.04 MB).
+- Fixed 3 latent infra defects: stale pre-rebrand canonicals (since S25), CRLF/LF fingerprint non-determinism (now LF-normalized at copy), lifecycle gate wording (now beta-declared/no-launch-claim).
 
-Verification
-- Node 800/800; Playwright 33/33; responsive 53/53.
-- Pages build/smoke; 54 browser modules; 4 inspected visual captures.
-- Canon 0 gaps; doctor blockingFailing 0.
+Current Intent
+- Production-parity launch gate closed. Production serves candidate 870382c...50f0e, provenance 8/8, exact artifact parity (078a91e9), staging 11/11 same SHA with rollback receipt. Node 842/842, Playwright 38/38, Pages green.
 
-Launch HOLD
-- Candidate revision not deployed to production.
-- No valid independent staging authority.
-- No received on-domain email receipt or founder approval.
-- Registry SPARKED / local FORGE lifecycle drift remains Ark-owned.
+Now Bucket (next-session candidates)
+- dynasty-almanac-share-cards
+- broadcast-mode-sim-watch
+- trophy-road-onboarding (also: tab-module code-splitting, needs app.js bindings refactor)
 
-Next
-- Apply the Session 68 revision to a valid independent staging origin, then replay the exact release contract before any launch flip.
+Blockers / Human-Blocked (launch HOLD on 3 gates)
+- Delivered/reply-capable on-domain email — zoho.mail.admin secrets MISSING.
+- SHA-bound founder approval — absent.
+- Authoritative registry lifecycle reconciliation — unresolved.
+- (Note: no readiness/retention outcomes fabricated.)
+
+Next session: pick a reward/onboarding candidate above, or resolve the 3 human launch gates.

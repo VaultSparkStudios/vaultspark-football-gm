@@ -5,6 +5,8 @@
  * No server required — downloads directly from the browser.
  */
 
+import { orientWinnerFirst } from "./scoreline.js";
+
 function esc(str) {
   return String(str ?? "—")
     .replace(/&/g, "&amp;")
@@ -66,7 +68,7 @@ export function buildLeagueStoryFromDashboard(dashboard = {}) {
     champion: champion?.championTeamName || champion?.championTeamId || champion,
     sbMvpName: champion?.mvp?.name || champion?.superBowlMvp?.name,
     sbMvpPosition: champion?.mvp?.position || champion?.superBowlMvp?.position || champion?.mvp?.pos,
-    sbScore: champion?.score,
+    sbScore: orientWinnerFirst(champion?.score || ""),
     awards: {
       mvp: nameFromAward(lastAwards.mvp || lastAwards.MVP),
       roy: nameFromAward(lastAwards.roy || lastAwards.OROY || lastAwards.DROY),

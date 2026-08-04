@@ -23,6 +23,7 @@ export const SHARDS = {
     "test/quarterback-depth-ratings.test.js",
     "test/ratings-regression.test.js",
     "test/s4-systems.test.js",
+    "test/season-value-authority.test.js",
     "test/situational-playcalling.test.js",
     "test/snapshot-migration.test.js",
     "test/standings-tiebreaker.test.js",

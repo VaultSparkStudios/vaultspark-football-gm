@@ -1145,3 +1145,77 @@ Source: `docs/AUDIT_2026-08-03.json`.
 | FIRE | Release architecture / staging | Done | 4.0h | independent-cloudflare-staging-authority |
 | HIGH | Progression / mathematical truth | Done | 2.0h | multi-path-gm-persona-progress |
 | HIGH | Release observability / freshness | Done | 2.5h | expiring-release-evidence-snapshot |
+
+## Session 71 — The Value Scale: what the league's numbers were worth (2026-08-04)
+
+Source: `docs/AUDIT_2026-08-04_SESSION71.json` (6 ranked items, combined priority 186.4).
+
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Simulation authority / statistical truth | Done | 4.0h | approximate-value-line-share-authority |
+| FIRE | Progression / narrative authority | Done | 3.0h | award-ballot-position-integrity |
+| FIRE | Progression / legacy scarcity | Done | 3.0h | hall-of-fame-scarcity-authority |
+| HIGH | Observability truth / shareable surface | Done | 2.0h | champion-scoreline-orientation |
+| HIGH | Simulation authority / long-run balance | Done | 3.0h | development-variance-bias |
+| HIGH | Cross-repo coherence / release authority | Done | 1.5h | registry-authority-drift-cargo |
+
+### The finding, in one line
+
+`resetTeamSeasonState` rebuilt `team.season` without `drivesFor`/`drivesAgainst`, so the first `+=` of every
+season pinned both at `NaN` — and **every offensive player's approximate value had been ~0 for the project's
+entire history.**
+
+The shape of a team's season record was declared twice, in `createTeam` and in `resetTeamSeasonState`, and the
+two drifted. Every reader took the counters as `x || 0`, which laundered the NaN into a **zero drive count**
+rather than raising it. Downstream, `offensivePoints` collapsed to ~2 and the defensive multiplier pinned at its
+`0.15` clamp floor, inflating the defensive bucket to ~426. Measured league-wide: **QB AV 2, WR AV 0, RB AV 0,
+OL AV 0 — against LB AV 76.**
+
+That is why a tight end won MVP in ten of ten simulated seasons. `offensiveLineValue` returned an *absolute*
+instead of a share of the team's line bucket, and `offensiveSkillValue` added it to every tight end — so a tight
+end with **zero catches** scored 32 while an MVP-calibre quarterback scored 16. It was the only nonzero
+offensive value left in the league.
+
+The bucket and both denominators for the missing normalization — `linePoints`, `team.olLineWeight`,
+`team.teLineWeight` — already existed and had **never been read anywhere in the repository**. The line branch
+was scaffolded on both sides and never connected; every other position group was normalized correctly.
+
+### Shipped — six ranked items
+
+| # | Item | Detail |
+|---|---|---|
+| 7101 | Value scale | `offensiveLineValue` distributes the line bucket through the accumulated denominators, the same bucket ÷ team-total shape `defensiveValue` always used; the tight-end branch draws its blocking share from that bucket at its existing 0.2 weight. Season record declared once via `createTeamSeasonState`, counters accumulate through a finite guard so a damaged save self-heals. Measured on NFL-realistic lines: **OL starter 96 → 8**, TE with no catches **32 → 2**, elite TE **41 → 11**, MVP QB **16** unchanged. Live in-engine: **QB 2 → 25, WR 0 → 17, LB 76 → 24.** |
+| 7102 | Award ballot | A quarterback now wins MVP in **10 of 10** seasons at AV 16–24 (the real award sits at 18–22). Rookie eligibility root-fixed: `seasonsPlayed <= 1` admitted second-year players — the MVP also won Rookie of the Year in **7 of 8** seasons — and now derives from the player's first recorded season, which cannot drift against the offseason. |
+| 7103 | Hall of Fame | Rebuilt rather than accumulated, so a corrected value scale repairs an existing save instead of freezing its mistakes. Admission runs year by year under a class-size cap with a deterministic tie-break, so a candidate who misses his first ballot stays eligible and a backlog forms. **24.5% of all retirees → 1.4%**; the real Pro Football Hall of Fame holds ~1.36% of everyone who has played. Threshold re-derived to 450, new `hallOfFameMaxClassSize` (default 6), both player-adjustable. |
+| 7104 | Championship scoreline | Assembled home-first (AFC first) at four sites and published as champion-first, so **any title won by an NFC club read as the champion losing its own final** — 8 of 10 measured seasons, including the shareable League Story Card. One `championScoreline()` authority; nine player-facing readers repair stored scorelines on read, so existing saves display correctly with no migration. |
+| 7105 | Progression drift | Three defects, not the one audited: `rng.int(-2, 3)` is inclusive so the "variance" averaged **+0.5**; `traitFactor` referenced potential 70 against a measured league mean of **79.92**, a second **+0.50** for every player; and an integer variance meant rounding discarded every fractional term, so a prime-age player's +0.4 rounded away to nothing. 90-plus players across 10 seasons **117 → 79**. |
+| 7106 | Registry drift | Four fields in the authoritative registry contradict verified local evidence (`stagingType`, `stagingUrl`, `liveUrl`, `vaultStatus`). Shipped as signed Ark cargo **`01JV62KEPG9B017D2712C0F8F5`** with provenance receipts. No sibling tree edited (CANON-018). |
+
+### Second-order — four shipped
+
+- **Hall of Fame induction classes.** Only reachable once induction became scarce: at ~2.5 a year with a dated
+  `classYear`, the Hall reads the way a real Hall reads — by the class you went in with. Inductees from saves
+  written before classes existed keep their place in an undated group rather than being given an invented year.
+- **The season record is declared once** — the drift that produced the NaN is now structurally impossible.
+- **Rookie eligibility derives from the stat record**, not a counter advanced elsewhere in the calendar.
+- **Cross-runtime scoreline parity**, held identical by test, the same discipline the API adapters already use.
+
+### Honest deferrals — recorded, not skipped
+
+- **Residual overall inflation.** After all three progression fixes the league mean still rises 77.25 → 80.70
+  across 10 seasons (**+0.38/season**, down from +0.43). The two unambiguous defects are fixed and guarded; what
+  remains is a *balance* question — the age curve is net-positive across this league's real age distribution.
+  That is a calibration exercise belonging with the realism profile and its own baseline, not a number quietly
+  nudged at the end of a session. Recorded with its measurement so the next session starts from a number.
+- **Long-run behaviour beyond 10 seasons is not measured.** A 25-season probe ran ~50 minutes without output and
+  was stopped. The trend is reported only over the window actually observed, not extrapolated to 100 years.
+
+### Rejected as phantom work
+
+- *"Roster sizes grow unbounded."* Measured per-team totals converge on exactly **69** — 53 active + 16 practice,
+  the intended limit. The apparent growth is practice squads filling from an initial ~54.
+- *"Season statistics are unrealistic."* The realism calibrator holds QB/RB/WR/TE lines at **0.0–2.3% drift**
+  against the Pro Football Reference baseline over 20 observed years. The statistics were never the problem;
+  only the formula that valued them.
+
+Coverage: `test/season-value-authority.test.js` (10), registered in the `core` shard.

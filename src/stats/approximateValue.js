@@ -1,6 +1,16 @@
 export const OFFENSIVE_AV_POSITIONS = new Set(["QB", "RB", "WR", "TE", "OL"]);
 export const DEFENSIVE_AV_POSITIONS = new Set(["DL", "LB", "DB"]);
 
+/**
+ * A tight end's blocking snap counts for a fifth of a lineman's, on both sides
+ * of the line-share ratio. Exported so `statBook` and the tests weight the team
+ * denominator exactly the way the numerator is weighted.
+ */
+export const TE_LINE_WEIGHT = 0.2;
+
+/** Five line spots — the fallback denominator when a team context carries no accumulated line weight. */
+const OFFENSIVE_LINE_SPOTS = 5;
+
 function ratio(numerator, denominator) {
   return denominator ? Number(numerator || 0) / Number(denominator || 0) : 0;
 }
@@ -117,18 +127,77 @@ function offensiveSkillValue(position, stats, context) {
     }
   }
 
-  if (position === "TE") value += offensiveLineValue(stats, context);
+  if (position === "TE") value += tightEndBlockingValue(stats, context);
   return roundAv(value + honorBonus(context.honors));
 }
 
-function offensiveLineValue(stats, context) {
+/**
+ * Blocking snaps, in the same unit `statBook` accumulates into
+ * `team.olLineWeight` / `team.teLineWeight`. Both sides of the ratio have to be
+ * measured the same way or the share is meaningless.
+ */
+function lineSnapWeight(stats = {}) {
+  return Math.max(0, Number(stats.snaps?.offense || 0) || Number(stats.gamesStarted || 0) || 0);
+}
+
+/**
+ * Line play is worth a share of the team's line bucket, not an absolute.
+ *
+ * S71: this used to return `(16 * (games + 5*starts*mult)) / team.games` — an
+ * unnormalized absolute that never touched `offensiveBuckets().linePoints`. A
+ * full-season starter scored AV 96 against an MVP-calibre quarterback's 16, so
+ * every honour that ranks by AV (MVP, OPOY, OROY, the Hall of Fame) was decided
+ * by the formula rather than by the season. The bucket and both denominators
+ * (`linePoints`, `team.olLineWeight`, `team.teLineWeight`) already existed and
+ * had never been read anywhere in the repository — the normalization was
+ * scaffolded on both sides and never connected. This is the same
+ * bucket ÷ team-denominator shape `defensiveValue` has always used.
+ *
+ * @param {object} stats — one player's season stat bucket
+ * @param {object} context — { team, league, honors, position }
+ * @returns {number} the player's share of the team's offensive-line value
+ */
+function offensiveLineShare(stats, context) {
   const team = context.team || {};
-  const positionMultiplier = String(context.position || "").toUpperCase() === "TE" ? 0.2 : 1;
-  const allProMultiplier = context.honors?.allProLevel === 1 ? 1.9 : context.honors?.allProLevel === 2 ? 1.6 : context.honors?.proBowler ? 1.3 : 1;
-  const games = Math.max(0, Number(stats.games || 0));
-  const starts = Math.max(0, Number(stats.gamesStarted || 0));
-  const raw = games + 5 * starts * positionMultiplier * allProMultiplier;
-  return roundAv((16 * raw) / Math.max(1, Number(team.games || games || 16)));
+  const league = context.league || {};
+  const isTightEnd = String(context.position || "").toUpperCase() === "TE";
+  const positionMultiplier = isTightEnd ? TE_LINE_WEIGHT : 1;
+  const allProMultiplier =
+    context.honors?.allProLevel === 1
+      ? 1.9
+      : context.honors?.allProLevel === 2
+        ? 1.6
+        : context.honors?.proBowler
+          ? 1.3
+          : 1;
+
+  const linePoints = offensiveBuckets(team, league).linePoints;
+  const playerWeight = lineSnapWeight(stats) * positionMultiplier;
+  if (playerWeight <= 0 || linePoints <= 0) return 0;
+
+  // The accumulated team denominator, weighting tight-end snaps the same way the
+  // numerator does. When a caller supplies a team context without the
+  // accumulators (a focused probe, a legacy payload), fall back to a nominal
+  // five-man line so a missing denominator can never inflate one player's share
+  // past what a whole line is worth.
+  const accumulated =
+    Number(team.olLineWeight || 0) + TE_LINE_WEIGHT * Number(team.teLineWeight || 0);
+  const teamWeight = Math.max(accumulated, playerWeight * OFFENSIVE_LINE_SPOTS);
+
+  return (linePoints * playerWeight * allProMultiplier) / teamWeight;
+}
+
+function offensiveLineValue(stats, context) {
+  return roundAv(offensiveLineShare(stats, context));
+}
+
+/**
+ * A tight end blocks, but blocking is a fraction of the job. He draws from the
+ * same line bucket at the same 0.2 weight the old absolute used — the weight was
+ * never the defect, the missing denominator was.
+ */
+function tightEndBlockingValue(stats, context) {
+  return offensiveLineShare(stats, { ...context, position: "TE" });
 }
 
 function defensiveValue(stats, context) {

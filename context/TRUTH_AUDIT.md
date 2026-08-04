@@ -503,3 +503,19 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - **Test truth:** the complete source-bound aggregate passes 819/819 with direct exit 0; Playwright passes 33/33; responsive evidence passes 65/65; six representative originals were manually inspected across both themes with zero blocking defects.
 - **Release truth:** production remains healthy at c92e389384b9fa51e7b4e7af69887831b61d2fe8, but launch remains HOLD on email delivery/reply identity, exact production parity, founder approval, and authoritative lifecycle. Independent staging is green and is not collapsed with those gates.
 - **Cost truth:** no dependency or variable-cost runtime was added. Dedicated static staging remains cost-neutral; flat-rate Max Plan cost is notional.
+
+## Session 71 — 2026-08-04
+
+**Status: green.** One long-standing reporting untruth closed, one measurement honestly scoped.
+
+| Surface | Was | Now |
+|---|---|---|
+| Championship scoreline | Assembled `home-away` (AFC first) at four write sites and published beside `championTeamId` as though champion-first. In 8 of 10 measured seasons the champion's score was printed second — the History tab, the franchise newsletter, the shareable League Story Card, the transaction feed and the CLI all announced the champion losing its own final. | One `championScoreline()` authority writes winner-first; nine player-facing readers repair stored scorelines on read. Covered by a test that fails if either conference's win is oriented wrongly. |
+| Approximate value | Reported as a comparable cross-position number and used to decide MVP, OPOY, Rookie of the Year and the Hall of Fame, while offensive value was ~0 league-wide and an offensive lineman who merely started scored 6x an MVP quarterback. | Comparable across positions and regression-guarded. The scale is asserted, not assumed. |
+| Hall of Fame | Presented as a Hall while admitting 24.5% of everyone who ever retired. | 1.4% of retirees, dated by induction class, with the policy visible in the History tab. |
+| League overall drift | Not measured or reported at all. | Measured (+0.38/season after fixes, from +0.43) and **recorded as an open balance question**, not silently corrected. Long-run behaviour beyond 10 seasons is explicitly *not* measured and explicitly not extrapolated. |
+
+No readiness, retention, or launch evidence was fabricated. Launch remains HOLD on the same three human gates:
+delivered on-domain email, SHA-bound founder approval, and authoritative registry lifecycle. The registry drift is
+reported through signed Ark cargo `01JV62KEPG9B017D2712C0F8F5`; the doctor warning stays visible rather than
+suppressed, because it is true.

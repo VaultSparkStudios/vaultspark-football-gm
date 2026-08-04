@@ -107,25 +107,40 @@ export function sortStandings(teams) {
   return ranked;
 }
 
+/**
+ * Add one game's contribution to a season counter, treating a missing or
+ * non-finite running total as zero so a single bad value cannot poison the rest
+ * of the season. Non-finite contributions are dropped, not accumulated.
+ */
+function addSeasonCounter(season, key, delta) {
+  const running = Number(season[key]);
+  const add = Number(delta);
+  season[key] = (Number.isFinite(running) ? running : 0) + (Number.isFinite(add) ? add : 0);
+}
+
 export function applyRegularSeasonResult(league, week, result) {
   const home = league.teams.find((t) => t.id === result.homeTeamId);
   const away = league.teams.find((t) => t.id === result.awayTeamId);
   if (!home || !away) return;
 
-  home.season.pointsFor += result.homeScore;
-  home.season.pointsAgainst += result.awayScore;
-  home.season.yardsFor += result.homeYards;
-  home.season.yardsAgainst += result.awayYards;
-  home.season.drivesFor += result.homeDrives || 0;
-  home.season.drivesAgainst += result.awayDrives || 0;
-  home.season.turnovers += result.homeTurnovers;
-  away.season.pointsFor += result.awayScore;
-  away.season.pointsAgainst += result.homeScore;
-  away.season.yardsFor += result.awayYards;
-  away.season.yardsAgainst += result.homeYards;
-  away.season.drivesFor += result.awayDrives || 0;
-  away.season.drivesAgainst += result.homeDrives || 0;
-  away.season.turnovers += result.awayTurnovers;
+  // S71: accumulate through a finite guard. A season record that arrives from an
+  // older save missing a counter would otherwise pin it at NaN for the whole
+  // year, and every downstream reader takes these as `x || 0` — which launders
+  // the NaN into a zero denominator instead of raising it.
+  addSeasonCounter(home.season, "pointsFor", result.homeScore);
+  addSeasonCounter(home.season, "pointsAgainst", result.awayScore);
+  addSeasonCounter(home.season, "yardsFor", result.homeYards);
+  addSeasonCounter(home.season, "yardsAgainst", result.awayYards);
+  addSeasonCounter(home.season, "drivesFor", result.homeDrives);
+  addSeasonCounter(home.season, "drivesAgainst", result.awayDrives);
+  addSeasonCounter(home.season, "turnovers", result.homeTurnovers);
+  addSeasonCounter(away.season, "pointsFor", result.awayScore);
+  addSeasonCounter(away.season, "pointsAgainst", result.homeScore);
+  addSeasonCounter(away.season, "yardsFor", result.awayYards);
+  addSeasonCounter(away.season, "yardsAgainst", result.homeYards);
+  addSeasonCounter(away.season, "drivesFor", result.awayDrives);
+  addSeasonCounter(away.season, "drivesAgainst", result.homeDrives);
+  addSeasonCounter(away.season, "turnovers", result.awayTurnovers);
 
   if (result.isTie) {
     home.season.ties += 1;

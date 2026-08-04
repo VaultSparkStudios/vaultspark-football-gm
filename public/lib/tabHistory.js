@@ -1,6 +1,7 @@
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, renderPulseChips, renderTable, setElementTone, setSelectOptions, teamCode, teamName } from "./appCore.js";
 import { hallOfFameCeremonyButton, openHallOfFameCeremony } from "./hallOfFameCeremony.js";
+import { orientWinnerFirst } from "./scoreline.js";
 
 export function setHistoryView(view) {
   state.historyView = view === "hall-of-fame" ? "hall-of-fame" : "season-awards";
@@ -43,7 +44,42 @@ export function awardCountLine(awardCounts = {}) {
 }
 
 export function hallOfFamePolicyLine(settings = state.leagueSettings || state.dashboard?.settings || {}) {
-  return `Score ${settings.hallOfFameInductionScoreMin ?? 240} | Wait ${settings.hallOfFameYearsRetiredMin ?? 0}y`;
+  return `Score ${settings.hallOfFameInductionScoreMin ?? 450} | Wait ${settings.hallOfFameYearsRetiredMin ?? 0}y | Class ${settings.hallOfFameMaxClassSize ?? 6}/yr`;
+}
+
+/**
+ * Group inductees into their induction classes, newest first.
+ *
+ * S71: until this session the Hall admitted roughly a quarter of everyone who
+ * ever retired, so a "class" would have been hundreds of names and meant
+ * nothing. Now that induction is bounded — a scarce, dated, once-a-year event —
+ * the archive can be read the way a real Hall is read: by the class you went in
+ * with. Entries from saves written before induction classes existed keep their
+ * place in an undated group rather than being hidden or invented into a year.
+ *
+ * @param {Array<object>} entries — `dashboard.hallOfFame`
+ * @returns {Array<{classYear: number|null, label: string, members: Array<object>}>}
+ */
+export function hallOfFameClasses(entries = []) {
+  const byYear = new Map();
+  for (const entry of entries || []) {
+    const year = Number.isFinite(Number(entry?.classYear)) ? Number(entry.classYear) : null;
+    if (!byYear.has(year)) byYear.set(year, []);
+    byYear.get(year).push(entry);
+  }
+  return [...byYear.entries()]
+    .sort((a, b) => {
+      if (a[0] === null) return 1;
+      if (b[0] === null) return -1;
+      return b[0] - a[0];
+    })
+    .map(([classYear, members]) => ({
+      classYear,
+      label: classYear === null ? "Earlier inductees" : `Class of ${classYear}`,
+      members: members
+        .slice()
+        .sort((a, b) => (b.careerAv || 0) - (a.careerAv || 0) || String(a.player).localeCompare(String(b.player)))
+    }));
 }
 
 export function retiredNumberPolicyLine(settings = state.leagueSettings || state.dashboard?.settings || {}) {
@@ -116,7 +152,7 @@ export function renderSeasonAwardsShowcase(selectedAward = null) {
   }
 
   const superBowlSummary = selectedAward.SuperBowl
-    ? `${selectedAward.SuperBowl.championTeamId || "-"} def. ${selectedAward.SuperBowl.runnerUpTeamId || "-"} ${selectedAward.SuperBowl.finalScore || ""}`
+    ? `${selectedAward.SuperBowl.championTeamId || "-"} def. ${selectedAward.SuperBowl.runnerUpTeamId || "-"} ${orientWinnerFirst(selectedAward.SuperBowl.finalScore || "")}`
     : "No Super Bowl summary recorded";
   if (spotlight) {
     spotlight.innerHTML = `
@@ -330,7 +366,7 @@ export function renderHistorySpotlight() {
         </div>
         <div class="history-spotlight-card">
           <strong>Ring Standard</strong>
-          <div>${escapeHtml(latestChampion ? latestChampion.score || "-" : "-")}</div>
+          <div>${escapeHtml(latestChampion ? orientWinnerFirst(latestChampion.score) || "-" : "-")}</div>
           <div class="small">${escapeHtml(latestChampion ? `${latestChampion.championTeamId} over ${latestChampion.runnerUpTeamId}` : "Super Bowl scorecards will show here")}</div>
         </div>
       </div>
@@ -360,7 +396,7 @@ export function renderHistorySpotlight() {
     "historyPulseBar",
     [
       topLegacy ? `Top AV ${topLegacy.player} ${topLegacy.careerAv || 0}` : null,
-      latestChampion ? `Latest score ${latestChampion.score}` : null,
+      latestChampion ? `Latest score ${orientWinnerFirst(latestChampion.score)}` : null,
       hall.length ? `Most rings ${hall.slice().sort((a, b) => (b.championships || 0) - (a.championships || 0))[0]?.player}` : null,
       retiredCount ? `${retiredCount} jersey retirements tracked` : "No retired numbers yet"
     ],
@@ -372,6 +408,8 @@ export function renderHallOfFameGallery(entries = []) {
   const gallery = document.getElementById("hallOfFameGallery");
   const spotlight = document.getElementById("hallOfFameSpotlight");
   const settings = state.leagueSettings || state.dashboard?.settings || {};
+  const classes = hallOfFameClasses(entries);
+  const latestClass = classes.find((row) => row.classYear !== null) || null;
   if (spotlight) {
     const top = entries[0] || null;
     const mostDecorated = entries.slice().sort((a, b) =>
@@ -393,6 +431,13 @@ export function renderHallOfFameGallery(entries = []) {
           <strong>Most Decorated</strong>
           <div>${escapeHtml(mostDecorated ? mostDecorated.player : "No decorated legend yet")}</div>
           <div class="small">${escapeHtml(mostDecorated ? awardCountLine(mostDecorated.awardCounts || {}) : "Award-heavy careers will surface here.")}</div>
+        </div>
+        <div class="history-spotlight-card">
+          <strong>${escapeHtml(latestClass ? latestClass.label : "Latest Class")}</strong>
+          <div>${escapeHtml(latestClass ? latestClass.members.map((row) => `${row.pos} ${row.player}`).join(", ") : "No class inducted yet")}</div>
+          <div class="small">${escapeHtml(latestClass
+            ? `${latestClass.members.length} inducted | ${classes.length} class${classes.length === 1 ? "" : "es"} on the wall`
+            : "Induction happens once a year, and the ballot is small.")}</div>
         </div>
         <div class="history-spotlight-card">
           <strong>Induction Policy</strong>
@@ -423,6 +468,7 @@ export function renderHallOfFameGallery(entries = []) {
         <div class="history-card-stat"><strong>Resume</strong><div>${escapeHtml(hallOfFameCareerLine(entry))}</div></div>
       </div>
       <div class="history-chip-row">
+        <span class="history-chip">${escapeHtml(Number.isFinite(Number(entry.classYear)) ? `Class of ${entry.classYear}` : "Earlier inductee")}</span>
         ${(entry.retiredNumbers || []).length
           ? entry.retiredNumbers.map((row) => `<span class="history-chip">${escapeHtml(row.teamId)} #${escapeHtml(row.number)}</span>`).join("")
           : `<span class="history-chip">No jersey retired yet</span>`}
@@ -552,7 +598,7 @@ export function renderRecordsAndHistory() {
       ROY: award.ROY?.player || "",
       CPOY: award.CPOY?.player || "",
       mostImproved: award.MostImproved?.player || "",
-      sbScore: award.SuperBowl?.finalScore || "",
+      sbScore: orientWinnerFirst(award.SuperBowl?.finalScore || ""),
       sbMVP: award.SuperBowl?.MVP?.player || ""
     }))
   );
@@ -583,7 +629,7 @@ export function renderRecordsAndHistory() {
           ROY: selectedAward.ROY?.player || "",
           CPOY: selectedAward.CPOY?.player || "",
           mostImproved: selectedAward.MostImproved?.player || "",
-          superBowl: `${selectedAward.SuperBowl?.championTeamId || "-"} def. ${selectedAward.SuperBowl?.runnerUpTeamId || "-"} ${selectedAward.SuperBowl?.finalScore || ""}`,
+          superBowl: `${selectedAward.SuperBowl?.championTeamId || "-"} def. ${selectedAward.SuperBowl?.runnerUpTeamId || "-"} ${orientWinnerFirst(selectedAward.SuperBowl?.finalScore || "")}`,
           superBowlMVP: selectedAward.SuperBowl?.MVP?.player || "",
           pivotalMoment: selectedAward.SuperBowl?.pivotalMoment || ""
         }]
@@ -601,7 +647,7 @@ export function renderRecordsAndHistory() {
       year: champion.year,
       champion: champion.championTeamId,
       runnerUp: champion.runnerUpTeamId,
-      score: champion.score
+      score: orientWinnerFirst(champion.score)
     }))
   );
 

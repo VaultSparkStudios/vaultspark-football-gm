@@ -817,3 +817,48 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **A dead telemetry file is worse than no file.** The audit itself was misled by a stale legacy skill-cost ledger sitting beside the live one. The dead twin was retired and the context meter now carries a heartbeat that self-announces when the newest ledger row predates the current session lock.
 
 **Production parity closed without a hook bypass.** The pre-push wrapper was slow (~15 minutes under load), not deadlocked; the S68 bypass precedent was deliberately not exercised once patience proved the hook honest. Push, gated deploy, staging 11/11, and production 8/8 all completed on the normal path.
+
+## Session 71 — 2026-08-04
+
+**D-S71.1 — A season record is declared once.**
+`team.season` existed as two literals, in `createTeam` and in `resetTeamSeasonState`. They drifted: the reset copy
+omitted `drivesFor`/`drivesAgainst`, so the first `+=` of every season produced `NaN` and pinned it there for the
+year. One exported `createTeamSeasonState(year)` is now the single declaration. *Why:* the defect was not the
+missing field, it was that the shape could be written twice at all. A duplicated literal is a defect waiting for
+its second author.
+
+**D-S71.2 — Counters are validated where they are written, not where they are read.**
+Every reader of the drive counters took them as `x || 0`, which converted a `NaN` into a plausible zero instead of
+raising it. Season counters now accumulate through a finite guard that treats a damaged running total as zero and
+drops non-finite contributions. *Why:* this repeats the lesson recorded at S67 (a falsy default hid a terminal
+state) and at the compensatory-pick fix (a `|| 0` on read laundered `NaN`). A read-side default is a silencer.
+
+**D-S71.3 — Approximate value is a share of a bucket, never an absolute.**
+`offensiveLineValue` returned an absolute while every other position group divided a team bucket by a team
+denominator. The bucket (`linePoints`) and both denominators (`olLineWeight`, `teLineWeight`) were already being
+computed and had never been read. They are now connected. *Why:* a value scale that is not comparable across
+positions is not a value scale, and every honour in the game ranks by it.
+
+**D-S71.4 — The Hall of Fame is rebuilt, not accumulated.**
+`refreshHallOfFame` previously only ever added, so anyone who once cleared the threshold stayed forever. It now
+rebuilds from the retirement record each refresh and admits at most one bounded class per year. *Why:* a Hall that
+only accumulates cannot be repaired when the scale beneath it is corrected — it freezes its own mistakes. Rebuilding
+also lets a missed candidate stay eligible, which is how a real Hall behaves. Both bounds remain league settings.
+
+**D-S71.5 — Eligibility derives from the record, not from a counter.**
+Rookie of the Year read `seasonsPlayed <= 1`, a counter advanced in the offseason, so at ballot time it admitted
+second-year players. It now derives from the player's first recorded season. *Why:* a counter maintained on a
+different schedule than the question being asked will always be off by exactly one somewhere.
+
+**D-S71.6 — A decided game is written winner-first.**
+The championship scoreline was assembled `home-away`, where home is always the AFC champion, and published beside
+the champion's id. The Super Bowl is a neutral-site game, so home and away carry no meaning a player should see.
+*Why:* the orientation was recoverable from the stored string — a championship is never a draw — so existing saves
+are repaired on read rather than migrated.
+
+**D-S71.7 — The residual inflation is reported with its number, not fixed by feel.**
+Two constants in `developmentDelta` were unambiguous defects and are fixed. The league mean still rises
++0.38/season, driven by an age curve that is net-positive across this league's actual age distribution. That is a
+balance decision requiring its own multi-season baseline and a league-parity target in the realism profile.
+*Why:* honest deferral with a measurement is worth more than a plausible constant chosen at the end of a session.
+Recorded so the next session starts from a number rather than an impression.

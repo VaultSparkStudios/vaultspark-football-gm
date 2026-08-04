@@ -633,3 +633,59 @@ Final direct evidence: Node 800/800, Playwright 33/33, responsive 53/53, Pages b
 Ark closeout receipts: `01JV2S5KC5235D4C02269A28B4` (Studio Ops mechanization/lifecycle/IGNIS request) and `01JV2S5LCJ0A4652456F139E78` (studio-wide source-bound strategy/observability pattern).
 
 Delivery recovery: the first ordinary push deadlocked for 124 seconds at `env .git/hooks/pre-push` with no live hook child and no remote SHA change. Terminated only the verified five-process push tree; manually executed the exact hook ref tuple with direct exit 0 after the staged Studio secret scan returned 0 findings. The retry uses `--no-verify` solely to bypass the broken wrapper transport, with the justification recorded in DECISIONS and returned to Studio Ops through Ark receipt `01JV2TC1JI6683F7C1ED40088F`.
+
+## 2026-08-04 — Session 71 (`/goal /arc`, saturated)
+
+Ran the full agent-neutral mission continuously: `/start` → `/audit` → `/implement` → `/closeout`. The live-code
+audit produced six ranked items; all six shipped, then four second-order items shipped. Genius queue at closeout:
+0 open / 6 closed. Two deferrals recorded with their measurements rather than skipped.
+
+The audit was built by running the real engine and measuring it, not by reading it. Ten simulated seasons showed a
+tight end winning MVP, Offensive Player of the Year and Offensive Rookie of the Year in **10 of 10** years, 23% of
+all retirees entering the Hall of Fame, and championship scorelines in which the champion appeared to lose. Two
+plausible-looking candidates were rejected against that same measurement: roster sizes converge on exactly 69
+(53 active + 16 practice, the intended limit), and season statistics hold 0.0–2.3% drift against the Pro Football
+Reference baseline over 20 observed years.
+
+The audited premise — an unnormalized `offensiveLineValue` — was real but **secondary**. Implementation found the
+upstream cause: `resetTeamSeasonState` rebuilt `team.season` without `drivesFor`/`drivesAgainst` because the shape
+was declared twice and drifted, so the first `+=` of every season pinned both at `NaN`. Every reader took them as
+`x || 0`, laundering the NaN into a zero drive count rather than raising it. `offensivePoints` collapsed to ~2 and
+the defensive multiplier pinned at its `0.15` clamp floor, inflating the defensive bucket to ~426. Measured
+league-wide: **QB approximate value 2, WR 0, RB 0, OL 0 — against LB 76.** Offensive value had been near zero for
+the project's whole history, which is why a tight end's unnormalized blocking constant of 32 was enough to win MVP
+ten years running: it was the only nonzero offensive value in the league.
+
+1. Season record declared once (`createTeamSeasonState`), counters accumulated through a finite guard; line value
+   distributes the team's line bucket through the `olLineWeight`/`teLineWeight` denominators `statBook` had been
+   accumulating and nothing had ever read. OL starter **96 → 8**, TE with no catches **32 → 2**, elite TE
+   **41 → 11**, MVP QB **16** unchanged; live in-engine **QB 2 → 25, WR 0 → 17, LB 76 → 24**.
+2. Award ballot: a quarterback wins MVP in 10 of 10 seasons at AV 16–24. Rookie eligibility root-fixed from
+   `seasonsPlayed <= 1` (which let the MVP also win Rookie of the Year in 7 of 8 seasons) to the first recorded
+   season.
+3. Hall of Fame rebuilt rather than accumulated, admitted year by year under a class-size cap with a deterministic
+   tie-break: **24.5% of retirees → 1.4%**, against the real Hall's ~1.36% of everyone who has ever played.
+4. One `championScoreline()` authority replaced four home-first assemblies; nine readers repair stored scorelines
+   on read, so existing saves display correctly without a migration.
+5. Progression carried three defects rather than the one audited: an inclusive `rng.int(-2, 3)` averaging +0.5, a
+   trait reference of 70 against a measured league mean potential of 79.92, and an integer variance whose rounding
+   discarded every fractional term in the curve. 90-plus players across ten seasons **117 → 79**.
+6. Registry drift on four fields returned as signed Ark cargo `01JV62KEPG9B017D2712C0F8F5`; no sibling tree edited.
+
+Second-order: Hall of Fame induction classes (only reachable once induction became scarce), the season record
+declared once, rookie eligibility derived from the record, and cross-runtime scoreline parity held by test.
+
+Deferred honestly, with measurements: league mean overall still rises **+0.38/season** after the fixes (from
++0.43) — a balance question about the age curve that belongs with the realism profile and its own baseline, not a
+constant nudged at session end. Long-run behaviour beyond ten seasons is **not measured**: a 25-season probe ran
+~50 minutes without output and was stopped, so the trend is reported only over the window observed and is not
+extrapolated to the stated hundred-year horizon.
+
+Coverage: `test/season-value-authority.test.js` (10 tests) registered in the `core` shard, pinning cross-position
+AV comparability, line-bucket conservation and its fallback bound, season-record shape parity, NaN-proof
+accumulation, champion-first scorelines for both conferences, cross-runtime scoreline parity, absence of hidden
+constants in the development curve, fractional resolution surviving rounding, rookie eligibility, and Hall
+class-cap plus rebuild idempotence.
+
+Launch remains HOLD on the same three human gates: delivered on-domain email, SHA-bound founder approval, and
+authoritative registry lifecycle. No readiness or retention evidence was fabricated.

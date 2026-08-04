@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 70 complete: 12/12 full-scope audit executed. Production parity CLOSED — production serves exact candidate 870382c1dc17d80460c0bffdc83db41591d50f0e (provenance 8/8, fingerprint parity), staging 11/11 at same SHA. Launch HOLD on three human gates only: delivered on-domain email, SHA-bound founder approval, authoritative lifecycle.",
-  "nextMilestone": "Prove delivered and reply-capable on-domain email (zoho.mail.admin secrets MISSING), obtain SHA-bound founder approval, and reconcile authoritative registry lifecycle — then launch flip. Product candidates: dynasty almanac share cards, broadcast-mode sim-watch, trophy-road onboarding.",
+  "currentFocus": "Session 71 complete: 6/6 live-code audit executed plus 4 second-order items. The value scale is fixed at the source — a season record declared twice had drifted, so drivesFor/drivesAgainst were NaN and every offensive player's approximate value had been ~0 for the project's entire history. MVP, Rookie of the Year, the Hall of Fame and the championship scoreline all inherited that distortion and are now correct and regression-guarded. Launch HOLD unchanged on three human gates.",
+  "nextMilestone": "Calibrate the age-development curve against an explicit league-parity target in the realism profile (closes the measured +0.38/season residual overall drift and carries the long-run probe), then prove delivered on-domain email, obtain SHA-bound founder approval, and reconcile authoritative registry lifecycle for the launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -18,20 +18,19 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-03",
   "testSuiteStatus": {
-    "totalTests": 819,
-    "pass": 819,
+    "totalTests": 852,
+    "pass": 852,
     "fail": 0,
-    "lastRun": "2026-08-03",
+    "lastRun": "2026-08-04",
     "newTestFiles": [
-      "test/project-authority-contract.test.js",
-      "test/staging-authority-reconcile.test.js"
+      "test/season-value-authority.test.js"
     ],
-    "newTestCount": 19,
-    "coverage": "Session 69 canonical aggregate Node 819/819 direct exit 0 (core 104, runtime 484, sim-contract 75, sim-realism 1, studio 155), Playwright 33/33, responsive evidence 65/65, Pages build/smoke, 54 browser modules reachable, six dark/light desktop/mobile images manually inspected.",
-    "uiSuiteNote": "Playwright 33/33 and CANON-053 visual QA PASS with truthful return digest, multi-path GM progress, and mobile drawer state."
+    "newTestCount": 10,
+    "coverage": "Session 71 canonical aggregate Node 852/852 direct exit 0 (core 114, runtime 504, sim-contract 75, sim-realism 1, studio 158), Playwright 38/38 exit 0, Pages build/smoke exit 0, 58 browser modules reachable, doctor blockingFailing 0.",
+    "uiSuiteNote": "Playwright 38/38 green after the value-scale, award, Hall of Fame, scoreline, and progression changes; no UI regression from the engine rework."
   },
-  "testsPassing": 819,
-  "testsTotal": 819,
+  "testsPassing": 852,
+  "testsTotal": 852,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -70,23 +69,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 997,
+  "silScore": 995,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 100,
-    "processQuality": 99,
+    "processQuality": 97,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
     "automationCoverage": 99
   },
-  "currentSession": 70,
-  "lastAgent": "codex",
+  "currentSession": 71,
+  "lastAgent": "claude-code",
   "sessionMode": "builder",
-  "lastVerification": "npm test 819/819 direct exit 0; npm run test:ui 33/33 exit 0; evidence:responsive 65/65 exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54; staging provenance 11/11; visual receipt 6 inspected captures / 0 blocking defects.",
+  "lastVerification": "npm test 852/852 direct exit 0; npm run test:ui 38/38 exit 0; build:pages + smoke:pages exit 0; check:browser-modules 58 exit 0; doctor blockingFailing 0. Engine changes additionally verified by in-process probes over 10 simulated seasons (award distribution, career-AV percentiles, Hall induction rate, league overall trend).",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -112,7 +111,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 847,
+  "silHealth": 845,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -141,19 +140,23 @@
   "entropyScore": 0.029,
   "entropyLastComputed": "2026-08-03",
   "lastSessionSummary": {
-    "session": 69,
+    "session": 71,
     "shipped": [
-      "Phase-aware aligned/contested season thesis evidence",
-      "Monotonic per-franchise session-bound return digest",
-      "Project propagation compatibility firewall",
-      "Independent Cloudflare staging authority",
-      "Truthful multi-path General Manager progression",
-      "Expiring live release evidence",
-      "Deterministic deployable artifact fingerprint",
-      "Stable-origin provenance convergence and rollback authority"
+      "Approximate-value line-share authority (upstream NaN drive counts root-fixed)",
+      "Season record declared once, counters validated at the write site",
+      "Award ballot integrity — a quarterback wins MVP 10 of 10 seasons",
+      "Rookie of the Year eligibility derived from the stat record",
+      "Hall of Fame scarcity — 24.5% of retirees to 1.4%, dated induction classes",
+      "Champion-first championship scoreline across four writers and nine readers",
+      "Development-curve drift — three constants removed, fractional resolution restored",
+      "Registry drift returned as signed Ark cargo 01JV62KEPG9B017D2712C0F8F5"
     ],
-    "tests": "Node 819/819 - UI 33/33 - responsive 65/65 - visual 6/6 inspected",
-    "deploy": "Independent staging verified at 833779e; production remains at c92e389 and launch HOLD on four independent gates"
+    "tests": "Node 852/852 direct exit 0 · Playwright 38/38 · Pages build/smoke · 58 browser modules · doctor blockingFailing 0",
+    "deploy": "No deploy this session; production and staging remain at 870382c with launch HOLD on three human gates",
+    "honestDeferrals": [
+      "Residual league overall drift +0.38/season — an age-curve balance question for the realism profile, recorded with its measurement",
+      "Long-run behaviour beyond 10 simulated seasons is not measured and is not extrapolated"
+    ]
   },
   "testingSurfaces": [
     {
@@ -175,8 +178,8 @@
       "lastChecked": "2026-08-04"
     }
   ],
-  "lastSession": 70,
-  "silLastSession": 69,
+  "lastSession": 71,
+  "silLastSession": 71,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",
@@ -189,7 +192,7 @@
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ],
-  "session": 69,
+  "session": 71,
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",

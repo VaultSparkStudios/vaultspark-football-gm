@@ -272,13 +272,48 @@ export function calcTeamOffenseDefense(teamPlayers) {
   };
 }
 
+/**
+ * The potential a league-average player carries.
+ *
+ * `developmentDelta` asks "is this player better than average?", so it needs the
+ * league's actual centre. The measured mean potential of a generated league is
+ * 79.9; the reference had been left at 70, which turned a *differentiator* into
+ * a **+0.50 bonus every player collected every offseason** regardless of talent.
+ * Held here as a named constant so a drift between the generator and the
+ * development curve is visible rather than silent.
+ */
+export const LEAGUE_AVERAGE_POTENTIAL = 80;
+
+/**
+ * How much a player's ratings move over one offseason.
+ *
+ * S71 removed two constants that were quietly inflating the whole league by
+ * roughly a full rating point a year, which a hundred-year franchise cannot
+ * absorb — over ten simulated seasons the league's mean overall climbed
+ * 77.5 → 81.8 and the number of 90-plus players went from 13 to 117:
+ *
+ *  - `rng.int(-2, 3)` — `RNG.int` is inclusive at both ends, so this "variance"
+ *    averaged +0.5 rather than 0.
+ *  - `(potential - 70)` — measured against a centre the league left behind, so
+ *    every player cleared it. Now measured against the real centre.
+ *
+ * The draw is also continuous rather than a whole number. With an integer
+ * variance, `Math.round` of the sum discards every fractional term: a prime-age
+ * player's +0.4 and any trait edge under half a point rounded away to exactly
+ * nothing, so the curve's resolution was decorative. Across a window that spans
+ * a whole number of rating points the rounding is unbiased, which makes the
+ * expected move precisely `ageFactor + traitFactor` — what the curve says.
+ *
+ * What remains is deliberate: young players still develop, thirty-somethings
+ * still decline, and high-potential players still separate from the field.
+ */
 export function developmentDelta(player, rng) {
   let ageFactor;
   if (player.age <= 25) ageFactor = 1.5;
   else if (player.age <= 29) ageFactor = 0.4;
   else ageFactor = -1.3;
 
-  const traitFactor = (player.potential - 70) / 20;
-  const variance = rng.int(-2, 3);
+  const traitFactor = (player.potential - LEAGUE_AVERAGE_POTENTIAL) / 20;
+  const variance = rng.float(-2.5, 2.5);
   return Math.round(ageFactor + traitFactor + variance);
 }

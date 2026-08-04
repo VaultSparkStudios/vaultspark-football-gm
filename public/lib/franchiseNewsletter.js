@@ -15,6 +15,8 @@
  * Exported: generateFranchiseNewsletter(state) → opens new window
  */
 
+import { orientWinnerFirst } from "./scoreline.js";
+
 function esc(str) {
   if (str == null) return "";
   return String(str)
@@ -41,7 +43,7 @@ export function generateFranchiseNewsletter(state) {
   const losses     = myRow.losses ?? "—";
   const champ      = d.lastChampion || d.champions?.slice(-1)[0] || null;
   const champTeam  = champ?.championTeamId || champ || "—";
-  const champScore = champ?.score || "";
+  const champScore = orientWinnerFirst(champ?.score || "");
   const isChamp    = champTeam === teamId;
   const awards     = d.lastAwards || {};
   const mvp        = awards.mvp?.name || awards.MVP?.name || "—";

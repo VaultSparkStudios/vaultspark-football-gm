@@ -3,6 +3,37 @@ import { buildSyntheticTeamRoster, createSyntheticPlayer } from "./playerFactory
 import { calcTeamOffenseDefense } from "./ratings.js";
 import { derivedRng } from "../utils/rng.js";
 
+/**
+ * The one shape of a team's in-season record.
+ *
+ * S71: this existed twice — once in `createTeam` and once in
+ * `resetTeamSeasonState` — and the two drifted. The reset copy omitted
+ * `drivesFor` / `drivesAgainst`, so the first `season.drivesFor += n` of every
+ * season ran against `undefined` and pinned the field at `NaN` for the rest of
+ * the year. Because every reader took it as `drivesFor || 0`, the NaN was
+ * laundered into a zero denominator rather than raised, and the approximate-value
+ * authority silently lost the whole offensive side of the league (see
+ * `src/stats/approximateValue.js`). Declared once, it cannot drift again.
+ *
+ * @param {number} year — the season this record covers
+ */
+export function createTeamSeasonState(year) {
+  return {
+    year,
+    wins: 0,
+    losses: 0,
+    ties: 0,
+    pointsFor: 0,
+    pointsAgainst: 0,
+    yardsFor: 0,
+    yardsAgainst: 0,
+    drivesFor: 0,
+    drivesAgainst: 0,
+    turnovers: 0,
+    weekResults: []
+  };
+}
+
 const TEAM_ID_ALIASES = {
   JAC: "JAX",
   LA: "LAR",
@@ -222,20 +253,7 @@ function createTeam(meta, year, randomizedIdentities = null) {
     conference: meta.conference,
     division: meta.division,
     salaryCap: NFL_STRUCTURE.salaryCap,
-    season: {
-      year,
-      wins: 0,
-      losses: 0,
-      ties: 0,
-      pointsFor: 0,
-      pointsAgainst: 0,
-      yardsFor: 0,
-      yardsAgainst: 0,
-      drivesFor: 0,
-      drivesAgainst: 0,
-      turnovers: 0,
-      weekResults: []
-    },
+    season: createTeamSeasonState(year),
     offenseRating: 60,
     defenseRating: 60,
     overallRating: 60,
@@ -426,18 +444,7 @@ export function recalculateAllTeamRatings(league) {
 export function resetTeamSeasonState(league, year) {
   league.year = year;
   for (const team of league.teams) {
-    team.season = {
-      year,
-      wins: 0,
-      losses: 0,
-      ties: 0,
-      pointsFor: 0,
-      pointsAgainst: 0,
-      yardsFor: 0,
-      yardsAgainst: 0,
-      turnovers: 0,
-      weekResults: []
-    };
+    team.season = createTeamSeasonState(year);
     team.playoffSeed = null;
   }
 }

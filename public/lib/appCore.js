@@ -4,6 +4,7 @@ import { actionCoordinator } from "./actionCoordinator.js";
 import { getClientDiagnosticsSnapshot, recordClientDiagnostic, subscribeClientDiagnostics } from "./clientDiagnostics.js";
 import { franchiseScopeFromDashboard, franchiseStorageKey } from "./franchiseScope.js";
 import { buildMentorshipBadge } from "./engagementFeatures.js";
+import { orientWinnerFirst } from "./scoreline.js";
 
 export function escapeHtml(value) {
   return String(value)
@@ -1084,7 +1085,7 @@ export function formatTransactionDetails(entry) {
   if (entry.type === "owner-update") return `ticket ${d.ticketPrice || "-"} | staff budget ${fmtMoney(d.staffBudget || 0)}`;
   if (entry.type === "practice-squad-move") return `${d.from || "active"} -> ${d.to || "active"}`;
   if (entry.type === "retirement-override") return `team ${teamCode(d.teamId || "FA")} | min win ${Math.round((d.minWinningPct || 0.55) * 100)}%`;
-  if (entry.type === "championship") return `beat ${teamCode(d.runnerUp || "-")} | ${d.score || ""}`;
+  if (entry.type === "championship") return `beat ${teamCode(d.runnerUp || "-")} | ${orientWinnerFirst(d.score || "")}`;
   const text = JSON.stringify(d);
   return text.length > 120 ? `${text.slice(0, 117)}...` : text;
 }

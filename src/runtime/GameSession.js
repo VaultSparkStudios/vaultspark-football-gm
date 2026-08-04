@@ -63,6 +63,7 @@ import { runPlayoffsAndSuperBowl, sortStandings } from "../engine/seasonSimulato
 import { simulateRegularSeasonWeek } from "../engine/weeklySimulator.js";
 import { StatBook } from "../stats/statBook.js";
 import { DEFENSIVE_AV_POSITIONS } from "../stats/approximateValue.js";
+import { championScoreline } from "../stats/scoreline.js";
 import { topGamePerformer } from "../stats/gameImpact.js";
 import {
   applySeasonRealismCalibration,
@@ -1537,7 +1538,7 @@ function buildSuperBowlAwardSummary(session, playoffResult) {
     return {
       championTeamId,
       runnerUpTeamId: playoffResult?.superBowl?.runnerUpTeamId || null,
-      finalScore: playoffResult?.superBowl ? `${playoffResult.superBowl.homeScore}-${playoffResult.superBowl.awayScore}` : "-",
+      finalScore: championScoreline(playoffResult?.superBowl),
       MVP: null,
       pivotalMoment: ""
     };
@@ -1558,7 +1559,7 @@ function buildSuperBowlAwardSummary(session, playoffResult) {
   return {
     championTeamId,
     runnerUpTeamId: playoffResult?.superBowl?.runnerUpTeamId || null,
-    finalScore: `${playoffResult?.superBowl?.homeScore || 0}-${playoffResult?.superBowl?.awayScore || 0}`,
+    finalScore: championScoreline(playoffResult?.superBowl),
     MVP: mvp
       ? {
           playerId: mvp.playerId,
@@ -1574,6 +1575,21 @@ function buildSuperBowlAwardSummary(session, playoffResult) {
   };
 }
 
+/**
+ * The earliest season this player has a stat record for, or null if he has never
+ * recorded one. Rookie-of-the-Year eligibility derives from this rather than
+ * from a season counter that is advanced at a different point in the calendar.
+ */
+function firstRecordedSeason(player) {
+  let earliest = null;
+  for (const key of Object.keys(player?.seasonStats || {})) {
+    const seasonYear = Number(key);
+    if (!Number.isFinite(seasonYear)) continue;
+    if (earliest === null || seasonYear < earliest) earliest = seasonYear;
+  }
+  return earliest;
+}
+
 function estimateAwards(session, year, playoffResult = null) {
   const seasonType = "regular";
   const passing = session.statBook.getPlayerSeasonTable("passing", { year, seasonType });
@@ -1583,8 +1599,16 @@ function estimateAwards(session, year, playoffResult = null) {
   const defense = session.statBook.getPlayerSeasonTable("defense", { year, seasonType });
   const kicking = session.statBook.getPlayerSeasonTable("kicking", { year, seasonType });
   const punting = session.statBook.getPlayerSeasonTable("punting", { year, seasonType });
+  // S71: a rookie is someone whose first recorded season IS this one. The old
+  // test was `seasonsPlayed <= 1`, but `seasonsPlayed` is incremented in the
+  // offseason, so at ballot time a genuine rookie sits at 0 and a second-year
+  // player sits at 1 — the filter admitted both. The measured consequence was
+  // that the league MVP also won Offensive Rookie of the Year in 7 of 8 seasons.
+  // Deriving eligibility from the stat record instead of a counter cannot drift.
   const rookies = new Set(
-    session.league.players.filter((player) => player.seasonsPlayed <= 1 && player.status === "active").map((p) => p.id)
+    session.league.players
+      .filter((player) => player.status === "active" && firstRecordedSeason(player) === year)
+      .map((p) => p.id)
   );
   // MVP/OPOY/ROY are skill-position awards: an OL who recorded a single catch
   // must not enter this pool carrying blocking-derived AV (OL are honored via
@@ -4927,7 +4951,7 @@ export class GameSession {
         year: this.currentYear,
         championTeamId: playoffResult.superBowl.championTeamId,
         runnerUpTeamId: playoffResult.superBowl.runnerUpTeamId,
-        score: `${playoffResult.superBowl.homeScore}-${playoffResult.superBowl.awayScore}`
+        score: championScoreline(playoffResult.superBowl)
       });
       // Milestone celebrations (S62): titles, playoff wins, and eliminations
       // announce themselves through the inbox instead of dying in a table.
@@ -4983,7 +5007,7 @@ export class GameSession {
         teamId: playoffResult.superBowl.championTeamId,
         details: {
           runnerUp: playoffResult.superBowl.runnerUpTeamId,
-          score: `${playoffResult.superBowl.homeScore}-${playoffResult.superBowl.awayScore}`
+          score: championScoreline(playoffResult.superBowl)
         }
       });
       this.lastAwardSummary = estimateAwards(this, this.currentYear, playoffResult);
@@ -6404,11 +6428,33 @@ export class GameSession {
       }));
   }
 
+  /**
+   * Rebuild the Hall of Fame from the retirement record.
+   *
+   * S71: this used to accumulate — anyone who ever cleared the threshold stayed
+   * in forever, and the threshold (240) sat barely above the score an entirely
+   * ordinary long career produced, because `hallOfFameLegacyScore` opens with
+   * `overall * 1.6`. Measured over ten simulated seasons, **24.5% of everyone
+   * who ever retired was a Hall of Famer** and the gallery was effectively a
+   * list of whichever position group the (then broken) value scale favoured.
+   *
+   * Scarcity is now structural rather than threshold-dependent. The Hall is
+   * rebuilt deterministically each refresh: candidates are scored, ranked, and
+   * admitted year by year under a class-size cap, so a candidate who misses his
+   * first ballot stays eligible and a backlog forms the way a real Hall's does.
+   * Rebuilding rather than accumulating also means a corrected value scale
+   * repairs the Hall of an existing save instead of leaving its mistakes frozen.
+   *
+   * Both bounds stay league settings, so a player who wants a crowded Hall can
+   * have one.
+   */
   refreshHallOfFame() {
     const settings = this.getLeagueSettings();
-    const inductionScoreMin = Number(settings.hallOfFameInductionScoreMin ?? 240);
+    const inductionScoreMin = Number(settings.hallOfFameInductionScoreMin ?? 450);
     const yearsRetiredMin = Number(settings.hallOfFameYearsRetiredMin ?? 0);
-    const existing = new Map((this.league.hallOfFame || []).map((entry) => [entry.playerId, entry]));
+    const maxClassSize = Math.max(1, Number(settings.hallOfFameMaxClassSize ?? 6));
+
+    const candidates = [];
     for (const player of this.league.retiredPlayers) {
       const retiredYear = Number(player.retiredYear || this.currentYear);
       if (this.currentYear - retiredYear < yearsRetiredMin) continue;
@@ -6425,28 +6471,59 @@ export class GameSession {
         (awardCounts.AllPro1 || 0) * 10 +
         championships * 8;
       if (inductionScore < inductionScoreMin) continue;
-      const timeline = this.getPlayerTimeline(player.id, { seasonType: "all" })?.timeline || [];
-      const teams = [...new Set(timeline.map((entry) => entry.teamId).filter(Boolean))];
-      existing.set(player.id, {
-        playerId: player.id,
-        player: player.name,
-        pos: player.position,
-        retiredYear,
-        legacyScore,
-        careerAv,
-        championships,
-        awardCounts,
-        teams,
-        retiredNumbers: teams.flatMap((teamId) =>
-          (teamById(this.league, teamId)?.retiredNumbers || [])
-            .filter((entry) => entry.playerId === player.id)
-            .map((entry) => ({ teamId, number: entry.number }))
-        )
-      });
+      candidates.push({ player, retiredYear, awardCounts, legacyScore, careerAv, championships, inductionScore });
     }
-    this.league.hallOfFame = [...existing.values()].sort(
-      (a, b) => (b.careerAv || 0) - (a.careerAv || 0) || (b.legacyScore || 0) - (a.legacyScore || 0)
+
+    // Best resume first; player id breaks ties so a replay is byte-identical.
+    candidates.sort(
+      (a, b) =>
+        b.inductionScore - a.inductionScore || String(a.player.id).localeCompare(String(b.player.id))
     );
+
+    // Walk the ballots in order. Each year admits at most one class from the
+    // players who were already eligible that year.
+    const firstBallot = candidates.reduce(
+      (earliest, row) => Math.min(earliest, row.retiredYear + yearsRetiredMin),
+      this.currentYear
+    );
+    const admitted = [];
+    const pending = new Set(candidates);
+    for (let ballotYear = firstBallot; ballotYear <= this.currentYear; ballotYear += 1) {
+      let seats = maxClassSize;
+      for (const row of candidates) {
+        if (seats <= 0) break;
+        if (!pending.has(row)) continue;
+        if (row.retiredYear + yearsRetiredMin > ballotYear) continue;
+        pending.delete(row);
+        admitted.push({ ...row, classYear: ballotYear });
+        seats -= 1;
+      }
+    }
+
+    this.league.hallOfFame = admitted
+      .map(({ player, retiredYear, awardCounts, legacyScore, careerAv, championships, inductionScore, classYear }) => {
+        const timeline = this.getPlayerTimeline(player.id, { seasonType: "all" })?.timeline || [];
+        const teams = [...new Set(timeline.map((entry) => entry.teamId).filter(Boolean))];
+        return {
+          playerId: player.id,
+          player: player.name,
+          pos: player.position,
+          retiredYear,
+          classYear,
+          inductionScore: Number(inductionScore.toFixed(1)),
+          legacyScore,
+          careerAv,
+          championships,
+          awardCounts,
+          teams,
+          retiredNumbers: teams.flatMap((teamId) =>
+            (teamById(this.league, teamId)?.retiredNumbers || [])
+              .filter((entry) => entry.playerId === player.id)
+              .map((entry) => ({ teamId, number: entry.number }))
+          )
+        };
+      })
+      .sort((a, b) => (b.careerAv || 0) - (a.careerAv || 0) || (b.legacyScore || 0) - (a.legacyScore || 0));
     return this.league.hallOfFame;
   }
 
