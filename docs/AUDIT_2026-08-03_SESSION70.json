@@ -30,7 +30,7 @@
     "verdict": "NO-GO / HOLD for launch; GO for current-repo implementation. Production-parity promotion is ranked below because it is in-repo actionable.",
     "ci": "Session 69 receipts: Node 819/819, Playwright UI 33/33, responsive 65/65, visual 6/6, Pages build/smoke green.",
     "staging": "Verified independent staging authority at candidate 833779e with rollback receipt.",
-    "production": "Production healthy at c92e389; exact-candidate parity gate open (drift vs staging-verified 833779e).",
+    "production": "Production verified at exact candidate 870382c1dc17d80460c0bffdc83db41591d50f0e — parity gate closed this session.",
     "secrets": "cloudflare.deploy READY; cloudflare.dns READY; zoho.mail.admin MISSING — email receive/reply proof, SHA-bound founder approval, and lifecycle reconciliation remain independent human gates."
   },
   "gameLoopReview": {
@@ -345,7 +345,7 @@
           "recipe": "L2 plus automatic staging→production drift detection in doctor with age-bounded parity verdicts."
         }
       },
-      "executionEvidence": "Staging re-verified at candidate da716c4 (11/11 provenance, exact revision+artifact, rollback receipt). Production promotion rides the gated main push (deploy-pages workflow at the same SHA); post-deploy parity verification receipt recorded at closeout."
+      "executionEvidence": "COMPLETE: production serves exact candidate 870382c (provenance 8/8, fingerprint parity after S70 LF-normalization root fix); staging verified 11/11 at same SHA with rollback receipt; release truth reconciled — remaining blockers are only the human gates (email, founder approval, lifecycle). Bonus root fixes: pre-rebrand CI env shipped legacy canonicals since S25 (fixed); CRLF/LF artifact nondeterminism (fixed)."
     },
     {
       "rank": 9,

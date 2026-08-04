@@ -4,10 +4,10 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at c92e389384b9fa51e7b4e7af69887831b61d2fe8, and required edge headers verified; independent staging is exact and verified at 833779e836cb977d614033b74117956b68530816. Launch remains HOLD; independent gates are not collapsed.",
-  "nextMilestone": "Prove delivered and reply-capable on-domain email, promote the exact candidate to production, obtain SHA-bound founder approval, and reconcile authoritative lifecycle before any launch flip.",
+  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 870382c1dc17d80460c0bffdc83db41591d50f0e, required edge headers verified; evidence current through 2026-08-05T07:16:00.494Z. Launch remains HOLD; independent gates are not collapsed.",
+  "nextMilestone": "Verify an independent staging origin at the exact candidate revision, then prove production revision parity, delivered on-domain email, founder approval, and authoritative lifecycle before any launch flip.",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, exact-revision-mismatch, founder-approval-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
   "lastUpdated": "2026-08-04",
   "lifecycle": "deployed",
@@ -134,7 +134,7 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-31",
-  "lastVerificationAt": "2026-08-03",
+  "lastVerificationAt": "2026-08-04",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
@@ -194,16 +194,16 @@
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "afeebb18d8c11bd1f2c3c1617febefdf1cf36b99d3ab8251302708109a77a26c",
-    "checkedAt": "2026-08-03T23:14:17.080Z",
+    "receiptSha256": "7c68e6c88651f3f4df5264b44076f4a6ea98fb0c5ab6f875b2ce77d658a3981f",
+    "checkedAt": "2026-08-04T07:16:00.494Z",
     "evidenceWindow": {
-      "observedAt": "2026-08-03T23:14:17.080Z",
+      "observedAt": "2026-08-04T07:16:00.494Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-08-04T23:14:17.080Z",
+      "expiresAt": "2026-08-05T07:16:00.494Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "c92e389384b9fa51e7b4e7af69887831b61d2fe8",
+    "deployedRevision": "870382c1dc17d80460c0bffdc83db41591d50f0e",
     "routes": {
       "verified": true,
       "checked": 9
@@ -223,8 +223,8 @@
       "address": "football@playfranchisearchitect.com"
     },
     "exactRevision": {
-      "verified": false,
-      "expected": "833779e836cb977d614033b74117956b68530816"
+      "verified": true,
+      "expected": "870382c1dc17d80460c0bffdc83db41591d50f0e"
     },
     "independentStaging": {
       "verified": true
@@ -239,38 +239,37 @@
     "launchReady": false,
     "blockerCodes": [
       "email-delivery-unverified",
-      "exact-revision-mismatch",
       "founder-approval-unverified",
       "lifecycle-authority-unverified"
     ]
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "40c88bd690a2b45baec366953c9e5f0e608423911a7900b973319d722bbb6e72",
-    "sourceRevision": "6db15ce131d50043df79e98a8fa739c74e344331",
+    "receiptSha256": "fa1c725a86a904f209716661d8fdc7b0f59f0c73fe524e77a27fad3c38acb93a",
+    "sourceRevision": "870382c1dc17d80460c0bffdc83db41591d50f0e",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "be1ac67ec28588b9542ba30d54fd6252452afd5d075d867bed67b2ae80f3fa01",
+      "digest": "6427290f11af548c193f2e866f7e9c065839dc6a41f1e20cbc4eed6951946163",
       "files": 162,
       "exclusions": [
         "_health",
         "deploy-manifest.json"
       ]
     },
-    "deploymentId": "48db0777-292e-4d3d-87a7-a090a88cf55a",
+    "deploymentId": "166af0c2-fa57-48f9-8e62-2c886f747f93",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 11,
       "checksTotal": 11,
-      "checkedAt": "2026-08-04T06:59:09.767Z"
+      "checkedAt": "2026-08-04T07:08:50.139Z"
     },
     "rollback": {
-      "previousDeploymentId": "b5f13a02-1953-4394-a077-de1fe72513c9",
+      "previousDeploymentId": "48db0777-292e-4d3d-87a7-a090a88cf55a",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-04T06:59:09.768Z"
+    "observedAt": "2026-08-04T07:08:50.140Z"
   }
 }

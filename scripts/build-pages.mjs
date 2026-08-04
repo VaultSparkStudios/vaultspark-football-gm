@@ -77,9 +77,35 @@ async function ensureCleanDir(dir) {
   await fs.mkdir(dir, { recursive: true });
 }
 
+// Artifact determinism (S70): a Windows checkout carries CRLF text while CI's
+// Linux checkout carries LF, so byte-identical trees produced different
+// artifact fingerprints and production parity could never verify against a
+// locally built expectation. Every text asset is normalized to LF at copy
+// time, making the artifact platform-independent.
+const TEXT_EXTENSIONS = new Set([".html", ".js", ".mjs", ".css", ".json", ".svg", ".txt", ".xml", ".webmanifest", ".md"]);
+
+function isTextAsset(filePath) {
+  return TEXT_EXTENSIONS.has(path.extname(filePath).toLowerCase()) || path.basename(filePath) === "_headers";
+}
+
+async function copyFileNormalized(source, destination) {
+  if (!isTextAsset(source)) {
+    await fs.copyFile(source, destination);
+    return;
+  }
+  const content = await fs.readFile(source, "utf8");
+  await fs.writeFile(destination, content.replace(/\r\n/g, "\n"), "utf8");
+}
+
 async function copyDir(source, destination) {
   await fs.mkdir(destination, { recursive: true });
-  await fs.cp(source, destination, { recursive: true });
+  const entries = await fs.readdir(source, { withFileTypes: true });
+  for (const entry of entries) {
+    const from = path.join(source, entry.name);
+    const to = path.join(destination, entry.name);
+    if (entry.isDirectory()) await copyDir(from, to);
+    else if (entry.isFile()) await copyFileNormalized(from, to);
+  }
 }
 
 async function pathExists(targetPath) {
@@ -138,15 +164,16 @@ async function copyBrowserModules() {
     const relativePath = path.relative(srcDir, modulePath);
     const destination = path.join(destinationRoot, relativePath);
     await fs.mkdir(path.dirname(destination), { recursive: true });
-    await fs.copyFile(modulePath, destination);
+    await copyFileNormalized(modulePath, destination);
   }
 }
 
 function injectHtmlDefaults(html, pagePath) {
   const canonicalUrl = new URL(pagePath, canonicalBase).toString();
   // Served HTML carries no development comments (internal sprint annotations
-  // are for the source tree, not view-source on the product).
-  let next = html.replace(/<!--[\s\S]*?-->/g, "");
+  // are for the source tree, not view-source on the product), and is always
+  // LF-normalized so Windows and Linux builds emit identical bytes.
+  let next = html.replace(/\r\n/g, "\n").replace(/<!--[\s\S]*?-->/g, "");
   if (!next.includes("<base ")) {
     next = next.replace("<head>", `<head>\n    <base href=\"${assetBasePath}\" />`);
   }
