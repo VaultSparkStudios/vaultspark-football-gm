@@ -14,8 +14,8 @@
     "combinedPriority": 261.4,
     "topItem": "root-funnel-instant-play",
     "source": "live-code-audit + full public-website content pass",
-    "openItems": 2,
-    "completedItems": 10,
+    "openItems": 1,
+    "completedItems": 11,
     "priorityFormula": "Priority = axis-weighted Impact × Innovation / log2(EffortHours + 2); execution order below is token-efficiency-grouped by touched surface, not raw priority order.",
     "theme": "The simulation is deep and truthful, but the front door is inverted (the root URL is a save manager for visitors with no saves), the marketing surface makes claims the shipped client cannot back, the loop's three hottest actions are silent, and there is no meta-progression, no sound, and no cross-save trophy identity — all fixable zero-backend."
   },
@@ -458,7 +458,7 @@
       "priority": 12.6,
       "slug": "skill-cost-ledger-repair",
       "title": "The skill-cost ledger records again so token telemetry is measured, not heuristic",
-      "status": "open",
+      "status": "shipped",
       "premise": ".cache/skill-cost-ledger.ndjson's last entry is 2026-06-15 (Session 20) despite ~50 sessions since; context-meter --json reports ledgerEntries: 0 and confidence: heuristic, so per-skill token SLOs (like this audit's 60k budget) cannot be measured against actuals.",
       "evidence": [
         ".cache/skill-cost-ledger.ndjson tail — five S19/S20 rows, nothing after 2026-06-15",
@@ -479,7 +479,8 @@
           "effortHours": 2,
           "recipe": "L2 plus per-skill actual-vs-SLO deltas rendered in the closeout brief."
         }
-      }
+      },
+      "executionEvidence": "Premise refined: live ledger (.cache/skill-costs.jsonl, 608 rows, recording this session) was healthy; a dead legacy twin (skill-cost-ledger.ndjson, stale since S20) misled inspection and was retired. context-meter now carries a skillCostLedger heartbeat that self-announces staleness vs the session lock. Verified: heartbeat present/fresh this session."
     }
   ],
   "secondOrderCandidates": [

@@ -70,9 +70,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
-║     2,995 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,498 tok/turn  ·  cache 50%  ·  120 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     2,771 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,386 tok/turn  ·  cache 50%  ·  130 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -117,20 +117,8 @@
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
 ║  ✓ cache source: AUDIT_2026-08-03_SESSION70.md                   ║
 ║                                                                  ║
-║  #1 · FIRE · root-funnel-instant-play                            ║
-║  root-funnel-instant-play — State-branched home: no saves → her  ║
-║                                                                  ║
-║  #2 · FIRE · synth-audio-haptics-layer                           ║
-║  synth-audio-haptics-layer — 6-8 tone palette (advance tick, TD  ║
-║                                                                  ║
-║  #3 · FIRE · achievement-trophy-case                             ║
-║  achievement-trophy-case — achievements.js registry (~30, spann  ║
-║                                                                  ║
-║  #4 · FIRE · rival-gm-persona-memory                             ║
-║  rival-gm-persona-memory — rivalGmPersona engine module: determ  ║
-║                                                                  ║
-║  #5 · FIRE · reward-beats-hot-paths                              ║
-║  reward-beats-hot-paths — Three beats: (1) Week N Recap card in  ║
+║  #8 · HIGH · production-parity-promotion                         ║
+║  production-parity-promotion — Production promotion command mir  ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 

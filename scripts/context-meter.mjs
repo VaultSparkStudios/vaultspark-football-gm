@@ -111,6 +111,28 @@ function ledgerEntriesThisSession() {
   return out;
 }
 const ledger = ledgerEntriesThisSession();
+
+// --- Skill-cost telemetry heartbeat (S70). The live per-skill ledger is
+// .cache/skill-costs.jsonl; a dead-but-plausible legacy twin misled a live
+// audit into diagnosing telemetry as broken. Silent telemetry death now
+// self-announces: if the newest row predates the current session lock, the
+// meter says so instead of leaving a stale file to be discovered.
+function skillCostHeartbeat() {
+  const ledgerPath = path.join(ROOT, '.cache', 'skill-costs.jsonl');
+  const lockPath = path.join(ROOT, 'context', '.session-lock');
+  try {
+    const lines = fs.readFileSync(ledgerPath, 'utf8').trim().split('\n');
+    const newest = JSON.parse(lines[lines.length - 1]);
+    const newestTs = new Date(newest.ts || 0).getTime();
+    let lockTs = 0;
+    try { lockTs = fs.statSync(lockPath).mtimeMs; } catch { /* no lock yet */ }
+    const stale = lockTs > 0 && newestTs < lockTs;
+    return { present: true, rows: lines.length, newestAt: newest.ts || null, stale };
+  } catch {
+    return { present: false, rows: 0, newestAt: null, stale: true };
+  }
+}
+const skillCosts = skillCostHeartbeat();
 const ledgerTokens = ledger.reduce((a, e) =>
   a + (e.input || 0) + (e.output || 0) + (e.cache_read || 0) + (e.cache_create || 0), 0);
 const ledgerUSD = ledger.reduce((a, e) => a + costOfEntry(e), 0);
@@ -369,6 +391,9 @@ const out = {
   // Does NOT include the interactive Claude Code conversation — that's
   // outside our chokepoint and only the runtime can see it.
   measured: {
+    skillCostLedger: skillCosts.stale
+      ? { ...skillCosts, warning: 'skill-cost telemetry has not recorded since before this session — investigate scripts/lib/skill-cost-ledger.mjs wiring' }
+      : skillCosts,
     ledgerEntries: ledger.length,
     interactiveTurns: interactive.length,
     interactiveContextTokens: measuredContextTokens,
