@@ -71,8 +71,8 @@
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,771 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,386 tok/turn  ·  cache 50%  ·  130 turns to compact       ║
+║     2,734 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,367 tok/turn  ·  cache 50%  ·  132 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -91,7 +91,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⛔  Doctor        4/6 (67%)  ·  1 failing                        ║
+║  ⚠  Doctor        5/6 (83%)  ·  1 warn                           ║
 ║  ✓  Cost          Max flat-rate · $2.38/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -115,11 +115,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-08-03_SESSION70.md                   ║
-║                                                                  ║
-║  #8 · HIGH · production-parity-promotion                         ║
-║  production-parity-promotion — Production promotion command mir  ║
-║                                                                  ║
+║  ✓ queue exhausted · source: AUDIT_2026-08-03_SESSION70.md       ║
+║  Closed: 12 · Open: 0                                            ║
+║  Latest audit has no open ranked items; run /audit for a new li  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```

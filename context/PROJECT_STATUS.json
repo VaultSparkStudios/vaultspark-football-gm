@@ -115,20 +115,14 @@
   "silHealth": 846,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 1,
+    "blockingFailing": 0,
     "total": 6,
-    "failing": 1,
-    "score": 67,
+    "failing": 0,
+    "score": 83,
     "date": "2026-08-04",
-    "passing": 4,
+    "passing": 5,
     "warning": 1,
     "checks": [
-      {
-        "id": "lifecycle-public-status",
-        "status": "failing",
-        "blocking": true,
-        "detail": "public status preserves the evidence gate"
-      },
       {
         "id": "lifecycle-authoritative-registry",
         "status": "warning",
@@ -178,7 +172,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-08-03"
+      "lastChecked": "2026-08-04"
     }
   ],
   "lastSession": 69,
@@ -252,31 +246,31 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "8255058899858246f76ec3eeaadaaa0a488ca03617e42fcb15dc7e8cedd01ac8",
-    "sourceRevision": "833779e836cb977d614033b74117956b68530816",
+    "receiptSha256": "bab1ebb72396bce0b43a6455dfad8ed3861632bb965d9529264d7b3dcdd0f74e",
+    "sourceRevision": "da716c456fe3e634c95ee42bdef488d20f97433d",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "2a83b18b9cec635b2fd850327bc593b3e97e1974ab295fb21a4f4fa8038bf77f",
-      "files": 155,
+      "digest": "fd26a046ed35a6536ba22fa09b9749365d344f7247b080a2408107ff8d461dce",
+      "files": 162,
       "exclusions": [
         "_health",
         "deploy-manifest.json"
       ]
     },
-    "deploymentId": "c5af329b-ae2d-4fbd-9470-d513140088df",
+    "deploymentId": "b5f13a02-1953-4394-a077-de1fe72513c9",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 11,
       "checksTotal": 11,
-      "checkedAt": "2026-08-03T23:01:21.740Z"
+      "checkedAt": "2026-08-04T05:14:52.190Z"
     },
     "rollback": {
-      "previousDeploymentId": "0afb9434-6785-4ad8-af36-60ba957c6059",
+      "previousDeploymentId": "c5af329b-ae2d-4fbd-9470-d513140088df",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-03T23:01:21.740Z"
+    "observedAt": "2026-08-04T05:14:52.190Z"
   }
 }

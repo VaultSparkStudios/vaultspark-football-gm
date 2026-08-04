@@ -66,7 +66,13 @@ export function inspectLifecycleCoherence(root = process.cwd(), { registryPath =
     },
     {
       id: "public-status",
-      ok: expected !== "FORGE" || /before marking the project SPARKED/i.test(publicStatus),
+      // The evidence gate on the public page means: it still declares beta and
+      // never claims launch. It must NOT require internal lifecycle vocabulary
+      // (SPARKED/FORGE) — the S70 public-truth gate forbids exactly that leak.
+      ok:
+        expected !== "FORGE"
+        || (/open beta|public beta/i.test(publicStatus)
+          && !/launched|generally available|full release/i.test(publicStatus)),
       blocking: true,
       detail: "public status preserves the evidence gate"
     },

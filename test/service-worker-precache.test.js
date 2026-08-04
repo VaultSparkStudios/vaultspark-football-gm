@@ -25,6 +25,7 @@ async function fixtureMount() {
   await fs.mkdir(path.join(dir, "lib"));
   await fs.writeFile(path.join(dir, "lib", "core.js"), "export const x = 1;");
   await fs.writeFile(path.join(dir, "styles.css"), ":root{}");
+  await fs.writeFile(path.join(dir, "styles.abc123def0.css"), ":root{}");
   await fs.writeFile(path.join(dir, "_health"), "{}");
   await fs.writeFile(path.join(dir, "deploy-manifest.json"), "{}");
   await fs.writeFile(path.join(dir, "_headers"), "X: y");
@@ -39,6 +40,8 @@ test("evidence and freshness surfaces are never precached", () => {
   assert.equal(shouldPrecache("lib/gameFlow.js"), true);
   assert.equal(shouldPrecache("src/runtime/GameSession.js"), true);
   assert.equal(shouldPrecache("photo.bin"), false, "unknown binaries stay out of the manifest");
+  assert.equal(shouldPrecache("styles.css"), false, "plain styles.css duplicates the hashed stylesheet (S70)");
+  assert.equal(shouldPrecache("styles.abc123def0.css"), true, "the hashed stylesheet is the one HTML references");
 });
 
 test("manifest is deterministic, content-versioned, and byte-accounted", async () => {
@@ -46,7 +49,8 @@ test("manifest is deterministic, content-versioned, and byte-accounted", async (
   const first = await buildPrecacheManifest(dir);
   const second = await buildPrecacheManifest(dir);
   assert.deepEqual(first, second, "same content, same manifest");
-  assert.equal(first.assetCount, 4, "html + 2 js + css");
+  assert.equal(first.assetCount, 4, "html + 2 js + hashed css (plain styles.css deduped)");
+  assert.ok(!first.assets.some((asset) => asset.url === "./styles.css"), "plain styles.css never precached twice");
   assert.ok(first.totalBytes > 0);
   assert.ok(first.assets.every((asset) => asset.url.startsWith("./")));
   assert.ok(!first.assets.some((asset) => asset.url.includes("_health")));
@@ -61,7 +65,9 @@ test("rendered worker is dependency-free with the right cache policy", async () 
   const manifest = await emitServiceWorker(dir);
   const source = await fs.readFile(path.join(dir, "sw.js"), "utf8");
   assert.match(source, new RegExp(`vsfgm-precache-${manifest.version}`));
-  assert.match(source, /cache\.addAll\(PRECACHE_URLS\)/, "install precaches the manifest");
+  assert.match(source, /Promise\.allSettled\(PRECACHE_URLS\.map/, "install caches each URL independently (S70: one 404 cannot kill offline)");
+  assert.match(source, /precache incomplete/, "failed precache URLs are logged, not swallowed");
+  assert.doesNotMatch(source, /cache\.addAll\(/, "atomic addAll retired — it silently disabled offline on any 404");
   assert.match(source, /caches\.delete\(name\)/, "activate swaps old caches atomically");
   assert.match(source, /\/api\\\//, "API routes are network-only");
   assert.match(source, /_health\$/, "health stays network-only");

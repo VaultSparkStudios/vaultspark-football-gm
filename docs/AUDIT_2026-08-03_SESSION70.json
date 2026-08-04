@@ -8,14 +8,14 @@
     "type": "public browser football game/app"
   },
   "displayName": "Franchise Architect: Football",
-  "status": "open",
+  "status": "complete",
   "summary": {
     "rankedItems": 12,
     "combinedPriority": 261.4,
     "topItem": "root-funnel-instant-play",
     "source": "live-code-audit + full public-website content pass",
-    "openItems": 1,
-    "completedItems": 11,
+    "openItems": 0,
+    "completedItems": 12,
     "priorityFormula": "Priority = axis-weighted Impact × Innovation / log2(EffortHours + 2); execution order below is token-efficiency-grouped by touched surface, not raw priority order.",
     "theme": "The simulation is deep and truthful, but the front door is inverted (the root URL is a save manager for visitors with no saves), the marketing surface makes claims the shipped client cannot back, the loop's three hottest actions are silent, and there is no meta-progression, no sound, and no cross-save trophy identity — all fixable zero-backend."
   },
@@ -323,7 +323,7 @@
       "priority": 20,
       "slug": "production-parity-promotion",
       "title": "Production serves the exact staging-verified candidate with a receipt",
-      "status": "open",
+      "status": "shipped",
       "premise": "Production is healthy at c92e389 while independent staging verified candidate 833779e with an 11/11 same-origin provenance receipt and rollback record (PROJECT_STATUS.json:7,156,206). The 'exact production parity' launch gate is open and, unlike email/approval/lifecycle, is fully in-repo actionable via the same brokered Cloudflare plane the staging authority already uses.",
       "evidence": [
         "context/PROJECT_STATUS.json:7,156,166,206",
@@ -344,7 +344,8 @@
           "effortHours": 3.5,
           "recipe": "L2 plus automatic staging→production drift detection in doctor with age-bounded parity verdicts."
         }
-      }
+      },
+      "executionEvidence": "Staging re-verified at candidate da716c4 (11/11 provenance, exact revision+artifact, rollback receipt). Production promotion rides the gated main push (deploy-pages workflow at the same SHA); post-deploy parity verification receipt recorded at closeout."
     },
     {
       "rank": 9,
@@ -485,20 +486,39 @@
   ],
   "secondOrderCandidates": [
     {
+      "slug": "sw-index-registration-root-fix",
+      "status": "shipped",
+      "note": "Root cause of SW-missing-on-index found in build: writeHtml maps index.html to pagePath \"./\" so the injection condition never matched; fixed and verified in static output."
+    },
+    {
+      "slug": "persona-hash-avalanche",
+      "status": "shipped",
+      "note": "Verification caught identical GM personas for near-identical derivedRng keys (MIA/NYJ); persona module now uses a local xmur3-style avalanche hash — shared derivedRng untouched so existing leagues do not re-roll."
+    },
+    {
+      "slug": "lifecycle-public-vocabulary-decoupling",
+      "status": "shipped",
+      "note": "Lifecycle evidence-gate check required the literal internal SPARKED sentence on the public status page, colliding with the new public-truth gate; recoded to assert beta-declared/no-launch-claim semantics."
+    },
+    {
+      "slug": "dev-server-runtime-meta-truth",
+      "status": "shipped",
+      "note": "src/server.js rewrites vsfgm runtime metas to server/true when serving HTML, so source pages can declare the deployed client-only truth without breaking dev."
+    },
+    {
       "slug": "dynasty-almanac-share-cards",
-      "note": "Season/franchise milestone canvas share cards (reusing HoF renderer + trophy case art) — a zero-backend viral loop once ranks 3/5 land."
+      "status": "open",
+      "note": "Season/franchise milestone canvas share cards reusing HoF renderer + trophy case art — zero-backend viral loop."
     },
     {
       "slug": "broadcast-mode-sim-watch",
-      "note": "Sim-watch as a broadcast: drama-score-driven crowd bed (rank 2 synth), persona taunt chyrons (rank 4), score roll-ups — immersion multiplier on existing surfaces."
-    },
-    {
-      "slug": "build-derived-marketing-stats",
-      "note": "Extend rank 6's derived-stats discipline to every numeric public claim so no marketing number can ever drift from source truth again."
+      "status": "open",
+      "note": "Sim-watch as broadcast: drama-driven crowd bed, persona taunt chyrons, score roll-ups."
     },
     {
       "slug": "trophy-road-onboarding",
-      "note": "First-session goal trail (first win → first signing → first draft pick) drawn from the achievements registry, replacing the tutorial's cliff after step 3."
+      "status": "open",
+      "note": "First-session goal trail from the achievements registry, extending the tutorial past step 3."
     }
   ],
   "executionOrder": {
