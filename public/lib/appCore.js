@@ -1203,8 +1203,12 @@ export function syncTeamSelects() {
 export function updateTopMeta() {
   const d = state.dashboard;
   if (!d) return;
+  const settings = state.leagueSettings || d.settings || {};
+  const difficulty = settings.difficultyPreset && settings.difficultyPreset !== "standard"
+    ? ` | ${settings.difficultyPreset}${settings.adaptiveDifficulty ? " (adaptive)" : ""}`
+    : settings.adaptiveDifficulty ? " | adaptive" : "";
   document.getElementById("topMetaText").textContent =
-    `${d.currentYear} W${d.currentWeek} | ${d.phase} | Team: ${d.controlledTeam?.abbrev || d.controlledTeamId}`;
+    `${d.currentYear} W${d.currentWeek} | ${d.phase} | Team: ${d.controlledTeam?.abbrev || d.controlledTeamId}${difficulty}`;
   const stageChip = document.getElementById("stageChip");
   if (stageChip) {
     const draftStage = d.draft?.completed === false ? `Draft Pick ${d.draft.currentPick}` : null;

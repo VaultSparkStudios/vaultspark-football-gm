@@ -6,6 +6,8 @@
  * Items attach to league.newsLog (rolling 50-item window, newest first).
  */
 
+import { getRivalGmPersona, recordRivalGmMemory } from "./rivalGmPersona.js";
+
 const MAX_NEWS_LOG = 50;
 
 export function initNewsLog(league) {
@@ -242,6 +244,13 @@ export function reportFreeAgencyOutbid(league, {
   losingYears, losingSalary, year, week
 }) {
   initNewsLog(league);
+  const winnerGm = getRivalGmPersona(league, winnerTeamId);
+  recordRivalGmMemory(league, winnerTeamId, {
+    type: "outbid-you",
+    year,
+    week,
+    summary: `${winnerGm.name} outbid you for ${playerName}.`
+  });
   push(league, {
     type: "fa-outbid",
     year,
@@ -249,7 +258,7 @@ export function reportFreeAgencyOutbid(league, {
     teamIds: [winnerTeamId],
     playerIds: playerId ? [playerId] : [],
     headline: `Outbid: ${playerName} signs with ${winnerTeamId}`,
-    detail: `Your offer (${losingYears}yr / $${Math.round(losingSalary / 1_000_000)}M) lost to ${winnerTeamId}'s ${winningYears}yr / $${Math.round(winningSalary / 1_000_000)}M. The market moved without you.`
+    detail: `Your offer (${losingYears}yr / $${Math.round(losingSalary / 1_000_000)}M) lost to ${winnerTeamId}'s ${winningYears}yr / $${Math.round(winningSalary / 1_000_000)}M — ${winnerGm.name} worked the phones while you slept on it.`
   });
   return league.newsLog[0];
 }

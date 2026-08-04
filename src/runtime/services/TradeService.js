@@ -5,6 +5,7 @@
  * refusal pipeline succeeds, then refreshes every derived index exactly once.
  */
 import { buildTradePlan } from "./tradePlan.js";
+import { recordRivalGmMemory } from "../../engine/rivalGmPersona.js";
 
 export class TradeService {
   constructor(session, strategies = {}) {
@@ -235,6 +236,18 @@ export class TradeService {
       teamB,
       playersMoved: fromA.length + fromB.length
     });
+    // Rival GM memory (S70): a completed trade with the controlled franchise
+    // becomes part of the rival GM's bounded, receipted history.
+    const controlledId = this.session.controlledTeamId;
+    if (controlledId && (teamA === controlledId || teamB === controlledId)) {
+      const rivalId = teamA === controlledId ? teamB : teamA;
+      recordRivalGmMemory(this.session.league, rivalId, {
+        type: "trade-with-you",
+        year: this.session.currentYear,
+        week: this.session.currentWeek,
+        summary: `Completed a ${fromA.length + fromB.length}-player trade with ${controlledId}.`
+      });
+    }
     this.strategies.ensureDepthCharts(this.session.league);
     this.strategies.recalculateAllTeamRatings(this.session.league);
     this.session.statBook.reindexPlayers();

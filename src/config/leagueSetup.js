@@ -39,6 +39,7 @@ export const DEFAULT_LEAGUE_SETTINGS = {
   franchiseArchetype: "balanced",
   rulesPreset: "standard",
   difficultyPreset: "standard",
+  adaptiveDifficulty: false,
   challengeMode: "open",
   scoutingWeeklyPoints: 12,
   ownerPatience: 0.55,
@@ -372,6 +373,7 @@ export function resolveLeagueSettings(patch = {}, current = DEFAULT_LEAGUE_SETTI
   next.difficultyPreset = difficultyPreset;
   next.challengeMode = challengeMode;
 
+  if (patch.adaptiveDifficulty != null) next.adaptiveDifficulty = normalizeBool(patch.adaptiveDifficulty, next.adaptiveDifficulty);
   if (patch.allowInjuries != null) next.allowInjuries = normalizeBool(patch.allowInjuries, next.allowInjuries);
   if (patch.autoProgressOffseason != null) {
     next.autoProgressOffseason = normalizeBool(patch.autoProgressOffseason, next.autoProgressOffseason);

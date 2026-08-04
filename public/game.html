@@ -1140,6 +1140,15 @@
               <label><input id="settingRetiredNumberRequireHallOfFame" type="checkbox" /> Retired Numbers Require Hall Of Fame</label>
             </div>
             <div class="inline-form-grid">
+              <label>Difficulty
+                <select id="settingDifficultyPreset">
+                  <option value="relaxed">Relaxed</option>
+                  <option value="standard" selected>Standard</option>
+                  <option value="hard">Hard</option>
+                  <option value="brutal">Brutal</option>
+                </select>
+              </label>
+              <label><input id="settingAdaptiveDifficulty" type="checkbox" /> Adaptive League (bounded, announced)</label>
               <label>Injury Rate Multiplier <input id="settingInjuryRate" type="number" step="0.1" value="1" /></label>
               <label>Cap Growth Rate <input id="settingCapGrowth" type="number" step="0.005" value="0.045" /></label>
               <label>CPU Trade Aggression <input id="settingTradeAggression" type="number" step="0.05" value="0.5" /></label>

@@ -41,6 +41,7 @@ export const SHARDS = {
     "test/authority-epoch.test.js",
     "test/browser-memory-scope.test.js",
     "test/reward-layer.test.js",
+    "test/rival-gm-persona.test.js",
     "test/beta-feedback.test.js",
     "test/contextual-feedback.test.js",
     "test/box-score-presentation.test.js",

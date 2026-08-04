@@ -5037,3 +5037,18 @@ html[data-theme="light"] .bg-layer {
   padding: 3px 8px;
   min-height: 0;
 }
+
+/* ── Rival GM persona surfaces (S70) ── */
+.rci-gm-line {
+  font-size: 12px;
+  color: var(--muted, #7a8299);
+  margin: 4px 0 6px;
+  padding-left: 8px;
+  border-left: 2px solid var(--accent2, #7c5cbf);
+  line-height: 1.4;
+}
+.rci-gm-line em { color: var(--ink, #e8ecf4); font-style: italic; }
+.inbound-offer-gm {
+  padding-left: 8px;
+  border-left: 2px solid var(--accent2, #7c5cbf);
+}

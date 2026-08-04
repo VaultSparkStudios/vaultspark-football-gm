@@ -17,6 +17,8 @@
  *   archetype and need — no hidden bonuses, no outcome prediction.
  */
 
+import { getRivalGmPersona, getRivalGmMemory, personaGrudgeLine, recordRivalGmMemory } from "./rivalGmPersona.js";
+
 const OFFER_LOG_LIMIT = 20;
 const MAX_PENDING = 2;
 const DEADLINE_START = 9;
@@ -207,6 +209,8 @@ export function generateInboundTradeOffers(session) {
       }),
       rationale: archetypeRationale(rival, target, needSeverity),
       archetype: rival.strategyProfile || "balanced",
+      gmName: getRivalGmPersona(session.league, rival.id).name,
+      gmLine: personaGrudgeLine(getRivalGmPersona(session.league, rival.id), getRivalGmMemory(session.league, rival.id)),
       deadlineWindow: deadline,
       expiresWeek: Math.min(18, week + (deadline ? 1 : 2)),
       status: "pending",
@@ -239,6 +243,12 @@ export function respondToInboundTradeOffer(session, { offerId, action } = {}) {
     offer.status = "declined";
     offer.resolvedWeek = session.currentWeek;
     offer.resolution = "Front office declined the offer.";
+    recordRivalGmMemory(session.league, offer.fromTeamId, {
+      type: "declined-inbound",
+      year: session.currentYear,
+      week: session.currentWeek,
+      summary: `Offer for ${offer.requestedPlayers?.[0]?.name || "a player"} was declined.`
+    });
     return { ok: true, offer };
   }
   if (action === "counter") {

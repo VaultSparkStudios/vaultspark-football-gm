@@ -1408,6 +1408,11 @@ function bindEvents() {
 
   document.getElementById("saveSettingsBtn").addEventListener("click", () =>
     runAction(async () => {
+      // A difficulty-preset change must own its levers: when the preset is
+      // switching, the raw multiplier inputs (still showing old-preset values)
+      // are omitted so the new preset's patch applies unclobbered.
+      const nextPreset = document.getElementById("settingDifficultyPreset")?.value;
+      const presetChanging = nextPreset && nextPreset !== state.leagueSettings?.difficultyPreset;
       const payload = await api("/api/settings", {
         method: "POST",
         body: {
@@ -1425,9 +1430,11 @@ function bindEvents() {
           hallOfFameYearsRetiredMin: Number(document.getElementById("settingHallOfFameYearsRetiredMin").value || 0),
           retiredNumberCareerAvMin: Number(document.getElementById("settingRetiredNumberCareerAvMin").value || 0),
           eraProfile: document.getElementById("settingEraProfile").value,
-          injuryRateMultiplier: Number(document.getElementById("settingInjuryRate").value || 1),
+          difficultyPreset: nextPreset || undefined,
+          adaptiveDifficulty: document.getElementById("settingAdaptiveDifficulty")?.checked ?? undefined,
+          injuryRateMultiplier: presetChanging ? undefined : Number(document.getElementById("settingInjuryRate").value || 1),
           capGrowthRate: Number(document.getElementById("settingCapGrowth").value || 0.045),
-          cpuTradeAggression: Number(document.getElementById("settingTradeAggression").value || 0.5)
+          cpuTradeAggression: presetChanging ? undefined : Number(document.getElementById("settingTradeAggression").value || 0.5)
         }
       });
       state.leagueSettings = payload.settings || state.leagueSettings;

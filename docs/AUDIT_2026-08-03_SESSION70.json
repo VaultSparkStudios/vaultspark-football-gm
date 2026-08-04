@@ -14,8 +14,8 @@
     "combinedPriority": 261.4,
     "topItem": "root-funnel-instant-play",
     "source": "live-code-audit + full public-website content pass",
-    "openItems": 6,
-    "completedItems": 6,
+    "openItems": 4,
+    "completedItems": 8,
     "priorityFormula": "Priority = axis-weighted Impact × Innovation / log2(EffortHours + 2); execution order below is token-efficiency-grouped by touched surface, not raw priority order.",
     "theme": "The simulation is deep and truthful, but the front door is inverted (the root URL is a save manager for visitors with no saves), the marketing surface makes claims the shipped client cannot back, the loop's three hottest actions are silent, and there is no meta-progression, no sound, and no cross-save trophy identity — all fixable zero-backend."
   },
@@ -187,7 +187,7 @@
       "priority": 25.6,
       "slug": "rival-gm-persona-memory",
       "title": "Named rival GMs with persistent memory, grudges, and learnable tendencies",
-      "status": "open",
+      "status": "shipped",
       "premise": "Rival intelligence is a team-level archetype string: rivalTradeOffers.js:209 sets archetype from rival.strategyProfile || 'balanced'; aiTeamStrategy.js:18,56 hold preset weight tables; playerAgentAI.js:69-76 gives agents personalities but rival GMs have no names, no memory of past dealings with the player, and no tendency history to learn. Trade rationale text (rivalTradeOffers.js:118) cannot reference shared history because none is persisted.",
       "evidence": [
         "src/engine/rivalTradeOffers.js:83,118,209",
@@ -208,7 +208,8 @@
           "effortHours": 8,
           "recipe": "L2 plus rival GM firings/successions driven by existing owner-patience receipts (new persona inherits the ledger as 'inherited grudges') and a league-wide GM rumor mill inbox item."
         }
-      }
+      },
+      "executionEvidence": "Deterministic named personas + bounded receipted grudge ledger via TradeService/decline/outbid seams; surfaced on offers, intel card, outbid news; 6/6 tests"
     },
     {
       "rank": 5,
@@ -354,7 +355,7 @@
       "priority": 19.9,
       "slug": "living-difficulty-controls",
       "title": "Difficulty is visible, changeable mid-game, and optionally adaptive",
-      "status": "open",
+      "status": "shipped",
       "premise": "The 4 difficulty presets (relaxed/standard/hard/brutal, leagueSetup.js:192-237) are applied once at league creation (applyLeagueSetup.js:124,135) and never surfaced again; the only in-game AI knob is a raw 'CPU Trade Aggression' number input (game.html:1131). No code adapts CPU behavior to player performance. Note: ownerPatience IS live (applyLeagueSetup.js:63-64 → GameSession.js:250); this item surfaces and re-patches it rather than 'fixing' it.",
       "evidence": [
         "src/config/leagueSetup.js:192-237; src/runtime/applyLeagueSetup.js:63-64,124,135",
@@ -375,7 +376,8 @@
           "effortHours": 6,
           "recipe": "L2 plus per-lever custom difficulty editor with derived 'league forecast' preview of chosen settings."
         }
-      }
+      },
+      "executionEvidence": "Mid-game preset re-patch via one GameSession seam (both runtimes), receipted news + owner patience; opt-in bounded announced adaptive mode; top-meta badge"
     },
     {
       "rank": 10,

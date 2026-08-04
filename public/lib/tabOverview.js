@@ -702,9 +702,11 @@ async function renderRivalryStrip(schedule, controlledTeamId) {
     const intelContainer = document.getElementById("rivalCoachIntelContainer");
     if (intelContainer) {
       intelContainer.hidden = false;
+      const gm = rival?.gm || null;
       intelContainer.innerHTML = `
         <div class="rival-coach-intel">
           <div class="rci-header">${intel.icon} Coach Intel: ${escapeHtml(rival?.name || teamCode(opponentId))} <span class="rci-archetype">[${escapeHtml(intel.archetype)}]</span></div>
+          ${gm?.persona ? `<div class="rci-gm-line"><strong>${escapeHtml(gm.persona.name)}</strong>, GM — ${escapeHtml(gm.persona.traits?.join("; ") || "")}${gm.memory?.length ? `<br /><em>${escapeHtml(gm.line)}</em>` : ""}</div>` : ""}
           <ul class="rci-tendencies">
             ${intel.tendencies.map((t) => `<li>${escapeHtml(t)}</li>`).join("")}
           </ul>

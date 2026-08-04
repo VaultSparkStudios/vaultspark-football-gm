@@ -103,6 +103,7 @@ import {
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
 import { buildGmReputationProfile, computeGmLegacyScore, getGmBenefits, getGmPersonaArc, updateGmLegacyAfterSeason, initGmLegacy } from "../engine/gmLegacyScore.js";
+import { applyAdaptiveDifficultyAfterSeason } from "../engine/adaptiveDifficulty.js";
 import { getCapAlerts } from "../engine/capAlerts.js";
 import { getStartScenarioPlan, validateStartScenario } from "../../public/lib/startScenarioContract.js";
 import { generatePressConference } from "../engine/pressConference.js";
@@ -2061,10 +2062,34 @@ export class GameSession {
   }
 
   updateLeagueSettings(patch = {}) {
-    const next = resolveLeagueSettings(patch, this.getLeagueSettings());
+    const previous = this.getLeagueSettings();
+    const next = resolveLeagueSettings(patch, previous);
     this.league.settings = next;
     if (!this.league.scouting) this.league.scouting = { teams: {}, weeklyPoints: next.scoutingWeeklyPoints };
     this.league.scouting.weeklyPoints = next.scoutingWeeklyPoints;
+    // Mid-game difficulty change (S70): re-materialize the one preset lever
+    // that lives outside league.settings (the controlled owner's patience),
+    // and announce the shift as a receipted league event — never silently.
+    if (patch.difficultyPreset != null && next.difficultyPreset !== previous.difficultyPreset) {
+      const team = this.league.teams?.find((row) => row.id === this.controlledTeamId);
+      if (team?.owner) {
+        team.owner.patience = clamp(Number(next.ownerPatience ?? 0.55), 0.05, 0.95);
+      }
+      this.logNews(`Front office difficulty set to ${next.difficultyPreset}`, {
+        kind: "difficulty-change",
+        from: previous.difficultyPreset,
+        to: next.difficultyPreset,
+        ownerPatience: team?.owner?.patience ?? null
+      });
+    }
+    if (patch.adaptiveDifficulty != null && next.adaptiveDifficulty !== previous.adaptiveDifficulty) {
+      this.logNews(
+        next.adaptiveDifficulty
+          ? "Adaptive League enabled — rival pressure will track your results within bounded bands"
+          : "Adaptive League disabled — difficulty levers hold at their preset values",
+        { kind: "adaptive-difficulty-toggle", enabled: next.adaptiveDifficulty }
+      );
+    }
     return next;
   }
 
@@ -4966,6 +4991,8 @@ export class GameSession {
       // GM Legacy Score — update after each season
       if (this.controlledTeamId) {
         updateGmLegacyAfterSeason(this.league, this.controlledTeamId, this.currentYear);
+        // Adaptive League (S70): opt-in, bounded, announced; no-op when off.
+        applyAdaptiveDifficultyAfterSeason(this);
       }
       this.pendingSeasonWrap = {
         year: this.currentYear,

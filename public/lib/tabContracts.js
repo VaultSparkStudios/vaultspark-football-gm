@@ -705,6 +705,7 @@ export function renderInboundTradeOffers() {
           <strong>${escapeHtml(offer.fromTeamId)} want ${wanted}</strong>
           ${statusChip}
         </div>
+        ${offer.gmName ? `<p class="small inbound-offer-gm"><strong>${escapeHtml(offer.gmName)}</strong>, ${escapeHtml(offer.fromTeamId)} GM${offer.gmLine ? ` — ${escapeHtml(offer.gmLine)}` : ""}</p>` : ""}
         <p class="small">${escapeHtml(offer.rationale || "")}</p>
         <p class="small"><strong>Their package:</strong> ${given}</p>
         ${actions}

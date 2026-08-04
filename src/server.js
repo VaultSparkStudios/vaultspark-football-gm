@@ -30,6 +30,7 @@ import { runLeagueCombine, getCombineSummary } from "./engine/draftCombine.js";
 import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "./engine/playerAgentAI.js";
 import { getFanSentiment, fanApprovalLabel } from "./engine/fanSentiment.js";
 import { getMentorshipStatus, getMentorshipHistory } from "./engine/veteranMentorship.js";
+import { buildPersonaIntel } from "./engine/rivalGmPersona.js";
 import { authorizeCommand, TEAM_SCOPED_COMMANDS } from "./runtime/franchiseAuthority.js";
 import {
   startChallenge,
@@ -1221,9 +1222,7 @@ async function handleApi(req, res, url) {
       sendJson(res, 400, { ok: false, error: "Invalid JSON body." });
       return true;
     }
-    const settings = resolveLeagueSettings(body, session.getLeagueSettings());
-    session.league.settings = settings;
-    session.league.scouting.weeklyPoints = settings.scoutingWeeklyPoints;
+    const settings = session.updateLeagueSettings(body);
     sendJson(res, 200, { ok: true, settings, state: session.getDashboardState() });
     return true;
   }
@@ -2093,7 +2092,8 @@ async function handleApi(req, res, url) {
       name: [t.city, t.nickname].filter(Boolean).join(" ") || t.name || t.id,
       abbrev: t.abbrev || t.id,
       ovr: t.overallRating || 75,
-      archetype: deriveGmArchetype(t)
+      archetype: deriveGmArchetype(t),
+      gm: buildPersonaIntel(session.league, t.id)
     }));
     sendJson(res, 200, { ok: true, archetypes });
     return true;

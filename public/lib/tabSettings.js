@@ -453,6 +453,10 @@ export function applySettingsControls() {
   if (retiredOnly) retiredOnly.checked = settings.retiredNumberRequireRetiredPlayer !== false;
   if (hallRequired) hallRequired.checked = settings.retiredNumberRequireHallOfFame === true;
   if (era) era.value = settings.eraProfile || "modern";
+  const difficulty = document.getElementById("settingDifficultyPreset");
+  if (difficulty) difficulty.value = settings.difficultyPreset || "standard";
+  const adaptive = document.getElementById("settingAdaptiveDifficulty");
+  if (adaptive) adaptive.checked = settings.adaptiveDifficulty === true;
   document.getElementById("settingInjuryRate").value = settings.injuryRateMultiplier ?? 1;
   document.getElementById("settingCapGrowth").value = settings.capGrowthRate ?? 0.045;
   document.getElementById("settingTradeAggression").value = settings.cpuTradeAggression ?? 0.5;

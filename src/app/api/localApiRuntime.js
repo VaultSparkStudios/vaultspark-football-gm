@@ -22,6 +22,7 @@ import { authorizeCommand } from "../../runtime/franchiseAuthority.js";
 import { handleArchitectThesisRequest } from "../../runtime/handlers/architectThesisHandler.js";
 import { handleTradeOffersRequest } from "../../runtime/handlers/tradeOffersHandler.js";
 import { handleFranchiseMomentRequest } from "../../runtime/handlers/franchiseMomentHandler.js";
+import { buildPersonaIntel } from "../../engine/rivalGmPersona.js";
 import {
   createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
   lockGate, openGate, applyIntents, recordAdvance, lobbyStatus,
@@ -1048,9 +1049,7 @@ export function createLocalApiRuntime({
       }
 
       if (method === "POST" && pathname === "/api/settings") {
-        const settings = resolveLeagueSettings(body || {}, session.getLeagueSettings());
-        session.league.settings = settings;
-        session.league.scouting.weeklyPoints = settings.scoutingWeeklyPoints;
+        const settings = session.updateLeagueSettings(body || {});
         return finish(jsonResponse(200, { ok: true, settings, state: getAugmentedState(session) }));
       }
 
@@ -1709,7 +1708,8 @@ export function createLocalApiRuntime({
           name: [t.city, t.nickname].filter(Boolean).join(" ") || t.name || t.id,
           abbrev: t.abbrev || t.id,
           ovr: t.overallRating || 75,
-          archetype: _deriveGmArchetype(t)
+          archetype: _deriveGmArchetype(t),
+          gm: buildPersonaIntel(session.league, t.id)
         }));
         return finish(jsonResponse(200, { ok: true, archetypes }));
       }

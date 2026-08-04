@@ -50,12 +50,12 @@ Combined priority: **261.4**.
 | root-funnel-instant-play | shipped | One-click instant start + quick-start cards create leagues; state-branched hero; truthful runtime copy; setup-funnel.spec 3/3 |
 | synth-audio-haptics-layer | shipped | WebAudio palette + haptics + persisted toggles + reduced-motion completeness; observability gate satisfied |
 | achievement-trophy-case | shipped | 29-achievement cross-save registry + trophy case UI + unlock toasts + share text; registry hygiene test green |
-| rival-gm-persona-memory | open | — |
+| rival-gm-persona-memory | shipped | Deterministic named personas + bounded receipted grudge ledger via TradeService/decline/outbid seams; surfaced on offers, intel card, outbid news; 6/6 tests |
 | reward-beats-hot-paths | shipped | Week recap + draft verdict + trade verdict beats live; mentorship badge wired; reward-layer.test 9/9; reward-beats.spec 2/2 |
 | public-truth-and-privacy-pass | shipped | check-public-truth gate wired into build; cover.png generated; false claims fixed; internal vocab removed; comments stripped from served HTML |
 | indexeddb-persistence-promotion | open | — |
 | production-parity-promotion | open | — |
-| living-difficulty-controls | open | — |
+| living-difficulty-controls | shipped | Mid-game preset re-patch via one GameSession seam (both runtimes), receipted news + owner patience; opt-in bounded announced adaptive mode; top-meta badge |
 | tab-code-splitting-sw-hardening | open | — |
 | website-ia-consolidation | shipped | status+changelog merged with dated notes; ip merged into terms; redirect stubs; sitemap lastmod; real 404; unified footers; compliance 12/12 |
 | skill-cost-ledger-repair | open | — |
