@@ -1,4 +1,9 @@
 import { createBrowserSaveStore } from "../../adapters/persistence/browserSaveStore.js";
+import {
+  createIndexedDbBrowserStore,
+  isIndexedDbAvailable,
+  migrateLocalStorageToIndexedDb
+} from "../../adapters/persistence/indexedDbBrowserStore.js";
 import { createPersistenceDescriptor } from "../../adapters/persistence/saveStoreShared.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "../../config/leagueSetup.js";
 import { createLeagueBase } from "../../domain/teamFactory.js";
@@ -242,14 +247,21 @@ function toSetupTeamIdentity(team) {
 
 export function createLocalApiRuntime({
   storage,
+  saveStore: saveStoreOverride = null,
   now = () => Date.now(),
   currentYear = new Date().getFullYear(),
   scheduler = (fn) => setTimeout(fn, 0)
 } = {}) {
-  const saveStore = createBrowserSaveStore({
-    storage,
-    now: () => new Date(now()).toISOString()
-  });
+  let saveStore;
+  if (saveStoreOverride) {
+    saveStore = saveStoreOverride;
+  } else if (isIndexedDbAvailable()) {
+    saveStore = createIndexedDbBrowserStore();
+    // observability-allow-silent: migration failure leaves LS saves intact — user loses nothing
+    migrateLocalStorageToIndexedDb(storage, saveStore).catch(() => {});
+  } else {
+    saveStore = createBrowserSaveStore({ storage, now: () => new Date(now()).toISOString() });
+  }
   const setupBootstrap = createLeagueBase(currentYear);
   const defaultSettings = resolveLeagueSettings();
   const defaultSetupState = {
@@ -383,10 +395,10 @@ export function createLocalApiRuntime({
         const includeSaves = toBool(url.searchParams.get("includeSaves"), true);
         const includeBackups = toBool(url.searchParams.get("includeBackups"), false);
         const savesStarted = now();
-        const saves = includeSaves ? saveStore.listSaveSlots() : [];
+        const saves = includeSaves ? await saveStore.listSaveSlots() : [];
         const savesMs = includeSaves ? now() - savesStarted : 0;
         const backupsStarted = now();
-        const backups = includeBackups ? saveStore.listBackupSlots() : [];
+        const backups = includeBackups ? await saveStore.listBackupSlots() : [];
         const backupsMs = includeBackups ? now() - backupsStarted : 0;
         return finish(
           jsonResponse(200, {
@@ -1174,7 +1186,7 @@ export function createLocalApiRuntime({
       }
 
       if (method === "GET" && pathname === "/api/saves") {
-        return finish(jsonResponse(200, { ok: true, slots: saveStore.listSaveSlots() }));
+        return finish(jsonResponse(200, { ok: true, slots: await saveStore.listSaveSlots() }));
       }
 
       if (method === "GET" && pathname === "/api/snapshot/export") {
@@ -1214,13 +1226,13 @@ export function createLocalApiRuntime({
       }
 
       if (method === "GET" && pathname === "/api/backups") {
-        return finish(jsonResponse(200, { ok: true, slots: saveStore.listBackupSlots() }));
+        return finish(jsonResponse(200, { ok: true, slots: await saveStore.listBackupSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/saves/save") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
         const saved = await saveStore.saveSessionToSlot(String(body.slot), session.toSnapshot());
-        return finish(jsonResponse(200, { ok: true, saved, slots: saveStore.listSaveSlots() }));
+        return finish(jsonResponse(200, { ok: true, saved, slots: await saveStore.listSaveSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/saves/load") {
@@ -1233,7 +1245,7 @@ export function createLocalApiRuntime({
         try { replacement = sessionFromSnapshot(snapshot); }
         catch (error) { return finish(jsonResponse(error.status || 400, snapshotErrorPayload(error))); }
         session = replacement;
-        return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: saveStore.listSaveSlots() }));
+        return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: await saveStore.listSaveSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/backups/load") {
@@ -1246,17 +1258,17 @@ export function createLocalApiRuntime({
         try { replacement = sessionFromSnapshot(snapshot); }
         catch (error) { return finish(jsonResponse(error.status || 400, snapshotErrorPayload(error))); }
         session = replacement;
-        return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: saveStore.listBackupSlots() }));
+        return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: await saveStore.listBackupSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/saves/delete") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
-        return finish(jsonResponse(200, { ok: true, deleted: saveStore.deleteSaveSlot(String(body.slot)), slots: saveStore.listSaveSlots() }));
+        return finish(jsonResponse(200, { ok: true, deleted: await saveStore.deleteSaveSlot(String(body.slot)), slots: await saveStore.listSaveSlots() }));
       }
 
       if (method === "POST" && pathname === "/api/backups/delete") {
         if (!body?.slot) return finish(jsonResponse(400, { ok: false, error: "slot is required." }));
-        return finish(jsonResponse(200, { ok: true, deleted: saveStore.deleteSaveSlot(String(body.slot)), slots: saveStore.listBackupSlots() }));
+        return finish(jsonResponse(200, { ok: true, deleted: await saveStore.deleteSaveSlot(String(body.slot)), slots: await saveStore.listBackupSlots() }));
       }
 
       // ── Rewind routes ───────────────────────────────────────────────────────

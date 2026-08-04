@@ -1108,6 +1108,7 @@ Source: `docs/AUDIT_2026-08-02.json`.
 
 ### Session 69 preload (not part of the exhausted Session 68 Genius List)
 
+- [ ] **indexeddb-browser-store** — PR #52 (`feat/indexeddb-browser-store`, all CI green). Wires `indexedDbBrowserStore.js` as the primary save layer (250 MB vs 5–10 MB), replacing the localStorage ceiling S65 spent a session fighting. Honest deferral from S67 is now implemented; PR awaits merge. This item is on the board so scheduled agents do not re-implement it.
 - [ ] Establish a valid independent staging origin at the exact candidate revision, then replay the structured release contract against it.
 - [ ] Provision and prove on-domain email delivery/forwarding through the canonical Brevo path, retaining a received-message receipt without exposing message content.
 - [ ] Reconcile registry SPARKED/local FORGE and refresh stale IGNIS through the Studio Ops Ark owner; request receipt `01JV2S5KC5235D4C02269A28B4`.
