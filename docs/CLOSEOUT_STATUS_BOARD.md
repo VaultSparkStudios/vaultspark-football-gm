@@ -1,38 +1,38 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-04 (Session 69 closeout) -->
+<!-- generated-at: 2026-08-04 (Session 71 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S69 ══════╗
-║  Date: 2026-08-04  ·  SIL: 996/1000  ·  Velocity: —              ║
-║  Mode: FOUNDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S71 ══════╗
+║  Date: 2026-08-04  ·  SIL: 995/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
-║  ✓ docs: record verified staging authority                       ║
-║  ✓ fix: await stable staging provenance                          ║
-║  ✓ fix: bound release provenance probes                          ║
-║  ✓ fix: resolve the exact staging DNS zone                       ║
-║  ✓ fix: establish staging DNS authority                          ║
+║  ✓ fix(sim): the offense had no value — one drifted season reco  ║
+║  ✓ docs: close session 70 arc                                    ║
+║  ✓ fix: LF-normalize built artifacts for cross-platform fingerp  ║
+║  ✓ fix: deploy workflows build with canonical brand env, not pr  ║
+║  ✓ fix: align lifecycle and service-worker gates with S70 truth  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 996/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
-║    Process Qual       98   ██████████                            ║
+║    Process Qual       97   ██████████                            ║
 ║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
-║    Ecosystem          99   ██████████                            ║
+║    Ecosystem          100  ██████████                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         100  ██████████                            ║
+║    Automation         99   ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
+║  ✓ logs/WORK_LOG.md                                              ║
 ║  ✓ context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
@@ -41,8 +41,8 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 21 files  ·  M:12 A:9 D:0 ?:0                          ║
-║  Ahead: 6  ·  Behind: 0                                          ║
+║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
@@ -52,7 +52,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         819/819                                          ║
+║  Tests:         852/852                                          ║
 ║  IGNIS:         1d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  4d ago                                           ║
