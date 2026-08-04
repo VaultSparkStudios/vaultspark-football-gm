@@ -21,6 +21,7 @@ import { planRehearsalEvidence } from "./architectPlanRehearsal.js";
 import { createTabHydrationAuthority } from "./tabHydration.js";
 import { renderCoachingMarketPanel } from "./coachingMarketPanel.js";
 import { recordReturnBoundary } from "./returnDigest.js";
+import { recordAchievementEvent } from "./achievements.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -1046,6 +1047,11 @@ export function showSeasonEndReview() {
   const myRow = standings.find((r) => r.team === (team.abbrev || team.teamId)) || {};
   const record = myRow.wins != null ? `${myRow.wins}–${myRow.losses}` : "—";
   const rank = standings.findIndex((r) => r.team === (team.abbrev || team.teamId)) + 1;
+  recordAchievementEvent("season-complete", {
+    wins: Number(myRow.wins) || 0,
+    losses: Number(myRow.losses) || 0,
+    rank: rank > 0 ? rank : null
+  });
   const legacy = d.gmLegacy;
   const heat = team.owner?.expectation?.heat ?? "—";
   const verdict = heat >= 75 ? "On the Hot Seat" : heat >= 55 ? "Owner Watching" : "Owner Satisfied";

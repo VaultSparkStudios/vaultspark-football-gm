@@ -14,8 +14,8 @@
     "combinedPriority": 261.4,
     "topItem": "root-funnel-instant-play",
     "source": "live-code-audit + full public-website content pass",
-    "openItems": 12,
-    "completedItems": 0,
+    "openItems": 6,
+    "completedItems": 6,
     "priorityFormula": "Priority = axis-weighted Impact × Innovation / log2(EffortHours + 2); execution order below is token-efficiency-grouped by touched surface, not raw priority order.",
     "theme": "The simulation is deep and truthful, but the front door is inverted (the root URL is a save manager for visitors with no saves), the marketing surface makes claims the shipped client cannot back, the loop's three hottest actions are silent, and there is no meta-progression, no sound, and no cross-save trophy identity — all fixable zero-backend."
   },
@@ -85,7 +85,7 @@
       "priority": 27.1,
       "slug": "root-funnel-instant-play",
       "title": "The root URL sells the game and starts a franchise in one click",
-      "status": "open",
+      "status": "shipped",
       "premise": "/ serves index.html, whose first paint for a brand-new visitor is a disabled 'Continue Franchise' button (index.html:59), 'Connecting to server...' (index.html:62) on a zero-backend product, an open-by-default empty Saved Leagues table (index.html:170), title 'Main Menu' (index.html:9), and a 'Server-backed' runtime option listed first while the only working mode is labeled '(Beta)' (index.html:212-213). The Quick Start cards say 'jump straight in' (index.html:69) but applyPreset (setup.js:487-495) only fills the form; the team fallback is hardcoded 'BUF' (setup.js:412). Dev-only filesystem path inputs render on the public homepage (index.html:156-162).",
       "evidence": [
         "public/index.html:9,59-62,69,156-162,170,190,212-215",
@@ -106,7 +106,8 @@
           "effortHours": 6,
           "recipe": "L2 plus landing-quality hero visual on / and a 15-second 'first decision' teaser (opening scenario preview) before commit."
         }
-      }
+      },
+      "executionEvidence": "One-click instant start + quick-start cards create leagues; state-branched hero; truthful runtime copy; setup-funnel.spec 3/3"
     },
     {
       "rank": 2,
@@ -115,10 +116,10 @@
       "effortHours": 3.5,
       "impact": 8,
       "innovation": 8,
-      "priority": 26.0,
+      "priority": 26,
       "slug": "synth-audio-haptics-layer",
       "title": "A ~2 KB WebAudio synth and mobile haptics give the sim a heartbeat",
-      "status": "open",
+      "status": "shipped",
       "premise": "Zero matches for AudioContext, new Audio, navigator.vibrate, or any sound/haptic API across public/ and src/. The only celebratory motion is one emoji confetti burst (tabOverview.js:1053-1060, styles.css:3670) and it is not gated by prefers-reduced-motion (the reduced-motion block at styles.css:4951-4953 covers only .side-menu/.mobile-nav-scrim).",
       "evidence": [
         "Empty grep for AudioContext|new Audio|vibrate across public/ and src/",
@@ -139,7 +140,8 @@
           "effortHours": 6,
           "recipe": "L2 plus a broadcast-mode sim-watch bed (crowd swell synth tied to drama score) and per-moment stinger variation seeded by derivedRng."
         }
-      }
+      },
+      "executionEvidence": "WebAudio palette + haptics + persisted toggles + reduced-motion completeness; observability gate satisfied"
     },
     {
       "rank": 3,
@@ -151,7 +153,7 @@
       "priority": 25.6,
       "slug": "achievement-trophy-case",
       "title": "A cross-save trophy case turns milestones into permanent identity",
-      "status": "open",
+      "status": "shipped",
       "premise": "There is no achievement system: 'achievement' appears once in the entire codebase, as a comment at src/engine/gmLegacyScore.js:232. The only meta-progression is the single linear 6-tier GM legacy axis (gmLegacyScore.js:175-215). Every needed signal already exists: classifyNewsItem tiers (engagementFeatures.js:87-102), season chapters (seasonChapters.js:215), speedrun completions (src/engine/speedrunChallenge.js:49), HoF inductions, and a proven canvas share-card renderer (hallOfFameCeremony.js:21-84).",
       "evidence": [
         "grep 'achievement' → 1 comment hit (src/engine/gmLegacyScore.js:232)",
@@ -172,7 +174,8 @@
           "effortHours": 8,
           "recipe": "L2 plus achievement-aware Welcome Back copy, per-achievement stat lines (earned by N% styling from deterministic rarity bands), and a season-end 'trophies within reach' teaser."
         }
-      }
+      },
+      "executionEvidence": "29-achievement cross-save registry + trophy case UI + unlock toasts + share text; registry hygiene test green"
     },
     {
       "rank": 4,
@@ -217,7 +220,7 @@
       "priority": 24.4,
       "slug": "reward-beats-hot-paths",
       "title": "The three most-repeated actions — weekly sim, draft pick, trade — each earn a reward beat",
-      "status": "open",
+      "status": "shipped",
       "premise": "refreshPostSimulation (gameFlow.js:841-844) is three lines: invalidate + re-render, no recap moment after the game's most frequent action. tabDraft.js contains zero celebration/toast calls — a first-round pick produces no card or verdict. There is no post-trade verdict moment (renderTradeBreakdown at engagementFeatures.js:634 is pre-trade only). buildMentorshipBadge (engagementFeatures.js:755) is a fully built reward affordance with zero callers.",
       "evidence": [
         "public/lib/gameFlow.js:841-844",
@@ -238,7 +241,8 @@
           "effortHours": 6,
           "recipe": "L2 plus a shareable weekly recap canvas card and a 'best beat of the season' reel in the Season Epilogue."
         }
-      }
+      },
+      "executionEvidence": "Week recap + draft verdict + trade verdict beats live; mentorship badge wired; reward-layer.test 9/9; reward-beats.spec 2/2"
     },
     {
       "rank": 6,
@@ -247,10 +251,10 @@
       "effortHours": 3.5,
       "impact": 9,
       "innovation": 6,
-      "priority": 22.0,
+      "priority": 22,
       "slug": "public-truth-and-privacy-pass",
       "title": "Every public sentence becomes true, current, and meant for its audience",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified on-disk: og:image/twitter:image/JSON-LD reference images/cover.png four times but public/images/ contains only two SVG logos — every social share renders blank. landing.html:290 claims 'IndexedDB (250MB)' (zero IndexedDB in the client bundle) and 'last 10 major decisions' (actual limit is a 4 MB byte cap, engagementFeatures.js:773); landing.html:248-249 claim '18 Engine Systems' (src/engine has 36 modules) and '50+ API Routes' (a dev metric on a serverless deploy). Internal ops leak publicly: status.html:18 'marking the project SPARKED', public-identity.json lifecycle FORGE + founder-approval gates, edge-policy-receipt.json appliedToHostedOrigin:false, ~10 'Session 8'/'S63' dev comments in served game.html. Dead brand vaultspark-football-gm on 5 public surfaces and vsfgm- meta prefixes in served HTML. changelog.html is two undated entries including internal 'Gridiron-GM Vault Salvage' language.",
       "evidence": [
         "ls public/images/ → 2 SVGs only; public/index.html:15,19,36 + landing.html:205 reference cover.png",
@@ -271,7 +275,8 @@
           "effortHours": 5,
           "recipe": "L2 plus per-page OG images (trophy/share cards) and a public 'how this game is built' page that turns the honest evidence discipline into marketing."
         }
-      }
+      },
+      "executionEvidence": "check-public-truth gate wired into build; cover.png generated; false claims fixed; internal vocab removed; comments stripped from served HTML"
     },
     {
       "rank": 7,
@@ -280,7 +285,7 @@
       "effortHours": 6,
       "impact": 9,
       "innovation": 7,
-      "priority": 21.0,
+      "priority": 21,
       "slug": "indexeddb-persistence-promotion",
       "title": "Saves move to the 250 MB IndexedDB store; drive logs stop being sacrificed",
       "status": "open",
@@ -313,7 +318,7 @@
       "effortHours": 2,
       "impact": 8,
       "innovation": 5,
-      "priority": 20.0,
+      "priority": 20,
       "slug": "production-parity-promotion",
       "title": "Production serves the exact staging-verified candidate with a receipt",
       "status": "open",
@@ -415,7 +420,7 @@
       "priority": 18.6,
       "slug": "website-ia-consolidation",
       "title": "Eleven pages become seven with one shared footer and a single truth per fact",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified: play.html is a pure meta-refresh orphan with zero inbound links yet sits in sitemap.xml; ip.html restates the terms.html rights panel plus one unique sentence; changelog.html is reachable only via status.html (3 clicks deep); four mutually incompatible footers exist and 7 legal/info pages have no cross-navigation at all; landing.html — the only page linking GitHub/Community — is buried in the index.html footer while marketing sits behind the app; the beta status is asserted 6 times in 5 wordings; 5 meta-description variants and 2 competing JSON-LD blocks describe the same URL; sitemap has no lastmod and lists the game.html app shell; contact email appears in 8 places with 4 framings.",
       "evidence": [
         "grep -ln play.html public/*.html → no inbound links; public/sitemap.xml lists it",
@@ -436,7 +441,8 @@
           "effortHours": 6,
           "recipe": "L2 plus merging about.html into landing (universe paragraph as a section) and auto-generating release-notes entries from curated session receipts."
         }
-      }
+      },
+      "executionEvidence": "status+changelog merged with dated notes; ip merged into terms; redirect stubs; sitemap lastmod; real 404; unified footers; compliance 12/12"
     },
     {
       "rank": 12,
@@ -496,27 +502,44 @@
       {
         "wave": 1,
         "name": "Website surface (one pass over public/*.html + build-pages)",
-        "items": ["public-truth-and-privacy-pass (6)", "website-ia-consolidation (11)", "root-funnel-instant-play (1)"]
+        "items": [
+          "public-truth-and-privacy-pass (6)",
+          "website-ia-consolidation (11)",
+          "root-funnel-instant-play (1)"
+        ]
       },
       {
         "wave": 2,
         "name": "Game loop reward layer (engagement/gameFlow/tab modules)",
-        "items": ["reward-beats-hot-paths (5)", "achievement-trophy-case (3)", "synth-audio-haptics-layer (2)"]
+        "items": [
+          "reward-beats-hot-paths (5)",
+          "achievement-trophy-case (3)",
+          "synth-audio-haptics-layer (2)"
+        ]
       },
       {
         "wave": 3,
         "name": "Engine intelligence (src/engine, shared command seam)",
-        "items": ["rival-gm-persona-memory (4)", "living-difficulty-controls (9)"]
+        "items": [
+          "rival-gm-persona-memory (4)",
+          "living-difficulty-controls (9)"
+        ]
       },
       {
         "wave": 4,
         "name": "Platform (persistence, payload, SW)",
-        "items": ["indexeddb-persistence-promotion (7)", "tab-code-splitting-sw-hardening (10)"]
+        "items": [
+          "indexeddb-persistence-promotion (7)",
+          "tab-code-splitting-sw-hardening (10)"
+        ]
       },
       {
         "wave": 5,
         "name": "Ops + release (after all above are staging-verified)",
-        "items": ["skill-cost-ledger-repair (12)", "production-parity-promotion (8)"]
+        "items": [
+          "skill-cost-ledger-repair (12)",
+          "production-parity-promotion (8)"
+        ]
       }
     ]
   },

@@ -1,4 +1,6 @@
 import { state, api, STATS_BENCHMARK_HINTS } from "./appState.js";
+import { recordAchievementEvent } from "./achievements.js";
+import { playSound } from "./audioFeedback.js";
 import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderTable, setBoxScoreTab, setMetricCardValue, showToast, teamCode, teamName } from "./appCore.js";
 import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
 import { renderTradeDeadlineFrenzy } from "./tradeDeadlineFrenzy.js";
@@ -1032,6 +1034,8 @@ export async function renderGmLegacyScore() {
       const currentTier = persona.current.tier;
       if (state.prevGmLegacyTier !== null && currentTier > state.prevGmLegacyTier) {
         showPersonaTierToast(persona.current.name, currentTier);
+        playSound("tier-fanfare");
+        recordAchievementEvent("gm-tier", { tier: currentTier });
       }
       state.prevGmLegacyTier = currentTier;
     }

@@ -17,6 +17,9 @@ import {
 } from "./lib/gistSync.js";
 
 import { state, api } from "./lib/appState.js";
+import { recordAchievementEvent, renderTrophyCase } from "./lib/achievements.js";
+import { presentWeekRecap, presentDraftPickBeat, presentTradeBeat } from "./lib/rewardBeats.js";
+import { playSound, vibrate, HAPTIC_PATTERNS, isSoundEnabled, setSoundEnabled, isHapticsEnabled, setHapticsEnabled } from "./lib/audioFeedback.js";
 import { clearClientDiagnostics, observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic, retryClientDiagnostics } from "./lib/clientDiagnostics.js";
 import { coordinatePostCommitHydration } from "./lib/postCommitHydration.js";
 import { dashboardAuthorityKey } from "./lib/franchiseScope.js";
@@ -428,6 +431,22 @@ async function refreshAfterWeeklyCommand(response) {
   checkAndShowFranchiseMoment().catch(presentActionError);
   checkAndPruneRewindStorage();
   syncMobileLoopOverlay();
+  // Reward beat + trophies: both derive from the receipted box score of the
+  // week that just completed; a bye stays silent.
+  try {
+    const { game } = recordAchievementEvent("week-advanced", {
+      completedWeek: Number(state.dashboard?.currentWeek) - 1
+    });
+    if (game) presentWeekRecap(game);
+  } catch (error) {
+    recordClientDiagnostic({
+      surface: "engagement",
+      operation: "week-recap",
+      error,
+      authorityKey: dashboardAuthorityKey(state.dashboard),
+      severity: "warning"
+    });
+  }
   return hydration;
 }
 async function advanceOneWeek({ gmDecisionChoice = null } = {}) {
@@ -563,13 +582,15 @@ function bindEvents() {
     }, "Switching team...")
   );
 
-  document.getElementById("advanceWeekBtn").addEventListener("click", () =>
-    runAction(
+  document.getElementById("advanceWeekBtn").addEventListener("click", () => {
+    playSound("advance-tick");
+    vibrate(HAPTIC_PATTERNS.tick);
+    return runAction(
       () => advanceOneWeek(),
       "Advancing week...",
       SIMULATION_ACTION
-    )
-  );
+    );
+  });
   document.getElementById("openingContractCard")?.addEventListener("click", (event) => {
     const action = event.target.closest?.("[data-opening-prologue-action='advance-week']");
     if (!action) return;
@@ -834,6 +855,12 @@ function bindEvents() {
       const fairness = Math.max(0, 100 - Math.abs((a.delta || 0) - (b.delta || 0)) * 4);
       setTradeEvalText(`Trade accepted. ${payload.teamA} value swing ${a.delta || 0}, ${payload.teamB} value swing ${b.delta || 0}`);
       setTradeEvalCards({ fairness, capDeltaA: a.capDelta || 0, capDeltaB: b.capDelta || 0 });
+      const controlledId = state.dashboard?.controlledTeamId;
+      const mine = controlledId === payload.teamB ? b : a;
+      const theirs = controlledId === payload.teamB ? a : b;
+      const partner = controlledId === payload.teamB ? payload.teamA : payload.teamB;
+      const tradeVerdict = presentTradeBeat({ myDelta: mine.delta, theirDelta: theirs.delta, partner });
+      recordAchievementEvent("trade-committed", { valueEdge: tradeVerdict.edge, inbound: false });
       clearTradePackages({ keepMessage: true });
       await Promise.all([loadState(), loadRoster(), loadContractsTeam(), loadFreeAgency(), loadDepthChart(), loadTransactionLog(), loadPickAssets()]);
     }, "Executing trade...")
@@ -867,7 +894,21 @@ function bindEvents() {
         showToast("Counter loaded at the trade desk — reshape the package and evaluate.");
       } else if (action === "accept") {
         applyDashboard(result.state);
-        showToast("Trade completed — the rival's offer is now roster truth.");
+        const valuation = result.trade?.valuation || null;
+        const myId = state.dashboard?.controlledTeamId;
+        const rivalId = result.offer?.fromTeamId;
+        if (valuation && valuation[myId] && valuation[rivalId]) {
+          const beat = presentTradeBeat({
+            myDelta: valuation[myId].delta,
+            theirDelta: valuation[rivalId].delta,
+            partner: rivalId,
+            inbound: true
+          });
+          recordAchievementEvent("trade-committed", { valueEdge: beat.edge, inbound: true });
+        } else {
+          showToast("Trade completed — the rival's offer is now roster truth.");
+          recordAchievementEvent("trade-committed", { valueEdge: 0, inbound: true });
+        }
         await loadRoster();
       } else {
         showToast("Offer declined.");
@@ -1185,10 +1226,14 @@ function bindEvents() {
   document.getElementById("userPickBtn").addEventListener("click", () =>
     runAction(async () => {
       if (!state.selectedDraftProspectId) throw new Error("Select a prospect first.");
+      const prospect = (state.draftState?.available || []).find((p) => p.id === state.selectedDraftProspectId);
+      const draftBefore = state.draftState;
       await api("/api/draft/user-pick", {
         method: "POST",
         body: { playerId: state.selectedDraftProspectId }
       });
+      const verdict = presentDraftPickBeat(prospect, draftBefore);
+      recordAchievementEvent("draft-pick", { grade: prospect?.grade, verdict: verdict.verdict });
       await Promise.all([loadState(), loadDraftState(), loadScouting(), loadRoster(), loadTransactionLog()]);
     }, "Submitting user pick...")
   );
@@ -1208,11 +1253,14 @@ function bindEvents() {
     const prospect = (state.draftState?.available || []).find((p) => p.id === prospectId);
     const teamName = state.dashboard?.controlledTeam?.name || state.dashboard?.controlledTeamId || "Your Team";
     await new Promise((resolve) => showDraftPickReveal(prospect, teamName, resolve));
+    const draftBefore = state.draftState;
     runAction(async () => {
       await api("/api/draft/user-pick", {
         method: "POST",
         body: { playerId: button.dataset.draftPlayerId }
       });
+      const verdict = presentDraftPickBeat(prospect, draftBefore);
+      recordAchievementEvent("draft-pick", { grade: prospect?.grade, verdict: verdict.verdict });
       await Promise.all([loadState(), loadDraftState(), loadScouting(), loadRoster(), loadTransactionLog()]);
     }, "Drafting player...");
   });
@@ -2101,6 +2149,7 @@ async function checkSpeedrunCompletion() {
   if (!state.speedrunChallenge?.active) return;
   const res = await api("/api/speedrun/check", { method: "POST" });
   if (res.complete) {
+    recordAchievementEvent("speedrun-complete", { seasons: res.seasonsElapsed });
     const name = prompt("You won the Super Bowl! Enter your name for the leaderboard:", "GM");
     if (name) {
       const sub = await api("/api/speedrun/submit", { method: "POST", body: { playerName: name } });
@@ -2158,6 +2207,23 @@ async function init() {
   setStatus("Ready");
   queueStartupHydration();
   initGistSyncUI();
+  renderTrophyCase();
+  const soundInput = document.getElementById("soundEnabledInput");
+  const hapticsInput = document.getElementById("hapticsEnabledInput");
+  if (soundInput) {
+    soundInput.checked = isSoundEnabled();
+    soundInput.addEventListener("change", () => {
+      setSoundEnabled(soundInput.checked);
+      if (soundInput.checked) playSound("advance-tick");
+    });
+  }
+  if (hapticsInput) {
+    hapticsInput.checked = isHapticsEnabled();
+    hapticsInput.addEventListener("change", () => {
+      setHapticsEnabled(hapticsInput.checked);
+      if (hapticsInput.checked) vibrate(HAPTIC_PATTERNS.tick);
+    });
+  }
   injectTutorialStyles();
   // One launcher owns both the first-boot mount and every later recovery path
   // (Overview CTA, Settings, command palette), so re-running a deferred

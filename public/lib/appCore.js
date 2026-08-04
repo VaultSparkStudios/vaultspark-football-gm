@@ -3,6 +3,7 @@ import { buildPlayerProfileNarrative } from "./playerProfileNarrative.js";
 import { actionCoordinator } from "./actionCoordinator.js";
 import { getClientDiagnosticsSnapshot, recordClientDiagnostic, subscribeClientDiagnostics } from "./clientDiagnostics.js";
 import { franchiseScopeFromDashboard, franchiseStorageKey } from "./franchiseScope.js";
+import { buildMentorshipBadge } from "./engagementFeatures.js";
 
 export function escapeHtml(value) {
   return String(value)
@@ -1284,6 +1285,7 @@ export async function loadPlayerModal(playerId) {
   document.getElementById("playerModalMeta").textContent =
       `${teamCode(player.teamId)} | #${player.jerseyNumber ?? "--"} | OVR ${player.overall} | POT ${player.potential ?? "-"} | Age ${player.age} | ${formatHeight(player.heightInches)} ${player.weightLbs || "-"} lbs | Dev ${player.developmentTrait} | Injury ${player.injury?.type || "Healthy"}`;
   document.getElementById("playerProfileSummary").innerHTML = renderPlayerProfileHero(profile);
+  attachPlayerMentorshipBadge(player);
 
   const ratingRows = Object.entries(player.ratings || {})
     .sort((a, b) => a[0].localeCompare(b[0]))
@@ -1321,6 +1323,35 @@ export async function loadPlayerModal(playerId) {
   );
 
   document.getElementById("playerModal").classList.remove("hidden");
+}
+
+// Mentorship badge on the player profile hero (S70): the built-but-unwired
+// buildMentorshipBadge affordance finally renders where players are inspected.
+let mentorshipBadgeCache = { authorityKey: null, pairs: [] };
+
+async function attachPlayerMentorshipBadge(player) {
+  const host = document.getElementById("playerProfileSummary");
+  if (!host || !player?.id) return;
+  try {
+    const key = `${state.dashboard?.currentYear}-${state.dashboard?.currentWeek}-${state.dashboard?.controlledTeamId}`;
+    if (mentorshipBadgeCache.authorityKey !== key) {
+      const data = await api("/api/mentorship");
+      mentorshipBadgeCache = {
+        authorityKey: key,
+        pairs: (data.pairs || []).map((pair) => ({ ...pair, statBonus: pair.projectedBonus }))
+      };
+    }
+    const html = buildMentorshipBadge(player, mentorshipBadgeCache.pairs);
+    if (!html) return;
+    // The modal may already show a different player by the time the fetch lands.
+    if (!document.getElementById("playerModalTitle")?.textContent?.startsWith(player.name)) return;
+    if (host.querySelector(".mentorship-badge")) return;
+    const wrapper = document.createElement("div");
+    wrapper.innerHTML = html;
+    if (wrapper.firstElementChild) host.appendChild(wrapper.firstElementChild);
+  } catch {
+    // Non-critical enrichment; the roster mentorship panel remains the authority.
+  }
 }
 
 export function closePlayerModal() {
