@@ -12,6 +12,7 @@ async function waitSetupReady(page) {
 async function createLeague(page) {
   await page.goto("/");
   await waitSetupReady(page);
+  await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
@@ -192,6 +193,7 @@ test("first-run tutorial follows light theme readability tokens", async ({ page 
 
   await page.goto("/");
   await waitSetupReady(page);
+  await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
   await expect(page.locator(".tutorial-modal")).toBeVisible({ timeout: 60_000 });

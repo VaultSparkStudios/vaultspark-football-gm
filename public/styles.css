@@ -539,6 +539,14 @@ body[data-theme="light"] .btn-primary {
   line-height: 1.45;
 }
 
+.quickstart-go {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--section-accent-strong, var(--accent));
+}
+
 /* Team row */
 .setup-team-row {
   display: flex;

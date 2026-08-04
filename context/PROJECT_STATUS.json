@@ -85,7 +85,7 @@
   },
   "currentSession": 69,
   "lastAgent": "codex",
-  "sessionMode": "founder",
+  "sessionMode": "builder",
   "lastVerification": "npm test 819/819 direct exit 0; npm run test:ui 33/33 exit 0; evidence:responsive 65/65 exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54; staging provenance 11/11; visual receipt 6 inspected captures / 0 blocking defects.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -95,7 +95,7 @@
   "modelPlanModeSlash": null,
   "planModeDetected": "missing",
   "planModeCheckedAt": "2026-07-01T05:54:57.303Z",
-  "sessionModeAutoShiftedAt": "2026-08-02T23:55:55.899Z",
+  "sessionModeAutoShiftedAt": "2026-08-04T00:57:31.065Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
   "freeTierAuditDate": "2026-05-22",
@@ -115,14 +115,20 @@
   "silHealth": 846,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 6,
-    "failing": 0,
-    "score": 83,
+    "failing": 1,
+    "score": 67,
     "date": "2026-08-04",
-    "passing": 5,
+    "passing": 4,
     "warning": 1,
     "checks": [
+      {
+        "id": "lifecycle-public-status",
+        "status": "failing",
+        "blocking": true,
+        "detail": "public status preserves the evidence gate"
+      },
       {
         "id": "lifecycle-authoritative-registry",
         "status": "warning",

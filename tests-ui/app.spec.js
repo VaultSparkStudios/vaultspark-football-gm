@@ -29,6 +29,7 @@ async function createLeagueFromSetup(page, { runtimeMode = null } = {}) {
     await waitSetupReady(page);
     await expect(page.locator("#runtimeModeSelect")).toHaveValue(runtimeMode);
   }
+  await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
   await waitGameReady(page);

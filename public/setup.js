@@ -11,6 +11,7 @@ import { observeBackgroundTask } from "./lib/clientDiagnostics.js";
 
 const state = {
   currentYear: new Date().getFullYear(),
+  hasActiveLeague: false,
   saves: [],
   savesDeferred: false,
   teams: [],
@@ -33,11 +34,13 @@ const MODE_HELP = {
 const SETUP_GUIDE_ROWS = [
   "Choose `Drive` for faster weekly simulation or `Play` for more granular play-level outcomes.",
   "Era profiles change league tendencies: `Modern Pass` pushes more passing volume, `Balanced` stays near league-average, and `Legacy` tilts toward a lower-tempo run-heavy environment.",
-  "Franchise archetypes now shape the opening challenge: rebuilds buy patience, contenders raise pressure, and cap-hell/no-QB starts add immediate roster stress.",
-  "Rules, difficulty, and challenge presets compose into league settings first, then any checkbox overrides apply on top.",
-  "Randomized leagues now use one real U.S. city plus one generated nickname per team for a single clean identity in each save.",
-  "After league creation, the controlled team becomes the default roster and depth-chart focus in the franchise view."
+  "Franchise archetypes shape your opening challenge: rebuilds buy patience, contenders raise pressure, and cap-hell/no-QB starts add immediate roster stress.",
+  "Rules, difficulty, and challenge presets combine into your league settings; any checkbox choices apply on top.",
+  "Every league gets one clean team identity: a real U.S. city paired with its own nickname.",
+  "After you create a league, your team becomes the default roster and depth-chart focus in the franchise view."
 ];
+
+const RANDOM_TEAM_VALUE = "__random__";
 
 function escapeHtml(value) {
   return String(value)
@@ -79,6 +82,10 @@ function applyRuntimeModeUi() {
   select.value = mode;
   const serverOption = select.querySelector('option[value="server"]');
   if (serverOption) serverOption.disabled = !serverAvailable;
+  // Filesystem data paths only exist on the dev server; hide the whole section
+  // on the deployed client-only build instead of showing inert inputs.
+  const dataPaths = document.getElementById("dataPathsSection");
+  if (dataPaths) dataPaths.hidden = !serverAvailable;
   const pathInput = document.getElementById("pfrPathInput");
   const profileInput = document.getElementById("profilePathInput");
   const description = document.getElementById("runtimeModeDescription");
@@ -87,8 +94,8 @@ function applyRuntimeModeUi() {
   if (profileInput) profileInput.disabled = disabled;
   if (description) {
     description.textContent = serverAvailable
-      ? "Client-only mode stores leagues in this browser and does not use filesystem path imports."
-      : "This Pages deployment is client-only. Server-backed mode requires a live backend and is unavailable here.";
+      ? "Browser mode stores leagues in this browser and does not use filesystem path imports."
+      : "Your league lives in this browser — no account, no server, no install.";
   }
 }
 
@@ -111,24 +118,50 @@ function renderTeams() {
   if (!select) return;
 
   if (!state.teams.length) {
-    select.innerHTML = "<option value=\"BUF\">BUF - Buffalo Bills</option>";
+    select.innerHTML = `<option value="${RANDOM_TEAM_VALUE}">🎲 Surprise me — random team</option>`;
     return;
   }
 
-  select.innerHTML = state.teams
-    .map((team) => `<option value="${escapeHtml(team.id)}">${escapeHtml(teamCode(team))} - ${escapeHtml(team.name)}</option>`)
-    .join("");
+  select.innerHTML =
+    `<option value="${RANDOM_TEAM_VALUE}">🎲 Surprise me — random team</option>` +
+    state.teams
+      .map((team) => `<option value="${escapeHtml(team.id)}">${escapeHtml(teamCode(team))} - ${escapeHtml(team.name)}</option>`)
+      .join("");
+  select.value = RANDOM_TEAM_VALUE;
+}
 
-  if (state.teams.some((team) => team.id === "BUF")) {
-    select.value = "BUF";
-  }
+function resolveControlledTeamId() {
+  const chosen = document.getElementById("teamSelect")?.value || RANDOM_TEAM_VALUE;
+  if (chosen !== RANDOM_TEAM_VALUE) return chosen;
+  if (!state.teams.length) return "BUF";
+  return state.teams[Math.floor(Math.random() * state.teams.length)].id;
+}
+
+function updateHeroActions() {
+  // First-time visitors get one primary "start" action; returning players get
+  // Continue/Resume instead. Nothing renders disabled-with-no-context.
+  const hasActive = state.hasActiveLeague === true;
+  const hasSaves = state.saves.length > 0 && !state.savesDeferred;
+  const returning = hasActive || hasSaves;
+  const instantBtn = document.getElementById("instantStartBtn");
+  const continueBtn = document.getElementById("continueActiveBtn");
+  const resumeBtn = document.getElementById("resumeLatestBtn");
+  if (instantBtn) instantBtn.hidden = returning;
+  if (continueBtn) continueBtn.hidden = !hasActive;
+  if (resumeBtn) resumeBtn.hidden = !hasSaves;
+  const savedSection = document.getElementById("savedLeaguesSection");
+  if (savedSection && hasSaves) savedSection.open = true;
 }
 
 function renderActiveLeague(activeLeague) {
   const text = document.getElementById("activeLeagueText");
   const button = document.getElementById("continueActiveBtn");
+  state.hasActiveLeague = Boolean(activeLeague && activeLeague.currentYear);
+  updateHeroActions();
   if (!activeLeague || !activeLeague.currentYear) {
-    text.textContent = "No active league in memory.";
+    text.textContent = state.saves.length
+      ? "Pick a saved league below, or start a fresh franchise."
+      : "New here? One click starts a franchise — surprise team included.";
     button.disabled = true;
     return;
   }
@@ -203,6 +236,7 @@ function renderSaves() {
   if (state.savesDeferred) {
     table.innerHTML = "<tr><td>Saved leagues are loading in the background. Click Refresh Saves if this takes too long.</td></tr>";
     if (latestBtn) latestBtn.disabled = true;
+    updateHeroActions();
     return;
   }
 
@@ -228,6 +262,7 @@ function renderSaves() {
   if (!filtered.length) {
     table.innerHTML = "<tr><td>No saved leagues yet.</td></tr>";
     if (latestBtn) latestBtn.disabled = state.saves.length === 0;
+    updateHeroActions();
     return;
   }
 
@@ -259,6 +294,7 @@ function renderSaves() {
     "<tr><th>Slot</th><th>Season</th><th>Phase</th><th>Team</th><th>Seasons</th><th>Updated</th><th>Size</th><th>Resume</th><th>Save Slot</th></tr>" +
     rows;
   if (latestBtn) latestBtn.disabled = state.saves.length === 0;
+  updateHeroActions();
 }
 
 async function refreshSaves({ preserveStatus = false, loadVersion = setupLoadVersion } = {}) {
@@ -326,8 +362,15 @@ async function loadSetup(retryCount = 0) {
     });
   }
 
+  const clientMode = getRuntimeMode() === "client";
   const activeText = document.getElementById("activeLeagueText");
-  if (activeText) activeText.textContent = retryCount > 0 ? `Retrying connection (${retryCount}/${MAX_RETRIES})...` : "Connecting to server...";
+  if (activeText) {
+    activeText.textContent = retryCount > 0
+      ? `Retrying (${retryCount}/${MAX_RETRIES})...`
+      : clientMode
+        ? "Checking this browser for saved franchises..."
+        : "Connecting to dev server...";
+  }
 
   let init;
   try {
@@ -336,13 +379,13 @@ async function loadSetup(retryCount = 0) {
     if (loadVersion !== setupLoadVersion) return;
     if (retryCount < MAX_RETRIES) {
       const delayMs = (retryCount + 1) * 2000;
-      if (activeText) activeText.textContent = `Server not ready — retrying in ${delayMs / 1000}s...`;
+      if (activeText) activeText.textContent = clientMode ? "Still loading your local league data..." : `Dev server not ready — retrying in ${delayMs / 1000}s...`;
       await new Promise((r) => setTimeout(r, delayMs));
       if (loadVersion !== setupLoadVersion) return;
       return loadSetup(retryCount + 1);
     }
-    if (activeText) activeText.textContent = `Could not reach server. ${err.message}`;
-    setStatus("Server unavailable — start the server or switch to client-only mode.");
+    if (activeText) activeText.textContent = clientMode ? `Could not load league data. ${err.message}` : `Could not reach the dev server. ${err.message}`;
+    setStatus(clientMode ? "Local runtime failed to load — refresh the page to retry." : "Dev server unavailable — start it or switch to browser mode.");
     return;
   }
 
@@ -409,7 +452,7 @@ async function createLeague() {
       enableNarratives: document.getElementById("narrativesInput").checked,
       enableCompPicks: document.getElementById("compPicksInput").checked,
       enableChemistry: document.getElementById("chemistryInput").checked,
-      controlledTeamId: document.getElementById("teamSelect").value || "BUF",
+      controlledTeamId: resolveControlledTeamId(),
       pfrPath: document.getElementById("pfrPathInput").value.trim() || null,
       realismProfilePath: document.getElementById("profilePathInput").value.trim() || null
     }
@@ -495,9 +538,21 @@ function bindEvents() {
     });
   };
 
-  document.getElementById("presetModernBtn").addEventListener("click", () => applyPreset("modern"));
-  document.getElementById("presetBalancedBtn").addEventListener("click", () => applyPreset("balanced"));
-  document.getElementById("presetLegacyBtn").addEventListener("click", () => applyPreset("legacy"));
+  // Quick Start cards honor their "Play now" promise: apply the era preset and
+  // create the league in the same click (random team unless one was chosen).
+  const quickStartLeague = async (preset) => {
+    try {
+      applyPreset(preset);
+      await createLeague();
+    } catch (error) {
+      setStatus(`Error: ${error.message}`);
+    }
+  };
+
+  document.getElementById("presetModernBtn").addEventListener("click", () => quickStartLeague("modern"));
+  document.getElementById("presetBalancedBtn").addEventListener("click", () => quickStartLeague("balanced"));
+  document.getElementById("presetLegacyBtn").addEventListener("click", () => quickStartLeague("legacy"));
+  document.getElementById("instantStartBtn")?.addEventListener("click", () => quickStartLeague("balanced"));
 
   document.getElementById("createLeagueBtn").addEventListener("click", async () => {
     try {

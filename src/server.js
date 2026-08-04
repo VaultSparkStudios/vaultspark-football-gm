@@ -404,7 +404,16 @@ function serveStatic(reqPath, res) {
     sendText(res, 404, "Not Found");
     return;
   }
-  const content = fs.readFileSync(resolved);
+  let content = fs.readFileSync(resolved);
+  // Source HTML declares the client-only deployed truth; a live dev server is
+  // the one environment where the server runtime genuinely exists, so it
+  // rewrites the runtime metas the same way the Pages build does.
+  if (resolved.endsWith(".html")) {
+    content = content
+      .toString("utf8")
+      .replace(/<meta name="vsfgm-runtime-default" content="[^"]*" \/>/, '<meta name="vsfgm-runtime-default" content="server" />')
+      .replace(/<meta name="vsfgm-server-available" content="[^"]*" \/>/, '<meta name="vsfgm-server-available" content="true" />');
+  }
   sendText(res, 200, content, staticContentType(resolved));
 }
 

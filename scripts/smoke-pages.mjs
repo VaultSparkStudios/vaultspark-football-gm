@@ -141,8 +141,8 @@ async function main() {
     const serverDisabled = await page.$eval("#runtimeModeSelect option[value=\"server\"]", (el) => el.disabled);
     if (!serverDisabled) throw new Error("Expected server-backed runtime option to be disabled in the Pages build.");
     const runtimeDescription = await page.$eval("#runtimeModeDescription", (el) => el.textContent || "");
-    if (!runtimeDescription.includes("client-only")) {
-      throw new Error(`Expected Pages runtime description to explain client-only mode, received: ${runtimeDescription}`);
+    if (!runtimeDescription.includes("in this browser")) {
+      throw new Error(`Expected Pages runtime description to explain browser-local persistence, received: ${runtimeDescription}`);
     }
 
     await page.click("#createLeagueBtn");
@@ -157,7 +157,7 @@ async function main() {
     await page.waitForSelector("#refreshBtn");
 
     await page.goto(`${baseUrl}missing-route`, { waitUntil: "networkidle" });
-    await page.waitForSelector("#createLeagueBtn");
+    await page.waitForSelector("#notFoundHomeLink");
     await assertStaticPath(`/contact.html`, /football@playfranchisearchitect\.com/);
     await assertStaticPath(`/privacy.html`, /Browser-First Beta/);
     await assertStaticPath(`/terms.html`, /All rights reserved/);

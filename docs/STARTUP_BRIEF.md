@@ -16,7 +16,7 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 70 · 2026-08-04 · FOUNDER MODE                          ║
+║  Session 70 · 2026-08-04 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -70,14 +70,14 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
-║     23,572 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~11,786 tok/turn  ·  cache 50%  ·  76 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
+║     2,995 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,498 tok/turn  ·  cache 50%  ·  120 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         819/819 passing (2026-08-03)                   ║
+║  ⚠  Tests         819/819 passing (2026-08-03) · STALE — run no  ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -91,7 +91,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        5/6 (83%)  ·  1 warn                           ║
+║  ⛔  Doctor        4/6 (67%)  ·  1 failing                        ║
 ║  ✓  Cost          Max flat-rate · $2.38/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -115,9 +115,23 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-03.md                 ║
-║  Closed: 6 · Open: 0                                             ║
-║  Latest audit has no open ranked items; run /audit for a new li  ║
+║  ✓ cache source: AUDIT_2026-08-03_SESSION70.md                   ║
+║                                                                  ║
+║  #1 · FIRE · root-funnel-instant-play                            ║
+║  root-funnel-instant-play — State-branched home: no saves → her  ║
+║                                                                  ║
+║  #2 · FIRE · synth-audio-haptics-layer                           ║
+║  synth-audio-haptics-layer — 6-8 tone palette (advance tick, TD  ║
+║                                                                  ║
+║  #3 · FIRE · achievement-trophy-case                             ║
+║  achievement-trophy-case — achievements.js registry (~30, spann  ║
+║                                                                  ║
+║  #4 · FIRE · rival-gm-persona-memory                             ║
+║  rival-gm-persona-memory — rivalGmPersona engine module: determ  ║
+║                                                                  ║
+║  #5 · FIRE · reward-beats-hot-paths                              ║
+║  reward-beats-hot-paths — Three beats: (1) Week N Recap card in  ║
+║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```

@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { inspectPublicFooterContract, PUBLIC_COPYRIGHT, PUBLIC_STUDIO_ORIGIN } from "../scripts/lib/public-footer.mjs";
+import { inspectPublicTruth } from "../scripts/check-public-truth.mjs";
 
 const requiredFiles = [
   "../public/contact.html",
@@ -38,7 +39,12 @@ test("public Pages bundle has contact, legal, sitemap, and agent metadata source
   assert.match(sitemap, /privacy\.html/);
   assert.match(sitemap, /terms\.html/);
   assert.match(sitemap, /landing\.html/, "sitemap lists landing.html");
-  assert.match(sitemap, /changelog\.html/, "sitemap lists changelog.html");
+  assert.match(sitemap, /status\.html/, "sitemap lists the merged status+release-notes page");
+  assert.match(sitemap, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, "sitemap entries carry lastmod");
+  assert.doesNotMatch(sitemap, /changelog\.html/, "changelog is a redirect stub and stays out of the sitemap");
+  assert.doesNotMatch(sitemap, /play\.html/, "play.html is a redirect stub and stays out of the sitemap");
+  assert.doesNotMatch(sitemap, /game\.html/, "the app shell is not an indexable page");
+  assert.doesNotMatch(sitemap, /ip\.html/, "ip.html merged into terms.html");
 });
 
 test("public identity, health, and footer contracts use the actual deploy repository", () => {
@@ -101,6 +107,39 @@ test("static public pages boot the saved theme before first paint", () => {
 test("landing page inline palette responds to light theme", () => {
   const landing = fs.readFileSync(new URL("../public/landing.html", import.meta.url), "utf8");
   assert.match(landing, /\[data-theme="light"\]/, "landing defines a light palette override");
+});
+
+test("public truth gate: derived stats match source and no internal vocabulary ships", () => {
+  const report = inspectPublicTruth(path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."));
+  assert.deepEqual(report.problems, []);
+  assert.equal(report.ok, true);
+  assert.ok(report.engineCount >= 30, "engine count derivation reads src/engine");
+});
+
+test("root page is visitor-first: no server-first copy, no disabled hero buttons in markup", () => {
+  const index = fs.readFileSync(new URL("../public/index.html", import.meta.url), "utf8");
+  assert.doesNotMatch(index, /Connecting to server/, "first paint never claims a server on a zero-backend product");
+  assert.doesNotMatch(index, /<button[^>]*continue-active-btn[^>]*disabled/, "Continue is hidden, not disabled, for new visitors");
+  assert.match(index, /instant-start-btn/, "one-click start exists");
+  assert.match(index, /<meta name="vsfgm-runtime-default" content="client"/, "source runtime metas match deployed truth");
+  assert.match(index, /<title>Franchise Architect: Football — Deep NFL Franchise Simulator<\/title>/, "homepage title is not an in-app breadcrumb");
+  assert.doesNotMatch(index, /<details[^>]*class="setup-section setup-details"[^>]*\sopen/, "empty save tables are not expanded by default");
+});
+
+test("redirect stubs and merged pages hold their contracts", () => {
+  const play = fs.readFileSync(new URL("../public/play.html", import.meta.url), "utf8");
+  const changelog = fs.readFileSync(new URL("../public/changelog.html", import.meta.url), "utf8");
+  const ip = fs.readFileSync(new URL("../public/ip.html", import.meta.url), "utf8");
+  const terms = fs.readFileSync(new URL("../public/terms.html", import.meta.url), "utf8");
+  const status = fs.readFileSync(new URL("../public/status.html", import.meta.url), "utf8");
+  const notFound = fs.readFileSync(new URL("../public/404.html", import.meta.url), "utf8");
+  assert.match(play, /http-equiv="refresh"[^>]*index\.html/);
+  assert.match(changelog, /http-equiv="refresh"[^>]*status\.html/);
+  assert.match(ip, /http-equiv="refresh"[^>]*terms\.html/);
+  assert.match(terms, /not affiliated with or endorsed by any professional sports league/, "terms absorbed the IP non-affiliation notice");
+  assert.match(status, /Release Notes/, "status page carries dated release notes");
+  assert.match(status, /\d{4}-\d{2}-\d{2}/, "release notes are dated");
+  assert.match(notFound, /notFoundHomeLink/, "404 page is real and links home");
 });
 
 test("private creative-direction ledger is absent from the public repository", () => {

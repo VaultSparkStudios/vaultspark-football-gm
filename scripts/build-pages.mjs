@@ -6,6 +6,7 @@ import { assertBrowserModuleReachability } from "./check-browser-module-reachabi
 import { assertBrowserPromiseObservability } from "./check-browser-promise-observability.mjs";
 import { assertApiContractParity } from "./check-api-contract-parity.mjs";
 import { assertPublicFooterContract } from "./lib/public-footer.mjs";
+import { assertPublicTruth } from "./check-public-truth.mjs";
 import { emitEdgeSecurityPolicy } from "./lib/edge-security-policy.mjs";
 import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker.mjs";
 import { fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
@@ -49,7 +50,8 @@ const htmlPages = [
   "terms.html",
   "ip.html",
   "status.html",
-  "changelog.html"
+  "changelog.html",
+  "404.html"
 ];
 
 function normalizeBasePath(value) {
@@ -142,7 +144,9 @@ async function copyBrowserModules() {
 
 function injectHtmlDefaults(html, pagePath) {
   const canonicalUrl = new URL(pagePath, canonicalBase).toString();
-  let next = html;
+  // Served HTML carries no development comments (internal sprint annotations
+  // are for the source tree, not view-source on the product).
+  let next = html.replace(/<!--[\s\S]*?-->/g, "");
   if (!next.includes("<base ")) {
     next = next.replace("<head>", `<head>\n    <base href=\"${assetBasePath}\" />`);
   }
@@ -199,7 +203,7 @@ function injectHtmlDefaults(html, pagePath) {
   // Precache service worker (S62): registered only in built app shells, never
   // in dev public/. Mount-relative scope; the edge policy hashes this inline
   // snippet like every other.
-  if (["index.html", "game.html"].includes(pagePath) && !next.includes("navigator.serviceWorker.register")) {
+  if (["./", "index.html", "game.html"].includes(pagePath) && !next.includes("navigator.serviceWorker.register")) {
     next = next.replace("</body>", `${SW_REGISTRATION_SNIPPET}\n</body>`);
   }
   return next;
@@ -278,7 +282,7 @@ async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
     edgePolicyAppliedToHostedOrigin: false,
     generatedAt,
     launchReady: false,
-    launchNote: "Runtime health is green; launch readiness still requires separate email, edge-header, deploy-currency, and founder-approval evidence."
+    launchNote: "Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence."
   };
   await fs.writeFile(path.join(outDir, "deploy-manifest.json"), `${JSON.stringify(deployManifest, null, 2)}\n`, "utf8");
   await fs.writeFile(path.join(outDir, "_health"), `${JSON.stringify(health, null, 2)}\n`, "utf8");
@@ -287,6 +291,7 @@ async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
 async function main() {
   await assertApiContractParity({ rootDir });
   assertPublicFooterContract(publicDir);
+  assertPublicTruth(rootDir);
   await assertBrowserPromiseObservability({ publicDir });
   await assertBrowserModuleReachability({ publicDir });
   await ensureCleanDir(outDir);
@@ -304,7 +309,8 @@ async function main() {
   console.log(
     `Service worker precache v${swManifest.version}: ${swManifest.assetCount} assets · ${Math.round(swManifest.totalBytes / 1024)} KB (repeat loads serve from cache)`
   );
-  await fs.copyFile(path.join(outDir, "index.html"), path.join(outDir, "404.html"));
+  // 404.html is a real not-found page (written via writeHtml above), not an
+  // index copy — a mistyped URL should say so instead of silently booting the app.
   const artifactFingerprint = await fingerprintArtifactDirectory(outDir);
   await emitDeployEvidence(edgePolicy, artifactFingerprint);
   await mirrorProjectPaths();

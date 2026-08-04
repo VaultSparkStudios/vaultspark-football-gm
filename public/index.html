@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="vsfgm-runtime-default" content="server" />
-    <meta name="vsfgm-server-available" content="true" />
+    <meta name="vsfgm-runtime-default" content="client" />
+    <meta name="vsfgm-server-available" content="false" />
     <meta name="vsfgm-server-base-url" content="" />
-    <title>Franchise Architect: Football - Main Menu</title>
-    <meta name="description" content="Run a long-horizon NFL franchise — roster, cap, scouting, draft, and simulation. Browser-native. No install required." />
-    <meta property="og:title" content="Franchise Architect: Football" />
-    <meta property="og:description" content="The deepest browser-based NFL franchise sim. World-state, agent AI, rivalry DNA, and PFR-calibrated realism. Build a dynasty." />
+    <title>Franchise Architect: Football — Deep NFL Franchise Simulator</title>
+    <meta name="description" content="The deepest browser-based NFL franchise sim. World-state, agent AI, rivalry DNA, GM legacy arcs, and PFR-calibrated realism. No install. Free open beta." />
+    <meta property="og:title" content="Franchise Architect: Football — Build Your Dynasty" />
+    <meta property="og:description" content="Browser-native NFL franchise sim. World-state, agent AI, rivalry DNA, GM legacy arcs, and PFR-calibrated realism. Build a dynasty. Free open beta." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://playfranchisearchitect.com/" />
     <meta property="og:image" content="https://playfranchisearchitect.com/images/cover.png" />
@@ -26,7 +26,7 @@
         "@type": "VideoGame",
         "name": "Franchise Architect: Football",
         "url": "https://playfranchisearchitect.com/",
-        "description": "Deep browser-native NFL franchise management simulator with world-state, agent AI, rivalry DNA, GM legacy arcs, and PFR-calibrated simulation.",
+        "description": "Deep browser-native NFL franchise management simulator — world-state, agent AI, rivalry DNA, GM legacy arcs, and PFR-calibrated simulation. No install.",
         "applicationCategory": "Game",
         "genre": ["Sports", "Simulation", "Strategy", "Management"],
         "gamePlatform": "Web Browser",
@@ -56,30 +56,34 @@
           </div>
           <p class="setup-tagline">Build a dynasty. Own every roster move, draft pick, and cap decision across decades of franchise football.</p>
           <div class="setup-hero-actions">
-            <button id="continueActiveBtn" class="btn-primary btn-lg" data-testid="continue-active-btn" disabled>Continue Franchise</button>
-            <button id="resumeLatestBtn" class="btn-secondary btn-lg" data-testid="resume-latest-btn">Resume Latest Save</button>
+            <button id="instantStartBtn" class="btn-primary btn-lg" data-testid="instant-start-btn">▶ Start Your Franchise</button>
+            <button id="continueActiveBtn" class="btn-primary btn-lg" data-testid="continue-active-btn" hidden>Continue Franchise</button>
+            <button id="resumeLatestBtn" class="btn-secondary btn-lg" data-testid="resume-latest-btn" hidden>Resume Latest Save</button>
           </div>
-          <span id="activeLeagueText" class="setup-session-status">Connecting to server...</span>
+          <span id="activeLeagueText" class="setup-session-status">Checking this browser for saved franchises...</span>
         </div>
       </section>
 
       <!-- ── QUICK START ── -->
       <section class="setup-section">
         <h2 class="setup-section-title">New Franchise</h2>
-        <p class="setup-section-subtitle">Pick a style and jump straight in, or customize everything below.</p>
+        <p class="setup-section-subtitle">Pick an era and jump straight in — one click starts your league. Or customize everything below first.</p>
 
         <div class="quickstart-grid">
           <button id="presetModernBtn" class="quickstart-card">
             <span class="quickstart-era">Modern</span>
             <span class="quickstart-label">Pass-heavy era with explosive offenses and aggressive cap management.</span>
+            <span class="quickstart-go">Play now →</span>
           </button>
           <button id="presetBalancedBtn" class="quickstart-card quickstart-card--featured">
             <span class="quickstart-era">Balanced</span>
             <span class="quickstart-label">League-average tendencies. The classic franchise experience.</span>
+            <span class="quickstart-go">Play now →</span>
           </button>
           <button id="presetLegacyBtn" class="quickstart-card">
             <span class="quickstart-era">Legacy</span>
             <span class="quickstart-label">Run-first, low-tempo football. Grind it out on the ground.</span>
+            <span class="quickstart-go">Play now →</span>
           </button>
         </div>
 
@@ -150,8 +154,8 @@
           </div>
           <div id="configSummaryContent" class="stack small"></div>
 
-          <details class="setup-details setup-details--nested">
-            <summary class="setup-details-toggle">Data Paths (Advanced)</summary>
+          <details id="dataPathsSection" class="setup-details setup-details--nested" hidden>
+            <summary class="setup-details-toggle">Data Paths (Dev Server Only)</summary>
             <div class="setup-details-body">
               <div class="form-grid">
                 <label>PFR Player JSON Path
@@ -167,7 +171,7 @@
       </details>
 
       <!-- ── SAVES ── -->
-      <details class="setup-section setup-details" open>
+      <details id="savedLeaguesSection" class="setup-section setup-details">
         <summary class="setup-details-toggle">Saved Leagues</summary>
         <div class="setup-details-body">
           <div class="row compact">
@@ -207,14 +211,14 @@
       <footer class="setup-footer">
         <label class="setup-runtime-label">Runtime
           <select id="runtimeModeSelect">
-            <option value="server">Server-backed</option>
-            <option value="client">Client-only (Beta)</option>
+            <option value="client">In this browser (recommended)</option>
+            <option value="server">Dev server (advanced)</option>
           </select>
         </label>
         <button id="setupThemeToggleBtn" class="theme-toggle-btn" type="button" title="Toggle theme">◐</button>
-        <span id="runtimeModeDescription" class="small">Client-only mode stores leagues in this browser and does not use filesystem path imports.</span>
+        <span id="runtimeModeDescription" class="small">Your league lives in this browser — no account, no server, no install.</span>
         <div id="setupGuideContent" class="stack small"></div>
-        <span class="small" style="color:var(--muted,#7a8299);margin-top:8px;display:block">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank" style="color:inherit;text-decoration:none">VaultSpark Studios</a> Game · <a href="./landing.html">Why Franchise Architect?</a> · <a href="./about.html">About</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="./ip.html">IP</a> · <a href="./status.html">Status</a></span>
+        <span class="small" style="color:var(--muted,#7a8299);margin-top:8px;display:block">A <a href="https://vaultsparkstudios.com/" rel="author" target="_blank" style="color:inherit;text-decoration:none">VaultSpark Studios</a> Game · <a href="./landing.html">Why Franchise Architect?</a> · <a href="./about.html">About</a> · <a href="./status.html">Status &amp; Updates</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a> · <a href="https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions" target="_blank" rel="noopener">Community</a></span>
             <span class="studio-copyright" data-studio-copyright>© 2026 VaultSpark Studios LLC. All rights reserved.</span>
 </footer>
 

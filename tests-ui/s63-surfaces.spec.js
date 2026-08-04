@@ -15,6 +15,7 @@ async function startFranchise(page) {
   await expect(page.locator("#setupStatus")).toContainText("Ready", { timeout: 20_000 });
   await page.click(".setup-details-toggle");
   await page.selectOption("#modeInput", "play");
+  await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 45_000 });
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });

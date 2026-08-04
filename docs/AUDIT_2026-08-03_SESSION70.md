@@ -1,0 +1,61 @@
+# Audit — Franchise Architect: Football — Session 70
+
+Public-safe live-code audit. The JSON sidecar is the sole source of truth.
+
+## Profile and review lens
+
+- Product: public-unlaunched public browser football game/app
+- Rubric: full-scope founder rubric: features/replayability, reward cycle, UI/UX + feedback loop, visual eliteness, gamification/immersion (+2), AI/intelligence, security, speed/efficiency (+1), token cost, plus a complete public-website redundancy/staleness/audience pass; staging: Independent staging verified at 833779e (staging.playfranchisearchitect.com, 11/11 same-origin provenance); production healthy but at older c92e389
+- Profile source: live code, two very-thorough scans (all 11 public pages + game loop/AI/perf), premise spot-verification by direct grep/read, prior-session receipts
+- Game-loop review: tightness 8 · progression 6 · session engagement 8 · retention 4 · soul fidelity 7 · overall 6.6
+- Evidence caveat: Structural scores only; docs/PLAYTESTS absent so no cohort claims. Retention 4 is structural: no achievements/trophy case, no streaks, no reward beat on the three most-repeated actions, zero audio/haptics.
+
+## Ranked implementation plan
+
+| Rank | Tier | Category | Effort | Impact | Innovation | Priority | Item and concrete recipe |
+|---:|---|---|---:|---:|---:|---:|---|
+| 1 | FIRE | UI/UX / onboarding funnel / first-impression truth | 4.0h | 10 | 7 | 27.1 | **root-funnel-instant-play** — State-branched home: no saves → hero pitch + one-click Quick Start (random team default) + 'Customize' expander, saves collapsed/hidden; saves present → Continue/Resume first. Retitle to 'Franchise Architect: Football — Deep NFL Franchise Simulator', adopt the strong landing meta description on /, default runtime dropdown to Client (rename 'Server-backed' to a dev-mode label), strip Data Paths inputs from the deployed build, fix source runtime metas to match built truth. Focused Playwright tests: fresh-profile first paint has no disabled buttons/empty tables and one-click start reaches game.html; returning-save profile sees Continue first. |
+| 2 | FIRE | Immersion / juice / accessibility | 3.5h | 8 | 8 | 26.0 | **synth-audio-haptics-layer** — 6-8 tone palette (advance tick, TD flourish during sim-watch, win/loss stingers, signing thunk, draft-pick brass, tier-up fanfare) as one lazily-initialized WebAudio module; navigator.vibrate pulses on mobile loop for score changes and decision commits; settings toggles for sound and haptics; extend prefers-reduced-motion to confettiBurst and add score roll-up number animation gated the same way. Focused test: toggle persistence and no-AudioContext-before-gesture. |
+| 3 | FIRE | Gamification / meta-progression / retention | 5.0h | 9 | 8 | 25.6 | **achievement-trophy-case** — achievements.js registry (~30, spanning first-win through dynasty/impossible tiers: comeback playoff run, draft-steal All-Pro, cap-hell escape, 3-peat, brutal-difficulty title), subscribed at the post-sim/post-season/post-draft/post-trade seams; cross-save persisted earned-set with franchise + date; Trophy Case panel (settings or overview) with earned/locked states and rarity styling; unlock toast reusing persona-tier pattern; canvas share card per trophy reusing hallOfFameCeremony drawCard. Focused tests: deterministic unlock from a crafted receipt, persistence across reload, no duplicate awards. |
+| 4 | FIRE | AI / rival intelligence / immersion | 5.0h | 8 | 9 | 25.6 | **rival-gm-persona-memory** — rivalGmPersona engine module: deterministic persona per club (name, two traits, negotiation style mapped to existing strategy presets); bounded memory ledger (last N receipted interactions with the player: trades accepted/rejected, FA outbids, playoff eliminations) persisted in league state; trade offers, counter rationale, outbid receipts, and pregame press quotes reference the actual ledger ('still remembers the 2028 draft-day fleecing'); Rival Coach Intel card shows persona + tendency accuracy that sharpens with scouting investment. Focused tests: determinism across reloads, ledger boundedness, no stat/score mutation from persona layer. |
+| 5 | FIRE | Reward cycle / feedback loop / gamification | 4.0h | 9 | 7 | 24.4 | **reward-beats-hot-paths** — Three beats: (1) Week N Recap card in refreshPostSimulation — score, turning-point play from sim-watch data, player of the week, standings delta; (2) draft-pick moment card — pick announcement, combine-grade context, board-value verdict (steal/reach/solid) from existing prospect data; (3) post-trade verdict card reusing renderTradeBreakdown values with persona reaction line (pairs with rank 4). Wire buildMentorshipBadge into the roster view. Audio stingers from rank 2 attach to each beat. Focused tests per beat. |
+| 6 | HIGH | Security / public truth / brand integrity | 3.5h | 9 | 6 | 22.0 | **public-truth-and-privacy-pass** — L1 plus: derive landing stats at build from source truth (engine module count, playable seasons, legacy tiers) so they can never go stale; strip dev comments from served HTML in build-pages; rewrite changelog as dated player-facing entries generated from a curated release-notes source; rewrite contact.html without the 'expected to forward' hedge; retire vsfgm- meta names (read new + legacy); one shared beta-status phrase used by all pages. Smoke asserts cover.png exists and stat numbers match derived counts. |
+| 7 | HIGH | Features / persistence depth / replayability | 6.0h | 9 | 7 | 21.0 | **indexeddb-persistence-promotion** — Browser save store adapter over indexedDbSaveStore semantics behind the existing async store seam; one-time copy-forward migration with verification receipt before localStorage cleanup; quota probe with fail-closed fallback; raise drive-log retention window and backup budget to the new ceiling with derived multipliers; storage meter in settings showing store, usage, and retention truth. Focused tests: migration idempotence, fallback path, retention math, integrity stamp round-trip. |
+| 8 | HIGH | Release / deploy parity | 2.0h | 8 | 5 | 20.0 | **production-parity-promotion** — Production promotion command mirroring the staging authority: deploy exact candidate, converge-poll the production origin for manifest/fingerprint identity, emit a signed parity receipt consumed by release-evidence and Launch Readiness surfaces, retain one-command rollback. Run after this session's implementation lands and re-verifies on staging. |
+| 9 | HIGH | AI / difficulty / QoL | 3.5h | 7 | 7 | 19.9 | **living-difficulty-controls** — L1 plus opt-in Adaptive League mode: rolling 2-season win% nudges CPU trade aggression, FA bid competitiveness, and contract demands within bounded bands, each shift announced as a league storyline ('rival front offices are circling'); difficulty badge on the franchise header; replace the raw aggression input with labeled bands. Focused tests: re-patch receipt, adaptation bounds, opt-out inertness. |
+| 10 | HIGH | Speed / payload / resilience | 4.0h | 8 | 6 | 18.6 | **tab-code-splitting-sw-hardening** — Convert tab renderers to dynamic import() inside hydrateTab/HYDRATION_LOADERS so only the active tab's module graph loads; keep overview eager; prefetch remaining tabs on idle after first paint. L1 SW hardening included. Emit before/after payload receipt into deploy-manifest. Focused tests: lazy tab loads on demand, offline still boots after one synthetic precache 404. |
+| 11 | HIGH | Website IA / content consolidation / SEO | 4.0h | 8 | 6 | 18.6 | **website-ia-consolidation** — L1 plus: merge status+changelog into one dated 'Beta Status & Release Notes' page; one footer partial injected at build across all pages (adds Changelog + GitHub/Community sitewide); contact panel component used by contact/privacy/terms; single canonical beta-status phrase and one JSON-LD source consumed by both landing and index; canonical tags in source; sitemap lastmod from git history; fix the landing '#about' anchor to about content; favicon + title-separator consistency; real 404 page. Smoke: no page without footer, no orphan, sitemap parity. |
+| 12 | MEDIUM | Token efficiency / cost observability | 1.0h | 5 | 4 | 12.6 | **skill-cost-ledger-repair** — L1 plus a staleness warning in context-meter when the newest ledger row is older than the newest session lock, so silent telemetry death is self-announcing. Verify one full skill cycle appends a row. |
+
+Combined priority: **261.4**.
+
+## Premise verification and rejected phantom work
+
+- Rejected/deferred “Wire the 'dead' ownerPatience difficulty lever”: Rejected — false premise caught in verification. src/runtime/applyLeagueSetup.js:63-64 writes settings.ownerPatience into owner.patience and src/runtime/GameSession.js:250,257,259,269 read it (pressure = (1 - patience) × 100). The lever is live; the scan's zero-consumer claim was wrong.
+- Rejected/deferred “Claim launch readiness or flip lifecycle”: Rejected. zoho.mail.admin secrets MISSING, SHA-bound founder approval absent, registry lifecycle reconciliation sibling-owned. Production-parity promotion is ranked; gate collapse is not.
+- Rejected/deferred “Decompose the 291 KB GameSession.js or the 120-route adapters in one pass”: Real debt, deliberately not ranked whole — exceeds safe migration proof for one sprint. Rank 10 code-splitting takes the incremental boundary instead, consistent with prior-session precedent.
+- Rejected/deferred “Delete zero-importer modules (indexedDbSaveStore, modLoader, rewindManager)”: Rejected per S67 read-before-deleting finding: indexedDbSaveStore is a complete ~250 MB persistence layer. Promoted to ranked item 7 (wire it) instead of deletion.
+- Rejected/deferred “Assert retention/engagement outcome gains from any ranked item”: Rejected. No consented cohort exists; all retention claims in this audit are structural, not outcome claims.
+
+## Three recommended design moves
+
+1. Invert the funnel: the root URL must sell the game and start a franchise in one click, not present a disabled Continue button, 'Connecting to server...', and empty save tables to first-time visitors.
+2. Make every public sentence true or player-meaningful: fix the four false/dev-facing marketing claims, the missing og:image, dead vsfgm branding, and internal ops leakage (SPARKED/FORGE/founder-approval strings) on public surfaces.
+3. Give the loop a pulse: weekly recap, draft-pick, and trade-verdict reward beats, a cross-save trophy case, and a tiny synth audio/haptics layer on the hottest actions.
+
+## Execution Log
+
+| Item | Status | Evidence |
+|---|---|---|
+| root-funnel-instant-play | open | — |
+| synth-audio-haptics-layer | open | — |
+| achievement-trophy-case | open | — |
+| rival-gm-persona-memory | open | — |
+| reward-beats-hot-paths | open | — |
+| public-truth-and-privacy-pass | open | — |
+| indexeddb-persistence-promotion | open | — |
+| production-parity-promotion | open | — |
+| living-difficulty-controls | open | — |
+| tab-code-splitting-sw-hardening | open | — |
+| website-ia-consolidation | open | — |
+| skill-cost-ledger-repair | open | — |

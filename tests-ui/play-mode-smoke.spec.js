@@ -5,6 +5,7 @@ test("create league in play mode reaches the franchise screen", async ({ page })
   await expect(page.locator("#setupStatus")).toContainText("Ready", { timeout: 20_000 });
   await page.click(".setup-details-toggle");
   await page.selectOption("#modeInput", "play");
+  await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 45_000 });
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
@@ -17,6 +18,7 @@ test("first session turns onboarding promises into a committed weekly evidence t
   await expect(page.locator("#setupStatus")).toContainText("Ready", { timeout: 20_000 });
   await page.click(".setup-details-toggle");
   await page.selectOption("#modeInput", "play");
+  await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
 
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 45_000 });
@@ -69,6 +71,7 @@ test("returning player can continue the exact live Season chapter", async ({ pag
   await expect(page.locator("#setupStatus")).toContainText("Ready", { timeout: 20_000 });
   await page.click(".setup-details-toggle");
   await page.selectOption("#modeInput", "play");
+  await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 45_000 });
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 60_000 });
