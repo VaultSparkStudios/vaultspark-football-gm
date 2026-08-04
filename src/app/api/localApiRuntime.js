@@ -1,4 +1,4 @@
-import { createBrowserSaveStore } from "../../adapters/persistence/browserSaveStore.js";
+import { createHybridBrowserSaveStore } from "../../adapters/persistence/hybridSaveStore.js";
 import { createPersistenceDescriptor } from "../../adapters/persistence/saveStoreShared.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "../../config/leagueSetup.js";
 import { createLeagueBase } from "../../domain/teamFactory.js";
@@ -247,9 +247,13 @@ export function createLocalApiRuntime({
   currentYear = new Date().getFullYear(),
   scheduler = (fn) => setTimeout(fn, 0)
 } = {}) {
-  const saveStore = createBrowserSaveStore({
+  const saveStore = createHybridBrowserSaveStore({
     storage,
-    now: () => new Date(now()).toISOString()
+    now: () => new Date(now()).toISOString(),
+    onDegrade: (reason) => {
+      runtimeMetrics.lastPersistenceDegrade = reason;
+      console.warn("High-capacity save store degraded to localStorage:", reason);
+    }
   });
   const setupBootstrap = createLeagueBase(currentYear);
   const defaultSettings = resolveLeagueSettings();
@@ -279,6 +283,16 @@ export function createLocalApiRuntime({
       session = buildSession({ startYear: currentYear });
     }
     return session;
+  }
+
+  // High-capacity persistence unlocks full-archive drive logs (S70): when the
+  // hybrid store is healthy, retention stops sacrificing play-by-play to the
+  // localStorage quota. Applied to every session that becomes authoritative.
+  function applyPersistenceProfile(activeSession) {
+    if (activeSession && typeof saveStore.isHighCapacity === "function" && saveStore.isHighCapacity()) {
+      activeSession.updateLeagueSettings({ archivePlayByPlayGames: 272 });
+    }
+    return activeSession;
   }
 
   function trackRouteMetric(route, durationMs) {
@@ -487,6 +501,7 @@ export function createLocalApiRuntime({
         );
         session.league.scouting.weeklyPoints = session.league.settings.scoutingWeeklyPoints;
         applyInitialLeagueSetup(session, session.controlledTeamId);
+        applyPersistenceProfile(session);
         writeAutoBackup("new-league");
         return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session) }));
       }
@@ -1109,14 +1124,20 @@ export function createLocalApiRuntime({
       }
 
       if (method === "GET" && pathname === "/api/system/persistence") {
+        const highCapacity = typeof saveStore.isHighCapacity === "function" && saveStore.isHighCapacity();
         return finish(
           jsonResponse(200, {
             ok: true,
-            persistence: createPersistenceDescriptor(
-              "browser",
-              true,
-              "Browser-backed persistence is active via local storage save slots and rolling backups."
-            )
+            persistence: {
+              ...createPersistenceDescriptor(
+                highCapacity ? "browser-hybrid" : "browser",
+                true,
+                highCapacity
+                  ? "High-capacity persistence is active: snapshot bytes in IndexedDB, slot metadata and integrity stamps in local storage."
+                  : "Browser-backed persistence is active via local storage save slots and rolling backups."
+              ),
+              highCapacity
+            }
           })
         );
       }
@@ -1196,7 +1217,7 @@ export function createLocalApiRuntime({
         } catch (error) {
           return finish(jsonResponse(error.status || 400, snapshotErrorPayload(error)));
         }
-        session = replacement;
+        session = applyPersistenceProfile(replacement);
         writeAutoBackup("snapshot-import");
         return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session) }));
       }
@@ -1231,7 +1252,7 @@ export function createLocalApiRuntime({
         let replacement;
         try { replacement = sessionFromSnapshot(snapshot); }
         catch (error) { return finish(jsonResponse(error.status || 400, snapshotErrorPayload(error))); }
-        session = replacement;
+        session = applyPersistenceProfile(replacement);
         return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: saveStore.listSaveSlots() }));
       }
 
@@ -1244,7 +1265,7 @@ export function createLocalApiRuntime({
         let replacement;
         try { replacement = sessionFromSnapshot(snapshot); }
         catch (error) { return finish(jsonResponse(error.status || 400, snapshotErrorPayload(error))); }
-        session = replacement;
+        session = applyPersistenceProfile(replacement);
         return finish(jsonResponse(200, { ok: true, state: getAugmentedState(session), slots: saveStore.listBackupSlots() }));
       }
 

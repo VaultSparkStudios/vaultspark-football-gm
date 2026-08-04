@@ -323,9 +323,29 @@ export function renderPersistence() {
     {
       kind: p.kind,
       available: p.available,
+      capacity: p.highCapacity ? "high (IndexedDB)" : p.kind === "browser" || p.kind === "browser-hybrid" ? "standard (localStorage)" : "—",
       notes: p.notes
     }
   ]);
+  // Storage meter (S70): live browser estimate so quota truth is visible where
+  // saves are managed. Best-effort — the API is absent in some browsers.
+  if (navigator?.storage?.estimate) {
+    navigator.storage.estimate().then(({ usage, quota }) => {
+      const table = document.getElementById("persistenceTable");
+      if (!table || !Number.isFinite(usage) || !Number.isFinite(quota) || !quota) return;
+      let meter = document.getElementById("storageMeterRow");
+      if (!meter) {
+        meter = document.createElement("div");
+        meter.id = "storageMeterRow";
+        meter.className = "small muted";
+        table.insertAdjacentElement("afterend", meter);
+      }
+      const usedMb = (usage / 1_048_576).toFixed(1);
+      const quotaMb = Math.round(quota / 1_048_576);
+      meter.textContent = `Browser storage: ${usedMb} MB used of ~${quotaMb} MB available (${Math.round((usage / quota) * 100)}%).`;
+      // observability-allow-silent: a missing estimate simply leaves no meter.
+    }).catch(() => {});
+  }
   renderSettingsSpotlight();
 }
 

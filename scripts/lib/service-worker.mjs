@@ -36,6 +36,10 @@ export function shouldPrecache(relativePath) {
   const normalized = relativePath.replace(/\\/g, "/");
   if (PRECACHE_EXCLUDES.includes(normalized)) return false;
   if (normalized === "robots.txt" || normalized === "sitemap.xml") return false;
+  // Every built HTML page references the content-hashed stylesheet; the plain
+  // styles.css copy exists only for back-compat direct hits and smoke, so
+  // precaching it would store the same 150 KB twice (S70).
+  if (normalized === "styles.css") return false;
   return PRECACHE_EXTENSIONS.has(path.extname(normalized).toLowerCase());
 }
 
@@ -87,9 +91,22 @@ const PRECACHE_URLS = ${JSON.stringify(urls)};
 const NETWORK_ONLY = [/\\/api\\//, /_health$/, /deploy-manifest\\.json$/, /edge-policy-receipt\\.json$/];
 
 self.addEventListener("install", (event) => {
+  // Resilient install (S70): cache.addAll is atomic, so one 404 among all
+  // precache URLs used to silently disable offline support entirely. Each URL
+  // now caches independently; failures are counted and logged, and everything
+  // that succeeded still serves from cache.
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(PRECACHE_URLS))
+      .then((cache) =>
+        Promise.allSettled(PRECACHE_URLS.map((url) => cache.add(url))).then((results) => {
+          const failed = results
+            .map((result, index) => (result.status === "rejected" ? PRECACHE_URLS[index] : null))
+            .filter(Boolean);
+          if (failed.length) {
+            console.warn("[sw] precache incomplete: " + failed.length + "/" + PRECACHE_URLS.length + " failed", failed.slice(0, 10));
+          }
+        })
+      )
       .then(() => self.skipWaiting())
   );
 });

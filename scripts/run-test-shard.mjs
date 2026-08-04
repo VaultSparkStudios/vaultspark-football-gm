@@ -46,6 +46,7 @@ export const SHARDS = {
     "test/contextual-feedback.test.js",
     "test/box-score-presentation.test.js",
     "test/browser-save-store.test.js",
+    "test/hybrid-save-store.test.js",
     "test/browser-wiring.test.js",
     "test/client-diagnostics.test.js",
     "test/button-action-contracts.test.js",

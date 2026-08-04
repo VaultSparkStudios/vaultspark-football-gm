@@ -203,7 +203,14 @@ export function applyArchiveRetention(league) {
     league.gameArchive = league.gameArchive.slice(-ARCHIVE_RETAINED_GAMES);
   }
 
-  const keepFrom = league.gameArchive.length - PLAY_BY_PLAY_RETAINED_GAMES;
+  // S70: the drive-log window is settings-derived so high-capacity persistence
+  // (IndexedDB) can retain play-by-play for the whole archive instead of
+  // sacrificing it to the localStorage quota. Default stays the proven 48.
+  const configured = Number(league.settings?.archivePlayByPlayGames);
+  const playByPlayWindow = Number.isFinite(configured)
+    ? Math.max(16, Math.min(ARCHIVE_RETAINED_GAMES, Math.floor(configured)))
+    : PLAY_BY_PLAY_RETAINED_GAMES;
+  const keepFrom = league.gameArchive.length - playByPlayWindow;
   league.gameArchive.forEach((entry, index) => {
     const box = entry?.boxScore;
     if (!box || index >= keepFrom) return;

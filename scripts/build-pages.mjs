@@ -249,6 +249,41 @@ async function emitHashedStylesheet() {
   return hashedStyleHref;
 }
 
+// Boot-payload receipt (S70): what a first paint actually costs vs what stays
+// behind the lazy runtime import. Recomputed every build so payload regressions
+// are visible in the deploy manifest instead of anecdotal.
+async function measureBootPayload() {
+  async function bytesOf(relative) {
+    try {
+      return (await fs.stat(path.join(outDir, relative))).size;
+    } catch {
+      return 0;
+    }
+  }
+  async function dirBytes(relative) {
+    let total = 0;
+    async function walk(dir) {
+      let entries;
+      try {
+        entries = await fs.readdir(dir, { withFileTypes: true });
+      } catch {
+        return;
+      }
+      for (const entry of entries) {
+        const target = path.join(dir, entry.name);
+        if (entry.isDirectory()) await walk(target);
+        else if (entry.name.endsWith(".js")) total += (await fs.stat(target)).size;
+      }
+    }
+    await walk(path.join(outDir, relative));
+    return total;
+  }
+  const bootJsBytes = (await bytesOf("app.js")) + (await bytesOf("setup.js")) + (await dirBytes("lib"));
+  const lazyEngineBytes = (await dirBytes("src")) + (await dirBytes("public"));
+  const cssBytes = await bytesOf(hashedStyleHref);
+  return { bootJsBytes, lazyEngineBytes, cssBytes };
+}
+
 async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
   const identity = JSON.parse(await fs.readFile(path.join(publicDir, "public-identity.json"), "utf8"));
   const sourceRevision = String(
@@ -270,6 +305,7 @@ async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
     serverAvailable: serverAvailable === "true",
     edgePolicyFingerprint: edgePolicy.policyFingerprint,
     edgePolicyStatus: "source-authored-not-host-observed",
+    bootPayload: await measureBootPayload(),
     generatedAt
   };
   const health = {

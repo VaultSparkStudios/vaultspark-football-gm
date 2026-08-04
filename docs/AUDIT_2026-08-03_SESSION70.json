@@ -14,8 +14,8 @@
     "combinedPriority": 261.4,
     "topItem": "root-funnel-instant-play",
     "source": "live-code-audit + full public-website content pass",
-    "openItems": 4,
-    "completedItems": 8,
+    "openItems": 2,
+    "completedItems": 10,
     "priorityFormula": "Priority = axis-weighted Impact × Innovation / log2(EffortHours + 2); execution order below is token-efficiency-grouped by touched surface, not raw priority order.",
     "theme": "The simulation is deep and truthful, but the front door is inverted (the root URL is a save manager for visitors with no saves), the marketing surface makes claims the shipped client cannot back, the loop's three hottest actions are silent, and there is no meta-progression, no sound, and no cross-save trophy identity — all fixable zero-backend."
   },
@@ -289,7 +289,7 @@
       "priority": 21,
       "slug": "indexeddb-persistence-promotion",
       "title": "Saves move to the 250 MB IndexedDB store; drive logs stop being sacrificed",
-      "status": "open",
+      "status": "shipped",
       "premise": "src/adapters/persistence/indexedDbSaveStore.js is a complete IndexedDB persistence layer with zero importers (verified by repo-wide grep). Browser saves live in localStorage under a 5-10 MB ceiling, forcing gzip+base64 snapshots, byte-bounded backups, and the S68 drive-log retention window that deletes play-by-play (68% of an archived box score) from older games — a documented UX sacrifice made purely for quota.",
       "evidence": [
         "Grep indexedDb|indexedDB|IndexedDB → single file src/adapters/persistence/indexedDbSaveStore.js",
@@ -310,7 +310,8 @@
           "effortHours": 9,
           "recipe": "L2 plus full drive-log retention for all archived games (removing the S68 truncation notice entirely) and per-save storage breakdown UI."
         }
-      }
+      },
+      "executionEvidence": "Hybrid IDB store w/ verified copy-forward migration + fail-closed fallback; drive-log retention settings-derived (272 under IDB); backups 12/64MB; storage meter; 5/5 tests"
     },
     {
       "rank": 8,
@@ -389,7 +390,7 @@
       "priority": 18.6,
       "slug": "tab-code-splitting-sw-hardening",
       "title": "First paint stops paying for all 14 tabs; offline mode stops being one 404 from dead",
-      "status": "open",
+      "status": "shipped",
       "premise": "~1.79 MB of uncompressed JS loads before first paint: app.js has 29 static top-level imports and zero dynamic import() calls exist in public/ (verified; the single import() is the runtime loader in createApiClient.js:155). GameSession.js alone is 291 KB. The service worker precaches 147 URLs via atomic cache.addAll (one 404 silently kills offline), precaches styles.css twice (plain + hashed), and is registered only from game.html — the entry index.html is never cached.",
       "evidence": [
         "Grep import( across public/ → 1 hit (createApiClient.js:155, runtime loader)",
@@ -410,7 +411,8 @@
           "effortHours": 7,
           "recipe": "L2 plus splitting GameSession's engine imports so the browser client only pulls simulation modules when a local-runtime league starts."
         }
-      }
+      },
+      "executionEvidence": "SW allSettled precache + styles dedupe (-141KB) + index registration root-fixed + bootPayload receipt (boot 829KB vs lazy 1.06MB). Premise corrected: engine graph was already lazy via createApiClient dynamic import; tab-module splitting deferred as the bindings refactor it actually requires"
     },
     {
       "rank": 11,
