@@ -789,3 +789,31 @@ Rationale: auto-selecting a choice would erase player agency, while ignoring the
 **Launch remains an AND of independent gates.** Verified independent staging closes one gate only. Healthy production routes/headers do not replace exact production parity, received-and-reply-capable email, SHA-bound founder approval, or authoritative lifecycle reconciliation.
 
 **No Creative Direction Record was added.** The founder direction concerned execution quality, persistence, evidence honesty, and cost discipline rather than a new product creative decision; this public repository retains its intentional CDR omission.
+
+## 2026-08-04 — Session 70
+
+**The root URL is for the person who has never seen the game.** A save manager with a disabled Continue button and "Connecting to server..." optimized the homepage for the ~0% of first loads that have local saves on a zero-backend product. The hero now branches on actual save presence, and every quick-start affordance keeps its promise: one click creates a league.
+
+**Public claims are build-gated, not reviewed.** A truth gate wired into the Pages build derives the engine-system count from source, forbids retired or false claims and internal lifecycle vocabulary on every public surface, and fails the build if the promised og:image does not exist. It caught its first real drift within hours — two new engine modules made "36 Engine Systems" stale mid-session.
+
+**Reward beats derive from receipts and never block navigation.** Week Recap, draft-pick verdict, and trade verdict read the exact receipted result (box score, grade + round, valuation delta) and render as one shared non-modal auto-dismissing card. A bye stays silent; a missing valuation shows no verdict rather than a fabricated "fair" one.
+
+**Trophies are cross-save identity, earned only from receipted truth.** The achievement registry checks receipted events and live dashboard values, treats missing data as not-earned, persists ids and timestamps only, and never re-awards. The trophy case is permanent across every franchise in the browser profile.
+
+**Rival GM personas are deterministic, descriptive, and never causal.** Persona identity derives from league seed + team through a local avalanche hash — verification caught the shared derivedRng producing identical personas for near-identical keys, and the shared util could not change without silently re-rolling every existing league's staff. Grudge ledgers record only receipted interactions (trades, declines, outbids), bounded at eight entries, and no persona line grants or removes a point of value.
+
+**Difficulty changes announce themselves through one seam.** Both runtimes route /api/settings through GameSession.updateLeagueSettings, which re-materializes the controlled owner's patience on preset change and writes a receipted news event. Adaptive League is opt-in, bounded to hard bands around the preset baseline, driven only by rolling two-season win%, and announces every nudge.
+
+**Save bytes moved to IndexedDB; truth stayed in localStorage.** The hybrid store keeps slot metadata and integrity stamps synchronous in localStorage while snapshot bytes use IndexedDB capacity. Migration is copy-forward and verified by readback against a fresh integrity stamp before the localStorage bytes are released; any IndexedDB failure permanently degrades the session to the proven localStorage path. Under a healthy hybrid store, drive-log retention stops sacrificing play-by-play (settings-derived window, full 272-game archive).
+
+**One 404 must not kill offline.** The service worker's atomic cache.addAll was replaced with per-URL Promise.allSettled plus failure logging, the duplicate plain stylesheet left the precache, and the registration condition was root-fixed so index.html actually registers the worker (writeHtml passes "./" as the index pagePath — the old check could never match).
+
+**Artifacts are platform-independent by construction.** Windows checkouts carry CRLF and CI carries LF, so byte-identical trees produced different artifact fingerprints and production parity could never verify against a local expectation. Every text asset LF-normalizes at artifact copy; the local fingerprint now exactly matches the CI-built production artifact.
+
+**CI env is part of the brand surface.** The deploy workflow still built with pre-rebrand canonical/og URLs, shipping vaultspark-football-gm canonicals on playfranchisearchitect.com for every deploy since S25. Discovered only because parity verification compared real bytes; fixed at the workflow, root mount + canonical host, legacy mounts kept as mirrors.
+
+**Gates must not demand what other gates forbid.** The lifecycle evidence check required the literal internal "before marking the project SPARKED" sentence on the public status page — vocabulary the new public-truth gate forbids. The check now asserts the intent (beta declared, no launch claim) instead of the internal wording.
+
+**A dead telemetry file is worse than no file.** The audit itself was misled by a stale legacy skill-cost ledger sitting beside the live one. The dead twin was retired and the context meter now carries a heartbeat that self-announces when the newest ledger row predates the current session lock.
+
+**Production parity closed without a hook bypass.** The pre-push wrapper was slow (~15 minutes under load), not deadlocked; the S68 bypass precedent was deliberately not exercised once patience proved the hook honest. Push, gated deploy, staging 11/11, and production 8/8 all completed on the normal path.

@@ -2,6 +2,27 @@
 
 Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Session 9: test coverage (2026-04-13).
 
+## Session 70 — Full-scope audit executed (2026-08-04)
+
+| # | Item | Status |
+|---|------|--------|
+| 1 | root-funnel-instant-play — one-click start, random team, state-branched hero | ✅ Done 2026-08-04 |
+| 2 | synth-audio-haptics-layer — WebAudio palette + haptics + persisted toggles | ✅ Done 2026-08-04 |
+| 3 | achievement-trophy-case — 29 cross-save trophies + toasts + share text | ✅ Done 2026-08-04 |
+| 4 | rival-gm-persona-memory — named GMs, receipted grudge ledgers, 3 surfaces | ✅ Done 2026-08-04 |
+| 5 | reward-beats-hot-paths — week recap, draft verdict, trade verdict beats | ✅ Done 2026-08-04 |
+| 6 | public-truth-and-privacy-pass — build-gated truth, cover.png, no internal vocab | ✅ Done 2026-08-04 |
+| 7 | indexeddb-persistence-promotion — hybrid store, verified migration, 272-game drive logs | ✅ Done 2026-08-04 |
+| 8 | production-parity-promotion — production 8/8 at 870382c, staging 11/11 same SHA | ✅ Done 2026-08-04 |
+| 9 | living-difficulty-controls — mid-game presets + opt-in bounded adaptive mode | ✅ Done 2026-08-04 |
+| 10 | tab-code-splitting-sw-hardening — resilient SW, dedupe, bootPayload receipt (premise corrected) | ✅ Done 2026-08-04 |
+| 11 | website-ia-consolidation — merges, redirects, lastmod sitemap, real 404 | ✅ Done 2026-08-04 |
+| 12 | skill-cost-ledger-repair — heartbeat self-announces staleness; dead twin retired | ✅ Done 2026-08-04 |
+
+Second-order shipped: SW index-registration root fix · persona hash avalanche · lifecycle vocabulary decoupling · dev-server runtime meta truth · pre-rebrand CI canonical fix (latent since S25) · LF artifact determinism.
+
+Open (next session candidates): dynasty-almanac-share-cards · broadcast-mode-sim-watch · trophy-road-onboarding · tab-module code-splitting (requires app.js bindings refactor).
+
 ## Session 8 Priority Items (All 20)
 
 ### TIER 1 — Ship-Blockers (Beta Gate)

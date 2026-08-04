@@ -1,3 +1,24 @@
+# Session 70 Closeout (2026-08-04)
+
+## Where We Left Off — Session 70
+
+The continuous /start → /audit → /implement → /closeout mission is complete. A full-scope 12-item audit (including a complete public-website content pass) executed 12/12 with six additional second-order root fixes; the Unified Genius List is exhausted at 0 open / 12 closed.
+
+The product's front door is inverted and truthful: one-click instant start with a random-team default, quick-start cards that actually start leagues, returning-player affordances that reveal only when saves exist, and a build-gated public-truth contract (derived stats, no retired claims, no internal lifecycle vocabulary, real og:image share card). Site IA consolidated to dated Status & Updates, merged rights pages, lastmod sitemap, and a real 404.
+
+The loop has a reward layer: receipt-derived beat cards on weekly sim / draft pick / trade, a 29-trophy cross-save achievement case, a zero-asset WebAudio synth + haptics layer, and the un-dead mentorship badge. All 31 rivals are named GM personas with bounded receipted grudge memory surfaced at the offer card, pre-game intel, and outbid news. Difficulty is a live control: mid-game presets through one shared GameSession seam with receipted announcements, plus opt-in bounded Adaptive League.
+
+Persistence promoted to a hybrid IndexedDB store with verified copy-forward migration, fail-closed localStorage fallback, full-archive drive logs (272 games) under IDB, a 12/64 MB backup runway, and a live storage meter. Service worker precache is per-URL resilient with the duplicate stylesheet dropped and SW registration root-fixed onto index.html; the deploy manifest now carries a bootPayload receipt (boot 821 KB vs lazy engine 1.04 MB — the code-splitting premise was corrected: the engine graph was already lazy).
+
+Three latent infrastructure defects died: CI had shipped pre-rebrand vaultspark-football-gm canonicals on the primary domain since S25; CRLF/LF checkout differences made artifact fingerprints platform-dependent (text assets now LF-normalize at artifact copy); and the lifecycle evidence gate demanded internal SPARKED wording on a public page (now beta-declared/no-launch-claim semantics).
+
+**The production-parity launch gate closed this session.** Production serves exact candidate 870382c1dc17d80460c0bffdc83db41591d50f0e with provenance 8/8 and exact artifact fingerprint parity (078a91e9…); independent staging verified 11/11 at the same SHA with a rollback receipt; release truth is reconciled. Direct final evidence: Node 842/842 with a fresh source-bound receipt, Playwright 38/38, Pages build/smoke green.
+
+Launch remains HOLD on exactly three human gates: delivered/reply-capable on-domain email (zoho.mail.admin secrets MISSING), SHA-bound founder approval, and authoritative registry lifecycle reconciliation. No readiness or retention outcome was fabricated.
+
+Next-session candidates: dynasty-almanac-share-cards, broadcast-mode-sim-watch, trophy-road-onboarding, tab-module code-splitting (needs the app.js bindings refactor).
+
+## Previous Session
 # Session 69 Closeout (2026-08-03)
 
 ## Where We Left Off — Session 69

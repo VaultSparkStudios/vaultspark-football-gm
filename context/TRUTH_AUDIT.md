@@ -2,8 +2,19 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-07-27
+Last reviewed: 2026-08-04
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-08-04 - Session 70 truth updates
+
+- **Every public sentence is now build-gated to source truth.** A fail-closed gate derives the engine-system count (38, measured), forbids retired claims ('IndexedDB (250MB)', '50+ API Routes', 'last 10 major decisions') and internal lifecycle vocabulary (SPARKED/FORGE/founder) on all public surfaces, and fails the build when the promised og:image is absent. It caught real drift within hours of landing.
+- **The homepage stopped claiming a server.** Source runtime metas now declare the deployed client-only truth; the dev server rewrites them at serve time because it is the one environment where a server exists. 'Connecting to server...' no longer ships on a zero-backend build.
+- **The IndexedDB marketing claim became true before it was re-published.** The landing card claimed a 250 MB IndexedDB layer while the client had zero IndexedDB imports; the claim was removed in Wave 1 and re-added only after the hybrid store actually shipped in Wave 4.
+- **Reward surfaces report receipts, not stories.** Beat cards read exact box scores, draft grade + round, and TradeService valuations; a bye is silent, a missing valuation shows no verdict, and trophies never award on absent data.
+- **Rival personas are memory, not magic.** Grudge ledgers record only receipted interactions and persona lines are descriptive; no rating, bid, or outcome changes because of a name.
+- **Artifact identity is platform-independent.** CRLF/LF checkout differences made fingerprints diverge between Windows and CI builds of the same revision; text assets LF-normalize at artifact copy and the local fingerprint now byte-matches the CI-built production artifact (078a91e9…).
+- **Production parity is verified, not asserted.** Production serves exact candidate 870382c with provenance 8/8; staging serves the same SHA at 11/11 with a rollback receipt; release truth reconciles with evidenceValid true and launchReady false.
+- Release truth: launch remains HOLD on exactly three human gates — delivered/reply-capable on-domain email (zoho.mail.admin MISSING), SHA-bound founder approval, and authoritative registry lifecycle. Production health, revision parity, staging authority, routes, and headers are all green at 870382c. No external readiness was fabricated.
 
 ## 2026-08-01 - Session 67 truth updates
 

@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 870382c1dc17d80460c0bffdc83db41591d50f0e, required edge headers verified; evidence current through 2026-08-05T07:16:00.494Z. Launch remains HOLD; independent gates are not collapsed.",
-  "nextMilestone": "Verify an independent staging origin at the exact candidate revision, then prove production revision parity, delivered on-domain email, founder approval, and authoritative lifecycle before any launch flip.",
+  "currentFocus": "Session 70 complete: 12/12 full-scope audit executed. Production parity CLOSED — production serves exact candidate 870382c1dc17d80460c0bffdc83db41591d50f0e (provenance 8/8, fingerprint parity), staging 11/11 at same SHA. Launch HOLD on three human gates only: delivered on-domain email, SHA-bound founder approval, authoritative lifecycle.",
+  "nextMilestone": "Prove delivered and reply-capable on-domain email (zoho.mail.admin secrets MISSING), obtain SHA-bound founder approval, and reconcile authoritative registry lifecycle — then launch flip. Product candidates: dynasty almanac share cards, broadcast-mode sim-watch, trophy-road onboarding.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -70,20 +70,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 996,
+  "silScore": 997,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 100,
-    "processQuality": 98,
+    "processQuality": 99,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
-    "ecosystemIntegration": 99,
+    "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
-    "automationCoverage": 100
+    "automationCoverage": 99
   },
-  "currentSession": 69,
+  "currentSession": 70,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": "npm test 819/819 direct exit 0; npm run test:ui 33/33 exit 0; evidence:responsive 65/65 exit 0; build:pages + smoke:pages exit 0; check:browser-modules 54; staging provenance 11/11; visual receipt 6 inspected captures / 0 blocking defects.",
@@ -112,7 +112,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 846,
+  "silHealth": 847,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -175,7 +175,7 @@
       "lastChecked": "2026-08-04"
     }
   ],
-  "lastSession": 69,
+  "lastSession": 70,
   "silLastSession": 69,
   "bootAmortization": {
     "ratio": 0,
@@ -271,5 +271,6 @@
     },
     "verified": true,
     "observedAt": "2026-08-04T07:08:50.140Z"
-  }
+  },
+  "lastCloseoutAt": "2026-08-04T07:26:13.190Z"
 }
