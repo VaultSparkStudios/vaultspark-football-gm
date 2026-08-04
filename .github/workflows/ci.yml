@@ -73,7 +73,8 @@ jobs:
       - name: Verify Pages build
         run: npm run build:pages
         env:
-          VITE_APP_BASE_PATH: /vaultspark-football-gm/
+          # S70: CI verifies the same root-mount artifact the deploy publishes.
+          VITE_APP_BASE_PATH: /
           VSFGM_RUNTIME_DEFAULT: client
 
       - name: Smoke static Pages client

@@ -51,10 +51,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:
-      VITE_APP_BASE_PATH: /vaultspark-football-gm/
-      VITE_CANONICAL_URL: https://vaultsparkstudios.com/vaultspark-football-gm/
-      VITE_OG_IMAGE_URL: https://vaultsparkstudios.com/vaultspark-football-gm/images/cover.png
-      VITE_DOMAIN: vaultsparkstudios.com
+      # S70: pre-rebrand values shipped legacy vaultspark-football-gm canonicals
+      # on playfranchisearchitect.com for every deploy since S25. Root mount +
+      # canonical brand host; legacy mounts remain published as mirrors.
+      VITE_APP_BASE_PATH: /
+      VITE_CANONICAL_URL: https://playfranchisearchitect.com/
+      VITE_OG_IMAGE_URL: https://playfranchisearchitect.com/images/cover.png
+      VITE_DOMAIN: playfranchisearchitect.com
       VITE_API_ORIGIN: ${{ vars.API_ORIGIN }}
       VITE_GAME_SERVICE_ORIGIN: ${{ vars.GAME_SERVICE_ORIGIN }}
       API_ORIGIN: ${{ vars.API_ORIGIN }}
