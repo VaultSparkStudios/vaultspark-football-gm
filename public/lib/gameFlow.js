@@ -456,6 +456,7 @@ export async function loadRoster() {
   if (currentMaxAge) currentKey.set("maxAge", currentMaxAge);
   if (!commitHydration(token, currentKey.toString(), () => {
   state.roster = data.roster || [];
+  state.rosterWindow = data.windowMap || null;
   setSelectedDesignationPlayer(state.selectedDesignationPlayerId);
   renderRoster();
   if (!state.contractTeamId || state.contractTeamId === teamId) {

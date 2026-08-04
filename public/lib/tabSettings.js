@@ -481,7 +481,8 @@ export function applySettingsControls() {
   document.getElementById("settingCapGrowth").value = settings.capGrowthRate ?? 0.045;
   document.getElementById("settingTradeAggression").value = settings.cpuTradeAggression ?? 0.5;
   document.getElementById("settingRetirementMinWinPct").value = settings.retirementOverrideMinWinningPct ?? 0.55;
-  document.getElementById("settingHallOfFameInductionScoreMin").value = settings.hallOfFameInductionScoreMin ?? 240;
+  document.getElementById("settingHallOfFameInductionScoreMin").value = settings.hallOfFameInductionScoreMin ?? 450;
+  document.getElementById("settingHallOfFameMaxClassSize").value = settings.hallOfFameMaxClassSize ?? 6;
   document.getElementById("settingHallOfFameYearsRetiredMin").value = settings.hallOfFameYearsRetiredMin ?? 0;
   document.getElementById("settingRetiredNumberCareerAvMin").value = settings.retiredNumberCareerAvMin ?? 0;
   const onboardingPanel = document.getElementById("onboardingPanel");
@@ -493,6 +494,8 @@ export function renderRealismVerification() {
   const report = state.realismVerification;
   if (!report) {
     renderTable("realismVerifySummaryTable", []);
+    renderTable("realismVerifyProgressionTable", []);
+    renderTable("realismVerifyIntegrityTable", []);
     renderTable("realismVerifySeasonTable", []);
     renderTable("realismVerifyCareerTable", []);
     return;
@@ -509,6 +512,33 @@ export function renderRealismVerification() {
       careerOut: report.statusSummary?.career?.outOfRange || 0
     }
   ]);
+
+  const progression = report.progression || {};
+  renderTable("realismVerifyProgressionTable", progression.start && progression.end ? [
+    {
+      status: progression.status,
+      seasons: progression.observedSeasons,
+      seed: progression.seed,
+      startMean: progression.start.meanOverall,
+      endMean: progression.end.meanOverall,
+      annualDrift: progression.annualMeanOverallDrift,
+      target: `±${progression.target?.onTargetMaxAbs ?? 0.15}/yr`,
+      startMedian: progression.start.medianOverall,
+      endMedian: progression.end.medianOverall,
+      elite90: `${progression.start.elite90Plus} → ${progression.end.elite90Plus}`,
+      ageMix: `≤25 ${progression.start.cohorts?.developing25AndUnder?.sharePct || 0}% | 26–29 ${progression.start.cohorts?.prime26To29?.sharePct || 0}% | 30+ ${progression.start.cohorts?.veteran30Plus?.sharePct || 0}%`
+    }
+  ] : []);
+
+  const integrity = report.numericIntegrity || {};
+  renderTable("realismVerifyIntegrityTable", ["source", "simulated"].map((phase) => ({
+    phase,
+    status: integrity[phase]?.status || "missing",
+    numbers: integrity[phase]?.inspectedNumbers || 0,
+    issues: integrity[phase]?.issueCount || 0,
+    truncated: integrity[phase]?.truncated === true ? "yes" : "no",
+    sample: (integrity[phase]?.issues || []).map((issue) => `${issue.path}:${issue.kind}`).join(", ") || "none"
+  })));
 
   const flattenBlock = (block) =>
     Object.entries(block || {}).flatMap(([position, details]) =>

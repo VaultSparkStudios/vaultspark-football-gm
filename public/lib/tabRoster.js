@@ -38,6 +38,25 @@ export function renderRoster() {
     tr[i].lastElementChild.innerHTML = actions.join(" ");
   }
   decoratePlayerColumnFromRows("rosterTable", rows, { idKeys: ["id"] });
+
+  renderTable("rosterWindowTable", (state.rosterWindow?.groups || []).map((group) => ({
+    room: group.room,
+    window: group.window,
+    ovr: group.meanOverall,
+    pot: group.meanPotential,
+    age: group.meanAge,
+    nextYear: `${group.projectedDelta >= 0 ? "+" : ""}${group.projectedDelta}`,
+    ageMix: `${group.developing}D / ${group.prime}P / ${group.veteran}V`,
+    expiring: group.expiring,
+    standardBearer: group.standardBearer,
+    priority: group.priority
+  })));
+  const windowSummary = document.getElementById("rosterWindowSummary");
+  if (windowSummary) {
+    const ascending = state.rosterWindow?.ascendingRooms || [];
+    const aging = state.rosterWindow?.agingRooms || [];
+    windowSummary.textContent = `Profile ${state.rosterWindow?.profileVersion || "—"} · Rising: ${ascending.join(", ") || "none"} · Succession watch: ${aging.join(", ") || "none"}`;
+  }
 }
 
 export function renderFreeAgency() {

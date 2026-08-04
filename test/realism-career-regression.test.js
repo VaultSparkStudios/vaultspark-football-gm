@@ -69,3 +69,15 @@ test("career realism verification keeps targeted positions within guardrails", (
   assert.ok(rbMetrics["careerStats.games"]);
   assert.ok(report.careerByPosition.K.metrics["careerStats.kicking.fga"]);
 });
+
+test("a deterministic decade satisfies progression parity and finite-number integrity", () => {
+  const session = createSession({ seed: 20260306, startYear: 2026, controlledTeamId: "BUF" });
+  const report = session.runRealismVerification({ seasons: 10 });
+
+  assert.equal(report.progression.observedSeasons, 10);
+  assert.equal(report.progression.status, "on-target", JSON.stringify(report.progression));
+  assert.ok(Math.abs(report.progression.annualMeanOverallDrift) <= report.progression.target.onTargetMaxAbs);
+  assert.equal(report.numericIntegrity.status, "pass", JSON.stringify(report.numericIntegrity));
+  assert.equal(report.numericIntegrity.source.truncated, false);
+  assert.equal(report.numericIntegrity.simulated.truncated, false);
+});

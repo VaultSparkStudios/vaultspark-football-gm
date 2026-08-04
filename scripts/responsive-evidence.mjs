@@ -175,6 +175,9 @@ async function main() {
       }
 
       await setTheme(page, "dark");
+      await page.evaluate(() => {
+        document.getElementById("seedInput").value = "20260306";
+      });
       await page.click("#createLeagueBtn");
       await page.waitForURL("**/game.html", { timeout: 90_000 });
       await page.waitForSelector("#statusChip");
@@ -219,7 +222,37 @@ async function main() {
             ? ["#advanceWeekBtn", "#advance4WeeksBtn", "#advanceSeasonBtn", "#themeToggleBtn", "#gmPersonaTier"]
             : ["#themeToggleBtn"];
           await capture(page, outputDir, `${viewport.name}-game-${label}-${theme}`, selectors, records);
+          if (tabId === "rosterTab") {
+            await captureElement(page, outputDir, `${viewport.name}-roster-window-${theme}`, "#rosterWindowTable", records);
+          }
+          if (tabId === "historyTab") {
+            await page.locator(`[data-history-view="hall-of-fame"]`).click();
+            await page.waitForFunction(() => !document.getElementById("historyHallOfFamePanel")?.classList.contains("hidden"));
+            await captureElement(page, outputDir, `${viewport.name}-hall-ballot-${theme}`, "#hallOfFameBallotTable", records);
+          }
         }
+      }
+      // Exercise the verifier once so CANON-053 evidence proves the rendered
+      // progression and finite-number receipts with source-derived data.
+      const settingsTab = page.locator(`[data-tab="settingsTab"]`).first();
+      const verifierNavToggle = page.locator("#mobileNavToggle");
+      if (await verifierNavToggle.isVisible().catch(() => false)) {
+        await verifierNavToggle.click();
+        await page.waitForFunction(() => document.body.classList.contains("mobile-nav-open"));
+      }
+      await settingsTab.click();
+      if (await verifierNavToggle.isVisible().catch(() => false)) {
+        await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
+        await page.waitForTimeout(320);
+      }
+      await page.locator("#realismVerifyYearsInput").fill("1");
+      await page.locator("#runRealismVerifyBtn").click();
+      await page.waitForFunction(() => document.querySelectorAll("#realismVerifyProgressionTable tr").length > 1, null, { timeout: 120_000 });
+      await page.waitForFunction(() => document.querySelectorAll("#realismVerifyIntegrityTable tr").length === 3, null, { timeout: 120_000 });
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureElement(page, outputDir, `${viewport.name}-progression-receipt-${theme}`, "#realismVerifyProgressionTable", records);
+        await captureElement(page, outputDir, `${viewport.name}-integrity-receipt-${theme}`, "#realismVerifyIntegrityTable", records);
       }
       const overviewTab = page.locator(`[data-tab="overviewTab"]`).first();
       const returnNavToggle = page.locator("#mobileNavToggle");
@@ -270,6 +303,10 @@ async function main() {
     ...(viewport.name === "mobile" ? evidenceThemes.map((theme) => `${viewport.name}-game-loop-${theme}`) : []),
     ...evidenceThemes.map((theme) => `${viewport.name}-return-digest-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-gm-persona-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-progression-receipt-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-integrity-receipt-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-roster-window-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-hall-ballot-${theme}`),
     ...evidenceThemes.flatMap((theme) => evidenceTabs.map(([, label]) => `${viewport.name}-game-${label}-${theme}`))
   ]);
   const capturedNames = new Set(records.map((record) => record.name));

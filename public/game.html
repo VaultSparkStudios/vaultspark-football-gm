@@ -270,6 +270,14 @@
 
         <section id="rosterTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-roster" tabindex="0">
           <div class="panel">
+            <div class="narrative-panel-header">
+              <h2>Roster Window Map</h2>
+              <span class="narrative-panel-kicker">Age curve × potential × contract horizon</span>
+            </div>
+            <div id="rosterWindowSummary" class="small">Load a roster to map rising rooms and succession pressure.</div>
+            <div class="table-wrap"><table id="rosterWindowTable" data-testid="roster-window-table"></table></div>
+          </div>
+          <div class="panel">
             <h2>Roster</h2>
             <div class="row">
               <label>Team <select id="rosterTeamSelect"></select></label>
@@ -898,6 +906,9 @@
                 <div>
                   <h2>Hall Of Fame Resume</h2>
                   <div id="hallOfFameSpotlight" class="history-spotlight"></div>
+                  <h3>Ballot Watch</h3>
+                  <div class="small">Best retired resumes still outside the Hall, ranked against your commissioner threshold.</div>
+                  <div class="table-wrap"><table id="hallOfFameBallotTable" data-testid="hall-of-fame-ballot-table"></table></div>
                   <div id="hallOfFameGallery" class="history-gallery"></div>
                   <div class="row">
                     <label>Team <select id="teamHistorySelect"></select></label>
@@ -1217,6 +1228,10 @@
                 <button id="runRealismVerifyBtn">Run Verification</button>
               </div>
               <div class="table-wrap"><table id="realismVerifySummaryTable"></table></div>
+              <h3>League Progression Parity</h3>
+              <div class="table-wrap"><table id="realismVerifyProgressionTable"></table></div>
+              <h3>Finite-Number Integrity</h3>
+              <div class="table-wrap"><table id="realismVerifyIntegrityTable"></table></div>
               <div class="table-wrap"><table id="realismVerifySeasonTable"></table></div>
               <div class="table-wrap"><table id="realismVerifyCareerTable"></table></div>
               <h3>Offseason Pipeline</h3>

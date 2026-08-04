@@ -50,7 +50,7 @@ import {
   resolveDepthChartRoomShares,
   rotationMeritScore
 } from "../engine/depthChartUsage.js";
-import { coverageDepthRating } from "../domain/ratings.js";
+import { coverageDepthRating, PLAYER_DEVELOPMENT_PROFILE } from "../domain/ratings.js";
 import {
   defaultDepthChartForTeam,
   isTradeValueAcceptable,
@@ -72,6 +72,12 @@ import {
 } from "../stats/realismCalibrator.js";
 import { PFR_RECENT_WEIGHTED_PROFILE } from "../stats/profiles/pfrRecentWeightedProfile.js";
 import { PFR_CAREER_WEIGHTED_PROFILE } from "../stats/profiles/pfrCareerWeightedProfile.js";
+import {
+  buildRosterWindowMap,
+  buildProgressionParityReceipt,
+  scanFiniteSimulationState,
+  summarizeLeagueProgression
+} from "../stats/progressionParity.js";
 import { clamp } from "../utils/rng.js";
 import { RNGStreams } from "../utils/rngStreams.js";
 import { createSessionModules } from "./modules/sessionModules.js";
@@ -5750,6 +5756,7 @@ export class GameSession {
       champions: this.league.champions.slice(-20),
       awards: this.league.awards.slice(-20),
       hallOfFame: this.getHallOfFameHistory().slice(0, 120),
+      hallOfFameBallot: this.getHallOfFameBallot({ limit: 12 }),
       seasonAwardsStage: this.phase === "season-awards" ? this.pendingSeasonWrap : null,
       latestStandings: standingsRows,
       latestWeekResults: this.weekResultsCurrentSeason.slice(-1)[0] || null,
@@ -5886,6 +5893,10 @@ export class GameSession {
       suspensionWeeks: player.suspensionWeeks,
       contract: normalizeContract(player.contract)
     }));
+  }
+
+  getRosterWindowMap(teamId = this.controlledTeamId) {
+    return buildRosterWindowMap(this.getRoster(teamId), PLAYER_DEVELOPMENT_PROFILE);
   }
 
   getFreeAgents({ position = null, limit = 200, minOverall = null, maxAge = null, minAge = null } = {}) {
@@ -6458,20 +6469,9 @@ export class GameSession {
     for (const player of this.league.retiredPlayers) {
       const retiredYear = Number(player.retiredYear || this.currentYear);
       if (this.currentYear - retiredYear < yearsRetiredMin) continue;
-      const awardCounts = this.getPlayerAwardCounts(player.id);
-      const legacyScore = hallOfFameLegacyScore(player);
-      const careerAv = this.getPlayerCareerApproximateValue(player.id);
-      const championships = this.getPlayerChampionships(player.id);
-      const inductionScore =
-        legacyScore +
-        careerAv * 1.4 +
-        (awardCounts.MVP || 0) * 24 +
-        (awardCounts.OPOY || 0) * 14 +
-        (awardCounts.DPOY || 0) * 14 +
-        (awardCounts.AllPro1 || 0) * 10 +
-        championships * 8;
-      if (inductionScore < inductionScoreMin) continue;
-      candidates.push({ player, retiredYear, awardCounts, legacyScore, careerAv, championships, inductionScore });
+      const scored = this.scoreHallOfFameCandidate(player);
+      if (scored.inductionScore < inductionScoreMin) continue;
+      candidates.push(scored);
     }
 
     // Best resume first; player id breaks ties so a replay is byte-identical.
@@ -6525,6 +6525,57 @@ export class GameSession {
       })
       .sort((a, b) => (b.careerAv || 0) - (a.careerAv || 0) || (b.legacyScore || 0) - (a.legacyScore || 0));
     return this.league.hallOfFame;
+  }
+
+  scoreHallOfFameCandidate(player) {
+    const awardCounts = this.getPlayerAwardCounts(player.id);
+    const legacyScore = hallOfFameLegacyScore(player);
+    const careerAv = this.getPlayerCareerApproximateValue(player.id);
+    const championships = this.getPlayerChampionships(player.id);
+    const inductionScore =
+      legacyScore +
+      careerAv * 1.4 +
+      (awardCounts.MVP || 0) * 24 +
+      (awardCounts.OPOY || 0) * 14 +
+      (awardCounts.DPOY || 0) * 14 +
+      (awardCounts.AllPro1 || 0) * 10 +
+      championships * 8;
+    return {
+      player,
+      retiredYear: Number(player.retiredYear || this.currentYear),
+      awardCounts,
+      legacyScore,
+      careerAv,
+      championships,
+      inductionScore
+    };
+  }
+
+  getHallOfFameBallot({ limit = 12 } = {}) {
+    this.refreshHallOfFame();
+    const settings = this.getLeagueSettings();
+    const inductionScoreMin = Number(settings.hallOfFameInductionScoreMin ?? 450);
+    const yearsRetiredMin = Number(settings.hallOfFameYearsRetiredMin ?? 0);
+    const inducted = new Set((this.league.hallOfFame || []).map((entry) => entry.playerId));
+    return this.league.retiredPlayers
+      .filter((player) => !inducted.has(player.id))
+      .map((player) => this.scoreHallOfFameCandidate(player))
+      .filter((row) => this.currentYear - row.retiredYear >= yearsRetiredMin)
+      .sort((a, b) => b.inductionScore - a.inductionScore || String(a.player.id).localeCompare(String(b.player.id)))
+      .slice(0, normalizeCount(limit, 1, 50, 12))
+      .map((row, index) => ({
+        rank: index + 1,
+        playerId: row.player.id,
+        player: row.player.name,
+        pos: row.player.position,
+        retiredYear: row.retiredYear,
+        inductionScore: Number(row.inductionScore.toFixed(1)),
+        gapToInduction: Number(Math.max(0, inductionScoreMin - row.inductionScore).toFixed(1)),
+        ballotStatus: row.inductionScore >= inductionScoreMin ? "eligible-backlog" : "watch",
+        careerAv: row.careerAv,
+        championships: row.championships,
+        awardCounts: row.awardCounts
+      }));
   }
 
   getHallOfFameHistory() {
@@ -6644,6 +6695,8 @@ export class GameSession {
 
   runRealismVerification({ seasons = 12, seedOffset = 9_973 } = {}) {
     const simYears = normalizeCount(seasons, 1, 30, 12);
+    const progressionStart = summarizeLeagueProgression(this.league);
+    const sourceIntegrity = scanFiniteSimulationState({ league: this.league, statBook: this.statBook });
     const snapshot = JSON.parse(JSON.stringify(this.toSnapshot()));
     const shiftedSeed = Number(snapshot.rngSeed || Date.now()) + Number(seedOffset || 0);
     snapshot.rngSeed = shiftedSeed;
@@ -6651,6 +6704,20 @@ export class GameSession {
 
     const clone = GameSession.fromSnapshot(snapshot, (seed) => new this.rng.constructor(seed));
     clone.simulateSeasons(simYears, { runOffseasonAfterLast: true });
+    const progressionEnd = summarizeLeagueProgression(clone.league);
+    const progression = buildProgressionParityReceipt({
+      start: progressionStart,
+      end: progressionEnd,
+      seasons: simYears,
+      seed: shiftedSeed,
+      developmentProfile: PLAYER_DEVELOPMENT_PROFILE
+    });
+    const simulatedIntegrity = scanFiniteSimulationState({ league: clone.league, statBook: clone.statBook });
+    const numericIntegrity = {
+      status: sourceIntegrity.status === "pass" && simulatedIntegrity.status === "pass" ? "pass" : "fail",
+      source: sourceIntegrity,
+      simulated: simulatedIntegrity
+    };
 
     const simulatedYears = [...new Set(clone.statBook.teamSeasonArchive.map((row) => row.year))]
       .sort((a, b) => a - b)
@@ -6745,12 +6812,18 @@ export class GameSession {
       },
       seasonByPosition,
       careerByPosition,
+      progression,
+      numericIntegrity,
       retirementPolicy: {
         maxAgeByPosition: POSITION_MAX_AGE_LIMITS,
         winningRetentionEnabled: this.getLeagueSettings().retirementWinningRetention !== false,
         overrideMinWinningPct: this.getLeagueSettings().retirementOverrideMinWinningPct ?? 0.55
       },
-      statusSummary
+      statusSummary: {
+        ...statusSummary,
+        progression: progression.status,
+        numericIntegrity: numericIntegrity.status
+      }
     };
     this.lastRealismVerificationReport = report;
     return report;

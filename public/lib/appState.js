@@ -14,6 +14,7 @@ export const state = {
   mobilePendingDecisionChoice: null,
   weeklyPlanReceipt: null,
   roster: [],
+  rosterWindow: null,
   freeAgents: [],
   contractRoster: [],
   contractTeamId: null,

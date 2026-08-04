@@ -548,7 +548,13 @@ export function createLocalApiRuntime({
         if (minOverall != null) roster = roster.filter((row) => (row.overall || 0) >= minOverall);
         if (minAge != null) roster = roster.filter((row) => (row.age || 0) >= minAge);
         if (maxAge != null) roster = roster.filter((row) => (row.age || 100) <= maxAge);
-        return finish(jsonResponse(200, { ok: true, teamId, roster, cap: session.getTeamCapSummary(teamId) }));
+        return finish(jsonResponse(200, {
+          ok: true,
+          teamId,
+          roster,
+          windowMap: session.getRosterWindowMap(teamId),
+          cap: session.getTeamCapSummary(teamId)
+        }));
       }
 
       if (method === "POST" && pathname === "/api/roster/designation") {

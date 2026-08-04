@@ -644,7 +644,13 @@ async function handleApi(req, res, url) {
     if (minOverall != null) roster = roster.filter((row) => (row.overall || 0) >= minOverall);
     if (minAge != null) roster = roster.filter((row) => (row.age || 0) >= minAge);
     if (maxAge != null) roster = roster.filter((row) => (row.age || 100) <= maxAge);
-    sendJson(res, 200, { ok: true, teamId, roster, cap: session.getTeamCapSummary(teamId) });
+    sendJson(res, 200, {
+      ok: true,
+      teamId,
+      roster,
+      windowMap: session.getRosterWindowMap(teamId),
+      cap: session.getTeamCapSummary(teamId)
+    });
     return true;
   }
 

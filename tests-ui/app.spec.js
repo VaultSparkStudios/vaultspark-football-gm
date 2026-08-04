@@ -21,7 +21,7 @@ async function dismissTutorialIfVisible(page) {
   }
 }
 
-async function createLeagueFromSetup(page, { runtimeMode = null } = {}) {
+async function createLeagueFromSetup(page, { runtimeMode = null, seed = 20260306 } = {}) {
   await page.goto("/");
   await waitSetupReady(page);
   if (runtimeMode) {
@@ -29,6 +29,12 @@ async function createLeagueFromSetup(page, { runtimeMode = null } = {}) {
     await waitSetupReady(page);
     await expect(page.locator("#runtimeModeSelect")).toHaveValue(runtimeMode);
   }
+  const advancedSettings = page.locator("details:has(#seedInput)");
+  if (!(await advancedSettings.getAttribute("open"))) {
+    await advancedSettings.locator(":scope > summary").click();
+  }
+  await page.fill("#seedInput", String(seed));
+  await expect(page.locator("#seedInput")).toHaveValue(String(seed));
   await page.selectOption("#teamSelect", "BUF");
   await page.click("#createLeagueBtn");
   await expect(page).toHaveURL(/\/game\.html$/, { timeout: 90_000 });
@@ -357,6 +363,20 @@ test("season awards and hall of fame history render for a populated multi-year l
   test.setTimeout(240_000);
 
   await createLeagueFromSetup(page, { runtimeMode: "server" });
+  const hallPolicy = await page.evaluate(async () => {
+    const response = await fetch("/api/settings", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        hallOfFameInductionScoreMin: 120,
+        hallOfFameYearsRetiredMin: 0,
+        hallOfFameMaxClassSize: 40
+      })
+    });
+    return response.json();
+  });
+  expect(hallPolicy.settings.hallOfFameInductionScoreMin).toBe(120);
+  expect(hallPolicy.settings.hallOfFameMaxClassSize).toBe(40);
   const seeded = await simulateSeasonsByApi(page, 2);
   const dashboard = seeded?.state || {};
   await page.evaluate((nextState) => {
@@ -388,6 +408,7 @@ test("season awards and hall of fame history render for a populated multi-year l
 
   await page.click('[data-history-view="hall-of-fame"]');
   await expect(page.locator("#hallOfFameGallery .history-card").first()).toBeVisible();
+  await expect(page.locator("#hallOfFameBallotTable")).toBeVisible();
 
   await page.fill("#playerTimelineSearchInput", retirementCandidate.name);
   await page.click("#searchPlayerTimelineBtn");
@@ -421,6 +442,51 @@ test("season awards and hall of fame history render for a populated multi-year l
   if (Number.isFinite(retirementCandidate.jerseyNumber)) {
     await expect(page.locator("#retiredNumbersGallery")).toContainText(`#${retirementCandidate.jerseyNumber}`);
   }
+});
+
+test("commissioner Hall policy round-trips score, wait, and class size", async ({ page }) => {
+  await createLeagueFromSetup(page, { runtimeMode: "server", seed: 7203 });
+  const saved = await page.evaluate(async () => {
+    const response = await fetch("/api/settings", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        hallOfFameInductionScoreMin: 285,
+        hallOfFameYearsRetiredMin: 2,
+        hallOfFameMaxClassSize: 3
+      })
+    });
+    return response.json();
+  });
+  expect(saved.settings.hallOfFameMaxClassSize).toBe(3);
+
+  await page.reload();
+  await waitGameReady(page);
+  await dismissTutorialIfVisible(page);
+  await page.click('[data-testid="tab-settings"]');
+  await expect(page.locator("#settingHallOfFameInductionScoreMin")).toHaveValue("285");
+  await expect(page.locator("#settingHallOfFameYearsRetiredMin")).toHaveValue("2");
+  await expect(page.locator("#settingHallOfFameMaxClassSize")).toHaveValue("3");
+
+  await page.fill("#settingHallOfFameMaxClassSize", "4");
+  await page.click("#saveSettingsBtn");
+  await waitGameReady(page);
+  const roundTrip = await page.evaluate(async () => (await fetch("/api/settings")).json());
+  expect(roundTrip.settings.hallOfFameInductionScoreMin).toBe(285);
+  expect(roundTrip.settings.hallOfFameYearsRetiredMin).toBe(2);
+  expect(roundTrip.settings.hallOfFameMaxClassSize).toBe(4);
+});
+
+test("roster window map renders development and succession pressure", async ({ page }) => {
+  await createLeagueFromSetup(page, { seed: 7204 });
+  await page.click('[data-testid="tab-roster"]');
+  await page.click("#loadRosterBtn");
+  await waitGameReady(page);
+
+  await expect(page.locator("#rosterWindowSummary")).toContainText("Profile 2026-s72-parity");
+  await expect(page.locator("#rosterWindowTable tr").nth(1)).toBeVisible();
+  await expect(page.locator("#rosterWindowTable")).toContainText(/Quarterback|Backfield|Receivers/);
+  await expect(page.locator("#rosterWindowTable")).toContainText(/Protect the runway|Stable room|Succession|Contract decisions|Draft a successor/);
 });
 
 test("scouting lock persists across save and load", async ({ page }) => {

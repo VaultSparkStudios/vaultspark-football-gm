@@ -1,92 +1,60 @@
-# Session 71 Closeout (2026-08-04)
+# Session 72 Closeout — Deterministic Truth and Progression Parity
 
-## Where We Left Off — Session 71
+## Where We Left Off
 
-The continuous `/start → /audit → /implement → /closeout` mission is complete. A 6-item live-code audit executed
-6/6, with 4 second-order items shipped and 2 honest deferrals recorded with their measurements. The Unified Genius
-List is exhausted at **0 open / 6 closed**.
+- The five-item Session 72 Genius List is exhausted: finite simulation truth, league progression parity,
+  deterministic browser league authority, progression-verifier observability and Hall policy round-trip all shipped.
+- Two second-order innovations also shipped after the primary list closed: Hall Ballot Watch and Roster Window Map.
+- The active `2026-s72-parity` profile is `+0.20/-0.55/-2.25`; a deterministic ten-year simulation clears the
+  fixed ±0.15 mean-overall/year contract while young upside and veteran decline remain regression-covered.
+- Realism verification reports source and simulated finite-number integrity plus seed, profile, start/end player
+  distributions, annual drift, target and status. Truncated scans are incomplete, never pass.
+- Browser fixtures declare seed `20260306`; the Hall journey configures its 120/0/40 fixture policy explicitly.
+  Settings proves custom 285/2/3 survives reload and changing class size preserves score/wait.
+- Verification is green: Node 857/857, Playwright 40/40, direct ten-year 3/3, responsive 89 captures, visual QA
+  16 hash-bound captures, Pages build/smoke and 58 browser modules.
+- Independent staging at `https://staging.playfranchisearchitect.com` verified the exact closeout candidate and
+  artifact 11/11 with an active domain and rollback deployment available.
 
-## The finding, in one line
+## Session Intent
 
-`resetTeamSeasonState` rebuilt `team.season` without `drivesFor`/`drivesAgainst`, so the first `+=` of every
-season pinned both at `NaN` — and **every offensive player's approximate value had been ~0 for the project's
-entire history.**
+**Achieved.** The founder requested one continuous `/start → /audit → /implement → /closeout` mission, saturation
+through the complete ranked list and second-order innovations, infrastructure weighting, direct exit-code evidence,
+staging before production and direct-main delivery. Every primary item and both viable generated candidates shipped;
+no item was silently skipped and no sibling tree was edited.
 
-The shape of a season record was declared twice, in `createTeam` and in the reset, and the two drifted. Every
-reader took the counters as `x || 0`, which laundered the NaN into a **zero drive count** instead of raising it:
-`offensivePoints` collapsed to ~2, and the defensive multiplier pinned at its `0.15` clamp floor, inflating the
-defensive bucket to ~426. Measured league-wide: **QB approximate value 2, WR 0, RB 0, OL 0 — against LB 76.**
+## Decisions That Must Survive
 
-That is why a tight end won MVP, Offensive Player of the Year *and* Offensive Rookie of the Year in **10 of 10**
-simulated seasons. `offensiveLineValue` returned an absolute rather than a share of the team's line bucket, and
-`offensiveSkillValue` added it to every tight end — so a tight end with **zero catches** scored 32 against an
-MVP-calibre quarterback's 16. It was the only nonzero offensive value left in the league. The bucket
-(`linePoints`) and both denominators (`team.olLineWeight`, `team.teLineWeight`) already existed and had **never
-been read anywhere in the repository**; the line branch was scaffolded on both sides and never connected, while
-every other position group was normalized correctly.
+- Progression success is defined by the declared multi-season target, not by one screenshot or one final mean.
+- Numeric integrity is scanned before JSON cloning and after simulation; serialization is not a validation boundary.
+- Hall Ballot Watch consumes the same score authority as induction.
+- Roster Window Map is a bounded one-year direction derived from current age/potential/contracts, not a forecast.
+- Production setup may remain time-seeded; tests must declare randomness.
 
-## What Shipped
+## Honest Holds
 
-- **Value scale.** Season record declared once (`createTeamSeasonState`); counters accumulate through a finite
-  guard so a damaged save self-heals. Line value distributes the bucket through its accumulated denominators, the
-  same bucket-over-team-total shape `defensiveValue` always used. Measured on NFL-realistic lines: OL starter
-  **96 → 8**, TE with no catches **32 → 2**, elite TE **41 → 11**, MVP QB **16** unchanged. Live in-engine:
-  **QB 2 → 25, WR 0 → 17, LB 76 → 24.**
-- **Award ballot.** A quarterback wins MVP in **10 of 10** seasons at AV 16–24 (the real award sits at 18–22).
-  Rookie eligibility root-fixed from `seasonsPlayed <= 1` — a counter advanced in the offseason, so second-year
-  players were eligible and the MVP also won Rookie of the Year in 7 of 8 seasons — to the first recorded season.
-- **Hall of Fame.** Rebuilt rather than accumulated, so a corrected value scale repairs an existing save instead
-  of freezing its mistakes; admitted year by year under a class-size cap with a deterministic tie-break, so a
-  candidate who misses his first ballot stays eligible and a backlog forms. **24.5% of retirees → 1.4%**; the real
-  Pro Football Hall of Fame holds ~1.36% of everyone who has played. Threshold re-derived to 450, new
-  `hallOfFameMaxClassSize` (default 6) — both player-adjustable and visible in the History policy line.
-- **Championship scoreline.** Assembled home-first (AFC first) at four sites and published as champion-first, so
-  any title won by an NFC club read as the champion losing its own final — 8 of 10 measured seasons, including the
-  shareable League Story Card. One `championScoreline()` authority; nine player-facing readers repair stored
-  scorelines on read, so existing saves display correctly with no migration.
-- **Progression drift.** Three defects, not the one audited: inclusive `rng.int(-2, 3)` averaging **+0.5**; a
-  trait reference of 70 against a measured league mean potential of **79.92** (a second +0.50 for every player,
-  every offseason); and an integer variance whose rounding discarded every fractional term in the curve, so a
-  prime-age player's +0.4 rounded away to exactly nothing. 90-plus players across ten seasons **117 → 79**.
-- **Registry drift** → signed Ark cargo **`01JV62KEPG9B017D2712C0F8F5`**. No sibling tree edited (CANON-018).
-- **Second-order:** Hall of Fame induction classes (only reachable once induction became scarce), the season
-  record declared once, rookie eligibility derived from the record, and cross-runtime scoreline parity held
-  identical by test.
+- Launch remains HOLD on delivered and reply-capable `football@playfranchisearchitect.com` email.
+- Launch remains HOLD on SHA-bound founder approval.
+- Registry SPARKED/local FORGE reconciliation remains sibling-owned through Ark cargo
+  `01JV62KEPG9B017D2712C0F8F5`; the local doctor warning must stay visible until authoritative receipt arrives.
 
-## Honest deferrals — recorded, not skipped
+## Next Best Work
 
-- **Residual overall inflation.** After all three progression fixes the league mean still rises **+0.38/season**
-  (down from +0.43). The two unambiguous defects are fixed and guarded; what remains is a *balance* question — the
-  age curve (+1.5 under 26, +0.4 to 29, −1.3 after) is net-positive across this league's real age distribution.
-  That belongs with the realism profile and its own multi-season baseline, not a constant nudged at session end.
-- **Long-run behaviour beyond 10 seasons is not measured.** A 25-season probe ran ~50 minutes without producing
-  output and was stopped. The trend is reported only over the window actually observed, not extrapolated to the
-  project's stated 100-year horizon.
+The Session 72 audit and innovation pack have zero open items. Start with a fresh live-code audit unless one of the
+three launch authorities resolves. Promising new product directions carried without commitment: per-position
+progression parity bands/multi-seed tuning history, dynasty-almanac share cards, broadcast-mode sim-watch and
+trophy-road onboarding.
 
-## Rejected as phantom work
+## Key Files
 
-- *"Roster sizes grow unbounded."* Measured per-team totals converge on exactly **69** — 53 active + 16 practice,
-  the intended limit. The apparent growth is practice squads filling from an initial ~54.
-- *"Season statistics are unrealistic."* The realism calibrator holds QB/RB/WR/TE season lines at **0.0–2.3%
-  drift** against the Pro Football Reference weighted baseline over 20 observed years. The statistics were never
-  the problem; only the formula that valued them.
-
-## Now Bucket (next-session candidates)
-
-- **Age-curve calibration** against an explicit league-parity target in the realism profile — closes the residual
-  drift above with a measurement instead of a guess, and carries the long-run probe with it.
-- Per-position AV calibration report joined to the realism verifier (item 1's L3 rung), so the value scale is
-  regression-guarded the way the season statistics already are.
-- Carried, unchanged: dynasty-almanac share cards · broadcast-mode sim-watch · trophy-road onboarding ·
-  tab-module code-splitting (needs an `app.js` bindings refactor).
-
-## Blockers / Human-Blocked (launch HOLD on 3 gates — unchanged)
-
-- Delivered / reply-capable on-domain email — `zoho.mail.admin` secrets MISSING.
-- SHA-bound founder approval — absent.
-- Authoritative registry lifecycle reconciliation — sibling-owned; requested via Ark
-  `01JV62KEPG9B017D2712C0F8F5`.
-
-No readiness, retention, or launch evidence was fabricated.
-
-**Next session:** take the age-curve calibration, or resolve one of the three human launch gates.
+- `src/stats/progressionParity.js`
+- `src/domain/ratings.js`
+- `src/runtime/GameSession.js`
+- `public/lib/tabSettings.js`
+- `public/lib/tabRoster.js`
+- `public/lib/tabHistory.js`
+- `test/progression-parity.test.js`
+- `test/realism-career-regression.test.js`
+- `tests-ui/app.spec.js`
+- `docs/AUDIT_2026-08-04_SESSION72.json`
+- `docs/visual-qa/LATEST.json`

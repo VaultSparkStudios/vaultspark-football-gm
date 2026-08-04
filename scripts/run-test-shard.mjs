@@ -20,6 +20,7 @@ export const SHARDS = {
     "test/offseason-calendar.test.js",
     "test/offseason-surfaces.test.js",
     "test/pass-structure-regression.test.js",
+    "test/progression-parity.test.js",
     "test/quarterback-depth-ratings.test.js",
     "test/ratings-regression.test.js",
     "test/s4-systems.test.js",

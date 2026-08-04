@@ -2,6 +2,18 @@
 
 Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Session 9: test coverage (2026-04-13).
 
+## Now
+
+- [ ] Run a fresh live-code audit; Session 72's ranked list and second-order innovation pack are exhausted.
+- [ ] Reconcile any newly arrived launch-authority evidence without weakening the three-gate AND contract
+  (reply-capable email, SHA-bound founder approval, authoritative lifecycle).
+
+## Next
+
+- [ ] Evaluate multi-seed and per-position progression parity only if a fresh measurement shows the single-seed
+  decade contract is insufficient.
+- [ ] Re-rank dynasty-almanac share cards, broadcast-mode sim-watch and trophy-road onboarding against live code.
+
 ## Session 70 — Full-scope audit executed (2026-08-04)
 
 | # | Item | Status |
@@ -1219,3 +1231,57 @@ was scaffolded on both sides and never connected; every other position group was
   only the formula that valued them.
 
 Coverage: `test/season-value-authority.test.js` (10), registered in the `core` shard.
+## Session 72 — Deterministic Truth and Progression Parity (2026-08-04)
+
+Source: `docs/AUDIT_2026-08-04_SESSION72.json` (5 verified primary items, all shipped).
+
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Infrastructure / simulation truth | Done | 2.0h | finite-simulation-truth-receipt |
+| FIRE | Progression / mathematical authority | Done | 4.0h | league-progression-parity-contract |
+| FIRE | CI reliability / reproducibility | Done | 2.0h | deterministic-browser-league-authority |
+| HIGH | Observability truth / player tooling | Done | 3.0h | progression-verifier-observability |
+| HIGH | Settings authority / legacy policy | Done | 1.5h | hall-policy-roundtrip-authority |
+
+### The finding, in one line
+
+The remaining development drift was real, but the system had no authority capable of proving either the correction
+or its numeric integrity: browser fixtures were time-seeded, the Hall journey relied on statistical luck, the
+commissioner form silently forgot class size, and the realism verifier omitted league progression entirely.
+
+### Shipped — five ranked items
+
+| # | Item | Detail |
+|---|---|---|
+| 7201 | Finite simulation truth | A cycle-safe, bounded scanner walks ten named critical league roots, rejects `NaN`/`Infinity`, reports redacted paths, and treats traversal truncation as incomplete rather than pass. Realism verification emits independent source and simulated receipts. |
+| 7202 | League progression parity | The named `2026-s72-parity` profile calibrates developing/prime/veteran age factors to `+0.20/-0.55/-2.25`. A deterministic decade now clears a fixed ±0.15 overall/year band while preserving young upside, potential separation, and veteran decline. |
+| 7203 | Deterministic browser authority | Every `app.spec.js` league fixture declares seed `20260306` unless explicitly overridden. The Hall rendering journey configures its permissive 120/0/40 policy through the public API, so CI tests rendering instead of luck. |
+| 7204 | Observable progression | Commissioner Settings now publishes source-derived start/end player count, mean, median, elite count, age cohorts, annual drift, profile, target, status, seed, and both finite-number receipts. |
+| 7205 | Hall policy round trip | All score/wait/class controls hydrate from normalized settings. Local and browser adapters prove 285/2/3 persists, reloads, and changes class size without overwriting the other policy values. |
+
+### Second-order — two shipped after the primary list exhausted
+
+- **Hall Ballot Watch.** One scoring authority now ranks the twelve strongest retired non-inductees, exposes exact
+  gap/backlog/watch status, career value, titles and awards, excludes inductees, and renders the live ballot in
+  History.
+- **Roster Window Map.** Both runtimes derive seven position-room horizons from the declared development profile,
+  potential, age and contract state. The Roster surface places OVR beside POT and adds projected direction, age mix,
+  expiring count, standard bearer and an actionable succession/runway priority.
+
+### Verification and visual truth
+
+- Canonical Node aggregate **857/857**, including a direct deterministic ten-year gate.
+- Playwright **40/40**; the prior Hall failure is deterministic and green.
+- Responsive evidence **89 captures** across 390/768/1440, dark/light and every primary tab; 16 inspected
+  progression/integrity/roster/Hall captures are SHA-256 bound in `docs/visual-qa/LATEST.json`.
+- Pages build/smoke and **58 browser modules** are green.
+
+### Honest deferrals / rejected phantoms
+
+- Launch remains HOLD on delivered reply-capable on-domain email, SHA-bound founder approval and authoritative
+  registry lifecycle. No readiness claim or received-message receipt was fabricated.
+- A second season-stat retune was rejected: the existing verifier holds targeted season lines at 0.0–2.3% drift;
+  league progression was the live defect.
+- An early empty Hall was rejected as a defect: scarce induction makes it correct. The browser fixture now names the
+  permissive policy it requires.
+- A speedrun stored-XSS candidate was rejected after tracing escaping and server-authored numeric fields.

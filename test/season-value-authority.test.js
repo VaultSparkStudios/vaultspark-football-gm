@@ -34,7 +34,7 @@ import { applyRegularSeasonResult } from "../src/engine/seasonSimulator.js";
 import { approximateValueFromStats, TE_LINE_WEIGHT } from "../src/stats/approximateValue.js";
 import { championScoreline, decidedScoreline, orientWinnerFirst } from "../src/stats/scoreline.js";
 import { orientWinnerFirst as orientWinnerFirstBrowser } from "../public/lib/scoreline.js";
-import { developmentDelta, LEAGUE_AVERAGE_POTENTIAL } from "../src/domain/ratings.js";
+import { developmentDelta, LEAGUE_AVERAGE_POTENTIAL, PLAYER_DEVELOPMENT_PROFILE } from "../src/domain/ratings.js";
 import { hallOfFameClasses } from "../public/lib/tabHistory.js";
 import { RNG } from "../src/utils/rng.js";
 
@@ -209,7 +209,10 @@ test("development carries no hidden constant — an average player only moves wi
   };
 
   const prime = sample(27, LEAGUE_AVERAGE_POTENTIAL);
-  assert.ok(Math.abs(prime - 0.4) < 0.15, `a league-average 27-year-old drifts ${prime.toFixed(3)} per offseason, not ~0.4`);
+  assert.ok(
+    Math.abs(prime - PLAYER_DEVELOPMENT_PROFILE.ageFactors.prime26To29) < 0.15,
+    `a league-average 27-year-old drifts ${prime.toFixed(3)} per offseason, not the declared profile`
+  );
 
   const declining = sample(33, LEAGUE_AVERAGE_POTENTIAL);
   assert.ok(declining < 0, `a league-average 33-year-old must decline, got ${declining.toFixed(3)}`);
@@ -274,6 +277,15 @@ test("Rookie of the Year is decided among actual rookies, and the Hall stays sca
   for (const entry of hall) byClass.set(entry.classYear, (byClass.get(entry.classYear) || 0) + 1);
   for (const [classYear, size] of byClass) {
     assert.ok(size <= cap, `the class of ${classYear} inducted ${size}, above the cap of ${cap}`);
+  }
+
+  const ballot = session.getHallOfFameBallot({ limit: 12 });
+  const inductedIds = new Set(hall.map((entry) => entry.playerId));
+  assert.ok(ballot.length > 0, "retired resumes outside a scarce Hall should remain visible on the ballot");
+  assert.ok(ballot.every((entry) => !inductedIds.has(entry.playerId)), "the ballot cannot include an inductee");
+  assert.ok(ballot.every((entry) => entry.gapToInduction >= 0), "every resume publishes a non-negative threshold gap");
+  for (let index = 1; index < ballot.length; index += 1) {
+    assert.ok(ballot[index - 1].inductionScore >= ballot[index].inductionScore, "ballot resumes must rank strongest first");
   }
 });
 

@@ -409,6 +409,17 @@ export function renderHallOfFameGallery(entries = []) {
   const spotlight = document.getElementById("hallOfFameSpotlight");
   const settings = state.leagueSettings || state.dashboard?.settings || {};
   const classes = hallOfFameClasses(entries);
+  renderTable("hallOfFameBallotTable", (state.dashboard?.hallOfFameBallot || []).map((entry) => ({
+    rank: entry.rank,
+    player: entry.player,
+    pos: entry.pos,
+    retired: entry.retiredYear,
+    score: entry.inductionScore,
+    gap: entry.gapToInduction,
+    status: entry.ballotStatus,
+    careerAv: entry.careerAv,
+    titles: entry.championships
+  })));
   const latestClass = classes.find((row) => row.classYear !== null) || null;
   if (spotlight) {
     const top = entries[0] || null;
@@ -795,5 +806,4 @@ export function renderPlayerTimelineSearchResults() {
     cell.innerHTML = `<button data-history-player-select="${escapeHtml(row.id)}">${isSelected ? "Selected" : "Select"}</button>`;
   });
 }
-
 

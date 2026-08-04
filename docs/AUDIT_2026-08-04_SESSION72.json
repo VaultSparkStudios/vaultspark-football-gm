@@ -1,0 +1,217 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-04",
+  "session": 72,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "complete",
+  "summary": {
+    "rankedItems": 5,
+    "combinedPriority": 196.4,
+    "topItem": "finite-simulation-truth-receipt",
+    "source": "live-code-audit",
+    "openItems": 0,
+    "completedItems": 5,
+    "priorityFormula": "Priority = infrastructure-weighted Impact × Innovation / log2(EffortHours + 2); execution rank is dependency-aware.",
+    "theme": "The simulation has acquired excellent statistical calibration, but its reliability boundary is still implicit: the CI browser league is randomly seeded, one test demands a Hall class that the new scarcity policy correctly withholds, the commissioner form forgets part of that policy, and the realism verifier cannot see the league-wide progression drift it is being asked to calibrate. Session 72 turns those hidden assumptions into deterministic, source-derived contracts."
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "infrastructure rubric (speed/token 2x, security and AI 1.5x) with product, game-loop, app-release, and web-canon overlays",
+    "staging": "independent Cloudflare Pages origin at https://staging.playfranchisearchitect.com; production launch remains gated",
+    "source": "live code, current GitHub Actions logs, deterministic engine probes, generated-league age distribution, production route/header evidence, and the committed Session 71 realism baselines"
+  },
+  "releaseGate": {
+    "verdict": "GO for current-repo implementation; launch remains HOLD",
+    "ci": "The prior 37/38 Hall failure was reproduced and root-fixed: every browser league now names seed 20260306 and the Hall rendering fixture sets its permissive policy explicitly. Final local evidence is Node 857/857 and Playwright 40/40 with direct exit codes; the pushed candidate still requires GitHub Actions confirmation.",
+    "production": "Nine production routes and security headers verify; _health reports the S71 code candidate and launchReady false.",
+    "secrets": "41/68 capabilities ready. Delivered reply-capable on-domain email, SHA-bound founder approval, and authoritative registry lifecycle remain external launch gates and will not be fabricated.",
+    "verification": "Deterministic decade 3/3; responsive harness 89 captures; 16 reviewed captures hash-bound across dark/light desktop/mobile; Pages build/smoke and 58 browser modules green. Independent exact-candidate staging verified 11/11 at the stable custom origin with rollback available; pushed CI remains the final closeout gate."
+  },
+  "gameLoopReview": {
+    "loopTightness": 8,
+    "progression": 5,
+    "sessionEngagement": 8,
+    "retention": 6,
+    "soulFidelity": 7,
+    "overall": 6.8,
+    "evidence": "Structural scores only; no cohort or retention data is claimed. Progression is held at 5 because the age curve still moves league mean overall by +0.38 per season over the measured decade and the player-visible verifier does not report it."
+  },
+  "recommendedMoves": [
+    "Make every browser league fixture name its seed and make the Hall rendering fixture choose a permissive policy explicitly, so CI tests rendering rather than statistical luck.",
+    "Calibrate the age curve against an explicit league-parity target and publish start/end distributions with a pass/watch/fail verdict from the same verifier players can run.",
+    "Attach a bounded finite-number integrity receipt to every long-run verification so a NaN can never again be laundered into a plausible zero."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "simulation",
+      "candidate": "Season-stat realism needs another retune",
+      "reason": "Rejected as phantom work. The committed verifier holds targeted position season lines within 0.0–2.3% drift; the live gap is league-overall progression, not box-score generation."
+    },
+    {
+      "axis": "security",
+      "candidate": "Speedrun leaderboard has an obvious stored-XSS path",
+      "reason": "Rejected after tracing every player-facing field: player and team names are escaped at render time, while seasons and dates are numeric/server-authored. No exploit premise was found."
+    },
+    {
+      "axis": "release",
+      "candidate": "Missing production security headers or routes block this implementation",
+      "reason": "Rejected on live evidence. All nine production routes returned 200 with HSTS, CSP and framing protections. Launch is blocked on email, founder approval and lifecycle authority, not a web-hardening fiction."
+    },
+    {
+      "axis": "legacy",
+      "candidate": "The Hall should naturally contain a player after two seasons",
+      "reason": "Rejected as an invalid test premise. Session 71 intentionally reduced induction from 24.5% to 1.4%; an empty early Hall is a correct outcome, not an engine failure."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Infrastructure / simulation truth",
+      "effortHours": 2,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 54,
+      "slug": "finite-simulation-truth-receipt",
+      "title": "A NaN can still disappear into a believable zero",
+      "status": "shipped",
+      "executionEvidence": "Reusable scanner rejects NaN/Infinity, reports bounded truncation as incomplete, names ten critical roots, and a deterministic ten-year run completed both source and simulated receipts with status pass; focused authority tests 29/29 and long gate 3/3.",
+      "premise": "Session 71 found that missing drivesFor/drivesAgainst became NaN and every reader's `x || 0` converted the corruption into a plausible zero. The simulation currently has no long-run finite-number receipt across players, ratings, teams and archived season rows, so the same class of defect can pass box-score assertions again.",
+      "evidence": [
+        "Session 71 root cause: missing numeric fields accumulated to NaN and were laundered by falsy defaults",
+        "runRealismVerification returns drift tables but performs no numeric-integrity scan",
+        "The long-run verifier already owns a cloned post-simulation league, making it the lowest-cost truthful boundary"
+      ],
+      "constraint": "Do not serialize or expose the full league. Report counts and a small redacted path sample, bound traversal cost, and treat non-finite values as an explicit failed status rather than replacing them.",
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Assert a few known counters are finite in one regression test." },
+        "L2": { "effortHours": 2, "recipe": "Build a reusable bounded numeric-integrity scanner over critical league/player/team/stat-book state, attach a self-validating receipt to realism verification, and regression-test both clean and deliberately corrupted state." },
+        "L3": { "effortHours": 4, "recipe": "L2 plus gate every persisted snapshot and calibration artifact at its write boundary." }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Progression / mathematical authority",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 34.8,
+      "slug": "league-progression-parity-contract",
+      "title": "The age curve still inflates the league by 0.38 overall per season",
+      "status": "shipped",
+      "executionEvidence": "Named profile 2026-s72-parity calibrates developing/prime/veteran factors to +0.20/-0.55/-2.25. The deterministic decade now clears the fixed ±0.15 mean-overall annual drift band while unit contracts retain young upside, potential separation, and veteran decline.",
+      "premise": "After Session 71 removed two hidden +0.5 constants and restored fractional resolution, a deterministic decade still moves league mean overall 77.25→80.70. The generated league is 34.5% age 25 or younger, 34.6% age 26–29 and 30.9% age 30+, while the current curve is +1.5/+0.4/−1.3; its expected age contribution is net positive before potential and turnover.",
+      "evidence": [
+        "src/domain/ratings.js developmentDelta age factors +1.5, +0.4, -1.3",
+        "Generated active league probe: 541 young, 542 prime, 485 older players; expected age contribution +0.25/player/year",
+        "Committed S71 decade probe: mean overall +3.45, approximately +0.38 per simulated season"
+      ],
+      "constraint": "Preserve deterministic streams, young-player upside, prime separation and veteran decline. Calibrate against measured multi-season distributions, not a single end value or a silent overall clamp.",
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Nudge the three age constants until one seed looks flat." },
+        "L2": { "effortHours": 4, "recipe": "Name the development profile and parity target, calibrate its three life-stage factors against the live age distribution, then prove a deterministic decade stays inside an explicit per-season mean-overall band while youth still develops and veterans decline." },
+        "L3": { "effortHours": 7, "recipe": "L2 plus multi-seed and position-specific parity bands with a versioned tuning history." }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "CI reliability / reproducibility",
+      "effortHours": 2,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 35,
+      "slug": "deterministic-browser-league-authority",
+      "title": "Every browser test rolls a different league",
+      "status": "shipped",
+      "executionEvidence": "Every app.spec league now opens advanced setup and writes an explicit default seed (overrideable per test). The Hall journey sets its 120/0/40 fixture policy through the public API and passes in a real browser; the former 37/38 CI failure is locally replayable and green.",
+      "premise": "setup.js seeds a new league with Date.now(), and tests-ui/app.spec.js never fills the seed input. The current GitHub Actions failure is therefore irreproducible by default; its only failing assertion also confuses a probabilistic Hall outcome with a rendering contract.",
+      "evidence": [
+        "public/setup.js initializes seedInput from Date.now()",
+        "tests-ui/app.spec.js createLeagueFromSetup selects runtime/team but not seed",
+        "GitHub Actions run for e829a0f: unit shards and browser build/smoke pass; Playwright 37/38 with hallOfFame.length expected >0 after two seasons"
+      ],
+      "constraint": "Production league creation may remain time-seeded. Test helpers must name a stable seed, and the Hall UI test must explicitly configure the permissive policy required by its fixture rather than weakening the production default.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Delete the flaky Hall assertion." },
+        "L2": { "effortHours": 2, "recipe": "Give the browser fixture an explicit default seed, allow per-test overrides, configure the Hall rendering scenario through the public settings API, and assert both deterministic setup and the intended rendered class." },
+        "L3": { "effortHours": 4, "recipe": "L2 plus emit a compact replay capsule for every failed UI scenario." }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Observability truth / player tooling",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 34.9,
+      "slug": "progression-verifier-observability",
+      "title": "The realism verifier cannot see the progression problem",
+      "status": "shipped",
+      "executionEvidence": "Realism reports now publish seed, profile, start/end player counts, mean/median/elite distributions, age mix, annual drift, target/status, and source/simulated finite receipts. Commissioner Settings renders progression and integrity tables from that report.",
+      "premise": "runRealismVerification simulates up to 30 seasons and reports season/career stat drift, but captures no start-state player distribution, end-state distribution, annualized overall drift, elite-player count, age mix, seed or parity verdict. A commissioner can run the exact expensive probe needed and still receive no evidence about the known problem.",
+      "evidence": [
+        "GameSession.runRealismVerification returns seasonByPosition, careerByPosition, retirementPolicy and statusSummary only",
+        "public/lib/tabSettings.js renders only season and career tables",
+        "The cloned league and shifted deterministic seed already exist inside the verifier"
+      ],
+      "constraint": "Observability must derive from the cloned source of truth and self-validate. Never invent retention data or call a number on-target without publishing its target and sample window.",
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Print start and end average overall to the console script." },
+        "L2": { "effortHours": 3, "recipe": "Add source-derived start/end mean, median, elite count, age cohorts, annualized drift, target band, deterministic seed and status to the report and commissioner UI, with tests proving the verdict is computed rather than hard-coded." },
+        "L3": { "effortHours": 6, "recipe": "L2 plus trend sparklines and downloadable comparison receipts across multiple seeds." }
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Settings authority / legacy policy",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 37.7,
+      "slug": "hall-policy-roundtrip-authority",
+      "title": "Opening Settings can silently overwrite the Hall class size",
+      "status": "shipped",
+      "executionEvidence": "Settings hydrates canonical 450/0/6 defaults and custom class size. Local API proves 285/2/3 persistence; Playwright reloads those exact values, changes class size to 4, saves, and verifies the other values remain unchanged.",
+      "premise": "The canonical default is induction score 450 and class size 6. tabSettings.js still falls back to the retired 240 threshold and never hydrates settingHallOfFameMaxClassSize at all. A league saved with a custom class size therefore reloads the HTML default 6 and the next unrelated settings save overwrites the player's policy.",
+      "evidence": [
+        "src/config/leagueSetup.js DEFAULT_LEAGUE_SETTINGS declares 450/0/6",
+        "public/lib/tabSettings.js line 484 falls back to 240",
+        "settingHallOfFameMaxClassSize is read on save but has no hydration reader anywhere in public code"
+      ],
+      "constraint": "Keep one server/domain authority for normalization and retain all three commissioner controls. Tests must prove round-trip values, not only default rendering.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Change 240 to 450." },
+        "L2": { "effortHours": 1.5, "recipe": "Hydrate all three Hall policy controls from normalized settings, cover custom score/wait/class values through local and browser API round trips, and keep the History policy line identical." },
+        "L3": { "effortHours": 3, "recipe": "L2 plus import browser defaults from a generated shared policy manifest." }
+      }
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "hall-ballot-watchlist",
+      "status": "shipped",
+      "evidence": [
+        "The exact Hall scoring authority now exposes the twelve strongest non-inducted retired resumes with deterministic rank, score, threshold gap, backlog/watch status, career AV, titles, and awards.",
+        "The History UI renders the live ballot; tests prove inductees are excluded and ordering/gaps are truthful."
+      ]
+    },
+    {
+      "slug": "roster-window-map",
+      "status": "shipped",
+      "evidence": [
+        "Both API runtimes derive seven position-room horizons from the declared development profile, potential, age and contracts.",
+        "The Roster UI shows adjacent OVR/POT, projected next-year direction, age mix, expiring count, standard-bearer and an actionable succession/runway priority; focused browser proof is green."
+      ]
+    }
+  ]
+}

@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 71 complete: 6/6 live-code audit executed plus 4 second-order items. The value scale is fixed at the source — a season record declared twice had drifted, so drivesFor/drivesAgainst were NaN and every offensive player's approximate value had been ~0 for the project's entire history. MVP, Rookie of the Year, the Hall of Fame and the championship scoreline all inherited that distortion and are now correct and regression-guarded. Launch HOLD unchanged on three human gates.",
-  "nextMilestone": "Calibrate the age-development curve against an explicit league-parity target in the realism profile (closes the measured +0.38/season residual overall drift and carries the long-run probe), then prove delivered on-domain email, obtain SHA-bound founder approval, and reconcile authoritative registry lifecycle for the launch flip.",
+  "currentFocus": "Session 72 complete: deterministic browser authority, versioned league-progression parity, bounded finite-number truth receipts, Hall policy round-trip, and player-visible Ballot Watch plus Roster Window Map. Five primary and two second-order items shipped; launch HOLD remains explicit.",
+  "nextMilestone": "Run a fresh live-code audit or resolve one launch authority: delivered reply-capable on-domain email, SHA-bound founder approval, or authoritative registry lifecycle reconciliation.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -13,24 +13,24 @@
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-08-03",
+  "truthAuditLastRun": "2026-08-04",
   "ignisScore": 42230,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-03",
   "testSuiteStatus": {
-    "totalTests": 852,
-    "pass": 852,
+    "totalTests": 857,
+    "pass": 857,
     "fail": 0,
     "lastRun": "2026-08-04",
     "newTestFiles": [
-      "test/season-value-authority.test.js"
+      "test/progression-parity.test.js"
     ],
-    "newTestCount": 10,
-    "coverage": "Session 71 canonical aggregate Node 852/852 direct exit 0 (core 114, runtime 504, sim-contract 75, sim-realism 1, studio 158), Playwright 38/38 exit 0, Pages build/smoke exit 0, 58 browser modules reachable, doctor blockingFailing 0.",
-    "uiSuiteNote": "Playwright 38/38 green after the value-scale, award, Hall of Fame, scoreline, and progression changes; no UI regression from the engine rework."
+    "newTestCount": 7,
+    "coverage": "Session 72 canonical aggregate Node 857/857 direct exit 0, including deterministic ten-year progression gate 3/3; Playwright 40/40 exit 0; responsive evidence 89 captures; visual QA 16 hash-bound captures; Pages build/smoke exit 0; 58 browser modules reachable.",
+    "uiSuiteNote": "Playwright 40/40 proves fixed league seed, explicit Hall fixture policy, custom Hall settings round-trip, populated Hall journey, Ballot Watch visibility, and Roster Window Map."
   },
-  "testsPassing": 852,
-  "testsTotal": 852,
+  "testsPassing": 857,
+  "testsTotal": 857,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -69,23 +69,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 995,
+  "silScore": 997,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 100,
-    "processQuality": 97,
+    "processQuality": 99,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
-    "ecosystemIntegration": 100,
+    "ecosystemIntegration": 99,
     "capitalEfficiency": 100,
-    "automationCoverage": 99
+    "automationCoverage": 100
   },
-  "currentSession": 71,
-  "lastAgent": "claude-code",
+  "currentSession": 72,
+  "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "npm test 852/852 direct exit 0; npm run test:ui 38/38 exit 0; build:pages + smoke:pages exit 0; check:browser-modules 58 exit 0; doctor blockingFailing 0. Engine changes additionally verified by in-process probes over 10 simulated seasons (award distribution, career-AV percentiles, Hall induction rate, league overall trend).",
+  "lastVerification": "npm test 857/857 direct exit 0; npx playwright test 40/40 direct exit 0; deterministic ten-year progression 3/3; responsive 89; visual QA 16; build:pages + smoke:pages; 58 browser modules.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -111,7 +111,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 845,
+  "silHealth": 847,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -137,25 +137,24 @@
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.029,
-  "entropyLastComputed": "2026-08-03",
+  "entropyScore": 0.013,
+  "entropyLastComputed": "2026-08-04",
   "lastSessionSummary": {
-    "session": 71,
+    "session": 72,
     "shipped": [
-      "Approximate-value line-share authority (upstream NaN drive counts root-fixed)",
-      "Season record declared once, counters validated at the write site",
-      "Award ballot integrity — a quarterback wins MVP 10 of 10 seasons",
-      "Rookie of the Year eligibility derived from the stat record",
-      "Hall of Fame scarcity — 24.5% of retirees to 1.4%, dated induction classes",
-      "Champion-first championship scoreline across four writers and nine readers",
-      "Development-curve drift — three constants removed, fractional resolution restored",
-      "Registry drift returned as signed Ark cargo 01JV62KEPG9B017D2712C0F8F5"
+      "Bounded cycle-safe finite-number truth receipts before clone and after simulation",
+      "Versioned 2026-s72-parity development profile inside fixed ±0.15 overall/year decade contract",
+      "Deterministic browser leagues and explicit Hall rendering fixture policy",
+      "Player-visible progression and numeric-integrity verifier tables",
+      "Hall score/wait/class policy round-trip authority",
+      "Hall Ballot Watch from the shared induction score authority",
+      "Seven-room Roster Window Map in both API runtimes and browser UI"
     ],
-    "tests": "Node 852/852 direct exit 0 · Playwright 38/38 · Pages build/smoke · 58 browser modules · doctor blockingFailing 0",
-    "deploy": "No deploy this session; production and staging remain at 870382c with launch HOLD on three human gates",
+    "tests": "Node 857/857 · Playwright 40/40 · deterministic decade 3/3 · responsive 89 · visual 16 · Pages build/smoke · 58 browser modules",
+    "deploy": "Independent stable-origin staging replayed the exact closeout candidate 11/11 with active custom domain and rollback available; production launch remains HOLD.",
     "honestDeferrals": [
-      "Residual league overall drift +0.38/season — an age-curve balance question for the realism profile, recorded with its measurement",
-      "Long-run behaviour beyond 10 simulated seasons is not measured and is not extrapolated"
+      "Launch readiness remains held on delivered reply-capable email, SHA-bound founder approval and lifecycle authority.",
+      "Portable replay capsule not introduced: explicit seed, Playwright trace and failure artifacts already provide the authority; no observed duplicate-format need."
     ]
   },
   "testingSurfaces": [
@@ -163,13 +162,13 @@
       "type": "local",
       "label": "Local game",
       "url": "http://127.0.0.1:3000/game.html",
-      "lastChecked": "2026-08-03"
+      "lastChecked": "2026-08-04"
     },
     {
       "type": "production",
       "label": "Public origin",
       "url": "https://playfranchisearchitect.com/",
-      "lastChecked": "2026-08-03"
+      "lastChecked": "2026-08-04"
     },
     {
       "type": "staging",
@@ -178,8 +177,8 @@
       "lastChecked": "2026-08-04"
     }
   ],
-  "lastSession": 71,
-  "silLastSession": 71,
+  "lastSession": 72,
+  "silLastSession": 72,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",
@@ -192,7 +191,7 @@
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ],
-  "session": 71,
+  "session": 72,
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
@@ -275,5 +274,5 @@
     "verified": true,
     "observedAt": "2026-08-04T07:08:50.140Z"
   },
-  "lastCloseoutAt": "2026-08-04T07:26:13.190Z"
+  "lastCloseoutAt": "2026-08-04T19:38:17.466Z"
 }

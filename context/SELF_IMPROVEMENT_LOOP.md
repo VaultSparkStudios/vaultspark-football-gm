@@ -1,9 +1,9 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 67 closed at 995 / 1000 SIL v3.0. Six ranked items and four second-order innovations shipped in one continuous mission; the root finding was that `normalizeContract`'s `|| 1` default made contract expiry unreachable, so no contract in the game's history had ever run out and the entire S62 free-agency market was structurally dead. The offseason is now a calendar with a real market window, the draft honours the pick ledger, compensatory picks can be awarded at all, and the offseason engine no longer writes the controlled roster. Three honest deferrals recorded with their reasoning and measurements. Launch/SPARKED remains evidence-gated on hosted `/_health`, edge headers, a delivered-email receipt, founder approval, and sibling-owned registry reconciliation.
+Rolling status: Session 72 closed at 997 / 1000 SIL v3.0. Five ranked items and two second-order innovations shipped in one continuous mission. League development now has a versioned fixed-band decade contract, long-run verification carries source and simulated finite-number receipts, browser fixtures declare seed and Hall policy, Hall settings round-trip, and the General Manager can read Ballot Watch plus a seven-room Roster Window Map. Verification: Node 857/857, Playwright 40/40, deterministic decade 3/3, responsive 89, visual QA 16, Pages build/smoke and 58 browser modules. Launch remains HOLD on delivered reply-capable email, SHA-bound founder approval and authoritative lifecycle.
 
-Previously — Session 58 closed at 995 / 1000 SIL v3.0. Verification: canonical Node 499/499 with a fresh source-bound receipt, Playwright 20/20, responsive evidence 53/53, Pages build/smoke, 51 reachable browser modules, doctor blockingFailing 0, and primary/second-order queues exhausted. Launch/SPARKED remains evidence-gated on hosted provenance, canonical health/edge headers, verified on-domain delivery, founder approval, and authoritative registry reconciliation.
+Previously — Session 71 closed at 995 / 1000 SIL v3.0 after six ranked items and four second-order innovations repaired the league-wide approximate-value scale, award eligibility, Hall scarcity and champion scoreline. Its measured +0.38 overall/year progression deferral is now closed by Session 72.
 <!-- rolling-status-end -->
 
 ## 2026-08-01 — Session 67 The Offseason Was a Facade
@@ -1100,3 +1100,38 @@ Committed SIL follow-ups:
 - [SIL] Audit by running the thing. Every real finding this session came from simulating seasons and measuring distributions; every candidate that came from reading code alone was either secondary or a phantom.
 - [SIL] When a fix moves the measurement less than the premise predicted, that is the finding — keep measuring instead of declaring the item closed. Item 5's audited constant explained only ~5% of the drift, and chasing the gap found two more causes.
 - [SIL] Rounding a sum whose noise term is an integer discards every fractional term in the model. A curve expressed in tenths needs a continuous draw, or its resolution is decorative.
+
+## 2026-08-04 — Session 72
+
+SIL v3.0: **997 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100,
+Process Quality 99, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 99,
+Capital Efficiency 100, Automation Coverage 100).
+
+- Dev Health 100 — canonical Node 857/857, Playwright 40/40, deterministic decade 3/3, Pages build/smoke,
+  58 browser modules, responsive 89/89 and visual receipt 16/16 passed with direct exits.
+- Creative Alignment 100 — progression, Ballot Watch and roster horizons expose football meaning without hidden
+  buffs, invented causality or fabricated forecast certainty.
+- Momentum 100 — all five ranked items and both generated viable second-order candidates shipped in one mission;
+  Genius List and innovation pack are exhausted at zero open.
+- Engagement 100 — roster-building now has a legible succession horizon and Hall scarcity has visible near-misses;
+  both turn deep simulation state into General Manager decisions.
+- Process Quality 99 — the audit premises were verified against live code and every red was root-fixed. One point
+  withheld because the first visual harness assertion assumed a `tbody` that the shared renderer does not emit;
+  the gate failed honestly, was corrected and rerun.
+- Cross-Repo Coherence 99 — no sibling tree was edited; the existing lifecycle reconciliation remains Ark-owned.
+- Security Posture 100 — no dependency, secret surface or server authority was added; finite scanning publishes
+  counts and a bounded redacted path sample, never the league object.
+- Ecosystem Integration 99 — audit, task board, verifier, both API runtimes, UI, visual receipt and test authority
+  agree. One point remains withheld for authoritative registry/local lifecycle drift.
+- Capital Efficiency 100 — all work is deterministic, local/static-host-safe and zero-variable-cost; Max Plan
+  accounting remains notional.
+- Automation Coverage 100 — clean/corrupt/truncated scans, fixed-band decade parity, browser seed, Hall policy
+  round trip, ballot ordering/exclusion, roster potential visibility, both runtime adapters and rendered pixels are
+  regression-covered.
+
+Committed SIL follow-ups:
+- [SIL] Scan truth before serialization; JSON can launder a non-finite number into null just as a falsy reader can
+  launder it into zero.
+- [SIL] A bounded scan must expose exhaustion as an incomplete result. Silence after a traversal limit is not proof.
+- [SIL] Probabilistic browser fixtures must declare both seed and policy; otherwise a rendering test is a lottery.
+- [SIL] Visual evidence should exercise the source-derived state it claims to review, not only an empty component.

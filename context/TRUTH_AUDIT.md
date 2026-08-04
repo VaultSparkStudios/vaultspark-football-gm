@@ -519,3 +519,20 @@ No readiness, retention, or launch evidence was fabricated. Launch remains HOLD 
 delivered on-domain email, SHA-bound founder approval, and authoritative registry lifecycle. The registry drift is
 reported through signed Ark cargo `01JV62KEPG9B017D2712C0F8F5`; the doctor warning stays visible rather than
 suppressed, because it is true.
+
+## Session 72 — 2026-08-04
+
+| Surface | Prior truth | Session 72 authority |
+|---|---|---|
+| League progression | A decade measured +0.38 overall/year after S71, but no executable league-level target existed. | Versioned profile `2026-s72-parity`, fixed ±0.15/year band, deterministic decade regression and player-visible start/end distribution receipt. |
+| Numeric integrity | Read-side defaults had repeatedly laundered non-finite values into plausible zeroes. | Bounded, cycle-safe scan of ten critical roots; non-finite values fail, traversal truncation is incomplete, source and simulated receipts are independent. |
+| Browser reproducibility | Setup used `Date.now()`; CI could not replay the same league. | Test leagues declare seed `20260306`; per-test overrides remain explicit. Production setup may remain time-seeded. |
+| Hall rendering | A two-season fixture treated a naturally empty scarce Hall as failure, and Settings forgot custom class size. | The fixture names a permissive Hall policy; all three policy values round-trip; Ballot Watch truthfully shows the strongest non-inducted resumes. |
+| Roster horizon | The age curve existed only as engine math. | Seven source-derived position rooms expose OVR/POT, mean age, projected delta, age mix, contracts and succession priority in both runtimes and UI. |
+
+The one-season visual progression sample is retained exactly as rendered, including a watch/out-of-range value when
+the short sample produces one. It is visual evidence, not the parity release gate. The authoritative gate remains
+the deterministic ten-year regression; no screenshot value was manipulated to appear green.
+
+Launch truth is unchanged: healthy code and independent staging do not replace delivered reply-capable email,
+SHA-bound founder approval or authoritative lifecycle reconciliation.

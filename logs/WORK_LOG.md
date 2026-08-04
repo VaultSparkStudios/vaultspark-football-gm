@@ -689,3 +689,31 @@ class-cap plus rebuild idempotence.
 
 Launch remains HOLD on the same three human gates: delivered on-domain email, SHA-bound founder approval, and
 authoritative registry lifecycle. No readiness or retention evidence was fabricated.
+
+## 2026-08-04 — Session 72
+
+Ran the requested continuous `/arc` mission: startup synchronization, infrastructure-weighted live-code audit,
+complete five-item implementation, two source-derived second-order innovations and canonical closeout.
+
+The work created one progression authority (`src/stats/progressionParity.js`) shared by the simulator, both API
+runtimes and player-facing receipts. Development now uses versioned `2026-s72-parity` factors
+`+0.20/-0.55/-2.25`; a fixed-seed decade clears the declared ±0.15 overall/year target. Long-run verification
+scans source and simulated critical state for non-finite numbers and publishes complete/incomplete/fail receipts.
+Commissioner Settings renders both contracts.
+
+Browser fixtures now use seed `20260306`, and the Hall journey sets a permissive policy intentionally rather than
+waiting for a random induction. Hall score/wait/class values round-trip through reload. Second-order work exposes a
+deterministic Ballot Watch and a seven-room Roster Window Map with adjacent OVR/POT, age, contract and projected
+development evidence.
+
+Direct verification completed at Node **857/857**, Playwright **40/40**, focused ten-year gate **3/3**, responsive
+**89 captures**, hash-bound visual QA **16 captures**, Pages build/smoke and **58** browser modules. No dependency,
+paid runtime, secret custody or sibling-tree write was introduced. Launch HOLD remains unchanged and explicit.
+
+Independent Cloudflare Pages staging then promoted the clean candidate to
+`https://staging.playfranchisearchitect.com`; the stable origin converged to exact revision and artifact identity,
+passed 11/11 same-origin provenance checks, and retained a previous deployment for rollback. This closes staging
+proof only; it does not change the three-gate production launch HOLD.
+
+CDR reviewed: no new product creative direction required a public Creative Direction Record; the founder's
+instruction governed execution quality, continuity and evidence discipline.

@@ -1,0 +1,11 @@
+# IGNIS Batch Genius Summary — Franchise Architect: Football
+Generated: 2026-08-04T01:02:21.697Z
+
+**Summary:** Franchise Architect: Football is engineering-green on receipt-derived evidence (9 routes, origin health, edge headers verified at 0ad328d7) but launch remains correctly HELD pending five independent gates: candidate parity, staging origin, delivered email, founder approval, and lifecycle authority.
+
+## Top 5 Items
+1. **Close the independent staging-origin gate (currently 3/10)** — This is the single largest blocker separating a fully green internal evidence contract from an actual launch decision; every session re-confirms engineering health but staging provenance has stagnated across dozens of sessions and is the highest-leverage unresolved red gate.
+2. **Force exact candidate parity between deployed revision and canonical build artifact** — Release truth is now receipt-derived, but parity is still listed as an independent unresolved gate — without it, the verified edge/health receipts at 0ad328d7 can't be trusted to represent what founder approval would actually be signing off on.
+3. **Land a real delivered-email receipt (not just send-attempt evidence)** — Founder approval and lifecycle reconciliation both likely depend on a working notification loop; this has been an open gate for 10+ sessions with no reported progress, suggesting it's blocked on infrastructure outside this repo's control and needs explicit escalation rather than repeated deferral.
+4. **Resolve the Ark-routed mechanization defects from the rolled-back Studio propagation payload** — A generic cross-project payload overwrote project-specific startup authority and was rolled back locally — the underlying defect in the propagation mechanism is now a portfolio-wide risk (other sibling projects may get the same bad payload) and this project holds the clearest reproduction evidence to drive the fix.
+5. **Decide the fate of indexedDbSaveStore.js, modLoader.js, rewindManager.js (zero importers but functionally valuable)** — S67 correctly deferred deletion after discovering indexedDbSaveStore is a viable ~250MB persistence layer solving the 5-10MB localStorage ceiling problem S65 fought — this is a concrete architecture decision (wire it in vs. formally archive) sitting idle and blocking either a capacity win or a cleanup win.

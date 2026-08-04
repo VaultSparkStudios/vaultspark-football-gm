@@ -1,32 +1,32 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-04 (Session 71 closeout) -->
+<!-- generated-at: 2026-08-04 (Session 72 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S71 ══════╗
-║  Date: 2026-08-04  ·  SIL: 995/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: claude-code                            ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S72 ══════╗
+║  Date: 2026-08-04  ·  SIL: 997/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
-║  ✓ fix(sim): the offense had no value — one drifted season reco  ║
-║  ✓ docs: close session 70 arc                                    ║
-║  ✓ fix: LF-normalize built artifacts for cross-platform fingerp  ║
-║  ✓ fix: deploy workflows build with canonical brand env, not pr  ║
-║  ✓ fix: align lifecycle and service-worker gates with S70 truth  ║
+╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
+║  ✓ The five-item Session 72 Genius List is exhausted: finite si  ║
+║  ✓ Two second-order innovations also shipped after the primary   ║
+║  ✓ The active `2026-s72-parity` profile is `+0.20/-0.55/-2.25`;  ║
+║  ✓ Realism verification reports source and simulated finite-num  ║
+║  ✓ Browser fixtures declare seed `20260306`; the Hall journey c  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 997/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
-║    Process Qual       97   ██████████                            ║
+║    Process Qual       99   ██████████                            ║
 ║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
-║    Ecosystem          100  ██████████                            ║
+║    Ecosystem          99   ██████████                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         99   ██████████                            ║
+║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 54 files  ·  M:31 A:0 D:0 ?:23                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         852/852                                          ║
-║  IGNIS:         1d ago                                           ║
+║  Tests:         857/857                                          ║
+║  IGNIS:         2d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  4d ago                                           ║
+║  Sanitization:  5d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

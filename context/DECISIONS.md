@@ -862,3 +862,36 @@ Two constants in `developmentDelta` were unambiguous defects and are fixed. The 
 balance decision requiring its own multi-season baseline and a league-parity target in the realism profile.
 *Why:* honest deferral with a measurement is worth more than a plausible constant chosen at the end of a session.
 Recorded so the next session starts from a number rather than an impression.
+
+## Session 72 — 2026-08-04
+
+**D-S72.1 — League progression has a versioned profile and a fixed external target.**
+The active development profile is `2026-s72-parity`: developing `+0.20`, prime `-0.55`, veteran `-2.25`,
+with the existing continuous variance and potential separation. The pass band is ±0.15 mean overall per observed
+season and the watch band is ±0.30. *Why:* tuning a seed until it looks flat is not a contract. Naming both model
+and target makes every result falsifiable and prevents a later balance change from silently redefining success.
+
+**D-S72.2 — A truncated integrity scan is incomplete, never clean.**
+The scanner has explicit node/issue bounds and cycle detection. It names every critical root it attempted, counts
+numbers and nodes, and returns `incomplete` if the node budget is exhausted even when no bad number was encountered.
+*Why:* observability cannot claim absence after it stopped looking.
+
+**D-S72.3 — Long-run verification scans before and after cloning.**
+Source integrity is captured before JSON serialization and the simulated receipt is captured after the cloned run.
+*Why:* JSON serialization can turn non-finite values into `null`; scanning only the clone could erase the evidence
+the verifier exists to detect.
+
+**D-S72.4 — Browser rendering fixtures declare randomness and policy.**
+Every app browser league uses seed `20260306` unless the test names an override. The Hall journey applies 120/0/40
+through the public settings API. *Why:* a UI test should assert rendering of a constructed state, not hope a scarce
+probabilistic event occurs.
+
+**D-S72.5 — Hall scoring is one authority shared by induction and Ballot Watch.**
+The watchlist never reimplements thresholds or career scoring. It consumes the same candidate score used by Hall
+induction and excludes already inducted players. *Why:* a visible gap against a policy is meaningful only if the
+policy and the ranking cannot drift apart.
+
+**D-S72.6 — The roster horizon is derived from the development profile, not forecast theater.**
+Roster Window Map groups seven position rooms and exposes a bounded one-year direction from declared profile,
+potential, age and contracts. It makes no injury, retention or performance guarantee. *Why:* a useful planning
+surface can compress known inputs without fabricating future outcomes.

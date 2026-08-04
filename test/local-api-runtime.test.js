@@ -301,6 +301,7 @@ test("local api runtime persists legacy commissioner settings and blocks active-
     body: {
       hallOfFameInductionScoreMin: 285,
       hallOfFameYearsRetiredMin: 2,
+      hallOfFameMaxClassSize: 3,
       retiredNumberRequireRetiredPlayer: true,
       retiredNumberRequireHallOfFame: true,
       retiredNumberCareerAvMin: 55
@@ -309,6 +310,7 @@ test("local api runtime persists legacy commissioner settings and blocks active-
   assert.equal(saved.status, 200);
   assert.equal(saved.payload.settings.hallOfFameInductionScoreMin, 285);
   assert.equal(saved.payload.settings.hallOfFameYearsRetiredMin, 2);
+  assert.equal(saved.payload.settings.hallOfFameMaxClassSize, 3);
   assert.equal(saved.payload.settings.retiredNumberRequireRetiredPlayer, true);
   assert.equal(saved.payload.settings.retiredNumberRequireHallOfFame, true);
   assert.equal(saved.payload.settings.retiredNumberCareerAvMin, 55);

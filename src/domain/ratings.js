@@ -284,6 +284,18 @@ export function calcTeamOffenseDefense(teamPlayers) {
  */
 export const LEAGUE_AVERAGE_POTENTIAL = 80;
 
+export const PLAYER_DEVELOPMENT_PROFILE = Object.freeze({
+  version: "2026-s72-parity",
+  potentialCenter: LEAGUE_AVERAGE_POTENTIAL,
+  varianceMin: -2.5,
+  varianceMax: 2.5,
+  ageFactors: Object.freeze({
+    developing25AndUnder: 0.2,
+    prime26To29: -0.55,
+    veteran30Plus: -2.25
+  })
+});
+
 /**
  * How much a player's ratings move over one offseason.
  *
@@ -309,11 +321,11 @@ export const LEAGUE_AVERAGE_POTENTIAL = 80;
  */
 export function developmentDelta(player, rng) {
   let ageFactor;
-  if (player.age <= 25) ageFactor = 1.5;
-  else if (player.age <= 29) ageFactor = 0.4;
-  else ageFactor = -1.3;
+  if (player.age <= 25) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.developing25AndUnder;
+  else if (player.age <= 29) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.prime26To29;
+  else ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.veteran30Plus;
 
   const traitFactor = (player.potential - LEAGUE_AVERAGE_POTENTIAL) / 20;
-  const variance = rng.float(-2.5, 2.5);
+  const variance = rng.float(PLAYER_DEVELOPMENT_PROFILE.varianceMin, PLAYER_DEVELOPMENT_PROFILE.varianceMax);
   return Math.round(ageFactor + traitFactor + variance);
 }
