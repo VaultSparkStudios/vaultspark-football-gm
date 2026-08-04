@@ -11,15 +11,15 @@
 <script src="./lib/themeBoot.js"></script>
 <style>
   :root {
-    --bg0: #0d0f14;
-    --bg1: #13161e;
-    --panel: #1e2230;
-    --line: #2e3448;
-    --ink: #e8ecf4;
-    --muted: #7a8299;
-    --accent: #4f8ef7;
-    --accent2: #7c5cbf;
-    --gold: #e8a840;
+    --bg0: #0c1a19;
+    --bg1: #111f1c;
+    --panel: #192824;
+    --line: #263d38;
+    --ink: #e8ede9;
+    --muted: #7a9490;
+    --accent: #d7a24a;
+    --accent2: #46b69a;
+    --gold: #f4c97a;
     --success: #3dba7e;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,17 +44,17 @@
   .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; }
   .nav-links a:hover { color: var(--ink); }
   .nav-cta {
-    background: var(--accent); color: #fff;
+    background: var(--accent); color: #0c1a19;
     border-radius: 6px; padding: 6px 16px;
     font-size: 13px; font-weight: 700; text-decoration: none;
     transition: background 0.15s;
   }
-  .nav-cta:hover { background: #3a7ae0; color: #fff; }
+  .nav-cta:hover { background: var(--gold); color: #0c1a19; }
 
   /* HERO */
   .hero {
     min-height: 80vh;
-    background: linear-gradient(135deg, #0d0f14 0%, #1a1030 40%, #0d1a2e 100%);
+    background: linear-gradient(135deg, #0c1a19 0%, #0f2319 40%, #081810 100%);
     display: flex; align-items: center; justify-content: center;
     text-align: center; padding: 80px 40px;
     position: relative; overflow: hidden;
@@ -63,7 +63,7 @@
     content: '';
     position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
     width: 600px; height: 600px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(79,142,247,0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(215,162,74,0.08) 0%, transparent 70%);
   }
   .hero-kicker {
     font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
@@ -81,13 +81,13 @@
   }
   .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
   .btn-primary {
-    background: var(--accent); color: #fff;
+    background: var(--accent); color: #0c1a19;
     border-radius: 8px; padding: 14px 32px;
     font-size: 15px; font-weight: 800; text-decoration: none;
     transition: background 0.15s, transform 0.1s;
     display: inline-block;
   }
-  .btn-primary:hover { background: #3a7ae0; transform: translateY(-1px); }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
   .btn-secondary {
     background: var(--panel); color: var(--ink);
     border: 1px solid var(--line); border-radius: 8px;
@@ -95,10 +95,10 @@
     text-decoration: none; display: inline-block;
     transition: border-color 0.15s;
   }
-  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-secondary:hover { border-color: var(--accent2); color: var(--accent2); }
   .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
   .hero-badge {
-    background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.25);
+    background: rgba(215,162,74,0.1); border: 1px solid rgba(215,162,74,0.28);
     color: var(--accent); border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 600;
   }
 
@@ -129,7 +129,7 @@
 
   /* CTA SECTION */
   .cta-section {
-    background: linear-gradient(135deg, #1a1030 0%, #0d1a2e 100%);
+    background: linear-gradient(135deg, #0f2319 0%, #0c1a19 100%);
     border-top: 1px solid var(--line);
     padding: 80px 40px;
     text-align: center;
@@ -157,37 +157,37 @@
 
   /* LIGHT THEME (set pre-paint by lib/themeBoot.js; dark stays the no-JS default) */
   [data-theme="light"] {
-    --bg0: #f4f6fa;
-    --bg1: #eaeef5;
+    --bg0: #f3f5f2;
+    --bg1: #e8ede9;
     --panel: #ffffff;
-    --line: #c9d2e2;
-    --ink: #16202e;
-    --muted: #5a6478;
-    --accent: #2f6fd6;
-    --accent2: #6a4ab0;
-    --gold: #a9761f;
+    --line: #c2cfca;
+    --ink: #152118;
+    --muted: #526860;
+    --accent: #9a6520;
+    --accent2: #2a8570;
+    --gold: #b8820d;
     --success: #1e8a5c;
   }
   [data-theme="light"] nav {
-    background: rgba(244, 246, 250, 0.92);
+    background: rgba(243, 245, 242, 0.92);
   }
   [data-theme="light"] .hero {
-    background: linear-gradient(135deg, #f4f6fa 0%, #ece4f8 40%, #e2edf9 100%);
+    background: linear-gradient(135deg, #f0f5f1 0%, #edf5ee 40%, #eef5ef 100%);
   }
   [data-theme="light"] .hero::before {
-    background: radial-gradient(circle, rgba(47, 111, 214, 0.09) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(154, 101, 32, 0.09) 0%, transparent 70%);
   }
   [data-theme="light"] .hero-badge {
-    background: rgba(47, 111, 214, 0.08);
-    border-color: rgba(47, 111, 214, 0.3);
+    background: rgba(154, 101, 32, 0.08);
+    border-color: rgba(154, 101, 32, 0.28);
   }
   [data-theme="light"] .cta-section {
-    background: linear-gradient(135deg, #ece4f8 0%, #e2edf9 100%);
+    background: linear-gradient(135deg, #edf5ee 0%, #eef5f0 100%);
   }
   [data-theme="light"] .btn-primary { color: #fff; }
-  [data-theme="light"] .btn-primary:hover { background: #2a63c0; }
+  [data-theme="light"] .btn-primary:hover { background: #7d5218; color: #fff; }
   [data-theme="light"] .nav-cta { color: #fff; }
-  [data-theme="light"] .nav-cta:hover { background: #2a63c0; color: #fff; }
+  [data-theme="light"] .nav-cta:hover { background: #7d5218; color: #fff; }
 </style>
 <script type="application/ld+json">
 {
