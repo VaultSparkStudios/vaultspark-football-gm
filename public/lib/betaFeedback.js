@@ -10,7 +10,7 @@
 
 import { state } from "./appState.js";
 import { showToast } from "./appCore.js";
-import { buildLaunchReadinessRows } from "./tabSettings.js";
+import { buildLaunchReadinessRows } from "./launchReadiness.js";
 
 import {
   buildLocalPlaytestExport,

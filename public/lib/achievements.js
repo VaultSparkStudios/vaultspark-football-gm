@@ -56,6 +56,23 @@ export const ACHIEVEMENTS = [
   { id: "speedrun-finish", name: "Against the Clock", icon: "⏱️", tier: "silver", desc: "Complete a speedrun challenge.", check: (c) => c.event.type === "speedrun-complete" }
 ];
 
+export const ACHIEVEMENT_PROGRESS = Object.freeze({
+  "first-win": Object.freeze({ metric: "seasonWins", target: 1, unit: "win" }),
+  "streak-3": Object.freeze({ metric: "winStreak", target: 3, unit: "straight wins" }),
+  "streak-5": Object.freeze({ metric: "winStreak", target: 5, unit: "straight wins" }),
+  "streak-8": Object.freeze({ metric: "winStreak", target: 8, unit: "straight wins" }),
+  "first-season": Object.freeze({ metric: "seasonsServed", target: 1, unit: "season" }),
+  "twelve-wins": Object.freeze({ metric: "seasonWins", target: 12, unit: "wins this season" }),
+  "playoff-berth": Object.freeze({ metric: "playoffAppearances", target: 1, unit: "playoff berth" }),
+  champion: Object.freeze({ metric: "titles", target: 1, unit: "championship" }),
+  dynasty: Object.freeze({ metric: "titles", target: 3, unit: "championships" }),
+  "decade-gm": Object.freeze({ metric: "seasonsServed", target: 10, unit: "seasons" }),
+  "quarter-century": Object.freeze({ metric: "seasonsServed", target: 25, unit: "seasons" }),
+  "tier-2": Object.freeze({ metric: "legacyTier", target: 2, unit: "legacy tier" }),
+  "tier-4": Object.freeze({ metric: "legacyTier", target: 4, unit: "legacy tier" }),
+  "tier-6": Object.freeze({ metric: "legacyTier", target: 6, unit: "legacy tier" })
+});
+
 function playoffAppearances(d) {
   return Number(d?.gmLegacy?.playoffAppearances ?? d?.gmLegacy?.raw?.playoffAppearances ?? 0);
 }
@@ -66,6 +83,60 @@ function titles(d) {
 
 function seasonsServed(d) {
   return Number(d?.gmLegacy?.seasonsServed ?? d?.gmLegacy?.raw?.seasonsServed ?? 0);
+}
+
+function controlledStanding(d) {
+  const teamId = d?.controlledTeamId || d?.controlledTeam?.id;
+  const abbrev = d?.controlledTeam?.abbrev || teamId;
+  return (d?.latestStandings || []).find((row) => row.team === abbrev || row.team === teamId || row.teamId === teamId) || null;
+}
+
+function progressMetric(metric, { dashboard, recentBoxScores }) {
+  const standing = controlledStanding(dashboard);
+  const teamId = dashboard?.controlledTeamId || dashboard?.controlledTeam?.id;
+  if (metric === "seasonWins") return Number(standing?.wins ?? dashboard?.controlledTeam?.season?.wins ?? 0);
+  if (metric === "winStreak") return teamId ? deriveWinStreak(recentBoxScores, teamId) : 0;
+  if (metric === "playoffAppearances") return playoffAppearances(dashboard);
+  if (metric === "titles") return titles(dashboard);
+  if (metric === "seasonsServed") return seasonsServed(dashboard);
+  if (metric === "legacyTier") return Number(dashboard?.gmLegacy?.tier ?? dashboard?.gmLegacy?.raw?.tier ?? 0);
+  return null;
+}
+
+export function deriveTrophyRoad({ dashboard = {}, recentBoxScores = [], earned = {} } = {}, limit = 3) {
+  const objectives = ACHIEVEMENTS
+    .filter((achievement) => !earned[achievement.id])
+    .map((achievement, registryIndex) => {
+      const metadata = ACHIEVEMENT_PROGRESS[achievement.id] || null;
+      if (!metadata) {
+        return {
+          id: achievement.id, name: achievement.name, icon: achievement.icon, desc: achievement.desc,
+          tier: achievement.tier, kind: "event", progressPct: null, registryIndex,
+          progressText: "Receipted moment — no percentage invented"
+        };
+      }
+      const current = Math.max(0, Number(progressMetric(metadata.metric, { dashboard, recentBoxScores })) || 0);
+      const target = metadata.target;
+      const progressPct = Math.min(100, Math.round((current / target) * 100));
+      return {
+        id: achievement.id, name: achievement.name, icon: achievement.icon, desc: achievement.desc,
+        tier: achievement.tier, kind: "measurable", current, target, unit: metadata.unit,
+        progressPct, remaining: Math.max(0, target - current), registryIndex,
+        progressText: current >= target
+          ? current + "/" + target + " " + metadata.unit + " · awaiting the next matching receipt"
+          : current + "/" + target + " " + metadata.unit
+      };
+    })
+    .sort((left, right) => {
+      if (left.kind !== right.kind) return left.kind === "measurable" ? -1 : 1;
+      if (left.kind === "measurable" && right.progressPct !== left.progressPct) return right.progressPct - left.progressPct;
+      return left.registryIndex - right.registryIndex;
+    });
+  return {
+    earnedCount: ACHIEVEMENTS.filter((achievement) => earned[achievement.id]).length,
+    total: ACHIEVEMENTS.length,
+    objectives: objectives.slice(0, Math.max(0, Number(limit) || 0))
+  };
 }
 
 // ── Persistence (cross-save, bounded: ids + timestamps only) ─────────────────
@@ -172,6 +243,7 @@ export function recordAchievementEvent(type, payload = {}) {
   }
   writeEarnedAchievements(earned);
   announceUnlocks(unlocked);
+  renderTrophyRoad({ dashboard: d || {}, recentBoxScores: state.recentBoxScores || [], earned });
   return { unlocked, game: ctx.game };
 }
 
@@ -189,6 +261,33 @@ function announceUnlocks(unlocked) {
   if (caseEl) renderTrophyCase();
 }
 
+function trophyRoadMarkup(road, compact = false) {
+  if (!road.objectives.length) return '<div class="trophy-road-complete">Every trophy is earned. The whole road belongs to you.</div>';
+  return '<div class="trophy-road-summary">' + road.earnedCount + '/' + road.total + ' earned · next three honest objectives</div>' +
+    '<div class="trophy-road-grid' + (compact ? ' trophy-road-grid--compact' : '') + '">' +
+    road.objectives.map((objective) => {
+      const progress = objective.kind === "measurable"
+        ? '<progress value="' + objective.current + '" max="' + objective.target + '" aria-label="' + escapeHtml(objective.name + ' progress') + '"></progress>' +
+          '<span class="trophy-road-progress">' + escapeHtml(objective.progressText) + ' · ' + objective.progressPct + '%</span>'
+        : '<span class="trophy-road-progress trophy-road-progress--event">' + escapeHtml(objective.progressText) + '</span>';
+      return '<article class="trophy-road-card trophy-road-' + escapeHtml(objective.tier) + '" data-trophy-road-id="' + escapeHtml(objective.id) + '">' +
+        '<span class="trophy-road-icon">' + objective.icon + '</span><span class="trophy-road-copy"><strong>' +
+        escapeHtml(objective.name) + '</strong><span>' + escapeHtml(objective.desc) + '</span>' + progress + '</span></article>';
+    }).join('') + '</div>';
+}
+
+export function renderTrophyRoad({
+  dashboard = state.dashboard || {},
+  recentBoxScores = state.recentBoxScores || [],
+  earned = readEarnedAchievements()
+} = {}) {
+  const road = deriveTrophyRoad({ dashboard, recentBoxScores, earned }, 3);
+  const overview = document.getElementById("trophyRoadContent");
+  const mobile = document.getElementById("mobileTrophyRoadContent");
+  if (overview) overview.innerHTML = trophyRoadMarkup(road, false);
+  if (mobile) mobile.innerHTML = trophyRoadMarkup(road, true);
+  return road;
+}
 export function renderTrophyCase() {
   const el = document.getElementById("trophyCaseContent");
   if (!el) return;
@@ -231,6 +330,9 @@ export function renderTrophyCase() {
 
 export function achievementProgressSummary() {
   const earned = readEarnedAchievements();
-  const earnedCount = ACHIEVEMENTS.filter((a) => earned[a.id]).length;
-  return { earnedCount, total: ACHIEVEMENTS.length };
+  return deriveTrophyRoad({
+    dashboard: state.dashboard || {},
+    recentBoxScores: state.recentBoxScores || [],
+    earned
+  }, 3);
 }

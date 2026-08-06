@@ -1,0 +1,351 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-04",
+  "session": 73,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "complete",
+  "summary": {
+    "rankedItems": 6,
+    "combinedPriority": 425.5,
+    "topItem": "hermetic-startup-brief-contract",
+    "source": "live-code-and-rendered-pixel-audit",
+    "openItems": 0,
+    "completedItems": 6,
+    "priorityFormula": "Priority = axis-weighted Impact × Innovation / log2(EffortHours + 2). Game engagement weight 3x, UI and speed/organization 2x, other selected axes 1.5x.",
+    "theme": "The game is already broad, deterministic and visually coherent. The next leap is not more disconnected surface area: make verification non-mutating, expose progression truth at the position-room level, turn exact play receipts into a player-directed broadcast, convert hidden accomplishments into an honest next-goal path, give the season a receipted decision reckoning, and stop loading the entire mature UI graph before the first General Manager decision."
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "game rubric with +2 engagement, +1 UI/UX and +1 speed/organization project overlays; public-launch, static-host, rendered-pixel and observability-honesty gates remain binding",
+    "staging": "independent Cloudflare Pages staging is verified; production launch remains held on email, founder approval and lifecycle authority",
+    "source": "fresh 857/857 Node run, 40/40 Playwright run, doctor blockingFailing 0, live source sampling, exact browser DOM measurements, and desktop/mobile Chromium captures of setup, tutorial and a populated league"
+  },
+  "releaseGate": {
+    "verdict": "GO for current-repository implementation; launch remains HOLD",
+    "tests": "Recovery re-ran the exact committed Session 72 tree: Node 857/857 and Playwright 40/40 exited zero.",
+    "doctor": "blockingFailing 0 with one non-blocking registry SPARKED versus local FORGE warning.",
+    "constraints": "No new dependency, backend, metered API, secret custody or production launch claim. Every gameplay change must be browser-visible and focused-test-covered."
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 8,
+    "sessionEngagement": 8,
+    "retention": 7,
+    "soulFidelity": 9,
+    "overall": 8.2,
+    "evidence": "Structural scores only. No cohort retention or conversion telemetry is invented. Progression is below the other axes because the global mean can pass while a position room silently inflates or collapses; retention is below 8 because trophies exist but the next attainable goal is not surfaced in the weekly loop."
+  },
+  "axisCoverage": {
+    "featuresDepth": {
+      "evaluated": ["Architect's Cut season decision film", "another dynasty export", "more Hall surfaces"],
+      "selected": ["architects-cut-season-reckoning"],
+      "rejected": ["another dynasty export", "more Hall surfaces"]
+    },
+    "uiUx": {
+      "evaluated": ["interactive Sim-Watch controls", "mobile setup overflow", "redo tutorial"],
+      "selected": ["broadcast-director-sim-watch"],
+      "rejected": ["mobile setup overflow", "redo tutorial"]
+    },
+    "gamificationEngagement": {
+      "evaluated": ["next-trophy questline", "unbounded daily streak", "cosmetic points currency"],
+      "selected": ["achievement-questline-authority"],
+      "rejected": ["unbounded daily streak", "cosmetic points currency"]
+    },
+    "aiIntelligence": {
+      "evaluated": ["position-room parity matrix", "LLM coach", "another rule-based next-action card"],
+      "selected": ["position-group-progression-parity"],
+      "rejected": ["LLM coach", "another rule-based next-action card"]
+    },
+    "securityPrivacy": {
+      "evaluated": ["stored-XSS pass", "Gist token persistence pass"],
+      "selected": [],
+      "rejected": ["stored-XSS pass", "Gist token persistence pass"]
+    },
+    "speedOrganizationEfficiency": {
+      "evaluated": ["lazy UI island boot contract", "split GameSession without a behavior boundary", "delete mature modules by line count"],
+      "selected": ["lazy-ui-island-boot-contract"],
+      "rejected": ["split GameSession without a behavior boundary", "delete mature modules by line count"]
+    },
+    "tokenCostReduction": {
+      "evaluated": ["reuse no-write CLI contract", "add paid observability", "new build dependency"],
+      "selected": ["hermetic-startup-brief-contract"],
+      "rejected": ["add paid observability", "new build dependency"]
+    },
+    "feedbackEvidence": {
+      "evaluated": ["hermetic aggregate verification", "duplicate telemetry ledger", "new network analytics"],
+      "selected": ["hermetic-startup-brief-contract"],
+      "rejected": ["duplicate telemetry ledger", "new network analytics"]
+    },
+    "ecosystemRelease": {
+      "evaluated": ["resolve sibling lifecycle locally", "claim launch from route health", "preserve explicit launch AND gate"],
+      "selected": [],
+      "rejected": ["resolve sibling lifecycle locally", "claim launch from route health"]
+    }
+  },
+  "recommendedMoves": [
+    "First make the suite hermetic: a verification run must prove the tree without rewriting the tracked startup brief.",
+    "Then add position-room parity and the lazy UI boot boundary so the simulation and loading architecture become measurable before new presentation layers depend on them.",
+    "Finally ship the player-payoff trio as one coherent arc: direct the broadcast, pursue the next honest trophy, and end the year with an Architect's Cut of the decisions actually made."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "ui/ux",
+      "candidate": "The mobile setup page overflows or paints blank",
+      "reason": "Rejected after exact Chromium geometry and a byte-complete capture: viewport and scroll widths are both 390px, both resume buttons are 317.6px wide, computed light-theme colors pass, and the New Franchise section begins normally at y=479. The apparent cutoff was truncated temporary image transport."
+    },
+    {
+      "axis": "onboarding",
+      "candidate": "Replace onboarding with a new guided campaign",
+      "reason": "Rejected as duplicate work. The existing three-step Year One Franchise Challenge is mobile-readable, skippable, scoped per franchise and commits a real Opening Contract rather than decorative choices."
+    },
+    {
+      "axis": "sharing",
+      "candidate": "Build another dynasty export",
+      "reason": "Rejected as duplicate work. League Story Export, Franchise Newsletter and Dynasty Timeline already provide escaped, source-derived season and career artifacts."
+    },
+    {
+      "axis": "security",
+      "candidate": "Prioritize a speculative stored-XSS rewrite",
+      "reason": "Rejected after tracing player-facing rendering and existing public-truth tests. Dynamic names and text use escapeHtml or textContent, Gist credentials remain tab/memory scoped, and no executable exploit premise was found."
+    },
+    {
+      "axis": "process",
+      "candidate": "Thirty-six recent Node processes prove this repository leaks test children",
+      "reason": "Rejected as unproven. Multiple concurrent Studio sessions and daemons share the host; command-line classification could not bind most processes to this repository. The observed tracked-file mutation is independently reproducible and is the actionable hermeticity defect."
+    },
+    {
+      "axis": "release",
+      "candidate": "Resolve launch by editing local lifecycle truth or declaring production ready",
+      "reason": "Rejected. Delivered reply-capable email, SHA-bound founder approval and authoritative lifecycle are independent gates. Registry reconciliation is sibling-owned through signed Ark and route health cannot substitute for any of them."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Verification integrity / automation",
+      "effortHours": 1.5,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 88.5,
+      "slug": "hermetic-startup-brief-contract",
+      "title": "The green aggregate suite mutates a tracked source-of-truth file",
+      "status": "shipped",
+      "premise": "The recovery began from an exactly clean tree. npm test passed 857/857 but test/startup-authority-contract.test.js spawned scripts/render-startup-brief.mjs in the repository root, rewriting docs/STARTUP_BRIEF.md with the current meter. A green proof therefore leaves a dirty tree and can contaminate a later commit.",
+      "evidence": [
+        "Clean status immediately before npm test; a three-line STARTUP_BRIEF context-meter diff immediately after it",
+        "The live renderer test runs with cwd root and reads the tracked output after the subprocess",
+        "render-startup-brief.mjs hardcodes outputPath to docs/STARTUP_BRIEF.md"
+      ],
+      "constraint": "Reuse the Studio no-write CLI and guarded artifact patterns. Preserve production renderer behavior and do not weaken the live source-bound assertions.",
+      "verification": ["focused startup-authority contract test", "npm test leaves git diff empty", "renderer default still writes the canonical brief"],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Back up and restore STARTUP_BRIEF.md inside the test."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Add an explicit validated output-path override to the renderer, aim the live contract at a test-owned temporary file, assert the tracked brief hash is unchanged, and cover malformed or out-of-root output paths as no-write failures."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus register the renderer in the Studio no-write CLI contract and route writes through a local atomic guarded-artifact helper."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Feature depth / season payoff",
+      "effortHours": 5,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 86.6,
+      "slug": "architects-cut-season-reckoning",
+      "title": "The season grades outcomes but not the General Manager's own decision trail",
+      "status": "shipped",
+      "premise": "Season Epilogue already grades predictions, arcs, records and fan sentiment. The league also owns receipted Architect weekly plans, transactions, draft verdicts, trades and General Manager decisions, but no season-end surface selects and replays the year's most consequential player-authored calls with their exact before/after evidence.",
+      "evidence": [
+        "seasonEpilogue loads arcs, records, fan sentiment and Time Capsule only",
+        "dashboard exposes architectLedger, transaction log, recent decisions and receipted outcomes",
+        "Architect decision semantics already forbid causal claims, so the missing boundary can be descriptive and honest"
+      ],
+      "constraint": "Do not claim a decision caused wins or development. Rank only source-derived committed calls, name the observed result, and show missing evidence as incomplete.",
+      "verification": ["pure model tests for ranking and non-causal wording", "season-end browser rendering", "mobile one-column capture in dark and light themes"],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Append the last three transaction lines to the epilogue."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Build a bounded Architect's Cut model that joins committed weekly plans, trades, draft calls and General Manager choices to their existing receipts; rank three turning points, render declared intent versus observed evidence in Season Epilogue, and keep explicit non-causal and incomplete states."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "L2 plus a cross-season decision anthology with player-selectable chapters and export-safe cards."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Gamification / broadcast immersion",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 83.6,
+      "slug": "broadcast-director-sim-watch",
+      "title": "Sim-Watch is a fixed 280ms slideshow, not a player-directed broadcast",
+      "status": "shipped",
+      "premise": "Sim-Watch owns exact play-by-play, scoring, field state and rivalry framing, but exposes only Skip and Close. Playback always advances every 280ms, cannot pause, cannot change speed, cannot jump to the next score or turnover, and catches all failures silently.",
+      "evidence": [
+        "runSimWatch has one fixed setTimeout(280) loop",
+        "game.html exposes only simWatchSkipBtn and simWatchCloseBtn",
+        "The play and scoring receipts already contain the authority needed for key-play navigation"
+      ],
+      "constraint": "Controls must never change the simulation or reconstruct scores. They direct presentation of the archived exact receipt only; cancellation and a second open must not leak timers.",
+      "verification": ["pure playback-controller tests", "Playwright pause/speed/key-play journey", "desktop and mobile dark/light pixel captures"],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Add a speed selector around the existing delay."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Extract a deterministic playback controller with play/pause, 0.5×/1×/2×/4× speed, previous/next key play and quarter/drive progress; wire accessible controls and keyboard shortcuts, preserve exact score/field receipts, and surface replay failures through client diagnostics."
+        },
+        "L3": {
+          "effortHours": 7,
+          "recipe": "L2 plus an optional broadcast mode with drive chapters, rivalry callouts and shareable final key-play reel."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Retention / progression discovery",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 72.3,
+      "slug": "achievement-questline-authority",
+      "title": "Twenty-nine trophies exist, but the weekly loop cannot name the next attainable one",
+      "status": "shipped",
+      "premise": "The Trophy Case truthfully evaluates and stores 29 achievements, yet the only summary is earnedCount/total and the case lives deep in History. The populated mobile loop shows owner, fan, league and next-snap pressure but no persistent career objective or source-derived progress toward one.",
+      "evidence": [
+        "achievementProgressSummary returns only two counts",
+        "Achievement checks are functions with prose descriptions but no shared progress authority",
+        "Populated mobile capture has a clean pressure stack and room for one compact career path without adding a modal"
+      ],
+      "constraint": "No daily streak, invented XP or hidden rewards. Progress must come from live standings, receipts and existing trophy thresholds; unmeasurable trophies say the next qualifying event rather than a fake percentage.",
+      "verification": ["questline selection/progress unit tests", "Overview and mobile rendering", "unlock automatically advances the next-goal set"],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Show the first three locked trophy descriptions."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Add declarative progress metadata for measurable trophies, derive the three nearest honest objectives from live dashboard and receipt state, render a compact Trophy Road on Overview and mobile, and advance it immediately after an unlock without inventing percentages for event-only goals."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus player-pinned quests and a cross-franchise trophy constellation export."
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Speed / browser architecture",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 49.5,
+      "slug": "lazy-ui-island-boot-contract",
+      "title": "The first decision imports the mature 58-module UI graph up front",
+      "status": "shipped",
+      "premise": "Engine code is lazy, but public/app.js statically imports every tab presenter, exports, History, Settings, Gist, timeline, newsletter and engagement surface before the first General Manager decision. The last committed build measured an 821KB boot payload even though most tabs are not visited in a short session.",
+      "evidence": [
+        "public/app.js is 95KB and statically imports every tab module at the top level",
+        "The browser reachability contract reports 58 modules, all reachable from the initial app graph",
+        "The populated desktop first view needs Overview, state, navigation and weekly-command authorities, not every History and Settings exporter"
+      ],
+      "constraint": "Static-host and offline safe. Lazy boundaries must keep service-worker manifests, browser reachability, error observability and tab hydration exact; no user action may race an unresolved import.",
+      "verification": ["source-derived boot manifest with byte/module budgets", "first-view Playwright flow", "visit every lazy tab and offline smoke", "no browser-module orphan"],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Measure boot modules and fail on accidental growth."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Create a source-derived boot budget, dynamically import at least History and Settings/export islands on first activation, centralize pending/error behavior in the hydration dispatcher, update precache/reachability contracts, and prove first decision plus every lazy tab."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "L2 plus split the remaining secondary tabs and record real browser transfer/parse timings against a checked-in baseline."
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Simulation intelligence / progression",
+      "effortHours": 6,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 45,
+      "slug": "position-group-progression-parity",
+      "title": "A flat league mean can hide one position room inflating while another collapses",
+      "status": "shipped",
+      "premise": "Session 72 proves active-player mean overall drift is within ±0.15 per year for one deterministic decade. summarizeLeagueProgression aggregates every position together and the receipt has one global status. Position rooms have different age distributions, roster churn and potential profiles, so offsetting drifts can satisfy the league target while breaking a room.",
+      "evidence": [
+        "summarizeLeagueProgression returns global distribution and age cohorts only",
+        "ROSTER_WINDOW_GROUPS already defines seven stable football rooms",
+        "The realism verifier already owns deterministic start/end player states and can compute segment receipts without another simulation"
+      ],
+      "constraint": "Do not retune the development profile unless multi-seed evidence proves a real breach. Small or empty samples are incomplete, not pass; preserve the global contract as a separate top-level verdict.",
+      "verification": ["seven-room deterministic receipt tests", "multi-seed measurement history", "Commissioner table and mobile readable state", "global pass cannot mask a room fail"],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Print start/end mean by raw position."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "Promote the seven roster rooms into a shared authority, compute count/mean/median/elite and annual drift per room, classify inadequate samples as incomplete, add a multi-seed comparison history without rerunning on render, and expose global plus room verdicts in Commissioner Settings."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "L2 plus versioned room-specific target bands derived from several declared calibration seeds and a tuning history that can explain every profile revision."
+        }
+      }
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "broadcast-final-reel",
+      "status": "shipped",
+      "premise": "Once playback has key-play authority, a bounded final reel can reuse exact plays without another simulation format."
+    },
+    {
+      "slug": "decision-anthology",
+      "status": "shipped",
+      "premise": "Once Architect's Cut has a pure model, cross-season chapters can become an export without changing simulation state."
+    },
+    {
+      "slug": "position-room-watch-alert",
+      "status": "shipped",
+      "premise": "Once room parity exists, the Roster Window Map can distinguish a team-specific aging window from a league-wide balance warning."
+    }
+  ]
+}

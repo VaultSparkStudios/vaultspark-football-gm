@@ -38,6 +38,7 @@
  */
 
 import { buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "./franchiseCommandCenter.js";
+import { renderTrophyRoad } from "./achievements.js";
 
 const MOBILE_PREF_KEY = "vsfgm_mobile_loop";
 
@@ -153,6 +154,8 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
 
       ${needs ? `<div class="ml-needs"><strong>Roster Needs:</strong> ${_esc(needs)}</div>` : ""}
 
+      <section class="ml-trophy-road" aria-label="Trophy Road"><div id="mobileTrophyRoadContent"></div></section>
+
       <div class="ml-pressure-stack" aria-label="Franchise pressure stack">
         ${pressureStack.map((item, index) => `
           <button class="ml-pressure-card ${_escAttr(item.tone)}" data-mobile-pressure-index="${index}" data-target-tab="${_escAttr(item.targetTab || "")}">
@@ -173,6 +176,8 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
       </div>
     </div>
   `;
+
+  renderTrophyRoad({ dashboard: d, recentBoxScores: state.recentBoxScores || [] });
 
   // Bind advance week
   document.getElementById("mlAdvanceWeekBtn")?.addEventListener("click", () => {

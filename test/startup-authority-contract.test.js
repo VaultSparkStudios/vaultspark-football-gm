@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { createHash } from "node:crypto";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { relative, resolve } from "node:path";
 import { spawnSync } from "../scripts/lib/safe-spawn.mjs";
 import { evaluateBriefFreshness } from "../scripts/check-brief-staleness.mjs";
 import {
@@ -13,6 +14,7 @@ import {
 } from "../scripts/lib/startup-authority.mjs";
 
 const root = resolve(new URL("..", import.meta.url).pathname.replace(/^\/(?:[A-Za-z]:)/, (match) => match.slice(1)));
+const digest = (file) => createHash("sha256").update(readFileSync(file)).digest("hex");
 
 test("project profile labels stale cache and lifecycle authority drift", () => {
   const summary = describeProjectProfile({
@@ -95,17 +97,50 @@ test("brief freshness fails when lifecycle or genius authority changes", () => {
   assert.match(stale.reasons.join(" "), /genius authority changed/);
 });
 
-test("live renderer emits source-bound startup authority tiles", () => {
-  const result = spawnSync(process.execPath, ["scripts/render-startup-brief.mjs"], {
+test("live renderer emits source-bound startup authority tiles without mutating tracked truth", () => {
+  const cache = resolve(root, ".cache");
+  mkdirSync(cache, { recursive: true });
+  const temp = mkdtempSync(resolve(cache, "startup-brief-contract-"));
+  const output = resolve(temp, "STARTUP_BRIEF.md");
+  const trackedBrief = resolve(root, "docs", "STARTUP_BRIEF.md");
+  const trackedStatus = resolve(root, "context", "PROJECT_STATUS.json");
+  const before = { brief: digest(trackedBrief), status: digest(trackedStatus) };
+  try {
+    const result = spawnSync(process.execPath, ["scripts/render-startup-brief.mjs", "--output", relative(root, output)], {
+      cwd: root,
+      encoding: "utf8",
+      env: { ...process.env, STUDIO_BRIEF_NO_DOCTOR_FIX: "1" }
+    });
+    assert.equal(result.status, 0, result.stderr);
+    const brief = readFileSync(output, "utf8");
+    assert.match(brief, /lifecycle-authority-fingerprint/);
+    assert.match(brief, /genius-authority-fingerprint/);
+    assert.match(brief, /Lifecycle authority · local FORGE · registry (?:SPARKED · DRIFT|unavailable)/);
+    assert.match(brief, /Profile · (?:game|—) ·/);
+    assert.match(brief, /GENIUS HIT LIST/);
+    assert.deepEqual({ brief: digest(trackedBrief), status: digest(trackedStatus) }, before);
+  } finally {
+    rmSync(temp, { recursive: true, force: true });
+  }
+});
+
+test("renderer rejects malformed and out-of-repository output paths without writing", () => {
+  const missing = spawnSync(process.execPath, ["scripts/render-startup-brief.mjs", "--output"], {
     cwd: root,
     encoding: "utf8",
     env: { ...process.env, STUDIO_BRIEF_NO_DOCTOR_FIX: "1" }
   });
-  assert.equal(result.status, 0, result.stderr);
-  const brief = readFileSync(resolve(root, "docs", "STARTUP_BRIEF.md"), "utf8");
-  assert.match(brief, /lifecycle-authority-fingerprint/);
-  assert.match(brief, /genius-authority-fingerprint/);
-  assert.match(brief, /Lifecycle authority · local FORGE · registry (?:SPARKED · DRIFT|unavailable)/);
-  assert.match(brief, /Profile · (?:game|—) ·/);
-  assert.match(brief, /GENIUS HIT LIST/);
+  assert.equal(missing.status, 2);
+  assert.match(missing.stderr, /requires a repository-relative path/);
+
+  const outside = resolve(root, `../startup-brief-forbidden-${process.pid}.md`);
+  assert.equal(existsSync(outside), false);
+  const escaped = spawnSync(process.execPath, ["scripts/render-startup-brief.mjs", "--output", relative(root, outside)], {
+    cwd: root,
+    encoding: "utf8",
+    env: { ...process.env, STUDIO_BRIEF_NO_DOCTOR_FIX: "1" }
+  });
+  assert.equal(escaped.status, 2);
+  assert.match(escaped.stderr, /resolve inside the repository/);
+  assert.equal(existsSync(outside), false);
 });

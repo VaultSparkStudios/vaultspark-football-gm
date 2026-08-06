@@ -5,9 +5,9 @@ import { depthDefaultShares, renderDepthChart, renderFreeAgency, renderRetiredPo
 import { deriveContractToolsFromRoster, getTradeTeamId, renderContractsPage, renderExpiringContracts, renderInboundTradeOffers, renderTradeWorkspace, setSelectedDesignationPlayer, setSelectedRetirementOverridePlayer } from "./tabContracts.js";
 import { renderDraft, renderScouting } from "./tabDraft.js";
 import { applyStatsSort, renderAnalyticsChart, renderComparePlayers, renderCompareSearchResults, updateStatsControls } from "./tabStats.js";
-import { renderCalendar, renderPlayerHistoryArchive, renderPlayerTimelineSearchResults, renderRecordsAndHistory, renderTeamHistorySpotlight, setSelectedHistoryPlayer } from "./tabHistory.js";
-import { appendSeasonEpilogue } from "./seasonEpilogue.js";
-import { applySettingsControls, loadRewindHistory, renderAnalytics, renderCalibrationJobs, renderCommandPalette, renderNegotiationTargets, renderNews, renderObservability, renderOwner, renderPersistence, renderPickAssets, renderPipeline, renderRealismVerification, renderRulesTab, renderSettingsSpotlight, renderSimJobs, renderStaff, renderTransactionLog } from "./tabSettings.js";
+
+
+import { getLoadedUiIsland, invokeUiIsland, loadUiIsland } from "./uiIslands.js";
 import { closeModal, openModal } from "./modalManager.js";
 import { buildTacticalMatchupBrief, previewTacticalIdentity } from "./tacticalFilmRoom.js";
 import { ingestNewsIntoInbox, renderInboxBadge } from "./engagementFeatures.js";
@@ -21,7 +21,7 @@ import { planRehearsalEvidence } from "./architectPlanRehearsal.js";
 import { createTabHydrationAuthority } from "./tabHydration.js";
 import { renderCoachingMarketPanel } from "./coachingMarketPanel.js";
 import { recordReturnBoundary } from "./returnDigest.js";
-import { recordAchievementEvent } from "./achievements.js";
+import { recordAchievementEvent, renderTrophyRoad } from "./achievements.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -33,6 +33,37 @@ function commitHydration(token, key, callback) {
   const committed = hydrationAuthority.commit(token, key, callback);
   state.hydrationAuthority = hydrationAuthority.snapshot();
   return committed;
+}
+
+function callUiIsland(name, exportName, ...args) {
+  const loaded = getLoadedUiIsland(name);
+  if (loaded) {
+    const handler = loaded[exportName];
+    if (typeof handler !== "function") throw new Error("UI island " + name + " does not export " + exportName);
+    return handler(...args);
+  }
+  return observeBackgroundTask(() => invokeUiIsland(name, exportName, ...args), {
+    surface: "ui-island",
+    operation: name + ":" + exportName,
+    authorityKey: dashboardAuthorityKey(state.dashboard),
+    retry: () => invokeUiIsland(name, exportName, ...args)
+  });
+}
+async function loadHistoryIsland() {
+  const island = await loadUiIsland("history");
+  island.renderRecordsAndHistory();
+  return island;
+}
+
+async function loadSettingsIsland() {
+  const island = await loadUiIsland("settings");
+  island.renderCommandPalette();
+  island.renderRulesTab();
+  island.renderRealismVerification();
+  island.initGistSyncUI();
+  await island.loadRewindHistory();
+  if (typeof globalThis._loadSpeedrunStatus === "function") await globalThis._loadSpeedrunStatus();
+  return island;
 }
 
 export function applyDashboard(newState) {
@@ -89,14 +120,14 @@ export function applyDashboard(newState) {
   renderExpiringContracts();
   state.newsRows = newState.news || state.newsRows;
   state.picks = newState.draftPickAssets || state.picks;
-  renderNews();
-  renderPickAssets();
-  renderPipeline();
-  renderCalibrationJobs();
-  renderRealismVerification();
-  renderRulesTab();
-  applySettingsControls();
-  renderRecordsAndHistory();
+
+
+
+
+
+
+
+
   renderNewsTicker();
   renderSeasonPreviewPanel();
   observeBackgroundTask(renderGmLegacyScore, {
@@ -113,6 +144,7 @@ export function applyDashboard(newState) {
     authorityKey: dashboardAuthorityKey(newState)
   });
   renderOwnerUltimatum();
+  renderTrophyRoad({ dashboard: newState, recentBoxScores: state.recentBoxScores || [] });
   checkSeasonEndReview(previous);
   if (typeof globalThis._renderSpeedrunPanel === "function") globalThis._renderSpeedrunPanel();
 
@@ -163,20 +195,6 @@ export function activateTab(tabId) {
     authorityKey: dashboardAuthorityKey(state.dashboard),
     retry: () => hydrateTab(tabId, { force: true })
   });
-  if (tabId === "settingsTab") {
-    observeBackgroundTask(loadRewindHistory, {
-      surface: "settings",
-      operation: "rewind-history",
-      authorityKey: dashboardAuthorityKey(state.dashboard)
-    });
-    if (typeof globalThis._loadSpeedrunStatus === "function") {
-      observeBackgroundTask(() => globalThis._loadSpeedrunStatus(), {
-        surface: "settings",
-        operation: "speedrun-status",
-        authorityKey: dashboardAuthorityKey(state.dashboard)
-      });
-    }
-  }
 }
 
 export async function loadState({ timeoutMs } = {}) {
@@ -201,7 +219,7 @@ export async function loadCalendar() {
   commitHydration(token, Number(document.getElementById("calendarYearFilter").value || state.dashboard?.currentYear), () => {
     state.calendar = payload.calendar || null;
     state.calendarWeek = Number(document.getElementById("calendarWeekFilter").value || state.dashboard?.currentWeek || 1);
-    renderCalendar();
+    callUiIsland("history", "renderCalendar");
   });
 }
 
@@ -219,13 +237,13 @@ export async function loadTransactionLog() {
 
   const payload = await api(`/api/transactions?${query.toString()}`);
   state.txRows = payload.transactions || [];
-  renderTransactionLog();
+  callUiIsland("settings", "renderTransactionLog");
 }
 
 export async function loadNews() {
   const payload = await api("/api/news?limit=120");
   state.newsRows = payload.news || [];
-  renderNews();
+  callUiIsland("settings", "renderNews");
 }
 
 export async function loadPickAssets() {
@@ -250,7 +268,7 @@ export async function loadPickAssets() {
   state.tradeAssets.teamAPickIds = state.tradeAssets.teamAPickIds.filter((id) => teamAPickIds.has(id));
   state.tradeAssets.teamBPickIds = state.tradeAssets.teamBPickIds.filter((id) => teamBPickIds.has(id));
   renderTradeWorkspace();
-  renderPickAssets();
+  callUiIsland("settings", "renderPickAssets");
 }
 
 export async function loadTradeOffers() {
@@ -261,7 +279,7 @@ export async function loadTradeOffers() {
 export async function loadNegotiations(teamId = null) {
   const safeTeamId = teamId || state.contractTeamId || state.dashboard?.controlledTeamId || "BUF";
   const payload = await api(`/api/contracts/negotiations?team=${encodeURIComponent(safeTeamId)}`);
-  renderNegotiationTargets(payload.targets || []);
+  callUiIsland("settings", "renderNegotiationTargets", payload.targets || []);
 }
 
 export async function loadContractsTeam() {
@@ -298,7 +316,7 @@ export async function loadAnalytics() {
   if (teamId) query.set("team", teamId);
   const payload = await api(`/api/analytics?${query.toString()}`);
   state.analytics = payload.analytics || null;
-  renderAnalytics();
+  callUiIsland("settings", "renderAnalytics");
   renderAnalyticsChart();
 }
 
@@ -307,18 +325,26 @@ export async function loadSettings() {
   const payload = await api("/api/settings");
   commitHydration(token, "league", () => {
     state.leagueSettings = payload.settings || null;
-    applySettingsControls();
+    callUiIsland("settings", "applySettingsControls");
   });
 }
 
 export async function loadStaff() {
   const teamId = document.getElementById("staffTeamSelect").value || state.dashboard?.controlledTeamId || "BUF";
+  const controlledTeamId = state.dashboard?.controlledTeamId || null;
+  renderCoachingMarketPanel({
+    ok: false,
+    error: teamId !== controlledTeamId
+      ? `You control ${controlledTeamId}. ${teamId}'s staff is visible, but only its own front office can change it.`
+      : "Loading the source-derived coaching market…"
+  });
   const payload = await api(`/api/staff?team=${encodeURIComponent(teamId)}`);
+  const currentTeamId = document.getElementById("staffTeamSelect").value || state.dashboard?.controlledTeamId || "BUF";
+  if (currentTeamId !== teamId) return;
   state.staffState = payload.staff || null;
-  renderStaff();
+  callUiIsland("settings", "renderStaff");
   await loadCoachingMarket(teamId);
 }
-
 /**
  * S63 — the coaching market for the selected role.
  *
@@ -340,6 +366,9 @@ export async function loadCoachingMarket(teamId = null) {
     const market = await api(
       `/api/coaching-market?team=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}`
     );
+    const currentTeam = document.getElementById("staffTeamSelect")?.value || state.dashboard?.controlledTeamId;
+    const currentRole = document.getElementById("staffRoleSelect")?.value || "headCoach";
+    if (currentTeam !== team || currentRole !== role) return;
     renderCoachingMarketPanel(market);
   } catch (error) {
     renderCoachingMarketPanel({ ok: false, error: error?.message || "Coaching market unavailable." });
@@ -361,7 +390,7 @@ export async function loadOwner() {
     document.getElementById("ownerRehabInput").value = owner.facilities?.rehab ?? "";
     document.getElementById("ownerAnalyticsInput").value = owner.facilities?.analytics ?? "";
   }
-  renderOwner();
+  callUiIsland("settings", "renderOwner");
   });
 }
 
@@ -370,26 +399,26 @@ export async function loadObservability() {
   const payload = await api("/api/observability");
   commitHydration(token, "runtime", () => {
     state.observability = payload || null;
-    renderObservability();
+    callUiIsland("settings", "renderObservability");
   });
 }
 
 export async function loadPersistence() {
   const payload = await api("/api/system/persistence");
   state.persistence = payload.persistence || null;
-  renderPersistence();
+  callUiIsland("settings", "renderPersistence");
 }
 
 export async function loadPipeline() {
   const payload = await api("/api/offseason/pipeline");
   state.pipeline = payload.pipeline || null;
-  renderPipeline();
+  callUiIsland("settings", "renderPipeline");
 }
 
 export async function loadCalibrationJobs() {
   const payload = await api("/api/calibration/jobs?limit=60");
   state.calibrationJobs = payload.jobs || [];
-  renderCalibrationJobs();
+  callUiIsland("settings", "renderCalibrationJobs");
 }
 
 export async function runRealismVerification() {
@@ -397,13 +426,13 @@ export async function runRealismVerification() {
   const safeYears = Math.max(1, Math.min(30, Math.floor(years)));
   const payload = await api(`/api/realism/verify?seasons=${encodeURIComponent(safeYears)}`);
   state.realismVerification = payload.report || null;
-  renderRealismVerification();
+  callUiIsland("settings", "renderRealismVerification");
 }
 
 export async function loadSimJobs() {
   const payload = await api("/api/jobs/simulate");
   state.simJobs = payload.jobs || [];
-  renderSimJobs();
+  callUiIsland("settings", "renderSimJobs");
 }
 
 export async function loadComparePlayers() {
@@ -646,7 +675,7 @@ export async function loadSaves() {
     ? state.saves.map((slot) => `${slot.slot} (${new Date(slot.updatedAt).toLocaleString()})`).join(" | ")
     : "No save slots yet.";
   document.getElementById("saveListText").textContent = text;
-  renderSettingsSpotlight();
+  callUiIsland("settings", "renderSettingsSpotlight");
 }
 
 export async function loadQa() {
@@ -668,7 +697,7 @@ export async function loadTeamHistory() {
   const currentTeamId = document.getElementById("teamHistorySelect").value || state.dashboard?.controlledTeamId;
   if (!commitHydration(token, currentTeamId, () => {
   state.teamHistory = payload.history || null;
-  renderTeamHistorySpotlight(payload.history || null);
+  callUiIsland("history", "renderTeamHistorySpotlight", payload.history || null);
   renderTable(
     "teamHistoryTable",
     (payload.history?.seasons || []).map((season) => ({
@@ -721,7 +750,7 @@ export async function loadPlayerTimeline() {
       ints: 0
     }];
   }
-  renderPlayerHistoryArchive(payload.timeline || null);
+  callUiIsland("history", "renderPlayerHistoryArchive", payload.timeline || null);
   renderTable("playerTimelineTable", rows);
 }
 
@@ -742,15 +771,15 @@ export async function searchHistoryPlayers() {
   const query = document.getElementById("playerTimelineSearchInput").value.trim();
   if (!query) {
     state.historyPlayerSearchResults = [];
-    renderPlayerTimelineSearchResults();
-    setSelectedHistoryPlayer(null);
+    callUiIsland("history", "renderPlayerTimelineSearchResults");
+    callUiIsland("history", "setSelectedHistoryPlayer", null);
     return;
   }
   const payload = await api(`/api/players/search?q=${encodeURIComponent(query)}&limit=12&includeRetired=1`);
   state.historyPlayerSearchResults = payload.players || [];
   const nextSelection = state.historyPlayerSearchResults.find((player) => player.id === state.selectedHistoryPlayerId) || null;
-  setSelectedHistoryPlayer(nextSelection);
-  renderPlayerTimelineSearchResults();
+  callUiIsland("history", "setSelectedHistoryPlayer", nextSelection);
+  callUiIsland("history", "renderPlayerTimelineSearchResults");
 }
 
 export function syncBootFilters() {
@@ -763,13 +792,15 @@ export async function loadCoreDashboard() {
   await loadState({ timeoutMs: 15_000 });
   updateStatsControls();
   syncBootFilters();
-  renderCommandPalette();
-  renderRulesTab();
+
+
   renderAnalyticsChart();
-  renderRealismVerification();
+
 }
 
 const HYDRATION_LOADERS = Object.freeze({
+  "history-island": loadHistoryIsland,
+  "settings-island": loadSettingsIsland,
   roster: loadRoster,
   contracts: loadContractsTeam,
   "free-agency": loadFreeAgency,
@@ -1080,7 +1111,10 @@ export function showSeasonEndReview() {
     <div class="sr-call-to-action">A new season awaits. What will your legacy be?</div>
   `;
   appendWhatIfReplay(body);
-  observeBackgroundTask(() => appendSeasonEpilogue(body, d), {
+  observeBackgroundTask(async () => {
+    const { appendSeasonEpilogue } = await import("./seasonEpilogue.js");
+    return appendSeasonEpilogue(body, d);
+  }, {
     surface: "season-review",
     operation: "season-epilogue",
     authorityKey: dashboardAuthorityKey(d)

@@ -895,3 +895,23 @@ policy and the ranking cannot drift apart.
 Roster Window Map groups seven position rooms and exposes a bounded one-year direction from declared profile,
 potential, age and contracts. It makes no injury, retention or performance guarantee. *Why:* a useful planning
 surface can compress known inputs without fabricating future outcomes.
+
+## Session 73 — 2026-08-06
+
+**D-S73.1 — Verification outputs are explicit, validated, and noncanonical by default in tests.**
+The startup renderer accepts an optional repository-scoped output, validates it before every write, and suppresses canonical self-heal/telemetry when rendering elsewhere. Tests prove the tracked brief hash is unchanged. *Why:* a green suite that mutates tracked truth is not hermetic evidence.
+
+**D-S73.2 — Global progression success cannot mask a position-room breach.**
+The seven declared football rooms carry separate count/distribution/drift/target/status receipts and compose into the top-level verdict. Small samples are incomplete, never pass. Watch alerts prescribe more verification and never auto-tune. *Why:* offsetting errors can make a league mean look healthy while one position economy breaks.
+
+**D-S73.3 — Sim-Watch directs presentation of an archived result; it never resimulates or reconstructs.**
+Playback speed, navigation, and Final Reel select exact recorded plays. Score joins use typed scoring plays plus canonical nested team IDs. *Why:* text similarity and summary prose are not durable scoring authority.
+
+**D-S73.4 — Achievement progress is declared only where it can be measured honestly.**
+Measurable trophies own explicit thresholds; event-only trophies state the qualifying event and omit percentages. *Why:* invented progress is worse than an honest unknown.
+
+**D-S73.5 — Architect's Cut is descriptive, bounded, and explicitly non-causal.**
+It ranks source-derived committed decisions by receipt density, reports observed outcomes, preserves missing evidence, and never claims a decision caused a win or development result. *Why:* a season reckoning can be meaningful without pretending observational evidence is causal.
+
+**D-S73.6 — Mature secondary UI is an on-demand island with one hydration owner.**
+History, Settings, exports, credential helpers, and epilogue load behind centralized pending/error behavior while build reachability and service-worker coverage remain complete. *Why:* static hosting does not require paying the parse cost for every mature surface before the first decision.

@@ -41,7 +41,41 @@ import {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
-const outputPath = path.join(root, 'docs', 'STARTUP_BRIEF.md');
+const canonicalOutputPath = path.join(root, 'docs', 'STARTUP_BRIEF.md');
+
+function resolveOutputPath(argv) {
+  const values = [];
+  for (let i = 0; i < argv.length; i += 1) {
+    const arg = argv[i];
+    if (arg === '--output') {
+      if (!argv[i + 1] || argv[i + 1].startsWith('--')) throw new Error('--output requires a repository-relative path');
+      values.push(argv[++i]);
+    } else if (arg.startsWith('--output=')) {
+      values.push(arg.slice('--output='.length));
+    } else {
+      throw new Error(`unknown argument: ${arg}`);
+    }
+  }
+  if (values.length > 1) throw new Error('--output may only be provided once');
+  if (!values.length) return canonicalOutputPath;
+  const requested = values[0].trim();
+  if (!requested || path.isAbsolute(requested)) throw new Error('--output must be a non-empty repository-relative path');
+  const resolved = path.resolve(root, requested);
+  const relative = path.relative(root, resolved);
+  if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) {
+    throw new Error('--output must resolve inside the repository');
+  }
+  return resolved;
+}
+
+let outputPath;
+try {
+  outputPath = resolveOutputPath(process.argv.slice(2));
+} catch (error) {
+  process.stderr.write(`render-startup-brief: ${error.message}\n`);
+  process.exit(2);
+}
+const writesCanonicalBrief = outputPath === canonicalOutputPath;
 const node = process.execPath;
 
 
@@ -1085,8 +1119,9 @@ if (silMaxSession == null) {
 } else if (!silTotal) {
   briefCoherent = false;
   staleReason = `SIL session S${silMaxSession} has no parseable Total — headline score is untrustworthy.`;
-} else if (statusLatest != null && statusLatest !== silMaxSession) {
-  // PROJECT_STATUS.json lagged the SIL log (the historical failure mode). Self-heal it.
+} else if (statusLatest != null && statusLatest !== silMaxSession && writesCanonicalBrief) {
+  // PROJECT_STATUS.json lagged the SIL log (the historical failure mode). Self-heal it
+  // only for the canonical render. Contract/test renders are deliberately no-write.
   try {
     // Sync ONLY the session number. silScore/silCategoriesV3 are owned by the
     // closeout SIL scorer — writing silScore here would desync it from the
@@ -1341,22 +1376,24 @@ try {
   for (const t of r.trimmed) console.log(`  ✂ tile trimmed to budget: ${t.title} (−${t.dropped} lines, cap ${(t.budget / 1024).toFixed(1)}KB)`);
 } catch { /* budget enforcement is advisory at render time */ }
 fs.writeFileSync(outputPath, briefBody, 'utf8');
-console.log(`✓ Startup brief → docs/STARTUP_BRIEF.md  (v3.2)`);
+console.log(`✓ Startup brief → ${path.relative(root, outputPath)}  (v3.2)`);
 console.log(`  Session ${currentSession} · SIL ${silTotal}/${silMax} · ${pct} · Unblocked ${openNow.length} / Blocked ${openBlocked.length}`);
 console.log(`  Signals: tests ${sigTests}  velocity ${sigVel}  runway ${sigRun}  genome ${sigGenome}  entropy ${sigEntropy}  cdr ${sigCdr}  patterns ${sigPatterns}  templates ${sigVer}  revenue ${sigRev}`);
 
-// ── R-H15 (S118 G4): record skill cost telemetry on every /start render ──────
-try {
-  const { recordSkillCost } = await import('./lib/skill-cost-ledger.mjs');
-  const briefBytes = Buffer.byteLength(lines.join('\n'), 'utf8');
-  const actualTokens = Math.ceil(briefBytes / 4);
-  recordSkillCost(root, {
-    skill: 'start',
-    sessionId: `S${currentSession}`,
-    actualTokens,
-    status: 'completed',
-  });
-} catch (err) {
-  // non-fatal — telemetry is advisory
-  process.stderr.write(`  ⚠ skill-cost-ledger record skipped: ${err.message}\n`);
+// ── R-H15 (S118 G4): record skill cost telemetry on canonical /start renders ─
+if (writesCanonicalBrief) {
+  try {
+    const { recordSkillCost } = await import('./lib/skill-cost-ledger.mjs');
+    const briefBytes = Buffer.byteLength(lines.join('\n'), 'utf8');
+    const actualTokens = Math.ceil(briefBytes / 4);
+    recordSkillCost(root, {
+      skill: 'start',
+      sessionId: `S${currentSession}`,
+      actualTokens,
+      status: 'completed',
+    });
+  } catch (err) {
+    // non-fatal — telemetry is advisory
+    process.stderr.write(`  ⚠ skill-cost-ledger record skipped: ${err.message}\n`);
+  }
 }

@@ -10,6 +10,7 @@
     "cli": "node src/index.js",
     "build:pages": "node scripts/build-pages.mjs",
     "check:browser-modules": "node scripts/check-browser-module-reachability.mjs",
+    "check:browser-boot": "node scripts/check-browser-boot-budget.mjs",
     "smoke:pages": "node scripts/smoke-pages.mjs",
     "evidence:responsive": "node scripts/responsive-evidence.mjs",
     "evidence:staging": "node scripts/verify-staging-receipt.mjs",

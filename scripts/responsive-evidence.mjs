@@ -232,6 +232,33 @@ async function main() {
           }
         }
       }
+      await page.locator("#openGuideBtn").click();
+      await page.waitForSelector("#guideModal", { state: "visible" });
+      await page.waitForFunction(() => /League Setup/.test(document.getElementById("guideModalContent")?.textContent || ""));
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureElement(page, outputDir, `${viewport.name}-guide-modal-${theme}`, "#guideModal .modal-card", records);
+      }
+      await page.locator("#closeGuideModalBtn").click();
+
+      const controlledStaffTeam = await page.locator("#staffTeamSelect").inputValue();
+      const rivalStaffTeam = await page.locator("#staffTeamSelect option").evaluateAll(
+        (options, controlled) => options.map((option) => option.value).find((value) => value && value !== controlled),
+        controlledStaffTeam
+      );
+      if (!rivalStaffTeam) throw new Error("Rival coaching visual evidence could not find another team");
+      await page.selectOption("#staffTeamSelect", rivalStaffTeam);
+      await page.waitForFunction(
+        (teamId) => document.querySelector("#coachingMarketPanel .coaching-market-empty")?.textContent?.includes(teamId)
+          && document.querySelectorAll("#coachingMarketPanel .cm-hire, #coachingMarketPanel .cm-fire").length === 0,
+        rivalStaffTeam
+      );
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureElement(page, outputDir, `${viewport.name}-rival-coaching-${theme}`, "#coachingMarketPanel", records);
+      }
+      await page.selectOption("#staffTeamSelect", controlledStaffTeam);
+      await page.waitForSelector("#coachingMarketPanel .coaching-market-head", { state: "visible" });
       // Exercise the verifier once so CANON-053 evidence proves the rendered
       // progression and finite-number receipts with source-derived data.
       const settingsTab = page.locator(`[data-tab="settingsTab"]`).first();
@@ -252,6 +279,7 @@ async function main() {
       for (const theme of evidenceThemes) {
         await setTheme(page, theme);
         await captureElement(page, outputDir, `${viewport.name}-progression-receipt-${theme}`, "#realismVerifyProgressionTable", records);
+        await captureElement(page, outputDir, `${viewport.name}-room-watch-${theme}`, "#realismRoomWatch", records);
         await captureElement(page, outputDir, `${viewport.name}-integrity-receipt-${theme}`, "#realismVerifyIntegrityTable", records);
       }
       const overviewTab = page.locator(`[data-tab="overviewTab"]`).first();
@@ -269,7 +297,25 @@ async function main() {
       for (const theme of evidenceThemes) {
         await setTheme(page, theme);
         await captureElement(page, outputDir, `${viewport.name}-gm-persona-${theme}`, "#gmLegacyCardWrap", records);
+        await captureElement(page, outputDir, `${viewport.name}-trophy-road-${theme}`, "#trophyRoadPanel", records);
       }
+      const simWatchGameId = await page.evaluate(async () => {
+        const { api } = await import("./lib/appState.js");
+        const response = await api("/api/advance-week", { method: "POST", body: {} });
+        const dashboard = response?.state || response?.dashboard || null;
+        if (dashboard) globalThis.__VS_FA_APPLY_DASHBOARD__?.(dashboard);
+        return dashboard?.recentBoxScores?.[0]?.gameId || dashboard?.latestBoxScore?.gameId || null;
+      });
+      if (!simWatchGameId) throw new Error("Sim-Watch visual evidence could not find a receipted game");
+      await page.evaluate(async (gameId) => (await import("./lib/simWatchDirector.js")).runSimWatch(gameId), simWatchGameId);
+      await page.waitForSelector("#simWatchOverlay", { state: "visible" });
+      await page.locator("#simWatchReelBtn").click();
+      await page.waitForFunction(() => /Final Reel/.test(document.getElementById("simWatchProgressLabel")?.textContent || ""));
+      await page.waitForFunction(() => Number(document.getElementById("simWatchProgress")?.value || 0) > 0);      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureElement(page, outputDir, `${viewport.name}-sim-watch-reel-${theme}`, "#simWatchOverlay", records);
+      }
+      await page.locator("#simWatchCloseBtn").click();
       await page.evaluate(async () => {
         const [{ state }, digestModule] = await Promise.all([
           import("./lib/appState.js"),
@@ -291,6 +337,32 @@ async function main() {
         await captureElement(page, outputDir, `${viewport.name}-return-digest-${theme}`, ".return-digest-card", records);
       }
       await page.locator(`.return-digest-actions button[data-action="dismiss"]`).click();
+      await page.evaluate(async () => {
+        const { appendSeasonEpilogue } = await import("./lib/seasonEpilogue.js");
+        const body = document.querySelector(".season-review-body");
+        if (!body) throw new Error("Season review body is missing");
+        body.innerHTML = "";
+        await appendSeasonEpilogue(body, {
+          currentYear: 2028,
+          currentWeek: 1,
+          controlledTeamId: "BUF",
+          controlledTeam: { teamId: "BUF", abbrev: "BUF" },
+          latestStandings: [{ team: "BUF", wins: 11, losses: 6, playoffSeed: 3 }],
+          architectLedger: [
+            { id: "visual-2027-9", teamId: "BUF", year: 2027, week: 9, intent: { tactic: { label: "Attack the edges" }, gmDecision: { label: "Hold the line" } }, outcome: { result: "win", score: "27-20", observed: "Explosive runs improved", aligned: true }, nextAdaptation: "Carry the package into the divisional rematch." },
+            { id: "visual-2026-7", teamId: "BUF", year: 2026, week: 7, intent: { tactic: { label: "Protect the middle" } }, outcome: { result: "loss", score: "17-24" }, nextAdaptation: "Add a pressure answer." }
+          ],
+          draftHistory: [{ year: 2027, selections: [{ pick: 18, round: 1, teamId: "BUF", playerId: "visual-rookie", player: "A. Corner", pos: "DB", overall: 76, potential: 91, userSelected: true }] }]
+        });
+        const modal = document.getElementById("seasonReviewModal");
+        modal.hidden = false;
+        modal.classList.add("active");
+      });
+      await page.waitForSelector(".ep-architect-cut", { state: "visible" });
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureElement(page, outputDir, `${viewport.name}-architect-cut-${theme}`, ".season-epilogue", records);
+      }
       await context.close();
     }
   } finally {
@@ -303,8 +375,14 @@ async function main() {
     ...(viewport.name === "mobile" ? evidenceThemes.map((theme) => `${viewport.name}-game-loop-${theme}`) : []),
     ...evidenceThemes.map((theme) => `${viewport.name}-return-digest-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-gm-persona-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-trophy-road-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-sim-watch-reel-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-progression-receipt-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-room-watch-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-integrity-receipt-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-architect-cut-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-guide-modal-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-rival-coaching-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-roster-window-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-hall-ballot-${theme}`),
     ...evidenceThemes.flatMap((theme) => evidenceTabs.map(([, label]) => `${viewport.name}-game-${label}-${theme}`))

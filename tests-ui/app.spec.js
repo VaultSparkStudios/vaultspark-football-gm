@@ -401,7 +401,7 @@ test("season awards and hall of fame history render for a populated multi-year l
   await waitGameReady(page, 45_000);
   await page.click('[data-testid="tab-history"]');
 
-  expect(await page.locator("#historyAwardYearSelect option").count()).toBeGreaterThanOrEqual((dashboard.awards || []).length);
+  await expect.poll(() => page.locator("#historyAwardYearSelect option").count()).toBeGreaterThanOrEqual((dashboard.awards || []).length);
   await expect(page.locator("#seasonAwardsSpotlight")).toContainText("Awards Class");
   await expect(page.locator("#awardWinnerGallery .history-card").first()).toBeVisible();
   await expect(page.locator("#allPro1Gallery .history-card").first()).toBeVisible();

@@ -1,7 +1,7 @@
 import { state, api, STATS_BENCHMARK_HINTS } from "./appState.js";
 import { recordAchievementEvent } from "./achievements.js";
 import { playSound } from "./audioFeedback.js";
-import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderTable, setBoxScoreTab, setMetricCardValue, showToast, teamCode, teamName } from "./appCore.js";
+import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderGuideContent, renderTable, setBoxScoreTab, setMetricCardValue, showToast, teamCode, teamName } from "./appCore.js";
 import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
 import { renderTradeDeadlineFrenzy } from "./tradeDeadlineFrenzy.js";
 import { buildBoxScoreImpactLeaders, buildQuarterScoreboard } from "./boxScorePresentation.js";
@@ -939,6 +939,7 @@ export function closeBoxScoreModal() {
 }
 
 export function openGuideModal() {
+  renderGuideContent();
   document.getElementById("guideModal")?.classList.remove("hidden");
 }
 

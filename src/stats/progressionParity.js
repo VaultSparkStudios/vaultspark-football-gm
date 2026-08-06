@@ -1,20 +1,23 @@
 const round = (value, digits = 2) => Number(Number(value || 0).toFixed(digits));
 
 export const LEAGUE_PROGRESSION_PARITY_TARGET = Object.freeze({
-  version: "2026-s72",
+  version: "2026-s73-rooms",
   metric: "active-player mean overall annual drift",
   onTargetMaxAbs: 0.15,
-  watchMaxAbs: 0.3
+  watchMaxAbs: 0.3,
+  roomOnTargetMaxAbs: 0.35,
+  roomWatchMaxAbs: 0.6,
+  minimumRoomSample: 20
 });
 
-const ROSTER_WINDOW_GROUPS = Object.freeze([
-  ["Quarterback", ["QB"]],
-  ["Backfield", ["RB"]],
-  ["Receivers", ["WR", "TE"]],
-  ["Offensive Line", ["OL"]],
-  ["Front Seven", ["DL", "LB"]],
-  ["Secondary", ["DB"]],
-  ["Specialists", ["K", "P"]]
+export const POSITION_ROOMS = Object.freeze([
+  Object.freeze({ room: "Quarterback", positions: Object.freeze(["QB"]) }),
+  Object.freeze({ room: "Backfield", positions: Object.freeze(["RB"]) }),
+  Object.freeze({ room: "Receivers", positions: Object.freeze(["WR", "TE"]) }),
+  Object.freeze({ room: "Offensive Line", positions: Object.freeze(["OL"]) }),
+  Object.freeze({ room: "Front Seven", positions: Object.freeze(["DL", "LB"]) }),
+  Object.freeze({ room: "Secondary", positions: Object.freeze(["DB"]) }),
+  Object.freeze({ room: "Specialists", positions: Object.freeze(["K", "P"]) })
 ]);
 
 function expectedDevelopment(player, developmentProfile) {
@@ -29,7 +32,7 @@ function expectedDevelopment(player, developmentProfile) {
 
 export function buildRosterWindowMap(roster = [], developmentProfile) {
   if (!developmentProfile?.ageFactors) throw new TypeError("A declared development profile is required.");
-  const groups = ROSTER_WINDOW_GROUPS.map(([room, positions]) => {
+  const groups = POSITION_ROOMS.map(({ room, positions }) => {
     const players = roster.filter((player) => positions.includes(player.pos || player.position));
     const average = (selector) => players.length ? players.reduce((sum, player) => sum + selector(player), 0) / players.length : 0;
     const projectedDelta = round(average((player) => expectedDevelopment(player, developmentProfile)), 2);
@@ -85,18 +88,34 @@ function cohort(players, predicate) {
   };
 }
 
+function summarizePlayers(players) {
+  const overalls = players.map((player) => Number(player.overall));
+  return {
+    count: players.length,
+    meanOverall: overalls.length ? round(overalls.reduce((sum, value) => sum + value, 0) / overalls.length) : 0,
+    medianOverall: round(median(overalls)),
+    elite90Plus: overalls.filter((value) => value >= 90).length,
+    elite90PlusPct: overalls.length ? round((overalls.filter((value) => value >= 90).length / overalls.length) * 100, 1) : 0
+  };
+}
+
 export function summarizeLeagueProgression(league) {
   const players = (league?.players || []).filter(
     (player) => player?.status !== "retired" && Number.isFinite(Number(player?.overall)) && Number.isFinite(Number(player?.age))
   );
-  const overalls = players.map((player) => Number(player.overall));
+  const summary = summarizePlayers(players);
   return {
-    playerCount: players.length,
-    meanOverall: overalls.length ? round(overalls.reduce((sum, value) => sum + value, 0) / overalls.length) : 0,
-    medianOverall: round(median(overalls)),
-    elite90Plus: overalls.filter((value) => value >= 90).length,
-    elite90PlusPct: overalls.length ? round((overalls.filter((value) => value >= 90).length / overalls.length) * 100, 1) : 0,
+    playerCount: summary.count,
+    meanOverall: summary.meanOverall,
+    medianOverall: summary.medianOverall,
+    elite90Plus: summary.elite90Plus,
+    elite90PlusPct: summary.elite90PlusPct,
     meanAge: players.length ? round(players.reduce((sum, player) => sum + Number(player.age), 0) / players.length) : 0,
+    rooms: POSITION_ROOMS.map(({ room, positions }) => ({
+      room,
+      positions: positions.join("/"),
+      ...summarizePlayers(players.filter((player) => positions.includes(player.pos || player.position)))
+    })),
     cohorts: {
       developing25AndUnder: cohort(players, (player) => Number(player.age) <= 25),
       prime26To29: cohort(players, (player) => Number(player.age) >= 26 && Number(player.age) <= 29),
@@ -105,27 +124,102 @@ export function summarizeLeagueProgression(league) {
   };
 }
 
+function classifyDrift(absoluteDrift, onTargetMaxAbs, watchMaxAbs) {
+  return absoluteDrift <= onTargetMaxAbs
+    ? "on-target"
+    : absoluteDrift <= watchMaxAbs
+      ? "watch"
+      : "out-of-range";
+}
+
 export function buildProgressionParityReceipt({ start, end, seasons, seed, developmentProfile }) {
   const observedSeasons = Math.max(1, Number(seasons) || 1);
   const annualMeanOverallDrift = round((Number(end?.meanOverall || 0) - Number(start?.meanOverall || 0)) / observedSeasons, 3);
-  const absoluteDrift = Math.abs(annualMeanOverallDrift);
-  const status = absoluteDrift <= LEAGUE_PROGRESSION_PARITY_TARGET.onTargetMaxAbs
-    ? "on-target"
-    : absoluteDrift <= LEAGUE_PROGRESSION_PARITY_TARGET.watchMaxAbs
-      ? "watch"
-      : "out-of-range";
+  const globalStatus = classifyDrift(
+    Math.abs(annualMeanOverallDrift),
+    LEAGUE_PROGRESSION_PARITY_TARGET.onTargetMaxAbs,
+    LEAGUE_PROGRESSION_PARITY_TARGET.watchMaxAbs
+  );
+  const startRooms = new Map((start?.rooms || []).map((room) => [room.room, room]));
+  const endRooms = new Map((end?.rooms || []).map((room) => [room.room, room]));
+  const rooms = POSITION_ROOMS.map(({ room, positions }) => {
+    const startRoom = startRooms.get(room) || null;
+    const endRoom = endRooms.get(room) || null;
+    const minimumSample = LEAGUE_PROGRESSION_PARITY_TARGET.minimumRoomSample;
+    const adequateSample = Number(startRoom?.count || 0) >= minimumSample && Number(endRoom?.count || 0) >= minimumSample;
+    const annualRoomDrift = adequateSample
+      ? round((Number(endRoom.meanOverall) - Number(startRoom.meanOverall)) / observedSeasons, 3)
+      : null;
+    return {
+      room,
+      positions: positions.join("/"),
+      status: adequateSample
+        ? classifyDrift(
+            Math.abs(annualRoomDrift),
+            LEAGUE_PROGRESSION_PARITY_TARGET.roomOnTargetMaxAbs,
+            LEAGUE_PROGRESSION_PARITY_TARGET.roomWatchMaxAbs
+          )
+        : "incomplete",
+      adequateSample,
+      minimumSample,
+      annualMeanOverallDrift: annualRoomDrift,
+      annualMedianOverallDrift: adequateSample
+        ? round((Number(endRoom.medianOverall) - Number(startRoom.medianOverall)) / observedSeasons, 3)
+        : null,
+      elite90PlusChange: adequateSample ? Number(endRoom.elite90Plus) - Number(startRoom.elite90Plus) : null,
+      start: startRoom,
+      end: endRoom
+    };
+  });
+  const roomStatuses = rooms.map((room) => room.status);
+  const status = roomStatuses.includes("out-of-range") || globalStatus === "out-of-range"
+    ? "out-of-range"
+    : roomStatuses.includes("incomplete")
+      ? "incomplete"
+      : roomStatuses.includes("watch") || globalStatus === "watch"
+        ? "watch"
+        : "on-target";
   return {
     status,
+    globalStatus,
     observedSeasons,
     seed: Number(seed),
     annualMeanOverallDrift,
     target: LEAGUE_PROGRESSION_PARITY_TARGET,
     developmentProfile,
     start,
-    end
+    end,
+    rooms,
+    roomSummary: {
+      onTarget: roomStatuses.filter((value) => value === "on-target").length,
+      watch: roomStatuses.filter((value) => value === "watch").length,
+      outOfRange: roomStatuses.filter((value) => value === "out-of-range").length,
+      incomplete: roomStatuses.filter((value) => value === "incomplete").length
+    },
+    roomAlerts: rooms
+      .filter((room) => room.status !== "on-target")
+      .map((room) => ({ room: room.room, status: room.status, annualMeanOverallDrift: room.annualMeanOverallDrift }))
   };
 }
-
+export function appendProgressionHistory(history = [], progression, generatedAt = Date.now()) {
+  if (!progression || !Number.isFinite(Number(progression.seed))) {
+    throw new TypeError("A progression receipt with a finite seed is required.");
+  }
+  const entry = {
+    generatedAt: Number(generatedAt),
+    seed: Number(progression.seed),
+    observedSeasons: Number(progression.observedSeasons),
+    status: progression.status,
+    globalStatus: progression.globalStatus,
+    annualMeanOverallDrift: progression.annualMeanOverallDrift,
+    rooms: (progression.rooms || []).map((room) => ({
+      room: room.room,
+      status: room.status,
+      annualMeanOverallDrift: room.annualMeanOverallDrift
+    }))
+  };
+  return [...(Array.isArray(history) ? history : []), entry].slice(-5);
+}
 /**
  * Scan numeric simulation state without laundering NaN/Infinity into zero.
  * Traversal is bounded and cycle-safe; a truncated scan is never called a pass.

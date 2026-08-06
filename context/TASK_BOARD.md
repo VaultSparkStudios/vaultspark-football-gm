@@ -1285,3 +1285,32 @@ commissioner form silently forgot class size, and the realism verifier omitted l
 - An early empty Hall was rejected as a defect: scarce induction makes it correct. The browser fixture now names the
   permissive policy it requires.
 - A speedrun stored-XSS candidate was rejected after tracing escaping and server-authored numeric fields.
+
+## Session 73 — Decision Payoff and Verification Integrity (2026-08-04)
+
+Source: `docs/AUDIT_2026-08-04_SESSION73.json` (6 verified primary items, combined priority 425.5).
+
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Verification integrity / automation | Done S73 | 1.5h | hermetic-startup-brief-contract |
+| FIRE | Feature depth / season payoff | Done S73 | 5.0h | architects-cut-season-reckoning |
+| FIRE | Gamification / broadcast immersion | Done S73 | 4.0h | broadcast-director-sim-watch |
+| HIGH | Retention / progression discovery | Done S73 | 3.0h | achievement-questline-authority |
+| HIGH | Speed / browser architecture | Done S73 | 4.0h | lazy-ui-island-boot-contract |
+| HIGH | Simulation intelligence / progression | Done S73 | 6.0h | position-group-progression-parity |
+
+Execution order: hermetic verification → shared position-room authority → lazy UI boundary → broadcast, trophy,
+and season-payoff surfaces → rendered-pixel and full-suite proof → second-order innovation pass.
+
+### Shipped — six primary and three second-order innovations
+
+- **Hermetic verification:** startup rendering accepts a validated test-owned output, rejects malformed/out-of-root targets before writing, and preserves tracked truth during aggregate tests.
+- **Seven-room parity:** global success can no longer mask a room breach; bounded multi-seed history and Position Room Watch expose new/repeat drift without auto-tuning.
+- **Lazy UI boot:** History, Settings, exports, and epilogue hydrate on demand; first decision is 697,424/710,000 bytes with 0 lazy leaks and 67 reachable browser modules.
+- **Broadcast Director + Final Reel:** exact archived plays support pause, speed, key navigation, keyboard control, and a bounded high-impact replay with canonical score joins.
+- **Trophy Road:** three nearest honest objectives render in Overview/mobile; event-only goals never fabricate a percentage and unlocks advance immediately.
+- **Architect's Cut + Decision Anthology:** bounded weekly, trade, and draft receipts become an explicitly non-causal season reckoning and cross-season archive.
+
+Verification: canonical Node **877/877** direct exit 0; Playwright **40/40**; responsive **125 captures**; visual QA **24 SHA-256-bound inspected captures**; browser boot **697,424/710,000 bytes**; Pages build/smoke; Doctor `blockingFailing: 0`; secret scan 0; JSON/NDJSON and 38-file JavaScript syntax sweeps green.
+
+Unified Genius List: **0 open / 6 primary closed**. Viable second-order innovation list: **0 open / 3 closed**. Launch remains **HOLD** on delivered reply-capable email, SHA-bound founder approval, and authoritative lifecycle reconciliation.

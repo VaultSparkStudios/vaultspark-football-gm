@@ -129,6 +129,10 @@
           </div>
 
           <section id="franchiseCommandCenter" class="panel franchise-command-center" aria-live="polite"></section>
+          <section id="trophyRoadPanel" class="panel trophy-road-panel" aria-labelledby="trophyRoadTitle">
+            <div class="trophy-road-head"><div><span class="brand-kicker">Trophy Road</span><h3 id="trophyRoadTitle">The next marks within reach</h3></div><span class="small">Live truth · no invented progress</span></div>
+            <div id="trophyRoadContent" aria-live="polite"></div>
+          </section>
           <section id="franchiseArchitecture" class="panel franchise-architecture" aria-labelledby="franchiseArchitectureTitle">
             <div class="franchise-architecture-head">
               <div><span class="brand-kicker">The Week Room</span><h3 id="franchiseArchitectureTitle">One call now · every horizon intact</h3></div>
@@ -1230,6 +1234,11 @@
               <div class="table-wrap"><table id="realismVerifySummaryTable"></table></div>
               <h3>League Progression Parity</h3>
               <div class="table-wrap"><table id="realismVerifyProgressionTable"></table></div>
+              <h4>Position-Room Verdicts</h4>
+              <div id="realismRoomWatch" class="room-watch" role="status" aria-live="polite" hidden></div>
+              <div class="table-wrap"><table id="realismVerifyRoomTable"></table></div>
+              <h4>Seed Comparison History</h4>
+              <div class="table-wrap"><table id="realismVerifyHistoryTable"></table></div>
               <h3>Finite-Number Integrity</h3>
               <div class="table-wrap"><table id="realismVerifyIntegrityTable"></table></div>
               <div class="table-wrap"><table id="realismVerifySeasonTable"></table></div>
@@ -1647,15 +1656,30 @@
     </div>
 
     <!-- ── Sim-Watch Overlay (Session 8) ─────────────────────────────────── -->
-    <div id="simWatchOverlay" hidden aria-live="polite" aria-label="Live game simulation">
+    <div id="simWatchOverlay" hidden role="dialog" aria-live="polite" aria-label="Sim-Watch broadcast director">
       <div class="sw-header-bar">
         <span class="sw-kicker">Live Sim</span>
         <div class="sw-ctrl">
+          <button class="sw-reel-btn" id="simWatchReelBtn" title="Replay the receipted high-impact plays">Final Reel</button>
           <button class="sw-skip-btn" id="simWatchSkipBtn">Skip to Final</button>
-          <button class="sw-close-btn" id="simWatchCloseBtn">✕</button>
+          <button class="sw-close-btn" id="simWatchCloseBtn" aria-label="Close Sim-Watch">✕</button>
         </div>
       </div>
       <div id="simWatchHeader"></div>
+      <div class="sw-director" role="group" aria-label="Broadcast playback controls">
+        <button id="simWatchPreviousBtn" type="button" aria-label="Previous key play">←</button>
+        <button id="simWatchPlayPauseBtn" type="button" aria-pressed="false">Pause</button>
+        <button id="simWatchNextBtn" type="button" aria-label="Next key play">→</button>
+        <label class="sw-speed-label" for="simWatchSpeedSelect">Speed</label>
+        <select id="simWatchSpeedSelect" aria-label="Playback speed">
+          <option value="0.5">0.5×</option><option value="1" selected>1×</option>
+          <option value="2">2×</option><option value="4">4×</option>
+        </select>
+      </div>
+      <div class="sw-progress-wrap">
+        <progress id="simWatchProgress" value="0" max="1" aria-label="Broadcast progress"></progress>
+        <span id="simWatchProgressLabel">Pregame</span>
+      </div>
       <div id="simWatchField" class="sw-field" aria-hidden="true"><span id="simWatchBall" class="sw-ball"></span><div class="sw-field-meta"><span id="simWatchPossession">Possession</span><span id="simWatchYardLine">50</span></div></div>
       <div id="simWatchFeed" role="log"></div>
       <div id="simWatchFinal" hidden></div>

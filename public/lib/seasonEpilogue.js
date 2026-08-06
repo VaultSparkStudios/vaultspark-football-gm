@@ -1,4 +1,4 @@
-﻿/**
+/**
  * seasonEpilogue.js — Season Epilogue payoff ritual (S14)
  *
  * End-of-season is the natural churn point. The epilogue aggregates the
@@ -15,6 +15,8 @@
 import { state, api } from "./appState.js";
 import { escapeHtml } from "./appCore.js";
 import { observeBackgroundTask } from "./clientDiagnostics.js";
+import { buildArchitectCut } from "./architectCut.js";
+import { buildDecisionAnthology } from "./decisionAnthology.js";
 
 // ── Closing quote bank (deterministic, outcome-keyed) ────────────────────────
 
@@ -94,11 +96,19 @@ export async function buildSeasonEpilogue(dashboard) {
     });
     return value ?? fallback;
   };
-  const [arcs, records, fan, capsule] = await Promise.all([
+  const [arcs, records, fan, capsule, transactions] = await Promise.all([
     loadOptional("season-arcs", async () => (await api("/api/season-arcs"))?.arcs || [], []),
     loadOptional("franchise-records", async () => (await api("/api/records/franchise"))?.records || null, null),
     loadOptional("fan-sentiment", async () => (await api("/api/fan-sentiment"))?.fanSentiment || null, null),
-    loadOptional("time-capsule", async () => (await api("/api/time-capsule"))?.capsule || null, null)
+    loadOptional("time-capsule", async () => (await api("/api/time-capsule"))?.capsule || null, null),
+    loadOptional(
+      "architect-cut-transactions",
+      async () => {
+        const query = new URLSearchParams({ team: teamKey, limit: "500" });
+        return (await api(`/api/transactions?${query.toString()}`))?.transactions || [];
+      },
+      []
+    )
   ]);
 
   // Arc verdicts: the generator reflects final standings after rollover.
@@ -139,6 +149,20 @@ export async function buildSeasonEpilogue(dashboard) {
       : null;
 
   const quoteKey = outcomeKey(winPct, isChampion, madePlayoffs);
+  const architectCut = buildArchitectCut({
+    seasonYear,
+    teamId: teamKey,
+    architectLedger: d.architectLedger || [],
+    transactions,
+    draftHistory: d.draftHistory || []
+  });
+  const decisionAnthology = buildDecisionAnthology({
+    teamId: teamKey,
+    throughYear: seasonYear,
+    architectLedger: d.architectLedger || [],
+    transactions,
+    draftHistory: d.draftHistory || []
+  });
   return {
     seasonYear,
     record: wins || losses ? `${wins}–${losses}` : "—",
@@ -149,6 +173,8 @@ export async function buildSeasonEpilogue(dashboard) {
     fanApproval: fan ? Math.round(fan.approval ?? 0) : null,
     fanLabel: fan?.label || null,
     receipts,
+    architectCut,
+    decisionAnthology,
     closingQuote: pickQuote(quoteKey, seasonYear),
     quoteKey
   };
@@ -207,6 +233,47 @@ export async function appendSeasonEpilogue(bodyEl, dashboard) {
       </div>`
     : "";
 
+  const cut = ep.architectCut;
+  const cutCards = cut.turningPoints.length
+    ? `<div class="ep-cut-grid">${cut.turningPoints.map((point) => `
+        <article class="ep-cut-card">
+          <div class="ep-cut-kicker">#${point.rank} · ${escapeHtml(point.sourceLabel)} · ${escapeHtml(point.evidenceState)}</div>
+          <h4>${escapeHtml(point.title)}</h4>
+          <dl>
+            <div><dt>Declared intent</dt><dd>${escapeHtml(point.declaredIntent)}</dd></div>
+            <div><dt>Observed evidence</dt><dd>${escapeHtml(point.observedEvidence)}</dd></div>
+            <div><dt>Next adaptation</dt><dd>${escapeHtml(point.nextAdaptation)}</dd></div>
+          </dl>
+          <p class="ep-cut-limit">${escapeHtml(point.limitations)}</p>
+        </article>`).join("")}</div>`
+    : `<p class="ep-cut-empty">No decision receipts were available for this season. The review remains incomplete; no turning points were invented.</p>`;
+  const sourceSummary = Object.entries(cut.sources)
+    .map(([source, count]) => `${source.replace(/([A-Z])/g, " $1").toLowerCase()}: ${count}`)
+    .join(" · ");
+  const missingSummary = cut.missingSources.length
+    ? `<p class="ep-cut-missing">Missing evidence: ${escapeHtml(cut.missingSources.join(", "))}</p>`
+    : "";
+  const architectCutHtml = `<section class="ep-architect-cut" aria-label="Architect's Cut">
+      <div class="ep-section-label">Architect's Cut — Three Decisions That Shaped the Year</div>
+      <p class="ep-cut-status">Evidence status: <strong>${escapeHtml(cut.status)}</strong> · ${escapeHtml(sourceSummary)}</p>
+      ${cutCards}
+      ${missingSummary}
+      <p class="ep-cut-disclaimer">${escapeHtml(cut.disclaimer)}</p>
+    </section>`;
+
+  const priorVolumes = (ep.decisionAnthology?.volumes || []).filter((volume) => volume.seasonYear !== ep.seasonYear);
+  const anthologyHtml = `<section class="ep-anthology" aria-label="Decision Anthology">
+      <div class="ep-section-label">Decision Anthology</div>
+      ${priorVolumes.length
+        ? `<div class="ep-anthology-shelf">${priorVolumes.map((volume) => `<div class="ep-anthology-volume">
+            <strong>${escapeHtml(String(volume.seasonYear))}</strong>
+            <span>${escapeHtml(volume.headline)}</span>
+            <small>${escapeHtml(volume.status)} · ${volume.turningPointCount} receipted turning point${volume.turningPointCount === 1 ? "" : "s"} · ${volume.sourceCoverage}/4 sources</small>
+          </div>`).join("")}</div>`
+        : `<p class="ep-cut-empty">Volume ${escapeHtml(String(ep.seasonYear))} opens the anthology. Future seasons will preserve their evidence coverage beside it.</p>`}
+      <p class="ep-cut-disclaimer">${escapeHtml(ep.decisionAnthology?.disclaimer || "")}</p>
+    </section>`;
+
   const section = document.createElement("div");
   section.className = "season-epilogue";
   section.innerHTML = `
@@ -216,6 +283,8 @@ export async function appendSeasonEpilogue(bodyEl, dashboard) {
     ${arcHtml}
     ${recordsHtml}
     ${receiptsHtml}
+    ${architectCutHtml}
+    ${anthologyHtml}
     ${fanHtml}
     <blockquote class="ep-quote">"${escapeHtml(ep.closingQuote)}"<cite>— Head Coach, season-ending press conference</cite></blockquote>
   `;

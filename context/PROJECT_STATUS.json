@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 72 complete: deterministic browser authority, versioned league-progression parity, bounded finite-number truth receipts, Hall policy round-trip, and player-visible Ballot Watch plus Roster Window Map. Five primary and two second-order items shipped; launch HOLD remains explicit.",
+  "currentFocus": "Session 73 complete: hermetic verification, seven-room progression truth, lazy UI islands, Broadcast Director plus Final Reel, Trophy Road, and Architect Cut plus Decision Anthology. Six primary and three second-order items shipped; launch HOLD remains explicit.",
   "nextMilestone": "Run a fresh live-code audit or resolve one launch authority: delivered reply-capable on-domain email, SHA-bound founder approval, or authoritative registry lifecycle reconciliation.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-04",
+  "lastUpdated": "2026-08-06",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,19 +18,23 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-03",
   "testSuiteStatus": {
-    "totalTests": 857,
-    "pass": 857,
+    "totalTests": 877,
+    "pass": 877,
     "fail": 0,
-    "lastRun": "2026-08-04",
+    "lastRun": "2026-08-06",
     "newTestFiles": [
-      "test/progression-parity.test.js"
+      "test/architect-cut.test.js",
+      "test/browser-boot-budget.test.js",
+      "test/decision-anthology.test.js",
+      "test/progression-watch.test.js",
+      "test/sim-watch-playback.test.js"
     ],
-    "newTestCount": 7,
-    "coverage": "Session 72 canonical aggregate Node 857/857 direct exit 0, including deterministic ten-year progression gate 3/3; Playwright 40/40 exit 0; responsive evidence 89 captures; visual QA 16 hash-bound captures; Pages build/smoke exit 0; 58 browser modules reachable.",
-    "uiSuiteNote": "Playwright 40/40 proves fixed league seed, explicit Hall fixture policy, custom Hall settings round-trip, populated Hall journey, Ballot Watch visibility, and Roster Window Map."
+    "newTestCount": 20,
+    "coverage": "Session 73 canonical aggregate Node 877/877 direct exit 0; Playwright 40/40; responsive evidence 125 captures; visual QA 24 hash-bound captures; browser boot 697424/710000 bytes with 0 lazy leaks; Pages build/smoke; 67 browser modules reachable.",
+    "uiSuiteNote": "Playwright 40/40 plus rendered pixels prove populated Guide content, rival coaching read-only authority, Trophy Road, Position Room Watch, Broadcast Final Reel, Architect Cut and Decision Anthology across dark/light desktop/mobile."
   },
-  "testsPassing": 857,
-  "testsTotal": 857,
+  "testsPassing": 877,
+  "testsTotal": 877,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -69,23 +73,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 997,
+  "silScore": 996,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 100,
-    "processQuality": 99,
+    "processQuality": 98,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
     "ecosystemIntegration": 99,
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 72,
+  "currentSession": 73,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "npm test 857/857 direct exit 0; npx playwright test 40/40 direct exit 0; deterministic ten-year progression 3/3; responsive 89; visual QA 16; build:pages + smoke:pages; 58 browser modules.",
+  "lastVerification": "npm test 877/877 direct exit 0; Playwright 40/40; responsive 125; visual QA 24; browser boot 697424/710000; 67 modules; Pages build/smoke; Doctor blockingFailing 0; secret scan 0.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -111,14 +115,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 847,
+  "silHealth": 846,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-04",
+    "date": "2026-08-06",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -133,28 +137,28 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-07-31",
-  "lastVerificationAt": "2026-08-04",
+  "lastVerificationAt": "2026-08-06",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.013,
   "entropyLastComputed": "2026-08-04",
   "lastSessionSummary": {
-    "session": 72,
+    "session": 73,
     "shipped": [
-      "Bounded cycle-safe finite-number truth receipts before clone and after simulation",
-      "Versioned 2026-s72-parity development profile inside fixed ±0.15 overall/year decade contract",
-      "Deterministic browser leagues and explicit Hall rendering fixture policy",
-      "Player-visible progression and numeric-integrity verifier tables",
-      "Hall score/wait/class policy round-trip authority",
-      "Hall Ballot Watch from the shared induction score authority",
-      "Seven-room Roster Window Map in both API runtimes and browser UI"
+      "Hermetic startup renderer and tracked-truth contract",
+      "Seven-room progression parity with bounded history and Watch alerts",
+      "Lazy UI islands under a 710 KB first-decision budget",
+      "Player-directed Broadcast Director and typed-receipt Final Reel",
+      "Honest Trophy Road objectives",
+      "Architect Cut and cross-season Decision Anthology",
+      "Rendered-pixel fixes for score joins, Guide hydration and rival coaching authority"
     ],
-    "tests": "Node 857/857 · Playwright 40/40 · deterministic decade 3/3 · responsive 89 · visual 16 · Pages build/smoke · 58 browser modules",
-    "deploy": "Independent stable-origin staging replayed the exact closeout candidate 11/11 with active custom domain and rollback available; production launch remains HOLD.",
+    "tests": "Node 877/877 · Playwright 40/40 · responsive 125 · visual 24 · boot 697424/710000 · 67 modules · Pages build/smoke · Doctor 0",
+    "deploy": "No deployment requested or performed; independent staging remains previously verified and production launch remains HOLD.",
     "honestDeferrals": [
       "Launch readiness remains held on delivered reply-capable email, SHA-bound founder approval and lifecycle authority.",
-      "Portable replay capsule not introduced: explicit seed, Playwright trace and failure artifacts already provide the authority; no observed duplicate-format need."
+      "No automatic room-balance tuning: Watch alerts require repeated multi-seed evidence before model revision."
     ]
   },
   "testingSurfaces": [
@@ -177,8 +181,8 @@
       "lastChecked": "2026-08-04"
     }
   ],
-  "lastSession": 72,
-  "silLastSession": 72,
+  "lastSession": 73,
+  "silLastSession": 73,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",
@@ -191,7 +195,7 @@
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ],
-  "session": 72,
+  "session": 73,
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
@@ -274,5 +278,5 @@
     "verified": true,
     "observedAt": "2026-08-04T07:08:50.140Z"
   },
-  "lastCloseoutAt": "2026-08-04T19:38:17.466Z"
+  "lastCloseoutAt": "2026-08-06T03:37:37.007Z"
 }

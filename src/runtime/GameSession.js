@@ -73,6 +73,7 @@ import {
 import { PFR_RECENT_WEIGHTED_PROFILE } from "../stats/profiles/pfrRecentWeightedProfile.js";
 import { PFR_CAREER_WEIGHTED_PROFILE } from "../stats/profiles/pfrCareerWeightedProfile.js";
 import {
+  appendProgressionHistory,
   buildRosterWindowMap,
   buildProgressionParityReceipt,
   scanFiniteSimulationState,
@@ -1261,6 +1262,7 @@ function ensureLeagueRuntime(league) {
   if (!league.waiverWire) league.waiverWire = [];
   if (!league.pendingWaiverClaims) league.pendingWaiverClaims = [];
   if (!league.pendingDraft) league.pendingDraft = null;
+  if (!Array.isArray(league.draftHistory)) league.draftHistory = [];
   if (!league.transactionLog) league.transactionLog = [];
   if (!Number.isFinite(league.transactionSeq)) league.transactionSeq = league.transactionLog.length;
   if (!league.scouting) league.scouting = { teams: {}, weeklyPoints: 12 };
@@ -1714,6 +1716,7 @@ export class GameSession {
     this.previousDivisionRanks = null;
     this.lastCalibrationReport = null;
     this.lastRealismVerificationReport = null;
+    this.realismVerificationHistory = [];
     this.realismProfile = realismProfile || PFR_RECENT_WEIGHTED_PROFILE;
     this.careerRealismProfile = careerRealismProfile || PFR_CAREER_WEIGHTED_PROFILE;
 
@@ -1780,6 +1783,11 @@ export class GameSession {
     session.realismProfile = snapshot.realismProfile || PFR_RECENT_WEIGHTED_PROFILE;
     session.careerRealismProfile = snapshot.careerRealismProfile || PFR_CAREER_WEIGHTED_PROFILE;
     session.lastRealismVerificationReport = snapshot.lastRealismVerificationReport || null;
+    session.realismVerificationHistory = Array.isArray(snapshot.realismVerificationHistory)
+      ? snapshot.realismVerificationHistory.slice(-5)
+      : Array.isArray(snapshot.lastRealismVerificationReport?.progressionHistory)
+        ? snapshot.lastRealismVerificationReport.progressionHistory.slice(-5)
+        : [];
     session.pendingSeasonWrap = snapshot.pendingSeasonWrap || null;
     session.statBook.reindexPlayers();
     ensureLeagueRuntime(session.league);
@@ -1844,6 +1852,7 @@ export class GameSession {
       previousDivisionRanks: this.previousDivisionRanks,
       lastCalibrationReport: this.lastCalibrationReport,
       lastRealismVerificationReport: this.lastRealismVerificationReport,
+      realismVerificationHistory: this.realismVerificationHistory,
       realismProfile: this.realismProfile,
       careerRealismProfile: this.careerRealismProfile,
       league: this.league,
@@ -5156,6 +5165,20 @@ export class GameSession {
   }
 
   prepareDraft() {
+    const previousDraft = this.league.pendingDraft;
+    if (previousDraft?.completed && Array.isArray(previousDraft.selections) && previousDraft.selections.length) {
+      if (!Array.isArray(this.league.draftHistory)) this.league.draftHistory = [];
+      const receipt = {
+        schemaVersion: "1.0",
+        year: Number(previousDraft.year),
+        completed: true,
+        selections: previousDraft.selections.map((selection) => ({ ...selection }))
+      };
+      this.league.draftHistory = [
+        receipt,
+        ...this.league.draftHistory.filter((entry) => Number(entry.year) !== receipt.year)
+      ].slice(0, 12);
+    }
     const draftYear = this.currentYear + 1;
     const prospects = createDraftClass({ size: 256, year: draftYear, rng: this.rng }).map((player, index) => ({
       ...player,
@@ -5549,7 +5572,11 @@ export class GameSession {
       compensatory: slot?.compensatory === true,
       playerId: prospect.id,
       player: prospect.name,
-      pos: prospect.position
+      pos: prospect.position,
+      overall: prospect.overall,
+      potential: prospect.potential,
+      scoutedOverall: prospect.scouting?.scoutedOverall ?? null,
+      userSelected: true
     });
     this.consumeDraftPick(slot);
     draft.currentPick += 1;
@@ -5621,7 +5648,11 @@ export class GameSession {
         compensatory: slot?.compensatory === true,
         playerId: prospect.id,
         player: prospect.name,
-        pos: prospect.position
+        pos: prospect.position,
+        overall: prospect.overall,
+        potential: prospect.potential,
+        scoutedOverall: prospect.scouting?.scoutedOverall ?? null,
+        userSelected: false
       });
       this.consumeDraftPick(slot);
       draft.currentPick += 1;
@@ -5763,7 +5794,11 @@ export class GameSession {
       latestTacticalFilm: (this.league.tacticalFilmLog || []).find((entry) => entry.teamId === this.controlledTeamId) || null,
       tacticalFilmLedger: (this.league.tacticalFilmLog || []).filter((entry) => entry.teamId === this.controlledTeamId).slice(0, 12),
       coachingLineage: this.services.coaching.getTeamView(this.controlledTeamId),
-      architectLedger: architectLedgerForTeam(this.league, this.controlledTeamId, 12),
+      architectLedger: architectLedgerForTeam(this.league, this.controlledTeamId, 40),
+      draftHistory: (this.league.draftHistory || []).map((draft) => ({
+        ...draft,
+        selections: (draft.selections || []).filter((selection) => selection.teamId === this.controlledTeamId)
+      })).filter((draft) => draft.selections.length).slice(0, 12),
       architectThesis: this.getArchitectThesisReview(),
       recentBoxScores: this.getRecentBoxScores(this.controlledTeamId, 8),
       injuryReport: getInjuryReport(this.league, null, {
@@ -5792,6 +5827,7 @@ export class GameSession {
       lastCalibrationReport: this.lastCalibrationReport,
       lastCalibrationSnapshot: calibrationSnapshot,
       lastRealismVerificationReport: this.lastRealismVerificationReport,
+      realismVerificationHistory: this.realismVerificationHistory,
       draft: this.getDraftAuthority()
 
     };
@@ -6693,12 +6729,14 @@ export class GameSession {
       );
   }
 
-  runRealismVerification({ seasons = 12, seedOffset = 9_973 } = {}) {
+  runRealismVerification({ seasons = 12, seedOffset = null } = {}) {
     const simYears = normalizeCount(seasons, 1, 30, 12);
     const progressionStart = summarizeLeagueProgression(this.league);
     const sourceIntegrity = scanFiniteSimulationState({ league: this.league, statBook: this.statBook });
     const snapshot = JSON.parse(JSON.stringify(this.toSnapshot()));
-    const shiftedSeed = Number(snapshot.rngSeed || Date.now()) + Number(seedOffset || 0);
+    const historyIndex = Array.isArray(this.realismVerificationHistory) ? this.realismVerificationHistory.length : 0;
+    const resolvedSeedOffset = seedOffset == null ? 9_973 + historyIndex * 7_919 : Number(seedOffset || 0);
+    const shiftedSeed = Number(snapshot.rngSeed || Date.now()) + resolvedSeedOffset;
     snapshot.rngSeed = shiftedSeed;
     if (snapshot.rngStreams?.baseSeed != null) snapshot.rngStreams.baseSeed = shiftedSeed;
 
@@ -6803,6 +6841,10 @@ export class GameSession {
       }
     };
 
+    const progressionHistory = appendProgressionHistory(
+      this.realismVerificationHistory,
+      progression
+    );
     const report = {
       generatedAt: Date.now(),
       simulatedYears,
@@ -6813,6 +6855,7 @@ export class GameSession {
       seasonByPosition,
       careerByPosition,
       progression,
+      progressionHistory,
       numericIntegrity,
       retirementPolicy: {
         maxAgeByPosition: POSITION_MAX_AGE_LIMITS,
@@ -6825,6 +6868,7 @@ export class GameSession {
         numericIntegrity: numericIntegrity.status
       }
     };
+    this.realismVerificationHistory = progressionHistory;
     this.lastRealismVerificationReport = report;
     return report;
   }

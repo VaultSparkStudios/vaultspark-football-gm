@@ -1,5 +1,5 @@
 import { escapeHtml, showToast } from "./appCore.js";
-import { awardCountLine, hallOfFameCareerLine } from "./tabHistory.js";
+import { awardCountLine, hallOfFameCareerLine } from "./historyFormatting.js";
 
 
 function ceremonyCareerLine(entry = {}) {

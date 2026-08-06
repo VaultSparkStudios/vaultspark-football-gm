@@ -3,17 +3,17 @@ export const TAB_HYDRATION_DOMAINS = Object.freeze({
   rosterTab: ["roster", "retired-pool"],
   faTab: ["free-agency"],
   depthTab: ["depth-chart"],
-  contractsTab: ["contracts", "negotiations"],
-  transactionsTab: ["transactions", "pick-assets", "roster", "trade-offers"],
+  contractsTab: ["settings-island", "contracts", "negotiations"],
+  transactionsTab: ["settings-island", "transactions", "pick-assets", "roster", "trade-offers"],
   scoutingTab: ["scouting"],
   draftTab: ["draft", "scouting"],
-  statsTab: ["stats", "analytics"],
-  calendarTab: ["calendar"],
-  logTab: ["transactions", "news"],
-  historyTab: ["team-history"],
-  rulesTab: [],
+  statsTab: ["settings-island", "stats", "analytics"],
+  calendarTab: ["history-island", "calendar"],
+  logTab: ["settings-island", "transactions", "news"],
+  historyTab: ["history-island", "team-history"],
+  rulesTab: ["settings-island"],
   settingsTab: [
-    "saves", "qa", "settings", "staff", "owner", "observability",
+    "settings-island", "saves", "qa", "settings", "staff", "owner", "observability",
     "persistence", "pipeline", "calibration-jobs", "simulation-jobs"
   ]
 });

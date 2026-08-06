@@ -3,7 +3,7 @@ import { decoratePlayerColumnFromRows, escapeHtml, fmtMoney, formatTransactionDe
 import { openGuideModal } from "./tabOverview.js";
 import { renderContractsPage } from "./tabContracts.js";
 import { renderAnalyticsChart } from "./tabStats.js";
-import { hallOfFamePolicyLine, retiredNumberPolicyLine } from "./tabHistory.js";
+import { hallOfFamePolicyLine, retiredNumberPolicyLine } from "./historyFormatting.js";
 import { activateTab, applyDashboard } from "./gameFlow.js";
 import {
   getSavedToken, getSavedGistId, saveGistId,
@@ -12,6 +12,7 @@ import {
 import { closeModal, openModal } from "./modalManager.js";
 import { getClientDiagnosticsSnapshot } from "./clientDiagnostics.js";
 import { buildTimelineData, injectStyles as injectDynastyTimelineStyles, mount as mountDynastyTimeline } from "./dynastyTimeline.js";
+import { derivePositionRoomWatch } from "./progressionWatch.js";
 
 export function resolvePublicDomainReadiness(status = {}) {
   status = status || {};
@@ -493,8 +494,15 @@ export function applySettingsControls() {
 export function renderRealismVerification() {
   const report = state.realismVerification;
   if (!report) {
+    const watchEl = document.getElementById("realismRoomWatch");
+    if (watchEl) {
+      watchEl.hidden = true;
+      watchEl.innerHTML = "";
+    }
     renderTable("realismVerifySummaryTable", []);
     renderTable("realismVerifyProgressionTable", []);
+    renderTable("realismVerifyRoomTable", []);
+    renderTable("realismVerifyHistoryTable", []);
     renderTable("realismVerifyIntegrityTable", []);
     renderTable("realismVerifySeasonTable", []);
     renderTable("realismVerifyCareerTable", []);
@@ -529,6 +537,46 @@ export function renderRealismVerification() {
       ageMix: `≤25 ${progression.start.cohorts?.developing25AndUnder?.sharePct || 0}% | 26–29 ${progression.start.cohorts?.prime26To29?.sharePct || 0}% | 30+ ${progression.start.cohorts?.veteran30Plus?.sharePct || 0}%`
     }
   ] : []);
+
+  const watch = derivePositionRoomWatch(report);
+  const watchEl = document.getElementById("realismRoomWatch");
+  if (watchEl) {
+    watchEl.hidden = false;
+    watchEl.className = `room-watch room-watch--${watch.status}`;
+    watchEl.innerHTML = `
+      <div class="room-watch-head"><strong>Position-Room Watch</strong><span>${escapeHtml(watch.status)}</span></div>
+      <p>${escapeHtml(watch.summary)}</p>
+      ${watch.alerts.length ? `<div class="room-watch-grid">${watch.alerts.map((alert) => `
+        <article class="room-watch-alert">
+          <div><strong>${escapeHtml(alert.room)}</strong><span>${escapeHtml(alert.status)} · ${escapeHtml(alert.persistence)}</span></div>
+          <p>${escapeHtml(alert.annualMeanOverallDrift == null ? "Sample incomplete" : `${alert.annualMeanOverallDrift}/yr mean drift`)}</p>
+          <small>${escapeHtml(alert.action)}</small>
+        </article>`).join("")}</div>` : ""}
+    `;
+  }
+
+  renderTable("realismVerifyRoomTable", (progression.rooms || []).map((room) => ({
+    room: room.room,
+    positions: room.positions,
+    status: room.status,
+    sample: `${room.start?.count || 0} → ${room.end?.count || 0}`,
+    mean: `${room.start?.meanOverall ?? "—"} → ${room.end?.meanOverall ?? "—"}`,
+    annualDrift: room.annualMeanOverallDrift == null ? "incomplete" : `${room.annualMeanOverallDrift}/yr`,
+    medianDrift: room.annualMedianOverallDrift == null ? "incomplete" : `${room.annualMedianOverallDrift}/yr`,
+    elite90: room.elite90PlusChange == null ? "—" : `${room.elite90PlusChange >= 0 ? "+" : ""}${room.elite90PlusChange}`
+  })));
+
+  renderTable("realismVerifyHistoryTable", (report.progressionHistory || []).slice().reverse().map((entry) => ({
+    seed: entry.seed,
+    seasons: entry.observedSeasons,
+    verdict: entry.status,
+    global: entry.globalStatus,
+    annualDrift: `${entry.annualMeanOverallDrift}/yr`,
+    roomFlags: (entry.rooms || [])
+      .filter((room) => room.status !== "on-target")
+      .map((room) => `${room.room}: ${room.status}${room.annualMeanOverallDrift == null ? "" : ` (${room.annualMeanOverallDrift}/yr)`}`)
+      .join(" · ") || "all seven on target"
+  })));
 
   const integrity = report.numericIntegrity || {};
   renderTable("realismVerifyIntegrityTable", ["source", "simulated"].map((phase) => ({

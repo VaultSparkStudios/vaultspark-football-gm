@@ -3462,6 +3462,22 @@ body.mobile-loop-active .mobile-loop-overlay {
   padding: 3px 10px; font-size: 0.74rem; cursor: pointer; color: var(--muted);
 }
 .sw-skip-btn:hover, .sw-close-btn:hover { border-color: var(--accent); color: var(--ink); }
+.sw-director {
+  display: grid; grid-template-columns: 34px minmax(72px, 1fr) 34px auto minmax(68px, auto);
+  gap: 6px; align-items: center; padding: 9px 12px; background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+}
+.sw-director button, .sw-director select {
+  min-height: 34px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg-1); color: var(--ink); font: inherit;
+}
+.sw-director button:hover, .sw-director button:focus-visible, .sw-director select:focus-visible {
+  border-color: var(--accent); outline: 2px solid rgba(var(--team-primary-rgb), 0.28); outline-offset: 1px;
+}
+.sw-speed-label { color: var(--muted); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.sw-progress-wrap { display: grid; gap: 4px; padding: 7px 12px; border-bottom: 1px solid var(--line); }
+.sw-progress-wrap progress { width: 100%; height: 7px; accent-color: var(--accent); }
+#simWatchProgressLabel { color: var(--muted); font-size: 0.68rem; font-variant-numeric: tabular-nums; }
 #simWatchHeader { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
 .sw-matchup { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
 .sw-team { font-weight: 700; flex: 1; }
@@ -3755,6 +3771,39 @@ body.mobile-loop-active .mobile-loop-overlay {
   font-style: italic; font-size: 0.88rem;
 }
 .ep-quote cite { display: block; margin-top: 6px; font-size: 0.72rem; color: var(--muted); font-style: normal; }
+.ep-architect-cut {
+  margin: 14px 0; padding: 12px; border: 1px solid var(--line);
+  border-radius: 12px; background: linear-gradient(145deg, var(--inset), transparent);
+}
+.ep-cut-status, .ep-cut-missing, .ep-cut-disclaimer, .ep-cut-empty {
+  margin: 6px 0; color: var(--muted); font-size: 0.72rem; line-height: 1.45;
+}
+.ep-cut-status strong { color: var(--ink-strong); text-transform: uppercase; letter-spacing: 0.06em; }
+.ep-cut-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 10px 0; }
+.ep-cut-card {
+  min-width: 0; padding: 10px; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--surface); box-shadow: inset 0 1px color-mix(in srgb, var(--ink) 8%, transparent);
+}
+.ep-cut-kicker { color: var(--accent); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.ep-cut-card h4 { margin: 6px 0 8px; color: var(--ink-strong); font-size: 0.86rem; }
+.ep-cut-card dl { display: grid; gap: 7px; margin: 0; }
+.ep-cut-card dl div { display: grid; gap: 2px; }
+.ep-cut-card dt { color: var(--muted); font-size: 0.59rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.ep-cut-card dd { margin: 0; font-size: 0.72rem; line-height: 1.38; }
+.ep-cut-limit { margin: 8px 0 0; color: var(--muted); font-size: 0.64rem; line-height: 1.35; font-style: italic; }
+.ep-cut-missing { color: var(--warning); }
+.ep-cut-disclaimer { padding-top: 7px; border-top: 1px solid var(--line); }
+.ep-anthology { margin: 10px 0 14px; padding: 10px 12px; border-left: 3px solid var(--accent); background: var(--inset); }
+.ep-anthology-shelf { display: grid; gap: 6px; }
+.ep-anthology-volume { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 2px 8px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.ep-anthology-volume:last-child { border-bottom: 0; }
+.ep-anthology-volume strong { grid-row: 1 / span 2; color: var(--accent); font-variant-numeric: tabular-nums; }
+.ep-anthology-volume span { color: var(--ink-strong); font-size: 0.75rem; }
+.ep-anthology-volume small { color: var(--muted); font-size: 0.64rem; }
+@media (max-width: 760px) {
+  .ep-architect-cut { padding: 10px; }
+  .ep-cut-grid { grid-template-columns: 1fr; }
+}
 
 /* ── Challenge codes (S14) ──────────────────────────────────────────────── */
 .challenge-code-row {
@@ -5007,6 +5056,45 @@ html[data-theme="light"] .bg-layer {
   .week-recap-card { left: 12px; right: 12px; max-width: none; bottom: 76px; }
 }
 
+/* ── Position-Room Watch (S73) ── */
+.room-watch { margin: 8px 0 12px; padding: 10px; border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; background: var(--inset); }
+.room-watch--action-required { border-left-color: var(--danger); }
+.room-watch--watch { border-left-color: var(--warning); }
+.room-watch--clear { border-left-color: var(--success); }
+.room-watch-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+.room-watch-head > span { color: var(--muted); font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.room-watch > p { margin: 5px 0 0; color: var(--muted); font-size: 0.72rem; }
+.room-watch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 7px; margin-top: 9px; }
+.room-watch-alert { padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.room-watch-alert > div { display: flex; justify-content: space-between; gap: 8px; }
+.room-watch-alert span { color: var(--warning); font-size: 0.62rem; text-transform: uppercase; }
+.room-watch-alert p { margin: 4px 0; font-size: 0.69rem; }
+.room-watch-alert small { color: var(--muted); font-size: 0.63rem; line-height: 1.35; }
+
+/* ── Trophy Road (S73) ── */
+.trophy-road-panel { overflow: hidden; }
+.trophy-road-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
+.trophy-road-head h3 { margin: 2px 0 0; }
+.trophy-road-summary { color: var(--muted); font-size: 0.72rem; margin-bottom: 8px; }
+.trophy-road-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.trophy-road-card {
+  display: flex; gap: 9px; align-items: flex-start; min-width: 0; padding: 10px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--inset);
+}
+.trophy-road-card.trophy-road-gold, .trophy-road-card.trophy-road-legend { border-color: color-mix(in srgb, var(--gold) 58%, var(--line)); }
+.trophy-road-icon { font-size: 1.35rem; line-height: 1; }
+.trophy-road-copy { display: grid; gap: 3px; min-width: 0; flex: 1; }
+.trophy-road-copy strong { color: var(--ink-strong); font-size: 0.8rem; }
+.trophy-road-copy > span { color: var(--muted); font-size: 0.67rem; line-height: 1.35; }
+.trophy-road-copy progress { width: 100%; height: 6px; accent-color: var(--accent); }
+.trophy-road-progress { font-variant-numeric: tabular-nums; }
+.trophy-road-progress--event { font-style: italic; }
+.trophy-road-complete { padding: 12px; border: 1px solid var(--success); border-radius: 12px; color: var(--success); }
+.ml-trophy-road { margin: 10px 0; padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--inset); }
+.ml-trophy-road .trophy-road-grid { grid-template-columns: 1fr; }
+.ml-trophy-road .trophy-road-card { padding: 8px; }
+.ml-trophy-road .trophy-road-card:nth-child(n+3) { display: none; }
+@media (max-width: 900px) { .trophy-road-grid { grid-template-columns: 1fr; } }
 /* ── Trophy case (S70) ── */
 .trophy-case-summary { font-size: 12px; color: var(--muted, #7a8299); margin-bottom: 10px; }
 .trophy-case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }

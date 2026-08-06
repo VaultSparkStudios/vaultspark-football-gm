@@ -19,6 +19,16 @@ import { escapeHtml, fmtMoney, showToast, renderTable, teamCode } from "./appCor
 import { closeModal, openModal } from "./modalManager.js";
 import { observeBackgroundTask } from "./clientDiagnostics.js";
 import { franchiseScopeFromDashboard } from "./franchiseScope.js";
+export {
+  closeSimWatch,
+  handleSimWatchKeyboard,
+  playSimWatchFinalReel,
+  runSimWatch,
+  setSimWatchSpeed,
+  skipSimWatch,
+  stepSimWatch,
+  toggleSimWatchPlayback
+} from "./simWatchDirector.js";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // PRIORITY INBOX SYSTEM
@@ -379,160 +389,6 @@ export function dismissGmDecision() {
 // SIM-WATCH OVERLAY (Live box score feed with 300ms animation)
 // ─────────────────────────────────────────────────────────────────────────────
 
-let _simWatchActive = false;
-let _simWatchSkip = false;
-
-export async function runSimWatch(gameId) {
-  const overlay = document.getElementById("simWatchOverlay");
-  if (!overlay || _simWatchActive) return;
-  try {
-    const data = await api(`/api/boxscore?gameId=${encodeURIComponent(gameId)}`);
-    const bs = data?.boxScore;
-    if (!bs) return;
-    _simWatchActive = true;
-    _simWatchSkip = false;
-    renderSimWatchHeader(bs);
-    observeBackgroundTask(() => decorateSimWatchRivalry(bs), {
-      surface: "sim-watch",
-      operation: "rivalry-context",
-      authorityKey: bs.gameId || ""
-    });
-    overlay.hidden = false;
-    overlay.classList.add("sim-watch-open");
-    const feed = document.getElementById("simWatchFeed");
-    if (feed) feed.innerHTML = "";
-    const plays = bs.playByPlay || [];
-    const scoring = bs.scoringSummary || [];
-    const scoringSet = new Set(scoring.map((s) => s.description));
-    // Animate drives with 300ms delays, skip available
-    for (let i = 0; i < plays.length && _simWatchActive; i++) {
-      if (_simWatchSkip) break;
-      await new Promise((r) => setTimeout(r, 280));
-      if (!_simWatchActive) break;
-      appendSimWatchPlay(plays[i], scoringSet);
-      updateSimWatchScore(bs, scoring, i, plays);
-      updateSimWatchField(bs, plays[i], i);
-    }
-    // Show final state
-    showSimWatchFinal(bs);
-  } catch {
-    // non-critical
-  } finally {
-    _simWatchActive = false;
-  }
-}
-
-function renderSimWatchHeader(bs) {
-  const header = document.getElementById("simWatchHeader");
-  if (!header) return;
-  header.innerHTML = `
-    <div class="sw-matchup">
-      <span class="sw-team">${escapeHtml(bs.awayTeamName || bs.awayTeamId)}</span>
-      <span class="sw-score" id="swAwayScore">0</span>
-      <span class="sw-vs">@</span>
-      <span class="sw-score" id="swHomeScore">0</span>
-      <span class="sw-team">${escapeHtml(bs.homeTeamName || bs.homeTeamId)}</span>
-    </div>
-    <div class="sw-meta">${escapeHtml(String(bs.year || ""))} · Week ${escapeHtml(String(bs.week || ""))} · ${escapeHtml(bs.seasonType || "regular")}</div>
-  `;
-}
-
-// Rivalry DNA framing: when the matchup is hot, the broadcast should feel it.
-async function decorateSimWatchRivalry(bs) {
-  const header = document.getElementById("simWatchHeader");
-  if (!header || !bs.homeTeamId || !bs.awayTeamId) return;
-  let ctx = null;
-  try {
-    const res = await api(
-      `/api/rivalry?teamA=${encodeURIComponent(bs.homeTeamId)}&teamB=${encodeURIComponent(bs.awayTeamId)}`
-    );
-    ctx = res?.rivalry || null;
-  } catch {
-    return;
-  }
-  if (!ctx || (ctx.heat || 0) < 60 || !_simWatchActive) return;
-  const banner = document.createElement("div");
-  banner.className = "sw-rivalry-banner";
-  banner.innerHTML = `<span class="rivalry-week-badge">RIVALRY WEEK</span> ${escapeHtml(ctx.heatLabel || "")} · Series ${ctx.teamAWins}-${ctx.teamBWins}${ctx.streak?.count > 1 ? ` · ${escapeHtml(teamCode(ctx.streak.team))} won last ${ctx.streak.count}` : ""}`;
-  header.appendChild(banner);
-}
-
-function appendSimWatchPlay(play, scoringSet) {
-  const feed = document.getElementById("simWatchFeed");
-  if (!feed) return;
-  const desc = play.description || "";
-  const isScoring = scoringSet.has(desc) || desc.toLowerCase().includes("touchdown");
-  const isTurnover = desc.toLowerCase().includes("interception") || desc.toLowerCase().includes("fumble");
-  const is4th = play.clock?.startsWith("4th") || play.quarterLabel?.includes("4");
-  const isHighlight = isScoring || isTurnover || (is4th && desc.toLowerCase().includes("stop"));
-  const el = document.createElement("div");
-  el.className = `sw-play${isHighlight ? " sw-highlight" : ""}${isScoring ? " sw-scoring" : ""}${isTurnover ? " sw-turnover" : ""}`;
-  el.innerHTML = `
-    <span class="sw-play-qtr">${escapeHtml(play.quarterLabel || play.clock || "")}</span>
-    <span class="sw-play-team">${escapeHtml(play.offenseTeamId || "")}</span>
-    <span class="sw-play-desc">${escapeHtml(desc.slice(0, 120))}</span>
-    ${isHighlight ? `<span class="sw-play-tag">${isScoring ? "TD" : isTurnover ? "TURNOVER" : "4TH"}</span>` : ""}
-  `;
-  feed.prepend(el);
-  el.scrollIntoView({ behavior: "smooth", block: "nearest" });
-}
-
-function updateSimWatchField(bs, play, playIndex) {
-  const field = document.getElementById("simWatchField");
-  const possession = document.getElementById("simWatchPossession");
-  const yardLine = document.getElementById("simWatchYardLine");
-  if (!field) return;
-  const desc = String(play?.description || "").toLowerCase();
-  const offense = play?.offenseTeamId || "";
-  let x = 50 + ((playIndex * 13) % 42) - 21;
-  if (desc.includes("touchdown")) x = offense === bs.homeTeamId ? 92 : 8;
-  if (desc.includes("interception") || desc.includes("fumble")) x = 100 - x;
-  x = Math.max(8, Math.min(92, x));
-  field.style.setProperty("--ball-x", String(x));
-  if (possession) possession.textContent = offense ? `${teamCode(offense)} ball` : "Live drive";
-  if (yardLine) yardLine.textContent = x >= 50 ? `Opp ${Math.max(1, Math.round(100 - x))}` : `Own ${Math.max(1, Math.round(x))}`;
-}
-function updateSimWatchScore(bs, scoring, playIndex, plays) {
-  // Count scoring plays up to current index
-  const desc = plays.slice(0, playIndex + 1).map((p) => p.description);
-  const awayTDs = scoring.filter((s) => desc.includes(s.description) && s.teamId === bs.awayTeamId).length;
-  const homeTDs = scoring.filter((s) => desc.includes(s.description) && s.teamId === bs.homeTeamId).length;
-  const awayEl = document.getElementById("swAwayScore");
-  const homeEl = document.getElementById("swHomeScore");
-  if (awayEl) awayEl.textContent = String(awayTDs * 7);
-  if (homeEl) homeEl.textContent = String(homeTDs * 7);
-}
-
-function showSimWatchFinal(bs) {
-  const awayEl = document.getElementById("swAwayScore");
-  const homeEl = document.getElementById("swHomeScore");
-  if (awayEl) awayEl.textContent = String(bs.awayTeam?.score ?? 0);
-  if (homeEl) homeEl.textContent = String(bs.homeTeam?.score ?? 0);
-  const finalBanner = document.getElementById("simWatchFinal");
-  if (finalBanner) {
-    const awayScore = bs.awayTeam?.score ?? 0;
-    const homeScore = bs.homeTeam?.score ?? 0;
-    const winner = awayScore > homeScore ? bs.awayTeamName : homeScore > awayScore ? bs.homeTeamName : null;
-    finalBanner.textContent = winner ? `Final — ${winner} wins ${Math.max(awayScore, homeScore)}-${Math.min(awayScore, homeScore)}` : `Final — Tie ${awayScore}-${homeScore}`;
-    finalBanner.hidden = false;
-  }
-}
-
-export function skipSimWatch() {
-  _simWatchSkip = true;
-}
-
-export function closeSimWatch() {
-  _simWatchActive = false;
-  _simWatchSkip = true;
-  const overlay = document.getElementById("simWatchOverlay");
-  if (overlay) {
-    overlay.classList.remove("sim-watch-open");
-    overlay.hidden = true;
-  }
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
 // SEASON NARRATIVE ARCS PANEL
 // ─────────────────────────────────────────────────────────────────────────────
 

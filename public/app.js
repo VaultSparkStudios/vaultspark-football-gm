@@ -11,13 +11,10 @@ import {
   renderMobileOverlay,
   setMobileModeEnabled
 } from "./lib/mobileLoop.js";
-import {
-  getSavedToken, saveToken, getSavedGistId, saveGistId,
-  exportToGist, importFromGist, listGists
-} from "./lib/gistSync.js";
+import { getSavedToken, saveToken, getSavedGistId, saveGistId } from "./lib/gistCredentials.js";
 
 import { state, api } from "./lib/appState.js";
-import { recordAchievementEvent, renderTrophyCase } from "./lib/achievements.js";
+import { recordAchievementEvent, renderTrophyCase, renderTrophyRoad } from "./lib/achievements.js";
 import { presentWeekRecap, presentDraftPickBeat, presentTradeBeat } from "./lib/rewardBeats.js";
 import { playSound, vibrate, HAPTIC_PATTERNS, isSoundEnabled, setSoundEnabled, isHapticsEnabled, setHapticsEnabled } from "./lib/audioFeedback.js";
 import { clearClientDiagnostics, observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic, retryClientDiagnostics } from "./lib/clientDiagnostics.js";
@@ -194,60 +191,11 @@ import {
   renderAnalyticsChart
 } from "./lib/tabStats.js";
 
-import {
-  setHistoryView,
-  formatAwardList,
-  hallOfFameCareerLine,
-  awardCountLine,
-  hallOfFamePolicyLine,
-  retiredNumberPolicyLine,
-  setSelectedHistoryPlayerFromAwardEntry,
-  renderAwardGallery,
-  renderSeasonAwardsShowcase,
-  timelineEntrySummary,
-  renderPlayerHistoryArchive,
-  renderHistorySpotlight,
-  renderHallOfFameGallery,
-  renderTeamHistorySpotlight,
-  renderRecordsAndHistory,
-  renderCalendar,
-  setSelectedHistoryPlayer,
-  renderPlayerTimelineSearchResults
-} from "./lib/tabHistory.js";
 
-import {
-  renderTransactionLog,
-  renderNews,
-  renderPickAssets,
-  renderNegotiationTargets,
-  renderAnalytics,
-  renderStaff,
-  renderOwner,
-  renderObservability,
-  renderPersistence,
-  renderPipeline,
-  renderCalibrationJobs,
-  renderSimJobs,
-  renderCommandPalette,
-  applySettingsControls,
-  renderRealismVerification,
-  renderRulesTab,
-  renderSettingsSpotlight,
-  renderOwnerSpotlight,
-  loadRewindHistory,
-  renderRewindTimeline,
-  renderCoachingDnaCard,
-  renderCommissionerLobby,
-  openShortcutsModal,
-  closeShortcutsModal,
-  shareDynastyTimeline,
-  renderGistSyncStatus,
-  renderGistList,
-  initGistSyncUI,
-  applyBrandIdentity
-} from "./lib/tabSettings.js";
-import { generateFranchiseNewsletter } from "./lib/franchiseNewsletter.js";
-import { buildLeagueStoryFromDashboard, downloadLeagueStory } from "./lib/leagueStoryExport.js";
+
+
+
+import { getLoadedUiIsland, invokeUiIsland, loadUiIsland } from "./lib/uiIslands.js";
 
 import {
   applyDashboard,
@@ -326,8 +274,13 @@ import {
   checkAndShowGmDecision,
   dismissGmDecision,
   runSimWatch,
+  playSimWatchFinalReel,
   skipSimWatch,
   closeSimWatch,
+  toggleSimWatchPlayback,
+  stepSimWatch,
+  setSimWatchSpeed,
+  handleSimWatchKeyboard,
   renderSeasonArcs,
   renderCapWarRoom,
   renderTradeBreakdown,
@@ -338,6 +291,20 @@ import {
   checkAndPruneRewindStorage
 } from "./lib/engagementFeatures.js";
 
+function callAppIsland(name, exportName, ...args) {
+  const loaded = getLoadedUiIsland(name);
+  if (loaded) {
+    const handler = loaded[exportName];
+    if (typeof handler !== "function") throw new Error("UI island " + name + " does not export " + exportName);
+    return handler(...args);
+  }
+  return observeBackgroundTask(() => invokeUiIsland(name, exportName, ...args), {
+    surface: "ui-island",
+    operation: name + ":" + exportName,
+    authorityKey: dashboardAuthorityKey(state.dashboard),
+    retry: () => invokeUiIsland(name, exportName, ...args)
+  });
+}
 async function collectAcceleratedStrategyPolicy(scope) {
   const seasonScope = scope === "season";
   const tactic = await new Promise((resolve) => showHalftimeAdjustModal(resolve, {
@@ -1385,7 +1352,7 @@ function bindEvents() {
 
   document.getElementById("calendarWeekFilter").addEventListener("change", () => {
     state.calendarWeek = Number(document.getElementById("calendarWeekFilter").value || 1);
-    renderCalendar();
+    callAppIsland("history", "renderCalendar");
   });
 
   document.getElementById("loadTxBtn").addEventListener("click", () =>
@@ -1439,7 +1406,7 @@ function bindEvents() {
         }
       });
       state.leagueSettings = payload.settings || state.leagueSettings;
-      applySettingsControls();
+      callAppIsland("settings", "applySettingsControls");
       applyDashboard(payload.state);
     }, "Saving settings...")
   );
@@ -1473,13 +1440,13 @@ function bindEvents() {
   document.getElementById("retryClientDiagnosticsBtn")?.addEventListener("click", () =>
     runAction(async () => {
       const result = await retryClientDiagnostics();
-      renderObservability();
+      callAppIsland("settings", "renderObservability");
       showToast(`${result.recovered} client surface${result.recovered === 1 ? "" : "s"} recovered.`);
     }, "Retrying degraded panels...")
   );
   document.getElementById("clearClientDiagnosticsBtn")?.addEventListener("click", () => {
     clearClientDiagnostics();
-    renderObservability();
+    callAppIsland("settings", "renderObservability");
     showToast("Client degradation ledger cleared.");
   });
   document.getElementById("loadPersistenceBtn").addEventListener("click", () =>
@@ -1527,7 +1494,7 @@ function bindEvents() {
         }
       });
       state.staffState = payload.team || state.staffState;
-      renderStaff();
+      callAppIsland("settings", "renderStaff");
       applyDashboard(payload.state);
       await loadCoachingMarket();
     }, "Renaming staff...")
@@ -1580,12 +1547,12 @@ function bindEvents() {
   );
   document.querySelectorAll("[data-history-view]").forEach((button) => {
     button.addEventListener("click", () => {
-      setHistoryView(button.dataset.historyView || "season-awards");
+      callAppIsland("history", "setHistoryView", button.dataset.historyView || "season-awards");
     });
   });
   document.getElementById("historyAwardYearSelect").addEventListener("change", () => {
     state.selectedAwardsYear = Number(document.getElementById("historyAwardYearSelect").value || 0) || null;
-    renderRecordsAndHistory();
+    callAppIsland("history", "renderRecordsAndHistory");
   });
   document.getElementById("searchPlayerTimelineBtn").addEventListener("click", () =>
     runAction(searchHistoryPlayers, "Searching player history...")
@@ -1595,8 +1562,8 @@ function bindEvents() {
     if (!button) return;
     const player =
       state.historyPlayerSearchResults.find((entry) => entry.id === (button.dataset.historyPlayerSelect || "")) || null;
-    setSelectedHistoryPlayer(player);
-    renderPlayerTimelineSearchResults();
+    callAppIsland("history", "setSelectedHistoryPlayer", player);
+    callAppIsland("history", "renderPlayerTimelineSearchResults");
   });
   document.getElementById("loadTeamHistoryBtn").addEventListener("click", () => runAction(loadTeamHistory, "Loading team history..."));
   document.getElementById("retireSelectedJerseyBtn").addEventListener("click", () =>
@@ -1700,10 +1667,10 @@ function bindEvents() {
       const token = getSavedToken();
       if (!token) { setStatus("Set your GitHub token first."); return; }
       const snap = await api("/api/snapshot/export");
-      const { gistId, url } = await exportToGist(snap, token);
+      const { gistId, url } = await (await loadUiIsland("exports")).gist.exportToGist(snap, token);
       setStatus(`Saved to Gist: ${gistId}`);
-      renderGistSyncStatus(`✅ Exported — <a href="${url}" target="_blank" rel="noopener">Open Gist</a>`);
-      renderGistList();
+      callAppIsland("settings", "renderGistSyncStatus", `✅ Exported — <a href="${url}" target="_blank" rel="noopener">Open Gist</a>`);
+      callAppIsland("settings", "renderGistList");
     }, "Uploading to Gist…")
   );
   document.getElementById("gistImportBtn")?.addEventListener("click", () =>
@@ -1711,20 +1678,20 @@ function bindEvents() {
       const token = getSavedToken();
       const gistId = document.getElementById("gistIdInput")?.value?.trim() || getSavedGistId();
       if (!gistId) { setStatus("Enter a Gist ID to import."); return; }
-      const { snapshot, integrity } = await importFromGist(gistId, token);
+      const { snapshot, integrity } = await (await loadUiIsland("exports")).gist.importFromGist(gistId, token);
       await api("/api/snapshot/inspect", { method: "POST", body: { snapshot } });
       await api("/api/snapshot/import", { method: "POST", body: { snapshot } });
       await loadState();
       if (integrity === "legacy-unverified") {
         setStatus("Imported legacy Gist save (no integrity sidecar — unverified).");
-        renderGistSyncStatus("⚠️ Imported an unverified legacy save — no integrity sidecar was present. Re-export to add one.");
+        callAppIsland("settings", "renderGistSyncStatus", "⚠️ Imported an unverified legacy save — no integrity sidecar was present. Re-export to add one.");
       } else {
         setStatus("Imported from Gist.");
-        renderGistSyncStatus("✅ Imported successfully (integrity verified).");
+        callAppIsland("settings", "renderGistSyncStatus", "✅ Imported successfully (integrity verified).");
       }
     }, "Importing from Gist…")
   );
-  document.getElementById("gistListBtn")?.addEventListener("click", renderGistList);
+  document.getElementById("gistListBtn")?.addEventListener("click", () => callAppIsland("settings", "renderGistList"));
 
   document.getElementById("runOpeningContractBtn")?.addEventListener("click", () => {
     if (state.dashboard?.startScenarioReceipt) {
@@ -1735,7 +1702,7 @@ function bindEvents() {
   });
 
   document.getElementById("refreshRewindBtn")?.addEventListener("click", () =>
-    observeBackgroundTask(loadRewindHistory, {
+    observeBackgroundTask(() => invokeUiIsland("settings", "loadRewindHistory"), {
       surface: "action",
       operation: "refresh-rewind-history",
       authorityKey: dashboardAuthorityKey(state.dashboard),
@@ -1744,13 +1711,13 @@ function bindEvents() {
   );
   document.getElementById("manualRewindSnapshotBtn")?.addEventListener("click", async () => {
     await api("/api/rewind/snapshot", { method: "POST", body: { label: "Manual snapshot" } });
-    await loadRewindHistory();
+    await invokeUiIsland("settings", "loadRewindHistory");
   });
 
   const openCommandPalette = () => {
     document.getElementById("commandPalette").classList.remove("hidden");
     document.getElementById("commandInput").focus();
-    renderCommandPalette();
+    callAppIsland("settings", "renderCommandPalette");
   };
   const closeCommandPalette = () => {
     document.getElementById("commandPalette").classList.add("hidden");
@@ -1766,7 +1733,7 @@ function bindEvents() {
       closeBoxScoreModal();
       closeGuideModal();
       closeAgentModal();
-      closeShortcutsModal();
+      callAppIsland("settings", "closeShortcutsModal");
       return;
     }
     const tag = document.activeElement?.tagName;
@@ -1777,7 +1744,7 @@ function bindEvents() {
       return;
     }
     if (event.key === "?" || (event.key === "/" && event.shiftKey)) {
-      openShortcutsModal();
+      callAppIsland("settings", "openShortcutsModal");
       return;
     }
     if (event.key.toLowerCase() === "w" && !event.ctrlKey && !event.metaKey) {
@@ -1823,7 +1790,7 @@ function bindEvents() {
     const agentModal = document.getElementById("agentNegotiationModal");
     if (event.target === agentModal) { closeAgentModal(); return; }
     const shortcutsModal = document.getElementById("shortcutsModal");
-    if (event.target === shortcutsModal) { closeShortcutsModal(); return; }
+    if (event.target === shortcutsModal) { callAppIsland("settings", "closeShortcutsModal"); return; }
     const playerButton = event.target.closest("button[data-player-id]");
     if (playerButton) {
       runAction(() => loadPlayerModal(playerButton.dataset.playerId), "Loading player...");
@@ -1903,7 +1870,7 @@ function bindEvents() {
           controlledTeamId: state.dashboard?.controlledTeamId
         }
       });
-      await renderCommissionerLobby();
+      await invokeUiIsland("settings", "renderCommissionerLobby");
     }, "Creating lobby...")
   );
   document.getElementById("joinLobbyBtn")?.addEventListener("click", () =>
@@ -1917,7 +1884,7 @@ function bindEvents() {
         method: "POST",
         body: { userId, displayName: userId, controlledTeamId }
       });
-      await renderCommissionerLobby();
+      await invokeUiIsland("settings", "renderCommissionerLobby");
     }, "Joining lobby...")
   );
   document.getElementById("markReadyBtn")?.addEventListener("click", () =>
@@ -1927,41 +1894,57 @@ function bindEvents() {
         document.getElementById("commissionerIdInput")?.value?.trim() ||
         "commissioner";
       await api("/api/commissioner/ready", { method: "POST", body: { userId } });
-      await renderCommissionerLobby();
+      await invokeUiIsland("settings", "renderCommissionerLobby");
     }, "Marking ready...")
   );
   document.getElementById("advanceLobbyBtn")?.addEventListener("click", () =>
     runAction(async () => {
       await api("/api/commissioner/advance", { method: "POST", body: {} });
-      await Promise.all([loadState(), renderCommissionerLobby()]);
+      await Promise.all([loadState(), invokeUiIsland("settings", "renderCommissionerLobby")]);
     }, "Advancing commissioner turn...")
   );
   document.getElementById("refreshLobbyBtn")?.addEventListener("click", () =>
-    runAction(renderCommissionerLobby, "Refreshing lobby...")
+    runAction(() => invokeUiIsland("settings", "renderCommissionerLobby"), "Refreshing lobby...")
   );
   document.getElementById("disbandLobbyBtn")?.addEventListener("click", () =>
     runAction(async () => {
       if (!confirm("Disband this lobby? All players will need to re-join.")) return;
       await api("/api/commissioner/lobby", { method: "DELETE" });
-      await renderCommissionerLobby();
+      await invokeUiIsland("settings", "renderCommissionerLobby");
     }, "Disbanding lobby...")
   );
 
   document.getElementById("closeAgentModalBtn")?.addEventListener("click", closeAgentModal);
 
-  document.getElementById("closeShortcutsModalBtn")?.addEventListener("click", closeShortcutsModal);
+  document.getElementById("closeShortcutsModalBtn")?.addEventListener("click", () => callAppIsland("settings", "closeShortcutsModal"));
 
   document.getElementById("mobileLoopToggle")?.addEventListener("change", (e) => {
     setMobileModeEnabled(e.target.checked);
     syncMobileLoopOverlay();
   });
 
-  document.getElementById("shareDynastyBtn")?.addEventListener("click", shareDynastyTimeline);
+  document.getElementById("shareDynastyBtn")?.addEventListener("click", () => callAppIsland("settings", "shareDynastyTimeline"));
   document.getElementById("leagueStoryCardBtn")?.addEventListener("click", () => {
-    const story = buildLeagueStoryFromDashboard(state.dashboard || {});
-    downloadLeagueStory(story);
+    observeBackgroundTask(async () => {
+      const exportsIsland = await loadUiIsland("exports");
+      const story = exportsIsland.story.buildLeagueStoryFromDashboard(state.dashboard || {});
+      exportsIsland.story.downloadLeagueStory(story);
+    }, {
+      surface: "export-island",
+      operation: "league-story",
+      authorityKey: dashboardAuthorityKey(state.dashboard)
+    });
   });
-  document.getElementById("franchiseNewsletterBtn")?.addEventListener("click", () => generateFranchiseNewsletter(state));
+  document.getElementById("franchiseNewsletterBtn")?.addEventListener("click", () => {
+    observeBackgroundTask(async () => {
+      const exportsIsland = await loadUiIsland("exports");
+      return exportsIsland.newsletter.generateFranchiseNewsletter(state);
+    }, {
+      surface: "export-island",
+      operation: "franchise-newsletter",
+      authorityKey: dashboardAuthorityKey(state.dashboard)
+    });
+  });
 
   // Season review modal close
   document.getElementById("closeSeasonReviewBtn")?.addEventListener("click", closeSeasonReviewModal);
@@ -1979,7 +1962,7 @@ function bindEvents() {
     if (abbrev)  overrides.customAbbrev = abbrev;
     if (primary) overrides.primaryColor = primary;
     if (secondary) overrides.secondaryColor = secondary;
-    applyBrandIdentity(overrides).catch(presentActionError);
+    Promise.resolve(callAppIsland("settings", "applyBrandIdentity", overrides)).catch(presentActionError);
   });
 
   // Mentorship panel load on Roster tab
@@ -2005,7 +1988,13 @@ function bindEvents() {
 
   // Sim-Watch
   document.getElementById("simWatchSkipBtn")?.addEventListener("click", skipSimWatch);
+  document.getElementById("simWatchReelBtn")?.addEventListener("click", playSimWatchFinalReel);
   document.getElementById("simWatchCloseBtn")?.addEventListener("click", closeSimWatch);
+  document.getElementById("simWatchPlayPauseBtn")?.addEventListener("click", toggleSimWatchPlayback);
+  document.getElementById("simWatchPreviousBtn")?.addEventListener("click", () => stepSimWatch(-1));
+  document.getElementById("simWatchNextBtn")?.addEventListener("click", () => stepSimWatch(1));
+  document.getElementById("simWatchSpeedSelect")?.addEventListener("change", (event) => setSimWatchSpeed(event.target.value));
+  document.addEventListener("keydown", handleSimWatchKeyboard);
 
   // Box score ticker — wire sim-watch on click if play-by-play available
   document.getElementById("boxScoreTicker")?.addEventListener("click", (event) => {
@@ -2203,19 +2192,20 @@ async function init() {
   bindEvents();
   applyShellTheme();
   renderTradeWorkspace();
-  renderPickAssets();
+
   renderCompareSearchResults();
   renderComparePlayers();
-  setSelectedHistoryPlayer(null);
-  renderPlayerTimelineSearchResults();
+
+
   activateTab("overviewTab");
   await loadCoreDashboard();
   ingestNewsIntoInbox(state.dashboard?.newsLog || state.dashboard?.news || state.newsRows || []);
   renderInboxBadge();
   setStatus("Ready");
   queueStartupHydration();
-  initGistSyncUI();
+
   renderTrophyCase();
+  renderTrophyRoad();
   const soundInput = document.getElementById("soundEnabledInput");
   const hapticsInput = document.getElementById("hapticsEnabledInput");
   if (soundInput) {

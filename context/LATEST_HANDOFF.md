@@ -1,60 +1,52 @@
-# Session 72 Closeout — Deterministic Truth and Progression Parity
+# Session 73 Closeout — Decision Payoff and Verification Integrity
 
 ## Where We Left Off
 
-- The five-item Session 72 Genius List is exhausted: finite simulation truth, league progression parity,
-  deterministic browser league authority, progression-verifier observability and Hall policy round-trip all shipped.
-- Two second-order innovations also shipped after the primary list closed: Hall Ballot Watch and Roster Window Map.
-- The active `2026-s72-parity` profile is `+0.20/-0.55/-2.25`; a deterministic ten-year simulation clears the
-  fixed ±0.15 mean-overall/year contract while young upside and veteran decline remain regression-covered.
-- Realism verification reports source and simulated finite-number integrity plus seed, profile, start/end player
-  distributions, annual drift, target and status. Truncated scans are incomplete, never pass.
-- Browser fixtures declare seed `20260306`; the Hall journey configures its 120/0/40 fixture policy explicitly.
-  Settings proves custom 285/2/3 survives reload and changing class size preserves score/wait.
-- Verification is green: Node 857/857, Playwright 40/40, direct ten-year 3/3, responsive 89 captures, visual QA
-  16 hash-bound captures, Pages build/smoke and 58 browser modules.
-- Independent staging at `https://staging.playfranchisearchitect.com` verified the exact closeout candidate and
-  artifact 11/11 with an active domain and rollback deployment available.
+- Recovery completed first: Session 72 was independently reverified and an empty `cfb21cb` recovery-boundary commit was pushed before Session 73 work began.
+- The six-item Session 73 Genius List is exhausted, and all three viable second-order innovations shipped.
+- Verification is hermetic: startup-renderer tests use validated test-owned outputs and prove tracked startup truth is unchanged.
+- Progression truth now includes global plus seven-room composite verdicts, bounded multi-seed history, and Position Room Watch alerts that never auto-tune.
+- The first decision boot graph is 697,424/710,000 bytes with zero lazy leaks; 67 browser modules remain reachable and secondary islands hydrate through one owner.
+- Broadcast Director supports pause, speed, key navigation, keyboard control, exact progress, diagnostics, and a typed-receipt Final Reel.
+- Trophy Road exposes the nearest honest objectives; Architect's Cut and Decision Anthology preserve bounded, explicitly non-causal decision history.
+- Verification is green: Node 877/877, Playwright 40/40, responsive 125, visual QA 24 hash-bound captures, Pages build/smoke, Doctor blockingFailing 0, secret scan 0, and machine-readable/syntax integrity sweeps.
 
 ## Session Intent
 
-**Achieved.** The founder requested one continuous `/start → /audit → /implement → /closeout` mission, saturation
-through the complete ranked list and second-order innovations, infrastructure weighting, direct exit-code evidence,
-staging before production and direct-main delivery. Every primary item and both viable generated candidates shipped;
-no item was silently skipped and no sibling tree was edited.
+**Achieved.** The founder requested recovery verification followed by one continuous `/start -> /audit -> /implement -> /closeout` mission, saturation through the Unified Genius List and viable second-order innovation, and direct-main delivery. The recovery boundary, all six ranked items, and all three second-order items are complete; no item was silently skipped.
 
 ## Decisions That Must Survive
 
-- Progression success is defined by the declared multi-season target, not by one screenshot or one final mean.
-- Numeric integrity is scanned before JSON cloning and after simulation; serialization is not a validation boundary.
-- Hall Ballot Watch consumes the same score authority as induction.
-- Roster Window Map is a bounded one-year direction derived from current age/potential/contracts, not a forecast.
-- Production setup may remain time-seeded; tests must declare randomness.
+- Aggregate verification must not mutate tracked truth; noncanonical render outputs validate before writing and skip canonical self-heal.
+- Global progression pass cannot mask a room failure; insufficient samples are incomplete and alerts never tune automatically.
+- Sim-Watch directs presentation of the exact archived result. Typed scoring receipts and canonical team IDs are the score authority.
+- Event-only achievements omit percentages rather than invent progress.
+- Architect's Cut is descriptive and explicitly non-causal; missing receipts stay missing.
+- Authority-sensitive controls clear synchronously before async team changes and stale responses are ignored.
 
 ## Honest Holds
 
 - Launch remains HOLD on delivered and reply-capable `football@playfranchisearchitect.com` email.
 - Launch remains HOLD on SHA-bound founder approval.
-- Registry SPARKED/local FORGE reconciliation remains sibling-owned through Ark cargo
-  `01JV62KEPG9B017D2712C0F8F5`; the local doctor warning must stay visible until authoritative receipt arrives.
+- Registry SPARKED/local FORGE reconciliation remains sibling-owned; the local Doctor warning stays visible.
+- The repository-wide browser backup warning seen in tests is an environmental fixture-storage warning, not a failed assertion; no data-loss claim is inferred from it.
 
 ## Next Best Work
 
-The Session 72 audit and innovation pack have zero open items. Start with a fresh live-code audit unless one of the
-three launch authorities resolves. Promising new product directions carried without commitment: per-position
-progression parity bands/multi-seed tuning history, dynasty-almanac share cards, broadcast-mode sim-watch and
-trophy-road onboarding.
+The Session 73 audit and innovation pack have zero open implementation items. Begin a fresh live-code audit unless one of the three launch authorities resolves. Re-measure before proposing further balance tuning; the room Watch exists specifically to prevent tuning from a single favorable or unfavorable seed.
 
 ## Key Files
 
+- `scripts/render-startup-brief.mjs`
+- `scripts/check-browser-boot-budget.mjs`
 - `src/stats/progressionParity.js`
-- `src/domain/ratings.js`
 - `src/runtime/GameSession.js`
-- `public/lib/tabSettings.js`
-- `public/lib/tabRoster.js`
-- `public/lib/tabHistory.js`
-- `test/progression-parity.test.js`
-- `test/realism-career-regression.test.js`
-- `tests-ui/app.spec.js`
-- `docs/AUDIT_2026-08-04_SESSION72.json`
+- `public/lib/uiIslands.js`
+- `public/lib/simWatchPlayback.js`
+- `public/lib/simWatchDirector.js`
+- `public/lib/achievements.js`
+- `public/lib/architectCut.js`
+- `public/lib/decisionAnthology.js`
+- `public/lib/progressionWatch.js`
+- `docs/AUDIT_2026-08-04_SESSION73.json`
 - `docs/visual-qa/LATEST.json`

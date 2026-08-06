@@ -1,140 +1,267 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-08-04T15:04:25.0687883-04:00",
-  "sourceRevision": "e829a0f951e2-worktree",
-  "artifact": "static responsive-evidence:7f89b74d176f3e45a5e55205d225ee043661558f55bcd0a3efb688a18dd16b7f",
+  "capturedAt": "2026-08-06T00:06:37.253Z",
+  "sourceRevision": "cfb21cbe4bfe-worktree",
+  "artifact": "static responsive-evidence:7aa7e448cfeececcb312c947862ba39c972a05a1b93c5db21ab05f564b8ad128",
   "themes": [
     "dark",
     "light"
   ],
   "captures": [
     {
-      "file": "s72-desktop-hall-ballot-dark.png",
-      "sha256": "d908a583472898b9c5a31cb54ace049c13488e437a7d82f8fe1ed42055a9c7d7",
+      "file": "s73-desktop-trophy-road-dark.png",
+      "sha256": "9fee27f06d92145e1538d35f9846640af20a0538e7778afa4c7a147bf411a9dc",
       "theme": "dark",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "Hall of Fame Ballot Watch initial empty state"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s72-desktop-hall-ballot-light.png",
-      "sha256": "07c11b70133311885d3752f78364e0868f195c14eb2da61655793e571ce9d26a",
+      "file": "s73-desktop-trophy-road-light.png",
+      "sha256": "985880d2719f08ccd908e472fba44ee0cfaafda2f2af973658d7a97cff0f8e58",
       "theme": "light",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "Hall of Fame Ballot Watch initial empty state"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s72-mobile-hall-ballot-dark.png",
-      "sha256": "81552e209619b224cfa2ba620265ced161455bf332b44c69df63ef269f068cbf",
+      "file": "s73-desktop-sim-watch-reel-dark.png",
+      "sha256": "cc34cba0d43f64ce422ca9a6322a81650c9b6be606bf9ff208f1b596726f353a",
       "theme": "dark",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Mobile Hall of Fame Ballot Watch initial empty state"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s72-mobile-hall-ballot-light.png",
-      "sha256": "b4d38884a83a320f02c56801932668e845cd91dc0cb9ac90dbc6168fb0cb463f",
+      "file": "s73-desktop-sim-watch-reel-light.png",
+      "sha256": "fc155f99418fc2921edaec9cf53732ac1649c912e4326754c0c45ab2b33f4a45",
       "theme": "light",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Mobile Hall of Fame Ballot Watch initial empty state"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s72-desktop-integrity-receipt-dark.png",
-      "sha256": "202b2740d4c90fb7f2f9654f2228e29b9c83bd765e874d08e044a8d120ab5e1c",
+      "file": "s73-desktop-room-watch-dark.png",
+      "sha256": "4e89940293f065d9d40f2a718003c0e7ad7320f5340750754b50479b53ea2009",
       "theme": "dark",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "Finite-number source and simulated integrity receipts"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s72-desktop-integrity-receipt-light.png",
-      "sha256": "435fedcdae90be6908f2efdba172fc7a766d27e0cf1bbdd5472c9283693f28e3",
+      "file": "s73-desktop-room-watch-light.png",
+      "sha256": "af92f14a8073c78902a4abda406f7c95d33643f958f683fec584f8126d5d14b3",
       "theme": "light",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "Finite-number source and simulated integrity receipts"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s72-mobile-integrity-receipt-dark.png",
-      "sha256": "b0bc5f969203bbe2d1466672f6dfa8da68f650cf61cf5bef32c17eab2b36b6ef",
+      "file": "s73-desktop-architect-cut-dark.png",
+      "sha256": "fef1ca92029f6cf35a784059bc3b7cb65a8887383fd26c589b6385a34be1aedf",
       "theme": "dark",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Mobile finite-number source and simulated integrity receipts"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s72-mobile-integrity-receipt-light.png",
-      "sha256": "40424fb8eaceff66f40511daaa5257ab13fe3db0ecec4f15583ba2b68e47fef6",
+      "file": "s73-desktop-architect-cut-light.png",
+      "sha256": "1ebeb028b4300170e99788d43172a22e790f6096cb96fe938ccc75a88a0fd511",
       "theme": "light",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Mobile finite-number source and simulated integrity receipts"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s72-desktop-progression-receipt-dark.png",
-      "sha256": "6700f795de5cca747c485963f47136f5ac7b385d2d83e5c28b4291052d098a3d",
+      "file": "s73-desktop-guide-modal-dark.png",
+      "sha256": "d14a05174cf984c4919cafab6783615cd704e579101482cfdd3667380c6a893b",
       "theme": "dark",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "League progression parity receipt after a live one-season sample"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Game Guide populated modal"
     },
     {
-      "file": "s72-desktop-progression-receipt-light.png",
-      "sha256": "b842ed1f34b33ef7b8c71471f074bd31abef7ef9eebb2f2ae51189d2496f7872",
+      "file": "s73-desktop-guide-modal-light.png",
+      "sha256": "038d048461fc886568f547d5c503664cda6b1fd93f20f78847392830e4db6719",
       "theme": "light",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "League progression parity receipt after a live one-season sample"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Game Guide populated modal"
     },
     {
-      "file": "s72-mobile-progression-receipt-dark.png",
-      "sha256": "e9156d6aaab81a15e8109a9d79a50030c26c5f81a9f69a63bdd968a0871d2ecb",
+      "file": "s73-desktop-rival-coaching-dark.png",
+      "sha256": "e85ad2a75ec17d81a8f638fed5363c0e59aded1caf50083f33d10348e136193d",
       "theme": "dark",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Mobile league progression parity receipt after a live one-season sample"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s72-mobile-progression-receipt-light.png",
-      "sha256": "dbef7f87cfe47f537d605962b6488d2a2edd933294db9a4856d3761b48014101",
+      "file": "s73-desktop-rival-coaching-light.png",
+      "sha256": "b12558ad289fc730936e63331afd51c46108de22ad3d691ec75ea48947f963db",
       "theme": "light",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Mobile league progression parity receipt after a live one-season sample"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s72-desktop-roster-window-dark.png",
-      "sha256": "44c38caf3c7601ad97841584e892b989cfb57bb4926d84409599e4a9c099fbae",
+      "file": "s73-mobile-trophy-road-dark.png",
+      "sha256": "4714a1740e6c4bc7322622ae1f560581e20489bc46df274cf4c95a4939887f42",
       "theme": "dark",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "Roster Window Map with position-room aging and succession truth"
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s72-desktop-roster-window-light.png",
-      "sha256": "cb78cb55b08c64ef896ae37e4e06818e9e4a84ec97f7f939bd49f94882ce4f48",
+      "file": "s73-mobile-trophy-road-light.png",
+      "sha256": "3214076ef8998bd009e9b8e63d038992854f256c51ee140164831721cb5d9de6",
       "theme": "light",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "Roster Window Map with position-room aging and succession truth"
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s72-mobile-roster-window-dark.png",
-      "sha256": "746ec271ec40e10b360e1eb880edc4e0c9b4aa22a99b59cd205621fe791945e7",
+      "file": "s73-mobile-sim-watch-reel-dark.png",
+      "sha256": "0f43a7fd34cff89107f26671269791253f6d9e290ab89db86e77667f0b0cf8a8",
       "theme": "dark",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Mobile Roster Window Map within its responsive scroll container"
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s72-mobile-roster-window-light.png",
-      "sha256": "d5624b2a61c7cc8bdfd0b70b84394c9f86214f095d2eeb4130a555aebf5545b6",
+      "file": "s73-mobile-sim-watch-reel-light.png",
+      "sha256": "84a5138861d99ae1642cd3c638782b102f07505066c4d6359976b9a833fcd1be",
       "theme": "light",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Mobile Roster Window Map within its responsive scroll container"
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "s73-mobile-room-watch-dark.png",
+      "sha256": "985b0e02d758e1280f79face20feb0f6c3469a33712e6205148315c1a7b3282a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "s73-mobile-room-watch-light.png",
+      "sha256": "a38e4d2720b28a8dab87b1d8dde41780cd89881b29d92f0b82a60844ea7e1103",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "s73-mobile-architect-cut-dark.png",
+      "sha256": "8fd5429fa21a43013a85913610d75da1863a4bd5174e7337579e5fa300641f21",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "s73-mobile-architect-cut-light.png",
+      "sha256": "160a8979f2153d8d3b88fb383aa2a24b84ac91c8004c1e2ce62b5132b34b38f2",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "s73-mobile-guide-modal-dark.png",
+      "sha256": "bbb23874d9f3baf4ea1c4bf7522dc053efda354ecd15750563da55ce6520185c",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "s73-mobile-guide-modal-light.png",
+      "sha256": "1dc1df8ffc3e03526b47d1a8444482d9c9b65104cc5eff169774a814bf6ba37f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "s73-mobile-rival-coaching-dark.png",
+      "sha256": "51e4827d8e5ae5450e079c5f8f1ccfb90105bfd626cc7767a664120f5ce88db5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "s73-mobile-rival-coaching-light.png",
+      "sha256": "dca47048a8c7e6297a5be160b2e0a9ff53f8500ac64244ab27d87b631e12a3f7",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Rival coaching ownership boundary"
     }
   ],
   "inspection": {
     "renderedPixelsReviewed": true,
     "reviewer": "codex-gpt-5",
     "findings": [
-      "The complete deterministic harness produced 89 captures across mobile, tablet, desktop, dark, light, every primary tab, and all four S72 surfaces with zero overflow, contrast, touch-target, selector, or runtime failures.",
-      "Finite-number receipts remain readable in both themes and explicitly show complete source and simulated scans with zero issues and no truncation.",
-      "Roster Window Map preserves OVR-to-POT adjacency, position-room hierarchy, and the seven-room succession picture at desktop and inside the intentional 390px horizontal table viewport.",
-      "Ballot Watch renders an honest initial empty state in both themes and sizes while populated scoring, ordering, exclusion, and policy behavior are covered by deterministic browser tests.",
-      "The one-season progression screenshots intentionally display the live sample result rather than fabricating an on-target value; the authoritative deterministic 10-year regression is the release gate."
+      "The deterministic harness produced 125 captures across mobile, tablet, desktop, dark, light, every primary tab, and all touched S73 states with zero overflow, contrast, touch-target, selector, or runtime failures.",
+      "Trophy Road, Position Room Watch, Architect's Cut, Decision Anthology, and Final Reel remain readable and structurally coherent at desktop and 390px mobile widths in both themes.",
+      "Broadcast scores advance from canonical typed scoring plays; the Guide contains real content; rival staff surfaces expose no hire or fire controls.",
+      "Sparse evidence remains explicit: event-only achievements omit fabricated percentages, partial decision receipts are labeled, and room alerts never auto-tune simulation thresholds."
     ],
     "fixesApplied": [
-      "Made visual fixture leagues deterministic with seed 20260306.",
-      "Added live verifier execution and element-level progression, finite-integrity, roster-window, and Hall-ballot captures to the reusable evidence harness.",
-      "Corrected the harness to match renderTable's direct tr authority rather than requiring nonexistent tbody wrappers."
+      "Joined broadcast scoring to canonical typed plays and nested box-score team identifiers.",
+      "Hydrated Guide content before opening the modal.",
+      "Cleared and authority-guarded coaching-market controls during team changes and stale requests."
     ],
     "blockingDefectsOpen": 0
   }

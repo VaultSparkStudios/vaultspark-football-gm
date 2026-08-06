@@ -1,46 +1,51 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 80d3596140c0 -->
-<!-- generated-at: 2026-08-04T19:38:29.084Z -->
+<!-- source-hash: 50d10f08eddd -->
+<!-- generated-at: 2026-08-06T03:38:08.239Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 72 CLOSEOUT SUMMARY
+SESSION
+- Number: 73
 
-Session
-- Session 72; status closed, intent fully achieved.
+SHIPPED
+- Recovery boundary verified and empty commit cfb21cb pushed before S73 work.
+- All six Genius List items plus three viable second-order innovations completed.
+- Hermetic startup-renderer tests: validated test-owned outputs, tracked truth unchanged.
+- Progression truth: global + seven-room composite verdicts, bounded multi-seed history, Position Room Watch alerts (no auto-tune).
+- Decision boot graph 697,424/710,000 bytes, zero lazy leaks, 67 reachable browser modules, single-owner island hydration.
+- Broadcast Director: pause, speed, key nav, keyboard, exact progress, diagnostics, typed-receipt Final Reel.
+- Trophy Road, Architect's Cut, Decision Anthology (bounded, non-causal).
+- Verification green: Node 877/877, Playwright 40/40, responsive 125, visual QA 24 hash-bound, Pages build/smoke, Doctor blockingFailing 0, secret scan 0.
 
-Shipped
-- Five-item Genius List complete: finite simulation truth, league progression parity, deterministic browser league authority, progression-verifier observability, Hall policy round-trip.
-- Two second-order items: Hall Ballot Watch, Roster Window Map.
-- Active profile 2026-s72-parity +0.20/-0.55/-2.25; 10-year sim clears fixed ±0.15 mean-overall/year contract.
-- Realism verification reports source+simulated finite integrity, seed, profile, distributions, drift, status; truncated scans never pass.
+INTENT
+- Achieved. Recovery verify then one continuous start->audit->implement->closeout mission; saturate Genius List + viable second-order; direct-main. No item skipped.
 
-Verification (green)
-- Node 857/857, Playwright 40/40, direct 10-year 3/3, responsive 89 captures, visual QA 16 hash-bound.
-- Pages build/smoke + 58 browser modules pass.
-- Staging verified closeout candidate + artifact 11/11; rollback available.
+DECISIONS TO PRESERVE
+- Aggregate verification never mutates tracked truth; noncanonical outputs validate before write, skip canonical self-heal.
+- Global progression pass cannot mask a room failure; insufficient samples = incomplete; alerts never auto-tune.
+- Typed scoring receipts and canonical team IDs are score authority; Sim-Watch presents exact archived result.
+- Event-only achievements omit percentages, never invent progress.
+- Architect's Cut descriptive/non-causal; missing receipts stay missing.
+- Authority-sensitive controls clear synchronously before async team changes; stale responses ignored.
 
-Durable Decisions
-- Progression success = declared multi-season target, not single screenshot/final mean.
-- Numeric integrity scanned before JSON clone and after sim; serialization not a validation boundary.
-- Hall Ballot Watch uses same score authority as induction.
-- Roster Window Map is bounded one-year direction, not forecast.
-- Production may stay time-seeded; tests must declare randomness.
+NOW (top items)
+- Begin fresh live-code audit; S73 implementation queue is empty.
+- Re-measure before any further balance tuning (room Watch guards against single-seed tuning).
+- Resolve a launch authority if possible (see blockers).
 
-Now Bucket (next work)
-- Session 72 audit/innovation pack has zero open items.
-- Start fresh live-code audit unless a launch authority resolves.
-- Carried directions (uncommitted): per-position parity bands/multi-seed tuning history, dynasty-almanac share cards, broadcast-mode sim-watch, trophy-road onboarding.
+BLOCKERS
+- Registry SPARKED/local FORGE reconciliation sibling-owned; local Doctor warning stays visible.
+- Environmental browser-backup fixture-storage warning in tests (not a failed assertion; no data-loss inferred).
 
-Blockers / Human-Blocked (HOLD)
-- Launch HOLD: delivered/reply-capable football@playfranchisearchitect.com email.
-- Launch HOLD: SHA-bound founder approval.
-- Registry SPARKED/local FORGE reconciliation sibling-owned via Ark cargo 01JV62KEPG9B017D2712C0F8F5; keep local doctor warning visible until authoritative receipt arrives.
+HUMAN-BLOCKED (launch HOLDs)
+- Delivered, reply-capable football@playfranchisearchitect.com email — open.
+- SHA-bound founder approval — open.
 
-Key Files
-- src/stats/progressionParity.js, src/domain/ratings.js, src/runtime/GameSession.js
-- public/lib/tabSettings.js, public/lib/tabRoster.js, public/lib/tabHistory.js
-- test/progression-parity.test.js, test/realism-career-regression.test.js, tests-ui/app.spec.js
-- docs/AUDIT_2026-08-04_SESSION72.json, docs/visual-qa/LATEST.json
+KEY FILES
+- scripts/render-startup-brief.mjs, scripts/check-browser-boot-budget.mjs
+- src/stats/progressionParity.js, src/runtime/GameSession.js
+- public/lib/{uiIslands,simWatchPlayback,simWatchDirector,achievements,architectCut,decisionAnthology,progressionWatch}.js
+- docs/AUDIT_2026-08-04_SESSION73.json, docs/visual-qa/LATEST.json
 
-Next session: run a fresh live-code audit unless one of the three launch HOLDs (email, founder approval, registry reconciliation) has resolved.
+NEXT
+- Start a fresh live-code audit unless a launch authority (email/approval) resolves first.

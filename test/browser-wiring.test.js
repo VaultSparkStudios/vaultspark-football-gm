@@ -4,20 +4,25 @@ import fs from "node:fs";
 
 const read = (path) => fs.readFileSync(new URL(path, import.meta.url), "utf8");
 
-test("app shell wires share-card, newsletter, and contract tools to imported functions", () => {
+test("app shell wires share-card and newsletter through the lazy export island", () => {
   const appSource = read("../public/app.js");
   const gameSource = read("../public/game.html");
+  const islandSource = read("../public/lib/uiIslands.js");
 
-  assert.match(appSource, /import \{ generateFranchiseNewsletter \} from "\.\/lib\/franchiseNewsletter\.js"/);
-  assert.match(appSource, /import \{ buildLeagueStoryFromDashboard, downloadLeagueStory \} from "\.\/lib\/leagueStoryExport\.js"/);
-  assert.match(appSource, /leagueStoryCardBtn/);
-  assert.match(appSource, /downloadLeagueStory\(story\)/);
-  assert.match(gameSource, /id="leagueStoryCardBtn"/);
-  assert.match(appSource, /generateFranchiseNewsletter\(state\)/);
-  assert.match(appSource, /await loadContractsTeam\(\);\s*renderCapCasualtyPanel\(\);/s);
-  assert.doesNotMatch(appSource, /await loadContracts\(\);/);
+  assert.equal(appSource.includes('from "./lib/franchiseNewsletter.js"'), false);
+  assert.equal(appSource.includes('from "./lib/leagueStoryExport.js"'), false);
+  assert.ok(islandSource.includes('import("./franchiseNewsletter.js")'));
+  assert.ok(islandSource.includes('import("./leagueStoryExport.js")'));
+  assert.ok(appSource.includes("leagueStoryCardBtn"));
+  assert.ok(appSource.includes('await loadUiIsland("exports")'));
+  assert.ok(appSource.includes("exportsIsland.story.downloadLeagueStory(story)"));
+  assert.ok(gameSource.includes('id="leagueStoryCardBtn"'));
+  assert.ok(appSource.includes("exportsIsland.newsletter.generateFranchiseNewsletter(state)"));
+  const contractLoad = appSource.indexOf("await loadContractsTeam();");
+  assert.ok(contractLoad >= 0);
+  assert.ok(appSource.indexOf("renderCapCasualtyPanel();", contractLoad) > contractLoad);
+  assert.equal(appSource.includes("await loadContracts();"), false);
 });
-
 test("news ticker renderer targets the actual game markup", () => {
   const overviewSource = read("../public/lib/tabOverview.js");
   const gameHtml = read("../public/game.html");

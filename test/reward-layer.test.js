@@ -3,7 +3,9 @@ import assert from "node:assert/strict";
 
 import {
   ACHIEVEMENTS,
+  ACHIEVEMENT_PROGRESS,
   deriveControlledGame,
+  deriveTrophyRoad,
   deriveWinStreak,
   evaluateAchievements
 } from "../public/lib/achievements.js";
@@ -115,6 +117,32 @@ test("week recap model derives headline, score line, and standings truthfully", 
   assert.equal(buildWeekRecapModel({ game: null, dashboard }), null, "no game — no recap");
 });
 
+test("Trophy Road ranks three nearest measurable truths and advances after an unlock", () => {
+  const recent = [box(3, 24, 17), box(2, 20, 10), box(1, 27, 13)];
+  const dashboard = {
+    controlledTeamId: TEAM,
+    controlledTeam: { abbrev: TEAM },
+    latestStandings: [{ team: TEAM, wins: 4, losses: 0 }],
+    gmLegacy: { playoffAppearances: 0, superBowlWins: 0, seasonsServed: 0, tier: 1 }
+  };
+  const before = deriveTrophyRoad({ dashboard, recentBoxScores: recent, earned: {} });
+  assert.equal(before.objectives.length, 3);
+  assert.deepEqual(before.objectives.map((goal) => goal.id), ["first-win", "streak-3", "streak-5"]);
+  assert.ok(before.objectives.every((goal) => Number.isFinite(goal.progressPct)));
+
+  const after = deriveTrophyRoad({ dashboard, recentBoxScores: recent, earned: { "first-win": { earnedAt: "now" } } });
+  assert.equal(after.objectives.some((goal) => goal.id === "first-win"), false);
+  assert.notDeepEqual(after.objectives.map((goal) => goal.id), before.objectives.map((goal) => goal.id));
+});
+
+test("event-only trophies never receive fabricated percentages", () => {
+  const earned = Object.fromEntries(Object.keys(ACHIEVEMENT_PROGRESS).map((id) => [id, { earnedAt: "now" }]));
+  const road = deriveTrophyRoad({ dashboard: {}, recentBoxScores: [], earned });
+  assert.equal(road.objectives[0].kind, "event");
+  assert.equal(road.objectives[0].progressPct, null);
+  assert.match(road.objectives[0].progressText, /no percentage invented/);
+  assert.ok(Object.values(ACHIEVEMENT_PROGRESS).every((metadata) => metadata.target > 0 && metadata.metric));
+});
 test("registry hygiene: unique ids, tiers, and honest check functions", () => {
   const ids = new Set();
   for (const achievement of ACHIEVEMENTS) {

@@ -4,8 +4,10 @@ import test from "node:test";
 import { createSession } from "../src/runtime/bootstrap.js";
 import { PLAYER_DEVELOPMENT_PROFILE } from "../src/domain/ratings.js";
 import {
+  appendProgressionHistory,
   buildRosterWindowMap,
   buildProgressionParityReceipt,
+  POSITION_ROOMS,
   scanFiniteSimulationState,
   summarizeLeagueProgression
 } from "../src/stats/progressionParity.js";
@@ -16,7 +18,9 @@ test("progression summaries are source-derived and cohort-complete", () => {
 
   assert.ok(summary.playerCount > 1_000);
   assert.ok(summary.meanOverall > 60 && summary.meanOverall < 90);
-  assert.ok(summary.medianOverall > 60 && summary.medianOverall < 90);
+assert.ok(summary.medianOverall > 60 && summary.medianOverall < 90);
+  assert.equal(summary.rooms.length, 7);
+  assert.ok(summary.rooms.every((room) => room.count >= 20));
   assert.equal(
     summary.cohorts.developing25AndUnder.count + summary.cohorts.prime26To29.count + summary.cohorts.veteran30Plus.count,
     summary.playerCount
@@ -24,17 +28,27 @@ test("progression summaries are source-derived and cohort-complete", () => {
 });
 
 test("the parity verdict is computed from the published target", () => {
-  const base = { playerCount: 10, meanOverall: 75, medianOverall: 75, elite90Plus: 0, cohorts: {} };
+  const rooms = POSITION_ROOMS.map(({ room, positions }) => ({
+    room,
+    positions: positions.join("/"),
+    count: 32,
+    meanOverall: 75,
+    medianOverall: 75,
+    elite90Plus: 1,
+    elite90PlusPct: 3.1
+  }));
+  const base = { playerCount: 224, meanOverall: 75, medianOverall: 75, elite90Plus: 7, cohorts: {}, rooms };
+  const steadyRooms = rooms.map((room) => ({ ...room, meanOverall: 75.8, medianOverall: 75.5 }));
   const good = buildProgressionParityReceipt({
     start: base,
-    end: { ...base, meanOverall: 75.8 },
+    end: { ...base, meanOverall: 75.8, rooms: steadyRooms },
     seasons: 10,
     seed: 7,
     developmentProfile: PLAYER_DEVELOPMENT_PROFILE
   });
   const bad = buildProgressionParityReceipt({
     start: base,
-    end: { ...base, meanOverall: 79 },
+    end: { ...base, meanOverall: 79, rooms: steadyRooms },
     seasons: 10,
     seed: 7,
     developmentProfile: PLAYER_DEVELOPMENT_PROFILE
@@ -43,9 +57,53 @@ test("the parity verdict is computed from the published target", () => {
   assert.equal(good.status, "on-target");
   assert.equal(good.annualMeanOverallDrift, 0.08);
   assert.equal(bad.status, "out-of-range");
+  assert.equal(good.globalStatus, "on-target");
+  assert.equal(good.roomSummary.onTarget, 7);
   assert.equal(good.developmentProfile.version, "2026-s72-parity");
+
+  const maskedRoomFailure = buildProgressionParityReceipt({
+    start: base,
+    end: {
+      ...base,
+      meanOverall: 75.8,
+      rooms: steadyRooms.map((room, index) => index === 0 ? { ...room, meanOverall: 82 } : room)
+    },
+    seasons: 10,
+    seed: 8,
+    developmentProfile: PLAYER_DEVELOPMENT_PROFILE
+  });
+  assert.equal(maskedRoomFailure.globalStatus, "on-target");
+  assert.equal(maskedRoomFailure.status, "out-of-range");
+  assert.deepEqual(maskedRoomFailure.roomAlerts.map((alert) => alert.room), ["Quarterback"]);
+
+  const incomplete = buildProgressionParityReceipt({
+    start: { ...base, rooms: rooms.map((room, index) => index === 6 ? { ...room, count: 4 } : room) },
+    end: { ...base, meanOverall: 75.8, rooms: steadyRooms },
+    seasons: 10,
+    seed: 9,
+    developmentProfile: PLAYER_DEVELOPMENT_PROFILE
+  });
+  assert.equal(incomplete.status, "incomplete");
+  assert.equal(incomplete.rooms.find((room) => room.room === "Specialists").annualMeanOverallDrift, null);
 });
 
+test("multi-seed progression history is compact, bounded, and simulation-free on read", () => {
+  let history = [];
+  for (let seed = 1; seed <= 7; seed += 1) {
+    history = appendProgressionHistory(history, {
+      seed,
+      observedSeasons: 10,
+      status: seed === 4 ? "watch" : "on-target",
+      globalStatus: "on-target",
+      annualMeanOverallDrift: seed / 100,
+      rooms: POSITION_ROOMS.map(({ room }) => ({ room, status: "on-target", annualMeanOverallDrift: 0.1 }))
+    }, 1_000 + seed);
+  }
+  assert.deepEqual(history.map((entry) => entry.seed), [3, 4, 5, 6, 7]);
+  assert.equal(history[0].rooms.length, 7);
+  assert.equal(Object.hasOwn(history[0], "start"), false);
+  assert.throws(() => appendProgressionHistory(history, { seed: Number.NaN }), /finite seed/);
+});
 test("finite-number integrity reports corruption instead of laundering it", () => {
   const session = createSession({ seed: 91, startYear: 2026, controlledTeamId: "BUF" });
   const clean = scanFiniteSimulationState({ league: session.league, statBook: session.statBook });
