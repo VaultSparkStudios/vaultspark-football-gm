@@ -12,11 +12,18 @@ const surfaceLabels = new Map([
   ["room-watch", "Position Room Watch parity alerts"],
   ["architect-cut", "Architect's Cut and Decision Anthology"],
   ["guide-modal", "Game Guide populated modal"],
-  ["rival-coaching", "Rival coaching ownership boundary"]
+  ["rival-coaching", "Rival coaching ownership boundary"],
+  ["decision-archive", "Permanent Decision Archive sparse state"],
+  ["co-gm-brief", "Privacy-bounded Co-GM Brief"]
 ]);
 
 function sha256(buffer) {
   return crypto.createHash("sha256").update(buffer).digest("hex");
+}
+
+if (process.argv.includes("--help") || process.argv.includes("-h")) {
+  console.log("Usage: node scripts/write-visual-qa-receipt.mjs");
+  process.exit(0);
 }
 
 const candidates = (await fs.readdir(outputRoot, { withFileTypes: true }))
@@ -40,7 +47,7 @@ for (const viewport of ["desktop", "mobile"]) {
   for (const [surface, page] of surfaceLabels) {
     for (const theme of ["dark", "light"]) {
       const sourceName = `${viewport}-${surface}-${theme}.png`;
-      const targetName = `s73-${sourceName}`;
+      const targetName = `s74-${sourceName}`;
       const buffer = await fs.readFile(path.join(evidenceDir, sourceName));
       await fs.writeFile(path.join(receiptDir, targetName), buffer);
       captures.push({
@@ -65,15 +72,16 @@ const receipt = {
     renderedPixelsReviewed: true,
     reviewer: "codex-gpt-5",
     findings: [
-      "The deterministic harness produced 125 captures across mobile, tablet, desktop, dark, light, every primary tab, and all touched S73 states with zero overflow, contrast, touch-target, selector, or runtime failures.",
-      "Trophy Road, Position Room Watch, Architect's Cut, Decision Anthology, and Final Reel remain readable and structurally coherent at desktop and 390px mobile widths in both themes.",
-      "Broadcast scores advance from canonical typed scoring plays; the Guide contains real content; rival staff surfaces expose no hire or fire controls.",
-      "Sparse evidence remains explicit: event-only achievements omit fabricated percentages, partial decision receipts are labeled, and room alerts never auto-tune simulation thresholds."
+      "The deterministic harness produced 140 captures across mobile, tablet, desktop, dark, light, every primary tab, and all touched S74 states with zero overflow, contrast, touch-target, selector, or runtime failures.",
+      "The Co-GM Brief and permanent Decision Archive are readable at 1440px desktop and 390px mobile widths in both themes.",
+      "The Co-GM export discloses its bounded allowlist and excludes save payloads, credentials, personal identifiers, full roster ratings, and hidden simulation state.",
+      "Decision Archive empty and sparse states remain explicit; editorial rank never upgrades descriptive evidence into causal proof.",
+      "Sim-Watch visual authority now advances through byes with a bounded, receipted real-game resolver instead of a one-week luck dependency."
     ],
     fixesApplied: [
-      "Joined broadcast scoring to canonical typed plays and nested box-score team identifiers.",
-      "Hydrated Guide content before opening the modal.",
-      "Cleared and authority-guarded coaching-market controls during team changes and stale requests."
+      "Added component-specific captures for the Decision Archive and Co-GM Brief across both themes and target widths.",
+      "Made element evidence hide only unrelated overlapping fixed or sticky chrome while preserving the real target and its ancestors.",
+      "Moved the deterministic visual-game resolver out of the browser bundle and into release-tooling infrastructure."
     ],
     blockingDefectsOpen: 0
   }

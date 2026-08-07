@@ -68,6 +68,11 @@ function resolveOutputPath(argv) {
   return resolved;
 }
 
+if (process.argv.includes('--help') || process.argv.includes('-h')) {
+  process.stdout.write('Usage: node scripts/render-startup-brief.mjs [--output <repository-relative-path>]\n');
+  process.exit(0);
+}
+
 let outputPath;
 try {
   outputPath = resolveOutputPath(process.argv.slice(2));

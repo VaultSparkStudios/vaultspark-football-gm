@@ -51,6 +51,12 @@ function callUiIsland(name, exportName, ...args) {
 }
 async function loadHistoryIsland() {
   const island = await loadUiIsland("history");
+  const team = state.dashboard?.controlledTeam || {};
+  const teamId = state.dashboard?.controlledTeamId || team.teamId || team.abbrev || "";
+  const query = new URLSearchParams({ limit: "500" });
+  if (teamId) query.set("team", teamId);
+  const payload = await api(`/api/transactions?${query.toString()}`);
+  state.decisionArchiveTransactions = payload?.transactions || [];
   island.renderRecordsAndHistory();
   return island;
 }

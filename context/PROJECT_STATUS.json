@@ -4,37 +4,36 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 73 complete: hermetic verification, seven-room progression truth, lazy UI islands, Broadcast Director plus Final Reel, Trophy Road, and Architect Cut plus Decision Anthology. Six primary and three second-order items shipped; launch HOLD remains explicit.",
-  "nextMilestone": "Run a fresh live-code audit or resolve one launch authority: delivered reply-capable on-domain email, SHA-bound founder approval, or authoritative registry lifecycle reconciliation.",
+  "currentFocus": "Session 74 implementation complete: deterministic Sim-Watch evidence, permanent Decision Archive, bounded public Co-GM packet, and side-effect-free CLI contracts. Three primary and four second-order items shipped; exact-SHA release train in progress and launch HOLD remains explicit.",
+  "nextMilestone": "Complete exact-SHA staging and production verification, then run a fresh live-code audit or resolve delivered reply-capable email / authoritative registry lifecycle.",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — email-delivery-unverified and lifecycle-authority-unverified; deployment approval is explicit and will be exact-SHA bound during promotion."
   ],
-  "lastUpdated": "2026-08-06",
+  "lastUpdated": "2026-08-07",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-08-04",
+  "truthAuditLastRun": "2026-08-06",
   "ignisScore": 42230,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-03",
   "testSuiteStatus": {
-    "totalTests": 877,
-    "pass": 877,
+    "totalTests": 890,
+    "pass": 890,
     "fail": 0,
     "lastRun": "2026-08-06",
     "newTestFiles": [
-      "test/architect-cut.test.js",
-      "test/browser-boot-budget.test.js",
-      "test/decision-anthology.test.js",
-      "test/progression-watch.test.js",
-      "test/sim-watch-playback.test.js"
+      "test/co-gm-briefing.test.js",
+      "test/decision-archive.test.js",
+      "test/script-cli-smoke.test.js",
+      "test/visual-game-receipt.test.js"
     ],
-    "newTestCount": 20,
-    "coverage": "Session 73 canonical aggregate Node 877/877 direct exit 0; Playwright 40/40; responsive evidence 125 captures; visual QA 24 hash-bound captures; browser boot 697424/710000 bytes with 0 lazy leaks; Pages build/smoke; 67 browser modules reachable.",
-    "uiSuiteNote": "Playwright 40/40 plus rendered pixels prove populated Guide content, rival coaching read-only authority, Trophy Road, Position Room Watch, Broadcast Final Reel, Architect Cut and Decision Anthology across dark/light desktop/mobile."
+    "newTestCount": 13,
+    "coverage": "Session 74 canonical aggregate Node 890/890 direct exit 0; Playwright 40/40; responsive evidence 140 captures; visual QA 32 hash-bound captures; browser boot 705078/710000 bytes with 0 lazy leaks; Pages build/smoke; 69 browser modules reachable.",
+    "uiSuiteNote": "Playwright 40/40 plus rendered pixels prove Decision Archive and Co-GM Briefing across dark/light desktop/mobile, with adjacent Guide, rivalry, Broadcast Final Reel, Trophy Road and Architect Cut states retained."
   },
-  "testsPassing": 877,
-  "testsTotal": 877,
+  "testsPassing": 890,
+  "testsTotal": 890,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -86,10 +85,10 @@
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 73,
+  "currentSession": 74,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "npm test 877/877 direct exit 0; Playwright 40/40; responsive 125; visual QA 24; browser boot 697424/710000; 67 modules; Pages build/smoke; Doctor blockingFailing 0; secret scan 0.",
+  "lastVerification": "npm test 890/890 direct exit 0; Playwright 40/40; responsive 140; visual QA 32; browser boot 705078/710000; 69 modules; Pages build/smoke; Doctor blockingFailing 0; security sanitizer/scan 0.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -122,7 +121,7 @@
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-06",
+    "date": "2026-08-07",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -136,7 +135,7 @@
   },
   "complianceScore": 37,
   "complianceTotal": 37,
-  "sanitizationLastCleared": "2026-07-31",
+  "sanitizationLastCleared": "2026-08-06",
   "lastVerificationAt": "2026-08-06",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
@@ -144,21 +143,19 @@
   "entropyScore": 0.013,
   "entropyLastComputed": "2026-08-04",
   "lastSessionSummary": {
-    "session": 73,
+    "session": 74,
     "shipped": [
-      "Hermetic startup renderer and tracked-truth contract",
-      "Seven-room progression parity with bounded history and Watch alerts",
-      "Lazy UI islands under a 710 KB first-decision budget",
-      "Player-directed Broadcast Director and typed-receipt Final Reel",
-      "Honest Trophy Road objectives",
-      "Architect Cut and cross-season Decision Anthology",
-      "Rendered-pixel fixes for score joins, Guide hydration and rival coaching authority"
+      "Deterministic bounded Sim-Watch visual-game resolver",
+      "Permanent History Decision Archive over the existing anthology authority",
+      "Player-initiated bounded Co-GM public context packet",
+      "Side-effect-free help contracts for four Studio scripts",
+      "Overlap-aware component evidence framing across both themes and viewport classes"
     ],
-    "tests": "Node 877/877 · Playwright 40/40 · responsive 125 · visual 24 · boot 697424/710000 · 67 modules · Pages build/smoke · Doctor 0",
-    "deploy": "No deployment requested or performed; independent staging remains previously verified and production launch remains HOLD.",
+    "tests": "Node 890/890 · Playwright 40/40 · responsive 140 · visual 32 · boot 705078/710000 · 69 modules · Pages build/smoke · Doctor 0 · security clean",
+    "deploy": "Founder authorized exact-revision staging, direct-main push and full deployment; release train in progress.",
     "honestDeferrals": [
-      "Launch readiness remains held on delivered reply-capable email, SHA-bound founder approval and lifecycle authority.",
-      "No automatic room-balance tuning: Watch alerts require repeated multi-seed evidence before model revision."
+      "Launch readiness remains held on delivered reply-capable email and authoritative lifecycle reconciliation.",
+      "No agent recommendation or hidden-save access was added to the Co-GM context packet."
     ]
   },
   "testingSurfaces": [
@@ -181,8 +178,8 @@
       "lastChecked": "2026-08-04"
     }
   ],
-  "lastSession": 73,
-  "silLastSession": 73,
+  "lastSession": 74,
+  "silLastSession": 74,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",
@@ -195,7 +192,7 @@
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ],
-  "session": 73,
+  "session": 74,
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
@@ -276,7 +273,7 @@
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-04T07:08:50.140Z"
+    "observedAt": "2026-08-04T07:08:50.14Z"
   },
   "lastCloseoutAt": "2026-08-06T03:37:37.007Z"
 }

@@ -2,16 +2,37 @@ import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, renderPulseChips, renderTable, setElementTone, setSelectOptions, teamCode, teamName } from "./appCore.js";
 import { hallOfFameCeremonyButton, openHallOfFameCeremony } from "./hallOfFameCeremony.js";
 import { orientWinnerFirst } from "./scoreline.js";
+import { buildDecisionArchiveModel, renderDecisionArchiveHtml } from "./decisionArchive.js";
 
 export function setHistoryView(view) {
-  state.historyView = view === "hall-of-fame" ? "hall-of-fame" : "season-awards";
+  const allowed = new Set(["season-awards", "hall-of-fame", "decision-archive"]);
+  state.historyView = allowed.has(view) ? view : "season-awards";
   document.querySelectorAll("[data-history-view]").forEach((button) => {
     button.classList.toggle("active", button.dataset.historyView === state.historyView);
   });
   const seasonPanel = document.getElementById("historySeasonAwardsPanel");
   const hallPanel = document.getElementById("historyHallOfFamePanel");
+  const decisionPanel = document.getElementById("historyDecisionArchivePanel");
   if (seasonPanel) seasonPanel.classList.toggle("hidden", state.historyView !== "season-awards");
   if (hallPanel) hallPanel.classList.toggle("hidden", state.historyView !== "hall-of-fame");
+  if (decisionPanel) decisionPanel.classList.toggle("hidden", state.historyView !== "decision-archive");
+}
+
+export function renderDecisionArchive() {
+  const model = buildDecisionArchiveModel({
+    dashboard: state.dashboard || {},
+    transactions: state.decisionArchiveTransactions || [],
+    selectedYear: state.selectedDecisionArchiveYear
+  });
+  state.selectedDecisionArchiveYear = model.activeYear;
+  setSelectOptions(
+    "decisionArchiveYearSelect",
+    model.years.map((year) => ({ value: String(year), label: `Volume ${year}` })),
+    model.activeYear == null ? "" : String(model.activeYear)
+  );
+  const content = document.getElementById("decisionArchiveContent");
+  if (content) content.innerHTML = renderDecisionArchiveHtml(model);
+  return model;
 }
 
 export function formatAwardList(list = []) {
@@ -571,6 +592,7 @@ export function renderRecordsAndHistory() {
   renderTeamHistorySpotlight(state.teamHistory);
   renderPlayerHistoryArchive(state.historyTimeline);
 
+  renderDecisionArchive();
   if (!records) {
     box.innerHTML = "<div class='record'>No record data</div>";
   } else {

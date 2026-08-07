@@ -1314,3 +1314,29 @@ and season-payoff surfaces → rendered-pixel and full-suite proof → second-or
 Verification: canonical Node **877/877** direct exit 0; Playwright **40/40**; responsive **125 captures**; visual QA **24 SHA-256-bound inspected captures**; browser boot **697,424/710,000 bytes**; Pages build/smoke; Doctor `blockingFailing: 0`; secret scan 0; JSON/NDJSON and 38-file JavaScript syntax sweeps green.
 
 Unified Genius List: **0 open / 6 primary closed**. Viable second-order innovation list: **0 open / 3 closed**. Launch remains **HOLD** on delivered reply-capable email, SHA-bound founder approval, and authoritative lifecycle reconciliation.
+## Session 74 — Durable Memory and Co-GM Authority (2026-08-06)
+
+Source: `docs/AUDIT_2026-08-06_SESSION74.json` (3 verified primary items, combined priority 170.4).
+
+| Tier | Category | Status | Effort | Item |
+|---|---|---|---:|---|
+| FIRE | Retention / dynasty memory / UI | Done S74 | 4.0h | persistent-decision-anthology |
+| FIRE | Release evidence / CI reliability | Done S74 | 2.0h | deterministic-sim-watch-evidence |
+| HIGH | AI collaboration / dual audience / privacy | Done S74 | 4.0h | co-gm-briefing-packet |
+
+Execution order: deterministic visual authority → permanent Decision Archive → bounded Co-GM packet → second-order script smoke coverage → rendered-pixel proof → exact-revision release train.
+
+### Shipped — three primary and four second-order improvements
+
+- **Deterministic Sim-Watch evidence:** bounded real-runtime advances reject byes and incomplete games until an exact play-by-play plus high-impact Final Reel receipt exists; failure publishes its attempt ledger.
+- **Permanent Decision Archive:** History now exposes year-selectable, source-covered decision volumes with sparse states, missing-evidence disclosure, and an explicit descriptive/non-causal boundary.
+- **Co-GM Brief:** players can copy or download a versioned allowlisted JSON packet containing live authority, pressure, thesis, and at most three receipts; the packet excludes saves, credentials, full ratings, personal identifiers, and hidden state.
+- **Operational smoke paths:** four innovation-pack scripts now expose side-effect-free usage paths under test.
+- **Rendered-pixel evidence lens:** component captures exclude only unrelated overlapping fixed/sticky chrome and preserve the target plus ancestors.
+
+### Verification and release truth
+
+- Focused model/integration suites green; full aggregate and UI results are recorded at closeout.
+- Responsive evidence **140 captures** across 390/768/1440, dark/light and every primary tab.
+- Visual QA **32 SHA-256-bound inspected captures**; CANON-053 changed-surface check passes.
+- Launch status remains independently gated by delivered reply-capable Zoho alias evidence and authoritative lifecycle reconciliation; neither is inferred from a production deploy.

@@ -1,0 +1,78 @@
+{
+  "session": "S74",
+  "date": "2026-08-06",
+  "repo": "franchise-architect",
+  "headline": "Durable decision memory, deterministic Sim-Watch evidence, and a bounded player-controlled Co-GM context contract shipped with the full rendered-pixel loop.",
+  "items": [
+    {
+      "title": "Deterministic Sim-Watch evidence",
+      "projectImpact": 10,
+      "ecosystemImpact": 8,
+      "evidence": "A bounded production-runtime resolver finds real play-by-play and high-impact receipts or emits diagnostics; responsive evidence passed 140/140."
+    },
+    {
+      "title": "Permanent Decision Archive",
+      "projectImpact": 10,
+      "ecosystemImpact": 6,
+      "evidence": "History now projects the cross-season Decision Anthology without introducing a second ledger or causal claims."
+    },
+    {
+      "title": "Player-controlled Co-GM packet",
+      "projectImpact": 9,
+      "ecosystemImpact": 9,
+      "evidence": "Overview exports a fixed-allowlist local packet with command, pressure, thesis, and at most three receipts; no hidden save state or automatic transmission."
+    },
+    {
+      "title": "Side-effect-free Studio CLI contracts",
+      "projectImpact": 8,
+      "ecosystemImpact": 9,
+      "evidence": "Four scripts expose smoke-tested --help entry points through the repository safe-spawn seam."
+    },
+    {
+      "title": "Rendered-pixel evidence lens",
+      "projectImpact": 9,
+      "ecosystemImpact": 8,
+      "evidence": "32 retained captures across both themes and viewport classes were inspected; component framing now handles only unrelated overlapping chrome."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "Exact-SHA release train",
+      "evidence": "Deploy the committed candidate to stable staging, verify provenance, push main, and verify production at the identical revision."
+    },
+    {
+      "title": "Fresh live-code audit",
+      "evidence": "The S74 audit and innovation queues are exhausted at zero open; re-measure before selecting the next work."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "Reply-capable on-domain email",
+      "evidence": "football@playfranchisearchitect.com delivery and reply-as identity remain unproved."
+    },
+    {
+      "title": "Lifecycle authority",
+      "evidence": "Registry SPARKED and local FORGE remain unreconciled; Doctor keeps the warning visible."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "Aggregate gate corrected",
+      "evidence": "The first aggregate exposed an unsafe raw child-process import and a missing machine-readable second-order ledger; both were fixed before the 890/890 replay."
+    },
+    {
+      "title": "Pixels over geometry",
+      "evidence": "Green component geometry still rendered beneath mobile chrome; visual inspection found it and the evidence harness was narrowed and recaptured."
+    },
+    {
+      "title": "Deployment is not launch",
+      "evidence": "The founder authorized this deploy, but green production cannot prove email delivery or reconcile lifecycle authority."
+    }
+  ],
+  "diffStat": {
+    "files": 67,
+    "insertions": 710,
+    "deletions": 246,
+    "suite": "Node 890/890; Playwright 40/40; responsive 140/140; visual QA 32; Pages build/smoke; 69 modules; boot 705078/710000; Doctor 0; security clean"
+  }
+}

@@ -78,6 +78,8 @@ export const state = {
   retiredPool: [],
   historyView: "season-awards",
   selectedAwardsYear: null,
+  selectedDecisionArchiveYear: null,
+  decisionArchiveTransactions: [],
   teamHistory: null,
   historyTimeline: null,
   historyPlayerSearchResults: [],

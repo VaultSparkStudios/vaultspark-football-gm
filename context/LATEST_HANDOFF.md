@@ -1,52 +1,50 @@
-# Session 73 Closeout — Decision Payoff and Verification Integrity
+# Session 74 Closeout — Durable Decisions and Co-GM Authority
 
 ## Where We Left Off
 
-- Recovery completed first: Session 72 was independently reverified and an empty `cfb21cb` recovery-boundary commit was pushed before Session 73 work began.
-- The six-item Session 73 Genius List is exhausted, and all three viable second-order innovations shipped.
-- Verification is hermetic: startup-renderer tests use validated test-owned outputs and prove tracked startup truth is unchanged.
-- Progression truth now includes global plus seven-room composite verdicts, bounded multi-seed history, and Position Room Watch alerts that never auto-tune.
-- The first decision boot graph is 697,424/710,000 bytes with zero lazy leaks; 67 browser modules remain reachable and secondary islands hydrate through one owner.
-- Broadcast Director supports pause, speed, key navigation, keyboard control, exact progress, diagnostics, and a typed-receipt Final Reel.
-- Trophy Road exposes the nearest honest objectives; Architect's Cut and Decision Anthology preserve bounded, explicitly non-causal decision history.
-- Verification is green: Node 877/877, Playwright 40/40, responsive 125, visual QA 24 hash-bound captures, Pages build/smoke, Doctor blockingFailing 0, secret scan 0, and machine-readable/syntax integrity sweeps.
+- The Session 74 audit is complete: three ranked items and four second-order innovations shipped, with zero open audit/innovation implementation rows.
+- Sim-Watch visual evidence now finds a receipted game deterministically through at most eight real league advances and publishes diagnostics if it cannot; no result is fabricated or reconstructed.
+- History owns a permanent Decision Archive backed by the existing cross-season anthology authority.
+- Overview owns a player-initiated Co-GM packet with a fixed public allowlist, exact current command/pressure/thesis, and at most three bounded receipts. It can be copied as JSON or downloaded locally and never reads hidden save state.
+- Four Studio scripts expose side-effect-free `--help` entry points covered through the repository safe-spawn seam.
+- Component evidence hides only unrelated fixed/sticky chrome that geometrically overlaps its target; full-page evidence retains the actual application chrome.
+- Verification is green: Node 890/890, Playwright 40/40, responsive 140, visual QA 32 hash-bound captures, Pages build/smoke, browser reachability 69, first-decision boot 705,078/710,000 with zero lazy leaks, Doctor `blockingFailing: 0`, and security sanitizer/scan clean.
+- Exact-SHA staging, direct-main push, and production verification are the remaining authorized release-train steps for this closeout.
 
 ## Session Intent
 
-**Achieved.** The founder requested recovery verification followed by one continuous `/start -> /audit -> /implement -> /closeout` mission, saturation through the Unified Genius List and viable second-order innovation, and direct-main delivery. The recovery boundary, all six ranked items, and all three second-order items are complete; no item was silently skipped.
+**Implementation achieved; release train in progress.** The founder requested `/arc`, then `/closeout`, a direct commit and push to `main`, and full deployment. The arc implementation and all local release gates are complete. The exact-revision staging/promotion steps follow this durable writeback.
 
 ## Decisions That Must Survive
 
-- Aggregate verification must not mutate tracked truth; noncanonical render outputs validate before writing and skip canonical self-heal.
-- Global progression pass cannot mask a room failure; insufficient samples are incomplete and alerts never tune automatically.
-- Sim-Watch directs presentation of the exact archived result. Typed scoring receipts and canonical team IDs are the score authority.
-- Event-only achievements omit percentages rather than invent progress.
-- Architect's Cut is descriptive and explicitly non-causal; missing receipts stay missing.
-- Authority-sensitive controls clear synchronously before async team changes and stale responses are ignored.
+- Deterministic evidence may advance the real bounded runtime, but it may not invent a fixture or silently retry without a receipt.
+- Decision Archive reuses Decision Anthology. The permanent history view does not become a second persistence or causal authority.
+- Co-GM context is explicit and user-initiated. Its public allowlist is a security/product contract; new fields require deliberate review.
+- Screenshot machinery may suppress only unrelated overlapping chrome for component framing. It must preserve target descendants/ancestors and leave full-page captures untouched.
+- A successful code deployment does not clear contact-email or lifecycle launch gates.
 
 ## Honest Holds
 
 - Launch remains HOLD on delivered and reply-capable `football@playfranchisearchitect.com` email.
-- Launch remains HOLD on SHA-bound founder approval.
 - Registry SPARKED/local FORGE reconciliation remains sibling-owned; the local Doctor warning stays visible.
+- The founder explicitly authorized this direct-main deployment in the Session 74 request; that authority will be bound to the exact promoted SHA in release verification.
 - The repository-wide browser backup warning seen in tests is an environmental fixture-storage warning, not a failed assertion; no data-loss claim is inferred from it.
 
 ## Next Best Work
 
-The Session 73 audit and innovation pack have zero open implementation items. Begin a fresh live-code audit unless one of the three launch authorities resolves. Re-measure before proposing further balance tuning; the room Watch exists specifically to prevent tuning from a single favorable or unfavorable seed.
+Complete the exact-SHA staging and production train. Afterward, begin a fresh live-code audit unless email or lifecycle authority resolves. Do not infer launch readiness from a healthy deploy.
 
 ## Key Files
 
-- `scripts/render-startup-brief.mjs`
-- `scripts/check-browser-boot-budget.mjs`
-- `src/stats/progressionParity.js`
-- `src/runtime/GameSession.js`
-- `public/lib/uiIslands.js`
-- `public/lib/simWatchPlayback.js`
-- `public/lib/simWatchDirector.js`
-- `public/lib/achievements.js`
-- `public/lib/architectCut.js`
-- `public/lib/decisionAnthology.js`
-- `public/lib/progressionWatch.js`
-- `docs/AUDIT_2026-08-04_SESSION73.json`
+- `scripts/lib/visual-game-receipt.mjs`
+- `scripts/responsive-evidence.mjs`
+- `public/lib/decisionArchive.js`
+- `public/lib/coGmBriefing.js`
+- `public/lib/tabHistory.js`
+- `public/lib/tabOverview.js`
+- `test/visual-game-receipt.test.js`
+- `test/decision-archive.test.js`
+- `test/co-gm-briefing.test.js`
+- `test/script-cli-smoke.test.js`
+- `docs/AUDIT_2026-08-06_SESSION74.json`
 - `docs/visual-qa/LATEST.json`

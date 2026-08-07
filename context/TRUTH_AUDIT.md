@@ -536,3 +536,15 @@ the deterministic ten-year regression; no screenshot value was manipulated to ap
 
 Launch truth is unchanged: healthy code and independent staging do not replace delivered reply-capable email,
 SHA-bound founder approval or authoritative lifecycle reconciliation.
+
+## Session 74 — 2026-08-06
+
+- **Evidence truth:** Sim-Watch screenshots resolve a real receipted game through a bounded eight-advance production-runtime search. Exhaustion returns diagnostics; no fixture, score, or high-impact play is invented.
+- **Decision truth:** Decision Archive projects the persisted Decision Anthology and retains its explicit non-causal language. Empty history renders as empty rather than synthesizing a career story.
+- **Agent-context truth:** Co-GM export is player-initiated, local, fixed-allowlist, and bounded to three receipts. It does not transmit automatically, read hidden save state, expose secrets, or claim the agent acted.
+- **Visual truth:** 32 retained dark/light desktop/mobile captures were manually inspected. Pixel review found fixed/sticky mobile chrome obscuring component evidence; the evidence lens now hides only unrelated overlapping chrome for component captures while full-page captures remain unaltered.
+- **Test truth:** the complete source-bound aggregate passes 890/890 with direct exit 0; Playwright passes 40/40; responsive evidence passes 140/140; Pages build/smoke, 69-module reachability, and the 705,078/710,000-byte boot budget pass.
+- **Security truth:** no dependency or credential custody was added. Settings sanitation is clean; a staged working-tree secret scan is required immediately before commit.
+- **Release truth:** local release gates are green and the founder explicitly authorized a direct-main deployment. Exact-SHA staging and production receipts remain to be issued; green deployment will not by itself prove launch readiness.
+- **Launch truth:** reply-capable on-domain email is not proven and registry SPARKED/local FORGE remains unreconciled. Those holds stay visible.
+- **Cost truth:** no paid service, backend, external model, or variable-cost runtime was introduced.

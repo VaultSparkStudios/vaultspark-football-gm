@@ -13,3 +13,12 @@
   `test/realism-career-regression.test.js`; it is release evidence, not a default fast-unit expectation.
 - Launch remains HOLD on on-domain reply-capable email, SHA-bound founder approval and registry lifecycle authority.
   Do not collapse healthy code/staging into launch readiness.
+
+## Session 74 durable patterns
+
+- Visual fixtures that depend on a naturally occurring game must use a bounded real-runtime resolver. A single-week lookup is chance disguised as determinism; a fabricated fixture is not evidence.
+- `public/lib/decisionAnthology.js` remains the persistence authority. Decision Archive is a projection through `public/lib/decisionArchive.js`, not an independent ledger.
+- `public/lib/coGmBriefing.js` owns the fixed public context allowlist. Keep the packet player-initiated, bounded to three receipts, and free of hidden save state, secrets, or invented recommendations.
+- Component screenshots can be truthfully framed by hiding only unrelated fixed/sticky elements that overlap the target. Preserve target descendants and ancestors; never apply that lens to full-page evidence.
+- Studio CLI smoke tests must use `scripts/lib/safe-spawn.mjs`, and `--help` must exit without generating tracked artifacts or requiring runtime inputs.
+- Release deployment and launch readiness are independent. A green exact-SHA promotion can bind founder deployment approval while reply-capable email and registry lifecycle remain honest launch holds.

@@ -118,8 +118,10 @@ import {
   renderFanSentimentCard,
   renderInjuryOverlayCard,
   renderStatLeadersStrip,
-  renderOwnerUltimatum
+  renderOwnerUltimatum,
+  currentCoGmBriefingPacket
 } from "./lib/tabOverview.js";
+import { coGmBriefingFilename, serializeCoGmBriefingPacket } from "./lib/coGmBriefing.js";
 
 import {
   renderRoster,
@@ -596,6 +598,27 @@ function bindEvents() {
         .then(() => renderOverview())
         .catch(presentActionError);
     }
+  });
+  document.getElementById("coGmCopyBtn")?.addEventListener("click", async () => {
+    const serialized = serializeCoGmBriefingPacket(currentCoGmBriefingPacket());
+    try {
+      await navigator.clipboard.writeText(serialized);
+      showToast("Co-GM briefing copied — only the disclosed franchise context was included.");
+    } catch {
+      showToast("Clipboard access was unavailable. Download the briefing instead.");
+    }
+  });
+  document.getElementById("coGmDownloadBtn")?.addEventListener("click", () => {
+    const packet = currentCoGmBriefingPacket();
+    const url = URL.createObjectURL(new Blob([serializeCoGmBriefingPacket(packet)], { type: "application/json" }));
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = coGmBriefingFilename(packet);
+    document.body.append(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+    showToast("Co-GM briefing downloaded with a bounded disclosure receipt.");
   });
   document.getElementById("franchiseArchitecture")?.addEventListener("click", (event) => {
     const focusAction = event.target.closest?.("[data-architect-save-focus]");
@@ -1550,6 +1573,11 @@ function bindEvents() {
       callAppIsland("history", "setHistoryView", button.dataset.historyView || "season-awards");
     });
   });
+  document.getElementById("decisionArchiveYearSelect")?.addEventListener("change", () => {
+    state.selectedDecisionArchiveYear = Number(document.getElementById("decisionArchiveYearSelect")?.value || 0) || null;
+    callAppIsland("history", "renderDecisionArchive");
+  });
+
   document.getElementById("historyAwardYearSelect").addEventListener("change", () => {
     state.selectedAwardsYear = Number(document.getElementById("historyAwardYearSelect").value || 0) || null;
     callAppIsland("history", "renderRecordsAndHistory");

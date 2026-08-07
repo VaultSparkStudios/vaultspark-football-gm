@@ -1,3 +1,8 @@
+/**
+ * Usage: node scripts/check-browser-boot-budget.mjs [--json]
+ *        node scripts/check-browser-boot-budget.mjs --help
+ */
+
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -69,6 +74,10 @@ async function main() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  if (process.argv.includes("--help")) {
+    console.log("Usage: node scripts/check-browser-boot-budget.mjs [--json]");
+    process.exit(0);
+  }
   main().catch((error) => {
     console.error(error.message || error);
     process.exitCode = 1;

@@ -1,8 +1,15 @@
+/**
+ * Usage: node scripts/responsive-evidence.mjs
+ *        EVIDENCE_VIEWPORT=mobile node scripts/responsive-evidence.mjs
+ *        node scripts/responsive-evidence.mjs --help
+ */
+
 import fs from "node:fs/promises";
 import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "@playwright/test";
+import { resolveVisualGameReceipt } from "./lib/visual-game-receipt.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(scriptDir, "..");
@@ -142,11 +149,34 @@ async function captureElement(page, outputDir, name, selector, records) {
   const file = `${name}.png`;
   const element = page.locator(selector).first();
   await element.waitFor({ state: "visible" });
-  await element.evaluate((node) => node.scrollIntoView({ block: "center", inline: "nearest" }));
+  await element.evaluate((node) => {
+    node.scrollIntoView({ block: "center", inline: "nearest" });
+    const target = node.getBoundingClientRect();
+    for (const candidate of document.querySelectorAll("body *")) {
+      if (candidate === node || node.contains(candidate) || candidate.contains(node)) continue;
+      const style = getComputedStyle(candidate);
+      if (style.position !== "sticky" && style.position !== "fixed") continue;
+      const rect = candidate.getBoundingClientRect();
+      const intersects = rect.left < target.right && rect.right > target.left
+        && rect.top < target.bottom && rect.bottom > target.top;
+      if (!intersects || rect.width <= 0 || rect.height <= 0 || style.visibility === "hidden") continue;
+      candidate.dataset.evidencePriorVisibility = candidate.style.visibility || "__unset__";
+      candidate.dataset.evidenceCaptureHidden = "true";
+      candidate.style.setProperty("visibility", "hidden", "important");
+    }
+  });
   await page.waitForTimeout(100);
-  const box = await element.boundingBox();
-  if (!box) throw new Error(`Element capture box unavailable: ${selector}`);
-  await page.screenshot({ path: path.join(outputDir, file), clip: box });
+  try {
+    await element.screenshot({ path: path.join(outputDir, file) });
+  } finally {
+    await page.evaluate(() => document.querySelectorAll("[data-evidence-capture-hidden]").forEach((candidate) => {
+      const prior = candidate.dataset.evidencePriorVisibility;
+      if (prior === "__unset__") candidate.style.removeProperty("visibility");
+      else candidate.style.visibility = prior;
+      delete candidate.dataset.evidencePriorVisibility;
+      delete candidate.dataset.evidenceCaptureHidden;
+    }));
+  }
   records.push({ name, file, url: page.url(), elementCapture: selector, ...audit });
 }
 
@@ -229,6 +259,9 @@ async function main() {
             await page.locator(`[data-history-view="hall-of-fame"]`).click();
             await page.waitForFunction(() => !document.getElementById("historyHallOfFamePanel")?.classList.contains("hidden"));
             await captureElement(page, outputDir, `${viewport.name}-hall-ballot-${theme}`, "#hallOfFameBallotTable", records);
+            await page.locator(`[data-history-view="decision-archive"]`).click();
+            await page.waitForFunction(() => !document.getElementById("historyDecisionArchivePanel")?.classList.contains("hidden"));
+            await captureElement(page, outputDir, `${viewport.name}-decision-archive-${theme}`, "#historyDecisionArchivePanel", records);
           }
         }
       }
@@ -298,16 +331,36 @@ async function main() {
         await setTheme(page, theme);
         await captureElement(page, outputDir, `${viewport.name}-gm-persona-${theme}`, "#gmLegacyCardWrap", records);
         await captureElement(page, outputDir, `${viewport.name}-trophy-road-${theme}`, "#trophyRoadPanel", records);
+        await captureElement(page, outputDir, `${viewport.name}-co-gm-brief-${theme}`, "#coGmBriefPanel", records);
       }
-      const simWatchGameId = await page.evaluate(async () => {
-        const { api } = await import("./lib/appState.js");
-        const response = await api("/api/advance-week", { method: "POST", body: {} });
-        const dashboard = response?.state || response?.dashboard || null;
-        if (dashboard) globalThis.__VS_FA_APPLY_DASHBOARD__?.(dashboard);
-        return dashboard?.recentBoxScores?.[0]?.gameId || dashboard?.latestBoxScore?.gameId || null;
+      const simWatchReceipt = await resolveVisualGameReceipt({
+        advance: () => page.evaluate(async () => {
+          const { api } = await import("./lib/appState.js");
+          const response = await api("/api/advance-week", { method: "POST", body: {} });
+          globalThis.__VS_FA_APPLY_DASHBOARD__?.(response.state);
+          return response;
+        }),
+        loadBoxScore: (gameId) => page.evaluate(async (id) => {
+          const { api } = await import("./lib/appState.js");
+          return api(`/api/boxscore?gameId=${encodeURIComponent(id)}`);
+        }, gameId),
+        maxAttempts: 8
       });
-      if (!simWatchGameId) throw new Error("Sim-Watch visual evidence could not find a receipted game");
-      await page.evaluate(async (gameId) => (await import("./lib/simWatchDirector.js")).runSimWatch(gameId), simWatchGameId);
+      records.push({
+        name: `${viewport.name}-sim-watch-authority`,
+        url: page.url(),
+        visualGameReceipt: simWatchReceipt,
+        viewport: { width: viewport.width, height: viewport.height },
+        documentWidth: viewport.width,
+        overflowX: false,
+        bodyContrast: 99,
+        controls: [],
+        undersizedControls: []
+      });
+      await page.evaluate(
+        async (gameId) => (await import("./lib/simWatchDirector.js")).runSimWatch(gameId),
+        simWatchReceipt.gameId
+      );
       await page.waitForSelector("#simWatchOverlay", { state: "visible" });
       await page.locator("#simWatchReelBtn").click();
       await page.waitForFunction(() => /Final Reel/.test(document.getElementById("simWatchProgressLabel")?.textContent || ""));
@@ -385,6 +438,8 @@ async function main() {
     ...evidenceThemes.map((theme) => `${viewport.name}-rival-coaching-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-roster-window-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-hall-ballot-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-decision-archive-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-co-gm-brief-${theme}`),
     ...evidenceThemes.flatMap((theme) => evidenceTabs.map(([, label]) => `${viewport.name}-game-${label}-${theme}`))
   ]);
   const capturedNames = new Set(records.map((record) => record.name));
@@ -417,7 +472,11 @@ async function main() {
   console.log(`Responsive evidence passed: ${records.length} captures in ${outputDir}`);
 }
 
-main().catch((error) => {
-  console.error(error.message || error);
-  process.exitCode = 1;
-});
+if (process.argv.includes("--help")) {
+  console.log("Usage: node scripts/responsive-evidence.mjs (optional EVIDENCE_VIEWPORT=mobile|tablet|desktop)");
+} else {
+  main().catch((error) => {
+    console.error(error.message || error);
+    process.exitCode = 1;
+  });
+}

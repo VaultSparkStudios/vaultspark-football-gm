@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-08-06T00:06:37.253Z",
-  "sourceRevision": "cfb21cbe4bfe-worktree",
-  "artifact": "static responsive-evidence:7aa7e448cfeececcb312c947862ba39c972a05a1b93c5db21ab05f564b8ad128",
+  "capturedAt": "2026-08-06T22:20:54.976Z",
+  "sourceRevision": "66de3453baad-worktree",
+  "artifact": "static responsive-evidence:682fdce387f96a691ae0b5e25bc4fc8fa8abc25c0e55544cbc790d0f089f65fd",
   "themes": [
     "dark",
     "light"
   ],
   "captures": [
     {
-      "file": "s73-desktop-trophy-road-dark.png",
-      "sha256": "9fee27f06d92145e1538d35f9846640af20a0538e7778afa4c7a147bf411a9dc",
+      "file": "s74-desktop-trophy-road-dark.png",
+      "sha256": "000aafa8437afc1395adc66e527ed012af357404e8682cd9d7d2568f05cfaa25",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -19,8 +19,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s73-desktop-trophy-road-light.png",
-      "sha256": "985880d2719f08ccd908e472fba44ee0cfaafda2f2af973658d7a97cff0f8e58",
+      "file": "s74-desktop-trophy-road-light.png",
+      "sha256": "81cc9c4bed0428e307fa0b769e2377ea4096db9a564c33faedf5c3ae23684a6a",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -29,8 +29,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s73-desktop-sim-watch-reel-dark.png",
-      "sha256": "cc34cba0d43f64ce422ca9a6322a81650c9b6be606bf9ff208f1b596726f353a",
+      "file": "s74-desktop-sim-watch-reel-dark.png",
+      "sha256": "0a3f2837522fc16da647bc28de606c9deb64097e7cfb9cb8b8dda543f0269603",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -39,8 +39,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s73-desktop-sim-watch-reel-light.png",
-      "sha256": "fc155f99418fc2921edaec9cf53732ac1649c912e4326754c0c45ab2b33f4a45",
+      "file": "s74-desktop-sim-watch-reel-light.png",
+      "sha256": "1f1ad80106dbafc58227618c803295b9e166a15a4e4db6c1973fe7551b0c09cb",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -49,8 +49,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s73-desktop-room-watch-dark.png",
-      "sha256": "4e89940293f065d9d40f2a718003c0e7ad7320f5340750754b50479b53ea2009",
+      "file": "s74-desktop-room-watch-dark.png",
+      "sha256": "4cfff03265f55252afee6189026e7ee1e741ad0804a8cef7b07c0d05f9247eb3",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -59,8 +59,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s73-desktop-room-watch-light.png",
-      "sha256": "af92f14a8073c78902a4abda406f7c95d33643f958f683fec584f8126d5d14b3",
+      "file": "s74-desktop-room-watch-light.png",
+      "sha256": "01be682789668f5b009007e85d73734623235e4add0b836983e581bf91c0d7d2",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -69,8 +69,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s73-desktop-architect-cut-dark.png",
-      "sha256": "fef1ca92029f6cf35a784059bc3b7cb65a8887383fd26c589b6385a34be1aedf",
+      "file": "s74-desktop-architect-cut-dark.png",
+      "sha256": "f2e4272a85a1e653a835490bc7c8be3bec5cece66632410067782f4c3f6f0446",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -79,8 +79,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s73-desktop-architect-cut-light.png",
-      "sha256": "1ebeb028b4300170e99788d43172a22e790f6096cb96fe938ccc75a88a0fd511",
+      "file": "s74-desktop-architect-cut-light.png",
+      "sha256": "8b349d0427fbd171ef06fce68228326c0336939312ed3cebaa5eeac3c4cddbec",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -89,8 +89,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s73-desktop-guide-modal-dark.png",
-      "sha256": "d14a05174cf984c4919cafab6783615cd704e579101482cfdd3667380c6a893b",
+      "file": "s74-desktop-guide-modal-dark.png",
+      "sha256": "8cc41008acaf4b942ef45dd32f10df65a722764b9355b78db9758d5b7033a760",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -99,8 +99,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s73-desktop-guide-modal-light.png",
-      "sha256": "038d048461fc886568f547d5c503664cda6b1fd93f20f78847392830e4db6719",
+      "file": "s74-desktop-guide-modal-light.png",
+      "sha256": "1866de53d931afe1d0e738451bd8fcffb57a798a2b59fdc9291f10b5c202aa31",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -109,8 +109,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s73-desktop-rival-coaching-dark.png",
-      "sha256": "e85ad2a75ec17d81a8f638fed5363c0e59aded1caf50083f33d10348e136193d",
+      "file": "s74-desktop-rival-coaching-dark.png",
+      "sha256": "17eaba7aa2e1e9c4816939eb1e4c85fad9b35f1c3710c4ab89a7fb0b16bc6dd5",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -119,8 +119,8 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s73-desktop-rival-coaching-light.png",
-      "sha256": "b12558ad289fc730936e63331afd51c46108de22ad3d691ec75ea48947f963db",
+      "file": "s74-desktop-rival-coaching-light.png",
+      "sha256": "c39a8e867c57bb270b652ef17bb6fcd9df1746b5d964312a9ff83a4f4ad7118b",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -129,8 +129,48 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s73-mobile-trophy-road-dark.png",
-      "sha256": "4714a1740e6c4bc7322622ae1f560581e20489bc46df274cf4c95a4939887f42",
+      "file": "s74-desktop-decision-archive-dark.png",
+      "sha256": "1ef1c6e4f2b18d9e29f9981727296bfea9d842b9d16f10db0cad8e2f9404cbaf",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s74-desktop-decision-archive-light.png",
+      "sha256": "c9f6d4d2c97925285b0f004d7c2475d0d976413530f9be76a4133616a8cf0fbd",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s74-desktop-co-gm-brief-dark.png",
+      "sha256": "a4cabbf421af6ffb01a5895ac6b2e6aa7205e4262588c79c9f10150b43a6210c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s74-desktop-co-gm-brief-light.png",
+      "sha256": "af4c5b4a48c9121b5094aa3678f031e593e26f53c42eaaa299518e987cf1ca31",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s74-mobile-trophy-road-dark.png",
+      "sha256": "9fe3398858365dfabd1dfcc28e0e2345317bbde67700ed9d70d053b1784d45c6",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -139,8 +179,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s73-mobile-trophy-road-light.png",
-      "sha256": "3214076ef8998bd009e9b8e63d038992854f256c51ee140164831721cb5d9de6",
+      "file": "s74-mobile-trophy-road-light.png",
+      "sha256": "91b2d76029e022ffc8ac0b32f4c764fb33910ea2042df187048be0da365fc48c",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -149,8 +189,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s73-mobile-sim-watch-reel-dark.png",
-      "sha256": "0f43a7fd34cff89107f26671269791253f6d9e290ab89db86e77667f0b0cf8a8",
+      "file": "s74-mobile-sim-watch-reel-dark.png",
+      "sha256": "7507118b81b760084b4086479cc0792f024ae78a328f8208ee6a09072674ee56",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -159,8 +199,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s73-mobile-sim-watch-reel-light.png",
-      "sha256": "84a5138861d99ae1642cd3c638782b102f07505066c4d6359976b9a833fcd1be",
+      "file": "s74-mobile-sim-watch-reel-light.png",
+      "sha256": "d8c795e5646f15c982516615fb9d273120ca71384efb5e40099cb295ce4d352b",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -169,8 +209,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s73-mobile-room-watch-dark.png",
-      "sha256": "985b0e02d758e1280f79face20feb0f6c3469a33712e6205148315c1a7b3282a",
+      "file": "s74-mobile-room-watch-dark.png",
+      "sha256": "bbd114b92607c3e0c1ab4975e9cd729217cb306e7dee600b3d24dd6a691624f9",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -179,8 +219,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s73-mobile-room-watch-light.png",
-      "sha256": "a38e4d2720b28a8dab87b1d8dde41780cd89881b29d92f0b82a60844ea7e1103",
+      "file": "s74-mobile-room-watch-light.png",
+      "sha256": "18570e716f42a137231e844dee782aed09f0fe2275d97a8458b7b694418de295",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -189,8 +229,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s73-mobile-architect-cut-dark.png",
-      "sha256": "8fd5429fa21a43013a85913610d75da1863a4bd5174e7337579e5fa300641f21",
+      "file": "s74-mobile-architect-cut-dark.png",
+      "sha256": "c21659b22e0c7b2f525966ce469acca6812340a1e7b59d83e5a4808bc9800a31",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -199,8 +239,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s73-mobile-architect-cut-light.png",
-      "sha256": "160a8979f2153d8d3b88fb383aa2a24b84ac91c8004c1e2ce62b5132b34b38f2",
+      "file": "s74-mobile-architect-cut-light.png",
+      "sha256": "b3a57762e45be3d21f4e19921014c1a5c1fc1abcf5e78f81501a372fd08f3326",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -209,8 +249,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s73-mobile-guide-modal-dark.png",
-      "sha256": "bbb23874d9f3baf4ea1c4bf7522dc053efda354ecd15750563da55ce6520185c",
+      "file": "s74-mobile-guide-modal-dark.png",
+      "sha256": "a1cf69218319b385093f225819b84bd676af1dd844e8490ba5a79d9aa4e62f8e",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -219,8 +259,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s73-mobile-guide-modal-light.png",
-      "sha256": "1dc1df8ffc3e03526b47d1a8444482d9c9b65104cc5eff169774a814bf6ba37f",
+      "file": "s74-mobile-guide-modal-light.png",
+      "sha256": "e5d7b28a91be10cbfab75bb9270f2889bce6c396d2e754e2219db6535a156449",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -229,8 +269,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s73-mobile-rival-coaching-dark.png",
-      "sha256": "51e4827d8e5ae5450e079c5f8f1ccfb90105bfd626cc7767a664120f5ce88db5",
+      "file": "s74-mobile-rival-coaching-dark.png",
+      "sha256": "dbbe672b0fd3944e02328bdd3fe772bb7fc83fd002cf0b11a70f49152cf72d05",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -239,29 +279,70 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s73-mobile-rival-coaching-light.png",
-      "sha256": "dca47048a8c7e6297a5be160b2e0a9ff53f8500ac64244ab27d87b631e12a3f7",
+      "file": "s74-mobile-rival-coaching-light.png",
+      "sha256": "b91f5306553492fee8aa0ab98e6431128062e739daf5087477c5e59757aff2a1",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
       "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "s74-mobile-decision-archive-dark.png",
+      "sha256": "f58c38f4fa5bce91846274dfa3c7e1e7d9113227b4b6090e205dd1a31e55f523",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s74-mobile-decision-archive-light.png",
+      "sha256": "af253ddb355c883fc425046532b261eb2c3fdaccc6c413606cd2f29df46a705b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s74-mobile-co-gm-brief-dark.png",
+      "sha256": "b692e5d234275001a27340ecc7ba51460bb18e5b25b07320217d33ab47d86ac6",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s74-mobile-co-gm-brief-light.png",
+      "sha256": "d462cab28a4e255a564d1f7f22e4ab422639fc2ccd629c70765a3c41ed478f6b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Privacy-bounded Co-GM Brief"
     }
   ],
   "inspection": {
     "renderedPixelsReviewed": true,
     "reviewer": "codex-gpt-5",
     "findings": [
-      "The deterministic harness produced 125 captures across mobile, tablet, desktop, dark, light, every primary tab, and all touched S73 states with zero overflow, contrast, touch-target, selector, or runtime failures.",
-      "Trophy Road, Position Room Watch, Architect's Cut, Decision Anthology, and Final Reel remain readable and structurally coherent at desktop and 390px mobile widths in both themes.",
-      "Broadcast scores advance from canonical typed scoring plays; the Guide contains real content; rival staff surfaces expose no hire or fire controls.",
-      "Sparse evidence remains explicit: event-only achievements omit fabricated percentages, partial decision receipts are labeled, and room alerts never auto-tune simulation thresholds."
+      "The deterministic harness produced 140 captures across mobile, tablet, desktop, dark, light, every primary tab, and all touched S74 states with zero overflow, contrast, touch-target, selector, or runtime failures.",
+      "The Co-GM Brief and permanent Decision Archive are readable at 1440px desktop and 390px mobile widths in both themes.",
+      "The Co-GM export discloses its bounded allowlist and excludes save payloads, credentials, personal identifiers, full roster ratings, and hidden simulation state.",
+      "Decision Archive empty and sparse states remain explicit; editorial rank never upgrades descriptive evidence into causal proof.",
+      "Sim-Watch visual authority now advances through byes with a bounded, receipted real-game resolver instead of a one-week luck dependency."
     ],
     "fixesApplied": [
-      "Joined broadcast scoring to canonical typed plays and nested box-score team identifiers.",
-      "Hydrated Guide content before opening the modal.",
-      "Cleared and authority-guarded coaching-market controls during team changes and stale requests."
+      "Added component-specific captures for the Decision Archive and Co-GM Brief across both themes and target widths.",
+      "Made element evidence hide only unrelated overlapping fixed or sticky chrome while preserving the real target and its ancestors.",
+      "Moved the deterministic visual-game resolver out of the browser bundle and into release-tooling infrastructure."
     ],
     "blockingDefectsOpen": 0
   }

@@ -60,7 +60,9 @@ export const SHARDS = {
     "test/create-api-client.test.js",
     "test/deterministic-ids.test.js",
     "test/decision-anthology.test.js",
+    "test/decision-archive.test.js",
     "test/draft-agency.test.js",
+    "test/co-gm-briefing.test.js",
     "test/draft-war-room.test.js",
     "test/file-save-store.test.js",
     "test/franchise-command-center.test.js",
@@ -147,6 +149,8 @@ export const SHARDS = {
     "test/api-contract-parity.test.js",
     "test/audit-renderer.test.js",
     "test/browser-module-reachability.test.js",
+    "test/script-cli-smoke.test.js",
+    "test/visual-game-receipt.test.js",
     "test/browser-boot-budget.test.js",
     "test/browser-promise-observability.test.js",
     "test/capability-operations-authority.test.js",
@@ -268,6 +272,11 @@ const isMainModule =
 
 if (isMainModule) {
   const requested = process.argv[2] || "all";
+
+  if (requested === "--help" || requested === "-h") {
+    usage();
+    process.exit(0);
+  }
 
   if (requested === "list") {
     for (const [name, files] of Object.entries(SHARDS)) {

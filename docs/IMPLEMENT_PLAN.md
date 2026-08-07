@@ -1,30 +1,30 @@
-# Implementation Plan — Session 72
+# Implementation Plan — Session 74
 
-Source: `docs/AUDIT_2026-08-04_SESSION72.json`.
+Source: `docs/AUDIT_2026-08-06_SESSION74.json`.
 
-Status: **complete**. Dependency-sorted execution shipped every primary item at its L2 rung before expansion work.
+Status: **complete**. Every ranked primary item shipped at its L2 rung before the second-order innovation pass.
 
-## Wave 1 — Reliability boundary — complete
+## Wave 1 — Deterministic release evidence — complete
 
-1. `deterministic-browser-league-authority` — name the browser fixture seed, configure Hall state intentionally, and restore reproducible CI.
-2. `hall-policy-roundtrip-authority` — hydrate all Hall policy controls and prove custom score/wait/class values survive a save cycle.
-3. `finite-simulation-truth-receipt` — build the bounded numeric-integrity scanner before using the long-run verifier as calibration evidence.
+1. `deterministic-sim-watch-evidence` — bounded real-runtime advances now reject byes and incomplete games until an exact play-by-play plus Final Reel receipt exists; failures carry a diagnostic attempt ledger.
+2. The resolver lives in release tooling rather than the browser boot graph, and responsive evidence records the accepted game authority.
 
-## Wave 2 — Progression authority — complete
+## Wave 2 — Durable franchise memory — complete
 
-4. `league-progression-parity-contract` — name and calibrate the three life-stage factors against the measured league distribution; preserve youth upside and veteran decline.
-5. `progression-verifier-observability` — publish start/end distribution, annualized drift, target, status, seed and numeric-integrity receipt in both API and commissioner UI.
+3. `persistent-decision-anthology` — History now contains a year-selectable Decision Archive reusing the bounded anthology authority, with source coverage, missing-evidence disclosure, sparse empty states, and explicit non-causal language.
 
-## Wave 3 — Second-order innovation — complete
+## Wave 3 — Dual-audience Co-GM handoff — complete
 
-Generated only after Waves 1–2 were green. Hall Ballot Watch and Roster Window Map shipped; the existing
-deterministic seed, Playwright trace and failure artifacts already provide replay authority, so no duplicate capsule
-format was introduced without an observed diagnostic gap.
+4. `co-gm-briefing-packet` — Overview exposes player-initiated Copy JSON and Download brief actions for a versioned, fixed-allowlist packet containing current authority, pressure, thesis, and at most three decision receipts.
+5. `agents.json` declares the live-state contract and its privacy boundary; raw saves, credentials, full ratings, personal identifiers, and hidden simulation state remain excluded.
 
-## Wave 4 — Rendered pixels and release evidence — complete
+## Wave 4 — Second-order innovation — complete
 
-Focused and full Node/Playwright gates passed with direct exits. The reusable harness produced 89 responsive/theme
-captures and the canonical receipt binds 16 inspected touched-state captures. Exact-candidate staging and release
-replay are closeout gates; production remains held unless every external authority independently clears.
+6. The innovation pack's four viable script-polish candidates shipped: browser-budget, responsive-evidence, shard-runner, and startup-brief commands now have side-effect-free usage paths and smoke coverage.
+7. The element-capture lens now hides only unrelated overlapping fixed/sticky chrome, so tall component evidence is complete without mutating the target or its ancestors.
+
+## Wave 5 — Rendered pixels and release train — implementation complete
+
+The three-viewport dark/light harness produced 140 green captures. Thirty-two inspected desktop/mobile captures are SHA-256 bound in `docs/visual-qa/LATEST.json`; CANON-053 passes. Exact-revision staging, closeout, direct `main` push, CI, and production verification remain the release-train steps, not unshipped product work.
 
 Partial work is never marked shipped; rejected hypotheses become explicit honest deferrals.

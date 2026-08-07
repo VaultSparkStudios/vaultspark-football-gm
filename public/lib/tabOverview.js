@@ -11,6 +11,7 @@ import { buildTacticalIdentityLedger } from "./tacticalFilmRoom.js";
 import { architectLedgerRows, buildArchitectureSignal, buildProgressiveWeekRoom, buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
 import { describeWeeklyPlanReceipt } from "./weeklyPlanComposer.js";
 import { renderPressRoomPanel } from "./pressRoomPanel.js";
+import { buildCoGmBriefingPacket } from "./coGmBriefing.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -42,6 +43,7 @@ export function renderOverview() {
   }
   renderOverviewSpotlight();
   renderFranchiseCommandCenter();
+  renderCoGmBriefingPanel();
   renderFranchiseArchitecture();
   renderOpeningContract();
   renderPressRoomPanel(state.dashboard?.pressRoom);
@@ -50,6 +52,33 @@ export function renderOverview() {
   renderTacticalFilmRoom();
   renderNarrativePanel();
   renderTradeDeadlineAlert();
+}
+
+export function currentCoGmBriefingPacket() {
+  return buildCoGmBriefingPacket({
+    dashboard: state.dashboard || {},
+    newsRows: state.newsRows || [],
+    pendingDecision: state.mobilePendingDecision || state.dashboard?.gmDecisionQueue?.[0] || null,
+    pendingChoice: state.mobilePendingDecisionChoice || null
+  });
+}
+
+export function renderCoGmBriefingPanel() {
+  const panel = document.getElementById("coGmBriefPanel");
+  if (!panel) return;
+  const packet = currentCoGmBriefingPacket();
+  const command = packet.currentCommand;
+  const receipts = packet.recentDecisionReceipts;
+  const status = document.getElementById("coGmBriefStatus");
+  const content = document.getElementById("coGmBriefContent");
+  if (status) status.textContent = `${packet.authority.teamName} · ${packet.authority.year ?? "—"} W${packet.authority.week ?? "—"} · schema ${packet.schemaVersion}`;
+  if (content) content.innerHTML = `
+    <div class="history-card-grid">
+      <div class="history-card-stat"><strong>Current command</strong><div>${escapeHtml(command.title)}</div><small>${escapeHtml(command.reasonCode)} · ${command.blocking ? "blocks advance" : "advisory"}</small></div>
+      <div class="history-card-stat"><strong>Pressure</strong><div>${escapeHtml(packet.pressure.ownerMandate)}</div><small>${escapeHtml(packet.pressure.controlledTeamInjuries)} injuries · ${escapeHtml(packet.pressure.rosterNeeds.join(", ") || "no ranked need")}</small></div>
+      <div class="history-card-stat"><strong>Architect thesis</strong><div>${escapeHtml(packet.architectThesis.focusPathId || "Not declared")}</div><small>Revision ${escapeHtml(packet.architectThesis.revision)}</small></div>
+      <div class="history-card-stat"><strong>Decision memory</strong><div>${escapeHtml(receipts.length)} bounded receipt${receipts.length === 1 ? "" : "s"}</div><small>${escapeHtml(receipts[0]?.declared || "No recorded declaration yet")}</small></div>
+    </div>`;
 }
 
 export function renderFranchiseCommandCenter() {

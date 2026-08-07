@@ -1,0 +1,227 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-06",
+  "session": 74,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "complete",
+  "summary": {
+    "rankedItems": 3,
+    "combinedPriority": 170.4,
+    "topItem": "persistent-decision-anthology",
+    "source": "live-code-release-and-game-loop-audit",
+    "openItems": 0,
+    "completedItems": 3,
+    "priorityFormula": "Priority = axis-weighted Impact x Innovation / log2(EffortHours + 2). Game engagement weight 3x; UI, speed and organization 2x; other selected axes 1.5x.",
+    "theme": "Turn Session 73's new receipts into durable player and agent memory, and make the exact rendered-pixel evidence path deterministic enough to carry a production release."
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "product rubric with game overlay: +2 engagement, +1 UI/UX and +1 speed/organization; static-host, rendered-pixel, dual-audience and observability-honesty gates remain binding",
+    "staging": "independent Cloudflare Pages staging exists; deploy and verify the exact candidate there before production",
+    "source": "clean main at origin parity, doctor blockingFailing 0, latest CI and deploy runs, live source sampling, the Session 73 audit contract, current public metadata, and the canonical game-loop contract"
+  },
+  "releaseGate": {
+    "verdict": "IMPLEMENTATION GREEN; exact-revision release train in progress",
+    "tests": "Latest CI and backend deploy are green, but Deploy Pages run 31069185396 failed in responsive evidence because one /api/advance-week call produced no receipted Sim-Watch game.",
+    "doctor": "blockingFailing 0 with one non-blocking authoritative lifecycle warning.",
+    "constraints": "No dependency, metered runtime, secret custody or fabricated launch evidence. Production requires a green exact-candidate staging proof and a repaired Pages workflow. Reply-capable Zoho alias proof remains independent of deployment."
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 9,
+    "sessionEngagement": 9,
+    "retention": 8,
+    "soulFidelity": 9,
+    "overall": 8.8,
+    "evidence": "Structural score only. No cohort retention or fun claim is inferred. Retention remains the lowest axis because the new cross-season Decision Anthology is visible only inside the one-time season review, not in the permanent History surface."
+  },
+  "axisCoverage": {
+    "featuresDepth": {
+      "evaluated": ["persistent decision anthology", "counterfactual transaction simulator", "another dynasty export"],
+      "selected": ["persistent-decision-anthology"],
+      "rejected": ["counterfactual transaction simulator", "another dynasty export"]
+    },
+    "uiUx": {
+      "evaluated": ["year-selectable Decision Archive", "new tab shell", "replace the existing History navigation"],
+      "selected": ["persistent-decision-anthology"],
+      "rejected": ["new tab shell", "replace the existing History navigation"]
+    },
+    "gamificationEngagement": {
+      "evaluated": ["decision volumes as dynasty memory", "daily streak", "unreceipted momentum meter"],
+      "selected": ["persistent-decision-anthology"],
+      "rejected": ["daily streak", "unreceipted momentum meter"]
+    },
+    "aiIntelligence": {
+      "evaluated": ["privacy-bounded Co-GM packet", "paid LLM coach", "opaque recommendation score"],
+      "selected": ["co-gm-briefing-packet"],
+      "rejected": ["paid LLM coach", "opaque recommendation score"]
+    },
+    "securityPrivacy": {
+      "evaluated": ["bounded Co-GM allowlist", "stored token export", "raw save export as agent context"],
+      "selected": ["co-gm-briefing-packet"],
+      "rejected": ["stored token export", "raw save export as agent context"]
+    },
+    "speedOrganizationEfficiency": {
+      "evaluated": ["deterministic Sim-Watch evidence fixture", "remove responsive screenshots", "new visual dependency"],
+      "selected": ["deterministic-sim-watch-evidence"],
+      "rejected": ["remove responsive screenshots", "new visual dependency"]
+    },
+    "tokenCostReduction": {
+      "evaluated": ["reuse source-derived packet models", "add an LLM summarizer", "expand raw save context"],
+      "selected": ["co-gm-briefing-packet"],
+      "rejected": ["add an LLM summarizer", "expand raw save context"]
+    },
+    "feedbackEvidence": {
+      "evaluated": ["construct evidence from a deterministic archived game", "retry random weeks until one works", "skip Sim-Watch captures in CI"],
+      "selected": ["deterministic-sim-watch-evidence"],
+      "rejected": ["retry random weeks until one works", "skip Sim-Watch captures in CI"]
+    },
+    "ecosystemRelease": {
+      "evaluated": ["repair Pages red and prove exact staging", "claim email delivery from MX", "edit the sibling registry"],
+      "selected": ["deterministic-sim-watch-evidence"],
+      "rejected": ["claim email delivery from MX", "edit the sibling registry"]
+    }
+  },
+  "recommendedMoves": [
+    "First repair the release evidence authority so one scheduled bye or incomplete week cannot make a rendered-pixel gate nondeterministic.",
+    "Then promote the cross-season Decision Anthology from a one-time epilogue fragment into a permanent year-selectable History archive.",
+    "Finally expose a bounded Co-GM packet that humans can copy to an AI collaborator without exporting a save, credentials, hidden state or invented advice."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "release",
+      "candidate": "Treat the latest Pages failure as infrastructure flakiness",
+      "reason": "Rejected. Run 31069185396 failed at an exact source line after one advance-week request returned no recentBoxScores/latestBoxScore gameId. The script requires that random outcome and has no deterministic construction path."
+    },
+    {
+      "axis": "retention",
+      "candidate": "The Decision Anthology is already a permanent archive",
+      "reason": "Rejected against live imports. buildDecisionAnthology is consumed only by seasonEpilogue.js; History has only Season Awards and Hall of Fame views, so prior decision volumes vanish with the season-review modal."
+    },
+    {
+      "axis": "dual-audience",
+      "candidate": "agents.json already provides live franchise state to agents",
+      "reason": "Rejected. agents.json contains project metadata and four static entrypoints only. It exposes no bounded dynamic decision-state schema, UI affordance or privacy contract."
+    },
+    {
+      "axis": "security",
+      "candidate": "Export the complete save as the Co-GM context",
+      "reason": "Rejected. The save contains far more state than a collaborator needs. A fixed allowlist of current pressure, decisions, roster/cap posture, thesis and recent receipts is safer, smaller and easier to validate."
+    },
+    {
+      "axis": "release",
+      "candidate": "Mark contact email verified because MX records exist",
+      "reason": "Rejected by live DNS and the Studio email ledger. The domain has Cloudflare forwarding MX, but no delivered-to-founder receipt and no Zoho reply-as-alias capability. DNS presence is not delivery or reply proof."
+    },
+    {
+      "axis": "release",
+      "candidate": "Resolve lifecycle drift by editing Studio Ops directly",
+      "reason": "Rejected by CANON-018. The authoritative registry is sibling-owned; any reconciliation request must travel as signed Ark cargo."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Retention / dynasty memory / UI",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 83.6,
+      "slug": "persistent-decision-anthology",
+      "title": "The cross-season Decision Anthology disappears when the season-review modal closes",
+      "status": "shipped",
+      "premise": "Session 73 builds bounded cross-season volumes, but only seasonEpilogue.js imports the model. The permanent History surface offers Season Awards and Hall of Fame only, so a player cannot revisit prior General Manager decisions after dismissal or reload.",
+      "evidence": [
+        "public/lib/decisionAnthology.js builds year-grouped volumes and bounded turning points",
+        "public/lib/seasonEpilogue.js is its only browser importer",
+        "public/game.html History navigation has only season-awards and hall-of-fame views"
+      ],
+      "constraint": "Reuse the existing non-causal ranking authority. Sparse seasons remain visibly incomplete; do not claim decisions caused outcomes or manufacture missing receipts.",
+      "verification": ["pure archive model and rendering tests", "History navigation browser journey", "dark/light desktop/mobile captures"],
+      "ladder": {
+        "L1": { "effortHours": 1.5, "recipe": "Render the existing volume headlines in a static History panel." },
+        "L2": { "effortHours": 4, "recipe": "Add a Decision Archive History view with a year selector, source-coverage status, receipted turning-point cards and explicit non-causal/missing-evidence copy; hydrate it from the same dashboard authorities as Season Epilogue and cover navigation plus sparse states." },
+        "L3": { "effortHours": 7, "recipe": "L2 plus cross-link every card into exact transaction, draft and weekly-plan evidence surfaces." }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Release evidence / CI reliability",
+      "effortHours": 2,
+      "impact": 10,
+      "innovation": 6,
+      "priority": 45,
+      "slug": "deterministic-sim-watch-evidence",
+      "title": "The required Pages visual gate depends on one advance-week call producing a game receipt",
+      "status": "shipped",
+      "premise": "The latest Deploy Pages run failed after build and smoke passed because responsive-evidence.mjs advanced one week, found no recentBoxScores/latestBoxScore id, and aborted. A bye or non-game phase can make the exact same source revision red.",
+      "evidence": [
+        "GitHub run 31069185396 failed with 'Sim-Watch visual evidence could not find a receipted game'",
+        "responsive-evidence.mjs makes exactly one POST /api/advance-week request",
+        "the same script already constructs deterministic source-derived visual fixtures for Architect's Cut"
+      ],
+      "constraint": "Do not retry luck, skip required captures or fabricate scores. Build a deterministic archived game through the real runtime/receipt authority and prove the chosen game has exact play-by-play before opening Sim-Watch.",
+      "verification": ["focused evidence-fixture test", "mobile responsive evidence", "complete three-viewport evidence", "Pages workflow-equivalent build/smoke"],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Retry advance-week until a game appears." },
+        "L2": { "effortHours": 2, "recipe": "Extract a deterministic visual-game resolver that advances through bounded real runtime states, rejects byes/incomplete receipts, returns an exact archived game id with play-by-play, and fails with a diagnostic ledger rather than probabilistic absence; unit-test the resolver and wire responsive evidence to it." },
+        "L3": { "effortHours": 4, "recipe": "L2 plus reuse the fixture authority across Playwright journeys and publish its seed/week/game receipt in the visual report." }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "AI collaboration / dual audience / privacy",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 9,
+      "priority": 41.8,
+      "slug": "co-gm-briefing-packet",
+      "title": "AI agents can discover the project but cannot receive a bounded live franchise brief",
+      "status": "shipped",
+      "premise": "agents.json identifies the public project and legal entrypoints but has no dynamic state contract. Players can export full saves and narrative cards, yet cannot copy a compact, privacy-bounded packet containing the current decision, pressure, cap/roster posture, season thesis and receipted history for a human or AI Co-GM.",
+      "evidence": [
+        "public/agents.json has metadata plus Play/Contact/Privacy/Terms only",
+        "the live dashboard already owns franchise command, roster needs, cap, owner pressure, season thesis and bounded Architect receipts",
+        "existing feedback code demonstrates a fixed allowlist and disclosure-budget pattern"
+      ],
+      "constraint": "No API call, hidden ratings, tokens, absolute local paths, raw save, personal data or fabricated recommendation. Packet schema and omissions must be explicit; copy/download happens only after a player click.",
+      "verification": ["pure packet allowlist and size-bound tests", "copy/download UI test", "agents.json schema declaration", "dark/light desktop/mobile capture"],
+      "ladder": {
+        "L1": { "effortHours": 1.5, "recipe": "Copy a short plaintext summary from the Overview card." },
+        "L2": { "effortHours": 4, "recipe": "Create a versioned Co-GM briefing packet with allowlisted identity, current command, pressure, cap/roster posture, thesis and bounded receipts; expose Copy JSON and Download buttons in Franchise Command, declare the schema in agents.json, and surface exact disclosure/omission copy." },
+        "L3": { "effortHours": 7, "recipe": "L2 plus a player-selected question/intention field and importable response annotations that never mutate game state automatically." }
+      }
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "browser-boot-budget-cli-smoke",
+      "status": "shipped",
+      "premise": "The innovation pack found no side-effect-free usage contract for the browser boot-budget command; S74 added one and a subprocess smoke test."
+    },
+    {
+      "slug": "responsive-evidence-cli-smoke",
+      "status": "shipped",
+      "premise": "The responsive evidence runner now exposes a usage path that does not launch a browser or mutate evidence."
+    },
+    {
+      "slug": "test-shard-cli-smoke",
+      "status": "shipped",
+      "premise": "The canonical shard runner now treats help as a successful, bounded contract instead of an unknown shard."
+    },
+    {
+      "slug": "startup-brief-cli-smoke",
+      "status": "shipped",
+      "premise": "The startup renderer now documents its bounded output argument without running doctor or rewriting tracked truth."
+    }
+  ]
+}

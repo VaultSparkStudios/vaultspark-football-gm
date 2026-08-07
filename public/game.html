@@ -129,6 +129,18 @@
           </div>
 
           <section id="franchiseCommandCenter" class="panel franchise-command-center" aria-live="polite"></section>
+          <section id="coGmBriefPanel" class="panel" aria-labelledby="coGmBriefTitle">
+            <div class="franchise-command-head">
+              <div><span class="brand-kicker">Agent-ready decision handoff</span><h3 id="coGmBriefTitle">Co-GM Brief</h3></div>
+              <span id="coGmBriefStatus" class="small">Live franchise authority</span>
+            </div>
+            <div id="coGmBriefContent" aria-live="polite"></div>
+            <div class="row compact">
+              <button id="coGmCopyBtn" type="button" class="btn-sm">Copy JSON</button>
+              <button id="coGmDownloadBtn" type="button" class="btn-sm">Download brief</button>
+            </div>
+            <p class="small muted">Player-created, allowlisted context only: no save payload, credentials, full roster ratings, personal identifiers, or hidden simulation state.</p>
+          </section>
           <section id="trophyRoadPanel" class="panel trophy-road-panel" aria-labelledby="trophyRoadTitle">
             <div class="trophy-road-head"><div><span class="brand-kicker">Trophy Road</span><h3 id="trophyRoadTitle">The next marks within reach</h3></div><span class="small">Live truth · no invented progress</span></div>
             <div id="trophyRoadContent" aria-live="polite"></div>
@@ -865,6 +877,7 @@
             <div class="subtab-bar history-subtab-bar">
               <button class="subtab-btn active" data-history-view="season-awards">Season Awards</button>
               <button class="subtab-btn" data-history-view="hall-of-fame">Hall of Fame</button>
+              <button class="subtab-btn" data-history-view="decision-archive">Decision Archive</button>
             </div>
 
             <div id="historySeasonAwardsPanel" class="history-subpanel active">
@@ -937,6 +950,22 @@
                   <div id="playerTimelineGallery" class="history-gallery"></div>
                   <div class="table-wrap"><table id="playerTimelineTable" data-testid="player-timeline-table"></table></div>
                 </div>
+              </div>
+            </div>
+
+            <div id="historyDecisionArchivePanel" class="history-subpanel hidden">
+              <div class="narrative-panel-header">
+                <div>
+                  <div class="brand-kicker">General Manager Memory</div>
+                  <h2>Decision Archive</h2>
+                </div>
+                <label>Season volume
+                  <select id="decisionArchiveYearSelect" aria-label="Decision Archive season volume"></select>
+                </label>
+              </div>
+              <p class="small">Revisit the calls you actually made, the evidence stored beside them, and what remained unknown. Editorial rank is never a claim that a decision caused the result.</p>
+              <div id="decisionArchiveContent" aria-live="polite">
+                <div class="history-empty">Loading receipted decision volumes…</div>
               </div>
             </div>
           </div>

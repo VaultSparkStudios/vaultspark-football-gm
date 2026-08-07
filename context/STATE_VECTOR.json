@@ -1,9 +1,9 @@
 {
   "vectorVersion": "1.0",
-  "generatedAt": "2026-08-06",
-  "generatedAtMs": 1785987475626,
-  "session": 73,
-  "vectorHash": "3f07569cc59c343c",
+  "generatedAt": "2026-08-07",
+  "generatedAtMs": 1786141931408,
+  "session": 74,
+  "vectorHash": "f3356c6b6fa98a6f",
   "silTotal": 996,
   "silAvg3": null,
   "velocity": null,
@@ -26,15 +26,15 @@
   "genome": null,
   "ignisScore": 42230,
   "ignisGrade": "FORGE",
-  "ignisAgeDays": 3,
+  "ignisAgeDays": 4,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "Run a fresh live-code audit or resolve one launch authority: delivered reply-capable on-domain email, SHA-bound founder approval, or authoritative registry lifecycle reconciliation.",
-  "currentFocus": "Session 73 complete: hermetic verification, seven-room progression truth, lazy UI islands, Broadcast Director plus Final Reel, Trophy Road, and Architect Cut plus Decision Anthology. Six primary and three second-order items shipped; launch HOLD remains explicit.",
+  "nextMilestone": "Complete exact-SHA staging and production verification, then run a fresh live-code audit or resolve delivered reply-capable email / authoritative registry lifecycle.",
+  "currentFocus": "Session 74 implementation complete: deterministic Sim-Watch evidence, permanent Decision Archive, bounded public Co-GM packet, and side-effect-free CLI contracts. Three primary and four second-order items shipped; exact-SHA release train in progress and launch HOLD remains explicit.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — email-delivery-unverified and lifecycle-authority-unverified; deployment approval is explicit and will be exact-SHA bound during promotion."
   ]
 }

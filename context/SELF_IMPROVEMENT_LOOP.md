@@ -1156,3 +1156,25 @@ Committed SIL follow-ups:
 - [SIL] Scoring summaries and play text are presentation, not join keys; join broadcasts through typed canonical scoring receipts.
 - [SIL] Clear authority-sensitive controls synchronously before an asynchronous team switch, then reject stale responses.
 - [SIL] A modal's shell being visible does not prove its content hydrated; rendered pixels and browser journeys must assert both.
+
+## 2026-08-06 — Session 74
+
+SIL v3.0: **996 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 98, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 99, Capital Efficiency 100, Automation Coverage 100).
+
+- Dev Health 100 — canonical Node 890/890 and Playwright 40/40 direct exits, 140 responsive captures, 32 hash-bound inspected states, Pages build/smoke, 69 reachable modules, boot budget green, and Doctor `blockingFailing: 0`.
+- Creative Alignment 100 — Decision Archive and Co-GM Briefing expose the General Manager's own commands and receipts without invented causality, hidden state, or automated recommendations.
+- Momentum 100 — all three ranked audit items and all four viable second-order innovations shipped; both machine-readable queues are exhausted at zero open.
+- Engagement 100 — a player's decisions now survive as a permanent career record and can be carried into a deliberate co-manager conversation without leaving the game opaque.
+- Process Quality 98 — the full aggregate caught two real contract gaps (unsafe raw spawn and missing machine-readable second-order rows), and rendered pixels caught component evidence hidden under mobile chrome; each was root-fixed and rerun. Two points are withheld for those first-pass misses.
+- Cross-Repo Coherence 99 — canonical Studio tools were consumed read-only and no sibling tree was edited. One point remains withheld for registry SPARKED/local FORGE drift.
+- Security Posture 100 — no dependency or secret custody was added; the public context is allowlisted, sanitizer is clean, staged secret scanning is required before commit, and the gateway audit remained redacted.
+- Ecosystem Integration 99 — audit, implementation plan, innovation pack, task board, visual receipt, status, handoff, decision log, truth audit, and tests agree. One point remains withheld for external lifecycle authority.
+- Capital Efficiency 100 — all features are deterministic, local/static-host-safe, and use existing infrastructure with no variable-cost runtime.
+- Automation Coverage 100 — resolver bounds/diagnostics, archive projection, context allowlist, CLI side effects, both runtime adapters, and rendered states are regression-covered.
+
+Committed SIL follow-ups:
+- [SIL] Evidence depending on natural simulation state needs a bounded production-runtime resolver and a diagnostic incomplete state, not probabilistic retries.
+- [SIL] Public agent context is a product and security contract: fixed allowlist, explicit player action, bounded receipts, no hidden state.
+- [SIL] A component capture can be geometrically green while its pixels are hidden by fixed chrome; inspect the image and preserve full-page truth separately.
+- [SIL] Machine-readable audit rows must record second-order candidates before aggregate exhaustion tests can prove the queue closed.
+- [SIL] Deployment authority, artifact provenance, and public launch readiness remain separate receipts.

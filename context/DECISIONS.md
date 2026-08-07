@@ -915,3 +915,20 @@ It ranks source-derived committed decisions by receipt density, reports observed
 
 **D-S73.6 — Mature secondary UI is an on-demand island with one hydration owner.**
 History, Settings, exports, credential helpers, and epilogue load behind centralized pending/error behavior while build reachability and service-worker coverage remain complete. *Why:* static hosting does not require paying the parse cost for every mature surface before the first decision.
+
+## Session 74 — 2026-08-06
+
+**D-S74.1 — Visual-game evidence advances bounded real runtime; it never relies on one-week luck.**
+The resolver inspects the current receipted schedule, advances through the production runtime at most eight times, and returns a diagnostic receipt if no qualifying play-by-play/high-impact game exists. *Why:* CI evidence must be repeatable without fabricating game state or hiding retry behavior.
+
+**D-S74.2 — Permanent decision history reuses the anthology authority.**
+Decision Archive is a bounded projection over the existing Decision Anthology and never becomes a second ledger or causal scorer. *Why:* one durable source prevents cross-season drift while preserving the honest limits of observational receipts.
+
+**D-S74.3 — Co-GM context is player-initiated and fixed-allowlist.**
+The public packet includes only franchise/season identity, current command, pressure, thesis, and at most three public receipts; it excludes hidden save state, secrets, automatic transmission, and invented recommendations. *Why:* useful agent context must be legible, bounded, and privacy-preserving by construction.
+
+**D-S74.4 — Component visual framing may hide only unrelated overlapping chrome.**
+The evidence harness may temporarily suppress fixed/sticky elements only when they geometrically overlap a component target and are neither its descendants nor ancestors. Full-page captures retain actual chrome. *Why:* a component receipt should show the component, without laundering the real page layout.
+
+**D-S74.5 — Deployment success and launch readiness remain independent authorities.**
+The founder's explicit direct-main request authorizes this release train and can be bound to its exact SHA, but it does not prove reply-capable email or reconcile registry/local lifecycle. *Why:* production health cannot silently erase separate launch gates.
