@@ -10,6 +10,7 @@ test('community deployment cannot seize shared-host public or database ports', (
   assert.doesNotMatch(compose, /(?:^|\s)["']?(?:80|443|5432):(?:80|443|5432)/m);
   assert.match(compose, /127\.0\.0\.1:8082:8082/);
   assert.match(compose, /community_internal:\s*\n\s+internal: true/);
+  assert.match(compose, /community_edge:\s*\n\s+driver: bridge/);
   assert.match(compose, /POSTGRES_DB: community_stats/);
   assert.match(compose, /IMAGE_TAG:-latest/);
 });
