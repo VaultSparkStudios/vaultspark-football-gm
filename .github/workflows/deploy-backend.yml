@@ -108,11 +108,13 @@ jobs:
         env:
           DEPLOY_PATH: ${{ secrets.BACKEND_DEPLOY_PATH }}
           DEPLOY_SHA: ${{ github.sha }}
+          GHCR_USER: ${{ github.actor }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           host: ${{ secrets.BACKEND_SSH_HOST }}
           username: ${{ secrets.BACKEND_SSH_USER }}
           key: ${{ secrets.BACKEND_SSH_KEY }}
-          envs: DEPLOY_PATH,DEPLOY_SHA
+          envs: DEPLOY_PATH,DEPLOY_SHA,GHCR_USER,GHCR_TOKEN
           script: |
             set -euo pipefail
             cd "$DEPLOY_PATH"
@@ -121,6 +123,8 @@ jobs:
               printf 'POSTGRES_PASSWORD=%s\n' "$(openssl rand -hex 32)" > .env
             fi
             export IMAGE_TAG="$DEPLOY_SHA"
+            printf '%s' "$GHCR_TOKEN" | docker login ghcr.io --username "$GHCR_USER" --password-stdin
+            trap 'docker logout ghcr.io >/dev/null 2>&1 || true' EXIT
             docker compose --env-file .env -f ops/deploy-backend.docker-compose.yml pull
             docker compose --env-file .env -f ops/deploy-backend.docker-compose.yml up -d
             install -m 0644 ops/Caddyfile /etc/caddy/conf.d/franchise-architect-football.caddy
