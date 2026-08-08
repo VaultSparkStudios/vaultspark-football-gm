@@ -27,6 +27,8 @@ test("snapshot uses public cache validators and CORS only for allowed origins", 
     const tag = response.headers.get("etag");
     const cached = await fetch(`${origin}/community/v1/snapshot`, { headers: { Origin: "https://playfranchisearchitect.com", "If-None-Match": tag } });
     assert.equal(cached.status, 304);
+    const edgeCached = await fetch(`${origin}/community/v1/snapshot`, { headers: { Origin: "https://playfranchisearchitect.com", "If-None-Match": `W/${tag}` } });
+    assert.equal(edgeCached.status, 304, "edge proxies may weaken a strong origin ETag");
     const denied = await fetch(`${origin}/community/v1/snapshot`, { headers: { Origin: "https://attacker.example" } });
     assert.equal(denied.status, 403);
   });

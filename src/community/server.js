@@ -51,6 +51,13 @@ function requestIp(req) {
 
 function etag(payload) { return `"${createHash("sha256").update(JSON.stringify(payload)).digest("hex").slice(0, 24)}"`; }
 
+function matchesEtag(value, tag) {
+  return String(value || "")
+    .split(",")
+    .map((candidate) => candidate.trim().replace(/^W\//i, ""))
+    .some((candidate) => candidate === "*" || candidate === tag);
+}
+
 export function createCommunityStatsHandler({ store, origins = allowedOrigins(), rateLimit = createMemoryRateLimiter() } = {}) {
   if (!store) throw new Error("Community Stats handler requires a store.");
   return async function handler(req, res) {
@@ -84,7 +91,7 @@ export function createCommunityStatsHandler({ store, origins = allowedOrigins(),
           else snapshot = { ...aggregateCommunitySnapshot([], { now: new Date().toISOString() }), status: "unavailable", degradation: "The live aggregate is temporarily unavailable." };
         }
         const tag = etag(snapshot);
-        if (req.headers["if-none-match"] === tag) { res.writeHead(304, { ETag: tag, "Cache-Control": "public, max-age=30, s-maxage=60, stale-while-revalidate=300" }); res.end(); return; }
+        if (matchesEtag(req.headers["if-none-match"], tag)) { res.writeHead(304, { ETag: tag, "Cache-Control": "public, max-age=30, s-maxage=60, stale-while-revalidate=300" }); res.end(); return; }
         sendJson(res, snapshot.status === "unavailable" ? 503 : 200, snapshot, { ETag: tag, "Cache-Control": "public, max-age=30, s-maxage=60, stale-while-revalidate=300" }); return;
       }
       if (req.method === "POST" && url.pathname === "/community/v1/events") {
