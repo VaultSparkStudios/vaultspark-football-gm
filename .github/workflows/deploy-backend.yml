@@ -121,8 +121,8 @@ jobs:
               printf 'POSTGRES_PASSWORD=%s\n' "$(openssl rand -hex 32)" > .env
             fi
             export IMAGE_TAG="$DEPLOY_SHA"
-            docker compose -f ops/deploy-backend.docker-compose.yml pull
-            docker compose -f ops/deploy-backend.docker-compose.yml up -d
+            docker compose --env-file .env -f ops/deploy-backend.docker-compose.yml pull
+            docker compose --env-file .env -f ops/deploy-backend.docker-compose.yml up -d
             install -m 0644 ops/Caddyfile /etc/caddy/conf.d/franchise-architect-football.caddy
             caddy validate --config /etc/caddy/Caddyfile
             systemctl reload caddy

@@ -22,5 +22,6 @@ test('community API joins the guarded shared Caddy plane through localhost only'
   assert.match(workflow, /caddy validate --config \/etc\/caddy\/Caddyfile/);
   assert.match(workflow, /systemctl reload caddy/);
   assert.match(workflow, /openssl rand -hex 32/);
+  assert.equal((workflow.match(/docker compose --env-file \.env/g) || []).length, 2);
   assert.match(workflow, /IMAGE_TAG="\$DEPLOY_SHA"/);
 });
