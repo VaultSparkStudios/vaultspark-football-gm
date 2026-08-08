@@ -932,3 +932,11 @@ The evidence harness may temporarily suppress fixed/sticky elements only when th
 
 **D-S74.5 — Deployment success and launch readiness remain independent authorities.**
 The founder's explicit direct-main request authorizes this release train and can be bound to its exact SHA, but it does not prove reply-capable email or reconcile registry/local lifecycle. *Why:* production health cannot silently erase separate launch gates.
+
+## Session 74 release follow-through — 2026-08-07
+
+**D-S74.6 — Interactive browser journeys drain declared gates as a state machine.**
+One-shot visibility probes are not waits. A journey that starts a weekly command must keep resolving the declared decision, tactic, and rehearsal gates until the status returns to Ready or a bounded diagnostic timeout expires. *Why:* fast local rendering cannot be the hidden precondition for CI correctness.
+
+**D-S74.7 — Stable-origin convergence retries transient probe exceptions.**
+The existing staging attempt/delay bound applies to both blocked reports and thrown network probe errors. Exhaustion returns an explicit blocked diagnostic; it never claims verification. *Why:* an exact deployment can land while a single edge fetch resets, and the retry authority must survive that expected convergence behavior.

@@ -13,7 +13,7 @@
 - Node 890/890; Playwright 40/40; responsive 140/140; Pages build/smoke.
 - Browser reachability 69; boot 705,078/710,000 bytes; zero lazy leaks.
 - Staging 11/11 with rollback; production 8/8 provenance and 9/9 routes at `397bc436372f42e0b8cd3b188b4b569c3895715c` / `134e903b4c60664059c07d2c3494d36b8417536bd351febfcc825860ebacbc86`.
-- GitHub Pages, backend image, brief-format, and CI attempt 2 green. Attempt 1's single 90-second UI timeout did not reproduce.
+- Release follow-through reproduced the podium timeout and root-fixed its one-shot modal probe with a bounded state-machine drain. Staging transient fetch exceptions now retry within the declared convergence bound.
 
 ## Holds
 

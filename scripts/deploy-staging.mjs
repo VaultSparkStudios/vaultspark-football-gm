@@ -147,12 +147,23 @@ export async function waitForStagingProvenance({
   sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 } = {}) {
   let report = null;
+  let lastError = null;
   for (let attempt = 0; attempt < attempts; attempt += 1) {
-    report = await buildReport({ expected, baseUrl: STAGING_URL });
+    try {
+      report = await buildReport({ expected, baseUrl: STAGING_URL });
+      lastError = null;
+    } catch (error) {
+      lastError = error;
+    }
     if (report?.summary?.status === "verified") return report;
     if (attempt + 1 < attempts) await sleep(delayMs);
   }
-  return report;
+  return report || {
+    schemaVersion: "1.1",
+    expectedRevision: expected?.sourceRevision || null,
+    summary: { status: "blocked", checksPassed: 0, checksTotal: 11 },
+    transientError: String(lastError?.message || "staging provenance unavailable")
+  };
 }
 
 export async function deployStaging({ root = process.cwd(), sourceRevision } = {}) {

@@ -65,8 +65,12 @@
       "evidence": "The founder authorized this deploy, but green production cannot prove email delivery or reconcile lifecycle authority."
     },
     {
-      "evidence": "Attempt 1 timed out once in an existing podium journey; a failed-job-only rerun passed 40/40, so no unjustified source patch was made.",
-      "title": "CI timeout classified by replay"
+      "evidence": "A later receipt-only CI run reproduced the podium timeout, proving the one-shot visibility probe was racy; the journey now drains late weekly-plan gates through a bounded state machine.",
+      "title": "CI race classified by reproduction"
+    },
+    {
+      "evidence": "Exact uploads landed while a probe threw fetch failed; the bounded convergence loop now retries thrown probe errors and remains fail-closed on exhaustion.",
+      "title": "Staging convergence survives transient fetches"
     }
   ],
   "diffStat": {

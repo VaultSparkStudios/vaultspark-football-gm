@@ -24,7 +24,8 @@
 - **Aggregate gate corrected**: The first aggregate exposed an unsafe raw child-process import and a missing machine-readable second-order ledger; both were fixed before the 890/890 replay.
 - **Pixels over geometry**: Green component geometry still rendered beneath mobile chrome; visual inspection found it and the evidence harness was narrowed and recaptured.
 - **Deployment is not launch**: The founder authorized this deploy, but green production cannot prove email delivery or reconcile lifecycle authority.
-- **CI timeout classified by replay**: Attempt 1 timed out once in an existing podium journey; a failed-job-only rerun passed 40/40, so no unjustified source patch was made.
+- **CI race classified by reproduction**: A later receipt-only CI run reproduced the podium timeout, proving the one-shot visibility probe was racy; the journey now drains late weekly-plan gates through a bounded state machine.
+- **Staging convergence survives transient fetches**: Exact uploads landed while a probe threw fetch failed; the bounded convergence loop now retries thrown probe errors and remains fail-closed on exhaustion.
 
 ## Proof
 

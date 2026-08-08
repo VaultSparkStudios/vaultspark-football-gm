@@ -149,3 +149,23 @@ test("stable staging provenance waits for the new deployment to converge", async
   assert.equal(builds, 3);
   assert.equal(sleeps, 2);
 });
+
+test("stable staging provenance retries transient probe failures", async () => {
+  let builds = 0;
+  let sleeps = 0;
+  const result = await waitForStagingProvenance({
+    expected: { sourceRevision: "candidate" },
+    attempts: 3,
+    delayMs: 1,
+    buildReport: async () => {
+      builds += 1;
+      if (builds < 3) throw new Error("fetch failed");
+      return { summary: { status: "verified" }, expectedRevision: "candidate" };
+    },
+    sleep: async () => { sleeps += 1; }
+  });
+
+  assert.equal(result.summary.status, "verified");
+  assert.equal(builds, 3);
+  assert.equal(sleeps, 2);
+});

@@ -71,13 +71,13 @@
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     32,739 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~16,370 tok/turn  ·  cache 50%  ·  54 turns to compact       ║
+║     32,312 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~16,156 tok/turn  ·  cache 50%  ·  54 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         890/890 passing (2026-08-07)                   ║
+║  ⚠  Tests         890/890 passing (2026-08-07) · STALE — run no  ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║

@@ -29,6 +29,40 @@ async function openSettings(page) {
   await expect(page.locator("#settingsTab")).toHaveClass(/active/);
 }
 
+async function advanceWeekThroughPlan(page, timeoutMs = 150_000) {
+  const status = page.locator("#statusChip");
+  await page.locator("#advanceWeekBtn").click();
+  await page.waitForTimeout(50);
+  const deadline = Date.now() + timeoutMs;
+
+  while (Date.now() < deadline) {
+    if ((await status.textContent().catch(() => ""))?.includes("Ready")) return;
+
+    const decision = page.locator("#gmDecisionOptions .gm-decision-option").first();
+    if (await decision.isVisible().catch(() => false)) {
+      await decision.click();
+      continue;
+    }
+
+    const tacticSkip = page.locator("#halftimeAdjustModal .tactic-skip-btn");
+    if (await tacticSkip.isVisible().catch(() => false)) {
+      await tacticSkip.click();
+      continue;
+    }
+
+    const commit = page.locator("#commitArchitectPlanBtn");
+    if (await commit.isVisible().catch(() => false)) {
+      await commit.click();
+      continue;
+    }
+
+    await page.waitForTimeout(250);
+  }
+
+  const observed = (await status.textContent().catch(() => "unavailable"))?.trim();
+  throw new Error(`Advance-week plan did not settle within ${timeoutMs}ms (status: ${observed}).`);
+}
+
 // ── Coaching market ───────────────────────────────────────────────────────────
 
 test("the coaching market renders named candidates against a real staff budget", async ({ page }) => {
@@ -118,24 +152,13 @@ test("a rival's staff is visible but not editable", async ({ page }) => {
 // ── Press room ────────────────────────────────────────────────────────────────
 
 test("the podium opens after a game and answering it records a receipt", async ({ page }) => {
+  test.setTimeout(360_000);
   await startFranchise(page);
 
   // Advance until the controlled team has played and the room asks a question.
   const card = page.locator("#pressRoomCard");
   for (let week = 0; week < 4; week += 1) {
-    await page.locator("#advanceWeekBtn").click();
-
-    const decision = page.locator("#gmDecisionOptions .gm-decision-option").first();
-    if (await decision.isVisible({ timeout: 8_000 }).catch(() => false)) await decision.click();
-    const tactic = page.locator("#halftimeAdjustModal .tactic-option").first();
-    if (await tactic.isVisible({ timeout: 8_000 }).catch(() => false)) {
-      await tactic.click();
-      await page.locator("#halftimeAdjustModal .tactic-confirm-btn").click();
-    }
-    const commit = page.locator("#commitArchitectPlanBtn");
-    if (await commit.isVisible({ timeout: 8_000 }).catch(() => false)) await commit.click();
-
-    await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 120_000 });
+    await advanceWeekThroughPlan(page);
     if (await card.locator(".press-room-question").isVisible({ timeout: 3_000 }).catch(() => false)) break;
   }
 
