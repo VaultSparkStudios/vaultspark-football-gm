@@ -4,36 +4,36 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 74 complete and deployed at 397bc436372f42e0b8cd3b188b4b569c3895715c: deterministic Sim-Watch evidence, permanent Decision Archive, bounded public Co-GM packet, and side-effect-free CLI contracts; staging 11/11, production 8/8, CI green. Launch HOLD remains explicit.",
-  "nextMilestone": "Run a fresh live-code audit or resolve delivered reply-capable on-domain email / authoritative registry lifecycle.",
+  "currentFocus": "Session 75 complete and live at c71a26065bb355900a3544f5d08b150b8c3191f5: consented community receipts, privacy-bounded self-hosted aggregation, homepage Community Pulse, nine-category Stats Atlas and agent twin; staging 11/11, production/API/CI green. Launch HOLD remains explicit.",
+  "nextMilestone": "Observe the first real opted-in cohort without manufacturing activity, or reconcile email / SHA-bound founder launch approval / lifecycle authority when evidence arrives.",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
   "lastUpdated": "2026-08-08",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-08-06",
+  "truthAuditLastRun": "2026-08-08",
   "ignisScore": 42230,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-03",
   "testSuiteStatus": {
-    "totalTests": 890,
-    "pass": 890,
+    "totalTests": 905,
+    "pass": 905,
     "fail": 0,
-    "lastRun": "2026-08-06",
+    "lastRun": "2026-08-08",
     "newTestFiles": [
-      "test/co-gm-briefing.test.js",
-      "test/decision-archive.test.js",
-      "test/script-cli-smoke.test.js",
-      "test/visual-game-receipt.test.js"
+      "test/community-event-contract.test.js",
+      "test/community-aggregate.test.js",
+      "test/community-server.test.js",
+      "test/community-deploy-config.test.js"
     ],
     "newTestCount": 13,
-    "coverage": "Session 74 canonical aggregate Node 890/890 direct exit 0; Playwright 40/40; responsive evidence 140 captures; visual QA 32 hash-bound captures; browser boot 705078/710000 bytes with 0 lazy leaks; Pages build/smoke; 69 browser modules reachable.",
-    "uiSuiteNote": "Playwright 40/40 plus rendered pixels prove Decision Archive and Co-GM Briefing across dark/light desktop/mobile, with adjacent Guide, rivalry, Broadcast Final Reel, Trophy Road and Architect Cut states retained."
+    "coverage": "Session 75 canonical Node 905/905 direct exit 0; Playwright 40/40; eight hash-bound rendered captures; Pages build/smoke; stable staging 11/11; production/API health, DNS, TLS, CORS and cache proof.",
+    "uiSuiteNote": "Playwright 40/40 plus rendered-pixel inspection prove Community Pulse and Stats Atlas across dark/light desktop/mobile; CI independently captured responsive production artifact evidence."
   },
-  "testsPassing": 890,
-  "testsTotal": 890,
+  "testsPassing": 905,
+  "testsTotal": 905,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -72,23 +72,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 996,
+  "silScore": 998,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 100,
     "processQuality": 98,
-    "crossRepoCoherence": 99,
+    "crossRepoCoherence": 100,
     "securityPosture": 100,
-    "ecosystemIntegration": 99,
+    "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 74,
+  "currentSession": 75,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "npm test 890/890 direct exit 0; Playwright 40/40; responsive 140; visual QA 32; browser boot 705078/710000; 69 modules; Pages build/smoke; Doctor blockingFailing 0; security sanitizer/scan 0.",
+  "lastVerification": "npm test 905/905 direct exit 0; Playwright 40/40; visual QA 8; Pages build/smoke; staging 11/11; backend/production green; Doctor blockingFailing 0; security clean.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -100,7 +100,7 @@
   "sessionModeAutoShiftedAt": "2026-08-04T00:57:31.065Z",
   "planModeLastActivatedAt": "2026-06-07T17:52:36.774Z",
   "freeTierCostStatus": "cost-neutral",
-  "freeTierAuditDate": "2026-05-22",
+  "freeTierAuditDate": "2026-08-08",
   "freeTierAuditDoc": "vaultspark-studio-ops/docs/FREE_TIER_AUDIT_2026-05-22_PORTFOLIO.md",
   "estimatedMonthlyCostAt1000FreeUsers": 0,
   "freeTierAuditNote": "Session 75 refresh: browser-first game plus a bounded, cached community aggregate on the existing shared self-hosted server. No language model, email, paid analytics vendor, or per-user API spend; marginal cost remains zero within current fixed infrastructure capacity.",
@@ -114,7 +114,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 846,
+  "silHealth": 848,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -135,7 +135,7 @@
   },
   "complianceScore": 37,
   "complianceTotal": 37,
-  "sanitizationLastCleared": "2026-08-06",
+  "sanitizationLastCleared": "2026-08-08",
   "lastVerificationAt": "2026-08-08",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
@@ -143,19 +143,19 @@
   "entropyScore": 0.013,
   "entropyLastComputed": "2026-08-04",
   "lastSessionSummary": {
-    "session": 74,
+    "session": 75,
     "shipped": [
-      "Deterministic bounded Sim-Watch visual-game resolver",
-      "Permanent History Decision Archive over the existing anthology authority",
-      "Player-initiated bounded Co-GM public context packet",
-      "Side-effect-free help contracts for four Studio scripts",
-      "Overlap-aware component evidence framing across both themes and viewport classes"
+      "Explicit consented Community Stats receipt contract",
+      "Privacy-bounded self-hosted aggregate authority",
+      "Homepage Community Pulse and nine-category Stats Atlas",
+      "Local-only percentile comparison and agent snapshot twin",
+      "Shared-host-safe backend release plus exact staging/production proof"
     ],
-    "tests": "Node 890/890 · Playwright 40/40 local and CI rerun · responsive 140 · visual 32 · boot 705078/710000 · 69 modules · Pages build/smoke · Doctor 0 · security clean",
-    "deploy": "Staging 11/11 with rollback; direct main push and production 8/8 at 397bc436372f42e0b8cd3b188b4b569c3895715c / 134e903b4c60664059c07d2c3494d36b8417536bd351febfcc825860ebacbc86; GitHub Pages, backend image, brief-format and CI attempt 2 green.",
+    "tests": "Node 905/905 · Playwright 40/40 · visual 8 · Pages build/smoke · staging 11/11 · API/production/CI green · Doctor 0 · security clean",
+    "deploy": "Staging and production exact at c71a26065bb355900a3544f5d08b150b8c3191f5 / f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8; rollback available; backend run 31276918230 and Pages run 31276913656 green; API database ready and warming at zero participants.",
     "honestDeferrals": [
-      "Launch readiness remains held on delivered reply-capable email and authoritative lifecycle reconciliation.",
-      "No agent recommendation or hidden-save access was added to the Co-GM context packet."
+      "No adoption, retention, popularity or causality claim until a real consenting cohort exists.",
+      "Launch remains held on reply-capable email, SHA-bound founder launch approval and lifecycle authority."
     ]
   },
   "testingSurfaces": [
@@ -163,23 +163,23 @@
       "type": "local",
       "label": "Local game",
       "url": "http://127.0.0.1:3000/game.html",
-      "lastChecked": "2026-08-04"
+      "lastChecked": "2026-08-08"
     },
     {
       "type": "production",
       "label": "Public origin",
       "url": "https://playfranchisearchitect.com/",
-      "lastChecked": "2026-08-07"
+      "lastChecked": "2026-08-08"
     },
     {
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-08-07"
+      "lastChecked": "2026-08-08"
     }
   ],
-  "lastSession": 74,
-  "silLastSession": 74,
+  "lastSession": 75,
+  "silLastSession": 75,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",
@@ -192,21 +192,21 @@
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ],
-  "session": 74,
+  "session": 75,
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "7ef159219b34877f6bf367fdef4b561951951d4f2c8c8c37799d53837a0b21ef",
-    "checkedAt": "2026-08-08T01:18:05.145Z",
+    "receiptSha256": "dc4ac935aa092fbfef908a58a1cabb6b2d3a5f8ec3d910ef3fb7a18ff1a3f62b",
+    "checkedAt": "2026-08-08T20:06:40.401Z",
     "evidenceWindow": {
-      "observedAt": "2026-08-08T01:18:05.145Z",
+      "observedAt": "2026-08-08T20:06:40.401Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-08-09T01:18:05.145Z",
+      "expiresAt": "2026-08-09T20:06:40.401Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "397bc436372f42e0b8cd3b188b4b569c3895715c",
+    "deployedRevision": "b29779807cadb51c6eadbc4293d719755735a087",
     "routes": {
       "verified": true,
       "checked": 9
@@ -227,13 +227,13 @@
     },
     "exactRevision": {
       "verified": true,
-      "expected": "397bc436372f42e0b8cd3b188b4b569c3895715c"
+      "expected": "b29779807cadb51c6eadbc4293d719755735a087"
     },
     "independentStaging": {
       "verified": true
     },
     "founderApproval": {
-      "verified": true
+      "verified": false
     },
     "lifecycleAuthority": {
       "verified": false
@@ -242,37 +242,38 @@
     "launchReady": false,
     "blockerCodes": [
       "email-delivery-unverified",
+      "founder-approval-unverified",
       "lifecycle-authority-unverified"
     ]
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "59272eeab11d58af1e848cf0355b7c3948ab30a5e1e1b448079c42db15a532ad",
-    "sourceRevision": "397bc436372f42e0b8cd3b188b4b569c3895715c",
+    "receiptSha256": "123f69c79220177880706da16acb6352ab9da798f92c4147c542bfcd4f9eca48",
+    "sourceRevision": "b29779807cadb51c6eadbc4293d719755735a087",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "134e903b4c60664059c07d2c3494d36b8417536bd351febfcc825860ebacbc86",
-      "files": 177,
+      "digest": "f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8",
+      "files": 183,
       "exclusions": [
         "_health",
         "deploy-manifest.json"
       ]
     },
-    "deploymentId": "d9fe9ec5-9694-4e09-8ca7-8b8630392b35",
+    "deploymentId": "847ccc74-b160-453f-aafd-70c386e131f3",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 11,
       "checksTotal": 11,
-      "checkedAt": "2026-08-08T01:02:00.017Z"
+      "checkedAt": "2026-08-08T19:55:30.509Z"
     },
     "rollback": {
-      "previousDeploymentId": "426aaf1c-58b3-4ab5-a00e-803c59fa0fe8",
+      "previousDeploymentId": "969052a2-76a3-4892-9ef5-8f6267273213",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-08T01:02:00.017Z"
+    "observedAt": "2026-08-08T19:55:30.51Z"
   },
-  "lastCloseoutAt": "2026-08-08T01:28:00.000Z"
+  "lastCloseoutAt": "2026-08-08T20:15:00Z"
 }

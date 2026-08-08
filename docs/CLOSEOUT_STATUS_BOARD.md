@@ -1,48 +1,48 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-08 (Session 74 closeout) -->
+<!-- generated-at: 2026-08-08 (Session 75 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S74 ══════╗
-║  Date: 2026-08-08  ·  SIL: 996/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S75 ══════╗
+║  Date: 2026-08-08  ·  SIL: 998/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ The Session 74 audit is complete: three ranked items and fou  ║
-║  ✓ Sim-Watch visual evidence now finds a receipted game determi  ║
-║  ✓ History owns a permanent Decision Archive backed by the exis  ║
-║  ✓ Overview owns a player-initiated Co-GM packet with a fixed p  ║
-║  ✓ Four Studio scripts expose side-effect-free `--help` entry p  ║
+║  ✓ Community Stats is implemented and live on production, stabl  ║
+║  ✓ Collection is explicit opt-in. Only versioned, allowlisted,   ║
+║  ✓ The aggregate authority uses one-way participant keys, reque  ║
+║  ✓ Homepage Community Pulse and the full nine-category Stats At  ║
+║  ✓ Live state is honestly warming with zero participating brows  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 996/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 998/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
 ║    Process Qual       98   ██████████                            ║
-║    Coherence          99   ██████████                            ║
+║    Coherence          100  ██████████                            ║
 ║    Security           100  ██████████                            ║
-║    Ecosystem          99   ██████████                            ║
+║    Ecosystem          100  ██████████                            ║
 ║    Capital            100  ██████████                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
 ║  ✓ context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
-║  · context/PROJECT_STATUS.json                                   ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 10 files  ·  M:10 A:0 D:0 ?:0                          ║
-║  Ahead: 0  ·  Behind: 0                                          ║
+║  Changes: 16 files  ·  M:15 A:0 D:0 ?:1                          ║
+║  Ahead: 7  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         890/890 · STALE                                  ║
-║  IGNIS:         5d ago                                           ║
+║  Tests:         905/905 · STALE                                  ║
+║  IGNIS:         6d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  2d ago                                           ║
+║  Sanitization:  1d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

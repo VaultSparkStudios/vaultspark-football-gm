@@ -27,10 +27,10 @@
     "source": "founder-approved scope, current browser API seam, shared advance-week receipt authority, current PostgreSQL/Redis/Caddy compose, public privacy and metadata surfaces, and live Studio Canon 020/029/031/038/048/053/054"
   },
   "releaseGate": {
-    "verdict": "EXACT-CANDIDATE STAGING VERIFIED — PRODUCTION FOLLOW-THROUGH IN PROGRESS",
-    "tests": "Exact candidate 7821411e9c1b01b981bacaae57c85af02046a90e is verified on stable staging with 11/11 provenance checks and rollback. Local gates: community 11/11, focused boot/API/public 29/29, runtime 535/535, core 122/122, simulation contract 75/75, realism 1/1, Chromium UI 40/40, Pages build/smoke, CANON-053 8 captures, CANON-054 6/6, CANON-055 reached, footer/cost gates pass.",
+    "verdict": "IMPLEMENTED AND LIVE — PROJECT LAUNCH HOLD PRESERVED",
+    "tests": "Node 905/905; Playwright 40/40; Community focused 13/13; Pages build/smoke; CANON-053 8 captures/2 themes; CANON-054 6/6; stable staging 11/11; live API health/database/DNS/TLS/CORS/cache; production Pages browser/responsive/live-origin proof.",
     "doctor": "Startup reported no ABSOLUTE canon gaps; CANON-054 is an explicit product gap this sprint closes.",
-    "constraints": "No personal information, free text, raw save data, hidden ratings, advertising identifiers, fabricated users, silent collection, unbounded event storage, or unsupported causal/retention claims."
+    "constraints": "Production serves the exact code/artifact and the API is healthy, but project launch remains HOLD on reply-capable email, SHA-bound founder launch approval and authoritative lifecycle. No personal information, free text, save data, hidden ratings, synthetic users, silent collection or causal/adoption claim."
   },
   "gameLoopReview": {
     "loopTightness": 9,
@@ -414,7 +414,7 @@
           "recipe": "L2 plus automated freshness SLO monitoring, restore drill evidence and a post-release live-change canary receipt."
         }
       },
-      "executionEvidence": "Exact candidate 7821411e9c1b01b981bacaae57c85af02046a90e deployed to stable staging with active domain, exact artifact e3e9cf781585a9b84c1db745bcef3a2fa42bb801372e530b466c64f7aa4a8133, 11/11 provenance checks and rollback deployment eed5f3de-07e8-4235-a955-4f86bb456533. Local full runtime/core/simulation/UI gates, build/smoke, CORS/cache contracts, CANON-053 eight-capture proof, CANON-054 and CANON-055 pass. Production service/image follow-through remains an operational closeout step, not open implementation."
+      "executionEvidence": "Live release complete at c71a26065bb355900a3544f5d08b150b8c3191f5. Staging is 11/11 at artifact f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8 with rollback; backend workflow 31276918230 and Pages workflow 31276913656 are green. Public API health reports database ready; authoritative DNS/TLS, production/staging CORS, ETag/cache and honest warming snapshot verified. Node 905/905, Playwright 40/40 and eight hash-bound captures pass. Independent project launch gates remain open."
     }
   ],
   "secondOrderCandidates": [

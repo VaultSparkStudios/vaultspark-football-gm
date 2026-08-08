@@ -24,9 +24,9 @@ The audit sidecar `docs/AUDIT_2026-08-08_SESSION75.json` is the source of truth.
 
 - [x] `community-stats-release-proof`: focused tests, full shards, Pages build/smoke, CSP/CORS, service migration/deploy checks.
 - [x] Dark/light desktop/mobile browser captures for homepage, atlas and participation states; inspect and hash-bind `docs/visual-qa/LATEST.json`.
-- [ ] Exact-candidate staging, backend health/snapshot proof, production verification and rollback receipt.
+- [x] Exact-candidate staging, backend health/snapshot proof, production verification and rollback receipt.
 
 ## Wave 5 — Closeout
 
-- [ ] Mark all audit items with direct evidence; reconcile Task Board, Current State, decisions, truth audit, SIL, handoff and work log.
-- [ ] Run release/secret gates, commit the bounded scope, push `main`, monitor required workflows, and verify deployed truth.
+- [x] Mark all audit items with direct evidence; reconcile Task Board, Current State, decisions, truth audit, SIL, handoff and work log.
+- [x] Run release/secret gates, commit the bounded scope, push `main`, monitor required workflows, and verify deployed truth.

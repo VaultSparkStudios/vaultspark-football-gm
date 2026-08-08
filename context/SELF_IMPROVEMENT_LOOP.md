@@ -1,10 +1,29 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 72 closed at 997 / 1000 SIL v3.0. Five ranked items and two second-order innovations shipped in one continuous mission. League development now has a versioned fixed-band decade contract, long-run verification carries source and simulated finite-number receipts, browser fixtures declare seed and Hall policy, Hall settings round-trip, and the General Manager can read Ballot Watch plus a seven-room Roster Window Map. Verification: Node 857/857, Playwright 40/40, deterministic decade 3/3, responsive 89, visual QA 16, Pages build/smoke and 58 browser modules. Launch remains HOLD on delivered reply-capable email, SHA-bound founder approval and authoritative lifecycle.
+Rolling status: Session 75 closed at 998 / 1000 SIL v3.0. Five ranked items and three second-order innovations shipped: explicit consented receipts, privacy-bounded self-hosted aggregation, a live homepage pulse, a nine-category Stats Atlas, local-only comparison and a human/agent snapshot twin. Exact code and artifact identity are live on staging and production; the API is healthy and honestly warming at zero participants. Verification: Node 905/905, Playwright 40/40, eight inspected rendered captures, Pages build/smoke, staging 11/11, production/API proofs, Doctor zero blocking and security clean. Launch remains HOLD on email, SHA-bound founder launch approval and lifecycle authority.
 
-Previously — Session 71 closed at 995 / 1000 SIL v3.0 after six ranked items and four second-order innovations repaired the league-wide approximate-value scale, award eligibility, Hall scarcity and champion scoreline. Its measured +0.38 overall/year progression deferral is now closed by Session 72.
+Previously — Session 74 closed at 996 / 1000 after deterministic Sim-Watch evidence, Decision Archive, bounded Co-GM context and exact production follow-through.
 <!-- rolling-status-end -->
+## 2026-08-08 — Session 75 Community Intelligence
+
+SIL v3.0: **998 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 98, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+- **Dev Health: 100** — canonical Node 905/905, Playwright 40/40, Pages build/smoke, staging 11/11, production/API health, and Doctor zero blocking failures.
+- **Creative Alignment: 100** — the community surface celebrates franchise decisions, strategies, roster moves, drafts and rare feats without turning the game into surveillance or a generic analytics dashboard.
+- **Momentum: 100** — all five ranked items and all three viable second-order innovations shipped, deployed and verified in one mission.
+- **Engagement: 100** — players gain a live collective mirror and private local comparison while participation remains optional; no retention or popularity lift is claimed before a real cohort exists.
+- **Process Quality: 98** — rendered-pixel and live-host verification remained strict, but the inherited shared-host deployment required four fail-safe iterations to expose environment-file, private-registry and internal-network assumptions. Each failed before corrupting shared services and became a guarded regression contract.
+- **Cross-Repo Coherence: 100** — the shared host and Studio data boundary were respected; reusable patterns travel through Ark, not sibling writes.
+- **Security Posture: 100** — allowlists, clamps, one-way keys, deletion, retention, k-suppression, IP-free storage, rate limits, read-only containers and least-public network binding are tested.
+- **Ecosystem Integration: 100** — human surfaces, agent twin, deploy receipts, audit, status, task board, handoff and release truth converge on the same schema and exact revision.
+- **Capital Efficiency: 100** — existing fixed infrastructure, dependency-free UI, 60-second cache and no per-user/vendor/model spend preserve zero marginal cost within current capacity.
+- **Automation Coverage: 100** — extraction, redaction, parity, queues, aggregation, deletion, suppression, CORS, ETag, Compose/Caddy safety, static build, UI and visual states are executable gates.
+
+Committed SIL follow-ups:
+- [SIL] Treat empty and suppressed cohorts as first-class rendered states; never seed a public aggregate to avoid an honest zero.
+- [SIL] A Docker network marked internal cannot also be assumed to publish a host port; shared-host deploy tests must prove the proxy path, not only container health.
+- [SIL] Product telemetry fields enter through a versioned allowlist and deletion review, never through convenience logging.
 
 ## 2026-08-01 — Session 67 The Offseason Was a Facade
 

@@ -1,50 +1,49 @@
-# Session 74 Closeout — Durable Decisions and Co-GM Authority
+# Session 75 Closeout — Live Community Intelligence
 
 ## Where We Left Off
 
-- The Session 74 audit is complete: three ranked items and four second-order innovations shipped, with zero open audit/innovation implementation rows.
-- Sim-Watch visual evidence now finds a receipted game deterministically through at most eight real league advances and publishes diagnostics if it cannot; no result is fabricated or reconstructed.
-- History owns a permanent Decision Archive backed by the existing cross-season anthology authority.
-- Overview owns a player-initiated Co-GM packet with a fixed public allowlist, exact current command/pressure/thesis, and at most three bounded receipts. It can be copied as JSON or downloaded locally and never reads hidden save state.
-- Four Studio scripts expose side-effect-free `--help` entry points covered through the repository safe-spawn seam.
-- Component evidence hides only unrelated fixed/sticky chrome that geometrically overlaps its target; full-page evidence retains the actual application chrome.
-- Verification is green: Node 890/890, Playwright 40/40, responsive 140, visual QA 32 hash-bound captures, Pages build/smoke, browser reachability 69, first-decision boot 705,078/710,000 with zero lazy leaks, Doctor `blockingFailing: 0`, and security sanitizer/scan clean.
-- Exact-SHA staging/production and rollback are proven. Release follow-through then exposed two gate races: the podium journey could miss late weekly-plan modals, and staging authority reads/provenance probes aborted on thrown transient fetches. Both now retry within explicit bounds without replaying mutations and are regression-covered.
-
-## Session Intent
-
-**Achieved.** The founder requested `/arc`, then `/closeout`, a direct commit and push to `main`, and full deployment. All audit/innovation work shipped; exact-revision staging, direct-main promotion, production provenance, and CI are complete.
+- Community Stats is implemented and live on production, stable staging, and the self-hosted API.
+- Collection is explicit opt-in. Only versioned, allowlisted, contract-derived receipts leave the browser; local comparisons remain useful with participation off.
+- The aggregate authority uses one-way participant keys, request/contribution clamps, deduplication, deletion, 30-day raw retention, IP-free application storage, k=5 suppression, percentiles, deterministic insights, ETag caching and stale fallback.
+- Homepage Community Pulse and the full nine-category Stats Atlas use the same public snapshot. The JSON twin, agents.json, llms.txt, sitemap, privacy, terms and methodology agree.
+- Live state is honestly warming with zero participating browsers. No synthetic production rows were inserted.
+- Code c71a26065bb355900a3544f5d08b150b8c3191f5 and artifact f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8 are exact on production and staging; staging passed 11/11 with rollback. Backend workflow 31276918230 and Pages workflow 31276913656 are green.
+- Verification: Node 905/905, Playwright 40/40, Community focused 13/13, Pages build/smoke, eight inspected hash-bound rendered captures, CANON-054 6/6, Doctor zero blocking findings, and secret scan clean.
 
 ## Decisions That Must Survive
 
-- Deterministic evidence may advance the real bounded runtime, but it may not invent a fixture or silently retry without a receipt.
-- Decision Archive reuses Decision Anthology. The permanent history view does not become a second persistence or causal authority.
-- Co-GM context is explicit and user-initiated. Its public allowlist is a security/product contract; new fields require deliberate review.
-- Screenshot machinery may suppress only unrelated overlapping chrome for component framing. It must preserve target descendants/ancestors and leave full-page captures untouched.
-- A successful code deployment does not clear contact-email or lifecycle launch gates.
+- participating anonymous browsers is the denominator. Never relabel it all users, players, installs, or accounts.
+- A warming/suppressed/stale/unavailable state is product truth, not a gap to fill with synthetic activity.
+- New receipt fields require explicit allowlist, bounded-value, privacy, runtime-parity and deletion review. No free text or raw save state.
+- The public JSON snapshot is the only external community-data authority. Analytica may receive aggregates later, never raw receipts by default.
+- On the shared host, Postgres stays on an internal Docker network; only the stats app also joins an edge bridge and binds loopback for the existing system Caddy. The project never owns host ports 80/443.
 
 ## Honest Holds
 
-- Launch remains HOLD on delivered and reply-capable `football@playfranchisearchitect.com` email.
-- Registry SPARKED/local FORGE reconciliation remains sibling-owned; the local Doctor warning stays visible.
-- The founder's explicit deployment approval is bound to `397bc436372f42e0b8cd3b188b4b569c3895715c` in the structured release receipt.
-- The repository-wide browser backup warning seen in tests is an environmental fixture-storage warning, not a failed assertion; no data-loss claim is inferred from it.
+- Project launch remains HOLD on delivered and reply-capable football@playfranchisearchitect.com evidence.
+- Founder launch approval is not inferred from feature implementation and must be SHA-bound.
+- Registry SPARKED/local FORGE reconciliation remains authoritative outside this public repository.
+- Studio responsive-audit helper skipped because Playwright was unavailable in the sibling script context; local Playwright, CI responsive evidence, and eight inspected project captures are green and are not misreported as that helper passing.
+- Reusable consent/privacy/shared-host/ETag guidance shipped through Studio Ark receipt `01JVHJJ0OK763CB3B3B46AC56A`.
+- Closeout autopilot lock binding is incorrect when invoked from a project repository; the verified mechanization defect was reported to Studio Ops through Ark receipt `01JVHMP3I27103901164DA9D12`, and closeout was completed with the equivalent project-local checks.
+- Creative direction was reviewed and captured in public-safe Decisions; the intentionally absent private Creative Direction Record was not created in this public repository.
 
 ## Next Best Work
 
-Begin a fresh live-code audit unless email or lifecycle authority resolves. Do not infer launch readiness from the healthy exact-SHA deployment.
+Watch the first real consenting cohort. Confirm freshness and suppression behavior, but do not optimize categories or make adoption claims until real evidence exists. If launch authority arrives, reconcile it through the existing structured release contract.
 
 ## Key Files
 
-- `scripts/lib/visual-game-receipt.mjs`
-- `scripts/responsive-evidence.mjs`
-- `public/lib/decisionArchive.js`
-- `public/lib/coGmBriefing.js`
-- `public/lib/tabHistory.js`
-- `public/lib/tabOverview.js`
-- `test/visual-game-receipt.test.js`
-- `test/decision-archive.test.js`
-- `test/co-gm-briefing.test.js`
-- `test/script-cli-smoke.test.js`
-- `docs/AUDIT_2026-08-06_SESSION74.json`
-- `docs/visual-qa/LATEST.json`
+- public/lib/communityTelemetry.js
+- public/lib/communityEventContract.js
+- src/community/server.js
+- src/community/communityStore.js
+- src/community/aggregateCommunitySnapshot.js
+- public/community-stats.js
+- public/stats.html
+- public/stats-surface.json
+- docs/COMMUNITY_STATS.md
+- docs/AUDIT_2026-08-08_SESSION75.json
+- docs/visual-qa/LATEST.json
+- ops/deploy-backend.docker-compose.yml
+- .github/workflows/deploy-backend.yml

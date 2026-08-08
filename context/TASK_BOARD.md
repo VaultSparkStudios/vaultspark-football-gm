@@ -4,15 +4,26 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Now
 
-- [ ] Run a fresh live-code audit; Session 72's ranked list and second-order innovation pack are exhausted.
-- [ ] Reconcile any newly arrived launch-authority evidence without weakening the three-gate AND contract
-  (reply-capable email, SHA-bound founder approval, authoritative lifecycle).
+- [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
+- [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
 
 ## Next
 
-- [ ] Evaluate multi-seed and per-position progression parity only if a fresh measurement shows the single-seed
-  decade contract is insufficient.
-- [ ] Re-rank dynasty-almanac share cards, broadcast-mode sim-watch and trophy-road onboarding against live code.
+- [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
+- [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+
+## Session 75 — Community intelligence implemented (2026-08-08)
+
+| Item | Status |
+|------|--------|
+| Versioned consented receipt contract, local-only ledger, bounded offline queue and deletion | ✅ Done |
+| Self-hosted PostgreSQL aggregation, retention, k=5 suppression, percentiles, ETag snapshot and health | ✅ Done |
+| Homepage Community Pulse plus full nine-category Stats Atlas and local comparison | ✅ Done |
+| Machine-readable stats twin, sitemap/agents/LLM/legal/methodology truth | ✅ Done |
+| Eight inspected dark/light desktop/mobile captures and hash-bound visual receipt | ✅ Done |
+| Stable staging 11/11, live API, production Pages, CI and rollback verification at c71a26065bb355900a3544f5d08b150b8c3191f5 | ✅ Done |
+
+**Verification:** Node 905/905 · Playwright 40/40 · Community focused 13/13 · Pages build/smoke · CANON-053 8 captures/2 themes · CANON-054 6/6 · Doctor 0 blocking · staged secret scan 0.
 
 ## Session 70 — Full-scope audit executed (2026-08-04)
 

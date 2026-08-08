@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-08-08",
+  "session": 75,
+  "project": "franchise-architect-football",
+  "intent": "Implement the complete live Community Stats plan, verify exact staging/production/API truth, and close out durably.",
+  "intentStatus": "achieved",
+  "rubric": "community intelligence, engagement, privacy, rendered-pixel and release audit",
+  "sourceAudit": "docs/AUDIT_2026-08-08_SESSION75.json",
+  "rankedItems": 5,
+  "itemsShipped": 5,
+  "itemsDeferred": 0,
+  "secondOrderShipped": 3,
+  "rejectedCandidates": 6,
+  "geniusList": {
+    "open": 0,
+    "closed": 5,
+    "exhausted": true
+  },
+  "verification": {
+    "node": "905/905, direct exit 0",
+    "playwright": "40/40, direct exit 0",
+    "responsive": "CI production responsive artifact evidence green; sibling responsive-audit helper skipped (playwright-missing)",
+    "visual": "8 hash-bound dark/light desktop/mobile captures inspected, 0 blocking defects",
+    "pages": "build, smoke, publish and live-origin proof green",
+    "staging": "11/11 exact revision/artifact with rollback",
+    "backend": "health/database/DNS/TLS/CORS/cache green",
+    "doctorBlockingFailing": 0,
+    "security": "staged secret scan 0; package supply-chain scan clean"
+  },
+  "sil": {
+    "version": "3.0",
+    "score": 998,
+    "max": 1000
+  },
+  "release": {
+    "verdict": "HOLD",
+    "candidateRevision": "c71a26065bb355900a3544f5d08b150b8c3191f5",
+    "stagingRevision": "c71a26065bb355900a3544f5d08b150b8c3191f5",
+    "productionRevision": "c71a26065bb355900a3544f5d08b150b8c3191f5",
+    "artifactFingerprint": "f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8",
+    "api": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
+    "stagingProvenance": "11/11 with rollback",
+    "githubActions": "CI, backend deploy and Pages production release green",
+    "independentGatesOpen": [
+      "email-delivery-unverified",
+      "founder-approval-unverified",
+      "lifecycle-authority-unverified"
+    ]
+  },
+  "cost": "One exact pg dependency was trust-gated; existing fixed self-hosted infrastructure, cached snapshots and dependency-free UI keep marginal cost at zero within current capacity.",
+  "arkReceipt": "01JVHJJ0OK763CB3B3B46AC56A",
+  "arkMechanizationReceipt": "01JVHMP3I27103901164DA9D12"
+}

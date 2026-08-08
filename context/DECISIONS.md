@@ -2,6 +2,31 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+   = @"
+## 2026-08-08 - Community evidence is consented, bounded and aggregate-first
+
+**Decision:** Network participation is off by default and reversible. Receipts are created only from successful versioned API contracts, use a fixed allowlist and bounded values, and exclude personal information, free text, save payloads, hidden ratings, player identities, IP storage and advertising identifiers. Public claims name participating anonymous browsers as the denominator.
+
+**Rationale:** A browser-first game has no defensible census of every user. Useful aggregate intelligence does not require identity or full-save custody, and an honest denominator is more valuable than a larger invented one.
+
+---
+
+## 2026-08-08 - Warming and small-cohort suppression are designed states
+
+**Decision:** Production is never seeded with synthetic community activity. Zero participants renders warming; cohorts below five remain suppressed; stale, partial and unavailable data remain explicitly labeled.
+
+**Rationale:** Vanity counters would destroy the evidence loop at launch. The interface must make uncertainty legible instead of hiding it.
+
+---
+
+## 2026-08-08 - One public snapshot serves humans and agents
+
+**Decision:** The homepage pulse, Stats Atlas, local percentile comparison and agent twin consume one cached public snapshot authority. Deterministic interpretations may describe it; language models and raw-event access are not required.
+
+**Rationale:** One schema prevents headline/atlas/agent drift, makes caching cheap, and keeps every statement replayable from bounded aggregate evidence.
+
+---
+
 ## 2026-08-01 - A falsy default may never stand in for an absent field when zero is meaningful
 
 **Decision:** Where zero is a legal, meaningful value, defaults use `??`, not `||`. `normalizeContract` used `Number(contract.yearsRemaining || 1)` while clamping to a floor of `0` on the same line — the clamp declared zero legal and the default made it unreachable.

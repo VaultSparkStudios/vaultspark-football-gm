@@ -2,8 +2,19 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-04
+Last reviewed: 2026-08-08
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-08-08 - Session 75 community truth updates
+
+- **Community means participating anonymous browsers, not all users.** Participation is explicit opt-in and reversible; the live cohort begins at zero and no census, install, account or adoption claim is inferred.
+- **Receipts are narrower than saves.** Only versioned allowlisted facts derived from successful contracts can leave the browser. Personal information, names, free text, raw saves, player identities, hidden ratings, IP storage and advertising identifiers are excluded.
+- **Small cohorts remain private.** Category leaders and rare feats are suppressed below k=5; 24h/7d/30d measures include sample size, computed time, period, unit and interpretation.
+- **The live zero is real.** Production snapshot status is warming, sample size is 0, latest receipt is null, and the interface says so. No synthetic production receipt was inserted.
+- **One authority drives every representation.** Homepage Pulse, Stats Atlas and machine-readable twin use the same ETag snapshot. Local percentile comparison reads only a private browser ledger and uploads nothing extra.
+- **Deployment truth is exact.** Staging 11/11 and production serve code c71a26065bb355900a3544f5d08b150b8c3191f5 with artifact f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8; the self-hosted API database is ready through Cloudflare with validated CORS/cache behavior. Backend run 31276918230 and Pages run 31276913656 are green.
+- **Launch truth remains separate.** Healthy Community Stats does not clear reply-capable email, SHA-bound founder launch approval or authoritative lifecycle gates. Status remains public-unlaunched/HOLD.
+
 
 ## 2026-08-04 - Session 70 truth updates
 

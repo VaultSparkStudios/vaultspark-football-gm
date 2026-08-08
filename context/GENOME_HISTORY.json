@@ -222,6 +222,23 @@
       },
       "delta": 0,
       "cause": "Session 74 implementation complete: deterministic Sim-Watch evidence, permanent Decision Archive, bounded public Co-GM p"
+    },
+    {
+      "date": "2026-08-08",
+      "session": 75,
+      "total": 0,
+      "maxTotal": 25,
+      "overallStatus": "green",
+      "lastReviewed": "2026-08-08",
+      "dimensions": {
+        "schema_alignment": 0,
+        "prompt_template_alignment": 0,
+        "derived_view_freshness": 0,
+        "handoff_continuity": 0,
+        "contradiction_density": 0
+      },
+      "delta": 0,
+      "cause": "Session 75 complete and live at c71a26065bb355900a3544f5d08b150b8c3191f5: consented community receipts, privacy-bounded "
     }
   ]
 }

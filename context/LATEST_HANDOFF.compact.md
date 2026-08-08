@@ -1,52 +1,50 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 7a6a18c60c52 -->
-<!-- generated-at: 2026-08-08T05:04:42.444Z -->
+<!-- source-hash: 440487378871 -->
+<!-- generated-at: 2026-08-08T21:57:05.973Z -->
 
 # LATEST_HANDOFF (compact)
 
-# Session 74 Handoff Summary
+SESSION 75 HANDOFF SUMMARY
 
-## Session
-- Number: 74
-- Intent: /arc then /closeout, direct commit/push to main, full deploy. ACHIEVED.
+Session
+- Session 75. Live Community Intelligence.
 
-## Shipped
-- Sim-Watch deterministic game receipt: advances real runtime up to 8 league steps, publishes diagnostics if not found, never fabricates results.
-- History Decision Archive (reuses existing Decision Anthology authority).
-- Overview Co-GM briefing packet: user-initiated, fixed public allowlist, bounded receipts (max 3), JSON copy/download, no hidden save-state reads.
-- Four Studio scripts with side-effect-free --help via safe-spawn seam.
-- Component evidence suppresses only unrelated overlapping chrome; full-page captures untouched.
-- Fixed two release gate races (podium late-modal miss; staging authority/provenance transient-fetch aborts) with bounded retries, no mutation replay, regression-covered.
+Shipped
+- Community Stats live on production, staging, and self-hosted API.
+- Explicit opt-in collection; only versioned, allowlisted, contract-derived receipts leave browser; local comparisons work with participation off.
+- Aggregate authority: one-way participant keys, request/contribution clamps, dedup, deletion, 30-day raw retention, IP-free storage, k=5 suppression, percentiles, deterministic insights, ETag caching, stale fallback.
+- Homepage Community Pulse + nine-category Stats Atlas use same public snapshot; JSON twin, agents.json, llms.txt, sitemap, privacy, terms, methodology all agree.
+- Verified: Node 905/905, Playwright 40/40, Community 13/13, Pages build/smoke, 8 hash-bound captures, CANON-054 6/6, Doctor clean, secret scan clean.
+- Code SHA c71a260, artifact f9a6db0 exact on prod+staging; staging 11/11 with rollback. Backend + Pages workflows green.
 
-## Verification (green)
-- Node 890/890, Playwright 40/40, responsive 140, visual QA 32, Pages build/smoke, reachability 69, first-decision boot 705,078/710,000 zero leaks, Doctor blockingFailing 0, security clean.
-- Exact-SHA staging/prod + rollback proven.
+Current Intent
+- Watch first real consenting cohort. Confirm freshness and suppression behavior. Do not optimize categories or make adoption claims without real evidence. If launch authority arrives, reconcile via existing structured release contract.
 
-## Durable Decisions
-- Deterministic evidence may advance bounded runtime but never invent fixtures or silently retry without receipt.
-- Decision Archive is a view, not a second persistence/causal authority.
-- Co-GM allowlist is a security/product contract; new fields need deliberate review.
-- Screenshot suppression: only unrelated overlapping chrome; preserve target ancestors/descendants; full-page untouched.
-- Code deploy does NOT clear contact-email or lifecycle launch gates.
+Now Bucket
+- Observe first real participating cohort; verify freshness/suppression on live data.
+- Hold on synthetic data; warming/suppressed/stale/unavailable is product truth.
+- Preserve denominator label: participating anonymous browsers only. Never relabel.
 
-## Now Bucket
-1. Start fresh live-code audit unless email/lifecycle authority resolves.
-2. Do not infer launch readiness from healthy exact-SHA deployment.
-3. Monitor gate-race regression coverage stays green.
+Blockers
+- Zero participating browsers; live state warming, no production evidence yet.
+- Studio responsive-audit helper skipped (Playwright unavailable in sibling script context); local + CI evidence green, not misreported.
+- Registry SPARKED/local FORGE reconciliation authoritative outside this public repo.
 
-## Blockers / Human-Blocked
-- Launch HOLD on delivered, reply-capable football@playfranchisearchitect.com email (human-blocked, unresolved).
-- Registry SPARKED / local FORGE reconciliation sibling-owned; local Doctor warning stays visible.
-- Deploy approval bound to SHA 397bc436372f42e0b8cd3b188b4b569c3895715c.
+Human-Blocked
+- Project launch HOLD pending delivered and reply-capable football@playfranchisearchitect.com evidence (open, Session 75).
+- Founder launch approval not inferred from implementation; must be SHA-bound (open, Session 75).
 
-## Notes
-- Repo-wide browser backup warning is environmental fixture-storage, not a failed assertion; no data-loss inference.
+Constraints
+- New receipt fields require allowlist, bounded-value, privacy, runtime-parity, deletion review. No free text or raw save state.
+- Public JSON snapshot is sole external community-data authority. Analytica may get aggregates later, never raw receipts by default.
+- Shared host: Postgres on internal Docker network; stats app also joins edge bridge, binds loopback for system Caddy. Never own host ports 80/443.
+- Reusable consent/privacy/shared-host/ETag guidance in Studio Ark receipt 01JVHJJ0OK763CB3B3B46AC56A.
 
-## Key Files
-- scripts/lib/visual-game-receipt.mjs
-- public/lib/decisionArchive.js
-- public/lib/coGmBriefing.js
-- public/lib/tabHistory.js, tabOverview.js
-- docs/AUDIT_2026-08-06_SESSION74.json
+Key Files
+- public/lib/communityTelemetry.js, communityEventContract.js
+- src/community/server.js, communityStore.js, aggregateCommunitySnapshot.js
+- public/community-stats.js, stats.html, stats-surface.json
+- docs/COMMUNITY_STATS.md, AUDIT_2026-08-08_SESSION75.json
+- ops/deploy-backend.docker-compose.yml, .github/workflows/deploy-backend.yml
 
-Next session: begin fresh live-code audit; do not treat healthy deploy as launch readiness.
+Next session: Monitor first real opt-in cohort for freshness/suppression correctness; hold all launch and adoption claims until evidence and SHA-bound authority exist.

@@ -1,10 +1,10 @@
 {
   "vectorVersion": "1.0",
   "generatedAt": "2026-08-08",
-  "generatedAtMs": 1786159034867,
-  "session": 74,
-  "vectorHash": "3eddb27b7b5e0f0c",
-  "silTotal": 996,
+  "generatedAtMs": 1786222406256,
+  "session": 75,
+  "vectorHash": "d79e2f265a0c57d7",
+  "silTotal": 998,
   "silAvg3": null,
   "velocity": null,
   "debt": null,
@@ -14,12 +14,12 @@
   "openNext": 2,
   "openBlocked": 0,
   "topNow": [
-    "Run a fresh live-code audit; Session 72's ranked list and second-order innovatio",
-    "Reconcile any newly arrived launch-authority evidence without weakening the thre"
+    "Observe the first real opted-in cohort and verify freshness, suppression, deleti",
+    "Reconcile launch authority only from delivered/reply-as email evidence, SHA-boun"
   ],
   "topNext": [
-    "Evaluate multi-seed and per-position progression parity only if a fresh measurem",
-    "Re-rank dynasty-almanac share cards, broadcast-mode sim-watch and trophy-road on"
+    "Evaluate historical sparklines and shareable aggregate cards only after a real c",
+    "Offer aggregate-only Analytica ingestion through Studio Ark when that authority "
   ],
   "health": "green",
   "truthStatus": "green",
@@ -31,10 +31,10 @@
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "Run a fresh live-code audit or resolve delivered reply-capable on-domain email / authoritative registry lifecycle.",
-  "currentFocus": "Session 74 complete and deployed at 397bc436372f42e0b8cd3b188b4b569c3895715c: deterministic Sim-Watch evidence, permanent Decision Archive, bounded public Co-GM packet, and side-effect-free CLI contracts; staging 11/11, production 8/8, CI green. Launch HOLD remains explicit.",
+  "nextMilestone": "Observe the first real opted-in cohort without manufacturing activity, or reconcile email / SHA-bound founder launch approval / lifecycle authority when evidence arrives.",
+  "currentFocus": "Session 75 complete and live at c71a26065bb355900a3544f5d08b150b8c3191f5: consented community receipts, privacy-bounded self-hosted aggregation, homepage Community Pulse, nine-category Stats Atlas and agent twin; staging 11/11, production/API/CI green. Launch HOLD remains explicit.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ]
 }
