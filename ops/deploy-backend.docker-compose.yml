@@ -1,88 +1,56 @@
-version: "3.9"
+name: franchise-architect-football-community
 
 services:
-  caddy:
-    image: caddy:2
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./ops/Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-    depends_on:
-      - franchise-architect-football-play
-      - franchise-architect-football-api
-      - franchise-architect-football-community-stats
-
   postgres:
     image: postgres:16
+    container_name: franchise-architect-community-postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: studio_admin
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in the deploy-path .env}
+      POSTGRES_DB: community_stats
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U studio_admin -d community_stats"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    networks:
+      - community_internal
 
-  redis:
-    image: redis:7
-    restart: unless-stopped
-    command: ["redis-server", "--appendonly", "yes"]
-    volumes:
-      - redis_data:/data
-
-  franchise-architect-football-play:
-    image: ghcr.io/vaultsparkstudios/franchise-architect-football-play:latest
-    restart: unless-stopped
-    environment:
-      NODE_ENV: production
-      PORT: 8080
-      DOMAIN: vaultsparkstudios.com
-      GAME_SLUG: franchise-architect-football
-      GAME_PUBLIC_ORIGIN: https://playfranchisearchitect.com/
-      GAME_SERVICE_ORIGIN: https://play-franchise-architect-football.vaultsparkstudios.com
-      API_ORIGIN: https://api-franchise-architect-football.vaultsparkstudios.com
-      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL via deployment secrets}
-      REDIS_URL: redis://redis:6379
-    depends_on:
-      - postgres
-      - redis
-
-  franchise-architect-football-api:
-    image: ghcr.io/vaultsparkstudios/franchise-architect-football-api:latest
-    restart: unless-stopped
-    environment:
-      NODE_ENV: production
-      PORT: 8081
-      DOMAIN: vaultsparkstudios.com
-      GAME_SLUG: franchise-architect-football
-      APP_ORIGIN: https://playfranchisearchitect.com/
-      GAME_SERVICE_ORIGIN: https://play-franchise-architect-football.vaultsparkstudios.com
-      API_ORIGIN: https://api-franchise-architect-football.vaultsparkstudios.com
-      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL via deployment secrets}
-      REDIS_URL: redis://redis:6379
-    depends_on:
-      - postgres
-      - redis
-
-  franchise-architect-football-community-stats:
-    image: ghcr.io/vaultsparkstudios/franchise-architect-football-api:latest
+  community-stats:
+    image: ghcr.io/vaultsparkstudios/franchise-architect-football-api:${IMAGE_TAG:-latest}
+    container_name: franchise-architect-community-stats
     command: ["node", "src/community/server.js"]
     restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    ports:
+      - "127.0.0.1:8082:8082"
     environment:
       NODE_ENV: production
       PORT: 8082
-      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL via deployment secrets}
+      DATABASE_URL: postgresql://studio_admin:${POSTGRES_PASSWORD}@postgres:5432/community_stats
       COMMUNITY_KEY_PATH: /var/lib/community-stats/pepper
       COMMUNITY_ALLOWED_ORIGINS: https://playfranchisearchitect.com,https://staging.playfranchisearchitect.com
     volumes:
       - community_stats_keys:/var/lib/community-stats
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+    networks:
+      - community_internal
+
+networks:
+  community_internal:
+    internal: true
+
 volumes:
-  caddy_data:
-  caddy_config:
   postgres_data:
-  redis_data:
   community_stats_keys:

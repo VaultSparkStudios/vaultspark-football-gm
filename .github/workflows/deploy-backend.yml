@@ -103,17 +103,27 @@ jobs:
           target: ${{ secrets.BACKEND_DEPLOY_PATH }}
           overwrite: true
 
-      - name: Deploy updated containers
+      - name: Deploy updated containers and shared-host route
         uses: appleboy/ssh-action@v1.2.0
         env:
           DEPLOY_PATH: ${{ secrets.BACKEND_DEPLOY_PATH }}
+          DEPLOY_SHA: ${{ github.sha }}
         with:
           host: ${{ secrets.BACKEND_SSH_HOST }}
           username: ${{ secrets.BACKEND_SSH_USER }}
           key: ${{ secrets.BACKEND_SSH_KEY }}
-          envs: DEPLOY_PATH
+          envs: DEPLOY_PATH,DEPLOY_SHA
           script: |
-            set -e
+            set -euo pipefail
             cd "$DEPLOY_PATH"
-            docker compose -f deploy-backend.docker-compose.yml pull
-            docker compose -f deploy-backend.docker-compose.yml up -d
+            if [ ! -f .env ]; then
+              umask 077
+              printf 'POSTGRES_PASSWORD=%s\n' "$(openssl rand -hex 32)" > .env
+            fi
+            export IMAGE_TAG="$DEPLOY_SHA"
+            docker compose -f ops/deploy-backend.docker-compose.yml pull
+            docker compose -f ops/deploy-backend.docker-compose.yml up -d
+            install -m 0644 ops/Caddyfile /etc/caddy/conf.d/franchise-architect-football.caddy
+            caddy validate --config /etc/caddy/Caddyfile
+            systemctl reload caddy
+            curl --fail --silent --show-error --retry 15 --retry-delay 2 http://127.0.0.1:8082/community/v1/health

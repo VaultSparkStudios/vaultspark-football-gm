@@ -45,6 +45,6 @@ The extractor contract can add another allowlisted category without changing tra
 
 ## Operations and rollback
 
-The service reuses the existing self-hosted PostgreSQL, Caddy, container registry, and deployment host. It has a separate process, schema, port, route, cache, and pepper volume. This adds no analytics vendor and no per-view database query.
+The service reuses the existing shared deployment host, system Caddy, and container registry. A project-private PostgreSQL container and internal Docker network keep custody isolated; only the stats process is published, and only on `127.0.0.1:8082`. A guarded per-site snippet joins the shared Caddy plane. This adds no analytics vendor and no per-view database query.
 
-Startup idempotently creates schema version 1. Rollback is to route `/community/*` away from the service and stop its container; browser play remains unaffected and queues stay bounded locally. The PostgreSQL schema and pepper volume should be retained through rollback so participation deletion and later recovery remain possible.
+Startup idempotently creates schema version 1. Rollback is to remove the per-site Caddy snippet (after validation), reload Caddy, and stop the stats container; browser play remains unaffected and queues stay bounded locally. The PostgreSQL schema and pepper volume should be retained through rollback so participation deletion and later recovery remain possible.

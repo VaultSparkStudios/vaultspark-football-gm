@@ -158,6 +158,7 @@ export const SHARDS = {
     "test/browser-promise-observability.test.js",
     "test/capability-operations-authority.test.js",
     "test/closeout-board-truth.test.js",
+    "test/community-deploy-config.test.js",
     "test/context-meter-authority.test.js",
     "test/edge-security-policy.test.js",
     "test/edge-style-hash.test.js",

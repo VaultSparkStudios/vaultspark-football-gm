@@ -1,17 +1,21 @@
-{
-	email __TLS_EMAIL__
-}
-
-play-franchise-architect-football.vaultsparkstudios.com {
-	reverse_proxy franchise-architect-football-play:8080
-}
-
 api-franchise-architect-football.vaultsparkstudios.com {
-	@community path /community/*
-	handle @community {
-		reverse_proxy franchise-architect-football-community-stats:8082
-	}
-	handle {
-		reverse_proxy franchise-architect-football-api:8081
-	}
+  encode zstd gzip
+
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    X-Frame-Options "DENY"
+  }
+
+  @community path /community/*
+  handle @community {
+    reverse_proxy 127.0.0.1:8082 {
+      health_uri /community/v1/health
+      health_interval 30s
+      health_timeout 5s
+    }
+  }
+
+  respond 404
 }
