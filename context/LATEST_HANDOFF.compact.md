@@ -12,11 +12,11 @@
 
 - Node 890/890; Playwright 40/40; responsive 140/140; Pages build/smoke.
 - Browser reachability 69; boot 705,078/710,000 bytes; zero lazy leaks.
-- Doctor blockingFailing 0; security sanitizer clean; staged secret scan required before commit.
+- Staging 11/11 with rollback; production 8/8 provenance and 9/9 routes at `397bc436372f42e0b8cd3b188b4b569c3895715c` / `134e903b4c60664059c07d2c3494d36b8417536bd351febfcc825860ebacbc86`.
+- GitHub Pages, backend image, brief-format, and CI attempt 2 green. Attempt 1's single 90-second UI timeout did not reproduce.
 
-## Release / Holds
+## Holds
 
-- Founder authorized exact-SHA staging, direct push to `main`, and production deployment; release train follows this writeback.
 - Launch remains HOLD on reply-capable `football@playfranchisearchitect.com` and registry SPARKED/local FORGE reconciliation.
 
-Next: bind candidate SHA to stable staging, push `main`, verify production provenance, then start a fresh audit.
+Next: start a fresh live-code audit or resolve one of the two independent launch holds.

@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 74 implementation complete: deterministic Sim-Watch evidence, permanent Decision Archive, bounded public Co-GM packet, and side-effect-free CLI contracts. Three primary and four second-order items shipped; exact-SHA release train in progress and launch HOLD remains explicit.",
-  "nextMilestone": "Complete exact-SHA staging and production verification, then run a fresh live-code audit or resolve delivered reply-capable email / authoritative registry lifecycle.",
+  "currentFocus": "Session 74 complete and deployed at 397bc436372f42e0b8cd3b188b4b569c3895715c: deterministic Sim-Watch evidence, permanent Decision Archive, bounded public Co-GM packet, and side-effect-free CLI contracts; staging 11/11, production 8/8, CI green. Launch HOLD remains explicit.",
+  "nextMilestone": "Run a fresh live-code audit or resolve delivered reply-capable on-domain email / authoritative registry lifecycle.",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified and lifecycle-authority-unverified; deployment approval is explicit and will be exact-SHA bound during promotion."
+    "Launch HOLD — email-delivery-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-07",
+  "lastUpdated": "2026-08-08",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -121,7 +121,7 @@
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-07",
+    "date": "2026-08-08",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -136,7 +136,7 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-08-06",
-  "lastVerificationAt": "2026-08-06",
+  "lastVerificationAt": "2026-08-08",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
@@ -151,8 +151,8 @@
       "Side-effect-free help contracts for four Studio scripts",
       "Overlap-aware component evidence framing across both themes and viewport classes"
     ],
-    "tests": "Node 890/890 · Playwright 40/40 · responsive 140 · visual 32 · boot 705078/710000 · 69 modules · Pages build/smoke · Doctor 0 · security clean",
-    "deploy": "Founder authorized exact-revision staging, direct-main push and full deployment; release train in progress.",
+    "tests": "Node 890/890 · Playwright 40/40 local and CI rerun · responsive 140 · visual 32 · boot 705078/710000 · 69 modules · Pages build/smoke · Doctor 0 · security clean",
+    "deploy": "Staging 11/11 with rollback; direct main push and production 8/8 at 397bc436372f42e0b8cd3b188b4b569c3895715c / 134e903b4c60664059c07d2c3494d36b8417536bd351febfcc825860ebacbc86; GitHub Pages, backend image, brief-format and CI attempt 2 green.",
     "honestDeferrals": [
       "Launch readiness remains held on delivered reply-capable email and authoritative lifecycle reconciliation.",
       "No agent recommendation or hidden-save access was added to the Co-GM context packet."
@@ -169,13 +169,13 @@
       "type": "production",
       "label": "Public origin",
       "url": "https://playfranchisearchitect.com/",
-      "lastChecked": "2026-08-04"
+      "lastChecked": "2026-08-07"
     },
     {
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-08-04"
+      "lastChecked": "2026-08-07"
     }
   ],
   "lastSession": 74,
@@ -197,16 +197,16 @@
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "7c68e6c88651f3f4df5264b44076f4a6ea98fb0c5ab6f875b2ce77d658a3981f",
-    "checkedAt": "2026-08-04T07:16:00.494Z",
+    "receiptSha256": "7ef159219b34877f6bf367fdef4b561951951d4f2c8c8c37799d53837a0b21ef",
+    "checkedAt": "2026-08-08T01:18:05.145Z",
     "evidenceWindow": {
-      "observedAt": "2026-08-04T07:16:00.494Z",
+      "observedAt": "2026-08-08T01:18:05.145Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-08-05T07:16:00.494Z",
+      "expiresAt": "2026-08-09T01:18:05.145Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "870382c1dc17d80460c0bffdc83db41591d50f0e",
+    "deployedRevision": "397bc436372f42e0b8cd3b188b4b569c3895715c",
     "routes": {
       "verified": true,
       "checked": 9
@@ -227,13 +227,13 @@
     },
     "exactRevision": {
       "verified": true,
-      "expected": "870382c1dc17d80460c0bffdc83db41591d50f0e"
+      "expected": "397bc436372f42e0b8cd3b188b4b569c3895715c"
     },
     "independentStaging": {
       "verified": true
     },
     "founderApproval": {
-      "verified": false
+      "verified": true
     },
     "lifecycleAuthority": {
       "verified": false
@@ -242,38 +242,37 @@
     "launchReady": false,
     "blockerCodes": [
       "email-delivery-unverified",
-      "founder-approval-unverified",
       "lifecycle-authority-unverified"
     ]
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "fa1c725a86a904f209716661d8fdc7b0f59f0c73fe524e77a27fad3c38acb93a",
-    "sourceRevision": "870382c1dc17d80460c0bffdc83db41591d50f0e",
+    "receiptSha256": "59272eeab11d58af1e848cf0355b7c3948ab30a5e1e1b448079c42db15a532ad",
+    "sourceRevision": "397bc436372f42e0b8cd3b188b4b569c3895715c",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "6427290f11af548c193f2e866f7e9c065839dc6a41f1e20cbc4eed6951946163",
-      "files": 162,
+      "digest": "134e903b4c60664059c07d2c3494d36b8417536bd351febfcc825860ebacbc86",
+      "files": 177,
       "exclusions": [
         "_health",
         "deploy-manifest.json"
       ]
     },
-    "deploymentId": "166af0c2-fa57-48f9-8e62-2c886f747f93",
+    "deploymentId": "d9fe9ec5-9694-4e09-8ca7-8b8630392b35",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 11,
       "checksTotal": 11,
-      "checkedAt": "2026-08-04T07:08:50.139Z"
+      "checkedAt": "2026-08-08T01:02:00.017Z"
     },
     "rollback": {
-      "previousDeploymentId": "48db0777-292e-4d3d-87a7-a090a88cf55a",
+      "previousDeploymentId": "426aaf1c-58b3-4ab5-a00e-803c59fa0fe8",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-04T07:08:50.14Z"
+    "observedAt": "2026-08-08T01:02:00.017Z"
   },
-  "lastCloseoutAt": "2026-08-06T03:37:37.007Z"
+  "lastCloseoutAt": "2026-08-08T01:28:00.000Z"
 }

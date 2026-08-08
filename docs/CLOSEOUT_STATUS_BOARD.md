@@ -1,11 +1,11 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-07 (Session 74 closeout) -->
+<!-- generated-at: 2026-08-08 (Session 74 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
 ╔══ SESSION CLOSEOUT · Franchise Architect: Football · S74 ══════╗
-║  Date: 2026-08-07  ·  SIL: 996/1000  ·  Velocity: —              ║
+║  Date: 2026-08-08  ·  SIL: 996/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -41,7 +41,7 @@
 ║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 74 files  ·  M:29 A:0 D:0 ?:45                         ║
+║  Changes: 12 files  ·  M:12 A:0 D:0 ?:0                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝

@@ -9,11 +9,11 @@
 - Four Studio scripts expose side-effect-free `--help` entry points covered through the repository safe-spawn seam.
 - Component evidence hides only unrelated fixed/sticky chrome that geometrically overlaps its target; full-page evidence retains the actual application chrome.
 - Verification is green: Node 890/890, Playwright 40/40, responsive 140, visual QA 32 hash-bound captures, Pages build/smoke, browser reachability 69, first-decision boot 705,078/710,000 with zero lazy leaks, Doctor `blockingFailing: 0`, and security sanitizer/scan clean.
-- Exact-SHA staging, direct-main push, and production verification are the remaining authorized release-train steps for this closeout.
+- Exact-SHA release completed: staging 11/11 with rollback, direct `main` push, GitHub Pages/backend/brief/CI green, and production 8/8 at `397bc436372f42e0b8cd3b188b4b569c3895715c` / `134e903b4c60664059c07d2c3494d36b8417536bd351febfcc825860ebacbc86`.
 
 ## Session Intent
 
-**Implementation achieved; release train in progress.** The founder requested `/arc`, then `/closeout`, a direct commit and push to `main`, and full deployment. The arc implementation and all local release gates are complete. The exact-revision staging/promotion steps follow this durable writeback.
+**Achieved.** The founder requested `/arc`, then `/closeout`, a direct commit and push to `main`, and full deployment. All audit/innovation work shipped; exact-revision staging, direct-main promotion, production provenance, and CI are complete.
 
 ## Decisions That Must Survive
 
@@ -27,12 +27,12 @@
 
 - Launch remains HOLD on delivered and reply-capable `football@playfranchisearchitect.com` email.
 - Registry SPARKED/local FORGE reconciliation remains sibling-owned; the local Doctor warning stays visible.
-- The founder explicitly authorized this direct-main deployment in the Session 74 request; that authority will be bound to the exact promoted SHA in release verification.
+- The founder's explicit deployment approval is bound to `397bc436372f42e0b8cd3b188b4b569c3895715c` in the structured release receipt.
 - The repository-wide browser backup warning seen in tests is an environmental fixture-storage warning, not a failed assertion; no data-loss claim is inferred from it.
 
 ## Next Best Work
 
-Complete the exact-SHA staging and production train. Afterward, begin a fresh live-code audit unless email or lifecycle authority resolves. Do not infer launch readiness from a healthy deploy.
+Begin a fresh live-code audit unless email or lifecycle authority resolves. Do not infer launch readiness from the healthy exact-SHA deployment.
 
 ## Key Files
 

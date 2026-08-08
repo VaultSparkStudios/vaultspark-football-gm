@@ -4,7 +4,7 @@
   "session": 74,
   "project": "franchise-architect-football",
   "intent": "Run the complete autonomous arc, exhaust the ranked audit and viable second-order work, close out durably, commit and push directly to main, and fully deploy through exact-revision staging and production verification.",
-  "intentStatus": "implementation-achieved-release-in-progress",
+  "intentStatus": "achieved",
   "rubric": "product-depth and infrastructure-weighted public game audit",
   "sourceAudit": "docs/AUDIT_2026-08-06_SESSION74.json",
   "rankedItems": 3,
@@ -36,13 +36,17 @@
   "release": {
     "verdict": "HOLD",
     "deploymentAuthorized": true,
-    "candidateRevision": null,
-    "stagingRevision": null,
-    "productionRevision": null,
+    "candidateRevision": "397bc436372f42e0b8cd3b188b4b569c3895715c",
+    "stagingRevision": "397bc436372f42e0b8cd3b188b4b569c3895715c",
+    "productionRevision": "397bc436372f42e0b8cd3b188b4b569c3895715c",
     "independentGatesOpen": [
       "email-delivery-unverified",
       "lifecycle-authority-unverified"
-    ]
+    ],
+    "artifactFingerprint": "134e903b4c60664059c07d2c3494d36b8417536bd351febfcc825860ebacbc86",
+    "stagingProvenance": "11/11 with rollback",
+    "productionProvenance": "8/8; 9/9 routes; edge policy applied",
+    "githubActions": "Pages, backend, brief-format, and CI attempt 2 green"
   },
   "cost": "No dependency, paid service, backend, external model, or variable-cost runtime added; the static deployment remains cost-neutral."
 }

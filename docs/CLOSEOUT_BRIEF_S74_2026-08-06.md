@@ -12,7 +12,6 @@
 
 ## Follow-ups
 
-- **Exact-SHA release train**: Deploy the committed candidate to stable staging, verify provenance, push main, and verify production at the identical revision.
 - **Fresh live-code audit**: The S74 audit and innovation queues are exhausted at zero open; re-measure before selecting the next work.
 
 ## Blockers
@@ -25,10 +24,11 @@
 - **Aggregate gate corrected**: The first aggregate exposed an unsafe raw child-process import and a missing machine-readable second-order ledger; both were fixed before the 890/890 replay.
 - **Pixels over geometry**: Green component geometry still rendered beneath mobile chrome; visual inspection found it and the evidence harness was narrowed and recaptured.
 - **Deployment is not launch**: The founder authorized this deploy, but green production cannot prove email delivery or reconcile lifecycle authority.
+- **CI timeout classified by replay**: Attempt 1 timed out once in an existing podium journey; a failed-job-only rerun passed 40/40, so no unjustified source patch was made.
 
 ## Proof
 
 - Files changed: 67
 - Insertions: 710
 - Deletions: 246
-- Suite: Node 890/890; Playwright 40/40; responsive 140/140; visual QA 32; Pages build/smoke; 69 modules; boot 705078/710000; Doctor 0; security clean
+- Suite: Node 890/890; Playwright 40/40 local + CI rerun; responsive 140/140; visual QA 32; Pages build/smoke; staging 11/11; production 8/8 + 9/9 routes; all GitHub workflows green
