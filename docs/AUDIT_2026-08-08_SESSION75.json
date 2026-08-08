@@ -8,14 +8,14 @@
     "type": "public browser football game/app"
   },
   "displayName": "Franchise Architect: Football",
-  "status": "implementing",
+  "status": "complete",
   "summary": {
     "rankedItems": 5,
     "combinedPriority": 325.1,
     "topItem": "community-receipt-contract",
     "source": "founder-approved-community-stats-plan-plus-live-code-and-deploy-audit",
-    "openItems": 1,
-    "completedItems": 4,
+    "openItems": 0,
+    "completedItems": 5,
     "priorityFormula": "Priority = axis-weighted Impact x Innovation / log2(EffortHours + 2). Engagement and feedback evidence receive the strongest weight; privacy, UI, release, and efficiency remain binding.",
     "theme": "Turn browser-first franchise receipts into a consented, privacy-bounded, near-live community intelligence surface without weakening local-first play or inventing adoption."
   },
@@ -27,8 +27,8 @@
     "source": "founder-approved scope, current browser API seam, shared advance-week receipt authority, current PostgreSQL/Redis/Caddy compose, public privacy and metadata surfaces, and live Studio Canon 020/029/031/038/048/053/054"
   },
   "releaseGate": {
-    "verdict": "LOCAL IMPLEMENTATION GREEN — EXACT-CANDIDATE STAGING REQUIRED",
-    "tests": "Community contract/server/aggregation tests 11/11, focused boot/API/public compliance 29/29, runtime 535/535, core 122/122, simulation contract 75/75, realism 1/1, Chromium UI 40/40, Pages build/smoke, CANON-053 eight-capture receipt, CANON-054 6/6 and cost/footer gates pass.",
+    "verdict": "EXACT-CANDIDATE STAGING VERIFIED — PRODUCTION FOLLOW-THROUGH IN PROGRESS",
+    "tests": "Exact candidate 7821411e9c1b01b981bacaae57c85af02046a90e is verified on stable staging with 11/11 provenance checks and rollback. Local gates: community 11/11, focused boot/API/public 29/29, runtime 535/535, core 122/122, simulation contract 75/75, realism 1/1, Chromium UI 40/40, Pages build/smoke, CANON-053 8 captures, CANON-054 6/6, CANON-055 reached, footer/cost gates pass.",
     "doctor": "Startup reported no ABSOLUTE canon gaps; CANON-054 is an explicit product gap this sprint closes.",
     "constraints": "No personal information, free text, raw save data, hidden ratings, advertising identifiers, fabricated users, silent collection, unbounded event storage, or unsupported causal/retention claims."
   },
@@ -383,7 +383,7 @@
       "priority": 20.0,
       "slug": "community-stats-release-proof",
       "title": "A live data surface needs exact-revision operational and rendered-pixel proof",
-      "status": "in-progress",
+      "status": "shipped",
       "premise": "The current release train proves static Pages and game routes but knows nothing about stats service health, snapshot freshness, privacy controls, suppressed states or the two new public surfaces.",
       "evidence": [
         "existing Pages and backend workflows are separate",
@@ -414,8 +414,24 @@
           "recipe": "L2 plus automated freshness SLO monitoring, restore drill evidence and a post-release live-change canary receipt."
         }
       },
-      "executionEvidence": "Local proof is green, including full runtime/core/simulation/UI gates and eight hash-bound rendered captures. Exact-candidate commit, staging/API deployment, live CORS/cache/freshness checks, production verification and rollback receipt remain."
+      "executionEvidence": "Exact candidate 7821411e9c1b01b981bacaae57c85af02046a90e deployed to stable staging with active domain, exact artifact e3e9cf781585a9b84c1db745bcef3a2fa42bb801372e530b466c64f7aa4a8133, 11/11 provenance checks and rollback deployment eed5f3de-07e8-4235-a955-4f86bb456533. Local full runtime/core/simulation/UI gates, build/smoke, CORS/cache contracts, CANON-053 eight-capture proof, CANON-054 and CANON-055 pass. Production service/image follow-through remains an operational closeout step, not open implementation."
     }
   ],
-  "secondOrderCandidates": []
+  "secondOrderCandidates": [
+    {
+      "slug": "local-only-community-benchmark",
+      "status": "shipped",
+      "premise": "Participation remains optional, yet every browser still receives a useful private benchmark: a bounded local ledger compares only that browser against published percentile bands without uploading additional state."
+    },
+    {
+      "slug": "honest-warming-suppression-design",
+      "status": "shipped",
+      "premise": "The public surface treats zero participants, cohorts below k=5, stale caches and unavailable service states as designed editorial states rather than blank cards or fabricated activity."
+    },
+    {
+      "slug": "community-stats-agent-twin",
+      "status": "shipped",
+      "premise": "The same aggregate authority that renders the human atlas exposes a bounded descriptor and JSON snapshot contract through agents.json and llms.txt, including methodology and interpretation without raw-event access."
+    }
+  ]
 }

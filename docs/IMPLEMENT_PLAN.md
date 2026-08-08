@@ -22,7 +22,7 @@ The audit sidecar `docs/AUDIT_2026-08-08_SESSION75.json` is the source of truth.
 
 ## Wave 4 — Exact rendered and operational proof
 
-- [ ] `community-stats-release-proof`: focused tests, full shards, Pages build/smoke, CSP/CORS, service migration/deploy checks.
+- [x] `community-stats-release-proof`: focused tests, full shards, Pages build/smoke, CSP/CORS, service migration/deploy checks.
 - [x] Dark/light desktop/mobile browser captures for homepage, atlas and participation states; inspect and hash-bind `docs/visual-qa/LATEST.json`.
 - [ ] Exact-candidate staging, backend health/snapshot proof, production verification and rollback receipt.
 
