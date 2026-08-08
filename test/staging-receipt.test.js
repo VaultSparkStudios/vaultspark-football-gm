@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { buildStagingReceiptReport } from "../scripts/verify-staging-receipt.mjs";
-import { buildStagingAuthorityReceipt, ensureStagingDns, resolveStagingZoneId, selectDeployment, STAGING_DOMAIN, STAGING_PROJECT, waitForStagingProvenance } from "../scripts/deploy-staging.mjs";
+import { buildStagingAuthorityReceipt, ensureStagingDns, resolveStagingZoneId, selectDeployment, STAGING_DOMAIN, STAGING_PROJECT, waitForStagingProvenance, withCloudflareReadRetries } from "../scripts/deploy-staging.mjs";
 
 const baseUrl = "https://staging.example.test/preview/";
 const expected = {
@@ -168,4 +168,22 @@ test("stable staging provenance retries transient probe failures", async () => {
   assert.equal(result.summary.status, "verified");
   assert.equal(builds, 3);
   assert.equal(sleeps, 2);
+});
+test("Cloudflare authority reads retry transient failures without replaying mutations", async () => {
+  let reads = 0;
+  let mutations = 0;
+  const client = withCloudflareReadRetries(async (_action, _apiPath, init = {}) => {
+    if (String(init.method || "GET").toUpperCase() !== "GET") {
+      mutations += 1;
+      throw new Error("mutation failed");
+    }
+    reads += 1;
+    if (reads < 3) throw new Error("fetch failed");
+    return { ok: true };
+  }, { attempts: 3, delayMs: 1, sleep: async () => {} });
+
+  assert.deepEqual(await client("read", "/resource"), { ok: true });
+  assert.equal(reads, 3);
+  await assert.rejects(() => client("write", "/resource", { method: "POST" }), /mutation failed/);
+  assert.equal(mutations, 1);
 });

@@ -9,7 +9,7 @@
 - Four Studio scripts expose side-effect-free `--help` entry points covered through the repository safe-spawn seam.
 - Component evidence hides only unrelated fixed/sticky chrome that geometrically overlaps its target; full-page evidence retains the actual application chrome.
 - Verification is green: Node 890/890, Playwright 40/40, responsive 140, visual QA 32 hash-bound captures, Pages build/smoke, browser reachability 69, first-decision boot 705,078/710,000 with zero lazy leaks, Doctor `blockingFailing: 0`, and security sanitizer/scan clean.
-- Exact-SHA staging/production and rollback are proven. Release follow-through then exposed two gate races: the podium journey could miss late weekly-plan modals, and staging convergence aborted on thrown transient fetches. Both are now bounded, fail-closed, and regression-covered.
+- Exact-SHA staging/production and rollback are proven. Release follow-through then exposed two gate races: the podium journey could miss late weekly-plan modals, and staging authority reads/provenance probes aborted on thrown transient fetches. Both now retry within explicit bounds without replaying mutations and are regression-covered.
 
 ## Session Intent
 

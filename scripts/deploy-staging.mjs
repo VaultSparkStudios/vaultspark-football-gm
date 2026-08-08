@@ -126,16 +126,42 @@ export async function ensureStagingDns(cfDns, zoneId) {
   return assertOk(written, record ? "update staging DNS" : "create staging DNS").body.result;
 }
 
+export async function retryTransientRead(operation, {
+  attempts = 4,
+  delayMs = 750,
+  sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+} = {}) {
+  let lastError = null;
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    try {
+      return await operation();
+    } catch (error) {
+      lastError = error;
+      if (attempt + 1 < attempts) await sleep(delayMs);
+    }
+  }
+  throw lastError;
+}
+
+export function withCloudflareReadRetries(cfDeploy, options = {}) {
+  return (action, apiPath, init = {}) => {
+    const method = String(init?.method || "GET").toUpperCase();
+    if (method !== "GET") return cfDeploy(action, apiPath, init);
+    return retryTransientRead(() => cfDeploy(action, apiPath, init), options);
+  };
+}
+
 export async function inspectStaging({ root = process.cwd() } = {}) {
   const { cfDeploy, cfAccountId, withPagesDeployEnv } = await loadCloudflarePlane(root);
+  const reliableCfDeploy = withCloudflareReadRetries(cfDeploy);
   const accountId = await cfAccountId();
   const auth = await withPagesDeployEnv("franchise-staging-wrangler-auth", (deployEnv) => {
     const { command, prefix } = wranglerInvocation();
     return spawnSync(command, [...prefix, "whoami"], { cwd: root, env: { ...process.env, ...deployEnv }, encoding: "utf8", windowsHide: true });
   });
   if (auth.status !== 0) throw new Error(`Wrangler authentication failed (${auth.status}): ${auth.error?.message || String(auth.stderr || auth.stdout || "").trim() || "unknown error"}`);
-  const project = await projectState(cfDeploy, accountId);
-  const domain = project.ok ? await cfDeploy("franchise-staging-domain-inspect", `/accounts/${accountId}/pages/projects/${STAGING_PROJECT}/domains/${STAGING_DOMAIN}`) : null;
+  const project = await projectState(reliableCfDeploy, accountId);
+  const domain = project.ok ? await reliableCfDeploy("franchise-staging-domain-inspect", `/accounts/${accountId}/pages/projects/${STAGING_PROJECT}/domains/${STAGING_DOMAIN}`) : null;
   return { authenticated: true, accountIdPresent: Boolean(accountId), projectExists: project.ok, domainStatus: domain?.body?.result?.status || null, stableUrl: STAGING_URL };
 }
 
@@ -174,8 +200,9 @@ export async function deployStaging({ root = process.cwd(), sourceRevision } = {
   if (head !== sourceRevision) throw new Error(`Candidate revision ${sourceRevision} is not current HEAD ${head}.`);
 
   const { cfDeploy, cfAccountId, withPagesDeployEnv } = await loadCloudflarePlane(root);
+  const reliableCfDeploy = withCloudflareReadRetries(cfDeploy);
   const accountId = await cfAccountId();
-  await ensureProject(cfDeploy, accountId);
+  await ensureProject(reliableCfDeploy, accountId);
 
   run(process.execPath, ["scripts/build-pages.mjs"], { cwd: root, env: { ...process.env, SOURCE_REVISION: sourceRevision } });
   const manifest = JSON.parse(fs.readFileSync(path.join(root, "static", "deploy-manifest.json"), "utf8"));
@@ -186,19 +213,19 @@ export async function deployStaging({ root = process.cwd(), sourceRevision } = {
     return run(command, [...prefix, "pages", "deploy", "static", `--project-name=${STAGING_PROJECT}`, `--branch=${STAGING_BRANCH}`, `--commit-hash=${sourceRevision}`, "--commit-message=verified staging candidate", "--commit-dirty=false"], { cwd: root, env: { ...process.env, ...deployEnv } });
   });
 
-  await ensureDomain(cfDeploy, accountId);
-  const zoneId = await resolveStagingZoneId(cfDeploy);
+  await ensureDomain(reliableCfDeploy, accountId);
+  const zoneId = await resolveStagingZoneId(reliableCfDeploy);
   await ensureStagingDns(
-    (apiPath, init) => cfDeploy("franchise-staging-dns-authority", apiPath, init),
+    (apiPath, init) => reliableCfDeploy("franchise-staging-dns-authority", apiPath, init),
     zoneId
   );
-  let domainState = await readDomain(cfDeploy, accountId);
+  let domainState = await readDomain(reliableCfDeploy, accountId);
   for (let attempt = 0; attempt < 48 && String(domainState?.status).toLowerCase() !== "active"; attempt += 1) {
     await new Promise((resolve) => setTimeout(resolve, 2500));
-    domainState = await readDomain(cfDeploy, accountId);
+    domainState = await readDomain(reliableCfDeploy, accountId);
   }
 
-  const deploymentsResult = await cfDeploy("franchise-staging-deployments-list", `/accounts/${accountId}/pages/projects/${STAGING_PROJECT}/deployments?per_page=25`);
+  const deploymentsResult = await reliableCfDeploy("franchise-staging-deployments-list", `/accounts/${accountId}/pages/projects/${STAGING_PROJECT}/deployments?per_page=25`);
   const deployments = assertOk(deploymentsResult, "list Pages deployments").body.result;
   const deployment = selectDeployment(deployments, sourceRevision);
   const previousDeployment = (deployments || []).find((entry) => entry?.id && entry.id !== deployment?.id) || null;

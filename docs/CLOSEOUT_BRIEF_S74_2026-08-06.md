@@ -25,7 +25,7 @@
 - **Pixels over geometry**: Green component geometry still rendered beneath mobile chrome; visual inspection found it and the evidence harness was narrowed and recaptured.
 - **Deployment is not launch**: The founder authorized this deploy, but green production cannot prove email delivery or reconcile lifecycle authority.
 - **CI race classified by reproduction**: A later receipt-only CI run reproduced the podium timeout, proving the one-shot visibility probe was racy; the journey now drains late weekly-plan gates through a bounded state machine.
-- **Staging convergence survives transient fetches**: Exact uploads landed while a probe threw fetch failed; the bounded convergence loop now retries thrown probe errors and remains fail-closed on exhaustion.
+- **Staging convergence survives transient fetches**: Exact uploads landed while post-upload reads threw fetch failed; read-only Cloudflare authority calls and provenance probes now retry within bounds, mutations remain one-shot, and exhaustion stays fail-closed.
 
 ## Proof
 

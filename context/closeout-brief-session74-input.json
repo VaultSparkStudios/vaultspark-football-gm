@@ -69,7 +69,7 @@
       "title": "CI race classified by reproduction"
     },
     {
-      "evidence": "Exact uploads landed while a probe threw fetch failed; the bounded convergence loop now retries thrown probe errors and remains fail-closed on exhaustion.",
+      "evidence": "Exact uploads landed while post-upload reads threw fetch failed; read-only Cloudflare authority calls and provenance probes now retry within bounds, mutations remain one-shot, and exhaustion stays fail-closed.",
       "title": "Staging convergence survives transient fetches"
     }
   ],
