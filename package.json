@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "node src/server.js",
     "start": "node src/server.js",
+    "start:community": "node src/community/server.js",
     "cli": "node src/index.js",
     "build:pages": "node scripts/build-pages.mjs",
     "check:browser-modules": "node scripts/check-browser-module-reachability.mjs",
@@ -35,5 +36,8 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@playwright/test": "^1.62.1"
+  },
+  "dependencies": {
+    "pg": "8.22.0"
   }
 }

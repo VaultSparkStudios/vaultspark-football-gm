@@ -16,7 +16,9 @@ const requiredFiles = [
   "../public/_health",
   "../public/favicon.ico",
   "../public/.well-known/llms.txt",
-  "../public/sitemap.xml"
+  "../public/sitemap.xml",
+  "../public/stats.html",
+  "../public/stats-surface.json"
 ];
 
 test("public Pages bundle has contact, legal, sitemap, and agent metadata sources", () => {
@@ -83,7 +85,8 @@ const themedStaticPages = [
   "../public/contact.html",
   "../public/privacy.html",
   "../public/terms.html",
-  "../public/landing.html"
+  "../public/landing.html",
+  "../public/stats.html"
 ];
 
 test("themeBoot is a dependency-free classic script honoring the shared theme key", () => {

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0",
+  "session": 75,
+  "generatedAt": "2026-08-08T06:30:39.986Z",
+  "source": "mocked eligible aggregate from the production snapshot schema; no synthetic rows enter production",
+  "status": "PASS",
+  "errors": [],
+  "captures": [
+    {
+      "file": "docs/visual-qa/s75-desktop-homepage-dark.png",
+      "sha256": "7dc451111095b7755fc31e062454098a729a5c9a89b29e026610c063dfba2b84",
+      "theme": "dark",
+      "viewport": "desktop",
+      "surface": "homepage",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "docs/visual-qa/s75-desktop-stats-atlas-dark.png",
+      "sha256": "291c851876ec240f572ce51a40b700114ab901655516e60f04b4924838a83df7",
+      "theme": "dark",
+      "viewport": "desktop",
+      "surface": "stats-atlas",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "docs/visual-qa/s75-mobile-homepage-dark.png",
+      "sha256": "790a1dba0984b3ab900df81c551e516fad9721faa410a613d598a11cd5703d8a",
+      "theme": "dark",
+      "viewport": "mobile",
+      "surface": "homepage",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "docs/visual-qa/s75-mobile-stats-atlas-dark.png",
+      "sha256": "d61ed5124aefdaab8a1027c7e02bd926758b792359985cde5f2cdf891839f25d",
+      "theme": "dark",
+      "viewport": "mobile",
+      "surface": "stats-atlas",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "docs/visual-qa/s75-desktop-homepage-light.png",
+      "sha256": "50424fa69d7e003d03f927ae939465725041e92c59ce33beb05d2b62322c80eb",
+      "theme": "light",
+      "viewport": "desktop",
+      "surface": "homepage",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "docs/visual-qa/s75-desktop-stats-atlas-light.png",
+      "sha256": "b2dad887cb617ca8b7cf93582250f266cf4fa0b6b6e5d12d9aaab03786b0990a",
+      "theme": "light",
+      "viewport": "desktop",
+      "surface": "stats-atlas",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "file": "docs/visual-qa/s75-mobile-homepage-light.png",
+      "sha256": "4b6cf9ce8906712ded5bfb8961c30996cc5280f9027df2fd76e68e78951fa0c1",
+      "theme": "light",
+      "viewport": "mobile",
+      "surface": "homepage",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "file": "docs/visual-qa/s75-mobile-stats-atlas-light.png",
+      "sha256": "db1cd1714720f0eb78915a81989fc0932e79579d52b8294d3c0b1252b593f06b",
+      "theme": "light",
+      "viewport": "mobile",
+      "surface": "stats-atlas",
+      "width": 390,
+      "height": 844
+    }
+  ]
+}

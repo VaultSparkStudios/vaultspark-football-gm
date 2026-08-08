@@ -1,22 +1,52 @@
-# Session 74 Compact Handoff
+<!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
+<!-- source-hash: 7a6a18c60c52 -->
+<!-- generated-at: 2026-08-08T05:04:42.444Z -->
+
+# LATEST_HANDOFF (compact)
+
+# Session 74 Handoff Summary
+
+## Session
+- Number: 74
+- Intent: /arc then /closeout, direct commit/push to main, full deploy. ACHIEVED.
 
 ## Shipped
+- Sim-Watch deterministic game receipt: advances real runtime up to 8 league steps, publishes diagnostics if not found, never fabricates results.
+- History Decision Archive (reuses existing Decision Anthology authority).
+- Overview Co-GM briefing packet: user-initiated, fixed public allowlist, bounded receipts (max 3), JSON copy/download, no hidden save-state reads.
+- Four Studio scripts with side-effect-free --help via safe-spawn seam.
+- Component evidence suppresses only unrelated overlapping chrome; full-page captures untouched.
+- Fixed two release gate races (podium late-modal miss; staging authority/provenance transient-fetch aborts) with bounded retries, no mutation replay, regression-covered.
 
-- Deterministic bounded Sim-Watch visual-game resolution with diagnostic exhaustion.
-- Permanent History Decision Archive over the existing non-causal anthology authority.
-- Player-initiated Co-GM JSON/download packet with a fixed public allowlist and at most three receipts.
-- Side-effect-free `--help` contracts for four Studio scripts through safe-spawn.
-- 32 inspected dark/light desktop/mobile captures; overlap-aware component evidence framing.
+## Verification (green)
+- Node 890/890, Playwright 40/40, responsive 140, visual QA 32, Pages build/smoke, reachability 69, first-decision boot 705,078/710,000 zero leaks, Doctor blockingFailing 0, security clean.
+- Exact-SHA staging/prod + rollback proven.
 
-## Proof
+## Durable Decisions
+- Deterministic evidence may advance bounded runtime but never invent fixtures or silently retry without receipt.
+- Decision Archive is a view, not a second persistence/causal authority.
+- Co-GM allowlist is a security/product contract; new fields need deliberate review.
+- Screenshot suppression: only unrelated overlapping chrome; preserve target ancestors/descendants; full-page untouched.
+- Code deploy does NOT clear contact-email or lifecycle launch gates.
 
-- Node 890/890; Playwright 40/40; responsive 140/140; Pages build/smoke.
-- Browser reachability 69; boot 705,078/710,000 bytes; zero lazy leaks.
-- Staging 11/11 with rollback; production 8/8 provenance and 9/9 routes at `397bc436372f42e0b8cd3b188b4b569c3895715c` / `134e903b4c60664059c07d2c3494d36b8417536bd351febfcc825860ebacbc86`.
-- Release follow-through reproduced the podium timeout and root-fixed its one-shot modal probe with a bounded state-machine drain. Staging read-only authority calls and provenance probes now retry within declared bounds without replaying mutations.
+## Now Bucket
+1. Start fresh live-code audit unless email/lifecycle authority resolves.
+2. Do not infer launch readiness from healthy exact-SHA deployment.
+3. Monitor gate-race regression coverage stays green.
 
-## Holds
+## Blockers / Human-Blocked
+- Launch HOLD on delivered, reply-capable football@playfranchisearchitect.com email (human-blocked, unresolved).
+- Registry SPARKED / local FORGE reconciliation sibling-owned; local Doctor warning stays visible.
+- Deploy approval bound to SHA 397bc436372f42e0b8cd3b188b4b569c3895715c.
 
-- Launch remains HOLD on reply-capable `football@playfranchisearchitect.com` and registry SPARKED/local FORGE reconciliation.
+## Notes
+- Repo-wide browser backup warning is environmental fixture-storage, not a failed assertion; no data-loss inference.
 
-Next: start a fresh live-code audit or resolve one of the two independent launch holds.
+## Key Files
+- scripts/lib/visual-game-receipt.mjs
+- public/lib/decisionArchive.js
+- public/lib/coGmBriefing.js
+- public/lib/tabHistory.js, tabOverview.js
+- docs/AUDIT_2026-08-06_SESSION74.json
+
+Next session: begin fresh live-code audit; do not treat healthy deploy as launch readiness.

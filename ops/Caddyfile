@@ -7,5 +7,11 @@ play-franchise-architect-football.vaultsparkstudios.com {
 }
 
 api-franchise-architect-football.vaultsparkstudios.com {
-	reverse_proxy franchise-architect-football-api:8081
+	@community path /community/*
+	handle @community {
+		reverse_proxy franchise-architect-football-community-stats:8082
+	}
+	handle {
+		reverse_proxy franchise-architect-football-api:8081
+	}
 }

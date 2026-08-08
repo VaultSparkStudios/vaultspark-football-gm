@@ -59,7 +59,7 @@ export function buildEdgeHeaders({ inlineScriptHashes = [], inlineStyleHashes = 
     "style-src-attr 'unsafe-inline'",
     "img-src 'self' data:",
     "font-src 'self'",
-    "connect-src 'self' https://api.github.com https://gist.githubusercontent.com",
+    "connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com",
     "worker-src 'self'",
     "manifest-src 'self'",
     "upgrade-insecure-requests"

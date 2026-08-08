@@ -1,0 +1,421 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-08",
+  "session": 75,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "implementing",
+  "summary": {
+    "rankedItems": 5,
+    "combinedPriority": 325.1,
+    "topItem": "community-receipt-contract",
+    "source": "founder-approved-community-stats-plan-plus-live-code-and-deploy-audit",
+    "openItems": 1,
+    "completedItems": 4,
+    "priorityFormula": "Priority = axis-weighted Impact x Innovation / log2(EffortHours + 2). Engagement and feedback evidence receive the strongest weight; privacy, UI, release, and efficiency remain binding.",
+    "theme": "Turn browser-first franchise receipts into a consented, privacy-bounded, near-live community intelligence surface without weakening local-first play or inventing adoption."
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "product rubric with game overlay: engagement, evidence, UI/UX, privacy, free-tier cost, rendered-pixel, dual-audience and observability-honesty gates",
+    "staging": "independent Cloudflare Pages staging plus the current self-hosted backend stack; prove exact candidate before production",
+    "source": "founder-approved scope, current browser API seam, shared advance-week receipt authority, current PostgreSQL/Redis/Caddy compose, public privacy and metadata surfaces, and live Studio Canon 020/029/031/038/048/053/054"
+  },
+  "releaseGate": {
+    "verdict": "LOCAL IMPLEMENTATION GREEN — EXACT-CANDIDATE STAGING REQUIRED",
+    "tests": "Community contract/server/aggregation tests 11/11, focused boot/API/public compliance 29/29, runtime 535/535, core 122/122, simulation contract 75/75, realism 1/1, Chromium UI 40/40, Pages build/smoke, CANON-053 eight-capture receipt, CANON-054 6/6 and cost/footer gates pass.",
+    "doctor": "Startup reported no ABSOLUTE canon gaps; CANON-054 is an explicit product gap this sprint closes.",
+    "constraints": "No personal information, free text, raw save data, hidden ratings, advertising identifiers, fabricated users, silent collection, unbounded event storage, or unsupported causal/retention claims."
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 9,
+    "sessionEngagement": 9,
+    "retention": 8,
+    "soulFidelity": 9,
+    "overall": 8.8,
+    "evidence": "Structural score only. The new work creates the first consented cohort evidence path; it cannot retroactively establish adoption, retention, popularity, or causality."
+  },
+  "axisCoverage": {
+    "featuresDepth": {
+      "evaluated": [
+        "live community atlas",
+        "static vanity counters",
+        "third-party analytics dashboard"
+      ],
+      "selected": [
+        "live community atlas"
+      ],
+      "rejected": [
+        "static vanity counters",
+        "third-party analytics dashboard"
+      ]
+    },
+    "uiUx": {
+      "evaluated": [
+        "homepage pulse plus full stats atlas",
+        "dense homepage dashboard",
+        "hidden admin report"
+      ],
+      "selected": [
+        "homepage pulse plus full stats atlas"
+      ],
+      "rejected": [
+        "dense homepage dashboard",
+        "hidden admin report"
+      ]
+    },
+    "gamificationEngagement": {
+      "evaluated": [
+        "community strategy and feat aggregates",
+        "public individual leaderboard",
+        "manufactured activity feed"
+      ],
+      "selected": [
+        "community strategy and feat aggregates"
+      ],
+      "rejected": [
+        "public individual leaderboard",
+        "manufactured activity feed"
+      ]
+    },
+    "aiIntelligence": {
+      "evaluated": [
+        "deterministic insight sentences and JSON twin",
+        "LLM-written claims",
+        "raw-event agent access"
+      ],
+      "selected": [
+        "deterministic insight sentences and JSON twin"
+      ],
+      "rejected": [
+        "LLM-written claims",
+        "raw-event agent access"
+      ]
+    },
+    "securityPrivacy": {
+      "evaluated": [
+        "explicit opt-in, allowlists, rotating pseudonym, deletion and k-suppression",
+        "silent analytics",
+        "full save upload"
+      ],
+      "selected": [
+        "explicit opt-in, allowlists, rotating pseudonym, deletion and k-suppression"
+      ],
+      "rejected": [
+        "silent analytics",
+        "full save upload"
+      ]
+    },
+    "speedOrganizationEfficiency": {
+      "evaluated": [
+        "shared post-contract receipt seam and cached snapshot",
+        "per-button instrumentation",
+        "live query per card"
+      ],
+      "selected": [
+        "shared post-contract receipt seam and cached snapshot"
+      ],
+      "rejected": [
+        "per-button instrumentation",
+        "live query per card"
+      ]
+    },
+    "tokenCostReduction": {
+      "evaluated": [
+        "schema-driven extraction and aggregation",
+        "bespoke category endpoints",
+        "external analytics SDK"
+      ],
+      "selected": [
+        "schema-driven extraction and aggregation"
+      ],
+      "rejected": [
+        "bespoke category endpoints",
+        "external analytics SDK"
+      ]
+    },
+    "feedbackEvidence": {
+      "evaluated": [
+        "honest participating-browser denominator and percentiles",
+        "all-user claim",
+        "synthetic seed rows"
+      ],
+      "selected": [
+        "honest participating-browser denominator and percentiles"
+      ],
+      "rejected": [
+        "all-user claim",
+        "synthetic seed rows"
+      ]
+    },
+    "ecosystemRelease": {
+      "evaluated": [
+        "self-hosted project schema and public JSON twin",
+        "new managed SaaS",
+        "Analytica raw-event custody"
+      ],
+      "selected": [
+        "self-hosted project schema and public JSON twin"
+      ],
+      "rejected": [
+        "new managed SaaS",
+        "Analytica raw-event custody"
+      ]
+    }
+  },
+  "recommendedMoves": [
+    "Establish one versioned, privacy-bounded receipt authority and explicit participation control before any network collection or visual claim.",
+    "Aggregate on the existing self-hosted PostgreSQL/Caddy plane with strict validation, deduplication, abuse ceilings, small-cell suppression and a cached public snapshot.",
+    "Render one cinematic homepage pulse and one deep Stats Atlas from the exact same snapshot, including local-only comparisons and machine-readable methodology."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "architecture",
+      "candidate": "Buy or add a third-party analytics platform",
+      "reason": "Rejected. The existing self-hosted PostgreSQL, Caddy and container deploy plane can own a bounded product aggregate at zero new vendor cost or data-sharing boundary."
+    },
+    {
+      "axis": "truth",
+      "candidate": "Describe the denominator as all players or all users",
+      "reason": "Rejected. Browser-first play has no identity census. The only defensible denominator is participating anonymous browsers within the displayed period."
+    },
+    {
+      "axis": "privacy",
+      "candidate": "Upload complete saves to derive richer stats",
+      "reason": "Rejected. The shared API receipt seam exposes enough bounded facts; save payloads, names, free text, credentials and hidden simulation state remain local."
+    },
+    {
+      "axis": "engagement",
+      "candidate": "Launch an individual leaderboard",
+      "reason": "Rejected. Public ranks invite identity collection, gaming and false precision. Cohort distributions and suppressed rare-feat counts create useful comparison without exposing a person."
+    },
+    {
+      "axis": "intelligence",
+      "candidate": "Use a language model to narrate the snapshot",
+      "reason": "Rejected. Deterministic interpretation templates are cheaper, reproducible, auditable and cannot hallucinate a claim beyond the aggregate."
+    },
+    {
+      "axis": "release",
+      "candidate": "Seed production with synthetic community activity",
+      "reason": "Rejected. Warming and honest-zero states are first-class UI states; synthetic events may exist only in tests and can never ship into the live aggregate."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Privacy / evidence authority / architecture",
+      "effortHours": 5,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 86.1,
+      "slug": "community-receipt-contract",
+      "title": "No consented, cross-runtime authority exists for community evidence",
+      "status": "shipped",
+      "premise": "The browser and server runtimes already converge at createApiClient after API contract validation, and advance-week already emits a versioned receipt. No code converts those successful mutations into a bounded event, records explicit participation, keeps a local comparison ledger, or retries safely offline.",
+      "evidence": [
+        "public/lib/api/createApiClient.js validates both runtime responses in one place",
+        "src/runtime/advanceWeekCommand.js emits commandReceipt v2.0",
+        "public/privacy.html promises browser-first local custody",
+        "context/STUDIO_MANIFEST.json declares community false"
+      ],
+      "constraint": "Collection is off until explicit opt-in. Transmit only allowlisted categorical dimensions and bounded numbers; never names, email, IP storage, free text, save payloads, player identifiers, credentials or hidden ratings.",
+      "verification": [
+        "pure extractor and redaction tests",
+        "consent and withdrawal tests",
+        "offline queue, batching and retry tests",
+        "both client and server runtime paths"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Record only local league starts and completed weeks behind an opt-in toggle."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Create a versioned event catalog at the shared post-contract API seam; derive league, week, season, tactic, decision, roster-market, draft, staffing, challenge and rare-feat receipts; maintain a local-only comparison ledger; gate network batching behind explicit consent; support offline retry, bounded storage, withdrawal and deletion."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "L2 plus integrity-chain each browser receipt, surface an exact disclosure preview, and prove every event shape against both runtime adapters."
+        }
+      },
+      "executionEvidence": "Shipped a versioned allowlist and shared post-contract mutation seam with explicit opt-in, anonymous browser key, local-only ledger, bounded offline queue/batching, withdrawal and remote deletion. Tests prove redaction, clamps, derivation, local comparison, ingest and deletion."
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Backend / security / live aggregation",
+      "effortHours": 8,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 81.3,
+      "slug": "community-aggregate-plane",
+      "title": "There is no trustworthy live ingest, aggregation, or public snapshot plane",
+      "status": "shipped",
+      "premise": "The deploy stack already owns persistent PostgreSQL, Redis and Caddy, but product persistence is still file-backed and no community schema or endpoint exists. A separate bounded service can use the existing database and public API host without adding a vendor.",
+      "evidence": [
+        "ops/deploy-backend.docker-compose.yml includes persistent PostgreSQL and Caddy",
+        "ops/Caddyfile already routes the public API origin",
+        "src/runtime/persistence.js confirms game saves do not currently use PostgreSQL",
+        "no community or telemetry service exists in src"
+      ],
+      "constraint": "Use an isolated schema and least-privilege-ready service boundary; validate and clamp every field; hash and delete participant keys; do not persist IPs; enforce idempotency, request/body ceilings, participant and IP rate limits, 30-day raw retention, k>=5 suppression, cache bounds and honest degraded states.",
+      "verification": [
+        "pure validation and aggregation tests",
+        "PostgreSQL integration/migration path",
+        "dedupe, rate-limit, suppression and deletion tests",
+        "health, ETag/cache and stale fallback tests",
+        "container and Caddy configuration checks"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 4,
+          "recipe": "Add a validated ingest table and one cached headline snapshot."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Ship an isolated self-hosted stats service with idempotent batched ingest, one-way participant hashing, delete-by-participant, retention cleanup, bounded rollups, percentile bands, deterministic insights, small-cell suppression, ETag caching, health/freshness states and deployment wiring on the existing API origin."
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "L2 plus incremental materialized rollups, signed snapshot provenance, restore drill and sanitized Analytica consumption contract."
+        }
+      },
+      "executionEvidence": "Shipped an isolated PostgreSQL community_stats schema/service with migration ledger, one-way participant hashing, request/rate/retention ceilings, dedupe, k=5 suppression, 24h/7d/30d aggregates, deterministic insights, ETag caching and honest fallback; wired Compose, Caddy and backend workflow. Contract/server tests 7/7; Compose config passes."
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Homepage / engagement / UI",
+      "effortHours": 5,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 79.7,
+      "slug": "homepage-community-pulse",
+      "title": "The homepage has no living proof of what the community is building",
+      "status": "shipped",
+      "premise": "The homepage moves directly from the hero into Quick Start. There is no community surface, no participation control, and no safe warming/stale state despite CANON-054 now requiring a public stats surface.",
+      "evidence": [
+        "public/index.html places New Franchise immediately after the hero",
+        "public/setup.js has no community fetch or consent behavior",
+        "public/styles.css already owns responsive theme tokens that can carry a dependency-free pulse"
+      ],
+      "constraint": "Keep the instant-start funnel primary. Use no chart dependency, no auto-scrolling distraction, no fabricated zero, and no claim beyond the displayed period and participating-browser denominator. Poll only while visible and respect reduced motion/data preferences.",
+      "verification": [
+        "loading, warming, live, stale and unavailable states",
+        "30-second visibility-aware conditional refresh",
+        "keyboard and screen-reader semantics",
+        "dark/light desktop and <=430px captures",
+        "no LCP or boot-budget regression"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Add four cached count cards below the hero."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Build a cinematic Community Pulse below the hero with honest participation context, four headline measures, one deterministic live insight, freshness badge, participation controls and a progressive link to the full atlas; refresh only while visible and preserve the one-click start hierarchy."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "L2 plus a lightweight accessible strategy constellation and live-change micro-transitions that respect reduced motion and data preferences."
+        }
+      },
+      "executionEvidence": "Shipped a compact Community Pulse immediately below the hero with four live measures, denominator/methodology truth, deterministic insight, freshness state, consent controls and a visibility/save-data-aware 30-second refresh. Desktop/mobile dark/light captures inspected with no blocking defects; boot budget remains green."
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Stats Atlas / dual audience / feedback loop",
+      "effortHours": 7,
+      "impact": 9,
+      "innovation": 10,
+      "priority": 58.0,
+      "slug": "public-community-stats-atlas",
+      "title": "A headline pulse alone cannot expose the valuable breadth, methodology, or local comparison",
+      "status": "shipped",
+      "premise": "The product can derive activity, league setup, strategy, tactics, outcomes, roster-market behavior, draft philosophy, pressure, challenges and rare feats, but has no public /stats information architecture or machine-readable twin.",
+      "evidence": [
+        "public/agents.json has only play/legal entrypoints",
+        "public/.well-known/llms.txt has no stats twin",
+        "public/sitemap.xml has no /stats",
+        "CANON-054 requires value, period, computedAt and interpretation"
+      ],
+      "constraint": "Every displayed statistic declares value, unit, period, sample size, computedAt and interpretation. Suppressed, warming, stale, unavailable and unmeasured states remain explicit. Local comparison never uploads additional state.",
+      "verification": [
+        "schema and rendering contract tests",
+        "all category empty/suppressed/live states",
+        "local percentile comparisons",
+        "agents.json, llms.txt, sitemap, privacy, terms and manifest truth",
+        "dark/light desktop/mobile captures"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Add a static /stats page that renders the headline snapshot and methodology."
+        },
+        "L2": {
+          "effortHours": 7,
+          "recipe": "Ship a responsive Stats Atlas covering scale, league lab, team loyalty, strategy, tactics, roster market, draft room, pressure/outcomes, challenges and rare feats; add local-only percentile comparisons, filterable periods, deterministic interpretations, a documented JSON twin, methodology/privacy disclosure and complete sitemap/agent/LLM navigation."
+        },
+        "L3": {
+          "effortHours": 11,
+          "recipe": "L2 plus accessible historical sparklines, shareable stat cards and signed snapshot provenance without adding a charting dependency."
+        }
+      },
+      "executionEvidence": "Shipped /stats.html with nine valuable category groups, period filters, local-only percentile comparison, warming/suppressed/stale/unavailable states, methodology and JSON twin navigation. Agents, llms, sitemap, privacy, terms, footer and manifest truth updated; CANON-054 passes 6/6."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Release / observability / rendered pixels",
+      "effortHours": 5,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 20.0,
+      "slug": "community-stats-release-proof",
+      "title": "A live data surface needs exact-revision operational and rendered-pixel proof",
+      "status": "in-progress",
+      "premise": "The current release train proves static Pages and game routes but knows nothing about stats service health, snapshot freshness, privacy controls, suppressed states or the two new public surfaces.",
+      "evidence": [
+        "existing Pages and backend workflows are separate",
+        "docs/visual-qa/LATEST.json predates the new surfaces",
+        "scripts/smoke-pages.mjs has no stats assertions",
+        "CANON-053 requires desktop/mobile/theme pixel receipts for touched UI"
+      ],
+      "constraint": "Do not release on source or unit tests alone. Exact candidate staging must prove the page, API freshness and CORS; production must be SHA/fingerprint-bound. Existing launch email/approval/lifecycle gates remain independent and cannot be inferred closed.",
+      "verification": [
+        "full Node and Playwright suites",
+        "Pages build/smoke and module reachability",
+        "stats service contract and migration dry run",
+        "desktop/mobile dark/light image inspection",
+        "staging and production route/health/snapshot proof",
+        "secret and supply-chain scans"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Add build/smoke coverage and inspect one desktop/mobile theme pair."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Extend build, smoke, edge, Playwright and visual evidence gates across every stats state and theme; deploy the exact candidate to staging and the self-hosted service; verify CORS, cache, freshness and rollback; then release and reconcile truth without changing independent launch gates."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "L2 plus automated freshness SLO monitoring, restore drill evidence and a post-release live-change canary receipt."
+        }
+      },
+      "executionEvidence": "Local proof is green, including full runtime/core/simulation/UI gates and eight hash-bound rendered captures. Exact-candidate commit, staging/API deployment, live CORS/cache/freshness checks, production verification and rollback receipt remain."
+    }
+  ],
+  "secondOrderCandidates": []
+}

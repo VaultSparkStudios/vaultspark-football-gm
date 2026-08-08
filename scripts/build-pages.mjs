@@ -41,6 +41,7 @@ const browserEntryPoints = [path.join(srcDir, "app", "api", "localApiRuntime.js"
 let hashedStyleHref = "styles.css";
 const htmlPages = [
   "index.html",
+  "stats.html",
   "game.html",
   "landing.html",
   "about.html",

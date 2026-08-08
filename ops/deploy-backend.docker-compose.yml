@@ -14,6 +14,7 @@ services:
     depends_on:
       - franchise-architect-football-play
       - franchise-architect-football-api
+      - franchise-architect-football-community-stats
 
   postgres:
     image: postgres:16
@@ -65,8 +66,23 @@ services:
       - postgres
       - redis
 
+  franchise-architect-football-community-stats:
+    image: ghcr.io/vaultsparkstudios/franchise-architect-football-api:latest
+    command: ["node", "src/community/server.js"]
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 8082
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL via deployment secrets}
+      COMMUNITY_KEY_PATH: /var/lib/community-stats/pepper
+      COMMUNITY_ALLOWED_ORIGINS: https://playfranchisearchitect.com,https://staging.playfranchisearchitect.com
+    volumes:
+      - community_stats_keys:/var/lib/community-stats
+    depends_on:
+      - postgres
 volumes:
   caddy_data:
   caddy_config:
   postgres_data:
   redis_data:
+  community_stats_keys:

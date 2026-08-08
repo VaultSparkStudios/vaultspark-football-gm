@@ -15,9 +15,32 @@
     "privacy": "Allowlisted visible franchise authority only; excludes save payloads, credentials, personal identifiers, and hidden simulation state"
   },
   "entrypoints": [
-    { "label": "Play", "url": "https://playfranchisearchitect.com/" },
-    { "label": "Contact", "url": "https://playfranchisearchitect.com/contact.html" },
-    { "label": "Privacy", "url": "https://playfranchisearchitect.com/privacy.html" },
-    { "label": "Terms", "url": "https://playfranchisearchitect.com/terms.html" }
-  ]
+    {
+      "label": "Play",
+      "url": "https://playfranchisearchitect.com/"
+    },
+    {
+      "label": "Contact",
+      "url": "https://playfranchisearchitect.com/contact.html"
+    },
+    {
+      "label": "Privacy",
+      "url": "https://playfranchisearchitect.com/privacy.html"
+    },
+    {
+      "label": "Terms",
+      "url": "https://playfranchisearchitect.com/terms.html"
+    },
+    {
+      "label": "Community Stats",
+      "url": "https://playfranchisearchitect.com/stats.html"
+    }
+  ],
+  "communityStats": {
+    "page": "https://playfranchisearchitect.com/stats.html",
+    "snapshot": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
+    "descriptor": "https://playfranchisearchitect.com/stats-surface.json",
+    "denominator": "participating anonymous browsers",
+    "privacy": "Opt-in, allowlisted receipt aggregates; k>=5 behavioral suppression; no saves, names, free text, credentials, raw player identifiers, hidden ratings, or stored IP addresses."
+  }
 }

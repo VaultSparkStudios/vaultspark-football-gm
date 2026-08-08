@@ -70,9 +70,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     31,589 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~15,795 tok/turn  ·  cache 50%  ·  56 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
+║     23,329 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~11,665 tok/turn  ·  cache 50%  ·  76 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -115,9 +115,23 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-06_SESSION74.md       ║
-║  Closed: 3 · Open: 0                                             ║
-║  Latest audit has no open ranked items; run /audit for a new li  ║
+║  ✓ cache source: AUDIT_2026-08-08_SESSION75.md                   ║
+║                                                                  ║
+║  #1 · FIRE · community-receipt-contract                          ║
+║  community-receipt-contract — Create a versioned event catalog   ║
+║                                                                  ║
+║  #2 · FIRE · community-aggregate-plane                           ║
+║  community-aggregate-plane — Ship an isolated self-hosted stats  ║
+║                                                                  ║
+║  #3 · FIRE · homepage-community-pulse                            ║
+║  homepage-community-pulse — Build a cinematic Community Pulse b  ║
+║                                                                  ║
+║  #4 · HIGH · public-community-stats-atlas                        ║
+║  public-community-stats-atlas — Ship a responsive Stats Atlas c  ║
+║                                                                  ║
+║  #5 · HIGH · community-stats-release-proof                       ║
+║  community-stats-release-proof — Extend build, smoke, edge, Pla  ║
+║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```

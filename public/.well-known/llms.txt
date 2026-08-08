@@ -12,3 +12,6 @@ Useful paths:
 - /privacy.html - privacy notice
 - /terms.html - terms and rights notice
 - /agents.json - machine-readable agent metadata
+- /stats.html - human-readable near-live Community Stats Atlas
+- https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot - machine-readable aggregate snapshot
+- /stats-surface.json - stats contract and methodology descriptor

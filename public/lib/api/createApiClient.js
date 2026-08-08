@@ -1,10 +1,31 @@
 import { assertApiContract, assertApiContractResponse } from "../apiContract.js";
+import { observeBackgroundTask } from "../clientDiagnostics.js";
 
 let localRuntimePromise = null;
 let runtimeModeCache = null;
 let fallbackAttempted = false;
 let fallbackPromise = null;
 let serverSessionEstablished = false;
+let communityTelemetryPromise = null;
+
+function observeCommunityReceipt(details) {
+  if (String(details.method || "GET").toUpperCase() === "GET") return;
+  if (!communityTelemetryPromise) {
+    communityTelemetryPromise = import("../communityTelemetry.js").then((module) => {
+      module.initCommunityTelemetry();
+      return module;
+    });
+  }
+  observeBackgroundTask(
+    () => communityTelemetryPromise.then((module) => module.observeCommunityApiReceipt(details)),
+    {
+      surface: "community-telemetry",
+      operation: "observe-api-receipt",
+      authorityKey: "community-participation",
+      severity: "degraded"
+    }
+  );
+}
 
 function readStoredRuntimeMode() {
   try {
@@ -223,16 +244,22 @@ export function createApiClient() {
   return async function api(path, options = {}) {
     const method = options.method || "GET";
     assertApiContract(method, path);
-    const validateResponse = (payload) => assertApiContractResponse(method, path, payload);
-    if (getRuntimeMode() === "client") {
-      return validateResponse(await requestLocal(path, options));
-    }
+    const finalize = (payload) => {
+      const validated = assertApiContractResponse(method, path, payload);
+      observeCommunityReceipt({
+        method,
+        path,
+        body: options.body || {},
+        response: validated,
+        runtime: getRuntimeMode()
+      });
+      return validated;
+    };
+    if (getRuntimeMode() === "client") return finalize(await requestLocal(path, options));
     try {
-      return validateResponse(await requestHttp(path, options));
+      return finalize(await requestHttp(path, options));
     } catch (error) {
-      if (canAutoFallbackToClient(error) || fallbackPromise) {
-        return validateResponse(await retryInClientMode(path, options, error));
-      }
+      if (canAutoFallbackToClient(error) || fallbackPromise) return finalize(await retryInClientMode(path, options, error));
       throw error;
     }
   };

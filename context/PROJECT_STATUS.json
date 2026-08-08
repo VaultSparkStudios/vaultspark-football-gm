@@ -103,7 +103,7 @@
   "freeTierAuditDate": "2026-05-22",
   "freeTierAuditDoc": "vaultspark-studio-ops/docs/FREE_TIER_AUDIT_2026-05-22_PORTFOLIO.md",
   "estimatedMonthlyCostAt1000FreeUsers": 0,
-  "freeTierAuditNote": "Verified S138 #753: pure browser game, no LLM/email/per-user backend calls. Static deploy.",
+  "freeTierAuditNote": "Session 75 refresh: browser-first game plus a bounded, cached community aggregate on the existing shared self-hosted server. No language model, email, paid analytics vendor, or per-user API spend; marginal cost remains zero within current fixed infrastructure capacity.",
   "silHealthAsOf": "2026-06-30",
   "silImpactCategories": {
     "reach": 0,

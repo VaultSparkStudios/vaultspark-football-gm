@@ -57,7 +57,12 @@
     ],
     "preview": [],
     "admin": [],
-    "api": [],
+    "api": [
+      {
+        "label": "community-stats",
+        "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot"
+      }
+    ],
     "docs": [],
     "github": [
       {
@@ -70,12 +75,12 @@
   "capabilities": {
     "auth": false,
     "payments": false,
-    "analytics": false,
+    "analytics": true,
     "email": false,
     "ai": false,
     "publishing": false,
-    "community": false,
-    "storage": false,
+    "community": true,
+    "storage": true,
     "cron": false
   },
   "integrations": {
@@ -130,7 +135,7 @@
     "fitsCurrentCapacity": true,
     "preferredRuntime": "github-pages",
     "fallbackRuntime": "hetzner",
-    "notes": ""
+    "notes": "Community Stats uses the existing self-hosted PostgreSQL/Caddy plane, a cached 60-second snapshot, 30-day raw retention, and no per-view database query."
   },
   "publicMetadata": {
     "privateByDefault": true,

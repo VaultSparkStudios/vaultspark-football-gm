@@ -9,6 +9,7 @@
     "./index.html",
     "#features",
     "./about.html",
+    "./stats.html",
     "./status.html",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions",
@@ -17,6 +18,7 @@
     "./terms.html"
   ],
   "footerOnly": [
+    "./stats.html",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions",
     "./status.html",
@@ -36,6 +38,7 @@
     "status.html",
     "contact.html",
     "privacy.html",
-    "terms.html"
+    "terms.html",
+    "stats.html"
   ]
 }

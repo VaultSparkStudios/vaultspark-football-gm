@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "name": "Franchise Architect: Football Community Stats Atlas",
+  "route": "https://playfranchisearchitect.com/stats.html",
+  "machineReadable": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
+  "precomputed": true,
+  "refreshPolicy": "Server snapshot at most once per 60 seconds; visible clients check at most once per 30 seconds.",
+  "denominator": "participating anonymous browsers",
+  "suppressionThreshold": 5,
+  "rawRetentionDays": 30,
+  "metrics": [
+    {
+      "id": "participating-browsers",
+      "label": "Participating browsers",
+      "value": "live endpoint",
+      "period": "24 hours, 7 days, and 30 days",
+      "computedAt": "runtime snapshot",
+      "unitOrDenominator": "anonymous opt-in browsers",
+      "interpretation": "The defensible cohort denominator; it is not a census of all players or humans.",
+      "smallCountOk": true
+    },
+    {
+      "id": "weeks-managed",
+      "label": "Weeks managed",
+      "value": "live endpoint",
+      "period": "24 hours, 7 days, and 30 days",
+      "computedAt": "runtime snapshot",
+      "unitOrDenominator": "validated receipt count",
+      "interpretation": "Receipted franchise weeks completed by the eligible cohort; hidden when fewer than five browsers contribute.",
+      "banded": true
+    },
+    {
+      "id": "strategy-mix",
+      "label": "Strategy and tactic mix",
+      "value": "live endpoint",
+      "period": "24 hours, 7 days, and 30 days",
+      "computedAt": "runtime snapshot",
+      "unitOrDenominator": "share of eligible tactic-week receipts",
+      "interpretation": "Describes declared weekly identities without claiming that a tactic caused an outcome.",
+      "banded": true
+    },
+    {
+      "id": "roster-market",
+      "label": "Roster market activity",
+      "value": "live endpoint",
+      "period": "24 hours, 7 days, and 30 days",
+      "computedAt": "runtime snapshot",
+      "unitOrDenominator": "successful transaction receipts",
+      "interpretation": "Counts completed trades, signings, contract moves and staff changes once per deduplicated receipt.",
+      "banded": true
+    },
+    {
+      "id": "draft-philosophy",
+      "label": "Draft philosophy",
+      "value": "live endpoint",
+      "period": "24 hours, 7 days, and 30 days",
+      "computedAt": "runtime snapshot",
+      "unitOrDenominator": "user-controlled draft receipts",
+      "interpretation": "Shows aggregate position preferences while excluding player names and identifiers.",
+      "banded": true
+    },
+    {
+      "id": "pressure-outcomes",
+      "label": "Pressure and outcomes",
+      "value": "live endpoint",
+      "period": "24 hours, 7 days, and 30 days",
+      "computedAt": "runtime snapshot",
+      "unitOrDenominator": "validated outcome receipts",
+      "interpretation": "Reports observed wins, season boundaries and championships without causal or retention claims.",
+      "banded": true
+    }
+  ]
+}

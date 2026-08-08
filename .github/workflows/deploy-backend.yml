@@ -58,7 +58,7 @@ jobs:
           - play
           - api
     env:
-      GAME_SLUG: vaultspark-football-gm
+      GAME_SLUG: franchise-architect-football
     steps:
       - uses: actions/checkout@v5
 
