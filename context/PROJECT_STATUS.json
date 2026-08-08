@@ -5,7 +5,7 @@
   "status": "active",
   "health": "green",
   "currentFocus": "Session 75 complete and live at c71a26065bb355900a3544f5d08b150b8c3191f5: consented community receipts, privacy-bounded self-hosted aggregation, homepage Community Pulse, nine-category Stats Atlas and agent twin; staging 11/11, production/API/CI green. Launch HOLD remains explicit.",
-  "nextMilestone": "Observe the first real opted-in cohort without manufacturing activity, or reconcile email / SHA-bound founder launch approval / lifecycle authority when evidence arrives.",
+  "nextMilestone": "Observe the first real consenting cohort and verify freshness/suppression behavior. Launch remains independently gated by delivered reply-capable on-domain email, SHA-bound founder approval, and authoritative lifecycle reconciliation.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -152,7 +152,7 @@
       "Shared-host-safe backend release plus exact staging/production proof"
     ],
     "tests": "Node 905/905 · Playwright 40/40 · visual 8 · Pages build/smoke · staging 11/11 · API/production/CI green · Doctor 0 · security clean",
-    "deploy": "Staging and production exact at c71a26065bb355900a3544f5d08b150b8c3191f5 / f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8; rollback available; backend run 31276918230 and Pages run 31276913656 green; API database ready and warming at zero participants.",
+    "deploy": "Staging and production exact at c71a26065bb355900a3544f5d08b150b8c3191f5 / 0a637f4703dad259786173bb3607de17b3610a994debf31150ec93ef27c1e1f3; rollback available; backend run 31276918230 and Pages run 31276913656 green; API database ready and warming at zero participants.",
     "honestDeferrals": [
       "No adoption, retention, popularity or causality claim until a real consenting cohort exists.",
       "Launch remains held on reply-capable email, SHA-bound founder launch approval and lifecycle authority."
@@ -197,16 +197,16 @@
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "dc4ac935aa092fbfef908a58a1cabb6b2d3a5f8ec3d910ef3fb7a18ff1a3f62b",
-    "checkedAt": "2026-08-08T20:06:40.401Z",
+    "receiptSha256": "a70404af723be904ad62b59bd2ee897f0d07fca34716a8ade850d658b842e9e1",
+    "checkedAt": "2026-08-08T22:37:39.171Z",
     "evidenceWindow": {
-      "observedAt": "2026-08-08T20:06:40.401Z",
+      "observedAt": "2026-08-08T22:37:39.171Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-08-09T20:06:40.401Z",
+      "expiresAt": "2026-08-09T22:37:39.171Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "b29779807cadb51c6eadbc4293d719755735a087",
+    "deployedRevision": "c71a26065bb355900a3544f5d08b150b8c3191f5",
     "routes": {
       "verified": true,
       "checked": 9
@@ -227,7 +227,7 @@
     },
     "exactRevision": {
       "verified": true,
-      "expected": "b29779807cadb51c6eadbc4293d719755735a087"
+      "expected": "c71a26065bb355900a3544f5d08b150b8c3191f5"
     },
     "independentStaging": {
       "verified": true
@@ -248,32 +248,32 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "123f69c79220177880706da16acb6352ab9da798f92c4147c542bfcd4f9eca48",
-    "sourceRevision": "b29779807cadb51c6eadbc4293d719755735a087",
+    "receiptSha256": "37a0f8fee4d90a186fb36e4755b246c8e1ad550594286b98456a4809fd464692",
+    "sourceRevision": "c71a26065bb355900a3544f5d08b150b8c3191f5",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8",
+      "digest": "0a637f4703dad259786173bb3607de17b3610a994debf31150ec93ef27c1e1f3",
       "files": 183,
       "exclusions": [
         "_health",
         "deploy-manifest.json"
       ]
     },
-    "deploymentId": "847ccc74-b160-453f-aafd-70c386e131f3",
+    "deploymentId": "41abef55-a23d-47b5-a271-312b8c3c306a",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 11,
       "checksTotal": 11,
-      "checkedAt": "2026-08-08T19:55:30.509Z"
+      "checkedAt": "2026-08-08T22:33:29.382Z"
     },
     "rollback": {
-      "previousDeploymentId": "969052a2-76a3-4892-9ef5-8f6267273213",
+      "previousDeploymentId": "847ccc74-b160-453f-aafd-70c386e131f3",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-08T19:55:30.51Z"
+    "observedAt": "2026-08-08T22:33:29.382Z"
   },
   "lastCloseoutAt": "2026-08-08T20:15:00Z"
 }

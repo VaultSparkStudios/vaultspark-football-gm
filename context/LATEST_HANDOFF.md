@@ -7,7 +7,7 @@
 - The aggregate authority uses one-way participant keys, request/contribution clamps, deduplication, deletion, 30-day raw retention, IP-free application storage, k=5 suppression, percentiles, deterministic insights, ETag caching and stale fallback.
 - Homepage Community Pulse and the full nine-category Stats Atlas use the same public snapshot. The JSON twin, agents.json, llms.txt, sitemap, privacy, terms and methodology agree.
 - Live state is honestly warming with zero participating browsers. No synthetic production rows were inserted.
-- Code c71a26065bb355900a3544f5d08b150b8c3191f5 and artifact f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8 are exact on production and staging; staging passed 11/11 with rollback. Backend workflow 31276918230 and Pages workflow 31276913656 are green.
+- Code c71a26065bb355900a3544f5d08b150b8c3191f5 and artifact 0a637f4703dad259786173bb3607de17b3610a994debf31150ec93ef27c1e1f3 are exact on production and staging; staging passed 11/11 with rollback. Backend workflow 31276918230 and Pages workflow 31276913656 are green.
 - Verification: Node 905/905, Playwright 40/40, Community focused 13/13, Pages build/smoke, eight inspected hash-bound rendered captures, CANON-054 6/6, Doctor zero blocking findings, and secret scan clean.
 
 ## Decisions That Must Survive

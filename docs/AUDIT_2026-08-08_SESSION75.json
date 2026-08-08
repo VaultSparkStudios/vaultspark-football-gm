@@ -414,7 +414,7 @@
           "recipe": "L2 plus automated freshness SLO monitoring, restore drill evidence and a post-release live-change canary receipt."
         }
       },
-      "executionEvidence": "Live release complete at c71a26065bb355900a3544f5d08b150b8c3191f5. Staging is 11/11 at artifact f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8 with rollback; backend workflow 31276918230 and Pages workflow 31276913656 are green. Public API health reports database ready; authoritative DNS/TLS, production/staging CORS, ETag/cache and honest warming snapshot verified. Node 905/905, Playwright 40/40 and eight hash-bound captures pass. Independent project launch gates remain open."
+      "executionEvidence": "Live release complete at c71a26065bb355900a3544f5d08b150b8c3191f5. Staging is 11/11 at artifact 0a637f4703dad259786173bb3607de17b3610a994debf31150ec93ef27c1e1f3 with rollback; backend workflow 31276918230 and Pages workflow 31276913656 are green. Public API health reports database ready; authoritative DNS/TLS, production/staging CORS, ETag/cache and honest warming snapshot verified. Node 905/905, Playwright 40/40 and eight hash-bound captures pass. Independent project launch gates remain open."
     }
   ],
   "secondOrderCandidates": [

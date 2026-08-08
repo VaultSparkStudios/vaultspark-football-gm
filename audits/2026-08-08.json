@@ -38,7 +38,7 @@
     "candidateRevision": "c71a26065bb355900a3544f5d08b150b8c3191f5",
     "stagingRevision": "c71a26065bb355900a3544f5d08b150b8c3191f5",
     "productionRevision": "c71a26065bb355900a3544f5d08b150b8c3191f5",
-    "artifactFingerprint": "f9a6db012651c41d027678770681fb7ccafe53c85c603e7a79aa6bf9267e1ce8",
+    "artifactFingerprint": "0a637f4703dad259786173bb3607de17b3610a994debf31150ec93ef27c1e1f3",
     "api": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
     "stagingProvenance": "11/11 with rollback",
     "githubActions": "CI, backend deploy and Pages production release green",
