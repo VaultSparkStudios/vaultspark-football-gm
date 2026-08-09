@@ -6,6 +6,8 @@
 - No second-order innovations were pursued — the codebase is genuinely near-exhausted for this audit lens; padding would have been dishonest.
 - Verification: Node 911/911 direct exit 0 (up from 905/905), Playwright 40/40, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight 0 items, doctor 0 blocking.
 - Launch remains HOLD on the same three external gates; none of this session's work depended on or touched them.
+- Closeout brief and status board rendered (`docs/CLOSEOUT_BRIEF_S76_2026-08-09.md`, `docs/CLOSEOUT_STATUS_BOARD.md`); Ark session-impact-summary broadcast shipped, receipt `01JVK2D4NC17B062FBBFE1B5F9`.
+- Pushed directly to `main`: `9b4c6eb` (implementation) and `51c7164` (closeout visuals); both landed clean, no force-push, no hook bypass.
 
 ## 2026-07-25 — Session 56: weekly authority and progressive Week Room
 
