@@ -1,24 +1,24 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-09 (Session 76 closeout) -->
+<!-- generated-at: 2026-08-09 (Session 77 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S76 ══════╗
-║  Date: 2026-08-09  ·  SIL: 997/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S77 ══════╗
+║  Date: 2026-08-09  ·  SIL: 996/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude                                 ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Session 75's Community Stats remains live and unchanged in b  ║
-║  ✓ `src/community/server.js`'s stale/unavailable snapshot fallb  ║
-║  ✓ `public/stats.html`'s 24H/7D/30D period toggle buttons now d  ║
+║  ✓ Session 76's Community Stats remains live and unchanged in b  ║
+║  ✓ The constructor now accepts an optional `pool` and only cons  ║
+║  ✓ While verifying the full suite, two pre-existing test-infras  ║
 ║  ✓ No server, client, or gameplay behavior changed. No deploy w  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 997/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 996/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
-║    Momentum           97   ██████████                            ║
+║    Momentum           96   ██████████                            ║
 ║    Engagement         100  ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          100  ██████████                            ║
@@ -37,10 +37,10 @@
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  · context/TRUTH_AUDIT.md                                        ║
 ║  · context/PROJECT_STATUS.json                                   ║
-║  · agent memory (~/.codex or ~/.claude project memory)           ║
+║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 2 files  ·  M:0 A:0 D:0 ?:2                            ║
+║  Changes: 1 files  ·  M:0 A:0 D:0 ?:1                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -51,7 +51,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         911/911                                          ║
+║  Tests:         922/922                                          ║
 ║  IGNIS:         7d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  1d ago                                           ║
