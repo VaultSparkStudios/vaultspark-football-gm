@@ -4,36 +4,31 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 75 complete and live at c71a26065bb355900a3544f5d08b150b8c3191f5: consented community receipts, privacy-bounded self-hosted aggregation, homepage Community Pulse, nine-category Stats Atlas and agent twin; staging 11/11, production/API/CI green. Launch HOLD remains explicit.",
+  "currentFocus": "Session 76 complete: closed two live-code-verified gaps from a fresh audit — 4 new tests covering previously-untested Community Stats server fallback/error branches, and aria-controls linkage on the /stats period toggle. No feature or deploy change. Launch HOLD remains explicit.",
   "nextMilestone": "Observe the first real consenting cohort and verify freshness/suppression behavior. Launch remains independently gated by delivered reply-capable on-domain email, SHA-bound founder approval, and authoritative lifecycle reconciliation.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-08",
+  "lastUpdated": "2026-08-09",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-08-08",
+  "truthAuditLastRun": "2026-08-09",
   "ignisScore": 42230,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-03",
   "testSuiteStatus": {
-    "totalTests": 905,
-    "pass": 905,
+    "totalTests": 911,
+    "pass": 911,
     "fail": 0,
-    "lastRun": "2026-08-08",
-    "newTestFiles": [
-      "test/community-event-contract.test.js",
-      "test/community-aggregate.test.js",
-      "test/community-server.test.js",
-      "test/community-deploy-config.test.js"
-    ],
-    "newTestCount": 13,
-    "coverage": "Session 75 canonical Node 905/905 direct exit 0; Playwright 40/40; eight hash-bound rendered captures; Pages build/smoke; stable staging 11/11; production/API health, DNS, TLS, CORS and cache proof.",
-    "uiSuiteNote": "Playwright 40/40 plus rendered-pixel inspection prove Community Pulse and Stats Atlas across dark/light desktop/mobile; CI independently captured responsive production artifact evidence."
+    "lastRun": "2026-08-09",
+    "newTestFiles": [],
+    "newTestCount": 4,
+    "coverage": "Session 76 canonical Node 911/911 direct exit 0 (up from 905/905); Playwright 40/40; Pages build/smoke; 4 new tests close previously-untested Community Stats server fallback/error branches.",
+    "uiSuiteNote": "Playwright 40/40 unchanged from Session 75; no UI behavior changed this session."
   },
-  "testsPassing": 905,
-  "testsTotal": 905,
+  "testsPassing": 911,
+  "testsTotal": 911,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -72,23 +67,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 998,
+  "silScore": 997,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
-    "momentum": 100,
+    "momentum": 97,
     "engagement": 100,
-    "processQuality": 98,
+    "processQuality": 100,
     "crossRepoCoherence": 100,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 75,
-  "lastAgent": "codex",
+  "currentSession": 76,
+  "lastAgent": "claude",
   "sessionMode": "builder",
-  "lastVerification": "npm test 905/905 direct exit 0; Playwright 40/40; visual QA 8; Pages build/smoke; staging 11/11; backend/production green; Doctor blockingFailing 0; security clean.",
+  "lastVerification": "npm test 911/911 direct exit 0; Playwright 40/40; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight 0 items; doctor blockingFailing 0.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -114,14 +109,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 848,
+  "silHealth": 847,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-08",
+    "date": "2026-08-09",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -135,26 +130,23 @@
   },
   "complianceScore": 37,
   "complianceTotal": 37,
-  "sanitizationLastCleared": "2026-08-08",
-  "lastVerificationAt": "2026-08-08",
+  "sanitizationLastCleared": "2026-08-09",
+  "lastVerificationAt": "2026-08-09",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.013,
   "entropyLastComputed": "2026-08-04",
   "lastSessionSummary": {
-    "session": 75,
+    "session": 76,
     "shipped": [
-      "Explicit consented Community Stats receipt contract",
-      "Privacy-bounded self-hosted aggregate authority",
-      "Homepage Community Pulse and nine-category Stats Atlas",
-      "Local-only percentile comparison and agent snapshot twin",
-      "Shared-host-safe backend release plus exact staging/production proof"
+      "4 new tests closing untested Community Stats server stale/unavailable/413/400/health/404 branches",
+      "aria-controls linkage between /stats period toggle buttons and the atlas region they repaint"
     ],
-    "tests": "Node 905/905 · Playwright 40/40 · visual 8 · Pages build/smoke · staging 11/11 · API/production/CI green · Doctor 0 · security clean",
-    "deploy": "Staging and production exact at c71a26065bb355900a3544f5d08b150b8c3191f5 / 0a637f4703dad259786173bb3607de17b3610a994debf31150ec93ef27c1e1f3; rollback available; backend run 31276918230 and Pages run 31276913656 green; API database ready and warming at zero participants.",
+    "tests": "Node 911/911 direct exit 0 (up from 905/905) · Playwright 40/40 · Pages build/smoke · windows-hide · Wave guard · secrets audit · blocker preflight 0 items · doctor 0 blocking",
+    "deploy": "No deploy required or performed — test-only and static-markup changes with no server, client, or gameplay behavior change. Staging/production remain at the Session 75 revision c71a26065bb355900a3544f5d08b150b8c3191f5 / 0a637f4703dad259786173bb3607de17b3610a994debf31150ec93ef27c1e1f3.",
     "honestDeferrals": [
-      "No adoption, retention, popularity or causality claim until a real consenting cohort exists.",
+      "No second-order innovation candidates pursued; the app-release-gate/web-canon audit lens is genuinely near-exhausted after 75 prior sessions and padding would have been dishonest.",
       "Launch remains held on reply-capable email, SHA-bound founder launch approval and lifecycle authority."
     ]
   },
@@ -163,7 +155,7 @@
       "type": "local",
       "label": "Local game",
       "url": "http://127.0.0.1:3000/game.html",
-      "lastChecked": "2026-08-08"
+      "lastChecked": "2026-08-09"
     },
     {
       "type": "production",
@@ -178,8 +170,8 @@
       "lastChecked": "2026-08-08"
     }
   ],
-  "lastSession": 75,
-  "silLastSession": 75,
+  "lastSession": 76,
+  "silLastSession": 76,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",
@@ -192,7 +184,7 @@
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ],
-  "session": 75,
+  "session": 76,
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
@@ -275,5 +267,5 @@
     "verified": true,
     "observedAt": "2026-08-08T22:33:29.382Z"
   },
-  "lastCloseoutAt": "2026-08-08T20:15:00Z"
+  "lastCloseoutAt": "2026-08-09T00:00:00Z"
 }

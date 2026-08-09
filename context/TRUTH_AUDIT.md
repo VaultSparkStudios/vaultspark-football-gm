@@ -2,8 +2,12 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-08
+Last reviewed: 2026-08-09
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-08-09 - Session 76 truth update
+
+- **The stale/unavailable degradation claim is now proven, not just implemented.** Session 75's `context/LATEST_HANDOFF.md` and the Community Stats copy both describe a graceful stale-cache and honest-unavailable fallback when the database is unreachable, but no test exercised either branch — the claim rested on reading the code, not on running it. Four new tests in `test/community-server.test.js` now drive a real HTTP server through both fallback paths, the oversized/malformed-body rejections, and the health/404 routes. No behavior changed; the previously-unverified claim is now verified.
 
 ## 2026-08-08 - Session 75 community truth updates
 

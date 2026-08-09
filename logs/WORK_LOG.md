@@ -1,3 +1,12 @@
+## 2026-08-09 — Session 76: community server branch coverage + stats a11y
+
+- Ran `/arc`: profiled the project (app · product rubric · direct-to-main via github-pages staging gate), confirmed via write-back currency check (F7) and a clean synced tree that Session 75 was fully closed out — not a cut-off recovery.
+- Dispatched a general-purpose live-code audit scoped to the app-release-gate + web canon lens, given 75 prior sessions had already exhausted the obvious genius-list items. It found 2 honest, verified items rather than padding the list.
+- Shipped both: 4 new tests closing untested branches in `src/community/server.js` (stale/unavailable snapshot fallback, 413/400 body handling, /health, 404), and `aria-controls`/`id` linkage between the `/stats` period toggle buttons and the atlas region they repaint.
+- No second-order innovations were pursued — the codebase is genuinely near-exhausted for this audit lens; padding would have been dishonest.
+- Verification: Node 911/911 direct exit 0 (up from 905/905), Playwright 40/40, Pages build/smoke, windows-hide, Wave guard, secrets audit, blocker preflight 0 items, doctor 0 blocking.
+- Launch remains HOLD on the same three external gates; none of this session's work depended on or touched them.
+
 ## 2026-07-25 — Session 56: weekly authority and progressive Week Room
 
 - Ran pull-first `/start`, canonical preflights, infrastructure-weighted live audit with release/game-loop lenses, all four ranked implementations, three second-order innovations, direct verification, and closeout without a mid-phase handback.

@@ -1,43 +1,51 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: e7e9a2dba01d -->
-<!-- generated-at: 2026-08-08T22:39:39.526Z -->
+<!-- source-hash: 8ece0d6b75d7 -->
+<!-- generated-at: 2026-08-09T19:58:20.933Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 75 HANDOFF SUMMARY
+# Session 76 Handoff Summary
 
-Status
-- Community Stats live on production, staging, self-hosted API. Stable.
-- Explicit opt-in only; versioned allowlisted contract-derived receipts leave browser; local comparisons work without participation.
-- Live state honestly warming, zero participating browsers, no synthetic rows.
+## Session
+- Session 76: Community server branch coverage + Stats accessibility. No new features; closed 2 verified audit gaps.
 
-Shipped
-- Aggregate authority: one-way participant keys, request/contribution clamps, dedup, deletion, 30-day raw retention, IP-free storage, k=5 suppression, percentiles, deterministic insights, ETag caching + stale fallback.
-- Homepage Community Pulse + nine-category Stats Atlas share one public snapshot; JSON twin, agents.json, llms.txt, sitemap, privacy, terms, methodology agree.
-- Code SHA c71a260 and artifact 0a637f4 exact on prod+staging. Staging 11/11 with rollback. Backend workflow 31276918230 and Pages 31276913656 green.
-- Verified: Node 905/905, Playwright 40/40, Community 13/13, Pages build/smoke, 8 hash-bound captures, CANON-054 6/6, Doctor clean, secret scan clean.
+## Shipped
+- test/community-server.test.js: expanded 3 -> 7 tests. Now covers stale/unavailable snapshot fallback, oversized/malformed-body rejection, health endpoint, unmatched-route handling.
+- public/stats.html: period toggle buttons (24H/7D/30D) now declare aria-controls="communityAtlas"; atlas region carries matching id.
+- No server/client/gameplay behavior changed. No deploy.
 
-Invariants (must survive)
-- Denominator is "participating anonymous browsers" — never relabel as users/players/installs/accounts.
-- Warming/suppressed/stale/unavailable states are product truth; never fill with synthetic activity.
-- New receipt fields require allowlist + bounded-value + privacy + runtime-parity + deletion review. No free text or raw save state.
-- Public JSON snapshot is sole external community-data authority. Analytica may get aggregates later, never raw receipts by default.
-- Shared host: Postgres internal Docker net only; stats app joins edge bridge + loopback for system Caddy; project never owns host 80/443.
-
-Now bucket
-- Watch first real consenting cohort; confirm freshness + suppression behavior.
-- Do not optimize categories or make adoption claims until real evidence exists.
+## Current Intent
+- Watch first real consenting cohort; confirm freshness/suppression behavior without manufacturing activity or adoption claims.
 - If launch authority arrives, reconcile via existing structured release contract.
 
-Blockers
-- Project launch HOLD pending delivered + reply-capable football@playfranchisearchitect.com evidence.
-- Founder launch approval must be SHA-bound; not inferred from implementation.
-- Registry SPARKED / local FORGE reconciliation authoritative outside this repo.
+## Now Bucket (Top 3)
+- Next session: run a fresh live-code audit, not assume this session's 2-item lens is current.
+- Monitor first consenting cohort for freshness/suppression correctness.
+- Reconcile launch authority through release contract if all three gates clear.
 
-Human-blocked / defects reported
-- Studio responsive-audit helper skipped (Playwright unavailable in sibling context); local + CI + 8 captures green, not misreported.
-- Closeout autopilot lock binding incorrect from project repo; defect reported to Studio Ops via Ark receipt 01JVHMP3I27103901164DA9D12; closeout completed with equivalent local checks.
-- Consent/privacy/shared-host/ETag guidance shipped via Studio Ark receipt 01JVHJJ0OK763CB3B3B46AC56A.
-- Private Creative Direction Record intentionally absent from public repo.
+## Blockers (Top 3)
+- No launch-adjacent work possible until external gates clear (see below).
+- Registry SPARKED / local contract FORGE reconciliation authoritative outside this repo (sibling-owned, non-blocking).
+- Audit lens exhausted after 75 sessions; no queued audit-lens work, no second-order candidates.
 
-Next session: Monitor first consenting cohort's freshness/suppression; hold on launch until SHA-bound founder approval and email evidence land.
+## Human-Blocked (with age)
+- Launch HOLD, unchanged since prior sessions:
+  - Delivered + reply-capable football@playfranchisearchitect.com evidence.
+  - SHA-bound founder launch approval.
+  - Authoritative lifecycle reconciliation.
+- Note: no session (including this one) can touch these three external gates.
+
+## Standing Decisions
+- Participating anonymous browsers = denominator.
+- Warming/suppressed/stale/unavailable states are product truth, not gaps.
+- New receipt fields require allowlist/bounded-value/privacy/deletion review.
+- Public JSON snapshot is sole external community-data authority.
+- Simulation engine (src/) known bug classes recorded fixed in context/TRUTH_AUDIT.md; not re-swept.
+
+## Key Files
+- src/community/server.js
+- test/community-server.test.js
+- public/stats.html
+- docs/AUDIT_2026-08-09_SESSION76.{json,md}
+
+Next session: run a fresh live-code audit before assuming any prior audit lens is current.

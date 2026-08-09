@@ -12,6 +12,19 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 
+## Session 76 — Community server branch coverage + stats a11y (2026-08-09)
+
+Source: `docs/AUDIT_2026-08-09_SESSION76.md`.
+
+| Item | Status |
+|------|--------|
+| community-server-branch-coverage — 4 new tests closing untested stale/unavailable/413/400/health/404 branches in src/community/server.js | ✅ Done |
+| stats-period-toggle-aria-controls — aria-controls linkage between /stats period buttons and the atlas region they repaint | ✅ Done |
+| latest-audit-follow-through | Not applicable — this session's own audit is the current one |
+| sparked-flip | Blocked — still missing real football@playfranchisearchitect.com forwarding/copying receipt and current live-origin/routing evidence |
+
+**Verification:** `test/community-server.test.js` 7/7 (up from 3/3); default `npm test` 911/911 direct exit 0 (up from 905/905); Playwright UI 40/40; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight 0 items; doctor 0 blocking.
+
 ## Session 75 — Community intelligence implemented (2026-08-08)
 
 | Item | Status |

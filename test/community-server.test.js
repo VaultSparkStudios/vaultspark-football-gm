@@ -47,6 +47,55 @@ test("ingest validates batches, returns dedupe receipts and never passes unknown
   });
 });
 
+test("snapshot falls back to the last cached aggregate as stale when the store rejects", async () => {
+  const cached = aggregateCommunitySnapshot([], { now: "2026-08-08T12:00:00.000Z" });
+  const store = { snapshot: async () => { throw new Error("db unreachable"); }, health: async () => ({ ok: true }), cache: cached };
+  await withServer(store, async (origin) => {
+    const response = await fetch(`${origin}/community/v1/snapshot`, { headers: { Origin: "https://playfranchisearchitect.com" } });
+    assert.equal(response.status, 200);
+    const body = await response.json();
+    assert.equal(body.status, "stale");
+    assert.match(body.degradation, /last computed aggregate/);
+  });
+});
+
+test("snapshot reports unavailable with 503 when the store rejects and no cache exists", async () => {
+  const store = { snapshot: async () => { throw new Error("db unreachable"); }, health: async () => ({ ok: true }), cache: null };
+  await withServer(store, async (origin) => {
+    const response = await fetch(`${origin}/community/v1/snapshot`, { headers: { Origin: "https://playfranchisearchitect.com" } });
+    assert.equal(response.status, 503);
+    const body = await response.json();
+    assert.equal(body.status, "unavailable");
+    assert.match(body.degradation, /temporarily unavailable/);
+  });
+});
+
+test("ingest rejects an oversized body with 413 and malformed JSON with 400", async () => {
+  const store = { ingest: async () => ({ accepted: 0, duplicates: 0 }), health: async () => ({ ok: true }), snapshot: async () => aggregateCommunitySnapshot([]), cache: null };
+  await withServer(store, async (origin) => {
+    const oversized = "x".repeat(33 * 1024);
+    const tooBig = await fetch(`${origin}/community/v1/events`, { method: "POST", headers: { Origin: "https://playfranchisearchitect.com", "Content-Type": "application/json" }, body: oversized });
+    assert.equal(tooBig.status, 413);
+    const malformed = await fetch(`${origin}/community/v1/events`, { method: "POST", headers: { Origin: "https://playfranchisearchitect.com", "Content-Type": "application/json" }, body: "{not json" });
+    assert.equal(malformed.status, 400);
+  });
+});
+
+test("health endpoint reports store health and unmatched routes return 404", async () => {
+  const store = { health: async () => ({ ok: true, latencyMs: 3 }), snapshot: async () => aggregateCommunitySnapshot([]), cache: null };
+  await withServer(store, async (origin) => {
+    const health = await fetch(`${origin}/health`, { headers: { Origin: "https://playfranchisearchitect.com" } });
+    assert.equal(health.status, 200);
+    const healthBody = await health.json();
+    assert.equal(healthBody.ok, true);
+    assert.equal(healthBody.service, "franchise-architect-community-stats");
+    const versioned = await fetch(`${origin}/community/v1/health`, { headers: { Origin: "https://playfranchisearchitect.com" } });
+    assert.equal(versioned.status, 200);
+    const notFound = await fetch(`${origin}/community/v1/unknown-route`, { headers: { Origin: "https://playfranchisearchitect.com" } });
+    assert.equal(notFound.status, 404);
+  });
+});
+
 test("withdrawal deletes the participant aggregate and IP limiter stores only ephemeral counts", async () => {
   let deleted = null;
   const store = { deleteParticipant: async (id) => { deleted = id; return { deleted: 7 }; }, health: async () => ({ ok: true }), snapshot: async () => aggregateCommunitySnapshot([]), cache: null };

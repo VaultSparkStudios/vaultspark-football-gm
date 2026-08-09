@@ -1,5 +1,10 @@
 # Agent Memory
 
+## Session 76 durable patterns
+
+- A handler branch reachable only under a failure condition (store rejection, oversized body, malformed input) is not proven by reading the code or by its happy-path siblings passing — it needs its own direct test. `src/community/server.js`'s stale/unavailable snapshot fallback shipped in Session 75 undocumented-as-untested; `test/community-server.test.js` now covers it.
+- When an audit lens is this close to exhausted (75 prior sessions against the same codebase), an honest small item count is the correct report. Do not pad a ranked list to look thorough.
+
 ## Session 72 durable patterns
 
 - Long-run simulation truth must be scanned before JSON serialization as well as after simulation; JSON converts

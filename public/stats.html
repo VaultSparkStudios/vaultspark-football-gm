@@ -25,14 +25,14 @@
       </header>
       <section class="community-command-bar" aria-label="Stats period">
         <div role="group" aria-label="Choose reporting period">
-          <button type="button" data-community-period="24h" aria-pressed="false">24H</button>
-          <button type="button" data-community-period="7d" aria-pressed="false">7D</button>
-          <button type="button" data-community-period="30d" class="is-active" aria-pressed="true">30D</button>
+          <button type="button" data-community-period="24h" aria-pressed="false" aria-controls="communityAtlas">24H</button>
+          <button type="button" data-community-period="7d" aria-pressed="false" aria-controls="communityAtlas">7D</button>
+          <button type="button" data-community-period="30d" class="is-active" aria-pressed="true" aria-controls="communityAtlas">30D</button>
         </div>
         <span data-community-atlas-status role="status" aria-live="polite">Loading the latest numbers…</span>
       </section>
       <aside class="community-atlas-insight"><span>COMMUNITY NOTE</span><p data-community-atlas-insight>Checking the latest trends…</p></aside>
-      <div data-community-atlas aria-live="polite" aria-busy="false"><div class="community-skeleton-grid" aria-label="Loading Community Stats"><i></i><i></i><i></i><i></i></div></div>
+      <div id="communityAtlas" data-community-atlas aria-live="polite" aria-busy="false"><div class="community-skeleton-grid" aria-label="Loading Community Stats"><i></i><i></i><i></i><i></i></div></div>
       <section class="community-local-section">
         <div class="community-category-head"><span>YOU</span><div><h2>Your franchise vs. the community</h2><p>Your totals are calculated on this device and stay here.</p></div></div>
         <div class="community-comparison-grid" data-community-comparisons></div>

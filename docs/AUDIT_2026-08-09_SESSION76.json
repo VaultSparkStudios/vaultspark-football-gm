@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-09",
+  "session": 76,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "complete",
+  "summary": {
+    "rankedItems": 2,
+    "combinedPriority": 14.0,
+    "topItem": "community-server-branch-coverage",
+    "source": "live-code-audit-app-release-gate-lens",
+    "openItems": 0,
+    "completedItems": 2,
+    "priorityFormula": "Priority = axis-weighted Impact x Confidence / log2(EffortHours + 2).",
+    "theme": "Close the two real, live-code-verified gaps left after 75 prior sessions: untested Community Stats server fallback/error branches, and a missing programmatic link between the stats period toggle and the region it updates."
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "product rubric with app-release-gate lens: CANON-011 sitemap, CANON-041 mobile parity, CANON-047 theme parity, CANON-048 dual-audience",
+    "staging": "Cloudflare Pages staging plus the existing self-hosted community-stats backend",
+    "source": "targeted general-purpose agent live-code audit of the only subsystem shipped since the last audit (Community Stats, S75), plus a broad TODO/FIXME/Math.random/falsy-laundering sweep of the rest of the repo"
+  },
+  "releaseGate": {
+    "verdict": "IMPLEMENTED — NO LAUNCH-GATE CHANGE",
+    "tests": "Node 911/911 direct exit 0; Playwright 40/40; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight 0 items; doctor 0 blocking.",
+    "doctor": "0 blocking findings; the pre-existing non-blocking registry/lifecycle drift (SPARKED vs local FORGE) is unchanged and sibling-owned.",
+    "constraints": "No production/staging deploy required — both shipped items are test-coverage and static-markup only, with no server or client behavior change."
+  },
+  "axisCoverage": {
+    "featuresDepth": {
+      "evaluated": ["none — codebase is feature-saturated per prior 75 sessions"],
+      "selected": [],
+      "rejected": []
+    },
+    "securityPrivacy": {
+      "evaluated": [
+        "community server stale/unavailable snapshot fallback under DB outage",
+        "oversized/malformed POST body handling"
+      ],
+      "selected": [
+        "community server stale/unavailable snapshot fallback under DB outage",
+        "oversized/malformed POST body handling"
+      ],
+      "rejected": []
+    },
+    "uiUx": {
+      "evaluated": [
+        "aria-controls linkage between stats period toggle and the atlas region it updates"
+      ],
+      "selected": [
+        "aria-controls linkage between stats period toggle and the atlas region it updates"
+      ],
+      "rejected": []
+    }
+  },
+  "recommendedMoves": [
+    "Add direct test coverage for every distinct outcome branch of a live production request handler before trusting its happy-path tests as complete.",
+    "Give programmatic (aria-controls) linkage to any toggle group that repaints a specific region, not just visual/aria-pressed state."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "scope",
+      "candidate": "Full line-by-line re-audit of the simulation engine (src/)",
+      "reason": "Rejected. 75 prior sessions already ran deep audits against this exact bug class (falsy-laundering, RNG leaks, spawn windows, contract-expiry, save-payload budget) and TRUTH_AUDIT.md records them fixed; re-running would be redundant busywork, not a live-code finding."
+    },
+    {
+      "axis": "honesty",
+      "candidate": "Fabricate additional audit items to pad the list",
+      "reason": "Rejected. The dispatched audit agent explicitly checked and cleared TODO/FIXME/HACK, Math.random() usage, and falsy-laundering patterns with no further defects found; reporting 2 items instead of padding to 5+ is the honest result for a near-exhausted codebase."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "HIGH",
+      "category": "Test coverage / reliability",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 3,
+      "priority": 9.5,
+      "slug": "community-server-branch-coverage",
+      "title": "Community Stats server had untested stale/unavailable fallback and error-status branches",
+      "status": "shipped",
+      "premise": "src/community/server.js's createCommunityStatsHandler has ~9 distinct outcome branches (snapshot happy path, snapshot-with-cache stale fallback, snapshot-with-no-cache unavailable/503, oversized-body 413, malformed-JSON 400, /health, /community/v1/health, unmatched-route 404, plus the existing ingest/withdrawal/CORS paths). test/community-server.test.js only exercised the happy-path snapshot, ingest validation/dedupe, and withdrawal — the exact mechanism that keeps the homepage Community Pulse from showing a blank error during a database hiccup was unverified.",
+      "evidence": [
+        "src/community/server.js lines 82-95 (health + snapshot stale/unavailable fallback)",
+        "src/community/server.js lines 22-28 (413/400 body handling)",
+        "src/community/server.js line 116 (404 unmatched route)",
+        "test/community-server.test.js (pre-session: 3 tests, none touching the branches above)"
+      ],
+      "constraint": "New tests must exercise the real handler over a real HTTP server (matching the file's existing withServer harness), not mock the branch away.",
+      "verification": [
+        "stale fallback returns 200 with status:stale when store.cache is set and store.snapshot() rejects",
+        "unavailable fallback returns 503 with status:unavailable when no cache exists and store.snapshot() rejects",
+        "oversized POST body returns 413",
+        "malformed JSON body returns 400",
+        "/health and /community/v1/health return 200 with service name",
+        "unmatched route returns 404"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Add one test for the unavailable/503 branch only." },
+        "L2": { "effortHours": 1, "recipe": "Add direct tests for stale-fallback, unavailable-fallback, 413, 400, /health, and 404 — every previously-unverified branch." },
+        "L3": { "effortHours": 2, "recipe": "L2 plus a fuzzed-body-size test matrix and a concurrent-request race check on the rate limiter." }
+      },
+      "executionEvidence": "Added 4 new tests to test/community-server.test.js covering stale fallback, unavailable/503 fallback, 413/400 body handling, and /health plus 404. test/community-server.test.js now 7/7; full suite 911/911."
+    },
+    {
+      "rank": 2,
+      "tier": "LOW",
+      "category": "Accessibility / dual-audience",
+      "effortHours": 0.25,
+      "impact": 3,
+      "innovation": 1,
+      "priority": 4.5,
+      "slug": "stats-period-toggle-aria-controls",
+      "title": "Stats period toggle buttons lacked aria-controls linking to the region they repaint",
+      "status": "shipped",
+      "premise": "public/stats.html's 24H/7D/30D toggle buttons set aria-pressed correctly but had no aria-controls pointing at the data-community-atlas region they update, so screen-reader users saw the pressed-state change but had no programmatic link to what content changed.",
+      "evidence": [
+        "public/stats.html lines 28-30 (period buttons, aria-pressed only)",
+        "public/stats.html line 35 (data-community-atlas region, no id)"
+      ],
+      "constraint": "Purely additive markup change; no JS or visual behavior change.",
+      "verification": ["all three period buttons declare aria-controls=\"communityAtlas\"", "the atlas region carries id=\"communityAtlas\""],
+      "ladder": {
+        "L1": { "effortHours": 0.25, "recipe": "Add id + aria-controls." },
+        "L2": { "effortHours": 0.25, "recipe": "Same — this item has no meaningful larger version." }
+      },
+      "executionEvidence": "Added id=\"communityAtlas\" to the atlas region and aria-controls=\"communityAtlas\" to all three period buttons in public/stats.html."
+    }
+  ],
+  "secondOrderCandidates": []
+}
