@@ -1,27 +1,26 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-08 (Session 75 closeout) -->
+<!-- generated-at: 2026-08-09 (Session 76 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S75 ══════╗
-║  Date: 2026-08-08  ·  SIL: 998/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S76 ══════╗
+║  Date: 2026-08-09  ·  SIL: 997/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: claude                                 ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Community Stats is implemented and live on production, stabl  ║
-║  ✓ Collection is explicit opt-in. Only versioned, allowlisted,   ║
-║  ✓ The aggregate authority uses one-way participant keys, reque  ║
-║  ✓ Homepage Community Pulse and the full nine-category Stats At  ║
-║  ✓ Live state is honestly warming with zero participating brows  ║
+║  ✓ Session 75's Community Stats remains live and unchanged in b  ║
+║  ✓ `src/community/server.js`'s stale/unavailable snapshot fallb  ║
+║  ✓ `public/stats.html`'s 24H/7D/30D period toggle buttons now d  ║
+║  ✓ No server, client, or gameplay behavior changed. No deploy w  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 998/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 997/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
-║    Momentum           100  ██████████                            ║
+║    Momentum           97   ██████████                            ║
 ║    Engagement         100  ██████████                            ║
-║    Process Qual       98   ██████████                            ║
+║    Process Qual       100  ██████████                            ║
 ║    Coherence          100  ██████████                            ║
 ║    Security           100  ██████████                            ║
 ║    Ecosystem          100  ██████████                            ║
@@ -29,20 +28,20 @@
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  ✓ context/CURRENT_STATE.md                                      ║
-║  ✓ context/TASK_BOARD.md                                         ║
-║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
-║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  · context/CURRENT_STATE.md                                      ║
+║  · context/TASK_BOARD.md                                         ║
+║  · context/LATEST_HANDOFF.md                                     ║
+║  · logs/WORK_LOG.md                                              ║
+║  · context/DECISIONS.md                                          ║
+║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  ✓ context/TRUTH_AUDIT.md                                        ║
-║  ✓ context/PROJECT_STATUS.json                                   ║
+║  · context/TRUTH_AUDIT.md                                        ║
+║  · context/PROJECT_STATUS.json                                   ║
 ║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 10 files  ·  M:10 A:0 D:0 ?:0                          ║
-║  Ahead: 8  ·  Behind: 0                                          ║
+║  Changes: 2 files  ·  M:0 A:0 D:0 ?:2                            ║
+║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
@@ -52,8 +51,8 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         905/905 · STALE                                  ║
-║  IGNIS:         6d ago                                           ║
+║  Tests:         911/911                                          ║
+║  IGNIS:         7d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  1d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝

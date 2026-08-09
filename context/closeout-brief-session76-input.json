@@ -1,0 +1,52 @@
+{
+  "session": "S76",
+  "date": "2026-08-09",
+  "repo": "franchise-architect",
+  "headline": "Closed two live-code-verified gaps from a fresh, near-exhausted audit: Community Stats server error/fallback branch coverage and a stats-page accessibility fix. No feature or deploy change.",
+  "items": [
+    {
+      "title": "Community Stats server branch coverage",
+      "projectImpact": 6,
+      "ecosystemImpact": 3,
+      "evidence": "4 new tests prove the stale/unavailable snapshot fallback, oversized/malformed-body rejection, health endpoint, and unmatched-route handling behave as documented under failure, not just on the happy path. test/community-server.test.js 3 -> 7."
+    },
+    {
+      "title": "Stats period toggle accessibility",
+      "projectImpact": 2,
+      "ecosystemImpact": 1,
+      "evidence": "24H/7D/30D toggle buttons now declare aria-controls pointing at the atlas region they repaint."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "Fresh live-code audit next session",
+      "evidence": "This session's 2-item audit lens is now exhausted; the next session should re-audit rather than assume it is still current."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "Reply-capable on-domain email",
+      "evidence": "football@playfranchisearchitect.com delivery and reply-as identity remain unproved."
+    },
+    {
+      "title": "Lifecycle authority",
+      "evidence": "Registry SPARKED and local FORGE remain unreconciled; Doctor keeps the warning visible."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "No padding",
+      "evidence": "The dispatched audit agent found and reported exactly 2 real items on a near-exhausted lens rather than manufacturing additional busywork to look thorough."
+    },
+    {
+      "title": "No deploy claimed",
+      "evidence": "Both shipped items are test-only and static-markup changes; staging/production remain at the Session 75 revision and this brief does not claim otherwise."
+    }
+  ],
+  "diffStat": {
+    "files": 14,
+    "insertions": 395,
+    "deletions": 141,
+    "suite": "Node 911/911 direct exit 0; Playwright 40/40; Pages build/smoke; windows-hide; Wave guard; secrets audit; blocker preflight 0 items; doctor blockingFailing 0"
+  }
+}
