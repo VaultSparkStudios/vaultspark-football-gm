@@ -25,9 +25,9 @@ export function hashParticipant(participantId, pepper) {
 }
 
 export class CommunityStore {
-  constructor({ databaseUrl, keyPath = path.resolve("data/community-stats/pepper"), clock = () => new Date() } = {}) {
-    if (!databaseUrl) throw new Error("DATABASE_URL is required for Community Stats.");
-    this.pool = new Pool({ connectionString: databaseUrl, max: 6, idleTimeoutMillis: 30_000, connectionTimeoutMillis: 5_000 });
+  constructor({ databaseUrl, keyPath = path.resolve("data/community-stats/pepper"), clock = () => new Date(), pool = null } = {}) {
+    if (!pool && !databaseUrl) throw new Error("DATABASE_URL is required for Community Stats.");
+    this.pool = pool || new Pool({ connectionString: databaseUrl, max: 6, idleTimeoutMillis: 30_000, connectionTimeoutMillis: 5_000 });
     this.keyPath = keyPath;
     this.clock = clock;
     this.pepper = null;

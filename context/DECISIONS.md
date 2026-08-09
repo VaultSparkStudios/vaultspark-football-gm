@@ -965,3 +965,11 @@ One-shot visibility probes are not waits. A journey that starts a weekly command
 
 **D-S74.7 — Stable-origin convergence retries transient read exceptions.**
 The existing staging attempt/delay bounds apply to thrown read-only Cloudflare authority errors and blocked or thrown provenance probes; mutations remain one-shot. Exhaustion returns an explicit blocked diagnostic and never claims verification. *Why:* an exact deployment can land while a control-plane or edge read resets, and retry authority must survive expected convergence without replaying writes.
+
+## Session 77 — 2026-08-09
+
+**D-S77.1 — A class that owns a real external resource carries a constructor-injection seam from the start.**
+`CommunityStore` hardcoded `new Pool(...)` in its constructor, which meant no test could exercise its actual Postgres-facing logic (abuse rate limiting, dedup, retention, cache/truncation, pepper hashing) without a live database — every existing test mocked the layer above it instead, which looked like coverage but wasn't. *Why:* a mocked layer one level up proves the mock's contract, not the resource-owning class's correctness; DB pools, file handles, and network clients should be injectable from day one.
+
+**D-S77.2 — "The latest audit must have shipped X" assertions must be conditional on X existing, not unconditional.**
+`test/studio-protocol-smoke.test.js`'s innovation-pack check required the latest audit sidecar to record shipped second-order work, which broke by construction for Session 76's honestly-zero-second-order audit — the same brittleness pattern the test's own comment already documents being rewritten once to avoid (a prior version hardcoded one session's slugs). *Why:* an audit lens near exhaustion after dozens of sessions will legitimately ship zero second-order candidates sometimes; a test enforcing "always some" punishes honesty instead of verifying the real guarantee (when shipped work exists, it's surfaced).

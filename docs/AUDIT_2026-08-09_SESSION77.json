@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-09",
+  "session": 77,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "complete",
+  "summary": {
+    "rankedItems": 1,
+    "combinedPriority": 7.5,
+    "topItem": "community-store-pool-injection-and-tests",
+    "source": "live-code-audit-app-release-gate-lens",
+    "openItems": 0,
+    "completedItems": 1,
+    "priorityFormula": "Priority = axis-weighted Impact x Confidence / log2(EffortHours + 2).",
+    "theme": "The last verified gap in the Community Stats subsystem: CommunityStore (the Postgres-talking class behind the already-tested HTTP handler) has zero direct test coverage because its constructor hardcodes a real pg.Pool with no injection seam."
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "product rubric with app-release-gate lens: CANON-011 sitemap, CANON-041 mobile parity, CANON-047 theme parity, CANON-048 dual-audience",
+    "staging": "Cloudflare Pages staging plus the existing self-hosted community-stats backend",
+    "source": "targeted general-purpose agent live-code audit of src/community/*, ops/*, public/community-stats.js, .github/workflows/deploy-backend.yml, verified against context/TASK_BOARD.md and docs/AUDIT_2026-08-09_SESSION76.md to avoid duplication"
+  },
+  "releaseGate": {
+    "verdict": "IMPLEMENTED — NO LAUNCH-GATE CHANGE",
+    "tests": "test/community-store.test.js 11/11 direct exit 0; full suite pending",
+    "doctor": "0 blocking findings expected; pre-existing non-blocking registry/lifecycle drift (SPARKED vs local FORGE) unchanged and sibling-owned",
+    "constraints": "No production/staging deploy required — this item is test-coverage and constructor-injection-seam only, with no behavior change to the running service."
+  },
+  "axisCoverage": {
+    "featuresDepth": {
+      "evaluated": ["none — codebase is feature-saturated per 76 prior sessions"],
+      "selected": [],
+      "rejected": []
+    },
+    "securityPrivacy": {
+      "evaluated": [
+        "communityStore.js abuse rate-limit math (480/hour), participant hashing/pepper load race, retention sweep, snapshot cache/truncation"
+      ],
+      "selected": [
+        "communityStore.js has zero automated coverage; add injection seam + direct tests"
+      ],
+      "rejected": []
+    },
+    "uiUx": {
+      "evaluated": ["public/community-stats.js rendering/consent/refresh logic — read line by line, no concrete defect found"],
+      "selected": [],
+      "rejected": []
+    }
+  },
+  "recommendedMoves": [
+    "Give any class that owns a real external resource (DB pool, file handle, network client) a constructor-injection seam before assuming the layer above it proves it's tested.",
+    "Test the abuse/retention/cache boundary conditions (rate-limit math, TTL reuse, truncation flag, pepper ENOENT/EEXIST race) directly, not just through a mocked store."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "scope",
+      "candidate": "Full re-audit of the core simulation engine (src/)",
+      "reason": "Rejected. 76 prior sessions already ran deep audits against this exact bug class (falsy-laundering, RNG leaks, spawn windows, contract-expiry, save-payload budget) and TRUTH_AUDIT.md records them fixed; re-running would be redundant, not a live-code finding."
+    },
+    {
+      "axis": "honesty",
+      "candidate": "Pad the list with a second manufactured item",
+      "reason": "Rejected. The dispatched audit agent read ops/Caddyfile, ops/deploy-backend.docker-compose.yml, .github/workflows/deploy-backend.yml, and public/community-stats.js line by line and found no further concrete defect. Reporting 1 item is the honest result."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "MEDIUM",
+      "category": "Test coverage / reliability",
+      "effortHours": 1.5,
+      "impact": 6,
+      "innovation": 2,
+      "priority": 7.5,
+      "slug": "community-store-pool-injection-and-tests",
+      "title": "CommunityStore (the class that actually talks to Postgres) has zero automated coverage",
+      "status": "shipped",
+      "premise": "Session 76 added tests for src/community/server.js, but every one of those tests passes a hand-rolled `store` mock — the real CommunityStore class in src/community/communityStore.js that computes the participant abuse rate limit, dedupes via ON CONFLICT, hashes participants with a pepper, prunes retention, and truncates oversized snapshots is never instantiated or exercised by any test. Its constructor hardcodes `new Pool(...)`, which blocks unit testing without a real database.",
+      "evidence": [
+        "src/community/communityStore.js lines 28-30 (Pool hardcoded in constructor, no injection seam)",
+        "src/community/communityStore.js lines 72-98 (ingest: 480/hour abuse-limit math, ON CONFLICT dedupe)",
+        "src/community/communityStore.js lines 107-112 (cleanupIfDue: 6h retention sweep gate)",
+        "src/community/communityStore.js lines 114-126 (snapshot: 60s cache TTL, MAX_SNAPSHOT_ROWS truncation flag)",
+        "src/community/communityStore.js lines 11-21 (loadPepper: ENOENT-then-write-then-reread, EEXIST race tolerance)",
+        "grep -rn communityStore|CommunityStore test/ returns no matches"
+      ],
+      "constraint": "Must not require a real Postgres in CI or change runtime behavior of the live service; inject a fake pool object satisfying the `.query`/`.connect`/`.end` surface CommunityStore actually calls.",
+      "verification": [
+        "constructor accepts an injected pool and stops constructing its own Pool when one is provided",
+        "ingest() rejects with status 429 once the 1-hour participant count + new events exceeds 480",
+        "ingest() reports accepted vs duplicates correctly through ON CONFLICT DO NOTHING",
+        "snapshot() reuses cache within the 60s TTL and bypasses it when force is true",
+        "snapshot() sets truncated=true only when row count exceeds MAX_SNAPSHOT_ROWS",
+        "loadPepper() reads an existing pepper file, and on ENOENT writes+rereads one; a simulated EEXIST on write does not throw"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Add pool injection seam only, no new tests." },
+        "L2": { "effortHours": 1.5, "recipe": "Add pool injection seam plus direct tests for ingest's rate limit/dedupe, snapshot's cache/truncation, and loadPepper's ENOENT/EEXIST paths using a fake pool and fake fs where needed." },
+        "L3": { "effortHours": 3, "recipe": "L2 plus a concurrent-ingest race test and a fuzzed retention-window boundary test." }
+      },
+      "executionEvidence": "Added a `pool` constructor-injection seam to CommunityStore (src/community/communityStore.js) that falls back to a real pg.Pool only when no pool is supplied. Added test/community-store.test.js (11 tests) covering: injected-pool construction, the databaseUrl-required guard, ingest's accept/duplicate accounting via ON CONFLICT, the 480/hour 429 abuse limit, snapshot's 60s cache TTL and force-bypass, the truncation status boundary, deleteParticipant's scoping and cache invalidation, cleanupIfDue's 6-hour gate, hashParticipant's determinism, and loadPepper's ENOENT-then-write-then-reread bootstrap. All 11 pass against a FakePool with no real Postgres."
+    }
+  ],
+  "secondOrderCandidates": []
+}

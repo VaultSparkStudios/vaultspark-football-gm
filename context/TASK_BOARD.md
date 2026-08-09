@@ -12,6 +12,18 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 
+## Session 77 — CommunityStore pool injection + direct coverage (2026-08-09)
+
+Source: `docs/AUDIT_2026-08-09_SESSION77.md`.
+
+| Item | Status |
+|------|--------|
+| community-store-pool-injection-and-tests — constructor-injection seam for `pg.Pool` + 11 direct tests covering abuse limit, dedupe, cache/TTL, truncation, deletion, retention gate, pepper bootstrap | ✅ Done |
+| shard-coverage-fix — registered `test/community-store.test.js` in `scripts/run-test-shard.mjs` (pre-existing shard-membership guard would otherwise silently skip it in CI) | ✅ Done (found during verification, not audit-ranked) |
+| innovation-pack-assertion-brittleness-fix — `studio-protocol-smoke.test.js` no longer requires the *latest* audit to have shipped second-order work unconditionally; only asserts the pack surfaces it when it exists | ✅ Done (found during verification, not audit-ranked) |
+
+**Verification:** `test/community-store.test.js` 11/11; default `npm test` 922/922 direct exit 0 (up from 911/911); Playwright UI 40/40; windows-hide clean; doctor 0 blocking.
+
 ## Session 76 — Community server branch coverage + stats a11y (2026-08-09)
 
 Source: `docs/AUDIT_2026-08-09_SESSION76.md`.

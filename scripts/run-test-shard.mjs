@@ -61,6 +61,7 @@ export const SHARDS = {
     "test/community-event-contract.test.js",
     "test/community-aggregate.test.js",
     "test/community-server.test.js",
+    "test/community-store.test.js",
     "test/deterministic-ids.test.js",
     "test/decision-anthology.test.js",
     "test/decision-archive.test.js",
