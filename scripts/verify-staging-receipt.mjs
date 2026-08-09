@@ -39,7 +39,8 @@ export async function buildStagingReceiptReport({ expected, baseUrl, fixture = n
     stagingContract: {
       sameOriginRequired: true,
       healthSchemaRequired: true,
-      exactDeployIdentityRequired: true
+      exactDeployIdentityRequired: true,
+      declaredBootAssetsRequired: true
     }
   };
 }

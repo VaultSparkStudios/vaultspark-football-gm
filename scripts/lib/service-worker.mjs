@@ -36,10 +36,10 @@ export function shouldPrecache(relativePath) {
   const normalized = relativePath.replace(/\\/g, "/");
   if (PRECACHE_EXCLUDES.includes(normalized)) return false;
   if (normalized === "robots.txt" || normalized === "sitemap.xml") return false;
-  // Every built HTML page references the content-hashed stylesheet; the plain
-  // styles.css copy exists only for back-compat direct hits and smoke, so
-  // precaching it would store the same 150 KB twice (S70).
-  if (normalized === "styles.css") return false;
+  // Built HTML references content-hashed copies. The plain assets remain for
+  // back-compat direct hits, so precaching them would duplicate bytes and can
+  // preserve stale Community Pulse language under its former URL.
+  if (["styles.css", "community-stats.js"].includes(normalized)) return false;
   return PRECACHE_EXTENSIONS.has(path.extname(normalized).toLowerCase());
 }
 

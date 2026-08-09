@@ -26,6 +26,8 @@ async function fixtureMount() {
   await fs.writeFile(path.join(dir, "lib", "core.js"), "export const x = 1;");
   await fs.writeFile(path.join(dir, "styles.css"), ":root{}");
   await fs.writeFile(path.join(dir, "styles.abc123def0.css"), ":root{}");
+  await fs.writeFile(path.join(dir, "community-stats.js"), "export const copy = 'old';");
+  await fs.writeFile(path.join(dir, "community-stats.abc123def0.js"), "export const copy = 'new';");
   await fs.writeFile(path.join(dir, "_health"), "{}");
   await fs.writeFile(path.join(dir, "deploy-manifest.json"), "{}");
   await fs.writeFile(path.join(dir, "_headers"), "X: y");
@@ -42,6 +44,8 @@ test("evidence and freshness surfaces are never precached", () => {
   assert.equal(shouldPrecache("photo.bin"), false, "unknown binaries stay out of the manifest");
   assert.equal(shouldPrecache("styles.css"), false, "plain styles.css duplicates the hashed stylesheet (S70)");
   assert.equal(shouldPrecache("styles.abc123def0.css"), true, "the hashed stylesheet is the one HTML references");
+  assert.equal(shouldPrecache("community-stats.js"), false, "the stale-prone plain Community Pulse module is not precached");
+  assert.equal(shouldPrecache("community-stats.abc123def0.js"), true, "the content-hashed Community Pulse module is precached");
 });
 
 test("manifest is deterministic, content-versioned, and byte-accounted", async () => {
@@ -49,8 +53,9 @@ test("manifest is deterministic, content-versioned, and byte-accounted", async (
   const first = await buildPrecacheManifest(dir);
   const second = await buildPrecacheManifest(dir);
   assert.deepEqual(first, second, "same content, same manifest");
-  assert.equal(first.assetCount, 4, "html + 2 js + hashed css (plain styles.css deduped)");
+  assert.equal(first.assetCount, 5, "html + 2 js + hashed CSS + hashed Community Pulse (plain assets deduped)");
   assert.ok(!first.assets.some((asset) => asset.url === "./styles.css"), "plain styles.css never precached twice");
+  assert.ok(!first.assets.some((asset) => asset.url === "./community-stats.js"), "plain Community Pulse module is never precached");
   assert.ok(first.totalBytes > 0);
   assert.ok(first.assets.every((asset) => asset.url.startsWith("./")));
   assert.ok(!first.assets.some((asset) => asset.url.includes("_health")));
@@ -87,6 +92,7 @@ test("the build injects registration into app shells and the app listens", async
   const buildSource = await fs.readFile(new URL("../scripts/build-pages.mjs", import.meta.url), "utf8");
   assert.match(buildSource, /emitServiceWorker\(outDir\)/);
   assert.match(buildSource, /SW_REGISTRATION_SNIPPET/);
+  assert.match(buildSource, /emitHashedCommunityStats\(\)/, "Community Pulse ships at a cache-safe content URL");
   const appSource = await fs.readFile(new URL("../public/app.js", import.meta.url), "utf8");
   assert.match(appSource, /vsfgm:sw-updated/, "app shows the update toast");
   const devHtml = await fs.readFile(new URL("../public/game.html", import.meta.url), "utf8");

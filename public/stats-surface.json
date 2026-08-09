@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "name": "Franchise Architect: Football Community Stats Atlas",
-  "route": "https://playfranchisearchitect.com/stats.html",
+  "route": "https://playfranchisearchitect.com/stats",
   "machineReadable": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
   "precomputed": true,
   "refreshPolicy": "Server snapshot at most once per 60 seconds; visible clients check at most once per 30 seconds.",

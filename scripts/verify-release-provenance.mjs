@@ -41,18 +41,27 @@ export async function buildReleaseProvenanceReport({ expected, baseUrl, fixture 
   const manifestResult = await fetchRoute("/deploy-manifest.json");
   const assetRoute = `/${String(expected?.styleAsset || "styles.css").replace(/^\/+/, "")}`;
   const assetResult = await fetchRoute(assetRoute);
+  const communityStatsAsset = expected?.communityStatsAsset || null;
+  const communityStatsResult = communityStatsAsset
+    ? await fetchRoute(`/${String(communityStatsAsset).replace(/^\/+/, "")}`)
+    : null;
   const liveHealth = parseBody(healthResult);
   const liveManifest = parseBody(manifestResult);
   const sameOriginChecks = requireSameOrigin ? [
     { name: "health stayed on staging origin", ok: stayedOnOrigin(healthResult, new URL(origin).origin) },
     { name: "manifest stayed on staging origin", ok: stayedOnOrigin(manifestResult, new URL(origin).origin) },
-    { name: "style asset stayed on staging origin", ok: stayedOnOrigin(assetResult, new URL(origin).origin) }
+    { name: "style asset stayed on staging origin", ok: stayedOnOrigin(assetResult, new URL(origin).origin) },
+    ...(communityStatsAsset ? [{ name: "Community Stats asset stayed on staging origin", ok: stayedOnOrigin(communityStatsResult, new URL(origin).origin) }] : [])
   ] : [];
   const checks = [
     ...sameOriginChecks,
     { name: "health reachable", ok: healthResult?.ok === true },
     { name: "manifest reachable", ok: manifestResult?.ok === true },
     { name: "style asset reachable", ok: assetResult?.ok === true },
+    ...(communityStatsAsset ? [
+      { name: "Community Stats asset reachable", ok: communityStatsResult?.ok === true },
+      { name: "Community Stats asset identity", ok: Boolean(liveHealth?.communityStatsAsset === communityStatsAsset && liveManifest?.communityStatsAsset === communityStatsAsset), expected: communityStatsAsset, observed: liveManifest?.communityStatsAsset || liveHealth?.communityStatsAsset || null }
+    ] : []),
     { name: "source revision", ok: Boolean(expected?.sourceRevision && liveHealth?.sourceRevision === expected.sourceRevision && liveManifest?.sourceRevision === expected.sourceRevision), expected: expected?.sourceRevision, observed: liveManifest?.sourceRevision || liveHealth?.sourceRevision || null },
     { name: "artifact fingerprint", ok: Boolean(expected?.artifactFingerprint?.digest && JSON.stringify(liveHealth?.artifactFingerprint) === JSON.stringify(expected.artifactFingerprint) && JSON.stringify(liveManifest?.artifactFingerprint) === JSON.stringify(expected.artifactFingerprint)), expected: expected?.artifactFingerprint?.digest || null, observed: liveManifest?.artifactFingerprint?.digest || liveHealth?.artifactFingerprint?.digest || null },
     { name: "style asset identity", ok: Boolean(expected?.styleAsset && liveHealth?.styleAsset === expected.styleAsset && liveManifest?.styleAsset === expected.styleAsset), expected: expected?.styleAsset, observed: liveManifest?.styleAsset || liveHealth?.styleAsset || null },

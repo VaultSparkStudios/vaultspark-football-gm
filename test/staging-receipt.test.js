@@ -9,7 +9,8 @@ const expected = {
   repository: "VaultSparkStudios/vaultspark-football-gm",
   sourceRevision: "session52",
   artifactFingerprint: { algorithm: "sha256", digest: "a".repeat(64), files: 42, exclusions: ["_health", "deploy-manifest.json"] },
-  styleAsset: "styles.session52.css"
+  styleAsset: "styles.session52.css",
+  communityStatsAsset: "community-stats.session52.js"
 };
 
 function response(route, body, { origin = "https://staging.example.test", redirect = false } = {}) {
@@ -32,6 +33,7 @@ function fixture({ crossOriginHealth = false } = {}) {
       sourceRevision: expected.sourceRevision,
       artifactFingerprint: expected.artifactFingerprint,
       styleAsset: expected.styleAsset,
+      communityStatsAsset: expected.communityStatsAsset,
       launchReady: false
     }, crossOriginHealth ? { origin: "https://production.example.test", redirect: true } : {}),
     "/deploy-manifest.json": response("/deploy-manifest.json", expected),
@@ -40,6 +42,12 @@ function fixture({ crossOriginHealth = false } = {}) {
       statusCode: 200,
       body: "body{}",
       chain: [{ url: `${baseUrl}styles.session52.css`, statusCode: 200 }]
+    },
+    "/community-stats.session52.js": {
+      ok: true,
+      statusCode: 200,
+      body: "export {};",
+      chain: [{ url: `${baseUrl}community-stats.session52.js`, statusCode: 200 }]
     }
   } };
 }
@@ -48,6 +56,16 @@ test("same-origin staging receipts prove exact health, revision, asset, and repo
   const report = await buildStagingReceiptReport({ expected, baseUrl, fixture: fixture() });
   assert.equal(report.summary.status, "verified");
   assert.equal(report.summary.checksPassed, report.summary.checksTotal);
+  assert.equal(report.checks.find((check) => check.name === "Community Stats asset reachable").ok, true);
+});
+
+test("staging stays blocked while the declared Community Stats asset is missing", async () => {
+  const missing = fixture();
+  missing.routes["/community-stats.session52.js"].ok = false;
+  missing.routes["/community-stats.session52.js"].statusCode = 404;
+  const report = await buildStagingReceiptReport({ expected, baseUrl, fixture: missing });
+  assert.equal(report.summary.status, "blocked");
+  assert.equal(report.checks.find((check) => check.name === "Community Stats asset reachable").ok, false);
 });
 
 test("cross-origin redirect is HOLD even when the final body looks healthy", async () => {

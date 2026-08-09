@@ -33,11 +33,11 @@
     },
     {
       "label": "Community Stats",
-      "url": "https://playfranchisearchitect.com/stats.html"
+      "url": "https://playfranchisearchitect.com/stats"
     }
   ],
   "communityStats": {
-    "page": "https://playfranchisearchitect.com/stats.html",
+    "page": "https://playfranchisearchitect.com/stats",
     "snapshot": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/snapshot",
     "descriptor": "https://playfranchisearchitect.com/stats-surface.json",
     "denominator": "participating anonymous browsers",

@@ -68,6 +68,24 @@ test("index footer links the landing marketing page", () => {
   assert.match(index, /href="\.\/landing\.html"/, "index links landing.html");
 });
 
+test("Community Stats uses its clean canonical route and player-first homepage copy", () => {
+  const index = fs.readFileSync(new URL("../public/index.html", import.meta.url), "utf8");
+  const stats = fs.readFileSync(new URL("../public/stats.html", import.meta.url), "utf8");
+  const client = fs.readFileSync(new URL("../public/community-stats.js", import.meta.url), "utf8");
+  assert.match(index, /href="\/stats"/, "homepage links the redirect-free canonical route");
+  assert.doesNotMatch(index, /href="\.\/stats\.html"/, "homepage does not send players through the HTML redirect");
+  assert.match(stats, /rel="canonical" href="https:\/\/playfranchisearchitect\.com\/stats"/);
+  assert.doesNotMatch(index, /participating football architects|anonymous, aggregate|refreshed near live/i);
+  assert.doesNotMatch(stats, /allowlisted game receipts|bounded local ledger/i);
+  assert.doesNotMatch(client, /eligible receipts|Live aggregate unavailable|n=\$\{/i);
+  assert.doesNotMatch(client, /stat\.interpretation|period\.insights/, "the public UI never renders backend analytics language directly");
+  assert.match(client, /PLAYER_STAT_DESCRIPTIONS/, "every expanded metric uses curated player-language copy");
+  assert.match(client, /periodStatus !== "live"/, "warming or private samples never claim a percentile rank");
+  assert.match(client, /Share anonymous game stats/);
+  assert.match(client, /data-community-freshness.*Temporarily unavailable/, "failed loads resolve the homepage status instead of leaving Connecting visible");
+  assert.doesNotMatch(client, /Stats Atlas is offline/, "error copy remains player-facing");
+});
+
 test("primary public pages link contact, privacy, and terms", () => {
   for (const file of ["../public/index.html", "../public/game.html", "../public/landing.html"]) {
     const source = fs.readFileSync(new URL(file, import.meta.url), "utf8");

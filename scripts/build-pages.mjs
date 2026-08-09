@@ -39,6 +39,7 @@ const browserEntryPoints = [path.join(srcDir, "app", "api", "localApiRuntime.js"
 // serves fresh CSS via a brand-new URL (guaranteed cache miss) — no stale-theme
 // window. styles.css is still emitted for back-compat / smoke assertions.
 let hashedStyleHref = "styles.css";
+let hashedCommunityStatsSrc = "community-stats.js";
 const htmlPages = [
   "index.html",
   "stats.html",
@@ -215,6 +216,12 @@ function injectHtmlDefaults(html, pagePath) {
     // Rewrite ./styles.css (optionally with an existing ?query) to the hashed file.
     next = next.replace(/href="\.\/styles\.css(?:\?[^"]*)?"/g, `href="./${hashedStyleHref}"`);
   }
+  if (hashedCommunityStatsSrc !== "community-stats.js") {
+    // Community Pulse updates must not inherit a stale custom-domain edge or
+    // service-worker cache entry. A content-derived URL makes every copy
+    // change a new request while keeping the source module readable in public/.
+    next = next.replace(/src="\.\/community-stats\.js(?:\?[^"]*)?"/g, `src="./${hashedCommunityStatsSrc}"`);
+  }
   if (!next.includes('rel="canonical"')) {
     next = next.replace("</title>", `</title>\n    <link rel=\"canonical\" href=\"${canonicalUrl}\" />`);
   }
@@ -277,6 +284,15 @@ async function emitHashedStylesheet() {
   return hashedStyleHref;
 }
 
+async function emitHashedCommunityStats() {
+  const sourcePath = path.join(outDir, "community-stats.js");
+  const source = await fs.readFile(sourcePath, "utf8");
+  const hash = createHash("sha256").update(source).digest("hex").slice(0, 10);
+  hashedCommunityStatsSrc = `community-stats.${hash}.js`;
+  await fs.writeFile(path.join(outDir, hashedCommunityStatsSrc), source, "utf8");
+  return hashedCommunityStatsSrc;
+}
+
 // Boot-payload receipt (S70): what a first paint actually costs vs what stays
 // behind the lazy runtime import. Recomputed every build so payload regressions
 // are visible in the deploy manifest instead of anecdotal.
@@ -326,6 +342,7 @@ async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
     sourceRevision,
     artifactFingerprint,
     styleAsset: hashedStyleHref,
+    communityStatsAsset: hashedCommunityStatsSrc,
     basePath,
     assetBasePath,
     publishedMounts,
@@ -342,6 +359,7 @@ async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
     sourceRevision,
     artifactFingerprint,
     styleAsset: hashedStyleHref,
+    communityStatsAsset: hashedCommunityStatsSrc,
     edgePolicyFingerprint: edgePolicy.policyFingerprint,
     edgePolicyAppliedToHostedOrigin: false,
     generatedAt,
@@ -362,6 +380,7 @@ async function main() {
   await copyDir(publicDir, outDir);
   await copyBrowserModules();
   await emitHashedStylesheet();
+  await emitHashedCommunityStats();
   for (const pageName of htmlPages) {
     await writeHtml(pageName);
   }

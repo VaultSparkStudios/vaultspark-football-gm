@@ -18,7 +18,7 @@ Community Stats is an optional, near-live aggregate of successful Franchise Arch
 - `DELETE /community/v1/participation` — deletes receipts associated with the supplied anonymous browser identifier.
 - `GET /community/v1/health` — database/schema readiness.
 
-The routes are exposed through `api-franchise-architect-football.vaultsparkstudios.com`. The human atlas is `/stats.html`; `public/stats-surface.json` is the checkable CANON-054 descriptor.
+The routes are exposed through `api-franchise-architect-football.vaultsparkstudios.com`. The canonical human atlas is `/stats` (source: `public/stats.html`); `public/stats-surface.json` is the checkable CANON-054 descriptor.
 
 ## Categories
 

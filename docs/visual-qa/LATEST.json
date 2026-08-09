@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-08-08T06:30:39.986Z",
+  "capturedAt": "2026-08-09T08:16:21.642Z",
   "sourceRevision": "s75-worktree",
-  "artifact": "community-stats:a798cc6156465fb2912716c2db3eb5a377fde11ffe5a9cf766684d6699881b15",
+  "artifact": "community-stats:32455e2ab0f3c74d00d98f66a764fa1ad12748f79f093ccaf2fa8f0820733f42",
   "themes": [
     "dark",
     "light"
@@ -10,7 +10,7 @@
   "captures": [
     {
       "file": "s75-desktop-homepage-dark.png",
-      "sha256": "7dc451111095b7755fc31e062454098a729a5c9a89b29e026610c063dfba2b84",
+      "sha256": "1a2d9bb1fa18f2356dd3727c42a74ce0936cab73f79bf8e806d793742d5b215c",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -20,7 +20,7 @@
     },
     {
       "file": "s75-desktop-stats-atlas-dark.png",
-      "sha256": "291c851876ec240f572ce51a40b700114ab901655516e60f04b4924838a83df7",
+      "sha256": "119faeb6dd495457da8e6c92be9da3f1a3cebe65ea97d29b87bbeab1af96dc18",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -30,7 +30,7 @@
     },
     {
       "file": "s75-mobile-homepage-dark.png",
-      "sha256": "790a1dba0984b3ab900df81c551e516fad9721faa410a613d598a11cd5703d8a",
+      "sha256": "05d8e8bba2d42fd79786a4774fc99215b2e83f2e4c72db47cba124a7e09910ff",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -40,7 +40,7 @@
     },
     {
       "file": "s75-mobile-stats-atlas-dark.png",
-      "sha256": "d61ed5124aefdaab8a1027c7e02bd926758b792359985cde5f2cdf891839f25d",
+      "sha256": "d824b957d652616d0d2973835a31b7462e0a7627b4eeb04d284f71d293a5aaa2",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -50,7 +50,7 @@
     },
     {
       "file": "s75-desktop-homepage-light.png",
-      "sha256": "50424fa69d7e003d03f927ae939465725041e92c59ce33beb05d2b62322c80eb",
+      "sha256": "b946a9530131a063764af607f9e56ccb156dc5a4a4b4ae543f8c58c1db43ae23",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -60,7 +60,7 @@
     },
     {
       "file": "s75-desktop-stats-atlas-light.png",
-      "sha256": "b2dad887cb617ca8b7cf93582250f266cf4fa0b6b6e5d12d9aaab03786b0990a",
+      "sha256": "fbdfb84ebaf1532c3e226917ed4f1c712683fd757e5afa16ea6bc5a2da6f76aa",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -70,7 +70,7 @@
     },
     {
       "file": "s75-mobile-homepage-light.png",
-      "sha256": "4b6cf9ce8906712ded5bfb8961c30996cc5280f9027df2fd76e68e78951fa0c1",
+      "sha256": "f816e3325ae56abadf1841dd8db5ddf5f528645b9ea0ec5b7dba7fb076851c41",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -80,7 +80,7 @@
     },
     {
       "file": "s75-mobile-stats-atlas-light.png",
-      "sha256": "db1cd1714720f0eb78915a81989fc0932e79579d52b8294d3c0b1252b593f06b",
+      "sha256": "f97db1a2b90290327bed2de67d989e8ab8ac1cbcf19a7d7f7066c6d0428f5049",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -93,15 +93,16 @@
     "renderedPixelsReviewed": true,
     "reviewer": "codex-gpt-5",
     "findings": [
-      "Eight Community Stats captures cover homepage and atlas at 1440px desktop and 390px mobile widths in both dark and light themes.",
-      "The Community Pulse remains below the primary one-click franchise action and above Quick Start without obscuring the acquisition path.",
-      "The Stats Atlas category hierarchy, methodology, local-only comparison, freshness, and participation controls remain readable in both themes.",
-      "The mobile atlas collapses to a single column with zero measured horizontal overflow; the homepage pulse uses a compact two-column headline grid.",
-      "Evidence uses a mocked eligible aggregate derived through the production snapshot authority; no synthetic receipt enters production and no adoption claim is inferred."
+      "Eight refreshed captures cover the homepage and Community Stats at 1440px desktop and 390px mobile widths in dark and light themes.",
+      "The homepage uses player-first General Manager language and keeps Community Stats below the primary start action without obscuring the acquisition path.",
+      "Expanded metrics and trends remain readable without exposing internal analytics vocabulary; unavailable comparisons stay hidden until enough players share.",
+      "Desktop and mobile layouts preserve hierarchy, contrast, wrapping, and controls with no measured horizontal overflow in either theme.",
+      "The mocked eligible aggregate exercises populated cards through the production snapshot schema; no synthetic activity enters production and no adoption claim is inferred."
     ],
     "fixesApplied": [
-      "Separated the concise homepage pulse from the progressively disclosed full atlas.",
-      "Added theme-token-only surfaces, reduced-motion handling, mobile layout, honest loading/warming/stale states, and explicit participation controls."
+      "Replaced implementation vocabulary with curated player-facing labels, descriptions, insights, and sharing controls.",
+      "Canonicalized public navigation to /stats and content-hashed the Community Stats module so stale edge or service-worker caches cannot preserve old copy.",
+      "Prevented warming or private samples from claiming a percentile rank."
     ],
     "blockingDefectsOpen": 0
   }

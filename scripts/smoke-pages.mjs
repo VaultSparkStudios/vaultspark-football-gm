@@ -106,12 +106,18 @@ async function assertPublishedMountContract() {
   if (manifest.assetBasePath !== "./") {
     throw new Error(`Deploy manifest must declare a mount-relative asset base; received ${manifest.assetBasePath}.`);
   }
+  if (!/^community-stats\.[a-f0-9]{10}\.js$/.test(String(manifest.communityStatsAsset || ""))) {
+    throw new Error(`Deploy manifest must declare the content-hashed Community Pulse module; received ${manifest.communityStatsAsset || "missing"}.`);
+  }
   for (const mount of manifest.publishedMounts) {
     const relativeMount = String(mount).replace(/^\/+|\/+$/g, "");
     const prefix = relativeMount ? `${relativeMount}/` : "";
     await assertStaticFile(`${prefix}index.html`, /<base href="\.\/" \/>/);
     await assertStaticFile(`${prefix}styles.css`, /:root/);
     await assertStaticFile(`${prefix}setup.js`, /createApiClient/);
+    await assertStaticFile(`${prefix}${manifest.communityStatsAsset}`, /Community contributors/);
+    await assertStaticFile(`${prefix}index.html`, new RegExp(`src="\\./${manifest.communityStatsAsset.replace(/\./g, "\\.")}"`));
+    await assertStaticFile(`${prefix}stats.html`, new RegExp(`src="\\./${manifest.communityStatsAsset.replace(/\./g, "\\.")}"`));
     await assertStaticFile(`${prefix}favicon.ico`);
     await assertStaticFile(`${prefix}_headers`, /Content-Security-Policy:[^\n]*script-src 'self' 'sha256-/);
     await assertStaticFile(`${prefix}sw.js`, /vsfgm-precache-/);
@@ -160,7 +166,7 @@ async function main() {
     await page.waitForSelector("#notFoundHomeLink");
     await assertStaticPath(`/contact.html`, /football@playfranchisearchitect\.com/);
     await assertStaticPath("/privacy.html", /Browser-First Beta/);
-    await assertStaticPath("/stats.html", /Community Stats Atlas/);
+    await assertStaticPath("/stats.html", /Community Stats/);
     await assertStaticPath("/stats-surface.json", /participating anonymous browsers/);
     await assertStaticPath(`/terms.html`, /All rights reserved/);
     await assertStaticPath(`/agents.json`, /Proprietary - All Rights Reserved/);

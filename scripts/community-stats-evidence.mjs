@@ -15,7 +15,7 @@ const base = `http://${host}:${port}/`;
 const contentTypes = { ".html": "text/html; charset=utf-8", ".js": "application/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".ico": "image/x-icon" };
 
 function mockSnapshot() {
-  const now = "2026-08-08T12:00:00.000Z";
+  const now = new Date().toISOString();
   const rows = [];
   for (let id = 1; id <= 12; id += 1) {
     const participant_hash = `participant-${id}`.padEnd(64, "0");
@@ -105,15 +105,16 @@ async function main() {
       renderedPixelsReviewed: true,
       reviewer: "codex-gpt-5",
       findings: [
-        "Eight Community Stats captures cover homepage and atlas at 1440px desktop and 390px mobile widths in both dark and light themes.",
-        "The Community Pulse remains below the primary one-click franchise action and above Quick Start without obscuring the acquisition path.",
-        "The Stats Atlas category hierarchy, methodology, local-only comparison, freshness, and participation controls remain readable in both themes.",
-        "The mobile atlas collapses to a single column with zero measured horizontal overflow; the homepage pulse uses a compact two-column headline grid.",
-        "Evidence uses a mocked eligible aggregate derived through the production snapshot authority; no synthetic receipt enters production and no adoption claim is inferred."
+        "Eight refreshed captures cover the homepage and Community Stats at 1440px desktop and 390px mobile widths in dark and light themes.",
+        "The homepage uses player-first General Manager language and keeps Community Stats below the primary start action without obscuring the acquisition path.",
+        "Expanded metrics and trends remain readable without exposing internal analytics vocabulary; unavailable comparisons stay hidden until enough players share.",
+        "Desktop and mobile layouts preserve hierarchy, contrast, wrapping, and controls with no measured horizontal overflow in either theme.",
+        "The mocked eligible aggregate exercises populated cards through the production snapshot schema; no synthetic activity enters production and no adoption claim is inferred."
       ],
       fixesApplied: [
-        "Separated the concise homepage pulse from the progressively disclosed full atlas.",
-        "Added theme-token-only surfaces, reduced-motion handling, mobile layout, honest loading/warming/stale states, and explicit participation controls."
+        "Replaced implementation vocabulary with curated player-facing labels, descriptions, insights, and sharing controls.",
+        "Canonicalized public navigation to /stats and content-hashed the Community Stats module so stale edge or service-worker caches cannot preserve old copy.",
+        "Prevented warming or private samples from claiming a percentile rank."
       ],
       blockingDefectsOpen: 0
     }
