@@ -423,6 +423,40 @@ export async function renderSeasonArcs() {
 // CAP WAR ROOM (multi-year cap timeline)
 // ─────────────────────────────────────────────────────────────────────────────
 
+const CAP_WAR_ROOM_LIMIT = 255_000_000;
+
+/**
+ * Pure multi-year cap projection used by the Cap War Room panel.
+ *
+ * A contract at yearsRemaining === 0 is a real, legally reachable mid-season
+ * state (S67 offseason fix made contract expiry reachable at all) and is
+ * arguably *more* urgent than one at yearsRemaining === 1, so both count as
+ * "expiring" in the current year — `<= 1` rather than the old `=== 1`
+ * boundary that made 0-year contracts invisible to this counter.
+ */
+export function computeCapProjection(roster, currentYear, { capLimit = CAP_WAR_ROOM_LIMIT, yearSpan = 4 } = {}) {
+  const years = Array.from({ length: yearSpan }, (_, i) => currentYear + i);
+  return years.map((yr) => {
+    let committed = 0;
+    let dead = 0;
+    let expiring = 0;
+    for (const player of roster) {
+      const contract = player.contract || {};
+      const yearsRemaining = contract.yearsRemaining || 0;
+      if (yr <= currentYear + yearsRemaining - 1) {
+        committed += contract.salary || 0;
+      } else {
+        dead += contract.deadCap || 0;
+      }
+      if (yr === currentYear && yearsRemaining <= 1) expiring++;
+    }
+    const total = Math.min(committed + dead, capLimit * 1.1);
+    const pct = Math.min(100, Math.round((total / capLimit) * 100));
+    const zone = pct >= 95 ? "critical" : pct >= 85 ? "warning" : "safe";
+    return { year: yr, committed, dead, total, pct, zone, expiring };
+  });
+}
+
 export async function renderCapWarRoom() {
   const el = document.getElementById("capWarRoomPanel");
   if (!el) return;
@@ -432,29 +466,9 @@ export async function renderCapWarRoom() {
     const roster = data?.roster || [];
     const cap = data?.cap || {};
     const currentYear = state.dashboard?.currentYear || new Date().getFullYear();
-    const CAP_LIMIT = 255_000_000;
+    const CAP_LIMIT = CAP_WAR_ROOM_LIMIT;
     // Build 4-year projection by summing contracts per year
-    const years = [currentYear, currentYear + 1, currentYear + 2, currentYear + 3];
-    const yearData = years.map((yr) => {
-      let committed = 0;
-      let dead = 0;
-      let expiring = 0;
-      for (const player of roster) {
-        const contract = player.contract || {};
-        const yearsRemaining = contract.yearsRemaining || 0;
-        const contractYear = currentYear + (yr - currentYear);
-        if (yr <= currentYear + yearsRemaining - 1) {
-          committed += contract.salary || 0;
-        } else {
-          dead += contract.deadCap || 0;
-        }
-        if (yr === currentYear && yearsRemaining === 1) expiring++;
-      }
-      const total = Math.min(committed + dead, CAP_LIMIT * 1.1);
-      const pct = Math.min(100, Math.round((total / CAP_LIMIT) * 100));
-      const zone = pct >= 95 ? "critical" : pct >= 85 ? "warning" : "safe";
-      return { year: yr, committed, dead, total, pct, zone, expiring };
-    });
+    const yearData = computeCapProjection(roster, currentYear, { capLimit: CAP_LIMIT, yearSpan: 4 });
     el.hidden = false;
     const bars = yearData.map((d) => `
       <div class="cwr-year">
