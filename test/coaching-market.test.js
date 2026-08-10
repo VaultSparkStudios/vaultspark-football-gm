@@ -1,5 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import {
   buildCoachingMarket,
@@ -349,4 +352,18 @@ test("both adapters serve the market and the authority seam guards it", async ()
   assert.equal(hire.payload.receipt.name, pick.name);
   assert.ok(hire.payload.state, "the response must carry fresh state for the browser");
   assert.ok(hire.payload.market, "and the refreshed market");
+});
+
+// ── Accessibility: hire/fire announcement (S78) ────────────────────────────
+// coachingMarketPanel.js rewrites its mount node's innerHTML on every hire/fire,
+// but the mount point itself carried no aria-live, so screen-reader users got
+// no announcement of the result — unlike every sibling dynamically-rewritten
+// panel in game.html (openingContractCard, pressRoomCard, dynastyTimelineContainer,
+// etc.), which all carry aria-live="polite".
+test("the coaching market panel's mount point is an aria-live region", () => {
+  const gameHtmlPath = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "public", "game.html");
+  const html = fs.readFileSync(gameHtmlPath, "utf8");
+  const match = html.match(/<section id="coachingMarketPanel"[^>]*>/);
+  assert.ok(match, "coachingMarketPanel section must exist in game.html");
+  assert.match(match[0], /aria-live="polite"/, "hire/fire rewrites must be announced to screen readers");
 });
