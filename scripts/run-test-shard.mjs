@@ -124,6 +124,7 @@ export const SHARDS = {
     "test/dynasty-timeline.test.js",
     "test/cap-war-room.test.js",
     "test/audio-feedback.test.js",
+    "test/marquee-badge.test.js",
     "test/trade-deadline-frenzy.test.js",
     "test/trade-plan-authority.test.js",
     "test/trade-plan-browser-wiring.test.js",

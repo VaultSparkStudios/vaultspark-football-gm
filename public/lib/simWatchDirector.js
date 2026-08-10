@@ -1,8 +1,9 @@
-import { api } from "./appState.js";
+import { api, state } from "./appState.js";
 import { escapeHtml, showToast, teamCode } from "./appCore.js";
 import { observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
 import { buildScoringTimeline, createSimWatchPlayback, deriveFinalReel, resolveBoxScoreTeamIds, SIM_WATCH_SPEEDS } from "./simWatchPlayback.js";
 import { playSound } from "./audioFeedback.js";
+import { deriveMarqueeBadge } from "./marqueeBadge.js";
 
 let active = false;
 let controller = null;
@@ -32,6 +33,19 @@ function renderHeader(boxScore) {
       <span class="sw-team">${escapeHtml(boxScore.homeTeamName || boxScore.homeTeamId || boxScore.homeTeam?.teamId || "Home")}</span>
     </div>
     <div class="sw-meta">${escapeHtml(String(boxScore.year || ""))} · Week ${escapeHtml(String(boxScore.week || ""))} · ${escapeHtml(boxScore.seasonType || "regular")}</div>`;
+
+  const teamIds = resolveBoxScoreTeamIds(boxScore);
+  const marquee = deriveMarqueeBadge(
+    { awayTeamId: teamIds.away, homeTeamId: teamIds.home },
+    state.dashboard?.latestStandings || [],
+    boxScore.week
+  );
+  if (marquee) {
+    const banner = document.createElement("div");
+    banner.className = "sw-marquee-banner";
+    banner.innerHTML = `<span class="marquee-badge">🏈 ${escapeHtml(marquee.label)}</span>`;
+    header.appendChild(banner);
+  }
 }
 
 async function decorateRivalry(boxScore) {

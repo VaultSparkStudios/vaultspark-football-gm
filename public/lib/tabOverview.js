@@ -12,6 +12,7 @@ import { architectLedgerRows, buildArchitectureSignal, buildProgressiveWeekRoom,
 import { describeWeeklyPlanReceipt } from "./weeklyPlanComposer.js";
 import { renderPressRoomPanel } from "./pressRoomPanel.js";
 import { buildCoGmBriefingPacket } from "./coGmBriefing.js";
+import { deriveMarqueeBadge } from "./marqueeBadge.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -646,18 +647,24 @@ export function renderSchedule() {
   const controlledTeamId = state.dashboard?.controlledTeamId || null;
   const controlledOnBye = controlledTeamId && (schedule.byeTeams || []).includes(controlledTeamId);
   weekText.textContent = `Week ${schedule.week} (${schedule.played ? "Played" : "Upcoming"})${controlledOnBye ? ` | ${controlledTeamId} bye week` : ""}`;
-  const rows = (schedule.games || []).map((game) => ({
-    away: teamCode(game.awayTeamId),
-    home: teamCode(game.homeTeamId),
-    score: game.played ? `${game.awayScore}-${game.homeScore}` : "-",
-    winner: game.played ? (game.isTie ? "TIE" : teamCode(game.winnerId) || "") : "TBD"
-  }));
+  const standings = state.dashboard?.latestStandings || [];
+  const rows = (schedule.games || []).map((game) => {
+    const marquee = deriveMarqueeBadge(game, standings, schedule.week);
+    return {
+      away: teamCode(game.awayTeamId),
+      home: teamCode(game.homeTeamId),
+      score: game.played ? `${game.awayScore}-${game.homeScore}` : "-",
+      winner: game.played ? (game.isTie ? "TIE" : teamCode(game.winnerId) || "") : "TBD",
+      marquee: marquee ? `🏈 ${marquee.label}` : ""
+    };
+  });
   for (const teamId of schedule.byeTeams || []) {
     rows.push({
       away: teamCode(teamId),
       home: "BYE",
       score: "-",
-      winner: "REST"
+      winner: "REST",
+      marquee: ""
     });
   }
   renderTable("scheduleTable", rows);
