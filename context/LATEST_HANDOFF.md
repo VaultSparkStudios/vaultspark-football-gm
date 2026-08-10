@@ -1,36 +1,36 @@
-# Session 77 Closeout — CommunityStore Pool Injection + Direct Coverage
+# Session 78 Closeout — Marquee, Prediction Minigame, TD Sound, A11y + Coverage Sweep
 
 ## Where We Left Off
 
-- Session 76's Community Stats remains live and unchanged in behavior — this session closed the one remaining verified gap: `CommunityStore` (`src/community/communityStore.js`), the class that actually talks to Postgres, had zero direct test coverage because its constructor hardcoded `new Pool(...)` with no injection seam. Every test in `test/community-server.test.js` mocks `store` at the HTTP-handler boundary, so the abuse rate limit, dedup logic, retention sweep, cache/truncation behavior, and pepper bootstrap were never actually exercised.
-- The constructor now accepts an optional `pool` and only constructs a real `pg.Pool` when one isn't supplied — purely additive, no behavior change for the live service. `test/community-store.test.js` (new, 11 tests) exercises it against an in-memory fake pool.
-- While verifying the full suite, two pre-existing test-infrastructure defects (not part of this session's audit item) were found and root-fixed rather than worked around:
-  1. `test/shard-coverage.test.js` requires every test file on disk to be assigned to exactly one shard — adding the new test file without registering it in `scripts/run-test-shard.mjs` would have made it silently skip in CI/`npm test`. Registered.
-  2. `test/studio-protocol-smoke.test.js`'s innovation-pack assertion unconditionally required the *latest* audit sidecar to record shipped second-order work. Session 76 legitimately shipped zero second-order candidates (documented as an honest decision), so this assertion was already red at `main` HEAD before any change of mine — confirmed via `git stash`. This is the exact brittleness pattern the test's own comment says it was rewritten once already to avoid (hardcoding one session's content broke every session after). Fixed by only asserting the shipped-item-surfaced contract when the latest sidecar actually has shipped items.
-- No server, client, or gameplay behavior changed. No deploy was required or performed.
+- Ran the full `/arc` (start → audit → implement → closeout). No prior session was cut off — S77's tree was clean, synced with origin, and write-back current, so this session started from a fresh live-code audit rather than a recovery.
+- The fresh audit generated 7 ranked candidates across the 9 axes, all shipped and verified, with 3 phantom candidates correctly rejected on evidence *before* implementation rather than after: coaching-tree/mentor-protege lineage already shipped in S53 (`src/engine/coachingTree.js` + `CoachingService.js`, tested by `test/coaching-lineage-authority.test.js`); `pressRoomPanel.js` already covered by `test/interactive-press-conference.test.js` + `test/press-room-truth.test.js`; and a generalized `|| 0`/`|| 1` grep sweep mostly turned up legitimate display-time fallbacks, not the S67/S71 ledger-write-site laundering class (the one real instance found — Cap War Room's expiring-contract boundary — was shipped as its own correctly-scoped item, not conflated with the systemic bug class).
+- Shipped: `td-flourish` sound hookup on touchdown plays (a built-but-dead sound asset now fires); Dynasty Timeline keyboard/ARIA accessibility (role/tabindex/aria-expanded/aria-controls, following the S76 stats aria-controls pattern); coaching market panel `aria-live="polite"`; Cap War Room now counts `yearsRemaining === 0` contracts as expiring (previously only `=== 1`); a 13-test coverage suite for `audioFeedback.js` (7 live call sites, 5 modules, zero prior tests); a new deterministic Primetime Marquee badge on the schedule + Sim-Watch header (division leaders / top-4-record teams meeting week 6+, no randomness, no false-positive spam); and a new local-only Weekly Spread Prediction minigame (pick winner+margin per game, running accuracy streak, proven byte-identical league state with/without a prediction — it cannot influence the simulation).
+- Verification-time catch (not audit-ranked): the 3 new statically-imported modules pushed the static boot budget over its declared ceiling — raised `public/boot-manifest.json` from 710000/55 to 730000/58 bytes/modules with an inline justification comment.
+- No server, client-runtime, or gameplay-simulation behavior changed beyond what's described above. No deploy was required or performed — all 7 items are static/client-side; the next GitHub Pages push carries them live.
 
 ## Decisions That Must Survive
 
-- All Session 75/76 community-stats decisions still hold unchanged.
-- New: a class that owns a real external resource (DB pool, file handle, network client) should carry a constructor-injection seam from the start — a mocked layer above it does not prove the resource-owning class itself is correct. See `context/DECISIONS.md` D-S77.1.
-- New: test assertions that "the latest audit must have shipped X" are inherently brittle against genuinely honest zero-X sessions; prefer asserting the contract conditionally on X existing. See `context/DECISIONS.md` D-S77.2.
+- All prior session decisions still hold unchanged (S77 constructor-injection principle, S67/S71 falsy-default-on-write-site principle, etc.).
+- New: raising the static boot-budget ceiling is warranted only when new bytes/modules correspond to genuine new gameplay-visible features shipped in the same session (not as a routine relief valve) — see `context/DECISIONS.md` for this session's entry.
 
 ## Honest Holds
 
 - Project launch remains HOLD on delivered and reply-capable `football@playfranchisearchitect.com` evidence, SHA-bound founder launch approval, and authoritative lifecycle reconciliation. Nothing this session touched or could touch those three external gates.
-- Registry SPARKED / local contract FORGE reconciliation remains authoritative outside this public repository (sibling-owned, non-blocking).
-- This session's audit dispatched a targeted live-code sweep of the Community Stats subsystem (the only area with material recent change) plus a broad re-check of `public/community-stats.js`, the Docker/Caddy deploy config, and the GitHub Actions backend workflow; nothing else survived verification as a real, concrete defect. One item, honestly reported — not padded.
-- The two test-infrastructure fixes were pre-existing and unrelated to this session's own new code; they were surfaced only because this session ran the full suite (a step some prior small sessions may have skipped if only running a targeted test file). No claim is made that the fixed brittleness pattern has been swept anywhere else in the test suite.
+- Registry SPARKED / local contract FORGE reconciliation remains authoritative outside this public repository (sibling-owned via signed Studio Ark, non-blocking, flagged again this session in the startup brief).
+- This session's audit dispatched a targeted live-code survey agent against `src/`, `public/lib/`, and `test/` with the full list of previously-shipped systems (S60–S77) as an exclusion set, then independently re-verified every surviving candidate against exact file/line evidence. Nothing beyond the 7 shipped items and 3 explicitly-rejected phantoms survived verification.
 
 ## Next Best Work
 
-Unchanged from Session 75/76: watch the first real consenting cohort and confirm freshness/suppression behavior without manufacturing activity or making adoption claims. If launch authority arrives (delivered email + SHA-bound founder approval + lifecycle reconciliation), reconcile it through the existing structured release contract. No new audit-lens work is queued; the next session should run a fresh live-code audit rather than assume this session's 1-item lens is still current.
+Watch the first real consenting community-stats cohort and confirm freshness/suppression behavior without manufacturing activity (unchanged from S75-77). If launch authority arrives (delivered email + SHA-bound founder approval + lifecycle reconciliation), reconcile it through the existing structured release contract. No new audit-lens work is queued — the next session should run a fresh live-code audit rather than assume this session's 7-item lens is still current.
 
 ## Key Files
 
-- src/community/communityStore.js
-- test/community-store.test.js
-- scripts/run-test-shard.mjs
-- test/studio-protocol-smoke.test.js
-- docs/AUDIT_2026-08-09_SESSION77.json
-- docs/AUDIT_2026-08-09_SESSION77.md
+- public/lib/audioFeedback.js
+- public/lib/simWatchDirector.js
+- public/lib/dynastyTimeline.js
+- public/lib/capWarRoom.js (or equivalent Cap War Room module)
+- public/lib/spreadPredictions.js
+- public/lib/predictionPanel.js
+- public/boot-manifest.json
+- docs/AUDIT_2026-08-09_SESSION78.json
+- docs/AUDIT_2026-08-09_SESSION78.md

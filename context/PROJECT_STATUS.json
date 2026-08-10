@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 77 complete: closed the last verified gap in Community Stats — CommunityStore (the class that actually talks to Postgres) had zero direct test coverage because its constructor hardcoded a real pg.Pool. Added a pool-injection seam and 11 direct tests. Also root-fixed two pre-existing test-infrastructure defects (shard registration, an audit-sidecar assertion that broke by construction on an honestly-zero-second-order prior session). No feature or deploy change. Launch HOLD remains explicit.",
+  "currentFocus": "Session 78 complete: fresh live-code audit shipped all 7 ranked items — td-flourish sound hookup, Dynasty Timeline keyboard/ARIA accessibility, coaching market panel aria-live, Cap War Room zero-year-contract fix, audioFeedback.js 13-test coverage suite, a deterministic Primetime Marquee badge, and a local-only Weekly Spread Prediction minigame (proven never to touch simulation state). Root-fixed a self-inflicted static boot-budget regression along the way. No deploy required (all static/client-side). Launch HOLD remains explicit.",
   "nextMilestone": "Observe the first real consenting cohort and verify freshness/suppression behavior. Launch remains independently gated by delivered reply-capable on-domain email, SHA-bound founder approval, and authoritative lifecycle reconciliation.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-09",
+  "lastUpdated": "2026-08-10",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
@@ -18,19 +18,20 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-03",
   "testSuiteStatus": {
-    "totalTests": 922,
-    "pass": 922,
+    "totalTests": 998,
+    "pass": 998,
     "fail": 0,
     "lastRun": "2026-08-09",
     "newTestFiles": [
-      "test/community-store.test.js"
+      "test/audioFeedback.test.js",
+      "test/spreadPredictions.test.js"
     ],
-    "newTestCount": 11,
-    "coverage": "Session 77 canonical Node 922/922 direct exit 0 (up from 911/911); Playwright 40/40; windows-hide clean; 11 new tests close previously-zero coverage on CommunityStore's Postgres-facing logic (abuse limit, dedupe, cache/TTL, truncation, deletion, retention gate, pepper bootstrap).",
-    "uiSuiteNote": "Playwright 40/40 unchanged from Session 76; no UI behavior changed this session."
+    "newTestCount": 76,
+    "coverage": "Session 78 canonical npm test 998/998 direct exit 0 (up from 922/922); 76 new tests across td-flourish gating, Dynasty Timeline a11y/keyboard, coaching market panel aria-live, Cap War Room zero-year contracts, audioFeedback.js (13 new), primetime marquee badge, and the spread-prediction minigame's byte-identical-state proof.",
+    "uiSuiteNote": "Marquee badge and prediction minigame are both real browser-UI features this session, covered by direct fixture-driven tests rather than Playwright end-to-end."
   },
-  "testsPassing": 922,
-  "testsTotal": 922,
+  "testsPassing": 998,
+  "testsTotal": 998,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -69,11 +70,11 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 996,
+  "silScore": 998,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
-    "momentum": 96,
+    "momentum": 98,
     "engagement": 100,
     "processQuality": 100,
     "crossRepoCoherence": 100,
@@ -82,10 +83,10 @@
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 77,
+  "currentSession": 78,
   "lastAgent": "claude",
   "sessionMode": "builder",
-  "lastVerification": "npm test 922/922 direct exit 0; Playwright 40/40; windows-hide clean; secrets audit; doctor blockingFailing 0.",
+  "lastVerification": "npm test 998/998 direct exit 0 (up from 922/922); windows-hide clean; secrets audit; doctor blockingFailing 0.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -111,14 +112,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 846,
+  "silHealth": 848,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-09",
+    "date": "2026-08-10",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -140,18 +141,22 @@
   "entropyScore": 0.013,
   "entropyLastComputed": "2026-08-04",
   "lastSessionSummary": {
-    "session": 77,
+    "session": 78,
     "shipped": [
-      "pool constructor-injection seam on CommunityStore (src/community/communityStore.js)",
-      "11 new direct tests on CommunityStore's abuse limit, dedupe, cache/TTL, truncation, deletion, retention gate, and pepper bootstrap",
-      "root-fix: registered test/community-store.test.js in the shard map (scripts/run-test-shard.mjs)",
-      "root-fix: innovation-pack audit-sidecar assertion no longer breaks by construction on an honestly-zero-second-order session"
+      "td-flourish sound hookup on touchdown plays",
+      "Dynasty Timeline keyboard/ARIA accessibility",
+      "coaching market panel aria-live",
+      "Cap War Room zero-year expiring-contract fix",
+      "audioFeedback.js 13-test coverage suite",
+      "deterministic Primetime Marquee badge (schedule + Sim-Watch)",
+      "local-only Weekly Spread Prediction minigame with accuracy streak",
+      "root-fix: static boot-budget ceiling raised for 3 new statically-imported modules"
     ],
-    "tests": "Node 922/922 direct exit 0 (up from 911/911) · Playwright 40/40 · windows-hide clean · doctor 0 blocking",
-    "deploy": "No deploy required or performed — constructor-injection-seam and test-only changes with no server, client, or gameplay behavior change. Staging/production remain at the Session 75 revision c71a26065bb355900a3544f5d08b150b8c3191f5 / 0a637f4703dad259786173bb3607de17b3610a994debf31150ec93ef27c1e1f3.",
+    "tests": "npm test 998/998 direct exit 0 (up from 922/922, +76 tests) · no deploy required",
+    "deploy": "No deploy required or performed — all 7 items are static/client-side changes. Staging/production remain at the Session 75 revision c71a26065bb355900a3544f5d08b150b8c3191f5 / 0a637f4703dad259786173bb3607de17b3610a994debf31150ec93ef27c1e1f3 until next Pages push.",
     "honestDeferrals": [
-      "One audit item shipped, not padded; the targeted Community Stats live-code sweep found exactly one real, verified gap.",
-      "The two test-infrastructure fixes were pre-existing defects unrelated to this session's own new code, found only because the full suite was run.",
+      "3 phantom candidates rejected on evidence before implementation: coaching-tree lineage (already shipped S53), pressRoomPanel.js coverage (already tested), and most of a generalized || 0 / || 1 sweep (legitimate display fallbacks).",
+      "The boot-budget regression was self-inflicted by this session's own new code, caught only because the full suite was run rather than just the new test files.",
       "Launch remains held on reply-capable email, SHA-bound founder launch approval and lifecycle authority."
     ]
   },
@@ -175,8 +180,8 @@
       "lastChecked": "2026-08-08"
     }
   ],
-  "lastSession": 77,
-  "silLastSession": 77,
+  "lastSession": 78,
+  "silLastSession": 78,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",
@@ -189,7 +194,7 @@
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ],
-  "session": 77,
+  "session": 78,
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
@@ -272,5 +277,5 @@
     "verified": true,
     "observedAt": "2026-08-08T22:33:29.382Z"
   },
-  "lastCloseoutAt": "2026-08-09T00:00:00Z"
+  "lastCloseoutAt": "2026-08-10T00:00:00Z"
 }

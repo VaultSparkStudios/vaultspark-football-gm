@@ -2,6 +2,14 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-09 - S78: static boot-budget ceiling raised only against genuine new shipped bytes
+
+**Decision:** `public/boot-manifest.json`'s budget moved from 710000/55 to 730000/58 bytes/modules, justified inline, because 3 new statically-imported modules (Primetime Marquee badge, the weekly spread-prediction minigame, and its panel) shipped genuine new gameplay-visible features in the same session that triggered the overage.
+
+**Rationale:** The budget exists to catch unbounded/accidental static-import growth, not to freeze feature growth. Raising it is only warranted when the overage traces to real shipped bytes in the same session, never as a routine relief valve — a future overage with no corresponding shipped feature should be treated as a regression, not silently re-raised again.
+
+---
+
    = @"
 ## 2026-08-08 - Community evidence is consented, bounded and aggregate-first
 

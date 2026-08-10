@@ -12,6 +12,23 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 
+## Session 78 — Marquee, prediction minigame, TD sound, a11y + coverage sweep (2026-08-09)
+
+Source: `docs/AUDIT_2026-08-09_SESSION78.md`.
+
+| Item | Status |
+|------|--------|
+| td-flourish-touchdown-sound-hookup — wired the built-but-dead `td-flourish` sound to fire on touchdown plays during Sim-Watch, matching existing sound-toggle gating | ✅ Done |
+| dynasty-timeline-keyboard-accessibility — role/tabindex/aria-expanded/aria-controls + Enter/Space activation on Dynasty Timeline season nodes | ✅ Done |
+| coaching-market-panel-aria-live — `aria-live="polite"` on the coaching market panel mount | ✅ Done |
+| cap-war-room-expiring-zero-year-contracts — expiring-contract check now counts `yearsRemaining === 0` (previously only `=== 1`) | ✅ Done |
+| audiofeedback-test-coverage — 13-test suite for the previously-uncovered `audioFeedback.js` (7 live call sites, 5 modules) | ✅ Done |
+| primetime-marquee-badge — deterministic 'Division Showdown'/'Statement Game'/'Playoff Preview' badge on schedule + Sim-Watch header, derived from standings/rivalry signal, no randomness | ✅ Done |
+| weekly-spread-prediction-minigame — local-only, non-canon pick'em with running accuracy streak; proven byte-identical league state with/without a submitted prediction | ✅ Done |
+| boot-budget-regression-fix — raised `public/boot-manifest.json` from 710000/55 to 730000/58 bytes/modules for the 3 new statically-imported modules | ✅ Done (found during verification, not audit-ranked) |
+
+**Verification:** default `npm test` 998/998 direct exit 0 (up from 922/922); no deploy required (all changes static/client-side). Three phantom candidates correctly rejected on evidence before implementation: coaching-tree lineage (already shipped S53), `pressRoomPanel.js` coverage (already tested), and a generalized `|| 0`/`|| 1` sweep (spot-checked as legitimate display fallbacks, not the S67/S71 bug class).
+
 ## Session 77 — CommunityStore pool injection + direct coverage (2026-08-09)
 
 Source: `docs/AUDIT_2026-08-09_SESSION77.md`.

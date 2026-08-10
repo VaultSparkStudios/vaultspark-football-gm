@@ -1,3 +1,12 @@
+## 2026-08-09 — Session 78: marquee, prediction minigame, TD sound, a11y + coverage sweep
+
+- Ran the full `/arc`: profiled the project, triaged (F1–F7) and confirmed S77 was cleanly closed out — clean tree, synced with origin, write-back current — so this session began with a fresh audit, not a recovery.
+- Dispatched a live-code survey agent against `src/`, `public/lib/`, and `test/` with all previously-shipped systems (S60–S77) as an exclusion set, then independently re-verified every surviving candidate. Correctly rejected 3 phantom candidates on evidence before implementation: coaching-tree/mentor-protege lineage (already shipped S53), `pressRoomPanel.js` coverage (already tested by two files), and most of a generalized `|| 0`/`|| 1` grep sweep (legitimate display fallbacks, not the S67/S71 write-side bug class).
+- Shipped all 7 ranked items: hooked the built-but-dead `td-flourish` sound to touchdown plays; keyboard/ARIA accessibility on Dynasty Timeline season nodes; `aria-live="polite"` on the coaching market panel; fixed Cap War Room to count `yearsRemaining === 0` contracts as expiring (was only `=== 1`); a 13-test coverage suite for the previously-untested `audioFeedback.js` (7 live call sites, 5 modules); a new deterministic Primetime Marquee badge on schedule + Sim-Watch (division leaders / top-4 records meeting week 6+, no randomness); and a new local-only Weekly Spread Prediction minigame with a running accuracy streak, proven byte-identical league state with and without a submitted prediction.
+- Verification-time catch, root-fixed: the 3 new statically-imported modules pushed the static boot budget over its declared ceiling; raised `public/boot-manifest.json` from 710000/55 to 730000/58 bytes/modules with an inline justification.
+- Verification: `npm test` 998/998 direct exit 0 (up from 922/922, +76 tests). No deploy required — all changes are static/client-side.
+- Launch remains HOLD on the same three external gates; none of this session's work depended on or touched them. Lifecycle authority drift (local FORGE vs registry SPARKED) flagged again at session start, unchanged — reconciles only via signed Studio Ark.
+
 ## 2026-08-09 — Session 76: community server branch coverage + stats a11y
 
 - Ran `/arc`: profiled the project (app · product rubric · direct-to-main via github-pages staging gate), confirmed via write-back currency check (F7) and a clean synced tree that Session 75 was fully closed out — not a cut-off recovery.
