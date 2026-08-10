@@ -1,0 +1,333 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-09",
+  "session": 78,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "rankedItems": 7,
+    "combinedPriority": 44.7,
+    "topItem": "primetime-marquee-badge",
+    "source": "live-code audit: general-purpose survey agent (src/, public/, test/) + direct file/line verification of every surviving candidate",
+    "openItems": 0,
+    "completedItems": 7,
+    "priorityFormula": "Priority = (Impact x Innovation) / log2(EffortHours + 2), axis-weighted per game-type multipliers (gamification 3x, UX 2x, AI/depth 1.5x) merged with this session's overlay deltas (gamification/engagement/immersion +2, UI/UX +1, speed/organization +1).",
+    "theme": "77 prior sessions have exhausted the deep systemic bug classes (falsy-default laundering, shape drift, resource-injection gaps). What remains at session 78 is a scattering of small, real, live-code-verified gaps: one built-but-never-wired immersion asset, two shipped UI surfaces missing standard accessibility affordances, one shipped audio layer with zero test coverage, one minor display-accuracy miss, and two genuinely novel zero-backend engagement ideas that do not duplicate any of the 20+ gamification systems already shipped."
+  },
+  "profile": {
+    "type": "public browser football game/app",
+    "audience": "public-unlaunched",
+    "rubric": "game-type rubric with skill overlay: beta-readiness, zero-backend loops, vivid General Manager decision pressure over backend-heavy features; free-tier work must remain static-host-safe or local-only",
+    "staging": "Cloudflare Pages static build; no backend dependency for any item in this audit",
+    "source": "Dispatched a general-purpose live-code survey agent against src/, public/lib/, and test/ with the full list of previously-shipped systems (S60-S77) as an exclusion set, then independently re-verified every surviving candidate by reading exact file/line evidence before scoring."
+  },
+  "releaseGate": {
+    "verdict": "NOT APPLICABLE — audit-only session, no code shipped",
+    "tests": "922/922 baseline unchanged (no implementation this session)",
+    "doctor": "5/6 warn (pre-existing, unrelated to this audit) unchanged",
+    "constraints": "Launch remains HOLD on the three external gates (email delivery receipt, founder SHA-bound launch approval, lifecycle authority reconciliation); none of this audit's items touch them, per instruction not to propose launch-blocker fixes."
+  },
+  "axisCoverage": {
+    "gamificationEngagementImmersion": {
+      "evaluated": [
+        "td-flourish sound asset defined but never triggered",
+        "no primetime/marquee-game flavor badge distinct from the existing rivalry-heat banner",
+        "no weekly spread/score-margin prediction mini-game",
+        "internal coaching-tree/staff-promotion narrative"
+      ],
+      "selected": [
+        "td-flourish-touchdown-sound-hookup",
+        "primetime-marquee-badge",
+        "weekly-spread-prediction-minigame"
+      ],
+      "rejected": [
+        "internal coaching-tree/staff-promotion narrative — false premise, already shipped (src/engine/coachingTree.js, src/runtime/services/CoachingService.js), see preverifiedSkips"
+      ]
+    },
+    "uiUx": {
+      "evaluated": [
+        "Dynasty Timeline season nodes keyboard/screen-reader reachability",
+        "Coaching Market Panel live-region announcement on hire/fire",
+        "Cap War Room expiring-contract counter boundary"
+      ],
+      "selected": [
+        "dynasty-timeline-keyboard-accessibility",
+        "coaching-market-panel-aria-live",
+        "cap-war-room-expiring-zero-year-contracts"
+      ],
+      "rejected": []
+    },
+    "speedOrganizationEfficiency": {
+      "evaluated": [
+        "audioFeedback.js (live in 5 call sites) has zero automated test coverage"
+      ],
+      "selected": [
+        "audiofeedback-test-coverage"
+      ],
+      "rejected": []
+    },
+    "featuresDepth": {
+      "evaluated": ["none new — codebase is feature-saturated per 77 prior sessions"],
+      "selected": [],
+      "rejected": []
+    },
+    "aiIntegration": {
+      "evaluated": ["Co-GM briefing packet, Architect Thesis, coaching lineage all already shipped and reviewed; no new gap found"],
+      "selected": [],
+      "rejected": []
+    },
+    "securityPrivacy": {
+      "evaluated": ["no new external-resource or data-boundary surface introduced since S77's CommunityStore fix"],
+      "selected": [],
+      "rejected": []
+    }
+  },
+  "recommendedMoves": [
+    "Ship the td-flourish hookup and the two accessibility fixes first — all three are sub-2-hour, zero-risk, and close real live-code gaps in already-shipped surfaces (same pattern as the S76 stats aria-controls fix).",
+    "Treat primetime-marquee-badge and weekly-spread-prediction-minigame as the session's genuine second-order design bets — both are additive, local-only, and explicitly non-causal (spread outcomes never feed the simulation), consistent with the counterfactual-replay and rehearsal decisions already on record.",
+    "Give audioFeedback.js the same constructor/module-seam test treatment CommunityStore got in S77 — it is the last live, multi-call-site browser module with zero coverage that was easy to verify by grep."
+  ],
+  "preverifiedSkips": [
+    {
+      "axis": "gamification",
+      "candidate": "Internal coaching-tree / staff-promotion narrative (mentor-protege lineage across coordinators and head coaches)",
+      "reason": "False premise. src/engine/coachingTree.js already implements exactly this: a league.coachingTree graph of {nodes, edges} tracking mentor-protege lineage, scheme drift on promotion, and cross-team narrative continuity, wired through src/runtime/services/CoachingService.js and src/runtime/GameSession.js, covered by test/coaching-lineage-authority.test.js. Re-proposing it would duplicate a shipped S53 system (D-2026-07-23 'Coaching lineage is a domain authority with collision-safe identity')."
+    },
+    {
+      "axis": "test-coverage",
+      "candidate": "pressRoomPanel.js appears untested by filename",
+      "reason": "False premise. Covered by test/interactive-press-conference.test.js and test/press-room-truth.test.js."
+    },
+    {
+      "axis": "correctness",
+      "candidate": "Grep-flagged `|| 0` / `|| 1` patterns across public/lib as instances of the S67/S71 falsy-default class",
+      "reason": "Spot-checked; the appCore.js instances found are legitimate display-time fallbacks for optional fields, not ledger-write-site laundering. The one live boundary issue found (Cap War Room's expiring-contract check) is reported separately as cap-war-room-expiring-zero-year-contracts, scoped correctly as a display miss rather than the systemic write-side bug class."
+    },
+    {
+      "axis": "code-hygiene",
+      "candidate": "TODO/FIXME/HACK marker sweep across public/lib",
+      "reason": "Zero matches found. Confirms the polish claim from prior sessions rather than surfacing hidden debt."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Gamification / novel feature",
+      "effortHours": 2,
+      "impact": 4,
+      "innovation": 5,
+      "priority": 10.0,
+      "slug": "primetime-marquee-badge",
+      "title": "Marquee/primetime game flavor badge is buildable from data that already exists but has never been surfaced",
+      "status": "shipped",
+      "executionEvidence": "New pure module public/lib/marqueeBadge.js (deriveMarqueeBadge) derives Division Showdown/Playoff Preview/Statement Game labels deterministically from latestStandings, gated to week 6+. Wired into the schedule table (tabOverview.js renderSchedule) and the Sim-Watch overlay header (simWatchDirector.js renderHeader). test/marquee-badge.test.js: 12/12 pass, covering all three labels, the no-signal null case, the week-6 boundary, determinism, and malformed-input safety.",
+      "premise": "public/lib/simWatchDirector.js:33 already computes and renders a rivalry-specific 'RIVALRY WEEK' banner with a heat label and win-streak text, proving the schedule/game-context data needed for editorial framing exists. Grepping every public/lib/*.js file for primetime|nationally televised|marquee|SNF|MNF|TNF returns zero hits — no equivalent day/time-based marquee framing exists for games that are not rivalry games (e.g. two division leaders meeting in week 10, or a defending-champion road game). This is presentation-only over existing standings/schedule state, not a variant of the rivalry banner, Sim-Watch, or any shipped gamification system.",
+      "evidence": [
+        "public/lib/simWatchDirector.js:33 (existing rivalry-only banner pattern to model the new badge on)",
+        "grep -riE \"primetime|nationally televised|marquee|SNF|MNF|TNF\" public/lib -> no matches"
+      ],
+      "constraint": "Must derive marquee-ness deterministically from existing standings/record/rivalry state at schedule-render time; must not fabricate a broadcast network or invent viewership data; local-only, no backend.",
+      "verification": [
+        "a game between the two current division leaders (or two teams with top-4 records) in week 6+ renders a 'Primetime' badge on the schedule and Sim-Watch entry point",
+        "badge label is deterministic from league state (record delta, division standing, rivalry heat) with no randomness",
+        "a game with no qualifying signal renders no badge (no false-positive marquee spam)",
+        "badge is covered by a direct Node test against constructed schedule fixtures"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Add a pure `isMarqueeGame(game, standings)` helper (top-4 records or division-leader clash) and render a static 'Primetime' badge on the schedule row when true; no new label variants." },
+        "L2": { "effortHours": 2, "recipe": "L1 plus a short deterministic label ('Division Showdown', 'Statement Game', 'Playoff Preview') selected from the qualifying signal, surfaced on both the schedule panel and the Sim-Watch overlay header, with a direct test asserting label selection against constructed standings fixtures." },
+        "L3": { "effortHours": 3.5, "recipe": "L2 plus weaving the badge into the existing news ticker as a pre-game flavor line and into the weekly rehearsal panel's context summary, reusing the same qualifying-signal helper so all three surfaces stay in lockstep." }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Gamification / novel feature (speculative)",
+      "effortHours": 5,
+      "impact": 4,
+      "innovation": 7,
+      "priority": 10.0,
+      "slug": "weekly-spread-prediction-minigame",
+      "title": "No player-facing 'predict the spread' engagement loop exists anywhere in the shipped feature set",
+      "status": "shipped",
+      "executionEvidence": "New pure module public/lib/spreadPredictions.js (submitPrediction/resolveWeekPredictions/scorePrediction, localStorage-backed, keyed per-league) plus DOM surface public/lib/predictionPanel.js, mounted at #weeklyPredictionsPanel in game.html and wired from tabOverview.js renderSchedule() for every game in the current week (not just the controlled team's). test/spread-predictions.test.js: 18/18 pass, including a deep-frozen-object byte-identical-before/after proof that submission+resolution never mutate the game/schedule/league objects passed in. test/prediction-panel.test.js: 9/9 pass covering the empty state, pick form, pending/resolved-correct/resolved-incorrect receipts, and markup escaping.",
+      "premise": "Grepping public/lib for spread|betting line|vegas|point spread|over/under|predict.*margin returns nothing resembling a pick'em mini-game. The simulation already computes team power/rating differentials (used internally for game simulation), which is exactly the input a local score-margin prediction UI would need. This is distinct from the Monday-Morning-QB counterfactual replay (post-game, alternate-history, non-canon) and from the plan rehearsal's 'predicts no result' disclaimer (which concerns the rehearsal never spoiling or biasing the simulation engine itself) — a player-authored pre-game guess that is scored against the real outcome afterward is a different, purely engagement-side mechanic with no engine feedback path.",
+      "evidence": [
+        "grep -riE \"predict|spread|moneyline\" public/lib -> only non-matching hits in seasonEpilogue.js/seasonChapters.js/tacticalFilmRoom.js/architectPlanRehearsal.js (unrelated usages, one is a disclaimer string)",
+        "docs/DECISIONS.md 2026-07-02 'Counterfactual features must be explicitly non-canon and side-effect free' establishes the pattern this feature must also follow: deterministic, local, zero mutation of standings/stats/saves"
+      ],
+      "constraint": "Must be explicitly non-canon and side-effect-free per the existing counterfactual-feature decision pattern: the player's prediction never feeds into simulation odds, AI behavior, or any save-affecting state. Local-only persistence of the player's own prediction history and accuracy streak; no wagering of in-game currency or resources tied to franchise state.",
+      "verification": [
+        "player can submit one predicted winner + approximate margin per upcoming game before it simulates",
+        "after the game resolves, the panel shows predicted vs actual with a correct/incorrect receipt and a running local accuracy streak",
+        "prediction never alters game simulation inputs, standings, or any persisted league state — direct test asserts league state is byte-identical with and without a submitted prediction",
+        "empty/no-prediction state renders cleanly with no forced interaction"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 2.5, "recipe": "Local-only winner-only pick (no margin) for the current week's controlled-team game, scored after simulation, with a simple correct/incorrect toast; streak stored in localStorage." },
+        "L2": { "effortHours": 5, "recipe": "L1 plus point-margin guess, a running accuracy card (season streak, best streak, hit rate), and extending picks to all games in the current week (not just the controlled team), with a direct test proving zero engine-state mutation." },
+        "L3": { "effortHours": 8, "recipe": "L2 plus a season-long leaderboard-style summary in the season epilogue naming the player's best/worst predicted weeks, and a shareable 'prediction card' text export in the same style as the existing League Story Card." }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Gamification / immersion",
+      "effortHours": 1,
+      "impact": 5,
+      "innovation": 3,
+      "priority": 9.5,
+      "slug": "td-flourish-touchdown-sound-hookup",
+      "title": "A touchdown-flourish sound cue is fully defined but never played",
+      "status": "shipped",
+      "executionEvidence": "public/lib/simWatchDirector.js exports a pure shouldPlayTdFlourish(snapshot) gate (fires only on forward-advance 'tick'/'next' reasons whose current play is a touchdown, never on scrub-back/speed/pause) called from renderFrame() to invoke the existing playSound('td-flourish'), which already gates on the sound-enabled setting. test/td-flourish.test.js: 7/7 pass, covering TD-fires, non-scoring/field-goal no-fire, no-refire-on-scrub-back, and pregame-safety.",
+      "premise": "public/lib/audioFeedback.js:95-99 defines a 'td-flourish' note sequence inside PALETTE, but grepping every playSound(...) call site across public/ (public/app.js:555,2243, achievements.js:255, rewardBeats.js:74,112,136, tabOverview.js:1069) shows only advance-tick, trophy-unlock, win-chime, loss-thud, draft-brass, sign-thunk, and tier-fanfare are ever invoked. td-flourish is a built, zero-marginal-cost immersion asset sitting dead in the palette.",
+      "evidence": [
+        "public/lib/audioFeedback.js:95-99 (PALETTE['td-flourish'] defined)",
+        "public/lib/audioFeedback.js:107 (playSound export)",
+        "grep -n 'playSound(' public -> 7 call sites, none pass 'td-flourish'"
+      ],
+      "constraint": "Must trigger only on an actual touchdown scoring event already surfaced by the simulation (not a heuristic guess), and must respect the existing sound-enabled settings toggle exactly like every other playSound call.",
+      "verification": [
+        "playSound('td-flourish') fires exactly once per touchdown scoring play surfaced during Sim-Watch or box-score rendering",
+        "no call fires when the sound setting is disabled, matching existing playSound gating",
+        "no regression to existing win-chime/loss-thud/tier-fanfare call sites"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Wire playSound('td-flourish') into the existing Sim-Watch key-play advance path when the current play's type is a touchdown." },
+        "L2": { "effortHours": 1, "recipe": "L1 plus a direct test asserting the call fires on a touchdown play fixture and does not fire on a non-scoring play, using the existing sound-toggle test pattern from rewardBeats.test.js." },
+        "L3": { "effortHours": 2, "recipe": "L2 plus differentiating the flourish for the controlled team's touchdown vs an opponent's (reusing win-chime/loss-thud's existing team-relative pattern) so the cue is emotionally directional, not neutral." }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "UI/UX accessibility",
+      "effortHours": 1.5,
+      "impact": 5,
+      "innovation": 2,
+      "priority": 5.5,
+      "slug": "dynasty-timeline-keyboard-accessibility",
+      "title": "Dynasty Timeline season nodes are mouse-only with no keyboard path or ARIA state",
+      "status": "shipped",
+      "executionEvidence": "public/lib/dynastyTimeline.js season nodes now carry role=\"button\", tabindex=\"0\", aria-expanded reflecting activeIdx, and aria-controls pointing at a stable per-mount detail-panel id; a shared toggle() function backs both the click and keydown (Enter/Space, via exported isActivationKey) listeners so keyboard and mouse activation are provably identical code paths. test/dynasty-timeline.test.js: 10/10 pass, including a fake-DOM integration test (matching the modal-manager.test.js pattern, since this repo has no jsdom) proving Enter/Space expand and re-collapse a node exactly like a click.",
+      "premise": "public/lib/dynastyTimeline.js:77 renders each season as a plain `<div data-idx=...>` with no role, tabindex, or aria-expanded, and line 97-106 binds expand/collapse only to a mouse 'click' listener. The component is live and wired via public/lib/tabSettings.js:14,708,914, but grepping test/ for dynastyTimeline or tl-node returns no matches — this shipped, wired UI surface has never been keyboard- or screen-reader-accessible.",
+      "evidence": [
+        "public/lib/dynastyTimeline.js:77 (season node markup, no role/tabindex)",
+        "public/lib/dynastyTimeline.js:97-106 (click-only expand/collapse binding)",
+        "public/lib/tabSettings.js:14,708,914 (live mount confirming this is a shipped, reachable surface)",
+        "grep -rn 'dynastyTimeline|tl-node' test/ -> no matches"
+      ],
+      "constraint": "Must not change the visual layout or the existing expand/collapse behavior for mouse users; purely an accessibility-parity addition.",
+      "verification": [
+        "each season node has role=\"button\", tabindex=\"0\", and aria-expanded reflecting activeIdx state",
+        "Enter and Space both trigger the same expand/collapse the click handler does",
+        "focus order across nodes matches visual left-to-right order",
+        "a direct test drives the module in Node/jsdom and asserts the ARIA attributes and keydown behavior"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Add role=\"button\", tabindex=\"0\", and a keydown handler for Enter/Space that calls the same toggle logic as the click handler." },
+        "L2": { "effortHours": 1.5, "recipe": "L1 plus aria-expanded reflecting activeIdx, aria-controls pointing at the detail panel (matching the S76 stats aria-controls pattern), and a direct test covering keyboard activation and ARIA state." },
+        "L3": { "effortHours": 2.5, "recipe": "L2 plus arrow-key roving focus across season nodes (matching themeCustomizer.js's existing roving-focus pattern) and Home/End jump-to-first/last-season support." }
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Speed/organization / test coverage",
+      "effortHours": 1.5,
+      "impact": 4,
+      "innovation": 2,
+      "priority": 4.4,
+      "slug": "audiofeedback-test-coverage",
+      "title": "audioFeedback.js is live at 7 call sites across 5 modules with zero automated test coverage",
+      "status": "shipped",
+      "executionEvidence": "New test/audio-feedback.test.js: 13/13 pass, covering isSoundEnabled/setSoundEnabled persistence, palette lookup for every defined sound (including td-flourish) with a fake AudioContext, the disabled-setting no-op path (asserting zero AudioContext construction), unknown-sound-name safety, envelope-parameter determinism across repeated calls, and navigator.vibrate haptic gating (enabled/disabled/absent). Uses cache-busted dynamic imports to isolate the module's cached AudioContext singleton per test, matching the tablet-decision-deck.test.js global-stubbing discipline.",
+      "premise": "public/lib/audioFeedback.js is imported and called from public/app.js (2 sites), achievements.js, rewardBeats.js (3 sites), and tabOverview.js — confirmed by direct grep of every playSound/audioFeedback reference. Grepping test/ for audioFeedback or playSound returns zero matches: the synth-audio-plus-haptics layer that backs every reward moment in the game (win/loss, trophy unlock, draft pick, signing, tier promotion, and the td-flourish item above) has never been directly tested, only indirectly exercised if a caller's own test happens to invoke it without mocking.",
+      "evidence": [
+        "public/lib/audioFeedback.js (module under test, defines PALETTE and playSound/isSoundEnabled surface)",
+        "public/app.js:555,2243; achievements.js:255; rewardBeats.js:74,112,136; tabOverview.js:1069 (7 live call sites)",
+        "grep -rn 'audioFeedback|playSound' test/ -> no matches"
+      ],
+      "constraint": "Must not require real Web Audio/Vibration APIs in CI; test the pure logic (palette lookup, settings-toggle gating, envelope/timing parameters) with a fake AudioContext/navigator.vibrate stub, matching the existing pattern for other browser-API-touching modules in this repo.",
+      "verification": [
+        "playSound(name) looks up the correct PALETTE entry for every defined name including td-flourish",
+        "playSound is a no-op (no AudioContext calls) when the sound setting is disabled",
+        "isSoundEnabled() reflects the persisted settings value",
+        "an unknown sound name does not throw"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Add test/audio-feedback.test.js covering PALETTE lookup and the disabled-setting no-op path with a fake AudioContext stub." },
+        "L2": { "effortHours": 1.5, "recipe": "L1 plus haptic (navigator.vibrate) gating, unknown-name safety, and a determinism check that the same call produces the same envelope parameters." },
+        "L3": { "effortHours": 2.5, "recipe": "L2 plus integration-style assertions that each of the 7 real call sites' triggering conditions (win/loss, trophy unlock, draft, signing, tier promotion) invoke the expected palette name." }
+      }
+    },
+    {
+      "rank": 6,
+      "tier": "MEDIUM",
+      "category": "UI/UX accessibility",
+      "effortHours": 0.5,
+      "impact": 4,
+      "innovation": 1,
+      "priority": 3.0,
+      "slug": "coaching-market-panel-aria-live",
+      "title": "Coaching Market Panel rewrites its content on hire/fire with no live-region announcement",
+      "status": "shipped",
+      "executionEvidence": "public/game.html:1304 coachingMarketPanel section now carries aria-live=\"polite\", matching every sibling dynamically-rewritten panel. test/coaching-market.test.js gained a direct assertion reading game.html and matching the attribute on the section tag; full file 24/24 pass.",
+      "premise": "public/lib/coachingMarketPanel.js:31-93,103-112 rewrites the panel's innerHTML whenever a coach is hired or fired, but its mount point (public/game.html:1304) declares only aria-label=\"Coaching market\" with no aria-live, unlike every other dynamically-rewritten panel in the same file (openingContractCard, pressRoomCard, franchiseCommandCenter, coGmBriefContent, trophyRoadContent, decisionArchiveContent, dynastyTimelineContainer all carry aria-live=\"polite\"). Screen-reader users get no announcement when a hire/fire completes.",
+      "evidence": [
+        "public/game.html:1304 (`<section id=\"coachingMarketPanel\" ... aria-label=\"Coaching market\">` — no aria-live)",
+        "public/game.html:100,102,131,137,146,153,967,1341 (sibling panels that do carry aria-live=\"polite\")",
+        "public/lib/coachingMarketPanel.js:31-93 (innerHTML rewrite on hire/fire)",
+        "test/coaching-market.test.js exists but contains no aria-live/aria-controls assertion"
+      ],
+      "constraint": "Additive markup change only; no change to hire/fire logic or visual layout.",
+      "verification": [
+        "coachingMarketPanel section carries aria-live=\"polite\"",
+        "a direct or DOM-level test asserts the attribute is present"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.25, "recipe": "Add aria-live=\"polite\" to the coachingMarketPanel section in game.html." },
+        "L2": { "effortHours": 0.5, "recipe": "L1 plus a test/coaching-market.test.js assertion that the mount markup or module-emitted markup carries the attribute." },
+        "L3": { "effortHours": 1, "recipe": "L2 plus a brief text announcement change ('Hired {name} as {role}') distinct from the visual card update, so the live-region content is itself meaningful rather than announcing raw re-rendered HTML." }
+      }
+    },
+    {
+      "rank": 7,
+      "tier": "MEDIUM",
+      "category": "Correctness / display accuracy",
+      "effortHours": 0.5,
+      "impact": 3,
+      "innovation": 1,
+      "priority": 2.3,
+      "slug": "cap-war-room-expiring-zero-year-contracts",
+      "title": "Cap War Room's expiring-contract counter cannot count a contract already at 0 years remaining",
+      "status": "shipped",
+      "executionEvidence": "Extracted the inline cap-projection loop in public/lib/engagementFeatures.js into a pure, exported computeCapProjection(roster, currentYear, opts) function and changed the expiring-count boundary from `yearsRemaining === 1` to `yearsRemaining <= 1`. New test/cap-war-room.test.js: 6/6 pass, covering 0-year counts, 1-year no-regression, 2-year exclusion, mixed rosters, and committed/dead-money splitting.",
+      "premise": "public/lib/engagementFeatures.js:451 increments the current-year 'expiring' counter only when `yearsRemaining === 1`. Since the S67 offseason fix made `yearsRemaining: 0` a real, legally reachable mid-season state (the whole point of that fix was making contract expiry reachable at all), a contract sitting at exactly 0 years remaining before the offseason sweep runs would be invisible to this specific UI counter, even though it is arguably more urgent than a 1-year contract.",
+      "evidence": [
+        "public/lib/engagementFeatures.js:444 (`const yearsRemaining = contract.yearsRemaining || 0;`)",
+        "public/lib/engagementFeatures.js:451 (`if (yr === currentYear && yearsRemaining === 1) expiring++;`)",
+        "context/CURRENT_STATE.md 2026-08-01 entry confirms yearsRemaining:0 is now a real reachable state post-S67 fix"
+      ],
+      "constraint": "Display-only change to the expiring counter's boundary condition; must not touch the contract-write-side logic that the S67 decision already fixed.",
+      "verification": [
+        "a roster fixture with a contract at yearsRemaining === 0 in the current year is counted as expiring",
+        "a roster fixture with yearsRemaining === 1 still counts as before (no regression)",
+        "a direct test constructs both fixtures and asserts the counter"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.25, "recipe": "Change the boundary to `yearsRemaining <= 1` for the current-year expiring count." },
+        "L2": { "effortHours": 0.5, "recipe": "L1 plus a direct test with both a 0-year and 1-year contract fixture asserting both are counted and a 2-year contract is not." },
+        "L3": { "effortHours": 1, "recipe": "L2 plus visually distinguishing already-expired (0) from expiring-soon (1) in the rendered bar tooltip so the GM can tell the two states apart at a glance." }
+      }
+    }
+  ],
+  "secondOrderCandidates": []
+}

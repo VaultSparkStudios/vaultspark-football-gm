@@ -2,8 +2,8 @@
   "schemaVersion": "1.0",
   "entry": "app.js",
   "budgets": {
-    "staticBytes": 710000,
-    "staticModules": 55
+    "staticBytes": 730000,
+    "staticModules": 58
   },
   "lazyRoots": [
     "lib/tabHistory.js",
