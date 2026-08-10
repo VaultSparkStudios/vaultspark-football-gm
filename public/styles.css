@@ -5226,4 +5226,26 @@ html[data-theme="light"] .bg-layer {
   .community-command-bar button { flex:1; }
   .community-atlas-grid { grid-template-columns:1fr; }
 }
+
+/* ── Weekly spread predictions mini-game (S78) ─────────────────────────── */
+.weekly-predictions-mount { margin-top: 14px; }
+.weekly-predictions { border-radius: 8px; background: var(--bg-3); padding: 12px 14px; }
+.wp-title { margin: 0 0 8px; font-size: 0.95rem; }
+.wp-stats { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; }
+.wp-stat strong { color: var(--ink-strong); }
+.wp-games { display: flex; flex-direction: column; gap: 8px; }
+.wp-game-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--border, rgba(255,255,255,0.06)); }
+.wp-game-row:first-child { border-top: none; }
+.wp-matchup { font-weight: 600; min-width: 90px; }
+.wp-pick-form { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.wp-pick-btn { padding: 3px 10px; border-radius: 4px; cursor: pointer; }
+.wp-pick-btn.wp-selected { background: var(--accent); color: #fff; }
+.wp-margin-input { width: 60px; }
+.wp-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.wp-pending { font-size: 0.85rem; color: var(--muted); }
+.wp-receipt { font-size: 0.85rem; }
+.wp-receipt.wp-correct { color: var(--success, #4caf7c); }
+.wp-receipt.wp-incorrect { color: var(--danger); }
+.wp-no-pick { font-size: 0.85rem; color: var(--muted); font-style: italic; }
+.wp-empty { padding: 10px; text-align: center; color: var(--muted); font-style: italic; font-size: 0.85rem; }
 @media (prefers-reduced-motion: reduce) { .community-skeleton-grid i { animation:none; } }

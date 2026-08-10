@@ -13,6 +13,7 @@ import { describeWeeklyPlanReceipt } from "./weeklyPlanComposer.js";
 import { renderPressRoomPanel } from "./pressRoomPanel.js";
 import { buildCoGmBriefingPacket } from "./coGmBriefing.js";
 import { deriveMarqueeBadge } from "./marqueeBadge.js";
+import { renderPredictionPanel } from "./predictionPanel.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -668,6 +669,16 @@ export function renderSchedule() {
     });
   }
   renderTable("scheduleTable", rows);
+  try {
+    renderPredictionPanel({
+      leagueId: state.dashboard?.franchiseId || null,
+      year: state.dashboard?.currentYear || null,
+      week: schedule.week,
+      games: schedule.games || []
+    });
+  } catch {
+    // Local-only mini-game; a rendering failure here must never break the schedule tab.
+  }
   observeBackgroundTask(() => renderRivalryStrip(schedule, controlledTeamId), {
     surface: "overview",
     operation: "rivalry-strip",
