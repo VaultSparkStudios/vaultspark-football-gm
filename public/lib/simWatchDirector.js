@@ -2,10 +2,23 @@ import { api } from "./appState.js";
 import { escapeHtml, showToast, teamCode } from "./appCore.js";
 import { observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic } from "./clientDiagnostics.js";
 import { buildScoringTimeline, createSimWatchPlayback, deriveFinalReel, resolveBoxScoreTeamIds, SIM_WATCH_SPEEDS } from "./simWatchPlayback.js";
+import { playSound } from "./audioFeedback.js";
 
 let active = false;
 let controller = null;
 let context = null;
+
+// Pure/testable: the td-flourish cue should fire once per touchdown play as
+// the viewer advances *forward* through the broadcast (a "tick" from
+// autoplay or an explicit "next" step) — never on replay/scrub-back
+// ("previous"), speed changes, or pause/resume, so scrubbing across an
+// already-seen touchdown never re-fires the cue. playSound() itself already
+// gates on the sound-enabled setting, so this only decides *whether* to ask.
+export function shouldPlayTdFlourish(snapshot) {
+  if (!snapshot || (snapshot.reason !== "tick" && snapshot.reason !== "next")) return false;
+  const description = String(snapshot.play?.description || "").toLowerCase();
+  return description.includes("touchdown");
+}
 
 function renderHeader(boxScore) {
   const header = document.getElementById("simWatchHeader");
@@ -122,6 +135,7 @@ function renderDirector(snapshot) {
 
 function renderFrame(snapshot) {
   renderDirector(snapshot);
+  if (shouldPlayTdFlourish(snapshot)) playSound("td-flourish");
   if (!context || snapshot.index < 0) return;
   const feed = document.getElementById("simWatchFeed");
   if (feed) feed.innerHTML = "";
