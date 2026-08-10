@@ -36,6 +36,36 @@ function recordLabel(season) {
 }
 
 /**
+ * Whether a keydown event should trigger the same activation the click
+ * handler does. Pure so the keyboard-parity contract is directly testable
+ * without a DOM (Enter and Space are the standard `role="button"` keys).
+ */
+export function isActivationKey(event) {
+  return event?.key === "Enter" || event?.key === " " || event?.key === "Spacebar";
+}
+
+/**
+ * Build the season-node markup for the timeline ribbon. Pure/exported so the
+ * keyboard-accessibility contract (role, tabindex, aria-expanded,
+ * aria-controls) can be asserted directly against the generated markup
+ * without a DOM — this repo has no jsdom dependency.
+ */
+export function renderNodesHTML(data, activeIdx, teamColor, detailPanelId) {
+  return data.map((season, i) => {
+    const isActive = i === activeIdx;
+    const cls = nodeClass(season) + (isActive ? " tl-active" : "");
+    const rec = recordLabel(season);
+    const crown = season.champion ? `<span class="tl-crown" title="Super Bowl Champion">&#9813;</span>` : "";
+    const label = `Season ${esc(season.year)}${season.champion ? ", Super Bowl Champion" : ""}${rec ? `, ${esc(rec)}` : ""}`;
+    return `
+        <div class="${cls}" data-idx="${i}" style="--tl-color:${teamColor}" role="button" tabindex="0" aria-expanded="${isActive}" aria-controls="${detailPanelId}" aria-label="${label}">
+          <div class="tl-year">${esc(season.year)}${crown}</div>
+          <div class="tl-rec">${esc(rec)}</div>
+        </div>`;
+  }).join("");
+}
+
+/**
  * Build a timeline data array from raw history.
  */
 export function buildTimelineData(historySeasons = [], controlledTeamId) {
@@ -56,6 +86,8 @@ export function buildTimelineData(historySeasons = [], controlledTeamId) {
 /**
  * Mount the timeline into a DOM container.
  */
+let mountCount = 0;
+
 export function mount(container, { seasons, teamId, teamColor = "#4a8fb5" }) {
   if (!container || !seasons?.length) {
     container.innerHTML = `<div class="tl-empty">No franchise history yet. Simulate seasons to build your dynasty timeline.</div>`;
@@ -64,22 +96,20 @@ export function mount(container, { seasons, teamId, teamColor = "#4a8fb5" }) {
 
   const data = seasons;
   const totalW = data.length * (NODE_W + 12) + PADDING_X * 2;
+  const detailPanelId = `tl-detail-panel-${mountCount++}`;
 
   let activeIdx = -1;
 
-  function render() {
-    const nodesHTML = data.map((season, i) => {
-      const isActive = i === activeIdx;
-      const cls = nodeClass(season) + (isActive ? " tl-active" : "");
-      const rec = recordLabel(season);
-      const crown = season.champion ? `<span class="tl-crown" title="Super Bowl Champion">&#9813;</span>` : "";
-      return `
-        <div class="${cls}" data-idx="${i}" style="--tl-color:${teamColor}">
-          <div class="tl-year">${esc(season.year)}${crown}</div>
-          <div class="tl-rec">${esc(rec)}</div>
-        </div>`;
-    }).join("");
+  function toggle(idx) {
+    activeIdx = activeIdx === idx ? -1 : idx;
+    render();
+    if (activeIdx >= 0) {
+      container.querySelector(".tl-detail-panel")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }
 
+  function render() {
+    const nodesHTML = renderNodesHTML(data, activeIdx, teamColor, detailPanelId);
     const detail = activeIdx >= 0 ? renderDetail(data[activeIdx]) : "";
 
     container.innerHTML = `
@@ -90,18 +120,19 @@ export function mount(container, { seasons, teamId, teamColor = "#4a8fb5" }) {
             <div class="tl-nodes">${nodesHTML}</div>
           </div>
         </div>
-        <div class="tl-detail-panel">${detail}</div>
+        <div class="tl-detail-panel" id="${detailPanelId}">${detail}</div>
       </div>`;
 
-    // Bind click handlers
+    // Bind click + keyboard handlers. Focus order across nodes follows DOM
+    // (== visual left-to-right) order automatically since nodesHTML is built
+    // from `data` in order and no tabindex other than 0 is ever set.
     container.querySelectorAll("[data-idx]").forEach((el) => {
-      el.addEventListener("click", () => {
-        const idx = parseInt(el.dataset.idx, 10);
-        activeIdx = activeIdx === idx ? -1 : idx;
-        render();
-        if (activeIdx >= 0) {
-          container.querySelector(".tl-detail-panel")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        }
+      const idx = parseInt(el.dataset.idx, 10);
+      el.addEventListener("click", () => toggle(idx));
+      el.addEventListener("keydown", (event) => {
+        if (!isActivationKey(event)) return;
+        event.preventDefault?.();
+        toggle(idx);
       });
     });
   }
