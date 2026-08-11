@@ -6,7 +6,8 @@
 - Shipped reduced-motion-aware navigation as the second-order refinement. Verification also corrected a Studio assertion that wrongly treated an intentionally open deployment audit row as an exhausted innovation pack.
 - Pixel review inspected the light mobile Architect review, dark desktop command strip, mobile contract target, and adjacent themes/states. Final evidence passed 176 captures and sealed 56 dark/light desktop/mobile receipts with no overflow, contrast, touch-target, selector or runtime defect.
 - Final candidate proof: Node 1,024/1,024 direct exit 0; Playwright 40/40 clean rerun; Pages build/smoke; CANON-053 PASS; workspace secret scan 0 findings. One full-browser Hall-of-Fame request timed out under load, then passed in 56 seconds alone and 45.6 seconds in the clean 40-test rerun.
-- Release promotion remains in progress after this candidate closeout. The user authorized direct commit/push and full deployment, but not a public-launch flip; `launchReady: false` and all independent launch holds remain intact.
+- Release promotion completed at immutable candidate `7becc573…`: stable staging 14/14 with artifact `6781437a…` and rollback; direct main push; green CI/Pages/brief-format; guarded backend dispatch `31544469131`; exact production provenance; and external database/CORS/cache health. The user authorized direct commit/push and full deployment, but not a public-launch flip; `launchReady: false` and all independent launch holds remain intact.
+- Broadcast the public-safe Session 80 impact summary through signed Studio Ark cargo `01JVPI0JQG0C31A85B04F15ABF`; no sibling tree was edited.
 - Creative Direction Record reviewed: no new founder creative direction was introduced, and the private-ledger path remains absent from this public repository.
 
 ## 2026-08-11 — Session 79: canonical game loops, evidence integrity, and browser headroom

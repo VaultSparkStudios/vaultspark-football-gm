@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 80 candidate complete: exact General Manager decision-surface routing, visible evidence-derived Architect mastery and reduced-motion-safe navigation are green at 1024/1024 Node, 40/40 Playwright, 176 responsive captures and 56 reviewed hash-bound visual receipts. Full-stack promotion is in progress; launch HOLD remains explicit.",
-  "nextMilestone": "Promote the immutable Session 80 candidate through exact-SHA stable staging, direct-main Pages publication and deploy_to_server backend dispatch, then observe real consenting cohorts without manufacturing activity. Launch remains independently gated.",
+  "currentFocus": "Session 80 complete and fully deployed: exact General Manager decision surfaces and visible evidence-derived Architect mastery are live at 7becc57385515042dee5d80146c635d45962ea40 with staging/production artifact 6781437a0b319806945b94700e02d53faeee59be0885060a1b78dcc7545b5c9a; CI, Pages and guarded backend deployment are green. Launch HOLD remains explicit.",
+  "nextMilestone": "Observe real consenting first-session and Community Stats cohorts without manufacturing activity; separately prove delivered on-domain email, public-launch approval and authoritative lifecycle before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -69,11 +69,11 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 995,
+  "silScore": 996,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 99,
-    "momentum": 99,
+    "momentum": 100,
     "engagement": 99,
     "processQuality": 98,
     "crossRepoCoherence": 100,
@@ -85,7 +85,7 @@
   "currentSession": 80,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "npm test 1024/1024 direct exit 0; Playwright 40/40; responsive evidence 176/176; 56 hash-bound visual captures across dark/light desktop/mobile; CANON-053 PASS; Pages build/smoke and scoped workspace secret scan green.",
+  "lastVerification": "npm test 1024/1024 direct exit 0; Playwright 40/40; responsive evidence 176/176; CANON-053 56 captures/2 themes; secret scan 0; stable staging 14/14 and production at 7becc573/6781437a; CI 31544142759, Pages 31544142748, brief 31544142762 and backend deploy 31544469131 green; external API database/CORS/cache health green.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -111,7 +111,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 818,
+  "silHealth": 816,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -175,7 +175,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-08-08"
+      "lastChecked": "2026-08-11"
     }
   ],
   "lastSession": 80,
@@ -193,20 +193,33 @@
     }
   ],
   "session": 80,
+  "backendDeployment": {
+    "sourceRevision": "7becc57385515042dee5d80146c635d45962ea40",
+    "workflowRun": 31544469131,
+    "deployServer": "success",
+    "externalHealth": {
+      "ok": true,
+      "database": "ready",
+      "corsOrigin": "https://playfranchisearchitect.com",
+      "healthCache": "no-store",
+      "snapshotCache": "public, max-age=30, s-maxage=60, stale-while-revalidate=300"
+    },
+    "verifiedAt": "2026-08-11"
+  },
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "a70404af723be904ad62b59bd2ee897f0d07fca34716a8ade850d658b842e9e1",
-    "checkedAt": "2026-08-08T22:37:39.171Z",
+    "receiptSha256": "fd1812e26fa2366f71ac4a603d0722d36fe5a2a792b206ed860552eb38ba8c41",
+    "checkedAt": "2026-08-11T23:15:45.010Z",
     "evidenceWindow": {
-      "observedAt": "2026-08-08T22:37:39.171Z",
+      "observedAt": "2026-08-11T23:15:45.010Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-08-09T22:37:39.171Z",
+      "expiresAt": "2026-08-12T23:15:45.010Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "c71a26065bb355900a3544f5d08b150b8c3191f5",
+    "deployedRevision": "7becc57385515042dee5d80146c635d45962ea40",
     "routes": {
       "verified": true,
       "checked": 9
@@ -227,7 +240,7 @@
     },
     "exactRevision": {
       "verified": true,
-      "expected": "c71a26065bb355900a3544f5d08b150b8c3191f5"
+      "expected": "7becc57385515042dee5d80146c635d45962ea40"
     },
     "independentStaging": {
       "verified": true
@@ -248,32 +261,32 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "37a0f8fee4d90a186fb36e4755b246c8e1ad550594286b98456a4809fd464692",
-    "sourceRevision": "c71a26065bb355900a3544f5d08b150b8c3191f5",
+    "receiptSha256": "a423ff297e47041a9140d63e2080e4aa64b94d2bf79d8473c5d2ec9593d80807",
+    "sourceRevision": "7becc57385515042dee5d80146c635d45962ea40",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "0a637f4703dad259786173bb3607de17b3610a994debf31150ec93ef27c1e1f3",
-      "files": 183,
+      "digest": "6781437a0b319806945b94700e02d53faeee59be0885060a1b78dcc7545b5c9a",
+      "files": 188,
       "exclusions": [
         "_health",
         "deploy-manifest.json"
       ]
     },
-    "deploymentId": "41abef55-a23d-47b5-a271-312b8c3c306a",
+    "deploymentId": "7d81dbac-fa53-491b-9801-b162e3889542",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
-      "checksPassed": 11,
-      "checksTotal": 11,
-      "checkedAt": "2026-08-08T22:33:29.382Z"
+      "checksPassed": 14,
+      "checksTotal": 14,
+      "checkedAt": "2026-08-11T22:47:44.506Z"
     },
     "rollback": {
-      "previousDeploymentId": "847ccc74-b160-453f-aafd-70c386e131f3",
+      "previousDeploymentId": "a836ac8f-8e6b-4b42-86e2-b7b6a2fb5344",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-08T22:33:29.382Z"
+    "observedAt": "2026-08-11T22:47:44.507Z"
   },
   "lastCloseoutAt": "2026-08-11T22:35:52.8003365Z"
 }

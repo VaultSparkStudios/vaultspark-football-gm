@@ -2,9 +2,9 @@
 
 ## Where We Left Off
 
-- The product implementation and candidate-side gates for the requested full `/arc` are complete. General Manager command cards now carry exact targets through one hydrate-scroll-focus authority across desktop, mobile, Blueprint and season chapters; Architecture Review exposes the source-derived strongest mastery signature without adding hidden bonuses.
+- The requested full `/arc`, direct-main publication and full-stack deployment are complete. General Manager command cards now carry exact targets through one hydrate-scroll-focus authority across desktop, mobile, Blueprint and season chapters; Architecture Review exposes the source-derived strongest mastery signature without adding hidden bonuses.
 - Candidate proof is green: Node 1,024/1,024 direct exit 0; Playwright 40/40; Pages build/smoke; responsive evidence 176/176; 56 inspected dark/light desktop/mobile captures hash-bound in `docs/visual-qa/LATEST.json`; scoped workspace secret scan 0 findings.
-- The release audit row is intentionally still in progress. Freeze the closeout commit, deploy that immutable SHA to stable staging, prove exact SHA/artifact/rollback, push directly to `main`, wait for Pages production provenance, dispatch `deploy-backend.yml` with `deploy_to_server=true`, then verify the live Community API health/database/CORS/cache contract at the exact pushed SHA.
+- Immutable candidate `7becc57385515042dee5d80146c635d45962ea40` passed stable staging 14/14 with artifact `6781437a0b319806945b94700e02d53faeee59be0885060a1b78dcc7545b5c9a` and rollback `a836ac8f-8e6b-4b42-86e2-b7b6a2fb5344`. Direct main push, full CI `31544142759`, Pages `31544142748`, brief-format `31544142762` and guarded backend dispatch `31544469131` are green. Production serves the same revision/artifact; the external Community API is database-ready with correct CORS and cache headers.
 - The user's authorization covers commit, direct push and full deployment. It does not authorize a public-launch flip. Preserve `launchReady: false`, local public-unlaunched/FORGE truth, and the independent email/lifecycle/Web Vitals/launch-approval holds.
 
 ## Decisions That Must Survive
@@ -16,7 +16,6 @@
 
 ## Next Best Work
 
-- Complete this same-turn immutable staging → main → Pages → exact-SHA backend promotion and reconcile the release audit row from live receipts.
 - Observe a real consented first-session/playtest cohort and the first real opted-in Community Stats cohort; never manufacture outcome evidence or activity.
 - Do not change launch readiness until the separate reply-capable email, lifecycle, current performance/edge and SHA-bound public-launch evidence exists.
 

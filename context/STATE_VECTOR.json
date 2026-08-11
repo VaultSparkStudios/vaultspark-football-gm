@@ -1,10 +1,10 @@
 {
   "vectorVersion": "1.0",
   "generatedAt": "2026-08-11",
-  "generatedAtMs": 1786487878963,
+  "generatedAtMs": 1786490380777,
   "session": 80,
-  "vectorHash": "73786e842bc31795",
-  "silTotal": 995,
+  "vectorHash": "10c5b31042213648",
+  "silTotal": 996,
   "silAvg3": null,
   "velocity": null,
   "debt": null,
@@ -31,8 +31,8 @@
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "Promote the immutable Session 80 candidate through exact-SHA stable staging, direct-main Pages publication and deploy_to_server backend dispatch, then observe real consenting cohorts without manufacturing activity. Launch remains independently gated.",
-  "currentFocus": "Session 80 candidate complete: exact General Manager decision-surface routing, visible evidence-derived Architect mastery and reduced-motion-safe navigation are green at 1024/1024 Node, 40/40 Playwright, 176 responsive captures and 56 reviewed hash-bound visual receipts. Full-stack promotion is in progress; launch HOLD remains explicit.",
+  "nextMilestone": "Observe real consenting first-session and Community Stats cohorts without manufacturing activity; separately prove delivered on-domain email, public-launch approval and authoritative lifecycle before any launch flip.",
+  "currentFocus": "Session 80 complete and fully deployed: exact General Manager decision surfaces and visible evidence-derived Architect mastery are live at 7becc57385515042dee5d80146c635d45962ea40 with staging/production artifact 6781437a0b319806945b94700e02d53faeee59be0885060a1b78dcc7545b5c9a; CI, Pages and guarded backend deployment are green. Launch HOLD remains explicit.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."

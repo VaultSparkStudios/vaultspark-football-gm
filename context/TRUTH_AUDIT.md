@@ -12,7 +12,7 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - **Mastery identity is visible but non-causal.** Architecture Review renders the strongest source-derived signature with score, status and receipt count; an empty portfolio remains empty, and the interface states that no hidden bonus exists.
 - **Outcome evidence is not invented.** The game-loop design review scores code-contract coverage only. No real first-session cohort exists, so no measured fun, retention or return-intent claim was made.
 - **Candidate evidence is current.** Node passes 1,024/1,024; Playwright passes 40/40; Pages build/smoke passes; responsive evidence passes 176 states; 56 dark/light desktop/mobile captures are hash-bound and reviewed in `docs/visual-qa/LATEST.json`; the scoped workspace secret scan has zero findings.
-- **Deployment truth remains phase-bound.** Stable staging, direct-main Pages provenance and exact-SHA backend health must be observed before the release audit row becomes implemented. Deployment authorization remains distinct from public-launch approval, and `launchReady` stays false.
+- **Deployment truth is complete and still separate from launch.** Candidate `7becc573…` passed stable staging 14/14 and production at artifact `6781437a…`; CI, Pages and guarded backend dispatch `31544469131` are green; the external API is database-ready with production CORS and explicit cache behavior. That deployment evidence does not verify email, lifecycle or public-launch approval, so `launchReady` stays false.
 
 ## 2026-08-11 - Session 79 truth update
 

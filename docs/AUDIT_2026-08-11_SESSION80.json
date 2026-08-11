@@ -8,7 +8,7 @@
     "type": "public browser football game/app"
   },
   "displayName": "Franchise Architect: Football",
-  "status": "open",
+  "status": "complete",
   "summary": {
     "combinedPriority": 32.1,
     "source": "Fresh S80 live-code audit with the game-loop-review and read-only app-release-gate lenses. Every selected premise was verified against current source, exact live origins, GitHub Actions state, and the direct baseline suite.",
@@ -162,8 +162,8 @@
       "priority": 7.5,
       "slug": "exact-candidate-full-stack-promotion",
       "title": "Deploy the immutable candidate through stable staging, main, Pages, and the live backend server",
-      "status": "in_progress",
-      "executionEvidence": "Candidate implementation, focused tests, Pages build/smoke, browser reachability and a 176-capture desktop/tablet/mobile dark/light evidence matrix are green. Immutable staging, direct-main publication, Pages provenance, and exact-SHA server dispatch remain in the release wave.",
+      "status": "implemented",
+      "executionEvidence": "Immutable candidate 7becc57385515042dee5d80146c635d45962ea40 passed stable staging provenance 14/14 with artifact 6781437a0b319806945b94700e02d53faeee59be0885060a1b78dcc7545b5c9a (188 files) and rollback a836ac8f-8e6b-4b42-86e2-b7b6a2fb5344. Direct main push succeeded; CI 31544142759, Pages 31544142748 and brief-format 31544142762 are green. Guarded backend dispatch 31544469131 built exact-SHA play/api images and deploy-server succeeded. Production serves the identical SHA/artifact; the external Community API reports database ready, production CORS, no-store health and ETag/cache snapshot behavior. launchReady remains false.",
       "premise": "Static staging and production are exact at current HEAD, but the backend push workflow only built images and skipped deploy-server. The last successful server deployment is c71a260 even though material community/server code changed afterward. A direct-main Pages publish alone would therefore not satisfy the founder's fully deploy request.",
       "evidence": [
         "Pages run 31525032364 green at eb9c52f",
