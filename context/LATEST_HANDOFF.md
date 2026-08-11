@@ -4,8 +4,8 @@
 
 - The full S79 `/arc` scope is implemented and candidate-side verification is complete. Agent Negotiation now has one canonical contract authority; predictions settle automatically with separate winner/margin truth; Community Stats ingress uses participant-bound capabilities; every non-Overview tab is a measured lazy island; and the Hall of Fame ceremony is a focus-managed accessible dialog.
 - Static boot is 610,654/730,000 bytes and 48/58 modules with zero lazy leaks (16.35% byte headroom). Playwright is 40/40. Responsive evidence passed 158 captures; 44 inspected dark/light desktop/mobile captures are hash-bound in `docs/visual-qa/LATEST.json`.
-- The first aggregate Node run passed core 122/122, runtime 636/636, sim-contract 79/79 and sim-realism 1/1, then correctly failed Studio on two closeout-process gaps: omitted `test/ui-islands.test.js` shard membership and still-open audit execution rows. Both are fixed; the final source-bound aggregate rerun is the remaining local verification step.
-- The immutable candidate must deploy to stable staging and prove exact SHA/artifact/rollback before the same SHA is pushed to `main`. Do not edit tracked files between staging proof and push.
+- The final source-bound aggregate receipt is green at 1,018/1,018: core 122, runtime 636, sim-contract 79, sim-realism 1 and Studio 180. The earlier Studio rejection correctly found omitted island-test shard membership and inconsistent audit completion parsing; both authorities are now regression-covered.
+- Implementation commit `5cfb904` plus this final closeout metadata forms the immutable release candidate. Deploy its final SHA to stable staging and prove exact SHA/artifact/rollback before pushing that same SHA to `main`; do not edit tracked files between staging proof and push.
 - Launch remains HOLD and `launchReady: false`. Reply-capable on-domain email evidence, SHA-bound founder approval, lifecycle reconciliation, and current Obelisk/edge evidence remain independent gates; code promotion does not clear them.
 
 ## Decisions That Must Survive
@@ -17,7 +17,7 @@
 
 ## Next Best Work
 
-- Complete the final aggregate receipt, closeout commit, exact-SHA stable-staging proof, direct-main push of the same SHA, CI monitoring and production provenance check.
+- Complete the closeout metadata commit, exact-SHA stable-staging proof, direct-main push of the same SHA, CI monitoring and production provenance check.
 - After promotion, observe the first real opted-in Community Stats cohort without manufacturing activity.
 - Do not flip launch readiness until every independent launch gate has evidence.
 
