@@ -101,7 +101,7 @@ export function renderFranchiseCommandCenter() {
     ${planReceipt ? `<div class="weekly-plan-receipt ${escapeHtml(planReceipt.tone)}" role="status"><strong>${escapeHtml(planReceipt.title)}</strong><span>${escapeHtml(planReceipt.detail)}</span></div>` : ""}
     <div class="franchise-command-grid">
       ${cards.map((card, index) => `
-        <button type="button" class="franchise-command-card ${escapeHtml(card.tone)}" data-command-index="${index}" data-command-action="${escapeHtml(card.action)}" data-target-tab="${escapeHtml(card.targetTab || "")}" ${card.disabled ? "disabled aria-disabled=\"true\"" : ""}>
+        <button type="button" class="franchise-command-card ${escapeHtml(card.tone)}" data-command-index="${index}" data-command-action="${escapeHtml(card.action)}" data-target-tab="${escapeHtml(card.targetTab || "")}" data-target-id="${escapeHtml(card.targetId || "")}" data-target-label="${escapeHtml(card.title || card.kicker || "decision surface")}" ${card.disabled ? "disabled aria-disabled=\"true\"" : ""}>
           <span class="franchise-command-lane">${escapeHtml(card.lane)}</span>
           <span class="franchise-command-kicker">${escapeHtml(card.kicker)}</span>
           <strong>${escapeHtml(card.title)}</strong>
@@ -112,6 +112,26 @@ export function renderFranchiseCommandCenter() {
     </div>
   `;
 }
+
+export function renderMasterySignatureCard(mastery = null) {
+  const signature = mastery?.signature || null;
+  if (!signature) {
+    return `
+      <div class="gm-mastery-signature awaiting-evidence" data-mastery-signature-state="awaiting-evidence">
+        <span class="franchise-horizon-label">Strongest signature</span>
+        <strong>Awaiting source receipts</strong>
+        <small>No path is named until a committed season, stewardship, promise, or tactical receipt exists.</small>
+      </div>`;
+  }
+  const evidenceCount = Number(signature.evidenceCount || 0);
+  return `
+    <div class="gm-mastery-signature ${escapeHtml(signature.status || "emerging")}" data-mastery-signature-state="${escapeHtml(signature.status || "emerging")}">
+      <span class="franchise-horizon-label">Strongest signature</span>
+      <strong>${escapeHtml(signature.label)} · ${escapeHtml(String(signature.score))}/${escapeHtml(String(signature.maxScore || 25))}</strong>
+      <small>${escapeHtml(String(evidenceCount))} source receipt${evidenceCount === 1 ? "" : "s"} · Descriptive identity only; no hidden bonus or causal claim.</small>
+    </div>`;
+}
+
 export function renderFranchiseArchitecture() {
   const content = document.getElementById("franchiseArchitectureContent");
   if (!content) return;
@@ -208,6 +228,7 @@ export function renderFranchiseArchitecture() {
         ${mastery ? `
           <section class="architecture-mastery" aria-label="Architect mastery detail">
             <div class="architect-ledger-head"><strong>${escapeHtml(mastery.label)}</strong><span>${escapeHtml(String(mastery.score))}/${escapeHtml(String(mastery.maxScore))}</span></div>
+            ${renderMasterySignatureCard(mastery)}
             <div class="gm-mastery-paths">
               ${(mastery.paths || []).map((path) => `
                 <div class="gm-mastery-path ${escapeHtml(path.status)}" title="${escapeHtml(path.evidence)}">

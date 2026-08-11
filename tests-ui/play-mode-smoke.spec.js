@@ -61,6 +61,9 @@ test("first session turns onboarding promises into a committed weekly evidence t
   await page.locator("details.architecture-review summary").click();
   await expect(page.locator(".architect-ledger-row").first()).toBeVisible();
   await expect(page.locator(".architecture-mastery")).toBeVisible();
+  await expect(page.locator(".gm-mastery-signature")).toBeVisible();
+  await expect(page.locator(".gm-mastery-signature")).toContainText("Strongest signature");
+  await expect(page.locator(".gm-mastery-signature")).toContainText(/source receipt|Awaiting source receipts/);
   await expect(page.locator(".architecture-mastery .gm-mastery-disclaimer")).toContainText("not a causal claim");
   await expect(page.locator(".week-room-horizon").first()).not.toHaveText(beforeSeasonChapter || "");
   await expect(page.locator("#yearCard")).not.toHaveText(before || "");

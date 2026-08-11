@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "../public/lib/franchiseCommandCenter.js";
+import { buildFranchiseCommandReceipt, buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "../public/lib/franchiseCommandCenter.js";
 import { buildMobileDecisionDeck } from "../public/lib/mobileLoop.js";
 
 test("controlled draft agency outranks every optional franchise command", () => {
@@ -19,6 +19,7 @@ test("controlled draft agency outranks every optional franchise command", () => 
   const cards = buildFranchiseCommandStack(input);
   assert.equal(cards[0].title, "You are on the clock");
   assert.equal(cards[0].lane, "Now");
+  assert.equal(cards[0].targetId, "draftWarRoomPanel");
   assert.equal(cards[0].blocking, true);
   assert.equal(cards.at(-1).action, "blocked");
   assert.equal(hasBlockingFranchiseCommand(cards), true);
@@ -54,4 +55,28 @@ test("desktop and mobile consume the same ranked command authority", () => {
     newsRows: []
   };
   assert.deepEqual(buildMobileDecisionDeck(input), buildFranchiseCommandStack(input));
+});
+
+test("every open-tab command names the exact decision surface in its explanation receipt", () => {
+  const input = {
+    dashboard: {
+      controlledTeamId: "BUF",
+      phase: "regular-season",
+      currentYear: 2026,
+      currentWeek: 9,
+      cap: { capSpace: -2_000_000 },
+      injuryReport: [{ teamId: "BUF" }],
+      rosterNeeds: [{ pos: "OT" }]
+    },
+    newsRows: []
+  };
+  const cards = buildFranchiseCommandStack(input).filter((card) => card.action === "open-tab");
+  assert.deepEqual(cards.map(({ targetTab, targetId }) => ({ targetTab, targetId })), [
+    { targetTab: "contractsTab", targetId: "contractsSpotlight" },
+    { targetTab: "rosterTab", targetId: "depthTable" },
+    { targetTab: "transactionsTab", targetId: "tradeDeadlineFrenzy" }
+  ]);
+  const receipt = buildFranchiseCommandReceipt(input);
+  assert.deepEqual(receipt.commands.filter((command) => command.action === "open-tab").map(({ targetTab, targetId }) => ({ targetTab, targetId })),
+    cards.map(({ targetTab, targetId }) => ({ targetTab, targetId })));
 });

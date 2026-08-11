@@ -1,3 +1,14 @@
+## 2026-08-11 — Session 80: exact decision surfaces and visible Architect mastery
+
+- Ran the full requested `/arc`: live startup/canon reconciliation, a fresh project/game audit, game-loop review, app-release-gate review, every verified implementation item, a second-order accessibility refinement, rendered-pixel inspection, aggregate verification, security sweep, closeout and the authorized full deployment wave.
+- Replaced four partially duplicated navigation paths with one exact-surface authority that activates and hydrates a tab before scrolling and focusing its declared decision target. Desktop and mobile Franchise Command Center, Blueprint, and season chapter actions now consume the same target IDs and missing-target diagnostics.
+- Exposed the already-canonical mastery signature in Architecture Review with source score, status and receipt count while preserving the explicit non-causal/no-hidden-bonus contract and honest empty state.
+- Shipped reduced-motion-aware navigation as the second-order refinement. Verification also corrected a Studio assertion that wrongly treated an intentionally open deployment audit row as an exhausted innovation pack.
+- Pixel review inspected the light mobile Architect review, dark desktop command strip, mobile contract target, and adjacent themes/states. Final evidence passed 176 captures and sealed 56 dark/light desktop/mobile receipts with no overflow, contrast, touch-target, selector or runtime defect.
+- Final candidate proof: Node 1,024/1,024 direct exit 0; Playwright 40/40 clean rerun; Pages build/smoke; CANON-053 PASS; workspace secret scan 0 findings. One full-browser Hall-of-Fame request timed out under load, then passed in 56 seconds alone and 45.6 seconds in the clean 40-test rerun.
+- Release promotion remains in progress after this candidate closeout. The user authorized direct commit/push and full deployment, but not a public-launch flip; `launchReady: false` and all independent launch holds remain intact.
+- Creative Direction Record reviewed: no new founder creative direction was introduced, and the private-ledger path remains absent from this public repository.
+
 ## 2026-08-11 — Session 79: canonical game loops, evidence integrity, and browser headroom
 
 - Ran the full `/arc`: startup/canon reconciliation, a fresh 9-axis game/product audit, all six ranked implementations, rendered-pixel review, aggregate verification, release gating, and closeout.

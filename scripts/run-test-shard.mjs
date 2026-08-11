@@ -69,6 +69,7 @@ export const SHARDS = {
     "test/co-gm-briefing.test.js",
     "test/draft-war-room.test.js",
     "test/file-save-store.test.js",
+    "test/exact-surface-navigation.test.js",
     "test/franchise-command-center.test.js",
     "test/franchise-scope-contract.test.js",
     "test/fast-sim-checkpoints.test.js",

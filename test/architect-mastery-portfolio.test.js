@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { buildAdaptiveIdentityEvidence, buildArchitectMasteryPortfolio } from "../src/engine/architectMasteryPortfolio.js";
 import { getGmLegacySummary, initGmLegacy } from "../src/engine/gmLegacyScore.js";
+import { renderMasterySignatureCard } from "../public/lib/tabOverview.js";
 
 function leagueFixture() {
   const league = { teams: [], champions: [] };
@@ -39,6 +40,8 @@ test("mastery portfolio preserves four independent evidence paths", () => {
   assert.equal(portfolio.score, portfolio.paths.reduce((sum, path) => sum + path.score, 0));
   assert.ok(portfolio.paths.some((path) => path.id === portfolio.focus.pathId));
   assert.equal(portfolio.signature.pathId, "stewardship");
+  assert.equal(portfolio.signature.evidenceCount, portfolio.paths.find((path) => path.id === "stewardship").evidenceCount);
+  assert.equal(portfolio.signature.status, portfolio.paths.find((path) => path.id === "stewardship").status);
   assert.match(portfolio.focus.nextMilestone, /\S/);
   assert.match(portfolio.disclaimer, /not a causal claim/i);
 });
@@ -52,6 +55,19 @@ test("empty evidence remains visibly empty instead of receiving fabricated progr
   assert.ok(portfolio.paths.every((path) => path.evidenceCount === 0));
   assert.equal(portfolio.signature, null);
   assert.match(portfolio.focus.reason, /no committed evidence/i);
+});
+
+test("the strongest signature is visible with its source count and honest empty state", () => {
+  const portfolio = buildArchitectMasteryPortfolio(leagueFixture(), "BUF");
+  const visible = renderMasterySignatureCard(portfolio);
+  assert.match(visible, /Strongest signature/);
+  assert.ok(visible.includes(portfolio.signature.label));
+  assert.match(visible, new RegExp(`${portfolio.signature.evidenceCount} source receipt`));
+  assert.match(visible, /no hidden bonus or causal claim/i);
+
+  const empty = renderMasterySignatureCard(buildArchitectMasteryPortfolio({ teams: [], champions: [] }, "BUF"));
+  assert.match(empty, /Awaiting source receipts/);
+  assert.doesNotMatch(empty, /\b\d+\/25\b/);
 });
 
 test("legacy summary adds mastery without changing the historical score contract", () => {

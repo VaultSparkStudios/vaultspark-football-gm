@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 79 complete: canonical Agent Negotiation, automatic truthful prediction receipts, capability-bound Community Stats ingress, true non-Overview UI islands, and an accessible Hall of Fame ceremony shipped with 1018/1018 Node, 40/40 Playwright, 158 responsive captures and 44 reviewed hash-bound visual receipts. Launch HOLD remains explicit.",
-  "nextMilestone": "Promote the immutable S79 candidate through exact-SHA stable staging and direct-main publication, then observe the first real consenting Community Stats cohort without manufacturing activity. Launch remains independently gated.",
+  "currentFocus": "Session 80 candidate complete: exact General Manager decision-surface routing, visible evidence-derived Architect mastery and reduced-motion-safe navigation are green at 1024/1024 Node, 40/40 Playwright, 176 responsive captures and 56 reviewed hash-bound visual receipts. Full-stack promotion is in progress; launch HOLD remains explicit.",
+  "nextMilestone": "Promote the immutable Session 80 candidate through exact-SHA stable staging, direct-main Pages publication and deploy_to_server backend dispatch, then observe real consenting cohorts without manufacturing activity. Launch remains independently gated.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -18,21 +18,19 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-03",
   "testSuiteStatus": {
-    "totalTests": 1018,
-    "pass": 1018,
+    "totalTests": 1024,
+    "pass": 1024,
     "fail": 0,
     "lastRun": "2026-08-11",
     "newTestFiles": [
-      "test/hall-of-fame-ceremony.test.js",
-      "test/player-agent-negotiation.test.js",
-      "test/ui-islands.test.js"
+      "test/exact-surface-navigation.test.js"
     ],
-    "newTestCount": 20,
-    "coverage": "Session 79 canonical npm test 1018/1018 direct exit 0 (up from 998/998), covering canonical player-agent negotiation, prediction rollover/margin truth, participant capabilities, UI-island budgets/hydration and Hall of Fame ceremony behavior.",
-    "uiSuiteNote": "Playwright 40/40 and responsive evidence 158/158; 44 reviewed dark/light desktop/mobile captures are hash-bound in docs/visual-qa/LATEST.json."
+    "newTestCount": 6,
+    "coverage": "Session 80 canonical npm test 1024/1024 direct exit 0 (up from 1018/1018), covering exact tab hydration/scroll/focus, target receipts, mastery signature evidence and empty states, reduced motion, desktop/mobile browser wiring and phase-correct innovation authority.",
+    "uiSuiteNote": "Playwright 40/40 and responsive evidence 176/176; 56 reviewed dark/light desktop/mobile captures are hash-bound in docs/visual-qa/LATEST.json."
   },
-  "testsPassing": 1018,
-  "testsTotal": 1018,
+  "testsPassing": 1024,
+  "testsTotal": 1024,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -71,23 +69,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 998,
+  "silScore": 995,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 100,
+    "creativeAlignment": 99,
     "momentum": 99,
-    "engagement": 100,
-    "processQuality": 99,
+    "engagement": 99,
+    "processQuality": 98,
     "crossRepoCoherence": 100,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 79,
+  "currentSession": 80,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "npm test 1018/1018 direct exit 0; Playwright 40/40; responsive evidence 158/158; 44 hash-bound visual captures; boot 610654/730000 bytes, 48/58 modules, 0 lazy leaks; Pages build/smoke green.",
+  "lastVerification": "npm test 1024/1024 direct exit 0; Playwright 40/40; responsive evidence 176/176; 56 hash-bound visual captures across dark/light desktop/mobile; CANON-053 PASS; Pages build/smoke and scoped workspace secret scan green.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -139,7 +137,7 @@
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.055,
+  "entropyScore": 0.037,
   "entropyLastComputed": "2026-08-11",
   "lastSessionSummary": {
     "session": 79,
@@ -180,8 +178,8 @@
       "lastChecked": "2026-08-08"
     }
   ],
-  "lastSession": 79,
-  "silLastSession": 79,
+  "lastSession": 80,
+  "silLastSession": 80,
   "bootAmortization": {
     "ratio": 0,
     "verdict": "wasted",
@@ -194,7 +192,7 @@
       "ranAt": "2026-07-29T07:32:56.464Z"
     }
   ],
-  "session": 78,
+  "session": 80,
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
@@ -277,5 +275,5 @@
     "verified": true,
     "observedAt": "2026-08-08T22:33:29.382Z"
   },
-  "lastCloseoutAt": "2026-08-10T00:00:00Z"
+  "lastCloseoutAt": "2026-08-11T22:35:52.8003365Z"
 }

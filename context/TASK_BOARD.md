@@ -12,6 +12,22 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 
+## Session 80 — Exact decision surfaces, visible mastery signature, full-stack promotion (2026-08-11)
+
+Source: `docs/AUDIT_2026-08-11_SESSION80.md`.
+
+| Item | Status |
+|------|--------|
+| exact-command-surface-routing — one shared tab-hydrate-scroll-focus authority with explicit command target IDs and truthful missing-target diagnostics | ✅ Done |
+| mastery-signature-visibility — strongest evidence-derived Architect signature, score, status and receipt count visible with the no-hidden-bonus boundary | ✅ Done |
+| exact-navigation-reduced-motion — scrolling honors `prefers-reduced-motion` | ✅ Done (second-order) |
+| innovation-pack-phase-authority — open deployment rows remain visible until promotion actually succeeds | ✅ Done (verification catch) |
+| exact-candidate-full-stack-promotion — stable staging → direct main → Pages → exact-SHA backend dispatch and live API proof | 🚧 In progress in the release wave |
+
+**Candidate verification:** Node 1,024/1,024 direct exit 0; Playwright 40/40 after one transient multi-year request timeout passed in isolation and on clean full rerun; Pages build/smoke; responsive evidence 176/176; CANON-053 PASS with 56 reviewed hash-bound dark/light desktop/mobile captures; workspace secret scan 0 findings.
+
+**Launch posture:** deployment authorization is not launch approval. Preserve `launchReady: false`; reply-capable on-domain email, authoritative lifecycle reconciliation, current Web Vitals/edge evidence, and a separately SHA-bound public-launch decision remain open.
+
 ## Session 78 — Marquee, prediction minigame, TD sound, a11y + coverage sweep (2026-08-09)
 
 Source: `docs/AUDIT_2026-08-09_SESSION78.md`.

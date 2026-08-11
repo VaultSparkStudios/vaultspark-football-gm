@@ -4669,6 +4669,18 @@ html[data-theme="light"] .bg-layer {
 .architecture-review summary small { color: var(--muted); }
 .architecture-review-body { border-top: 1px solid var(--line); display: grid; gap: 12px; padding: 12px; }
 .architecture-mastery { display: grid; gap: 9px; }
+.gm-mastery-signature {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, var(--surface)), var(--surface));
+  border: 1px solid color-mix(in srgb, var(--accent) 48%, var(--line));
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  display: grid;
+  gap: 5px;
+  padding: 11px 12px;
+}
+.gm-mastery-signature strong { color: var(--ink); font-size: 1rem; }
+.gm-mastery-signature small { color: var(--muted); }
+.gm-mastery-signature.awaiting-evidence { border-color: var(--line); border-left-color: var(--muted); }
 .architect-thesis {
   background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 9%, var(--surface)), var(--surface));
   border: 1px solid color-mix(in srgb, var(--accent) 42%, var(--line));

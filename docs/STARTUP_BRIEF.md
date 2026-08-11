@@ -70,14 +70,14 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     33,963 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~16,982 tok/turn  ·  cache 50%  ·  52 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
+║     17,803 / 1,000,000 tok  ·  codex/codex-1m  ·  heuristic      ║
+║     ~8,902 tok/turn  ·  cache 50%  ·  101 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         1018/1018 passing (2026-08-11)                 ║
+║  ⚠  Tests         1018/1018 passing (2026-08-11) · STALE — run   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -115,9 +115,11 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-11_SESSION79.md       ║
-║  Closed: 6 · Open: 0                                             ║
-║  Latest audit has no open ranked items; run /audit for a new li  ║
+║  ✓ cache source: AUDIT_2026-08-11_SESSION80.md                   ║
+║                                                                  ║
+║  #3 · HIGH · exact-candidate-full-stack-promotion                ║
+║  exact-candidate-full-stack-promotion — Bind current rendered/b  ║
+║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```

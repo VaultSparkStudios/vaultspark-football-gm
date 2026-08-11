@@ -101,11 +101,13 @@ test("first-run tutorial styles are injected before mounting onboarding", () => 
 test("Return Digest exposes one exact source-derived Season continuation", () => {
   const appSource = read("../public/app.js");
   const digestSource = read("../public/lib/returnDigest.js");
+  const navigationSource = read("../public/lib/exactSurfaceNavigation.js");
   assert.match(digestSource, /data-action="continue-chapter"/);
   assert.match(digestSource, /onContinueChapter\?\.\(chapterAction\)/);
   assert.match(appSource, /onContinueChapter: continueSeasonChapter/);
-  assert.match(appSource, /activateTab\(targetTab\)/);
-  assert.match(appSource, /document\.getElementById\(action\.targetId\)/);
+  assert.match(appSource, /return navigateToExactSurface\(action/);
+  assert.match(navigationSource, /await Promise\.resolve\(activateTab\(targetTab\)\)/);
+  assert.match(navigationSource, /documentRef\?\.getElementById\?\.\(targetId\)/);
   assert.match(appSource, /the exact .* panel is unavailable/);
 });
 test("game flow modals use the shared focus trap", () => {

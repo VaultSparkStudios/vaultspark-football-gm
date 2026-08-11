@@ -1,10 +1,29 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 79 closed at 998 / 1000 SIL v3.0. The full `/arc` shipped all 6 premise-verified audit items plus 2 verification-time improvements: canonical Agent Negotiation, automatic truthful prediction receipts, capability-bound Community Stats ingress, true non-Overview UI islands, accessible Hall of Fame ceremony controls, and exact-SHA release authority. Rendered review passed 158 captures and sealed 44 dark/light desktop/mobile receipts after exposing and fixing two undersized close targets. Boot improved to 610,654 bytes/48 modules with zero lazy leaks and 16.35% headroom. Playwright is 40/40 and launch remains independently HOLD with `launchReady: false`.
+Rolling status: Session 80 closed candidate-side at 995 / 1000 SIL v3.0. The full `/arc` shipped exact General Manager decision-surface routing, visible evidence-derived Architect mastery, reduced-motion-safe navigation and phase-correct innovation authority. Node is 1,024/1,024, Playwright 40/40, responsive evidence 176/176, and 56 dark/light desktop/mobile captures are reviewed and hash-bound. Exact staging/main/backend promotion remains the active release wave; launch remains independently HOLD with `launchReady: false`.
 
-Previously — Session 78 closed at 998 / 1000 after the marquee, prediction-minigame, sound, accessibility and coverage sweep.
+Previously — Session 79 closed at 998 / 1000 after canonical negotiation/prediction/community authorities, UI islands, Hall ceremony accessibility and candidate-side release proof.
 <!-- rolling-status-end -->
+## 2026-08-11 — Session 80 Exact Decision Surfaces and Visible Architect Mastery
+
+SIL v3.0: **995 / 1000** (Dev Health 100, Creative Alignment 99, Momentum 99, Engagement 99, Process Quality 98, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+- **Dev Health: 100** — canonical Node passes 1,024/1,024 with a direct source-bound receipt; Playwright passes 40/40; Pages build/smoke, 176-state responsive evidence and the CANON-053 receipt are green.
+- **Creative Alignment: 99** — exact decision handoffs and visible career identity strongly match the public football General Manager premise; one point is withheld because the public `SOUL.md` intentionally does not expose the private creative non-negotiables needed for a complete audit.
+- **Momentum: 99** — both player-facing audit items and one second-order accessibility refinement shipped, with the full-stack release wave executing in the same turn; one point remains until live promotion evidence closes the release row.
+- **Engagement: 99** — commands reach the promised work surface and coherent mastery has a visible payoff, but no real-player cohort exists, so code-contract strength is not mislabeled as measured fun or retention.
+- **Process Quality: 98** — pixel inspection, app-release gating and source-bound suites caught one phase-brittle Studio assertion and one transient Hall request timeout; both were resolved honestly, but the initial red gates are reflected rather than rounded away.
+- **Cross-Repo Coherence: 100** — no sibling repository was edited; lifecycle authority remains external and unchanged.
+- **Security Posture: 100** — no new network, identity or data custody was added; canonical settings sanitation is clean and the scoped working-tree scan reports zero findings.
+- **Ecosystem Integration: 100** — audit sidecar, innovation pack, task board, handoff, truth audit, visual receipt and release constraints resolve from the same Session 80 facts.
+- **Capital Efficiency: 100** — the work adds no dependency, paid call or new service; static hosting and the existing self-hosted backend remain the only runtime authorities.
+- **Automation Coverage: 100** — exact navigation, target receipts, mastery empty/evidence states, browser wiring, mobile routes, reduced motion, 40 real-browser paths and 176 rendered states are executable gates.
+
+Committed SIL follow-ups:
+- [SIL] A command surface contract is incomplete until it carries and focuses an exact target ID in both desktop and mobile paths.
+- [SIL] Protocol assertions about “latest” artifacts must derive expectations from live item statuses; they may not force intentionally in-progress release work to appear closed.
+
 ## 2026-08-11 — Session 79 Canonical Loops, Evidence Integrity, and Browser Headroom
 
 SIL v3.0: **998 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 99, Engagement 100, Process Quality 99, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).

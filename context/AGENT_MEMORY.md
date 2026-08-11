@@ -1,5 +1,13 @@
 # Agent Memory
 
+## Session 80 durable patterns
+
+- A decision card must carry an exact target ID, not merely a tab. Route every desktop/mobile/chapter handoff through one activate → hydrate → scroll → focus authority and keep missing targets diagnosable.
+- An evidence-derived progression signature may be visible without becoming causal. Preserve the source receipt count, explicit empty state and no-hidden-bonus boundary together.
+- Rendered-pixel receipts must include the newly touched component states, not only adjacent legacy surfaces; generate the session prefix from `PROJECT_STATUS.currentSession` rather than hardcoding it.
+- An innovation pack is not exhausted while a live deployment audit row is intentionally open. Protocol tests must derive their expectation from the latest sidecar's actual statuses.
+- A deployment authorization may bind the release train without authorizing a launch-state flip. Keep exact staging/backend evidence and launch readiness as independent receipts.
+
 ## Session 79 durable patterns
 
 - Player-agent flavor belongs beside the canonical contract mutation, never in a parallel endpoint that can report `signed` without changing the contract.

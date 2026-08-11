@@ -17,7 +17,10 @@ const surfaceLabels = new Map([
   ["co-gm-brief", "Privacy-bounded Co-GM Brief"],
   ["prediction-receipt", "Prediction winner and margin receipt"],
   ["agent-negotiation", "Canonical contract-year agent negotiation"],
-  ["hof-ceremony", "Hall of Fame induction ceremony"]
+  ["hof-ceremony", "Hall of Fame induction ceremony"],
+  ["architect-signature", "Architecture Review strongest mastery signature"],
+  ["exact-command-center", "Ranked General Manager command strip"],
+  ["exact-command-target", "Exact command destination and keyboard focus target"]
 ]);
 
 function sha256(buffer) {
@@ -43,6 +46,8 @@ const evidenceDir = evidenceDirs[0].dir;
 const reportBuffer = await fs.readFile(path.join(evidenceDir, "responsive-evidence.json"));
 const report = JSON.parse(reportBuffer);
 if (report.status !== "passed") throw new Error("Latest responsive evidence did not pass");
+const projectStatus = JSON.parse(await fs.readFile(path.join(root, "context", "PROJECT_STATUS.json"), "utf8"));
+const receiptSession = Math.max(1, Number(projectStatus.currentSession || 0) + 1);
 
 await fs.mkdir(receiptDir, { recursive: true });
 const captures = [];
@@ -50,7 +55,7 @@ for (const viewport of ["desktop", "mobile"]) {
   for (const [surface, page] of surfaceLabels) {
     for (const theme of ["dark", "light"]) {
       const sourceName = `${viewport}-${surface}-${theme}.png`;
-      const targetName = `s79-${sourceName}`;
+      const targetName = `s${receiptSession}-${sourceName}`;
       const buffer = await fs.readFile(path.join(evidenceDir, sourceName));
       await fs.writeFile(path.join(receiptDir, targetName), buffer);
       captures.push({
@@ -76,12 +81,15 @@ const receipt = {
     reviewer: "codex-gpt-5",
     findings: [
       "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures.",
+      "The Architecture Review strongest-signature card remains legible in both themes and at mobile width, including the source receipt count and non-causal boundary.",
+      "Ranked General Manager commands and their exact contract destination render without clipping and preserve a visible focus target across desktop and mobile.",
       "The canonical Agent Negotiation modal exposes persona, source-derived leverage, ask, guaranteed money, deadline, and its bounded receipt ledger without a parallel mutation control.",
       "Prediction receipts distinguish winner accuracy from margin error and remain readable at desktop and mobile widths.",
       "The Hall of Fame ceremony remains legible in both themes, with one dialog boundary and explicit copy/download status."
     ],
     fixesApplied: [
       "Added component-specific Agent Negotiation, prediction-receipt, and Hall of Fame ceremony captures across both themes and target widths.",
+      "Added component-specific strongest-signature, command-strip, and exact-destination captures across both themes and target widths.",
       "Bound each touched modal to accessible dialog/focus behavior and observable failure receipts.",
       "Kept the first-decision shell lean by loading non-Overview tab modules only on intent."
     ],

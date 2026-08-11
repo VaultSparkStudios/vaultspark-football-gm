@@ -376,8 +376,6 @@ test("innovation-pack marker scan ignores intentional guard sentinels", () => {
   assert.doesNotMatch(result.stdout, /scripts\/lib\/task-board\.mjs/);
   assert.doesNotMatch(result.stdout, /test-receipt\.mjs|test\/test-receipt\.test\.js/);
   assert.doesNotMatch(result.stdout, /test\/return-digest\.test\.js/);
-  assert.match(result.stdout, /No unclassified live innovation candidates remain/);
-
   // The pack must report the shipped second-order work from the *latest* audit.
   // This used to hardcode S62's three slugs, which made the assertion fail for
   // every session afterwards by construction rather than because anything broke.
@@ -400,6 +398,15 @@ test("innovation-pack marker scan ignores intentional guard sentinels", () => {
     })
     .sort((a, b) => b.date.localeCompare(a.date) || b.session - a.session)[0];
   assert.ok(latestSidecar, "an audit sidecar must exist");
+
+  const openItems = (latestSidecar.audit.items || [])
+    .filter((item) => !/^(?:done|complete|completed|implemented|shipped)$/i.test(String(item.status || "")));
+  if (openItems.length === 0) {
+    assert.match(result.stdout, /No unclassified live innovation candidates remain/);
+  } else {
+    assert.match(result.stdout, /latest-audit-follow-through/);
+    assert.match(result.stdout, new RegExp(`${openItems.length} open item${openItems.length === 1 ? "" : "s"}`));
+  }
 
   const shippedSlugs = (latestSidecar.audit.secondOrderCandidates || [])
     .filter((item) => /^(?:done|complete|completed|shipped|second-order-shipped)$/i.test(String(item.status || "")))

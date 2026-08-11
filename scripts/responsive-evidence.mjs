@@ -393,11 +393,73 @@ async function main() {
         await page.waitForTimeout(320);
       }
       await page.waitForFunction(() => document.getElementById("overviewTab")?.classList.contains("active"));
+      await page.evaluate(async () => {
+        const [{ state }, overview] = await Promise.all([
+          import("./lib/appState.js"),
+          import("./lib/tabOverview.js")
+        ]);
+        const existing = state.gmLegacy?.mastery || state.dashboard?.gmLegacy?.mastery || {};
+        const strongest = (existing.paths || []).find((path) => path.evidenceCount > 0) || {
+          id: "identity",
+          label: "Football Identity",
+          score: 16,
+          maxScore: 25,
+          evidenceCount: 3,
+          status: "established",
+          evidence: "Visual fixture: three committed weekly identity receipts.",
+          breakdown: { summary: "3 source receipts" }
+        };
+        const paths = existing.paths?.length ? existing.paths : [strongest];
+        const mastery = {
+          ...existing,
+          label: existing.label || "Architect Mastery",
+          score: existing.score ?? strongest.score,
+          maxScore: existing.maxScore || 100,
+          paths,
+          signature: {
+            pathId: strongest.id,
+            label: strongest.label,
+            score: strongest.score,
+            maxScore: strongest.maxScore || 25,
+            evidenceCount: strongest.evidenceCount,
+            status: strongest.status
+          },
+          disclaimer: existing.disclaimer || "Mastery is a source-derived portfolio, not a causal claim or hidden gameplay bonus."
+        };
+        state.gmLegacy = { ...(state.gmLegacy || {}), mastery };
+        state.dashboard = {
+          ...(state.dashboard || {}),
+          currentWeek: 9,
+          cap: { ...(state.dashboard?.cap || {}), capSpace: -2_000_000 },
+          injuryReport: [{ teamId: state.dashboard?.controlledTeamId || "BUF", playerId: "visual-injury" }],
+          rosterNeeds: [{ pos: "OT" }],
+          draft: {
+            ...(state.dashboard?.draft || {}),
+            available: [{ id: "visual-prospect" }],
+            controlledTeamOnClock: true,
+            userActionRequired: true
+          }
+        };
+        overview.renderFranchiseCommandCenter();
+        overview.renderFranchiseArchitecture();
+        const review = document.querySelector("details.architecture-review");
+        if (review) review.open = true;
+      });
       for (const theme of evidenceThemes) {
         await setTheme(page, theme);
         await captureElement(page, outputDir, `${viewport.name}-gm-persona-${theme}`, "#gmLegacyCardWrap", records);
         await captureElement(page, outputDir, `${viewport.name}-trophy-road-${theme}`, "#trophyRoadPanel", records);
         await captureElement(page, outputDir, `${viewport.name}-co-gm-brief-${theme}`, "#coGmBriefPanel", records);
+        await captureElement(page, outputDir, `${viewport.name}-architect-signature-${theme}`, ".architecture-review", records);
+        await captureElement(page, outputDir, `${viewport.name}-exact-command-center-${theme}`, "#franchiseCommandCenter", records);
+        await page.locator('#franchiseCommandCenter [data-target-id="contractsSpotlight"]').click();
+        await page.waitForFunction(() => document.getElementById("contractsTab")?.classList.contains("active"));
+        await page.waitForFunction(() => document.activeElement?.id === "contractsSpotlight");
+        await captureElement(page, outputDir, `${viewport.name}-exact-command-target-${theme}`, "#contractsSpotlight", records);
+        await page.evaluate(async () => (await import("./lib/gameFlow.js")).activateTab("overviewTab"));
+        await page.waitForFunction(() => document.getElementById("overviewTab")?.classList.contains("active"));
+        const review = page.locator("details.architecture-review");
+        if (!(await review.getAttribute("open"))) await review.evaluate((element) => { element.open = true; });
       }
       const simWatchReceipt = await resolveVisualGameReceipt({
         advance: () => page.evaluate(async () => {
@@ -506,6 +568,9 @@ async function main() {
     ...evidenceThemes.map((theme) => `${viewport.name}-hall-ballot-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-decision-archive-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-co-gm-brief-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-architect-signature-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-exact-command-center-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-exact-command-target-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-prediction-receipt-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-agent-negotiation-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-hof-ceremony-${theme}`),

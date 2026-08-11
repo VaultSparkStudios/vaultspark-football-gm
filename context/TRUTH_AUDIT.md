@@ -5,6 +5,15 @@ Overall status: green
 Last reviewed: 2026-08-11
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
+## 2026-08-11 - Session 80 truth update
+
+- **Command handoffs are exact.** Ranked command receipts publish `targetTab` and `targetId`; one shared authority waits for tab hydration, scrolls, focuses and reports unavailable targets without choosing for the player.
+- **Accessibility is part of the authority.** Keyboard focus lands on the working surface, temporary focusability is applied only when needed, and reduced-motion preference changes scrolling from smooth to automatic.
+- **Mastery identity is visible but non-causal.** Architecture Review renders the strongest source-derived signature with score, status and receipt count; an empty portfolio remains empty, and the interface states that no hidden bonus exists.
+- **Outcome evidence is not invented.** The game-loop design review scores code-contract coverage only. No real first-session cohort exists, so no measured fun, retention or return-intent claim was made.
+- **Candidate evidence is current.** Node passes 1,024/1,024; Playwright passes 40/40; Pages build/smoke passes; responsive evidence passes 176 states; 56 dark/light desktop/mobile captures are hash-bound and reviewed in `docs/visual-qa/LATEST.json`; the scoped workspace secret scan has zero findings.
+- **Deployment truth remains phase-bound.** Stable staging, direct-main Pages provenance and exact-SHA backend health must be observed before the release audit row becomes implemented. Deployment authorization remains distinct from public-launch approval, and `launchReady` stays false.
+
 ## 2026-08-11 - Session 79 truth update
 
 - **Agent negotiation has one mutation authority.** Persona, leverage and counters now enrich `/api/contracts/negotiate`; no alternate agent endpoint can claim a signature without changing the canonical contract.

@@ -1,4 +1,35 @@
-# Session 79 Closeout — Canonical Loops, Evidence Integrity, and Browser Headroom
+# Session 80 Closeout — Exact Decision Surfaces and Visible Architect Mastery
+
+## Where We Left Off
+
+- The product implementation and candidate-side gates for the requested full `/arc` are complete. General Manager command cards now carry exact targets through one hydrate-scroll-focus authority across desktop, mobile, Blueprint and season chapters; Architecture Review exposes the source-derived strongest mastery signature without adding hidden bonuses.
+- Candidate proof is green: Node 1,024/1,024 direct exit 0; Playwright 40/40; Pages build/smoke; responsive evidence 176/176; 56 inspected dark/light desktop/mobile captures hash-bound in `docs/visual-qa/LATEST.json`; scoped workspace secret scan 0 findings.
+- The release audit row is intentionally still in progress. Freeze the closeout commit, deploy that immutable SHA to stable staging, prove exact SHA/artifact/rollback, push directly to `main`, wait for Pages production provenance, dispatch `deploy-backend.yml` with `deploy_to_server=true`, then verify the live Community API health/database/CORS/cache contract at the exact pushed SHA.
+- The user's authorization covers commit, direct push and full deployment. It does not authorize a public-launch flip. Preserve `launchReady: false`, local public-unlaunched/FORGE truth, and the independent email/lifecycle/Web Vitals/launch-approval holds.
+
+## Decisions That Must Survive
+
+- Every actionable command needs `targetTab` plus `targetId`; a broad tab activation does not satisfy the weekly-loop contract.
+- Mastery signatures remain evidence projections only. Visibility must never become a hidden rating, bonus or recommendation weight.
+- Reduced-motion preference is part of the shared navigation contract.
+- Open release work remains open in audit/innovation authority until live evidence exists; tests must not force premature closure.
+
+## Next Best Work
+
+- Complete this same-turn immutable staging → main → Pages → exact-SHA backend promotion and reconcile the release audit row from live receipts.
+- Observe a real consented first-session/playtest cohort and the first real opted-in Community Stats cohort; never manufacture outcome evidence or activity.
+- Do not change launch readiness until the separate reply-capable email, lifecycle, current performance/edge and SHA-bound public-launch evidence exists.
+
+## Key Files
+
+- `public/lib/exactSurfaceNavigation.js`, `public/lib/franchiseCommandCenter.js`, `public/lib/mobileLoop.js`, `public/app.js`
+- `src/engine/architectMasteryPortfolio.js`, `public/lib/tabOverview.js`
+- `scripts/responsive-evidence.mjs`, `scripts/write-visual-qa-receipt.mjs`
+- `docs/AUDIT_2026-08-11_SESSION80.json`, `docs/visual-qa/LATEST.json`
+
+---
+
+# Prior Session 79 Closeout — Canonical Loops, Evidence Integrity, and Browser Headroom
 
 ## Where We Left Off
 

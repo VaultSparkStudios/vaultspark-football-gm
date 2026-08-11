@@ -17,6 +17,7 @@ test("mobile decision deck prioritizes an active draft room", () => {
 
   assert.equal(cards[0].kicker, "Draft room");
   assert.equal(cards[0].targetTab, "draftTab");
+  assert.equal(cards[0].targetId, "draftWarRoomPanel");
   assert.match(cards[0].detail, /WR/);
 });
 
@@ -35,8 +36,10 @@ test("mobile decision deck flags cap and injury pressure before advancing", () =
   });
 
   assert.equal(cards[0].targetTab, "contractsTab");
+  assert.equal(cards[0].targetId, "contractsSpotlight");
   assert.equal(cards[0].tone, "danger");
   assert.equal(cards[1].targetTab, "rosterTab");
+  assert.equal(cards[1].targetId, "depthTable");
   assert.match(cards[1].detail, /1 controlled-team injury/);
 });
 
@@ -124,6 +127,7 @@ test("mobile pressure stack elevates deadline window and stays useful without ur
 
   assert.equal(deadlineCards[0].kicker, "Deadline window");
   assert.equal(deadlineCards[0].targetTab, "transactionsTab");
+  assert.equal(deadlineCards[0].targetId, "tradeDeadlineFrenzy");
   assert.match(deadlineCards[0].detail, /CB/);
 
   const calmCards = buildMobilePressureStack({
@@ -198,7 +202,10 @@ test("mobile GM decision choices are rendered, staged, and committed through the
   assert.match(mobileSource, /vsfgm:mobile-gm-decision-choice/);
   assert.match(mobileSource, /vsfgm:mobile-decision/);
   assert.match(appSource, /vsfgm:mobile-decision/);
-  assert.match(appSource, /event\.detail\?\.action !== "choose-gm-decision"/);
+  assert.match(appSource, /event\.detail\?\.action === "choose-gm-decision"/);
+  assert.match(appSource, /event\.detail\?\.action === "open-tab"/);
+  assert.match(appSource, /openMobileExactSurface\(event\.detail\)/);
+  assert.doesNotMatch(mobileSource, /document\.querySelector\(`\[data-tab="\$\{decision\.targetTab\}"\]`\)/);
   assert.match(appSource, /checkAndShowGmDecision\(\)\s*\.then\(\(result\) =>/);
   assert.match(appSource, /result\?\.status === "chosen"/);
   assert.match(appSource, /submitMobileGmDecisionChoice/);

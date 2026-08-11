@@ -159,7 +159,10 @@ export function buildArchitectMasteryPortfolio(league = {}, teamId = null) {
     signature: signaturePath ? {
       pathId: signaturePath.id,
       label: signaturePath.label,
-      score: signaturePath.score
+      score: signaturePath.score,
+      maxScore: signaturePath.maxScore,
+      evidenceCount: signaturePath.evidenceCount,
+      status: signaturePath.status
     } : null,
     disclaimer: "Mastery is a source-derived portfolio, not a causal claim or hidden gameplay bonus. Empty paths remain visibly empty."
   };

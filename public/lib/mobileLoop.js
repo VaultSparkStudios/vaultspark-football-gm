@@ -158,7 +158,7 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
 
       <div class="ml-pressure-stack" aria-label="Franchise pressure stack">
         ${pressureStack.map((item, index) => `
-          <button class="ml-pressure-card ${_escAttr(item.tone)}" data-mobile-pressure-index="${index}" data-target-tab="${_escAttr(item.targetTab || "")}">
+          <button class="ml-pressure-card ${_escAttr(item.tone)}" data-mobile-pressure-index="${index}" data-target-tab="${_escAttr(item.targetTab || "")}" data-target-id="${_escAttr(item.targetId || "")}">
             <span class="ml-pressure-kicker">${_esc(item.kicker)}</span>
             <strong>${_esc(item.title)}</strong>
             <span>${_esc(item.detail)}</span>
@@ -193,9 +193,6 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
         onAdvanceWeek();
         return;
       }
-      if (decision.targetTab) {
-        document.querySelector(`[data-tab="${decision.targetTab}"]`)?.click();
-      }
       overlay.dispatchEvent(new CustomEvent("vsfgm:mobile-decision", { detail: decision }));
     });
   });
@@ -225,9 +222,6 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
       const index = Number(btn.dataset.mobilePressureIndex || 0);
       const pressure = pressureStack[index];
       if (!pressure) return;
-      if (pressure.targetTab) {
-        document.querySelector(`[data-tab="${pressure.targetTab}"]`)?.click();
-      }
       overlay.dispatchEvent(new CustomEvent("vsfgm:mobile-pressure", { detail: pressure }));
     });
   });
@@ -302,6 +296,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
       title: expectation.mandate || "Ultimatum active",
       detail: `${expectation.ultimatum.weeksLeft ?? "?"} week${expectation.ultimatum.weeksLeft === 1 ? "" : "s"} left: ${expectation.ultimatum.consequence || "results required"}.`,
       targetTab: "overviewTab",
+      targetId: "ownerUltimatumBanner",
       tone: "danger"
     });
   } else if (Number.isFinite(expectation.heat) || expectation.mandate) {
@@ -313,6 +308,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
         ? "Mandate is active; keep the plan aligned before advancing."
         : `Heat ${heat}/100${expectation.trend ? `, ${expectation.trend}` : ""}.`,
       targetTab: "overviewTab",
+      targetId: "overviewTeamSpotlight",
       tone: heat != null && heat >= 75 ? "danger" : heat != null && heat >= 55 ? "warning" : "neutral"
     });
   }
@@ -323,6 +319,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
       title: fan.label || "Fan approval",
       detail: `${Math.round(fan.approval)}/100${fan.trend ? `, ${fan.trend}` : ""}${fan.reasons?.[0] ? `: ${fan.reasons[0]}` : ""}.`,
       targetTab: "overviewTab",
+      targetId: "fanSentimentCard",
       tone: fan.approval < 45 ? "danger" : fan.approval < 65 ? "warning" : "positive"
     });
   }
@@ -333,6 +330,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
       title: "Over the cap",
       detail: `${_fmtMoney(capSpace)} space. Fix contracts before simulating too far.`,
       targetTab: "contractsTab",
+      targetId: "contractsSpotlight",
       tone: "danger"
     });
   }
@@ -343,6 +341,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
       title: `${injuries.length} controlled-team ${injuries.length === 1 ? "injury" : "injuries"}`,
       detail: "Check depth before advancing the week.",
       targetTab: "rosterTab",
+      targetId: "depthTable",
       tone: injuries.length >= 3 ? "danger" : "warning"
     });
   }
@@ -354,6 +353,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
       title: "Trade market is live",
       detail: `Week ${week}: price ${topNeed} help or sell before the window shuts.`,
       targetTab: "transactionsTab",
+      targetId: "tradeDeadlineFrenzy",
       tone: "warning"
     });
   }
@@ -364,6 +364,7 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
       title: "Latest headline",
       detail: newsHead,
       targetTab: "overviewTab",
+      targetId: "newsTable",
       tone: "neutral"
     });
   }

@@ -2,6 +2,30 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-11 - S80: one exact-surface navigation authority
+
+**Decision:** Every ranked General Manager command declares both its owning tab and exact working-surface ID. Desktop, mobile, Blueprint, and season-chapter actions activate and hydrate the tab through one async authority before scrolling and focusing the target; missing targets remain explicit failures, and reduced-motion preference disables smooth scrolling.
+
+**Rationale:** A command that names Cap War Room, Injury Lab, Draft Room or Deadline Desk but only opens a broad tab breaks the 30-second decision contract. One authority prevents desktop/mobile drift without inferring or executing a player choice.
+
+---
+
+## 2026-08-11 - S80: mastery signatures are evidence projections, never bonuses
+
+**Decision:** Architecture Review displays the strongest canonical mastery path with its score, status and source receipt count. The signature remains descriptive and non-causal: it creates no hidden ratings, bonuses, recommendation weight or simulation effect.
+
+**Rationale:** A long-career identity only pays off if the player can see the evidence already computed by the engine. Visibility must not quietly convert a reflection mechanic into an optimization bonus.
+
+---
+
+## 2026-08-11 - S80: deployment approval and public-launch approval stay independent
+
+**Decision:** The user's direct commit/push/full-deploy authorization binds this Session 80 release train only. It does not set `founderApproval.verified`, `launchReady`, or lifecycle status, and exact static/backend deployment evidence must be completed before the audit release row closes.
+
+**Rationale:** Healthy code and an authorized promotion do not prove reply-capable email, current Web Vitals, authoritative lifecycle reconciliation or a separately SHA-bound public-launch decision.
+
+---
+
 ## 2026-08-11 - S79: one contract authority, deterministic agent intelligence
 
 **Decision:** Player-agent personality, leverage, rival interest, counters and history enrich the canonical `/api/contracts/negotiate` path; they never own a parallel signing mutation or accept caller-authored market signals.

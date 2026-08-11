@@ -74,6 +74,7 @@ export function buildFranchiseCommandStack({
         : topNeed === "depth" ? "Review the board before the next pick." : "Protect the " + topNeed + " plan before the next pick.",
       action: "open-tab",
       targetTab: "draftTab",
+      targetId: "draftWarRoomPanel",
       tone: controlledPickBlocking ? "danger" : "warning",
       lane: controlledPickBlocking ? "Now" : "Before advance",
       blocking: controlledPickBlocking
@@ -87,6 +88,7 @@ export function buildFranchiseCommandStack({
       detail: money(capSpace) + " space. Open contracts before advancing too far.",
       action: "open-tab",
       targetTab: "contractsTab",
+      targetId: "contractsSpotlight",
       tone: "danger",
       lane: "Before advance",
       blocking: false
@@ -100,6 +102,7 @@ export function buildFranchiseCommandStack({
       detail: injuries.length + " controlled-team injur" + (injuries.length === 1 ? "y" : "ies") + " need a roster check.",
       action: "open-tab",
       targetTab: "rosterTab",
+      targetId: "depthTable",
       tone: cards.length ? "warning" : "danger",
       lane: "Before advance",
       blocking: false
@@ -113,6 +116,7 @@ export function buildFranchiseCommandStack({
       detail: topNeed === "depth" ? "Check trade options before the deadline closes." : "Shop for " + topNeed + " help before the deadline closes.",
       action: "open-tab",
       targetTab: "transactionsTab",
+      targetId: "tradeDeadlineFrenzy",
       tone: "warning",
       lane: "Optional",
       blocking: false
@@ -126,6 +130,7 @@ export function buildFranchiseCommandStack({
       detail: newsHead,
       action: "open-tab",
       targetTab: "overviewTab",
+      targetId: "newsTable",
       tone: "neutral",
       lane: "Optional",
       blocking: false
@@ -161,7 +166,14 @@ export function buildFranchiseCommandReceipt(input = {}) {
     schemaVersion: "1.0",
     authority: [dashboard.controlledTeamId || "unknown", dashboard.currentYear || "?", dashboard.currentWeek || "?", dashboard.phase || "unknown"].join(":"),
     blocking: cards.some((card) => card.blocking === true),
-    commands: cards.map((card) => ({ rank: card.rank, lane: card.lane, reasonCode: card.reasonCode, action: card.action, targetTab: card.targetTab || null }))
+    commands: cards.map((card) => ({
+      rank: card.rank,
+      lane: card.lane,
+      reasonCode: card.reasonCode,
+      action: card.action,
+      targetTab: card.targetTab || null,
+      targetId: card.targetId || null
+    }))
   };
 }
 export function hasBlockingFranchiseCommand(cards = []) {

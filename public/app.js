@@ -196,6 +196,7 @@ import {
   standingTacticFromDashboard
 } from "./lib/architectPlanRehearsal.js";
 import { recordPlaytestJourneyCheckpoint, startPlaytestJourney } from "./lib/playtestJourney.js";
+import { navigateToExactSurface } from "./lib/exactSurfaceNavigation.js";
 
 import {
   ingestNewsIntoInbox,
@@ -443,14 +444,29 @@ function syncMobileLoopOverlay() {
   const advanceFromMobile = advanceFromMobileLoop;
   if (!overlay.dataset.mobileGmChoiceBound) {
     overlay.dataset.mobileGmChoiceBound = "1";
+    const openMobileExactSurface = (detail = {}) => {
+      setMobileModeEnabled(false);
+      overlay.classList.add("hidden");
+      return navigateToExactSurface(detail, {
+        activateTab,
+        announce: showToast,
+        missingMessage: ({ targetTab, label }) => `Opened ${targetTab}; the exact ${label || "decision surface"} is unavailable.`
+      });
+    };
     overlay.addEventListener("vsfgm:mobile-decision", (event) => {
-      if (event.detail?.action !== "choose-gm-decision") return;
-      checkAndShowGmDecision()
-        .then((result) => {
-          if (result?.status === "chosen") return submitMobileGmDecisionChoice(result.choice);
-          return null;
-        })
-        .catch(presentActionError);
+      if (event.detail?.action === "choose-gm-decision") {
+        checkAndShowGmDecision()
+          .then((result) => {
+            if (result?.status === "chosen") return submitMobileGmDecisionChoice(result.choice);
+            return null;
+          })
+          .catch(presentActionError);
+      } else if (event.detail?.action === "open-tab") {
+        openMobileExactSurface(event.detail).catch(presentActionError);
+      }
+    });
+    overlay.addEventListener("vsfgm:mobile-pressure", (event) => {
+      if (event.detail?.targetTab) openMobileExactSurface(event.detail).catch(presentActionError);
     });
     overlay.addEventListener("vsfgm:mobile-gm-decision-choice", (event) => {
       submitMobileGmDecisionChoice(event.detail).catch(presentActionError);
@@ -544,8 +560,6 @@ function bindEvents() {
   document.getElementById("franchiseCommandCenter")?.addEventListener("click", (event) => {
     const action = event.target.closest?.("[data-command-action]");
     if (!action || action.disabled) return;
-    const targetTab = action.dataset.targetTab;
-    if (targetTab) document.querySelector(`[data-tab="${targetTab}"]`)?.click();
     if (action.dataset.commandAction === "advance-week") {
       document.getElementById("advanceWeekBtn")?.click();
     } else if (action.dataset.commandAction === "choose-gm-decision") {
@@ -553,6 +567,16 @@ function bindEvents() {
         .then((result) => result?.status === "chosen" ? submitMobileGmDecisionChoice(result.choice) : null)
         .then(() => renderOverview())
         .catch(presentActionError);
+    } else if (action.dataset.commandAction === "open-tab") {
+      navigateToExactSurface({
+        targetTab: action.dataset.targetTab || "overviewTab",
+        targetId: action.dataset.targetId || null,
+        label: action.dataset.targetLabel || "decision surface"
+      }, {
+        activateTab,
+        announce: showToast,
+        missingMessage: ({ targetTab, label }) => `Opened ${targetTab}; the exact ${label} is unavailable.`
+      }).catch(presentActionError);
     }
   });
   document.getElementById("coGmCopyBtn")?.addEventListener("click", async () => {
@@ -597,13 +621,15 @@ function bindEvents() {
     }
     const action = event.target.closest?.("[data-blueprint-target-tab]");
     if (!action) return;
-    activateTab(action.dataset.blueprintTargetTab || "overviewTab");
-    requestAnimationFrame(() => {
-      const target = document.getElementById(action.dataset.blueprintTargetId || "");
-      if (!target) return;
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
-      if (typeof target.focus === "function") target.focus({ preventScroll: true });
-    });
+    navigateToExactSurface({
+      targetTab: action.dataset.blueprintTargetTab || "overviewTab",
+      targetId: action.dataset.blueprintTargetId || null,
+      label: action.textContent?.trim() || "Architecture Review target"
+    }, {
+      activateTab,
+      announce: showToast,
+      missingMessage: ({ targetTab, label }) => `Opened ${targetTab}; the exact ${label} is unavailable.`
+    }).catch(presentActionError);
   });
   document.getElementById("advance4WeeksBtn").addEventListener("click", () =>
     runAction(
@@ -2150,23 +2176,12 @@ globalThis._checkSpeedrunCompletion = checkSpeedrunCompletion;
 globalThis._loadSpeedrunStatus = loadSpeedrunStatus;
 
 function continueSeasonChapter(action = {}) {
-  const targetTab = action.targetTab || "overviewTab";
-  activateTab(targetTab);
-  const focusTarget = () => {
-    const target = action.targetId ? document.getElementById(action.targetId) : null;
-    if (!target) {
-      showToast(`Opened ${targetTab}; the exact ${action.label || "Season chapter"} panel is unavailable.`);
-      return false;
-    }
-    target.scrollIntoView?.({ behavior: "smooth", block: "center" });
-    if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
-    target.focus?.({ preventScroll: true });
-    showToast(`Continuing ${action.label || "the current Season chapter"}.`);
-    return true;
-  };
-  if (typeof requestAnimationFrame === "function") requestAnimationFrame(focusTarget);
-  else setTimeout(focusTarget, 0);
-  return { targetTab, targetId: action.targetId || null };
+  return navigateToExactSurface(action, {
+    activateTab,
+    announce: showToast,
+    successMessage: `Continuing ${action.label || "the current Season chapter"}.`,
+    missingMessage: ({ targetTab }) => `Opened ${targetTab}; the exact ${action.label || "Season chapter"} panel is unavailable.`
+  });
 }
 
 async function init() {

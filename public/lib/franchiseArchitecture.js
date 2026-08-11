@@ -26,7 +26,7 @@ function nowLane(commands = [], latestLedger = null) {
     detail: safeText(card.detail, card.reason),
     milestone: card.blocking ? "Resolve this controlled choice before advance." : safeText(latestLedger?.nextAdaptation, card.reason || "Commit the next source-derived action."),
     targetTab: card.targetTab || "overviewTab",
-    targetId: card.action === "advance-week" ? "advanceWeekBtn" : "franchiseCommandCenter",
+    targetId: card.action === "advance-week" ? "advanceWeekBtn" : (card.targetId || "franchiseCommandCenter"),
     tone: card.tone || "accent"
   };
 }

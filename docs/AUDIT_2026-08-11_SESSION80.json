@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-11",
+  "session": 80,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "open",
+  "summary": {
+    "combinedPriority": 32.1,
+    "source": "Fresh S80 live-code audit with the game-loop-review and read-only app-release-gate lenses. Every selected premise was verified against current source, exact live origins, GitHub Actions state, and the direct baseline suite.",
+    "qualityBar": "L2 by default: one exact player-action authority, source-derived and visible mastery evidence, focused tests, rendered desktop/mobile dark/light proof for UI changes, exact-candidate staging before direct-main publication, and exact-SHA backend health after deployment."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product/game rubric with game-medium overlay: beta-readiness, vivid General Manager decision pressure, browser-visible feedback, static-host-safe/local-first behavior, plus public-app release and Canon gates",
+    "staging": "stable Cloudflare Pages staging must prove the exact candidate before direct-to-main publication; the backend server must also deploy the exact candidate through its guarded workflow",
+    "source": "arc-profile registry authority, S80 startup brief, 29,980-token code sample, exact grep/read verification, direct 1,018-pass/1-local-debris-failure baseline suite, game-loop review, and read-only application release gate"
+  },
+  "gameLoopReview": {
+    "loopTightness": 8,
+    "progression": 9,
+    "sessionEngagement": 7,
+    "retention": 8,
+    "soulFidelity": 9,
+    "overall": 8.2,
+    "evidence": "Code-contract review only. No recent docs/PLAYTESTS cohort exists, and the public SOUL file intentionally withholds private creative criteria, so these scores do not claim measured fun, retention, or full private-soul conformance."
+  },
+  "releaseGate": {
+    "deploymentVerdict": "CONDITIONAL GO — static staging and production are exact at eb9c52f, but the server deploy job has not run since c71a260 despite material backend changes.",
+    "launchVerdict": "NO-GO — deploy without flipping launchReady or lifecycle status.",
+    "static": "Stable staging and production report eb9c52fd4f444557c658ba311f9f6c08f6bec633 and artifact 4f8e49f36e064d6a6c7999ce2dd688708ad35f93e49890e8ee7e45245cc93a34; latest five Actions runs are green.",
+    "backend": "The latest push built exact-SHA images but skipped deploy-server. The last successful server dispatch is c71a260; src/community/server.js, CommunityStore, and src/server.js changed after it.",
+    "launchHolds": [
+      "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
+      "authoritative registry/local lifecycle reconciliation",
+      "SHA-bound public-launch approval distinct from deploy authorization",
+      "current staging LCP/INP/CLS measurements",
+      "exact-live-SHA inspected visual receipt",
+      "fresh structured release evidence"
+    ]
+  },
+  "axisCoverage": {
+    "featuresDepth": ["mastery-signature-visibility"],
+    "gamificationEngagementImmersion": ["exact-command-surface-routing", "mastery-signature-visibility"],
+    "uiUx": ["exact-command-surface-routing", "mastery-signature-visibility"],
+    "aiIntegration": [],
+    "securityPrivacy": [],
+    "speedOrganizationEfficiency": ["exact-command-surface-routing"],
+    "releaseTruth": ["exact-candidate-full-stack-promotion"],
+    "tokenCost": [],
+    "revenueBusiness": []
+  },
+  "recommendedMoves": [
+    "Make every ranked General Manager command land on and focus the exact decision surface named by its reason receipt, using one shared browser navigation authority.",
+    "Expose the already-computed strongest Architect mastery signature with its source receipt count and non-causal boundary in Architecture Review.",
+    "Bind the final candidate to fresh rendered evidence, prove it on stable staging, push main, then dispatch and verify the exact-SHA backend without changing independent launch readiness."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Create synthetic or inferred playtest outcomes",
+      "reason": "Rejected by context/GAME_LOOP.md. Local journey and rating receipts are instrumentation; product-wide engagement and retention claims require a real consented cohort. No synthetic rows will be created to make the audit green."
+    },
+    {
+      "candidate": "Build another playtest export path",
+      "reason": "False premise. betaFeedback.js already records bounded local clarity, agency, pace, and return-intent receipts, exports an allowlisted receipt pack, and attaches only an explicitly selected receipt. The missing authority is real participants, not software scaffolding."
+    },
+    {
+      "candidate": "Rebuild Community Stats or local authentication",
+      "reason": "False or harmful premise. The stats surface, community backend, consent/capability controls, dual-audience metadata, and tests exist; the public game exposes no account flow, so project-local auth would violate the Obelisk boundary rather than close it."
+    },
+    {
+      "candidate": "Rewrite GameSession or the browser application shell",
+      "reason": "Real structural debt but not a bounded beta-readiness fix. The selected command-navigation seam removes duplicated behavior without destabilizing the canonical simulation or hydration authorities."
+    },
+    {
+      "candidate": "Treat direct-deploy authorization as public-launch approval",
+      "reason": "Rejected by D-S74.5 and the live release gate. Deployment success must not fabricate reply-capable email, lifecycle reconciliation, Web Vitals, or a SHA-bound launch decision."
+    },
+    {
+      "candidate": "Keep or publish the ignored S79 Creative Direction Record",
+      "reason": "Rejected and root-fixed during baseline verification. The ignored file contained only a no-direction note; the public compliance contract requires the private ledger path to be absent, and the focused 13/13 test now passes."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "UI/UX / game-loop tightness / organization",
+      "effortHours": 5,
+      "impact": 5,
+      "innovation": 7,
+      "priority": 12.5,
+      "slug": "exact-command-surface-routing",
+      "title": "Make every ranked General Manager command land on the exact decision surface it names",
+      "status": "implemented",
+      "executionEvidence": "One shared async navigation authority now activates and hydrates the owning tab, scrolls to and focuses the declared target, honors reduced-motion preference, and reports unavailable targets honestly. Command Center, mobile pressure, Blueprint, and season-chapter routes publish and consume exact target IDs; 37 focused tests and the rendered desktop/mobile dark/light command captures pass.",
+      "premise": "The public game contract requires the active call to land on the exact tab and decision surface. Season chapters and Blueprint actions carry targetId, scroll, and focus, but Franchise Command Center cards carry only targetTab; the click handler merely activates that tab. franchiseArchitecture.js then hardcodes every non-advance Now target back to franchiseCommandCenter. Draft, cap, injury, deadline, and league-pulse commands therefore stop short of their named work surface.",
+      "evidence": [
+        "context/GAME_LOOP.md exact decision-surface contract",
+        "public/lib/franchiseCommandCenter.js cards and receipt omit targetId",
+        "public/app.js Franchise Command Center handler activates only targetTab",
+        "public/app.js Blueprint and season-chapter paths duplicate scroll/focus behavior",
+        "public/lib/franchiseArchitecture.js maps non-advance targetId to franchiseCommandCenter"
+      ],
+      "constraint": "One navigation authority must preserve tab-island hydration, keyboard focus, reduced-motion-safe browser behavior, command ranking, simulation blocking, and truthful missing-target diagnostics. No inferred choice or automatic action.",
+      "verification": [
+        "focused command-stack and exact-navigation unit tests",
+        "browser wiring and aggregate suite green",
+        "desktop/mobile dark/light rendered pixels for cap, injury, deadline, and draft routes",
+        "every command receipt publishes targetTab plus targetId"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 2, "recipe": "Add explicit target IDs to command cards and focus those nodes after tab activation." },
+        "L2": { "effortHours": 5, "recipe": "Create one tested exact-surface navigation authority, route Command Center, Blueprint, and Season chapter actions through it, publish target IDs in explanation receipts, and verify cap/injury/deadline/draft behavior in rendered desktop/mobile themes." },
+        "L3": { "effortHours": 8, "recipe": "L2 plus persist anonymous local command-to-surface completion instrumentation for a future consented playtest cohort." }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Feature depth / gamification / progression truth",
+      "effortHours": 3,
+      "impact": 4,
+      "innovation": 7,
+      "priority": 12.1,
+      "slug": "mastery-signature-visibility",
+      "title": "Expose the source-derived strongest Architect signature where dynasty decisions are reviewed",
+      "status": "implemented",
+      "executionEvidence": "The canonical mastery projection now publishes signature score, status, and source receipt count; Architecture Review renders the strongest evidence-backed identity beside focus and milestone information with an explicit no-hidden-bonus boundary and honest empty state. Focused engine/UI tests and desktop/mobile dark/light pixels pass.",
+      "premise": "architectMasteryPortfolio computes four evidence paths plus a strongest signature, focus, recommendation, and next milestone. The Overview renders the focus and all path scores, but no live UI reads mastery.signature. That leaves the dynasty-loop contract's strongest-signature promise computed but invisible, weakening the payoff for coherent long-career identity.",
+      "evidence": [
+        "context/GAME_LOOP.md strongest-signature promise",
+        "src/engine/architectMasteryPortfolio.js computes mastery.signature",
+        "public/lib/tabOverview.js renders focus, milestone, path score, and receipt count but never signature",
+        "test/architect-mastery-portfolio.test.js proves signature authority already exists"
+      ],
+      "constraint": "Display only source-derived path identity, score, status, and receipt count. Preserve the existing non-causal/no-hidden-bonus disclaimer and explicit empty state; random tactic variety earns nothing.",
+      "verification": [
+        "engine contract includes signature evidence count and status",
+        "focused mastery and Overview markup tests",
+        "desktop/mobile dark/light Architecture Review captures",
+        "empty mastery renders no fabricated signature"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Render the existing signature label and score beside the selected focus." },
+        "L2": { "effortHours": 3, "recipe": "Extend the canonical signature projection with status and source receipt count, render a strongest-signature card with explicit empty/non-causal language in Architecture Review, and cover both evidence and empty states in tests and pixels." },
+        "L3": { "effortHours": 6, "recipe": "L2 plus a receipted signature-history timeline derived from season-close mastery snapshots without adding causal scoring." }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Release architecture / observability truth",
+      "effortHours": 2,
+      "impact": 5,
+      "innovation": 3,
+      "priority": 7.5,
+      "slug": "exact-candidate-full-stack-promotion",
+      "title": "Deploy the immutable candidate through stable staging, main, Pages, and the live backend server",
+      "status": "in_progress",
+      "executionEvidence": "Candidate implementation, focused tests, Pages build/smoke, browser reachability and a 176-capture desktop/tablet/mobile dark/light evidence matrix are green. Immutable staging, direct-main publication, Pages provenance, and exact-SHA server dispatch remain in the release wave.",
+      "premise": "Static staging and production are exact at current HEAD, but the backend push workflow only built images and skipped deploy-server. The last successful server deployment is c71a260 even though material community/server code changed afterward. A direct-main Pages publish alone would therefore not satisfy the founder's fully deploy request.",
+      "evidence": [
+        "Pages run 31525032364 green at eb9c52f",
+        "stable staging and production share exact eb9c52f artifact identity",
+        "backend run 31525032359 built images but skipped deploy-server",
+        "last deploy-server success 31276918230 at c71a260",
+        "cloudflare.deploy, github.org, and hetzner.ssh capabilities READY"
+      ],
+      "constraint": "Commit locally first, prove the exact immutable candidate on stable staging, sanitize, then push directly to main without force. Dispatch backend deploy_to_server=true at the exact pushed SHA and verify live API health/database/CORS. Keep launchReady false and do not claim SPARKED launch readiness.",
+      "verification": [
+        "stable staging SHA, artifact fingerprint, routes, and rollback green",
+        "direct main push succeeds with hooks and sanitization",
+        "Pages production workflow and live provenance green at exact SHA",
+        "backend deploy-server succeeds at exact SHA",
+        "live Community API reports healthy database and expected CORS/cache behavior"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Dispatch the latest backend image to the server and verify health." },
+        "L2": { "effortHours": 2, "recipe": "Bind current rendered/build/test receipts to one immutable candidate, verify it on stable staging, push direct to main, wait for exact production Pages provenance, dispatch exact-SHA backend deployment, and verify the live API without changing launch readiness." },
+        "L3": { "effortHours": 5, "recipe": "L2 plus make the backend workflow automatically deploy only after the same candidate owns an unexpired stable-staging receipt and all protected CI checks are green." }
+      }
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "exact-navigation-reduced-motion",
+      "status": "shipped",
+      "implementationEvidence": [
+        "The shared exact-surface navigator now switches scrolling from smooth to automatic when prefers-reduced-motion is active.",
+        "A focused regression test proves the accessibility contract without changing the default visual route."
+      ]
+    }
+  ]
+}
