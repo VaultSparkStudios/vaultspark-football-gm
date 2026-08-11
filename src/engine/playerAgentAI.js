@@ -1,201 +1,101 @@
 /**
- * Player Agent AI — Contract Negotiation Drama
+ * Contract-year agent intelligence.
  *
- * High-AV contract-year players acquire an AI agent that:
- *  - Generates an opening demand
- *  - Has a leverage window (competing interest → demands escalate)
- *  - Produces a counter-proposal after each team offer
- *  - Has a personality that shapes negotiation style
- *
- * Agent is attached to player as player.agentState when the season starts
- * for eligible players (AV >= threshold AND yearsRemaining <= 1).
+ * This module never owns a contract mutation. It derives a stable persona and
+ * source-based leverage, then records bounded negotiation receipts for the
+ * canonical GameSession.negotiateAndSign authority.
  */
-
-import { clamp } from "../utils/rng.js";
+import { clamp, derivedRng } from "../utils/rng.js";
 
 const AGENT_PERSONALITIES = ["maximizer", "loyalist", "balanced", "opportunist"];
+const MAX_HISTORY = 8;
+const PERSONALITY_CONFIG = Object.freeze({
+  maximizer: { label: "Maximizer", demandMultiplier: 1.12, walkAwayFloor: 0.94, leverageBonus: 0.035, counterDrop: 0.02, flavor: "Top-of-market value matters more than a quick signature." },
+  loyalist: { label: "Loyalist", demandMultiplier: 1.02, walkAwayFloor: 0.82, leverageBonus: 0.015, counterDrop: 0.05, flavor: "Continuity matters. A fair offer from the current club can end talks fast." },
+  balanced: { label: "Balanced", demandMultiplier: 1.06, walkAwayFloor: 0.88, leverageBonus: 0.025, counterDrop: 0.035, flavor: "Security, role, and fair market value all carry weight." },
+  opportunist: { label: "Opportunist", demandMultiplier: 1.09, walkAwayFloor: 0.9, leverageBonus: 0.05, counterDrop: 0.015, flavor: "Outside demand is leverage. The market will decide the price." }
+});
 
-const AV_AGENT_THRESHOLD = 8; // career AV floor to get an active agent
-
-// ── Agent personalities ───────────────────────────────────────────────────────
-
-const PERSONALITY_CONFIG = {
-  maximizer: {
-    label: "Maximizer",
-    demandMultiplier: 1.22,
-    walkAwayFloor: 0.94,   // won't accept below 94% of demand
-    leverageBonus: 0.08,   // escalates demand by 8% per competing offer signal
-    counterDrop: 0.02,     // drops demand by 2% per team offer if no leverage
-    flavor: "This agent will push for top-of-market value and won't settle."
-  },
-  loyalist: {
-    label: "Loyalist",
-    demandMultiplier: 1.08,
-    walkAwayFloor: 0.82,
-    leverageBonus: 0.03,
-    counterDrop: 0.05,
-    flavor: "The player values continuity. A fair offer from the current team ends talks fast."
-  },
-  balanced: {
-    label: "Balanced",
-    demandMultiplier: 1.14,
-    walkAwayFloor: 0.88,
-    leverageBonus: 0.05,
-    counterDrop: 0.035,
-    flavor: "A pragmatic agent focused on security and fair market rate."
-  },
-  opportunist: {
-    label: "Opportunist",
-    demandMultiplier: 1.18,
-    walkAwayFloor: 0.90,
-    leverageBonus: 0.12,   // most reactive to competing offers
-    counterDrop: 0.015,
-    flavor: "Will use any outside interest to drive price up. Loyalty is not on the table."
-  }
-};
-
-// ── Market salary estimator ───────────────────────────────────────────────────
-
-function marketSalary(player, capHardLimit = 224_800_000) {
-  const overall = player.overall || 70;
-  // Scale: OVR 70 ≈ 3% cap, OVR 85 ≈ 12%, OVR 95 ≈ 22%
-  const capPct = clamp((overall - 65) * 0.012, 0.018, 0.26);
-  return Math.round(capHardLimit * capPct);
+function boundedHistory(agent, entry) {
+  agent.demandHistory = [...(agent.demandHistory || []), entry].slice(-MAX_HISTORY);
 }
 
-// ── Agent state init ──────────────────────────────────────────────────────────
+function sourceDerivedInterest(player) {
+  const overall = Number(player?.overall || 0);
+  const potential = Number(player?.potential || overall);
+  const age = Number(player?.age || 30);
+  return clamp((overall >= 82 ? 1 : 0) + (overall >= 89 ? 1 : 0) + (potential >= 90 && age <= 27 ? 1 : 0), 0, 3);
+}
 
-export function initAgentState(player, rng, capHardLimit) {
+function interestReason(signals) {
+  if (signals >= 3) return "Several cap-ready rivals project this player as a priority starter.";
+  if (signals === 2) return "Multiple rival depth charts create credible outside demand.";
+  if (signals === 1) return "One rival market projects meaningful starting-role interest.";
+  return "The current market is quiet; continuity gives your club leverage.";
+}
+
+export function ensureContractAgent(player, { currentYear, baseSalary, baseYears, guaranteed, capHardLimit = 224_800_000 } = {}) {
+  const seasonKey = `${Number(currentYear) || 0}:${Number(player?.contract?.yearsRemaining) || 0}`;
+  if (player?.agentState?.seasonKey === seasonKey) return player.agentState;
+  const rng = derivedRng(`contract-agent|${player?.id || player?.name || "player"}|${seasonKey}`);
   const personality = rng.pick(AGENT_PERSONALITIES);
   const config = PERSONALITY_CONFIG[personality];
-  const market = marketSalary(player, capHardLimit);
-  const demand = Math.round(market * config.demandMultiplier);
-
-  return {
-    personality,
-    personalityLabel: config.label,
-    flavor: config.flavor,
-    marketSalary: market,
-    currentDemand: demand,
-    openingDemand: demand,
-    walkAwayFloor: Math.round(demand * config.walkAwayFloor),
-    leverageSignals: 0,     // competing offer signals this offseason
-    teamOffersReceived: 0,
-    negotiationStatus: "active", // active | signed | walked
-    demandHistory: [{ round: 0, demand, note: "Opening position" }]
+  const leverageSignals = sourceDerivedInterest(player);
+  const marketSalary = Math.max(850_000, Math.round(Number(baseSalary) || capHardLimit * clamp((Number(player?.overall || 70) - 65) * 0.012, 0.018, 0.26)));
+  const openingDemand = Math.round(marketSalary * config.demandMultiplier * (1 + leverageSignals * config.leverageBonus));
+  const state = {
+    schemaVersion: 2, seasonKey, personality, personalityLabel: config.label, flavor: config.flavor,
+    marketSalary, currentDemand: openingDemand, openingDemand,
+    preferredYears: clamp(Number(baseYears) || 3, 1, 5),
+    guaranteed: Math.max(0, Math.round(Number(guaranteed) || openingDemand * 0.45)),
+    walkAwayFloor: Math.round(openingDemand * config.walkAwayFloor),
+    leverageSignals, leverageReason: interestReason(leverageSignals), deadline: "Before free agency opens",
+    teamOffersReceived: 0, negotiationStatus: "active", demandHistory: []
   };
+  boundedHistory(state, { round: 0, outcome: "opening", demand: openingDemand, years: state.preferredYears, label: `Opening position: ${state.preferredYears} years at $${(openingDemand / 1e6).toFixed(2)}M per year.` });
+  player.agentState = state;
+  return state;
 }
 
-// ── Competing offer signal ────────────────────────────────────────────────────
-
-export function applyCompetingOffer(player, competingTeamId) {
-  const agent = player.agentState;
-  if (!agent || agent.negotiationStatus !== "active") return null;
-  const config = PERSONALITY_CONFIG[agent.personality];
-
-  agent.leverageSignals += 1;
-  const escalation = Math.round(agent.currentDemand * config.leverageBonus);
-  agent.currentDemand = Math.round(agent.currentDemand + escalation);
-  agent.walkAwayFloor = Math.round(agent.currentDemand * config.walkAwayFloor);
-  agent.demandHistory.push({
-    round: agent.demandHistory.length,
-    demand: agent.currentDemand,
-    note: `Competing interest from ${competingTeamId} — demand escalated +${(config.leverageBonus * 100).toFixed(0)}%`
-  });
-
-  return {
-    message: `${player.name}'s agent reports interest from ${competingTeamId}. New asking price: $${(agent.currentDemand / 1e6).toFixed(2)}M.`,
-    newDemand: agent.currentDemand
-  };
-}
-
-// ── Team offer evaluation ─────────────────────────────────────────────────────
-
-export function evaluateTeamOffer(player, offeredSalary, offeredYears) {
-  const agent = player.agentState;
-  if (!agent || agent.negotiationStatus !== "active") return { status: "inactive" };
-  const config = PERSONALITY_CONFIG[agent.personality];
-
+export function evaluateCanonicalAgentOffer(player, offeredSalary, offeredYears) {
+  const agent = player?.agentState;
+  if (!agent || agent.negotiationStatus !== "active") return { status: agent?.negotiationStatus || "inactive" };
+  const config = PERSONALITY_CONFIG[agent.personality] || PERSONALITY_CONFIG.balanced;
+  const salary = Math.max(0, Math.round(Number(offeredSalary) || 0));
+  const years = clamp(Number(offeredYears) || 1, 1, 5);
   agent.teamOffersReceived += 1;
-
-  // Accept if offer meets walk-away floor
-  if (offeredSalary >= agent.walkAwayFloor && offeredYears >= 1) {
-    agent.negotiationStatus = "signed";
-    agent.demandHistory.push({
-      round: agent.demandHistory.length,
-      demand: offeredSalary,
-      note: `Accepted: $${(offeredSalary / 1e6).toFixed(2)}M / ${offeredYears}yr`
-    });
-    return {
-      status: "accepted",
-      message: `${player.name}'s agent accepts the offer: $${(offeredSalary / 1e6).toFixed(2)}M / ${offeredYears} yr.`
-    };
-  }
-
-  // Counter: drop demand if no leverage, otherwise hold
-  const drop = agent.leverageSignals === 0
-    ? Math.round(agent.currentDemand * config.counterDrop)
-    : Math.round(agent.currentDemand * config.counterDrop * 0.5);
-
-  agent.currentDemand = Math.max(agent.walkAwayFloor, agent.currentDemand - drop);
-  agent.demandHistory.push({
-    round: agent.demandHistory.length,
-    demand: agent.currentDemand,
-    note: `Counter after team offer of $${(offeredSalary / 1e6).toFixed(2)}M`
-  });
-
-  // Walk if team is 30%+ below floor after 3+ offers
-  if (agent.teamOffersReceived >= 3 && offeredSalary < agent.walkAwayFloor * 0.80) {
+  if (salary >= agent.walkAwayFloor && years >= Math.max(1, agent.preferredYears - 1)) return { status: "accepted" };
+  if (agent.teamOffersReceived >= 3 && salary < agent.walkAwayFloor * 0.8) {
     agent.negotiationStatus = "walked";
-    return {
-      status: "walked",
-      message: `${player.name}'s agent breaks off talks — gap is too wide. Exploring free agency.`
-    };
+    boundedHistory(agent, { round: agent.teamOffersReceived, outcome: "walked", demand: agent.currentDemand, years, label: `Talks ended after a $${(salary / 1e6).toFixed(2)}M offer left the gap too wide.` });
+    return { status: "walked", message: `${player.name}'s agent ended talks. Free agency is now the plan.` };
   }
-
-  return {
-    status: "counter",
-    counterDemand: agent.currentDemand,
-    counterYears: Math.max(2, offeredYears),
-    message: `${player.name}'s agent counters: $${(agent.currentDemand / 1e6).toFixed(2)}M / ${Math.max(2, offeredYears)} yr.`
-  };
+  const drop = agent.leverageSignals === 0 ? Math.round(agent.currentDemand * config.counterDrop) : Math.round(agent.currentDemand * config.counterDrop * 0.5);
+  agent.currentDemand = Math.max(agent.walkAwayFloor, agent.currentDemand - drop);
+  const counterYears = Math.max(years, agent.preferredYears);
+  boundedHistory(agent, { round: agent.teamOffersReceived, outcome: "countered", demand: agent.currentDemand, years: counterYears, label: `Counter: ${counterYears} years at $${(agent.currentDemand / 1e6).toFixed(2)}M after a $${(salary / 1e6).toFixed(2)}M offer.` });
+  return { status: "counter", counterDemand: agent.currentDemand, counterYears, message: `${player.name}'s agent countered at $${(agent.currentDemand / 1e6).toFixed(2)}M for ${counterYears} years.` };
 }
 
-// ── Attach agents at start of contract year ───────────────────────────────────
-
-export function attachContractYearAgents(league, rng, capHardLimit = 224_800_000) {
-  let agentsAttached = 0;
-  for (const player of league.players) {
-    if (player.status !== "active") continue;
-    if (player.contract?.yearsRemaining !== 1) continue;
-
-    const careerAV = Object.values(player.seasonStats || {})
-      .reduce((s, ss) => s + (ss?.av || 0), 0);
-    if (careerAV < AV_AGENT_THRESHOLD) continue;
-
-    // Re-init each contract year (don't carry stale state)
-    player.agentState = initAgentState(player, rng, capHardLimit);
-    agentsAttached += 1;
-  }
-  return agentsAttached;
+export function recordCanonicalAgentAcceptance(player, contract) {
+  const agent = player?.agentState;
+  if (!agent) return null;
+  agent.negotiationStatus = "signed";
+  const salary = Number(contract?.salary || 0);
+  const years = Number(contract?.yearsRemaining || 0);
+  boundedHistory(agent, { round: agent.teamOffersReceived, outcome: "accepted", demand: salary, years, label: `Accepted: ${years} years at $${(salary / 1e6).toFixed(2)}M per year.` });
+  return agent;
 }
-
-// ── Summary for UI ────────────────────────────────────────────────────────────
 
 export function agentSummary(player) {
-  const agent = player.agentState;
+  const agent = player?.agentState;
   if (!agent) return null;
   return {
-    name: player.name,
-    position: player.position,
-    overall: player.overall,
-    personality: agent.personalityLabel,
-    flavor: agent.flavor,
-    marketSalary: agent.marketSalary,
-    currentDemand: agent.currentDemand,
-    walkAwayFloor: agent.walkAwayFloor,
-    status: agent.negotiationStatus,
-    leverageSignals: agent.leverageSignals,
-    history: agent.demandHistory
+    playerId: player.id, name: player.name, pos: player.position, position: player.position, overall: player.overall,
+    personality: agent.personalityLabel, flavor: agent.flavor, marketSalary: agent.marketSalary,
+    askingSalary: agent.currentDemand, currentDemand: agent.currentDemand, askingYears: agent.preferredYears,
+    guaranteed: agent.guaranteed, walkAwayFloor: agent.walkAwayFloor, status: agent.negotiationStatus,
+    leverageSignals: agent.leverageSignals, leverageReason: agent.leverageReason, deadline: agent.deadline,
+    negotiationHistory: [...(agent.demandHistory || [])], history: [...(agent.demandHistory || [])]
   };
 }

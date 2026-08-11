@@ -207,7 +207,6 @@ test("server and static runtimes preserve representative route shapes and state 
 
 
     const reads = [
-      "/api/agent/roster",
       "/api/architect-thesis",
       "/api/fan-sentiment?team=BUF",
       "/api/gm-legacy",
@@ -248,9 +247,32 @@ test("server and static runtimes preserve representative route shapes and state 
     assert.equal(thesisWithoutFilm.local.status, 409);
     assert.equal(thesisWithoutFilm.local.payload.reasonCode, "ARCHITECT_THESIS_NEEDS_FILM");
 
-    const invalidOffer = await requestPair(runtime, server, "/api/agent/offer", { method: "POST", body: {} });
+    const invalidOffer = await requestPair(runtime, server, "/api/contracts/negotiate", { method: "POST", body: {} });
     assert.equal(invalidOffer.local.status, 400);
     assert.equal(invalidOffer.local.payload.ok, false);
+
+    const negotiationBoard = await requestPair(runtime, server, "/api/contracts/negotiations?team=BUF");
+    assert.deepEqual(
+      topLevelShape(negotiationBoard.remote.payload.targets?.[0]?.agent),
+      topLevelShape(negotiationBoard.local.payload.targets?.[0]?.agent)
+    );
+    const target = negotiationBoard.local.payload.targets?.[0];
+    assert.ok(target?.agent, "canonical negotiation board exposes the agent profile");
+    const signed = await requestPair(runtime, server, "/api/contracts/negotiate", {
+      method: "POST",
+      body: {
+        teamId: "BUF",
+        playerId: target.id,
+        years: target.demand.years,
+        salary: target.demand.salary
+      }
+    });
+    assert.equal(signed.local.payload.ok, true);
+    assert.equal(signed.remote.payload.ok, true);
+    assert.equal(signed.local.payload.agent.status, "signed");
+    assert.equal(signed.remote.payload.agent.status, "signed");
+    assert.deepEqual(topLevelShape(signed.remote.payload), topLevelShape(signed.local.payload));
+    assert.deepEqual(topLevelShape(signed.remote.payload.contract), topLevelShape(signed.local.payload.contract));
 
     const brand = await requestPair(runtime, server, "/api/brand-identity", {
       method: "POST",

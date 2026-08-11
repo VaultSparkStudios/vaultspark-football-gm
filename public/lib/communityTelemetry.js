@@ -1,5 +1,6 @@
 import { extractCommunityEvents } from "./extractCommunityEvents.js";
 import { COMMUNITY_BATCH_LIMIT } from "./communityEventContract.js";
+import { observeBackgroundTask } from "./clientDiagnostics.js";
 
 export const COMMUNITY_CONSENT_KEY = "fa:community-participation:v1";
 export const COMMUNITY_PARTICIPANT_KEY = "fa:community-participant:v1";
@@ -7,6 +8,10 @@ export const COMMUNITY_QUEUE_KEY = "fa:community-queue:v1";
 export const COMMUNITY_LOCAL_LEDGER_KEY = "fa:community-local-ledger:v1";
 export const COMMUNITY_ENDPOINT = "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1";
 const MAX_QUEUE = 240;
+const CAPABILITY_EXPIRY_SKEW_MS = 5_000;
+
+let capabilityLease = null;
+let capabilityRequest = null;
 
 function storage() {
   try { return window.localStorage; } catch { return null; }
@@ -53,14 +58,80 @@ function emitParticipationChange(participating) {
   window.dispatchEvent(new CustomEvent("fa:community-participation", { detail: { participating } }));
 }
 
+function clearCapability() {
+  capabilityLease = null;
+  capabilityRequest = null;
+}
+
+async function requestCapability(browserId) {
+  const response = await fetch(statsEndpoint("capability"), {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ schemaVersion: "1.0", participantId: browserId }),
+    mode: "cors",
+    credentials: "omit"
+  });
+  if (!response.ok) throw new Error(`Community participation capability unavailable (HTTP ${response.status}).`);
+  const body = await response.json();
+  if (!body?.capability || !Number.isFinite(Date.parse(body.expiresAt))) throw new Error("Community participation capability response is invalid.");
+  return {
+    participantId: browserId,
+    capability: body.capability,
+    expiresAt: body.expiresAt,
+    remainingUses: Math.max(1, Number(body.remainingUses ?? body.useLimit) || 1)
+  };
+}
+
+async function ensureCapability(browserId, { force = false } = {}) {
+  const current = capabilityLease;
+  if (!force && current?.participantId === browserId && current.remainingUses > 0 &&
+      Date.parse(current.expiresAt) - Date.now() > CAPABILITY_EXPIRY_SKEW_MS) return current;
+  if (force) clearCapability();
+  if (!capabilityRequest) {
+    capabilityRequest = requestCapability(browserId)
+      .then((lease) => { capabilityLease = lease; return lease; })
+      .finally(() => { capabilityRequest = null; });
+  }
+  return capabilityRequest;
+}
+
+async function capabilityMutation(path, browserId, payload, init = {}) {
+  let response = null;
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const lease = await ensureCapability(browserId, { force: attempt > 0 });
+    lease.remainingUses = Math.max(0, lease.remainingUses - 1);
+    response = await fetch(statsEndpoint(path), {
+      ...init,
+      method: init.method || "POST",
+      headers: { "Content-Type": "application/json", ...(init.headers || {}) },
+      body: JSON.stringify({ ...payload, capability: lease.capability }),
+      mode: "cors",
+      credentials: "omit"
+    });
+    if (response.status !== 401) return response;
+    clearCapability();
+  }
+  return response;
+}
+
 export async function setCommunityParticipation(participating) {
   const wasParticipating = getCommunityParticipation();
   const existingId = participantId();
   if (participating) {
     try { storage()?.setItem(COMMUNITY_CONSENT_KEY, "participating"); } catch { /* non-persistent consent stays false */ }
-    participantId({ create: true });
+    const browserId = participantId({ create: true });
     emitParticipationChange(true);
-    void flushCommunityQueue();
+    if (browserId && typeof fetch === "function") {
+      observeBackgroundTask(
+        () => ensureCapability(browserId).then(() => flushCommunityQueue()),
+        {
+          surface: "community-telemetry",
+          operation: "prewarm-participation-capability",
+          authorityKey: browserId,
+          severity: "degraded"
+        }
+      );
+    }
     return { participating: true };
   }
 
@@ -70,16 +141,13 @@ export async function setCommunityParticipation(participating) {
   emitParticipationChange(false);
   if (wasParticipating && existingId && typeof fetch === "function") {
     try {
-      await fetch(statsEndpoint("participation"), {
+      await capabilityMutation("participation", existingId, { schemaVersion: "1.0", participantId: existingId }, {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ schemaVersion: "1.0", participantId: existingId }),
-        mode: "cors",
-        credentials: "omit",
         keepalive: true
       });
     } catch { /* withdrawal is local immediately; remote deletion retries are not privacy-safe to queue */ }
   }
+  clearCapability();
   return { participating: false };
 }
 
@@ -150,12 +218,7 @@ export async function flushCommunityQueue() {
       const batch = queue.slice(0, COMMUNITY_BATCH_LIMIT);
       let response;
       try {
-        response = await fetch(statsEndpoint("events"), {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ schemaVersion: "1.0", participantId: browserId, events: batch }),
-          mode: "cors",
-          credentials: "omit",
+        response = await capabilityMutation("events", browserId, { schemaVersion: "1.0", participantId: browserId, events: batch }, {
           keepalive: batch.length <= 8
         });
       } catch { break; }

@@ -2,7 +2,16 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { extractCommunityEvents } from "../src/community/extractCommunityEvents.js";
 import { normalizeCommunityEvent } from "../src/community/eventContract.js";
-import { applyEventsToLocalLedger, emptyLocalCommunityLedger } from "../public/lib/communityTelemetry.js";
+import {
+  applyEventsToLocalLedger,
+  COMMUNITY_CONSENT_KEY,
+  COMMUNITY_PARTICIPANT_KEY,
+  COMMUNITY_QUEUE_KEY,
+  emptyLocalCommunityLedger,
+  flushCommunityQueue,
+  observeCommunityApiReceipt,
+  setCommunityParticipation
+} from "../public/lib/communityTelemetry.js";
 
 const now = () => "2026-08-08T12:00:00.000Z";
 let sequence = 0;
@@ -55,4 +64,77 @@ test("local comparison ledger remains useful even when network participation is 
   assert.equal(ledger.totals.draftPicks, 1);
   assert.equal(ledger.choices.positions.qb, 1);
   assert.doesNotMatch(JSON.stringify(ledger), /Private Name|private-player-id/);
+});
+
+test("browser participation acquires a short-lived capability, retries one rejected lease, flushes, and withdraws without persisting it", async () => {
+  const values = new Map();
+  const localStorage = {
+    getItem(key) { return values.get(String(key)) ?? null; },
+    setItem(key, value) { values.set(String(key), String(value)); },
+    removeItem(key) { values.delete(String(key)); }
+  };
+  const saved = Object.fromEntries(["window", "document", "navigator", "CustomEvent", "fetch"].map((key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
+  const calls = [];
+  let capabilities = 0;
+  let eventAttempts = 0;
+  try {
+    Object.defineProperty(globalThis, "window", { configurable: true, value: { localStorage, dispatchEvent() {} } });
+    Object.defineProperty(globalThis, "document", { configurable: true, value: { querySelector: () => null } });
+    Object.defineProperty(globalThis, "navigator", { configurable: true, value: { onLine: true } });
+    Object.defineProperty(globalThis, "CustomEvent", { configurable: true, value: class { constructor(type, init) { this.type = type; this.detail = init?.detail; } } });
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: async (url, init = {}) => {
+        const body = init.body ? JSON.parse(init.body) : null;
+        calls.push({ url: String(url), method: init.method, body });
+        if (String(url).endsWith("/capability")) {
+          capabilities += 1;
+          return new Response(JSON.stringify({
+            ok: true,
+            capability: `lease-${capabilities}`,
+            expiresAt: new Date(Date.now() + 60_000).toISOString(),
+            useLimit: 4,
+            remainingUses: 4
+          }), { status: 201, headers: { "content-type": "application/json" } });
+        }
+        if (String(url).endsWith("/events")) {
+          eventAttempts += 1;
+          if (eventAttempts === 1) return new Response(JSON.stringify({ ok: false }), { status: 401 });
+          return new Response(JSON.stringify({ ok: true, accepted: 1, duplicates: 0 }), { status: 202 });
+        }
+        if (String(url).endsWith("/participation")) return new Response(JSON.stringify({ ok: true, deleted: 1 }), { status: 200 });
+        return new Response("", { status: 404 });
+      }
+    });
+
+    await setCommunityParticipation(true);
+    assert.equal(localStorage.getItem(COMMUNITY_CONSENT_KEY), "participating");
+    assert.ok(localStorage.getItem(COMMUNITY_PARTICIPANT_KEY));
+    observeCommunityApiReceipt({
+      method: "POST",
+      path: "/api/new-league",
+      body: { controlledTeamId: "BUF" },
+      response: { ok: true, state: { controlledTeamId: "BUF", settings: {} } },
+      runtime: "client"
+    });
+    const flushed = await flushCommunityQueue();
+    assert.equal(flushed.sent, 1);
+    assert.equal(eventAttempts, 2, "a rejected process-local lease is refreshed exactly once");
+    assert.equal(calls.filter((row) => row.url.endsWith("/capability")).length, 2);
+    assert.equal(calls.filter((row) => row.url.endsWith("/events"))[0].body.capability, "lease-1");
+    assert.equal(calls.filter((row) => row.url.endsWith("/events"))[1].body.capability, "lease-2");
+    assert.deepEqual(JSON.parse(localStorage.getItem(COMMUNITY_QUEUE_KEY)), []);
+    assert.doesNotMatch(JSON.stringify(Object.fromEntries(values)), /lease-[12]/, "capabilities remain in memory only");
+
+    await setCommunityParticipation(false);
+    const withdrawal = calls.find((row) => row.url.endsWith("/participation"));
+    assert.equal(withdrawal.body.capability, "lease-2");
+    assert.equal(localStorage.getItem(COMMUNITY_CONSENT_KEY), "declined");
+    assert.equal(localStorage.getItem(COMMUNITY_PARTICIPANT_KEY), null);
+  } finally {
+    for (const [key, descriptor] of Object.entries(saved)) {
+      if (descriptor) Object.defineProperty(globalThis, key, descriptor);
+      else delete globalThis[key];
+    }
+  }
 });

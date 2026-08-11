@@ -1,8 +1,6 @@
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, fmtMoney, formatTransactionDetails, presentActionError, renderGuideContent, renderPulseChips, renderTable, showToast, teamByCode, teamCode } from "./appCore.js";
 import { openGuideModal } from "./tabOverview.js";
-import { renderContractsPage } from "./tabContracts.js";
-import { renderAnalyticsChart } from "./tabStats.js";
 import { hallOfFamePolicyLine, retiredNumberPolicyLine } from "./historyFormatting.js";
 import { activateTab, applyDashboard } from "./gameFlow.js";
 import {
@@ -106,22 +104,6 @@ export function buildLaunchReadinessRows({
   ];
 }
 
-export function renderTransactionLog() {
-  const rows = state.txRows.map((entry) => ({
-    seq: entry.seq,
-    year: entry.year,
-    week: entry.week,
-    phase: entry.phase,
-    type: entry.type,
-    team: entry.teamId
-      ? teamCode(entry.teamId)
-      : `${teamCode(entry.teamA || "")}${entry.teamB ? `/${teamCode(entry.teamB)}` : ""}`,
-    player: entry.playerName || entry.playerId || "",
-    details: formatTransactionDetails(entry)
-  }));
-  renderTable("txTable", rows);
-}
-
 export function renderNews() {
   const rows = (state.newsRows || []).map((entry) => ({
     year: entry.year,
@@ -132,92 +114,18 @@ export function renderNews() {
   renderTable("newsTable", rows);
 }
 
-export function renderPickAssets() {
-  const rows = [
-    ...(state.tradeTeamAPicks || []).map((pick) => ({ ...pick, packageSide: "A" })),
-    ...(state.tradeTeamBPicks || []).map((pick) => ({ ...pick, packageSide: "B" }))
-  ].map((pick) => ({
-    side: `Team ${pick.packageSide}`,
-    id: pick.id,
-    yr: pick.year,
-    rnd: pick.round,
-    orig: teamCode(pick.originalTeamId),
-    owner: teamCode(pick.ownerTeamId),
-    value: pick.value,
-    action: ""
+export function renderTransactionLog() {
+  const rows = state.txRows.map((entry) => ({
+    seq: entry.seq,
+    year: entry.year,
+    week: entry.week,
+    phase: entry.phase,
+    type: entry.type,
+    team: entry.teamId ? teamCode(entry.teamId) : `${teamCode(entry.teamA || "")}${entry.teamB ? `/${teamCode(entry.teamB)}` : ""}`,
+    player: entry.playerName || entry.playerId || "",
+    details: formatTransactionDetails(entry)
   }));
-  renderTable("pickAssetsTable", rows);
-  document.getElementById("pickAssetsTable")?.querySelectorAll("tr").forEach((tr, index) => {
-    if (index === 0) return;
-    const row = rows[index - 1];
-    const cell = tr.lastElementChild;
-    if (!cell || !row) return;
-    const isSelected =
-      row.side === "Team A"
-        ? state.tradeAssets.teamAPickIds.includes(row.id)
-        : state.tradeAssets.teamBPickIds.includes(row.id);
-    cell.innerHTML = `<button data-trade-pick-side="${row.side === "Team A" ? "A" : "B"}" data-trade-pick-id="${escapeHtml(row.id)}">${isSelected ? "Remove" : "Add"}</button>`;
-  });
-}
-
-export function renderNegotiationTargets(rows) {
-  state.negotiationTargets = rows || [];
-  const tableRows = (rows || []).map((entry) => ({
-    id: entry.id,
-    player: entry.name,
-    pos: entry.pos,
-    ovr: entry.overall,
-    pot: entry.potential ?? "-",
-    askYears: entry.demand?.years || "-",
-    askSalary: fmtMoney(entry.demand?.salary || 0),
-    askCap: fmtMoney(entry.demand?.askCapHit || 0),
-    use: ""
-  }));
-  renderTable("negotiationTable", tableRows);
-  const table = document.getElementById("negotiationTable");
-  table?.querySelectorAll("tr").forEach((tr, index) => {
-    if (index === 0) return;
-    const row = tableRows[index - 1];
-    const cell = tr.lastElementChild;
-    if (!cell || !row) return;
-    cell.innerHTML = `<button data-negotiate-id="${escapeHtml(row.id)}">Select</button>`;
-  });
-  decoratePlayerColumnFromRows("negotiationTable", tableRows, { idKeys: ["id"] });
-  renderContractsPage();
-}
-
-export function renderAnalytics() {
-  const analytics = state.analytics;
-  if (!analytics) {
-    renderTable("analyticsSummaryTable", []);
-    renderTable("analyticsPlaymakersTable", []);
-    return;
-  }
-  renderTable("analyticsSummaryTable", [
-    {
-      year: analytics.year,
-      team: analytics.teamId ? teamCode(analytics.teamId) : "ALL",
-      ppg: analytics.teamAverages?.pointsPerGame || 0,
-      ppgAllowed: analytics.teamAverages?.pointsAllowedPerGame || 0,
-      sackRate: analytics.efficiency?.sackRate || 0,
-      intRate: analytics.efficiency?.interceptionRate || 0,
-      rushYpa: analytics.efficiency?.rushYardsPerAttempt || 0,
-      avgTicket: analytics.ownerEconomy?.avgTicketPrice || 0,
-      fanInterest: analytics.ownerEconomy?.avgFanInterest || 0
-    }
-  ]);
-  const playmakers = (analytics.defensivePlaymakers || []).map((row) => ({
-    playerId: row.playerId,
-    player: row.player,
-    tm: row.tm,
-    pos: row.pos,
-    sacks: row.sacks || 0,
-    int: row.int || 0,
-    tkl: row.tkl || 0
-  }));
-  renderTable("analyticsPlaymakersTable", playmakers);
-  decoratePlayerColumnFromRows("analyticsPlaymakersTable", playmakers, { idKeys: ["playerId"] });
-  renderAnalyticsChart();
+  renderTable("txTable", rows);
 }
 
 export function renderStaff() {

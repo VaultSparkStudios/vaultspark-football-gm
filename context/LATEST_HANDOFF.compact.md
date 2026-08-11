@@ -1,51 +1,54 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 8ece0d6b75d7 -->
-<!-- generated-at: 2026-08-09T19:58:20.933Z -->
+<!-- source-hash: 958f6966411e -->
+<!-- generated-at: 2026-08-11T10:11:05.351Z -->
 
 # LATEST_HANDOFF (compact)
 
-# Session 76 Handoff Summary
+# Session 79 Handoff Summary
 
 ## Session
-- Session 76: Community server branch coverage + Stats accessibility. No new features; closed 2 verified audit gaps.
+- S79 completed: full /arc scope (audit, implement, candidate-side verify).
 
 ## Shipped
-- test/community-server.test.js: expanded 3 -> 7 tests. Now covers stale/unavailable snapshot fallback, oversized/malformed-body rejection, health endpoint, unmatched-route handling.
-- public/stats.html: period toggle buttons (24H/7D/30D) now declare aria-controls="communityAtlas"; atlas region carries matching id.
-- No server/client/gameplay behavior changed. No deploy.
+- Agent Negotiation: one canonical contract authority (no parallel signing path).
+- Predictions settle automatically with separate winner/margin truth.
+- Community Stats ingress: participant-bound ephemeral capabilities, no durable IP storage.
+- Every non-Overview tab is a measured lazy island (one hydration authority).
+- Hall of Fame ceremony: focus-managed accessible dialog.
+- Static boot 610,654/730,000 bytes, 48/58 modules, zero lazy leaks, 16.35% headroom.
+- Verification: Playwright 40/40; 158 responsive captures, 44 hash-bound; Node aggregate core 122/122, runtime 636/636, sim-contract 79/79, sim-realism 1/1. Studio failures (missing ui-islands shard membership, open audit rows) fixed.
 
 ## Current Intent
-- Watch first real consenting cohort; confirm freshness/suppression behavior without manufacturing activity or adoption claims.
-- If launch authority arrives, reconcile via existing structured release contract.
+- Complete final source-bound aggregate rerun, then closeout commit and promotion.
+- Immutable candidate must prove exact SHA/artifact/rollback on stable staging before same SHA pushed to main. No tracked-file edits between staging proof and push.
 
 ## Now Bucket (Top 3)
-- Next session: run a fresh live-code audit, not assume this session's 2-item lens is current.
-- Monitor first consenting cohort for freshness/suppression correctness.
-- Reconcile launch authority through release contract if all three gates clear.
+- Complete final aggregate receipt + closeout commit.
+- Exact-SHA stable-staging proof, then direct-main push of same SHA; monitor CI; verify production provenance.
+- Post-promotion: observe first real opted-in Community Stats cohort without manufacturing activity.
 
 ## Blockers (Top 3)
-- No launch-adjacent work possible until external gates clear (see below).
-- Registry SPARKED / local contract FORGE reconciliation authoritative outside this repo (sibling-owned, non-blocking).
-- Audit lens exhausted after 75 sessions; no queued audit-lens work, no second-order candidates.
+- Final source-bound aggregate rerun still pending (last local verification step).
+- Staging SHA/artifact/rollback proof not yet executed.
+- Launch remains HOLD, launchReady: false — code promotion does not clear launch gates.
 
-## Human-Blocked (with age)
-- Launch HOLD, unchanged since prior sessions:
-  - Delivered + reply-capable football@playfranchisearchitect.com evidence.
-  - SHA-bound founder launch approval.
-  - Authoritative lifecycle reconciliation.
-- Note: no session (including this one) can touch these three external gates.
+## Human-Blocked (independent launch gates)
+- Reply-capable on-domain email evidence (football@playfranchisearchitect.com) — open since ≥S75.
+- SHA-bound founder launch approval — open since ≥S75.
+- Lifecycle reconciliation + current Obelisk/edge evidence — open since ≥S75.
 
-## Standing Decisions
-- Participating anonymous browsers = denominator.
-- Warming/suppressed/stale/unavailable states are product truth, not gaps.
-- New receipt fields require allowlist/bounded-value/privacy/deletion review.
-- Public JSON snapshot is sole external community-data authority.
-- Simulation engine (src/) known bug classes recorded fixed in context/TRUTH_AUDIT.md; not re-swept.
+## Durable Decisions
+- Agent AI may enrich negotiation but never owns parallel signing or caller-authored rival-interest signal.
+- Community Stats: ephemeral capability binding, no durable IP, browsers cannot self-promote evidence tier.
+- App shell keeps ≥15% declared byte headroom; non-Overview code behind one island/hydration authority.
+- Modal visual proof captures visible viewport, not off-viewport crop.
 
 ## Key Files
-- src/community/server.js
-- test/community-server.test.js
-- public/stats.html
-- docs/AUDIT_2026-08-09_SESSION76.{json,md}
+- src/runtime/GameSession.js, src/engine/playerAgentAI.js, public/lib/tabContracts.js
+- public/lib/spreadPredictions.js, gameFlow.js, predictionPanel.js
+- src/community/server.js, public/lib/communityTelemetry.js
+- public/lib/uiIslands.js, tabHydration.js, public/boot-manifest.json
+- public/lib/hallOfFameCeremony.js, scripts/responsive-evidence.mjs
+- docs/AUDIT_2026-08-11_SESSION79.json, docs/visual-qa/LATEST.json
 
-Next session: run a fresh live-code audit before assuming any prior audit lens is current.
+Next session: run final aggregate rerun, then execute staging-proof → direct-main promotion; do not flip launchReady.

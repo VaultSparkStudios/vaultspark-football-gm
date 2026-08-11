@@ -1,6 +1,30 @@
 import { state, api, STATS_BENCHMARK_HINTS } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, renderTable, shouldHideInternalColumn, teamCode, toTitleCaseKey, valueAsNumber } from "./appCore.js";
 
+export function renderAnalytics() {
+  const analytics = state.analytics;
+  if (!analytics) {
+    renderTable("analyticsSummaryTable", []);
+    renderTable("analyticsPlaymakersTable", []);
+    return;
+  }
+  renderTable("analyticsSummaryTable", [{
+    year: analytics.year,
+    team: analytics.teamId ? teamCode(analytics.teamId) : "ALL",
+    ppg: analytics.teamAverages?.pointsPerGame || 0,
+    ppgAllowed: analytics.teamAverages?.pointsAllowedPerGame || 0,
+    sackRate: analytics.efficiency?.sackRate || 0,
+    intRate: analytics.efficiency?.interceptionRate || 0,
+    rushYpa: analytics.efficiency?.rushYardsPerAttempt || 0,
+    avgTicket: analytics.ownerEconomy?.avgTicketPrice || 0,
+    fanInterest: analytics.ownerEconomy?.avgFanInterest || 0
+  }]);
+  const playmakers = (analytics.defensivePlaymakers || []).map((row) => ({ playerId: row.playerId, player: row.player, tm: row.tm, pos: row.pos, sacks: row.sacks || 0, int: row.int || 0, tkl: row.tkl || 0 }));
+  renderTable("analyticsPlaymakersTable", playmakers);
+  decoratePlayerColumnFromRows("analyticsPlaymakersTable", playmakers, { idKeys: ["playerId"] });
+  renderAnalyticsChart();
+}
+
 export function updateStatsControls() {
   const scope = document.getElementById("scopeFilter").value;
   const category = document.getElementById("categoryFilter");

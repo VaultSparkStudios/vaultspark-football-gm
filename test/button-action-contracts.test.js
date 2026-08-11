@@ -46,7 +46,10 @@ test("feedback action failures are surfaced rather than swallowed", () => {
 
 test("agent negotiation actions bind the IDs actually rendered by the modal", () => {
   const source = fs.readFileSync(path.resolve("public/lib/tabContracts.js"), "utf8");
-  assert.match(source, /getElementById\("submitAgentOfferBtn"\)\?\.addEventListener/);
-  assert.match(source, /getElementById\("signalCompetingOfferBtn"\)\?\.addEventListener/);
+  const appSource = fs.readFileSync(path.resolve("public/app.js"), "utf8");
+  assert.match(appSource, /getElementById\("submitAgentOfferBtn"\)\?\.addEventListener/);
+  assert.match(source, /api\("\/api\/contracts\/negotiate"/);
+  assert.doesNotMatch(source, /signalCompetingOfferBtn/);
+  assert.doesNotMatch(source, /\/api\/agent\//);
   assert.doesNotMatch(source, /getElementById\("agent(?:Submit|Competing)Btn"\)/);
 });

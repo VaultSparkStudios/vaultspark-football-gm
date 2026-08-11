@@ -9,7 +9,6 @@ import { RNGStreams } from "../../utils/rngStreams.js";
 import { initGmLegacy, getGmLegacySummary, buildGmReputationProfile, resolveChampionTeamId } from "../../engine/gmLegacyScore.js";
 import { initRivalries, getRivalryContext, getTeamRivalries } from "../../engine/rivalryDNA.js";
 import { runLeagueCombine, getCombineSummary } from "../../engine/draftCombine.js";
-import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "../../engine/playerAgentAI.js";
 import {
   startChallenge, advanceChallengeSeason, checkChallengeComplete,
   formatLeaderboardEntry, parseLeaderboard, serializeLeaderboard, rankEntry
@@ -1324,38 +1323,6 @@ export function createLocalApiRuntime({
         const meta = _rwGetMeta(storage).filter((e) => e.id !== sid);
         _rwSetMeta(storage, meta);
         return finish(jsonResponse(200, { ok: true, snapshots: meta }));
-      }
-
-      // ── Agent negotiation routes ────────────────────────────────────────────
-      if (method === "GET" && pathname === "/api/agent/roster") {
-        const s = ensureSession();
-        const players = s.league?.players || [];
-        const eligible = players
-          .filter((p) => p.agentState && p.agentState.negotiationStatus === "active")
-          .map((p) => agentSummary(p))
-          .filter(Boolean);
-        return finish(jsonResponse(200, { ok: true, agents: eligible }));
-      }
-
-      if (method === "POST" && pathname === "/api/agent/offer") {
-        const s = ensureSession();
-        const { playerId, salary, years } = body || {};
-        if (!playerId) return finish(jsonResponse(400, { ok: false, error: "playerId required." }));
-        const player = (s.league?.players || []).find((p) => p.id === playerId);
-        if (!player) return finish(jsonResponse(404, { ok: false, error: "Player not found." }));
-        if (!player.agentState) return finish(jsonResponse(400, { ok: false, error: "Player has no active agent." }));
-        const result = evaluateTeamOffer(player, Number(salary) || 0, Number(years) || 1);
-        return finish(jsonResponse(200, { ok: true, result, agentState: player.agentState || null }));
-      }
-
-      if (method === "POST" && pathname === "/api/agent/competing-offer") {
-        const s = ensureSession();
-        const { playerId, competingTeamId } = body || {};
-        if (!playerId) return finish(jsonResponse(400, { ok: false, error: "playerId required." }));
-        const player = (s.league?.players || []).find((p) => p.id === playerId);
-        if (!player) return finish(jsonResponse(404, { ok: false, error: "Player not found." }));
-        const result = applyCompetingOffer(player, competingTeamId || "Unknown");
-        return finish(jsonResponse(200, { ok: true, result, agentState: player.agentState || null }));
       }
 
       // ── GM Legacy routes ────────────────────────────────────────────────────

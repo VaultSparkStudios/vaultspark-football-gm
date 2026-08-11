@@ -6,6 +6,7 @@
  */
 
 import { orientWinnerFirst } from "./scoreline.js";
+import { getPredictionStorySnapshot } from "./spreadPredictions.js";
 
 function esc(str) {
   return String(str ?? "—")
@@ -52,6 +53,31 @@ function leaderName(rows = [], category) {
   return stat == null ? `${name}${team}` : `${name}${team} (${stat})`;
 }
 
+function predictionStoryCopy(snapshot) {
+  const stats = snapshot?.stats || {};
+  if (!stats.totalCount) {
+    return { summary: "No prediction receipts yet", recent: "No recent receipts" };
+  }
+  const mae = snapshot.meanAbsoluteMarginError;
+  const summary =
+    `Winner accuracy ${snapshot.winnerAccuracyPct}% (${stats.correctCount}/${stats.totalCount})` +
+    ` · margin MAE ${mae == null ? "—" : mae} points`;
+  const recent = (snapshot.recent || []).map((receipt) => {
+    const winner = receipt.winnerCorrect ? "winner hit" : receipt.isTie ? "tie" : "winner miss";
+    const margin = receipt.marginBand === "exact"
+      ? "exact margin"
+      : receipt.marginBand === "within3"
+        ? `within 3 (${receipt.marginError} off)`
+        : receipt.marginBand === "within7"
+          ? `within 7 (${receipt.marginError} off)`
+          : receipt.marginBand === "miss"
+            ? `margin miss (${receipt.marginError} off)`
+            : "margin ungraded";
+    return `Y${receipt.year} W${receipt.week} ${receipt.gameId}: ${winner}, ${margin}`;
+  }).join(" · ");
+  return { summary, recent: recent || "No recent receipts" };
+}
+
 export function buildLeagueStoryFromDashboard(dashboard = {}) {
   const team = dashboard.controlledTeam || {};
   const champion = latest(dashboard.champions || []);
@@ -60,6 +86,7 @@ export function buildLeagueStoryFromDashboard(dashboard = {}) {
   const capsule = dashboard.timeCapsule?.graded || dashboard.timeCapsuleGrade || null;
   const gmLegacy = dashboard.gmLegacy || {};
   const cap = dashboard.cap || {};
+  const prediction = predictionStoryCopy(getPredictionStorySnapshot(dashboard.franchiseId, 3));
 
   return buildLeagueStory({
     year: dashboard.currentYear,
@@ -87,7 +114,9 @@ export function buildLeagueStoryFromDashboard(dashboard = {}) {
     gmLegacy: gmLegacy.score != null ? `${gmLegacy.score} (${gmLegacy.grade || "grade pending"})` : "—",
     timeCapsule: capsule
       ? `${capsule.hits || 0}-${capsule.misses || 0}${capsule.pushes ? `, ${capsule.pushes} push` : ""}: ${capsule.reporterVerdict || "receipts filed"}`
-      : "No receipt ledger yet"
+      : "No receipt ledger yet",
+    predictionSummary: prediction.summary,
+    predictionRecent: prediction.recent
   });
 }
 
@@ -112,7 +141,9 @@ export function buildLeagueStory(state) {
     leagueLeaders = {},
     capSpace,
     gmLegacy,
-    timeCapsule
+    timeCapsule,
+    predictionSummary,
+    predictionRecent
   } = state;
 
   return {
@@ -135,7 +166,9 @@ export function buildLeagueStory(state) {
     sacksLeader: leagueLeaders.sacks || "—",
     capSpace: fmtSalary(capSpace),
     gmLegacy: gmLegacy || "—",
-    timeCapsule: timeCapsule || "—"
+    timeCapsule: timeCapsule || "—",
+    predictionSummary: predictionSummary || "No prediction receipts yet",
+    predictionRecent: predictionRecent || "No recent receipts"
   };
 }
 
@@ -231,6 +264,14 @@ export function renderStoryHTML(story) {
     <div class="cell">
       <div class="cell-label">Time Capsule Receipts</div>
       <div class="cell-value">${esc(story.timeCapsule)}</div>
+    </div>
+    <div class="cell">
+      <div class="cell-label">Prediction Ledger</div>
+      <div class="cell-value">${esc(story.predictionSummary)}</div>
+    </div>
+    <div class="cell">
+      <div class="cell-label">Recent Prediction Receipts</div>
+      <div class="cell-value">${esc(story.predictionRecent)}</div>
     </div>
   </div>
   <div class="footer">

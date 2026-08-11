@@ -29,6 +29,23 @@ Source: `docs/AUDIT_2026-08-09_SESSION78.md`.
 
 **Verification:** default `npm test` 998/998 direct exit 0 (up from 922/922); no deploy required (all changes static/client-side). Three phantom candidates correctly rejected on evidence before implementation: coaching-tree lineage (already shipped S53), `pressRoomPanel.js` coverage (already tested), and a generalized `|| 0`/`|| 1` sweep (spot-checked as legitimate display fallbacks, not the S67/S71 bug class).
 
+## Session 79 — Full Arc: game-loop authority, evidence integrity, browser headroom (2026-08-11)
+
+Source: `docs/AUDIT_2026-08-11_SESSION79.md`.
+
+| Item | Status |
+|------|--------|
+| canonical-agent-negotiation |  Done |
+| prediction-loop-rollover-and-margin-truth |' Done |
+| community-participation-capability |  Done |
+| non-overview-ui-islands |' Done |
+| exact-sha-staging-parity |' Candidate-side release authority complete; exact-SHA proof follows the immutable closeout commit |
+| hall-of-fame-ceremony-accessibility |  Done |
+
+**Verification:** game/runtime/simulation shards green through 838 tests before the Studio metadata guard; Playwright 40/40; responsive evidence 158/158 with 44 reviewed hash-bound captures; Pages build/smoke green; boot 610,654/730,000 bytes, 48/58 modules, zero lazy leaks. The final aggregate receipt is rerun after closeout truth is reconciled.
+
+**Launch posture:** preserve `launchReady: false`; email delivery/reply identity, founder approval, lifecycle reconciliation, and current Obelisk/edge evidence remain independent launch gates.
+
 ## Session 77 — CommunityStore pool injection + direct coverage (2026-08-09)
 
 Source: `docs/AUDIT_2026-08-09_SESSION77.md`.

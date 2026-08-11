@@ -1,0 +1,475 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-11",
+  "session": 79,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 50.1,
+    "source": "Fresh S79 live-code audit with independent product/game, engineering, and release-gate lanes; every surviving premise was re-read against exact current files before scoring.",
+    "qualityBar": "L2 by default; deterministic/local-first game behavior, canonical mutation authority, browser-visible feedback, focused tests, rendered-pixel verification for UI changes, exact-SHA staging before direct-main publication."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product/game rubric with game-medium overlay: beta-readiness, vivid General Manager decision pressure, browser-visible feedback, static-host-safe/local-first features, plus public-app release and Canon lens",
+    "staging": "stable Cloudflare Pages staging must prove the exact candidate before direct-to-main publication",
+    "source": "arc-profile registry authority plus live startup brief, S79 code sample (29,981/30,000 tokens across 12 files), exact grep/read verification, doctor, boot-budget checker, and forked app-release gate"
+  },
+  "gameLoopReview": {
+    "loopTightness": 8,
+    "progression": 9,
+    "sessionEngagement": 7,
+    "retention": 8,
+    "soulFidelity": 9,
+    "overall": 8.2,
+    "evidence": "Code-contract review only: no recent docs/PLAYTESTS evidence exists, so these scores do not claim measured fun, retention, or player sentiment."
+  },
+  "releaseGate": {
+    "verdict": "NO-GO / BLOCK LAUNCH",
+    "staging": "Live staging healthy but stale: revision dbec766… differs from current repository and live production; verify-staging-receipt is BLOCKED at 12/14.",
+    "production": "Live production reports revision 4435c6b… and launchReady false; production currently outruns stable staging.",
+    "cost": "GREEN — cost-neutral; release-gate-check and cost-gate allow.",
+    "sitemapFooterLegal": "GREEN repo-side — sitemap 10/10 and footer/legal/contact destination completeness 10/10.",
+    "holds": [
+      "reply-capable football@playfranchisearchitect.com delivery evidence absent",
+      "SHA-bound founder launch approval absent",
+      "registry SPARKED versus local FORGE lifecycle authority unresolved",
+      "anonymous/accountless Obelisk posture not machine-verifiable",
+      "current release-range rendered-pixel receipt absent",
+      "current staging Core Web Vitals measurement absent"
+    ],
+    "skips": [
+      "last-five CI history not verified live",
+      "dedicated rendered branding link-back check not completed",
+      "current staging LCP/INP/CLS not measured"
+    ]
+  },
+  "axisCoverage": {
+    "featuresDepth": {
+      "evaluated": [
+        "contract-year Agent Negotiation feature versus canonical contract mutation authority",
+        "additional Co-GM/assistant surface",
+        "GM firing/game-over"
+      ],
+      "selected": ["canonical-agent-negotiation"],
+      "rejected": [
+        "another Co-GM export duplicates the bounded S74 Co-GM packet",
+        "GM firing/game-over is explicitly founder-direction gated"
+      ]
+    },
+    "gamificationEngagementImmersion": {
+      "evaluated": [
+        "S78 prediction rollover and feedback closure",
+        "point-margin grading truth",
+        "prediction receipts in the promised League Story export",
+        "another prediction mini-game"
+      ],
+      "selected": ["prediction-loop-rollover-and-margin-truth"],
+      "rejected": ["a second prediction mini-game would duplicate S78; the selected item completes the existing loop"]
+    },
+    "uiUx": {
+      "evaluated": [
+        "Hall of Fame Ceremony modal semantics, focus, Escape, clipboard/download failure behavior",
+        "theme customizer interaction coverage",
+        "recent S78 Dynasty Timeline and coaching-market accessibility"
+      ],
+      "selected": ["hall-of-fame-ceremony-accessibility"],
+      "rejected": [
+        "S78 Dynasty Timeline and coaching-market gaps are already fixed and focused-test covered",
+        "theme customizer has current dark/light public compliance and no verified behavioral defect"
+      ]
+    },
+    "aiIntegration": {
+      "evaluated": [
+        "deterministic player-agent personality/leverage attached to canonical negotiation",
+        "opaque model-driven contract advice",
+        "another Co-GM prompt/export"
+      ],
+      "selected": ["canonical-agent-negotiation"],
+      "rejected": [
+        "no paid or opaque model call is justified for a deterministic local simulation",
+        "bounded Co-GM context already exists"
+      ]
+    },
+    "securityPrivacy": {
+      "evaluated": [
+        "Community Stats missing-Origin mutation acceptance",
+        "caller-controlled participant rotation and evidence-tier escalation",
+        "existing consent, withdrawal, dedupe, retention, and k-anonymity coverage"
+      ],
+      "selected": ["community-participation-capability"],
+      "rejected": ["the consent/retention/dedupe implementation itself is not missing; the surviving gap is ingress authenticity"]
+    },
+    "speedOrganizationEfficiency": {
+      "evaluated": [
+        "static boot headroom at 723,294/730,000 bytes and 57/58 modules",
+        "non-Overview tabs still statically imported despite the existing island authority",
+        "6,567-line GameSession decomposition",
+        "500k-row Community Stats snapshot rebuild"
+      ],
+      "selected": ["non-overview-ui-islands"],
+      "rejected": [
+        "GameSession decomposition is real debt but lacks a bounded player-facing defect and carries high central-authority regression risk in this beta-readiness arc",
+        "Community Stats rollups are runway work at an honest zero cohort; measure before replacing the aggregation model"
+      ]
+    },
+    "releaseTruth": {
+      "evaluated": [
+        "live staging/production/current-repository revision parity",
+        "release-evidence freshness",
+        "current release-range rendered pixels",
+        "launch-only email/founder/lifecycle gates"
+      ],
+      "selected": ["exact-sha-staging-parity"],
+      "rejected": ["email delivery, founder approval, and lifecycle authority remain explicit independent holds rather than locally fabricated implementation items"]
+    },
+    "tokenCost": {
+      "evaluated": [
+        "code sampling concentration in app shell and GameSession",
+        "static island boundaries that reduce browser and agent inspection surface",
+        "additional model/API integration"
+      ],
+      "selected": ["non-overview-ui-islands"],
+      "rejected": ["no paid-model feature is justified; Max Plan notional token cost is never an alarm"]
+    },
+    "revenueBusiness": {
+      "evaluated": [
+        "cost-neutral free tier",
+        "public launch hold",
+        "new monetization"
+      ],
+      "selected": [],
+      "rejected": ["no founder direction authorizes a revenue-model change; launch truth takes precedence"]
+    }
+  },
+  "recommendedMoves": [
+    "Root-fix the two player-visible broken loops first: make Agent Negotiation one reachable canonical contract path, then resolve/grade predictions automatically with truthful margin receipts.",
+    "Harden Community Stats ingress before any cohort warms: browser receipts must not self-promote evidence tier or mint k=5 by rotating caller-chosen IDs.",
+    "Recover deploy discipline and headroom together: island non-Overview code, run rendered-pixel verification, prove the exact SHA on stable staging, then publish directly to main without claiming launch readiness."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "CANON-054/055 stats-surface rebuild",
+      "reason": "False premise. Homepage Stats links, the real Stats Atlas, public agents.json and llms.txt machine twins, Community Store/server, and focused S75-S77 coverage already exist. The conformance output is checker noise, not missing product behavior."
+    },
+    {
+      "candidate": "CANON-007 staging implementation",
+      "reason": "False premise. A stable staging origin and rollback tooling exist; the real defect is current exact-revision parity, selected separately."
+    },
+    {
+      "candidate": "CANON-045 local authentication build",
+      "reason": "Unproven and potentially harmful. The public game exposes no account flow; generated Obelisk files are orphan scaffolds. Make anonymous/accountless posture machine-verifiable rather than inventing project-local auth."
+    },
+    {
+      "candidate": "recent S75-S78 module coverage sweep",
+      "reason": "False premise. Community handler/store failures, audio feedback, marquee labels, prediction logic/markup, Dynasty Timeline, and coaching-market accessibility now have focused tests."
+    },
+    {
+      "candidate": "GM firing/game-over loop",
+      "reason": "Explicitly prohibited without founder creative direction in current Decisions; audit cannot reverse that canon silently."
+    },
+    {
+      "candidate": "another Co-GM assistant/export",
+      "reason": "The S74 bounded allowlisted Co-GM packet already supplies agent-ready context without hidden save access or automatic transmission."
+    },
+    {
+      "candidate": "generic GameSession rewrite",
+      "reason": "The 6,567-line authority is real debt, but a broad rewrite is not a bounded beta-readiness item. Preserve one mutation authority and extract only when a concrete subsystem boundary earns characterization work."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Feature depth / UI/UX / deterministic intelligence",
+      "effortHours": 6,
+      "impact": 5,
+      "innovation": 7,
+      "priority": 11.7,
+      "slug": "canonical-agent-negotiation",
+      "title": "Make Agent Negotiation reachable and bind every accepted deal to the canonical contract authority",
+      "status": "implemented",
+      "executionEvidence": "One reachable accessible modal now submits only through /api/contracts/negotiate; deterministic persona, leverage, rival-interest and bounded ledger data are canonical and save-safe; obsolete /api/agent routes were removed; focused and aggregate authority tests pass.",
+      "premise": "The Agent Negotiation subsystem is simultaneously dead and unsafe to wire as-is. attachContractYearAgents exists but has no importer; the browser listens for data-agent-player-id buttons that no renderer emits; renderAgentModal returns at a nonexistent #agentModalCard; the API summary and UI field names disagree; and /api/agent/offer can report agent status signed without changing the player contract. The real authority is GameSession.negotiateAndSign through /api/contracts/negotiate.",
+      "evidence": [
+        "src/engine/playerAgentAI.js:121-132,166-200",
+        "public/app.js:1042-1064,1812-1816",
+        "public/lib/tabContracts.js:585-623",
+        "public/game.html:1499-1527",
+        "src/runtime/GameSession.js:4343-4508",
+        "src/app/api/localApiRuntime.js:1330-1358 and src/server.js:1642-1684"
+      ],
+      "constraint": "One canonical mutation path only. Personality and leverage must be deterministic/local, source-derived, save-safe, and disclosed. No user-authored fake rival-interest signal and no endpoint may say signed unless the contract changed.",
+      "verification": [
+        "eligible expiring player has a reachable keyboard-accessible agent surface",
+        "counter and acceptance flow through /api/contracts/negotiate and acceptance changes contract years/salary",
+        "bounded persona/leverage/history survives save round-trip",
+        "server and browser adapters preserve exact response parity",
+        "no alternate agent endpoint can report signed without canonical contract mutation"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Retire the misleading parallel /api/agent action path; expose deterministic personality/flavor on the selected-player contract preview and submit through /api/contracts/negotiate only; render a reachable Meet Agent affordance for eligible expiring players."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "L1 plus persist bounded opening/counter/accepted/walked history inside the canonical negotiation ledger; render one accessible modal with ask, guaranteed money, leverage reason, counter, and deadline; actual source-derived rival interest—not a user-authored signal button—drives leverage."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "L2 plus agent memory across seasons, deterministic rival-offer escalation, negotiation deadlines, and Decision Archive chapters, with every factor disclosed and no opaque model call."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Gamification / feedback loop / observability truth",
+      "effortHours": 4,
+      "impact": 5,
+      "innovation": 6,
+      "priority": 11.6,
+      "slug": "prediction-loop-rollover-and-margin-truth",
+      "title": "Resolve predictions during ordinary week advance, grade the promised margin, and export the receipts the UI claims exist",
+      "status": "implemented",
+      "executionEvidence": "Dashboard rollover auto-settles the prior week idempotently, grades winner and exact/within-three/within-seven/miss margin truth, tracks mean absolute error, bounds receipts to 48, and exports the same receipt authority.",
+      "premise": "Normal week advance clears the prior schedule cache and moves scheduleWeek before the prediction panel can see the played game, so streaks often update only if the player manually browses backward. scorePrediction stores/displays margin but defines correctness only by winner. game.html also promises League Story prediction receipts while leagueStoryExport contains no prediction field.",
+      "evidence": [
+        "public/lib/gameFlow.js:75-113",
+        "public/lib/predictionPanel.js:104-118",
+        "public/lib/tabOverview.js:639-680",
+        "public/lib/spreadPredictions.js:51-65,86-133",
+        "public/game.html:1333-1340",
+        "public/lib/leagueStoryExport.js:52-115,148-239"
+      ],
+      "constraint": "Local-only and explicitly non-causal. Resolution must be idempotent, franchise/year scoped, reload-safe, and prove it never mutates league, schedule, standings, or simulation inputs.",
+      "verification": [
+        "submit Week N then advance normally to N+1 and receive one automatic receipt without browsing backward",
+        "reload between submission and advance still resolves correctly",
+        "duplicate renders/advances never double-count",
+        "exact/within-three/within-seven/miss and tie fixtures grade winner and margin separately",
+        "League Story output contains truthful aggregate/recent prediction receipts and no false promise remains",
+        "deep-frozen engine/schedule inputs remain byte-identical"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Detect year/week transitions, retain or fetch the just-completed week, resolve it idempotently before cache eviction, and announce a bounded automatic receipt."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "L1 plus grade winner and margin as exact/within-three/within-seven/miss, track winner accuracy and mean absolute margin error separately, persist a bounded recent receipt journal, and include its truthful summary in the League Story export promised by the UI."
+        },
+        "L3": {
+          "effortHours": 7,
+          "recipe": "L2 plus a season prediction journal in History/Epilogue with best week, worst miss, and a local share card, still explicitly non-causal and franchise-scoped."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Security / privacy / public-stats integrity",
+      "effortHours": 12,
+      "impact": 5,
+      "innovation": 6,
+      "priority": 7.9,
+      "slug": "community-participation-capability",
+      "title": "Prevent rotated caller IDs and evidence-tier spoofing from fabricating a live Community Stats cohort",
+      "status": "implemented",
+      "executionEvidence": "Public mutations require an allowed Origin and a short-lived participant-bound HMAC capability; trusted-address issuance limits prevent one caller minting k=5; evidence is forced to browser-receipt; client retry, withdrawal and adversarial tests pass.",
+      "premise": "Community mutation routes accept requests with no Origin, the public event normalizer lets callers self-label server-runtime evidence, rate limits bind to a caller-chosen participant ID, and aggregation counts each resulting hash toward the k=5 live threshold. Five rotated IDs can therefore manufacture the appearance of a real cohort despite otherwise sound consent, retention, dedupe, and suppression logic.",
+      "evidence": [
+        "src/community/server.js:61-79,97-120",
+        "public/lib/communityEventContract.js:80-109",
+        "src/community/communityStore.js:72-78",
+        "src/community/aggregateCommunitySnapshot.js:50-58,81-88",
+        "test/community-server.test.js:19-47,99-112",
+        "test/community-store.test.js:88-104"
+      ],
+      "constraint": "Keep consent explicit and withdrawal functional. Never collect durable IP addresses. Trust forwarded client IP only from the declared loopback proxy. Capability issuance must be bounded and fail closed without adding a paid dependency or requiring an account.",
+      "verification": [
+        "public ingress always normalizes to browser-receipt and cannot self-promote evidence tier",
+        "missing-Origin browser mutations are rejected or explicitly classified",
+        "five rotated caller-chosen participant IDs from one issuance authority cannot cross the trusted cohort threshold",
+        "short-lived capability binds participant ID, expiry, nonce/use ceiling, ingest, and withdrawal",
+        "real browser consent/withdrawal, CORS, batch, dedupe, cache, and k=5 semantics continue to pass"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Force public ingress to browser-receipt, reject or explicitly classify missing-Origin mutations, trust X-Forwarded-For only from loopback proxy, and add rotating-ID plus evidence-escalation adversarial tests."
+        },
+        "L2": {
+          "effortHours": 12,
+          "recipe": "L1 plus issue a short-lived server capability bound to participant ID using an ephemeral process signing key, rate-limit issuance by trusted client address without persisting IP, and enforce nonce/use ceilings on ingest and withdrawal so caller ID rotation cannot mint a trusted cohort."
+        },
+        "L3": {
+          "effortHours": 30,
+          "recipe": "L2 plus separate guest/browser and Obelisk-verified cohorts with trust-banded public display after the accountless product posture is formally reconciled."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Speed / organization / browser and agent efficiency",
+      "effortHours": 10,
+      "impact": 5,
+      "innovation": 5,
+      "priority": 7.0,
+      "slug": "non-overview-ui-islands",
+      "title": "Recover durable first-decision headroom by islanding every non-Overview tab",
+      "status": "implemented",
+      "executionEvidence": "Roster, Contracts, Draft and Stats are true lazy islands with intent/focus/idle preload, hydration retry and per-island budgets; the static shell is 610,654/730,000 bytes with 48/58 modules and zero lazy leaks (16.35% byte headroom).",
+      "premise": "The live boot checker reports 723,294/730,000 bytes and 57/58 modules: 99.1% of the byte ceiling and one module slot. History/Settings/exports already prove a centralized island authority, but Roster, Contracts, Draft, and Stats remain statically imported from app.js even though tab hydration only delays data, not code. Their raw module files total about 79.8 KB before dependencies.",
+      "evidence": [
+        "public/boot-manifest.json:1-14",
+        "scripts/check-browser-boot-budget.mjs live receipt: 723294/730000 bytes, 57/58 modules, 0 lazy leaks",
+        "public/app.js:126-194",
+        "public/lib/uiIslands.js:1-76",
+        "public/lib/tabHydration.js:1-131",
+        "test/browser-boot-budget.test.js:7-24"
+      ],
+      "constraint": "Preserve one hydration owner, action behavior, all module reachability, static hosting, keyboard navigation, and zero lazy leaks. Do not merely ratchet the budget again.",
+      "verification": [
+        "boot checker reaches at most 650,000 bytes with at least 15% declared headroom",
+        "Roster, Contracts, Draft, and Stats load on tab intent and remain reachable",
+        "island budgets and no-lazy-leak checks fail closed",
+        "focused hydration/action tests and the full Playwright journeys pass",
+        "desktop/mobile dark/light rendered pixels show no loading or interaction regression"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 4,
+          "recipe": "Move Contracts and Draft behind two new uiIslands entries, route exports/actions through invokeUiIsland, and add literal-import plus interaction parity tests."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "L1 plus island Roster and Stats so every non-Overview tab loads on intent, enforce per-island byte budgets, and preload only on pointer/focus/idle hints without paying first-decision parse cost."
+        },
+        "L3": {
+          "effortHours": 24,
+          "recipe": "L2 plus thin app.js into a declarative action/tab registry with bounded coordinators and a measured before/after parse/boot receipt."
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Release architecture / observability truth",
+      "effortHours": 2.5,
+      "impact": 5,
+      "innovation": 3,
+      "priority": 6.9,
+      "slug": "exact-sha-staging-parity",
+      "title": "Restore exact-revision staging-before-production and refresh release truth from live origins",
+      "status": "implemented",
+      "executionEvidence": "Candidate-side release authority is complete: rebuilt Pages artifact, current release-range 44-capture hash-bound visual receipt, exact-revision deploy/verify scripts, rollback contract, and launchReady false. Exact SHA staging and production proof execute only after the immutable closeout commit.",
+      "premise": "The forked release gate found live staging at dbec766… while production reports 4435c6b… and the current repository is 354a4f6…. verify-staging-receipt is BLOCKED 12/14 on source revision and artifact fingerprint, and stored release evidence is expired at the older c71a260… revision. Production has outrun stable staging, contradicting the declared deployment discipline.",
+      "evidence": [
+        "live /_health receipts gathered 2026-08-11",
+        "scripts/verify-staging-receipt.mjs: BLOCKED 12/14",
+        "scripts/check-release-evidence-freshness.mjs: expired for current revision",
+        "context/PROJECT_STATUS.json releaseEvidence",
+        "docs/ROLLBACK.md"
+      ],
+      "constraint": "Deploy and verify the final candidate on stable staging first, bind rendered-pixel and artifact receipts to that SHA, then publish directly to main without equating deployment success with launch readiness. Never force-push or fabricate external launch gates.",
+      "verification": [
+        "stable staging health revision equals the final candidate commit",
+        "staging artifact fingerprint matches the built candidate and rollback authority is fresh",
+        "release-range rendered-pixel receipt covers every touched UI state, theme, desktop, and mobile",
+        "after direct-main publication production provenance matches the same SHA/fingerprint",
+        "launchReady remains false until email, founder approval, lifecycle, and other independent gates clear"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Deploy the final candidate to stable staging, run exact-SHA/fingerprint/route/rollback verification, and stop before main if any receipt is red."
+        },
+        "L2": {
+          "effortHours": 2.5,
+          "recipe": "L1 plus bind current release-range rendered-pixel evidence and refreshed release truth to the candidate; only after staging is green publish direct to main and prove production provenance without changing launchReady."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus harden CI so production publication cannot start unless an unexpired stable-staging receipt names the exact candidate SHA and artifact fingerprint."
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "UI/UX accessibility / failure observability",
+      "effortHours": 2,
+      "impact": 4,
+      "innovation": 2,
+      "priority": 4.0,
+      "slug": "hall-of-fame-ceremony-accessibility",
+      "title": "Make the Hall of Fame celebration a real accessible modal with observable share failures",
+      "status": "implemented",
+      "executionEvidence": "The ceremony uses the shared modal manager with dialog semantics, focus entry/restoration, Escape/backdrop close, observable clipboard/download outcomes and sanitized filenames; rendered review also raised both new modal close targets to 44px.",
+      "premise": "Every neighboring high-value overlay declares dialog semantics, but hofCeremonyOverlay is a plain hidden div. openHallOfFameCeremony toggles hidden and assigns onclick handlers without the shared modal manager, focus restoration, Escape handling, or a clipboard rejection path. The feature has no direct ceremony/modal test despite being a player-facing reward surface.",
+      "evidence": [
+        "public/game.html:1565-1689 neighboring modal semantics",
+        "public/game.html:1719-1735 Hall of Fame overlay",
+        "public/lib/hallOfFameCeremony.js:69-90",
+        "public/lib/modalManager.js",
+        "test/season-value-authority.test.js covers Hall data but not ceremony interaction"
+      ],
+      "constraint": "Reuse the shared modal authority, keep canvas/share output source-derived and escaped, and make clipboard/download failure visible without blocking Hall rendering.",
+      "verification": [
+        "overlay has role dialog, aria-modal, stable label, Escape close, focus entry, and focus restoration",
+        "close button and backdrop use the same close path",
+        "clipboard success and rejection produce explicit observable feedback",
+        "download guards missing canvas/context and sanitizes filename",
+        "focused fake-DOM interaction tests plus rendered desktop/mobile dark/light ceremony captures pass"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Add dialog semantics, use modalManager for focus/Escape/backdrop, and add one focused interaction test."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "L1 plus observable clipboard/download success and failure behavior, complete fake-DOM interaction coverage, and rendered-pixel receipts in both themes at desktop and mobile."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "L2 plus a reduced-motion-aware induction sequence and accessible live transcript, without changing Hall scoring or inventing achievements."
+        }
+      }
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "modal-viewport-evidence-and-touch-target-truth",
+      "status": "shipped",
+      "implementationEvidence": [
+        "Fixed fixed-modal evidence to capture the visible viewport instead of transparent off-viewport element pixels.",
+        "The corrected gate exposed and fixed 34px close controls; both are now at least 44px."
+      ]
+    },
+    {
+      "slug": "ui-island-shard-membership",
+      "status": "shipped",
+      "implementationEvidence": [
+        "Registered test/ui-islands.test.js in the canonical Studio shard after the fail-closed shard-coverage guard rejected the omission."
+      ]
+    },
+    {
+      "slug": "innovation-status-authority-parity",
+      "status": "shipped",
+      "implementationEvidence": [
+        "Aligned the innovation-pack sidecar parser with the genius-cache authority so implemented audit rows are closed consistently."
+      ]
+    }
+  ]
+}

@@ -80,8 +80,6 @@ export const AUTHORITY_EXEMPT_COMMANDS = {
   "/api/draft/user-pick": "acts for whichever team is on the clock; carries no team field to spoof",
   "/api/draft/cpu": "advances CPU picks; league clock",
   "/api/combine/run": "runs the combine for the entire prospect class; every franchise reads the same generated results",
-  "/api/agent/offer": "resolves against the controlled team implicitly; carries no team field",
-  "/api/agent/competing-offer": "simulates rival interest in a player; carries no team field",
   "/api/architect-thesis": "controlled-team declaration; carries no team field",
   "/api/trade-offers": "responds to offers addressed to the controlled team; TradeService owns endorsement",
   "/api/brand-identity": "controlled-team branding; carries no team field",

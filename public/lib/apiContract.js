@@ -1,5 +1,4 @@
 const GET_PATHS = [
-  "/api/agent/roster",
   "/api/analytics",
   "/api/architect-thesis",
   "/api/backups",
@@ -64,8 +63,6 @@ const GET_PATHS = [
 const POST_PATHS = [
   "/api/advance-week",
   "/api/architect-thesis",
-  "/api/agent/competing-offer",
-  "/api/agent/offer",
   "/api/backups/delete",
   "/api/backups/load",
   "/api/brand-identity",
@@ -128,9 +125,6 @@ const ADAPTER_STORAGE_PREFIXES = ["/api/backups", "/api/commissioner", "/api/rew
 const RUNTIME_PREFIXES = ["/api/setup", "/api/system"];
 
 const SUCCESS_SHAPES = Object.freeze({
-  "GET /api/agent/roster": { required: ["ok", "agents"] },
-  "POST /api/agent/offer": { required: ["ok", "result", "agentState"] },
-  "POST /api/agent/competing-offer": { required: ["ok", "result", "agentState"] },
   "GET /api/gm-legacy": { required: ["ok", "legacy", "raw"] },
   "GET /api/architect-thesis": { required: ["ok", "thesis"] },
   "POST /api/architect-thesis": { required: ["ok", "thesis", "state"] },

@@ -14,7 +14,10 @@ const surfaceLabels = new Map([
   ["guide-modal", "Game Guide populated modal"],
   ["rival-coaching", "Rival coaching ownership boundary"],
   ["decision-archive", "Permanent Decision Archive sparse state"],
-  ["co-gm-brief", "Privacy-bounded Co-GM Brief"]
+  ["co-gm-brief", "Privacy-bounded Co-GM Brief"],
+  ["prediction-receipt", "Prediction winner and margin receipt"],
+  ["agent-negotiation", "Canonical contract-year agent negotiation"],
+  ["hof-ceremony", "Hall of Fame induction ceremony"]
 ]);
 
 function sha256(buffer) {
@@ -47,7 +50,7 @@ for (const viewport of ["desktop", "mobile"]) {
   for (const [surface, page] of surfaceLabels) {
     for (const theme of ["dark", "light"]) {
       const sourceName = `${viewport}-${surface}-${theme}.png`;
-      const targetName = `s74-${sourceName}`;
+      const targetName = `s79-${sourceName}`;
       const buffer = await fs.readFile(path.join(evidenceDir, sourceName));
       await fs.writeFile(path.join(receiptDir, targetName), buffer);
       captures.push({
@@ -72,16 +75,15 @@ const receipt = {
     renderedPixelsReviewed: true,
     reviewer: "codex-gpt-5",
     findings: [
-      "The deterministic harness produced 140 captures across mobile, tablet, desktop, dark, light, every primary tab, and all touched S74 states with zero overflow, contrast, touch-target, selector, or runtime failures.",
-      "The Co-GM Brief and permanent Decision Archive are readable at 1440px desktop and 390px mobile widths in both themes.",
-      "The Co-GM export discloses its bounded allowlist and excludes save payloads, credentials, personal identifiers, full roster ratings, and hidden simulation state.",
-      "Decision Archive empty and sparse states remain explicit; editorial rank never upgrades descriptive evidence into causal proof.",
-      "Sim-Watch visual authority now advances through byes with a bounded, receipted real-game resolver instead of a one-week luck dependency."
+      "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures.",
+      "The canonical Agent Negotiation modal exposes persona, source-derived leverage, ask, guaranteed money, deadline, and its bounded receipt ledger without a parallel mutation control.",
+      "Prediction receipts distinguish winner accuracy from margin error and remain readable at desktop and mobile widths.",
+      "The Hall of Fame ceremony remains legible in both themes, with one dialog boundary and explicit copy/download status."
     ],
     fixesApplied: [
-      "Added component-specific captures for the Decision Archive and Co-GM Brief across both themes and target widths.",
-      "Made element evidence hide only unrelated overlapping fixed or sticky chrome while preserving the real target and its ancestors.",
-      "Moved the deterministic visual-game resolver out of the browser bundle and into release-tooling infrastructure."
+      "Added component-specific Agent Negotiation, prediction-receipt, and Hall of Fame ceremony captures across both themes and target widths.",
+      "Bound each touched modal to accessible dialog/focus behavior and observable failure receipts.",
+      "Kept the first-decision shell lean by loading non-Overview tab modules only on intent."
     ],
     blockingDefectsOpen: 0
   }

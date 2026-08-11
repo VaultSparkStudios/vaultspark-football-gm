@@ -45,7 +45,7 @@ test("an unplayed game with no prediction shows a pick form for both teams", () 
   const html = buildPredictionPanelMarkup([g], {}, emptyStats());
   assert.match(html, /data-predict-winner="NYJ"/);
   assert.match(html, /data-predict-winner="BUF"/);
-  assert.match(html, /data-margin-input/);
+  assert.match(html, /required class="wp-margin-input" data-margin-input/);
   assert.match(html, /data-predict-submit/);
 });
 
@@ -81,12 +81,36 @@ test("a played game with no submitted prediction shows the no-pick state, not a 
   assert.doesNotMatch(html, /wp-pick-form/);
 });
 
-test("the stats bar surfaces current streak, best streak, and hit rate", () => {
+test("the stats bar surfaces winner accuracy separately from mean absolute margin error", () => {
   const g = game();
-  const html = buildPredictionPanelMarkup([g], {}, { seasonStreak: 3, bestStreak: 7, correctCount: 6, totalCount: 10 });
+  const html = buildPredictionPanelMarkup([g], {}, {
+    seasonStreak: 3,
+    bestStreak: 7,
+    correctCount: 6,
+    totalCount: 10,
+    marginErrorTotal: 42,
+    marginCount: 10
+  });
   assert.match(html, />3<\/strong> current streak/);
   assert.match(html, />7<\/strong> best streak/);
-  assert.match(html, />60%<\/strong> hit rate \(6\/10\)/);
+  assert.match(html, />60%<\/strong> winner accuracy \(6\/10\)/);
+  assert.match(html, />4\.2<\/strong> margin MAE/);
+});
+
+test("the current panel carries a bounded recent receipt journal with truthful winner and margin grades", () => {
+  const g = game();
+  const html = buildPredictionPanelMarkup([g], {}, emptyStats(), [{
+    year: 2026,
+    week: 4,
+    gameId: "NYJ@BUF",
+    winnerCorrect: true,
+    marginBand: "within3",
+    marginError: 2
+  }]);
+  assert.match(html, /Recent receipts/);
+  assert.match(html, /Y2026 W4/);
+  assert.match(html, /winner hit/);
+  assert.match(html, /within 3 \(2 off\)/);
 });
 
 test("markup escapes team ids so a malicious/odd team id cannot inject markup", () => {

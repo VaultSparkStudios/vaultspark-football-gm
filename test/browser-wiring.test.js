@@ -91,7 +91,8 @@ test("first-run tutorial modal uses the shared focus trap", () => {
 test("first-run tutorial styles are injected before mounting onboarding", () => {
   const appSource = read("../public/app.js");
 
-  assert.match(appSource, /import \{ injectTutorialStyles, mountTutorial, resetTutorial \} from "\.\/lib\/tutorialCampaign\.js"/);
+  assert.match(appSource, /import\("\.\/lib\/tutorialCampaign\.js"\)/);
+  assert.match(appSource, /import\("\.\/lib\/betaFeedback\.js"\)/);
   assert.match(appSource, /injectTutorialStyles\(\);[\s\S]*?launchOpeningContract\(\{ auto: true \}\)/);
   assert.match(appSource, /scope: state\.dashboard/);
   assert.match(appSource, /completed: Boolean\(state\.dashboard\?\.startScenarioReceipt\)/);

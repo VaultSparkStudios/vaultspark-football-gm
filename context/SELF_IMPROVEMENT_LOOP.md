@@ -1,10 +1,29 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 78 closed at 998 / 1000 SIL v3.0. A fresh live-code audit shipped all 7 ranked items — the built-but-dead `td-flourish` sound now fires on touchdowns, Dynasty Timeline gained keyboard/ARIA accessibility, the coaching market panel gained `aria-live`, Cap War Room now catches `yearsRemaining === 0` expiring contracts, `audioFeedback.js` gained a 13-test coverage suite, and two genuine new player-facing systems shipped: a deterministic Primetime Marquee badge and a local-only Weekly Spread Prediction minigame proven never to touch simulation state — while correctly rejecting 3 phantom candidates on evidence before implementation (coaching-tree lineage already shipped S53, `pressRoomPanel.js` already tested, most `|| 0`/`|| 1` hits were legitimate display fallbacks). Verification caught and root-fixed a self-inflicted static boot-budget regression from the new statically-imported modules. Verification: `npm test` 998/998 direct exit 0 (up from 922/922, +76 tests). No deploy required. Launch remains HOLD on email, SHA-bound founder launch approval and lifecycle authority.
+Rolling status: Session 79 closed at 998 / 1000 SIL v3.0. The full `/arc` shipped all 6 premise-verified audit items plus 2 verification-time improvements: canonical Agent Negotiation, automatic truthful prediction receipts, capability-bound Community Stats ingress, true non-Overview UI islands, accessible Hall of Fame ceremony controls, and exact-SHA release authority. Rendered review passed 158 captures and sealed 44 dark/light desktop/mobile receipts after exposing and fixing two undersized close targets. Boot improved to 610,654 bytes/48 modules with zero lazy leaks and 16.35% headroom. Playwright is 40/40 and launch remains independently HOLD with `launchReady: false`.
 
-Previously — Session 77 closed at 996 / 1000 after a targeted CommunityStore pool-injection + direct-coverage session.
+Previously — Session 78 closed at 998 / 1000 after the marquee, prediction-minigame, sound, accessibility and coverage sweep.
 <!-- rolling-status-end -->
+## 2026-08-11 — Session 79 Canonical Loops, Evidence Integrity, and Browser Headroom
+
+SIL v3.0: **998 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 99, Engagement 100, Process Quality 99, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+- **Dev Health: 100** — canonical game/runtime/simulation behavior passed through 838 tests before the Studio metadata guard; browser 40/40, Pages build/smoke, visual and boot gates are green; the final source-bound aggregate rerun follows reconciled closeout truth.
+- **Creative Alignment: 100** — player-agent personality and predictions deepen General Manager drama while remaining deterministic, source-derived, local-first and explicitly non-causal where appropriate.
+- **Momentum: 99** — six ranked items and two second-order fixes landed; one point withheld because the initial aggregate gate found an omitted shard registration.
+- **Engagement: 100** — ordinary week advance now pays off predictions automatically, negotiations expose understandable pressure, and Hall of Fame induction behaves like a real ceremony.
+- **Process Quality: 99** — live pixel review found a 34px touch target and the fail-closed shard guard found missing membership; both were root-fixed, but they were genuine verification catches.
+- **Cross-Repo Coherence: 100** — no sibling files were edited; operations defects are transported through Studio Ark only.
+- **Security Posture: 100** — Community Stats now rejects missing-Origin mutations, binds short-lived capabilities to participants, forces browser evidence tier and prevents one caller manufacturing k=5.
+- **Ecosystem Integration: 100** — audit sidecar, execution log, Task Board, handoff, truth audit, release authority and visual receipt resolve from the same S79 facts.
+- **Capital Efficiency: 100** — all work uses existing static hosting and self-hosted services with no new dependency or marginal paid call.
+- **Automation Coverage: 100** — focused adversarial, accessibility, rollover, island-budget, reachability and aggregate suites cover every new authority.
+
+Committed SIL follow-ups:
+- [SIL] Any new test file must be registered in a canonical shard in the same patch; the membership guard is the authority, not a later CI surprise.
+- [SIL] Fixed/scrollable modal evidence must capture the visible viewport rather than an off-viewport element crop; otherwise transparent pixels can conceal touch-target and scroll defects.
+
 ## 2026-08-09 — Session 78 Marquee, Prediction Minigame, TD Sound, A11y + Coverage Sweep
 
 SIL v3.0: **998 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 98, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).

@@ -1,7 +1,64 @@
 import { state, api } from "./appState.js";
 import { closeModal, openModal } from "./modalManager.js";
-import { createEmptyTradeAssets, decoratePlayerColumnFromRows, escapeHtml, fmtDeltaMoney, fmtMoney, renderPulseChips, renderTable, saveTradeBlockIds, setMetricCardValue, setTradeEvalText, teamByCode, teamCode, tradeAssetKeys, uniqueIds } from "./appCore.js";
+import { createEmptyTradeAssets, decoratePlayerColumnFromRows, escapeHtml, fmtDeltaMoney, fmtMoney, formatTransactionDetails, renderPulseChips, renderTable, saveTradeBlockIds, setMetricCardValue, setTradeEvalText, teamByCode, teamCode, tradeAssetKeys, uniqueIds } from "./appCore.js";
 import { activateTab, loadPickAssets } from "./gameFlow.js";
+
+let _agentModalPlayerId = null;
+
+export function renderTransactionLog() {
+  const rows = state.txRows.map((entry) => ({
+    seq: entry.seq,
+    year: entry.year,
+    week: entry.week,
+    phase: entry.phase,
+    type: entry.type,
+    team: entry.teamId ? teamCode(entry.teamId) : `${teamCode(entry.teamA || "")}${entry.teamB ? `/${teamCode(entry.teamB)}` : ""}`,
+    player: entry.playerName || entry.playerId || "",
+    details: formatTransactionDetails(entry)
+  }));
+  renderTable("txTable", rows);
+}
+
+export function renderPickAssets() {
+  const rows = [
+    ...(state.tradeTeamAPicks || []).map((pick) => ({ ...pick, packageSide: "A" })),
+    ...(state.tradeTeamBPicks || []).map((pick) => ({ ...pick, packageSide: "B" }))
+  ].map((pick) => ({ side: `Team ${pick.packageSide}`, id: pick.id, yr: pick.year, rnd: pick.round, orig: teamCode(pick.originalTeamId), owner: teamCode(pick.ownerTeamId), value: pick.value, action: "" }));
+  renderTable("pickAssetsTable", rows);
+  document.getElementById("pickAssetsTable")?.querySelectorAll("tr").forEach((tr, index) => {
+    if (index === 0) return;
+    const row = rows[index - 1];
+    const cell = tr.lastElementChild;
+    if (!cell || !row) return;
+    const isSelected = row.side === "Team A" ? state.tradeAssets.teamAPickIds.includes(row.id) : state.tradeAssets.teamBPickIds.includes(row.id);
+    cell.innerHTML = `<button data-trade-pick-side="${row.side === "Team A" ? "A" : "B"}" data-trade-pick-id="${escapeHtml(row.id)}">${isSelected ? "Remove" : "Add"}</button>`;
+  });
+}
+
+export function renderNegotiationTargets(rows) {
+  state.negotiationTargets = rows || [];
+  const tableRows = (rows || []).map((entry) => ({
+    id: entry.id,
+    player: entry.name,
+    pos: entry.pos,
+    ovr: entry.overall,
+    pot: entry.potential ?? "-",
+    askYears: entry.demand?.years || "-",
+    askSalary: fmtMoney(entry.demand?.salary || 0),
+    askCap: fmtMoney(entry.demand?.askCapHit || 0),
+    use: ""
+  }));
+  renderTable("negotiationTable", tableRows);
+  document.getElementById("negotiationTable")?.querySelectorAll("tr").forEach((tr, index) => {
+    if (index === 0) return;
+    const row = tableRows[index - 1];
+    const cell = tr.lastElementChild;
+    if (!cell || !row) return;
+    cell.innerHTML = `<button data-negotiate-id="${escapeHtml(row.id)}">Select</button> <button data-agent-player-id="${escapeHtml(row.id)}">Meet agent</button>`;
+  });
+  decoratePlayerColumnFromRows("negotiationTable", tableRows, { idKeys: ["id"] });
+  renderContractsPage();
+}
 
 export function renderExpiringContracts() {
   const expiring = state.contractTools?.expiring || [];
@@ -104,40 +161,6 @@ export function setSelectedContractPlayer(playerId, { preserveInputs = false } =
     if (salaryInput) salaryInput.value = demand?.salary || "";
   }
   updateContractPreview();
-}
-
-export function getSelectedDesignationPlayer() {
-  return state.roster.find((player) => player.id === state.selectedDesignationPlayerId) || null;
-}
-
-export function setSelectedDesignationPlayer(playerId) {
-  state.selectedDesignationPlayerId = playerId || null;
-  const player = getSelectedDesignationPlayer();
-  if (!player) state.selectedDesignationPlayerId = null;
-  const label = document.getElementById("designationSelectedPlayerText");
-  if (label) {
-    label.textContent = player ? `Selected: ${player.name} (${player.pos})` : "Selected: None";
-  }
-  const applyBtn = document.getElementById("applyDesignationBtn");
-  if (applyBtn) applyBtn.disabled = !player;
-  const clearBtn = document.getElementById("clearDesignationBtn");
-  if (clearBtn) clearBtn.disabled = !player;
-}
-
-export function getSelectedRetirementOverridePlayer() {
-  return (state.retiredPool || []).find((player) => player.id === state.selectedRetirementOverridePlayerId) || null;
-}
-
-export function setSelectedRetirementOverridePlayer(playerId) {
-  state.selectedRetirementOverridePlayerId = playerId || null;
-  const player = getSelectedRetirementOverridePlayer();
-  if (!player) state.selectedRetirementOverridePlayerId = null;
-  const label = document.getElementById("retirementOverrideSelectedPlayerText");
-  if (label) {
-    label.textContent = player ? `Selected: ${player.name} (${player.pos})` : "Selected: None";
-  }
-  const button = document.getElementById("retirementOverrideBtn");
-  if (button) button.disabled = !player;
 }
 
 export function updateContractPreview() {
@@ -582,87 +605,70 @@ export function closeAgentModal() {
   modal.classList.add("hidden");
 }
 
-export async function renderAgentModal(playerId) {
-  const card = document.getElementById("agentModalCard");
-  if (!card) return;
-  card.innerHTML = `<div class="narrative-empty">Loading agent profile…</div>`;
-  try {
-    const data = await api("/api/agent/roster");
-    const agents = data.agents || [];
-    const agent = agents.find((a) => a.playerId === playerId) || agents[0];
-    if (!agent) {
-      card.innerHTML = `<div class="narrative-empty">No agent data for this player.</div>`;
-      return;
-    }
-    const salaryVal = agent.askingSalary || 5_000_000;
-    const barPct = Math.min(100, Math.round((salaryVal / 30_000_000) * 100));
-    card.innerHTML = `
-      <div class="agent-personality-box">${escapeHtml(agent.personality || "balanced")}</div>
-      <div class="agent-name">${escapeHtml(agent.name || playerId)}</div>
-      <div class="agent-pos-ovr">${escapeHtml(agent.pos || "")} · OVR ${escapeHtml(String(agent.overall ?? "—"))}</div>
-      <div class="agent-demand-bar-wrap">
-        <label>Asking Price</label>
-        <div class="agent-demand-bar"><div class="agent-demand-fill" style="width:${barPct}%"></div></div>
-        <span class="agent-demand-val">${fmtMoney(salaryVal)}/yr</span>
-      </div>
-      <div class="agent-offer-form">
-        <label>Your Offer ($/yr):</label>
-        <input type="number" id="agentOfferSalary" class="form-input" value="${salaryVal}" step="500000" min="500000">
-        <label>Years:</label>
-        <input type="number" id="agentOfferYears" class="form-input" value="3" min="1" max="6">
-        <button class="btn primary" id="agentSubmitBtn">Submit Offer</button>
-        <button class="btn" id="agentCompetingBtn">Signal Competing Offer</button>
-      </div>
-      <div id="agentResponseBox" class="agent-response-box"></div>
-      <div id="agentHistoryBox" class="agent-history-box"></div>`;
-    document.getElementById("submitAgentOfferBtn")?.addEventListener("click", submitAgentOffer);
-    document.getElementById("signalCompetingOfferBtn")?.addEventListener("click", signalCompetingOffer);
-    if (agent.negotiationHistory?.length) {
-      const histBox = document.getElementById("agentHistoryBox");
-      if (histBox) histBox.innerHTML = `<strong>History</strong>` +
-        agent.negotiationHistory.map((h) => `<div>${escapeHtml(h.label || JSON.stringify(h))}</div>`).join("");
-    }
-  } catch {
-    card.innerHTML = `<div class="narrative-empty">Error loading agent data.</div>`;
+export function renderAgentModal(playerId, responseAgent = null) {
+  const target = (state.negotiationTargets || []).find((entry) => entry.id === playerId) || null;
+  const agent = responseAgent || target?.agent || null;
+  const header = document.getElementById("agentModalHeader");
+  const personality = document.getElementById("agentPersonalityBox");
+  const demandBar = document.getElementById("agentDemandBar");
+  const history = document.getElementById("agentHistoryBox");
+  const salaryInput = document.getElementById("agentOfferSalaryInput");
+  const yearsInput = document.getElementById("agentOfferYearsInput");
+  const submit = document.getElementById("submitAgentOfferBtn");
+  if (!header || !personality || !demandBar || !history) return;
+  if (!agent) {
+    header.textContent = "No active contract-year agent profile is available.";
+    personality.textContent = "";
+    demandBar.textContent = "";
+    history.innerHTML = `<div class="small">Select an expiring player from the negotiation board.</div>`;
+    if (submit) submit.disabled = true;
+    return;
   }
+  const salary = Number(agent.askingSalary || target?.demand?.salary || 0);
+  const market = Math.max(1, Number(agent.marketSalary || salary));
+  const barPct = Math.min(100, Math.round((salary / Math.max(market * 1.25, salary)) * 100));
+  header.innerHTML = `<strong>${escapeHtml(agent.name || target?.name || playerId)}</strong><span>${escapeHtml(agent.pos || target?.pos || "")} · OVR ${escapeHtml(String(agent.overall ?? target?.overall ?? "—"))}</span>`;
+  personality.innerHTML = `<strong>${escapeHtml(agent.personality || "Balanced")}</strong><span>${escapeHtml(agent.flavor || "")}</span><span>Leverage: ${escapeHtml(agent.leverageReason || "Market posture unavailable.")}</span><span>Deadline: ${escapeHtml(agent.deadline || "Before free agency")}</span>`;
+  demandBar.innerHTML = `<div class="agent-demand-copy"><span>Ask ${fmtMoney(salary)}/yr</span><span>Guaranteed ${fmtMoney(agent.guaranteed || 0)}</span></div><div class="agent-demand-track" aria-label="Agent ask compared with market"><span style="width:${barPct}%"></span></div>`;
+  history.innerHTML = `<strong>Negotiation ledger</strong>` + (agent.negotiationHistory || agent.history || [])
+    .map((entry) => `<div class="agent-history-entry">${escapeHtml(entry.label || entry.outcome || "Negotiation update")}</div>`)
+    .join("");
+  if (salaryInput) salaryInput.value = String(salary);
+  if (yearsInput) yearsInput.value = String(agent.askingYears || target?.demand?.years || 3);
+  if (submit) submit.disabled = agent.status !== "active";
 }
 
 export async function submitAgentOffer() {
   if (!_agentModalPlayerId) return;
-  const salary = Number(document.getElementById("agentOfferSalary")?.value || 0);
-  const years = Number(document.getElementById("agentOfferYears")?.value || 3);
+  const salary = Number(document.getElementById("agentOfferSalaryInput")?.value || 0);
+  const years = Number(document.getElementById("agentOfferYearsInput")?.value || 3);
   const box = document.getElementById("agentResponseBox");
   if (box) box.textContent = "Processing offer…";
   try {
-    const data = await api("/api/agent/offer", {
+    const data = await api("/api/contracts/negotiate", {
       method: "POST",
-      body: { playerId: _agentModalPlayerId, salary, years }
-    });
-    const r = data.result || {};
-    if (box) {
-      box.className = `agent-response-box ${r.outcome === "accepted" ? "accepted" : r.outcome === "counter" ? "counter" : "walked"}`;
-      box.textContent = r.message || r.outcome || "Offer submitted.";
-    }
-  } catch {
-    if (box) box.textContent = "Error submitting offer.";
-  }
-}
-
-export async function signalCompetingOffer() {
-  if (!_agentModalPlayerId) return;
-  const box = document.getElementById("agentResponseBox");
-  if (box) box.textContent = "Signaling competing interest…";
-  try {
-    const data = await api("/api/agent/competing-offer", {
-      method: "POST",
-      body: { playerId: _agentModalPlayerId, competingSalary: 0 }
+      body: {
+        teamId: state.contractTeamId || state.dashboard?.controlledTeamId,
+        playerId: _agentModalPlayerId,
+        salary,
+        years
+      }
     });
     if (box) {
-      box.className = "agent-response-box counter";
-      box.textContent = data.result?.message || "Competing offer signaled.";
+      box.classList.remove("hidden");
+      box.className = `agent-response-box ${data.countered ? "counter" : "accepted"}`;
+      box.textContent = data.countered
+        ? `Counter: ${data.counterOffer?.years} years at ${fmtMoney(data.counterOffer?.salary || 0)} per year.`
+        : `Accepted. The canonical contract ledger now shows ${data.contract?.yearsRemaining || years} years at ${fmtMoney(data.contract?.salary || salary)} per year.`;
     }
-  } catch {
-    if (box) box.textContent = "Error.";
+    renderAgentModal(_agentModalPlayerId, data.agent);
+    document.dispatchEvent(new CustomEvent("agent-negotiation-complete", { detail: data }));
+  } catch (error) {
+    if (box) {
+      box.classList.remove("hidden");
+      box.className = "agent-response-box walked";
+      box.textContent = error?.message || "The agent ended this round of talks.";
+    }
   }
 }
 

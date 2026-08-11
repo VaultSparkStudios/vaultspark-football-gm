@@ -1,32 +1,24 @@
-# Implementation Plan — Session 75 Community Intelligence
+# Implementation Plan — Session 79 Arc
 
-The audit sidecar `docs/AUDIT_2026-08-08_SESSION75.json` is the source of truth. Work is ordered by dependency and verification efficiency, not by raw rank alone.
+The audit sidecar `docs/AUDIT_2026-08-11_SESSION79.json` is the source of truth. Work is ordered by authority boundaries and verification efficiency.
 
-## Wave 1 — Evidence contract and local safety
+## Wave 1 — Repair the two player-visible loops
 
-- [x] `community-receipt-contract`: versioned allowlisted extractors at the shared post-contract API seam.
-- [x] Explicit opt-in, disclosure preview, withdrawal/deletion, local-only ledger, offline bounded queue, retry and batching.
-- [x] Focused privacy, parity and queue tests.
+- [x] `prediction-loop-rollover-and-margin-truth`: automatic prior-week settlement, truthful margin grades, bounded receipts, and League Story parity.
+- [x] `canonical-agent-negotiation`: one contract mutation authority, deterministic agent leverage/history, and one reachable accessible browser surface.
+- [x] `hall-of-fame-ceremony-accessibility`: dialog semantics, focus/Escape behavior, and observable share/download failure states.
 
-## Wave 2 — Self-hosted aggregation authority
+## Wave 2 — Harden public evidence and reduce boot cost
 
-- [x] `community-aggregate-plane`: isolated PostgreSQL schema/service, idempotent ingest, participant hashing, deletion and retention.
-- [x] Request validation, contribution clamps, no-IP-storage rate limits, k-anonymity suppression, percentile rollups and deterministic interpretations.
-- [x] Cached ETag snapshot, freshness/degraded states, health route, Caddy/Compose/workflow wiring.
+- [x] `community-participation-capability`: browser-only evidence normalization plus short-lived participant-bound capability and abuse-ceiling tests.
+- [x] `non-overview-ui-islands`: lazy-load every non-Overview tab, preload on intent, and enforce island/boot budgets.
 
-## Wave 3 — One snapshot, two human surfaces, one agent twin
+## Wave 3 — Integrated proof
 
-- [x] `homepage-community-pulse`: compact live pulse after the hero, participation controls, honest states and visibility-aware refresh.
-- [x] `public-community-stats-atlas`: full category atlas, period controls, local comparisons, methodology and accessible charts without a dependency.
-- [x] JSON twin plus agents.json, llms.txt, sitemap, privacy, terms, manifest and navigation truth.
+- [x] Run focused and full Node/Playwright suites, Pages build/smoke, boot and public-contract checks.
+- [x] Inspect dark/light desktop/mobile rendered pixels for every touched state and bind `docs/visual-qa/LATEST.json` to the candidate.
 
-## Wave 4 — Exact rendered and operational proof
+## Wave 4 — Exact candidate and closeout
 
-- [x] `community-stats-release-proof`: focused tests, full shards, Pages build/smoke, CSP/CORS, service migration/deploy checks.
-- [x] Dark/light desktop/mobile browser captures for homepage, atlas and participation states; inspect and hash-bind `docs/visual-qa/LATEST.json`.
-- [x] Exact-candidate staging, backend health/snapshot proof, production verification and rollback receipt.
-
-## Wave 5 — Closeout
-
-- [x] Mark all audit items with direct evidence; reconcile Task Board, Current State, decisions, truth audit, SIL, handoff and work log.
-- [x] Run release/secret gates, commit the bounded scope, push `main`, monitor required workflows, and verify deployed truth.
+- [x] `exact-sha-staging-parity`: candidate-side authority is complete; exact-SHA staging and production proof follows the immutable closeout commit.
+- [x] Preserve `launchReady: false`; refresh the audit execution log, Task Board, status, decisions, work log, SIL, truth audit, handoff, closeout board, Ark cargo, secret scan, and session lock.

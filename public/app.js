@@ -1,7 +1,5 @@
-import { injectTutorialStyles, mountTutorial, resetTutorial } from "./lib/tutorialCampaign.js";
 import { initThemeCustomizer } from "./lib/themeCustomizer.js";
 import { encodeChallengeCode, loadRivalTarget } from "./lib/challengeCodes.js";
-import { mountBetaFeedback } from "./lib/betaFeedback.js";
 import { maybeShowReturnDigest, recordReturnBoundary } from "./lib/returnDigest.js";
 import { initPressRoomPanel } from "./lib/pressRoomPanel.js";
 import { initCoachingMarketPanel } from "./lib/coachingMarketPanel.js";
@@ -124,80 +122,13 @@ import {
 import { coGmBriefingFilename, serializeCoGmBriefingPacket } from "./lib/coGmBriefing.js";
 
 import {
-  renderRoster,
-  renderFreeAgency,
-  renderRetiredPool,
-  depthManualShareMap,
-  depthDefaultShares,
-  formatDepthSharePercent,
-  roundDepthShare,
-  totalDepthShares,
-  resolveDepthShareValues,
-  updateDepthShare,
-  renderDepthChart,
-  moveIdWithinList,
-  renderVeteranMentorshipPanel
-} from "./lib/tabRoster.js";
-
-import {
-  renderExpiringContracts,
-  lookupContractCandidate,
-  getSelectedContractPlayer,
-  setSelectedContractPlayer,
-  getSelectedDesignationPlayer,
-  setSelectedDesignationPlayer,
-  getSelectedRetirementOverridePlayer,
-  setSelectedRetirementOverridePlayer,
-  updateContractPreview,
-  renderContractsPage,
-  renderContractsSpotlight,
-  setContractActionText,
-  toggleTradeBlockPlayer,
-  getTradeTeamId,
-  setTradeEvalCards,
-  clearTradePackages,
-  getTradePlayersForSide,
-  getTradePicksForSide,
-  setTradePackageText,
-  toggleTradeAsset,
-  queueTradePlayer,
-  renderTradeRosterTable,
-  renderTradeWorkspace,
-  deriveContractToolsFromRoster,
-  renderCapCasualtyPanel,
-  renderCapProjectionPanel,
-  openAgentModal,
-  closeAgentModal,
-  renderAgentModal,
-  submitAgentOffer,
-  signalCompetingOffer,
-  applyCounterPrefill
-} from "./lib/tabContracts.js";
-
-import {
-  renderDraft,
-  renderScouting,
-  renderScoutingSpotlight,
-  renderCombineResults,
-  pickAnalystLine,
-  showDraftPickReveal
-} from "./lib/tabDraft.js";
-
-import {
-  updateStatsControls,
-  renderStatsBenchmarkHint,
-  applyStatsSort,
-  renderStatsColumnFilters,
-  renderComparePlayers,
-  renderCompareSearchResults,
-  renderAnalyticsChart
-} from "./lib/tabStats.js";
-
-
-
-
-
-import { getLoadedUiIsland, invokeUiIsland, loadUiIsland } from "./lib/uiIslands.js";
+  bindUiIslandPreloads,
+  getLoadedUiIsland,
+  invokeLoadedUiIsland,
+  invokeUiIsland,
+  loadUiIsland,
+  queueIdleUiIslandPreloads
+} from "./lib/uiIslands.js";
 
 import {
   applyDashboard,
@@ -306,6 +237,51 @@ function callAppIsland(name, exportName, ...args) {
     authorityKey: dashboardAuthorityKey(state.dashboard),
     retry: () => invokeUiIsland(name, exportName, ...args)
   });
+}
+
+function loadedIslandActions(name, exportNames) {
+  return Object.fromEntries(exportNames.map((exportName) => [
+    exportName,
+    (...args) => invokeLoadedUiIsland(name, exportName, ...args)
+  ]));
+}
+
+const {
+  renderRoster, renderRetiredPool, updateDepthShare, renderDepthChart, renderVeteranMentorshipPanel,
+  getSelectedDesignationPlayer, setSelectedDesignationPlayer,
+  getSelectedRetirementOverridePlayer, setSelectedRetirementOverridePlayer
+} = loadedIslandActions("roster", [
+  "renderRoster", "renderRetiredPool", "updateDepthShare", "renderDepthChart", "renderVeteranMentorshipPanel",
+  "getSelectedDesignationPlayer", "setSelectedDesignationPlayer",
+  "getSelectedRetirementOverridePlayer", "setSelectedRetirementOverridePlayer"
+]);
+const {
+  getSelectedContractPlayer, setSelectedContractPlayer, updateContractPreview, setContractActionText,
+  toggleTradeBlockPlayer, getTradeTeamId, setTradeEvalCards, clearTradePackages, toggleTradeAsset,
+  queueTradePlayer, renderTradeWorkspace, renderCapCasualtyPanel, renderCapProjectionPanel,
+  openAgentModal, closeAgentModal, submitAgentOffer, applyCounterPrefill
+} = loadedIslandActions("contracts", [
+  "getSelectedContractPlayer", "setSelectedContractPlayer", "updateContractPreview", "setContractActionText",
+  "toggleTradeBlockPlayer", "getTradeTeamId", "setTradeEvalCards", "clearTradePackages", "toggleTradeAsset",
+  "queueTradePlayer", "renderTradeWorkspace", "renderCapCasualtyPanel", "renderCapProjectionPanel",
+  "openAgentModal", "closeAgentModal", "submitAgentOffer", "applyCounterPrefill"
+]);
+const { renderDraft, renderScouting, renderCombineResults, showDraftPickReveal } = loadedIslandActions(
+  "draft", ["renderDraft", "renderScouting", "renderCombineResults", "showDraftPickReveal"]
+);
+const { updateStatsControls, applyStatsSort, renderCompareSearchResults } = loadedIslandActions(
+  "stats", ["updateStatsControls", "applyStatsSort", "renderCompareSearchResults"]
+);
+
+function moveIdWithinList(ids, id, delta) {
+  const next = [...ids];
+  const from = next.indexOf(id);
+  if (from < 0) return next;
+  const to = Math.max(0, Math.min(next.length - 1, from + delta));
+  if (to === from) return next;
+  next.splice(from, 1);
+  next.splice(to, 0, id);
+  return next;
 }
 async function collectAcceleratedStrategyPolicy(scope) {
   const seasonScope = scope === "season";
@@ -516,10 +492,10 @@ function exposeLocalTestHooks() {
 }
 
 function bindEvents() {
-  // The drawer close handle is threaded into tab binding so choosing a section
-  // dismisses the nav (CANON-041).
   const closeMobileNav = bindMobileNav();
   bindMenuTabs(activateTab, closeMobileNav);
+  bindUiIslandPreloads();
+  queueIdleUiIslandPreloads();
 
   document.getElementById("backSetupBtn").addEventListener("click", () => {
     window.location.href = new URL("./", document.baseURI).toString();
@@ -529,25 +505,8 @@ function bindEvents() {
     runAction(async () => {
       const response = await api("/api/control-team", { method: "POST", body: { teamId: event.target.value } });
       applyDashboard(response.state);
-      await Promise.all([
-        loadRoster(),
-        loadFreeAgency(),
-        loadRetiredPool(),
-        loadStats(),
-        loadDepthChart(),
-        loadDraftState(),
-        loadScouting(),
-        loadTeamHistory(),
-        loadCalendar(),
-        loadTransactionLog(),
-        loadNews(),
-        loadPickAssets(),
-        loadNegotiations(),
-        loadStaff(),
-        loadOwner(),
-        loadPipeline(),
-        loadObservability()
-      ]);
+      invalidateHydrationDomains();
+      await hydrateTab(state.activeTab || "overviewTab", { force: true });
     }, "Switching team...")
   );
 
@@ -566,9 +525,6 @@ function bindEvents() {
     document.getElementById("advanceWeekBtn")?.click();
   });
 
-  // S63 — answering the post-game podium. The question id rides along so a stale
-  // card (answered in another tab, or left open across an advance) is rejected
-  // with a 409 instead of applying consequences to the wrong game.
   initPressRoomPanel(({ responseId, questionId }) =>
     runAction(async () => {
       const payload = await api("/api/press-conference", {
@@ -1673,7 +1629,6 @@ function bindEvents() {
     }, "Updating rehab plan...");
   });
 
-  // ── GitHub Gist Cloud Sync ──────────────────────────────────────────────────
   document.getElementById("gistSyncSaveTokenBtn")?.addEventListener("click", () => {
     const input = document.getElementById("gistTokenInput");
     const tok = input?.value?.trim();
@@ -1793,7 +1748,6 @@ function bindEvents() {
     }
   });
 
-  // Roving-tabindex arrow navigation for the ARIA tablist (S29).
   document.querySelector('.side-menu[role="tablist"]')?.addEventListener("keydown", (event) => {
     if (!["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
     const tabs = Array.from(document.querySelectorAll(".menu-btn[data-tab]"));
@@ -1846,7 +1800,6 @@ function bindEvents() {
     closeBoxScoreModal();
   });
 
-  // ── New feature event listeners ────────────────────────────────────────────
   document.getElementById("closeNewsTickerBtn")?.addEventListener("click", () => {
     const ticker = document.getElementById("newsTicker");
     if (ticker) ticker.hidden = true;
@@ -1943,6 +1896,14 @@ function bindEvents() {
   );
 
   document.getElementById("closeAgentModalBtn")?.addEventListener("click", closeAgentModal);
+  document.getElementById("submitAgentOfferBtn")?.addEventListener("click", submitAgentOffer);
+  document.addEventListener("agent-negotiation-complete", () => {
+    invalidateHydrationDomains(["roster"]);
+    observeBackgroundTask(
+      () => Promise.all([loadState(), loadContractsTeam(), loadNegotiations(state.contractTeamId)]),
+      { surface: "contracts", operation: "agent-negotiation-refresh" }
+    );
+  });
 
   document.getElementById("closeShortcutsModalBtn")?.addEventListener("click", () => callAppIsland("settings", "closeShortcutsModal"));
 
@@ -1974,10 +1935,8 @@ function bindEvents() {
     });
   });
 
-  // Season review modal close
   document.getElementById("closeSeasonReviewBtn")?.addEventListener("click", closeSeasonReviewModal);
 
-  // Brand builder apply button
   document.getElementById("applyBrandBtn")?.addEventListener("click", () => {
     const name    = document.getElementById("brandNameInput")?.value?.trim();
     const city    = document.getElementById("brandCityInput")?.value?.trim();
@@ -1996,7 +1955,8 @@ function bindEvents() {
   // Mentorship panel load on Roster tab
   document.querySelectorAll(".menu-btn[data-tab='rosterTab']").forEach((btn) => {
     btn.addEventListener("click", () => {
-      renderVeteranMentorshipPanel().catch((error) => renderPanelError("mentorshipPanel", "Mentorship panel", error));
+      Promise.resolve(callAppIsland("roster", "renderVeteranMentorshipPanel"))
+        .catch((error) => renderPanelError("mentorshipPanel", "Mentorship panel", error));
     });
   });
 
@@ -2219,17 +2179,10 @@ async function init() {
   exposeLocalTestHooks();
   bindEvents();
   applyShellTheme();
-  renderTradeWorkspace();
-
-  renderCompareSearchResults();
-  renderComparePlayers();
-
-
   activateTab("overviewTab");
   await loadCoreDashboard();
   ingestNewsIntoInbox(state.dashboard?.newsLog || state.dashboard?.news || state.newsRows || []);
   renderInboxBadge();
-  setStatus("Ready");
   queueStartupHydration();
 
   renderTrophyCase();
@@ -2250,6 +2203,12 @@ async function init() {
       if (hapticsInput.checked) vibrate(HAPTIC_PATTERNS.tick);
     });
   }
+  const [tutorialCampaign, betaFeedback] = await Promise.all([
+    import("./lib/tutorialCampaign.js"),
+    import("./lib/betaFeedback.js")
+  ]);
+  const { injectTutorialStyles, mountTutorial, resetTutorial } = tutorialCampaign;
+  const { mountBetaFeedback } = betaFeedback;
   injectTutorialStyles();
   // One launcher owns both the first-boot mount and every later recovery path
   // (Overview CTA, Settings, command palette), so re-running a deferred
@@ -2274,6 +2233,7 @@ async function init() {
     });
   }
   launchOpeningContract({ auto: true });
+  setStatus("Ready");
   document.addEventListener("vsfgm:run-opening-contract", () => launchOpeningContract({ auto: false }));
   document.addEventListener("vsfgm:sw-updated", () => {
     showToast("A new version is cached — reload to play the latest build.");

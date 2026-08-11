@@ -129,6 +129,12 @@ import { initCoachingTree, registerRootHeadCoach } from "../engine/coachingTree.
 import { derivedStaffRng, staffSeedKey } from "../engine/staffGeneration.js";
 import { applyArchiveRetention, pruneWeeklyHistory, toLeanWeekResult } from "./weekResultProjection.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
+import {
+  agentSummary,
+  ensureContractAgent,
+  evaluateCanonicalAgentOffer,
+  recordCanonicalAgentAcceptance
+} from "../engine/playerAgentAI.js";
 
 const TABLE_CATEGORIES = ["passing", "rushing", "receiving", "defense", "blocking", "kicking", "punting", "snaps"];
 const MAX_ACTIVE_ROSTER = 53;
@@ -4363,7 +4369,7 @@ export class GameSession {
       1,
       5
     );
-    const salary = Math.round(
+    const baseAgentSalary = Math.round(
       Math.max(baseSalary, contract.salary * 1.04) *
         leverage *
         ageCurve *
@@ -4371,6 +4377,14 @@ export class GameSession {
         (1 - modifiers.negotiationLeverageDelta - transactionProfile.extensionFriendliness)
     );
     const guaranteedPct = clamp(0.36 + (player.overall - 70) / 160 + (leverage - 1) * 0.4, 0.32, 0.82);
+    const agent = ensureContractAgent(player, {
+      currentYear: this.currentYear,
+      baseSalary: baseAgentSalary,
+      baseYears: years,
+      guaranteed: Math.round(baseAgentSalary * guaranteedPct),
+      capHardLimit: this.getTeamCapSummary(teamId).salaryCap
+    });
+    const salary = agent.currentDemand;
     const guaranteed = Math.round(salary * guaranteedPct);
     return {
       ok: true,
@@ -4380,7 +4394,8 @@ export class GameSession {
         guaranteed,
         guaranteedPct: Number(guaranteedPct.toFixed(3)),
         askCapHit: Math.round(salary * (0.85 + (1 - guaranteedPct) * 0.2))
-      }
+      },
+      agent: agentSummary(player)
     };
   }
 
@@ -4390,7 +4405,8 @@ export class GameSession {
         const demand = this.getNegotiationDemand({ teamId, playerId: player.id });
         return {
           ...player,
-          demand: demand.ok ? demand.demand : null
+          demand: demand.ok ? demand.demand : null,
+          agent: demand.ok ? demand.agent : null
         };
       })
       .sort((a, b) => b.overall - a.overall);
@@ -4411,10 +4427,8 @@ export class GameSession {
     const player = this.activePlayerOnTeam(playerId, teamId);
     if (!player) return { ok: false, error: "Player not found on team." };
 
-    const yearsGap = Math.abs(offerYears - demand.years);
-    const salaryGap = (offerSalary - demand.salary) / Math.max(1, demand.salary);
-    const acceptanceScore = salaryGap * 1.25 - yearsGap * 0.08 + this.rng.float(-0.08, 0.08);
-    if (acceptanceScore < -0.18) {
+    const agentResult = evaluateCanonicalAgentOffer(player, offerSalary, offerYears);
+    if (agentResult.status === "walked") {
       this.adjustNegotiationSentiment(player, { morale: -4, motivation: -3 });
       this.logTransaction({
         type: "negotiation",
@@ -4422,7 +4436,7 @@ export class GameSession {
         playerId,
         playerName: player.name,
         details: {
-          outcome: "rejected",
+          outcome: "walked",
           offerYears,
           offerSalary,
           askYears: demand.years,
@@ -4431,15 +4445,12 @@ export class GameSession {
           motivation: player.motivation
         }
       });
-      return { ok: false, error: "Player rejected the offer based on term/value." };
+      return { ok: false, error: agentResult.message, agent: agentSummary(player) };
     }
 
-    if (acceptanceScore < 0.04) {
-      const counterYears = clamp(Math.max(offerYears, demand.years), 1, 5);
-      const counterSalary = Math.max(
-        850_000,
-        Math.round(Math.max(demand.salary, offerSalary * 1.04, demand.salary * 0.985))
-      );
+    if (agentResult.status === "counter") {
+      const counterYears = clamp(agentResult.counterYears, 1, 5);
+      const counterSalary = Math.max(850_000, Math.round(agentResult.counterDemand));
       this.adjustNegotiationSentiment(player, { morale: -1, motivation: 1 });
       this.logTransaction({
         type: "negotiation",
@@ -4467,6 +4478,7 @@ export class GameSession {
           salary: counterSalary,
           askCapHit: Math.round(counterSalary * 0.9)
         },
+        agent: agentSummary(player),
         morale: player.morale,
         motivation: player.motivation
       };
@@ -4491,6 +4503,7 @@ export class GameSession {
       }
     }
     if (!result.ok) return result;
+    recordCanonicalAgentAcceptance(player, result.contract);
     this.adjustNegotiationSentiment(player, { morale: 3, motivation: 2 });
     this.logTransaction({
       type: "negotiation",
@@ -4505,7 +4518,16 @@ export class GameSession {
       years: offerYears,
       salary: offerSalary
     });
-    return { ok: true, teamId, playerId, contract: result.contract, demand, morale: player.morale, motivation: player.motivation };
+    return {
+      ok: true,
+      teamId,
+      playerId,
+      contract: result.contract,
+      demand,
+      agent: agentSummary(player),
+      morale: player.morale,
+      motivation: player.motivation
+    };
   }
 
   resignPlayer({ teamId, playerId, years = 3, salary = null }) {

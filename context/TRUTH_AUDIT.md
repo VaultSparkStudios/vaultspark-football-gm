@@ -2,8 +2,17 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-09
+Last reviewed: 2026-08-11
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-08-11 - Session 79 truth update
+
+- **Agent negotiation has one mutation authority.** Persona, leverage and counters now enrich `/api/contracts/negotiate`; no alternate agent endpoint can claim a signature without changing the canonical contract.
+- **Prediction truth closes during normal play.** The prior week settles before dashboard rollover, winner accuracy and margin error are distinct, receipts are bounded/idempotent, and League Story exports the same source.
+- **Community cohort evidence is harder to fabricate.** Public mutations require allowed Origin plus a participant-bound capability, public evidence tier is forced to `browser-receipt`, and one address cannot issue enough distinct participants to cross k=5.
+- **First-decision headroom is measured, not promised.** The shell is 610,654/730,000 bytes and 48/58 static modules with zero lazy leaks; each declared island retains at least 15% budget headroom.
+- **Rendered UI evidence is current.** 158 browser captures passed responsive checks and 44 reviewed dark/light desktop/mobile states are hash-bound in `docs/visual-qa/LATEST.json`; review exposed and fixed two 34px modal close targets.
+- **Deployment and launch remain separate truths.** Exact-SHA stable-staging proof is required before code publication. Even after code promotion, `launchReady` remains false until email, approval, lifecycle, Obelisk and edge evidence clear independently.
 
 ## 2026-08-09 - Session 76 truth update
 

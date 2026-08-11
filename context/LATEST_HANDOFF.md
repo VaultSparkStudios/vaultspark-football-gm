@@ -1,4 +1,42 @@
-# Session 78 Closeout — Marquee, Prediction Minigame, TD Sound, A11y + Coverage Sweep
+# Session 79 Closeout — Canonical Loops, Evidence Integrity, and Browser Headroom
+
+## Where We Left Off
+
+- The full S79 `/arc` scope is implemented and candidate-side verification is complete. Agent Negotiation now has one canonical contract authority; predictions settle automatically with separate winner/margin truth; Community Stats ingress uses participant-bound capabilities; every non-Overview tab is a measured lazy island; and the Hall of Fame ceremony is a focus-managed accessible dialog.
+- Static boot is 610,654/730,000 bytes and 48/58 modules with zero lazy leaks (16.35% byte headroom). Playwright is 40/40. Responsive evidence passed 158 captures; 44 inspected dark/light desktop/mobile captures are hash-bound in `docs/visual-qa/LATEST.json`.
+- The first aggregate Node run passed core 122/122, runtime 636/636, sim-contract 79/79 and sim-realism 1/1, then correctly failed Studio on two closeout-process gaps: omitted `test/ui-islands.test.js` shard membership and still-open audit execution rows. Both are fixed; the final source-bound aggregate rerun is the remaining local verification step.
+- The immutable candidate must deploy to stable staging and prove exact SHA/artifact/rollback before the same SHA is pushed to `main`. Do not edit tracked files between staging proof and push.
+- Launch remains HOLD and `launchReady: false`. Reply-capable on-domain email evidence, SHA-bound founder approval, lifecycle reconciliation, and current Obelisk/edge evidence remain independent gates; code promotion does not clear them.
+
+## Decisions That Must Survive
+
+- Agent intelligence may enrich canonical contract negotiation but never owns a parallel signing path or caller-authored rival-interest signal.
+- Anonymous Community Stats uses ephemeral capability binding and no durable IP storage; browser callers cannot self-promote evidence tier.
+- The app shell retains at least 15% declared byte headroom. Non-Overview code stays behind one island/hydration authority.
+- Fixed or scrollable modal visual proof captures the visible viewport, not an off-viewport element crop.
+
+## Next Best Work
+
+- Complete the final aggregate receipt, closeout commit, exact-SHA stable-staging proof, direct-main push of the same SHA, CI monitoring and production provenance check.
+- After promotion, observe the first real opted-in Community Stats cohort without manufacturing activity.
+- Do not flip launch readiness until every independent launch gate has evidence.
+
+## Key Files
+
+- `src/runtime/GameSession.js`, `src/engine/playerAgentAI.js`, `public/lib/tabContracts.js`
+- `public/lib/spreadPredictions.js`, `public/lib/gameFlow.js`, `public/lib/predictionPanel.js`
+- `src/community/server.js`, `public/lib/communityTelemetry.js`
+- `public/lib/uiIslands.js`, `public/lib/tabHydration.js`, `public/boot-manifest.json`
+- `public/lib/hallOfFameCeremony.js`, `scripts/responsive-evidence.mjs`
+- `docs/AUDIT_2026-08-11_SESSION79.json`, `docs/visual-qa/LATEST.json`
+
+---
+
+# Prior Session 78 Closeout — Marquee, Prediction Minigame, TD Sound, A11y + Coverage Sweep
+
+## Session Intent — S79
+
+Run the full `/arc`: profile and start from live evidence, produce a fresh project-aware audit, implement every verified item plus second-order innovations at the product/game quality bar, run rendered-pixel and release-gate verification where applicable, then complete canonical closeout and direct-to-main publication through staging.
 
 ## Where We Left Off
 

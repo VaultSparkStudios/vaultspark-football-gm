@@ -2,6 +2,30 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-11 - S79: one contract authority, deterministic agent intelligence
+
+**Decision:** Player-agent personality, leverage, rival interest, counters and history enrich the canonical `/api/contracts/negotiate` path; they never own a parallel signing mutation or accept caller-authored market signals.
+
+**Rationale:** A negotiation can be vivid without becoming a second source of contract truth. Every accepted deal must mutate the same player contract, salary-cap state and persisted ledger.
+
+---
+
+## 2026-08-11 - S79: anonymous Community Stats participation uses bounded capabilities
+
+**Decision:** Public mutation ingress requires an allowed Origin plus an ephemeral, participant-bound, short-lived HMAC capability. Public callers are always `browser-receipt`; forwarded addresses are trusted only from loopback and are HMAC-hashed in memory for issuance limits.
+
+**Rationale:** Consent and k-anonymity are not meaningful if one caller can rotate self-chosen participant IDs or promote its own evidence tier. The capability adds abuse resistance without accounts, durable IP storage, paid infrastructure or synthetic cohorts.
+
+---
+
+## 2026-08-11 - S79: first-decision budget is a headroom contract
+
+**Decision:** Non-Overview tabs load through one UI-island registry with per-island budgets and intent/focus/idle hints. The aggregate shell must retain at least 15% byte headroom; budget ceilings are not raised to hide static-import drift.
+
+**Rationale:** Session 78's justified budget raise left only 0.9% headroom. A measured island boundary recovers durable browser performance and reduces the code surface an agent must inspect without creating a second hydration authority.
+
+---
+
 ## 2026-08-09 - S78: static boot-budget ceiling raised only against genuine new shipped bytes
 
 **Decision:** `public/boot-manifest.json`'s budget moved from 710000/55 to 730000/58 bytes/modules, justified inline, because 3 new statically-imported modules (Primetime Marquee badge, the weekly spread-prediction minigame, and its panel) shipped genuine new gameplay-visible features in the same session that triggered the overage.

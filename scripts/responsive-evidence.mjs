@@ -144,6 +144,13 @@ async function capture(page, outputDir, name, selectors, records) {
   records.push({ name, file, url: page.url(), ...audit });
 }
 
+async function captureViewport(page, outputDir, name, selectors, records) {
+  const audit = await inspectSurface(page, selectors);
+  const file = `${name}.png`;
+  await page.screenshot({ path: path.join(outputDir, file), fullPage: false });
+  records.push({ name, file, url: page.url(), viewportCapture: true, ...audit });
+}
+
 async function captureElement(page, outputDir, name, selector, records) {
   const audit = await inspectSurface(page, []);
   const file = `${name}.png`;
@@ -212,6 +219,7 @@ async function main() {
       await page.waitForURL("**/game.html", { timeout: 90_000 });
       await page.waitForSelector("#statusChip");
       await page.waitForFunction(() => !/loading/i.test(document.getElementById("topMetaText")?.textContent || "Loading"));
+      await page.waitForFunction(() => /^ready/i.test(document.getElementById("statusChip")?.textContent || ""));
       const tutorialVisible = await page.locator(".tutorial-overlay").isVisible().catch(() => false);
       if (tutorialVisible) await capture(page, outputDir, `${viewport.name}-game-dialog-dark`, ["#tutSkipBtn"], records);
       const skip = page.locator("#tutSkipBtn");
@@ -248,12 +256,52 @@ async function main() {
             await page.waitForTimeout(320);
           }
           await page.waitForFunction((id) => document.getElementById(id)?.classList.contains("active"), tabId);
+          await page.waitForFunction((id) => !document.getElementById(id)?.hasAttribute("aria-busy"), tabId);
           const selectors = tabId === "overviewTab"
             ? ["#advanceWeekBtn", "#advance4WeeksBtn", "#advanceSeasonBtn", "#themeToggleBtn", "#gmPersonaTier"]
             : ["#themeToggleBtn"];
           await capture(page, outputDir, `${viewport.name}-game-${label}-${theme}`, selectors, records);
+          if (tabId === "overviewTab") {
+            await page.evaluate(async () => {
+              const [{ state }, predictions, panel] = await Promise.all([
+                import("./lib/appState.js"),
+                import("./lib/spreadPredictions.js"),
+                import("./lib/predictionPanel.js")
+              ]);
+              const leagueId = state.dashboard?.franchiseId || "visual-franchise";
+              const game = { awayTeamId: "BUF", homeTeamId: "MIA", played: false };
+              predictions.submitPrediction(leagueId, 2099, 1, game, { winnerId: "BUF", margin: 7 });
+              const resolved = { ...game, played: true, awayScore: 27, homeScore: 20, winnerId: "BUF", isTie: false };
+              predictions.resolveWeekPredictions(leagueId, 2099, 1, [resolved]);
+              panel.renderPredictionPanel({ leagueId, year: 2099, week: 1, games: [resolved] });
+            });
+            await captureElement(page, outputDir, `${viewport.name}-prediction-receipt-${theme}`, "#weeklyPredictionsPanel", records);
+          }
           if (tabId === "rosterTab") {
             await captureElement(page, outputDir, `${viewport.name}-roster-window-${theme}`, "#rosterWindowTable", records);
+          }
+          if (tabId === "contractsTab") {
+            const agentButton = page.locator("#negotiationTable [data-agent-player-id]").first();
+            await agentButton.waitFor({ state: "visible" });
+            await agentButton.click();
+            try {
+              await page.waitForSelector("#agentNegotiationModal", { state: "visible", timeout: 5_000 });
+            } catch {
+              const diagnostic = await page.evaluate(async () => {
+                const [islands, diagnostics] = await Promise.all([
+                  import("./lib/uiIslands.js"),
+                  import("./lib/clientDiagnostics.js")
+                ]);
+                return {
+                  modalClass: document.getElementById("agentNegotiationModal")?.className || null,
+                  islandLoaded: Boolean(islands.getLoadedUiIsland("contracts")),
+                  clientDiagnostics: diagnostics.getClientDiagnosticsSnapshot()
+                };
+              });
+              throw new Error(`Agent modal did not open: ${JSON.stringify({ diagnostic, runtimeErrors })}`);
+            }
+            await captureViewport(page, outputDir, `${viewport.name}-agent-negotiation-${theme}`, ["#agentNegotiationModal .agent-modal-card", "#closeAgentModalBtn"], records);
+            await page.locator("#closeAgentModalBtn").click();
           }
           if (tabId === "historyTab") {
             await page.locator(`[data-history-view="hall-of-fame"]`).click();
@@ -262,6 +310,24 @@ async function main() {
             await page.locator(`[data-history-view="decision-archive"]`).click();
             await page.waitForFunction(() => !document.getElementById("historyDecisionArchivePanel")?.classList.contains("hidden"));
             await captureElement(page, outputDir, `${viewport.name}-decision-archive-${theme}`, "#historyDecisionArchivePanel", records);
+            await page.evaluate(async () => {
+              const ceremony = await import("./lib/hallOfFameCeremony.js");
+              ceremony.openHallOfFameCeremony({
+                playerId: "visual-hof",
+                player: "A.J. Legend",
+                pos: "QB",
+                retiredYear: 2037,
+                teams: ["BUF"],
+                careerAv: 188,
+                championships: 3,
+                legacyScore: 97,
+                jerseyNumber: 12,
+                careerStats: { passing: { yards: 58214, td: 431 } },
+                awardCounts: { MVP: 2, AllPro1: 5, ProBowl: 9 }
+              });
+            });
+            await captureViewport(page, outputDir, `${viewport.name}-hof-ceremony-${theme}`, ["#hofCeremonyOverlay .hof-ceremony-card", "#hofCeremonyCloseBtn"], records);
+            await page.locator("#hofCeremonyCloseBtn").click();
           }
         }
       }
@@ -440,6 +506,9 @@ async function main() {
     ...evidenceThemes.map((theme) => `${viewport.name}-hall-ballot-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-decision-archive-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-co-gm-brief-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-prediction-receipt-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-agent-negotiation-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-hof-ceremony-${theme}`),
     ...evidenceThemes.flatMap((theme) => evidenceTabs.map(([, label]) => `${viewport.name}-game-${label}-${theme}`))
   ]);
   const capturedNames = new Set(records.map((record) => record.name));

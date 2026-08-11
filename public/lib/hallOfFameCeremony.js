@@ -1,5 +1,5 @@
 import { escapeHtml, showToast } from "./appCore.js";
-import { awardCountLine, hallOfFameCareerLine } from "./historyFormatting.js";
+import { closeModal, openModal } from "./modalManager.js";
 
 
 function ceremonyCareerLine(entry = {}) {
@@ -19,9 +19,9 @@ function shareText(entry) {
 }
 
 function drawCard(canvas, entry) {
-  if (!canvas) return;
+  if (!canvas) return false;
   const ctx = canvas.getContext("2d");
-  if (!ctx) return;
+  if (!ctx) return false;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
   grad.addColorStop(0, "#101820");
@@ -64,25 +64,67 @@ function drawCard(canvas, entry) {
   ctx.fillStyle = "#92a6b4";
   ctx.font = "500 22px Arial";
   ctx.fillText(ceremonyAwardLine(entry.awardCounts || {}).slice(0, 92), 76, 572);
+  return true;
+}
+
+function setCeremonyStatus(message, tone = "") {
+  const status = document.getElementById("hofCeremonyStatus");
+  if (!status) return;
+  status.textContent = message;
+  status.dataset.tone = tone;
+}
+
+export function closeHallOfFameCeremony() {
+  const overlay = document.getElementById("hofCeremonyOverlay");
+  if (!overlay) return;
+  overlay.hidden = true;
+  closeModal(overlay);
 }
 
 export function openHallOfFameCeremony(entry) {
   const overlay = document.getElementById("hofCeremonyOverlay");
   const canvas = document.getElementById("hofCeremonyCanvas");
   if (!overlay || !entry) return;
-  document.getElementById("hofCeremonyTitle").textContent = `${entry.player} Induction`;
-  document.getElementById("hofCeremonyCopy").textContent = shareText(entry);
-  drawCard(canvas, entry);
+  const title = document.getElementById("hofCeremonyTitle");
+  const copy = document.getElementById("hofCeremonyCopy");
+  if (title) title.textContent = `${entry.player} Induction`;
+  if (copy) copy.textContent = shareText(entry);
+  const cardReady = drawCard(canvas, entry);
+  setCeremonyStatus(cardReady ? "Ceremony card ready to share." : "Card preview unavailable; share text is still ready.", cardReady ? "success" : "error");
   overlay.hidden = false;
-  document.getElementById("hofCeremonyCloseBtn").onclick = () => { overlay.hidden = true; };
-  document.getElementById("hofCeremonyCopyBtn").onclick = () => {
-    navigator.clipboard?.writeText(shareText(entry)).then(() => showToast("Hall of Fame share text copied."));
+  openModal(overlay, { onClose: closeHallOfFameCeremony });
+  overlay.onclick = (event) => {
+    if (event.target === overlay) closeHallOfFameCeremony();
   };
-  document.getElementById("hofCeremonyDownloadBtn").onclick = () => {
-    const link = document.createElement("a");
-    link.download = `franchise-architect-hof-${String(entry.player || "legend").toLowerCase().replace(/[^a-z0-9]+/g, "-")}.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+  const closeButton = document.getElementById("hofCeremonyCloseBtn");
+  if (closeButton) closeButton.onclick = closeHallOfFameCeremony;
+  const copyButton = document.getElementById("hofCeremonyCopyBtn");
+  if (copyButton) copyButton.onclick = async () => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+      await navigator.clipboard.writeText(shareText(entry));
+      setCeremonyStatus("Share text copied.", "success");
+      showToast("Hall of Fame share text copied.");
+    } catch {
+      setCeremonyStatus("Copy failed. Select the share text above and copy it manually.", "error");
+      showToast("Could not copy Hall of Fame text.");
+    }
+  };
+  const downloadButton = document.getElementById("hofCeremonyDownloadBtn");
+  if (downloadButton) downloadButton.onclick = () => {
+    try {
+      if (!cardReady || !canvas?.toDataURL) throw new Error("Card canvas unavailable");
+      const link = document.createElement("a");
+      const safeName = String(entry.player || "legend").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "legend";
+      link.download = `franchise-architect-hof-${safeName}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+      setCeremonyStatus("Ceremony card downloaded.", "success");
+      showToast("Hall of Fame card downloaded.");
+    } catch {
+      setCeremonyStatus("Download failed. The share text remains available.", "error");
+      showToast("Could not download Hall of Fame card.");
+    }
   };
 }
 

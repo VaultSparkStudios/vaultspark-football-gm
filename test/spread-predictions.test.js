@@ -1,11 +1,18 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import test from "node:test";
 
 import {
+  MAX_PREDICTION_RECEIPTS,
+  getPredictionStorySnapshot,
   getPredictionStats,
+  getRecentPredictionReceipts,
+  gradeMargin,
   hitRatePct,
   loadWeekPredictions,
+  meanAbsoluteMarginError,
   predictionGameId,
+  resolveDashboardPredictions,
   resolveWeekPredictions,
   scorePrediction,
   submitPrediction
@@ -57,7 +64,8 @@ test("no predictions submitted: week predictions and stats both render as clean 
   withStorage(() => {
     assert.deepEqual(loadWeekPredictions("league-1", 2026, 4), {});
     assert.deepEqual(getPredictionStats("league-1"), {
-      seasonStreak: 0, bestStreak: 0, correctCount: 0, totalCount: 0
+      seasonStreak: 0, bestStreak: 0, correctCount: 0, totalCount: 0,
+      marginErrorTotal: 0, marginCount: 0
     });
     assert.equal(hitRatePct(getPredictionStats("league-1")), 0);
   });
@@ -101,6 +109,8 @@ test("an invalid or missing margin is stored as null rather than throwing or coe
     assert.equal(saved.margin, null);
     const saved2 = submitPrediction("league-1", 2026, 5, g, { winnerId: "BUF" });
     assert.equal(saved2.margin, null);
+    const saved3 = submitPrediction("league-1", 2026, 6, g, { winnerId: "BUF", margin: "" });
+    assert.equal(saved3.margin, null, "a blank browser input is not a prediction of a zero-point margin");
   });
 });
 
@@ -121,12 +131,18 @@ test("scorePrediction returns null for an unplayed game", () => {
   assert.equal(scorePrediction({ winnerId: "BUF" }, game()), null);
 });
 
-test("scorePrediction marks a correct winner pick as correct regardless of margin accuracy", () => {
+test("scorePrediction grades winner and exact/within-3/within-7/miss margins independently", () => {
   const g = game({ played: true, winnerId: "BUF", awayScore: 10, homeScore: 24 });
+  assert.deepEqual(gradeMargin(14, 14), { marginError: 0, marginBand: "exact" });
+  assert.deepEqual(gradeMargin(12, 14), { marginError: 2, marginBand: "within3" });
+  assert.deepEqual(gradeMargin(8, 14), { marginError: 6, marginBand: "within7" });
+  assert.deepEqual(gradeMargin(1, 14), { marginError: 13, marginBand: "miss" });
+
   const receipt = scorePrediction({ winnerId: "BUF", margin: 1 }, g);
+  assert.equal(receipt.winnerCorrect, true);
   assert.equal(receipt.correct, true);
-  assert.equal(receipt.actualMargin, 14);
-  assert.equal(receipt.actualWinnerId, "BUF");
+  assert.equal(receipt.marginBand, "miss");
+  assert.equal(receipt.marginError, 13);
 });
 
 test("scorePrediction marks a wrong winner pick as incorrect", () => {
@@ -137,9 +153,10 @@ test("scorePrediction marks a wrong winner pick as incorrect", () => {
 
 test("scorePrediction treats a tie as unwinnable for any prediction", () => {
   const g = game({ played: true, isTie: true, winnerId: null, awayScore: 20, homeScore: 20 });
-  const receipt = scorePrediction({ winnerId: "BUF" }, g);
+  const receipt = scorePrediction({ winnerId: "BUF", margin: 0 }, g);
   assert.equal(receipt.correct, false);
   assert.equal(receipt.actualWinnerId, null);
+  assert.equal(receipt.marginBand, "exact", "tie margin still grades truthfully and separately");
 });
 
 // ── resolution + streaks ─────────────────────────────────────────────────────
@@ -168,6 +185,7 @@ test("resolving a correct prediction increments the streak, hit rate, and best s
     assert.equal(stats.correctCount, 1);
     assert.equal(stats.totalCount, 1);
     assert.equal(hitRatePct(stats), 100);
+    assert.equal(meanAbsoluteMarginError(stats), 7);
   });
 });
 
@@ -230,6 +248,84 @@ test("predictions are scoped per league — two leagues never see each other's s
 
     assert.equal(getPredictionStats("league-A").totalCount, 1);
     assert.equal(getPredictionStats("league-B").totalCount, 0);
+  });
+});
+
+test("normal dashboard rollover resolves the completed week on advance and remains idempotent after reload", () => {
+  withStorage(() => {
+    const upcoming = game();
+    submitPrediction("fa-seed-BUF", 2026, 4, upcoming, { winnerId: "BUF", margin: 11 });
+    const completedDashboard = {
+      franchiseId: "fa-seed-BUF",
+      currentYear: 2026,
+      currentWeek: 5,
+      latestWeekResults: {
+        year: 2026,
+        week: 4,
+        games: [{
+          awayTeamId: "NYJ",
+          homeTeamId: "BUF",
+          awayScore: 10,
+          homeScore: 24,
+          winnerId: "BUF",
+          isTie: false
+        }]
+      }
+    };
+
+    const deepFreeze = (value) => {
+      if (value && typeof value === "object") {
+        Object.values(value).forEach(deepFreeze);
+        Object.freeze(value);
+      }
+      return value;
+    };
+    const before = JSON.stringify(completedDashboard);
+    deepFreeze(completedDashboard);
+    let first;
+    assert.doesNotThrow(() => {
+      first = resolveDashboardPredictions(completedDashboard);
+    });
+    assert.equal(JSON.stringify(completedDashboard), before, "rollover must not mutate frozen dashboard/week-result inputs");
+    assert.equal(first.receipts.length, 1);
+    assert.equal(first.receipts[0].marginBand, "within3");
+    assert.equal(first.stats.totalCount, 1);
+
+    // A cold reload supplies the same persisted lean week result. No module
+    // memory is required and the already-resolved receipt cannot double-count.
+    const reload = resolveDashboardPredictions(structuredClone(completedDashboard));
+    assert.deepEqual(reload.receipts, []);
+    assert.equal(reload.stats.totalCount, 1);
+    assert.equal(getRecentPredictionReceipts("fa-seed-BUF").length, 1);
+
+    const gameFlow = fs.readFileSync(new URL("../public/lib/gameFlow.js", import.meta.url), "utf8");
+    assert.match(gameFlow, /resolveDashboardPredictions\(newState\)/, "applyDashboard must settle rollover before moving to the next schedule");
+  });
+});
+
+test("receipt journal is newest-first, bounded, and story snapshot reports winner accuracy plus margin MAE", () => {
+  withStorage(() => {
+    for (let week = 1; week <= MAX_PREDICTION_RECEIPTS + 5; week += 1) {
+      const upcoming = game({ awayTeamId: `A${week}`, homeTeamId: `H${week}` });
+      submitPrediction("league-journal", 2026, week, upcoming, { winnerId: `H${week}`, margin: 7 });
+      resolveWeekPredictions("league-journal", 2026, week, [{
+        ...upcoming,
+        played: true,
+        winnerId: `H${week}`,
+        awayScore: 10,
+        homeScore: 20
+      }]);
+    }
+
+    const journal = getRecentPredictionReceipts("league-journal");
+    assert.equal(journal.length, MAX_PREDICTION_RECEIPTS);
+    assert.equal(journal[0].week, MAX_PREDICTION_RECEIPTS + 5);
+    assert.equal(journal.at(-1).week, 6);
+
+    const story = getPredictionStorySnapshot("league-journal", 3);
+    assert.equal(story.winnerAccuracyPct, 100);
+    assert.equal(story.meanAbsoluteMarginError, 3);
+    assert.equal(story.recent.length, 3);
   });
 });
 

@@ -10,7 +10,9 @@ import { escapeHtml, teamCode } from "./appCore.js";
 import {
   loadWeekPredictions,
   getPredictionStats,
+  getRecentPredictionReceipts,
   hitRatePct,
+  meanAbsoluteMarginError,
   predictionGameId,
   resolveWeekPredictions,
   submitPrediction
@@ -19,12 +21,22 @@ import {
 const PANEL_ID = "weeklyPredictionsPanel";
 
 function statsBar(stats) {
+  const marginError = meanAbsoluteMarginError(stats);
   return `
     <div class="wp-stats">
       <span class="wp-stat"><strong>${stats.seasonStreak}</strong> current streak</span>
       <span class="wp-stat"><strong>${stats.bestStreak}</strong> best streak</span>
-      <span class="wp-stat"><strong>${hitRatePct(stats)}%</strong> hit rate (${stats.correctCount}/${stats.totalCount})</span>
+      <span class="wp-stat"><strong>${hitRatePct(stats)}%</strong> winner accuracy (${stats.correctCount}/${stats.totalCount})</span>
+      <span class="wp-stat"><strong>${marginError == null ? "—" : marginError}</strong> margin MAE</span>
     </div>`;
+}
+
+function marginBandLabel(receipt) {
+  if (receipt?.marginBand === "exact") return "exact margin";
+  if (receipt?.marginBand === "within3") return `within 3 (${receipt.marginError} off)`;
+  if (receipt?.marginBand === "within7") return `within 7 (${receipt.marginError} off)`;
+  if (receipt?.marginBand === "miss") return `margin miss (${receipt.marginError} off)`;
+  return "margin not graded";
 }
 
 function pickForm(game, gameId) {
@@ -34,7 +46,7 @@ function pickForm(game, gameId) {
       <span class="wp-pick-at">@</span>
       <button type="button" class="wp-pick-btn" data-predict-winner="${escapeHtml(game.homeTeamId)}">${escapeHtml(teamCode(game.homeTeamId))}</button>
       <label class="wp-margin-label">by
-        <input type="number" min="0" step="1" class="wp-margin-input" data-margin-input placeholder="margin" />
+        <input type="number" min="0" step="1" required class="wp-margin-input" data-margin-input placeholder="margin" />
       </label>
       <button type="button" class="wp-submit-btn" data-predict-submit disabled>Predict</button>
     </div>`;
@@ -50,13 +62,30 @@ function pendingReceipt(prediction, game) {
 function resolvedReceipt(prediction, game) {
   const actualWinner = game.isTie ? "Tie" : teamCode(game.winnerId);
   const actualMargin = Math.abs(Number(game.awayScore || 0) - Number(game.homeScore || 0));
-  const tone = prediction.correct ? "wp-correct" : "wp-incorrect";
-  const icon = prediction.correct ? "✓" : "✗";
+  const winnerCorrect = prediction.winnerCorrect ?? prediction.correct;
+  const tone = winnerCorrect ? "wp-correct" : "wp-incorrect";
+  const icon = winnerCorrect ? "✓" : "✗";
   return `
     <div class="wp-receipt ${tone}">
       <span class="wp-receipt-icon">${icon}</span>
       Predicted <strong>${escapeHtml(teamCode(prediction.winnerId))}</strong>${prediction.margin != null ? ` by ${escapeHtml(String(prediction.margin))}` : ""}
       — actual: <strong>${escapeHtml(actualWinner)}</strong> by ${actualMargin}
+      · ${escapeHtml(marginBandLabel(prediction))}
+    </div>`;
+}
+
+function recentReceiptJournal(receipts = []) {
+  if (!receipts.length) return "";
+  return `
+    <div class="wp-recent" aria-label="Recent prediction receipts">
+      <strong>Recent receipts</strong>
+      ${receipts.slice(0, 3).map((receipt) => `
+        <div class="wp-recent-row">
+          Y${escapeHtml(receipt.year)} W${escapeHtml(receipt.week)}
+          · ${escapeHtml(receipt.gameId)}
+          · ${receipt.winnerCorrect ? "winner hit" : receipt.isTie ? "tie" : "winner miss"}
+          · ${escapeHtml(marginBandLabel(receipt))}
+        </div>`).join("")}
     </div>`;
 }
 
@@ -83,7 +112,7 @@ function gameRowHTML(game, predictions) {
  * receipt) is directly testable against constructed games/predictions/stats
  * fixtures, matching this repo's no-jsdom testing convention.
  */
-export function buildPredictionPanelMarkup(games, predictions, stats) {
+export function buildPredictionPanelMarkup(games, predictions, stats, recentReceipts = []) {
   const playableGames = (games || []).filter((g) => g.awayTeamId && g.homeTeamId);
   if (!playableGames.length) {
     return `<div class="wp-empty">No games this week to predict.</div>`;
@@ -92,6 +121,7 @@ export function buildPredictionPanelMarkup(games, predictions, stats) {
     <div class="weekly-predictions">
       <h3 class="wp-title">Predict the Week</h3>
       ${statsBar(stats)}
+      ${recentReceiptJournal(recentReceipts)}
       <div class="wp-games">${playableGames.map((g) => gameRowHTML(g, predictions)).join("")}</div>
     </div>`;
 }
@@ -114,8 +144,9 @@ export function renderPredictionPanel({ leagueId, year, week, games }) {
   resolveWeekPredictions(leagueId, year, week, playableGames);
   const predictions = loadWeekPredictions(leagueId, year, week);
   const stats = getPredictionStats(leagueId);
+  const recentReceipts = getRecentPredictionReceipts(leagueId, 3);
 
-  el.innerHTML = buildPredictionPanelMarkup(playableGames, predictions, stats);
+  el.innerHTML = buildPredictionPanelMarkup(playableGames, predictions, stats, recentReceipts);
 
   el.querySelectorAll("[data-game-id]").forEach((form) => {
     const gameId = form.dataset.gameId;
@@ -124,14 +155,21 @@ export function renderPredictionPanel({ leagueId, year, week, games }) {
     const submitBtn = form.querySelector("[data-predict-submit]");
     const marginInput = form.querySelector("[data-margin-input]");
     let selectedWinner = null;
+    const refreshSubmitState = () => {
+      const margin = marginInput?.value;
+      if (submitBtn) {
+        submitBtn.disabled = !selectedWinner || margin === "" || !Number.isFinite(Number(margin)) || Number(margin) < 0;
+      }
+    };
 
     form.querySelectorAll("[data-predict-winner]").forEach((btn) => {
       btn.addEventListener("click", () => {
         selectedWinner = btn.dataset.predictWinner;
         form.querySelectorAll("[data-predict-winner]").forEach((b) => b.classList.toggle("wp-selected", b === btn));
-        if (submitBtn) submitBtn.disabled = false;
+        refreshSubmitState();
       });
     });
+    marginInput?.addEventListener("input", refreshSubmitState);
 
     submitBtn?.addEventListener("click", () => {
       if (!selectedWinner) return;

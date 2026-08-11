@@ -1496,10 +1496,10 @@
     </div>
 
     <!-- ── Agent Negotiation Drama Modal ─────────────────────────────────── -->
-    <div id="agentNegotiationModal" class="modal hidden">
+    <div id="agentNegotiationModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="agentNegotiationTitle">
       <div class="modal-card agent-modal-card">
         <div class="row compact" style="justify-content:space-between">
-          <h2>Agent Negotiation</h2>
+          <h2 id="agentNegotiationTitle">Agent Negotiation</h2>
           <button id="closeAgentModalBtn" class="warn">Close</button>
         </div>
         <div id="agentModalHeader" class="agent-modal-header"></div>
@@ -1515,7 +1515,6 @@
             </label>
             <div class="row compact">
               <button id="submitAgentOfferBtn">Submit Offer</button>
-              <button id="signalCompetingOfferBtn" class="secondary">Signal Competing Interest</button>
             </div>
           </div>
           <div id="agentResponseBox" class="agent-response-box hidden"></div>
@@ -1716,7 +1715,7 @@
     </div>
 
 
-    <div id="hofCeremonyOverlay" class="hof-ceremony-overlay" hidden>
+    <div id="hofCeremonyOverlay" class="hof-ceremony-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="hofCeremonyTitle" aria-describedby="hofCeremonyCopy">
       <div class="hof-ceremony-card">
         <div class="row" style="justify-content:space-between">
           <div>
@@ -1727,6 +1726,7 @@
         </div>
         <canvas id="hofCeremonyCanvas" class="hof-card-canvas" width="1200" height="630"></canvas>
         <div id="hofCeremonyCopy" class="small"></div>
+        <div id="hofCeremonyStatus" class="hof-ceremony-status" role="status" aria-live="polite"></div>
         <div class="hof-actions">
           <button id="hofCeremonyCopyBtn">Copy Share Text</button>
           <button id="hofCeremonyDownloadBtn">Download Card</button>

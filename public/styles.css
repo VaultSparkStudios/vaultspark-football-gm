@@ -2463,12 +2463,22 @@ td.tone-info {
   width: 95%;
 }
 
+#closeAgentModalBtn,
+#hofCeremonyCloseBtn {
+  min-height: 44px;
+  min-width: 44px;
+}
+
 .agent-modal-header {
   background: var(--bg-2);
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 0.75rem 1rem;
   margin-bottom: 0.75rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
 }
 
 .agent-personality-box {
@@ -2479,10 +2489,40 @@ td.tone-info {
   margin-bottom: 0.75rem;
   font-size: 0.84rem;
   color: var(--accent);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.agent-personality-box span {
+  color: var(--muted);
 }
 
 .agent-demand-bar {
   margin-bottom: 0.75rem;
+}
+
+.agent-demand-copy {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+  color: var(--ink-strong);
+  font-weight: 700;
+}
+
+.agent-demand-track {
+  display: block;
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--inset);
+  border: 1px solid var(--line);
+}
+
+.agent-demand-track span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-3), var(--accent));
 }
 
 .agent-demand-numbers {
@@ -2517,6 +2557,21 @@ td.tone-info {
   padding-top: 0.5rem;
   max-height: 140px;
   overflow-y: auto;
+}
+
+.agent-history-entry {
+  padding: 0.42rem 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 430px) {
+  .agent-modal-header,
+  .agent-demand-copy {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 /* ── Keyboard Shortcuts Modal ────────────────────────────────────────────── */
@@ -4181,6 +4236,9 @@ html[data-theme="light"] .bg-layer {
   box-shadow: 0 26px 80px rgba(0,0,0,0.45);
 }
 .hof-card-canvas { width: 100%; max-height: 360px; border-radius: 8px; border: 1px solid var(--line); background: var(--inset); }
+.hof-ceremony-status { min-height: 1.4rem; margin-top: 0.55rem; color: var(--muted); }
+.hof-ceremony-status[data-tone="success"] { color: var(--success); }
+.hof-ceremony-status[data-tone="error"] { color: var(--danger); }
 .hof-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: flex-end; margin-top: 0.9rem; }
 
 .sw-field {

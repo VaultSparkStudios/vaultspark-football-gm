@@ -1,6 +1,36 @@
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderTable } from "./appCore.js";
 
+export function getSelectedDesignationPlayer() {
+  return state.roster.find((player) => player.id === state.selectedDesignationPlayerId) || null;
+}
+
+export function setSelectedDesignationPlayer(playerId) {
+  state.selectedDesignationPlayerId = playerId || null;
+  const player = getSelectedDesignationPlayer();
+  if (!player) state.selectedDesignationPlayerId = null;
+  const label = document.getElementById("designationSelectedPlayerText");
+  if (label) label.textContent = player ? `Selected: ${player.name} (${player.pos})` : "Selected: None";
+  const applyBtn = document.getElementById("applyDesignationBtn");
+  if (applyBtn) applyBtn.disabled = !player;
+  const clearBtn = document.getElementById("clearDesignationBtn");
+  if (clearBtn) clearBtn.disabled = !player;
+}
+
+export function getSelectedRetirementOverridePlayer() {
+  return (state.retiredPool || []).find((player) => player.id === state.selectedRetirementOverridePlayerId) || null;
+}
+
+export function setSelectedRetirementOverridePlayer(playerId) {
+  state.selectedRetirementOverridePlayerId = playerId || null;
+  const player = getSelectedRetirementOverridePlayer();
+  if (!player) state.selectedRetirementOverridePlayerId = null;
+  const label = document.getElementById("retirementOverrideSelectedPlayerText");
+  if (label) label.textContent = player ? `Selected: ${player.name} (${player.pos})` : "Selected: None";
+  const button = document.getElementById("retirementOverrideBtn");
+  if (button) button.disabled = !player;
+}
+
 export function renderRoster() {
   const rows = state.roster.map((player) => ({
     id: player.id,

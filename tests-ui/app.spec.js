@@ -542,6 +542,7 @@ test("switching runtime mode reloads setup state", async ({ page }) => {
 
   const slot = `runtime-switch-${Date.now()}`;
   await page.click('[data-testid="tab-settings"]');
+  await expect(page.locator("#settingsTab")).not.toHaveAttribute("aria-busy", "true");
   await page.fill("#saveSlotInput", slot);
   await page.click("#saveBtn");
   await waitGameReady(page);

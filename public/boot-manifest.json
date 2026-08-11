@@ -5,7 +5,26 @@
     "staticBytes": 730000,
     "staticModules": 58
   },
+  "targets": {
+    "staticBytes": 650000
+  },
+  "minimumIslandHeadroomRatio": 0.15,
+  "islandBudgets": {
+    "roster": { "roots": ["lib/tabRoster.js"], "maxBytes": 22000 },
+    "contracts": { "roots": ["lib/tabContracts.js"], "maxBytes": 46000 },
+    "draft": { "roots": ["lib/tabDraft.js"], "maxBytes": 34000 },
+    "stats": { "roots": ["lib/tabStats.js"], "maxBytes": 12000 },
+    "history": { "roots": ["lib/tabHistory.js"], "maxBytes": 72000 },
+    "settings": { "roots": ["lib/tabSettings.js"], "maxBytes": 74000 },
+    "exports": { "roots": ["lib/gistSync.js", "lib/franchiseNewsletter.js", "lib/leagueStoryExport.js"], "maxBytes": 36000 }
+  },
   "lazyRoots": [
+    "lib/tutorialCampaign.js",
+    "lib/betaFeedback.js",
+    "lib/tabRoster.js",
+    "lib/tabContracts.js",
+    "lib/tabDraft.js",
+    "lib/tabStats.js",
     "lib/tabHistory.js",
     "lib/tabSettings.js",
     "lib/gistSync.js",

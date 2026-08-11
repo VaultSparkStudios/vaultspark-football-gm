@@ -1,5 +1,15 @@
 # Agent Memory
 
+## Session 79 durable patterns
+
+- Player-agent flavor belongs beside the canonical contract mutation, never in a parallel endpoint that can report `signed` without changing the contract.
+- Browser evidence tiers must be assigned by trusted ingress. Caller-chosen participant IDs require a bounded server-issued capability before they can contribute to a k-anonymous cohort.
+- A code-splitting budget needs both an aggregate shell ceiling and per-island headroom. Hydration and action dispatch must retry lazy loading through the same registry.
+- Weekly prediction resolution belongs at dashboard rollover before the prior schedule cache is cleared; grade winner and margin separately and keep resolution idempotent.
+- Fixed or scrollable modal screenshots should capture the visible viewport. Element screenshots beyond the viewport can become transparent and conceal real touch/scroll defects.
+- Every new test file enters a canonical shard in the same patch. `test/shard-coverage.test.js` is the fail-closed authority.
+- Release promotion and launch readiness remain separate: prove the immutable SHA on stable staging before main, while keeping `launchReady: false` until independent launch evidence clears.
+
 ## Session 76 durable patterns
 
 - A handler branch reachable only under a failure condition (store rejection, oversized body, malformed input) is not proven by reading the code or by its happy-path siblings passing — it needs its own direct test. `src/community/server.js`'s stale/unavailable snapshot fallback shipped in Session 75 undocumented-as-untested; `test/community-server.test.js` now covers it.

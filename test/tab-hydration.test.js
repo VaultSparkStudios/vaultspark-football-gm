@@ -91,5 +91,5 @@ test("game flow boots Overview through the demand authority instead of all secon
   const source = await import("node:fs/promises").then((fs) => fs.readFile(new URL("../public/lib/gameFlow.js", import.meta.url), "utf8"));
   assert.match(source, /queueStartupHydration\(\)[\s\S]*hydrateTab\("overviewTab"\)/);
   assert.doesNotMatch(source, /queueStartupHydration\(\)[\s\S]{0,160}loadSecondaryPanels/);
-  assert.match(source, /activateTab\(tabId\)[\s\S]*hydrateTab\(tabId\)/);
+  assert.match(source, /activateTab\(tabId\)[\s\S]*hydrateTab\(tabId, \{ force \}\)/);
 });

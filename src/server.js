@@ -27,7 +27,6 @@ import {
 } from "./engine/gmLegacyScore.js";
 import { initRivalries, getRivalryContext, getTeamRivalries } from "./engine/rivalryDNA.js";
 import { runLeagueCombine, getCombineSummary } from "./engine/draftCombine.js";
-import { evaluateTeamOffer, applyCompetingOffer, agentSummary } from "./engine/playerAgentAI.js";
 import { getFanSentiment, fanApprovalLabel } from "./engine/fanSentiment.js";
 import { getMentorshipStatus, getMentorshipHistory } from "./engine/veteranMentorship.js";
 import { buildPersonaIntel } from "./engine/rivalGmPersona.js";
@@ -1635,52 +1634,6 @@ async function handleApi(req, res, url) {
     serverRewindStates.delete(id);
     serverRewindSnapshots = serverRewindSnapshots.filter((entry) => entry.id !== id);
     sendJson(res, 200, { ok: true, snapshots: serverRewindSnapshots.map((entry) => ({ ...entry })) });
-    return true;
-  }
-
-  // ── Contract-year agent negotiation ────────────────────────────────────────
-  if (req.method === "GET" && url.pathname === "/api/agent/roster") {
-    const agents = (session.league.players || [])
-      .filter((player) => player.agentState?.negotiationStatus === "active")
-      .map((player) => agentSummary(player))
-      .filter(Boolean);
-    sendJson(res, 200, { ok: true, agents });
-    return true;
-  }
-
-  if (req.method === "POST" && url.pathname === "/api/agent/offer") {
-    const body = parseJsonBody(await readRequestBody(req));
-    if (!body?.playerId) {
-      sendJson(res, 400, { ok: false, error: "playerId required." });
-      return true;
-    }
-    const player = (session.league.players || []).find((entry) => entry.id === String(body.playerId));
-    if (!player) {
-      sendJson(res, 404, { ok: false, error: "Player not found." });
-      return true;
-    }
-    if (!player.agentState) {
-      sendJson(res, 400, { ok: false, error: "Player has no active agent." });
-      return true;
-    }
-    const result = evaluateTeamOffer(player, Number(body.salary) || 0, Number(body.years) || 1);
-    sendJson(res, 200, { ok: true, result, agentState: player.agentState });
-    return true;
-  }
-
-  if (req.method === "POST" && url.pathname === "/api/agent/competing-offer") {
-    const body = parseJsonBody(await readRequestBody(req));
-    if (!body?.playerId) {
-      sendJson(res, 400, { ok: false, error: "playerId required." });
-      return true;
-    }
-    const player = (session.league.players || []).find((entry) => entry.id === String(body.playerId));
-    if (!player) {
-      sendJson(res, 404, { ok: false, error: "Player not found." });
-      return true;
-    }
-    const result = applyCompetingOffer(player, body.competingTeamId || "Unknown");
-    sendJson(res, 200, { ok: true, result, agentState: player.agentState || null });
     return true;
   }
 

@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "1.3",
+  "date": "2026-08-11",
+  "session": 79,
+  "project": "franchise-architect-football",
+  "intent": "Run the full arc from live evidence, implement every verified audit item, prove rendered UI and exact-SHA release safety, then close out and publish without claiming launch readiness.",
+  "intentStatus": "achieved",
+  "rubric": "public browser football game: product depth, game loop, UI/UX, deterministic intelligence, security, performance, agent efficiency, rendered pixels and release truth",
+  "sourceAudit": "docs/AUDIT_2026-08-11_SESSION79.json",
+  "rankedItems": 6,
+  "itemsShipped": 6,
+  "itemsDeferred": 0,
+  "secondOrderShipped": 3,
+  "rejectedCandidates": 7,
+  "geniusList": {
+    "open": 0,
+    "closed": 6,
+    "exhausted": true
+  },
+  "verification": {
+    "node": "1018/1018, direct exit 0, source-bound receipt",
+    "playwright": "40/40, direct exit 0",
+    "responsive": "158/158 capture checks across mobile, tablet and desktop",
+    "visual": "44 hash-bound dark/light desktop/mobile captures inspected; two 34px modal close targets found and fixed",
+    "pages": "build and static smoke green",
+    "boot": "610654/730000 bytes, 48/58 modules, zero lazy leaks, 16.35% byte headroom; every island budget has at least 15% headroom",
+    "community": "capability, Origin, evidence-tier, rotation, expiry, use-ceiling, retry and withdrawal adversarial coverage green",
+    "doctorBlockingFailing": 0,
+    "security": "staged secret scan clean with 0 findings; supply-chain incident scan reports 0 affected repositories"
+  },
+  "sil": {
+    "version": "3.0",
+    "score": 998,
+    "max": 1000
+  },
+  "release": {
+    "verdict": "HOLD",
+    "candidateRevision": "bound by the immutable closeout commit",
+    "stagingRevision": "must equal candidate before direct-main push",
+    "productionRevision": "must equal the same candidate after push",
+    "launchReady": false,
+    "independentGatesOpen": [
+      "email-delivery-and-reply-identity-unverified",
+      "founder-launch-approval-unverified",
+      "lifecycle-authority-unreconciled",
+      "obelisk-accountless-posture-unverified",
+      "current-edge-and-web-vitals-evidence-incomplete"
+    ]
+  },
+  "cost": "No new package, paid model call or service. Existing static hosting and self-hosted Community Stats keep marginal session cost at zero.",
+  "arkReceipts": [
+    "01JVP259D7A591C66B494C0024",
+    "01JVP25ABPEC5E514657FC1F42",
+    "01JVP28IEAC6E561EAD53FD2FD"
+  ]
+}

@@ -60,7 +60,7 @@ function latestAudit() {
   const items = Array.isArray(sidecar.items) ? sidecar.items : [];
   return {
     ...latest,
-    openItems: items.filter((item) => !/^(?:done|complete|completed|shipped)$/i.test(String(item.status || ""))),
+    openItems: items.filter((item) => !/^(?:done|complete|completed|implemented|shipped)$/i.test(String(item.status || ""))),
     shippedInnovations: (Array.isArray(sidecar.secondOrderCandidates) ? sidecar.secondOrderCandidates : [])
       .filter((item) => /^(?:done|complete|completed|shipped|second-order-shipped)$/i.test(String(item.status || "")))
   };
