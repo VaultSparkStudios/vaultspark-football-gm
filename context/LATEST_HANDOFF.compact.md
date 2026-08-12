@@ -1,51 +1,55 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 1af0a17c56b7 -->
-<!-- generated-at: 2026-08-12T00:05:59.261Z -->
+<!-- source-hash: 91e71d819a60 -->
+<!-- generated-at: 2026-08-12T02:20:06.443Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 80 HANDOFF SUMMARY
+SESSION 81 HANDOFF SUMMARY
 
-Session
-- Session 80 closeout. Full /arc, direct-main publication, full-stack deployment complete.
+Status
+- S81 /arc audit and implementation complete locally. Candidate proof green.
+- Immutable candidate metadata being finalized for stable staging proof before direct-main push.
 
-What Shipped
-- General Manager command cards carry exact targets via one hydrate-scroll-focus authority across desktop, mobile, Blueprint, season chapters.
-- Architecture Review exposes source-derived strongest mastery signature (no hidden bonuses).
-- Reduced-motion honored as part of shared navigation contract.
+Shipped This Session
+- GM choices disclose exact pre-commit boundaries; preview and commit share one decision authority.
+- Draft War Room: deterministic stale-safe on-clock offers, bound to board/ownership fingerprints, each slot consumed once.
+- Player-directed veteran mentorship within existing development/OVR budget; deterministic CPU fallback.
+- Season stewardship reports use canonical cap/draft/receipted-trade evidence.
+- Community telemetry: stops collection immediately, retries remote deletion from identifier-only tombstone; snapshot reads honor ETags, refresh floor, single-flight, bounded backoff.
+- Backend promotion tests runtime behavior; Node 24.14.0 parity; exact source revision from process health.
 
-Release State
-- Candidate SHA 7becc57385515042dee5d80146c635d45962ea40; staging 14/14; artifact 6781437a...c545b5c9a; rollback a836ac8f-8e6b-4b42-86e2-b7b6a2fb5344.
-- Direct main push green: CI 31544142759, Pages 31544142748, brief-format 31544142762, backend dispatch 31544469131.
-- Production serves same revision/artifact. Community API database-ready, correct CORS/cache headers.
-- Proof green: Node 1024/1024, Playwright 40/40, responsive 176/176, 56 captures hash-bound in docs/visual-qa/LATEST.json, secret scan 0.
+Verification Evidence
+- Canonical Node 1,053/1,053 direct exit 0; Pages build; browser boot/reachability green.
+- Responsive evidence 194 captures; 56 reviewed dark/light desktop/mobile captures hash-bound in docs/visual-qa/LATEST.json.
 
 Now Bucket (top 3)
-- Observe a real consented first-session/playtest cohort.
-- Observe first real opted-in Community Stats cohort (no manufactured activity).
-- Preserve launchReady: false and local public-unlaunched/FORGE truth.
+- Finish exact-SHA stable staging, push unchanged SHA to main, verify CI/Pages/backend runtime attestation plus production provenance.
+- Observe real consented player and Community Stats cohorts without manufacturing activity.
+- Hold launch readiness until all independent gates have evidence.
 
 Blockers (top 3)
-- Reply-capable on-domain email evidence (football@playfranchisearchitect.com) not yet delivered.
-- SHA-bound founder public-launch approval absent.
-- Lifecycle reconciliation plus current performance/edge/Web Vitals evidence missing.
+- launchReady: false preserved; code promotion does not clear launch gates.
+- Reply-capable on-domain email evidence outstanding.
+- SHA-bound public-launch approval and lifecycle reconciliation outstanding.
 
-Human-Blocked (age)
-- Delivered reply-capable email evidence: open since S78 (3 sessions).
-- Founder launch approval: open since S78 (3 sessions).
-- Lifecycle reconciliation: open since S78 (3 sessions).
+Human-Blocked Items
+- Delivered/reply-capable football@playfranchisearchitect.com email evidence — pending since S78+.
+- SHA-bound founder launch approval — pending since S78+.
+- Authoritative lifecycle reconciliation — pending since S78+.
+- Current performance/edge (Obelisk) evidence — pending.
 
-Constraints That Survive
-- Every actionable command needs targetTab plus targetId; broad tab activation insufficient.
-- Mastery signatures stay evidence projections only; never a hidden rating/bonus/recommendation weight.
-- Authorization covers commit/push/deploy only, not a public-launch flip.
-- Open release work stays open in audit authority until live evidence exists; tests must not force closure.
+Decisions That Must Survive
+- Never add fabricated probabilities or predicted outcomes; preview/commit share one authority.
+- Accepted draft offers bound to fingerprints, consume each live slot once.
+- Mentorship changes attribution, not total OVR budget.
+- Remote deletion stays pending until acknowledged; local decline never resumes collection.
+- Launch readiness independent of code promotion.
 
 Key Files
-- public/lib/exactSurfaceNavigation.js, public/lib/franchiseCommandCenter.js, public/lib/mobileLoop.js, public/app.js
-- src/engine/architectMasteryPortfolio.js, public/lib/tabOverview.js
-- scripts/responsive-evidence.mjs, scripts/write-visual-qa-receipt.mjs
-- docs/AUDIT_2026-08-11_SESSION80.json, docs/visual-qa/LATEST.json
+- src/engine/gmDecisionAuthority.js, onClockTradeMarket.js, veteranMentorship.js
+- src/stats/gmReportCard.js, public/lib/tabDraft.js, mentorshipPanel.js
+- public/lib/communityTelemetry.js, public/community-stats.js, src/community/server.js
+- scripts/responsive-evidence.mjs, write-visual-qa-receipt.mjs
+- docs/AUDIT_2026-08-11_SESSION81.json, docs/visual-qa/LATEST.json
 
-Next Session
-- Run a fresh live-code audit; do not assume prior lens current; do not flip launch readiness until all three human gates land.
+Next: Complete exact-SHA staging proof, push same SHA to main, verify production provenance — do not flip launchReady.

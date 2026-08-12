@@ -1,34 +1,33 @@
-# Session 80 Closeout — Exact Decision Surfaces and Visible Architect Mastery
-
-## Session Intent — S81
-
-Run the full `/arc`: perform a fresh nine-axis live-code audit under the public browser-game and app-release lenses, implement every verified ranked item plus viable second-order refinements, complete rendered-pixel and release verification for any touched interface, then execute the canonical Session 81 closeout and direct-to-main workflow through stable staging when deployable changes exist. Preserve `launchReady: false` unless every independent launch gate is proven; never manufacture cohort evidence.
+# Session 81 Closeout — Franchise Agency, Stewardship and Runtime Truth
 
 ## Where We Left Off
 
-- The requested full `/arc`, direct-main publication and full-stack deployment are complete. General Manager command cards now carry exact targets through one hydrate-scroll-focus authority across desktop, mobile, Blueprint and season chapters; Architecture Review exposes the source-derived strongest mastery signature without adding hidden bonuses.
-- Candidate proof is green: Node 1,024/1,024 direct exit 0; Playwright 40/40; Pages build/smoke; responsive evidence 176/176; 56 inspected dark/light desktop/mobile captures hash-bound in `docs/visual-qa/LATEST.json`; scoped workspace secret scan 0 findings.
-- Immutable candidate `7becc57385515042dee5d80146c635d45962ea40` passed stable staging 14/14 with artifact `6781437a0b319806945b94700e02d53faeee59be0885060a1b78dcc7545b5c9a` and rollback `a836ac8f-8e6b-4b42-86e2-b7b6a2fb5344`. Direct main push, full CI `31544142759`, Pages `31544142748`, brief-format `31544142762` and guarded backend dispatch `31544469131` are green. Production serves the same revision/artifact; the external Community API is database-ready with correct CORS and cache headers.
-- The user's authorization covers commit, direct push and full deployment. It does not authorize a public-launch flip. Preserve `launchReady: false`, local public-unlaunched/FORGE truth, and the independent email/lifecycle/Web Vitals/launch-approval holds.
+- The full S81 `/arc` audit and implementation scope is complete locally. GM choices now disclose exact pre-commit boundaries; the Draft War Room has deterministic stale-safe on-clock offers; mentorship is player-directed within the existing development budget; and season stewardship reports use canonical cap, draft and receipted trade evidence.
+- Community participation now stops collection immediately while truthfully retrying remote deletion from an identifier-only tombstone. Snapshot reads honor ETags, the server refresh floor, single-flight and bounded backoff. Backend promotion tests runtime behavior, uses Node 24.14.0 parity and requires exact source revision from process health.
+- Candidate proof is green: canonical Node `1,053/1,053` direct exit 0; Pages build; browser boot/reachability; responsive evidence `194` captures; and `56` reviewed dark/light desktop/mobile captures hash-bound in `docs/visual-qa/LATEST.json`.
+- Immutable candidate metadata is being finalized for stable staging proof before direct-main push. It does not authorize a public-launch flip. Preserve `launchReady: false` and the independent email/lifecycle/Web Vitals/launch-approval holds.
 
 ## Decisions That Must Survive
 
-- Every actionable command needs `targetTab` plus `targetId`; a broad tab activation does not satisfy the weekly-loop contract.
-- Mastery signatures remain evidence projections only. Visibility must never become a hidden rating, bonus or recommendation weight.
-- Reduced-motion preference is part of the shared navigation contract.
-- Open release work remains open in audit/innovation authority until live evidence exists; tests must not force premature closure.
+- Preview and commit share one decision authority; never add fabricated probabilities or predicted outcomes.
+- Accepted draft offers are bound to board/ownership fingerprints and consume each live slot exactly once.
+- Mentorship focus changes attribution, not the existing total OVR budget; CPU fallback stays deterministic.
+- Remote deletion remains pending until acknowledged, but local decline never resumes collection.
+- Launch readiness remains independent of code promotion.
 
 ## Next Best Work
 
-- Observe a real consented first-session/playtest cohort and the first real opted-in Community Stats cohort; never manufacture outcome evidence or activity.
-- Do not change launch readiness until the separate reply-capable email, lifecycle, current performance/edge and SHA-bound public-launch evidence exists.
+- Finish exact-SHA stable staging, push that unchanged SHA to main, and verify CI/Pages/backend runtime attestation plus production provenance.
+- Observe real consented player and Community Stats cohorts without manufacturing activity.
+- Do not change launch readiness until reply-capable email, lifecycle, current performance/edge and SHA-bound public-launch evidence exists.
 
 ## Key Files
 
-- `public/lib/exactSurfaceNavigation.js`, `public/lib/franchiseCommandCenter.js`, `public/lib/mobileLoop.js`, `public/app.js`
-- `src/engine/architectMasteryPortfolio.js`, `public/lib/tabOverview.js`
+- `src/engine/gmDecisionAuthority.js`, `src/engine/onClockTradeMarket.js`, `src/engine/veteranMentorship.js`
+- `src/stats/gmReportCard.js`, `public/lib/tabDraft.js`, `public/lib/mentorshipPanel.js`
+- `public/lib/communityTelemetry.js`, `public/community-stats.js`, `src/community/server.js`
 - `scripts/responsive-evidence.mjs`, `scripts/write-visual-qa-receipt.mjs`
-- `docs/AUDIT_2026-08-11_SESSION80.json`, `docs/visual-qa/LATEST.json`
+- `docs/AUDIT_2026-08-11_SESSION81.json`, `docs/visual-qa/LATEST.json`
 
 ---
 

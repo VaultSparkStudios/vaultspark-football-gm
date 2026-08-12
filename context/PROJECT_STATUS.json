@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 80 complete and fully deployed: exact General Manager decision surfaces and visible evidence-derived Architect mastery are live at 7becc57385515042dee5d80146c635d45962ea40 with staging/production artifact 6781437a0b319806945b94700e02d53faeee59be0885060a1b78dcc7545b5c9a; CI, Pages and guarded backend deployment are green. Launch HOLD remains explicit.",
-  "nextMilestone": "Observe real consenting first-session and Community Stats cohorts without manufacturing activity; separately prove delivered on-domain email, public-launch approval and authoritative lifecycle before any launch flip.",
+  "currentFocus": "Session 81 implementation and local proof complete: exact GM consequence dossiers, live on-clock draft offers, player-directed mentorship, canonical stewardship reports, truthful Community deletion/retry, efficient snapshot refresh and exact backend runtime attestation. Immutable candidate awaits stable staging before direct-main promotion; launch HOLD remains explicit.",
+  "nextMilestone": "Prove the exact Session 81 candidate on stable staging, push the unchanged SHA to main, verify CI/Pages/backend production provenance, then observe real consenting cohorts without manufacturing activity.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -18,19 +18,23 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": {
-    "totalTests": 1024,
-    "pass": 1024,
+    "totalTests": 1053,
+    "pass": 1053,
     "fail": 0,
     "lastRun": "2026-08-11",
     "newTestFiles": [
-      "test/exact-surface-navigation.test.js"
+      "test/gm-stewardship-report.test.js",
+      "test/mentorship-covenants.test.js",
+      "test/on-clock-trade-market.test.js",
+      "test/startup-brief-last-session.test.js",
+      "test/theme-customizer.test.js"
     ],
-    "newTestCount": 6,
-    "coverage": "Session 80 canonical npm test 1024/1024 direct exit 0 (up from 1018/1018), covering exact tab hydration/scroll/focus, target receipts, mastery signature evidence and empty states, reduced motion, desktop/mobile browser wiring and phase-correct innovation authority.",
-    "uiSuiteNote": "Playwright 40/40 and responsive evidence 176/176; 56 reviewed dark/light desktop/mobile captures are hash-bound in docs/visual-qa/LATEST.json."
+    "newTestCount": 29,
+    "coverage": "Session 81 canonical npm test 1053/1053 direct exit 0 (core 123, runtime 666, sim-contract 79, sim-realism 1, Studio 184), covering all seven audit items and three second-order repairs.",
+    "uiSuiteNote": "Responsive evidence 194 captures; 56 reviewed dark/light desktop/mobile captures are hash-bound in docs/visual-qa/LATEST.json."
   },
-  "testsPassing": 1024,
-  "testsTotal": 1024,
+  "testsPassing": 1053,
+  "testsTotal": 1053,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -85,7 +89,7 @@
   "currentSession": 81,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "npm test 1024/1024 direct exit 0; Playwright 40/40; responsive evidence 176/176; CANON-053 56 captures/2 themes; secret scan 0; stable staging 14/14 and production at 7becc573/6781437a; CI 31544142759, Pages 31544142748, brief 31544142762 and backend deploy 31544469131 green; external API database/CORS/cache health green.",
+  "lastVerification": "Session 81 npm test 1053/1053 direct exit 0; Pages build green; browser boot/reachability green; responsive evidence 194 captures; CANON-053 56 hash-bound reviewed captures across dark/light desktop/mobile. Stable staging and production promotion pending exact candidate.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -139,7 +143,25 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.037,
   "entropyLastComputed": "2026-08-11",
-  "lastSessionSummary": "Session 80 complete and fully deployed: exact General Manager decision surfaces and visible evidence-derived Architect mastery are live at 7becc57385515042dee5d80146c635d45962ea40 with staging/production artifact 6781437a0b319806945b94700e02d53faeee59be0885060a1b78dcc7545b5c9a; CI, Pages and guarded backend deployment are green. Launch HOLD remains explicit.",
+  "lastSessionSummary": {
+    "session": 81,
+    "shipped": [
+      "exact pre-commit GM consequence dossiers shared with commit planners",
+      "deterministic stale-safe on-clock draft offer market",
+      "player-directed mentorship covenants within the existing OVR budget",
+      "canonical persisted season stewardship reports",
+      "truthful Community deletion tombstones and efficient ETag snapshot refresh",
+      "exact backend runtime revision attestation",
+      "three second-order startup, Sim-Watch and theme-contract repairs"
+    ],
+    "tests": "npm test 1053/1053 direct exit 0; responsive evidence 194 captures; 56 reviewed dark/light desktop/mobile receipts",
+    "deploy": "Immutable candidate awaits exact-SHA stable staging proof before direct-main publication; launchReady remains false.",
+    "honestDeferrals": [
+      "Multi-tab snapshot leadership remains an optional L3 extension; single-flight, ETag, refresh floor and backoff are shipped.",
+      "Launch remains held on reply-capable email, SHA-bound founder approval, lifecycle authority and current edge/Web Vitals evidence.",
+      "Observe real opted-in cohorts without manufacturing activity."
+    ]
+  },
   "testingSurfaces": [
     {
       "type": "local",
@@ -189,7 +211,7 @@
       "ranAt": "2026-08-12T02:04:52.157Z"
     }
   ],
-  "session": 80,
+  "session": 81,
   "backendDeployment": {
     "sourceRevision": "7becc57385515042dee5d80146c635d45962ea40",
     "workflowRun": 31544469131,

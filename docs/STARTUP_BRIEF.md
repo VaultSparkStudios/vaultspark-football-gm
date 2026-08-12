@@ -21,8 +21,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ STALE LAST SESSION SUMMARY ══════════════════════════════════╗
-║  Expected S80; PROJECT_STATUS summary says S79.                  ║
-║  Session 80 complete and fully deployed: exact General Manager   ║
+║  Expected S80; PROJECT_STATUS summary says S81.                  ║
+║  Session 81 implementation and local proof complete: exact GM c  ║
 ║  Repair: update PROJECT_STATUS.lastSessionSummary at closeout.   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -33,7 +33,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 13d · refresh required             ║
+║  Profile · game · live-beta · arch=— · top-axis=—                ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -42,7 +42,7 @@
 ║                                                                  ║
 ║    996/1000   ███████████████████████░   100%                    ║
 ║    SIL v3.0  ·  Avg3: 997.3  ·  Velocity 0→                      ║
-║    Active 20676d · closeout 1d · source: newest SIL/status/hand  ║
+║    Active 17024d · closeout 1d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -61,19 +61,19 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 80 ════════════════════════════╗
-║  Shipped:  Session 80 complete and fully deployed: exact Genera  ║
-║  Tests:    1024/1024 passing  ·  Deploy: N/A                     ║
+║  Shipped:  Session 81 implementation and local proof complete:   ║
+║  Tests:    1053/1053 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    6% used                          ║
-║     57,031 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~28,516 tok/turn  ·  cache 50%  ·  30 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     2,663 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,332 tok/turn  ·  cache 50%  ·  136 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1024/1024 passing (2026-08-11) · STALE — run   ║
+║  ✓  Tests         1053/1053 passing (2026-08-12)                 ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -111,23 +111,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-08-11_SESSION81.md                   ║
-║                                                                  ║
-║  #1 · FIRE · gm-choice-boundary-dossier                          ║
-║  gm-choice-boundary-dossier — Extract canonical pure preview pl  ║
-║                                                                  ║
-║  #2 · FIRE · on-clock-trade-market                               ║
-║  on-clock-trade-market — Generate at most three deterministic r  ║
-║                                                                  ║
-║  #3 · FIRE · backend-runtime-attestation                         ║
-║  backend-runtime-attestation — Define the backend test gate, in  ║
-║                                                                  ║
-║  #4 · FIRE · mentorship-covenants                                ║
-║  mentorship-covenants — Let the player select eligible mentor/m  ║
-║                                                                  ║
-║  #5 · FIRE · gm-stewardship-report-authority                     ║
-║  gm-stewardship-report-authority — Rebuild the dead report-card  ║
-║                                                                  ║
+║  ✓ queue exhausted · source: AUDIT_2026-08-11_SESSION81.md       ║
+║  Closed: 7 · Open: 0                                             ║
+║  Latest audit has no open ranked items; run /audit for a new li  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
