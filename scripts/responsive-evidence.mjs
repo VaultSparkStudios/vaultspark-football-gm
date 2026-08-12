@@ -27,6 +27,7 @@ const evidenceTabs = [
   ["rosterTab", "roster"],
   ["contractsTab", "contracts"],
   ["scoutingTab", "scouting"],
+  ["draftTab", "draft"],
   ["historyTab", "history"],
   ["statsTab", "stats"],
   ["settingsTab", "settings"]
@@ -257,6 +258,31 @@ async function main() {
           }
           await page.waitForFunction((id) => document.getElementById(id)?.classList.contains("active"), tabId);
           await page.waitForFunction((id) => !document.getElementById(id)?.hasAttribute("aria-busy"), tabId);
+          if (tabId === "draftTab") {
+            await page.evaluate(async () => {
+              const [{ state }, draftUi] = await Promise.all([
+                import("./lib/appState.js"),
+                import("./lib/tabDraft.js")
+              ]);
+              const teamId = state.dashboard?.controlledTeamId || "BUF";
+              state.draftState = {
+                currentPick: 18,
+                totalPicks: 224,
+                completed: false,
+                order: Array.from({ length: 224 }, (_, index) => index === 17 ? teamId : "MIA"),
+                slots: Array.from({ length: 224 }, (_, index) => ({ round: Math.floor(index / 32) + 1, teamId: index === 17 ? teamId : "MIA" })),
+                selections: [{ pick: 17, round: 1, teamId: "MIA", player: "Jordan Vale", pos: "WR" }],
+                available: [{ id: "visual-edge", name: "Malik North", position: "EDGE", age: 21, heightInches: 76, weightLbs: 251, overall: 77, potential: 92, scouting: { rank: 8, projectedRound: 1 } }],
+                onClockTradeMarket: {
+                  active: true,
+                  offers: [{ id: "visual-offer", fingerprint: "visual-boundary", teamName: "Seattle Orcas", targetPosition: "EDGE", rationale: "Seattle will move up for its top pressure defender.", incomingPicks: [{ year: 2028, round: 1 }, { year: 2029, round: 3 }], incomingValue: 970, livePick: { value: 900 }, valueDelta: 70, counterAvailable: true }]
+                }
+              };
+              draftUi.renderDraft();
+            });
+            await page.waitForSelector(".on-clock-offer-card", { state: "visible" });
+            await captureElement(page, outputDir, `${viewport.name}-draft-market-${theme}`, ".on-clock-market", records);
+          }
           const selectors = tabId === "overviewTab"
             ? ["#advanceWeekBtn", "#advance4WeeksBtn", "#advanceSeasonBtn", "#themeToggleBtn", "#gmPersonaTier"]
             : ["#themeToggleBtn"];
@@ -279,6 +305,7 @@ async function main() {
           }
           if (tabId === "rosterTab") {
             await captureElement(page, outputDir, `${viewport.name}-roster-window-${theme}`, "#rosterWindowTable", records);
+            await captureElement(page, outputDir, `${viewport.name}-mentorship-${theme}`, "#mentorshipPanel", records);
           }
           if (tabId === "contractsTab") {
             const agentButton = page.locator("#negotiationTable [data-agent-player-id]").first();
@@ -565,6 +592,8 @@ async function main() {
     ...evidenceThemes.map((theme) => `${viewport.name}-guide-modal-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-rival-coaching-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-roster-window-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-mentorship-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-draft-market-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-hall-ballot-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-decision-archive-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-co-gm-brief-${theme}`),

@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-08-11T21:54:31.368Z",
-  "sourceRevision": "eb9c52fd4f44-worktree",
-  "artifact": "static responsive-evidence:17448c2ce5835510e7bd8b66706cb007ec0e5b07a9252d88a358c7820273e1d0",
+  "capturedAt": "2026-08-12T01:36:20.227Z",
+  "sourceRevision": "f5592cf81bc5-worktree",
+  "artifact": "static responsive-evidence:7b8790a8e127e7fbac1625a0a83b1591fb91ca4beb30370ff0debc70c2980935",
   "themes": [
     "dark",
     "light"
   ],
   "captures": [
     {
-      "file": "s80-desktop-trophy-road-dark.png",
+      "file": "s81-desktop-trophy-road-dark.png",
       "sha256": "4ddab36f0bc931b0f29cb389c5bc7dbf8c95cec0c6849956f5739f139bb177a3",
       "theme": "dark",
       "viewport": {
@@ -19,7 +19,7 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s80-desktop-trophy-road-light.png",
+      "file": "s81-desktop-trophy-road-light.png",
       "sha256": "1fcfe2ae56fd5084447eaf2d4c556a27e13c122405f69a7911eade951582fd03",
       "theme": "light",
       "viewport": {
@@ -29,8 +29,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s80-desktop-sim-watch-reel-dark.png",
-      "sha256": "aa134f0de7360ee10c7a1c421297d2838f161e743c733566e180f3f45d7522b8",
+      "file": "s81-desktop-sim-watch-reel-dark.png",
+      "sha256": "b530bae5f0d7957606d615330006939030dc9da536a3a4f8187356f20c25d493",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -39,8 +39,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s80-desktop-sim-watch-reel-light.png",
-      "sha256": "6f60dbf7a4f497ea78b2379831a5eee15aed248149659ce5f1b38e71ff9aadc8",
+      "file": "s81-desktop-sim-watch-reel-light.png",
+      "sha256": "f22a1ac0a4be0b20fd5dbc553c4157eefee9dc0eed83ee8f6c660ee47d0d1800",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -49,8 +49,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s80-desktop-room-watch-dark.png",
-      "sha256": "991d567e8e4f597b5a4caba661a1ec8d096c06cc843d3979b6923e66445430d0",
+      "file": "s81-desktop-room-watch-dark.png",
+      "sha256": "985c6bd83c83dd485c236edeec167400bb342f0fb6f7e288fc92adc988b37274",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -59,8 +59,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s80-desktop-room-watch-light.png",
-      "sha256": "4764ee37fcb01952fd740f3328ff7ae0d4d1061e3ae89a620ef3f59f3d815b5e",
+      "file": "s81-desktop-room-watch-light.png",
+      "sha256": "a3d0ba08250733a86f2e44fa88d0dff772f83a29b37a5770de5c433845a8de23",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -69,8 +69,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s80-desktop-architect-cut-dark.png",
-      "sha256": "9952957a69923f5a404964e784d65371b24671ce12e00ccce4e1ab435992d49a",
+      "file": "s81-desktop-architect-cut-dark.png",
+      "sha256": "ddd12b8201ff123a3226b0e6418a56fc29796491e75588753f3ebe47a0f544fb",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -79,8 +79,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s80-desktop-architect-cut-light.png",
-      "sha256": "610a43e29c8f26850e87479ea3482b754d7c7ca48a7b252c2f6b518453459970",
+      "file": "s81-desktop-architect-cut-light.png",
+      "sha256": "0131f3b2f3dee284a0ab919db7eb9bb2523296952cd65639cb008cc1a5f8be4f",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -89,8 +89,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s80-desktop-guide-modal-dark.png",
-      "sha256": "74af07bc5e5ddaabb621402fcfc5416ae723b9ef1a20271e21b137918dff1023",
+      "file": "s81-desktop-guide-modal-dark.png",
+      "sha256": "9e8b2773d5448f3194506695bbd66387e6149bae0347bafd95a49a8645b5c797",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -99,8 +99,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s80-desktop-guide-modal-light.png",
-      "sha256": "1866de53d931afe1d0e738451bd8fcffb57a798a2b59fdc9291f10b5c202aa31",
+      "file": "s81-desktop-guide-modal-light.png",
+      "sha256": "f4b33cbacb8ed2038f0e55b5e2c1991917e6d7a845bad38cd81602346c68de18",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -109,8 +109,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s80-desktop-rival-coaching-dark.png",
-      "sha256": "17eaba7aa2e1e9c4816939eb1e4c85fad9b35f1c3710c4ab89a7fb0b16bc6dd5",
+      "file": "s81-desktop-rival-coaching-dark.png",
+      "sha256": "523a126086ff6d4d7ebf1a47beaa0ffcdb3d4eb63494b3a54c6102c4814b639c",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -119,8 +119,8 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s80-desktop-rival-coaching-light.png",
-      "sha256": "c39a8e867c57bb270b652ef17bb6fcd9df1746b5d964312a9ff83a4f4ad7118b",
+      "file": "s81-desktop-rival-coaching-light.png",
+      "sha256": "ae8d94d388baf1410730f49a496f452a7e24e620b4416430f62964e276c7c8e4",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -129,7 +129,7 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s80-desktop-decision-archive-dark.png",
+      "file": "s81-desktop-decision-archive-dark.png",
       "sha256": "1ef1c6e4f2b18d9e29f9981727296bfea9d842b9d16f10db0cad8e2f9404cbaf",
       "theme": "dark",
       "viewport": {
@@ -139,7 +139,7 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s80-desktop-decision-archive-light.png",
+      "file": "s81-desktop-decision-archive-light.png",
       "sha256": "c9f6d4d2c97925285b0f004d7c2475d0d976413530f9be76a4133616a8cf0fbd",
       "theme": "light",
       "viewport": {
@@ -149,8 +149,8 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s80-desktop-co-gm-brief-dark.png",
-      "sha256": "2911a038d09f54c640b6b46a8524be9c6acf8eafc3f0f5450f2f0bbb836e1807",
+      "file": "s81-desktop-co-gm-brief-dark.png",
+      "sha256": "1216f9c353a739173a941bfb242486ddda8c139b222496674308ca82a33e7e1a",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -159,8 +159,8 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s80-desktop-co-gm-brief-light.png",
-      "sha256": "ca91f3433653cda42431dc063dff6f3c7053dd9ccbfa6bc9f48db1a3ce0fe3b4",
+      "file": "s81-desktop-co-gm-brief-light.png",
+      "sha256": "b239247ecd3449e4b2d120464b2f6c7b2aa2501cf4b2814cf62d521019a647db",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -169,8 +169,8 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s80-desktop-prediction-receipt-dark.png",
-      "sha256": "c5a5c52cab982ddd17de631c281ad5fa21fc6f665cbbd09ffbceaa9c4f482504",
+      "file": "s81-desktop-prediction-receipt-dark.png",
+      "sha256": "9d7f14e1cab98e63e2582d6a69a13f3cc7a17d4d6a09f075a9d474eb7c1b1163",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -179,8 +179,8 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s80-desktop-prediction-receipt-light.png",
-      "sha256": "78bf0d1bc8fd52544db754c3be34840d06be3226aa265f787ca7cb777e861ae5",
+      "file": "s81-desktop-prediction-receipt-light.png",
+      "sha256": "16023d11eb65cb4d04fb48d4c6c169de640d1548a940119d3549ea8fb593ec04",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -189,8 +189,8 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s80-desktop-agent-negotiation-dark.png",
-      "sha256": "52e13f33e7b3dfaea7c3bba0171448f62ea0eb1ec3047508c2e2a42815e3deb7",
+      "file": "s81-desktop-agent-negotiation-dark.png",
+      "sha256": "de378c1a7727753f5b215c01f74fb035cee6d653690cfb39869c554b920a8f7c",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -199,8 +199,8 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s80-desktop-agent-negotiation-light.png",
-      "sha256": "a310f8cc0de87df2a91b8122ba8074ba79d535dd856be22be34dbb869ea64401",
+      "file": "s81-desktop-agent-negotiation-light.png",
+      "sha256": "1e0b7ea754c07a14db92c687697b22485443441f0f03b27d37d1bc27ed9c9498",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -209,8 +209,8 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s80-desktop-hof-ceremony-dark.png",
-      "sha256": "f91df29c38c1f8e58ed86a00b009ddc98322d77e9307fb4d4874534ddda141a2",
+      "file": "s81-desktop-hof-ceremony-dark.png",
+      "sha256": "4505fac7f478e1a519ff81add43eec71834ec0ed9a1e952dde00278289e9e596",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -219,8 +219,8 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s80-desktop-hof-ceremony-light.png",
-      "sha256": "fb7da10a711007b1cbecda360e70e1a3cdb4f8d5262efd24ad348e9a672d2aab",
+      "file": "s81-desktop-hof-ceremony-light.png",
+      "sha256": "488f7e77134c69cd6f3f991484da32b290d340f194bd1171a945578bc566332c",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -229,8 +229,8 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s80-desktop-architect-signature-dark.png",
-      "sha256": "bdcf8791205f4cf4f98e8b524a7a235bd2140186727d86e9a4ecbe2d06b722c1",
+      "file": "s81-desktop-architect-signature-dark.png",
+      "sha256": "8c0d367bf4a465951de1f3a7d95f9aed4d50e222080242f32f37c7f1ad2a0cd6",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -239,8 +239,8 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s80-desktop-architect-signature-light.png",
-      "sha256": "c5c2bc7f20b9b08e5fef2cd96f7d32d20034b8d472d05abafbd266407adcc13d",
+      "file": "s81-desktop-architect-signature-light.png",
+      "sha256": "981c5eacd5dbad5505a68d9ea9a2b91bbf33205d666a11e2ae4be389db07cebc",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -249,8 +249,8 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s80-desktop-exact-command-center-dark.png",
-      "sha256": "198b8d067a2f4227e7540f41040ca7342f1c45a6359ffd9c0f9a13967b9e5f0e",
+      "file": "s81-desktop-exact-command-center-dark.png",
+      "sha256": "64f1686236c2514e071a9d35de0b957b0d53481b2a2262983b76cdadb4c60af9",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -259,8 +259,8 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s80-desktop-exact-command-center-light.png",
-      "sha256": "0d733adfae4b6a3cce5b6c77b5b657234dff92e84c988b4fc6d13e61dfe7fd1e",
+      "file": "s81-desktop-exact-command-center-light.png",
+      "sha256": "551545059cd469d3119afbafa84b40869ac083a67bbbbb4b43eb74ebad1f3af7",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -269,8 +269,8 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s80-desktop-exact-command-target-dark.png",
-      "sha256": "aeca02619c4b26a363ba1d8ce3e5a164b55809aa54641e847b054ad798dcd614",
+      "file": "s81-desktop-exact-command-target-dark.png",
+      "sha256": "6504d5bb15bba720d3040ace84c5353d7513b113b3660667359075c7fbbce71c",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -279,8 +279,8 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s80-desktop-exact-command-target-light.png",
-      "sha256": "a4dbe471272c1e5baf33e61cf6084db6c6b2b0cd8d6e7fe96076bf07a9a83a74",
+      "file": "s81-desktop-exact-command-target-light.png",
+      "sha256": "490b715b7d78c0a1146052dd8cdf501242987e732aaa97688f0c9c1c832e7b11",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -289,7 +289,7 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s80-mobile-trophy-road-dark.png",
+      "file": "s81-mobile-trophy-road-dark.png",
       "sha256": "9fe3398858365dfabd1dfcc28e0e2345317bbde67700ed9d70d053b1784d45c6",
       "theme": "dark",
       "viewport": {
@@ -299,7 +299,7 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s80-mobile-trophy-road-light.png",
+      "file": "s81-mobile-trophy-road-light.png",
       "sha256": "1b7a41c740d05c427e1c41d3c8c0d2a4198453eed577ded33c69d1812e29c881",
       "theme": "light",
       "viewport": {
@@ -309,8 +309,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s80-mobile-sim-watch-reel-dark.png",
-      "sha256": "a4abb378cd2a405da69020f58c931a5da64542edae1797abf297f9730c88f249",
+      "file": "s81-mobile-sim-watch-reel-dark.png",
+      "sha256": "36ce892fa4d1d8ded9d385a7ee86755b1e9b42cb37b2d36f345b65f0e80bb4b2",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -319,8 +319,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s80-mobile-sim-watch-reel-light.png",
-      "sha256": "540012ed36e2ffc528d70b992f13f8738c283e5d43e11b21c1630bc7e82883f7",
+      "file": "s81-mobile-sim-watch-reel-light.png",
+      "sha256": "5c896d63b1de74522cb3cce2c16bf3c983b19918f8707dd5be485cc5df222cf7",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -329,8 +329,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s80-mobile-room-watch-dark.png",
-      "sha256": "00ab99111e3471608adaa9258cb343e3a993a0a4bba5ff37967a7e904b7e8755",
+      "file": "s81-mobile-room-watch-dark.png",
+      "sha256": "ad8c0876044237615b3a6605cff0290bdc2f841f371318be4b2490dff8fcdad3",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -339,8 +339,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s80-mobile-room-watch-light.png",
-      "sha256": "8d85d1a1f1a2e8f03f62aa1f52c48ec33efb1299c93eb73a7384ca99bbbb4655",
+      "file": "s81-mobile-room-watch-light.png",
+      "sha256": "41365cd7d06c871c9f4a1c3950da5ddc7d59d49ba38bb21da7ed729e190efddf",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -349,8 +349,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s80-mobile-architect-cut-dark.png",
-      "sha256": "d573039a16b1ef3da6ed773c3eef79b46eccd8a5706f4abfeca97c51024af451",
+      "file": "s81-mobile-architect-cut-dark.png",
+      "sha256": "d7e8290e4a3a6448319c9905cb649a68614f0f040cdd6590fea5817af6197884",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -359,8 +359,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s80-mobile-architect-cut-light.png",
-      "sha256": "34022836e9f5f14c3fda154c178ffb505b64a4fbf918d2a8b55f46d6509ea102",
+      "file": "s81-mobile-architect-cut-light.png",
+      "sha256": "17074b1c4e630363cbf5da51b4cfbde8622e223481c95049412b2ee929c8044e",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -369,7 +369,7 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s80-mobile-guide-modal-dark.png",
+      "file": "s81-mobile-guide-modal-dark.png",
       "sha256": "a1cf69218319b385093f225819b84bd676af1dd844e8490ba5a79d9aa4e62f8e",
       "theme": "dark",
       "viewport": {
@@ -379,7 +379,7 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s80-mobile-guide-modal-light.png",
+      "file": "s81-mobile-guide-modal-light.png",
       "sha256": "e5d7b28a91be10cbfab75bb9270f2889bce6c396d2e754e2219db6535a156449",
       "theme": "light",
       "viewport": {
@@ -389,8 +389,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s80-mobile-rival-coaching-dark.png",
-      "sha256": "dbbe672b0fd3944e02328bdd3fe772bb7fc83fd002cf0b11a70f49152cf72d05",
+      "file": "s81-mobile-rival-coaching-dark.png",
+      "sha256": "587e5391aa1fffff1624e49840636936c78e5ef764543fb16f701dcce78cccd0",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -399,8 +399,8 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s80-mobile-rival-coaching-light.png",
-      "sha256": "b91f5306553492fee8aa0ab98e6431128062e739daf5087477c5e59757aff2a1",
+      "file": "s81-mobile-rival-coaching-light.png",
+      "sha256": "ce9e3b514c939fad5f046f2d4bd5e6c34197d1662fa205d67a3e7843f435bac9",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -409,7 +409,7 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s80-mobile-decision-archive-dark.png",
+      "file": "s81-mobile-decision-archive-dark.png",
       "sha256": "f58c38f4fa5bce91846274dfa3c7e1e7d9113227b4b6090e205dd1a31e55f523",
       "theme": "dark",
       "viewport": {
@@ -419,7 +419,7 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s80-mobile-decision-archive-light.png",
+      "file": "s81-mobile-decision-archive-light.png",
       "sha256": "af253ddb355c883fc425046532b261eb2c3fdaccc6c413606cd2f29df46a705b",
       "theme": "light",
       "viewport": {
@@ -429,7 +429,7 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s80-mobile-co-gm-brief-dark.png",
+      "file": "s81-mobile-co-gm-brief-dark.png",
       "sha256": "c173838b1f30467191b200b41f6dcf1360a5dee92fa64f00eb38246c8ae1a8ed",
       "theme": "dark",
       "viewport": {
@@ -439,7 +439,7 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s80-mobile-co-gm-brief-light.png",
+      "file": "s81-mobile-co-gm-brief-light.png",
       "sha256": "b2ee8e6ca7ad32e4701c195734d9d180705761d1a29f743b3ffc5cc4667a1ec1",
       "theme": "light",
       "viewport": {
@@ -449,8 +449,8 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s80-mobile-prediction-receipt-dark.png",
-      "sha256": "829c89d3ee42674b15b861d03269bf3e732f9fd24aaf8a256e9b67afa55fd596",
+      "file": "s81-mobile-prediction-receipt-dark.png",
+      "sha256": "246888d6327fbb6670e07d187dd0cf4103da0dca0a7a748781cacc7fc8865178",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -459,8 +459,8 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s80-mobile-prediction-receipt-light.png",
-      "sha256": "c476b2faa1e99fc4419e6732fb4d87fa785f9501d43d3fea1a38183d30eb8782",
+      "file": "s81-mobile-prediction-receipt-light.png",
+      "sha256": "1b333e5a51441b9475a99178fb1dc7b7d87030d7223ca5841dc4052687dd2fb7",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -469,8 +469,8 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s80-mobile-agent-negotiation-dark.png",
-      "sha256": "751da065b8721e48533607fd00f694f63885239662a0b4826af758af23c2d750",
+      "file": "s81-mobile-agent-negotiation-dark.png",
+      "sha256": "bf4345b53ce7ce809c58e70dfbbdbb46dbbe80fcb1de9bad0cb10261c2354825",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -479,8 +479,8 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s80-mobile-agent-negotiation-light.png",
-      "sha256": "645bcfeade3dabf089accabb9c34e2082a0ab00add7bcba35e43c4856c0b0ed9",
+      "file": "s81-mobile-agent-negotiation-light.png",
+      "sha256": "d6b975f8d0535aedc49c43d7afcc1347d14bb478ad222983f0305b4f91b6c386",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -489,8 +489,8 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s80-mobile-hof-ceremony-dark.png",
-      "sha256": "0d7250afd35c27f7fbfb1f360c69d11918d25c72c63d519982521a9de5ab0638",
+      "file": "s81-mobile-hof-ceremony-dark.png",
+      "sha256": "d80209d8eab963942577f718684cb504ed251f8e9f98407059b27c1e60b8ae5a",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -499,8 +499,8 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s80-mobile-hof-ceremony-light.png",
-      "sha256": "a04039f701de5b02f115002de4d291289f3965950e2a22657dc1065030f63da0",
+      "file": "s81-mobile-hof-ceremony-light.png",
+      "sha256": "da96d5d9f6540ccae1abccf3ba1eda80c571f0d85f7c5f0ac39b0c6777450b0e",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -509,7 +509,7 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s80-mobile-architect-signature-dark.png",
+      "file": "s81-mobile-architect-signature-dark.png",
       "sha256": "8e6584c74c09f23a31ff6bce095f0b69e1b0060424bdd18cd885ca1a9c46c18e",
       "theme": "dark",
       "viewport": {
@@ -519,7 +519,7 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s80-mobile-architect-signature-light.png",
+      "file": "s81-mobile-architect-signature-light.png",
       "sha256": "a67e3cd5b257e48ec4b9eb647e0d975a94eb1f2b281282108bf9d4baa93a26ec",
       "theme": "light",
       "viewport": {
@@ -529,7 +529,7 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s80-mobile-exact-command-center-dark.png",
+      "file": "s81-mobile-exact-command-center-dark.png",
       "sha256": "985858fabec6cad2cdc585bd2cb785529e663026f908627c0fbacaf11bd9a624",
       "theme": "dark",
       "viewport": {
@@ -539,7 +539,7 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s80-mobile-exact-command-center-light.png",
+      "file": "s81-mobile-exact-command-center-light.png",
       "sha256": "05915877a980610d1b5d58ae68938fcfeaa106098d5a5b41311eb8fbcde3fbc4",
       "theme": "light",
       "viewport": {
@@ -549,8 +549,8 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s80-mobile-exact-command-target-dark.png",
-      "sha256": "73f2a168bfbc628d5277a547df8a560ba6892b6d8d51b23c0ad3e6f2207d9086",
+      "file": "s81-mobile-exact-command-target-dark.png",
+      "sha256": "3b5b92eddd949bc5f9166c64f07b2286c2e9561090b5f8fcc61064f8d45b9c61",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -559,8 +559,8 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s80-mobile-exact-command-target-light.png",
-      "sha256": "446f170c8d3885bcb7706efac860ba6308ae1b720fa630d946b9404c2c883d1d",
+      "file": "s81-mobile-exact-command-target-light.png",
+      "sha256": "aee1810e1fcced018919322bdb699368ab8524c12e3c360e021a1397af060c29",
       "theme": "light",
       "viewport": {
         "width": 390,

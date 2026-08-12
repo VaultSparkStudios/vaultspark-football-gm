@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { shouldPlayTdFlourish } from "../public/lib/simWatchDirector.js";
+import { planSimWatchFeedUpdate, shouldPlayTdFlourish } from "../public/lib/simWatchDirector.js";
 
 // shouldPlayTdFlourish is the pure decision function simWatchDirector.js's
 // renderFrame() consults before calling playSound("td-flourish"). It is
@@ -38,4 +38,11 @@ test("handles missing/pregame snapshot safely", () => {
   assert.equal(shouldPlayTdFlourish(null), false);
   assert.equal(shouldPlayTdFlourish({ reason: "tick", play: null }), false);
   assert.equal(shouldPlayTdFlourish({ reason: "tick" }), false);
+});
+
+test("Sim-Watch feed appends only the delta and trims on rewind", () => {
+  assert.deepEqual(planSimWatchFeedUpdate(-1, 0), { removeCount: 0, appendFrom: 0, appendThrough: 0 });
+  assert.deepEqual(planSimWatchFeedUpdate(0, 5), { removeCount: 0, appendFrom: 1, appendThrough: 5 });
+  assert.deepEqual(planSimWatchFeedUpdate(5, 4), { removeCount: 1, appendFrom: null, appendThrough: 4 });
+  assert.deepEqual(planSimWatchFeedUpdate(4, 4), { removeCount: 0, appendFrom: null, appendThrough: 4 });
 });

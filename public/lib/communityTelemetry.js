@@ -6,12 +6,19 @@ export const COMMUNITY_CONSENT_KEY = "fa:community-participation:v1";
 export const COMMUNITY_PARTICIPANT_KEY = "fa:community-participant:v1";
 export const COMMUNITY_QUEUE_KEY = "fa:community-queue:v1";
 export const COMMUNITY_LOCAL_LEDGER_KEY = "fa:community-local-ledger:v1";
+export const COMMUNITY_PENDING_DELETION_KEY = "fa:community-pending-deletion:v1";
 export const COMMUNITY_ENDPOINT = "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1";
 const MAX_QUEUE = 240;
 const CAPABILITY_EXPIRY_SKEW_MS = 5_000;
+const DELETION_RETRY_MIN_MS = 5_000;
+const DELETION_RETRY_MAX_MS = 5 * 60_000;
 
 let capabilityLease = null;
 let capabilityRequest = null;
+let pendingDeletionRequest = null;
+let pendingDeletionRetryTimer = null;
+let pendingDeletionRetryCount = 0;
+let volatilePendingDeletion = "";
 
 function storage() {
   try { return window.localStorage; } catch { return null; }
@@ -58,9 +65,47 @@ function emitParticipationChange(participating) {
   window.dispatchEvent(new CustomEvent("fa:community-participation", { detail: { participating } }));
 }
 
+function emitDeletionChange(deletion) {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent("fa:community-deletion", { detail: deletion }));
+}
+
+export function getPendingCommunityDeletion() {
+  try { return storage()?.getItem(COMMUNITY_PENDING_DELETION_KEY) || volatilePendingDeletion; } catch { return volatilePendingDeletion; }
+}
+
+function writePendingCommunityDeletion(browserId) {
+  if (!browserId) return false;
+  volatilePendingDeletion = browserId;
+  try {
+    // Purpose-bound tombstone: the anonymous identifier is the entire value.
+    // No event, save, capability, timestamp, or personal data is retained.
+    storage()?.setItem(COMMUNITY_PENDING_DELETION_KEY, browserId);
+    return true;
+  } catch { return false; }
+}
+
+function clearPendingCommunityDeletion() {
+  remove(COMMUNITY_PENDING_DELETION_KEY);
+  volatilePendingDeletion = "";
+  pendingDeletionRetryCount = 0;
+  if (pendingDeletionRetryTimer) clearTimeout(pendingDeletionRetryTimer);
+  pendingDeletionRetryTimer = null;
+}
+
 function clearCapability() {
   capabilityLease = null;
   capabilityRequest = null;
+}
+
+function schedulePendingDeletionRetry() {
+  if (pendingDeletionRetryTimer || !getPendingCommunityDeletion()) return;
+  if (typeof navigator !== "undefined" && navigator.onLine === false) return;
+  const delay = Math.min(DELETION_RETRY_MAX_MS, DELETION_RETRY_MIN_MS * (2 ** Math.min(6, pendingDeletionRetryCount)));
+  pendingDeletionRetryTimer = setTimeout(() => {
+    pendingDeletionRetryTimer = null;
+    void retryPendingCommunityDeletion();
+  }, delay);
 }
 
 async function requestCapability(browserId) {
@@ -114,6 +159,54 @@ async function capabilityMutation(path, browserId, payload, init = {}) {
   return response;
 }
 
+export async function retryPendingCommunityDeletion() {
+  if (pendingDeletionRequest) return pendingDeletionRequest;
+  const browserId = getPendingCommunityDeletion();
+  if (!browserId) return { status: "not-needed", deleted: 0 };
+  if (typeof fetch !== "function" || (typeof navigator !== "undefined" && navigator.onLine === false)) {
+    const outcome = { status: "pending", deleted: null, reason: "offline" };
+    emitDeletionChange(outcome);
+    return outcome;
+  }
+
+  pendingDeletionRequest = (async () => {
+    try {
+      const response = await capabilityMutation("participation", browserId, {
+        schemaVersion: "1.0",
+        participantId: browserId
+      }, { method: "DELETE", keepalive: true });
+      if (!response?.ok) {
+        pendingDeletionRetryCount += 1;
+        const outcome = { status: "failed", deleted: null, reason: `http-${response?.status || "unknown"}` };
+        emitDeletionChange(outcome);
+        schedulePendingDeletionRetry();
+        return outcome;
+      }
+      let receipt = {};
+      try {
+        receipt = await response.json();
+      } catch {
+        // A successful DELETE acknowledgement is authoritative even when an
+        // intermediary strips the optional JSON count receipt.
+      }
+      const outcome = { status: "success", deleted: Math.max(0, Number(receipt.deleted) || 0) };
+      clearPendingCommunityDeletion();
+      clearCapability();
+      emitDeletionChange(outcome);
+      return outcome;
+    } catch {
+      pendingDeletionRetryCount += 1;
+      const outcome = { status: "failed", deleted: null, reason: "unavailable" };
+      emitDeletionChange(outcome);
+      schedulePendingDeletionRetry();
+      return outcome;
+    } finally {
+      pendingDeletionRequest = null;
+    }
+  })();
+  return pendingDeletionRequest;
+}
+
 export async function setCommunityParticipation(participating) {
   const wasParticipating = getCommunityParticipation();
   const existingId = participantId();
@@ -132,23 +225,20 @@ export async function setCommunityParticipation(participating) {
         }
       );
     }
-    return { participating: true };
+    return { participating: true, deletion: { status: "not-requested", deleted: null } };
   }
 
   try { storage()?.setItem(COMMUNITY_CONSENT_KEY, "declined"); } catch { /* ignore */ }
+  // Decline is immediate and collection stays off even if remote deletion is
+  // temporarily unavailable. Only the identifier moves into a retry tombstone.
+  if (existingId) writePendingCommunityDeletion(existingId);
   remove(COMMUNITY_PARTICIPANT_KEY);
   remove(COMMUNITY_QUEUE_KEY);
   emitParticipationChange(false);
-  if (wasParticipating && existingId && typeof fetch === "function") {
-    try {
-      await capabilityMutation("participation", existingId, { schemaVersion: "1.0", participantId: existingId }, {
-        method: "DELETE",
-        keepalive: true
-      });
-    } catch { /* withdrawal is local immediately; remote deletion retries are not privacy-safe to queue */ }
-  }
-  clearCapability();
-  return { participating: false };
+  const deletion = (wasParticipating || getPendingCommunityDeletion())
+    ? await retryPendingCommunityDeletion()
+    : { status: "not-needed", deleted: 0 };
+  return { participating: false, deletion };
 }
 
 export function emptyLocalCommunityLedger() {
@@ -244,6 +334,10 @@ export function observeCommunityApiReceipt({ method, path, body, response, runti
 
 export function initCommunityTelemetry() {
   if (typeof window === "undefined") return;
-  window.addEventListener("online", () => void flushCommunityQueue());
+  window.addEventListener("online", () => {
+    if (getPendingCommunityDeletion()) void retryPendingCommunityDeletion();
+    if (getCommunityParticipation()) void flushCommunityQueue();
+  });
+  if (getPendingCommunityDeletion()) queueMicrotask(() => void retryPendingCommunityDeletion());
   if (getCommunityParticipation()) queueMicrotask(() => void flushCommunityQueue());
 }

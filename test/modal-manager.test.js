@@ -1,6 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { openModal, closeModal, isModalOpen } from "../public/lib/modalManager.js";
+import {
+  closeModal,
+  getActiveModal,
+  getActiveModalStack,
+  hasOpenModal,
+  isModalOpen,
+  openModal
+} from "../public/lib/modalManager.js";
 
 // modalManager.js is a small, dependency-free DOM utility. This repo has no
 // jsdom, so we exercise it against a minimal hand-built fake element that
@@ -46,7 +53,15 @@ function fakeFocusable() {
 
 function fakeEvent(key, { shiftKey = false } = {}) {
   let prevented = false;
-  return { key, shiftKey, preventDefault: () => { prevented = true; }, get defaultPrevented() { return prevented; } };
+  let stopped = false;
+  return {
+    key,
+    shiftKey,
+    preventDefault: () => { prevented = true; },
+    stopPropagation: () => { stopped = true; },
+    get defaultPrevented() { return prevented; },
+    get propagationStopped() { return stopped; }
+  };
 }
 
 test("openModal focuses the first focusable child and registers as open", () => {
@@ -58,6 +73,9 @@ test("openModal focuses the first focusable child and registers as open", () => 
   openModal(modal);
 
   assert.equal(isModalOpen(modal), true);
+  assert.equal(hasOpenModal(), true);
+  assert.equal(getActiveModal(), modal);
+  assert.deepEqual(getActiveModalStack(), [modal]);
   assert.equal(first.wasFocused, true);
   assert.equal(second.wasFocused, false);
   assert.equal(modal._hasListener(), true);
@@ -102,6 +120,7 @@ test("Escape inside an open modal calls the supplied onClose instead of the defa
 
   assert.equal(closedViaCallback, true);
   assert.equal(escEvent.defaultPrevented, true);
+  assert.equal(escEvent.propagationStopped, true);
   // onClose is responsible for calling closeModal itself; the registry
   // should still show open until that happens.
   assert.equal(isModalOpen(modal), true);
@@ -159,6 +178,45 @@ test("re-opening an already-open modal closes the previous trap first (no leaked
   assert.equal(firstListenerActive, true);
   assert.equal(isModalOpen(modal), true);
   closeModal(modal);
+});
+
+test("nested modals expose stack order and only the top modal owns Escape", () => {
+  globalThis.document = { activeElement: null };
+  const underlying = fakeElement({ focusableChildren: [fakeFocusable()] });
+  const top = fakeElement({ focusableChildren: [fakeFocusable()] });
+  let underlyingCloseCalls = 0;
+  let topCloseCalls = 0;
+
+  openModal(underlying, { onClose: () => { underlyingCloseCalls += 1; } });
+  openModal(top, { onClose: () => { topCloseCalls += 1; } });
+
+  assert.deepEqual(getActiveModalStack(), [underlying, top]);
+  underlying._fireKeydown(fakeEvent("Escape"));
+  assert.equal(underlyingCloseCalls, 0);
+  assert.equal(topCloseCalls, 0);
+
+  top._fireKeydown(fakeEvent("Escape"));
+  assert.equal(topCloseCalls, 1);
+  closeModal(top);
+  assert.equal(getActiveModal(), underlying);
+  closeModal(underlying);
+  assert.equal(hasOpenModal(), false);
+});
+
+test("closing a background modal does not steal focus from the top modal", () => {
+  const outside = fakeFocusable();
+  globalThis.document = { activeElement: outside };
+  const underlying = fakeElement({ focusableChildren: [fakeFocusable()] });
+  const topControl = fakeFocusable();
+  const top = fakeElement({ focusableChildren: [topControl] });
+
+  openModal(underlying);
+  openModal(top);
+  closeModal(underlying);
+
+  assert.equal(outside.wasFocused, false);
+  assert.equal(getActiveModal(), top);
+  closeModal(top);
 });
 
 test("openModal is a safe no-op with no modal element", () => {

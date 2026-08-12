@@ -340,11 +340,28 @@ export function showGmDecisionModal(decision) {
   document.getElementById("gmDecisionPrompt").textContent = decision.prompt || "";
   const optionsEl = document.getElementById("gmDecisionOptions");
   if (optionsEl) {
-    optionsEl.innerHTML = (decision.options || []).map((opt) => `
+    optionsEl.innerHTML = (decision.options || []).map((opt) => {
+      const preview = opt.preview || opt.boundary || {};
+      const subject = preview.subject?.name
+        ? `<span><strong>Who</strong> ${escapeHtml(preview.subject.name)}${preview.subject.position ? ` (${escapeHtml(preview.subject.position)})` : ""}</span>`
+        : "";
+      const availability = preview.availability === "unavailable"
+        ? `<span class="gm-decision-opt-warning"><strong>Availability</strong> No eligible immediate candidate is currently available; this choice will fail closed or become the declared promise.</span>`
+        : "";
+      return `
       <button class="gm-decision-option" data-choice="${escapeHtml(opt.id)}">
         <div class="gm-decision-opt-label">${escapeHtml(opt.label)}</div>
         <div class="gm-decision-opt-effect">${escapeHtml(opt.effect)}</div>
-      </button>`).join("");
+        <div class="gm-decision-opt-boundary" aria-label="Choice boundary">
+          ${subject}
+          ${preview.timing ? `<span><strong>When</strong> ${escapeHtml(preview.timing)}</span>` : ""}
+          ${preview.exactAction ? `<span><strong>Action</strong> ${escapeHtml(preview.exactAction)}</span>` : ""}
+          ${preview.successRule ? `<span><strong>Receipt</strong> ${escapeHtml(preview.successRule)}</span>` : ""}
+          ${preview.reversibility ? `<span><strong>Boundary</strong> ${escapeHtml(preview.reversibility)}</span>` : ""}
+          ${availability}
+        </div>
+      </button>`;
+    }).join("");
     optionsEl.querySelectorAll(".gm-decision-option").forEach((btn) => {
       btn.addEventListener("click", () => {
         const choice = btn.dataset.choice;
@@ -674,4 +691,3 @@ export function checkAndPruneRewindStorage() {
     // non-critical — never block gameplay
   }
 }
-

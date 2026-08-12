@@ -38,6 +38,14 @@ test("severe controlled-team quarterback injury outranks deadline pressure", () 
   assert.equal(decisions[0].id, "qb-injury");
   assert.equal(decisions[1].id, "trade-deadline");
   assert.ok(decisions.every((decision) => decision.occurrenceKey));
+  for (const decision of decisions) {
+    for (const option of decision.options) {
+      assert.ok(option.boundary?.timing, `${decision.id}/${option.id} names when it acts`);
+      assert.ok(option.boundary?.successRule, `${decision.id}/${option.id} names the receipt rule`);
+      assert.ok(option.boundary?.targetTab, `${decision.id}/${option.id} names the work surface`);
+      assert.ok(option.boundary?.targetId, `${decision.id}/${option.id} names the exact surface`);
+    }
+  }
 });
 
 test("another team's quarterback injury cannot trigger controlled-team authority", () => {

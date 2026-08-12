@@ -1,50 +1,51 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: fe596ead36c6 -->
-<!-- generated-at: 2026-08-11T18:47:50.730Z -->
+<!-- source-hash: 1af0a17c56b7 -->
+<!-- generated-at: 2026-08-12T00:05:59.261Z -->
 
 # LATEST_HANDOFF (compact)
 
-# Session 79 Handoff Summary
+SESSION 80 HANDOFF SUMMARY
 
-## Session
-- S79 complete: full /arc scope implemented, candidate-side verification done.
+Session
+- Session 80 closeout. Full /arc, direct-main publication, full-stack deployment complete.
 
-## Shipped
-- Agent Negotiation: one canonical contract authority (no parallel signing path).
-- Predictions settle automatically with separate winner/margin truth.
-- Community Stats ingress via participant-bound ephemeral capabilities (no durable IP).
-- Every non-Overview tab is a measured lazy island under one hydration authority.
-- Hall of Fame ceremony as focus-managed accessible dialog.
+What Shipped
+- General Manager command cards carry exact targets via one hydrate-scroll-focus authority across desktop, mobile, Blueprint, season chapters.
+- Architecture Review exposes source-derived strongest mastery signature (no hidden bonuses).
+- Reduced-motion honored as part of shared navigation contract.
 
-## Evidence State
-- Static boot: 610,654/730,000 bytes, 48/58 modules, zero lazy leaks (16.35% headroom).
-- Playwright 40/40. Responsive: 158 captures, 44 hash-bound in docs/visual-qa/LATEST.json.
-- Aggregate receipt green 1,018/1,018 (core 122, runtime 636, sim-contract 79, sim-realism 1, Studio 180).
-- Release candidate: commit 5cfb904 + final closeout metadata (immutable).
+Release State
+- Candidate SHA 7becc57385515042dee5d80146c635d45962ea40; staging 14/14; artifact 6781437a...c545b5c9a; rollback a836ac8f-8e6b-4b42-86e2-b7b6a2fb5344.
+- Direct main push green: CI 31544142759, Pages 31544142748, brief-format 31544142762, backend dispatch 31544469131.
+- Production serves same revision/artifact. Community API database-ready, correct CORS/cache headers.
+- Proof green: Node 1024/1024, Playwright 40/40, responsive 176/176, 56 captures hash-bound in docs/visual-qa/LATEST.json, secret scan 0.
 
-## Current Intent
-- Complete closeout metadata commit; deploy final SHA to stable staging; prove exact SHA/artifact/rollback; push same SHA direct to main. Do not edit tracked files between staging proof and push.
+Now Bucket (top 3)
+- Observe a real consented first-session/playtest cohort.
+- Observe first real opted-in Community Stats cohort (no manufactured activity).
+- Preserve launchReady: false and local public-unlaunched/FORGE truth.
 
-## Now Bucket (Top 3)
-- Complete closeout metadata commit and exact-SHA stable-staging proof.
-- Direct-main push of same SHA, CI monitoring, production provenance check.
-- After promotion, observe first real opted-in Community Stats cohort without manufacturing activity.
+Blockers (top 3)
+- Reply-capable on-domain email evidence (football@playfranchisearchitect.com) not yet delivered.
+- SHA-bound founder public-launch approval absent.
+- Lifecycle reconciliation plus current performance/edge/Web Vitals evidence missing.
 
-## Blockers (Top 3)
-- Launch on HOLD, launchReady: false — code promotion does not clear launch gates.
-- No file edits permitted between staging proof and main push.
-- Do not flip launch readiness until every independent gate has evidence.
+Human-Blocked (age)
+- Delivered reply-capable email evidence: open since S78 (3 sessions).
+- Founder launch approval: open since S78 (3 sessions).
+- Lifecycle reconciliation: open since S78 (3 sessions).
 
-## Human-Blocked (independent launch gates, longstanding since S75+)
-- Reply-capable on-domain email evidence (football@playfranchisearchitect.com) — open 4+ sessions.
-- SHA-bound founder launch approval — open 4+ sessions.
-- Lifecycle reconciliation + current Obelisk/edge evidence — open 4+ sessions.
+Constraints That Survive
+- Every actionable command needs targetTab plus targetId; broad tab activation insufficient.
+- Mastery signatures stay evidence projections only; never a hidden rating/bonus/recommendation weight.
+- Authorization covers commit/push/deploy only, not a public-launch flip.
+- Open release work stays open in audit authority until live evidence exists; tests must not force closure.
 
-## Invariants To Preserve
-- Agent AI enriches canonical negotiation but never owns rival signing path.
-- Anonymous Community Stats: ephemeral capability binding, no self-promotion of evidence tier.
-- App shell keeps >=15% declared byte headroom; non-Overview code behind one island authority.
-- Modal visual proof captures visible viewport, not off-viewport crop.
+Key Files
+- public/lib/exactSurfaceNavigation.js, public/lib/franchiseCommandCenter.js, public/lib/mobileLoop.js, public/app.js
+- src/engine/architectMasteryPortfolio.js, public/lib/tabOverview.js
+- scripts/responsive-evidence.mjs, scripts/write-visual-qa-receipt.mjs
+- docs/AUDIT_2026-08-11_SESSION80.json, docs/visual-qa/LATEST.json
 
-## Next Session
-Finish closeout metadata commit, run staging SHA proof, push to main; do not touch launch gates without evidence.
+Next Session
+- Run a fresh live-code audit; do not assume prior lens current; do not flip launch readiness until all three human gates land.

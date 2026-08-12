@@ -142,4 +142,38 @@ test("game modal markup exposes dialog semantics", () => {
   assert.match(gameHtml, /id="halftimeAdjustTitle">Pre-Game Tactical Brief/);
   assert.match(gameHtml, /id="draftPickRevealModal" hidden role="dialog" aria-modal="true"/);
   assert.match(gameHtml, /id="franchiseMomentModal" hidden role="dialog" aria-modal="true"/);
+  assert.match(gameHtml, /id="playerModal"[^>]*role="dialog" aria-modal="true" aria-labelledby="playerModalTitle"/);
+  assert.match(gameHtml, /id="boxScoreModal"[^>]*role="dialog" aria-modal="true" aria-labelledby="boxScoreModalTitle"/);
+  assert.match(gameHtml, /id="guideModal"[^>]*role="dialog" aria-modal="true" aria-labelledby="guideModalTitle"/);
+  assert.match(gameHtml, /id="commandPalette"[^>]*role="dialog" aria-modal="true" aria-labelledby="commandPaletteTitle"/);
+  assert.match(gameHtml, /id="simWatchOverlay" hidden role="dialog" aria-modal="true"/);
+});
+
+test("tactical brief is an explicit keyboard-operable single-choice contract", () => {
+  const gameHtml = read("../public/game.html");
+  const gameFlowSource = read("../public/lib/gameFlow.js");
+
+  assert.match(gameHtml, /class="tactic-options-grid" role="radiogroup" aria-labelledby="halftimeAdjustTitle"/);
+  assert.equal((gameHtml.match(/class="tactic-option" type="button" role="radio" aria-checked="false"/g) || []).length, 4);
+  assert.match(gameHtml, /class="tactic-confirm-btn btn-primary" disabled/);
+  assert.match(gameFlowSource, /candidate\.setAttribute\("aria-checked", selected \? "true" : "false"\)/);
+  assert.match(gameFlowSource, /candidate\.tabIndex = selected \? 0 : -1/);
+  assert.match(gameFlowSource, /\["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Home", "End"\]/);
+  assert.match(gameFlowSource, /if \(!choice\) return;\s*finish\(choice\);/);
+  assert.match(gameFlowSource, /skipBtn\.onclick = \(\) => finish\(null\)/);
+});
+
+test("blocking analysis overlays share modal lifecycle and suppress document shortcuts", () => {
+  const appSource = read("../public/app.js");
+  const simWatchSource = read("../public/lib/simWatchDirector.js");
+
+  assert.match(appSource, /import \{ closeModal, hasOpenModal, isModalOpen, openModal \} from "\.\/lib\/modalManager\.js"/);
+  assert.match(appSource, /function openManagedModal\(modalId, onClose\)/);
+  assert.match(appSource, /openManagedModal\("playerModal", closePlayerModal\)/);
+  assert.match(appSource, /openManagedModal\("boxScoreModal", closeBoxScoreModal\)/);
+  assert.match(appSource, /openManagedModal\("guideModal", closeGuideModal\)/);
+  assert.match(appSource, /openManagedModal\("commandPalette", closeCommandPalette\)/);
+  assert.match(appSource, /document\.addEventListener\("keydown", \(event\) => \{[\s\S]*?if \(hasOpenModal\(\)\) return;[\s\S]*?advanceWeekBtn/s);
+  assert.match(simWatchSource, /openModal\(overlay, \{ onClose: closeSimWatch \}\)/);
+  assert.match(simWatchSource, /overlay\.hidden = true;\s*closeModal\(overlay\);/);
 });

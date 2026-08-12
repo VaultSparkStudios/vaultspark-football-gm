@@ -56,7 +56,9 @@ export function buildFranchiseCommandStack({
       choices: (pendingDecision.options || []).slice(0, 4).map((option) => ({
         id: option.id,
         label: option.label || option.id,
-        effect: option.effect || ""
+        effect: option.effect || "",
+        boundary: option.boundary || null,
+        preview: option.preview || null
       })),
       targetTab: null,
       tone: "danger",

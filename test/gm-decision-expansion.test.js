@@ -8,7 +8,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { GM_DECISION_CATALOG, generateGmDecisions, buildGmDecisionOccurrenceKey } from "../src/engine/gmDecisionAuthority.js";
-import { applyGmDecisionConsequence, resolveGmDecisionCommitments } from "../src/engine/gmDecisionConsequences.js";
+import { applyGmDecisionConsequence, buildGmDecisionOptionPreview, resolveGmDecisionCommitments } from "../src/engine/gmDecisionConsequences.js";
 import { createSession } from "../src/runtime/bootstrap.js";
 
 const read = (path) => fs.readFileSync(new URL(path, import.meta.url), "utf8");
@@ -81,6 +81,35 @@ test("denying a star's request lands a visible, deterministic morale consequence
   assert.equal(result.decision.execution?.status, "completed");
   assert.equal(star.morale, 46, "deny costs exactly 4 morale — visible, bounded, no hidden bonus");
   assert.equal(result.commitment, null);
+});
+
+test("the pre-commit dossier and immediate executor select the same exact quarterback", () => {
+  const session = createSession({ seed: 620066, startYear: 2026, controlledTeamId: "BUF", mode: "stat" });
+  const occurrenceKey = "fa-test:2026:BUF:qb-injury:starter";
+  const preview = buildGmDecisionOptionPreview(session, {
+    decisionId: "qb-injury",
+    choiceId: "start-backup",
+    occurrenceKey
+  });
+  assert.equal(preview.availability, "ready");
+  assert.ok(preview.subject?.playerId);
+  assert.match(preview.successRule, /Promote an available backup quarterback/);
+  const result = applyGmDecisionConsequence(session, {
+    decisionId: "qb-injury",
+    choiceId: "start-backup",
+    occurrenceKey
+  });
+  assert.equal(result.ok, true);
+  assert.equal(result.decision.execution.playerName, preview.subject.name);
+});
+
+test("desktop and mobile decision renderers consume the same preview projection", () => {
+  const desktop = read("../public/lib/engagementFeatures.js");
+  const mobile = read("../public/lib/mobileLoop.js");
+  const stack = read("../public/lib/franchiseCommandCenter.js");
+  assert.match(desktop, /opt\.preview \|\| opt\.boundary/);
+  assert.match(mobile, /choice\.preview \|\| choice\.boundary/);
+  assert.match(stack, /preview: option\.preview/);
 });
 
 test("shopping the star creates a commitment that resolves on the real trade", () => {

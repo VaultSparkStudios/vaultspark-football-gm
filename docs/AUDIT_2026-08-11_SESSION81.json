@@ -1,0 +1,327 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-11",
+  "session": 81,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "complete",
+  "summary": {
+    "combinedPriority": 157.3,
+    "source": "Fresh Session 81 live-code audit with product, game-loop, browser UX, privacy/security, release-truth, and Studio observability lenses. Every selected premise was rechecked against current source and tests; the direct aggregate baseline exceeded the initial 120-second command bound without producing a red result, so final aggregate evidence is required after implementation.",
+    "qualityBar": "L2 by default: one canonical mutation or projection authority, player-visible browser payoff for gameplay changes, focused behavioral tests, desktop/mobile dark/light rendered proof for touched UI, exact-candidate stable staging before direct-main publication, and launchReady preserved false."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay: vivid General Manager agency, progression and consequence truth, browser-visible feedback, accessibility, privacy, static/local-first behavior, and public-app release gates",
+    "staging": "stable Cloudflare Pages must prove the exact immutable candidate before direct-to-main publication; backend deployment must attest the same revision at runtime",
+    "source": "arc-profile registry authority, Session 81 startup brief, 29,980-token code sample, three read-only focused audit lanes, exact grep/read preverification, game-loop review, and app-release gate requirements"
+  },
+  "gameLoopReview": {
+    "loopTightness": 8,
+    "progression": 9,
+    "sessionEngagement": 8,
+    "retention": 8,
+    "soulFidelity": 9,
+    "overall": 8.4,
+    "evidence": "Code-contract review only. docs/PLAYTESTS does not exist and the public SOUL file intentionally withholds private criteria, so these scores do not claim measured fun, retention, or complete private-soul conformance."
+  },
+  "releaseGate": {
+    "deploymentVerdict": "REVERIFY AFTER IMPLEMENTATION — the Session 80 candidate was proven on stable staging, Pages, and the backend, but Session 81 deployable work must earn new exact-revision evidence.",
+    "launchVerdict": "NO-GO — deployment authorization does not permit a public launch flip.",
+    "launchHolds": [
+      "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
+      "authoritative registry/local lifecycle reconciliation",
+      "SHA-bound public-launch approval distinct from deploy authorization",
+      "current staging Core Web Vitals measurements"
+    ]
+  },
+  "axisCoverage": {
+    "featuresDepth": ["gm-choice-boundary-dossier", "on-clock-trade-market", "mentorship-covenants", "gm-stewardship-report-authority"],
+    "newInnovativeFeatures": ["on-clock-trade-market", "mentorship-covenants"],
+    "uiUx": ["gm-choice-boundary-dossier", "decision-modal-interaction-contract", "community-participation-truth"],
+    "feedbackLoop": ["gm-choice-boundary-dossier", "gm-stewardship-report-authority", "community-participation-truth"],
+    "gamificationEngagementImmersion": ["on-clock-trade-market", "mentorship-covenants", "gm-stewardship-report-authority"],
+    "aiIntegration": ["on-clock-trade-market"],
+    "securityPrivacy": ["community-participation-truth", "backend-runtime-attestation"],
+    "speedOrganizationEfficiency": ["decision-modal-interaction-contract", "backend-runtime-attestation"],
+    "releaseTruth": ["backend-runtime-attestation"],
+    "tokenApiReduction": ["community-participation-truth"]
+  },
+  "recommendedMoves": [
+    "Complete the pre-commit General Manager loop: expose the exact choice boundary and make draft-night offers deterministic, stale-safe, and player-directed.",
+    "Turn currently automatic or dead career systems into receipted agency: player-selected mentorship covenants and a canonical season stewardship report that also repairs cap and trade reputation truth.",
+    "Harden the public control plane: one accessible modal/shortcut contract, truthful retried participation deletion with coordinated snapshots, and an exact-revision backend runtime attestation gate."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Create synthetic playtest or Community Stats activity",
+      "reason": "Rejected by GAME_LOOP and current launch truth. Product claims require real consented cohorts; this session will not manufacture outcome evidence."
+    },
+    {
+      "candidate": "Build mobile/tablet navigation or exact command routing",
+      "reason": "False premise. The responsive drawer, mobile decision deck, and shared exact tab-hydrate-scroll-focus authority already ship with current browser coverage."
+    },
+    {
+      "candidate": "Add rival General Manager names, memory, opponent-aware play calling, or a prediction minigame",
+      "reason": "False premise. Deterministic rival personas and memories, defense-relative play selection, and weekly winner/margin predictions are live and tested."
+    },
+    {
+      "candidate": "Build mentorship from scratch",
+      "reason": "False premise. Mentorship already mutates offseason progression; the verified gap is that the player cannot select or clear the pair and the existing read-only UI promises an automatic result."
+    },
+    {
+      "candidate": "Add project-local authentication",
+      "reason": "Rejected. The public game has no account flow; local auth would violate the Obelisk identity boundary rather than close a product gap."
+    },
+    {
+      "candidate": "Implement General Manager firing or game over",
+      "reason": "Explicitly founder-direction-gated in Decisions and Task Board. This audit cannot invent that terminal product canon."
+    },
+    {
+      "candidate": "Claim a token-cost optimization",
+      "reason": "No public metered language-model path exists. The selected community coordinator targets measured HTTP request load only."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Game-loop tightness / decision agency / feedback",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 30.9,
+      "slug": "gm-choice-boundary-dossier",
+      "title": "Preview the exact General Manager consequence boundary before commitment",
+      "status": "implemented",
+      "premise": "The catalog already owns execution mode, deadline, target, risk and effect, but the public decision projection discards everything except id, label and effect. Desktop and mobile therefore hide the real action target, due boundary, reversibility and success/failure rule until after commitment, only partially satisfying the 30-second loop contract.",
+      "evidence": [
+        "src/engine/gmDecisionAuthority.js catalog and reduced public projection",
+        "src/engine/gmDecisionConsequences.js post-commit planners and commitment boundaries",
+        "public/lib/engagementFeatures.js desktop decision choices",
+        "public/lib/mobileLoop.js mobile decision choices",
+        "context/GAME_LOOP.md pre-commit consequence-boundary contract"
+      ],
+      "constraint": "Preview and commit must share one source of truth, name no odds or predicted outcome, preserve honest deferral, and render the same boundary on desktop and mobile.",
+      "verification": [
+        "every catalog choice publishes a preview matching its executor mode/deadline/target",
+        "focused decision authority, commitment, weekly-plan, mobile and browser tests",
+        "desktop/mobile dark/light pixels for each boundary shape and defer path"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 2, "recipe": "Publish existing execution mode, due boundary, target, reversibility and known effect in the public decision response and render it on desktop/mobile." },
+        "L2": { "effortHours": 4, "recipe": "Extract canonical pure preview planners shared by projection and commit, name the exact candidate or action when known, show measurable commitment success/failure boundaries without odds, and render identical accessible desktop/mobile dossiers." },
+        "L3": { "effortHours": 8, "recipe": "L2 plus join the declared boundary, action receipt and observed resolution in Decision Archive and Architect review with explicit non-causal language." }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Innovative feature / draft-night agency / AI opponents",
+      "effortHours": 8,
+      "impact": 9,
+      "innovation": 9,
+      "priority": 24.4,
+      "slug": "on-clock-trade-market",
+      "title": "Turn the controlled draft pick into a deterministic on-the-clock trade market",
+      "status": "implemented",
+      "premise": "Draft progression hard-pauses on the controlled pick but offers only make the pick or finish the draft. The War Room has no offer/counter path, regular-season inbound offers cannot target a selection, and the shared trade authority rejects the current-year pick. Future-pick valuation, fingerprints and ownership transfer already provide reusable foundations.",
+      "evidence": [
+        "src/runtime/GameSession.js controlled on-clock hard stop",
+        "public/lib/tabDraft.js no trade path",
+        "src/engine/rivalTradeOffers.js regular-season player-only offers",
+        "src/runtime/services/TradeService.js current-year pick rejection and stale-plan protection"
+      ],
+      "constraint": "Exactly one team owns and consumes each slot; offers derive from actual needs and shared valuation, expire on board or ownership change, remain deterministic, and never invent urgency or hidden value.",
+      "verification": [
+        "draft-agency, draft-war-room, trade-plan, rival-offer, API-parity and save/restore tests",
+        "no duplicate prospect, stale commit, double advance or duplicate slot ownership",
+        "keyboard-safe desktop/mobile dark/light War Room pixels"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 3, "recipe": "Add one guarded live-slot transfer authority while the controlled team owns the on-clock pick, then let the recipient make its deterministic CPU selection." },
+        "L2": { "effortHours": 8, "recipe": "Generate at most three deterministic rival offers from live need and shared valuation; expose accept, counter and decline in the War Room; bind offers to a board/ownership fingerprint and receipt every accepted transfer." },
+        "L3": { "effortHours": 14, "recipe": "L2 plus an explainable persona-driven draft auction, bounded escalation, transaction-memory receipts and a draft-night anthology entry." }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Release architecture / security / observability",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 6,
+      "priority": 23.2,
+      "slug": "backend-runtime-attestation",
+      "title": "Make backend promotion test and attest the exact runtime revision",
+      "status": "implemented",
+      "premise": "The backend deployment workflow gates image build with only the Studio shard while Community server/store/event tests live in the runtime shard. CI tests Node 24.14 but the image runs Node 22, and live health omits source revision, so exact backend identity is inferred from workflow tags rather than attested by the process.",
+      "evidence": [
+        ".github/workflows/deploy-backend.yml gate and image matrix",
+        "scripts/run-test-shard.mjs Community tests in runtime",
+        "Dockerfile.runtime Node 22 base",
+        "src/community/server.js health payload without revision"
+      ],
+      "constraint": "Promotion stays immutable and fail-closed; runtime identity must come from the built image/process, not caller-authored health input; no launch readiness implication.",
+      "verification": [
+        "workflow source contract requires backend/runtime tests",
+        "container Node version equals tested workflow version",
+        "health sourceRevision equals exact GitHub SHA after deploy",
+        "focused Community contracts and post-deploy JSON assertion green"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1.5, "recipe": "Add focused Community/runtime tests to the deploy gate and align the image Node version with CI." },
+        "L2": { "effortHours": 4, "recipe": "Define the backend test gate, inject immutable OCI/source-revision metadata into the image, expose it from no-store health, and require the post-deploy probe to equal github.sha." },
+        "L3": { "effortHours": 8, "recipe": "L2 plus build once, run health and contract tests against that image, and deploy only its content-addressed digest with provenance." }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "Progression agency / retention / feature depth",
+      "effortHours": 5,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 22.8,
+      "slug": "mentorship-covenants",
+      "title": "Let the General Manager direct the mentorship progression mechanic",
+      "status": "implemented",
+      "premise": "Mentors are automatically paired with the first eligible same-position young player, offseason bonuses mutate ratings from those pairs, the API is read-only, and the roster UI merely tells the player what will happen. The progression mechanic is live but denies General Manager agency.",
+      "evidence": [
+        "src/engine/veteranMentorship.js automatic pair selection and mutation",
+        "src/server.js GET-only mentorship route",
+        "public/lib/tabRoster.js read-only mentorship panel"
+      ],
+      "constraint": "Controlled-team commands only, explicit eligibility and revision checks, no duplicated mentees, deterministic CPU fallback, and no increase to the existing total development budget.",
+      "verification": [
+        "authority/API parity and franchise-scope tests",
+        "save migration and exactly-once offseason application",
+        "traded, released, ineligible, duplicate and CPU fallback cases",
+        "progression parity plus roster-panel rendered states"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 2, "recipe": "Add controlled-team assignment and clear commands with eligibility and revision checks while retaining automatic CPU fallback." },
+        "L2": { "effortHours": 5, "recipe": "Let the player select eligible mentor/mentee pairs and one transparent focus, preserve the existing bonus budget, and receipt assignment plus applied offseason result." },
+        "L3": { "effortHours": 10, "recipe": "L2 plus multi-season covenants with checkpoints, honest dissolution on roster exit, renewal and player-dossier history." }
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "FIRE",
+      "category": "Career progression truth / feedback / simulation integrity",
+      "effortHours": 6,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 21.0,
+      "slug": "gm-stewardship-report-authority",
+      "title": "Repair career reputation inputs and activate a canonical season stewardship report",
+      "status": "implemented",
+      "premise": "Production season scoring reads nonexistent team.cap fields, so capGrade falls to the same low default regardless of real cap state. gmLegacy.tradeNetAV is initialized and read by reputation, trade AI and mastery copy but never written. A complete gmReportCard module has zero importers and itself reads stale cap, trade-history and draft-source shapes, leaving both the hidden behavior and intended player feedback untrustworthy.",
+      "evidence": [
+        "src/engine/gmLegacyScore.js nonexistent team.cap read and never-written tradeNetAV",
+        "src/stats/gmReportCard.js zero importers and stale field assumptions",
+        "src/runtime/services/ContractService.js canonical cap summary",
+        "src/runtime/services/TradeService.js receipted transaction direction and valuation",
+        "src/domain/playerFactory.js drafted source transitions"
+      ],
+      "constraint": "One source-derived report owns cap, roster, draft, trade and scheme dimensions; missing historical evidence stays neutral/incomplete; reputation effects and visible copy consume the same stored receipt.",
+      "verification": [
+        "cap grade changes with canonical cap summary instead of a ghost field",
+        "trade net Approximate Value derives from receipted direction and season stats",
+        "draft ROI includes actual drafted players",
+        "season report persists idempotently and renders in Season Review",
+        "focused engine/UI tests and dark/light mobile/desktop pixels"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 2, "recipe": "Pass canonical cap summary into season legacy scoring and add regression tests for cap-style reputation." },
+        "L2": { "effortHours": 6, "recipe": "Rebuild the dead report-card module around canonical cap, transaction, draft and roster authorities; persist one idempotent season report; update trade reputation from observed Approximate Value; and render the receipted dimensions in Season Review." },
+        "L3": { "effortHours": 10, "recipe": "L2 plus a cross-season stewardship trend dossier joined to the Decision Anthology, with explicit missing-evidence and non-causal boundaries." }
+      }
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Privacy UX / feedback / request efficiency",
+      "effortHours": 5,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 20.0,
+      "slug": "community-participation-truth",
+      "title": "Make participation deletion truthful and coordinate snapshot refreshes",
+      "status": "implemented",
+      "premise": "Stop sharing removes the participant identifier and queue before DELETE, silently swallows every remote failure, and immediately renders a deleted-looking state. Separately every visible Community tab forces no-cache polling every 30 seconds although the server advertises a 60-second refresh and ETag, with no in-flight or multi-tab coordination.",
+      "evidence": [
+        "public/lib/communityTelemetry.js withdrawal order and swallowed DELETE failure",
+        "public/community-stats.js immediate participation UI and 30-second no-cache polling",
+        "src/community/server.js ETag and cache contract",
+        "aggregate snapshot refreshAfterSeconds authority"
+      ],
+      "constraint": "Decline stops collection immediately, a purpose-bound identifier-only tombstone may retry deletion but never contains events, no collection resumes while declined, and snapshot optimization must preserve stale/unavailable honesty.",
+      "verification": [
+        "success, offline, 401, 5xx, reload and capability-rotation deletion tests",
+        "no queued telemetry after decline",
+        "60-second floor, ETag/304 preservation, single-flight and backoff request-count tests",
+        "pending/success/failure accessible UI pixels"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 2, "recipe": "Return local-stop and remote-delete outcomes, preserve an identifier-only pending tombstone, and render truthful pending/failed/succeeded status." },
+        "L2": { "effortHours": 5, "recipe": "Retry the purpose-bound deletion tombstone online until acknowledged without resuming collection; add an accessible deletion receipt state; and coordinate ETag-aware snapshot requests around the server refresh floor with single-flight and bounded backoff." },
+        "L3": { "effortHours": 9, "recipe": "L2 plus multi-tab leader coordination and a downloadable privacy-safe server deletion receipt with local request-budget diagnostics." }
+      }
+    },
+    {
+      "rank": 7,
+      "tier": "HIGH",
+      "category": "Accessibility / UI authority / loop safety",
+      "effortHours": 6,
+      "impact": 9,
+      "innovation": 5,
+      "priority": 15.0,
+      "slug": "decision-modal-interaction-contract",
+      "title": "Make tactic selection explicit and contain global shortcuts inside blocking overlays",
+      "status": "implemented",
+      "premise": "Tactic choices are click-only divs excluded from the focus trap, and Confirm Tactic remains enabled with no choice even though No Adjustment is the explicit null path. Global R/W/N/1-9 shortcuts also remain active while a modal button has focus, and Player, Box Score, Guide, Command Palette and Sim-Watch sit outside the shared modal authority.",
+      "evidence": [
+        "public/game.html tactic divs and omitted dialog semantics",
+        "public/lib/gameFlow.js click-only selection and null confirmation",
+        "public/app.js global shortcut handler without active-modal guard",
+        "public/lib/modalManager.js focusable selector and current adoption",
+        "public/lib/simWatchDirector.js direct overlay lifecycle"
+      ],
+      "constraint": "No shortcut mutates the game behind a blocking overlay; exactly the top overlay owns Escape and focus return; tactic selection is keyboard-complete and an explicit skip remains distinct from confirmation.",
+      "verification": [
+        "radiogroup state, initial choice, disabled Confirm and explicit skip DOM tests",
+        "active modal stack and topmost Escape unit tests",
+        "keyboard-only Playwright paths prove W/R/N/1-9 cannot mutate behind overlays",
+        "dark/light 390/768/1440 pixels for tactic and affected dialog states"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 2, "recipe": "Make tactic choices keyboard-selectable, disable Confirm until selection, and suppress global shortcuts whenever a blocking overlay is visible." },
+        "L2": { "effortHours": 6, "recipe": "Implement an accessible tactic radiogroup with shared receipt truth; expose an active modal-stack query; adopt Player, Box Score, Guide, Command Palette and Sim-Watch into the shared focus/Escape authority; and prove shortcuts cannot leak." },
+        "L3": { "effortHours": 10, "recipe": "L2 plus background inertness, nested-overlay ordering and a declarative controller for every blocking overlay." }
+      }
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "structured-last-session-summary-fail-closed",
+      "status": "implemented",
+      "premise": "renderLastCompleted checks expected-session drift only for string summaries; the structured object path rendered Session 79 as latest in the Session 81 startup brief with no warning."
+    },
+    {
+      "slug": "sim-watch-linear-live-log",
+      "status": "implemented",
+      "premise": "Sim-Watch clears and rebuilds its role=log feed every frame, creating quadratic DOM appends and repeated assistive announcements; it also ignores reduced motion."
+    },
+    {
+      "slug": "theme-customizer-contract-coverage",
+      "status": "implemented",
+      "premise": "The public System/Light/Dark plus five-accent customizer has no direct test module despite being the CANON-047 control surface."
+    }
+  ]
+}

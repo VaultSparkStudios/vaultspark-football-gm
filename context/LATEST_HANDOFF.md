@@ -1,5 +1,9 @@
 # Session 80 Closeout — Exact Decision Surfaces and Visible Architect Mastery
 
+## Session Intent — S81
+
+Run the full `/arc`: perform a fresh nine-axis live-code audit under the public browser-game and app-release lenses, implement every verified ranked item plus viable second-order refinements, complete rendered-pixel and release verification for any touched interface, then execute the canonical Session 81 closeout and direct-to-main workflow through stable staging when deployable changes exist. Preserve `launchReady: false` unless every independent launch gate is proven; never manufacture cohort evidence.
+
 ## Where We Left Off
 
 - The requested full `/arc`, direct-main publication and full-stack deployment are complete. General Manager command cards now carry exact targets through one hydrate-scroll-focus authority across desktop, mobile, Blueprint and season chapters; Architecture Review exposes the source-derived strongest mastery signature without adding hidden bonuses.

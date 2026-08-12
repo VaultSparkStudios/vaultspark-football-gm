@@ -1,4 +1,12 @@
-import { COMMUNITY_ENDPOINT, getCommunityParticipation, getLocalCommunityLedger, setCommunityParticipation } from "./lib/communityTelemetry.js";
+import {
+  COMMUNITY_ENDPOINT,
+  getCommunityParticipation,
+  getLocalCommunityLedger,
+  getPendingCommunityDeletion,
+  initCommunityTelemetry,
+  retryPendingCommunityDeletion,
+  setCommunityParticipation
+} from "./lib/communityTelemetry.js";
 
 const PERIOD_LABELS = { "24h": "24 hours", "7d": "7 days", "30d": "30 days" };
 const PLAYER_STAT_LABELS = Object.freeze({
@@ -43,7 +51,14 @@ const PLAYER_STAT_DESCRIPTIONS = Object.freeze({
 });
 let activePeriod = "30d";
 let latestSnapshot = null;
+let latestSnapshotEtag = "";
+let latestDeletionOutcome = getPendingCommunityDeletion() ? { status: "pending", reason: "retrying" } : null;
 let refreshTimer = null;
+let snapshotRequest = null;
+let snapshotFailureCount = 0;
+let nextSnapshotRefreshAt = 0;
+const SNAPSHOT_REFRESH_MIN_MS = 60_000;
+const SNAPSHOT_REFRESH_MAX_MS = 5 * 60_000;
 
 function escapeHtml(value) {
   return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#39;");
@@ -91,11 +106,36 @@ function freshness(snapshot) {
   return `Updated ${Math.max(1, Math.round(seconds / 60))}m ago`;
 }
 
+export function communityParticipationPresentation({ participating = false, pending = false, outcome = null } = {}) {
+  const deletionStatus = pending ? (outcome?.status === "failed" ? "failed" : "pending") : (outcome?.status === "success" ? "success" : "idle");
+  const heading = participating
+    ? "You're contributing"
+    : deletionStatus === "failed"
+      ? "Sharing is off — deletion retry failed"
+      : deletionStatus === "pending"
+        ? "Sharing is off — deletion pending"
+        : deletionStatus === "success"
+          ? "Sharing stopped — deletion confirmed"
+          : "Help bring these numbers to life";
+  const detail = participating
+    ? "Thanks—only game choices and results are shared. Your save stays on this device."
+    : deletionStatus === "failed"
+      ? "No new activity is being shared. We will retry deleting the prior anonymous receipts while you are online."
+      : deletionStatus === "pending"
+        ? "No new activity is being shared. The prior anonymous receipts will be deleted when the service acknowledges the request."
+        : deletionStatus === "success"
+          ? "The service acknowledged deletion of receipts tied to this browser identifier."
+          : "Share game choices and results without sharing your save, names, notes, or private details.";
+  return { deletionStatus, heading, detail };
+}
+
 function participationMarkup() {
   const participating = getCommunityParticipation();
-  return `<div class="community-consent" data-participating="${participating}">
-    <div><strong>${participating ? "You're contributing" : "Help bring these numbers to life"}</strong><span>${participating ? "Thanks—only game choices and results are shared. Your save stays on this device." : "Share game choices and results without sharing your save, names, notes, or private details."}</span></div>
-    <button type="button" class="${participating ? "btn-ghost" : "btn-primary"}" data-community-consent>${participating ? "Stop sharing & delete mine" : "Share anonymous game stats"}</button>
+  const pending = Boolean(getPendingCommunityDeletion());
+  const { deletionStatus, heading, detail } = communityParticipationPresentation({ participating, pending, outcome: latestDeletionOutcome });
+  return `<div class="community-consent" data-participating="${participating}" data-deletion-status="${deletionStatus}">
+    <div role="status" aria-live="polite"><strong>${heading}</strong><span>${detail}</span></div>
+    <button type="button" class="${participating ? "btn-ghost" : "btn-primary"}" ${pending ? "data-community-delete-retry" : "data-community-consent"}>${pending ? "Retry deletion" : participating ? "Stop sharing & delete mine" : "Share anonymous game stats"}</button>
   </div>`;
 }
 
@@ -157,38 +197,97 @@ function renderAtlas(snapshot) {
 }
 
 function bindConsent(scope = document) {
-  scope.querySelectorAll("[data-community-consent]").forEach((button) => {
+  scope.querySelectorAll("[data-community-consent], [data-community-delete-retry]").forEach((button) => {
     button.addEventListener("click", async () => {
       button.disabled = true;
-      await setCommunityParticipation(!getCommunityParticipation());
-      if (latestSnapshot) { renderPulse(latestSnapshot); renderAtlas(latestSnapshot); }
+      if (button.hasAttribute("data-community-delete-retry")) {
+        latestDeletionOutcome = await retryPendingCommunityDeletion();
+      } else {
+        const result = await setCommunityParticipation(!getCommunityParticipation());
+        latestDeletionOutcome = result.deletion;
+      }
+      renderPulse(latestSnapshot);
+      renderAtlas(latestSnapshot);
     }, { once: true });
   });
 }
 
-async function loadSnapshot() {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 6000);
-  try {
-    const response = await fetch(`${COMMUNITY_ENDPOINT}/snapshot`, { headers: { Accept: "application/json" }, cache: "no-cache", credentials: "omit", signal: controller.signal });
-    if (!response.ok && response.status !== 503) throw new Error(`status ${response.status}`);
-    latestSnapshot = await response.json();
-  } catch {
-    if (!latestSnapshot) latestSnapshot = null;
-  } finally { clearTimeout(timeout); }
-  renderPulse(latestSnapshot); renderAtlas(latestSnapshot);
+export function resolveSnapshotRefreshMs(snapshot, failureCount = 0) {
+  const advertised = Math.max(60, Number(snapshot?.refreshAfterSeconds) || 60) * 1000;
+  const base = Math.min(SNAPSHOT_REFRESH_MAX_MS, Math.max(SNAPSHOT_REFRESH_MIN_MS, advertised));
+  return Math.min(SNAPSHOT_REFRESH_MAX_MS, base * (2 ** Math.min(3, Math.max(0, Number(failureCount) || 0))));
 }
 
-function scheduleRefresh() {
-  clearInterval(refreshTimer);
-  refreshTimer = setInterval(() => { if (document.visibilityState === "visible" && !navigator.connection?.saveData) void loadSnapshot(); }, 30_000);
+function scheduleRefresh(delayMs = resolveSnapshotRefreshMs(latestSnapshot, snapshotFailureCount)) {
+  clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(() => {
+    // The module is also imported by Node contract tests and can outlive their
+    // temporary DOM. A detached page/test realm owns no polling lifecycle.
+    if (typeof document === "undefined" || typeof navigator === "undefined") {
+      refreshTimer = null;
+      return;
+    }
+    if (document.visibilityState === "visible" && !navigator.connection?.saveData) void loadSnapshot();
+    else scheduleRefresh(SNAPSHOT_REFRESH_MIN_MS);
+  }, Math.max(0, Number(delayMs) || SNAPSHOT_REFRESH_MIN_MS));
+  refreshTimer?.unref?.();
+}
+
+export function loadSnapshot({ force = false } = {}) {
+  if (snapshotRequest) return snapshotRequest;
+  if (!force && Date.now() < nextSnapshotRefreshAt) {
+    scheduleRefresh(nextSnapshotRefreshAt - Date.now());
+    return Promise.resolve(latestSnapshot);
+  }
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 6000);
+  snapshotRequest = (async () => {
+    let failed = false;
+    try {
+      const headers = { Accept: "application/json", ...(latestSnapshotEtag ? { "If-None-Match": latestSnapshotEtag } : {}) };
+      const response = await fetch(`${COMMUNITY_ENDPOINT}/snapshot`, { headers, credentials: "omit", signal: controller.signal });
+      if (response.status === 304) {
+        snapshotFailureCount = 0;
+      } else {
+        if (!response.ok && response.status !== 503) throw new Error(`status ${response.status}`);
+        latestSnapshotEtag = response.headers.get("etag") || latestSnapshotEtag;
+        latestSnapshot = await response.json();
+        failed = response.status === 503 || latestSnapshot?.status === "unavailable";
+        snapshotFailureCount = failed ? snapshotFailureCount + 1 : 0;
+      }
+    } catch {
+      failed = true;
+      snapshotFailureCount += 1;
+      if (!latestSnapshot) latestSnapshot = null;
+    } finally {
+      clearTimeout(timeout);
+      const delay = resolveSnapshotRefreshMs(latestSnapshot, failed ? snapshotFailureCount : 0);
+      nextSnapshotRefreshAt = Date.now() + delay;
+      scheduleRefresh(delay);
+      snapshotRequest = null;
+    }
+    renderPulse(latestSnapshot);
+    renderAtlas(latestSnapshot);
+    return latestSnapshot;
+  })();
+  return snapshotRequest;
 }
 
 function init() {
+  initCommunityTelemetry();
   document.querySelectorAll("[data-community-period]").forEach((button) => button.addEventListener("click", () => { activePeriod = button.dataset.communityPeriod; if (latestSnapshot) renderAtlas(latestSnapshot); }));
-  window.addEventListener("fa:community-participation", () => { if (latestSnapshot) { renderPulse(latestSnapshot); renderAtlas(latestSnapshot); } });
-  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") void loadSnapshot(); });
-  bindConsent(); void loadSnapshot(); scheduleRefresh();
+  window.addEventListener("fa:community-participation", () => { renderPulse(latestSnapshot); renderAtlas(latestSnapshot); });
+  window.addEventListener("fa:community-deletion", (event) => {
+    latestDeletionOutcome = event.detail;
+    renderPulse(latestSnapshot);
+    renderAtlas(latestSnapshot);
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState !== "visible") return;
+    if (Date.now() >= nextSnapshotRefreshAt) void loadSnapshot();
+    else scheduleRefresh(nextSnapshotRefreshAt - Date.now());
+  });
+  bindConsent(); void loadSnapshot();
 }
 
 if (typeof document !== "undefined") {

@@ -49,6 +49,8 @@
  *     openModal and restores focus to the element that was focused
  *     before the modal opened. Safe to call even if openModal was never
  *     called for that element (no-op).
+ *   - nested modals are tracked in opening order. Only the top modal owns
+ *     Escape, and closing a background modal never steals focus.
  *
  * IMPORTANT: every openModal() call must be paired with a matching
  * closeModal() call whenever the modal is dismissed — including via
@@ -57,6 +59,12 @@
  */
 
 const registry = new WeakMap();
+const activeStack = [];
+
+function removeFromActiveStack(modalEl) {
+  const index = activeStack.lastIndexOf(modalEl);
+  if (index !== -1) activeStack.splice(index, 1);
+}
 
 const FOCUSABLE_SELECTOR = [
   "a[href]",
@@ -69,7 +77,9 @@ const FOCUSABLE_SELECTOR = [
 
 function getFocusableElements(modalEl) {
   return Array.from(modalEl.querySelectorAll(FOCUSABLE_SELECTOR)).filter(
-    (el) => !el.hasAttribute("hidden") && el.getAttribute("aria-hidden") !== "true"
+    (el) => !el.hasAttribute("hidden")
+      && el.getAttribute("aria-hidden") !== "true"
+      && el.getAttribute("tabindex") !== "-1"
   );
 }
 
@@ -91,6 +101,11 @@ export function openModal(modalEl, { onClose } = {}) {
   const handleKeydown = (event) => {
     if (event.key === "Escape") {
       event.preventDefault();
+      event.stopPropagation?.();
+      // A background dialog must never dismiss itself through a stale or
+      // programmatically-moved focus target. The most recently opened modal
+      // is the sole Escape authority until it closes.
+      if (getActiveModal() !== modalEl) return;
       if (typeof onClose === "function") {
         onClose();
       } else {
@@ -120,6 +135,7 @@ export function openModal(modalEl, { onClose } = {}) {
 
   modalEl.addEventListener("keydown", handleKeydown);
   registry.set(modalEl, { lastFocused, handleKeydown });
+  activeStack.push(modalEl);
 
   const focusable = getFocusableElements(modalEl);
   if (focusable.length) {
@@ -140,10 +156,13 @@ export function closeModal(modalEl) {
   const entry = registry.get(modalEl);
   if (!entry) return;
 
+  const wasTopModal = getActiveModal() === modalEl;
+
   modalEl.removeEventListener("keydown", entry.handleKeydown);
   registry.delete(modalEl);
+  removeFromActiveStack(modalEl);
 
-  if (entry.lastFocused && typeof entry.lastFocused.focus === "function") {
+  if (wasTopModal && entry.lastFocused && typeof entry.lastFocused.focus === "function") {
     entry.lastFocused.focus();
   }
 }
@@ -154,4 +173,23 @@ export function closeModal(modalEl) {
  */
 export function isModalOpen(modalEl) {
   return registry.has(modalEl);
+}
+
+/**
+ * Return the currently active modal, or null when no blocking overlay is open.
+ * The returned element is the only modal allowed to own Escape.
+ */
+export function getActiveModal() {
+  return activeStack.at(-1) || null;
+}
+
+/**
+ * Return a snapshot rather than the mutable internal stack.
+ */
+export function getActiveModalStack() {
+  return [...activeStack];
+}
+
+export function hasOpenModal() {
+  return activeStack.length > 0;
 }

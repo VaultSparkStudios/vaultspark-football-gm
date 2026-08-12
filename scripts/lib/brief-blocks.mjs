@@ -53,19 +53,24 @@ export function renderTitleHeader({ name, type, lifecycle, audience, vaultStatus
  * Render the "Last session · what shipped" block from PROJECT_STATUS.lastSessionSummary.
  */
 export function renderLastCompleted(summary, opts = {}) {
+  const expected = opts.expectedSession != null ? String(opts.expectedSession) : null;
+  const renderedSession = typeof summary === 'string'
+    ? summary.match(/\bS(\d+)\b/i)?.[1] || '?'
+    : summary?.session != null
+      ? String(summary.session).replace(/^S/i, '')
+      : '?';
+  if (summary && expected && renderedSession !== expected) {
+    const fallback = opts.fallback || 'Use WHERE WE LEFT OFF and CURRENT_STATE for the live latest-session summary.';
+    return [
+      top(`STALE LAST SESSION SUMMARY`),
+      row(`Expected S${expected}; PROJECT_STATUS summary says S${renderedSession}.`),
+      row(fallback.slice(0, W)),
+      row(`Repair: update PROJECT_STATUS.lastSessionSummary at closeout.`),
+      bottom(),
+    ].join('\n');
+  }
   if (typeof summary === 'string') {
-    const session = summary.match(/\bS(\d+)\b/i)?.[1] || '?';
-    const expected = opts.expectedSession != null ? String(opts.expectedSession) : null;
-    if (expected && session !== '?' && session !== expected) {
-      const fallback = opts.fallback || 'Use WHERE WE LEFT OFF and CURRENT_STATE for the live latest-session summary.';
-      return [
-        top(`STALE LAST SESSION SUMMARY`),
-        row(`Expected S${expected}; PROJECT_STATUS summary says S${session}.`),
-        row(fallback.slice(0, W)),
-        row(`Repair: update PROJECT_STATUS.lastSessionSummary at closeout.`),
-        bottom(),
-      ].join('\n');
-    }
+    const session = renderedSession;
     return [
       top(`LAST SESSION (S${session}) - WHAT SHIPPED`),
       row(summary.slice(0, W)),
@@ -75,7 +80,7 @@ export function renderLastCompleted(summary, opts = {}) {
     ].join('\n');
   }
   if (!summary) return '';
-  const header = top(`LAST SESSION (S${summary.session}) · WHAT SHIPPED`);
+  const header = top(`LAST SESSION (S${renderedSession}) · WHAT SHIPPED`);
   const shipLines = (summary.shipped || []).slice(0, 5).map(s => row(`✓ ${s.slice(0, W - 2)}`));
   return [
     header,

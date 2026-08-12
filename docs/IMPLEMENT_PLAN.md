@@ -1,25 +1,26 @@
-# Implementation Plan — Session 80 Arc
+# Session 81 Implementation Plan
 
-The audit sidecar `docs/AUDIT_2026-08-11_SESSION80.json` is the source of truth. Work is ordered by shared authority and verification efficiency rather than rank alone.
+<!-- Session 81 · source: docs/AUDIT_2026-08-11_SESSION81.json -->
 
-## Wave 1 — Exact player-action authority
+## Wave 2 — Decision foundations and draft-night agency
 
-- [x] `exact-command-surface-routing`: add explicit target IDs, consolidate Command Center/Blueprint/Season chapter navigation behind one tested scroll/focus authority, and preserve tab-island behavior.
-- [x] Verify draft, cap, injury, deadline, league-pulse, and missing-target behavior with focused tests.
+1. `gm-choice-boundary-dossier` — establish the shared pre-commit preview contract first.
+2. `decision-modal-interaction-contract` — make the shared decision/modal browser path keyboard-safe and contain shortcuts.
+3. `on-clock-trade-market` — build on the verified decision and focus contracts for the largest new player-facing feature.
 
-## Wave 2 — Dynasty progression payoff
+## Wave 3 — Progression truth
 
-- [x] `mastery-signature-visibility`: extend the canonical signature with evidence count/status and render the strongest source-derived signature plus honest empty state in Architecture Review.
-- [x] Verify engine, markup, accessibility, and non-causal language contracts.
+4. `mentorship-covenants` — add controlled-team progression agency with deterministic CPU fallback.
+5. `gm-stewardship-report-authority` — repair career inputs, persist the season report, and expose its payoff.
 
-## Wave 3 — Second-order saturation and integrated proof
+## Wave 4 — Privacy and release authority
 
-- [x] Generate the innovation pack after the primary items, implement every viable candidate, and reconcile its machine-readable statuses.
-- [x] Run focused and full Node/Playwright suites, Pages build/smoke, browser boot/reachability, public contracts, and Doctor.
-- [x] Inspect dark/light desktop/mobile rendered pixels for every touched state and bind `docs/visual-qa/LATEST.json` to the final candidate.
+6. `community-participation-truth` — stop collection immediately, retry deletion truthfully, and coordinate snapshots.
+7. `backend-runtime-attestation` — make deployment test and prove the actual runtime revision.
 
-## Wave 4 — Exact full-stack release and closeout
+## Wave 5 — Saturation and verification
 
-- [x] `exact-candidate-full-stack-promotion`: close out and sanitize, commit the immutable candidate locally, prove exact SHA/artifact/rollback on stable staging, then push direct to `main`.
-- [x] Wait for exact production Pages provenance, dispatch the backend workflow with `deploy_to_server=true`, and verify live API/database/CORS/cache health.
-- [x] Preserve `launchReady: false`; refresh audit, Task Board, state, decisions, work log, SIL, truth audit, handoff, release receipts, closeout visuals, Ark cargo, and session lock.
+- Repair viable second-order candidates: structured last-session-summary drift, Sim-Watch linear live log/reduced motion, and theme customizer contract coverage.
+- Run focused suites after each item, then the direct canonical aggregate, Playwright, responsive/rendered-pixel, security, doctor and release gates.
+
+No item is complete until its claimed behavior has a focused executable receipt and any touched browser state has inspected dark/light desktop/mobile pixels.

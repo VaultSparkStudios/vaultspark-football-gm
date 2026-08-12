@@ -1,4 +1,7 @@
-FROM node:22-alpine
+FROM node:24.14.0-alpine
+
+ARG SOURCE_REVISION=local-worktree
+LABEL org.opencontainers.image.revision=$SOURCE_REVISION
 
 WORKDIR /app
 
@@ -10,6 +13,7 @@ COPY src ./src
 
 ENV NODE_ENV=production
 ENV PORT=4173
+ENV SOURCE_REVISION=$SOURCE_REVISION
 
 EXPOSE 4173
 

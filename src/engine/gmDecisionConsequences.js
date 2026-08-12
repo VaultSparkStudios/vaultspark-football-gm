@@ -1,5 +1,5 @@
 import { initGmLegacy } from "./gmLegacyScore.js";
-import { GM_DECISION_CATALOG } from "./gmDecisionAuthority.js";
+import { buildGmDecisionBoundary, GM_DECISION_CATALOG } from "./gmDecisionAuthority.js";
 
 function normalizePayload(payload = {}) {
   const decisionId = String(payload.decisionId || payload.id || "").trim().toLowerCase();
@@ -24,13 +24,95 @@ function deadlineFor(session, consequence) {
   return { year: session.currentYear, week };
 }
 
-function attemptImmediateAction(session, consequence, teamId) {
+function immediateCandidate(session, consequence, teamId) {
   if (consequence.choiceId === "start-backup") {
     const chart = session.getDepthChart(teamId)?.QB || [];
     const qbs = teamPlayers(session, teamId).filter((player) => player.position === "QB");
     const available = qbs.filter((player) => !player.injury || player.injury.weeksRemaining <= 0);
     const currentStarter = chart[0];
-    const backup = available.find((player) => player.id !== currentStarter) || available[0];
+    const player = available.find((candidate) => candidate.id !== currentStarter) || available[0] || null;
+    return player ? { player, detail: `${player.name} becomes QB1.` } : null;
+  }
+  if (consequence.choiceId === "fa-qb") {
+    const player = session.getFreeAgents({ position: "QB", limit: 40 })
+      .sort((a, b) => (b.overall || 0) - (a.overall || 0))[0] || null;
+    return player ? { player, detail: `${player.name} is the highest-rated viable veteran target.` } : null;
+  }
+  if (consequence.choiceId === "restructure") {
+    const player = teamPlayers(session, teamId)
+      .filter((candidate) => Number(candidate.contract?.yearsRemaining || 0) > 1 && Number(candidate.contract?.capHit || 0) > 0)
+      .sort((a, b) => Number(b.contract?.capHit || 0) - Number(a.contract?.capHit || 0))[0] || null;
+    return player ? { player, detail: `${player.name} owns the largest eligible cap hit.` } : null;
+  }
+  if (["deny", "ceremony", "feature-role", "quiet-exit", "shop", "extend"].includes(consequence.choiceId)) {
+    const playerId = contextKeyFromOccurrence(consequence.occurrenceKey);
+    const player = teamPlayers(session, teamId).find((candidate) => candidate.id === playerId) || null;
+    return player ? { player, detail: `This boundary is tied to ${player.name}.` } : null;
+  }
+  return null;
+}
+
+export function buildGmDecisionOptionPreview(session, payload = {}) {
+  const normalized = normalizePayload(payload);
+  if (!normalized || !session?.league) return null;
+  const definition = GM_DECISION_CATALOG[normalized.decisionId]?.choices?.[normalized.choiceId];
+  if (!definition) return null;
+  const consequence = { ...normalized, ...definition };
+  const boundary = buildGmDecisionBoundary(
+    { ...definition, id: normalized.choiceId },
+    { currentYear: session.currentYear, currentWeek: session.currentWeek }
+  );
+  const candidate = immediateCandidate(session, consequence, session.controlledTeamId);
+  const addressTargets = normalized.choiceId === "address-room"
+    ? teamPlayers(session, session.controlledTeamId)
+        .filter((player) => Number.isFinite(player.morale))
+        .sort((left, right) => left.morale - right.morale)
+        .slice(0, 5)
+        .map((player) => ({ playerId: player.id, name: player.name }))
+    : [];
+  return {
+    ...boundary,
+    exactAction: candidate?.detail || (
+      addressTargets.length
+        ? `Team meeting targets ${addressTargets.map((player) => player.name).join(", ")}.`
+        : definition.effect
+    ),
+    subject: candidate?.player
+      ? {
+          playerId: candidate.player.id,
+          name: candidate.player.name,
+          position: candidate.player.position || candidate.player.pos || null
+        }
+      : null,
+    subjects: addressTargets,
+    availability: (["start-backup", "fa-qb", "restructure"].includes(normalized.choiceId) && !candidate)
+      ? "unavailable"
+      : "ready"
+  };
+}
+
+export function enrichGmDecisionQueue(session, decisions = []) {
+  return decisions.map((decision) => ({
+    ...decision,
+    options: (decision.options || []).map((option) => ({
+      ...option,
+      preview: buildGmDecisionOptionPreview(session, {
+        decisionId: decision.id,
+        choiceId: option.id,
+        type: decision.type,
+        week: decision.week,
+        occurrenceKey: decision.occurrenceKey
+      })
+    }))
+  }));
+}
+
+function attemptImmediateAction(session, consequence, teamId) {
+  if (consequence.choiceId === "start-backup") {
+    const candidate = immediateCandidate(session, consequence, teamId);
+    const chart = session.getDepthChart(teamId)?.QB || [];
+    const qbs = teamPlayers(session, teamId).filter((player) => player.position === "QB");
+    const backup = candidate?.player || null;
     if (!backup) return { ok: false, error: "No available backup quarterback can be promoted." };
     const ordered = [backup.id, ...chart.filter((id) => id !== backup.id), ...qbs.map((player) => player.id)]
       .filter((id, index, all) => all.indexOf(id) === index);
@@ -38,8 +120,7 @@ function attemptImmediateAction(session, consequence, teamId) {
     return result.ok ? { ...result, summary: `${backup.name} is now QB1.`, playerName: backup.name } : result;
   }
   if (consequence.choiceId === "fa-qb") {
-    const candidate = session.getFreeAgents({ position: "QB", limit: 40 })
-      .sort((a, b) => (b.overall || 0) - (a.overall || 0))[0];
+    const candidate = immediateCandidate(session, consequence, teamId)?.player || null;
     if (!candidate) return { ok: false, error: "No veteran quarterback is available." };
     const result = session.signFreeAgent({ teamId, playerId: candidate.id });
     if (result.ok) {
@@ -59,9 +140,7 @@ function attemptImmediateAction(session, consequence, teamId) {
     return result;
   }
   if (consequence.choiceId === "restructure") {
-    const candidate = teamPlayers(session, teamId)
-      .filter((player) => Number(player.contract?.yearsRemaining || 0) > 1 && Number(player.contract?.capHit || 0) > 0)
-      .sort((a, b) => Number(b.contract?.capHit || 0) - Number(a.contract?.capHit || 0))[0];
+    const candidate = immediateCandidate(session, consequence, teamId)?.player || null;
     if (!candidate) return { ok: false, error: "No eligible multi-year contract can be restructured." };
     const result = session.restructurePlayerContract({ teamId, playerId: candidate.id });
     return result.ok ? { ...result, summary: `${candidate.name}'s contract was restructured.`, playerName: candidate.name } : result;

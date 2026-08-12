@@ -3110,6 +3110,22 @@ body.mobile-loop-active .mobile-loop-overlay {
 }
 .sr-reasons { font-size: 11px; color: var(--muted, #7a8299); margin-top: 4px; }
 .sr-legacy { font-size: 13px; color: var(--muted, #7a8299); margin-bottom: 12px; }
+.sr-stewardship {
+  display: grid;
+  gap: 10px;
+  margin: 12px 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--bg-2);
+}
+.sr-stewardship-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.sr-stewardship-head > span { color: var(--accent-strong); font-size: 1.1rem; font-weight: 900; }
+.sr-stewardship-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.sr-stewardship-row { display: grid; gap: 2px; padding: 7px; border-radius: 6px; background: var(--bg-3); }
+.sr-stewardship-row span,
+.sr-stewardship-row small { color: var(--muted); font-size: 0.68rem; }
+.sr-stewardship-receipt { font-size: 0.75rem; font-weight: 700; }
 .sr-call-to-action { font-size: 14px; font-style: italic; color: var(--accent, #4f8ef7); text-align: center; }
 .season-review-actions { margin-top: 16px; display: flex; justify-content: center; }
 #closeSeasonReviewBtn { min-width: 120px; }
@@ -3317,6 +3333,25 @@ body.mobile-loop-active .mobile-loop-overlay {
 .mp-ovr, .mp-age { font-size: 11px; }
 .mp-bonus { font-size: 12px; color: var(--success, #3dba7e); font-weight: 700; white-space: nowrap; }
 .mentorship-note { margin-top: 8px; }
+.mentorship-editor {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  gap: 8px;
+  align-items: end;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg-2);
+}
+.mentorship-editor label { display: grid; gap: 4px; color: var(--muted); font-size: 0.7rem; font-weight: 700; }
+.mentorship-editor select,
+.mentorship-editor button,
+.mentorship-pair button { min-height: 44px; }
+@media (max-width: 760px) {
+  .mentorship-pair { align-items: flex-start; flex-wrap: wrap; }
+  .mentorship-editor { grid-template-columns: 1fr; }
+}
 
 /* ── Franchise Brand Builder ─────────────────────────────────────────────── */
 .brand-builder-card {
@@ -3546,6 +3581,9 @@ body.mobile-loop-active .mobile-loop-overlay {
 }
 @keyframes swFadeIn { from { opacity:0; background: rgba(var(--team-primary-rgb),0.15); } to { opacity:1; } }
 .sw-play { animation: swFadeIn 0.2s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .sw-play { animation: none; }
+}
 .sw-play-qtr { color: var(--muted); min-width: 32px; font-size: 0.68rem; }
 .sw-play-team { color: var(--accent-2); min-width: 28px; font-size: 0.68rem; font-weight: 700; }
 .sw-play-desc { flex: 1; line-height: 1.4; }
@@ -3945,6 +3983,48 @@ body.mobile-loop-active .mobile-loop-overlay {
   margin-bottom: 3px;
   color: var(--accent-strong);
 }
+.on-clock-market {
+  margin: 12px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+.on-clock-market-head,
+.on-clock-offer-title,
+.on-clock-offer-actions,
+.on-clock-pick-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.on-clock-market-head,
+.on-clock-offer-title { justify-content: space-between; }
+.on-clock-market-head h4 { margin: 2px 0 10px; }
+.on-clock-market-head > span,
+.on-clock-offer-title span { color: var(--muted); font-size: 0.72rem; }
+.on-clock-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.on-clock-offer-card {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--bg-3);
+}
+.on-clock-pick-list span {
+  padding: 3px 7px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent-strong);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.on-clock-offer-actions button { flex: 1 1 auto; min-height: 38px; }
 
 /* Franchise Architect brand and public-site polish */
 :root[data-theme="light"], body[data-theme="light"] {
@@ -4387,6 +4467,30 @@ html[data-theme="light"] .bg-layer {
 .theme-cx-accent[data-accent="azure"]   { background: #4f9ef0; }
 .theme-cx-accent[data-accent="crimson"] { background: #e0645f; }
 .theme-cx-accent[data-accent="violet"]  { background: #a98cf0; }
+
+.gm-decision-opt-boundary {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid color-mix(in srgb, var(--line-strong) 65%, transparent);
+  text-align: left;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+.gm-decision-opt-boundary span { display: block; }
+.gm-decision-opt-boundary strong { color: var(--text); }
+.gm-decision-opt-warning { color: var(--warning); }
+.ml-decision-boundary {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.45rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  text-align: left;
+}
+.ml-decision-boundary small { display: block; line-height: 1.3; }
 
 
 .draft-target-card strong {

@@ -14,13 +14,26 @@ const THEME_KEY = "franchise-architect-theme"; // "light" | "dark"  (resolved)
 const MODE_KEY = "franchise-architect-theme-mode"; // "system" | "light" | "dark"
 const ACCENT_KEY = "franchise-architect-accent"; // "gold" | "emerald" | ...
 
-const ACCENTS = [
+export const THEME_MODES = Object.freeze([
+  { id: "system", label: "System" },
+  { id: "light", label: "Light" },
+  { id: "dark", label: "Dark" }
+]);
+
+export const THEME_ACCENTS = Object.freeze([
   { id: "gold", label: "Gold" },
   { id: "emerald", label: "Emerald" },
   { id: "azure", label: "Azure" },
   { id: "crimson", label: "Crimson" },
   { id: "violet", label: "Violet" }
-];
+]);
+
+export function normalizeThemeSelection(mode, accent) {
+  return {
+    mode: THEME_MODES.some((entry) => entry.id === mode) ? mode : "system",
+    accent: THEME_ACCENTS.some((entry) => entry.id === accent) ? accent : "gold"
+  };
+}
 
 let nextPanelId = 0;
 
@@ -40,7 +53,7 @@ function readMode() {
 function readAccent() {
   try {
     const saved = localStorage.getItem(ACCENT_KEY);
-    if (ACCENTS.some((a) => a.id === saved)) return saved;
+    if (THEME_ACCENTS.some((a) => a.id === saved)) return saved;
   } catch {
     /* storage unavailable */
   }
@@ -57,6 +70,7 @@ export function resolveTheme(mode = readMode()) {
 }
 
 export function applyTheme(mode = readMode(), accent = readAccent()) {
+  ({ mode, accent } = normalizeThemeSelection(mode, accent));
   const theme = resolveTheme(mode);
   const root = document.documentElement;
   root.dataset.theme = theme;
@@ -114,17 +128,11 @@ function buildPanel(state, onChange) {
   panel.setAttribute("aria-label", "Theme customization");
   panel.hidden = true;
 
-  const modes = [
-    { id: "system", label: "System" },
-    { id: "light", label: "Light" },
-    { id: "dark", label: "Dark" }
-  ];
-
   panel.innerHTML = `
     <div>
       <p class="theme-cx-title">Appearance</p>
       <div class="theme-cx-modes" role="group" aria-label="Appearance">
-        ${modes
+        ${THEME_MODES
           .map(
             (m) =>
               `<button type="button" class="theme-cx-mode" data-mode="${m.id}" aria-pressed="false">${m.label}</button>`
@@ -135,7 +143,7 @@ function buildPanel(state, onChange) {
     <div>
       <p class="theme-cx-title">Accent</p>
       <div class="theme-cx-accents" role="group" aria-label="Accent color">
-        ${ACCENTS.map(
+        ${THEME_ACCENTS.map(
           (a) =>
             `<button type="button" class="theme-cx-accent" data-accent="${a.id}" aria-pressed="false" title="${a.label}" aria-label="${a.label} accent"></button>`
         ).join("")}

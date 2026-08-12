@@ -4,6 +4,7 @@ import { observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic 
 import { buildScoringTimeline, createSimWatchPlayback, deriveFinalReel, resolveBoxScoreTeamIds, SIM_WATCH_SPEEDS } from "./simWatchPlayback.js";
 import { playSound } from "./audioFeedback.js";
 import { deriveMarqueeBadge } from "./marqueeBadge.js";
+import { closeModal, openModal } from "./modalManager.js";
 
 let active = false;
 let controller = null;
@@ -84,6 +85,20 @@ function appendPlay(play, scoringSet) {
   feed.appendChild(row);
 }
 
+export function planSimWatchFeedUpdate(renderedIndex = -1, nextIndex = -1) {
+  const previous = Number.isInteger(renderedIndex) ? renderedIndex : -1;
+  const next = Number.isInteger(nextIndex) ? nextIndex : -1;
+  return {
+    removeCount: Math.max(0, previous - next),
+    appendFrom: next > previous ? previous + 1 : null,
+    appendThrough: next
+  };
+}
+
+function prefersReducedMotion() {
+  return Boolean(globalThis.window?.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
+}
+
 function updateField(boxScore, play, index) {
   const field = document.getElementById("simWatchField");
   const possession = document.getElementById("simWatchPossession");
@@ -150,11 +165,25 @@ function renderDirector(snapshot) {
 function renderFrame(snapshot) {
   renderDirector(snapshot);
   if (shouldPlayTdFlourish(snapshot)) playSound("td-flourish");
-  if (!context || snapshot.index < 0) return;
+  if (!context) return;
+  if (snapshot.index < 0) {
+    const feed = document.getElementById("simWatchFeed");
+    if (feed) feed.replaceChildren();
+    context.renderedIndex = -1;
+    return;
+  }
   const feed = document.getElementById("simWatchFeed");
-  if (feed) feed.innerHTML = "";
-  for (let index = 0; index <= snapshot.index; index += 1) appendPlay(context.plays[index], context.scoringSet);
-  feed?.lastElementChild?.scrollIntoView?.({ behavior: "smooth", block: "nearest" });
+  const update = planSimWatchFeedUpdate(context.renderedIndex, snapshot.index);
+  if (feed) {
+    for (let count = 0; count < update.removeCount; count += 1) feed.lastElementChild?.remove?.();
+    if (update.appendFrom != null) {
+      for (let index = update.appendFrom; index <= update.appendThrough; index += 1) appendPlay(context.plays[index], context.scoringSet);
+    }
+  }
+  context.renderedIndex = snapshot.index;
+  if (update.appendFrom != null) {
+    feed?.lastElementChild?.scrollIntoView?.({ behavior: prefersReducedMotion() ? "auto" : "smooth", block: "nearest" });
+  }
   const totals = scoringThrough(snapshot.play?.reelSourceIndex ?? snapshot.index);
   document.getElementById("swAwayScore").textContent = String(totals.away);
   document.getElementById("swHomeScore").textContent = String(totals.home);
@@ -173,11 +202,12 @@ export async function runSimWatch(gameId) {
     if (!boxScore) throw new Error("Box score did not include a Sim-Watch receipt.");
     const plays = boxScore.playByPlay || [];
     const scoring = boxScore.scoringSummary || [];
-    context = { boxScore, teamIds: resolveBoxScoreTeamIds(boxScore), plays, fullPlays: plays, scoring, scoreTimeline: buildScoringTimeline(plays, scoring), scoringSet: new Set(scoring.map((entry) => entry.description)), mode: "full" };
+    context = { boxScore, teamIds: resolveBoxScoreTeamIds(boxScore), plays, fullPlays: plays, scoring, scoreTimeline: buildScoringTimeline(plays, scoring), scoringSet: new Set(scoring.map((entry) => entry.description)), mode: "full", renderedIndex: -1 };
     active = true;
     renderHeader(boxScore);
     overlay.hidden = false;
     overlay.classList.add("sim-watch-open");
+    openModal(overlay, { onClose: closeSimWatch });
     document.getElementById("simWatchFeed").innerHTML = "";
     document.getElementById("simWatchFinal").hidden = true;
     observeBackgroundTask(() => decorateRivalry(boxScore), {
@@ -188,6 +218,9 @@ export async function runSimWatch(gameId) {
     controller.play();
     return controller.snapshot("opened");
   } catch (error) {
+    overlay.classList.remove("sim-watch-open");
+    overlay.hidden = true;
+    closeModal(overlay);
     active = false;
     controller = null;
     context = null;
@@ -209,6 +242,7 @@ export function playSimWatchFinalReel() {
   controller?.stop();
   context.plays = reel;
   context.mode = "reel";
+  context.renderedIndex = -1;
   const feed = document.getElementById("simWatchFeed");
   if (feed) feed.innerHTML = "";
   const final = document.getElementById("simWatchFinal");
@@ -225,7 +259,11 @@ export function skipSimWatch() { return controller?.skip() || null; }
 
 export function handleSimWatchKeyboard(event) {
   if (!active || event?.target?.matches?.("input, textarea, select")) return false;
-  if (event.key === " ") { event.preventDefault?.(); toggleSimWatchPlayback(); return true; }
+  if (event.key === " " && !event?.target?.matches?.("button, a[href], [role='button']")) {
+    event.preventDefault?.();
+    toggleSimWatchPlayback();
+    return true;
+  }
   if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
     event.preventDefault?.(); stepSimWatch(event.key === "ArrowLeft" ? -1 : 1); return true;
   }
@@ -245,5 +283,6 @@ export function closeSimWatch() {
   if (overlay) {
     overlay.classList.remove("sim-watch-open");
     overlay.hidden = true;
+    closeModal(overlay);
   }
 }

@@ -57,10 +57,13 @@ function scoreRosterConstruction(teamPlayers) {
 
 // ── Cap Management ────────────────────────────────────────────────────────────
 
-function scoreCapManagement(team, capHardLimit = 224_800_000) {
-  const totalCommitted = (team.capUsed || 0) + (team.deadCap || 0);
-  const deadCapRatio = totalCommitted > 0 ? (team.deadCap || 0) / totalCommitted : 0;
-  const capUtilization = capHardLimit > 0 ? (team.capUsed || 0) / capHardLimit : 0;
+function scoreCapManagement(capSummary = {}) {
+  const capHardLimit = Number(capSummary.salaryCap || 0);
+  const usedCap = Number(capSummary.usedCap || 0);
+  const deadCap = Number(capSummary.deadCap || 0);
+  const totalCommitted = usedCap + deadCap;
+  const deadCapRatio = totalCommitted > 0 ? deadCap / totalCommitted : 0;
+  const capUtilization = capHardLimit > 0 ? usedCap / capHardLimit : 0;
 
   // Dead cap penalty: 0% = 0pts loss, 20%+ = heavy penalty
   const deadCapPenalty = clamp(deadCapRatio * 250, 0, 50);
@@ -68,8 +71,8 @@ function scoreCapManagement(team, capHardLimit = 224_800_000) {
   // Cap utilization reward: using 85–98% is ideal; below 70% or above 100% penalizes
   let utilScore;
   if (capUtilization >= 0.85 && capUtilization <= 0.98) utilScore = 100;
-  else if (capUtilization >= 0.70) utilScore = 70 + (capUtilization - 0.70) * 200;
   else if (capUtilization > 0.98) utilScore = clamp(100 - (capUtilization - 0.98) * 1000, 0, 100);
+  else if (capUtilization >= 0.70) utilScore = 70 + (capUtilization - 0.70) * 200;
   else utilScore = clamp(capUtilization * 100, 0, 70);
 
   return clamp(Math.round(utilScore - deadCapPenalty), 0, 100);
@@ -77,18 +80,16 @@ function scoreCapManagement(team, capHardLimit = 224_800_000) {
 
 // ── Draft ROI ─────────────────────────────────────────────────────────────────
 
-function scoreDraftROI(teamPlayers, year, lookbackYears = 4) {
+function scoreDraftROI(teamPlayers, year, seasonAvByPlayerId = {}, lookbackYears = 4) {
   const draftees = teamPlayers.filter((p) => {
-    if (p.profile?.source !== "generated-draft" && p.profile?.source !== "draft-prospect") return false;
-    const draftYear = parseInt((p.id || "").split("-")[1] || "0", 10);
+    if (!["generated-draft", "draft-prospect", "drafted"].includes(p.profile?.source)) return false;
+    const draftYear = Number(p.profile?.draftYear || String(p.id || "").match(/^P(\d{4})-/)?.[1] || 0);
     return draftYear >= year - lookbackYears && draftYear <= year;
   });
   if (!draftees.length) return 50;
 
-  const totalAV = draftees.reduce((s, p) => {
-    const av = Object.values(p.seasonStats || {}).reduce((sa, ss) => sa + (ss?.av || 0), 0);
-    return s + av;
-  }, 0);
+  const avFor = (id) => Number(seasonAvByPlayerId instanceof Map ? seasonAvByPlayerId.get(id) : seasonAvByPlayerId[id]) || 0;
+  const totalAV = draftees.reduce((sum, player) => sum + avFor(player.id), 0);
   const avgAV = totalAV / draftees.length;
 
   // Average draft pick: ~6 AV over 4 years = 50pts; 10+ = 80+; 16+ = 100
@@ -97,16 +98,38 @@ function scoreDraftROI(teamPlayers, year, lookbackYears = 4) {
 
 // ── Trade Outcomes ────────────────────────────────────────────────────────────
 
-function scoreTradeOutcomes(team, year) {
-  const trades = (team.tradeHistory || []).filter((t) => t.year === year);
-  if (!trades.length) return 65; // no trades = neutral grade
+function playerIds(rows = []) {
+  return rows.map((row) => typeof row === "string" ? row : row?.playerId).filter(Boolean);
+}
 
-  let netAV = 0;
-  for (const trade of trades) {
-    netAV += (trade.receivedAV || 0) - (trade.sentAV || 0);
-  }
+export function computeObservedTradeNetAv(teamId, year, transactions = [], seasonAvByPlayerId = {}) {
+  const trades = transactions.filter((transaction) =>
+    transaction.type === "trade" && Number(transaction.year) === Number(year) &&
+    (transaction.teamA === teamId || transaction.teamB === teamId)
+  );
+  const avFor = (id) => Number(seasonAvByPlayerId instanceof Map ? seasonAvByPlayerId.get(id) : seasonAvByPlayerId[id]) || 0;
+  const receipts = trades.map((trade) => {
+    const receivedIds = trade.teamA === teamId ? playerIds(trade.details?.fromB) : playerIds(trade.details?.fromA);
+    const sentIds = trade.teamA === teamId ? playerIds(trade.details?.fromA) : playerIds(trade.details?.fromB);
+    const receivedAv = receivedIds.reduce((sum, id) => sum + avFor(id), 0);
+    const sentAv = sentIds.reduce((sum, id) => sum + avFor(id), 0);
+    return { transactionId: trade.id, receivedIds, sentIds, receivedAv, sentAv, netAv: receivedAv - sentAv };
+  });
+  return {
+    tradeCount: receipts.length,
+    receivedAv: receipts.reduce((sum, receipt) => sum + receipt.receivedAv, 0),
+    sentAv: receipts.reduce((sum, receipt) => sum + receipt.sentAv, 0),
+    netAv: receipts.reduce((sum, receipt) => sum + receipt.netAv, 0),
+    receipts,
+    boundary: "Observed regular-season Approximate Value after each receipted trade; descriptive, not causal."
+  };
+}
+
+function scoreTradeOutcomes(tradeReceipt) {
+  const trades = tradeReceipt.receipts || [];
+  if (!trades.length) return 65; // no trades = neutral grade
   // +5 net AV per trade = 80pts; -5 = 40pts
-  const perTradeNet = netAV / trades.length;
+  const perTradeNet = tradeReceipt.netAv / trades.length;
   return clamp(Math.round(60 + perTradeNet * 4), 0, 100);
 }
 
@@ -132,12 +155,17 @@ function scoreSchemeFitExecution(teamPlayers) {
  * @param {number} year
  * @returns {object} report card
  */
-export function generateGMReportCard(team, teamPlayers, year) {
+export function generateGMReportCard(team, teamPlayers, year, {
+  capSummary = {},
+  transactions = [],
+  seasonAvByPlayerId = {}
+} = {}) {
+  const tradeReceipt = computeObservedTradeNetAv(team.id, year, transactions, seasonAvByPlayerId);
   const scores = {
     rosterConstruction: scoreRosterConstruction(teamPlayers),
-    capManagement: scoreCapManagement(team),
-    draftROI: scoreDraftROI(teamPlayers, year),
-    tradeOutcomes: scoreTradeOutcomes(team, year),
+    capManagement: scoreCapManagement(capSummary),
+    draftROI: scoreDraftROI(teamPlayers, year, seasonAvByPlayerId),
+    tradeOutcomes: scoreTradeOutcomes(tradeReceipt),
     schemeFitExecution: scoreSchemeFitExecution(teamPlayers)
   };
 
@@ -168,6 +196,7 @@ export function generateGMReportCard(team, teamPlayers, year) {
   };
 
   return {
+    schemaVersion: "1.0",
     year,
     teamId: team.id,
     overallScore,
@@ -175,6 +204,15 @@ export function generateGMReportCard(team, teamPlayers, year) {
     grades,
     colors,
     labels: LABELS,
+    capReceipt: {
+      salaryCap: Number(capSummary.salaryCap || 0),
+      usedCap: Number(capSummary.usedCap || 0),
+      deadCap: Number(capSummary.deadCap || 0),
+      capSpace: Number(capSummary.capSpace || 0),
+      source: "ContractService.getCapSummary"
+    },
+    tradeReceipt,
+    evidenceBoundary: "Grades summarize canonical roster, cap, draft, transaction and season-stat authorities; they do not prove that a single decision caused an outcome.",
     dimensions: Object.keys(scores).map((k) => ({
       key: k,
       label: LABELS[k],

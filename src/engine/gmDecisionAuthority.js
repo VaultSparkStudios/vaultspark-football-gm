@@ -66,12 +66,70 @@ function normalizedFranchiseId(state = {}) {
   return String(state.franchiseId || state.leagueId || `fa-${state.startYear || "unknown"}-${normalizedTeamId(state)}`);
 }
 
-function decisionOptions(decisionId) {
+const CHOICE_SUCCESS_RULES = Object.freeze({
+  buy: "Complete a roster acquisition before the trade deadline.",
+  sell: "Acquire future draft capital before the trade deadline.",
+  hold: "Complete no trade through the trade deadline.",
+  "fa-qb": "Add a new quarterback through free agency or waivers by the due week.",
+  "start-backup": "Promote an available backup quarterback to QB1 immediately.",
+  "trade-qb": "Acquire a new quarterback by trade by the due week.",
+  restructure: "Complete a contract restructure that creates a cap response by the due week.",
+  release: "Complete a player release through the contract desk by the due week.",
+  wait: "Return cap space to a non-negative position by the due week without an immediate cut.",
+  shop: "Trade the requesting player by the due week.",
+  extend: "Re-sign or restructure the requesting player's contract by the due week.",
+  deny: "Apply the public denial and its bounded morale consequence immediately.",
+  "address-room": "Apply the team meeting to the five lowest-morale eligible players immediately.",
+  "back-staff": "Publish the staff backing immediately and accept the standings pressure.",
+  "shake-up": "Complete a trade or release by the due week.",
+  ceremony: "Publish the farewell-season announcement immediately.",
+  "feature-role": "Publish the veteran's featured-role commitment immediately.",
+  "quiet-exit": "Publish the no-farewell decision immediately."
+});
+
+const TARGET_IDS_BY_TAB = Object.freeze({
+  contractsTab: "contractsSpotlight",
+  draftTab: "draftWarRoomPanel",
+  overviewTab: "franchiseCommandCenter",
+  rosterTab: "rosterSpotlight",
+  settingsTab: "settingsSpotlight",
+  historyTab: "historySpotlight"
+});
+
+export function buildGmDecisionBoundary(choice = {}, state = {}) {
+  const year = Number(state.currentYear || state.startYear || 0);
+  const currentWeek = Number(state.currentWeek || 0);
+  const deadlineWeek = Number.isFinite(choice.deadlineWeek)
+    ? choice.deadlineWeek
+    : Number.isFinite(choice.deadlineOffset)
+      ? Math.min(18, currentWeek + choice.deadlineOffset)
+      : null;
+  const immediate = choice.mode === "immediate";
+  const timing = immediate
+    ? "Executes when committed."
+    : choice.mode === "immediate-or-commitment"
+      ? `Attempts now; if blocked, becomes a promise due Week ${deadlineWeek}.`
+      : `Promise due Week ${deadlineWeek}.`;
+  return {
+    mode: choice.mode || "commitment",
+    timing,
+    deadline: deadlineWeek == null ? null : { year, week: deadlineWeek },
+    targetTab: choice.targetTab || null,
+    targetId: choice.targetId || TARGET_IDS_BY_TAB[choice.targetTab] || null,
+    reversibility: immediate
+      ? "Applies immediately; later roster and strategy decisions remain available."
+      : "Open until the due week; only a receipted qualifying action resolves it.",
+    successRule: CHOICE_SUCCESS_RULES[choice.id] || CHOICE_SUCCESS_RULES[choice.choiceId] || choice.effect || "Complete the declared action."
+  };
+}
+
+function decisionOptions(decisionId, state) {
   const choices = GM_DECISION_CATALOG[decisionId]?.choices || {};
   return Object.entries(choices).map(([id, choice]) => ({
     id,
     label: choice.label,
-    effect: choice.effect
+    effect: choice.effect,
+    boundary: buildGmDecisionBoundary({ ...choice, id }, state)
   }));
 }
 
@@ -96,7 +154,7 @@ function decisionRecord(state, decisionId, prompt, contextKey = "default") {
     teamId: normalizedTeamId(state),
     occurrenceKey: buildGmDecisionOccurrenceKey(state, decisionId, contextKey),
     prompt,
-    options: decisionOptions(decisionId)
+    options: decisionOptions(decisionId, state)
   };
 }
 

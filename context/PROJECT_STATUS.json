@@ -9,14 +9,14 @@
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-11",
+  "lastUpdated": "2026-08-12",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
   "truthAuditLastRun": "2026-08-11",
-  "ignisScore": 42230,
+  "ignisScore": 42836,
   "ignisGrade": "FORGE",
-  "ignisLastComputed": "2026-08-03",
+  "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": {
     "totalTests": 1024,
     "pass": 1024,
@@ -82,7 +82,7 @@
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 80,
+  "currentSession": 81,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": "npm test 1024/1024 direct exit 0; Playwright 40/40; responsive evidence 176/176; CANON-053 56 captures/2 themes; secret scan 0; stable staging 14/14 and production at 7becc573/6781437a; CI 31544142759, Pages 31544142748, brief 31544142762 and backend deploy 31544469131 green; external API database/CORS/cache health green.",
@@ -118,7 +118,7 @@
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-11",
+    "date": "2026-08-12",
     "passing": 5,
     "warning": 1,
     "checks": [
@@ -139,25 +139,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.037,
   "entropyLastComputed": "2026-08-11",
-  "lastSessionSummary": {
-    "session": 79,
-    "shipped": [
-      "canonical Agent Negotiation through the one contract mutation authority",
-      "automatic winner and margin prediction rollover receipts plus League Story export",
-      "participant-bound Community Stats capabilities and browser evidence-tier enforcement",
-      "Roster, Contracts, Draft and Stats UI islands with per-island budgets",
-      "accessible Hall of Fame ceremony with observable share and download outcomes",
-      "44 hash-bound visual receipts across dark/light desktop/mobile",
-      "three verification-time authority fixes: 44px modal targets, shard membership and innovation status parity"
-    ],
-    "tests": "npm test 1018/1018, Playwright 40/40, responsive 158/158, Pages build/smoke and boot/reachability green",
-    "deploy": "Candidate commit 5cfb904 is ready for exact-SHA stable staging proof before direct-main publication; launchReady remains false.",
-    "honestDeferrals": [
-      "Launch remains held on reply-capable email, SHA-bound founder launch approval, lifecycle authority, Obelisk posture and current edge evidence.",
-      "Observe a real opted-in Community Stats cohort without manufacturing activity.",
-      "IGNIS refresh and two Studio Ops checker repairs were sent through signed Ark cargo rather than cross-repo edits."
-    ]
-  },
+  "lastSessionSummary": "Session 80 complete and fully deployed: exact General Manager decision surfaces and visible evidence-derived Architect mastery are live at 7becc57385515042dee5d80146c635d45962ea40 with staging/production artifact 6781437a0b319806945b94700e02d53faeee59be0885060a1b78dcc7545b5c9a; CI, Pages and guarded backend deployment are green. Launch HOLD remains explicit.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -178,18 +160,33 @@
       "lastChecked": "2026-08-11"
     }
   ],
-  "lastSession": 80,
-  "silLastSession": 80,
+  "lastSession": 81,
+  "silLastSession": "80",
   "bootAmortization": {
-    "ratio": 0,
-    "verdict": "wasted",
-    "ranAt": "2026-07-29T07:32:56.464Z"
+    "ratio": 4.27,
+    "verdict": "healthy",
+    "ranAt": "2026-08-12T02:04:52.157Z"
   },
   "bootAmortizationHistory": [
     {
       "ratio": 0,
       "verdict": "wasted",
       "ranAt": "2026-07-29T07:32:56.464Z"
+    },
+    {
+      "ratio": 4.19,
+      "verdict": "healthy",
+      "ranAt": "2026-08-12T01:46:20.868Z"
+    },
+    {
+      "ratio": 4.25,
+      "verdict": "healthy",
+      "ranAt": "2026-08-12T01:55:06.157Z"
+    },
+    {
+      "ratio": 4.27,
+      "verdict": "healthy",
+      "ranAt": "2026-08-12T02:04:52.157Z"
     }
   ],
   "session": 80,

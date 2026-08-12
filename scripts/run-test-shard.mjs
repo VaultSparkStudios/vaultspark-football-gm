@@ -77,6 +77,7 @@ export const SHARDS = {
     "test/gm-decision-commitments.test.js",
     "test/gm-decision-authority.test.js",
     "test/gm-decision-expansion.test.js",
+    "test/gm-stewardship-report.test.js",
     "test/gist-sync-security.test.js",
     "test/fa-market-competition.test.js",
     "test/owner-confidence.test.js",
@@ -94,6 +95,8 @@ export const SHARDS = {
     "test/tablet-decision-deck.test.js",
     "test/mobile-weekly-intent.test.js",
     "test/modal-manager.test.js",
+    "test/mentorship-covenants.test.js",
+    "test/on-clock-trade-market.test.js",
     "test/opening-contract-prologue.test.js",
     "test/opening-contract-choice-matrix.test.js",
     "test/player-profile-narrative.test.js",
@@ -122,6 +125,7 @@ export const SHARDS = {
     "test/session8-endpoints.test.js",
     "test/sim-watch-playback.test.js",
     "test/td-flourish.test.js",
+    "test/theme-customizer.test.js",
     "test/dynasty-timeline.test.js",
     "test/cap-war-room.test.js",
     "test/audio-feedback.test.js",
@@ -195,6 +199,7 @@ export const SHARDS = {
     "test/duplicate-pr-guard.test.js",
     "test/studio-protocol-smoke.test.js",
     "test/startup-authority-contract.test.js",
+    "test/startup-brief-last-session.test.js",
     "test/session-intent-classifier.test.js",
     "test/task-board-parser-authority.test.js"
   ]

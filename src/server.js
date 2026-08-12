@@ -28,7 +28,6 @@ import {
 import { initRivalries, getRivalryContext, getTeamRivalries } from "./engine/rivalryDNA.js";
 import { runLeagueCombine, getCombineSummary } from "./engine/draftCombine.js";
 import { getFanSentiment, fanApprovalLabel } from "./engine/fanSentiment.js";
-import { getMentorshipStatus, getMentorshipHistory } from "./engine/veteranMentorship.js";
 import { buildPersonaIntel } from "./engine/rivalGmPersona.js";
 import { authorizeCommand, TEAM_SCOPED_COMMANDS } from "./runtime/franchiseAuthority.js";
 import {
@@ -1119,6 +1118,21 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  if (req.method === "POST" && url.pathname === "/api/draft/on-clock-trade") {
+    const body = parseJsonBody(await readRequestBody(req));
+    if (!body || !body.offerId || !body.expectedFingerprint) {
+      sendJson(res, 400, { ok: false, error: "offerId and expectedFingerprint required." });
+      return true;
+    }
+    const result = session.resolveOnClockTrade({
+      offerId: String(body.offerId),
+      expectedFingerprint: String(body.expectedFingerprint),
+      action: String(body.action || "accept")
+    });
+    sendJson(res, result.ok ? 200 : (result.status || 400), { ...result, state: session.getDashboardState() });
+    return true;
+  }
+
   if (req.method === "POST" && url.pathname === "/api/draft/cpu") {
     const body = parseJsonBody(await readRequestBody(req));
     if (body == null) {
@@ -1895,11 +1909,21 @@ async function handleApi(req, res, url) {
 
   if (req.method === "GET" && url.pathname === "/api/mentorship") {
     const teamId = (url.searchParams.get("team") || session.controlledTeamId || "").toUpperCase();
-    sendJson(res, 200, {
-      ok: true,
-      teamId,
-      pairs: getMentorshipStatus(session.league, teamId),
-      history: getMentorshipHistory(session.league, teamId)
+    sendJson(res, 200, session.getMentorshipState(teamId));
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/mentorship") {
+    const body = parseJsonBody(await readRequestBody(req)) || {};
+    const action = String(body.action || "");
+    const result = action === "assign"
+      ? session.assignMentorship(body)
+      : action === "clear"
+        ? session.clearMentorship(body)
+        : { ok: false, status: 400, error: "action must be assign or clear." };
+    sendJson(res, result.ok ? 200 : (result.status || 400), {
+      ...result,
+      state: result.state || session.getMentorshipState(body.teamId)
     });
     return true;
   }

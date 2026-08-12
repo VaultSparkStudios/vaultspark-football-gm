@@ -2,9 +2,29 @@ import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, formatHeight, renderPulseChips, renderTable, setElementTone, setMetricCardValue, teamByCode, teamName } from "./appCore.js";
 import { getProspectNarrative, getScoutingRevealTier } from "./prospectNarratives.js";
 import { closeModal, openModal } from "./modalManager.js";
+import { observeBackgroundTask } from "./clientDiagnostics.js";
 
 const MEDICAL_LABELS = { clean: "Medical: clean", monitor: "Medical: monitor", "red-flag": "Medical: RED FLAG" };
 const MAKEUP_LABELS = { positive: "Makeup: positive", neutral: "Makeup: neutral", concern: "Makeup: concern" };
+let onClockMarketPanelPromise = null;
+
+function hydrateOnClockMarket(panel, market) {
+  if (!market.active) return;
+  const mount = panel.querySelector("[data-on-clock-market-mount]");
+  if (!mount) return;
+  mount.innerHTML = `<div class="narrative-empty">Verifying offers…</div>`;
+  onClockMarketPanelPromise ||= import("./onClockTradeMarketPanel.js");
+  observeBackgroundTask(onClockMarketPanelPromise, {
+    surface: "draft",
+    operation: "on-clock-market-panel",
+    onSuccess(module) {
+      if (mount.isConnected) mount.innerHTML = module.renderOnClockTradeMarket(market);
+    },
+    onError() {
+      if (mount.isConnected) mount.innerHTML = `<div class="narrative-empty">Live offers are unavailable.</div>`;
+    }
+  });
+}
 
 // Investment-gated interview/medical reads (S29) — "-" until enough points are
 // spent on this prospect to have earned the intel; never fabricated for free.
@@ -27,11 +47,7 @@ export function buildDraftPressureModel({ draft = null, scoutingBoard = [], rost
     };
   }
 
-  // `order` carries one entry per selection (S67). The old `% 32` read the
-  // wrong team for every round after the first.
   const currentTeam = draft.order?.[draft.currentPick - 1] || null;
-  // S67: the board carries per-slot provenance, so a pick that was traded for
-  // or awarded says so instead of looking like any other selection.
   const currentSlot = draft.slots?.[draft.currentPick - 1] || null;
   const isUserPick = Boolean(controlledTeamId && currentTeam === controlledTeamId && !draft.completed);
   const picksUntilUser = draft.completed
@@ -191,6 +207,7 @@ export function renderDraftWarRoom() {
     rosterNeeds: state.dashboard?.rosterNeeds || [],
     controlledTeamId: state.dashboard?.controlledTeamId || null
   });
+  const market = state.draftState?.onClockTradeMarket || { active: false, offers: [] };
   panel.hidden = false;
   panel.innerHTML = `
     <div class="draft-war-room-head">
@@ -211,8 +228,10 @@ export function renderDraftWarRoom() {
           <div class="draft-target-story">${escapeHtml(target.story || "The room has no background read yet.")}</div>
         </div>`).join("") : `<div class="narrative-empty">No draft targets loaded yet.</div>`}
     </div>
+    ${market.active ? `<div data-on-clock-market-mount></div>` : ""}
     <div class="small">${escapeHtml(model.insight)}</div>
   `;
+  hydrateOnClockMarket(panel, market);
 }
 
 export function renderScouting() {

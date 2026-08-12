@@ -15,6 +15,13 @@ const CAPABILITY_USE_LIMIT = 16;
 const CAPABILITY_PARTICIPANT_LIMIT = 4;
 const CAPABILITY_PARTICIPANT_WINDOW_MS = 24 * 60 * 60 * 1000;
 
+export function runtimeSourceRevision(value = process.env.SOURCE_REVISION) {
+  const revision = String(value || "").trim();
+  return /^[a-zA-Z0-9._-]{1,64}$/.test(revision) ? revision : "local-worktree";
+}
+
+const SOURCE_REVISION = runtimeSourceRevision();
+
 function allowedOrigins() {
   return new Set(String(process.env.COMMUNITY_ALLOWED_ORIGINS || DEFAULT_ORIGINS.join(",")).split(",").map((value) => value.trim().replace(/\/+$/, "")).filter(Boolean));
 }
@@ -231,7 +238,7 @@ export function createCommunityStatsHandler({
     try {
       if (req.method === "GET" && (url.pathname === "/health" || url.pathname === "/community/v1/health")) {
         const health = await store.health();
-        sendJson(res, 200, { ...health, service: "franchise-architect-community-stats" }, { "Cache-Control": "no-store" }); return;
+        sendJson(res, 200, { ...health, service: "franchise-architect-community-stats", sourceRevision: SOURCE_REVISION }, { "Cache-Control": "no-store" }); return;
       }
       if (req.method === "GET" && url.pathname === "/community/v1/snapshot") {
         let snapshot;

@@ -72,6 +72,7 @@ import {
 } from "../stats/realismCalibrator.js";
 import { PFR_RECENT_WEIGHTED_PROFILE } from "../stats/profiles/pfrRecentWeightedProfile.js";
 import { PFR_CAREER_WEIGHTED_PROFILE } from "../stats/profiles/pfrCareerWeightedProfile.js";
+import { attachTrend, generateGMReportCard } from "../stats/gmReportCard.js";
 import {
   appendProgressionHistory,
   buildRosterWindowMap,
@@ -118,10 +119,16 @@ import { generatePressConference } from "../engine/pressConference.js";
 import { runNarrativeChecks } from "../engine/narrativeEvents.js";
 import { getOpenThreads, resolveThreads as resolveContinuityThreads } from "../engine/continuityLedger.js";
 import { fanApprovalLabel, getFanSentiment, updateFanSentiment } from "../engine/fanSentiment.js";
-import { applyMentorshipBonuses } from "../engine/veteranMentorship.js";
-import { getGmCommitmentState, latestGmDecision, resolveGmDecisionCommitments } from "../engine/gmDecisionConsequences.js";
+import {
+  applyMentorshipBonuses,
+  assignMentorshipCovenant,
+  clearMentorshipCovenant,
+  getMentorshipState
+} from "../engine/veteranMentorship.js";
+import { enrichGmDecisionQueue, getGmCommitmentState, latestGmDecision, resolveGmDecisionCommitments } from "../engine/gmDecisionConsequences.js";
 import { applyWeeklyOwnerConfidence, getOwnerConfidenceSummary } from "../engine/ownerConfidence.js";
 import { generateInboundTradeOffers, getInboundTradeOffers, respondToInboundTradeOffer } from "../engine/rivalTradeOffers.js";
+import { appendCounterPick, buildOnClockFingerprint, buildOnClockTradeOffers } from "../engine/onClockTradeMarket.js";
 import { generateGmDecisions } from "../engine/gmDecisionAuthority.js";
 import { answerPressQuestion, getPendingPressQuestion, getPressReceipts } from "../engine/pressRoom.js";
 import { buildCoachingMarket, fireCoach, getCoachingMarketReceipts, hireCoach } from "../engine/coachingMarket.js";
@@ -1277,6 +1284,7 @@ function ensureLeagueRuntime(league) {
   if (!Array.isArray(league.newsFeed)) league.newsFeed = [];
   if (!Array.isArray(league.eventLog)) league.eventLog = [];
   if (!Array.isArray(league.gmDecisionLedger)) league.gmDecisionLedger = [];
+  if (!Array.isArray(league.gmStewardshipReports)) league.gmStewardshipReports = [];
   if (!Array.isArray(league.calibrationJobs)) league.calibrationJobs = [];
   if (!Array.isArray(league.draftPicks)) league.draftPicks = [];
   if (!Array.isArray(league.compensatoryPicks)) league.compensatoryPicks = [];
@@ -2980,6 +2988,41 @@ export class GameSession {
       schemeIdentity: team.schemeIdentity || schemeIdentityLabel(team),
       weeklyPlan: team.weeklyPlan || this.buildWeeklyPlan(teamId)
     };
+  }
+
+  getMentorshipState(teamId = this.controlledTeamId) {
+    const normalizedTeamId = String(teamId || this.controlledTeamId || "").toUpperCase();
+    const state = getMentorshipState(this.league, normalizedTeamId, {
+      year: this.currentYear,
+      week: this.currentWeek
+    });
+    return {
+      ok: true,
+      ...state,
+      editable: normalizedTeamId === this.controlledTeamId
+    };
+  }
+
+  assignMentorship(input = {}) {
+    const normalizedTeamId = String(input.teamId || this.controlledTeamId || "").toUpperCase();
+    const result = assignMentorshipCovenant(this.league, {
+      ...input,
+      teamId: normalizedTeamId,
+      year: this.currentYear,
+      week: this.currentWeek
+    });
+    return { ...result, state: this.getMentorshipState(normalizedTeamId) };
+  }
+
+  clearMentorship(input = {}) {
+    const normalizedTeamId = String(input.teamId || this.controlledTeamId || "").toUpperCase();
+    const result = clearMentorshipCovenant(this.league, {
+      ...input,
+      teamId: normalizedTeamId,
+      year: this.currentYear,
+      week: this.currentWeek
+    });
+    return { ...result, state: this.getMentorshipState(normalizedTeamId) };
   }
 
   updateOwnerState({ teamId, ticketPrice = null, staffBudget = null, training = null, rehab = null, analytics = null }) {
@@ -5050,15 +5093,39 @@ export class GameSession {
       this.lastAwardSummary = estimateAwards(this, this.currentYear, playoffResult);
       this.latestPostseason = playoffResult;
       // GM Legacy Score — update after each season
+      let stewardshipReport = null;
       if (this.controlledTeamId) {
-        updateGmLegacyAfterSeason(this.league, this.controlledTeamId, this.currentYear);
+        const capSummary = this.getTeamCapSummary(this.controlledTeamId);
+        const seasonAvByPlayerId = Object.fromEntries(
+          [...collectSeasonAvMap(this, this.currentYear, "regular")].map(([playerId, row]) => [playerId, Number(row?.av || 0)])
+        );
+        const currentReport = generateGMReportCard(
+          teamById(this.league, this.controlledTeamId),
+          teamPlayersAll(this.league, this.controlledTeamId),
+          this.currentYear,
+          {
+            capSummary,
+            transactions: this.league.transactionLog || [],
+            seasonAvByPlayerId
+          }
+        );
+        const previousReport = (this.league.gmStewardshipReports || [])
+          .filter((entry) => Number(entry.year) < Number(this.currentYear))
+          .sort((a, b) => Number(b.year) - Number(a.year))[0] || null;
+        stewardshipReport = attachTrend(currentReport, previousReport);
+        this.league.gmStewardshipReports = [
+          ...(this.league.gmStewardshipReports || []).filter((entry) => Number(entry.year) !== Number(this.currentYear)),
+          stewardshipReport
+        ].sort((a, b) => Number(a.year) - Number(b.year)).slice(-30);
+        updateGmLegacyAfterSeason(this.league, this.controlledTeamId, this.currentYear, { capSummary, stewardshipReport });
         // Adaptive League (S70): opt-in, bounded, announced; no-op when off.
         applyAdaptiveDifficultyAfterSeason(this);
       }
       this.pendingSeasonWrap = {
         year: this.currentYear,
         superBowl: playoffResult.superBowl,
-        awards: this.lastAwardSummary
+        awards: this.lastAwardSummary,
+        stewardshipReport
       };
       this.archiveGameResults(playoffResult.gameArchiveEntries);
       const capsuleGrade = gradeTimeCapsule({ league: this.league, statBook: this.statBook, year: this.currentYear });
@@ -5280,7 +5347,135 @@ export class GameSession {
   }
 
   getDraftState() {
-    return this.league.pendingDraft;
+    const draft = this.league.pendingDraft;
+    if (!draft) return null;
+    return {
+      ...draft,
+      onClockTradeMarket: this.getOnClockTradeMarket()
+    };
+  }
+
+  getOnClockTradeMarket() {
+    const draft = this.league.pendingDraft;
+    if (!draft || draft.completed) return { active: false, fingerprint: null, offers: [] };
+    const slot = draftSlotForPick(draft);
+    const livePick = slot?.pickId ? this.getDraftPickById(slot.pickId) : null;
+    const scoutingBoard = this.controlledTeamId
+      ? this.ensureScoutingTeamState(this.controlledTeamId).board || []
+      : [];
+    const fingerprint = buildOnClockFingerprint({ draft, slot, pick: livePick, scoutingBoard });
+    const offers = buildOnClockTradeOffers({
+      draft,
+      slot,
+      livePick,
+      controlledTeamId: this.controlledTeamId,
+      teams: this.league.teams,
+      futurePicks: this.league.draftPicks || [],
+      scoutingBoard,
+      rosterNeeds: (teamId) => this.getRosterNeedSummary(teamId)
+    });
+    return {
+      active: slot?.teamId === this.controlledTeamId && Boolean(livePick),
+      fingerprint,
+      livePickId: livePick?.id || null,
+      offers
+    };
+  }
+
+  resolveOnClockTrade({ offerId, expectedFingerprint, action = "accept" } = {}) {
+    const normalizedAction = String(action || "accept").toLowerCase();
+    if (!["accept", "counter", "decline"].includes(normalizedAction)) {
+      return { ok: false, status: 400, reasonCode: "invalid-action", error: "Action must be accept, counter, or decline." };
+    }
+    const market = this.getOnClockTradeMarket();
+    if (!market.active) return { ok: false, status: 409, reasonCode: "not-on-clock", error: "Your franchise is not on the clock." };
+    if (!expectedFingerprint || expectedFingerprint !== market.fingerprint) {
+      return {
+        ok: false,
+        status: 409,
+        reasonCode: "stale-on-clock-offer",
+        error: "The draft board or pick ownership changed. Reload the market before acting.",
+        market
+      };
+    }
+    const offer = market.offers.find((entry) => entry.id === offerId);
+    if (!offer) return { ok: false, status: 404, reasonCode: "offer-unavailable", error: "That on-clock offer is no longer available." };
+    const draft = this.league.pendingDraft;
+    if (normalizedAction === "decline") {
+      if (!draft.declinedOnClockOffers || typeof draft.declinedOnClockOffers !== "object") draft.declinedOnClockOffers = {};
+      const declined = new Set(draft.declinedOnClockOffers[market.fingerprint] || []);
+      declined.add(offer.id);
+      draft.declinedOnClockOffers[market.fingerprint] = [...declined];
+      return { ok: true, action: "decline", accepted: false, offerId: offer.id, market: this.getOnClockTradeMarket() };
+    }
+
+    const resolvedOffer = normalizedAction === "counter"
+      ? appendCounterPick(offer, this.league.draftPicks || [])
+      : offer;
+    if (!resolvedOffer) {
+      return { ok: false, status: 409, reasonCode: "counter-unavailable", error: "This rival has no additional eligible pick to counter with." };
+    }
+    if (normalizedAction === "counter" && resolvedOffer.incomingValue > resolvedOffer.livePick.value * 1.35) {
+      return {
+        ok: true,
+        action: "counter",
+        accepted: false,
+        reasonCode: "rival-counter-declined",
+        error: `${resolvedOffer.teamName} declined the counter at its disclosed value boundary.`,
+        offer: resolvedOffer,
+        market
+      };
+    }
+
+    const slot = draftSlotForPick(draft);
+    const livePick = slot?.pickId ? this.getDraftPickById(slot.pickId) : null;
+    const incoming = resolvedOffer.incomingPicks.map((pick) => this.getDraftPickById(pick.id));
+    if (
+      !slot || !livePick || livePick.ownerTeamId !== this.controlledTeamId ||
+      slot.teamId !== this.controlledTeamId || incoming.some((pick) => !pick || pick.ownerTeamId !== resolvedOffer.teamId || pick.consumed === true)
+    ) {
+      return { ok: false, status: 409, reasonCode: "stale-on-clock-assets", error: "Pick ownership changed before the trade could commit." };
+    }
+
+    livePick.ownerTeamId = resolvedOffer.teamId;
+    for (const pick of incoming) pick.ownerTeamId = this.controlledTeamId;
+    slot.teamId = resolvedOffer.teamId;
+    slot.acquired = resolvedOffer.teamId !== slot.originalTeamId;
+    draft.order[draft.currentPick - 1] = resolvedOffer.teamId;
+    const transaction = this.logTransaction({
+      type: "draft-trade",
+      teamA: this.controlledTeamId,
+      teamB: resolvedOffer.teamId,
+      details: {
+        action: normalizedAction,
+        fingerprint: market.fingerprint,
+        livePick: { id: livePick.id, year: livePick.year, round: livePick.round, overall: draft.currentPick },
+        picksToControlledTeam: incoming.map((pick) => ({ id: pick.id, year: pick.year, round: pick.round, originalTeamId: pick.originalTeamId })),
+        disclosedValue: { outgoing: resolvedOffer.livePick.value, incoming: resolvedOffer.incomingValue }
+      }
+    });
+    this.logNews(`${this.controlledTeamId} traded pick ${draft.currentPick} to ${resolvedOffer.teamId}`, {
+      teamA: this.controlledTeamId,
+      teamB: resolvedOffer.teamId,
+      transactionId: transaction.id
+    });
+    const currentPick = draft.currentPick;
+    const recipientPick = this.runCpuDraft({ picks: 1, untilUserPick: false });
+    if (!recipientPick.ok || draft.currentPick !== currentPick + 1) {
+      throw new Error("On-clock trade invariant failed: recipient did not consume exactly one live slot.");
+    }
+    const resumed = draft.completed ? null : this.runCpuDraft({ picks: 9999, untilUserPick: true });
+    this.rebuildLookupIndexes();
+    return {
+      ok: true,
+      action: normalizedAction,
+      accepted: true,
+      offer: resolvedOffer,
+      transaction,
+      recipientSelection: draft.selections.find((selection) => selection.pick === currentPick) || null,
+      cpuPicksAfterTrade: 1 + Number(resumed?.completedPicks || 0),
+      draft: this.getDraftState()
+    };
   }
 
   getScheduleWeek(week = this.currentWeek) {
@@ -5811,6 +6006,7 @@ export class GameSession {
       hallOfFame: this.getHallOfFameHistory().slice(0, 120),
       hallOfFameBallot: this.getHallOfFameBallot({ limit: 12 }),
       seasonAwardsStage: this.phase === "season-awards" ? this.pendingSeasonWrap : null,
+      gmStewardshipReports: (this.league.gmStewardshipReports || []).slice(-5).reverse(),
       latestStandings: standingsRows,
       latestWeekResults: this.weekResultsCurrentSeason.slice(-1)[0] || null,
       latestTacticalFilm: (this.league.tacticalFilmLog || []).find((entry) => entry.teamId === this.controlledTeamId) || null,
@@ -5890,7 +6086,10 @@ export class GameSession {
     dashboard.fanSentiment = fanSentimentData;
     return {
       ...dashboard,
-      gmDecisionQueue: generateGmDecisions(dashboard, { ledger: this.league.gmDecisionLedger }),
+      gmDecisionQueue: enrichGmDecisionQueue(
+        this,
+        generateGmDecisions(dashboard, { ledger: this.league.gmDecisionLedger })
+      ),
       pressRoom: this.getPressRoom()
     };
   }

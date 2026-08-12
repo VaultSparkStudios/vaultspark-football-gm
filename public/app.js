@@ -86,8 +86,8 @@ import {
   setBoxScoreTab,
   decoratePlayerColumnFromRows,
   decoratePlayerColumnByIds,
-  loadPlayerModal,
-  closePlayerModal,
+  loadPlayerModal as loadPlayerModalContent,
+  closePlayerModal as closePlayerModalView,
   bindMenuTabs,
   bindMobileNav,
   runAction
@@ -104,10 +104,10 @@ import {
   renderStandings,
   renderWeekResults,
   renderBoxScoreTicker,
-  loadBoxScore,
-  closeBoxScoreModal,
-  openGuideModal,
-  closeGuideModal,
+  loadBoxScore as loadBoxScoreContent,
+  closeBoxScoreModal as closeBoxScoreModalView,
+  openGuideModal as openGuideModalView,
+  closeGuideModal as closeGuideModalView,
   renderNewsTicker,
   renderGmLegacyScore,
   showPersonaTierToast,
@@ -197,6 +197,7 @@ import {
 } from "./lib/architectPlanRehearsal.js";
 import { recordPlaytestJourneyCheckpoint, startPlaytestJourney } from "./lib/playtestJourney.js";
 import { navigateToExactSurface } from "./lib/exactSurfaceNavigation.js";
+import { closeModal, hasOpenModal, isModalOpen, openModal } from "./lib/modalManager.js";
 
 import {
   ingestNewsIntoInbox,
@@ -225,6 +226,48 @@ import {
   checkAndPruneRewindStorage
 } from "./lib/engagementFeatures.js";
 
+function openManagedModal(modalId, onClose) {
+  const modal = document.getElementById(modalId);
+  if (!modal || isModalOpen(modal)) return modal;
+  openModal(modal, { onClose });
+  return modal;
+}
+
+async function loadPlayerModal(...args) {
+  const result = await loadPlayerModalContent(...args);
+  openManagedModal("playerModal", closePlayerModal);
+  return result;
+}
+
+function closePlayerModal() {
+  const modal = document.getElementById("playerModal");
+  closePlayerModalView();
+  closeModal(modal);
+}
+
+async function loadBoxScore(...args) {
+  const result = await loadBoxScoreContent(...args);
+  openManagedModal("boxScoreModal", closeBoxScoreModal);
+  return result;
+}
+
+function closeBoxScoreModal() {
+  const modal = document.getElementById("boxScoreModal");
+  closeBoxScoreModalView();
+  closeModal(modal);
+}
+
+function openGuideModal() {
+  openGuideModalView();
+  openManagedModal("guideModal", closeGuideModal);
+}
+
+function closeGuideModal() {
+  const modal = document.getElementById("guideModal");
+  closeGuideModalView();
+  closeModal(modal);
+}
+
 function callAppIsland(name, exportName, ...args) {
   const loaded = getLoadedUiIsland(name);
   if (loaded) {
@@ -249,10 +292,12 @@ function loadedIslandActions(name, exportNames) {
 
 const {
   renderRoster, renderRetiredPool, updateDepthShare, renderDepthChart, renderVeteranMentorshipPanel,
+  assignMentorshipFromPanel, clearMentorshipFromPanel,
   getSelectedDesignationPlayer, setSelectedDesignationPlayer,
   getSelectedRetirementOverridePlayer, setSelectedRetirementOverridePlayer
 } = loadedIslandActions("roster", [
   "renderRoster", "renderRetiredPool", "updateDepthShare", "renderDepthChart", "renderVeteranMentorshipPanel",
+  "assignMentorshipFromPanel", "clearMentorshipFromPanel",
   "getSelectedDesignationPlayer", "setSelectedDesignationPlayer",
   "getSelectedRetirementOverridePlayer", "setSelectedRetirementOverridePlayer"
 ]);
@@ -1237,6 +1282,26 @@ function bindEvents() {
     }, "Drafting player...");
   });
 
+  document.getElementById("draftWarRoomPanel").addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-on-clock-action]");
+    if (!button) return;
+    const action = button.dataset.onClockAction;
+    runAction(async () => {
+      const result = await api("/api/draft/on-clock-trade", {
+        method: "POST",
+        body: {
+          action,
+          offerId: button.dataset.offerId,
+          expectedFingerprint: button.dataset.offerFingerprint
+        }
+      });
+      if (action === "decline") showToast("Offer declined; the live board remains yours.");
+      else if (result.accepted) showToast(`${action === "counter" ? "Counter accepted" : "Trade accepted"} — the rival made the live pick and the ledger now owns your return.`);
+      else showToast(result.error || "The rival declined the counter; no assets moved.");
+      await Promise.all([loadState(), loadDraftState(), loadScouting(), loadRoster(), loadTransactionLog()]);
+    }, action === "decline" ? "Declining offer..." : action === "counter" ? "Sending counter..." : "Accepting trade...");
+  });
+
   document.getElementById("loadScoutingBtn").addEventListener("click", () =>
     runAction(loadScouting, "Loading scouting board...")
   );
@@ -1724,18 +1789,26 @@ function bindEvents() {
   });
 
   const openCommandPalette = () => {
-    document.getElementById("commandPalette").classList.remove("hidden");
+    const modal = document.getElementById("commandPalette");
+    modal.classList.remove("hidden");
+    openManagedModal("commandPalette", closeCommandPalette);
     document.getElementById("commandInput").focus();
     callAppIsland("settings", "renderCommandPalette");
   };
   const closeCommandPalette = () => {
-    document.getElementById("commandPalette").classList.add("hidden");
+    const modal = document.getElementById("commandPalette");
+    modal.classList.add("hidden");
+    closeModal(modal);
   };
   document.getElementById("closeCommandPaletteBtn")?.addEventListener("click", closeCommandPalette);
   document.getElementById("openGuideBtn")?.addEventListener("click", openGuideModal);
   document.getElementById("closeGuideModalBtn")?.addEventListener("click", closeGuideModal);
 
   document.addEventListener("keydown", (event) => {
+    // Modal-scoped Escape is stopped by modalManager. This guard also covers
+    // programmatic document key events so W/R/N/1-9 can never mutate or
+    // navigate the franchise behind a blocking overlay.
+    if (hasOpenModal()) return;
     if (event.key === "Escape") {
       closeCommandPalette();
       closePlayerModal();
@@ -1984,6 +2057,24 @@ function bindEvents() {
       Promise.resolve(callAppIsland("roster", "renderVeteranMentorshipPanel"))
         .catch((error) => renderPanelError("mentorshipPanel", "Mentorship panel", error));
     });
+  });
+  document.getElementById("rosterTeamSelect")?.addEventListener("change", () => {
+    Promise.resolve(renderVeteranMentorshipPanel())
+      .catch((error) => renderPanelError("mentorshipPanel", "Mentorship panel", error));
+  });
+  document.getElementById("mentorshipPanel")?.addEventListener("click", (event) => {
+    const assignButton = event.target.closest("[data-mentorship-assign]");
+    if (assignButton) {
+      runAction(assignMentorshipFromPanel, "Saving mentorship covenant...");
+      return;
+    }
+    const clearButton = event.target.closest("[data-mentorship-clear]");
+    if (clearButton) {
+      runAction(
+        () => clearMentorshipFromPanel(clearButton.dataset.mentorshipClear),
+        "Clearing mentorship covenant..."
+      );
+    }
   });
 
   // ── Session 8: Engagement Features ─────────────────────────────────────

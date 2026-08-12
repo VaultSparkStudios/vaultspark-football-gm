@@ -1357,7 +1357,7 @@
           <span class="studio-copyright" data-studio-copyright>© 2026 VaultSpark Studios LLC. All rights reserved.</span>
 </footer>
 
-    <div id="playerModal" data-testid="player-modal" class="modal hidden">
+    <div id="playerModal" data-testid="player-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="playerModalTitle">
       <div class="modal-card player-modal-card">
         <div class="row compact">
           <h2 id="playerModalTitle">Player</h2>
@@ -1405,7 +1405,7 @@
       </div>
     </div>
 
-    <div id="boxScoreModal" class="modal hidden">
+    <div id="boxScoreModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="boxScoreModalTitle">
       <div class="modal-card boxscore-modal-card">
         <div class="row" style="justify-content: space-between">
           <div>
@@ -1469,11 +1469,11 @@
       </div>
     </div>
 
-    <div id="guideModal" class="modal hidden" data-testid="guide-modal">
+    <div id="guideModal" class="modal hidden" data-testid="guide-modal" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
       <div class="modal-card guide-card">
         <div class="row" style="justify-content: space-between">
           <div>
-            <h2>Game Guide</h2>
+            <h2 id="guideModalTitle">Game Guide</h2>
             <p class="small">Core loop, league tools, and the fastest path through a full franchise season.</p>
           </div>
           <button id="closeGuideModalBtn" class="warn">Close</button>
@@ -1482,10 +1482,10 @@
       </div>
     </div>
 
-    <div id="commandPalette" class="modal hidden">
+    <div id="commandPalette" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="commandPaletteTitle">
       <div class="modal-card command-card">
         <div class="row compact">
-          <h2>Command Palette</h2>
+          <h2 id="commandPaletteTitle">Command Palette</h2>
           <button id="closeCommandPaletteBtn" class="warn">Close</button>
         </div>
         <label>Search
@@ -1576,30 +1576,30 @@
         <div class="halftime-modal-title" id="halftimeAdjustTitle">Pre-Game Tactical Brief</div>
         <div class="halftime-modal-sub">Choose your team's focus for this week's matchup.</div>
         <div id="tacticalMatchupBrief" class="tactical-matchup-brief"></div>
-        <div class="tactic-options-grid">
-          <div class="tactic-option" data-tactic="run-heavy">
+        <div class="tactic-options-grid" role="radiogroup" aria-labelledby="halftimeAdjustTitle">
+          <button class="tactic-option" type="button" role="radio" aria-checked="false" tabindex="0" aria-describedby="runHeavyTacticDesc" data-tactic="run-heavy">
             <div class="to-icon">🏃</div>
             <div class="to-label">Run-Heavy</div>
-            <div class="to-desc">Control the clock, grind yards, wear down the defense.</div>
-          </div>
-          <div class="tactic-option" data-tactic="pass-heavy">
+            <div class="to-desc" id="runHeavyTacticDesc">Control the clock, grind yards, wear down the defense.</div>
+          </button>
+          <button class="tactic-option" type="button" role="radio" aria-checked="false" tabindex="-1" aria-describedby="passHeavyTacticDesc" data-tactic="pass-heavy">
             <div class="to-icon">🎯</div>
             <div class="to-label">Pass-Heavy</div>
-            <div class="to-desc">Open up the field, attack downfield, tempo offense.</div>
-          </div>
-          <div class="tactic-option" data-tactic="blitz-heavy">
+            <div class="to-desc" id="passHeavyTacticDesc">Open up the field, attack downfield, tempo offense.</div>
+          </button>
+          <button class="tactic-option" type="button" role="radio" aria-checked="false" tabindex="-1" aria-describedby="blitzHeavyTacticDesc" data-tactic="blitz-heavy">
             <div class="to-icon">⚡</div>
             <div class="to-label">Blitz Package</div>
-            <div class="to-desc">Bring pressure, disrupt the QB, force quick decisions.</div>
-          </div>
-          <div class="tactic-option" data-tactic="prevent">
+            <div class="to-desc" id="blitzHeavyTacticDesc">Bring pressure, disrupt the QB, force quick decisions.</div>
+          </button>
+          <button class="tactic-option" type="button" role="radio" aria-checked="false" tabindex="-1" aria-describedby="preventTacticDesc" data-tactic="prevent">
             <div class="to-icon">🛡️</div>
             <div class="to-label">Prevent Defense</div>
-            <div class="to-desc">Protect the lead, concede short gains, stop the big play.</div>
-          </div>
+            <div class="to-desc" id="preventTacticDesc">Protect the lead, concede short gains, stop the big play.</div>
+          </button>
         </div>
         <div class="halftime-actions">
-          <button class="tactic-confirm-btn btn-primary">Confirm Tactic</button>
+          <button class="tactic-confirm-btn btn-primary" disabled>Confirm Tactic</button>
           <button class="tactic-skip-btn btn-sm">No Adjustment</button>
         </div>
       </div>
@@ -1685,7 +1685,7 @@
     </div>
 
     <!-- ── Sim-Watch Overlay (Session 8) ─────────────────────────────────── -->
-    <div id="simWatchOverlay" hidden role="dialog" aria-live="polite" aria-label="Sim-Watch broadcast director">
+    <div id="simWatchOverlay" hidden role="dialog" aria-modal="true" aria-live="polite" aria-label="Sim-Watch broadcast director">
       <div class="sw-header-bar">
         <span class="sw-kicker">Live Sim</span>
         <div class="sw-ctrl">

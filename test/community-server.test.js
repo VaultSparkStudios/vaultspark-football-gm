@@ -6,7 +6,8 @@ import {
   createCommunityStatsHandler,
   createMemoryRateLimiter,
   createParticipationCapabilityAuthority,
-  createPrivacySafeAddressKey
+  createPrivacySafeAddressKey,
+  runtimeSourceRevision
 } from "../src/community/server.js";
 import { aggregateCommunitySnapshot } from "../src/community/aggregateCommunitySnapshot.js";
 
@@ -229,11 +230,19 @@ test("health endpoint reports store health and unmatched routes return 404", asy
     const healthBody = await health.json();
     assert.equal(healthBody.ok, true);
     assert.equal(healthBody.service, "franchise-architect-community-stats");
+    assert.equal(healthBody.sourceRevision, runtimeSourceRevision());
+    assert.equal(health.headers.get("cache-control"), "no-store");
     const versioned = await fetch(`${origin}/community/v1/health`, { headers: { Origin: "https://playfranchisearchitect.com" } });
     assert.equal(versioned.status, 200);
     const notFound = await fetch(`${origin}/community/v1/unknown-route`, { headers: { Origin: "https://playfranchisearchitect.com" } });
     assert.equal(notFound.status, 404);
   });
+});
+
+test("runtime source revisions are bounded to public-safe immutable tokens", () => {
+  assert.equal(runtimeSourceRevision("7becc57385515042dee5d80146c635d45962ea40"), "7becc57385515042dee5d80146c635d45962ea40");
+  assert.equal(runtimeSourceRevision("bad revision with spaces"), "local-worktree");
+  assert.equal(runtimeSourceRevision("x".repeat(65)), "local-worktree");
 });
 
 test("withdrawal deletes the participant aggregate and IP limiter stores only ephemeral counts", async () => {

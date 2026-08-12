@@ -14,7 +14,6 @@ import {
   formatLeaderboardEntry, parseLeaderboard, serializeLeaderboard, rankEntry
 } from "../../engine/speedrunChallenge.js";
 import { getFanSentiment, fanApprovalLabel } from "../../engine/fanSentiment.js";
-import { getMentorshipStatus, getMentorshipHistory } from "../../engine/veteranMentorship.js";
 import { executeAdvanceWeekTransaction } from "../../runtime/advanceWeekCommand.js";
 import { inspectSnapshotCompatibility, migrateSnapshot, snapshotErrorPayload } from "../../runtime/snapshotMigration.js";
 import { authorizeCommand } from "../../runtime/franchiseAuthority.js";
@@ -875,6 +874,18 @@ export function createLocalApiRuntime({
         return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
+      if (method === "POST" && pathname === "/api/draft/on-clock-trade") {
+        if (!body?.offerId || !body?.expectedFingerprint) {
+          return finish(jsonResponse(400, { ok: false, error: "offerId and expectedFingerprint required." }));
+        }
+        const result = session.resolveOnClockTrade({
+          offerId: String(body.offerId),
+          expectedFingerprint: String(body.expectedFingerprint),
+          action: String(body.action || "accept")
+        });
+        return finish(jsonResponse(result.ok ? 200 : (result.status || 400), { ...result, state: getAugmentedState(session) }));
+      }
+
       if (method === "GET" && pathname === "/api/schedule") {
         const week = toInt(url.searchParams.get("week")) || session.currentWeek;
         return finish(jsonResponse(200, { ok: true, schedule: session.getScheduleWeek(week) }));
@@ -1566,9 +1577,21 @@ export function createLocalApiRuntime({
       if (method === "GET" && pathname === "/api/mentorship") {
         const s = ensureSession();
         const teamId = (url.searchParams.get("team") || s.controlledTeamId || "").toUpperCase();
-        const pairs = getMentorshipStatus(s.league, teamId);
-        const history = getMentorshipHistory(s.league, teamId);
-        return finish(jsonResponse(200, { ok: true, teamId, pairs, history }));
+        return finish(jsonResponse(200, s.getMentorshipState(teamId)));
+      }
+
+      if (method === "POST" && pathname === "/api/mentorship") {
+        const s = ensureSession();
+        const action = String(body?.action || "");
+        const result = action === "assign"
+          ? s.assignMentorship(body)
+          : action === "clear"
+            ? s.clearMentorship(body)
+            : { ok: false, status: 400, error: "action must be assign or clear." };
+        return finish(jsonResponse(result.ok ? 200 : (result.status || 400), {
+          ...result,
+          state: result.state || s.getMentorshipState(body?.teamId)
+        }));
       }
 
       // ── Brand Identity (Franchise Brand Builder) ─────────────────────────────

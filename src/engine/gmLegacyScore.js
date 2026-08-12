@@ -36,12 +36,16 @@ export function initGmLegacy(league) {
       seasonHistory: []
     };
   }
+  if (!Number.isFinite(league.gmLegacy.capGradeTotal)) league.gmLegacy.capGradeTotal = 0;
+  if (!Number.isFinite(league.gmLegacy.cultureGradeTotal)) league.gmLegacy.cultureGradeTotal = 0;
+  if (!Number.isFinite(league.gmLegacy.tradeNetAV)) league.gmLegacy.tradeNetAV = 0;
+  if (!Array.isArray(league.gmLegacy.seasonHistory)) league.gmLegacy.seasonHistory = [];
   return league.gmLegacy;
 }
 
 // ── Season update ─────────────────────────────────────────────────────────────
 
-export function updateGmLegacyAfterSeason(league, controlledTeamId, year) {
+export function updateGmLegacyAfterSeason(league, controlledTeamId, year, { capSummary = null, stewardshipReport = null } = {}) {
   const legacy = initGmLegacy(league);
   const team = league.teams.find((t) => t.id === controlledTeamId);
   if (!team) return legacy;
@@ -58,9 +62,9 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year) {
   const wonSuperBowl = championTeamId === controlledTeamId;
 
   // Cap efficiency: high usage + low dead cap = good
-  const capHardLimit = 224_800_000;
-  const activeCap = team.cap?.activeCap || 0;
-  const deadCap = team.cap?.deadCap || 0;
+  const capHardLimit = Number(capSummary?.salaryCap || 0);
+  const activeCap = Number(capSummary?.usedCap || 0);
+  const deadCap = Number(capSummary?.deadCap || 0);
   const capUsagePct = capHardLimit > 0 ? activeCap / capHardLimit : 0.8;
   const deadCapRatio = activeCap > 0 ? deadCap / activeCap : 0;
   const capGrade = Math.round(Math.min(100, Math.max(0, capUsagePct * 70 - deadCapRatio * 40 + 20)));
@@ -76,6 +80,8 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year) {
   if (wonSuperBowl) legacy.superBowlWins += 1;
   legacy.capGradeTotal += capGrade;
   legacy.cultureGradeTotal += cultureGrade;
+  const seasonTradeNetAv = Number(stewardshipReport?.tradeReceipt?.netAv || 0);
+  legacy.tradeNetAV += seasonTradeNetAv;
 
   const seasonScore = _computeSeasonScore({ wins, losses, madePlayoffs, wonSuperBowl, capGrade, cultureGrade });
   legacy.seasonHistory.push({
@@ -88,7 +94,9 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year) {
     madePlayoffs,
     wonSuperBowl,
     capGrade,
-    cultureGrade
+    cultureGrade,
+    tradeNetAV: seasonTradeNetAv,
+    stewardshipScore: Number.isFinite(stewardshipReport?.overallScore) ? stewardshipReport.overallScore : null
   });
   if (legacy.seasonHistory.length > 30) legacy.seasonHistory.shift();
 

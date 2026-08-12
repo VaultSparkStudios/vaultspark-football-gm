@@ -5,13 +5,17 @@ import { normalizeCommunityEvent } from "../src/community/eventContract.js";
 import {
   applyEventsToLocalLedger,
   COMMUNITY_CONSENT_KEY,
+  COMMUNITY_PENDING_DELETION_KEY,
   COMMUNITY_PARTICIPANT_KEY,
   COMMUNITY_QUEUE_KEY,
   emptyLocalCommunityLedger,
   flushCommunityQueue,
+  getPendingCommunityDeletion,
   observeCommunityApiReceipt,
+  retryPendingCommunityDeletion,
   setCommunityParticipation
 } from "../public/lib/communityTelemetry.js";
+import { communityParticipationPresentation, loadSnapshot, resolveSnapshotRefreshMs } from "../public/community-stats.js";
 
 const now = () => "2026-08-08T12:00:00.000Z";
 let sequence = 0;
@@ -126,15 +130,126 @@ test("browser participation acquires a short-lived capability, retries one rejec
     assert.deepEqual(JSON.parse(localStorage.getItem(COMMUNITY_QUEUE_KEY)), []);
     assert.doesNotMatch(JSON.stringify(Object.fromEntries(values)), /lease-[12]/, "capabilities remain in memory only");
 
-    await setCommunityParticipation(false);
+    const stopped = await setCommunityParticipation(false);
     const withdrawal = calls.find((row) => row.url.endsWith("/participation"));
     assert.equal(withdrawal.body.capability, "lease-2");
+    assert.deepEqual(stopped.deletion, { status: "success", deleted: 1 });
     assert.equal(localStorage.getItem(COMMUNITY_CONSENT_KEY), "declined");
     assert.equal(localStorage.getItem(COMMUNITY_PARTICIPANT_KEY), null);
+    assert.equal(localStorage.getItem(COMMUNITY_PENDING_DELETION_KEY), null);
   } finally {
     for (const [key, descriptor] of Object.entries(saved)) {
       if (descriptor) Object.defineProperty(globalThis, key, descriptor);
       else delete globalThis[key];
     }
   }
+});
+
+test("decline is immediate while an identifier-only deletion tombstone retries to acknowledgement", async () => {
+  const values = new Map([
+    [COMMUNITY_CONSENT_KEY, "participating"],
+    [COMMUNITY_PARTICIPANT_KEY, "browser_identifier_retry"],
+    [COMMUNITY_QUEUE_KEY, JSON.stringify([{ eventId: "queued_private_event" }])]
+  ]);
+  const localStorage = {
+    getItem(key) { return values.get(String(key)) ?? null; },
+    setItem(key, value) { values.set(String(key), String(value)); },
+    removeItem(key) { values.delete(String(key)); }
+  };
+  const saved = Object.fromEntries(["window", "document", "navigator", "CustomEvent", "fetch"].map((key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
+  let deleteAttempts = 0;
+  const calls = [];
+  try {
+    Object.defineProperty(globalThis, "window", { configurable: true, value: { localStorage, dispatchEvent() {} } });
+    Object.defineProperty(globalThis, "document", { configurable: true, value: { querySelector: () => null } });
+    Object.defineProperty(globalThis, "navigator", { configurable: true, value: { onLine: true } });
+    Object.defineProperty(globalThis, "CustomEvent", { configurable: true, value: class { constructor(type, init) { this.type = type; this.detail = init?.detail; } } });
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: async (url, init = {}) => {
+        calls.push({ url: String(url), body: init.body ? JSON.parse(init.body) : null });
+        if (String(url).endsWith("/capability")) {
+          return new Response(JSON.stringify({ capability: "deletion-lease", expiresAt: new Date(Date.now() + 60_000).toISOString(), remainingUses: 4 }), { status: 201 });
+        }
+        if (String(url).endsWith("/participation")) {
+          deleteAttempts += 1;
+          return deleteAttempts === 1
+            ? new Response(JSON.stringify({ ok: false }), { status: 503 })
+            : new Response(JSON.stringify({ ok: true, deleted: 3 }), { status: 200 });
+        }
+        throw new Error("declined participation must not send queued events");
+      }
+    });
+
+    const stopped = await setCommunityParticipation(false);
+    assert.equal(stopped.participating, false);
+    assert.equal(stopped.deletion.status, "failed");
+    assert.equal(localStorage.getItem(COMMUNITY_CONSENT_KEY), "declined");
+    assert.equal(localStorage.getItem(COMMUNITY_PARTICIPANT_KEY), null);
+    assert.equal(localStorage.getItem(COMMUNITY_QUEUE_KEY), null);
+    assert.equal(getPendingCommunityDeletion(), "browser_identifier_retry");
+    assert.deepEqual(Object.fromEntries(values), {
+      [COMMUNITY_CONSENT_KEY]: "declined",
+      [COMMUNITY_PENDING_DELETION_KEY]: "browser_identifier_retry"
+    }, "the retry tombstone contains only the purpose-bound anonymous identifier");
+
+    const acknowledged = await retryPendingCommunityDeletion();
+    assert.deepEqual(acknowledged, { status: "success", deleted: 3 });
+    assert.equal(getPendingCommunityDeletion(), "");
+    assert.equal(calls.some((row) => row.url.endsWith("/events")), false);
+  } finally {
+    for (const [key, descriptor] of Object.entries(saved)) {
+      if (descriptor) Object.defineProperty(globalThis, key, descriptor);
+      else delete globalThis[key];
+    }
+  }
+});
+
+test("snapshot polling is single-flight, ETag-aware, and never schedules below sixty seconds", async () => {
+  assert.equal(resolveSnapshotRefreshMs({ refreshAfterSeconds: 10 }), 60_000);
+  assert.equal(resolveSnapshotRefreshMs({ refreshAfterSeconds: 60 }, 1), 120_000);
+  assert.equal(resolveSnapshotRefreshMs({ refreshAfterSeconds: 60 }, 9), 300_000);
+
+  const saved = Object.fromEntries(["document", "navigator", "fetch"].map((key) => [key, Object.getOwnPropertyDescriptor(globalThis, key)]));
+  const calls = [];
+  try {
+    Object.defineProperty(globalThis, "document", { configurable: true, value: { visibilityState: "visible", querySelector: () => null } });
+    Object.defineProperty(globalThis, "navigator", { configurable: true, value: { connection: { saveData: false } } });
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: async (_url, init = {}) => {
+        calls.push(init);
+        if (calls.length === 1) {
+          await new Promise((resolve) => setTimeout(resolve, 5));
+          return new Response(JSON.stringify({ schemaVersion: "1.0", status: "warming", refreshAfterSeconds: 60, periods: {} }), { status: 200, headers: { ETag: '"snapshot-v1"' } });
+        }
+        return new Response(null, { status: 304, headers: { ETag: '"snapshot-v1"' } });
+      }
+    });
+
+    const first = loadSnapshot({ force: true });
+    const coalesced = loadSnapshot({ force: true });
+    assert.equal(first, coalesced);
+    await first;
+    assert.equal(calls.length, 1);
+    await loadSnapshot({ force: true });
+    assert.equal(calls[1].headers["If-None-Match"], '"snapshot-v1"');
+  } finally {
+    for (const [key, descriptor] of Object.entries(saved)) {
+      if (descriptor) Object.defineProperty(globalThis, key, descriptor);
+      else delete globalThis[key];
+    }
+  }
+});
+
+test("participation controls distinguish pending, failed, and acknowledged deletion truth", () => {
+  const pending = communityParticipationPresentation({ pending: true, outcome: { status: "pending" } });
+  assert.equal(pending.deletionStatus, "pending");
+  assert.match(pending.heading, /deletion pending/i);
+  const failed = communityParticipationPresentation({ pending: true, outcome: { status: "failed" } });
+  assert.equal(failed.deletionStatus, "failed");
+  assert.match(failed.detail, /retry/i);
+  const success = communityParticipationPresentation({ pending: false, outcome: { status: "success" } });
+  assert.equal(success.deletionStatus, "success");
+  assert.match(success.heading, /confirmed/i);
 });

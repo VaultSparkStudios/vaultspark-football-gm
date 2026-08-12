@@ -12,6 +12,22 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 
+## Session 81 — Full arc: pre-commit agency, progression truth, privacy and exact runtime proof (2026-08-11)
+
+Source: `docs/AUDIT_2026-08-11_SESSION81.md`.
+
+| Item | Status |
+|------|--------|
+| gm-choice-boundary-dossier — canonical preview shared by decision projection and commit | ✅ Done |
+| decision-modal-interaction-contract — explicit keyboard tactic choice plus top-modal shortcut containment | ✅ Done |
+| on-clock-trade-market — deterministic stale-safe draft-pick offers in the War Room | ✅ Done |
+| mentorship-covenants — player-directed bounded mentor/mentee progression | ✅ Done |
+| gm-stewardship-report-authority — truthful cap/trade reputation and visible season report | ✅ Done |
+| community-participation-truth — deletion tombstone/receipt plus coordinated ETag snapshot refresh | ✅ Done |
+| backend-runtime-attestation — backend tests, Node parity and exact-SHA runtime health | ✅ Done |
+
+**Wave scaffold:** Wave 1 profile/start/audit ✅ · Wave 2 decision + draft ✅ · Wave 3 progression ✅ · Wave 4 privacy/release ✅ · Wave 5 verification/second-order ✅ · Wave 6 closeout/promotion ◼.
+
 ## Session 80 — Exact decision surfaces, visible mastery signature, full-stack promotion (2026-08-11)
 
 Source: `docs/AUDIT_2026-08-11_SESSION80.md`.
@@ -104,18 +120,18 @@ Source: `docs/AUDIT_2026-08-09_SESSION76.md`.
 
 | # | Item | Status |
 |---|------|--------|
-| 1 | root-funnel-instant-play — one-click start, random team, state-branched hero | ✅ Done 2026-08-04 |
-| 2 | synth-audio-haptics-layer — WebAudio palette + haptics + persisted toggles | ✅ Done 2026-08-04 |
-| 3 | achievement-trophy-case — 29 cross-save trophies + toasts + share text | ✅ Done 2026-08-04 |
-| 4 | rival-gm-persona-memory — named GMs, receipted grudge ledgers, 3 surfaces | ✅ Done 2026-08-04 |
-| 5 | reward-beats-hot-paths — week recap, draft verdict, trade verdict beats | ✅ Done 2026-08-04 |
-| 6 | public-truth-and-privacy-pass — build-gated truth, cover.png, no internal vocab | ✅ Done 2026-08-04 |
-| 7 | indexeddb-persistence-promotion — hybrid store, verified migration, 272-game drive logs | ✅ Done 2026-08-04 |
-| 8 | production-parity-promotion — production 8/8 at 870382c, staging 11/11 same SHA | ✅ Done 2026-08-04 |
-| 9 | living-difficulty-controls — mid-game presets + opt-in bounded adaptive mode | ✅ Done 2026-08-04 |
-| 10 | tab-code-splitting-sw-hardening — resilient SW, dedupe, bootPayload receipt (premise corrected) | ✅ Done 2026-08-04 |
-| 11 | website-ia-consolidation — merges, redirects, lastmod sitemap, real 404 | ✅ Done 2026-08-04 |
-| 12 | skill-cost-ledger-repair — heartbeat self-announces staleness; dead twin retired | ✅ Done 2026-08-04 |
+| 21 | root-funnel-instant-play — one-click start, random team, state-branched hero | ✅ Done 2026-08-04 |
+| 22 | synth-audio-haptics-layer — WebAudio palette + haptics + persisted toggles | ✅ Done 2026-08-04 |
+| 23 | achievement-trophy-case — 29 cross-save trophies + toasts + share text | ✅ Done 2026-08-04 |
+| 24 | rival-gm-persona-memory — named GMs, receipted grudge ledgers, 3 surfaces | ✅ Done 2026-08-04 |
+| 25 | reward-beats-hot-paths — week recap, draft verdict, trade verdict beats | ✅ Done 2026-08-04 |
+| 26 | public-truth-and-privacy-pass — build-gated truth, cover.png, no internal vocab | ✅ Done 2026-08-04 |
+| 27 | indexeddb-persistence-promotion — hybrid store, verified migration, 272-game drive logs | ✅ Done 2026-08-04 |
+| 28 | production-parity-promotion — production 8/8 at 870382c, staging 11/11 same SHA | ✅ Done 2026-08-04 |
+| 29 | living-difficulty-controls — mid-game presets + opt-in bounded adaptive mode | ✅ Done 2026-08-04 |
+| 30 | tab-code-splitting-sw-hardening — resilient SW, dedupe, bootPayload receipt (premise corrected) | ✅ Done 2026-08-04 |
+| 31 | website-ia-consolidation — merges, redirects, lastmod sitemap, real 404 | ✅ Done 2026-08-04 |
+| 32 | skill-cost-ledger-repair — heartbeat self-announces staleness; dead twin retired | ✅ Done 2026-08-04 |
 
 Second-order shipped: SW index-registration root fix · persona hash avalanche · lifecycle vocabulary decoupling · dev-server runtime meta truth · pre-rebrand CI canonical fix (latent since S25) · LF artifact determinism.
 

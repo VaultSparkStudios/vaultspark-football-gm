@@ -81,12 +81,14 @@ const POST_PATHS = [
   "/api/control-team",
   "/api/depth-chart",
   "/api/draft/cpu",
+  "/api/draft/on-clock-trade",
   "/api/draft/prepare",
   "/api/draft/user-pick",
   "/api/free-agency/offer",
   "/api/history/retire-jersey",
   "/api/injuries/rehab-plan",
   "/api/jobs/simulate",
+  "/api/mentorship",
   "/api/new-league",
   "/api/offseason/advance",
   "/api/onboarding/start-scenario",
@@ -141,7 +143,14 @@ const SUCCESS_SHAPES = Object.freeze({
   "DELETE /api/commissioner/lobby": { required: ["ok"] },
   "GET /api/fan-sentiment": { required: ["ok", "teamId", "fanSentiment"] },
   "GET /api/stat-leaders": { required: ["ok", "year", "leaders"] },
-  "GET /api/mentorship": { required: ["ok", "teamId", "pairs", "history"] },
+  "GET /api/mentorship": {
+    required: [
+      "ok", "teamId", "editable", "revision", "fingerprint", "assignments",
+      "pairs", "eligibleMentors", "eligibleMentees", "focuses", "budget",
+      "history", "dissolutions"
+    ]
+  },
+  "POST /api/mentorship": { required: ["ok", "state"] },
   "POST /api/brand-identity": { required: ["ok", "teamId", "brandOverride", "state"] },
   "GET /api/rewind": { required: ["ok", "snapshots"] },
   "POST /api/rewind/snapshot": { required: ["ok", "entry", "snapshots"] },

@@ -1132,6 +1132,7 @@ export function showSeasonEndReview() {
     rank: rank > 0 ? rank : null
   });
   const legacy = d.gmLegacy;
+  const stewardship = d.seasonAwardsStage?.stewardshipReport || d.gmStewardshipReports?.[0] || null;
   const heat = team.owner?.expectation?.heat ?? "—";
   const verdict = heat >= 75 ? "On the Hot Seat" : heat >= 55 ? "Owner Watching" : "Owner Satisfied";
   const verdictTone = heat >= 75 ? "negative" : heat >= 55 ? "warning" : "positive";
@@ -1155,6 +1156,20 @@ export function showSeasonEndReview() {
     ${legacy ? `<div class="sr-legacy">
       <strong>GM Legacy:</strong> ${escapeHtml(legacy.label || "")} — Score ${legacy.score ?? "—"} · Grade ${escapeHtml(legacy.grade || "—")}
     </div>` : ""}
+    ${stewardship ? `<section class="sr-stewardship" aria-labelledby="stewardshipTitle">
+      <div class="sr-stewardship-head">
+        <div><div class="brand-kicker">Receipted season authority</div><strong id="stewardshipTitle">GM Stewardship · ${escapeHtml(stewardship.grades?.overall || "—")}</strong></div>
+        <span>${escapeHtml(String(stewardship.overallScore ?? "—"))}/100</span>
+      </div>
+      <div class="sr-stewardship-grid">${(stewardship.dimensions || []).map((dimension) => `
+        <div class="sr-stewardship-row">
+          <span>${escapeHtml(dimension.label)}</span>
+          <strong>${escapeHtml(dimension.grade)} · ${escapeHtml(String(dimension.score))}</strong>
+          ${stewardship.trends?.[dimension.key] ? `<small>${escapeHtml(stewardship.trends[dimension.key])} vs prior season</small>` : ""}
+        </div>`).join("")}</div>
+      <div class="sr-stewardship-receipt">Cap: ${fmtMoney(stewardship.capReceipt?.usedCap || 0)} used · ${fmtMoney(stewardship.capReceipt?.deadCap || 0)} dead · Trades: ${Number(stewardship.tradeReceipt?.netAv || 0) >= 0 ? "+" : ""}${escapeHtml(String(stewardship.tradeReceipt?.netAv || 0))} observed Approximate Value</div>
+      <div class="small">${escapeHtml(stewardship.evidenceBoundary || "This report is descriptive, not causal.")}</div>
+    </section>` : ""}
     <div class="sr-call-to-action">A new season awaits. What will your legacy be?</div>
   `;
   appendWhatIfReplay(body);
@@ -1221,25 +1236,54 @@ export function showHalftimeAdjustModal(onChoice, options = {}) {
     briefEl.innerHTML = `<strong>${escapeHtml(brief.headline)}</strong><span>${escapeHtml(brief.read)}</span>${edgeLine}`;
   }
   const optionById = new Map(brief.options.map((option) => [option.id, option]));
-  modal.querySelectorAll(".tactic-option").forEach((btn) => btn.classList.remove("selected"));
+  const tacticOptions = Array.from(modal.querySelectorAll(".tactic-option"));
+  tacticOptions.forEach((btn, index) => {
+    btn.classList.remove("selected");
+    btn.setAttribute("aria-checked", "false");
+    btn.tabIndex = index === 0 ? 0 : -1;
+  });
   const confirmBtn = modal.querySelector(".tactic-confirm-btn");
   let choice = optionById.has(options.initialChoice) ? options.initialChoice : null;
-  modal.querySelectorAll(".tactic-option").forEach((btn) => {
+  const selectTactic = (button, { focus = false } = {}) => {
+    if (!button || !optionById.has(button.dataset.tactic)) return;
+    tacticOptions.forEach((candidate) => {
+      const selected = candidate === button;
+      candidate.classList.toggle("selected", selected);
+      candidate.setAttribute("aria-checked", selected ? "true" : "false");
+      candidate.tabIndex = selected ? 0 : -1;
+    });
+    choice = button.dataset.tactic;
+    if (confirmBtn) confirmBtn.disabled = false;
+    if (focus) button.focus();
+  };
+  tacticOptions.forEach((btn) => {
     const option = optionById.get(btn.dataset.tactic);
     const desc = btn.querySelector(".to-desc");
     if (desc && option) {
       const identityPreview = previewTacticalIdentity(state.dashboard?.tacticalFilmLedger || [], option.id);
       desc.textContent = `${option.matchup} Tradeoff: ${option.tradeoff} Identity preview: ${identityPreview.copy} ${identityPreview.disclaimer}`;
     }
-    if (btn.dataset.tactic === choice) btn.classList.add("selected");
-    btn.onclick = () => {
-      modal.querySelectorAll(".tactic-option").forEach((b) => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      choice = btn.dataset.tactic;
+    btn.onclick = () => selectTactic(btn);
+    btn.onkeydown = (event) => {
+      if (!["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const currentIndex = tacticOptions.indexOf(btn);
+      let nextIndex = currentIndex;
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (currentIndex + 1) % tacticOptions.length;
+      else if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (currentIndex - 1 + tacticOptions.length) % tacticOptions.length;
+      else if (event.key === "Home") nextIndex = 0;
+      else if (event.key === "End") nextIndex = tacticOptions.length - 1;
+      selectTactic(tacticOptions[nextIndex], { focus: true });
     };
   });
+  const initialOption = tacticOptions.find((btn) => btn.dataset.tactic === choice);
+  if (initialOption) selectTactic(initialOption);
+  else if (confirmBtn) confirmBtn.disabled = true;
   if (confirmBtn) {
-    confirmBtn.onclick = () => finish(choice);
+    confirmBtn.onclick = () => {
+      if (!choice) return;
+      finish(choice);
+    };
   }
   const skipBtn = modal.querySelector(".tactic-skip-btn");
   if (skipBtn) {

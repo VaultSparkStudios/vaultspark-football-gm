@@ -356,35 +356,16 @@ export function moveIdWithinList(list, playerId, delta) {
 }
 
 export async function renderVeteranMentorshipPanel() {
-  const el = document.getElementById("mentorshipPanel");
-  if (!el) return;
-  try {
-    const data = await api("/api/mentorship");
-    const pairs = data.pairs || [];
-    if (!pairs.length) {
-      el.innerHTML = `<div class="narrative-empty">No active mentorship pairings on this roster. Veteran players (5+ seasons, OVR 75+) will mentor eligible young players during the offseason.</div>`;
-      return;
-    }
-    el.innerHTML = `
-      <div class="mentorship-list">
-        ${pairs.map((p) => `
-          <div class="mentorship-pair">
-            <div class="mp-mentor">
-              <span class="mp-pos-chip">${escapeHtml(p.position || "?")}</span>
-              <span class="mp-name">${escapeHtml(p.mentorName)}</span>
-              <span class="mp-ovr muted">OVR ${p.mentorOvr}</span>
-            </div>
-            <div class="mp-arrow">→</div>
-            <div class="mp-mentee">
-              <span class="mp-name">${escapeHtml(p.menteeName)}</span>
-              <span class="mp-age muted">Age ${p.menteeAge}</span>
-            </div>
-            <div class="mp-bonus">+${p.projectedBonus} OVR next offseason</div>
-          </div>`).join("")}
-      </div>
-      <div class="mentorship-note small muted">Mentorship bonuses apply during training camp each offseason.</div>
-    `;
-  } catch {
-    // non-critical
-  }
+  const mentorship = await import("./mentorshipPanel.js");
+  return mentorship.renderVeteranMentorshipPanel();
+}
+
+export async function assignMentorshipFromPanel() {
+  const mentorship = await import("./mentorshipPanel.js");
+  return mentorship.assignMentorshipFromPanel();
+}
+
+export async function clearMentorshipFromPanel(assignmentId) {
+  const mentorship = await import("./mentorshipPanel.js");
+  return mentorship.clearMentorshipFromPanel(assignmentId);
 }

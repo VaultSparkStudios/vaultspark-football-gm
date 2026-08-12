@@ -400,6 +400,7 @@ function renderDecisionCard(card, index) {
             <button class="ml-decision-option-btn ${card.selectedChoiceId === choice.id ? "selected" : ""}" aria-pressed="${card.selectedChoiceId === choice.id}" data-mobile-decision-choice-index="${index}" data-mobile-decision-choice-option="${choiceIndex}">
               <span>${_esc(choice.label)}</span>
               ${choice.effect ? `<small>${_esc(choice.effect)}</small>` : ""}
+              ${renderChoiceBoundary(choice.preview || choice.boundary)}
             </button>
           `).join("")}
         </div>
@@ -411,6 +412,20 @@ function renderDecisionCard(card, index) {
       ${common}
     </button>
   `;
+}
+
+function renderChoiceBoundary(preview = null) {
+  if (!preview) return "";
+  const rows = [
+    preview.subject?.name ? `Who: ${preview.subject.name}${preview.subject.position ? ` (${preview.subject.position})` : ""}` : null,
+    preview.timing ? `When: ${preview.timing}` : null,
+    preview.exactAction ? `Action: ${preview.exactAction}` : null,
+    preview.successRule ? `Receipt: ${preview.successRule}` : null
+  ].filter(Boolean);
+  if (preview.availability === "unavailable") rows.push("Availability: no eligible immediate candidate; fails closed or becomes the declared promise.");
+  return rows.length
+    ? `<span class="ml-decision-boundary">${rows.map((row) => `<small>${_esc(row)}</small>`).join("")}</span>`
+    : "";
 }
 
 function _esc(s) {
