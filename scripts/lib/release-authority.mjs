@@ -8,6 +8,30 @@ function reportArtifact(report) {
   return check?.ok === true && check.observed === check.expected ? check.observed : null;
 }
 
+const RECEIPT_ONLY_PREFIXES = ["docs/", "context/", "audits/", "test/"];
+const RECEIPT_ONLY_FILES = new Set([
+  "scripts/measure-hosted-performance.mjs",
+  "scripts/write-visual-qa-receipt.mjs",
+  "scripts/lib/release-authority.mjs",
+  "scripts/reconcile-release-authority.mjs"
+]);
+
+export function evaluatePublicationDelta({ from = null, to = null, changedFiles = [] } = {}) {
+  const files = [...new Set(changedFiles.map((file) => String(file).replace(/\\/g, "/")).filter(Boolean))];
+  const unsafeFiles = files.filter((file) => !RECEIPT_ONLY_FILES.has(file) && !RECEIPT_ONLY_PREFIXES.some((prefix) => file.startsWith(prefix)));
+  return {
+    from,
+    to,
+    changedFiles: files,
+    unsafeFiles,
+    verified: /^[a-f0-9]{40}$/i.test(from || "")
+      && /^[a-f0-9]{40}$/i.test(to || "")
+      && from !== to
+      && files.length > 0
+      && unsafeFiles.length === 0
+  };
+}
+
 export function deriveReleaseAuthority({
   stagingReport,
   productionReport,
@@ -16,7 +40,8 @@ export function deriveReleaseAuthority({
   backendDeployment = null,
   emailVerified = false,
   founderApproved = false,
-  lifecycleVerified = false
+  lifecycleVerified = false,
+  publicationDelta = null
 } = {}) {
   const identities = {
     staging: { sourceRevision: stagingReport?.expectedRevision || null, artifactDigest: reportArtifact(stagingReport) },
@@ -30,9 +55,16 @@ export function deriveReleaseAuthority({
     { name: "visual pixels reviewed", ok: visualReceipt?.inspection?.renderedPixelsReviewed === true && visualReceipt?.inspection?.blockingDefectsOpen === 0 },
     { name: "hosted performance green", ok: performanceReceipt?.evaluation?.status === "verified" },
     {
-      name: "one exact source revision",
-      ok: new Set(Object.values(identities).map((entry) => entry.sourceRevision).filter(Boolean)).size === 1
-        && Object.values(identities).every((entry) => /^[a-f0-9]{40}$/i.test(entry.sourceRevision || ""))
+      name: "one exact deployable source revision",
+      ok: new Set([identities.staging, identities.visual, identities.performance].map((entry) => entry.sourceRevision).filter(Boolean)).size === 1
+        && [identities.staging, identities.visual, identities.performance].every((entry) => /^[a-f0-9]{40}$/i.test(entry.sourceRevision || ""))
+    },
+    {
+      name: "production source is candidate or verified receipt-only descendant",
+      ok: identities.production.sourceRevision === identities.staging.sourceRevision
+        || (publicationDelta?.verified === true
+          && publicationDelta.from === identities.staging.sourceRevision
+          && publicationDelta.to === identities.production.sourceRevision)
     },
     {
       name: "one exact artifact fingerprint",
@@ -53,6 +85,8 @@ export function deriveReleaseAuthority({
     observedAt: new Date().toISOString(),
     status: evidenceVerified ? "verified" : "blocked",
     sourceRevision: evidenceVerified ? identities.staging.sourceRevision : null,
+    publicationRevision: evidenceVerified ? identities.production.sourceRevision : null,
+    publicationDelta: publicationDelta || null,
     artifactFingerprint: evidenceVerified ? { algorithm: "sha256", digest: identities.staging.artifactDigest } : null,
     identities,
     checks,

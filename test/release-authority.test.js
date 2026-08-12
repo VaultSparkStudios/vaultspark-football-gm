@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { deriveReleaseAuthority } from "../scripts/lib/release-authority.mjs";
+import { deriveReleaseAuthority, evaluatePublicationDelta } from "../scripts/lib/release-authority.mjs";
 
 const revision = "a".repeat(40);
 const digest = "b".repeat(64);
@@ -37,4 +37,31 @@ test("launch readiness only follows all evidence and independent gates", () => {
   });
   assert.equal(authority.launchReady, true);
   assert.deepEqual(authority.blockerCodes, []);
+});
+
+test("a production receipt-only descendant keeps one deployable authority", () => {
+  const publicationRevision = "c".repeat(40);
+  const publicationReport = { ...report, expectedRevision: publicationRevision };
+  const publicationDelta = evaluatePublicationDelta({
+    from: revision,
+    to: publicationRevision,
+    changedFiles: ["docs/visual-qa/LATEST.json", "context/PROJECT_STATUS.json", "scripts/write-visual-qa-receipt.mjs"]
+  });
+  const authority = deriveReleaseAuthority({
+    stagingReport: report,
+    productionReport: publicationReport,
+    visualReceipt: visual,
+    performanceReceipt: performance,
+    publicationDelta
+  });
+  assert.equal(publicationDelta.verified, true);
+  assert.equal(authority.status, "verified");
+  assert.equal(authority.sourceRevision, revision);
+  assert.equal(authority.publicationRevision, publicationRevision);
+});
+
+test("a deployable publication delta is never treated as receipt-only", () => {
+  const delta = evaluatePublicationDelta({ from: revision, to: "c".repeat(40), changedFiles: ["public/app.js", "docs/visual-qa/LATEST.json"] });
+  assert.equal(delta.verified, false);
+  assert.deepEqual(delta.unsafeFiles, ["public/app.js"]);
 });

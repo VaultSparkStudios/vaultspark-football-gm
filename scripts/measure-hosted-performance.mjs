@@ -27,12 +27,33 @@ async function measureProfile(browser, baseUrl, profile, runs) {
     const context = await browser.newContext({ viewport: profile.viewport, deviceScaleFactor: 1 });
     const page = await context.newPage();
     await page.addInitScript(() => {
-      globalThis.__hostedVitals = { lcp: 0, cls: 0, events: [] };
+      globalThis.__hostedVitals = { lcp: 0, lcpElement: null, cls: 0, shifts: [], events: [] };
       new PerformanceObserver((list) => {
-        for (const entry of list.getEntries()) globalThis.__hostedVitals.lcp = Math.max(globalThis.__hostedVitals.lcp, entry.startTime);
+        for (const entry of list.getEntries()) {
+          globalThis.__hostedVitals.lcp = Math.max(globalThis.__hostedVitals.lcp, entry.startTime);
+          const element = entry.element;
+          globalThis.__hostedVitals.lcpElement = element ? {
+            tag: element.tagName,
+            id: element.id || null,
+            className: String(element.className || "").slice(0, 160),
+            text: String(element.textContent || "").trim().replace(/\s+/g, " ").slice(0, 180)
+          } : null;
+        }
       }).observe({ type: "largest-contentful-paint", buffered: true });
       new PerformanceObserver((list) => {
-        for (const entry of list.getEntries()) if (!entry.hadRecentInput) globalThis.__hostedVitals.cls += entry.value;
+        for (const entry of list.getEntries()) if (!entry.hadRecentInput) {
+          globalThis.__hostedVitals.cls += entry.value;
+          globalThis.__hostedVitals.shifts.push({
+            value: Number(entry.value.toFixed(4)),
+            sources: (entry.sources || []).map((source) => ({
+              tag: source.node?.tagName || null,
+              id: source.node?.id || null,
+              className: String(source.node?.className || "").slice(0, 120),
+              previousRect: source.previousRect,
+              currentRect: source.currentRect
+            }))
+          });
+        }
       }).observe({ type: "layout-shift", buffered: true });
       try {
         new PerformanceObserver((list) => {
@@ -40,14 +61,17 @@ async function measureProfile(browser, baseUrl, profile, runs) {
         }).observe({ type: "event", buffered: true, durationThreshold: 16 });
       } catch {}
     });
-    await page.goto(new URL("game.html", baseUrl).href, { waitUntil: "networkidle", timeout: 90_000 });
-    await page.waitForSelector("#themeToggleBtn", { state: "visible", timeout: 90_000 });
+    await page.goto(new URL("./", baseUrl).href, { waitUntil: "networkidle", timeout: 90_000 });
+    const interactionSelector = "#setupThemeToggleBtn";
+    await page.waitForSelector(interactionSelector, { state: "visible", timeout: 90_000 });
     await page.waitForTimeout(1600);
-    await page.click("#themeToggleBtn");
+    await page.click(interactionSelector);
     await page.waitForTimeout(700);
     samples.push(await page.evaluate(() => ({
       lcpMs: Math.round(globalThis.__hostedVitals.lcp || 0),
+      lcpElement: globalThis.__hostedVitals.lcpElement,
       cls: Number((globalThis.__hostedVitals.cls || 0).toFixed(4)),
+      shifts: globalThis.__hostedVitals.shifts,
       inpMs: Math.round(Math.max(0, ...globalThis.__hostedVitals.events)),
       interactionObserved: globalThis.__hostedVitals.events.length > 0
     })));
@@ -90,12 +114,13 @@ export async function measureHostedPerformance({ baseUrl, output, runs = 3 } = {
     generatedBy: "scripts/measure-hosted-performance.mjs",
     observedAt: new Date().toISOString(),
     baseUrl: origin,
+    route: "/",
     sourceRevision: manifest.sourceRevision,
     artifactFingerprint: manifest.artifactFingerprint,
     edgeHeaders,
     profiles,
     evaluation,
-    boundary: "Lab evidence from a real hosted browser interaction; it is not field cohort data."
+    boundary: "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route."
   };
   const receipt = { ...body, receiptSha256: sha256Json(body) };
   const target = path.resolve(process.cwd(), output || "docs/performance/LATEST.json");

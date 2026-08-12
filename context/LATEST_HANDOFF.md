@@ -1,4 +1,37 @@
-# Session 81 Closeout — Franchise Agency, Stewardship and Runtime Truth
+# Session 82 Closeout — Choice Clarity, Architect Hierarchy and Release Authority
+
+## Where We Left Off
+
+- The full S82 `/arc` audit is exhausted: all six ranked items and all three viable second-order innovations are implemented. Draft trade acceptance now requires an accessible review that names the exact pick movement and irreversible consequence; planning-friction receipts survive the choice journey; Architecture Review renders the player-authored objective hierarchy rather than a generic checklist.
+- Session rendering resolves the newest committed authority monotonically. Release tooling now joins staging, visual, performance and production evidence around one deployable source/artifact, while a receipt-only publication commit is accepted only when the Git delta is allowlisted and contains no deployable files.
+- Candidate `1cfc8774b8f20f2a5bf8951445baadbd6092277a` passed stable staging `14/14` at artifact `9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91`, deployment `340d0138-134d-40b3-bb60-58951abf3e8f`, with rollback `b13543d0-ac15-4e04-ae76-6045a52df031` available.
+- Browser proof is green: Playwright `40/40`, responsive `206/206`, and `64` inspected hash-bound dark/light desktop/mobile captures. Canonical public-entry medians are desktop LCP `272ms`, INP `24ms`, CLS `0.0151`; mobile LCP `300ms`, INP `16ms`, CLS `0.0085`; HSTS, CSP and frame protection were observed. A separate direct-game diagnostic retains its first-run tutorial layout-shift red instead of laundering it into the release route.
+- Local test truth is split but complete: the long aggregate passed four shards and had one transient Studio failure; the unchanged-source isolated Studio rerun passed `196/196`, making `1,069` source-identical shard tests green. Do not claim a fabricated aggregate receipt; use clean CI as final aggregate authority.
+- Public launch remains NO-GO/HOLD. Reply-capable on-domain Zoho delivery is unproved, founder launch approval is false, and registry SPARKED/local FORGE authority remains unreconciled. Deployment does not clear those gates.
+
+## Decisions That Must Survive
+
+- Irreversible actions disclose exact objects and consequence at the final commit boundary; previews do not guess outcomes.
+- Planning friction is source-derived evidence about the player's journey, not an invisible score or gameplay buff.
+- The deployable candidate SHA and artifact are immutable product authority; later documentation/test/status commits are publication lineage only when their Git delta is explicitly allowlisted.
+- Release Web Vitals measure the canonical public entry route. Direct game-shell diagnostics remain a separate optimization signal and may stay red without being mislabeled as the landing-page release gate.
+
+## Next Best Work
+
+- Observe real consenting first-session and Community Stats cohorts without manufacturing activity.
+- Prove Zoho delivery and reply-as identity, then obtain SHA-bound founder launch approval and authoritative lifecycle reconciliation before any public-launch flip.
+- Treat the retained direct-game tutorial layout-shift diagnostic as a future optimization candidate, not as evidence that the canonical public entry is slow.
+
+## Key Files
+
+- `src/engine/planningFriction.js`, `public/lib/tabDraft.js`, `public/lib/architectObjective.js`
+- `scripts/lib/session-authority.mjs`, `scripts/lib/release-authority.mjs`
+- `scripts/measure-hosted-performance.mjs`, `scripts/reconcile-release-authority.mjs`
+- `docs/AUDIT_2026-08-12_SESSION82.json`, `docs/performance/LATEST.json`, `docs/visual-qa/LATEST.json`
+
+---
+
+# Prior Session 81 Closeout — Franchise Agency, Stewardship and Runtime Truth
 
 ## Session Intent — S82
 

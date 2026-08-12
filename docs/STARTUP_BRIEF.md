@@ -1,40 +1,34 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-12 (Session 81 closeout) -->
+<!-- generated-at: 2026-08-12 (Session 82 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
-<!-- session-authority: committed=S81 · SIL=S80 · status=S81 · handoff=S81; divergent=true -->
+<!-- session-authority: committed=S82 · SIL=S82 · status=S82 · handoff=S82; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 81 closeout · 2026-08-12.
+> **Fast-boot brief** — generated at Session 82 closeout · 2026-08-12.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
 
 ```
-╔══ SESSION AUTHORITY ═══════════════════════════════════════════╗
-║  ✓ Monotonic next session: S82; no source moved backward.        ║
-║  committed=S81 · SIL=S80 · status=S81 · handoff=S81              ║
-║  SIL may lag a verified receipt; closeout will reconcile score.  ║
-╚════════════════════════════════════════════════════════════════╝
-
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 82 · 2026-08-12 · BUILDER MODE                          ║
+║  Session 83 · 2026-08-12 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S81) · WHAT SHIPPED ═══════════════════════════╗
-║  ✓ exact pre-commit GM consequence dossiers shared with commit   ║
-║  ✓ deterministic stale-safe on-clock draft offer market          ║
-║  ✓ player-directed mentorship covenants within the existing OVR  ║
-║  ✓ canonical persisted season stewardship reports                ║
-║  ✓ truthful Community deletion tombstones and efficient ETag sn  ║
-║  Tests  npm test 1053/1053 direct exit 0; responsive evidence 1  ║
-║  Deploy Candidate c822ae85f7287fec1538ea7125afad908c2b6d83 pass  ║
+╔══ LAST SESSION (S82) · WHAT SHIPPED ═══════════════════════════╗
+║  ✓ monotonic committed session authority across status, handoff  ║
+║  ✓ explicit accessible irreversible draft-trade review with exa  ║
+║  ✓ persistent source-derived planning-friction journey receipts  ║
+║  ✓ player-authored Architect Objective hierarchy                 ║
+║  ✓ desktop/mobile hosted performance and edge evidence           ║
+║  Tests  1069 source-identical shard tests green; Playwright 40/  ║
+║  Deploy Candidate 1cfc8774b8f20f2a5bf8951445baadbd6092277a pass  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -51,9 +45,9 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    996/1000   ███████████████████████░   100%                    ║
-║    SIL v3.0  ·  Avg3: 997.3  ·  Velocity 0→                      ║
-║    Active 17024d · closeout 1d · source: newest SIL/status/hand  ║
+║    991/1000   ███████████████████████░   99%                     ║
+║    SIL v3.0  ·  Avg3: 995  ·  Velocity 0→                        ║
+║    Active 16293d · closeout 0d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -63,28 +57,28 @@
 ║    Momentum         100    ██████████  ████████ →                ║
 ║    Engagement       100    ██████████  ████████ →                ║
 ║    Process Qual     100    ██████████  ████████ →                ║
-║    Coherence        100    ██████████  ········ →                ║
+║    Coherence         99    ██████████  ········ →                ║
 ║    Security         100    ██████████  ········ →                ║
-║    Ecosystem        100    ██████████  ········ →                ║
+║    Ecosystem         98    ██████████  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation       100    ██████████  ········ →                ║
+║    Automation        99    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 81 ════════════════════════════╗
-║  Shipped:  Session 81 fully deployed: exact GM consequence doss  ║
-║  Tests:    1053/1053 passing  ·  Deploy: N/A                     ║
+╔══ WHERE WE LEFT OFF  ·  Session 82 ════════════════════════════╗
+║  Shipped:  Session 82 arc implementation is complete and exact   ║
+║  Tests:    1067/1067 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
-║     15,452 / 1,000,000 tok  ·  codex/codex-1m  ·  heuristic      ║
-║     ~7,726 tok/turn  ·  cache 50%  ·  117 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    5% used                          ║
+║     46,983 / 1,000,000 tok  ·  codex/codex-1m  ·  heuristic      ║
+║     ~23,492 tok/turn  ·  cache 50%  ·  37 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1053/1053 passing (2026-08-12) · STALE — run   ║
+║  ⚠  Tests         1067/1067 passing (2026-08-12) · STALE — run   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -122,28 +116,14 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-08-12_SESSION82.md                   ║
-║                                                                  ║
-║  #1 · FIRE · monotonic-session-authority                         ║
-║  monotonic-session-authority — Extract a pure monotonic session  ║
-║                                                                  ║
-║  #2 · FIRE · irreversible-draft-trade-confirmation               ║
-║  irreversible-draft-trade-confirmation — Build one accessible s  ║
-║                                                                  ║
-║  #3 · FIRE · planning-friction-journey-authority                 ║
-║  planning-friction-journey-authority — Version the journey sche  ║
-║                                                                  ║
-║  #4 · FIRE · architect-objective-hierarchy                       ║
-║  architect-objective-hierarchy — Derive one non-blocking Archit  ║
-║                                                                  ║
-║  #5 · HIGH · hosted-performance-evidence                         ║
-║  hosted-performance-evidence — Create a bounded exact-revision   ║
-║                                                                  ║
+║  ✓ queue exhausted · source: AUDIT_2026-08-12_SESSION82.md       ║
+║  Closed: 6 · Open: 0                                             ║
+║  Latest audit has no open ranked items; run /audit for a new li  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 81 closeout · 2026-08-12*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 82 closeout · 2026-08-12*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

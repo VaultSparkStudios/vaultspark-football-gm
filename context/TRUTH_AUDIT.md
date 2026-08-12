@@ -5,6 +5,16 @@ Overall status: green
 Last reviewed: 2026-08-11
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
+## 2026-08-12 - Session 82 truth update
+
+- **Session truth is monotonic.** Startup authority resolves the newest committed session across status, handoff and SIL; older summaries cannot self-heal the project backward.
+- **Trade consent is exact.** A live on-clock offer cannot mutate the draft until the player confirms the named outgoing/incoming picks and irreversible one-use consequence in an accessible dialog.
+- **Progression truth belongs to the player.** Planning-friction receipts describe source-derived decisions and Architecture Review projects identity, active pressure, next proof and mastery path; neither surface predicts results or changes simulation outcomes.
+- **Candidate evidence is exact.** Stable staging serves candidate `1cfc8774…` and artifact `9d1b585e…` with 14/14 checks and rollback. The 64 reviewed captures and hosted performance receipt bind that same deployable identity.
+- **Performance truth is route-specific.** Canonical `/` public-entry medians clear LCP/INP/CLS at desktop and mobile with edge policy observed. A separate direct-game diagnostic preserves its first-run tutorial layout-shift red and is not relabeled as the landing-page gate.
+- **Test truth is not rounded up.** Four aggregate shards passed; the Studio shard had one transient aggregate failure and immediately passed 196/196 alone on unchanged source. All 1,069 shard tests are green, but only clean CI may establish the final aggregate receipt.
+- **Deployment is not launch.** Reply-capable on-domain email, SHA-bound founder approval and authoritative lifecycle reconciliation remain unproved, so `launchReady` remains false.
+
 ## 2026-08-11 - Session 80 truth update
 
 - **Command handoffs are exact.** Ranked command receipts publish `targetTab` and `targetId`; one shared authority waits for tab hydration, scrolls, focuses and reports unavailable targets without choosing for the player.

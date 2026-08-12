@@ -4,37 +4,38 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 81 fully deployed: exact GM consequence dossiers, live on-clock draft offers, player-directed mentorship, canonical stewardship reports, truthful Community deletion/retry, efficient snapshot refresh and exact backend runtime attestation are live at c822ae85f7287fec1538ea7125afad908c2b6d83 with staging/production artifact 94bebbd12de9a9195227a6d001a2e8424777bbbe49ec49db20e5df03ac9b8e39. CI, Pages and guarded backend deployment are green; launch HOLD remains explicit.",
-  "nextMilestone": "Observe real consenting first-session and Community Stats cohorts without manufacturing activity; separately prove delivered on-domain email, public-launch approval, authoritative lifecycle and current edge/Web Vitals evidence before any launch flip.",
+  "currentFocus": "Session 82 arc implementation is complete and exact on stable staging: irreversible draft-trade review, planning-friction journey receipts, Architect Objective hierarchy, monotonic session authority, hosted performance evidence and unified deployable/publication release lineage at candidate 1cfc8774b8f20f2a5bf8951445baadbd6092277a / artifact 9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91. Production publication and clean CI follow this closeout commit; public launch remains HOLD.",
+  "nextMilestone": "Observe real consenting first-session and Community Stats cohorts without manufacturing activity; separately prove Zoho delivery/reply-as, SHA-bound founder launch approval and authoritative lifecycle reconciliation before any launch flip.",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — email-delivery-and-reply-identity-unverified, founder-launch-approval-unverified, lifecycle-authority-unreconciled."
   ],
   "lastUpdated": "2026-08-12",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-08-11",
+  "truthAuditLastRun": "2026-08-12",
   "ignisScore": 42836,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": {
-    "totalTests": 1053,
-    "pass": 1053,
+    "totalTests": 1069,
+    "pass": 1069,
     "fail": 0,
-    "lastRun": "2026-08-11",
+    "lastRun": "2026-08-12",
     "newTestFiles": [
-      "test/gm-stewardship-report.test.js",
-      "test/mentorship-covenants.test.js",
+      "test/hosted-performance.test.js",
       "test/on-clock-trade-market.test.js",
-      "test/startup-brief-last-session.test.js",
-      "test/theme-customizer.test.js"
+      "test/playtest-journey.test.js",
+      "test/progressive-week-room.test.js",
+      "test/release-authority.test.js",
+      "test/session-authority.test.js"
     ],
-    "newTestCount": 29,
-    "coverage": "Session 81 canonical npm test 1053/1053 direct exit 0 (core 123, runtime 666, sim-contract 79, sim-realism 1, Studio 184), covering all seven audit items and three second-order repairs.",
-    "uiSuiteNote": "Responsive evidence 194 captures; 56 reviewed dark/light desktop/mobile captures are hash-bound in docs/visual-qa/LATEST.json."
+    "newTestCount": 16,
+    "coverage": "Session 82 source-identical shards green at 1069 tests (core 123, runtime 670, sim-contract 79, sim-realism 1, Studio isolated 196). The long aggregate had one transient Studio red; clean CI is the final aggregate authority and no synthetic aggregate receipt is claimed.",
+    "uiSuiteNote": "Playwright 40/40; responsive evidence 206/206; 64 reviewed dark/light desktop/mobile captures are hash-bound in docs/visual-qa/LATEST.json."
   },
-  "testsPassing": 1053,
-  "testsTotal": 1053,
+  "testsPassing": 1069,
+  "testsTotal": 1069,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -73,23 +74,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 996,
+  "silScore": 991,
   "silCategoriesV3": {
-    "devHealth": 100,
-    "creativeAlignment": 99,
+    "devHealth": 99,
+    "creativeAlignment": 100,
     "momentum": 100,
-    "engagement": 99,
-    "processQuality": 98,
-    "crossRepoCoherence": 100,
+    "engagement": 100,
+    "processQuality": 96,
+    "crossRepoCoherence": 99,
     "securityPosture": 100,
-    "ecosystemIntegration": 100,
+    "ecosystemIntegration": 98,
     "capitalEfficiency": 100,
-    "automationCoverage": 100
+    "automationCoverage": 99
   },
-  "currentSession": 81,
+  "currentSession": 82,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "Session 81 npm test 1053/1053 direct exit 0; responsive evidence 194 captures; CANON-053 56 hash-bound reviewed captures across dark/light desktop/mobile; stable staging 14/14 and production Pages/API at c822ae85/94bebbd1; CI 31556893077, Pages 31556893104, brief 31556893056 and guarded backend deploy 31557671113 green.",
+  "lastVerification": "Session 82 source-identical shards 1069 green with one transient aggregate Studio red followed by isolated Studio 196/196; Playwright 40/40; responsive 206/206; CANON-053 64 reviewed captures; Pages build/smoke; stable staging 14/14; hosted public-entry Core Web Vitals and edge policy green.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -115,7 +116,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 816,
+  "silHealth": 811,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -137,28 +138,28 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-08-09",
-  "lastVerificationAt": "2026-08-11",
+  "lastVerificationAt": "2026-08-12",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.037,
   "entropyLastComputed": "2026-08-11",
   "lastSessionSummary": {
-    "session": 81,
+    "session": 82,
     "shipped": [
-      "exact pre-commit GM consequence dossiers shared with commit planners",
-      "deterministic stale-safe on-clock draft offer market",
-      "player-directed mentorship covenants within the existing OVR budget",
-      "canonical persisted season stewardship reports",
-      "truthful Community deletion tombstones and efficient ETag snapshot refresh",
-      "exact backend runtime revision attestation",
-      "three second-order startup, Sim-Watch and theme-contract repairs"
+      "monotonic committed session authority across status, handoff and SIL",
+      "explicit accessible irreversible draft-trade review with exact picks",
+      "persistent source-derived planning-friction journey receipts",
+      "player-authored Architect Objective hierarchy",
+      "desktop/mobile hosted performance and edge evidence",
+      "unified deployable identity plus proven receipt-only publication lineage",
+      "three second-order visual, interaction and publication-authority refinements"
     ],
-    "tests": "npm test 1053/1053 direct exit 0; responsive evidence 194 captures; 56 reviewed dark/light desktop/mobile receipts",
-    "deploy": "Candidate c822ae85f7287fec1538ea7125afad908c2b6d83 passed stable staging 14/14, direct-main CI/Pages, and guarded backend deployment with exact process-health revision; launchReady remains false.",
+    "tests": "1069 source-identical shard tests green; Playwright 40/40; responsive 206/206; 64 reviewed dark/light desktop/mobile receipts",
+    "deploy": "Candidate 1cfc8774b8f20f2a5bf8951445baadbd6092277a passed stable staging 14/14 at artifact 9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91 with rollback; production publication follows the receipt-only closeout commit and launchReady remains false.",
     "honestDeferrals": [
-      "Multi-tab snapshot leadership remains an optional L3 extension; single-flight, ETag, refresh floor and backoff are shipped.",
-      "Launch remains held on reply-capable email, SHA-bound founder approval, lifecycle authority and current edge/Web Vitals evidence.",
+      "Direct /game.html first-run tutorial layout shift remains a separately retained optimization diagnostic; canonical public-entry metrics pass.",
+      "Launch remains held on reply-capable email, SHA-bound founder approval and lifecycle authority.",
       "Observe real opted-in cohorts without manufacturing activity."
     ]
   },
@@ -167,7 +168,7 @@
       "type": "local",
       "label": "Local game",
       "url": "http://127.0.0.1:3000/game.html",
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     {
       "type": "production",
@@ -179,11 +180,11 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     }
   ],
-  "lastSession": 81,
-  "silLastSession": "80",
+  "lastSession": 82,
+  "silLastSession": "82",
   "bootAmortization": {
     "ratio": 4.27,
     "verdict": "healthy",
@@ -211,7 +212,7 @@
       "ranAt": "2026-08-12T02:04:52.157Z"
     }
   ],
-  "session": 81,
+  "session": 82,
   "backendDeployment": {
     "sourceRevision": "7becc57385515042dee5d80146c635d45962ea40",
     "workflowRun": 31544469131,
@@ -280,32 +281,64 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "a423ff297e47041a9140d63e2080e4aa64b94d2bf79d8473c5d2ec9593d80807",
-    "sourceRevision": "7becc57385515042dee5d80146c635d45962ea40",
+    "receiptSha256": "eba1f21490c194bba32e04731c78459e821a86fac1a8935c73d14a734454edfe",
+    "sourceRevision": "1cfc8774b8f20f2a5bf8951445baadbd6092277a",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "6781437a0b319806945b94700e02d53faeee59be0885060a1b78dcc7545b5c9a",
-      "files": 188,
+      "digest": "9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91",
+      "files": 192,
       "exclusions": [
         "_health",
         "deploy-manifest.json"
       ]
     },
-    "deploymentId": "7d81dbac-fa53-491b-9801-b162e3889542",
+    "deploymentId": "340d0138-134d-40b3-bb60-58951abf3e8f",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-11T22:47:44.506Z"
+      "checkedAt": "2026-08-12T05:30:42.634Z"
     },
     "rollback": {
-      "previousDeploymentId": "a836ac8f-8e6b-4b42-86e2-b7b6a2fb5344",
+      "previousDeploymentId": "b13543d0-ac15-4e04-ae76-6045a52df031",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-11T22:47:44.507Z"
+    "observedAt": "2026-08-12T05:30:42.634Z"
   },
-  "lastCloseoutAt": "2026-08-11T22:35:52.8003365Z"
+  "lastCloseoutAt": "2026-08-12T06:27:33.347Z",
+  "performanceAuthority": {
+    "schemaVersion": "1.0",
+    "sourceRevision": "1cfc8774b8f20f2a5bf8951445baadbd6092277a",
+    "artifactDigest": "9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91",
+    "route": "/",
+    "desktop": {
+      "lcpMs": 272,
+      "inpMs": 24,
+      "cls": 0.0151
+    },
+    "mobile": {
+      "lcpMs": 300,
+      "inpMs": 16,
+      "cls": 0.0085
+    },
+    "edgePolicyObserved": true,
+    "verified": true,
+    "observedAt": "2026-08-12T05:36:07.800Z",
+    "diagnostic": "docs/performance/GAME_SHELL_DIAGNOSTIC.json retains the separate direct-game first-run layout-shift red."
+  },
+  "releaseAuthority": {
+    "schemaVersion": "1.0",
+    "status": "staging-verified-production-pending",
+    "deployableRevision": "1cfc8774b8f20f2a5bf8951445baadbd6092277a",
+    "artifactDigest": "9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91",
+    "stagingVerified": true,
+    "visualVerified": true,
+    "performanceVerified": true,
+    "productionVerified": false,
+    "launchReady": false,
+    "publicationLineagePolicy": "Only git-proven receipt/test/status/tooling descendants with zero deployable-file deltas are accepted."
+  }
 }

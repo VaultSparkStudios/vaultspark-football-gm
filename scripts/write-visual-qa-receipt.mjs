@@ -39,10 +39,15 @@ const candidates = (await fs.readdir(outputRoot, { withFileTypes: true }))
   .map((entry) => path.join(outputRoot, entry.name));
 if (!candidates.length) throw new Error("No responsive evidence directory found");
 
-const evidenceDirs = await Promise.all(candidates.map(async (dir) => ({
-  dir,
-  stat: await fs.stat(path.join(dir, "responsive-evidence.json"))
-})));
+const evidenceDirs = (await Promise.all(candidates.map(async (dir) => {
+  try {
+    return { dir, stat: await fs.stat(path.join(dir, "responsive-evidence.json")) };
+  } catch (error) {
+    if (error?.code === "ENOENT") return null;
+    throw error;
+  }
+}))).filter(Boolean);
+if (!evidenceDirs.length) throw new Error("No completed responsive evidence report found");
 evidenceDirs.sort((a, b) => b.stat.mtimeMs - a.stat.mtimeMs);
 const evidenceDir = evidenceDirs[0].dir;
 const reportBuffer = await fs.readFile(path.join(evidenceDir, "responsive-evidence.json"));

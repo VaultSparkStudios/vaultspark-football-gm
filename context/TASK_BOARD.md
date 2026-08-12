@@ -12,6 +12,26 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 
+## Session 82 — Full arc: irreversible choice clarity, architect hierarchy and release authority (2026-08-12)
+
+Source: `docs/AUDIT_2026-08-12_SESSION82.md`.
+
+| Item | Status |
+|------|--------|
+| monotonic-session-authority — resolve the newest committed session across status, handoff and SIL without backward self-heal | ✅ Done |
+| irreversible-draft-trade-confirmation — accessible exact-pick review before accepting a live on-clock offer | ✅ Done |
+| planning-friction-journey-authority — persist source-derived choice friction through the decision journey | ✅ Done |
+| architect-objective-hierarchy — show identity, current pressure, next proof and mastery path in one General Manager hierarchy | ✅ Done |
+| hosted-performance-evidence — exact-candidate desktop/mobile Core Web Vitals plus observed edge policy | ✅ Done |
+| release-receipt-authority — unify deployable SHA/artifact and admit only proven receipt-only publication descendants | ✅ Done |
+| completed-visual-report-selection — visual receipt selects only complete evidence runs | ✅ Done (second-order) |
+| viewport-authentic-performance-interaction — performance probe measures the canonical public entry and a real theme interaction | ✅ Done (second-order) |
+| receipt-only-publication-lineage — release authority rejects deployable deltas and names allowed receipt lineage | ✅ Done (second-order) |
+
+**Verification:** focused Node contracts green; one long aggregate produced core 123/123, runtime 670/670, sim-contract 79/79, sim-realism 1/1 and one transient Studio red, followed immediately by an isolated Studio 196/196 pass (1,069 source-identical shard tests green; final clean-environment aggregate delegated to CI). Playwright 40/40; responsive 206/206; 64 reviewed hash-bound dark/light desktop/mobile captures; Pages build/smoke green; staging 14/14 at `1cfc877…` / `9d1b585e…`; public-entry Web Vitals and edge policy green.
+
+**Launch posture:** deployment remains distinct from launch. Preserve `launchReady: false` until reply-capable email, SHA-bound founder approval, and authoritative lifecycle reconciliation exist.
+
 ## Session 81 — Full arc: pre-commit agency, progression truth, privacy and exact runtime proof (2026-08-11)
 
 Source: `docs/AUDIT_2026-08-11_SESSION81.md`.

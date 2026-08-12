@@ -1029,3 +1029,20 @@ The existing staging attempt/delay bounds apply to thrown read-only Cloudflare a
 
 **D-S77.2 — "The latest audit must have shipped X" assertions must be conditional on X existing, not unconditional.**
 `test/studio-protocol-smoke.test.js`'s innovation-pack check required the latest audit sidecar to record shipped second-order work, which broke by construction for Session 76's honestly-zero-second-order audit — the same brittleness pattern the test's own comment already documents being rewritten once to avoid (a prior version hardcoded one session's slugs). *Why:* an audit lens near exhaustion after dozens of sessions will legitimately ship zero second-order candidates sometimes; a test enforcing "always some" punishes honesty instead of verifying the real guarantee (when shipped work exists, it's surfaced).
+
+## Session 82 — 2026-08-12
+
+**D-S82.1 — Committed session authority is monotonic across status, handoff and SIL history.**
+Renderers resolve the greatest valid committed session and may repair only forward; an older SIL footer can never move `PROJECT_STATUS.currentSession` backward. *Why:* derived summaries often lag the canonical closeout and must not erase newer authority.
+
+**D-S82.2 — Irreversible draft trades have an exact final review boundary.**
+Accepting a live offer opens a focus-managed dialog naming the picks surrendered/received and the one-use consequence; only explicit confirmation mutates the board. *Why:* speed on the clock cannot replace informed player agency.
+
+**D-S82.3 — Planning friction is evidence, not an invisible modifier.**
+The decision journey persists bounded source-derived pressure and resolution receipts, and Architecture Review projects them into a player-authored objective hierarchy. The ledger cannot buff outcomes or invent mastery. *Why:* the game can recognize how the General Manager decided without quietly grading or changing the simulation.
+
+**D-S82.4 — Deployable identity and publication lineage are separate release authorities.**
+Staging, visual and performance receipts bind the immutable deployable SHA and artifact. A later production publication SHA is acceptable only when Git proves every intervening file is allowlisted receipt/test/status tooling and no deployable file changed. *Why:* documentation closeout commits should not force a false artifact mismatch, and a real product delta must never hide behind that exception.
+
+**D-S82.5 — The release performance gate measures the canonical public entry; direct game-shell diagnostics remain visible separately.**
+Desktop/mobile medians and a real theme interaction are captured on `/`. The direct `/game.html` first-run tutorial diagnostic is retained as optimization evidence, including its layout-shift red. *Why:* route-specific evidence must answer the promise being gated without suppressing useful adjacent defects.

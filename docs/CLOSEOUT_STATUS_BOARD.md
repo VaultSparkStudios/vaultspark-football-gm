@@ -1,47 +1,48 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-12 (Session 81 closeout) -->
+<!-- generated-at: 2026-08-12 (Session 82 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S81 ══════╗
-║  Date: 2026-08-12  ·  SIL: 996/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S82 ══════╗
+║  Date: 2026-08-12  ·  SIL: 991/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ The full S81 `/arc` audit and implementation scope is comple  ║
-║  ✓ Community participation now stops collection immediately whi  ║
-║  ✓ Candidate proof is green: canonical Node `1,053/1,053` direc  ║
-║  ✓ Immutable candidate `c822ae85f7287fec1538ea7125afad908c2b6d8  ║
+║  ✓ The full S82 `/arc` audit is exhausted: all six ranked items  ║
+║  ✓ Session rendering resolves the newest committed authority mo  ║
+║  ✓ Candidate `1cfc8774b8f20f2a5bf8951445baadbd6092277a` passed   ║
+║  ✓ Browser proof is green: Playwright `40/40`, responsive `206/  ║
+║  ✓ Local test truth is split but complete: the long aggregate p  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 996/1000 ═══════════════════════════════════════╗
-║    Dev Health         100  ██████████                            ║
-║    Alignment          99   ██████████                            ║
+╔══ SCORES · SIL 991/1000 ═══════════════════════════════════════╗
+║    Dev Health         99   ██████████                            ║
+║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
-║    Engagement         99   ██████████                            ║
-║    Process Qual       98   ██████████                            ║
-║    Coherence          100  ██████████                            ║
+║    Engagement         100  ██████████                            ║
+║    Process Qual       96   ██████████                            ║
+║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
-║    Ecosystem          100  ██████████                            ║
+║    Ecosystem          98   ██████████                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         100  ██████████                            ║
+║    Automation         99   ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
-║  · agent memory (~/.codex or ~/.claude project memory)           ║
+║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 3 files  ·  M:3 A:0 D:0 ?:0                            ║
-║  Ahead: 0  ·  Behind: 0                                          ║
+║  Changes: 88 files  ·  M:20 A:0 D:0 ?:68                         ║
+║  Ahead: 1  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
@@ -51,7 +52,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1053/1053                                        ║
+║  Tests:         1067/1067 · STALE                                ║
 ║  IGNIS:         1d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  3d ago                                           ║

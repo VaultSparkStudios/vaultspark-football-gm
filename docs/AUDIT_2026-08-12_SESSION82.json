@@ -8,7 +8,7 @@
     "type": "public browser football game/app"
   },
   "displayName": "Franchise Architect: Football",
-  "status": "open",
+  "status": "implemented",
   "summary": {
     "combinedPriority": 137.8,
     "source": "Fresh Session 82 live-code audit with product, game-loop, browser UX, public-app release, rendered-pixel, privacy, observability-honesty, and Studio protocol lenses. Every selected premise was checked against current source, tests, live doctor output, current hosted provenance, and the read-only specialty reviews.",
@@ -94,7 +94,8 @@
       "priority": 22.5,
       "slug": "monotonic-session-authority",
       "title": "Prevent startup generation from moving session authority backward",
-      "status": "open",
+      "status": "implemented",
+      "executionEvidence": ["test/session-authority.test.js 4/4", "canonical startup renderer advanced to Session 82 without lowering PROJECT_STATUS", "npm test aggregate 1067/1067 before receipt-only tooling refinements"],
       "premise": "Session 81 is bound in PROJECT_STATUS and the latest handoff/receipts, but SIL closes only through Session 80. The startup renderer treats SIL as exclusive authority, computed S81 as next, and wrote PROJECT_STATUS.currentSession from 81 back to 80. This violates arc's monotonic-forward identity contract and can misfile every S82 write-back surface.",
       "evidence": [
         "scripts/render-startup-brief.mjs currentSession and canonical self-heal logic",
@@ -124,7 +125,8 @@
       "priority": 27.1,
       "slug": "irreversible-draft-trade-confirmation",
       "title": "Give live-pick trades an explicit review-and-commit boundary",
-      "status": "open",
+      "status": "implemented",
+      "executionEvidence": ["on-clock/modal focused suite 23/23", "Playwright 40/40", "exact candidate dark/light desktop/mobile/tablet review pixels passed"],
       "premise": "The live on-clock market discloses assets and values, but Accept and Counter immediately invoke the irreversible ownership transfer. A single pointer event can trade the controlled live selection and cause the rival to consume the slot, while ordinary drafting already uses a deliberate reveal boundary.",
       "evidence": [
         "public/lib/onClockTradeMarketPanel.js immediate Accept/Counter controls",
@@ -154,7 +156,8 @@
       "priority": 24.0,
       "slug": "planning-friction-journey-authority",
       "title": "Retain the weekly-plan review, revision, and defer evidence the composer already emits",
-      "status": "open",
+      "status": "implemented",
+      "executionEvidence": ["playtest journey/composer focused suite 11/11", "schema 1.1 planning-friction summary preserves local-only no-cohort boundary"],
       "premise": "weeklyPlanComposer emits weekly-plan-reviewed, weekly-plan-revision-requested, and weekly-plan-deferred, but playtestJourney silently rejects all three because its allowlist omits them. Local exports therefore cannot diagnose whether Architect review sharpened a plan, caused a revision, or ended the attempt.",
       "evidence": [
         "public/lib/weeklyPlanComposer.js checkpoint emission",
@@ -184,7 +187,8 @@
       "priority": 24.8,
       "slug": "architect-objective-hierarchy",
       "title": "Unify the player-authored mastery focus with the visible season and legacy horizon",
-      "status": "open",
+      "status": "implemented",
+      "executionEvidence": ["progression and mobile focused suite 45/45", "206/206 responsive captures", "dark/light desktop and mobile Architect Objective pixels manually inspected with zero blocking defects"],
       "premise": "Franchise Command, season chapters, mastery focus, and Trophy Road each publish a separate next objective. The existing three-horizon Architecture surface shows Now, Season, and generic GM Legacy, but its Legacy lane ignores the player's source-bound mastery focus even though that focus already has an exact next milestone and destination authority.",
       "evidence": [
         "public/lib/franchiseArchitecture.js generic legacyLane and unused mastery in horizon construction",
@@ -214,7 +218,8 @@
       "priority": 20.9,
       "slug": "hosted-performance-evidence",
       "title": "Make exact-revision Web Vitals and edge evidence a reproducible release receipt",
-      "status": "open",
+      "status": "implemented",
+      "executionEvidence": ["stable staging exact candidate 14/14", "public entry route median desktop LCP 272ms INP 24ms CLS 0.0151", "mobile LCP 300ms INP 16ms CLS 0.0085", "direct game-shell hydration retained separately as a red diagnostic"],
       "premise": "Boot bytes, module reachability, responsive captures, staging provenance, and production parity are automated, but the app-release gate still has no current staging LCP/INP/CLS measurement and health reports hosted edge policy unobserved. The launch gate therefore cannot distinguish visual correctness from interaction/performance readiness.",
       "evidence": [
         "docs/AUDIT_2026-08-11_SESSION81.json release holds",
@@ -244,7 +249,8 @@
       "priority": 18.5,
       "slug": "release-receipt-authority",
       "title": "Stop structured project status from carrying several stale release candidates at once",
-      "status": "open",
+      "status": "implemented",
+      "executionEvidence": ["release-authority focused suite 5/5", "one exact deployable candidate 1cfc8774 plus artifact 9d1b585e across staging, visual and performance receipts", "production verifier intentionally remains pending until direct-main publication"],
       "premise": "Fresh staging and production verifiers prove d0d2b617/ad62bc26, while PROJECT_STATUS top-level verification narrates c822ae85/94bebbd1 and embedded release/staging authorities still cite 7becc573. Generated consumers can therefore select mutually inconsistent candidates from one otherwise valid JSON source.",
       "evidence": [
         "fresh staging 14/14 and production 10/10 verifier output",
@@ -265,5 +271,24 @@
       }
     }
   ],
-  "secondOrderCandidates": []
+  "secondOrderCandidates": [
+    {
+      "slug": "completed-visual-report-selection",
+      "title": "Ignore incomplete responsive attempts when selecting the latest visual receipt",
+      "status": "second-order-shipped",
+      "evidence": ["scripts/write-visual-qa-receipt.mjs filters missing responsive-evidence.json attempts", "exact 64-capture Session 82 receipt produced"]
+    },
+    {
+      "slug": "viewport-authentic-performance-interaction",
+      "title": "Measure the interaction each viewport actually exposes",
+      "status": "second-order-shipped",
+      "evidence": ["hosted probe follows the real public-entry theme control at both widths", "direct game-shell first-run hydration remains a separate attributed diagnostic"]
+    },
+    {
+      "slug": "receipt-only-publication-lineage",
+      "title": "Permit attestation-only publication descendants without weakening artifact identity",
+      "status": "second-order-shipped",
+      "evidence": ["later production SHA requires a Git-proven receipt-only delta and exact artifact SHA-256", "public/app.js drift is regression-tested red"]
+    }
+  ]
 }
