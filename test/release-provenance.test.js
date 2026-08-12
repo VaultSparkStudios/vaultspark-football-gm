@@ -52,9 +52,12 @@ test("artifact fingerprint is deterministic and changes with deployable bytes", 
     await fs.writeFile(path.join(dir, "z.js"), "export const z = 1;");
     await fs.writeFile(path.join(dir, "lib", "a.js"), "export const a = 1;");
     await fs.writeFile(path.join(dir, "_health"), "volatile-one");
+    await fs.writeFile(path.join(dir, "edge-policy-receipt.json"), JSON.stringify({ sourceRevision: "candidate" }));
     const first = await fingerprintArtifactDirectory(dir);
     await fs.writeFile(path.join(dir, "_health"), "volatile-two");
-    assert.deepEqual(await fingerprintArtifactDirectory(dir), first, "excluded evidence does not perturb the artifact identity");
+    await fs.writeFile(path.join(dir, "edge-policy-receipt.json"), JSON.stringify({ sourceRevision: "publication" }));
+    assert.deepEqual(await fingerprintArtifactDirectory(dir), first, "source-bound evidence does not perturb deployable identity");
+    assert.deepEqual(first.exclusions, ["_health", "deploy-manifest.json", "edge-policy-receipt.json"]);
     await fs.writeFile(path.join(dir, "lib", "a.js"), "export const a = 2;");
     const changed = await fingerprintArtifactDirectory(dir);
     assert.notEqual(changed.digest, first.digest);

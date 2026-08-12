@@ -13,7 +13,11 @@ async function filesUnder(root, dir = root) {
   return files;
 }
 
-export async function fingerprintArtifactDirectory(root, { exclude = ["_health", "deploy-manifest.json"] } = {}) {
+// Source-bound evidence names the publication that observed an otherwise
+// byte-identical product. Keep those receipts outside the deployable-content
+// identity so a docs/status-only publication commit cannot fabricate product
+// drift merely by embedding its own SHA.
+export async function fingerprintArtifactDirectory(root, { exclude = ["_health", "deploy-manifest.json", "edge-policy-receipt.json"] } = {}) {
   const excluded = new Set(exclude.map((entry) => String(entry).replaceAll("\\", "/")));
   const files = (await filesUnder(root)).filter((relative) => !excluded.has(relative)).sort();
   const hash = createHash("sha256");
