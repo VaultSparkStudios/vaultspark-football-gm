@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 81 implementation and local proof complete: exact GM consequence dossiers, live on-clock draft offers, player-directed mentorship, canonical stewardship reports, truthful Community deletion/retry, efficient snapshot refresh and exact backend runtime attestation. Immutable candidate awaits stable staging before direct-main promotion; launch HOLD remains explicit.",
-  "nextMilestone": "Prove the exact Session 81 candidate on stable staging, push the unchanged SHA to main, verify CI/Pages/backend production provenance, then observe real consenting cohorts without manufacturing activity.",
+  "currentFocus": "Session 81 fully deployed: exact GM consequence dossiers, live on-clock draft offers, player-directed mentorship, canonical stewardship reports, truthful Community deletion/retry, efficient snapshot refresh and exact backend runtime attestation are live at c822ae85f7287fec1538ea7125afad908c2b6d83 with staging/production artifact 94bebbd12de9a9195227a6d001a2e8424777bbbe49ec49db20e5df03ac9b8e39. CI, Pages and guarded backend deployment are green; launch HOLD remains explicit.",
+  "nextMilestone": "Observe real consenting first-session and Community Stats cohorts without manufacturing activity; separately prove delivered on-domain email, public-launch approval, authoritative lifecycle and current edge/Web Vitals evidence before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -89,7 +89,7 @@
   "currentSession": 81,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "Session 81 npm test 1053/1053 direct exit 0; Pages build green; browser boot/reachability green; responsive evidence 194 captures; CANON-053 56 hash-bound reviewed captures across dark/light desktop/mobile. Stable staging and production promotion pending exact candidate.",
+  "lastVerification": "Session 81 npm test 1053/1053 direct exit 0; responsive evidence 194 captures; CANON-053 56 hash-bound reviewed captures across dark/light desktop/mobile; stable staging 14/14 and production Pages/API at c822ae85/94bebbd1; CI 31556893077, Pages 31556893104, brief 31556893056 and guarded backend deploy 31557671113 green.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -155,7 +155,7 @@
       "three second-order startup, Sim-Watch and theme-contract repairs"
     ],
     "tests": "npm test 1053/1053 direct exit 0; responsive evidence 194 captures; 56 reviewed dark/light desktop/mobile receipts",
-    "deploy": "Immutable candidate awaits exact-SHA stable staging proof before direct-main publication; launchReady remains false.",
+    "deploy": "Candidate c822ae85f7287fec1538ea7125afad908c2b6d83 passed stable staging 14/14, direct-main CI/Pages, and guarded backend deployment with exact process-health revision; launchReady remains false.",
     "honestDeferrals": [
       "Multi-tab snapshot leadership remains an optional L3 extension; single-flight, ETag, refresh floor and backoff are shipped.",
       "Launch remains held on reply-capable email, SHA-bound founder approval, lifecycle authority and current edge/Web Vitals evidence.",

@@ -13,7 +13,7 @@
 ║  ✓ The full S81 `/arc` audit and implementation scope is comple  ║
 ║  ✓ Community participation now stops collection immediately whi  ║
 ║  ✓ Candidate proof is green: canonical Node `1,053/1,053` direc  ║
-║  ✓ Immutable candidate metadata is being finalized for stable s  ║
+║  ✓ Immutable candidate `c822ae85f7287fec1538ea7125afad908c2b6d8  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 996/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -40,8 +40,8 @@
 ║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 5 files  ·  M:5 A:0 D:0 ?:0                            ║
-║  Ahead: 1  ·  Behind: 0                                          ║
+║  Changes: 3 files  ·  M:3 A:0 D:0 ?:0                            ║
+║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗

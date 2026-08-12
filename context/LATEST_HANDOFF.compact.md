@@ -1,55 +1,50 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 91e71d819a60 -->
-<!-- generated-at: 2026-08-12T02:20:06.443Z -->
+<!-- source-hash: a2a45c2e8e92 -->
+<!-- generated-at: 2026-08-12T02:57:02.232Z -->
 
 # LATEST_HANDOFF (compact)
 
 SESSION 81 HANDOFF SUMMARY
 
-Status
-- S81 /arc audit and implementation complete locally. Candidate proof green.
-- Immutable candidate metadata being finalized for stable staging proof before direct-main push.
+Session
+- S81 closeout complete. Full /arc audit, implementation, verification, and direct-main publication done.
 
-Shipped This Session
+Shipped
 - GM choices disclose exact pre-commit boundaries; preview and commit share one decision authority.
-- Draft War Room: deterministic stale-safe on-clock offers, bound to board/ownership fingerprints, each slot consumed once.
-- Player-directed veteran mentorship within existing development/OVR budget; deterministic CPU fallback.
+- Draft War Room: deterministic stale-safe on-clock offers bound to board/ownership fingerprints, each slot consumed once.
+- Player-directed mentorship within existing OVR budget; CPU fallback deterministic.
 - Season stewardship reports use canonical cap/draft/receipted-trade evidence.
-- Community telemetry: stops collection immediately, retries remote deletion from identifier-only tombstone; snapshot reads honor ETags, refresh floor, single-flight, bounded backoff.
-- Backend promotion tests runtime behavior; Node 24.14.0 parity; exact source revision from process health.
+- Community participation stops collection immediately, retries remote deletion from identifier-only tombstone; local decline never resumes collection.
+- Snapshot reads honor ETags, server refresh floor, single-flight, bounded backoff. Backend promotion tests runtime behavior at Node 24.14.0 with exact source revision from process health.
 
-Verification Evidence
-- Canonical Node 1,053/1,053 direct exit 0; Pages build; browser boot/reachability green.
-- Responsive evidence 194 captures; 56 reviewed dark/light desktop/mobile captures hash-bound in docs/visual-qa/LATEST.json.
-
-Now Bucket (top 3)
-- Finish exact-SHA stable staging, push unchanged SHA to main, verify CI/Pages/backend runtime attestation plus production provenance.
+Current Intent
 - Observe real consented player and Community Stats cohorts without manufacturing activity.
-- Hold launch readiness until all independent gates have evidence.
+- Launch remains HOLD; readiness independent of code promotion.
+
+Now (top 3)
+- Observe first real consented Community Stats cohort; confirm freshness/suppression.
+- Next session: run a fresh live-code audit, do not reuse this session's lens.
+- Preserve decision-authority, slot-consumption, and tombstone invariants under any change.
 
 Blockers (top 3)
-- launchReady: false preserved; code promotion does not clear launch gates.
-- Reply-capable on-domain email evidence outstanding.
-- SHA-bound public-launch approval and lifecycle reconciliation outstanding.
+- Reply-capable on-domain email evidence (football@playfranchisearchitect.com) not delivered.
+- SHA-bound founder/public-launch approval absent.
+- Authoritative lifecycle reconciliation plus current performance/edge evidence missing.
 
-Human-Blocked Items
-- Delivered/reply-capable football@playfranchisearchitect.com email evidence — pending since S78+.
-- SHA-bound founder launch approval — pending since S78+.
-- Authoritative lifecycle reconciliation — pending since S78+.
-- Current performance/edge (Obelisk) evidence — pending.
+Human-Blocked (age)
+- Delivered reply-capable email evidence: open since S75+ (≈6 sessions).
+- SHA-bound founder launch approval: open since S75+ (≈6 sessions).
+- Lifecycle reconciliation: open since S75+ (≈6 sessions).
+- Registry SPARKED / local FORGE reconciliation: sibling-owned via signed Studio Ark, non-blocking, ongoing.
 
-Decisions That Must Survive
-- Never add fabricated probabilities or predicted outcomes; preview/commit share one authority.
-- Accepted draft offers bound to fingerprints, consume each live slot once.
-- Mentorship changes attribution, not total OVR budget.
-- Remote deletion stays pending until acknowledged; local decline never resumes collection.
-- Launch readiness independent of code promotion.
+Proof State
+- Candidate SHA c822ae85f7287fec1538ea7125afad908c2b6d83; Node 1,053/1,053 exit 0; staging 14/14; artifact 94bebbd1...; rollback 7d81dbac; CI 31556893077, Pages 31556893104, backend 31557671113 green. Pages and Community API serve exact SHA. Not a public-launch flip.
 
 Key Files
 - src/engine/gmDecisionAuthority.js, onClockTradeMarket.js, veteranMentorship.js
 - src/stats/gmReportCard.js, public/lib/tabDraft.js, mentorshipPanel.js
 - public/lib/communityTelemetry.js, public/community-stats.js, src/community/server.js
-- scripts/responsive-evidence.mjs, write-visual-qa-receipt.mjs
 - docs/AUDIT_2026-08-11_SESSION81.json, docs/visual-qa/LATEST.json
 
-Next: Complete exact-SHA staging proof, push same SHA to main, verify production provenance — do not flip launchReady.
+Next Session
+- Run a fresh live-code /arc audit from live evidence; do not assume S81 lens is current.

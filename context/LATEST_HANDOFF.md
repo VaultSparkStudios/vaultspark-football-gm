@@ -5,7 +5,7 @@
 - The full S81 `/arc` audit and implementation scope is complete locally. GM choices now disclose exact pre-commit boundaries; the Draft War Room has deterministic stale-safe on-clock offers; mentorship is player-directed within the existing development budget; and season stewardship reports use canonical cap, draft and receipted trade evidence.
 - Community participation now stops collection immediately while truthfully retrying remote deletion from an identifier-only tombstone. Snapshot reads honor ETags, the server refresh floor, single-flight and bounded backoff. Backend promotion tests runtime behavior, uses Node 24.14.0 parity and requires exact source revision from process health.
 - Candidate proof is green: canonical Node `1,053/1,053` direct exit 0; Pages build; browser boot/reachability; responsive evidence `194` captures; and `56` reviewed dark/light desktop/mobile captures hash-bound in `docs/visual-qa/LATEST.json`.
-- Immutable candidate metadata is being finalized for stable staging proof before direct-main push. It does not authorize a public-launch flip. Preserve `launchReady: false` and the independent email/lifecycle/Web Vitals/launch-approval holds.
+- Immutable candidate `c822ae85f7287fec1538ea7125afad908c2b6d83` passed stable staging `14/14` with artifact `94bebbd12de9a9195227a6d001a2e8424777bbbe49ec49db20e5df03ac9b8e39` and rollback `7d81dbac-fa53-491b-9801-b162e3889542`. Direct main push, CI `31556893077`, Pages `31556893104`, brief-format `31556893056`, and guarded backend dispatch `31557671113` are green. Pages and Community API independently serve the exact SHA; this does not authorize a public-launch flip.
 
 ## Decisions That Must Survive
 
@@ -17,7 +17,6 @@
 
 ## Next Best Work
 
-- Finish exact-SHA stable staging, push that unchanged SHA to main, and verify CI/Pages/backend runtime attestation plus production provenance.
 - Observe real consented player and Community Stats cohorts without manufacturing activity.
 - Do not change launch readiness until reply-capable email, lifecycle, current performance/edge and SHA-bound public-launch evidence exists.
 
