@@ -23,12 +23,18 @@ test("journey checkpoints are allowlisted, relative, deduplicated, and local", (
   const storage = memoryStorage();
   startPlaytestJourney(storage, 10_000);
   recordPlaytestJourneyCheckpoint("weekly-plan-opened", { storage, now: 12_500 });
+  recordPlaytestJourneyCheckpoint("weekly-plan-revision-requested", { storage, now: 13_000 });
+  recordPlaytestJourneyCheckpoint("weekly-plan-reviewed", { storage, now: 14_000 });
+  recordPlaytestJourneyCheckpoint("weekly-plan-deferred", { storage, now: 14_500 });
   recordPlaytestJourneyCheckpoint("weekly-plan-opened", { storage, now: 19_000 });
   recordPlaytestJourneyCheckpoint("secret-token-read", { storage, now: 20_000 });
   const ledger = loadPlaytestJourney(storage);
   assert.deepEqual(ledger.events, [
     { name: "session-start", atMs: 0 },
-    { name: "weekly-plan-opened", atMs: 2500 }
+    { name: "weekly-plan-opened", atMs: 2500 },
+    { name: "weekly-plan-revision-requested", atMs: 3000 },
+    { name: "weekly-plan-reviewed", atMs: 4000 },
+    { name: "weekly-plan-deferred", atMs: 4500 }
   ]);
   assert.ok(storage.raw.has(PLAYTEST_JOURNEY_STORAGE_KEY));
 });
@@ -53,10 +59,37 @@ test("explicit receipt pack joins safe journey summary without absolute or save 
   const pack = buildLocalPlaytestExport([receipt], journey);
   assert.equal(pack.journey.eventCount, 2);
   assert.equal(pack.journey.durationMs, 6000);
+  assert.equal(pack.journey.schemaVersion, "1.1");
+  assert.equal(pack.journey.planningFriction.status, "committed");
+  assert.equal(pack.journey.planningFriction.elapsedToCommitMs, null);
+  assert.equal(pack.journey.planningFriction.evidenceBoundary.includes("does not prove cohort"), true);
   assert.equal("startedAt" in pack.journey, false);
   assert.equal(pack.journey.privacy.savePayloadIncluded, false);
   assert.equal(JSON.stringify(pack).includes("50_000"), false);
   assert.match(pack.privacy, /no account identifier or save payload/);
   assert.match(pack.privacy, /no token or absolute journey timestamp/);
+  assert.match(pack.privacy, /cannot support cohort/);
   assert.deepEqual(buildPlaytestJourneySummary(journey).events.at(-1), { name: "weekly-plan-committed", atMs: 6000 });
+});
+
+test("planning-friction summary distinguishes reviewed revision, defer, and debrief boundaries", () => {
+  const summary = buildPlaytestJourneySummary({ startedAt: 1000, events: [
+    { name: "session-start", atMs: 0 },
+    { name: "weekly-plan-opened", atMs: 100 },
+    { name: "weekly-plan-revision-requested", atMs: 300 },
+    { name: "weekly-plan-reviewed", atMs: 550 },
+    { name: "weekly-plan-committed", atMs: 700 },
+    { name: "weekly-debrief-ready", atMs: 1500 }
+  ] });
+  assert.deepEqual(summary.planningFriction, {
+    status: "debrief-ready",
+    reviewed: true,
+    revisionRequested: true,
+    deferred: false,
+    elapsedToReviewMs: 450,
+    elapsedToCommitMs: 600,
+    elapsedToDebriefMs: 1400,
+    evidenceBoundary: "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
+  });
+  assert.equal(summary.privacy.cohortClaimPermitted, false);
 });

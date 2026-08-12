@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { buildProgressiveWeekRoom } from "../public/lib/franchiseArchitecture.js";
+import { buildProgressiveWeekRoom, buildThreeHorizonBlueprint } from "../public/lib/franchiseArchitecture.js";
 
 test("Week Room makes Now primary and preserves compact Season and Legacy horizons", () => {
   const horizons = [
@@ -13,6 +13,27 @@ test("Week Room makes Now primary and preserves compact Season and Legacy horizo
   assert.equal(room.primary.id, "now");
   assert.deepEqual(room.horizonChips.map((lane) => lane.id), ["season", "legacy"]);
   assert.equal(room.review.ledger.length, 1);
+});
+
+test("player-authored mastery becomes one subordinate Architect Objective with honest trophy support", () => {
+  const lanes = buildThreeHorizonBlueprint({
+    dashboard: { phase: "regular-season", currentWeek: 8 },
+    mastery: { focus: { pathId: "stewardship", label: "Franchise Stewardship", source: "player-authored", reason: "You selected this path.", nextMilestone: "Raise cap discipline at season close." } },
+    trophyRoad: { objectives: [{ kind: "measurable", name: "Playoff Bound", progressText: "5/9 wins" }] }
+  });
+  const objective = lanes.find((lane) => lane.id === "legacy");
+  assert.equal(objective.label, "Architect Objective");
+  assert.equal(objective.title, "Franchise Stewardship");
+  assert.match(objective.authority, /player-authored/);
+  assert.match(objective.milestone, /Raise cap discipline.*Playoff Bound.*5\/9 wins/);
+  assert.match(objective.evidenceBoundary, /no hidden bonus/i);
+  assert.equal(objective.targetId, "franchiseArchitecture");
+});
+
+test("Architect Objective falls back to existing legacy authority when mastery is unavailable", () => {
+  const objective = buildThreeHorizonBlueprint({ gmLegacy: { score: 20, grade: "D", persona: { current: { name: "Builder", description: "A start" }, next: { name: "Planner", gapToNext: 5 } } } })[2];
+  assert.equal(objective.label, "Legacy");
+  assert.match(objective.milestone, /5 points remain/);
 });
 
 test("Week Room has an honest empty review and one native accessible disclosure", () => {

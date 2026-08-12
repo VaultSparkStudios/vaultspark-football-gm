@@ -17,8 +17,10 @@ const surfaceLabels = new Map([
   ["co-gm-brief", "Privacy-bounded Co-GM Brief"],
   ["prediction-receipt", "Prediction winner and margin receipt"],
   ["agent-negotiation", "Canonical contract-year agent negotiation"],
+  ["draft-trade-review", "Irreversible live-pick trade confirmation"],
   ["hof-ceremony", "Hall of Fame induction ceremony"],
   ["architect-signature", "Architecture Review strongest mastery signature"],
+  ["architect-objective", "Player-authored Architect Objective hierarchy"],
   ["exact-command-center", "Ranked General Manager command strip"],
   ["exact-command-target", "Exact command destination and keyboard focus target"]
 ]);
@@ -46,6 +48,8 @@ const evidenceDir = evidenceDirs[0].dir;
 const reportBuffer = await fs.readFile(path.join(evidenceDir, "responsive-evidence.json"));
 const report = JSON.parse(reportBuffer);
 if (report.status !== "passed") throw new Error("Latest responsive evidence did not pass");
+if (!/^[a-f0-9]{40}$/i.test(report.sourceRevision || "")) throw new Error("Responsive evidence is not bound to an immutable source revision");
+if (!/^[a-f0-9]{64}$/i.test(report.artifactFingerprint?.digest || "")) throw new Error("Responsive evidence is not bound to an immutable artifact fingerprint");
 const projectStatus = JSON.parse(await fs.readFile(path.join(root, "context", "PROJECT_STATUS.json"), "utf8"));
 const receiptSession = Math.max(1, Number(projectStatus.currentSession || 0) + 1);
 
@@ -73,6 +77,7 @@ const receipt = {
   schemaVersion: 1,
   capturedAt: report.generatedAt,
   sourceRevision: report.sourceRevision,
+  artifactFingerprint: report.artifactFingerprint,
   artifact: `${report.artifact} responsive-evidence:${sha256(reportBuffer)}`,
   themes: ["dark", "light"],
   captures,

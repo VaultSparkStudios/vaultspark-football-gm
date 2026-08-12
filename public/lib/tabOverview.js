@@ -1,5 +1,5 @@
 import { state, api, STATS_BENCHMARK_HINTS } from "./appState.js";
-import { recordAchievementEvent } from "./achievements.js";
+import { deriveTrophyRoad, readEarnedAchievements, recordAchievementEvent } from "./achievements.js";
 import { playSound } from "./audioFeedback.js";
 import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderGuideContent, renderTable, setBoxScoreTab, setMetricCardValue, showToast, teamCode, teamName } from "./appCore.js";
 import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
@@ -142,15 +142,22 @@ export function renderFranchiseArchitecture() {
     pendingChoice: state.mobilePendingDecisionChoice || null
   });
   const rawLedger = state.dashboard?.architectLedger || [];
+  const mastery = state.gmLegacy?.mastery || state.dashboard?.gmLegacy?.mastery || null;
+  const trophyRoad = deriveTrophyRoad({
+    dashboard: state.dashboard || {},
+    recentBoxScores: state.recentBoxScores || [],
+    earned: readEarnedAchievements()
+  }, 3);
   const horizons = buildThreeHorizonBlueprint({
     dashboard: state.dashboard || {},
     commands,
     gmLegacy: state.gmLegacy || state.dashboard?.gmLegacy || null,
     architectLedger: rawLedger,
+    mastery,
+    trophyRoad,
   });
   const ledger = architectLedgerRows(rawLedger);
   const signal = buildArchitectureSignal(rawLedger);
-  const mastery = state.gmLegacy?.mastery || state.dashboard?.gmLegacy?.mastery || null;
   const thesis = state.dashboard?.architectThesis || {};
   const room = buildProgressiveWeekRoom({ horizons, signal, ledger, mastery });
   const primary = room.primary;
@@ -170,6 +177,7 @@ export function renderFranchiseArchitecture() {
           <span class="franchise-horizon-label">${escapeHtml(lane.label)}</span>
           <strong>${escapeHtml(lane.title)}</strong>
           <small>${escapeHtml(lane.milestone)}</small>
+          ${lane.evidenceBoundary ? `<em>${escapeHtml(lane.evidenceBoundary)}</em>` : ""}
         </button>
       `).join("")}
     </div>

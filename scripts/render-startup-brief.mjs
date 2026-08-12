@@ -38,6 +38,7 @@ import {
   lifecycleAuthorityFingerprint,
   readCommittedGeniusAuthority
 } from './lib/startup-authority.mjs';
+import { resolveSessionAuthority } from './lib/session-authority.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
@@ -504,10 +505,11 @@ function taskLabel(item, maxLen = 54) {
 
 // ── Derived values ─────────────────────────────────────────────────────────────
 const today          = new Date().toISOString().slice(0, 10);
-// Next session = (latest session in the SIL log) + 1. The SIL log is the source
-// of truth; PROJECT_STATUS.currentSession is only a fallback when the log can't
-// be parsed (it has lagged real state before — see S142 audit item 1).
-const currentSession = (silMaxSession ?? status.currentSession ?? 62) + 1;
+// A scored SIL closeout can legitimately lag later verification/deployment
+// receipts. Resolve the next identity from the monotonic maximum of every
+// committed authority; generation may repair upward but never move backward.
+const sessionAuthority = resolveSessionAuthority({ sil, status, handoff, fallbackCompletedSession: 62 });
+const currentSession = sessionAuthority.nextSession ?? 63;
 const ctxUpdated     = csmd.match(/^Last updated:\s*(\d{4}-\d{2}-\d{2})/m)?.[1] ?? status.lastUpdated ?? null;
 const ctxAge         = ctxUpdated ? daysBetween(ctxUpdated, today) : '?';
 const scopeCap       = velocity > 0 ? Math.floor(velocity * 1.5) : null;
@@ -1124,19 +1126,29 @@ if (silMaxSession == null) {
 } else if (!silTotal) {
   briefCoherent = false;
   staleReason = `SIL session S${silMaxSession} has no parseable Total — headline score is untrustworthy.`;
-} else if (statusLatest != null && statusLatest !== silMaxSession && writesCanonicalBrief) {
-  // PROJECT_STATUS.json lagged the SIL log (the historical failure mode). Self-heal it
-  // only for the canonical render. Contract/test renders are deliberately no-write.
+} else if (sessionAuthority.repairStatusSession != null && writesCanonicalBrief) {
+  // Repair only upward. A later status/handoff receipt remains committed
+  // authority even if SIL scoring has not caught up yet.
   try {
     // Sync ONLY the session number. silScore/silCategoriesV3 are owned by the
     // closeout SIL scorer — writing silScore here would desync it from the
     // category breakdown (tier1-sil-migration invariant: score == sum(categories)).
-    updateProjectStatus(root, (live) => ({ ...live, currentSession: silMaxSession }));
-    console.log(`  ↻ self-heal: PROJECT_STATUS.currentSession ${statusLatest} → ${silMaxSession} (synced from SIL log)`);
+    updateProjectStatus(root, (live) => ({ ...live, currentSession: sessionAuthority.repairStatusSession }));
+    console.log(`  ↻ self-heal: PROJECT_STATUS.currentSession ${statusLatest ?? '?'} → ${sessionAuthority.repairStatusSession} (monotonic committed authority)`);
   } catch (e) {
     console.warn(`  ⚠ could not self-heal PROJECT_STATUS.json: ${e.message}`);
   }
 }
+if (sessionAuthority.divergence) {
+  console.warn(`  ⚠ session authority divergence: ${sessionAuthority.detail}; using monotonic S${sessionAuthority.committedSession}`);
+}
+const sessionAuthorityBanner = sessionAuthority.divergence ? [
+  top('SESSION AUTHORITY'),
+  row(`✓ Monotonic next session: S${currentSession}; no source moved backward.`),
+  row(sessionAuthority.detail.slice(0, W)),
+  row('SIL may lag a verified receipt; closeout will reconcile score.'),
+  bot(),
+].join('\n') : null;
 const staleBanner = briefCoherent ? null : [
   top('⛔ STALE BRIEF — DO NOT TRUST'),
   row(staleReason.slice(0, W)),
@@ -1154,6 +1166,7 @@ const lines = [
   `<!-- brief-coherent: ${briefCoherent} -->`,
   `<!-- lifecycle-authority-fingerprint: ${lifecycleFingerprint} -->`,
   `<!-- genius-authority-fingerprint: ${geniusFingerprint} -->`,
+  `<!-- session-authority: ${sessionAuthority.detail}; divergent=${sessionAuthority.divergence} -->`,
   ``,
   `# Startup Brief — ${status.name || 'Studio Ops'}`,
   ``,
@@ -1164,6 +1177,7 @@ const lines = [
   ``,
   `\`\`\``,
   ...(staleBanner ? [staleBanner, ``] : []),
+  ...(sessionAuthorityBanner ? [sessionAuthorityBanner, ``] : []),
   renderTitleHeader({
     name: status.name || 'Studio Ops',
     type: status.type || projectIdentity.type,

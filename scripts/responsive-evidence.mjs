@@ -45,6 +45,13 @@ async function exists(target) {
   try { await fs.access(target); return true; } catch { return false; }
 }
 
+async function sourceIdentity() {
+  const manifest = JSON.parse(await fs.readFile(path.join(staticDir, "deploy-manifest.json"), "utf8"));
+  if (!/^[a-f0-9]{40}$/i.test(manifest.sourceRevision || "")) throw new Error("Static manifest lacks an immutable source revision.");
+  if (!/^[a-f0-9]{64}$/i.test(manifest.artifactFingerprint?.digest || "")) throw new Error("Static manifest lacks an immutable artifact fingerprint.");
+  return { sourceRevision: manifest.sourceRevision, artifactFingerprint: manifest.artifactFingerprint };
+}
+
 async function sourceRevision() {
   if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA.slice(0, 12);
   try {
@@ -189,7 +196,8 @@ async function captureElement(page, outputDir, name, selector, records) {
 }
 
 async function main() {
-  const revision = await sourceRevision();
+  const identity = await sourceIdentity();
+  const revision = identity.sourceRevision;
   const outputDir = path.join(outputRoot, `responsive-${revision.replace(/[^a-z0-9._-]/gi, "-")}`);
   await fs.rm(outputDir, { recursive: true, force: true });
   await fs.mkdir(outputDir, { recursive: true });
@@ -226,9 +234,49 @@ async function main() {
       const skip = page.locator("#tutSkipBtn");
       if (await skip.isVisible().catch(() => false)) await skip.click();
 
+      await page.evaluate(async () => {
+        const [{ state }, overview] = await Promise.all([
+          import("./lib/appState.js"),
+          import("./lib/tabOverview.js")
+        ]);
+        state.dashboard.gmLegacy = {
+          ...(state.dashboard.gmLegacy || {}),
+          mastery: {
+            focus: {
+              pathId: "stewardship",
+              label: "Franchise Stewardship",
+              source: "player-authored",
+              reason: "You selected this path from the canonical mastery portfolio.",
+              nextMilestone: "Raise cap discipline at season close."
+            }
+          }
+        };
+        overview.renderOverview();
+      });
+
       if (viewport.name === "mobile") {
+        await page.evaluate(async () => {
+          const [{ state }, mobile] = await Promise.all([
+            import("./lib/appState.js"),
+            import("./lib/mobileLoop.js")
+          ]);
+          state.dashboard.gmLegacy = {
+            ...(state.dashboard.gmLegacy || {}),
+            mastery: {
+              focus: {
+                pathId: "stewardship",
+                label: "Franchise Stewardship",
+                source: "player-authored",
+                reason: "You selected this path from the canonical mastery portfolio.",
+                nextMilestone: "Raise cap discipline at season close."
+              }
+            }
+          };
+          mobile.renderMobileOverlay(state, () => {});
+        });
         for (const theme of evidenceThemes) {
           await setTheme(page, theme);
+          await captureElement(page, outputDir, viewport.name + "-architect-objective-" + theme, ".ml-architect-objective", records);
           await capture(page, outputDir, `${viewport.name}-game-loop-${theme}`, ["#mlAdvanceWeekBtn", "#mlFullViewBtn", ".ml-pressure-card"], records);
         }
         await page.locator("#mlFullViewBtn").click();
@@ -275,18 +323,41 @@ async function main() {
                 available: [{ id: "visual-edge", name: "Malik North", position: "EDGE", age: 21, heightInches: 76, weightLbs: 251, overall: 77, potential: 92, scouting: { rank: 8, projectedRound: 1 } }],
                 onClockTradeMarket: {
                   active: true,
-                  offers: [{ id: "visual-offer", fingerprint: "visual-boundary", teamName: "Seattle Orcas", targetPosition: "EDGE", rationale: "Seattle will move up for its top pressure defender.", incomingPicks: [{ year: 2028, round: 1 }, { year: 2029, round: 3 }], incomingValue: 970, livePick: { value: 900 }, valueDelta: 70, counterAvailable: true }]
+                offers: [{ id: "visual-offer", fingerprint: "visual-boundary", teamName: "Seattle Orcas", targetPosition: "EDGE", rationale: "Seattle will move up for its top pressure defender.", incomingPicks: [{ year: 2028, round: 1 }, { year: 2029, round: 3 }], incomingValue: 970, livePick: { year: 2028, round: 1, value: 900 }, valueDelta: 70, counterAvailable: true }]
                 }
               };
               draftUi.renderDraft();
             });
             await page.waitForSelector(".on-clock-offer-card", { state: "visible" });
+            await page.evaluate(async () => {
+              const [{ state }, panel, modalManager] = await Promise.all([
+                import("./lib/appState.js"),
+                import("./lib/onClockTradeMarketPanel.js"),
+                import("./lib/modalManager.js")
+              ]);
+              const market = state.draftState.onClockTradeMarket;
+              const review = panel.buildOnClockTradeReview({ action: "accept", offer: market.offers[0], marketFingerprint: market.offers[0].fingerprint });
+              document.getElementById("onClockTradeReviewContent").innerHTML = panel.renderOnClockTradeReview(review);
+              const modal = document.getElementById("onClockTradeReviewModal");
+              modal.classList.remove("hidden");
+              modalManager.openModal(modal);
+            });
+            await captureElement(page, outputDir, viewport.name + "-draft-trade-review-" + theme, "#onClockTradeReviewModal .modal-card", records);
+            await page.evaluate(async () => {
+              const modalManager = await import("./lib/modalManager.js");
+              const modal = document.getElementById("onClockTradeReviewModal");
+              modal.classList.add("hidden");
+              modalManager.closeModal(modal, { restoreFocus: false });
+            });
             await captureElement(page, outputDir, `${viewport.name}-draft-market-${theme}`, ".on-clock-market", records);
           }
           const selectors = tabId === "overviewTab"
             ? ["#advanceWeekBtn", "#advance4WeeksBtn", "#advanceSeasonBtn", "#themeToggleBtn", "#gmPersonaTier"]
             : ["#themeToggleBtn"];
           await capture(page, outputDir, `${viewport.name}-game-${label}-${theme}`, selectors, records);
+          if (tabId === "overviewTab" && viewport.name !== "mobile") {
+            await captureElement(page, outputDir, viewport.name + "-architect-objective-" + theme, "[data-blueprint-target-id='franchiseArchitecture']", records);
+          }
           if (tabId === "overviewTab") {
             await page.evaluate(async () => {
               const [{ state }, predictions, panel] = await Promise.all([
@@ -579,6 +650,8 @@ async function main() {
   }
 
   const requiredCaptureNames = viewports.flatMap((viewport) => [
+    ...evidenceThemes.map((theme) => viewport.name + "-draft-trade-review-" + theme),
+    ...evidenceThemes.map((theme) => viewport.name + "-architect-objective-" + theme),
     ...evidenceThemes.map((theme) => `${viewport.name}-setup-${theme}`),
     ...(viewport.name === "mobile" ? evidenceThemes.map((theme) => `${viewport.name}-game-loop-${theme}`) : []),
     ...evidenceThemes.map((theme) => `${viewport.name}-return-digest-${theme}`),
@@ -617,6 +690,7 @@ async function main() {
     schemaVersion: "1.0",
     sourceRevision: revision,
     artifact: "static",
+    artifactFingerprint: identity.artifactFingerprint,
     generatedAt: new Date().toISOString(),
     viewports,
     coverage: {

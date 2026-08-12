@@ -15,6 +15,7 @@
     "smoke:pages": "node scripts/smoke-pages.mjs",
     "evidence:responsive": "node scripts/responsive-evidence.mjs",
     "evidence:staging": "node scripts/verify-staging-receipt.mjs",
+    "evidence:performance": "node scripts/measure-hosted-performance.mjs",
     "sim:100": "node src/index.js --years 100 --seed 2026 --export",
     "build:realism-profile": "node src/data/scripts/buildRealismProfile.js",
     "build:official-nfl-baseline": "node src/data/scripts/buildOfficialNfl2025Baseline.js",

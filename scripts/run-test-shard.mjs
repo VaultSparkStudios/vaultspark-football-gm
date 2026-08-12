@@ -177,12 +177,14 @@ export const SHARDS = {
     "test/context-meter-authority.test.js",
     "test/edge-security-policy.test.js",
     "test/edge-style-hash.test.js",
+    "test/hosted-performance.test.js",
     "test/edge-policy-application.test.js",
     "test/launch-evidence-report.test.js",
     "test/lifecycle-coherence.test.js",
     "test/public-compliance.test.js",
     "test/project-authority-contract.test.js",
     "test/release-provenance.test.js",
+    "test/release-authority.test.js",
     "test/release-truth.test.js",
     "test/secrets-gateway-authority.test.js",
     "test/session52-innovations.test.js",
@@ -201,6 +203,7 @@ export const SHARDS = {
     "test/startup-authority-contract.test.js",
     "test/startup-brief-last-session.test.js",
     "test/session-intent-classifier.test.js",
+    "test/session-authority.test.js",
     "test/task-board-parser-authority.test.js"
   ]
 };

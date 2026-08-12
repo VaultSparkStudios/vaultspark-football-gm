@@ -26,3 +26,44 @@ export function renderOnClockTradeMarket(market) {
         </article>`).join("")}</div>` : `<div class="narrative-empty">No rival has enough eligible future capital for this live slot.</div>`}
     </section>`;
 }
+
+export function buildOnClockTradeReview({ action, offer, marketFingerprint } = {}) {
+  const normalizedAction = String(action || "").toLowerCase();
+  if (!["accept", "counter"].includes(normalizedAction) || !offer?.id || !marketFingerprint) return null;
+  const incomingPicks = (offer.incomingPicks || []).map((pick) => ({
+    id: pick.id || null,
+    label: `${pick.year} Round ${pick.round}`
+  }));
+  return Object.freeze({
+    schemaVersion: "1.0",
+    action: normalizedAction,
+    offerId: offer.id,
+    fingerprint: marketFingerprint,
+    rival: offer.teamName || offer.teamId || "Rival franchise",
+    targetPosition: offer.targetPosition || "best available player",
+    outgoing: offer.livePick ? `${offer.livePick.year} Round ${offer.livePick.round}` : "the live selection",
+    incomingPicks,
+    incomingValue: Number(offer.incomingValue || 0),
+    outgoingValue: Number(offer.livePick?.value || 0),
+    valueDelta: Number(offer.valueDelta || 0),
+    counterAddsPick: normalizedAction === "counter",
+    boundary: normalizedAction === "counter"
+      ? "Confirm sends one bounded counter. If the rival accepts, pick ownership transfers and the rival immediately consumes the live slot; if declined, no asset moves."
+      : "Confirm transfers pick ownership and the rival immediately consumes the live slot. This cannot be undone from the Draft War Room.",
+    evidenceBoundary: "Disclosed values explain the offer; they are not acceptance odds, urgency, or a forecast. The board fingerprint must still match at commit."
+  });
+}
+
+export function renderOnClockTradeReview(review) {
+  if (!review) return "";
+  return `
+    <div class="brand-kicker">Irreversible draft authority</div>
+    <h3 id="onClockTradeReviewTitle">Review ${escapeHtml(review.action === "counter" ? "counter" : "trade")} before commitment</h3>
+    <div class="on-clock-trade-review-grid">
+      <section><span>You send</span><strong>${escapeHtml(review.outgoing)}</strong><small>Live selection · disclosed value ${escapeHtml(review.outgoingValue)}</small></section>
+      <section><span>${escapeHtml(review.rival)} sends</span><strong>${review.incomingPicks.map((pick) => escapeHtml(pick.label)).join(" + ")}</strong><small>Disclosed value ${escapeHtml(review.incomingValue)} · delta ${review.valueDelta >= 0 ? "+" : ""}${escapeHtml(review.valueDelta)}</small></section>
+      <section><span>Rival target</span><strong>${escapeHtml(review.targetPosition)}</strong><small>Source-derived roster need; no acceptance probability is claimed.</small></section>
+    </div>
+    <p id="onClockTradeReviewBoundary" class="on-clock-trade-boundary"><strong>Commit boundary:</strong> ${escapeHtml(review.boundary)}</p>
+    <p class="small">${escapeHtml(review.evidenceBoundary)}</p>`;
+}

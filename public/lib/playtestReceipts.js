@@ -88,6 +88,6 @@ export function buildLocalPlaytestExport(receipts = [], journey = loadPlaytestJo
     count: valid.length,
     receipts: valid,
     journey: buildPlaytestJourneySummary(journey),
-    privacy: "Explicit local receipts and relative journey checkpoints only; no account identifier or save payload is included; no token or absolute journey timestamp is included."
+    privacy: "Explicit local receipts and relative journey checkpoints only; no account identifier or save payload is included; no token or absolute journey timestamp is included. Local instrumentation is self-selected and cannot support cohort, retention, comprehension, or causal claims."
   };
 }

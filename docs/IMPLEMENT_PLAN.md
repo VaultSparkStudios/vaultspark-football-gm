@@ -1,26 +1,14 @@
-# Session 81 Implementation Plan
+# Implementation Plan — Session 82
 
-<!-- Session 81 · source: docs/AUDIT_2026-08-11_SESSION81.json -->
+Source: `docs/AUDIT_2026-08-12_SESSION82.json` (sole audit truth).
 
-## Wave 2 — Decision foundations and draft-night agency
+## Efficiency order
 
-1. `gm-choice-boundary-dossier` — establish the shared pre-commit preview contract first.
-2. `decision-modal-interaction-contract` — make the shared decision/modal browser path keyboard-safe and contain shortcuts.
-3. `on-clock-trade-market` — build on the verified decision and focus contracts for the largest new player-facing feature.
+1. `monotonic-session-authority` — establish the session/write-back authority before more generated surfaces change.
+2. `planning-friction-journey-authority` — complete the existing checkpoint pipeline with no UI dependency.
+3. `architect-objective-hierarchy` — reuse mastery/season/trophy authorities in the existing Overview architecture surface.
+4. `irreversible-draft-trade-confirmation` — add the shared accessible pre-commit boundary and focused browser contract.
+5. `hosted-performance-evidence` — build the exact-revision probe and receipt contract after the UI candidate exists.
+6. `release-receipt-authority` — reconcile staging, production, visuals, performance, and status only after every candidate receipt exists.
 
-## Wave 3 — Progression truth
-
-4. `mentorship-covenants` — add controlled-team progression agency with deterministic CPU fallback.
-5. `gm-stewardship-report-authority` — repair career inputs, persist the season report, and expose its payoff.
-
-## Wave 4 — Privacy and release authority
-
-6. `community-participation-truth` — stop collection immediately, retry deletion truthfully, and coordinate snapshots.
-7. `backend-runtime-attestation` — make deployment test and prove the actual runtime revision.
-
-## Wave 5 — Saturation and verification
-
-- Repair viable second-order candidates: structured last-session-summary drift, Sim-Watch linear live log/reduced motion, and theme customizer contract coverage.
-- Run focused suites after each item, then the direct canonical aggregate, Playwright, responsive/rendered-pixel, security, doctor and release gates.
-
-No item is complete until its claimed behavior has a focused executable receipt and any touched browser state has inspected dark/light desktop/mobile pixels.
+L2 is the default rung for all six items. Every gameplay change must be browser-visible and focused-test covered. No item may be marked implemented until its stated verification evidence exists; public launch remains out of scope and `launchReady` stays false.

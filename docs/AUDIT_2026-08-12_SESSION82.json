@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-12",
+  "session": 82,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "open",
+  "summary": {
+    "combinedPriority": 137.8,
+    "source": "Fresh Session 82 live-code audit with product, game-loop, browser UX, public-app release, rendered-pixel, privacy, observability-honesty, and Studio protocol lenses. Every selected premise was checked against current source, tests, live doctor output, current hosted provenance, and the read-only specialty reviews.",
+    "qualityBar": "L2 by default: one canonical authority, player-visible payoff for gameplay changes, focused behavioral tests, exact dark/light desktop/mobile rendered proof for touched UI, current Web Vitals evidence, exact-candidate staging before direct-main publication, and launchReady preserved false."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay: vivid General Manager agency, explicit irreversible boundaries, progression hierarchy, browser-visible feedback, accessibility, privacy, static/local-first behavior, and public-app release gates",
+    "staging": "stable Cloudflare Pages must prove the exact immutable candidate before direct-to-main publication; backend deployment is required only when backend source changes",
+    "source": "arc-profile registry authority, Session 82 startup brief, 29,981-token code sample, exact grep/read preverification, game-loop review, app-release gate matrix, browser boot/reachability probes, canon conformance, and doctor"
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 9,
+    "sessionEngagement": 8,
+    "retention": 7,
+    "soulFidelity": 8,
+    "overall": 8.2,
+    "evidence": "Code-contract review only. No consented cohort or docs/PLAYTESTS evidence exists, and public SOUL intentionally withholds private criteria, so these scores do not claim measured fun, retention, or complete private-soul conformance."
+  },
+  "releaseGate": {
+    "deploymentVerdict": "REVERIFY AFTER IMPLEMENTATION — current staging and production are exact at d0d2b617/ad62bc26, but Session 82 deployable work must earn a new exact-revision receipt.",
+    "launchVerdict": "NO-GO — deployment authorization does not permit a public launch flip.",
+    "launchHolds": [
+      "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
+      "authoritative registry/local lifecycle reconciliation",
+      "SHA-bound public-launch approval distinct from deploy authorization",
+      "current exact-revision Core Web Vitals, edge, and rendered-theme evidence"
+    ]
+  },
+  "axisCoverage": {
+    "featuresDepth": ["architect-objective-hierarchy", "irreversible-draft-trade-confirmation"],
+    "newInnovativeFeatures": ["architect-objective-hierarchy"],
+    "uiUx": ["irreversible-draft-trade-confirmation", "architect-objective-hierarchy"],
+    "feedbackLoop": ["planning-friction-journey-authority", "hosted-performance-evidence"],
+    "gamificationEngagementImmersion": ["architect-objective-hierarchy", "planning-friction-journey-authority"],
+    "aiIntegration": [],
+    "securityPrivacy": ["monotonic-session-authority", "release-receipt-authority"],
+    "speedOrganizationEfficiency": ["hosted-performance-evidence", "release-receipt-authority"],
+    "releaseTruth": ["monotonic-session-authority", "hosted-performance-evidence", "release-receipt-authority"],
+    "tokenApiReduction": ["hosted-performance-evidence"]
+  },
+  "recommendedMoves": [
+    "Make every authority boundary honest before adding breadth: session identity cannot reverse, and irreversible draft-pick trades require an explicit review boundary.",
+    "Close the evidence gap around the weekly loop by retaining review, revision, defer, commit, and debrief checkpoints without publishing local instrumentation as cohort proof.",
+    "Unify the player's progression hierarchy and release truth: one Architect Objective should connect the current mastery focus to an exact destination, while hosted performance and structured release receipts remain exact-revision authorities."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Create synthetic playtest or Community Stats activity",
+      "reason": "Rejected by GAME_LOOP and observability honesty. Real consented cohort evidence does not exist and this session will not manufacture it."
+    },
+    {
+      "candidate": "Build another progression or achievement system",
+      "reason": "False premise. Immediate commands, season chapters, mastery paths, and Trophy Road already exist; the verified gap is their hierarchy, not missing breadth."
+    },
+    {
+      "candidate": "Add project-local authentication",
+      "reason": "Rejected. The current product is anonymous Phase 0; local auth would violate the Obelisk identity boundary rather than close a product gap."
+    },
+    {
+      "candidate": "Claim launch readiness from green CI or deployment parity",
+      "reason": "Rejected. Email, lifecycle, founder approval, exact hosted performance, and exact visual authority are independent gates."
+    },
+    {
+      "candidate": "Add hosted AI commentary or a metered recommendation service",
+      "reason": "Rejected by the static/local-first and free-tier cost bars. Existing deterministic authorities can close every verified gap without variable spend."
+    },
+    {
+      "candidate": "Implement General Manager firing or game over",
+      "reason": "Founder-direction-gated in the durable decision record; this audit cannot invent terminal product canon."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Observability honesty / session protocol / security",
+      "effortHours": 2,
+      "impact": 9,
+      "innovation": 5,
+      "priority": 22.5,
+      "slug": "monotonic-session-authority",
+      "title": "Prevent startup generation from moving session authority backward",
+      "status": "open",
+      "premise": "Session 81 is bound in PROJECT_STATUS and the latest handoff/receipts, but SIL closes only through Session 80. The startup renderer treats SIL as exclusive authority, computed S81 as next, and wrote PROJECT_STATUS.currentSession from 81 back to 80. This violates arc's monotonic-forward identity contract and can misfile every S82 write-back surface.",
+      "evidence": [
+        "scripts/render-startup-brief.mjs currentSession and canonical self-heal logic",
+        "context/PROJECT_STATUS.json currentSession 81 before startup",
+        "context/LATEST_HANDOFF.md Session 81 closeout",
+        "git commits 5d5ff36/c822ae8/d0d2b61 carrying Session 81"
+      ],
+      "constraint": "Session identity may advance from any committed authority but never reverse; noncanonical test renders remain write-free; divergent authorities must render an explicit diagnostic rather than silently normalize downward.",
+      "verification": [
+        "focused renderer authority tests cover status ahead, SIL ahead, equal, and unparseable cases",
+        "canonical render never decreases PROJECT_STATUS.currentSession",
+        "S82 startup brief and last-session summary bind to S81"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Clamp current and next session identity to the maximum parseable committed SIL/status/handoff authority and remove downward self-heal." },
+        "L2": { "effortHours": 2, "recipe": "Extract a pure monotonic session-authority resolver, parse structured handoff/status evidence, allow only upward canonical repair, emit explicit divergence diagnostics, and regression-test every authority ordering." },
+        "L3": { "effortHours": 4, "recipe": "L2 plus derive authority from git-bound closeout fingerprints and produce a machine-readable reconciliation receipt consumed by start and closeout." }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Game-loop safety / irreversible agency / UI UX",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 27.1,
+      "slug": "irreversible-draft-trade-confirmation",
+      "title": "Give live-pick trades an explicit review-and-commit boundary",
+      "status": "open",
+      "premise": "The live on-clock market discloses assets and values, but Accept and Counter immediately invoke the irreversible ownership transfer. A single pointer event can trade the controlled live selection and cause the rival to consume the slot, while ordinary drafting already uses a deliberate reveal boundary.",
+      "evidence": [
+        "public/lib/onClockTradeMarketPanel.js immediate Accept/Counter controls",
+        "public/app.js draftWarRoomPanel handler posts on first click",
+        "src/runtime/GameSession.js resolveOnClockTrade commits assets and consumes the slot",
+        "test/on-clock-trade-market.test.js mutation and stale-fingerprint coverage"
+      ],
+      "constraint": "Review must show exact outgoing/incoming picks, disclosed values, rival target, action type, irreversibility, and stale fingerprint; Decline remains one-step and non-mutating; confirmation may never invent acceptance odds or urgency.",
+      "verification": [
+        "first Accept/Counter interaction performs no API mutation and opens an accessible review dialog",
+        "Confirm posts the exact fingerprint once; Cancel returns focus and leaves state untouched",
+        "stale, counter-declined, success, keyboard, desktop/mobile dark/light states are covered"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1.5, "recipe": "Use a native confirmation step that names the exact offer before Accept or Counter posts." },
+        "L2": { "effortHours": 3, "recipe": "Build one accessible shared live-pick trade review dialog with exact asset/value/fingerprint disclosure, explicit irreversible language, cancel/focus restoration, and a single guarded confirm seam for Accept and Counter." },
+        "L3": { "effortHours": 6, "recipe": "L2 plus persist a pre-commit review receipt and join the accepted transaction to the Draft Anthology without creating a second trade ledger." }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Feedback loop / playtest truth / retention evidence",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 24.0,
+      "slug": "planning-friction-journey-authority",
+      "title": "Retain the weekly-plan review, revision, and defer evidence the composer already emits",
+      "status": "open",
+      "premise": "weeklyPlanComposer emits weekly-plan-reviewed, weekly-plan-revision-requested, and weekly-plan-deferred, but playtestJourney silently rejects all three because its allowlist omits them. Local exports therefore cannot diagnose whether Architect review sharpened a plan, caused a revision, or ended the attempt.",
+      "evidence": [
+        "public/lib/weeklyPlanComposer.js checkpoint emission",
+        "public/lib/playtestJourney.js ALLOWED_CHECKPOINTS and rejection guard",
+        "public/app.js passes composer checkpoints into the journey ledger",
+        "test/playtest-journey.test.js current bounded/relative-time contract"
+      ],
+      "constraint": "Events remain local until explicit sharing, relative-time-only, bounded, allowlisted, account/token/save-free, and never become cohort or retention claims.",
+      "verification": [
+        "review, revise, defer, commit and debrief events survive the allowlist",
+        "duplicate and unknown events remain suppressed and the bound remains enforced",
+        "explicit receipt export labels local instrumentation as non-cohort evidence"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Add the three already-emitted planning checkpoints to the bounded allowlist and tests." },
+        "L2": { "effortHours": 2, "recipe": "Version the journey schema, retain review/revision/defer checkpoints with relative deltas, add a bounded planning-friction summary to explicit local exports, and preserve the no-cohort warning." },
+        "L3": { "effortHours": 4, "recipe": "L2 plus a player-visible private journey review that can be selectively attached to feedback one receipt at a time." }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "Progression hierarchy / engagement / innovative feature",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 24.8,
+      "slug": "architect-objective-hierarchy",
+      "title": "Unify the player-authored mastery focus with the visible season and legacy horizon",
+      "status": "open",
+      "premise": "Franchise Command, season chapters, mastery focus, and Trophy Road each publish a separate next objective. The existing three-horizon Architecture surface shows Now, Season, and generic GM Legacy, but its Legacy lane ignores the player's source-bound mastery focus even though that focus already has an exact next milestone and destination authority.",
+      "evidence": [
+        "public/lib/franchiseArchitecture.js generic legacyLane and unused mastery in horizon construction",
+        "src/engine/architectMasteryPortfolio.js player-authored focus plus nextMilestone",
+        "public/lib/tabOverview.js separate Command, Architecture, mastery, and Trophy Road surfaces",
+        "public/lib/achievements.js nearest measurable Trophy Road objectives"
+      ],
+      "constraint": "Do not create another progression score or hidden bonus. The hierarchy must preserve Now as dominant, label its source, use the active player-authored focus when present, fall back honestly, and route to an exact existing surface.",
+      "verification": [
+        "three-horizon builder promotes player-authored mastery into a non-blocking Architect Objective",
+        "fallback, empty-evidence, season-chapter, and measurable-trophy inputs remain deterministic and honest",
+        "Overview and mobile dark/light pixels show one dominant command plus one subordinate objective hierarchy"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1.5, "recipe": "Replace the generic legacy milestone with the current mastery focus nextMilestone and Architecture Review destination." },
+        "L2": { "effortHours": 4, "recipe": "Derive one non-blocking Architect Objective from player-authored mastery focus first, active season chapter second, and nearest measurable Trophy Road milestone as supporting evidence; show source, exact destination, and no-hidden-bonus boundary on desktop and mobile." },
+        "L3": { "effortHours": 7, "recipe": "L2 plus a cross-season objective history joined to existing mastery receipts, with completion inferred only from canonical evidence changes." }
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Performance / release truth / browser excellence",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 20.9,
+      "slug": "hosted-performance-evidence",
+      "title": "Make exact-revision Web Vitals and edge evidence a reproducible release receipt",
+      "status": "open",
+      "premise": "Boot bytes, module reachability, responsive captures, staging provenance, and production parity are automated, but the app-release gate still has no current staging LCP/INP/CLS measurement and health reports hosted edge policy unobserved. The launch gate therefore cannot distinguish visual correctness from interaction/performance readiness.",
+      "evidence": [
+        "docs/AUDIT_2026-08-11_SESSION81.json release holds",
+        "static/_health edge-policy observation",
+        "scripts/check-browser-boot-budget.mjs static budget authority",
+        "docs/RELEASE_PARITY.md exact hosted revision rule"
+      ],
+      "constraint": "Measure the stable staging origin at the exact candidate; never infer field metrics from static bytes; unavailable tooling or incomplete interaction samples are explicit skip/incomplete, not pass.",
+      "verification": [
+        "machine-readable receipt binds source revision, artifact fingerprint, origin, LCP, CLS, INP/interaction status and edge headers",
+        "LCP is under the project 1.8s bar and CLS/interaction evidence names its threshold or incompleteness",
+        "release gate and status surfaces consume the current receipt without hand-copied claims"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 2, "recipe": "Capture LCP and CLS plus edge headers from stable staging and record INP as incomplete when no qualifying interaction exists." },
+        "L2": { "effortHours": 4, "recipe": "Create a bounded exact-revision browser performance probe with a deliberate interaction, hash-bound JSON receipt, threshold verdicts, edge-header observation, and fail-closed release/status consumption." },
+        "L3": { "effortHours": 8, "recipe": "L2 plus a multi-route desktop/mobile performance budget history and regression comparison against the last promoted artifact." }
+      }
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Release observability / organization / truth",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 5,
+      "priority": 18.5,
+      "slug": "release-receipt-authority",
+      "title": "Stop structured project status from carrying several stale release candidates at once",
+      "status": "open",
+      "premise": "Fresh staging and production verifiers prove d0d2b617/ad62bc26, while PROJECT_STATUS top-level verification narrates c822ae85/94bebbd1 and embedded release/staging authorities still cite 7becc573. Generated consumers can therefore select mutually inconsistent candidates from one otherwise valid JSON source.",
+      "evidence": [
+        "fresh staging 14/14 and production 10/10 verifier output",
+        "context/PROJECT_STATUS.json lastVerification, source/artifact and structured release fields",
+        "scripts/verify-staging-receipt.mjs current authority",
+        "docs/RELEASE_PARITY.md exact revision contract"
+      ],
+      "constraint": "One structured current candidate authority must own source revision, artifact, staging, production, backend applicability, visuals and performance; historical receipts remain append-only artifacts, never current aliases.",
+      "verification": [
+        "a deterministic reconciler rejects disagreement and updates only from verified source receipts",
+        "PROJECT_STATUS current candidate fields agree after staging/promotion",
+        "tests fail when top-level, staging, production, visual or performance revisions diverge"
+      ],
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Refresh every current release field from the same verified staging/production receipts at closeout." },
+        "L2": { "effortHours": 3, "recipe": "Introduce one fail-closed release-authority reconciler that reads verified staging, production, visual and performance receipts, reports exact divergence, and writes PROJECT_STATUS current-candidate fields through the invariant writer." },
+        "L3": { "effortHours": 6, "recipe": "L2 plus signed immutable promotion receipts and automatic historical compaction that never changes current authority." }
+      }
+    }
+  ],
+  "secondOrderCandidates": []
+}

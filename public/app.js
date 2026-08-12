@@ -268,6 +268,37 @@ function closeGuideModal() {
   closeModal(modal);
 }
 
+async function confirmOnClockTradeAction({ action, offer, marketFingerprint }) {
+  const module = await import("./lib/onClockTradeMarketPanel.js");
+  const review = module.buildOnClockTradeReview({ action, offer, marketFingerprint });
+  if (!review) throw new Error("This live-pick offer can no longer be reviewed.");
+  const modal = document.getElementById("onClockTradeReviewModal");
+  const content = document.getElementById("onClockTradeReviewContent");
+  const confirm = document.getElementById("confirmOnClockTradeBtn");
+  const cancel = document.getElementById("cancelOnClockTradeBtn");
+  if (!modal || !content || !confirm || !cancel) throw new Error("The live-pick review dialog is unavailable.");
+  content.innerHTML = module.renderOnClockTradeReview(review);
+  confirm.textContent = review.action === "counter" ? "Send one counter" : "Confirm trade & transfer pick";
+  modal.classList.remove("hidden");
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = (approved) => {
+      if (settled) return;
+      settled = true;
+      modal.classList.add("hidden");
+      closeModal(modal);
+      confirm.removeEventListener("click", approve);
+      cancel.removeEventListener("click", reject);
+      resolve(approved ? review : null);
+    };
+    const approve = () => finish(true);
+    const reject = () => finish(false);
+    confirm.addEventListener("click", approve);
+    cancel.addEventListener("click", reject);
+    openModal(modal, { onClose: reject });
+  });
+}
+
 function callAppIsland(name, exportName, ...args) {
   const loaded = getLoadedUiIsland(name);
   if (loaded) {
@@ -1287,6 +1318,15 @@ function bindEvents() {
     if (!button) return;
     const action = button.dataset.onClockAction;
     runAction(async () => {
+      const market = state.draftState?.onClockTradeMarket || null;
+      const offer = market?.offers?.find((entry) => entry.id === button.dataset.offerId) || null;
+      if (action !== "decline") {
+        const review = await confirmOnClockTradeAction({ action, offer, marketFingerprint: button.dataset.offerFingerprint });
+        if (!review) {
+          showToast("Live-pick trade canceled; the selection remains yours.");
+          return;
+        }
+      }
       const result = await api("/api/draft/on-clock-trade", {
         method: "POST",
         body: {

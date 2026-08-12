@@ -1,5 +1,9 @@
 # Session 81 Closeout — Franchise Agency, Stewardship and Runtime Truth
 
+## Session Intent — S82
+
+Run the full `/arc`: recover only if live evidence requires it; otherwise profile and start from current authority, produce a fresh project-aware audit, implement every verified item plus viable second-order innovations at the product/game quality bar, inspect rendered desktop/mobile pixels in every touched theme and state, verify staging/release contracts as applicable, then complete the canonical closeout and direct-to-main publication.
+
 ## Where We Left Off
 
 - The full S81 `/arc` audit and implementation scope is complete locally. GM choices now disclose exact pre-commit boundaries; the Draft War Room has deterministic stale-safe on-clock offers; mentorship is player-directed within the existing development budget; and season stewardship reports use canonical cap, draft and receipted trade evidence.

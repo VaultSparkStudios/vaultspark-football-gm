@@ -47,7 +47,26 @@ function seasonLane(dashboard = {}) {
   };
 }
 
-function legacyLane(gmLegacy = null) {
+function legacyLane(gmLegacy = null, mastery = null, trophyRoad = null) {
+  const focus = mastery?.focus || null;
+  const trophy = trophyRoad?.objectives?.find((objective) => objective.kind === "measurable") || null;
+  if (focus) {
+    const supporting = trophy
+      ? `Supporting milestone: ${trophy.name} · ${trophy.progressText}.`
+      : "No measurable Trophy Road milestone is currently available.";
+    return {
+      id: "legacy",
+      label: "Architect Objective",
+      authority: `${focus.source || "mastery-focus"} · ${focus.pathId}`,
+      title: focus.label,
+      detail: focus.reason,
+      milestone: `${focus.nextMilestone} ${supporting}`,
+      targetTab: "overviewTab",
+      targetId: "franchiseArchitecture",
+      tone: focus.source === "player-authored" ? "positive" : "accent",
+      evidenceBoundary: "This objective organizes existing receipts. It creates no hidden bonus and predicts no result."
+    };
+  }
   const persona = gmLegacy?.persona || null;
   const current = persona?.current || null;
   const next = persona?.next || null;
@@ -77,8 +96,8 @@ function legacyLane(gmLegacy = null) {
   };
 }
 
-export function buildThreeHorizonBlueprint({ dashboard = {}, commands = [], gmLegacy = null, architectLedger = [] } = {}) {
-  return [nowLane(commands, architectLedger[0] || null), seasonLane(dashboard), legacyLane(gmLegacy)];
+export function buildThreeHorizonBlueprint({ dashboard = {}, commands = [], gmLegacy = null, architectLedger = [], mastery = null, trophyRoad = null } = {}) {
+  return [nowLane(commands, architectLedger[0] || null), seasonLane(dashboard), legacyLane(gmLegacy, mastery, trophyRoad)];
 }
 
 export function buildProgressiveWeekRoom({ horizons = [], signal = null, ledger = [], mastery = null } = {}) {

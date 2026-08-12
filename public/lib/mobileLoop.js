@@ -38,7 +38,8 @@
  */
 
 import { buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "./franchiseCommandCenter.js";
-import { renderTrophyRoad } from "./achievements.js";
+import { deriveTrophyRoad, readEarnedAchievements, renderTrophyRoad } from "./achievements.js";
+import { buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
 
 const MOBILE_PREF_KEY = "vsfgm_mobile_loop";
 
@@ -123,6 +124,13 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
     pendingDecision: state.mobilePendingDecision || null,
     pendingChoice: state.mobilePendingDecisionChoice || null
   });
+  const mastery = d.gmLegacy?.mastery || null;
+  const objective = buildThreeHorizonBlueprint({
+    dashboard: d,
+    gmLegacy: d.gmLegacy || null,
+    mastery,
+    trophyRoad: deriveTrophyRoad({ dashboard: d, recentBoxScores: state.recentBoxScores || [], earned: readEarnedAchievements() }, 3)
+  }).find((lane) => lane.id === "legacy");
 
   const blockingCommand = hasBlockingFranchiseCommand(decisionDeck);
   overlay.innerHTML = `
@@ -155,6 +163,13 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
       ${needs ? `<div class="ml-needs"><strong>Roster Needs:</strong> ${_esc(needs)}</div>` : ""}
 
       <section class="ml-trophy-road" aria-label="Trophy Road"><div id="mobileTrophyRoadContent"></div></section>
+
+      ${objective ? `<button type="button" class="ml-architect-objective" data-mobile-objective data-target-tab="${_escAttr(objective.targetTab)}" data-target-id="${_escAttr(objective.targetId)}">
+        <span class="ml-pressure-kicker">${_esc(objective.label)}</span>
+        <strong>${_esc(objective.title)}</strong>
+        <span>${_esc(objective.milestone)}</span>
+        ${objective.evidenceBoundary ? `<small>${_esc(objective.evidenceBoundary)}</small>` : ""}
+      </button>` : ""}
 
       <div class="ml-pressure-stack" aria-label="Franchise pressure stack">
         ${pressureStack.map((item, index) => `
@@ -224,6 +239,15 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
       if (!pressure) return;
       overlay.dispatchEvent(new CustomEvent("vsfgm:mobile-pressure", { detail: pressure }));
     });
+  });
+  overlay.querySelector("[data-mobile-objective]")?.addEventListener("click", (event) => {
+    overlay.dispatchEvent(new CustomEvent("vsfgm:mobile-pressure", {
+      detail: {
+        title: objective?.title,
+        targetTab: event.currentTarget.dataset.targetTab,
+        targetId: event.currentTarget.dataset.targetId
+      }
+    }));
   });
 
   // Exit mobile mode to full view

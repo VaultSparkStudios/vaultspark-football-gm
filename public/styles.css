@@ -904,6 +904,18 @@ body[data-theme="light"] .btn-primary {
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.42);
 }
 
+.on-clock-trade-review-card { width: min(720px, 95vw); display: grid; gap: 14px; }
+.on-clock-trade-review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.on-clock-trade-review-grid section { display: grid; gap: 5px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2); }
+.on-clock-trade-review-grid span,
+.on-clock-trade-review-grid small { color: var(--muted); }
+.on-clock-trade-boundary { padding: 12px; border-left: 4px solid var(--warning); background: color-mix(in srgb, var(--warning) 10%, var(--bg-2)); }
+.on-clock-trade-review-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+@media (max-width: 640px) {
+  .on-clock-trade-review-grid { grid-template-columns: 1fr; }
+  .on-clock-trade-review-actions > button { width: 100%; min-height: 44px; }
+}
+
 .guide-card {
   width: min(760px, 94vw);
 }
@@ -3270,6 +3282,20 @@ body.mobile-loop-active .mobile-loop-overlay {
   color: var(--muted);
   line-height: 1.35;
 }
+
+.ml-architect-objective {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  text-align: left;
+  color: var(--ink);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 14%, var(--bg-2)), var(--bg-2));
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+  border-radius: 10px;
+}
+.ml-architect-objective span,
+.ml-architect-objective small { color: var(--muted); }
 
 /* ── Draft Pick Reveal Modal ─────────────────────────────────────────────── */
 #draftPickRevealModal {

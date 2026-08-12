@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { buildOnClockTradeReview, renderOnClockTradeReview } from "../public/lib/onClockTradeMarketPanel.js";
 import test from "node:test";
 
 import { createSession } from "../src/runtime/bootstrap.js";
@@ -46,6 +48,28 @@ test("offer decline is non-mutating and stale board fingerprints fail closed", (
   assert.equal(stale.ok, false);
   assert.equal(stale.status, 409);
   assert.equal(stale.reasonCode, "stale-on-clock-offer");
+});
+
+test("live-pick Accept and Counter require an exact irreversible review before mutation", () => {
+  const { session } = onClockSession(8105);
+  const market = session.getOnClockTradeMarket();
+  const offer = market.offers[0];
+  const review = buildOnClockTradeReview({ action: "accept", offer, marketFingerprint: market.fingerprint });
+  assert.equal(review.offerId, offer.id);
+  assert.equal(review.fingerprint, market.fingerprint);
+  assert.match(review.boundary, /transfers pick ownership.*cannot be undone/i);
+  assert.match(review.evidenceBoundary, /not acceptance odds/i);
+  assert.match(renderOnClockTradeReview(review), /id="onClockTradeReviewTitle"/);
+
+  const counter = buildOnClockTradeReview({ action: "counter", offer, marketFingerprint: market.fingerprint });
+  assert.match(counter.boundary, /If the rival accepts.*if declined, no asset moves/i);
+  assert.equal(buildOnClockTradeReview({ action: "decline", offer, marketFingerprint: market.fingerprint }), null);
+
+  const app = readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
+  const html = readFileSync(new URL("../public/game.html", import.meta.url), "utf8");
+  assert.match(app, /await confirmOnClockTradeAction/);
+  assert.match(app, /if \(!review\).*selection remains yours/s);
+  assert.match(html, /id="onClockTradeReviewModal"[^>]+aria-modal="true"/);
 });
 
 test("accept atomically transfers assets, consumes the slot once, and pauses at the next controlled pick", () => {

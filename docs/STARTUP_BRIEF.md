@@ -1,29 +1,40 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-12 (Session 80 closeout) -->
+<!-- generated-at: 2026-08-12 (Session 81 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
+<!-- session-authority: committed=S81 · SIL=S80 · status=S81 · handoff=S81; divergent=true -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 80 closeout · 2026-08-12.
+> **Fast-boot brief** — generated at Session 81 closeout · 2026-08-12.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
 
 ```
+╔══ SESSION AUTHORITY ═══════════════════════════════════════════╗
+║  ✓ Monotonic next session: S82; no source moved backward.        ║
+║  committed=S81 · SIL=S80 · status=S81 · handoff=S81              ║
+║  SIL may lag a verified receipt; closeout will reconcile score.  ║
+╚════════════════════════════════════════════════════════════════╝
+
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 81 · 2026-08-12 · BUILDER MODE                          ║
+║  Session 82 · 2026-08-12 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ STALE LAST SESSION SUMMARY ══════════════════════════════════╗
-║  Expected S80; PROJECT_STATUS summary says S81.                  ║
-║  Session 81 implementation and local proof complete: exact GM c  ║
-║  Repair: update PROJECT_STATUS.lastSessionSummary at closeout.   ║
+╔══ LAST SESSION (S81) · WHAT SHIPPED ═══════════════════════════╗
+║  ✓ exact pre-commit GM consequence dossiers shared with commit   ║
+║  ✓ deterministic stale-safe on-clock draft offer market          ║
+║  ✓ player-directed mentorship covenants within the existing OVR  ║
+║  ✓ canonical persisted season stewardship reports                ║
+║  ✓ truthful Community deletion tombstones and efficient ETag sn  ║
+║  Tests  npm test 1053/1053 direct exit 0; responsive evidence 1  ║
+║  Deploy Candidate c822ae85f7287fec1538ea7125afad908c2b6d83 pass  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -33,7 +44,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · live-beta · arch=— · top-axis=—                ║
+║  Profile · game · cache stale 0d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -60,20 +71,20 @@
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 80 ════════════════════════════╗
-║  Shipped:  Session 81 implementation and local proof complete:   ║
+╔══ WHERE WE LEFT OFF  ·  Session 81 ════════════════════════════╗
+║  Shipped:  Session 81 fully deployed: exact GM consequence doss  ║
 ║  Tests:    1053/1053 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,663 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,332 tok/turn  ·  cache 50%  ·  136 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
+║     15,452 / 1,000,000 tok  ·  codex/codex-1m  ·  heuristic      ║
+║     ~7,726 tok/turn  ·  cache 50%  ·  117 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         1053/1053 passing (2026-08-12)                 ║
+║  ⚠  Tests         1053/1053 passing (2026-08-12) · STALE — run   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -111,14 +122,28 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-11_SESSION81.md       ║
-║  Closed: 7 · Open: 0                                             ║
-║  Latest audit has no open ranked items; run /audit for a new li  ║
+║  ✓ cache source: AUDIT_2026-08-12_SESSION82.md                   ║
+║                                                                  ║
+║  #1 · FIRE · monotonic-session-authority                         ║
+║  monotonic-session-authority — Extract a pure monotonic session  ║
+║                                                                  ║
+║  #2 · FIRE · irreversible-draft-trade-confirmation               ║
+║  irreversible-draft-trade-confirmation — Build one accessible s  ║
+║                                                                  ║
+║  #3 · FIRE · planning-friction-journey-authority                 ║
+║  planning-friction-journey-authority — Version the journey sche  ║
+║                                                                  ║
+║  #4 · FIRE · architect-objective-hierarchy                       ║
+║  architect-objective-hierarchy — Derive one non-blocking Archit  ║
+║                                                                  ║
+║  #5 · HIGH · hosted-performance-evidence                         ║
+║  hosted-performance-evidence — Create a bounded exact-revision   ║
+║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 80 closeout · 2026-08-12*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 81 closeout · 2026-08-12*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*
