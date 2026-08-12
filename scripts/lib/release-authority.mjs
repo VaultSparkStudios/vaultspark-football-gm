@@ -10,6 +10,7 @@ function reportArtifact(report) {
 
 const RECEIPT_ONLY_PREFIXES = ["docs/", "context/", "audits/", "test/"];
 const RECEIPT_ONLY_FILES = new Set([
+  "logs/WORK_LOG.md",
   "scripts/measure-hosted-performance.mjs",
   "scripts/write-visual-qa-receipt.mjs",
   "scripts/lib/release-authority.mjs",

@@ -13,8 +13,8 @@
 ║  ✓ The full S82 `/arc` audit is exhausted: all six ranked items  ║
 ║  ✓ Session rendering resolves the newest committed authority mo  ║
 ║  ✓ Candidate `046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d` passed   ║
+║  ✓ Receipt-only publication `a38ad346a84e0a4c11ad7b984c5cd0f3a6  ║
 ║  ✓ Browser proof is green: Playwright `40/40`, responsive `206/  ║
-║  ✓ Local test truth is split but complete: the long aggregate p  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 991/1000 ═══════════════════════════════════════╗
 ║    Dev Health         99   ██████████                            ║
@@ -41,8 +41,8 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 65 files  ·  M:64 A:0 D:0 ?:1                          ║
-║  Ahead: 1  ·  Behind: 0                                          ║
+║  Changes: 12 files  ·  M:12 A:0 D:0 ?:0                          ║
+║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗

@@ -332,14 +332,155 @@
   },
   "releaseAuthority": {
     "schemaVersion": "1.0",
-    "status": "staging-verified-production-pending",
-    "deployableRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
-    "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067",
-    "stagingVerified": true,
-    "visualVerified": true,
-    "performanceVerified": true,
-    "productionVerified": false,
+    "kind": "unified-release-authority",
+    "observedAt": "2026-08-12T07:51:32.590Z",
+    "status": "verified",
+    "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
+    "publicationRevision": "a38ad346a84e0a4c11ad7b984c5cd0f3a66ddb3c",
+    "publicationDelta": {
+      "from": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
+      "to": "a38ad346a84e0a4c11ad7b984c5cd0f3a66ddb3c",
+      "changedFiles": [
+        "audits/2026-08-12.json",
+        "context/CURRENT_STATE.md",
+        "context/DECISIONS.md",
+        "context/LATEST_HANDOFF.md",
+        "context/PROJECT_STATUS.json",
+        "context/STATE_VECTOR.json",
+        "context/TASK_BOARD.md",
+        "context/TRUTH_AUDIT.md",
+        "context/closeout-brief-session82-input.json",
+        "docs/AUDIT_2026-08-12_SESSION82.json",
+        "docs/AUDIT_2026-08-12_SESSION82.md",
+        "docs/CLOSEOUT_BRIEF_S82_2026-08-12.md",
+        "docs/CLOSEOUT_STATUS_BOARD.md",
+        "docs/STARTUP_BRIEF.md",
+        "docs/performance/LATEST.json",
+        "docs/visual-qa/LATEST.json",
+        "docs/visual-qa/s82-desktop-agent-negotiation-dark.png",
+        "docs/visual-qa/s82-desktop-agent-negotiation-light.png",
+        "docs/visual-qa/s82-desktop-architect-cut-dark.png",
+        "docs/visual-qa/s82-desktop-architect-cut-light.png",
+        "docs/visual-qa/s82-desktop-architect-objective-dark.png",
+        "docs/visual-qa/s82-desktop-architect-objective-light.png",
+        "docs/visual-qa/s82-desktop-architect-signature-dark.png",
+        "docs/visual-qa/s82-desktop-architect-signature-light.png",
+        "docs/visual-qa/s82-desktop-co-gm-brief-dark.png",
+        "docs/visual-qa/s82-desktop-co-gm-brief-light.png",
+        "docs/visual-qa/s82-desktop-exact-command-center-dark.png",
+        "docs/visual-qa/s82-desktop-exact-command-center-light.png",
+        "docs/visual-qa/s82-desktop-exact-command-target-dark.png",
+        "docs/visual-qa/s82-desktop-exact-command-target-light.png",
+        "docs/visual-qa/s82-desktop-guide-modal-dark.png",
+        "docs/visual-qa/s82-desktop-hof-ceremony-light.png",
+        "docs/visual-qa/s82-desktop-prediction-receipt-dark.png",
+        "docs/visual-qa/s82-desktop-prediction-receipt-light.png",
+        "docs/visual-qa/s82-desktop-room-watch-dark.png",
+        "docs/visual-qa/s82-desktop-room-watch-light.png",
+        "docs/visual-qa/s82-desktop-sim-watch-reel-dark.png",
+        "docs/visual-qa/s82-desktop-sim-watch-reel-light.png",
+        "docs/visual-qa/s82-mobile-agent-negotiation-dark.png",
+        "docs/visual-qa/s82-mobile-agent-negotiation-light.png",
+        "docs/visual-qa/s82-mobile-architect-cut-dark.png",
+        "docs/visual-qa/s82-mobile-architect-cut-light.png",
+        "docs/visual-qa/s82-mobile-architect-signature-dark.png",
+        "docs/visual-qa/s82-mobile-architect-signature-light.png",
+        "docs/visual-qa/s82-mobile-co-gm-brief-dark.png",
+        "docs/visual-qa/s82-mobile-co-gm-brief-light.png",
+        "docs/visual-qa/s82-mobile-draft-trade-review-light.png",
+        "docs/visual-qa/s82-mobile-exact-command-center-dark.png",
+        "docs/visual-qa/s82-mobile-exact-command-center-light.png",
+        "docs/visual-qa/s82-mobile-exact-command-target-dark.png",
+        "docs/visual-qa/s82-mobile-exact-command-target-light.png",
+        "docs/visual-qa/s82-mobile-hof-ceremony-dark.png",
+        "docs/visual-qa/s82-mobile-hof-ceremony-light.png",
+        "docs/visual-qa/s82-mobile-prediction-receipt-dark.png",
+        "docs/visual-qa/s82-mobile-prediction-receipt-light.png",
+        "docs/visual-qa/s82-mobile-rival-coaching-dark.png",
+        "docs/visual-qa/s82-mobile-rival-coaching-light.png",
+        "docs/visual-qa/s82-mobile-room-watch-dark.png",
+        "docs/visual-qa/s82-mobile-room-watch-light.png",
+        "docs/visual-qa/s82-mobile-sim-watch-reel-dark.png",
+        "docs/visual-qa/s82-mobile-sim-watch-reel-light.png",
+        "docs/visual-qa/s82-mobile-trophy-road-dark.png",
+        "docs/visual-qa/s82-mobile-trophy-road-light.png",
+        "logs/WORK_LOG.md",
+        "scripts/write-visual-qa-receipt.mjs"
+      ],
+      "unsafeFiles": [],
+      "verified": true
+    },
+    "artifactFingerprint": {
+      "algorithm": "sha256",
+      "digest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067"
+    },
+    "identities": {
+      "staging": {
+        "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
+        "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067"
+      },
+      "production": {
+        "sourceRevision": "a38ad346a84e0a4c11ad7b984c5cd0f3a66ddb3c",
+        "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067"
+      },
+      "visual": {
+        "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
+        "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067"
+      },
+      "performance": {
+        "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
+        "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067"
+      }
+    },
+    "checks": [
+      {
+        "name": "staging verifier green",
+        "ok": true
+      },
+      {
+        "name": "production verifier green",
+        "ok": true
+      },
+      {
+        "name": "visual pixels reviewed",
+        "ok": true
+      },
+      {
+        "name": "hosted performance green",
+        "ok": true
+      },
+      {
+        "name": "one exact deployable source revision",
+        "ok": true
+      },
+      {
+        "name": "production source is candidate or verified receipt-only descendant",
+        "ok": true
+      },
+      {
+        "name": "one exact artifact fingerprint",
+        "ok": true
+      }
+    ],
+    "evidenceVerified": true,
     "launchReady": false,
-    "publicationLineagePolicy": "Only git-proven receipt/test/status/tooling descendants with zero deployable-file deltas are accepted."
-  }
+    "blockerCodes": [
+      "email-delivery-unverified",
+      "founder-approval-unverified",
+      "lifecycle-authority-unverified"
+    ],
+    "backendAuthority": {
+      "sourceRevision": "7becc57385515042dee5d80146c635d45962ea40",
+      "verifiedAt": "2026-08-11",
+      "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
+    },
+    "receipts": {
+      "stagingSha256": "bb8dfdd85f28e864bf9c6b58166ce8f583c8568b9fd3fb5c22df6e2ef88e448d",
+      "productionSha256": "701caeb159a257f49aa3fdd9fcbd61be4216cd7ad451b6778ddf165e3a718912",
+      "visualSha256": "5ba39cd581cfe93661bd24a4bd501fff7bbb9686d32b63682d41c607f22824dc",
+      "performanceSha256": "37e169401c31e0addc788e2812e6f856a3f6772ec811f220d886a9cc97d7662c"
+    },
+    "receiptSha256": "87d7972987a6dbc1b201c5f224084cfe2f310bec0f27cd6ad5424234a1c79812"
+  },
+  "launchReady": false
 }

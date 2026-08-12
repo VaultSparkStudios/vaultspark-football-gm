@@ -27,7 +27,8 @@
     "pages": "build and static smoke green",
     "staging": "14/14 at candidate 046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d and artifact 656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067 with rollback",
     "performance": "public-entry medians: desktop 556ms LCP / 24ms INP / 0.0151 CLS; mobile 452ms / 16ms / 0.0085; HSTS, CSP and frame protection observed",
-    "security": "repository-scoped scan 0 findings; final staged scan required before publication"
+    "production": "10/10 at receipt-only publication a38ad346a84e0a4c11ad7b984c5cd0f3a66ddb3c and the same artifact 656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067",
+    "security": "repository-scoped and staged scans 0 findings"
   },
   "sil": {
     "version": "3.0",
@@ -47,9 +48,10 @@
     }
   },
   "release": {
-    "verdict": "STAGING VERIFIED / PUBLIC LAUNCH NO-GO",
+    "verdict": "STAGING + PRODUCTION VERIFIED / PUBLIC LAUNCH NO-GO",
     "candidateRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
     "stagingRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
+    "productionRevision": "a38ad346a84e0a4c11ad7b984c5cd0f3a66ddb3c",
     "artifactFingerprint": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067",
     "rollbackDeploymentId": "340d0138-134d-40b3-bb60-58951abf3e8f",
     "launchReady": false,

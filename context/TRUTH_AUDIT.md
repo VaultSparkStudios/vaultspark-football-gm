@@ -2,7 +2,7 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-11
+Last reviewed: 2026-08-12
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
 ## 2026-08-12 - Session 82 truth update
@@ -12,6 +12,7 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - **Progression truth belongs to the player.** Planning-friction receipts describe source-derived decisions and Architecture Review projects identity, active pressure, next proof and mastery path; neither surface predicts results or changes simulation outcomes.
 - **Candidate evidence is exact.** Stable staging serves candidate `046e35df…` and artifact `656eb904…` with 14/14 checks and rollback. The 64 reviewed captures and hosted performance receipt bind that same deployable identity.
 - **Artifact identity excludes only source-bound receipts.** Production exposed that `edge-policy-receipt.json` changes solely because it embeds the publication SHA. It is now excluded alongside health/manifest evidence; its policy fingerprint and every executable/content byte remain verified, and a regression test proves source-bound receipt changes cannot perturb product identity.
+- **Production lineage is exact.** Receipt-only publication `a38ad346…` passed 10/10 provenance at the same `656eb904…` deployable artifact as candidate/staging `046e35df…`; the reconciler verifies the Git delta and rejects any deployable publication change.
 - **Performance truth is route-specific.** Canonical `/` public-entry medians clear LCP/INP/CLS at desktop and mobile with edge policy observed. A separate direct-game diagnostic preserves its first-run tutorial layout-shift red and is not relabeled as the landing-page gate.
 - **Test truth is not rounded up.** Four aggregate shards passed; the Studio shard had one transient aggregate failure and immediately passed 196/196 alone on unchanged source. All 1,069 shard tests are green, but only clean CI may establish the final aggregate receipt.
 - **Deployment is not launch.** Reply-capable on-domain email, SHA-bound founder approval and authoritative lifecycle reconciliation remain unproved, so `launchReady` remains false.

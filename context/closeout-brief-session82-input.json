@@ -2,7 +2,7 @@
   "session": "S82",
   "date": "2026-08-12",
   "repo": "franchise-architect",
-  "headline": "Completed the full arc: exact irreversible trade consent, player-authored Architect objectives, monotonic session truth, and one deployable release authority proven on stable staging with current visual, performance and edge receipts.",
+  "headline": "Completed the full arc: exact irreversible trade consent, player-authored Architect objectives, monotonic session truth, and one deployable release authority proven across stable staging and production with current visual, performance and edge receipts.",
   "items": [
     {
       "title": "Irreversible choice clarity",
@@ -26,7 +26,7 @@
       "title": "Exact release and performance lineage",
       "projectImpact": 9,
       "ecosystemImpact": 9,
-      "evidence": "Candidate 046e35df… / artifact 656eb904… is exact across staging, 64 inspected captures and passing desktop/mobile public-entry metrics; receipt-only descendants are Git-proven and deployable deltas fail closed."
+      "evidence": "Candidate 046e35df… / artifact 656eb904… is exact across staging, 64 inspected captures and passing desktop/mobile public-entry metrics; receipt-only production publication a38ad346… passes 10/10 at the identical artifact, and deployable deltas fail closed."
     }
   ],
   "followUps": [
@@ -56,13 +56,13 @@
     },
     {
       "title": "No launch overclaim",
-      "evidence": "Stable-staging and eventual production deployment are recorded independently from launchReady, which remains false."
+      "evidence": "Stable-staging and verified production deployment are recorded independently from launchReady, which remains false."
     }
   ],
   "diffStat": {
     "files": 86,
     "insertions": 604,
     "deletions": 244,
-    "suite": "1,069 source-identical Node shard tests green with aggregate caveat; Playwright 40/40; responsive 206/206; 64 inspected visual receipts; Pages build/smoke; staging 14/14; public-entry Web Vitals and edge policy green"
+    "suite": "1,069 source-identical Node shard tests green with aggregate caveat; Playwright 40/40; responsive 206/206; 64 inspected visual receipts; Pages build/smoke; staging 14/14; production 10/10; public-entry Web Vitals and edge policy green"
   }
 }

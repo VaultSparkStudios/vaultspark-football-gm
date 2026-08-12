@@ -28,7 +28,7 @@ Source: `docs/AUDIT_2026-08-12_SESSION82.md`.
 | viewport-authentic-performance-interaction — performance probe measures the canonical public entry and a real theme interaction | ✅ Done (second-order) |
 | receipt-only-publication-lineage — release authority rejects deployable deltas and names allowed receipt lineage | ✅ Done (second-order) |
 
-**Verification:** focused Node contracts green; one long aggregate produced core 123/123, runtime 670/670, sim-contract 79/79, sim-realism 1/1 and one transient Studio red, followed immediately by an isolated Studio 196/196 pass (1,069 source-identical shard tests green; final clean-environment aggregate delegated to CI). Playwright 40/40; responsive 206/206; 64 reviewed hash-bound dark/light desktop/mobile captures; Pages build/smoke green; staging 14/14 at `046e35d…` / `656eb904…`; public-entry Web Vitals and edge policy green.
+**Verification:** focused Node contracts green; one long aggregate produced core 123/123, runtime 670/670, sim-contract 79/79, sim-realism 1/1 and one transient Studio red, followed immediately by an isolated Studio 196/196 pass (1,069 source-identical shard tests green; final clean-environment aggregate delegated to CI). Playwright 40/40; responsive 206/206; 64 reviewed hash-bound dark/light desktop/mobile captures; Pages build/smoke green; staging 14/14 at `046e35d…` and production 10/10 at receipt-only publication `a38ad34…`, both artifact `656eb904…`; public-entry Web Vitals and edge policy green.
 
 **Launch posture:** deployment remains distinct from launch. Preserve `launchReady: false` until reply-capable email, SHA-bound founder approval, and authoritative lifecycle reconciliation exist.
 
