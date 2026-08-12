@@ -2,17 +2,18 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-08-12T05:36:07.800Z",
+  "observedAt": "2026-08-12T07:25:47.947Z",
   "baseUrl": "https://staging.playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "1cfc8774b8f20f2a5bf8951445baadbd6092277a",
+  "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91",
-    "files": 192,
+    "digest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067",
+    "files": 191,
     "exclusions": [
       "_health",
-      "deploy-manifest.json"
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
     ]
   },
   "edgeHeaders": {
@@ -20,16 +21,16 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a29d1ed1f9b43895-IAD",
+    "cf-ray": "a29dbf7638ea5949-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Wed, 12 Aug 2026 05:36:05 GMT",
+    "date": "Wed, 12 Aug 2026 07:25:45 GMT",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=qHjkBLriMuLMN%2FwDaImW%2FJ8BOTczahcR6Q5y%2BfgOoDxhwPtJE9u5Fq8%2F8nTgCIP%2B5EsWtCcbWnkycvFH81Kc4NUl5SMzkq2zwl9Q%2BarUtfMUySfRH4%2BtUW3wvj7sQUTSAPytujvHA6i0sYk7HNEeYXgCCVcd\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=%2BJ8M916eY6lW4jwlPnl%2FZ13ytiY3BNb%2FsarES7df61KGn5fGZVWjTXhTf29PcO1%2B7l6CejSbU4zWF1tf7lnZ81iCEdEgzoHM7rGKD%2B1DqP7lozNQQ9sqyh5tFc2cH150FFJi%2B6lR5KkyOaDnIg4FHql4bmYS\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -45,13 +46,201 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 272,
+      "lcpMs": 556,
       "inpMs": 24,
       "cls": 0.0151,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 288,
+          "lcpMs": 556,
+          "lcpElement": {
+            "tag": "H1",
+            "id": null,
+            "className": "setup-title",
+            "text": "Franchise Architect: Football"
+          },
+          "cls": 0.0151,
+          "shifts": [
+            {
+              "value": 0.0151,
+              "sources": [
+                {
+                  "tag": "SECTION",
+                  "id": null,
+                  "className": "setup-section",
+                  "previousRect": {
+                    "x": 255.1875,
+                    "y": 750.515625,
+                    "width": 929.625,
+                    "height": 249.484375,
+                    "top": 750.515625,
+                    "right": 1184.8125,
+                    "bottom": 1000,
+                    "left": 255.1875
+                  },
+                  "currentRect": {
+                    "x": 255.1875,
+                    "y": 881.1875,
+                    "width": 929.625,
+                    "height": 118.8125,
+                    "top": 881.1875,
+                    "right": 1184.8125,
+                    "bottom": 1000,
+                    "left": 255.1875
+                  }
+                },
+                {
+                  "tag": "A",
+                  "id": null,
+                  "className": "community-atlas-link",
+                  "previousRect": {
+                    "x": 344.1875,
+                    "y": 692.328125,
+                    "width": 225.25,
+                    "height": 20,
+                    "top": 692.328125,
+                    "right": 569.4375,
+                    "bottom": 712.328125,
+                    "left": 344.1875
+                  },
+                  "currentRect": {
+                    "x": 344.1875,
+                    "y": 823,
+                    "width": 225.25,
+                    "height": 20,
+                    "top": 823,
+                    "right": 569.4375,
+                    "bottom": 843,
+                    "left": 344.1875
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "community-live-mark",
+                  "previousRect": {
+                    "x": 987.46875,
+                    "y": 471.328125,
+                    "width": 108.34375,
+                    "height": 21,
+                    "top": 471.328125,
+                    "right": 1095.8125,
+                    "bottom": 492.328125,
+                    "left": 987.46875
+                  },
+                  "currentRect": {
+                    "x": 951.65625,
+                    "y": 471.328125,
+                    "width": 145,
+                    "height": 21,
+                    "top": 471.328125,
+                    "right": 1096.65625,
+                    "bottom": 492.328125,
+                    "left": 951.65625
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 24,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 560,
+          "lcpElement": {
+            "tag": "H1",
+            "id": null,
+            "className": "setup-title",
+            "text": "Franchise Architect: Football"
+          },
+          "cls": 0.0151,
+          "shifts": [
+            {
+              "value": 0.0151,
+              "sources": [
+                {
+                  "tag": "SECTION",
+                  "id": null,
+                  "className": "setup-section",
+                  "previousRect": {
+                    "x": 255.1875,
+                    "y": 750.515625,
+                    "width": 929.625,
+                    "height": 249.484375,
+                    "top": 750.515625,
+                    "right": 1184.8125,
+                    "bottom": 1000,
+                    "left": 255.1875
+                  },
+                  "currentRect": {
+                    "x": 255.1875,
+                    "y": 881.1875,
+                    "width": 929.625,
+                    "height": 118.8125,
+                    "top": 881.1875,
+                    "right": 1184.8125,
+                    "bottom": 1000,
+                    "left": 255.1875
+                  }
+                },
+                {
+                  "tag": "A",
+                  "id": null,
+                  "className": "community-atlas-link",
+                  "previousRect": {
+                    "x": 344.1875,
+                    "y": 692.328125,
+                    "width": 225.25,
+                    "height": 20,
+                    "top": 692.328125,
+                    "right": 569.4375,
+                    "bottom": 712.328125,
+                    "left": 344.1875
+                  },
+                  "currentRect": {
+                    "x": 344.1875,
+                    "y": 823,
+                    "width": 225.25,
+                    "height": 20,
+                    "top": 823,
+                    "right": 569.4375,
+                    "bottom": 843,
+                    "left": 344.1875
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "community-live-mark",
+                  "previousRect": {
+                    "x": 987.46875,
+                    "y": 471.328125,
+                    "width": 108.34375,
+                    "height": 21,
+                    "top": 471.328125,
+                    "right": 1095.8125,
+                    "bottom": 492.328125,
+                    "left": 987.46875
+                  },
+                  "currentRect": {
+                    "x": 951.65625,
+                    "y": 471.328125,
+                    "width": 145,
+                    "height": 21,
+                    "top": 471.328125,
+                    "right": 1096.65625,
+                    "bottom": 492.328125,
+                    "left": 951.65625
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 24,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 444,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -142,194 +331,6 @@
             }
           ],
           "inpMs": 16,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 272,
-          "lcpElement": {
-            "tag": "H1",
-            "id": null,
-            "className": "setup-title",
-            "text": "Franchise Architect: Football"
-          },
-          "cls": 0.0151,
-          "shifts": [
-            {
-              "value": 0.0151,
-              "sources": [
-                {
-                  "tag": "SECTION",
-                  "id": null,
-                  "className": "setup-section",
-                  "previousRect": {
-                    "x": 255.1875,
-                    "y": 750.515625,
-                    "width": 929.625,
-                    "height": 249.484375,
-                    "top": 750.515625,
-                    "right": 1184.8125,
-                    "bottom": 1000,
-                    "left": 255.1875
-                  },
-                  "currentRect": {
-                    "x": 255.1875,
-                    "y": 881.1875,
-                    "width": 929.625,
-                    "height": 118.8125,
-                    "top": 881.1875,
-                    "right": 1184.8125,
-                    "bottom": 1000,
-                    "left": 255.1875
-                  }
-                },
-                {
-                  "tag": "A",
-                  "id": null,
-                  "className": "community-atlas-link",
-                  "previousRect": {
-                    "x": 344.1875,
-                    "y": 692.328125,
-                    "width": 225.25,
-                    "height": 20,
-                    "top": 692.328125,
-                    "right": 569.4375,
-                    "bottom": 712.328125,
-                    "left": 344.1875
-                  },
-                  "currentRect": {
-                    "x": 344.1875,
-                    "y": 823,
-                    "width": 225.25,
-                    "height": 20,
-                    "top": 823,
-                    "right": 569.4375,
-                    "bottom": 843,
-                    "left": 344.1875
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "community-live-mark",
-                  "previousRect": {
-                    "x": 987.46875,
-                    "y": 471.328125,
-                    "width": 108.34375,
-                    "height": 21,
-                    "top": 471.328125,
-                    "right": 1095.8125,
-                    "bottom": 492.328125,
-                    "left": 987.46875
-                  },
-                  "currentRect": {
-                    "x": 951.65625,
-                    "y": 471.328125,
-                    "width": 145,
-                    "height": 21,
-                    "top": 471.328125,
-                    "right": 1096.65625,
-                    "bottom": 492.328125,
-                    "left": 951.65625
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 256,
-          "lcpElement": {
-            "tag": "H1",
-            "id": null,
-            "className": "setup-title",
-            "text": "Franchise Architect: Football"
-          },
-          "cls": 0.0151,
-          "shifts": [
-            {
-              "value": 0.0151,
-              "sources": [
-                {
-                  "tag": "SECTION",
-                  "id": null,
-                  "className": "setup-section",
-                  "previousRect": {
-                    "x": 255.1875,
-                    "y": 750.515625,
-                    "width": 929.625,
-                    "height": 249.484375,
-                    "top": 750.515625,
-                    "right": 1184.8125,
-                    "bottom": 1000,
-                    "left": 255.1875
-                  },
-                  "currentRect": {
-                    "x": 255.1875,
-                    "y": 881.1875,
-                    "width": 929.625,
-                    "height": 118.8125,
-                    "top": 881.1875,
-                    "right": 1184.8125,
-                    "bottom": 1000,
-                    "left": 255.1875
-                  }
-                },
-                {
-                  "tag": "A",
-                  "id": null,
-                  "className": "community-atlas-link",
-                  "previousRect": {
-                    "x": 344.1875,
-                    "y": 692.328125,
-                    "width": 225.25,
-                    "height": 20,
-                    "top": 692.328125,
-                    "right": 569.4375,
-                    "bottom": 712.328125,
-                    "left": 344.1875
-                  },
-                  "currentRect": {
-                    "x": 344.1875,
-                    "y": 823,
-                    "width": 225.25,
-                    "height": 20,
-                    "top": 823,
-                    "right": 569.4375,
-                    "bottom": 843,
-                    "left": 344.1875
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "community-live-mark",
-                  "previousRect": {
-                    "x": 987.46875,
-                    "y": 471.328125,
-                    "width": 108.34375,
-                    "height": 21,
-                    "top": 471.328125,
-                    "right": 1095.8125,
-                    "bottom": 492.328125,
-                    "left": 987.46875
-                  },
-                  "currentRect": {
-                    "x": 951.65625,
-                    "y": 471.328125,
-                    "width": 145,
-                    "height": 21,
-                    "top": 471.328125,
-                    "right": 1096.65625,
-                    "bottom": 492.328125,
-                    "left": 951.65625
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 24,
           "interactionObserved": true
         }
       ]
@@ -341,13 +342,13 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 300,
+      "lcpMs": 452,
       "inpMs": 16,
       "cls": 0.0085,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 300,
+          "lcpMs": 452,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -391,7 +392,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 288,
+          "lcpMs": 548,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -435,7 +436,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 312,
+          "lcpMs": 380,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -487,13 +488,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "1cfc8774b8f20f2a5bf8951445baadbd6092277a",
+        "observed": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91",
+        "observed": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067",
         "expected": "sha256"
       },
       {
@@ -517,7 +518,7 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 272,
+        "observed": 556,
         "expected": "< 1800ms"
       },
       {
@@ -541,7 +542,7 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 300,
+        "observed": 452,
         "expected": "< 1800ms"
       },
       {
@@ -583,5 +584,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "7f8e0ea2c9144c779990e60aa0ee75f6d71688d4e93bf61d7755542d1f4c353a"
+  "receiptSha256": "b6dadf3f1b235ed81dfb5731e99979aa18dfd9692e7fb76cd00bcba6ecfb8cfd"
 }

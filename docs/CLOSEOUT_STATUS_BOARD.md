@@ -12,7 +12,7 @@
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
 ║  ✓ The full S82 `/arc` audit is exhausted: all six ranked items  ║
 ║  ✓ Session rendering resolves the newest committed authority mo  ║
-║  ✓ Candidate `1cfc8774b8f20f2a5bf8951445baadbd6092277a` passed   ║
+║  ✓ Candidate `046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d` passed   ║
 ║  ✓ Browser proof is green: Playwright `40/40`, responsive `206/  ║
 ║  ✓ Local test truth is split but complete: the long aggregate p  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -33,15 +33,15 @@
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
-║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  · context/DECISIONS.md                                          ║
+║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 88 files  ·  M:20 A:0 D:0 ?:68                         ║
+║  Changes: 65 files  ·  M:64 A:0 D:0 ?:1                          ║
 ║  Ahead: 1  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝

@@ -26,7 +26,7 @@
       "title": "Exact release and performance lineage",
       "projectImpact": 9,
       "ecosystemImpact": 9,
-      "evidence": "Candidate 1cfc8774… / artifact 9d1b585e… is exact across staging, 64 inspected captures and passing desktop/mobile public-entry metrics; receipt-only descendants are Git-proven and deployable deltas fail closed."
+      "evidence": "Candidate 046e35df… / artifact 656eb904… is exact across staging, 64 inspected captures and passing desktop/mobile public-entry metrics; receipt-only descendants are Git-proven and deployable deltas fail closed."
     }
   ],
   "followUps": [

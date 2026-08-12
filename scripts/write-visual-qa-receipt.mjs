@@ -56,7 +56,10 @@ if (report.status !== "passed") throw new Error("Latest responsive evidence did 
 if (!/^[a-f0-9]{40}$/i.test(report.sourceRevision || "")) throw new Error("Responsive evidence is not bound to an immutable source revision");
 if (!/^[a-f0-9]{64}$/i.test(report.artifactFingerprint?.digest || "")) throw new Error("Responsive evidence is not bound to an immutable artifact fingerprint");
 const projectStatus = JSON.parse(await fs.readFile(path.join(root, "context", "PROJECT_STATUS.json"), "utf8"));
-const receiptSession = Math.max(1, Number(projectStatus.currentSession || 0) + 1);
+const explicitReceiptSession = Number(process.env.RECEIPT_SESSION || 0);
+const receiptSession = Number.isInteger(explicitReceiptSession) && explicitReceiptSession > 0
+  ? explicitReceiptSession
+  : Math.max(1, Number(projectStatus.currentSession || 0) + 1);
 
 await fs.mkdir(receiptDir, { recursive: true });
 const captures = [];

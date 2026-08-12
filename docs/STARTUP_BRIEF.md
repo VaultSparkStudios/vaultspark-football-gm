@@ -28,7 +28,7 @@
 ║  ✓ player-authored Architect Objective hierarchy                 ║
 ║  ✓ desktop/mobile hosted performance and edge evidence           ║
 ║  Tests  1069 source-identical shard tests green; Playwright 40/  ║
-║  Deploy Candidate 1cfc8774b8f20f2a5bf8951445baadbd6092277a pass  ║
+║  Deploy Corrected candidate 046e35dfb23ff0592eeae2e3de4f0cfbe2d  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -71,9 +71,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    5% used                          ║
-║     46,983 / 1,000,000 tok  ·  codex/codex-1m  ·  heuristic      ║
-║     ~23,492 tok/turn  ·  cache 50%  ·  37 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
+║     37,644 / 1,000,000 tok  ·  codex/codex-1m  ·  heuristic      ║
+║     ~18,822 tok/turn  ·  cache 50%  ·  46 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 

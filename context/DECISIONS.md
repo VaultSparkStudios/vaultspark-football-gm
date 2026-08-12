@@ -1046,3 +1046,6 @@ Staging, visual and performance receipts bind the immutable deployable SHA and a
 
 **D-S82.5 — The release performance gate measures the canonical public entry; direct game-shell diagnostics remain visible separately.**
 Desktop/mobile medians and a real theme interaction are captured on `/`. The direct `/game.html` first-run tutorial diagnostic is retained as optimization evidence, including its layout-shift red. *Why:* route-specific evidence must answer the promise being gated without suppressing useful adjacent defects.
+
+**D-S82.6 — Source-bound evidence is excluded from deployable-content identity.**
+`edge-policy-receipt.json` names the publication SHA that emitted an otherwise identical policy. It joins `_health` and `deploy-manifest.json` outside the deterministic artifact hash, while the policy fingerprint and every executable/content byte remain inside their respective authorities. *Why:* a receipt-only publication must not fabricate product drift by embedding its own SHA into an evidence file.

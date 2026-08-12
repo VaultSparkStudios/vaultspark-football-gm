@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 82 arc implementation is complete and exact on stable staging: irreversible draft-trade review, planning-friction journey receipts, Architect Objective hierarchy, monotonic session authority, hosted performance evidence and unified deployable/publication release lineage at candidate 1cfc8774b8f20f2a5bf8951445baadbd6092277a / artifact 9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91. Production publication and clean CI follow this closeout commit; public launch remains HOLD.",
+  "currentFocus": "Session 82 arc implementation is complete and exact on stable staging: irreversible draft-trade review, planning-friction journey receipts, Architect Objective hierarchy, monotonic session authority, hosted performance evidence and unified deployable/publication release lineage at candidate 046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d / artifact 656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067. Production publication and clean CI follow the receipt-only commit; public launch remains HOLD.",
   "nextMilestone": "Observe real consenting first-session and Community Stats cohorts without manufacturing activity; separately prove Zoho delivery/reply-as, SHA-bound founder launch approval and authoritative lifecycle reconciliation before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-and-reply-identity-unverified, founder-launch-approval-unverified, lifecycle-authority-unreconciled."
@@ -90,7 +90,7 @@
   "currentSession": 82,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "Session 82 source-identical shards 1069 green with one transient aggregate Studio red followed by isolated Studio 196/196; Playwright 40/40; responsive 206/206; CANON-053 64 reviewed captures; Pages build/smoke; stable staging 14/14; hosted public-entry Core Web Vitals and edge policy green.",
+  "lastVerification": "Session 82 clean CI and deployment workflows are green at publication ad49b7b; corrected candidate 046e35d passed focused release tests 9/9, responsive 206/206, CANON-053 64 reviewed captures, Pages build/smoke, stable staging 14/14, and hosted public-entry Core Web Vitals/edge policy.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -156,7 +156,7 @@
       "three second-order visual, interaction and publication-authority refinements"
     ],
     "tests": "1069 source-identical shard tests green; Playwright 40/40; responsive 206/206; 64 reviewed dark/light desktop/mobile receipts",
-    "deploy": "Candidate 1cfc8774b8f20f2a5bf8951445baadbd6092277a passed stable staging 14/14 at artifact 9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91 with rollback; production publication follows the receipt-only closeout commit and launchReady remains false.",
+    "deploy": "Corrected candidate 046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d passed stable staging 14/14 at artifact 656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067 with rollback; production publication follows the receipt-only closeout commit and launchReady remains false.",
     "honestDeferrals": [
       "Direct /game.html first-run tutorial layout shift remains a separately retained optimization diagnostic; canonical public-entry metrics pass.",
       "Launch remains held on reply-capable email, SHA-bound founder approval and lifecycle authority.",
@@ -280,60 +280,61 @@
     ]
   },
   "stagingAuthority": {
-    "schemaVersion": "1.0",
-    "receiptSha256": "eba1f21490c194bba32e04731c78459e821a86fac1a8935c73d14a734454edfe",
-    "sourceRevision": "1cfc8774b8f20f2a5bf8951445baadbd6092277a",
+    "schemaVersion": "1.1",
+    "receiptSha256": null,
+    "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91",
-      "files": 192,
+      "digest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067",
+      "files": 191,
       "exclusions": [
         "_health",
-        "deploy-manifest.json"
+        "deploy-manifest.json",
+        "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "340d0138-134d-40b3-bb60-58951abf3e8f",
+    "deploymentId": "179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-12T05:30:42.634Z"
+      "checkedAt": "2026-08-12T07:21:16.936Z"
     },
     "rollback": {
-      "previousDeploymentId": "b13543d0-ac15-4e04-ae76-6045a52df031",
+      "previousDeploymentId": "340d0138-134d-40b3-bb60-58951abf3e8f",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-12T05:30:42.634Z"
+    "observedAt": "2026-08-12T07:21:16.937Z"
   },
-  "lastCloseoutAt": "2026-08-12T06:27:33.347Z",
+  "lastCloseoutAt": "2026-08-12T07:29:11.094Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
-    "sourceRevision": "1cfc8774b8f20f2a5bf8951445baadbd6092277a",
-    "artifactDigest": "9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91",
+    "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
+    "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067",
     "route": "/",
     "desktop": {
-      "lcpMs": 272,
+      "lcpMs": 556,
       "inpMs": 24,
       "cls": 0.0151
     },
     "mobile": {
-      "lcpMs": 300,
+      "lcpMs": 452,
       "inpMs": 16,
       "cls": 0.0085
     },
     "edgePolicyObserved": true,
     "verified": true,
-    "observedAt": "2026-08-12T05:36:07.800Z",
+    "observedAt": "2026-08-12T07:25:47.947Z",
     "diagnostic": "docs/performance/GAME_SHELL_DIAGNOSTIC.json retains the separate direct-game first-run layout-shift red."
   },
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "status": "staging-verified-production-pending",
-    "deployableRevision": "1cfc8774b8f20f2a5bf8951445baadbd6092277a",
-    "artifactDigest": "9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91",
+    "deployableRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
+    "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067",
     "stagingVerified": true,
     "visualVerified": true,
     "performanceVerified": true,

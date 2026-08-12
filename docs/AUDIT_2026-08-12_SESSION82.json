@@ -219,7 +219,7 @@
       "slug": "hosted-performance-evidence",
       "title": "Make exact-revision Web Vitals and edge evidence a reproducible release receipt",
       "status": "implemented",
-      "executionEvidence": ["stable staging exact candidate 14/14", "public entry route median desktop LCP 272ms INP 24ms CLS 0.0151", "mobile LCP 300ms INP 16ms CLS 0.0085", "direct game-shell hydration retained separately as a red diagnostic"],
+      "executionEvidence": ["stable staging exact candidate 14/14", "public entry route median desktop LCP 556ms INP 24ms CLS 0.0151", "mobile LCP 452ms INP 16ms CLS 0.0085", "direct game-shell hydration retained separately as a red diagnostic"],
       "premise": "Boot bytes, module reachability, responsive captures, staging provenance, and production parity are automated, but the app-release gate still has no current staging LCP/INP/CLS measurement and health reports hosted edge policy unobserved. The launch gate therefore cannot distinguish visual correctness from interaction/performance readiness.",
       "evidence": [
         "docs/AUDIT_2026-08-11_SESSION81.json release holds",
@@ -250,7 +250,7 @@
       "slug": "release-receipt-authority",
       "title": "Stop structured project status from carrying several stale release candidates at once",
       "status": "implemented",
-      "executionEvidence": ["release-authority focused suite 5/5", "one exact deployable candidate 1cfc8774 plus artifact 9d1b585e across staging, visual and performance receipts", "production verifier intentionally remains pending until direct-main publication"],
+      "executionEvidence": ["release provenance and authority focused suite 9/9", "one exact deployable candidate 046e35df plus artifact 656eb904 across staging, visual and performance receipts", "source-bound edge-policy receipt excluded from deployable-content identity with regression coverage", "production verifier intentionally remains pending until direct-main publication"],
       "premise": "Fresh staging and production verifiers prove d0d2b617/ad62bc26, while PROJECT_STATUS top-level verification narrates c822ae85/94bebbd1 and embedded release/staging authorities still cite 7becc573. Generated consumers can therefore select mutually inconsistent candidates from one otherwise valid JSON source.",
       "evidence": [
         "fresh staging 14/14 and production 10/10 verifier output",

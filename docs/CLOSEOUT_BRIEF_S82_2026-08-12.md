@@ -7,7 +7,7 @@
 - **Irreversible choice clarity** (10/10 project, 6/10 ecosystem): Live on-clock trade acceptance now pauses at an accessible exact-pick review; only explicit confirmation mutates the draft.
 - **Player-authored Architect hierarchy** (9/10 project, 5/10 ecosystem): Planning-friction receipts persist from real decisions and Architecture Review joins identity, active pressure, next proof and mastery path without predicted outcomes or hidden buffs.
 - **Monotonic session authority** (7/10 project, 9/10 ecosystem): Startup resolution chooses the newest committed status/handoff/SIL session and cannot self-heal backward.
-- **Exact release and performance lineage** (9/10 project, 9/10 ecosystem): Candidate 1cfc8774… / artifact 9d1b585e… is exact across staging, 64 inspected captures and passing desktop/mobile public-entry metrics; receipt-only descendants are Git-proven and deployable deltas fail closed.
+- **Exact release and performance lineage** (9/10 project, 9/10 ecosystem): Candidate 046e35df… / artifact 656eb904… is exact across staging, 64 inspected captures and passing desktop/mobile public-entry metrics; receipt-only descendants are Git-proven and deployable deltas fail closed.
 
 ## Follow-ups
 
