@@ -1,10 +1,29 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 83 closed at 996 / 1000 SIL v3.0. The full /arc shipped source-derived rematch memory, canonical touch transport, one honest public-stats feed contract and a truthful external Obelisk v2 boundary. Node is 1,078/1,078; stable staging is 14/14 at the exact artifact; nine dark/light desktop/mobile captures are reviewed and hash-bound. Launch remains independently HOLD with launchReady: false.
+Rolling status: Session 84 closed at 982 / 1000 SIL v3.0. A fresh three-item live-code audit shipped a first-run tutorial layout-shift fix, a scoped `/api/team-archetypes?team=` param, and coverage for the last genuinely untested browser module. Node is 1,094/1,094 (+16 tests); Pages build/smoke green. No deploy or rendered-pixel pass was needed or performed this session. Launch remains independently HOLD with launchReady: false.
 
-Previously — Session 82 closed at 991 / 1000 after irreversible draft-trade consent, player-authored Architect hierarchy and unified release lineage.
+Previously — Session 83 closed at 996 / 1000 after source-derived rematch memory, canonical touch transport, one honest public-stats feed contract and a truthful external Obelisk v2 boundary.
 <!-- rolling-status-end -->
+## 2026-08-13 — Session 84 Tutorial Layout Stability, Scoped Rival Intel, History-Formatting Coverage
+
+SIL v3.0: **982 / 1000** (Dev Health 100, Creative Alignment 99, Momentum 95, Engagement 97, Process Quality 92, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 99, Capital Efficiency 100, Automation Coverage 100).
+
+- **Dev Health: 100** — the canonical source-bound suite passes 1,094/1,094 across all five shards (up from 1,078/1,078, +16 new tests); Pages build/smoke are green.
+- **Creative Alignment: 99** — a stiller first-run tutorial route and a faster rival-intel card serve the beta-readiness/mobile-polish overlay directly, but this was a narrow maintenance-scoped session, not new General Manager depth.
+- **Momentum: 95** — only three items shipped; the audit agent's queue produced no viable second-order innovations this pass, which is an honest smaller session rather than an exhausted-then-saturated one.
+- **Engagement: 97** — removing a real measured layout shift on the very first screen a new player sees is a genuine first-impression improvement, but it is a defect fix, not a new engagement mechanic.
+- **Process Quality: 92** — no rendered-pixel dark/light desktop/mobile capture pass was run this session; both shipped changes were judged not to alter any themed visual state (CSS reservation of existing layout, and a backend query param with no new UI), but CANON-053 expects capture evidence on touched UI and this is a deliberate scope call, not a substitute for it — points withheld accordingly.
+- **Cross-Repo Coherence: 100** — no sibling repository was edited; no cross-repo cargo was required this session.
+- **Security Posture: 100** — no dependency, credential, or auth surface changed; the new query param is read-only and additive.
+- **Ecosystem Integration: 99** — unchanged; one point remains withheld until Obelisk relying-party registration is proven.
+- **Capital Efficiency: 100** — no dependency, paid service, model call, or variable-cost runtime was introduced.
+- **Automation Coverage: 100** — all three shipped items carry direct focused tests (16 new tests total), and the shard-coverage guard confirms every new file is registered exactly once.
+
+Committed SIL follow-ups:
+- [SIL] Re-measure hosted CLS on a live staging deploy after a layout-shift fix, not only the static CSS contract — a stylesheet assertion proves the reservation exists, not that the measured Core Web Vitals delta actually cleared threshold.
+- [SIL] When a session's audit lens produces fewer than 3 items with no second-order candidates, that is itself a signal worth recording — it means the project is entering steady-state maintenance on this axis, not that the audit under-searched.
+
 ## 2026-08-12 — Session 83 Rematch Memory, Touch Broadcast and Contract Truth
 
 SIL v3.0: **996 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 99, Process Quality 98, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 99, Capital Efficiency 100, Automation Coverage 100).

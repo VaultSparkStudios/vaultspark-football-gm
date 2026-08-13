@@ -12,6 +12,22 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 
+## Session 84 — Full arc: tutorial layout stability, scoped rival-intel fetch, history-formatting coverage (2026-08-13)
+
+Source: `docs/AUDIT_2026-08-13_SESSION84.json`.
+
+| Item | Status |
+|------|--------|
+| first-run-tutorial-layout-stability — reserve layout space for the five desktop panels and four mobile elements named in the live CLS-failure diagnostic so the first-run tutorial route stops shifting under the reading player | ✅ Done |
+| rival-gm-single-team-endpoint — add a scoped `?team=` param to `/api/team-archetypes` (both Express and static runtimes) so Overview's rival-intel card stops refetching all 32 teams' personas to read one opponent's row | ✅ Done |
+| history-formatting-test-coverage — direct focused coverage for `public/lib/historyFormatting.js`, the one browser module with genuinely zero prior test references | ✅ Done |
+
+**Rejected phantoms (verified against live code, not implemented):** rival-GM-persona surfacing (already wired end-to-end since S70); offline/service-worker support (already shipped S62); `communityEventContract.js`/`gistCredentials.js`/`pressRoomPanel.js` "untested module" candidates (each already covered — via a re-export shim, a behavior-named test file, and a Playwright surfaces spec, respectively — a naive filename grep missed all three); Depth Chart drag-and-drop mobile parity (no drag-and-drop exists to make parity work on; it is already button-based); re-treating the tutorial diagnostic as the canonical release gate (S83's D-S82.5 exclusion still holds — this item fixes the defect, not the gating question).
+
+**Verification:** canonical source-bound Node receipt 1,094/1,094 (core 123, runtime 692, sim-contract 79, sim-realism 1, studio 199 — up from 1,078/1,078, +16 new tests); Pages build/smoke green; no backend contract break (additive `?team=` param only).
+
+**Launch posture:** unchanged. Preserve `launchReady: false` until Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation exist.
+
 ## Session 83 — Full arc: rematch memory, touch broadcast and public contract truth (2026-08-12)
 
 Source: docs/AUDIT_2026-08-12_SESSION83.md.

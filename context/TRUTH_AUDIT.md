@@ -2,8 +2,17 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-12
+Last reviewed: 2026-08-13
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-08-13 - Session 84 truth update
+
+- **The tutorial layout-shift fix is verified as a static contract, not a live measurement.** `public/styles.css` now reserves the exact rendered height for every panel/element named in `docs/performance/GAME_SHELL_DIAGNOSTIC.json`'s shift log, and `test/tutorial-layout-stability.test.js` asserts the stylesheet declares it. No live-staging CLS re-measurement was performed this session — the diagnostic JSON still shows the pre-fix numbers until that re-measure runs. This gap is stated explicitly rather than implied closed.
+- **`/api/team-archetypes?team=` is additive and exact.** Omitting the param returns the unchanged full 32-team response (both runtimes, regression-tested); supplying an unknown team returns an empty array, not an error.
+- **`historyFormatting.js` coverage claim is exact.** All five exports (`formatAwardList`, `hallOfFameCareerLine`, `awardCountLine`, `hallOfFamePolicyLine`, `retiredNumberPolicyLine`) have direct assertions; three superficially similar "untested module" candidates surfaced by the audit turned out already covered on closer verification and were correctly not reimplemented as redundant work.
+- **No rendered-pixel capture claim is made this session.** Both shipped changes were judged not to alter any themed visual state; this is recorded as a scope decision, not silently omitted.
+- **Suite count is exact.** Node passes 1,094/1,094 direct exit 0 (up from 1,078/1,078, +16 tests); Pages build/smoke green.
+- **Deployment is not launch.** Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation remain unproved, unchanged. launchReady stays false.
 
 ## 2026-08-12 - Session 83 truth update
 

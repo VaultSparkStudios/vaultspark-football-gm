@@ -772,7 +772,7 @@ async function renderRivalryStrip(schedule, controlledTeamId) {
 
   // Rival coach intel card
   try {
-    const res = await api(`/api/team-archetypes`);
+    const res = await api(`/api/team-archetypes?team=${encodeURIComponent(opponentId)}`);
     const rival = (res?.archetypes || []).find((a) => a.teamId === opponentId);
     const intel = buildRivalCoachIntel(rival?.archetype?.label, heat, rival?.ovr);
     const intelContainer = document.getElementById("rivalCoachIntelContainer");

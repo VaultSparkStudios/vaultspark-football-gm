@@ -1,0 +1,239 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-13",
+  "session": 84,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 38.5,
+    "source": "Fresh Session 84 live-code audit against the 30,981-token codebase sample plus targeted grep/read across public/lib, src/engine, src/community, src/app/api and test/. Every candidate premise was checked against live source and, where it exists, live evidence (hosted performance diagnostic, test/ contents) before inclusion; several strong-looking candidates were dropped after verification found them already shipped or already covered.",
+    "qualityBar": "L2 by default: one canonical authority per fix, player-visible or evidence-backed payoff, deterministic focused tests where practical, no fabricated activity or measurement, dark/light desktop/mobile rendered proof for touched UI, launchReady preserved false."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay: vivid General Manager agency, source-derived memory, touch/keyboard parity, privacy, static/local-first behavior, public stats honesty, release gates; gamification/engagement/immersion weighted +2, ui/ux and speed/organization/efficiency weighted +1",
+    "staging": "stable Cloudflare Pages must prove the exact immutable candidate before direct-to-main publication; backend deployment is required only when backend source changes",
+    "source": "arc-profile registry authority, Session 84 startup context, 29,981-token code sample, exact grep/read preverification against live source and test/, docs/performance/GAME_SHELL_DIAGNOSTIC.json hosted evidence, context/DECISIONS.md and context/TASK_BOARD.md tail review"
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 9,
+    "sessionEngagement": 9,
+    "retention": 7,
+    "soulFidelity": 8,
+    "overall": 8.4,
+    "evidence": "Carried forward from Session 83's code-contract review; this session did not re-run a full game-loop review, only targeted checks of specific surfaces (Overview rival intel, first-run tutorial route, Press Room, Hall of Fame formatting). No consented cohort or docs/PLAYTESTS evidence exists, so these scores do not claim measured fun or retention."
+  },
+  "releaseGate": {
+    "deploymentVerdict": "NOT RE-VERIFIED THIS SESSION — audit-only pass, no deployment or staging checks were run. Session 83 closed with revision 8b7d59597dc17a546ba3130cdb44769455713a2c and artifact 0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a verified GO across staging, production, rendered pixels, and hosted performance.",
+    "launchVerdict": "NO-GO — unchanged. Deployment authorization does not permit a public launch flip.",
+    "launchHolds": [
+      "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
+      "authoritative registry/local lifecycle reconciliation",
+      "SHA-bound public-launch approval distinct from deploy authorization",
+      "registered and end-to-end verified Obelisk Passport v2 relying party before any account-bearing flow"
+    ]
+  },
+  "axisCoverage": {
+    "featuresDepth": [],
+    "newInnovativeFeatures": [
+      "first-run-tutorial-layout-stability"
+    ],
+    "uiUx": [
+      "first-run-tutorial-layout-stability"
+    ],
+    "feedbackLoop": [],
+    "gamificationEngagementImmersion": [
+      "first-run-tutorial-layout-stability"
+    ],
+    "aiIntegration": [],
+    "securityPrivacy": [],
+    "speedOrganizationEfficiency": [
+      "first-run-tutorial-layout-stability",
+      "rival-gm-single-team-endpoint",
+      "history-formatting-test-coverage"
+    ],
+    "releaseTruth": [],
+    "tokenApiReduction": [
+      "rival-gm-single-team-endpoint"
+    ]
+  },
+  "recommendedMoves": [
+    "Fix the exact hosted CLS/LCP regression already sitting in docs/performance/GAME_SHELL_DIAGNOSTIC.json instead of re-arguing which route is the canonical gate — reserve layout space for the five/four named panels that collapse to zero height on the first-run tutorial path.",
+    "Stop the Overview rival-intel strip from refetching every rival GM's full persona and memory ledger just to read one opponent's row; scope the request to the one team it actually renders.",
+    "Close the one remaining genuinely-untested browser module (historyFormatting.js) rather than the three that looked untested by name but are already covered through re-export shims and Playwright specs."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Surface rival GM personas (name/traits/grudge memory) on trade offers and pre-game intel",
+      "reason": "Already fully wired. src/engine/rivalGmPersona.js feeds gmName/gmLine into rivalTradeOffers.js offer cards, beatReporter.js news, and buildPersonaIntel() renders on the Overview rival-coach-intel card via public/lib/tabOverview.js:781-785. Nothing to add."
+    },
+    {
+      "candidate": "Add offline/PWA service-worker support so the app boots from cache",
+      "reason": "Already shipped at Session 62 (D-S62 service-worker-instant-boot) and hardened at Session 70/71 (per-URL allSettled precache, index registration root-fix). public/boot-manifest.json and the build-generated sw.js already exist; re-proposing this would ignore recorded decisions."
+    },
+    {
+      "candidate": "Add unit test coverage for public/lib/communityEventContract.js",
+      "reason": "False premise caught before inclusion: test/community-event-contract.test.js (255 lines) imports normalizeCommunityEvent from src/community/eventContract.js, which is a one-line re-export of this exact file (`export * from \"../../public/lib/communityEventContract.js\"`). A naive filename-substring grep missed this; reading the shim caught it. Coverage is real."
+    },
+    {
+      "candidate": "Add unit test coverage for public/lib/gistCredentials.js (token storage)",
+      "reason": "False premise: test/gist-sync-security.test.js exercises getSavedToken/saveToken/getSavedGistId/saveGistId directly by name. Coverage is real; a bare filename grep missed it because the test file is named for behavior, not the module."
+    },
+    {
+      "candidate": "Add unit test coverage for public/lib/pressRoomPanel.js",
+      "reason": "Partially false premise, and repeats a Session 78 finding under a different name. tests-ui/s63-surfaces.spec.js drives #pressRoomCard end-to-end in a real browser. Session 78 already recorded 'pressRoomPanel.js already covered by two test files' — this session's grep for the literal name matched pressRoom.js (the tested engine) and momentarily suggested the DOM layer was uncovered, but the Playwright spec closes that gap. Not re-added."
+    },
+    {
+      "candidate": "Add drag-and-drop reordering to the Depth Chart for mobile parity",
+      "reason": "No drag-and-drop exists anywhere in the codebase to make mobile-parity work on. public/lib/tabRoster.js renderDepthChart() already uses Up/Down buttons (44px touch targets, keyboard-operable), which is full mobile/desktop parity by construction — there is no desktop-only interaction being excluded from touch."
+    },
+    {
+      "candidate": "Treat the direct /game.html first-run tutorial CLS/LCP diagnostic as the canonical release Web Vitals gate",
+      "reason": "Rejected again for the same reason Session 83 rejected it (premise error about measurement authority). This session's item instead fixes the actual layout-shift defect the diagnostic already measured, without touching which route gates release."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "UI/UX / gamification-engagement-immersion / first impression",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 20.7,
+      "slug": "first-run-tutorial-layout-stability",
+      "title": "Stop the first-run tutorial route from visibly collapsing under the reading player",
+      "status": "shipped",
+      "premise": "The live hosted performance diagnostic for the direct /game.html first-run tutorial path (the exact page a brand-new player sees) already measures desktop CLS 0.4271 and mobile CLS 0.2419 against a 0.1 threshold, plus desktop/mobile LCP 3280ms/2780ms against a 1800ms threshold — all four checks fail in docs/performance/GAME_SHELL_DIAGNOSTIC.json's own evaluation block. The recorded shift sources are five named desktop panels (franchiseCommandCenter, coGmBriefPanel, franchiseArchitecture, trophyRoadPanel, gmCommitmentBoard) and four named mobile elements (overview-hero-side, weeklyPlanSummaryText, footer-guide-panel, game-footer) that render at zero size and then snap to full height once their async content lands, moving the tutorial paragraph the player is mid-reading.",
+      "evidence": [
+        "docs/performance/GAME_SHELL_DIAGNOSTIC.json evaluation.failures: desktop LCP, desktop CLS, mobile LCP, mobile CLS (staging revision 1cfc8774b8f20f2a5bf8951445baadbd6092277a, receipt a9a453beae346fcaf1b040c610f22475bb0eae0508776582c819123750fd8778)",
+        "docs/performance/GAME_SHELL_DIAGNOSTIC.json profiles[0].samples[0].shifts naming the five collapsing desktop panel ids",
+        "docs/performance/GAME_SHELL_DIAGNOSTIC.json profiles[1].samples[0].shifts naming the four collapsing mobile elements",
+        "grep of public/styles.css confirmed no min-height rule exists for franchiseCommandCenter, coGmBriefPanel, franchiseArchitecture, trophyRoadPanel, or gmCommitmentBoard",
+        "context/DECISIONS.md D-S82.5: this diagnostic is retained as optimization evidence, not fixed, as of the last closeout"
+      ],
+      "constraint": "Rendering-order fix only. Do not change the lazy-UI-island hydration contract (D-S73.6), do not add artificial delay, do not change what loads when — only reserve the layout space each panel will occupy once its real content lands, so its arrival stops moving the page.",
+      "verification": [
+        "re-run scripts/measure-hosted-performance.mjs against a staging deploy and confirm desktop and mobile CLS <= 0.1",
+        "confirm the recorded LCP element (tutorial-body) and its measured time do not regress further",
+        "existing lazy-UI-island and boot-budget tests remain green",
+        "dark/light desktop/mobile rendered captures of the tutorial route show no visible flash-then-shift"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Add fixed min-height CSS placeholders sized to typical rendered height for the five desktop panels named in the shift log, matching the existing min-height pattern already used elsewhere in public/styles.css."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Add min-height reservations for every panel/element named in both the desktop and mobile shift logs at their respective breakpoints, re-run the hosted performance script to prove CLS drops under 0.1 on both profiles, and add a focused test asserting the stylesheet declares a placeholder height for each affected panel id."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus a shimmer/skeleton loader matching each panel's final layout so the tutorial route has zero unstyled-content flash in addition to zero shift, proven with dark/light desktop/mobile rendered captures before and after."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "Speed / organization / efficiency / token-cost reduction",
+      "effortHours": 1.5,
+      "impact": 6,
+      "innovation": 4,
+      "priority": 13.3,
+      "slug": "rival-gm-single-team-endpoint",
+      "title": "Stop refetching all 32 rival GM personas to render one opponent's Overview card",
+      "status": "shipped",
+      "premise": "public/lib/tabOverview.js's renderRivalryStrip() calls GET /api/team-archetypes on every Overview render — which fires on essentially every state change (public/app.js:479, 632, 645, 2370, 2373 and public/lib/gameFlow.js:125, covering tab switches, week advances, and sim resolution) — to read exactly one opponent's row. That endpoint (src/app/api/localApiRuntime.js:1719-1729 and the mirrored route in src/server.js:2079) computes buildPersonaIntel() — persona identity plus up to an 8-entry receipted memory ledger — for all 32 league teams every single call, even though only one team's data is ever read from the response at that call site.",
+      "evidence": [
+        "public/lib/tabOverview.js:775-785 fetches `/api/team-archetypes` and reads only `res.archetypes.find(a => a.teamId === opponentId)`",
+        "src/app/api/localApiRuntime.js:1722-1729 `archetypes = (session.league.teams || []).map(t => ({ ..., gm: buildPersonaIntel(session.league, t.id) }))` — full 32-team map on every call",
+        "public/lib/engagementFeatures.js:615-627 already maintains a separate `_archetypesCache` for the same endpoint's League GM Archetypes table (populated only on demand via the Standings tab's load button), confirming the endpoint has a second, independent full-roster consumer that a scoped param must not break"
+      ],
+      "constraint": "Keep buildPersonaIntel/getRivalGmPersona as the single shared authority — do not duplicate scoring or persona-generation logic in a new endpoint. The existing full-roster League GM Archetypes table (public/lib/engagementFeatures.js loadTeamArchetypes/renderArchetypesTable) must keep working unchanged.",
+      "verification": [
+        "a single-team-scoped request returns persona/memory/archetype data identical to the matching row of the unscoped response for a sample team",
+        "the existing League GM Archetypes table still renders all 32 rows correctly",
+        "a focused test measures the scoped response is smaller than the full response for a league with populated grudge memories"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Add an optional `?team=` query param to `/api/team-archetypes` that, when present, computes and returns only that one team's archetype+persona+memory row."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Add the scoped param on both API adapters (src/app/api/localApiRuntime.js and src/server.js), update tabOverview.js's renderRivalryStrip to request the scoped payload instead of the full roster, and add a focused test proving scoped/unscoped equivalence for the same team."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus extend engagementFeatures.js's existing `_archetypesCache` to also store persona/memory, so once the Standings tab has loaded the full roster this session, Overview's rival-intel card reads the warm cache with zero network round trip."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "LOW",
+      "category": "Speed / organization / efficiency / test coverage",
+      "effortHours": 0.5,
+      "impact": 3,
+      "innovation": 2,
+      "priority": 4.5,
+      "slug": "history-formatting-test-coverage",
+      "title": "Add focused coverage for the one browser module that is genuinely untested",
+      "status": "shipped",
+      "premise": "public/lib/historyFormatting.js exports five pure formatting functions (formatAwardList, hallOfFameCareerLine, awardCountLine, hallOfFamePolicyLine, retiredNumberPolicyLine) consumed by public/lib/tabHistory.js and public/lib/tabSettings.js. After checking three look-alike candidates and finding each already covered (communityEventContract.js via a re-export shim + its own 255-line test, gistCredentials.js via test/gist-sync-security.test.js, pressRoomPanel.js via tests-ui/s63-surfaces.spec.js), this is the one module left with zero references anywhere in test/ or tests-ui/.",
+      "evidence": [
+        "grep across test/ and tests-ui/ for historyFormatting, hallOfFameCareerLine, awardCountLine, hallOfFamePolicyLine, retiredNumberPolicyLine, formatAwardList returns nothing",
+        "public/lib/historyFormatting.js:9-14 branches on player position for career-line formatting with no test asserting each position branch (QB/RB/WR-TE/K/P/defense-fallback) produces the right stat line",
+        "public/lib/historyFormatting.js:22 sums OROY+DROY+ROY into one displayed 'ROY' count — an easy off-by-composition bug for a future edit to introduce silently without a test catching it"
+      ],
+      "constraint": "Pure-function unit tests only; no DOM, no snapshot of rendered HTML strings beyond what the functions themselves return.",
+      "verification": [
+        "one test per position branch of hallOfFameCareerLine",
+        "awardCountLine's combined ROY count and its zero-value filtering are both asserted",
+        "hallOfFamePolicyLine/retiredNumberPolicyLine default and override paths are asserted"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Add tests for hallOfFameCareerLine's six position branches only."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Add a full focused test file covering all five exports: every position branch, the ROY composition, zero-value award filtering, and both policy-line default/override paths."
+        },
+        "L3": {
+          "effortHours": 1,
+          "recipe": "L2 plus a golden-output regression fixture generated from a real simulated Hall of Fame class, so a future stat-shape change to careerStats fails loudly here instead of silently mis-rendering History."
+        }
+      }
+    }
+  ],
+  "innovationCandidates": [
+    {
+      "slug": "first-run-tutorial-layout-stability",
+      "verdict": "selected",
+      "novelty": "Closes an already-measured, already-recorded CLS/LCP regression on the exact page every new player sees, without re-litigating which route is the canonical release gate."
+    },
+    {
+      "slug": "rival-gm-single-team-endpoint",
+      "verdict": "selected",
+      "novelty": "Scopes an existing full-league persona/memory computation to the single opponent actually rendered, cutting repeated per-render payload and compute without touching the shared persona authority."
+    },
+    {
+      "slug": "history-formatting-test-coverage",
+      "verdict": "selected",
+      "novelty": "Not novel by itself; included because it is the one genuinely uncovered module found after three look-alike candidates were disproven by direct evidence."
+    }
+  ],
+  "secondOrderImprovements": []
+}

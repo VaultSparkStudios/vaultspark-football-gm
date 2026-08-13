@@ -1,48 +1,44 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: f0399629dd12 -->
-<!-- generated-at: 2026-08-13T02:43:35.833Z -->
+<!-- source-hash: 342d9e4c47f9 -->
+<!-- generated-at: 2026-08-13T07:48:27.831Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 83 HANDOFF SUMMARY
+# Handoff Summary — Session 84
 
-Session
-- S83 closed. Next: S84.
+## Session
+- S84 closeout. Next: S85 fresh live-code audit from S84 authority.
 
-Shipped (S83)
-- Tactical Film Room: Rematch Memory from canonical rivalry ledger, bounded recent sample, explicit non-causal boundary.
-- Sim-Watch: single reachable ticker launch path; touch/pen horizontal swipe routed through existing previous/next controller; mobile overlay stacking and viewport bounds fixed without weakening keyboard/button parity.
-- public/stats-surface.json: single aggregate-only Analytica Feed v1 (six metrics, three showcase IDs, 30s polling, no synthetic cohort claim).
-- Obelisk boundary: legacy Passport v1 scaffolds removed; declared external / not-integrated; OIDC Auth Code + PKCE SHA-256 required. Ark cargo 01JVSA8NLA2EE76D2CFC3958C0 requests relying-party registration.
-- Proof: canonical 1,078/1,078 across five shards; nine captures at 1440/390px dark/light; CANON-053 pass, zero defects; zero console errors.
-- Unified authority verified at 8b7d595… / artifact 0f79737d…; production 10/10 and staging 14/14 at deployment 281d4791-704c-4c76-a01d-33aee51d09ba; rollback f596dea2-e7a5-4a08-bffd-8513a94f97d6.
+## Shipped (S84)
+- Tutorial route `/game.html`: 5 desktop + 4 mobile panels now reserve rendered height in `public/styles.css`, closing CLS shift sources.
+- `/api/team-archetypes?team=` optional param added to Express (`src/server.js`) and static (`src/app/api/localApiRuntime.js`) runtimes; Overview Rival Coach Intel now scoped to one opponent. Full-list caller unchanged (needs all 32).
+- `public/lib/historyFormatting.js` now covered by `test/history-formatting.test.js` (5 tests, all formatters).
+- Node proof 1,094/1,094 across five shards (+16: 9 layout, 2 archetype scoping, 5 formatting). Pages build/smoke green.
 
-Current Intent (S84)
-- Fresh live-code audit from S83 authority. Prefer measured player-facing depth and real cohort observation over duplicating shipped systems. Preserve external Obelisk boundary and public-launch HOLD unless new signed evidence changes them.
+## Current Intent
+- Verify shipped work against live evidence; do not re-litigate exhausted S84 lens. Preserve external Obelisk boundary and public-launch HOLD unless new signed evidence changes them.
 
-Now Bucket (top 3)
-- Observe first real opted-in Community Stats cohort without manufacturing activity; evaluate historical/shareable aggregates only after cohort proves value.
-- Complete Obelisk relying-party registration when signed Ark response arrives; prove discovery, PKCE, session, logout before exposing account flows.
-- Prove Zoho delivery/reply-as; obtain SHA-bound founder launch approval; reconcile authoritative lifecycle before any public-launch flip.
+## Now — Top 3
+1. Re-run `scripts/measure-hosted-performance.mjs` against live staging to confirm tutorial CLS lands under 0.1 desktop and mobile (contract verified, live delta not).
+2. Observe first real opted-in Community Stats cohort; evaluate historical/shareable aggregates only after value proven.
+3. Complete Obelisk relying-party registration on signed Ark response, then prove discovery, PKCE, session, logout before account flows.
 
-Blockers (top 3)
-- Zoho delivery/reply-as unproved.
-- SHA-bound founder launch approval false.
-- Registry SPARKED / local FORGE reconciliation unmet.
+## Blockers — Top 3
+1. Zoho delivery/reply-as unproved.
+2. SHA-bound founder launch approval unmet (false).
+3. Registry SPARKED / local FORGE lifecycle reconciliation unmet.
 
-Human-Blocked (external gates)
-- Founder launch approval: pending, unmet since ≥S78.
-- Zoho reply-capable email delivery: pending since ≥S78.
-- Registry SPARKED/FORGE reconciliation: sibling-owned via signed Ark, flagged since ≥S78.
-- Obelisk relying-party registration: awaiting signed Ark response (opened S83).
+## Human-Blocked (age)
+- Public launch HOLD: 3 external gates (Zoho, founder approval, lifecycle) — persisting unchanged since at least S78 (6+ sessions).
+- Obelisk relying-party registration: awaiting signed Ark response — since S83 (1+ session).
 
-Invariants
-- Rivalry history is descriptive evidence only: never prediction, causality, or invisible bonus.
-- Touch, buttons, keyboard drive one Sim-Watch controller; no gesture-owned playback state machine.
-- One aggregate-only Community Stats feed; no population/adoption/small-cohort disclosure.
-- No Passport v1 restore or project-local identity until Obelisk registers/verifies public client end to end.
+## Constraints That Must Survive
+- Tutorial min-height is rendering-order fix only; never alter lazy-island hydration contract (D-S73.6) or add delay.
+- `/api/team-archetypes` additive/backward-compatible; omitting param always returns all 32.
+- No live-pixel pass run S84 (CSS layout + backend query only, no themed visual change) — stated as scope call.
 
-Key Files
-- public/lib/tacticalFilmRoom.js, public/lib/simWatchDirector.js, public/lib/gameFlow.js
-- public/stats-surface.json, docs/OBELISK_INTEGRATION.md, obelisk-passport/README.md
-- docs/AUDIT_2026-08-12_SESSION83.
+## Do Not Re-Litigate (S85)
+- Rival-GM persona surfacing, offline/service-worker, three already-covered untested modules, Depth Chart drag-and-drop parity — rejected phantoms, need new evidence.
+
+## Next-Session Pointer
+Start `docs/AUDIT_2026-08-13_SESSION84.json`; run fresh S85 live-code audit, prioritize live-staging CLS re-measure.

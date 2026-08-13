@@ -1720,7 +1720,11 @@ export function createLocalApiRuntime({
 
       // ── AI Team GM Archetypes ────────────────────────────────────────────
       if (method === "GET" && pathname === "/api/team-archetypes") {
-        const archetypes = (session.league.teams || []).map((t) => ({
+        const scopedTeamId = (url.searchParams.get("team") || "").toUpperCase();
+        const teams = scopedTeamId
+          ? (session.league.teams || []).filter((t) => t.id === scopedTeamId)
+          : (session.league.teams || []);
+        const archetypes = teams.map((t) => ({
           teamId: t.id,
           name: [t.city, t.nickname].filter(Boolean).join(" ") || t.name || t.id,
           abbrev: t.abbrev || t.id,

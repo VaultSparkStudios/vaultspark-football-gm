@@ -1,27 +1,27 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-13 (Session 83 closeout) -->
+<!-- generated-at: 2026-08-13 (Session 84 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S83 ══════╗
-║  Date: 2026-08-13  ·  SIL: 996/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S84 ══════╗
+║  Date: 2026-08-13  ·  SIL: 982/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ The full S83 /arc is exhausted: all four ranked items and fi  ║
-║  ✓ Sim-Watch has one reachable ticker launch path and touch/pen  ║
-║  ✓ public/stats-surface.json is the single aggregate-only Analy  ║
-║  ✓ Legacy Passport v1 callback/token scaffolds are gone. The pr  ║
-║  ✓ Canonical Node proof is 1,078/1,078 across five source-bound  ║
+║  ✓ The full S84 `/arc` audit and implementation scope is exhaus  ║
+║  ✓ The first-run `/game.html` tutorial route's five desktop pan  ║
+║  ✓ `/api/team-archetypes` accepts an optional `?team=` query pa  ║
+║  ✓ `public/lib/historyFormatting.js` now has direct coverage (`  ║
+║  ✓ Canonical Node proof is 1,094/1,094 across five source-bound  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 996/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 982/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          100  ██████████                            ║
-║    Momentum           100  ██████████                            ║
-║    Engagement         99   ██████████                            ║
-║    Process Qual       98   ██████████                            ║
+║    Alignment          99   ██████████                            ║
+║    Momentum           95   ██████████                            ║
+║    Engagement         97   ██████████                            ║
+║    Process Qual       92   █████████░                            ║
 ║    Coherence          100  ██████████                            ║
 ║    Security           100  ██████████                            ║
 ║    Ecosystem          99   ██████████                            ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 14 files  ·  M:14 A:0 D:0 ?:0                          ║
+║  Changes: 22 files  ·  M:16 A:0 D:0 ?:6                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,15 +52,14 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        5/6                                              ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1078/1078                                        ║
+║  Tests:         1094/1094                                        ║
 ║  IGNIS:         2d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  4d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
-║      Latest audit has no open ranked items; run /audit for a ne  ║
-║      ↳ node scripts/ops.mjs genius-list                          ║
+║  #1: first-run-tutorial-layout-stability — Add min-height reser  ║
+║      UI/UX / gamification-engagement-immersion / first impressi  ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 

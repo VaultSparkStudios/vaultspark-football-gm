@@ -1,0 +1,62 @@
+{
+  "session": "S84",
+  "date": "2026-08-13",
+  "repo": "franchise-architect",
+  "headline": "Completed the full arc: a fresh three-item live-code audit closed a measured first-run tutorial layout-shift defect, scoped the rival-intel fetch, and covered the last genuinely untested browser module — proven by a complete source-bound suite of 1,094/1,094.",
+  "items": [
+    {
+      "title": "First-run tutorial layout-shift fix",
+      "projectImpact": 8,
+      "ecosystemImpact": 3,
+      "evidence": "The five desktop panels and four mobile elements named in docs/performance/GAME_SHELL_DIAGNOSTIC.json's CLS-failure evaluation now reserve their real rendered height in public/styles.css, so async-hydrated content can no longer shift the page under a mid-read player."
+    },
+    {
+      "title": "Scoped rival-intel fetch",
+      "projectImpact": 6,
+      "ecosystemImpact": 2,
+      "evidence": "/api/team-archetypes accepts an additive, backward-compatible ?team= param in both runtimes; Overview's Rival Coach Intel card no longer refetches all 32 teams' persona/memory ledgers to read one opponent's row."
+    },
+    {
+      "title": "History-formatting test coverage",
+      "projectImpact": 4,
+      "ecosystemImpact": 2,
+      "evidence": "public/lib/historyFormatting.js — the one browser module confirmed to have zero test references after checking three superficially similar phantom candidates — now has direct coverage for all five exported formatters."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "Re-measure live-staging CLS",
+      "evidence": "The layout fix is verified as a static CSS contract; the actual hosted Core Web Vitals delta has not been re-measured against a live staging deploy."
+    },
+    {
+      "title": "Observe real cohorts",
+      "evidence": "Measure real consenting Community Stats behavior without manufacturing activity."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "Public launch remains HOLD",
+      "evidence": "Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation remain unproved and unchanged this session."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "No live-measurement overclaim",
+      "evidence": "The tutorial layout fix is described as a verified static contract, not a proven live CLS improvement — the re-measurement is an explicit follow-up, not a silent gap."
+    },
+    {
+      "title": "No rendered-pixel overclaim",
+      "evidence": "No visual capture pass was run this session; both shipped items were judged not to alter any themed visual state, and that judgment is stated explicitly rather than omitted."
+    },
+    {
+      "title": "No phantom audit items",
+      "evidence": "Several candidates (rival-GM persona surfacing, offline/service-worker support, three look-alike untested-module claims, Depth Chart drag-and-drop parity) were verified against live code and correctly rejected before implementation."
+    }
+  ],
+  "diffStat": {
+    "files": 16,
+    "insertions": 255,
+    "deletions": 95,
+    "suite": "1,094/1,094 source-bound Node tests (+16 up from 1,078/1,078); Pages build/smoke green"
+  }
+}

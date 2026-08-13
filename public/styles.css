@@ -242,6 +242,18 @@ button.warn {
   backdrop-filter: blur(10px);
 }
 
+/* S84: reserve first-run tutorial-route panel space so async-hydrated content
+   cannot shift the page under a mid-read player (docs/performance/GAME_SHELL_DIAGNOSTIC.json). */
+#franchiseCommandCenter { min-height: 154px; }
+#coGmBriefPanel { min-height: 246px; }
+#franchiseArchitecture { min-height: 205px; }
+#trophyRoadPanel { min-height: 201px; }
+#gmCommitmentBoard { min-height: 152px; }
+.overview-hero-side { min-height: 270px; }
+#weeklyPlanSummaryText { min-height: 26px; }
+.footer-guide-panel { min-height: 256px; }
+.game-footer { min-height: 232px; }
+
 .split {
   display: grid;
   grid-template-columns: minmax(0, 1fr);

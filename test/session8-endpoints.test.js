@@ -247,6 +247,37 @@ test("GET /api/team-archetypes BUF entry is present", async () => {
   assert.ok(buf, "BUF must be in archetypes list");
 });
 
+test("GET /api/team-archetypes?team=<id> scopes the response to exactly one team", async () => {
+  const rt = makeRuntime();
+  await makeLeague(rt, { seed: 9024 });
+
+  const all = await rt.request("/api/team-archetypes");
+  const anyOther = all.payload.archetypes.find((e) => e.teamId !== "BUF")?.teamId;
+
+  const res = await rt.request("/api/team-archetypes?team=BUF");
+  assert.equal(res.status, 200);
+  assert.equal(res.payload.ok, true);
+  assert.equal(res.payload.archetypes.length, 1);
+  assert.equal(res.payload.archetypes[0].teamId, "BUF");
+  assert.ok(res.payload.archetypes[0].gm, "scoped entry still carries persona intel");
+
+  if (anyOther) {
+    const otherRes = await rt.request(`/api/team-archetypes?team=${anyOther.toLowerCase()}`);
+    assert.equal(otherRes.payload.archetypes.length, 1);
+    assert.equal(otherRes.payload.archetypes[0].teamId, anyOther, "team param is case-insensitive");
+  }
+});
+
+test("GET /api/team-archetypes?team=<unknown> returns an empty list, not an error", async () => {
+  const rt = makeRuntime();
+  await makeLeague(rt, { seed: 9025 });
+
+  const res = await rt.request("/api/team-archetypes?team=ZZZ");
+  assert.equal(res.status, 200);
+  assert.equal(res.payload.ok, true);
+  assert.deepEqual(res.payload.archetypes, []);
+});
+
 // ── /api/records/franchise ────────────────────────────────────────────────────
 
 test("GET /api/records/franchise returns ok:true with records object", async () => {

@@ -2,6 +2,22 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-13 - S84: layout-shift fixes reserve space, they never change hydration order
+
+**Decision:** When a live performance diagnostic identifies panels/elements that shift layout because they render at zero size before async content lands, the fix is to reserve their real rendered height with CSS ahead of time — never to add artificial delay, change what loads when, or alter the existing lazy-UI-island hydration contract (D-S73.6).
+
+**Rationale:** `docs/performance/GAME_SHELL_DIAGNOSTIC.json` named the exact five desktop and four mobile elements causing the first-run tutorial route's CLS failures. A rendering-order-only fix closes the defect without touching the hydration boundary the S73 architecture depends on, and stays test-verifiable as a static stylesheet assertion rather than a timing-dependent one.
+
+---
+
+## 2026-08-13 - S84: a scoped query param is worth adding when a caller only ever needs one row
+
+**Decision:** `/api/team-archetypes` now accepts an optional `?team=<id>` param, filtering the response server-side to that one team, while omitting the param keeps the original full-32-team response unchanged. New backend endpoints and existing high-frequency ones should offer scoped variants when a caller demonstrably only needs one entity's data, rather than requiring every caller to fetch and filter the full collection client-side.
+
+**Rationale:** Overview's Rival Coach Intel card fetched all 32 teams' full persona/memory ledgers on nearly every render to read one opponent's row — a real, measured inefficiency. The fix is additive and backward-compatible: the one caller that legitimately needs the full 32 (the Archetypes table cache) is unchanged.
+
+---
+
 ## 2026-08-12 - S83: rematch memory is descriptive tactical evidence
 
 **Decision:** Tactical Film Room may show the last receipted head-to-head score and a bounded recent W-L-T sample oriented to the controlled franchise. It must remain hidden when history is absent or malformed and explicitly state that the sample is neither prediction nor causation.
