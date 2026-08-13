@@ -257,6 +257,32 @@ export function stepSimWatch(direction = 1) { return direction < 0 ? controller?
 export function setSimWatchSpeed(speed) { return controller?.setSpeed(Number(speed)) || null; }
 export function skipSimWatch() { return controller?.skip() || null; }
 
+export function resolveSimWatchSwipe(start, end, { threshold = 56, offAxisRatio = 0.7 } = {}) {
+  const dx = Number(end?.x) - Number(start?.x);
+  const dy = Number(end?.y) - Number(start?.y);
+  if (!Number.isFinite(dx) || !Number.isFinite(dy)) return 0;
+  if (Math.abs(dx) < threshold || Math.abs(dy) > Math.abs(dx) * offAxisRatio) return 0;
+  return dx < 0 ? 1 : -1;
+}
+
+export function bindSimWatchSwipeTransport(element = document.getElementById("simWatchFeed")) {
+  if (!element || element.dataset.swipeTransportBound === "true") return false;
+  element.dataset.swipeTransportBound = "true";
+  let gesture = null;
+  element.addEventListener("pointerdown", (event) => {
+    if (!active || !["touch", "pen"].includes(event.pointerType)) return;
+    gesture = { pointerId: event.pointerId, x: event.clientX, y: event.clientY };
+  });
+  element.addEventListener("pointerup", (event) => {
+    if (!gesture || gesture.pointerId !== event.pointerId) return;
+    const direction = resolveSimWatchSwipe(gesture, { x: event.clientX, y: event.clientY });
+    gesture = null;
+    if (direction) stepSimWatch(direction);
+  });
+  element.addEventListener("pointercancel", () => { gesture = null; });
+  return true;
+}
+
 export function handleSimWatchKeyboard(event) {
   if (!active || event?.target?.matches?.("input, textarea, select")) return false;
   if (event.key === " " && !event?.target?.matches?.("button, a[href], [role='button']")) {

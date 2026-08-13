@@ -209,6 +209,7 @@ import {
   checkAndShowGmDecision,
   dismissGmDecision,
   runSimWatch,
+  bindSimWatchSwipeTransport,
   playSimWatchFinalReel,
   skipSimWatch,
   closeSimWatch,
@@ -817,7 +818,11 @@ function bindEvents() {
   document.getElementById("boxScoreTicker").addEventListener("click", (event) => {
     const button = event.target.closest("button[data-boxscore-id]");
     if (!button) return;
-    runAction(() => loadBoxScore(button.dataset.boxscoreId), "Loading box score...");
+    const gameId = button.dataset.boxscoreId;
+    runAction(async () => {
+      await loadBoxScore(gameId);
+      await runSimWatch(gameId);
+    }, "Loading box score...");
   });
 
   document.getElementById("retiredTable").addEventListener("click", (event) => {
@@ -2140,17 +2145,7 @@ function bindEvents() {
   document.getElementById("simWatchNextBtn")?.addEventListener("click", () => stepSimWatch(1));
   document.getElementById("simWatchSpeedSelect")?.addEventListener("change", (event) => setSimWatchSpeed(event.target.value));
   document.addEventListener("keydown", handleSimWatchKeyboard);
-
-  // Box score ticker — wire sim-watch on click if play-by-play available
-  document.getElementById("boxScoreTicker")?.addEventListener("click", (event) => {
-    const btn = event.target.closest("button[data-boxscore-id]");
-    if (!btn) return;
-    const gameId = btn.dataset.boxscoreId;
-    // Run sim-watch if we haven't shown the box score yet
-    if (state.activeBoxScoreId !== gameId && gameId) {
-      runSimWatch(gameId).catch(presentActionError);
-    }
-  });
+  bindSimWatchSwipeTransport();
 
   // Cap War Room — load on Contracts tab activation
   document.querySelectorAll(".menu-btn[data-tab='contractsTab']").forEach((btn) => {

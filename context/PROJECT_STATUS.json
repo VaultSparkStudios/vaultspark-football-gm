@@ -9,9 +9,17 @@
   "blockers": [
     "Launch HOLD — email-delivery-and-reply-identity-unverified, founder-launch-approval-unverified, lifecycle-authority-unreconciled."
   ],
-  "lastUpdated": "2026-08-12",
+  "lastUpdated": "2026-08-13",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
+  "obeliskArchitecture": "external",
+  "obeliskIdentity": {
+    "status": "not-integrated",
+    "localAuth": false,
+    "accountFlowsPresent": false,
+    "protocol": "oidc-authorization-code-s256-pkce",
+    "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
+  },
   "truthAuditStatus": "green",
   "truthAuditLastRun": "2026-08-12",
   "ignisScore": 42836,
@@ -123,7 +131,7 @@
     "total": 6,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-12",
+    "date": "2026-08-13",
     "passing": 5,
     "warning": 1,
     "checks": [

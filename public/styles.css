@@ -3160,6 +3160,7 @@ body.mobile-loop-active .mobile-loop-overlay {
 #halftimeAdjustModal {
   position: fixed; inset: 0; z-index: 9000;
   background: var(--scrim); display: flex; align-items: center; justify-content: center;
+  overflow-y: auto; padding: 16px;
 }
 #halftimeAdjustModal[hidden] { display: none; }
 .halftime-modal-card {
@@ -3169,6 +3170,7 @@ body.mobile-loop-active .mobile-loop-overlay {
   border-radius: 12px;
   padding: 24px 28px;
   max-width: 420px; width: 92%;
+  max-height: calc(100dvh - 32px); overflow-y: auto; margin: auto;
 }
 .halftime-modal-title { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
 .halftime-modal-sub { font-size: 12px; color: var(--muted, #7a8299); margin-bottom: 16px; }
@@ -3177,17 +3179,24 @@ body.mobile-loop-active .mobile-loop-overlay {
 }
 .tactic-option {
   border: 1px solid var(--line, #2e3448); border-radius: 8px;
-  padding: 12px 14px; cursor: pointer; background: var(--bg2, #1a1e28);
+  padding: 12px 14px; cursor: pointer; background: var(--bg-2, var(--inset, #1a1e28));
+  color: var(--ink, #eef4f5);
   transition: border-color 0.15s;
 }
 .tactic-option:hover { border-color: var(--accent, #4f8ef7); }
-.tactic-option.selected { border-color: var(--accent2, #7c5cbf); background: rgba(124,92,191,0.1); }
+.tactic-option.selected { border-color: var(--accent-2, #7c5cbf); background: color-mix(in srgb, var(--panel) 82%, var(--accent-2)); }
 .tactic-option .to-icon { font-size: 20px; margin-bottom: 4px; }
 .tactic-option .to-label { font-size: 13px; font-weight: 700; }
 .tactic-option .to-desc { font-size: 11px; color: var(--muted, #7a8299); margin-top: 2px; }
 .halftime-actions { display: flex; gap: 8px; }
 .tactic-confirm-btn { flex: 1; }
-.tactic-skip-btn { background: var(--bg2, #1a1e28); border: 1px solid var(--line, #2e3448); }
+.tactic-skip-btn { background: var(--bg-2, var(--inset, #1a1e28)); border: 1px solid var(--line, #2e3448); color: var(--ink); }
+
+@media (max-width: 560px) {
+  .halftime-modal-card { padding: 18px; width: 100%; }
+  .tactic-options-grid { grid-template-columns: 1fr; }
+  .halftime-actions { align-items: stretch; flex-direction: column; }
+}
 
 #architectPlanRehearsalModal {
   position: fixed; inset: 0; z-index: 9050;
@@ -3560,7 +3569,7 @@ body.mobile-loop-active .mobile-loop-overlay {
 
 /* ── Sim-Watch Overlay ──────────────────────────────────────────────────── */
 #simWatchOverlay {
-  position: fixed; right: 24px; top: 80px; z-index: 850;
+  position: fixed; right: 24px; top: 80px; z-index: 1100;
   width: min(380px, calc(100vw - 32px)); max-height: calc(100vh - 100px);
   background: var(--bg-1); border: 1px solid var(--line);
   border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
@@ -3600,7 +3609,15 @@ body.mobile-loop-active .mobile-loop-overlay {
 .sw-score { font-size: 1.4rem; font-weight: 800; color: var(--accent-strong); font-family: "Rockwell", serif; min-width: 28px; text-align: center; }
 .sw-vs { color: var(--muted); font-size: 0.8rem; }
 .sw-meta { font-size: 0.7rem; color: var(--muted); margin-top: 4px; }
-#simWatchFeed { flex: 1; overflow-y: auto; padding: 8px 0; max-height: 340px; }
+#simWatchFeed { flex: 1; overflow-y: auto; padding: 8px 0; max-height: 340px; touch-action: pan-y; overscroll-behavior: contain; }
+.sw-swipe-hint {
+  padding: 5px 12px;
+  color: var(--muted);
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line);
+  font-size: 0.66rem;
+  text-align: center;
+}
 .sw-play {
   padding: 6px 14px; border-bottom: 1px solid rgba(255,255,255,0.04);
   font-size: 0.76rem; display: flex; gap: 8px; align-items: flex-start;
@@ -3706,7 +3723,7 @@ body.mobile-loop-active .mobile-loop-overlay {
   .modal-content { overflow-x: hidden !important; max-width: 100vw !important; }
   .draft-war-room-grid { grid-template-columns: 1fr !important; }
   .tbd-row { flex-direction: column; }
-  #simWatchOverlay { right: 8px; top: 70px; width: calc(100vw - 16px); max-height: 60vh; }
+  #simWatchOverlay { right: 8px; top: 8px; width: calc(100vw - 16px); max-height: calc(100dvh - 16px); }
   #franchiseMomentModal { bottom: 8px; right: 8px; width: calc(100vw - 16px); }
   #inboxDrawer { width: 100vw; right: -100vw; }
   .gm-decision-card { width: calc(100vw - 24px); padding: 20px 18px; }
@@ -4563,6 +4580,20 @@ html[data-theme="light"] .bg-layer {
   color: var(--muted);
   font-weight: 500;
 }
+
+.tactical-matchup-brief span.tactical-rematch-memory {
+  margin-top: 0.2rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(var(--team-tertiary-rgb), 0.32);
+  border-radius: 8px;
+  background: var(--inset);
+  color: var(--ink-dim);
+}
+
+.tactical-rematch-memory strong,
+.tactical-rematch-memory small { display: block; }
+.tactical-rematch-memory strong { color: var(--ink-strong); }
+.tactical-rematch-memory small { margin-top: 0.25rem; color: var(--muted); }
 
 .tactical-film-room {
   display: grid;

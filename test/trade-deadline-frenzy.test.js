@@ -71,6 +71,24 @@ test("trade deadline frenzy is deterministic for the same dashboard input", () =
   assert.match(first.offers[0].constraint, /controllable starters/);
 });
 
+test("trade deadline frenzy normalizes object-shaped standing identities", () => {
+  const frenzy = buildTradeDeadlineFrenzy({
+    currentWeek: 10,
+    controlledTeamId: "BUF",
+    controlledTeam: { abbrev: "OS" },
+    latestStandings: [
+      { team: { id: "BUF", abbrev: "OS" }, wins: 2, losses: 8 },
+      { team: { id: "MIA", abbrev: "MG" }, wins: 8, losses: 2 },
+      { team: { id: "NE", abbrev: "DMW" }, wins: 7, losses: 3 }
+    ],
+    rosterNeeds: [{ position: "CB", delta: -2 }],
+    cap: { capSpace: 10_000_000 }
+  });
+
+  assert.ok(frenzy.offers.every((offer) => !offer.partner.includes("[object Object]")));
+  assert.ok(frenzy.offers.some((offer) => ["MG", "DMW"].includes(offer.partner)));
+});
+
 test("trade deadline render exposes self-describing action buttons", async () => {
   const el = { innerHTML: "", querySelectorAll: () => [] };
   const previousDocument = globalThis.document;

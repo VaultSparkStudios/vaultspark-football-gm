@@ -43,6 +43,45 @@ function teamId(team = {}) {
   return team.id || team.teamId || team.abbrev || null;
 }
 
+function rivalryForPair(rivalries = {}, teamA, teamB) {
+  return Object.values(rivalries || {}).find((entry) =>
+    Array.isArray(entry?.teams)
+      && entry.teams.includes(teamA)
+      && entry.teams.includes(teamB)
+  ) || null;
+}
+
+export function buildRematchMemory(dashboard = {}, opponentId = null) {
+  const controlled = dashboard.controlledTeamId || teamId(dashboard.controlledTeam);
+  if (!controlled || !opponentId) return { available: false };
+  const controlledLabel = dashboard.controlledTeam?.abbrev || controlled;
+  const opponentTeam = (dashboard.teams || []).find((entry) => teamId(entry) === opponentId);
+  const opponentLabel = opponentTeam?.abbrev || opponentId;
+  const rivalry = rivalryForPair(dashboard.rivalries, controlled, opponentId);
+  const history = Array.isArray(rivalry?.history) ? rivalry.history : [];
+  const game = history[0];
+  if (!game) return { available: false };
+  const homeScore = Number(game.homeScore);
+  const awayScore = Number(game.awayScore);
+  if (!Number.isFinite(homeScore) || !Number.isFinite(awayScore)) return { available: false };
+  const controlledWasHome = game.homeTeamId === controlled;
+  const controlledScore = controlledWasHome ? homeScore : awayScore;
+  const opponentScore = controlledWasHome ? awayScore : homeScore;
+  const result = controlledScore > opponentScore ? "won" : controlledScore < opponentScore ? "lost" : "tied";
+  const sample = history.slice(0, 5);
+  const controlledWins = sample.filter((entry) => entry?.winner === controlled).length;
+  const opponentWins = sample.filter((entry) => entry?.winner === opponentId).length;
+  return {
+    available: true,
+    result,
+    controlledScore,
+    opponentScore,
+    headline: `Rematch memory: ${controlledLabel} ${controlledScore}, ${opponentLabel} ${opponentScore}.`,
+    detail: `You ${result} the last meeting${game.week != null ? ` in Week ${game.week}` : ""}. Recent receipted sample: ${controlledWins}-${opponentWins}${sample.length > controlledWins + opponentWins ? `-${sample.length - controlledWins - opponentWins}` : ""}.`,
+    disclaimer: "Prior meetings are context, not a prediction or a causal claim."
+  };
+}
+
 export function buildTacticalMatchupBrief(dashboard = {}) {
   const controlled = dashboard.controlledTeamId || teamId(dashboard.controlledTeam);
   const game = (dashboard.currentWeekSchedule?.games || []).find(
@@ -63,10 +102,11 @@ export function buildTacticalMatchupBrief(dashboard = {}) {
   const injured = (dashboard.injuryReport || []).filter((entry) => entry.teamId === opponentId).length;
   const identity = passRate >= 0.59 ? "pass-forward" : passRate <= 0.47 ? "run-forward" : "balanced";
   const pressure = aggression >= 0.62 ? "aggressive" : aggression <= 0.4 ? "conservative" : "measured";
+  const opponentLabel = opponent.abbrev || opponentId;
   const opponentName = opponent.name || opponent.nickname || opponentId;
   const optionReads = {
     "run-heavy": passRate >= 0.59
-      ? `Keep ${opponentId}'s pass-forward offense on the sideline.`
+      ? `Keep ${opponentLabel}'s pass-forward offense on the sideline.`
       : `Test a ${identity} opponent's front and control variance.`,
     "pass-heavy": Number(opponent.overallRating || 0) >= 84
       ? `Create scoring volume against an ${opponent.overallRating} OVR opponent.`
@@ -83,13 +123,15 @@ export function buildTacticalMatchupBrief(dashboard = {}) {
   // states the edge rather than implying one. Absent ratings render nothing at
   // all: an empty state is honest, an invented edge is not.
   const matchupEdge = buildMatchupEdgeRead(opponent, dashboard.controlledTeam);
+  const rematchMemory = buildRematchMemory(dashboard, opponentId);
 
   return {
     available: true,
     opponentId,
     headline: `Week ${dashboard.currentWeek ?? "?"}: ${dashboard.controlledTeam?.abbrev || controlled} vs ${opponentName}`,
-    read: `${opponentId} profiles as ${identity}, ${pressure}, ${opponent.overallRating ?? "?"} OVR${injured ? `, with ${injured} listed injur${injured === 1 ? "y" : "ies"}` : ""}.`,
+    read: `${opponentLabel} profiles as ${identity}, ${pressure}, ${opponent.overallRating ?? "?"} OVR${injured ? `, with ${injured} listed injur${injured === 1 ? "y" : "ies"}` : ""}.`,
     matchupEdge,
+    rematchMemory,
     options: Object.entries(TACTICS).map(([id, tactic]) => ({ id, ...tactic, matchup: optionReads[id] }))
   };
 }

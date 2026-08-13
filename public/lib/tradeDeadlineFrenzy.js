@@ -11,8 +11,16 @@ function contenderScore(entry = {}) {
   return Number(entry.wins || 0) - Number(entry.losses || 0) + Number(entry.winPct || 0) * 4;
 }
 
-function teamLabel(teamId) {
-  const code = teamCode(teamId);
+function standingTeamId(value) {
+  if (!value) return "";
+  if (typeof value === "string") return value;
+  if (typeof value.team === "string") return value.team;
+  const team = value.team && typeof value.team === "object" ? value.team : value;
+  return team.abbrev || team.id || team.teamId || "";
+}
+
+function teamLabel(value) {
+  const code = teamCode(standingTeamId(value));
   return code && code !== "undefined" ? code : "Rival";
 }
 
@@ -26,7 +34,7 @@ function capTier(capSpace) {
 function buildOffer({ tag, partner, headline, detail, targetNeed, assetAsk, capImpact, constraint, risk, action }) {
   return {
     tag,
-    partner: teamLabel(partner?.team || partner?.teamId || partner),
+    partner: teamLabel(partner),
     headline,
     detail,
     targetNeed,
@@ -40,7 +48,10 @@ function buildOffer({ tag, partner, headline, detail, targetNeed, assetAsk, capI
 
 export function buildTradeDeadlineFrenzy(dashboard = {}) {
   const week = Number(dashboard.currentWeek || 0);
-  const standings = dashboard.latestStandings || [];
+  const standings = (dashboard.latestStandings || []).map((entry) => ({
+    ...entry,
+    team: standingTeamId(entry)
+  }));
   const team = dashboard.controlledTeam || {};
   const myCode = team.abbrev || team.teamId || dashboard.controlledTeamId || "";
   const row = standings.find((entry) => entry.team === myCode || entry.teamName === team.name) || {};

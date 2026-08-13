@@ -1,0 +1,189 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-12",
+  "session": 83,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 95.7,
+    "source": "Fresh Session 83 live-code audit using product, game-loop, mobile interaction, public stats, Obelisk migration, observability-honesty, rendered-pixel, and release-gate lenses. Premises were checked against source, tests, live Studio checkers, current hosted receipts, the Obelisk rollout contract, and durable project decisions.",
+    "qualityBar": "L2 by default: one canonical authority, player-visible payoff, deterministic focused tests, no fabricated community activity or identity claims, dark/light desktop/mobile rendered proof for touched UI, stable staging before direct-main publication, and launchReady preserved false."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay: vivid General Manager agency, source-derived memory, touch and keyboard parity, privacy, static/local-first behavior, public stats honesty, Obelisk identity boundaries, and public-app release gates",
+    "staging": "stable Cloudflare Pages must prove the exact immutable candidate before direct-to-main publication; backend deployment is required only when backend source changes",
+    "source": "arc-profile registry authority, Session 83 startup brief, 29,981-token code sample, exact grep/read preverification, game-loop review, app-release gate matrix, live CANON-054 checker, live Obelisk migration cargo, canon conformance, and current CI"
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 9,
+    "sessionEngagement": 9,
+    "retention": 7,
+    "soulFidelity": 8,
+    "overall": 8.4,
+    "evidence": "Code-contract review only. No consented cohort or docs/PLAYTESTS evidence exists, and public SOUL intentionally withholds private criteria, so these scores do not claim measured fun, retention, or complete private-soul conformance."
+  },
+  "releaseGate": {
+    "deploymentVerdict": "REVERIFY AFTER IMPLEMENTATION — Session 82 hosted evidence is current for the prior artifact; Session 83 deployable UI and public-contract changes require a new exact-candidate receipt.",
+    "launchVerdict": "NO-GO — deployment authorization does not permit a public launch flip.",
+    "launchHolds": [
+      "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
+      "authoritative registry/local lifecycle reconciliation",
+      "SHA-bound public-launch approval distinct from deploy authorization",
+      "registered and end-to-end verified Obelisk Passport v2 relying party before any account-bearing flow"
+    ]
+  },
+  "axisCoverage": {
+    "featuresDepth": ["rematch-film-memory", "sim-watch-touch-transport"],
+    "newInnovativeFeatures": ["rematch-film-memory", "sim-watch-touch-transport", "community-stats-feed-contract"],
+    "uiUx": ["rematch-film-memory", "sim-watch-touch-transport"],
+    "feedbackLoop": ["community-stats-feed-contract"],
+    "gamificationEngagementImmersion": ["rematch-film-memory", "sim-watch-touch-transport"],
+    "aiIntegration": [],
+    "securityPrivacy": ["obelisk-v2-migration-boundary", "community-stats-feed-contract"],
+    "speedOrganizationEfficiency": ["community-stats-feed-contract", "obelisk-v2-migration-boundary"],
+    "releaseTruth": ["obelisk-v2-migration-boundary", "community-stats-feed-contract"],
+    "tokenApiReduction": ["community-stats-feed-contract"]
+  },
+  "recommendedMoves": [
+    "Make identity absence explicit and safe: quarantine the obsolete Passport v1 samples, declare external Obelisk architecture, and keep the status honestly not-integrated until a registered v2 flow is proven.",
+    "Turn existing franchise history into weekly decision texture by bringing the last receipted meeting into the tactical brief without implying prediction or causality.",
+    "Complete input and reporting parity: let touch users drive the existing Sim-Watch director directly, and bind the public stats tile, deep page, and Analytica consumer to one privacy-bounded feed contract."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Delete indexedDbSaveStore.js, modLoader.js, or rewindManager.js because they have zero importers",
+      "reason": "Rejected by the durable S67 decision after source review. They are intentionally retained persistence, modding, and replay assets; deleting them would erase planned capability rather than remove debt."
+    },
+    {
+      "candidate": "Create synthetic Community Stats activity or a mock playtest cohort",
+      "reason": "Rejected by CANON-031 and GAME_LOOP. CANON-054 structure can be repaired without inventing adoption, retention, or player activity."
+    },
+    {
+      "candidate": "Add project-local authentication or claim Obelisk is integrated",
+      "reason": "Rejected by CANON-045. The current game is anonymous, the required v2 relying-party registration is unavailable locally, and obsolete v1 samples are not integration evidence."
+    },
+    {
+      "candidate": "Treat the direct /game.html first-run tutorial diagnostic as the canonical release Web Vitals gate",
+      "reason": "Rejected as a premise error. The canonical public entry is green and the direct-game deep-link remains an honest separate optimization diagnostic; changing boot semantics needs its own measured implementation."
+    },
+    {
+      "candidate": "Implement General Manager firing or terminal game over",
+      "reason": "Founder-direction-gated in the durable decision record; this audit cannot invent terminal product canon."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Security / identity architecture / release truth",
+      "effortHours": 2,
+      "impact": 9,
+      "innovation": 5,
+      "priority": 22.5,
+      "slug": "obelisk-v2-migration-boundary",
+      "title": "Replace misleading Passport v1 samples with one truthful Obelisk v2 boundary",
+      "status": "implemented",
+      "executionEvidence": ["test/obelisk-migration-boundary.test.js 2/2", "six executable/documented v1 artifacts removed", "PROJECT_STATUS declares external + not-integrated + no local auth"],
+      "premise": "The live Obelisk migration contract requires OpenID Connect Authorization Code with S256 PKCE, while this repository carried duplicate Passport v1 browser query-token callbacks and a project-local verify-session sample. Nothing imported them, but their presence could be mistaken for a supported integration; PROJECT_STATUS declared no architecture at all.",
+      "evidence": ["live Obelisk migration cargo digest ad951688", "obelisk-passport and src duplicate v1 artifacts", "release-architecture checker missing obeliskArchitecture", "obelisk.identity.verify capability unavailable"],
+      "constraint": "No local auth, URL query identity token, browser client secret, or claim of live integration. Account-bearing flows remain unavailable until Obelisk registers and verifies a Passport v2 public-client flow end to end.",
+      "verification": ["v1 artifacts are absent", "public-safe boundary names OIDC Authorization Code + S256 PKCE", "structured status remains not-integrated and localAuth false"],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Delete duplicate v1 samples and record that the anonymous product has no authentication surface." },
+        "L2": { "effortHours": 2, "recipe": "Quarantine every Passport v1 token/callback artifact, declare external Obelisk architecture and an honestly not-integrated v2 PKCE boundary in structured status and public-safe documentation, regression-test the absence of local auth, and request relying-party registration through Studio Ark." },
+        "L3": { "effortHours": 6, "recipe": "L2 plus registered Passport v2 discovery, PKCE login/logout/session flows, cross-device verification, and signed human/agent receipts after the required capability becomes available." }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Observability honesty / feedback loop / ecosystem integration",
+      "effortHours": 1,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 24.0,
+      "slug": "community-stats-feed-contract",
+      "title": "Bind the homepage showcase, stats atlas, and Analytica ingest to one live contract",
+      "status": "implemented",
+      "executionEvidence": ["live CANON-054 checker conform with zero findings", "public compliance descriptor regression green", "six analyzed metrics and a curated three-metric showcase"],
+      "premise": "The public Community Stats UI already rendered a live homepage pulse and deeper /stats page, but stats-surface.json omitted showcase IDs, a numeric liveness promise, refresh mechanism, Analytica Feed v1 identity, and explicit aggregate-only privacy. The Studio checker therefore saw four structural gaps despite the live UI.",
+      "evidence": ["public/stats-surface.json before Session 83", "public/index.html data-community-pulse", "public/community-stats.js 30-second polling", "live check-stats-surface result no-showcase/no-liveness/no-refresh/not-feed-v1"],
+      "constraint": "The descriptor reports structure and analysis affordances, never truthfulness or adoption. No synthetic activity, unbanded small counts, per-visitor query, or duplicate founder feed is allowed.",
+      "verification": ["feedVersion is analytica-feed-v1", "three showcase IDs resolve to six analyzed metrics", "30-second poll and aggregate-only privacy are explicit", "CANON-054 checker passes"],
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Add the exact missing descriptor fields that already match the browser and server behavior." },
+        "L2": { "effortHours": 1, "recipe": "Make stats-surface.json the single privacy-bounded Analytica Feed v1 contract for a curated three-metric homepage showcase, a deeper six-metric atlas, explicit 30-second polling, aggregate-only handling, and structural conformance tests." },
+        "L3": { "effortHours": 3, "recipe": "L2 plus signed freshness receipts and an Ark-fed portfolio consumer that proves all three surfaces read the identical artifact fingerprint." }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "FIRE",
+      "category": "Game depth / weekly decision texture / immersion",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 24.8,
+      "slug": "rematch-film-memory",
+      "title": "Bring the last receipted meeting into this week's tactical room",
+      "status": "implemented",
+      "executionEvidence": ["tactical film room focused suite 8/8", "source-derived last score and recent sample", "desktop/mobile dark/light rendered proof uses fictional OS/DMW labels and states the no-causality boundary"],
+      "premise": "Rivalry DNA already retains every head-to-head result and the dashboard exposes that authority, but the weekly tactical brief reads only current ratings, scheme, aggression, and injuries. A rematch therefore feels identical to a first meeting even when the franchise has exact shared history.",
+      "evidence": ["src/engine/rivalryDNA.js history and mostRecentGame", "GameSession dashboard.rivalries", "public/lib/tacticalFilmRoom.js current-only brief", "pre-game tactical modal"],
+      "constraint": "Use only receipted score/history data, keep missing history invisible, distinguish a bounded recent sample from an all-time record, escape rendered text, and state that history is neither prediction nor causation.",
+      "verification": ["home/away score orientation is controlled-team correct", "empty and malformed histories fail closed", "brief renders last meeting, recent sample, and disclaimer in both themes"],
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Show the last receipted score beside the current opponent read." },
+        "L2": { "effortHours": 3, "recipe": "Derive one Rematch Memory from the canonical rivalry ledger, orient the score to the controlled team, add a bounded recent W-L-T sample and explicit non-predictive disclaimer, then render it as subordinate tactical context with focused tests." },
+        "L3": { "effortHours": 6, "recipe": "L2 plus join prior tactic receipts and exact box-score deltas into a film-study comparison without awarding bonuses or claiming those choices caused results." }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "FIRE",
+      "category": "Mobile UI UX / input parity / session engagement",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 24.4,
+      "slug": "sim-watch-touch-transport",
+      "title": "Let touch players direct Sim-Watch without hunting tiny transport controls",
+      "status": "implemented",
+      "executionEvidence": ["test/sim-watch-touch.test.js 3/3", "authentic browser touch transport advanced 128→129 and rewound 129→128 through the existing director", "desktop/mobile dark/light rendered proof confirmed the hint, reachable ticker launch, and mobile overlay stacking"],
+      "premise": "Sim-Watch exposes buttons and keyboard arrows but no pointer or touch gesture. On a 390px viewport the live play log is the largest target, yet a tablet or phone player must reach the compact 34px controls to step through key plays.",
+      "evidence": ["public/game.html Sim-Watch director", "public/lib/simWatchDirector.js keyboard/button authority", "repo-wide source search found no pointer/touch listener", "mobile parity requirement"],
+      "constraint": "Reuse the existing previous/next controller, accept touch and pen only, preserve vertical scrolling, ignore short/off-axis gestures, keep buttons and keyboard fully functional, and never add a second playback state machine.",
+      "verification": ["left advances and right rewinds deterministically", "vertical and short gestures do nothing", "touch-action remains pan-y", "desktop/mobile dark/light overlay pixels remain readable"],
+      "ladder": {
+        "L1": { "effortHours": 0.75, "recipe": "Map a minimum-distance horizontal swipe on the play log to existing previous/next actions." },
+        "L2": { "effortHours": 2, "recipe": "Add idempotent touch/pen swipe transport with deterministic direction resolution, off-axis rejection, pan-y preservation, a concise discoverability hint, and behavioral tests while retaining button and keyboard parity." },
+        "L3": { "effortHours": 4, "recipe": "L2 plus an optional reduced-motion-safe drag preview and setting-respecting haptic confirmation driven by the same controller snapshot." }
+      }
+    }
+  ],
+  "innovationCandidates": [
+    { "slug": "rematch-film-memory", "verdict": "selected", "novelty": "Turns a latent cross-season rivalry ledger into contextual weekly film without adding a reward system." },
+    { "slug": "sim-watch-touch-transport", "verdict": "selected", "novelty": "Makes the play log itself the transport surface while retaining vertical-scroll intent." },
+    { "slug": "single-artifact-community-pulse", "verdict": "selected", "novelty": "One privacy-bounded descriptor serves public headline, deep analysis, and portfolio intelligence." },
+    { "slug": "opening-contract-static-compositor", "verdict": "deferred", "novelty": "A server-independent first-paint contract shell could eliminate the deep-link LCP handoff, but needs dedicated measured boot-sequence work." },
+    { "slug": "rivalry-film-delta", "verdict": "future", "novelty": "Compare prior and current tactic receipts without turning correlation into a game bonus or prediction." },
+    { "slug": "fictional-identity-boundary", "verdict": "implemented-second-order", "novelty": "Rendered proof exposed canonical engine IDs inside the fictional league; every new tactical label now resolves through the public team identity." },
+    { "slug": "deadline-partner-normalizer", "verdict": "implemented-second-order", "novelty": "The same rendered session exposed object-shaped standings leaking as [object Object]; one normalizer now protects deadline headlines and partner terms." },
+    { "slug": "sim-watch-launch-authority", "verdict": "implemented-second-order", "novelty": "Two competing ticker listeners made the broadcast unreachable; the launch now has one ordered box-score-plus-broadcast authority." }
+  ],
+  "secondOrderImprovements": [
+    "Resolved fictional-team identity labels consistently across tactical reads, option copy, and rematch memory.",
+    "Normalized object-shaped standing identities before constructing trade-deadline recommendations.",
+    "Collapsed duplicate ticker listeners into one ordered Sim-Watch launch path.",
+    "Made the tactical composer scroll safely on mobile and corrected light-theme tactic-card contrast.",
+    "Raised Sim-Watch above the mobile decision deck and expanded it to the usable mobile viewport."
+  ]
+}

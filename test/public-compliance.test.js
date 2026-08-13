@@ -86,6 +86,16 @@ test("Community Stats uses its clean canonical route and player-first homepage c
   assert.doesNotMatch(client, /Stats Atlas is offline/, "error copy remains player-facing");
 });
 
+test("Community Stats descriptor is one privacy-bounded Analytica feed with a curated live showcase", () => {
+  const descriptor = JSON.parse(fs.readFileSync(new URL("../public/stats-surface.json", import.meta.url), "utf8"));
+  assert.equal(descriptor.feedVersion, "analytica-feed-v1");
+  assert.deepEqual(descriptor.showcase, ["participating-browsers", "weeks-managed", "strategy-mix"]);
+  assert.equal(descriptor.refreshSeconds, 30);
+  assert.equal(descriptor.refreshMechanism, "poll");
+  assert.equal(descriptor.privacy.aggregateOnly, true);
+  assert.ok(descriptor.metrics.length >= descriptor.showcase.length + 3, "the in-depth page is materially deeper than its homepage tile");
+});
+
 test("primary public pages link contact, privacy, and terms", () => {
   for (const file of ["../public/index.html", "../public/game.html", "../public/landing.html"]) {
     const source = fs.readFileSync(new URL(file, import.meta.url), "utf8");

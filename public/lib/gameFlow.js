@@ -1233,7 +1233,11 @@ export function showHalftimeAdjustModal(onChoice, options = {}) {
     const edgeLine = edge?.available && edge.label
       ? `<span class="tactical-matchup-edge" data-edge-direction="${escapeHtml(edge.direction)}">${escapeHtml(edge.label)}</span>`
       : "";
-    briefEl.innerHTML = `<strong>${escapeHtml(brief.headline)}</strong><span>${escapeHtml(brief.read)}</span>${edgeLine}`;
+    const rematch = brief.rematchMemory;
+    const rematchLine = rematch?.available
+      ? `<span class="tactical-rematch-memory"><strong>${escapeHtml(rematch.headline)}</strong> ${escapeHtml(rematch.detail)} <small>${escapeHtml(rematch.disclaimer)}</small></span>`
+      : "";
+    briefEl.innerHTML = `<strong>${escapeHtml(brief.headline)}</strong><span>${escapeHtml(brief.read)}</span>${edgeLine}${rematchLine}`;
   }
   const optionById = new Map(brief.options.map((option) => [option.id, option]));
   const tacticOptions = Array.from(modal.querySelectorAll(".tactic-option"));

@@ -1,5 +1,9 @@
 # Session 82 Closeout — Choice Clarity, Architect Hierarchy and Release Authority
 
+## Session Intent — S83
+
+Run the full `/arc`: profile and start from current authority, produce a fresh live-code audit, implement every verified ranked item at the public game quality bar, inspect rendered desktop/mobile pixels in both themes for touched states, verify the exact staging candidate and release contracts, then complete canonical closeout and direct-to-main publication while preserving `launchReady: false`.
+
 ## Where We Left Off
 
 - The full S82 `/arc` audit is exhausted: all six ranked items and all three viable second-order innovations are implemented. Draft trade acceptance now requires an accessible review that names the exact pick movement and irreversible consequence; planning-friction receipts survive the choice journey; Architecture Review renders the player-authored objective hierarchy rather than a generic checklist.

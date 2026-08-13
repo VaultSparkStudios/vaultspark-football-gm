@@ -20,10 +20,12 @@ import { closeModal, openModal } from "./modalManager.js";
 import { observeBackgroundTask } from "./clientDiagnostics.js";
 import { franchiseScopeFromDashboard } from "./franchiseScope.js";
 export {
+  bindSimWatchSwipeTransport,
   closeSimWatch,
   handleSimWatchKeyboard,
   playSimWatchFinalReel,
   runSimWatch,
+  resolveSimWatchSwipe,
   setSimWatchSpeed,
   skipSimWatch,
   stepSimWatch,

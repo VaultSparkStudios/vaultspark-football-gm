@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { buildTacticalFilmReceipt, buildTacticalIdentityLedger, buildTacticalMatchupBrief, tacticDefinition, TACTIC_MODEL_VERSION } from "../public/lib/tacticalFilmRoom.js";
+import { buildRematchMemory, buildTacticalFilmReceipt, buildTacticalIdentityLedger, buildTacticalMatchupBrief, tacticDefinition, TACTIC_MODEL_VERSION } from "../public/lib/tacticalFilmRoom.js";
 
 test("matchup brief derives opponent identity, tendencies, injury context, and tradeoffs", () => {
   const brief = buildTacticalMatchupBrief({
@@ -8,13 +8,51 @@ test("matchup brief derives opponent identity, tendencies, injury context, and t
     controlledTeamId: "BUF",
     controlledTeam: { id: "BUF", abbrev: "BUF" },
     currentWeekSchedule: { games: [{ homeTeamId: "BUF", awayTeamId: "MIA" }] },
-    teams: [{ id: "MIA", name: "Miami", overallRating: 86, scheme: { passRate: 0.64, aggression: 0.68 } }],
+    teams: [{ id: "MIA", abbrev: "MG", name: "Miami", overallRating: 86, scheme: { passRate: 0.64, aggression: 0.68 } }],
     injuryReport: [{ teamId: "MIA" }, { teamId: "BUF" }]
   });
   assert.equal(brief.available, true);
-  assert.match(brief.read, /pass-forward, aggressive, 86 OVR, with 1 listed injury/);
+  assert.match(brief.read, /MG profiles as pass-forward, aggressive, 86 OVR, with 1 listed injury/);
+  assert.match(brief.options.find((option) => option.id === "run-heavy").matchup, /MG's pass-forward offense/);
   assert.match(brief.options.find((option) => option.id === "prevent").matchup, /64% pass tendency/);
   assert.match(brief.options.find((option) => option.id === "pass-heavy").tradeoff, /protection/);
+});
+
+test("rematch memory turns only receipted rivalry history into non-causal matchup context", () => {
+  const dashboard = {
+    controlledTeamId: "BUF",
+    controlledTeam: { id: "BUF", abbrev: "OS" },
+    teams: [{ id: "MIA", abbrev: "DMW" }],
+    rivalries: {
+      "BUF:MIA": {
+        teams: ["BUF", "MIA"],
+        history: [
+          { week: 12, homeTeamId: "MIA", awayTeamId: "BUF", homeScore: 20, awayScore: 27, winner: "BUF" },
+          { week: 3, homeTeamId: "BUF", awayTeamId: "MIA", homeScore: 17, awayScore: 21, winner: "MIA" }
+        ]
+      }
+    }
+  };
+  const memory = buildRematchMemory(dashboard, "MIA");
+  assert.equal(memory.available, true);
+  assert.equal(memory.result, "won");
+  assert.match(memory.headline, /OS 27, DMW 20/);
+  assert.match(memory.detail, /Week 12.*1-1/);
+  assert.match(memory.disclaimer, /not a prediction or a causal claim/);
+  assert.deepEqual(buildRematchMemory({ controlledTeamId: "BUF", rivalries: {} }, "MIA"), { available: false });
+});
+
+test("matchup brief carries rematch memory from the dashboard's single rivalry authority", () => {
+  const brief = buildTacticalMatchupBrief({
+    currentWeek: 14,
+    controlledTeamId: "BUF",
+    controlledTeam: { id: "BUF", abbrev: "BUF" },
+    currentWeekSchedule: { games: [{ homeTeamId: "BUF", awayTeamId: "MIA" }] },
+    teams: [{ id: "MIA", overallRating: 80, scheme: {} }],
+    rivalries: { pair: { teams: ["BUF", "MIA"], history: [{ week: 2, homeTeamId: "BUF", awayTeamId: "MIA", homeScore: 24, awayScore: 10, winner: "BUF" }] } }
+  });
+  assert.equal(brief.rematchMemory.available, true);
+  assert.match(brief.rematchMemory.headline, /24, MIA 10/);
 });
 
 test("film receipt evaluates chosen intent against observed box-score telemetry without causal claims", () => {
