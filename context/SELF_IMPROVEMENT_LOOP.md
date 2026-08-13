@@ -1,10 +1,29 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 80 closed at 996 / 1000 SIL v3.0. The full `/arc` shipped exact General Manager decision-surface routing, visible evidence-derived Architect mastery, reduced-motion-safe navigation and phase-correct innovation authority, then completed immutable staging, direct-main Pages and exact-SHA backend promotion. Node is 1,024/1,024, Playwright 40/40, responsive evidence 176/176, and 56 dark/light desktop/mobile captures are reviewed and hash-bound. Launch remains independently HOLD with `launchReady: false`.
+Rolling status: Session 83 closed at 996 / 1000 SIL v3.0. The full /arc shipped source-derived rematch memory, canonical touch transport, one honest public-stats feed contract and a truthful external Obelisk v2 boundary. Node is 1,078/1,078; stable staging is 14/14 at the exact artifact; nine dark/light desktop/mobile captures are reviewed and hash-bound. Launch remains independently HOLD with launchReady: false.
 
-Previously — Session 79 closed at 998 / 1000 after canonical negotiation/prediction/community authorities, UI islands, Hall ceremony accessibility and candidate-side release proof.
+Previously — Session 82 closed at 991 / 1000 after irreversible draft-trade consent, player-authored Architect hierarchy and unified release lineage.
 <!-- rolling-status-end -->
+## 2026-08-12 — Session 83 Rematch Memory, Touch Broadcast and Contract Truth
+
+SIL v3.0: **996 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 99, Process Quality 98, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 99, Capital Efficiency 100, Automation Coverage 100).
+
+- **Dev Health: 100** — the canonical source-bound suite passes 1,078/1,078 across all five shards; Pages build, boot budget, CANON-053 and CANON-054 are green.
+- **Creative Alignment: 100** — rematch film and player-directed broadcast deepen General Manager pressure using only receipted league truth and the established fictional identity.
+- **Momentum: 100** — four ranked items and five verification-derived refinements shipped through exact stable staging in one continuous arc.
+- **Engagement: 99** — rematches and mobile broadcast control have stronger code-contract payoff, but no real-player cohort exists, so retention or fun is not claimed.
+- **Process Quality: 98** — rendered review caught six concrete presentation/reachability defects and all were fixed; the score reflects that they existed before the visual loop.
+- **Cross-Repo Coherence: 100** — Obelisk registration moved through signed Ark cargo; no sibling repository was edited.
+- **Security Posture: 100** — obsolete query-token/session samples were removed, no local auth was added, and the staged secret scan reports zero findings.
+- **Ecosystem Integration: 99** — Analytica and Obelisk contracts are explicit and Ark-connected; one point remains withheld until Obelisk relying-party registration is proven.
+- **Capital Efficiency: 100** — no dependency, paid service, model call or variable-cost runtime was introduced.
+- **Automation Coverage: 100** — focused identity, public-contract, tactical, touch and trade-boundary tests join the complete source-bound suite and real-browser evidence.
+
+Committed SIL follow-ups:
+- [SIL] A rendered game-flow review must exercise the authentic launch event, not only call the target module directly; duplicate listeners can make correct code unreachable.
+- [SIL] Fictional presentation boundaries must normalize source identity before interpolation; canonical engine IDs and object-shaped records are never safe display values.
+
 ## 2026-08-11 — Session 80 Exact Decision Surfaces and Visible Architect Mastery
 
 SIL v3.0: **996 / 1000** (Dev Health 100, Creative Alignment 99, Momentum 100, Engagement 99, Process Quality 98, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).

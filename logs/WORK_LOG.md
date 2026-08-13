@@ -1,3 +1,14 @@
+## 2026-08-12 — Session 83: rematch memory, touch broadcast and contract truth
+
+- Ran the full requested /arc: profile/start, fresh nine-axis audit, all four ranked items, five verification-derived refinements, rendered-pixel review, source-bound aggregate verification, security/release gates, exact stable staging and canonical closeout.
+- Replaced misleading unused Passport v1 samples with an explicit external Obelisk v2 relying-party boundary and sent signed registration cargo through Studio Ark.
+- Added a single aggregate-only Analytica Feed v1 descriptor for the Community Stats showcase and atlas, plus source-derived Rematch Memory and touch/pen Sim-Watch transport.
+- Rendered review found and fixed canonical ID leakage, object-shaped trade partner copy, a duplicate ticker-listener reachability bug, light-theme tactic-card contrast, mobile modal scrolling and Sim-Watch/mobile-deck stacking.
+- Verification: Node 1,078/1,078; Pages build/boot green; CANON-054 conform; CANON-053 with nine inspected hash-bound captures; authentic touch dispatch; staged secret scan 0.
+- Stable staging serves receipt-only descendant 53d702f… at artifact 0f79737d…, passes 14/14 same-origin checks and retains rollback 179c4fb1….
+- Release gate: deployment GO, public launch NO-GO. Zoho delivery/reply-as, SHA-bound founder approval and lifecycle reconciliation remain unproved.
+- Creative Direction Record reviewed: no new founder creative direction was introduced; no private CDR file was created in this public repository.
+
 ## 2026-08-11 — Session 80: exact decision surfaces and visible Architect mastery
 
 - Ran the full requested `/arc`: live startup/canon reconciliation, a fresh project/game audit, game-loop review, app-release-gate review, every verified implementation item, a second-order accessibility refinement, rendered-pixel inspection, aggregate verification, security sweep, closeout and the authorized full deployment wave.

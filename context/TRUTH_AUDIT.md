@@ -5,6 +5,16 @@ Overall status: green
 Last reviewed: 2026-08-12
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
+## 2026-08-12 - Session 83 truth update
+
+- **Rematch memory is bounded evidence.** Tactical Film Room reads only the canonical rivalry ledger, orients the last score to the controlled club, labels a bounded recent sample and denies prediction/causation.
+- **Sim-Watch has one reachable authority.** A single ordered ticker listener opens the box score and then the broadcast; touch/pen, keyboard and buttons all drive the same previous/next controller.
+- **Fictional labels are presentation authority.** Rendered review found BUF/NE engine identifiers and an object-shaped standings value leaking into public copy; all affected paths now normalize to fictional abbreviations before interpolation.
+- **Public statistics share one honest descriptor.** Homepage showcase, deep atlas and Analytica consume one aggregate-only Feed v1 contract with six analyzed metrics, three showcased metrics and a 30-second refresh promise. It does not claim adoption or synthetic activity.
+- **Identity absence is explicit.** Passport v1 query-token/session examples are removed. Structured status declares external/not-integrated Obelisk v2, no local auth and no account flows until relying-party registration and PKCE verification succeed.
+- **Candidate evidence is exact.** Node passes 1,078/1,078. Nine reviewed dark/light desktop/mobile captures bind implementation f077926… and artifact 0f79737d…; receipt-only descendant 53d702f… serves the same artifact on stable staging with 14/14 checks and rollback.
+- **Deployment is not launch.** Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation remain unproved. launchReady stays false.
+
 ## 2026-08-12 - Session 82 truth update
 
 - **Session truth is monotonic.** Startup authority resolves the newest committed session across status, handoff and SIL; older summaries cannot self-heal the project backward.

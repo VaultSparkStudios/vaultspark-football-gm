@@ -1,49 +1,48 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: da6270d69283 -->
-<!-- generated-at: 2026-08-12T19:40:50.691Z -->
+<!-- source-hash: f0399629dd12 -->
+<!-- generated-at: 2026-08-13T02:43:35.833Z -->
 
 # LATEST_HANDOFF (compact)
 
-Session 82 Handoff Summary
+SESSION 83 HANDOFF SUMMARY
 
 Session
-- S82 closeout. Full /arc audit exhausted: six ranked items plus three second-order innovations implemented and verified.
+- S83 closed. Next: S84.
 
-Shipped
-- Draft trade acceptance now requires accessible review naming exact pick movement and irreversible consequence; planning-friction receipts persist through choice journey.
-- Architecture Review renders player-authored objective hierarchy (not generic checklist).
-- Session rendering resolves newest committed authority monotonically.
-- Release tooling unifies staging/visual/performance/production evidence around one deployable source/artifact; receipt-only publication commit accepted only when Git delta is allowlisted with no deployable files.
-- Candidate 046e35d passed staging 14/14 (artifact 656eb90..., deployment 179c4fb1, rollback 340d0138). Receipt-only publication a38ad346 passed production provenance 10/10 at identical artifact.
-- Browser proof green: Playwright 40/40, responsive 206/206, 64 hash-bound captures.
+Shipped (S83)
+- Tactical Film Room: Rematch Memory from canonical rivalry ledger, bounded recent sample, explicit non-causal boundary.
+- Sim-Watch: single reachable ticker launch path; touch/pen horizontal swipe routed through existing previous/next controller; mobile overlay stacking and viewport bounds fixed without weakening keyboard/button parity.
+- public/stats-surface.json: single aggregate-only Analytica Feed v1 (six metrics, three showcase IDs, 30s polling, no synthetic cohort claim).
+- Obelisk boundary: legacy Passport v1 scaffolds removed; declared external / not-integrated; OIDC Auth Code + PKCE SHA-256 required. Ark cargo 01JVSA8NLA2EE76D2CFC3958C0 requests relying-party registration.
+- Proof: canonical 1,078/1,078 across five shards; nine captures at 1440/390px dark/light; CANON-053 pass, zero defects; zero console errors.
+- Staging verified 14/14 at deployment f596dea2-e7a5-4a08-bffd-8513a94f97d6; rollback 179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412.
 
-Current Intent
-- Public launch remains NO-GO/HOLD. Deployment does not clear launch gates. Next session should run a fresh live-code audit, not assume S82 lens is current.
+Current Intent (S84)
+- Fresh live-code audit from S83 authority. Prefer measured player-facing depth and real cohort observation over duplicating shipped systems. Preserve external Obelisk boundary and public-launch HOLD unless new signed evidence changes them.
 
 Now Bucket (top 3)
-- Observe real consenting first-session and Community Stats cohorts without manufacturing activity.
-- Prove Zoho reply-capable delivery and reply-as identity.
-- Treat retained direct-game tutorial layout-shift diagnostic as future optimization, not a release-route slowdown claim.
+- Observe first real opted-in Community Stats cohort without manufacturing activity; evaluate historical/shareable aggregates only after cohort proves value.
+- Complete Obelisk relying-party registration when signed Ark response arrives; prove discovery, PKCE, session, logout before exposing account flows.
+- Prove Zoho delivery/reply-as; obtain SHA-bound founder launch approval; reconcile authoritative lifecycle before any public-launch flip.
 
 Blockers (top 3)
-- Reply-capable on-domain Zoho delivery unproved.
-- Registry SPARKED / local FORGE authority unreconciled (sibling-owned, non-blocking but flagged).
-- Aggregate test truth is split; use clean CI as final aggregate authority (do not fabricate aggregate receipt).
+- Zoho delivery/reply-as unproved.
+- SHA-bound founder launch approval false.
+- Registry SPARKED / local FORGE reconciliation unmet.
 
-Human-Blocked
-- Founder launch approval false (SHA-bound approval required) — recurring since S78+.
-- Lifecycle/authority reconciliation pending — recurring since S78+.
+Human-Blocked (external gates)
+- Founder launch approval: pending, unmet since ≥S78.
+- Zoho reply-capable email delivery: pending since ≥S78.
+- Registry SPARKED/FORGE reconciliation: sibling-owned via signed Ark, flagged since ≥S78.
+- Obelisk relying-party registration: awaiting signed Ark response (opened S83).
 
-Durable Decisions
-- Irreversible actions disclose exact objects/consequence at final commit boundary; previews never guess outcomes.
-- Planning friction is source-derived journey evidence, not a score or buff.
-- Deployable candidate SHA/artifact are immutable authority; later commits are publication lineage only when Git delta is allowlisted.
-- Release Web Vitals measure canonical public entry only; direct game-shell diagnostics stay separate and may remain red.
+Invariants
+- Rivalry history is descriptive evidence only: never prediction, causality, or invisible bonus.
+- Touch, buttons, keyboard drive one Sim-Watch controller; no gesture-owned playback state machine.
+- One aggregate-only Community Stats feed; no population/adoption/small-cohort disclosure.
+- No Passport v1 restore or project-local identity until Obelisk registers/verifies public client end to end.
 
 Key Files
-- src/engine/planningFriction.js, public/lib/tabDraft.js, public/lib/architectObjective.js
-- scripts/lib/session-authority.mjs, scripts/lib/release-authority.mjs
-- scripts/measure-hosted-performance.mjs, scripts/reconcile-release-authority.mjs
-- docs/AUDIT_2026-08-12_SESSION82.json, docs/performance/LATEST.json, docs/visual-qa/LATEST.json
-
-Next: Run a fresh live-code /arc audit from current authority; do not flip launch until Zoho delivery, SHA-bound founder approval, and lifecycle reconciliation all have evidence.
+- public/lib/tacticalFilmRoom.js, public/lib/simWatchDirector.js, public/lib/gameFlow.js
+- public/stats-surface.json, docs/OBELISK_INTEGRATION.md, obelisk-passport/README.md
+- docs/AUDIT_2026-08-12_SESSION83.

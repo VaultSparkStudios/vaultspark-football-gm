@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 82 arc implementation and release proof are complete: irreversible draft-trade review, planning-friction journey receipts, Architect Objective hierarchy, monotonic session authority, hosted performance evidence and unified deployable/publication lineage. Candidate 046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d passed stable staging 14/14; receipt-only publication a38ad346a84e0a4c11ad7b984c5cd0f3a66ddb3c passed production 10/10 at the identical artifact 656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067. Public launch remains HOLD.",
-  "nextMilestone": "Observe real consenting first-session and Community Stats cohorts without manufacturing activity; separately prove Zoho delivery/reply-as, SHA-bound founder launch approval and authoritative lifecycle reconciliation before any launch flip.",
+  "currentFocus": "Session 83 arc is complete: source-derived rematch film, canonical touch Sim-Watch transport, one aggregate-only Analytica public-stats contract, and a truthful external Obelisk Passport v2 boundary. Node is 1,078/1,078; nine rendered captures bind implementation f077926 to artifact 0f79737d; receipt-only descendant 53d702f is verified 14/14 on stable staging with rollback. Public launch remains HOLD.",
+  "nextMilestone": "Observe a real consenting Community Stats cohort without manufacturing activity; complete Obelisk relying-party registration when signed authority arrives; separately prove Zoho delivery/reply-as, SHA-bound founder launch approval and lifecycle reconciliation before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-and-reply-identity-unverified, founder-launch-approval-unverified, lifecycle-authority-unreconciled."
   ],
@@ -26,24 +26,20 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": {
-    "totalTests": 1069,
-    "pass": 1069,
+    "totalTests": 1078,
+    "pass": 1078,
     "fail": 0,
     "lastRun": "2026-08-12",
     "newTestFiles": [
-      "test/hosted-performance.test.js",
-      "test/on-clock-trade-market.test.js",
-      "test/playtest-journey.test.js",
-      "test/progressive-week-room.test.js",
-      "test/release-authority.test.js",
-      "test/session-authority.test.js"
+      "test/obelisk-migration-boundary.test.js",
+      "test/sim-watch-touch.test.js"
     ],
-    "newTestCount": 16,
-    "coverage": "Session 82 source-identical shards green at 1069 tests (core 123, runtime 670, sim-contract 79, sim-realism 1, Studio isolated 196). The long aggregate had one transient Studio red; clean CI is the final aggregate authority and no synthetic aggregate receipt is claimed.",
-    "uiSuiteNote": "Playwright 40/40; responsive evidence 206/206; 64 reviewed dark/light desktop/mobile captures are hash-bound in docs/visual-qa/LATEST.json."
+    "newTestCount": 9,
+    "coverage": "Canonical source-bound aggregate green: core 123, runtime 676, sim-contract 79, sim-realism 1, Studio 199.",
+    "uiSuiteNote": "Nine inspected dark/light desktop/mobile captures cover Tactical Film Room rematch states, scrolled mobile actions, and Sim-Watch; authentic touch transport and zero console errors verified."
   },
-  "testsPassing": 1069,
-  "testsTotal": 1069,
+  "testsPassing": 1078,
+  "testsTotal": 1078,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -82,23 +78,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 991,
+  "silScore": 996,
   "silCategoriesV3": {
-    "devHealth": 99,
+    "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
-    "engagement": 100,
-    "processQuality": 96,
-    "crossRepoCoherence": 99,
+    "engagement": 99,
+    "processQuality": 98,
+    "crossRepoCoherence": 100,
     "securityPosture": 100,
-    "ecosystemIntegration": 98,
+    "ecosystemIntegration": 99,
     "capitalEfficiency": 100,
-    "automationCoverage": 99
+    "automationCoverage": 100
   },
-  "currentSession": 82,
+  "currentSession": 83,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "Session 82 final CI and brief-format checks are green at receipt commit dc1cc5e; production publication a38ad346 passed provenance 10/10 at the corrected candidate 046e35d artifact, with focused release tests 9/9, responsive 206/206, CANON-053 64 reviewed captures, stable staging 14/14, and hosted public-entry Core Web Vitals/edge policy.",
+  "lastVerification": "Session 83 source-bound Node receipt is green at 1,078/1,078; Pages build and boot budget pass; CANON-054 conforms; CANON-053 passes with nine inspected dark/light desktop/mobile captures and authentic touch dispatch; staged secret scan has 0 findings; stable staging is exact 14/14 at 53d702f and artifact 0f79737d with rollback.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -124,7 +120,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 811,
+  "silHealth": 816,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -153,21 +149,21 @@
   "entropyScore": 0.037,
   "entropyLastComputed": "2026-08-11",
   "lastSessionSummary": {
-    "session": 82,
+    "session": 83,
     "shipped": [
-      "monotonic committed session authority across status, handoff and SIL",
-      "explicit accessible irreversible draft-trade review with exact picks",
-      "persistent source-derived planning-friction journey receipts",
-      "player-authored Architect Objective hierarchy",
-      "desktop/mobile hosted performance and edge evidence",
-      "unified deployable identity plus proven receipt-only publication lineage",
-      "three second-order visual, interaction and publication-authority refinements"
+      "source-derived Tactical Film Room rematch memory",
+      "touch and pen Sim-Watch transport through the canonical controller",
+      "one aggregate-only Analytica Feed v1 Community Stats descriptor",
+      "truthful external Obelisk Passport v2 boundary with v1 artifacts removed",
+      "fictional identity and trade-partner normalization",
+      "single reachable ticker launch authority",
+      "mobile/theme rendered-pixel corrections"
     ],
-    "tests": "1069 source-identical shard tests green; Playwright 40/40; responsive 206/206; 64 reviewed dark/light desktop/mobile receipts",
-    "deploy": "Corrected candidate 046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d passed stable staging 14/14 and receipt-only publication a38ad346a84e0a4c11ad7b984c5cd0f3a66ddb3c passed production 10/10 at artifact 656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067; rollback is available and launchReady remains false.",
+    "tests": "1,078/1,078 source-bound Node tests; Pages build and boot green; CANON-053 nine inspected captures; CANON-054 conform; staged secret scan 0.",
+    "deploy": "Receipt-only descendant 53d702fdee5f3db671b0467fb2f6326d88102f94 passed stable staging 14/14 at artifact 0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a; rollback deployment 179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412 is available. Public launch remains false.",
     "honestDeferrals": [
-      "Direct /game.html first-run tutorial layout shift remains a separately retained optimization diagnostic; canonical public-entry metrics pass.",
-      "Launch remains held on reply-capable email, SHA-bound founder approval and lifecycle authority.",
+      "Obelisk relying-party registration and end-to-end PKCE verification await signed Obelisk authority; no local account flow exists.",
+      "Launch remains held on Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation.",
       "Observe real opted-in cohorts without manufacturing activity."
     ]
   },
@@ -191,8 +187,8 @@
       "lastChecked": "2026-08-12"
     }
   ],
-  "lastSession": 82,
-  "silLastSession": "82",
+  "lastSession": 83,
+  "silLastSession": "83",
   "bootAmortization": {
     "ratio": 4.27,
     "verdict": "healthy",
@@ -220,7 +216,7 @@
       "ranAt": "2026-08-12T02:04:52.157Z"
     }
   ],
-  "session": 82,
+  "session": 83,
   "backendDeployment": {
     "sourceRevision": "7becc57385515042dee5d80146c635d45962ea40",
     "workflowRun": 31544469131,
@@ -289,11 +285,13 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.1",
-    "receiptSha256": null,
-    "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
+    "kind": "independent-staging-authority",
+    "project": "franchise-architect-staging",
+    "branch": "staging",
+    "sourceRevision": "53d702fdee5f3db671b0467fb2f6326d88102f94",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067",
+      "digest": "0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a",
       "files": 191,
       "exclusions": [
         "_health",
@@ -301,21 +299,26 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412",
+    "promotionIdentity": "53d702fdee5f3db671b0467fb2f6326d88102f94:0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a",
+    "deploymentId": "f596dea2-e7a5-4a08-bffd-8513a94f97d6",
+    "deploymentUrl": "https://f596dea2.franchise-architect-staging.pages.dev",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
+    "independent": true,
+    "exactRevision": true,
+    "exactArtifact": true,
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-12T07:21:16.936Z"
+      "checkedAt": "2026-08-13T02:19:53.394Z"
     },
     "rollback": {
-      "previousDeploymentId": "340d0138-134d-40b3-bb60-58951abf3e8f",
+      "previousDeploymentId": "179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-12T07:21:16.937Z"
+    "observedAt": "2026-08-13T02:19:53.395Z"
   },
   "lastCloseoutAt": "2026-08-12T07:29:11.094Z",
   "performanceAuthority": {

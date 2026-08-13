@@ -12,6 +12,25 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 
+## Session 83 — Full arc: rematch memory, touch broadcast and public contract truth (2026-08-12)
+
+Source: docs/AUDIT_2026-08-12_SESSION83.md.
+
+| Item | Status |
+|------|--------|
+| obelisk-v2-migration-boundary — remove misleading Passport v1 samples and declare the honest external v2 relying-party boundary | ✅ Done |
+| community-stats-feed-contract — bind homepage showcase, Stats Atlas and Analytica to one aggregate-only 30-second contract | ✅ Done |
+| rematch-film-memory — surface the last receipted meeting and bounded recent sample without prediction or causality claims | ✅ Done |
+| sim-watch-touch-transport — direct the existing broadcast controller through horizontal touch/pen gestures | ✅ Done |
+| fictional-identity-boundary — keep canonical engine IDs out of fictional tactical presentation | ✅ Done (second-order) |
+| deadline-partner-normalizer — prevent object-shaped standing identities from leaking into trade copy | ✅ Done (second-order) |
+| sim-watch-launch-authority — collapse duplicate ticker listeners into one reachable ordered launch path | ✅ Done (second-order) |
+| tactical-mobile-theme-polish — scroll-safe mobile composer and token-correct light cards | ✅ Done (second-order) |
+
+**Verification:** canonical source-bound Node receipt 1,078/1,078 (core 123, runtime 676, sim-contract 79, sim-realism 1, Studio 199); Pages build and boot budget green; CANON-054 conform; CANON-053 pass with 9 inspected hash-bound dark/light desktop/mobile captures; authentic touch moved the reel through the existing controller; staged secret scan 0 findings; stable staging 14/14 at 53d702f…, artifact 0f79737d…, with rollback.
+
+**Launch posture:** deployment GO; public launch NO-GO. Preserve launchReady: false until Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation exist.
+
 ## Session 82 — Full arc: irreversible choice clarity, architect hierarchy and release authority (2026-08-12)
 
 Source: `docs/AUDIT_2026-08-12_SESSION82.md`.

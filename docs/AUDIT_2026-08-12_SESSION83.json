@@ -31,7 +31,7 @@
     "evidence": "Code-contract review only. No consented cohort or docs/PLAYTESTS evidence exists, and public SOUL intentionally withholds private criteria, so these scores do not claim measured fun, retention, or complete private-soul conformance."
   },
   "releaseGate": {
-    "deploymentVerdict": "REVERIFY AFTER IMPLEMENTATION — Session 82 hosted evidence is current for the prior artifact; Session 83 deployable UI and public-contract changes require a new exact-candidate receipt.",
+    "deploymentVerdict": "GO — receipt-only descendant 53d702fdee5f3db671b0467fb2f6326d88102f94 serves implementation artifact 0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a on the stable staging origin with 14/14 provenance checks and rollback available.",
     "launchVerdict": "NO-GO — deployment authorization does not permit a public launch flip.",
     "launchHolds": [
       "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
@@ -92,10 +92,10 @@
       "title": "Replace misleading Passport v1 samples with one truthful Obelisk v2 boundary",
       "status": "implemented",
       "executionEvidence": ["test/obelisk-migration-boundary.test.js 2/2", "six executable/documented v1 artifacts removed", "PROJECT_STATUS declares external + not-integrated + no local auth"],
-      "premise": "The live Obelisk migration contract requires OpenID Connect Authorization Code with S256 PKCE, while this repository carried duplicate Passport v1 browser query-token callbacks and a project-local verify-session sample. Nothing imported them, but their presence could be mistaken for a supported integration; PROJECT_STATUS declared no architecture at all.",
+      "premise": "The live Obelisk migration contract requires OpenID Connect Authorization Code with SHA-256 PKCE, while this repository carried duplicate Passport v1 browser query-token callbacks and a project-local verify-session sample. Nothing imported them, but their presence could be mistaken for a supported integration; PROJECT_STATUS declared no architecture at all.",
       "evidence": ["live Obelisk migration cargo digest ad951688", "obelisk-passport and src duplicate v1 artifacts", "release-architecture checker missing obeliskArchitecture", "obelisk.identity.verify capability unavailable"],
       "constraint": "No local auth, URL query identity token, browser client secret, or claim of live integration. Account-bearing flows remain unavailable until Obelisk registers and verifies a Passport v2 public-client flow end to end.",
-      "verification": ["v1 artifacts are absent", "public-safe boundary names OIDC Authorization Code + S256 PKCE", "structured status remains not-integrated and localAuth false"],
+      "verification": ["v1 artifacts are absent", "public-safe boundary names OIDC Authorization Code + SHA-256 PKCE", "structured status remains not-integrated and localAuth false"],
       "ladder": {
         "L1": { "effortHours": 0.5, "recipe": "Delete duplicate v1 samples and record that the anonymous product has no authentication surface." },
         "L2": { "effortHours": 2, "recipe": "Quarantine every Passport v1 token/callback artifact, declare external Obelisk architecture and an honestly not-integrated v2 PKCE boundary in structured status and public-safe documentation, regression-test the absence of local auth, and request relying-party registration through Studio Ark." },

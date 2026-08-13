@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-13 (Session 82 closeout) -->
+<!-- generated-at: 2026-08-13 (Session 83 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
-<!-- session-authority: committed=S82 · SIL=S82 · status=S82 · handoff=S82; divergent=false -->
+<!-- session-authority: committed=S83 · SIL=S83 · status=S83 · handoff=S83; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 82 closeout · 2026-08-13.
+> **Fast-boot brief** — generated at Session 83 closeout · 2026-08-13.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,18 +17,18 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 83 · 2026-08-13 · BUILDER MODE                          ║
+║  Session 84 · 2026-08-13 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S82) · WHAT SHIPPED ═══════════════════════════╗
-║  ✓ monotonic committed session authority across status, handoff  ║
-║  ✓ explicit accessible irreversible draft-trade review with exa  ║
-║  ✓ persistent source-derived planning-friction journey receipts  ║
-║  ✓ player-authored Architect Objective hierarchy                 ║
-║  ✓ desktop/mobile hosted performance and edge evidence           ║
-║  Tests  1069 source-identical shard tests green; Playwright 40/  ║
-║  Deploy Corrected candidate 046e35dfb23ff0592eeae2e3de4f0cfbe2d  ║
+╔══ LAST SESSION (S83) · WHAT SHIPPED ═══════════════════════════╗
+║  ✓ source-derived Tactical Film Room rematch memory              ║
+║  ✓ touch and pen Sim-Watch transport through the canonical cont  ║
+║  ✓ one aggregate-only Analytica Feed v1 Community Stats descrip  ║
+║  ✓ truthful external Obelisk Passport v2 boundary with v1 artif  ║
+║  ✓ fictional identity and trade-partner normalization            ║
+║  Tests  1,078/1,078 source-bound Node tests; Pages build and bo  ║
+║  Deploy Receipt-only descendant 53d702fdee5f3db671b0467fb2f6326  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -38,16 +38,16 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 0d · refresh required              ║
+║  Profile · game · live-beta · arch=— · top-axis=—                ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    991/1000   ███████████████████████░   99%                     ║
-║    SIL v3.0  ·  Avg3: 995  ·  Velocity 0→                        ║
-║    Active 16294d · closeout 1d · source: newest SIL/status/hand  ║
+║    996/1000   ███████████████████████░   100%                    ║
+║    SIL v3.0  ·  Avg3: 994.3  ·  Velocity 0→                      ║
+║    Active 15929d · closeout 1d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -57,28 +57,28 @@
 ║    Momentum         100    ██████████  ████████ →                ║
 ║    Engagement       100    ██████████  ████████ →                ║
 ║    Process Qual     100    ██████████  ████████ →                ║
-║    Coherence         99    ██████████  ········ →                ║
+║    Coherence        100    ██████████  ········ →                ║
 ║    Security         100    ██████████  ········ →                ║
-║    Ecosystem         98    ██████████  ········ →                ║
+║    Ecosystem         99    ██████████  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation        99    ██████████  ········ →                ║
+║    Automation       100    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 82 ════════════════════════════╗
-║  Shipped:  Session 82 arc implementation and release proof are   ║
-║  Tests:    1067/1067 passing  ·  Deploy: N/A                     ║
+╔══ WHERE WE LEFT OFF  ·  Session 83 ════════════════════════════╗
+║  Shipped:  Session 83 arc is complete: source-derived rematch f  ║
+║  Tests:    1078/1078 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     14,036 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~7,018 tok/turn  ·  cache 50%  ·  129 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
+║     42,951 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~21,476 tok/turn  ·  cache 50%  ·  40 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1067/1067 passing (2026-08-12) · STALE — run   ║
+║  ✓  Tests         1078/1078 passing (2026-08-13)                 ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -125,5 +125,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 82 closeout · 2026-08-13*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 83 closeout · 2026-08-13*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

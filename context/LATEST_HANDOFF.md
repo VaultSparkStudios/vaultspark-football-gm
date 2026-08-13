@@ -1,4 +1,41 @@
-# Session 82 Closeout — Choice Clarity, Architect Hierarchy and Release Authority
+# Session 83 Closeout — Rematch Memory, Touch Broadcast and Contract Truth
+
+## Session Intent — S84
+
+Run a fresh live-code audit from the Session 83 authority. Prefer measured player-facing depth and real cohort observation over duplicating shipped systems; preserve the external Obelisk boundary and public-launch HOLD unless new signed evidence changes them.
+
+## Where We Left Off (Session 83)
+
+- The full S83 /arc is exhausted: all four ranked items and five verification-derived refinements shipped. Tactical Film Room now uses the canonical rivalry ledger for one controlled-team-oriented Rematch Memory with a bounded recent sample and explicit non-causal boundary.
+- Sim-Watch has one reachable ticker launch path and touch/pen horizontal swipe transport routed through the existing previous/next authority. Mobile overlay stacking and viewport bounds are corrected without weakening keyboard or button parity.
+- public/stats-surface.json is the single aggregate-only Analytica Feed v1 descriptor: six analyzed metrics, three curated showcase IDs, 30-second polling, and no synthetic cohort claim.
+- Legacy Passport v1 callback/token scaffolds are gone. The project declares obeliskArchitecture: external, status: not-integrated, no local account flows, and the required OpenID Connect Authorization Code + SHA-256 Proof Key for Code Exchange boundary. Ark cargo 01JVSA8NLA2EE76D2CFC3958C0 requests relying-party registration from Obelisk.
+- Canonical Node proof is 1,078/1,078 across five source-bound shards. Nine inspected captures cover rematch and Sim-Watch states at 1440px/390px in dark/light; CANON-053 passes with zero open defects. The browser emitted zero console errors, and authentic touch dispatch advanced and rewound the reel through the canonical controller.
+- Implementation f077926… and receipt-only descendant 53d702f… share artifact 0f79737d…. Stable staging is active and verified 14/14 at deployment f596dea2-e7a5-4a08-bffd-8513a94f97d6, with rollback 179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412.
+- Release verdict remains deployment GO / public launch NO-GO. Zoho delivery/reply-as, SHA-bound founder launch approval and registry SPARKED/local FORGE reconciliation remain unmet; no code or deployment evidence substitutes for them.
+
+## Decisions That Must Survive
+
+- Rivalry history may add decision context, but remains descriptive evidence: never prediction, causality or an invisible gameplay bonus.
+- Touch, buttons and keyboard drive the same Sim-Watch controller. Never create a gesture-owned playback state machine.
+- Anonymous public Community Stats has one aggregate-only feed contract. Do not invent population, adoption, activity or small-cohort disclosure.
+- Do not restore Passport v1 samples or add project-local identity. Any future account flow begins only after Obelisk registers and verifies the public client end to end.
+
+## Next Best Work
+
+- Observe the first real opted-in Community Stats cohort without manufacturing activity; evaluate historical/shareable aggregates only after the cohort proves value.
+- Complete the Obelisk relying-party registration when the signed Ark response arrives, then prove discovery, PKCE, session and logout before exposing account flows.
+- Prove Zoho delivery/reply-as, obtain SHA-bound founder launch approval and reconcile authoritative lifecycle before any public-launch flip.
+
+## Key Files
+
+- public/lib/tacticalFilmRoom.js, public/lib/simWatchDirector.js, public/lib/gameFlow.js
+- public/stats-surface.json, docs/OBELISK_INTEGRATION.md, obelisk-passport/README.md
+- docs/AUDIT_2026-08-12_SESSION83.json, docs/visual-qa/LATEST.json
+
+---
+
+# Prior Session 82 Closeout — Choice Clarity, Architect Hierarchy and Release Authority
 
 ## Session Intent — S83
 

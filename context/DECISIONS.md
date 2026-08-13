@@ -2,6 +2,30 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-12 - S83: rematch memory is descriptive tactical evidence
+
+**Decision:** Tactical Film Room may show the last receipted head-to-head score and a bounded recent W-L-T sample oriented to the controlled franchise. It must remain hidden when history is absent or malformed and explicitly state that the sample is neither prediction nor causation.
+
+**Rationale:** Existing rivalry truth can make a rematch feel distinct without creating a hidden buff, inferred outcome or second rivalry authority.
+
+---
+
+## 2026-08-12 - S83: every Sim-Watch input shares one controller
+
+**Decision:** Touch/pen swipes, keyboard arrows and transport buttons all delegate to the same previous/next Sim-Watch authority. The play log preserves vertical scrolling, ignores short/off-axis gestures and never owns playback state.
+
+**Rationale:** Mobile parity should increase agency without splitting deterministic broadcast state across input-specific implementations.
+
+---
+
+## 2026-08-12 - S83: Obelisk absence must be explicit, not scaffolded
+
+**Decision:** Remove obsolete Passport v1 token/callback examples. The anonymous product declares an external, not-integrated Passport v2 boundary with no local auth or account flows; any future identity work requires registered OpenID Connect Authorization Code + SHA-256 PKCE verification through Obelisk.
+
+**Rationale:** Unused executable-looking identity samples are misleading and unsafe. Honest absence is preferable to a local or legacy path that appears supported.
+
+---
+
 ## 2026-08-11 - S80: one exact-surface navigation authority
 
 **Decision:** Every ranked General Manager command declares both its owning tab and exact working-surface ID. Desktop, mobile, Blueprint, and season-chapter actions activate and hydrate the tab through one async authority before scrolling and focusing the target; missing targets remain explicit failures, and reduced-motion preference disables smooth scrolling.

@@ -4,7 +4,7 @@ Franchise Architect uses the `external` Obelisk architecture boundary. The curre
 
 Status: `not-integrated`.
 
-The current Obelisk migration contract requires Passport v2 using OpenID Connect Authorization Code with S256 Proof Key for Code Exchange (PKCE). Session 83 removed the deprecated Passport v1 query-token callback and server verification samples so they cannot be mistaken for a supported authentication path. No login UI or authentication claim is published until a registered Obelisk relying party passes an end-to-end flow.
+The current Obelisk migration contract requires Passport v2 using OpenID Connect Authorization Code with SHA-256 Proof Key for Code Exchange (PKCE). Session 83 removed the deprecated Passport v1 query-token callback and server verification samples so they cannot be mistaken for a supported authentication path. No login UI or authentication claim is published until a registered Obelisk relying party passes an end-to-end flow.
 
 Future account-bearing flows must delegate sign-in, account creation, invitations, recovery, sessions, and logout to Obelisk. This project must not create a local password database, accept identity tokens from URL query parameters, or ship a client secret in browser code.
 
