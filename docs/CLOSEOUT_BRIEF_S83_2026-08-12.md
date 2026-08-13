@@ -8,7 +8,7 @@
 - **Touch-directed Sim-Watch** (9/10 project, 5/10 ecosystem): Touch and pen swipes drive the existing previous/next authority; authentic browser dispatch advanced and rewound the reel while keyboard and buttons remain intact.
 - **One aggregate-only public stats contract** (7/10 project, 9/10 ecosystem): Homepage showcase, deep atlas and Analytica Feed v1 resolve six metrics, three showcase IDs, 30-second polling and the same privacy boundary.
 - **Truthful Obelisk v2 boundary** (7/10 project, 9/10 ecosystem): Six obsolete v1 artifacts are gone; status declares external/not-integrated identity and signed Ark cargo requests relying-party registration.
-- **Exact staging authority** (9/10 project, 8/10 ecosystem): Receipt-only descendant 53d702f serves artifact 0f79737d on stable staging with 14/14 checks and rollback.
+- **Exact staging authority** (9/10 project, 8/10 ecosystem): Unified authority verifies revision 8b7d595 and artifact 0f79737d across staging, production, rendered pixels, and hosted performance; staging passes 14/14 with rollback and production passes 10/10.
 
 ## Follow-ups
 

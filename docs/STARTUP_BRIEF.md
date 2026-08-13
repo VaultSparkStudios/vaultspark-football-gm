@@ -28,7 +28,7 @@
 ║  ✓ truthful external Obelisk Passport v2 boundary with v1 artif  ║
 ║  ✓ fictional identity and trade-partner normalization            ║
 ║  Tests  1,078/1,078 source-bound Node tests; Pages build and bo  ║
-║  Deploy Receipt-only descendant 53d702fdee5f3db671b0467fb2f6326  ║
+║  Deploy Published revision 8b7d59597dc17a546ba3130cdb4476945571  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -38,7 +38,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · live-beta · arch=— · top-axis=—                ║
+║  Profile · game · cache stale 0d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -72,8 +72,8 @@
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     42,951 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~21,476 tok/turn  ·  cache 50%  ·  40 turns to compact       ║
+║     38,927 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~19,464 tok/turn  ·  cache 50%  ·  45 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 

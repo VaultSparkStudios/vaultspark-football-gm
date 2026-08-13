@@ -15,7 +15,7 @@ Shipped (S83)
 - public/stats-surface.json: single aggregate-only Analytica Feed v1 (six metrics, three showcase IDs, 30s polling, no synthetic cohort claim).
 - Obelisk boundary: legacy Passport v1 scaffolds removed; declared external / not-integrated; OIDC Auth Code + PKCE SHA-256 required. Ark cargo 01JVSA8NLA2EE76D2CFC3958C0 requests relying-party registration.
 - Proof: canonical 1,078/1,078 across five shards; nine captures at 1440/390px dark/light; CANON-053 pass, zero defects; zero console errors.
-- Staging verified 14/14 at deployment f596dea2-e7a5-4a08-bffd-8513a94f97d6; rollback 179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412.
+- Unified authority verified at 8b7d595… / artifact 0f79737d…; production 10/10 and staging 14/14 at deployment 281d4791-704c-4c76-a01d-33aee51d09ba; rollback f596dea2-e7a5-4a08-bffd-8513a94f97d6.
 
 Current Intent (S84)
 - Fresh live-code audit from S83 authority. Prefer measured player-facing depth and real cohort observation over duplicating shipped systems. Preserve external Obelisk boundary and public-launch HOLD unless new signed evidence changes them.

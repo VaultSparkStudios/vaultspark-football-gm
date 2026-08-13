@@ -32,7 +32,7 @@
       "title": "Exact staging authority",
       "projectImpact": 9,
       "ecosystemImpact": 8,
-      "evidence": "Receipt-only descendant 53d702f serves artifact 0f79737d on stable staging with 14/14 checks and rollback."
+      "evidence": "Unified authority verifies revision 8b7d595 and artifact 0f79737d across staging, production, rendered pixels, and hosted performance; staging passes 14/14 with rollback and production passes 10/10."
     }
   ],
   "followUps": [

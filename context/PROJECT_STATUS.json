@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "green",
-  "currentFocus": "Session 83 arc is complete: source-derived rematch film, canonical touch Sim-Watch transport, one aggregate-only Analytica public-stats contract, and a truthful external Obelisk Passport v2 boundary. Node is 1,078/1,078; nine rendered captures bind implementation f077926 to artifact 0f79737d; receipt-only descendant 53d702f is verified 14/14 on stable staging with rollback. Public launch remains HOLD.",
+  "currentFocus": "Session 83 arc is complete: source-derived rematch film, canonical touch Sim-Watch transport, one aggregate-only Analytica public-stats contract, and a truthful external Obelisk Passport v2 boundary. Node is 1,078/1,078; nine rendered captures plus hosted performance bind unified staging/production authority to revision 8b7d595 and artifact 0f79737d; staging is verified 14/14 with rollback and production 10/10. Public launch remains HOLD.",
   "nextMilestone": "Observe a real consenting Community Stats cohort without manufacturing activity; complete Obelisk relying-party registration when signed authority arrives; separately prove Zoho delivery/reply-as, SHA-bound founder launch approval and lifecycle reconciliation before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-and-reply-identity-unverified, founder-launch-approval-unverified, lifecycle-authority-unreconciled."
@@ -94,7 +94,7 @@
   "currentSession": 83,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "Session 83 source-bound Node receipt is green at 1,078/1,078; Pages build and boot budget pass; CANON-054 conforms; CANON-053 passes with nine inspected dark/light desktop/mobile captures and authentic touch dispatch; staged secret scan has 0 findings; stable staging is exact 14/14 at 53d702f and artifact 0f79737d with rollback.",
+  "lastVerification": "Session 83 source-bound Node receipt is green at 1,078/1,078; Pages build and boot budget pass; CANON-054 conforms; CANON-053 passes with nine inspected dark/light desktop/mobile captures and authentic touch dispatch; staged secret scan has 0 findings; unified release authority is verified at 8b7d595 and artifact 0f79737d; staging is exact 14/14 with rollback, production 10/10, and hosted performance green.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -160,7 +160,7 @@
       "mobile/theme rendered-pixel corrections"
     ],
     "tests": "1,078/1,078 source-bound Node tests; Pages build and boot green; CANON-053 nine inspected captures; CANON-054 conform; staged secret scan 0.",
-    "deploy": "Receipt-only descendant 53d702fdee5f3db671b0467fb2f6326d88102f94 passed stable staging 14/14 at artifact 0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a; rollback deployment 179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412 is available. Public launch remains false.",
+    "deploy": "Published revision 8b7d59597dc17a546ba3130cdb44769455713a2c has unified verified staging, production, visual, and hosted-performance authority at artifact 0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a; staging passes 14/14 and rollback deployment f596dea2-e7a5-4a08-bffd-8513a94f97d6 is available. Public launch remains false.",
     "honestDeferrals": [
       "Obelisk relying-party registration and end-to-end PKCE verification await signed Obelisk authority; no local account flow exists.",
       "Launch remains held on Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation.",
@@ -184,7 +184,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-13"
     }
   ],
   "lastSession": 83,
@@ -284,11 +284,9 @@
     ]
   },
   "stagingAuthority": {
-    "schemaVersion": "1.1",
-    "kind": "independent-staging-authority",
-    "project": "franchise-architect-staging",
-    "branch": "staging",
-    "sourceRevision": "53d702fdee5f3db671b0467fb2f6326d88102f94",
+    "schemaVersion": "1.0",
+    "receiptSha256": "46720489429f63f6fcf412f684a29b4696bb5be35a3c6d7864d5332e3ef966af",
+    "sourceRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
     "artifactFingerprint": {
       "algorithm": "sha256",
       "digest": "0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a",
@@ -299,148 +297,72 @@
         "edge-policy-receipt.json"
       ]
     },
-    "promotionIdentity": "53d702fdee5f3db671b0467fb2f6326d88102f94:0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a",
-    "deploymentId": "f596dea2-e7a5-4a08-bffd-8513a94f97d6",
-    "deploymentUrl": "https://f596dea2.franchise-architect-staging.pages.dev",
+    "deploymentId": "281d4791-704c-4c76-a01d-33aee51d09ba",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
-    "independent": true,
-    "exactRevision": true,
-    "exactArtifact": true,
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-13T02:19:53.394Z"
+      "checkedAt": "2026-08-13T03:12:09.634Z"
     },
     "rollback": {
-      "previousDeploymentId": "179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412",
+      "previousDeploymentId": "f596dea2-e7a5-4a08-bffd-8513a94f97d6",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-13T02:19:53.395Z"
+    "observedAt": "2026-08-13T03:12:09.634Z"
   },
   "lastCloseoutAt": "2026-08-12T07:29:11.094Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
-    "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
-    "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067",
+    "sourceRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
+    "artifactDigest": "0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a",
     "route": "/",
     "desktop": {
-      "lcpMs": 556,
+      "lcpMs": 524,
       "inpMs": 24,
       "cls": 0.0151
     },
     "mobile": {
-      "lcpMs": 452,
+      "lcpMs": 464,
       "inpMs": 16,
       "cls": 0.0085
     },
     "edgePolicyObserved": true,
     "verified": true,
-    "observedAt": "2026-08-12T07:25:47.947Z",
+    "observedAt": "2026-08-13T03:09:16.447Z",
+    "receiptSha256": "c622ea4593a5b4d60c7adb66a67b375ff5bfa5dfe6325179b351dedee4918a15",
     "diagnostic": "docs/performance/GAME_SHELL_DIAGNOSTIC.json retains the separate direct-game first-run layout-shift red."
   },
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-08-12T07:51:32.590Z",
+    "observedAt": "2026-08-13T03:14:53.252Z",
     "status": "verified",
-    "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
-    "publicationRevision": "a38ad346a84e0a4c11ad7b984c5cd0f3a66ddb3c",
-    "publicationDelta": {
-      "from": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
-      "to": "a38ad346a84e0a4c11ad7b984c5cd0f3a66ddb3c",
-      "changedFiles": [
-        "audits/2026-08-12.json",
-        "context/CURRENT_STATE.md",
-        "context/DECISIONS.md",
-        "context/LATEST_HANDOFF.md",
-        "context/PROJECT_STATUS.json",
-        "context/STATE_VECTOR.json",
-        "context/TASK_BOARD.md",
-        "context/TRUTH_AUDIT.md",
-        "context/closeout-brief-session82-input.json",
-        "docs/AUDIT_2026-08-12_SESSION82.json",
-        "docs/AUDIT_2026-08-12_SESSION82.md",
-        "docs/CLOSEOUT_BRIEF_S82_2026-08-12.md",
-        "docs/CLOSEOUT_STATUS_BOARD.md",
-        "docs/STARTUP_BRIEF.md",
-        "docs/performance/LATEST.json",
-        "docs/visual-qa/LATEST.json",
-        "docs/visual-qa/s82-desktop-agent-negotiation-dark.png",
-        "docs/visual-qa/s82-desktop-agent-negotiation-light.png",
-        "docs/visual-qa/s82-desktop-architect-cut-dark.png",
-        "docs/visual-qa/s82-desktop-architect-cut-light.png",
-        "docs/visual-qa/s82-desktop-architect-objective-dark.png",
-        "docs/visual-qa/s82-desktop-architect-objective-light.png",
-        "docs/visual-qa/s82-desktop-architect-signature-dark.png",
-        "docs/visual-qa/s82-desktop-architect-signature-light.png",
-        "docs/visual-qa/s82-desktop-co-gm-brief-dark.png",
-        "docs/visual-qa/s82-desktop-co-gm-brief-light.png",
-        "docs/visual-qa/s82-desktop-exact-command-center-dark.png",
-        "docs/visual-qa/s82-desktop-exact-command-center-light.png",
-        "docs/visual-qa/s82-desktop-exact-command-target-dark.png",
-        "docs/visual-qa/s82-desktop-exact-command-target-light.png",
-        "docs/visual-qa/s82-desktop-guide-modal-dark.png",
-        "docs/visual-qa/s82-desktop-hof-ceremony-light.png",
-        "docs/visual-qa/s82-desktop-prediction-receipt-dark.png",
-        "docs/visual-qa/s82-desktop-prediction-receipt-light.png",
-        "docs/visual-qa/s82-desktop-room-watch-dark.png",
-        "docs/visual-qa/s82-desktop-room-watch-light.png",
-        "docs/visual-qa/s82-desktop-sim-watch-reel-dark.png",
-        "docs/visual-qa/s82-desktop-sim-watch-reel-light.png",
-        "docs/visual-qa/s82-mobile-agent-negotiation-dark.png",
-        "docs/visual-qa/s82-mobile-agent-negotiation-light.png",
-        "docs/visual-qa/s82-mobile-architect-cut-dark.png",
-        "docs/visual-qa/s82-mobile-architect-cut-light.png",
-        "docs/visual-qa/s82-mobile-architect-signature-dark.png",
-        "docs/visual-qa/s82-mobile-architect-signature-light.png",
-        "docs/visual-qa/s82-mobile-co-gm-brief-dark.png",
-        "docs/visual-qa/s82-mobile-co-gm-brief-light.png",
-        "docs/visual-qa/s82-mobile-draft-trade-review-light.png",
-        "docs/visual-qa/s82-mobile-exact-command-center-dark.png",
-        "docs/visual-qa/s82-mobile-exact-command-center-light.png",
-        "docs/visual-qa/s82-mobile-exact-command-target-dark.png",
-        "docs/visual-qa/s82-mobile-exact-command-target-light.png",
-        "docs/visual-qa/s82-mobile-hof-ceremony-dark.png",
-        "docs/visual-qa/s82-mobile-hof-ceremony-light.png",
-        "docs/visual-qa/s82-mobile-prediction-receipt-dark.png",
-        "docs/visual-qa/s82-mobile-prediction-receipt-light.png",
-        "docs/visual-qa/s82-mobile-rival-coaching-dark.png",
-        "docs/visual-qa/s82-mobile-rival-coaching-light.png",
-        "docs/visual-qa/s82-mobile-room-watch-dark.png",
-        "docs/visual-qa/s82-mobile-room-watch-light.png",
-        "docs/visual-qa/s82-mobile-sim-watch-reel-dark.png",
-        "docs/visual-qa/s82-mobile-sim-watch-reel-light.png",
-        "docs/visual-qa/s82-mobile-trophy-road-dark.png",
-        "docs/visual-qa/s82-mobile-trophy-road-light.png",
-        "logs/WORK_LOG.md",
-        "scripts/write-visual-qa-receipt.mjs"
-      ],
-      "unsafeFiles": [],
-      "verified": true
-    },
+    "sourceRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
+    "publicationRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
+    "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067"
+      "digest": "0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
-        "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067"
+        "sourceRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
+        "artifactDigest": "0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a"
       },
       "production": {
-        "sourceRevision": "a38ad346a84e0a4c11ad7b984c5cd0f3a66ddb3c",
-        "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067"
+        "sourceRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
+        "artifactDigest": "0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a"
       },
       "visual": {
-        "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
-        "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067"
+        "sourceRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
+        "artifactDigest": "0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a"
       },
       "performance": {
-        "sourceRevision": "046e35dfb23ff0592eeae2e3de4f0cfbe2da9d6d",
-        "artifactDigest": "656eb90495e943c6968c472c04740db3c57a4dfa914236fb33f49879b823c067"
+        "sourceRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
+        "artifactDigest": "0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a"
       }
     },
     "checks": [
@@ -486,12 +408,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "bb8dfdd85f28e864bf9c6b58166ce8f583c8568b9fd3fb5c22df6e2ef88e448d",
-      "productionSha256": "701caeb159a257f49aa3fdd9fcbd61be4216cd7ad451b6778ddf165e3a718912",
-      "visualSha256": "5ba39cd581cfe93661bd24a4bd501fff7bbb9686d32b63682d41c607f22824dc",
-      "performanceSha256": "37e169401c31e0addc788e2812e6f856a3f6772ec811f220d886a9cc97d7662c"
+      "stagingSha256": "34579e95768bd3da52a4380b1426924cea3362924536d7f5d377b817606e503c",
+      "productionSha256": "4ebeed6e6df97b1b8f25c2005b95be01624a4d5c64e9cc0514d42c9a77045dde",
+      "visualSha256": "a877cffaa68ffcef7c4b0f6bd581828ac6eed0df6e8f5a4de3a755b0764a3844",
+      "performanceSha256": "1215d16cd685815889824e0d63b4ede05a9bbbebf32fef709e053c0301249578"
     },
-    "receiptSha256": "87d7972987a6dbc1b201c5f224084cfe2f310bec0f27cd6ad5424234a1c79812"
+    "receiptSha256": "7a95e2ec7bdd7ef145fbf24daa29966495603bd0afffa64c26ad43230233d051"
   },
   "launchReady": false
 }

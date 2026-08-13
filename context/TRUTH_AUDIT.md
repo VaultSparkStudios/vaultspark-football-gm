@@ -12,7 +12,7 @@ Public-safe summary only. Sensitive verification notes are maintained privately.
 - **Fictional labels are presentation authority.** Rendered review found BUF/NE engine identifiers and an object-shaped standings value leaking into public copy; all affected paths now normalize to fictional abbreviations before interpolation.
 - **Public statistics share one honest descriptor.** Homepage showcase, deep atlas and Analytica consume one aggregate-only Feed v1 contract with six analyzed metrics, three showcased metrics and a 30-second refresh promise. It does not claim adoption or synthetic activity.
 - **Identity absence is explicit.** Passport v1 query-token/session examples are removed. Structured status declares external/not-integrated Obelisk v2, no local auth and no account flows until relying-party registration and PKCE verification succeed.
-- **Candidate evidence is exact.** Node passes 1,078/1,078. Nine reviewed dark/light desktop/mobile captures bind implementation f077926… and artifact 0f79737d…; receipt-only descendant 53d702f… serves the same artifact on stable staging with 14/14 checks and rollback.
+- **Candidate and publication evidence are exact.** Node passes 1,078/1,078. Nine reviewed dark/light desktop/mobile captures, hosted performance, staging, and production are unified at published revision 8b7d595… and artifact 0f79737d…. Staging passes 14/14 with rollback; production passes 10/10.
 - **Deployment is not launch.** Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation remain unproved. launchReady stays false.
 
 ## 2026-08-12 - Session 82 truth update

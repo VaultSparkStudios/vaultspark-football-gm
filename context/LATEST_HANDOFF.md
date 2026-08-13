@@ -11,7 +11,7 @@ Run a fresh live-code audit from the Session 83 authority. Prefer measured playe
 - public/stats-surface.json is the single aggregate-only Analytica Feed v1 descriptor: six analyzed metrics, three curated showcase IDs, 30-second polling, and no synthetic cohort claim.
 - Legacy Passport v1 callback/token scaffolds are gone. The project declares obeliskArchitecture: external, status: not-integrated, no local account flows, and the required OpenID Connect Authorization Code + SHA-256 Proof Key for Code Exchange boundary. Ark cargo 01JVSA8NLA2EE76D2CFC3958C0 requests relying-party registration from Obelisk.
 - Canonical Node proof is 1,078/1,078 across five source-bound shards. Nine inspected captures cover rematch and Sim-Watch states at 1440px/390px in dark/light; CANON-053 passes with zero open defects. The browser emitted zero console errors, and authentic touch dispatch advanced and rewound the reel through the canonical controller.
-- Implementation f077926… and receipt-only descendant 53d702f… share artifact 0f79737d…. Stable staging is active and verified 14/14 at deployment f596dea2-e7a5-4a08-bffd-8513a94f97d6, with rollback 179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412.
+- Unified release authority is verified at published revision 8b7d59597dc17a546ba3130cdb44769455713a2c and artifact 0f79737d…. Production passes 10/10; stable staging passes 14/14 at deployment 281d4791-704c-4c76-a01d-33aee51d09ba, with rollback f596dea2-e7a5-4a08-bffd-8513a94f97d6.
 - Release verdict remains deployment GO / public launch NO-GO. Zoho delivery/reply-as, SHA-bound founder launch approval and registry SPARKED/local FORGE reconciliation remain unmet; no code or deployment evidence substitutes for them.
 
 ## Decisions That Must Survive

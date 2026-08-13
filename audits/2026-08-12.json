@@ -23,7 +23,7 @@
     "node": "1,078/1,078 source-bound aggregate green: core 123, runtime 676, sim-contract 79, sim-realism 1, Studio 199",
     "visual": "9 hash-bound dark/light desktop/mobile captures inspected; no blocking defects",
     "pages": "build and browser boot budget green",
-    "staging": "14/14 at receipt-only descendant 53d702fdee5f3db671b0467fb2f6326d88102f94 and artifact 0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a with rollback",
+    "staging": "unified authority verified at published revision 8b7d59597dc17a546ba3130cdb44769455713a2c and artifact 0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a; staging 14/14 with rollback and production 10/10",
     "canon": "CANON-053 pass and CANON-054 conform",
     "security": "staged secret scan 0 findings"
   },
@@ -47,9 +47,9 @@
   "release": {
     "verdict": "STAGING VERIFIED / PUBLIC LAUNCH NO-GO",
     "implementationRevision": "f077926",
-    "stagingRevision": "53d702fdee5f3db671b0467fb2f6326d88102f94",
+    "stagingRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
     "artifactFingerprint": "0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a",
-    "rollbackDeploymentId": "179c4fb1-0fcf-4ffb-8ed7-83d1fa0d6412",
+    "rollbackDeploymentId": "f596dea2-e7a5-4a08-bffd-8513a94f97d6",
     "launchReady": false,
     "independentGatesOpen": [
       "email-delivery-and-reply-identity-unverified",

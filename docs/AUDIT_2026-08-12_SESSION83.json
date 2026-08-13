@@ -31,7 +31,7 @@
     "evidence": "Code-contract review only. No consented cohort or docs/PLAYTESTS evidence exists, and public SOUL intentionally withholds private criteria, so these scores do not claim measured fun, retention, or complete private-soul conformance."
   },
   "releaseGate": {
-    "deploymentVerdict": "GO — receipt-only descendant 53d702fdee5f3db671b0467fb2f6326d88102f94 serves implementation artifact 0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a on the stable staging origin with 14/14 provenance checks and rollback available.",
+    "deploymentVerdict": "GO — unified release authority verifies published revision 8b7d59597dc17a546ba3130cdb44769455713a2c and artifact 0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a across staging, production, rendered pixels, and hosted performance; stable staging passes 14/14 with rollback and production passes 10/10.",
     "launchVerdict": "NO-GO — deployment authorization does not permit a public launch flip.",
     "launchHolds": [
       "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
