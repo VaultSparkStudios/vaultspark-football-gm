@@ -139,10 +139,10 @@ export function openModal(modalEl, { onClose } = {}) {
 
   const focusable = getFocusableElements(modalEl);
   if (focusable.length) {
-    focusable[0].focus();
+    focusable[0].focus({ preventScroll: true });
   } else {
     if (!modalEl.hasAttribute("tabindex")) modalEl.setAttribute("tabindex", "-1");
-    modalEl.focus();
+    modalEl.focus({ preventScroll: true });
   }
 }
 

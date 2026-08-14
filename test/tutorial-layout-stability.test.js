@@ -7,6 +7,7 @@ const responsiveEvidence = readFileSync(new URL("../scripts/responsive-evidence.
 const visualReceiptWriter = readFileSync(new URL("../scripts/write-visual-qa-receipt.mjs", import.meta.url), "utf8");
 const gameHtml = readFileSync(new URL("../public/game.html", import.meta.url), "utf8");
 const tutorial = readFileSync(new URL("../public/lib/tutorialCampaign.js", import.meta.url), "utf8");
+const modalManager = readFileSync(new URL("../public/lib/modalManager.js", import.meta.url), "utf8");
 
 // S84: docs/performance/GAME_SHELL_DIAGNOSTIC.json recorded desktop/mobile CLS failures
 // on the first-run /game.html tutorial route caused by these panels/elements rendering
@@ -46,4 +47,5 @@ test("first-run boot paints a fixed Opening Contract surface before dashboard hy
   assert.match(gameHtml, /Building Your Franchise Command Deck/);
   assert.match(styles, /\.game-boot-overlay\s*\{[^}]*position:\s*fixed/);
   assert.match(tutorial, /void overlay\.offsetWidth;[\s\S]*openModal\(overlay/);
+  assert.equal((modalManager.match(/focus\(\{ preventScroll: true \}\)/g) || []).length, 2);
 });
