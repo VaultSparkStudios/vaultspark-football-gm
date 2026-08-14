@@ -8,13 +8,13 @@ import { evaluateHostedPerformance, percentile, sha256Json } from "./lib/hosted-
 export const HOSTED_PERFORMANCE_ROUTES = Object.freeze({
   "/": Object.freeze({
     path: "/",
-    interactionSelector: "#setupThemeToggleBtn",
+    interactionSelectors: Object.freeze({ desktop: "#setupThemeToggleBtn", mobile: "#setupThemeToggleBtn" }),
     defaultOutput: "docs/performance/LATEST.json",
     boundary: "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route."
   }),
   "/game.html": Object.freeze({
     path: "/game.html",
-    interactionSelector: "#themeToggleBtn",
+    interactionSelectors: Object.freeze({ desktop: "#themeToggleBtn", mobile: "#mlFullViewBtn" }),
     defaultOutput: "docs/performance/GAME_SHELL_DIAGNOSTIC.json",
     boundary: "Lab diagnostic for the direct first-run game shell from a real hosted browser interaction; it is not field cohort data and does not replace the canonical public-entry release gate."
   })
@@ -73,6 +73,8 @@ async function measureProfile(browser, baseUrl, route, profile, runs) {
         for (const entry of list.getEntries()) if (!entry.hadRecentInput) {
           globalThis.__hostedVitals.cls += entry.value;
           globalThis.__hostedVitals.shifts.push({
+            startTimeMs: Math.round(entry.startTime),
+            scrollY: Math.round(globalThis.scrollY || 0),
             value: Number(entry.value.toFixed(4)),
             sources: (entry.sources || []).map((source) => ({
               tag: source.node?.tagName || null,
@@ -91,7 +93,8 @@ async function measureProfile(browser, baseUrl, route, profile, runs) {
       } catch {}
     });
     await page.goto(new URL(route.path.replace(/^\//, ""), baseUrl).href, { waitUntil: "networkidle", timeout: 90_000 });
-    const interactionSelector = route.interactionSelector;
+    const interactionSelector = route.interactionSelectors[profile.name];
+    if (!interactionSelector) throw new Error(`No interaction selector declared for ${route.path} at ${profile.name}.`);
     await page.waitForSelector(interactionSelector, { state: "visible", timeout: 90_000 });
     await page.waitForTimeout(1600);
     await page.click(interactionSelector);

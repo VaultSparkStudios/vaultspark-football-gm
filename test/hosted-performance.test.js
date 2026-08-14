@@ -39,13 +39,15 @@ test("performance receipt primitives are deterministic", () => {
 test("hosted performance routes keep canonical entry and game-shell evidence separate", () => {
   const canonical = parseArgs(["--base-url", "https://staging.example.test", "--runs", "2"]);
   assert.equal(canonical.route.path, "/");
-  assert.equal(canonical.route.interactionSelector, "#setupThemeToggleBtn");
+  assert.equal(canonical.route.interactionSelectors.desktop, "#setupThemeToggleBtn");
+  assert.equal(canonical.route.interactionSelectors.mobile, "#setupThemeToggleBtn");
   assert.equal(canonical.output, "docs/performance/LATEST.json");
   assert.equal(canonical.runs, 2);
 
   const game = parseArgs(["--base-url", "https://staging.example.test", "--route", "game.html"]);
   assert.equal(game.route.path, "/game.html");
-  assert.equal(game.route.interactionSelector, "#themeToggleBtn");
+  assert.equal(game.route.interactionSelectors.desktop, "#themeToggleBtn");
+  assert.equal(game.route.interactionSelectors.mobile, "#mlFullViewBtn");
   assert.equal(game.output, "docs/performance/GAME_SHELL_DIAGNOSTIC.json");
   assert.match(game.route.boundary, /does not replace the canonical public-entry release gate/);
 });

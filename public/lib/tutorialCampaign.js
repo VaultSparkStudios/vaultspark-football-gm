@@ -293,6 +293,10 @@ export function mountTutorial({ onComplete, onSkip, scope = {}, completed = fals
       }
     });
 
+    // The style element is injected immediately before first mount. Force one
+    // layout flush before focus so the fixed overlay never behaves like an
+    // unstyled page-end node and scrolls the document during first paint.
+    void overlay.offsetWidth;
     openModal(overlay, { onClose: () => dismissTutorial(onSkip) });
   }
 

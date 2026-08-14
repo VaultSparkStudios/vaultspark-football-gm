@@ -2,16 +2,18 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-08-12T05:33:30.888Z",
+  "observedAt": "2026-08-14T00:45:11.302Z",
   "baseUrl": "https://staging.playfranchisearchitect.com",
-  "sourceRevision": "1cfc8774b8f20f2a5bf8951445baadbd6092277a",
+  "route": "/game.html",
+  "sourceRevision": "00003e3d1a7facadf3d06479fc4dc63b0c0afc26",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91",
-    "files": 192,
+    "digest": "f56cc70650fbff89daa4dc59c7841ff1a7daf26f3f3ab1dd3a06cdf901f03f63",
+    "files": 191,
     "exclusions": [
       "_health",
-      "deploy-manifest.json"
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
     ]
   },
   "edgeHeaders": {
@@ -19,16 +21,16 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a29d1afd2fbba504-IAD",
+    "cf-ray": "a2abef610942f42c-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Wed, 12 Aug 2026 05:33:28 GMT",
+    "date": "Fri, 14 Aug 2026 00:45:08 GMT",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=cVgEe2%2BmToAzuDX9Y8i%2Fuucj1QCmzxgKIZ8CQ21pJAAeNqcHrQ%2FLMVh3NdELIsgGO8G5lCdI4u%2Bu14z42nTiS9F6h6j9TSrXG%2B4vxl4nlrI65EX24IQxzyWF9A7UMVgY13wUkEbWe4%2F1BmTvSNsqMyLBysuH\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=G8L5Rxqly%2Fk3%2B80YenypSu1jIasCs8Jfk67bpjUbc42MBfsD9qUOx4Td9y1YkEB4NFCD%2Buy3gHDhH%2FLCQ0eqNuT0Ka11TLKZC%2B9ZrVrRh3GjA9kRE4cTI7YV4HkYz1G9ONZtM85kDLk8xP6ZDH%2BP4eApCUoW\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -43,317 +45,24 @@
         "width": 1440,
         "height": 1000
       },
-      "runs": 1,
-      "lcpMs": 3280,
-      "inpMs": 40,
-      "cls": 0.4271,
+      "runs": 3,
+      "lcpMs": 4532,
+      "inpMs": 56,
+      "cls": 0.7541,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 3280,
+          "lcpMs": 4564,
           "lcpElement": {
             "tag": "P",
             "id": null,
             "className": "tutorial-body",
             "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
           },
-          "cls": 0.4271,
+          "cls": 0.7541,
           "shifts": [
             {
-              "value": 0.4271,
-              "sources": [
-                {
-                  "tag": "SECTION",
-                  "id": "franchiseCommandCenter",
-                  "className": "panel franchise-command-center",
-                  "previousRect": {
-                    "x": 193.59375,
-                    "y": 467.03125,
-                    "width": 1246.40625,
-                    "height": 154,
-                    "top": 467.03125,
-                    "right": 1440,
-                    "bottom": 621.03125,
-                    "left": 193.59375
-                  },
-                  "currentRect": {
-                    "x": 193.59375,
-                    "y": 906.03125,
-                    "width": 1246.40625,
-                    "height": 93.96875,
-                    "top": 906.03125,
-                    "right": 1440,
-                    "bottom": 1000,
-                    "left": 193.59375
-                  }
-                },
-                {
-                  "tag": "SECTION",
-                  "id": "coGmBriefPanel",
-                  "className": "panel",
-                  "previousRect": {
-                    "x": 193.59375,
-                    "y": 514.625,
-                    "width": 1246.40625,
-                    "height": 246.421875,
-                    "top": 514.625,
-                    "right": 1440,
-                    "bottom": 761.046875,
-                    "left": 193.59375
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "SECTION",
-                  "id": "franchiseArchitecture",
-                  "className": "panel franchise-architecture",
-                  "previousRect": {
-                    "x": 193.59375,
-                    "y": 749.34375,
-                    "width": 1246.40625,
-                    "height": 205,
-                    "top": 749.34375,
-                    "right": 1440,
-                    "bottom": 954.34375,
-                    "left": 193.59375
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "SECTION",
-                  "id": "trophyRoadPanel",
-                  "className": "panel trophy-road-panel",
-                  "previousRect": {
-                    "x": 193.59375,
-                    "y": 654.8125,
-                    "width": 1246.40625,
-                    "height": 201,
-                    "top": 654.8125,
-                    "right": 1440,
-                    "bottom": 855.8125,
-                    "left": 193.59375
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": "gmCommitmentBoard",
-                  "className": "panel gm-commitment-board",
-                  "previousRect": {
-                    "x": 193.59375,
-                    "y": 847.9375,
-                    "width": 1246.40625,
-                    "height": 152.0625,
-                    "top": 847.9375,
-                    "right": 1440,
-                    "bottom": 1000,
-                    "left": 193.59375
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  }
-                }
-              ]
-            },
-            {
-              "value": 0,
-              "sources": [
-                {
-                  "tag": "SPAN",
-                  "id": "statusChip",
-                  "className": "chip tone-positive",
-                  "previousRect": {
-                    "x": 1351.921875,
-                    "y": 67.1875,
-                    "width": 70.484375,
-                    "height": 23.9375,
-                    "top": 67.1875,
-                    "right": 1422.40625,
-                    "bottom": 91.125,
-                    "left": 1351.921875
-                  },
-                  "currentRect": {
-                    "x": 1369.625,
-                    "y": 67.1875,
-                    "width": 52.78125,
-                    "height": 23.9375,
-                    "top": 67.1875,
-                    "right": 1422.40625,
-                    "bottom": 91.125,
-                    "left": 1369.625
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 40,
-          "interactionObserved": true
-        }
-      ]
-    },
-    {
-      "name": "mobile",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "runs": 1,
-      "lcpMs": 2780,
-      "inpMs": 24,
-      "cls": 0.2419,
-      "interactionObserved": true,
-      "samples": [
-        {
-          "lcpMs": 2780,
-          "lcpElement": {
-            "tag": "P",
-            "id": null,
-            "className": "tutorial-body",
-            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
-          },
-          "cls": 0.2419,
-          "shifts": [
-            {
-              "value": 0.2056,
-              "sources": [
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "overview-hero-side",
-                  "previousRect": {
-                    "x": 34.59375,
-                    "y": 574.421875,
-                    "width": 320.8125,
-                    "height": 269.578125,
-                    "top": 574.421875,
-                    "right": 355.40625,
-                    "bottom": 844,
-                    "left": 34.59375
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": "weeklyPlanSummaryText",
-                  "className": "small",
-                  "previousRect": {
-                    "x": 33.59375,
-                    "y": 532.421875,
-                    "width": 321.8125,
-                    "height": 26,
-                    "top": 532.421875,
-                    "right": 355.40625,
-                    "bottom": 558.421875,
-                    "left": 33.59375
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "stageChip",
-                  "className": "chip tone-positive",
-                  "previousRect": {
-                    "x": 145.953125,
-                    "y": 181.625,
-                    "width": 106.296875,
-                    "height": 23.9375,
-                    "top": 181.625,
-                    "right": 252.25,
-                    "bottom": 205.5625,
-                    "left": 145.953125
-                  },
-                  "currentRect": {
-                    "x": 113.828125,
-                    "y": 181.625,
-                    "width": 138.421875,
-                    "height": 23.9375,
-                    "top": 181.625,
-                    "right": 252.25,
-                    "bottom": 205.5625,
-                    "left": 113.828125
-                  }
-                },
-                {
-                  "tag": "BUTTON",
-                  "id": "mobileNavToggle",
-                  "className": "mobile-nav-toggle",
-                  "previousRect": {
-                    "x": 100.765625,
-                    "y": 174.59375,
-                    "width": 38,
-                    "height": 38,
-                    "top": 174.59375,
-                    "right": 138.765625,
-                    "bottom": 212.59375,
-                    "left": 100.765625
-                  },
-                  "currentRect": {
-                    "x": 68.640625,
-                    "y": 174.59375,
-                    "width": 38,
-                    "height": 38,
-                    "top": 174.59375,
-                    "right": 106.640625,
-                    "bottom": 212.59375,
-                    "left": 68.640625
-                  }
-                }
-              ]
-            },
-            {
-              "value": 0.0363,
+              "value": 0.7541,
               "sources": [
                 {
                   "tag": "DIV",
@@ -361,47 +70,22 @@
                   "className": "panel footer-guide-panel",
                   "previousRect": {
                     "x": 0,
-                    "y": 157.59375,
-                    "width": 390,
-                    "height": 255.734375,
-                    "top": 157.59375,
-                    "right": 390,
-                    "bottom": 413.328125,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
                     "left": 0
                   },
                   "currentRect": {
                     "x": 0,
-                    "y": 126.59375,
-                    "width": 390,
-                    "height": 255.734375,
-                    "top": 126.59375,
-                    "right": 390,
-                    "bottom": 382.328125,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "FOOTER",
-                  "id": null,
-                  "className": "game-footer",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 199.71875,
-                    "width": 390,
-                    "height": 231.734375,
-                    "top": 199.71875,
-                    "right": 390,
-                    "bottom": 431.453125,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 168.59375,
-                    "width": 390,
-                    "height": 231.734375,
-                    "top": 168.59375,
-                    "right": 390,
-                    "bottom": 400.328125,
+                    "y": 436.75,
+                    "width": 1440,
+                    "height": 376,
+                    "top": 436.75,
+                    "right": 1440,
+                    "bottom": 812.75,
                     "left": 0
                   }
                 },
@@ -412,21 +96,492 @@
                   "previousRect": {
                     "x": 0,
                     "y": 0,
-                    "width": 390,
-                    "height": 260,
+                    "width": 0,
+                    "height": 0,
                     "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 193.59375,
+                    "y": 191.5625,
+                    "width": 1246.40625,
+                    "height": 347.59375,
+                    "top": 191.5625,
+                    "right": 1440,
+                    "bottom": 539.15625,
+                    "left": 193.59375
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel split triple",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 193.59375,
+                    "y": 33.578125,
+                    "width": 1246.40625,
+                    "height": 264.390625,
+                    "top": 33.578125,
+                    "right": 1440,
+                    "bottom": 297.96875,
+                    "left": 193.59375
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": "narrativePanel",
+                  "className": "panel",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 193.59375,
+                    "y": 0,
+                    "width": 1246.40625,
+                    "height": 43.390625,
+                    "top": 0,
+                    "right": 1440,
+                    "bottom": 43.390625,
+                    "left": 193.59375
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "stageChip",
+                  "className": "chip tone-positive",
+                  "previousRect": {
+                    "x": 638.84375,
+                    "y": 26.03125,
+                    "width": 106.296875,
+                    "height": 23.9375,
+                    "top": 26.03125,
+                    "right": 745.140625,
+                    "bottom": 49.96875,
+                    "left": 638.84375
+                  },
+                  "currentRect": {
+                    "x": 606.71875,
+                    "y": 26.03125,
+                    "width": 138.421875,
+                    "height": 23.9375,
+                    "top": 26.03125,
+                    "right": 745.140625,
+                    "bottom": 49.96875,
+                    "left": 606.71875
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 56,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 4532,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "tutorial-body",
+            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+          },
+          "cls": 0.7541,
+          "shifts": [
+            {
+              "value": 0.7541,
+              "sources": [
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel footer-guide-panel",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 436.53125,
+                    "width": 1440,
+                    "height": 376,
+                    "top": 436.53125,
+                    "right": 1440,
+                    "bottom": 812.53125,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel split",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 193.59375,
+                    "y": 191.34375,
+                    "width": 1246.40625,
+                    "height": 347.59375,
+                    "top": 191.34375,
+                    "right": 1440,
+                    "bottom": 538.9375,
+                    "left": 193.59375
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel split triple",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 193.59375,
+                    "y": 33.359375,
+                    "width": 1246.40625,
+                    "height": 264.390625,
+                    "top": 33.359375,
+                    "right": 1440,
+                    "bottom": 297.75,
+                    "left": 193.59375
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": "narrativePanel",
+                  "className": "panel",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 193.59375,
+                    "y": 0,
+                    "width": 1246.40625,
+                    "height": 43.171875,
+                    "top": 0,
+                    "right": 1440,
+                    "bottom": 43.171875,
+                    "left": 193.59375
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "stageChip",
+                  "className": "chip tone-positive",
+                  "previousRect": {
+                    "x": 638.84375,
+                    "y": 26.03125,
+                    "width": 106.296875,
+                    "height": 23.9375,
+                    "top": 26.03125,
+                    "right": 745.140625,
+                    "bottom": 49.96875,
+                    "left": 638.84375
+                  },
+                  "currentRect": {
+                    "x": 606.71875,
+                    "y": 26.03125,
+                    "width": 138.421875,
+                    "height": 23.9375,
+                    "top": 26.03125,
+                    "right": 745.140625,
+                    "bottom": 49.96875,
+                    "left": 606.71875
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 56,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 3672,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "tutorial-body",
+            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+          },
+          "cls": 0.7533,
+          "shifts": [
+            {
+              "value": 0.7533,
+              "sources": [
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel footer-guide-panel",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 436.3125,
+                    "width": 1440,
+                    "height": 376,
+                    "top": 436.3125,
+                    "right": 1440,
+                    "bottom": 812.3125,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel split",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 193.59375,
+                    "y": 191.125,
+                    "width": 1246.40625,
+                    "height": 347.59375,
+                    "top": 191.125,
+                    "right": 1440,
+                    "bottom": 538.71875,
+                    "left": 193.59375
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel split triple",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 193.59375,
+                    "y": 33.140625,
+                    "width": 1246.40625,
+                    "height": 264.390625,
+                    "top": 33.140625,
+                    "right": 1440,
+                    "bottom": 297.53125,
+                    "left": 193.59375
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": "narrativePanel",
+                  "className": "panel",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 193.59375,
+                    "y": 0,
+                    "width": 1246.40625,
+                    "height": 42.953125,
+                    "top": 0,
+                    "right": 1440,
+                    "bottom": 42.953125,
+                    "left": 193.59375
+                  }
+                },
+                {
+                  "tag": "SPAN",
+                  "id": "stageChip",
+                  "className": "chip tone-positive",
+                  "previousRect": {
+                    "x": 638.84375,
+                    "y": 26.03125,
+                    "width": 106.296875,
+                    "height": 23.9375,
+                    "top": 26.03125,
+                    "right": 745.140625,
+                    "bottom": 49.96875,
+                    "left": 638.84375
+                  },
+                  "currentRect": {
+                    "x": 606.71875,
+                    "y": 26.03125,
+                    "width": 138.421875,
+                    "height": 23.9375,
+                    "top": 26.03125,
+                    "right": 745.140625,
+                    "bottom": 49.96875,
+                    "left": 606.71875
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 48,
+          "interactionObserved": true
+        }
+      ]
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "runs": 3,
+      "lcpMs": 3328,
+      "inpMs": 32,
+      "cls": 0.4739,
+      "interactionObserved": true,
+      "samples": [
+        {
+          "lcpMs": 3328,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "tutorial-body",
+            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+          },
+          "cls": 0.4739,
+          "shifts": [
+            {
+              "value": 0.4739,
+              "sources": [
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel footer-guide-panel",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 5.5625,
+                    "width": 390,
+                    "height": 376,
+                    "top": 5.5625,
                     "right": 390,
-                    "bottom": 260,
+                    "bottom": 381.5625,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "FOOTER",
+                  "id": null,
+                  "className": "game-footer",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 47.5625,
+                    "width": 390,
+                    "height": 352,
+                    "top": 47.5625,
+                    "right": 390,
+                    "bottom": 399.5625,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel split",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
                     "left": 0
                   },
                   "currentRect": {
                     "x": 0,
                     "y": 0,
                     "width": 390,
-                    "height": 229,
+                    "height": 107.96875,
                     "top": 0,
                     "right": 390,
-                    "bottom": 229,
+                    "bottom": 107.96875,
                     "left": 0
                   }
                 },
@@ -456,34 +611,322 @@
                   }
                 },
                 {
-                  "tag": "SPAN",
-                  "id": "statusChip",
-                  "className": "chip tone-positive",
+                  "tag": "BUTTON",
+                  "id": "pauseSimBtn",
+                  "className": "",
                   "previousRect": {
-                    "x": 301.921875,
-                    "y": 325.15625,
-                    "width": 70.484375,
-                    "height": 23.9375,
-                    "top": 325.15625,
-                    "right": 372.40625,
-                    "bottom": 349.09375,
-                    "left": 301.921875
+                    "x": 93.890625,
+                    "y": 278.796875,
+                    "width": 88.875,
+                    "height": 34.34375,
+                    "top": 278.796875,
+                    "right": 182.765625,
+                    "bottom": 313.140625,
+                    "left": 93.890625
                   },
                   "currentRect": {
-                    "x": 319.625,
-                    "y": 284,
-                    "width": 52.78125,
-                    "height": 23.9375,
-                    "top": 284,
-                    "right": 372.40625,
-                    "bottom": 307.9375,
-                    "left": 319.625
+                    "x": 33.921875,
+                    "y": 278.796875,
+                    "width": 88.875,
+                    "height": 34.34375,
+                    "top": 278.796875,
+                    "right": 122.796875,
+                    "bottom": 313.140625,
+                    "left": 33.921875
                   }
                 }
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 32,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 3268,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "tutorial-body",
+            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+          },
+          "cls": 0.4751,
+          "shifts": [
+            {
+              "value": 0.4751,
+              "sources": [
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel footer-guide-panel",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 6.71875,
+                    "width": 390,
+                    "height": 376,
+                    "top": 6.71875,
+                    "right": 390,
+                    "bottom": 382.71875,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "FOOTER",
+                  "id": null,
+                  "className": "game-footer",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 48.71875,
+                    "width": 390,
+                    "height": 352,
+                    "top": 48.71875,
+                    "right": 390,
+                    "bottom": 400.71875,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel split",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 390,
+                    "height": 109.125,
+                    "top": 0,
+                    "right": 390,
+                    "bottom": 109.125,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "BUTTON",
+                  "id": "backSetupBtn",
+                  "className": "",
+                  "previousRect": {
+                    "x": 282.328125,
+                    "y": 278.796875,
+                    "width": 90.078125,
+                    "height": 34.34375,
+                    "top": 278.796875,
+                    "right": 372.40625,
+                    "bottom": 313.140625,
+                    "left": 282.328125
+                  },
+                  "currentRect": {
+                    "x": 222.359375,
+                    "y": 278.796875,
+                    "width": 90.078125,
+                    "height": 34.34375,
+                    "top": 278.796875,
+                    "right": 312.4375,
+                    "bottom": 313.140625,
+                    "left": 222.359375
+                  }
+                },
+                {
+                  "tag": "BUTTON",
+                  "id": "pauseSimBtn",
+                  "className": "",
+                  "previousRect": {
+                    "x": 93.890625,
+                    "y": 278.796875,
+                    "width": 88.875,
+                    "height": 34.34375,
+                    "top": 278.796875,
+                    "right": 182.765625,
+                    "bottom": 313.140625,
+                    "left": 93.890625
+                  },
+                  "currentRect": {
+                    "x": 33.921875,
+                    "y": 278.796875,
+                    "width": 88.875,
+                    "height": 34.34375,
+                    "top": 278.796875,
+                    "right": 122.796875,
+                    "bottom": 313.140625,
+                    "left": 33.921875
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 40,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 3344,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "tutorial-body",
+            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+          },
+          "cls": 0.4739,
+          "shifts": [
+            {
+              "value": 0.4739,
+              "sources": [
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel footer-guide-panel",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 5.5625,
+                    "width": 390,
+                    "height": 376,
+                    "top": 5.5625,
+                    "right": 390,
+                    "bottom": 381.5625,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "FOOTER",
+                  "id": null,
+                  "className": "game-footer",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 47.5625,
+                    "width": 390,
+                    "height": 352,
+                    "top": 47.5625,
+                    "right": 390,
+                    "bottom": 399.5625,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "panel split",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0,
+                    "top": 0,
+                    "right": 0,
+                    "bottom": 0,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 390,
+                    "height": 107.96875,
+                    "top": 0,
+                    "right": 390,
+                    "bottom": 107.96875,
+                    "left": 0
+                  }
+                },
+                {
+                  "tag": "BUTTON",
+                  "id": "backSetupBtn",
+                  "className": "",
+                  "previousRect": {
+                    "x": 282.328125,
+                    "y": 278.796875,
+                    "width": 90.078125,
+                    "height": 34.34375,
+                    "top": 278.796875,
+                    "right": 372.40625,
+                    "bottom": 313.140625,
+                    "left": 282.328125
+                  },
+                  "currentRect": {
+                    "x": 222.359375,
+                    "y": 278.796875,
+                    "width": 90.078125,
+                    "height": 34.34375,
+                    "top": 278.796875,
+                    "right": 312.4375,
+                    "bottom": 313.140625,
+                    "left": 222.359375
+                  }
+                },
+                {
+                  "tag": "BUTTON",
+                  "id": "pauseSimBtn",
+                  "className": "",
+                  "previousRect": {
+                    "x": 93.890625,
+                    "y": 278.796875,
+                    "width": 88.875,
+                    "height": 34.34375,
+                    "top": 278.796875,
+                    "right": 182.765625,
+                    "bottom": 313.140625,
+                    "left": 93.890625
+                  },
+                  "currentRect": {
+                    "x": 33.921875,
+                    "y": 278.796875,
+                    "width": 88.875,
+                    "height": 34.34375,
+                    "top": 278.796875,
+                    "right": 122.796875,
+                    "bottom": 313.140625,
+                    "left": 33.921875
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 32,
           "interactionObserved": true
         }
       ]
@@ -495,13 +938,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "1cfc8774b8f20f2a5bf8951445baadbd6092277a",
+        "observed": "00003e3d1a7facadf3d06479fc4dc63b0c0afc26",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "9d1b585e1dc0b1c7e0f396630ca210006ddd4886e54d2c8073143b5923e96c91",
+        "observed": "f56cc70650fbff89daa4dc59c7841ff1a7daf26f3f3ab1dd3a06cdf901f03f63",
         "expected": "sha256"
       },
       {
@@ -525,19 +968,19 @@
       {
         "name": "desktop LCP",
         "ok": false,
-        "observed": 3280,
+        "observed": 4532,
         "expected": "< 1800ms"
       },
       {
         "name": "desktop INP",
         "ok": true,
-        "observed": 40,
+        "observed": 56,
         "expected": "<= 200ms"
       },
       {
         "name": "desktop CLS",
         "ok": false,
-        "observed": 0.4271,
+        "observed": 0.7541,
         "expected": "<= 0.1"
       },
       {
@@ -549,19 +992,19 @@
       {
         "name": "mobile LCP",
         "ok": false,
-        "observed": 2780,
+        "observed": 3328,
         "expected": "< 1800ms"
       },
       {
         "name": "mobile INP",
         "ok": true,
-        "observed": 24,
+        "observed": 32,
         "expected": "<= 200ms"
       },
       {
         "name": "mobile CLS",
         "ok": false,
-        "observed": 0.2419,
+        "observed": 0.4739,
         "expected": "<= 0.1"
       },
       {
@@ -595,6 +1038,6 @@
       "cls": 0.1
     }
   },
-  "boundary": "Lab evidence from a real hosted browser interaction; it is not field cohort data.",
-  "receiptSha256": "a9a453beae346fcaf1b040c610f22475bb0eae0508776582c819123750fd8778"
+  "boundary": "Lab diagnostic for the direct first-run game shell from a real hosted browser interaction; it is not field cohort data and does not replace the canonical public-entry release gate.",
+  "receiptSha256": "1fb9833131859768b52d91b0bb2a0dba91e00f80567f864b8e4481e84c49055b"
 }

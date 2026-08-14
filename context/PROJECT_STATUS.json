@@ -9,7 +9,7 @@
   "blockers": [
     "Launch HOLD — email-delivery-and-reply-identity-unverified, founder-launch-approval-unverified, lifecycle-authority-unreconciled."
   ],
-  "lastUpdated": "2026-08-13",
+  "lastUpdated": "2026-08-14",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -126,10 +126,10 @@
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
-    "score": 75,
-    "date": "2026-08-13",
-    "passing": 9,
-    "warning": 3,
+    "score": 58,
+    "date": "2026-08-14",
+    "passing": 7,
+    "warning": 5,
     "checks": [
       {
         "id": "lifecycle-authoritative-registry",
@@ -138,16 +138,28 @@
         "detail": "registry SPARKED · local contract FORGE"
       },
       {
+        "id": "release-authority-checked-staging-current",
+        "status": "warning",
+        "blocking": false,
+        "detail": "checked 8b7d59597dc17a546ba3130cdb44769455713a2c · live 00003e3d1a7facadf3d06479fc4dc63b0c0afc26"
+      },
+      {
         "id": "release-authority-checked-publication-current",
         "status": "warning",
         "blocking": false,
         "detail": "checked 8b7d59597dc17a546ba3130cdb44769455713a2c · live 31248786cf9f8da0815fc610c77ab7cc3029fac5"
       },
       {
+        "id": "release-authority-release-source-current",
+        "status": "warning",
+        "blocking": false,
+        "detail": "release source 8b7d59597dc17a546ba3130cdb44769455713a2c · live staging 00003e3d1a7facadf3d06479fc4dc63b0c0afc26"
+      },
+      {
         "id": "release-authority-git-head-covered-by-publication",
         "status": "warning",
         "blocking": false,
-        "detail": "HEAD f2fda3289af8225a3b0875a7711ad32fe0c2a39a is not covered by live production 31248786cf9f8da0815fc610c77ab7cc3029fac5"
+        "detail": "HEAD 00003e3d1a7facadf3d06479fc4dc63b0c0afc26 is not covered by live production 31248786cf9f8da0815fc610c77ab7cc3029fac5"
       }
     ]
   },
