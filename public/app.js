@@ -2378,6 +2378,7 @@ async function init() {
     });
   }
   launchOpeningContract({ auto: true });
+  document.body.classList.remove("game-booting");
   document.getElementById("gameBootOverlay")?.remove();
   setStatus("Ready");
   document.addEventListener("vsfgm:run-opening-contract", () => launchOpeningContract({ auto: false }));

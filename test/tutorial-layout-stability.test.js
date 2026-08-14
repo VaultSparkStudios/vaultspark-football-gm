@@ -6,6 +6,7 @@ const styles = readFileSync(new URL("../public/styles.css", import.meta.url), "u
 const responsiveEvidence = readFileSync(new URL("../scripts/responsive-evidence.mjs", import.meta.url), "utf8");
 const visualReceiptWriter = readFileSync(new URL("../scripts/write-visual-qa-receipt.mjs", import.meta.url), "utf8");
 const gameHtml = readFileSync(new URL("../public/game.html", import.meta.url), "utf8");
+const app = readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
 const tutorial = readFileSync(new URL("../public/lib/tutorialCampaign.js", import.meta.url), "utf8");
 const modalManager = readFileSync(new URL("../public/lib/modalManager.js", import.meta.url), "utf8");
 
@@ -45,7 +46,10 @@ test("first-run tutorial visual proof covers both themes and durable receipts", 
 test("first-run boot paints a fixed Opening Contract surface before dashboard hydration", () => {
   assert.match(gameHtml, /id="gameBootOverlay"/);
   assert.match(gameHtml, /Building Your Franchise Command Deck/);
+  assert.match(gameHtml, /<body class="game-body game-booting">/);
   assert.match(styles, /\.game-boot-overlay\s*\{[^}]*position:\s*fixed/);
+  assert.match(styles, /\.game-body\.game-booting[^}]*visibility:\s*hidden/);
   assert.match(tutorial, /void overlay\.offsetWidth;[\s\S]*openModal\(overlay/);
   assert.equal((modalManager.match(/focus\(\{ preventScroll: true \}\)/g) || []).length, 2);
+  assert.match(app, /launchOpeningContract\(\{ auto: true \}\);\s*document\.body\.classList\.remove\("game-booting"\);\s*document\.getElementById\("gameBootOverlay"\)\?\.remove\(\)/);
 });
