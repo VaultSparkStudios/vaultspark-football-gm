@@ -26,7 +26,7 @@
 ║  ✓ scoped /api/team-archetypes?team= param (Express + static ru  ║
 ║  ✓ direct test coverage for public/lib/historyFormatting.js (5   ║
 ║  Tests  1,094/1,094 source-bound Node tests (+16); Pages build/  ║
-║  Deploy No deploy required or performed this session. Published  ║
+║  Deploy Correction recorded by Session 85: the Session 84 push   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -64,19 +64,19 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 84 ════════════════════════════╗
-║  Shipped:  Session 84 arc is complete: a fresh three-item live-  ║
+║  Shipped:  Session 85 arc is in progress. The live release-curr  ║
 ║  Tests:    1094/1094 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
-║     2,907 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,454 tok/turn  ·  cache 50%  ·  124 turns to compact       ║
+║     14,788 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~7,394 tok/turn  ·  cache 50%  ·  122 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         1094/1094 passing (2026-08-13)                 ║
+║  ⚠  Tests         1094/1094 passing (2026-08-13) · STALE — run   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -90,7 +90,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        5/6 (83%)  ·  1 warn                           ║
+║  ⚠  Doctor        9/12 (75%)  ·  3 warn                          ║
 ║  ✓  Cost          Max flat-rate · $1.77/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -114,16 +114,16 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-08-13_SESSION84.md                   ║
+║  ✓ cache source: AUDIT_2026-08-13_SESSION85.md                   ║
 ║                                                                  ║
-║  #1 · FIRE · first-run-tutorial-layout-stability                 ║
-║  first-run-tutorial-layout-stability — Add min-height reservati  ║
+║  #1 · FIRE · first-run-performance-authority                     ║
+║  first-run-performance-authority — L1 plus start the tutorial/b  ║
 ║                                                                  ║
-║  #2 · HIGH · rival-gm-single-team-endpoint                       ║
-║  rival-gm-single-team-endpoint — Add the scoped param on both A  ║
+║  #2 · FIRE · candidate-bound-production-promotion                ║
+║  candidate-bound-production-promotion — L1 plus require candida  ║
 ║                                                                  ║
-║  #3 · LOW · history-formatting-test-coverage                     ║
-║  history-formatting-test-coverage — Add a full focused test fil  ║
+║  #3 · HIGH · release-authority-currency-probe                    ║
+║  release-authority-currency-probe — L1 plus pure classification  ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 

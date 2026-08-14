@@ -1477,7 +1477,7 @@ async function handleApi(req, res, url) {
       teamId: String(body.teamId).toUpperCase(),
       playerId: String(body.playerId)
     });
-    sendJson(res, result.ok ? 200 : 400, result.ok ? { ok: true, result, state: session.getDashboardState() } : result);
+    sendJson(res, result.ok ? 200 : 400, result.ok ? { ok: true, result } : result);
     return true;
   }
 

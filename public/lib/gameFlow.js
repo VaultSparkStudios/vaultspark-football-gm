@@ -812,7 +812,9 @@ export async function retireSelectedJersey() {
       playerId: state.selectedHistoryPlayerId
     }
   });
-  await Promise.all([loadState(), loadTeamHistory()]);
+  // Retiring a number mutates history only. Avoid serializing and reloading the
+  // full multi-season dashboard for a bounded history refresh.
+  await loadTeamHistory();
 }
 
 export async function searchHistoryPlayers() {

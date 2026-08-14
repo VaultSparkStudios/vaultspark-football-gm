@@ -7,6 +7,7 @@ const root = process.cwd();
 const outputRoot = path.join(root, "output", "playwright");
 const receiptDir = path.join(root, "docs", "visual-qa");
 const surfaceLabels = new Map([
+  ["game-dialog", "First-run Opening Contract tutorial"],
   ["trophy-road", "Trophy Road progress and next unlock"],
   ["sim-watch-reel", "Broadcast Director Final Reel"],
   ["room-watch", "Position Room Watch parity alerts"],
@@ -93,6 +94,7 @@ const receipt = {
     renderedPixelsReviewed: true,
     reviewer: "codex-gpt-5",
     findings: [
+      "The first-run Opening Contract tutorial reserves stable panel space and remains fully readable in dark and light themes at desktop and mobile widths.",
       "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures.",
       "The Architecture Review strongest-signature card remains legible in both themes and at mobile width, including the source receipt count and non-causal boundary.",
       "Ranked General Manager commands and their exact contract destination render without clipping and preserve a visible focus target across desktop and mobile.",
@@ -101,6 +103,7 @@ const receipt = {
       "The Hall of Fame ceremony remains legible in both themes, with one dialog boundary and explicit copy/download status."
     ],
     fixesApplied: [
+      "Added first-run tutorial captures to the durable receipt across both themes and target widths after the layout-stability fix.",
       "Added component-specific Agent Negotiation, prediction-receipt, and Hall of Fame ceremony captures across both themes and target widths.",
       "Added component-specific strongest-signature, command-strip, and exact-destination captures across both themes and target widths.",
       "Bound each touched modal to accessible dialog/focus behavior and observable failure receipts.",

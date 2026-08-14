@@ -3,9 +3,9 @@
   "slug": "franchise-architect-football",
   "name": "Franchise Architect: Football",
   "status": "active",
-  "health": "green",
-  "currentFocus": "Session 84 arc is complete: a fresh three-item live-code audit shipped a first-run tutorial layout-shift fix (reserved layout space for the five desktop/four mobile panels named in the CLS-failure diagnostic), a scoped /api/team-archetypes?team= param, and direct test coverage for the last genuinely untested browser module. Node is 1,094/1,094 (+16 tests). No deploy was required this session; deployed revision/artifact/staging/performance authority below remain from Session 83's publication. Public launch remains HOLD.",
-  "nextMilestone": "Re-run scripts/measure-hosted-performance.mjs against live staging to confirm the tutorial CLS fix clears threshold; observe a real consenting Community Stats cohort without manufacturing activity; complete Obelisk relying-party registration when signed authority arrives; separately prove Zoho delivery/reply-as, SHA-bound founder launch approval and lifecycle reconciliation before any launch flip.",
+  "health": "yellow",
+  "currentFocus": "Session 85 arc is in progress. The live release-currency probe proved that Session 84's push workflow automatically published production revision 31248786cf9f8da0815fc610c77ab7cc3029fac5 (artifact fc1dcf64...) while stable staging and checked release evidence remained at Session 83 revision 8b7d595.... The prior no-deploy narrative was false after workflow completion. Release authority is deliberately blocked until one exact Session 85 candidate clears stable staging, current visual/performance evidence, and explicit production promotion. Public launch remains HOLD.",
+  "nextMilestone": "Commit one immutable Session 85 candidate; deploy that exact artifact to stable staging; regenerate dark/light desktop/mobile first-run tutorial pixels plus canonical-entry and direct-game hosted performance; promote only the verified digest; then reconcile production currency. Separately prove Zoho delivery/reply-as, SHA-bound founder launch approval, Obelisk relying-party integration, and lifecycle authority before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-and-reply-identity-unverified, founder-launch-approval-unverified, lifecycle-authority-unreconciled."
   ],
@@ -94,7 +94,7 @@
   "currentSession": 84,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
-  "lastVerification": "Session 84 source-bound Node receipt is green at 1,094/1,094 (up from 1,078/1,078, +16 tests); Pages build/smoke pass. No deploy was required this session; staging/production/release/performance authority below remain from Session 83's unchanged publication at revision 8b7d595 and artifact 0f79737d.",
+  "lastVerification": "Session 85 live currency probe: production is 31248786cf9f8da0815fc610c77ab7cc3029fac5 / fc1dcf64..., stable staging and checked release evidence are 8b7d59597dc17a546ba3130cdb44769455713a2c / 0f79737d..., and current Git HEAD is f2fda3289af8225a3b0875a7711ad32fe0c2a39a. The checked publication claim is contradicted and intentionally blocked pending exact-candidate re-evidence.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -124,18 +124,30 @@
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
-    "total": 6,
+    "total": 12,
     "failing": 0,
-    "score": 83,
+    "score": 75,
     "date": "2026-08-13",
-    "passing": 5,
-    "warning": 1,
+    "passing": 9,
+    "warning": 3,
     "checks": [
       {
         "id": "lifecycle-authoritative-registry",
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
+      },
+      {
+        "id": "release-authority-checked-publication-current",
+        "status": "warning",
+        "blocking": false,
+        "detail": "checked 8b7d59597dc17a546ba3130cdb44769455713a2c · live 31248786cf9f8da0815fc610c77ab7cc3029fac5"
+      },
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "warning",
+        "blocking": false,
+        "detail": "HEAD f2fda3289af8225a3b0875a7711ad32fe0c2a39a is not covered by live production 31248786cf9f8da0815fc610c77ab7cc3029fac5"
       }
     ]
   },
@@ -156,10 +168,10 @@
       "direct test coverage for public/lib/historyFormatting.js (5 exports, 5 tests)"
     ],
     "tests": "1,094/1,094 source-bound Node tests (+16); Pages build/smoke green.",
-    "deploy": "No deploy required or performed this session. Published revision 8b7d59597dc17a546ba3130cdb44769455713a2c and artifact 0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a remain the live/verified authority from Session 83; this session's changes ship on the next Pages push. Public launch remains false.",
+    "deploy": "Correction recorded by Session 85: the Session 84 push workflow successfully published production revision 31248786cf9f8da0815fc610c77ab7cc3029fac5 and artifact fc1dcf64..., while stable staging and its visual/performance receipts remained at Session 83 revision 8b7d59597dc17a546ba3130cdb44769455713a2c. The historical no-deploy narrative became stale after the workflow completed. Public launch remained false.",
     "honestDeferrals": [
       "Live-staging CLS re-measurement for the tutorial layout fix was not run this session; only the static CSS contract was verified.",
-      "No rendered-pixel capture pass this session — neither shipped item was judged to alter a themed visual state.",
+      "No rendered-pixel capture pass was completed in Session 84 even though its CSS layout change affected rendered pixels; Session 85 treats this as a release-evidence gap.",
       "Obelisk relying-party registration and end-to-end PKCE verification await signed Obelisk authority; no local account flow exists.",
       "Launch remains held on Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation.",
       "Observe real opted-in cohorts without manufacturing activity."
@@ -337,7 +349,7 @@
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
     "observedAt": "2026-08-13T03:14:53.252Z",
-    "status": "verified",
+    "status": "blocked",
     "sourceRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
     "publicationRevision": "8b7d59597dc17a546ba3130cdb44769455713a2c",
     "publicationDelta": null,
@@ -393,9 +405,11 @@
         "ok": true
       }
     ],
-    "evidenceVerified": true,
+    "evidenceVerified": false,
     "launchReady": false,
     "blockerCodes": [
+      "checked-publication-current",
+      "git-head-covered-by-publication",
       "email-delivery-unverified",
       "founder-approval-unverified",
       "lifecycle-authority-unverified"

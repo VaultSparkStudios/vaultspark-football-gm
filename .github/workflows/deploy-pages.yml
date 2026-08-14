@@ -7,6 +7,15 @@ name: Deploy Pages
 
 on:
   workflow_dispatch:
+    inputs:
+      candidate_revision:
+        description: "Exact 40-character candidate SHA already verified on stable staging"
+        required: true
+        type: string
+      staging_artifact_digest:
+        description: "Exact 64-character SHA-256 artifact digest verified on stable staging"
+        required: true
+        type: string
   push:
     branches:
       - main
@@ -34,6 +43,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.candidate_revision || github.sha }}
 
       - uses: actions/setup-node@v5
         with:
@@ -63,8 +74,11 @@ jobs:
       API_ORIGIN: ${{ vars.API_ORIGIN }}
       API_DOMAIN: ${{ vars.API_DOMAIN }}
       VSFGM_RUNTIME_DEFAULT: client
+      SOURCE_REVISION: ${{ github.event_name == 'workflow_dispatch' && inputs.candidate_revision || github.sha }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.candidate_revision || github.sha }}
 
       - uses: actions/setup-node@v5
         with:
@@ -122,6 +136,23 @@ jobs:
         with:
           path: static
 
+      - name: Bind production promotion to the exact staged candidate
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          CANDIDATE_REVISION: ${{ inputs.candidate_revision }}
+          STAGING_ARTIFACT_DIGEST: ${{ inputs.staging_artifact_digest }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$CANDIDATE_REVISION" =~ ^[a-f0-9]{40}$ ]]
+          [[ "$STAGING_ARTIFACT_DIGEST" =~ ^[a-f0-9]{64}$ ]]
+          test "$(git rev-parse HEAD)" = "$CANDIDATE_REVISION"
+          node -e 'const m=require("./static/deploy-manifest.json"); if(m.sourceRevision!==process.env.CANDIDATE_REVISION||m.artifactFingerprint?.digest!==process.env.STAGING_ARTIFACT_DIGEST) process.exit(2)'
+
+      - name: Verify stable staging serves the exact promotion candidate
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: node scripts/verify-staging-receipt.mjs --expected static/deploy-manifest.json --base-url https://staging.playfranchisearchitect.com
+
       # ── Live origin (S65) ──────────────────────────────────────────────────
       # playfranchisearchitect.com is a CNAME to franchise-architect-football
       # .pages.dev — a *Cloudflare* Pages project — while everything above
@@ -136,17 +167,20 @@ jobs:
       # keeps both origins byte-identical, and --commit-hash stamps the real
       # revision into the health receipt instead of "local-worktree".
       - name: Publish to Cloudflare Pages (live origin)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          npx --yes wrangler@4.80.0 pages deploy static             --project-name=franchise-architect-football             --branch=main             --commit-hash="${GITHUB_SHA}"
+          npx --yes wrangler@4.80.0 pages deploy static             --project-name=franchise-architect-football             --branch=main             --commit-hash="${{ inputs.candidate_revision }}"
 
       - name: Verify the live origin serves this build
+        if: ${{ github.event_name == 'workflow_dispatch' }}
         run: node scripts/verify-live-origin.mjs
 
   deploy:
     needs: build
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages

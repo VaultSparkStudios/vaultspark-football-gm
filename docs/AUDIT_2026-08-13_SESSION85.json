@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-13",
+  "session": 85,
+  "project": {
+    "slug": "franchise-architect-football",
+    "name": "Franchise Architect: Football",
+    "type": "public browser football game/app"
+  },
+  "displayName": "Franchise Architect: Football",
+  "status": "planned",
+  "summary": {
+    "combinedPriority": 58.9,
+    "source": "Fresh Session 85 live-code and live-origin audit after synchronizing main to f2fda328. Premises were checked against the current workflow definitions, performance scripts, status contracts, GitHub Actions history, stable staging and production _health receipts, and the existing 1,094-test source-bound suite. The audit deliberately rejects already-shipped gameplay systems and focuses on three evidence failures that currently let a public candidate outrun staging and leave local release truth stale.",
+    "qualityBar": "L2 by default: preserve launchReady false, keep the direct game-shell diagnostic distinct from the canonical public-entry performance gate, require an exact immutable candidate on stable staging before production promotion, and make every authority claim reproducible from live revision/artifact evidence. Any touched browser state receives dark/light desktop/mobile rendered inspection."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay and app-release-gate: first-run player clarity, mobile/theme parity, static-host safety, exact staging identity, rollback, dual-audience contracts, privacy, and honest launch holds",
+    "staging": "stable Cloudflare Pages must prove the exact immutable candidate before direct-to-main publication; production promotion must be an explicit, candidate-bound action rather than an automatic side effect of any main push",
+    "source": "arc-profile registry authority, Session 85 startup brief, 29,980-token code sample, targeted reads of public/app.js, tutorialCampaign.js, performance/release scripts, deploy workflows and tests, GitHub Actions runs, and live staging/production health receipts"
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 9,
+    "sessionEngagement": 9,
+    "retention": 7,
+    "soulFidelity": 8,
+    "overall": 8.4,
+    "evidence": "No new measured player cohort exists. The audit does not invent fun or retention data; it protects the first-run Opening Contract experience and release fidelity while the real opt-in cohort remains pending."
+  },
+  "releaseGate": {
+    "deploymentVerdict": "NO-GO for the current candidate. Production serves S84 feature SHA 31248786 at artifact fc1dcf64, stable staging and its visual/performance receipts remain at S83 SHA 8b7d5959 / artifact 0f79737d, and current main is dependency SHA f2fda328. Candidate CI, staging, visual and performance evidence are therefore not bound to one identity.",
+    "launchVerdict": "NO-GO. Preserve launchReady false.",
+    "launchHolds": [
+      "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
+      "authoritative registry/local lifecycle reconciliation",
+      "SHA-bound public-launch approval distinct from deploy authorization",
+      "registered and end-to-end verified Obelisk relying party before any account-bearing flow"
+    ],
+    "verifiedGreens": [
+      "free-tier cost gate is cost-neutral and current",
+      "branding, proprietary legal language and footer destination completeness",
+      "dual-audience agents.json, llms.txt, sitemap and JSON-LD surfaces",
+      "documented rollback with a prior stable staging deployment"
+    ]
+  },
+  "axisCoverage": {
+    "featuresDepth": ["first-run-performance-authority"],
+    "newInnovativeFeatures": ["candidate-bound-production-promotion"],
+    "uiUx": ["first-run-performance-authority"],
+    "feedbackLoop": ["release-authority-currency-probe"],
+    "gamificationEngagementImmersion": ["first-run-performance-authority"],
+    "aiIntegration": [],
+    "securityPrivacy": ["candidate-bound-production-promotion"],
+    "speedOrganizationEfficiency": ["first-run-performance-authority", "candidate-bound-production-promotion", "release-authority-currency-probe"],
+    "releaseTruth": ["candidate-bound-production-promotion", "release-authority-currency-probe"],
+    "tokenApiReduction": []
+  },
+  "recommendedMoves": [
+    "Turn the retained first-run game-shell red into a reproducible route-specific probe, then remove the tutorial module waterfall without breaking the lazy-island contract and prove the S84 layout reservation in real pixels.",
+    "Stop publishing production as an automatic side effect of every matching main push. Require an explicit candidate-bound promotion whose source revision and artifact already pass stable staging provenance.",
+    "Make stale release authority impossible to overlook: compare checked-in staging/performance/release identities with live staging, live production and current Git before doctor or closeout can describe them as current."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Add another player-facing strategy or rivalry feature",
+      "reason": "The live code already contains Opening Contract, Weekly Plan, Architecture Review, Rematch Memory, rival persona intel, Sim-Watch, decision archive, Trophy Road and return continuity. No measured cohort proves another system would outperform repairing the first-run/release evidence path."
+    },
+    {
+      "candidate": "Treat production reachability as proof that Session 84 was properly released",
+      "reason": "Rejected by live evidence. Production did deploy S84 automatically, but stable staging, visual and performance receipts remained on S83. Reachability proves deployment happened; it does not prove the staging-first or rendered-pixel gates passed."
+    },
+    {
+      "candidate": "Keep using the current hosted-performance script to verify the tutorial CLS fix",
+      "reason": "False premise. The script was changed in Session 82 to measure only the canonical / route and cannot reproduce the retained /game.html diagnostic. Its own receipt boundary says the direct game shell is separate."
+    },
+    {
+      "candidate": "Mark Obelisk, email, lifecycle or founder approval as code-complete",
+      "reason": "Rejected as fabricated readiness. Zoho admin and Obelisk relying-party credentials/authority are absent, lifecycle registry disagrees with the local FORGE contract, and no SHA-bound launch approval exists. launchReady remains false."
+    },
+    {
+      "candidate": "Add a new package or browser tool for the audit",
+      "reason": "The floating @playwright/cli candidate was blocked by Obelisk Package Trust (34/100). The existing exact @playwright/test 1.62.1 installation is approved (86/100), already used across 12 Studio manifests, and sufficient."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "UI/UX / first-run engagement / performance truth",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 27.1,
+      "slug": "first-run-performance-authority",
+      "title": "Make the Opening Contract performance fix measurable and remove its avoidable module waterfall",
+      "status": "open",
+      "premise": "Session 84 declared the tutorial layout-shift fix shipped but explicitly deferred live remeasurement. The committed measure-hosted-performance.mjs now hardcodes the canonical public entry route `/`, while GAME_SHELL_DIAGNOSTIC.json was produced by the prior version targeting `game.html`; there is no current command that can reproduce that diagnostic. In public/app.js, tutorialCampaign.js and betaFeedback.js are not requested until after loadCoreDashboard and startup hydration are awaited, creating an avoidable serial waterfall before the first-run tutorial body can become the Largest Contentful Paint element.",
+      "evidence": [
+        "scripts/measure-hosted-performance.mjs hardcodes page.goto(new URL('./', baseUrl)) and #setupThemeToggleBtn",
+        "git show 1cfc8774:scripts/measure-hosted-performance.mjs proves the retained diagnostic formerly targeted game.html and #themeToggleBtn",
+        "docs/performance/GAME_SHELL_DIAGNOSTIC.json is still blocked at desktop 3280ms/.4271 and mobile 2780ms/.2419 but is bound to pre-fix SHA 1cfc8774",
+        "public/app.js init() starts the tutorial/beta dynamic imports only after await loadCoreDashboard(), queueStartupHydration(), and several synchronous render steps",
+        "test/tutorial-layout-stability.test.js asserts CSS source text only; it does not observe rendered layout shift"
+      ],
+      "constraint": "Keep `/` as the canonical release Web Vitals authority and `game.html` as a clearly labeled diagnostic. Preserve lazy module boundaries; begin the first-run imports earlier without converting them to static boot imports or delaying dashboard authority. No fabricated performance values.",
+      "verification": [
+        "route-specific CLI options deterministically select / versus /game.html, the matching interaction selector, output and boundary text",
+        "focused tests cover route normalization and reject unsafe/cross-origin route input",
+        "staging /game.html is measured on desktop and mobile after the exact candidate deploy, with real LCP/INP/CLS and shift sources retained",
+        "dark/light desktop/mobile tutorial captures are inspected and the canonical / receipt remains independently green"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Add a safe --route option and route-specific interaction selector/output contract to measure-hosted-performance.mjs so /game.html can be reproduced without editing the script."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "L1 plus start the tutorial/beta dynamic import promise in parallel with core-dashboard loading, retain lazy-module boundaries, add focused source/argument tests, and generate separate canonical-entry and game-shell staging receipts at desktop/mobile."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus capture dark/light desktop/mobile first-run tutorial images, inspect the rendered pixels, and if either game-shell LCP/CLS bar remains red, use the captured shift/LCP attribution to root-fix and remeasure before promotion."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Release architecture / security / staging discipline",
+      "effortHours": 3,
+      "impact": 10,
+      "innovation": 5,
+      "priority": 21.5,
+      "slug": "candidate-bound-production-promotion",
+      "title": "Make stable staging a machine-enforced prerequisite for production publication",
+      "status": "open",
+      "premise": "The Pages workflow publishes the Cloudflare production project inside its push-triggered build job. Session 84 therefore reached production at SHA 31248786 even though stable staging and all staging-bound receipts stayed at 8b7d5959. The workflow has no candidate revision input, no stable-staging provenance check, and no separation between build-on-push and promote-to-production.",
+      "evidence": [
+        ".github/workflows/deploy-pages.yml triggers on pushes touching public/src/package/workflow files and unconditionally runs Wrangler against project franchise-architect-football",
+        "Deploy Pages run 31679800654 succeeded for S84 SHA 31248786 and verify-live-origin reported production at that SHA",
+        "live production _health reports 31248786 / fc1dcf64 while live stable staging reports 8b7d5959 / 0f79737d",
+        "context/PROJECT_STATUS.json still says no deploy occurred and keeps staging/performance/release authority bound to 8b7d5959",
+        "docs/SESSION_PROTOCOL.md and CANON-007 require stable staging verification before production promotion"
+      ],
+      "constraint": "Do not force-push, flip launch status, weaken CI, or require a new paid service. Normal pushes may build/test artifacts, but production mutation must be explicit and must fail closed unless stable staging proves the same candidate revision and artifact digest.",
+      "verification": [
+        "workflow source tests prove the production Wrangler and GitHub Pages deploy jobs are promotion-only",
+        "promotion inputs carry the exact candidate revision and staging artifact digest",
+        "a pre-promotion step verifies stable staging provenance against the locally built manifest and fails on revision/artifact drift",
+        "the exact S85 candidate is deployed to stable staging and verified before any production workflow is dispatched"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Condition production publish/deploy steps on an explicit workflow_dispatch boolean so ordinary pushes cannot mutate production."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "L1 plus require candidate revision and staging artifact digest inputs, checkout that exact SHA, verify the built manifest and live stable-staging receipt match both inputs, then publish and verify production. Add focused workflow-contract tests."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus emit a machine-readable promotion receipt artifact containing candidate, staging deployment, production verification and rollback identity for closeout reconciliation."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Observability / release truth / process quality",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 4,
+      "priority": 10.3,
+      "slug": "release-authority-currency-probe",
+      "title": "Fail visibly when checked-in release authority drifts behind Git or live origins",
+      "status": "open",
+      "premise": "The local doctor reports zero blocking failures and only lifecycle drift even though checked-in releaseAuthority says verified at 8b7d5959, production is live at 31248786, staging is still 8b7d5959, and current main is f2fda328. A session can therefore render a green historical authority object and a false 'no deploy' narrative after deployment has changed reality.",
+      "evidence": [
+        "node scripts/ops.mjs doctor --json reports blockingFailing 0 and only lifecycle-authoritative-registry",
+        "context/PROJECT_STATUS.json releaseAuthority.status is verified at source/publication 8b7d5959",
+        "live staging, live production and git HEAD currently expose three distinct source revisions",
+        "Session 84 PROJECT_STATUS currentFocus/lastVerification says no deploy was required or performed, contradicted by successful Deploy Pages run 31679800654"
+      ],
+      "constraint": "The probe observes and classifies; it never deploys or rewrites authority by itself. Network failure is unknown/degraded, not green. Historical verified evidence remains valid as history but must not be described as current when identities diverge.",
+      "verification": [
+        "pure evaluation tests cover current, staging-behind, production-behind, local-status-stale and network-unknown states",
+        "CLI JSON names HEAD, checked-in staging/release identities, live staging and live production identities without exposing secrets",
+        "doctor surfaces a non-blocking warning for evidence drift and a blocking failure only when a current-release claim is made from contradictory identities",
+        "Session 85 status prose is reconciled to actual deployment history and preserves launchReady false"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Add a read-only script that compares Git HEAD and checked-in release identities with live staging/production _health revisions and prints JSON drift."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "L1 plus pure classification tests, honest unknown handling, and integration into the local doctor so stale release evidence cannot remain silent."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus a hash-bound reconciliation command that accepts verified staging/production/visual/performance receipts and updates status through write-project-status without ever manufacturing missing gates."
+        }
+      }
+    }
+  ],
+  "innovationCandidates": [
+    {
+      "slug": "promotion-receipt-artifact",
+      "verdict": "selected-as-L3-extension",
+      "novelty": "Turns a deployment workflow into a candidate-bound evidence producer rather than a fire-and-forget mutation."
+    },
+    {
+      "slug": "live-authority-drift-classifier",
+      "verdict": "selected",
+      "novelty": "Compares four independent authorities and distinguishes intentionally staged divergence from stale or contradictory release claims."
+    },
+    {
+      "slug": "new-gameplay-system",
+      "verdict": "deferred",
+      "novelty": "No real cohort signal justifies adding another system while first-run and release proof are stale."
+    }
+  ],
+  "secondOrderImprovements": []
+}

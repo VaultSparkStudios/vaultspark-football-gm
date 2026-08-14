@@ -53,3 +53,14 @@ test("agent negotiation actions bind the IDs actually rendered by the modal", ()
   assert.doesNotMatch(source, /\/api\/agent\//);
   assert.doesNotMatch(source, /getElementById\("agent(?:Submit|Competing)Btn"\)/);
 });
+
+test("retiring a jersey refreshes bounded history without a full dashboard round-trip", () => {
+  const flow = fs.readFileSync(path.resolve("public/lib/gameFlow.js"), "utf8");
+  const server = fs.readFileSync(path.resolve("src/server.js"), "utf8");
+  const local = fs.readFileSync(path.resolve("src/app/api/localApiRuntime.js"), "utf8");
+  const action = flow.match(/export async function retireSelectedJersey\(\) \{[\s\S]*?\n\}/)?.[0] || "";
+  assert.match(action, /await loadTeamHistory\(\)/);
+  assert.doesNotMatch(action, /loadState\(/);
+  assert.doesNotMatch(server.match(/url\.pathname === "\/api\/history\/retire-jersey"[\s\S]*?return true;/)?.[0] || "", /getDashboardState/);
+  assert.doesNotMatch(local.match(/pathname === "\/api\/history\/retire-jersey"[\s\S]*?\n\s*\}/)?.[0] || "", /getAugmentedState/);
+});

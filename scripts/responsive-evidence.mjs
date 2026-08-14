@@ -230,7 +230,11 @@ async function main() {
       await page.waitForFunction(() => !/loading/i.test(document.getElementById("topMetaText")?.textContent || "Loading"));
       await page.waitForFunction(() => /^ready/i.test(document.getElementById("statusChip")?.textContent || ""));
       const tutorialVisible = await page.locator(".tutorial-overlay").isVisible().catch(() => false);
-      if (tutorialVisible) await capture(page, outputDir, `${viewport.name}-game-dialog-dark`, ["#tutSkipBtn"], records);
+      if (!tutorialVisible) throw new Error(`First-run tutorial is not visible at ${viewport.name}`);
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await capture(page, outputDir, `${viewport.name}-game-dialog-${theme}`, ["#tutSkipBtn"], records);
+      }
       const skip = page.locator("#tutSkipBtn");
       if (await skip.isVisible().catch(() => false)) await skip.click();
 
@@ -650,6 +654,7 @@ async function main() {
   }
 
   const requiredCaptureNames = viewports.flatMap((viewport) => [
+    ...evidenceThemes.map((theme) => `${viewport.name}-game-dialog-${theme}`),
     ...evidenceThemes.map((theme) => viewport.name + "-draft-trade-review-" + theme),
     ...evidenceThemes.map((theme) => viewport.name + "-architect-objective-" + theme),
     ...evidenceThemes.map((theme) => `${viewport.name}-setup-${theme}`),

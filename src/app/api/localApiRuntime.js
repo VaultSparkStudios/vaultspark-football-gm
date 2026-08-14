@@ -1018,7 +1018,7 @@ export function createLocalApiRuntime({
           teamId: String(body.teamId).toUpperCase(),
           playerId: String(body.playerId)
         });
-        return finish(jsonResponse(result.ok ? 200 : 400, result.ok ? { ok: true, result, state: getAugmentedState(session) } : result));
+        return finish(jsonResponse(result.ok ? 200 : 400, result.ok ? { ok: true, result } : result));
       }
 
       if (method === "GET" && pathname === "/api/news") {

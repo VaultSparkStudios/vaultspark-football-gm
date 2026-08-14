@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { spawnSync } from "./lib/safe-spawn.mjs";
 import { inspectLifecycleCoherence } from "./lifecycle-coherence.mjs";
+import { inspectReleaseAuthorityCurrency } from "./check-release-authority-currency.mjs";
 import { updateProjectStatus } from "./lib/write-project-status.mjs";
 
 const args = new Set(process.argv.slice(2));
@@ -31,10 +32,11 @@ const lifecycleItems = lifecycle.checks
     blocking: check.blocking,
     detail: check.detail
   }));
-const items = [...blockerItems, ...lifecycleItems];
+const releaseCurrency = await inspectReleaseAuthorityCurrency(process.cwd());
+const items = [...blockerItems, ...lifecycleItems, ...releaseCurrency.items];
 const blockingFailing = items.filter((item) => item.blocking !== false && /fail|block/i.test(item.status || "")).length;
 const warning = items.filter((item) => item.status === "warning").length;
-const passing = lifecycle.checks.filter((check) => check.ok).length;
+const passing = lifecycle.checks.filter((check) => check.ok).length + releaseCurrency.passing;
 const total = passing + blockingFailing + warning;
 const output = {
   schemaVersion: "1.0",
@@ -44,6 +46,7 @@ const output = {
   warning,
   passing,
   lifecycle,
+  releaseCurrency,
   items
 };
 if (args.has("--update-json")) {

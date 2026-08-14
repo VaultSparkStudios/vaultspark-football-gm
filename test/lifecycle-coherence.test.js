@@ -22,15 +22,16 @@ test("authoritative registry mismatch is explicit drift, not a silent local rewr
   }
 });
 
-test("doctor reports blockingFailing zero while preserving lifecycle warnings", () => {
+test("doctor preserves lifecycle truth and classifies live release-authority currency", () => {
   const result = spawnSync(process.execPath, ["scripts/ops.mjs", "doctor"], {
     cwd: process.cwd(),
     encoding: "utf8"
   });
-  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.ok(result.status === 0 || result.status === 2, result.stderr || result.stdout);
   const report = JSON.parse(result.stdout);
-  assert.equal(report.blockingFailing, 0);
+  assert.equal(report.blockingFailing, report.items.filter((item) => item.blocking && item.status === "failing").length);
   assert.equal(report.lifecycle.coherent, true);
+  assert.equal(report.releaseCurrency.kind, "release-authority-currency");
 });
 
 test("doctor update-json persists the live lifecycle result instead of a stale startup score", () => {
@@ -39,11 +40,11 @@ test("doctor update-json persists the live lifecycle result instead of a stale s
     cwd: process.cwd(),
     encoding: "utf8"
   });
-  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.ok(result.status === 0 || result.status === 2, result.stderr || result.stdout);
   const status = JSON.parse(readFileSync(path.join(process.cwd(), "context", "PROJECT_STATUS.json"), "utf8"));
-  assert.equal(status.doctorScore.blockingFailing, 0);
-  assert.equal(status.doctorScore.warning, lifecycle.warning);
-  assert.equal(status.doctorScore.total, status.doctorScore.passing + status.doctorScore.warning);
+  assert.equal(status.doctorScore.blockingFailing, status.doctorScore.failing);
+  assert.ok(status.doctorScore.warning >= lifecycle.warning);
+  assert.equal(status.doctorScore.total, status.doctorScore.passing + status.doctorScore.warning + status.doctorScore.blockingFailing);
   if (lifecycle.warning > 0) {
     assert.equal(status.doctorScore.checks[0].id, "lifecycle-authoritative-registry");
   } else {

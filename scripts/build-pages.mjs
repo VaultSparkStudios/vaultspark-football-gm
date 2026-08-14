@@ -331,7 +331,7 @@ async function measureBootPayload() {
 async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
   const identity = JSON.parse(await fs.readFile(path.join(publicDir, "public-identity.json"), "utf8"));
   const sourceRevision = String(
-    process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || process.env.SOURCE_REVISION || "local-worktree"
+    process.env.SOURCE_REVISION || process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || "local-worktree"
   ).trim();
   const generatedAt = new Date().toISOString();
   const deployManifest = {
@@ -385,7 +385,7 @@ async function main() {
     await writeHtml(pageName);
   }
   const sourceRevision = String(
-    process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || process.env.SOURCE_REVISION || "local-worktree"
+    process.env.SOURCE_REVISION || process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || "local-worktree"
   ).trim();
   const edgePolicy = await emitEdgeSecurityPolicy({ outDir, htmlPages, sourceRevision });
   const swManifest = await emitServiceWorker(outDir);

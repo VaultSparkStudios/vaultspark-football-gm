@@ -5,14 +5,43 @@ import { fileURLToPath } from "node:url";
 import { chromium } from "@playwright/test";
 import { evaluateHostedPerformance, percentile, sha256Json } from "./lib/hosted-performance.mjs";
 
-function parseArgs(argv = process.argv.slice(2)) {
-  const args = { baseUrl: null, output: "docs/performance/LATEST.json", runs: 3 };
+export const HOSTED_PERFORMANCE_ROUTES = Object.freeze({
+  "/": Object.freeze({
+    path: "/",
+    interactionSelector: "#setupThemeToggleBtn",
+    defaultOutput: "docs/performance/LATEST.json",
+    boundary: "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route."
+  }),
+  "/game.html": Object.freeze({
+    path: "/game.html",
+    interactionSelector: "#themeToggleBtn",
+    defaultOutput: "docs/performance/GAME_SHELL_DIAGNOSTIC.json",
+    boundary: "Lab diagnostic for the direct first-run game shell from a real hosted browser interaction; it is not field cohort data and does not replace the canonical public-entry release gate."
+  })
+});
+
+export function resolveHostedPerformanceRoute(value = "/") {
+  const raw = String(value || "/").trim();
+  if (/^[a-z][a-z\d+.-]*:/i.test(raw) || raw.includes("?") || raw.includes("#")) {
+    throw new Error("--route must be a declared same-origin path without a query or hash.");
+  }
+  const normalized = raw === "." || raw === "./" || raw === "" ? "/" : `/${raw.replace(/^\.\//, "").replace(/^\/+/, "")}`;
+  const route = HOSTED_PERFORMANCE_ROUTES[normalized];
+  if (!route) throw new Error(`Unsupported hosted performance route '${raw}'. Use / or /game.html.`);
+  return route;
+}
+
+export function parseArgs(argv = process.argv.slice(2)) {
+  const args = { baseUrl: null, output: null, route: "/", runs: 3 };
   for (let index = 0; index < argv.length; index += 1) {
     if (argv[index] === "--base-url") args.baseUrl = argv[++index];
     else if (argv[index] === "--output") args.output = argv[++index];
+    else if (argv[index] === "--route") args.route = argv[++index];
     else if (argv[index] === "--runs") args.runs = Math.max(1, Number(argv[++index]) || 1);
+    else throw new Error(`Unknown argument: ${argv[index]}`);
   }
-  return args;
+  const route = resolveHostedPerformanceRoute(args.route);
+  return { ...args, route, output: args.output || route.defaultOutput };
 }
 
 async function jsonAt(url) {
@@ -21,7 +50,7 @@ async function jsonAt(url) {
   return response.json();
 }
 
-async function measureProfile(browser, baseUrl, profile, runs) {
+async function measureProfile(browser, baseUrl, route, profile, runs) {
   const samples = [];
   for (let run = 0; run < runs; run += 1) {
     const context = await browser.newContext({ viewport: profile.viewport, deviceScaleFactor: 1 });
@@ -61,8 +90,8 @@ async function measureProfile(browser, baseUrl, profile, runs) {
         }).observe({ type: "event", buffered: true, durationThreshold: 16 });
       } catch {}
     });
-    await page.goto(new URL("./", baseUrl).href, { waitUntil: "networkidle", timeout: 90_000 });
-    const interactionSelector = "#setupThemeToggleBtn";
+    await page.goto(new URL(route.path.replace(/^\//, ""), baseUrl).href, { waitUntil: "networkidle", timeout: 90_000 });
+    const interactionSelector = route.interactionSelector;
     await page.waitForSelector(interactionSelector, { state: "visible", timeout: 90_000 });
     await page.waitForTimeout(1600);
     await page.click(interactionSelector);
@@ -89,9 +118,12 @@ async function measureProfile(browser, baseUrl, profile, runs) {
   };
 }
 
-export async function measureHostedPerformance({ baseUrl, output, runs = 3 } = {}) {
+export async function measureHostedPerformance({ baseUrl, output, route: routeInput = "/", runs = 3 } = {}) {
   const origin = String(baseUrl || "").replace(/\/+$/, "");
   if (!origin) throw new Error("Pass --base-url with the stable hosted origin.");
+  const route = typeof routeInput === "object" && routeInput?.path
+    ? resolveHostedPerformanceRoute(routeInput.path)
+    : resolveHostedPerformanceRoute(routeInput);
   const manifest = await jsonAt(`${origin}/deploy-manifest.json`);
   const health = await jsonAt(`${origin}/_health`);
   if (manifest.sourceRevision !== health.sourceRevision) throw new Error("Hosted manifest and health source revisions disagree.");
@@ -99,13 +131,13 @@ export async function measureHostedPerformance({ baseUrl, output, runs = 3 } = {
   let profiles;
   try {
     profiles = await Promise.all([
-      measureProfile(browser, `${origin}/`, { name: "desktop", viewport: { width: 1440, height: 1000 } }, runs),
-      measureProfile(browser, `${origin}/`, { name: "mobile", viewport: { width: 390, height: 844 } }, runs)
+      measureProfile(browser, `${origin}/`, route, { name: "desktop", viewport: { width: 1440, height: 1000 } }, runs),
+      measureProfile(browser, `${origin}/`, route, { name: "mobile", viewport: { width: 390, height: 844 } }, runs)
     ]);
   } finally {
     await browser.close();
   }
-  const headersResponse = await fetch(`${origin}/`, { cache: "no-store", signal: AbortSignal.timeout(15_000) });
+  const headersResponse = await fetch(new URL(route.path.replace(/^\//, ""), `${origin}/`), { cache: "no-store", signal: AbortSignal.timeout(15_000) });
   const edgeHeaders = Object.fromEntries([...headersResponse.headers.entries()]);
   const evaluation = evaluateHostedPerformance({ profiles, sourceRevision: manifest.sourceRevision, artifactFingerprint: manifest.artifactFingerprint, edgeHeaders });
   const body = {
@@ -114,16 +146,16 @@ export async function measureHostedPerformance({ baseUrl, output, runs = 3 } = {
     generatedBy: "scripts/measure-hosted-performance.mjs",
     observedAt: new Date().toISOString(),
     baseUrl: origin,
-    route: "/",
+    route: route.path,
     sourceRevision: manifest.sourceRevision,
     artifactFingerprint: manifest.artifactFingerprint,
     edgeHeaders,
     profiles,
     evaluation,
-    boundary: "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route."
+    boundary: route.boundary
   };
   const receipt = { ...body, receiptSha256: sha256Json(body) };
-  const target = path.resolve(process.cwd(), output || "docs/performance/LATEST.json");
+  const target = path.resolve(process.cwd(), output || route.defaultOutput);
   await fs.mkdir(path.dirname(target), { recursive: true });
   await fs.writeFile(target, `${JSON.stringify(receipt, null, 2)}\n`, "utf8");
   return receipt;

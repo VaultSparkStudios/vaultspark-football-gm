@@ -2312,6 +2312,13 @@ function continueSeasonChapter(action = {}) {
 
 async function init() {
   startPlaytestJourney();
+  // The Opening Contract is the first-run Largest Contentful Paint surface. Keep
+  // it lazy, but fetch it alongside dashboard authority instead of starting a
+  // second network waterfall only after the dashboard and hydration queue exist.
+  const firstRunSurfacesPromise = Promise.all([
+    import("./lib/tutorialCampaign.js"),
+    import("./lib/betaFeedback.js")
+  ]);
   state.statsHiddenColumns = readStatsHiddenColumns();
   window.addEventListener("vsfgm:runtime-fallback", (event) => {
     const reason = event?.detail?.reason ? ` ${event.detail.reason}` : "";
@@ -2344,10 +2351,7 @@ async function init() {
       if (hapticsInput.checked) vibrate(HAPTIC_PATTERNS.tick);
     });
   }
-  const [tutorialCampaign, betaFeedback] = await Promise.all([
-    import("./lib/tutorialCampaign.js"),
-    import("./lib/betaFeedback.js")
-  ]);
+  const [tutorialCampaign, betaFeedback] = await firstRunSurfacesPromise;
   const { injectTutorialStyles, mountTutorial, resetTutorial } = tutorialCampaign;
   const { mountBetaFeedback } = betaFeedback;
   injectTutorialStyles();
