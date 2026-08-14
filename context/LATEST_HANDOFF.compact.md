@@ -1,47 +1,48 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 342d9e4c47f9 -->
-<!-- generated-at: 2026-08-13T20:12:11.142Z -->
+<!-- source-hash: 6ccfd44ac428 -->
+<!-- generated-at: 2026-08-14T04:58:06.306Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 84 HANDOFF — COMPRESSED
+# Handoff Summary — Session 85 Closeout
 
-Session
-- S84 closed. Next up: S85.
+## Session
+S85 complete. Next: S86.
 
-What Shipped (S84)
-- Tutorial-route CLS fix: five desktop / four mobile first-run panels now reserve rendered height in public/styles.css (closes GAME_SHELL_DIAGNOSTIC.json shift sources).
-- /api/team-archetypes now accepts optional ?team= in both Express (src/server.js) and static (localApiRuntime.js) runtimes; Overview Rival Coach Intel scopes to one opponent. Full-list call site unchanged (needs all 32).
-- historyFormatting.js now covered (test/history-formatting.test.js, 5 tests) — closed the last zero-test browser module.
-- Node proof 1,094/1,094 across five shards (+16). Pages build/smoke green. No pixel-capture pass (CSS/backend-only, no themed state change — explicit scope call).
+## Shipped (S85)
+- All three S85 audit items shipped and green.
+- Direct first-run `/game.html` route reproducibly measurable; modal focus cannot scroll page; static Opening Contract surface owns first paint; dashboard hydration non-painted until tutorial modal mounts.
+- Candidate `fcf16f109cf4da44b43eb14b61a977f6fa23e29d` passed CI 31769309459, stable staging 14/14 (deploy `230302f8...`, rollback `c0feeb79...`), Pages 31769909692, backend 31769913974.
+- Stable staging + production serve artifact `3bafed39...151ad`; Community API health db-ready at same SHA.
+- Hosted medians green: `/` desktop 520/16/0.0151, mobile 516/16/0.0085; `/game.html` desktop 628/56/0, mobile 780/24/0. Responsive: 209 captures, 68 retained receipts.
+- Doctor release currency 6/6; unified authority evidence-verified with `launchReady:false` correct.
 
-Current Intent (S85)
-- Run fresh live-code audit from S84 authority. S84 three-item lens is exhausted.
-- Do NOT re-litigate rejected phantoms without new evidence: rival-GM persona surfacing, offline/service-worker, the three already-covered untested modules, Depth Chart drag-drop parity.
-- Preserve external Obelisk boundary and public-launch HOLD unless new signed evidence.
+## Current Intent (S86)
+Observe real consenting player/community evidence without manufacturing activity. Release authority is current technical truth, but public-launch HOLD stays until external gates have real receipts.
 
-Now — Top 3
-- Re-run scripts/measure-hosted-performance.mjs against live staging to confirm tutorial CLS lands under 0.1 desktop+mobile (contract verified/tested this session, live delta not yet measured).
-- Observe first real opted-in Community Stats cohort without manufacturing activity; evaluate historical/shareable aggregates only after cohort proves value.
-- Complete Obelisk relying-party registration when signed Ark response arrives; then prove discovery, PKCE, session, logout.
+## Now — Top 3
+- Observe first real opted-in Community Stats/player cohort; validate freshness, suppression, deletion, abuse ceilings without seeded activity.
+- Complete Zoho alias delivery and reply-as proof via canonical secrets/intake path.
+- Reconcile registry SPARKED vs local FORGE through Studio Ark; complete external Obelisk relying-party registration + end-to-end proof before exposing account flows.
 
-Blockers — Top 3
-- Zoho delivery/reply-as unproved.
-- SHA-bound founder launch approval unmet.
-- Registry SPARKED / local FORGE reconciliation unmet.
+## Blockers — Top 3
+- Zoho delivery/reply-as unproven (blocks launch).
+- Founder SHA-bound public-launch approval outstanding (obtain only after all gates green).
+- Obelisk relying-party registration/end-to-end proof incomplete; account flows blocked.
 
-Human-Blocked (age)
-- Founder launch approval — unmet since ≥S79 (~5 sessions).
-- Zoho delivery/reply-as — unmet since ≥S78 (~6 sessions).
-- Obelisk signed Ark response (cargo 01JVSA8NLA2EE76D2CFC3958C0) — pending since ~S83.
+## Human-Blocked (age)
+- Founder public-launch approval: open since ~S81 (5 sessions).
+- Registry SPARKED / local FORGE reconciliation via signed Studio Ark: sibling-owned, open since ~S78 (7 sessions).
+- Zoho delivery/reply-as receipt via canonical intake: open across multiple sessions.
 
-Invariants
-- Tutorial min-height is render-order fix only; never alter lazy-island hydration contract (D-S73.6) or add delay.
-- ?team= is additive/backward-compatible; omitting always returns all 32.
+## Invariants
+- Normal pushes build/test but never publish production; promotion is explicit, carries exact candidate SHA + staging artifact digest.
+- Canonical `/` Web Vitals gate and direct `/game.html` diagnostic are separate receipts; neither substitutes for the other.
+- Hydration beneath opaque overlay counts as CLS; keep game shell non-painted until first stable modal; use `focus({preventScroll:true})`.
+- Technical deploy evidence never clears public launch; Zoho, founder, lifecycle, Obelisk gates independent.
 
-Key Files
-- public/styles.css, test/tutorial-layout-stability.test.js, docs/performance/GAME_SHELL_DIAGNOSTIC.json
-- src/server.js, src/app/api/localApiRuntime.js, public/lib/tabOverview.js
-- public/lib/historyFormatting.js, docs/AUDIT_2026-08-13_SESSION84.json
-
-Next session: run a fresh live-code audit from S84 authority; first verify the live staging CLS delta.
+## Key Files
+- `.github/workflows/deploy-pages.yml`, `scripts/deploy-staging.mjs`, `scripts/check-release-authority-currency.mjs`
+- `public/app.js`, `public/game.html`, `public/styles.css`, `public/lib/modalManager.js`
+- `scripts/measure-hosted-performance.mjs`, `docs/performance/LATEST.json`, `docs/performance/GAME_SHELL_DIAGNOSTIC.json`
+- `docs/

@@ -2,13 +2,14 @@
   "schemaVersion": "1.0",
   "date": "2026-08-13",
   "session": 85,
+  "agent": "codex",
   "project": {
     "slug": "franchise-architect-football",
     "name": "Franchise Architect: Football",
     "type": "public browser football game/app"
   },
   "displayName": "Franchise Architect: Football",
-  "status": "planned",
+  "status": "implemented",
   "summary": {
     "combinedPriority": 58.9,
     "source": "Fresh Session 85 live-code and live-origin audit after synchronizing main to f2fda328. Premises were checked against the current workflow definitions, performance scripts, status contracts, GitHub Actions history, stable staging and production _health receipts, and the existing 1,094-test source-bound suite. The audit deliberately rejects already-shipped gameplay systems and focuses on three evidence failures that currently let a public candidate outrun staging and leave local release truth stale.",
@@ -31,7 +32,7 @@
     "evidence": "No new measured player cohort exists. The audit does not invent fun or retention data; it protects the first-run Opening Contract experience and release fidelity while the real opt-in cohort remains pending."
   },
   "releaseGate": {
-    "deploymentVerdict": "NO-GO for the current candidate. Production serves S84 feature SHA 31248786 at artifact fc1dcf64, stable staging and its visual/performance receipts remain at S83 SHA 8b7d5959 / artifact 0f79737d, and current main is dependency SHA f2fda328. Candidate CI, staging, visual and performance evidence are therefore not bound to one identity.",
+    "deploymentVerdict": "GO for exact technical release candidate fcf16f109cf4da44b43eb14b61a977f6fa23e29d. Full CI, stable staging, production, backend, visual and both hosted-performance routes are verified at artifact 3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad. Public launch remains independently held.",
     "launchVerdict": "NO-GO. Preserve launchReady false.",
     "launchHolds": [
       "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
@@ -96,7 +97,7 @@
       "priority": 27.1,
       "slug": "first-run-performance-authority",
       "title": "Make the Opening Contract performance fix measurable and remove its avoidable module waterfall",
-      "status": "open",
+      "status": "shipped",
       "premise": "Session 84 declared the tutorial layout-shift fix shipped but explicitly deferred live remeasurement. The committed measure-hosted-performance.mjs now hardcodes the canonical public entry route `/`, while GAME_SHELL_DIAGNOSTIC.json was produced by the prior version targeting `game.html`; there is no current command that can reproduce that diagnostic. In public/app.js, tutorialCampaign.js and betaFeedback.js are not requested until after loadCoreDashboard and startup hydration are awaited, creating an avoidable serial waterfall before the first-run tutorial body can become the Largest Contentful Paint element.",
       "evidence": [
         "scripts/measure-hosted-performance.mjs hardcodes page.goto(new URL('./', baseUrl)) and #setupThemeToggleBtn",
@@ -137,7 +138,7 @@
       "priority": 21.5,
       "slug": "candidate-bound-production-promotion",
       "title": "Make stable staging a machine-enforced prerequisite for production publication",
-      "status": "open",
+      "status": "shipped",
       "premise": "The Pages workflow publishes the Cloudflare production project inside its push-triggered build job. Session 84 therefore reached production at SHA 31248786 even though stable staging and all staging-bound receipts stayed at 8b7d5959. The workflow has no candidate revision input, no stable-staging provenance check, and no separation between build-on-push and promote-to-production.",
       "evidence": [
         ".github/workflows/deploy-pages.yml triggers on pushes touching public/src/package/workflow files and unconditionally runs Wrangler against project franchise-architect-football",
@@ -178,7 +179,7 @@
       "priority": 10.3,
       "slug": "release-authority-currency-probe",
       "title": "Fail visibly when checked-in release authority drifts behind Git or live origins",
-      "status": "open",
+      "status": "shipped",
       "premise": "The local doctor reports zero blocking failures and only lifecycle drift even though checked-in releaseAuthority says verified at 8b7d5959, production is live at 31248786, staging is still 8b7d5959, and current main is f2fda328. A session can therefore render a green historical authority object and a false 'no deploy' narrative after deployment has changed reality.",
       "evidence": [
         "node scripts/ops.mjs doctor --json reports blockingFailing 0 and only lifecycle-authoritative-registry",

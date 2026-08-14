@@ -620,3 +620,13 @@ SHA-bound founder approval or authoritative lifecycle reconciliation.
 - **Test truth:** canonical Node suite passes 922/922 with direct exit 0 (up from 911/911); Playwright passes 40/40; windows-hide guard clean; doctor `blockingFailing: 0`.
 - **Launch truth:** unchanged — reply-capable on-domain email is not proven and registry SPARKED/local FORGE remains unreconciled.
 - **Cost truth:** no dependency, paid service, backend, or variable-cost runtime was introduced.
+
+## 2026-08-14 — Session 85 release and first-run authority
+
+- **Deployment truth:** Session 84 did deploy production automatically at `31248786…`; the prior “no deploy” narrative was stale. Session 85 replaced that path with explicit promotion and reconciled exact staging/production at `fcf16f109cf4da44b43eb14b61a977f6fa23e29d`, artifact `3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad`.
+- **Performance truth:** canonical `/` and direct `/game.html` are distinct source-bound receipts. Both are verified on final staging; the direct game route now records CLS 0 at desktop and mobile rather than retaining the inherited red.
+- **Visual truth:** 209 final-SHA captures passed; 68 dark/light desktop/mobile states are retained. The Opening Contract was manually inspected at desktop and 390x844 mobile in both themes with no clipping, hidden-shell leakage, or unreadable contrast.
+- **CI truth:** the first exact-SHA backend/Pages gates exposed a fixture that conflated real release drift warnings with lifecycle warnings. The assertion was made category-specific, final Studio passed 204/204, and exact candidate CI run 31769309459 passed all browser and Node shards. The earlier local 1,102/1,102 aggregate predates only this test-only assertion correction; exact-SHA CI is the final aggregate authority.
+- **Backend truth:** run 31769913974 built/deployed both images and attested the server; public `/community/v1/health` reports HTTP 200, database ready, no-store, and exact `fcf16f1…`.
+- **Launch truth:** technical release evidence is verified, but public launch is not. Email delivery/reply-as, founder approval, lifecycle authority, and external Obelisk relying-party proof remain unresolved; `launchReady:false` is correct.
+- **Cost/security truth:** no paid service or new dependency was added. Exact package candidates were trust-checked, staged secret scans report zero findings, and deployment uses existing cost-neutral/static plus self-hosted infrastructure.

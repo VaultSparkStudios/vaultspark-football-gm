@@ -1,66 +1,67 @@
-<!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-13 (Session 84 closeout) -->
+<!-- generated-by: scripts/render-closeout-board.mjs v1.1 -->
+<!-- generated-at: 2026-08-14 (Session 85 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S84 ══════╗
-║  Date: 2026-08-13  ·  SIL: 982/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: claude-code                            ║
-║  Live:  preview  →  https://playfranchisearchitect.com/          ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S85 ══════╗
+║  Date: 2026-08-14  ·  SIL: 991/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
+║  Live:  🌐 LIVE  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ The full S84 `/arc` audit and implementation scope is exhaus  ║
-║  ✓ The first-run `/game.html` tutorial route's five desktop pan  ║
-║  ✓ `/api/team-archetypes` accepts an optional `?team=` query pa  ║
-║  ✓ `public/lib/historyFormatting.js` now has direct coverage (`  ║
-║  ✓ Canonical Node proof is 1,094/1,094 across five source-bound  ║
+║  ✓ All three S85 audit items shipped. The direct first-run game  ║
+║  ✓ Exact candidate `fcf16f109cf4da44b43eb14b61a977f6fa23e29d` p  ║
+║  ✓ Stable staging and production both serve artifact `3bafed390  ║
+║  ✓ Hosted medians are green: canonical `/` desktop 520ms/16ms/0  ║
+║  ✓ Doctor release currency is current with 6/6 checks. The unif  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 982/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 991/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          99   ██████████                            ║
-║    Momentum           95   ██████████                            ║
-║    Engagement         97   ██████████                            ║
-║    Process Qual       92   █████████░                            ║
-║    Coherence          100  ██████████                            ║
+║    Momentum           100  ██████████                            ║
+║    Engagement         99   ██████████                            ║
+║    Process Qual       96   ██████████                            ║
+║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
-║    Ecosystem          99   ██████████                            ║
+║    Ecosystem          98   ██████████                            ║
 ║    Capital            100  ██████████                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
-║  · context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
-║  · context/PROJECT_STATUS.json                                   ║
-║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
+║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 90 files  ·  M:20 A:0 D:0 ?:70                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
 ║  Staging:  https://staging.playfranchisearchitect.com  ·  cloud  ║
-║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
+║  Live:     https://playfranchisearchitect.com/  ·  🌐 LIVE (SPA  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
-║  Doctor:        5/6                                              ║
+║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1094/1094                                        ║
-║  IGNIS:         2d ago                                           ║
+║  Tests:         1102/1102                                        ║
+║  Validation:    unknown                                          ║
+║  IGNIS:         3d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  4d ago                                           ║
+║  Sanitization:  5d ago                                           ║
+║  shells:        unknown · missing/stale enumeration              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: first-run-tutorial-layout-stability — Add min-height reser  ║
-║      UI/UX / gamification-engagement-immersion / first impressi  ║
+║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 
-*Generated by `scripts/render-closeout-board.mjs v1.0`*
+*Generated by `scripts/render-closeout-board.mjs v1.1`*

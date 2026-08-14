@@ -1,1 +1,723 @@
-{"schemaVersion":1,"capturedAt":"2026-08-13T02:13:06.918Z","sourceRevision":"8b7d59597dc17a546ba3130cdb44769455713a2c","artifactFingerprint":{"algorithm":"sha256","digest":"0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a","files":191,"exclusions":["_health","deploy-manifest.json","edge-policy-receipt.json"]},"artifact":"static arc83-rendered-qa:0f79737d06e4598e8dfd5a8312f2fbfdb535abac23f20184449117f82d70ef9a","themes":["dark","light"],"captures":[{"file":"s83-desktop-rematch-dark.png","sha256":"b7fff586fca7bc60a7b7856e3af103c967c3c278065633dc0bed5d75d2c4d471","theme":"dark","viewport":{"width":1440,"height":1000},"page":"Tactical Film Room rematch memory"},{"file":"s83-desktop-rematch-light.png","sha256":"9d9d32a678cfe23cda52feadaa5256d55ca11c6b00dcff94f1eefe4bf360afde","theme":"light","viewport":{"width":1440,"height":1000},"page":"Tactical Film Room rematch memory"},{"file":"s83-mobile-rematch-dark.png","sha256":"47a124ca13b9606fb50a150dc6fa46b7ea555f972b97bb3a40634f6af59df938","theme":"dark","viewport":{"width":390,"height":844},"page":"Tactical Film Room rematch memory"},{"file":"s83-mobile-rematch-light.png","sha256":"b77c5ad7c319b45533b93bab3afee5549ecbfde6d45e11421a873d58d696de9d","theme":"light","viewport":{"width":390,"height":844},"page":"Tactical Film Room rematch memory"},{"file":"s83-mobile-rematch-dark-actions.png","sha256":"b543e34cd01a214e61c8fba6cbbb99fbd465236fce07a90f404b19129336ed8a","theme":"dark","viewport":{"width":390,"height":844},"page":"Tactical Film Room scrolled action controls"},{"file":"s83-desktop-sim-watch-dark.png","sha256":"c630eb92ad2351d6129d0f5f72ef87c1b22371ce1e88b171da5c5f8657a1b295","theme":"dark","viewport":{"width":1440,"height":1000},"page":"Sim-Watch touch transport"},{"file":"s83-desktop-sim-watch-light.png","sha256":"a5b57ecfa0d5098adedbb221eba76a6329734dcba276f998b9bef1e311f40b81","theme":"light","viewport":{"width":1440,"height":1000},"page":"Sim-Watch touch transport"},{"file":"s83-mobile-sim-watch-dark.png","sha256":"0d67453baf8b964974eb415320ca14ccbfd93f903da1a6c56b0d6413e4867abe","theme":"dark","viewport":{"width":390,"height":844},"page":"Sim-Watch touch transport above mobile deck"},{"file":"s83-mobile-sim-watch-light.png","sha256":"99ed8561901bcbf4f3e8aa78a08bdd77d6c4b4cfe095cb9c8a50be6670856f1b","theme":"light","viewport":{"width":390,"height":844},"page":"Sim-Watch touch transport above mobile deck"}],"inspection":{"renderedPixelsReviewed":true,"reviewer":"codex-gpt-5","findings":["Tactical rematch memory is legible in dark and light themes at desktop and mobile widths, with fictional OS/DMW identifiers preserved.","The mobile Tactical Film Room scrolls from an 808px client area through 1084px of content and exposes both action controls at scrollTop 276.","Sim-Watch remains fully visible above the mobile decision deck in both themes (overlay z-index 1100 versus deck z-index 1000).","Authentic touch dispatch moved the Sim-Watch reel backward and forward through the existing step authority without console errors.","Computed tactical card colors remain readable in both themes: dark rgb(22,33,38) on rgb(245,241,231); light rgb(216,228,219) on rgb(20,35,43)."],"fixesApplied":["Made the Tactical Film Room modal scroll-safe and single-column on narrow screens.","Replaced hard-coded tactical card colors with theme tokens and a selected accent treatment.","Raised and bounded the Sim-Watch overlay above the mobile loop controls.","Removed canonical-league abbreviation leakage from the fictional rematch presentation.","Normalized object-shaped trade-deadline partners before rendering their identifiers.","Collapsed duplicate ticker listeners so the Sim-Watch launch remains reachable after the box-score flow."],"blockingDefectsOpen":0},"captureSourceRevision":"f077926","receiptOnlyLineageVerified":true}
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-08-14T04:15:10.605Z",
+  "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad",
+    "files": 191,
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
+  "artifact": "static responsive-evidence:f87ae77151738192613cc19d7609c3b328367e6bf6a24bc56b00194f2d2d4060",
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "captures": [
+    {
+      "file": "s85-desktop-game-dialog-dark.png",
+      "sha256": "fd344b0d491c1abb523f940ac3bc86db1df8c440e6501cf2bb50eca01f18dbd0",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "First-run Opening Contract tutorial"
+    },
+    {
+      "file": "s85-desktop-game-dialog-light.png",
+      "sha256": "ed16c3bb06f97fb134b66bc2cab15f6c862227ce44cdb9c60ec98d44a01c896a",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "First-run Opening Contract tutorial"
+    },
+    {
+      "file": "s85-desktop-trophy-road-dark.png",
+      "sha256": "41c1105255a56b705a2fc540e2690248f646f41d1738758ade773fe377709441",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "s85-desktop-trophy-road-light.png",
+      "sha256": "4f63d77123ecfba46eb3f5ac39a18fc79bcf43369ba623bc6b7de88d8f9f29e6",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "s85-desktop-sim-watch-reel-dark.png",
+      "sha256": "4ee363f7dfb9b52480a8361b437c5eb2f87cd12d21257c9c5a754c99a46182be",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "s85-desktop-sim-watch-reel-light.png",
+      "sha256": "40088193675c068b4721d730c6ff0af1fab8c7675cfb55a0595cecc6f432d2f7",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "s85-desktop-room-watch-dark.png",
+      "sha256": "ac7f792b5d568ed6f66eba3d0b0244acb58c291f79ae192f226acf0df2ef7235",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "s85-desktop-room-watch-light.png",
+      "sha256": "7202c2ef32b8fb360809c88ce87f829dae0ab92f717e2048abef1d3d685f5900",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "s85-desktop-architect-cut-dark.png",
+      "sha256": "4de7e7e7aadb6900409d9a8db2297e97e708852e6a2e9879304cec5da638dbb6",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "s85-desktop-architect-cut-light.png",
+      "sha256": "843a8c5e0b9407acfebf62d77673fd8de638f3354fb1250746c763f5a8f29f3f",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "s85-desktop-guide-modal-dark.png",
+      "sha256": "bc53f018e8efc63bd2168c788358eb053e64f13e227249466e1c59b794de994f",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "s85-desktop-guide-modal-light.png",
+      "sha256": "e8e1c9af997d54cd3a5c1976d8ba7c0f5444ae6a9733699525e5acfab1cd7f84",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "s85-desktop-rival-coaching-dark.png",
+      "sha256": "523a126086ff6d4d7ebf1a47beaa0ffcdb3d4eb63494b3a54c6102c4814b639c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "s85-desktop-rival-coaching-light.png",
+      "sha256": "ae8d94d388baf1410730f49a496f452a7e24e620b4416430f62964e276c7c8e4",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "s85-desktop-decision-archive-dark.png",
+      "sha256": "1ef1c6e4f2b18d9e29f9981727296bfea9d842b9d16f10db0cad8e2f9404cbaf",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s85-desktop-decision-archive-light.png",
+      "sha256": "c9f6d4d2c97925285b0f004d7c2475d0d976413530f9be76a4133616a8cf0fbd",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s85-desktop-co-gm-brief-dark.png",
+      "sha256": "6005fd16177da2fd3716e503031083b6f3ef70b1b0937d4e58b25425c2d41eea",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s85-desktop-co-gm-brief-light.png",
+      "sha256": "2fdaf071d94fc9afe245f13c73d15eaf7e8573a4434595fd270f2e769cee9b8c",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s85-desktop-prediction-receipt-dark.png",
+      "sha256": "df5615c908d960331335c89e75f84378cdad97882ab657e1640c70b75706c727",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "s85-desktop-prediction-receipt-light.png",
+      "sha256": "f5f76456684af2f78178e9632e08723a74e15a2c29d590544dc4301a64046f2b",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "s85-desktop-agent-negotiation-dark.png",
+      "sha256": "aa5efb73dc561db0ca9fa5aa36687c1f1f4d91b2cc00db27669b666f4b2719e8",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "s85-desktop-agent-negotiation-light.png",
+      "sha256": "653c1223e21be09be60db1c084555b5f6625951325b24d4b0755f7429ae25e84",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "s85-desktop-draft-trade-review-dark.png",
+      "sha256": "6388e62ae0830a3e174f9772c202e4c08232ed7c21c7952623846a0fc7784a49",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "s85-desktop-draft-trade-review-light.png",
+      "sha256": "d700454a12b21a3dff3dec23519c8aa3734ccedcf01b4b439a357358f03d2852",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "s85-desktop-hof-ceremony-dark.png",
+      "sha256": "a86614d084e51efb682b2ea390de56e929858e146ee1480696257b805216ad2f",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "s85-desktop-hof-ceremony-light.png",
+      "sha256": "18093a1a8d686a99fdef25b5596506e71651de6e156d4297594706b2eeafd53b",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "s85-desktop-architect-signature-dark.png",
+      "sha256": "b57d12b2b0905e2096836645cfce8b6ff03d86b71a622a3269cd5d42b5f9d2b7",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "s85-desktop-architect-signature-light.png",
+      "sha256": "61895d777bce9d8fef972053b8c8b3df86f2b4b0e278e3986cd2556ba5a37430",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "s85-desktop-architect-objective-dark.png",
+      "sha256": "a8f8c54e7c6820332c31bcc19fa5bb11085942d1edf0504c7b9b0f5dd8511458",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "s85-desktop-architect-objective-light.png",
+      "sha256": "687849917c8758171e34b8bfb0bc37fdb05e0165307265aa09af8efc386aef74",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "s85-desktop-exact-command-center-dark.png",
+      "sha256": "198b8d067a2f4227e7540f41040ca7342f1c45a6359ffd9c0f9a13967b9e5f0e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "s85-desktop-exact-command-center-light.png",
+      "sha256": "0d733adfae4b6a3cce5b6c77b5b657234dff92e84c988b4fc6d13e61dfe7fd1e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "s85-desktop-exact-command-target-dark.png",
+      "sha256": "019b807685ac404081624443265e862e8391beb30bef5577befcd7cc3093e2ac",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "s85-desktop-exact-command-target-light.png",
+      "sha256": "23abcb31d6ac6fcc6e527a6882c7eac673213a04e151dfef5ab83bb876c47e62",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "s85-mobile-game-dialog-dark.png",
+      "sha256": "05ffa12e35e3ab1f4c35191f78984b0bfd0cb1f838ded7ba81ca97ce8822dcd5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "First-run Opening Contract tutorial"
+    },
+    {
+      "file": "s85-mobile-game-dialog-light.png",
+      "sha256": "27313101b3268d3227a0544ac5f364430815041145ed29e33f9ff88e1418bf36",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "First-run Opening Contract tutorial"
+    },
+    {
+      "file": "s85-mobile-trophy-road-dark.png",
+      "sha256": "9fe3398858365dfabd1dfcc28e0e2345317bbde67700ed9d70d053b1784d45c6",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "s85-mobile-trophy-road-light.png",
+      "sha256": "1b7a41c740d05c427e1c41d3c8c0d2a4198453eed577ded33c69d1812e29c881",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "s85-mobile-sim-watch-reel-dark.png",
+      "sha256": "aad2b93989e89a18c9da368276849914e7563c5fb7f6e9e28660e56eb2a4f539",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "s85-mobile-sim-watch-reel-light.png",
+      "sha256": "d3fda709b5a6259fe76113225469ae741f66b5f5df8f888edae4c1b73059508c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "s85-mobile-room-watch-dark.png",
+      "sha256": "01d6db07b6e52d3bee4ebde3766105f185ca0a22f04790f9ee4242a1bd9e8e81",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "s85-mobile-room-watch-light.png",
+      "sha256": "0e0aec50efd91c819f65897c7dec222f3e55e5e13e6b31f723942a09c91c5cd2",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "s85-mobile-architect-cut-dark.png",
+      "sha256": "70b923d6b6b447e986291dd0915700a986dd0bff4bd0ca6a4b16ef4c19cbde04",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "s85-mobile-architect-cut-light.png",
+      "sha256": "7a8f9616e250ffcfc9536d2b57a7ab1339becef7c45d229c879dc32682b0aaf8",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "s85-mobile-guide-modal-dark.png",
+      "sha256": "40b86b0dfb58a2316f83ba26912ed660372b17763d7e857c8d8d491bf478613b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "s85-mobile-guide-modal-light.png",
+      "sha256": "709b3284044238b3ac9989da00d45e7638f2abc9656313b55b779c6853bf5fd9",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "s85-mobile-rival-coaching-dark.png",
+      "sha256": "dbbe672b0fd3944e02328bdd3fe772bb7fc83fd002cf0b11a70f49152cf72d05",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "s85-mobile-rival-coaching-light.png",
+      "sha256": "b91f5306553492fee8aa0ab98e6431128062e739daf5087477c5e59757aff2a1",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "s85-mobile-decision-archive-dark.png",
+      "sha256": "f58c38f4fa5bce91846274dfa3c7e1e7d9113227b4b6090e205dd1a31e55f523",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s85-mobile-decision-archive-light.png",
+      "sha256": "af253ddb355c883fc425046532b261eb2c3fdaccc6c413606cd2f29df46a705b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s85-mobile-co-gm-brief-dark.png",
+      "sha256": "c173838b1f30467191b200b41f6dcf1360a5dee92fa64f00eb38246c8ae1a8ed",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s85-mobile-co-gm-brief-light.png",
+      "sha256": "b2ee8e6ca7ad32e4701c195734d9d180705761d1a29f743b3ffc5cc4667a1ec1",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s85-mobile-prediction-receipt-dark.png",
+      "sha256": "829c89d3ee42674b15b861d03269bf3e732f9fd24aaf8a256e9b67afa55fd596",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "s85-mobile-prediction-receipt-light.png",
+      "sha256": "c476b2faa1e99fc4419e6732fb4d87fa785f9501d43d3fea1a38183d30eb8782",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "s85-mobile-agent-negotiation-dark.png",
+      "sha256": "bc89a43fef798e8811847ac935897114ab5e76c4ed1560130fb376e27d84d9be",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "s85-mobile-agent-negotiation-light.png",
+      "sha256": "b0093020f3f74787e26c46b9de4612b758f29752118901f5e599624535cea6b1",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "s85-mobile-draft-trade-review-dark.png",
+      "sha256": "f52b38b059ed6c95d147228c3a2e12015c0d06cc442b993498b91407ffe9f3de",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "s85-mobile-draft-trade-review-light.png",
+      "sha256": "e2af84500d2a986cef48eb775ca6008662a05d6e677e9e172c9695e090662e6b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "s85-mobile-hof-ceremony-dark.png",
+      "sha256": "eeff785deed952e2840de41f886edd9930b2e426e6d7dea1f00c89f46bb02f36",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "s85-mobile-hof-ceremony-light.png",
+      "sha256": "6992a879424873ddc77bba9895f5b3ab4fac8f61a21a4c7594c3810db9ecf93b",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "s85-mobile-architect-signature-dark.png",
+      "sha256": "7383592ec955fbaed216d3e582f3f6fcbbdacf7a5dbac0baad44010174f4c144",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "s85-mobile-architect-signature-light.png",
+      "sha256": "dc48020e3418dc0f21bd6f2c74b0edf2a7779c19055957f9e7b946b1ddf28c74",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "s85-mobile-architect-objective-dark.png",
+      "sha256": "6dd192bc26c0c6ec982df269ef9df3011fe8b03d2248eb245e7cd4f317534fe5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "s85-mobile-architect-objective-light.png",
+      "sha256": "2ef1e795500335f9826a7f00acc9b177cb116407e03168ff22ea300892a9ff92",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "s85-mobile-exact-command-center-dark.png",
+      "sha256": "985858fabec6cad2cdc585bd2cb785529e663026f908627c0fbacaf11bd9a624",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "s85-mobile-exact-command-center-light.png",
+      "sha256": "05915877a980610d1b5d58ae68938fcfeaa106098d5a5b41311eb8fbcde3fbc4",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "s85-mobile-exact-command-target-dark.png",
+      "sha256": "cc875ae01baa8910ff31093eb23fe4269b182278d0eb3bf68997794d89de441c",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "s85-mobile-exact-command-target-light.png",
+      "sha256": "a22d8b07f175a2023133ee97011ff94accdb181a688d1642096471849ebd87f7",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Exact command destination and keyboard focus target"
+    }
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "codex-gpt-5",
+    "findings": [
+      "The first-run Opening Contract tutorial reserves stable panel space and remains fully readable in dark and light themes at desktop and mobile widths.",
+      "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures.",
+      "The Architecture Review strongest-signature card remains legible in both themes and at mobile width, including the source receipt count and non-causal boundary.",
+      "Ranked General Manager commands and their exact contract destination render without clipping and preserve a visible focus target across desktop and mobile.",
+      "The canonical Agent Negotiation modal exposes persona, source-derived leverage, ask, guaranteed money, deadline, and its bounded receipt ledger without a parallel mutation control.",
+      "Prediction receipts distinguish winner accuracy from margin error and remain readable at desktop and mobile widths.",
+      "The Hall of Fame ceremony remains legible in both themes, with one dialog boundary and explicit copy/download status."
+    ],
+    "fixesApplied": [
+      "Added first-run tutorial captures to the durable receipt across both themes and target widths after the layout-stability fix.",
+      "Added component-specific Agent Negotiation, prediction-receipt, and Hall of Fame ceremony captures across both themes and target widths.",
+      "Added component-specific strongest-signature, command-strip, and exact-destination captures across both themes and target widths.",
+      "Bound each touched modal to accessible dialog/focus behavior and observable failure receipts.",
+      "Kept the first-decision shell lean by loading non-Overview tab modules only on intent."
+    ],
+    "blockingDefectsOpen": 0
+  }
+}

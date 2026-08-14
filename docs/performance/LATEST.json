@@ -2,13 +2,13 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-08-14T00:43:32.307Z",
+  "observedAt": "2026-08-14T04:12:16.546Z",
   "baseUrl": "https://staging.playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "00003e3d1a7facadf3d06479fc4dc63b0c0afc26",
+  "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "f56cc70650fbff89daa4dc59c7841ff1a7daf26f3f3ab1dd3a06cdf901f03f63",
+    "digest": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad",
     "files": 191,
     "exclusions": [
       "_health",
@@ -21,16 +21,16 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a2abecf628c3802a-IAD",
+    "cf-ray": "a2ad1eb6ed2cae7d-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Fri, 14 Aug 2026 00:43:29 GMT",
+    "date": "Fri, 14 Aug 2026 04:12:13 GMT",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=IL2Hwz3sRHnXhg2TOjqnUGl26wcPkPnjIqfAuO8y79NvAADdodMiIfBxPcCey8AbuwEAPDSt4RAQcxORVO8xZhfcRIV8VJpw8sHar9nhgqRf1ewDR1Pnx2SarWuzOMAQ%2FS1oqrt1SxxqFNl9IFuNNEX47rxo\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=CAjnVe5B9mHbeqFg%2BGWvn8Te7RQ%2FGFj8IkCgkJDlpLeLfRH%2BQCHUGyWnRiKRZ8zMR44Ms0Uiu5JCphiC8hsLxCTIGrJWS8rMho5Dnpu7pcSsT%2BTqQr%2Bk1AeqM7rjOAFefhVF4VE0KW6M7l2m2BTFZpxLt6Pk\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -46,13 +46,13 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 444,
-      "inpMs": 24,
+      "lcpMs": 520,
+      "inpMs": 16,
       "cls": 0.0151,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 5572,
+          "lcpMs": 10248,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -62,6 +62,8 @@
           "cls": 0.0151,
           "shifts": [
             {
+              "startTimeMs": 10738,
+              "scrollY": 0,
               "value": 0.0151,
               "sources": [
                 {
@@ -142,11 +144,11 @@
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 16,
           "interactionObserved": true
         },
         {
-          "lcpMs": 388,
+          "lcpMs": 512,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -156,6 +158,8 @@
           "cls": 0.0151,
           "shifts": [
             {
+              "startTimeMs": 935,
+              "scrollY": 0,
               "value": 0.0151,
               "sources": [
                 {
@@ -236,11 +240,11 @@
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 16,
           "interactionObserved": true
         },
         {
-          "lcpMs": 444,
+          "lcpMs": 520,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -250,6 +254,8 @@
           "cls": 0.0151,
           "shifts": [
             {
+              "startTimeMs": 877,
+              "scrollY": 0,
               "value": 0.0151,
               "sources": [
                 {
@@ -330,7 +336,7 @@
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 16,
           "interactionObserved": true
         }
       ]
@@ -342,13 +348,13 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 320,
+      "lcpMs": 516,
       "inpMs": 16,
       "cls": 0.0085,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 5544,
+          "lcpMs": 10244,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -358,6 +364,8 @@
           "cls": 0.0085,
           "shifts": [
             {
+              "startTimeMs": 14090,
+              "scrollY": 0,
               "value": 0.0085,
               "sources": [
                 {
@@ -392,7 +400,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 320,
+          "lcpMs": 516,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -402,6 +410,8 @@
           "cls": 0.0085,
           "shifts": [
             {
+              "startTimeMs": 3786,
+              "scrollY": 0,
               "value": 0.0085,
               "sources": [
                 {
@@ -436,7 +446,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 320,
+          "lcpMs": 428,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -446,6 +456,8 @@
           "cls": 0.0085,
           "shifts": [
             {
+              "startTimeMs": 3588,
+              "scrollY": 0,
               "value": 0.0085,
               "sources": [
                 {
@@ -488,13 +500,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "00003e3d1a7facadf3d06479fc4dc63b0c0afc26",
+        "observed": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "f56cc70650fbff89daa4dc59c7841ff1a7daf26f3f3ab1dd3a06cdf901f03f63",
+        "observed": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad",
         "expected": "sha256"
       },
       {
@@ -518,13 +530,13 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 444,
+        "observed": 520,
         "expected": "< 1800ms"
       },
       {
         "name": "desktop INP",
         "ok": true,
-        "observed": 24,
+        "observed": 16,
         "expected": "<= 200ms"
       },
       {
@@ -542,7 +554,7 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 320,
+        "observed": 516,
         "expected": "< 1800ms"
       },
       {
@@ -584,5 +596,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "77e69ef039ecdfa4fcb417d1019e0669cf647b63f13a31a5c65031d67fc2f6e1"
+  "receiptSha256": "371ce94e857c88081042b513490673d2bb466bf86e42a1a26ef412c8d43f715b"
 }

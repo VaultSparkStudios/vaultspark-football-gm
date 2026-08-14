@@ -1,10 +1,30 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 84 closed at 982 / 1000 SIL v3.0. A fresh three-item live-code audit shipped a first-run tutorial layout-shift fix, a scoped `/api/team-archetypes?team=` param, and coverage for the last genuinely untested browser module. Node is 1,094/1,094 (+16 tests); Pages build/smoke green. No deploy or rendered-pixel pass was needed or performed this session. Launch remains independently HOLD with launchReady: false.
+Rolling status: Session 85 closed at 991 / 1000 SIL v3.0. All three ranked items shipped: first-run game performance is reproducible and CLS-zero, production promotion is exact-candidate/staging-digest bound, and doctor release currency is live classified. Exact candidate `fcf16f1…` is green across CI, stable staging, Pages, backend, visual and performance evidence at artifact `3bafed39…`. Public launch remains independently HOLD with launchReady: false.
 
-Previously — Session 83 closed at 996 / 1000 after source-derived rematch memory, canonical touch transport, one honest public-stats feed contract and a truthful external Obelisk v2 boundary.
+Previously — Session 84 closed at 982 / 1000 after the CSS reservation, scoped rival-intel endpoint and focused history-formatting coverage; its deferred live measurement and unintended automatic production deployment were reconciled in Session 85.
 <!-- rolling-status-end -->
+## 2026-08-14 — Session 85 First-Run Performance and Candidate-Bound Release Authority
+
+SIL v3.0: **991 / 1000** (Dev Health 100, Creative Alignment 99, Momentum 100, Engagement 99, Process Quality 96, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 98, Capital Efficiency 100, Automation Coverage 100).
+
+- **Dev Health: 100** — exact candidate CI passed browser gates and all five Node shards; local aggregate passed 1,102/1,102 before the final test-only assertion correction and final Studio passed 204/204. Pages, backend, staging, performance and visual evidence are green.
+- **Creative Alignment: 99** — the Opening Contract now arrives as a still, intentional first General Manager decision surface; one point is withheld because this release-architecture session did not add new franchise strategy depth.
+- **Momentum: 100** — all three ranked items shipped through four evidence-driven candidate iterations, exact staging, production and backend without deferring a verified fix.
+- **Engagement: 99** — direct first-run desktop/mobile CLS is now zero and the modal fits both themes at 390px; no real cohort exists, so retention or fun is not claimed.
+- **Process Quality: 96** — the rendered/performance loop found distinct focus-scroll and under-overlay hydration shifts, and CI found a live-network fixture assumption. All were root-fixed, but four points are withheld for requiring those multiple red iterations.
+- **Cross-Repo Coherence: 99** — canonical Studio tools and signed boundaries were respected and no sibling tree was edited; one point remains withheld for registry SPARKED/local FORGE drift.
+- **Security Posture: 100** — promotion fails closed on exact staging identity, package trust blocked the floating CLI candidate, exact dependencies were approved, and staged secret scans found zero leaks.
+- **Ecosystem Integration: 98** — staging, production, backend, CI, doctor, visual and performance authorities now agree; two points remain withheld for unresolved external Obelisk and Zoho integration proof.
+- **Capital Efficiency: 100** — no new package, paid service, model call or variable-cost runtime was introduced; existing static/self-hosted infrastructure remains cost-neutral.
+- **Automation Coverage: 100** — route validation, promotion contract, release currency states, focus-scroll, boot visibility, exact first-run browser CLS, five Node shards and 41 browser paths are executable gates.
+
+Committed SIL follow-ups:
+- [SIL] An opaque fixed overlay does not suppress Core Web Vitals accounting for layout beneath it; non-painted hydration is the stable boundary.
+- [SIL] Tests that persist one authority category must filter that category; live release warnings cannot be assumed absent in lifecycle fixtures.
+- [SIL] Exact-candidate success may supersede a failed attempt technically, while a literal historical “last five green” protocol remains red; report both truths.
+
 ## 2026-08-13 — Session 84 Tutorial Layout Stability, Scoped Rival Intel, History-Formatting Coverage
 
 SIL v3.0: **982 / 1000** (Dev Health 100, Creative Alignment 99, Momentum 95, Engagement 97, Process Quality 92, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 99, Capital Efficiency 100, Automation Coverage 100).

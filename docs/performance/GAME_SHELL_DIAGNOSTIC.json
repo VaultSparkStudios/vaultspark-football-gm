@@ -2,13 +2,13 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-08-14T00:45:11.302Z",
+  "observedAt": "2026-08-14T04:12:16.424Z",
   "baseUrl": "https://staging.playfranchisearchitect.com",
   "route": "/game.html",
-  "sourceRevision": "00003e3d1a7facadf3d06479fc4dc63b0c0afc26",
+  "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "f56cc70650fbff89daa4dc59c7841ff1a7daf26f3f3ab1dd3a06cdf901f03f63",
+    "digest": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad",
     "files": 191,
     "exclusions": [
       "_health",
@@ -21,16 +21,16 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a2abef610942f42c-IAD",
+    "cf-ray": "a2ad1eb60f478185-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Fri, 14 Aug 2026 00:45:08 GMT",
+    "date": "Fri, 14 Aug 2026 04:12:13 GMT",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=G8L5Rxqly%2Fk3%2B80YenypSu1jIasCs8Jfk67bpjUbc42MBfsD9qUOx4Td9y1YkEB4NFCD%2Buy3gHDhH%2FLCQ0eqNuT0Ka11TLKZC%2B9ZrVrRh3GjA9kRE4cTI7YV4HkYz1G9ONZtM85kDLk8xP6ZDH%2BP4eApCUoW\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=842msAJJVBmU%2FXgb1dchCgsBpNhKaC4l46hHk9sXALzwwXZzXKEYZul7%2BxO4FaO0ELbcosDg70BDSWJJNaDayXaqvY3RhFX9EwBGGIiR1%2B92pe2nMBgv05DudPGyGQ394wEio0utQLHArqHrDxbEDvzCZcj%2B\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -46,441 +46,48 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 4532,
+      "lcpMs": 628,
       "inpMs": 56,
-      "cls": 0.7541,
+      "cls": 0,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 4564,
+          "lcpMs": 10412,
           "lcpElement": {
-            "tag": "P",
+            "tag": "H2",
             "id": null,
-            "className": "tutorial-body",
-            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+            "className": "",
+            "text": "Building Your Franchise Command Deck"
           },
-          "cls": 0.7541,
-          "shifts": [
-            {
-              "value": 0.7541,
-              "sources": [
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel footer-guide-panel",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 436.75,
-                    "width": 1440,
-                    "height": 376,
-                    "top": 436.75,
-                    "right": 1440,
-                    "bottom": 812.75,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel split",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 193.59375,
-                    "y": 191.5625,
-                    "width": 1246.40625,
-                    "height": 347.59375,
-                    "top": 191.5625,
-                    "right": 1440,
-                    "bottom": 539.15625,
-                    "left": 193.59375
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel split triple",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 193.59375,
-                    "y": 33.578125,
-                    "width": 1246.40625,
-                    "height": 264.390625,
-                    "top": 33.578125,
-                    "right": 1440,
-                    "bottom": 297.96875,
-                    "left": 193.59375
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": "narrativePanel",
-                  "className": "panel",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 193.59375,
-                    "y": 0,
-                    "width": 1246.40625,
-                    "height": 43.390625,
-                    "top": 0,
-                    "right": 1440,
-                    "bottom": 43.390625,
-                    "left": 193.59375
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "stageChip",
-                  "className": "chip tone-positive",
-                  "previousRect": {
-                    "x": 638.84375,
-                    "y": 26.03125,
-                    "width": 106.296875,
-                    "height": 23.9375,
-                    "top": 26.03125,
-                    "right": 745.140625,
-                    "bottom": 49.96875,
-                    "left": 638.84375
-                  },
-                  "currentRect": {
-                    "x": 606.71875,
-                    "y": 26.03125,
-                    "width": 138.421875,
-                    "height": 23.9375,
-                    "top": 26.03125,
-                    "right": 745.140625,
-                    "bottom": 49.96875,
-                    "left": 606.71875
-                  }
-                }
-              ]
-            }
-          ],
+          "cls": 0,
+          "shifts": [],
           "inpMs": 56,
           "interactionObserved": true
         },
         {
-          "lcpMs": 4532,
+          "lcpMs": 600,
           "lcpElement": {
-            "tag": "P",
+            "tag": "H2",
             "id": null,
-            "className": "tutorial-body",
-            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+            "className": "",
+            "text": "Building Your Franchise Command Deck"
           },
-          "cls": 0.7541,
-          "shifts": [
-            {
-              "value": 0.7541,
-              "sources": [
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel footer-guide-panel",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 436.53125,
-                    "width": 1440,
-                    "height": 376,
-                    "top": 436.53125,
-                    "right": 1440,
-                    "bottom": 812.53125,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel split",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 193.59375,
-                    "y": 191.34375,
-                    "width": 1246.40625,
-                    "height": 347.59375,
-                    "top": 191.34375,
-                    "right": 1440,
-                    "bottom": 538.9375,
-                    "left": 193.59375
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel split triple",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 193.59375,
-                    "y": 33.359375,
-                    "width": 1246.40625,
-                    "height": 264.390625,
-                    "top": 33.359375,
-                    "right": 1440,
-                    "bottom": 297.75,
-                    "left": 193.59375
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": "narrativePanel",
-                  "className": "panel",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 193.59375,
-                    "y": 0,
-                    "width": 1246.40625,
-                    "height": 43.171875,
-                    "top": 0,
-                    "right": 1440,
-                    "bottom": 43.171875,
-                    "left": 193.59375
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "stageChip",
-                  "className": "chip tone-positive",
-                  "previousRect": {
-                    "x": 638.84375,
-                    "y": 26.03125,
-                    "width": 106.296875,
-                    "height": 23.9375,
-                    "top": 26.03125,
-                    "right": 745.140625,
-                    "bottom": 49.96875,
-                    "left": 638.84375
-                  },
-                  "currentRect": {
-                    "x": 606.71875,
-                    "y": 26.03125,
-                    "width": 138.421875,
-                    "height": 23.9375,
-                    "top": 26.03125,
-                    "right": 745.140625,
-                    "bottom": 49.96875,
-                    "left": 606.71875
-                  }
-                }
-              ]
-            }
-          ],
+          "cls": 0,
+          "shifts": [],
           "inpMs": 56,
           "interactionObserved": true
         },
         {
-          "lcpMs": 3672,
+          "lcpMs": 628,
           "lcpElement": {
-            "tag": "P",
+            "tag": "H2",
             "id": null,
-            "className": "tutorial-body",
-            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+            "className": "",
+            "text": "Building Your Franchise Command Deck"
           },
-          "cls": 0.7533,
-          "shifts": [
-            {
-              "value": 0.7533,
-              "sources": [
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel footer-guide-panel",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 436.3125,
-                    "width": 1440,
-                    "height": 376,
-                    "top": 436.3125,
-                    "right": 1440,
-                    "bottom": 812.3125,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel split",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 193.59375,
-                    "y": 191.125,
-                    "width": 1246.40625,
-                    "height": 347.59375,
-                    "top": 191.125,
-                    "right": 1440,
-                    "bottom": 538.71875,
-                    "left": 193.59375
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel split triple",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 193.59375,
-                    "y": 33.140625,
-                    "width": 1246.40625,
-                    "height": 264.390625,
-                    "top": 33.140625,
-                    "right": 1440,
-                    "bottom": 297.53125,
-                    "left": 193.59375
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": "narrativePanel",
-                  "className": "panel",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 193.59375,
-                    "y": 0,
-                    "width": 1246.40625,
-                    "height": 42.953125,
-                    "top": 0,
-                    "right": 1440,
-                    "bottom": 42.953125,
-                    "left": 193.59375
-                  }
-                },
-                {
-                  "tag": "SPAN",
-                  "id": "stageChip",
-                  "className": "chip tone-positive",
-                  "previousRect": {
-                    "x": 638.84375,
-                    "y": 26.03125,
-                    "width": 106.296875,
-                    "height": 23.9375,
-                    "top": 26.03125,
-                    "right": 745.140625,
-                    "bottom": 49.96875,
-                    "left": 638.84375
-                  },
-                  "currentRect": {
-                    "x": 606.71875,
-                    "y": 26.03125,
-                    "width": 138.421875,
-                    "height": 23.9375,
-                    "top": 26.03125,
-                    "right": 745.140625,
-                    "bottom": 49.96875,
-                    "left": 606.71875
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 48,
+          "cls": 0,
+          "shifts": [],
+          "inpMs": 64,
           "interactionObserved": true
         }
       ]
@@ -492,459 +99,66 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 3328,
-      "inpMs": 32,
-      "cls": 0.4739,
+      "lcpMs": 780,
+      "inpMs": 24,
+      "cls": 0,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 3328,
+          "lcpMs": 10376,
           "lcpElement": {
-            "tag": "P",
+            "tag": "H2",
             "id": null,
-            "className": "tutorial-body",
-            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+            "className": "",
+            "text": "Building Your Franchise Command Deck"
           },
-          "cls": 0.4739,
-          "shifts": [
-            {
-              "value": 0.4739,
-              "sources": [
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel footer-guide-panel",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 5.5625,
-                    "width": 390,
-                    "height": 376,
-                    "top": 5.5625,
-                    "right": 390,
-                    "bottom": 381.5625,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "FOOTER",
-                  "id": null,
-                  "className": "game-footer",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 47.5625,
-                    "width": 390,
-                    "height": 352,
-                    "top": 47.5625,
-                    "right": 390,
-                    "bottom": 399.5625,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel split",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 390,
-                    "height": 107.96875,
-                    "top": 0,
-                    "right": 390,
-                    "bottom": 107.96875,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "BUTTON",
-                  "id": "backSetupBtn",
-                  "className": "",
-                  "previousRect": {
-                    "x": 282.328125,
-                    "y": 278.796875,
-                    "width": 90.078125,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 372.40625,
-                    "bottom": 313.140625,
-                    "left": 282.328125
-                  },
-                  "currentRect": {
-                    "x": 222.359375,
-                    "y": 278.796875,
-                    "width": 90.078125,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 312.4375,
-                    "bottom": 313.140625,
-                    "left": 222.359375
-                  }
-                },
-                {
-                  "tag": "BUTTON",
-                  "id": "pauseSimBtn",
-                  "className": "",
-                  "previousRect": {
-                    "x": 93.890625,
-                    "y": 278.796875,
-                    "width": 88.875,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 182.765625,
-                    "bottom": 313.140625,
-                    "left": 93.890625
-                  },
-                  "currentRect": {
-                    "x": 33.921875,
-                    "y": 278.796875,
-                    "width": 88.875,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 122.796875,
-                    "bottom": 313.140625,
-                    "left": 33.921875
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 32,
+          "cls": 0,
+          "shifts": [],
+          "inpMs": 24,
           "interactionObserved": true
         },
         {
-          "lcpMs": 3268,
+          "lcpMs": 780,
           "lcpElement": {
-            "tag": "P",
+            "tag": "H2",
             "id": null,
-            "className": "tutorial-body",
-            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+            "className": "",
+            "text": "Building Your Franchise Command Deck"
           },
-          "cls": 0.4751,
-          "shifts": [
-            {
-              "value": 0.4751,
-              "sources": [
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel footer-guide-panel",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 6.71875,
-                    "width": 390,
-                    "height": 376,
-                    "top": 6.71875,
-                    "right": 390,
-                    "bottom": 382.71875,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "FOOTER",
-                  "id": null,
-                  "className": "game-footer",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 48.71875,
-                    "width": 390,
-                    "height": 352,
-                    "top": 48.71875,
-                    "right": 390,
-                    "bottom": 400.71875,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel split",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 390,
-                    "height": 109.125,
-                    "top": 0,
-                    "right": 390,
-                    "bottom": 109.125,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "BUTTON",
-                  "id": "backSetupBtn",
-                  "className": "",
-                  "previousRect": {
-                    "x": 282.328125,
-                    "y": 278.796875,
-                    "width": 90.078125,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 372.40625,
-                    "bottom": 313.140625,
-                    "left": 282.328125
-                  },
-                  "currentRect": {
-                    "x": 222.359375,
-                    "y": 278.796875,
-                    "width": 90.078125,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 312.4375,
-                    "bottom": 313.140625,
-                    "left": 222.359375
-                  }
-                },
-                {
-                  "tag": "BUTTON",
-                  "id": "pauseSimBtn",
-                  "className": "",
-                  "previousRect": {
-                    "x": 93.890625,
-                    "y": 278.796875,
-                    "width": 88.875,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 182.765625,
-                    "bottom": 313.140625,
-                    "left": 93.890625
-                  },
-                  "currentRect": {
-                    "x": 33.921875,
-                    "y": 278.796875,
-                    "width": 88.875,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 122.796875,
-                    "bottom": 313.140625,
-                    "left": 33.921875
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 40,
+          "cls": 0,
+          "shifts": [],
+          "inpMs": 24,
           "interactionObserved": true
         },
         {
-          "lcpMs": 3344,
+          "lcpMs": 672,
           "lcpElement": {
-            "tag": "P",
+            "tag": "H2",
             "id": null,
-            "className": "tutorial-body",
-            "text": "Every franchise has an identity. Your scheme shapes which players thrive here. Your owner's personality determines how much rope you get to build it. Choose your starting direction"
+            "className": "",
+            "text": "Building Your Franchise Command Deck"
           },
-          "cls": 0.4739,
-          "shifts": [
-            {
-              "value": 0.4739,
-              "sources": [
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel footer-guide-panel",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 5.5625,
-                    "width": 390,
-                    "height": 376,
-                    "top": 5.5625,
-                    "right": 390,
-                    "bottom": 381.5625,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "FOOTER",
-                  "id": null,
-                  "className": "game-footer",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 47.5625,
-                    "width": 390,
-                    "height": 352,
-                    "top": 47.5625,
-                    "right": 390,
-                    "bottom": 399.5625,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "panel split",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 0,
-                    "height": 0,
-                    "top": 0,
-                    "right": 0,
-                    "bottom": 0,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 0,
-                    "width": 390,
-                    "height": 107.96875,
-                    "top": 0,
-                    "right": 390,
-                    "bottom": 107.96875,
-                    "left": 0
-                  }
-                },
-                {
-                  "tag": "BUTTON",
-                  "id": "backSetupBtn",
-                  "className": "",
-                  "previousRect": {
-                    "x": 282.328125,
-                    "y": 278.796875,
-                    "width": 90.078125,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 372.40625,
-                    "bottom": 313.140625,
-                    "left": 282.328125
-                  },
-                  "currentRect": {
-                    "x": 222.359375,
-                    "y": 278.796875,
-                    "width": 90.078125,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 312.4375,
-                    "bottom": 313.140625,
-                    "left": 222.359375
-                  }
-                },
-                {
-                  "tag": "BUTTON",
-                  "id": "pauseSimBtn",
-                  "className": "",
-                  "previousRect": {
-                    "x": 93.890625,
-                    "y": 278.796875,
-                    "width": 88.875,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 182.765625,
-                    "bottom": 313.140625,
-                    "left": 93.890625
-                  },
-                  "currentRect": {
-                    "x": 33.921875,
-                    "y": 278.796875,
-                    "width": 88.875,
-                    "height": 34.34375,
-                    "top": 278.796875,
-                    "right": 122.796875,
-                    "bottom": 313.140625,
-                    "left": 33.921875
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 32,
+          "cls": 0,
+          "shifts": [],
+          "inpMs": 104,
           "interactionObserved": true
         }
       ]
     }
   ],
   "evaluation": {
-    "status": "blocked",
+    "status": "verified",
     "checks": [
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "00003e3d1a7facadf3d06479fc4dc63b0c0afc26",
+        "observed": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "f56cc70650fbff89daa4dc59c7841ff1a7daf26f3f3ab1dd3a06cdf901f03f63",
+        "observed": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad",
         "expected": "sha256"
       },
       {
@@ -967,8 +181,8 @@
       },
       {
         "name": "desktop LCP",
-        "ok": false,
-        "observed": 4532,
+        "ok": true,
+        "observed": 628,
         "expected": "< 1800ms"
       },
       {
@@ -979,8 +193,8 @@
       },
       {
         "name": "desktop CLS",
-        "ok": false,
-        "observed": 0.7541,
+        "ok": true,
+        "observed": 0,
         "expected": "<= 0.1"
       },
       {
@@ -991,20 +205,20 @@
       },
       {
         "name": "mobile LCP",
-        "ok": false,
-        "observed": 3328,
+        "ok": true,
+        "observed": 780,
         "expected": "< 1800ms"
       },
       {
         "name": "mobile INP",
         "ok": true,
-        "observed": 32,
+        "observed": 24,
         "expected": "<= 200ms"
       },
       {
         "name": "mobile CLS",
-        "ok": false,
-        "observed": 0.4739,
+        "ok": true,
+        "observed": 0,
         "expected": "<= 0.1"
       },
       {
@@ -1026,12 +240,7 @@
         ]
       }
     ],
-    "failures": [
-      "desktop LCP",
-      "desktop CLS",
-      "mobile LCP",
-      "mobile CLS"
-    ],
+    "failures": [],
     "thresholds": {
       "lcpMs": 1800,
       "inpMs": 200,
@@ -1039,5 +248,5 @@
     }
   },
   "boundary": "Lab diagnostic for the direct first-run game shell from a real hosted browser interaction; it is not field cohort data and does not replace the canonical public-entry release gate.",
-  "receiptSha256": "1fb9833131859768b52d91b0bb2a0dba91e00f80567f864b8e4481e84c49055b"
+  "receiptSha256": "f546749f1b44ca9554cf8820e56616e24017f76db02e1bbb8639e29ee347e905"
 }

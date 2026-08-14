@@ -1,4 +1,41 @@
-# Session 84 Closeout — Tutorial Layout Stability, Scoped Rival Intel, History-Formatting Coverage
+# Session 85 Closeout — First-Run Performance and Candidate-Bound Release Authority
+
+## Session Intent — S86
+
+Observe real consenting player/community evidence without manufacturing activity. Treat release authority as current technical truth but preserve public-launch HOLD until the external Zoho, founder-approval, lifecycle and Obelisk relying-party gates have real receipts.
+
+## Where We Left Off (Session 85)
+
+- All three S85 audit items shipped. The direct first-run game route is reproducibly measurable and green; modal focus cannot scroll the page, the static Opening Contract boot surface owns first paint, and dashboard hydration stays non-painted until the tutorial modal mounts.
+- Exact candidate `fcf16f109cf4da44b43eb14b61a977f6fa23e29d` passed CI run 31769309459, stable staging 14/14 (deployment `230302f8-a5db-48a3-aa51-0066086eed68`, rollback `c0feeb79-3589-49cd-8f92-e9f532ad6a8f`), Pages promotion run 31769909692, and backend run 31769913974.
+- Stable staging and production both serve artifact `3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad`; the public Community API health is database-ready at the same SHA.
+- Hosted medians are green: canonical `/` desktop 520ms/16ms/0.0151 and mobile 516ms/16ms/0.0085; direct `/game.html` desktop 628ms/56ms/0 and mobile 780ms/24ms/0. Responsive evidence generated 209 captures and retained 68 inspected dark/light desktop/mobile receipts.
+- Doctor release currency is current with 6/6 checks. The unified authority is evidence-verified while `launchReady:false` remains correct.
+
+## Decisions That Must Survive (S85)
+
+- Normal pushes may build and test but never publish production; promotion is explicit and carries the exact candidate SHA plus stable-staging artifact digest.
+- The canonical `/` Web Vitals gate and direct `/game.html` first-run diagnostic are separate receipts. Both happen to be green now; neither may silently substitute for the other.
+- Hydration beneath an opaque overlay still counts as layout shift. Keep the unstable game shell non-painted until its first stable modal surface mounts, and use `focus({preventScroll:true})` at modal entry.
+- Technical deployment evidence never clears public launch. Zoho delivery/reply-as, founder approval, authoritative lifecycle, and applicable Obelisk relying-party verification remain independent.
+
+## Next Best Work
+
+- Observe the first real opted-in Community Stats/player cohort and validate freshness, suppression, deletion, and abuse ceilings without seeded activity.
+- Complete Zoho alias delivery and reply-as proof through the canonical secrets/intake path.
+- Reconcile registry SPARKED versus local FORGE through Studio Ark, and complete external Obelisk relying-party registration/end-to-end proof before exposing account flows.
+- Obtain a separate SHA-bound founder public-launch approval only after every independent gate is green.
+
+## Key Files
+
+- `.github/workflows/deploy-pages.yml`, `scripts/deploy-staging.mjs`, `scripts/check-release-authority-currency.mjs`
+- `public/app.js`, `public/game.html`, `public/styles.css`, `public/lib/modalManager.js`
+- `scripts/measure-hosted-performance.mjs`, `docs/performance/LATEST.json`, `docs/performance/GAME_SHELL_DIAGNOSTIC.json`
+- `docs/visual-qa/LATEST.json`, `context/PROJECT_STATUS.json`, `docs/AUDIT_2026-08-13_SESSION85.json`
+
+---
+
+# Prior Session 84 Closeout — Tutorial Layout Stability, Scoped Rival Intel, History-Formatting Coverage
 
 ## Session Intent — S85
 

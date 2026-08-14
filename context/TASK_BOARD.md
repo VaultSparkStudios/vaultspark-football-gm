@@ -12,6 +12,20 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 
+## Session 85 — Full arc: first-run performance and candidate-bound release authority (2026-08-14)
+
+Source: `docs/AUDIT_2026-08-13_SESSION85.json`.
+
+| Item | Status |
+|------|--------|
+| first-run-performance-authority — reproducible canonical/game route probes, parallel lazy tutorial loading, scroll-stable modal focus, non-painted hydrating shell, exact hosted proof | ✅ Done |
+| candidate-bound-production-promotion — build-only pushes plus explicit exact-SHA/staging-digest production promotion | ✅ Done |
+| release-authority-currency-probe — Git/checked/live identity classifier integrated into doctor, with deterministic lifecycle test isolation | ✅ Done |
+
+**Verification:** exact-SHA CI run 31769309459 green across browser plus all five Node shards; local aggregate 1,102/1,102 before the final test-only correction and final Studio 204/204; Playwright 41/41; staging 14/14 with rollback; responsive 209/209 and 68 retained dark/light desktop/mobile captures; canonical and direct-game hosted metrics green; Pages run 31769909692 and backend run 31769913974 green; staging, production and API exact at `fcf16f1…` / artifact `3bafed39…`.
+
+**Launch posture:** technical release evidence is verified; public launch remains NO-GO. Preserve `launchReady:false` until Zoho delivery/reply-as, SHA-bound founder launch approval, authoritative lifecycle reconciliation, and applicable external Obelisk relying-party proof exist.
+
 ## Session 84 — Full arc: tutorial layout stability, scoped rival-intel fetch, history-formatting coverage (2026-08-13)
 
 Source: `docs/AUDIT_2026-08-13_SESSION84.json`.

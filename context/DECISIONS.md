@@ -1089,3 +1089,17 @@ Desktop/mobile medians and a real theme interaction are captured on `/`. The dir
 
 **D-S82.6 — Source-bound evidence is excluded from deployable-content identity.**
 `edge-policy-receipt.json` names the publication SHA that emitted an otherwise identical policy. It joins `_health` and `deploy-manifest.json` outside the deterministic artifact hash, while the policy fingerprint and every executable/content byte remain inside their respective authorities. *Why:* a receipt-only publication must not fabricate product drift by embedding its own SHA into an evidence file.
+
+## Session 85 — 2026-08-14
+
+**D-S85.1 — Canonical entry performance and first-run game performance are separate authorities.**
+`/` retains the public release Web Vitals contract; `/game.html` has its own reproducible interaction selector, output and diagnostic receipt. Both must name route, source revision and artifact. *Why:* a green landing page cannot prove the first playable decision is stable, and a game diagnostic cannot silently redefine the public-entry promise.
+
+**D-S85.2 — Production publication is an explicit promotion from exact stable-staging identity.**
+Ordinary main pushes build and test only. A production dispatch must name a 40-character candidate revision and 64-character staging artifact digest, checkout that candidate, reproduce its manifest, and verify stable staging before either Cloudflare or GitHub Pages mutates. *Why:* Session 84 proved that automatic push deployment can put unverified bytes in production while staging receipts remain stale.
+
+**D-S85.3 — Release currency is live classified truth, not the historical authority object's label.**
+Doctor compares Git HEAD, checked staging/release/publication identities, and live staging/production health. Network unknown stays degraded; contradictions warn or block according to whether current-release claims are being made. *Why:* a historically verified receipt may remain valid history while being false as a description of current deployment.
+
+**D-S85.4 — An opaque boot overlay does not excuse layout shift beneath it.**
+The hydrating game shell remains non-painted until the stable Opening Contract modal mounts; modal entry focuses with `preventScroll`. A browser regression measures CLS and scroll directly. *Why:* Core Web Vitals observe layout work behind overlays, and focus-induced scrolling can turn otherwise correct modal lifecycle into a severe first-run shift.

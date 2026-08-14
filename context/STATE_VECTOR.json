@@ -1,10 +1,10 @@
 {
   "vectorVersion": "1.0",
-  "generatedAt": "2026-08-13",
-  "generatedAtMs": 1786588632080,
-  "session": 83,
-  "vectorHash": "9fefee6332610fc2",
-  "silTotal": 996,
+  "generatedAt": "2026-08-14",
+  "generatedAtMs": 1786683561422,
+  "session": 85,
+  "vectorHash": "bc0987dc31b7142c",
+  "silTotal": 991,
   "silAvg3": null,
   "velocity": null,
   "debt": null,
@@ -21,20 +21,20 @@
     "Evaluate historical sparklines and shareable aggregate cards only after a real c",
     "Offer aggregate-only Analytica ingestion through Studio Ark when that authority "
   ],
-  "health": "green",
+  "health": "yellow",
   "truthStatus": "green",
   "genome": null,
   "ignisScore": 42836,
   "ignisGrade": "FORGE",
-  "ignisAgeDays": 2,
+  "ignisAgeDays": 3,
   "name": "Franchise Architect: Football",
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "Observe a real consenting Community Stats cohort without manufacturing activity; complete Obelisk relying-party registration when signed authority arrives; separately prove Zoho delivery/reply-as, SHA-bound founder launch approval and lifecycle reconciliation before any launch flip.",
-  "currentFocus": "Session 83 arc is complete: source-derived rematch film, canonical touch Sim-Watch transport, one aggregate-only Analytica public-stats contract, and a truthful external Obelisk Passport v2 boundary. Node is 1,078/1,078; nine rendered captures plus hosted performance bind unified staging/production authority to revision 8b7d595 and artifact 0f79737d; staging is verified 14/14 with rollback and production 10/10. Public launch remains HOLD.",
+  "nextMilestone": "Preserve the exact deployed candidate while proving Zoho receive plus reply-as identity, obtaining explicit SHA-bound founder launch approval, and reconciling registry SPARKED versus local FORGE authority; continue honest opted-in cohort observation without manufacturing activity.",
+  "currentFocus": "Session 85 technical release is exact and verified: CI, stable staging, production, backend, 68 retained dark/light desktop/mobile captures and route-specific performance evidence all bind candidate fcf16f109cf4da44b43eb14b61a977f6fa23e29d to artifact 3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad. Public launch remains HOLD and launchReady stays false.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
-    "Launch HOLD — email-delivery-and-reply-identity-unverified, founder-launch-approval-unverified, lifecycle-authority-unreconciled."
+    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ]
 }
