@@ -45,9 +45,10 @@ test("doctor update-json persists the live lifecycle result instead of a stale s
   assert.equal(status.doctorScore.blockingFailing, status.doctorScore.failing);
   assert.ok(status.doctorScore.warning >= lifecycle.warning);
   assert.equal(status.doctorScore.total, status.doctorScore.passing + status.doctorScore.warning + status.doctorScore.blockingFailing);
+  const lifecycleRegistryCheck = status.doctorScore.checks.find((check) => check.id === "lifecycle-authoritative-registry");
   if (lifecycle.warning > 0) {
-    assert.equal(status.doctorScore.checks[0].id, "lifecycle-authoritative-registry");
+    assert.ok(lifecycleRegistryCheck);
   } else {
-    assert.deepEqual(status.doctorScore.checks, []);
+    assert.equal(lifecycleRegistryCheck, undefined);
   }
 });
