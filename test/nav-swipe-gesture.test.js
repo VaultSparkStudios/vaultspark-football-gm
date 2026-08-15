@@ -63,3 +63,24 @@ test("bindMobileNav attaches swipe gesture with touch/pen pointer filter", () =>
 test("resolveNavSwipe is exported from appCore.js", () => {
   assert.ok(src.includes("export function resolveNavSwipe"), "resolveNavSwipe must be a named export");
 });
+
+test("touch-action: pan-y is applied to .side-menu and #navEdgeZone in styles.css", () => {
+  const css = fs.readFileSync(new URL("../public/styles.css", import.meta.url), "utf8");
+  assert.ok(css.includes("touch-action: pan-y"), "touch-action: pan-y must appear in styles.css");
+  const sideMenuBlock = css.match(/\.side-menu\s*\{[^}]*\}/g) || [];
+  assert.ok(
+    sideMenuBlock.some((b) => b.includes("touch-action: pan-y")),
+    ".side-menu must declare touch-action: pan-y to prevent browser claiming close-swipe"
+  );
+  assert.ok(css.includes("#navEdgeZone"), "#navEdgeZone sentinel must be declared in styles.css");
+  const edgeZoneBlock = css.match(/#navEdgeZone\s*\{[^}]*\}/g) || [];
+  assert.ok(
+    edgeZoneBlock.some((b) => b.includes("touch-action: pan-y")),
+    "#navEdgeZone must declare touch-action: pan-y"
+  );
+});
+
+test("game.html contains #navEdgeZone element", () => {
+  const html = fs.readFileSync(new URL("../public/game.html", import.meta.url), "utf8");
+  assert.ok(html.includes('id="navEdgeZone"'), "#navEdgeZone must be present in game.html");
+});
