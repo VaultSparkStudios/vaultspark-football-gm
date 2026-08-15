@@ -61,6 +61,7 @@ export const SHARDS = {
     "test/browser-save-store.test.js",
     "test/hybrid-save-store.test.js",
     "test/browser-wiring.test.js",
+    "test/nav-swipe-gesture.test.js",
     "test/client-diagnostics.test.js",
     "test/button-action-contracts.test.js",
     "test/league-story-export.test.js",
