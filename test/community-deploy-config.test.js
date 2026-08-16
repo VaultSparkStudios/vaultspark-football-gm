@@ -36,6 +36,7 @@ test('backend promotion tests its runtime and attests the exact deployed revisio
   assert.match(workflow, /SOURCE_REVISION=\$\{\{ github\.sha \}\}/);
   assert.match(workflow, /sourceRevision.*DEPLOY_SHA/);
   assert.match(workflow, /grep -F/);
+  assert.match(workflow, /curl .*--retry 15 .*--retry-all-errors .*\/community\/v1\/health/);
   assert.match(dockerfile, /^FROM node:24\.14\.0-alpine/m);
   assert.match(dockerfile, /ARG SOURCE_REVISION=local-worktree/);
   assert.match(dockerfile, /org\.opencontainers\.image\.revision=\$SOURCE_REVISION/);

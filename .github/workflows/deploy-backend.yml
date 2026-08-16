@@ -140,6 +140,6 @@ jobs:
               caddy validate --config /etc/caddy/Caddyfile
               systemctl reload caddy
             fi
-            HEALTH_JSON="$(curl --fail --silent --show-error --retry 15 --retry-delay 2 http://127.0.0.1:8082/community/v1/health)"
+            HEALTH_JSON="$(curl --fail --silent --show-error --retry 15 --retry-delay 2 --retry-all-errors http://127.0.0.1:8082/community/v1/health)"
             printf '%s\n' "$HEALTH_JSON"
             printf '%s' "$HEALTH_JSON" | grep -F "\"sourceRevision\":\"$DEPLOY_SHA\"" >/dev/null

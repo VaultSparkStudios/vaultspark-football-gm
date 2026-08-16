@@ -10,7 +10,7 @@ Observe real consenting community evidence without manufacturing activity. Prese
 - Narrative events consume live chemistry/owner state, long-play stats retain maxima, fan sentiment reads the live season record, waiver rows retain player identity, and Franchise Legends plus General Manager Reputation are mounted.
 - Canonical local proof is 1,136/1,136 Node and 41/41 Playwright. Responsive evidence produced 233 captures; 84 dark/light desktop/mobile receipts were retained and manually inspected. Pixel review found and fixed the waiver/roster decorator offset before release.
 - Application candidate `90f0d4871828fc10df7b0933f636793db2697446` passed exact-SHA CI, stable staging and production Pages promotion at artifact `9bc71a36579a03f2b566ff3e2f0b512a9677b19f8f26b73ea8471c9b31212a59`; public backend health reports that revision and database ready.
-- The backend run exposed an idempotency defect after the container was already live: it reloaded shared Caddy even when its route fragment was unchanged. The workflow now compares the fragment first and reloads only on a real configuration delta.
+- The backend run exposed two post-start attestation defects: it reloaded shared Caddy when its route fragment was unchanged, then curl treated the container's first cold-start connection reset as terminal despite a declared retry budget. The workflow now reloads only on a real fragment delta and uses `--retry-all-errors` for bounded health convergence.
 - Public launch remains HOLD. Technical deployment authorization did not clear email, founder launch approval, lifecycle, or external identity gates.
 
 ## Decisions That Must Survive (S87)
