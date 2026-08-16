@@ -1,32 +1,32 @@
-<!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-14 (Session 85 closeout) -->
+<!-- generated-by: scripts/render-closeout-board.mjs v1.1 -->
+<!-- generated-at: 2026-08-16 (Session 87 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S85 ══════╗
-║  Date: 2026-08-14  ·  SIL: 991/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S87 ══════╗
+║  Date: 2026-08-16  ·  SIL: 992/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
-║  Live:  preview  →  https://playfranchisearchitect.com/          ║
+║  Live:  🌐 LIVE  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ All three S85 audit items shipped. The direct first-run game  ║
-║  ✓ Exact candidate `fcf16f109cf4da44b43eb14b61a977f6fa23e29d` p  ║
-║  ✓ Stable staging and production both serve artifact `3bafed390  ║
-║  ✓ Hosted medians are green: canonical `/` desktop 520ms/16ms/0  ║
-║  ✓ Doctor release currency is current with 6/6 checks. The unif  ║
+║  ✓ All six S87 audit items shipped. The salary market is one ve  ║
+║  ✓ Narrative events consume live chemistry/owner state, long-pl  ║
+║  ✓ Canonical local proof is 1,136/1,136 Node and 41/41 Playwrig  ║
+║  ✓ Application candidate `90f0d4871828fc10df7b0933f636793db2697  ║
+║  ✓ The backend run exposed an idempotency defect after the cont  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 991/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 992/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          99   ██████████                            ║
+║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
-║    Engagement         99   ██████████                            ║
-║    Process Qual       96   ██████████                            ║
+║    Engagement         100  ██████████                            ║
+║    Process Qual       95   ██████████                            ║
 ║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
-║    Ecosystem          98   ██████████                            ║
+║    Ecosystem          99   ██████████                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         100  ██████████                            ║
+║    Automation         99   ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
@@ -38,29 +38,30 @@
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
-║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
+║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 16 files  ·  M:14 A:0 D:0 ?:2                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
 ║  Staging:  https://staging.playfranchisearchitect.com  ·  cloud  ║
-║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
+║  Live:     https://playfranchisearchitect.com/  ·  🌐 LIVE (SPA  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
-║  Doctor:        11/12                                            ║
+║  Doctor:        8/12                                             ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1102/1102 · STALE                                ║
-║  IGNIS:         3d ago                                           ║
+║  Tests:         1136/1136                                        ║
+║  Validation:    unknown                                          ║
+║  IGNIS:         6d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  5d ago                                           ║
+║  Sanitization:  8d ago                                           ║
+║  shells:        unknown · missing/stale enumeration              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: first-run-performance-authority — L1 plus start the tutori  ║
-║      UI/UX / first-run engagement / performance truth            ║
+║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 
-*Generated by `scripts/render-closeout-board.mjs v1.0`*
+*Generated by `scripts/render-closeout-board.mjs v1.1`*

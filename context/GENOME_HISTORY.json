@@ -324,6 +324,23 @@
       },
       "delta": 0,
       "cause": "Session 85 technical release is exact and verified: CI, stable staging, production, backend, 68 retained dark/light desk"
+    },
+    {
+      "date": "2026-08-16",
+      "session": 87,
+      "total": 0,
+      "maxTotal": 25,
+      "overallStatus": "green",
+      "lastReviewed": "2026-08-16",
+      "dimensions": {
+        "schema_alignment": 0,
+        "prompt_template_alignment": 0,
+        "derived_view_freshness": 0,
+        "handoff_continuity": 0,
+        "contradiction_density": 0
+      },
+      "delta": 0,
+      "cause": "Session 87 made franchise pressure visible and binding. One versioned salary-market curve now governs generated contract"
     }
   ]
 }

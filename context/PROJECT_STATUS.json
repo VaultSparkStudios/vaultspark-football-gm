@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Session 86 repaired the game core decision loop after the first audit to execute the engine rather than read it. All four weekly tactics were provable no-ops, the on-the-clock Draft button threw before issuing the pick, and the declared aging curve arrived roughly fivefold diluted; all three are fixed with fixed-seed regressions that fail against the old behaviour. Playoff appearances, cap-alert contract truth, owner-confidence snapshot parity, postseason payload size and client simulation-job exclusivity also shipped. Canonical Node receipt is 1,123/1,123. Public launch remains HOLD and launchReady stays false.",
-  "nextMilestone": "Calibrate the franchise economy so the salary cap actually binds (measured non-binding across all 32 teams), clear the five verified-real findings parked in the S86 audit sidecar, and re-capture rendered evidence for the newly reachable draft reveal and corrected cap-alert banner — while continuing to prove Zoho receive/reply-as, obtain SHA-bound founder launch approval and reconcile registry SPARKED versus local FORGE.",
+  "currentFocus": "Session 87 made franchise pressure visible and binding. One versioned salary-market curve now governs generated contracts, free agency and CPU bids; live narrative/fan/stat adapters are corrected; waiver identity, Franchise Legends and General Manager Reputation are reachable. Local proof is 1,136/1,136 Node, 41/41 Playwright, 233 responsive captures and 84 inspected receipts. Application candidate 90f0d487 is live on staging, production and the database-ready backend; the final closeout descendant carries an idempotent shared-Caddy deployment fix. Public launch remains HOLD and launchReady stays false.",
+  "nextMilestone": "Observe the first real opted-in Community Stats cohort without manufacturing activity, then evaluate aggregate-only history/share surfaces. Continue to prove Zoho receive/reply-as, obtain SHA-bound founder launch approval, reconcile registry SPARKED versus local FORGE, and complete external Obelisk relying-party registration.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -21,25 +21,24 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-08-14",
+  "truthAuditLastRun": "2026-08-16",
   "ignisScore": 42836,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": {
-    "totalTests": 1123,
-    "pass": 1123,
+    "totalTests": 1136,
+    "pass": 1136,
     "fail": 0,
     "lastRun": "2026-08-16",
     "newTestFiles": [
-      "test/session86-core-loop-truth.test.js",
-      "test/session86-snapshot-parity.test.js"
+      "test/session87-franchise-truth.test.js"
     ],
-    "newTestCount": 21,
-    "coverage": "Local aggregate passed 1,123/1,123 across all five source-bound shards (core 123, runtime 716, sim-contract 79, sim-realism 1, studio 204), up from 1,102/1,102. Counts were read from the shard summary lines directly; the wrapper exit code reported success over a real failure twice during this session.",
-    "uiSuiteNote": "No local rendered-pixel capture pass was run this session. Two shipped items change player-facing surfaces (the newly reachable draft reveal modal and the Overview cap-alert banner text), so CANON-053 capture evidence is delegated to the CI Playwright run on this candidate and recorded as an explicit scope call rather than claimed locally."
+    "newTestCount": 13,
+    "coverage": "Local aggregate passed 1,136/1,136 across all five source-bound shards (core 123, runtime 729, sim-contract 79, sim-realism 1, studio 204), up from 1,123/1,123. Exact application candidate CI also passed all Node and browser jobs.",
+    "uiSuiteNote": "Playwright passed 41/41. Responsive evidence generated 233 captures and retained 84 dark/light desktop/mobile receipts; manual inspection found and fixed the shared player-column offset before recapture."
   },
-  "testsPassing": 1123,
-  "testsTotal": 1123,
+  "testsPassing": 1136,
+  "testsTotal": 1136,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -78,23 +77,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 991,
+  "silScore": 992,
   "silCategoriesV3": {
     "devHealth": 100,
-    "creativeAlignment": 99,
+    "creativeAlignment": 100,
     "momentum": 100,
-    "engagement": 99,
-    "processQuality": 96,
+    "engagement": 100,
+    "processQuality": 95,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
-    "ecosystemIntegration": 98,
+    "ecosystemIntegration": 99,
     "capitalEfficiency": 100,
-    "automationCoverage": 100
+    "automationCoverage": 99
   },
-  "currentSession": 86,
+  "currentSession": 87,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "Session 85 exact candidate fcf16f109cf4da44b43eb14b61a977f6fa23e29d passed CI run 31769309459, stable staging 14/14, Pages promotion 31769909692, backend deployment 31769913974, Playwright 41/41, 68 retained rendered captures and current route-specific Web Vitals. Staging and production report artifact 3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad. Technical currency is green; public launch is no-go, and the literal last-five-workflows history gate remains red because the superseded prior candidate failed.",
+  "lastVerification": "Session 87 application candidate 90f0d4871828fc10df7b0933f636793db2697446 passed CI run 31974642042, stable staging 14/14, Pages promotion 31975274458, local Node 1,136/1,136, Playwright 41/41 and 84 retained rendered receipts. Staging and production report artifact 9bc71a36579a03f2b566ff3e2f0b512a9677b19f8f26b73ea8471c9b31212a59; public backend health reports database ready at the same SHA. Final closeout publication and corrected backend workflow rerun remain the last technical convergence step; public launch remains no-go.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -123,13 +122,13 @@
   "silHealth": 811,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 3,
     "total": 12,
-    "failing": 0,
-    "score": 83,
+    "failing": 3,
+    "score": 67,
     "date": "2026-08-16",
-    "passing": 10,
-    "warning": 2,
+    "passing": 8,
+    "warning": 1,
     "checks": [
       {
         "id": "lifecycle-authoritative-registry",
@@ -138,23 +137,35 @@
         "detail": "registry SPARKED · local contract FORGE"
       },
       {
-        "id": "release-authority-git-head-covered-by-publication",
-        "status": "warning",
-        "blocking": false,
-        "detail": "HEAD 1a104055545784ab670f1d12cd446548f50b5f84 is not covered by live production 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9"
+        "id": "release-authority-checked-staging-current",
+        "status": "failing",
+        "blocking": true,
+        "detail": "checked 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live 90f0d4871828fc10df7b0933f636793db2697446"
+      },
+      {
+        "id": "release-authority-checked-publication-current",
+        "status": "failing",
+        "blocking": true,
+        "detail": "checked 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live 90f0d4871828fc10df7b0933f636793db2697446"
+      },
+      {
+        "id": "release-authority-release-source-current",
+        "status": "failing",
+        "blocking": true,
+        "detail": "release source 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live staging 90f0d4871828fc10df7b0933f636793db2697446"
       }
     ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-08-09",
-  "lastVerificationAt": "2026-08-14",
+  "lastVerificationAt": "2026-08-16",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.015,
   "entropyLastComputed": "2026-08-14",
-  "lastSessionSummary": "Session 86 repaired the game core decision loop after the first audit to execute the engine rather than read it. All four weekly tactics were provable no-ops, the on-the-clock Draft button threw before issuing the pick, and the declared aging curve arrived roughly fivefold diluted; all three are fixed with fixed-seed regressions that fail against the old behaviour. Playoff appearances, cap-alert contract truth, owner-confidence snapshot parity, postseason payload size and client simulation-job exclusivity also shipped. Canonical Node receipt is 1,123/1,123. Public launch remains HOLD and launchReady stays false.",
+  "lastSessionSummary": "Session 87 unified the salary market so cap pressure binds, corrected live narrative/fan/stat adapters, restored waiver identity and mounted Franchise Legends plus General Manager Reputation. Local proof is 1,136/1,136 Node, 41/41 Playwright and 84 inspected responsive receipts. Candidate 90f0d487 is live across staging, production and backend; final closeout convergence includes an idempotent shared-Caddy deploy fix. Public launch remains HOLD and launchReady stays false.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -175,8 +186,8 @@
       "lastChecked": "2026-08-14"
     }
   ],
-  "lastSession": 85,
-  "silLastSession": "85",
+  "lastSession": 87,
+  "silLastSession": "87",
   "bootAmortization": {
     "ratio": 1.29,
     "verdict": "wasted",
@@ -210,9 +221,9 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
-    "workflowRun": 31769913974,
-    "deployServer": "success",
+    "sourceRevision": "90f0d4871828fc10df7b0933f636793db2697446",
+    "workflowRun": 31975272741,
+    "deployServer": "live-exact-workflow-postdeploy-reload-failed",
     "externalHealth": {
       "ok": true,
       "database": "ready",
@@ -220,7 +231,7 @@
       "healthCache": "no-store",
       "snapshotCache": "public, max-age=30, s-maxage=60, stale-while-revalidate=300"
     },
-    "verifiedAt": "2026-08-14"
+    "verifiedAt": "2026-08-16"
   },
   "releaseEvidence": {
     "schemaVersion": "1.1",

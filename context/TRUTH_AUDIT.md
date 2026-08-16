@@ -641,3 +641,14 @@ SHA-bound founder approval or authoritative lifecycle reconciliation.
 - **Backend truth:** run 31769913974 built/deployed both images and attested the server; public `/community/v1/health` reports HTTP 200, database ready, no-store, and exact `fcf16f1…`.
 - **Launch truth:** technical release evidence is verified, but public launch is not. Email delivery/reply-as, founder approval, lifecycle authority, and external Obelisk relying-party proof remain unresolved; `launchReady:false` is correct.
 - **Cost/security truth:** no paid service or new dependency was added. Exact package candidates were trust-checked, staged secret scans report zero findings, and deployment uses existing cost-neutral/static plus self-hosted infrastructure.
+
+## 2026-08-16 — Session 87 binding pressure and deployment authority
+
+- **Economy truth:** generated contracts, free-agency offers and CPU bids share one versioned salary curve; cap pressure is measured from real generated leagues rather than inferred from constants.
+- **Runtime truth:** narrative events read live chemistry/owner state, long-play values use max semantics, fan sentiment reads the live season, and waiver projections retain player identity.
+- **Browser truth:** Franchise Legends and General Manager Reputation are mounted. 233 responsive captures passed and 84 retained dark/light desktop/mobile states were inspected; the observed OVR/name column defect was fixed and recaptured.
+- **Test truth:** canonical local Node passes 1,136/1,136 and Playwright passes 41/41; exact application candidate CI is green.
+- **Static deployment truth:** stable staging and production serve candidate `90f0d4871828fc10df7b0933f636793db2697446` with artifact `9bc71a36579a03f2b566ff3e2f0b512a9677b19f8f26b73ea8471c9b31212a59`.
+- **Backend truth:** the public Community API reports HTTP 200, database ready and exact candidate `90f0d487…`. The first server workflow failed only after the healthy container was live, during an unconditional unchanged Caddy reload; the workflow is corrected to skip that no-op.
+- **Security/cost truth:** strict public sanitization and dependency incident scans are clean; no new package, secret custody, paid service or variable-cost model was introduced.
+- **Launch truth:** public launch remains HOLD. Technical deployment does not clear Zoho delivery/reply-as, SHA-bound founder launch approval, lifecycle reconciliation or external Obelisk relying-party proof.

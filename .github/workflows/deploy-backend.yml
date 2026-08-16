@@ -132,9 +132,14 @@ jobs:
             trap 'docker logout ghcr.io >/dev/null 2>&1 || true' EXIT
             docker compose --env-file .env -f ops/deploy-backend.docker-compose.yml pull
             docker compose --env-file .env -f ops/deploy-backend.docker-compose.yml up -d
-            install -m 0644 ops/Caddyfile /etc/caddy/conf.d/franchise-architect-football.caddy
-            caddy validate --config /etc/caddy/Caddyfile
-            systemctl reload caddy
+            CADDY_FRAGMENT=/etc/caddy/conf.d/franchise-architect-football.caddy
+            if cmp -s ops/Caddyfile "$CADDY_FRAGMENT"; then
+              echo "Caddy route unchanged; reload not required."
+            else
+              install -m 0644 ops/Caddyfile "$CADDY_FRAGMENT"
+              caddy validate --config /etc/caddy/Caddyfile
+              systemctl reload caddy
+            fi
             HEALTH_JSON="$(curl --fail --silent --show-error --retry 15 --retry-delay 2 http://127.0.0.1:8082/community/v1/health)"
             printf '%s\n' "$HEALTH_JSON"
             printf '%s' "$HEALTH_JSON" | grep -F "\"sourceRevision\":\"$DEPLOY_SHA\"" >/dev/null

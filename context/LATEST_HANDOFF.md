@@ -1,3 +1,41 @@
+# Session 87 Closeout — Binding Franchise Pressure and Live-Surface Truth
+
+## Session Intent — S88
+
+Observe real consenting community evidence without manufacturing activity. Preserve the public-launch HOLD until Zoho receive/reply-as, SHA-bound founder launch approval, authoritative lifecycle reconciliation, and external Obelisk relying-party proof exist.
+
+## Where We Left Off (Session 87)
+
+- All six S87 audit items shipped. The salary market is one versioned curve across opening contracts, free agency and CPU bidding; generated leagues now begin with meaningful cap pressure and the configured $45M ceiling is reachable.
+- Narrative events consume live chemistry/owner state, long-play stats retain maxima, fan sentiment reads the live season record, waiver rows retain player identity, and Franchise Legends plus General Manager Reputation are mounted.
+- Canonical local proof is 1,136/1,136 Node and 41/41 Playwright. Responsive evidence produced 233 captures; 84 dark/light desktop/mobile receipts were retained and manually inspected. Pixel review found and fixed the waiver/roster decorator offset before release.
+- Application candidate `90f0d4871828fc10df7b0933f636793db2697446` passed exact-SHA CI, stable staging and production Pages promotion at artifact `9bc71a36579a03f2b566ff3e2f0b512a9677b19f8f26b73ea8471c9b31212a59`; public backend health reports that revision and database ready.
+- The backend run exposed an idempotency defect after the container was already live: it reloaded shared Caddy even when its route fragment was unchanged. The workflow now compares the fragment first and reloads only on a real configuration delta.
+- Public launch remains HOLD. Technical deployment authorization did not clear email, founder launch approval, lifecycle, or external identity gates.
+
+## Decisions That Must Survive (S87)
+
+- Salary value is a versioned domain authority. Opening contracts, player offers and CPU bids must not carry independent curves.
+- Rendered evidence is not complete until the pixels are inspected; geometric capture success missed a real column-offset defect.
+- Shared-host deployment must be idempotent. Never reload the shared proxy for an unchanged project fragment.
+- Deployment authority and public-launch authority remain separate receipts.
+
+## Next Best Work
+
+- Observe the first real opted-in Community Stats cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
+- Evaluate historical sparklines/shareable aggregate cards only after real cohort evidence proves value without weakening privacy.
+- Complete Zoho delivery/reply-as proof, obtain SHA-bound founder launch approval, reconcile registry SPARKED versus local FORGE, and finish external Obelisk relying-party registration before exposing account flows.
+
+## Key Files
+
+- `src/domain/contracts.js`, `src/engine/offseasonSimulator.js`, `src/engine/narrativeEvents.js`
+- `src/engine/fanSentiment.js`, `src/engine/gameSimulator.js`, `src/runtime/GameSession.js`
+- `public/game.html`, `public/lib/tabOverview.js`, `public/lib/tabRoster.js`
+- `test/session87-franchise-truth.test.js`, `docs/AUDIT_2026-08-16_SESSION87.*`
+- `.github/workflows/deploy-backend.yml`, `docs/visual-qa/LATEST.json`
+
+---
+
 # Session 86 Closeout — Core-Loop Truth: The Weekly Tactic, The Draft Pick and The Aging Curve
 
 ## Session Intent — S87

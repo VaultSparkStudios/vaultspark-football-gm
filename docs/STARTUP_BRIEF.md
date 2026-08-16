@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-16 (Session 86 closeout) -->
+<!-- generated-at: 2026-08-16 (Session 87 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
-<!-- session-authority: committed=S86 · SIL=S86 · status=S86 · handoff=S86; divergent=false -->
+<!-- session-authority: committed=S87 · SIL=S87 · status=S87 · handoff=S87; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 86 closeout · 2026-08-16.
+> **Fast-boot brief** — generated at Session 87 closeout · 2026-08-16.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 87 · 2026-08-16 · BUILDER MODE                          ║
+║  Session 88 · 2026-08-16 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ STALE LAST SESSION SUMMARY ══════════════════════════════════╗
-║  Expected S86; PROJECT_STATUS summary says S?.                   ║
+║  Expected S87; PROJECT_STATUS summary says S?.                   ║
 ║  Session 86 repaired the game core decision loop after the firs  ║
 ║  Repair: update PROJECT_STATUS.lastSessionSummary at closeout.   ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -34,15 +34,15 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 2d · refresh required              ║
+║  Profile · game · live-beta · arch=— · top-axis=—                ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    983/1000   ███████████████████████░   98%                     ║
-║    SIL v3.0  ·  Avg3: 985.3  ·  Velocity 0→                      ║
+║    992/1000   ███████████████████████░   99%                     ║
+║    SIL v3.0  ·  Avg3: 988.7  ·  Velocity 0→                      ║
 ║    Active 15201d · closeout 0d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
@@ -61,20 +61,20 @@
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 86 ════════════════════════════╗
+╔══ WHERE WE LEFT OFF  ·  Session 87 ════════════════════════════╗
 ║  Shipped:  Session 86 repaired the game core decision loop afte  ║
-║  Tests:    1135/1135 passing  ·  Deploy: N/A                     ║
+║  Tests:    1136/1136 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     25,758 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~12,879 tok/turn  ·  cache 50%  ·  69 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
+║     40,770 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~20,385 tok/turn  ·  cache 50%  ·  43 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1135/1135 passing (2026-08-16) · STALE — run   ║
+║  ✓  Tests         1136/1136 passing (2026-08-16)                 ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -88,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        10/12 (83%)  ·  2 warn                         ║
+║  ⛔  Doctor        8/12 (67%)  ·  3 failing                       ║
 ║  ✓  Cost          Max flat-rate · $2.46/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -121,5 +121,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 86 closeout · 2026-08-16*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 87 closeout · 2026-08-16*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

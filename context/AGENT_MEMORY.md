@@ -1,5 +1,12 @@
 # Agent Memory
 
+## Session 87 durable patterns
+
+- A salary market is one versioned domain authority. Generated contracts, player offers and CPU bidding must share it or cap pressure becomes cosmetic.
+- A rendered capture passing geometry is not visual proof. Inspect the pixels; S87 found a live column decorator replacing overall with player name despite green capture output.
+- Shared-host deployment must compare the installed project fragment before reloading the shared proxy. An unchanged fragment is a no-op, not a reload event.
+- Backend health revision, static artifact identity and public-launch authority are independent receipts; report each explicitly.
+
 ## Session 80 durable patterns
 
 - A decision card must carry an exact target ID, not merely a tab. Route every desktop/mobile/chapter handoff through one activate → hydrate → scroll → focus authority and keep missing targets diagnosable.

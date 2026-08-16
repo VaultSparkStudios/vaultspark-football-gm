@@ -1392,3 +1392,24 @@ Committed SIL follow-ups:
 - [SIL] An irreversible button needs an exact-object review boundary, not merely stronger warning prose.
 - [SIL] Release identity is deployable SHA plus artifact; publication commits require a proven receipt-only lineage, never an informal exception.
 - [SIL] Preserve diagnostic reds on adjacent routes even when the canonical release route passes.
+
+## 2026-08-16 — Session 87
+
+SIL v3.0: **992 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 95, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 99, Capital Efficiency 100, Automation Coverage 99).
+
+- Dev Health 100 — canonical local Node 1,136/1,136, Playwright 41/41 and exact-SHA CI are green.
+- Creative Alignment 100 — cap pressure, roster identity and career legacy now reinforce the General Manager fantasy through live state.
+- Momentum 100 — all six ranked items shipped and the audit/implementation queues are exhausted.
+- Engagement 100 — salary decisions now carry visible constraint while legends and reputation preserve long-horizon payoff.
+- Process Quality 95 — executable audit and pixel inspection found defects code/geometry review missed; five points are withheld because the first server workflow ended red after a needless shared-proxy reload and the broad secret scanner resolved the wrong repository before the project-scoped gate was used.
+- Cross-Repo Coherence 99 — canonical Studio tools were consumed and project changes stayed local; one point remains withheld for registry SPARKED/local FORGE drift.
+- Security Posture 100 — strict public-repo sanitization and supply-chain scans are clean; no dependency or credential custody changed.
+- Ecosystem Integration 99 — audit, plan, board, visual receipt, handoff, decisions and live deployment agree; one point remains withheld for external lifecycle authority.
+- Capital Efficiency 100 — gameplay changes remain deterministic and static-host-safe; existing shared infrastructure carries the backend.
+- Automation Coverage 99 — every ranked behavior has focused coverage and the deployment idempotency seam is explicit; one point is withheld pending the final workflow rerun.
+
+Committed SIL follow-ups:
+- [SIL] Every economic value path must consume one versioned market authority.
+- [SIL] A visual receipt closes only after pixel inspection, not capture geometry.
+- [SIL] Shared-host deploys compare project fragments before reloading shared infrastructure.
+- [SIL] Repository-scoped security tools must prove which root they scanned.

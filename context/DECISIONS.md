@@ -1127,3 +1127,17 @@ Doctor compares Git HEAD, checked staging/release/publication identities, and li
 
 **D-S85.4 — An opaque boot overlay does not excuse layout shift beneath it.**
 The hydrating game shell remains non-painted until the stable Opening Contract modal mounts; modal entry focuses with `preventScroll`. A browser regression measures CLS and scroll directly. *Why:* Core Web Vitals observe layout work behind overlays, and focus-induced scrolling can turn otherwise correct modal lifecycle into a severe first-run shift.
+
+## Session 87 — 2026-08-16
+
+**D-S87.1 — Salary value is one versioned market authority.**
+Generated opening contracts, player offers and CPU bids consume the same OVR/POT/age curve and bounded salary range. *Why:* independent curves made the salary cap cosmetic and allowed one market surface to contradict another.
+
+**D-S87.2 — Rendered evidence requires human pixel inspection after capture success.**
+Geometry, visibility and file-output checks remain necessary but insufficient; touched states are inspected in both themes and target viewports before the receipt closes. *Why:* the S87 harness captured a waiver row successfully while a shared decorator visibly replaced OVR with the player name.
+
+**D-S87.3 — Shared-host project configuration is idempotent.**
+The backend deploy compares its Caddy fragment with the installed fragment and reloads the shared service only when bytes changed. *Why:* an unchanged fragment cannot justify shared-service disruption, and the application container can be healthy even when a needless reload fails afterward.
+
+**D-S87.4 — Technical deployment does not imply public launch.**
+Exact staging, production and backend proof can be green while `launchReady:false` remains correct. *Why:* Zoho delivery/reply-as, SHA-bound founder launch approval, lifecycle authority and external identity proof are independent gates.

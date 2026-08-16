@@ -4,7 +4,6 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Now
 
-- [ ] Calibrate the franchise economy so the salary cap actually binds: all 32 teams currently start with $92M-$112M of space against a $255M cap and `maxSalary` is unreachable, so cap management — the signature franchise-sim tension — costs the player nothing. Verified by measurement in S86 and deliberately deferred as design work.
 - [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
 - [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
 
@@ -12,6 +11,23 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+
+## Session 87 — Full arc: binding franchise pressure and live-surface truth (2026-08-16)
+
+Source: `docs/AUDIT_2026-08-16_SESSION87.json`.
+
+| Item | Status |
+|------|--------|
+| salary-market-curve — one versioned curve across generated contracts, free agency and CPU bids, with opening cap pressure and a reachable $45M ceiling | ✅ Done |
+| narrative-live-adapters — culture and owner events consume live chemistry and owner state | ✅ Done |
+| longest-play-max-semantics — long passing/rushing/receiving values cannot shrink later in a game | ✅ Done |
+| fan-sentiment-season-fallback — win-band evaluation reads the live team season when no explicit record is supplied | ✅ Done |
+| missing-career-mounts — Franchise Legends and General Manager Reputation are reachable in the browser | ✅ Done |
+| waiver-player-identity — waiver projections and tables retain name, position, overall and potential | ✅ Done |
+
+**Verification:** canonical local Node aggregate 1,136/1,136 (core 123, runtime 729, sim-contract 79, sim-realism 1, studio 204); Playwright 41/41; responsive evidence 233/233; 84 retained dark/light desktop/mobile captures; Pages build/smoke/module/boot checks green. Exact application candidate `90f0d487…` passed CI, stable staging and production Pages promotion at artifact `9bc71a36…`; public backend health reports the same revision and database ready.
+
+**Launch posture:** unchanged. Technical deployment is not public-launch approval; preserve `launchReady:false` until Zoho delivery/reply-as, SHA-bound founder launch approval, authoritative lifecycle reconciliation, and external Obelisk relying-party proof exist.
 
 ## Session 86 — Full arc: core-loop truth — the weekly tactic, the draft pick and the aging curve (2026-08-16)
 
