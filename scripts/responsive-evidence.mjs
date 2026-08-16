@@ -25,6 +25,7 @@ const evidenceThemes = ["dark", "light"];
 const evidenceTabs = [
   ["overviewTab", "overview"],
   ["rosterTab", "roster"],
+  ["faTab", "free-agency"],
   ["contractsTab", "contracts"],
   ["scoutingTab", "scouting"],
   ["draftTab", "draft"],
@@ -146,6 +147,8 @@ async function inspectSurface(page, selectors) {
 }
 
 async function capture(page, outputDir, name, selectors, records) {
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(50);
   const audit = await inspectSurface(page, selectors);
   const file = `${name}.png`;
   await page.screenshot({ path: path.join(outputDir, file), fullPage: true });
@@ -355,10 +358,35 @@ async function main() {
             });
             await captureElement(page, outputDir, `${viewport.name}-draft-market-${theme}`, ".on-clock-market", records);
           }
+          if (tabId === "faTab") {
+            await page.evaluate(async () => {
+              const [{ state }, rosterUi] = await Promise.all([
+                import("./lib/appState.js"),
+                import("./lib/tabRoster.js")
+              ]);
+              const player = state.freeAgents?.[0] || state.roster?.[0];
+              if (!player) throw new Error("Waiver visual evidence requires a player authority");
+              state.dashboard.waiverWire = [{
+                id: player.id,
+                playerId: player.id,
+                player: player.name,
+                pos: player.pos,
+                overall: player.overall,
+                releasedBy: "MIA",
+                year: state.dashboard.currentYear,
+                week: state.dashboard.currentWeek,
+                expiresWeek: Number(state.dashboard.currentWeek || 0) + 1
+              }];
+              rosterUi.renderFreeAgency();
+            });
+          }
           const selectors = tabId === "overviewTab"
             ? ["#advanceWeekBtn", "#advance4WeeksBtn", "#advanceSeasonBtn", "#themeToggleBtn", "#gmPersonaTier"]
             : ["#themeToggleBtn"];
           await capture(page, outputDir, `${viewport.name}-game-${label}-${theme}`, selectors, records);
+          if (tabId === "overviewTab") {
+            await captureElement(page, outputDir, `${viewport.name}-cap-pressure-${theme}`, ".overview-summary-cards", records);
+          }
           if (tabId === "overviewTab" && viewport.name !== "mobile") {
             await captureElement(page, outputDir, viewport.name + "-architect-objective-" + theme, "[data-blueprint-target-id='franchiseArchitecture']", records);
           }
@@ -381,6 +409,9 @@ async function main() {
           if (tabId === "rosterTab") {
             await captureElement(page, outputDir, `${viewport.name}-roster-window-${theme}`, "#rosterWindowTable", records);
             await captureElement(page, outputDir, `${viewport.name}-mentorship-${theme}`, "#mentorshipPanel", records);
+          }
+          if (tabId === "faTab") {
+            await captureElement(page, outputDir, `${viewport.name}-waiver-identity-${theme}`, "#waiverTable", records);
           }
           if (tabId === "contractsTab") {
             const agentButton = page.locator("#negotiationTable [data-agent-player-id]").first();
@@ -408,7 +439,24 @@ async function main() {
           if (tabId === "historyTab") {
             await page.locator(`[data-history-view="hall-of-fame"]`).click();
             await page.waitForFunction(() => !document.getElementById("historyHallOfFamePanel")?.classList.contains("hidden"));
+            await page.evaluate(async () => {
+              const [{ state }, historyUi] = await Promise.all([
+                import("./lib/appState.js"),
+                import("./lib/tabHistory.js")
+              ]);
+              state.dashboard.franchiseLore = [{
+                playerId: "visual-legend",
+                playerName: "Avery Stone",
+                position: "QB",
+                year: 2034,
+                teamId: state.dashboard.controlledTeamId || "BUF",
+                blurb: "A defining architect of the franchise era, remembered from live dynasty authority."
+              }];
+              historyUi.renderRecordsAndHistory();
+              historyUi.setHistoryView("hall-of-fame");
+            });
             await captureElement(page, outputDir, `${viewport.name}-hall-ballot-${theme}`, "#hallOfFameBallotTable", records);
+            await captureElement(page, outputDir, `${viewport.name}-franchise-legends-${theme}`, "#franchiseLegendsContainer", records);
             await page.locator(`[data-history-view="decision-archive"]`).click();
             await page.waitForFunction(() => !document.getElementById("historyDecisionArchivePanel")?.classList.contains("hidden"));
             await captureElement(page, outputDir, `${viewport.name}-decision-archive-${theme}`, "#historyDecisionArchivePanel", records);
@@ -542,6 +590,7 @@ async function main() {
             userActionRequired: true
           }
         };
+        overview.renderGmReputation({ labels: ["Cap Architect", "Locker-Room Steward"] });
         overview.renderFranchiseCommandCenter();
         overview.renderFranchiseArchitecture();
         const review = document.querySelector("details.architecture-review");
@@ -661,6 +710,7 @@ async function main() {
     ...(viewport.name === "mobile" ? evidenceThemes.map((theme) => `${viewport.name}-game-loop-${theme}`) : []),
     ...evidenceThemes.map((theme) => `${viewport.name}-return-digest-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-gm-persona-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-cap-pressure-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-trophy-road-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-sim-watch-reel-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-progression-receipt-${theme}`),
@@ -670,9 +720,11 @@ async function main() {
     ...evidenceThemes.map((theme) => `${viewport.name}-guide-modal-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-rival-coaching-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-roster-window-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-waiver-identity-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-mentorship-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-draft-market-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-hall-ballot-${theme}`),
+    ...evidenceThemes.map((theme) => `${viewport.name}-franchise-legends-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-decision-archive-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-co-gm-brief-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-architect-signature-${theme}`),

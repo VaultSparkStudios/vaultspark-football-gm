@@ -116,7 +116,14 @@ test("the market resolves multi-bid competition and the loser gets an outbid rec
 test("weekly advance runs the market: pending offers resolve without waiting for the offseason", () => {
   const session = createSession({ seed: 620094, startYear: 2026, controlledTeamId: "BUF", mode: "stat" });
   const fa = ensurePremiumFa(session, 80);
-  const offer = session.submitFreeAgencyOffer({ teamId: "BUF", playerId: fa.id, years: 3, salary: 18_000_000 });
+  const capSpace = session.getTeamCapSummary("BUF").capSpace;
+  const affordableSalary = Math.max(850_000, Math.min(18_000_000, Math.floor(capSpace * 0.9)));
+  const offer = session.submitFreeAgencyOffer({
+    teamId: "BUF",
+    playerId: fa.id,
+    years: 3,
+    salary: affordableSalary
+  });
   assert.equal(offer.ok, true, JSON.stringify(offer));
   session.advanceWeek();
   assert.equal(
@@ -128,7 +135,7 @@ test("weekly advance runs the market: pending offers resolve without waiting for
   const signedNews = (session.league.transactionLog || []).some(
     (tx) => tx.type === "fa-signing" && tx.playerId === fa.id
   );
-  assert.ok(signedNews || fa.teamId !== "FA" || true, "market produced an outcome");
+  assert.ok(signedNews || fa.teamId !== "FA", "market produced an outcome");
 });
 
 test("greedy CPU maintenance never touches the premium tier", () => {

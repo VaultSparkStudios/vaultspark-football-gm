@@ -78,7 +78,7 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 983,
+  "silScore": 991,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 99,
@@ -91,7 +91,7 @@
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 85,
+  "currentSession": 86,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": "Session 85 exact candidate fcf16f109cf4da44b43eb14b61a977f6fa23e29d passed CI run 31769309459, stable staging 14/14, Pages promotion 31769909692, backend deployment 31769913974, Playwright 41/41, 68 retained rendered captures and current route-specific Web Vitals. Staging and production report artifact 3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad. Technical currency is green; public launch is no-go, and the literal last-five-workflows history gate remains red because the superseded prior candidate failed.",
@@ -148,26 +148,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.015,
   "entropyLastComputed": "2026-08-14",
-  "lastSessionSummary": {
-    "session": 85,
-    "shipped": [
-      "route-specific hosted performance verification for the canonical page and direct first-run game shell",
-      "stable first-run Opening Contract paint with zero measured direct-game CLS on desktop and mobile",
-      "explicit production promotion bound to an exact candidate SHA and independently verified staging artifact digest",
-      "live release-currency classification integrated into doctor with receipt-only descendant handling",
-      "bounded jersey-retirement endpoint and client path without full dashboard serialization"
-    ],
-    "tests": "Exact candidate CI run 31769309459 passed all five Node shards; Playwright passed 41/41; local aggregate passed 1,102/1,102 before the final test-only correction and corrected Studio passed 204/204.",
-    "deploy": "Candidate fcf16f109cf4da44b43eb14b61a977f6fa23e29d and artifact 3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad are exact across stable staging, production and the retained visual/performance receipts. Pages run 31769909692 and backend run 31769913974 succeeded. launchReady remains false.",
-    "honestDeferrals": [
-      "Zoho receive plus reply-as-alias proof is missing because the canonical capability lacks the required OAuth and organization values.",
-      "No explicit SHA-bound founder public-launch approval exists.",
-      "Registry SPARKED versus local FORGE/public-unlaunched lifecycle authority remains unreconciled.",
-      "Obelisk relying-party registration and end-to-end PKCE verification await signed Obelisk authority; no local account flow exists.",
-      "The literal last-five-workflows-green history gate remains red because a superseded prior candidate failed even though the final exact candidate is green.",
-      "Observe real opted-in cohorts without manufacturing activity."
-    ]
-  },
+  "lastSessionSummary": "Session 86 repaired the game core decision loop after the first audit to execute the engine rather than read it. All four weekly tactics were provable no-ops, the on-the-clock Draft button threw before issuing the pick, and the declared aging curve arrived roughly fivefold diluted; all three are fixed with fixed-seed regressions that fail against the old behaviour. Playoff appearances, cap-alert contract truth, owner-confidence snapshot parity, postseason payload size and client simulation-job exclusivity also shipped. Canonical Node receipt is 1,123/1,123. Public launch remains HOLD and launchReady stays false.",
   "testingSurfaces": [
     {
       "type": "local",

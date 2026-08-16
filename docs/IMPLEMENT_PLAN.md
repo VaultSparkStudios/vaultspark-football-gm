@@ -1,20 +1,14 @@
-# Implementation Plan — Session 85
+# Implementation Plan — Session 87
 
-Source: `docs/AUDIT_2026-08-13_SESSION85.json` (sole audit truth).
+Source: `docs/AUDIT_2026-08-16_SESSION87.json` (sole audit truth).
 
 ## Efficiency order
 
-1. `first-run-performance-authority` — make route-specific performance evidence reproducible, start the lazy tutorial modules in parallel with dashboard authority, and cover the argument/source contract before touching deployment.
-2. `candidate-bound-production-promotion` — split build-on-push from explicit production mutation, bind promotion to candidate revision plus staging artifact digest, and fail closed on stable-staging drift.
-3. `release-authority-currency-probe` — compare checked-in identities, Git, stable staging and production; integrate the pure classifier into doctor after the promotion contract is fixed.
-4. Exact-candidate proof — commit the implementation candidate locally, deploy that clean SHA to stable staging, run canonical-entry and direct-game performance receipts, capture/inspect dark+light desktop+mobile tutorial pixels, then promote only after all staging evidence is green.
-5. Receipt-only reconciliation — update release/status/write-back truth without changing deployable artifact identity, verify production, and close Session 85 with `launchReady: false`.
+1. `long-stat-max-semantics` + `fan-sentiment-reads-live-record` — repair the two small shared engine authorities first and pin them with direct behavior tests.
+2. `reachable-pressure-narratives` — adapt live culture/owner fields at the narrative boundary and prove the real event-to-decision/commitment path without creating duplicate authority.
+3. `binding-franchise-economy` — add one versioned market-salary authority, route opening rosters and open-market bids through it, and calibrate fixed-seed fresh leagues so the cap is meaningful but legal.
+4. `waiver-player-identity` + `mount-authored-legacy-surfaces` — project player identity at the dashboard boundary, add the two missing semantic mounts, and bind all browser contracts with focused coverage.
+5. Candidate proof — run focused tests, the canonical shard suite, browser tests, build/smoke, and CANON-053 desktop/mobile × dark/light capture/inspection for every touched surface.
+6. Release proof — commit the immutable candidate, require exact-SHA CI, stage and verify it, deploy the backend with server mutation enabled, promote Pages explicitly, and prove static/backend production parity before receipt-only closeout.
 
-L2 is the default rung; item 1 climbs to L3 because the inherited S84 UI change lacks rendered-pixel proof. No production mutation occurs before stable staging proves the exact candidate revision and artifact. External Zoho, Obelisk, lifecycle and founder-approval holds remain explicit; no code substitutes for them.
-
-## Completion — Session 85
-
-- `first-run-performance-authority` — shipped. Route-specific `/` and `/game.html` hosted evidence is reproducible; tutorial modules begin loading in parallel; modal focus never scrolls; the game shell remains non-painted until the Opening Contract mounts. Exact staging medians: canonical desktop 520/16/0.0151 and mobile 516/16/0.0085; direct game desktop 628/56/0 and mobile 780/24/0 (LCP ms / INP ms / CLS).
-- `candidate-bound-production-promotion` — shipped. Ordinary pushes build/test only; manual promotion requires an exact candidate SHA and stable-staging artifact digest. Candidate `fcf16f109cf4da44b43eb14b61a977f6fa23e29d` passed staging 14/14, CI run 31769309459, Pages run 31769909692, backend run 31769913974, and live staging/production/backend parity.
-- `release-authority-currency-probe` — shipped. Doctor compares checked authority, Git, stable staging and production; the final result is current with 6/6 checks and zero currency warnings. The CI fixture now permits independent release warnings without confusing them with lifecycle findings.
-- Public launch remains HOLD: `launchReady:false` on Zoho delivery/reply-as, SHA-bound founder launch approval, lifecycle reconciliation, and the declared external Obelisk relying-party integration target.
+L2 is the default rung. No existing signed contract is repriced; no dependency, variable-cost runtime, local auth, sibling-tree write, or public-launch claim is introduced. Public launch remains HOLD independently from the founder-authorized technical deployment.

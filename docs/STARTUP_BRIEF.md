@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-16 (Session 85 closeout) -->
+<!-- generated-at: 2026-08-16 (Session 86 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
-<!-- session-authority: committed=S85 · SIL=S85 · status=S85 · handoff=S85; divergent=false -->
+<!-- session-authority: committed=S86 · SIL=S86 · status=S86 · handoff=S86; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 85 closeout · 2026-08-16.
+> **Fast-boot brief** — generated at Session 86 closeout · 2026-08-16.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,18 +17,14 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 86 · 2026-08-16 · BUILDER MODE                          ║
+║  Session 87 · 2026-08-16 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S85) · WHAT SHIPPED ═══════════════════════════╗
-║  ✓ route-specific hosted performance verification for the canon  ║
-║  ✓ stable first-run Opening Contract paint with zero measured d  ║
-║  ✓ explicit production promotion bound to an exact candidate SH  ║
-║  ✓ live release-currency classification integrated into doctor   ║
-║  ✓ bounded jersey-retirement endpoint and client path without f  ║
-║  Tests  Exact candidate CI run 31769309459 passed all five Node  ║
-║  Deploy Candidate fcf16f109cf4da44b43eb14b61a977f6fa23e29d and   ║
+╔══ STALE LAST SESSION SUMMARY ══════════════════════════════════╗
+║  Expected S86; PROJECT_STATUS summary says S?.                   ║
+║  Session 86 repaired the game core decision loop after the firs  ║
+║  Repair: update PROJECT_STATUS.lastSessionSummary at closeout.   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -45,9 +41,9 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    991/1000   ███████████████████████░   99%                     ║
-║    SIL v3.0  ·  Avg3: 989.7  ·  Velocity 0→                      ║
-║    Active 15201d · closeout 2d · source: newest SIL/status/hand  ║
+║    983/1000   ███████████████████████░   98%                     ║
+║    SIL v3.0  ·  Avg3: 985.3  ·  Velocity 0→                      ║
+║    Active 15201d · closeout 0d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -65,20 +61,20 @@
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 85 ════════════════════════════╗
-║  Shipped:  Session 85 technical release is exact and verified:   ║
-║  Tests:    1102/1102 passing  ·  Deploy: N/A                     ║
+╔══ WHERE WE LEFT OFF  ·  Session 86 ════════════════════════════╗
+║  Shipped:  Session 86 repaired the game core decision loop afte  ║
+║  Tests:    1123/1123 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,759 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,380 tok/turn  ·  cache 50%  ·  131 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
+║     15,249 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~7,625 tok/turn  ·  cache 50%  ·  118 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1102/1102 passing (2026-08-16) · STALE — run   ║
+║  ⚠  Tests         1123/1123 passing (2026-08-16) · STALE — run   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -116,14 +112,28 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-16_SESSION86.md       ║
-║  Closed: 8 · Open: 0                                             ║
-║  Latest audit has no open ranked items; run /audit for a new li  ║
+║  ✓ cache source: AUDIT_2026-08-16_SESSION87.md                   ║
+║                                                                  ║
+║  #1 · FIRE · binding-franchise-economy                           ║
+║  binding-franchise-economy — L1 plus a versioned exported marke  ║
+║                                                                  ║
+║  #2 · FIRE · reachable-pressure-narratives                       ║
+║  reachable-pressure-narratives — L1 plus explicit source adapte  ║
+║                                                                  ║
+║  #3 · HIGH · fan-sentiment-reads-live-record                     ║
+║  fan-sentiment-reads-live-record — L1 plus explicit record-sour  ║
+║                                                                  ║
+║  #4 · HIGH · long-stat-max-semantics                             ║
+║  long-stat-max-semantics — L1 plus direct accumulator coverage   ║
+║                                                                  ║
+║  #5 · HIGH · mount-authored-legacy-surfaces                      ║
+║  mount-authored-legacy-surfaces — L1 plus accessible labels, DO  ║
+║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 85 closeout · 2026-08-16*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 86 closeout · 2026-08-16*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

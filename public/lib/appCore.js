@@ -1243,7 +1243,8 @@ export function setBoxScoreTab(panelId = "boxScoreStatsPanel") {
 export function decoratePlayerColumnFromRows(tableId, rows, { nameKey = "player", idKeys = ["playerId", "id"] } = {}) {
   if (!rows?.length) return;
   const columns = Object.keys(rows[0]);
-  const nameIndex = columns.indexOf(nameKey);
+  const visibleColumns = columns.filter((column) => !shouldHideInternalColumn(column));
+  const nameIndex = visibleColumns.indexOf(nameKey);
   if (nameIndex < 0) return;
   const idKey = idKeys.find((key) => columns.includes(key));
   if (!idKey) return;

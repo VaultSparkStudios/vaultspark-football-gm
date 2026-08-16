@@ -3,6 +3,14 @@ import { clamp } from "../utils/rng.js";
 
 const MIN_SALARY = CONTRACT_RULES.minSalary;
 
+export const CONTRACT_MARKET_PROFILE = Object.freeze({
+  version: "2026-s87-scarcity",
+  baselineOverall: 50,
+  cubicCoefficient: 190,
+  eliteThreshold: 88,
+  eliteCoefficient: 130_000
+});
+
 function rounded(value) {
   return Math.max(0, Math.round(value));
 }
@@ -39,6 +47,22 @@ export function normalizeContract(contract = {}) {
   };
 }
 
+export function marketSalaryForOverall(overall, {
+  minSalary = MIN_SALARY,
+  maxSalary = CONTRACT_RULES.maxSalary,
+  variance = 0
+} = {}) {
+  const rating = clamp(Math.round(Number(overall) || 0), 0, 100);
+  const marketSteps = Math.max(0, rating - CONTRACT_MARKET_PROFILE.baselineOverall);
+  const eliteSteps = Math.max(0, rating - CONTRACT_MARKET_PROFILE.eliteThreshold);
+  const marketValue =
+    minSalary +
+    marketSteps ** 3 * CONTRACT_MARKET_PROFILE.cubicCoefficient +
+    eliteSteps ** 2 * CONTRACT_MARKET_PROFILE.eliteCoefficient +
+    Number(variance || 0);
+  return clamp(Math.round(marketValue), minSalary, maxSalary);
+}
+
 export function buildContract({
   overall,
   years,
@@ -50,7 +74,11 @@ export function buildContract({
   const safeYears = clamp(Number(years || rng?.int(1, 4) || 3), 1, CONTRACT_RULES.maxYears);
   const computedSalary =
     salary ??
-    clamp(Math.round(overall * overall * 580 + (rng ? rng.int(-900_000, 1_200_000) : 0)), minSalary, maxSalary);
+    marketSalaryForOverall(overall, {
+      minSalary,
+      maxSalary,
+      variance: rng ? rng.int(-900_000, 1_200_000) : 0
+    });
 
   const signingBonusShare = 0.18 + (rng ? rng.float(0, 0.14) : 0.1);
   const signingBonus = rounded(computedSalary * signingBonusShare);

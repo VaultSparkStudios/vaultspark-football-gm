@@ -138,12 +138,18 @@ export function renderFreeAgency() {
   }
 
   const waiverRows = (state.dashboard?.waiverWire || []).map((entry) => ({
+    id: entry.id || entry.playerId,
     playerId: entry.playerId,
+    player: entry.player || "Unavailable player",
+    pos: entry.pos || "—",
+    ovr: entry.overall ?? "—",
+    pot: entry.potential ?? "—",
     releasedBy: entry.releasedBy,
     week: entry.week,
     expires: entry.expiresWeek
   }));
   renderTable("waiverTable", waiverRows);
+  decoratePlayerColumnFromRows("waiverTable", waiverRows, { idKeys: ["id", "playerId"] });
   decoratePlayerColumnFromRows("faTable", rows, { idKeys: ["id"] });
 }
 

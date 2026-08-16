@@ -217,7 +217,7 @@ function veteranContract(overall, rng) {
     overall,
     years: rng.int(CONTRACT_RULES.minYears, CONTRACT_RULES.maxYears),
     minSalary: 850_000,
-    maxSalary: 20_000_000,
+    maxSalary: 45_000_000,
     rng
   });
 }
@@ -406,4 +406,3 @@ export function runOffseason({
   recalculateAllTeamRatings(league);
   return backstop;
 }
-

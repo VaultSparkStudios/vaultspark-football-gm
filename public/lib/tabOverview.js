@@ -1049,6 +1049,18 @@ export function renderNewsTicker() {
   content.innerHTML = items;
 }
 
+export function renderGmReputation(reputation = state.gmLegacy?.reputation) {
+  const repEl = document.getElementById("gmReputationLabel");
+  if (!repEl) return;
+  if (reputation?.labels?.length && reputation.labels[0] !== "Unestablished") {
+    repEl.textContent = `Market knows you as: ${reputation.labels.join(" · ")}`;
+    repEl.hidden = false;
+  } else {
+    repEl.textContent = "";
+    repEl.hidden = true;
+  }
+}
+
 export async function renderGmLegacyScore() {
   const card = document.getElementById("gmLegacyCard");
   if (!card) return;
@@ -1120,14 +1132,7 @@ export async function renderGmLegacyScore() {
     }
 
     // GM Reputation: market perception label
-    const repEl = document.getElementById("gmReputationLabel");
-    const rep = s.reputation;
-    if (repEl && rep && rep.labels && rep.labels[0] !== "Unestablished") {
-      repEl.textContent = `Market knows you as: ${rep.labels.join(" · ")}`;
-      repEl.hidden = false;
-    } else if (repEl) {
-      repEl.hidden = true;
-    }
+    renderGmReputation(s.reputation);
   } catch (error) {
     card.hidden = true;
     throw error;

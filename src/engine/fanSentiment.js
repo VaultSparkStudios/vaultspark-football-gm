@@ -19,8 +19,8 @@ export function computeFanApproval(team, standings = []) {
   const base = Number(team?.owner?.fanInterest ?? 70);
   // Win% modifier: ±15 points
   const row = standings.find((r) => r.team === (team.abbrev || team.id));
-  const w = row?.wins ?? 0;
-  const l = row?.losses ?? 0;
+  const w = Number(row?.wins ?? team?.season?.wins ?? 0);
+  const l = Number(row?.losses ?? team?.season?.losses ?? 0);
   const gp = w + l;
   const winPct = gp > 0 ? w / gp : 0.5;
   const winMod = Math.round((winPct - 0.5) * 30);

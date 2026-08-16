@@ -129,6 +129,7 @@
                     <span id="gmLegacyLabel" class="small" style="color:var(--muted)"></span>
                     <div id="gmMasteryPortfolio" class="gm-mastery-portfolio" aria-label="Architect mastery portfolio"></div>
                     <div id="gmPersonaTier" class="gm-persona-tier"></div>
+                    <p id="gmReputationLabel" class="small" aria-live="polite" hidden></p>
                   </article>
                 </div>
                 <div id="overviewPulseBar" class="overview-pulse-bar"></div>
@@ -936,6 +937,8 @@
                   <div class="small">Best retired resumes still outside the Hall, ranked against your commissioner threshold.</div>
                   <div class="table-wrap"><table id="hallOfFameBallotTable" data-testid="hall-of-fame-ballot-table"></table></div>
                   <div id="hallOfFameGallery" class="history-gallery"></div>
+                  <h3>Franchise Legends</h3>
+                  <div id="franchiseLegendsContainer" class="history-gallery" aria-live="polite"></div>
                   <div class="row">
                     <label>Team <select id="teamHistorySelect"></select></label>
                     <button id="loadTeamHistoryBtn">Load Team History</button>

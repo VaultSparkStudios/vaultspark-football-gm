@@ -12,13 +12,15 @@ import {
   resolveDepthChartRoomShares
 } from "./depthChartUsage.js";
 
-function mergeObject(target, source) {
+export function mergeGameStatDelta(target, source) {
   for (const [key, value] of Object.entries(source)) {
     if (value && typeof value === "object" && !Array.isArray(value)) {
       if (!target[key]) target[key] = {};
-      mergeObject(target[key], value);
+      mergeGameStatDelta(target[key], value);
     } else if (typeof value === "number") {
-      target[key] = (target[key] || 0) + value;
+      target[key] = key === "long"
+        ? Math.max(target[key] || 0, value)
+        : (target[key] || 0) + value;
     }
   }
   return target;
@@ -27,7 +29,7 @@ function mergeObject(target, source) {
 function addDelta(deltaMap, playerId, delta) {
   if (!deltaMap.has(playerId)) deltaMap.set(playerId, {});
   const current = deltaMap.get(playerId);
-  mergeObject(current, delta);
+  mergeGameStatDelta(current, delta);
 }
 
 function topPlayers(players, position, count) {

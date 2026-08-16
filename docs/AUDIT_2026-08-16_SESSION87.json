@@ -1,0 +1,267 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-16",
+  "session": 87,
+  "agent": "codex-gpt-5",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "planned",
+  "summary": {
+    "combinedPriority": 137.0,
+    "source": "Fresh Session 87 audit of the live main worktree after mandatory Studio OS propagation. The audit began with the six explicitly preserved S86 findings and re-verified every premise against current source. The salary-cap premise was also executed against a fixed-seed 32-team league: cap space ranged from $89,994,526 to $110,932,923, mean $100,924,043, with 0/32 teams below $25M. The other five premises were confirmed by following the actual source-to-runtime-to-browser path rather than trusting renderer or engine declarations.",
+    "qualityBar": "L2 for every item. Every gameplay correction must be observable in the browser and pinned by focused behavior coverage. Salary calibration must be distribution-tested across real generated leagues, keep all fresh teams legal at kickoff, and preserve signed contracts in existing saves. No item may weaken the public-launch HOLD, add variable-cost runtime, add a dependency, or move identity away from Obelisk."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay and app-release-gate: consequential General Manager decisions, simulation truth, mobile/theme parity, static-host safety, exact staging identity, rollback, privacy, and honest independent launch holds",
+    "staging": "stable GitHub/Cloudflare Pages staging must prove the exact immutable candidate before direct-to-main production promotion; public sanitization and CANON-053 rendered-pixel evidence are mandatory",
+    "source": "arc profile, S86 handoff, live canon adoption, current source tree, fixed-seed GameSession probes, DOM-id cross-checks, and current deployment receipts"
+  },
+  "gameLoopReview": {
+    "loopTightness": 6.5,
+    "progression": 6.0,
+    "sessionEngagement": 7.0,
+    "retention": 6.0,
+    "soulFidelity": 7.5,
+    "overall": 6.6,
+    "evidence": "S86 restored the weekly tactic, draft pick, and aging curve, but S87 measured the next load-bearing fiction: the $255M salary cap cannot currently constrain a single opening roster. Two authored pressure systems are unreachable, and four visible evidence surfaces either lose their source or have no mount. No real cohort exists, so retention remains unproven rather than inferred from feature count."
+  },
+  "releaseGate": {
+    "deploymentVerdict": "CONDITIONAL GO after all six items, full verification, exact stable staging, rollback proof, and a fresh app-release-gate pass.",
+    "launchVerdict": "NO-GO. Preserve launchReady false and the public-launch HOLD.",
+    "launchHolds": [
+      "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
+      "authoritative registry/local lifecycle reconciliation",
+      "SHA-bound public-launch approval distinct from this technical deploy authorization",
+      "registered and end-to-end verified external Obelisk relying party before account-bearing flows"
+    ]
+  },
+  "axisCoverage": {
+    "featuresDepth": ["binding-franchise-economy", "reachable-pressure-narratives"],
+    "newInnovativeFeatures": ["versioned-market-scarcity-curve", "narrative-source-adapter", "live-franchise-legend-and-reputation-surfaces"],
+    "uiUx": ["mount-authored-legacy-surfaces", "waiver-player-identity"],
+    "feedbackLoop": ["reachable-pressure-narratives", "fan-sentiment-reads-live-record"],
+    "gamificationEngagementImmersion": ["binding-franchise-economy", "reachable-pressure-narratives", "mount-authored-legacy-surfaces"],
+    "aiIntegration": [],
+    "securityPrivacy": [],
+    "speedOrganizationEfficiency": ["long-stat-max-semantics"],
+    "releaseTruth": ["all gameplay changes source-bound and rendered before candidate promotion"],
+    "tokenApiReduction": []
+  },
+  "recommendedMoves": [
+    "Make scarcity real first: replace the nearly linear contract formula with one versioned market curve whose fixed-seed distribution puts most opening teams inside a meaningful cap-management band without starting any team illegal.",
+    "Repair the consequence chain next: adapt live team chemistry, owner patience/expectation, and season records into the exact shapes consumed by narrative and fan-pressure systems, with end-to-end tests proving the player can actually receive and answer the authored pressure.",
+    "Finish at the evidence boundary: use max semantics for long plays, project player identity onto waivers, and mount the already-authored Franchise Legends and GM Reputation renderers; then inspect every affected surface in both themes and both target viewports."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "new AI coach or paid inference layer",
+      "reason": "Rejected. The game is intentionally zero-backend for its core loop, no AI capability gap blocks these findings, and adding variable-cost inference would violate the free-tier discipline without improving the measured defects."
+    },
+    {
+      "candidate": "security/auth rewrite",
+      "reason": "Rejected for this audit. No new account-bearing flow is being introduced, franchise command authorization is already centralized, and public launch remains held on external Obelisk relying-party proof rather than replaced with local auth."
+    },
+    {
+      "candidate": "raise the salary cap or lower cap-alert thresholds",
+      "reason": "Rejected as force-green. The $255M league rule is the declared authority; the defect is the salary distribution beneath it. Alert thresholds already reveal the problem honestly."
+    },
+    {
+      "candidate": "retroactively rewrite existing signed contracts",
+      "reason": "Rejected. Existing saves keep their negotiated agreements; the versioned market curve applies to newly generated or newly signed contracts and becomes binding through normal contract turnover."
+    },
+    {
+      "candidate": "replace player IDs inside the persistent waiver ledger",
+      "reason": "Rejected. Player IDs are the correct durable authority. The browser-facing dashboard projection should join names/position/overall without duplicating mutable player data in saves."
+    },
+    {
+      "candidate": "launch readiness from technical deployment success",
+      "reason": "Rejected. Technical deploy authorization is independent from Zoho receipt/reply proof, lifecycle authority, founder public-launch approval, and Obelisk relying-party verification."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Franchise economy / decision consequence / simulation realism",
+      "effortHours": 5,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 32.1,
+      "slug": "binding-franchise-economy",
+      "title": "Turn the salary cap from decorative headroom into the core roster-building constraint",
+      "status": "pending",
+      "premise": "The declared salary cap is $255M, but buildContract prices a 99 OVR player at only about 3.2 times a 55 OVR player and initial player generation caps salary at $19.5M. A fixed-seed live league measured all 32 opening teams between $89,994,526 and $110,932,923 of cap space, mean $100,924,043; not one team was within $25M of the cap. Tag, restructure, rollover, cap alerts, contract negotiation and cut decisions therefore exist around a constraint that never binds.",
+      "evidence": [
+        "src/config.js declares salaryCap 255,000,000 and maxSalary 45,000,000",
+        "src/domain/contracts.js computes overall^2 * 580, making the configured maximum unreachable",
+        "src/domain/playerFactory.js further caps every opening contract at 19,500,000",
+        "fixed seed 8701: cap-space min $89,994,526, max $110,932,923, mean $100,924,043, 0/32 below $25M"
+      ],
+      "constraint": "Use a versioned, monotonic market curve; preserve existing signed contracts; keep every fresh opening roster legal; preserve min/max rules and deterministic RNG; expose the pressure through existing cap UI rather than adding backend state.",
+      "verification": [
+        "fixed-seed multi-league test proves a monotonic OVR salary curve with meaningful elite scarcity and reachable configured maximum band",
+        "opening-league distribution proves no team starts over the cap and a strong majority starts within a declared competitive cap-space band",
+        "existing explicit salary offers and persisted contracts remain unchanged",
+        "overview/contract surfaces visibly reflect the corrected cap pressure"
+      ],
+      "ladder": {
+        "L1": {"effortHours": 2, "recipe": "Replace the quadratic default salary with a monotonic cubic-plus-elite curve and remove the opening-roster $19.5M ceiling."},
+        "L2": {"effortHours": 5, "recipe": "L1 plus a versioned exported market-salary authority, fixed-seed multi-league distribution tests, explicit existing-contract preservation, and UI-visible cap-pressure proof."},
+        "L3": {"effortHours": 8, "recipe": "L2 plus position-market multipliers and a player-facing market-comparison receipt, only after the base distribution remains stable across long-run offseason turnover."}
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Narrative engine / General Manager pressure / feedback loop",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 27.1,
+      "slug": "reachable-pressure-narratives",
+      "title": "Adapt live culture and owner authority into narrative events the General Manager can actually answer",
+      "status": "pending",
+      "premise": "checkCultureCrises reads team.worldState.culture.chemistry or team.culture.chemistry, but live teams carry numeric team.chemistry. checkOwnerUltimatums reads hotSeat and owner.mandate, while live ownership authority is patience plus owner.expectation. Both event gates therefore consume shapes the runtime never writes. The authored culture-crisis decision can be unit-tested only by injecting a synthetic event; real play cannot produce it.",
+      "evidence": [
+        "src/engine/narrativeEvents.js reads nested culture chemistry and hotSeat/mandate shapes",
+        "src/runtime/GameSession.js refreshChemistryAndSchemeFit writes team.chemistry and team.owner.expectation",
+        "test/gm-decision-expansion.test.js injects CULTURE_CRISIS directly rather than reaching it through runNarrativeChecks",
+        "the owner ultimatum uses a separate lower-case news record and commitment path, leaving the declared OWNER_ULTIMATUM narrative event unreachable"
+      ],
+      "constraint": "Do not create a second owner authority or duplicate pressure. Add narrow source adapters so narrative checks consume the fields the runtime already owns; dedupe the existing owner commitment/news path.",
+      "verification": [
+        "a live low-chemistry five-loss team can emit CULTURE_CRISIS through runNarrativeChecks and generate the decision",
+        "a live critical owner expectation can emit one OWNER_ULTIMATUM narrative without duplicating the existing commitment or inbox notice",
+        "other teams never pressure the controlled General Manager",
+        "rendered decision pressure is visible in desktop/mobile dark/light evidence"
+      ],
+      "ladder": {
+        "L1": {"effortHours": 1, "recipe": "Read live team.chemistry and owner patience/expectation as fallbacks in narrativeEvents."},
+        "L2": {"effortHours": 3, "recipe": "L1 plus explicit source adapters, owner-event dedupe against the existing ultimatum path, and fixed-seed end-to-end event-to-decision tests."},
+        "L3": {"effortHours": 5, "recipe": "L2 plus an executable narrative reachability matrix that proves every declared narrative archetype has a live source path."}
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Fan pressure / record authority / weekly feedback",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 26.6,
+      "slug": "fan-sentiment-reads-live-record",
+      "title": "Make wins and losses move fan approval instead of leaving the entire win band dead",
+      "status": "pending",
+      "premise": "updateFanSentiment reads league.latestStandings or league.standings, but GameSession builds standingsRows only as a local dashboard projection and writes neither field to league. The engine therefore passes an empty standings array every week; computeFanApproval defaults every team to .500 and the documented +/-15 win modifier never moves.",
+      "evidence": [
+        "src/engine/fanSentiment.js reads league.latestStandings || league.standings || []",
+        "src/runtime/GameSession.js creates standingsRows inside getDashboardState only",
+        "team.season already owns live wins/losses at the update boundary",
+        "the weekly reason can say won/lost while approval itself ignores the record"
+      ],
+      "constraint": "Use team.season as the primary live authority with standings only as a compatible override; preserve owner fan-interest and personality modifiers.",
+      "verification": [
+        "same owner context with 8-2 vs 2-8 records yields correctly ordered approval",
+        "weekly update uses the live team season without requiring a dashboard render",
+        "fan card reason, trend and score stay internally coherent"
+      ],
+      "ladder": {
+        "L1": {"effortHours": 0.5, "recipe": "Fall back to team.season wins/losses inside computeFanApproval."},
+        "L2": {"effortHours": 1.5, "recipe": "L1 plus explicit record-source precedence, end-to-end weekly tests, and browser-visible score/reason coherence."},
+        "L3": {"effortHours": 3, "recipe": "L2 plus bounded expectation bands tied to market/owner context, only with distribution evidence."}
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Stat integrity / box score / season records",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 22.1,
+      "slug": "long-stat-max-semantics",
+      "title": "Record the longest play as a maximum instead of adding every long play in the game",
+      "status": "pending",
+      "premise": "The per-game drive accumulator mergeObject adds every numeric leaf, including passing.long, receiving.long, rushing.long and kicking.long. mergeStats correctly uses max across games, but it receives an already-summed per-game value, producing impossible rows such as a 147-yard longest completion.",
+      "evidence": [
+        "src/engine/gameSimulator.js mergeObject sums all numeric keys",
+        "the simulator emits long: yards on every completion, carry, scramble and made field goal",
+        "src/domain/playerFactory.js mergeStats already recognizes long as max semantics across games",
+        "S86 measured a 147-yard longest completion in live simulation"
+      ],
+      "constraint": "Change only max-valued stat leaves; every counting and yardage stat must remain additive.",
+      "verification": [
+        "multiple plays in one game retain only the maximum long value",
+        "season merge remains maximum across games",
+        "passing/receiving/rushing long cannot exceed the longest source play"
+      ],
+      "ladder": {
+        "L1": {"effortHours": 0.5, "recipe": "Teach the per-game recursive merger that key long uses Math.max."},
+        "L2": {"effortHours": 1.5, "recipe": "L1 plus direct accumulator coverage and a fixed-seed full-game invariant comparing player long stats to play-by-play maxima."},
+        "L3": {"effortHours": 3, "recipe": "L2 plus a schema-level registry for additive, max and replace stat semantics across all categories."}
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "UI/UX / dynasty identity / feedback surfaces",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 4,
+      "priority": 17.7,
+      "slug": "mount-authored-legacy-surfaces",
+      "title": "Mount the Franchise Legends and General Manager Reputation views the renderers already author",
+      "status": "pending",
+      "premise": "tabHistory calls renderFranchiseLegends('franchiseLegendsContainer', ...), and tabOverview writes gmReputationLabel. Neither ID exists in public/game.html, so both renderers silently no-op. The game computes the dynasty identity and market reputation but never lets the player see either.",
+      "evidence": [
+        "public/lib/tabHistory.js calls franchiseLegendsContainer",
+        "public/lib/tabOverview.js calls gmReputationLabel",
+        "repo-wide ID search finds neither mount in public/game.html",
+        "both renderers guard missing nodes and therefore fail silently"
+      ],
+      "constraint": "Place each surface in its existing semantic home, keep accessible headings/live regions, and reuse current visual tokens rather than inventing a parallel card system.",
+      "verification": [
+        "DOM contract test proves both IDs exist exactly once",
+        "renderer test proves non-empty source data becomes visible",
+        "desktop/mobile dark/light screenshots are inspected and hash-bound"
+      ],
+      "ladder": {
+        "L1": {"effortHours": 0.5, "recipe": "Add the two missing semantic mounts to the GM Legacy card and Dynasty Hall view."},
+        "L2": {"effortHours": 1, "recipe": "L1 plus accessible labels, DOM contract coverage, empty-state behavior, and rendered-pixel inspection in both themes/viewports."},
+        "L3": {"effortHours": 2.5, "recipe": "L2 plus cross-linking a legend to the player timeline and reputation to the transaction evidence that earned it."}
+      }
+    },
+    {
+      "rank": 6,
+      "tier": "MEDIUM",
+      "category": "UI/UX / roster action clarity / data projection",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 3,
+      "priority": 11.4,
+      "slug": "waiver-player-identity",
+      "title": "Show who is actually on waivers instead of rendering an opaque player ID",
+      "status": "pending",
+      "premise": "The persistent waiver ledger correctly stores playerId, release team and expiry, but getDashboardState exposes that raw ledger and tabRoster renders only playerId/releasedBy/week/expires. The waiver table has no player name, position or overall, making the roster decision unreadable even though the player authority is already indexed.",
+      "evidence": [
+        "src/runtime/GameSession.js writes playerId-only waiver ledger entries",
+        "getDashboardState exposes this.league.waiverWire without projection",
+        "public/lib/tabRoster.js maps the raw rows without joining player identity",
+        "the same tab already has player-column decoration utilities for real player rows"
+      ],
+      "constraint": "Keep IDs as persistent authority; enrich only the dashboard projection from the indexed player record and preserve old saves with missing players.",
+      "verification": [
+        "dashboard waiver rows include id, player, pos and overall for live players",
+        "orphaned legacy entries degrade to an explicit unavailable label rather than throw",
+        "the browser waiver table renders a clickable/decorated player identity"
+      ],
+      "ladder": {
+        "L1": {"effortHours": 0.5, "recipe": "Join the dashboard waiver projection against getPlayerById and render player/pos/overall."},
+        "L2": {"effortHours": 1, "recipe": "L1 plus orphan-safe projection, player-column decoration, and focused runtime/browser coverage."},
+        "L3": {"effortHours": 2, "recipe": "L2 plus claim-priority and cap-impact context beside each player, derived from existing authority."}
+      }
+    }
+  ]
+}

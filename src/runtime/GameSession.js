@@ -24,6 +24,7 @@ import {
   applyFranchiseTag,
   buildContract,
   computeReleaseDeadCap,
+  marketSalaryForOverall,
   normalizeContract,
   restructureContract
 } from "../domain/contracts.js";
@@ -240,7 +241,7 @@ function veteranContract(overall, rng) {
     overall,
     years: rng.int(1, 4),
     minSalary: 850_000,
-    maxSalary: 20_000_000,
+    maxSalary: 45_000_000,
     rng
   });
 }
@@ -6064,7 +6065,17 @@ export class GameSession {
           pos: player.position,
           suspensionWeeks: player.suspensionWeeks
         })),
-      waiverWire: this.league.waiverWire,
+      waiverWire: (this.league.waiverWire || []).map((entry) => {
+        const player = this.getPlayerById(entry.playerId);
+        return {
+          ...entry,
+          id: entry.playerId,
+          player: player?.name || "Unavailable player",
+          pos: player?.position || "—",
+          overall: Number.isFinite(Number(player?.overall)) ? Number(player.overall) : null,
+          potential: Number.isFinite(Number(player?.potential)) ? Number(player.potential) : null
+        };
+      }),
       leaders: {
         passing: topRows(this.statBook.getPlayerSeasonTable("passing", { year: this.currentYear }), 15),
         rushing: topRows(this.statBook.getPlayerSeasonTable("rushing", { year: this.currentYear }), 15),
@@ -6422,7 +6433,10 @@ export class GameSession {
         (entry.teamId === "FA" || entry.teamId === "WAIVER")
     );
     if (!player) return { ok: false, error: "Player not in free agency pool." };
-    const proposedSalary = Math.max(850_000, Math.round(Number(salary ?? Math.max(1_000_000, player.overall * player.overall * 480))));
+    const proposedSalary = Math.max(
+      850_000,
+      Math.round(Number(salary ?? marketSalaryForOverall(player.overall)))
+    );
     const proposedYears = clamp(Math.round(Number(years || 2)), 1, 5);
     const expectedCap = Math.round(proposedSalary * 0.92);
     if (this.getTeamCapSummary(teamId).capSpace < expectedCap) {
@@ -6518,7 +6532,7 @@ export class GameSession {
       for (const { team, strategy } of bidders.slice(0, 2)) {
         const bidChance = strategy === "contender" ? 0.55 : strategy === "rebuild" ? 0.3 : 0.4;
         if (!this.rng.chance(bidChance)) continue;
-        const baseSalary = Math.max(1_000_000, player.overall * player.overall * 480);
+        const baseSalary = marketSalaryForOverall(player.overall);
         const salary =
           strategy === "contender"
             ? Math.round(baseSalary * 1.08)

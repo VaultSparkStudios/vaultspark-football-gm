@@ -257,7 +257,6 @@ export function createSyntheticPlayer({ teamId, position, year, rng, draft = fal
       overall,
       years: rng.int(CONTRACT_RULES.minYears, CONTRACT_RULES.maxYears),
       minSalary: CONTRACT_RULES.minSalary,
-      maxSalary: 19_500_000,
       rng
     }),
     status: "active",

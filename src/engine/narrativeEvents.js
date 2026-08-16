@@ -20,6 +20,47 @@ import { applyEventFeedback, openThreadForEvent } from "./continuityLedger.js";
 
 const MAX_LOG = 30;
 
+function finiteNumber(...values) {
+  for (const value of values) {
+    const parsed = Number(value);
+    if (Number.isFinite(parsed)) return parsed;
+  }
+  return null;
+}
+
+export function cultureChemistryFor(team) {
+  return finiteNumber(
+    team?.worldState?.culture?.chemistry,
+    team?.culture?.chemistry,
+    team?.chemistry,
+    60
+  );
+}
+
+export function ownerUltimatumContext(team) {
+  const owner = team?.owner || {};
+  const expectation = owner.expectation || {};
+  const ultimatum = expectation.ultimatum || {};
+  const patience = finiteNumber(owner.patience);
+  const derivedHotSeat = ultimatum.active
+    ? 100
+    : patience == null
+      ? 0
+      : Math.round((1 - Math.max(0, Math.min(1, patience))) * 100);
+  return {
+    hotSeat: ultimatum.active
+      ? 100
+      : finiteNumber(team?.worldState?.owner?.hotSeat, owner.hotSeat, derivedHotSeat, 0),
+    targetWins: finiteNumber(
+      team?.worldState?.owner?.mandate?.targetWins,
+      owner.mandate?.targetWins,
+      ultimatum.targetWins,
+      expectation.targetWins,
+      9
+    )
+  };
+}
+
 function pushEvent(league, event) {
   if (!Array.isArray(league.narrativeLog)) league.narrativeLog = [];
   league.narrativeLog.unshift({
@@ -137,7 +178,7 @@ export function checkRivalOffers(league, year, week, rng) {
 
 export function checkCultureCrises(league, year, week, rng) {
   for (const team of league.teams) {
-    const chemistry = team.worldState?.culture?.chemistry || team.culture?.chemistry || 60;
+    const chemistry = cultureChemistryFor(team);
     const streak = team.season?.streak || 0; // negative = losing streak
     if (chemistry >= 38) continue;
     if (streak > -5) continue;
@@ -166,10 +207,8 @@ export function checkCultureCrises(league, year, week, rng) {
 export function checkOwnerUltimatums(league, year, week, rng) {
   if (week < 12) return;
   for (const team of league.teams) {
-    const hotSeat = team.worldState?.owner?.hotSeat || team.owner?.hotSeat || 0;
+    const { hotSeat, targetWins } = ownerUltimatumContext(team);
     if (hotSeat < 80) continue;
-
-    const targetWins = team.worldState?.owner?.mandate?.targetWins || team.owner?.mandate?.targetWins || 9;
     const currentWins = team.season?.wins || 0;
     if (currentWins >= targetWins - 4) continue;
 
