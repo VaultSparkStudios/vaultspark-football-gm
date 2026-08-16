@@ -239,16 +239,16 @@
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "cfe3b7e8fe408f955ab602830cab6275caa6b32e21fc6a6ab6786fb5b0de7ffc",
-    "checkedAt": "2026-08-14T04:41:49.506Z",
+    "receiptSha256": "16077962910ddfe3f19c1dd1d996c417e2f9962ea9f26622922daf6bfe47cf00",
+    "checkedAt": "2026-08-16T08:48:14.503Z",
     "evidenceWindow": {
-      "observedAt": "2026-08-14T04:41:49.506Z",
+      "observedAt": "2026-08-16T08:48:14.503Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-08-15T04:41:49.506Z",
+      "expiresAt": "2026-08-17T08:48:14.503Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
+    "deployedRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
     "routes": {
       "verified": true,
       "checked": 9
@@ -269,7 +269,7 @@
     },
     "exactRevision": {
       "verified": true,
-      "expected": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d"
+      "expected": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9"
     },
     "independentStaging": {
       "verified": true
@@ -286,37 +286,215 @@
       "email-delivery-unverified",
       "founder-approval-unverified",
       "lifecycle-authority-unverified"
-    ]
+    ],
+    "generatedBy": "scripts/launch-evidence-report.mjs",
+    "baseUrl": "https://playfranchisearchitect.com",
+    "summary": {
+      "status": "blocked",
+      "routesOk": true,
+      "emailForwardingVerified": false,
+      "originEvidenceVerified": true,
+      "blocker": "On-domain email forwarding/copying is unverified."
+    },
+    "routeChecks": [
+      {
+        "route": "/",
+        "url": "https://playfranchisearchitect.com/",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 200",
+        "chain": [
+          {
+            "url": "https://playfranchisearchitect.com/",
+            "statusCode": 200
+          }
+        ],
+        "headers": {
+          "content-type": "text/html; charset=utf-8",
+          "server": "cloudflare",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "strict-origin-when-cross-origin"
+        }
+      },
+      {
+        "route": "/game.html",
+        "url": "https://playfranchisearchitect.com/game.html",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 308 → /game → HTTP 200",
+        "chain": [
+          {
+            "url": "https://playfranchisearchitect.com/game.html",
+            "statusCode": 308
+          },
+          {
+            "url": "https://playfranchisearchitect.com/game",
+            "statusCode": 200
+          }
+        ]
+      },
+      {
+        "route": "/contact.html",
+        "url": "https://playfranchisearchitect.com/contact.html",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 308 → /contact → HTTP 200",
+        "chain": [
+          {
+            "url": "https://playfranchisearchitect.com/contact.html",
+            "statusCode": 308
+          },
+          {
+            "url": "https://playfranchisearchitect.com/contact",
+            "statusCode": 200
+          }
+        ]
+      },
+      {
+        "route": "/privacy.html",
+        "url": "https://playfranchisearchitect.com/privacy.html",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 308 → /privacy → HTTP 200",
+        "chain": [
+          {
+            "url": "https://playfranchisearchitect.com/privacy.html",
+            "statusCode": 308
+          },
+          {
+            "url": "https://playfranchisearchitect.com/privacy",
+            "statusCode": 200
+          }
+        ]
+      },
+      {
+        "route": "/terms.html",
+        "url": "https://playfranchisearchitect.com/terms.html",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 308 → /terms → HTTP 200",
+        "chain": [
+          {
+            "url": "https://playfranchisearchitect.com/terms.html",
+            "statusCode": 308
+          },
+          {
+            "url": "https://playfranchisearchitect.com/terms",
+            "statusCode": 200
+          }
+        ]
+      },
+      {
+        "route": "/agents.json",
+        "url": "https://playfranchisearchitect.com/agents.json",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 200",
+        "chain": [
+          {
+            "url": "https://playfranchisearchitect.com/agents.json",
+            "statusCode": 200
+          }
+        ]
+      },
+      {
+        "route": "/.well-known/llms.txt",
+        "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 200",
+        "chain": [
+          {
+            "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+            "statusCode": 200
+          }
+        ]
+      },
+      {
+        "route": "/sitemap.xml",
+        "url": "https://playfranchisearchitect.com/sitemap.xml",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 200",
+        "chain": [
+          {
+            "url": "https://playfranchisearchitect.com/sitemap.xml",
+            "statusCode": 200
+          }
+        ]
+      },
+      {
+        "route": "/_health",
+        "url": "https://playfranchisearchitect.com/_health",
+        "ok": true,
+        "statusCode": 200,
+        "detail": "HTTP 200",
+        "chain": [
+          {
+            "url": "https://playfranchisearchitect.com/_health",
+            "statusCode": 200
+          }
+        ],
+        "headers": {
+          "content-type": "application/octet-stream",
+          "server": "cloudflare",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "strict-origin-when-cross-origin"
+        },
+        "body": "{\n  \"status\": \"ok\",\n  \"service\": \"franchise-architect-football\",\n  \"sourceRevision\": \"9801ac49d95e016c29a28d9c4a8a08ee19e83fc9\",\n  \"artifactFingerprint\": {\n    \"algorithm\": \"sha256\",\n    \"digest\": \"0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672\",\n    \"files\": 193,\n    \"exclusions\": [\n      \"_health\",\n      \"deploy-manifest.json\",\n      \"edge-policy-receipt.json\"\n    ]\n  },\n  \"styleAsset\": \"styles.d14503a8a4.css\",\n  \"communityStatsAsset\": \"community-stats.2eb1a4468e.js\",\n  \"edgePolicyFingerprint\": \"sha256:ac0767fa3aae8cf4a55d0b68e6434ffdc44c903c4ca4a790bf59d6666061ab07\",\n  \"edgePolicyAppliedToHostedOrigin\": false,\n  \"generatedAt\": \"2026-08-16T08:09:31.393Z\",\n  \"launchReady\": false,\n  \"launchNote\": \"Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence.\"\n}\n"
+      }
+    ],
+    "emailForwarding": {
+      "status": "unverified",
+      "address": "football@playfranchisearchitect.com",
+      "detail": "No delivery/forwarding evidence supplied. Do not mark SPARKED from route checks alone."
+    },
+    "originEvidence": {
+      "required": true,
+      "healthReceiptValid": true,
+      "securityHeaders": {
+        "strictTransportSecurity": true,
+        "frameProtection": true,
+        "contentSecurityPolicy": true
+      },
+      "status": "verified"
+    }
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "32d3cc8f3f20f7be1774c24caa1f5da7aa8c518714ac63a06eb0f779618fcbf7",
-    "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
+    "receiptSha256": "5a7ab1b1b20478ec6409dcefaa52167c0b7c9b8b3765d7f3961f27fee71051a5",
+    "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad",
-      "files": 191,
+      "digest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672",
+      "files": 193,
       "exclusions": [
         "_health",
         "deploy-manifest.json",
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "230302f8-a5db-48a3-aa51-0066086eed68",
+    "deploymentId": "dc23f90e-1f93-4a74-9f35-98e2a21e6aab",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-14T04:11:27.162Z"
+      "checkedAt": "2026-08-16T08:07:48.447Z"
     },
     "rollback": {
-      "previousDeploymentId": "c0feeb79-3589-49cd-8f92-e9f532ad6a8f",
+      "previousDeploymentId": "230302f8-a5db-48a3-aa51-0066086eed68",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-14T04:11:27.162Z"
+    "observedAt": "2026-08-16T08:07:48.447Z"
   },
   "lastCloseoutAt": "2026-08-14T04:56:21.468Z",
   "performanceAuthority": {
@@ -357,31 +535,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-08-14T04:43:27.160Z",
+    "observedAt": "2026-08-16T08:45:32.116Z",
     "status": "verified",
-    "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
-    "publicationRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
+    "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
+    "publicationRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad"
+      "digest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
-        "artifactDigest": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad"
+        "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
+        "artifactDigest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672"
       },
       "production": {
-        "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
-        "artifactDigest": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad"
+        "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
+        "artifactDigest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672"
       },
       "visual": {
-        "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
-        "artifactDigest": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad"
+        "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
+        "artifactDigest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672"
       },
       "performance": {
-        "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
-        "artifactDigest": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad"
+        "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
+        "artifactDigest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672"
       }
     },
     "checks": [
@@ -422,17 +600,17 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
-      "verifiedAt": "2026-08-14",
+      "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
+      "verifiedAt": "2026-08-16",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
       "stagingSha256": "cb7121eccba7f864596f1a59d6f8f52291d52268b681d704c9a97e8d3acab50d",
       "productionSha256": "4872931bb3a34addacf1ee18ca45a5eb44728e5981d4b7ce7435e77099228e0e",
-      "visualSha256": "76f0b97fcd051eda06cc63dcf63dc717c958aa61d2d09ff247c191124b3c4450",
-      "performanceSha256": "f547f14a7a67a0e0efc72e84cebb6f87f48ec884ac4f0daa2f414835201d2398"
+      "visualSha256": "b98705214bc2afd762ffab92a1f855ba0e8b9f49ee92f2ba22d05446000e8a0a",
+      "performanceSha256": "0662a9531c3be081af23771f98083f03e1d6bcf8e2f03007d32080e33bc331d5"
     },
-    "receiptSha256": "1ab69cc9244f2992b8e5d16e73e62f3c4b24f2d109549c17e0a1321e2f63aff3"
+    "receiptSha256": "17fd56a5ec72e693e0e4389592a78e83ad9781e94fb52f263a06d9e93fbc4bf3"
   },
   "launchReady": false,
   "sil": {
