@@ -1,0 +1,469 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-16",
+  "session": 86,
+  "agent": "claude-opus-5",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 152.5,
+    "source": "Fresh Session 86 live-code audit run from the Session 85 authority with two independent parallel lenses (player-facing depth; correctness/robustness/efficiency). Every ranked premise was verified twice: once by reading the live file and quoting the exact lines, and once by executing the engine and measuring the defect. Two lenses independently converged on the playoff-seed shape split, which is treated as corroborated rather than duplicated. The audit deliberately re-confirms the Session 84/85 rejected phantoms and does not re-litigate them.",
+    "qualityBar": "L2 by default. Every item must be provable by running the engine, not only by reading it: each fix ships with a regression test that fails against the old behaviour. Distributional defects are verified by simulating seasons and tabulating, never by asserting on source text. Preserve launchReady false; no item touches launch gating, external credentials, or a sibling repository."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay and app-release-gate: core-loop truth, decision consequence, first-run clarity, mobile/theme parity, static-host safety, exact staging identity, rollback, privacy, and honest launch holds",
+    "staging": "stable Cloudflare Pages must prove the exact immutable candidate before direct-to-main publication; production promotion remains an explicit candidate-bound workflow_dispatch, never an automatic side effect of a main push",
+    "source": "arc-profile registry authority, Session 85 handoff and task board, doctor JSON, the 1,102-test source-bound suite receipt, and two parallel live-code audit passes that read public/lib, public/app.js, src/engine, src/runtime, src/domain and src/app/api and executed the engine across fixed seeds"
+  },
+  "gameLoopReview": {
+    "loopTightness": 6,
+    "progression": 5,
+    "sessionEngagement": 7,
+    "retention": 6,
+    "soulFidelity": 7,
+    "overall": 6.2,
+    "evidence": "Scored down sharply and deliberately from Session 85's 8.4. This is not new pessimism about the design; it is the first audit to execute the loop rather than read it, and execution showed that three of its load-bearing decisions do not reach the simulation. The weekly tactic is measurably inert (four tactics produce byte-identical 8-week league results on a fixed seed), the on-the-clock Draft button throws before submitting a pick, and the declared veteran aging curve arrives roughly five times weaker than specified. Loop tightness and progression are scored against measured behaviour, not intent. No real player cohort exists, so no retention or fun claim is invented."
+  },
+  "releaseGate": {
+    "deploymentVerdict": "GO to re-deploy once the ranked items are shipped and re-verified. Session 85's candidate fcf16f109cf4da44b43eb14b61a977f6fa23e29d remains the currently published truth at artifact 3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad; Session 86 must stage a new exact candidate and prove it before promotion.",
+    "launchVerdict": "NO-GO. Preserve launchReady false.",
+    "launchHolds": [
+      "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
+      "authoritative registry/local lifecycle reconciliation (registry SPARKED vs local FORGE)",
+      "SHA-bound public-launch approval distinct from deploy authorization",
+      "registered and end-to-end verified Obelisk relying party before any account-bearing flow"
+    ],
+    "verifiedGreens": [
+      "doctor blockingFailing 0 with release authority 6/6 current at the published candidate",
+      "source-bound Node suite 1,102/1,102 with zero drift from the Session 85 receipt",
+      "public-truth gate OK across 39 engine systems",
+      "no dependency, paid service or variable-cost runtime introduced"
+    ]
+  },
+  "axisCoverage": {
+    "featuresDepth": [
+      "weekly-tactic-reaches-simulation",
+      "veteran-progression-curve-fidelity"
+    ],
+    "newInnovativeFeatures": [],
+    "uiUx": [
+      "draft-pick-reveal-crash",
+      "cap-alert-contract-shape-authority"
+    ],
+    "feedbackLoop": [
+      "weekly-tactic-reaches-simulation",
+      "gm-legacy-playoff-authority",
+      "owner-confidence-snapshot-parity"
+    ],
+    "gamificationEngagementImmersion": [
+      "gm-legacy-playoff-authority",
+      "veteran-progression-curve-fidelity"
+    ],
+    "aiIntegration": [],
+    "securityPrivacy": [
+      "client-sim-job-exclusivity"
+    ],
+    "speedOrganizationEfficiency": [
+      "postseason-snapshot-payload-parity",
+      "client-sim-job-exclusivity"
+    ],
+    "releaseTruth": [
+      "owner-confidence-snapshot-parity",
+      "postseason-snapshot-payload-parity"
+    ],
+    "tokenApiReduction": []
+  },
+  "recommendedMoves": [
+    "Restore the three broken core-loop decisions first — the draft pick must submit, the weekly tactic must reach the simulator, and the cap alert must read the real contract shape — because each is a decision the player already believes they are making.",
+    "Then close the two snapshot-parity leaks (owner confidence log, postseason box scores) so a save/reload neither loses owner state nor spends 1.09 MB of the 5 MB browser budget on duplicate play-by-play.",
+    "Finish with the two calibration/authority items — playoff appearances must be derivable and the declared aging curve must be self-enforcing through a distribution test, so the engine's stated design and its measured behaviour can never silently diverge again."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "rival-GM persona surfacing",
+      "reason": "Already wired end-to-end since Session 70; re-confirmed live this session. Session 84 reject still valid."
+    },
+    {
+      "candidate": "offline/service-worker support",
+      "reason": "Already shipped Session 62; re-confirmed. Session 84 reject still valid."
+    },
+    {
+      "candidate": "Depth Chart drag-and-drop mobile parity",
+      "reason": "No drag-and-drop exists to make parity work on; the surface is already button-based. Session 84 reject still valid."
+    },
+    {
+      "candidate": "communityEventContract.js / gistCredentials.js / pressRoomPanel.js untested-module claims",
+      "reason": "Each is already covered — via a re-export shim, a behaviour-named test file, and a Playwright surfaces spec respectively. A naive filename grep misses all three; re-confirmed this session."
+    },
+    {
+      "candidate": "draft combine 40-yard-dash grade inversion",
+      "reason": "Nearly reported, then disproved by execution. Better prospects do post slower raw 40 times, but _computeGrade correctly inverts time events, so the displayed grade still rises with talent (RB OVR 55 to 63.4, OVR 95 to 83.5) and the raw time is never rendered. Only the slope is dampened. Not a defect."
+    },
+    {
+      "candidate": "renderRehabCommandCenter vs renderWeekResults injury shape drift",
+      "reason": "Looks like classic drift but injurySystem.js deliberately emits both the flat and nested shapes. Clean."
+    },
+    {
+      "candidate": "windowsHide spawn safety sweep",
+      "reason": "Already gated by scripts/check-windows-hide.mjs; the only literal shell:true call site already sets windowsHide: true."
+    },
+    {
+      "candidate": "unbounded array growth across engine ledgers",
+      "reason": "Thirteen candidate ledgers were checked and every one is capped at its write site. No finding."
+    },
+    {
+      "candidate": "src/runtime/rewindManager.js removal",
+      "reason": "Header-deprecated with zero importers, but left alone per the read-before-deleting-orphan-modules rule; deletion is not this session's scope and carries no measured benefit."
+    },
+    {
+      "candidate": "cap space is non-binding across the league",
+      "reason": "Measured and real (all 32 teams carry $92M-$112M of space against a $255M cap, and maxSalary is unreachable), but this is franchise economy calibration and design work, not a defect fix. Deferred to a dedicated session rather than smuggled into a correctness pass. Honest deferral, recorded."
+    },
+    {
+      "candidate": "narrative trigger shape drift, box-score long-play accumulation, fan-sentiment win band, missing Franchise Legends and GM Reputation DOM mounts, waiver table identity column",
+      "reason": "All verified real and all genuinely unshipped, but ranked below the eight selected items. Recorded here in full so Session 87 can pick them up without re-auditing rather than being silently dropped."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "FIRE",
+      "category": "Core loop / decision consequence / simulation truth",
+      "effortHours": 3,
+      "impact": 10,
+      "innovation": 6,
+      "priority": 23,
+      "slug": "weekly-tactic-reaches-simulation",
+      "title": "Make the weekly tactic actually reach the simulator instead of being erased before kickoff",
+      "status": "shipped",
+      "premise": "advanceWeekCommand applies the chosen tactic by mutating tacticTeam.weeklyPlan in place, then calls session.advanceWeek(). advanceWeek immediately calls runStaffAndStrategyRefresh, which reassigns team.weeklyPlan = this.buildWeeklyPlan(team.id) wholesale for every team, discarding the override before gameSimulator reads team.weeklyPlan. All four weekly tactics are therefore provable no-ops, and the tactical film receipt then grades the player's choice as aligned against telemetry the choice never influenced.",
+      "evidence": [
+        "src/runtime/advanceWeekCommand.js:63-70 mutates tacticTeam.weeklyPlan in place, then calls session.advanceWeek()",
+        "src/runtime/GameSession.js:4881-4884 advanceWeek calls runStaffAndStrategyRefresh before simulating",
+        "src/runtime/GameSession.js:4749 team.weeklyPlan = this.buildWeeklyPlan(team.id) is a wholesale reassignment inside that refresh",
+        "src/engine/gameSimulator.js:572 reads the rebuilt team.weeklyPlan, observed as {tacticalOverride:null, defenseAggressionDelta:null} despite tacticApplied blitz-heavy",
+        "measured seed 77123: run-heavy, pass-heavy, blitz-heavy and prevent each produce 8-week league results byte-identical to choosing no tactic",
+        "test/advance-week-command.test.js:63 asserts the override on a plan object passed directly to the pure function and never that it survives into simulation"
+      ],
+      "constraint": "The override must remain a single-week effect with the existing restore semantics, must not leak into any CPU team's plan, and must not change results when no tactic is chosen. Authority stays at the shared command seam; GameSession must not grow franchise-authority logic.",
+      "verification": [
+        "a fixed-seed regression test asserts the 8-week league result differs between blitz-heavy and no-tactic, inverting the exact probe that proved the defect",
+        "a no-tactic control run remains byte-identical to the pre-change baseline on the same seed",
+        "the pending tactic is consumed exactly once and cleared, so a second advance without a tactic is unaffected",
+        "the full source-bound Node suite stays green"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Re-apply the tactic override inside advanceWeek after runStaffAndStrategyRefresh so the simulator observes it."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "L1 plus a session-held pending-tactic slot consumed exactly once, preserved restore semantics, and a fixed-seed distribution regression proving the league result actually diverges."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus binding the tactical film receipt to the tactic that was proven applied, so a receipt can never grade a choice the simulation never saw."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "FIRE",
+      "category": "Core loop / draft / client correctness",
+      "effortHours": 0.5,
+      "impact": 10,
+      "innovation": 3,
+      "priority": 22.5,
+      "slug": "draft-pick-reveal-crash",
+      "title": "Stop the on-the-clock Draft button from throwing before the pick is ever submitted",
+      "status": "shipped",
+      "premise": "pickAnalystLine reads DRAFT_ANALYST_LINES, which has no declaration and no import anywhere in the repository. ES module scope is strict, so the read is a guaranteed ReferenceError. The in-row Draft button is rendered on every prospect row exactly when the player is on the clock, and its handler awaits showDraftPickReveal, which reaches pickAnalystLine because both the modal and its body exist in game.html. The throw rejects the awaited promise inside the async listener, so the /api/draft/user-pick call never runs and no modal ever appears.",
+      "evidence": [
+        "public/lib/tabDraft.js:452-455 reads DRAFT_ANALYST_LINES twice; a repo-wide grep returns only these two reads and no declaration or import",
+        "public/lib/tabDraft.js:1-5 lists the module's only imports; none provide the constant",
+        "public/lib/tabDraft.js:194-195 renders the Draft button on every prospect row when isUserPick && !draft.completed",
+        "public/app.js:1301-1309 awaits showDraftPickReveal before calling /api/draft/user-pick",
+        "public/game.html:1643 and :1645 confirm #draftPickRevealModal and .draft-reveal-body both exist, so the guarded branch is entered",
+        "no window.onerror or unhandledrejection handler exists anywhere in public/, so the failure is entirely silent"
+      ],
+      "constraint": "Fix the missing declaration at source; do not defensively swallow the reveal or bypass the modal. The separate Draft Selected Prospect button must keep working exactly as before.",
+      "verification": [
+        "a focused test calls pickAnalystLine across seeds and asserts a non-empty string with no throw",
+        "a test drives the data-draft-player-id path and asserts the pick request is actually issued",
+        "pickAnalystLine returns an empty string rather than throwing if the line table is ever emptied",
+        "rendered dark/light desktop/mobile capture of the reveal modal, since this makes a previously unreachable surface visible for the first time"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Declare the missing DRAFT_ANALYST_LINES constant next to the existing label tables."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "L1 plus a defensive empty-table guard and focused tests covering both pickAnalystLine and the in-row Draft click path."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "L2 plus a client-side unhandledrejection observer so a throw inside an async UI handler can never again fail silently on a player-facing action."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Simulation realism / progression / distributional truth",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 20,
+      "slug": "veteran-progression-curve-fidelity",
+      "title": "Deliver the declared aging curve instead of a fivefold-diluted version spread across random attributes",
+      "status": "shipped",
+      "premise": "progressPlayer computes one delta against the declared ageFactors curve, then applies it to at most four of a player's roughly thirty-two rating keys before recomputing overall from the full position-weighted formula. Only the weighted share of those four keys reaches overall, and when there are no focus ratings the four keys are shuffled, so an aging quarterback's decline can land entirely on tackling, block shedding and kick power and cost him nothing. Measured across 246 surviving age-30-to-32 players over two offseasons, mean overall change was -0.46 per year against a declared veteran30Plus factor of -2.25.",
+      "evidence": [
+        "src/engine/offseasonSimulator.js:109-119 applies delta to touched = [...focusRatings.slice(0,2), ...randomKeys].slice(0,4)",
+        "src/domain/ratings.js:287-294 declares ageFactors developing25AndUnder 0.2, prime26To29 -0.55, veteran30Plus -2.25",
+        "overall is recomputed via calculatePositionOverall from all weighted ratings, so four unweighted keys can contribute nearly nothing",
+        "measured seed 8080: mean overall change per year for age 30-plus survivors was -0.46 against the declared -2.25"
+      ],
+      "constraint": "This is a calibration fix, not a rewrite: keep the random-key spread for flavour on non-weighted attributes and keep the RNG stream position unchanged so existing seeded fixtures do not shift more than the curve itself requires. The declared profile stays the single source of truth.",
+      "verification": [
+        "a distribution test simulates multiple offseasons and asserts mean overall change per age bucket lands within tolerance of the declared ageFactors, making the curve self-enforcing",
+        "the test tabulates over a real simulated population rather than asserting on source text",
+        "developing and prime buckets are asserted alongside the veteran bucket so the fix cannot overshoot in one direction",
+        "the full source-bound Node suite stays green"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Apply the delta to the position's weighted attributes so the declared curve reaches overall."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "L1 plus a seeded distribution harness asserting measured per-bucket overall movement against the declared ageFactors within tolerance."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus surfacing the measured curve as a public-truth engine receipt so realism drift is caught by an executable gate rather than a future audit."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Progression authority / achievements / state shape",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 4,
+      "priority": 18.5,
+      "slug": "gm-legacy-playoff-authority",
+      "title": "Credit playoff appearances from the field the engine actually writes",
+      "status": "shipped",
+      "premise": "seasonSimulator writes team.playoffSeed on the team, while createTeamSeasonState returns a season object containing no playoffSeed and no playoffExit. gmLegacyScore derives madePlayoffs from team.season?.playoffSeed || team.season?.playoffExit, which is therefore permanently false, and playoffExit is never written anywhere in src. Both audit lenses reached this finding independently. The data is present on the team at the moment updateGmLegacyAfterSeason runs; it is simply read one level too deep.",
+      "evidence": [
+        "src/engine/seasonSimulator.js:186 team.playoffSeed = index + 1",
+        "src/domain/teamFactory.js:20-35 createTeamSeasonState returns no playoffSeed and no playoffExit",
+        "src/engine/gmLegacyScore.js:56 madePlayoffs reads team.season?.playoffSeed || team.season?.playoffExit and is always false",
+        "src/runtime/GameSession.js:5120 calls updateGmLegacyAfterSeason while team.playoffSeed is still populated",
+        "blast radius: playoffAppearances never increments, playoffRate * 25 leaves 25 of 100 legacy points unreachable, persona tiers gated on 4/2/1 playoff appearances are unsatisfiable, and the Dancing in January achievement is unearnable",
+        "test/s4-systems.test.js:339-346 passes only because it hand-builds season: {playoffSeed: 1}, a shape the engine never produces"
+      ],
+      "constraint": "Fix the read at the seam and carry the field into the archived season row so restored sessions agree; do not fabricate historical playoff appearances for saves that never recorded them. Correct the fixture so it guards the real seam rather than a shape the engine cannot emit.",
+      "verification": [
+        "a test simulates a real season through the engine and asserts a playoff team's playoffAppearances increments, with no hand-built season fixture",
+        "the archived season row carries the playoff fields so a restored session derives the same answer",
+        "a non-playoff team still yields zero, so the fix does not blanket-credit every team",
+        "the corrected existing fixture fails against the old read"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Read team.playoffSeed at the gmLegacyScore seam with a fallback to the season fields for legacy snapshots."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "L1 plus carrying playoffSeed/playoffExit into the archived season row, correcting the fabricated fixture, and adding an engine-driven regression."
+        },
+        "L3": {
+          "effortHours": 2.5,
+          "recipe": "L2 plus reconciling the season-epilogue miracle-run branch and the achievement surface against the now-derivable value."
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "First-run clarity / UI correctness / state shape",
+      "effortHours": 1,
+      "impact": 8,
+      "innovation": 3,
+      "priority": 18,
+      "slug": "cap-alert-contract-shape-authority",
+      "title": "Stop the Overview cap alert from declaring every star's contract expired",
+      "status": "shipped",
+      "premise": "The expiring-contract filter reads contract.years, contract.length, contract.year and contract.currentYear. normalizeContract emits none of them; the real field is yearsRemaining. Every lookup therefore falls back to zero, remaining is always zero minus zero, and the filter degenerates to every player rated at or above the key-player threshold, each reported as critical contract expired. The headline also reads player.position while getRoster emits pos, rendering a literal undefined. The players genuinely in their final year are never surfaced, and the positive cap signal is gated on there being no alerts, making it unreachable for any team with an 84-plus player.",
+      "evidence": [
+        "src/engine/capAlerts.js:74-80 reads years/length/year/currentYear, none of which exist on a normalized contract",
+        "src/domain/contracts.js:27-40 normalizeContract returns yearsRemaining, not years or year",
+        "src/engine/capAlerts.js:88 interpolates player.position while getRoster emits pos",
+        "measured brand-new franchise seed 5150 week 1: three critical contract expired alerts naming 90/90/87 OVR players whose real yearsRemaining are 4/4/5, while the two players actually at yearsRemaining 1 are not flagged, and each headline renders undefined as the position",
+        "src/engine/capAlerts.js:96 gates the positive cap signal on alerts.length === 0, so it is unreachable for such a roster",
+        "public/lib/tabOverview.js:1188-1204 renders alerts[0] in the red critical banner on the primary Overview surface"
+      ],
+      "constraint": "Read the canonical normalized field with a fallback to the legacy names so old snapshots still resolve; do not rename the contract shape. This is the first surface a new player sees, so correctness of the rendered string matters as much as the filter.",
+      "verification": [
+        "a test asserts a yearsRemaining 4 star produces no expiring-key alert and a yearsRemaining 1 star produces exactly one",
+        "a test asserts the headline never contains the literal string undefined",
+        "a test asserts the positive strong-cap-position signal is reachable for a healthy roster",
+        "rendered dark/light desktop/mobile capture of the Overview alert banner, since the banner's content changes"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Read yearsRemaining with legacy fallbacks and use pos || position in the headline."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "L1 plus focused tests for the flagged/not-flagged boundary, the undefined-free headline, and the newly reachable positive signal."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 plus a shared contract-field accessor so no future consumer can read a contract field the normalizer does not emit."
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Save payload / snapshot parity / efficiency",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 4,
+      "priority": 17,
+      "slug": "postseason-snapshot-payload-parity",
+      "title": "Keep duplicate playoff play-by-play out of the snapshot the retention system already trims",
+      "status": "shipped",
+      "premise": "latestPostseason is persisted whole and carries gameArchiveEntries for all thirteen playoff games, each spreading the full simulateGame return including boxScore.playByPlay. leanifySnapshot projects only the current-season week results, weekly history, historical weekly rows and the game archive; it never touches latestPostseason. The identical box scores are therefore stored twice, and only the archived copy is ever trimmed. Measured on a full season plus postseason, the snapshot grows from 16.83 MB to 18.06 MB, with latestPostseason accounting for 1.09 MB against a 5 MB browser storage budget.",
+      "evidence": [
+        "src/runtime/GameSession.js:1880 persists latestPostseason whole",
+        "src/engine/seasonSimulator.js:435-438 builds gameArchiveEntries by spreading each matchup result, which carries boxScore.playByPlay",
+        "src/runtime/weekResultProjection.js:122-158 leanifySnapshot never projects snapshot.latestPostseason",
+        "src/runtime/GameSession.js:5130 already archives the same entries through archiveGameResults, where retention does apply",
+        "measured seed 99: snapshot 16.83 MB to 18.06 MB, latestPostseason 1.09 MB, 13/13 entries carrying playByPlay",
+        "the three restored-session readers need only .superBowl and .bracket; zero tests reference latestPostseason, and both save-payload-budget assertions structurally run only while phase is regular-season, so they can never observe it"
+      ],
+      "constraint": "The archived copy is already the retained source of truth, so strip the duplicate rather than adding a second retention policy. The live in-session readers of gameArchiveEntries are fed the live playoff result before persistence and must keep working unchanged.",
+      "verification": [
+        "a test drives a session through the postseason and asserts the persisted snapshot carries no playoff play-by-play",
+        "a test asserts the restored session still resolves the Super Bowl result and bracket",
+        "the save-payload budget assertion is extended to a phase where latestPostseason is actually populated, closing the structural blind spot",
+        "measured before/after snapshot size is recorded rather than asserted only structurally"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Strip gameArchiveEntries from latestPostseason at the snapshot boundary."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "L1 plus extending the payload-budget guard into the postseason phase so the blind spot cannot reopen."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 plus a general snapshot-parity probe that flags any persisted field carrying play-by-play the retention system does not own."
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "tier": "HIGH",
+      "category": "Client runtime safety / concurrency / data integrity",
+      "effortHours": 2,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 17,
+      "slug": "client-sim-job-exclusivity",
+      "title": "Make client simulation jobs exclusive and prunable like their server twin",
+      "status": "shipped",
+      "premise": "The client runtime's simJobs map is never pruned and has no TTL sweep, while the server twin has pruneSimJobs. Neither runtime enforces exclusivity: the simulate endpoint creates a job unconditionally and the launch button runs through runAction without a single-flight key. In the client-only static deploy, double-clicking Start Simulation Job drives two scheduler chains over the same shared session, each counting only its own completed seasons, so both report full completion while the save has advanced twice as far. The records then persist for the tab's lifetime and are re-serialized on the eight-second poll.",
+      "evidence": [
+        "src/app/api/localApiRuntime.js:270 declares simJobs with no delete and no TTL sweep anywhere in the file",
+        "src/server.js:194-199 pruneSimJobs is the server twin the client lacks",
+        "the client job record omits the expiresAt/fetchedAt fields the server sets",
+        "src/app/api/localApiRuntime.js:1190-1193 creates a job unconditionally; public/app.js:1638-1644 invokes it through runAction with no key, and single-flighting only applies when a key is given",
+        "the cancelled status the poller reads is never set by any code path, so a duplicated run is uncancellable",
+        "test/session-lookup-indexes.test.js:58-74 calls createSimulationJob twice and asserts only that IDs differ, proving repeat invocation is accepted without asserting anything about it"
+      ],
+      "constraint": "Port the existing server semantics rather than inventing new ones; the two runtimes must agree. Rejecting a duplicate must be an explicit conflict the UI can surface, not a silent no-op.",
+      "verification": [
+        "a test asserts a second simulate request is rejected with a conflict while a job is queued or running",
+        "a test asserts completed job records are pruned after their TTL",
+        "a test asserts the single-flight guard prevents a double launch from advancing the session twice",
+        "server and client runtime parity is asserted rather than assumed"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.75,
+          "recipe": "Port pruneSimJobs and the expiresAt/fetchedAt fields to the client runtime."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "L1 plus rejecting concurrent simulate requests with an explicit conflict and single-flighting the launch control, with parity tests across both runtimes."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus a real cancellation path so the status the poller already reads becomes reachable."
+        }
+      }
+    },
+    {
+      "rank": 8,
+      "tier": "HIGH",
+      "category": "Snapshot parity / owner state / release truth",
+      "effortHours": 1.5,
+      "impact": 7,
+      "innovation": 4,
+      "priority": 16.5,
+      "slug": "owner-confidence-snapshot-parity",
+      "title": "Stop the owner-profile rebuild from dropping the confidence log on every restore",
+      "status": "shipped",
+      "premise": "buildOwnerProfile returns a fixed key literal that does not include confidenceLog, and it is called unconditionally on the restore path, so every reload silently strips owner confidence history that ownerConfidence.js writes. A deep key-path diff of a snapshot round trip found this as the only dropped path in the entire snapshot, across all thirty-two teams. The same rebuild also re-rounds an already-rounded patience value to two decimals, and because the confidence bands are exact-boundary comparisons, a save and reload can move an owner from steady to strained with no in-game event.",
+      "evidence": [
+        "src/runtime/GameSession.js:993-1022 buildOwnerProfile whitelists owner keys and omits confidenceLog",
+        "src/runtime/GameSession.js:1334 calls it unconditionally inside ensureLeagueRuntime, which fromSnapshot reaches at :1807",
+        "src/engine/ownerConfidence.js:123-125 writes confidenceLog; :139 reads it for dashboard.ownerConfidence.latest",
+        "measured seed 771 round-trip diff: the only dropped paths were .league.teams[].owner.confidenceLog across all 32 teams and its 544 receipt fields",
+        "measured seed 620051 over 5 weeks: dashboard.ownerConfidence.latest goes from a populated receipt to null after a round trip",
+        "src/runtime/GameSession.js:1011 re-rounds patience to two decimals against exact-boundary bands at ownerConfidence.js:142, moving 0.4752 to 0.48 and, at 0.3549, steady to strained",
+        "test/owner-confidence.test.js contains no toSnapshot or fromSnapshot at all, and every test that does round-trip references neither owner nor patience"
+      ],
+      "constraint": "This is the shape-declared-twice pattern the project has already been bitten by. Carry unknown owner keys through the rebuild so a future owner field cannot silently vanish again, and stop re-rounding a value that is already rounded at its write site.",
+      "verification": [
+        "a round-trip test asserts confidenceLog survives toSnapshot/fromSnapshot for every team",
+        "a round-trip test asserts patience is bit-identical after restore and that the derived band does not move",
+        "a test asserts an owner key added after the whitelist was written still survives, guarding the pattern rather than the single field",
+        "the existing owner-confidence suite is extended to cover the restore path it currently never exercises"
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Carry confidenceLog through buildOwnerProfile and stop re-rounding patience."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "L1 plus spreading unknown owner keys through the rebuild and adding round-trip parity tests that guard the pattern, not just the field."
+        },
+        "L3": {
+          "effortHours": 2.5,
+          "recipe": "L2 plus a general snapshot round-trip parity probe asserting no owner or team key is dropped, so the next added field is covered automatically."
+        }
+      }
+    }
+  ],
+  "innovationCandidates": [],
+  "secondOrderImprovements": []
+}

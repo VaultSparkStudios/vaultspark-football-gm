@@ -45,6 +45,18 @@ export function initGmLegacy(league) {
 
 // ── Season update ─────────────────────────────────────────────────────────────
 
+// S86 [audit #4] — playoff participation is written by seasonSimulator as
+// `team.playoffSeed`, one level above the season state. createTeamSeasonState
+// emits neither `playoffSeed` nor `playoffExit`, so reading them off
+// `team.season` was permanently false and no GM ever recorded a playoff
+// appearance — leaving 25 of 100 legacy points, the persona tiers and the
+// "Dancing in January" achievement unreachable. Read the team field first and
+// keep the season fields as fallbacks for archived/restored rows that carry them.
+export function teamMadePlayoffs(team) {
+  if (!team) return false;
+  return !!(team.playoffSeed || team.playoffExit || team.season?.playoffSeed || team.season?.playoffExit);
+}
+
 export function updateGmLegacyAfterSeason(league, controlledTeamId, year, { capSummary = null, stewardshipReport = null } = {}) {
   const legacy = initGmLegacy(league);
   const team = league.teams.find((t) => t.id === controlledTeamId);
@@ -53,7 +65,7 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year, { capS
 
   const wins = team.season?.wins || 0;
   const losses = team.season?.losses || 0;
-  const madePlayoffs = !!(team.season?.playoffSeed || team.season?.playoffExit);
+  const madePlayoffs = teamMadePlayoffs(team);
   const latestChampion = (league.champions || [])
     .slice()
     .reverse()

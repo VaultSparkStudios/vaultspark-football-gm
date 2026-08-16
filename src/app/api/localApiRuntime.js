@@ -268,6 +268,11 @@ export function createLocalApiRuntime({
   };
   let session = null;
   const simJobs = new Map();
+  // S86 [audit #7] — parity with the Express runtime (src/server.js). The client
+  // map previously had no delete and no TTL sweep, so every job record — each
+  // holding up to 200 season summaries — lived for the tab's lifetime and was
+  // re-serialized on the 8-second poll.
+  const SIM_JOB_TTL_MS = 10 * 60 * 1000; // 10 minutes, matching the server
   const runtimeMetrics = {
     startedAt: now(),
     requests: 0,
@@ -355,13 +360,45 @@ export function createLocalApiRuntime({
     }
   }
 
+  // S86 [audit #7] — server-parity TTL sweep. Without this the map only grew.
+  function pruneSimJobs() {
+    if (simJobs.size === 0) return; // nothing to sweep — do not burn a clock read
+    const current = now();
+    for (const [id, job] of simJobs) {
+      const fetched = job.fetchedAt && (current - job.fetchedAt > SIM_JOB_TTL_MS);
+      const stale = current - job.createdAt > SIM_JOB_TTL_MS * 3;
+      if (fetched || stale) simJobs.delete(id);
+    }
+  }
+
+  // S86 [audit #7] — simulation jobs drive `simulateOneSeason` against the ONE
+  // shared session, so two concurrent jobs advance the same franchise twice
+  // while each reports only its own progress as complete. Exclusivity has to be
+  // enforced here, at the runtime seam, because the launch control has no
+  // single-flight key and the status the poller reads is never set to cancelled.
+  function activeSimulationJob() {
+    for (const job of simJobs.values()) {
+      if (job.status === "queued" || job.status === "running") return job;
+    }
+    return null;
+  }
+
+  // The TTL sweep runs on the REQUEST path (as it does in src/server.js), not
+  // inside the factory — the factory must stay a pure allocation so job IDs
+  // remain deterministic for a deterministic clock.
   function createSimulationJob(totalSeasons) {
-    const id = `JOB-${now()}-${simJobs.size + 1}`;
+    // One clock read per job: the record is a single point in time, and reading
+    // `now()` once keeps job identity stable regardless of how many timestamp
+    // fields the record carries.
+    const stamp = now();
+    const id = `JOB-${stamp}-${simJobs.size + 1}`;
     const job = {
       id,
       status: "queued",
-      createdAt: now(),
-      updatedAt: now(),
+      createdAt: stamp,
+      updatedAt: stamp,
+      expiresAt: stamp + SIM_JOB_TTL_MS * 3,
+      fetchedAt: null,
       totalSeasons,
       completedSeasons: 0,
       progress: 0,
@@ -1184,11 +1221,25 @@ export function createLocalApiRuntime({
         if (!id) return finish(jsonResponse(200, { ok: true, jobs: [...simJobs.values()].slice().sort((a, b) => b.createdAt - a.createdAt).slice(0, 30) }));
         const job = simJobs.get(String(id));
         if (!job) return finish(jsonResponse(404, { ok: false, error: "Job not found." }));
+        // S86 [audit #7] — stamp the read so a finished, collected job becomes
+        // eligible for the TTL sweep, exactly as the server runtime does.
+        if (job.status === "completed" || job.status === "failed") job.fetchedAt = now();
         return finish(jsonResponse(200, { ok: true, job }));
       }
 
       if (method === "POST" && pathname === "/api/jobs/simulate") {
         const seasons = Math.max(1, Math.min(200, toInt(body?.seasons) || 10));
+        pruneSimJobs();
+        // S86 [audit #7] — reject rather than silently double-advance the save.
+        const running = activeSimulationJob();
+        if (running) {
+          return finish(jsonResponse(409, {
+            ok: false,
+            reasonCode: "SIM_JOB_ALREADY_RUNNING",
+            error: "A simulation job is already running.",
+            job: running
+          }));
+        }
         return finish(jsonResponse(202, { ok: true, job: createSimulationJob(seasons) }));
       }
 

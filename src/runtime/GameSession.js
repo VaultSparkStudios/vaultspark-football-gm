@@ -135,6 +135,7 @@ import { buildCoachingMarket, fireCoach, getCoachingMarketReceipts, hireCoach } 
 import { initCoachingTree, registerRootHeadCoach } from "../engine/coachingTree.js";
 import { derivedStaffRng, staffSeedKey } from "../engine/staffGeneration.js";
 import { applyArchiveRetention, pruneWeeklyHistory, toLeanWeekResult } from "./weekResultProjection.js";
+import { consumePendingWeeklyTactic } from "./weeklyTactic.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
 import {
   agentSummary,
@@ -990,10 +991,30 @@ function computeTeamStrategyProfile(team, roster = []) {
   return "balanced";
 }
 
+// S86 [audit #8] — this rebuild runs unconditionally on the restore path, so a
+// fixed key literal silently strips any owner field added elsewhere. Measured:
+// `confidenceLog` (written by ownerConfidence.js) was the ONLY dropped path in
+// an entire snapshot round trip, across all 32 teams. Spreading `existing`
+// first carries unknown keys through, so the next owner field added cannot
+// vanish the same way — the whitelist keys below still win where they apply.
+// `patience` is also no longer re-rounded when it already exists: the write
+// site stores 4dp and the confidence bands are exact-boundary, so re-rounding
+// on restore could move an owner from "steady" to "strained" with no in-game event.
+// S86 [audit #6] — see toSnapshot. Drops only the duplicated archive entries;
+// every other postseason field (bracket, superBowl, rounds) is preserved.
+function leanPostseason(postseason) {
+  if (!postseason || typeof postseason !== "object") return postseason;
+  if (!Array.isArray(postseason.gameArchiveEntries)) return postseason;
+  const { gameArchiveEntries, ...rest } = postseason;
+  return rest;
+}
+
 function buildOwnerProfile(rng, existing = null) {
   const market = Number(existing?.marketSize ?? rng.float(0.85, 1.2));
+  const hasPatience = Number.isFinite(Number(existing?.patience));
   const patience = Number(existing?.patience ?? rng.float(0.28, 0.76));
   return {
+    ...(existing && typeof existing === "object" ? existing : {}),
     marketSize: Number(market.toFixed(2)),
     ticketPrice: Math.round(Number(existing?.ticketPrice ?? rng.int(75, 210))),
     fanInterest: clamp(Math.round(Number(existing?.fanInterest ?? rng.int(58, 84))), 20, 100),
@@ -1008,7 +1029,7 @@ function buildOwnerProfile(rng, existing = null) {
       revenueYtd: Math.round(Number(existing?.finances?.revenueYtd ?? 0)),
       expensesYtd: Math.round(Number(existing?.finances?.expensesYtd ?? 0))
     },
-    patience: Number(patience.toFixed(2)),
+    patience: hasPatience ? patience : Number(patience.toFixed(2)),
     personality: existing?.personality || (typeof rng?.pick === "function" ? rng.pick(["profit-first", "legacy-builder", "win-now", "player-friendly"]) : "legacy-builder"),
     hotSeat: existing?.hotSeat === true,
     expectation: existing?.expectation || null,
@@ -1877,7 +1898,12 @@ export class GameSession {
       currentWeek: this.currentWeek,
       seasonSchedule: this.seasonSchedule,
       weekResultsCurrentSeason: this.weekResultsCurrentSeason,
-      latestPostseason: this.latestPostseason,
+      // S86 [audit #6] — persist the postseason WITHOUT its gameArchiveEntries.
+      // Those 13 entries carry full play-by-play and are already stored by
+      // archiveGameResults, where retention trims them; keeping a second
+      // untrimmed copy cost a measured 1.09 MB against a 5 MB browser budget.
+      // Only .bracket and .superBowl are read on the restore path.
+      latestPostseason: leanPostseason(this.latestPostseason),
       lastAwardSummary: this.lastAwardSummary,
       pendingSeasonWrap: this.pendingSeasonWrap,
       teamSeasonArchive: this.statBook.teamSeasonArchive
@@ -4882,6 +4908,11 @@ export class GameSession {
     if (this.phase === "regular-season") {
       this.resetGameDayInactives();
       this.runStaffAndStrategyRefresh();
+      // S86 [audit #1] — runStaffAndStrategyRefresh rebuilds every team's
+      // weeklyPlan wholesale, which is what silently erased the player's chosen
+      // weekly tactic. Apply the staged tactic to the freshly rebuilt plan, so
+      // the simulator actually observes the decision. Consumed exactly once.
+      consumePendingWeeklyTactic(this);
       this.grantWeeklyScoutingPoints();
       this.decrementAvailability();
       this.processWaivers();

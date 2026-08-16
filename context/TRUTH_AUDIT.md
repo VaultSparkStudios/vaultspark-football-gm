@@ -2,8 +2,19 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-13
+Last reviewed: 2026-08-16
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-08-16 - Session 86 truth update
+
+- **Three shipped systems were not doing what the project said they did, and the record now says so.** All four weekly tactics were measurably inert (fixed seed 77123: each produced 8-week league results byte-identical to choosing no tactic); the on-the-clock Draft button threw a ReferenceError before issuing the pick request; and the declared veteran aging curve arrived at -0.46 OVR/yr against a declared -2.25. None of these were visible to code review, and all three passed the existing suite. Prior sessions' claims about these systems were made in good faith from the code; they were wrong about the behaviour, and that correction is recorded here rather than quietly overwritten.
+- **The Session 85 game-loop score of 8.4 was measured against intent; Session 86's 6.2 is measured against behaviour.** The drop is not new pessimism about the design and not a regression — it is the first audit to execute the loop. The score should be read as a change in method, not a change in quality.
+- **Every ranked premise this session was verified twice** — once by reading the live file and quoting exact lines, once by running the engine and measuring the defect — and the two independent audit lenses converged on the playoff-seed shape split, which is recorded as corroborated rather than counted twice.
+- **The suite receipt is exact and was read directly.** Node passes 1,123/1,123 (core 123, runtime 716, sim-contract 79, sim-realism 1, studio 204; up from 1,102/1,102, +21 tests). The wrapper exit code reported success over a real failure twice during this session, so every count above comes from the shard summary lines, not from an exit status.
+- **Three suite reds were self-inflicted and root-fixed, not force-greened.** No budget was raised, no assertion loosened, and no test deleted. Two pre-existing tests were corrected because they guarded implementation details rather than behaviour; both corrections are stated in DECISIONS.
+- **No rendered-pixel capture pass was run locally this session.** Two shipped items change player-facing surfaces (the newly reachable draft reveal modal, and the Overview cap-alert banner text), so CANON-053 capture evidence is owed. It is delegated to the CI Playwright run on this candidate rather than claimed locally — recorded explicitly as a scope call, not silently skipped.
+- **Launch posture is unchanged and remains independently held.** Nothing in this session touches Zoho delivery/reply-as, founder approval, lifecycle registry reconciliation, or Obelisk relying-party proof. `launchReady` stays false.
+- **Known-real and deliberately deferred:** cap space is non-binding league-wide (measured: all 32 teams hold $92M-$112M against a $255M cap, and `maxSalary` is unreachable) — this is franchise-economy calibration, not a defect fix, and was deferred rather than smuggled into a correctness pass. Five further verified-real findings (narrative trigger shape drift, box-score long-play accumulation, fan-sentiment win band, two missing DOM mounts, waiver-table identity column) are recorded in the audit sidecar's `preverifiedSkips` so Session 87 can act without re-auditing.
 
 ## 2026-08-13 - Session 84 truth update
 

@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Session 85 technical release is exact and verified: CI, stable staging, production, backend, 68 retained dark/light desktop/mobile captures and route-specific performance evidence all bind candidate fcf16f109cf4da44b43eb14b61a977f6fa23e29d to artifact 3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad. Public launch remains HOLD and launchReady stays false.",
-  "nextMilestone": "Preserve the exact deployed candidate while proving Zoho receive plus reply-as identity, obtaining explicit SHA-bound founder launch approval, and reconciling registry SPARKED versus local FORGE authority; continue honest opted-in cohort observation without manufacturing activity.",
+  "currentFocus": "Session 86 repaired the game core decision loop after the first audit to execute the engine rather than read it. All four weekly tactics were provable no-ops, the on-the-clock Draft button threw before issuing the pick, and the declared aging curve arrived roughly fivefold diluted; all three are fixed with fixed-seed regressions that fail against the old behaviour. Playoff appearances, cap-alert contract truth, owner-confidence snapshot parity, postseason payload size and client simulation-job exclusivity also shipped. Canonical Node receipt is 1,123/1,123. Public launch remains HOLD and launchReady stays false.",
+  "nextMilestone": "Calibrate the franchise economy so the salary cap actually binds (measured non-binding across all 32 teams), clear the five verified-real findings parked in the S86 audit sidecar, and re-capture rendered evidence for the newly reachable draft reveal and corrected cap-alert banner — while continuing to prove Zoho receive/reply-as, obtain SHA-bound founder launch approval and reconcile registry SPARKED versus local FORGE.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-14",
+  "lastUpdated": "2026-08-16",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -26,23 +26,20 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": {
-    "totalTests": 1102,
-    "pass": 1102,
+    "totalTests": 1123,
+    "pass": 1123,
     "fail": 0,
-    "lastRun": "2026-08-14",
+    "lastRun": "2026-08-16",
     "newTestFiles": [
-      "test/button-action-contracts.test.js",
-      "test/hosted-performance.test.js",
-      "test/lifecycle-coherence.test.js",
-      "test/release-authority.test.js",
-      "test/tutorial-layout-stability.test.js"
+      "test/session86-core-loop-truth.test.js",
+      "test/session86-snapshot-parity.test.js"
     ],
-    "newTestCount": 8,
-    "coverage": "Exact-candidate CI run 31769309459 passed all five Node shards. Local aggregate passed 1,102/1,102 before the final test-only lifecycle assertion correction; the corrected Studio shard passed 204/204.",
-    "uiSuiteNote": "Exact-candidate Playwright passed 41/41. CANON-053 retained and reviewed 68 dark/light desktop/mobile captures; the first-run regression enforces CLS below 0.1 and scrollY 0."
+    "newTestCount": 21,
+    "coverage": "Local aggregate passed 1,123/1,123 across all five source-bound shards (core 123, runtime 716, sim-contract 79, sim-realism 1, studio 204), up from 1,102/1,102. Counts were read from the shard summary lines directly; the wrapper exit code reported success over a real failure twice during this session.",
+    "uiSuiteNote": "No local rendered-pixel capture pass was run this session. Two shipped items change player-facing surfaces (the newly reachable draft reveal modal and the Overview cap-alert banner text), so CANON-053 capture evidence is delegated to the CI Playwright run on this candidate and recorded as an explicit scope call rather than claimed locally."
   },
-  "testsPassing": 1102,
-  "testsTotal": 1102,
+  "testsPassing": 1123,
+  "testsTotal": 1123,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -81,7 +78,7 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 991,
+  "silScore": 983,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 99,
@@ -130,7 +127,7 @@
     "total": 12,
     "failing": 0,
     "score": 92,
-    "date": "2026-08-14",
+    "date": "2026-08-16",
     "passing": 11,
     "warning": 1,
     "checks": [
@@ -437,5 +434,23 @@
     },
     "receiptSha256": "1ab69cc9244f2992b8e5d16e73e62f3c4b24f2d109549c17e0a1321e2f63aff3"
   },
-  "launchReady": false
+  "launchReady": false,
+  "sil": {
+    "version": "3.0",
+    "session": 86,
+    "silScore": 983,
+    "categories": {
+      "devHealth": 97,
+      "creativeAlignment": 99,
+      "momentum": 100,
+      "engagement": 97,
+      "processQuality": 93,
+      "crossRepoCoherence": 99,
+      "securityPosture": 100,
+      "ecosystemIntegration": 98,
+      "capitalEfficiency": 100,
+      "automationCoverage": 100
+    },
+    "date": "2026-08-16"
+  }
 }

@@ -1,3 +1,44 @@
+# Session 86 Closeout — Core-Loop Truth: The Weekly Tactic, The Draft Pick and The Aging Curve
+
+## Session Intent — S87
+
+Audit by running the engine, not by reading it — S86 proved that is the only method that finds this class of defect here. The obvious next target is the franchise economy: the salary cap is measurably non-binding. Preserve the public-launch HOLD until the external Zoho, founder-approval, lifecycle and Obelisk relying-party gates have real receipts.
+
+## Where We Left Off (Session 86)
+
+- All eight S86 audit items shipped. Three of them were systems the project believed were working: all four weekly tactics were provable no-ops, the on-the-clock **Draft** button threw a ReferenceError before issuing the pick, and the declared aging curve arrived roughly fivefold diluted. None was visible to code review; all three fell to a single fixed-seed probe.
+- The weekly tactic is now staged on the session (`session.pendingWeeklyTactic`) and consumed inside `advanceWeek()` **after** `runStaffAndStrategyRefresh()` rebuilds every `weeklyPlan`. The shared applier lives in `src/runtime/weeklyTactic.js` so exactly one definition of the override shape exists.
+- The draft pick reveal moved to `public/lib/draftPickReveal.js` behind a dynamic import. This was forced by the draft island sitting at 15.03% headroom against a 15% floor; it also made the pick path safer, since a reveal that fails to load now still submits the pick.
+- Canonical Node receipt is **1,123/1,123** across five shards (core 123, runtime 716, sim-contract 79, sim-realism 1, studio 204), up from 1,102/1,102 with +21 new tests. Doctor blockingFailing 0.
+- Public launch remains HOLD, unchanged. Nothing this session touched launch gating.
+
+## Decisions That Must Survive (S86)
+
+- A player-facing decision is implemented when a fixed-seed run **measurably diverges** from the same run without it — not when the applying code exists. Ship the divergence regression with the feature.
+- Never stub the seam a test is guarding, and never assert a literal that encodes an implementation detail. When a fixture breaks on a behaviour-neutral change, fix the fixture's intent, not the production code.
+- A budget/headroom gate that blocks a necessary fix means the module is at its architectural limit: reclaim space behind the existing lazy-import boundary. Raising `maxBytes` or lowering the headroom ratio is force-green.
+- `buildOwnerProfile` now spreads unknown owner keys through the restore rebuild. Do not reintroduce a fixed key literal there — that whitelist silently dropped `confidenceLog` for all 32 teams on every reload.
+- The tactic override must stay a single-week effect, consumed exactly once, and must never leak into a CPU team's plan or a later week.
+
+## Next Best Work
+
+- Calibrate the franchise economy so the cap binds: all 32 teams start with $92M-$112M of space against a $255M cap, and `buildContract` compresses a 99 OVR to only ~3.2x a 55 OVR while `maxSalary: 45_000_000` is unreachable. Measured in S86, deferred as design work rather than smuggled into a correctness pass.
+- Pick up the five verified-real findings parked in `docs/AUDIT_2026-08-16_SESSION86.json` → `preverifiedSkips`: narrative trigger shape drift (culture-crisis and owner-ultimatum events are unreachable, and the authored `culture-crisis` GM decision with them), box-score long-play accumulation (a measured 147-yard "longest completion"), the dead fan-sentiment win band, two missing DOM mounts (Franchise Legends, GM Reputation), and the waiver table rendering with no player names.
+- Re-run rendered-pixel capture evidence for the newly reachable draft reveal modal and the corrected Overview cap-alert banner; S86 delegated CANON-053 capture to the CI Playwright run rather than claiming it locally.
+- Observe the first real opted-in cohort without manufacturing activity; complete Zoho delivery/reply-as proof; reconcile registry SPARKED versus local FORGE; finish external Obelisk relying-party registration before exposing account flows.
+
+## Key Files
+
+- `src/runtime/weeklyTactic.js`, `src/runtime/advanceWeekCommand.js`, `src/runtime/GameSession.js`
+- `public/lib/draftPickReveal.js`, `public/lib/tabDraft.js`, `public/boot-manifest.json`
+- `src/engine/offseasonSimulator.js`, `src/domain/ratings.js` (`positionRatingKeys`)
+- `src/engine/capAlerts.js`, `src/engine/gmLegacyScore.js`, `src/stats/statBook.js`
+- `src/runtime/weekResultProjection.js`, `src/app/api/localApiRuntime.js`, `src/server.js`
+- `test/session86-core-loop-truth.test.js`, `test/session86-snapshot-parity.test.js`
+- `docs/AUDIT_2026-08-16_SESSION86.json`
+
+---
+
 # Session 85 Closeout — First-Run Performance and Candidate-Bound Release Authority
 
 ## Session Intent — S86

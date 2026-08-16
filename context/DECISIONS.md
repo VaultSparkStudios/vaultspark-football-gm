@@ -2,6 +2,30 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-16 - S86: a decision the player makes must be provable in the simulation, not in the code
+
+**Decision:** A player-facing decision is not "implemented" when the code that applies it exists; it is implemented when a fixed-seed run measurably diverges from the same run without it. Any system that claims to influence simulation must ship with a regression that asserts the divergence, and any receipt that grades such a choice must be bound to a choice that was proven applied.
+
+**Rationale:** All four weekly tactics were applied by correct-looking code that ran at the wrong time — `advanceWeek()` rebuilds every `weeklyPlan` before kickoff, discarding an in-place override — so the feature was a no-op for the project's entire history while `buildTacticalFilmReceipt` graded the player's choice as "aligned" against telemetry it never touched. Reading the code could not catch this; running it caught it in one probe. This is now the standard for the tactic, the aging curve, and anything like them.
+
+---
+
+## 2026-08-16 - S86: a test that stubs the seam it is guarding proves nothing
+
+**Decision:** When a test replaces the very function whose behaviour it is asserting, or hard-codes a literal that encodes an implementation detail rather than the property in the test's own name, correct the fixture rather than the production code — and never delete the test to make a red go away.
+
+**Rationale:** Three separate brittle fixtures surfaced this session. `advance-week-command.test.js` replaced `session.advanceWeek` with a stub and therefore sampled the weekly plan *before* the rebuild that was erasing the tactic, which is exactly why a dead feature passed CI indefinitely. `session-lookup-indexes.test.js` asserted exact job-ID strings that encoded how many times the factory read the clock, so adding a legitimate field broke it with no behavioural change. `browser-wiring.test.js` asserted a module path rather than the guarded intent. Each was rewritten to guard the real property; none was loosened.
+
+---
+
+## 2026-08-16 - S86: a budget gate is a signal to refactor, never a number to raise
+
+**Decision:** When an island/byte budget blocks a necessary fix, reclaim the space architecturally — move a genuinely separable, non-critical-path concern behind the lazy-import boundary the codebase already uses — rather than raising `maxBytes` or lowering the headroom ratio.
+
+**Rationale:** The draft island sat at 15.03% headroom against a 15% floor, so it had no room for even a one-constant crash fix. Moving the user-triggered pick-reveal modal into its own dynamically imported module restored real headroom, matched the pattern `tabDraft.js` already used for the on-clock trade panel, and made the pick path safer: if the reveal module fails to load the pick still submits, where previously a throw inside the reveal cancelled it silently.
+
+---
+
 ## 2026-08-13 - S84: layout-shift fixes reserve space, they never change hydration order
 
 **Decision:** When a live performance diagnostic identifies panels/elements that shift layout because they render at zero size before async content lands, the fix is to reserve their real rendered height with CSS ahead of time — never to add artificial delay, change what loads when, or alter the existing lazy-UI-island hydration contract (D-S73.6).

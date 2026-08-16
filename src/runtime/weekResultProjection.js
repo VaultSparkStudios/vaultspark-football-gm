@@ -138,6 +138,24 @@ export function leanifySnapshot(snapshot) {
     snapshot.weekResultsCurrentSeason = countAndLean(snapshot.weekResultsCurrentSeason);
   }
 
+  // S86 [audit #6] — latestPostseason carries gameArchiveEntries for all 13
+  // playoff games, each spreading the full simulateGame return including
+  // boxScore.playByPlay. Those exact entries are ALSO stored via
+  // archiveGameResults, where retention applies — so this was a second,
+  // untrimmed copy worth a measured 1.09 MB against a 5 MB browser budget.
+  // The archived copy is the retained source of truth; the restore-path readers
+  // of latestPostseason need only .bracket and .superBowl.
+  if (snapshot.latestPostseason && typeof snapshot.latestPostseason === "object") {
+    const entries = snapshot.latestPostseason.gameArchiveEntries;
+    if (Array.isArray(entries)) {
+      for (const entry of entries) {
+        if (entry && typeof entry === "object" && entry.boxScore !== undefined) reclaimed.games += 1;
+      }
+      const { gameArchiveEntries, ...rest } = snapshot.latestPostseason;
+      snapshot.latestPostseason = rest;
+    }
+  }
+
   const league = snapshot.league;
   if (league && typeof league === "object") {
     if (Array.isArray(league.weeklyHistory)) {

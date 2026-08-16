@@ -55,8 +55,14 @@ test("GameSession lookup indexes track releases, signings, and trades", () => {
   assert.equal(session.getRoster("BUF").some((player) => player.id === incoming.id), true);
 });
 
+// S86 [audit #7] — this assertion previously hard-coded the exact ID strings,
+// which encoded how many times the factory happened to read the clock rather
+// than the property the test is named for. Adding the server-parity `expiresAt`
+// field shifted those literals with no behavioural change. It now asserts the
+// real property: identical clocks produce identical ID sequences, and IDs
+// within a runtime are distinct and ordered.
 test("local simulation job IDs are deterministic for a deterministic clock", async () => {
-  const runtime = createLocalApiRuntime({
+  const build = () => createLocalApiRuntime({
     storage: createMemoryStorage(),
     now: (() => {
       let tick = 0;
@@ -65,10 +71,17 @@ test("local simulation job IDs are deterministic for a deterministic clock", asy
     scheduler: () => {}
   });
 
+  const runtime = build();
   const first = runtime.createSimulationJob(1);
   const second = runtime.createSimulationJob(1);
 
-  assert.equal(first.id, "JOB-1800000000001-1");
-  assert.equal(second.id, "JOB-1800000000004-2");
-  assert.notEqual(first.id, second.id);
+  assert.notEqual(first.id, second.id, "each job must get a distinct id");
+  assert.match(first.id, /^JOB-\d+-1$/);
+  assert.match(second.id, /^JOB-\d+-2$/);
+  assert.ok(second.createdAt > first.createdAt, "job ids must advance with the clock");
+
+  // Same clock, same sequence — the actual determinism guarantee.
+  const replay = build();
+  assert.equal(replay.createSimulationJob(1).id, first.id);
+  assert.equal(replay.createSimulationJob(1).id, second.id);
 });

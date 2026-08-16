@@ -35,6 +35,8 @@ export const SHARDS = {
   runtime: [
     "test/action-coordinator.test.js",
     "test/advance-week-command.test.js",
+    "test/session86-core-loop-truth.test.js",
+    "test/session86-snapshot-parity.test.js",
     "test/architect-focus-review.test.js",
     "test/architect-cut.test.js",
     "test/architect-focus-review-browser.test.js",

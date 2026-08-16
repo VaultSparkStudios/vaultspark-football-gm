@@ -18,6 +18,27 @@ const DEAD_CAP_CRITICAL_RATIO  = 0.14; // dead cap > 14% of total cap = critical
 const KEY_PLAYER_RATING        = 84;   // OVR threshold for "key player"
 const EXPIRING_CONTRACT_YEARS  = 1;    // final contract year = expiring
 
+// S86 [audit #5] — read the field normalizeContract actually emits.
+// This filter previously read `years`/`length`/`year`/`currentYear`, none of
+// which exist on a normalized contract, so every lookup fell back to 0, every
+// 84+ OVR player was reported as "contract expired", and the players genuinely
+// in their final year were never surfaced. Legacy names are kept as fallbacks
+// so pre-normalization snapshots still resolve.
+function contractYearsRemaining(player) {
+  const contract = player?.contract;
+  if (!contract) return 0;
+  if (Number.isFinite(Number(contract.yearsRemaining))) return Number(contract.yearsRemaining);
+  const years = Number(contract.years ?? contract.length ?? 0);
+  const elapsed = Number(contract.year ?? contract.currentYear ?? 0);
+  return years - elapsed;
+}
+
+// getRoster emits `pos`; only some raw shapes carry `position`. Reading only
+// `position` rendered a literal "undefined" in the player-facing headline.
+function playerPosition(player) {
+  return player?.pos || player?.position || "—";
+}
+
 // ── Main entry point ──────────────────────────────────────────────────────────
 
 /**
@@ -74,19 +95,17 @@ export function getCapAlerts(capSummary, roster, currentYear) {
   // ── Expiring key player contracts ────────────────────────────────────────────
   if (Array.isArray(roster)) {
     const expiring = roster.filter((p) => {
-      const years = p.contract?.years ?? p.contract?.length ?? 0;
-      const yr    = p.contract?.year  ?? p.contract?.currentYear ?? 0;
-      const remaining = years - yr;
+      const remaining = contractYearsRemaining(p);
       return (p.overall || 0) >= KEY_PLAYER_RATING && remaining <= EXPIRING_CONTRACT_YEARS && remaining >= 0;
     });
 
     for (const player of expiring.slice(0, 3)) {
-      const remaining = (player.contract?.years ?? 0) - (player.contract?.year ?? 0);
+      const remaining = contractYearsRemaining(player);
       const salaryM = ((player.contract?.salary || player.contract?.capHit || 0) / 1_000_000).toFixed(1);
       alerts.push({
         type: "expiring-key",
         severity: remaining === 0 ? "critical" : "warning",
-        headline: `${player.name} (${player.position}, ${player.overall} OVR) — contract ${remaining === 0 ? "expired" : "final year"}`,
+        headline: `${player.name} (${playerPosition(player)}, ${player.overall} OVR) — contract ${remaining === 0 ? "expired" : "final year"}`,
         detail: `$${salaryM}M cap hit. ${remaining === 0 ? "Will be a free agent unless extended or tagged." : "Entering final contract year — extension window is open."}`
       });
     }

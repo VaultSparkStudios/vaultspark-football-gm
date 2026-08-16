@@ -1,7 +1,7 @@
 import { CONTRACT_RULES, NFL_STRUCTURE, POSITION_MAX_AGE_LIMITS, ROSTER_TEMPLATE } from "../config.js";
 import { createDraftClass, createSyntheticPlayer } from "../domain/playerFactory.js";
 import { advanceContractYear, buildContract } from "../domain/contracts.js";
-import { calculatePositionOverall, developmentDelta } from "../domain/ratings.js";
+import { calculatePositionOverall, developmentDelta, positionRatingKeys } from "../domain/ratings.js";
 import { getAllTeamPlayers, getTeamPlayers, recalculateAllTeamRatings } from "../domain/teamFactory.js";
 import { clamp } from "../utils/rng.js";
 
@@ -106,16 +106,29 @@ function countsAsAccruedSeason(player, year) {
   return false;
 }
 
-function progressPlayer(player, rng, context = {}) {
+export function progressPlayer(player, rng, context = {}) {
   const delta = developmentDelta(player, rng) + Math.round(Number(context.developmentBonus || 0));
   const ratingKeys = Object.keys(player.ratings);
   const focusRatings = (context.focusRatings || []).filter((key) => ratingKeys.includes(key));
+  // rng.shuffle is called unconditionally and identically to before, so the RNG
+  // stream position is unchanged by this fix (S86 [audit #3]).
   const randomKeys = rng.shuffle(ratingKeys.filter((key) => !focusRatings.includes(key)));
   const touched = [...focusRatings.slice(0, 2), ...randomKeys].slice(0, 4);
-  for (const key of touched) {
+
+  // S86 [audit #3] — the delta must reach the attributes the position is graded
+  // on, or the declared ageFactors curve never materialises in `overall`.
+  // Weighted keys carry the curve; the shuffled `touched` keys stay as flavour
+  // on everything else. Deduped so no key receives the delta twice.
+  const gradedKeys = positionRatingKeys(player.position).filter((key) => key in player.ratings);
+  const bumped = new Set([...gradedKeys, ...touched]);
+  for (const key of bumped) {
     player.ratings[key] = clamp(player.ratings[key] + delta, 40, 99);
   }
-  player.ratings.awareness = clamp(player.ratings.awareness + Math.round(delta / 2), 40, 99);
+  // Awareness tracks the curve at half rate, but only when it is not already a
+  // graded key — otherwise it would take the delta one and a half times.
+  if (!bumped.has("awareness")) {
+    player.ratings.awareness = clamp(player.ratings.awareness + Math.round(delta / 2), 40, 99);
+  }
   player.overall = calculatePositionOverall(player.position, player.ratings);
   player.morale = clamp((player.morale || 72) + Math.round(Number(context.moraleDelta || 0)), 35, 99);
   player.reinjuryRisk = clamp((player.reinjuryRisk || 0) - Number(context.recoveryBonus || 0), 0, 0.55);

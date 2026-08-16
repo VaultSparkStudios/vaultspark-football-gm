@@ -113,7 +113,11 @@ test("Return Digest exposes one exact source-derived Season continuation", () =>
 test("game flow modals use the shared focus trap", () => {
   const gameFlowSource = read("../public/lib/gameFlow.js");
   const engagementSource = read("../public/lib/engagementFeatures.js");
-  const draftSource = read("../public/lib/tabDraft.js");
+  // S86 [audit #2] — the draft pick reveal modal moved to its own lazily
+  // imported module (draftPickReveal.js) to restore draft-island headroom. The
+  // assertion follows the modal to its new owner; the guarded intent — draft
+  // modals go through the shared focus trap — is unchanged.
+  const draftSource = read("../public/lib/draftPickReveal.js");
   const settingsSource = read("../public/lib/tabSettings.js");
   const contractsSource = read("../public/lib/tabContracts.js");
   const appSource = read("../public/app.js");

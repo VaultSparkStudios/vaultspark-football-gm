@@ -4,6 +4,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Now
 
+- [ ] Calibrate the franchise economy so the salary cap actually binds: all 32 teams currently start with $92M-$112M of space against a $255M cap and `maxSalary` is unreachable, so cap management — the signature franchise-sim tension — costs the player nothing. Verified by measurement in S86 and deliberately deferred as design work.
 - [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
 - [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
 
@@ -11,6 +12,29 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+
+## Session 86 — Full arc: core-loop truth — the weekly tactic, the draft pick and the aging curve (2026-08-16)
+
+Source: `docs/AUDIT_2026-08-16_SESSION86.json`.
+
+| Item | Status |
+|------|--------|
+| weekly-tactic-reaches-simulation — stage the chosen tactic and apply it after the weekly-plan rebuild so the simulator actually observes the player's central weekly decision | ✅ Done |
+| draft-pick-reveal-crash — declare the missing analyst-line table and move the reveal behind a lazy import so the on-the-clock Draft button submits the pick | ✅ Done |
+| veteran-progression-curve-fidelity — deliver the declared ageFactors curve to the position's graded attributes instead of up to four mostly random keys | ✅ Done |
+| gm-legacy-playoff-authority — credit playoff appearances from `team.playoffSeed` and carry it into archived season rows | ✅ Done |
+| cap-alert-contract-shape-authority — read `yearsRemaining` and a real position so the Overview banner stops declaring every star's contract expired | ✅ Done |
+| postseason-snapshot-payload-parity — stop persisting a second untrimmed copy of every playoff box score | ✅ Done |
+| client-sim-job-exclusivity — reject concurrent simulation jobs and TTL-prune the client map, matching the Express runtime | ✅ Done |
+| owner-confidence-snapshot-parity — carry unknown owner keys through the restore rebuild and stop re-rounding patience | ✅ Done |
+
+**Method note:** every ranked premise was verified twice — read in the live file with exact lines quoted, then reproduced by running the engine. Three of the eight defects were invisible to code review and only appeared under execution.
+
+**Deferred, verified real, not dropped:** league-wide cap space is non-binding (all 32 teams hold $92M–$112M against a $255M cap; `maxSalary` unreachable) — franchise-economy calibration, owed a dedicated session. Five further confirmed findings (narrative trigger shape drift, box-score long-play accumulation, fan-sentiment win band, two missing DOM mounts, waiver-table identity column) are recorded in the audit sidecar's `preverifiedSkips`.
+
+**Verification:** canonical source-bound Node receipt 1,123/1,123 (core 123, runtime 716, sim-contract 79, sim-realism 1, studio 204 — up from 1,102/1,102, +21 new tests), read from shard summary lines rather than a wrapper exit code. Doctor blockingFailing 0; public-truth 39 engine systems; windows-hide, browser module reachability (80 modules), island/boot budget and CANON-044 wave gates green. Three suite reds were self-inflicted and root-fixed — no budget raised, no assertion loosened, no test deleted.
+
+**Launch posture:** unchanged. Preserve `launchReady: false` until Zoho delivery/reply-as, SHA-bound founder approval, authoritative lifecycle reconciliation and external Obelisk relying-party proof exist.
 
 ## Session 85 — Full arc: first-run performance and candidate-bound release authority (2026-08-14)
 

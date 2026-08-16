@@ -3,6 +3,9 @@ import { validatePendingGmDecision } from "../engine/gmDecisionAuthority.js";
 import { buildTacticalFilmReceipt, tacticDefinition } from "../../public/lib/tacticalFilmRoom.js";
 import { appendArchitectLedger } from "./architectLedger.js";
 import { getArchitectThesis, resolveArchitectThesis } from "../engine/architectThesis.js";
+import { applyTacticOverride, clearPendingWeeklyTactic, stagePendingWeeklyTactic } from "./weeklyTactic.js";
+
+export { applyTacticOverride };
 
 export const ADVANCE_WEEK_COMMAND_VERSION = "2.0";
 
@@ -29,21 +32,6 @@ export function validateAdvanceWeekCommand(session, payload = {}) {
   return { ok: true, count: normalizeCount(payload.count), tactic, tacticPlan, gmDecisionChoice: pendingValidation.choice };
 }
 
-function applyTacticOverride(weeklyPlan, tacticPlan) {
-  if (!weeklyPlan || !tacticPlan) return;
-  for (const [key, delta] of Object.entries(tacticPlan.modifiers || {})) {
-    weeklyPlan[key] = Number(weeklyPlan[key] || 0) + Number(delta || 0);
-  }
-  weeklyPlan.tacticalOverride = {
-    id: tacticPlan.id,
-    definitionVersion: tacticPlan.definitionVersion,
-    authorityId: tacticPlan.authorityId,
-    label: tacticPlan.label,
-    unit: tacticPlan.unit,
-    summary: tacticPlan.summary
-  };
-}
-
 export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance } = {}) {
   const command = validateAdvanceWeekCommand(session, payload);
   if (!command.ok) return command;
@@ -59,9 +47,13 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
     : { ok: true, applied: false };
   if (!gmDecision.ok) return { ...gmDecision, status: 400, reasonCode: "ADVANCE_WEEK_GM_DECISION_FAILED" };
 
+  // S86 [audit #1] — STAGE the tactic instead of mutating the current plan.
+  // advanceWeek() rebuilds every team's weeklyPlan before simulating, so an
+  // in-place mutation here was discarded before kickoff and every tactic was a
+  // measurable no-op. GameSession consumes the staged tactic after that rebuild.
   const tacticTeam = command.tactic ? controlledTeam : null;
   const originalWeeklyPlan = tacticTeam?.weeklyPlan ? { ...tacticTeam.weeklyPlan } : null;
-  if (tacticTeam?.weeklyPlan && command.tacticPlan) applyTacticOverride(tacticTeam.weeklyPlan, command.tacticPlan);
+  if (tacticTeam && command.tacticPlan) stagePendingWeeklyTactic(session, tacticTeam.id, command.tacticPlan);
 
   const results = [];
   try {
@@ -72,6 +64,9 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
       afterAdvance?.({ result, before, session, index });
     }
   } finally {
+    // Clear any tactic that was never consumed (e.g. the advance threw, or the
+    // phase was not a regular-season week), so it can never leak into a later week.
+    clearPendingWeeklyTactic(session);
     if (tacticTeam && originalWeeklyPlan) tacticTeam.weeklyPlan = originalWeeklyPlan;
   }
 

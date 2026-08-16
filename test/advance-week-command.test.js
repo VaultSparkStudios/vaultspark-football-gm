@@ -32,18 +32,28 @@ test("temporary weekly plans restore even when simulation throws", () => {
   assert.deepEqual(team.weeklyPlan, before);
 });
 
+// S86 [audit #1] — this fixture previously replaced `session.advanceWeek` with a
+// stub, which meant it captured the plan BEFORE the weekly rebuild that was
+// silently erasing the tactic. It therefore passed for the project's whole
+// history while all four tactics were measurable no-ops. The capture now drives
+// the REAL advanceWeek and samples the plan at the moment the simulator reads
+// it, so this assertion fails if the override ever stops reaching kickoff.
 test("player tactics layer over the matchup plan and stay inside their unit authority", () => {
   const capture = (tactic) => {
     const session = createSession({ seed: 49008, startYear: 2026, controlledTeamId: "BUF" });
     const team = session.league.teams.find((entry) => entry.id === "BUF");
     const base = structuredClone(team.weeklyPlan);
     let applied = null;
-    session.advanceWeek = () => {
-      applied = structuredClone(team.weeklyPlan);
-      return { year: session.currentYear, week: session.currentWeek, games: [] };
+    // grantWeeklyScoutingPoints runs immediately AFTER the weekly plans are
+    // rebuilt and the staged tactic is applied, and before the week is
+    // simulated — so it samples exactly the plan the simulator will read.
+    const realGrant = session.grantWeeklyScoutingPoints.bind(session);
+    session.grantWeeklyScoutingPoints = (...args) => {
+      if (!applied) applied = structuredClone(team.weeklyPlan);
+      return realGrant(...args);
     };
     const result = executeAdvanceWeekCommand(session, { weeklyTacticOverride: tactic });
-    assert.deepEqual(team.weeklyPlan, base);
+    assert.ok(applied, "expected to sample the weekly plan at simulation time");
     return { base, applied, result };
   };
 
@@ -53,7 +63,10 @@ test("player tactics layer over the matchup plan and stay inside their unit auth
   assert.equal(weeklyPlanUnitAggression(run.applied, "defense"), run.base.aggressionDelta);
   assert.equal(run.result.commandReceipt.tacticUnit, "offense");
   assert.equal(run.result.commandReceipt.tacticAuthorityId, "tactical-plan@2.0:run-heavy");
-  assert.equal(run.result.tacticalReceipt, null);
+  // S86 — a real week is now simulated (the old stub returned no games), so a
+  // real film receipt is produced and must name the tactic that was applied.
+  assert.equal(run.result.tacticalReceipt.tactic, "run-heavy");
+  assert.equal(run.result.tacticalReceipt.tacticAuthorityId, "tactical-plan@2.0:run-heavy");
 
   const blitz = capture("blitz-heavy");
   assert.equal(blitz.applied.passLeanDelta, blitz.base.passLeanDelta);

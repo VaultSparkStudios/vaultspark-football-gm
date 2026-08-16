@@ -1,7 +1,6 @@
 import { state, api } from "./appState.js";
 import { decoratePlayerColumnFromRows, escapeHtml, formatHeight, renderPulseChips, renderTable, setElementTone, setMetricCardValue, teamByCode, teamName } from "./appCore.js";
 import { getProspectNarrative, getScoutingRevealTier } from "./prospectNarratives.js";
-import { closeModal, openModal } from "./modalManager.js";
 import { observeBackgroundTask } from "./clientDiagnostics.js";
 
 const MEDICAL_LABELS = { clean: "Medical: clean", monitor: "Medical: monitor", "red-flag": "Medical: RED FLAG" };
@@ -449,45 +448,16 @@ export function renderCombineResults() {
   }).join("") + `</tbody></table>`;
 }
 
-export function pickAnalystLine(seed) {
-  const idx = Math.abs(seed || Date.now()) % DRAFT_ANALYST_LINES.length;
-  return DRAFT_ANALYST_LINES[idx];
-}
-
-export function showDraftPickReveal(prospect, teamName, onConfirm) {
+// S86 [audit #2] — the reveal body lives in ./draftPickReveal.js and is loaded
+// on demand. If the modal is absent OR the module fails to load, the pick still
+// proceeds: the reveal is flavour and must never cost the player their pick.
+export async function showDraftPickReveal(prospect, teamName, onConfirm) {
   const modal = document.getElementById("draftPickRevealModal");
   if (!modal) { onConfirm(); return; }
-  const body = modal.querySelector(".draft-reveal-body");
-  if (body) {
-    const analyst = pickAnalystLine(
-      (prospect?.name?.charCodeAt(0) || 0) + (prospect?.overall || 0)
-    );
-    body.innerHTML = `
-      <div class="draft-reveal-clock">⏱ On the clock: <strong>${escapeHtml(teamName || "Your Team")}</strong></div>
-      <div class="draft-reveal-pick">
-        <div class="dr-pos-badge">${escapeHtml(prospect?.position || prospect?.pos || "?")}</div>
-        <div class="dr-name">${escapeHtml(prospect?.name || "Unknown")}</div>
-        <div class="dr-ovr">OVR ${prospect?.overall ?? "—"}</div>
-      </div>
-      <div class="draft-reveal-analyst">"${escapeHtml(analyst)}"</div>
-      <div class="prospect-origin-note">${escapeHtml(getProspectNarrative(prospect).line)}</div>
-      <button class="dr-confirm-btn btn-primary">Confirm Pick</button>
-    `;
-    body.querySelector(".dr-confirm-btn")?.addEventListener("click", () => {
-      closeModal(modal);
-      modal.hidden = true;
-      modal.classList.remove("active");
-      onConfirm();
-    }, { once: true });
+  try {
+    const module = await import("./draftPickReveal.js");
+    module.renderDraftPickReveal(modal, prospect, teamName, onConfirm);
+  } catch {
+    onConfirm();
   }
-  modal.hidden = false;
-  modal.classList.add("active");
-  openModal(modal, {
-    onClose: () => {
-      modal.hidden = true;
-      modal.classList.remove("active");
-      closeModal(modal);
-      onConfirm();
-    }
-  });
 }

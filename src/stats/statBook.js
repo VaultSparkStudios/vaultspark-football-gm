@@ -475,7 +475,12 @@ export class StatBook {
       yardDef: team.season.yardsAgainst,
       drivesFor: team.season.drivesFor || 0,
       drivesAgainst: team.season.drivesAgainst || 0,
-      turnovers: team.season.turnovers
+      turnovers: team.season.turnovers,
+      // S86 [audit #4] — carry playoff participation into the archived row so a
+      // restored session derives the same answer the live session did. Written
+      // on the team by seasonSimulator, never on team.season.
+      playoffSeed: team.playoffSeed ?? null,
+      playoffExit: team.playoffExit ?? null
     }));
     this.teamSeasonArchive.push(...rows);
     this.buildWarehouseForYear(year);

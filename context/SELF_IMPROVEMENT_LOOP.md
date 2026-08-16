@@ -1,10 +1,31 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 85 closed at 991 / 1000 SIL v3.0. All three ranked items shipped: first-run game performance is reproducible and CLS-zero, production promotion is exact-candidate/staging-digest bound, and doctor release currency is live classified. Exact candidate `fcf16f1…` is green across CI, stable staging, Pages, backend, visual and performance evidence at artifact `3bafed39…`. Public launch remains independently HOLD with launchReady: false.
+Rolling status: Session 86 closed at 983 / 1000 SIL v3.0. All eight ranked items shipped. This was the first audit to execute the engine rather than read it, and it found three load-bearing player decisions that never reached the simulation: all four weekly tactics were provable no-ops, the on-the-clock Draft button threw before issuing the pick, and the declared aging curve arrived roughly fivefold diluted. Canonical Node receipt is 1,123/1,123 (up from 1,102/1,102, +21 tests). Public launch remains independently HOLD with launchReady: false.
 
-Previously — Session 84 closed at 982 / 1000 after the CSS reservation, scoped rival-intel endpoint and focused history-formatting coverage; its deferred live measurement and unintended automatic production deployment were reconciled in Session 85.
+Previously — Session 85 closed at 991 / 1000 after first-run performance authority, candidate-bound production promotion and the release-currency probe; its release architecture is untouched and still current.
 <!-- rolling-status-end -->
+## 2026-08-16 — Session 86 Core-Loop Truth: The Weekly Tactic, The Draft Pick, and The Aging Curve
+
+SIL v3.0: **983 / 1000** (Dev Health 97, Creative Alignment 99, Momentum 100, Engagement 97, Process Quality 93, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 98, Capital Efficiency 100, Automation Coverage 100).
+
+- **Dev Health: 97** — the canonical source-bound suite passes 1,123/1,123 across all five shards and doctor blockingFailing is 0. Three points are withheld because reaching green took four full-suite cycles and three reds, every one of them introduced by this session's own changes.
+- **Creative Alignment: 99** — restoring three decisions the player already believed they were making is the most soul-aligned work available in a franchise-management game: the weekly tactic, the draft pick and the aging arc are the spine of contend-versus-rebuild. One point is withheld because this was repair of existing promises, not new franchise depth.
+- **Momentum: 100** — all eight ranked items shipped in one session with no ranked item deferred, and the two known-real calibration findings that were deferred were deferred explicitly and recorded, not dropped.
+- **Engagement: 97** — a tactic that changes the result, a draft button that submits, and veterans who actually decline restore real stakes to the weekly and yearly loops. No real cohort exists, so no retention or fun claim is made.
+- **Process Quality: 93** — the decisive methodological win was auditing by running the engine, which found in one pass what code review had missed for eighty-five sessions, and every red was root-fixed rather than force-greened. Seven points are withheld: three reds were self-inflicted, and the first version of the aging-curve gate measured its own fixture (a synthetic quarterback missing formula keys) rather than the engine, which is precisely the failure mode the item was about.
+- **Cross-Repo Coherence: 99** — no sibling repository was edited. The studio-ops write-back-currency probe reported that repo's own debt from this working directory and was correctly classified as a false positive for this project rather than acted on. One point remains withheld for registry SPARKED versus local FORGE drift.
+- **Security Posture: 100** — no dependency, credential or auth surface changed, and the new simulation-job conflict guard closes a path that could corrupt a player's save by advancing one franchise twice.
+- **Ecosystem Integration: 98** — unchanged; two points remain withheld for unresolved external Obelisk relying-party and Zoho delivery proof.
+- **Capital Efficiency: 100** — no new package, paid service, model call or variable-cost runtime; the postseason payload fix removes 1.09 MB of duplicated data from every save.
+- **Automation Coverage: 100** — 21 new executable gates, including a fixed-seed regression that fails if the weekly tactic ever stops changing the league result, and a distribution harness that makes the declared aging curve self-enforcing against measured behaviour.
+
+Committed SIL follow-ups:
+- [SIL] Audit by running the system, not by reading it. Three defects that survived eighty-five sessions of code review died to a single fixed-seed probe; a feature is proven by measured divergence, never by the presence of correct-looking code.
+- [SIL] A test that stubs the seam it guards, or asserts a literal encoding an implementation detail, is worse than no test — it converts silence into false confidence. When a fixture breaks on a behaviour-neutral change, fix the fixture's intent, never the production code.
+- [SIL] A budget or headroom gate that blocks a necessary fix is telling you the module is at its architectural limit. Reclaim the space by moving a separable, non-critical-path concern behind an existing lazy boundary; raising the number is force-green by another name.
+- [SIL] When building a measurement fixture, first prove the fixture can observe the thing it measures. A synthetic player missing weighted rating keys silently measured the fixture's own gaps rather than the engine's curve.
+
 ## 2026-08-14 — Session 85 First-Run Performance and Candidate-Bound Release Authority
 
 SIL v3.0: **991 / 1000** (Dev Health 100, Creative Alignment 99, Momentum 100, Engagement 99, Process Quality 96, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 98, Capital Efficiency 100, Automation Coverage 100).

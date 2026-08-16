@@ -191,6 +191,15 @@ function checkRateLimit(ip) {
   return bucket.count <= RATE_LIMIT_PER_MIN;
 }
 
+// S86 [audit #7] — shared exclusivity predicate; the client runtime carries the
+// same one so both runtimes answer a duplicate launch identically.
+function activeSimulationJob() {
+  for (const job of simJobs.values()) {
+    if (job.status === "queued" || job.status === "running") return job;
+  }
+  return null;
+}
+
 function pruneSimJobs() {
   const now = Date.now();
   for (const [id, job] of simJobs) {
@@ -1366,6 +1375,19 @@ async function handleApi(req, res, url) {
       return true;
     }
     const seasons = Math.max(1, Math.min(200, toInt(body.seasons) || 10));
+    // S86 [audit #7] — runtime parity with localApiRuntime: simulation jobs
+    // advance the one shared session, so a concurrent job would double-advance
+    // the save while both reported their own progress as complete.
+    const running = activeSimulationJob();
+    if (running) {
+      sendJson(res, 409, {
+        ok: false,
+        reasonCode: "SIM_JOB_ALREADY_RUNNING",
+        error: "A simulation job is already running.",
+        job: running
+      });
+      return true;
+    }
     const job = createSimulationJob(seasons);
     sendJson(res, 202, { ok: true, job });
     return true;

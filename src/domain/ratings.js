@@ -210,6 +210,28 @@ export function coverageDepthRating(ratings = {}, bucket = "medium") {
   return ensured.coverageMedium;
 }
 
+/**
+ * The rating keys that actually contribute to a position's overall, weightiest
+ * first.
+ *
+ * S86 [audit #3] — progression previously applied its age/development delta to
+ * at most four rating keys chosen mostly at random out of roughly thirty-two,
+ * then recomputed overall from the full weighted formula. Only the weighted
+ * share of those four keys reached overall, so the declared aging curve arrived
+ * about five times weaker than specified (measured -0.46 OVR/yr against a
+ * declared -2.25 for age 30+), and an aging quarterback's decline could land
+ * entirely on tackling and kick power and cost him nothing. Exposing the
+ * weighted keys lets progression move the attributes the position is actually
+ * graded on, so the declared curve is what the player experiences.
+ */
+export function positionRatingKeys(position) {
+  const formula = POSITION_FORMULAS[position];
+  if (!formula) return [];
+  return Object.entries(formula)
+    .sort((a, b) => Number(b[1]) - Number(a[1]))
+    .map(([key]) => key);
+}
+
 export function calculatePositionOverall(position, ratings) {
   const formula = POSITION_FORMULAS[position];
   if (!formula) return 60;
