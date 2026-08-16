@@ -126,16 +126,22 @@
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
-    "score": 92,
+    "score": 83,
     "date": "2026-08-16",
-    "passing": 11,
-    "warning": 1,
+    "passing": 10,
+    "warning": 2,
     "checks": [
       {
         "id": "lifecycle-authoritative-registry",
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
+      },
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "warning",
+        "blocking": false,
+        "detail": "HEAD 1a104055545784ab670f1d12cd446548f50b5f84 is not covered by live production 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9"
       }
     ]
   },

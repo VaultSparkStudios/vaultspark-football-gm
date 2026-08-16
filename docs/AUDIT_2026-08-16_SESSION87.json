@@ -5,11 +5,17 @@
   "agent": "codex-gpt-5",
   "project": "franchise-architect-football",
   "displayName": "Franchise Architect: Football",
-  "status": "planned",
+  "status": "implemented",
   "summary": {
     "combinedPriority": 137.0,
     "source": "Fresh Session 87 audit of the live main worktree after mandatory Studio OS propagation. The audit began with the six explicitly preserved S86 findings and re-verified every premise against current source. The salary-cap premise was also executed against a fixed-seed 32-team league: cap space ranged from $89,994,526 to $110,932,923, mean $100,924,043, with 0/32 teams below $25M. The other five premises were confirmed by following the actual source-to-runtime-to-browser path rather than trusting renderer or engine declarations.",
     "qualityBar": "L2 for every item. Every gameplay correction must be observable in the browser and pinned by focused behavior coverage. Salary calibration must be distribution-tested across real generated leagues, keep all fresh teams legal at kickoff, and preserve signed contracts in existing saves. No item may weaken the public-launch HOLD, add variable-cost runtime, add a dependency, or move identity away from Obelisk."
+  },
+  "implementationEvidence": {
+    "sourceRevision": "1a104055545784ab670f1d12cd446548f50b5f84",
+    "tests": "1136/1136 canonical Node tests and 41/41 Playwright tests passed after the pixel-discovered player-column correction; focused post-pixel-fix coverage passed 27/27.",
+    "build": "Pages build, static smoke, 80-module reachability, and 637391/730000-byte boot budget passed with zero lazy leaks.",
+    "visualQa": "CANON-053 receipt binds 84 desktop/mobile dark/light captures from a 233-capture matrix; waiver identity, Franchise Legends, GM reputation, and cap pressure were manually inspected with zero blocking defects."
   },
   "profile": {
     "audience": "public-unlaunched",
@@ -91,7 +97,7 @@
       "priority": 32.1,
       "slug": "binding-franchise-economy",
       "title": "Turn the salary cap from decorative headroom into the core roster-building constraint",
-      "status": "pending",
+      "status": "shipped",
       "premise": "The declared salary cap is $255M, but buildContract prices a 99 OVR player at only about 3.2 times a 55 OVR player and initial player generation caps salary at $19.5M. A fixed-seed live league measured all 32 opening teams between $89,994,526 and $110,932,923 of cap space, mean $100,924,043; not one team was within $25M of the cap. Tag, restructure, rollover, cap alerts, contract negotiation and cut decisions therefore exist around a constraint that never binds.",
       "evidence": [
         "src/config.js declares salaryCap 255,000,000 and maxSalary 45,000,000",
@@ -122,7 +128,7 @@
       "priority": 27.1,
       "slug": "reachable-pressure-narratives",
       "title": "Adapt live culture and owner authority into narrative events the General Manager can actually answer",
-      "status": "pending",
+      "status": "shipped",
       "premise": "checkCultureCrises reads team.worldState.culture.chemistry or team.culture.chemistry, but live teams carry numeric team.chemistry. checkOwnerUltimatums reads hotSeat and owner.mandate, while live ownership authority is patience plus owner.expectation. Both event gates therefore consume shapes the runtime never writes. The authored culture-crisis decision can be unit-tested only by injecting a synthetic event; real play cannot produce it.",
       "evidence": [
         "src/engine/narrativeEvents.js reads nested culture chemistry and hotSeat/mandate shapes",
@@ -153,7 +159,7 @@
       "priority": 26.6,
       "slug": "fan-sentiment-reads-live-record",
       "title": "Make wins and losses move fan approval instead of leaving the entire win band dead",
-      "status": "pending",
+      "status": "shipped",
       "premise": "updateFanSentiment reads league.latestStandings or league.standings, but GameSession builds standingsRows only as a local dashboard projection and writes neither field to league. The engine therefore passes an empty standings array every week; computeFanApproval defaults every team to .500 and the documented +/-15 win modifier never moves.",
       "evidence": [
         "src/engine/fanSentiment.js reads league.latestStandings || league.standings || []",
@@ -183,7 +189,7 @@
       "priority": 22.1,
       "slug": "long-stat-max-semantics",
       "title": "Record the longest play as a maximum instead of adding every long play in the game",
-      "status": "pending",
+      "status": "shipped",
       "premise": "The per-game drive accumulator mergeObject adds every numeric leaf, including passing.long, receiving.long, rushing.long and kicking.long. mergeStats correctly uses max across games, but it receives an already-summed per-game value, producing impossible rows such as a 147-yard longest completion.",
       "evidence": [
         "src/engine/gameSimulator.js mergeObject sums all numeric keys",
@@ -213,7 +219,7 @@
       "priority": 17.7,
       "slug": "mount-authored-legacy-surfaces",
       "title": "Mount the Franchise Legends and General Manager Reputation views the renderers already author",
-      "status": "pending",
+      "status": "shipped",
       "premise": "tabHistory calls renderFranchiseLegends('franchiseLegendsContainer', ...), and tabOverview writes gmReputationLabel. Neither ID exists in public/game.html, so both renderers silently no-op. The game computes the dynasty identity and market reputation but never lets the player see either.",
       "evidence": [
         "public/lib/tabHistory.js calls franchiseLegendsContainer",
@@ -243,7 +249,7 @@
       "priority": 11.4,
       "slug": "waiver-player-identity",
       "title": "Show who is actually on waivers instead of rendering an opaque player ID",
-      "status": "pending",
+      "status": "shipped",
       "premise": "The persistent waiver ledger correctly stores playerId, release team and expiry, but getDashboardState exposes that raw ledger and tabRoster renders only playerId/releasedBy/week/expires. The waiver table has no player name, position or overall, making the roster decision unreadable even though the player authority is already indexed.",
       "evidence": [
         "src/runtime/GameSession.js writes playerId-only waiver ledger entries",

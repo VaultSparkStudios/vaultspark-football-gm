@@ -8,6 +8,10 @@ const outputRoot = path.join(root, "output", "playwright");
 const receiptDir = path.join(root, "docs", "visual-qa");
 const surfaceLabels = new Map([
   ["game-dialog", "First-run Opening Contract tutorial"],
+  ["cap-pressure", "Opening salary-cap pressure and General Manager legacy"],
+  ["waiver-identity", "Named and rated waiver-wire player identity"],
+  ["franchise-legends", "Franchise Legends dynasty memory"],
+  ["gm-persona", "General Manager market reputation"],
   ["trophy-road", "Trophy Road progress and next unlock"],
   ["sim-watch-reel", "Broadcast Director Final Reel"],
   ["room-watch", "Position Room Watch parity alerts"],
@@ -100,14 +104,16 @@ const receipt = {
       "Ranked General Manager commands and their exact contract destination render without clipping and preserve a visible focus target across desktop and mobile.",
       "The canonical Agent Negotiation modal exposes persona, source-derived leverage, ask, guaranteed money, deadline, and its bounded receipt ledger without a parallel mutation control.",
       "Prediction receipts distinguish winner accuracy from margin error and remain readable at desktop and mobile widths.",
-      "The Hall of Fame ceremony remains legible in both themes, with one dialog boundary and explicit copy/download status."
+      "The Hall of Fame ceremony remains legible in both themes, with one dialog boundary and explicit copy/download status.",
+      "Salary-cap pressure, waiver player identity, Franchise Legends, and General Manager market reputation remain readable in both themes at desktop and mobile widths."
     ],
     fixesApplied: [
       "Added first-run tutorial captures to the durable receipt across both themes and target widths after the layout-stability fix.",
       "Added component-specific Agent Negotiation, prediction-receipt, and Hall of Fame ceremony captures across both themes and target widths.",
       "Added component-specific strongest-signature, command-strip, and exact-destination captures across both themes and target widths.",
       "Bound each touched modal to accessible dialog/focus behavior and observable failure receipts.",
-      "Kept the first-decision shell lean by loading non-Overview tab modules only on intent."
+      "Kept the first-decision shell lean by loading non-Overview tab modules only on intent.",
+      "Added hash-bound cap-pressure, waiver-identity, Franchise Legends, and General Manager reputation captures after correcting the hidden-ID player-column offset."
     ],
     blockingDefectsOpen: 0
   }

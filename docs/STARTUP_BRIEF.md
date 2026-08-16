@@ -63,18 +63,18 @@
 
 ╔══ WHERE WE LEFT OFF  ·  Session 86 ════════════════════════════╗
 ║  Shipped:  Session 86 repaired the game core decision loop afte  ║
-║  Tests:    1123/1123 passing  ·  Deploy: N/A                     ║
+║  Tests:    1135/1135 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
-║     15,249 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~7,625 tok/turn  ·  cache 50%  ·  118 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
+║     25,758 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~12,879 tok/turn  ·  cache 50%  ·  69 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1123/1123 passing (2026-08-16) · STALE — run   ║
+║  ⚠  Tests         1135/1135 passing (2026-08-16) · STALE — run   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -88,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
+║  ⚠  Doctor        10/12 (83%)  ·  2 warn                         ║
 ║  ✓  Cost          Max flat-rate · $2.46/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -112,23 +112,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-08-16_SESSION87.md                   ║
-║                                                                  ║
-║  #1 · FIRE · binding-franchise-economy                           ║
-║  binding-franchise-economy — L1 plus a versioned exported marke  ║
-║                                                                  ║
-║  #2 · FIRE · reachable-pressure-narratives                       ║
-║  reachable-pressure-narratives — L1 plus explicit source adapte  ║
-║                                                                  ║
-║  #3 · HIGH · fan-sentiment-reads-live-record                     ║
-║  fan-sentiment-reads-live-record — L1 plus explicit record-sour  ║
-║                                                                  ║
-║  #4 · HIGH · long-stat-max-semantics                             ║
-║  long-stat-max-semantics — L1 plus direct accumulator coverage   ║
-║                                                                  ║
-║  #5 · HIGH · mount-authored-legacy-surfaces                      ║
-║  mount-authored-legacy-surfaces — L1 plus accessible labels, DO  ║
-║                                                                  ║
+║  ✓ queue exhausted · source: AUDIT_2026-08-16_SESSION87.md       ║
+║  Closed: 6 · Open: 0                                             ║
+║  Latest audit has no open ranked items; run /audit for a new li  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
