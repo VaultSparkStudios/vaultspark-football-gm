@@ -1,3 +1,37 @@
+# Session 88 Closeout — GM Legacy Card Empty-State Truth
+
+## Session Intent — S89
+
+Observe real consenting community evidence without manufacturing activity. Preserve the public-launch HOLD until Zoho receive/reply-as, SHA-bound founder launch approval, authoritative lifecycle reconciliation, and external Obelisk relying-party proof exist. No new audit-lens work is queued — run a fresh live-code audit rather than assume this session's single-item lens is still current.
+
+## Where We Left Off (Session 88)
+
+- The one verified S88 audit item shipped: the S87-shipped GM Legacy card's empty/error state hid only the inner score paragraph instead of the whole `#gmLegacyCardWrap` article, leaving an empty card husk visible on an unset/failed summary. `applyGmLegacyCard(card, wrap, summary)` in `public/lib/tabOverview.js` now resolves and hides/shows the whole wrapper on both paths; `renderGmLegacyScore` is a thin fetch+delegate wrapper.
+- A new focused test in `test/session87-franchise-truth.test.js` proves the wrapper hides on a null summary and un-hides with correct content on a populated one. Canonical local proof is 1,137/1,137 Node (up from 1,136/1,136, +1 test).
+- The doctor's 3 blocking release-authority-currency items (a stale record naming candidate `9801ac4` while staging/production already served the S87 hotfix `505c554`) were reconciled this session via the full staging-verify → production-promote → reconcile pipeline against the new candidate, not treated as exempt for being a small fast-follow (see D-S88.1).
+- Immutable application candidate `48557d616260d18de07d187e79d099f13525b166` passed exact-SHA CI, stable staging 14/14 at artifact `112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1`, and production Pages promotion at the same artifact; production provenance is 10/10 and unified release authority is fully verified (7/7 checks) at this candidate. A fresh 233-capture responsive-evidence pass (84 retained receipts) confirmed no visual regression on any other touched surface; the specific empty/error path is covered by the new DOM test rather than a static screenshot, since it is a transient network-failure state.
+- The backend runtime is unchanged this session (still serving the S87 hotfix candidate `90f0d4871828fc10df7b0933f636793db2697446`) — no backend/API contract was touched, so no backend redeploy was required.
+- Public launch remains HOLD. Nothing this session touched email, founder approval, lifecycle, or external identity gates.
+
+## Decisions That Must Survive (S88)
+
+- A fast-follow hotfix commit still requires full release-authority reconciliation against the pipeline before founder-authorized production promotion — never treat a small commit as exempt (D-S88.1).
+
+## Next Best Work
+
+- Observe the first real opted-in Community Stats cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
+- Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
+- Complete Zoho delivery/reply-as proof, obtain SHA-bound founder launch approval, reconcile registry SPARKED versus local FORGE, and finish external Obelisk relying-party registration before exposing account flows.
+
+## Key Files
+
+- `public/lib/tabOverview.js`, `test/session87-franchise-truth.test.js`
+- `docs/AUDIT_2026-08-16_SESSION88.*`, `docs/visual-qa/LATEST.json`, `docs/performance/LATEST.json`
+- `scripts/write-visual-qa-receipt.mjs`, `scripts/reconcile-release-authority.mjs`, `scripts/reconcile-staging-authority.mjs`
+- `.github/workflows/deploy-pages.yml`
+
+---
+
 # Session 87 Closeout — Binding Franchise Pressure and Live-Surface Truth
 
 ## Session Intent — S88

@@ -2,8 +2,18 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-16
+Last reviewed: 2026-08-17
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-08-17 - Session 88 truth update
+
+- **A defensive hide/show handler was hiding the wrong DOM node, and now hides the right one.** `renderGmLegacyScore()` toggled `.hidden` on `#gmLegacyCard` (the inner score paragraph), not `#gmLegacyCardWrap` (the surrounding article with header, grade badge, mastery, persona and reputation sub-widgets), so an unset or failed GM Legacy summary left an empty card husk visible instead of hiding cleanly. `applyGmLegacyCard(card, wrap, summary)` now resolves the wrapper (falling back to the card itself if the wrapper id is absent) and hides/shows it on both the empty-state and catch-block paths. This is the second instance of the same bug class found in this project's audit history (a hide/show target that doesn't match the intended visual boundary).
+- **The empty/error path is verified by a DOM test, not a rendered screenshot, and that gap is stated rather than papered over.** A null-summary/failed-fetch state is a transient network-failure condition that the static-artifact responsive-evidence harness (which serves a real backing dataset) cannot reproduce. `test/session87-franchise-truth.test.js` instead directly asserts the wrapper hides on a null summary and un-hides with correct score/grade/label text on a populated one — this is the honest verification boundary for this specific fix, recorded explicitly.
+- **A fast-follow hotfix commit no longer sits unreconciled against release authority.** The S87 closeout descendant `505c554` ("retry backend cold-start health") landed on `main` and was already live on staging/production, but the recorded release-authority evidence still named the earlier candidate `9801ac4`, tripping three blocking doctor checks. This session ran the full staging-verify → production-promote → reconcile pipeline against current HEAD rather than treat the small commit as exempt (D-S88.1); doctor now reports `blockingFailing: 0` with all three previously-failing checks green.
+- **Deployment identity is exact and independently cross-checked, not asserted.** Candidate `48557d616260d18de07d187e79d099f13525b166` passed exact-SHA CI, stable staging 14/14 at artifact `112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1`, production Pages promotion at the same artifact, and production provenance 10/10; unified release authority reports `status: verified` with all 7 identity/evidence checks green at this exact candidate.
+- **The suite receipt is exact and was read directly.** Node passes 1,137/1,137 (up from 1,136/1,136, +1 test), direct exit 0.
+- **Rejected phantoms, with evidence, before implementation.** Re-touching the salary-market curve (S87 already shipped a fixed-seed-verified versioned curve with a reachable $45M ceiling); a new AI coach or paid inference layer (the game remains intentionally zero-backend for its core loop); rewriting the GM Legacy API contract (the backend summary is correct — the defect was purely which DOM node the frontend hid); and a new debt-marker sweep (`generate-innovation-pack.mjs --stdout` found 0 open candidates and a repo-wide TODO/FIXME/HACK grep across `src`, `public/lib` and `test` returned zero matches).
+- **Launch posture is unchanged and remains independently held.** Nothing this session touches Zoho delivery/reply-as, founder approval, lifecycle registry reconciliation, or Obelisk relying-party proof. `launchReady` stays false.
 
 ## 2026-08-16 - Session 86 truth update
 

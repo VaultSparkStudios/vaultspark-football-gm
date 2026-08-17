@@ -1141,3 +1141,8 @@ The backend deploy compares its Caddy fragment with the installed fragment and r
 
 **D-S87.4 — Technical deployment does not imply public launch.**
 Exact staging, production and backend proof can be green while `launchReady:false` remains correct. *Why:* Zoho delivery/reply-as, SHA-bound founder launch approval, lifecycle authority and external identity proof are independent gates.
+
+## Session 88 — 2026-08-16
+
+**D-S88.1 — A fast-follow hotfix commit still requires full release-authority reconciliation, not an exemption.**
+The S87 closeout descendant `505c554` ("retry backend cold-start health") landed on `main` and staging/production served it live, but the recorded release-authority evidence still named the earlier candidate `9801ac4`, tripping three blocking doctor checks. Rather than treat a small fast-follow commit as exempt from the staging-verify → production-promote → reconcile pipeline, this session ran the full pipeline against current `HEAD` before founder-authorized production promotion. *Why:* skipping reconciliation on "small" commits is exactly how release-authority evidence silently drifts from what is actually live; the pipeline exists to keep verified-and-live in sync, not to be bypassed when a change looks minor.

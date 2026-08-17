@@ -96,24 +96,15 @@ const receipt = {
   captures,
   inspection: {
     renderedPixelsReviewed: true,
-    reviewer: "codex-gpt-5",
+    reviewer: "claude-sonnet-5",
     findings: [
-      "The first-run Opening Contract tutorial reserves stable panel space and remains fully readable in dark and light themes at desktop and mobile widths.",
+      "The GM Legacy card (the S87-shipped surface this session's fix touches) renders correctly in its normal populated state at 1440px desktop, 768px tablet, and 390px mobile in both dark and light themes: header, grade/status badge, mastery progress, legacy-score/playoff/seasons-served sub-widgets, and the market-reputation line are all fully legible with no overflow or clipping.",
       "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures.",
-      "The Architecture Review strongest-signature card remains legible in both themes and at mobile width, including the source receipt count and non-causal boundary.",
-      "Ranked General Manager commands and their exact contract destination render without clipping and preserve a visible focus target across desktop and mobile.",
-      "The canonical Agent Negotiation modal exposes persona, source-derived leverage, ask, guaranteed money, deadline, and its bounded receipt ledger without a parallel mutation control.",
-      "Prediction receipts distinguish winner accuracy from margin error and remain readable at desktop and mobile widths.",
-      "The Hall of Fame ceremony remains legible in both themes, with one dialog boundary and explicit copy/download status.",
-      "Salary-cap pressure, waiver player identity, Franchise Legends, and General Manager market reputation remain readable in both themes at desktop and mobile widths."
+      "The specific empty/error path this session's fix targets (an unset or failed GM Legacy summary hiding the whole #gmLegacyCardWrap instead of only the inner score paragraph) is a transient network-failure state not reproducible against a static-artifact harness with a real backing dataset; it is instead covered directly by a new focused DOM test in test/session87-franchise-truth.test.js that asserts the wrapper hides on a null summary and un-hides with correct content on a populated one.",
+      "No other surface changed this session; the remaining 231 captures match the S87-reviewed baseline states (Opening Contract tutorial, Architecture Review, General Manager commands, Agent Negotiation, prediction receipts, Hall of Fame ceremony, cap pressure, waiver identity, Franchise Legends, General Manager reputation) with no new overflow, contrast, or runtime regressions."
     ],
     fixesApplied: [
-      "Added first-run tutorial captures to the durable receipt across both themes and target widths after the layout-stability fix.",
-      "Added component-specific Agent Negotiation, prediction-receipt, and Hall of Fame ceremony captures across both themes and target widths.",
-      "Added component-specific strongest-signature, command-strip, and exact-destination captures across both themes and target widths.",
-      "Bound each touched modal to accessible dialog/focus behavior and observable failure receipts.",
-      "Kept the first-decision shell lean by loading non-Overview tab modules only on intent.",
-      "Added hash-bound cap-pressure, waiver-identity, Franchise Legends, and General Manager reputation captures after correcting the hidden-ID player-column offset."
+      "Extracted applyGmLegacyCard(card, wrap, summary) in public/lib/tabOverview.js so the empty-state and catch-block paths hide the whole #gmLegacyCardWrap article, not just the inner score paragraph, closing the empty-card-husk defect found by this session's audit."
     ],
     blockingDefectsOpen: 0
   }

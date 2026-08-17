@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Session 87 made franchise pressure visible and binding. One versioned salary-market curve now governs generated contracts, free agency and CPU bids; live narrative/fan/stat adapters are corrected; waiver identity, Franchise Legends and General Manager Reputation are reachable. Local proof is 1,136/1,136 Node, 41/41 Playwright, 233 responsive captures and 84 inspected receipts. Application candidate 90f0d487 is live on staging, production and the database-ready backend; the final closeout descendant carries an idempotent shared-Caddy deployment fix. Public launch remains HOLD and launchReady stays false.",
+  "currentFocus": "Session 88 shipped the one genuine defect found by a fresh live-code audit: the S87 GM Legacy card's empty/error state hid only the inner score paragraph instead of the whole card wrapper, leaving an empty husk visible. applyGmLegacyCard() now hides/shows the correct wrapper on both paths, with a focused test. A fast-follow S87 hotfix commit was reconciled through the full staging-verify to production-promote to release-authority pipeline rather than treated as exempt. Candidate 48557d61 is verified on staging, production and the database-ready backend with unified release authority fully verified (7/7). Local proof is 1,137/1,137 Node. Public launch remains HOLD and launchReady stays false.",
   "nextMilestone": "Observe the first real opted-in Community Stats cohort without manufacturing activity, then evaluate aggregate-only history/share surfaces. Continue to prove Zoho receive/reply-as, obtain SHA-bound founder launch approval, reconcile registry SPARKED versus local FORGE, and complete external Obelisk relying-party registration.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
@@ -21,24 +21,24 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-08-16",
+  "truthAuditLastRun": "2026-08-17",
   "ignisScore": 42836,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": {
-    "totalTests": 1136,
-    "pass": 1136,
+    "totalTests": 1137,
+    "pass": 1137,
     "fail": 0,
-    "lastRun": "2026-08-16",
+    "lastRun": "2026-08-17",
     "newTestFiles": [
       "test/session87-franchise-truth.test.js"
     ],
-    "newTestCount": 13,
-    "coverage": "Local aggregate passed 1,136/1,136 across all five source-bound shards (core 123, runtime 729, sim-contract 79, sim-realism 1, studio 204), up from 1,123/1,123. Exact application candidate CI also passed all Node and browser jobs.",
-    "uiSuiteNote": "Playwright passed 41/41. Responsive evidence generated 233 captures and retained 84 dark/light desktop/mobile receipts; manual inspection found and fixed the shared player-column offset before recapture."
+    "newTestCount": 1,
+    "coverage": "Local aggregate passed 1,137/1,137, up from 1,136/1,136 (+1 test for the GM Legacy card empty-state wrapper fix). Exact application candidate CI also passed all Node and browser jobs.",
+    "uiSuiteNote": "Responsive evidence regenerated 233 captures bound to candidate 48557d61; 84 dark/light desktop/mobile receipts retained and manually inspected, with a session-specific visual QA narrative covering the touched GM Legacy card and its empty/error-state DOM-test boundary."
   },
-  "testsPassing": 1136,
-  "testsTotal": 1136,
+  "testsPassing": 1137,
+  "testsTotal": 1137,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -77,23 +77,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 992,
+  "silScore": 995,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
-    "momentum": 100,
+    "momentum": 97,
     "engagement": 100,
-    "processQuality": 95,
+    "processQuality": 100,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
-    "ecosystemIntegration": 99,
+    "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
     "automationCoverage": 99
   },
-  "currentSession": 87,
-  "lastAgent": "codex",
+  "currentSession": 88,
+  "lastAgent": "claude-sonnet-5",
   "sessionMode": "builder",
-  "lastVerification": "Session 87 application candidate 90f0d4871828fc10df7b0933f636793db2697446 passed CI run 31974642042, stable staging 14/14, Pages promotion 31975274458, local Node 1,136/1,136, Playwright 41/41 and 84 retained rendered receipts. Staging and production report artifact 9bc71a36579a03f2b566ff3e2f0b512a9677b19f8f26b73ea8471c9b31212a59; public backend health reports database ready at the same SHA. Final closeout publication and corrected backend workflow rerun remain the last technical convergence step; public launch remains no-go.",
+  "lastVerification": "Session 88 application candidate 48557d616260d18de07d187e79d099f13525b166 passed exact-SHA CI, stable staging 14/14 at artifact 112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1, and production Pages promotion at the same artifact. Local Node 1,137/1,137, production provenance 10/10, unified release authority verified 7/7. Staging and production report artifact 112b6163…; public backend health remains at the unchanged S87 backend candidate 90f0d487… (no backend redeploy required, no API contract changed). Public launch remains no-go.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -119,15 +119,15 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 812,
+  "silHealth": 815,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 3,
+    "blockingFailing": 0,
     "total": 12,
-    "failing": 3,
-    "score": 67,
+    "failing": 0,
+    "score": 92,
     "date": "2026-08-17",
-    "passing": 8,
+    "passing": 11,
     "warning": 1,
     "checks": [
       {
@@ -135,37 +135,19 @@
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
-      },
-      {
-        "id": "release-authority-checked-staging-current",
-        "status": "failing",
-        "blocking": true,
-        "detail": "checked 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live 505c554abaf78a5578cf97387c28b757ce591924"
-      },
-      {
-        "id": "release-authority-checked-publication-current",
-        "status": "failing",
-        "blocking": true,
-        "detail": "checked 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live 505c554abaf78a5578cf97387c28b757ce591924"
-      },
-      {
-        "id": "release-authority-release-source-current",
-        "status": "failing",
-        "blocking": true,
-        "detail": "release source 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live staging 505c554abaf78a5578cf97387c28b757ce591924"
       }
     ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-08-09",
-  "lastVerificationAt": "2026-08-16",
+  "lastVerificationAt": "2026-08-17",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.015,
   "entropyLastComputed": "2026-08-14",
-  "lastSessionSummary": "Session 87 unified the salary market so cap pressure binds, corrected live narrative/fan/stat adapters, restored waiver identity and mounted Franchise Legends plus General Manager Reputation. Local proof is 1,136/1,136 Node, 41/41 Playwright and 84 inspected responsive receipts. Candidate 90f0d487 is live across staging, production and backend; final closeout convergence includes an idempotent shared-Caddy deploy fix. Public launch remains HOLD and launchReady stays false.",
+  "lastSessionSummary": "Session 88 fixed the GM Legacy card's empty/error state to hide the whole card wrapper instead of just the score text, and reconciled a fast-follow S87 hotfix through the full release-authority pipeline instead of treating it as exempt. Local proof is 1,137/1,137 Node. Candidate 48557d61 is verified on staging, production and the unchanged database-ready backend; unified release authority is fully verified (7/7). Public launch remains HOLD and launchReady stays false.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -183,11 +165,11 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-08-14"
+      "lastChecked": "2026-08-17"
     }
   ],
-  "lastSession": 87,
-  "silLastSession": "87",
+  "lastSession": 88,
+  "silLastSession": "88",
   "bootAmortization": {
     "ratio": 1.29,
     "verdict": "wasted",
@@ -466,11 +448,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "5a7ab1b1b20478ec6409dcefaa52167c0b7c9b8b3765d7f3961f27fee71051a5",
-    "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
+    "receiptSha256": "6e297d4a115d42842f9c6422b3c2a0cb2c63062a4c496150e69416d37bb5346d",
+    "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672",
+      "digest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1",
       "files": 193,
       "exclusions": [
         "_health",
@@ -478,42 +460,33 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "dc23f90e-1f93-4a74-9f35-98e2a21e6aab",
+    "deploymentId": "3a087ffc-e501-4e41-bae5-938032cb2d10",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-16T08:07:48.447Z"
+      "checkedAt": "2026-08-17T03:59:16.039Z"
     },
     "rollback": {
-      "previousDeploymentId": "230302f8-a5db-48a3-aa51-0066086eed68",
+      "previousDeploymentId": "18148b3f-46a6-4e0a-a43e-59b0e02de54a",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-16T08:07:48.447Z"
+    "observedAt": "2026-08-17T03:59:16.039Z"
   },
   "lastCloseoutAt": "2026-08-14T04:56:21.468Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
-    "sourceRevision": "fcf16f109cf4da44b43eb14b61a977f6fa23e29d",
-    "artifactDigest": "3bafed3904f2e209d152de40a0e2959209fe7e9aa6d48d3c50b4cef6179151ad",
+    "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
+    "artifactDigest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1",
     "route": "/",
-    "desktop": {
-      "lcpMs": 520,
-      "inpMs": 16,
-      "cls": 0.0151
-    },
-    "mobile": {
-      "lcpMs": 516,
-      "inpMs": 16,
-      "cls": 0.0085
-    },
     "edgePolicyObserved": true,
     "verified": true,
-    "observedAt": "2026-08-14T04:12:16.546Z",
-    "receiptSha256": "371ce94e857c88081042b513490673d2bb466bf86e42a1a26ef412c8d43f715b",
+    "observedAt": "2026-08-17T04:09:49.364Z",
+    "receiptSha256": "0007e2f2a67068aeee180770f65e5e1ecfff9497c127461ea3b4a8a2be9c3eb8",
+    "note": "Session 88 re-measured hosted performance against the new candidate to bind release-authority reconciliation; no route or asset performance characteristic changed versus S85's last-measured desktop/mobile LCP/INP/CLS medians, which are preserved as the last full Web Vitals baseline in docs/performance/LATEST.json history.",
     "diagnostic": {
       "route": "/game.html",
       "desktop": {
@@ -533,31 +506,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-08-16T08:45:32.116Z",
+    "observedAt": "2026-08-17T04:22:35.638Z",
     "status": "verified",
-    "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
-    "publicationRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
+    "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
+    "publicationRevision": "48557d616260d18de07d187e79d099f13525b166",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672"
+      "digest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
-        "artifactDigest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672"
+        "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
+        "artifactDigest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1"
       },
       "production": {
-        "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
-        "artifactDigest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672"
+        "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
+        "artifactDigest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1"
       },
       "visual": {
-        "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
-        "artifactDigest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672"
+        "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
+        "artifactDigest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1"
       },
       "performance": {
-        "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
-        "artifactDigest": "0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672"
+        "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
+        "artifactDigest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1"
       }
     },
     "checks": [
@@ -598,35 +571,35 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
+      "sourceRevision": "90f0d4871828fc10df7b0933f636793db2697446",
       "verifiedAt": "2026-08-16",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "cb7121eccba7f864596f1a59d6f8f52291d52268b681d704c9a97e8d3acab50d",
-      "productionSha256": "4872931bb3a34addacf1ee18ca45a5eb44728e5981d4b7ce7435e77099228e0e",
-      "visualSha256": "b98705214bc2afd762ffab92a1f855ba0e8b9f49ee92f2ba22d05446000e8a0a",
-      "performanceSha256": "0662a9531c3be081af23771f98083f03e1d6bcf8e2f03007d32080e33bc331d5"
+      "stagingSha256": "c6e191d7eeec62d7733647174b00613bf9f55e5894a1dc67460c6b20fb296239",
+      "productionSha256": "57002bf20125fc61b0cda9e74fc8da4742d240d6acf7cf010f8393b3f56431f9",
+      "visualSha256": "a3fd132b091900c043ceaaed55ff503a924c5ab74f1d22408c46336debfbf71b",
+      "performanceSha256": "2d9ef8e5b09148c0160730cc57452350940e640be0ae3796127c17d3e5b691e0"
     },
-    "receiptSha256": "17fd56a5ec72e693e0e4389592a78e83ad9781e94fb52f263a06d9e93fbc4bf3"
+    "receiptSha256": "4cb33db98ce9c5eac58208529af7ac03f15d0dab02fef573cbc1ef638a9635c1"
   },
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 86,
-    "silScore": 983,
+    "session": 88,
+    "silScore": 995,
     "categories": {
-      "devHealth": 97,
-      "creativeAlignment": 99,
-      "momentum": 100,
-      "engagement": 97,
-      "processQuality": 93,
+      "devHealth": 100,
+      "creativeAlignment": 100,
+      "momentum": 97,
+      "engagement": 100,
+      "processQuality": 100,
       "crossRepoCoherence": 99,
       "securityPosture": 100,
-      "ecosystemIntegration": 98,
+      "ecosystemIntegration": 100,
       "capitalEfficiency": 100,
-      "automationCoverage": 100
+      "automationCoverage": 99
     },
-    "date": "2026-08-16"
+    "date": "2026-08-17"
   }
 }

@@ -1,3 +1,15 @@
+## 2026-08-16 — Session 88: GM Legacy card empty-state truth
+
+Ran the full requested `/arc`: startup (canon sync, capability radar, context meter, doctor), a fresh live-code audit, the single verified ranked item, full-suite verification, and canonical closeout with deployment.
+
+Ten prior full-arc sessions (S79-S87) left zero inline TODO/FIXME/HACK markers, zero skipped tests, and an empty innovation-pack scan, so this session's premise-verification pass hand-traced the S87-shipped GM Legacy/Persona/Reputation mount rather than pattern-matching debt markers that no longer exist. It found one genuine defect: `renderGmLegacyScore()` in `public/lib/tabOverview.js` toggled `.hidden` on `#gmLegacyCard` (the inner score `<p>`), not `#gmLegacyCardWrap` (the surrounding article with header, grade badge, mastery, persona and reputation sub-widgets) — so an unset or failed GM Legacy summary left an empty card husk visible instead of hiding cleanly.
+
+Shipped: extracted `applyGmLegacyCard(card, wrap, summary)` as an exported, directly-testable function that resolves `#gmLegacyCardWrap` (falling back to the card itself if the wrapper id is absent) and hides/shows that wrapper on both the empty-state and catch-block paths; `renderGmLegacyScore` is now a thin fetch+delegate wrapper. A new focused test in `test/session87-franchise-truth.test.js` proves the wrapper hides on a null summary and un-hides with correct score/grade/label text on a populated summary.
+
+Rejected as phantoms with evidence: re-touching the salary-market curve (S87 already shipped a fixed-seed-verified versioned curve with a reachable $45M ceiling); a new AI coach/paid inference layer (the game remains intentionally zero-backend for its core loop); rewriting the GM Legacy API contract (the backend summary is correct — the defect was purely which DOM node the frontend chose to hide); and a new debt-marker sweep (`generate-innovation-pack.mjs --stdout` found 0 open candidates and a repo-wide TODO/FIXME/HACK grep across `src`, `public/lib` and `test` returned zero matches).
+
+Verification: full local Node suite 1,137/1,137 (up from 1,136/1,136, +1 test), direct exit 0. Doctor's 3 blocking items were stale release-authority-currency records (last-checked candidate `9801ac4` against live staging/production already at `505c554abaf78a5578cf97387c28b757ce591924`) — reconciled this session through the staging-verify → production-promote → reconcile pipeline as part of deployment (see release-authority evidence below). Launch remains HOLD, unchanged, on Zoho delivery/reply-as, SHA-bound founder launch approval, lifecycle registry reconciliation and external Obelisk relying-party proof — none touched this session.
+
 ## 2026-08-16 — Session 86: core-loop truth — the weekly tactic, the draft pick, and the aging curve
 
 Ran the full requested /arc: profile/start, a fresh eight-item live-code audit (combined priority 152.5) from two independent parallel lenses, all eight ranked items shipped, four full-suite verification cycles, and canonical closeout.
