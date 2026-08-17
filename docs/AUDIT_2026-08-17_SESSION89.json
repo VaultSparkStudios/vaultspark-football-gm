@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-17",
+  "session": 89,
+  "agent": "claude-opus-5",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 8.4,
+    "source": "Fresh Session 89 audit of the live main worktree, run by executing the engine rather than reading it — the method S86 proved is the only one that finds this project's defect class. A seeded 20-season league (seed 20260817) and a focused 8-season roster-composition probe were tabulated before anything was ranked. Two of the four ranked findings are invisible to code review and appear only under multi-season execution; one is a validated prevention gate; one is a declared-authority fiction proved by direct computation. One strong code-read hypothesis was disproved by running it and is recorded as a rejected phantom rather than shipped.",
+    "qualityBar": "L2+. Every ranked premise is proved by a reproducible seeded measurement, and every fix ships with a regression that fails on the pre-fix engine. No budget raised, no assertion loosened, no gate reworded to pass."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay and app-release-gate: consequential General Manager decisions, simulation truth, mobile/theme parity, static-host safety, exact staging identity, rollback, privacy, and honest independent launch holds",
+    "staging": "stable Cloudflare/GitHub Pages staging must prove the exact immutable candidate before direct-to-main production promotion; public sanitization mandatory",
+    "source": "arc profile, S88 handoff and closeout brief, live source tree, seeded 20-season and 8-season engine probes, direct evaluation of the versioned market curve, a validated DOM husk scanner, doctor output and current release receipts"
+  },
+  "method": {
+    "probes": [
+      {
+        "id": "probe-1-distribution",
+        "description": "20 seasons, seed 20260817. Per season: team cap space (min/median/max), teams over cap, max/median salary, salaries at the declared ceiling, age distribution, top-1/top-100-mean/median overall, plus champions, win distribution and retirement ages.",
+        "runtimeNote": "GameSession driven directly through simulateOneSeason with runOffseasonAfter, matching src/engine/leagueSimulator.js."
+      },
+      {
+        "id": "probe-2-roster-composition",
+        "description": "8 seasons, same seed. Per season: total players, roster-slot histogram, per-team active roster size (min/median/max), per-team cap used and count of teams over the cap. Isolates whether the cap breach comes from roster count or from price per player.",
+        "runtimeNote": "Established that active rosters stay pinned at 53 while cap used per team climbs, so the breach is price-side and practice-side, not active-roster-count-side."
+      },
+      {
+        "id": "probe-3-negotiation-authority",
+        "description": "Sampled the top 3 players on 8 teams and compared session.getNegotiationDemand() against marketSalaryForOverall() for the same overall.",
+        "runtimeNote": "Run specifically to test — and it disproved — a code-read hypothesis. See preverifiedSkips."
+      },
+      {
+        "id": "probe-4-husk-scanner",
+        "description": "Dependency-free stack-based parse of public/game.html into a real element tree, cross-referenced against every id that receives a visibility toggle anywhere in public/lib. Validated against the pre-S88 worktree as a negative control before its clean result on HEAD was accepted.",
+        "runtimeNote": "Two earlier heuristic versions were discarded: one produced 39/48 false positives, and a second returned a clean result but failed the negative control, i.e. it would have passed the known S88 bug."
+      }
+    ]
+  },
+  "gameLoopReview": {
+    "loopTightness": 5.5,
+    "progression": 5,
+    "sessionEngagement": 7,
+    "retention": 5,
+    "soulFidelity": 7.5,
+    "overall": 6,
+    "evidence": "Scored down from S87/S88's carried-forward 6.6 on new measured evidence rather than vibes. The franchise economy — the spine of a GM game — stops functioning as a constraint after roughly five simulated seasons: by season 7, 30 of 32 clubs are over the salary cap, and by season 20 the median club is $89M over a $255M cap. A cap that every club violates is not a constraint, and every downstream decision the game asks the player to make (extend, cut, sign, restructure) loses its cost. Progression is marked down for the same reason plus unbounded roster accumulation. Session engagement and soul fidelity are unchanged: the moment-to-moment loop, presentation and honesty posture are intact."
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "Simulation truth / franchise economy",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 9.5,
+      "slug": "offseason-cap-compliance-authority",
+      "title": "The salary cap stops binding after ~5 seasons — by season 7, 30 of 32 clubs are illegal and never recover",
+      "status": "shipped",
+      "premise": "Measured, not inferred. Seeded 20-season run (seed 20260817): teams over the $255M cap by season are 0, 0, 1, 2, 10, 27, 30, 31, and 31 for every remaining season through 2045. Median team cap space goes +$29M (2027) -> +$3M (2031) -> -$42M (2033) -> -$89M (2043); worst observed club is $226M over the cap. Probe 2 isolates the mechanism: active rosters stay legally pinned at 53 (median 53, max 53 in every season), while median cap used per club climbs $225.6M -> $296.6M as league talent inflates (top-100 mean overall drifts 86.8 -> 94.2 across 20 seasons) and the cubic market curve prices that inflation forward. The cap is enforced at exactly one seam — offseasonSimulator.js:337 refuses a backstop signing when capSpace(...) < contract.capHit — and nowhere else. runOffseason() (offseasonSimulator.js:387-408) runs expireContracts, aging/retirement, runDraft, the free-agency backstop, normalizeRosterSlots and applyCapRollover; not one of those stages can bring an over-cap club back under the cap, and runDraft (lines 234-254) pushes 7 rounds x 32 rookie contracts onto rosters every single year with no cap check and no roster check at all. There is no release, restructure or compliance authority anywhere in the engine.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Gate runDraft so a club over the cap cannot add a rookie contract."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Add a deterministic cap-compliance authority (src/engine/capCompliance.js) that runs as its own named offseason stage after the free-agency backstop: for each club over its cap-for-year (including rollover and dead cap), release the worst value-per-dollar contracts — lowest overall per dollar of cap hit, deterministically tie-broken by player id — to the free-agent pool until the club is legal or hits its roster floor, accruing honest dead cap on each release rather than making cuts free. Respect the franchise-authority boundary exactly as runFreeAgencyBackstop does: excludeTeamIds clubs are never touched, so the engine can never cut the player's roster out from under them. Ship a regression that simulates 12+ seasons and asserts zero illegal clubs in every season — a test that fails on the pre-fix engine."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "L2 plus restructure-before-release (convert base salary to prorated bonus), a player-facing compliance deadline with consequences, and calibrated league-wide talent deflation so the economy self-stabilises instead of being trimmed back each year."
+        }
+      },
+      "executionEvidence": "Shipped src/engine/capCompliance.js as a deterministic release authority and wired it as its own offseason step in both drivers: the runOffseason facade (headless/league simulator) and GameSession.runRosterLegalityBackstop (the interactive pipeline stage the game actually runs). Releases rank by worst value per dollar (overall per dollar of cap hit, tie-broken by player id), land the player in the free-agent pool with teamId FA, and charge honest dead money. The dead-money model was corrected after measurement, not after review: the first implementation charged the full deadCapRemaining against the current year, which for a large contract exceeds its own cap hit, so every release made the club LESS legal and the trim loop ran to its guard limit with 31 of 32 clubs still illegal. Splitting it the way the real sport does — this year carries the already-prorated signing bonus, the remaining guarantee accelerates into next year, so the current-year saving is exactly the base salary — makes the loop converge. Re-measured at the same seed: clubs over the cap after the offseason are 0 in every season from 2027 through 2036, against a pre-fix 0,0,1,2,10,27,30,31,31,31. Verified not to be an artifact: 0 zero-valued cap hits league-wide, median cap hit .82M, league still fully populated."
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "Simulation truth / roster authority",
+      "effortHours": 2,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 7,
+      "slug": "offseason-roster-size-authority",
+      "title": "No roster limit exists — the league accumulates 86% more players over 20 seasons and never releases anyone",
+      "status": "shipped",
+      "premise": "Measured. Seeded 20-season run: active players in the league grow monotonically 1,568 -> 2,919 (+86%) with no plateau. Probe 2 shows why: normalizeRosterSlots (offseasonSimulator.js:348-355) sorts each club's whole roster by overall and labels the top 53 'active' and every remaining player 'practice' — with no upper bound of any kind. The practice population therefore only ever grows: 50 -> 153 -> 257 -> 360 -> 389 -> 443 -> 468 across the first eight seasons, reaching roughly 37 players per club by season 20 against a real-world practice squad of 16. Nothing in the offseason ever releases a player to the free-agent pool, so every player a club has ever drafted or signed stays on its books until retirement. Those practice contracts also count against the cap in capSpace() (offseasonSimulator.js:225-232, which sums getAllTeamPlayers, not just actives), so this compounds rank 1.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Hard-truncate each roster to 53 active + 16 practice in normalizeRosterSlots."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Give normalizeRosterSlots a declared, single-source roster structure (active 53, practice 16) and release the overflow to the free-agent pool through the same release authority rank 1 introduces, so cut players re-enter the market instead of vanishing. Respect excludeTeamIds. Ship a regression asserting that across 12+ simulated seasons no club ever exceeds the declared roster structure and the league-wide player population stays bounded."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus positional roster minimums so truncation cannot leave a club without a kicker, and a visible transaction-wire entry for every cut."
+        }
+      },
+      "executionEvidence": "Added ROSTER_STRUCTURE (activeLimit 53, practiceLimit 16) to src/config.js as the single declared roster authority, and replaced the local unbounded normalizeRosterSlots in offseasonSimulator.js with a re-export of the compliance module version so exactly one definition exists. Clubs above 69 players release the surplus tail by quality into the free-agent pool rather than holding it forever on an unbounded practice squad. Re-measured at the same seed: max club roster is pinned at exactly 69 in every season and clubs above the limit are 0 throughout, against a pre-fix practice population that grew 50 -> 468 in eight seasons with no ceiling."
+    },
+    {
+      "rank": 3,
+      "tier": "MEDIUM",
+      "category": "Declared-authority truth",
+      "effortHours": 1.5,
+      "impact": 5,
+      "innovation": 4,
+      "priority": 6,
+      "slug": "unreachable-max-salary-bound",
+      "title": "The declared $45M salary ceiling is mathematically unreachable, and the salary bounds are re-declared as raw literals in eight places",
+      "status": "shipped",
+      "premise": "Proved by direct computation, not by reading. marketSalaryForOverall is 850_000 + (ovr-50)^3 * 190 + (ovr-88)^2 * 130_000, clamped to CONTRACT_RULES.maxSalary. The rating is clamped to 0-100, so the curve has a hard maximum: it returns $38,933,310 at 99 overall and $43,320,000 at 100, and never more no matter what rating is passed in. The declared ceiling of $45,000,000 (src/config.js:122) is therefore unreachable by any player at any rating — short by $1,680,000 even at a theoretically perfect 100 — and the clamp in marketSalaryForOverall (contracts.js:63) is dead code that can never fire. The 20-season probe confirms it empirically: salaries at the declared ceiling are 0 in all 20 seasons, and the highest salary ever observed is $32.0M. Separately, the same two bounds are re-declared as bare literals rather than read from CONTRACT_RULES in at least eight sites (GameSession.js:236, 243-244, 2488, 4610, 6330, 6583; offseasonSimulator.js:209, 219-220; data/pfrAdapter.js:156) — the exact 'a shape declared twice will drift' class this project has been bitten by before. The S87 test is honest (it asserts only >= $38M, which passes); the overclaim lives in the S87 session record, which states the configured $45M ceiling is reachable. It is not.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Correct the declared ceiling to the true top of market."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Make the declared bound and the curve agree by construction, then prove it: derive the reachable top-of-market from the curve, assert in a test that CONTRACT_RULES.maxSalary is actually attainable at the maximum rating (so the constant can never drift back into fiction), and replace the duplicated raw literals with reads of the single CONTRACT_RULES authority. Correct the session record's reachability claim rather than leaving it standing."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "L2 plus expressing the whole market curve as a cap-percentage profile so the ceiling, the cap and the curve stay coherent if the cap ever moves."
+        }
+      },
+      "executionEvidence": "Corrected CONTRACT_RULES.maxSalary from the unreachable 45_000_000 to 43_320_000 — exactly what the versioned curve pays a perfect 100 overall — so the declared ceiling is a real bound rather than dead code, and bound the constant to the curve in test so it cannot drift back out of reach. Replaced the duplicated raw literals with reads of the single CONTRACT_RULES authority at every site in src/runtime/GameSession.js (6 minSalary, 1 maxSalary) and src/engine/offseasonSimulator.js (2 minSalary, 1 maxSalary); the intentionally different rookie-scale ceiling of 7_500_000 was left alone as a genuine local override, not collapsed into the league bound."
+    },
+    {
+      "rank": 4,
+      "tier": "MEDIUM",
+      "category": "UI/UX truth / regression prevention",
+      "effortHours": 2,
+      "impact": 4,
+      "innovation": 6,
+      "priority": 5.5,
+      "slug": "card-visibility-husk-gate",
+      "title": "Ship the validated empty-state husk detector as a permanent gate — the S88 defect class has no automated guard",
+      "status": "shipped",
+      "premise": "The S88 audit's own recommendedMoves asked for this: the GM Legacy husk was the second instance of the hide-an-inner-node-inside-a-visible-card class found by hand, and nothing stops a third. This session built the detector and, critically, validated it before trusting it. It parses public/game.html into a real element tree with a dependency-free stack walk, collects every id that receives a .hidden or classList hidden toggle anywhere in public/lib (both direct getElementById(...).hidden and local-binding forms), and flags a toggle whose target is a leaf/text-level element inside a card-like block that would keep visible siblings, where the block itself is addressable and never toggled. Negative control against the pre-S88 worktree: it reports gmLegacyCard, a <p> inside <article id=\"gmLegacyCardWrap\">, leaving 5 visible siblings — the exact shipped defect. Against HEAD it reports 0 suspects across 50 toggled ids / 48 static targets. Two earlier versions were discarded rather than shipped: a class-name heuristic that produced 39/48 false positives, and a corrected-nesting version that returned a clean result but failed the negative control — it would have silently passed the known bug. A gate that cannot fail on the defect it exists to catch is worse than no gate.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Keep the scanner as a one-off audit artifact."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Ship it as scripts/check-card-visibility.mjs wired into the studio shard, and ship its negative control as a test: a fixture reproducing the pre-S88 structure must be reported as a suspect, and the live tree must report zero. That pairing is what stops the gate from quietly failing backwards later."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus a shared card-visibility helper that every summary card renders through, so the correct hide target is structural rather than remembered."
+        }
+      },
+      "executionEvidence": "Shipped scripts/check-card-visibility.mjs (exit 1 on findings) plus test/card-visibility-gate.test.js in the studio shard. The gate reports 0 husk suspects across 50 toggled ids and 48 static targets on HEAD, and its own test proves it still fails on the defect it exists to catch by running it against a fixture that reproduces the pre-S88 structure — it must report gmLegacyCard as a <p> inside gmLegacyCardWrap leaving visible siblings. Both directions are asserted, plus a guard that the scanner has not silently stopped finding toggles at all."
+    }
+  ],
+  "axisCoverage": {
+    "featuresDepth": "Covered by ranks 1-2: the franchise economy and roster authority are the depth surface of a GM game, and both were measured rather than assumed.",
+    "uiUxFeedback": "Covered by rank 4 (empty-state truth prevention). No new UI defect was found this session; the husk scanner returned zero on HEAD.",
+    "gamificationImmersion": "Assessed via the game-loop review. Marked down on measured economy evidence; presentation and narrative surfaces were not found defective.",
+    "aiIntelligence": "Assessed and rejected — no capability gap in this session's findings requires inference, and the core loop remains intentionally zero-backend.",
+    "security": "No change. Sanitization, CSP/HSTS and the community privacy contract were re-checked against current receipts and are unchanged from S88.",
+    "speedEfficiency": "No regression found. Boot budget, island headroom and hosted performance receipts are current at the S88 candidate.",
+    "tokenCost": "Audit ran on local seeded probes and static parsing only; no inference spend, no paid vendor, marginal cost unchanged at zero."
+  },
+  "recommendedMoves": [
+    "Re-run the seeded 20-season probe after the cap-compliance and roster-size authorities land and publish the before/after table — league legality is now a measurable, regressable property and should stay one.",
+    "Treat league-wide talent inflation (top-100 mean overall drifting 86.8 -> 94.2 across 20 seasons) as the next dedicated calibration session. It is the upstream driver of the economy breach; this session bounds the symptom honestly rather than smuggling a progression rebalance into a correctness pass.",
+    "Continue deferring the cohort-dependent and launch-authority TASK_BOARD rows — they require real opted-in users or founder/registry action and cannot be manufactured."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Route session.getNegotiationDemand() through the versioned market curve — it appears to price off an independent overall^2 * 510 curve, violating the S87 surviving decision that opening contracts, player offers and CPU bids must not carry independent curves",
+      "reason": "Rejected after running it. The literal at GameSession.js:4423 is real and is a genuinely independent anchor, and on a pure code read this looked like a load-bearing violation worth ranking first. Probe 3 disproved it: sampling the top 3 players on 8 clubs, actual demands come back at a median of 1.23x marketSalaryForOverall for the same rating (market/demand median 0.81x), and the returned agent object carries a marketSalary field derived from the market authority. The overall^2 anchor is a pre-blend input, not the effective price. Ranking it would have shipped a phantom and a regression against correct behavior."
+    },
+    {
+      "candidate": "Sweep public/lib for more instances of the S88 empty-state husk defect",
+      "reason": "Rejected as a phantom by measurement. The validated scanner reports 0 suspects across 50 toggled ids and 48 static targets on HEAD. There is no backlog of this defect to clear — only an absent guard, which is ranked as item 4 instead."
+    },
+    {
+      "candidate": "Clear stale gmMasteryPortfolio / gmPersonaTier innerHTML when a GM Legacy summary omits those sub-objects",
+      "reason": "Rejected as unreachable. getGmLegacySummary (gmLegacyScore.js:444-449) always returns both keys once initGmLegacy has run: persona comes from getGmPersonaArc(legacy) and mastery from buildArchitectMasteryPortfolio(league, teamId), which always returns a constructed object. There is no reachable state where a populated summary omits them, so the missing else-branch cannot strand stale markup."
+    },
+    {
+      "candidate": "Report an empty league-wide free-agent pool as a market defect",
+      "reason": "Rejected — the probe was wrong, not the engine. Probe 1 counted free agents as players with a falsy teamId and reported 0 in every season. The engine actually marks free agents with teamId === 'FA' (offseasonSimulator.js:276). The finding was an artifact of the measurement and was discarded rather than reported."
+    },
+    {
+      "candidate": "Treat lifecycle-authoritative-registry (registry SPARKED vs local FORGE) as a fixable local item",
+      "reason": "Rejected again, unchanged from S88. This is cross-repo authority drift against portfolio/PROJECT_REGISTRY.json in vaultspark-studio-ops; canon forbids cross-repo tree edits from here, so it stays a non-blocking warning pending Studio Ark reconciliation."
+    },
+    {
+      "candidate": "Add a TODO/FIXME/HACK debt sweep as an audit item",
+      "reason": "Rejected as a phantom, unchanged from S88. The repo still carries no inline debt markers across src, public/lib and test."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "claim": "Canonical local Node suite",
+      "status": "green",
+      "detail": "1,150/1,150 across the five default shards (core 123, runtime 740, sim-contract 79, sim-realism 1, studio 207), direct exit 0, source-bound receipt written. Up from 1,137/1,137 (+13: 10 franchise-economy tests, 3 card-visibility gate tests)."
+    },
+    {
+      "claim": "The long shard is NOT part of that receipt, and it holds one standing failure",
+      "status": "red-preexisting",
+      "detail": "DEFAULT_SHARDS in scripts/run-test-shard.mjs is [core, runtime, sim-contract, sim-realism, studio] — long is excluded, so npm test has never covered it. test/realism-career-regression.test.js fails on annual mean overall drift of 0.228 against an on-target ceiling of 0.15 (watch band 0.3), reporting status watch where the test asserts on-target. This was verified NOT to be caused by S89: the identical failure reproduces on a pristine detached worktree at HEAD 8ddc310, before any change this session. It is reported rather than fixed or force-greened, and rather than being quietly left invisible."
+    },
+    {
+      "claim": "That standing red is the same phenomenon this audit measured independently",
+      "status": "corroborated",
+      "detail": "The probe found league top-100 mean overall drifting 86.8 -> 94.2 across 20 seasons; the realism regression independently measures 0.228 annual mean drift against a 0.15 target, with Quarterback (0.463) and Offensive Line (0.397) rooms in the watch band. Talent inflation is real, is the upstream driver of the economy breach this session bounded, and is owed its own calibration session rather than being smuggled into a correctness pass."
+    },
+    {
+      "claim": "Cap legality after the fix",
+      "status": "measured",
+      "detail": "0 illegal clubs after every offseason across seasons 2027-2036 at seed 20260817, against a pre-fix 0,0,1,2,10,27,30,31,31,31. Confirmed not to be an artifact of empty contracts: 0 zero-valued cap hits league-wide, median cap hit .82M, league still fully populated."
+    },
+    {
+      "claim": "The multi-season regression fails on the pre-fix engine",
+      "status": "established-by-measurement",
+      "detail": "The pre-fix distribution at the same seed was recorded before the fix was written; its season-3 assertion (illegal must be empty) fails against a measured 1 illegal club, and season 7 against 30. The negative control is the recorded pre-fix measurement rather than a re-run of the reverted engine."
+    },
+    {
+      "claim": "Second-order saturation",
+      "status": "exhausted",
+      "detail": "Genius hit list closed 4 / open 0. innovation-pack reports 0 open and 0 unclassified candidates; the single deferred row (launch-readiness evidence) is human-blocked on an interactive provider flow and cannot be manufactured."
+    },
+    {
+      "claim": "Public launch",
+      "status": "unchanged-hold",
+      "detail": "launchReady stays false. Nothing this session touched Zoho delivery/reply-as, SHA-bound founder approval, lifecycle reconciliation or external Obelisk relying-party registration."
+    }
+  ]
+}

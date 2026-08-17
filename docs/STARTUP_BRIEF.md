@@ -112,8 +112,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-16_SESSION88.md       ║
-║  Closed: 1 · Open: 0                                             ║
+║  ✓ queue exhausted · source: AUDIT_2026-08-17_SESSION89.md       ║
+║  Closed: 4 · Open: 0                                             ║
 ║  Latest audit has no open ranked items; run /audit for a new li  ║
 ╚════════════════════════════════════════════════════════════════╝
 

@@ -4,10 +4,11 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Session 88 shipped the one genuine defect found by a fresh live-code audit: the S87 GM Legacy card's empty/error state hid only the inner score paragraph instead of the whole card wrapper, leaving an empty husk visible. applyGmLegacyCard() now hides/shows the correct wrapper on both paths, with a focused test. A fast-follow S87 hotfix commit was reconciled through the full staging-verify to production-promote to release-authority pipeline rather than treated as exempt. Candidate 48557d61 is verified on staging, production and the database-ready backend with unified release authority fully verified (7/7). Local proof is 1,137/1,137 Node. Public launch remains HOLD and launchReady stays false.",
-  "nextMilestone": "Observe the first real opted-in Community Stats cohort without manufacturing activity, then evaluate aggregate-only history/share surfaces. Continue to prove Zoho receive/reply-as, obtain SHA-bound founder launch approval, reconcile registry SPARKED versus local FORGE, and complete external Obelisk relying-party registration.",
+  "currentFocus": "Session 89 repaired the franchise economy, which had stopped functioning as a constraint. Measured on a seeded 20-season run, clubs over the  salary cap ran 0,0,1,2,10,27,30 and then 31 of 32 for every remaining season (median  over by season 20, worst ); the engine enforced the cap at exactly one seam while the draft added 224 unchecked rookie contracts a year, and no code path could release a player. There was also no roster limit at all, so the league grew 1,568 -> 2,919 players. New src/engine/capCompliance.js is the single release authority for both, wired into the headless and interactive offseason paths, with dead money split the real way so the trim loop converges. Re-measured: 0 illegal clubs after every offseason across 2027-2036, rosters pinned at 53+16. Also corrected the unreachable  declared salary ceiling (true maximum ,320,000) and shipped a negative-control-validated gate for the S88 empty-state husk class. Local proof 1,150/1,150 Node. Public launch remains HOLD and launchReady stays false.",
+  "nextMilestone": "Calibrate league-wide talent inflation at the source — measured twice independently (league top-100 mean overall drifting 86.8 -> 94.2 across 20 seasons; realism regression 0.228 annual drift against a 0.15 ceiling). S89 bounded the symptom only. Also decide explicitly whether the long shard belongs in the canonical test receipt, since it currently carries a pre-existing failure that npm test never runs.",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
+    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified.",
+    "Pre-existing red outside the canonical receipt — test/realism-career-regression.test.js fails in the excluded long shard on 0.228 annual overall drift vs a 0.15 ceiling; verified to reproduce on pristine HEAD 8ddc310, queued as S90 calibration."
   ],
   "lastUpdated": "2026-08-17",
   "lifecycle": "deployed",
@@ -26,19 +27,21 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": {
-    "totalTests": 1137,
-    "pass": 1137,
+    "totalTests": 1150,
+    "pass": 1150,
     "fail": 0,
     "lastRun": "2026-08-17",
     "newTestFiles": [
-      "test/session87-franchise-truth.test.js"
+      "test/session89-franchise-economy-truth.test.js",
+      "test/session89-cap-legality-regression.test.js",
+      "test/card-visibility-gate.test.js"
     ],
-    "newTestCount": 1,
-    "coverage": "Local aggregate passed 1,137/1,137, up from 1,136/1,136 (+1 test for the GM Legacy card empty-state wrapper fix). Exact application candidate CI also passed all Node and browser jobs.",
-    "uiSuiteNote": "Responsive evidence regenerated 233 captures bound to candidate 48557d61; 84 dark/light desktop/mobile receipts retained and manually inspected, with a session-specific visual QA narrative covering the touched GM Legacy card and its empty/error-state DOM-test boundary."
+    "newTestCount": 13,
+    "coverage": "Local aggregate passed 1,150/1,150 across the five default shards (core 123, runtime 740, sim-contract 79, sim-realism 1, studio 207), up from 1,137/1,137 (+13 tests).",
+    "shardNote": "DEFAULT_SHARDS excludes long, so this receipt does not cover it. test/session89-cap-legality-regression.test.js (the multi-season legality proof) lives there and passes when run directly (128s); test/realism-career-regression.test.js fails there on a pre-existing calibration drift verified to reproduce at HEAD 8ddc310."
   },
-  "testsPassing": 1137,
-  "testsTotal": 1137,
+  "testsPassing": 1150,
+  "testsTotal": 1150,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -77,21 +80,21 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 995,
+  "silScore": 971,
   "silCategoriesV3": {
-    "devHealth": 100,
+    "devHealth": 92,
     "creativeAlignment": 100,
-    "momentum": 97,
+    "momentum": 100,
     "engagement": 100,
     "processQuality": 100,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
-    "automationCoverage": 99
+    "automationCoverage": 80
   },
-  "currentSession": 88,
-  "lastAgent": "claude-sonnet-5",
+  "currentSession": 89,
+  "lastAgent": "claude-opus-5",
   "sessionMode": "builder",
   "lastVerification": "Session 88 application candidate 48557d616260d18de07d187e79d099f13525b166 passed exact-SHA CI, stable staging 14/14 at artifact 112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1, and production Pages promotion at the same artifact. Local Node 1,137/1,137, production provenance 10/10, unified release authority verified 7/7. Staging and production report artifact 112b6163…; public backend health remains at the unchanged S87 backend candidate 90f0d487… (no backend redeploy required, no API contract changed). Public launch remains no-go.",
   "silScoreV3MigratedAt": "2026-04-21",
@@ -147,7 +150,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.015,
   "entropyLastComputed": "2026-08-14",
-  "lastSessionSummary": "Session 88 fixed the GM Legacy card's empty/error state to hide the whole card wrapper instead of just the score text, and reconciled a fast-follow S87 hotfix through the full release-authority pipeline instead of treating it as exempt. Local proof is 1,137/1,137 Node. Candidate 48557d61 is verified on staging, production and the unchanged database-ready backend; unified release authority is fully verified (7/7). Public launch remains HOLD and launchReady stays false.",
+  "lastSessionSummary": "Session 89 found and fixed a defect that had survived the project entire history: the salary cap stopped binding after about five simulated seasons, leaving 31 of 32 clubs illegal with the median club  over the cap, because the engine could gate additions but had no way to release a player and no roster limit at all. A new cap-compliance release authority fixes both, verified by re-measurement at the same seed (0 illegal clubs across 2027-2036). Also corrected an unreachable declared salary ceiling and shipped a validated gate for the S88 husk class. 1,150/1,150 Node. Launch remains HOLD.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -168,8 +171,8 @@
       "lastChecked": "2026-08-17"
     }
   ],
-  "lastSession": 88,
-  "silLastSession": "88",
+  "lastSession": 89,
+  "silLastSession": "89",
   "bootAmortization": {
     "ratio": 1.29,
     "verdict": "wasted",
@@ -586,19 +589,19 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 88,
-    "silScore": 995,
+    "session": 89,
+    "silScore": 971,
     "categories": {
-      "devHealth": 100,
+      "devHealth": 92,
       "creativeAlignment": 100,
-      "momentum": 97,
+      "momentum": 100,
       "engagement": 100,
       "processQuality": 100,
       "crossRepoCoherence": 99,
       "securityPosture": 100,
       "ecosystemIntegration": 100,
       "capitalEfficiency": 100,
-      "automationCoverage": 99
+      "automationCoverage": 80
     },
     "date": "2026-08-17"
   }

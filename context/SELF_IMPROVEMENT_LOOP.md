@@ -1393,6 +1393,25 @@ Committed SIL follow-ups:
 - [SIL] Release identity is deployable SHA plus artifact; publication commits require a proven receipt-only lineage, never an informal exception.
 - [SIL] Preserve diagnostic reds on adjacent routes even when the canonical release route passes.
 
+## 2026-08-17 — Session 89
+
+SIL v3.0: **971 / 1000** (Dev Health 92, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 100, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 80).
+
+- Dev Health 92 — canonical local Node 1,150/1,150 across the five default shards, direct exit 0, doctor blockingFailing 0. Eight points withheld for a real, now-disclosed standing red: the `long` shard is excluded from `DEFAULT_SHARDS` and `test/realism-career-regression.test.js` fails there on 0.228 annual overall drift against a 0.15 ceiling. Verified pre-existing on a pristine worktree at HEAD `8ddc310`, so it is not self-inflicted — but it is unresolved, and scoring it as green would be exactly the "the suite is green" overclaim this session put on the record.
+- Creative Alignment 100 — the work restores the central tension of a General Manager game. A cap that every club violates makes every extend/cut/sign decision costless; the fix returns consequence to the loop without inventing new systems or narrative.
+- Momentum 100 — a fresh audit found and shipped a critical, load-bearing defect that had survived the project's entire history and eleven prior full-arc sessions, plus three further items. The genius list closed 4 / open 0 and the innovation pack reports 0 open candidates.
+- Engagement 100 — the franchise economy is the spine of the player-facing loop; restoring cap scarcity is directly felt in every roster decision.
+- Process Quality 100 — audited by running the engine, not reading it. Every ranked premise is a reproducible seeded measurement. One strong code-read hypothesis was disproved by running it and rejected rather than shipped. The one suite red raised by an existing gate was fixed at the source claim, not by rewording the gate. No budget raised, no assertion loosened, no test deleted, and a pre-existing red was disclosed rather than absorbed.
+- Cross-Repo Coherence 99 — one point still withheld for the unchanged registry SPARKED / local FORGE drift, sibling-owned via Studio Ark.
+- Security Posture 100 — no new dependency (the husk gate is a dependency-free parser written rather than a jsdom install), no secret custody change, no paid service.
+- Ecosystem Integration 100 — audit sidecar, task board, handoff, decisions, truth audit, work log and project status all agree, and the audit `.md` is rendered from the sidecar rather than hand-written.
+- Capital Efficiency 100 — audit and verification ran on local seeded probes and static parsing only. No inference spend, no vendor, marginal cost unchanged at zero.
+- Automation Coverage 80 — the new authorities have direct unit coverage plus a multi-season regression, and the new gate ships with its own negative control. Twenty points withheld honestly: the multi-season regression lives in the `long` shard, which the canonical run does not execute, so the single most important new test in this session is not actually covered by the receipt this project treats as authoritative. That is a genuine automation gap, not a rounding error.
+
+Committed SIL follow-ups:
+- [SIL] A declared bound must be reachable and bound in test to the mechanism that produces it — a limit no code path can hit is a fiction that reads as authority. Sweep the remaining declared constants for the same class.
+- [SIL] Resolve the `long`-shard exclusion explicitly. A test suite that does not run its slowest and most behavioural regressions is reporting on the wrong thing, and this session had to discover that by hand rather than being told.
+
 ## 2026-08-17 — Session 88
 
 SIL v3.0: **995 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 97, Engagement 100, Process Quality 100, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 99).

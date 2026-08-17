@@ -9,8 +9,29 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Next
 
+- [ ] **Calibrate league-wide talent inflation.** Measured twice, independently: league top-100 mean overall drifts 86.8 → 94.2 across 20 simulated seasons, and `test/realism-career-regression.test.js` reports 0.228 annual mean drift against a 0.15 on-target ceiling (Quarterback 0.463 and Offensive Line 0.397 rooms in the watch band). This is the upstream driver of the S89 economy breach, which S89 bounded at the symptom rather than the source. Owed a dedicated session, not a correctness pass.
+- [ ] **Decide whether the `long` shard belongs in the canonical receipt.** It is excluded from `DEFAULT_SHARDS`, so `npm test` has never covered it and its standing failure has been invisible behind every "suite green" claim. Including it turns the canonical receipt red until the item above lands — that sequencing is a founder call, not a silent one.
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+
+## Session 89 — Full arc: the franchise economy stops being a fiction (2026-08-17)
+
+Source: `docs/AUDIT_2026-08-17_SESSION89.json`.
+
+| Item | Status |
+|------|--------|
+| offseason-cap-compliance-authority — clubs are brought back under the salary cap every offseason by a deterministic release authority, instead of the cap silently ceasing to bind after ~5 seasons | ✅ Done |
+| offseason-roster-size-authority — a declared roster structure (53 active + 16 practice) is an actual upper bound, instead of clubs accumulating every player they ever acquired | ✅ Done |
+| unreachable-max-salary-bound — the declared salary ceiling is corrected to what the curve can actually pay and bound to it in test; duplicated salary literals now read the single CONTRACT_RULES authority | ✅ Done |
+| card-visibility-husk-gate — the S88 empty-state husk class gets a permanent, negative-control-validated gate | ✅ Done |
+
+**Method note:** audited by running the engine, not reading it. A seeded 20-season league and an 8-season roster-composition probe were tabulated before anything was ranked. Two of four findings were invisible to code review and to the entire existing suite. One strong code-read hypothesis (`getNegotiationDemand` pricing off an independent curve) was **disproved by running it** — actual demands come back at a median 1.23× the market authority — and was rejected rather than shipped.
+
+**Verification:** canonical Node 1,150/1,150 across the five default shards (core 123, runtime 740, sim-contract 79, sim-realism 1, studio 207), direct exit 0, up from 1,137/1,137 (+13 tests). Cap legality re-measured at the same seed: 0 illegal clubs after every offseason across 2027-2036, against a pre-fix 0,0,1,2,10,27,30,31,31,31. Max club roster pinned at exactly 69 in every season.
+
+**Honest red, pre-existing, not fixed:** the `long` shard is excluded from `DEFAULT_SHARDS` and has never run under `npm test`. `test/realism-career-regression.test.js` fails there on 0.228 annual mean overall drift against a 0.15 on-target ceiling. Verified to reproduce identically on a pristine worktree at HEAD `8ddc310` before any S89 change. Reported, not force-greened.
+
+**Launch posture:** unchanged. Preserve `launchReady: false` until Zoho delivery/reply-as, SHA-bound founder approval, authoritative lifecycle reconciliation and external Obelisk relying-party proof exist.
 
 ## Session 88 — Full arc: GM Legacy card empty-state truth (2026-08-16)
 

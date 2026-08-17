@@ -2,6 +2,46 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-17 - S89: a declared bound must be reachable, or it is not a bound
+
+**Decision:** Any constant that declares a limit — a salary ceiling, a roster size, a budget — must be reachable by the system it constrains, and a test must bind it to the mechanism that produces it. A limit no code path can hit is not a conservative safety margin; it is a fiction that reads as authority.
+
+**Rationale:** `CONTRACT_RULES.maxSalary` declared a $45M ceiling for the project's whole history while the versioned market curve maxes out at $43,320,000 at a perfect 100 overall. The clamp was dead code, no salary ever approached it in 20 simulated seasons, and the S87 session record went on to claim the ceiling was reachable. The constant is now exactly what the curve pays a 100 overall, and a test asserts that equality so it cannot drift back out of reach. This generalises the S67/S71 write-site principle from laundered values to declared limits.
+
+---
+
+## 2026-08-17 - S89: an engine that can add must be able to remove
+
+**Decision:** Any system that can add an obligation every cycle — contracts, roster spots, queued work — must have a bounded counterpart that removes them, and that boundedness must be asserted over many cycles rather than one. A limit enforced only at the moment of addition is not enforcement.
+
+**Rationale:** The salary cap was checked at exactly one seam (a free-agency signing refusing to exceed it) while the draft added 224 rookie contracts a year with no check at all, and nothing anywhere could release a player. Season 1 was legal, so every prior audit passed. By season 7 thirty of thirty-two clubs were over the cap and by season 20 the median club was $89M over, with rosters grown 86%. The failure is distributional and structural: addition was gated, removal did not exist. `src/engine/capCompliance.js` is now the single removal authority for both the cap and the roster structure, and `test/session89-cap-legality-regression.test.js` asserts legality across many seasons rather than one.
+
+---
+
+## 2026-08-17 - S89: a gate must be proved able to fail before its green is believed
+
+**Decision:** A new automated gate ships only with a negative control — a fixture reproducing a real, known defect that the gate must report — committed alongside it. A gate's passing result carries no information until it has been shown to fail on the thing it exists to catch.
+
+**Rationale:** The card-visibility husk detector went through three versions this session. The first produced 39 false positives out of 48 toggled ids. The second was clean on HEAD and looked finished — but run against the pre-S88 worktree it reported nothing, meaning it would have waved the real, shipped S88 bug straight through. Only the negative control exposed that; nothing about the clean result on HEAD distinguished a working gate from a broken one. `test/card-visibility-gate.test.js` pins both directions permanently. This is the S86 "never stub the seam you are guarding" principle applied to gates rather than tests.
+
+---
+
+## 2026-08-17 - S89: correctness of a fix is measured, not reviewed
+
+**Decision:** A fix to a defect that was found by measurement must be re-measured before it is called done. Reading the new code is not verification of the thing the old code was wrong about.
+
+**Rationale:** The first cap-compliance implementation looked correct and passed review: it released the worst-value contracts until a club was legal. It charged the released contract's full `deadCapRemaining` against the current year — which for a large contract exceeds its own cap hit, so every release made the club *less* legal, the loop ran to its guard limit, and 31 of 32 clubs stayed illegal. No amount of re-reading would have shown that; re-running the probe showed it immediately. Dead money now splits the way the real sport splits it, so the current-year saving is exactly the base salary and the loop provably converges.
+
+---
+
+## 2026-08-17 - S89: "the suite is green" and "the shards we run are green" are different claims
+
+**Decision:** A suite receipt must state which shards it covers. A shard excluded from the default run may not be described, implicitly or explicitly, as covered by a green receipt, and a standing failure inside one must be reported at every closeout until it is resolved.
+
+**Rationale:** `DEFAULT_SHARDS` omits `long`, so `npm test` has never executed `test/realism-career-regression.test.js`, which fails on annual overall drift of 0.228 against a 0.15 target. Verified to reproduce identically on a pristine worktree at HEAD `8ddc310`, so it predates this session — it has simply been invisible behind every "1,137/1,137" style claim. The count was always accurate about what it ran; it was silent about what it did not. That silence is now closed in TRUTH_AUDIT and TASK_BOARD rather than resolved by quietly widening or narrowing the shard list.
+
+---
+
 ## 2026-08-16 - S86: a decision the player makes must be provable in the simulation, not in the code
 
 **Decision:** A player-facing decision is not "implemented" when the code that applies it exists; it is implemented when a fixed-seed run measurably diverges from the same run without it. Any system that claims to influence simulation must ship with a regression that asserts the divergence, and any receipt that grades such a choice must be bound to a choice that was proven applied.

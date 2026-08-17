@@ -35,6 +35,7 @@ export const SHARDS = {
   runtime: [
     "test/action-coordinator.test.js",
     "test/advance-week-command.test.js",
+    "test/session89-franchise-economy-truth.test.js",
     "test/session87-franchise-truth.test.js",
     "test/session86-core-loop-truth.test.js",
     "test/session86-snapshot-parity.test.js",
@@ -167,11 +168,13 @@ export const SHARDS = {
   ],
   long: [
     "test/determinism.test.js",
+    "test/session89-cap-legality-regression.test.js",
     "test/realism-career-regression.test.js"
   ],
   studio: [
     "test/api-contract-parity.test.js",
     "test/audit-renderer.test.js",
+    "test/card-visibility-gate.test.js",
     "test/browser-module-reachability.test.js",
     "test/script-cli-smoke.test.js",
     "test/visual-game-receipt.test.js",

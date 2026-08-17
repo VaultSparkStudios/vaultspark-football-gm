@@ -1,3 +1,50 @@
+# Session 89 Closeout — The Franchise Economy Stops Being a Fiction
+
+## Session Intent — S90
+
+**Calibrate league-wide talent inflation.** This is now measured twice, independently, and is the one clearly-owed piece of work: league top-100 mean overall drifts 86.8 → 94.2 across 20 simulated seasons, and `test/realism-career-regression.test.js` reports 0.228 annual mean drift against a 0.15 on-target ceiling, with the Quarterback (0.463) and Offensive Line (0.397) rooms in the watch band. S89 bounded the *symptom* — clubs are now trimmed back to cap and roster legality every offseason — and deliberately did not touch progression. Do not treat that as done. Run a fresh live-code audit as well rather than assuming this session's four-item lens is still current, and preserve the public-launch HOLD.
+
+## Where We Left Off (Session 89)
+
+- **The salary cap was not a constraint, and now is.** Measured on a seeded 20-season run (seed 20260817): clubs over the $255M cap ran 0, 0, 1, 2, 10, 27, 30 and then 31 of 32 for every remaining season; median club $89M over by season 20, worst $226M. The engine enforced the cap at exactly one seam (a free-agency signing refusing to exceed it) while `runDraft` added 224 rookie contracts a year with no cap or roster check, and **no code path anywhere could release a player**. Invisible to code review and to all 1,137 existing tests.
+- **There was no roster limit at all.** `normalizeRosterSlots` marked the top 53 active and every remaining player practice, forever, with no ceiling — the league grew 1,568 → 2,919 players and the practice population 50 → 468 in eight seasons.
+- **`src/engine/capCompliance.js` is the new single release authority** for both limits, wired as its own offseason step in the headless `runOffseason` façade *and* the interactive `GameSession.runRosterLegalityBackstop` pipeline stage. Cuts rank by worst value per dollar (overall per dollar of cap hit, tie-broken by player id, so a fixed seed always yields the same league), land the player in the free-agent pool, and are logged as `cap-compliance-releases` transactions. `excludeTeamIds` protects the controlled franchise exactly as the free-agency backstop does.
+- **The dead-money model is load-bearing and was corrected by measurement.** The first implementation charged a released contract's whole `deadCapRemaining` against the current year; for a large contract that exceeds its own cap hit, so every release made the club *less* legal and 31 of 32 stayed illegal. It now splits the way the real sport does — this year carries the already-prorated signing bonus, the remaining guarantee accelerates into next year — so the current-year saving is exactly the base salary and the loop converges. **Do not "simplify" this back into a single dead-cap charge.**
+- **Re-measured result:** 0 illegal clubs after every offseason across 2027-2036 (pre-fix: 0,0,1,2,10,27,30,31,31,31), max club roster pinned at exactly 69. Verified not to be an artifact: 0 zero-valued cap hits league-wide, median cap hit $3.82M.
+- **The declared $45M salary ceiling was unreachable** — the curve's hard maximum is $43,320,000 at a perfect 100 overall. `CONTRACT_RULES.maxSalary` is corrected and bound to the curve in test; the duplicated salary literals in `GameSession` (6 min, 1 max) and `offseasonSimulator` (2 min, 1 max) now read the single authority. The intentionally different rookie-scale ceiling of $7.5M was left alone as a genuine local override.
+- **The S88 husk class now has a gate** (`scripts/check-card-visibility.mjs`), validated against the pre-S88 worktree before its clean result was believed. 0 suspects on HEAD across 50 toggled ids / 48 static targets.
+- **Canonical local proof: 1,150/1,150 Node**, five default shards, direct exit 0, up from 1,137/1,137 (+13 tests).
+
+## Decisions That Must Survive (S89)
+
+- A declared bound must be reachable, and a test must bind it to the mechanism that produces it. A limit no code path can hit is a fiction that reads as authority.
+- An engine that can add an obligation every cycle must have a bounded counterpart that removes them, asserted over many cycles rather than one. A limit enforced only at the moment of addition is not enforcement.
+- A new gate ships only with a negative control that proves it still fails on a real known defect. A gate's green carries no information until it has been shown able to go red.
+- A fix to a measured defect must be re-measured before it is called done. Reading the new code does not verify the thing the old code was wrong about.
+- "The suite is green" and "the shards we run are green" are different claims, and a receipt must say which it means.
+
+## Honest Holds
+
+- **Pre-existing red, not fixed, not force-greened:** the `long` shard is excluded from `DEFAULT_SHARDS` and has never run under `npm test`. `test/realism-career-regression.test.js` fails there (0.228 drift vs a 0.15 ceiling). Verified to reproduce identically on a pristine detached worktree at HEAD `8ddc310` — it predates S89. Whether to fold `long` into the canonical receipt is a founder sequencing call, since doing so turns the receipt red until the calibration item lands.
+- Public launch remains HOLD on Zoho delivery/reply-as, SHA-bound founder launch approval, authoritative lifecycle reconciliation, and external Obelisk relying-party registration. Nothing this session touched or could touch them.
+- Registry SPARKED vs local FORGE remains cross-repo drift, reconcilable only through signed Studio Ark — non-blocking, flagged again.
+
+## Next Best Work
+
+- Calibrate talent inflation at the source (see Session Intent), then re-run both the seeded economy probe and the realism regression and publish the before/after.
+- Decide the `long`-shard sequencing question explicitly rather than leaving it implicit.
+- Observe the first real opted-in Community Stats cohort without manufacturing activity; evaluate aggregate history/share surfaces only after a real cohort proves value.
+
+## Key Files
+
+- `src/engine/capCompliance.js`, `src/engine/offseasonSimulator.js`, `src/runtime/GameSession.js`, `src/config.js`
+- `src/domain/contracts.js` (the versioned market curve the ceiling is now bound to)
+- `test/session89-franchise-economy-truth.test.js`, `test/session89-cap-legality-regression.test.js` (`long` shard)
+- `scripts/check-card-visibility.mjs`, `test/card-visibility-gate.test.js`, `scripts/run-test-shard.mjs`
+- `docs/AUDIT_2026-08-17_SESSION89.json` (sidecar is source of truth; the `.md` is rendered)
+
+---
+
 # Session 88 Closeout — GM Legacy Card Empty-State Truth
 
 ## Session Intent — S89

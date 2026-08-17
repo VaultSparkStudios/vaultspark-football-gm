@@ -1,6 +1,7 @@
 
 import {
   COACHING_TENDENCY_ARCHETYPES,
+  CONTRACT_RULES,
   DEPTH_CHART_ROLE_NAMES,
   GAME_NAME,
   NFL_STRUCTURE,
@@ -45,6 +46,7 @@ import {
   normalizeRosterSlots,
   runFreeAgencyBackstop
 } from "../engine/offseasonSimulator.js";
+import { enforceRosterAndCapCompliance } from "../engine/capCompliance.js";
 import {
   buildMeritAdjustedRoomShares,
   buildTeamUsageProfile,
@@ -240,8 +242,8 @@ function veteranContract(overall, rng) {
   return buildContract({
     overall,
     years: rng.int(1, 4),
-    minSalary: 850_000,
-    maxSalary: 45_000_000,
+    minSalary: CONTRACT_RULES.minSalary,
+    maxSalary: CONTRACT_RULES.maxSalary,
     rng
   });
 }
@@ -2485,7 +2487,7 @@ export class GameSession {
         const contract = buildContract({
           overall: player.overall,
           years: this.rng.int(2, 4),
-          minSalary: 850_000,
+          minSalary: CONTRACT_RULES.minSalary,
           maxSalary: 32_000_000,
           rng: this.rng
         });
@@ -2615,6 +2617,7 @@ export class GameSession {
    */
   runRosterLegalityBackstop() {
     const signingsByTeam = new Map();
+    const releasesByTeam = [];
     const backstop = runFreeAgencyBackstop(this.league, this.currentYear, this.rng, {
       excludeTeamIds: this.controlledTeamId ? [this.controlledTeamId] : [],
       onSigning: ({ teamId, player, contract, emergency }) => {
@@ -2638,6 +2641,23 @@ export class GameSession {
           capHit: contract?.capHit || 0,
           emergency: emergency === true
         });
+      }
+    });
+
+    // Roster and cap legality, on the same authority boundary as the backstop
+    // above: CPU clubs are trimmed to the declared roster structure and back
+    // under their cap, and the controlled franchise is never touched, so an
+    // over-cap GM keeps their roster, their cap alerts and their own decision.
+    const compliance = enforceRosterAndCapCompliance(this.league, {
+      excludeTeamIds: this.controlledTeamId ? [this.controlledTeamId] : [],
+      onRelease: ({ teamId, player, deadMoney, reason }) => {
+        this.registerFreeAgencyMove({
+          teamId,
+          direction: "losses",
+          playerId: player.id,
+          value: compGainValue({ salary: player.contract?.salary || 0, overall: player.overall })
+        });
+        releasesByTeam.push({ teamId, playerId: player.id, player: player.name, overall: player.overall, deadMoney, reason });
       }
     });
 
@@ -2668,6 +2688,41 @@ export class GameSession {
         year: this.currentYear,
         clubs: signingsByTeam.size
       });
+    }
+
+    // Cuts are transactions too. Rolling them up one row per club keeps the same
+    // log-eviction discipline as the signings above while making league-wide
+    // releases visible instead of players silently disappearing off rosters.
+    if (releasesByTeam.length) {
+      const byTeam = new Map();
+      for (const row of releasesByTeam) {
+        if (!byTeam.has(row.teamId)) byTeam.set(row.teamId, []);
+        byTeam.get(row.teamId).push(row);
+      }
+      for (const [teamId, rows] of [...byTeam.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+        this.logTransaction({
+          type: "cap-compliance-releases",
+          teamId,
+          details: {
+            count: rows.length,
+            capCuts: rows.filter((row) => row.reason === "cap").length,
+            rosterCuts: rows.filter((row) => row.reason === "roster-limit").length,
+            deadMoney: rows.reduce((sum, row) => sum + Number(row.deadMoney || 0), 0),
+            players: rows
+          }
+        });
+      }
+      this.logNews(`${releasesByTeam.length} players released league-wide to meet roster and cap limits`, {
+        year: this.currentYear,
+        clubs: byTeam.size
+      });
+    }
+    if (compliance.stillOverCap.length) {
+      // Honest reporting rather than a silent pass: a club that could not reach
+      // legality without cutting below a fieldable roster stays visible.
+      this.league.capComplianceUnresolved = [...compliance.stillOverCap];
+    } else {
+      this.league.capComplianceUnresolved = [];
     }
 
     const ownShortfall = backstop.shortfalls.find((row) => row.teamId === this.controlledTeamId) || null;
@@ -4607,7 +4662,7 @@ export class GameSession {
       overall: player.overall,
       years: clamp(Number(years), 1, 5),
       salary: salary == null ? undefined : Number(salary),
-      minSalary: 850_000,
+      minSalary: CONTRACT_RULES.minSalary,
       maxSalary: 25_000_000,
       rng: this.rng
     });
@@ -6327,7 +6382,7 @@ export class GameSession {
         overall: player.overall,
         years: 1,
         salary: Math.max(1_200_000, Math.round((player.overall || 70) * 140_000)),
-        minSalary: 850_000,
+        minSalary: CONTRACT_RULES.minSalary,
         maxSalary: 35_000_000,
         rng: this.rng
       });
@@ -6580,7 +6635,7 @@ export class GameSession {
           overall: player.overall,
           years: offer.years,
           salary: offer.salary,
-          minSalary: 850_000,
+          minSalary: CONTRACT_RULES.minSalary,
           maxSalary: 35_000_000,
           rng: this.rng
         });

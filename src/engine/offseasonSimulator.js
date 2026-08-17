@@ -3,6 +3,7 @@ import { createDraftClass, createSyntheticPlayer } from "../domain/playerFactory
 import { advanceContractYear, buildContract } from "../domain/contracts.js";
 import { calculatePositionOverall, developmentDelta, positionRatingKeys } from "../domain/ratings.js";
 import { getAllTeamPlayers, getTeamPlayers, recalculateAllTeamRatings } from "../domain/teamFactory.js";
+import { enforceRosterAndCapCompliance, normalizeRosterSlots } from "./capCompliance.js";
 import { clamp } from "../utils/rng.js";
 
 function activePlayers(league) {
@@ -206,7 +207,7 @@ function rookieContract(round, overall, rng) {
     overall,
     years: 4,
     salary,
-    minSalary: 850_000,
+    minSalary: CONTRACT_RULES.minSalary,
     maxSalary: 7_500_000,
     rng
   });
@@ -216,8 +217,8 @@ function veteranContract(overall, rng) {
   return buildContract({
     overall,
     years: rng.int(CONTRACT_RULES.minYears, CONTRACT_RULES.maxYears),
-    minSalary: 850_000,
-    maxSalary: 45_000_000,
+    minSalary: CONTRACT_RULES.minSalary,
+    maxSalary: CONTRACT_RULES.maxSalary,
     rng
   });
 }
@@ -345,14 +346,10 @@ export function runFreeAgencyBackstop(league, year, rng, { excludeTeamIds = [], 
   return { shortfalls, remainingFreeAgents: faPool.length };
 }
 
-export function normalizeRosterSlots(league) {
-  for (const team of league.teams) {
-    const roster = getAllTeamPlayers(league, team.id).sort((a, b) => b.overall - a.overall);
-    roster.forEach((player, index) => {
-      player.rosterSlot = index < 53 ? "active" : "practice";
-    });
-  }
-}
+// Re-exported from the compliance authority so there is exactly one definition
+// of the roster structure. The previous local copy hard-coded 53 and applied no
+// upper bound, which is what let the practice population grow without limit.
+export { normalizeRosterSlots } from "./capCompliance.js";
 
 export function applyCapRollover(league) {
   if (!league.capLedger) league.capLedger = {};
@@ -392,7 +389,8 @@ export function runOffseason({
   retirementSettings = {},
   developmentContext = null,
   excludeTeamIds = [],
-  onSigning = null
+  onSigning = null,
+  onRelease = null
 }) {
   expireContracts(league);
   applyAgingProgressionAndRetirements(league, year, rng, {
@@ -401,8 +399,12 @@ export function runOffseason({
   });
   if (!skipDraft) runDraft(league, year, rng);
   const backstop = runFreeAgencyBackstop(league, year, rng, { excludeTeamIds, onSigning });
+  // Compliance runs after the market has closed and before slots are assigned:
+  // the backstop may legitimately push a club over its limits while filling a
+  // hole, and re-slotting a roster we are about to trim would be wasted work.
+  const compliance = enforceRosterAndCapCompliance(league, { excludeTeamIds, onRelease });
   normalizeRosterSlots(league);
   applyCapRollover(league);
   recalculateAllTeamRatings(league);
-  return backstop;
+  return { ...backstop, compliance };
 }

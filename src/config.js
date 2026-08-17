@@ -119,7 +119,23 @@ export const CONTRACT_RULES = {
   minYears: 1,
   maxYears: 5,
   minSalary: 850_000,
-  maxSalary: 45_000_000
+  // The top of market is whatever the versioned scarcity curve in
+  // src/domain/contracts.js actually pays a perfect 100-overall player. Until
+  // S89 this read 45_000_000, which the curve could not reach at any rating —
+  // it maxes out at 43_320_000 — so the clamp was dead code and the declared
+  // ceiling was fiction. `test/session89-franchise-economy-truth.test.js` binds
+  // this constant to the curve so it can never drift back out of reach.
+  maxSalary: 43_320_000
+};
+
+// Declared roster structure. Before S89 the only roster number in the engine was
+// a bare `53` inside normalizeRosterSlots, and there was no upper bound at all —
+// every player beyond the top 53 was labelled "practice" forever, so clubs
+// accumulated players until retirement and the league grew 1,568 -> 2,919 across
+// 20 simulated seasons. Both limits are enforced by src/engine/capCompliance.js.
+export const ROSTER_STRUCTURE = {
+  activeLimit: 53,
+  practiceLimit: 16
 };
 
 // Hard upper bounds for active player age by position.
