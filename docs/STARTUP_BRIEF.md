@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-17 (Session 87 closeout) -->
+<!-- generated-at: 2026-08-17 (Session 88 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
-<!-- session-authority: committed=S87 · SIL=S87 · status=S87 · handoff=S87; divergent=false -->
+<!-- session-authority: committed=S88 · SIL=S88 · status=S88 · handoff=S88; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 87 closeout · 2026-08-17.
+> **Fast-boot brief** — generated at Session 88 closeout · 2026-08-17.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,13 +17,13 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 88 · 2026-08-17 · BUILDER MODE                          ║
+║  Session 89 · 2026-08-17 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ STALE LAST SESSION SUMMARY ══════════════════════════════════╗
-║  Expected S87; PROJECT_STATUS summary says S?.                   ║
-║  Session 87 made franchise pressure visible and binding. One ve  ║
+║  Expected S88; PROJECT_STATUS summary says S87.                  ║
+║  Session 88 shipped the one genuine defect found by a fresh liv  ║
 ║  Repair: update PROJECT_STATUS.lastSessionSummary at closeout.   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -41,9 +41,9 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    992/1000   ███████████████████████░   99%                     ║
-║    SIL v3.0  ·  Avg3: 988.7  ·  Velocity 0→                      ║
-║    Active 14472d · closeout 1d · source: newest SIL/status/hand  ║
+║    995/1000   ███████████████████████░   100%                    ║
+║    SIL v3.0  ·  Avg3: 990  ·  Velocity 0→                        ║
+║    Active 14107d · closeout 0d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -55,26 +55,26 @@
 ║    Process Qual     100    ██████████  ████████ →                ║
 ║    Coherence         99    ██████████  ········ →                ║
 ║    Security         100    ██████████  ········ →                ║
-║    Ecosystem         99    ██████████  ········ →                ║
+║    Ecosystem        100    ██████████  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
 ║    Automation        99    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 87 ════════════════════════════╗
-║  Shipped:  Session 87 made franchise pressure visible and bindi  ║
+╔══ WHERE WE LEFT OFF  ·  Session 88 ════════════════════════════╗
+║  Shipped:  Session 88 shipped the one genuine defect found by a  ║
 ║  Tests:    1137/1137 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,686 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,343 tok/turn  ·  cache 50%  ·  135 turns to compact       ║
+║     2,687 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,344 tok/turn  ·  cache 50%  ·  134 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         1137/1137 passing (2026-08-17)                 ║
+║  ⚠  Tests         1137/1137 passing (2026-08-17) · STALE — run   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -88,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⛔  Doctor        8/12 (67%)  ·  3 failing                       ║
+║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
 ║  ✓  Cost          Max flat-rate · $2.94/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -121,5 +121,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 87 closeout · 2026-08-17*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 88 closeout · 2026-08-17*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

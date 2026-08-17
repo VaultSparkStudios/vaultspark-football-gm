@@ -861,7 +861,7 @@
   ],
   "inspection": {
     "renderedPixelsReviewed": true,
-    "reviewer": "claude-sonnet-5",
+    "reviewer": "session-agent",
     "findings": [
       "The GM Legacy card (the S87-shipped surface this session's fix touches) renders correctly in its normal populated state at 1440px desktop, 768px tablet, and 390px mobile in both dark and light themes: header, grade/status badge, mastery progress, legacy-score/playoff/seasons-served sub-widgets, and the market-reputation line are all fully legible with no overflow or clipping.",
       "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures.",
