@@ -122,7 +122,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 815,
+  "silHealth": 791,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -451,33 +451,33 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "6e297d4a115d42842f9c6422b3c2a0cb2c63062a4c496150e69416d37bb5346d",
-    "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
+    "receiptSha256": "c21a908005071a768ad7e8b509f8db66ba68aad24a6dbca64e3c687100298262",
+    "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1",
-      "files": 193,
+      "digest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa",
+      "files": 194,
       "exclusions": [
         "_health",
         "deploy-manifest.json",
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "3a087ffc-e501-4e41-bae5-938032cb2d10",
+    "deploymentId": "a46c43e1-12c4-4be2-aeaf-be452caa0bdf",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-17T03:59:16.039Z"
+      "checkedAt": "2026-08-17T20:31:59.848Z"
     },
     "rollback": {
-      "previousDeploymentId": "18148b3f-46a6-4e0a-a43e-59b0e02de54a",
+      "previousDeploymentId": "648b50c9-c1f5-494c-9a6d-7300aa7143d3",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-17T03:59:16.039Z"
+    "observedAt": "2026-08-17T20:31:59.849Z"
   },
   "lastCloseoutAt": "2026-08-14T04:56:21.468Z",
   "performanceAuthority": {
@@ -509,31 +509,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-08-17T04:22:35.638Z",
+    "observedAt": "2026-08-17T20:33:28.918Z",
     "status": "verified",
-    "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
-    "publicationRevision": "48557d616260d18de07d187e79d099f13525b166",
+    "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
+    "publicationRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1"
+      "digest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
-        "artifactDigest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1"
+        "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
+        "artifactDigest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa"
       },
       "production": {
-        "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
-        "artifactDigest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1"
+        "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
+        "artifactDigest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa"
       },
       "visual": {
-        "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
-        "artifactDigest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1"
+        "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
+        "artifactDigest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa"
       },
       "performance": {
-        "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
-        "artifactDigest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1"
+        "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
+        "artifactDigest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa"
       }
     },
     "checks": [
@@ -579,12 +579,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "c6e191d7eeec62d7733647174b00613bf9f55e5894a1dc67460c6b20fb296239",
-      "productionSha256": "57002bf20125fc61b0cda9e74fc8da4742d240d6acf7cf010f8393b3f56431f9",
-      "visualSha256": "a3fd132b091900c043ceaaed55ff503a924c5ab74f1d22408c46336debfbf71b",
-      "performanceSha256": "2d9ef8e5b09148c0160730cc57452350940e640be0ae3796127c17d3e5b691e0"
+      "stagingSha256": "762df6d965c2e3f244cfbcc4b055c483f1cef49f717f5bedb77b981a7aea54be",
+      "productionSha256": "dfe08933d64871da8470a498058829bf7aced4d5b453c86604dd966cd3def0ea",
+      "visualSha256": "42d2ab65572fb1d07da1ba422b2e7bde2ab7f640df487960210305b5778d42b0",
+      "performanceSha256": "f108b02d553ec85f1a9828143d2db4c63afa2664106c6f4f99c5079fd739dc2c"
     },
-    "receiptSha256": "4cb33db98ce9c5eac58208529af7ac03f15d0dab02fef573cbc1ef638a9635c1"
+    "receiptSha256": "7dc66dc7a5269092fd58439c3d49a09eca2315275ff9cad4b3287a9055e99114"
   },
   "launchReady": false,
   "sil": {

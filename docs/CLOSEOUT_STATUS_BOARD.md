@@ -1,32 +1,32 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-17 (Session 88 closeout) -->
+<!-- generated-at: 2026-08-17 (Session 89 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S88 ══════╗
-║  Date: 2026-08-17  ·  SIL: 995/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: claude-sonnet-5                        ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S89 ══════╗
+║  Date: 2026-08-17  ·  SIL: 971/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: claude-opus-5                          ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ The one verified S88 audit item shipped: the S87-shipped GM   ║
-║  ✓ A new focused test in `test/session87-franchise-truth.test.j  ║
-║  ✓ The doctor's 3 blocking release-authority-currency items (a   ║
-║  ✓ Immutable application candidate `48557d616260d18de07d187e79d  ║
-║  ✓ The backend runtime is unchanged this session (still serving  ║
+║  ✓ **The salary cap was not a constraint, and now is.** Measure  ║
+║  ✓ **There was no roster limit at all.** `normalizeRosterSlots`  ║
+║  ✓ **`src/engine/capCompliance.js` is the new single release au  ║
+║  ✓ **The dead-money model is load-bearing and was corrected by   ║
+║  ✓ **Re-measured result:** 0 illegal clubs after every offseaso  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 995/1000 ═══════════════════════════════════════╗
-║    Dev Health         100  ██████████                            ║
+╔══ SCORES · SIL 971/1000 ═══════════════════════════════════════╗
+║    Dev Health         92   █████████░                            ║
 ║    Alignment          100  ██████████                            ║
-║    Momentum           97   ██████████                            ║
+║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
 ║    Process Qual       100  ██████████                            ║
 ║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
 ║    Ecosystem          100  ██████████                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         99   ██████████                            ║
+║    Automation         80   ████████░░                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  · context/CURRENT_STATE.md                                      ║
@@ -37,11 +37,11 @@
 ║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  · context/TRUTH_AUDIT.md                                        ║
-║  · context/PROJECT_STATUS.json                                   ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 2 files  ·  M:0 A:0 D:0 ?:2                            ║
+║  Changes: 90 files  ·  M:3 A:0 D:0 ?:87                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1137/1137 · STALE                                ║
-║  IGNIS:         6d ago                                           ║
+║  Tests:         1150/1150                                        ║
+║  IGNIS:         7d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  8d ago                                           ║
+║  Sanitization:  9d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
