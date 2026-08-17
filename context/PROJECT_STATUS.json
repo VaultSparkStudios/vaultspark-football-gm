@@ -9,7 +9,7 @@
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-16",
+  "lastUpdated": "2026-08-17",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -119,14 +119,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 811,
+  "silHealth": 812,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 3,
     "total": 12,
     "failing": 3,
     "score": 67,
-    "date": "2026-08-16",
+    "date": "2026-08-17",
     "passing": 8,
     "warning": 1,
     "checks": [
@@ -140,19 +140,19 @@
         "id": "release-authority-checked-staging-current",
         "status": "failing",
         "blocking": true,
-        "detail": "checked 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live 90f0d4871828fc10df7b0933f636793db2697446"
+        "detail": "checked 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live 505c554abaf78a5578cf97387c28b757ce591924"
       },
       {
         "id": "release-authority-checked-publication-current",
         "status": "failing",
         "blocking": true,
-        "detail": "checked 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live 90f0d4871828fc10df7b0933f636793db2697446"
+        "detail": "checked 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live 505c554abaf78a5578cf97387c28b757ce591924"
       },
       {
         "id": "release-authority-release-source-current",
         "status": "failing",
         "blocking": true,
-        "detail": "release source 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live staging 90f0d4871828fc10df7b0933f636793db2697446"
+        "detail": "release source 9801ac49d95e016c29a28d9c4a8a08ee19e83fc9 · live staging 505c554abaf78a5578cf97387c28b757ce591924"
       }
     ]
   },

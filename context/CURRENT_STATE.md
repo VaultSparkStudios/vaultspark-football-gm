@@ -155,3 +155,13 @@ gate **3/3**; Pages build/smoke; **58** reachable browser modules; responsive ev
 runtime/overflow/contrast/touch-target failures; **16** inspected dark/light desktop/mobile captures are hash-bound.
 Launch remains HOLD only on delivered reply-capable on-domain email, SHA-bound founder approval and authoritative
 registry lifecycle. No readiness, retention or received-email evidence was invented.
+
+## Session 88 — GM Legacy card empty-state truth (2026-08-16)
+
+The S87-shipped GM Legacy/Persona/Reputation card hid only its inner score paragraph (`#gmLegacyCard`) on the
+empty/error path, leaving the surrounding `#gmLegacyCardWrap` article — header, grade badge, mastery portfolio,
+persona tier arc and reputation label — visible as an empty husk instead of disappearing cleanly. The renderer had
+zero prior test references across `test/` and `tests-ui/`. Fixed by extracting a directly-testable
+`applyGmLegacyCard(card, wrap, summary)` in `public/lib/tabOverview.js` that hides/shows the whole wrapper article,
+with a new focused Node test proving both the empty and populated paths. Full local suite 1,137/1,137 Node
+(+1 new test) and 41/41 Playwright. Launch remains HOLD unchanged.

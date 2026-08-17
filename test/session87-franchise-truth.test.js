@@ -24,7 +24,7 @@ import {
 } from "../src/engine/narrativeEvents.js";
 import { createSession } from "../src/runtime/bootstrap.js";
 import { renderFranchiseLegends } from "../public/lib/tabHistory.js";
-import { renderGmReputation } from "../public/lib/tabOverview.js";
+import { applyGmLegacyCard, renderGmReputation } from "../public/lib/tabOverview.js";
 import { decoratePlayerColumnFromRows } from "../public/lib/appCore.js";
 
 const alwaysFire = Object.freeze({ next: () => 0 });
@@ -189,6 +189,38 @@ test("General Manager reputation renders source labels and clears stale copy", (
     renderGmReputation({ labels: ["Unestablished"] });
     assert.equal(label.hidden, true);
     assert.equal(label.textContent, "");
+  } finally {
+    globalThis.document = priorDocument;
+  }
+});
+
+test("GM Legacy card hides its whole wrapper, not just the score paragraph, when there is no summary", () => {
+  const card = { textContent: "stale", hidden: false };
+  const wrap = { hidden: false };
+  const gradeEl = { textContent: "stale" };
+  const labelEl = { textContent: "stale" };
+  const repLabel = { textContent: "", hidden: true };
+  const elements = {
+    gmLegacyCardWrap: wrap,
+    gmLegacyGradeVal: gradeEl,
+    gmLegacyLabel: labelEl,
+    gmReputationLabel: repLabel
+  };
+  const priorDocument = globalThis.document;
+  globalThis.document = { getElementById: (id) => elements[id] || null };
+  try {
+    // No summary (e.g. a fresh league before the API resolves any legacy state):
+    // the entire card — not just the score text — must disappear so the header,
+    // grade badge and sub-widgets never render an empty husk.
+    applyGmLegacyCard(card, wrap, null);
+    assert.equal(wrap.hidden, true, "wrapper must hide when there is no summary");
+
+    // A real summary un-hides the wrapper and writes score/grade/label onto it.
+    applyGmLegacyCard(card, wrap, { score: 812, grade: "A-", label: "Perennial Contender" });
+    assert.equal(wrap.hidden, false);
+    assert.equal(card.textContent, 812);
+    assert.equal(gradeEl.textContent, "A-");
+    assert.equal(labelEl.textContent, "Perennial Contender");
   } finally {
     globalThis.document = priorDocument;
   }

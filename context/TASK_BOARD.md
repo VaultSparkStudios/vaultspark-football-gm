@@ -12,6 +12,20 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 
+## Session 88 — Full arc: GM Legacy card empty-state truth (2026-08-16)
+
+Source: `docs/AUDIT_2026-08-16_SESSION88.json`.
+
+| Item | Status |
+|------|--------|
+| gm-legacy-card-empty-state-truth — hide the whole GM Legacy card, not just the score paragraph, when there is no summary or the fetch errors | ✅ Done |
+
+**Method note:** ten prior full-arc sessions (S79-S87) left zero inline TODO/FIXME/HACK markers, zero skipped tests, and an empty innovation-pack scan; this session's premise-verification pass traced the S87 GM Legacy/Persona/Reputation mount by hand rather than pattern-matching debt markers that no longer exist. The one confirmed defect: `renderGmLegacyScore()` toggled `.hidden` on `#gmLegacyCard` (the inner score `<p>`), not `#gmLegacyCardWrap` (the surrounding article with header, grade badge, mastery, persona and reputation sub-widgets), so the empty/error path left an empty card husk visible instead of hiding cleanly.
+
+**Verification:** extracted `applyGmLegacyCard(card, wrap, s)` in `public/lib/tabOverview.js`; new focused test in `test/session87-franchise-truth.test.js` proves the wrapper hides on a null summary and un-hides with correct score/grade/label text on a populated summary. Full local Node suite 1,137/1,137 (up from 1,136/1,136, +1 new test).
+
+**Launch posture:** unchanged. Preserve `launchReady: false` until Zoho delivery/reply-as, SHA-bound founder approval, authoritative lifecycle reconciliation and external Obelisk relying-party proof exist.
+
 ## Session 87 — Full arc: binding franchise pressure and live-surface truth (2026-08-16)
 
 Source: `docs/AUDIT_2026-08-16_SESSION87.json`.

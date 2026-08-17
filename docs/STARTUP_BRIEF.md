@@ -1,5 +1,5 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-16 (Session 87 closeout) -->
+<!-- generated-at: 2026-08-17 (Session 87 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
@@ -8,7 +8,7 @@
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 87 closeout · 2026-08-16.
+> **Fast-boot brief** — generated at Session 87 closeout · 2026-08-17.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,13 +17,13 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 88 · 2026-08-16 · BUILDER MODE                          ║
+║  Session 88 · 2026-08-17 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ STALE LAST SESSION SUMMARY ══════════════════════════════════╗
 ║  Expected S87; PROJECT_STATUS summary says S?.                   ║
-║  Session 86 repaired the game core decision loop after the firs  ║
+║  Session 87 made franchise pressure visible and binding. One ve  ║
 ║  Repair: update PROJECT_STATUS.lastSessionSummary at closeout.   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -34,7 +34,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · live-beta · arch=— · top-axis=—                ║
+║  Profile · game · cache stale 0d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -43,7 +43,7 @@
 ║                                                                  ║
 ║    992/1000   ███████████████████████░   99%                     ║
 ║    SIL v3.0  ·  Avg3: 988.7  ·  Velocity 0→                      ║
-║    Active 15201d · closeout 0d · source: newest SIL/status/hand  ║
+║    Active 14472d · closeout 1d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -55,30 +55,30 @@
 ║    Process Qual     100    ██████████  ████████ →                ║
 ║    Coherence         99    ██████████  ········ →                ║
 ║    Security         100    ██████████  ········ →                ║
-║    Ecosystem         98    ██████████  ········ →                ║
+║    Ecosystem         99    ██████████  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation       100    ██████████  ········ →                ║
+║    Automation        99    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 87 ════════════════════════════╗
-║  Shipped:  Session 86 repaired the game core decision loop afte  ║
-║  Tests:    1136/1136 passing  ·  Deploy: N/A                     ║
+║  Shipped:  Session 87 made franchise pressure visible and bindi  ║
+║  Tests:    1137/1137 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     40,770 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~20,385 tok/turn  ·  cache 50%  ·  43 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     2,686 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,343 tok/turn  ·  cache 50%  ·  135 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         1136/1136 passing (2026-08-16)                 ║
+║  ✓  Tests         1137/1137 passing (2026-08-17)                 ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         42836 FORGE  ·  5d old                         ║
+║  ✓  IGNIS         42836 FORGE  ·  6d old                         ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
@@ -89,7 +89,7 @@
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
 ║  ⛔  Doctor        8/12 (67%)  ·  3 failing                       ║
-║  ✓  Cost          Max flat-rate · $2.46/7d notional · no alarm   ║
+║  ✓  Cost          Max flat-rate · $2.94/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -112,8 +112,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-16_SESSION87.md       ║
-║  Closed: 6 · Open: 0                                             ║
+║  ✓ queue exhausted · source: AUDIT_2026-08-16_SESSION88.md       ║
+║  Closed: 1 · Open: 0                                             ║
 ║  Latest audit has no open ranked items; run /audit for a new li  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -121,5 +121,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 87 closeout · 2026-08-16*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 87 closeout · 2026-08-17*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

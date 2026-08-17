@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-16",
+  "session": 88,
+  "agent": "claude-sonnet-5",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 6.5,
+    "source": "Fresh Session 88 audit of the live main worktree after mandatory Studio OS propagation. Ten prior full-arc sessions (S79-S87) have already driven the codebase to a state with zero inline TODO/FIXME/HACK markers, zero skipped/pending tests, and a clean innovation-pack scan (0 open, 0 shipped, 1 honestly-deferred human-blocked item). This audit's premise-verification pass therefore focused on manual code-path tracing of recently-shipped surfaces (the S87 GM Legacy/Persona/Reputation mount) rather than pattern-matching debt markers that no longer exist.",
+    "qualityBar": "L2. Any correction must be observable in the browser and covered by a focused, non-stubbed test that exercises real behavior (per the successBar for this project's medium overlay)."
+  },
+  "implementationEvidence": {
+    "sourceRevision": "505c554abaf78a5578cf97387c28b757ce591924",
+    "tests": "1,137/1,137 canonical Node tests (up from 1,136/1,136, +1 new focused test) after the GM Legacy card fix.",
+    "build": "node --check clean on both modified files; no build/bundling step touches public/lib ES modules directly."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay and app-release-gate: consequential General Manager decisions, simulation truth, mobile/theme parity, static-host safety, exact staging identity, rollback, privacy, and honest independent launch holds",
+    "staging": "stable GitHub/Cloudflare Pages staging must prove the exact immutable candidate before direct-to-main production promotion; public sanitization mandatory",
+    "source": "arc profile, S87 handoff, live canon adoption, current source tree, direct DOM/render-path tracing of the S87 GM Legacy mount, doctor output, and current deployment receipts"
+  },
+  "gameLoopReview": {
+    "loopTightness": 6.5,
+    "progression": 6.0,
+    "sessionEngagement": 7.0,
+    "retention": 6.0,
+    "soulFidelity": 7.5,
+    "overall": 6.6,
+    "evidence": "No new gameplay-loop premise was found broken this session; the S86/S87 findings already repaired the load-bearing fictions (weekly tactic, draft pick, aging curve, salary scarcity, narrative pressure). This session's finding is a UI-truth defect in the S87-shipped GM Legacy card empty/error state, not a loop-tightness regression, so the game-loop scores are carried forward unchanged from S87 pending the next dedicated game-loop-review pass."
+  },
+  "releaseGate": {
+    "deploymentVerdict": "GO after the fix, full local verification, and a fresh exact-candidate staging promotion (doctor's 3 blocking release-authority-currency gates are a deploy-pipeline staleness artifact of the post-S87 hotfix commit 505c554, which shipped without running the staging/production/visual/performance reconciliation pipeline — resolved by this session's redeploy, not by a code change).",
+    "launchVerdict": "NO-GO. Preserve launchReady false and the public-launch HOLD.",
+    "launchHolds": [
+      "received-and-reply-capable football@playfranchisearchitect.com Zoho proof",
+      "authoritative registry/local lifecycle reconciliation (registry reports SPARKED, local contract reports FORGE — cross-repo, cannot be resolved from this tree; ship via signed Studio Ark)",
+      "SHA-bound public-launch approval distinct from this technical deploy authorization",
+      "registered and end-to-end verified external Obelisk relying party before account-bearing flows"
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "MEDIUM",
+      "category": "UI/UX truth / empty-state honesty",
+      "effortHours": 0.5,
+      "impact": 5,
+      "innovation": 3,
+      "priority": 6.5,
+      "slug": "gm-legacy-card-empty-state-truth",
+      "title": "GM Legacy card hides only its score paragraph, not the whole card, on empty/error state",
+      "status": "shipped",
+      "premise": "renderGmLegacyScore() in public/lib/tabOverview.js toggled `.hidden` on the element bound to #gmLegacyCard, which is the inner <p> score paragraph inside <article id=\"gmLegacyCardWrap\"> (public/game.html). On the defensive `!s` branch and the catch block, only that paragraph hid; the surrounding article — GM Legacy header, grade badge, mastery portfolio, persona tier arc and reputation label — stayed visible with no data, rendering an empty husk instead of a clean hidden card. Confirmed via direct read of both files; the frontend renderer has zero prior test references across test/ and tests-ui/.",
+      "ladder": {
+        "L1": { "effortHours": 0.25, "recipe": "Toggle `.hidden` on #gmLegacyCardWrap instead of #gmLegacyCard." },
+        "L2": { "effortHours": 0.5, "recipe": "Extract the DOM-application logic into an exported, directly-testable applyGmLegacyCard(card, wrap, summary) that hides/shows the #gmLegacyCardWrap article (falling back to the score node if the wrapper id is absent) and keep renderGmLegacyScore as a thin fetch+delegate wrapper; add a focused Node test that exercises both the empty and populated paths against real DOM-stub elements." },
+        "L3": { "effortHours": 1.5, "recipe": "L2 plus a shared card-visibility helper reused by every overview summary card so the hide-target/text-target mismatch class cannot recur elsewhere." }
+      },
+      "executionEvidence": "Extracted applyGmLegacyCard(card, wrap, s) in public/lib/tabOverview.js; wrap now resolves #gmLegacyCardWrap (falls back to card if absent) and both the empty-state and catch-block paths hide wrap, not card. New focused test in test/session87-franchise-truth.test.js proves the wrapper hides on a null summary and un-hides with correct score/grade/label text on a populated summary. Full local suite 1,137/1,137 (was 1,136/1,136)."
+    }
+  ],
+  "axisCoverage": {
+    "featuresDepth": [],
+    "newInnovativeFeatures": [],
+    "uiUx": ["gm-legacy-card-empty-state-truth"],
+    "feedbackLoop": [],
+    "gamificationEngagementImmersion": [],
+    "aiIntegration": [],
+    "securityPrivacy": [],
+    "speedOrganizationEfficiency": ["gm-legacy-card-empty-state-truth"],
+    "releaseTruth": ["release-authority-currency-reconciliation (deploy-pipeline, not a code item)"],
+    "tokenApiReduction": []
+  },
+  "recommendedMoves": [
+    "Keep hardening empty/error states on every card that mixes a hide/show target with a text-content target — the GM Legacy card bug (hiding the score paragraph instead of the whole card) is the second instance of this exact class found across the audit history; a lint rule or shared card-visibility helper would catch the next one before a session has to.",
+    "Resolve the doctor release-authority staleness by running the full staging-verify -> production-promote -> reconcile pipeline against current HEAD before founder-authorized production promotion, rather than treating a fast-follow hotfix commit as exempt from the reconciliation step.",
+    "Continue deferring cohort-dependent items (Now/Next TASK_BOARD rows: real-cohort observation, launch-authority reconciliation) — they require actual opted-in users or founder/registry action and cannot be manufactured without violating the no-fabricated-data rule."
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "raise/lower the salary cap or scarcity curve further",
+      "reason": "Rejected. S87 already shipped a fixed-seed-verified versioned market curve with a reachable $45M ceiling and no illegal opening rosters; re-touching it without new distributional evidence would be force-green, not a fix."
+    },
+    {
+      "candidate": "new AI coach or paid inference layer",
+      "reason": "Rejected. The game remains intentionally zero-backend for its core loop; no capability gap in this session's findings requires variable-cost inference."
+    },
+    {
+      "candidate": "rewrite the GM Legacy API contract or persona-tier scoring model",
+      "reason": "Rejected. The backend summary (getGmLegacySummary/computeGmLegacyScore) is correct and always returns a real object once initGmLegacy has run; the defect was purely in the frontend's choice of DOM node to hide, not in the data contract."
+    },
+    {
+      "candidate": "add a new debt-marker/TODO sweep as an audit item",
+      "reason": "Rejected as a phantom candidate. node scripts/generate-innovation-pack.mjs --stdout found 0 open ranked candidates and a repo-wide grep for TODO/FIXME/HACK across src, public/lib and test returned zero matches — there is no marker backlog to clear."
+    },
+    {
+      "candidate": "treat lifecycle-authoritative-registry (SPARKED vs local FORGE) as a fixable local item",
+      "reason": "Rejected. This is a cross-repo authority drift between this tree's local contract and portfolio/PROJECT_REGISTRY.json in vaultspark-studio-ops; CANON forbids cross-repo tree edits from here, so it is correctly a warning (non-blocking) pending Studio Ark reconciliation, not a code defect."
+    }
+  ]
+}

@@ -1064,22 +1064,35 @@ export function renderGmReputation(reputation = state.gmLegacy?.reputation) {
 export async function renderGmLegacyScore() {
   const card = document.getElementById("gmLegacyCard");
   if (!card) return;
+  const wrap = document.getElementById("gmLegacyCardWrap") || card;
   try {
     const data = await api("/api/gm-legacy");
     const s = data.legacy;
     state.gmLegacy = s;
     renderFranchiseArchitecture();
-    if (!s) { card.hidden = true; return; }
-    card.hidden = false;
-    const scoreEl = document.getElementById("gmLegacyScoreVal") || card;
-    const gradeEl = document.getElementById("gmLegacyGradeVal");
-    const labelEl = document.getElementById("gmLegacyLabel");
-    if (scoreEl) scoreEl.textContent = s.score ?? "—";
-    if (gradeEl) gradeEl.textContent = s.grade ?? "—";
-    if (labelEl) labelEl.textContent = s.label ?? "";
-    const masteryEl = document.getElementById("gmMasteryPortfolio");
-    if (masteryEl && s.mastery) {
-      masteryEl.innerHTML = `
+    applyGmLegacyCard(card, wrap, s);
+  } catch (error) {
+    wrap.hidden = true;
+    throw error;
+  }
+}
+
+// Applies a fetched GM Legacy summary to the DOM, or hides the entire card —
+// header, mastery, persona and reputation sub-widgets included — when there is
+// no summary. Split out from renderGmLegacyScore so it is directly testable
+// without mocking the network/api client.
+export function applyGmLegacyCard(card, wrap, s) {
+  if (!s) { wrap.hidden = true; return; }
+  wrap.hidden = false;
+  const scoreEl = document.getElementById("gmLegacyScoreVal") || card;
+  const gradeEl = document.getElementById("gmLegacyGradeVal");
+  const labelEl = document.getElementById("gmLegacyLabel");
+  if (scoreEl) scoreEl.textContent = s.score ?? "—";
+  if (gradeEl) gradeEl.textContent = s.grade ?? "—";
+  if (labelEl) labelEl.textContent = s.label ?? "";
+  const masteryEl = document.getElementById("gmMasteryPortfolio");
+  if (masteryEl && s.mastery) {
+    masteryEl.innerHTML = `
         ${s.mastery.focus ? `
           <div class="gm-mastery-focus">
             <span>Next Architect Focus · ${escapeHtml(s.mastery.focus.label)}</span>
@@ -1131,12 +1144,8 @@ export async function renderGmLegacyScore() {
       state.prevGmLegacyTier = currentTier;
     }
 
-    // GM Reputation: market perception label
-    renderGmReputation(s.reputation);
-  } catch (error) {
-    card.hidden = true;
-    throw error;
-  }
+  // GM Reputation: market perception label
+  renderGmReputation(s.reputation);
 }
 
 export function showPersonaTierToast(tierName, tier) {
