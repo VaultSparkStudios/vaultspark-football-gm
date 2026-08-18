@@ -9,10 +9,31 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Next
 
-- [ ] **Calibrate league-wide talent inflation.** Measured twice, independently: league top-100 mean overall drifts 86.8 → 94.2 across 20 simulated seasons, and `test/realism-career-regression.test.js` reports 0.228 annual mean drift against a 0.15 on-target ceiling (Quarterback 0.463 and Offensive Line 0.397 rooms in the watch band). This is the upstream driver of the S89 economy breach, which S89 bounded at the symptom rather than the source. Owed a dedicated session, not a correctness pass.
-- [ ] **Decide whether the `long` shard belongs in the canonical receipt.** It is excluded from `DEFAULT_SHARDS`, so `npm test` has never covered it and its standing failure has been invisible behind every "suite green" claim. Including it turns the canonical receipt red until the item above lands — that sequencing is a founder call, not a silent one.
+- [ ] **Separate elite-tail stretch from free-agent-pool growth.** S90 fixed the *level* — league mean overall now holds across a simulated decade — but the *shape* still moves: on a post-fix 12-season probe (seed 20260306) players rated 90+ go 13 → 89 while the active population grows 1,720 → 2,648, i.e. 0.76% → 3.4% of the league, roughly a 4.5× rise in elite density that population growth does not explain away. The companion top-100-mean figure is partly a selection artifact of the growing free-agent pool and is deliberately **not** treated as evidence on its own. Needs a probe design that separates elite-tail progression from pool-growth selection **before** anything is ranked — ranking it on a measurement with a known confound is exactly the phantom item this project's audit method exists to prevent.
+- [ ] Evaluate whether the free-agent pool itself should be bounded. S89 pinned club rosters at 53+16, but the unrostered pool is unbounded and grew 54% across 12 post-fix seasons. Unlike the S89 breach this is not currently known to break anything — it is flagged because it is the confound above, not because it is a proven defect.
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+
+## Session 90 — Full arc: the league stops minting talent (2026-08-17)
+
+Source: `docs/AUDIT_2026-08-17_SESSION90.json`.
+
+| Item | Status |
+|------|--------|
+| development-environment-authority — a club's environment becomes a differentiator measured against the league's own centres, instead of a +0.84 OVR/player/offseason subsidy paid to 62% of the league every year | ✅ Done |
+| parity-receipt-modelled-a-different-function — the progression receipt and the engine are the same function again, so the receipt can see the drift it exists to police | ✅ Done |
+| long-shard-into-canonical-receipt — `npm test` now runs the project's three most behavioural regressions for the first time; shard timeout raised 20 → 45 min so an honest slow shard is never misreported as a failure | ✅ Done |
+| development-outlook-centre-parity — the player-facing outlook is built from the same centres the offseason progresses on, and the agreement is gated | ✅ Done |
+
+**Method note:** audited by running the engine, not reading it — the third consecutive session where the headline defect was invisible to code review. The decisive instrument was an *exact* decomposition of league mean-overall drift into three additive terms (progression · survivorship-exit · intake, identity verified to 1e-6 every season). That is what made the defect attributable: the drift lived in progression, not in the roster churn a code read would have suspected.
+
+**The finding that reframed the problem.** The declared development curve's league-mean move is **−0.885 OVR/offseason**; the undeclared environment subsidy was **+0.84**. The observed drift of +0.228 was not a modest calibration miss — it was two large errors of opposite sign very nearly cancelling. Removing only the subsidy briefly swung a three-season sample to −0.42 before the league reached its real steady state, which is why the measurement window matters: the generated league's initial age distribution is not the simulation's steady state, and a short window reads as a defect that a decade does not confirm.
+
+**Verification:** league-wide mean environment tilt now exactly **0.0000** on four independent seeds (was +0.84), with club-to-club spread preserved (best +1.1, worst −1.1, sd 0.80) — centred, not deleted. Post-fix 12-season drift **−0.073** against the 0.15 on-target ceiling (was +0.228), decomposing to P −0.478 / EXIT +0.424 / ENTRY −0.019: survivors age down, the exit of below-average players lifts the mean, intake is neutral, and they cancel. That is what a steady-state league looks like.
+
+**Standing red cleared.** `test/realism-career-regression.test.js` — disclosed by S89 as pre-existing and deliberately not force-greened — now passes 3/3, including the decade progression-parity assertion. It has been folded into the canonical receipt rather than left excluded, which resolves the S89 committed follow-up: `npm test` now costs ~12 minutes more and covers the tests most likely to be load-bearing.
+
+**Launch posture:** unchanged. `launchReady: false` preserved pending Zoho delivery/reply-as, SHA-bound founder approval, authoritative lifecycle reconciliation and external Obelisk relying-party proof.
 
 ## Session 89 — Full arc: the franchise economy stops being a fiction (2026-08-17)
 

@@ -340,14 +340,29 @@ export const PLAYER_DEVELOPMENT_PROFILE = Object.freeze({
  *
  * What remains is deliberate: young players still develop, thirty-somethings
  * still decline, and high-potential players still separate from the field.
+ *
+ * S90 — `environmentTilt` (the club's zero-centred development environment, see
+ * `src/domain/developmentEnvironment.js`) is summed in *before* the single
+ * rounding rather than rounded separately and added afterwards. Rounding is only
+ * unbiased when something continuous and random is inside it; the tilt is
+ * deterministic per player, so rounding it alone biased it in whichever
+ * direction it happened to sit. Folded in here it rides the same unbiased
+ * rounding as the rest of the curve. The RNG stream is untouched — `rng.float`
+ * is still drawn exactly once per player, in the same order.
  */
-export function developmentDelta(player, rng) {
+export function developmentDelta(player, rng, { environmentTilt = 0 } = {}) {
   let ageFactor;
   if (player.age <= 25) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.developing25AndUnder;
   else if (player.age <= 29) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.prime26To29;
   else ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.veteran30Plus;
 
   const traitFactor = (player.potential - LEAGUE_AVERAGE_POTENTIAL) / 20;
+  // Never `Number(x || 0)` here: NaN is falsy, so that idiom launders a NaN into
+  // a silent zero and the curve quietly stops applying. Validate, then use.
+  const tilt = environmentTilt === undefined || environmentTilt === null ? 0 : Number(environmentTilt);
+  if (!Number.isFinite(tilt)) {
+    throw new TypeError(`developmentDelta: environmentTilt must be finite, received ${environmentTilt}`);
+  }
   const variance = rng.float(PLAYER_DEVELOPMENT_PROFILE.varianceMin, PLAYER_DEVELOPMENT_PROFILE.varianceMax);
-  return Math.round(ageFactor + traitFactor + variance);
+  return Math.round(ageFactor + traitFactor + tilt + variance);
 }

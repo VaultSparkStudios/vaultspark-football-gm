@@ -1,3 +1,59 @@
+# Session 90 Closeout — The League Stops Minting Talent
+
+## Session Intent — S91
+
+**No single owed item is outstanding.** S90 closed both open board items S89 left (talent inflation at source; the `long` shard sequencing call), so S91 should open with a genuinely fresh live-code audit rather than inheriting a lens. Two things are staged for it if the audit confirms them, and both are written to be resisted rather than accepted:
+
+1. **Separate elite-tail stretch from free-agent-pool growth.** S90 fixed the league's *level*; its *shape* still moves. Post-fix 12-season probe (seed 20260306): players rated 90+ go 13 → 89 while the active population grows 1,720 → 2,648, i.e. 0.76% → 3.4% of the league. **Do not rank this off the top-100-mean figure** — that measurement has a known confound, because a larger population's top hundred is higher without any change in distribution. Design a probe that separates elite-tail progression from pool-growth selection *before* ranking anything, or you will ship a phantom.
+2. **Decide whether the free-agent pool should be bounded at all.** S89 pinned club rosters at 53+16; the unrostered pool is unbounded. It is not currently known to break anything — it is on the board because it is the confound above, not because it is a proven defect.
+
+Preserve the public-launch HOLD. Nothing in S90 touched it.
+
+## Where We Left Off (Session 90)
+
+- **The club development environment was a league-wide subsidy wearing a differentiator's documentation.** `playerDevelopmentContext` added a `developmentBonus` to every player's offseason progression on top of the declared curve. Every centre it measured against was a literal the league had left behind: `coaching.development` compared to **72** against a real league mean of **78.22** (worth ≈ +0.48 OVR to every player on an average club, every year, forever); scheme fit compared to **70** against a real mean of **78.1**. Scheme fit is *derived from player ratings*, so the richer the league got the larger the bonus grew — a closed positive-feedback loop, which is why the drift accelerated rather than settling. The culture term paid +1 to every player on a developmental club but charged −1 only to players 29+ on an urgent one, and the clamp allowed +4 up against −3 down. Every asymmetry pointed the same way. **Measured on four seeds: +0.84 OVR per player per offseason; 62% of the league positive, 3.8% negative.**
+- **The number that reframed everything, from a probe with no simulation in it:** the *declared* curve's league-mean move is **−0.885 OVR/offseason**. The subsidy was not an extra on a balanced curve — it was silently acting as the curve's counterweight. The reported +0.228 drift was two large errors of opposite sign nearly cancelling. **Any small drift reading on this system must be decomposed before it is believed to be small.**
+- **`src/domain/developmentEnvironment.js` is the single authority.** Centres are *measured from the league being simulated*, never held as literals; the clamp is symmetric; and the whole tilt is **zero-centred by construction** — the league's own mean raw tilt is subtracted from every player's. Narrative shapes (a developmental club favours its young; an urgent one burns its veterans) are preserved exactly and now *redistribute* development between clubs instead of minting it.
+- **The tilt is folded into `developmentDelta`'s single rounding, not rounded separately.** Rounding is unbiased only when something continuous and random is inside it; rounding a deterministic per-player value biases it in whichever direction it sits — a second, quieter inflation source. **The RNG stream is provably unchanged** (`rng.float` drawn exactly once per player, asserted in test). Do not "simplify" this back into `developmentDelta(...) + Math.round(bonus)`.
+- **Re-measured result:** league-wide mean tilt exactly **0.0000** on all four seeds, club spread intact (best +1.1, worst −1.1, sd 0.80) — centred, not deleted. Post-fix 12-season drift **−0.073** vs the 0.15 on-target ceiling (was +0.228), decomposing to progression −0.478 / survivorship-exit +0.424 / intake −0.019.
+- **The S89 standing red is fixed at source**, not suppressed: `test/realism-career-regression.test.js` passes 3/3 including the decade progression-parity assertion.
+- **`long` is now in `DEFAULT_SHARDS`.** `npm test` runs determinism, the S89 cap-legality proof and the career-realism decade for the first time in the project's history. `DEFAULT_SHARD_TIMEOUT_MS` raised 20 → 45 min in the same change. **Cost: `npm test` is roughly 12 minutes slower.** That is the price of a receipt that means something.
+- **The player-facing development outlook** would have reported the tilt from the stale literals while the offseason progressed on the measured ones. Found while wiring the fix, not by a probe. Both now read one centres object, and a gate holds them together.
+
+## Decisions That Must Survive (S90)
+
+- **A modifier documented as a differentiator must have a league-wide mean of zero, and a test must say so.** "Helps some, hurts others" is a claim about a distribution; an unmeasured claim about a distribution will be false.
+- **A centre is measured from the league, never held as a literal.** Both occurrences of this defect (S71 `LEAGUE_AVERAGE_POTENTIAL`, S90 here) began as a correct constant the generator later moved away from. A literal cannot notice it has gone stale. Fixing the *number* would have bought a few sessions before a third occurrence.
+- **Deterministic per-player quantities are folded into the curve's existing random rounding, never rounded alone.**
+- **A gate ships with a negative control.** The zero-mean tolerance is proved to reject the reconstructed pre-S90 formula, and a separate assertion proves club-to-club spread survived — because a constant stub would satisfy "mean is zero" perfectly while deleting the whole system.
+- **Measurement window is part of the measurement.** Removing the subsidy swung a *three*-season sample to −0.42 while ten- and twelve-season windows land at −0.073. The generated league's initial age distribution is not the simulation's steady state. The three-season assertion written during this session was replaced, not kept.
+- **When two large errors of opposite sign nearly cancel, the observable looks like a small calibration miss.** Decompose before believing the size of a problem.
+
+## Honest Holds
+
+- **Residual, stated and deliberately unranked:** the league's level is fixed; its shape is not. Elite density 0.76% → 3.4% over 12 post-fix seasons. Not ranked because the companion measurement is confounded by free-agent-pool growth — see Session Intent item 1.
+- **The stale-centre sweep was performed and deliberately did not churn its matches.** ~30 call sites use the `(value - 70)/k` shape; nearly all are within-play *relative* comparisons where a miscentred constant cancels between the two sides rather than accumulating. The distinguishing property of the S90 defect is that it mutated persistent state every offseason and therefore compounded. The one other asymmetric accumulator considered, `scoutingWeeklyBonus` (clamp −2/+8, unconditional +2 for developmental culture), was traced to scouting confidence and draft-board accuracy only — it never mutates player ratings. Changing thirty relative comparisons on suspicion would be churn.
+- Public launch remains HOLD on Zoho delivery/reply-as, SHA-bound founder launch approval, authoritative lifecycle reconciliation, and external Obelisk relying-party registration. Nothing this session touched or could touch them.
+- Registry SPARKED vs local FORGE remains cross-repo drift, reconcilable only through signed Studio Ark — non-blocking, flagged again.
+
+## Next Best Work
+
+1. **A fresh live-code audit, not an inherited lens.** Both items S89 left on the board are closed; do not open S91 assuming this session's four-item lens is still current.
+2. **Design the elite-tail probe before ranking the elite-tail finding.** Separate elite-tail progression from free-agent-pool-growth selection. If the probe cannot separate them, the honest output is another deferral, not a ranked item.
+3. **Consider whether the free-agent pool should be bounded**, which would also remove the confound above.
+4. **Watch `npm test` wall-clock.** It now includes `long` and costs ~12 minutes more; if that becomes a working-rhythm problem, the fix is parallelising the shard, never re-excluding it.
+
+## Key Files
+
+- `src/domain/developmentEnvironment.js` — **new.** The single authority for how a club's environment moves development. Centres measured from the live league; tilt zero-centred by construction; symmetric clamp. Read the module header before changing anything here — it records what the stale literals cost.
+- `src/domain/ratings.js` — `developmentDelta(player, rng, { environmentTilt })`. The tilt is summed in **before** the single `Math.round`. Do not move it back out.
+- `src/runtime/GameSession.js` — `playerDevelopmentContext` (now centres-aware), `developmentEnvironmentCentres()` (cached per league revision, pinned before the aging loop), `computeSchemeFit` (now exported), and `buildPlayerDevelopmentOutlook` (takes the same centres the engine uses).
+- `src/engine/offseasonSimulator.js` — `progressPlayer` consumes `context.developmentEnvironmentTilt` (continuous), falling back to the legacy rounded `developmentBonus` for older callers.
+- `src/stats/progressionParity.js` — unchanged, and that is deliberate: it is correct on average now that the tilt sums to zero. Do not add a second model of the environment term here.
+- `test/session90-development-environment.test.js` — 12 tests, including the negative control and the constant-stub guard.
+- `scripts/run-test-shard.mjs` / `scripts/lib/test-progress.mjs` — `long` in `DEFAULT_SHARDS`; timeout 45 min.
+- `docs/AUDIT_2026-08-17_SESSION90.json` — the audit source of truth; the `.md` is rendered from it via `node scripts/render-audit-md.mjs --session 90`.
+
 # Session 89 Closeout — The Franchise Economy Stops Being a Fiction
 
 ## Session Intent — S90
@@ -416,3 +472,4 @@ Watch the first real consenting community-stats cohort and confirm freshness/sup
 - public/boot-manifest.json
 - docs/AUDIT_2026-08-09_SESSION78.json
 - docs/AUDIT_2026-08-09_SESSION78.md
+

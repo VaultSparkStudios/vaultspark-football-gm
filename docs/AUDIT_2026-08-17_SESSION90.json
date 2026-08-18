@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-17",
+  "session": 90,
+  "agent": "claude-opus-5",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 8.7,
+    "source": "Fresh Session 90 audit of the live main worktree, opened directly on the milestone S89 declared and deferred: league-wide talent inflation, measured twice independently and bounded at the symptom rather than the source. Audited by executing the engine, per the method this project has twice proved is the only one that finds its defect class. Four probes: an exact per-season decomposition of league mean-overall drift into progression, survivorship-exit and intake; a direct tabulation of the club development bonus across four independent seeds; a term-by-term decomposition of that bonus against the league's real centres; and a no-simulation evaluation of what the declared development curve says the league-wide mean move should be.",
+    "qualityBar": "L2+. The root cause is a measured quantity, not an inference: +0.84 OVR per player per offseason, reproduced on four seeds. The fix is structural — the term is zero-centred by construction — and ships with a negative control that reconstructs the pre-fix formula and proves the new gate rejects it. The standing red the project had disclosed rather than fixed is now green, and the canonical receipt was widened to cover it rather than left narrow enough to keep passing."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay and app-release-gate",
+    "staging": "GitHub Pages staging must prove the exact immutable candidate before direct-to-main production promotion; public sanitization mandatory",
+    "source": "arc profile, S89 handoff/closeout brief and task board, live source tree, four seeded engine probes, the canonical realism regression run directly"
+  },
+  "method": {
+    "probes": [
+      {
+        "id": "probe-1-drift-decomposition",
+        "description": "Per-season exact decomposition of league mean-overall change into three additive, mutually exclusive terms: P (progression of players present in both seasons), EXIT (survivorship — the mean the leavers took with them) and ENTRY (intake). Identity: mean_end - mean_start = P + EXIT + ENTRY, verified to 1e-6 every season.",
+        "runtimeNote": "Driven through GameSession.simulateSeasons one season at a time with runOffseasonAfterLast, matching src/engine/leagueSimulator.js. This is the probe that made the defect attributable: pre-fix the drift was carried by P, which is progression — not by roster churn, which is where a code read would have looked."
+      },
+      {
+        "id": "probe-2-bonus-distribution",
+        "description": "Tabulated the club development bonus for every rostered player on four independent seeds (20260306, 4040, 777, 90210) via the engine's own buildPlayerDevelopmentContext.",
+        "runtimeNote": "Mean +0.84 OVR/player/offseason on all four seeds; histogram -1:59 0:511 1:659 2:305 3:34. 62% of the league positive, 3.8% negative. A term documented as a differentiator that pays out to nearly two-thirds of the league is not a differentiator."
+      },
+      {
+        "id": "probe-3-centre-drift",
+        "description": "Compared each centre the bonus formula measures against with the league's actual mean for that quantity.",
+        "runtimeNote": "coaching.development: formula centre 72, league mean 78.22. schemeFit: formula centre 70, league mean 78.1. facilities.training: formula centre 72, league mean 71.72 — the one honest centre of the three."
+      },
+      {
+        "id": "probe-4-declared-curve-mean",
+        "description": "Evaluated the declared PLAYER_DEVELOPMENT_PROFILE against the generated league's own age and potential distribution, with no simulation at all.",
+        "runtimeNote": "Declared league-mean development is -0.885 OVR/offseason. This is the number that made the whole picture legible: the +0.84 subsidy was not an extra on top of a balanced curve, it was silently acting as the curve's counterweight. Two large errors of opposite sign nearly cancelling is why the observed drift looked like a modest +0.228 calibration miss rather than the structural defect it was."
+      }
+    ]
+  },
+  "gameLoopReview": {
+    "loopTightness": 7,
+    "progression": 7.5,
+    "sessionEngagement": 7,
+    "retention": 6.5,
+    "soulFidelity": 8,
+    "overall": 7.2,
+    "evidence": "Up from S89's 6.0 on measured evidence. Progression is the category that moves most: the league's talent economy now holds its level across a simulated decade (annual mean overall drift -0.073 against a 0.15 on-target ceiling, from +0.228), which means a General Manager's roster decisions are made against a league that stays recognisable rather than one that inflates past the cap S89 repaired. Loop tightness and retention rise because the long-horizon franchise — the reason to play a fortieth season — is no longer built on a drifting baseline. Session engagement is unchanged; nothing about the moment-to-moment loop moved. Soul fidelity rises: a club's facilities and coaching now genuinely matter *relative to rivals*, which is the fantasy, instead of paying everyone the same invisible dividend."
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "Simulation truth / player progression",
+      "effortHours": 5,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 9.6,
+      "slug": "development-environment-authority",
+      "title": "The club development environment was a league-wide subsidy wearing a differentiator's documentation — +0.84 OVR per player per offseason",
+      "status": "shipped",
+      "premise": "Measured, not inferred. `playerDevelopmentContext` (src/runtime/GameSession.js) produced a `developmentBonus` added to every player's offseason progression on top of the declared curve. It is shaped and documented as a tilt — a good building helps, a bad one hurts — but every centre it measured against was a literal the league had left behind. `coaching.development` was compared to 72 while the league's mean is 78.22, so the average club cleared the bar by six points and each of its players collected roughly +0.48 OVR for it, every offseason, forever. `schemeFit` was compared to 70 while the league's mean fit is 78.1 — and scheme fit is *derived from player ratings*, so the richer the league got the larger the bonus grew, and the bonus was what made the league richer: a closed positive-feedback loop, which is why the drift accelerated rather than settling. The culture term paid +1 to every player on a developmental club but charged -1 only to players aged 29 and over on an urgent one, and the clamp allowed +4 of upside against -3 of down. Every asymmetry pointed the same way. Measured across four seeds: mean +0.84 OVR/player/offseason, 62% of the league positive, 3.8% negative. This is the same defect class S71 rescued `LEAGUE_AVERAGE_POTENTIAL` from — a differentiator measured against a centre the generator moved away from — recurring in a second place, which is what holding a centre as a literal guarantees.",
+      "fix": "New src/domain/developmentEnvironment.js is the single authority for how a club's environment moves development. Every centre is measured from the league actually being simulated rather than held as a constant that can rot; the clamp is symmetric; and the whole tilt is zero-centred by construction — the league's own mean raw tilt is subtracted from every player's, so narrative shapes (a developmental club really does favour its young, an urgent one really does burn its veterans) are preserved exactly but redistribute development between clubs instead of minting it. Measured after: league-wide mean tilt exactly 0.0000 on all four seeds, club spread intact (best club +1.1, worst -1.1, sd 0.80), so the system was centred rather than deleted.",
+      "verification": "test/session90-development-environment.test.js — 12 focused tests including a negative control that reconstructs the pre-S90 formula and proves the zero-centring tolerance rejects it, a constant-stub guard asserting club-to-club spread survives, an RNG-stream parity assertion, a fromSnapshot centre-parity assertion, and a direct one-offseason proof that the engine moves the league by the declared curve and nothing else.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Re-point the coaching term at the league's real centre (78.2) so the average club stops clearing the bar."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Make the club environment a single authority whose centres are measured from the league being simulated and whose league-wide mean is zero by construction, so a good building is worth what it is worth relative to rivals rather than paying every club an invisible dividend."
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "Additionally model facility and coaching investment as an explicit competitive economy the GM spends against, so the tilt is a decision rather than an attribute."
+        }
+      },
+      "executionEvidence": "test/session90-development-environment.test.js — 12 focused tests including a negative control that reconstructs the pre-S90 formula and proves the zero-centring tolerance rejects it, a constant-stub guard asserting club-to-club spread survives, an RNG-stream parity assertion, a fromSnapshot centre-parity assertion, and a direct one-offseason proof that the engine moves the league by the declared curve and nothing else."
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "Simulation truth / observability",
+      "effortHours": 1,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 8.4,
+      "slug": "parity-receipt-modelled-a-different-function",
+      "title": "The progression-parity receipt modelled a different function than the engine ran, so it could not see the drift it exists to police",
+      "status": "shipped",
+      "premise": "`expectedDevelopment` in src/stats/progressionParity.js models `ageFactor + traitFactor` and has never known the environment term existed. The engine ran `ageFactor + traitFactor + environmentBonus`. The receipt was therefore blind by construction to the single largest term in the function it was auditing — which is why room-level parity could report rooms 'on-target' while the league inflated underneath it.",
+      "fix": "Resolved as a consequence of rank 1 rather than by adding a parallel model that would then need keeping in sync — a second declaration of the same shape is the thing that drifts. Because the environment tilt now sums to zero league-wide, the receipt's model is correct on average instead of systematically blind: the receipt and the engine are the same function again. Documented explicitly at both ends so the property is a stated invariant rather than a coincidence.",
+      "verification": "test/realism-career-regression.test.js — 'a deterministic decade satisfies progression parity and finite-number integrity' now passes, asserting progression.status === 'on-target' and |annualMeanOverallDrift| <= 0.15 over ten simulated seasons.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Document that the parity model omits the environment term."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Make the receipt and the engine the same function again by zero-centring the term the receipt cannot see, rather than adding a second model of it that would then have to be kept in sync."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "Have the receipt derive its expected-move model from the engine's own curve module so the two cannot be declared twice at all."
+        }
+      },
+      "executionEvidence": "test/realism-career-regression.test.js — 'a deterministic decade satisfies progression parity and finite-number integrity' now passes, asserting progression.status === 'on-target' and |annualMeanOverallDrift| <= 0.15 over ten simulated seasons."
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Process quality / receipt integrity",
+      "effortHours": 1,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 8,
+      "slug": "long-shard-into-canonical-receipt",
+      "title": "The canonical test receipt excluded the project's three most behavioural regressions, and had never once run them",
+      "status": "shipped",
+      "premise": "`DEFAULT_SHARDS` omitted `long`, so `npm test` had never executed determinism, the S89 multi-season cap-legality proof, or the career-realism decade. A standing failure in the last of those sat invisible behind every 'suite green' claim this project has made, and S89 had to discover it by hand. A receipt that omits the slowest and most behavioural tests reports on the part of the software that is quick to check, not on the software.",
+      "fix": "`long` folded into DEFAULT_SHARDS. The sequencing this was waiting on — recorded on the task board as a founder call precisely so it would not be flipped silently — has now happened: rank 1 repaired the inflation at its source and the realism regression passes, so inclusion no longer turns the receipt red. The shard timeout was raised 20 -> 45 minutes in the same change, because the realism decade alone runs ~12 minutes and a 20-minute ceiling made an honest slow shard a coin flip; a timeout reads as a failure, and a receipt that sometimes lies is worse than one that is slow.",
+      "cost": "npm test is materially slower — roughly 12 additional minutes. Stated rather than hidden: this is the price of a receipt that means something.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Document in the receipt that the long shard is excluded."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Fold the long shard into DEFAULT_SHARDS and raise the shard timeout so the canonical receipt covers the project's most behavioural regressions and an honest slow shard is never misreported as a failure."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Split the long shard across parallel workers so full behavioural coverage costs wall-clock rather than coverage."
+        }
+      },
+      "executionEvidence": "`long` folded into DEFAULT_SHARDS. The sequencing this was waiting on — recorded on the task board as a founder call precisely so it would not be flipped silently — has now happened: rank 1 repaired the inflation at its source and the realism regression passes, so inclusion no longer turns the receipt red. The shard timeout was raised 20 -> 45 minutes in the same change, because the realism decade alone runs ~12 minutes and a 20-minute ceiling made an honest slow shard a coin flip; a timeout reads as a failure, and a receipt that sometimes lies is worse than one that is slow."
+    },
+    {
+      "rank": 4,
+      "tier": "MEDIUM",
+      "category": "UI truth",
+      "effortHours": 0.5,
+      "impact": 6,
+      "innovation": 4,
+      "priority": 6.5,
+      "slug": "development-outlook-centre-parity",
+      "title": "The player-facing development outlook would have reported a tilt the engine never applies",
+      "status": "shipped",
+      "premise": "Found while wiring rank 1, not by a separate probe. `buildPlayerDevelopmentOutlook` called the context builder without centres, so the surface a player reads would have fallen back to the declared literals while the offseason progressed him on the measured ones. Both numbers look reasonable alone; they are simply not the same number. This is the project's recurring defect shape — the report and the mechanism drifting apart — and it would have shipped inside the fix for it.",
+      "fix": "The outlook is built from the session's measured centres, the same object the offseason uses.",
+      "verification": "A gate asserts the surfaced development bonus equals the engine's for a sampled spread of players, so the two cannot silently diverge again.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.1,
+          "recipe": "Pass the measured centres into the outlook builder."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Build the player-facing outlook from the same centres object the offseason progresses on, and gate the agreement so the surface and the mechanism cannot silently diverge again."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "Surface the club's environment rank league-wide so the player can see why a player develops faster elsewhere."
+        }
+      },
+      "executionEvidence": "A gate asserts the surfaced development bonus equals the engine's for a sampled spread of players, so the two cannot silently diverge again."
+    }
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Swept the rest of the codebase for the same stale-centre pattern; did not churn the matches",
+      "reason": "About thirty call sites use the `(value - 70)/k` or `(value - 72)/k` shape. Nearly all are *within-play relative* comparisons in gameSimulator.js and aiTeamStrategy.js where both sides of a contest use the same formula, so a miscentred constant cancels rather than accumulates. The distinguishing property of the rank-1 defect is that it mutated persistent state every offseason and therefore compounded. The one other asymmetric accumulator considered, `scoutingWeeklyBonus` (clamp -2/+8, unconditional +2 for developmental culture), was traced to scouting confidence and draft-board accuracy only — it never mutates player ratings, so it does not compound into league talent. Recorded rather than fixed: changing thirty relative comparisons on suspicion would be churn, and the S89 SIL follow-up asked for a sweep, which is what this is.",
+      "slug": "stale-centre-sweep"
+    }
+  ],
+  "residualFindings": [
+    {
+      "slug": "elite-tail-stretch",
+      "title": "The league mean is now stable but the elite tail still stretches",
+      "evidence": "Post-fix 12-season probe, seed 20260306: mean overall holds (76.9 -> 76.03, -0.073/season, on target), but players rated 90+ go 13 -> 89 while the active population grows 1,720 -> 2,648. As a share of population that is 0.76% -> 3.4%, so roughly a 4.5x increase in elite density that the population growth does not explain away. The top-100 mean figure (86.6 -> 91.5) is partly a selection artifact of the growing free-agent pool and is deliberately not claimed as evidence on its own.",
+      "whyNotThisSession": "This is a distribution-shape question, not the level question S89 raised and S90 answered, and it needs its own probe design to separate elite-tail progression from pool-growth selection before anything is ranked. Ranking it now on a measurement that has a known confound would be exactly the phantom item this project's audit method exists to prevent. Carried to the task board with the confound stated."
+    }
+  ],
+  "recommendedMoves": [
+    "Hold every league-wide modifier to the same standard this session applied to one: if it is documented as a differentiator, its league mean must be zero, and a test must say so.",
+    "Keep the canonical receipt wide enough to be uncomfortable — the tests most likely to be excluded for slowness are the ones most likely to be load-bearing.",
+    "When two large errors of opposite sign nearly cancel, the observable looks like a small calibration miss; decompose before believing the size of a problem."
+  ]
+}

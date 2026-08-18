@@ -6,6 +6,7 @@ import path from "node:path";
 import {
   buildTestProgress,
   clearTestProgress,
+  DEFAULT_SHARD_TIMEOUT_MS,
   inspectTestProgress,
   resolveShardTimeoutMs,
   writeTestProgressAtomic
@@ -56,7 +57,20 @@ test("failed and stale progress stays non-green evidence", () => {
 });
 
 test("shard timeout resolution is bounded and rejects unsafe values", () => {
+  // The behaviour under test is the *rule* — an explicit override above the floor
+  // is honoured, anything below it or unparseable falls back to the declared
+  // default. S90 re-declared that default from 20 to 45 minutes when the `long`
+  // shard joined the canonical receipt, and this test failed for having written
+  // `20 * 60 * 1000` out a second time rather than reading the authority. A test
+  // that restates an implementation literal fails backwards: it reports a
+  // deliberate, correct change as a defect while proving nothing about the rule.
   assert.equal(resolveShardTimeoutMs("45000"), 45000);
-  assert.equal(resolveShardTimeoutMs("999"), 20 * 60 * 1000);
-  assert.equal(resolveShardTimeoutMs("not-a-number"), 20 * 60 * 1000);
+  assert.equal(resolveShardTimeoutMs("999"), DEFAULT_SHARD_TIMEOUT_MS);
+  assert.equal(resolveShardTimeoutMs("not-a-number"), DEFAULT_SHARD_TIMEOUT_MS);
+  assert.equal(resolveShardTimeoutMs(undefined), DEFAULT_SHARD_TIMEOUT_MS);
+
+  // And the default itself must stay sane: long enough for the slowest canonical
+  // shard (the realism decade alone runs ~12 minutes) and not absurd.
+  assert.ok(DEFAULT_SHARD_TIMEOUT_MS >= 30 * 60 * 1000, "the default must clear the long shard's real runtime");
+  assert.ok(DEFAULT_SHARD_TIMEOUT_MS <= 120 * 60 * 1000, "a timeout that never fires is not a timeout");
 });

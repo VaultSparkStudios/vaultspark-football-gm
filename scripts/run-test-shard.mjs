@@ -26,6 +26,7 @@ export const SHARDS = {
     "test/ratings-regression.test.js",
     "test/s4-systems.test.js",
     "test/season-value-authority.test.js",
+    "test/session90-development-environment.test.js",
     "test/situational-playcalling.test.js",
     "test/snapshot-migration.test.js",
     "test/standings-tiebreaker.test.js",
@@ -218,7 +219,28 @@ export const SHARDS = {
   ]
 };
 
-const DEFAULT_SHARDS = ["core", "runtime", "sim-contract", "sim-realism", "studio"];
+/**
+ * The shards `npm test` runs — the receipt this project treats as authoritative.
+ *
+ * S90 folds `long` back in. It had been excluded, so `npm test` had never once
+ * executed the project's three most behavioural regressions — determinism, the
+ * S89 multi-season cap-legality proof, and the career-realism decade — and a
+ * standing failure in the last of those sat invisible behind every "suite green"
+ * claim the project has ever made. A receipt that omits the slowest and most
+ * behavioural tests is not reporting on the software; it is reporting on the
+ * part of the software that is quick to check.
+ *
+ * The sequencing this was waiting on (recorded on the task board as a founder
+ * call, precisely so it would not be flipped silently) has now happened: S90
+ * repaired the talent inflation at its source, `realism-career-regression`
+ * passes, and including `long` no longer turns the canonical receipt red.
+ *
+ * It does make `npm test` materially slower — the realism decade alone runs ~12
+ * minutes. That is the price of a receipt that means something, and the shard
+ * timeout below is raised so a slow-but-honest shard is never misreported as a
+ * failure.
+ */
+const DEFAULT_SHARDS = ["core", "runtime", "sim-contract", "sim-realism", "long", "studio"];
 
 function usage() {
   const names = Object.keys(SHARDS).join("|");

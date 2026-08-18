@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-17 (Session 88 closeout) -->
+<!-- generated-at: 2026-08-18 (Session 90 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
-<!-- session-authority: committed=S88 · SIL=S88 · status=S88 · handoff=S88; divergent=false -->
+<!-- session-authority: committed=S90 · SIL=S90 · status=S90 · handoff=S90; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 88 closeout · 2026-08-17.
+> **Fast-boot brief** — generated at Session 90 closeout · 2026-08-18.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,33 +17,27 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 89 · 2026-08-17 · BUILDER MODE                          ║
+║  Session 91 · 2026-08-18 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ STALE LAST SESSION SUMMARY ══════════════════════════════════╗
-║  Expected S88; PROJECT_STATUS summary says S87.                  ║
-║  Session 88 shipped the one genuine defect found by a fresh liv  ║
-║  Repair: update PROJECT_STATUS.lastSessionSummary at closeout.   ║
-╚════════════════════════════════════════════════════════════════╝
-
-╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
-║  Local dev     → http://127.0.0.1:3000/game.html ·               ║
-║  Production    → https://playfranchisearchitect.com/ ·           ║
-║  Staging       → https://staging.playfranchisearchitect.com ·    ║
+╔══ LAST SESSION (S90) - WHAT SHIPPED ═══════════════════════════╗
+║  S90 — the club development environment becomes a zero-centred   ║
+║  Tests  -                                                        ║
+║  Deploy -                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 0d · refresh required              ║
+║  Profile · game · cache stale 1d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    995/1000   ███████████████████████░   100%                    ║
-║    SIL v3.0  ·  Avg3: 990  ·  Velocity 0→                        ║
-║    Active 14107d · closeout 0d · source: newest SIL/status/hand  ║
+║    985/1000   ███████████████████████░   99%                     ║
+║    SIL v3.0  ·  Avg3: 983.7  ·  Velocity 0→                      ║
+║    Active 20682d · closeout 1d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -57,28 +51,28 @@
 ║    Security         100    ██████████  ········ →                ║
 ║    Ecosystem        100    ██████████  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation        99    ██████████  ········ →                ║
+║    Automation        96    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 88 ════════════════════════════╗
-║  Shipped:  Session 88 shipped the one genuine defect found by a  ║
-║  Tests:    1137/1137 passing  ·  Deploy: N/A                     ║
+╔══ WHERE WE LEFT OFF  ·  Session 90 ════════════════════════════╗
+║  Shipped:  Session 90 stopped the league minting talent, closin  ║
+║  Tests:    1150/1150 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,687 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,344 tok/turn  ·  cache 50%  ·  134 turns to compact       ║
+║     2,550 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,275 tok/turn  ·  cache 50%  ·  142 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1137/1137 passing (2026-08-17) · STALE — run   ║
+║  ⚠  Tests         1150/1150 passing (2026-08-17) · STALE — run   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         42836 FORGE  ·  6d old                         ║
+║  ⚠  IGNIS         42836 FORGE  ·  7d old                         ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
@@ -88,7 +82,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
+║  ⚠  Doctor        10/12 (83%)  ·  2 warn                         ║
 ║  ✓  Cost          Max flat-rate · $2.94/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -112,7 +106,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-17_SESSION89.md       ║
+║  ✓ queue exhausted · source: AUDIT_2026-08-17_SESSION90.md       ║
 ║  Closed: 4 · Open: 0                                             ║
 ║  Latest audit has no open ranked items; run /audit for a new li  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -121,5 +115,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 88 closeout · 2026-08-17*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 90 closeout · 2026-08-18*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

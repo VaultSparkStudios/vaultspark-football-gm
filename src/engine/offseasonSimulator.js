@@ -108,7 +108,22 @@ function countsAsAccruedSeason(player, year) {
 }
 
 export function progressPlayer(player, rng, context = {}) {
-  const delta = developmentDelta(player, rng) + Math.round(Number(context.developmentBonus || 0));
+  // S90 — the club's development environment arrives as a continuous, zero-centred
+  // tilt and is folded into the curve's single unbiased rounding. `developmentBonus`
+  // remains the rounded, player-facing presentation of the same quantity and is no
+  // longer what the engine progresses on. Older callers that only carry the rounded
+  // integer still work, and still get the value they asked for.
+  // Absent is a legitimate state — the headless `runOffseason` façade passes no
+  // development context at all — and means zero tilt. Present-but-not-a-number is
+  // not legitimate and must not be defaulted with `|| 0`, because NaN is falsy and
+  // that idiom would launder a corrupt environment into a silent zero: the club's
+  // development would stop applying and nothing anywhere would fail.
+  const rawTilt = context.developmentEnvironmentTilt ?? context.developmentBonus ?? null;
+  const environmentTilt = rawTilt === null ? 0 : Number(rawTilt);
+  if (!Number.isFinite(environmentTilt)) {
+    throw new TypeError(`progressPlayer: development environment must be finite, received ${rawTilt}`);
+  }
+  const delta = developmentDelta(player, rng, { environmentTilt });
   const ratingKeys = Object.keys(player.ratings);
   const focusRatings = (context.focusRatings || []).filter((key) => ratingKeys.includes(key));
   // rng.shuffle is called unconditionally and identically to before, so the RNG

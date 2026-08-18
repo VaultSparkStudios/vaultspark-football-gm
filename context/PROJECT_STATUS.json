@@ -4,13 +4,13 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Session 89 repaired the franchise economy, which had stopped functioning as a constraint. Measured on a seeded 20-season run, clubs over the  salary cap ran 0,0,1,2,10,27,30 and then 31 of 32 for every remaining season (median  over by season 20, worst ); the engine enforced the cap at exactly one seam while the draft added 224 unchecked rookie contracts a year, and no code path could release a player. There was also no roster limit at all, so the league grew 1,568 -> 2,919 players. New src/engine/capCompliance.js is the single release authority for both, wired into the headless and interactive offseason paths, with dead money split the real way so the trim loop converges. Re-measured: 0 illegal clubs after every offseason across 2027-2036, rosters pinned at 53+16. Also corrected the unreachable  declared salary ceiling (true maximum ,320,000) and shipped a negative-control-validated gate for the S88 empty-state husk class. Local proof 1,150/1,150 Node. Public launch remains HOLD and launchReady stays false.",
-  "nextMilestone": "Calibrate league-wide talent inflation at the source — measured twice independently (league top-100 mean overall drifting 86.8 -> 94.2 across 20 seasons; realism regression 0.228 annual drift against a 0.15 ceiling). S89 bounded the symptom only. Also decide explicitly whether the long shard belongs in the canonical test receipt, since it currently carries a pre-existing failure that npm test never runs.",
+  "currentFocus": "Session 90 stopped the league minting talent, closing the milestone S89 declared and deferred. A club \"development bonus\" was added to every player's offseason progression on top of the declared development curve; it is documented as a differentiator but measured every centre against literals the league had left behind — coaching.development against 72 when the league mean is 78.22, scheme fit against 70 when the real mean is 78.1. Scheme fit is derived from player ratings, so inflation grew the bonus and the bonus grew inflation. Measured on four seeds it was worth +0.84 OVR per player per offseason, 62% of the league positive and 3.8% negative. The declared curve's own league-mean move is -0.885, so the reported +0.228 drift was two large errors of opposite sign nearly cancelling rather than a modest calibration miss. New src/domain/developmentEnvironment.js measures every centre from the live league, clamps symmetrically, and is zero-centred by construction: mean tilt now exactly 0.0000 on all four seeds with club spread intact (best +1.1, worst -1.1). Post-fix 12-season drift -0.073 against a 0.15 ceiling, decomposing to progression -0.478 / survivorship-exit +0.424 / intake -0.019. The long shard was folded into DEFAULT_SHARDS, so npm test covers the project's three most behavioural regressions for the first time; local proof 1,167/1,167 across six shards. Public launch remains HOLD and launchReady stays false.",
+  "nextMilestone": "Open S91 with a genuinely fresh live-code audit rather than an inherited lens — both items S89 left are now closed. Staged but deliberately unranked: separate elite-tail stretch (90+ density 0.76% -> 3.4% across 12 post-fix seasons) from free-agent-pool-growth selection (pool 1,720 -> 2,648 over the same window). Design a probe that separates them BEFORE ranking anything; the companion top-100 figure is confounded and must not be used as evidence on its own.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified.",
     "Pre-existing red outside the canonical receipt — test/realism-career-regression.test.js fails in the excluded long shard on 0.228 annual overall drift vs a 0.15 ceiling; verified to reproduce on pristine HEAD 8ddc310, queued as S90 calibration."
   ],
-  "lastUpdated": "2026-08-17",
+  "lastUpdated": "2026-08-18",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -26,22 +26,9 @@
   "ignisScore": 42836,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
-  "testSuiteStatus": {
-    "totalTests": 1150,
-    "pass": 1150,
-    "fail": 0,
-    "lastRun": "2026-08-17",
-    "newTestFiles": [
-      "test/session89-franchise-economy-truth.test.js",
-      "test/session89-cap-legality-regression.test.js",
-      "test/card-visibility-gate.test.js"
-    ],
-    "newTestCount": 13,
-    "coverage": "Local aggregate passed 1,150/1,150 across the five default shards (core 123, runtime 740, sim-contract 79, sim-realism 1, studio 207), up from 1,137/1,137 (+13 tests).",
-    "shardNote": "DEFAULT_SHARDS excludes long, so this receipt does not cover it. test/session89-cap-legality-regression.test.js (the multi-season legality proof) lives there and passes when run directly (128s); test/realism-career-regression.test.js fails there on a pre-existing calibration drift verified to reproduce at HEAD 8ddc310."
-  },
-  "testsPassing": 1150,
-  "testsTotal": 1150,
+  "testSuiteStatus": "green",
+  "testsPassing": 1167,
+  "testsTotal": 1167,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -80,20 +67,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 971,
+  "silScore": 985,
   "silCategoriesV3": {
-    "devHealth": 92,
+    "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
-    "engagement": 100,
-    "processQuality": 100,
+    "engagement": 99,
+    "processQuality": 91,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
-    "automationCoverage": 80
+    "automationCoverage": 96
   },
-  "currentSession": 89,
+  "currentSession": 90,
   "lastAgent": "claude-opus-5",
   "sessionMode": "builder",
   "lastVerification": "Session 88 application candidate 48557d616260d18de07d187e79d099f13525b166 passed exact-SHA CI, stable staging 14/14 at artifact 112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1, and production Pages promotion at the same artifact. Local Node 1,137/1,137, production provenance 10/10, unified release authority verified 7/7. Staging and production report artifact 112b6163…; public backend health remains at the unchanged S87 backend candidate 90f0d487… (no backend redeploy required, no API contract changed). Public launch remains no-go.",
@@ -122,22 +109,28 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 791,
+  "silHealth": 775,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
-    "score": 92,
-    "date": "2026-08-17",
-    "passing": 11,
-    "warning": 1,
+    "score": 83,
+    "date": "2026-08-18",
+    "passing": 10,
+    "warning": 2,
     "checks": [
       {
         "id": "lifecycle-authoritative-registry",
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
+      },
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "warning",
+        "blocking": false,
+        "detail": "HEAD 882cab854e965b0ea9c703eabac9fcc6d5873be5 is not covered by live production fc664864cebc0b5f24c1aba23d8d5f53195c95ab"
       }
     ]
   },
@@ -150,29 +143,29 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.015,
   "entropyLastComputed": "2026-08-14",
-  "lastSessionSummary": "Session 89 found and fixed a defect that had survived the project entire history: the salary cap stopped binding after about five simulated seasons, leaving 31 of 32 clubs illegal with the median club  over the cap, because the engine could gate additions but had no way to release a player and no roster limit at all. A new cap-compliance release authority fixes both, verified by re-measurement at the same seed (0 illegal clubs across 2027-2036). Also corrected an unreachable declared salary ceiling and shipped a validated gate for the S88 husk class. 1,150/1,150 Node. Launch remains HOLD.",
-  "testingSurfaces": [
-    {
-      "type": "local",
-      "label": "Local game",
-      "url": "http://127.0.0.1:3000/game.html",
-      "lastChecked": "2026-08-14"
+  "lastSessionSummary": "S90 — the club development environment becomes a zero-centred differentiator instead of a +0.84 OVR/player/offseason league-wide subsidy; the S89 standing realism red is fixed at source and the long shard joins the canonical receipt.",
+  "testingSurfaces": {
+    "canonicalCommand": "npm test",
+    "shards": [
+      "core",
+      "runtime",
+      "sim-contract",
+      "sim-realism",
+      "long",
+      "studio"
+    ],
+    "counts": {
+      "core": 135,
+      "runtime": 740,
+      "sim-contract": 79,
+      "sim-realism": 1,
+      "long": 5,
+      "studio": 207
     },
-    {
-      "type": "production",
-      "label": "Public origin",
-      "url": "https://playfranchisearchitect.com/",
-      "lastChecked": "2026-08-14"
-    },
-    {
-      "type": "staging",
-      "label": "Cloudflare Pages",
-      "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-08-17"
-    }
-  ],
-  "lastSession": 89,
-  "silLastSession": "89",
+    "note": "S90 folded `long` into DEFAULT_SHARDS. Every prior 'suite green' claim in this project was scoped to five of six shards and never executed determinism, the S89 cap-legality proof, or the career-realism decade. The canonical receipt now costs roughly 12 minutes more; DEFAULT_SHARD_TIMEOUT_MS was raised 20 -> 45 minutes in the same change so a slow-but-honest shard is never misreported as a failure."
+  },
+  "lastSession": 90,
+  "silLastSession": 90,
   "bootAmortization": {
     "ratio": 1.29,
     "verdict": "wasted",
@@ -589,19 +582,19 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 89,
-    "silScore": 971,
+    "session": 90,
+    "silScore": 985,
     "categories": {
-      "devHealth": 92,
+      "devHealth": 100,
       "creativeAlignment": 100,
       "momentum": 100,
-      "engagement": 100,
-      "processQuality": 100,
+      "engagement": 99,
+      "processQuality": 91,
       "crossRepoCoherence": 99,
       "securityPosture": 100,
       "ecosystemIntegration": 100,
       "capitalEfficiency": 100,
-      "automationCoverage": 80
+      "automationCoverage": 96
     },
     "date": "2026-08-17"
   }

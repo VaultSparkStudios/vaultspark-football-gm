@@ -55,6 +55,11 @@ import {
 } from "../engine/depthChartUsage.js";
 import { coverageDepthRating, PLAYER_DEVELOPMENT_PROFILE } from "../domain/ratings.js";
 import {
+  DEVELOPMENT_ENVIRONMENT_PROFILE,
+  developmentEnvironmentTilt,
+  measureDevelopmentCentres
+} from "../domain/developmentEnvironment.js";
+import {
   defaultDepthChartForTeam,
   isTradeValueAcceptable,
   roleRetentionProfile,
@@ -521,36 +526,45 @@ function developmentFocusRatings(team, player) {
   return ["awareness", "discipline", "playRecognition", "agility"];
 }
 
-function playerDevelopmentContext(team, roster, player) {
+function playerDevelopmentContext(team, roster, player, centres = null) {
   if (!team) {
     return {
       developmentBonus: 0,
+      developmentEnvironmentTilt: 0,
       focusRatings: [],
       moraleDelta: 0,
       recoveryBonus: 0
     };
   }
   const modifiers = teamWorldStateModifiers(team, roster);
-  const training = Number(team?.owner?.facilities?.training || 72);
-  const coachingDevelopment = Number(team?.coaching?.development || 72);
-  const fit = computeSchemeFit(player, team);
-  const developmentBonus = clamp(
-    Math.round(
-      (training - 72) / 10 +
-        (coachingDevelopment - 72) / 13 +
-        (fit - 70) / 18 +
-        (modifiers.culture.identity === "developmental" ? 1 : 0) -
-        (modifiers.culture.identity === "urgent" && player.age >= 29 ? 1 : 0)
-    ),
-    -3,
-    4
+  const resolvedCentres = centres || {
+    ...DEVELOPMENT_ENVIRONMENT_PROFILE.fallbackCentres,
+    tiltOffset: 0
+  };
+  // S90 — the environment is a differentiator measured against the league's own
+  // centres, not a bonus measured against literals the league left behind. See
+  // src/domain/developmentEnvironment.js for what those literals cost.
+  const environmentTilt = developmentEnvironmentTilt(
+    {
+      training: Number(team?.owner?.facilities?.training ?? DEVELOPMENT_ENVIRONMENT_PROFILE.fallbackCentres.training),
+      coachingDevelopment: Number(
+        team?.coaching?.development ?? DEVELOPMENT_ENVIRONMENT_PROFILE.fallbackCentres.coachingDevelopment
+      ),
+      schemeFit: computeSchemeFit(player, team),
+      cultureIdentity: modifiers.culture.identity,
+      playerAge: Number(player.age)
+    },
+    resolvedCentres
   );
   const moraleDelta = modifiers.culture.identity === "confident" ? 1 : modifiers.culture.identity === "urgent" ? -1 : 0;
   const recoveryBonus = Number(
     clamp((Number(team?.owner?.facilities?.rehab || 72) - 72) / 700 + modifiers.extraRecoveryWeeks * 0.01, 0, 0.08).toFixed(3)
   );
   return {
-    developmentBonus,
+    // The rounded, player-facing presentation of the same tilt. The engine
+    // progresses on the continuous value so the rounding stays unbiased.
+    developmentBonus: Math.round(environmentTilt),
+    developmentEnvironmentTilt: environmentTilt,
     focusRatings: developmentFocusRatings(team, player),
     moraleDelta,
     recoveryBonus
@@ -631,8 +645,12 @@ function freeAgencyOfferScore(player, offer, team, roster = []) {
   );
 }
 
-function buildPlayerDevelopmentOutlook(player, team, roster = []) {
-  const context = playerDevelopmentContext(team, roster, player);
+function buildPlayerDevelopmentOutlook(player, team, roster = [], centres = null) {
+  // The outlook must be built from the same centres the offseason will actually
+  // progress him on. Leaving this on the declared fallbacks would put a number in
+  // front of the player that the engine does not use — the surface reporting one
+  // thing while the simulation does another.
+  const context = playerDevelopmentContext(team, roster, player, centres);
   const fit = team ? computeSchemeFit(player, team) : player.schemeFit || 72;
   const trajectoryScore = context.developmentBonus + (fit >= 82 ? 1 : fit <= 64 ? -1 : 0) + (player.age <= 24 ? 1 : player.age >= 30 ? -1 : 0);
   const trajectory = trajectoryScore >= 3 ? "surging" : trajectoryScore >= 1 ? "positive" : trajectoryScore <= -2 ? "fragile" : "steady";
@@ -1045,7 +1063,7 @@ function buildOwnerProfile(rng, existing = null) {
   };
 }
 
-function computeSchemeFit(player, team) {
+export function computeSchemeFit(player, team) {
   const passRate = team?.scheme?.passRate ?? 0.54;
   const aggression = team?.scheme?.aggression ?? 0.5;
   const ratings = player?.ratings || {};
@@ -2267,10 +2285,29 @@ export class GameSession {
     };
   }
 
+  /**
+   * The league's own development centres, measured once per league revision.
+   *
+   * Derived state, never persisted: a snapshot restores the league, and the
+   * centres are re-measured from it, so a `fromSnapshot` clone and the live
+   * session agree by construction rather than by a copied field staying in sync.
+   * Measuring is a single O(roster) pass, so it is cached — progression asks for
+   * it once per player and would otherwise make the offseason quadratic.
+   */
+  developmentEnvironmentCentres() {
+    const revision = `${this.currentYear}:${this.league?.players?.length || 0}:${this.league?.teams?.length || 0}`;
+    if (this._developmentCentresRevision === revision && this._developmentCentres) {
+      return this._developmentCentres;
+    }
+    this._developmentCentres = measureDevelopmentCentres(this.league, computeSchemeFit);
+    this._developmentCentresRevision = revision;
+    return this._developmentCentres;
+  }
+
   buildPlayerDevelopmentContext(teamId, player) {
     const team = teamId ? teamById(this.league, teamId) : null;
     const roster = team ? teamPlayersAll(this.league, teamId) : [];
-    return playerDevelopmentContext(team, roster, player);
+    return playerDevelopmentContext(team, roster, player, this.developmentEnvironmentCentres());
   }
 
   getOffseasonPipeline() {
@@ -2424,6 +2461,11 @@ export class GameSession {
     const retiredBefore = this.league.retiredPlayers.length;
 
     expireContracts(this.league);
+    // Pin the league's development centres before anyone ages. The tilt is
+    // zero-sum against the league as it stood at the start of the offseason, so
+    // every player must be measured against the same league — not against one
+    // that shifts under him as the loop walks the roster.
+    this.developmentEnvironmentCentres();
     applyAgingProgressionAndRetirements(this.league, this.currentYear, this.rng, {
       winningRetention: settings.retirementWinningRetention !== false,
       developmentContext: (player, team) => this.buildPlayerDevelopmentContext(team?.id || player.teamId, player)
@@ -5831,7 +5873,7 @@ export class GameSession {
         ratings: player.ratings,
         contract: normalizeContract(player.contract)
       },
-      developmentOutlook: buildPlayerDevelopmentOutlook(player, team, roster),
+      developmentOutlook: buildPlayerDevelopmentOutlook(player, team, roster, this.developmentEnvironmentCentres()),
       seasonType: normalizedSeasonType,
       timeline: this.getPlayerTimeline(playerId, { seasonType: normalizedSeasonType })?.timeline || [],
       career,

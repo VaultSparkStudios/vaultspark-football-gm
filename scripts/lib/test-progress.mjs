@@ -3,7 +3,14 @@ import path from "node:path";
 
 export const TEST_PROGRESS_SCHEMA_VERSION = "1.0";
 export const TEST_PROGRESS_RELATIVE_PATH = path.join(".cache", "test-progress.json");
-export const DEFAULT_SHARD_TIMEOUT_MS = 20 * 60 * 1000;
+/**
+ * S90 — raised from 20 to 45 minutes when `long` joined the canonical shards.
+ * The career-realism decade alone runs ~12 minutes and the whole `long` shard
+ * lands near 16-18; a 20-minute ceiling made an honest slow shard a coin flip,
+ * and a timeout reads as a failure. A generous ceiling that never lies is worth
+ * more than a tight one that sometimes does.
+ */
+export const DEFAULT_SHARD_TIMEOUT_MS = 45 * 60 * 1000;
 
 export function resolveShardTimeoutMs(value = process.env.TEST_SHARD_TIMEOUT_MS) {
   const parsed = Number(value);
