@@ -115,22 +115,16 @@
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
-    "score": 83,
+    "score": 92,
     "date": "2026-08-18",
-    "passing": 10,
-    "warning": 2,
+    "passing": 11,
+    "warning": 1,
     "checks": [
       {
         "id": "lifecycle-authoritative-registry",
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
-      },
-      {
-        "id": "release-authority-git-head-covered-by-publication",
-        "status": "warning",
-        "blocking": false,
-        "detail": "HEAD 882cab854e965b0ea9c703eabac9fcc6d5873be5 is not covered by live production fc664864cebc0b5f24c1aba23d8d5f53195c95ab"
       }
     ]
   },
@@ -144,26 +138,26 @@
   "entropyScore": 0.015,
   "entropyLastComputed": "2026-08-14",
   "lastSessionSummary": "S90 — the club development environment becomes a zero-centred differentiator instead of a +0.84 OVR/player/offseason league-wide subsidy; the S89 standing realism red is fixed at source and the long shard joins the canonical receipt.",
-  "testingSurfaces": {
-    "canonicalCommand": "npm test",
-    "shards": [
-      "core",
-      "runtime",
-      "sim-contract",
-      "sim-realism",
-      "long",
-      "studio"
-    ],
-    "counts": {
-      "core": 135,
-      "runtime": 740,
-      "sim-contract": 79,
-      "sim-realism": 1,
-      "long": 5,
-      "studio": 207
+  "testingSurfaces": [
+    {
+      "type": "local",
+      "label": "Local game",
+      "url": "http://127.0.0.1:3000/game.html",
+      "lastChecked": "2026-08-14"
     },
-    "note": "S90 folded `long` into DEFAULT_SHARDS. Every prior 'suite green' claim in this project was scoped to five of six shards and never executed determinism, the S89 cap-legality proof, or the career-realism decade. The canonical receipt now costs roughly 12 minutes more; DEFAULT_SHARD_TIMEOUT_MS was raised 20 -> 45 minutes in the same change so a slow-but-honest shard is never misreported as a failure."
-  },
+    {
+      "type": "production",
+      "label": "Public origin",
+      "url": "https://playfranchisearchitect.com/",
+      "lastChecked": "2026-08-18"
+    },
+    {
+      "type": "staging",
+      "label": "Cloudflare Pages",
+      "url": "https://staging.playfranchisearchitect.com",
+      "lastChecked": "2026-08-18"
+    }
+  ],
   "lastSession": 90,
   "silLastSession": 90,
   "bootAmortization": {
@@ -444,33 +438,33 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "c21a908005071a768ad7e8b509f8db66ba68aad24a6dbca64e3c687100298262",
-    "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
+    "receiptSha256": "f54c7cd1ef65302b443f9458bd56a021760f85ebfe973efd707c8c6225c80f90",
+    "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa",
-      "files": 194,
+      "digest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1",
+      "files": 195,
       "exclusions": [
         "_health",
         "deploy-manifest.json",
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "a46c43e1-12c4-4be2-aeaf-be452caa0bdf",
+    "deploymentId": "133030d4-3530-4e04-b74f-271099c07eef",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-17T20:31:59.848Z"
+      "checkedAt": "2026-08-18T02:04:18.949Z"
     },
     "rollback": {
-      "previousDeploymentId": "648b50c9-c1f5-494c-9a6d-7300aa7143d3",
+      "previousDeploymentId": "a46c43e1-12c4-4be2-aeaf-be452caa0bdf",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-17T20:31:59.849Z"
+    "observedAt": "2026-08-18T02:04:18.950Z"
   },
   "lastCloseoutAt": "2026-08-14T04:56:21.468Z",
   "performanceAuthority": {
@@ -502,31 +496,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-08-17T20:33:28.918Z",
+    "observedAt": "2026-08-18T02:20:28.050Z",
     "status": "verified",
-    "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
-    "publicationRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
+    "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
+    "publicationRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa"
+      "digest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
-        "artifactDigest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa"
+        "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
+        "artifactDigest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1"
       },
       "production": {
-        "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
-        "artifactDigest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa"
+        "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
+        "artifactDigest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1"
       },
       "visual": {
-        "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
-        "artifactDigest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa"
+        "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
+        "artifactDigest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1"
       },
       "performance": {
-        "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
-        "artifactDigest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa"
+        "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
+        "artifactDigest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1"
       }
     },
     "checks": [
@@ -572,12 +566,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "762df6d965c2e3f244cfbcc4b055c483f1cef49f717f5bedb77b981a7aea54be",
-      "productionSha256": "dfe08933d64871da8470a498058829bf7aced4d5b453c86604dd966cd3def0ea",
-      "visualSha256": "42d2ab65572fb1d07da1ba422b2e7bde2ab7f640df487960210305b5778d42b0",
-      "performanceSha256": "f108b02d553ec85f1a9828143d2db4c63afa2664106c6f4f99c5079fd739dc2c"
+      "stagingSha256": "f50713851d7c032be952a25c3740a2e9fdcc12ab29bb67926a3ee56b8bd20cfc",
+      "productionSha256": "1ba3e3eaf5b8dd9d687d84eaf14fef20fd8a85aa39dc0391f2b9a3f592707a05",
+      "visualSha256": "e8074d5504dcbb8604d9c39b31b073eb3de1eca8844468e71d1807994fb1aa8e",
+      "performanceSha256": "935eedfb636f0eac5704da399d9e95f7122fd946db7f221ddfa2ee1c4c52e2cd"
     },
-    "receiptSha256": "7dc66dc7a5269092fd58439c3d49a09eca2315275ff9cad4b3287a9055e99114"
+    "receiptSha256": "d9ace576ab041650430211200430e5fc479774105007910f10ead4a62e79c2a1"
   },
   "launchReady": false,
   "sil": {
@@ -597,5 +591,26 @@
       "automationCoverage": 96
     },
     "date": "2026-08-17"
+  },
+  "testShardReceipt": {
+    "canonicalCommand": "npm test",
+    "shards": [
+      "core",
+      "runtime",
+      "sim-contract",
+      "sim-realism",
+      "long",
+      "studio"
+    ],
+    "counts": {
+      "core": 135,
+      "runtime": 740,
+      "sim-contract": 79,
+      "sim-realism": 1,
+      "long": 5,
+      "studio": 207
+    },
+    "total": 1167,
+    "note": "S90 folded `long` into DEFAULT_SHARDS. Every prior 'suite green' claim in this project was scoped to five of six shards and never executed determinism, the S89 cap-legality proof, or the career-realism decade. DEFAULT_SHARD_TIMEOUT_MS was raised 20 -> 45 minutes in the same change so a slow-but-honest shard is never misreported as a failure."
   }
 }

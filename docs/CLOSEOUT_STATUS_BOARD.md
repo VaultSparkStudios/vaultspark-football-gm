@@ -1,32 +1,32 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-17 (Session 89 closeout) -->
+<!-- generated-at: 2026-08-18 (Session 90 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S89 ══════╗
-║  Date: 2026-08-17  ·  SIL: 971/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S90 ══════╗
+║  Date: 2026-08-18  ·  SIL: 985/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-opus-5                          ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ **The salary cap was not a constraint, and now is.** Measure  ║
-║  ✓ **There was no roster limit at all.** `normalizeRosterSlots`  ║
-║  ✓ **`src/engine/capCompliance.js` is the new single release au  ║
-║  ✓ **The dead-money model is load-bearing and was corrected by   ║
-║  ✓ **Re-measured result:** 0 illegal clubs after every offseaso  ║
+║  ✓ **The club development environment was a league-wide subsidy  ║
+║  ✓ **The number that reframed everything, from a probe with no   ║
+║  ✓ **`src/domain/developmentEnvironment.js` is the single autho  ║
+║  ✓ **The tilt is folded into `developmentDelta`'s single roundi  ║
+║  ✓ **Re-measured result:** league-wide mean tilt exactly **0.00  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 971/1000 ═══════════════════════════════════════╗
-║    Dev Health         92   █████████░                            ║
+╔══ SCORES · SIL 985/1000 ═══════════════════════════════════════╗
+║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
-║    Engagement         100  ██████████                            ║
-║    Process Qual       100  ██████████                            ║
+║    Engagement         99   ██████████                            ║
+║    Process Qual       91   █████████░                            ║
 ║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
 ║    Ecosystem          100  ██████████                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         80   ████████░░                            ║
+║    Automation         96   ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  · context/CURRENT_STATE.md                                      ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 90 files  ·  M:3 A:0 D:0 ?:87                          ║
+║  Changes: 10 files  ·  M:3 A:0 D:0 ?:7                           ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,7 +52,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1150/1150                                        ║
+║  Tests:         1167/1167                                        ║
 ║  IGNIS:         7d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  9d ago                                           ║

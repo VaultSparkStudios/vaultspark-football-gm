@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.1",
+  "kind": "visual-evidence-receipt",
+  "session": 90,
+  "generatedBy": "scripts/responsive-evidence.mjs + agent pixel inspection (D-S87.2)",
+  "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1",
+    "files": 195,
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
+  "capture": {
+    "status": "passed",
+    "captures": 233,
+    "viewports": [
+      {
+        "name": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "name": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "name": "desktop",
+        "width": 1440,
+        "height": 1000
+      }
+    ],
+    "runtimeErrors": 0,
+    "failures": 0,
+    "outputDir": "output/playwright/responsive-47fd318002b6b80345919cea4ead8d00d0ec85b2"
+  },
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "blockingDefectsOpen": 0,
+    "method": "Capture success is necessary but not sufficient (D-S87.2). Rendered pixels were inspected directly, not inferred from geometry or file output.",
+    "inspected": [
+      {
+        "capture": "desktop-roster-window-dark.png",
+        "theme": "dark",
+        "viewport": "desktop",
+        "result": "clean — room table legible, numeric columns aligned, no clipping"
+      },
+      {
+        "capture": "desktop-game-roster-dark.png",
+        "theme": "dark",
+        "viewport": "desktop",
+        "result": "clean — full roster table renders with OVR/POT/AGE/FIT/MORALE/CAP HIT columns in correct identity (the S87 name-in-OVR-column decorator defect is not present); S89 Release actions surfaced; contrast good in dark theme"
+      },
+      {
+        "capture": "mobile-game-roster-light.png",
+        "theme": "light",
+        "viewport": "mobile 390x844",
+        "result": "clean — no horizontal overflow, roster window map and roster table both readable, Veteran Mentorship renders its honest empty state rather than a husk (the S88 defect class is not present)"
+      }
+    ],
+    "nonBlockingObservations": [
+      "On the inspected desktop league every one of the seven Roster Window Map rooms reads `aging` with a negative NEXT YEAR projection. This is pre-existing and NOT introduced by S90: buildRosterWindowMap's expectedDevelopment models ageFactor + traitFactor only and has never included the club environment term, and S90 did not change it. S90 in fact makes this surface more truthful than before — the engine previously added an undeclared +0.84 on top, so a room the UI called `aging` at -1.0 actually developed at -0.16 or better; now the engine really does move rooms by roughly the declared curve. The remaining issue is that a classifier whose seven rooms all report the same band carries no information, and that its per-room projection assumes the league-average (zero) environment tilt rather than the player's own club's. Recorded for S91, non-blocking: it misinforms nobody about a shipped behaviour, it is simply uninformative."
+    ]
+  },
+  "observedAt": "2026-08-18T02:20:18.645Z"
+}

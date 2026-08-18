@@ -1,0 +1,104 @@
+{
+  "session": "S90",
+  "date": "2026-08-17",
+  "repo": "Franchise Architect: Football",
+  "headline": "A club's development environment was documented as a differentiator and was arithmetically a subsidy — +0.84 OVR to every player, every offseason, forever. The league had been minting talent since the constants went stale. It is now zero-centred by construction, and the standing realism red S89 disclosed is fixed at its source.",
+  "items": [
+    {
+      "title": "The club development environment is a differentiator again, not a league-wide subsidy",
+      "projectImpact": 10,
+      "ecosystemImpact": 9,
+      "evidence": "Measured on four independent seeds via the engine's own context builder: +0.84 OVR per player per offseason, 62% of the league positive and 3.8% negative. Every centre was a stale literal — coaching.development compared to 72 against a real league mean of 78.22, scheme fit compared to 70 against a real mean of 78.1 — and because scheme fit derives from player ratings, inflation grew the bonus and the bonus grew inflation. New src/domain/developmentEnvironment.js measures every centre from the live league and subtracts the league's own mean tilt. Re-measured after: mean tilt exactly 0.0000 on all four seeds, club spread intact (best +1.1, worst -1.1, sd 0.80) — centred, not deleted."
+    },
+    {
+      "title": "The number that showed the problem was twice the size it looked",
+      "projectImpact": 9,
+      "ecosystemImpact": 10,
+      "evidence": "A probe with no simulation in it evaluated the declared curve against the league's own age and potential distribution: its league-mean move is -0.885 OVR/offseason. The undeclared subsidy was +0.84. The reported +0.228 drift was two large errors of opposite sign nearly cancelling — the observable was understating the problem, not describing it. Post-fix 12-season drift is -0.073 against a 0.15 ceiling, decomposing exactly to progression -0.478 / survivorship-exit +0.424 / intake -0.019: survivors age down, departing below-average players lift the mean, intake is neutral, and they cancel. That is what a steady-state league looks like."
+    },
+    {
+      "title": "The standing red S89 disclosed rather than force-greened is fixed at its source",
+      "projectImpact": 8,
+      "ecosystemImpact": 8,
+      "evidence": "test/realism-career-regression.test.js passes 3/3, including the decade progression-parity assertion (progression.status === 'on-target' and |annualMeanOverallDrift| <= 0.15) that has never passed in this project. Fixed by repairing the mechanism, not by widening the band, rewording the gate or deleting the test."
+    },
+    {
+      "title": "npm test covers the project's most behavioural regressions for the first time in its history",
+      "projectImpact": 7,
+      "ecosystemImpact": 9,
+      "evidence": "The long shard was excluded from DEFAULT_SHARDS, so every 'suite green' claim this project has ever made was scoped to five of six shards and had never executed determinism, the S89 cap-legality proof, or the career-realism decade. long is now canonical: 1,167/1,167 across six shards. The shard timeout was raised 20 to 45 minutes in the same change, because the realism decade alone runs ~12 minutes and a 20-minute ceiling made an honest slow shard a coin flip. Cost stated rather than hidden: npm test is roughly 12 minutes slower."
+    },
+    {
+      "title": "A gate that is proved able to fail, and a surface that cannot drift from the engine",
+      "projectImpact": 6,
+      "ecosystemImpact": 8,
+      "evidence": "Twelve focused tests. The negative control reconstructs the pre-S90 formula and proves the zero-mean tolerance rejects it; a separate assertion proves club-to-club spread survived, because a constant stub would satisfy 'mean is zero' perfectly while deleting the entire system. Also gated: RNG-stream parity, fromSnapshot centre parity, and agreement between the player-facing development outlook and the engine — a divergence found while wiring the fix that would otherwise have shipped inside it."
+    },
+    {
+      "title": "Exact technical deployment",
+      "projectImpact": 9,
+      "ecosystemImpact": 8,
+      "evidence": "Candidate 47fd318002b6b80345919cea4ead8d00d0ec85b2 verified on stable staging 14/14 at artifact 3d633135, promoted to production via workflow_dispatch run 32090513916, production provenance 10/10, hosted performance verified, 233 responsive captures with direct pixel inspection in both themes at desktop/tablet/mobile, unified release authority verified 7/7, doctor blockingFailing 0 and HEAD reported live."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "Separate elite-tail stretch from free-agent-pool growth before ranking it",
+      "evidence": "The league's level is fixed; its shape still moves. Players rated 90+ go 13 to 89 across 12 post-fix seasons while the active population grows 1,720 to 2,648 — 0.76% to 3.4% of the league. Deliberately unranked: the companion top-100-mean figure is confounded, because a larger population's top hundred is higher without any change in distribution. S91 must design a probe that separates the two before ranking anything."
+    },
+    {
+      "title": "Decide whether the free-agent pool should be bounded at all",
+      "evidence": "S89 pinned club rosters at 53+16; the unrostered pool is unbounded and grew 54% across 12 post-fix seasons. Not currently known to break anything — on the board because it is the confound above, not because it is a proven defect."
+    },
+    {
+      "title": "The Roster Window Map classifier is uninformative, though now truthful",
+      "evidence": "Found during pixel inspection, not by a probe. On the inspected desktop league all seven rooms read 'aging'. Pre-existing and not introduced by S90 — buildRosterWindowMap has never modelled the environment term. S90 in fact makes the surface more truthful, since the engine now really does move rooms by roughly the declared curve, where before it silently added +0.84. What remains is that a classifier whose rooms all report one band carries no information, and that its projection assumes the league-average tilt rather than the player's own club's."
+    },
+    {
+      "title": "Sweep for a third instance of the stale-centre class",
+      "evidence": "Two occurrences (S71 LEAGUE_AVERAGE_POTENTIAL, S90 here) is a pattern, not bad luck. The rule now: any modifier documented as a differentiator must have a league-wide mean of zero and a test that says so."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "Public launch remains HOLD — launchReady stays false",
+      "evidence": "Unchanged and untouched by this session: email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified. Technical release evidence being verified 7/7 does not clear any of them."
+    },
+    {
+      "title": "Registry SPARKED vs local FORGE lifecycle drift",
+      "evidence": "Non-blocking doctor warning, sibling-owned, reconcilable only through signed Studio Ark. Flagged again rather than silenced."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "The elite-tail residual was NOT ranked, on purpose",
+      "evidence": "It is a real measured behaviour with a confound the audit itself identified. Ranking it on a confounded measurement would manufacture exactly the phantom item this project's execute-the-engine method exists to prevent. Deferred with the confound written down."
+    },
+    {
+      "title": "The stale-centre sweep was run and deliberately did not churn its matches",
+      "evidence": "About thirty call sites share the (value - 70)/k shape. Nearly all are within-play relative comparisons where a miscentred constant cancels between the two sides instead of accumulating. The one other asymmetric accumulator considered, scoutingWeeklyBonus, was traced to scouting confidence and draft-board accuracy only and never mutates player ratings. Changing thirty relative comparisons on suspicion would be churn, so none were touched."
+    },
+    {
+      "title": "Two self-inflicted process errors, disclosed rather than absorbed",
+      "evidence": "A new test was added calling a method that does not exist (getPlayerDetail for getPlayerProfile) and was never re-run before being wired into a shard, costing a full ~50-minute canonical suite run. Source was then edited while a second suite was in flight, decoupling that receipt from the tree and forcing a third run. Neither corrupted a result — both runs were redone rather than reported — but the receipt had to be produced three times, and SIL Process Quality is scored down nine points for it rather than rounded away."
+    },
+    {
+      "title": "A PROJECT_STATUS field was briefly given a second shape, and it broke a real script",
+      "evidence": "testingSurfaces was written as an object when the codebase declares it an array, which failed reconcile-staging-authority. Restored to the declared array and the shard detail moved to its own field — the same 'a shape declared twice will drift' failure this session was fixing elsewhere in the engine."
+    },
+    {
+      "title": "A three-season assertion written during this session was replaced, not kept",
+      "evidence": "It measured -0.419 and read as a serious overcorrection; the ten- and twelve-season windows land at -0.073. The generated league's opening age distribution is not the simulation's steady state, so a short window reports the burn-in. Acting on that number would have meant inventing a second change to cancel an artifact."
+    },
+    {
+      "title": "A redundant 20-season baseline probe was killed rather than left running for completeness",
+      "evidence": "Once it was recognised as duplicating a measurement S89 had already recorded, it was stopped to free CPU for the two post-fix measurements that actually decided the session."
+    }
+  ],
+  "diffStat": {
+    "files": 19,
+    "insertions": 1119,
+    "deletions": 116,
+    "suite": "1,167/1,167 across six shards (core 135, runtime 740, sim-contract 79, sim-realism 1, long 5, studio 207) — the first canonical receipt in this project's history to include the long shard. Doctor blockingFailing 0."
+  }
+}

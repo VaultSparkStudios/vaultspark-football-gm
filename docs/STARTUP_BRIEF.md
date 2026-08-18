@@ -27,6 +27,12 @@
 ║  Deploy -                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
+╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
+║  Local dev     → http://127.0.0.1:3000/game.html ·               ║
+║  Production    → https://playfranchisearchitect.com/ ·           ║
+║  Staging       → https://staging.playfranchisearchitect.com ·    ║
+╚════════════════════════════════════════════════════════════════╝
+
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
 ║  Profile · game · cache stale 1d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
@@ -62,8 +68,8 @@
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,550 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,275 tok/turn  ·  cache 50%  ·  142 turns to compact       ║
+║     2,684 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,342 tok/turn  ·  cache 50%  ·  135 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -82,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        10/12 (83%)  ·  2 warn                         ║
+║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
 ║  ✓  Cost          Max flat-rate · $2.94/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
