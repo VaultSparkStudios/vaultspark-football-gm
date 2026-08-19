@@ -115,22 +115,16 @@
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
-    "score": 83,
+    "score": 92,
     "date": "2026-08-19",
-    "passing": 10,
-    "warning": 2,
+    "passing": 11,
+    "warning": 1,
     "checks": [
       {
         "id": "lifecycle-authoritative-registry",
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
-      },
-      {
-        "id": "release-authority-git-head-covered-by-publication",
-        "status": "warning",
-        "blocking": false,
-        "detail": "HEAD c78411d2da59c3dee4cebab88adb7e8f66b0c531 is not covered by live production 47fd318002b6b80345919cea4ead8d00d0ec85b2"
       }
     ]
   },
@@ -161,7 +155,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-08-18"
+      "lastChecked": "2026-08-19"
     }
   ],
   "lastSession": 91,
@@ -444,35 +438,35 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "f54c7cd1ef65302b443f9458bd56a021760f85ebfe973efd707c8c6225c80f90",
-    "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
+    "receiptSha256": "293ccbcbedd7c68f0c85c511a243616d82eb1c4c1d60af3047b571b637b8c092",
+    "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1",
-      "files": 195,
+      "digest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d",
+      "files": 196,
       "exclusions": [
         "_health",
         "deploy-manifest.json",
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "133030d4-3530-4e04-b74f-271099c07eef",
+    "deploymentId": "1d3f59c3-703a-4ca6-95be-a924c1de4a46",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-18T02:04:18.949Z"
+      "checkedAt": "2026-08-19T01:44:16.719Z"
     },
     "rollback": {
-      "previousDeploymentId": "a46c43e1-12c4-4be2-aeaf-be452caa0bdf",
+      "previousDeploymentId": "133030d4-3530-4e04-b74f-271099c07eef",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-18T02:04:18.95Z"
+    "observedAt": "2026-08-19T01:44:16.72Z"
   },
-  "lastCloseoutAt": "2026-08-14T04:56:21.468Z",
+  "lastCloseoutAt": "2026-08-19T01:56:29.681Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
     "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
@@ -502,31 +496,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-08-18T02:20:28.05Z",
+    "observedAt": "2026-08-19T01:53:39.233Z",
     "status": "verified",
-    "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
-    "publicationRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
+    "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
+    "publicationRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1"
+      "digest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
-        "artifactDigest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1"
+        "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
+        "artifactDigest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d"
       },
       "production": {
-        "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
-        "artifactDigest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1"
+        "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
+        "artifactDigest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d"
       },
       "visual": {
-        "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
-        "artifactDigest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1"
+        "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
+        "artifactDigest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d"
       },
       "performance": {
-        "sourceRevision": "47fd318002b6b80345919cea4ead8d00d0ec85b2",
-        "artifactDigest": "3d6331355342d257fbeb9b4807a616de20baac00d16227ef1304a2b4a5b22bb1"
+        "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
+        "artifactDigest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d"
       }
     },
     "checks": [
@@ -572,12 +566,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "f50713851d7c032be952a25c3740a2e9fdcc12ab29bb67926a3ee56b8bd20cfc",
-      "productionSha256": "1ba3e3eaf5b8dd9d687d84eaf14fef20fd8a85aa39dc0391f2b9a3f592707a05",
-      "visualSha256": "e8074d5504dcbb8604d9c39b31b073eb3de1eca8844468e71d1807994fb1aa8e",
-      "performanceSha256": "935eedfb636f0eac5704da399d9e95f7122fd946db7f221ddfa2ee1c4c52e2cd"
+      "stagingSha256": "83e18d3ca5faf6b39459d47aa96c28f2833054a7f3f0c03f00e46c6dcf696432",
+      "productionSha256": "00a9eef00c1328c7fa3a5b37b7b89bea24bd2431b587278bbbd98b2e1d1637bf",
+      "visualSha256": "c285caa3c8253794c7c255ac7025375c0e4d80fa820978203558bdeac72fa7e5",
+      "performanceSha256": "8add528f720c0120941d386475455d5e15f43de1a7722ca6caf841cb4b7bab02"
     },
-    "receiptSha256": "d9ace576ab041650430211200430e5fc479774105007910f10ead4a62e79c2a1"
+    "receiptSha256": "533834479db38b325f311f8b9b9bfd9a6eec387e2e11d25a241fbc84a490045b"
   },
   "launchReady": false,
   "sil": {

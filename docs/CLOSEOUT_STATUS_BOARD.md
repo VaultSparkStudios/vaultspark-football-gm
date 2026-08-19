@@ -1,47 +1,47 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-18 (Session 90 closeout) -->
+<!-- generated-at: 2026-08-19 (Session 91 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S90 ══════╗
-║  Date: 2026-08-18  ·  SIL: 985/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S91 ══════╗
+║  Date: 2026-08-19  ·  SIL: 988/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-opus-5                          ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ **The club development environment was a league-wide subsidy  ║
-║  ✓ **The number that reframed everything, from a probe with no   ║
-║  ✓ **`src/domain/developmentEnvironment.js` is the single autho  ║
-║  ✓ **The tilt is folded into `developmentDelta`'s single roundi  ║
-║  ✓ **Re-measured result:** league-wide mean tilt exactly **0.00  ║
+║  ✓ `src/domain/potentialReversion.js` — the missing reversion,   ║
+║  ✓ `src/stats/progressionParity.js` — gated population is roste  ║
+║  ✓ `src/runtime/GameSession.js` + `src/engine/capCompliance.js`  ║
+║  ✓ **Tuning the reversion rate until the gate said `on-target`,  ║
+║  ✓ **Carrying the free-agent-pool bound a third time.** Retired  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 985/1000 ═══════════════════════════════════════╗
-║    Dev Health         100  ██████████                            ║
+╔══ SCORES · SIL 988/1000 ═══════════════════════════════════════╗
+║    Dev Health         99   ██████████                            ║
 ║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         99   ██████████                            ║
-║    Process Qual       91   █████████░                            ║
+║    Process Qual       94   █████████░                            ║
 ║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
 ║    Ecosystem          100  ██████████                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         96   ██████████                            ║
+║    Automation         97   ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
-║  · context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 10 files  ·  M:3 A:0 D:0 ?:7                           ║
+║  Changes: 88 files  ·  M:2 A:0 D:0 ?:86                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,10 +52,10 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1167/1167                                        ║
-║  IGNIS:         7d ago                                           ║
+║  Tests:         1181/1181                                        ║
+║  IGNIS:         8d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  9d ago                                           ║
+║  Sanitization:  10d ago                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

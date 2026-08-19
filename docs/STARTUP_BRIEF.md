@@ -63,18 +63,18 @@
 
 ╔══ WHERE WE LEFT OFF  ·  Session 91 ════════════════════════════╗
 ║  Shipped:  Session 91 made the league hold its shape, where S90  ║
-║  Tests:    1167/1167 passing  ·  Deploy: N/A                     ║
+║  Tests:    1181/1181 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    6% used                          ║
-║     60,959 / 1,000,000 tok  ·  claude-code/opus-4-8-1m  ·  heur  ║
-║     ~30,480 tok/turn  ·  cache 50%  ·  28 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    5% used                          ║
+║     48,422 / 1,000,000 tok  ·  claude-code/opus-4-8-1m  ·  heur  ║
+║     ~24,211 tok/turn  ·  cache 50%  ·  35 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1167/1167 passing (2026-08-18) · STALE — run   ║
+║  ✓  Tests         1181/1181 passing (2026-08-19)                 ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -88,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        10/12 (83%)  ·  2 warn                         ║
+║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
 ║  ✓  Cost          Max flat-rate · $2.56/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 

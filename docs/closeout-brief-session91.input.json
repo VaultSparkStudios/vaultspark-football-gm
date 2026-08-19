@@ -1,0 +1,102 @@
+{
+  "session": "S91",
+  "date": "2026-08-18",
+  "repo": "Franchise Architect: Football",
+  "headline": "S90 stopped the league minting talent. S91 stops it losing its shape. A player's potential had never bounded him — development was a random walk selection filtered on one side only — and the gate that should have caught it was measuring the rostered league blended with an unbounded junk pool whose growth cancelled the inflation exactly. The blend's −0.073 is the number S90 shipped as proof its own fix worked.",
+  "items": [
+    {
+      "title": "The confound S90 disclosed was tested first — and pointed the opposite way",
+      "projectImpact": 9,
+      "ecosystemImpact": 10,
+      "evidence": "S90's handoff recorded the elite-tail figure as 'partly a selection artifact of the growing free-agent pool' and instructed the next session not to rank it until a probe separated the two. Holding the denominator structurally fixed at the ~2,180 roster slots S89 pinned, 90+ players go 5 → 88 across 12 seasons (0.32% → 4.03%) — a 12.6× rise population growth explains none of. Only 1 of 89 elite players is unrostered; the pool is old (mean age 29.1) and weak (mean overall 66.9). Blending it in DILUTED the figure (3.36% blended vs 4.03% rostered). The recorded suspicion was that the measurement overstated the problem. It understated it."
+    },
+    {
+      "title": "The parity gate measured a population the game is not played in",
+      "projectImpact": 10,
+      "ecosystemImpact": 10,
+      "evidence": "summarizeLeagueProgression filtered on status !== 'retired', so its declared metric blended the rostered league with an unbounded pool growing ~90 players a season. Measured over 12 seasons: rostered mean overall rises 76.90 → 77.97 (+0.089/season) while the blended mean falls 76.90 → 76.04 (−0.072/season) — and that blended figure is precisely the −0.073 S90 certified as steady state. The pool was ballast whose size could cancel any amount of rostered inflation. Third time this project has shipped two errors of opposite sign cancelling, and the second time inside a gate built to prevent exactly that. The gated population is now rostered, with pool and blend still reported so nothing is hidden."
+    },
+    {
+      "title": "A player's potential now actually bounds him",
+      "projectImpact": 10,
+      "ecosystemImpact": 9,
+      "evidence": "developmentDelta used potential only as the constant (potential−80)/20, with nothing depending on a player's current rating — a random walk he took straight past his own ceiling, while selection released and retired those who drifted down and retained those who drifted up. The median never moved (77 → 77) and the mean barely did, while p99 went 88 → 93 and 32–38% of rostered players sat above their own declared potential. A shape defect with almost no first-moment signature, which is why four sessions of mean gates (S71, S72, S89, S90) went over it. New src/domain/potentialReversion.js adds the missing reversion, zero-centred by construction. Measured after, two seeds: 90+ density 4.03% → 2.07%, above-own-potential 37.4% → 21.2%, veterans 26.3% → 5.7%. The decisive reading is trajectory — the elite count plateaus from season 8 (44, 50, 43, 40, 45) where pre-fix it was still climbing at season 12 (63, 80, 73, 80, 85, 88). A bounded walk, not merely a slower one."
+    },
+    {
+      "title": "The obvious fix was a subsidy, and measurement caught it before it shipped",
+      "projectImpact": 8,
+      "ecosystemImpact": 10,
+      "evidence": "The natural implementation, rate × (potential − overall), looks centred and is not: a generated league sits 2.86 points BELOW its own mean potential, so it would have paid every player ≈+0.46 OVR every offseason forever — the S71 (potential−70) and S90 (coaching.development−72) failure, rebuilt inside its own fix. A second instance was caught in the same change and is recorded rather than hidden: the centre was first measured over ROSTERED players while being applied to ALL ACTIVE players, which would have handed the 466-player pool a standing raise. A zero-centred term must be measured over exactly the population it is applied to; that identity, not the centring, is the conservation law."
+    },
+    {
+      "title": "A gate that can finally see a shape defect — and reads two statistics because they fail apart",
+      "projectImpact": 8,
+      "ecosystemImpact": 9,
+      "evidence": "Every calibration gate this project owned was a mean gate. The new distributional gate reads dispersion drift AND elite density, folded into the receipt verdict. Deliberately two readings: measured pre-fix, dispersion rises 4.50 → 6.69 by season 6 then FALLS BACK to 5.99 by season 12 — selection compresses the distribution's left side while the walk extends its right, so it skews rather than widens — while elite density is still out of range. Either statistic alone would have certified this league. Ships with a negative control driven by the real pre-fix readings, which also asserts that dispersion alone is NOT out-of-range, pinning why two readings exist."
+    },
+    {
+      "title": "Camp cuts did not cut — found by a red, after two hypotheses died to measurement",
+      "projectImpact": 8,
+      "ecosystemImpact": 8,
+      "evidence": "The rank-2 fix shifted the distribution enough to flip a club into a state the S89 cap-legality regression says cannot happen: IND $3.3M over the cap after the 2028 offseason. Two explanations were formed and BOTH disproved — the club was not trapped at the 53-man floor (68 players, fifteen clear) and dead money was not pushing it back over (0.0M). Re-running compliance by hand fixed it with a single release. Cause: the offseason's only compliance pass lives in the free-agency stage, and draft and udfa add a full rookie class after it. The stage named camp-cuts performed no cuts. That is the S89 defect shape one seam later — S89 recorded that a limit enforced only at the moment of addition is not enforcement; this is its mirror. Legality is now the offseason's final act, holding the same controlled-franchise boundary. A second independent defect was fixed alongside it: the trim loop could spend one of its bounded releases on a contract whose release frees nothing."
+    },
+    {
+      "title": "Exact technical deployment",
+      "projectImpact": 9,
+      "ecosystemImpact": 8,
+      "evidence": "Candidate 32f1ed63434126ecbc5031871717b8135f3303ac verified on stable staging 14/14 at artifact 4323a293, promoted to production via workflow_dispatch run 32206011878 (gate → build → deploy all success), live origin confirmed serving the exact revision, production provenance 10/10, hosted performance verified, 84 visual captures rebound to the candidate from the workflow's own responsive-evidence artifact, unified release authority verified 7/7, staging authority reconciled, doctor blockingFailing 0 with score 83 → 92 and warnings 2 → 1."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "Build a real NFL elite-density baseline, then re-source BOTH ends of the gate from it",
+      "evidence": "The 1.6%/2.4% ceiling is declared elite90PlusPctProvenance: 'judgement-not-measured' because no such authority exists anywhere in src/data. The post-fix league reads 2.07% over 12 seasons and 2.6% over the decade regression after the camp-cuts fix, so the gate's verdict is out-of-range. Do not close it by tuning POTENTIAL_REVERSION_PROFILE.rate, and do not assume the ceiling is the wrong end — a fresh league opens at 0.32% (five 90+ players across 32 clubs), which is a very flat league. If the generator is wrong then both ends of this measurement are."
+    },
+    {
+      "title": "The numeric-integrity scan is now sized for a decade, not forever",
+      "evidence": "It had reached its 4,000,000-node budget and begun reporting incomplete with issueCount 0 — the guard working as designed, saying it ran out of budget rather than that the league was clean. Raised to 12M against a measured ~4.1M. A future league that grows materially past a decade will need this revisited rather than silently truncating."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "Public launch remains HOLD — launchReady stays false",
+      "evidence": "Unchanged and untouched by this session: email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified. Technical release evidence verified 7/7 does not clear any of them."
+    },
+    {
+      "title": "Registry SPARKED vs local FORGE lifecycle drift",
+      "evidence": "The one remaining non-blocking doctor warning, sibling-owned and reconcilable only through signed Studio Ark. Flagged again rather than silenced."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "The elite-density residual is left reading out-of-range, and TWO routes to green were refused",
+      "evidence": "Raising the reversion rate until the engine cleared a self-authored ceiling, and moving the ceiling until the engine cleared it. Either manufactures a pass against a number this project wrote itself, in the session whose whole subject is gates reporting what they were built to report. The gate keeps its teeth and its negative control still rejects the pre-fix league; the decade regression instead asserts only measurement-anchored claims — that the mean is calibrated, and that elite density is at least 20% below the 4.03% measured on live pre-fix code."
+    },
+    {
+      "title": "A subsidy was nearly rebuilt inside the fix for subsidies, and it was caught by reasoning rather than by a test",
+      "evidence": "Measuring the reversion centre over rostered players while applying it to all active players would have handed the unrostered pool a standing raise. Caught before commit by checking the population identity — but no test would have failed, which is the wrong order and is scored down in SIL Process Quality rather than rounded away."
+    },
+    {
+      "title": "A board item carried since S90 was retired as not-a-defect, on evidence",
+      "evidence": "The free-agent-pool bound. Its one demonstrated harm was corrupting the parity gate, fixed at the gate; the remainder is a measured retirement-lag tail (493 players by season 12, of which 306 are below 68 overall and 428 are 26 or older) reaching the player only through getFreeAgents, already bounded at 500 and sorted by overall. Bounding it would be a calibration change with wide blast radius against no proven defect."
+    },
+    {
+      "title": "Two claims made earlier in this session were corrected by later measurement",
+      "evidence": "The mechanism was first described as variance growing linearly and without bound; the full 12-season run shows dispersion peaks around season 5 and then falls back, because the distribution skews rather than widens. And the cap-legality red was twice explained wrongly before being explained correctly. Both corrections are written into the code comments and the record rather than the stronger original claims being left standing."
+    },
+    {
+      "title": "The canonical receipt was produced three times, and two of those were honest reds",
+      "evidence": "Neither red was accommodated: camp-cuts-did-not-cut and the exhausted integrity-scan budget were both root-fixed, and each cost a full ~50-minute suite cycle. The final receipt is 1,181/1,181 across all six shards at direct exit 0, read from shard summary lines rather than a wrapper status."
+    },
+    {
+      "title": "The visual receipt was initially bound to the wrong revision",
+      "evidence": "write-visual-qa-receipt.mjs silently used stale local responsive evidence from S90's 47fd318 and reported success. Caught by reading the revision in its own output, then corrected by downloading the workflow's responsive-evidence artifact for the actual candidate and re-running. A receipt that names a revision must be checked against the revision you are shipping."
+    }
+  ],
+  "diffStat": {
+    "files": 21,
+    "insertions": 1371,
+    "deletions": 519,
+    "suite": "1,181/1,181 across all six shards (core 149, runtime 740, sim-contract 79, sim-realism 1, long 5, studio 207), direct exit 0 — up from 1,167 (+14 tests). Doctor blockingFailing 0, score 83 → 92."
+  }
+}
