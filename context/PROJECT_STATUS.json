@@ -437,33 +437,33 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "293ccbcbedd7c68f0c85c511a243616d82eb1c4c1d60af3047b571b637b8c092",
-    "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
+    "receiptSha256": "343e085e72e65ad64581978b70aa48331089335d11ce6ea97def5db5fdd366bd",
+    "sourceRevision": "c39f1a5d3e5d3c641b0da3372bd997b2223d385f",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d",
-      "files": 196,
+      "digest": "d45ff90c16f145c2721370b6f5a6708578b5564b703aa8006e730ea7ba5301b9",
+      "files": 197,
       "exclusions": [
         "_health",
         "deploy-manifest.json",
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "1d3f59c3-703a-4ca6-95be-a924c1de4a46",
+    "deploymentId": "6584e283-031d-4a82-805c-fab5277ae45b",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-19T01:44:16.719Z"
+      "checkedAt": "2026-08-19T06:35:42.555Z"
     },
     "rollback": {
-      "previousDeploymentId": "133030d4-3530-4e04-b74f-271099c07eef",
+      "previousDeploymentId": "1d3f59c3-703a-4ca6-95be-a924c1de4a46",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-19T01:44:16.72Z"
+    "observedAt": "2026-08-19T06:35:42.556Z"
   },
   "lastCloseoutAt": "2026-08-19T01:56:29.681Z",
   "performanceAuthority": {
@@ -495,31 +495,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-08-19T01:53:39.233Z",
+    "observedAt": "2026-08-19T06:56:47.475Z",
     "status": "verified",
-    "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
-    "publicationRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
+    "sourceRevision": "c39f1a5d3e5d3c641b0da3372bd997b2223d385f",
+    "publicationRevision": "c39f1a5d3e5d3c641b0da3372bd997b2223d385f",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d"
+      "digest": "d45ff90c16f145c2721370b6f5a6708578b5564b703aa8006e730ea7ba5301b9"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
-        "artifactDigest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d"
+        "sourceRevision": "c39f1a5d3e5d3c641b0da3372bd997b2223d385f",
+        "artifactDigest": "d45ff90c16f145c2721370b6f5a6708578b5564b703aa8006e730ea7ba5301b9"
       },
       "production": {
-        "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
-        "artifactDigest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d"
+        "sourceRevision": "c39f1a5d3e5d3c641b0da3372bd997b2223d385f",
+        "artifactDigest": "d45ff90c16f145c2721370b6f5a6708578b5564b703aa8006e730ea7ba5301b9"
       },
       "visual": {
-        "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
-        "artifactDigest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d"
+        "sourceRevision": "c39f1a5d3e5d3c641b0da3372bd997b2223d385f",
+        "artifactDigest": "d45ff90c16f145c2721370b6f5a6708578b5564b703aa8006e730ea7ba5301b9"
       },
       "performance": {
-        "sourceRevision": "32f1ed63434126ecbc5031871717b8135f3303ac",
-        "artifactDigest": "4323a2936c2b99948e88594bc41a7bef7ecbb7e22c6323d473442c2dc435a21d"
+        "sourceRevision": "c39f1a5d3e5d3c641b0da3372bd997b2223d385f",
+        "artifactDigest": "d45ff90c16f145c2721370b6f5a6708578b5564b703aa8006e730ea7ba5301b9"
       }
     },
     "checks": [
@@ -565,12 +565,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "83e18d3ca5faf6b39459d47aa96c28f2833054a7f3f0c03f00e46c6dcf696432",
-      "productionSha256": "00a9eef00c1328c7fa3a5b37b7b89bea24bd2431b587278bbbd98b2e1d1637bf",
-      "visualSha256": "c285caa3c8253794c7c255ac7025375c0e4d80fa820978203558bdeac72fa7e5",
-      "performanceSha256": "8add528f720c0120941d386475455d5e15f43de1a7722ca6caf841cb4b7bab02"
+      "stagingSha256": "76df5983d1f1dee3d7b9c1ce7e2d9a755befdb1c7f5e16fd39e2be7e7096cb89",
+      "productionSha256": "66cfc11db1b0c8f7fd9f719632470c23b76dd63aaeffa61a007deea8345be83f",
+      "visualSha256": "eb08a6c2294bf9fa0dd967cd73c633dae83e643d7b26d601fab4c87dce39cd59",
+      "performanceSha256": "7d5698182c528593304b73a12da460be191eaa3d2fdd06b3736e092efa65e777"
     },
-    "receiptSha256": "533834479db38b325f311f8b9b9bfd9a6eec387e2e11d25a241fbc84a490045b"
+    "receiptSha256": "a1183809bc4a2e25a16e4d08ce560c468fc5f051910ff7e3122003a035cab36d"
   },
   "launchReady": false,
   "sil": {
