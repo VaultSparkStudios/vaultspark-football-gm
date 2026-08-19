@@ -2795,6 +2795,68 @@ export class GameSession {
     };
   }
 
+  /**
+   * Hold every CPU club to the declared roster and cap limits against the league
+   * as it actually stands right now.
+   *
+   * S91 — the final act of the offseason, run from `camp-cuts` after the draft,
+   * UDFA and AI maintenance have all added contracts. The earlier pass in the
+   * free-agency stage examines a league that the rest of the offseason then
+   * changes underneath it; this one examines the league that comes to rest.
+   *
+   * Same authority boundary as every other automated roster move: the controlled
+   * franchise is never touched, so an over-cap GM keeps their roster, their cap
+   * alerts and their own decision. `capComplianceUnresolved` is refreshed from
+   * this pass rather than the earlier one, because a club that is genuinely
+   * trapped is trapped against the final roster, not an intermediate one.
+   */
+  enforceLeagueLegality() {
+    const releases = [];
+    const compliance = enforceRosterAndCapCompliance(this.league, {
+      excludeTeamIds: this.controlledTeamId ? [this.controlledTeamId] : [],
+      onRelease: ({ teamId, player, deadMoney, reason }) => {
+        releases.push({ teamId, playerId: player.id, name: player.name, pos: player.position, deadMoney, reason });
+        this.registerFreeAgencyMove({
+          teamId,
+          direction: "losses",
+          player,
+          capHit: player.contract?.capHit || 0
+        });
+      }
+    });
+    normalizeRosterSlots(this.league);
+
+    if (releases.length) {
+      const byTeam = new Map();
+      for (const row of releases) {
+        if (!byTeam.has(row.teamId)) byTeam.set(row.teamId, []);
+        byTeam.get(row.teamId).push(row);
+      }
+      for (const [teamId, rows] of [...byTeam.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+        this.logTransaction({
+          type: "camp-cut-releases",
+          teamId,
+          details: {
+            count: rows.length,
+            capCuts: rows.filter((row) => row.reason === "cap").length,
+            rosterCuts: rows.filter((row) => row.reason === "roster-limit").length,
+            deadMoney: rows.reduce((sum, row) => sum + Number(row.deadMoney || 0), 0),
+            players: rows
+          }
+        });
+      }
+      this.logNews(`${releases.length} players released at camp cuts to meet roster and cap limits`, {
+        year: this.currentYear,
+        clubs: byTeam.size
+      });
+    }
+
+    this.league.capComplianceUnresolved = [...compliance.stillOverCap];
+    this.statBook.reindexPlayers();
+    this.rebuildLookupIndexes();
+    return { released: releases.length, stillOverCap: compliance.stillOverCap };
+  }
+
   advanceOffseasonPipeline() {
     const pipeline = this.getOffseasonPipeline();
     if (pipeline.completed) return { ...pipeline, message: "Offseason pipeline complete." };
@@ -2935,6 +2997,23 @@ export class GameSession {
       this.refreshChemistryAndSchemeFit();
       // Apply veteran mentorship development bonuses
       applyMentorshipBonuses(this.league, this.currentYear);
+      // S91 — camp cuts must actually cut.
+      //
+      // The offseason's only compliance pass ran back in the `free-agency`
+      // stage, and `draft` and `udfa` then add a full rookie class of contracts
+      // after it, with `runAiTeamMaintenance` above free to sign more. So the
+      // league came to rest with clubs the authority had never been given a
+      // chance to examine: measured at seed 20260817, IND finished the 2028
+      // offseason $3.3M over the cap with 68 players — fifteen clear of the
+      // 53-man floor — and a single release put it back under. It was never
+      // trapped; enforcement had simply already happened.
+      //
+      // This is the S89 defect shape one seam later. S89 recorded that a limit
+      // enforced only at the moment of addition is not enforcement; this is its
+      // mirror, a limit enforced only *before* the additions. The stage named
+      // for the moment a real club cuts to the roster limit is the right place
+      // to hold that limit, so it now does.
+      this.enforceLeagueLegality();
       return next({ nextStage: "complete", message: "Training camp cuts and roster normalization complete." });
     }
     pipeline.completed = true;

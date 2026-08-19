@@ -84,6 +84,39 @@ export function releaseRanking(roster) {
  * The player stays `status: "active"` — they are employable, just unemployed —
  * which is exactly the shape `runFreeAgencyBackstop` looks for (`teamId === "FA"`).
  */
+/**
+ * This year's already-prorated signing bonus — the portion of a released
+ * player's cap hit that stays on the books.
+ *
+ * Held as one function because two places need it and a quantity declared twice
+ * will drift: `releaseToFreeAgency` charges it, and `currentYearCapSaving`
+ * predicts it in order to choose a release worth making.
+ */
+function currentYearProration(contract = {}) {
+  return Math.max(
+    0,
+    Math.round(Number(contract.signingBonus || 0) / Math.max(1, Number(contract.capYears || contract.yearsRemaining || 1)))
+  );
+}
+
+/**
+ * What releasing this player actually frees up against the current year's cap.
+ *
+ * S91 — this exists because "release the worst value per dollar" is not the same
+ * question as "release someone who helps". The saving is `capHit - proration`,
+ * which is non-negative but can be exactly **zero**: a contract whose cap hit is
+ * entirely this year's prorated bonus costs a roster spot to release and frees
+ * nothing. The trim loop may only cut down to the 53-man floor, so it gets a
+ * bounded number of releases; spending any of them on a zero-saving cut can
+ * leave a club trapped over the cap while a release that would have cleared it
+ * was still available.
+ */
+export function currentYearCapSaving(player) {
+  const contract = player?.contract || {};
+  const capHit = Math.max(0, Number(contract.capHit || 0));
+  return Math.max(0, capHit - Math.min(capHit, currentYearProration(contract)));
+}
+
 export function releaseToFreeAgency(league, player, { onRelease = null, reason = "cap" } = {}) {
   const teamId = player.teamId;
   const contract = player.contract || {};
@@ -102,7 +135,7 @@ export function releaseToFreeAgency(league, player, { onRelease = null, reason =
   // guaranteed money remains accelerates into next year. So the current-year
   // saving is exactly the base salary — always non-negative, so the loop always
   // makes progress — and the club still pays in full, just on the real schedule.
-  const proration = Math.max(0, Math.round(Number(contract.signingBonus || 0) / Math.max(1, Number(contract.capYears || contract.yearsRemaining || 1))));
+  const proration = currentYearProration(contract);
   const deadNow = Math.min(capHit, proration);
   const deadNext = Math.max(0, Math.round(Number(contract.deadCapRemaining || 0)) - deadNow);
   const deadMoney = deadNow + deadNext;
@@ -157,7 +190,15 @@ export function enforceRosterAndCapCompliance(league, { excludeTeamIds = [], onR
       guard += 1;
       roster = getAllTeamPlayers(league, team.id);
       if (roster.length <= ROSTER_STRUCTURE.activeLimit) break; // never field an illegal team
-      const candidate = releaseRanking(roster)[0];
+      // S91 — cut someone whose release actually frees money. The loop has a
+      // bounded number of releases (down to the 53-man floor and no further), so
+      // a zero-saving cut is not merely useless, it spends one of them. Among
+      // releases that do free space, the existing worst-value-per-dollar order
+      // still decides who goes, so the front office's judgement is unchanged;
+      // this only stops it from making a move that cannot help. If nothing frees
+      // space the club is genuinely trapped and stays visible in `stillOverCap`,
+      // which is the S89 design and is deliberately not laundered here.
+      const candidate = releaseRanking(roster).find((player) => currentYearCapSaving(player) > 0);
       if (!candidate) break;
       released.push(releaseToFreeAgency(league, candidate, { onRelease, reason: "cap" }));
     }

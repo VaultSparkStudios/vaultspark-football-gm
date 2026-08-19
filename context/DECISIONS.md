@@ -2,6 +2,46 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-18 - S91: a gate must name the population it measures, and it must be the one the product is experienced in
+
+**Decision:** Every calibration gate must declare the population it measures, and that population must be the one the product is actually experienced in. A denominator nobody declared is a free parameter, and sooner or later something will grow into it and pay for a defect.
+
+**Rationale:** `summarizeLeagueProgression` filtered on `status !== "retired"`, blending the ~2,180 players on club rosters with an unbounded free-agent pool that grows ~90 players a season. Measured over 12 seasons, rostered mean overall rose +0.089/season while the blended mean fell −0.072/season — and the blended figure was precisely the −0.073 that S90 certified as steady state and shipped as proof its own fix worked. The pool was ballast whose size could cancel any amount of rostered inflation. The gated population is now rostered players, with the pool and the blend both still reported so nothing is hidden. This is the third time this project has shipped two errors of opposite sign cancelling, and the second time it happened inside a gate built to prevent it.
+
+---
+
+## 2026-08-18 - S91: mean gates cannot see shape defects
+
+**Decision:** Any system that evolves state over many steps must be gated on a dispersion statistic **and** a tail statistic together, not on a mean. Where a defect can change a distribution's shape without moving its centre, a mean gate is not a weak gate — it is structurally blind.
+
+**Rationale:** `developmentDelta` used potential as a constant drift coefficient with no dependence on current rating, making offseason development a random walk that selection filtered on one side only. Across 12 seasons the median did not move at all and the mean moved +0.089/season, while 90+ density on a fixed denominator went 0.32% → 4.03%. Four sessions of mean-based calibration work (S71, S72, S89, S90) passed straight over it. The two statistics must be read together because they demonstrably fail apart: pre-fix, dispersion rose to 6.69 by season 6 and then fell back to 5.99 by season 12 while elite density was still out of range, so either reading alone certifies a broken league.
+
+---
+
+## 2026-08-18 - S91: a constant that cannot be sourced ships with its provenance
+
+**Decision:** When a threshold cannot be derived from an authority, it ships with its provenance recorded as data next to it — where the number came from, the misuses to avoid, and the open question that would resolve it. And a threshold set by judgement is never closed by tuning the system until it goes green.
+
+**Rationale:** Three defects in this repo have now been literals whose origin nobody wrote down: `LEAGUE_AVERAGE_POTENTIAL` (S71), the coaching-development centre (S90), and the scheme-fit centre (S90). Each rotted from a differentiator into a subsidy once the system drifted away from it. S91's elite-density ceiling has no NFL baseline available anywhere in `src/data`, so it carries `elite90PlusPctProvenance: "judgement-not-measured"`. The post-fix league lands at 2.07% against that 1.6% ceiling; raising the reversion rate until it passed was explicitly refused and the receipt reports `watch` instead. Honest deferral against a judgement threshold is a result; a manufactured green is not.
+
+---
+
+## 2026-08-18 - S91: a limit enforced before the additions is not enforcement
+
+**Decision:** In a pipeline of named stages, the authority that enforces a limit must run after everything that can breach it, and every stage must do the thing its name promises. Where a limit can be re-breached by a later stage, enforcement belongs at the point the system comes to rest.
+
+**Rationale:** The offseason's only roster-and-cap compliance pass ran inside the `free-agency` stage, while `draft` and `udfa` added a full rookie class of contracts after it and `runAiTeamMaintenance` could sign more. The stage actually named `camp-cuts` — the moment a real club cuts to the roster limit — performed no cuts. Measured at seed 20260817, IND finished the 2028 offseason $3.3M over the cap with 68 players, fifteen clear of the 53-man floor; one release fixed it, so the club was never trapped and had simply never been examined in that state. This is the exact mirror of the S89 decision that an engine which can add must be able to remove: there, addition was gated and removal did not exist; here, removal existed and ran before the additions.
+
+---
+
+## 2026-08-18 - S91: a suspicion carried on the board is a hypothesis, and it gets tested or retired
+
+**Decision:** An item carried forward as "not currently known to break anything" must be either proven, disproven, or retired with evidence — not deferred a third time. Standing suspicions accumulate into a board that looks like work.
+
+**Rationale:** The free-agent-pool bound had been carried since S90 on the stated grounds that it was the confound in another measurement rather than a proven defect. S91 removed that confound at the gate, then measured what was left: 493 players at mean overall 65.8 and mean age 28.9 by season 12, of whom 306 are below 68 overall and 428 are 26 or older — a retirement-lag tail of unemployable veterans that reaches the player only through `getFreeAgents`, already bounded at 500 and sorted by overall. Bounding it would be a calibration change with wide blast radius against no proven defect. Retired as decided-not-a-defect with the evidence. In the same session, S90's disclosed elite-tail confound was tested first rather than inherited, and turned out to point the opposite way — which is the argument for testing them rather than carrying them.
+
+---
+
 ## 2026-08-17 - S89: a declared bound must be reachable, or it is not a bound
 
 **Decision:** Any constant that declares a limit — a salary ceiling, a roster size, a budget — must be reachable by the system it constrains, and a test must bind it to the mechanism that produces it. A limit no code path can hit is not a conservative safety margin; it is a fiction that reads as authority.

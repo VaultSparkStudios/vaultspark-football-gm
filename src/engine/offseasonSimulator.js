@@ -2,6 +2,7 @@ import { CONTRACT_RULES, NFL_STRUCTURE, POSITION_MAX_AGE_LIMITS, ROSTER_TEMPLATE
 import { createDraftClass, createSyntheticPlayer } from "../domain/playerFactory.js";
 import { advanceContractYear, buildContract } from "../domain/contracts.js";
 import { calculatePositionOverall, developmentDelta, positionRatingKeys } from "../domain/ratings.js";
+import { measurePotentialGapCentre, potentialReversionFor } from "../domain/potentialReversion.js";
 import { getAllTeamPlayers, getTeamPlayers, recalculateAllTeamRatings } from "../domain/teamFactory.js";
 import { enforceRosterAndCapCompliance, normalizeRosterSlots } from "./capCompliance.js";
 import { clamp } from "../utils/rng.js";
@@ -123,7 +124,16 @@ export function progressPlayer(player, rng, context = {}) {
   if (!Number.isFinite(environmentTilt)) {
     throw new TypeError(`progressPlayer: development environment must be finite, received ${rawTilt}`);
   }
-  const delta = developmentDelta(player, rng, { environmentTilt });
+  // S91 — the league-centred pull back toward the player's own potential. Same
+  // discipline as the tilt above: absent is legitimate (a caller outside the
+  // offseason seam, e.g. a unit test driving one player), present-but-not-finite
+  // is not, and must never be laundered to zero by `|| 0`.
+  const rawReversion = context.potentialReversion ?? null;
+  const potentialReversion = rawReversion === null ? 0 : Number(rawReversion);
+  if (!Number.isFinite(potentialReversion)) {
+    throw new TypeError(`progressPlayer: potential reversion must be finite, received ${rawReversion}`);
+  }
+  const delta = developmentDelta(player, rng, { environmentTilt, potentialReversion });
   const ratingKeys = Object.keys(player.ratings);
   const focusRatings = (context.focusRatings || []).filter((key) => ratingKeys.includes(key));
   // rng.shuffle is called unconditionally and identically to before, so the RNG
@@ -178,6 +188,14 @@ export function expireContracts(league) {
 export function applyAgingProgressionAndRetirements(league, year, rng, options = {}) {
   const keep = [];
   const teamsById = new Map(league.teams.map((team) => [team.id, team]));
+  // S91 — measured once per offseason, from the league actually being simulated,
+  // BEFORE any player is progressed, so every player this offseason is reverted
+  // against the same centre. Deliberately applied here rather than supplied
+  // through `developmentContext`: reversion is a property of the league, not of
+  // a club, and the headless `runOffseason` facade passes no development context
+  // at all — a context-borne fix would silently not apply on the exact path the
+  // career-realism regression runs.
+  const reversionCentres = measurePotentialGapCentre(league);
   for (const player of activePlayers(league)) {
     const team = teamsById.get(player.teamId) || null;
     player.age += 1;
@@ -186,7 +204,8 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
       player.experience += 1;
       player.seasonsPlayed += 1;
     }
-    const context = typeof options.developmentContext === "function" ? options.developmentContext(player, team) || {} : {};
+    const supplied = typeof options.developmentContext === "function" ? options.developmentContext(player, team) || {} : {};
+    const context = { ...supplied, potentialReversion: potentialReversionFor(player, reversionCentres) };
     progressPlayer(player, rng, context);
     const chance = retirementChance(player, team, {
       ...options,

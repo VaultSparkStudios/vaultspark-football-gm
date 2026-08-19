@@ -1,0 +1,233 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-18",
+  "session": 91,
+  "agent": "claude-opus-5",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 8.9,
+    "source": "Fresh Session 91 audit of the live main worktree, opened on the one thing S90 explicitly refused to rank: an elite-tail measurement it disclosed as confounded by free-agent-pool growth. The handoff instructed the next session to design a probe that separates the two BEFORE ranking anything. That was done first, and it inverted the assumption — pool growth was diluting the elite-density figure, not inflating it — which then exposed a second, larger defect in the gate that had certified S90's own fix. Audited by executing the engine across four 12-season leagues on two independent seeds, pre- and post-fix.",
+    "qualityBar": "L2+. Every claim is a measured quantity from a seeded run of the live engine, and one of this session's own working hypotheses was corrected by the data rather than shipped. The headline defect has almost no first-moment signature, which is why four prior sessions of mean-based gates missed it. The fix is structural and zero-sum by construction, so it composes with S90's guarantee rather than competing with it, and it ships with three negative controls. The residual is reported as `watch` and disclosed rather than tuned to green against a ceiling this project cannot yet source."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay and app-release-gate",
+    "staging": "Cloudflare Pages staging must prove the exact immutable candidate before direct-to-main production promotion; public sanitization mandatory",
+    "source": "arc profile, S90 handoff/closeout brief and task board, live source tree, four seeded 12-season engine probes run pre- and post-fix"
+  },
+  "method": {
+    "probes": [
+      {
+        "id": "probe-1-fixed-denominator",
+        "description": "The probe the S90 handoff demanded: separate elite-tail stretch from free-agent-pool growth by holding the denominator fixed three independent ways at once — rostered-only (structurally pinned at ~2,180 slots by the S89 roster bound, so population growth cannot move it), rate over the whole active population, and flow accounting of intake against retirement.",
+        "runtimeNote": "DISPROVED THE STATED CONFOUND, AND INVERTED ITS SIGN. Measured over 12 seasons, seed 20260306: 90+ among rostered players goes 5 -> 88, i.e. 0.32% -> 4.03% on a fixed denominator — a 12.6x rise in elite density that population growth explains none of. Only 1 of 89 elite players is unrostered. The pool is old (mean age 29.1) and weak (mean overall 66.9) and contributes essentially nothing to the tail, so blending it in DILUTED the reported figure (3.36% blended against 4.03% rostered) rather than inflating it. The task board's recorded suspicion was that the measurement overstated the problem; it understated it."
+      },
+      {
+        "id": "probe-2-distribution-shape",
+        "description": "Having established the tail stretch is real, measure WHY: dispersion, quantiles, and the share of players above their own declared potential, rostered-only, per season.",
+        "runtimeNote": "The defect is a shape defect with almost no first-moment signature. Mean moves 76.90 -> 77.97 across 12 seasons and the MEDIAN does not move at all (77 -> 77), while p99 goes 88 -> 93, max 94 -> 97, and 90+ density rises 12.6x. 32-38% of rostered players sit above their own potential throughout. Dispersion rises 4.50 -> 6.69 by season 6 and then FALLS BACK to 5.99 by season 12 — selection compresses the distribution's left side while the walk extends its right, so it skews rather than widens. This is the finding that determined the gate design: sd goes quiet after season 8 while the elite tail is still climbing, so a dispersion-only gate would have called this league calibrated."
+      },
+      {
+        "id": "probe-3-blend-decomposition",
+        "description": "Compare the gated statistic (all non-retired players) against the rostered population it is supposed to describe, season by season.",
+        "runtimeNote": "This is the finding that reframed the session. Rostered mean overall rises 76.90 -> 77.97 (+0.089/season) while the BLENDED mean falls 76.90 -> 76.04 (-0.072/season). The blended figure is precisely the -0.073 S90 certified as steady state. The unbounded pool — 466 players at mean 66.9 by season 12 — acts as ballast whose size is a free parameter that can cancel any amount of rostered inflation. Two errors of opposite sign cancelling, for the third time in this project's history, and the second time inside a gate built to prevent exactly that."
+      },
+      {
+        "id": "probe-4-post-fix-verification",
+        "description": "Re-ran probes 1 and 2 against the fixed engine on two independent seeds (20260306, 20260307), 12 seasons each.",
+        "runtimeNote": "90+ density 4.03% -> 2.07%; players above their own potential 37.4% -> 21.2%; veterans above their own potential 26.3% -> 5.7%; p99 93 -> 91; rostered mean drift +0.089 -> +0.065/season. The decisive reading is the TRAJECTORY, not the level: post-fix the elite count plateaus from season 8 (44, 50, 43, 40, 45) where pre-fix it was still climbing at season 12 (63, 80, 73, 80, 85, 88). A bounded walk, not merely a slower one. Seed 20260307 reproduces the same shape."
+      }
+    ]
+  },
+  "gameLoopReview": {
+    "loopTightness": 7,
+    "progression": 8,
+    "sessionEngagement": 7,
+    "retention": 7,
+    "soulFidelity": 8,
+    "overall": 7.4,
+    "evidence": "Progression rises again, and for a reason distinct from S90's. S90 made the league hold its LEVEL; S91 makes it hold its SHAPE. Pre-fix, a GM who played a long franchise watched scarcity quietly evaporate — 90+ players went from 5 to 88 on a roster count that never grew — so the central fantasy of the genre, that a superstar is rare and worth building around, decayed season by season while every calibration gate reported the league healthy. Post-fix the elite tier reaches a steady state by season 8, so a fortieth-season league is still recognisably the league the player started in. Retention rises with it: the long-horizon franchise is the product, and it was the part quietly rotting. Soul fidelity holds — a player's potential now means what the game says it means, rather than being a drift coefficient he outruns. Loop tightness and session engagement are unchanged; nothing about the moment-to-moment loop moved this session."
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "Observability / gate integrity",
+      "effortHours": 3,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 9.7,
+      "slug": "parity-gate-measured-a-blended-population",
+      "title": "The gate that polices talent drift measured the rostered league blended with an unbounded junk pool, and the pool's growth cancelled the inflation exactly",
+      "status": "shipped",
+      "premise": "Measured, not inferred. `summarizeLeagueProgression` in src/stats/progressionParity.js filtered on `status !== \"retired\"`, so its declared metric — 'active-player mean overall annual drift' — blended the ~2,180 players on club rosters with the unrostered free-agent pool. That pool is unbounded: intake runs ~290 per season against ~200 retirements, and by season 12 it holds 466 players at mean overall 66.9 and mean age 29.1. Its size is therefore a free parameter in the gated statistic. Measured over 12 seasons at seed 20260306, rostered mean overall rises 76.90 -> 77.97 (+0.089/season) while the blended mean falls 76.90 -> 76.04 (-0.072/season). The blended number is the -0.073 that S90 certified as steady state and shipped as proof its own fix worked. The league the GM actually competes in was inflating the entire time, and the gate could not see it because a growing junk drawer was silently paying for it. This is ranked first because it is the reason the rank-2 defect survived: a gate that cannot see a defect makes every subsequent green meaningless.",
+      "fix": "The gated population is now rostered players. `splitActivePopulation` partitions active players by whether they hold a club roster spot; the receipt's headline statistics come from `rostered`, and `population.unrostered` and `population.blended` are both still reported so the pool is visible rather than either hidden or silently averaged in. The target's declared metric string was corrected to 'rostered-player mean overall annual drift' so the receipt says what it measures. A league with no teams at all falls back to the active set rather than reporting a zeroed league as calibrated.",
+      "verification": "test/session91-potential-reversion.test.js — 'progression parity is measured on rostered players, and reports the pool separately' plants a 300-player pool at overall 55 and asserts the gated mean does not follow it while the blended reading visibly does; 'splitActivePopulation partitions active players with no double counting' pins the partition.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Document that the parity metric includes unrostered players."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Measure the gate on the rostered population it is supposed to describe, and report the pool alongside it rather than inside it, so pool size can never again pay for rostered inflation."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "Derive every calibration surface in the project from one declared population authority, so no future gate can pick its own denominator."
+        }
+      },
+      "executionEvidence": "src/stats/progressionParity.js — gated population is rostered; population.rostered/unrostered/blended all reported; declared metric string corrected. Verified by two tests in test/session91-potential-reversion.test.js."
+    },
+    {
+      "rank": 2,
+      "tier": "CRITICAL",
+      "category": "Simulation truth / player progression",
+      "effortHours": 5,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 9.5,
+      "slug": "potential-is-a-drift-coefficient-not-a-ceiling",
+      "title": "A player's potential never bounded him — development was a random walk with no mean reversion, and selection truncated only its bottom",
+      "status": "shipped",
+      "premise": "`developmentDelta` in src/domain/ratings.js moved a player by `ageFactor + traitFactor + variance`, where `traitFactor` is `(potential - 80) / 20` — a constant for the life of the player. Nothing in the expression depended on the player's current rating, so a player never converged on his potential; he walked straight past it and kept going. The league then applied a one-sided filter to that walk: players who drifted down were released by the S89 roster bound and retired early under the low-overall attrition multipliers, while players who drifted up were retained, extended, and kept drawing. The bottom of the walk was truncated by selection; the top was truncated by nothing. Measured on the fixed rostered denominator over 12 seasons: the median does not move (77 -> 77) and the mean barely does (76.90 -> 77.97), while p99 goes 88 -> 93, max 94 -> 97, and 90+ density goes 0.32% -> 4.03%, still climbing at season 12. Throughout, 32-38% of rostered players sit above their own declared potential. This is a shape defect with essentially no first-moment signature, which is exactly why it survived S71, S72, S89 and S90: every gate this project owned was a mean gate, and the mean is the one statistic it does not move.",
+      "fix": "New src/domain/potentialReversion.js adds the missing reversion term, converting the walk into a bounded AR(1) whose accumulated variance is finite instead of growing with every season a player survives. The obvious implementation was the trap and was rejected by measurement: a generated league sits 2.86 points BELOW its own mean potential, so a naive `rate * (potential - overall)` would have paid every player roughly +0.46 OVR per offseason forever — a league-wide subsidy arriving through the exact door S71 (`potential - 70`) and S90 (`coaching.development - 72`) already had to be rescued from. So the centre is measured from the live league every offseason and the term is zero-centred by construction. One further correction was made during implementation and is recorded because it was a real error: the centre was first measured over rostered players while being APPLIED to all active players, which would have handed the 466-player pool a standing raise — the same subsidy failure rebuilt inside its own fix. The centre is now measured over exactly the population the term is applied to, making it a strict conservation law: it can redistribute development and can never mint or destroy it, whatever the pool does. Wired at the `applyAgingProgressionAndRetirements` seam rather than through `developmentContext`, because the headless `runOffseason` facade passes no development context at all and a context-borne fix would have silently not applied on the exact path the career-realism regression runs.",
+      "verification": "Measured on the live engine, two seeds, 12 seasons: 90+ density 4.03% -> 2.07%; players above their own potential 37.4% -> 21.2%; veterans above their own potential 26.3% -> 5.7%; p99 93 -> 91; rostered mean drift +0.089 -> +0.065/season, inside the 0.15 ceiling. The decisive reading is trajectory rather than level: post-fix the elite count plateaus from season 8 (44, 50, 43, 40, 45) where pre-fix it was still climbing at season 12 (63, 80, 73, 80, 85, 88). test/session91-potential-reversion.test.js asserts the conservation law directly, with a negative control proving the uncentred form is a subsidy the tolerance rejects, plus symmetric-clamp, NaN-rejection and RNG-stream-parity guards.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Clamp ratings at the player's potential so nobody exceeds it."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "Give development an actual reversion toward potential, centred on the league's own measured gap so it bounds the walk without minting talent, and wire it at the single seam both the interactive and headless offseasons share."
+        },
+        "L3": {
+          "effortHours": 14,
+          "recipe": "Model potential itself as revisable by performance and coaching, so a breakout season raises the ceiling rather than only the rating."
+        }
+      },
+      "executionEvidence": "src/domain/potentialReversion.js (new authority), src/domain/ratings.js (reversion folded into the single unbiased rounding, profile version 2026-s91-reverting), src/engine/offseasonSimulator.js (measured once per offseason at the shared seam). 6 tests."
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Observability / gate coverage",
+      "effortHours": 2,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 8.8,
+      "slug": "no-gate-could-see-a-shape-defect",
+      "title": "Every calibration gate in the project was a mean gate, so a defect that moves no mean was structurally invisible",
+      "status": "shipped",
+      "premise": "The rank-2 defect ran for the project's entire history through S71, S72, S89 and S90 — four sessions that each tightened calibration — without a single gate registering it, because every gate read `annualMeanOverallDrift` and the defect does not move the mean. Fixing rank 2 without adding a reading that can see its defect class would leave the next such defect equally invisible.",
+      "fix": "`LEAGUE_DISTRIBUTION_TARGET` and `buildDistributionReceipt` add a distributional gate on the rostered population, folded into the receipt's top-level `status` so it has teeth. Deliberately TWO readings rather than one, because the probe proved they fail apart: dispersion drift catches a walk in progress, elite density catches the state it produces, and measured pre-fix, dispersion falls back to `watch` by season 12 while elite density is still out of range. Either statistic alone would have shipped this league as calibrated.",
+      "verification": "test/session91-potential-reversion.test.js — 'NEGATIVE CONTROL: the distributional gate rejects the measured pre-fix league' drives the gate with the probe's real pre-fix readings and asserts out-of-range, then asserts that dispersion alone is NOT out-of-range, pinning the reason two readings exist. Companion tests assert a steady league passes and a sample too small to judge reports `incomplete` rather than a verdict.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Report standard deviation in the receipt without gating on it."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Gate on dispersion drift and elite density together, folded into the receipt verdict, with a negative control built from the real pre-fix measurement."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Gate the full rating distribution against a sourced NFL baseline rather than two summary statistics."
+        }
+      },
+      "executionEvidence": "src/stats/progressionParity.js — LEAGUE_DISTRIBUTION_TARGET, buildDistributionReceipt, distribution folded into status and into appendProgressionHistory. 4 tests including the negative control."
+    },
+    {
+      "rank": 4,
+      "tier": "MEDIUM",
+      "category": "Process quality / honest provenance",
+      "effortHours": 0.5,
+      "impact": 6,
+      "innovation": 6,
+      "priority": 6.8,
+      "slug": "declare-the-provenance-of-a-judgement-ceiling",
+      "title": "The new elite-density ceiling is a judgement call, and saying so in the code is the whole point",
+      "status": "shipped",
+      "premise": "Found while building rank 3. This project has no NFL elite-density baseline anywhere in src/data, so unlike the S90 development centres or the S71 potential centre, the 90+ ceiling cannot be measured from an authority — it was set from the engine's own observed behaviour. An undeclared literal whose provenance is forgotten is precisely how `LEAGUE_AVERAGE_POTENTIAL` (S71) and the coaching centre (S90) rotted into subsidies. Shipping a third such literal silently, inside the session whose entire subject is that failure mode, would have been the same mistake a third time.",
+      "fix": "The ceiling carries an explicit `elite90PlusPctProvenance: \"judgement-not-measured\"` field and a comment stating where the number came from, the two things a later session must not do with it (treat it as measured truth; tune the engine until it goes green), and the unresolved question underneath it — whether the generated league's own 0.32% opening density is itself right, since five 90+ players across 32 clubs is a very flat league to start from and if the generator is wrong then both ends of the measurement are.",
+      "verification": "Reviewed rather than gated; the assertion that matters is rank 3's negative control, which does not depend on the ceiling being correct, only on it separating 'holds its shape' from 'runs away'.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.1,
+          "recipe": "Add a comment saying the number is a guess."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Record the provenance as a structured field plus the reasoning, the misuses to avoid, and the open question that would resolve it."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "Build a real NFL elite-density baseline into src/data and re-source the ceiling from it."
+        }
+      },
+      "executionEvidence": "src/stats/progressionParity.js — LEAGUE_DISTRIBUTION_TARGET.elite90PlusPctProvenance and its documentation block."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Simulation truth / roster and cap legality",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 8.2,
+      "slug": "camp-cuts-did-not-cut",
+      "title": "The offseason's only compliance pass ran before the draft added a full rookie class, so the league came to rest in a state the authority had never examined",
+      "status": "shipped",
+      "discovery": "Not found by a probe and not on the ranked plan. The rank-2 fix shifted the talent distribution enough to flip one club into a state the S89 cap-legality regression asserts cannot happen, and the red was investigated rather than accommodated. Two hypotheses were formed and BOTH were disproved by measurement before the real cause was found: first that the club was genuinely trapped at the 53-man floor (it had 68 players, fifteen clear of it), then that `applyCapRollover` was pushing it back over with accelerated dead money (dead money was 0.0M). The decisive instrument was re-running `enforceRosterAndCapCompliance` by hand on the resting league: it fixed IND with a single release, which proved the club was never trapped and enforcement had simply already happened.",
+      "premise": "`GameSession` drives the offseason as named stages (S67), and the compliance pass sits inside the `free-agency` stage. The `draft` and `udfa` stages then add a full rookie class of contracts after it, and `camp-cuts` runs `runAiTeamMaintenance`, which can sign more. Nothing re-examined the result. Measured at seed 20260817, IND finished the 2028 offseason $3.3M over the cap with 68 players and 68 releasable contracts that would each have freed space. The stage named for the moment a real club cuts to the roster limit performed no cuts at all. This is the S89 defect shape one seam later: S89 recorded that a limit enforced only at the moment of addition is not enforcement, and this is its mirror — a limit enforced only before the additions.",
+      "fix": "`GameSession.enforceLeagueLegality()` is the offseason's final act, run from `camp-cuts` after the draft, UDFA and AI maintenance. It holds the same authority boundary as every other automated roster move — the controlled franchise is never touched, so an over-cap GM keeps their roster, their alerts and their own decision — and it refreshes `capComplianceUnresolved` from this pass rather than the earlier one, because a genuinely trapped club is trapped against the final roster, not an intermediate one. A second, independent defect was fixed in the same file while investigating: the cap trim loop took `releaseRanking(roster)[0]` unconditionally, but a contract whose cap hit is entirely this year's prorated bonus frees nothing when released. Since the loop may only cut down to the 53-man floor it has a bounded number of releases, so spending one on a zero-saving cut can strand a club. It now selects the worst-value-per-dollar player whose release actually frees current-year space, and the proration calculation is held in one function rather than declared twice.",
+      "verification": "test/session89-cap-legality-regression.test.js passes 8 seasons again. Three new fast tests pin the property directly rather than leaving it to a 4.5-minute long-shard run: camp cuts restore legality for an over-cap club, camp cuts never touch the controlled franchise (and it stays visibly over the cap rather than silently trimmed), and `currentYearCapSaving` returns zero for a fully-prorated contract.",
+      "executionEvidence": "src/runtime/GameSession.js — enforceLeagueLegality() wired into the camp-cuts stage. src/engine/capCompliance.js — currentYearCapSaving() and savings-aware release selection, shared proration helper.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Re-run the existing compliance pass a second time at the end of the offseason."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Make legality the offseason final act in the stage named for it, holding the same controlled-franchise boundary, and select releases that actually free current-year cap space."
+        },
+        "L3": {
+          "effortHours": 7,
+          "recipe": "Give clubs the real restructuring tools — extensions, post-June-1 designations — so a trapped club has the escapes a real front office has."
+        }
+      }
+    }
+  ],
+  "preverifiedSkips": [
+    {
+      "candidate": "Bounding the free-agent pool, carried on the task board since S90",
+      "reason": "Rejected as an item this session, on evidence rather than by deferral. The pool's one demonstrated harm was corrupting the progression-parity gate, and rank 1 removes that harm at the gate instead of by changing league calibration. What remains is measured and benign: the pool holds 493 players at mean overall 65.8 and mean age 28.9 by season 12, of whom 306 are below 68 overall and 428 are 26 or older — a retirement-lag tail of unemployable veterans, not a talent reservoir. It reaches the player through `getFreeAgents`, which is already bounded at 500 and sorted by overall, so the surface is unaffected. Bounding it would be a calibration change with wide blast radius made against no proven defect, which is the phantom item this project's audit method exists to prevent. Recorded as decided-not-a-defect with the evidence, rather than carried forward a third time as a standing suspicion.",
+      "slug": "free-agent-pool-bound"
+    },
+    {
+      "candidate": "Raising POTENTIAL_REVERSION_PROFILE.rate until the distributional gate reports on-target",
+      "reason": "Refused, twice over. Elite density measures 2.07% across 12 seasons before the camp-cuts fix (item 5) and 2.6% across the 10-season decade regression after it — that fix culls weak rosters, shrinking the rostered denominator and raising measured density, which is a real effect of a correct fix rather than a regression. Against a 1.6% on-target / 2.4% watch ceiling the gate's verdict is out-of-range. TWO routes to green existed and both were rejected: raising POTENTIAL_REVERSION_PROFILE.rate until the engine cleared a self-authored ceiling, and moving the ceiling until the engine cleared it. Either manufactures a pass against a number this project authored itself, in the session whose whole subject is gates reporting what they were built to report — and the ceiling is declared judgement-not-measured precisely because there is no baseline to appeal to. The gate keeps its teeth and its negative control still rejects the pre-fix league; test/realism-career-regression.test.js instead asserts only measurement-anchored claims, that the mean is calibrated and that elite density is at least 20% below the 4.03% measured on live pre-fix code this same session.",
+      "slug": "tune-rate-to-green"
+    }
+  ],
+  "residualFindings": [
+    {
+      "slug": "elite-density-residual-watch",
+      "title": "Elite density is halved but still above the on-target ceiling",
+      "evidence": "Elite density on the fixed rostered denominator measures 2.07% across 12 seasons (seeds 20260306 and 20260307) before the camp-cuts fix, and 2.6% across the 10-season decade regression after it, against an on-target ceiling of 1.6% and a watch ceiling of 2.4%. The gate's verdict is out-of-range and is deliberately left that way. The runaway is nonetheless arrested — the elite count plateaus from season 8 (44, 50, 43, 40, 45) rather than climbing as it did pre-fix (63, 80, 73, 80, 85, 88) — and the level is far below the 4.03% measured pre-fix.",
+      "whyNotThisSession": "Closing it would mean either tuning the reversion rate or moving the ceiling, against a threshold this project cannot source. Both are manufacturing a pass. The honest next step is the baseline, not the constant: build a real NFL elite-density reference into src/data and re-source both the ceiling and the generator's opening 0.32% from it, since if the generator is wrong then both ends of this measurement are. Booked to the task board with that framing."
+    }
+  ],
+  "recommendedMoves": [
+    "A gate must name the population it measures, and that population must be the one the product is experienced in — a denominator nobody declared is a free parameter that will eventually pay for a defect.",
+    "Mean gates cannot see shape defects. When a system evolves state over many steps, gate a dispersion statistic and a tail statistic together: this session measured them failing apart, so either alone certifies a broken league.",
+    "When a constant cannot be sourced from an authority, ship its provenance next to it. Three defects in this repo have now been literals whose origin nobody recorded.",
+    "A confound disclosed by a prior session is a hypothesis, not a finding. This one was tested first and turned out to point the opposite way."
+  ]
+}

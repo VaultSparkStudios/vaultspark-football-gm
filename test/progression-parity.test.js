@@ -59,7 +59,7 @@ test("the parity verdict is computed from the published target", () => {
   assert.equal(bad.status, "out-of-range");
   assert.equal(good.globalStatus, "on-target");
   assert.equal(good.roomSummary.onTarget, 7);
-  assert.equal(good.developmentProfile.version, "2026-s72-parity");
+  assert.equal(good.developmentProfile.version, "2026-s91-reverting");
 
   const maskedRoomFailure = buildProgressionParityReceipt({
     start: base,

@@ -9,10 +9,35 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Next
 
-- [ ] **Separate elite-tail stretch from free-agent-pool growth.** S90 fixed the *level* — league mean overall now holds across a simulated decade — but the *shape* still moves: on a post-fix 12-season probe (seed 20260306) players rated 90+ go 13 → 89 while the active population grows 1,720 → 2,648, i.e. 0.76% → 3.4% of the league, roughly a 4.5× rise in elite density that population growth does not explain away. The companion top-100-mean figure is partly a selection artifact of the growing free-agent pool and is deliberately **not** treated as evidence on its own. Needs a probe design that separates elite-tail progression from pool-growth selection **before** anything is ranked — ranking it on a measurement with a known confound is exactly the phantom item this project's audit method exists to prevent.
-- [ ] Evaluate whether the free-agent pool itself should be bounded. S89 pinned club rosters at 53+16, but the unrostered pool is unbounded and grew 54% across 12 post-fix seasons. Unlike the S89 breach this is not currently known to break anything — it is flagged because it is the confound above, not because it is a proven defect.
+- [ ] **Build a real NFL elite-density baseline into `src/data`, then re-source both ends of the S91 distribution gate from it.** S91's 90+ ceiling (1.6% on-target / 2.4% watch) is a judgement call and says so in the code — no elite-density authority exists anywhere in this project. The post-fix league settles at 2.07%, so the receipt honestly reports `watch`. Do **not** close that by tuning `POTENTIAL_REVERSION_PROFILE.rate`; the open question is whether the *generator* is right, since a fresh league opens at 0.32% (five 90+ players across 32 clubs), which is a very flat league. If the generator is wrong then both ends of the measurement are, and a rate tuned against a wrong ceiling would bake that in.
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+
+## Session 91 — Full arc: the league stops losing its shape (2026-08-18)
+
+Source: `docs/AUDIT_2026-08-18_SESSION91.json`.
+
+| Item | Status |
+|------|--------|
+| parity-gate-measured-a-blended-population — the gate that polices talent drift now measures the rostered league it describes, instead of blending it with an unbounded junk pool whose growth cancelled the inflation exactly | ✅ Done |
+| potential-is-a-drift-coefficient-not-a-ceiling — a player's potential now actually bounds him; offseason development is a bounded walk instead of an unbounded one that selection filtered on only one side | ✅ Done |
+| no-gate-could-see-a-shape-defect — a distributional gate reads dispersion drift and elite density together, folded into the receipt verdict, with a negative control built from the real pre-fix measurement | ✅ Done |
+| declare-the-provenance-of-a-judgement-ceiling — the new elite-density ceiling ships with its origin, its misuses, and its open question recorded as data | ✅ Done |
+| camp-cuts-did-not-cut — the offseason's only compliance pass ran *before* the draft added a full rookie class, so the league came to rest in a state the authority had never examined; legality is now the offseason's final act, in the stage named for it | ✅ Done (found late, via a red) |
+
+**Method note:** audited by running the engine, not reading it — the fourth consecutive session where the headline defect was invisible to code review. The decisive instrument was holding the denominator structurally fixed at the ~2,180 roster slots S89 pinned, which is what let population growth be ruled out as an explanation rather than argued about.
+
+**The finding that reframed the problem.** S90's handoff disclosed the elite-tail figure as confounded by free-agent-pool growth and instructed the next session to test that before ranking it. Tested: only **1 of 89** elite players is unrostered, and the blended reading (3.36%) is *lower* than the rostered one (4.03%). The pool was diluting the number, not inflating it — the disclosed suspicion was honest and backwards. Chasing that exposed the larger defect: the parity gate measured a blended population, and the blend's −0.073 was **exactly the number S90 shipped as proof its own fix worked**, while the rostered league inflated at +0.089/season underneath it.
+
+**Verification:** 90+ density on the fixed rostered denominator **4.03% → 2.07%**; players above their own potential 37.4% → 21.2%; veterans above their own potential 26.3% → 5.7%; p99 93 → 91; rostered mean drift +0.089 → +0.065/season. The decisive reading is trajectory, not level — post-fix the elite count plateaus from season 8 (44, 50, 43, 40, 45) where pre-fix it was still climbing at season 12 (63, 80, 73, 80, 85, 88). Reproduced on seed 20260307. S90's own guarantee (league-wide mean environment tilt 0.0000) still holds and still passes.
+
+**Honest residual, disclosed not force-greened:** elite density measures **2.07%** across 12 seasons pre-camp-cuts-fix and **2.6%** across the 10-season decade regression after it (the camp-cuts fix culls weak rosters, shrinking the denominator and raising density — a real effect of a correct fix). Against a 1.6%/2.4% ceiling the gate's verdict is **`out-of-range`**. Two routes to green were available and **both refused** — raising the reversion rate, and moving the ceiling. The ceiling is declared `judgement-not-measured` and the gate keeps its teeth; the decade regression asserts instead that the mean is calibrated and that elite density is ≥20% below the 4.03% measured on live pre-fix code.
+
+**A fifth defect surfaced by a red, not by the plan.** The rank-2 fix shifted the talent distribution enough to flip one club into a state the S89 cap-legality regression asserts cannot happen. Two hypotheses were formed and **both were disproved by measurement** before the real cause was found — the club was not trapped at the 53-man floor (68 players, fifteen clear of it) and dead money was not pushing it back over (0.0M). Re-running compliance by hand on the resting league fixed it with a single release, which proved enforcement had simply already happened: it lives in the `free-agency` stage, and `draft` and `udfa` add a full rookie class afterwards. The stage named `camp-cuts` performed no cuts.
+
+**Board item retired on evidence:** the free-agent-pool bound, carried since S90, is decided **not a defect**. Its one demonstrated harm was corrupting the gate, fixed at the gate; the remainder is a measured retirement-lag tail of unemployable veterans reaching the player only through an already-bounded surface.
+
+**Launch posture:** unchanged. `launchReady: false` preserved pending Zoho delivery/reply-as, SHA-bound founder approval, authoritative lifecycle reconciliation and external Obelisk relying-party proof.
 
 ## Session 90 — Full arc: the league stops minting talent (2026-08-17)
 

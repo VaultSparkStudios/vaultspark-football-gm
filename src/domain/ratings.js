@@ -307,7 +307,7 @@ export function calcTeamOffenseDefense(teamPlayers) {
 export const LEAGUE_AVERAGE_POTENTIAL = 80;
 
 export const PLAYER_DEVELOPMENT_PROFILE = Object.freeze({
-  version: "2026-s72-parity",
+  version: "2026-s91-reverting",
   potentialCenter: LEAGUE_AVERAGE_POTENTIAL,
   varianceMin: -2.5,
   varianceMax: 2.5,
@@ -350,7 +350,7 @@ export const PLAYER_DEVELOPMENT_PROFILE = Object.freeze({
  * rounding as the rest of the curve. The RNG stream is untouched — `rng.float`
  * is still drawn exactly once per player, in the same order.
  */
-export function developmentDelta(player, rng, { environmentTilt = 0 } = {}) {
+export function developmentDelta(player, rng, { environmentTilt = 0, potentialReversion = 0 } = {}) {
   let ageFactor;
   if (player.age <= 25) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.developing25AndUnder;
   else if (player.age <= 29) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.prime26To29;
@@ -363,6 +363,27 @@ export function developmentDelta(player, rng, { environmentTilt = 0 } = {}) {
   if (!Number.isFinite(tilt)) {
     throw new TypeError(`developmentDelta: environmentTilt must be finite, received ${environmentTilt}`);
   }
+  // S91 — the reversion term. `traitFactor` above is a *constant* for the life
+  // of the player, which is what made this curve a random walk with no mean
+  // reversion and no ceiling: the distribution's variance grew linearly and
+  // forever, and selection truncated only its bottom. `potentialReversion` is
+  // the league-centred pull back toward the player's own potential (see
+  // `src/domain/potentialReversion.js`). It is zero-sum across the league by
+  // construction, so it damps the diffusion without moving the mean the S90
+  // parity receipt polices.
+  //
+  // Same NaN discipline as `tilt`: never `|| 0`, because NaN is falsy and that
+  // idiom would launder a corrupt centre into a silent zero — the reversion
+  // would stop applying and nothing anywhere would fail.
+  const reversion =
+    potentialReversion === undefined || potentialReversion === null ? 0 : Number(potentialReversion);
+  if (!Number.isFinite(reversion)) {
+    throw new TypeError(`developmentDelta: potentialReversion must be finite, received ${potentialReversion}`);
+  }
+  // Folded in before the single rounding, for the same reason `tilt` is: it is
+  // deterministic per player, and rounding it separately would bias it.
+  // `rng.float` is still drawn exactly once per player, in the same order, so
+  // the RNG stream position is unchanged.
   const variance = rng.float(PLAYER_DEVELOPMENT_PROFILE.varianceMin, PLAYER_DEVELOPMENT_PROFILE.varianceMax);
-  return Math.round(ageFactor + traitFactor + tilt + variance);
+  return Math.round(ageFactor + traitFactor + tilt + reversion + variance);
 }
