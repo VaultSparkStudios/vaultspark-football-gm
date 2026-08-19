@@ -2,8 +2,17 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-18
+Last reviewed: 2026-08-19
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-08-19 - Session 92 truth update
+
+- **S91's elite-density ceiling now has a real external source, and the population it is measured against was itself wrong.** `LEAGUE_DISTRIBUTION_TARGET.elite90PlusPctCeiling` shipped `judgement-not-measured`, set from the engine's own pre-fix behaviour. It is now sourced from real, structurally stable NFL honor formats — AP First-Team All-Pro (26 seats, ceiling) and the Pro Bowl (88 seats, watch line) — divided by the real active-roster population those honors are drawn from (53 × 32 = 1,696), documented in `src/data/nflEliteDensityBaseline.js` with explicit honest limits: it is an analogy between a real season-performance honor and a declared talent rating, not an identity, and the honor-slot counts are a stable structural fact rather than a live external feed.
+- **Checking the population match, not just sourcing the ceiling, found the real defect.** S91's gate measured elite density on `population.rostered` — the active roster (53/club) blended with the practice squad (16/club, S89's `ROSTER_STRUCTURE`). Practice-squad players are structurally ineligible for the real honors this baseline anchors to. Measured live on two independent seeds across a 10-season decade, the practice squad holds **zero** 90+ players (0/496, both seeds), so blending it in only ever diluted the ratio. The same 57-58 elite players read 2.6-2.7% on the blended population and **3.4%** on the corrected `population.activeRosterOnly`.
+- **The S91-disclosed `watch` verdict is resolved without tuning the engine or moving the ceiling on judgement — the two routes S91's own handoff had refused.** Against the sourced band (1.53% ceiling / 5.19% watch line), the same live league now reads `eliteStatus: watch` instead of `out-of-range`. Neither `POTENTIAL_REVERSION_PROFILE.rate` nor any ceiling literal was changed to reach that result; the population correction and the external anchor did it together.
+- **A reconstructed "real" negative-control number was caught before it shipped, and replaced rather than tuned to pass.** The first attempt at updating the S91 pre-fix negative-control fixture reconstructed an `activeRosterOnly`-equivalent pre-fix reading by ratio (5.16%) from S91's disclosed rostered figures. It landed within noise of the new 5.19% watch line and on the wrong side of it — a false precision this project's standing rule against fabricated data does not let a test manufacture, especially not by nudging an estimate until it crosses a boundary. The fixture now uses an explicitly synthetic, unambiguously-bad value instead, and the real live evidence is carried by a separate two-seed measurement test.
+- **Two other new tests failed on first run for reasons worth recording.** A freshly generated league carries 49 players a club (below the 53-man active floor) with no practice squad at all — the practice squad only populates once camp cuts / roster moves run — so a population-partition test needed a hand-built fixture rather than `createSession`. A fallback-path test had asserted a classification outcome that depended on the ceiling, which is unrelated to what the fallback wiring itself needed to prove; the assertion was narrowed to what the test actually verifies.
+- **Nothing player-visible changed this session.** This was a calibration-authority fix inside the S91 distributional gate; the public launch posture, launch gates, and `launchReady: false` are unchanged.
 
 ## 2026-08-18 - Session 91 truth update
 

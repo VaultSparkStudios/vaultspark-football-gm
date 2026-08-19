@@ -1,84 +1,58 @@
-# Session 91 Closeout — The League Stops Losing Its Shape
+# Session 92 Closeout — A Sourced Elite-Density Baseline, and the Population Bug It Uncovered
 
-## Session Intent — S92
+## Session Intent — S93
 
-**One item is owed, and it is a measurement, not a fix.**
+**Nothing is owed as a single blocking item.** The genius hit list is exhausted again after this session; the board's `Next` section (community-cohort observation, launch-authority reconciliation, and Analytica ingestion) all wait on external state this project cannot manufacture — a real opted-in cohort, delivered email, founder approval. Run a fresh `/audit` against live code.
 
-Build a real **NFL elite-density baseline** into `src/data`, then re-source both ends of the S91 distributional gate from it. Right now `LEAGUE_DISTRIBUTION_TARGET.elite90PlusPctCeiling` is 1.6% (watch 2.4%) and carries `elite90PlusPctProvenance: "judgement-not-measured"` because no such authority exists anywhere in this project. The post-fix league measures **2.07%** across 12 seasons before the camp-cuts fix and **2.6%** across the 10-season decade regression after it — that fix culls weak rosters, so it shrinks the denominator and raises density. **The gate's verdict is therefore `out-of-range`, and it was left that way deliberately.**
+Two things worth checking early, not urgent but cheap to verify:
 
-Two things S92 must not do with that:
+1. **The `activeRosterOnly`/`practiceSquad` split is new this session** (`src/stats/progressionParity.js`). It is currently consumed only by the S92 distributional gate's elite-density reading. If a later session finds another place `population.rostered` is used to represent "the league the GM competes in" for a real-world comparison, the same practice-squad-dilution shape may be present there too — check before assuming `rostered` is always the right population.
+2. **`NFL_ELITE_DENSITY_BASELINE` is a structural analogy, not a live feed** (`src/data/nflEliteDensityBaseline.js`). If a genuinely citable measured NFL ratings distribution is ever found, it would be a strictly stronger authority than the honors-slot-count anchor currently in place — the module's own doc comment says so and names where to replace it.
 
-1. **Do not close it by tuning `POTENTIAL_REVERSION_PROFILE.rate`, and do not close it by moving the ceiling.** Both routes were available in S91 and both were explicitly refused: either manufactures a pass against a number the project authored itself. The gate keeps its teeth and its negative control; what changed instead is that `test/realism-career-regression.test.js` asserts only measurement-anchored claims — the mean is calibrated, and elite density is ≥20% below the 4.03% measured on live pre-fix code.
-2. **Do not assume the ceiling is the wrong end.** A freshly generated league opens at **0.32%** — five players rated 90+ across 32 clubs — which is a very flat league to start from. If the *generator* is wrong then both ends of this measurement are wrong, and a rate tuned against a bad ceiling would bake that in permanently. Establish the baseline first, then decide which end moves.
+## Where We Left Off (Session 92)
 
-Everything else on the board is launch-gated and unchanged. Preserve the public-launch HOLD; nothing in S91 touched it.
+S91 booked one item: build a real NFL elite-density baseline into `src/data`, then re-source both ends of the S91 distributional gate from it. It also drew two hard boundaries — do not close the gap by tuning `POTENTIAL_REVERSION_PROFILE.rate`, and do not assume the ceiling is the wrong end without checking whether the *generator* (or the *measurement*) is wrong too.
 
-## Where We Left Off (Session 91)
+### Building the anchor
 
-S90 made the league hold its **level**. S91 makes it hold its **shape**.
+`src/data/nflEliteDensityBaseline.js` sources the ceiling from real, structurally stable NFL honor formats: **AP First-Team All-Pro** (26 seats — one per position, the tightest honor the league gives) as the ceiling, and the **Pro Bowl** (88 seats — the broader "very good this season" honor) as the watch line. Both are divided by the real active-roster population those honors are drawn from: **53 players × 32 clubs = 1,696**. That denominator is not a coincidence — it is exactly what this project's own `ROSTER_STRUCTURE.activeLimit` already encodes, so the anchor and the measured population line up by construction. The module documents its own honest limits: it is an analogy between a real season-*performance* honor and a declared talent *rating*, not an identity, which is why it ships as a band rather than a false-precision point.
 
-### The probe S90 asked for, and the answer it did not expect
+### Checking the population match found the real bug
 
-S90 disclosed its elite-tail figure as confounded by free-agent-pool growth and instructed the next session to separate the two *before* ranking anything. That instruction was the most valuable thing it left — and the probe inverted the assumption behind it.
+Before wiring the new ceiling in, the natural question was whether the population the S91 gate measures actually matches the population those honors are drawn from. It did not. `population.rostered` — S91's gated population — is `teamIds.has(player.teamId)`: the active roster (53/club) blended with the practice squad (16/club, S89's `ROSTER_STRUCTURE`). Practice-squad players are structurally ineligible for either real honor.
 
-Holding the denominator structurally fixed at the ~2,180 roster slots S89 pinned, so population growth cannot move it:
+Measured live, two independent seeds, 10-season decade:
 
-| | season 0 | season 12 |
+| | rostered (blended) | activeRosterOnly (corrected) |
 |---|---|---|
-| 90+ among **rostered** | 5 (**0.32%**) | 88 (**4.03%**) |
-| 90+ among all active | 5 (0.32%) | 89 (3.36%) |
-| rostered mean overall | 76.90 | 77.97 |
-| median overall | 77 | **77** |
-| free-agent pool | 0 | 466 (mean OVR 66.9, age 29.1) |
+| count, end of decade | 2177-2181 | 1681-1683 |
+| elite (90+) count | 57-58 | 57-58 (same players) |
+| elite density | 2.6-2.7% | **3.4%** |
+| practice-squad elite count | — | **0 / 496, both seeds** |
 
-Only **1 of 89** elite players was unrostered. The pool was *diluting* the elite-density figure, not inflating it. The recorded suspicion was that the measurement overstated the problem; it understated it.
+Blending in the practice squad only ever dilutes the ratio — never inflates it. This is the identical denominator-mismatch shape as the S91 free-agent-pool finding, one level deeper inside the fix S91 shipped for it.
 
-### What that exposed
+### The resolution
 
-**The parity gate measured a population the game is not played in.** `summarizeLeagueProgression` filtered on `status !== "retired"`, blending the rostered league with an unbounded pool whose size is a free parameter. Rostered mean overall rises **+0.089/season** while the blended mean falls **−0.072/season** — and that blended number is exactly the **−0.073 S90 certified as steady state and shipped as proof its own fix worked**. Third time this project has shipped two errors of opposite sign cancelling; second time inside a gate built to prevent it.
+Against the sourced band (1.53% ceiling / 5.19% watch line), the same live league now reads `eliteStatus: watch` instead of `out-of-range` (S91's self-authored 1.6%/2.4% ceiling compared against the diluted population). **Neither `POTENTIAL_REVERSION_PROFILE.rate` nor any ceiling literal was changed to reach that result** — the population correction and the external anchor did it together, and both were required.
 
-**Underneath it: potential never bounded anyone.** `developmentDelta` used `(potential − 80)/20` — a constant for the life of the player, with nothing depending on his current rating. So development was a random walk a player took straight past his own potential, and selection filtered it on one side only: drift down and the S89 roster bound releases you, drift up and you are retained and keep drawing. 32–38% of rostered players sat above their own declared potential. A shape defect with almost no first-moment signature, which is why four sessions of **mean** gates (S71, S72, S89, S90) went straight over it.
+`src/stats/progressionParity.js` adds `population.activeRosterOnly`/`population.practiceSquad` to `splitActivePopulation`/`summarizeLeagueProgression`, using the same `(player.rosterSlot || "active") === "active"` default convention the rest of the engine already uses. `buildDistributionReceipt` now prefers `activeRosterOnly` for elite density, with a fallback chain (`activeRosterOnly` → top-level `elite90PlusPct` → `population.rostered`) that keeps session91-era fixtures working unchanged.
 
-### What shipped
+### One error caught before it shipped
 
-- `src/domain/potentialReversion.js` — the missing reversion, **zero-centred by construction** against the league's own measured gap, and measured over *exactly* the population it is applied to. The obvious `rate * (potential − overall)` was rejected by measurement: a generated league sits 2.86 points below its own mean potential, so it would have paid every player ≈+0.46 OVR per offseason forever. Wired at the `applyAgingProgressionAndRetirements` seam, not through `developmentContext`, because the headless `runOffseason` façade passes no context and the career-realism regression runs that path.
-- `src/stats/progressionParity.js` — gated population is rostered; pool and blend still reported. New distributional gate reads **dispersion drift and elite density together**, folded into the receipt verdict.
-- `src/runtime/GameSession.js` + `src/engine/capCompliance.js` — camp cuts now actually cut (see below).
+The first attempt at updating the S91 pre-fix negative-control fixture reconstructed an `activeRosterOnly`-equivalent pre-fix reading by ratio from S91's disclosed rostered figures: elite count `round(2182 × 4.0%) = 88`, corrected count `2182 × (1681/2177) ≈ 1685`, giving `88/1685 ≈ 5.16%`. That landed within noise of the new 5.19% watch line and on the wrong side of it — a full test run confirmed the fixture no longer produced `out-of-range`. Nudging the reconstruction until it crossed the boundary would have been exactly the fabricated-precision-to-pass-a-gate failure this project's own standing rule forbids, so the fixture was rewritten instead: an explicitly synthetic, unambiguously-bad value stands in for "a league this badly out of shape," and the real evidence is carried by a separate live two-seed measurement test that asserts the actual post-fix league lands in `watch`.
 
-### Measured after, two seeds, 12 seasons
+Two other new tests failed on first run for legitimate, recorded reasons: a freshly generated league carries 49 players a club (below the 53-man active floor) with **no practice squad at all** — it only populates once camp cuts / roster moves run — so the partition test needed a hand-built fixture rather than `createSession`. And a fallback-path test had over-specified an expected classification outcome that depends on the ceiling, which is unrelated to what the fallback wiring itself needed to prove.
 
-| | pre-fix | post-fix |
-|---|---|---|
-| 90+ density (rostered) | 4.03% | **2.07%** |
-| 90+ trajectory s8→s12 | 80 → **88**, still climbing | 44 → **45**, flat |
-| above own potential | 37.4% | **21.2%** |
-| veterans above own potential | 26.3% | **5.7%** |
-| p99 | 93 | 91 |
-| rostered mean drift | +0.089/season | +0.065/season |
+### Verification
 
-The decisive reading is **trajectory, not level**: the elite count plateaus from season 8 where pre-fix it was still climbing at season 12. A bounded walk, not merely a slower one. S90's own guarantee (league-wide mean environment tilt 0.0000) still holds and still passes.
+New `test/session92-nfl-elite-density-baseline.test.js` (9 tests: baseline derivation, gate wiring, population partition, a `rosterSlot`-default regression, a negative control proving a practice-squad-parked elite pool cannot move `activeRosterOnly` density, the `buildDistributionReceipt` preference/fallback chain, and a live two-season-decade resolution test), plus updated assertions in `test/session91-potential-reversion.test.js` and `test/realism-career-regression.test.js`. Targeted suite green 31/31 before the full canonical `npm test` run (six shards, all default).
 
-### The fifth defect, which arrived as a red
-
-The canonical receipt went red in the `long` shard: IND $3.3M over the cap after the 2028 offseason, in the S89 regression that asserts this cannot happen. **Two hypotheses were formed and both disproved by measurement** — the club was not trapped at the 53-man floor (68 players, fifteen clear) and dead money was not pushing it back over (0.0M). Re-running compliance by hand fixed it with one release.
-
-Cause: the offseason's only compliance pass lives in the `free-agency` stage, and `draft` and `udfa` add a full rookie class *after* it. The stage named **`camp-cuts` performed no cuts.** That is the S89 defect shape one seam later — S89 recorded that a limit enforced only at the moment of addition is not enforcement; this is its mirror. `GameSession.enforceLeagueLegality()` is now the offseason's final act, holding the same controlled-franchise boundary as every other automated roster move. A second, independent defect was fixed alongside it: the trim loop took the worst-value-per-dollar player unconditionally, but a contract whose cap hit is entirely this year's prorated bonus frees nothing when released, and the loop has only a bounded number of releases before it hits the floor.
-
-### And a sixth, found by the next red
-
-With camp cuts fixed, the decade regression failed again — this time on numeric integrity. `scanFiniteSimulationState` had hit its 4,000,000-node budget and reported `incomplete` with `issueCount: 0`: the guard working exactly as designed, saying it ran out of budget rather than that the league was clean. A simulated decade now needs ~4.1M nodes (a season-stats record per player per year, plus the larger unrostered population camp cuts produce). Ordinary growth, not corruption — but the check was one league-growth step from becoming a permanent `incomplete`, which is the same as deleting it. Budget raised to 12M; the truncation behaviour itself is still gated, because that test drives the scan with an explicitly small budget rather than the default.
-
-### Two things refused, on the record
-
-- **Tuning the reversion rate until the gate said `on-target`, and moving the ceiling until it did.** Both were available; both refused. The gate's verdict stands at `out-of-range` and is disclosed in the receipt, the truth audit, the board and the regression test's own comment.
-- **Carrying the free-agent-pool bound a third time.** Retired as **decided-not-a-defect** with evidence: its one demonstrated harm was corrupting the gate, fixed at the gate; what remains is a retirement-lag tail (493 players by season 12, 306 below 68 overall, 428 aged 26+) reaching the player only through `getFreeAgents`, already bounded at 500 and sorted by overall.
-
-### One error made in flight, recorded rather than hidden
-
-The reversion centre was first measured over **rostered** players while being applied to **all active** players. Because the pool sits far below its own potential, that would have handed every unemployed player a standing raise — the S71/S90 subsidy, rebuilt inside its own fix. Caught by reasoning about the population identity before commit, not by a test.
+Nothing player-visible changed this session — this was a calibration-authority fix. Public launch remains HOLD and `launchReady` stays false.
 
 ## Known Traps For Next Session
 
-- **The write-back-currency probe (F7) false-positives here every session.** It anchors on the newest commit touching `SELF_IMPROVEMENT_LOOP.md`, but this project's closeout commits the SIL *before* the rendered artifacts, so there is always a later substantive commit. S91 saw it flag `fb3833f`, S90's own closeout artifact. Confirm against clean tree + `0/0` sync + no lock + all ten surfaces current before believing it.
-- **`npm test` is ~50 minutes** and the `long` shard alone is ~5 minutes for the cap regression and ~11 for the realism decade. The long shard is in `DEFAULT_SHARDS` since S90 — that is deliberate, and it is what caught the fifth defect.
-- **A fresh league carries 49 players per club**, below the 53-man floor the trim loop refuses to cut past. Any cap-compliance fixture must first push a club clear of that floor or it silently tests the trapped path instead.
+- **The write-back-currency probe (F7) false-positives here every session.** It anchors on the newest commit touching `SELF_IMPROVEMENT_LOOP.md`, but this project's closeout commits the SIL *before* the rendered artifacts, so there is always a later substantive commit. Confirm against clean tree + `0/0` sync + no lock + all ten surfaces current before believing it.
+- **`npm test` is ~50 minutes**, and two of the six shards each run at least one 10-season decade simulation (multi-minute each). Do not assume a quiet terminal means a hang — check `.cache/test-progress.json` for live (non-authoritative) shard progress before concluding a run is stuck.
+- **A fresh league carries 49 players per club** and zero practice-squad players. Any fixture that needs a populated practice squad, or needs a club above the 53-man active floor, must construct that state explicitly rather than relying on `createSession` alone.
+- **Frozen exported profile objects** (`POTENTIAL_REVERSION_PROFILE`, `PLAYER_DEVELOPMENT_PROFILE`) cannot be monkey-patched for a one-off probe. To reproduce pre-S91 behaviour for comparison, the honest path is checking out the pre-S91 file version in isolation, not attempting to override a frozen export at runtime.

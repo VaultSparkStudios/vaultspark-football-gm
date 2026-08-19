@@ -1,32 +1,32 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-19 (Session 91 closeout) -->
+<!-- generated-at: 2026-08-19 (Session 92 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S91 ══════╗
-║  Date: 2026-08-19  ·  SIL: 988/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: claude-opus-5                          ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S92 ══════╗
+║  Date: 2026-08-19  ·  SIL: 991/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: claude-sonnet-5                        ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ `src/domain/potentialReversion.js` — the missing reversion,   ║
-║  ✓ `src/stats/progressionParity.js` — gated population is roste  ║
-║  ✓ `src/runtime/GameSession.js` + `src/engine/capCompliance.js`  ║
-║  ✓ **Tuning the reversion rate until the gate said `on-target`,  ║
-║  ✓ **Carrying the free-agent-pool bound a third time.** Retired  ║
+╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ docs(S91): bind release evidence and render closeout artifac  ║
+║  ✓ feat(S91): make the league hold its shape, not just its leve  ║
+║  ✓ chore(closeout): finalize session 90 deployment               ║
+║  ✓ docs(S90): bind release evidence and render closeout artifac  ║
+║  ✓ feat(S90): make the club development environment a different  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 988/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 991/1000 ═══════════════════════════════════════╗
 ║    Dev Health         99   ██████████                            ║
 ║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         99   ██████████                            ║
-║    Process Qual       94   █████████░                            ║
+║    Process Qual       96   ██████████                            ║
 ║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
 ║    Ecosystem          100  ██████████                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         97   ██████████                            ║
+║    Automation         98   ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 88 files  ·  M:2 A:0 D:0 ?:86                          ║
+║  Changes: 20 files  ·  M:14 A:0 D:0 ?:6                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,7 +52,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1181/1181                                        ║
+║  Tests:         1189/1189                                        ║
 ║  IGNIS:         8d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  10d ago                                          ║

@@ -76,39 +76,30 @@ test("a deterministic decade satisfies progression parity and finite-number inte
 
   assert.equal(report.progression.observedSeasons, 10);
 
-  // S91 — this assertion used to read `status === "on-target"`. It cannot any
-  // more, and the reason is a finding rather than a regression.
-  //
-  // `status` now folds in the S91 distributional gate, whose elite-density
-  // ceiling is declared `judgement-not-measured`: this project has no NFL
-  // elite-density baseline anywhere in `src/data`, so the number was set from
-  // the engine's own observed behaviour. Measured here, the league reads 2.6%
-  // against that 1.6%/2.4% ceiling, so the gate's verdict is `out-of-range`.
-  //
-  // That verdict is DISCLOSED, not tuned away. Two ways to make it green were
-  // available and both were refused: raising `POTENTIAL_REVERSION_PROFILE.rate`
-  // until the engine cleared a self-authored ceiling, and moving the ceiling
-  // until the engine cleared it. Either would manufacture a pass, in the session
-  // whose whole subject is gates reporting what they were built to report. The
-  // gate keeps its teeth — `test/session91-potential-reversion.test.js` proves
-  // with a negative control that it rejects the measured pre-fix league — and
-  // S92 is booked to source a real baseline, after which either the ceiling or
-  // the generator moves on evidence.
-  //
-  // So this test asserts the two things that ARE genuinely certified, both
-  // against measurements rather than against invented thresholds:
-  //   1. the mean is calibrated, on the rostered population the gate now names;
-  //   2. elite density is far below the 4.03% measured on live pre-fix code in
-  //      this same session — the fix's effect is real and large, whatever the
-  //      correct absolute ceiling turns out to be.
-  const PRE_FIX_ELITE_90_PLUS_PCT = 4.03; // measured, seed 20260306, 12 seasons, pre-fix engine
+  // S91 opened this assertion at `status === "watch"` rather than
+  // `on-target`, disclosed against a ceiling declared `judgement-not-measured`
+  // because this project had no NFL elite-density authority anywhere in
+  // `src/data`. S92 built one (`src/data/nflEliteDensityBaseline.js`, sourced
+  // from AP First-Team All-Pro and Pro Bowl honor-slot counts against the real
+  // NFL's active-roster population) and re-measured — which also surfaced a
+  // second, independent defect: the S91 gate read elite density from
+  // `population.rostered`, which blends the active roster with the practice
+  // squad. Practice-squad players are structurally ineligible for either real
+  // honor this baseline anchors to, and measured here they hold zero 90+
+  // players (0/496, both seeds) — so blending them in only ever dilutes the
+  // ratio. Correcting the population to `activeRosterOnly` (the real anchor's
+  // population) moves the SAME 57-58 elite players from a 2.6-2.7% reading to
+  // 3.4%, which is `watch` rather than `out-of-range` against the sourced
+  // 1.53%/5.19% band. Neither the ceiling nor the reversion rate was tuned to
+  // reach that verdict — the population match and the external anchor did.
   assert.equal(report.progression.globalStatus, "on-target", JSON.stringify(report.progression));
   assert.ok(Math.abs(report.progression.annualMeanOverallDrift) <= report.progression.target.onTargetMaxAbs);
   assert.equal(report.progression.distribution.adequateSample, true);
-  assert.ok(
-    report.progression.distribution.endElite90PlusPct <= PRE_FIX_ELITE_90_PLUS_PCT * 0.8,
-    `elite density must be materially below the pre-fix ${PRE_FIX_ELITE_90_PLUS_PCT}%: ` +
-      JSON.stringify(report.progression.distribution)
+  assert.notEqual(report.progression.distribution.eliteStatus, "out-of-range", JSON.stringify(report.progression.distribution));
+  assert.equal(
+    report.progression.end.population.practiceSquad.elite90Plus,
+    0,
+    "the practice squad negative control: if this ever moves off zero, the activeRosterOnly-vs-rostered gap this test documents has changed and the comment above needs re-measuring"
   );
   assert.equal(report.numericIntegrity.status, "pass", JSON.stringify(report.numericIntegrity));
   assert.equal(report.numericIntegrity.source.truncated, false);

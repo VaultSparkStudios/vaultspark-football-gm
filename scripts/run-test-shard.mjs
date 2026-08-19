@@ -28,6 +28,7 @@ export const SHARDS = {
     "test/season-value-authority.test.js",
     "test/session90-development-environment.test.js",
     "test/session91-potential-reversion.test.js",
+    "test/session92-nfl-elite-density-baseline.test.js",
     "test/situational-playcalling.test.js",
     "test/snapshot-migration.test.js",
     "test/standings-tiebreaker.test.js",

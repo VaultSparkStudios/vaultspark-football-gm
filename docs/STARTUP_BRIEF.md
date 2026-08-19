@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-19 (Session 91 closeout) -->
+<!-- generated-at: 2026-08-19 (Session 92 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
-<!-- session-authority: committed=S91 · SIL=S91 · status=S91 · handoff=S91; divergent=false -->
+<!-- session-authority: committed=S92 · SIL=S92 · status=S92 · handoff=S92; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 91 closeout · 2026-08-19.
+> **Fast-boot brief** — generated at Session 92 closeout · 2026-08-19.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 92 · 2026-08-19 · BUILDER MODE                          ║
+║  Session 93 · 2026-08-19 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S91) - WHAT SHIPPED ═══════════════════════════╗
-║  S91 — the league stops losing its shape: potential becomes an   ║
+╔══ LAST SESSION (S92) - WHAT SHIPPED ═══════════════════════════╗
+║  S92 — a sourced elite-density baseline, and the population bug  ║
 ║  Tests  -                                                        ║
 ║  Deploy -                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -41,9 +41,9 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    988/1000   ███████████████████████░   99%                     ║
-║    SIL v3.0  ·  Avg3: 981.3  ·  Velocity 0→                      ║
-║    Active 20683d · closeout 1d · source: newest SIL/status/hand  ║
+║    991/1000   ███████████████████████░   99%                     ║
+║    SIL v3.0  ·  Avg3: 988  ·  Velocity 0→                        ║
+║    Active 20683d · closeout 0d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -57,24 +57,24 @@
 ║    Security         100    ██████████  ········ →                ║
 ║    Ecosystem        100    ██████████  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation        97    ██████████  ········ →                ║
+║    Automation        98    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 91 ════════════════════════════╗
-║  Shipped:  Session 91 made the league hold its shape, where S90  ║
-║  Tests:    1181/1181 passing  ·  Deploy: N/A                     ║
+╔══ WHERE WE LEFT OFF  ·  Session 92 ════════════════════════════╗
+║  Shipped:  Session 92 shipped the single item the S91 handoff b  ║
+║  Tests:    1189/1189 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    5% used                          ║
-║     48,422 / 1,000,000 tok  ·  claude-code/opus-4-8-1m  ·  heur  ║
-║     ~24,211 tok/turn  ·  cache 50%  ·  35 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     2,687 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,344 tok/turn  ·  cache 50%  ·  134 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         1181/1181 passing (2026-08-19)                 ║
+║  ✓  Tests         1189/1189 passing (2026-08-19)                 ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -112,8 +112,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-18_SESSION91.md       ║
-║  Closed: 5 · Open: 0                                             ║
+║  ✓ queue exhausted · source: AUDIT_2026-08-19_SESSION92.md       ║
+║  Closed: 1 · Open: 0                                             ║
 ║  Latest audit has no open ranked items; run /audit for a new li  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -121,5 +121,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 91 closeout · 2026-08-19*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 92 closeout · 2026-08-19*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

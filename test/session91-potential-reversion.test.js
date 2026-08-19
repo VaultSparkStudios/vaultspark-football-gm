@@ -149,14 +149,40 @@ test("splitActivePopulation partitions active players with no double counting", 
  *    real pre-fix measurement rather than an invented one.
  * ------------------------------------------------------------------ */
 
-test("NEGATIVE CONTROL — the distributional gate rejects the measured pre-fix league", () => {
-  // These are the S91 probe's actual readings for seed 20260306 across 12
-  // seasons on live pre-fix code. A gate that calls this league calibrated is
-  // not a gate. Proving it goes red on a known real defect is the only reason
-  // to believe it when it goes green.
+test("NEGATIVE CONTROL — the distributional gate rejects a league this badly out of shape", () => {
+  // S91 pinned this fixture to its own probe's real pre-fix readings against
+  // the ceiling regime of the day (1.6%/2.4%, measured on `population.rostered`).
+  // S92 re-sourced the ceiling against `population.activeRosterOnly` instead —
+  // rostered blends in the practice squad, which S92 measured (both live
+  // seeds, see `session92-nfl-elite-density-baseline.test.js`) holds zero 90+
+  // players, so a rostered-basis reading is now structurally the wrong
+  // population to compare against the new ceiling. The exact pre-fix
+  // activeRosterOnly density cannot be honestly re-measured: the pre-fix
+  // reversion term no longer exists to re-run without reverting S91, and
+  // reconstructing it by ratio from disclosed rostered figures produced a
+  // value within noise of the new watch line — a false precision this
+  // project's own standing rule (no fabricated data to pass a gate) does not
+  // let a test manufacture.
+  //
+  // So this control uses an explicitly synthetic, unambiguously-bad reading
+  // instead of a manufactured-precise one — its job is to prove the
+  // classification MECHANISM can fail, not to re-litigate the exact pre-fix
+  // number. The REAL post-fix league is verified separately, live, in
+  // "a simulated decade: the sourced baseline resolves the S91-disclosed
+  // watch without tuning the engine" (session92-nfl-elite-density-baseline).
   const preFix = buildDistributionReceipt({
-    start: { stdDevOverall: 4.498, elite90PlusPct: 0.3, population: { rostered: { count: 1568 } } },
-    end: { stdDevOverall: 5.987, elite90PlusPct: 4.0, population: { rostered: { count: 2182 } } },
+    start: {
+      stdDevOverall: 4.498,
+      population: { rostered: { count: 1568 }, activeRosterOnly: { count: 1568, elite90PlusPct: 0.3 } }
+    },
+    end: {
+      stdDevOverall: 5.987,
+      // Synthetic: roughly double the real post-fix activeRosterOnly reading
+      // (3.4%, measured live on two seeds) and clear of the sourced 5.19%
+      // watch line by a wide margin, so small estimation error cannot flip
+      // the verdict either direction.
+      population: { rostered: { count: 2182 }, activeRosterOnly: { count: 1685, elite90PlusPct: 8.0 } }
+    },
     observedSeasons: 12
   });
   assert.equal(preFix.status, "out-of-range", JSON.stringify(preFix));

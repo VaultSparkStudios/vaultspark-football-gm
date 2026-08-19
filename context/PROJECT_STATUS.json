@@ -4,11 +4,10 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Session 91 made the league hold its shape, where S90 made it hold its level. Opened on the one thing S90 refused to rank — an elite-tail figure disclosed as confounded by free-agent-pool growth — and tested the confound first, as the handoff demanded. It inverted: holding the denominator structurally fixed at the ~2,180 roster slots S89 pinned, 90+ players go 5 -> 88 across 12 seasons (0.32% -> 4.03%), only 1 of 89 elite players is unrostered, and the pool was diluting the figure rather than inflating it. That exposed the larger defect: the progression-parity gate filtered on status != retired, blending the rostered league with an unbounded pool whose size is a free parameter. Rostered mean overall rises +0.089/season while the blended mean falls -0.072/season — and the blended number is exactly the -0.073 S90 certified as steady state. Underneath sat the mechanism: developmentDelta used potential only as a constant drift coefficient, so development was a random walk players took past their own potential, with selection truncating only its bottom. New src/domain/potentialReversion.js adds the missing reversion, zero-centred by construction and measured over exactly the population it is applied to. Measured after on two seeds: 90+ density 4.03% -> 2.07%, players above their own potential 37.4% -> 21.2%, veterans 26.3% -> 5.7%, and the elite count plateaus from season 8 where pre-fix it was still climbing at season 12. A distributional gate now reads dispersion drift and elite density together, because they demonstrably fail apart. A fifth defect arrived as a red: the offseason's only compliance pass ran before the draft added a full rookie class, so camp-cuts performed no cuts and the league came to rest in a state the authority had never examined; legality is now the offseason's final act. Elite density measures 2.07% over 12 seasons pre-camp-cuts-fix and 2.6% over the 10-season decade regression after it, against a 1.6%/2.4% ceiling declared judgement-not-measured, so the gate reads out-of-range; two routes to green (raising the reversion rate, moving the ceiling) were both refused and the residual is disclosed rather than resolved. Public launch remains HOLD and launchReady stays false.",
-  "nextMilestone": "Build a real NFL elite-density baseline into src/data and re-source both ends of the S91 distributional gate from it. The 1.6% ceiling is declared judgement-not-measured and the post-fix league settles at 2.07%, so the receipt honestly reports watch. Do NOT close that by tuning POTENTIAL_REVERSION_PROFILE.rate, and do not assume the ceiling is the wrong end — a fresh league opens at 0.32% (five 90+ players across 32 clubs), so if the generator is wrong then both ends of the measurement are.",
+  "currentFocus": "Session 92 shipped the single item the S91 handoff booked: source a real NFL elite-density baseline into src/data and re-source both ends of the S91 distributional gate from it. Sourcing the ceiling from real, structurally stable NFL honor formats (AP First-Team All-Pro, 26 seats; Pro Bowl, 88 seats; both divided by the real 53x32=1,696 active-roster population those honors are drawn from) was necessary but not sufficient: checking the population the S91 gate measured against that anchor found it blended the active roster with the practice squad (S89's ROSTER_STRUCTURE), which measured live on two seeds holds zero 90+ players. The same 57-58 elite players read 2.6-2.7% on the blended population and 3.4% on the corrected activeRosterOnly population. Against the sourced 1.53%/5.19% band the verdict moves from out-of-range to watch, reached without tuning POTENTIAL_REVERSION_PROFILE.rate or moving the ceiling on judgement -- the two routes S91's handoff had already refused. One near-miss was caught before shipping: a hand-reconstructed pre-fix negative-control number landed within noise of the new watch line and was replaced with an explicit synthetic value rather than tuned across the boundary. Nine new tests plus corrected assertions in two existing suites; canonical six-shard receipt 1,189/1,189 (up from 1,181/1,181, +8 net after registering the new file in the shard manifest). Public launch remains HOLD and launchReady stays false.",
+  "nextMilestone": "No single blocking item is owed. The genius hit list is exhausted again; run a fresh /audit against live code next session. Two low-urgency follow-ups worth checking early: whether the new activeRosterOnly/practiceSquad population split (src/stats/progressionParity.js) is needed anywhere else population.rostered is currently used to represent the competing league; and whether a genuinely citable measured NFL ratings distribution ever surfaces to replace the honors-slot-count analogy in src/data/nflEliteDensityBaseline.js with a stronger authority.",
   "blockers": [
-    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified.",
-    "Pre-existing red outside the canonical receipt — test/realism-career-regression.test.js fails in the excluded long shard on 0.228 annual overall drift vs a 0.15 ceiling; verified to reproduce on pristine HEAD 8ddc310, queued as S90 calibration."
+    "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
   "lastUpdated": "2026-08-19",
   "lifecycle": "deployed",
@@ -22,13 +21,13 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-08-18",
+  "truthAuditLastRun": "2026-08-19",
   "ignisScore": 42836,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": "green",
-  "testsPassing": 1181,
-  "testsTotal": 1181,
+  "testsPassing": 1189,
+  "testsTotal": 1189,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -67,23 +66,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 988,
+  "silScore": 991,
   "silCategoriesV3": {
     "devHealth": 99,
     "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 99,
-    "processQuality": 94,
+    "processQuality": 96,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
-    "automationCoverage": 97
+    "automationCoverage": 98
   },
-  "currentSession": 91,
-  "lastAgent": "claude-opus-5",
+  "currentSession": 92,
+  "lastAgent": "claude-sonnet-5",
   "sessionMode": "builder",
-  "lastVerification": "S91 canonical Node receipt 1,181/1,181 across all six shards, direct exit 0 (not a wrapper status). Two reds surfaced during the session and both were root-fixed: camp-cuts performed no cuts so the league came to rest over the cap (IND -3.3M at 2028, seed 20260817, 68 players and never trapped), and the numeric-integrity scan exhausted its node budget on a decade. The progression receipt's distributional verdict is honestly out-of-range on an elite-density ceiling declared judgement-not-measured; two routes to green were available and both refused. Public launch remains no-go.",
+  "lastVerification": "S92 canonical Node receipt 1,189/1,189 across all six shards, direct exit 0 (not a wrapper status), up from 1,181/1,181 (+8 net after registering the new session92 test file in the shard manifest). The S91 distributional gate's elite-density verdict moves from out-of-range to watch, sourced from real NFL All-Pro/Pro-Bowl honor-slot counts and a corrected active-roster-only population (practice squad measured at zero elite players, both seeds), without tuning the reversion rate or moving the ceiling on judgement. Public launch remains no-go.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -109,7 +108,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 778,
+  "silHealth": 781,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -131,13 +130,13 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-08-09",
-  "lastVerificationAt": "2026-08-18",
+  "lastVerificationAt": "2026-08-19",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.015,
   "entropyLastComputed": "2026-08-14",
-  "lastSessionSummary": "S91 — the league stops losing its shape: potential becomes an actual ceiling instead of a drift coefficient, the parity gate stops measuring a blended population, a distributional gate can finally see a shape defect, and camp cuts actually cut.",
+  "lastSessionSummary": "S92 — a sourced elite-density baseline, and the population bug it uncovered: the S91 distributional gate now reads its ceiling from real NFL honor-slot counts and measures it against the active-roster-only population those honors are actually drawn from, resolving the S91-disclosed watch without tuning the engine or moving the ceiling on judgement.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -158,8 +157,8 @@
       "lastChecked": "2026-08-19"
     }
   ],
-  "lastSession": 91,
-  "silLastSession": 91,
+  "lastSession": 92,
+  "silLastSession": 92,
   "bootAmortization": {
     "ratio": 1.29,
     "verdict": "wasted",
@@ -576,21 +575,21 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 91,
-    "silScore": 988,
+    "session": 92,
+    "silScore": 991,
     "categories": {
       "devHealth": 99,
       "creativeAlignment": 100,
       "momentum": 100,
       "engagement": 99,
-      "processQuality": 94,
+      "processQuality": 96,
       "crossRepoCoherence": 99,
       "securityPosture": 100,
       "ecosystemIntegration": 100,
       "capitalEfficiency": 100,
-      "automationCoverage": 97
+      "automationCoverage": 98
     },
-    "date": "2026-08-18"
+    "date": "2026-08-19"
   },
   "testShardReceipt": {
     "canonicalCommand": "npm test",
@@ -603,14 +602,14 @@
       "studio"
     ],
     "counts": {
-      "core": 149,
+      "core": 157,
       "runtime": 740,
       "sim-contract": 79,
       "sim-realism": 1,
       "long": 5,
       "studio": 207
     },
-    "total": 1181,
-    "note": "S91 canonical receipt, direct exit 0: 1,181/1,181 across all six shards (core 149, runtime 740, sim-contract 79, sim-realism 1, long 5, studio 207), up from 1,167 (+14 tests). Reaching it took three full receipt cycles and two honest reds, both root-fixed rather than accommodated: the S89 cap-legality regression caught that the offseason's only compliance pass ran before the draft added a full rookie class, and the numeric-integrity scan reported it had exhausted its 4M-node budget on a simulated decade. Neither was force-greened."
+    "total": 1189,
+    "note": "S92 canonical receipt, direct exit 0: 1,189/1,189 across all six shards (core 157, runtime 740, sim-contract 79, sim-realism 1, long 5, studio 207), up from 1,181 (+8 tests, all in core: new test/session92-nfl-elite-density-baseline.test.js). First full run caught a real gap — the new test file was not yet registered in scripts/run-test-shard.mjs's shard manifest, so shard-coverage.test.js correctly failed with 'test files not assigned to any shard'; fixed and the receipt re-run clean."
   }
 }

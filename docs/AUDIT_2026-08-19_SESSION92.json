@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-19",
+  "session": 92,
+  "agent": "claude-sonnet-5",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 9.2,
+    "source": "Fresh Session 92 audit opened on the single item the S91 handoff booked: build a real NFL elite-density baseline into src/data and re-source both ends of the S91 distributional gate from it. The handoff explicitly forbade closing the gap by tuning POTENTIAL_REVERSION_PROFILE.rate or by moving the ceiling on judgement, and warned that if the generator (or the measurement) were wrong, both ends of the S91 disclosure could be wrong. Investigating that second possibility, rather than only sourcing a ceiling, is what this session found.",
+    "qualityBar": "L2+. Every claim is a measured quantity from a live seeded engine run (two independent seeds, 10-season decade), and the resolution was reached without tuning the engine or moving the ceiling on judgement — both routes the S91 handoff had already refused. The external anchor (NFL All-Pro/Pro-Bowl honor-slot counts) is sourced from stable, structural facts about how those honors are built, documented with explicit honest limits rather than false precision."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay and app-release-gate",
+    "staging": "Cloudflare Pages staging must prove the exact immutable candidate before direct-to-main production promotion; public sanitization mandatory",
+    "source": "arc profile, S91 handoff/closeout brief and task board, live source tree, two seeded 10-season engine probes"
+  },
+  "method": {
+    "probes": [
+      {
+        "id": "probe-1-population-hypothesis",
+        "description": "Before sourcing an external anchor, check whether the S91 gate's own population choice matches what a real-world honor's population would be. `summarizeLeagueProgression`'s `rostered` population is `teamIds.has(player.teamId)` — active roster (53/club, ROSTER_STRUCTURE.activeLimit) blended with the practice squad (16/club, ROSTER_STRUCTURE.practiceLimit, S89). Real NFL All-Pro/Pro Bowl honors are drawn only from the active roster; practice-squad players are structurally ineligible.",
+        "runtimeNote": "CONFIRMED BY LIVE MEASUREMENT, TWO SEEDS. A 10-season decade probe (seed 20260306) reports population.practiceSquad.elite90Plus = 0 out of 496 practice-squad players; seed 20260307 reproduces it. The SAME 57-58 elite players exist in both readings — only the denominator changes: 2.6-2.7% on the blended `rostered` population (2177-2181 players) vs 3.4% on `activeRosterOnly` (1681-1683 players). This is the identical denominator-mismatch shape as the S91 free-agent-pool finding, one level deeper inside the fix S91 shipped for it."
+      },
+      {
+        "id": "probe-2-nfl-honors-anchor",
+        "description": "Source an external elite-density authority from real, structurally stable NFL honor formats rather than the engine's own behaviour. AP First-Team All-Pro (26 seats, the tightest honor) and the Pro Bowl (88 seats, the broader honor), both divided by the real active-roster population they are drawn from (53 x 32 = 1,696) — which is also exactly this project's own ROSTER_STRUCTURE.activeLimit x team count, so the anchor and the measured population line up by construction.",
+        "runtimeNote": "Not a live-engine probe — a derivation from declared, documented external structural facts, honestly labelled `sourced-nfl-honors-analogy` (not `measured`, since it maps a real season-performance honor to a declared talent rating, and not `judgement-not-measured`, since the honor-slot counts are a real external authority). Ships in `src/data/nflEliteDensityBaseline.js` with its full derivation and explicit honest limits."
+      },
+      {
+        "id": "probe-3-resolution-verification",
+        "description": "Apply both fixes together (population correction + sourced ceiling) and re-measure the exact scenario S91 disclosed as `watch`/`out-of-range`.",
+        "runtimeNote": "Seed 20260306, 10-season decade: activeRosterOnly elite density 3.4% against the sourced 1.53%/5.19% band -> `eliteStatus: watch` (was `out-of-range` against S91's self-authored 1.6%/2.4% ceiling on the diluted population). Seed 20260307 reproduces: 3.4%, `watch`. Neither the reversion rate nor the ceiling was tuned — the population correction and the external anchor did the whole thing, exactly the two things the S91 handoff left open and refused to resolve by tuning."
+      }
+    ]
+  },
+  "gameLoopReview": {
+    "loopTightness": 7,
+    "progression": 8,
+    "sessionEngagement": 7,
+    "retention": 7,
+    "soulFidelity": 8,
+    "overall": 7.4,
+    "evidence": "No player-visible mechanic changed this session — this was a calibration-authority fix, not a content or loop change. Soul fidelity is the axis this session actually serves: the game's central promise (an elite player is genuinely rare, and the player can trust the numbers that say so) now rests on an external, sourced anchor instead of a number the project set by looking at its own behaviour. That is exactly the failure mode (LEAGUE_AVERAGE_POTENTIAL, the S90 development centres, the S91 elite-density ceiling) this project has been rescuing constants from all summer. Nothing about moment-to-moment engagement or retention moved; the long-horizon trustworthiness of the franchise's talent curve did."
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "Observability / calibration-gate integrity",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 9.2,
+      "slug": "nfl-elite-density-baseline-and-population-fix",
+      "title": "The S91 distributional gate's elite-density ceiling had no external authority, and the population it measured against blended in a population structurally ineligible for the real-world honor it was meant to approximate",
+      "status": "shipped",
+      "premise": "Measured, not inferred. `LEAGUE_DISTRIBUTION_TARGET.elite90PlusPctCeiling` shipped in S91 as `elite90PlusPctCeiling: 1.6` / `elite90PlusPctWatchCeiling: 2.4` with `elite90PlusPctProvenance: \"judgement-not-measured\"` — set from the engine's own pre-fix behaviour rather than any external authority, exactly the failure mode LEAGUE_AVERAGE_POTENTIAL (S71) and the S90 development centres were rescued from. Separately, the gate measured elite density on `population.rostered`, which blends the active roster (53/club) with the practice squad (16/club, S89's ROSTER_STRUCTURE). Measured live on two seeds, the practice squad holds zero 90+ players (0/496), so blending it in dilutes the ratio against any population a real honor is actually drawn from.",
+      "fix": "New `src/data/nflEliteDensityBaseline.js` sources the ceiling from real NFL honors: AP First-Team All-Pro (26 seats, the tightest honor) as the ceiling and the Pro Bowl (88 seats, the broader honor) as the watch line, both divided by the real active-roster population (53 x 32 = 1,696) those honors are drawn from — matching this project's own `ROSTER_STRUCTURE.activeLimit` by construction. `src/stats/progressionParity.js` adds `population.activeRosterOnly` / `population.practiceSquad` to `splitActivePopulation`/`summarizeLeagueProgression`, and `buildDistributionReceipt` now reads elite density from `activeRosterOnly` first (falling back to the pre-S92 fields so older fixtures keep working). `LEAGUE_DISTRIBUTION_TARGET` reads its ceiling, watch line, and provenance directly from the sourced baseline instead of private literals.",
+      "verification": "test/session92-nfl-elite-density-baseline.test.js (9 tests: baseline derivation, gate wiring, population partition with no double counting, a rosterSlot-default regression test, a negative control proving a practice-squad-parked elite pool cannot move activeRosterOnly density, the buildDistributionReceipt preference/fallback chain, and a live two-decade-season resolution test) plus updated assertions in test/session91-potential-reversion.test.js and test/realism-career-regression.test.js. Live two-seed measurement: activeRosterOnly elite density 3.4% both seeds, practiceSquad elite count 0 both seeds, eliteStatus `watch` (not `out-of-range`) both seeds.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Document that the ceiling has no external source and the population blends in the practice squad." },
+        "L2": { "effortHours": 4, "recipe": "Source the ceiling from real NFL honor-slot structure and correct the gate's population to the honors' real population, re-measuring on two seeds." },
+        "L3": { "effortHours": 10, "recipe": "Wire a live external ratings-distribution feed (if one is ever found citable) to replace the honors analogy with a direct measured distribution." }
+      }
+    }
+  ],
+  "phantomsRejected": [],
+  "innovationPack": []
+}

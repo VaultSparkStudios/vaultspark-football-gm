@@ -1,3 +1,5 @@
+import { NFL_ELITE_DENSITY_BASELINE } from "../data/nflEliteDensityBaseline.js";
+
 const round = (value, digits = 2) => Number(Number(value || 0).toFixed(digits));
 
 /**
@@ -52,38 +54,44 @@ export const LEAGUE_PROGRESSION_PARITY_TARGET = Object.freeze({
  * statistic on its own would call this league calibrated.
  */
 export const LEAGUE_DISTRIBUTION_TARGET = Object.freeze({
-  version: "2026-s91-distribution",
-  metric: "rostered-player overall dispersion and elite density",
+  version: "2026-s92-nfl-sourced-distribution",
+  metric: "active-roster overall dispersion and elite density",
   /** Annual growth in the standard deviation of rostered overall. */
   stdDevDriftOnTargetMaxAbs: 0.08,
   stdDevDriftWatchMaxAbs: 0.15,
   /**
-   * Share of rostered players at 90+ overall.
+   * Share of players at 90+ overall, measured on the **active roster only**
+   * (`population.activeRosterOnly`) — not `population.rostered`, which blends
+   * the active roster with the practice squad.
    *
-   * **Provenance: judgement, not measurement — and recorded as such on purpose.**
-   * This project has no NFL elite-density baseline anywhere in `src/data`, so
-   * unlike `LEAGUE_AVERAGE_POTENTIAL` (rescued in S71) or the S90 development
-   * centres, this ceiling cannot be measured from an authority. It is set from
-   * the observed behaviour of the engine itself: a generated league opens at
-   * 0.32% and the pre-fix simulation carried it to 4.03% over 12 seasons, so a
-   * ceiling in this band separates "holds its shape" from "runs away" without
-   * claiming a precision nobody here has earned.
+   * **Provenance: sourced from real NFL honors, not judgement.** See
+   * `src/data/nflEliteDensityBaseline.js` for the full derivation. In short:
+   * AP First-Team All-Pro (26 seats, the tightest honor the league gives) and
+   * the Pro Bowl (88 seats, the broader "very good this season" honor), both
+   * divided by the real NFL's active-roster population (53 x 32 = 1,696) that
+   * both honors are drawn from and that neither honor's population includes a
+   * practice squad. This replaces the S91 `judgement-not-measured` ceiling,
+   * which had no external authority to anchor to.
    *
-   * Two things a later session must not do with this number. Do not treat it as
-   * measured truth — that is exactly how a literal rots into a subsidy, three
-   * times now in this repo. And do not tune the engine until it goes green: the
-   * honest use of a judgement ceiling is to report `watch` and disclose the
-   * residual, which is what S91 does.
+   * S91 also measured elite density on `population.rostered` — active roster
+   * blended with the 16-per-club practice squad (`ROSTER_STRUCTURE`, S89) —
+   * which is not the population either real honor is drawn from. Practice-
+   * squad players are structurally ineligible for All-Pro or the Pro Bowl, so
+   * dividing a real-honors anchor by a population that includes them is the
+   * same denominator-mismatch shape as the free-agent-pool defect S91 fixed
+   * one level up. `buildDistributionReceipt` now reads elite density from
+   * `population.activeRosterOnly` where a caller supplies it, falling back to
+   * `population.rostered` for older callers/fixtures that do not.
    *
-   * The unresolved question underneath it is whether 0.32% at season 0 is itself
-   * right. Five 90+ players across 32 clubs is a very flat league to start from,
-   * and if the generator is wrong then both ends of this measurement are. Fixing
-   * that needs a real baseline, and a real baseline is the follow-up S91 books
-   * rather than fakes.
+   * This is still an analogy, not an identity — a real-world performance
+   * honor is not the same measurement as a declared talent rating — which is
+   * why the ceiling is the tight All-Pro anchor and the watch line is the
+   * looser Pro Bowl anchor, a band rather than a false-precision point.
    */
-  elite90PlusPctCeiling: 1.6,
-  elite90PlusPctWatchCeiling: 2.4,
-  elite90PlusPctProvenance: "judgement-not-measured",
+  elite90PlusPctCeiling: NFL_ELITE_DENSITY_BASELINE.firstTeamAllProPct,
+  elite90PlusPctWatchCeiling: NFL_ELITE_DENSITY_BASELINE.proBowlPct,
+  elite90PlusPctProvenance: NFL_ELITE_DENSITY_BASELINE.provenance,
+  eliteDensityBaseline: NFL_ELITE_DENSITY_BASELINE,
   minimumSample: 200
 });
 
@@ -196,15 +204,22 @@ export function splitActivePopulation(league) {
   const active = (league?.players || []).filter(
     (player) => player?.status !== "retired" && Number.isFinite(Number(player?.overall)) && Number.isFinite(Number(player?.age))
   );
+  const rostered = active.filter((player) => teamIds.has(player?.teamId));
+  // S92 — same convention `GameSession`/`capCompliance` use elsewhere
+  // (`(player.rosterSlot || "active") === "active"`): a player with no
+  // `rosterSlot` set (older fixtures, hand-built test players) defaults to
+  // the active roster rather than silently vanishing from either bucket.
   return {
     active,
-    rostered: active.filter((player) => teamIds.has(player?.teamId)),
-    unrostered: active.filter((player) => !teamIds.has(player?.teamId))
+    rostered,
+    unrostered: active.filter((player) => !teamIds.has(player?.teamId)),
+    activeRosterOnly: rostered.filter((player) => (player?.rosterSlot || "active") === "active"),
+    practiceSquad: rostered.filter((player) => (player?.rosterSlot || "active") === "practice")
   };
 }
 
 export function summarizeLeagueProgression(league) {
-  const { active, rostered, unrostered } = splitActivePopulation(league);
+  const { active, rostered, unrostered, activeRosterOnly, practiceSquad } = splitActivePopulation(league);
   // The gated population. If a league has no teams at all — a fixture, or a
   // caller that built players without a structure — fall back to the active set
   // rather than reporting a zeroed league as calibrated.
@@ -215,7 +230,14 @@ export function summarizeLeagueProgression(league) {
       basis: rostered.length ? "rostered" : "active-fallback",
       rostered: summarizePlayers(rostered),
       unrostered: summarizePlayers(unrostered),
-      blended: summarizePlayers(active)
+      blended: summarizePlayers(active),
+      // S92 — the population the distributional gate's elite-density reading
+      // is now measured on. See `LEAGUE_DISTRIBUTION_TARGET` for why: real
+      // NFL All-Pro/Pro Bowl honors are drawn from the active roster only,
+      // and blending in the practice squad (structurally ineligible for
+      // either honor) understates density against that anchor.
+      activeRosterOnly: summarizePlayers(activeRosterOnly),
+      practiceSquad: summarizePlayers(practiceSquad)
     },
     stdDevOverall: summary.stdDevOverall,
     playerCount: summary.count,
@@ -271,7 +293,16 @@ export function buildDistributionReceipt({ start, end, observedSeasons }) {
   const startStdDev = Number(start?.stdDevOverall ?? start?.population?.rostered?.stdDevOverall ?? 0);
   const endStdDev = Number(end?.stdDevOverall ?? end?.population?.rostered?.stdDevOverall ?? 0);
   const annualStdDevDrift = adequateSample ? round((endStdDev - startStdDev) / Math.max(1, observedSeasons), 3) : null;
-  const elite90PlusPct = Number(end?.elite90PlusPct ?? end?.population?.rostered?.elite90PlusPct ?? 0);
+  // S92 — prefer the active-roster-only reading, which is the population the
+  // sourced NFL-honors ceiling below is actually anchored to. Older callers
+  // (fixtures that hand-build a receipt from just `population.rostered`, or
+  // from a bare `elite90PlusPct`) keep working via the fallback chain.
+  const elite90PlusPct = Number(
+    end?.population?.activeRosterOnly?.elite90PlusPct ??
+      end?.elite90PlusPct ??
+      end?.population?.rostered?.elite90PlusPct ??
+      0
+  );
 
   const dispersionStatus = adequateSample
     ? classifyDrift(Math.abs(annualStdDevDrift), target.stdDevDriftOnTargetMaxAbs, target.stdDevDriftWatchMaxAbs)

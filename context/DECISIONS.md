@@ -2,6 +2,14 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-19 - S92: an external calibration anchor still needs the right population underneath it
+
+**Decision:** Sourcing a ceiling from a real external authority is necessary but not sufficient — the population the engine measures against that anchor must be the same population the anchor's real-world honor is actually drawn from. Fixing the anchor's provenance and fixing its population are the same job, not two separate ones.
+
+**Rationale:** S91 shipped `LEAGUE_DISTRIBUTION_TARGET.elite90PlusPctCeiling` as `judgement-not-measured` and booked sourcing a real NFL elite-density baseline as S92's one owed item. Building `src/data/nflEliteDensityBaseline.js` (AP First-Team All-Pro and Pro Bowl honor-slot counts against the real 53x32 active-roster population) was necessary, but comparing it against S91's `population.rostered` — which blends the active roster with the 16-per-club practice squad, S89's `ROSTER_STRUCTURE` — would still have compared unlike populations, since practice-squad players are structurally ineligible for either honor. Measured live on two seeds, the practice squad holds zero 90+ players (0/496 both seeds), so the same 57-58 elite players read 2.6-2.7% on the blended population and 3.4% on the corrected `activeRosterOnly` population. Both corrections were required together to resolve the S91-disclosed `watch` without tuning `POTENTIAL_REVERSION_PROFILE.rate` or moving the ceiling on judgement — the two routes the S91 handoff had already explicitly refused.
+
+---
+
 ## 2026-08-18 - S91: a gate must name the population it measures, and it must be the one the product is experienced in
 
 **Decision:** Every calibration gate must declare the population it measures, and that population must be the one the product is actually experienced in. A denominator nobody declared is a free parameter, and sooner or later something will grow into it and pay for a defect.

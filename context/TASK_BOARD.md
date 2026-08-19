@@ -9,9 +9,24 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Next
 
-- [ ] **Build a real NFL elite-density baseline into `src/data`, then re-source both ends of the S91 distribution gate from it.** S91's 90+ ceiling (1.6% on-target / 2.4% watch) is a judgement call and says so in the code — no elite-density authority exists anywhere in this project. The post-fix league settles at 2.07%, so the receipt honestly reports `watch`. Do **not** close that by tuning `POTENTIAL_REVERSION_PROFILE.rate`; the open question is whether the *generator* is right, since a fresh league opens at 0.32% (five 90+ players across 32 clubs), which is a very flat league. If the generator is wrong then both ends of the measurement are, and a rate tuned against a wrong ceiling would bake that in.
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+
+## Session 92 — Full arc: a sourced elite-density baseline, and the population bug it uncovered (2026-08-19)
+
+Source: `docs/AUDIT_2026-08-19_SESSION92.json`.
+
+| Item | Status |
+|------|--------|
+| nfl-elite-density-baseline-and-population-fix — the S91 distributional gate's elite-density ceiling now reads from a real NFL-honors-sourced baseline instead of judgement, and its population is corrected from a practice-squad-blended `rostered` reading to `activeRosterOnly`, matching the population the real honors are actually drawn from | ✅ Done |
+
+**Method note:** the S91 handoff booked "source a real baseline" but also warned that if the generator (or the measurement) were wrong, both ends of the disclosed `watch` could be wrong. Checking that second possibility — not just sourcing an external ceiling — found the actual defect: the gate's population blended in the practice squad, which measured live (two seeds, ten-season decade) holds zero 90+ players.
+
+**Verification:** the SAME 57-58 elite players measured 2.6-2.7% on the S91 `population.rostered` reading and 3.4% on the corrected `population.activeRosterOnly` reading, both seeds. Against the sourced ceiling (AP First-Team All-Pro, 26/1,696 = 1.53%) and watch line (Pro Bowl, 88/1,696 = 5.19%), the verdict is `watch`, not `out-of-range` — reached without tuning `POTENTIAL_REVERSION_PROFILE.rate` or moving the ceiling on judgement, the two routes S91 had already refused.
+
+**Honest limits, disclosed:** the NFL-honors anchor is an analogy (real-season-performance honor vs. declared talent rating), not an identity — documented explicitly in `src/data/nflEliteDensityBaseline.js`, which is why the baseline provides a band (tight floor, loose watch line) rather than a false-precision point. The honor-slot counts are sourced from the stable structure of the awards (seats per position), not a live external data feed — stronger than judgement, weaker than a measured historical ratings distribution, which nobody has published in a form this project can cite.
+
+**Launch posture:** unchanged. `launchReady: false` preserved pending Zoho delivery/reply-as, SHA-bound founder approval, authoritative lifecycle reconciliation and external Obelisk relying-party proof.
 
 ## Session 91 — Full arc: the league stops losing its shape (2026-08-18)
 
