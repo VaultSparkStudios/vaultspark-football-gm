@@ -326,12 +326,21 @@ if (IS_DIRECT_RUN) {
   } catch {}
   if (budgetStatus === 'fail') fail = true;
   // S154 #4 — per-tile attribution: name the offending tile, don't just say "too big".
+  // S248 [audit #10] — tile-budget hard contract: the per-tile check existed since
+  // S154 but was advisory-only, so a tile could run over budget every render with
+  // nothing gating the bloat (SIGNALS sat at 102% for sessions). Contract: >110%
+  // of a tile's budget FAILS validation; 100–110% stays a warning. The sanctioned
+  // escape hatch is enforceTileBudgets' explicit '· trimmed (tile budget)' marker
+  // — trim the tile at the renderer, never widen the contract silently.
+  const TILE_HARD_FAIL_PCT = 110;
   const tileCheck = checkTileBudgets(body);
   if (!JSON_MODE && tileCheck.overBudget.length) {
     for (const t of tileCheck.overBudget.slice(0, 4)) {
-      console.log(`  ⚠  tile over budget: ${t.title} ${t.bytes}B > ${t.budget}B (${t.pct}%)`);
+      const hard = t.pct > TILE_HARD_FAIL_PCT;
+      console.log(`  ${hard ? '⛔' : '⚠'}  tile over budget: ${t.title} ${t.bytes}B > ${t.budget}B (${t.pct}%)${hard ? ' — HARD FAIL (>110%) · trim the tile at the renderer' : ''}`);
     }
   }
+  if (tileCheck.overBudget.some((t) => t.pct > TILE_HARD_FAIL_PCT)) fail = true;
   if (!JSON_MODE && budgetStatus !== 'pass') {
     console.log(`  ${budgetStatus === 'fail' ? '⛔' : '⚠'}  brief size ${sizeBytes}B ${budgetStatus === 'fail' ? `> ${BUDGET_FAIL}B (HARD FAIL — trim tiles)` : `> ${BUDGET_WARN}B (warn — approaching budget)`}`);
     if (topBlocks.length) {
