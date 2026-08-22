@@ -1366,6 +1366,23 @@ export function closePlayerModal() {
 }
 
 /**
+ * Resolve a touch/pen swipe gesture into a nav direction.
+ * Mirrors the threshold/off-axis logic in simWatchDirector.resolveSimWatchSwipe.
+ * Returns  1 (open/right), -1 (close/left), or 0 (not a qualifying swipe).
+ *
+ * @param {{x:number,y:number}} start  pointerdown coordinates
+ * @param {{x:number,y:number}} end    pointerup coordinates
+ * @param {{threshold?:number, offAxisRatio?:number}} [opts]
+ */
+export function resolveNavSwipe(start, end, { threshold = 56, offAxisRatio = 0.7 } = {}) {
+  const dx = end.x - start.x;
+  const dy = end.y - start.y;
+  if (!Number.isFinite(dx) || !Number.isFinite(dy)) return 0;
+  if (Math.abs(dx) < threshold || Math.abs(dy) > Math.abs(dx) * offAxisRatio) return 0;
+  return dx > 0 ? 1 : -1;
+}
+
+/**
  * Mobile navigation drawer (CANON-041).
  *
  * Below the desktop breakpoint the 14-button `.side-menu` rendered as a static
@@ -1425,6 +1442,33 @@ export function bindMobileNav() {
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && document.body.classList.contains("mobile-nav-open")) closeNav();
   });
+
+  // Swipe gesture: drag right from left edge to open; drag left to close.
+  // Follows the same pointerdown/pointerup pattern as simWatchDirector's swipe transport.
+  // Only activates for touch/pen at the drawer breakpoint; ignored during mobile-loop-active.
+  const EDGE_ZONE = 32;   // px from left edge that allows an open gesture
+  let navSwipeGesture = null;
+
+  document.addEventListener("pointerdown", (event) => {
+    if (!isDrawerActive() || !["touch", "pen"].includes(event.pointerType)) return;
+    const navOpen = document.body.classList.contains("mobile-nav-open");
+    if (!navOpen && event.clientX > EDGE_ZONE) return;
+    navSwipeGesture = { pointerId: event.pointerId, x: event.clientX, y: event.clientY };
+  }, { passive: true });
+
+  document.addEventListener("pointerup", (event) => {
+    if (!navSwipeGesture || navSwipeGesture.pointerId !== event.pointerId) return;
+    const gesture = navSwipeGesture;
+    navSwipeGesture = null;
+    if (!isDrawerActive()) return;
+    const direction = resolveNavSwipe(gesture, { x: event.clientX, y: event.clientY });
+    if (direction === 1 && !document.body.classList.contains("mobile-nav-open")) openNav();
+    else if (direction === -1 && document.body.classList.contains("mobile-nav-open")) closeNav();
+  });
+
+  document.addEventListener("pointercancel", (event) => {
+    if (navSwipeGesture?.pointerId === event.pointerId) navSwipeGesture = null;
+  }, { passive: true });
 
   return closeNav;
 }
