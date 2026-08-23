@@ -45,6 +45,12 @@
       "projectImpact": 7,
       "ecosystemImpact": 9,
       "evidence": "The browser promise-observability guard failed the studio shard 206/207 because the two dynamic imports added to tabSettings.js used bare .catch(() => ...), and this project forbids silent browser promise sinks: a lazily imported panel that fails to load must reach the client diagnostics ledger and stay retryable rather than disappear behind a reassuring sentence. Routing both through observeBackgroundTask then pushed the settings island back over its headroom floor, which forced the better shape — both panels now take a uniform (host, state) signature so the island carries ONE mountOwnerPanel helper instead of two near-identical blocks. The gate did not merely prevent a defect; it produced less duplicated code than the version that would have shipped without it. That headroom floor had already gone red once before, at 11.6%, when the facilities panel was first added inline. Raising maxBytes would have been a one-line green that permanently and invisibly spent the headroom the gate exists to protect; instead the panel's markup and the Owner spotlight beside it moved into public/lib/facilitiesPanel.js behind a dynamic import, so the budget went green because less code boots. Separately the innovation-pack scanner's unfinished-behavior pattern matched the words 'a constant stub' in a doc comment describing the ratchet defect this session had just fixed, which would have failed the studio shard on prose. The scanner already ships the correct instrument — a file-level innovation-pack:ignore scoped to that one class — and using it left both the gate and the documentation intact. A live negative control arrived unasked: the first version of the opt-out note spelled out the explicit inline marker tokens and the scanner fired again on that, proving the pardon really is scoped."
+    },
+    {
+      "title": "Exact technical deployment",
+      "projectImpact": 9,
+      "ecosystemImpact": 8,
+      "evidence": "Candidate fe39e5fc3a30d9841eade107264d087d792596f5 deployed to Cloudflare stable staging and verified 14/14 at artifact fingerprint 38ce0fa9 (201 files), with rollback to the prior deployment available. Promoted to production via workflow_dispatch run 32627736043 — gate (studio shard), build and deploy all success. Live origin confirmed serving the exact revision on attempt 1 with style asset styles.d14503a8a4.css. Production provenance verified 10/10 and staging provenance verified 10/10 against the same expected revision; the production artifact fingerprint is byte-identical to the digest verified on staging, which is the whole point of the CANON-007 gate. Hosted performance VERIFIED at fe39e5fc3a30. Visual receipt bound to 84 captures taken from the workflow's OWN responsive-evidence artifact for this candidate (233 source captures, status passed) rather than stale local evidence — the exact trap S91 fell into and recorded. Unified release authority reconciled: status verified, 7/7 checks, sourceRevision == publicationRevision == fe39e5fc, evidenceVerified true, launchReady false preserved with only the three standing external blockers. Staging authority reconciled to the same revision from the receipt captured with --output on the FIRST deploy. Doctor blockingFailing 0, score 92, warnings 2 -> 1 (the git-head-covered-by-publication warning cleared because production now serves HEAD; the remaining one is the sibling-owned registry SPARKED / local FORGE drift)."
     }
   ],
   "followUps": [
@@ -98,9 +104,9 @@
     }
   ],
   "diffStat": {
-    "files": 0,
-    "insertions": 0,
-    "deletions": 0,
-    "suite": "PENDING — bound at closeout from the canonical six-shard receipt."
+    "files": 33,
+    "insertions": 2452,
+    "deletions": 132,
+    "suite": "1,220/1,220 across all six shards (core 188, runtime 740, sim-contract 79, sim-realism 1, long 5, studio 207), direct exit 0 — up from 1,189 (+31 tests), read from the source-bound receipt rather than a wrapper status. Plus 4 new Playwright browser specs. Doctor blockingFailing 0, score 92, warnings 2 -> 1."
   }
 }

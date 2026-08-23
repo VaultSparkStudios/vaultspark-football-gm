@@ -12,6 +12,8 @@ Three things worth checking early, in rough order of value:
 
 ## Where We Left Off (Session 93)
 
+**Deploy: deployed to production.** Candidate `fe39e5fc3a30d9841eade107264d087d792596f5` verified 14/14 on stable staging at artifact `38ce0fa9`, promoted via `workflow_dispatch` run 32627736043 (gate → build → deploy all success), live origin confirmed serving the exact revision, staging and production provenance 10/10 each against the same expected revision with byte-identical artifact fingerprints, hosted performance VERIFIED, visual receipt bound to 84 captures from the workflow's own responsive-evidence artifact for this candidate. Unified release authority reconciled 7/7 (`sourceRevision == publicationRevision`), staging authority reconciled from the receipt captured on the first deploy, doctor `blockingFailing 0` score 92 with warnings 2 → 1. `launchReady` stays **false** — untouched.
+
 The audit came from a sweep S90's self-improvement loop had explicitly booked and no session had performed: *"a modifier documented as a differentiator must have a league-wide mean of zero and a test that says so. Two occurrences of this class (S71, S90) is a pattern; sweep for a third before it is found by a symptom."*
 
 ### The third occurrence was not a constant
