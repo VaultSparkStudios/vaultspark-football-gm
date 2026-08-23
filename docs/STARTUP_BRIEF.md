@@ -4,7 +4,7 @@
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
-<!-- session-authority: committed=S93 · SIL=S92 · status=S93 · handoff=S93; divergent=true -->
+<!-- session-authority: committed=S93 · SIL=S93 · status=S93 · handoff=S93; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
@@ -14,12 +14,6 @@
 ---
 
 ```
-╔══ SESSION AUTHORITY ═══════════════════════════════════════════╗
-║  ✓ Monotonic next session: S94; no source moved backward.        ║
-║  committed=S93 · SIL=S92 · status=S93 · handoff=S93              ║
-║  SIL may lag a verified receipt; closeout will reconcile score.  ║
-╚════════════════════════════════════════════════════════════════╝
-
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
@@ -27,10 +21,10 @@
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ STALE LAST SESSION SUMMARY ══════════════════════════════════╗
-║  Expected S93; PROJECT_STATUS summary says S92.                  ║
-║  Session 92 shipped the single item the S91 handoff booked: sou  ║
-║  Repair: update PROJECT_STATUS.lastSessionSummary at closeout.   ║
+╔══ LAST SESSION (S93) - WHAT SHIPPED ═══════════════════════════╗
+║  S93 — the owner's console stops being a cheat panel: the Facil  ║
+║  Tests  -                                                        ║
+║  Deploy -                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -40,47 +34,47 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 6d · refresh required              ║
+║  Profile · game · cache stale 7d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    991/1000   ███████████████████████░   99%                     ║
-║    SIL v3.0  ·  Avg3: 988  ·  Velocity 0→                        ║
-║    Active 20687d · closeout 4d · source: newest SIL/status/hand  ║
+║    986/1000   ███████████████████████░   99%                     ║
+║    SIL v3.0  ·  Avg3: 988.3  ·  Velocity 0→                      ║
+║    Active 20687d · closeout 1d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health       100    ██████████  ████████ →                ║
-║    Alignment        100    ██████████  ▇▇▇▇▇▇██ →                ║
-║    Momentum         100    ██████████  ████████ →                ║
-║    Engagement       100    ██████████  ████████ →                ║
-║    Process Qual     100    ██████████  ████████ →                ║
+║    Dev Health         0    ░░░░░░░░░░  —        →                ║
+║    Alignment          0    ░░░░░░░░░░  —        →                ║
+║    Momentum           0    ░░░░░░░░░░  —        →                ║
+║    Engagement         0    ░░░░░░░░░░  —        →                ║
+║    Process Qual       0    ░░░░░░░░░░  —        →                ║
 ║    Coherence         99    ██████████  ········ →                ║
 ║    Security         100    ██████████  ········ →                ║
 ║    Ecosystem        100    ██████████  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation        98    ██████████  ········ →                ║
+║    Automation        97    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 93 ════════════════════════════╗
-║  Shipped:  Session 92 shipped the single item the S91 handoff b  ║
-║  Tests:    1189/1189 passing  ·  Deploy: N/A                     ║
+║  Shipped:  Session 93 ran a fresh /arc audit against live code   ║
+║  Tests:    1220/1220 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,833 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,417 tok/turn  ·  cache 50%  ·  127 turns to compact       ║
+║     2,870 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,435 tok/turn  ·  cache 50%  ·  126 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1189/1189 passing (2026-08-19) · STALE — run   ║
+║  ⚠  Tests         1220/1220 passing (2026-08-23) · STALE — run   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -118,9 +112,20 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-08-22_SESSION93.md       ║
-║  Closed: 3 · Open: 0                                             ║
-║  Latest audit has no open ranked items; run /audit for a new li  ║
+║  ✓ cache source: AUDIT_2026-08-23_SESSION94.md                   ║
+║                                                                  ║
+║  #7 · HIGH · content-hashed-assets-served-revalidating-and-the-  ║
+║  content-hashed-assets-served-revalidating-and-the-boot-graph-i  ║
+║                                                                  ║
+║  #9 · MEDIUM · the-front-door-is-a-configuration-form            ║
+║  the-front-door-is-a-configuration-form — Full funnel inversion  ║
+║                                                                  ║
+║  #10 · MEDIUM · visual-qa-is-105-megabytes-of-tracked-pngs       ║
+║  visual-qa-is-105-megabytes-of-tracked-pngs — Enforced retentio  ║
+║                                                                  ║
+║  #12 · MEDIUM · fourteen-tabs-five-of-them-about-the-roster      ║
+║  fourteen-tabs-five-of-them-about-the-roster — Full five-surfac  ║
+║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```

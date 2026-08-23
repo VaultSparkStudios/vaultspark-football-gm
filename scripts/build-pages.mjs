@@ -13,6 +13,9 @@ import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker
 import { fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
 import { staticGraphFor } from "./check-browser-boot-budget.mjs";
 import { replaceSimulationAnchor, SIMULATION_ANCHOR_START } from "./lib/simulation-methodology.mjs";
+// CANON-016: never the raw module — safe-spawn forces windowsHide so a build
+// does not flash a console window per git call on Windows.
+import { execFileSync } from "./lib/safe-spawn.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -351,7 +354,6 @@ async function stampSitemapLastmod() {
   } catch {
     return { stamped: 0 };
   }
-  const { execFileSync } = await import("node:child_process");
   let stamped = 0;
   const next = xml.replace(/<loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod>/g, (whole, loc, current) => {
     const source = sitemapSourceFor(loc);
