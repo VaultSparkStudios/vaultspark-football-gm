@@ -10,6 +10,7 @@ import { assertPublicTruth } from "./check-public-truth.mjs";
 import { emitEdgeSecurityPolicy } from "./lib/edge-security-policy.mjs";
 import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker.mjs";
 import { fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
+import { staticGraphFor } from "./check-browser-boot-budget.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -40,6 +41,45 @@ const browserEntryPoints = [path.join(srcDir, "app", "api", "localApiRuntime.js"
 // window. styles.css is still emitted for back-compat / smoke assertions.
 let hashedStyleHref = "styles.css";
 let hashedCommunityStatsSrc = "community-stats.js";
+
+// S94: module preload hints.
+//
+// Every page here loads its entry with <script type="module">, and a module's
+// static imports are invisible to the browser's preload scanner — they are only
+// discovered once the entry has been fetched, parsed, and its import list read.
+// game.html's entry pulls a 49-module graph that way, so the browser spends a
+// full round trip learning what it needs before it can begin fetching any of it.
+// `rel="modulepreload"` moves that discovery into the HTML, where the scanner
+// sees it immediately.
+//
+// The list is DERIVED from the same walk the boot-byte budget performs rather
+// than hand-maintained, because a hand-maintained preload list is a second
+// declaration of the boot graph and would drift from the first. Declared lazy
+// roots are excluded and asserted absent: preloading a deliberately-lazy island
+// would quietly pull it back onto the boot path and undo the island split
+// without tripping the byte budget, which only measures the static graph.
+const MODULE_PRELOAD_ENTRIES = Object.freeze({ "game.html": "app.js", "index.html": "setup.js" });
+const modulePreloadLinks = new Map();
+
+async function computeModulePreloads() {
+  const manifest = JSON.parse(await fs.readFile(path.join(publicDir, "boot-manifest.json"), "utf8"));
+  const lazyRoots = new Set(manifest.lazyRoots || []);
+  for (const [page, entry] of Object.entries(MODULE_PRELOAD_ENTRIES)) {
+    const graph = await staticGraphFor(entry);
+    const leaked = graph.filter((module) => lazyRoots.has(module));
+    if (leaked.length) {
+      throw new Error(
+        `modulepreload refuses to preload declared lazy roots reached from ${entry}: ${leaked.join(", ")}. ` +
+        "Either the island regressed into the boot graph or boot-manifest.lazyRoots is stale."
+      );
+    }
+    modulePreloadLinks.set(
+      page,
+      graph.map((module) => `    <link rel="modulepreload" href="./${module}" />`).join("\n")
+    );
+  }
+  return modulePreloadLinks;
+}
 const htmlPages = [
   "index.html",
   "stats.html",
@@ -235,6 +275,11 @@ function injectHtmlDefaults(html, pagePath) {
   } else {
     next = next.replace(/<meta property="og:image" content="[^"]*" \/>/, `<meta property=\"og:image\" content=\"${ogImageUrl}\" />`);
   }
+  const preloadPage = pagePath === "./" ? "index.html" : pagePath;
+  const preloads = modulePreloadLinks.get(preloadPage);
+  if (preloads && !next.includes('rel="modulepreload"')) {
+    next = next.replace("</head>", `${preloads}\n  </head>`);
+  }
   // Precache service worker (S62): registered only in built app shells, never
   // in dev public/. Mount-relative scope; the edge policy hashes this inline
   // snippet like every other.
@@ -381,6 +426,7 @@ async function main() {
   await copyBrowserModules();
   await emitHashedStylesheet();
   await emitHashedCommunityStats();
+  await computeModulePreloads();
   for (const pageName of htmlPages) {
     await writeHtml(pageName);
   }

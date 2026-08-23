@@ -46,6 +46,28 @@ async function collectStaticGraph(entries, { exclude = new Set() } = {}) {
   return visited;
 }
 
+/**
+ * S94: the ordered static import graph reachable from one entry module, as
+ * public-relative paths.
+ *
+ * This is the same walk the byte budget performs, exposed because the build
+ * needs it for a different purpose: the budget measures how many bytes boot
+ * costs, while `build-pages.mjs` needs to know which modules exist so it can
+ * emit `<link rel="modulepreload">` for them. Without those hints the browser
+ * cannot discover a single one of these files until the entry module has been
+ * fetched and parsed, which serialises the whole graph behind one round trip.
+ * Deriving both from one walk is what keeps the preload list from drifting away
+ * from what actually boots.
+ */
+export async function staticGraphFor(entryRelative) {
+  const entry = path.resolve(publicDir, entryRelative);
+  const graph = await collectStaticGraph([entry]);
+  return [...graph]
+    .map((file) => path.relative(publicDir, file).replaceAll("\\", "/"))
+    .filter((file) => file !== entryRelative)
+    .sort();
+}
+
 async function totalBytes(files) {
   return (await Promise.all([...files].map(async (file) => (await fs.stat(file)).size))).reduce((sum, size) => sum + size, 0);
 }
