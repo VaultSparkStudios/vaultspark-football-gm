@@ -89,8 +89,9 @@
         <div class="menu-group-header">History</div>
         <button id="tab-log" class="menu-btn" data-tab="logTab" data-testid="tab-log" role="tab" aria-selected="false" aria-controls="logTab" tabindex="-1">League Log</button>
         <button id="tab-history" class="menu-btn" data-tab="historyTab" data-testid="tab-history" role="tab" aria-selected="false" aria-controls="historyTab" tabindex="-1">Dynasty</button>
+        <div class="menu-group-header">Front Office</div>
+        <button id="tab-boardroom" class="menu-btn" data-tab="boardroomTab" data-testid="tab-boardroom" role="tab" aria-selected="false" aria-controls="boardroomTab" tabindex="-1">Boardroom</button>
         <div class="menu-group-header">Config</div>
-        <button id="tab-rules" class="menu-btn" data-tab="rulesTab" data-testid="tab-rules" role="tab" aria-selected="false" aria-controls="rulesTab" tabindex="-1">Rules</button>
         <button id="tab-settings" class="menu-btn" data-tab="settingsTab" data-testid="tab-settings" role="tab" aria-selected="false" aria-controls="settingsTab" tabindex="-1">Settings</button>
       </aside>
 
@@ -983,24 +984,131 @@
           </div>
         </section>
 
-        <section id="rulesTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-rules" tabindex="0">
-          <div class="panel">
-            <h2>VaultSpark Rulebook</h2>
-            <p class="small">
-              Core simulation rules, roster/contract constraints, snap-share depth chart logic, and feature behavior.
-            </p>
-            <div class="table-wrap"><table id="rulesCoreTable"></table></div>
+        
+
+        <section id="boardroomTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-boardroom" tabindex="0">
+          <!-- ── BOARDROOM (S94) ──
+               Owner Controls, the Facilities Market, the Coaching Staff sheet and
+               the Brand Builder all used to live in Settings. They are not
+               settings. They spend the owner's cash, they feed the development
+               environment, injury probability and draft scouting, and after S93
+               they are one of the most consequential decisions in the game.
+
+               Filing them under Settings is not a cosmetic mistake -- it is the
+               structural reason two god-mode surfaces survived thirty sessions.
+               S63 closed the Coaching Staff panel's three free number boxes;
+               S93 closed the byte-identical Owner Facilities panel eight lines
+               away in the same file. Both lived here, in a tab that mixed
+               trophies with live economy inputs and debug tables, and that
+               nobody design-reviews as gameplay. Giving the economy its own
+               surface is what makes it get looked at. -->
+          <div class="panel boardroom-intro">
+            <div class="brand-kicker franchise-kicker">The Front Office</div>
+            <h2>Boardroom</h2>
+            <p class="small">Capital, staff and identity. Everything here is bought with the owner's money and charged against it every year afterward.</p>
+          </div>
+          <div class="panel split settings-owner-grid">
+            <div>
+              <h2>Owner Controls</h2>
+              <div id="ownerSpotlight" class="control-spotlight owner-spotlight">
+                <div class="small">Load an owner profile to review mandate, market pressure, and budget posture.</div>
+              </div>
+              <div class="row">
+                <label>Team <select id="ownerTeamSelect"></select></label>
+                <button id="loadOwnerBtn">Load Owner</button>
+              </div>
+              <div class="row">
+                <label>Ticket Price <input id="ownerTicketPriceInput" type="number" /></label>
+                <label>Staff Budget <input id="ownerStaffBudgetInput" type="number" /></label>
+              </div>
+              <div class="row">
+                <button id="saveOwnerBtn">Save Owner</button>
+              </div>
+              <h3>Facilities Market</h3>
+              <p class="small">Facility level is bought, not typed in. Each wing costs club cash, gets more expensive the higher it goes, and can only be built a few points per league year.</p>
+              <div id="facilitiesMarket" class="control-spotlight facilities-market">
+                <div class="small">Load an owner profile to review facility investment.</div>
+              </div>
+              <div class="row">
+                <label>Facility
+                  <select id="facilityInvestSelect">
+                    <option value="training">Training</option>
+                    <option value="rehab">Rehab</option>
+                    <option value="analytics">Analytics</option>
+                  </select>
+                </label>
+                <label>Points <input id="facilityInvestPoints" type="number" min="1" max="3" value="1" /></label>
+                <button id="investFacilityBtn">Break Ground</button>
+              </div>
+              <div class="table-wrap"><table id="ownerTable"></table></div>
+            </div>
+            <div class="panel">
+            <h2>Coaching Staff</h2>
+            <div class="row">
+              <label>Team <select id="staffTeamSelect"></select></label>
+              <label>Role
+                <select id="staffRoleSelect">
+                  <option value="headCoach">Head Coach</option>
+                  <option value="offensiveCoordinator">Offensive Coordinator</option>
+                  <option value="defensiveCoordinator">Defensive Coordinator</option>
+                  <option value="scoutingDirector">Scouting Director</option>
+                  <option value="capAnalyst">Cap Analyst</option>
+                  <option value="strengthCoach">Strength Coach</option>
+                  <option value="medicalDirector">Medical Director</option>
+                </select>
+              </label>
+              <label>Name <input id="staffNameInput" type="text" placeholder="name" /></label>
+              <button id="updateStaffBtn">Rename</button>
+            </div>
+            <!-- S63 — coaching ability is hired, not typed. The numeric editor
+                 that used to live here wrote straight into the simulation for any
+                 team, at no cost; the market below replaces it. -->
+            <section id="coachingMarketPanel" class="coaching-market" aria-label="Coaching market" aria-live="polite"></section>
+            <div class="table-wrap"><table id="staffTable"></table></div>
+            <!-- ── Coaching DNA Card ─────────────────────────────────────── -->
+            <div id="coachingDnaCard" class="coaching-dna-card" hidden>
+              <div class="coaching-dna-header">
+                <span class="coaching-dna-icon">🌳</span>
+                <div>
+                  <div class="coaching-dna-title">Coaching Tree DNA</div>
+                  <div class="coaching-dna-sub" id="coachingDnaSub">Load a team to see scheme lineage.</div>
+                </div>
+              </div>
+              <div id="coachingDnaBody" class="coaching-dna-body"></div>
+            </div>
+          </div>
           </div>
           <div class="panel">
-            <h2>Buttons & Features</h2>
-            <div class="table-wrap"><table id="rulesActionsTable"></table></div>
-          </div>
-          <div class="panel">
-            <h2>How To Play</h2>
-            <div id="rulesGuideContent" class="stack small"></div>
+            <div class="narrative-panel-header">
+              <h2>Franchise Brand Builder</h2>
+              <span class="narrative-panel-kicker">Customize your franchise identity — name, city, colors</span>
+            </div>
+            <div class="brand-builder-card">
+              <div class="brand-builder-title">Custom Identity Overrides</div>
+              <div class="form-grid">
+                <label>Team Name
+                  <input id="brandNameInput" type="text" placeholder="e.g. Wolves" maxlength="30" />
+                </label>
+                <label>City
+                  <input id="brandCityInput" type="text" placeholder="e.g. Atlanta" maxlength="24" />
+                </label>
+                <label>Abbreviation (3 chars)
+                  <input id="brandAbbrevInput" type="text" placeholder="e.g. ATL" maxlength="3" />
+                </label>
+                <label>Primary Color (hex)
+                  <input id="brandPrimaryInput" type="color" value="#4f8ef7" />
+                </label>
+                <label>Secondary Color (hex)
+                  <input id="brandSecondaryInput" type="color" value="#7c5cbf" />
+                </label>
+              </div>
+              <div class="row compact" style="margin-top:10px">
+                <button id="applyBrandBtn">Apply Brand Override</button>
+                <span class="small muted">Changes apply to your controlled team's display name and color theme.</span>
+              </div>
+            </div>
           </div>
         </section>
-
         <section id="settingsTab" class="tab-panel" role="tabpanel" aria-labelledby="tab-settings" tabindex="0">
           <!-- ── Commissioner / Multiplayer Mode Panel ─────────────────────── -->
           <div class="panel" id="commissionerPanel">
@@ -1068,36 +1176,7 @@
           </div>
 
           <!-- ── Franchise Brand Builder ──────────────────────────────────── -->
-          <div class="panel">
-            <div class="narrative-panel-header">
-              <h2>Franchise Brand Builder</h2>
-              <span class="narrative-panel-kicker">Customize your franchise identity — name, city, colors</span>
-            </div>
-            <div class="brand-builder-card">
-              <div class="brand-builder-title">Custom Identity Overrides</div>
-              <div class="form-grid">
-                <label>Team Name
-                  <input id="brandNameInput" type="text" placeholder="e.g. Wolves" maxlength="30" />
-                </label>
-                <label>City
-                  <input id="brandCityInput" type="text" placeholder="e.g. Atlanta" maxlength="24" />
-                </label>
-                <label>Abbreviation (3 chars)
-                  <input id="brandAbbrevInput" type="text" placeholder="e.g. ATL" maxlength="3" />
-                </label>
-                <label>Primary Color (hex)
-                  <input id="brandPrimaryInput" type="color" value="#4f8ef7" />
-                </label>
-                <label>Secondary Color (hex)
-                  <input id="brandSecondaryInput" type="color" value="#7c5cbf" />
-                </label>
-              </div>
-              <div class="row compact" style="margin-top:10px">
-                <button id="applyBrandBtn">Apply Brand Override</button>
-                <span class="small muted">Changes apply to your controlled team's display name and color theme.</span>
-              </div>
-            </div>
-          </div>
+          
 
           <div class="panel control-hero-panel">
             <div class="control-hero-grid">
@@ -1113,10 +1192,7 @@
               </div>
             </div>
           </div>
-          <div class="panel" id="launchReadinessPanel">
-            <h2>Launch Readiness</h2>
-            <div class="table-wrap"><table id="launchReadinessTable"></table></div>
-          </div>
+          
           <div class="panel" id="onboardingPanel">
             <h2>Onboarding</h2>
             <p class="small">Skipped the Opening Contract? Declare your franchise's founding mandate any time before it's earned.</p>
@@ -1233,41 +1309,53 @@
               <button id="saveSettingsBtn">Save Settings</button>
             </div>
           </div>
-          <div class="panel split settings-owner-grid">
-            <div>
-              <h2>Owner Controls</h2>
-              <div id="ownerSpotlight" class="control-spotlight owner-spotlight">
-                <div class="small">Load an owner profile to review mandate, market pressure, and budget posture.</div>
-              </div>
-              <div class="row">
-                <label>Team <select id="ownerTeamSelect"></select></label>
-                <button id="loadOwnerBtn">Load Owner</button>
-              </div>
-              <div class="row">
-                <label>Ticket Price <input id="ownerTicketPriceInput" type="number" /></label>
-                <label>Staff Budget <input id="ownerStaffBudgetInput" type="number" /></label>
-              </div>
-              <div class="row">
-                <button id="saveOwnerBtn">Save Owner</button>
-              </div>
-              <h3>Facilities Market</h3>
-              <p class="small">Facility level is bought, not typed in. Each wing costs club cash, gets more expensive the higher it goes, and can only be built a few points per league year.</p>
-              <div id="facilitiesMarket" class="control-spotlight facilities-market">
-                <div class="small">Load an owner profile to review facility investment.</div>
-              </div>
-              <div class="row">
-                <label>Facility
-                  <select id="facilityInvestSelect">
-                    <option value="training">Training</option>
-                    <option value="rehab">Rehab</option>
-                    <option value="analytics">Analytics</option>
-                  </select>
-                </label>
-                <label>Points <input id="facilityInvestPoints" type="number" min="1" max="3" value="1" /></label>
-                <button id="investFacilityBtn">Break Ground</button>
-              </div>
-              <div class="table-wrap"><table id="ownerTable"></table></div>
+          
+          
+
+          <!-- ── Mobile & Community Links ──────────────────────────────────── -->
+          <div class="panel">
+            <h2>Mobile &amp; Community</h2>
+            <div class="row compact" style="flex-wrap:wrap;gap:1rem;">
+              <label>
+                <input type="checkbox" id="mobileLoopToggle" />
+                Enable Mobile Core Loop Mode
+              </label>
+              <a href="https://discord.gg/vaultspark" target="_blank" rel="noopener noreferrer"
+                 class="btn-discord" id="discordLink">
+                🎮 Join the VaultSpark Discord
+              </a>
+              <button id="shareDynastyBtn">📤 Share My Dynasty Timeline</button>
+              <button id="leagueStoryCardBtn">🗞️ League Story Card</button>
+              <button id="franchiseNewsletterBtn">📰 Season Newsletter</button>
             </div>
+            <div class="small" style="color:var(--muted);margin-top:.5rem;">
+              Mobile mode shows a simplified daily-decision view optimized for narrow screens.
+              Dynasty share generates a downloadable HTML card of your franchise history.
+              League Story Card downloads a source-derived season snapshot with champion, leaders, cap, legacy, and prediction receipts.
+              Season Newsletter generates a shareable season-end card with headlines, GM legacy, and quotes.
+            </div>
+            <div id="dynastyTimelineContainer" style="margin-top:1rem;" aria-live="polite"></div>
+          </div>
+        <div class="panel dev-only" data-dev-surface hidden aria-hidden="true">
+            <!-- ── DEVELOPER DIAGNOSTICS (S94) ──
+                 Launch Readiness, System Health, the 10-20 year Realism
+                 Verification runner, League Progression Parity, Finite-Number
+                 Integrity and the Offseason Pipeline shipped to every consumer,
+                 ungated, inside the Settings tab. One of them offers a "Run
+                 Verification" button with a seasons input accepting up to 30,
+                 which a curious player can use to lock the tab on a long
+                 synchronous run.
+
+                 They are genuinely useful and they are not for players. They now
+                 require ?dev=1. The player-facing answer to "is this simulation
+                 honest?" is /simulation.html, which publishes the same anchor
+                 these panels verify against, in language written for a reader
+                 rather than for a maintainer. -->
+            <div class="dev-surface-banner">Developer diagnostics · enabled by <code>?dev=1</code></div>
+            <div class="panel" id="launchReadinessPanel">
+            <h2>Launch Readiness</h2>
+            <div class="table-wrap"><table id="launchReadinessTable"></table></div>
+          </div>
             <div>
               <h2>System Health</h2>
               <div class="row compact">
@@ -1304,66 +1392,6 @@
               </div>
               <div class="table-wrap"><table id="pipelineTable"></table></div>
             </div>
-          </div>
-          <div class="panel">
-            <h2>Coaching Staff</h2>
-            <div class="row">
-              <label>Team <select id="staffTeamSelect"></select></label>
-              <label>Role
-                <select id="staffRoleSelect">
-                  <option value="headCoach">Head Coach</option>
-                  <option value="offensiveCoordinator">Offensive Coordinator</option>
-                  <option value="defensiveCoordinator">Defensive Coordinator</option>
-                  <option value="scoutingDirector">Scouting Director</option>
-                  <option value="capAnalyst">Cap Analyst</option>
-                  <option value="strengthCoach">Strength Coach</option>
-                  <option value="medicalDirector">Medical Director</option>
-                </select>
-              </label>
-              <label>Name <input id="staffNameInput" type="text" placeholder="name" /></label>
-              <button id="updateStaffBtn">Rename</button>
-            </div>
-            <!-- S63 — coaching ability is hired, not typed. The numeric editor
-                 that used to live here wrote straight into the simulation for any
-                 team, at no cost; the market below replaces it. -->
-            <section id="coachingMarketPanel" class="coaching-market" aria-label="Coaching market" aria-live="polite"></section>
-            <div class="table-wrap"><table id="staffTable"></table></div>
-            <!-- ── Coaching DNA Card ─────────────────────────────────────── -->
-            <div id="coachingDnaCard" class="coaching-dna-card" hidden>
-              <div class="coaching-dna-header">
-                <span class="coaching-dna-icon">🌳</span>
-                <div>
-                  <div class="coaching-dna-title">Coaching Tree DNA</div>
-                  <div class="coaching-dna-sub" id="coachingDnaSub">Load a team to see scheme lineage.</div>
-                </div>
-              </div>
-              <div id="coachingDnaBody" class="coaching-dna-body"></div>
-            </div>
-          </div>
-
-          <!-- ── Mobile & Community Links ──────────────────────────────────── -->
-          <div class="panel">
-            <h2>Mobile &amp; Community</h2>
-            <div class="row compact" style="flex-wrap:wrap;gap:1rem;">
-              <label>
-                <input type="checkbox" id="mobileLoopToggle" />
-                Enable Mobile Core Loop Mode
-              </label>
-              <a href="https://discord.gg/vaultspark" target="_blank" rel="noopener noreferrer"
-                 class="btn-discord" id="discordLink">
-                🎮 Join the VaultSpark Discord
-              </a>
-              <button id="shareDynastyBtn">📤 Share My Dynasty Timeline</button>
-              <button id="leagueStoryCardBtn">🗞️ League Story Card</button>
-              <button id="franchiseNewsletterBtn">📰 Season Newsletter</button>
-            </div>
-            <div class="small" style="color:var(--muted);margin-top:.5rem;">
-              Mobile mode shows a simplified daily-decision view optimized for narrow screens.
-              Dynasty share generates a downloadable HTML card of your franchise history.
-              League Story Card downloads a source-derived season snapshot with champion, leaders, cap, legacy, and prediction receipts.
-              Season Newsletter generates a shareable season-end card with headlines, GM legacy, and quotes.
-            </div>
-            <div id="dynastyTimelineContainer" style="margin-top:1rem;" aria-live="polite"></div>
           </div>
         </section>
       </section>
@@ -1502,7 +1530,33 @@
           </div>
           <button id="closeGuideModalBtn" class="warn">Close</button>
         </div>
-        <div id="guideModalContent" class="stack small"></div>
+        <!-- ── ONE PLACE TO LEARN THE GAME (S94) ──
+             There were four: "How To Play" and "Game Guide" rendered the SAME
+             GUIDE_SECTIONS array into two different elements, and "VaultSpark
+             Rulebook" and "Buttons & Features" sat beside them in a top-level
+             Rules tab whose entire panel was 773 bytes. Four explanations of one
+             game is worse than one, not because of the bytes but because a new
+             player cannot tell which is authoritative and every future feature
+             has to be documented four times or the four drift apart -- prose
+             failing the same way a shape declared twice fails.
+
+             They are now three views of one surface, reached from one place. -->
+          <div class="row compact guide-subtabs" role="tablist" aria-label="Game guide sections">
+            <button class="subtab-btn active" data-guide-view="guideHowToPanel" role="tab" aria-selected="true" aria-controls="guideHowToPanel">How To Play</button>
+            <button class="subtab-btn" data-guide-view="guideRulesPanel" role="tab" aria-selected="false" aria-controls="guideRulesPanel">Rules</button>
+            <button class="subtab-btn" data-guide-view="guideActionsPanel" role="tab" aria-selected="false" aria-controls="guideActionsPanel">Buttons &amp; Features</button>
+          </div>
+          <div id="guideHowToPanel" class="guide-view" role="tabpanel">
+            <div id="guideModalContent" class="stack small"></div>
+          </div>
+          <div id="guideRulesPanel" class="guide-view" role="tabpanel" hidden>
+            <p class="small">Core simulation rules, roster and contract constraints, snap-share depth chart logic, and feature behavior.</p>
+            <div class="table-wrap"><table id="rulesCoreTable"></table></div>
+          </div>
+          <div id="guideActionsPanel" class="guide-view" role="tabpanel" hidden>
+            <p class="small">Every control in the game, what it does, and where it lives.</p>
+            <div class="table-wrap"><table id="rulesActionsTable"></table></div>
+          </div>
       </div>
     </div>
 

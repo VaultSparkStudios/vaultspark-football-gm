@@ -27,15 +27,15 @@ async function startFranchise(page) {
 }
 
 async function openOwnerPanel(page) {
-  await page.locator('[data-tab="settingsTab"]').first().click();
-  await expect(page.locator("#settingsTab")).toHaveClass(/active/);
+  await page.locator('[data-tab="boardroomTab"]').first().click();
+  await expect(page.locator("#boardroomTab")).toHaveClass(/active/);
   await page.locator("#loadOwnerBtn").click();
   await expect(page.locator("#facilitiesMarket .control-spotlight-grid")).toBeVisible({ timeout: 30_000 });
 }
 
 test("the raw facility number boxes are gone from the shipped page", async ({ page }) => {
   await startFranchise(page);
-  await page.locator('[data-tab="settingsTab"]').first().click();
+  await page.locator('[data-tab="boardroomTab"]').first().click();
 
   // The defect was three free number boxes. Their absence is the fix's receipt.
   await expect(page.locator("#ownerTrainingInput")).toHaveCount(0);

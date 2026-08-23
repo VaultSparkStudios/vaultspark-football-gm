@@ -10,9 +10,11 @@ import { test, expect } from "@playwright/test";
 
 test("the root page argues the case, below the one-click start rather than in front of it", async ({ page }) => {
   await page.goto("/");
-  const start = page.locator("#instantStartBtn");
+  // The hero branches on save presence (DECISIONS S70) and the dev server is
+  // stateful across specs, so take whichever start control is being offered.
+  const start = page.locator("#instantStartBtn, #continueActiveBtn, #resumeLatestBtn").locator("visible=true").first();
   const why = page.locator("#why");
-  await expect(start).toBeVisible();
+  await expect(start).toBeVisible({ timeout: 20_000 });
   await expect(why).toBeAttached();
 
   // DECISIONS 2026-08-04 settled that the root URL belongs to the newcomer and
@@ -106,4 +108,76 @@ test("retired routes do not resurface as pages", async ({ page }) => {
       await expect(page.locator('meta[http-equiv="refresh"]')).toHaveCount(0);
     }
   }
+});
+
+// ── In-game surfaces (S94 wave 4) ────────────────────────────────────────────
+
+// The dev Playwright server is stateful across spec files, so by the time these
+// run a save may already exist and the S70 hero has branched to Continue. Take
+// whichever entry point the hero is actually offering.
+async function startFranchise(page) {
+  await page.goto("/");
+  await expect(page.locator("#setupStatus")).toContainText("Ready", { timeout: 20_000 });
+  for (const id of ["#continueActiveBtn", "#resumeLatestBtn", "#instantStartBtn"]) {
+    const button = page.locator(id);
+    if (await button.isVisible().catch(() => false)) {
+      await button.click();
+      break;
+    }
+  }
+  await expect(page).toHaveURL(/game\.html/, { timeout: 60_000 });
+  await expect(page.locator("#tab-overview")).toBeVisible({ timeout: 60_000 });
+  const skip = page.locator("#tutSkipBtn");
+  if (await skip.isVisible({ timeout: 3_000 }).catch(() => false)) {
+    await skip.click();
+    await expect(page.locator(".tutorial-overlay")).toHaveCount(0);
+  }
+}
+
+test("the Boardroom is a real surface and the owner economy lives there", async ({ page }) => {
+  await startFranchise(page);
+  await page.locator('[data-tab="boardroomTab"]').first().click();
+  const boardroom = page.locator("#boardroomTab");
+  await expect(boardroom).toHaveClass(/active/);
+  await expect(boardroom.getByRole("heading", { name: "Owner Controls" })).toBeVisible({ timeout: 30_000 });
+  await expect(boardroom.getByRole("heading", { name: "Facilities Market" })).toBeVisible();
+  await expect(boardroom.getByRole("heading", { name: "Coaching Staff" })).toBeVisible();
+  // S93's priced construction path must still be the only way in.
+  await expect(boardroom.locator("#investFacilityBtn")).toBeVisible();
+  // Hydrated from opening the Boardroom directly, without visiting Settings.
+  await expect(boardroom.locator("#ownerTable")).not.toBeEmpty();
+});
+
+test("developer diagnostics do not ship to players, and open for ?dev=1", async ({ page }) => {
+  await startFranchise(page);
+  await page.locator('[data-tab="settingsTab"]').first().click();
+  const dev = page.locator("[data-dev-surface]");
+  await expect(dev).toBeHidden({ timeout: 30_000 });
+  await expect(page.getByRole("heading", { name: /Realism Verification/ })).toBeHidden();
+
+  const url = new URL(page.url());
+  url.searchParams.set("dev", "1");
+  await page.goto(url.toString());
+  await expect(page.locator("#tab-overview")).toBeAttached({ timeout: 40_000 });
+  await page.locator('[data-tab="settingsTab"]').first().click();
+  await expect(page.locator("[data-dev-surface]")).toBeVisible({ timeout: 30_000 });
+});
+
+test("there is one place to learn the game, with three views", async ({ page }) => {
+  await startFranchise(page);
+  await expect(page.locator('[data-tab="rulesTab"]')).toHaveCount(0);
+
+  await page.locator("#openGuideBtn").click();
+  const guide = page.locator("#guideModal");
+  await expect(guide).toBeVisible();
+  await expect(guide.locator("#guideHowToPanel")).toBeVisible();
+  await expect(guide.locator("#guideRulesPanel")).toBeHidden();
+
+  await guide.locator('[data-guide-view="guideRulesPanel"]').click();
+  await expect(guide.locator("#guideRulesPanel")).toBeVisible();
+  await expect(guide.locator("#guideHowToPanel")).toBeHidden();
+  await expect(guide.locator("#rulesCoreTable")).not.toBeEmpty({ timeout: 20_000 });
+
+  await guide.locator('[data-guide-view="guideActionsPanel"]').click();
+  await expect(guide.locator("#rulesActionsTable")).not.toBeEmpty();
 });

@@ -107,6 +107,7 @@ import {
   loadBoxScore as loadBoxScoreContent,
   closeBoxScoreModal as closeBoxScoreModalView,
   openGuideModal as openGuideModalView,
+  selectGuideView,
   closeGuideModal as closeGuideModalView,
   renderNewsTicker,
   renderGmLegacyScore,
@@ -258,8 +259,8 @@ function closeBoxScoreModal() {
   closeModal(modal);
 }
 
-function openGuideModal() {
-  openGuideModalView();
+function openGuideModal(view = "guideHowToPanel") {
+  openGuideModalView(typeof view === "string" ? view : "guideHowToPanel");
   openManagedModal("guideModal", closeGuideModal);
 }
 
@@ -1857,7 +1858,12 @@ function bindEvents() {
     closeModal(modal);
   };
   document.getElementById("closeCommandPaletteBtn")?.addEventListener("click", closeCommandPalette);
-  document.getElementById("openGuideBtn")?.addEventListener("click", openGuideModal);
+  document.getElementById("openGuideBtn")?.addEventListener("click", () => openGuideModal());
+  // S94: three views of one learning surface, bound the same way the History and
+  // Box Score sub-tabs already are.
+  for (const button of document.querySelectorAll("[data-guide-view]")) {
+    button.addEventListener("click", () => selectGuideView(button.dataset.guideView));
+  }
   document.getElementById("closeGuideModalBtn")?.addEventListener("click", closeGuideModal);
 
   document.addEventListener("keydown", (event) => {

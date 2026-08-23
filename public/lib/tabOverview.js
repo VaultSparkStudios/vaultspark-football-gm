@@ -3,6 +3,7 @@ import { deriveTrophyRoad, readEarnedAchievements, recordAchievementEvent } from
 import { playSound } from "./audioFeedback.js";
 import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderGuideContent, renderTable, setBoxScoreTab, setMetricCardValue, showToast, teamCode, teamName } from "./appCore.js";
 import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
+import { invokeUiIsland } from "./uiIslands.js";
 import { renderTradeDeadlineFrenzy } from "./tradeDeadlineFrenzy.js";
 import { buildBoxScoreImpactLeaders, buildQuarterScoreboard } from "./boxScorePresentation.js";
 import { observeBackgroundTask, recordClientDiagnostic } from "./clientDiagnostics.js";
@@ -1014,8 +1015,32 @@ export function closeBoxScoreModal() {
   document.getElementById("boxScoreModal").classList.add("hidden");
 }
 
-export function openGuideModal() {
+// S94: one learning surface with three views. `view` selects which one opens,
+// so a deep link from elsewhere in the game (the command palette's "Open Game
+// Guide", say) can land on Rules rather than always on How To Play.
+export function selectGuideView(view = "guideHowToPanel") {
+  const modal = document.getElementById("guideModal");
+  if (!modal) return null;
+  for (const panel of modal.querySelectorAll(".guide-view")) {
+    panel.hidden = panel.id !== view;
+  }
+  for (const button of modal.querySelectorAll("[data-guide-view]")) {
+    const active = button.dataset.guideView === view;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-selected", String(active));
+  }
+  return view;
+}
+
+export function openGuideModal(view = "guideHowToPanel") {
   renderGuideContent();
+  // renderRulesTab lives in the lazily-imported settings island, which owns the
+  // two tables the Rules and Buttons views render into.
+  observeBackgroundTask(() => invokeUiIsland("settings", "renderRulesTab"), {
+    surface: "game-guide",
+    operation: "renderRulesTab"
+  });
+  selectGuideView(view);
   document.getElementById("guideModal")?.classList.remove("hidden");
 }
 

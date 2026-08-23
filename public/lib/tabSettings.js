@@ -344,7 +344,7 @@ export function renderCommandPalette() {
     { id: "roster", label: "Open Roster", run: () => activateTab("rosterTab") },
     { id: "transactions", label: "Open Transactions", run: () => activateTab("transactionsTab") },
     { id: "stats", label: "Open Stats", run: () => activateTab("statsTab") },
-    { id: "rules", label: "Open Rules", run: () => activateTab("rulesTab") },
+    { id: "rules", label: "Open Game Guide", run: () => document.getElementById("openGuideBtn")?.click() },
     { id: "guide", label: "Open Game Guide", run: () => openGuideModal() },
     { id: "settings", label: "Open Settings", run: () => activateTab("settingsTab") },
     { id: "advance-week", label: "Advance Week", run: () => document.getElementById("advanceWeekBtn").click() },

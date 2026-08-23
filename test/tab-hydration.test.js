@@ -68,8 +68,8 @@ test("failures are receipt-visible and retryable instead of cached", async () =>
 
 test("every public game tab has an explicit hydration declaration", () => {
   assert.deepEqual(Object.keys(TAB_HYDRATION_DOMAINS).sort(), [
-    "calendarTab", "contractsTab", "depthTab", "draftTab", "faTab", "historyTab", "logTab",
-    "overviewTab", "rosterTab", "rulesTab", "scoutingTab", "settingsTab", "statsTab", "transactionsTab"
+    "boardroomTab", "calendarTab", "contractsTab", "depthTab", "draftTab", "faTab", "historyTab", "logTab",
+    "overviewTab", "rosterTab", "scoutingTab", "settingsTab", "statsTab", "transactionsTab"
   ]);
 });
 

@@ -11,7 +11,11 @@ export const TAB_HYDRATION_DOMAINS = Object.freeze({
   calendarTab: ["history-island", "calendar"],
   logTab: ["settings-island", "transactions", "news"],
   historyTab: ["history-island", "team-history"],
-  rulesTab: ["settings-island"],
+  // S94: the Boardroom carries the owner economy, the staff sheet and the brand
+  // builder out of Settings. It hydrates the same domains those panels always
+  // needed, so the economy is populated when a player opens the Boardroom rather
+  // than only after they happen to visit Settings first.
+  boardroomTab: ["settings-island", "settings", "staff", "owner"],
   settingsTab: [
     "settings-island", "saves", "qa", "settings", "staff", "owner", "observability",
     "persistence", "pipeline", "calibration-jobs", "simulation-jobs"

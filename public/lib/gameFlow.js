@@ -224,6 +224,15 @@ export function activateTab(tabId) {
       panel.inert = false;
       panel.removeAttribute("aria-busy");
     }
+    // S94: developer diagnostics stay hidden unless ?dev=1 asked for them.
+    // Applied after hydration because the island that owns those panels is
+    // lazily imported, so the markup may not have been reachable before now.
+    if (islandName === "settings") {
+      await observeBackgroundTask(
+        () => import("./devSurfaces.js").then((module) => module.applyDeveloperSurfaceVisibility()),
+        { surface: "dev-surface-visibility", operation: tabId }
+      );
+    }
     return receipt;
   };
   return observeBackgroundTask(() => loadAndHydrate(), {

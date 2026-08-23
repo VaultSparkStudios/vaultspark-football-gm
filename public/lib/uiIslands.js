@@ -33,7 +33,9 @@ export const UI_ISLAND_MANIFEST = Object.freeze({
     budgetBytes: 72_000
   }),
   settings: Object.freeze({
-    tabs: Object.freeze(["logTab", "rulesTab", "settingsTab"]),
+    // S94: boardroomTab carries the owner economy out of Settings; it is the
+    // same module, so it belongs to the same island rather than duplicating one.
+    tabs: Object.freeze(["logTab", "settingsTab", "boardroomTab"]),
     source: "./tabSettings.js",
     preload: Object.freeze(["./tabSettings.js"]),
     budgetBytes: 74_000

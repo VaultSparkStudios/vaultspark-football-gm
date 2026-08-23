@@ -24,9 +24,12 @@ async function startFranchise(page) {
   await expect(page.locator(".tutorial-overlay")).toHaveCount(0);
 }
 
+// S94: the owner economy, the facilities market and the coaching staff sheet
+// moved out of Settings into the Boardroom — filing live economy inputs under
+// "Settings" is what let two god-mode surfaces hide for thirty sessions.
 async function openSettings(page) {
-  await page.locator('[data-tab="settingsTab"]').first().click();
-  await expect(page.locator("#settingsTab")).toHaveClass(/active/);
+  await page.locator('[data-tab="boardroomTab"]').first().click();
+  await expect(page.locator("#boardroomTab")).toHaveClass(/active/);
 }
 
 async function advanceWeekThroughPlan(page, timeoutMs = 150_000) {
