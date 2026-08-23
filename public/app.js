@@ -2178,10 +2178,21 @@ function bindEvents() {
     renderDynastyRecordsBoard().catch((error) => renderPanelError("dynastyRecordsBoard", "Dynasty Records Board", error));
   });
 
-  // AI GM Archetypes
-  document.getElementById("loadArchetypesBtn")?.addEventListener("click", () => {
-    loadTeamArchetypes().then(() => renderArchetypesTable()).catch((error) => renderPanelError("teamArchetypesTable", "League GM Archetypes", error));
-  });
+  // S94: rival front-office intel loads with the tab that shows it.
+  //
+  // This was a "Load Archetypes" button. Intel you have to remember to fetch is
+  // intel you do not have at the moment you need it — and the moment you need to
+  // know how a rival front office thinks is when one of them is making you an
+  // offer, not when you happen to click a button in the Scouting tab. Failures
+  // still surface in the panel; they are just no longer the default state.
+  observeBackgroundTask(
+    () => loadTeamArchetypes().then(() => renderArchetypesTable()),
+    {
+      surface: "rival-front-office",
+      operation: "team-archetypes",
+      retry: () => loadTeamArchetypes().then(() => renderArchetypesTable())
+    }
+  ).catch((error) => renderPanelError("teamArchetypesTable", "League GM Archetypes", error));
 
   // Season Arcs — load on Overview activation
   document.querySelectorAll(".menu-btn[data-tab='overviewTab']").forEach((btn) => {

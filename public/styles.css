@@ -5611,3 +5611,20 @@ html[data-theme="light"] .bg-layer {
 /* S94 — one learning surface, three views. */
 .guide-subtabs { gap:6px; margin:10px 0 12px; flex-wrap:wrap; }
 .guide-view[hidden] { display:none; }
+
+/* S94 — the face on the other side of a negotiation. Descriptive only: no
+   acceptance odds, no leverage bar, no relationship score, because the engine
+   has none of those and a number here would be a forecast it cannot honour. */
+.front-office-card { margin:8px 0; padding:10px 12px; border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:0 11px 11px 0; background:color-mix(in srgb,var(--accent) 5%,var(--inset)); }
+.front-office-card--compact { padding:8px 10px; margin:6px 0; }
+.front-office-head { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.front-office-role { font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+.front-office-name { font-size:14px; }
+.front-office-style { font-size:11px; padding:1px 7px; border-radius:999px; border:1px solid var(--line); color:var(--muted); text-transform:capitalize; }
+.front-office-traits { display:flex; flex-wrap:wrap; gap:5px; margin:6px 0 4px; }
+.front-office-trait { font-size:11px; padding:2px 8px; border-radius:999px; background:var(--surface); border:1px solid var(--line); color:var(--muted); }
+.front-office-line { margin:4px 0 0; font-size:12.5px; color:var(--text,inherit); }
+.front-office-line--cold { color:var(--muted); font-style:italic; }
+.front-office-ledger { margin:7px 0 0; padding:0; list-style:none; display:grid; gap:4px; }
+.front-office-ledger li { display:flex; gap:8px; font-size:12px; color:var(--muted); }
+.front-office-ledger span { font-variant-numeric:tabular-nums; opacity:.75; min-width:3.2em; }

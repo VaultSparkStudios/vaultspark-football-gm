@@ -1,3 +1,5 @@
+import { attachFrontOffices } from "./rivalFrontOffice.js";
+
 function stableHash(value) {
   let hash = 2166136261;
   for (const char of String(value)) {
@@ -28,6 +30,7 @@ export function buildOnClockFingerprint({ draft, slot, pick, scoutingBoard = [] 
 }
 
 export function buildOnClockTradeOffers({
+  league = null,
   draft,
   slot,
   livePick,
@@ -44,7 +47,7 @@ export function buildOnClockTradeOffers({
   const liveValue = pickValue(livePick);
   const declined = new Set(draft.declinedOnClockOffers?.[fingerprint] || []);
 
-  return teams
+  const ranked = teams
     .filter((team) => team.id !== controlledTeamId)
     .map((team) => {
       const needs = rosterNeeds(team.id).filter((need) => Number(need.delta) < 0);
@@ -90,6 +93,11 @@ export function buildOnClockTradeOffers({
       return bNeed - aNeed || Math.abs(a.valueDelta) - Math.abs(b.valueDelta) || a.teamId.localeCompare(b.teamId);
     })
     .slice(0, Math.max(0, Math.min(3, Number(limit) || 3)));
+
+  // S94: draft day was the one negotiation with no face on the other side of it.
+  // The offers are unchanged — this attaches WHO is calling, never what they are
+  // willing to pay.
+  return league ? attachFrontOffices(league, ranked) : ranked;
 }
 
 export function appendCounterPick(offer, futurePicks = []) {

@@ -1,4 +1,5 @@
 import { escapeHtml } from "./appCore.js";
+import { renderRivalFrontOffice } from "./rivalFrontOfficeCard.js";
 
 export function renderOnClockTradeMarket(market) {
   return `
@@ -13,6 +14,7 @@ export function renderOnClockTradeMarket(market) {
       ${market.offers?.length ? `<div class="on-clock-offer-grid">${market.offers.map((offer) => `
         <article class="on-clock-offer-card">
           <div class="on-clock-offer-title"><strong>${escapeHtml(offer.teamName)}</strong><span>Targets ${escapeHtml(offer.targetPosition)}</span></div>
+          ${renderRivalFrontOffice(offer.frontOffice, { compact: true })}
           <div class="small">${escapeHtml(offer.rationale)}</div>
           <div class="on-clock-pick-list" aria-label="Picks offered">
             ${offer.incomingPicks.map((pick) => `<span>${escapeHtml(`${pick.year} R${pick.round}`)}</span>`).join("")}
@@ -40,6 +42,7 @@ export function buildOnClockTradeReview({ action, offer, marketFingerprint } = {
     offerId: offer.id,
     fingerprint: marketFingerprint,
     rival: offer.teamName || offer.teamId || "Rival franchise",
+    rivalGm: offer.frontOffice?.gmName || null,
     targetPosition: offer.targetPosition || "best available player",
     outgoing: offer.livePick ? `${offer.livePick.year} Round ${offer.livePick.round}` : "the live selection",
     incomingPicks,
@@ -61,7 +64,7 @@ export function renderOnClockTradeReview(review) {
     <h3 id="onClockTradeReviewTitle">Review ${escapeHtml(review.action === "counter" ? "counter" : "trade")} before commitment</h3>
     <div class="on-clock-trade-review-grid">
       <section><span>You send</span><strong>${escapeHtml(review.outgoing)}</strong><small>Live selection · disclosed value ${escapeHtml(review.outgoingValue)}</small></section>
-      <section><span>${escapeHtml(review.rival)} sends</span><strong>${review.incomingPicks.map((pick) => escapeHtml(pick.label)).join(" + ")}</strong><small>Disclosed value ${escapeHtml(review.incomingValue)} · delta ${review.valueDelta >= 0 ? "+" : ""}${escapeHtml(review.valueDelta)}</small></section>
+      <section><span>${escapeHtml(review.rivalGm ? `${review.rival} (${review.rivalGm})` : review.rival)} sends</span><strong>${review.incomingPicks.map((pick) => escapeHtml(pick.label)).join(" + ")}</strong><small>Disclosed value ${escapeHtml(review.incomingValue)} · delta ${review.valueDelta >= 0 ? "+" : ""}${escapeHtml(review.valueDelta)}</small></section>
       <section><span>Rival target</span><strong>${escapeHtml(review.targetPosition)}</strong><small>Source-derived roster need; no acceptance probability is claimed.</small></section>
     </div>
     <p id="onClockTradeReviewBoundary" class="on-clock-trade-boundary"><strong>Commit boundary:</strong> ${escapeHtml(review.boundary)}</p>

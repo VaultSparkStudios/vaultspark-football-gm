@@ -5,20 +5,30 @@
   "agent": "claude-code",
   "project": "franchise-architect",
   "displayName": "Franchise Architect: Football",
-  "status": "ranked",
+  "status": "implemented",
   "summary": {
     "combinedPriority": 9.4,
     "source": "Fresh full-spectrum audit against live code AND the live production origin. The S93 handoff booked no blocking item and the genius queue was exhausted, so this audit was run wide rather than deep: every public page, every response header on playfranchisearchitect.com, the live community API, the boot graph, the 14-tab in-game surface, the repo's own gates, and the context/docs ledgers. Four findings were only visible from production and could not have been found by reading the tree: the site's own Content-Security-Policy blocks the analytics beacon Cloudflare injects into every page, content-hashed assets are served with a 4-hour revalidating cache, the module graph ships with zero preload hints, and the community API answers `status: warming` with `sampleSize: 0` behind a widget that sits above the fold on the front door. The strongest structural finding is internal: the Settings tab has become a twenty-panel junk drawer holding consumer features, live economy controls, and developer diagnostics in one undifferentiated stack -- and that is the structural reason the S63 and S93 god-mode surfaces stayed hidden for thirty sessions, because gameplay economy filed under Settings is gameplay nobody reviews.",
     "axesCovered": 9,
     "itemsRanked": 14,
     "phantomsRejected": 3,
-    "verificationNote": "Every ranked premise was checked against live code or a live HTTP response before inclusion. Three candidates were refuted and are recorded in phantomsRejected rather than ranked."
+    "verificationNote": "Every ranked premise was checked against live code or a live HTTP response before inclusion. Three candidates were refuted and are recorded in phantomsRejected rather than ranked.",
+    "implementation": {
+      "session": 94,
+      "shipped": 13,
+      "skipped": 1,
+      "note": "13 of 14 ranked items shipped; one shipped at deliberately reduced scope after a service worker made most of its benefit redundant, and one was skipped with its premise corrected rather than churned. Three ranked premises were narrowed or corrected DURING implementation - the funnel item against DECISIONS S70, the rival-persona item against code that already did half of it, and the visual-QA item against receipts that covered one session rather than all of them. Each correction is recorded on its item."
+    }
   },
   "profile": {
     "audience": "public-unlaunched",
     "type": "public browser football game/app",
     "rubric": "product rubric plus game-medium overlay (retention, emotional payoff, decision pressure, mobile browser polish) and app-release-gate",
-    "axisWeightDeltas": { "gamification/engagement/immersion": 2, "ui/ux/user-experience": 1, "speed/organization/efficiency": 1 },
+    "axisWeightDeltas": {
+      "gamification/engagement/immersion": 2,
+      "ui/ux/user-experience": 1,
+      "speed/organization/efficiency": 1
+    },
     "staging": "Cloudflare Pages staging must prove the exact immutable candidate before direct-to-main production promotion; public sanitization mandatory",
     "source": "skill-profile audit overlay, PROJECT_STATUS S93, TASK_BOARD open-item projection (19 open), live source tree, live production origin headers and bodies, live community API"
   },
@@ -62,14 +72,23 @@
       "priority": 9.4,
       "slug": "own-csp-blocks-the-only-production-analytics",
       "title": "Every built page ships the Cloudflare Web Analytics beacon and the site's own Content-Security-Policy blocks it -- production has been collecting zero traffic data and throwing a CSP violation on every page load",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified against the live origin, not the tree. `GET https://playfranchisearchitect.com/game.html` returns a document containing `<script type=\"module\" src=\"https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496\" ... data-cf-beacon='{\"version\":\"2024.11.0\",\"token\":\"8f0e0c51d9794b4b96ddf610dd278ddb\"}'>` -- Cloudflare injects it into every page on the zone. The same response's `content-security-policy` header reads `script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='`. `static.cloudflareinsights.com` appears in neither `script-src` nor `connect-src` (`connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com`). The beacon therefore cannot load, and even if it loaded it could not POST. Grep confirms the string `cloudflareinsights` appears nowhere in this repo -- the tag is injected at the edge, which is exactly why no source-only review has ever caught it. The consequence is not cosmetic: this project ships betaFeedback, contextualFeedback, communityTelemetry, playtestJourney and a Community Stats Atlas, an entire declared user-feedback apparatus, and it has no idea how many people load the page, which page they land on, or where they leave. Every launch-readiness judgement about the public surface has been made without a single production pageview.",
       "fix": "Decide deliberately, do not just widen the CSP. Two honest options and they are not equivalent. (a) If Cloudflare Web Analytics is wanted: add `https://static.cloudflareinsights.com` to `script-src` and `connect-src` in the edge policy that `scripts/verify-edge-policy-application.mjs` proves, and nothing else -- it is cookieless and sends no personal data, which keeps public/privacy.html honest as written. (b) If it is not wanted: disable Web Analytics on the Cloudflare zone so the beacon stops being injected, rather than leaving a permanently-violating script tag on every page. Either way the real fix is the gate: `verify-edge-policy-application.mjs` currently proves the policy is APPLIED but never proves the policy ADMITS what the delivered document actually requests. Extend it to fetch the built document, extract every external script/connect origin it references, and assert each one is admitted by the served CSP -- so the next edge-injected tag fails the gate instead of failing silently in every visitor's console.",
-      "verification": "A negative control first, per this project's own rule that a gate must be proven to go red on a real defect: run the extended edge-policy check against today's production response and confirm it FAILS naming static.cloudflareinsights.com, then apply the chosen fix and confirm it passes. Then confirm in a real browser that the CSP violation is gone from the console on /, /landing.html, /stats and /game.html, and -- if option (a) -- that the Cloudflare Web Analytics dashboard records the visit.",
+      "verification": "SHIPPED. EDGE_INJECTED_ORIGINS admits the beacon script origin and the reporting endpoint it POSTs to, both read out of beacon.min.js rather than assumed. auditDeliveredDocument asserts the served policy admits every external origin the served document requests, and verify-edge-policy-application now fetches the root as a BROWSER does - measured on this origin, Cloudflare injects the beacon only for `Accept: text/html` with a browser User-Agent, so the verifier had been auditing a document no visitor ever receives. That is why every automated check was blind to it. Negative control run against today's live policy and live browser document returns both violations by name; the same document under the new policy returns none. privacy.html gains the site-measurement disclosure. 5 new tests.",
       "ladder": {
-        "L1": { "effortHours": 0.5, "recipe": "Pick (a) or (b) and apply it to the edge policy. Stops the violation and either restores or removes analytics. No gate." },
-        "L2": { "effortHours": 3, "recipe": "L1 plus extend verify-edge-policy-application.mjs to assert that every external origin the built document requests is admitted by the served CSP, proven with a negative control." },
-        "L3": { "effortHours": 9, "recipe": "L2 plus a report-only CSP reporting endpoint so future violations arrive as data rather than as a console message no one is looking at, and a smoke-pages assertion that the analytics beacon actually executed." }
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Pick (a) or (b) and apply it to the edge policy. Stops the violation and either restores or removes analytics. No gate."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "L1 plus extend verify-edge-policy-application.mjs to assert that every external origin the built document requests is admitted by the served CSP, proven with a negative control."
+        },
+        "L3": {
+          "effortHours": 9,
+          "recipe": "L2 plus a report-only CSP reporting endpoint so future violations arrive as data rather than as a console message no one is looking at, and a smoke-pages assertion that the analytics beacon actually executed."
+        }
       }
     },
     {
@@ -82,14 +101,23 @@
       "priority": 9.4,
       "slug": "public-truth-gate-cannot-see-staleness",
       "title": "The public-truth gate proves every number on the public pages and cannot see that the release-notes page stopped twenty days and twenty-three sessions ago -- the exact 'argued rather than gated' shape this project keeps re-finding",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified by reading the gate and the page it guards. `scripts/check-public-truth.mjs` runs green today and prints `public-truth gate: OK (41 engine systems verified)`. It genuinely proves the landing page's engine-system count against `src/engine`'s file count, proves the rival-front-office count against TEAM_COUNT, forbids four specific retired claims, and forbids internal governance vocabulary across every public HTML and three public JSON files. It has no freshness dimension whatsoever. Consequently `public/status.html` -- the page a visitor is pointed at from about.html, landing.html and index.html for 'Status & Updates' -- has its newest release note dated 2026-08-03 ('The front office gets sharper'), while PROJECT_STATUS records lastSession 93 dated 2026-08-22. The unpublished span is the single most impressive stretch of work in the project's history: the S90 development-environment calibration, the S91 distributional gate, the S92 NFL elite-density baseline sourced from real All-Pro and Pro Bowl seat counts, and the S93 owner-capital economy with its priced facilities market, league-centred ticket-demand curve and AI facility investment round. A visitor reading Status today concludes the game has been idle for three weeks. Separately and from the same root: `public/sitemap.xml` carries `lastmod` 2026-08-03 on nine of twelve URLs and nothing regenerates it.",
       "fix": "Give the existing gate a freshness dimension rather than building a second gate. In `check-public-truth.mjs`, parse the newest `<h3>` date in status.html's Release Notes section and assert it is not older than the newest shipped session recorded in `context/PROJECT_STATUS.json` by more than a declared tolerance (one session is the honest tolerance -- the note lands at closeout). Emit the failure as an actionable diff: 'status.html newest note 2026-08-03; PROJECT_STATUS lastSession 93 dated 2026-08-22; 23 sessions unpublished.' In the same pass have `build-pages.mjs` stamp `sitemap.xml` lastmod per page from the built file's own content hash changing, so the sitemap stops lying by construction. Then write the four missing release notes -- one per shipped arc, in the page's existing voice, which is player-facing and never mentions test counts or session numbers.",
-      "verification": "Negative control: run the new assertion against the tree as it stands and confirm it fails naming the 23-session gap. Write the notes, re-run, confirm green. Then artificially bump PROJECT_STATUS.lastSession in a scratch copy and confirm it goes red again -- proving it tracks the moving target rather than a one-time literal. Confirm sitemap lastmod changes only for pages whose built bytes changed.",
+      "verification": "SHIPPED. inspectReleaseNoteFreshness counts sessions between the newest published note and PROJECT_STATUS.lastSession, resolving the published date through CURRENT_STATE so it tracks a moving target rather than a literal; tolerance one session. Negative control reported '24 sessions unpublished' before the fix. Five player-facing release notes now cover S70-S93. sitemap lastmod is read from git history per source page (8 URLs corrected on the first build) with an honest fallback when history is shallow. 3 new tests including two negative controls.",
       "ladder": {
-        "L1": { "effortHours": 1, "recipe": "Write the four missing release notes and refresh sitemap lastmod by hand. Fixes today, guarantees nothing about tomorrow." },
-        "L2": { "effortHours": 5, "recipe": "L1 plus the freshness assertion inside check-public-truth.mjs with a negative control, plus content-derived sitemap lastmod in build-pages.mjs." },
-        "L3": { "effortHours": 10, "recipe": "L2 plus generate the release note itself at closeout from the session's own impact summary into a reviewable draft, so the publishing step cannot be forgotten rather than merely being caught." }
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Write the four missing release notes and refresh sitemap lastmod by hand. Fixes today, guarantees nothing about tomorrow."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "L1 plus the freshness assertion inside check-public-truth.mjs with a negative control, plus content-derived sitemap lastmod in build-pages.mjs."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "L2 plus generate the release note itself at closeout from the session's own impact summary into a reviewable draft, so the publishing step cannot be forgotten rather than merely being caught."
+        }
       }
     },
     {
@@ -102,14 +130,23 @@
       "priority": 9.1,
       "slug": "front-door-leads-with-zero-contributors",
       "title": "The front door's highest-value real estate is a live social-proof widget that currently renders 'Warming up' and '0 contributors' to every first-time visitor",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified against the live API, not assumed. `public/index.html` places the Community Pulse section (`What GMs are doing` / `See the franchises players are building... Updated throughout the day`) immediately below the hero and above New Franchise -- the second thing any visitor sees. `GET .../community/v1/snapshot` returns HTTP 200 with `\"status\":\"warming\"` and `sampleSize: 0` for 24h, 7d and 30d, with `suppressionThreshold: 5`. `public/community-stats.js:69` maps that status to the literal string `Warming up`, line 79-80 footnotes every card with `${sampleSize} contributors` -- so `0 contributors` -- and line 90 renders `Community trends will appear as more players choose to share their game activity.` The `/stats` Community Stats Atlas is a full page of the same zeros, linked from the front door and listed in sitemap.xml for indexing. The privacy engineering here is genuinely excellent (opt-in, IP-less, 30-day expiry, five-contributor suppression floor) and none of that is the problem. The problem is that a pre-cohort product is leading with an empty room, and the one number a visitor can read about this game before playing it is zero.",
       "fix": "Make the widget state-aware rather than merely honest. When `status === 'warming'` or `sampleSize < suppressionThreshold`, do not render the stat grid at all -- render the *invitation* instead: what Community Stats will show once players opt in, the privacy pact in one line, and the play CTA. The methodology copy already written on /stats is the best asset on the site and reads as confidence rather than emptiness; promote it into the empty state. Keep /stats reachable but drop it from sitemap.xml until the cohort exists, so the first page Google indexes about this game is not a table of zeros. This is a rendering-path change in community-stats.js plus a build-pages sitemap rule; the API contract does not change.",
-      "verification": "Playwright spec against a stubbed snapshot in each of three states -- warming/zero, below-suppression, and a healthy cohort -- asserting that the zero and below-suppression states render the invitation and never the string `0 contributors`, and that the healthy state renders the grid unchanged. Confirm against the real live API that today's response takes the invitation path.",
+      "verification": "SHIPPED. isPreCohort drives both consumer surfaces; below the suppression floor they render the invitation and the privacy pact instead of a grid of 'Warming up' / '0 contributors' cards. /stats leaves the sitemap until a cohort exists. Playwright covers warming/zero, and a healthy cohort still rendering the scoreboard unchanged.",
       "ladder": {
-        "L1": { "effortHours": 1, "recipe": "Suppress the pulse section on the front door when sampleSize is below the suppression threshold. Removes the damage, adds nothing." },
-        "L2": { "effortHours": 4, "recipe": "Full state-aware invitation state on both the front door and /stats, plus the sitemap rule." },
-        "L3": { "effortHours": 9, "recipe": "L2 plus a seeded 'league of record' baseline -- aggregate statistics from the project's own long-horizon simulation receipts, clearly labelled as simulated rather than community -- so the page is interesting on day one and the community numbers arrive alongside it rather than replacing an empty box." }
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Suppress the pulse section on the front door when sampleSize is below the suppression threshold. Removes the damage, adds nothing."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "Full state-aware invitation state on both the front door and /stats, plus the sitemap rule."
+        },
+        "L3": {
+          "effortHours": 9,
+          "recipe": "L2 plus a seeded 'league of record' baseline -- aggregate statistics from the project's own long-horizon simulation receipts, clearly labelled as simulated rather than community -- so the page is interesting on day one and the community numbers arrive alongside it rather than replacing an empty box."
+        }
       }
     },
     {
@@ -122,14 +159,23 @@
       "priority": 8.6,
       "slug": "thirty-one-front-offices-with-memory-hidden-behind-a-load-button",
       "title": "The rival-GM system has persistent per-club memory, grudges and archetypes -- and its full intel is a click-to-load table filed under Scouting, absent from free agency and the on-clock draft market where you actually negotiate against it",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified by tracing the module, and narrowed after the first premise proved partly false. `src/engine/rivalGmPersona.js` exports `getRivalGmPersona`, `recordRivalGmMemory`, `getRivalGmMemory`, `personaGrudgeLine` and `buildPersonaIntel` -- a real system with per-club identity and a memory of what you have done to each club. It IS wired into trade offers: `src/engine/rivalTradeOffers.js:212-213` attaches `gmName` and `gmLine` to every incoming offer, so the claim 'personas are invisible' is false and is not made here. What is true is narrower and still costly. First, `buildPersonaIntel` -- the tendency/archetype read, the thing that lets you form a model of an opponent before you negotiate -- surfaces only through the `League GM Archetypes` panel in the Scouting tab, behind a manual `Load Archetypes` button rendering a table, next to draft-prospect tooling it has nothing to do with. Second, `src/engine/onClockTradeMarket.js` imports nothing from rivalGmPersona, so the draft-day trade market -- the single highest-pressure negotiation in the game -- is faceless. Third, nothing carries persona into premium free-agent bidding, where rival clubs are competing against you week by week. The result is a game whose most characterful AI is legible in one place and anonymous in the two places where it costs you something.",
       "fix": "Stop treating the persona as a screen and start treating it as the counterparty's face. Build one shared `rivalFrontOfficeCard` presenter fed by `buildPersonaIntel` + `getRivalGmMemory`, and attach it at every seam where a rival acts against you: the incoming-offer row (already has gmName/gmLine -- promote them into an identity chip you can expand), each on-clock draft trade proposal, and each competing bid in the free-agency waves. Give `onClockTradeMarket` the persona import it lacks so a draft-day offer arrives from a named GM with a known tendency and a memory of the last time you fleeced them. Then retire the `Load Archetypes` button entirely: intel that must be manually fetched is intel nobody has when they need it. This item is deliberately additive to the engine's existing outputs -- no new simulation state, no save migration.",
-      "verification": "Node tests that an on-clock trade proposal and a free-agency competing bid both carry a stable persona identity for the same club across a season, and that the grudge line reflects a recorded memory rather than a constant. Playwright spec that the identity chip renders in all three seams. Then a qualitative check the tests cannot do: play a draft with two rival clubs of opposite archetypes and confirm their proposals are distinguishable without reading the club name.",
+      "verification": "SHIPPED, after the premise was narrowed twice by verification. 'Personas are invisible' was FALSE: rivalTradeOffers already attaches gmName/gmLine, and beatReporter's free-agency outbid names the winning GM in both its memory entry and its headline. Two real gaps remained and both are closed: onClockTradeMarket imported nothing from rivalGmPersona, so draft day - the highest-pressure negotiation in the game - arrived from a team id; and buildPersonaIntel sat behind a manual 'Load Archetypes' button. New src/engine/rivalFrontOffice.js is the one shape both seams render; the button is retired for tab-scoped auto-load through observeBackgroundTask. A test asserts the deal terms are byte-identical with and without a face attached, and that the card never implies odds, leverage or a relationship score the engine does not have. 6 new tests.",
       "ladder": {
-        "L1": { "effortHours": 2, "recipe": "Auto-load the archetypes panel instead of requiring a button, and move it out of Scouting. Cheapest legibility win, changes no negotiation." },
-        "L2": { "effortHours": 9, "recipe": "Shared front-office card attached at all three negotiation seams including the on-clock draft market; retire the load button." },
-        "L3": { "effortHours": 20, "recipe": "L2 plus rival front offices that visibly act on their memory across seasons -- a GM you have repeatedly beaten in trades opens harder with you specifically -- gated by a measured test that the effect is real and bounded rather than flavour text." }
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Auto-load the archetypes panel instead of requiring a button, and move it out of Scouting. Cheapest legibility win, changes no negotiation."
+        },
+        "L2": {
+          "effortHours": 9,
+          "recipe": "Shared front-office card attached at all three negotiation seams including the on-clock draft market; retire the load button."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "L2 plus rival front offices that visibly act on their memory across seasons -- a GM you have repeatedly beaten in trades opens harder with you specifically -- gated by a measured test that the effect is real and bounded rather than flavour text."
+        }
       }
     },
     {
@@ -142,14 +188,23 @@
       "priority": 8.2,
       "slug": "the-realism-story-is-the-differentiator-and-it-is-unpublished",
       "title": "This game's genuine world-class differentiator -- that its realism is measured, sourced and gated rather than claimed -- exists only in internal docs and a developer diagnostics panel, and appears nowhere a player or press contact can read it",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified across the tree and the public surface. The project has something almost no franchise simulator has: `src/data/nflEliteDensityBaseline.js` sources its elite-talent ceiling from real, structurally stable NFL honor formats -- 26 AP First-Team All-Pro seats and 88 Pro Bowl seats over the real 53x32 = 1,696 active-roster population, which coincides exactly with this project's own ROSTER_STRUCTURE.activeLimit x team count. `src/stats/progressionParity.js` measures distribution against that band and reports a verdict. `src/stats/realismCalibrator.js` and `npm run verify:realism` guardrail season and career statistics against Pro Football Reference. S93 measured a live decade to prove a fix and published the numbers. The S92 note in the tree even documents its own honest limits -- that the baseline is an analogy, not an identity, which is why it ships as a band rather than a false-precision point. Now the public surface: landing.html says `PFR-Calibrated Stats -- Season and career statistics are guardrailed against real NFL baselines from Pro Football Reference. Numbers feel real.` That is one feature card among nine. There is no page a curious player, a reviewer, or a press contact can read that explains how any of it works, and the only place the machinery is visible is `Realism Verification (10-20 Year)` / `League Progression Parity` / `Finite-Number Integrity` -- three developer diagnostic panels buried in the Settings tab (see rank 6). The most defensible marketing asset this project owns is filed as a debugging tool.",
       "fix": "Ship a new public page -- `/simulation.html`, 'How honest is this simulation?' -- that is the methodology page for the game engine, in the same voice as the excellent /stats methodology section that already exists. It should state what is measured, what it is measured against and where that anchor comes from, what the current verdict is, and -- decisively -- what the limits are, because the honesty about limits is what makes the rest credible. Bind the published numbers to source: generate the page's verdict block at build time from the same receipt `progressionParity` produces, so the page cannot drift from the engine (this is the reverse of rank 2's problem, solved by construction rather than by gate). Link it from the landing page's PFR-Calibrated feature card, from about.html, and from `.well-known/llms.txt` so machine readers find it. Retire the raw diagnostic panels from the consumer Settings tab in the same pass (rank 6) -- the player-facing answer replaces them.",
-      "verification": "A build assertion that the page's verdict block matches the current progressionParity receipt, with a negative control proving it goes red when the receipt moves. check-public-truth must pass on the new page including the internal-vocabulary scan. A Playwright spec covering the new route and both themes. Then the human check: give it to a reader who does not know the project and confirm they can say what is measured and what the limits are.",
+      "verification": "SHIPPED as /simulation.html. Publishes the sourced anchor (26 All-Pro places, 88 Pro Bowl places, over the real 1,696-player active population that is also this game's own roster structure), the ceiling and watch line it yields, and spends its longest section on where the comparison breaks down. Figures are RENDERED from progressionParity's own constants through comment sentinels, so the block lives in source (dev server and browser suite see real numbers) and is regenerated by the build. check-public-truth asserts source AND output; a hand-written friendlier number fails. Linked from the merged pitch, about, status and llms.txt.",
       "ladder": {
-        "L1": { "effortHours": 3, "recipe": "Static methodology page written by hand from the existing internal notes, linked from landing and about. Publishes the story; can drift." },
-        "L2": { "effortHours": 10, "recipe": "L2 as described -- build-time verdict block bound to the progressionParity receipt, llms.txt entry, diagnostic panels retired from the consumer surface." },
-        "L3": { "effortHours": 18, "recipe": "L2 plus a live 'run it yourself' affordance -- a bounded in-page verification a curious player can execute on their own league and compare to the published band, turning the differentiator from a claim into an experiment." }
+        "L1": {
+          "effortHours": 3,
+          "recipe": "Static methodology page written by hand from the existing internal notes, linked from landing and about. Publishes the story; can drift."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "L2 as described -- build-time verdict block bound to the progressionParity receipt, llms.txt entry, diagnostic panels retired from the consumer surface."
+        },
+        "L3": {
+          "effortHours": 18,
+          "recipe": "L2 plus a live 'run it yourself' affordance -- a bounded in-page verification a curious player can execute on their own league and compare to the published band, turning the differentiator from a claim into an experiment."
+        }
       }
     },
     {
@@ -162,14 +217,23 @@
       "priority": 7.7,
       "slug": "settings-is-a-twenty-panel-junk-drawer-holding-the-economy",
       "title": "The Settings tab holds twenty panels spanning trophies, the live owner economy, and developer diagnostics in one stack -- and that is the structural reason two god-mode surfaces survived thirty sessions",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified by extracting every heading inside `<section id=\"settingsTab\">` in public/game.html. In one undifferentiated tab: Commissioner Mode, Speedrun Challenge, Trophy Case, Franchise Brand Builder, Commissioner Deck, Launch Readiness, Onboarding, Rewind Timeline, Saves & QA, Commissioner Controls, Owner Controls, Facilities Market, System Health, Realism Verification (10-20 Year), League Progression Parity, Position-Room Verdicts, Seed Comparison History, Finite-Number Integrity, Offseason Pipeline, Coaching Staff, Mobile & Community, Game Guide. Three distinct audiences are stacked here with no separation. Consumer identity and reward: Trophy Case, Brand Builder, Speedrun. Live simulation economy: Owner Controls, Facilities Market, Coaching Staff -- these are gameplay, they debit owner.cash, and after S93 they are one of the game's most interesting decisions. Developer diagnostics: Launch Readiness, Realism Verification with a `Run Verification` button and a seasons input accepting up to 30, League Progression Parity, Finite-Number Integrity, Offseason Pipeline, System Health, Saves & QA -- all ungated, all shipped to every consumer, one of them able to lock the tab on a long synchronous run. The causal claim is the important part and it is evidenced: S63 closed the Coaching Staff god-mode panel and S93 closed the byte-identical Owner Facilities panel eight lines away in the same file, thirty sessions later. Both lived here. A tab that mixes trophies with live economy inputs and debug tables is a tab nobody design-reviews, which is precisely how three free number boxes wired to the strongest simulation input went unnoticed.",
       "fix": "Split by audience, which also dissolves the redundancy. (1) New `Boardroom` tab -- promote Owner Controls, Facilities Market and Coaching Staff out of Settings into a first-class gameplay surface where the S93 economy reads as the strategic decision it now is: cash, upkeep, the demand curve, and the three-points-per-wing-per-year construction budget shown as a plan, not a form. (2) Fold Trophy Case, Speedrun Challenge and Brand Builder into the existing identity/legacy surface rather than Settings. (3) Move every diagnostic panel behind an explicit developer surface -- a `?dev=1` route or a build-time flag -- so Launch Readiness, Realism Verification, Progression Parity, Finite-Number Integrity, Offseason Pipeline and System Health stop shipping to consumers; the player-facing replacement for the realism panels is rank 5's methodology page. (4) Settings keeps what the word means: runtime, theme, saves, data and privacy. Do this before rank 7's tab consolidation, because it changes what the tab list contains.",
-      "verification": "Playwright spec that the consumer build renders no diagnostic panel and that `?dev=1` renders all of them. Node test that the Boardroom surface's investment path still routes through `investInFacility` and that `updateOwnerState` still returns `facilities-readonly` -- the S93 guarantee must survive the move, which is the specific regression this refactor risks. Boot-budget check must stay green with the required 15% per-island headroom; tabSettings.js is currently the largest island at a 74,000-byte budget and should shrink materially.",
+      "verification": "SHIPPED. New Boardroom tab carries Owner Controls, the Facilities Market, the Coaching Staff sheet and the Brand Builder out of Settings, hydrating its own domains so the economy is populated by opening the Boardroom rather than by happening to visit Settings first. Seven developer diagnostics move behind ?dev=1 - a URL parameter, not a stored preference, because a diagnostics surface a player can enable permanently by accident is the same defect one step removed. Extraction pushed the settings island to 14.9% against a 15% headroom floor; fixed by moving the gate into its own lazily-imported module, never by raising maxBytes. The S93 authority guarantee is asserted across the move. 4 new node tests plus 3 Playwright specs.",
       "ladder": {
-        "L1": { "effortHours": 2, "recipe": "Gate the seven diagnostic panels behind ?dev=1 and leave everything else where it is. Removes the consumer-facing leak and roughly a third of the tab." },
-        "L2": { "effortHours": 12, "recipe": "Full four-way split including the new Boardroom tab, with the S93 authority regression tests." },
-        "L3": { "effortHours": 22, "recipe": "L2 plus the Boardroom as a genuine multi-season planning surface -- construction queued across league years against projected cash and upkeep, with the owner reacting to the plan rather than to each purchase." }
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Gate the seven diagnostic panels behind ?dev=1 and leave everything else where it is. Removes the consumer-facing leak and roughly a third of the tab."
+        },
+        "L2": {
+          "effortHours": 12,
+          "recipe": "Full four-way split including the new Boardroom tab, with the S93 authority regression tests."
+        },
+        "L3": {
+          "effortHours": 22,
+          "recipe": "L2 plus the Boardroom as a genuine multi-season planning surface -- construction queued across league years against projected cash and upkeep, with the owner reacting to the plan rather than to each purchase."
+        }
       }
     },
     {
@@ -182,14 +246,23 @@
       "priority": 6.3,
       "slug": "content-hashed-assets-served-revalidating-and-the-boot-graph-is-not-hashed-at-all",
       "title": "Exactly two files are content-hashed and both are served with a four-hour revalidating cache; the other ~50 boot modules are unhashed, so a returning player revalidates 638 KB every four hours and a deploy takes up to four hours to reach them",
-      "status": "open",
+      "status": "shipped-reduced",
       "premise": "Verified against live responses. `GET https://playfranchisearchitect.com/styles.d14503a8a4.css` returns `cache-control: public, must-revalidate, max-age=14400`. So does `community-stats.2eb1a4468e.js`. Both filenames embed a content hash, which means the URL changes whenever the bytes change -- that is the entire precondition for `immutable` caching, and it is being paid for and not collected. `scripts/build-pages.mjs` hashes exactly these two assets, by hardcoded name (`emitHashedStylesheet`, `emitHashedCommunityStats`, with the comment explaining that `styles.css?v=` never busts). Everything else ships unhashed: `setup.js`, `lib/themeBoot.js`, `app.js` and the 48 further `lib/*.js` modules the boot-budget gate counts -- 638,456 bytes across 49 modules, all on `max-age=14400`. Two costs fall out. A returning player revalidates the whole module graph every four hours -- roughly fifty conditional requests before the game is interactive. And because those URLs are stable, a shipped fix can take up to four hours to reach a returning player, which makes the deploy pipeline's carefully-proven immutable candidate revision meaningless at the client.",
       "fix": "Generalise what build-pages already does for two files. Emit content-hashed filenames for the entire boot graph and rewrite the import specifiers, then split the cache policy at the edge: hash-named paths get `max-age=31536000, immutable`; HTML documents keep `max-age=0, must-revalidate` so a deploy is visible on the next navigation. The current single blanket policy is what forces the bad compromise -- 4 hours is simultaneously far too short for immutable bytes and far too long for a mutable URL. Because the CSP is hash-based and `verify-edge-policy-application.mjs` proves the applied policy, the new cache rule should be proven the same way rather than assumed.",
-      "verification": "Measure before and after, do not argue it: record the live `cache-control` and the request count for a warm second load of `/game.html` today, apply the change, and re-measure. Assert in the build that every asset referenced by a built document is either hash-named or explicitly allowlisted as mutable, with a negative control. `measure-hosted-performance.mjs` re-run to confirm no regression against the recorded desktop/mobile LCP-INP-CLS medians.",
+      "verification": "SHIPPED AT REDUCED SCOPE, deliberately, after the premise moved. The build emits a cache-first service worker precaching 192 assets, which already amortises repeat loads across the unhashed module graph - so full-graph hashing would buy far less than the audit assumed and was NOT pursued. Two classes were genuinely wrong and are fixed: sw.js, the update channel that installs a cache-first worker, was itself cacheable for 4h (a shipped fix could be invisible for four hours while the previous precache served from disk) and is now no-cache; and the two content-hashed filenames now get max-age=31536000, immutable. The host default is left alone for the ~110 stable-URL modules, where it is correct.",
       "ladder": {
-        "L1": { "effortHours": 1, "recipe": "Serve the two already-hashed files immutable and leave the rest at 4h. Correct, tiny, addresses two files out of fifty." },
-        "L2": { "effortHours": 7, "recipe": "Hash the full boot graph in build-pages with import-specifier rewriting, split the edge cache policy, prove both." },
-        "L3": { "effortHours": 14, "recipe": "L2 plus a service worker that makes the immutable graph offline-capable -- appropriate for a game that already declares it runs entirely in the browser with no account and no server." }
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Serve the two already-hashed files immutable and leave the rest at 4h. Correct, tiny, addresses two files out of fifty."
+        },
+        "L2": {
+          "effortHours": 7,
+          "recipe": "Hash the full boot graph in build-pages with import-specifier rewriting, split the edge cache policy, prove both."
+        },
+        "L3": {
+          "effortHours": 14,
+          "recipe": "L2 plus a service worker that makes the immutable graph offline-capable -- appropriate for a game that already declares it runs entirely in the browser with no account and no server."
+        }
       }
     },
     {
@@ -202,14 +275,23 @@
       "priority": 6.4,
       "slug": "zero-modulepreload-on-a-fifty-module-boot-graph",
       "title": "Neither / nor /game.html emits a single preload hint, so the browser discovers the ~48-module import graph only after app.js parses",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified on the live documents: `rel=\"modulepreload\"` count 0 and `rel=\"preload\"` count 0 on both `/` and `/game.html`. The only links present on `/` are canonical, icon and stylesheet. `/game.html` loads `<script type=\"module\" src=\"./app.js\">`, and app.js's static imports -- the 49 modules the boot-budget gate counts -- cannot begin downloading until app.js has been fetched and parsed. That is a serialized discovery step on the critical path of the app's first paint. The boot-budget gate measures total bytes and lazy leaks and is green; it says nothing about how those bytes are discovered, which is why this has never surfaced.",
       "fix": "Have `build-pages.mjs` emit `<link rel=\"modulepreload\">` for the static boot graph it already computes for the budget check -- the module list is a byproduct of `check-browser-boot-budget.mjs`, so this is a wiring job, not a new analysis. Do not preload the twelve declared lazyRoots; preloading a deliberately-lazy island would silently undo the island architecture. Pairs naturally with rank 7, since hashed filenames make the preload list exact.",
-      "verification": "Measure, do not assume: `measure-hosted-performance.mjs` before and after on `/game.html`, against the recorded medians (desktop LCP 628 ms / INP 56 ms / CLS 0; mobile 780 / 24 / 0). A build assertion that the preload list equals the static graph and intersects the lazyRoots list at zero entries -- so a future eager import cannot quietly get preloaded into the boot path.",
+      "verification": "SHIPPED. 48 hints on game.html, 5 on index.html, DERIVED from the same walk the byte budget performs - a hand-written list would be the boot graph declared twice. Preloading a declared lazy root now throws at build time, because that regression would pull an island onto the critical path while the byte budget, which measures only the static graph, stayed green. A test asserts the emitted list equals the derived graph exactly and is disjoint from lazyRoots.",
       "ladder": {
-        "L1": { "effortHours": 0.5, "recipe": "Hand-write modulepreload links for the ten largest boot modules. Most of the benefit, drifts on the next refactor." },
-        "L2": { "effortHours": 2, "recipe": "Generate the full preload list from the boot-budget module graph with the lazyRoots-disjointness assertion." },
-        "L3": { "effortHours": 6, "recipe": "L2 plus priority hints and a measured decision about which islands deserve speculative prefetch after first paint rather than preload before it." }
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Hand-write modulepreload links for the ten largest boot modules. Most of the benefit, drifts on the next refactor."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Generate the full preload list from the boot-budget module graph with the lazyRoots-disjointness assertion."
+        },
+        "L3": {
+          "effortHours": 6,
+          "recipe": "L2 plus priority hints and a measured decision about which islands deserve speculative prefetch after first paint rather than preload before it."
+        }
       }
     },
     {
@@ -222,14 +304,23 @@
       "priority": 6.6,
       "slug": "the-front-door-is-a-configuration-form",
       "title": "The marketing page is not the front door -- `/` is a setup form wearing the marketing metadata, and the real pitch is reachable only through a small footer link reading 'Why Franchise Architect?'",
-      "status": "open",
+      "status": "shipped-corrected",
       "premise": "Verified across both documents. `public/index.html` carries the full marketing identity -- title 'Deep NFL Franchise Simulator', og:title/og:description/og:image/og:url, twitter:summary_large_image -- and its body is `<body class=\"setup-body\">`: a hero CTA, then the Community Pulse widget, then New Franchise presets, a team `<select>`, a challenge-code input, and three `<details>` blocks for League Settings, Saved Leagues and Auto Backups. `public/landing.html` is the actual marketing page -- nine feature cards, a stats bar, two CTAs, a proper narrative -- and the only routes to it are a footer link on index reading 'Why Franchise Architect?', one link on about.html and one on status.html. The funnel is inverted: a first-time visitor who has never heard of the game lands on a configuration form, and the page that would convince them is a secondary URL. Two related consequences, one of which is a false premise worth recording: the two pages carry near-identical titles and descriptions and would compete for the same query -- but `build-pages.mjs` does inject a per-page `<link rel=\"canonical\">` at build time (verified live on both `/` and `/landing.html`), so the duplicate-content risk is already handled and is NOT claimed here. What remains true is that landing.html's built document has no og:image and no twitter card, so the marketing page shares worse than the setup form does.",
       "fix": "Resolve the two pages into one funnel rather than maintaining both. Preferred shape: `/` becomes the landing experience -- pitch, feature narrative, social proof (rank 3's invitation state) -- with a single unmistakable primary CTA, and the setup surface moves to `/play` where `play.html` already sits as a stub redirect. A returning player with a save in this browser is detected exactly as index does today and gets 'Continue Franchise' promoted to the top of `/`, so the returning-player path does not regress. Give the landing content the og:image and twitter card it lacks. This is the largest single UX change in this audit and should be sequenced after rank 3, because the empty-widget fix is a precondition for putting social proof on the front door at all.",
-      "verification": "Playwright specs for three journeys against the built output: first-time visitor (no saves) reaches the pitch and can start a franchise in one click; returning visitor with a save sees Continue promoted; deep links to the old URLs still resolve. smoke-pages must cover the new route map. Confirm the built `/` and `/play` each carry a correct canonical and a complete social card. Re-run responsive-evidence and re-baseline visual QA, since this changes the site's most-captured screen.",
+      "verification": "SHIPPED WITH THE AUDIT'S FRAMING CORRECTED AGAINST CANON. The proposed fix - landing content at the root and setup at /play - would have reversed DECISIONS 2026-08-04 ('The root URL is for the person who has never seen the game'), which S70 settled by making one click start a league. The real gap was narrower: S70 answered 'let a newcomer start' and never answered 'let a newcomer know why'. The argument now lives on the root page BELOW the one-click start, and landing.html retires into a 301. The merge removed a second visual language along with the second page - the section is built from this site's own tokens, so landing's inline palette and light-theme override disappear rather than being ported. A Playwright spec asserts the ORDERING so the S70 canon cannot be quietly reversed by a later reshuffle.",
       "ladder": {
-        "L1": { "effortHours": 2, "recipe": "Promote the landing link into index's primary navigation and give landing.html the missing og:image and twitter card. Keeps both pages; makes the pitch findable." },
-        "L2": { "effortHours": 8, "recipe": "Full funnel inversion -- landing content at `/`, setup at `/play`, returning-player detection preserved, redirects and specs." },
-        "L3": { "effortHours": 16, "recipe": "L2 plus a playable proof above the fold -- a bounded, non-persisting decision from the real engine embedded in the landing page, so the pitch demonstrates the game's decision pressure instead of describing it." }
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Promote the landing link into index's primary navigation and give landing.html the missing og:image and twitter card. Keeps both pages; makes the pitch findable."
+        },
+        "L2": {
+          "effortHours": 8,
+          "recipe": "Full funnel inversion -- landing content at `/`, setup at `/play`, returning-player detection preserved, redirects and specs."
+        },
+        "L3": {
+          "effortHours": 16,
+          "recipe": "L2 plus a playable proof above the fold -- a bounded, non-persisting decision from the real engine embedded in the landing page, so the pitch demonstrates the game's decision pressure instead of describing it."
+        }
       }
     },
     {
@@ -242,14 +333,23 @@
       "priority": 6.6,
       "slug": "visual-qa-is-105-megabytes-of-tracked-pngs",
       "title": "821 visual-QA screenshots totalling 105 MB are tracked in a public repository whose entire pack is 44 MB, and the receipts that constitute the actual evidence already carry hashes",
-      "status": "open",
+      "status": "shipped-with-correction",
       "premise": "Verified by measurement. `docs/visual-qa/` holds 821 files at 104.9 MB, every one of them tracked (`git ls-files docs/visual-qa` returns 821). `git count-objects -vH` reports size-pack 43.78 MiB and size 82.51 MiB, so this directory dominates the repository. Individual captures run to 1.28 MB and the set grows every session that touches a visual surface -- S86 through S93 each contribute captures. `scripts/write-visual-qa-receipt.mjs` already exists and the release-authority record in PROJECT_STATUS carries `visual` identities with sha256 digests, which means the audit trail -- the thing that has to be durable -- is the receipt, and the PNG is the human-readable attachment to it. Every clone and every CI checkout of a public repo pays for ninety sessions of attachments.",
       "fix": "Keep the receipts forever, keep a bounded window of captures. Retain the current session plus the previous two in `docs/visual-qa/`, and move older captures out of the working tree -- either to a release attachment or simply pruned, since the hash in the receipt is what proves what was reviewed. Add a retention assertion to the visual-QA receipt writer so the window is enforced rather than remembered. Do not rewrite history in this pass: history rewriting on a public repo is a separate, founder-approved operation, and the recurring cost stops the moment new captures stop accumulating.",
-      "verification": "Record repo size and `git count-objects -vH` before and after. Assert the retention window in the receipt writer with a negative control (a fourth-oldest session's captures present must fail). Confirm the release-authority visual receipt still verifies against the retained captures for the current candidate revision -- the guarantee that must not break.",
+      "verification": "SHIPPED, with a correction that changed the order of operations. The audit asserted 'the receipts already carry the hashes'; checking that BEFORE acting showed it was true of one session - LATEST.json covers 84 captures, all from S93, out of 821 on disk. Pruning on that assumption would have destroyed the only record the other twenty-three sessions' reviews ever had. So writeCaptureLedger records all 819 hashes FIRST (143 KB, append-only) and the prune refuses to run without it. 104.9 MB -> 33.9 MB; every pruned capture remains provable. History is deliberately not rewritten.",
       "ladder": {
-        "L1": { "effortHours": 0.5, "recipe": "Prune captures older than three sessions once, by hand. Recovers the space now; regrows immediately." },
-        "L2": { "effortHours": 3, "recipe": "Enforced retention window in write-visual-qa-receipt.mjs plus the one-time prune, with the release-authority check." },
-        "L3": { "effortHours": 8, "recipe": "L2 plus perceptual-diff-only retention -- keep a capture only when it differs materially from the prior session's, so the archive records change rather than repetition." }
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Prune captures older than three sessions once, by hand. Recovers the space now; regrows immediately."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Enforced retention window in write-visual-qa-receipt.mjs plus the one-time prune, with the release-authority check."
+        },
+        "L3": {
+          "effortHours": 8,
+          "recipe": "L2 plus perceptual-diff-only retention -- keep a capture only when it differs materially from the prior session's, so the archive records change rather than repetition."
+        }
       }
     },
     {
@@ -262,14 +362,23 @@
       "priority": 6.4,
       "slug": "append-only-ledgers-are-861-kilobytes",
       "title": "Five append-only context ledgers total 861 KB -- roughly 215,000 tokens, more than a full context window -- and any session that greps one pays for ninety sessions of history",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified by measurement. `context/` totals 861 KB across, largest first: SELF_IMPROVEMENT_LOOP.md 184.3 KB, TASK_BOARD.md 153.8 KB (1,670 lines, 19 open items), DECISIONS.md 134.4 KB, TRUTH_AUDIT.md 130.6 KB, CURRENT_STATE.md 122.1 KB, PROJECT_STATUS.json 26.4 KB. All five are append-only and all five grow every session. The startup brief correctly protects session boot from this -- `/start` reads a ~3 KB synthesized brief, which is why boot is cheap. The cost lands later: this audit's own step-1 context load returned 81 KB from three files and had to be spilled to a scratch file, and `scripts/task-slice.mjs --audit-context` -- the bounded projection the audit protocol calls for precisely to avoid this -- does not exist in this repo (MODULE_NOT_FOUND), so there is currently no bounded read path for the task board at all. The honest framing: this is not waste, it is a real archive of a genuinely long project, and the fix is not deletion. It is that the live file should hold the working set and the archive should hold the rest.",
       "fix": "Two parts, cheapest first. (1) Port `task-slice.mjs` -- the audit protocol already depends on it and it is missing here, which is a silent contract break, not a nice-to-have. It should project open items plus the last N sessions under a character cap. (2) Roll each ledger: keep the most recent N sessions in the live file and move older entries verbatim into `context/archive/<name>.S1-S<k>.md`, with a stable pointer line at the bottom of the live file. Nothing is lost and nothing is rewritten -- the archive is append-only too. Measure the result rather than asserting it: record the byte size of the five ledgers and the token cost of a standard audit step-1 load before and after.",
-      "verification": "A measurement plan, because a token item without one is a guess. Before: 861 KB across five files; audit step-1 load 81 KB from three files. After: re-measure both. Assert in a check script that no live ledger exceeds a declared ceiling, with a negative control. Confirm the archived content is byte-identical to what was removed, and that render-startup-brief and check-brief-staleness still resolve their inputs.",
+      "verification": "SHIPPED. task-slice.mjs did not exist here, so the bounded read path the audit protocol requires was a silent contract break; it now projects 19 open items into 4 KB from a 154 KB board and says so out loud when it truncates. ledger-roll moves entries older than ten sessions verbatim into context/archive/ with a pointer left behind: 571 KB -> 158 KB across four ledgers, context/ overall 861 KB -> 439 KB, with integrity verified line by line before the change was kept (136/691/581/1206 original lines, 0 missing). An enforced ceiling stops the live files growing back.",
       "ladder": {
-        "L1": { "effortHours": 1, "recipe": "Port task-slice.mjs so the audit protocol's bounded read path exists. Fixes the contract break; ledgers keep growing." },
-        "L2": { "effortHours": 5, "recipe": "L1 plus rolling archive for all five ledgers with an enforced size ceiling and before/after measurement." },
-        "L3": { "effortHours": 11, "recipe": "L2 plus a derived working-set index -- open items, active decisions and unresolved truth findings projected into one small file regenerated at closeout, so the common read is small by construction rather than by discipline." }
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Port task-slice.mjs so the audit protocol's bounded read path exists. Fixes the contract break; ledgers keep growing."
+        },
+        "L2": {
+          "effortHours": 5,
+          "recipe": "L1 plus rolling archive for all five ledgers with an enforced size ceiling and before/after measurement."
+        },
+        "L3": {
+          "effortHours": 11,
+          "recipe": "L2 plus a derived working-set index -- open items, active decisions and unresolved truth findings projected into one small file regenerated at closeout, so the common read is small by construction rather than by discipline."
+        }
       }
     },
     {
@@ -282,14 +391,23 @@
       "priority": 4.9,
       "slug": "fourteen-tabs-five-of-them-about-the-roster",
       "title": "Fourteen top-level tabs, of which five are roster-domain and three are record-domain -- the navigation is organised by data table rather than by what a general manager is trying to do",
-      "status": "open",
+      "status": "skipped-premise-corrected",
       "premise": "Verified by extracting the tab list from public/game.html: overview, stats, calendar, roster, fa, depth, contracts, transactions, scouting, draft, log, history, rules, settings. Five of these are one domain -- roster, free agents, depth chart, contracts, transactions are all 'who is on my team and what do they cost'. Three more are one domain -- stats, history, log are all 'what has already happened'. Two more pair naturally: scouting and draft. Meanwhile `rulesTab`'s entire panel is 773 bytes. The player pays for this twice: fourteen targets to scan on desktop, and on a phone a fourteen-item tab strip is the dominant navigation problem (TASK_BOARD carries an open, founder-deferred item for mobile nav and 481-980px tablet parity, which this would subsume). The count is also load-bearing on the lazy-island architecture -- each tab is an island with its own byte budget -- so consolidation must be done without collapsing islands back into the boot graph.",
       "fix": "Regroup to five or six task-shaped surfaces with sub-navigation, reusing the `subtab-btn` pattern game.html already ships in History and the Box Score: Command (overview + calendar), Roster (roster + depth + contracts + free agents + transactions), Draft Room (scouting + draft + combine), Record (stats + history + log), Boardroom (rank 6's new economy tab), Settings. Keep every existing island a separate dynamic import behind its sub-tab so the boot budget is unaffected -- the change is to the navigation model, not the loading model. Sequence this after rank 6, which changes what the tab list contains, and treat the mobile layout as the primary design target rather than a port.",
-      "verification": "Boot-budget check must stay green with per-island headroom at or above the declared 15% floor and zero lazy leaks -- the specific regression risk is an island collapsing into the static graph. Playwright specs for deep links to every prior tab id, so no bookmark or in-game link breaks. Responsive evidence re-baselined at mobile, tablet and desktop widths. Keyboard navigation across the new structure, since game.html ships a Keyboard Shortcuts surface that must stay accurate.",
+      "verification": "NOT IMPLEMENTED - premise partly false on inspection, recorded rather than churned. The tab rail is ALREADY grouped under five task headers (Gameday / Roster / Builds / History / Config), so it is not 'organised by data table'. What remains true is target count on mobile, which is a founder-deferred task-board item explicitly needing its own visual-evidence re-baseline budget. Migrating fourteen panels for no measured benefit, against a 1,220-test suite, was the wrong trade. The one honest piece was taken: the 773-byte Rules tab retires into the unified guide.",
       "ladder": {
-        "L1": { "effortHours": 2, "recipe": "Merge the 773-byte rules tab into the guide surface and group the tab strip visually without changing routing. Reduces scan cost, changes no structure." },
-        "L2": { "effortHours": 10, "recipe": "Full five-surface regroup with sub-navigation, islands preserved, deep links preserved, mobile-first." },
-        "L3": { "effortHours": 20, "recipe": "L2 plus a genuinely mobile-native navigation model with the touch affordances the task board has deferred twice -- currently the only touch handlers in public/ are the sim-watch swipe transport in simWatchDirector.js, and nothing else in the app responds to touch." }
+        "L1": {
+          "effortHours": 2,
+          "recipe": "Merge the 773-byte rules tab into the guide surface and group the tab strip visually without changing routing. Reduces scan cost, changes no structure."
+        },
+        "L2": {
+          "effortHours": 10,
+          "recipe": "Full five-surface regroup with sub-navigation, islands preserved, deep links preserved, mobile-first."
+        },
+        "L3": {
+          "effortHours": 20,
+          "recipe": "L2 plus a genuinely mobile-native navigation model with the touch affordances the task board has deferred twice -- currently the only touch handlers in public/ are the sim-watch swipe transport in simWatchDirector.js, and nothing else in the app responds to touch."
+        }
       }
     },
     {
@@ -302,14 +420,23 @@
       "priority": 4.6,
       "slug": "four-places-to-learn-the-same-game",
       "title": "The game teaches itself in at least four separate places -- How To Play, Game Guide, Buttons & Features and the VaultSpark Rulebook -- plus an Onboarding panel and a tutorial campaign module",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified from the heading extraction of public/game.html: `How To Play`, `Game Guide` (appearing twice in the document), `Buttons & Features` and `VaultSpark Rulebook` are four distinct instructional headings, alongside an `Onboarding` panel in Settings and a separate `public/lib/tutorialCampaign.js` module at 15.9 KB. Four overlapping explanations of one game is worse than one, and not because of the bytes: a new player cannot tell which one is authoritative, and every future feature has to be documented four times or the four drift apart -- which is the same class of defect as this project's own recorded 'a shape declared twice will drift' finding, applied to prose instead of state.",
       "fix": "One canonical learning surface with three modes of the same content: a contextual first-run path (the existing tutorialCampaign, which is the strongest of the four because it teaches by doing), a searchable reference, and a keyboard/controls sheet. Fold Rulebook, Buttons & Features, How To Play and Game Guide into it and delete the duplicates rather than cross-linking them. Source the reference from one structured data file so a new feature is documented once. Sequence after rank 12, since the learning surface should describe the final navigation rather than the current one.",
-      "verification": "Assert exactly one instructional surface exists in the built document -- a grep-based structural check, since the failure mode is a fifth copy appearing later. Playwright spec for the first-run path on a fresh browser profile and for the reference's search. Confirm the controls sheet matches the actual bound shortcuts by deriving it from the same source, not by hand.",
+      "verification": "SHIPPED. Verified duplicate first: renderGuideContent writes the SAME GUIDE_SECTIONS array into both #rulesGuideContent and #guideModalContent. All four surfaces are now three views of one, reached from one place; the Rules tab, its rail button and its hydration declaration are retired. Exactly one render target remains.",
       "ladder": {
-        "L1": { "effortHours": 1.5, "recipe": "Delete the three weakest surfaces and point them at the strongest. Removes the contradiction, improves nothing." },
-        "L2": { "effortHours": 7, "recipe": "Single learning surface with three modes, reference sourced from one structured file, duplicates removed." },
-        "L3": { "effortHours": 14, "recipe": "L2 plus a just-in-time coaching layer that surfaces the relevant explanation at the moment a player first hits a decision they have not made before, driven by the existing contextualFeedback module." }
+        "L1": {
+          "effortHours": 1.5,
+          "recipe": "Delete the three weakest surfaces and point them at the strongest. Removes the contradiction, improves nothing."
+        },
+        "L2": {
+          "effortHours": 7,
+          "recipe": "Single learning surface with three modes, reference sourced from one structured file, duplicates removed."
+        },
+        "L3": {
+          "effortHours": 14,
+          "recipe": "L2 plus a just-in-time coaching layer that surfaces the relevant explanation at the moment a player first hits a decision they have not made before, driven by the existing contextualFeedback module."
+        }
       }
     },
     {
@@ -322,14 +449,23 @@
       "priority": 3.7,
       "slug": "three-meta-refresh-redirect-pages-and-a-latent-runtime-divergence",
       "title": "Three public pages exist only to meta-refresh elsewhere, and game.html's source declares the opposite runtime posture to index.html",
-      "status": "open",
+      "status": "shipped",
       "premise": "Verified by reading the files. `public/changelog.html` meta-refreshes to status.html, `public/ip.html` to terms.html, `public/play.html` to index.html -- each a full HTML document with a stylesheet link, shipped to serve a redirect that an edge rule should serve as a 301. Meta-refresh redirects are slower, are treated as weaker signals than a 301, and each one is a page that must be maintained. Separately and honestly downgraded: `public/game.html` source declares `vsfgm-runtime-default=\"server\"` and `vsfgm-server-available=\"true\"` while `public/index.html` declares `client`/`false`. This is NOT a production defect -- `scripts/build-pages.mjs` lines 182-203 rewrite both metas from `VSFGM_RUNTIME_DEFAULT` defaulting to `client`, so the deployed documents agree. It is a latent trap for anyone opening public/game.html directly or running an unbuilt local copy, and it is ranked here at low impact for that reason rather than being claimed as a live bug.",
       "fix": "Replace the three meta-refresh documents with edge 301 rules in the same policy layer that carries the CSP and cache headers, and delete the documents. Note that `play.html` is needed as a real route by rank 9's funnel inversion, so sequence that one after rank 9 rather than deleting it now. Separately, make the two source documents agree on `client`/`false` so the built and unbuilt states match, and add the pair to the build's existing meta rewrite assertion.",
-      "verification": "smoke-pages asserts each old URL returns 301 to the right target rather than 200 with a refresh. Confirm sitemap.xml does not list the retired paths (it currently does not). A build assertion that every page's runtime meta matches the configured value in both source and output.",
+      "verification": "SHIPPED. changelog.html, ip.html and play.html - plus landing.html from the funnel merge - are declared once in build-pages and emitted as a Cloudflare _redirects file, so the route map has one home instead of four documents that had to be kept in step with the design system. The runtime metas in game.html and index.html now agree in source as well as in output.",
       "ladder": {
-        "L1": { "effortHours": 0.5, "recipe": "Align the runtime metas in source. Removes the local-dev trap; leaves the redirect pages." },
-        "L2": { "effortHours": 2, "recipe": "Edge 301s replacing all three documents (play.html sequenced after rank 9), plus the meta alignment and its assertion." },
-        "L3": { "effortHours": 5, "recipe": "L2 plus a declared route map that build-pages, sitemap.xml, footer-manifest.json and smoke-pages all read from, so a route can only be added or retired in one place." }
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Align the runtime metas in source. Removes the local-dev trap; leaves the redirect pages."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Edge 301s replacing all three documents (play.html sequenced after rank 9), plus the meta alignment and its assertion."
+        },
+        "L3": {
+          "effortHours": 5,
+          "recipe": "L2 plus a declared route map that build-pages, sitemap.xml, footer-manifest.json and smoke-pages all read from, so a route can only be added or retired in one place."
+        }
       }
     }
   ],

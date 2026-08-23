@@ -5819,6 +5819,7 @@ export class GameSession {
       : [];
     const fingerprint = buildOnClockFingerprint({ draft, slot, pick: livePick, scoutingBoard });
     const offers = buildOnClockTradeOffers({
+      league: this.league,
       draft,
       slot,
       livePick,
