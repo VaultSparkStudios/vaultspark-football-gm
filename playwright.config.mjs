@@ -1,4 +1,8 @@
 import { defineConfig } from "@playwright/test";
+import { existsSync } from "node:fs";
+
+const PRE_INSTALLED_SHELL = "/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell";
+const executablePath = existsSync(PRE_INSTALLED_SHELL) ? PRE_INSTALLED_SHELL : undefined;
 
 export default defineConfig({
   testDir: "./tests-ui",
@@ -10,7 +14,8 @@ export default defineConfig({
     baseURL: "http://localhost:4273",
     headless: true,
     trace: "retain-on-failure",
-    screenshot: "only-on-failure"
+    screenshot: "only-on-failure",
+    ...(executablePath ? { launchOptions: { executablePath } } : {})
   },
   webServer: {
     command: "node scripts/dev-playwright-server.mjs",
