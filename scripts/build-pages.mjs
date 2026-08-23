@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import fsSync from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
@@ -11,6 +12,7 @@ import { emitEdgeSecurityPolicy } from "./lib/edge-security-policy.mjs";
 import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker.mjs";
 import { fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
 import { staticGraphFor } from "./check-browser-boot-budget.mjs";
+import { renderSimulationAnchor, SIMULATION_ANCHOR_MARKER } from "./lib/simulation-methodology.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -92,6 +94,7 @@ const htmlPages = [
   "terms.html",
   "ip.html",
   "status.html",
+  "simulation.html",
   "changelog.html",
   "404.html"
 ];
@@ -275,6 +278,11 @@ function injectHtmlDefaults(html, pagePath) {
   } else {
     next = next.replace(/<meta property="og:image" content="[^"]*" \/>/, `<meta property=\"og:image\" content=\"${ogImageUrl}\" />`);
   }
+  // S94: the methodology page's figures are rendered from the simulation's own
+  // constants, so the page cannot drift from the engine it describes.
+  if (next.includes(SIMULATION_ANCHOR_MARKER)) {
+    next = next.replace(SIMULATION_ANCHOR_MARKER, renderSimulationAnchor());
+  }
   const preloadPage = pagePath === "./" ? "index.html" : pagePath;
   const preloads = modulePreloadLinks.get(preloadPage);
   if (preloads && !next.includes('rel="modulepreload"')) {
@@ -318,6 +326,54 @@ async function mirrorProjectPaths() {
   for (const mirrorSlug of [slug, ...legacySlugs]) {
     await mirrorPath(mirrorSlug);
   }
+}
+
+// S94: sitemap lastmod, derived instead of declared.
+//
+// Nine of twelve URLs carried lastmod 2026-08-03 because nothing ever
+// regenerated the file -- the same rot that let status.html tell visitors the
+// game had been idle. A date a human has to remember to update is a date that
+// will eventually be wrong, and a wrong lastmod actively misleads crawlers about
+// what is worth re-reading. Git already records when each source page last
+// genuinely changed, so the sitemap can read it rather than assert it.
+//
+// Falls back to the value already in the file when git history is unavailable
+// (shallow CI clones): an unchanged stale date is honest-by-omission, whereas
+// stamping "today" on every build would claim a change that did not happen.
+function sitemapSourceFor(loc) {
+  const route = loc.replace(/^https?:\/\/[^/]+/, "") || "/";
+  if (route === "/") return "public/index.html";
+  if (route === "/stats") return "public/stats.html";
+  return `public${route}`;
+}
+
+async function stampSitemapLastmod() {
+  const sitemapPath = path.join(outDir, "sitemap.xml");
+  let xml;
+  try {
+    xml = await fs.readFile(sitemapPath, "utf8");
+  } catch {
+    return { stamped: 0 };
+  }
+  const { execFileSync } = await import("node:child_process");
+  let stamped = 0;
+  const next = xml.replace(/<loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod>/g, (whole, loc, current) => {
+    const source = sitemapSourceFor(loc);
+    if (!fsSync.existsSync(path.join(rootDir, source))) return whole;
+    let committed = "";
+    try {
+      committed = String(
+        execFileSync("git", ["log", "-1", "--format=%cs", "--", source], { cwd: rootDir, stdio: ["ignore", "pipe", "ignore"] })
+      ).trim();
+    } catch {
+      return whole;
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(committed) || committed === current) return whole;
+    stamped += 1;
+    return `<loc>${loc}</loc><lastmod>${committed}</lastmod>`;
+  });
+  if (stamped) await fs.writeFile(sitemapPath, next, "utf8");
+  return { stamped };
 }
 
 async function emitHashedStylesheet() {
@@ -433,6 +489,8 @@ async function main() {
   const sourceRevision = String(
     process.env.SOURCE_REVISION || process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || "local-worktree"
   ).trim();
+  const sitemap = await stampSitemapLastmod();
+  if (sitemap.stamped) console.log(`sitemap lastmod refreshed from git history: ${sitemap.stamped} URL(s)`);
   const edgePolicy = await emitEdgeSecurityPolicy({ outDir, htmlPages, sourceRevision });
   const swManifest = await emitServiceWorker(outDir);
   console.log(

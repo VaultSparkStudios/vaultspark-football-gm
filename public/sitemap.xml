@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://playfranchisearchitect.com/</loc><lastmod>2026-08-03</lastmod></url>
   <url><loc>https://playfranchisearchitect.com/landing.html</loc><lastmod>2026-08-03</lastmod></url>
-  <url><loc>https://playfranchisearchitect.com/stats</loc><lastmod>2026-08-08</lastmod></url>
+  <!-- /stats is deliberately unlisted until a real community cohort exists (S94).
+       Indexing a page of zeros makes the first thing a search engine learns about
+       this game a table of empty statistics. The page stays reachable and linked;
+       it is only withheld from the crawl invitation. Restore this entry the moment
+       the snapshot clears its suppression threshold. -->
   <url><loc>https://playfranchisearchitect.com/stats-surface.json</loc><lastmod>2026-08-08</lastmod></url>
+  <url><loc>https://playfranchisearchitect.com/simulation.html</loc><lastmod>2026-08-23</lastmod></url>
   <url><loc>https://playfranchisearchitect.com/about.html</loc><lastmod>2026-08-03</lastmod></url>
   <url><loc>https://playfranchisearchitect.com/status.html</loc><lastmod>2026-08-03</lastmod></url>
   <url><loc>https://playfranchisearchitect.com/contact.html</loc><lastmod>2026-08-03</lastmod></url>

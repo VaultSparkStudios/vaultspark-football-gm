@@ -139,12 +139,57 @@ function participationMarkup() {
   </div>`;
 }
 
+// S94: the pre-cohort state.
+//
+// Community Stats is honest by construction — opt-in, IP-less, 30-day expiry,
+// and a five-contributor suppression floor before any trend appears. None of
+// that is the problem. The problem is what honesty renders before anyone has
+// opted in: a grid of "Warming up" cards each footnoted "0 contributors", shown
+// immediately below the hero on the front door, so the first number a visitor
+// ever reads about this game is zero. An empty room is not social proof; it is
+// the opposite, and it is the strongest evidence the page can offer against
+// itself.
+//
+// So before there is a cohort, do not render the scoreboard at all — render the
+// invitation. The privacy pact IS the interesting content at this stage, and it
+// reads as confidence rather than as absence.
+function isPreCohort(snapshot) {
+  const period = snapshot?.periods?.[activePeriod];
+  if (!period) return false;
+  if (snapshot.status === "warming" || period.status === "warming") return true;
+  const threshold = Number(snapshot.suppressionThreshold ?? 5);
+  return Number(period.sampleSize ?? 0) < threshold;
+}
+
+function invitationMarkup(compact = false) {
+  const pact = compact
+    ? `<p>Optional and anonymous. Your save, your names and your notes never leave this browser.</p>`
+    : `<ul class="community-invitation-pact">
+        <li><strong>Optional.</strong> Off until you turn it on, and one click turns it back off and deletes what you shared.</li>
+        <li><strong>Anonymous.</strong> No account, no email, no internet address stored — and never your save, your names, your notes or your hidden ratings.</li>
+        <li><strong>Aggregate only.</strong> A trend stays hidden until enough players are represented that no single franchise can be read out of it.</li>
+      </ul>
+      <p class="community-invitation-method">Exactly how it works is written down in the <a href="/stats#methodology">methodology</a> — including what these numbers cannot tell you.</p>`;
+  return `<div class="community-invitation" data-community-invitation>
+      <h${compact ? "3" : "2"}>The league is still filling up</h${compact ? "3" : "2"}>
+      <p>Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here once enough players have chosen to share.</p>
+      ${pact}
+    </div>${participationMarkup()}`;
+}
+
 function renderPulse(snapshot) {
   const root = document.querySelector("[data-community-pulse]");
   if (!root) return;
   const period = snapshot?.periods?.[activePeriod];
   if (!period) { root.dataset.state = "unavailable"; root.querySelector("[data-community-freshness]").textContent = "Temporarily unavailable"; root.querySelector("[data-community-pulse-content]").innerHTML = `<p class="community-empty">Community stats are taking a timeout. Your franchise is unaffected.</p>${participationMarkup()}`; bindConsent(root); return; }
   root.dataset.state = snapshot.status;
+  if (isPreCohort(snapshot)) {
+    root.dataset.state = "pre-cohort";
+    root.querySelector("[data-community-freshness]").textContent = "Open to join";
+    root.querySelector("[data-community-pulse-content]").innerHTML = invitationMarkup(true);
+    bindConsent(root);
+    return;
+  }
   const headline = period.headline.slice(0, 4);
   root.querySelector("[data-community-freshness]").textContent = freshness(snapshot);
   root.querySelector("[data-community-pulse-content]").innerHTML = `
@@ -187,6 +232,13 @@ function renderAtlas(snapshot) {
   const status = document.querySelector("[data-community-atlas-status]");
   if (status) status.textContent = snapshot ? `${freshness(snapshot)} · ${period?.label || "No period"}` : "Stats unavailable";
   if (!period) { root.innerHTML = `<div class="community-empty"><h2>Community stats are taking a timeout</h2><p>We will keep trying. Your franchise is unaffected.</p></div>`; return; }
+  if (isPreCohort(snapshot)) {
+    root.innerHTML = invitationMarkup(false);
+    renderComparisons(period);
+    const preInsight = document.querySelector("[data-community-atlas-insight]");
+    if (preInsight) preInsight.textContent = "Nothing is being hidden here — there is simply not a cohort yet. The first trends appear once enough players share.";
+    return;
+  }
   root.innerHTML = period.categories.map((category, index) => `<section class="community-category" id="${escapeHtml(category.id)}">
     <div class="community-category-head"><span>${String(index + 1).padStart(2, "0")}</span><h2>${escapeHtml(category.label)}</h2></div>
     <div class="community-atlas-grid">${category.stats.map((stat) => statCard(stat)).join("")}</div>

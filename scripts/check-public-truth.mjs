@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { inspectSimulationClaims } from "./lib/simulation-methodology.mjs";
+
 // Public-truth gate (S70): every numeric or architectural claim on a public
 // page must match derived source truth, and internal Studio governance
 // vocabulary may never ship on a public surface. Fails closed at build.
@@ -33,9 +35,77 @@ function stripComments(html) {
   return html.replace(/<!--[\s\S]*?-->/g, "");
 }
 
+// S94: a claim can be false by going stale, and nothing above can see that.
+// Every check in this file compares a published value to a derived one, so the
+// gate stays green for a page whose newest release note predates the newest
+// shipped session by any margin at all -- which is how status.html came to tell
+// visitors the game had been idle for three weeks while four of the project's
+// most significant arcs shipped unannounced. One session is the honest
+// tolerance: the note lands at closeout, so being one behind is in-flight and
+// being two behind is a page that stopped tracking the product.
+const RELEASE_NOTE_SESSION_TOLERANCE = 1;
+
+function newestReleaseNoteDate(html) {
+  const dates = [...html.matchAll(/<h3>\s*(\d{4}-\d{2}-\d{2})\s*[—-]/g)].map((match) => match[1]).sort();
+  return dates.length ? dates[dates.length - 1] : null;
+}
+
+export function inspectReleaseNoteFreshness(root = rootDir) {
+  const statusPath = path.join(root, "public", "status.html");
+  const statusPath_exists = fs.existsSync(statusPath);
+  if (!statusPath_exists) return { ok: true, problems: [], skipped: "status.html absent" };
+  const published = newestReleaseNoteDate(stripComments(fs.readFileSync(statusPath, "utf8")));
+  if (!published) {
+    return {
+      ok: false,
+      problems: ["status.html no longer carries a dated release note; the freshness gate cannot see the page"],
+      published: null
+    };
+  }
+  const status = JSON.parse(fs.readFileSync(path.join(root, "context", "PROJECT_STATUS.json"), "utf8"));
+  const shippedAt = String(status.lastUpdated || "").slice(0, 10);
+  const lastSession = Number(status.lastSession || status.currentSession || 0);
+  if (!shippedAt || !lastSession) return { ok: true, problems: [], skipped: "no shipped session recorded" };
+
+  // Count sessions, not days. Days punish a quiet week; sessions measure the
+  // thing that actually goes unannounced.
+  const publishedSession = sessionForDate(root, published);
+  const behind = publishedSession === null ? null : lastSession - publishedSession;
+  const problems = [];
+  if (behind !== null && behind > RELEASE_NOTE_SESSION_TOLERANCE) {
+    problems.push(
+      `status.html newest release note is ${published} (session ${publishedSession}); ` +
+      `PROJECT_STATUS lastSession is ${lastSession} dated ${shippedAt} — ${behind} sessions unpublished ` +
+      `(tolerance ${RELEASE_NOTE_SESSION_TOLERANCE}). Write the player-facing note for what shipped.`
+    );
+  }
+  return { ok: problems.length === 0, problems, published, publishedSession, lastSession, behind };
+}
+
+// Resolve a published date to the newest session recorded on or before it, so
+// the gate tracks a moving target instead of a one-time literal.
+function sessionForDate(root, isoDate) {
+  const statePath = path.join(root, "context", "CURRENT_STATE.md");
+  if (!fs.existsSync(statePath)) return null;
+  const entries = [...fs.readFileSync(statePath, "utf8").matchAll(/^- (\d{4}-\d{2}-\d{2}): Session (\d+)/gm)]
+    .map((match) => ({ date: match[1], session: Number(match[2]) }))
+    .filter((entry) => entry.date <= isoDate)
+    .sort((a, b) => b.session - a.session);
+  return entries.length ? entries[0].session : null;
+}
+
 export function inspectPublicTruth(root = rootDir) {
   const publicDir = path.join(root, "public");
   const problems = [];
+  problems.push(...inspectReleaseNoteFreshness(root).problems);
+
+  // S94: the methodology page publishes the engine's own gate constants. If the
+  // engine's ceiling moves and the page does not, the page becomes a confident
+  // lie about a number the build is simultaneously enforcing.
+  const builtSimulation = path.join(root, "static", "simulation.html");
+  if (fs.existsSync(builtSimulation)) {
+    problems.push(...inspectSimulationClaims(fs.readFileSync(builtSimulation, "utf8")).problems);
+  }
 
   const engineCount = fs.readdirSync(path.join(root, "src", "engine")).filter((name) => name.endsWith(".js")).length;
   const landing = stripComments(fs.readFileSync(path.join(publicDir, "landing.html"), "utf8"));

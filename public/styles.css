@@ -5552,3 +5552,37 @@ html[data-theme="light"] .bg-layer {
 .wp-no-pick { font-size: 0.85rem; color: var(--muted); font-style: italic; }
 .wp-empty { padding: 10px; text-align: center; color: var(--muted); font-style: italic; font-size: 0.85rem; }
 @media (prefers-reduced-motion: reduce) { .community-skeleton-grid i { animation:none; } }
+
+/* S94 — pre-cohort invitation.
+   Rendered instead of the stat grid while the community is below the
+   suppression floor, so a visitor's first impression is the pact rather than a
+   row of zeros. Uses the same tokens as the panels around it; nothing here
+   introduces a colour outside the theme. */
+.community-invitation { padding:20px 22px; border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:0 14px 14px 0; background:color-mix(in srgb,var(--accent) 6%,var(--inset)); }
+.community-invitation h2, .community-invitation h3 { margin:0 0 8px; }
+.community-invitation > p { margin:0 0 10px; color:var(--muted); max-width:62ch; }
+.community-invitation-pact { margin:12px 0 10px; padding:0; list-style:none; display:grid; gap:9px; }
+.community-invitation-pact li { padding-left:20px; position:relative; color:var(--muted); max-width:66ch; }
+.community-invitation-pact li::before { content:"✓"; position:absolute; left:0; color:var(--accent); font-weight:700; }
+.community-invitation-pact strong { color:var(--text,inherit); }
+.community-invitation-method { margin:10px 0 0; font-size:13px; color:var(--muted); }
+[data-community-pulse][data-state="pre-cohort"] .community-live-mark span { background:var(--accent); animation:none; }
+
+/* S94 — /simulation.html, the measured-realism methodology page. */
+.sim-wrap { max-width:900px; }
+.sim-section { margin:26px 0; padding:22px 24px; border:1px solid var(--line); border-radius:16px; background:var(--surface); }
+.sim-section h2 { margin:0 0 12px; }
+.sim-section p { margin:0 0 12px; max-width:70ch; color:var(--muted); }
+.sim-section p strong, .sim-limits strong { color:var(--text,inherit); }
+.sim-section--limits { border-left:3px solid var(--accent); }
+.sim-limits { margin:14px 0 0; padding:0; list-style:none; display:grid; gap:14px; }
+.sim-limits li { padding-left:22px; position:relative; color:var(--muted); max-width:72ch; }
+.sim-limits li::before { content:"—"; position:absolute; left:0; color:var(--accent); }
+.sim-anchor { margin:18px 0; }
+.sim-figure-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; }
+.sim-figure { padding:16px; border:1px solid var(--line); border-radius:14px; background:var(--inset); }
+.sim-figure-value { display:block; font-size:30px; line-height:1.1; font-variant-numeric:tabular-nums; color:var(--accent); }
+.sim-figure-unit { font-size:17px; margin-left:1px; }
+.sim-figure-label { display:block; margin:6px 0 8px; font-weight:600; font-size:14px; }
+.sim-figure p { margin:0; font-size:13px; color:var(--muted); }
+@media (max-width:560px) { .sim-section { padding:18px 16px; } .sim-figure-value { font-size:26px; } }

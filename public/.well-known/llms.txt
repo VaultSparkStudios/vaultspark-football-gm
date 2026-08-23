@@ -8,6 +8,7 @@ Rights: Proprietary - All Rights Reserved, VaultSpark Studios LLC.
 
 Useful paths:
 - / - browser game
+- /simulation.html - what the football simulation is measured against, and the stated limits of that anchor
 - /contact.html - project contact
 - /privacy.html - privacy notice
 - /terms.html - terms and rights notice

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How Honest Is This Simulation? — Franchise Architect: Football</title>
+    <meta name="description" content="What Franchise Architect measures its football simulation against, where the anchor comes from, and what it cannot tell you." />
+    <meta property="og:title" content="How honest is this simulation?" />
+    <meta property="og:description" content="Most franchise games say their numbers feel real. This one publishes what it measures, what it measures against, and where the comparison breaks down." />
+    <meta property="og:type" content="article" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./lib/themeBoot.js"></script>
+  </head>
+  <body class="setup-body">
+    <div class="bg-layer"></div>
+    <main class="setup-wrap sim-wrap">
+      <nav class="community-breadcrumb" aria-label="Breadcrumb"><a href="./index.html">Franchise Architect</a><span aria-hidden="true">/</span><span>The Simulation</span><button id="setupThemeToggleBtn" class="theme-toggle-btn" type="button" title="Toggle theme">◐</button></nav>
+
+      <header class="community-atlas-hero">
+        <div>
+          <span class="brand-kicker">Under the hood</span>
+          <h1>How honest is this simulation?</h1>
+          <p>Every franchise game says its numbers feel real. Feeling real is not a measurement. This page is the measurement — what we check, what we check it against, and the places the comparison stops working.</p>
+        </div>
+      </header>
+
+      <section class="sim-section">
+        <h2>The problem with &ldquo;realistic&rdquo;</h2>
+        <p>A season simulator can produce numbers that look plausible one year at a time and still be badly wrong over a decade. The failure is slow: ratings creep upward a fraction at a time, every club's players get a little better than they should, and ten seasons in the league is full of superstars. Nobody notices, because no single season looked odd.</p>
+        <p>That is not hypothetical here. It happened, it was found by running the engine for a decade rather than by reading the code, and fixing it is most of why this page exists.</p>
+      </section>
+
+      <section class="sim-section">
+        <h2>What we measure against</h2>
+        <p>To say a league has too many great players, you need a number for how many great players a real league has. There isn't a published one — the NFL does not release a ratings distribution. So we anchor to something the real league <em>does</em> publish, and that barely changes: how many players it honors, and how many players it honors them out of.</p>
+
+        <div data-simulation-anchor></div>
+
+        <p>Both honor counts are structural facts about how the awards are built — a fixed number of seats, stable for years — rather than a statistic scraped from one season. And the population they are drawn from, <strong>53 active players across 32 clubs</strong>, is the same roster structure this game runs. The anchor and the thing being measured line up by construction, not by a conversion fudge.</p>
+      </section>
+
+      <section class="sim-section sim-section--limits">
+        <h2>Where this breaks down</h2>
+        <p>This is the part most &ldquo;realism&rdquo; pages leave out, and it is the part that should make you trust the rest.</p>
+        <ul class="sim-limits">
+          <li><strong>It is an analogy, not an identity.</strong> An All-Pro place is an award for how someone <em>played</em> last season. A 90-plus rating is a claim about how good someone <em>is</em>. Those are related, not the same. That is exactly why the target ships as a band between two honors rather than as a single confident number — a point estimate here would be false precision.</li>
+          <li><strong>The honor counts are structural, not measured.</strong> We read them from the stable shape of the awards. That is stronger than someone's judgement and weaker than a real published distribution of player ratings, which nobody has released in a citable form.</li>
+          <li><strong>A measurement window is part of the measurement.</strong> A freshly generated league is not a league at rest. A three-season probe here once reported a problem that a ten-season probe did not confirm — so the checks run over a decade, and one of them runs to fifteen seasons because a slow ratchet only shows up that far out.</li>
+          <li><strong>An average can hide a shape.</strong> A league's mean rating can sit perfectly still while its top end moves enormously. So the checks look at spread and at the tail separately, because those two fail independently.</li>
+          <li><strong>Statistics are guardrailed, not replayed.</strong> Season and career totals are held against real baselines from Pro Football Reference. That keeps a 7,000-yard passing season from happening. It does not make this a replay of any real season, and it is not meant to.</li>
+        </ul>
+      </section>
+
+      <section class="sim-section">
+        <h2>Why this is a build gate and not a promise</h2>
+        <p>A claim that is only argued gets forgotten. Each of the numbers above is asserted by the test suite and checked when the game is built, so a change that quietly re-inflates the league fails before it ships rather than being discovered a decade of game-time later by a player.</p>
+        <p>The same applies to this page. The figures in it are generated from the simulation's own constants at build time — there is no second copy of them to fall out of date.</p>
+      </section>
+
+      <section class="sim-section">
+        <h2>What we still owe you</h2>
+        <p>Two things we know are weaker than we would like, stated here rather than left out. The economics of running a club — how much cash an owner has, and what things cost — were calibrated for a league where cash rarely moved, and now it moves. And a handful of constants describing how rival clubs prioritise their spending are judgement rather than measurement. Both are on the list.</p>
+      </section>
+
+      <footer class="setup-footer">
+        <a href="./index.html">Play</a> · <a href="./landing.html">Why Franchise Architect?</a> · <a href="./status.html">Status &amp; Updates</a> · <a href="./about.html">About</a> · <a href="./contact.html">Contact</a> · <a href="./privacy.html">Privacy</a> · <a href="./terms.html">Terms</a>
+        <span class="studio-copyright" data-studio-copyright>© 2026 VaultSpark Studios LLC. All rights reserved.</span> · <a href="https://vaultsparkstudios.com/" rel="author">Studio home</a>
+      </footer>
+    </main>
+  </body>
+</html>
