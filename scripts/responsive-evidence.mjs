@@ -31,6 +31,7 @@ const evidenceTabs = [
   ["draftTab", "draft"],
   ["historyTab", "history"],
   ["statsTab", "stats"],
+  ["boardroomTab", "boardroom"],
   ["settingsTab", "settings"]
 ];
 const viewports = process.env.EVIDENCE_VIEWPORT
@@ -490,6 +491,21 @@ async function main() {
       }
       await page.locator("#closeGuideModalBtn").click();
 
+      // S94: the coaching staff sheet lives in the Boardroom with the rest of
+      // the owner economy, not in Settings.
+      const boardroomTab = page.locator(`[data-tab="boardroomTab"]`).first();
+      const boardroomNavToggle = page.locator("#mobileNavToggle");
+      if (await boardroomNavToggle.isVisible().catch(() => false)) {
+        await boardroomNavToggle.click();
+        await page.waitForFunction(() => document.body.classList.contains("mobile-nav-open"));
+      }
+      await boardroomTab.click();
+      if (await boardroomNavToggle.isVisible().catch(() => false)) {
+        await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
+        await page.waitForTimeout(320);
+      }
+      await page.waitForSelector("#staffTeamSelect", { state: "visible", timeout: 30_000 });
+
       const controlledStaffTeam = await page.locator("#staffTeamSelect").inputValue();
       const rivalStaffTeam = await page.locator("#staffTeamSelect option").evaluateAll(
         (options, controlled) => options.map((option) => option.value).find((value) => value && value !== controlled),
@@ -521,6 +537,13 @@ async function main() {
         await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
         await page.waitForTimeout(320);
       }
+      // S94: developer diagnostics ship hidden and open only for ?dev=1. The
+      // evidence run is the intended caller of that flag; a player is not.
+      await page.evaluate(async () => {
+        const module = await import("./lib/devSurfaces.js");
+        module.applyDeveloperSurfaceVisibility(document, "?dev=1");
+      });
+      await page.waitForSelector("#realismVerifyYearsInput", { state: "visible", timeout: 30_000 });
       await page.locator("#realismVerifyYearsInput").fill("1");
       await page.locator("#runRealismVerifyBtn").click();
       await page.waitForFunction(() => document.querySelectorAll("#realismVerifyProgressionTable tr").length > 1, null, { timeout: 120_000 });
