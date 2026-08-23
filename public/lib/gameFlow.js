@@ -425,9 +425,8 @@ export async function loadOwner() {
   if (owner) {
     document.getElementById("ownerTicketPriceInput").value = owner.ticketPrice ?? "";
     document.getElementById("ownerStaffBudgetInput").value = owner.staffBudget ?? "";
-    document.getElementById("ownerTrainingInput").value = owner.facilities?.training ?? "";
-    document.getElementById("ownerRehabInput").value = owner.facilities?.rehab ?? "";
-    document.getElementById("ownerAnalyticsInput").value = owner.facilities?.analytics ?? "";
+    // S93 — the three facility inputs are gone. A level is bought through the
+    // facilities market, so there is nothing here for the player to type.
   }
   callUiIsland("settings", "renderOwner");
   });

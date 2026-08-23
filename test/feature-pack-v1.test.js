@@ -14,11 +14,25 @@ test("feature pack v1: owner, events, and calibration endpoints have runtime sup
   assert.ok(ownerBefore.owner.personality);
   assert.ok(ownerBefore.owner.priorities);
   assert.ok(ownerBefore.cultureProfile?.identity);
-  const update = session.updateOwnerState({ teamId: "BUF", ticketPrice: 190, training: 88 });
+  // S93 — this assertion used to require that `training: 88` landed. That was
+  // the defect, not the feature: the owner panel wrote the strongest input to the
+  // development environment for free, to any value in [40, 99], while every club
+  // is generated in [64, 82]. Owner-facing economics still update; facility level
+  // now comes only from the priced facilities market.
+  const update = session.updateOwnerState({ teamId: "BUF", ticketPrice: 190 });
   assert.equal(update.ok, true);
   const ownerAfter = session.getOwnerState("BUF");
   assert.equal(ownerAfter.owner.ticketPrice, 190);
-  assert.equal(ownerAfter.owner.facilities.training, 88);
+
+  const trainingBefore = ownerAfter.owner.facilities.training;
+  const refused = session.updateOwnerState({ teamId: "BUF", training: 88 });
+  assert.equal(refused.ok, false);
+  assert.equal(refused.reasonCode, "facilities-readonly");
+  assert.equal(session.getOwnerState("BUF").owner.facilities.training, trainingBefore);
+
+  const built = session.investInFacility({ teamId: "BUF", facility: "training", points: 1 });
+  assert.equal(built.ok, true);
+  assert.equal(session.getOwnerState("BUF").owner.facilities.training, trainingBefore + 1);
 
   const staff = session.getStaff("BUF");
   assert.ok(staff.staff.scoutingDirector);

@@ -1539,14 +1539,25 @@ function bindEvents() {
         body: {
           teamId: document.getElementById("ownerTeamSelect").value || state.dashboard?.controlledTeamId,
           ticketPrice: Number(document.getElementById("ownerTicketPriceInput").value || 0) || null,
-          staffBudget: Number(document.getElementById("ownerStaffBudgetInput").value || 0) || null,
-          training: Number(document.getElementById("ownerTrainingInput").value || 0) || null,
-          rehab: Number(document.getElementById("ownerRehabInput").value || 0) || null,
-          analytics: Number(document.getElementById("ownerAnalyticsInput").value || 0) || null
+          staffBudget: Number(document.getElementById("ownerStaffBudgetInput").value || 0) || null
         }
       });
       await Promise.all([loadState(), loadOwner(), loadTransactionLog()]);
     }, "Saving owner settings...")
+  );
+  // S93 — facility level is bought through the priced market, never typed in.
+  document.getElementById("investFacilityBtn").addEventListener("click", () =>
+    runAction(async () => {
+      await api("/api/facilities/invest", {
+        method: "POST",
+        body: {
+          teamId: document.getElementById("ownerTeamSelect").value || state.dashboard?.controlledTeamId,
+          facility: document.getElementById("facilityInvestSelect").value || "training",
+          points: Number(document.getElementById("facilityInvestPoints").value || 1) || 1
+        }
+      });
+      await Promise.all([loadState(), loadOwner(), loadTransactionLog()]);
+    }, "Breaking ground on facilities...")
   );
 
   document.getElementById("loadObservabilityBtn").addEventListener("click", () =>

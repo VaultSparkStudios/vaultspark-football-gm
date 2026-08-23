@@ -1163,6 +1163,23 @@ export function createLocalApiRuntime({
         return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
+      if (method === "GET" && pathname === "/api/facilities") {
+        const teamId = (url.searchParams.get("team") || session.controlledTeamId).toUpperCase();
+        const market = session.getFacilitiesMarket(teamId);
+        return finish(jsonResponse(market.ok ? 200 : 404, market));
+      }
+
+      if (method === "POST" && pathname === "/api/facilities/invest") {
+        const check = assertFields(body, ["teamId", "facility"]);
+        if (!check.ok) return finish(jsonResponse(400, { ok: false, error: check.error }));
+        const result = session.investInFacility({
+          teamId: String(body.teamId).toUpperCase(),
+          facility: String(body.facility),
+          points: toNumber(body.points) ?? 1
+        });
+        return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
+      }
+
       if (method === "GET" && pathname === "/api/observability") {
         return finish(
           jsonResponse(200, {

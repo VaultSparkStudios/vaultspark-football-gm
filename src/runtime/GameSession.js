@@ -60,6 +60,25 @@ import {
   measureDevelopmentCentres
 } from "../domain/developmentEnvironment.js";
 import {
+  FACILITY_INVESTMENT_PROFILE,
+  FACILITY_KEYS,
+  applyFacilityInvestment,
+  evaluateFacilityInvestment,
+  facilityAllowanceState,
+  facilityInvestmentQuote,
+  facilityUpkeepCost,
+  isFacilityKey,
+  totalFacilityUpkeep
+} from "../domain/facilityInvestment.js";
+import {
+  TICKET_DEMAND_PROFILE,
+  measureTicketPriceCentre,
+  optimalTicketPrice,
+  ticketDemandFactor,
+  ticketPriceFanInterestDelta
+} from "../domain/ticketDemand.js";
+import { runFacilityInvestmentRound } from "../engine/facilityMarket.js";
+import {
   defaultDepthChartForTeam,
   isTradeValueAcceptable,
   roleRetentionProfile,
@@ -2294,8 +2313,41 @@ export class GameSession {
    * Measuring is a single O(roster) pass, so it is cached — progression asks for
    * it once per player and would otherwise make the offseason quadratic.
    */
+  /**
+   * The league's own mean ticket price (S93).
+   *
+   * Derived state, never persisted, and cached on a revision built from the
+   * prices themselves — a snapshot restores the clubs and the centre is
+   * re-measured from them, so `fromSnapshot` and the live session agree by
+   * construction rather than by a copied field staying in sync. The revision is
+   * the price sum rather than a counter, so a trade of one club's pricing for
+   * another's cannot alias to the same key.
+   */
+  ticketPriceCentre() {
+    const revision = (this.league?.teams || []).reduce(
+      (sum, team) => sum + (Number(team?.owner?.ticketPrice) || 0),
+      0
+    );
+    if (this._ticketPriceCentreRevision === revision && this._ticketPriceCentre) {
+      return this._ticketPriceCentre;
+    }
+    this._ticketPriceCentre = measureTicketPriceCentre(this.league);
+    this._ticketPriceCentreRevision = revision;
+    return this._ticketPriceCentre;
+  }
+
   developmentEnvironmentCentres() {
-    const revision = `${this.currentYear}:${this.league?.players?.length || 0}:${this.league?.teams?.length || 0}`;
+    // S93 — the revision must notice a facility change *inside* a league year.
+    // Before facilities could move, `year:players:teams` was a sufficient key.
+    // Now that `investInFacility` and the AI investment round both write training
+    // levels mid-offseason, a key blind to them would serve centres measured
+    // against a league that no longer exists — reintroducing the miscentred term
+    // S90 removed, from the cache rather than from the formula.
+    const facilityRevision = (this.league?.teams || []).reduce(
+      (sum, team) => sum + (Number(team?.owner?.facilities?.training) || 0),
+      0
+    );
+    const revision = `${this.currentYear}:${this.league?.players?.length || 0}:${this.league?.teams?.length || 0}:${facilityRevision}`;
     if (this._developmentCentresRevision === revision && this._developmentCentres) {
       return this._developmentCentres;
     }
@@ -2885,7 +2937,35 @@ export class GameSession {
     }
     if (stage === "coaching-carousel") {
       this.processStaffLifecycle();
-      return next({ nextStage: "combine", message: "Coaching carousel resolved." });
+      // S93 — the offseason's front-office stage is also where rival ownership
+      // commits capital. Measured across a live decade before this existed, the
+      // league-wide facility standard deviation was 5.66 at seasons 0, 3, 6 and
+      // 10 — identical to the last digit. Nothing but the player's Settings tab
+      // had ever written a facility. The controlled club is excluded: the
+      // player's capital is the player's decision.
+      const facilityRound = runFacilityInvestmentRound({
+        league: this.league,
+        year: this.currentYear,
+        controlledTeamId: this.controlledTeamId
+      });
+      if (facilityRound.investments.length || facilityRound.upkeep.length) {
+        this._developmentCentresRevision = null;
+        this.logNews(
+          `${facilityRound.investments.length} clubs committed facility capital for ${this.currentYear}` +
+            (facilityRound.upkeep.length ? `; ${facilityRound.upkeep.length} let a wing slip on deferred maintenance` : ""),
+          {
+            year: this.currentYear,
+            investments: facilityRound.investments.length,
+            degraded: facilityRound.upkeep.length
+          }
+        );
+      }
+      return next({
+        nextStage: "combine",
+        message:
+          `Coaching carousel resolved. ${facilityRound.investments.length} clubs broke ground on facilities` +
+          (facilityRound.upkeep.length ? `, ${facilityRound.upkeep.length} deferred maintenance.` : ".")
+      });
     }
     if (stage === "combine") {
       if (!this.league.pendingDraft) this.prepareDraft();
@@ -3189,7 +3269,38 @@ export class GameSession {
       chemistry: team.chemistry || 70,
       cultureProfile: team.cultureProfile || cultureIdentity(team, roster),
       schemeIdentity: team.schemeIdentity || schemeIdentityLabel(team),
-      weeklyPlan: team.weeklyPlan || this.buildWeeklyPlan(teamId)
+      weeklyPlan: team.weeklyPlan || this.buildWeeklyPlan(teamId),
+      // S93 — the panel that used to let the player type a facility level now
+      // shows what one costs, and what the gate price is actually worth.
+      facilitiesMarket: this.getFacilitiesMarket(teamId),
+      ticketPricing: this.ticketPricingOutlook(teamId)
+    };
+  }
+
+  /**
+   * What the club's gate price is worth against the league it plays in (S93).
+   *
+   * Reports the measured league centre, this club's demand factor, and the
+   * revenue-maximising price implied by the profile — so the player can see that
+   * the maximum legal price is not the best price, which is the entire point of
+   * giving the dial a demand curve.
+   */
+  ticketPricingOutlook(teamId = this.controlledTeamId) {
+    const team = teamById(this.league, teamId);
+    if (!team?.owner) return null;
+    const centre = this.ticketPriceCentre();
+    const price = Number(team.owner.ticketPrice) || 120;
+    const optimal = optimalTicketPrice(centre);
+    return {
+      price,
+      leagueCentre: Number(centre.price.toFixed(2)),
+      centreSource: centre.source,
+      centreSample: centre.sampleSize,
+      relative: Number((price / centre.price).toFixed(3)),
+      demandFactor: Number(ticketDemandFactor(price, centre).toFixed(3)),
+      fanInterestPerWeek: Number(ticketPriceFanInterestDelta(price, centre).toFixed(2)),
+      revenueMaximisingPrice: optimal.price,
+      profileVersion: TICKET_DEMAND_PROFILE.version
     };
   }
 
@@ -3232,11 +3343,32 @@ export class GameSession {
     const team = teamById(this.league, teamId);
     if (!team) return { ok: false, error: "Team not found." };
     if (!team.owner) team.owner = buildOwnerProfile(this.rng);
+    // S93 — a facility is no longer typed in.
+    //
+    // This is the same hole S63 closed on the Coaching Staff sheet eight lines
+    // up, left open on the sheet next to it: three number boxes, free, any value
+    // in [40, 99], writing the strongest input to the S90 development
+    // environment. `buildFranchiseEconomics` generates every club in [64, 82],
+    // so the panel let the player set a level seventeen points above the entire
+    // league distribution, on turn one, forever, for nothing. Facility level now
+    // comes only from `investInFacility`, priced against `owner.cash`. See
+    // src/domain/facilityInvestment.js for the measurement that forced this.
+    const attemptedFacilityWrite = [
+      [training, team.owner.facilities?.training],
+      [rehab, team.owner.facilities?.rehab],
+      [analytics, team.owner.facilities?.analytics]
+    ].some(([next, existing]) => next != null && Math.round(Number(next)) !== Math.round(Number(existing)));
+
+    if (attemptedFacilityWrite) {
+      return {
+        ok: false,
+        error: "Facility level is set by what you build, not by hand. Invest club cash through the facilities market to change it.",
+        reasonCode: "facilities-readonly"
+      };
+    }
+
     if (ticketPrice != null) team.owner.ticketPrice = clamp(Math.round(Number(ticketPrice)), 35, 450);
     if (staffBudget != null) team.owner.staffBudget = clamp(Math.round(Number(staffBudget)), 10_000_000, 70_000_000);
-    if (training != null) team.owner.facilities.training = clamp(Math.round(Number(training)), 40, 99);
-    if (rehab != null) team.owner.facilities.rehab = clamp(Math.round(Number(rehab)), 40, 99);
-    if (analytics != null) team.owner.facilities.analytics = clamp(Math.round(Number(analytics)), 40, 99);
     team.cultureProfile = cultureIdentity(team, teamPlayersAll(this.league, teamId));
     team.owner.expectation = buildOwnerExpectation(team, teamPlayersAll(this.league, teamId), this.league.transactionLog || [], {
       currentWeek: this.currentWeek
@@ -3250,6 +3382,101 @@ export class GameSession {
       }
     });
     return { ok: true, owner: team.owner };
+  }
+
+  /**
+   * The facilities market (S93) — what each wing costs to build, what the club
+   * can afford, and what this year's allowance still permits.
+   *
+   * Every number is derived from live state through the same functions the
+   * command uses, so the panel cannot quote a price the engine will not charge.
+   */
+  getFacilitiesMarket(teamId = this.controlledTeamId) {
+    const team = teamById(this.league, teamId);
+    if (!team) return { ok: false, error: "Team not found." };
+    if (!team.owner) team.owner = buildOwnerProfile(this.rng);
+    const allowance = facilityAllowanceState(team.owner, this.currentYear);
+    const centres = {};
+    for (const key of FACILITY_KEYS) {
+      const values = this.league.teams
+        .map((row) => Number(row?.owner?.facilities?.[key]))
+        .filter((value) => Number.isFinite(value));
+      centres[key] = values.length
+        ? Number((values.reduce((sum, value) => sum + value, 0) / values.length).toFixed(2))
+        : null;
+    }
+    return {
+      ok: true,
+      teamId: String(teamId || "").toUpperCase(),
+      year: this.currentYear,
+      cash: Math.round(Number(team.owner.cash) || 0),
+      allowance,
+      leagueCentres: centres,
+      profileVersion: FACILITY_INVESTMENT_PROFILE.version,
+      minimumCashReserve: FACILITY_INVESTMENT_PROFILE.minimumCashReserve,
+      // The recurring claim is the real constraint, so it is shown, not buried.
+      annualUpkeep: totalFacilityUpkeep(team.owner),
+      facilities: FACILITY_KEYS.map((key) => ({
+        facility: key,
+        upkeep: facilityUpkeepCost(Number(team.owner.facilities?.[key] ?? FACILITY_INVESTMENT_PROFILE.floor)),
+        upkeepAfterNextPoint: facilityUpkeepCost(
+          Math.min(FACILITY_INVESTMENT_PROFILE.ceiling, Number(team.owner.facilities?.[key] ?? FACILITY_INVESTMENT_PROFILE.floor) + 1)
+        ),
+        ...facilityInvestmentQuote(team.owner, this.currentYear, key, 1)
+      })),
+      editable: String(teamId || "").toUpperCase() === String(this.controlledTeamId || "").toUpperCase()
+    };
+  }
+
+  /**
+   * Buy facility points with club cash.
+   *
+   * The single write path for `owner.facilities`. The AI investment round
+   * (`src/engine/facilityMarket.js`) calls the same priced domain functions, so
+   * there is exactly one cost model in the codebase.
+   */
+  investInFacility({ teamId = this.controlledTeamId, facility, points = 1 } = {}) {
+    const normalizedTeamId = String(teamId || this.controlledTeamId || "").toUpperCase();
+    const team = teamById(this.league, normalizedTeamId);
+    if (!team) return { ok: false, error: "Team not found." };
+    if (!team.owner) team.owner = buildOwnerProfile(this.rng);
+    if (!isFacilityKey(facility)) {
+      return { ok: false, error: `Unknown facility "${facility}".`, reasonCode: "facility-unknown" };
+    }
+
+    const verdict = evaluateFacilityInvestment(team.owner, this.currentYear, facility, points);
+    if (!verdict.ok) return { ...verdict, market: this.getFacilitiesMarket(normalizedTeamId) };
+
+    applyFacilityInvestment(team.owner, this.currentYear, facility, verdict.quote);
+    // The development centres are keyed on a revision that now has to notice a
+    // facility change inside a league year — see developmentEnvironmentCentres.
+    this._developmentCentresRevision = null;
+    this.logTransaction({
+      type: "facility-investment",
+      teamId: normalizedTeamId,
+      details: {
+        facility,
+        points: verdict.quote.granted,
+        from: verdict.quote.current,
+        to: verdict.quote.target,
+        cost: verdict.quote.cost,
+        cashAfter: Math.round(Number(team.owner.cash) || 0)
+      }
+    });
+    this.logNews(
+      `${team.name || normalizedTeamId} invests ${(verdict.quote.cost / 1_000_000).toFixed(1)}M in ${facility}`,
+      { year: this.currentYear, teamId: normalizedTeamId, facility, to: verdict.quote.target }
+    );
+    return {
+      ok: true,
+      facility,
+      from: verdict.quote.current,
+      to: verdict.quote.target,
+      points: verdict.quote.granted,
+      cost: verdict.quote.cost,
+      owner: team.owner,
+      market: this.getFacilitiesMarket(normalizedTeamId)
+    };
   }
 
   /**
@@ -3462,8 +3689,23 @@ export class GameSession {
         0.52,
         1.12
       );
-      const homeRevenue = Math.round(home.owner.marketSize * (home.owner.ticketPrice || 120) * 66_500 * attendanceFactorHome);
-      const awayRevenue = Math.round(away.owner.marketSize * (away.owner.ticketPrice || 120) * 24_000 * attendanceFactorAway);
+      // S93 — the gate finally responds to what the club charges for it.
+      //
+      // Measured before this term existed: a 4.59x price multiple returned a
+      // 4.61x revenue multiple and fan interest ended identical in every
+      // scenario. Price was a free money dial. Demand is measured against the
+      // LEAGUE'S OWN mean price, never a literal, so a club priced at the league
+      // mean is affected by exactly nothing — the same centred-differentiator
+      // law S71 and S90 had to be rescued into. See src/domain/ticketDemand.js.
+      const priceCentre = this.ticketPriceCentre();
+      const homeDemand = ticketDemandFactor(home.owner.ticketPrice || 120, priceCentre);
+      const awayDemand = ticketDemandFactor(away.owner.ticketPrice || 120, priceCentre);
+      const homeRevenue = Math.round(
+        home.owner.marketSize * (home.owner.ticketPrice || 120) * 66_500 * attendanceFactorHome * homeDemand
+      );
+      const awayRevenue = Math.round(
+        away.owner.marketSize * (away.owner.ticketPrice || 120) * 24_000 * attendanceFactorAway * awayDemand
+      );
       home.owner.finances.revenueYtd += homeRevenue;
       away.owner.finances.revenueYtd += awayRevenue;
       home.owner.finances.expensesYtd += Math.round((home.owner.staffBudget || 25_000_000) / NFL_STRUCTURE.regularSeasonWeeks);
@@ -3477,9 +3719,13 @@ export class GameSession {
           currentWeek: this.currentWeek
         });
         const expectationDrift = expectation.paceGap < 0 ? Math.abs(expectation.paceGap) * 0.22 : -Math.min(0.5, expectation.paceGap * 0.08);
-        const interestDelta = won
+        // S93 — what the club charges at the gate is now part of how the fan base
+        // feels about it. Zero at the league mean price, so this redistributes
+        // goodwill between clubs instead of taxing or subsidising the league.
+        const pricePressure = ticketPriceFanInterestDelta(owner.ticketPrice || 120, this.ticketPriceCentre());
+        const interestDelta = (won
           ? 1.2 + modifiers.fanInterestWeeklyDelta - Math.max(0, expectationDrift * 0.3)
-          : -1.1 * pressurePenalty + modifiers.fanInterestWeeklyDelta - expectationDrift;
+          : -1.1 * pressurePenalty + modifiers.fanInterestWeeklyDelta - expectationDrift) + pricePressure;
         owner.fanInterest = clamp(Math.round((owner.fanInterest || 70) + interestDelta), 20, 100);
         owner.expectation = buildOwnerExpectation(team, teamPlayersAll(this.league, team.id), this.league.transactionLog || [], {
           currentWeek: this.currentWeek

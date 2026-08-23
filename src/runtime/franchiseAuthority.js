@@ -59,6 +59,7 @@ export const TEAM_SCOPED_COMMANDS = {
   "/api/contracts/negotiate": { field: "teamId", action: "negotiate a contract" },
   "/api/press-conference": { field: "teamId", action: "answer for that franchise at the podium" },
   "/api/coaching-market": { field: "teamId", action: "hire or fire coaching staff" },
+  "/api/facilities/invest": { field: "teamId", action: "commit franchise capital to facilities" },
   // Trades name two franchises. You may broker a trade you are actually in — not
   // one between two rivals, which was previously a way to hand yourself a league.
   "/api/trade": { participants: ["teamA", "teamB"], action: "execute a trade" },

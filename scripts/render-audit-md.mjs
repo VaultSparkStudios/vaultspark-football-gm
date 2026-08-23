@@ -93,8 +93,22 @@ export function renderAuditMarkdown(audit) {
   lines.push("", `Combined priority: **${combined.toFixed(1)}**.`);
 
   lines.push("", "## Premise verification and rejected phantom work", "");
-  if (audit.preverifiedSkips?.length) {
-    for (const skip of audit.preverifiedSkips) lines.push(`- Rejected/deferred “${text(skip.candidate)}”: ${text(skip.reason)}`);
+  // S93 — the renderer read only `preverifiedSkips`, but the sidecar schema every
+  // session since S89 has actually written is `phantomsRejected` (S92 shipped it
+  // empty, so nobody noticed). The rendered public page therefore printed "No
+  // rejected candidates were recorded" over a sidecar that recorded three — a
+  // lying surface of exactly the kind this project's truth gates exist to stop.
+  // Both key names are read, and both shapes, so no past sidecar re-renders wrong.
+  const skips = [
+    ...(audit.preverifiedSkips || []),
+    ...(audit.phantomsRejected || [])
+  ];
+  if (skips.length) {
+    for (const skip of skips) {
+      const candidate = skip.candidate ?? skip.slug ?? skip.hypothesis;
+      const reason = skip.reason ?? [skip.verdict, skip.evidence].filter(Boolean).join(" ");
+      lines.push(`- Rejected/deferred “${text(candidate)}”: ${text(reason)}`);
+    }
   } else {
     lines.push("- No rejected candidates were recorded.");
   }

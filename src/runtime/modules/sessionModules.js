@@ -18,6 +18,11 @@ export function createSessionModules(session) {
     owner: {
       get: (teamId) => session.getOwnerState(teamId),
       update: (payload) => session.updateOwnerState(payload)
+    },
+    // S93 — facility level is bought, not typed in. See src/domain/facilityInvestment.js.
+    facilities: {
+      market: (teamId) => session.getFacilitiesMarket(teamId),
+      invest: (payload) => session.investInFacility(payload)
     }
   };
 }

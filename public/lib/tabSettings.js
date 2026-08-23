@@ -1,5 +1,5 @@
 import { state, api } from "./appState.js";
-import { decoratePlayerColumnFromRows, escapeHtml, fmtMoney, formatTransactionDetails, presentActionError, renderGuideContent, renderPulseChips, renderTable, showToast, teamByCode, teamCode } from "./appCore.js";
+import { decoratePlayerColumnFromRows, escapeHtml, fmtMoney, formatTransactionDetails, presentActionError, renderGuideContent, renderPulseChips, renderTable, showToast, teamCode } from "./appCore.js";
 import { openGuideModal } from "./tabOverview.js";
 import { hallOfFamePolicyLine, retiredNumberPolicyLine } from "./historyFormatting.js";
 import { activateTab, applyDashboard } from "./gameFlow.js";
@@ -8,7 +8,7 @@ import {
   exportToGist, importFromGist, listGists
 } from "./gistSync.js";
 import { closeModal, openModal } from "./modalManager.js";
-import { getClientDiagnosticsSnapshot } from "./clientDiagnostics.js";
+import { getClientDiagnosticsSnapshot, observeBackgroundTask } from "./clientDiagnostics.js";
 import { buildTimelineData, injectStyles as injectDynastyTimelineStyles, mount as mountDynastyTimeline } from "./dynastyTimeline.js";
 import { derivePositionRoomWatch } from "./progressionWatch.js";
 
@@ -197,6 +197,36 @@ export function renderOwner() {
     }
   ]);
   renderOwnerSpotlight();
+  renderFacilitiesMarket();
+}
+
+/**
+ * The facilities market (S93).
+ *
+ * The markup lives in ./facilitiesPanel.js and is pulled in on demand: the
+ * settings island holds a 15% boot-budget headroom floor, and a panel only the
+ * Owner tab shows has no business inside every player's boot payload.
+ */
+// Owner-tab markup lives in ./facilitiesPanel.js and is mounted on demand — the
+// settings island holds a 15% boot-budget headroom floor. Failures go to the
+// diagnostics ledger, never to a bare .catch (see that module's doc comment).
+function mountOwnerPanel(hostId, exportName, label) {
+  const host = document.getElementById(hostId);
+  if (!host) return;
+  observeBackgroundTask(
+    async () => (await import("./facilitiesPanel.js"))[exportName](host, state),
+    {
+      surface: "ui-island",
+      operation: `settings:${exportName}`,
+      onError: () => {
+        host.innerHTML = `<div class="small">${label} unavailable — retry from the System Health panel.</div>`;
+      }
+    }
+  );
+}
+
+export function renderFacilitiesMarket() {
+  mountOwnerPanel("facilitiesMarket", "renderFacilitiesMarketPanel", "Facilities market");
 }
 
 export function renderObservability() {
@@ -636,50 +666,13 @@ export function renderLaunchReadinessPanel() {
   renderTable("launchReadinessTable", rows);
 }
 
+/**
+ * The Owner spotlight (S93 — moved out of the boot payload).
+ *
+ * Owner-tab-only markup, pulled in with the facilities panel it sits beside.
+ */
 export function renderOwnerSpotlight() {
-  const spotlight = document.getElementById("ownerSpotlight");
-  if (!spotlight) return;
-  const owner = state.ownerState?.owner;
-  if (!owner) {
-    spotlight.innerHTML = `<div class="small">Load an owner profile to review mandate, market pressure, and budget posture.</div>`;
-    return;
-  }
-  const culture = state.ownerState?.cultureProfile || {};
-  const scheme = state.ownerState?.schemeIdentity || {};
-  const weeklyPlan = state.ownerState?.weeklyPlan || {};
-  const expectation = owner.expectation || {};
-  const teamId = document.getElementById("ownerTeamSelect")?.value || state.dashboard?.controlledTeamId || "";
-  const team = teamByCode(teamId) || null;
-  spotlight.innerHTML = `
-    <div class="overview-team-mark">
-      <div class="overview-team-label">${escapeHtml(team?.name || teamId || "Owner")}</div>
-      <div class="overview-team-meta">
-        ${escapeHtml(owner.personality || "owner")} | market ${escapeHtml(owner.marketSize || "-")} | fan interest ${escapeHtml(owner.fanInterest ?? "-")}
-      </div>
-    </div>
-    <div class="control-spotlight-grid">
-      <div class="control-spotlight-card">
-        <strong>Mandate</strong>
-        <div>${escapeHtml(expectation.mandate || "Stabilize the club")}</div>
-        <div class="small">${escapeHtml(`Target ${expectation.targetWins ?? "-"} wins | Projected ${expectation.projectedWins ?? "-"}`)}</div>
-      </div>
-      <div class="control-spotlight-card">
-        <strong>Economics</strong>
-        <div>${escapeHtml(`${fmtMoney(owner.cash || 0)} cash | ${fmtMoney(owner.staffBudget || 0)} staff budget`)}</div>
-        <div class="small">${escapeHtml(`Ticket ${owner.ticketPrice ?? "-"} | Revenue YTD ${fmtMoney(owner.finances?.revenueYtd || 0)}`)}</div>
-      </div>
-      <div class="control-spotlight-card">
-        <strong>Facilities</strong>
-        <div>${escapeHtml(`Training ${owner.facilities?.training ?? "-"} | Rehab ${owner.facilities?.rehab ?? "-"} | Analytics ${owner.facilities?.analytics ?? "-"}`)}</div>
-        <div class="small">${escapeHtml(`${culture.identity || "Balanced"} culture | ${scheme.offense || "-"} / ${scheme.defense || "-"}`)}</div>
-      </div>
-      <div class="control-spotlight-card">
-        <strong>Weekly Pressure</strong>
-        <div>${escapeHtml(weeklyPlan.summary || "No weekly plan summary loaded")}</div>
-        <div class="small">${escapeHtml((expectation.reasons || []).join("; ") || "No pressure reasons flagged")}</div>
-      </div>
-    </div>
-  `;
+  mountOwnerPanel("ownerSpotlight", "renderOwnerSpotlightPanel", "Owner spotlight");
 }
 
 export async function loadRewindHistory() {

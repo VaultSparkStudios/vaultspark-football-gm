@@ -4,6 +4,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Now
 
+- [ ] Gate the long-horizon facility equilibrium. The S93 upkeep design rests entirely on a measured dispersion turnaround (facility standard deviation 5.658 → 4.015 → 3.655 → 4.050 at seasons 0/3/8/15) that no test asserts. Add a `long`-shard gate asserting a floor on league facility spread after a long seeded run, so the claim is gated rather than argued.
 - [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
 - [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
 
@@ -11,6 +12,26 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+
+## Session 93 — Full arc: the owner's console stops being a cheat panel (2026-08-22)
+
+Source: `docs/AUDIT_2026-08-22_SESSION93.json`.
+
+| Item | Status |
+|------|--------|
+| facilities-are-a-free-permanent-power-up — the owner Facilities panel was the god-mode surface S63 closed on the Coaching Staff sheet, still open one panel over; facility level is now bought through a priced command with an annual build allowance and recurring upkeep, and the raw write returns `facilities-readonly` | ✅ Done |
+| ticket-price-has-no-demand-curve — attendance now carries a bounded, league-centred price elasticity, so gate revenue is single-peaked and the legal maximum is the worst price rather than the best | ✅ Done |
+| no-ai-club-ever-invests — an offseason AI investment round runs through the same priced path as the player, so the development-environment centre is a live quantity instead of a constant wearing a measurement's clothes | ✅ Done |
+
+**Method note:** the ranked list came from a sweep S90's self-improvement loop had booked and no session had run — *"two occurrences of this class (S71, S90) is a pattern; sweep for a third before it is found by a symptom."* The third occurrence was not a drifted constant. It was a shipped UI panel that let the player write the differentiator by hand. The S92 handoff's two booked checks were both run and neither became an item; both are recorded in `phantomsRejected` with their evidence, alongside a hypothesis this session formed from a code read and then refuted by measuring the league.
+
+**Verification:** one free click on turn one measured, on a live decade (seed 20260307), a cost of **0M**, a club mean development tilt of **0.322 -> 2.847** against a clamp ceiling of 3.0, and a league roster rank of **1st against the untouched control's 23rd**. Gate pricing measured **4.61x revenue for a 4.59x price multiple** with fan interest ending at 97 in every scenario; post-fix the legal maximum returns **0.191x**, worse than pricing at the league mean. League-wide facility standard deviation measured **exactly 5.66 at seasons 0/3/6/10 on two independent seeds** before the fix and **5.658 -> 4.015 -> 3.655 at seasons 0/3/8** after it. The S90 league-wide mean development tilt still measures **0.00000** at every mark. 31 new node tests, 4 new Playwright browser specs.
+
+**A defect in this session's own fix, caught by measurement before shipping:** priced construction plus a deficit-driven AI policy ratcheted the league at +0.6/season toward a flat ceiling, which would have deleted the S90 differentiator as completely as a constant stub. Annual upkeep supplies the counterforce — a recurring claim on revenue, where a one-off purchase price could not.
+
+**A gate honoured rather than widened:** the settings island's 15% boot-budget headroom floor went red when the new panel was added inline. The panel's markup moved behind a dynamic import instead of the budget moving.
+
+**Launch posture:** unchanged. `launchReady: false` preserved pending Zoho delivery/reply-as, SHA-bound founder approval, authoritative lifecycle reconciliation and external Obelisk relying-party proof.
 
 ## Session 92 — Full arc: a sourced elite-density baseline, and the population bug it uncovered (2026-08-19)
 

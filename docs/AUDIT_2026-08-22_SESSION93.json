@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-22",
+  "session": 93,
+  "agent": "claude-opus-5",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 9.6,
+    "source": "Fresh audit against live code. The S92 handoff booked no blocking item and named two cheap checks; both were run and neither became a ranked item (one is recorded in phantomsRejected with its measurement). The ranked list instead comes from a sweep the S90 self-improvement loop explicitly booked and no session had performed: 'a modifier documented as a differentiator must have a league-wide mean of zero — two occurrences of this class (S71, S90) is a pattern; sweep for a third before it is found by a symptom.' The sweep found the third occurrence, and it is not a constant that drifted. It is a shipped UI panel that lets the player write the differentiator by hand, for free, to a value outside the entire generated league distribution.",
+    "qualityBar": "L2+. Every premise is verified against live code and every magnitude is a measured quantity from a seeded engine run, not a reading of the source. The headline finding has an exact in-repo precedent (S63 closed the identical surface one panel over) whose fix pattern — priced against a real budget, pure function of state so no save migration — is reused rather than reinvented. One hypothesis formed from code reading was refuted by measurement and is recorded as rejected rather than quietly dropped."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "public browser football game/app",
+    "rubric": "product rubric plus game-medium overlay (retention, emotional payoff, decision pressure) and app-release-gate",
+    "staging": "Cloudflare Pages staging must prove the exact immutable candidate before direct-to-main production promotion; public sanitization mandatory",
+    "source": "arc profile, skill-profile audit overlay, S92 handoff/task board, live source tree, five seeded engine probes"
+  },
+  "method": {
+    "probes": [
+      {
+        "id": "probe-1-clamp-asymmetry",
+        "description": "S90 proves the development-environment tilt is zero-mean by subtracting the league's own mean RAW tilt. But the engine applies clamp(raw - offset, -3, +3), and clamping is nonlinear: mean(clamp(x)) != clamp(mean(x)). If club-to-club spread grows as facilities and coaching diverge over a franchise, the clamp could bite asymmetrically and reopen the S71/S90 subsidy inside its own fix. Measured at seasons 0/3/6/10 on two seeds.",
+        "runtimeNote": "REFUTED BY MEASUREMENT — recorded in phantomsRejected, not ranked. Seed 20260307 across a full decade: league-wide mean APPLIED tilt 0.00000 / 0.00026 / 0.00008 / -0.00000 at seasons 0/3/6/10, with 0/5/1/0 players clamped out of ~1,568-2,178. Raw centred mean holds at ~1e-16 throughout. The clamp sits ~3 standard deviations outside the tilt distribution (sdRaw 0.79-1.06 against a +/-3 clamp), so it almost never binds and cannot bias the mean. Seed 4040 reproduces at season 0. The S90 guarantee survives to steady state."
+      },
+      {
+        "id": "probe-2-frozen-facilities",
+        "description": "Same probe, different column. Track the league-wide standard deviation of owner.facilities.training across a decade of simulated seasons.",
+        "runtimeNote": "CONFIRMED ON TWO SEEDS. trainSd is EXACTLY 5.66 at seasons 0, 3, 6 and 10 on seed 20260307, and EXACTLY 5.66 at the same four marks on seed 4040 — unchanged to the last reported digit across ten simulated seasons, twice. No club in the league ever changes a facility. buildFranchiseEconomics generates facilities in [64, 82] and nothing in the engine ever writes them again. The only writer is the player's Settings tab, whose legal range is [40, 99]."
+      },
+      {
+        "id": "probe-3-ticket-price-elasticity",
+        "description": "attendanceFactor is clamp(fanInterest/100 + fanInterestWeeklyDelta*0.02 + noise, 0.52, 1.12) and carries no ticketPrice term; fanInterest moves only on wins, losses, press-room beats and GM decisions. So revenue = marketSize x ticketPrice x 66,500 x attendance should be strictly linear in a dial the GM sets for free. Measure one season, control vs max price vs min price.",
+        "runtimeNote": "CONFIRMED BY LIVE MEASUREMENT. Seed 20260307, team BUF, one season. Generated price 98 -> 57M revenue; price 450 -> 263M revenue; price 35 -> 20M revenue. Revenue multiple 4.61x for a price multiple 4.59x: elasticity is zero to within simulation noise. Fan interest ends at 97 in ALL THREE scenarios (69 -> 97 identically) — the fan base does not notice a 4.6x ticket price. One free click on turn one is worth +206M cash in a single season, against a starting cash band of 112-190M."
+      },
+      {
+        "id": "probe-4-facilities-decade-advantage",
+        "description": "Set training/rehab/analytics to 99 via the shipped updateOwnerState path on turn one — one free UI action — then simulate a decade against an untouched control on the same seed, and compare club mean development tilt, roster strength and roster rank.",
+        "runtimeNote": "CONFIRMED BY LIVE MEASUREMENT, and worse than the code read suggested. Seed 20260307, team BUF, ten seasons, control vs maxed on the same seed. The write cost NOTHING: cash 177M before, 177M after, facilities 70->99, 65->99, 73->99. Club mean development tilt at season 0 went 0.322 -> 2.847 against a clamp ceiling of 3.0 (and a measured best-club-in-league advantage of +1.14). After a decade the maxed club's mean roster overall was 79.73 against the control's 77.10, and its league roster rank was 1st against the control's 23rd. One free click on turn one turned a below-average roster into the best roster in the league."
+      },
+      {
+        "id": "probe-5-post-fix-equilibrium",
+        "description": "After pricing facilities and adding an AI investment round, check the thing a naive fix would break: does the league now ratchet to a flat ceiling, deleting the S90 development environment as completely as a constant stub would?",
+        "runtimeNote": "CAUGHT AND FIXED BEFORE SHIPPING. The first implementation — priced construction plus a deficit-driven AI policy — measured mean 71.72 -> 72.97 -> 74.81 and sd 5.658 -> 4.398 -> 3.729 at seasons 0/2/5, with every club climbing and none ever falling: a +0.6/season ratchet that reaches the ceiling and zero spread inside the forty-season franchise this project builds for. A purchase price cannot supply the counterforce because it is paid once from a cash pile that regrows. Annual upkeep can, because it is a recurring claim on revenue. With upkeep added, the same probe extended to season 15 measures mean 71.72 -> 73.59 -> 75.88 -> 77.97 and sd 5.658 -> 4.015 -> 3.655 -> **4.050** at seasons 0/3/8/15: dispersion bottoms out around season 8 and then TURNS BACK UP, which is the equilibrium the upkeep was added to produce rather than merely a slower collapse. The league maximum also finally moves past the generated band (82 -> 85) as clubs with real gate revenue pull ahead of clubs that cannot fund what they hold, while minimum club cash falls 114M -> 77M -> 49M -> 40M (the sink genuinely bites). The S90 league-wide mean development tilt stays 0.00000 at every mark. Spread now rests on live economics — market size, gate pricing, winning — instead of a generation-time roll nothing could ever change."
+      }
+    ]
+  },
+  "gameLoopReview": {
+    "loopTightness": 7,
+    "progression": 8,
+    "sessionEngagement": 7,
+    "retention": 7,
+    "soulFidelity": 6,
+    "overall": 7,
+    "evidence": "Soul fidelity is marked DOWN from S92's 8 on evidence, not mood. This project's central promise is that the numbers can be trusted and that a franchise is built by decisions under constraint. Three sessions of calibration work (S90, S91, S92) hardened the talent curve against drift the player cannot see — while the shipped Settings tab lets the player overwrite the strongest input to that curve, for free, to a value no club in the league can be generated with. The guarantee is real but conditional on the player not using the interface the game ships. Separately, owner.cash has exactly two sinks (staff-budget upkeep and coach-firing dead money) against unbounded, price-linear revenue, so the franchise economy is a scoreboard rather than a constraint. The three ranked items are one system: they turn the owner's console from a cheat panel into the capital-allocation loop the franchise fantasy is missing, which is the first player-visible decision pressure added since S89."
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "Simulation integrity / game-loop authority",
+      "effortHours": 6,
+      "impact": 10,
+      "innovation": 8,
+      "priority": 9.8,
+      "slug": "facilities-are-a-free-permanent-power-up",
+      "title": "The owner Facilities panel is the god-mode surface S63 closed on the Coaching Staff sheet, still open one panel over — three free number boxes that write the strongest input to the S90 development environment",
+      "status": "shipped",
+      "premise": "Verified against live code and measured. `GameSession.updateStaff` carries an explicit S63 comment: 'This endpoint used to accept playcalling / development / discipline and write them straight into the simulation, clamped 40-99. That made the Coaching Staff panel a god-mode surface: three number boxes, free, any value. Ability now comes only from hiring a real candidate through /api/coaching-market, which is priced against the owner's staff budget.' Eight lines further down the same file, `updateOwnerState` does exactly what S63 removed: `team.owner.facilities.training = clamp(Math.round(Number(training)), 40, 99)` and the same for rehab and analytics, with no cost, no cash debit, no rate limit, no owner approval and no build time. `public/game.html` ships them as three bare `<input type=\"number\">` boxes with no min, max or price. All three have real simulation effect: training feeds the S90 development environment (`trainingDivisor: 10`), rehab reduces injury chance (`injuryBase - rehabBoost * 0.0012`) and adds recovery, analytics feeds `scoutingWeeklyBonus` and therefore draft reveal, noise reduction and confidence. `buildFranchiseEconomics` generates every club's facilities in [64, 82]; the panel's legal range is [40, 99]. The player can therefore set a value 17 points above the top of the entire generated league distribution, on turn one, for free, forever. Franchise authority is NOT the hole here and was checked: `/api/owner` correctly returns 403 `team-authority` for a rival club (test/franchise-authority.test.js). The authority seam guards WHOSE club you edit; nothing guards whether the edit is earned.",
+      "fix": "Mirror the S63 precedent exactly. New `src/domain/facilityInvestment.js` with a frozen, versioned `FACILITY_INVESTMENT_PROFILE` and a pure `facilityUpgradeCost(from, to, facility)` that is superlinear in the level being bought — the same shape as `coachSalary`'s `pow(normalized, 2.1)`, and pure for the same reason: every existing save already has a well-defined price for every facility level, so no snapshot migration is needed. `updateOwnerState` stops accepting facility writes and returns `reasonCode: \"facilities-readonly\"` with a message naming the investment command, byte-for-byte the shape of S63's `staff-ratings-readonly`. A new `investInFacility({ teamId, facility, points })` command, guarded by the same franchise-authority seam, debits `owner.cash`, refuses what the club cannot afford, enforces a per-year build allowance, and logs a transaction. The annual allowance is tracked on `owner.facilityInvestment = { year, points }` with an absent-means-unspent default rather than derived from `league.transactionLog`, which truncates at 5,000 entries and would silently re-open the allowance in a long franchise. `GameSession.developmentEnvironmentCentres` caches on `${currentYear}:${players.length}:${teams.length}`; once facilities can move mid-year that key is stale, so it must include a facilities revision.",
+      "verification": "SHIPPED AND VERIFIED. `test/session93-owner-capital-authority.test.js` (31 tests, all green) covers: the refusal and its reasonCode with the level provably unmoved; command atomicity (a rejected facility write does not let a ticket price land beside it); re-sending a facility's current value stays legal so existing clients can still save; the cost curve's superlinearity and single definition; the debit equalling the quote exactly; the panel quote equalling the charged price; the operating reserve; the annual allowance binding, being per-facility, and resetting next league year; over-large requests granted down rather than overrunning; a stale-year allowance record reading as unspent so pre-S93 saves need no migration; upkeep superlinearity, payment, deferred-maintenance degradation of the most expensive wing, and the floor; the development-centres cache noticing a mid-year facility change; snapshot round-trip parity for `owner.facilityInvestment`; transaction-log auditability; and a NEGATIVE CONTROL reconstructing the pre-S93 clamped free write, asserting it reaches a level outside the entire generated league and that the shipped path now refuses it while buying there costs >200M and takes >=5 league years. `tests-ui/s93-owner-capital.spec.js` (4 tests, all green in a real browser) proves the three number boxes are gone from the shipped page and the priced market renders and functions in their place. `test/feature-pack-v1.test.js` had asserted the defect as a feature (`training: 88` must land) and was corrected to assert the new contract. The S90 zero-mean suite, the S63 second-order economics suite and the coaching-market suite all stay green (55/55).",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Clamp the panel to the generated league band [64, 82] and document that facilities are unpriced. Removes the out-of-distribution value; leaves the free permanent edge intact."
+        },
+        "L2": {
+          "effortHours": 6,
+          "recipe": "Price facilities as capital against owner.cash with a superlinear cost curve and a per-year build allowance, close the raw write behind a readonly reasonCode, and invalidate the development-centres cache on facility change."
+        },
+        "L3": {
+          "effortHours": 14,
+          "recipe": "Add facility maintenance upkeep, depreciation toward the league floor when unfunded, and an owner-approval gate tied to owner.priorities.profit, so a facility is a multi-season commitment negotiated with the owner rather than a purchase."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "Franchise economy / decision pressure",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 9.1,
+      "slug": "ticket-price-has-no-demand-curve",
+      "title": "Ticket price is a free revenue multiplier, not a decision — attendance carries no price term and the fan base does not notice a 4.6x ticket",
+      "status": "shipped",
+      "premise": "Measured, not inferred. Season revenue is `marketSize x ticketPrice x 66,500 x attendanceFactor`, and `attendanceFactor` is `clamp(fanInterest/100 + fanInterestWeeklyDelta * 0.02 + rng.float(-0.08, 0.08), 0.52, 1.12)` — no ticketPrice term. `owner.fanInterest` is written only by match results, the press room and GM decision consequences; no code path anywhere connects price to demand. Live one-season measurement (seed 20260307, BUF): price 98 -> 57M, price 450 -> 263M, price 35 -> 20M. Revenue multiple 4.61x for a price multiple 4.59x, and fan interest ends at 97 in all three scenarios. Setting the price to its legal maximum on turn one is worth +206M in the first season against a 112-190M starting cash band, with zero downside of any kind. This also removes the only pressure `owner.cash` exerts: `cashPressure` fires at <=35M and <=80M, thresholds an unbounded price dial makes unreachable.",
+      "fix": "Give attendance a real, league-sourced price elasticity. `attendanceFactor` gains a price term measured against the LEAGUE'S OWN mean ticket price, never a hardcoded centre — this project has twice shipped a differentiator against a fixed centre and twice watched it become a league-wide subsidy (S71, S90), and the fix both times was to measure the centre from the league. A club priced at the league mean is unaffected by construction; pricing above it trades seats for margin and pricing below it buys attendance and fan interest. Because the elasticity is bounded and the revenue term is linear, the product is single-peaked: there is an interior optimum, which is what makes the dial a decision. A gouging penalty on `fanInterest` gives the choice a second-order cost the owner-pressure loop can already read.",
+      "verification": "SHIPPED AND VERIFIED. `src/domain/ticketDemand.js`. Measured post-fix against the live league centre (118.00, measured, n=32): the demand factor at the league mean is exactly 1.000 — the centred-differentiator identity, asserted rather than claimed; gate revenue peaks at 1.409x the league mean and is worth 1.092x pricing at the mean; and pricing at the legal maximum of 450 now returns 0.191x, which is WORSE than pricing at the league mean. The pre-S93 4.61x exploit is not merely capped, it is inverted. Tests assert single-peakedness by scanning the whole legal range, that the derived optimum matches the measured one to within 1.5 (so the panel and the engine agree), that the centre follows a league-wide price doubling, a constant-stub NEGATIVE CONTROL proving a frozen centre misreports a club as gouging after the league moves, the declared-vs-measured fallback for an undersized league, bounded fan-interest response that is zero at the mean, and that neither the centre nor the demand term consumes the RNG stream.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Narrow the legal price range toward the generated band [96, 148]. Caps the exploit; still leaves price a strictly monotone free multiplier."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "League-centred bounded price elasticity on attendance plus a fan-interest gouging penalty, producing an interior revenue optimum."
+        },
+        "L3": {
+          "effortHours": 10,
+          "recipe": "Model demand per market size and on-field performance so a winning big-market club sustains a higher price than a losing small-market one, and surface the demand curve to the player as a pricing screen."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "League liveness / AI parity",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 9,
+      "priority": 8.7,
+      "slug": "no-ai-club-ever-invests",
+      "title": "No club in the league has ever changed a facility — the development environment S90 made league-relative is a birthright that only the human can move",
+      "status": "shipped",
+      "premise": "Measured across a full decade on a live seed. The league-wide standard deviation of `owner.facilities.training` is EXACTLY 5.66 at seasons 0, 3, 6 and 10 — identical to the reported digit, ten simulated seasons apart. `buildFranchiseEconomics` sets facilities once from a team-id-derived stream and no engine path writes them again. This is the mirror image of item 1 and it is why item 1 alone would be an incomplete fix: pricing the human's dial while leaving all 32 AI clubs frozen forever turns a free advantage into a purchasable one that still nobody competes for. It also quietly weakens S90's own guarantee, which is only meaningful if the centre it measures is a live quantity. A league whose development environments can never change is a league where the club you inherit determines a decade of player development, which is the opposite of the franchise-building promise.",
+      "fix": "An AI facility investment policy run in the offseason, reading each club's existing `owner.personality`, `owner.priorities.{championships,profit}`, cash position and current facility levels against the league centres. Clubs with cash and a championships-weighted owner build; clubs under cash pressure or with a profit-weighted owner hold or divest. It consumes the same priced `investInFacility` path as the human, so there is exactly one cost model in the codebase and the AI cannot buy what a human could not. Deterministic and derived (the coachingMarket `derivedRng`/hash convention), so it consumes no RNG stream and stays stable across saves and both adapters.",
+      "verification": "SHIPPED AND VERIFIED. `src/engine/facilityMarket.js`, run in the offseason's `coaching-carousel` front-office stage. Measured post-fix (seed 20260307): league-wide training standard deviation 5.658 -> 4.015 -> 3.655 at seasons 0/3/8 against the pre-fix 5.66-forever signature, mean 71.72 -> 75.88, minimum club cash 114M -> 49M. Tests assert the spread actually moves (the frozen fingerprint's absence is the receipt), that the AI never invests on behalf of the controlled club, that AI investments pay exactly `facilityUpgradeCost` and no club goes negative, that appetite separates a thin-cash profit-first owner from a flush championship-driven one, that facility centres are the league's own mean, and that the whole round draws zero from the session RNG stream (verified by instrumenting `session.rng.float`/`int` and asserting 0 draws). Upkeep was added after the first implementation measured a +0.6/season ratchet toward a flat ceiling — see probe-5.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Add small deterministic per-year facility drift so the centre is at least a live quantity. Cheap, but it is motion without decision — nobody is choosing anything."
+        },
+        "L2": {
+          "effortHours": 4,
+          "recipe": "A real AI investment policy driven by owner personality, priorities and cash, consuming the same priced path as the human."
+        },
+        "L3": {
+          "effortHours": 12,
+          "recipe": "Model facility investment as a competitive market where clubs read rivals' environments and free agents weigh a club's development reputation when choosing where to sign."
+        }
+      }
+    }
+  ],
+  "phantomsRejected": [
+    {
+      "slug": "development-tilt-clamp-asymmetry",
+      "hypothesis": "The S90 zero-mean development-environment guarantee is proved on the raw centred tilt but the engine applies a clamp, and clamping is nonlinear — so as club-to-club spread grows over a franchise, the clamp should bite asymmetrically and reopen the S71/S90 subsidy inside S90's own fix.",
+      "verdict": "REFUTED BY MEASUREMENT. Not ranked.",
+      "evidence": "Two independent seeds, full decade. Seed 20260307, seasons 0/3/6/10: league-wide mean APPLIED (post-clamp) tilt 0.00000, 0.00026, 0.00008, -0.00000; players clamped 0, 5, 1, 0 out of 1,568-2,178. Seed 4040, same marks: 0.00000, 0.00018, 0.00007, 0.00000; clamped 0, 1, 1, 0. Raw centred mean holds at ~1e-16 throughout on both. sdRaw runs 0.79-1.06 against a +/-3 clamp, so the clamp sits roughly three standard deviations outside the distribution and effectively never binds. The hypothesis was sound from a code read and wrong in the league; the honest outcome is a rejected item with its measurement recorded, not a quietly dropped one. The same probe run is what surfaced the frozen-facilities finding (probe-2) — the column next to the one it was written to test."
+    },
+    {
+      "slug": "rostered-population-reused-elsewhere",
+      "hypothesis": "The S92 handoff booked a check: the new activeRosterOnly/practiceSquad split may be needed anywhere else `population.rostered` is used to represent the league the GM competes in, since the practice-squad dilution shape could repeat.",
+      "verdict": "CHECKED, NO DEFECT FOUND. Not ranked.",
+      "evidence": "`rostered` appears in exactly four source files. Two are the S92 fix itself (`src/stats/progressionParity.js`, `src/data/nflEliteDensityBaseline.js`). `src/domain/potentialReversion.js` uses the word only in documentation explaining why it deliberately measures over the progressed population instead. `src/domain/developmentEnvironment.js` measures its centres over active-plus-practice-squad, which is correct there and is not the S92 shape: the centre is applied to exactly the population it is measured over, which is the conservation identity `potentialReversion.js` documents as the whole guarantee. A wider population is only a defect when it is a REPORTING denominator compared against an external anchor, which is not the case here."
+    },
+    {
+      "slug": "nfl-ratings-distribution-upgrade",
+      "hypothesis": "The S92 handoff noted that a genuinely citable measured NFL ratings distribution would be a strictly stronger authority than the honors-slot-count analogy in `src/data/nflEliteDensityBaseline.js`.",
+      "verdict": "NO ACTION AVAILABLE. Not ranked.",
+      "evidence": "No such distribution is citable in a form this project can consume, which is exactly why S92 shipped the analogy with its limits documented in the module rather than claiming precision it did not have. Raising this as an item would be booking work that cannot be started; the module already names where a better source would be substituted. Deferring it honestly is the correct outcome, not a skipped item."
+    }
+  ],
+  "innovationPack": [
+    {
+      "slug": "franchise-capital-loop",
+      "note": "The three ranked items are deliberately one system. Priced facilities give `owner.cash` its first real sink; a demand curve gives it its first real source under player control; an AI investment policy makes both competitive. Together they convert a dead scoreboard stat and a cheat panel into the capital-allocation decision a franchise game is supposed to be built on — win now with staff budget and payroll, or compound an advantage through the development environment. This is the first player-visible decision pressure added since S89, and it is a correctness fix and a game-loop feature in the same change, which is why it ranks above anything cosmetic."
+    }
+  ]
+}

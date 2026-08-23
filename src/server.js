@@ -1297,6 +1297,29 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  if (req.method === "GET" && url.pathname === "/api/facilities") {
+    const teamId = (url.searchParams.get("team") || session.controlledTeamId).toUpperCase();
+    const market = session.getFacilitiesMarket(teamId);
+    sendJson(res, market.ok ? 200 : 404, market);
+    return true;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/facilities/invest") {
+    const body = parseJsonBody(await readRequestBody(req));
+    const check = assertFields(body, ["teamId", "facility"]);
+    if (!check.ok) {
+      sendJson(res, 400, { ok: false, error: check.error });
+      return true;
+    }
+    const result = session.investInFacility({
+      teamId: String(body.teamId).toUpperCase(),
+      facility: String(body.facility),
+      points: toNumber(body.points) ?? 1
+    });
+    sendJson(res, result.ok ? 200 : 400, { ...result, state: session.getDashboardState() });
+    return true;
+  }
+
   if (req.method === "POST" && url.pathname === "/api/injuries/rehab-plan") {
     const body = parseJsonBody(await readRequestBody(req));
     const check = assertFields(body, ["teamId", "playerId", "plan"]);

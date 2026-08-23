@@ -1,3 +1,65 @@
+# Session 93 Closeout — The Owner's Console Stops Being a Cheat Panel
+
+## Session Intent — S94
+
+**Nothing is owed as a single blocking item.** The genius hit list is exhausted again; the board's `Next` section still waits on external state this project cannot manufacture (a real opted-in cohort, delivered email, founder approval). Run a fresh `/audit` against live code.
+
+Three things worth checking early, in rough order of value:
+
+1. **The facility equilibrium has evidence but no gate.** Measured seasons 0/3/8/15 show standard deviation falling to a floor and then **turning back up** — 5.658 → 4.015 → 3.655 → **4.050** — with the league maximum finally moving past the generated band (82 → 85) and minimum club cash falling 114M → 40M. That is the equilibrium the upkeep was added to produce, not merely a slower collapse. But **no test asserts any of it.** No gate says the league still has facility spread at season 25 or 40. That is exactly the shape of defect this project keeps finding — a system whose long-horizon behaviour is argued from a probe rather than gated by a test. A cheap, honest gate would assert a floor on facility standard deviation after a long seeded run, and it belongs in the `long` shard. This is the single highest-value item on the board.
+2. **`owner.cash` is now load-bearing and was not designed to be.** Before S93 it had two sinks (staff-budget upkeep, coach-firing dead money) against unbounded price-linear revenue, so nobody had reason to check whether its scale is right. It now gates facility construction and upkeep, and `cashPressure` thresholds (35M / 80M) that were previously unreachable are now reachable. Whether those thresholds are calibrated for a league where cash actually moves is an open question nobody has measured.
+3. **The `facilityAppetite` policy is judgement, not measurement.** `FACILITY_MARKET_PROFILE` declares its weights from reasoning about owner personalities, in the same category the S91 elite-density ceiling was in before S92 sourced it. It is honest about that, but it is the newest un-sourced constant in the codebase and should be treated as such.
+
+## Where We Left Off (Session 93)
+
+The audit came from a sweep S90's self-improvement loop had explicitly booked and no session had performed: *"a modifier documented as a differentiator must have a league-wide mean of zero and a test that says so. Two occurrences of this class (S71, S90) is a pattern; sweep for a third before it is found by a symptom."*
+
+### The third occurrence was not a constant
+
+`GameSession.updateStaff` still carries the note S63 left: the Coaching Staff sheet "used to accept playcalling / development / discipline and write them straight into the simulation, clamped 40-99. That made the Coaching Staff panel a god-mode surface: three number boxes, free, any value." **Eight lines below that fix, `updateOwnerState` did the identical thing to `owner.facilities`**, and `public/game.html` shipped it as three bare number inputs with no min, max or price. S63 closed one of the two god-mode panels and left its twin.
+
+All three wings are live simulation inputs — training feeds the S90 development environment at `trainingDivisor: 10`, rehab feeds injury probability and recovery, analytics feeds `scoutingWeeklyBonus` and therefore draft reveal. `buildFranchiseEconomics` generates every club in **[64, 82]**; the panel's legal range was **[40, 99]**.
+
+Franchise authority was checked and is **not** the hole: `/api/owner` correctly 403s for a rival club. The authority seam guards *whose* club you edit; nothing guarded whether the edit was earned.
+
+### Measured, not argued
+
+Seed 20260307, team BUF, ten seasons, control vs one free click on turn one:
+
+| | control | one free click |
+|---|---|---|
+| cost charged | — | **0M** (cash 177M -> 177M) |
+| facilities | 70 / 65 / 73 | 99 / 99 / 99 |
+| club mean development tilt, season 0 | 0.322 | **2.847** (clamp ceiling 3.0) |
+| roster overall after a decade | 77.10 | 79.73 |
+| **league roster rank** | **23rd** | **1st** |
+
+Two more defects in the same system. Gate revenue measured **4.61x for a 4.59x price multiple** with fan interest ending at 97 in every scenario — `attendanceFactor` carried no price term at all. And the league-wide standard deviation of `owner.facilities.training` measured **exactly 5.66 at seasons 0, 3, 6 and 10 on two independent seeds**: no club had ever changed a facility in the project's history.
+
+### The fix
+
+`src/domain/facilityInvestment.js` prices construction with a pure superlinear cost function — pure so every level in every existing save already has a well-defined price and **no snapshot migration is needed**, the same trick `coachSalary` uses — plus a three-point-per-wing annual build allowance and recurring annual upkeep. `src/domain/ticketDemand.js` gives attendance a bounded linear demand curve measured against the league's own mean price. `src/engine/facilityMarket.js` runs an offseason AI investment round through the same priced domain functions, so there is exactly one cost model in the codebase.
+
+Post-fix: the demand factor at the league centre is exactly **1.000**, gate revenue peaks at 1.409x the mean, and the legal maximum returns **0.191x** — worse than pricing at the mean, so the exploit is inverted rather than capped. Reaching the facility ceiling costs **357.8M** and takes at least **nine league years**.
+
+### A defect in the fix, caught before shipping
+
+The first implementation — priced construction plus a deficit-driven AI policy — measured mean 71.72 -> 72.97 -> 74.81 and sd 5.658 -> 4.398 -> 3.729 at seasons 0/2/5. Every club climbing, none ever falling: a **+0.6/season ratchet** that reaches the ceiling and zero spread well inside the forty-season franchise this project builds for, which would have deleted the S90 development environment as completely as a constant stub. A purchase price cannot supply the counterforce because it is paid once from a cash pile that regrows; **annual upkeep can**, because it is a recurring claim on revenue. With upkeep, extended to season 15: sd 5.658 → 4.015 → 3.655 → **4.050** at seasons 0/3/8/15 — dispersion bottoms out and then turns back up, which is an equilibrium rather than a slower collapse — the league maximum moves past the generated band for the first time (82 → 85) as clubs with real gate revenue pull ahead of clubs that cannot fund what they hold, minimum club cash falls 114M → 40M, and the S90 league-wide mean tilt stays 0.00000 at every mark. Spread now rests on live economics instead of a generation-time roll.
+
+## Known Traps For Next Session
+
+- **The write-back-currency probe (F7) false-positives here every session.** It anchors on the newest commit touching `SELF_IMPROVEMENT_LOOP.md`, but this project's closeout commits the SIL *before* the rendered artifacts, so there is always a later substantive commit. Confirm against clean tree + `0/0` sync + no lock + all ten surfaces current before believing it.
+- **`npm test` is ~50 minutes** across six shards, two of which run 10-season decade simulations. Check `.cache/test-progress.json` for non-authoritative live shard progress before concluding a run is stuck.
+- **A decade probe takes 10-20 minutes per seed.** Budget for it, and write probe output incrementally — a probe that only prints after both arms finish gives you nothing to check while it runs.
+- **Check a probe's columns before trusting any of them.** This session's decade probe reported wins/losses/titles as 0 for both arms because the `teamSeasonArchive` field names guessed in the probe do not exist. Three of six reported columns were meaningless; the finding survived only because the columns that mattered (roster overall, roster rank) were correct.
+- **Check the boot budget before adding UI, not after.** The settings island holds a 15% headroom floor. Adding a panel inline took it to 11.6% and the fix was to move the markup behind a dynamic import — the right answer, but cheaper to reach if the budget is checked first.
+- **Prose about a defect trips the innovation-pack scanner, and the studio shard runs that scanner.** `/not implemented|\bstub\b/i` matched the words "a constant stub" in a doc comment and turned a shipped audit into "1 open candidate", which `test/studio-protocol-smoke.test.js` fails on. The declared fix is a file-level `innovation-pack:ignore`, scoped to the "unfinished behavior" class only — do not reword good documentation and do not loosen the pattern. Note that the pardon genuinely is scoped: spelling out the explicit inline marker tokens in the opt-out note itself fired the *other* pattern. Run `node scripts/ops.mjs innovation-pack --dry-run` before closeout, not after.
+- **A test can assert the defect as a feature.** `test/feature-pack-v1.test.js` required that `training: 88` landed through `updateOwnerState`. It had passed for ninety sessions and was pinning the exploit in place. When closing a hole, grep the suite for tests that assert the old behaviour before assuming a red is your bug.
+- **Facilities are now a live quantity, so anything caching them must say so.** `developmentEnvironmentCentres` keyed its cache on `year:players:teams`, which was sufficient only while facilities could never move. It now includes a facilities revision. Any new cache over league state needs the same audit.
+- **Recorded, not fixed: both new cache revisions are unweighted sums and can alias in principle.** `developmentEnvironmentCentres`'s facility revision sums training levels and `ticketPriceCentre`'s sums prices, so one club +1 and another −1 in the same year would produce an identical key. This is *not* a live defect: every writer of either quantity also explicitly clears the revision (`investInFacility`, and the offseason round on both investment and deferred-maintenance degradation), so the sum is belt and the explicit invalidation is braces. It was left as-is deliberately rather than fixed mid-run, because the canonical suite was already executing against this exact source and a defence-in-depth tweak did not justify discarding a ~50-minute receipt. A future writer of facilities or ticket prices that forgets to clear the revision would expose it — weight each term by team index if you touch this.
+
+---
+
 # Session 92 Closeout — A Sourced Elite-Density Baseline, and the Population Bug It Uncovered
 
 ## Session Intent — S93

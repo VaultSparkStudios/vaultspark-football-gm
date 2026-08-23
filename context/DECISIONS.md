@@ -2,6 +2,40 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-22 - S93: a differentiator the player can type in is not a differentiator
+
+**Decision:** Any quantity the simulation treats as a club's earned advantage must be reachable only through a priced, rate-limited command — never through a raw write on a settings panel. When a value is a live simulation input, "the player may set it" and "the player may set it for free, instantly, to a value outside the entire generated league" are different features, and only the first one is a game.
+
+**Rationale:** S63 established this precedent and closed it on the Coaching Staff sheet, replacing three free numeric inputs with a market priced against the owner's staff budget. The owner Facilities panel — three free numeric inputs writing training, rehab and analytics, all live simulation inputs, clamped [40, 99] against a league generated in [64, 82] — sat eight lines below that fix and was never closed. Measured on a live decade, one free click on turn one moved club mean development tilt from 0.322 to 2.847 against a clamp ceiling of 3.0 and took the club from 23rd to 1st in league roster strength at zero cost. Three consecutive sessions of calibration work (S90, S91, S92) had hardened the talent curve against drift the player cannot see, while the shipped interface let the player overwrite its strongest input by hand — so those guarantees were real but conditional on the player not using the game. Facility level is now bought through a priced command with an annual build allowance and recurring upkeep, and the raw write returns `facilities-readonly`.
+
+---
+
+## 2026-08-22 - S93: a free dial with no counterparty is a cheat, and a demand curve is what makes it a decision
+
+**Decision:** A resource dial the player controls must have a counterparty — a cost, a demand response, or a competitor — measured against the league rather than a literal. A monotone dial with no downside is not a decision the player gets to make; it is a decision the game already made for them.
+
+**Rationale:** Gate revenue was `marketSize x ticketPrice x 66,500 x attendanceFactor` with no ticketPrice term anywhere in `attendanceFactor`, and `fanInterest` moves only on results, press beats and GM decisions. Measured over one season: a 4.59x price multiple returned a 4.61x revenue multiple, and fan interest ended at 97 in every scenario — the fan base did not notice a 4.6x ticket. Attendance now carries a bounded linear demand term measured against the league's own mean price, so a club priced at the league mean is affected by exactly nothing (the centred-differentiator identity S71 and S90 both had to be rescued into) and pricing at the legal maximum returns 0.191x, worse than pricing at the mean. Constant-elasticity demand was considered and rejected: revenue under it is monotone in price for every elasticity, so the optimum is always an endpoint and the dial would still not be a choice. Linear demand puts the optimum in the interior, where a decision lives.
+
+---
+
+## 2026-08-22 - S93: a recurring cost, not a purchase price, is what stops a league flattening
+
+**Decision:** When an AI policy lets every club climb a bounded scale, the system needs a recurring claim on revenue rather than a one-off price, or the league ratchets to the ceiling and the differentiator dies. Verify the long-horizon equilibrium of a new policy before shipping it, not the first three seasons.
+
+**Rationale:** The first implementation of priced facilities plus a deficit-driven AI investment round measured mean 71.72 -> 72.97 -> 74.81 and standard deviation 5.658 -> 4.398 -> 3.729 at seasons 0/2/5 — every club climbing, none ever falling, a +0.6/season ratchet that reaches the ceiling and zero spread well inside the forty-season franchise this project explicitly builds for. That would have deleted the S90 development environment as completely as a constant stub, which is precisely the failure this project has now rescued three separate quantities from. A purchase price cannot supply the counterforce because it is paid once out of a cash pile that regrows every season. Annual upkeep can, because the level a club can hold becomes bounded by what its market and gate actually earn, so spread rests on live economics rather than a generation-time roll. With upkeep the same probe measures sd 5.658 -> 4.015 -> 3.655 at seasons 0/3/8 and minimum club cash 114M -> 77M -> 49M, and the S90 league-wide mean tilt stays 0.00000 at every mark.
+
+---
+
+## 2026-08-22 - S93: a budget gate that goes red is a design question, not a number to raise
+
+**Decision:** When a declared budget gate blocks a new feature, the first move is to change the feature's shape so it fits, not to widen the gate. Widening is reserved for cases where the gate's own intent has changed.
+
+**Rationale:** The settings island carries a 15% boot-budget headroom floor, and adding the facilities market panel inline took it to 11.6%. Raising `maxBytes` would have been a one-line green and would have spent, permanently and invisibly, the headroom the gate exists to protect. Instead the panel's markup and the Owner spotlight beside it moved into a module pulled in with a dynamic import, so the payload is only paid by players who actually open the Owner tab — the boot budget went green because less code boots, not because the limit moved.
+
+The same session met the mirror-image case and answered it the mirror-image way. The innovation-pack scanner's "unfinished behavior" pattern (`/not implemented|\bstub\b/i`) matched the words "a constant stub" in a doc comment describing a defect this session had just *fixed*, which would have failed the studio shard on prose. Loosening the pattern would have weakened a live gate to accommodate one comment; rewording the documentation would have let a keyword scan dictate how the codebase is allowed to describe its own history. The scanner already ships the correct instrument — a file-level `innovation-pack:ignore` scoped to that one class — and using it left both the gate and the prose intact. **A gate goes red for one of two reasons: the work is wrong, or the work is right and the gate has a declared way to say so. Widening the gate is neither.**
+
+---
+
 ## 2026-08-19 - S92: an external calibration anchor still needs the right population underneath it
 
 **Decision:** Sourcing a ceiling from a real external authority is necessary but not sufficient — the population the engine measures against that anchor must be the same population the anchor's real-world honor is actually drawn from. Fixing the anchor's provenance and fixing its population are the same job, not two separate ones.
