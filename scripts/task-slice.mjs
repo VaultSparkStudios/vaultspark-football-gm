@@ -24,7 +24,18 @@ const OPEN_ITEM = /^\s*[-*]\s*\[ \]\s*(.+)$/;
 const DONE_ITEM = /^\s*[-*]\s*\[[xX]\]\s*/;
 const HEADING = /^(#{2,4})\s+(.+)$/;
 
-export function sliceTaskBoard(source, { maxChars = 8000 } = {}) {
+const DEFAULT_MAX_CHARS = 8000;
+
+function resolveBudget(value) {
+  const parsed = Number(value);
+  // A NaN budget compares false against every `>` and would silently disable the
+  // cap while still reporting truncated:false — a slice claiming completeness it
+  // never checked, which is the exact failure this file exists to avoid.
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : DEFAULT_MAX_CHARS;
+}
+
+export function sliceTaskBoard(source, { maxChars = DEFAULT_MAX_CHARS } = {}) {
+  const budget = resolveBudget(maxChars);
   const lines = source.split(/\r?\n/);
   const open = [];
   const humanAction = [];
@@ -63,11 +74,16 @@ export function sliceTaskBoard(source, { maxChars = 8000 } = {}) {
   const rendered = [];
   let used = 0;
   let dropped = 0;
-  for (const entry of [...humanAction, ...unique]) {
-    const line = render(entry);
-    if (used + line.length + 1 > maxChars) {
-      dropped += 1;
-      continue;
+  const ordered = [...humanAction, ...unique];
+  for (let index = 0; index < ordered.length; index += 1) {
+    const line = render(ordered[index]);
+    if (used + line.length + 1 > budget) {
+      // BREAK, not continue. Continuing would keep emitting shorter, lower-
+      // priority items after a long high-priority one had been dropped, so the
+      // slice would not be the prefix it claims to be and the caller would be
+      // told only a count, never which items vanished.
+      dropped = ordered.length - index;
+      break;
     }
     rendered.push(line);
     used += line.length + 1;
@@ -79,15 +95,16 @@ export function sliceTaskBoard(source, { maxChars = 8000 } = {}) {
     rendered,
     dropped,
     truncated: dropped > 0,
+    maxChars: budget,
     note: dropped
-      ? `${dropped} open item(s) omitted to stay inside ${maxChars} characters — this slice is NOT the whole board`
+      ? `${dropped} open item(s) omitted to stay inside ${budget} characters — this slice is NOT the whole board`
       : "complete: every open item fits the budget"
   };
 }
 
 function main(argv = process.argv.slice(2)) {
   const maxIndex = argv.indexOf("--max-chars");
-  const maxChars = maxIndex >= 0 ? Number(argv[maxIndex + 1]) : 8000;
+  const maxChars = maxIndex >= 0 ? argv[maxIndex + 1] : DEFAULT_MAX_CHARS;
   const boardPath = path.join(rootDir, "context", "TASK_BOARD.md");
   if (!fs.existsSync(boardPath)) {
     console.error("context/TASK_BOARD.md not found");

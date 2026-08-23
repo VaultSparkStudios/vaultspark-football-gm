@@ -132,7 +132,16 @@ export function inspectPublicTruth(root = rootDir) {
     }
   }
 
-  const rivalMatch = landing.match(/class="stat-num">(\d+)<\/strong><span class="stat-label">Rival Front Offices/);
+  // Whitespace-tolerant, and it fails when it stops matching at all. The
+  // engine-count branch above already pushes a problem on an empty match set;
+  // this one silently passed instead — and S94 had to hand-repair this exact
+  // pattern when the markup moved from <div> to <strong>. A gate that goes quiet
+  // when its subject moves is worse than no gate, because its green is read as
+  // evidence.
+  const rivalMatch = landing.match(/class="stat-num"\s*>\s*(\d+)\s*<\/strong>\s*<span class="stat-label"\s*>\s*Rival Front Offices/);
+  if (!rivalMatch) {
+    problems.push("index.html no longer states the rival-front-office count in a shape this gate can read; update check-public-truth.mjs if that is intentional");
+  }
   if (rivalMatch && Number(rivalMatch[1]) !== TEAM_COUNT - 1) {
     problems.push(`index.html claims ${rivalMatch[1]} rival front offices but the league has ${TEAM_COUNT - 1}`);
   }

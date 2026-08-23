@@ -217,21 +217,26 @@ export function activateTab(tabId) {
   const loadAndHydrate = async ({ force = false } = {}) => {
     if (islandName) await loadUiIsland(islandName);
     const receipt = await hydrateTab(tabId, { force });
+    // S94: developer diagnostics stay hidden unless ?dev=1 asked for them.
+    //
+    // This runs BEFORE the failure throw on purpose. The island that owns those
+    // panels is lazily imported, so the markup only becomes reachable here — but
+    // if a settings hydration domain is degraded, throwing first would leave the
+    // block hidden precisely when it is worth reading, Retry Degraded Panels
+    // included. A diagnostics surface that disappears on failure is not a
+    // diagnostics surface.
+    if (islandName === "settings") {
+      await observeBackgroundTask(
+        () => import("./devSurfaces.js").then((module) => module.applyDeveloperSurfaceVisibility()),
+        { surface: "dev-surface-visibility", operation: tabId }
+      );
+    }
     if (receipt.failures.length) {
       throw new Error(`Tab ${tabId} hydration failed: ${receipt.failures.map((row) => row.name).join(", ")}`);
     }
     if (state.activeTab === tabId && panel) {
       panel.inert = false;
       panel.removeAttribute("aria-busy");
-    }
-    // S94: developer diagnostics stay hidden unless ?dev=1 asked for them.
-    // Applied after hydration because the island that owns those panels is
-    // lazily imported, so the markup may not have been reachable before now.
-    if (islandName === "settings") {
-      await observeBackgroundTask(
-        () => import("./devSurfaces.js").then((module) => module.applyDeveloperSurfaceVisibility()),
-        { surface: "dev-surface-visibility", operation: tabId }
-      );
     }
     return receipt;
   };

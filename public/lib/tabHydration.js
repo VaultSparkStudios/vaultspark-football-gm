@@ -16,8 +16,11 @@ export const TAB_HYDRATION_DOMAINS = Object.freeze({
   // needed, so the economy is populated when a player opens the Boardroom rather
   // than only after they happen to visit Settings first.
   boardroomTab: ["settings-island", "settings", "staff", "owner"],
+  // S94: "staff" and "owner" moved to boardroomTab with the panels that render
+  // them. Leaving them declared here would fetch and render into elements that
+  // now live in another tab — dead work on a path whose failures are counted.
   settingsTab: [
-    "settings-island", "saves", "qa", "settings", "staff", "owner", "observability",
+    "settings-island", "saves", "qa", "settings", "observability",
     "persistence", "pipeline", "calibration-jobs", "simulation-jobs"
   ]
 });

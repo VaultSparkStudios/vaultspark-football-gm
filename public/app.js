@@ -2181,18 +2181,32 @@ function bindEvents() {
   // S94: rival front-office intel loads with the tab that shows it.
   //
   // This was a "Load Archetypes" button. Intel you have to remember to fetch is
-  // intel you do not have at the moment you need it — and the moment you need to
-  // know how a rival front office thinks is when one of them is making you an
-  // offer, not when you happen to click a button in the Scouting tab. Failures
-  // still surface in the panel; they are just no longer the default state.
-  observeBackgroundTask(
-    () => loadTeamArchetypes().then(() => renderArchetypesTable()),
-    {
+  // intel you do not have at the moment you need it. It is also not worth a
+  // request on every cold boot, which the island architecture exists to avoid —
+  // so it loads once, on first activation of the tab that renders it, following
+  // the same rail-button pattern the roster mentorship panel already uses.
+  //
+  // observeBackgroundTask records and resolves; it never rejects, so a trailing
+  // .catch would be unreachable and the panel would sit blank in silence.
+  // onError is the seam that actually fires.
+  let rivalIntelLoaded = false;
+  const loadRivalFrontOfficeIntel = () => {
+    if (rivalIntelLoaded) return;
+    rivalIntelLoaded = true;
+    const run = () => loadTeamArchetypes().then(() => renderArchetypesTable());
+    observeBackgroundTask(run, {
       surface: "rival-front-office",
       operation: "team-archetypes",
-      retry: () => loadTeamArchetypes().then(() => renderArchetypesTable())
-    }
-  ).catch((error) => renderPanelError("teamArchetypesTable", "League GM Archetypes", error));
+      retry: run,
+      onError: (error) => {
+        rivalIntelLoaded = false;
+        renderPanelError("teamArchetypesTable", "League GM Archetypes", error);
+      }
+    });
+  };
+  document.querySelectorAll(".menu-btn[data-tab='scoutingTab']").forEach((btn) => {
+    btn.addEventListener("click", loadRivalFrontOfficeIntel);
+  });
 
   // Season Arcs — load on Overview activation
   document.querySelectorAll(".menu-btn[data-tab='overviewTab']").forEach((btn) => {

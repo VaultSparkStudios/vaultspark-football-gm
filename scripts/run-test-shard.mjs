@@ -193,6 +193,7 @@ export const SHARDS = {
     "test/session94-context-budget.test.js",
     "test/session94-game-surfaces.test.js",
     "test/session94-public-surface.test.js",
+    "test/session94-review-fixes.test.js",
     "test/edge-style-hash.test.js",
     "test/hosted-performance.test.js",
     "test/edge-policy-application.test.js",

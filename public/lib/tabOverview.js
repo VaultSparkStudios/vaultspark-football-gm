@@ -1,7 +1,7 @@
 import { state, api, STATS_BENCHMARK_HINTS } from "./appState.js";
 import { deriveTrophyRoad, readEarnedAchievements, recordAchievementEvent } from "./achievements.js";
 import { playSound } from "./audioFeedback.js";
-import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderGuideContent, renderTable, setBoxScoreTab, setMetricCardValue, showToast, teamCode, teamName } from "./appCore.js";
+import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderGuideContent, renderPanelError, renderTable, setBoxScoreTab, setMetricCardValue, setTableSkeleton, showToast, teamCode, teamName } from "./appCore.js";
 import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
 import { invokeUiIsland } from "./uiIslands.js";
 import { renderTradeDeadlineFrenzy } from "./tradeDeadlineFrenzy.js";
@@ -1034,14 +1034,29 @@ export function selectGuideView(view = "guideHowToPanel") {
 
 export function openGuideModal(view = "guideHowToPanel") {
   renderGuideContent();
-  // renderRulesTab lives in the lazily-imported settings island, which owns the
-  // two tables the Rules and Buttons views render into.
-  observeBackgroundTask(() => invokeUiIsland("settings", "renderRulesTab"), {
-    surface: "game-guide",
-    operation: "renderRulesTab"
-  });
   selectGuideView(view);
   document.getElementById("guideModal")?.classList.remove("hidden");
+
+  // The Rules and Buttons views render into tables owned by the lazily-imported
+  // settings island, so opening straight to one of them would show an empty
+  // table until that import resolves. Skeleton first, and surface a real failure
+  // in the panel rather than leaving a permanently blank table behind a promise
+  // whose rejection the observer swallows.
+  const tableIds = ["rulesCoreTable", "rulesActionsTable"];
+  const needsIsland = view !== "guideHowToPanel";
+  if (needsIsland) {
+    for (const id of tableIds) {
+      if (!document.getElementById(id)?.rows?.length) setTableSkeleton(id, 4);
+    }
+  }
+  return observeBackgroundTask(() => invokeUiIsland("settings", "renderRulesTab"), {
+    surface: "game-guide",
+    operation: "renderRulesTab",
+    retry: () => invokeUiIsland("settings", "renderRulesTab"),
+    onError: (error) => {
+      for (const id of tableIds) renderPanelError(id, "Game Guide", error);
+    }
+  });
 }
 
 export function closeGuideModal() {

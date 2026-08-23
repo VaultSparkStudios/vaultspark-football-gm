@@ -344,7 +344,10 @@ export function renderCommandPalette() {
     { id: "roster", label: "Open Roster", run: () => activateTab("rosterTab") },
     { id: "transactions", label: "Open Transactions", run: () => activateTab("transactionsTab") },
     { id: "stats", label: "Open Stats", run: () => activateTab("statsTab") },
-    { id: "rules", label: "Open Game Guide", run: () => document.getElementById("openGuideBtn")?.click() },
+    // S94: the Rules tab merged into the guide as one of its three views, so the
+    // rules affordance survives the merge instead of becoming a second row with
+    // the same label that lands in the same place.
+    { id: "rules", label: "Open Rules", run: () => openGuideModal("guideRulesPanel") },
     { id: "guide", label: "Open Game Guide", run: () => openGuideModal() },
     { id: "settings", label: "Open Settings", run: () => activateTab("settingsTab") },
     { id: "advance-week", label: "Advance Week", run: () => document.getElementById("advanceWeekBtn").click() },

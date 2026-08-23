@@ -161,6 +161,9 @@ function isPreCohort(snapshot) {
   return Number(period.sampleSize ?? 0) < threshold;
 }
 
+// `compact` also decides whether the invitation carries its own consent block.
+// The atlas page already renders one into [data-community-consent-shell]; a
+// second copy there would be both unbound and a duplicate aria-live region.
 function invitationMarkup(compact = false) {
   const pact = compact
     ? `<p>Optional and anonymous. Your save, your names and your notes never leave this browser.</p>`
@@ -174,7 +177,7 @@ function invitationMarkup(compact = false) {
       <h${compact ? "3" : "2"}>The league is still filling up</h${compact ? "3" : "2"}>
       <p>Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here once enough players have chosen to share.</p>
       ${pact}
-    </div>${participationMarkup()}`;
+    </div>${compact ? participationMarkup() : ""}`;
 }
 
 function renderPulse(snapshot) {

@@ -43,8 +43,15 @@ export const ROLLABLE_LEDGERS = Object.freeze([
  * Returns null when the file has fewer entries than the retention window, so a
  * short ledger is left completely alone.
  */
+export const POINTER_SENTINEL = "<!-- ledger-roll:pointer -->";
+
 export function splitLedger(source, entryPattern, retain = RETAINED_SESSION_ENTRIES) {
-  const lines = source.split(/\r?\n/);
+  // Drop any pointer a previous roll appended. Without this it is re-read as
+  // ordinary content and moved into the middle of an archive whose entire
+  // promise is that it is verbatim.
+  const pointerAt = source.indexOf(POINTER_SENTINEL);
+  const body = pointerAt === -1 ? source : source.slice(0, pointerAt).replace(/\n---\n\s*$/, "");
+  const lines = body.split(/\r?\n/);
   const starts = [];
   for (let index = 0; index < lines.length; index += 1) {
     if (entryPattern.test(lines[index])) starts.push(index);
@@ -77,7 +84,7 @@ export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_S
     const archiveName = ledger.file.replace(/\.md$/, "") + ".archive.md";
     const archivePath = path.join(archiveDir, archiveName);
     const pointer =
-      `\n---\n\nOlder entries are retained verbatim in \`context/archive/${archiveName}\`. ` +
+      `\n${POINTER_SENTINEL}\n---\n\nOlder entries are retained verbatim in \`context/archive/${archiveName}\`. ` +
       `Nothing is summarised or removed on the way; the live file holds the working set only ` +
       `(newest ${retain} entries), so a reader does not pay for the whole project's history to ` +
       `learn what is true this week.\n`;
@@ -85,13 +92,18 @@ export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_S
 
     if (apply) {
       fs.mkdirSync(archiveDir, { recursive: true });
-      const existing = fs.existsSync(archivePath) ? fs.readFileSync(archivePath, "utf8") : "";
-      const banner = existing
-        ? ""
-        : `# ${ledger.file} — archive\n\nAppend-only archive of entries rolled out of the live ledger. ` +
-          `Verbatim; newest first. See \`context/${ledger.file}\` for the working set.\n\n`;
+      // The banner is written from the same constant every time rather than
+      // preserved-or-recreated. The previous shape stripped the existing header
+      // with a regex and only re-added one when the file was new, so the SECOND
+      // roll silently ate the archive's own heading and explanation.
+      const banner =
+        `# ${ledger.file} — archive\n\nAppend-only archive of entries rolled out of the live ledger. ` +
+        `Verbatim; newest first. See \`context/${ledger.file}\` for the working set.\n\n`;
+      const existingBody = fs.existsSync(archivePath)
+        ? fs.readFileSync(archivePath, "utf8").replace(banner, "")
+        : "";
       // Rolled entries are newer than anything already archived, so they go on top.
-      fs.writeFileSync(archivePath, banner + split.tail + (existing ? "\n" + existing.replace(/^# .*\n\n[\s\S]*?\n\n/, "") : ""), "utf8");
+      fs.writeFileSync(archivePath, banner + (existingBody ? `${split.tail}\n${existingBody}` : split.tail), "utf8");
       fs.writeFileSync(livePath, head, "utf8");
     }
 

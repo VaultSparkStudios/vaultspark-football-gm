@@ -111,22 +111,36 @@ export function writeCaptureLedger({ root = rootDir } = {}) {
     "(scripts/visual-qa-retention.mjs). Append-only: an entry is never rewritten or removed, " +
     "so a capture pruned from the working tree remains provable.";
   let added = 0;
+  let revised = 0;
   for (const name of fs.readdirSync(dir)) {
     if (!name.toLowerCase().endsWith(".png")) continue;
-    if (existing.captures[name]) continue;
     const buffer = fs.readFileSync(path.join(dir, name));
+    const digest = crypto.createHash("sha256").update(buffer).digest("hex");
+    const prior = existing.captures[name];
+    // Keying on filename alone would let a capture regenerated under the SAME
+    // name keep a stale digest forever, which quietly voids the "every capture
+    // remains provable" guarantee this whole prune rests on. The unversioned
+    // captures are both the ones re-baselined in place and the ones the policy
+    // never prunes, so they are exactly where it would bite. Verify on match;
+    // when the bytes have genuinely changed, keep the superseded digest rather
+    // than overwriting the record of what was reviewed before.
+    if (prior?.sha256 === digest) continue;
     const session = name.match(SESSION_PREFIX);
     existing.captures[name] = {
-      sha256: crypto.createHash("sha256").update(buffer).digest("hex"),
+      sha256: digest,
       bytes: buffer.length,
-      session: session ? Number(session[1]) : null
+      session: session ? Number(session[1]) : null,
+      ...(prior && prior.sha256 !== digest
+        ? { supersededSha256: [...(prior.supersededSha256 || []), prior.sha256] }
+        : {})
     };
-    added += 1;
+    if (prior) revised += 1;
+    else added += 1;
   }
   const ordered = Object.fromEntries(Object.entries(existing.captures).sort(([a], [b]) => a.localeCompare(b)));
   fs.writeFileSync(ledgerPath, `${JSON.stringify({ ...existing, captures: ordered }, null, 2)}
 `, "utf8");
-  return { added, total: Object.keys(ordered).length, ledgerPath: path.relative(root, ledgerPath) };
+  return { added, revised, total: Object.keys(ordered).length, ledgerPath: path.relative(root, ledgerPath) };
 }
 
 function bytesOf(dir, names) {
@@ -158,7 +172,7 @@ function main(argv = process.argv.slice(2)) {
   // Hashes first, always. A capture may only leave the working tree after its
   // hash is durable — otherwise retention is deletion wearing a policy.
   const ledger = writeCaptureLedger();
-  console.log(`  ledger:   ${ledger.total} capture hashes recorded (${ledger.added} new) in ${ledger.ledgerPath}`);
+  console.log(`  ledger:   ${ledger.total} capture hashes recorded (${ledger.added} new, ${ledger.revised} re-baselined) in ${ledger.ledgerPath}`);
   for (const name of plan.prune) {
     if (!ledger.total) throw new Error("refusing to prune without a capture ledger");
     fs.rmSync(path.join(captureDir, name));
