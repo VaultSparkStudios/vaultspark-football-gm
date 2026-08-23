@@ -1,15 +1,14 @@
 {
   "schemaVersion": "1.1",
   "headerLinks": [
-    "#features",
     "./about.html",
     "./index.html"
   ],
   "footerLinks": [
     "./index.html",
-    "#features",
     "./about.html",
     "/stats",
+    "./simulation.html",
     "./status.html",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions",
@@ -21,6 +20,7 @@
     "/stats",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm",
     "https://github.com/VaultSparkStudios/vaultspark-football-gm/discussions",
+    "./simulation.html",
     "./status.html",
     "./contact.html",
     "./privacy.html",
@@ -33,12 +33,12 @@
   "sharedFooterPages": [
     "index.html",
     "game.html",
-    "landing.html",
     "about.html",
     "status.html",
     "contact.html",
     "privacy.html",
     "terms.html",
-    "stats.html"
+    "stats.html",
+    "simulation.html"
   ]
 }

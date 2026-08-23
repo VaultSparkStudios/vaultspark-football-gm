@@ -25,7 +25,25 @@ import {
   LEAGUE_PROGRESSION_PARITY_TARGET
 } from "../../src/stats/progressionParity.js";
 
-export const SIMULATION_ANCHOR_MARKER = '<div data-simulation-anchor></div>';
+// Sentinels rather than a bare marker: the generated block lives in the SOURCE
+// page too, so the dev server and the Playwright suite see the same figures the
+// build emits. The build rewrites what is between the sentinels, which keeps the
+// engine constants the single source of truth while leaving the page readable
+// and testable without a build step.
+export const SIMULATION_ANCHOR_START = "<!-- simulation-anchor:start -->";
+export const SIMULATION_ANCHOR_END = "<!-- simulation-anchor:end -->";
+
+export function replaceSimulationAnchor(html) {
+  const start = html.indexOf(SIMULATION_ANCHOR_START);
+  const end = html.indexOf(SIMULATION_ANCHOR_END);
+  if (start === -1 || end === -1 || end < start) return html;
+  const indent = "\n        ";
+  return (
+    html.slice(0, start + SIMULATION_ANCHOR_START.length) +
+    indent + renderSimulationAnchor() + indent +
+    html.slice(end)
+  );
+}
 
 function figure(value, unit, label, detail) {
   return `<article class="sim-figure">

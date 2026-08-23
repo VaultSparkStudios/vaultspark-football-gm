@@ -12,7 +12,7 @@ import { emitEdgeSecurityPolicy } from "./lib/edge-security-policy.mjs";
 import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker.mjs";
 import { fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
 import { staticGraphFor } from "./check-browser-boot-budget.mjs";
-import { renderSimulationAnchor, SIMULATION_ANCHOR_MARKER } from "./lib/simulation-methodology.mjs";
+import { replaceSimulationAnchor, SIMULATION_ANCHOR_START } from "./lib/simulation-methodology.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, "..");
@@ -86,16 +86,12 @@ const htmlPages = [
   "index.html",
   "stats.html",
   "game.html",
-  "landing.html",
   "about.html",
-  "play.html",
   "contact.html",
   "privacy.html",
   "terms.html",
-  "ip.html",
   "status.html",
   "simulation.html",
-  "changelog.html",
   "404.html"
 ];
 
@@ -280,8 +276,8 @@ function injectHtmlDefaults(html, pagePath) {
   }
   // S94: the methodology page's figures are rendered from the simulation's own
   // constants, so the page cannot drift from the engine it describes.
-  if (next.includes(SIMULATION_ANCHOR_MARKER)) {
-    next = next.replace(SIMULATION_ANCHOR_MARKER, renderSimulationAnchor());
+  if (next.includes(SIMULATION_ANCHOR_START)) {
+    next = replaceSimulationAnchor(next);
   }
   const preloadPage = pagePath === "./" ? "index.html" : pagePath;
   const preloads = modulePreloadLinks.get(preloadPage);
@@ -374,6 +370,29 @@ async function stampSitemapLastmod() {
   });
   if (stamped) await fs.writeFile(sitemapPath, next, "utf8");
   return { stamped };
+}
+
+// S94: retired routes become real 301s instead of meta-refresh documents.
+//
+// changelog.html, ip.html and play.html were each a full HTML document whose
+// only job was <meta http-equiv="refresh"> to somewhere else, and landing.html
+// is now merged into the root page. A refresh document is slower than a redirect
+// (the browser parses a page to learn it should be elsewhere), is a weaker
+// signal to crawlers than a 301, and is four more files to keep in step with the
+// design system. Declared once here so the route map has a single home.
+const RETIRED_ROUTES = Object.freeze([
+  ["/landing.html", "/#why", "merged into the root page (S94)"],
+  ["/changelog.html", "/status.html", "release notes live on Status & Updates"],
+  ["/ip.html", "/terms.html", "rights notice lives on Terms"],
+  ["/play.html", "/", "the root page is the play surface"]
+]);
+
+async function emitRetiredRouteRedirects() {
+  const body = RETIRED_ROUTES
+    .map(([from, to, why]) => [`# ${why}`, `${from} ${to} 301`].join("\n"))
+    .join("\n");
+  await fs.writeFile(path.join(outDir, "_redirects"), `${body}\n`, "utf8");
+  return RETIRED_ROUTES.length;
 }
 
 async function emitHashedStylesheet() {
@@ -489,6 +508,8 @@ async function main() {
   const sourceRevision = String(
     process.env.SOURCE_REVISION || process.env.GITHUB_SHA || process.env.VERCEL_GIT_COMMIT_SHA || "local-worktree"
   ).trim();
+  const redirects = await emitRetiredRouteRedirects();
+  console.log(`retired routes served as 301s: ${redirects}`);
   const sitemap = await stampSitemapLastmod();
   if (sitemap.stamped) console.log(`sitemap lastmod refreshed from git history: ${sitemap.stamped} URL(s)`);
   const edgePolicy = await emitEdgeSecurityPolicy({ outDir, htmlPages, sourceRevision });

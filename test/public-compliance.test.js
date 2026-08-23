@@ -40,7 +40,9 @@ test("public Pages bundle has contact, legal, sitemap, and agent metadata source
   assert.match(sitemap, /contact\.html/);
   assert.match(sitemap, /privacy\.html/);
   assert.match(sitemap, /terms\.html/);
-  assert.match(sitemap, /landing\.html/, "sitemap lists landing.html");
+  assert.doesNotMatch(sitemap, /landing\.html/, "landing.html merged into the root page (S94) and is now a 301");
+  assert.match(sitemap, /simulation\.html/, "sitemap lists the simulation methodology page");
+  assert.doesNotMatch(sitemap, /<loc>[^<]*\/stats<\/loc>/, "a zero-cohort stats page is withheld from the crawl invitation (S94)");
   assert.match(sitemap, /status\.html/, "sitemap lists the merged status+release-notes page");
   assert.match(sitemap, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, "sitemap entries carry lastmod");
   assert.doesNotMatch(sitemap, /changelog\.html/, "changelog is a redirect stub and stays out of the sitemap");
@@ -59,13 +61,25 @@ test("public identity, health, and footer contracts use the actual deploy reposi
   for (const required of footer.headerLinks) {
     assert.ok(footer.footerLinks.includes(required), `footer includes header destination ${required}`);
   }
-  assert.match(fs.readFileSync(new URL("../public/landing.html", import.meta.url), "utf8"), /VaultSparkStudios\/vaultspark-football-gm/);
-  assert.doesNotMatch(fs.readFileSync(new URL("../public/landing.html", import.meta.url), "utf8"), /VaultSparkStudios\/franchise-architect-football/);
+  const root = fs.readFileSync(new URL("../public/index.html", import.meta.url), "utf8");
+  assert.match(root, /VaultSparkStudios\/vaultspark-football-gm/);
+  assert.doesNotMatch(root, /VaultSparkStudios\/franchise-architect-football/);
 });
 
-test("index footer links the landing marketing page", () => {
+// S94: the marketing argument moved INTO the root page rather than sitting one
+// footer link away on a second page with its own visual language. The old
+// assertion checked for the link; the replacement checks for the content, which
+// is the thing that actually had to reach a newcomer.
+test("the root page argues the case for the game, not just the configuration of it", () => {
   const index = fs.readFileSync(new URL("../public/index.html", import.meta.url), "utf8");
-  assert.match(index, /href="\.\/landing\.html"/, "index links landing.html");
+  assert.doesNotMatch(index, /href="\.\/landing\.html"/, "landing.html is retired to a 301");
+  assert.match(index, /id="why"/, "the argument lives on the root page");
+  assert.match(index, /href="#why"/, "and is reachable from the page furniture");
+  // DECISIONS S70: the root URL belongs to the newcomer, and one click starts a
+  // league. The pitch must sit BELOW that, never in front of it.
+  assert.ok(index.indexOf('id="instantStartBtn"') < index.indexOf('id="why"'),
+    "the one-click start must precede the pitch (DECISIONS 2026-08-04)");
+  assert.match(index, /simulation\.html/, "the measured-realism page is linked from the pitch");
 });
 
 test("Community Stats uses its clean canonical route and player-first homepage copy", () => {
@@ -97,7 +111,7 @@ test("Community Stats descriptor is one privacy-bounded Analytica feed with a cu
 });
 
 test("primary public pages link contact, privacy, and terms", () => {
-  for (const file of ["../public/index.html", "../public/game.html", "../public/landing.html"]) {
+  for (const file of ["../public/index.html", "../public/game.html", "../public/simulation.html"]) {
     const source = fs.readFileSync(new URL(file, import.meta.url), "utf8");
     assert.match(source, /contact\.html/, `${file} links contact`);
     assert.match(source, /privacy\.html/, `${file} links privacy`);
@@ -107,13 +121,11 @@ test("primary public pages link contact, privacy, and terms", () => {
 
 const themedStaticPages = [
   "../public/about.html",
-  "../public/changelog.html",
   "../public/status.html",
-  "../public/ip.html",
   "../public/contact.html",
   "../public/privacy.html",
   "../public/terms.html",
-  "../public/landing.html",
+  "../public/simulation.html",
   "../public/stats.html"
 ];
 
@@ -135,9 +147,18 @@ test("static public pages boot the saved theme before first paint", () => {
   }
 });
 
-test("landing page inline palette responds to light theme", () => {
-  const landing = fs.readFileSync(new URL("../public/landing.html", import.meta.url), "utf8");
-  assert.match(landing, /\[data-theme="light"\]/, "landing defines a light palette override");
+// S94: the landing page carried its own inline palette because it was a second
+// visual language. Merging its argument into the root page removed the second
+// palette along with the second page — the "why" section is built from the
+// site's own tokens, so it inherits theming rather than re-declaring it.
+test("the merged pitch inherits the shared theme instead of declaring its own palette", () => {
+  const index = fs.readFileSync(new URL("../public/index.html", import.meta.url), "utf8");
+  assert.doesNotMatch(index, /\[data-theme="light"\]/, "no page-local palette override survives the merge");
+  const css = fs.readFileSync(new URL("../public/styles.css", import.meta.url), "utf8");
+  for (const token of [".why-card", ".why-stat", ".why-grid"]) {
+    assert.ok(css.includes(token), `${token} lives in the shared stylesheet`);
+  }
+  assert.match(css.slice(css.indexOf(".why-card")), /var\(--/, "the merged pitch uses shared theme tokens");
 });
 
 test("public truth gate: derived stats match source and no internal vocabulary ships", () => {
@@ -157,16 +178,29 @@ test("root page is visitor-first: no server-first copy, no disabled hero buttons
   assert.doesNotMatch(index, /<details[^>]*class="setup-section setup-details"[^>]*\sopen/, "empty save tables are not expanded by default");
 });
 
-test("redirect stubs and merged pages hold their contracts", () => {
-  const play = fs.readFileSync(new URL("../public/play.html", import.meta.url), "utf8");
-  const changelog = fs.readFileSync(new URL("../public/changelog.html", import.meta.url), "utf8");
-  const ip = fs.readFileSync(new URL("../public/ip.html", import.meta.url), "utf8");
+test("retired routes are real 301s and merged pages hold their contracts", () => {
+  // S94: these four were full HTML documents whose only job was a meta refresh.
+  // A refresh document makes the browser parse a page to learn it should be
+  // somewhere else, and reads to a crawler as weaker than a 301. They are now
+  // declared once in build-pages and served by the edge.
+  for (const gone of ["play.html", "changelog.html", "ip.html", "landing.html"]) {
+    assert.equal(
+      fs.existsSync(new URL(`../public/${gone}`, import.meta.url)),
+      false,
+      `${gone} is retired to an edge 301 and must not linger as a refresh document`
+    );
+  }
+  const redirects = fs.existsSync(new URL("../static/_redirects", import.meta.url))
+    ? fs.readFileSync(new URL("../static/_redirects", import.meta.url), "utf8")
+    : "";
+  if (redirects) {
+    for (const [from, to] of [["/play.html", "/"], ["/changelog.html", "/status.html"], ["/ip.html", "/terms.html"], ["/landing.html", "/#why"]]) {
+      assert.ok(redirects.includes(`${from} ${to} 301`), `${from} must 301 to ${to}`);
+    }
+  }
   const terms = fs.readFileSync(new URL("../public/terms.html", import.meta.url), "utf8");
   const status = fs.readFileSync(new URL("../public/status.html", import.meta.url), "utf8");
   const notFound = fs.readFileSync(new URL("../public/404.html", import.meta.url), "utf8");
-  assert.match(play, /http-equiv="refresh"[^>]*index\.html/);
-  assert.match(changelog, /http-equiv="refresh"[^>]*status\.html/);
-  assert.match(ip, /http-equiv="refresh"[^>]*terms\.html/);
   assert.match(terms, /not affiliated with or endorsed by any professional sports league/, "terms absorbed the IP non-affiliation notice");
   assert.match(status, /Release Notes/, "status page carries dated release notes");
   assert.match(status, /\d{4}-\d{2}-\d{2}/, "release notes are dated");

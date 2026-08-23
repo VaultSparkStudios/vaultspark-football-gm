@@ -102,28 +102,39 @@ export function inspectPublicTruth(root = rootDir) {
   // S94: the methodology page publishes the engine's own gate constants. If the
   // engine's ceiling moves and the page does not, the page becomes a confident
   // lie about a number the build is simultaneously enforcing.
-  const builtSimulation = path.join(root, "static", "simulation.html");
-  if (fs.existsSync(builtSimulation)) {
-    problems.push(...inspectSimulationClaims(fs.readFileSync(builtSimulation, "utf8")).problems);
-  }
-
-  const engineCount = fs.readdirSync(path.join(root, "src", "engine")).filter((name) => name.endsWith(".js")).length;
-  const landing = stripComments(fs.readFileSync(path.join(publicDir, "landing.html"), "utf8"));
-
-  const statedEngineCounts = [...landing.matchAll(/(\d+) Engine Systems|<div class="stat-num">(\d+)<\/div><div class="stat-label">Engine Systems/g)]
-    .map((m) => Number(m[1] ?? m[2]));
-  if (!statedEngineCounts.length) {
-    problems.push("landing.html no longer states the engine-system count; update check-public-truth.mjs if that is intentional");
-  }
-  for (const stated of statedEngineCounts) {
-    if (stated !== engineCount) {
-      problems.push(`landing.html claims ${stated} engine systems but src/engine contains ${engineCount} modules`);
+  // Checked on the SOURCE page, not only the built one: the block lives in
+  // source so the dev server and the browser suite see real figures, which means
+  // source is also where a hand-edit would land. Checking only the build output
+  // would let a drifted source pass until someone happened to run a build.
+  for (const candidate of [
+    path.join(root, "public", "simulation.html"),
+    path.join(root, "static", "simulation.html")
+  ]) {
+    if (fs.existsSync(candidate)) {
+      problems.push(...inspectSimulationClaims(fs.readFileSync(candidate, "utf8")).problems);
     }
   }
 
-  const rivalMatch = landing.match(/<div class="stat-num">(\d+)<\/div><div class="stat-label">Rival Front Offices/);
+  const engineCount = fs.readdirSync(path.join(root, "src", "engine")).filter((name) => name.endsWith(".js")).length;
+  // S94: landing.html was merged into index.html and is now an edge 301. The
+  // engine-system and rival-club claims moved with it, so this gate follows
+  // them rather than silently losing its subject.
+  const landing = stripComments(fs.readFileSync(path.join(publicDir, "index.html"), "utf8"));
+
+  const statedEngineCounts = [...landing.matchAll(/(\d+) Engine Systems|class="stat-num">(\d+)<\/strong><span class="stat-label">Engine Systems/g)]
+    .map((m) => Number(m[1] ?? m[2]));
+  if (!statedEngineCounts.length) {
+    problems.push("index.html no longer states the engine-system count; update check-public-truth.mjs if that is intentional");
+  }
+  for (const stated of statedEngineCounts) {
+    if (stated !== engineCount) {
+      problems.push(`index.html claims ${stated} engine systems but src/engine contains ${engineCount} modules`);
+    }
+  }
+
+  const rivalMatch = landing.match(/class="stat-num">(\d+)<\/strong><span class="stat-label">Rival Front Offices/);
   if (rivalMatch && Number(rivalMatch[1]) !== TEAM_COUNT - 1) {
-    problems.push(`landing.html claims ${rivalMatch[1]} rival front offices but the league has ${TEAM_COUNT - 1}`);
+    problems.push(`index.html claims ${rivalMatch[1]} rival front offices but the league has ${TEAM_COUNT - 1}`);
   }
 
   const htmlFiles = fs.readdirSync(publicDir).filter((name) => name.endsWith(".html"));
