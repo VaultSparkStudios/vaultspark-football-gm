@@ -10,11 +10,11 @@
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ docs(S93): bind release evidence and render closeout artifac  ║
 ║  ✓ feat(S93): the owner's console stops being a cheat panel      ║
 ║  ✓ docs: sync Studio OS canonical assets (SESSION_PROTOCOL + SK  ║
 ║  ✓ docs(S92): bind release evidence and render closeout artifac  ║
 ║  ✓ feat(S92): source the elite-density ceiling from real NFL ho  ║
-║  ✓ docs(S91): bind release evidence and render closeout artifac  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 986/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
@@ -31,17 +31,17 @@
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  · context/CURRENT_STATE.md                                      ║
 ║  · context/TASK_BOARD.md                                         ║
-║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  · context/LATEST_HANDOFF.md                                     ║
 ║  · logs/WORK_LOG.md                                              ║
 ║  · context/DECISIONS.md                                          ║
 ║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  · context/TRUTH_AUDIT.md                                        ║
-║  ✓ context/PROJECT_STATUS.json                                   ║
+║  · context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 93 files  ·  M:5 A:0 D:0 ?:88                          ║
+║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
