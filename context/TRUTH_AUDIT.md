@@ -2,8 +2,26 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-22
+Last reviewed: 2026-08-23
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-08-23 - Session 94 truth update
+
+Overall: **green**, with one correction to a claim this project had been making about itself.
+
+**Corrected.** The public surface was verified by a gate that could not see the document a visitor receives. `verify-edge-policy-application.mjs` fetched the origin with `Accept: application/json,text/plain,*/*`; the edge injects the analytics beacon only for browser-shaped requests. So every prior "edge policy applied" attestation was true about a document nobody is served, and false about the one everybody is. The attestation now fetches as a browser does, asserts the served policy admits every external origin the served document requests, and reads UNPROVED rather than APPLIED when no document is supplied. Silence about the document is no longer treated as evidence about the document.
+
+**Corrected.** `check-public-truth` proved every number on every public page and had no freshness dimension, so `status.html` could state — and did state, for 24 sessions — that the newest thing that had happened to this game was 2026-08-03. Currency is now measured in sessions against `PROJECT_STATUS.lastSession`, resolved through `CURRENT_STATE` so it tracks a moving target.
+
+**Corrected.** The rival-front-office claim on the public surface was guarded by a branch that passed silently when its regex stopped matching. This session moved that markup and hand-repaired the regex, which is exactly the change the branch existed to catch and could not have raised. Empty-match now fails, as the engine-count branch beside it always did.
+
+**Verified by measurement, not assertion.** The elite-density anchor published on the new `/simulation.html` is rendered from `progressionParity`'s own constants at build time and asserted in both source and output, so the public page cannot drift from the engine it describes. A hand-written friendlier number fails the gate.
+
+**Verified.** 819 visual-QA capture hashes recorded before any capture was pruned, after checking that the receipt coverage the prune's justification assumed (`LATEST.json`) covered 84 of 821 files. Every removed capture remains provable. Context ledger archiving verified line by line — 136 / 691 / 581 / 1206 original lines, 0 missing — before the change was kept.
+
+**Unresolved, externally owned, unchanged.** Public launch remains HOLD: `email-delivery-unverified`, `founder-approval-unverified`, `lifecycle-authority-unverified`. `check-release-evidence-freshness` is expired (observed 2026-08-16, expired 2026-08-17), pre-existing and tied to the same blockers. Registry reports SPARKED against a local FORGE contract; reconcile through the Ark owner.
+
+**Disclosed honestly.** Two `tests-ui/app.spec.js` failures are pre-existing, confirmed by reproducing them on the stashed pre-S94 tree; they are not addressed here and are not claimed as green. The canonical receipt (1,266/1,266, direct exit 0) is the node suite, which is what `npm test` covers.
 
 ## 2026-08-22 - Session 93 truth update
 

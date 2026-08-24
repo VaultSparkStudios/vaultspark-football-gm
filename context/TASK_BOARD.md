@@ -4,14 +4,38 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Now
 
+- [ ] Verify the analytics beacon actually reports once the S94 CSP reaches production. The policy now admits it and the negative control proves the old policy refused it, but "admitted" is not "reporting" — confirm a real pageview lands, and treat a still-silent dashboard as a live finding rather than a deploy delay.
+- [ ] Calibrate `owner.cash` scale now that it is load-bearing. S93 made it gate facility construction and upkeep and made the 35M/80M cashPressure thresholds reachable for the first time; its magnitude has never been calibrated for a league where cash actually moves. Carried from the S93 handoff, still unaddressed.
+- [ ] Source `FACILITY_MARKET_PROFILE`'s appetite weights. They are judgement, not measurement, which makes them the newest un-sourced constants in the codebase — the exact shape S92 removed from the elite-density ceiling. Carried from the S93 handoff.
 - [ ] Gate the long-horizon facility equilibrium. The S93 upkeep design rests entirely on a measured dispersion turnaround (facility standard deviation 5.658 → 4.015 → 3.655 → 4.050 at seasons 0/3/8/15) that no test asserts. Add a `long`-shard gate asserting a floor on league facility spread after a long seeded run, so the claim is gated rather than argued.
 - [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
 - [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
 
 ## Next
 
+- [ ] Restore `/stats` to sitemap.xml the moment the community snapshot clears its suppression threshold. S94 withheld it so the first page indexed about this game is not a table of zeros; that is a temporary state with a defined exit condition, not a permanent decision.
+- [ ] Re-run `/code-review` against a session's own diff BEFORE the canonical receipt, not after. S94 ran it late and it found ten real defects, which cost a full 45-minute shard re-run. The review is cheap relative to the receipt and should precede it.
+- [ ] Reconsider the mobile tab-target count on its own terms. S94 skipped the 14-to-6 regroup because the rail is already grouped under five task headers and the remaining cost is target count on a phone — which is the founder-deferred item needing its own visual-evidence re-baseline budget, not a side effect of an information-architecture pass.
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+
+## Session 94 — Full arc: the site's own policy stops refusing the site (2026-08-23)
+
+- [x] Admit the edge-injected analytics beacon in the CSP that was blocking it, and make `verify-edge-policy-application` fetch as a browser so it audits the document a visitor actually receives. Negative control proves the pre-S94 policy refused both origins by name.
+- [x] Give `check-public-truth` a freshness dimension. Negative control reported 24 sessions unpublished; five player-facing release notes now cover S70-S93, and sitemap lastmod is read from git history per source page.
+- [x] Render an invitation instead of `0 contributors` below the suppression floor, on both consumer surfaces, and withhold `/stats` from the crawl until a cohort exists.
+- [x] Give the rival front office a face at the seams where it acts against you — the on-clock draft market imported nothing from `rivalGmPersona` — and retire the Load Archetypes button for tab-scoped auto-load.
+- [x] Publish `/simulation.html`: the sourced elite-density anchor, rendered from `progressionParity`'s own constants, with its limits as the longest section.
+- [x] Move the owner economy, facilities market, staff sheet and brand builder out of Settings into a Boardroom surface, and gate seven developer diagnostics behind `?dev=1`.
+- [x] Serve `sw.js` no-cache and the content-hashed assets immutable. Full-graph hashing deliberately not pursued: the cache-first service worker already delivers its benefit.
+- [x] Emit `modulepreload` for the boot graph, derived from the same walk the byte budget performs, with preloading a declared lazy root a build-time error.
+- [x] Merge the landing page's argument into the root page below the one-click start, retiring a second visual language with the second page. Framing corrected against DECISIONS 2026-08-04 before implementing.
+- [x] Bound the visual-QA archive to three sessions — after writing the 819-hash ledger the audit had wrongly assumed already existed. 104.9 MB -> 33.9 MB, every pruned capture still provable.
+- [x] Port `task-slice.mjs` (the audit protocol's bounded read path did not exist here) and roll the append-only ledgers: context 861 KB -> 439 KB, nothing summarised, integrity verified line by line.
+- [x] Merge four learning surfaces into three views of one, retiring the 773-byte Rules tab.
+- [x] Replace four meta-refresh documents with edge 301s declared once in the build.
+- [x] Fix the ten defects a `/code-review high` found in this session's own work, each pinned by a regression test.
+- [ ] NOT DONE — regroup 14 tabs into 6 surfaces. Premise partly false: the rail is already grouped under five task headers. Recorded rather than churned; see the Next entry on mobile target count.
 
 ## Session 93 — Full arc: the owner's console stops being a cheat panel (2026-08-22)
 

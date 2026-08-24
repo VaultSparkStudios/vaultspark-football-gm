@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Session 93 ran a fresh /arc audit against live code and closed the last god-mode surface in the game. S63 had already fixed this exact shape one panel over -- its note still sits in GameSession.updateStaff: the Coaching Staff sheet was three free number boxes writing straight into the simulation. Eight lines below that fix, updateOwnerState did the identical thing to owner.facilities (training feeds the S90 development environment, rehab feeds injury probability, analytics feeds draft scouting), and public/game.html shipped it as three bare number inputs with no min, max or price. Every club is generated in [64, 82]; the panel's range was [40, 99]. Measured on a live decade (seed 20260307): the write cost 0M, club mean development tilt went 0.322 -> 2.847 against a clamp ceiling of 3.0, and league roster rank went 1st against the untouched control's 23rd -- so the S90/S91/S92 calibration guarantees were real but conditional on the player never using the interface the game ships. Facility level is now bought through investInFacility, priced by a pure superlinear cost function (no save migration needed), capped at three points per wing per league year and charged annual upkeep; updateOwnerState returns facilities-readonly. Two further defects in the same system shipped with it: gate revenue was strictly linear in a free ticket-price dial (4.61x revenue for a 4.59x price multiple, fan interest ending at 97 in every scenario) and now carries a league-centred demand curve under which the legal maximum returns 0.191x, worse than pricing at the league mean; and no club had ever changed a facility (training standard deviation exactly 5.66 at seasons 0/3/6/10 on two seeds), which an offseason AI investment round now moves. A ratchet defect inside this session's own fix -- priced construction plus a deficit-driven AI policy climbing +0.6/season toward a flat ceiling -- was caught by extending the measurement window and corrected with annual upkeep before shipping; dispersion now bottoms out and turns back up (5.658 -> 4.015 -> 3.655 -> 4.050 at seasons 0/3/8/15). 31 new node tests and 4 new Playwright specs. Public launch remains HOLD and launchReady stays false.",
-  "nextMilestone": "No single blocking item is owed. The genius hit list is exhausted again; run a fresh /audit against live code next session. The highest-value known item is a gate for the long-horizon facility equilibrium: the season-15 dispersion turnaround that justifies the upkeep design is evidenced by a probe and asserted by no test, which is the exact 'argued rather than gated' shape this project keeps finding. Two lower-urgency follow-ups: owner.cash is now load-bearing (it gates facility construction and upkeep, and the previously unreachable cashPressure thresholds at 35M/80M are now reachable) and its scale has never been calibrated for a league where cash actually moves; and FACILITY_MARKET_PROFILE's appetite weights are judgement rather than measurement, making them the newest un-sourced constants in the codebase.",
+  "currentFocus": "Session 94 ran a full-spectrum /audit against the LIVE ORIGIN rather than the source tree, and that choice is why four of fourteen ranked findings exist: what ships here is source -> build-pages rewrite -> edge policy, and two of those three stages leave no trace in git. The headline defect is that the site's own Content-Security-Policy was refusing a script the site itself serves. Cloudflare injects its Web Analytics beacon into every delivered document; script-src admitted 'self' plus four hashes and nothing else. Production had therefore collected ZERO pageviews and thrown a CSP violation on every page load, while every launch-readiness judgement about the public surface was made without a single production datapoint. No automated check had seen it because -- measured on this origin across two routes -- the edge injects the beacon only for browser-shaped requests, and verify-edge-policy-application.mjs fetched with Accept: application/json, so it was auditing a document no visitor ever receives. It now fetches as a browser does and asserts the served policy admits every external origin the served document requests; both admitted hosts were read out of beacon.min.js itself. Negative control returns both violations by name against today's live policy and none against the new one. Three further findings: check-public-truth had no freshness dimension, so status.html sat 24 sessions stale while green; the front door led with a live widget rendering '0 contributors'; and the Settings tab was the structural reason two god-mode surfaces survived thirty sessions, so the owner economy now has its own Boardroom and seven developer diagnostics require ?dev=1. New /simulation.html publishes the measured-realism anchor rendered from progressionParity's own constants. Three ranked premises were CORRECTED during implementation rather than implemented as written (one would have reversed DECISIONS 2026-08-04), and one item was skipped with its premise corrected. A /code-review high then found ten real defects in this session's own work, all fixed and pinned by regression tests. Canonical receipt 1,266/1,266 direct exit 0, up from 1,220. Public launch remains HOLD and launchReady stays false.",
+  "nextMilestone": "The strongest known item is unchanged and now twice-carried: gate the long-horizon facility equilibrium. The S93 upkeep design rests on a measured season-15 dispersion turnaround that no test asserts -- argued rather than gated, the exact shape this project keeps re-finding. Second: verify the analytics beacon actually REPORTS once the S94 CSP reaches production; admitted is not reporting, and a still-silent dashboard after deploy is a live finding rather than a deploy delay. Third and fourth, both carried from S93 and both now more load-bearing than when booked: owner.cash scale has never been calibrated for a league where cash actually moves, and FACILITY_MARKET_PROFILE's appetite weights are judgement rather than measurement -- the newest un-sourced constants in the codebase. Process note booked to the board: run /code-review BEFORE the canonical receipt, not after; running it late this session invalidated a 45-minute six-shard run that had to be repeated in full.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-23",
+  "lastUpdated": "2026-08-24",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -21,13 +21,13 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-08-22",
+  "truthAuditLastRun": "2026-08-23",
   "ignisScore": 42836,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": "green",
-  "testsPassing": 1220,
-  "testsTotal": 1220,
+  "testsPassing": 1266,
+  "testsTotal": 1266,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -66,23 +66,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 986,
+  "silScore": 991,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 100,
-    "processQuality": 90,
+    "processQuality": 93,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
-    "automationCoverage": 97
+    "automationCoverage": 99
   },
-  "currentSession": 93,
+  "currentSession": 94,
   "lastAgent": "claude-opus-5",
   "sessionMode": "builder",
-  "lastVerification": "S93 canonical Node receipt 1,220/1,220 across all six shards, direct exit 0 (not a wrapper status), up from S92's 1,189/1,189 with 31 new tests in the core shard. Plus 4 new Playwright browser specs green, and the boot-budget, browser-reachability, API-contract-parity and public-truth gates all green. The owner Facilities panel no longer writes the simulation for free: measured on a live decade, the pre-fix free write cost 0M and took a club from 23rd to 1st in league roster strength; the priced path costs 357.8M and at least nine league years to reach the same ceiling. Gate pricing moved from a 4.61x free revenue multiple to a single-peaked curve where the legal maximum returns 0.191x. League facility standard deviation, previously exactly 5.66 forever on two seeds, now measures 5.658 -> 4.015 -> 3.655 -> 4.050 at seasons 0/3/8/15.",
+  "lastVerification": "S94 canonical Node receipt 1,266/1,266 across all six shards, direct exit 0 (not a wrapper status), up from S93's 1,220 with 46 new tests -- 12 of them regressions pinning defects a code review found in this session's own work. 18/18 Playwright specs across the three affected suites. Build, smoke-pages, browser-reachability (83 modules), boot-budget (641,330/730,000 with 0 lazy leaks and per-island headroom at or above the 15% floor), promise-observability (0 silent sinks), windows-hide, shard-coverage and public-truth all green. Measured, not asserted: the delivered-document audit returns two violations by name against today's live production policy and browser-shaped document, and none against the new policy on the same document; the release-note freshness gate reported 24 sessions unpublished before its fix; repository weight fell 107 MB -> 35.9 MB in docs and 861 KB -> 439 KB in context ledgers, each verified line by line before the change was kept. Two tests-ui/app.spec.js failures are PRE-EXISTING, confirmed by reproducing them on the stashed pre-S94 tree, and are not claimed as green.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -108,14 +108,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 776,
+  "silHealth": 781,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-23",
+    "date": "2026-08-24",
     "passing": 10,
     "warning": 2,
     "checks": [
@@ -129,20 +129,20 @@
         "id": "release-authority-git-head-covered-by-publication",
         "status": "warning",
         "blocking": false,
-        "detail": "HEAD e96295251b4e7b24e1cbe0d13600383f9050c025 is not covered by live production fe39e5fc3a30d9841eade107264d087d792596f5"
+        "detail": "HEAD ab600a6117e1f2ccee1243334e5c6c26cbe628b9 is not covered by live production fe39e5fc3a30d9841eade107264d087d792596f5"
       }
     ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-08-09",
-  "lastVerificationAt": "2026-08-22",
+  "lastVerificationAt": "2026-08-23",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.015,
   "entropyLastComputed": "2026-08-14",
-  "lastSessionSummary": "S93 — the owner's console stops being a cheat panel: the Facilities sheet was the god-mode surface S63 closed one panel over and left open, writing the S90 development environment's strongest input for free to a value outside the entire generated league; facilities are now bought with club cash against a superlinear price with an annual build allowance and recurring upkeep, the ticket price gained a league-centred demand curve that inverts the old 4.6x exploit, and an offseason AI investment round unfroze a facility spread that had never once moved in the project's history.",
+  "lastSessionSummary": "S94 -- the site's own policy stops refusing the site: auditing the live origin rather than the tree found that the CSP was blocking the analytics beacon Cloudflare injects into every page, so production had collected zero pageviews while the verifier stayed green by fetching a document no visitor receives; the public-truth gate gained the freshness dimension that had let status.html rot 24 sessions; the owner economy left the Settings junk drawer that was the structural reason two god-mode surfaces survived thirty sessions; and a code review found ten more defects in the session's own work, all fixed and pinned.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -163,8 +163,8 @@
       "lastChecked": "2026-08-23"
     }
   ],
-  "lastSession": 93,
-  "silLastSession": 93,
+  "lastSession": 94,
+  "silLastSession": 94,
   "bootAmortization": {
     "ratio": 1.29,
     "verdict": "wasted",
@@ -581,21 +581,21 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 93,
-    "silScore": 986,
+    "session": 94,
+    "silScore": 991,
     "categories": {
       "devHealth": 100,
       "creativeAlignment": 100,
       "momentum": 100,
       "engagement": 100,
-      "processQuality": 90,
+      "processQuality": 93,
       "crossRepoCoherence": 99,
       "securityPosture": 100,
       "ecosystemIntegration": 100,
       "capitalEfficiency": 100,
-      "automationCoverage": 97
+      "automationCoverage": 99
     },
-    "date": "2026-08-22"
+    "date": "2026-08-23"
   },
   "testShardReceipt": {
     "canonicalCommand": "npm test",
@@ -608,14 +608,14 @@
       "studio"
     ],
     "counts": {
-      "core": 188,
+      "core": 194,
       "runtime": 740,
       "sim-contract": 79,
       "sim-realism": 1,
       "long": 5,
-      "studio": 207
+      "studio": 247
     },
-    "total": 1220,
-    "note": "S93 canonical receipt, direct exit 0: 1,220/1,220 across all six shards (core 188, runtime 740, sim-contract 79, sim-realism 1, long 5, studio 207). This is the THIRD run of the session and the receipt of record. Run 1 was started before three closeout-time defects were found, completed core at 188/188, and was discarded rather than reported when a late doc-comment edit touched a file that shard had already read. Run 2 went the full distance and ended studio 206/207 on the browser promise-observability guard — this session's own bare .catch in tabSettings.js — which was root-fixed rather than accommodated, invalidating that receipt too. Behavioural source was frozen before this run. One JSDoc line in src/engine/facilityMarket.js was corrected during run 2 (a @returns shape that had drifted when upkeep was added), on the stated policy that behavioural edits invalidate a receipt and pure comment edits are disclosed in it."
+    "total": 1266,
+    "note": "S94 canonical receipt, direct exit 0: 1,266/1,266 across all six shards (core 194, runtime 740, sim-contract 79, sim-realism 1, long 5, studio 247), up from S93's 1,220. This is the SECOND run of the session and the receipt of record. Run 1 was discarded because it surfaced three genuine defects in this session's own work rather than because of flakiness: a raw node:child_process import that CANON-016's windows-hide guard refuses, four new test suites unassigned to any shard (so npm test and CI would have skipped them silently while every local run passed), and an edge-policy fixture that correctly turned HOLD once document-agreement joined the attestation conjunction. All three were root-fixed -- the fixture was corrected rather than the conjunction relaxed -- and the run repeated in full. Behavioural source was frozen before this run. Runtime, sim-contract, sim-realism and long are unchanged from S93, which is the correct signal for a session that moved public surfaces, build gates and information architecture without touching simulation behaviour."
   }
 }

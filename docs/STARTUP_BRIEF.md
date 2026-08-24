@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-23 (Session 93 closeout) -->
+<!-- generated-at: 2026-08-24 (Session 94 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
-<!-- session-authority: committed=S93 · SIL=S93 · status=S93 · handoff=S93; divergent=false -->
+<!-- session-authority: committed=S94 · SIL=S94 · status=S94 · handoff=S?; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 93 closeout · 2026-08-23.
+> **Fast-boot brief** — generated at Session 94 closeout · 2026-08-24.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 94 · 2026-08-23 · BUILDER MODE                          ║
+║  Session 95 · 2026-08-24 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S93) - WHAT SHIPPED ═══════════════════════════╗
-║  S93 — the owner's console stops being a cheat panel: the Facil  ║
+╔══ LAST SESSION (S94) - WHAT SHIPPED ═══════════════════════════╗
+║  S94 -- the site's own policy stops refusing the site: auditing  ║
 ║  Tests  -                                                        ║
 ║  Deploy -                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -41,9 +41,9 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    986/1000   ███████████████████████░   99%                     ║
-║    SIL v3.0  ·  Avg3: 988.3  ·  Velocity 0→                      ║
-║    Active 20687d · closeout 1d · source: newest SIL/status/hand  ║
+║    991/1000   ███████████████████████░   99%                     ║
+║    SIL v3.0  ·  Avg3: 989.3  ·  Velocity 0→                      ║
+║    Active 20688d · closeout 1d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -57,13 +57,13 @@
 ║    Security         100    ██████████  ········ →                ║
 ║    Ecosystem        100    ██████████  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation        97    ██████████  ········ →                ║
+║    Automation        99    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 93 ════════════════════════════╗
-║  Shipped:  Session 93 ran a fresh /arc audit against live code   ║
-║  Tests:    1220/1220 passing  ·  Deploy: N/A                     ║
+╔══ WHERE WE LEFT OFF  ·  Session 94 ════════════════════════════╗
+║  Shipped:  Session 94 ran a full-spectrum /audit against the LI  ║
+║  Tests:    1266/1266 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
@@ -74,11 +74,11 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1220/1220 passing (2026-08-23) · STALE — run   ║
+║  ✓  Tests         1266/1266 passing (2026-08-24)                 ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ⚠  IGNIS         42836 FORGE  ·  12d old                        ║
+║  ⚠  IGNIS         42836 FORGE  ·  13d old                        ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
@@ -89,7 +89,7 @@
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
 ║  ⚠  Doctor        10/12 (83%)  ·  2 warn                         ║
-║  ✓  Cost          Max flat-rate · $0.57/7d notional · no alarm   ║
+║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -132,5 +132,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 93 closeout · 2026-08-23*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 94 closeout · 2026-08-24*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*
