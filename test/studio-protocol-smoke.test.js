@@ -476,3 +476,15 @@ test("Pages publication is gated by the real browser suite", () => {
   assert.ok(browserIndex >= 0 && browserIndex < artifactIndex, "browser gate must precede the Pages artifact");
   assert.ok(browserIndex < cloudflareIndex, "browser gate must precede Cloudflare publication");
 });
+
+test("Pages production build has full git history for deterministic sitemap identity", () => {
+  const workflow = readFileSync(
+    resolve(repoRoot, ".github/workflows/deploy-pages.yml"),
+    "utf8"
+  );
+  const buildJob = workflow.match(/\n  build:[\s\S]*?(?=\n  deploy:)/)?.[0] || "";
+  const checkout = buildJob.match(
+    /- uses: actions\/checkout@v5[\s\S]*?(?=\n\s+- uses:)/
+  )?.[0] || "";
+  assert.match(checkout, /fetch-depth:\s*0/);
+});

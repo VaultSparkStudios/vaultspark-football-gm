@@ -79,6 +79,10 @@ jobs:
       - uses: actions/checkout@v5
         with:
           ref: ${{ github.event_name == 'workflow_dispatch' && inputs.candidate_revision || github.sha }}
+          # build-pages derives sitemap lastmod from per-file git history.
+          # A shallow checkout makes every route look newly changed and changes
+          # the artifact digest relative to the exact same staging candidate.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v5
         with:
