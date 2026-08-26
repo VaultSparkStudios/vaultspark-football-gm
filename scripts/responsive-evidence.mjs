@@ -297,6 +297,14 @@ async function main() {
           await setTheme(page, theme);
           await navToggle.click();
           await page.waitForFunction(() => document.body.classList.contains("mobile-nav-open"));
+          // The drawer animates for 280ms. A class-level wait alone can freeze
+          // a truthful open state into a misleading mid-transition screenshot
+          // with the leading edge (and label text) still off-canvas.
+          await page.waitForTimeout(320);
+          const drawerX = await page.locator("#sideMenu").evaluate((node) => node.getBoundingClientRect().x);
+          if (drawerX < -1) {
+            throw new Error(`${viewport.name} ${theme} nav drawer did not settle on-screen (x=${drawerX})`);
+          }
           await capture(
             page,
             outputDir,
