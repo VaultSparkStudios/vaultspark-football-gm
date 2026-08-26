@@ -1898,8 +1898,9 @@ function bindEvents() {
       closePlayerModal();
       closeBoxScoreModal();
       closeGuideModal();
-      closeAgentModal();
-      callAppIsland("settings", "closeShortcutsModal");
+      // Modal Manager owns Escape for every open lazy-island modal. Reaching
+      // this branch means no modal is open, so invoking a cold island here
+      // would manufacture a page error merely because a drawer used Escape.
       return;
     }
     const tag = document.activeElement?.tagName;

@@ -59,6 +59,13 @@ test("cold action invocation fails synchronously during the activation race", ()
   );
 });
 
+test("global Escape never invokes a cold lazy island when no modal is open", async () => {
+  const app = await readFile(new URL("../public/app.js", import.meta.url), "utf8");
+  const escapeBranch = app.match(/if \(event\.key === "Escape"\) \{([\s\S]*?)\n\s*return;\n\s*\}/)?.[1] || "";
+  assert.ok(escapeBranch, "global Escape branch must remain explicit");
+  assert.doesNotMatch(escapeBranch, /closeAgentModal|closeShortcutsModal|callAppIsland|invokeLoadedUiIsland/);
+});
+
 test("boot graph excludes all tab islands and enforces target plus per-island headroom", async () => {
   const receipt = await analyzeBrowserBoot();
   assert.equal(receipt.ok, true, receipt.findings.join("; "));
