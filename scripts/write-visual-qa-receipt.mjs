@@ -87,6 +87,21 @@ for (const viewport of ["desktop", "mobile"]) {
     }
   }
 }
+for (const viewport of ["tablet", "mobile"]) {
+  for (const theme of ["dark", "light"]) {
+    const sourceName = `${viewport}-nav-drawer-${theme}.png`;
+    const targetName = `s${receiptSession}-${sourceName}`;
+    const buffer = await fs.readFile(path.join(evidenceDir, sourceName));
+    await fs.writeFile(path.join(receiptDir, targetName), buffer);
+    captures.push({
+      file: targetName,
+      sha256: sha256(buffer),
+      theme,
+      viewport: viewport === "tablet" ? { width: 768, height: 1024 } : { width: 390, height: 844 },
+      page: "Notch-safe off-canvas section navigation"
+    });
+  }
+}
 
 const receipt = {
   schemaVersion: 1,
@@ -100,15 +115,15 @@ const receipt = {
     renderedPixelsReviewed: true,
     reviewer: "session-agent",
     findings: [
-      "The owner facility-capital panel renders football-operations liquidity, runway, annual upkeep, operating reserve, league centers, and investability receipts legibly at 1440px desktop and 390px mobile in dark and light themes.",
-      "The Cloud Save Sync panel states the exact security boundary in rendered pixels: the checksum detects accidental corruption, while the optional local passphrase adds Web Crypto authentication and does not encrypt the save.",
-      "The exact-command captures exercise the shared navigation authority and prove the command destination receives keyboard focus; incremental postseason behavior is additionally covered by the real browser flow and deterministic state-machine tests.",
-      "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures."
+      "The 44 by 44 pixel navigation trigger and open drawer render legibly at 768px tablet and 390px phone widths in both dark and light themes.",
+      "The open drawer remains fully scrollable inside 100dvh and preserves visible four-edge safe-area padding without obscuring the full game or the phone decision deck.",
+      "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures.",
+      "Deployment readiness remains independent from public-launch authority; no rendered surface asserts that email, cohort, retention, or launch approval is verified."
     ],
     fixesApplied: [
-      "Replaced club-cash ambiguity with source-derived football-operations liquidity, obligation, runway, and bounded owner-distribution receipts.",
-      "Corrected the unkeyed-checksum promise and added optional versioned PBKDF2/HMAC authentication with legacy-save support.",
-      "Centralized live phase-to-surface routing and restored one controlled decision beat per postseason round."
+      "Raised the collapsed-navigation trigger from 38 by 38 pixels to the declared 44 by 44 pixel minimum.",
+      "Added safe-area-aware top, right, bottom, and left padding to the 100dvh off-canvas drawer.",
+      "Pinned the touch target, computed padding, drawer behavior, theme coverage, and tablet/mobile rendered state with static and real-browser gates."
     ],
     blockingDefectsOpen: 0
   }

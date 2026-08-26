@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "cloudflare-web-analytics-aggregate-proof",
+  "host": "playfranchisearchitect.com",
+  "window": {
+    "since": "2026-08-23T00:00:00.000Z",
+    "observedAt": "2026-08-26T19:38:28.597Z"
+  },
+  "aggregate": {
+    "pageLoads": 7,
+    "paths": [
+      {
+        "requestPath": "/",
+        "pageLoads": 6
+      },
+      {
+        "requestPath": "/landing",
+        "pageLoads": 1
+      }
+    ]
+  },
+  "conclusions": {
+    "reportingVerified": true,
+    "engagementVerified": false,
+    "retentionVerified": false,
+    "cohortVerified": false
+  },
+  "privacy": {
+    "granularity": "aggregate page path counts only",
+    "personalDataStored": false
+  },
+  "capability": {
+    "used": "cloudflare.deploy",
+    "leastPrivilegeAnalyticsReadRecommended": true
+  }
+}

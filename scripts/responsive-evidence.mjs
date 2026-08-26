@@ -291,6 +291,25 @@ async function main() {
         await page.waitForFunction(() => document.getElementById("mobileLoopOverlay")?.classList.contains("hidden"));
       }
 
+      if (viewport.name !== "desktop") {
+        const navToggle = page.locator("#mobileNavToggle");
+        for (const theme of evidenceThemes) {
+          await setTheme(page, theme);
+          await navToggle.click();
+          await page.waitForFunction(() => document.body.classList.contains("mobile-nav-open"));
+          await capture(
+            page,
+            outputDir,
+            `${viewport.name}-nav-drawer-${theme}`,
+            ["#mobileNavToggle", "#sideMenu .menu-btn"],
+            records
+          );
+          await page.keyboard.press("Escape");
+          await page.waitForFunction(() => !document.body.classList.contains("mobile-nav-open"));
+          await page.waitForTimeout(320);
+        }
+      }
+
       for (const theme of evidenceThemes) {
         await setTheme(page, theme);
         for (const [tabId, label] of evidenceTabs) {
@@ -740,6 +759,7 @@ async function main() {
     ...evidenceThemes.map((theme) => viewport.name + "-architect-objective-" + theme),
     ...evidenceThemes.map((theme) => `${viewport.name}-setup-${theme}`),
     ...(viewport.name === "mobile" ? evidenceThemes.map((theme) => `${viewport.name}-game-loop-${theme}`) : []),
+    ...(viewport.name !== "desktop" ? evidenceThemes.map((theme) => `${viewport.name}-nav-drawer-${theme}`) : []),
     ...evidenceThemes.map((theme) => `${viewport.name}-return-digest-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-gm-persona-${theme}`),
     ...evidenceThemes.map((theme) => `${viewport.name}-cap-pressure-${theme}`),

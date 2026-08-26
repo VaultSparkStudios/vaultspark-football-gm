@@ -5238,8 +5238,8 @@ html[data-theme="light"] .bg-layer {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -5285,7 +5285,11 @@ html[data-theme="light"] .bg-layer {
     gap: 0.35rem;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 1rem 0.65rem;
+    padding:
+      calc(1rem + env(safe-area-inset-top))
+      calc(0.65rem + env(safe-area-inset-right))
+      calc(1rem + env(safe-area-inset-bottom))
+      calc(0.65rem + env(safe-area-inset-left));
     border-right: 1px solid var(--line);
     border-radius: 0 18px 18px 0;
     background: var(--nav-grad, var(--surface));

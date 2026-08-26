@@ -41,6 +41,9 @@ test("the tablet band gets a drawer instead of a nav stack above content", async
   await expect(toggle).toBeVisible();
   await expect(toggle).toHaveAttribute("aria-expanded", "false");
   await expect(toggle).toHaveAttribute("aria-controls", "sideMenu");
+  const target = await toggle.boundingBox();
+  expect(target?.width).toBeGreaterThanOrEqual(44);
+  expect(target?.height).toBeGreaterThanOrEqual(44);
 
   // Closed drawer must be off-canvas and out of the tab order.
   await expect(page.locator("#sideMenu")).toHaveAttribute("inert", "");
@@ -49,6 +52,11 @@ test("the tablet band gets a drawer instead of a nav stack above content", async
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
   await expect(page.locator("#sideMenu")).not.toHaveAttribute("inert", "");
   await expect(page.locator("#mobileNavScrim")).toBeVisible();
+  const safeAreaPadding = await page.locator("#sideMenu").evaluate((node) => {
+    const style = getComputedStyle(node);
+    return [style.paddingTop, style.paddingRight, style.paddingBottom, style.paddingLeft];
+  });
+  expect(safeAreaPadding.every((value) => Number.parseFloat(value) > 0)).toBe(true);
 
   // Drawer actually slides on screen. Polled because the transform animates
   // over 280ms — asserting immediately catches it mid-slide.

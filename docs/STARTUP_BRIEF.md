@@ -3,7 +3,7 @@
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
-<!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
+<!-- genius-authority-fingerprint: f7a12e79af34cc80 -->
 <!-- session-authority: committed=S95 · SIL=S95 · status=S95 · handoff=S?; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
@@ -34,7 +34,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 9d · refresh required              ║
+║  Profile · game · cache stale 0d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -43,16 +43,16 @@
 ║                                                                  ║
 ║    993/1000   ███████████████████████░   99%                     ║
 ║    SIL v3.0  ·  Avg3: 990  ·  Velocity 0→                        ║
-║    Active 20690d · closeout 0d · source: newest SIL/status/hand  ║
+║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health         0    ░░░░░░░░░░  —        →                ║
-║    Alignment          0    ░░░░░░░░░░  —        →                ║
-║    Momentum           0    ░░░░░░░░░░  —        →                ║
-║    Engagement         0    ░░░░░░░░░░  —        →                ║
-║    Process Qual       0    ░░░░░░░░░░  —        →                ║
+║    Dev Health       100    ██████████  —        →                ║
+║    Alignment        100    ██████████  —        →                ║
+║    Momentum         100    ██████████  —        →                ║
+║    Engagement       100    ██████████  —        →                ║
+║    Process Qual      94    █████████░  —        →                ║
 ║    Coherence         99    ██████████  ········ →                ║
 ║    Security         100    ██████████  ········ →                ║
 ║    Ecosystem        100    ██████████  ········ →                ║
@@ -67,9 +67,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    5% used                          ║
-║     45,273 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~22,637 tok/turn  ·  cache 50%  ·  38 turns to compact       ║
+║  ✓  ██░░░░░░░░░░░░░░░░░░░░░░    9% used                          ║
+║     94,300 / 1,000,000 tok  ·  codex  ·  heuristic-stale         ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -88,7 +87,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
+║  ⚠  Doctor        10/12 (83%)  ·  2 warn                         ║
 ║  ✓  Cost          Max flat-rate · $0.10/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -112,10 +111,19 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-08-25_SESSION95.md                   ║
+║  ✓ cache source: AUDIT_2026-08-26_SESSION96.json                 ║
 ║                                                                  ║
-║  #5 · HIGH · release-proof-is-bound-to-an-orphaned-history       ║
-║  release-proof-is-bound-to-an-orphaned-history — Bind visual, m  ║
+║  #1 · CRITICAL · mobile-navigation-misses-its-own-hard-gate      ║
+║  The navigation trigger is 38px and the drawer ignores device s  ║
+║                                                                  ║
+║  #2 · CRITICAL · startup-brief-corrupts-session-truth            ║
+║  The S96 orientation says the project was active 20,690 days ag  ║
+║                                                                  ║
+║  #3 · HIGH · promotion-bind-refuses-correctly-but-explains-noth  ║
+║  An exact-artifact mismatch exits 2 without naming the two iden  ║
+║                                                                  ║
+║  #4 · HIGH · analytics-proof-is-live-but-ephemeral               ║
+║  Cloudflare now has page loads, but the project has no repeatab  ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 

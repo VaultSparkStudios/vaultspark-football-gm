@@ -1,39 +1,53 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: a92a860d5645 -->
-<!-- generated-at: 2026-08-25T19:05:32.472Z -->
+<!-- source-hash: 76a68001a5f8 -->
+<!-- generated-at: 2026-08-26T19:04:31.038Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 94 → 95 HANDOFF SUMMARY
+SESSION HANDOFF: 95 → 96
 
-Status
-- SIL v3.0: 991/1000. Canonical receipt 1,266/1,266, direct exit 0, all six shards.
-- Public launch: HOLD, launchReady false.
+STATUS
+- Session 95 shipped all seven ranked audit items; full /arc complete.
+- Candidate SHA 92e4190 live in stable staging and production; artifact ca66c92.
+- Production workflow 32933281222 green; stable staging 14/14, production 10/10.
+- Rollback available: 609fbc29.
+- Release authority: verified. launchReady: false. Technical deploy complete; public launch/SPARKED on HOLD.
+- Evidence: Node 1,280/1,280; Playwright 54/54; responsive 251 local, 92 retained, 236 CI states.
 
-Shipped this session
-- Live-origin audit (source → build-pages rewrite → edge policy); source-only audit was structurally blind.
-- CSP fix: production served CPloudflare beacon that own script-src refused; zero pageviews collected. verify-edge-policy-application.mjs now fetches as a browser and asserts served policy admits every external origin the served document requests (hosts read from beacon.min.js).
-- Newcomer "why" content added to root page below one-click start; Playwright spec locks ordering.
-- Draft market GM identity + intel exposure fixes (partial item; half already existed).
-- 819-entry visual-review ledger written before prune; prune refuses without it.
-- Fixed 10 code-review findings (dead CTA button, dead-code paths, hidden diagnostics/retry, continue→break, double --apply, unguarded gate branch), shard-coverage assignments, hardened child_process wrapper, edge-policy fixture.
+SHIPPED
+- Publication safety: deploy-pages.yml runs full browser suite pre-publish; stale assertion reads exported profile version.
+- Incremental postseason: per-round persistence, one game per command, save/resume survives, batch consumes gates.
+- Single navigation authority: gameplayNavigation.js owns phase-to-surface routing.
+- Owner economy model: liquidity, reserves, traits, bounded distributions.
+- Honest cloud-save security: checksums as corruption detection; optional PBKDF2 HMAC authorship.
+- Recoverable realism evidence: aligned budgets, incremental progress, partial artifact uploads.
+- Exact release proof: all authorities name same SHA/artifact.
+- Perf: HoF rescoring removed (16.8s→7.1s); whole-season delegation fixed.
 
-Now bucket (priority order)
-1. Gate the long-horizon facility equilibrium (carried, strongest item); S93 season-15 dispersion turnaround argued, not asserted.
-2. Verify beacon actually reports once S94 policy reaches production; still-silent dashboard post-deploy is a live finding.
-3. Calibrate owner.cash scale and source FACILITY_MARKET_PROFILE appetite weights (both carried from S93).
+CURRENT INTENT
+- Validate live analytics reporting and first real opted-in cohort; reconcile launch authority from external evidence only.
 
-Blockers / holds
-- check-release-evidence-freshness EXPIRED (observed 2026-08-16, expired 2026-08-17). Pre-existing, tied to external blockers.
-- Two app.spec.js failures pre-existing (reproduced on pre-S94 tree).
-- Registry says SPARKED, local contract says FORGE. Reconcile via Ark owner only; never edit sibling truth.
+NOW (top 3)
+1. Verify S94 analytics beacon reports real pageview under corrected CSP (admission proven, reporting not).
+2. Observe first genuine opted-in community cohort; validate freshness, suppression, deletion, abuse ceilings without manufacturing activity.
+3. Reconcile launch authority from Zoho receive/reply evidence, explicit public-launch approval, authoritative lifecycle registry; verify Obelisk relying-party posture.
 
-Human-blocked (externally owned, age from 2026-08-23)
-- email-delivery-unverified
-- founder-approval-unverified
-- lifecycle-authority-unverified
+BLOCKERS (top 3)
+1. launchReady false; public launch not approved by technical deployment authorization.
+2. SPARKED cannot be marked while registry/local lifecycle authority disagrees.
+3. Cohort/analytics/email/identity/approval evidence must be genuine; none may be fabricated.
 
-Deferred
-- 14→6 tab regroup skipped; rail already grouped under five headers. Phone target-count is founder-deferred, needs own visual-evidence budget.
+HUMAN-BLOCKED
+- Public-launch founder approval: pending since S95 (open).
+- Zoho receive/reply-as email confirmation: pending since S95 (open).
+- Opted-in community cohort activation: pending since S95 (open).
 
-Next session: start at task board Now item 1 — gate the facility equilibrium.
+INVARIANTS
+- Do not relax exact-artifact bind. Pages artifact job uses fetch-depth: 0; studio-protocol-smoke.test.js pins invariant. Root cause: sitemap lastmod from Git history + shallow checkout digest mismatch.
+- Node 24 deprecation warnings advisory until native action majors ship.
+- Creative Direction Record unchanged in S95.
+
+DEFERRED
+- Improve bind-failure diagnostics: print both digests and first differing files.
+
+NEXT: Start with verifying the analytics beacon reports a real pageview, then observe the first real opted-in cohort.

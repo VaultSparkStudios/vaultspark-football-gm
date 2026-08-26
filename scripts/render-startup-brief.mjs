@@ -39,6 +39,7 @@ import {
   readCommittedGeniusAuthority
 } from './lib/startup-authority.mjs';
 import { resolveSessionAuthority } from './lib/session-authority.mjs';
+import { achievedIntentStreak, isIsoCalendarDate, parseInlineSilCategories } from './lib/startup-sil-truth.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
@@ -378,11 +379,13 @@ function parseScore(label) {
   const m = lastEntry.match(new RegExp(`\\|\\s*${label}(?:\\s*\\([^)]*\\))?\\s*\\|\\s*(\\d+)`, 'i'));
   return m ? parseInt(m[1]) : null;
 }
-const lastDev      = parseScore('Dev Health') ?? cat3.dev ?? 0;
-const lastAlign    = parseScore('Creative Alignment') ?? cat3.align ?? 0;
-const lastMomentum = parseScore('Momentum') ?? cat3.momentum ?? 0;
-const lastEngage   = parseScore('Engagement') ?? cat3.engage ?? 0;
-const lastProcess  = parseScore('Process Quality') ?? cat3.process ?? 0;
+const inlineCats = parseInlineSilCategories(latestScored ? `${latestScored.header}\n${latestScored.body}` : lastEntry);
+const statusCats = status.silCategoriesV3 || {};
+const lastDev      = parseScore('Dev Health') ?? inlineCats.devHealth ?? statusCats.devHealth ?? cat3.dev ?? 0;
+const lastAlign    = parseScore('Creative Alignment') ?? inlineCats.creativeAlignment ?? statusCats.creativeAlignment ?? cat3.align ?? 0;
+const lastMomentum = parseScore('Momentum') ?? inlineCats.momentum ?? statusCats.momentum ?? cat3.momentum ?? 0;
+const lastEngage   = parseScore('Engagement') ?? inlineCats.engagement ?? statusCats.engagement ?? cat3.engage ?? 0;
+const lastProcess  = parseScore('Process Quality') ?? inlineCats.processQuality ?? statusCats.processQuality ?? cat3.process ?? 0;
 
 // Trend arrows per category (compare last to avg3)
 function trend(last, avg) {
@@ -415,7 +418,7 @@ const catHistory = {
   process:  parseCategoryHistory('Process Quality'),
 };
 // v3 categories — single-point snapshot (will grow as new sessions score v3)
-const v3Cats = status.silCategoriesV3 || {};
+const v3Cats = { ...statusCats, ...inlineCats };
 const lastCoherence  = v3Cats.crossRepoCoherence ?? 0;
 const lastSecurity   = v3Cats.securityPosture ?? 0;
 const lastEcosystem  = v3Cats.ecosystemIntegration ?? 0;
@@ -464,14 +467,7 @@ const sessionVoice = extractSessionVoice();
 
 // ── v4.0: Momentum meter — velocity streak + intent + cost ────────────────────
 function momentumStreak() {
-  // Parse last 8 SIL entries; count consecutive sessions where intent was "achieved"
-  let streak = 0;
-  for (const match of allSilEntries.slice(0, 10)) {
-    const body = match[1] ?? '';
-    if (/Classification:.*(Achieved|achieved)|Intent outcome:.*(Achieved|achieved|✓)/i.test(body)) streak++;
-    else break;
-  }
-  return streak;
+  return achievedIntentStreak(allSilEntries);
 }
 const streak = momentumStreak();
 const intentPct = parseFloat(intentRate.match(/(\d+)%/)?.[1] ?? '0');
@@ -525,7 +521,7 @@ const candidateDates = [
   status.lastUpdated,
   status.lastHandoffDate,
   status.silLastSession,
-].filter(Boolean);
+].filter(isIsoCalendarDate);
 const freshestDate = candidateDates.length > 0
   ? candidateDates.sort().slice(-1)[0]  // max lex-sorted date
   : null;
@@ -1086,16 +1082,16 @@ function buildExternalSignalsBox() {
 }
 
 // ── Genius list: call generate-genius-list.mjs --brief ────────────────────────
-let geniusBlock = '';
+let geniusBlock = buildGeniusBoxFromCache(readCommittedGeniusAuthority(root));
 try {
   // --top 8: the brief is a fast-boot surface and must stay under the 15KB hard
   // budget (validate-brief-format). Full ranked list lives in docs/GENIUS_LIST.md.
-  const res = spawnSync(node, [path.join(root, 'scripts', 'generate-genius-list.mjs'), '--brief', '--top', '8'], {
+  const res = geniusBlock ? null : spawnSync(node, [path.join(root, 'scripts', 'generate-genius-list.mjs'), '--brief', '--top', '8'], {
     cwd: root,
     encoding: 'utf8',
     timeout: 15000,
   });
-  geniusBlock = (res.stdout ?? '').trim();
+  if (res) geniusBlock = (res.stdout ?? '').trim();
 } catch { /* fallback below */ }
 if (!geniusBlock) {
   geniusBlock = buildGeniusBoxFromCache(readJson(path.join(root, '.cache', 'genius-list.json'), null));

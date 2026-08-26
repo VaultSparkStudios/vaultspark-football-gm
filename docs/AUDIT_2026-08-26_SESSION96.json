@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-08-26",
+  "session": 96,
+  "agent": "codex",
+  "project": "franchise-architect",
+  "displayName": "Franchise Architect: Football",
+  "status": "planned",
+  "summary": {
+    "combinedPriority": 37.5,
+    "source": "Live source, rendered desktop/tablet/mobile pixels, Cloudflare Analytics GraphQL evidence, release workflow contracts, and game-loop review.",
+    "axesCovered": 9,
+    "itemsRanked": 4,
+    "phantomsRejected": 6,
+    "verificationNote": "Every ranked premise was reproduced against the current worktree or live provider authority before ranking."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product, game-loop, realism, rendered-pixel, security, and release gates",
+    "staging": "Exact immutable candidate on stable Cloudflare staging before production.",
+    "source": "Session 96 live evidence"
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 9,
+    "sessionEngagement": 8,
+    "retention": 5,
+    "soulFidelity": 9,
+    "overall": 8,
+    "evidence": "The 30-second, five-minute, season, and dynasty contracts are visibly implemented and regression-covered. Retention remains evidence-limited: Cloudflare recorded seven page loads since S94, none on /game.html, and no genuine opted-in cohort exists, so no retention claim is inferred."
+  },
+  "axisSurvey": {
+    "feature-depth": [
+      {
+        "candidate": "postseason decision continuity",
+        "verdict": "shipped",
+        "evidence": "S95 persists one round per command with save/resume coverage."
+      },
+      {
+        "candidate": "tablet command surface",
+        "verdict": "narrowed",
+        "evidence": "The existing 641–980px drawer is functional; only its touch-size and safe-area contract are defective."
+      }
+    ],
+    "new-innovative-features": [
+      {
+        "candidate": "counterfactual season fork",
+        "verdict": "rejected",
+        "evidence": "Would multiply save authority and encourage causal claims without cohort evidence."
+      },
+      {
+        "candidate": "decision-pressure time capsule",
+        "verdict": "rejected",
+        "evidence": "Architecture Review, Tactical Film, promises, and dynasty history already project the same receipts."
+      },
+      {
+        "candidate": "provider-backed AI copilot",
+        "verdict": "rejected",
+        "evidence": "Deterministic Co-GM surfaces already satisfy explainability and a hosted model would violate cost-neutrality without proven demand."
+      }
+    ],
+    "ui-ux": [
+      {
+        "candidate": "mobile navigation target and safe-area parity",
+        "verdict": "ranked",
+        "evidence": ".mobile-nav-toggle is 38x38px and the 100dvh drawer has no env(safe-area-inset-*) padding."
+      },
+      {
+        "candidate": "second tablet-only shell",
+        "verdict": "rejected",
+        "evidence": "Rendered 768px evidence and browser specs prove the drawer keeps the full game reachable without a stacked nav."
+      }
+    ],
+    "feedback-loop": [
+      {
+        "candidate": "repeatable Cloudflare page-load proof",
+        "verdict": "ranked",
+        "evidence": "Live account-scoped RUM query returned six / and one /landing loads, but the proof exists only as a one-off command."
+      },
+      {
+        "candidate": "restore public cohort claims",
+        "verdict": "deferred",
+        "evidence": "Community sample remains below the real opted-in threshold; manufacturing activity is forbidden."
+      }
+    ],
+    "gamification-engagement": [
+      {
+        "candidate": "postseason reward cadence",
+        "verdict": "shipped",
+        "evidence": "S95 added one decision beat per postseason round."
+      },
+      {
+        "candidate": "new hidden mastery bonuses",
+        "verdict": "rejected",
+        "evidence": "The GAME_LOOP contract requires mastery to remain descriptive and non-causal."
+      }
+    ],
+    "ai-integration": [
+      {
+        "candidate": "deterministic General Manager explanation layer",
+        "verdict": "existing",
+        "evidence": "Co-GM, decision authority, film, consequence, and architecture surfaces already expose source-bound explanations."
+      },
+      {
+        "candidate": "paid generative narrative",
+        "verdict": "rejected",
+        "evidence": "No user demand or cost-neutral path; deterministic narratives preserve replayability and evidence."
+      }
+    ],
+    "security": [
+      {
+        "candidate": "mobile safe-area and target accessibility",
+        "verdict": "ranked",
+        "evidence": "The public navigation trigger misses the declared 44px minimum and notch-safe padding."
+      },
+      {
+        "candidate": "local authentication scaffold",
+        "verdict": "rejected",
+        "evidence": "No account flows exist; the declared identity architecture is external Obelisk and local auth would violate CANON-045."
+      }
+    ],
+    "speed-organization-efficiency": [
+      {
+        "candidate": "startup authority truth",
+        "verdict": "ranked",
+        "evidence": "The S96 brief renders Active 20690d, five zero category rows under 993/1000, a false intent streak, and a shipped S95 genius item."
+      },
+      {
+        "candidate": "promotion bind diagnostics",
+        "verdict": "ranked",
+        "evidence": "deploy-pages exits 2 from an inline Node expression without printing expected/observed identities; the fingerprint carries no per-file ledger."
+      }
+    ],
+    "token-api-reduction": [
+      {
+        "candidate": "content-aware genius refresh before orientation",
+        "verdict": "ranked-with-startup-truth",
+        "evidence": "A stale cache forced investigation of an already shipped eight-hour item."
+      },
+      {
+        "candidate": "new analytics vendor",
+        "verdict": "rejected",
+        "evidence": "Cloudflare RUM already reports and adding a vendor would duplicate data and cost."
+      }
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "UI/UX · mobile parity · security",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 4,
+      "priority": 10,
+      "slug": "mobile-navigation-misses-its-own-hard-gate",
+      "title": "The navigation trigger is 38px and the drawer ignores device safe areas",
+      "status": "planned",
+      "premise": "CANON-041 requires at least 44px targets and env(safe-area-inset-*) support. Live CSS sets .mobile-nav-toggle to 38x38px and the 100dvh drawer uses fixed padding with no safe-area variables; repository search finds no safe-area declaration.",
+      "fix": "Raise the trigger to 44px, make drawer/scrim spacing notch-safe, add static and browser assertions, then inspect dark/light desktop, tablet, and mobile captures.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Raise the trigger to 44px and add safe-area padding."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Make the trigger and drawer fully 44px/notch-safe, add focused static and browser regressions, and capture tablet/mobile before-after pixels."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus dark/light desktop-tablet-mobile rendered-pixel review and a hash-bound visual receipt tied to the release candidate."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "CRITICAL",
+      "category": "Speed · organization · token reduction",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 9.8,
+      "slug": "startup-brief-corrupts-session-truth",
+      "title": "The S96 orientation says the project was active 20,690 days ago and scores five categories as zero",
+      "status": "planned",
+      "premise": "The freshly rendered brief shows Active 20690d, five legacy category rows at 0 beneath an authoritative 993/1000 total, no achieved-intent streak, and an already shipped S95 genius item. Live code admits a numeric silLastSession into a date list, reads match[1] from object entries, requires legacy score tables while S95 uses inline v3 scores, and consumes the genius generator without first refreshing the content-aware cache.",
+      "fix": "Extract testable startup metrics, accept inline v3 SIL categories, filter dates by ISO shape, use entry.body for intent, and refresh stale genius authority before rendering.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Filter invalid dates and read intent from the parsed entry object."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Repair date, inline-v3 category, intent, and stale-genius parsing with synthetic negative-control tests."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "L2 plus regenerate and validate the canonical S96 brief, proving real category values, age, intent, and an exhausted S95 cache."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Release integrity · efficiency",
+      "effortHours": 4,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 9.1,
+      "slug": "promotion-bind-refuses-correctly-but-explains-nothing",
+      "title": "An exact-artifact mismatch exits 2 without naming the two identities or the differing files",
+      "status": "planned",
+      "premise": "deploy-pages.yml line 158 performs the promotion bind inside a one-line Node expression and exits 2 silently. artifact-fingerprint.mjs returns only one aggregate digest and a file count, so the release train cannot identify the first divergent paths even though S95 lost a production cycle to this exact opacity.",
+      "fix": "Emit a deterministic per-file digest ledger, add a reusable promotion-bind verifier that prints both revisions/digests and first path deltas, wire it into the workflow, and prove failure output with negative controls.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Replace the inline expression with a script that prints expected and observed revision/digest."
+        },
+        "L2": {
+          "effortHours": 3,
+          "recipe": "Add per-file artifact entries and a tested verifier that prints both identities plus the first differing paths."
+        },
+        "L3": {
+          "effortHours": 4,
+          "recipe": "L2 plus workflow integration, legacy-manifest degradation, and deterministic-build regression coverage."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Feedback loop · observability",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 8.6,
+      "slug": "analytics-proof-is-live-but-ephemeral",
+      "title": "Cloudflare now has page loads, but the project has no repeatable evidence command",
+      "status": "planned",
+      "premise": "A live account-scoped Cloudflare RUM query with the secrets gateway returned six root and one landing page load since 2026-08-23, proving the S94 beacon reports. The narrow zone-settings token correctly failed Analytics authorization; the studio deploy token succeeded. No repository script can reproduce this bounded, non-PII proof, so the Now item would otherwise close on terminal memory.",
+      "fix": "Add a read-only, secrets-gateway-backed analytics verifier with injected-fetch tests, bounded aggregate output, and a structured S96 receipt; mark only reporting as proven and keep retention/cohort claims withheld.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Record the live aggregate proof and close the beacon-reporting task without inferring engagement."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Add a reusable read-only Cloudflare RUM verifier with fixture tests and aggregate-only JSON output."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus a structured S96 evidence receipt, capability diagnostics, and an Ark recommendation for a least-privilege analytics-read capability."
+        }
+      }
+    }
+  ],
+  "phantomsRejected": [
+    {
+      "slug": "tablet-needs-a-second-full-screen-ui",
+      "verdict": "REFUTED",
+      "evidence": "The existing 641–980px drawer is reachable, inert while closed, dismissible, and visually coherent; only measurable hard-gate details are ranked."
+    },
+    {
+      "slug": "local-pageviews-prove-retention",
+      "verdict": "REFUTED",
+      "evidence": "Seven page loads and zero /game.html rows do not identify users, sessions, conversion, or return behavior."
+    },
+    {
+      "slug": "paid-generative-ai-is-the-next-depth-layer",
+      "verdict": "REFUTED",
+      "evidence": "Source-bound deterministic intelligence is already extensive and no cost-neutral demand signal exists."
+    },
+    {
+      "slug": "local-auth-will-close-obelisk",
+      "verdict": "REFUTED",
+      "evidence": "There are no account flows and the declared identity architecture is external; local auth would create drift."
+    },
+    {
+      "slug": "public-stats-should-return-before-the-threshold",
+      "verdict": "REFUTED",
+      "evidence": "The first genuine opted-in cohort still does not exist; publishing zeros would weaken the privacy and evidence contract."
+    },
+    {
+      "slug": "deployment-authorization-is-public-launch-approval",
+      "verdict": "REFUTED",
+      "evidence": "The standing decision keeps technical promotion separate from Zoho reply-as, lifecycle authority, external Obelisk posture, and SHA-bound public-launch approval."
+    }
+  ],
+  "recommendedMoves": [
+    "Close the mobile hard-gate with 44px and safe-area-correct navigation, then inspect the real pixels.",
+    "Make the startup brief tell the truth before it chooses work.",
+    "Turn release and analytics evidence from opaque or ephemeral terminal output into deterministic, tested receipts."
+  ]
+}

@@ -1,5 +1,9 @@
 # Latest Handoff — Session 95 → Session 96
 
+## Session Intent
+
+Run the full `/arc` from live repository evidence, implement every verified audit finding plus second-order innovations at the project quality bar, verify the exact candidate on stable staging, commit and push directly to `main`, fully deploy production, and close out Session 96 without changing the independent public-launch HOLD unless its named evidence gates are genuinely satisfied.
+
 ## Where We Left Off
 
 - Session 95 completed the full `/arc`; all seven ranked audit items are shipped.

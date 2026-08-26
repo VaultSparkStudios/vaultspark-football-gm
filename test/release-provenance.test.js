@@ -54,6 +54,8 @@ test("artifact fingerprint is deterministic and changes with deployable bytes", 
     await fs.writeFile(path.join(dir, "_health"), "volatile-one");
     await fs.writeFile(path.join(dir, "edge-policy-receipt.json"), JSON.stringify({ sourceRevision: "candidate" }));
     const first = await fingerprintArtifactDirectory(dir);
+    assert.deepEqual(first.entries.map((entry) => entry.path), ["lib/a.js", "z.js"]);
+    assert.ok(first.entries.every((entry) => /^[a-f0-9]{64}$/.test(entry.sha256)));
     await fs.writeFile(path.join(dir, "_health"), "volatile-two");
     await fs.writeFile(path.join(dir, "edge-policy-receipt.json"), JSON.stringify({ sourceRevision: "publication" }));
     assert.deepEqual(await fingerprintArtifactDirectory(dir), first, "source-bound evidence does not perturb deployable identity");
@@ -62,6 +64,7 @@ test("artifact fingerprint is deterministic and changes with deployable bytes", 
     const changed = await fingerprintArtifactDirectory(dir);
     assert.notEqual(changed.digest, first.digest);
     assert.equal(changed.files, 2);
+    assert.notEqual(changed.entries.find((entry) => entry.path === "lib/a.js").sha256, first.entries.find((entry) => entry.path === "lib/a.js").sha256);
   } finally {
     await fs.rm(dir, { recursive: true, force: true });
   }

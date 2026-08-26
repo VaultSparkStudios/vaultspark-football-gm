@@ -21,8 +21,14 @@ export async function fingerprintArtifactDirectory(root, { exclude = ["_health",
   const excluded = new Set(exclude.map((entry) => String(entry).replaceAll("\\", "/")));
   const files = (await filesUnder(root)).filter((relative) => !excluded.has(relative)).sort();
   const hash = createHash("sha256");
+  const entries = [];
   for (const relative of files) {
     const body = await fs.readFile(path.join(root, ...relative.split("/")));
+    entries.push({
+      path: relative,
+      bytes: body.byteLength,
+      sha256: createHash("sha256").update(body).digest("hex")
+    });
     hash.update(relative);
     hash.update("\0");
     hash.update(String(body.byteLength));
@@ -34,6 +40,7 @@ export async function fingerprintArtifactDirectory(root, { exclude = ["_health",
     algorithm: "sha256",
     digest: hash.digest("hex"),
     files: files.length,
+    entries,
     exclusions: [...excluded].sort()
   };
 }
