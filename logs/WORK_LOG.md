@@ -1005,3 +1005,7 @@ Rendered-pixel work generated 233 responsive captures and retained 84 dark/light
 Immutable application candidate `90f0d4871828fc10df7b0933f636793db2697446` passed exact-SHA CI, stable staging and production Pages promotion at artifact `9bc71a36579a03f2b566ff3e2f0b512a9677b19f8f26b73ea8471c9b31212a59`; the public backend reports database ready at the same SHA. The first authorized server run exposed a post-deploy idempotency bug: containers were healthy and live, but an unconditional reload of unchanged shared Caddy configuration failed the workflow. The workflow now compares the installed fragment and reloads only on a real delta.
 
 Public launch remains NO-GO. Technical deployment authorization did not provide Zoho receive/reply-as evidence, SHA-bound public-launch approval, lifecycle reconciliation, or external Obelisk relying-party proof. CDR reviewed — no new human creative direction was introduced.
+
+## 2026-08-26 — Session 95 — Incremental Postseason, Calibrated Owner Capital, and Exact Production Identity
+
+Completed the full `/arc`: shipped all seven ranked findings plus Hall dashboard and whole-season second-order fixes; passed Node 1,280/1,280, Playwright 54/54, 251 responsive states with 92 retained reviewed captures, stable staging 14/14, and production 10/10; deployed exact SHA `92e4190a4221383c8352ea6321d65528cb449e74` at artifact `ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7` via green workflow 32933281222. Public launch remains HOLD.

@@ -5,7 +5,7 @@
   "agent": "codex",
   "project": "franchise-architect",
   "displayName": "Franchise Architect: Football",
-  "status": "implementation-in-progress",
+  "status": "implemented",
   "summary": {
     "combinedPriority": 62.1,
     "source": "Live code, CI/deploy evidence, hosted identities, seeded simulations, and game-loop review.",
@@ -112,8 +112,8 @@
       "priority": 8.8,
       "slug": "release-proof-is-bound-to-an-orphaned-history",
       "title": "Release proof does not identify the final candidate",
-      "status": "verification-in-progress",
-      "executionEvidence": "Source and browser suites are green. Final immutable desktop/mobile/theme visual receipt, stable staging provenance, and exact production identity are pending in the active release wave.",
+      "status": "shipped",
+      "executionEvidence": "The final immutable candidate 92e4190a4221383c8352ea6321d65528cb449e74 is bound to artifact ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7. Local responsive evidence passed 251 captures with 92 retained and manually reviewed; final CI reran 236 required states. Stable staging passed 14/14 with rollback, production passed 10/10, and workflow 32933281222 completed every release gate.",
       "premise": "Visual QA names orphaned 8eac388, hosted origins name S93 fe39e5f, and mobile-parity proof is absent.",
       "fix": "Capture final desktop/mobile/themes, prove exact staging, rerun gates, then promote the same identity.",
       "ladder": {

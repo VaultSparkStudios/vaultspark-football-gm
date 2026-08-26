@@ -16,6 +16,6 @@ L2 is the default rung. Work is grouped across independent release, gameplay, an
 
 ## Execution status
 
-Six of seven items are shipped with focused behavior proof and a green canonical receipt (1,280/1,280). Release integrity, incremental postseason, shared navigation, owner-capital calibration, honest authenticated Gist saves, and partial realism evidence are complete. The final release-proof item remains in verification until rendered desktop/mobile/theme pixels, stable staging provenance, and production all identify the exact immutable candidate.
+All seven items are shipped with focused behavior proof and a green canonical receipt (1,280/1,280). Release integrity, incremental postseason, shared navigation, owner-capital calibration, honest authenticated Gist saves, partial realism evidence, and exact release proof are complete. Candidate `92e4190a4221383c8352ea6321d65528cb449e74` is live at artifact `ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7`: stable staging passed 14/14 with rollback, production passed 10/10, final workflow 32933281222 is green, and the responsive evidence is source/artifact-bound across desktop, tablet, mobile, dark, and light.
 
 Second-order regression work is also complete: whole-season delegation now consumes every incremental postseason gate, and Hall of Fame dashboard construction shares one candidate-scoring pass instead of rescoring roughly 1,074 retired candidates. The measured two-season dashboard probe improved from about 16.8 seconds to 7.1 seconds, and its browser flow now passes.

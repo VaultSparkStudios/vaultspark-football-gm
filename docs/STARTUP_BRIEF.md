@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-26 (Session 94 closeout) -->
+<!-- generated-at: 2026-08-26 (Session 95 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ed9fe5e3dc4b9a44 -->
-<!-- session-authority: committed=S94 · SIL=S94 · status=S94 · handoff=S?; divergent=false -->
+<!-- session-authority: committed=S95 · SIL=S95 · status=S95 · handoff=S?; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 94 closeout · 2026-08-26.
+> **Fast-boot brief** — generated at Session 95 closeout · 2026-08-26.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,12 +17,12 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 95 · 2026-08-26 · BUILDER MODE                          ║
+║  Session 96 · 2026-08-26 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S94) - WHAT SHIPPED ═══════════════════════════╗
-║  S94 -- the site's own policy stops refusing the site: auditing  ║
+╔══ LAST SESSION (S95) - WHAT SHIPPED ═══════════════════════════╗
+║  S95 -- one decision beat per postseason round and one exact ar  ║
 ║  Tests  -                                                        ║
 ║  Deploy -                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -41,9 +41,9 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    991/1000   ███████████████████████░   99%                     ║
-║    SIL v3.0  ·  Avg3: 989.3  ·  Velocity 0→                      ║
-║    Active 20690d · closeout 3d · source: newest SIL/status/hand  ║
+║    993/1000   ███████████████████████░   99%                     ║
+║    SIL v3.0  ·  Avg3: 990  ·  Velocity 0→                        ║
+║    Active 20690d · closeout 0d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -57,19 +57,19 @@
 ║    Security         100    ██████████  ········ →                ║
 ║    Ecosystem        100    ██████████  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation        99    ██████████  ········ →                ║
+║    Automation       100    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 94 ════════════════════════════╗
-║  Shipped:  Session 94 ran a full-spectrum /audit against the LI  ║
+╔══ WHERE WE LEFT OFF  ·  Session 95 ════════════════════════════╗
+║  Shipped:  Session 95 shipped all seven reproduced audit findin  ║
 ║  Tests:    1280/1280 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
-║     38,866 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~19,433 tok/turn  ·  cache 50%  ·  45 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    5% used                          ║
+║     45,273 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~22,637 tok/turn  ·  cache 50%  ·  38 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -82,13 +82,13 @@
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
-║  ✓  Entropy       0.015  (healthy)                               ║
+║  ✓  Entropy       0.051  (healthy)                               ║
 ║  ✓  CDR           no gap detected                                ║
 ║  ✓  Patterns      no recurring pressure detected                 ║
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        10/12 (83%)  ·  2 warn                         ║
+║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
 ║  ✓  Cost          Max flat-rate · $0.10/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -123,5 +123,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 94 closeout · 2026-08-26*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 95 closeout · 2026-08-26*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

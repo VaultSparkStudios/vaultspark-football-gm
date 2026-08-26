@@ -2,14 +2,14 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-08-17T20:33:16.658Z",
+  "observedAt": "2026-08-26T05:34:56.233Z",
   "baseUrl": "https://playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
+  "sourceRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa",
-    "files": 194,
+    "digest": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7",
+    "files": 207,
     "exclusions": [
       "_health",
       "deploy-manifest.json",
@@ -21,16 +21,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a2cb73e42b14c637-IAD",
+    "cf-ray": "a310784dfdb3f283-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
-    "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+    "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Mon, 17 Aug 2026 20:33:14 GMT",
+    "date": "Wed, 26 Aug 2026 05:34:53 GMT",
+    "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=lYj%2F8lvd0xh0G4spqE9XgJDNuY6VMAK%2B0hTR%2FmItI2tOr0JD%2FGXs4P04JYDkyTn9ZMswzietjozG6kiX44IJiFjZM4RyEnbh0NB1eJ9wOkrpGIsIiGzKWSwBWO1t4AzJD50SSjd%2BfEu4nVUVfQ%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=coOVuPNqbElU%2BVtZ3IxDEPyHL6fFpJzsfpt2kjRqVkpQbbdwmNECGXSs9xNJiM3VEWFZ0bju2UkCGEsIRVA7M7F3TNgtwGOt8HcN5eYZC2L7cZvgb9vCLtR38kNYBOsGlXPzY3oproZtm7KIFQ%3D%3D\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -46,25 +47,25 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 280,
-      "inpMs": 24,
-      "cls": 0.0151,
+      "lcpMs": 784,
+      "inpMs": 32,
+      "cls": 0.0277,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 300,
+          "lcpMs": 964,
           "lcpElement": {
             "tag": "H1",
             "id": null,
             "className": "setup-title",
             "text": "Franchise Architect: Football"
           },
-          "cls": 0.0151,
+          "cls": 0.0277,
           "shifts": [
             {
-              "startTimeMs": 464,
+              "startTimeMs": 1320,
               "scrollY": 0,
-              "value": 0.0151,
+              "value": 0.0277,
               "sources": [
                 {
                   "tag": "SECTION",
@@ -82,13 +83,38 @@
                   },
                   "currentRect": {
                     "x": 255.1875,
-                    "y": 881.1875,
+                    "y": 903.1875,
                     "width": 929.625,
-                    "height": 118.8125,
-                    "top": 881.1875,
+                    "height": 96.8125,
+                    "top": 903.1875,
                     "right": 1184.8125,
                     "bottom": 1000,
                     "left": 255.1875
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "",
+                  "previousRect": {
+                    "x": 344.1875,
+                    "y": 581.328125,
+                    "width": 751.625,
+                    "height": 104,
+                    "top": 581.328125,
+                    "right": 1095.8125,
+                    "bottom": 685.328125,
+                    "left": 344.1875
+                  },
+                  "currentRect": {
+                    "x": 344.1875,
+                    "y": 561.328125,
+                    "width": 763.625,
+                    "height": 294.5,
+                    "top": 561.328125,
+                    "right": 1107.8125,
+                    "bottom": 855.828125,
+                    "left": 344.1875
                   }
                 },
                 {
@@ -107,60 +133,35 @@
                   },
                   "currentRect": {
                     "x": 344.1875,
-                    "y": 823,
+                    "y": 845,
                     "width": 225.25,
                     "height": 20,
-                    "top": 823,
+                    "top": 845,
                     "right": 569.4375,
-                    "bottom": 843,
+                    "bottom": 865,
                     "left": 344.1875
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "community-live-mark",
-                  "previousRect": {
-                    "x": 987.46875,
-                    "y": 471.328125,
-                    "width": 108.34375,
-                    "height": 21,
-                    "top": 471.328125,
-                    "right": 1095.8125,
-                    "bottom": 492.328125,
-                    "left": 987.46875
-                  },
-                  "currentRect": {
-                    "x": 951.65625,
-                    "y": 471.328125,
-                    "width": 145,
-                    "height": 21,
-                    "top": 471.328125,
-                    "right": 1096.65625,
-                    "bottom": 492.328125,
-                    "left": 951.65625
                   }
                 }
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 32,
           "interactionObserved": true
         },
         {
-          "lcpMs": 268,
+          "lcpMs": 784,
           "lcpElement": {
             "tag": "H1",
             "id": null,
             "className": "setup-title",
             "text": "Franchise Architect: Football"
           },
-          "cls": 0.0151,
+          "cls": 0.0277,
           "shifts": [
             {
-              "startTimeMs": 426,
+              "startTimeMs": 1409,
               "scrollY": 0,
-              "value": 0.0151,
+              "value": 0.0277,
               "sources": [
                 {
                   "tag": "SECTION",
@@ -178,13 +179,38 @@
                   },
                   "currentRect": {
                     "x": 255.1875,
-                    "y": 881.1875,
+                    "y": 903.1875,
                     "width": 929.625,
-                    "height": 118.8125,
-                    "top": 881.1875,
+                    "height": 96.8125,
+                    "top": 903.1875,
                     "right": 1184.8125,
                     "bottom": 1000,
                     "left": 255.1875
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "",
+                  "previousRect": {
+                    "x": 344.1875,
+                    "y": 581.328125,
+                    "width": 751.625,
+                    "height": 104,
+                    "top": 581.328125,
+                    "right": 1095.8125,
+                    "bottom": 685.328125,
+                    "left": 344.1875
+                  },
+                  "currentRect": {
+                    "x": 344.1875,
+                    "y": 561.328125,
+                    "width": 763.625,
+                    "height": 294.5,
+                    "top": 561.328125,
+                    "right": 1107.8125,
+                    "bottom": 855.828125,
+                    "left": 344.1875
                   }
                 },
                 {
@@ -203,60 +229,35 @@
                   },
                   "currentRect": {
                     "x": 344.1875,
-                    "y": 823,
+                    "y": 845,
                     "width": 225.25,
                     "height": 20,
-                    "top": 823,
+                    "top": 845,
                     "right": 569.4375,
-                    "bottom": 843,
+                    "bottom": 865,
                     "left": 344.1875
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "community-live-mark",
-                  "previousRect": {
-                    "x": 987.46875,
-                    "y": 471.328125,
-                    "width": 108.34375,
-                    "height": 21,
-                    "top": 471.328125,
-                    "right": 1095.8125,
-                    "bottom": 492.328125,
-                    "left": 987.46875
-                  },
-                  "currentRect": {
-                    "x": 951.65625,
-                    "y": 471.328125,
-                    "width": 145,
-                    "height": 21,
-                    "top": 471.328125,
-                    "right": 1096.65625,
-                    "bottom": 492.328125,
-                    "left": 951.65625
                   }
                 }
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 40,
           "interactionObserved": true
         },
         {
-          "lcpMs": 280,
+          "lcpMs": 756,
           "lcpElement": {
             "tag": "H1",
             "id": null,
             "className": "setup-title",
             "text": "Franchise Architect: Football"
           },
-          "cls": 0.0151,
+          "cls": 0.0277,
           "shifts": [
             {
-              "startTimeMs": 410,
+              "startTimeMs": 1335,
               "scrollY": 0,
-              "value": 0.0151,
+              "value": 0.0277,
               "sources": [
                 {
                   "tag": "SECTION",
@@ -274,13 +275,38 @@
                   },
                   "currentRect": {
                     "x": 255.1875,
-                    "y": 881.1875,
+                    "y": 903.1875,
                     "width": 929.625,
-                    "height": 118.8125,
-                    "top": 881.1875,
+                    "height": 96.8125,
+                    "top": 903.1875,
                     "right": 1184.8125,
                     "bottom": 1000,
                     "left": 255.1875
+                  }
+                },
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "",
+                  "previousRect": {
+                    "x": 344.1875,
+                    "y": 581.328125,
+                    "width": 751.625,
+                    "height": 104,
+                    "top": 581.328125,
+                    "right": 1095.8125,
+                    "bottom": 685.328125,
+                    "left": 344.1875
+                  },
+                  "currentRect": {
+                    "x": 344.1875,
+                    "y": 561.328125,
+                    "width": 763.625,
+                    "height": 294.5,
+                    "top": 561.328125,
+                    "right": 1107.8125,
+                    "bottom": 855.828125,
+                    "left": 344.1875
                   }
                 },
                 {
@@ -299,44 +325,19 @@
                   },
                   "currentRect": {
                     "x": 344.1875,
-                    "y": 823,
+                    "y": 845,
                     "width": 225.25,
                     "height": 20,
-                    "top": 823,
+                    "top": 845,
                     "right": 569.4375,
-                    "bottom": 843,
+                    "bottom": 865,
                     "left": 344.1875
-                  }
-                },
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "community-live-mark",
-                  "previousRect": {
-                    "x": 987.46875,
-                    "y": 471.328125,
-                    "width": 108.34375,
-                    "height": 21,
-                    "top": 471.328125,
-                    "right": 1095.8125,
-                    "bottom": 492.328125,
-                    "left": 987.46875
-                  },
-                  "currentRect": {
-                    "x": 951.65625,
-                    "y": 471.328125,
-                    "width": 145,
-                    "height": 21,
-                    "top": 471.328125,
-                    "right": 1096.65625,
-                    "bottom": 492.328125,
-                    "left": 951.65625
                   }
                 }
               ]
             }
           ],
-          "inpMs": 24,
+          "inpMs": 32,
           "interactionObserved": true
         }
       ]
@@ -348,23 +349,133 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 292,
+      "lcpMs": 1352,
       "inpMs": 24,
-      "cls": 0.0085,
+      "cls": 0.0144,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 304,
+          "lcpMs": 1344,
           "lcpElement": {
             "tag": "P",
             "id": null,
             "className": "",
-            "text": "See the franchises players are building, the moves they are making, and the milestones they are reaching. Updated throughout the day."
+            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
           },
-          "cls": 0.0085,
+          "cls": 0.0144,
           "shifts": [
             {
-              "startTimeMs": 1863,
+              "startTimeMs": 1317,
+              "scrollY": 0,
+              "value": 0.0059,
+              "sources": [
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "",
+                  "previousRect": {
+                    "x": 34.1875,
+                    "y": 627.203125,
+                    "width": 321.625,
+                    "height": 216.796875,
+                    "top": 627.203125,
+                    "right": 355.8125,
+                    "bottom": 844,
+                    "left": 34.1875
+                  },
+                  "currentRect": {
+                    "x": 22.1875,
+                    "y": 607.203125,
+                    "width": 345.625,
+                    "height": 236.796875,
+                    "top": 607.203125,
+                    "right": 367.8125,
+                    "bottom": 844,
+                    "left": 22.1875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 8169,
+              "scrollY": 0,
+              "value": 0.0085,
+              "sources": [
+                {
+                  "tag": "SECTION",
+                  "id": null,
+                  "className": "community-pulse",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 350.203125,
+                    "width": 390,
+                    "height": 493.796875,
+                    "top": 350.203125,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 362.390625,
+                    "width": 390,
+                    "height": 481.609375,
+                    "top": 362.390625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 56,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 1352,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "",
+            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
+          },
+          "cls": 0.0144,
+          "shifts": [
+            {
+              "startTimeMs": 1342,
+              "scrollY": 0,
+              "value": 0.0059,
+              "sources": [
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "",
+                  "previousRect": {
+                    "x": 34.1875,
+                    "y": 627.203125,
+                    "width": 321.625,
+                    "height": 216.796875,
+                    "top": 627.203125,
+                    "right": 355.8125,
+                    "bottom": 844,
+                    "left": 34.1875
+                  },
+                  "currentRect": {
+                    "x": 22.1875,
+                    "y": 607.203125,
+                    "width": 345.625,
+                    "height": 236.796875,
+                    "top": 607.203125,
+                    "right": 367.8125,
+                    "bottom": 844,
+                    "left": 22.1875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 6998,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -400,63 +511,49 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 272,
+          "lcpMs": 1552,
           "lcpElement": {
             "tag": "P",
             "id": null,
             "className": "",
-            "text": "See the franchises players are building, the moves they are making, and the milestones they are reaching. Updated throughout the day."
+            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
           },
-          "cls": 0.0085,
+          "cls": 0.0144,
           "shifts": [
             {
-              "startTimeMs": 1939,
+              "startTimeMs": 1537,
               "scrollY": 0,
-              "value": 0.0085,
+              "value": 0.0059,
               "sources": [
                 {
-                  "tag": "SECTION",
+                  "tag": "DIV",
                   "id": null,
-                  "className": "community-pulse",
+                  "className": "",
                   "previousRect": {
-                    "x": 0,
-                    "y": 350.203125,
-                    "width": 390,
-                    "height": 493.796875,
-                    "top": 350.203125,
-                    "right": 390,
+                    "x": 34.1875,
+                    "y": 627.203125,
+                    "width": 321.625,
+                    "height": 216.796875,
+                    "top": 627.203125,
+                    "right": 355.8125,
                     "bottom": 844,
-                    "left": 0
+                    "left": 34.1875
                   },
                   "currentRect": {
-                    "x": 0,
-                    "y": 362.390625,
-                    "width": 390,
-                    "height": 481.609375,
-                    "top": 362.390625,
-                    "right": 390,
+                    "x": 22.1875,
+                    "y": 607.203125,
+                    "width": 345.625,
+                    "height": 236.796875,
+                    "top": 607.203125,
+                    "right": 367.8125,
                     "bottom": 844,
-                    "left": 0
+                    "left": 22.1875
                   }
                 }
               ]
-            }
-          ],
-          "inpMs": 16,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 292,
-          "lcpElement": {
-            "tag": "P",
-            "id": null,
-            "className": "",
-            "text": "See the franchises players are building, the moves they are making, and the milestones they are reaching. Updated throughout the day."
-          },
-          "cls": 0.0085,
-          "shifts": [
+            },
             {
-              "startTimeMs": 2368,
+              "startTimeMs": 8129,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -500,13 +597,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "fc664864cebc0b5f24c1aba23d8d5f53195c95ab",
+        "observed": "92e4190a4221383c8352ea6321d65528cb449e74",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "8ac6e8cf9b7f87dfd9fd3cbaecc602702448f7c40d439f47703fff997d12bdfa",
+        "observed": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7",
         "expected": "sha256"
       },
       {
@@ -518,7 +615,7 @@
       {
         "name": "hosted Content-Security-Policy observed",
         "ok": true,
-        "observed": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+        "observed": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
         "expected": "present"
       },
       {
@@ -530,19 +627,19 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 280,
+        "observed": 784,
         "expected": "< 1800ms"
       },
       {
         "name": "desktop INP",
         "ok": true,
-        "observed": 24,
+        "observed": 32,
         "expected": "<= 200ms"
       },
       {
         "name": "desktop CLS",
         "ok": true,
-        "observed": 0.0151,
+        "observed": 0.0277,
         "expected": "<= 0.1"
       },
       {
@@ -554,7 +651,7 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 292,
+        "observed": 1352,
         "expected": "< 1800ms"
       },
       {
@@ -566,7 +663,7 @@
       {
         "name": "mobile CLS",
         "ok": true,
-        "observed": 0.0085,
+        "observed": 0.0144,
         "expected": "<= 0.1"
       },
       {
@@ -596,5 +693,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "f24d6aead981828a58d7b1993073262e4ade0f38d5171f032a890223cbaaedd2"
+  "receiptSha256": "a5cd3102f1042e7e5bac748769937fa5b53c1e9e48fe1374e119d4735f1025c8"
 }

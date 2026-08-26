@@ -5,9 +5,6 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 ## Now
 
 - [ ] Verify the analytics beacon actually reports once the S94 CSP reaches production. The policy now admits it and the negative control proves the old policy refused it, but "admitted" is not "reporting" — confirm a real pageview lands, and treat a still-silent dashboard as a live finding rather than a deploy delay.
-- [ ] Calibrate `owner.cash` scale now that it is load-bearing. S93 made it gate facility construction and upkeep and made the 35M/80M cashPressure thresholds reachable for the first time; its magnitude has never been calibrated for a league where cash actually moves. Carried from the S93 handoff, still unaddressed.
-- [ ] Source `FACILITY_MARKET_PROFILE`'s appetite weights. They are judgement, not measurement, which makes them the newest un-sourced constants in the codebase — the exact shape S92 removed from the elite-density ceiling. Carried from the S93 handoff.
-- [ ] Gate the long-horizon facility equilibrium. The S93 upkeep design rests entirely on a measured dispersion turnaround (facility standard deviation 5.658 → 4.015 → 3.655 → 4.050 at seasons 0/3/8/15) that no test asserts. Add a `long`-shard gate asserting a floor on league facility spread after a long seeded run, so the claim is gated rather than argued.
 - [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
 - [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
 
@@ -18,6 +15,22 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Reconsider the mobile tab-target count on its own terms. S94 skipped the 14-to-6 regroup because the rail is already grouped under five task headers and the remaining cost is target count on a phone — which is the founder-deferred item needing its own visual-evidence re-baseline budget, not a side effect of an information-architecture pass.
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
+- [ ] Improve exact-artifact bind failures so the release log prints both observed digests before exiting; the S95 gate stopped correctly, but the first failure was more opaque than it needed to be.
+- [ ] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker.
+
+## Session 95 — Full arc: one decision beat per playoff round, one exact artifact through production (2026-08-26)
+
+- [x] Gate Pages publication on the full browser suite and repair the stale development-profile assertion.
+- [x] Persist postseason round state so one command resolves one controlled-team game; preserve exact plans across save/resume and make whole-season delegation consume every gate.
+- [x] Centralize phase-to-surface navigation and prove exact destinations exist and receive focus.
+- [x] Calibrate owner capital as football-operations liquidity with obligations, runway, trait-weighted appetite, bounded distributions, and deterministic 1/8/15/40-year equilibrium gates.
+- [x] Replace the Gist forgery claim with an honest checksum boundary and optional versioned PBKDF2/HMAC authentication with legacy-save support.
+- [x] Align realism workflow timeouts, persist progress, and upload partial evidence under `always()`.
+- [x] Bind rendered pixels, hosted performance, stable staging, and production to SHA `92e4190a4221383c8352ea6321d65528cb449e74` and artifact `ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7`.
+- [x] Remove repeated Hall of Fame candidate rescoring; the measured two-season dashboard probe improved from about 16.8 seconds to 7.1 seconds.
+- [x] Root-fix the release-only digest mismatch: Pages now checks out full Git history so git-derived sitemap lastmod values are deterministic across local, staging, and CI builds.
+
+**Verification:** canonical Node 1,280/1,280; Playwright 54/54; responsive 251 states with 92 retained/reviewed plus 236 final-CI required states; staging 14/14 with rollback; production 10/10; workflow 32933281222 green. Technical deployment is complete. Public launch remains HOLD.
 
 ## Session 94 — Full arc: the site's own policy stops refusing the site (2026-08-23)
 

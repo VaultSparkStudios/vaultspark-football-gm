@@ -1,10 +1,37 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 94 closed at 991 / 1000 SIL v3.0. A full-spectrum audit run against the LIVE ORIGIN rather than the tree found that the site's own Content-Security-Policy was refusing a script the site itself serves: Cloudflare injects its Web Analytics beacon into every delivered document, `script-src` admitted `'self'` plus four hashes, and production had therefore collected zero pageviews while throwing a CSP violation on every page load. No automated check had ever seen it, because the edge injects the beacon only for browser-shaped requests and the verifier fetched with `Accept: application/json` — it was auditing a document no visitor receives. Three further findings were only visible from production, and the strongest structural one was internal: the Settings tab was the reason two god-mode surfaces survived thirty sessions, so the owner economy now has its own Boardroom and seven developer diagnostics require `?dev=1`. Three ranked premises were corrected during implementation rather than implemented as written, one item was skipped with its premise corrected, and a `/code-review high` then found ten real defects in this session's own work — all fixed and pinned. Canonical receipt 1,266 / 1,266, direct exit 0.
+Rolling status: Session 95 closed at 993 / 1000 SIL v3.0. Seven reproduced audit findings shipped through an exact staging-to-production promotion: postseason now preserves the weekly decision beat, owner capital reaches a gated long-horizon equilibrium, cloud-save security claims match their mechanism, deep realism retains partial evidence, and browser-red candidates cannot publish. The first production attempt correctly stopped on a digest mismatch; tracing it to shallow Git history made sitemap identity deterministic rather than weakening the bind. Canonical receipt 1,280 / 1,280, Playwright 54 / 54, final release authority verified at `92e4190…` / `ca66c921…`.
 
-Previously — Session 93 closed at 986 / 1000 after closing the last god-mode surface in the game: the owner Facilities panel, byte-identical to the Coaching Staff sheet S63 had fixed eight lines above it, writing the S90 development environment's strongest input for free.
+Previously — Session 94 closed at 991 / 1000 after a live-origin audit found the site's own Content-Security-Policy refusing its injected analytics beacon and moved live economy controls into the Boardroom.
 <!-- rolling-status-end -->
+
+## 2026-08-26 — Session 95 One Decision Beat Per Round, One Artifact Through Production
+
+SIL v3.0: **993 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 100, Process Quality 94, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+**What changed the outcome.** Treating the release identity as a behavioral contract, not a final checksum. The first production run stopped because CI and staging produced different digests from the same source. The differing files were only sitemap lastmod values; staging had full Git history while CI's shallow checkout could see only HEAD. Fetching full history in the artifact-building job fixed the cause and a workflow-contract test pins it.
+
+**What went well.**
+
+- Every audit premise was reproduced before implementation, and all seven items shipped.
+- Long-horizon owner-capital work kept exact seeded receipts at years 1, 8, 15, and 40; it did not green by moving a threshold.
+- Visual proof covered desktop, tablet, mobile, dark, light, and the touched facility/Gist/navigation states; 92 captures were retained and manually inspected, while final CI reran 236 required states against the deployed SHA.
+- The release gate did its job on the first attempt. A failed promotion was treated as evidence, and the same digest later passed staging, production, and hosted performance.
+
+**What cost the session, and why Process Quality is 94.** The responsive harness initially targeted selectors that had drifted, and the exact-artifact bind reported its failure too opaquely before inspection exposed the two digests. Both were root-fixed, but they added an avoidable release cycle. Cross-Repo Coherence remains 99 because the authoritative registry still disagrees with the local FORGE/public-unlaunched posture.
+
+**Second-order candidates considered.**
+
+- Print both observed artifact digests on a bind failure so the failure explains itself.
+- Make visual selectors source-bound to stable IDs instead of presentation text where possible.
+- Keep full-history checkout as an explicit invariant anywhere git-derived content enters artifact identity.
+- Upgrade GitHub actions once official Node 24-native majors exist; current forced-runtime warnings are advisory.
+
+**Committed SIL follow-ups.**
+
+- [SIL] Any byte-identical promotion gate must reproduce Git history depth as well as environment variables and source SHA when generated content reads Git metadata.
+- [SIL] A release-identity failure should emit both identities and the first differing files before it exits; correct refusal and actionable diagnosis are separate requirements.
 
 ## 2026-08-23 — Session 94 The Site's Own Policy Stops Refusing The Site
 

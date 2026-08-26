@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-08-26T03:13:48.759Z",
-  "sourceRevision": "fd38f4576bbc301c3701d747c04728c7a68dc55e",
+  "capturedAt": "2026-08-26T05:23:38.246Z",
+  "sourceRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
   "artifactFingerprint": {
     "algorithm": "sha256",
     "digest": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7",
@@ -953,6 +953,15 @@
       "Corrected the unkeyed-checksum promise and added optional versioned PBKDF2/HMAC authentication with legacy-save support.",
       "Centralized live phase-to-surface routing and restored one controlled decision beat per postseason round."
     ],
-    "blockingDefectsOpen": 0
+    "blockingDefectsOpen": 0,
+    "ciEvidence": {
+      "workflowRun": 32933281222,
+      "artifact": "responsive-evidence-92e4190a4221383c8352ea6321d65528cb449e74",
+      "sourceRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
+      "artifactDigest": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7",
+      "completedRequiredCaptures": 236,
+      "generatedAt": "2026-08-26T05:23:38.246Z",
+      "note": "The final CI reran the responsive matrix against the exact deployed artifact. Manual review applies to that byte-identical artifact; dynamic PNG bytes are not treated as product identity."
+    }
   }
 }

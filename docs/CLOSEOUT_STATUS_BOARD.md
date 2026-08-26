@@ -1,67 +1,67 @@
-<!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-08-23 (Session 93 closeout) -->
+<!-- generated-by: scripts/render-closeout-board.mjs v1.1 -->
+<!-- generated-at: 2026-08-26 (Session 95 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S93 ══════╗
-║  Date: 2026-08-23  ·  SIL: 986/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: claude-opus-5                          ║
-║  Live:  preview  →  https://playfranchisearchitect.com/          ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S95 ══════╗
+║  Date: 2026-08-26  ·  SIL: 993/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: codex                                  ║
+║  Live:  🌐 LIVE  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
-║  ✓ docs(S93): bind release evidence and render closeout artifac  ║
-║  ✓ feat(S93): the owner's console stops being a cheat panel      ║
-║  ✓ docs: sync Studio OS canonical assets (SESSION_PROTOCOL + SK  ║
-║  ✓ docs(S92): bind release evidence and render closeout artifac  ║
-║  ✓ feat(S92): source the elite-density ceiling from real NFL ho  ║
+╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
+║  ✓ Session 95 completed the full `/arc`; all seven ranked audit  ║
+║  ✓ Exact candidate `92e4190a4221383c8352ea6321d65528cb449e74` i  ║
+║  ✓ Production workflow 32933281222 is green. Stable staging pas  ║
+║  ✓ Unified release authority is `verified`; `launchReady` remai  ║
+║  ✓ Canonical Node receipt is 1,280/1,280; Playwright is 54/54;   ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 986/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 993/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
 ║    Engagement         100  ██████████                            ║
-║    Process Qual       90   █████████░                            ║
+║    Process Qual       94   █████████░                            ║
 ║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
 ║    Ecosystem          100  ██████████                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         97   ██████████                            ║
+║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
-║  · context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
-║  · context/PROJECT_STATUS.json                                   ║
-║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
+║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 24 files  ·  M:17 A:0 D:0 ?:7                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
 ║  Staging:  https://staging.playfranchisearchitect.com  ·  cloud  ║
-║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
+║  Live:     https://playfranchisearchitect.com/  ·  🌐 LIVE (SPA  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1220/1220                                        ║
-║  IGNIS:         12d ago                                          ║
+║  Tests:         1280/1280                                        ║
+║  Validation:    unknown                                          ║
+║  IGNIS:         15d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  14d ago                                          ║
+║  Sanitization:  17d ago                                          ║
+║  shells:        unknown · missing/stale enumeration              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
-║      Latest audit has no open ranked items; run /audit for a ne  ║
-║      ↳ node scripts/ops.mjs genius-list                          ║
+║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 
-*Generated by `scripts/render-closeout-board.mjs v1.0`*
+*Generated by `scripts/render-closeout-board.mjs v1.1`*

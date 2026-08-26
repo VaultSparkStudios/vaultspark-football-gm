@@ -2,6 +2,14 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
+## 2026-08-26 — Session 95
+
+**Owner cash is football-operations liquidity, not an accumulating owner net-worth score.** Facility appetite reads annual obligations, operating reserve, runway, club economics, and owner traits; bounded distributions remove excess liquidity without erasing the club's ability to operate. *Why:* a one-time price plus perpetually compounding cash makes every owner converge on every facility ceiling and deletes the differentiator.
+
+**A checksum is corruption evidence; authentication requires a secret.** Cloud saves keep the legacy-compatible checksum for accidental damage and offer optional PBKDF2-derived HMAC for authorship authentication. Neither is encryption, and public copy names those boundaries exactly.
+
+**Artifact builders fetch full Git history when generated output reads Git metadata.** Sitemap lastmod is source-derived from commit history, so a shallow CI checkout and a full-history staging build can disagree at the same SHA. Pages now uses `fetch-depth: 0`, and the publication bind remains strict.
+
 ## 2026-08-23 — Session 94
 
 **A gate must audit the artifact a visitor actually receives.** The edge injects markup only for browser-shaped requests, so a verifier fetching with `Accept: application/json` was checking a document nobody is served — and stayed green while every real page load violated the policy. Live-origin verification now sends browser headers and asserts the served policy admits every external origin the served document requests. *Why:* what ships is source → build rewrite → edge policy, and two of those three stages leave no trace in git.

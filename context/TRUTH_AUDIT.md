@@ -2,8 +2,20 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-23
+Last reviewed: 2026-08-26
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-08-26 - Session 95 truth update
+
+- **All seven ranked findings are shipped.** Incremental postseason, shared next-action routing, owner-capital calibration, honest optional Gist authentication, publication browser gating, partial realism evidence, and exact release proof are implemented; the canonical audit sidecar is `implemented`.
+- **Simulation claims are measured.** Year-zero facility willingness is 19/32 rather than 32/32; profit-first owners invest 2/11 and legacy owners 5/6; year-40 cash p90/max is $152.0M/$201.2M; facility mean/range is 74.625/64–84 with zero clubs at the ceiling. Deterministic 1/8/15/40-year gates pass.
+- **Security wording matches the mechanism.** The checksum detects accidental corruption. Optional PBKDF2-derived HMAC authenticates save authorship. Neither mechanism is described as encryption, and legacy saves remain supported.
+- **Test truth is exact.** Canonical Node passes 1,280/1,280 by direct exit 0; Playwright passes 54/54; Studio protocol passes 248/248; final focused full-history regression passes 24/24.
+- **Rendered-pixel evidence is candidate-bound.** Local responsive evidence passed 251 states and retained 92 hash-bound captures reviewed across desktop/mobile, dark/light, facility capital, Gist authentication, and exact command routing. Final CI reran 236 required responsive states against the deployed SHA and identical artifact.
+- **Release identity is exact.** Stable staging passes 14/14 with rollback deployment `609fbc29-a887-4419-9803-65983f807fb3`; production passes 10/10; workflow 32933281222 is green. Source `92e4190a4221383c8352ea6321d65528cb449e74` and artifact `ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7` agree across visual, performance, staging, and production authorities.
+- **The first production refusal was correct.** CI's shallow checkout changed git-derived sitemap lastmod values and therefore the digest. The job now fetches full history; the bind was not relaxed.
+- **Security sweep is clean.** Settings sanitization and staged secret scans report zero findings; no package was installed and no credential custody changed.
+- **Deployment is not launch.** Technical deployment was explicitly authorized and completed. Zoho delivery/reply-as, explicit public-launch approval, authoritative lifecycle reconciliation, and applicable external Obelisk relying-party proof remain unverified; `launchReady` remains false.
 
 ## 2026-08-23 - Session 94 truth update
 

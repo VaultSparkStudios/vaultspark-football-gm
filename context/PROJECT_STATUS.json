@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Session 94 ran a full-spectrum /audit against the LIVE ORIGIN rather than the source tree, and that choice is why four of fourteen ranked findings exist: what ships here is source -> build-pages rewrite -> edge policy, and two of those three stages leave no trace in git. The headline defect is that the site's own Content-Security-Policy was refusing a script the site itself serves. Cloudflare injects its Web Analytics beacon into every delivered document; script-src admitted 'self' plus four hashes and nothing else. Production had therefore collected ZERO pageviews and thrown a CSP violation on every page load, while every launch-readiness judgement about the public surface was made without a single production datapoint. No automated check had seen it because -- measured on this origin across two routes -- the edge injects the beacon only for browser-shaped requests, and verify-edge-policy-application.mjs fetched with Accept: application/json, so it was auditing a document no visitor ever receives. It now fetches as a browser does and asserts the served policy admits every external origin the served document requests; both admitted hosts were read out of beacon.min.js itself. Negative control returns both violations by name against today's live policy and none against the new one. Three further findings: check-public-truth had no freshness dimension, so status.html sat 24 sessions stale while green; the front door led with a live widget rendering '0 contributors'; and the Settings tab was the structural reason two god-mode surfaces survived thirty sessions, so the owner economy now has its own Boardroom and seven developer diagnostics require ?dev=1. New /simulation.html publishes the measured-realism anchor rendered from progressionParity's own constants. Three ranked premises were CORRECTED during implementation rather than implemented as written (one would have reversed DECISIONS 2026-08-04), and one item was skipped with its premise corrected. A /code-review high then found ten real defects in this session's own work, all fixed and pinned by regression tests. Canonical receipt 1,266/1,266 direct exit 0, up from 1,220. Public launch remains HOLD and launchReady stays false.",
-  "nextMilestone": "The strongest known item is unchanged and now twice-carried: gate the long-horizon facility equilibrium. The S93 upkeep design rests on a measured season-15 dispersion turnaround that no test asserts -- argued rather than gated, the exact shape this project keeps re-finding. Second: verify the analytics beacon actually REPORTS once the S94 CSP reaches production; admitted is not reporting, and a still-silent dashboard after deploy is a live finding rather than a deploy delay. Third and fourth, both carried from S93 and both now more load-bearing than when booked: owner.cash scale has never been calibrated for a league where cash actually moves, and FACILITY_MARKET_PROFILE's appetite weights are judgement rather than measurement -- the newest un-sourced constants in the codebase. Process note booked to the board: run /code-review BEFORE the canonical receipt, not after; running it late this session invalidated a 45-minute six-shard run that had to be repeated in full.",
+  "currentFocus": "Session 95 shipped all seven reproduced audit findings and deployed exact candidate 92e4190a4221383c8352ea6321d65528cb449e74 at artifact ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7. Incremental postseason, shared routing, stationary owner capital, honest authenticated Gist saves, recoverable realism evidence, and publication browser gating are live. Unified release authority is verified; public launch remains HOLD.",
+  "nextMilestone": "Verify the Cloudflare analytics beacon reports a real pageview, observe the first genuine opted-in cohort, then reconcile public launch only from Zoho receive/reply-as evidence, explicit public-launch approval, authoritative lifecycle, and applicable external Obelisk relying-party proof.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -21,13 +21,13 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-08-23",
+  "truthAuditLastRun": "2026-08-26",
   "ignisScore": 42836,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": "green",
-  "testsPassing": 1266,
-  "testsTotal": 1266,
+  "testsPassing": 1280,
+  "testsTotal": 1280,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -66,23 +66,23 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 991,
+  "silScore": 993,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
     "engagement": 100,
-    "processQuality": 93,
+    "processQuality": 94,
     "crossRepoCoherence": 99,
     "securityPosture": 100,
     "ecosystemIntegration": 100,
     "capitalEfficiency": 100,
-    "automationCoverage": 99
+    "automationCoverage": 100
   },
-  "currentSession": 94,
-  "lastAgent": "claude-opus-5",
+  "currentSession": 95,
+  "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "S94 canonical Node receipt 1,266/1,266 across all six shards, direct exit 0 (not a wrapper status), up from S93's 1,220 with 46 new tests -- 12 of them regressions pinning defects a code review found in this session's own work. 18/18 Playwright specs across the three affected suites. Build, smoke-pages, browser-reachability (83 modules), boot-budget (641,330/730,000 with 0 lazy leaks and per-island headroom at or above the 15% floor), promise-observability (0 silent sinks), windows-hide, shard-coverage and public-truth all green. Measured, not asserted: the delivered-document audit returns two violations by name against today's live production policy and browser-shaped document, and none against the new policy on the same document; the release-note freshness gate reported 24 sessions unpublished before its fix; repository weight fell 107 MB -> 35.9 MB in docs and 861 KB -> 439 KB in context ledgers, each verified line by line before the change was kept. Two tests-ui/app.spec.js failures are PRE-EXISTING, confirmed by reproducing them on the stashed pre-S94 tree, and are not claimed as green.",
+  "lastVerification": "S95 canonical npm test direct exit 0: 1,280/1,280 across all six shards (core 198, runtime 746, sim-contract 82, sim-realism 1, long 5, studio 248). Playwright 54/54. Responsive evidence passed 251 local states with 92 retained and manually reviewed; final CI reran 236 required states. Stable staging 14/14 with rollback and production 10/10 agree at SHA 92e4190a4221383c8352ea6321d65528cb449e74 and artifact ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7. Workflow 32933281222 is green.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -108,41 +108,35 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 751,
+  "silHealth": 753,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
-    "score": 83,
+    "score": 92,
     "date": "2026-08-26",
-    "passing": 10,
-    "warning": 2,
+    "passing": 11,
+    "warning": 1,
     "checks": [
       {
         "id": "lifecycle-authoritative-registry",
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
-      },
-      {
-        "id": "release-authority-git-head-covered-by-publication",
-        "status": "warning",
-        "blocking": false,
-        "detail": "HEAD bb77f8441a5995bb0c8b69762d160cb7ec1e0d32 is not covered by live production fe39e5fc3a30d9841eade107264d087d792596f5"
       }
     ]
   },
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-08-09",
-  "lastVerificationAt": "2026-08-23",
+  "lastVerificationAt": "2026-08-26",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.015,
-  "entropyLastComputed": "2026-08-14",
-  "lastSessionSummary": "S94 -- the site's own policy stops refusing the site: auditing the live origin rather than the tree found that the CSP was blocking the analytics beacon Cloudflare injects into every page, so production had collected zero pageviews while the verifier stayed green by fetching a document no visitor receives; the public-truth gate gained the freshness dimension that had let status.html rot 24 sessions; the owner economy left the Settings junk drawer that was the structural reason two god-mode surfaces survived thirty sessions; and a code review found ten more defects in the session's own work, all fixed and pinned.",
+  "entropyScore": 0.051,
+  "entropyLastComputed": "2026-08-26",
+  "lastSessionSummary": "S95 -- one decision beat per postseason round and one exact artifact through production: all seven ranked findings shipped, owner capital reached a deterministic long-horizon equilibrium, cloud-save security claims match their mechanism, and a release-only digest mismatch exposed shallow Git history as a sitemap identity input before the strict bind allowed promotion.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -154,17 +148,17 @@
       "type": "production",
       "label": "Public origin",
       "url": "https://playfranchisearchitect.com/",
-      "lastChecked": "2026-08-18"
+      "lastChecked": "2026-08-26"
     },
     {
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-08-23"
+      "lastChecked": "2026-08-26"
     }
   ],
-  "lastSession": 94,
-  "silLastSession": 94,
+  "lastSession": 95,
+  "silLastSession": 95,
   "bootAmortization": {
     "ratio": 1.29,
     "verdict": "wasted",
@@ -214,16 +208,16 @@
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "16077962910ddfe3f19c1dd1d996c417e2f9962ea9f26622922daf6bfe47cf00",
-    "checkedAt": "2026-08-16T08:48:14.503Z",
+    "receiptSha256": "50a95e3d13093267cd198b8b5d97f7a056a91dfa4efeb5e8f22eedaae41215db",
+    "checkedAt": "2026-08-26T05:48:50.617Z",
     "evidenceWindow": {
-      "observedAt": "2026-08-16T08:48:14.503Z",
+      "observedAt": "2026-08-26T05:48:50.617Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-08-17T08:48:14.503Z",
+      "expiresAt": "2026-08-27T05:48:50.617Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9",
+    "deployedRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
     "routes": {
       "verified": true,
       "checked": 9
@@ -244,7 +238,7 @@
     },
     "exactRevision": {
       "verified": true,
-      "expected": "9801ac49d95e016c29a28d9c4a8a08ee19e83fc9"
+      "expected": "92e4190a4221383c8352ea6321d65528cb449e74"
     },
     "independentStaging": {
       "verified": true
@@ -261,215 +255,37 @@
       "email-delivery-unverified",
       "founder-approval-unverified",
       "lifecycle-authority-unverified"
-    ],
-    "generatedBy": "scripts/launch-evidence-report.mjs",
-    "baseUrl": "https://playfranchisearchitect.com",
-    "summary": {
-      "status": "blocked",
-      "routesOk": true,
-      "emailForwardingVerified": false,
-      "originEvidenceVerified": true,
-      "blocker": "On-domain email forwarding/copying is unverified."
-    },
-    "routeChecks": [
-      {
-        "route": "/",
-        "url": "https://playfranchisearchitect.com/",
-        "ok": true,
-        "statusCode": 200,
-        "detail": "HTTP 200",
-        "chain": [
-          {
-            "url": "https://playfranchisearchitect.com/",
-            "statusCode": 200
-          }
-        ],
-        "headers": {
-          "content-type": "text/html; charset=utf-8",
-          "server": "cloudflare",
-          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
-          "x-frame-options": "DENY",
-          "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
-          "x-content-type-options": "nosniff",
-          "referrer-policy": "strict-origin-when-cross-origin"
-        }
-      },
-      {
-        "route": "/game.html",
-        "url": "https://playfranchisearchitect.com/game.html",
-        "ok": true,
-        "statusCode": 200,
-        "detail": "HTTP 308 → /game → HTTP 200",
-        "chain": [
-          {
-            "url": "https://playfranchisearchitect.com/game.html",
-            "statusCode": 308
-          },
-          {
-            "url": "https://playfranchisearchitect.com/game",
-            "statusCode": 200
-          }
-        ]
-      },
-      {
-        "route": "/contact.html",
-        "url": "https://playfranchisearchitect.com/contact.html",
-        "ok": true,
-        "statusCode": 200,
-        "detail": "HTTP 308 → /contact → HTTP 200",
-        "chain": [
-          {
-            "url": "https://playfranchisearchitect.com/contact.html",
-            "statusCode": 308
-          },
-          {
-            "url": "https://playfranchisearchitect.com/contact",
-            "statusCode": 200
-          }
-        ]
-      },
-      {
-        "route": "/privacy.html",
-        "url": "https://playfranchisearchitect.com/privacy.html",
-        "ok": true,
-        "statusCode": 200,
-        "detail": "HTTP 308 → /privacy → HTTP 200",
-        "chain": [
-          {
-            "url": "https://playfranchisearchitect.com/privacy.html",
-            "statusCode": 308
-          },
-          {
-            "url": "https://playfranchisearchitect.com/privacy",
-            "statusCode": 200
-          }
-        ]
-      },
-      {
-        "route": "/terms.html",
-        "url": "https://playfranchisearchitect.com/terms.html",
-        "ok": true,
-        "statusCode": 200,
-        "detail": "HTTP 308 → /terms → HTTP 200",
-        "chain": [
-          {
-            "url": "https://playfranchisearchitect.com/terms.html",
-            "statusCode": 308
-          },
-          {
-            "url": "https://playfranchisearchitect.com/terms",
-            "statusCode": 200
-          }
-        ]
-      },
-      {
-        "route": "/agents.json",
-        "url": "https://playfranchisearchitect.com/agents.json",
-        "ok": true,
-        "statusCode": 200,
-        "detail": "HTTP 200",
-        "chain": [
-          {
-            "url": "https://playfranchisearchitect.com/agents.json",
-            "statusCode": 200
-          }
-        ]
-      },
-      {
-        "route": "/.well-known/llms.txt",
-        "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
-        "ok": true,
-        "statusCode": 200,
-        "detail": "HTTP 200",
-        "chain": [
-          {
-            "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
-            "statusCode": 200
-          }
-        ]
-      },
-      {
-        "route": "/sitemap.xml",
-        "url": "https://playfranchisearchitect.com/sitemap.xml",
-        "ok": true,
-        "statusCode": 200,
-        "detail": "HTTP 200",
-        "chain": [
-          {
-            "url": "https://playfranchisearchitect.com/sitemap.xml",
-            "statusCode": 200
-          }
-        ]
-      },
-      {
-        "route": "/_health",
-        "url": "https://playfranchisearchitect.com/_health",
-        "ok": true,
-        "statusCode": 200,
-        "detail": "HTTP 200",
-        "chain": [
-          {
-            "url": "https://playfranchisearchitect.com/_health",
-            "statusCode": 200
-          }
-        ],
-        "headers": {
-          "content-type": "application/octet-stream",
-          "server": "cloudflare",
-          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
-          "x-frame-options": "DENY",
-          "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-E4m3zEZRBVZQkLwqmtHTHJNCZUpIaxZUAlQ0/nWCHek=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc='; style-src-elem 'self' 'sha256-I0LW+ekyRf9s2S4biL/6IQVLl2Jix2njwf/cfiyS7BU='; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
-          "x-content-type-options": "nosniff",
-          "referrer-policy": "strict-origin-when-cross-origin"
-        },
-        "body": "{\n  \"status\": \"ok\",\n  \"service\": \"franchise-architect-football\",\n  \"sourceRevision\": \"9801ac49d95e016c29a28d9c4a8a08ee19e83fc9\",\n  \"artifactFingerprint\": {\n    \"algorithm\": \"sha256\",\n    \"digest\": \"0d28a7fb52b1503c6dbb0a8e3eb2e75aca43b26217b6d7fefcc12d59530fe672\",\n    \"files\": 193,\n    \"exclusions\": [\n      \"_health\",\n      \"deploy-manifest.json\",\n      \"edge-policy-receipt.json\"\n    ]\n  },\n  \"styleAsset\": \"styles.d14503a8a4.css\",\n  \"communityStatsAsset\": \"community-stats.2eb1a4468e.js\",\n  \"edgePolicyFingerprint\": \"sha256:ac0767fa3aae8cf4a55d0b68e6434ffdc44c903c4ca4a790bf59d6666061ab07\",\n  \"edgePolicyAppliedToHostedOrigin\": false,\n  \"generatedAt\": \"2026-08-16T08:09:31.393Z\",\n  \"launchReady\": false,\n  \"launchNote\": \"Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence.\"\n}\n"
-      }
-    ],
-    "emailForwarding": {
-      "status": "unverified",
-      "address": "football@playfranchisearchitect.com",
-      "detail": "No delivery/forwarding evidence supplied. Do not mark SPARKED from route checks alone."
-    },
-    "originEvidence": {
-      "required": true,
-      "healthReceiptValid": true,
-      "securityHeaders": {
-        "strictTransportSecurity": true,
-        "frameProtection": true,
-        "contentSecurityPolicy": true
-      },
-      "status": "verified"
-    }
+    ]
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "accd31bb1ce290f1ecab3245ba1e8c7174a586a1c74c7071ac0039c7f1ff9ac1",
-    "sourceRevision": "fe39e5fc3a30d9841eade107264d087d792596f5",
+    "receiptSha256": "4804467a0ef13b4a1b74422507a316133bd6a3b8dddf5ea0dcbc27f8bfb0dc87",
+    "sourceRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "38ce0fa94e4e06f54a3da8126b87924fd610301433ff45c2f65cc345bf24a01f",
-      "files": 201,
+      "digest": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7",
+      "files": 207,
       "exclusions": [
         "_health",
         "deploy-manifest.json",
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "f6e02e61-92bd-44db-a42a-7517ed574eac",
+    "deploymentId": "f026f004-d9ed-4379-b17d-f249b80e9f7a",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-23T08:14:25.447Z"
+      "checkedAt": "2026-08-26T05:13:57.253Z"
     },
     "rollback": {
-      "previousDeploymentId": "6584e283-031d-4a82-805c-fab5277ae45b",
+      "previousDeploymentId": "609fbc29-a887-4419-9803-65983f807fb3",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-23T08:14:25.447Z"
+    "observedAt": "2026-08-26T05:13:57.254Z"
   },
   "lastCloseoutAt": "2026-08-23T08:06:34.646Z",
   "performanceAuthority": {
@@ -501,31 +317,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-08-23T08:26:59.689Z",
+    "observedAt": "2026-08-26T05:44:14.466Z",
     "status": "verified",
-    "sourceRevision": "fe39e5fc3a30d9841eade107264d087d792596f5",
-    "publicationRevision": "fe39e5fc3a30d9841eade107264d087d792596f5",
+    "sourceRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
+    "publicationRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "38ce0fa94e4e06f54a3da8126b87924fd610301433ff45c2f65cc345bf24a01f"
+      "digest": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "fe39e5fc3a30d9841eade107264d087d792596f5",
-        "artifactDigest": "38ce0fa94e4e06f54a3da8126b87924fd610301433ff45c2f65cc345bf24a01f"
+        "sourceRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
+        "artifactDigest": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7"
       },
       "production": {
-        "sourceRevision": "fe39e5fc3a30d9841eade107264d087d792596f5",
-        "artifactDigest": "38ce0fa94e4e06f54a3da8126b87924fd610301433ff45c2f65cc345bf24a01f"
+        "sourceRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
+        "artifactDigest": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7"
       },
       "visual": {
-        "sourceRevision": "fe39e5fc3a30d9841eade107264d087d792596f5",
-        "artifactDigest": "38ce0fa94e4e06f54a3da8126b87924fd610301433ff45c2f65cc345bf24a01f"
+        "sourceRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
+        "artifactDigest": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7"
       },
       "performance": {
-        "sourceRevision": "fe39e5fc3a30d9841eade107264d087d792596f5",
-        "artifactDigest": "38ce0fa94e4e06f54a3da8126b87924fd610301433ff45c2f65cc345bf24a01f"
+        "sourceRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
+        "artifactDigest": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7"
       }
     },
     "checks": [
@@ -571,31 +387,31 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "e32a0c8bc9c6a3a259f47177001942651e05494bdc25b393e06352279444c006",
-      "productionSha256": "6e3e9a94d42174945c03d7c7dd51601d5f779d661a519c3e872a5b6e87dfdfcd",
-      "visualSha256": "f2b95bbbbbc58cb229d92fda1fdb16ce454b3f64033fea8eba84e104c2162015",
-      "performanceSha256": "438dc15a13b00ff610cc1a92f1896f8c106f5d7abeffdc57e7b71cc4cd5e5810"
+      "stagingSha256": "78dcdf7fabf745b5f48ecd38de6e32bf8370af1af854af6be243f9759d8f6be0",
+      "productionSha256": "0af8a4a16d21c6d000fb2161d13f93e9af5d253066f41292f38878d841076579",
+      "visualSha256": "6a994ff9ad867f2069b84cfca179a3ec9b0977b34713c9fcdf65bcc260d61b26",
+      "performanceSha256": "c8d1ff5340b5360822c66151e077ab84431266fabd90ab4b372592a29f62a26a"
     },
-    "receiptSha256": "ad8b835cc441c5c27e4638cf3fedfee10b123b4a5b3aeb0836e4362abd0e2e0c"
+    "receiptSha256": "e7919fec2b3acba0cf6e2162fb7088dbdebe69c19250d8dcd8a4e2d01d4ff20d"
   },
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 94,
-    "silScore": 991,
+    "session": 95,
+    "silScore": 993,
     "categories": {
       "devHealth": 100,
       "creativeAlignment": 100,
       "momentum": 100,
       "engagement": 100,
-      "processQuality": 93,
+      "processQuality": 94,
       "crossRepoCoherence": 99,
       "securityPosture": 100,
       "ecosystemIntegration": 100,
       "capitalEfficiency": 100,
-      "automationCoverage": 99
+      "automationCoverage": 100
     },
-    "date": "2026-08-23"
+    "date": "2026-08-26"
   },
   "testShardReceipt": {
     "canonicalCommand": "npm test",
@@ -608,14 +424,14 @@
       "studio"
     ],
     "counts": {
-      "core": 194,
-      "runtime": 740,
-      "sim-contract": 79,
+      "core": 198,
+      "runtime": 746,
+      "sim-contract": 82,
       "sim-realism": 1,
       "long": 5,
-      "studio": 247
+      "studio": 248
     },
-    "total": 1266,
-    "note": "S94 canonical receipt, direct exit 0: 1,266/1,266 across all six shards (core 194, runtime 740, sim-contract 79, sim-realism 1, long 5, studio 247), up from S93's 1,220. This is the SECOND run of the session and the receipt of record. Run 1 was discarded because it surfaced three genuine defects in this session's own work rather than because of flakiness: a raw node:child_process import that CANON-016's windows-hide guard refuses, four new test suites unassigned to any shard (so npm test and CI would have skipped them silently while every local run passed), and an edge-policy fixture that correctly turned HOLD once document-agreement joined the attestation conjunction. All three were root-fixed -- the fixture was corrected rather than the conjunction relaxed -- and the run repeated in full. Behavioural source was frozen before this run. Runtime, sim-contract, sim-realism and long are unchanged from S93, which is the correct signal for a session that moved public surfaces, build gates and information architecture without touching simulation behaviour."
+    "total": 1280,
+    "note": "S95 canonical receipt, direct exit 0: 1,280/1,280 across all six shards (core 198, runtime 746, sim-contract 82, sim-realism 1, long 5, studio 248). The receipt covers incremental postseason, shared navigation, owner-capital calibration, Gist authentication, realism workflow evidence, and release-contract regressions."
   }
 }

@@ -341,6 +341,23 @@
       },
       "delta": 0,
       "cause": "Session 87 made franchise pressure visible and binding. One versioned salary-market curve now governs generated contract"
+    },
+    {
+      "date": "2026-08-26",
+      "session": 95,
+      "total": 0,
+      "maxTotal": 25,
+      "overallStatus": "green",
+      "lastReviewed": "2026-08-26",
+      "dimensions": {
+        "schema_alignment": 0,
+        "prompt_template_alignment": 0,
+        "derived_view_freshness": 0,
+        "handoff_continuity": 0,
+        "contradiction_density": 0
+      },
+      "delta": 0,
+      "cause": "Session 95 shipped all seven reproduced audit findings and deployed exact candidate 92e4190a4221383c8352ea6321d65528cb44"
     }
   ]
 }
