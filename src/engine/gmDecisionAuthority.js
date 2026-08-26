@@ -1,4 +1,5 @@
 import { getCapAlerts } from "./capAlerts.js";
+import { gmDecisionSurface } from "../../public/lib/gameplayNavigation.js";
 
 export const GM_DECISION_CATALOG = Object.freeze({
   "trade-deadline": Object.freeze({
@@ -105,6 +106,7 @@ export function buildGmDecisionBoundary(choice = {}, state = {}) {
       ? Math.min(18, currentWeek + choice.deadlineOffset)
       : null;
   const immediate = choice.mode === "immediate";
+  const exactSurface = gmDecisionSurface(choice.id || choice.choiceId);
   const timing = immediate
     ? "Executes when committed."
     : choice.mode === "immediate-or-commitment"
@@ -114,8 +116,8 @@ export function buildGmDecisionBoundary(choice = {}, state = {}) {
     mode: choice.mode || "commitment",
     timing,
     deadline: deadlineWeek == null ? null : { year, week: deadlineWeek },
-    targetTab: choice.targetTab || null,
-    targetId: choice.targetId || TARGET_IDS_BY_TAB[choice.targetTab] || null,
+    targetTab: exactSurface.targetTab || choice.targetTab || null,
+    targetId: exactSurface.targetId || choice.targetId || TARGET_IDS_BY_TAB[choice.targetTab] || null,
     reversibility: immediate
       ? "Applies immediately; later roster and strategy decisions remain available."
       : "Open until the due week; only a receipted qualifying action resolves it.",

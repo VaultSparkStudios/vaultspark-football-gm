@@ -77,6 +77,10 @@ import {
   ticketDemandFactor,
   ticketPriceFanInterestDelta
 } from "../domain/ticketDemand.js";
+import {
+  measureOwnerOperatingLiquidity,
+  operatingLiquidityPressure
+} from "../domain/ownerEconomy.js";
 import { runFacilityInvestmentRound } from "../engine/facilityMarket.js";
 import {
   defaultDepthChartForTeam,
@@ -86,7 +90,14 @@ import {
   strategyPresetForTeam
 } from "../engine/aiTeamStrategy.js";
 import { buildSeasonSchedule } from "../engine/schedule.js";
-import { runPlayoffsAndSuperBowl, sortStandings } from "../engine/seasonSimulator.js";
+import {
+  createPostseasonState,
+  nextPostseasonGame,
+  postseasonResultFromState,
+  runPlayoffsAndSuperBowl,
+  simulateNextPostseasonGame,
+  sortStandings
+} from "../engine/seasonSimulator.js";
 import { simulateRegularSeasonWeek } from "../engine/weeklySimulator.js";
 import { StatBook } from "../stats/statBook.js";
 import { DEFENSIVE_AV_POSITIONS } from "../stats/approximateValue.js";
@@ -711,7 +722,8 @@ function buildOwnerExpectation(team, roster = [], transactions = [], { currentWe
     .slice(-12);
   const splashMoves = recentMoves.filter((entry) => ["trade", "signing", "fa-signing"].includes(entry.type)).length;
   const turnoverMoves = recentMoves.filter((entry) => ["release", "restructure"].includes(entry.type)).length;
-  const cashPressure = owner.cash <= 35_000_000 ? 12 : owner.cash <= 80_000_000 ? 5 : 0;
+  const liquidityPressure = operatingLiquidityPressure(owner);
+  const cashPressure = liquidityPressure.pressure;
   const fanPressure = Math.max(0, 72 - Number(owner.fanInterest || 70)) * 0.8;
   const pacePressure = Math.max(0, targetWins - projectedWins) * 7.5;
   const transactionPressure = splashMoves >= 2 && paceGap < 0 ? 8 : turnoverMoves >= 3 ? 5 : 0;
@@ -731,7 +743,8 @@ function buildOwnerExpectation(team, roster = [], transactions = [], { currentWe
   const reasons = [];
   if (paceGap <= -2) reasons.push(`pace is ${Math.abs(paceGap).toFixed(1)} wins below target`);
   if ((owner.fanInterest || 70) < 58) reasons.push("fan interest is slipping");
-  if (cashPressure >= 10) reasons.push("owner cash cushion is thin");
+  if (cashPressure >= 10) reasons.push("football-operations liquidity is critically thin");
+  else if (cashPressure > 0) reasons.push("football-operations liquidity is under one year of modeled obligations");
   if (splashMoves >= 2 && paceGap < 0) reasons.push("aggressive moves have not paid off yet");
   if (!reasons.length && paceGap >= 1) reasons.push("club is ahead of owner mandate");
   if (!reasons.length) reasons.push("season is tracking near expectation");
@@ -759,6 +772,7 @@ function buildOwnerExpectation(team, roster = [], transactions = [], { currentWe
     heat,
     trend: heat >= 75 ? "critical" : heat >= 58 ? "warming" : heat <= 28 ? "stable" : "watch",
     splashMoves,
+    operatingLiquidity: liquidityPressure.liquidity,
     reasons: reasons.slice(0, 3),
     evaluatedWeek: currentWeek,
     ultimatum
@@ -1822,6 +1836,7 @@ export class GameSession {
     this.seasonSchedule = [];
     this.weekResultsCurrentSeason = [];
     this.latestPostseason = null;
+    this.postseasonState = null;
     this.lastAwardSummary = null;
     this.pendingSeasonWrap = null;
 
@@ -1864,6 +1879,7 @@ export class GameSession {
         ? snapshot.lastRealismVerificationReport.progressionHistory.slice(-5)
         : [];
     session.pendingSeasonWrap = snapshot.pendingSeasonWrap || null;
+    session.postseasonState = snapshot.postseasonState || null;
     session.statBook.reindexPlayers();
     ensureLeagueRuntime(session.league);
     session.initializeLeagueSystems();
@@ -1944,6 +1960,7 @@ export class GameSession {
       // untrimmed copy cost a measured 1.09 MB against a 5 MB browser budget.
       // Only .bracket and .superBowl are read on the restore path.
       latestPostseason: leanPostseason(this.latestPostseason),
+      postseasonState: this.postseasonState,
       lastAwardSummary: this.lastAwardSummary,
       pendingSeasonWrap: this.pendingSeasonWrap,
       teamSeasonArchive: this.statBook.teamSeasonArchive
@@ -2235,14 +2252,14 @@ export class GameSession {
     return clamp(Math.round(base + modifiers.scoutingWeeklyBonus), 4, 30);
   }
 
-  buildWeeklyPlan(teamId = this.controlledTeamId) {
+  buildWeeklyPlan(teamId = this.controlledTeamId, opponentIdOverride = null) {
     const team = teamById(this.league, teamId);
     if (!team) return null;
     const roster = teamPlayersAll(this.league, teamId);
     const weekBlock =
       this.seasonSchedule?.find((entry) => entry.week === this.currentWeek) || this.seasonSchedule?.[this.currentWeek - 1] || null;
     const matchup = weekBlock?.games?.find((game) => game.homeTeamId === teamId || game.awayTeamId === teamId) || null;
-    const opponentId = matchup ? (matchup.homeTeamId === teamId ? matchup.awayTeamId : matchup.homeTeamId) : null;
+    const opponentId = opponentIdOverride || (matchup ? (matchup.homeTeamId === teamId ? matchup.awayTeamId : matchup.homeTeamId) : null);
     const opponent = opponentId ? teamById(this.league, opponentId) : null;
     const opponentRoster = opponent ? teamPlayersAll(this.league, opponentId) : [];
     return buildWeeklyMatchPlan(team, roster, opponent, opponentRoster);
@@ -2948,15 +2965,24 @@ export class GameSession {
         year: this.currentYear,
         controlledTeamId: this.controlledTeamId
       });
-      if (facilityRound.investments.length || facilityRound.upkeep.length) {
+      if (facilityRound.investments.length || facilityRound.upkeep.length || facilityRound.distributions.length) {
         this._developmentCentresRevision = null;
+        const capitalReturned = facilityRound.distributions.reduce(
+          (sum, entry) => sum + (Number(entry.returned) || 0),
+          0
+        );
         this.logNews(
           `${facilityRound.investments.length} clubs committed facility capital for ${this.currentYear}` +
-            (facilityRound.upkeep.length ? `; ${facilityRound.upkeep.length} let a wing slip on deferred maintenance` : ""),
+            (facilityRound.upkeep.length ? `; ${facilityRound.upkeep.length} let a wing slip on deferred maintenance` : "") +
+            (facilityRound.distributions.length
+              ? `; ownership returned ${(capitalReturned / 1_000_000).toFixed(1)}M above operating envelopes`
+              : ""),
           {
             year: this.currentYear,
             investments: facilityRound.investments.length,
-            degraded: facilityRound.upkeep.length
+            degraded: facilityRound.upkeep.length,
+            distributions: facilityRound.distributions.length,
+            capitalReturned
           }
         );
       }
@@ -3416,6 +3442,8 @@ export class GameSession {
       minimumCashReserve: FACILITY_INVESTMENT_PROFILE.minimumCashReserve,
       // The recurring claim is the real constraint, so it is shown, not buried.
       annualUpkeep: totalFacilityUpkeep(team.owner),
+      operatingLiquidity: measureOwnerOperatingLiquidity(team.owner),
+      capitalReturn: team.owner.capitalReturn || null,
       facilities: FACILITY_KEYS.map((key) => ({
         facility: key,
         upkeep: facilityUpkeepCost(Number(team.owner.facilities?.[key] ?? FACILITY_INVESTMENT_PROFILE.floor)),
@@ -3762,6 +3790,7 @@ export class GameSession {
     // weeklyHistory too made it grow without bound for the life of the franchise.
     pruneWeeklyHistory(this.league, year);
     this.latestPostseason = null;
+    this.postseasonState = null;
     this.lastAwardSummary = null;
     this.pendingSeasonWrap = null;
     this.seasonSchedule = buildSeasonSchedule({
@@ -5327,6 +5356,67 @@ export class GameSession {
     return notes;
   }
 
+  initializePostseasonRoundFlow() {
+    if (!this.postseasonState || Number(this.postseasonState.year) !== Number(this.currentYear)) {
+      this.postseasonState = createPostseasonState({ league: this.league, year: this.currentYear });
+    }
+    return this.postseasonState;
+  }
+
+  setPostseasonMatchupPlans(game = nextPostseasonGame(this.postseasonState)) {
+    if (!game) return null;
+    const home = teamById(this.league, game.homeTeamId);
+    const away = teamById(this.league, game.awayTeamId);
+    if (home) home.weeklyPlan = this.buildWeeklyPlan(home.id, away?.id || null);
+    if (away) away.weeklyPlan = this.buildWeeklyPlan(away.id, home?.id || null);
+    return game;
+  }
+
+  preparePostseasonControlledGate() {
+    const state = this.initializePostseasonRoundFlow();
+    let next = nextPostseasonGame(state);
+    while (next && next.homeTeamId !== this.controlledTeamId && next.awayTeamId !== this.controlledTeamId) {
+      simulateNextPostseasonGame({
+        state,
+        league: this.league,
+        statBook: this.statBook,
+        year: this.currentYear,
+        rng: this.rng,
+        mode: this.mode
+      });
+      next = nextPostseasonGame(state);
+    }
+    if (next) {
+      const weekByRound = { wildcard: 19, divisional: 20, conference: 21, "super-bowl": 22 };
+      this.currentWeek = weekByRound[next.round] || this.currentWeek;
+      this.setPostseasonMatchupPlans(next);
+    }
+    return next;
+  }
+
+  getPostseasonProgress() {
+    const state = this.postseasonState;
+    if (!state) return null;
+    const next = nextPostseasonGame(state);
+    const qualified = Object.values(state.seeds || {}).flat().some((entry) => entry.teamId === this.controlledTeamId);
+    const champion = state.superBowl?.championTeamId === this.controlledTeamId;
+    const controlledStatus = next && (next.homeTeamId === this.controlledTeamId || next.awayTeamId === this.controlledTeamId)
+      ? "active"
+      : state.status === "completed"
+        ? champion ? "champion" : qualified ? "eliminated" : "not-qualified"
+        : "waiting";
+    return {
+      schemaVersion: state.schemaVersion,
+      status: state.status,
+      stage: state.stage,
+      round: next?.round || (state.status === "completed" ? "complete" : null),
+      controlledStatus,
+      nextGame: next,
+      bracket: state.bracket,
+      completedGames: state.gameArchiveEntries?.length || 0
+    };
+  }
+
   advanceWeek() {
     if (this.phase === "regular-season") {
       this.resetGameDayInactives();
@@ -5447,7 +5537,11 @@ export class GameSession {
       this.league.weeklyHistory.push({ ...leanWeek, year: this.currentYear, week: weekResult.week });
 
       this.currentWeek += 1;
-      if (this.currentWeek > NFL_STRUCTURE.regularSeasonWeeks) this.phase = "postseason";
+      if (this.currentWeek > NFL_STRUCTURE.regularSeasonWeeks) {
+        this.phase = "postseason";
+        this.initializePostseasonRoundFlow();
+        this.preparePostseasonControlledGate();
+      }
       resolveGmDecisionCommitments(this);
       // Owner confidence drifts from this week's observable results and any
       // commitment resolutions just recorded; the controlled team's receipt is
@@ -5464,13 +5558,36 @@ export class GameSession {
     }
 
     if (this.phase === "postseason") {
-      const playoffResult = runPlayoffsAndSuperBowl({
-        league: this.league,
-        statBook: this.statBook,
-        year: this.currentYear,
-        rng: this.rng,
-        mode: this.mode
-      });
+      const state = this.initializePostseasonRoundFlow();
+      let gate = this.preparePostseasonControlledGate();
+      let controlledGame = null;
+      if (gate && (gate.homeTeamId === this.controlledTeamId || gate.awayTeamId === this.controlledTeamId)) {
+        this.setPostseasonMatchupPlans(gate);
+        consumePendingWeeklyTactic(this);
+        const resolved = simulateNextPostseasonGame({
+          state,
+          league: this.league,
+          statBook: this.statBook,
+          year: this.currentYear,
+          rng: this.rng,
+          mode: this.mode
+        });
+        controlledGame = resolved?.game || null;
+        gate = this.preparePostseasonControlledGate();
+      }
+
+      if (state.status !== "completed") {
+        return {
+          ok: true,
+          phase: this.phase,
+          year: this.currentYear,
+          week: this.currentWeek,
+          games: controlledGame ? [controlledGame] : [],
+          postseasonProgress: this.getPostseasonProgress()
+        };
+      }
+
+      const playoffResult = postseasonResultFromState(state);
 
       const calibration = applySeasonRealismCalibration({
         league: this.league,
@@ -5582,6 +5699,7 @@ export class GameSession {
         stewardshipReport
       };
       this.archiveGameResults(playoffResult.gameArchiveEntries);
+      this.postseasonState = null;
       const capsuleGrade = gradeTimeCapsule({ league: this.league, statBook: this.statBook, year: this.currentYear });
       if (capsuleGrade) {
         this.logNews(
@@ -5598,6 +5716,8 @@ export class GameSession {
         ok: true,
         phase: this.phase,
         year: this.currentYear,
+        week: this.currentWeek,
+        games: controlledGame ? [controlledGame] : [],
         superBowl: playoffResult.superBowl,
         awards: this.lastAwardSummary
       };
@@ -5674,7 +5794,11 @@ export class GameSession {
 
   simulateOneSeason({ runOffseasonAfter = true } = {}) {
     while (this.phase === "regular-season") this.advanceWeek();
-    const post = this.advanceWeek();
+    // Interactive postseason advancement is deliberately one controlled-team
+    // game per command. This method is the explicit whole-season delegation
+    // path, so it must consume every persisted round gate before returning.
+    let post = null;
+    while (this.phase === "postseason") post = this.advanceWeek();
     if (runOffseasonAfter) {
       let guard = 0;
       while ((this.phase === "season-awards" || this.phase === "offseason") && guard < 32) {
@@ -6375,6 +6499,10 @@ export class GameSession {
 
   getDashboardState() {
     const controlledTeam = this.getControlledTeam();
+    // Hall scoring is the dominant multi-year dashboard cost. Score each
+    // retired player once, then share that exact candidate authority between
+    // the history and ballot projections.
+    const hallOfFameCandidates = this.getHallOfFameCandidates();
     const injuryModifierCache = new Map();
     const dashboardInjuryModifiers = (teamId) => {
       if (injuryModifierCache.has(teamId)) return injuryModifierCache.get(teamId);
@@ -6403,6 +6531,10 @@ export class GameSession {
         )
       : null;
 
+    const postseasonProgress = this.getPostseasonProgress();
+    const postseasonSchedule = postseasonProgress?.nextGame
+      ? { week: this.currentWeek, games: [postseasonProgress.nextGame], byeTeams: [] }
+      : null;
     const dashboard = {
       game: GAME_NAME,
       franchiseId: `fa-${this.rngStreams?.baseSeed ?? this.startYear}-${this.controlledTeamId}`,
@@ -6410,6 +6542,7 @@ export class GameSession {
       phase: this.phase,
       currentYear: this.currentYear,
       currentWeek: this.currentWeek,
+      postseasonProgress,
       seasonsSimulated: this.seasonsSimulated,
       controlledTeamId: this.controlledTeamId,
       controlledTeam: controlledTeam
@@ -6458,8 +6591,12 @@ export class GameSession {
       teams: this.league.teams.map(toDashboardTeam),
       champions: this.league.champions.slice(-20),
       awards: this.league.awards.slice(-20),
-      hallOfFame: this.getHallOfFameHistory().slice(0, 120),
-      hallOfFameBallot: this.getHallOfFameBallot({ limit: 12 }),
+      hallOfFame: this.getHallOfFameHistory({ candidates: hallOfFameCandidates }).slice(0, 120),
+      hallOfFameBallot: this.getHallOfFameBallot({
+        limit: 12,
+        refresh: false,
+        candidates: hallOfFameCandidates
+      }),
       seasonAwardsStage: this.phase === "season-awards" ? this.pendingSeasonWrap : null,
       gmStewardshipReports: (this.league.gmStewardshipReports || []).slice(-5).reverse(),
       latestStandings: standingsRows,
@@ -6504,7 +6641,7 @@ export class GameSession {
         rushing: topRows(this.statBook.getPlayerSeasonTable("rushing", { year: this.currentYear }), 15),
         receiving: topRows(this.statBook.getPlayerSeasonTable("receiving", { year: this.currentYear }), 15)
       },
-      currentWeekSchedule: this.getScheduleWeek(this.currentWeek),
+      currentWeekSchedule: postseasonSchedule || this.getScheduleWeek(this.currentWeek),
       nextWeekSchedule: this.getScheduleWeek(this.currentWeek + 1),
       records: this.statBook.getRecords(),
       lastCalibrationReport: this.lastCalibrationReport,
@@ -7184,38 +7321,43 @@ export class GameSession {
    * Both bounds stay league settings, so a player who wants a crowded Hall can
    * have one.
    */
-  refreshHallOfFame() {
+  getHallOfFameCandidates() {
     const settings = this.getLeagueSettings();
-    const inductionScoreMin = Number(settings.hallOfFameInductionScoreMin ?? 450);
     const yearsRetiredMin = Number(settings.hallOfFameYearsRetiredMin ?? 0);
-    const maxClassSize = Math.max(1, Number(settings.hallOfFameMaxClassSize ?? 6));
-
     const candidates = [];
     for (const player of this.league.retiredPlayers) {
       const retiredYear = Number(player.retiredYear || this.currentYear);
       if (this.currentYear - retiredYear < yearsRetiredMin) continue;
-      const scored = this.scoreHallOfFameCandidate(player);
-      if (scored.inductionScore < inductionScoreMin) continue;
-      candidates.push(scored);
+      candidates.push(this.scoreHallOfFameCandidate(player));
     }
+    return candidates;
+  }
+
+  refreshHallOfFame({ candidates = null } = {}) {
+    const settings = this.getLeagueSettings();
+    const inductionScoreMin = Number(settings.hallOfFameInductionScoreMin ?? 450);
+    const yearsRetiredMin = Number(settings.hallOfFameYearsRetiredMin ?? 0);
+    const maxClassSize = Math.max(1, Number(settings.hallOfFameMaxClassSize ?? 6));
+    const eligibleCandidates = (candidates || this.getHallOfFameCandidates())
+      .filter((row) => row.inductionScore >= inductionScoreMin);
 
     // Best resume first; player id breaks ties so a replay is byte-identical.
-    candidates.sort(
+    eligibleCandidates.sort(
       (a, b) =>
         b.inductionScore - a.inductionScore || String(a.player.id).localeCompare(String(b.player.id))
     );
 
     // Walk the ballots in order. Each year admits at most one class from the
     // players who were already eligible that year.
-    const firstBallot = candidates.reduce(
+    const firstBallot = eligibleCandidates.reduce(
       (earliest, row) => Math.min(earliest, row.retiredYear + yearsRetiredMin),
       this.currentYear
     );
     const admitted = [];
-    const pending = new Set(candidates);
+    const pending = new Set(eligibleCandidates);
     for (let ballotYear = firstBallot; ballotYear <= this.currentYear; ballotYear += 1) {
       let seats = maxClassSize;
-      for (const row of candidates) {
+      for (const row of eligibleCandidates) {
         if (seats <= 0) break;
         if (!pending.has(row)) continue;
         if (row.retiredYear + yearsRetiredMin > ballotYear) continue;
@@ -7276,16 +7418,14 @@ export class GameSession {
     };
   }
 
-  getHallOfFameBallot({ limit = 12 } = {}) {
-    this.refreshHallOfFame();
+  getHallOfFameBallot({ limit = 12, refresh = true, candidates = null } = {}) {
+    const scoredCandidates = candidates || this.getHallOfFameCandidates();
+    if (refresh) this.refreshHallOfFame({ candidates: scoredCandidates });
     const settings = this.getLeagueSettings();
     const inductionScoreMin = Number(settings.hallOfFameInductionScoreMin ?? 450);
-    const yearsRetiredMin = Number(settings.hallOfFameYearsRetiredMin ?? 0);
     const inducted = new Set((this.league.hallOfFame || []).map((entry) => entry.playerId));
-    return this.league.retiredPlayers
-      .filter((player) => !inducted.has(player.id))
-      .map((player) => this.scoreHallOfFameCandidate(player))
-      .filter((row) => this.currentYear - row.retiredYear >= yearsRetiredMin)
+    return scoredCandidates
+      .filter((row) => !inducted.has(row.player.id))
       .sort((a, b) => b.inductionScore - a.inductionScore || String(a.player.id).localeCompare(String(b.player.id)))
       .slice(0, normalizeCount(limit, 1, 50, 12))
       .map((row, index) => ({
@@ -7303,8 +7443,8 @@ export class GameSession {
       }));
   }
 
-  getHallOfFameHistory() {
-    this.refreshHallOfFame();
+  getHallOfFameHistory({ refresh = true, candidates = null } = {}) {
+    if (refresh) this.refreshHallOfFame({ candidates: candidates || this.getHallOfFameCandidates() });
     return this.league.hallOfFame.map((entry) => {
       const player = this.league.retiredPlayers.find((row) => row.id === entry.playerId)
         || this.league.players.find((row) => row.id === entry.playerId)
@@ -7345,13 +7485,15 @@ export class GameSession {
         reasonCode: "history-retired-number-av"
       };
     }
-    this.refreshHallOfFame();
-    if (settings.retiredNumberRequireHallOfFame === true && !(this.league.hallOfFame || []).some((entry) => entry.playerId === playerId)) {
-      return {
-        ok: false,
-        error: "This league requires Hall of Fame induction before retiring a jersey number.",
-        reasonCode: "history-retired-number-hof"
-      };
+    if (settings.retiredNumberRequireHallOfFame === true) {
+      this.refreshHallOfFame();
+      if (!(this.league.hallOfFame || []).some((entry) => entry.playerId === playerId)) {
+        return {
+          ok: false,
+          error: "This league requires Hall of Fame induction before retiring a jersey number.",
+          reasonCode: "history-retired-number-hof"
+        };
+      }
     }
     if ((team.retiredNumbers || []).some((entry) => entry.playerId === playerId)) {
       return { ok: false, error: "That player's jersey is already retired for this team." };

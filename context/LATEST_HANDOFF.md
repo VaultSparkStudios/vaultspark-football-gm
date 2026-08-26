@@ -53,3 +53,7 @@ The task board's `## Now` is accurate. In priority order:
 - `check-release-evidence-freshness` is **expired** (observed 2026-08-16, expired 2026-08-17). Pre-existing, tied to the same external blockers, not caused by S94.
 - Two `app.spec.js` failures are **pre-existing** — confirmed by reproducing them on the stashed pre-S94 tree.
 - Registry says SPARKED, local contract says FORGE. Reconcile through the Ark owner; never edit sibling truth directly.
+
+## Session 95 intent
+
+Run the complete autonomous arc, implement every live-code-verified audit item, verify through the project staging gate, then commit and push directly to main and fully deploy the exact verified revision to production.

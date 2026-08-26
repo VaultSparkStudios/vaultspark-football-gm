@@ -52,7 +52,8 @@ test("the facilities market renders a real price, allowance and upkeep for each 
   await openOwnerPanel(page);
 
   const market = page.locator("#facilitiesMarket");
-  await expect(market).toContainText(/Club cash \$/);
+  await expect(market).toContainText(/Football-operations liquidity \$/);
+  await expect(market).toContainText(/years of modeled obligations/);
   await expect(market).toContainText(/facility upkeep \$/);
   await expect(market).toContainText(/operating reserve \$/);
 

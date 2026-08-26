@@ -9,7 +9,7 @@ function decisionSummary(choice) {
   };
 }
 
-function previewReceipt({ status, compositionOrder, decisionChoice, tacticId, phase, review = null }) {
+function previewReceipt({ status, compositionOrder, decisionChoice, tacticId, phase, tacticalPhase = false, review = null }) {
   return {
     schemaVersion: WEEKLY_PLAN_RECEIPT_SCHEMA_VERSION,
     kind: "weekly-plan-preview",
@@ -19,7 +19,7 @@ function previewReceipt({ status, compositionOrder, decisionChoice, tacticId, ph
     plan: {
       gmDecision: decisionSummary(decisionChoice),
       tacticId: tacticId || null,
-      explicitNoPlan: phase === "regular-season" && !tacticId
+      explicitNoPlan: tacticalPhase && !tacticId
     },
     review
   };
@@ -27,6 +27,7 @@ function previewReceipt({ status, compositionOrder, decisionChoice, tacticId, ph
 
 export async function composeWeeklyPlan({
   phase = "unknown",
+  postseasonPlanRequired = false,
   presetDecisionChoice = null,
   collectDecision = async () => ({ status: "none", choice: null }),
   collectTactic = async () => null,
@@ -34,6 +35,7 @@ export async function composeWeeklyPlan({
   onCheckpoint = () => {}
 } = {}) {
   const regularSeason = phase === "regular-season";
+  const tacticalPhase = regularSeason || (phase === "postseason" && postseasonPlanRequired);
   const compositionOrder = [];
   let decisionChoice = presetDecisionChoice || null;
   onCheckpoint("weekly-plan-opened");
@@ -50,7 +52,8 @@ export async function composeWeeklyPlan({
           compositionOrder,
           decisionChoice: null,
           tacticId: null,
-          phase
+          phase,
+          tacticalPhase
         })
       };
     }
@@ -63,7 +66,7 @@ export async function composeWeeklyPlan({
 
   let tacticId = null;
   let review = null;
-  if (regularSeason) {
+  if (tacticalPhase) {
     let revising = false;
     while (true) {
       compositionOrder.push(revising ? "tactic-revision" : "tactic");
@@ -76,7 +79,8 @@ export async function composeWeeklyPlan({
         compositionOrder: [...compositionOrder],
         decisionChoice,
         tacticId,
-        phase
+        phase,
+        tacticalPhase
       }));
       if (reviewReceipt?.mode === "standing-reinforcement") {
         compositionOrder[compositionOrder.length - 1] = "standing-plan-reinforced";
@@ -99,6 +103,7 @@ export async function composeWeeklyPlan({
             decisionChoice,
             tacticId,
             phase,
+            tacticalPhase,
             review: reviewReceipt?.evidence || null
           })
         };
@@ -121,6 +126,7 @@ export async function composeWeeklyPlan({
       decisionChoice,
       tacticId,
       phase,
+      tacticalPhase,
       review
     })
   };

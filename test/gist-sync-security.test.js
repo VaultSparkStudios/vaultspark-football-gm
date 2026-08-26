@@ -94,7 +94,7 @@ test("remote integrity sidecars are fetched and corrupt cloud saves are rejected
     return new Response("", { status: 404 });
   };
   const gist = await freshModule("remote-integrity");
-  await assert.rejects(() => gist.importFromGist("remote", "token"), /failed integrity verification/);
+  await assert.rejects(() => gist.importFromGist("remote", "token"), /failed its corruption check/);
 });
 
 // ── S62: remote-import integrity fails closed, in parity with the canonical store ──
@@ -123,7 +123,7 @@ function gistFetchFor(save, sidecar) {
 
 const PARITY_SAVE = JSON.stringify({ league: { year: 2051 } });
 
-test("gist import verdicts are in exact parity with the canonical fail-closed store", async () => {
+test("legacy Gist checksum verdicts stay in parity with the canonical fail-closed store", async () => {
   globalThis.localStorage = storage();
   globalThis.sessionStorage = storage();
 
@@ -140,7 +140,7 @@ test("gist import verdicts are in exact parity with the canonical fail-closed st
   // gistSync verdicts, exercised through the real import gate.
   globalThis.fetch = gistFetchFor(PARITY_SAVE, JSON.stringify(validStamp));
   const verified = await (await freshModule("parity-valid")).importFromGist("parity", "");
-  assert.equal(verified.integrity, "verified");
+  assert.equal(verified.integrity, "corruption-checked");
 
   globalThis.fetch = gistFetchFor(PARITY_SAVE, undefined);
   const legacy = await (await freshModule("parity-legacy")).importFromGist("parity", "");
@@ -149,20 +149,110 @@ test("gist import verdicts are in exact parity with the canonical fail-closed st
   globalThis.fetch = gistFetchFor(PARITY_SAVE, JSON.stringify(forgedAlgo));
   await assert.rejects(
     () => freshModule("parity-forged").then((m) => m.importFromGist("parity", "")),
-    /failed integrity verification/,
+    /unsupported or malformed verification metadata/,
     "forged algo must reject, not bypass"
   );
 
   globalThis.fetch = gistFetchFor(PARITY_SAVE, JSON.stringify(corrupt));
   await assert.rejects(
     () => freshModule("parity-corrupt").then((m) => m.importFromGist("parity", "")),
-    /failed integrity verification/
+    /failed its corruption check/
   );
 
   globalThis.fetch = gistFetchFor(PARITY_SAVE, "{not json");
   await assert.rejects(
     () => freshModule("parity-unreadable").then((m) => m.importFromGist("parity", "")),
-    /failed integrity verification/,
+    /present but unreadable/,
     "a present-but-unreadable sidecar is corruption evidence, never absence"
+  );
+});
+
+test("versioned passphrase metadata authenticates content without storing the passphrase", async () => {
+  globalThis.localStorage = storage();
+  globalThis.sessionStorage = storage();
+  const passphrase = "correct horse battery staple";
+  let exportedBody = null;
+  globalThis.fetch = async (url, init = {}) => {
+    assert.equal(String(url), "https://api.github.com/gists");
+    assert.equal(init.method, "POST");
+    exportedBody = JSON.parse(init.body);
+    return new Response(JSON.stringify({ id: "authenticated", html_url: "https://gist.example/authenticated" }), {
+      status: 201,
+      headers: { "content-type": "application/json" }
+    });
+  };
+
+  const gist = await freshModule("authenticated-export");
+  const exported = await gist.exportToGist({ league: { year: 2060 } }, "github-token", undefined, { passphrase });
+  assert.equal(exported.protection, "authenticated");
+  const save = exportedBody.files["vsfgm-save.json"].content;
+  const metadata = JSON.parse(exportedBody.files["vsfgm-save.integrity.json"].content);
+  assert.equal(metadata.schemaVersion, 2);
+  assert.equal(metadata.corruptionDetection.algo, "fnv1a32");
+  assert.equal(metadata.authentication.scheme, "pbkdf2-hmac-sha256");
+  assert.equal(metadata.authentication.kdf.hash, "SHA-256");
+  assert.ok(metadata.authentication.kdf.iterations >= 100_000);
+  assert.equal(JSON.stringify(exportedBody).includes(passphrase), false, "passphrase must never enter the Gist payload");
+  assert.equal(JSON.stringify(exportedBody).includes("github-token"), false, "token must never enter the Gist payload");
+
+  const responseFor = (content, sidecar) => async () => new Response(JSON.stringify({
+    description: "authenticated save",
+    files: {
+      "vsfgm-save.json": { content },
+      "vsfgm-save.integrity.json": { content: JSON.stringify(sidecar) }
+    }
+  }), { status: 200, headers: { "content-type": "application/json" } });
+
+  globalThis.fetch = responseFor(save, metadata);
+  const imported = await gist.importFromGist("authenticated", "", { passphrase });
+  assert.equal(imported.integrity, "authenticated");
+  assert.equal(imported.snapshot.league.year, 2060);
+
+  globalThis.fetch = responseFor(save, metadata);
+  await assert.rejects(
+    () => gist.importFromGist("authenticated", "", { passphrase: "this is the wrong passphrase" }),
+    /authentication failed/
+  );
+
+  const tamperedSave = JSON.stringify({ league: { year: 1900 } });
+  const tamperedMetadata = {
+    ...metadata,
+    corruptionDetection: buildIntegrityStamp(tamperedSave)
+  };
+  globalThis.fetch = responseFor(tamperedSave, tamperedMetadata);
+  await assert.rejects(
+    () => gist.importFromGist("authenticated", "", { passphrase }),
+    /authentication failed/,
+    "recomputing the public checksum cannot forge the passphrase HMAC"
+  );
+});
+
+test("versioned checksum-only exports remain explicit non-authenticated imports", async () => {
+  globalThis.localStorage = storage();
+  globalThis.sessionStorage = storage();
+  let exportedBody = null;
+  globalThis.fetch = async (_url, init = {}) => {
+    exportedBody = JSON.parse(init.body);
+    return new Response(JSON.stringify({ id: "checksum", html_url: "https://gist.example/checksum" }), {
+      status: 201,
+      headers: { "content-type": "application/json" }
+    });
+  };
+  const gist = await freshModule("checksum-export");
+  const exported = await gist.exportToGist({ league: { year: 2061 } }, "token");
+  assert.equal(exported.protection, "corruption-checked");
+  const metadata = JSON.parse(exportedBody.files["vsfgm-save.integrity.json"].content);
+  assert.equal(metadata.schemaVersion, 2);
+  assert.equal(metadata.authentication, null);
+
+  globalThis.fetch = async () => new Response(JSON.stringify({ files: exportedBody.files }), {
+    status: 200,
+    headers: { "content-type": "application/json" }
+  });
+  const imported = await gist.importFromGist("checksum", "");
+  assert.equal(imported.integrity, "corruption-checked");
+  await assert.rejects(
+    () => gist.importFromGist("checksum", "", { passphrase: "a passphrase that was not used" }),
+    /not exported with passphrase authentication/
   );
 });

@@ -391,6 +391,7 @@ async function collectWeeklyCommandIntent({ gmDecisionChoice = null } = {}) {
   const standingTactic = standingTacticFromDashboard(state.dashboard || {});
   return composeWeeklyPlan({
     phase: state.dashboard?.phase || "unknown",
+    postseasonPlanRequired: state.dashboard?.postseasonProgress?.controlledStatus === "active",
     presetDecisionChoice: gmDecisionChoice || state.mobilePendingDecisionChoice || null,
     collectDecision: checkAndShowGmDecision,
     collectTactic: () => new Promise((resolve) => showHalftimeAdjustModal(resolve, {
@@ -1798,9 +1799,20 @@ function bindEvents() {
       const token = getSavedToken();
       if (!token) { setStatus("Set your GitHub token first."); return; }
       const snap = await api("/api/snapshot/export");
-      const { gistId, url } = await (await loadUiIsland("exports")).gist.exportToGist(snap, token);
+      const passphraseInput = document.getElementById("gistPassphraseInput");
+      const passphrase = passphraseInput?.value || "";
+      const { gistId, url, protection } = await (await loadUiIsland("exports")).gist.exportToGist(
+        snap,
+        token,
+        undefined,
+        { passphrase }
+      );
+      if (passphraseInput) passphraseInput.value = "";
       setStatus(`Saved to Gist: ${gistId}`);
-      callAppIsland("settings", "renderGistSyncStatus", `✅ Exported — <a href="${url}" target="_blank" rel="noopener">Open Gist</a>`);
+      const protectionLabel = protection === "authenticated"
+        ? "passphrase-authenticated"
+        : "corruption checksum added (not authenticated)";
+      callAppIsland("settings", "renderGistSyncStatus", `✅ Exported (${protectionLabel}) — <a href="${url}" target="_blank" rel="noopener">Open Gist</a>`);
       callAppIsland("settings", "renderGistList");
     }, "Uploading to Gist…")
   );
@@ -1809,16 +1821,26 @@ function bindEvents() {
       const token = getSavedToken();
       const gistId = document.getElementById("gistIdInput")?.value?.trim() || getSavedGistId();
       if (!gistId) { setStatus("Enter a Gist ID to import."); return; }
-      const { snapshot, integrity } = await (await loadUiIsland("exports")).gist.importFromGist(gistId, token);
+      const passphraseInput = document.getElementById("gistPassphraseInput");
+      const passphrase = passphraseInput?.value || "";
+      const { snapshot, integrity } = await (await loadUiIsland("exports")).gist.importFromGist(
+        gistId,
+        token,
+        { passphrase }
+      );
+      if (passphraseInput) passphraseInput.value = "";
       await api("/api/snapshot/inspect", { method: "POST", body: { snapshot } });
       await api("/api/snapshot/import", { method: "POST", body: { snapshot } });
       await loadState();
       if (integrity === "legacy-unverified") {
         setStatus("Imported legacy Gist save (no integrity sidecar — unverified).");
         callAppIsland("settings", "renderGistSyncStatus", "⚠️ Imported an unverified legacy save — no integrity sidecar was present. Re-export to add one.");
+      } else if (integrity === "authenticated") {
+        setStatus("Imported from Gist.");
+        callAppIsland("settings", "renderGistSyncStatus", "✅ Imported successfully (passphrase authentication verified).");
       } else {
         setStatus("Imported from Gist.");
-        callAppIsland("settings", "renderGistSyncStatus", "✅ Imported successfully (integrity verified).");
+        callAppIsland("settings", "renderGistSyncStatus", "✅ Imported after corruption check (checksum is not authentication).");
       }
     }, "Importing from Gist…")
   );

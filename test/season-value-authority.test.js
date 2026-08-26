@@ -287,6 +287,23 @@ test("Rookie of the Year is decided among actual rookies, and the Hall stays sca
   for (let index = 1; index < ballot.length; index += 1) {
     assert.ok(ballot[index - 1].inductionScore >= ballot[index].inductionScore, "ballot resumes must rank strongest first");
   }
+
+  const yearsRetiredMin = Number(settings.hallOfFameYearsRetiredMin ?? 0);
+  const eligibleRetirees = session.league.retiredPlayers.filter(
+    (player) => session.currentYear - Number(player.retiredYear || session.currentYear) >= yearsRetiredMin
+  ).length;
+  const scoreCandidate = session.scoreHallOfFameCandidate.bind(session);
+  let dashboardScores = 0;
+  session.scoreHallOfFameCandidate = (player) => {
+    dashboardScores += 1;
+    return scoreCandidate(player);
+  };
+  session.getDashboardState();
+  assert.equal(
+    dashboardScores,
+    eligibleRetirees,
+    "one dashboard response scores each eligible Hall candidate exactly once"
+  );
 });
 
 test("the Hall reads as dated classes, and pre-class saves keep their place", () => {

@@ -1,6 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { createSession } from "../src/runtime/bootstrap.js";
+import {
+  createPostseasonState,
+  postseasonResultFromState,
+  runPlayoffsAndSuperBowl,
+  simulateNextPostseasonGame,
+  sortStandings
+} from "../src/engine/seasonSimulator.js";
+import { executeAdvanceWeekCommand } from "../src/runtime/advanceWeekCommand.js";
 
 test("release then sign free agent obeys roster constraints", () => {
   const session = createSession({ seed: 100, startYear: 2026, controlledTeamId: "BUF" });
@@ -165,4 +173,77 @@ test("season awards phase sits between postseason and offseason", () => {
 
   session.advanceWeek();
   assert.equal(session.phase, "offseason");
+});
+
+test("incremental postseason preserves the batch simulator's deterministic bracket", () => {
+  const batchSession = createSession({ seed: 951, startYear: 2026, controlledTeamId: "BUF" });
+  const roundSession = createSession({ seed: 951, startYear: 2026, controlledTeamId: "BUF" });
+  const batch = runPlayoffsAndSuperBowl({
+    league: batchSession.league,
+    statBook: batchSession.statBook,
+    year: 2026,
+    rng: batchSession.rng,
+    mode: batchSession.mode
+  });
+  const state = createPostseasonState({ league: roundSession.league, year: 2026 });
+  while (state.status === "active") {
+    simulateNextPostseasonGame({
+      state,
+      league: roundSession.league,
+      statBook: roundSession.statBook,
+      year: 2026,
+      rng: roundSession.rng,
+      mode: roundSession.mode
+    });
+  }
+  const incremental = postseasonResultFromState(state);
+  assert.deepEqual(incremental.bracket, batch.bracket);
+  assert.deepEqual(incremental.superBowl, batch.superBowl);
+  assert.equal(incremental.gameArchiveEntries.length, 13);
+});
+
+test("a controlled playoff run persists its exact gate and resolves one planned game per command", () => {
+  const session = createSession({ seed: 141, startYear: 2026, controlledTeamId: "BUF" });
+  while (session.phase === "regular-season" && session.currentWeek < 18) session.advanceWeek();
+  const leader = sortStandings(session.league.teams.filter((team) => team.conference === "AFC"))[0];
+  session.controlledTeamId = leader.id;
+  session.advanceWeek();
+
+  const before = session.getDashboardState();
+  assert.equal(before.phase, "postseason");
+  assert.equal(before.postseasonProgress.controlledStatus, "active");
+  assert.ok(before.currentWeekSchedule.games.some((game) => game.homeTeamId === leader.id || game.awayTeamId === leader.id));
+
+  const snapshot = JSON.parse(JSON.stringify(session.toSnapshot()));
+  const restored = session.constructor.fromSnapshot(snapshot, (seed) => new session.rng.constructor(seed));
+  assert.deepEqual(restored.getPostseasonProgress().nextGame, before.postseasonProgress.nextGame);
+
+  const visitedRounds = [];
+  while (restored.phase === "postseason") {
+    const gate = restored.getPostseasonProgress();
+    if (gate?.controlledStatus !== "active") {
+      restored.advanceWeek();
+      continue;
+    }
+    visitedRounds.push(gate.round);
+    const outcome = executeAdvanceWeekCommand(restored, { weeklyTacticOverride: "run-heavy" });
+    assert.equal(outcome.ok, true);
+    assert.equal(outcome.results.length, 1);
+    assert.equal(outcome.results[0].games.filter((game) => game.homeTeamId === leader.id || game.awayTeamId === leader.id).length, 1);
+    assert.equal(outcome.tacticalReceipt?.tactic, "run-heavy");
+  }
+
+  assert.equal(restored.phase, "season-awards");
+  assert.ok(visitedRounds.length >= 1 && visitedRounds.length <= 4);
+  assert.equal(new Set(visitedRounds).size, visitedRounds.length, "each playoff round is one inspect-plan-commit gate");
+  assert.ok(restored.latestPostseason?.superBowl?.championTeamId);
+});
+
+test("whole-season delegation consumes every incremental postseason gate", () => {
+  const session = createSession({ seed: 9510, startYear: 2026, controlledTeamId: "BUF" });
+  const summary = session.simulateOneSeason({ runOffseasonAfter: false });
+  assert.equal(session.phase, "season-awards");
+  assert.ok(summary.superBowl?.championTeamId);
+  assert.equal(session.postseasonState, null);
+  assert.equal(session.latestPostseason?.gameArchiveEntries?.length, 13);
 });

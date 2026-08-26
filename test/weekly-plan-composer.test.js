@@ -128,3 +128,29 @@ test("stable standing plans emit an honest reinforcement step instead of a fabri
   assert.equal(preview.receipt.review.reviewed, false);
   assert.match(describeWeeklyPlanReceipt(preview.receipt).detail, /reinforced from film-2030-7-BUF-run-heavy/);
 });
+
+test("an active controlled-team postseason gate uses the same inspect-plan-commit contract", async () => {
+  let decisionCalls = 0;
+  const preview = await composeWeeklyPlan({
+    phase: "postseason",
+    postseasonPlanRequired: true,
+    collectDecision: async () => { decisionCalls += 1; return { status: "none" }; },
+    collectTactic: async () => "blitz-heavy",
+    reviewPlan: async () => ({ status: "commit", evidence: { reviewed: true } })
+  });
+  assert.equal(decisionCalls, 0, "regular-season GM decisions do not leak into the playoff gate");
+  assert.equal(preview.body.weeklyTacticOverride, "blitz-heavy");
+  assert.deepEqual(preview.receipt.compositionOrder, ["tactic", "review"]);
+});
+
+test("eliminated and non-qualified postseason states advance without inventing a tactic", async () => {
+  let tacticCalls = 0;
+  const preview = await composeWeeklyPlan({
+    phase: "postseason",
+    postseasonPlanRequired: false,
+    collectTactic: async () => { tacticCalls += 1; return "run-heavy"; }
+  });
+  assert.equal(tacticCalls, 0);
+  assert.deepEqual(preview.body, { count: 1 });
+  assert.equal(preview.receipt.plan.explicitNoPlan, false);
+});

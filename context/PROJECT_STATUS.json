@@ -9,7 +9,7 @@
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-08-24",
+  "lastUpdated": "2026-08-26",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -108,14 +108,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 781,
+  "silHealth": 751,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
     "score": 83,
-    "date": "2026-08-24",
+    "date": "2026-08-26",
     "passing": 10,
     "warning": 2,
     "checks": [
@@ -129,7 +129,7 @@
         "id": "release-authority-git-head-covered-by-publication",
         "status": "warning",
         "blocking": false,
-        "detail": "HEAD ab600a6117e1f2ccee1243334e5c6c26cbe628b9 is not covered by live production fe39e5fc3a30d9841eade107264d087d792596f5"
+        "detail": "HEAD bb77f8441a5995bb0c8b69762d160cb7ec1e0d32 is not covered by live production fe39e5fc3a30d9841eade107264d087d792596f5"
       }
     ]
   },

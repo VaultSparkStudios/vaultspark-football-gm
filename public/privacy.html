@@ -33,7 +33,7 @@
         </div>
         <div class="panel">
           <h2>Optional Cloud Save Credentials</h2>
-          <p>If a player chooses GitHub Gist sync, the user-supplied GitHub token is kept in memory and tab-scoped session storage only. Franchise Architect removes legacy persistent token copies, never includes the token in save exports, and sends it only to the GitHub application programming interface for the requested sync action.</p>
+          <p>If a player chooses GitHub Gist sync, the user-supplied GitHub token is kept in memory and tab-scoped session storage only. Franchise Architect removes legacy persistent token copies, never includes the token in save exports, and sends it only to the GitHub application programming interface for the requested sync action. An optional save passphrase is used locally by Web Crypto to derive an authentication key; the passphrase is never stored or transmitted. Authentication detects unauthorized modifications but does not encrypt the save content stored by GitHub.</p>
         </div>
         <div class="panel">
           <h2>Contact</h2>

@@ -1,18 +1,21 @@
-# Implementation Plan — Session 87
+# Implementation Plan — Session 95
 
-Source: `docs/AUDIT_2026-08-16_SESSION87.json` (sole audit truth).
+Source: `docs/AUDIT_2026-08-25_SESSION95.json` (sole audit truth).
 
 ## Efficiency order
 
-1. `long-stat-max-semantics` + `fan-sentiment-reads-live-record` — repair the two small shared engine authorities first and pin them with direct behavior tests.
-2. `reachable-pressure-narratives` — adapt live culture/owner fields at the narrative boundary and prove the real event-to-decision/commitment path without creating duplicate authority.
-3. `binding-franchise-economy` — add one versioned market-salary authority, route opening rosters and open-market bids through it, and calibrate fixed-seed fresh leagues so the cap is meaningful but legal.
-4. `waiver-player-identity` + `mount-authored-legacy-surfaces` — project player identity at the dashboard boundary, add the two missing semantic mounts, and bind all browser contracts with focused coverage.
-5. Candidate proof — run focused tests, the canonical shard suite, browser tests, build/smoke, and CANON-053 desktop/mobile × dark/light capture/inspection for every touched surface.
-6. Release proof — commit the immutable candidate, require exact-SHA CI, stage and verify it, deploy the backend with server mutation enabled, promote Pages explicitly, and prove static/backend production parity before receipt-only closeout.
+1. `release-train-can-publish-a-browser-red-candidate` — repair the stale browser contract, then make that suite a publication prerequisite.
+2. `deep-realism-workflow-times-out-at-the-evidence-boundary` — preserve long-run evidence before simulation calibration changes its outputs.
+3. `next-action-routing-drifted-from-live-surfaces` — establish one navigation authority before adding postseason destinations.
+4. `postseason-collapses-the-weekly-decision-loop` — restore an inspect-plan-commit-resolve beat between every playoff round.
+5. `facility-capital-policy-is-neither-differentiated-nor-stationary` — recalibrate operating liquidity, owner distributions, investment appetite, and long-horizon gates.
+6. `gist-checksum-claims-forgery-detection-without-authentication` — correct the public security promise and add optional authenticated cloud saves.
+7. `release-proof-is-bound-to-an-orphaned-history` — last by design: bind desktop/mobile/theme pixels, staging, release gates, and production to the final immutable candidate.
 
-L2 is the default rung. No existing signed contract is repriced; no dependency, variable-cost runtime, local auth, sibling-tree write, or public-launch claim is introduced. Public launch remains HOLD independently from the founder-authorized technical deployment.
+L2 is the default rung. Work is grouped across independent release, gameplay, and simulation surfaces; every item needs focused behavior proof plus the game overlay’s browser-visible/static-host-safe success bars. Technical deployment is authorized. Public launch and a SPARKED lifecycle transition remain HOLD.
 
 ## Execution status
 
-All six audit items are shipped. Canonical Node tests passed 1,136/1,136, Playwright passed 41/41, Pages build/smoke/module/boot checks passed, and the CANON-053 receipt binds 84 curated captures from a 233-capture desktop/tablet/mobile × dark/light matrix. Technical staging/backend/Pages promotion remains the next gate; public launch remains HOLD.
+Six of seven items are shipped with focused behavior proof and a green canonical receipt (1,280/1,280). Release integrity, incremental postseason, shared navigation, owner-capital calibration, honest authenticated Gist saves, and partial realism evidence are complete. The final release-proof item remains in verification until rendered desktop/mobile/theme pixels, stable staging provenance, and production all identify the exact immutable candidate.
+
+Second-order regression work is also complete: whole-season delegation now consumes every incremental postseason gate, and Hall of Fame dashboard construction shares one candidate-scoring pass instead of rescoring roughly 1,074 retired candidates. The measured two-season dashboard probe improved from about 16.8 seconds to 7.1 seconds, and its browser flow now passes.

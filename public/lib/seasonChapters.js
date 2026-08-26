@@ -1,4 +1,5 @@
 import { buildTacticalIdentityLedger } from "./tacticalFilmRoom.js";
+import { gameplaySurface, offseasonStageSurface } from "./gameplayNavigation.js";
 
 export const SEASON_CHAPTER_SCHEMA_VERSION = "1.1";
 export const SEASON_THESIS_SCHEMA_VERSION = "1.1";
@@ -263,8 +264,7 @@ export function buildSeasonChapter(dashboard = {}) {
       nextCall: activePromise
         ? `Resolve ${text(activePromise.label, "the active promise")} by Week ${activePromise.deadlineWeek ?? "?"}.`
         : "Review the deadline room and commit one roster direction.",
-      targetTab: "transactionsTab",
-      targetId: "tradeDeadlineFrenzy",
+      ...gameplaySurface("trades"),
       tone: "warning",
       evidence: [...evidence, `promise:${activePromise?.id || "none"}`]
     }), thesis, "deadline-pressure");
@@ -293,6 +293,7 @@ export function buildSeasonChapter(dashboard = {}) {
     title: "The season promise is under elimination pressure",
     detail: "The bracket and controlled-team game receipt are now the authority; regular-season projections no longer apply.",
     nextCall: "Review the matchup, declare the plan, and advance the next playoff gate.",
+    ...gameplaySurface("postseason"),
     tone: "danger",
     evidence
   }), thesis, "postseason");
@@ -328,8 +329,7 @@ export function buildSeasonChapter(dashboard = {}) {
           premium > 0
             ? "Open Free Agency, submit offers, then advance to resolve the wave."
             : "The premium board is clear — advance to close the window.",
-        targetTab: "faTab",
-        targetId: "faTable",
+        ...gameplaySurface("freeAgency"),
         tone: "warning",
         evidence: [
           ...evidence,
@@ -351,22 +351,21 @@ export function buildSeasonChapter(dashboard = {}) {
         detail:
           "The league's depth backstop fills rival rosters but never yours — those are your decisions. Sign, claim, or draft to reach a legal roster.",
         nextCall: "Fill the named holes from free agency, waivers, or the draft before camp breaks.",
-        targetTab: "faTab",
-        targetId: "faTable",
+        ...gameplaySurface("freeAgency"),
         tone: "warning",
         evidence: [...evidence, `shortfall:${shortfall.positions.length}`]
       });
     }
 
     const stage = text(dashboard.offseasonPipeline?.stage, "offseason reset");
+    const stageSurface = offseasonStageSurface(stage);
     return chapter({
       id: "offseason-blueprint",
       label: "Offseason Blueprint",
       title: `Build through ${stage.replace(/-/g, " ")}`,
       detail: "Roster, cap, staff, and draft authorities move only through their named offseason stage.",
       nextCall: text(dashboard.offseasonPipeline?.nextAction, `Complete ${stage.replace(/-/g, " ")} and inspect its receipt.`),
-      targetTab: "contractsTab",
-      targetId: "contractsSpotlight",
+      ...stageSurface,
       tone: "info",
       evidence: [...evidence, `stage:${stage}`]
     });

@@ -1,0 +1,193 @@
+{
+  "schemaVersion": "1.0",
+  "date": "2026-08-25",
+  "session": 95,
+  "agent": "codex",
+  "project": "franchise-architect",
+  "displayName": "Franchise Architect: Football",
+  "status": "implementation-in-progress",
+  "summary": {
+    "combinedPriority": 62.1,
+    "source": "Live code, CI/deploy evidence, hosted identities, seeded simulations, and game-loop review.",
+    "axesCovered": 9,
+    "itemsRanked": 7,
+    "phantomsRejected": 5,
+    "verificationNote": "Every premise was reproduced."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product, game-loop, realism, and release gates",
+    "staging": "Exact immutable candidate on staging before production.",
+    "source": "S95 evidence"
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "Release integrity",
+      "effortHours": 3,
+      "impact": 10,
+      "innovation": 6,
+      "priority": 10,
+      "slug": "release-train-can-publish-a-browser-red-candidate",
+      "title": "Pages can publish a browser-red SHA",
+      "status": "shipped",
+      "executionEvidence": "deploy-pages now runs the full Playwright browser suite before artifact upload; the profile assertion reads PLAYER_DEVELOPMENT_PROFILE.version; focused workflow/security checks, 54/54 browser tests, and the 1,280/1,280 canonical receipt pass.",
+      "premise": "CI 32680529030 failed a stale ratings-profile assertion while deploy 32680529029 published bb77f84 because deploy-pages omits browser tests.",
+      "fix": "Use the exported profile and gate deploy on browser smoke with a workflow-contract test.",
+      "ladder": {
+        "L2": {
+          "recipe": "Fix assertion and make browser CI a deploy prerequisite."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "CRITICAL",
+      "category": "Game loop",
+      "effortHours": 12,
+      "impact": 10,
+      "innovation": 9,
+      "priority": 9.7,
+      "slug": "postseason-collapses-the-weekly-decision-loop",
+      "title": "One click resolves the entire postseason",
+      "status": "shipped",
+      "executionEvidence": "Postseason state persists by round, resolves one controlled-team game per command, preserves exact plans across save/resume, and batch delegation loops through every gate; focused postseason tests and the canonical matrix pass.",
+      "premise": "The weekly plan ends after the regular season; GameSession resolves all playoffs and the Super Bowl in one transaction.",
+      "fix": "Persist and resolve one playoff round at a time with a visible decision beat.",
+      "ladder": {
+        "L2": {
+          "recipe": "Implement round-by-round postseason state and tests."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "UI/UX routing",
+      "effortHours": 5,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 9.1,
+      "slug": "next-action-routing-drifted-from-live-surfaces",
+      "title": "Next actions target retired Settings surfaces",
+      "status": "shipped",
+      "executionEvidence": "public/lib/gameplayNavigation.js is the shared phase-to-surface authority consumed by decision, consequence, chapter, and weekly-plan routes; exact-target focused tests and browser routing pass.",
+      "premise": "Staff and facilities moved to Boardroom but gmDecisionAuthority and season chapters retain generic or Settings destinations.",
+      "fix": "Share one tested stage-to-surface map across all routers.",
+      "ladder": {
+        "L2": {
+          "recipe": "Centralize exact destinations and prove every target exists."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Simulation realism",
+      "effortHours": 14,
+      "impact": 10,
+      "innovation": 10,
+      "priority": 9,
+      "slug": "facility-capital-policy-is-neither-differentiated-nor-stationary",
+      "title": "Owners all invest while cash compounds without a sink",
+      "status": "shipped",
+      "executionEvidence": "Owner capital now models football-operations liquidity, obligations, runway, trait-weighted appetite, bounded distributions, and factor receipts. Year-zero willingness calibrates to 19/32 and year-40 cash p90/max to $152.0M/$201.2M with no club at the facility ceiling; deterministic 1/8/15/40-year gates pass.",
+      "premise": "Five seeds put all 32 owners above the year-zero threshold; max cash grows $190M to $1.655B and facility mean 72.51 to 89.80 by year 40.",
+      "fix": "Model liquidity runway, owner distributions, calibrated appetite, and factor receipts; gate long horizons.",
+      "ladder": {
+        "L2": {
+          "recipe": "Recalibrate capital policy, add a sink, receipts, and distribution gates."
+        }
+      }
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Release evidence",
+      "effortHours": 8,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 8.8,
+      "slug": "release-proof-is-bound-to-an-orphaned-history",
+      "title": "Release proof does not identify the final candidate",
+      "status": "verification-in-progress",
+      "executionEvidence": "Source and browser suites are green. Final immutable desktop/mobile/theme visual receipt, stable staging provenance, and exact production identity are pending in the active release wave.",
+      "premise": "Visual QA names orphaned 8eac388, hosted origins name S93 fe39e5f, and mobile-parity proof is absent.",
+      "fix": "Capture final desktop/mobile/themes, prove exact staging, rerun gates, then promote the same identity.",
+      "ladder": {
+        "L2": {
+          "recipe": "Bind visual, mobile, staging, and production proof to one SHA."
+        }
+      }
+    },
+    {
+      "rank": 6,
+      "tier": "MEDIUM",
+      "category": "Security truth",
+      "effortHours": 4,
+      "impact": 7,
+      "innovation": 6,
+      "priority": 8,
+      "slug": "gist-checksum-claims-forgery-detection-without-authentication",
+      "title": "Unkeyed checksum is called forgery detection",
+      "status": "shipped",
+      "executionEvidence": "Public copy now distinguishes accidental-corruption checks from authorship authentication; optional PBKDF2-derived HMAC verification is versioned, legacy-compatible, and covered by focused security tests plus the canonical matrix.",
+      "premise": "FNV-1a stored beside an editable save detects corruption but cannot authenticate authorship.",
+      "fix": "Correct the claim and add optional passphrase-derived Web Crypto authentication.",
+      "ladder": {
+        "L2": {
+          "recipe": "Honest copy plus versioned optional HMAC and legacy support."
+        }
+      }
+    },
+    {
+      "rank": 7,
+      "tier": "MEDIUM",
+      "category": "CI evidence",
+      "effortHours": 3,
+      "impact": 7,
+      "innovation": 6,
+      "priority": 7.5,
+      "slug": "deep-realism-workflow-times-out-at-the-evidence-boundary",
+      "title": "Deep realism times out without partial artifacts",
+      "status": "shipped",
+      "executionEvidence": "The scheduled realism job now has aligned 125/90-minute budgets, writes incremental progress, and uploads progress/report/JSON artifacts under always(); workflow contract tests and the canonical matrix pass.",
+      "premise": "Run 32697416345 hit its 60-minute step limit despite a 90-minute job, losing completed evidence.",
+      "fix": "Align budgets, persist progress, upload always, and test the workflow contract.",
+      "ladder": {
+        "L2": {
+          "recipe": "Preserve partial evidence and align timeout contracts."
+        }
+      }
+    }
+  ],
+  "phantomsRejected": [
+    {
+      "slug": "rival-ai-frozen",
+      "verdict": "REFUTED",
+      "evidence": "Recurring AI investment and degradation exist."
+    },
+    {
+      "slug": "facility-writes-free",
+      "verdict": "REFUTED",
+      "evidence": "Upgrades already debit cash."
+    },
+    {
+      "slug": "paid-llm-required",
+      "verdict": "REFUTED",
+      "evidence": "Deterministic factors suffice."
+    },
+    {
+      "slug": "local-receipts-prove-retention",
+      "verdict": "REFUTED",
+      "evidence": "No real longitudinal cohort exists."
+    },
+    {
+      "slug": "deploy-equals-launch",
+      "verdict": "REFUTED",
+      "evidence": "Deployment authorization is not a lifecycle flip."
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 # Deploy gating trade-off: GitHub Actions cannot combine `workflow_run` (depend on
 # ci.yml) with per-workflow path filters, so the "gate" job below is a fast test
 # prerequisite inside this workflow to keep path-filter triggers; full CI still runs
-# in parallel in ci.yml. The gate runs the studio shard (protocol-truth) so a push
-# that breaks tests cannot publish Pages artifacts.
+# in parallel in ci.yml. The gate runs protocol truth, and the candidate build
+# runs the real browser suite before any Pages artifact or Cloudflare publish.
 name: Deploy Pages
 
 on:
@@ -60,7 +60,7 @@ jobs:
   build:
     needs: gate
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 45
     env:
       # S70: pre-rebrand values shipped legacy vaultspark-football-gm canonicals
       # on playfranchisearchitect.com for every deploy since S25. Root mount +
@@ -119,6 +119,10 @@ jobs:
       - name: Smoke static Pages client
         timeout-minutes: 5
         run: npm run smoke:pages
+
+      - name: Run browser release gate
+        timeout-minutes: 15
+        run: npm run test:ui
 
       - name: Capture responsive artifact evidence
         timeout-minutes: 8

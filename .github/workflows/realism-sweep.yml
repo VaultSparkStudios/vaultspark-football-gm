@@ -10,7 +10,9 @@ on:
 jobs:
   deep-realism:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    # 20m long smoke + 90m sweep + setup/upload headroom. The job budget must be
+    # larger than its bounded child steps or the outer timer can erase evidence.
+    timeout-minutes: 125
 
     steps:
       - name: Checkout
@@ -30,16 +32,27 @@ jobs:
         run: npm run test:long
 
       - name: Deep realism verification (24-season sample)
-        timeout-minutes: 60
+        timeout-minutes: 90
         shell: bash
         run: |
           set -o pipefail
-          node src/data/scripts/verifyRealism.js --seasons 24 | tee realism-sweep-report.txt
+          mkdir -p output
+          printf 'started_at=%s\nseasons=24\nstatus=running\n' "$(date -u +%FT%TZ)" > realism-sweep-progress.txt
+          if node src/data/scripts/verifyRealism.js --seasons 24 2>&1 | tee realism-sweep-report.txt; then
+            printf 'finished_at=%s\nstatus=completed\n' "$(date -u +%FT%TZ)" >> realism-sweep-progress.txt
+          else
+            status=$?
+            printf 'finished_at=%s\nstatus=failed\nexit_code=%s\n' "$(date -u +%FT%TZ)" "$status" >> realism-sweep-progress.txt
+            exit "$status"
+          fi
 
-      - name: Upload sweep report
+      - name: Upload sweep report and partial progress
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: realism-sweep-report
-          path: realism-sweep-report.txt
-          if-no-files-found: ignore
+          path: |
+            realism-sweep-report.txt
+            realism-sweep-progress.txt
+            output/realism-verification.json
+          if-no-files-found: warn

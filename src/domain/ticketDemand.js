@@ -23,9 +23,9 @@
  * to within simulation noise — and **fan interest ended at 97 in all three
  * scenarios**. The fan base did not notice a 4.6x ticket. One free click on turn
  * one was worth +206M in the first season alone, against a 112-190M starting cash
- * band, and it permanently disabled the only pressure `owner.cash` exerts:
- * `cashPressure` fires at <= 35M and <= 80M, thresholds an unbounded price dial
- * makes unreachable.
+ * band, and it permanently disabled the only pressure operating liquidity
+ * exerted: runway against modeled football obligations, which an unbounded
+ * price dial makes unreachable.
  *
  * ── Why the centre is measured from the league, never declared ──────────────
  *

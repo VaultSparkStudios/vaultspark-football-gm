@@ -71,9 +71,11 @@ export function renderFacilitiesMarketPanel(host, state) {
   const cards = (market.facilities || [])
     .map((row) => facilityCard(row, market.leagueCentres?.[row.facility]))
     .join("");
+  const runway = Number(market.operatingLiquidity?.runwayYears);
+  const runwayLabel = Number.isFinite(runway) ? ` | ${runway.toFixed(1)} years of modeled obligations` : "";
   host.innerHTML = `
     <div class="small">${escapeHtml(
-      `Club cash ${fmtMoney(market.cash)} | facility upkeep ${fmtMoney(market.annualUpkeep)}/yr | operating reserve ${fmtMoney(market.minimumCashReserve)} must remain | league year ${market.year}`
+      `Football-operations liquidity ${fmtMoney(market.cash)}${runwayLabel} | facility upkeep ${fmtMoney(market.annualUpkeep)}/yr | operating reserve ${fmtMoney(market.minimumCashReserve)} must remain | league year ${market.year}`
     )}</div>
     <div class="control-spotlight-grid">${cards}${pricingCard(pricing)}</div>
   `;
@@ -106,7 +108,7 @@ export function renderOwnerSpotlightPanel(spotlight, state) {
       </div>
       <div class="control-spotlight-card">
         <strong>Economics</strong>
-        <div>${escapeHtml(`${fmtMoney(owner.cash || 0)} cash | ${fmtMoney(owner.staffBudget || 0)} staff budget`)}</div>
+        <div>${escapeHtml(`${fmtMoney(owner.cash || 0)} operating liquidity | ${fmtMoney(owner.staffBudget || 0)} staff budget`)}</div>
         <div class="small">${escapeHtml(`Ticket ${owner.ticketPrice ?? "-"} | Revenue YTD ${fmtMoney(owner.finances?.revenueYtd || 0)}`)}</div>
       </div>
       <div class="control-spotlight-card">

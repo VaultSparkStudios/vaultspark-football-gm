@@ -27,7 +27,9 @@ const surfaceLabels = new Map([
   ["architect-signature", "Architecture Review strongest mastery signature"],
   ["architect-objective", "Player-authored Architect Objective hierarchy"],
   ["exact-command-center", "Ranked General Manager command strip"],
-  ["exact-command-target", "Exact command destination and keyboard focus target"]
+  ["exact-command-target", "Exact command destination and keyboard focus target"],
+  ["facility-capital", "Owner facility-capital liquidity, runway, and obligation receipt"],
+  ["gist-authentication", "Cloud-save corruption and optional authentication boundary"]
 ]);
 
 function sha256(buffer) {
@@ -98,13 +100,15 @@ const receipt = {
     renderedPixelsReviewed: true,
     reviewer: "session-agent",
     findings: [
-      "The GM Legacy card (the S87-shipped surface this session's fix touches) renders correctly in its normal populated state at 1440px desktop, 768px tablet, and 390px mobile in both dark and light themes: header, grade/status badge, mastery progress, legacy-score/playoff/seasons-served sub-widgets, and the market-reputation line are all fully legible with no overflow or clipping.",
-      "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures.",
-      "The specific empty/error path this session's fix targets (an unset or failed GM Legacy summary hiding the whole #gmLegacyCardWrap instead of only the inner score paragraph) is a transient network-failure state not reproducible against a static-artifact harness with a real backing dataset; it is instead covered directly by a new focused DOM test in test/session87-franchise-truth.test.js that asserts the wrapper hides on a null summary and un-hides with correct content on a populated one.",
-      "No other surface changed this session; the remaining 231 captures match the S87-reviewed baseline states (Opening Contract tutorial, Architecture Review, General Manager commands, Agent Negotiation, prediction receipts, Hall of Fame ceremony, cap pressure, waiver identity, Franchise Legends, General Manager reputation) with no new overflow, contrast, or runtime regressions."
+      "The owner facility-capital panel renders football-operations liquidity, runway, annual upkeep, operating reserve, league centers, and investability receipts legibly at 1440px desktop and 390px mobile in dark and light themes.",
+      "The Cloud Save Sync panel states the exact security boundary in rendered pixels: the checksum detects accidental corruption, while the optional local passphrase adds Web Crypto authentication and does not encrypt the save.",
+      "The exact-command captures exercise the shared navigation authority and prove the command destination receives keyboard focus; incremental postseason behavior is additionally covered by the real browser flow and deterministic state-machine tests.",
+      "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures."
     ],
     fixesApplied: [
-      "Extracted applyGmLegacyCard(card, wrap, summary) in public/lib/tabOverview.js so the empty-state and catch-block paths hide the whole #gmLegacyCardWrap article, not just the inner score paragraph, closing the empty-card-husk defect found by this session's audit."
+      "Replaced club-cash ambiguity with source-derived football-operations liquidity, obligation, runway, and bounded owner-distribution receipts.",
+      "Corrected the unkeyed-checksum promise and added optional versioned PBKDF2/HMAC authentication with legacy-save support.",
+      "Centralized live phase-to-surface routing and restored one controlled decision beat per postseason round."
     ],
     blockingDefectsOpen: 0
   }

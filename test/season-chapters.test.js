@@ -8,6 +8,11 @@ import {
   SEASON_THESIS_SCHEMA_VERSION
 } from "../public/lib/seasonChapters.js";
 import { buildThreeHorizonBlueprint } from "../public/lib/franchiseArchitecture.js";
+import {
+  GAMEPLAY_SURFACE_ROUTES,
+  gmDecisionSurface,
+  offseasonStageSurface
+} from "../public/lib/gameplayNavigation.js";
 
 function dashboard(overrides = {}) {
   return {
@@ -177,4 +182,36 @@ test("established requires aligned evidence across eligible checkpoints", () => 
   assert.equal(result.checkpoints.find((row) => row.id === "foundation").status, "evidenced-aligned");
   assert.equal(result.checkpoints.find((row) => row.id === "identity-test").status, "evidenced-aligned");
   assert.deepEqual(buildSeasonThesisLedger(JSON.parse(JSON.stringify(input))), result, "restore preserves exact evidence semantics");
+});
+
+test("one gameplay navigation authority routes every offseason stage and decision to a real DOM surface", () => {
+  const html = readFileSync(new URL("../public/game.html", import.meta.url), "utf8");
+  for (const [key, route] of Object.entries(GAMEPLAY_SURFACE_ROUTES)) {
+    assert.match(html, new RegExp(`id=["']${route.targetTab}["']`), `${key} tab must exist`);
+    assert.match(html, new RegExp(`id=["']${route.targetId}["']`), `${key} target must exist`);
+  }
+
+  assert.deepEqual(offseasonStageSurface("staff"), { targetTab: "boardroomTab", targetId: "coachingMarketPanel" });
+  assert.deepEqual(offseasonStageSurface("combine"), { targetTab: "draftTab", targetId: "combineResultsTable" });
+  assert.deepEqual(offseasonStageSurface("free-agency"), { targetTab: "faTab", targetId: "faTable" });
+  assert.deepEqual(offseasonStageSurface("draft"), { targetTab: "draftTab", targetId: "draftWarRoomPanel" });
+  assert.deepEqual(offseasonStageSurface("roster-cuts"), { targetTab: "rosterTab", targetId: "rosterTable" });
+  assert.deepEqual(gmDecisionSurface("back-staff"), { targetTab: "boardroomTab", targetId: "coachingMarketPanel" });
+  assert.deepEqual(gmDecisionSurface("wait"), { targetTab: "contractsTab", targetId: "contractsSpotlight" });
+  assert.deepEqual(gmDecisionSurface("buy"), { targetTab: "transactionsTab", targetId: "tradeTeamARosterTable" });
+});
+
+test("offseason and postseason chapters use the exact shared gameplay route", () => {
+  const staff = buildSeasonChapter(dashboard({
+    phase: "offseason",
+    offseasonPipeline: { stage: "staff", nextAction: "Hire the staff." }
+  }));
+  const draft = buildSeasonChapter(dashboard({
+    phase: "offseason",
+    offseasonPipeline: { stage: "draft", nextAction: "Make the pick." }
+  }));
+  const postseason = buildSeasonChapter(dashboard({ phase: "postseason", currentWeek: 20 }));
+  assert.deepEqual([staff.targetTab, staff.targetId], ["boardroomTab", "coachingMarketPanel"]);
+  assert.deepEqual([draft.targetTab, draft.targetId], ["draftTab", "draftWarRoomPanel"]);
+  assert.deepEqual([postseason.targetTab, postseason.targetId], ["overviewTab", "franchiseCommandCenter"]);
 });

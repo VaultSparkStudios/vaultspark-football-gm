@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { PLAYER_DEVELOPMENT_PROFILE } from "../src/domain/ratings.js";
 
 function parseWeek(text) {
   const match = String(text || "").match(/W(\d+)/i);
@@ -483,7 +484,7 @@ test("roster window map renders development and succession pressure", async ({ p
   await page.click("#loadRosterBtn");
   await waitGameReady(page);
 
-  await expect(page.locator("#rosterWindowSummary")).toContainText("Profile 2026-s72-parity");
+  await expect(page.locator("#rosterWindowSummary")).toContainText(`Profile ${PLAYER_DEVELOPMENT_PROFILE.version}`);
   await expect(page.locator("#rosterWindowTable tr").nth(1)).toBeVisible();
   await expect(page.locator("#rosterWindowTable")).toContainText(/Quarterback|Backfield|Receivers/);
   await expect(page.locator("#rosterWindowTable")).toContainText(/Protect the runway|Stable room|Succession|Contract decisions|Draft a successor/);

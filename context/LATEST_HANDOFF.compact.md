@@ -1,45 +1,39 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 92ee45b7c363 -->
-<!-- generated-at: 2026-08-16T18:44:12.106Z -->
+<!-- source-hash: a92a860d5645 -->
+<!-- generated-at: 2026-08-25T19:05:32.472Z -->
 
 # LATEST_HANDOFF (compact)
 
-# Handoff Summary — Session 86 Closeout
+SESSION 94 → 95 HANDOFF SUMMARY
 
-Session: 86 (audit-by-execution pass; core-loop truth)
+Status
+- SIL v3.0: 991/1000. Canonical receipt 1,266/1,266, direct exit 0, all six shards.
+- Public launch: HOLD, launchReady false.
 
-Shipped S86
-- All eight S86 audit items landed; three were believed-working systems proven broken by a single fixed-seed probe.
-- Weekly tactics were no-ops; now staged on session.pendingWeeklyTactic and consumed in advanceWeek() after runStaffAndStrategyRefresh(); shared applier in src/runtime/weeklyTactic.js.
-- Draft on-the-clock button threw ReferenceError pre-pick; reveal moved to public/lib/draftPickReveal.js behind dynamic import (reclaimed island headroom at 15% floor); pick still submits if reveal fails.
-- Aging curve was ~5x diluted; corrected.
-- buildOwnerProfile now spreads unknown owner keys (fixes confidenceLog silently dropped on reload for all 32 teams).
-- Node receipt 1,123/1,123 across 5 shards (+21 tests). Doctor blockingFailing 0.
+Shipped this session
+- Live-origin audit (source → build-pages rewrite → edge policy); source-only audit was structurally blind.
+- CSP fix: production served CPloudflare beacon that own script-src refused; zero pageviews collected. verify-edge-policy-application.mjs now fetches as a browser and asserts served policy admits every external origin the served document requests (hosts read from beacon.min.js).
+- Newcomer "why" content added to root page below one-click start; Playwright spec locks ordering.
+- Draft market GM identity + intel exposure fixes (partial item; half already existed).
+- 819-entry visual-review ledger written before prune; prune refuses without it.
+- Fixed 10 code-review findings (dead CTA button, dead-code paths, hidden diagnostics/retry, continue→break, double --apply, unguarded gate branch), shard-coverage assignments, hardened child_process wrapper, edge-policy fixture.
 
-Current Intent (S87)
-- Audit by running the engine, not reading it — the only reliable method here.
-- Primary target: franchise economy — salary cap is measurably non-binding.
-- Preserve public-launch HOLD until external gates have real receipts.
+Now bucket (priority order)
+1. Gate the long-horizon facility equilibrium (carried, strongest item); S93 season-15 dispersion turnaround argued, not asserted.
+2. Verify beacon actually reports once S94 policy reaches production; still-silent dashboard post-deploy is a live finding.
+3. Calibrate owner.cash scale and source FACILITY_MARKET_PROFILE appetite weights (both carried from S93).
 
-Now Bucket (top 3)
-- Calibrate franchise economy so cap binds: all 32 teams start $92M–$112M space vs $255M cap; buildContract compresses 99 OVR to ~3.2x a 55 OVR; maxSalary 45M currently unreachable.
-- Work the five verified-real findings parked in docs/AUDIT_2026-08-16_SESSION86.json preverifiedSkips: narrative trigger shape drift (culture-crisis/owner-ultimatum unreachable), box-score long-play accumulation (147yd longest completion), dead fan-sentiment win band, two missing DOM mounts (Franchise Legends, GM Reputation), waiver table with no player names.
-- Re-run rendered-pixel capture for newly reachable draft reveal modal and corrected Overview cap-alert banner (CANON-053 delegated to CI Playwright).
+Blockers / holds
+- check-release-evidence-freshness EXPIRED (observed 2026-08-16, expired 2026-08-17). Pre-existing, tied to external blockers.
+- Two app.spec.js failures pre-existing (reproduced on pre-S94 tree).
+- Registry says SPARKED, local contract says FORGE. Reconcile via Ark owner only; never edit sibling truth.
 
-Blockers / Human-Blocked (with age)
-- Zoho alias delivery + reply-as proof — unmet since ≥S82 (5+ sessions).
-- SHA-bound founder public-launch approval — unmet since ≥S82 (5+ sessions).
-- Registry SPARKED vs local FORGE reconciliation + external Obelisk relying-party registration — unmet since ≥S79 (7+ sessions).
-- First real opted-in cohort not yet observed (no manufactured activity permitted).
+Human-blocked (externally owned, age from 2026-08-23)
+- email-delivery-unverified
+- founder-approval-unverified
+- lifecycle-authority-unverified
 
-Durable Decisions
-- A decision is implemented only when a fixed-seed run measurably diverges; ship divergence regression with feature.
-- Never stub the seam a test guards; fix fixture intent, not production code, on behaviour-neutral breaks.
-- Budget/headroom gate = architectural limit; reclaim behind lazy-import, never raise maxBytes/lower ratio.
-- Tactic override: single-week, consumed once, never leaks to CPU teams or later weeks.
+Deferred
+- 14→6 tab regroup skipped; rail already grouped under five headers. Phone target-count is founder-deferred, needs own visual-evidence budget.
 
-Key Files
-- src/runtime/weeklyTactic.js, advanceWeekCommand.js, GameSession.js
-- public/lib/draftPickReveal.js, tabDraft.js, boot-manifest.json
-- src/engine/offseasonSimulator.js, src/domain/ratings.js, src/engine/capAlerts.js
-- docs/AU
+Next session: start at task board Now item 1 — gate the facility equilibrium.

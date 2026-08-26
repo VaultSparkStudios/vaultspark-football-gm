@@ -18,6 +18,7 @@ const GIST_API = "https://api.github.com/gists";
 const GIST_FILENAME = "vsfgm-save.json";
 const INTEGRITY_FILENAME = "vsfgm-save.integrity.json";
 const MAX_GIST_BYTES = 10_000_000;
+const METADATA_SCHEMA_VERSION = 2;
 
 // ── Integrity stamp (S14) ─────────────────────────────────────────────────────
 // Mirrors src/adapters/persistence/saveStoreShared.js — kept inline because
@@ -37,12 +38,20 @@ function buildIntegrityStamp(serialized) {
   return { algo: "fnv1a32", checksum: computeSnapshotChecksum(serialized), length: String(serialized).length };
 }
 
-function verifyIntegrityStamp(serialized, integrity) {
-  if (!integrity) return true; // explicitly supported legacy saves had no stamp
-  if (integrity.algo !== "fnv1a32") return false; // unknown algo fails closed — a forged sidecar is not "nothing to verify"
-  const str = String(serialized);
-  return integrity.length === str.length && integrity.checksum === computeSnapshotChecksum(str);
+async function buildSyncMetadata(serialized, passphrase) {
+  const supplied = typeof passphrase === "string" && passphrase.length > 0;
+  const metadata = {
+    schemaVersion: METADATA_SCHEMA_VERSION,
+    purpose: "corruption-detection-with-optional-authentication",
+    corruptionDetection: buildIntegrityStamp(serialized),
+    authentication: null
+  };
+  if (!supplied) return metadata;
+  const { buildPassphraseAuthentication } = await import("./gistAuthentication.js");
+  metadata.authentication = await buildPassphraseAuthentication(serialized, passphrase);
+  return metadata;
 }
+
 import { getSavedGistId, getSavedToken, saveGistId, saveToken } from "./gistCredentials.js";
 export { getSavedGistId, getSavedToken, saveGistId, saveToken };
 async function readGistFile(file, label) {
@@ -89,13 +98,15 @@ async function gistRequest(method, path, token, body = null) {
  * @param {object|string} snapshot — raw snapshot object or JSON string
  * @param {string}        token    — GitHub PAT with gist scope
  * @param {string}       [gistId]  — existing Gist ID to update (optional)
+ * @param {{passphrase?: string}} [options] — optional local-only authentication passphrase
  * @returns {{ gistId: string, url: string }}
  */
-export async function exportToGist(snapshot, token, gistId) {
+export async function exportToGist(snapshot, token, gistId, { passphrase = "" } = {}) {
   if (!token) throw new Error("GitHub token is required. Set it in Settings → Cloud Sync.");
   const content = typeof snapshot === "string" ? snapshot : JSON.stringify(snapshot, null, 0);
   const size = (new Blob([content]).size / 1024).toFixed(0);
   if (new Blob([content]).size > MAX_GIST_BYTES) throw new Error("Snapshot too large for Gist (> 10 MB). Try exporting after a shorter session.");
+  const metadata = await buildSyncMetadata(content, passphrase);
 
   const targetId = gistId || getSavedGistId();
   const description = `Franchise Architect: Football save — ${new Date().toISOString().slice(0, 10)} (${size} KB)`;
@@ -104,8 +115,9 @@ export async function exportToGist(snapshot, token, gistId) {
     public: false,
     files: {
       [GIST_FILENAME]: { content },
-      // Integrity sidecar (S14): lets import detect truncated/corrupted sync payloads.
-      [INTEGRITY_FILENAME]: { content: JSON.stringify(buildIntegrityStamp(content)) }
+      // Versioned sidecar: FNV detects accidental corruption; optional HMAC
+      // authenticates the content with a passphrase that never leaves the browser.
+      [INTEGRITY_FILENAME]: { content: JSON.stringify(metadata) }
     }
   };
 
@@ -119,7 +131,7 @@ export async function exportToGist(snapshot, token, gistId) {
   const id  = result.id;
   const url = result.html_url;
   saveGistId(id);
-  return { gistId: id, url };
+  return { gistId: id, url, protection: metadata.authentication ? "authenticated" : "corruption-checked" };
 }
 
 // ── Import ────────────────────────────────────────────────────────────────────
@@ -129,9 +141,10 @@ export async function exportToGist(snapshot, token, gistId) {
  *
  * @param {string} gistId — Gist ID to fetch
  * @param {string} token  — GitHub PAT (or empty for public gists)
+ * @param {{passphrase?: string}} [options] — optional local-only authentication passphrase
  * @returns {{ snapshot: object }}
  */
-export async function importFromGist(gistId, token) {
+export async function importFromGist(gistId, token, { passphrase = "" } = {}) {
   if (!gistId) throw new Error("No Gist ID provided.");
   const headers = {
     "Accept": "application/vnd.github+json"
@@ -148,26 +161,24 @@ export async function importFromGist(gistId, token) {
   const raw = await readGistFile(file, "cloud save");
   if (!raw) throw new Error("Could not read Gist file content.");
 
-  // Verify integrity sidecar when present (legacy gists without one still import,
-  // but the caller is told the save is unverified). A present-but-unreadable or
-  // forged sidecar fails closed: corruption evidence is never treated as absence.
+  // Verify the versioned sidecar when present. Legacy gists without one still
+  // import with an explicit warning. An unkeyed checksum is only a corruption
+  // check; only the optional passphrase-derived HMAC authenticates modifications.
   const integrityFile = data.files?.[INTEGRITY_FILENAME];
   let integrity = "legacy-unverified";
   if (integrityFile) {
-    let stamp = null;
+    let metadata = null;
     try {
       const integrityRaw = await readGistFile(integrityFile, "integrity sidecar");
-      stamp = integrityRaw ? JSON.parse(integrityRaw) : null;
+      metadata = integrityRaw ? JSON.parse(integrityRaw) : null;
     } catch {
-      stamp = null;
+      metadata = null;
     }
-    if (!stamp || !verifyIntegrityStamp(raw, stamp)) {
-      throw new Error(
-        "Cloud save failed integrity verification — the synced data is corrupt, forged, or was truncated. " +
-          "Your local saves are unaffected; re-export from the device that has the good copy."
-      );
-    }
-    integrity = "verified";
+    if (!metadata) throw new Error("Cloud save verification metadata is present but unreadable.");
+    const { verifySyncMetadata } = await import("./gistVerification.js");
+    integrity = await verifySyncMetadata(raw, metadata, passphrase);
+  } else if (typeof passphrase === "string" && passphrase.length > 0) {
+    throw new Error("This legacy cloud save has no passphrase authentication metadata.");
   }
 
   const snapshot = JSON.parse(raw);

@@ -68,6 +68,12 @@ export function executeAdvanceWeekCommand(session, payload = {}, { afterAdvance 
     // phase was not a regular-season week), so it can never leak into a later week.
     clearPendingWeeklyTactic(session);
     if (tacticTeam && originalWeeklyPlan) tacticTeam.weeklyPlan = originalWeeklyPlan;
+    // A playoff command may have already prepared the next controlled-team
+    // gate. Rebuild that matchup plan after restoring the just-resolved plan so
+    // persisted/dashboard state describes the opponent the player inspects next.
+    if (session.phase === "postseason" && session.getPostseasonProgress?.()?.controlledStatus === "active") {
+      session.setPostseasonMatchupPlans?.();
+    }
   }
 
   const tacticalReceipt = command.tactic

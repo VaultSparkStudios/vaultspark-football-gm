@@ -443,4 +443,36 @@ test("scheduled realism verification cannot be greened by tee", () => {
   assert.match(step, /shell:\s*bash/);
   assert.match(step, /set -o pipefail/);
   assert.match(step, /verifyRealism\.js[\s\S]*\|\s*tee/);
+
+  const job = workflow.match(/deep-realism:[\s\S]*$/)?.[0] || "";
+  assert.match(job, /timeout-minutes:\s*125/);
+  assert.match(step, /timeout-minutes:\s*90/);
+  assert.match(step, /realism-sweep-progress\.txt/);
+
+  const upload = workflow.match(
+    /- name: Upload sweep report and partial progress[\s\S]*$/
+  )?.[0] || "";
+  assert.match(upload, /if:\s*always\(\)/);
+  assert.match(upload, /realism-sweep-report\.txt/);
+  assert.match(upload, /realism-sweep-progress\.txt/);
+  assert.match(upload, /output\/realism-verification\.json/);
+  assert.match(upload, /if-no-files-found:\s*warn/);
+});
+
+test("Pages publication is gated by the real browser suite", () => {
+  const workflow = readFileSync(
+    resolve(repoRoot, ".github/workflows/deploy-pages.yml"),
+    "utf8"
+  );
+  const browserGate = workflow.match(
+    /- name: Run browser release gate[\s\S]*?(?=\n\s+- name: Capture responsive artifact evidence)/
+  )?.[0] || "";
+  assert.match(browserGate, /timeout-minutes:\s*15/);
+  assert.match(browserGate, /run:\s*npm run test:ui/);
+
+  const browserIndex = workflow.indexOf("- name: Run browser release gate");
+  const artifactIndex = workflow.indexOf("- name: Upload Pages artifact");
+  const cloudflareIndex = workflow.indexOf("- name: Publish to Cloudflare Pages");
+  assert.ok(browserIndex >= 0 && browserIndex < artifactIndex, "browser gate must precede the Pages artifact");
+  assert.ok(browserIndex < cloudflareIndex, "browser gate must precede Cloudflare publication");
 });

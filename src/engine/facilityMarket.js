@@ -53,22 +53,29 @@ import {
   evaluateFacilityInvestment,
   totalFacilityUpkeep
 } from "../domain/facilityInvestment.js";
+import {
+  OWNER_LIQUIDITY_PROFILE,
+  applyOwnerCapitalReturn,
+  measureOwnerOperatingLiquidity
+} from "../domain/ownerEconomy.js";
 
 export const FACILITY_MARKET_PROFILE = Object.freeze({
-  version: "2026-s93-ai-capital",
-  /** Cash a club insists on holding beyond the hard reserve before it will build. */
-  comfortCash: 90_000_000,
-  /** Owner-personality appetite for capital projects. */
+  version: "2026-s95-runway-capital",
+  provenance: "seeded-policy-calibration-not-external-measurement",
+  /** Owner-personality appetite for capital projects. Exact weights are game-AI
+   * utility terms, calibrated against generated-league behavior rather than
+   * falsely attributed to an external NFL accounting source. */
   personalityAppetite: Object.freeze({
-    "legacy-builder": 1,
-    "win-now": 0.7,
-    "player-friendly": 0.85,
-    "profit-first": 0.35
+    "legacy-builder": 0.82,
+    "win-now": 0.68,
+    "player-friendly": 0.62,
+    "profit-first": 0.28
   }),
-  /** How strongly a deficit against the league centre pulls investment. */
-  deficitWeight: 0.09,
-  /** Championship priority above this behaves as a builder regardless of personality. */
-  championshipDrive: 78,
+  /** Runway is normalized across this band before it enters appetite. */
+  minimumRunwayYears: 0.65,
+  fullRunwayYears: 3,
+  /** A deficit of this many points supplies the full market-need term. */
+  fullNeedDeficit: 8,
   /** Appetite below this and the club sits the year out. */
   investmentThreshold: 0.5
 });
@@ -101,24 +108,48 @@ export function measureFacilityCentres(league) {
  * profit-first owner does not build, and a flush championship-driven owner does —
  * without simulating a decade to infer it.
  */
-export function facilityAppetite(team, centres) {
+export function facilityAppetiteFactors(team, centres) {
   const profile = FACILITY_MARKET_PROFILE;
   const owner = team?.owner || {};
-  const cash = Number(owner.cash) || 0;
-  const cashRoom = clamp(
-    (cash - FACILITY_INVESTMENT_PROFILE.minimumCashReserve) /
-      Math.max(1, profile.comfortCash - FACILITY_INVESTMENT_PROFILE.minimumCashReserve),
+  const liquidity = measureOwnerOperatingLiquidity(owner);
+  const liquidityFactor = clamp(
+    (liquidity.runwayYears - profile.minimumRunwayYears) /
+      Math.max(0.01, profile.fullRunwayYears - profile.minimumRunwayYears),
     0,
-    1.4
+    1.15
   );
   const personality = profile.personalityAppetite[owner.personality] ?? 0.7;
-  const championships = Number(owner.priorities?.championships) || 70;
-  const drive = championships >= profile.championshipDrive ? 1 : personality;
+  const championships = liquidity.championshipPriority;
+  const profit = liquidity.profitPriority;
+  const traitFactor = clamp(personality + championships * 0.3 - profit * 0.25, 0.1, 1.1);
   const deficit = Math.max(
     0,
     ...FACILITY_KEYS.map((key) => (centres[key] ?? 0) - facilityLevel(team, key))
   );
-  return clamp(cashRoom * Math.max(personality, drive) * (0.55 + deficit * profile.deficitWeight), 0, 1.4);
+  const needFactor = clamp(deficit / profile.fullNeedDeficit, 0, 1.25);
+  const appetite = clamp(liquidityFactor * traitFactor * (0.45 + needFactor * 0.85), 0, 1.4);
+  return {
+    appetite: Number(appetite.toFixed(4)),
+    threshold: profile.investmentThreshold,
+    liquidity,
+    factors: {
+      liquidityRunwayYears: liquidity.runwayYears,
+      liquidityFactor: Number(liquidityFactor.toFixed(4)),
+      personality: String(owner.personality || "legacy-builder"),
+      personalityFactor: personality,
+      championshipPriority: championships,
+      profitPriority: profit,
+      traitFactor: Number(traitFactor.toFixed(4)),
+      facilityDeficit: Number(deficit.toFixed(4)),
+      marketNeedFactor: Number(needFactor.toFixed(4))
+    },
+    profileVersion: profile.version,
+    provenance: profile.provenance
+  };
+}
+
+export function facilityAppetite(team, centres) {
+  return facilityAppetiteFactors(team, centres).appetite;
 }
 
 /**
@@ -146,12 +177,19 @@ function chooseFacility(team, centres, year) {
  * excluded from *upkeep* — paying for what you own is an economic fact of owning
  * it, not a command anyone chooses to issue.
  *
- * @returns {{ investments: Array, upkeep: Array, centres: Object, skipped: number }}
+ * Every club emits a factor-level receipt, including sit-outs and the controlled
+ * franchise whose capital authority remains with the player. After decisions,
+ * ownership returns a bounded share of liquidity above its operating envelope;
+ * this is applied to all clubs because it is an owner policy, not a GM command.
+ *
+ * @returns {{ investments: Array, upkeep: Array, centres: Object, skipped: number, decisions: Array, distributions: Array }}
  */
 export function runFacilityInvestmentRound({ league, year, controlledTeamId = null } = {}) {
   const controlled = String(controlledTeamId || "").toUpperCase();
   const investments = [];
   const upkeep = [];
+  const decisions = [];
+  const distributions = [];
   let skipped = 0;
 
   // Upkeep is charged FIRST, and to every club including the controlled one.
@@ -171,30 +209,105 @@ export function runFacilityInvestmentRound({ league, year, controlledTeamId = nu
 
   for (const team of league?.teams || []) {
     if (!team?.owner) continue;
-    if (String(team.id).toUpperCase() === controlled) continue;
+    const isControlled = String(team.id).toUpperCase() === controlled;
+    const policy = facilityAppetiteFactors(team, centres);
+    const receipt = {
+      year: Number(year),
+      teamId: team.id,
+      controlled: isControlled,
+      appetite: policy.appetite,
+      threshold: policy.threshold,
+      factors: policy.factors,
+      liquidity: {
+        cash: policy.liquidity.cash,
+        reserve: policy.liquidity.reserve,
+        obligations: policy.liquidity.obligations,
+        runwayYears: policy.liquidity.runwayYears,
+        targetRunwayYears: policy.liquidity.targetRunwayYears,
+        targetCash: policy.liquidity.targetCash
+      },
+      profileVersion: policy.profileVersion,
+      provenance: policy.provenance
+    };
 
-    const appetite = facilityAppetite(team, centres);
-    if (appetite < FACILITY_MARKET_PROFILE.investmentThreshold) {
+    if (isControlled) {
+      decisions.push({ ...receipt, outcome: "player-authority", reasonCode: "controlled-capital-authority" });
+      continue;
+    }
+
+    if (policy.appetite < FACILITY_MARKET_PROFILE.investmentThreshold) {
       skipped += 1;
+      decisions.push({ ...receipt, outcome: "sit-out", reasonCode: "capital-appetite-below-threshold" });
       continue;
     }
     const facility = chooseFacility(team, centres, year);
-    const points = clamp(Math.round(appetite * FACILITY_INVESTMENT_PROFILE.annualPointAllowance), 1, FACILITY_INVESTMENT_PROFILE.annualPointAllowance);
+    const points = clamp(
+      Math.round(policy.appetite * FACILITY_INVESTMENT_PROFILE.annualPointAllowance),
+      1,
+      FACILITY_INVESTMENT_PROFILE.annualPointAllowance
+    );
     const verdict = evaluateFacilityInvestment(team.owner, year, facility, points);
     if (!verdict.ok || verdict.quote.granted <= 0) {
       skipped += 1;
+      decisions.push({
+        ...receipt,
+        facility,
+        requestedPoints: points,
+        outcome: "declined",
+        reasonCode: verdict.reasonCode || "facility-investment-declined"
+      });
       continue;
     }
     applyFacilityInvestment(team.owner, year, facility, verdict.quote);
-    investments.push({
+    const investment = {
       teamId: team.id,
       facility,
       points: verdict.quote.granted,
       from: verdict.quote.current,
       to: verdict.quote.target,
       cost: verdict.quote.cost
+    };
+    investments.push(investment);
+    decisions.push({
+      ...receipt,
+      facility,
+      requestedPoints: points,
+      outcome: "invested",
+      reasonCode: "capital-policy-approved",
+      investment
     });
   }
 
-  return { investments, upkeep, centres, skipped };
+  // Settle owner distributions only after this year's football capital choice.
+  // The owner may return excess, but can never cross the measured capital target.
+  const decisionByTeam = new Map(decisions.map((entry) => [String(entry.teamId), entry]));
+  for (const team of league?.teams || []) {
+    if (!team?.owner) continue;
+    const capitalReturn = applyOwnerCapitalReturn(team.owner, year);
+    const compactReturn = {
+      returned: capitalReturn.returned,
+      cumulative: capitalReturn.cumulative,
+      cashBefore: capitalReturn.cashBefore,
+      cashAfter: capitalReturn.cashAfter,
+      targetCash: capitalReturn.targetCash,
+      targetRunwayYears: capitalReturn.targetRunwayYears,
+      distributionRate: capitalReturn.distributionRate,
+      reasonCode: capitalReturn.reasonCode,
+      profileVersion: capitalReturn.profileVersion
+    };
+    const decision = decisionByTeam.get(String(team.id));
+    if (decision) decision.capitalReturn = compactReturn;
+    if (capitalReturn.applied && capitalReturn.returned > 0) {
+      distributions.push({ teamId: team.id, ...compactReturn });
+    }
+  }
+
+  if (league && typeof league === "object") {
+    league.facilityCapitalReceipts = [
+      ...(Array.isArray(league.facilityCapitalReceipts) ? league.facilityCapitalReceipts : []),
+      ...decisions
+    ].slice(-OWNER_LIQUIDITY_PROFILE.receiptLimit);
+  }
+
+  return { investments, upkeep, centres, skipped, decisions, distributions };
 }

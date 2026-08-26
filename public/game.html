@@ -1232,6 +1232,7 @@
                 Sync saves to a private GitHub Gist — play from any device.
                 Requires a GitHub Personal Access Token with <code>gist</code> scope.
                 Your token is kept only for this tab session and is removed from persistent browser storage.
+                The checksum detects accidental corruption but does not prove who changed a save; an optional passphrase adds local Web Crypto authentication, not encryption.
               </p>
               <div class="row compact">
                 <label style="flex:1">
@@ -1239,6 +1240,12 @@
                   <input id="gistTokenInput" type="password" placeholder="Paste token for this tab" autocomplete="off" style="width:100%" />
                 </label>
                 <button id="gistSyncSaveTokenBtn">Use Token This Tab</button>
+              </div>
+              <div class="row compact" style="margin-top:8px;">
+                <label style="flex:1">
+                  Optional Save Passphrase
+                  <input id="gistPassphraseInput" type="password" minlength="12" placeholder="12+ characters; never stored or sent" autocomplete="new-password" style="width:100%" />
+                </label>
               </div>
               <div class="row compact" style="margin-top:8px;">
                 <button id="gistExportBtn">⬆ Export to Gist</button>

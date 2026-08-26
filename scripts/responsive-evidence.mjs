@@ -524,6 +524,11 @@ async function main() {
       }
       await page.selectOption("#staffTeamSelect", controlledStaffTeam);
       await page.waitForSelector("#coachingMarketPanel .coaching-market-head", { state: "visible" });
+      await page.waitForSelector("#facilitiesMarket .control-spotlight-grid", { state: "visible" });
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureElement(page, outputDir, `${viewport.name}-facility-capital-${theme}`, "#facilitiesMarket", records);
+      }
       // Exercise the verifier once so CANON-053 evidence proves the rendered
       // progression and finite-number receipts with source-derived data.
       const settingsTab = page.locator(`[data-tab="settingsTab"]`).first();
@@ -544,6 +549,10 @@ async function main() {
         module.applyDeveloperSurfaceVisibility(document, "?dev=1");
       });
       await page.waitForSelector("#realismVerifyYearsInput", { state: "visible", timeout: 30_000 });
+      for (const theme of evidenceThemes) {
+        await setTheme(page, theme);
+        await captureElement(page, outputDir, `${viewport.name}-gist-authentication-${theme}`, ".cloud-sync-panel", records);
+      }
       await page.locator("#realismVerifyYearsInput").fill("1");
       await page.locator("#runRealismVerifyBtn").click();
       await page.waitForFunction(() => document.querySelectorAll("#realismVerifyProgressionTable tr").length > 1, null, { timeout: 120_000 });

@@ -1,5 +1,5 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-08-24 (Session 94 closeout) -->
+<!-- generated-at: 2026-08-26 (Session 94 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
@@ -8,7 +8,7 @@
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 94 closeout · 2026-08-24.
+> **Fast-boot brief** — generated at Session 94 closeout · 2026-08-26.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,7 +17,7 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 95 · 2026-08-24 · BUILDER MODE                          ║
+║  Session 95 · 2026-08-26 · BUILDER MODE                          ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -34,7 +34,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 7d · refresh required              ║
+║  Profile · game · cache stale 9d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -43,7 +43,7 @@
 ║                                                                  ║
 ║    991/1000   ███████████████████████░   99%                     ║
 ║    SIL v3.0  ·  Avg3: 989.3  ·  Velocity 0→                      ║
-║    Active 20688d · closeout 1d · source: newest SIL/status/hand  ║
+║    Active 20690d · closeout 3d · source: newest SIL/status/hand  ║
 ║    Trend    →  (last 5 sessions)                                 ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
@@ -63,22 +63,22 @@
 
 ╔══ WHERE WE LEFT OFF  ·  Session 94 ════════════════════════════╗
 ║  Shipped:  Session 94 ran a full-spectrum /audit against the LI  ║
-║  Tests:    1266/1266 passing  ·  Deploy: N/A                     ║
+║  Tests:    1280/1280 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,870 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,435 tok/turn  ·  cache 50%  ·  126 turns to compact       ║
+║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    4% used                          ║
+║     38,866 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
+║     ~19,433 tok/turn  ·  cache 50%  ·  45 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ✓  Tests         1266/1266 passing (2026-08-24)                 ║
+║  ⚠  Tests         1280/1280 passing (2026-08-26) · STALE — run   ║
 ║  ⛔  Velocity      0   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ⚠  IGNIS         42836 FORGE  ·  13d old                        ║
+║  ⛔  IGNIS         42836 FORGE  ·  15d old                        ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
@@ -89,7 +89,7 @@
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
 ║  ⚠  Doctor        10/12 (83%)  ·  2 warn                         ║
-║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
+║  ✓  Cost          Max flat-rate · $0.10/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ ORCHESTRATOR ════════════════════════════════════════════════╗
@@ -112,19 +112,10 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ cache source: AUDIT_2026-08-23_SESSION94.md                   ║
+║  ✓ cache source: AUDIT_2026-08-25_SESSION95.md                   ║
 ║                                                                  ║
-║  #7 · HIGH · content-hashed-assets-served-revalidating-and-the-  ║
-║  content-hashed-assets-served-revalidating-and-the-boot-graph-i  ║
-║                                                                  ║
-║  #9 · MEDIUM · the-front-door-is-a-configuration-form            ║
-║  the-front-door-is-a-configuration-form — Full funnel inversion  ║
-║                                                                  ║
-║  #10 · MEDIUM · visual-qa-is-105-megabytes-of-tracked-pngs       ║
-║  visual-qa-is-105-megabytes-of-tracked-pngs — Enforced retentio  ║
-║                                                                  ║
-║  #12 · MEDIUM · fourteen-tabs-five-of-them-about-the-roster      ║
-║  fourteen-tabs-five-of-them-about-the-roster — Full five-surfac  ║
+║  #5 · HIGH · release-proof-is-bound-to-an-orphaned-history       ║
+║  release-proof-is-bound-to-an-orphaned-history — Bind visual, m  ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -132,5 +123,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 94 closeout · 2026-08-24*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 94 closeout · 2026-08-26*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

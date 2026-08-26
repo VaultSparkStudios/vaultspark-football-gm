@@ -20,7 +20,17 @@ import {
   ticketDemandFactor,
   ticketPriceFanInterestDelta
 } from "../src/domain/ticketDemand.js";
-import { facilityAppetite, measureFacilityCentres, runFacilityInvestmentRound } from "../src/engine/facilityMarket.js";
+import {
+  applyOwnerCapitalReturn,
+  measureOwnerOperatingLiquidity,
+  operatingLiquidityPressure
+} from "../src/domain/ownerEconomy.js";
+import {
+  facilityAppetite,
+  facilityAppetiteFactors,
+  measureFacilityCentres,
+  runFacilityInvestmentRound
+} from "../src/engine/facilityMarket.js";
 
 const mean = (values) => (values.length ? values.reduce((sum, value) => sum + value, 0) / values.length : 0);
 const sd = (values) => {
@@ -29,6 +39,78 @@ const sd = (values) => {
 };
 const trainingLevels = (session) => session.league.teams.map((team) => Number(team.owner.facilities.training));
 const buf = (session) => session.league.teams.find((team) => team.id === "BUF");
+const quantile = (values, fraction) => {
+  const sorted = [...values].sort((a, b) => a - b);
+  return sorted[Math.floor((sorted.length - 1) * fraction)];
+};
+
+function fixedAnnualOperatingContributions(league) {
+  const centre = measureTicketPriceCentre(league);
+  return new Map((league.teams || []).map((team) => {
+    const owner = team.owner;
+    const attendance = Math.max(0.52, Math.min(1.12, (Number(owner.fanInterest) || 70) / 100));
+    const demand = ticketDemandFactor(owner.ticketPrice || 120, centre);
+    // A deterministic season envelope built from the same home/away gate sizes
+    // and annual staff obligation as GameSession.processOwnerFinances. Holding it
+    // fixed isolates whether the capital policy itself converges.
+    const gate = owner.marketSize * (owner.ticketPrice || 120) * attendance * demand * 8.5 * (66_500 + 24_000);
+    return [team.id, Math.round(gate - (owner.staffBudget || 25_000_000))];
+  }));
+}
+
+function summarizeCapitalState(league, paths, year) {
+  const cash = league.teams.map((team) => Number(team.owner.cash) / 1_000_000);
+  const facilities = league.teams.flatMap((team) => FACILITY_KEYS.map((key) => Number(team.owner.facilities[key])));
+  return {
+    year,
+    cash: {
+      p10: Number(quantile(cash, 0.1).toFixed(3)),
+      p50: Number(quantile(cash, 0.5).toFixed(3)),
+      p90: Number(quantile(cash, 0.9).toFixed(3)),
+      max: Number(Math.max(...cash).toFixed(3))
+    },
+    facilities: {
+      mean: Number(mean(facilities).toFixed(4)),
+      min: Math.min(...facilities),
+      max: Math.max(...facilities),
+      atCeiling: facilities.filter((level) => level === FACILITY_INVESTMENT_PROFILE.ceiling).length
+    },
+    paths: { ...paths }
+  };
+}
+
+function runCapitalHorizon(sourceLeague, { distressedTeamId = null } = {}) {
+  const league = structuredClone(sourceLeague);
+  const annual = fixedAnnualOperatingContributions(league);
+  if (distressedTeamId) {
+    const distressed = league.teams.find((team) => team.id === distressedTeamId)?.owner;
+    assert.ok(distressed, "distressed projection team must exist");
+    distressed.cash = FACILITY_INVESTMENT_PROFILE.minimumCashReserve + 500_000;
+    distressed.facilities = { training: 95, rehab: 90, analytics: 85 };
+    annual.set(distressedTeamId, 0);
+  }
+  const snapshots = [];
+  const paths = { investments: 0, degraded: 0, distributions: 0, returned: 0 };
+  for (let offset = 1; offset <= 40; offset += 1) {
+    for (const team of league.teams) team.owner.cash += annual.get(team.id);
+    const round = runFacilityInvestmentRound({ league, year: 2025 + offset, controlledTeamId: "ZZZ" });
+    paths.investments += round.investments.length;
+    paths.degraded += round.upkeep.length;
+    paths.distributions += round.distributions.length;
+    paths.returned += round.distributions.reduce((sum, entry) => sum + entry.returned, 0);
+    if ([1, 8, 15, 40].includes(offset)) snapshots.push(summarizeCapitalState(league, paths, offset));
+  }
+  return {
+    snapshots,
+    receipts: league.facilityCapitalReceipts,
+    finalOwners: league.teams.map((team) => ({
+      id: team.id,
+      cash: team.owner.cash,
+      facilities: team.owner.facilities,
+      capitalReturn: team.owner.capitalReturn
+    }))
+  };
+}
 
 function ownerFixture(overrides = {}) {
   return {
@@ -358,6 +440,110 @@ test("facility centres are measured from the league, not declared", () => {
     Math.abs(centres.training - mean(trainingLevels(session))) < 1e-9,
     "the centre must be the league's own mean"
   );
+});
+
+test("owner cash is measured as operating-liquidity runway against modeled football obligations", () => {
+  const healthy = ownerFixture({ cash: 180_000_000, staffBudget: 30_000_000 });
+  const distressed = ownerFixture({ cash: 28_000_000, staffBudget: 30_000_000 });
+  const healthyLiquidity = measureOwnerOperatingLiquidity(healthy);
+  const distressedPressure = operatingLiquidityPressure(distressed);
+
+  assert.equal(healthyLiquidity.meaning, "football-operations-liquidity");
+  assert.equal(
+    healthyLiquidity.obligations.total,
+    healthyLiquidity.obligations.staffBudget + healthyLiquidity.obligations.facilityUpkeep
+  );
+  assert.ok(healthyLiquidity.runwayYears > 1);
+  assert.equal(distressedPressure.pressure, 12);
+  assert.ok(distressedPressure.liquidity.runwayYears < healthyLiquidity.runwayYears);
+});
+
+test("generated owners make differentiated year-zero capital choices and emit factor receipts", () => {
+  const session = createSession({ seed: 20260307, startYear: 2026, controlledTeamId: "BUF" });
+  const centres = measureFacilityCentres(session.league);
+  const policies = session.league.teams.map((team) => ({
+    team,
+    policy: facilityAppetiteFactors(team, centres)
+  }));
+  const willing = policies.filter(({ policy }) => policy.appetite >= policy.threshold);
+  const profitFirst = policies.filter(({ team }) => team.owner.personality === "profit-first");
+  const profitFirstWilling = profitFirst.filter(({ policy }) => policy.appetite >= policy.threshold);
+  const builders = policies.filter(({ team }) => team.owner.personality === "legacy-builder");
+  const buildersWilling = builders.filter(({ policy }) => policy.appetite >= policy.threshold);
+
+  assert.ok(willing.length >= 8 && willing.length <= 24, `expected a differentiated market, received ${willing.length}/32 willing clubs`);
+  assert.ok(profitFirstWilling.length < profitFirst.length, "profit-first cannot be a decorative trait");
+  assert.ok(buildersWilling.length > profitFirstWilling.length, "legacy builders should clear the capital bar more often");
+  for (const { policy } of policies) {
+    assert.equal(policy.provenance, "seeded-policy-calibration-not-external-measurement");
+    assert.ok(Number.isFinite(policy.factors.liquidityRunwayYears));
+    assert.ok(Number.isFinite(policy.factors.traitFactor));
+    assert.ok(Number.isFinite(policy.factors.marketNeedFactor));
+  }
+
+  const round = runFacilityInvestmentRound({ league: session.league, year: 2026, controlledTeamId: "BUF" });
+  assert.equal(round.decisions.length, 32);
+  assert.ok(round.decisions.some((entry) => entry.outcome === "invested"));
+  assert.ok(round.decisions.some((entry) => entry.outcome === "sit-out"));
+  assert.equal(round.decisions.find((entry) => entry.teamId === "BUF").outcome, "player-authority");
+  assert.equal(session.league.facilityCapitalReceipts.length, 32);
+});
+
+test("owner capital returns remove only true excess and are idempotent within a league year", () => {
+  const owner = ownerFixture({
+    cash: 400_000_000,
+    personality: "profit-first",
+    priorities: { championships: 62, profit: 90, loyalty: 50 }
+  });
+  const measured = measureOwnerOperatingLiquidity(owner);
+  const first = applyOwnerCapitalReturn(owner, 2026);
+
+  assert.ok(first.returned > 0);
+  assert.ok(owner.cash >= measured.targetCash, "a distribution may never cross the operating capital envelope");
+  assert.equal(first.cashBefore - first.cashAfter, first.returned);
+  const cashAfter = owner.cash;
+
+  const retry = applyOwnerCapitalReturn(owner, 2026);
+  assert.equal(retry.returned, first.returned, "the receipt remains truthful about what the year returned");
+  assert.equal(retry.applied, false);
+  assert.equal(retry.reasonCode, "capital-return-already-settled");
+  assert.equal(owner.cash, cashAfter, "a retried offseason stage cannot distribute twice");
+});
+
+test("the 1/8/15/40-year capital replay is bounded, differentiated, and deterministic", () => {
+  const session = createSession({ seed: 20260307, startYear: 2026, controlledTeamId: "BUF" });
+  const first = runCapitalHorizon(session.league);
+  const replay = runCapitalHorizon(session.league);
+
+  assert.deepEqual(replay, first, "the same generated league and revenue envelope must replay byte-for-byte");
+  assert.deepEqual(first.snapshots.map((entry) => entry.year), [1, 8, 15, 40]);
+  for (const snapshot of first.snapshots) {
+    assert.ok(snapshot.cash.p10 >= FACILITY_INVESTMENT_PROFILE.minimumCashReserve / 1_000_000);
+    assert.ok(snapshot.cash.p90 < 260, `cash p90 compounded outside the calibrated envelope at year ${snapshot.year}`);
+    assert.ok(snapshot.cash.max < 300, `the richest club escaped the bounded operating-liquidity model at year ${snapshot.year}`);
+    assert.ok(snapshot.facilities.mean >= 70 && snapshot.facilities.mean <= 85);
+    assert.ok(snapshot.facilities.min < snapshot.facilities.max, "the differentiator must retain a lower and upper tail");
+    assert.equal(snapshot.facilities.atCeiling, 0, "the league may not silently flatten at the facility ceiling");
+  }
+  assert.ok(first.snapshots.at(-1).paths.investments > 0);
+  assert.ok(first.snapshots.at(-1).paths.distributions > 0);
+  assert.ok(first.snapshots.at(-1).paths.returned > 0);
+  assert.equal(first.receipts.length, 256, "factor receipts remain bounded to eight league-years");
+
+  // The steady envelope need not manufacture distress, so replay the same four
+  // horizons with one club receiving no operating contribution. That path must
+  // degrade gradually, retain the reserve, and remain deterministic too.
+  const distressedTeamId = session.league.teams[0].id;
+  const distressed = runCapitalHorizon(session.league, { distressedTeamId });
+  const distressedReplay = runCapitalHorizon(session.league, { distressedTeamId });
+  assert.deepEqual(distressedReplay, distressed);
+  assert.deepEqual(distressed.snapshots.map((entry) => entry.year), [1, 8, 15, 40]);
+  for (const snapshot of distressed.snapshots) {
+    assert.ok(snapshot.paths.degraded >= snapshot.year, `deferred maintenance stopped before year ${snapshot.year}`);
+    assert.ok(snapshot.cash.p10 >= FACILITY_INVESTMENT_PROFILE.minimumCashReserve / 1_000_000);
+  }
+  const distressedOwner = distressed.finalOwners.find((owner) => owner.id === distressedTeamId);
+  assert.ok(distressedOwner.facilities.training < 95 || distressedOwner.facilities.rehab < 90);
 });
 
 // ── The gate price becomes a decision ───────────────────────────────────────

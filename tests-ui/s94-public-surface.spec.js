@@ -148,6 +148,21 @@ test("the Boardroom is a real surface and the owner economy lives there", async 
   await expect(boardroom.locator("#ownerTable")).not.toBeEmpty();
 });
 
+test("shared gameplay routes resolve to an exact target inside their declared tab", async ({ page }) => {
+  await startFranchise(page);
+  const routes = await page.evaluate(async () => {
+    const { GAMEPLAY_SURFACE_ROUTES } = await import("./lib/gameplayNavigation.js");
+    return GAMEPLAY_SURFACE_ROUTES;
+  });
+
+  for (const [name, route] of Object.entries(routes)) {
+    const target = page.locator(`#${route.targetId}`);
+    await expect(target, `${name} target exists`).toHaveCount(1);
+    const owningTab = await target.evaluate((node) => node.closest(".tab-panel")?.id || null);
+    expect(owningTab, `${name} target belongs to ${route.targetTab}`).toBe(route.targetTab);
+  }
+});
+
 test("developer diagnostics do not ship to players, and open for ?dev=1", async ({ page }) => {
   await startFranchise(page);
   await page.locator('[data-tab="settingsTab"]').first().click();

@@ -85,8 +85,8 @@ export const FACILITY_INVESTMENT_PROFILE = Object.freeze({
   costExponent: 2.1,
   /** Points of facility a single club may buy in one league year, per facility. */
   annualPointAllowance: 3,
-  /** A club may not spend itself below this. `cashPressure` fires at 35M, so a
-   *  club that builds to the floor is deliberately buying owner heat. */
+  /** A club may not spend itself below this operating reserve. Owner pressure is
+   *  derived from runway against modeled football obligations, not nominal cash. */
   minimumCashReserve: 20_000_000,
   /**
    * Annual upkeep at the top of the range, per facility. See `facilityUpkeepCost`

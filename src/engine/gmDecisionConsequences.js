@@ -1,5 +1,6 @@
 import { initGmLegacy } from "./gmLegacyScore.js";
 import { buildGmDecisionBoundary, GM_DECISION_CATALOG } from "./gmDecisionAuthority.js";
+import { gmDecisionSurface } from "../../public/lib/gameplayNavigation.js";
 
 function normalizePayload(payload = {}) {
   const decisionId = String(payload.decisionId || payload.id || "").trim().toLowerCase();
@@ -210,7 +211,9 @@ export function resolveGmDecisionConsequence(payload = {}) {
   const normalized = normalizePayload(payload);
   if (!normalized) return null;
   const definition = GM_DECISION_CATALOG[normalized.decisionId]?.choices?.[normalized.choiceId];
-  return definition ? { ...normalized, ...definition, appliedAt: Date.now() } : null;
+  return definition
+    ? { ...normalized, ...definition, ...gmDecisionSurface(normalized.choiceId), appliedAt: Date.now() }
+    : null;
 }
 
 function createCommitment(session, consequence, teamId, entryId, immediateError = null) {

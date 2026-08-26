@@ -65,6 +65,8 @@
     "lib/tabHistory.js",
     "lib/tabSettings.js",
     "lib/gistSync.js",
+    "lib/gistAuthentication.js",
+    "lib/gistVerification.js",
     "lib/franchiseNewsletter.js",
     "lib/leagueStoryExport.js",
     "lib/seasonEpilogue.js",

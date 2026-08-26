@@ -354,91 +354,243 @@ export function buildDivisionRankMap(league) {
   return rankMap;
 }
 
-export function runPlayoffsAndSuperBowl({ league, statBook, year, rng, mode = "drive" }) {
-  const afc = runConferencePlayoffs({
-    league,
-    statBook,
-    year,
-    rng,
-    conference: "AFC",
-    mode
-  });
-  const nfc = runConferencePlayoffs({
-    league,
-    statBook,
-    year,
-    rng,
-    conference: "NFC",
-    mode
-  });
-  const afcChampion = afc.champion;
-  const nfcChampion = nfc.champion;
+export const POSTSEASON_STATE_SCHEMA_VERSION = "1.0";
 
-  const superBowlResult = simulateGame({
-    league,
-    statBook,
-    homeTeamId: afcChampion.id,
-    awayTeamId: nfcChampion.id,
+const POSTSEASON_STAGE_ORDER = Object.freeze([
+  "AFC-wildcard",
+  "AFC-divisional",
+  "AFC-conference",
+  "NFC-wildcard",
+  "NFC-divisional",
+  "NFC-conference",
+  "NFL-super-bowl"
+]);
+
+function teamForPostseason(league, teamId) {
+  return league.teams.find((team) => team.id === teamId) || null;
+}
+
+function seedForPostseason(state, teamId) {
+  for (const conference of NFL_STRUCTURE.conferences) {
+    const seed = state.seeds[conference].find((entry) => entry.teamId === teamId)?.seed;
+    if (seed != null) return seed;
+  }
+  return null;
+}
+
+function conferenceFromStage(stage) {
+  return stage.startsWith("AFC-") ? "AFC" : stage.startsWith("NFC-") ? "NFC" : "NFL";
+}
+
+function roundFromStage(stage) {
+  return stage.replace(/^(AFC|NFC|NFL)-/, "");
+}
+
+function matchupIds(left, right) {
+  return [left.id, right.id];
+}
+
+function buildWildcardMatchups(state, conference) {
+  const bySeed = Object.fromEntries(state.seeds[conference].map((entry) => [entry.seed, entry.teamId]));
+  return [[2, 7], [3, 6], [4, 5]].map(([high, low]) => [bySeed[high], bySeed[low]]);
+}
+
+function buildDivisionalMatchups(state, league, conference) {
+  const seedOneId = state.seeds[conference].find((entry) => entry.seed === 1).teamId;
+  const survivors = [seedOneId, ...state.roundWinners];
+  const topSeed = teamForPostseason(league, seedOneId);
+  const opponentForTop = lowestRemaining(
+    survivors.filter((teamId) => teamId !== seedOneId).map((teamId) => teamForPostseason(league, teamId))
+  );
+  const otherTwo = survivors
+    .filter((teamId) => teamId !== seedOneId && teamId !== opponentForTop.id)
+    .map((teamId) => teamForPostseason(league, teamId))
+    .sort((a, b) => a.playoffSeed - b.playoffSeed);
+  return [matchupIds(topSeed, opponentForTop), matchupIds(otherTwo[0], otherTwo[1])];
+}
+
+function buildConferenceMatchup(state, league) {
+  const finalists = state.roundWinners
+    .map((teamId) => teamForPostseason(league, teamId))
+    .sort((a, b) => a.playoffSeed - b.playoffSeed);
+  return [matchupIds(finalists[0], finalists[1])];
+}
+
+function advancePostseasonStage(state, league) {
+  const currentStageIndex = POSTSEASON_STAGE_ORDER.indexOf(state.stage);
+  const conference = conferenceFromStage(state.stage);
+  const round = roundFromStage(state.stage);
+
+  if (round === "conference") state.conferenceChampions[conference] = state.roundWinners[0];
+  if (round === "super-bowl") {
+    state.stage = "complete";
+    state.status = "completed";
+    state.matchups = [];
+    state.gameIndex = 0;
+    state.roundWinners = [];
+    state.standings = Object.fromEntries(NFL_STRUCTURE.conferences.map((name) => [
+      name,
+      conferenceStandings(league, name).map((team) => ({
+        teamId: team.id,
+        wins: team.season.wins,
+        losses: team.season.losses,
+        ties: team.season.ties
+      }))
+    ]));
+    state.divisionRanksForNextYear = buildDivisionRankMap(league);
+    return state;
+  }
+
+  state.stage = POSTSEASON_STAGE_ORDER[currentStageIndex + 1];
+  state.gameIndex = 0;
+  if (state.stage.endsWith("-wildcard")) {
+    state.roundWinners = [];
+    state.matchups = buildWildcardMatchups(state, conferenceFromStage(state.stage));
+  } else if (state.stage.endsWith("-divisional")) {
+    state.matchups = buildDivisionalMatchups(state, league, conferenceFromStage(state.stage));
+    state.roundWinners = [];
+  } else if (state.stage.endsWith("-conference")) {
+    state.matchups = buildConferenceMatchup(state, league);
+    state.roundWinners = [];
+  } else {
+    state.matchups = [[state.conferenceChampions.AFC, state.conferenceChampions.NFC]];
+    state.roundWinners = [];
+  }
+  return state;
+}
+
+export function createPostseasonState({ league, year }) {
+  const seeds = Object.fromEntries(NFL_STRUCTURE.conferences.map((conference) => [
+    conference,
+    getPlayoffSeeds(league, conference).map((team) => ({ teamId: team.id, seed: team.playoffSeed }))
+  ]));
+  const state = {
+    schemaVersion: POSTSEASON_STATE_SCHEMA_VERSION,
+    kind: "postseason-round-state",
     year,
-    week: 0,
-    rng,
-    mode,
-    allowTie: false,
-    seasonType: "playoffs",
-    label: "super-bowl",
-    neutralSite: true
-  });
-
-  const champion = superBowlResult.winnerId === afcChampion.id ? afcChampion : nfcChampion;
-  const runnerUp = champion.id === afcChampion.id ? nfcChampion : afcChampion;
-  const standings = {
-    AFC: conferenceStandings(league, "AFC").map((t) => ({
-      teamId: t.id,
-      wins: t.season.wins,
-      losses: t.season.losses,
-      ties: t.season.ties
-    })),
-    NFC: conferenceStandings(league, "NFC").map((t) => ({
-      teamId: t.id,
-      wins: t.season.wins,
-      losses: t.season.losses,
-      ties: t.season.ties
-    }))
-  };
-
-  return {
-    standings,
+    status: "active",
+    stage: "AFC-wildcard",
+    gameIndex: 0,
+    seeds,
+    matchups: [],
+    roundWinners: [],
+    conferenceChampions: { AFC: null, NFC: null },
     bracket: {
-      AFC: afc.bracket,
-      NFC: nfc.bracket,
-      seeds: {
-        AFC: afc.seeds,
-        NFC: nfc.seeds
-      },
-      superBowl: {
-        homeTeamId: afcChampion.id,
-        awayTeamId: nfcChampion.id,
-        homeScore: superBowlResult.homeScore,
-        awayScore: superBowlResult.awayScore,
-        winnerId: superBowlResult.winnerId
-      }
+      AFC: { wildcard: [], divisional: [], conference: [] },
+      NFC: { wildcard: [], divisional: [], conference: [] },
+      seeds,
+      superBowl: null
     },
-    superBowl: {
-      homeTeamId: afcChampion.id,
-      awayTeamId: nfcChampion.id,
-      homeScore: superBowlResult.homeScore,
-      awayScore: superBowlResult.awayScore,
-      championTeamId: champion.id,
-      runnerUpTeamId: runnerUp.id,
-      gameId: superBowlResult.gameId
-    },
-    gameArchiveEntries: [
-      ...afc.gameDetails,
-      ...nfc.gameDetails,
-      { conference: "NFL", round: "super-bowl", ...superBowlResult }
-    ],
-    divisionRanksForNextYear: buildDivisionRankMap(league)
+    superBowl: null,
+    gameArchiveEntries: [],
+    standings: null,
+    divisionRanksForNextYear: null
   };
+  state.matchups = buildWildcardMatchups(state, "AFC");
+  return state;
+}
+
+export function nextPostseasonGame(state = {}) {
+  if (state.status !== "active") return null;
+  const matchup = state.matchups?.[state.gameIndex];
+  if (!matchup) return null;
+  const conference = conferenceFromStage(state.stage);
+  const round = roundFromStage(state.stage);
+  return {
+    conference,
+    round,
+    homeTeamId: matchup[0],
+    awayTeamId: matchup[1],
+    neutralSite: round === "super-bowl"
+  };
+}
+
+export function simulateNextPostseasonGame({ state, league, statBook, year, rng, mode = "drive" }) {
+  const next = nextPostseasonGame(state);
+  if (!next) return null;
+  const higherSeedTeam = teamForPostseason(league, next.homeTeamId);
+  const lowerSeedTeam = teamForPostseason(league, next.awayTeamId);
+  let result;
+  let winner;
+  if (next.round === "super-bowl") {
+    result = simulateGame({
+      league,
+      statBook,
+      homeTeamId: higherSeedTeam.id,
+      awayTeamId: lowerSeedTeam.id,
+      year,
+      week: 0,
+      rng,
+      mode,
+      allowTie: false,
+      seasonType: "playoffs",
+      label: "super-bowl",
+      neutralSite: true
+    });
+    winner = result.winnerId === higherSeedTeam.id ? higherSeedTeam : lowerSeedTeam;
+    const runnerUp = winner.id === higherSeedTeam.id ? lowerSeedTeam : higherSeedTeam;
+    state.bracket.superBowl = {
+      homeTeamId: higherSeedTeam.id,
+      awayTeamId: lowerSeedTeam.id,
+      homeScore: result.homeScore,
+      awayScore: result.awayScore,
+      winnerId: result.winnerId
+    };
+    state.superBowl = {
+      homeTeamId: higherSeedTeam.id,
+      awayTeamId: lowerSeedTeam.id,
+      homeScore: result.homeScore,
+      awayScore: result.awayScore,
+      championTeamId: winner.id,
+      runnerUpTeamId: runnerUp.id,
+      gameId: result.gameId
+    };
+  } else {
+    const matchup = simulateBracketGame({
+      league,
+      statBook,
+      year,
+      rng,
+      higherSeedTeam,
+      lowerSeedTeam,
+      mode,
+      label: `${next.conference.toLowerCase()}-${next.round}`
+    });
+    result = matchup.result;
+    winner = matchup.winner;
+    state.bracket[next.conference][next.round].push(bracketGameRow({
+      conference: next.conference,
+      round: next.round,
+      higherSeedTeam,
+      lowerSeedTeam,
+      result
+    }));
+  }
+
+  state.gameArchiveEntries.push({ conference: next.conference, round: next.round, ...result });
+  state.roundWinners.push(winner.id);
+  state.gameIndex += 1;
+  if (state.gameIndex >= state.matchups.length) advancePostseasonStage(state, league);
+  return { game: result, winnerId: winner.id, conference: next.conference, round: next.round };
+}
+
+export function postseasonResultFromState(state) {
+  if (state?.status !== "completed") return null;
+  return {
+    standings: state.standings,
+    bracket: state.bracket,
+    superBowl: state.superBowl,
+    gameArchiveEntries: state.gameArchiveEntries,
+    divisionRanksForNextYear: state.divisionRanksForNextYear
+  };
+}
+
+export function runPlayoffsAndSuperBowl({ league, statBook, year, rng, mode = "drive" }) {
+  const state = createPostseasonState({ league, year });
+  while (state.status === "active") {
+    simulateNextPostseasonGame({ state, league, statBook, year, rng, mode });
+  }
+  return postseasonResultFromState(state);
 }
 
 export function simulateSeason({
