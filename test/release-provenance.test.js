@@ -4,7 +4,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { buildReleaseProvenanceReport } from "../scripts/verify-release-provenance.mjs";
-import { fingerprintArtifactDirectory } from "../scripts/lib/artifact-fingerprint.mjs";
+import { compactArtifactFingerprint, fingerprintArtifactDirectory } from "../scripts/lib/artifact-fingerprint.mjs";
 
 const expected = {
   canonicalOrigin: "https://playfranchisearchitect.com",
@@ -68,4 +68,21 @@ test("artifact fingerprint is deterministic and changes with deployable bytes", 
   } finally {
     await fs.rm(dir, { recursive: true, force: true });
   }
+});
+
+test("health receipts retain artifact identity without embedding the per-file ledger", () => {
+  const compact = compactArtifactFingerprint({
+    algorithm: "sha256",
+    digest: "a".repeat(64),
+    files: 207,
+    entries: [{ path: "large.js", bytes: 70_000, sha256: "b".repeat(64) }],
+    exclusions: ["_health", "deploy-manifest.json"]
+  });
+  assert.deepEqual(compact, {
+    algorithm: "sha256",
+    digest: "a".repeat(64),
+    files: 207,
+    exclusions: ["_health", "deploy-manifest.json"]
+  });
+  assert.equal("entries" in compact, false);
 });

@@ -44,3 +44,12 @@ export async function fingerprintArtifactDirectory(root, { exclude = ["_health",
     exclusions: [...excluded].sort()
   };
 }
+
+export function compactArtifactFingerprint(fingerprint = {}) {
+  return {
+    algorithm: fingerprint.algorithm || null,
+    digest: fingerprint.digest || null,
+    files: Number.isInteger(fingerprint.files) ? fingerprint.files : null,
+    exclusions: Array.isArray(fingerprint.exclusions) ? [...fingerprint.exclusions] : []
+  };
+}
