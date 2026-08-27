@@ -1,44 +1,38 @@
-# Latest Handoff — Session 95 → Session 96
+# Latest Handoff — Session 96 → Session 97
 
 ## Session Intent
 
-Run the full `/arc` from live repository evidence, implement every verified audit finding plus second-order innovations at the project quality bar, verify the exact candidate on stable staging, commit and push directly to `main`, fully deploy production, and close out Session 96 without changing the independent public-launch HOLD unless its named evidence gates are genuinely satisfied.
+Continue from a fully deployed, exact-evidence S96 boundary. Preserve the separation between technical deployment and public launch.
 
 ## Where We Left Off
 
-- Session 95 completed the full `/arc`; all seven ranked audit items are shipped.
-- Exact candidate `92e4190a4221383c8352ea6321d65528cb449e74` is live in stable staging and production at artifact `ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7`.
-- Production workflow 32933281222 is green. Stable staging passed 14/14 at deployment `f026f004-d9ed-4379-b17d-f249b80e9f7a`; rollback `609fbc29-a887-4419-9803-65983f807fb3` is available. Production passed 10/10.
-- Unified release authority is `verified`; `launchReady` remains `false`. Technical deployment is complete, but public launch/SPARKED remains HOLD.
-- Canonical Node receipt is 1,280/1,280; Playwright is 54/54; responsive evidence passed 251 local states with 92 retained reviewed captures, and final CI reran 236 required states.
+- All four S96 audit items are shipped.
+- Exact candidate `590d145ef86b3520a6b7b24dbd159eb60788905a` is live on stable staging and production at artifact `5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1`.
+- CI workflow 33026206650 and promotion workflow 33026545885 are green. Staging passes 14/14 at deployment `7b67032b-358f-4cc1-83f0-d2a5ec28ed29` with rollback `9b9e00f8-418b-4636-9e1b-493d8c2a0c94`; production passes 10/10.
+- Unified release authority is `verified`; `launchReady` remains `false`.
+- Implementation-boundary canonical Node receipt is 1,293/1,293; final-SHA CI is 1,290/1,290 across five push shards; Playwright is 54/54; focused release/staging checks are 26/26 and 19/19; responsive evidence passed 255 states with 96 retained reviewed captures.
 
 ## What Shipped
 
-1. **Publication safety.** `deploy-pages.yml` runs the full browser suite before upload or publication. The stale player-development assertion now reads the exported profile version.
-2. **Incremental postseason.** Postseason state persists round by round. One controlled-team game resolves per command, exact plans survive save/resume, and batch season simulation consumes every gate.
-3. **One navigation authority.** `public/lib/gameplayNavigation.js` owns phase-to-surface destinations used by decisions, consequences, chapters, and weekly plans.
-4. **Stationary owner capital.** `src/domain/ownerEconomy.js` models football-operations liquidity, obligations, reserve runway, traits, investment need, and bounded distributions. Year-zero willingness is 19/32; year-40 cash p90/max is $152.0M/$201.2M; facility range remains 64–84 with no club at the ceiling.
-5. **Honest cloud-save security.** Checksums are described as corruption detection. Optional PBKDF2-derived HMAC adds authorship authentication without claiming encryption; legacy saves remain supported.
-6. **Recoverable realism evidence.** The scheduled workflow has aligned budgets, writes incremental progress, and uploads partial artifacts under `always()`.
-7. **Exact release proof.** Visual, performance, stable staging, and production authorities all name the same SHA and artifact.
+1. **Mobile parity.** The navigation trigger is 44×44px and the 100dvh drawer respects all four safe-area insets.
+2. **Startup truth.** Orientation validates dates, reads inline SIL v3 categories and intent bodies, accepts session-suffixed audits, and refreshes stale Genius authority.
+3. **Actionable release binding.** Artifact fingerprints carry deterministic per-file entries; failures print expected/observed identities and first-file deltas.
+4. **Bounded analytics proof.** A secrets-gateway-backed Cloudflare verifier records aggregate page loads without claiming users, sessions, engagement, retention, or cohort evidence.
+5. **Evidence hardening.** Global Escape no longer wakes cold lazy islands, and responsive capture waits for settled rendered geometry instead of sleeping.
+6. **Bounded health identity.** Final integration keeps `_health` compact while retaining the full 207-file digest ledger in the deploy manifest; launch evidence and promotion bind both prove the intended representation.
 
-Second-order work removed repeated Hall of Fame candidate rescoring (about 16.8s → 7.1s for the measured two-season dashboard probe) and fixed whole-season delegation for the new postseason gates.
+## Start Here in Session 97
 
-## Release Lesson
-
-The first production run correctly refused promotion because CI and staging digests differed. Only sitemap files differed: sitemap lastmod values read Git history, and CI's shallow checkout could see only HEAD while staging used full history. The Pages artifact job now uses `fetch-depth: 0`, and `test/studio-protocol-smoke.test.js` pins the invariant. Do not relax the exact-artifact bind.
-
-## Start Here in Session 96
-
-1. Verify the S94 analytics beacon reports a real pageview now that the corrected CSP is live. Admission is proven; reporting is not.
-2. Observe the first genuine opted-in community cohort and validate freshness, suppression, deletion, and abuse ceilings without manufacturing activity.
-3. Reconcile launch authority only from Zoho receive/reply-as evidence, explicit public-launch approval, and the authoritative lifecycle registry. Verify external Obelisk relying-party posture where applicable.
-4. Improve bind-failure diagnostics to print both digests and the first differing files.
-5. Treat GitHub Actions Node 24 deprecation warnings as advisory until official Node 24-native action majors are available.
+1. Observe the first genuine opted-in cohort; validate freshness, suppression, deletion, and abuse ceilings without manufacturing activity.
+2. Restore `/stats` to the sitemap only when the community snapshot clears its suppression threshold.
+3. Reconcile launch only from Zoho receive/reply-as evidence, explicit SHA-bound public-launch approval, authoritative lifecycle state, and applicable external Obelisk relying-party proof.
+4. If Studio Ops adopts Ark receipt `01K103S9CJB19ECBBDE12BC911`, switch analytics verification to the least-privilege `cloudflare.analytics-read` capability.
+5. Treat GitHub Actions Node 24 warnings as advisory until official Node 24-native action majors are available.
 
 ## Boundaries
 
-- Public launch is not approved by the technical deployment authorization.
-- Do not mark SPARKED from repo-local evidence while registry/local lifecycle authority disagrees.
-- Do not fabricate cohort, analytics, email, identity, or founder-approval evidence.
-- No new creative direction was introduced in S95; the Creative Direction Record was reviewed and left unchanged.
+- Technical deployment is complete; public launch/SPARKED is not approved.
+- Do not fabricate cohort, analytics, email, identity, lifecycle, or founder-approval evidence.
+- Aggregate page loads prove reporting only.
+- CDR was reviewed in S96; no new creative direction or DECISIONS entry was owed.
+- The Studio closeout autopilot misrouted Studio-level refresh work while invoked with `--project .`; it was stopped before commit, the local brief was regenerated from project authority, and the defect was reported through Ark receipt `01K10BKC0C4B276631DD0B1360`.

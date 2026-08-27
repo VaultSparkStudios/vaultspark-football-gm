@@ -13,7 +13,9 @@ L3 is the chosen rung for all four verified items. Technical deployment is autho
 
 ## Execution status
 
-- Startup authority: implemented; focused parser tests pass and the S96 brief now reports Active 0d, real S95 category scores, and the live S96 audit queue.
-- Promotion bind: implemented; deterministic per-file SHA-256 entries, a reusable verifier, workflow integration, and negative controls pass.
-- Analytics proof: implemented; injected-fetch aggregate/privacy/authz tests pass. Live structured receipt pending.
-- Mobile navigation: implemented; 44px trigger and four-edge safe-area padding added. Static/browser and rendered-pixel verification pending.
+- Startup authority: shipped; focused parser tests pass and the S96 brief reports Active 0d, real S95 category scores, and the live S96 audit queue.
+- Promotion bind: shipped; deterministic per-file SHA-256 entries, a reusable verifier, workflow integration, and positive/legacy/mismatch controls pass.
+- Analytics proof: shipped; injected-fetch aggregate/privacy/authz tests and the live structured S96 receipt pass. Reporting is proven; engagement, retention, and cohort claims remain withheld.
+- Mobile navigation: shipped; 44px trigger, four-edge safe-area padding, static/browser regressions, 255 responsive captures, and the manually reviewed 96-image hash-bound receipt pass. The rendered-pixel loop also repaired a cold lazy-island Escape error and hardened the evidence harness against mid-transition screenshots.
+
+Validation: implementation-boundary canonical Node 1,293/1,293; final-SHA CI 1,290/1,290 across five push shards in workflow 33026206650; Playwright 54/54; focused release/staging checks 26/26 and 19/19; exact Pages build/smoke; and CANON-053 PASS. Final candidate `590d145ef86b3520a6b7b24dbd159eb60788905a` passed 255 responsive states with 96 retained reviewed captures, stable staging 14/14, production 10/10, hosted performance, and promotion workflow 33026545885. All authorities bind artifact `5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1`. Technical deployment is complete; public launch remains HOLD.

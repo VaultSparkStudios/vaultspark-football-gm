@@ -1,5 +1,12 @@
 # Agent Memory
 
+## Session 96 durable patterns
+
+- Rendered-state evidence must poll bounded geometry before capture. A fixed sleep can pass locally and still freeze mid-animation under throttled Linux CI.
+- Aggregate analytics page loads prove that reporting works; they do not prove people, sessions, engagement, retention, or a cohort.
+- Exact-artifact refusal should remain fail-closed while printing expected/observed identities and first-file deltas from a deterministic per-file ledger.
+- Generated orientation needs negative controls for inline schemas, invalid dates, and stale caches; a correct-looking total can coexist with corrupt category rows.
+
 ## Session 87 durable patterns
 
 - A salary market is one versioned domain authority. Generated contracts, player offers and CPU bidding must share it or cap pressure becomes cosmetic.

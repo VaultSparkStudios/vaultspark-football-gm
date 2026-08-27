@@ -4,7 +4,6 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 
 ## Now
 
-- [ ] Verify the analytics beacon actually reports once the S94 CSP reaches production. The policy now admits it and the negative control proves the old policy refused it, but "admitted" is not "reporting" — confirm a real pageview lands, and treat a still-silent dashboard as a live finding rather than a deploy delay.
 - [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
 - [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
 
@@ -15,8 +14,19 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Reconsider the mobile tab-target count on its own terms. S94 skipped the 14-to-6 regroup because the rail is already grouped under five task headers and the remaining cost is target count on a phone — which is the founder-deferred item needing its own visual-evidence re-baseline budget, not a side effect of an information-architecture pass.
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
-- [ ] Improve exact-artifact bind failures so the release log prints both observed digests before exiting; the S95 gate stopped correctly, but the first failure was more opaque than it needed to be.
 - [ ] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker.
+
+## Session 96 — Full arc: trustworthy orientation, diagnosable release identity, and mobile parity (2026-08-26)
+
+- [x] Make startup orientation reject invalid dates, parse inline SIL v3 categories, derive intent from entry bodies, and content-refresh stale Genius authority.
+- [x] Add a deterministic per-file artifact ledger and a reusable promotion-bind verifier that prints both identities plus first-file deltas.
+- [x] Turn Cloudflare aggregate analytics reporting into a repeatable secrets-gateway-backed receipt while withholding user, engagement, retention, and cohort claims.
+- [x] Raise the mobile trigger to 44×44px and make the 100dvh drawer four-edge safe-area aware.
+- [x] Root-fix the cold lazy-island Escape error found by rendered pixels.
+- [x] Replace wall-clock animation waiting with bounded rendered-geometry settlement after Linux CI exposed the portability defect.
+- [x] Bind visual, hosted-performance, stable-staging, and production authority to `590d145ef86b3520a6b7b24dbd159eb60788905a` / `5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1`.
+
+**Verification:** implementation-boundary canonical Node 1,293/1,293; final-SHA CI 1,290/1,290 across five push shards in workflow 33026206650; Playwright 54/54; focused release/staging checks 26/26 and 19/19; responsive 255 states with 96 retained/reviewed; staging 14/14; production 10/10; promotion workflow 33026545885 green. Technical deployment is complete. Public launch remains HOLD.
 
 ## Session 95 — Full arc: one decision beat per playoff round, one exact artifact through production (2026-08-26)
 

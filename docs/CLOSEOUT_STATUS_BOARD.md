@@ -1,30 +1,30 @@
-<!-- generated-by: scripts/render-closeout-board.mjs v1.1 -->
-<!-- generated-at: 2026-08-26 (Session 95 closeout) -->
+<!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
+<!-- generated-at: 2026-08-27 (Session 96 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S95 ══════╗
-║  Date: 2026-08-26  ·  SIL: 993/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S96 ══════╗
+║  Date: 2026-08-27  ·  SIL: 989/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
-║  Live:  🌐 LIVE  →  https://playfranchisearchitect.com/          ║
+║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Session 95 completed the full `/arc`; all seven ranked audit  ║
-║  ✓ Exact candidate `92e4190a4221383c8352ea6321d65528cb449e74` i  ║
-║  ✓ Production workflow 32933281222 is green. Stable staging pas  ║
+║  ✓ All four S96 audit items are shipped.                         ║
+║  ✓ Exact candidate `590d145ef86b3520a6b7b24dbd159eb60788905a` i  ║
+║  ✓ CI workflow 33026206650 and promotion workflow 33026545885 a  ║
 ║  ✓ Unified release authority is `verified`; `launchReady` remai  ║
-║  ✓ Canonical Node receipt is 1,280/1,280; Playwright is 54/54;   ║
+║  ✓ Implementation-boundary canonical Node receipt is 1,293/1,29  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 993/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 989/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
-║    Alignment          100  ██████████                            ║
+║    Alignment          99   ██████████                            ║
 ║    Momentum           100  ██████████                            ║
-║    Engagement         100  ██████████                            ║
+║    Engagement         98   ██████████                            ║
 ║    Process Qual       94   █████████░                            ║
 ║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
-║    Ecosystem          100  ██████████                            ║
+║    Ecosystem          99   ██████████                            ║
 ║    Capital            100  ██████████                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -33,35 +33,35 @@
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
+║  · context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
-║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
+║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 24 files  ·  M:17 A:0 D:0 ?:7                          ║
+║  Changes: 116 files  ·  M:15 A:101 D:0 ?:0                       ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ DEPLOYMENT ══════════════════════════════════════════════════╗
 ║  Staging:  https://staging.playfranchisearchitect.com  ·  cloud  ║
-║  Live:     https://playfranchisearchitect.com/  ·  🌐 LIVE (SPA  ║
+║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1280/1280                                        ║
-║  Validation:    unknown                                          ║
-║  IGNIS:         15d ago                                          ║
+║  Tests:         1293/1293 · STALE                                ║
+║  IGNIS:         16d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  17d ago                                          ║
-║  shells:        unknown · missing/stale enumeration              ║
+║  Sanitization:  18d ago                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  (no genius cache — run `node scripts/cache-genius-list.mjs`)    ║
+║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
+║      Latest audit has no open ranked items; run /audit for a ne  ║
+║      ↳ node scripts/ops.mjs genius-list                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 
-*Generated by `scripts/render-closeout-board.mjs v1.1`*
+*Generated by `scripts/render-closeout-board.mjs v1.0`*

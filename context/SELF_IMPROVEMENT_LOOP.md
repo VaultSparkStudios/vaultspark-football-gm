@@ -1,10 +1,32 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 95 closed at 993 / 1000 SIL v3.0. Seven reproduced audit findings shipped through an exact staging-to-production promotion: postseason now preserves the weekly decision beat, owner capital reaches a gated long-horizon equilibrium, cloud-save security claims match their mechanism, deep realism retains partial evidence, and browser-red candidates cannot publish. The first production attempt correctly stopped on a digest mismatch; tracing it to shallow Git history made sitemap identity deterministic rather than weakening the bind. Canonical receipt 1,280 / 1,280, Playwright 54 / 54, final release authority verified at `92e4190…` / `ca66c921…`.
+Rolling status: Session 96 closed at 989 / 1000 SIL v3.0. Four reproduced findings shipped through exact staging-to-production promotion: mobile navigation meets its declared target/safe-area contract, startup orientation reflects live truth, artifact-bind failures are actionable, and Cloudflare aggregate reporting is repeatably proven without inflating it into engagement evidence. The implementation-boundary canonical receipt is 1,293 / 1,293; final-SHA CI is 1,290 / 1,290 across five push shards; Playwright is 54 / 54; 255 responsive states retain 96 reviewed captures; and final release authority is verified at `590d145…` / `5a92bea…`. Doctor-driven final integration caught two representation defects—the ledger made `_health` exceed a downstream read bound, then the verifier expected the full ledger from the intentionally compact health document—so the final contract keeps identity compact in health and the complete 207-file ledger in the deploy manifest.
 
-Previously — Session 94 closed at 991 / 1000 after a live-origin audit found the site's own Content-Security-Policy refusing its injected analytics beacon and moved live economy controls into the Boardroom.
+Previously — Session 95 closed at 993 / 1000 after seven reproduced findings and an exact immutable staging-to-production promotion.
 <!-- rolling-status-end -->
+
+## 2026-08-26 — Session 96 Rendered Settlement and Exact Evidence
+
+SIL v3.0: **989 / 1000** (Dev Health 100, Creative Alignment 99, Momentum 100, Engagement 98, Process Quality 94, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 99, Capital Efficiency 100, Automation Coverage 100).
+
+**What changed the outcome.** Evidence was treated as a rendered-state contract. The first pixel loop exposed a global Escape handler waking cold lazy islands; manual inspection then exposed mid-transition drawer captures; Linux CI finally proved a fixed wait was not portable by catching geometry at −1.816px. The harness now polls bounded rendered geometry before capture, and the final exact candidate passed locally and in CI.
+
+**What went well.**
+
+- All four ranked premises were reproduced and shipped at L3.
+- Aggregate analytics is deliberately narrow: seven page loads prove reporting, not seven people, sessions, engagement, retention, or a cohort.
+- Release diagnostics now name both revisions/digests and the first differing paths while preserving fail-closed behavior.
+- Staging, production, visual, and hosted-performance receipts agree on one SHA and artifact.
+
+**What cost the session, and why Process Quality is 94.** Two candidate iterations were needed after the first implementation: rendered pixels found the cold-island Escape fault, and Linux CI invalidated the 320ms animation wait. Both were root-fixed and regression-covered, but the initial evidence harness encoded time rather than state.
+
+**Committed SIL follow-ups.**
+
+- [SIL] Rendered state is proven by settled geometry and inspected pixels, not a class transition or wall-clock sleep; CI can throttle animation frames.
+- [SIL] Aggregate analytics confirms reporting only; page loads do not prove users, sessions, engagement, or retention.
+- [SIL] A promotion verifier should emit expected/observed identities and first file deltas before refusing.
+- [SIL] Test generated orientation against modern inline schema, invalid dates, and stale caches; a plausible total can coexist with corrupt category details.
 
 ## 2026-08-26 — Session 95 One Decision Beat Per Round, One Artifact Through Production
 

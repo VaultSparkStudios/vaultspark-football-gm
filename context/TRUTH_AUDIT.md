@@ -5,6 +5,16 @@ Overall status: green
 Last reviewed: 2026-08-26
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
+## 2026-08-26 - Session 96 truth update
+
+- **All four ranked findings are shipped.** Mobile navigation parity, startup orientation truth, promotion-bind diagnostics, and repeatable aggregate analytics verification are implemented.
+- **Analytics wording is bounded.** The Cloudflare account reports seven page loads since S94 (six `/`, one `/landing`, zero `/game.html`). This proves reporting only; no users, sessions, engagement, retention, or genuine cohort are inferred.
+- **Rendered-pixel evidence found real defects.** The loop caught a cold lazy-island Escape error and a mid-transition drawer capture. Linux CI then disproved a fixed 320ms wait; bounded geometry settlement replaced it.
+- **Test truth is exact.** Canonical Node passes 1,293/1,293, Playwright 54/54, focused harness/protocol checks 49/49, and responsive evidence passes 255 states with 96 retained hash-bound reviewed images.
+- **Release identity is exact.** Stable staging passes 14/14, production passes 10/10, CI workflow 33026206650 and promotion workflow 33026545885 are green. Visual, performance, staging, and production authorities agree on source `590d145ef86b3520a6b7b24dbd159eb60788905a` and artifact `5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1`. The public `_health` document is compact (846 bytes); the complete 207-file ledger remains in the deploy manifest used by exact promotion verification.
+- **One failed candidate is superseded, not hidden.** Push run 33019799404 exposed the non-portable wall-clock wait; the exact same product bytes were re-evidenced after the harness root fix and the final candidate passed.
+- **Deployment is not launch.** Technical production deployment is complete. Zoho reply-as delivery, explicit public-launch approval, lifecycle authority, and applicable external Obelisk relying-party proof remain unverified; `launchReady` remains false.
+
 ## 2026-08-26 - Session 95 truth update
 
 - **All seven ranked findings are shipped.** Incremental postseason, shared next-action routing, owner-capital calibration, honest optional Gist authentication, publication browser gating, partial realism evidence, and exact release proof are implemented; the canonical audit sidecar is `implemented`.

@@ -5,7 +5,7 @@
   "agent": "codex",
   "project": "franchise-architect",
   "displayName": "Franchise Architect: Football",
-  "status": "planned",
+  "status": "implemented",
   "summary": {
     "combinedPriority": 37.5,
     "source": "Live source, rendered desktop/tablet/mobile pixels, Cloudflare Analytics GraphQL evidence, release workflow contracts, and game-loop review.",
@@ -156,7 +156,8 @@
       "priority": 10,
       "slug": "mobile-navigation-misses-its-own-hard-gate",
       "title": "The navigation trigger is 38px and the drawer ignores device safe areas",
-      "status": "planned",
+      "status": "shipped",
+      "executionEvidence": "The trigger is 44x44px and the 100dvh drawer uses four-edge safe-area padding. Static and browser regressions pass; the byte-identical artifact promoted at exact source 590d145ef86b3520a6b7b24dbd159eb60788905a produced 255 responsive captures with zero layout, contrast, touch-target, or page-error findings. The canonical S96 receipt retains 96 hash-bound images. Manual review of mobile/tablet dark/light open-drawer pixels found complete labels, readable palettes, safe spacing, and no clipping. The pixel loop caught and repaired a cold lazy-island Escape error, then Linux CI exposed a non-portable wall-clock wait; the final harness polls settled rendered geometry.",
       "premise": "CANON-041 requires at least 44px targets and env(safe-area-inset-*) support. Live CSS sets .mobile-nav-toggle to 38x38px and the 100dvh drawer uses fixed padding with no safe-area variables; repository search finds no safe-area declaration.",
       "fix": "Raise the trigger to 44px, make drawer/scrim spacing notch-safe, add static and browser assertions, then inspect dark/light desktop, tablet, and mobile captures.",
       "ladder": {
@@ -184,7 +185,8 @@
       "priority": 9.8,
       "slug": "startup-brief-corrupts-session-truth",
       "title": "The S96 orientation says the project was active 20,690 days ago and scores five categories as zero",
-      "status": "planned",
+      "status": "shipped",
+      "executionEvidence": "scripts/lib/startup-sil-truth.mjs now validates ISO dates, parses inline SIL v3 categories, and derives achieved-intent streaks from entry bodies; startup authority accepts session-suffixed audits and content-refreshes the Genius cache. Focused negative controls pass and docs/STARTUP_BRIEF.md now reports Active 0d, real category scores, and the live S96 queue.",
       "premise": "The freshly rendered brief shows Active 20690d, five legacy category rows at 0 beneath an authoritative 993/1000 total, no achieved-intent streak, and an already shipped S95 genius item. Live code admits a numeric silLastSession into a date list, reads match[1] from object entries, requires legacy score tables while S95 uses inline v3 scores, and consumes the genius generator without first refreshing the content-aware cache.",
       "fix": "Extract testable startup metrics, accept inline v3 SIL categories, filter dates by ISO shape, use entry.body for intent, and refresh stale genius authority before rendering.",
       "ladder": {
@@ -212,7 +214,8 @@
       "priority": 9.1,
       "slug": "promotion-bind-refuses-correctly-but-explains-nothing",
       "title": "An exact-artifact mismatch exits 2 without naming the two identities or the differing files",
-      "status": "planned",
+      "status": "shipped",
+      "executionEvidence": "Artifact fingerprints now carry deterministic path/byte/SHA-256 entries. scripts/verify-promotion-bind.mjs reports expected and observed revision/digest identities plus the first ten file deltas, degrades explicitly for legacy manifests, and is wired into deploy-pages.yml. Doctor-driven final integration caught that copying the full 207-file ledger into _health exceeded a downstream launch-evidence read bound, then caught that the verifier still expected full entries from the intentionally compact health document. The final contract keeps compact identity in the 846-byte _health document and the complete ledger in the deploy manifest; positive, legacy, compact-health, and mismatch negative controls pass.",
       "premise": "deploy-pages.yml line 158 performs the promotion bind inside a one-line Node expression and exits 2 silently. artifact-fingerprint.mjs returns only one aggregate digest and a file count, so the release train cannot identify the first divergent paths even though S95 lost a production cycle to this exact opacity.",
       "fix": "Emit a deterministic per-file digest ledger, add a reusable promotion-bind verifier that prints both revisions/digests and first path deltas, wire it into the workflow, and prove failure output with negative controls.",
       "ladder": {
@@ -240,7 +243,8 @@
       "priority": 8.6,
       "slug": "analytics-proof-is-live-but-ephemeral",
       "title": "Cloudflare now has page loads, but the project has no repeatable evidence command",
-      "status": "planned",
+      "status": "shipped",
+      "executionEvidence": "scripts/verify-cloudflare-web-analytics.mjs resolves credentials through the Studio secrets gateway, performs an account-scoped aggregate-only RUM query, bounds output, and exposes injected-fetch tests for privacy, authorization, and response shape. reports/s96-cloudflare-web-analytics.json records seven page loads (six /, one /landing, zero /game.html) and marks reporting verified while engagement, retention, and cohort claims remain false.",
       "premise": "A live account-scoped Cloudflare RUM query with the secrets gateway returned six root and one landing page load since 2026-08-23, proving the S94 beacon reports. The narrow zone-settings token correctly failed Analytics authorization; the studio deploy token succeeded. No repository script can reproduce this bounded, non-PII proof, so the Now item would otherwise close on terminal memory.",
       "fix": "Add a read-only, secrets-gateway-backed analytics verifier with injected-fetch tests, bounded aggregate output, and a structured S96 receipt; mark only reporting as proven and keep retention/cohort claims withheld.",
       "ladder": {
