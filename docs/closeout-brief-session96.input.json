@@ -26,7 +26,7 @@
       "title": "The exact final artifact reached production",
       "projectImpact": 10,
       "ecosystemImpact": 10,
-      "evidence": "Source 590d145ef86b3520a6b7b24dbd159eb60788905a and artifact 5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1 agree across visual, hosted-performance, staging 14/14, production 10/10, CI workflow 33026206650, and promotion workflow 33026545885."
+      "evidence": "Source 93b867e010dfe3773116433e5b8068dc894e7c0c and artifact c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6 agree across visual, hosted-performance, staging 14/14, production 10/10, CI workflow 33030325197, and promotion workflow 33031371311."
     }
   ],
   "followUps": [
@@ -52,7 +52,7 @@
   "honestyLedger": [
     {
       "title": "Final doctor reconciliation found two real integration defects",
-      "evidence": "The first ledger representation made _health exceed a downstream read bound; the compact replacement initially disagreed with the verifier. Commits 8dd0743 and 590d145 fixed both and the final SHA was re-promoted."
+      "evidence": "The first ledger representation made _health exceed a downstream read bound; the compact replacement initially disagreed with the verifier. Commits 8dd0743 and 590d145 fixed both. Closeout CI then exposed stale public release notes, 96 unregistered visual hashes, and a live-state test fixture; commit 93b867e fixed all three before the final SHA was rebuilt and promoted."
     },
     {
       "title": "The full ledger is not exposed through public health",
@@ -60,7 +60,7 @@
     },
     {
       "title": "Final test claims distinguish their boundaries",
-      "evidence": "The implementation-boundary canonical receipt is 1,293/1,293 across all six shards. Final-SHA push CI is 1,290/1,290 across its five configured shards, with focused final release/staging checks 26/26 and 19/19; no unrun six-shard total is invented."
+      "evidence": "The implementation-boundary canonical receipt is 1,293/1,293 across all six shards. Final-SHA push CI workflow 33030325197 is 1,290/1,290 across its five configured shards, with focused final release/staging checks 26/26 and 19/19; no unrun six-shard total is invented."
     },
     {
       "title": "The closeout autopilot was stopped before it could commit misrouted Studio output",
@@ -71,6 +71,6 @@
     "files": 139,
     "insertions": 3554,
     "deletions": 364,
-    "suite": "Implementation-boundary canonical Node 1,293/1,293; final-SHA push CI 1,290/1,290 across five shards; Playwright 54/54; responsive 255 states and 96 reviewed captures; staging 14/14; production 10/10; doctor blockingFailing 0."
+    "suite": "Implementation-boundary canonical Node 1,293/1,293; final-SHA push CI 1,290/1,290 across five shards; Playwright 54/54; responsive 255 states, all 240 required, and 96 reviewed captures; staging 14/14; production 10/10; doctor blockingFailing 0."
   }
 }

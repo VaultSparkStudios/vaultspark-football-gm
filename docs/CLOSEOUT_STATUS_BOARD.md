@@ -11,8 +11,8 @@
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
 ║  ✓ All four S96 audit items are shipped.                         ║
-║  ✓ Exact candidate `590d145ef86b3520a6b7b24dbd159eb60788905a` i  ║
-║  ✓ CI workflow 33026206650 and promotion workflow 33026545885 a  ║
+║  ✓ Exact candidate `93b867e010dfe3773116433e5b8068dc894e7c0c` i  ║
+║  ✓ CI workflow 33030325197 and promotion workflow 33031371311 a  ║
 ║  ✓ Unified release authority is `verified`; `launchReady` remai  ║
 ║  ✓ Implementation-boundary canonical Node receipt is 1,293/1,29  ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -41,7 +41,7 @@
 ║  · agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 116 files  ·  M:15 A:101 D:0 ?:0                       ║
+║  Changes: 14 files  ·  M:13 A:0 D:0 ?:1                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "kind": "final-release-visual-authority",
+  "capturedAt": "2026-08-27T01:59:11.308Z",
+  "sourceRevision": "93b867e010dfe3773116433e5b8068dc894e7c0c",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6",
+    "files": 207
+  },
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "inspection": {
+    "renderedPixelsReviewed": true,
+    "reviewer": "session-agent",
+    "findings": [
+      "The final workflow reran 255 responsive states across desktop, tablet, mobile, dark, and light themes with 240 required captures complete, zero runtime errors, and zero failures.",
+      "The only deployable public-surface change after the retained S96 manual pixel review was the dated status-page release note; game UI bytes and the inspected mobile-navigation contract did not change.",
+      "The retained 96-image S96 receipt records the manual review, while workflow 33031371311 artifact 9630519442 binds the byte-exact final candidate to its complete responsive run."
+    ],
+    "fixesApplied": [
+      "Raised the collapsed-navigation trigger to 44 by 44 pixels and added four-edge safe-area padding.",
+      "Kept global Escape from waking cold lazy islands and waited for settled rendered geometry before capture."
+    ],
+    "blockingDefectsOpen": 0
+  },
+  "ciEvidence": {
+    "workflowRun": 33031371311,
+    "artifactId": 9630519442,
+    "status": "passed",
+    "captures": 255,
+    "requiredCaptures": 240,
+    "completedRequiredCaptures": 240,
+    "runtimeErrors": 0,
+    "failures": 0
+  }
+}

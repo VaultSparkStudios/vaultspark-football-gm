@@ -24,9 +24,9 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [x] Raise the mobile trigger to 44×44px and make the 100dvh drawer four-edge safe-area aware.
 - [x] Root-fix the cold lazy-island Escape error found by rendered pixels.
 - [x] Replace wall-clock animation waiting with bounded rendered-geometry settlement after Linux CI exposed the portability defect.
-- [x] Bind visual, hosted-performance, stable-staging, and production authority to `590d145ef86b3520a6b7b24dbd159eb60788905a` / `5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1`.
+- [x] Bind visual, hosted-performance, stable-staging, and production authority to `93b867e010dfe3773116433e5b8068dc894e7c0c` / `c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6`.
 
-**Verification:** implementation-boundary canonical Node 1,293/1,293; final-SHA CI 1,290/1,290 across five push shards in workflow 33026206650; Playwright 54/54; focused release/staging checks 26/26 and 19/19; responsive 255 states with 96 retained/reviewed; staging 14/14; production 10/10; promotion workflow 33026545885 green. Technical deployment is complete. Public launch remains HOLD.
+**Verification:** implementation-boundary canonical Node 1,293/1,293; final-SHA CI 1,290/1,290 across five push shards in workflow 33030325197; Playwright 54/54; focused release/staging checks 26/26 and 19/19; final workflow responsive evidence 255 states with 240/240 required and 96 retained/reviewed; staging 14/14; production 10/10; promotion workflow 33031371311 green. Technical deployment is complete. Public launch remains HOLD.
 
 ## Session 95 — Full arc: one decision beat per playoff round, one exact artifact through production (2026-08-26)
 

@@ -62,14 +62,14 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE WE LEFT OFF  ·  Session 96 ════════════════════════════╗
-║  Shipped:  Session 96 technically deployed exact source 590d145  ║
+║  Shipped:  Release truth is receipt-derived: 9 production route  ║
 ║  Tests:    1293/1293 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  █░░░░░░░░░░░░░░░░░░░░░░░    3% used                          ║
-║     26,032 / 1,000,000 tok  ·  codex/codex-1m  ·  measured+heur  ║
-║     ~13,016 tok/turn  ·  cache 50%  ·  68 turns to compact       ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
+║     2,665 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,333 tok/turn  ·  cache 50%  ·  136 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 

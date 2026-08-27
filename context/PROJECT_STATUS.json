@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Session 96 technically deployed exact source 590d145ef86b3520a6b7b24dbd159eb60788905a at artifact 5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1. Stable staging, production, visual, hosted-performance, and edge authorities are verified; public launch remains HOLD.",
-  "nextMilestone": "Observe the first genuine opted-in cohort, validate suppression and deletion behavior, and reconcile public launch only from Zoho receive/reply-as evidence, explicit SHA-bound approval, authoritative lifecycle state, and applicable external Obelisk relying-party proof.",
+  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 93b867e010dfe3773116433e5b8068dc894e7c0c, required edge headers verified; evidence current through 2026-08-28T02:03:47.429Z. Launch remains HOLD; independent gates are not collapsed.",
+  "nextMilestone": "Observe the first genuine opted-in cohort without manufacturing activity, and reconcile public launch only from Zoho receive/reply-as evidence, explicit SHA-bound approval, authoritative lifecycle state, and applicable external Obelisk relying-party proof.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -82,7 +82,7 @@
   "currentSession": 96,
   "lastAgent": "codex",
   "sessionMode": "builder",
-  "lastVerification": "S96 implementation-boundary canonical npm test direct exit 0: 1,293/1,293. Final-SHA CI passed 1,290/1,290 across five push shards in workflow 33026206650; Playwright 54/54; focused release/staging checks 26/26 and 19/19. Responsive evidence passed 255 states with 96 retained and manually reviewed. Stable staging 14/14 and production 10/10 agree at SHA 590d145ef86b3520a6b7b24dbd159eb60788905a and artifact 5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1. Promotion workflow 33026545885 is green.",
+  "lastVerification": "S96 implementation-boundary canonical npm test direct exit 0: 1,293/1,293. Final-SHA CI passed 1,290/1,290 across five push shards in workflow 33030325197; Playwright 54/54; focused release/staging checks 26/26 and 19/19. Responsive evidence passed 255 states, all 240 required, with 96 retained and manually reviewed. Stable staging 14/14 and production 10/10 agree at SHA 93b867e010dfe3773116433e5b8068dc894e7c0c and artifact c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6. Promotion workflow 33031371311 is green.",
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
   "modelTierDefault": "codex-1m",
@@ -208,16 +208,16 @@
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "66d9bb5517879ee7d5eef82c3e21c15dc5c70124f8d1382b64a913eab7764dab",
-    "checkedAt": "2026-08-27T00:31:53.000Z",
+    "receiptSha256": "0d75386701f1a78fb2ab04bda011082562e044e9549001d7a5e2584aae35eba6",
+    "checkedAt": "2026-08-27T02:03:47.429Z",
     "evidenceWindow": {
-      "observedAt": "2026-08-27T00:31:53.000Z",
+      "observedAt": "2026-08-27T02:03:47.429Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-08-28T00:31:53.000Z",
+      "expiresAt": "2026-08-28T02:03:47.429Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "590d145ef86b3520a6b7b24dbd159eb60788905a",
+    "deployedRevision": "93b867e010dfe3773116433e5b8068dc894e7c0c",
     "routes": {
       "verified": true,
       "checked": 9
@@ -238,7 +238,7 @@
     },
     "exactRevision": {
       "verified": true,
-      "expected": "590d145ef86b3520a6b7b24dbd159eb60788905a"
+      "expected": "93b867e010dfe3773116433e5b8068dc894e7c0c"
     },
     "independentStaging": {
       "verified": true
@@ -259,11 +259,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "5680284beb332fc338d50f2b4a6c5cb4d80ab18dcc4ce63b0c211fad0dfd254d",
-    "sourceRevision": "590d145ef86b3520a6b7b24dbd159eb60788905a",
+    "receiptSha256": "656fa6940577a74f4f205ea4ea3cb5589fac1de70e2e5394cc0b50e085e67ddf",
+    "sourceRevision": "93b867e010dfe3773116433e5b8068dc894e7c0c",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1",
+      "digest": "c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6",
       "files": 207,
       "entries": [
         {
@@ -784,7 +784,7 @@
         {
           "path": "precache-manifest.json",
           "bytes": 15341,
-          "sha256": "a0428598b7e2da8d3b984ce508912c17c1ebb1684460911b6ced94d025b02cad"
+          "sha256": "24d429abc9b12cc0585da97eed53c65e90cfb3c6122ba13056f833547f6fcf7a"
         },
         {
           "path": "privacy.html",
@@ -829,7 +829,7 @@
         {
           "path": "sitemap.xml",
           "bytes": 1623,
-          "sha256": "14ed07e8ee46eaa04869c9c4c6b357796e633f2fae5c67b77fec4b02bd6aa20a"
+          "sha256": "d5b7220d5a37a27e4b07808865f5ad22b656fc8018307d0575fbfb55bc467ae0"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -1278,8 +1278,8 @@
         },
         {
           "path": "status.html",
-          "bytes": 7441,
-          "sha256": "a93771784b85b988ac5782101683e877f3a6424ef8e72c4b4315907a38a25bf9"
+          "bytes": 8037,
+          "sha256": "79923724a035cf98d49b4fad865223a0d7915494b5e28f22372f453a57ece0c3"
         },
         {
           "path": "styles.8cb76480bf.css",
@@ -1294,7 +1294,7 @@
         {
           "path": "sw.js",
           "bytes": 8294,
-          "sha256": "60a97fd236b47a6f96353886e495f2208a69faf82418152fb2ea6681cab3810a"
+          "sha256": "7a465741a8671087994bab56e5b52b389853bcd19389ad46c4a472cd3242098e"
         },
         {
           "path": "terms.html",
@@ -1308,21 +1308,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "7b67032b-358f-4cc1-83f0-d2a5ec28ed29",
+    "deploymentId": "ed3ce135-b32d-4605-a144-a962696f707a",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-08-27T00:20:58.411Z"
+      "checkedAt": "2026-08-27T01:50:08.431Z"
     },
     "rollback": {
-      "previousDeploymentId": "9b9e00f8-418b-4636-9e1b-493d8c2a0c94",
+      "previousDeploymentId": "7b67032b-358f-4cc1-83f0-d2a5ec28ed29",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-08-27T00:20:58.412Z"
+    "observedAt": "2026-08-27T01:50:08.431Z"
   },
   "lastCloseoutAt": "2026-08-27T00:59:49.532Z",
   "performanceAuthority": {
@@ -1354,31 +1354,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-08-27T00:32:29.328Z",
+    "observedAt": "2026-08-27T02:04:07.704Z",
     "status": "verified",
-    "sourceRevision": "590d145ef86b3520a6b7b24dbd159eb60788905a",
-    "publicationRevision": "590d145ef86b3520a6b7b24dbd159eb60788905a",
+    "sourceRevision": "93b867e010dfe3773116433e5b8068dc894e7c0c",
+    "publicationRevision": "93b867e010dfe3773116433e5b8068dc894e7c0c",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1"
+      "digest": "c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "590d145ef86b3520a6b7b24dbd159eb60788905a",
-        "artifactDigest": "5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1"
+        "sourceRevision": "93b867e010dfe3773116433e5b8068dc894e7c0c",
+        "artifactDigest": "c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6"
       },
       "production": {
-        "sourceRevision": "590d145ef86b3520a6b7b24dbd159eb60788905a",
-        "artifactDigest": "5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1"
+        "sourceRevision": "93b867e010dfe3773116433e5b8068dc894e7c0c",
+        "artifactDigest": "c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6"
       },
       "visual": {
-        "sourceRevision": "590d145ef86b3520a6b7b24dbd159eb60788905a",
-        "artifactDigest": "5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1"
+        "sourceRevision": "93b867e010dfe3773116433e5b8068dc894e7c0c",
+        "artifactDigest": "c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6"
       },
       "performance": {
-        "sourceRevision": "590d145ef86b3520a6b7b24dbd159eb60788905a",
-        "artifactDigest": "5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1"
+        "sourceRevision": "93b867e010dfe3773116433e5b8068dc894e7c0c",
+        "artifactDigest": "c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6"
       }
     },
     "checks": [
@@ -1424,12 +1424,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "77bd9f3afe1380f3eb72ce507739b44680f7df8f6c8f834159d2cefc77eeb9da",
-      "productionSha256": "cf18203f22645273f3a1d59e8607cd48bfde718eb6a63b43f9c2c93b65f18e65",
-      "visualSha256": "54ae540fda1e61f57105838b8670aa348619c50b2fe76efe2749a5db1f87b87b",
-      "performanceSha256": "94c898381ec77518dc5a07a0b02a3e05b6c2a8be1219d671df04051395aba2bb"
+      "stagingSha256": "7970d6792857e12f29bfc627d08e44fb6b16e0cbc7aa2015078fa48cf831ef79",
+      "productionSha256": "e8b935528aaadb28fb6c05b9eae12b67d94aa5f9a07a59ed02f5dd117b4e7e77",
+      "visualSha256": "321b0719de36d9ce42e1d6c9593c5a820558c057fe4227bb3de7e2e0af07375a",
+      "performanceSha256": "e5e58b5f8d42747fa38799d5b8ebb59b9de506d70fd5de616421679c2e31e214"
     },
-    "receiptSha256": "5f55591246103f16d23604f1ae687abe1660cf2fa4c1fcd260b0e337af371621"
+    "receiptSha256": "dbf56dde940071a52bc2e66e6f568e26d91c4b091623c9de15a1ce0a2acbf7ca"
   },
   "launchReady": false,
   "sil": {

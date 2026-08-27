@@ -7,8 +7,8 @@ Continue from a fully deployed, exact-evidence S96 boundary. Preserve the separa
 ## Where We Left Off
 
 - All four S96 audit items are shipped.
-- Exact candidate `590d145ef86b3520a6b7b24dbd159eb60788905a` is live on stable staging and production at artifact `5a92bea5d41678726fa7d7805a53443103a38fe7d58916ca39798ea99088a3d1`.
-- CI workflow 33026206650 and promotion workflow 33026545885 are green. Staging passes 14/14 at deployment `7b67032b-358f-4cc1-83f0-d2a5ec28ed29` with rollback `9b9e00f8-418b-4636-9e1b-493d8c2a0c94`; production passes 10/10.
+- Exact candidate `93b867e010dfe3773116433e5b8068dc894e7c0c` is live on stable staging and production at artifact `c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6`.
+- CI workflow 33030325197 and promotion workflow 33031371311 are green. Staging passes 14/14 at deployment `ed3ce135-b32d-4605-a144-a962696f707a` with rollback `7b67032b-358f-4cc1-83f0-d2a5ec28ed29`; production passes 10/10. Final workflow responsive evidence passes 255 states, all 240 required states, with zero runtime errors or failures.
 - Unified release authority is `verified`; `launchReady` remains `false`.
 - Implementation-boundary canonical Node receipt is 1,293/1,293; final-SHA CI is 1,290/1,290 across five push shards; Playwright is 54/54; focused release/staging checks are 26/26 and 19/19; responsive evidence passed 255 states with 96 retained reviewed captures.
 
