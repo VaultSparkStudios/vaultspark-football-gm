@@ -22,6 +22,33 @@ function fixture({ revision = "abc123", styleAsset = "styles.abc123.css", launch
   } };
 }
 
+test("release provenance accepts compact health identity while requiring the full manifest ledger", async () => {
+  const withLedger = {
+    ...expected,
+    artifactFingerprint: {
+      ...expected.artifactFingerprint,
+      entries: [{ path: "app.js", bytes: 42, sha256: "a".repeat(64) }]
+    }
+  };
+  const data = fixture();
+  data.routes["/_health"].body = JSON.stringify({
+    status: "ok",
+    sourceRevision: withLedger.sourceRevision,
+    artifactFingerprint: expected.artifactFingerprint,
+    styleAsset: withLedger.styleAsset,
+    launchReady: false
+  });
+  data.routes["/deploy-manifest.json"].body = JSON.stringify(withLedger);
+  const report = await buildReleaseProvenanceReport({ expected: withLedger, fixture: data });
+  assert.equal(report.summary.status, "verified");
+
+  const manifest = JSON.parse(data.routes["/deploy-manifest.json"].body);
+  manifest.artifactFingerprint.entries[0].sha256 = "b".repeat(64);
+  data.routes["/deploy-manifest.json"].body = JSON.stringify(manifest);
+  const drift = await buildReleaseProvenanceReport({ expected: withLedger, fixture: data });
+  assert.equal(drift.checks.find((check) => check.name === "artifact fingerprint").ok, false);
+});
+
 test("release provenance verifies the exact revision, asset, repository, and health truth", async () => {
   const report = await buildReleaseProvenanceReport({ expected, fixture: fixture() });
   assert.equal(report.summary.status, "verified");

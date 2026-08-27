@@ -26,6 +26,15 @@ function parseBody(result) {
   try { return JSON.parse(result?.body || ""); } catch { return null; }
 }
 
+function fingerprintIdentity(value = {}) {
+  return {
+    algorithm: value?.algorithm || null,
+    digest: value?.digest || null,
+    files: Number.isInteger(value?.files) ? value.files : null,
+    exclusions: Array.isArray(value?.exclusions) ? [...value.exclusions].sort() : []
+  };
+}
+
 function stayedOnOrigin(result, origin) {
   const chain = Array.isArray(result?.chain) ? result.chain : [];
   if (!chain.length) return false;
@@ -63,7 +72,7 @@ export async function buildReleaseProvenanceReport({ expected, baseUrl, fixture 
       { name: "Community Stats asset identity", ok: Boolean(liveHealth?.communityStatsAsset === communityStatsAsset && liveManifest?.communityStatsAsset === communityStatsAsset), expected: communityStatsAsset, observed: liveManifest?.communityStatsAsset || liveHealth?.communityStatsAsset || null }
     ] : []),
     { name: "source revision", ok: Boolean(expected?.sourceRevision && liveHealth?.sourceRevision === expected.sourceRevision && liveManifest?.sourceRevision === expected.sourceRevision), expected: expected?.sourceRevision, observed: liveManifest?.sourceRevision || liveHealth?.sourceRevision || null },
-    { name: "artifact fingerprint", ok: Boolean(expected?.artifactFingerprint?.digest && JSON.stringify(liveHealth?.artifactFingerprint) === JSON.stringify(expected.artifactFingerprint) && JSON.stringify(liveManifest?.artifactFingerprint) === JSON.stringify(expected.artifactFingerprint)), expected: expected?.artifactFingerprint?.digest || null, observed: liveManifest?.artifactFingerprint?.digest || liveHealth?.artifactFingerprint?.digest || null },
+    { name: "artifact fingerprint", ok: Boolean(expected?.artifactFingerprint?.digest && JSON.stringify(fingerprintIdentity(liveHealth?.artifactFingerprint)) === JSON.stringify(fingerprintIdentity(expected.artifactFingerprint)) && JSON.stringify(liveManifest?.artifactFingerprint) === JSON.stringify(expected.artifactFingerprint)), expected: expected?.artifactFingerprint?.digest || null, observed: liveManifest?.artifactFingerprint?.digest || liveHealth?.artifactFingerprint?.digest || null },
     { name: "style asset identity", ok: Boolean(expected?.styleAsset && liveHealth?.styleAsset === expected.styleAsset && liveManifest?.styleAsset === expected.styleAsset), expected: expected?.styleAsset, observed: liveManifest?.styleAsset || liveHealth?.styleAsset || null },
     { name: "repository identity", ok: Boolean(expected?.repository && liveManifest?.repository === expected.repository), expected: expected?.repository, observed: liveManifest?.repository || null },
     { name: "launch truth separation", ok: liveHealth?.launchReady === false, expected: false, observed: liveHealth?.launchReady }
