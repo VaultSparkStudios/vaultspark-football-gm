@@ -1,6 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { fileURLToPath } from "node:url";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { achievedIntentStreak, isIsoCalendarDate, parseInlineSilCategories } from "../scripts/lib/startup-sil-truth.mjs";
 import { readCommittedGeniusAuthority } from "../scripts/lib/startup-authority.mjs";
 
@@ -38,8 +40,22 @@ test("intent streak reads parsed entry bodies and stops on the first miss", () =
   ]), 2);
 });
 
-test("session-suffixed audits are valid committed genius authority", () => {
-  const authority = readCommittedGeniusAuthority(fileURLToPath(new URL("..", import.meta.url)));
+test("session-suffixed audits are valid committed genius authority", (t) => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "startup-audit-authority-"));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  fs.mkdirSync(path.join(root, "docs"));
+  fs.writeFileSync(
+    path.join(root, "docs", "AUDIT_2026-08-26_SESSION96.json"),
+    JSON.stringify({
+      items: [
+        { slug: "one", title: "One", rank: 1, tier: "CRITICAL", status: "ranked" },
+        { slug: "two", title: "Two", rank: 2, tier: "HIGH", status: "ranked" },
+        { slug: "three", title: "Three", rank: 3, tier: "HIGH", status: "ranked" },
+        { slug: "four", title: "Four", rank: 4, tier: "MEDIUM", status: "ranked" }
+      ]
+    })
+  );
+  const authority = readCommittedGeniusAuthority(root);
   assert.equal(authority.source, "AUDIT_2026-08-26_SESSION96.json");
   assert.equal(authority.status, "open");
   assert.equal(authority.items.length, 4);
