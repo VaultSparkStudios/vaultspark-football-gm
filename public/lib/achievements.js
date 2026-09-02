@@ -6,6 +6,7 @@
 import { state } from "./appState.js";
 import { escapeHtml, showToast } from "./appCore.js";
 import { playSound, vibrate, HAPTIC_PATTERNS } from "./audioFeedback.js";
+import { findTeamStanding, normalizeTeamRecord } from "./teamRecord.js";
 
 const STORAGE_KEY = "fa:achievements:v1";
 
@@ -26,7 +27,7 @@ export const ACHIEVEMENTS = [
   { id: "streak-3", name: "Heating Up", icon: "🔥", tier: "bronze", desc: "Win 3 straight games.", check: (c) => c.event.type === "week-advanced" && c.streak >= 3 },
   { id: "streak-5", name: "On a Tear", icon: "⚡", tier: "silver", desc: "Win 5 straight games.", check: (c) => c.event.type === "week-advanced" && c.streak >= 5 },
   { id: "streak-8", name: "Unstoppable", icon: "🌋", tier: "gold", desc: "Win 8 straight games.", check: (c) => c.event.type === "week-advanced" && c.streak >= 8 },
-  { id: "perfect-start", name: "5–0 Start", icon: "🚀", tier: "silver", desc: "Open a season 5–0.", check: (c) => c.event.type === "week-advanced" && c.record?.wins === 5 && c.record?.losses === 0 },
+  { id: "perfect-start", name: "5–0 Start", icon: "🚀", tier: "silver", desc: "Open a season 5–0.", check: (c) => c.event.type === "week-advanced" && c.record?.wins === 5 && c.record?.losses === 0 && Number(c.record?.ties ?? 0) === 0 },
 
   // Season arcs
   { id: "first-season", name: "Year One", icon: "📅", tier: "bronze", desc: "Complete your first season.", check: (c) => c.event.type === "season-complete" },
@@ -88,7 +89,7 @@ function seasonsServed(d) {
 function controlledStanding(d) {
   const teamId = d?.controlledTeamId || d?.controlledTeam?.id;
   const abbrev = d?.controlledTeam?.abbrev || teamId;
-  return (d?.latestStandings || []).find((row) => row.team === abbrev || row.team === teamId || row.teamId === teamId) || null;
+  return findTeamStanding(d?.latestStandings, { ...d?.controlledTeam, id: teamId, abbrev });
 }
 
 function progressMetric(metric, { dashboard, recentBoxScores }) {
@@ -229,8 +230,8 @@ export function recordAchievementEvent(type, payload = {}) {
     ctx.streak = deriveWinStreak(state.recentBoxScores, controlledTeamId);
     const standings = d.latestStandings || [];
     const abbrev = d.controlledTeam?.abbrev || controlledTeamId;
-    const myRow = standings.find((row) => row.team === abbrev || row.team === controlledTeamId || row.teamId === controlledTeamId);
-    if (myRow) ctx.record = { wins: Number(myRow.wins) || 0, losses: Number(myRow.losses) || 0 };
+    const myRow = findTeamStanding(standings, { ...d.controlledTeam, id: controlledTeamId, abbrev });
+    if (myRow) ctx.record = normalizeTeamRecord(myRow);
   }
 
   const earned = readEarnedAchievements();

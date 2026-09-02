@@ -1,53 +1,38 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: 76a68001a5f8 -->
-<!-- generated-at: 2026-08-26T19:04:31.038Z -->
+<!-- source-hash: dfc0c21c0db1 -->
+<!-- generated-at: 2026-09-01T19:23:08.631Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION HANDOFF: 95 → 96
+SESSION: 96 → 97
 
 STATUS
-- Session 95 shipped all seven ranked audit items; full /arc complete.
-- Candidate SHA 92e4190 live in stable staging and production; artifact ca66c92.
-- Production workflow 32933281222 green; stable staging 14/14, production 10/10.
-- Rollback available: 609fbc29.
-- Release authority: verified. launchReady: false. Technical deploy complete; public launch/SPARKED on HOLD.
-- Evidence: Node 1,280/1,280; Playwright 54/54; responsive 251 local, 92 retained, 236 CI states.
+- Technical deployment complete; public launch/SPARKED not approved.
+- Release authority: verified. launchReady: false.
+- Exact candidate 93b867e0 live on staging + production (artifact c45c4a49...783a6).
+- CI 33030325197 and promotion 33031371311 green. Staging 14/14 (deploy ed3ce135, rollback 7b67032b); production 10/10. Responsive evidence 255 states, all 240 required, zero runtime errors.
 
-SHIPPED
-- Publication safety: deploy-pages.yml runs full browser suite pre-publish; stale assertion reads exported profile version.
-- Incremental postseason: per-round persistence, one game per command, save/resume survives, batch consumes gates.
-- Single navigation authority: gameplayNavigation.js owns phase-to-surface routing.
-- Owner economy model: liquidity, reserves, traits, bounded distributions.
-- Honest cloud-save security: checksums as corruption detection; optional PBKDF2 HMAC authorship.
-- Recoverable realism evidence: aligned budgets, incremental progress, partial artifact uploads.
-- Exact release proof: all authorities name same SHA/artifact.
-- Perf: HoF rescoring removed (16.8s→7.1s); whole-season delegation fixed.
-
-CURRENT INTENT
-- Validate live analytics reporting and first real opted-in cohort; reconcile launch authority from external evidence only.
+SHIPPED (S96)
+- Mobile parity: 44x44px nav trigger, 100dvh drawer honoring all safe-area insets.
+- Startup truth: orientation validates dates, reads inline SIL v3, accepts session-suffixed audits, refreshes stale Genius authority.
+- Actionable release binding: deterministic per-file fingerprints; failures print expected/observed and first-file deltas.
+- Bounded analytics: secrets-gateway Cloudflare verifier records aggregate page loads only (no users/sessions/engagement/retention/cohort claims).
+- Evidence hardening: Escape no longer wakes cold lazy islands; capture waits for settled geometry.
+- Bounded health identity: compact _health with full 207-file digest ledger in deploy manifest.
 
 NOW (top 3)
-1. Verify S94 analytics beacon reports real pageview under corrected CSP (admission proven, reporting not).
-2. Observe first genuine opted-in community cohort; validate freshness, suppression, deletion, abuse ceilings without manufacturing activity.
-3. Reconcile launch authority from Zoho receive/reply evidence, explicit public-launch approval, authoritative lifecycle registry; verify Obelisk relying-party posture.
+1. Observe first genuine opted-in cohort; validate freshness, suppression, deletion, abuse ceilings without manufacturing activity.
+2. Restore /stats to sitemap only after community snapshot clears suppression threshold.
+3. Reconcile launch only from Zoho receive/reply evidence, SHA-bound public-launch approval, authoritative lifecycle state, and applicable Obelisk relying-party proof.
 
-BLOCKERS (top 3)
-1. launchReady false; public launch not approved by technical deployment authorization.
-2. SPARKED cannot be marked while registry/local lifecycle authority disagrees.
-3. Cohort/analytics/email/identity/approval evidence must be genuine; none may be fabricated.
+BLOCKERS / CONSTRAINTS
+1. Public launch/SPARKED not approved; no founder approval evidence.
+2. No genuine opted-in cohort yet observed; analytics prove reporting only.
+3. Do not fabricate cohort, analytics, email, identity, lifecycle, or approval evidence.
 
-HUMAN-BLOCKED
-- Public-launch founder approval: pending since S95 (open).
-- Zoho receive/reply-as email confirmation: pending since S95 (open).
-- Opted-in community cohort activation: pending since S95 (open).
+HUMAN-BLOCKED / PENDING (age: since S96)
+- Studio Ops adoption of Ark receipt 01K103S9CJB19ECBBDE12BC911: on adoption, switch analytics verification to least-privilege cloudflare.analytics-read.
+- GitHub Actions Node 24 warnings: advisory until Node 24-native action majors ship.
+- Studio closeout autopilot defect (misrouted refresh under --project .): stopped pre-commit, brief regenerated, reported via Ark receipt 01K10BKC0C4B276631DD0B1360.
 
-INVARIANTS
-- Do not relax exact-artifact bind. Pages artifact job uses fetch-depth: 0; studio-protocol-smoke.test.js pins invariant. Root cause: sitemap lastmod from Git history + shallow checkout digest mismatch.
-- Node 24 deprecation warnings advisory until native action majors ship.
-- Creative Direction Record unchanged in S95.
-
-DEFERRED
-- Improve bind-failure diagnostics: print both digests and first differing files.
-
-NEXT: Start with verifying the analytics beacon reports a real pageview, then observe the first real opted-in cohort.
+NEXT: Begin S97 by observing the first opted-in cohort and validating suppression/deletion ceilings; do not touch launch reconciliation until SHA-bound approval evidence exists.

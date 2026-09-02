@@ -36,12 +36,14 @@ test("doctor preserves lifecycle truth and classifies live release-authority cur
 
 test("doctor update-json persists the live lifecycle result instead of a stale startup score", () => {
   const lifecycle = inspectLifecycleCoherence(process.cwd());
+  const before = JSON.parse(readFileSync(path.join(process.cwd(), "context", "PROJECT_STATUS.json"), "utf8"));
   const result = spawnSync(process.execPath, ["scripts/doctor.mjs", "--update-json", "--quiet"], {
     cwd: process.cwd(),
     encoding: "utf8"
   });
   assert.ok(result.status === 0 || result.status === 2, result.stderr || result.stdout);
   const status = JSON.parse(readFileSync(path.join(process.cwd(), "context", "PROJECT_STATUS.json"), "utf8"));
+  assert.equal(status.lastUpdated, before.lastUpdated, "refreshing doctor evidence must not manufacture project activity");
   assert.equal(status.doctorScore.blockingFailing, status.doctorScore.failing);
   assert.ok(status.doctorScore.warning >= lifecycle.warning);
   assert.equal(status.doctorScore.total, status.doctorScore.passing + status.doctorScore.warning + status.doctorScore.blockingFailing);

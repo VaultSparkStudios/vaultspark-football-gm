@@ -17,6 +17,7 @@
  */
 
 import { applyEventFeedback, openThreadForEvent } from "./continuityLedger.js";
+import { recordWinPct } from "../stats/teamRecord.js";
 
 const MAX_LOG = 30;
 
@@ -84,8 +85,7 @@ export function checkTradeRequests(league, year, week, rng) {
 
     const team = league.teams.find((t) => t.id === player.teamId);
     if (!team) continue;
-    const winPct = (team.season?.wins || 0) /
-      Math.max(1, (team.season?.wins || 0) + (team.season?.losses || 1));
+    const winPct = recordWinPct(team.season);
     if (winPct > 0.45) continue;
     if (rng.next() > 0.18) continue; // ~18% chance per eligible player per week
 

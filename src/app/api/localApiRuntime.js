@@ -21,6 +21,7 @@ import { handleArchitectThesisRequest } from "../../runtime/handlers/architectTh
 import { handleTradeOffersRequest } from "../../runtime/handlers/tradeOffersHandler.js";
 import { handleFranchiseMomentRequest } from "../../runtime/handlers/franchiseMomentHandler.js";
 import { buildPersonaIntel } from "../../engine/rivalGmPersona.js";
+import { recordWinPct } from "../../stats/teamRecord.js";
 import {
   createLobby, addPlayerToLobby, queueIntent, markPlayerReady,
   lockGate, openGate, applyIntents, recordAdvance, lobbyStatus,
@@ -164,9 +165,7 @@ function _generateSeasonArcs(sess) {
     const team = d.controlledTeam || {};
     const standings = d.latestStandings || [];
     const myRow = standings.find((r) => r.team === (team.abbrev || team.id)) || {};
-    const wins = myRow.wins || 0;
-    const losses = myRow.losses || 0;
-    const winPct = (wins + losses) > 0 ? wins / (wins + losses) : 0.5;
+    const winPct = recordWinPct(myRow);
     const arcs = [];
     const qb = (team.roster || []).find((p) => p.position === "QB");
     if (qb) {

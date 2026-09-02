@@ -2,7 +2,7 @@
 
 ## Session Intent
 
-Continue from a fully deployed, exact-evidence S96 boundary. Preserve the separation between technical deployment and public launch.
+Run the complete S97 `/arc`, implement every live-premise audit item, verify the exact candidate on independent staging, commit and push directly to `main`, promote the same revision to production, and prove the live origin without treating technical deployment as public-launch approval.
 
 ## Where We Left Off
 

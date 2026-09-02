@@ -11,6 +11,7 @@ import { escapeHtml } from "./appCore.js";
 import { getUnreadCount } from "./engagementFeatures.js";
 import { buildSeasonChapter } from "./seasonChapters.js";
 import { franchiseScopeFromDashboard, franchiseStorageKey } from "./franchiseScope.js";
+import { diffTeamRecord, findTeamStanding, formatTeamRecord, normalizeTeamRecord } from "./teamRecord.js";
 
 const STORAGE_PREFIX = "franchise-architect-session-boundary:v3";
 export const RETURN_BOUNDARY_SCHEMA_VERSION = "1.0";
@@ -48,7 +49,7 @@ function controlledStandingsRow(dashboard) {
   const team = dashboard?.controlledTeam || {};
   const teamKey = team.abbrev || team.teamId || dashboard?.controlledTeamId || "";
   const standings = dashboard?.latestStandings || [];
-  return standings.find((r) => r.team === teamKey) || null;
+  return findTeamStanding(standings, { ...team, id: teamKey });
 }
 
 const activeReturnSessions = new Map();
@@ -77,7 +78,7 @@ export function buildReturnBoundary(dashboard = {}, {
     sequence,
     year: dashboard.currentYear ?? null,
     week: dashboard.currentWeek ?? null,
-    record: row ? { wins: row.wins || 0, losses: row.losses || 0 } : null,
+    record: row ? normalizeTeamRecord(row) : null,
     chapterId: chapter?.id || null,
     chapterCheckpointStatus: chapter?.seasonThesis?.checkpointStatus || null
   };
@@ -117,10 +118,10 @@ export function buildReturnDigest(dashboard, priorVisit, now = Date.now()) {
   const teamKey = team.abbrev || team.teamId || dashboard.controlledTeamId || "";
   const myRow = controlledStandingsRow(dashboard);
   const priorRecord = priorVisit.record || null;
-  const currentRecord = myRow ? { wins: myRow.wins || 0, losses: myRow.losses || 0 } : null;
+  const currentRecord = myRow ? normalizeTeamRecord(myRow) : null;
   const recordDelta =
     priorRecord && currentRecord
-      ? { wins: currentRecord.wins - priorRecord.wins, losses: currentRecord.losses - priorRecord.losses }
+      ? diffTeamRecord(currentRecord, priorRecord)
       : null;
   const seasonChapter = buildSeasonChapter(dashboard);
   const chapterChanged = Boolean(
@@ -128,7 +129,7 @@ export function buildReturnDigest(dashboard, priorVisit, now = Date.now()) {
     (priorVisit.chapterId !== seasonChapter?.id ||
       priorVisit.chapterCheckpointStatus !== seasonChapter?.seasonThesis?.checkpointStatus)
   );
-  const recordChanged = Boolean(recordDelta && (recordDelta.wins !== 0 || recordDelta.losses !== 0));
+  const recordChanged = Boolean(recordDelta && Object.values(recordDelta).some((value) => value !== 0));
   const unreadCount = getUnreadCount();
   const hasAuthoritativeDelta = weekAdvanced || recordChanged || chapterChanged || unreadCount > 0;
   if (!hasAuthoritativeDelta) return null;
@@ -219,9 +220,9 @@ export function renderReturnDigest(digest, pendingDecision, { onDismiss, onJumpT
   const chapterAction = buildReturnChapterAction(digest);
 
   const recordLine = digest.recordDelta
-    ? `Record is now ${digest.currentRecord.wins}-${digest.currentRecord.losses} (${digest.recordDelta.wins >= 0 ? "+" : ""}${digest.recordDelta.wins}W since the recorded session boundary).`
+    ? `Record is now ${formatTeamRecord(digest.currentRecord, { separator: "-" })} (${["wins", "losses", "ties"].filter((key) => digest.recordDelta[key] !== 0).map((key) => `${digest.recordDelta[key] >= 0 ? "+" : ""}${digest.recordDelta[key]}${key[0].toUpperCase()}`).join(", ")} since the recorded session boundary).`
     : digest.currentRecord
-      ? `Current record: ${digest.currentRecord.wins}-${digest.currentRecord.losses}.`
+      ? `Current record: ${formatTeamRecord(digest.currentRecord, { separator: "-" })}.`
       : "";
   const weekLine = digest.weekAdvanced
     ? `Your saved franchise moved from Year ${digest.fromYear} Week ${digest.fromWeek} to Year ${digest.toYear} Week ${digest.toWeek} since the recorded session boundary.`

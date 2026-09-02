@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 
 const source = readFileSync(new URL("../public/lib/mobileLoop.js", import.meta.url), "utf8");
 const styles = readFileSync(new URL("../public/styles.css", import.meta.url), "utf8");
+const gameHtml = readFileSync(new URL("../public/game.html", import.meta.url), "utf8");
 
 /**
  * The gate reads `localStorage` and `window.innerWidth`, so these tests stand up
@@ -139,4 +140,16 @@ test("the responsive navigation meets its touch and safe-area contract", () => {
   for (const edge of ["top", "right", "bottom", "left"]) {
     assert.match(drawer, new RegExp(`env\\(safe-area-inset-${edge}\\)`));
   }
+});
+
+test("the mobile decision deck keeps its commit controls reachable above every safe area", () => {
+  const overlay = styles.match(/\.mobile-loop-overlay\s*\{([\s\S]*?)\}/)?.[1] || "";
+  const actions = styles.match(/\.ml-actions\s*\{([\s\S]*?)\}/)?.[1] || "";
+  for (const edge of ["top", "right", "bottom", "left"]) {
+    assert.match(overlay, new RegExp(`env\\(safe-area-inset-${edge}\\)`));
+  }
+  assert.match(overlay, /overscroll-behavior:\s*contain/);
+  assert.match(actions, /position:\s*sticky/);
+  assert.match(actions, /safe-area-inset-bottom/);
+  assert.match(gameHtml, /id="mobileLoopOverlay"[^>]*role="region"[^>]*aria-label="Mobile core loop view"/);
 });

@@ -17,6 +17,7 @@ import { renderCoachingMarketPanel } from "./coachingMarketPanel.js";
 import { recordReturnBoundary } from "./returnDigest.js";
 import { recordAchievementEvent, renderTrophyRoad } from "./achievements.js";
 import { resolveDashboardPredictions } from "./spreadPredictions.js";
+import { findTeamStanding, formatTeamRecord, normalizeTeamRecord } from "./teamRecord.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -1138,12 +1139,14 @@ export function showSeasonEndReview() {
   if (!d) return;
   const team = d.controlledTeam || {};
   const standings = d.latestStandings || [];
-  const myRow = standings.find((r) => r.team === (team.abbrev || team.teamId)) || {};
-  const record = myRow.wins != null ? `${myRow.wins}–${myRow.losses}` : "—";
-  const rank = standings.findIndex((r) => r.team === (team.abbrev || team.teamId)) + 1;
+  const myRow = findTeamStanding(standings, team);
+  const record = formatTeamRecord(myRow);
+  const rank = myRow ? standings.indexOf(myRow) + 1 : 0;
+  const seasonRecord = normalizeTeamRecord(myRow);
   recordAchievementEvent("season-complete", {
-    wins: Number(myRow.wins) || 0,
-    losses: Number(myRow.losses) || 0,
+    wins: seasonRecord.wins,
+    losses: seasonRecord.losses,
+    ties: seasonRecord.ties,
     rank: rank > 0 ? rank : null
   });
   const legacy = d.gmLegacy;

@@ -131,6 +131,7 @@ export const SHARDS = {
     "test/start-scenario.test.js",
     "test/tactical-film-room.test.js",
     "test/tab-hydration.test.js",
+    "test/team-record-truth.test.js",
     "test/tutorial-layout-stability.test.js",
     "test/session8-contract-edges.test.js",
     "test/session8-endpoints.test.js",

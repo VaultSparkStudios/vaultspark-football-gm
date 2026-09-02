@@ -17,6 +17,7 @@ import { escapeHtml } from "./appCore.js";
 import { observeBackgroundTask } from "./clientDiagnostics.js";
 import { buildArchitectCut } from "./architectCut.js";
 import { buildDecisionAnthology } from "./decisionAnthology.js";
+import { findTeamStanding, formatTeamRecord, teamRecordWinPct } from "./teamRecord.js";
 
 // ── Closing quote bank (deterministic, outcome-keyed) ────────────────────────
 
@@ -80,10 +81,8 @@ export async function buildSeasonEpilogue(dashboard) {
   const teamKey = team.abbrev || team.teamId || d.controlledTeamId || "";
 
   const standings = d.latestStandings || [];
-  const myRow = standings.find((r) => r.team === teamKey) || {};
-  const wins = myRow.wins || 0;
-  const losses = myRow.losses || 0;
-  const winPct = wins + losses > 0 ? wins / (wins + losses) : 0.5;
+  const myRow = findTeamStanding(standings, { ...team, id: teamKey });
+  const winPct = teamRecordWinPct(myRow);
   const isChampion = Boolean(d.lastChampionTeamId && (d.lastChampionTeamId === (team.teamId || teamKey)));
   const madePlayoffs = Boolean(myRow.playoffSeed || myRow.playoffExit || myRow.madePlayoffs);
 
@@ -165,7 +164,7 @@ export async function buildSeasonEpilogue(dashboard) {
   });
   return {
     seasonYear,
-    record: wins || losses ? `${wins}–${losses}` : "—",
+    record: formatTeamRecord(myRow),
     isChampion,
     isMiracleRunSeason: isMiracleRun(winPct, madePlayoffs),
     arcVerdicts,

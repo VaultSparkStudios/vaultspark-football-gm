@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-01",
+  "session": 97,
+  "agent": "codex",
+  "project": "franchise-architect",
+  "displayName": "Franchise Architect: Football",
+  "status": "open",
+  "summary": {
+    "combinedPriority": 64.0,
+    "source": "Live source, current startup output, canonical test baseline, retained S96 rendered pixels, release contracts, and game-loop review.",
+    "axesCovered": 9,
+    "itemsRanked": 3,
+    "phantomsRejected": 5,
+    "verificationNote": "Every ranked premise was reproduced against the current worktree before ranking; no cohort, retention, launch, or causal claim is inferred."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product, game-loop, realism, rendered-pixel, security, and release gates",
+    "staging": "Commit the exact candidate, deploy and verify it on stable Cloudflare staging, then promote the same revision to production.",
+    "source": "Session 97 local status plus live repository and provider evidence"
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 9,
+    "sessionEngagement": 8,
+    "retention": 5,
+    "soulFidelity": 9,
+    "overall": 8,
+    "evidence": "The 30-second, five-minute, season, and dynasty contracts remain visibly implemented and deeply regression-covered. The audit found two truth/interaction seams inside those loops: a tie can vanish from the record a player reads, and the phone commit control can fall below a long pressure stack. Retention stays evidence-limited because no genuine opted-in cohort exists."
+  },
+  "axisSurvey": {
+    "feature-depth": [
+      { "candidate": "tie-complete franchise truth", "verdict": "ranked", "evidence": "The engine models ties, while multiple player-facing record strings and deltas retain only wins and losses." },
+      { "candidate": "terminal General Manager firing state", "verdict": "deferred", "evidence": "The recorded creative-direction boundary still requires founder direction; this arc will not invent the ending." }
+    ],
+    "new-innovative-features": [
+      { "candidate": "decision-deck command dock", "verdict": "ranked", "evidence": "A sticky, safe-area-aware commit dock preserves the one-call loop without adding a second mobile product." },
+      { "candidate": "provider-backed narrative copilot", "verdict": "rejected", "evidence": "The deterministic Co-GM and film surfaces already explain live receipts; a hosted model adds cost and unverifiable causality without demand evidence." }
+    ],
+    "ui-ux": [
+      { "candidate": "mobile safe-area and commit reachability", "verdict": "ranked", "evidence": ".mobile-loop-overlay is fixed to every viewport edge but uses plain 1rem padding, and .ml-actions follows every optional pressure and decision card rather than staying reachable." },
+      { "candidate": "second tablet-only shell", "verdict": "rejected", "evidence": "The 768px drawer is already hash-bound, scrollable, and parity-tested; the reproduced gap is the phone decision deck, not tablet reachability." }
+    ],
+    "feedback-loop": [
+      { "candidate": "return digest records tie-only movement", "verdict": "ranked", "evidence": "Return boundaries store wins/losses only and recordChanged ignores ties, so a real tied game can disappear from the welcome-back explanation." },
+      { "candidate": "restore cohort analytics claims", "verdict": "deferred", "evidence": "Aggregate page loads are not users, sessions, retention, or an opted-in cohort." }
+    ],
+    "gamification-engagement": [
+      { "candidate": "tie-aware rewards and season reckoning", "verdict": "ranked", "evidence": "The perfect-start achievement does not require zero ties, and the season epilogue evaluates and displays a wins/losses-only season." },
+      { "candidate": "hidden mastery bonuses", "verdict": "rejected", "evidence": "The public GAME_LOOP contract keeps mastery descriptive and forbids invented causal bonuses." }
+    ],
+    "ai-integration": [
+      { "candidate": "source-bound deterministic General Manager intelligence", "verdict": "existing", "evidence": "Co-GM, tactical film, consequences, season thesis, and exact navigation already expose explainable source receipts." },
+      { "candidate": "generative season prose", "verdict": "rejected", "evidence": "No cost-neutral demand signal exists, and deterministic narratives better preserve replay and evidence boundaries." }
+    ],
+    "security": [
+      { "candidate": "mobile landmark and notch-safe action surface", "verdict": "ranked", "evidence": "The named mobile overlay has no landmark role and can place controls under device cutouts because it lacks safe-area padding." },
+      { "candidate": "local account system", "verdict": "rejected", "evidence": "No account flows exist; external Obelisk remains the declared identity boundary." }
+    ],
+    "speed-organization-efficiency": [
+      { "candidate": "doctor freshness write isolation", "verdict": "ranked", "evidence": "Running the mandated startup renderer changed PROJECT_STATUS.lastUpdated from 2026-08-27 to 2026-09-01 solely because doctor --update-json uses the default touch behavior." },
+      { "candidate": "regroup fourteen tabs into six", "verdict": "rejected", "evidence": "The rail already has five task groups; changing information architecture does not follow from the reproduced phone action-reachability defect." }
+    ],
+    "token-api-reduction": [
+      { "candidate": "truthful activity age prevents false recovery work", "verdict": "ranked-with-doctor-isolation", "evidence": "An automatic Active 0d signal conceals the real six-day closeout age and can suppress the exact freshness investigation startup exists to trigger." },
+      { "candidate": "new analytics vendor", "verdict": "rejected", "evidence": "Cloudflare aggregate reporting is already repeatable; another vendor would duplicate data and cost." }
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "Feature depth · feedback loop · engagement · truth",
+      "effortHours": 6,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 23.3,
+      "slug": "ties-disappear-from-franchise-truth",
+      "title": "A real tied game vanishes from records, return deltas, achievements, and some win-rate decisions",
+      "status": "open",
+      "premise": "The simulator and standings carry ties, but mobileLoop, franchiseNewsletter, rewardBeats, gameFlow, tabOverview, betaFeedback, returnDigest, and seasonEpilogue display or persist only wins/losses. returnDigest.recordChanged ignores tie deltas; perfect-start accepts 5-0-1; seasonEpilogue and three server/difficulty paths compute win rate without ties.",
+      "fix": "Create one browser record-truth authority for lookup, formatting, and half-win percentage; migrate player-facing consumers and tie-only deltas, then align server/local fan sentiment and adaptive difficulty with focused negative controls.",
+      "ladder": {
+        "L1": { "effortHours": 2, "recipe": "Add ties to the most visible record strings and the return boundary." },
+        "L2": { "effortHours": 4, "recipe": "Create a shared browser record helper, migrate every reproduced player-facing consumer, make tie-only return movement visible, and correct achievement/season percentage logic with focused tests." },
+        "L3": { "effortHours": 6, "recipe": "L2 plus align local/server fan sentiment and adaptive difficulty, add cross-surface negative controls, and prove a 5-0-1 season never renders or scores as 5-0." }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "CRITICAL",
+      "category": "Process quality · observability · efficiency",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 20.7,
+      "slug": "doctor-health-refresh-fakes-project-activity",
+      "title": "A read-oriented startup health refresh rewrites project activity age to today",
+      "status": "open",
+      "premise": "render-startup-brief runs doctor --update-json; doctor calls updateProjectStatus without touchLastUpdated:false; the shared writer therefore changed lastUpdated from 2026-08-27 to 2026-09-01 before any S97 product work and the brief reported Active 0d.",
+      "fix": "Keep doctorScore current without touching the product-state timestamp, and pin the invariant with a regression that compares lastUpdated before and after doctor --update-json.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Pass touchLastUpdated:false from doctor." },
+        "L2": { "effortHours": 1.5, "recipe": "Isolate doctor receipt freshness from project activity and add a before/after regression around the real command path." },
+        "L3": { "effortHours": 3, "recipe": "L2 plus audit other automated status writers for the same semantic leak and make startup activity age derive only from substantive authorities." }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "UI/UX · mobile parity · accessibility",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 20.0,
+      "slug": "mobile-core-loop-buries-the-commit-control",
+      "title": "The phone decision deck can place its commit below a long scroll and under device safe areas",
+      "status": "open",
+      "premise": ".mobile-loop-overlay is a fixed full-screen surface with plain 1rem padding and no safe-area variables. .ml-actions renders after trophy road, the architect objective, every pressure card, and the decision deck; the named overlay has no region role.",
+      "fix": "Make the overlay four-edge safe-area aware, turn the action row into a readable sticky command dock, add a named region landmark, and prove dark/light mobile pixels plus focus/touch behavior.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Add safe-area padding and role=region." },
+        "L2": { "effortHours": 1.5, "recipe": "Add four-edge safe-area padding, a sticky action dock with opaque theme-correct backing, a named region, and focused static/browser assertions." },
+        "L3": { "effortHours": 2, "recipe": "L2 plus inspect dark/light 390px and 430px rendered states with a maximal pressure stack and bind the receipt to the release candidate." }
+      }
+    }
+  ],
+  "phantomsRejected": [
+    { "slug": "local-page-loads-prove-retention", "verdict": "REFUTED", "evidence": "Aggregate page paths do not identify users, sessions, returns, comprehension, or retention." },
+    { "slug": "provider-ai-is-the-next-depth-layer", "verdict": "REFUTED", "evidence": "Deterministic intelligence already covers the decision loop and no cost-neutral demand signal exists." },
+    { "slug": "tablet-needs-a-second-application-shell", "verdict": "REFUTED", "evidence": "Existing 768px rendered and browser evidence proves the drawer keeps the full game reachable." },
+    { "slug": "technical-deploy-means-public-launch", "verdict": "REFUTED", "evidence": "Deployment authorization does not prove reply-as email, lifecycle authority, external Obelisk registration, cohort evidence, or public-launch approval." },
+    { "slug": "regrouping-tabs-fixes-mobile-commit-reachability", "verdict": "REFUTED", "evidence": "The reproduced problem is action placement inside the phone deck; the existing section rail is already grouped." }
+  ],
+  "recommendedMoves": [
+    "Make every football record and percentage tie-complete, from simulation judgement through the return digest and shareable season card.",
+    "Separate health-receipt freshness from substantive project activity so startup cannot make a stale project look active.",
+    "Keep the phone's one decisive commit reachable above device cutouts and long pressure stacks."
+  ]
+}

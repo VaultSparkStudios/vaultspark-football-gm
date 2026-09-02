@@ -1,4 +1,5 @@
 import { DIFFICULTY_PRESETS } from "../config/leagueSetup.js";
+import { recordWinPct } from "../stats/teamRecord.js";
 
 /**
  * Adaptive League difficulty (S70) — opt-in, bounded, and announced.
@@ -31,9 +32,10 @@ export function computeAdaptiveNudge({ settings, seasonHistory }) {
   if (history.length < 2) return null;
   const wins = history.reduce((sum, row) => sum + (Number(row.wins) || 0), 0);
   const losses = history.reduce((sum, row) => sum + (Number(row.losses) || 0), 0);
-  const games = wins + losses;
+  const ties = history.reduce((sum, row) => sum + (Number(row.ties) || 0), 0);
+  const games = wins + losses + ties;
   if (!games) return null;
-  const winPct = wins / games;
+  const winPct = recordWinPct({ wins, losses, ties });
   const direction = winPct >= 0.65 ? 1 : winPct <= 0.35 ? -1 : 0;
 
   const base = DIFFICULTY_PRESETS[settings.difficultyPreset]?.patch || DIFFICULTY_PRESETS.standard.patch;
