@@ -1,0 +1,269 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-03",
+  "session": 98,
+  "agent": "codex",
+  "project": "franchise-architect",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 71.6,
+    "source": "Live browser/runtime source, the current 1,300-test baseline, current doctor output, public game-loop contract, and S98 game-loop review.",
+    "axesCovered": 9,
+    "itemsRanked": 3,
+    "phantomsRejected": 6,
+    "verificationNote": "Every ranked premise was reproduced in the current worktree before ranking. No cohort, retention, identity, email, lifecycle, or public-launch claim is inferred."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product, game-loop, rendered-pixel, accessibility, security, and release gates",
+    "staging": "Commit the exact candidate, deploy and verify it on stable Cloudflare staging, then promote the same source and artifact to production.",
+    "source": "Session 98 local project status plus live repository evidence"
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 8,
+    "sessionEngagement": 7,
+    "retention": 5,
+    "soulFidelity": 9,
+    "overall": 7.6,
+    "evidence": "The thirty-second and five-minute loops remain dense and source-bound, but the first completed season is explicitly discarded by a stale phase guard before the season reckoning and achievement evaluator run. Trophy Road also re-sorts an already chronological multi-season result window by week alone. Retention remains evidence-limited because no genuine opted-in cohort exists."
+  },
+  "axisSurvey": {
+    "feature-depth": [
+      {
+        "candidate": "first-season reckoning and reward authority",
+        "verdict": "ranked",
+        "evidence": "checkSeasonEndReview returns on the first real regular/postseason to offseason/season-awards transition because prevDashboardPhase is initialized only inside that transition branch."
+      },
+      {
+        "candidate": "terminal General Manager firing state",
+        "verdict": "deferred",
+        "evidence": "Recorded creative direction still reserves the terminal ending for founder direction; owner pressure already carries the non-terminal loop."
+      }
+    ],
+    "new-innovative-features": [
+      {
+        "candidate": "chronology-safe cross-season Trophy Road",
+        "verdict": "ranked",
+        "evidence": "The runtime returns year/week-descending scores, then deriveWinStreak destroys that chronology by sorting on week only."
+      },
+      {
+        "candidate": "provider-generated season story",
+        "verdict": "rejected",
+        "evidence": "The deterministic epilogue, Architect's Cut, press room, film, and Co-GM surfaces already narrate source receipts without variable cost or causal invention."
+      }
+    ],
+    "ui-ux": [
+      {
+        "candidate": "focus-safe tablet tablist keyboard contract",
+        "verdict": "ranked",
+        "evidence": "An app-level Arrow/Home/End handler activates the next tab through .click(), which closes and inerts the tablet drawer, then explicitly focuses that now-inert off-screen tab."
+      },
+      {
+        "candidate": "second tablet-only application shell",
+        "verdict": "rejected",
+        "evidence": "The existing 980px drawer is scrollable, safe-area-aware, and parity-tested; the reproduced defect is its missing keyboard contract, not content reachability."
+      }
+    ],
+    "feedback-loop": [
+      {
+        "candidate": "first completed season pays off immediately",
+        "verdict": "ranked",
+        "evidence": "The guard suppresses showSeasonEndReview, so the visible verdict, stewardship receipt, epilogue, what-if replay, and season-complete feedback all miss year one."
+      },
+      {
+        "candidate": "community retention conclusions",
+        "verdict": "deferred",
+        "evidence": "Aggregate page loads and an empty opted-in cohort cannot prove comprehension, return behavior, or retention."
+      }
+    ],
+    "gamification-engagement": [
+      {
+        "candidate": "year-aware streak and Trophy Road truth",
+        "verdict": "ranked",
+        "evidence": "An eight-game window crossing seasons can place the prior year's Week 18 ahead of the current year's Week 1, awarding or hiding streak trophies from stale order."
+      },
+      {
+        "candidate": "new hidden mastery bonuses",
+        "verdict": "rejected",
+        "evidence": "The public GAME_LOOP contract keeps mastery descriptive and prohibits hidden causal bonuses."
+      }
+    ],
+    "ai-integration": [
+      {
+        "candidate": "source-bound deterministic General Manager intelligence",
+        "verdict": "existing",
+        "evidence": "Co-GM, tactical film, consequence previews, season thesis, and exact navigation already expose explainable live receipts."
+      },
+      {
+        "candidate": "hosted generative copilot",
+        "verdict": "rejected",
+        "evidence": "No cost-neutral demand signal exists and the current deterministic layer better preserves replay and evidence boundaries."
+      }
+    ],
+    "security": [
+      {
+        "candidate": "project-local account system",
+        "verdict": "rejected",
+        "evidence": "No account flows are present and the declared external Obelisk architecture forbids substituting local auth."
+      },
+      {
+        "candidate": "clipboard-backed trophy share as a data risk",
+        "verdict": "refuted",
+        "evidence": "The payload is a player-triggered static share sentence containing only the public game URL and locally earned trophy label."
+      }
+    ],
+    "speed-organization-efficiency": [
+      {
+        "candidate": "remove the redundant phase sentinel while repairing year-one payoff",
+        "verdict": "ranked-with-season-reckoning",
+        "evidence": "prevDashboardPhase has exactly two writes in one function and no reader outside the guard; the previous dashboard argument already distinguishes initial load from transition."
+      },
+      {
+        "candidate": "split the browser shell again",
+        "verdict": "rejected",
+        "evidence": "The heavy History, Settings, export, roster, contracts, draft, and stats islands are already lazy-loaded and governed by a boot budget."
+      }
+    ],
+    "token-api-reduction": [
+      {
+        "candidate": "keep the fixes browser-local and deterministic",
+        "verdict": "ranked-as-constraint",
+        "evidence": "All three defects sit in static browser modules and require no API, provider, dependency, or background service."
+      },
+      {
+        "candidate": "add an analytics or AI vendor",
+        "verdict": "rejected",
+        "evidence": "It would add cost and data handling without fixing any reproduced S98 premise."
+      }
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "Feature depth · feedback loop · engagement",
+      "effortHours": 3,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 30.1,
+      "slug": "first-season-reckoning-is-suppressed",
+      "title": "The first completed franchise season silently skips its reckoning, epilogue, and reward evaluation",
+      "status": "shipped",
+      "premise": "checkSeasonEndReview receives a real previous dashboard and confirms the transition, then returns solely because state.prevDashboardPhase is null. That sentinel is never initialized during normal non-transition refreshes, so year one is always discarded.",
+      "fix": "Make the previous dashboard the sole initial-load authority, run the first valid season transition, and add focused plus browser-wiring negative controls proving initial load stays quiet while year one pays off exactly once.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Remove the stale null-sentinel return and cover the transition predicate."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Extract a pure transition predicate, use previous/current phase truth as the only gate, and add focused tests for initial load, non-transition refresh, and first season completion."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus prove showSeasonEndReview fires exactly once for the first valid transition, preserves no-playoff and playoff routes, and keeps all season-complete rewards source-bound."
+        }
+      },
+      "executionEvidence": "Extracted one previous/current phase predicate; removed the never-initialized sentinel; initial load, ordinary refresh, regular-season to awards, postseason to offseason, and exactly-once callback controls pass in the 26/26 focused reward/browser suite."
+    },
+    {
+      "rank": 2,
+      "tier": "CRITICAL",
+      "category": "Gamification · progression · truth",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 24.0,
+      "slug": "trophy-streak-loses-season-chronology",
+      "title": "Trophy Road can award or hide streaks from stale games when its eight-game window crosses a season",
+      "status": "shipped",
+      "premise": "GameSession.getRecentBoxScores returns year/week-descending receipts. deriveWinStreak copies that array and sorts only by week, allowing a previous Week 18 to outrank a current Week 1.",
+      "fix": "Centralize chronological comparison using year, season phase/order, week, and stable game identity; keep ties/losses as streak breakers and bind current-year Week 1 versus prior-year Week 18 as a negative control.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Sort streak receipts by year then week and add the reproduced cross-year test."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Add one chronology comparator with finite fallbacks, preserve caller order only when chronology is unknown, and cover current/prior season plus ties and losses."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 plus use the same chronology authority for exact controlled-game selection and prove deterministic behavior for duplicate/missing week metadata without inventing a result."
+        }
+      },
+      "executionEvidence": "Trophy streaks now use year, optional season type, week, and stable source order; any missing year/week preserves the runtime order. The reproduced 2027 Week 1 win versus 2026 Week 18 loss reports a one-game streak in the 26/26 focused suite."
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "UI/UX · accessibility · tablet parity",
+      "effortHours": 2,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 17.5,
+      "slug": "tablet-tablist-focus-enters-inert-drawer",
+      "title": "Tablet keyboard navigation closes the drawer and then focuses an inert off-screen tab",
+      "status": "shipped",
+      "premise": "The existing side-menu handler calls tabs[nextIndex].click(), whose shared click path closes and inerts the tablet drawer, and then calls tabs[nextIndex].focus(). Desktop navigation works, but the drawer path leaves focus inside an off-screen inert subtree.",
+      "fix": "Consolidate keyboard activation into bindMenuTabs, remove the competing app-level handler, resolve keys by declared orientation, and return focus to the visible drawer toggle after selection while preserving desktop roving focus.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Return focus to the visible drawer toggle after a keyboard tab selection closes the drawer."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Extract a deterministic next-index helper, consolidate the duplicate handlers, support declared orientation, and test wraparound, ignored keys, and focus return."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 plus prove the real desktop and drawer journeys in Playwright, including focus, aria-selected, exact panel visibility, and drawer closure without trapping keyboard users."
+        }
+      },
+      "executionEvidence": "Keyboard activation is centralized in bindMenuTabs, declared orientation owns the arrow axis, the duplicate handler is removed, desktop roving focus is preserved, and tablet selection returns focus to the visible toggle. The full real-browser suite passes 55/55 in dark/light and responsive drawer journeys."
+    }
+  ],
+  "phantomsRejected": [
+    {
+      "slug": "local-page-loads-prove-retention",
+      "verdict": "REFUTED",
+      "evidence": "Aggregate page paths do not identify users, sessions, returns, comprehension, or retention."
+    },
+    {
+      "slug": "provider-ai-is-the-next-depth-layer",
+      "verdict": "REFUTED",
+      "evidence": "Deterministic intelligence already covers the decision loop and no cost-neutral demand signal exists."
+    },
+    {
+      "slug": "tablet-needs-a-second-application-shell",
+      "verdict": "REFUTED",
+      "evidence": "The existing 980px drawer is reachable, scrollable, safe-area-aware, and responsive-tested."
+    },
+    {
+      "slug": "technical-deploy-means-public-launch",
+      "verdict": "REFUTED",
+      "evidence": "Deployment authorization does not prove reply-as email, lifecycle authority, external Obelisk registration, cohort evidence, or public-launch approval."
+    },
+    {
+      "slug": "gm-firing-can-be-inferred-from-arc-authority",
+      "verdict": "REFUTED",
+      "evidence": "The explicit creative-direction reservation still applies; technical implementation authority is not permission to invent the game's terminal ending."
+    },
+    {
+      "slug": "new-vendor-fixes-local-loop-defects",
+      "verdict": "REFUTED",
+      "evidence": "Every reproduced defect is local, deterministic, and dependency-free."
+    }
+  ],
+  "recommendedMoves": [
+    "Let the first completed season deliver its full source-bound reckoning instead of disappearing behind a redundant sentinel.",
+    "Make Trophy Road read the league's real year/week chronology before counting streaks.",
+    "Keep the primary tablist keyboard-operable while ensuring tablet selection never strands focus inside the closed inert drawer."
+  ]
+}

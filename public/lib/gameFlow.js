@@ -18,6 +18,7 @@ import { recordReturnBoundary } from "./returnDigest.js";
 import { recordAchievementEvent, renderTrophyRoad } from "./achievements.js";
 import { resolveDashboardPredictions } from "./spreadPredictions.js";
 import { findTeamStanding, formatTeamRecord, normalizeTeamRecord } from "./teamRecord.js";
+import { isSeasonEndTransition } from "./seasonReviewTransition.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -1120,18 +1121,13 @@ export async function advanceSeasonSequential({ startYear: requestedStartYear = 
   }
 }
 
-export function checkSeasonEndReview(previous) {
-  const curr = state.dashboard;
-  if (!curr || !previous) return;
-  // Trigger when transitioning from postseason → offseason
-  const justEndedSeason =
-    (previous.phase === "postseason" || previous.phase === "regular-season") &&
-    (curr.phase === "offseason" || curr.phase === "season-awards");
-  if (!justEndedSeason) return;
-  // Don't fire on initial load
-  if (state.prevDashboardPhase === null) { state.prevDashboardPhase = curr.phase; return; }
-  state.prevDashboardPhase = curr.phase;
-  showSeasonEndReview();
+export function checkSeasonEndReview(previous, {
+  current = state.dashboard,
+  onSeasonEnd = showSeasonEndReview
+} = {}) {
+  if (!isSeasonEndTransition(previous, current)) return false;
+  onSeasonEnd();
+  return true;
 }
 
 export function showSeasonEndReview() {

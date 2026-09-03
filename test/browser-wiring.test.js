@@ -1,8 +1,19 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { resolveTabKeyboardIndex } from "../public/lib/tabKeyboardNavigation.js";
 
 const read = (path) => fs.readFileSync(new URL(path, import.meta.url), "utf8");
+
+test("primary tab navigation resolves orientation-correct roving keyboard targets", () => {
+  assert.equal(resolveTabKeyboardIndex({ key: "ArrowDown", currentIndex: 0, count: 14, orientation: "vertical" }), 1);
+  assert.equal(resolveTabKeyboardIndex({ key: "ArrowUp", currentIndex: 0, count: 14, orientation: "vertical" }), 13);
+  assert.equal(resolveTabKeyboardIndex({ key: "ArrowRight", currentIndex: 0, count: 14, orientation: "vertical" }), null);
+  assert.equal(resolveTabKeyboardIndex({ key: "ArrowRight", currentIndex: 13, count: 14, orientation: "horizontal" }), 0);
+  assert.equal(resolveTabKeyboardIndex({ key: "Home", currentIndex: 8, count: 14 }), 0);
+  assert.equal(resolveTabKeyboardIndex({ key: "End", currentIndex: 2, count: 14 }), 13);
+  assert.equal(resolveTabKeyboardIndex({ key: "Enter", currentIndex: 2, count: 14 }), null);
+});
 
 test("app shell wires share-card and newsletter through the lazy export island", () => {
   const appSource = read("../public/app.js");

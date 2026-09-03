@@ -184,11 +184,58 @@ export function deriveControlledGame(recentBoxScores, controlledTeamId, week, ye
   };
 }
 
+const SEASON_TYPE_ORDER = Object.freeze({
+  preseason: 0,
+  regular: 1,
+  "regular-season": 1,
+  postseason: 2,
+  playoffs: 2,
+  "season-awards": 3,
+  offseason: 4
+});
+
+function finiteNumber(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+}
+
+/**
+ * Newest-first chronology for receipted games. Unknown chronology returns zero
+ * so stable Array#sort preserves the runtime's source order instead of inventing
+ * a date from a missing field.
+ */
+export function compareGameChronologyDesc(left = {}, right = {}) {
+  const leftYear = finiteNumber(left.year);
+  const rightYear = finiteNumber(right.year);
+  if (leftYear === null || rightYear === null) return 0;
+  if (leftYear !== rightYear) return rightYear - leftYear;
+
+  const leftType = SEASON_TYPE_ORDER[String(left.seasonType || "").toLowerCase()];
+  const rightType = SEASON_TYPE_ORDER[String(right.seasonType || "").toLowerCase()];
+  if (Number.isFinite(leftType) && Number.isFinite(rightType) && leftType !== rightType) return rightType - leftType;
+
+  const leftWeek = finiteNumber(left.week);
+  const rightWeek = finiteNumber(right.week);
+  if (leftWeek === null || rightWeek === null) return 0;
+  return rightWeek - leftWeek;
+}
+
+export function sortGamesByChronologyDesc(rows = []) {
+  const games = Array.isArray(rows) ? rows.slice() : [];
+  if (games.some((game) => finiteNumber(game?.year) === null || finiteNumber(game?.week) === null)) {
+    return games;
+  }
+  return games
+    .map((game, sourceIndex) => ({ game, sourceIndex }))
+    .sort((left, right) => compareGameChronologyDesc(left.game, right.game) || left.sourceIndex - right.sourceIndex)
+    .map(({ game }) => game);
+}
+
 export function deriveWinStreak(recentBoxScores, controlledTeamId) {
-  const rows = (Array.isArray(recentBoxScores) ? recentBoxScores : [])
-    .filter((row) => row.homeTeamId === controlledTeamId || row.awayTeamId === controlledTeamId)
-    .slice()
-    .sort((a, b) => Number(b.week) - Number(a.week));
+  const rows = sortGamesByChronologyDesc(
+    (Array.isArray(recentBoxScores) ? recentBoxScores : [])
+      .filter((row) => row.homeTeamId === controlledTeamId || row.awayTeamId === controlledTeamId)
+  );
   let streak = 0;
   for (const row of rows) {
     const home = row.homeTeamId === controlledTeamId;

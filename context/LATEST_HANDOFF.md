@@ -2,7 +2,7 @@
 
 ## Session Intent
 
-Begin S98 from a clean, fully deployed S97 boundary. Observe genuine opted-in behavior or run a fresh live-code audit; do not manufacture cohort evidence or collapse technical deployment into public-launch authority.
+Run the full S98 arc from the clean, fully deployed S97 boundary: perform a fresh live-code and game-loop audit, implement every verified item at the highest practical quality, verify rendered behavior, deploy through stable staging to production, then commit and push directly to `main`. Do not manufacture cohort, email, identity, lifecycle, or public-launch evidence, and do not collapse technical deployment into public-launch authority.
 
 ## Where We Left Off
 

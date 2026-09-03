@@ -5,6 +5,7 @@ import { getClientDiagnosticsSnapshot, recordClientDiagnostic, subscribeClientDi
 import { franchiseScopeFromDashboard, franchiseStorageKey } from "./franchiseScope.js";
 import { buildMentorshipBadge } from "./engagementFeatures.js";
 import { orientWinnerFirst } from "./scoreline.js";
+import { resolveTabKeyboardIndex } from "./tabKeyboardNavigation.js";
 
 export function escapeHtml(value) {
   return String(value)
@@ -1430,11 +1431,29 @@ export function bindMobileNav() {
 }
 
 export function bindMenuTabs(activateTabFn, closeMobileNav) {
-  document.querySelectorAll(".menu-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-      activateTabFn(button.dataset.tab);
-      // Selecting a section is the drawer's job done — get it off the screen.
-      closeMobileNav?.();
+  const buttons = Array.from(document.querySelectorAll(".menu-btn"));
+  const activateButton = (button, { keyboard = false } = {}) => {
+    const drawerWasOpen = document.body.classList.contains("mobile-nav-open");
+    activateTabFn(button.dataset.tab);
+    // Selecting a section is the drawer's job done — get it off the screen.
+    closeMobileNav?.();
+    if (drawerWasOpen) document.getElementById("mobileNavToggle")?.focus();
+    else if (keyboard) button.focus();
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => activateButton(button));
+    button.addEventListener("keydown", (event) => {
+      const orientation = button.closest('[role="tablist"]')?.getAttribute("aria-orientation") || "vertical";
+      const nextIndex = resolveTabKeyboardIndex({
+        key: event.key,
+        currentIndex: buttons.indexOf(button),
+        count: buttons.length,
+        orientation
+      });
+      if (nextIndex === null) return;
+      event.preventDefault();
+      activateButton(buttons[nextIndex], { keyboard: true });
     });
   });
 }
