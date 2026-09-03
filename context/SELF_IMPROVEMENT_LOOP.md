@@ -1,10 +1,33 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 96 closed at 989 / 1000 SIL v3.0. Four reproduced findings shipped through exact staging-to-production promotion: mobile navigation meets its declared target/safe-area contract, startup orientation reflects live truth, artifact-bind failures are actionable, and Cloudflare aggregate reporting is repeatably proven without inflating it into engagement evidence. The implementation-boundary canonical receipt is 1,293 / 1,293; final-SHA CI is 1,290 / 1,290 across five push shards; Playwright is 54 / 54; 255 responsive states cover all 240 required states and retain 96 reviewed captures; and final release authority is verified at `93b867e…` / `c45c4a…`. Doctor-driven final integration caught two representation defects—the ledger made `_health` exceed a downstream read bound, then the verifier expected the full ledger from the intentionally compact health document. Closeout CI then caught status-page freshness, visual-ledger completeness, and live-state leakage in a startup test fixture. The final contract keeps identity compact in health, the complete 207-file ledger in the deploy manifest, and all 96 retained captures registered.
+Rolling status: Session 97 closed at 982 / 1000 SIL v3.0. Three reproduced findings shipped: tie-complete record truth across engine and player surfaces, doctor health freshness isolated from project activity, and a four-edge-safe sticky phone commit dock. Canonical Node is 1,300 / 1,300; exact-SHA CI is 1,295 / 1,295 across five shards plus 54 / 54 browser cases; 255 responsive states retain 98 reviewed captures; and unified release authority is verified at `9559790…` / `47b3cee…`. Process and coherence are scored down because a read-intended unsupported `--help` call unexpectedly refreshed generated Studio Ops outputs; the sibling tree was not rewritten or reverted, and the incident was reported through Ark.
 
 Previously — Session 95 closed at 993 / 1000 after seven reproduced findings and an exact immutable staging-to-production promotion.
 <!-- rolling-status-end -->
+
+## 2026-09-02 — Session 97 Tie-Complete Truth and the Reachable Commit
+
+SIL v3.0: **982 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 98, Process Quality 91, Cross-Repo Coherence 93, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+**What changed the outcome.** The audit followed record truth through every consumer rather than repairing one string. The simulator already modelled ties, but record displays, return boundaries, achievements, season judgement and multiple engine decisions silently collapsed them. One browser authority and one engine helper now make W-L-T and half-win semantics explicit everywhere reproduced.
+
+**What went well.**
+
+- All three ranked premises were reproduced and shipped at L3, with a tie-only delta and 5-0-1 negative control.
+- The canonical suite passed 1,300/1,300; exact-SHA CI passed 1,295/1,295 plus 54/54 browser cases.
+- The rendered-pixel loop covered 255 states and retained 98 hash-bound dark/light desktop/tablet/mobile captures; direct 390px and 430px inspection found the sticky action dock readable and unobscured.
+- Stable staging, production, visual and performance receipts agree on one exact source/artifact identity.
+
+**What cost the session, and why Process Quality is 91 and Cross-Repo Coherence is 93.** A command invoked only to inspect usage—`ignis-rescore-touched --help`—did not implement a pure help path and refreshed generated Studio Ops outputs. The sibling tree already carried concurrent changes, so attempting a blanket revert would have risked destroying work that was not ours. No manual sibling edit or commit followed; the incident was sent through Ark. The lesson is operational: never assume `--help` is read-only unless the script advertises and gates it.
+
+**Committed SIL follow-ups.**
+
+- [SIL] Football record truth is one domain contract: format W-L-T, compute ties as half a win, and make tie-only deltas observable from one authority rather than scattered string arithmetic.
+- [SIL] Health-receipt freshness and substantive project activity are different clocks. Automated doctor writes must opt out of touching `lastUpdated`, and the real command path must be the regression target.
+- [SIL] A phone decision loop needs its irreversible commit reachable after the longest pressure stack and outside every safe-area inset; inspect the actual pixels in both themes.
+- [SIL] Treat an unknown script's `--help` as potentially executable until its source or documented pure-help contract proves otherwise.
+- [SIL] A route fixture that advances time must honor every valid checkpoint the engine can surface; resolve a pending General Manager decision through its real command contract instead of assuming the calendar always advances.
 
 ## 2026-08-26 — Session 96 Rendered Settlement and Exact Evidence
 

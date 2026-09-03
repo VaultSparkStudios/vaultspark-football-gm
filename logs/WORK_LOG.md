@@ -1,3 +1,11 @@
+## 2026-09-02 — Session 97 — Tie-complete franchise truth and exact deployment
+
+Completed the full `/arc`: profiled and recovered the session; produced a nine-axis audit with three reproduced findings and five rejected phantoms; implemented every item at L3; ran the rendered-pixel loop; pushed directly to `main`; and promoted the exact stable-staging artifact to production.
+
+Shipped one shared W-L-T/half-win record authority across the engine and public client; tie-only return deltas and 5-0-1 negative controls; doctor health refresh isolation from `lastUpdated`; and a named four-edge-safe mobile decision region with a sticky commit dock. Canonical Node passed 1,300/1,300, exact-SHA CI passed 1,295/1,295 plus 54 browser cases, and 255 responsive states yielded 98 retained reviewed captures. Candidate `95597906033ced89469cd2c268a661d5a3b2b4a8` / artifact `47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89` passes staging 14/14 and production 10/10; workflows 33595882214 and 33598681683 are green. Public launch remains HOLD on independent email, founder-public-launch, and lifecycle evidence.
+
+The final canonical receipt refresh also exposed a nondeterministic HTTP fixture: seeded runtime state could surface a valid pending General Manager decision, and the fixture incorrectly expected a blind week advance to succeed. The fixture now resolves the checkpoint through the real command contract before continuing; isolated server-route coverage returned 6/6 and the production gate remains fail-closed.
+
 ## 2026-08-22 — Session 93 — The Owner's Console Stops Being a Cheat Panel
 
 Completed the full `/arc` from a clean S92 boundary. Phase 0 triage: clean tree, no lock, all ten surfaces current through S92; the write-back-currency probe (F7) flagged two commits, both benign — S92's own closeout artifact commit landing after the SIL anchor (this repo's standing false positive, recorded in the S92 handoff) and a studio-ops canonical-asset propagation commit. Not a cut-off. Session identity fixed at S93 before any write.

@@ -1,38 +1,36 @@
-# Latest Handoff — Session 96 → Session 97
+# Latest Handoff — Session 97 → Session 98
 
 ## Session Intent
 
-Run the complete S97 `/arc`, implement every live-premise audit item, verify the exact candidate on independent staging, commit and push directly to `main`, promote the same revision to production, and prove the live origin without treating technical deployment as public-launch approval.
+Begin S98 from a clean, fully deployed S97 boundary. Observe genuine opted-in behavior or run a fresh live-code audit; do not manufacture cohort evidence or collapse technical deployment into public-launch authority.
 
 ## Where We Left Off
 
-- All four S96 audit items are shipped.
-- Exact candidate `93b867e010dfe3773116433e5b8068dc894e7c0c` is live on stable staging and production at artifact `c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6`.
-- CI workflow 33030325197 and promotion workflow 33031371311 are green. Staging passes 14/14 at deployment `ed3ce135-b32d-4605-a144-a962696f707a` with rollback `7b67032b-358f-4cc1-83f0-d2a5ec28ed29`; production passes 10/10. Final workflow responsive evidence passes 255 states, all 240 required states, with zero runtime errors or failures.
+- All three S97 audit items are shipped; the audit sidecar is `implemented`.
+- Exact candidate `95597906033ced89469cd2c268a661d5a3b2b4a8` is live on stable staging and production at artifact `47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89`.
+- CI workflow 33595882214, backend workflow 33595882226, automatic Pages workflow 33595882165, and explicit promotion workflow 33598681683 are green. Staging passes 14/14 at deployment `fe419b75-772f-46df-ac7b-c21aeb1b8327` with rollback `4e47e642-1107-4198-a8a4-18b4026ba655`; production passes 10/10.
 - Unified release authority is `verified`; `launchReady` remains `false`.
-- Implementation-boundary canonical Node receipt is 1,293/1,293; final-SHA CI is 1,290/1,290 across five push shards; Playwright is 54/54; focused release/staging checks are 26/26 and 19/19; responsive evidence passed 255 states with 96 retained reviewed captures.
+- Canonical Node receipt is 1,300/1,300; exact-SHA CI is 1,295/1,295 across five push shards; Playwright is 54/54; responsive evidence passed 255 states with 98 retained reviewed captures; hosted performance is verified.
 
 ## What Shipped
 
-1. **Mobile parity.** The navigation trigger is 44×44px and the 100dvh drawer respects all four safe-area insets.
-2. **Startup truth.** Orientation validates dates, reads inline SIL v3 categories and intent bodies, accepts session-suffixed audits, and refreshes stale Genius authority.
-3. **Actionable release binding.** Artifact fingerprints carry deterministic per-file entries; failures print expected/observed identities and first-file deltas.
-4. **Bounded analytics proof.** A secrets-gateway-backed Cloudflare verifier records aggregate page loads without claiming users, sessions, engagement, retention, or cohort evidence.
-5. **Evidence hardening.** Global Escape no longer wakes cold lazy islands, and responsive capture waits for settled rendered geometry instead of sleeping.
-6. **Bounded health identity.** Final integration keeps `_health` compact while retaining the full 207-file digest ledger in the deploy manifest; launch evidence and promotion bind both prove the intended representation.
+1. **Tie-complete franchise truth.** Shared helpers preserve W-L-T records and half-win percentages across every reproduced engine and player-facing path; tie-only movement is visible and 5-0-1 is not perfect.
+2. **Truthful project activity.** Doctor health refreshes no longer change `lastUpdated`; a regression executes the real command path.
+3. **Reachable phone decisions.** The mobile loop uses four-edge safe areas, a named region, and a sticky theme-correct commit dock.
+4. **Exact technical deployment.** Visual, performance, staging and production receipts agree on one source and artifact, with independent live-origin proof.
 
-## Start Here in Session 97
+## Start Here in Session 98
 
 1. Observe the first genuine opted-in cohort; validate freshness, suppression, deletion, and abuse ceilings without manufacturing activity.
 2. Restore `/stats` to the sitemap only when the community snapshot clears its suppression threshold.
 3. Reconcile launch only from Zoho receive/reply-as evidence, explicit SHA-bound public-launch approval, authoritative lifecycle state, and applicable external Obelisk relying-party proof.
-4. If Studio Ops adopts Ark receipt `01K103S9CJB19ECBBDE12BC911`, switch analytics verification to the least-privilege `cloudflare.analytics-read` capability.
-5. Treat GitHub Actions Node 24 warnings as advisory until official Node 24-native action majors are available.
+4. Treat GitHub Actions Node 24 warnings as advisory until official Node 24-native action majors are available.
 
 ## Boundaries
 
 - Technical deployment is complete; public launch/SPARKED is not approved.
 - Do not fabricate cohort, analytics, email, identity, lifecycle, or founder-approval evidence.
 - Aggregate page loads prove reporting only.
-- CDR was reviewed in S96; no new creative direction or DECISIONS entry was owed.
-- The Studio closeout autopilot misrouted Studio-level refresh work while invoked with `--project .`; it was stopped before commit, the local brief was regenerated from project authority, and the defect was reported through Ark receipt `01K10BKC0C4B276631DD0B1360`.
+- CDR was reviewed in S97; no new creative direction or DECISIONS entry was owed.
+- A read-intended `ignis-rescore-touched --help` call unexpectedly refreshed generated Studio Ops outputs. No sibling rollback was attempted because pre-existing sibling changes could not be distinguished safely; the incident was reported through Studio Ark and is scored down in Process Quality and Cross-Repo Coherence.
+- The final source-bound canonical refresh exposed a nondeterministic server-route fixture: a valid pending General Manager decision correctly blocked a blind week advance. The fixture now submits the versioned decision choice and retries; production behavior was not loosened.

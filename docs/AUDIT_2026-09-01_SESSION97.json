@@ -5,7 +5,7 @@
   "agent": "codex",
   "project": "franchise-architect",
   "displayName": "Franchise Architect: Football",
-  "status": "open",
+  "status": "implemented",
   "summary": {
     "combinedPriority": 64.0,
     "source": "Live source, current startup output, canonical test baseline, retained S96 rendered pixels, release contracts, and game-loop review.",
@@ -79,7 +79,8 @@
       "priority": 23.3,
       "slug": "ties-disappear-from-franchise-truth",
       "title": "A real tied game vanishes from records, return deltas, achievements, and some win-rate decisions",
-      "status": "open",
+      "status": "shipped",
+      "executionEvidence": "One shared browser record authority and one engine helper now preserve W-L-T formatting and half-win percentages across every reproduced player, return, reward, season, fan-sentiment, difficulty, and narrative path. Tie-only deltas are visible, 5-0-1 is not perfect, and focused negative controls plus the canonical 1,300-test receipt pass.",
       "premise": "The simulator and standings carry ties, but mobileLoop, franchiseNewsletter, rewardBeats, gameFlow, tabOverview, betaFeedback, returnDigest, and seasonEpilogue display or persist only wins/losses. returnDigest.recordChanged ignores tie deltas; perfect-start accepts 5-0-1; seasonEpilogue and three server/difficulty paths compute win rate without ties.",
       "fix": "Create one browser record-truth authority for lookup, formatting, and half-win percentage; migrate player-facing consumers and tie-only deltas, then align server/local fan sentiment and adaptive difficulty with focused negative controls.",
       "ladder": {
@@ -98,7 +99,8 @@
       "priority": 20.7,
       "slug": "doctor-health-refresh-fakes-project-activity",
       "title": "A read-oriented startup health refresh rewrites project activity age to today",
-      "status": "open",
+      "status": "shipped",
+      "executionEvidence": "doctor --update-json now writes doctorScore with touchLastUpdated:false. The lifecycle-coherence regression runs the real command path and proves lastUpdated remains byte-identical while health evidence refreshes.",
       "premise": "render-startup-brief runs doctor --update-json; doctor calls updateProjectStatus without touchLastUpdated:false; the shared writer therefore changed lastUpdated from 2026-08-27 to 2026-09-01 before any S97 product work and the brief reported Active 0d.",
       "fix": "Keep doctorScore current without touching the product-state timestamp, and pin the invariant with a regression that compares lastUpdated before and after doctor --update-json.",
       "ladder": {
@@ -117,7 +119,8 @@
       "priority": 20.0,
       "slug": "mobile-core-loop-buries-the-commit-control",
       "title": "The phone decision deck can place its commit below a long scroll and under device safe areas",
-      "status": "open",
+      "status": "shipped",
+      "executionEvidence": "The named mobile-loop region now uses four-edge safe-area padding and a theme-correct sticky command dock. Static contracts, 54 Playwright cases, 255 exact-candidate responsive states, and manual dark/light inspection at 390px and 430px passed without clipping, overlap, contrast, or reachability defects.",
       "premise": ".mobile-loop-overlay is a fixed full-screen surface with plain 1rem padding and no safe-area variables. .ml-actions renders after trophy road, the architect objective, every pressure card, and the decision deck; the named overlay has no region role.",
       "fix": "Make the overlay four-edge safe-area aware, turn the action row into a readable sticky command dock, add a named region landmark, and prove dark/light mobile pixels plus focus/touch behavior.",
       "ladder": {

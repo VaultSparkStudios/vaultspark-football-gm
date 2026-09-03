@@ -1,38 +1,47 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: dfc0c21c0db1 -->
-<!-- generated-at: 2026-09-01T19:23:08.631Z -->
+<!-- source-hash: f2f38187209e -->
+<!-- generated-at: 2026-09-03T03:12:17.563Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION: 96 → 97
+Session 97 to 98 Handoff Summary
 
-STATUS
-- Technical deployment complete; public launch/SPARKED not approved.
-- Release authority: verified. launchReady: false.
-- Exact candidate 93b867e0 live on staging + production (artifact c45c4a49...783a6).
-- CI 33030325197 and promotion 33031371311 green. Staging 14/14 (deploy ed3ce135, rollback 7b67032b); production 10/10. Responsive evidence 255 states, all 240 required, zero runtime errors.
+Status
+- S97 fully shipped and deployed; audit sidecar implemented.
+- Candidate SHA 95597906 live on stable staging and production (artifact 47b3cee3...).
+- All workflows green. Staging 14/14, production 10/10.
+- Release authority verified; launchReady false.
+- Receipts: Node 1300/1300, exact-SHA CI 1295/1295, Playwright 54/54, responsive 255 states.
 
-SHIPPED (S96)
-- Mobile parity: 44x44px nav trigger, 100dvh drawer honoring all safe-area insets.
-- Startup truth: orientation validates dates, reads inline SIL v3, accepts session-suffixed audits, refreshes stale Genius authority.
-- Actionable release binding: deterministic per-file fingerprints; failures print expected/observed and first-file deltas.
-- Bounded analytics: secrets-gateway Cloudflare verifier records aggregate page loads only (no users/sessions/engagement/retention/cohort claims).
-- Evidence hardening: Escape no longer wakes cold lazy islands; capture waits for settled geometry.
-- Bounded health identity: compact _health with full 207-file digest ledger in deploy manifest.
+Shipped This Session
+- Tie-complete franchise truth: W-L-T records and half-win percentages preserved; 5-0-1 not perfect.
+- Truthful project activity: doctor refreshes no longer alter lastUpdated.
+- Reachable phone decisions: mobile loop with safe areas, named region, sticky commit dock.
+- Exact technical deployment: visual, performance, staging, production receipts agree on one artifact.
 
-NOW (top 3)
+Current Intent
+- Start from clean S97 boundary. Observe genuine opted-in behavior or run fresh live-code audit. Do not manufacture cohort evidence or conflate technical deployment with public-launch authority.
+
+Now Bucket (Top 3)
 1. Observe first genuine opted-in cohort; validate freshness, suppression, deletion, abuse ceilings without manufacturing activity.
-2. Restore /stats to sitemap only after community snapshot clears suppression threshold.
-3. Reconcile launch only from Zoho receive/reply evidence, SHA-bound public-launch approval, authoritative lifecycle state, and applicable Obelisk relying-party proof.
+2. Restore /stats to sitemap only when community snapshot clears suppression threshold.
+3. Reconcile launch only from Zoho receive/reply evidence, SHA-bound public-launch approval, authoritative lifecycle state, and external Obelisk relying-party proof.
 
-BLOCKERS / CONSTRAINTS
-1. Public launch/SPARKED not approved; no founder approval evidence.
-2. No genuine opted-in cohort yet observed; analytics prove reporting only.
-3. Do not fabricate cohort, analytics, email, identity, lifecycle, or approval evidence.
+Blockers (Top 3)
+1. Public launch/SPARKED not approved; technical deployment complete but gated.
+2. Server-route fixture nondeterminism: valid pending GM decision blocked blind week advance; fixture now submits versioned choice and retries. Production not loosened.
+3. GitHub Actions Node 24 warnings advisory until official Node 24-native action majors ship.
 
-HUMAN-BLOCKED / PENDING (age: since S96)
-- Studio Ops adoption of Ark receipt 01K103S9CJB19ECBBDE12BC911: on adoption, switch analytics verification to least-privilege cloudflare.analytics-read.
-- GitHub Actions Node 24 warnings: advisory until Node 24-native action majors ship.
-- Studio closeout autopilot defect (misrouted refresh under --project .): stopped pre-commit, brief regenerated, reported via Ark receipt 01K10BKC0C4B276631DD0B1360.
+Human-Blocked
+- Public-launch/SPARKED founder approval: outstanding, pending SHA-bound explicit sign-off (age: ongoing, unresolved this session).
+- Community snapshot suppression threshold clearance: pending genuine cohort data.
 
-NEXT: Begin S97 by observing the first opted-in cohort and validating suppression/deletion ceilings; do not touch launch reconciliation until SHA-bound approval evidence exists.
+Incidents
+- Read-intended ignis-rescore-touched --help refreshed generated Studio Ops outputs. No sibling rollback attempted (siblings indistinguishable). Reported via Studio Ark; scored down in Process Quality and Cross-Repo Coherence.
+
+Constraints
+- Do not fabricate cohort, analytics, email, identity, lifecycle, or founder-approval evidence.
+- Aggregate page loads prove reporting only.
+- CDR reviewed S97; no new DECISIONS entry owed.
+
+Next Session: Observe first genuine opted-in cohort or run a fresh live-code audit; keep launchReady false until explicit SHA-bound founder approval.

@@ -146,7 +146,19 @@ test("the press-conference routes actually execute on the server adapter", async
     // Advance until the room asks something, then answer it over real HTTP.
     let pending = read.body.pending;
     for (let week = 0; week < 5 && !pending; week += 1) {
-      const advanced = await postJson(base, "/api/advance-week", { count: 1 });
+      let advanced = await postJson(base, "/api/advance-week", { count: 1 });
+      if (advanced.status === 409 && advanced.body.reasonCode === "ADVANCE_WEEK_GM_DECISION_REQUIRED") {
+        const decision = advanced.body.pendingDecision;
+        assert.ok(decision?.options?.length, JSON.stringify(advanced.body));
+        advanced = await postJson(base, "/api/advance-week", {
+          count: 1,
+          gmDecisionChoice: {
+            decisionId: decision.id,
+            occurrenceKey: decision.occurrenceKey,
+            choiceId: decision.options[0].id
+          }
+        });
+      }
       assert.equal(advanced.status, 200, JSON.stringify(advanced.body));
       pending = (await getJson(base, "/api/press-conference")).body.pending;
     }

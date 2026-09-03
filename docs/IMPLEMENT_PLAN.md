@@ -12,8 +12,8 @@ L3 is selected for all three verified items. The implementation remains static-h
 
 ## Execution status
 
-- Doctor freshness isolation: in progress.
-- Tie-complete franchise truth: queued.
-- Mobile decision command dock: queued.
+- Doctor freshness isolation: shipped and regression-covered.
+- Tie-complete franchise truth: shipped across every reproduced engine and player-facing consumer.
+- Mobile decision command dock: shipped with exact-candidate rendered-pixel evidence.
 
-Final verification requires focused negative controls, the canonical Node suite, Playwright, Pages build/smoke, dark/light rendered pixels at desktop/tablet/mobile, exact stable staging, app-release gates, direct-main push, production promotion, and live-origin revision proof.
+Verification completed: focused negative controls; canonical Node 1,300/1,300; Playwright 54/54; Pages build, reachability, boot budget, and smoke; 255 responsive states with 98 retained/reviewed captures; stable staging 14/14; hosted performance verified; exact candidate pushed to `main`. Production promotion and live-origin proof are recorded during closeout without changing public-launch HOLD.

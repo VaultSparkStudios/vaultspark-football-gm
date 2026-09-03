@@ -2,8 +2,19 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-08-26
+Last reviewed: 2026-09-02
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-09-02 - Session 97 truth update
+
+- **All three ranked findings are shipped.** Tie-complete franchise records, doctor activity-clock isolation, and the reachable safe-area-aware phone commit dock are implemented.
+- **Tie semantics are exact.** A tie counts as half a win for percentages, appears in W-L-T records, changes return-digest state by itself, and prevents a 5-0-1 season from qualifying as perfect.
+- **Test truth is exact.** Canonical Node passes 1,300/1,300; exact-SHA CI passes 1,295/1,295 across five shards; Playwright passes 54/54; responsive evidence passes 255 states with 98 retained hash-bound reviewed images.
+- **Release identity is exact.** Stable staging passes 14/14 at deployment `fe419b75-772f-46df-ac7b-c21aeb1b8327`; production passes 10/10; CI workflow 33595882214 and promotion workflow 33598681683 are green. Visual, performance, staging and production authorities agree on source `95597906033ced89469cd2c268a661d5a3b2b4a8` and artifact `47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89`.
+- **The performance gate was measured, not force-greened.** An initial three-run staging sample landed at 1.84s mobile LCP against the 1.80s bar because one cold request took 14.7s. A five-run sample passed while INP, CLS, headers and desktop LCP remained green; the passing receipt preserves every sample.
+- **Historical CI reds are explained.** The two failed runs still inside the five-run window belong to the superseded `5d47d995` Dependabot merge and its known shallow-checkout sitemap identity assertion. Three newer main revisions, including the exact deployed candidate, are green; the gate was not waived.
+- **The final canonical refresh found and fixed a real fixture race.** A random valid cap-crisis decision could make the press-conference route fixture receive the adapter's correct 409 refusal while it assumed every week advance must return 200. The fixture now resolves any surfaced General Manager decision through the same versioned command body before retrying the advance; the adapter gate was not weakened.
+- **Deployment is not launch.** Technical production deployment is complete. Zoho reply-as delivery, explicit public-launch approval, and lifecycle authority remain unverified; `launchReady` remains false.
 
 ## 2026-08-26 - Session 96 truth update
 

@@ -102,6 +102,19 @@ for (const viewport of ["tablet", "mobile"]) {
     });
   }
 }
+for (const theme of ["dark", "light"]) {
+  const sourceName = `mobile-game-loop-${theme}.png`;
+  const targetName = `s${receiptSession}-${sourceName}`;
+  const buffer = await fs.readFile(path.join(evidenceDir, sourceName));
+  await fs.writeFile(path.join(receiptDir, targetName), buffer);
+  captures.push({
+    file: targetName,
+    sha256: sha256(buffer),
+    theme,
+    viewport: { width: 390, height: 844 },
+    page: "Mobile weekly decision deck and sticky command dock"
+  });
+}
 
 const receipt = {
   schemaVersion: 1,
@@ -115,15 +128,15 @@ const receipt = {
     renderedPixelsReviewed: true,
     reviewer: "session-agent",
     findings: [
-      "The 44 by 44 pixel navigation trigger and open drawer render legibly at 768px tablet and 390px phone widths in both dark and light themes.",
-      "The open drawer remains fully scrollable inside 100dvh and preserves visible four-edge safe-area padding without obscuring the full game or the phone decision deck.",
-      "The deterministic harness inspected dark and light pixels at 1440px desktop, 768px tablet, and 390px mobile across every primary tab with no overflow, contrast, touch-target, selector, or runtime failures.",
+      "The mobile weekly decision deck and sticky commit dock render legibly at 390px in both dark and light themes, with both actions fully visible above the viewport edge.",
+      "A separate 430 by 932 pixel browser probe passed in dark and light themes; manual pixel review found the dock readable, unclipped, and visually separated from the scrolling decision stack.",
+      "The deterministic harness inspected 255 dark and light states at 1440px desktop, 768px tablet, and 390px mobile with no overflow, contrast, touch-target, selector, or runtime failures.",
       "Deployment readiness remains independent from public-launch authority; no rendered surface asserts that email, cohort, retention, or launch approval is verified."
     ],
     fixesApplied: [
-      "Raised the collapsed-navigation trigger from 38 by 38 pixels to the declared 44 by 44 pixel minimum.",
-      "Added safe-area-aware top, right, bottom, and left padding to the 100dvh off-canvas drawer.",
-      "Pinned the touch target, computed padding, drawer behavior, theme coverage, and tablet/mobile rendered state with static and real-browser gates."
+      "Added top, right, bottom, and left safe-area padding to the full-screen mobile decision deck.",
+      "Turned the weekly action row into a theme-correct sticky command dock and exposed the overlay as a named region.",
+      "Pinned safe-area coverage, sticky placement, landmark semantics, theme coverage, and 390/430px rendered states with static and real-browser gates."
     ],
     blockingDefectsOpen: 0
   }

@@ -38,6 +38,6 @@ Combined priority: **64.0**.
 
 | Item | Status | Evidence |
 |---|---|---|
-| ties-disappear-from-franchise-truth | open | — |
-| doctor-health-refresh-fakes-project-activity | open | — |
-| mobile-core-loop-buries-the-commit-control | open | — |
+| ties-disappear-from-franchise-truth | shipped | One shared browser record authority and one engine helper now preserve W-L-T formatting and half-win percentages across every reproduced player, return, reward, season, fan-sentiment, difficulty, and narrative path. Tie-only deltas are visible, 5-0-1 is not perfect, and focused negative controls plus the canonical 1,300-test receipt pass. |
+| doctor-health-refresh-fakes-project-activity | shipped | doctor --update-json now writes doctorScore with touchLastUpdated:false. The lifecycle-coherence regression runs the real command path and proves lastUpdated remains byte-identical while health evidence refreshes. |
+| mobile-core-loop-buries-the-commit-control | shipped | The named mobile-loop region now uses four-edge safe-area padding and a theme-correct sticky command dock. Static contracts, 54 Playwright cases, 255 exact-candidate responsive states, and manual dark/light inspection at 390px and 430px passed without clipping, overlap, contrast, or reachability defects. |

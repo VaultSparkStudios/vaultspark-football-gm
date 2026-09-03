@@ -16,6 +16,17 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 - [ ] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker.
 
+## Session 97 — Full arc: tie-complete franchise truth and a reachable phone commit (2026-09-02)
+
+- [x] Establish one browser record authority and one engine helper for W-L-T formatting, standings lookup, half-win percentages, and exact deltas.
+- [x] Migrate every reproduced record consumer across mobile, newsletters, rewards, season epilogue, achievements, return digest, server/local fan sentiment, adaptive difficulty, beat reporting, General Manager authority, and narrative events.
+- [x] Prove a tie-only return delta is visible and a 5-0-1 season is neither rendered nor scored as 5-0/perfect.
+- [x] Isolate doctor health-receipt freshness from substantive `lastUpdated` activity and pin the real command path.
+- [x] Make the phone decision overlay a named, four-edge-safe region with a sticky theme-correct action dock.
+- [x] Bind tests, inspected pixels, hosted performance, stable staging, production, and release authority to exact source `95597906033ced89469cd2c268a661d5a3b2b4a8` and artifact `47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89`.
+
+**Verification:** canonical Node 1,300/1,300; exact-SHA CI 1,295/1,295 across five shards in workflow 33595882214; Playwright 54/54 locally and green in the workflow browser gate; 255 responsive states with 98 retained/reviewed dark/light desktop/tablet/mobile captures; Pages build, module reachability, boot budget and smoke green; sanitization critical/warning 0/0; sitemap 9/10; staging 14/14; production 10/10; hosted performance verified; promotion workflow 33598681683 green. Technical deployment is complete. Public launch remains HOLD.
+
 ## Session 96 — Full arc: trustworthy orientation, diagnosable release identity, and mobile parity (2026-08-26)
 
 - [x] Make startup orientation reject invalid dates, parse inline SIL v3 categories, derive intent from entry bodies, and content-refresh stale Genius authority.

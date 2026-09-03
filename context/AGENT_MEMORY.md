@@ -1,5 +1,12 @@
 # Agent Memory
 
+## Session 97 durable patterns
+
+- Treat a football record as W-L-T everywhere and compute percentage as `(wins + 0.5 * ties) / games`; tie-only movement must cross persistence and return boundaries.
+- Health receipts and product activity use separate clocks. Pass `touchLastUpdated:false` for read-oriented automation and test the real command path.
+- Keep the irreversible phone commit in a sticky, opaque, theme-correct dock inside four-edge safe areas, and inspect 390px plus 430px pixels in both themes.
+- Do not assume an unsupported `--help` is read-only. Verify the script's pure-help branch before invoking it, especially for cross-repo utilities.
+
 ## Session 96 durable patterns
 
 - Rendered-state evidence must poll bounded geometry before capture. A fixed sleep can pass locally and still freeze mid-animation under throttled Linux CI.
