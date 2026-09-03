@@ -8,9 +8,10 @@ function reportArtifact(report) {
   return check?.ok === true && check.observed === check.expected ? check.observed : null;
 }
 
-const RECEIPT_ONLY_PREFIXES = ["docs/", "context/", "audits/", "test/"];
+const RECEIPT_ONLY_PREFIXES = ["docs/", "context/", "audits/", "reports/", "test/"];
 const RECEIPT_ONLY_FILES = new Set([
   "logs/WORK_LOG.md",
+  "portfolio/BLOCKER_DISCIPLINE_LOG.ndjson",
   "scripts/measure-hosted-performance.mjs",
   "scripts/write-visual-qa-receipt.mjs",
   "scripts/lib/release-authority.mjs",

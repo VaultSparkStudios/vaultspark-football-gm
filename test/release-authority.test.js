@@ -47,7 +47,14 @@ test("a production receipt-only descendant keeps one deployable authority", () =
   const publicationDelta = evaluatePublicationDelta({
     from: revision,
     to: publicationRevision,
-    changedFiles: ["docs/visual-qa/LATEST.json", "context/PROJECT_STATUS.json", "logs/WORK_LOG.md", "scripts/write-visual-qa-receipt.mjs"]
+    changedFiles: [
+      "docs/visual-qa/LATEST.json",
+      "context/PROJECT_STATUS.json",
+      "logs/WORK_LOG.md",
+      "portfolio/BLOCKER_DISCIPLINE_LOG.ndjson",
+      "reports/s98-production.json",
+      "scripts/write-visual-qa-receipt.mjs"
+    ]
   });
   const authority = deriveReleaseAuthority({
     stagingReport: report,
