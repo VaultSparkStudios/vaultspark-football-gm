@@ -1,36 +1,37 @@
-# Latest Handoff — Session 97 → Session 98
+# Latest Handoff — Session 98 → Session 99
 
 ## Session Intent
 
-Run the full S98 arc from the clean, fully deployed S97 boundary: perform a fresh live-code and game-loop audit, implement every verified item at the highest practical quality, verify rendered behavior, deploy through stable staging to production, then commit and push directly to `main`. Do not manufacture cohort, email, identity, lifecycle, or public-launch evidence, and do not collapse technical deployment into public-launch authority.
+Start from the clean, fully deployed S98 boundary. Prefer the first genuine opted-in cohort if it exists; otherwise run a fresh executable audit against live behavior. Do not manufacture cohort, email, identity, lifecycle, or public-launch evidence.
 
 ## Where We Left Off
 
-- All three S97 audit items are shipped; the audit sidecar is `implemented`.
-- Exact candidate `95597906033ced89469cd2c268a661d5a3b2b4a8` is live on stable staging and production at artifact `47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89`.
-- CI workflow 33595882214, backend workflow 33595882226, automatic Pages workflow 33595882165, and explicit promotion workflow 33598681683 are green. Staging passes 14/14 at deployment `fe419b75-772f-46df-ac7b-c21aeb1b8327` with rollback `4e47e642-1107-4198-a8a4-18b4026ba655`; production passes 10/10.
-- Unified release authority is `verified`; `launchReady` remains `false`.
-- Canonical Node receipt is 1,300/1,300; exact-SHA CI is 1,295/1,295 across five push shards; Playwright is 54/54; responsive evidence passed 255 states with 98 retained reviewed captures; hosted performance is verified.
+- All three S98 audit items are shipped; `docs/AUDIT_2026-09-03_SESSION98.json` is implemented.
+- Exact candidate `3cce0a51e82e78625bdfad82f1cbdb19a31c94aa` is verified on stable staging and production at artifact `6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4`.
+- CI workflow 33769176381, automatic Pages workflow 33769176361, explicit promotion workflow 33770515766, and backend deploy workflow 33770517153 are green.
+- Stable staging passes 14/14 at deployment `a835d039-bd18-4084-8eec-5a60b81993aa`, with rollback `d67e9fe7-7311-469d-9dd1-a8f5c3ffd064`. Production passes 10/10 provenance.
+- Canonical Node is 1,303/1,303; Playwright is 55/55; boot is 649,716/730,000 bytes with zero lazy leaks; responsive evidence passed 255 game states and retained 98 exact-candidate captures plus four reviewed status-page captures.
+- Hosted `/` and `/game.html` performance receipts are verified. Unified release authority is verified; `launchReady` remains false.
+- Deploy: exact candidate deployed to stable staging, production Pages, GitHub Pages, and the configured backend host.
 
 ## What Shipped
 
-1. **Tie-complete franchise truth.** Shared helpers preserve W-L-T records and half-win percentages across every reproduced engine and player-facing path; tie-only movement is visible and 5-0-1 is not perfect.
-2. **Truthful project activity.** Doctor health refreshes no longer change `lastUpdated`; a regression executes the real command path.
-3. **Reachable phone decisions.** The mobile loop uses four-edge safe areas, a named region, and a sticky theme-correct commit dock.
-4. **Exact technical deployment.** Visual, performance, staging and production receipts agree on one source and artifact, with independent live-origin proof.
+1. **First-season payoff.** Previous/current dashboard phase is the sole transition authority, so the first valid season review, epilogue, feedback and reward evaluation run exactly once.
+2. **Chronological Trophy Road.** Streaks preserve `GameSession`'s authoritative year/week-descending receipts instead of sorting by week alone.
+3. **Focus-safe tab keyboard behavior.** One declared-orientation handler owns Arrow/Home/End activation; desktop roving focus remains intact and tablet focus returns to the visible toggle after the drawer closes.
+4. **Exact technical deployment.** One immutable source/artifact passed CI, rendered pixels, hosted performance, staging, production and backend gates.
 
-## Start Here in Session 98
+## Start Here in Session 99
 
-1. Observe the first genuine opted-in cohort; validate freshness, suppression, deletion, and abuse ceilings without manufacturing activity.
+1. Observe the first genuine opted-in cohort; verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
 2. Restore `/stats` to the sitemap only when the community snapshot clears its suppression threshold.
-3. Reconcile launch only from Zoho receive/reply-as evidence, explicit SHA-bound public-launch approval, authoritative lifecycle state, and applicable external Obelisk relying-party proof.
-4. Treat GitHub Actions Node 24 warnings as advisory until official Node 24-native action majors are available.
+3. Reconcile public launch only from Zoho receive/reply-as evidence, explicit SHA-bound approval, authoritative lifecycle state and applicable external Obelisk relying-party proof.
+4. Keep GitHub Actions Node 24 warnings advisory until official Node 24-native action majors are available.
 
 ## Boundaries
 
 - Technical deployment is complete; public launch/SPARKED is not approved.
-- Do not fabricate cohort, analytics, email, identity, lifecycle, or founder-approval evidence.
-- Aggregate page loads prove reporting only.
-- CDR was reviewed in S97; no new creative direction or DECISIONS entry was owed.
-- A read-intended `ignis-rescore-touched --help` call unexpectedly refreshed generated Studio Ops outputs. No sibling rollback was attempted because pre-existing sibling changes could not be distinguished safely; the incident was reported through Studio Ark and is scored down in Process Quality and Cross-Repo Coherence.
-- The final source-bound canonical refresh exposed a nondeterministic server-route fixture: a valid pending General Manager decision correctly blocked a blind week advance. The fixture now submits the versioned decision choice and retries; production behavior was not loosened.
+- Aggregate page loads prove reporting only, not people, sessions, engagement or retention.
+- No new human creative direction was introduced; no DECISIONS or Creative Direction Record entry is owed.
+- Package Trust approved the already pinned Wrangler 4.80.0 used for staging publication.
+- Registry SPARKED versus local FORGE remains an authoritative lifecycle drift; reconcile through Studio Ark, never by directly editing the sibling registry.

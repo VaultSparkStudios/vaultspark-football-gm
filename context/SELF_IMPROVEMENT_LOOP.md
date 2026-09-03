@@ -1,11 +1,34 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 97 closed at 982 / 1000 SIL v3.0. Three reproduced findings shipped: tie-complete record truth across engine and player surfaces, doctor health freshness isolated from project activity, and a four-edge-safe sticky phone commit dock. Canonical Node is 1,300 / 1,300; exact-SHA CI is 1,295 / 1,295 across five shards plus 54 / 54 browser cases; 255 responsive states retain 98 reviewed captures; and unified release authority is verified at `9559790…` / `47b3cee…`. Process and coherence are scored down because a read-intended unsupported `--help` call unexpectedly refreshed generated Studio Ops outputs; the sibling tree was not rewritten or reverted, and the incident was reported through Ark.
+Rolling status: Session 98 closed at 994 / 1000 SIL v3.0. Three reproduced findings shipped: the first completed season reaches its existing payoff exactly once, Trophy Road preserves authoritative cross-season chronology, and the primary tablist has one focus-safe orientation-aware keyboard contract. Canonical Node is 1,303 / 1,303; exact-SHA CI and the 55-case browser gate are green; 255 responsive states retain 98 reviewed captures; and staging, hosted performance, production Pages and backend deployment bind exact source `85a9097…` / artifact `854f371e…`. Engagement remains evidence-limited without a genuine opted-in cohort; Process is scored down for the first-pass stale preload and 1,892-byte shell overrun; Cross-Repo Coherence retains the registry/local lifecycle drift.
 
-Previously — Session 95 closed at 993 / 1000 after seven reproduced findings and an exact immutable staging-to-production promotion.
+Previously — Session 97 closed at 982 / 1000 after three reproduced findings and an exact immutable staging-to-production promotion.
 <!-- rolling-status-end -->
 
+## 2026-09-03 — Session 98 The First Season Finally Pays Off
+
+SIL v3.0: **994 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 98, Process Quality 97, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+**What changed the outcome.** The audit traced three boundaries where one authority had been shadowed by another: a domain transition was discarded by a sentinel that could not be initialized in time, runtime chronology was overwritten by a partial-key UI sort, and shared tab activation was followed by a competing focus owner. Removing those shadow authorities lets the product's existing season payoff, trophy logic and responsive navigation behave as designed.
+
+**What went well.**
+
+- All three ranked premises were reproduced before implementation and shipped at the chosen quality depth; six tempting but unsupported alternatives were recorded as phantoms rather than padded into the plan.
+- Initial load, ordinary refresh, regular-season completion, postseason completion and exactly-once callback behavior are direct negative controls around the first-season fix.
+- The real-browser suite covers desktop roving focus and tablet drawer focus return; the rendered-pixel loop covers both themes across desktop, mobile and tablet with zero blocking defects.
+- Exact source and artifact identity survived local build, CI, stable staging, hosted performance, production Pages and backend deployment.
+
+**What cost the session, and why Process Quality is 97.** The first canonical release pass found both a stale generated preload list and a strict initial-shell total 1,892 bytes over its 650 KB release ceiling. The correction simplified the architecture and rebuilt preloads instead of raising the budget, but checking the boot graph before the first full canonical run would have avoided one release cycle.
+
+**Evidence boundary, and why Engagement is 98.** The changes restore visible payoff and keyboard reachability, but no genuine opted-in cohort exists. The score reflects design/runtime evidence only; it does not claim comprehension, return behavior, fun or retention.
+
+**Committed SIL follow-ups.**
+
+- [SIL] A transition needs one authority derived from previous/current domain state; never add a sentinel whose initialization depends on the transition it gates.
+- [SIL] Preserve an upstream chronology contract in projections. If a consumer must reorder, its comparator must carry every ordering dimension, not a convenient partial key.
+- [SIL] Responsive navigation needs one keyboard and focus owner; if activation inerts its source subtree, focus must leave that subtree before the interaction completes.
+- [SIL] Run boot graph and preload currency checks before the long canonical receipt whenever a UI module boundary changes.
 ## 2026-09-02 — Session 97 Tie-Complete Truth and the Reachable Commit
 
 SIL v3.0: **982 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 98, Process Quality 91, Cross-Repo Coherence 93, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).

@@ -1,4 +1,10 @@
 # Agent Memory
+## Session 98 durable patterns
+
+- A transition guard should read the previous and current domain states it is asked to compare. A second sentinel that is initialized only inside the transition path makes the first valid transition disappear.
+- When an upstream API already promises year/week-descending receipts, downstream reward code must preserve that order. Re-sorting on a partial key destroys authority at season boundaries.
+- A tablist needs one keyboard owner. Resolve keys from declared orientation, activate through the shared path, and move focus out before a responsive drawer becomes inert.
+- Boot-budget failures are architecture feedback: keep generated preloads aligned with the actual initial graph and reduce the graph instead of raising the ceiling or preloading a declared lazy island.
 
 ## Session 97 durable patterns
 

@@ -2,15 +2,25 @@
 # Truth Audit
 
 Overall status: green
-Last reviewed: 2026-09-02
+Last reviewed: 2026-09-03
 Public-safe summary only. Sensitive verification notes are maintained privately.
+
+## 2026-09-03 - Session 98 truth update
+
+- **All three ranked findings are shipped.** The first season reckoning, cross-season Trophy Road chronology, and focus-safe orientation-aware tab keyboard contract are implemented.
+- **First-season payoff is exact.** Initial load and non-transition refreshes stay quiet; the first real regular-season or postseason transition reaches the existing review, epilogue, feedback and reward pipeline exactly once.
+- **Chronology has one owner.** Trophy streak derivation preserves the runtime's already year/week-descending receipt window, so current-year Week 1 is never displaced by prior-year Week 18.
+- **Rendered focus behavior is verified.** Desktop tabs retain roving focus; a tablet drawer selection closes the drawer and returns focus to the visible toggle instead of stranding it in an inert subtree. Dark/light desktop, mobile and tablet captures show zero blocking defects.
+- **Test truth is exact.** Canonical Node passes 1,303/1,303; exact-SHA CI workflow 33769176381 is green; Playwright passes 55/55; the strict shell gate passes at 649,716 bytes with zero lazy leaks; responsive evidence passes 255 states with 98 retained hash-bound images.
+- **Release identity is exact.** Stable staging passes 14/14 at deployment `a835d039-bd18-4084-8eec-5a60b81993aa` with rollback; both hosted performance routes are verified; production Pages workflow 33770515766 and backend workflow 33770517153 bind to source `3cce0a51e82e78625bdfad82f1cbdb19a31c94aa` and artifact `6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4`.
+- **Deployment is not launch.** Zoho reply-as delivery, explicit public-launch approval, lifecycle authority, external Obelisk relying-party proof, and a genuine opted-in cohort remain unverified; `launchReady` remains false.
 
 ## 2026-09-02 - Session 97 truth update
 
 - **All three ranked findings are shipped.** Tie-complete franchise records, doctor activity-clock isolation, and the reachable safe-area-aware phone commit dock are implemented.
 - **Tie semantics are exact.** A tie counts as half a win for percentages, appears in W-L-T records, changes return-digest state by itself, and prevents a 5-0-1 season from qualifying as perfect.
 - **Test truth is exact.** Canonical Node passes 1,300/1,300; exact-SHA CI passes 1,295/1,295 across five shards; Playwright passes 54/54; responsive evidence passes 255 states with 98 retained hash-bound reviewed images.
-- **Release identity is exact.** Stable staging passes 14/14 at deployment `fe419b75-772f-46df-ac7b-c21aeb1b8327`; production passes 10/10; CI workflow 33595882214 and promotion workflow 33598681683 are green. Visual, performance, staging and production authorities agree on source `95597906033ced89469cd2c268a661d5a3b2b4a8` and artifact `47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89`.
+- **Release identity is exact.** Stable staging passes 14/14 at deployment `d67e9fe7-7311-469d-9dd1-a8f5c3ffd064`; production passes 10/10; CI workflow 33595882214 and promotion workflow 33598681683 are green. Visual, performance, staging and production authorities agree on source `95597906033ced89469cd2c268a661d5a3b2b4a8` and artifact `47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89`.
 - **The performance gate was measured, not force-greened.** An initial three-run staging sample landed at 1.84s mobile LCP against the 1.80s bar because one cold request took 14.7s. A five-run sample passed while INP, CLS, headers and desktop LCP remained green; the passing receipt preserves every sample.
 - **Historical CI reds are explained.** The two failed runs still inside the five-run window belong to the superseded `5d47d995` Dependabot merge and its known shallow-checkout sitemap identity assertion. Three newer main revisions, including the exact deployed candidate, are green; the gate was not waived.
 - **The final canonical refresh found and fixed a real fixture race.** A random valid cap-crisis decision could make the press-conference route fixture receive the adapter's correct 409 refusal while it assumed every week advance must return 200. The fixture now resolves any surfaced General Manager decision through the same versioned command body before retrying the advance; the adapter gate was not weakened.

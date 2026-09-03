@@ -140,7 +140,20 @@
       }
     ]
   },
-  "items": [
+  "finalVerification": {
+    "candidateRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
+    "artifactDigest": "6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4",
+    "canonicalNode": "1,303/1,303 across six shards",
+    "exactShaCi": "workflow 33769176381 green",
+    "browser": "55/55 Playwright locally and in production promotion",
+    "boot": "649,716/730,000 bytes; 53/58 initial modules; zero lazy leaks",
+    "responsive": "255 game states; 98 retained exact-candidate captures plus four reviewed status-page captures; zero blocking defects",
+    "staging": "14/14 at deployment a835d039-bd18-4084-8eec-5a60b81993aa with rollback d67e9fe7-7311-469d-9dd1-a8f5c3ffd064",
+    "performance": "canonical / and direct /game.html desktop/mobile receipts verified",
+    "productionPages": "workflow 33770515766 green; 10/10 provenance",
+    "backend": "workflow 33770517153 exact-candidate deployment",
+    "launchBoundary": "Technical deployment is not public launch; Zoho, founder approval, lifecycle, external Obelisk and cohort evidence remain unverified."
+  },  "items": [
     {
       "rank": 1,
       "tier": "CRITICAL",

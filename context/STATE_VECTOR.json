@@ -1,10 +1,10 @@
 {
   "vectorVersion": "1.0",
   "generatedAt": "2026-09-03",
-  "generatedAtMs": 1788393773383,
-  "session": 97,
-  "vectorHash": "51fa5fdc63cdf42e",
-  "silTotal": 982,
+  "generatedAtMs": 1788450013366,
+  "session": 98,
+  "vectorHash": "d99a7a1a62423c45",
+  "silTotal": 994,
   "silAvg3": null,
   "velocity": null,
   "debt": null,
@@ -32,8 +32,8 @@
   "slug": "franchise-architect-football",
   "type": null,
   "lifecycle": "deployed",
-  "nextMilestone": "Observe the first genuine opted-in cohort without manufacturing activity, and reconcile public launch only from Zoho receive/reply-as evidence, explicit SHA-bound approval, and authoritative lifecycle state.",
-  "currentFocus": "S97 is technically deployed: exact source 95597906033ced89469cd2c268a661d5a3b2b4a8 and artifact 47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89 are verified on stable staging and production. Tie-complete record truth, truthful doctor freshness, and the reachable mobile commit dock are shipped. Public launch remains HOLD.",
+  "nextMilestone": "Verify an independent staging origin at the exact candidate revision, then prove production revision parity, delivered on-domain email, founder approval, and authoritative lifecycle before any launch flip.",
+  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 3cce0a51e82e78625bdfad82f1cbdb19a31c94aa, required edge headers verified; evidence current through 2026-09-04T15:14:14.967Z. Launch remains HOLD; independent gates are not collapsed.",
   "lastShipped": "see LATEST_HANDOFF.md",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."

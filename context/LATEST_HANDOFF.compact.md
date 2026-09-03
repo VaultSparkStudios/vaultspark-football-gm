@@ -1,49 +1,46 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: f2f38187209e -->
-<!-- generated-at: 2026-09-03T05:26:58.056Z -->
+<!-- source-hash: d766da87d44a -->
+<!-- generated-at: 2026-09-03T15:39:35.488Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 97 → 98 HANDOFF
+# Handoff Summary — Session 98 → 99
 
-Session
-- S97 shipped and fully deployed; starting S98 from clean boundary.
+## Session
+- S98 complete; clean fully-deployed boundary. S99 starts here.
+- Intent: prefer first genuine opted-in cohort if it exists; else fresh executable audit against live behavior. Do not manufacture cohort/email/identity/lifecycle/launch evidence.
 
-Shipped (S97)
-- Tie-complete franchise truth: W-L-T and half-win pct preserved across engines/paths; 5-0-1 not perfect.
-- Truthful activity: doctor health refresh no longer mutates lastUpdated; regression runs real command path.
-- Mobile reachability: four-edge safe areas, named region, sticky theme-correct commit dock.
-- Exact technical deployment: visual/perf/staging/prod receipts agree on one source+artifact with live-origin proof.
+## Shipped (S98)
+- First-season payoff: dashboard phase is sole transition authority; season review/epilogue/feedback/reward run exactly once.
+- Chronological Trophy Road: streaks use GameSession year/week-descending receipts.
+- Focus-safe tab keyboard: single orientation handler owns Arrow/Home/End; roving focus intact; tablet focus returns to visible toggle.
+- Exact technical deployment: one immutable source/artifact passed CI, pixels, hosted perf, staging, production, backend.
 
-Deployment State
-- Candidate 95597906033ced... live on staging+prod; artifact 47b3cee...487e2b89.
-- Workflows green: CI 33595882214, backend 33595882226, Pages 33595882165, promotion 33598681683.
-- Staging 14/14 (deploy fe419b75); prod 10/10; rollback 4e47e642.
-- Node receipt 1,300/1,300; exact-SHA CI 1,295/1,295 (5 shards); Playwright 54/54; responsive 255 states/98 captures; perf verified.
-- Release authority verified; launchReady false.
+## Deployment State
+- Candidate 3cce0a5 at artifact 6bdc133... verified on stable staging and production.
+- Green: CI 33769176381, Pages 33769176361, promotion 33770515766, backend 33770517153.
+- Stable staging 14/14 (deploy a835d039, rollback d67e9fe7); production 10/10 provenance.
+- Node 1303/1303; Playwright 55/55; boot 649,716/730,000 bytes, zero lazy leaks; 255 game states, 98 candidate + 4 status captures.
+- launchReady remains false.
 
-Current Intent
-- Observe genuine opted-in cohort behavior OR run fresh live-code audit; no manufactured evidence.
+## Now (top 3)
+1. Observe first genuine opted-in cohort; verify freshness, suppression, deletion, abuse ceilings without manufacturing activity.
+2. Restore /stats to sitemap only when community snapshot clears suppression threshold.
+3. Reconcile public launch only from Zoho receive/reply-as evidence, SHA-bound approval, authoritative lifecycle state, applicable Obelisk relying-party proof.
 
-Now (top 3)
-1. Observe first genuine opted-in cohort; validate freshness, suppression, deletion, abuse ceilings.
-2. Restore /stats to sitemap only after community snapshot clears suppression threshold.
-3. Reconcile launch only from Zoho receive/reply-as, SHA-bound public-launch approval, authoritative lifecycle state, external Obelisk relying-party proof.
+## Blockers (top 3)
+- Public launch/SPARKED not approved; technical deployment complete only.
+- Registry SPARKED vs local FORGE lifecycle drift; reconcile via Studio Ark, never edit sibling registry directly.
+- Node 24 Actions warnings advisory until official Node 24-native action majors exist.
 
-Blockers (top 3)
-1. Public launch/SPARKED not approved; technical deployment complete but distinct from launch authority.
-2. Nondeterministic server-route fixture: pending GM decision blocked blind week advance; fixture now submits versioned choice and retries (prod unchanged).
-3. GitHub Actions Node 24 warnings advisory until official Node 24-native action majors ship.
+## Human-Blocked
+- Public launch approval: pending SHA-bound explicit approval and Zoho evidence (age: current session).
+- Cohort observation: pending first genuine opted-in cohort existence (age: current session).
 
-Human-Blocked
-- Public-launch/SPARKED approval: awaiting founder SHA-bound approval + Zoho evidence + lifecycle state (age: since S97, unresolved).
+## Constraints
+- Aggregate page loads prove reporting only, not people/sessions/engagement/retention.
+- No new creative direction; no DECISIONS/Creative Direction Record entry owed.
+- Wrangler 4.80.0 pinned, Package Trust approved.
 
-Incident
-- Read-intended ignis-rescore-touched --help refreshed generated Studio Ops outputs; no sibling rollback (siblings indistinguishable); reported via Studio Ark; scored down Process Quality + Cross-Repo Coherence.
-
-Boundaries
-- Do not fabricate cohort/analytics/email/identity/lifecycle/founder-approval evidence.
-- Aggregate page loads prove reporting only.
-- CDR reviewed S97; no DECISIONS entry owed.
-
-Next: Verify first genuine opted-in cohort suppression/deletion behavior before touching /stats sitemap or launch reconciliation.
+## Next
+Check for first opted-in cohort; if absent, run fresh executable audit against live behavior.

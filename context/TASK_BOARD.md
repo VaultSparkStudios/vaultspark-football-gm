@@ -16,6 +16,17 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 - [ ] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker.
 
+## Session 98 — Full arc: the first season pays off, chronology stays true, and tablet focus comes home (2026-09-03)
+
+- [x] Replace the never-initialized dashboard-phase sentinel with one pure previous/current season-transition authority.
+- [x] Prove initial load and ordinary refresh remain quiet while the first regular-season or postseason completion opens the existing season review exactly once.
+- [x] Preserve `GameSession.getRecentBoxScores()` year/week-descending authority in Trophy Road instead of applying a destructive week-only re-sort.
+- [x] Consolidate duplicate Arrow/Home/End handlers into one declared-orientation keyboard authority.
+- [x] Preserve desktop roving focus and return tablet focus to the visible drawer toggle after selection closes and inerts the drawer.
+- [x] Bring the corrected boot graph under the strict 650 KB initial-shell budget without declaring a lazy island as a preload.
+- [x] Bind Node, browser, responsive-pixel, hosted-performance, staging, production Pages and backend deployment evidence to source `3cce0a51e82e78625bdfad82f1cbdb19a31c94aa` and artifact `6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4`.
+
+**Verification:** canonical Node 1,303/1,303 across six shards; exact-SHA CI workflow 33769176381 green; Playwright 55/55 locally and in the release workflow; boot 649,716/730,000 bytes with 53/58 initial modules and zero lazy leaks; 255 responsive game states with 98 retained exact-candidate captures plus four reviewed status-page captures; stable staging 14/14 at deployment `a835d039-bd18-4084-8eec-5a60b81993aa` with rollback; hosted `/` and `/game.html` performance verified; production Pages workflow 33770515766 and backend workflow 33770517153 use the exact candidate. Technical deployment is complete; public launch remains HOLD.
 ## Session 97 — Full arc: tie-complete franchise truth and a reachable phone commit (2026-09-02)
 
 - [x] Establish one browser record authority and one engine helper for W-L-T formatting, standings lookup, half-win percentages, and exact deltas.
@@ -25,7 +36,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [x] Make the phone decision overlay a named, four-edge-safe region with a sticky theme-correct action dock.
 - [x] Bind tests, inspected pixels, hosted performance, stable staging, production, and release authority to exact source `95597906033ced89469cd2c268a661d5a3b2b4a8` and artifact `47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89`.
 
-**Verification:** canonical Node 1,300/1,300; exact-SHA CI 1,295/1,295 across five shards in workflow 33595882214; Playwright 54/54 locally and green in the workflow browser gate; 255 responsive states with 98 retained/reviewed dark/light desktop/tablet/mobile captures; Pages build, module reachability, boot budget and smoke green; sanitization critical/warning 0/0; sitemap 9/10; staging 14/14; production 10/10; hosted performance verified; promotion workflow 33598681683 green. Technical deployment is complete. Public launch remains HOLD.
+**Verification:** canonical Node 1,300/1,300; exact-SHA CI 1,295/1,295 across five shards in workflow 33595882214; Playwright 54/54 locally and green in the workflow browser gate; 255 responsive states with 98 retained reviewed dark/light desktop/tablet/mobile captures; Pages build, module reachability, boot budget and smoke green; sanitization critical/warning 0/0; sitemap 9/10; staging 14/14; production 10/10; hosted performance verified; promotion workflow 33598681683 green. Technical deployment is complete. Public launch remains HOLD.
 
 ## Session 96 — Full arc: trustworthy orientation, diagnosable release identity, and mobile parity (2026-08-26)
 

@@ -2,14 +2,1071 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-08-26T05:34:56.233Z",
-  "baseUrl": "https://playfranchisearchitect.com",
+  "observedAt": "2026-09-03T14:52:03.209Z",
+  "baseUrl": "https://staging.playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "92e4190a4221383c8352ea6321d65528cb449e74",
+  "sourceRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7",
-    "files": 207,
+    "digest": "6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4",
+    "files": 211,
+    "entries": [
+      {
+        "path": ".well-known/llms.txt",
+        "bytes": 851,
+        "sha256": "a72effb4986198b6af0efa7efee36b96b1efdbdf8f7da0a220f515001dd476c1"
+      },
+      {
+        "path": ".well-known/security.txt",
+        "bytes": 231,
+        "sha256": "2e4ef4346b5df79a5d2800b3fd9c782aeebc5c5150b490820496c0af50bc0996"
+      },
+      {
+        "path": "404.html",
+        "bytes": 1775,
+        "sha256": "b63890a49eb740eb9682b73e2d2c8cc84ff001b3c182c0286fabe1933da594fe"
+      },
+      {
+        "path": "_headers",
+        "bytes": 1133,
+        "sha256": "949f7228f5e773597ce57077c484adaeb4cc639122142ea4d3ac6217e777f517"
+      },
+      {
+        "path": "_redirects",
+        "bytes": 241,
+        "sha256": "33abedf4d6838dbd81232432b67f2eadccad2f946e3a0c340227828bf14d0cfa"
+      },
+      {
+        "path": "about.html",
+        "bytes": 2443,
+        "sha256": "253f9237fb4ca7d5b62a56bab5f67509f4dff16db24046cf7d6305a33a9dd3e7"
+      },
+      {
+        "path": "agents.json",
+        "bytes": 1739,
+        "sha256": "ffae3c860311c186814faa2fc13a680710ccc8a73bea51636682092051ee9667"
+      },
+      {
+        "path": "app.js",
+        "bytes": 106878,
+        "sha256": "899680ff671523c768bd2ac433c1f47f697296d34763171b21a762207c9f8cb7"
+      },
+      {
+        "path": "boot-manifest.json",
+        "bytes": 1447,
+        "sha256": "07246f9ae65c69e767131dfce15e1067b809e1f213be708de489d6730691e850"
+      },
+      {
+        "path": "community-stats.39fac4ebf0.js",
+        "bytes": 19896,
+        "sha256": "39fac4ebf0be3dae515c5cd811c87270c0706a3aea9fdaeb5f6e418d26bacf22"
+      },
+      {
+        "path": "community-stats.js",
+        "bytes": 19896,
+        "sha256": "39fac4ebf0be3dae515c5cd811c87270c0706a3aea9fdaeb5f6e418d26bacf22"
+      },
+      {
+        "path": "contact.html",
+        "bytes": 2216,
+        "sha256": "7852437e168f7cf53e7326ce2cbf9337d018143c599c35ce604b9feb8f6633f6"
+      },
+      {
+        "path": "favicon.ico",
+        "bytes": 1427,
+        "sha256": "918642e9f38003862ef7b74417a6d7854972b34d82a2073c147c81690a0a7eac"
+      },
+      {
+        "path": "favicon.svg",
+        "bytes": 301,
+        "sha256": "f450f64990cfefe57bfb9bd3689d901edba654d09e8dddfa579eb1e794940cf3"
+      },
+      {
+        "path": "footer-manifest.json",
+        "bytes": 981,
+        "sha256": "8577034b35ffef5df776ebc905aae5d76d0a316661dc2be8a0c8c1cf13e14880"
+      },
+      {
+        "path": "game.html",
+        "bytes": 102533,
+        "sha256": "a4c29e535980f65cdcc3e261de5e50b0dcf1818b5c0274e37af61363b43c3ec7"
+      },
+      {
+        "path": "images/cover.png",
+        "bytes": 445481,
+        "sha256": "26d434702d78d379aa471d184f386015534ad75691a74325237747e3f86884a4"
+      },
+      {
+        "path": "images/franchise-architect-logo.svg",
+        "bytes": 1001,
+        "sha256": "2e30a473a7fff7c7a11fda90e7b3e5eb56de572afcfd8aca464ff54bcf84f754"
+      },
+      {
+        "path": "images/franchise-architect-mark.svg",
+        "bytes": 599,
+        "sha256": "64a966830119196ac799e00b8dc58d3970460ba2d6b82fb324fa6ae848d9ad3d"
+      },
+      {
+        "path": "index.html",
+        "bytes": 18387,
+        "sha256": "4f0c056103f5059f37fd26cbbf2f59a582bfff5b5b6ae235839280ea99016c19"
+      },
+      {
+        "path": "lib/achievements.js",
+        "bytes": 19853,
+        "sha256": "efde2846b7c5cae5d3a7c885b51634b4addb5dceb4fa50b135cb03da8d62170f"
+      },
+      {
+        "path": "lib/actionCoordinator.js",
+        "bytes": 762,
+        "sha256": "2574f80d8c55c69f678c21c7e482b82f83300e26f523a5300fc34a2c51fcd96a"
+      },
+      {
+        "path": "lib/api/createApiClient.js",
+        "bytes": 8650,
+        "sha256": "6ba3d2c2c9f3defbafc0b36b5f301258eada226f62b3191d845860598bfcac47"
+      },
+      {
+        "path": "lib/apiContract.js",
+        "bytes": 8552,
+        "sha256": "a1f68da96343979dfd79f4223811211f0c07c3d4a2c506aa06448d043ae1293e"
+      },
+      {
+        "path": "lib/appCore.js",
+        "bytes": 64633,
+        "sha256": "1f4f2cd6a4d1355119233b2c0cf8894bae0b68bdf5f3e3c9481f63e7da3a2bf4"
+      },
+      {
+        "path": "lib/appState.js",
+        "bytes": 12815,
+        "sha256": "fcabdb06a6ce2fddd4c0e31243a9ef8c5011da4e7f8032d03f27eb430e51c58b"
+      },
+      {
+        "path": "lib/architectCut.js",
+        "bytes": 6615,
+        "sha256": "6bb58e5d6f003828c30d7e7c8da2ed1fda60bb015ee9480d89a1ec6affc7f6d4"
+      },
+      {
+        "path": "lib/architectPlanRehearsal.js",
+        "bytes": 6943,
+        "sha256": "8c6ee9fa2658c795550e17c09fe1287109ebcb14f6b2e89c9e73309c1960f324"
+      },
+      {
+        "path": "lib/audioFeedback.js",
+        "bytes": 4117,
+        "sha256": "ed261e77be93456a8f3de1b649ec2e784020306541210b8d01d478eab2c74abe"
+      },
+      {
+        "path": "lib/authorityEpoch.js",
+        "bytes": 1348,
+        "sha256": "fd8619500e7fd5f7484dbcc25f952252311ecda9e5723e6586b2f6727c257371"
+      },
+      {
+        "path": "lib/betaFeedback.js",
+        "bytes": 16219,
+        "sha256": "3ef0c297d477c8dcd9f7df87b8eec310bcdca66fbff695291bec549ecaba5022"
+      },
+      {
+        "path": "lib/boxScorePresentation.js",
+        "bytes": 3912,
+        "sha256": "b5609894973b31a8c814665ea6fb09608e041faca05ec7835135540128fb40db"
+      },
+      {
+        "path": "lib/challengeCodes.js",
+        "bytes": 5945,
+        "sha256": "d2f3d5d98aeb8880311aa273ca9e3dd49579cacecff8cabbd58feb9a9b8ed24f"
+      },
+      {
+        "path": "lib/clientDiagnostics.js",
+        "bytes": 5996,
+        "sha256": "ed7a4633b7f2c2206c0e07f5dc6a16bf52d9a4483c7beda32c4b311270aefe6c"
+      },
+      {
+        "path": "lib/coGmBriefing.js",
+        "bytes": 5030,
+        "sha256": "66cd38ab9b7773ef03829c5b2ba6c1bf4d192685ae5cf443f1c02fd6f7b5206f"
+      },
+      {
+        "path": "lib/coachingMarketPanel.js",
+        "bytes": 4635,
+        "sha256": "740b7d9cdffcc9f1a4e9624603f5f04850b5ba96151cf40c6147f20e17909e9c"
+      },
+      {
+        "path": "lib/communityEventContract.js",
+        "bytes": 4634,
+        "sha256": "1466f7970beb27da0b33f767386ed19bce77de3e69737ac2be228bd2e8bb3354"
+      },
+      {
+        "path": "lib/communityTelemetry.js",
+        "bytes": 14177,
+        "sha256": "db4f14553a6d4dcdb55fe565e27219bf69f0491c287bb84f6163c070904ba84f"
+      },
+      {
+        "path": "lib/contextualFeedback.js",
+        "bytes": 7874,
+        "sha256": "eca2839c0236deeeb0a6733b20650f2aad5111282463c86089a7c36884fc0649"
+      },
+      {
+        "path": "lib/decisionAnthology.js",
+        "bytes": 1690,
+        "sha256": "74211d21f36339461190c4f15c25627b7e2e0e1a2a4ece715ae7b2a2ce7d4970"
+      },
+      {
+        "path": "lib/decisionArchive.js",
+        "bytes": 4227,
+        "sha256": "927d87707e4dd99ca893f628970a97fae03927367165903c69568c771a179f57"
+      },
+      {
+        "path": "lib/devSurfaces.js",
+        "bytes": 1377,
+        "sha256": "c19928d9eada8145f5cc688bafc38cf57949e8e6aa75cf5411fd7e2b927df2f4"
+      },
+      {
+        "path": "lib/draftPickReveal.js",
+        "bytes": 3301,
+        "sha256": "5b0c7f462e2ad76d2a5bc233db11777b0296b59fa240db810511094be87194f5"
+      },
+      {
+        "path": "lib/dynastyTimeline.js",
+        "bytes": 8343,
+        "sha256": "c7eb9bcf4ffa1299a58a13741572bb38d4a483cc35456c8babbc2e5f7e4b7fac"
+      },
+      {
+        "path": "lib/engagementFeatures.js",
+        "bytes": 32515,
+        "sha256": "1b64af696833d97fe1280a173b68b8ebafe0f06369d5576558f85e4d81ed554b"
+      },
+      {
+        "path": "lib/exactSurfaceNavigation.js",
+        "bytes": 2074,
+        "sha256": "64cd63538b32452c038bdea8e760fbe9b3ba0b74dc43fe4abc9c2f9915c785f5"
+      },
+      {
+        "path": "lib/extractCommunityEvents.js",
+        "bytes": 8329,
+        "sha256": "e1c507fc40fb87675e17797951ff7a36bcb80e2d9a41e9a2c8583fc483c62a64"
+      },
+      {
+        "path": "lib/facilitiesPanel.js",
+        "bytes": 6563,
+        "sha256": "2d1cbd0dcfb79c441d939c06359a2912a3eeb04f0ef00a5b5ee9f9fb6ad1e352"
+      },
+      {
+        "path": "lib/fastSimulationPolicy.js",
+        "bytes": 2071,
+        "sha256": "4181fa619506961b34db77f2a1db7915fa76508524481ec15c500053f6255c00"
+      },
+      {
+        "path": "lib/franchiseArchitecture.js",
+        "bytes": 7301,
+        "sha256": "97976cdb2955955871634c0e8a67777f6a333bc9cefd883c57d6ede9cd6f915d"
+      },
+      {
+        "path": "lib/franchiseCommandCenter.js",
+        "bytes": 8269,
+        "sha256": "bfc1231bdb575c5f4e43116e1b230f6a34718ef2ab58918aed24ec7a0f4f8d31"
+      },
+      {
+        "path": "lib/franchiseNewsletter.js",
+        "bytes": 8106,
+        "sha256": "4eaaae68a087686739022339eb51cffcde93237a5df16c6ce26f61c5593d9f9a"
+      },
+      {
+        "path": "lib/franchiseScope.js",
+        "bytes": 1553,
+        "sha256": "8be3d6a97ecab23b96330c650f5f0eaa65d7dcfaa2a296b323da57f52a533178"
+      },
+      {
+        "path": "lib/gameFlow.js",
+        "bytes": 60659,
+        "sha256": "3c7725edca7bcac6b2906b2d6606d2f6c8433597b361c07abab50fc17d129f2a"
+      },
+      {
+        "path": "lib/gameplayNavigation.js",
+        "bytes": 2767,
+        "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
+      },
+      {
+        "path": "lib/gistAuthentication.js",
+        "bytes": 3215,
+        "sha256": "737be150b40d767dff6f1d43b7e4c2e5f96eff106aed193d4cc7fba192c7f359"
+      },
+      {
+        "path": "lib/gistCredentials.js",
+        "bytes": 1631,
+        "sha256": "789a78e5ecfce53ee06aa4dc93f1938c4a17573d3f4511f146c8fdf32917c828"
+      },
+      {
+        "path": "lib/gistSync.js",
+        "bytes": 8867,
+        "sha256": "10409f97753e6323fe7ce0574ab7305f0306b1bf2ff0426dceaf4350d039b429"
+      },
+      {
+        "path": "lib/gistVerification.js",
+        "bytes": 2018,
+        "sha256": "11f6ac5bd9a7a6461d75c4d6734bdad435d84fc566b91d930adfcf8c6b1d517a"
+      },
+      {
+        "path": "lib/hallOfFameCeremony.js",
+        "bytes": 6068,
+        "sha256": "0ac0d556ec92b770278009a888b53d3401099cd4688f49129085e43f76c78ced"
+      },
+      {
+        "path": "lib/historyFormatting.js",
+        "bytes": 2289,
+        "sha256": "08f9f27f1f619b3ceb15d217030d79dfae951710eabaf45f6f4f74d439f193d5"
+      },
+      {
+        "path": "lib/launchReadiness.js",
+        "bytes": 2792,
+        "sha256": "6971cb445552a3fff1544504fa4d99930c4473acd640e5ffb659bb27b4051971"
+      },
+      {
+        "path": "lib/leagueStoryExport.js",
+        "bytes": 12066,
+        "sha256": "a081c1002ca406c9420966ba4b28502f1261ffdcb69303b111392bd4503d9a68"
+      },
+      {
+        "path": "lib/marqueeBadge.js",
+        "bytes": 4176,
+        "sha256": "252fd6cf39ce5587d9c9f580d299ce3014f77fd42614b95a73a25e60ff124093"
+      },
+      {
+        "path": "lib/mentorshipPanel.js",
+        "bytes": 5104,
+        "sha256": "ee4138ea4c1486eee4fea64cbe5793e5a83af72685ccf881b8ddf4f467aca443"
+      },
+      {
+        "path": "lib/mobileLoop.js",
+        "bytes": 19701,
+        "sha256": "b13101f3a4cbe08d39df8756d7ea0b2af15f501d3566906a744745318b594616"
+      },
+      {
+        "path": "lib/modalManager.js",
+        "bytes": 6529,
+        "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9"
+      },
+      {
+        "path": "lib/onClockTradeMarketPanel.js",
+        "bytes": 5154,
+        "sha256": "4299d9517e44e776cb7609d09c3294d708d1eaf52a6de72d9567398bee9c9387"
+      },
+      {
+        "path": "lib/playerProfileNarrative.js",
+        "bytes": 8667,
+        "sha256": "7dbb95d1c167ecf545fb471db91b28be33fc80fbccf4ec2c0fd0a945621c2498"
+      },
+      {
+        "path": "lib/playtestJourney.js",
+        "bytes": 4111,
+        "sha256": "a07965f79cb3fbecde479ba1e991625381d380c83c136ec0e286440e778c96c4"
+      },
+      {
+        "path": "lib/playtestReceipts.js",
+        "bytes": 4565,
+        "sha256": "f82da8e15f47c7d46d2c4322d2123cfb1964413db569ce3fded17328be96696f"
+      },
+      {
+        "path": "lib/postCommitHydration.js",
+        "bytes": 2027,
+        "sha256": "7bf28b18ec26dc059ae17537a00566a2efe3684558ad0b989ab34a69f7f62bfe"
+      },
+      {
+        "path": "lib/predictionPanel.js",
+        "bytes": 7621,
+        "sha256": "0c063dca50871609e633361156d686158ebe6b5a74bb0d41ca9a836aa2d554e2"
+      },
+      {
+        "path": "lib/pressRoomPanel.js",
+        "bytes": 4316,
+        "sha256": "cf807f96e9ff510ff84a4afaee24cf0363dd4f8f6226a16975830573ab0a9bcc"
+      },
+      {
+        "path": "lib/progressionWatch.js",
+        "bytes": 1949,
+        "sha256": "8254616bd7d5987eafdb4f41b198cb843f6475414363951844de0e5aebc4630c"
+      },
+      {
+        "path": "lib/prospectNarratives.js",
+        "bytes": 4627,
+        "sha256": "124e0becdc00bb020287e1bc7a724628c250eea3f1614342d63fa79d8af4fc7a"
+      },
+      {
+        "path": "lib/returnDigest.js",
+        "bytes": 13543,
+        "sha256": "4c3fc7c065e343bf5b4b439c42d83bba14ff7685edf5dbd1f9655eeff1a9e6f5"
+      },
+      {
+        "path": "lib/rewardBeats.js",
+        "bytes": 6917,
+        "sha256": "e09e8a4569e4a56d55e6d299da06fcc099a4febc86c4bfea26a77d1bcdec4d85"
+      },
+      {
+        "path": "lib/rivalCoachIntel.js",
+        "bytes": 2496,
+        "sha256": "f7885fa55083a9038cc830ecf1e47574a5de0fc077916b2ad930b26249e3f870"
+      },
+      {
+        "path": "lib/rivalFrontOfficeCard.js",
+        "bytes": 1983,
+        "sha256": "9a3a1321ddd8db463507385cc402b2b9b03492db6b62be7719fe9c9ce435a289"
+      },
+      {
+        "path": "lib/scoreline.js",
+        "bytes": 1280,
+        "sha256": "9a6b5f64abce6b15988eb85b5ab7cc1092d0f056564f186c651fa8fef2290003"
+      },
+      {
+        "path": "lib/seasonChapters.js",
+        "bytes": 17389,
+        "sha256": "a5421ae07be7c4f29bc51360803d32914d0ea346a8449d3842c71f15dc75ba93"
+      },
+      {
+        "path": "lib/seasonEpilogue.js",
+        "bytes": 12799,
+        "sha256": "ab1a140a8a92b23409e8d1e11dba8f25c9c6fc6bff59886995881b84ec31465f"
+      },
+      {
+        "path": "lib/seasonReviewTransition.js",
+        "bytes": 343,
+        "sha256": "373f0b73cd6cfacdb72f97a5c62e5e4ddb54c3f123e97425fc7df87cac8479d8"
+      },
+      {
+        "path": "lib/simWatchDirector.js",
+        "bytes": 14969,
+        "sha256": "058bdf536f9386c53800c815e08389aa2006c9f6cb28bed0c352a891004254c8"
+      },
+      {
+        "path": "lib/simWatchPlayback.js",
+        "bytes": 7531,
+        "sha256": "93f22c3770a283eb2b34ab7f57974f6a525a02b6ca084ce5edc3df2a133f1616"
+      },
+      {
+        "path": "lib/simulationCheckpoints.js",
+        "bytes": 5188,
+        "sha256": "d8944f725af3989ba2e5809422f159a192c49c2cf1063981689655efd50b97dd"
+      },
+      {
+        "path": "lib/spreadPredictions.js",
+        "bytes": 8724,
+        "sha256": "a2bab6ce79a98523178e6a067800126624fe3b56e673b291eacc65db666caeb0"
+      },
+      {
+        "path": "lib/startScenarioContract.js",
+        "bytes": 4413,
+        "sha256": "ca000db67d4458c19d4a8b2b959511c63b72011a52233550b2a89960d98bc239"
+      },
+      {
+        "path": "lib/tabContracts.js",
+        "bytes": 34172,
+        "sha256": "0dea8f17f14143b63e106f6c351ba94b72cfc7689aebcf6e7f10dad11a44a504"
+      },
+      {
+        "path": "lib/tabDraft.js",
+        "bytes": 23064,
+        "sha256": "70979c5b6172b296f81f9b6be23c372c3ce0fb7d2849c0f7bc5271167119a4a5"
+      },
+      {
+        "path": "lib/tabHistory.js",
+        "bytes": 41946,
+        "sha256": "642e5ea8bc8b7fcd29f21833b640cc44825e5a59c8cc55f48869c79441227655"
+      },
+      {
+        "path": "lib/tabHydration.js",
+        "bytes": 6254,
+        "sha256": "cad5276db2ad71bafdf1cbc2978b9bfd87c82628f25e0e7d8ec91bbd607c4b34"
+      },
+      {
+        "path": "lib/tabKeyboardNavigation.js",
+        "bytes": 770,
+        "sha256": "88f0a334c69c5e7ee3f6781cd207fd0206a0215b12bdc261c5a24ed99dd1a026"
+      },
+      {
+        "path": "lib/tabOverview.js",
+        "bytes": 68425,
+        "sha256": "99fad43e22ba0729f08ffc95de2a57dc718578a354aa965560618a763fa109b4"
+      },
+      {
+        "path": "lib/tabRoster.js",
+        "bytes": 16069,
+        "sha256": "378b9ddfe9e1eebdbae23e5c5d3a49f97b491eb8de87443048afad38df264041"
+      },
+      {
+        "path": "lib/tabSettings.js",
+        "bytes": 41090,
+        "sha256": "a8289d32e554fbe00c514fb18b8801060552ccb3122e15f63097fbaae38aade8"
+      },
+      {
+        "path": "lib/tabStats.js",
+        "bytes": 8815,
+        "sha256": "0020c3f709e8e30c31057d753a862124345c171332b1f39526484454a9e991c8"
+      },
+      {
+        "path": "lib/tacticalFilmRoom.js",
+        "bytes": 15143,
+        "sha256": "90ce3b16e4802a7f15fce9a86a080a17a810b98ea9acadc5d3ce075bf6e102b1"
+      },
+      {
+        "path": "lib/teamRecord.js",
+        "bytes": 1811,
+        "sha256": "9490aeed93a8295cae7ce9366698f7871fc29f4b9ebeb0ffe89bb981958c84e6"
+      },
+      {
+        "path": "lib/themeBoot.js",
+        "bytes": 1644,
+        "sha256": "52934271712177e3a627d569df400cfac1b608f7caaac78167678b39533c959f"
+      },
+      {
+        "path": "lib/themeCustomizer.js",
+        "bytes": 8390,
+        "sha256": "d8b34bf2efd31be1f2557dcf38be420d13c0c58a1b9ab237a9caeb9e4c115abe"
+      },
+      {
+        "path": "lib/tradeDeadlineFrenzy.js",
+        "bytes": 9862,
+        "sha256": "ea30e270ba6593da3b3295e54d19004dd95d84fad2bf47577d810da30c70c1fe"
+      },
+      {
+        "path": "lib/tutorialCampaign.js",
+        "bytes": 16237,
+        "sha256": "efe4306ba4f79f12fce785bfe39c924f9f5d80d9c89fa75aca5fcc22b04964fe"
+      },
+      {
+        "path": "lib/uiIslands.js",
+        "bytes": 6228,
+        "sha256": "0cb27840070920312ec23041398a7f1f5373d8c4ec1fa02a793f10ecef51855f"
+      },
+      {
+        "path": "lib/weeklyPlanComposer.js",
+        "bytes": 5720,
+        "sha256": "d55eb2bdd29951289c8d7a12442e4d25571d5712762dad3af9dce432c8bab3e4"
+      },
+      {
+        "path": "precache-manifest.json",
+        "bytes": 15643,
+        "sha256": "c5a7033de3875786c73b29ca3316fdb8bc5689e1d996ade021d6aeebff717047"
+      },
+      {
+        "path": "privacy.html",
+        "bytes": 4558,
+        "sha256": "b2eb8a19609946a808421ee6c056ad7ea08419964fb4016a0f1c5a97d52f1f4b"
+      },
+      {
+        "path": "public-identity.json",
+        "bytes": 584,
+        "sha256": "39a81c7ebeead641bc7aeef0087798797a6f2a960f99eb8ba0e1c29db299ac3e"
+      },
+      {
+        "path": "public/lib/gameplayNavigation.js",
+        "bytes": 2767,
+        "sha256": "e46ebe4e1d308f487706052c08938d13d24236a3f9e0fd5e9470e74fd875348b"
+      },
+      {
+        "path": "public/lib/startScenarioContract.js",
+        "bytes": 4413,
+        "sha256": "ca000db67d4458c19d4a8b2b959511c63b72011a52233550b2a89960d98bc239"
+      },
+      {
+        "path": "public/lib/tacticalFilmRoom.js",
+        "bytes": 15143,
+        "sha256": "90ce3b16e4802a7f15fce9a86a080a17a810b98ea9acadc5d3ce075bf6e102b1"
+      },
+      {
+        "path": "robots.txt",
+        "bytes": 80,
+        "sha256": "d129cfd34a4621cf972482cd0164f3dae6efe89688a6c243cfc3dd5c5b313019"
+      },
+      {
+        "path": "setup.js",
+        "bytes": 27289,
+        "sha256": "b1c88e95ef641395ac171ac4ed29b1d48884820f4c797325e23a84d8bec107cb"
+      },
+      {
+        "path": "simulation.html",
+        "bytes": 9363,
+        "sha256": "bdd3c2304943c9b5f93de062b2afbf240d4228aea2ddfdc29f683eb44a386e6c"
+      },
+      {
+        "path": "sitemap.xml",
+        "bytes": 1623,
+        "sha256": "665bfa188bff5168838f50f2a206df4435e146165390e03c5a1a928cede92575"
+      },
+      {
+        "path": "src/adapters/persistence/browserSaveStore.js",
+        "bytes": 7523,
+        "sha256": "3cf9c92b78ffed96cf5a7961cd92341dd23af335840985273e29a814d7df6856"
+      },
+      {
+        "path": "src/adapters/persistence/hybridSaveStore.js",
+        "bytes": 10821,
+        "sha256": "3f6d5549a24b2f83534867888373f145d3887426ddcc8306a7551f6a850cbdcc"
+      },
+      {
+        "path": "src/adapters/persistence/saveStoreShared.js",
+        "bytes": 4579,
+        "sha256": "8881f866cae3ee2e4d5ba0a6706453dcaa87a4719b5f0967a646c1d13394f8da"
+      },
+      {
+        "path": "src/adapters/persistence/snapshotCodec.js",
+        "bytes": 4641,
+        "sha256": "272a9f7bf8c19f0ad7b37e71bd55cc27bb5496089c3bb0ace4c45b74fc4c2731"
+      },
+      {
+        "path": "src/app/api/localApiRuntime.js",
+        "bytes": 88413,
+        "sha256": "a28d3aa3fe0d1b0236ef9242fa3a7facc0b2af66e792768dc9866eed213d2d3d"
+      },
+      {
+        "path": "src/config.js",
+        "bytes": 9637,
+        "sha256": "8b3ecb90cb86558c035c9fcde9350ca07dc9b5d8f1a305dab7a04eb0cb82af62"
+      },
+      {
+        "path": "src/config/leagueSetup.js",
+        "bytes": 16377,
+        "sha256": "6a18c4e9751d385c0c842ed4250355f039dd1f15e72a71de0d45c5048a260066"
+      },
+      {
+        "path": "src/data/nflEliteDensityBaseline.js",
+        "bytes": 6587,
+        "sha256": "62724174a9f4f879b9cc63b17e896b6a268723876d5771c8fea70dcd70c0d079"
+      },
+      {
+        "path": "src/domain/contracts.js",
+        "bytes": 6838,
+        "sha256": "74c66ad6cc38597cb7f552c14d7a834daaa0acf412778743a5a6fb07f661f93b"
+      },
+      {
+        "path": "src/domain/developmentEnvironment.js",
+        "bytes": 9551,
+        "sha256": "b581802b2ae0c740c256b0c79adf463ebdb3bbd6fdbc1c481902a0a0d98e48a1"
+      },
+      {
+        "path": "src/domain/facilityInvestment.js",
+        "bytes": 15900,
+        "sha256": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb"
+      },
+      {
+        "path": "src/domain/ownerEconomy.js",
+        "bytes": 6571,
+        "sha256": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec"
+      },
+      {
+        "path": "src/domain/playerFactory.js",
+        "bytes": 9891,
+        "sha256": "33cc51aeb1ca9289dd9cf9c51b8ea6d9ca62e90405aafcba93f48f872aaffd71"
+      },
+      {
+        "path": "src/domain/potentialReversion.js",
+        "bytes": 9400,
+        "sha256": "bd848ba6aa2f8c62e5f0bbc45a548e232b2a1afc39783c43247f3f8f25a7f14a"
+      },
+      {
+        "path": "src/domain/ratings.js",
+        "bytes": 14482,
+        "sha256": "cd9045d1d9db192074ffb4b99192cbec4f8a1808556864b62a3e11e723f3f267"
+      },
+      {
+        "path": "src/domain/teamFactory.js",
+        "bytes": 13130,
+        "sha256": "6616a1c58ded17a33a7cba0d1cdfcaba8699b2a105cdf2f5b006d544f73c2f16"
+      },
+      {
+        "path": "src/domain/ticketDemand.js",
+        "bytes": 7685,
+        "sha256": "397d433178d9f89e0835d84e1dc2247ef57a6c142f4be0451cc30c07fc52a174"
+      },
+      {
+        "path": "src/engine/adaptiveDifficulty.js",
+        "bytes": 3761,
+        "sha256": "2fd89c8ee1bbf8ce3b0b53f1f515c25f9a9b04abd40b367d4dd566ee07fd6763"
+      },
+      {
+        "path": "src/engine/aiTeamStrategy.js",
+        "bytes": 3634,
+        "sha256": "dc6e15ad74f4430ead713b1eb4e1a7f257de0a2e9ad61279c3e6e226ed7ccd31"
+      },
+      {
+        "path": "src/engine/architectFocusReview.js",
+        "bytes": 3519,
+        "sha256": "28c27898748670166734f7bac133bf0e04a70fbe44b2075b91f7d9e03fbb3704"
+      },
+      {
+        "path": "src/engine/architectMasteryPortfolio.js",
+        "bytes": 8456,
+        "sha256": "b86c2057280e8aa6dc32bec2375e258cc42d2d1136972d555685d76e0add69eb"
+      },
+      {
+        "path": "src/engine/architectThesis.js",
+        "bytes": 7247,
+        "sha256": "b391bdff3f39dff145bb875e366aa8af8dd17c852e33d9bc6178adf9b3f354c0"
+      },
+      {
+        "path": "src/engine/beatReporter.js",
+        "bytes": 12496,
+        "sha256": "39fd517a31b38c81899a895c99e2b6528767444e4a126a1f771383a6903ed6b2"
+      },
+      {
+        "path": "src/engine/capAlerts.js",
+        "bytes": 6315,
+        "sha256": "6be318cb78060758cf1ae9f25b795b3d5ce54d6d857bfe14a8dc1725b1ffee03"
+      },
+      {
+        "path": "src/engine/capCompliance.js",
+        "bytes": 11679,
+        "sha256": "619461b7bd29db8946d71c32a568e1c78c887538298a3c89ea42701613241133"
+      },
+      {
+        "path": "src/engine/coachingMarket.js",
+        "bytes": 16427,
+        "sha256": "60ba64bd2bb7676681d3902dd46e5d39f6a298d3205c5fb8bec2146e32229a3c"
+      },
+      {
+        "path": "src/engine/coachingTree.js",
+        "bytes": 9579,
+        "sha256": "11aa298893e8da144eb41a3bc25c4f73ef4dafff7ba23f4326e0a156da4d8f73"
+      },
+      {
+        "path": "src/engine/continuityLedger.js",
+        "bytes": 8506,
+        "sha256": "3adafbc402e1d446fbc5b2449bc24ec1c1a06293b17c78cf06bb66ee9c765c59"
+      },
+      {
+        "path": "src/engine/depthChartUsage.js",
+        "bytes": 11825,
+        "sha256": "6137615931198349196ee514370eee3888cddcd50132e1b09e22f75a705471fb"
+      },
+      {
+        "path": "src/engine/draftCombine.js",
+        "bytes": 5792,
+        "sha256": "2c6b813a9b0981a0c013a239cf6f30bf29119d933e2d77e86d45e5f2c0e8f1ab"
+      },
+      {
+        "path": "src/engine/facilityMarket.js",
+        "bytes": 12906,
+        "sha256": "d559760c28e95169d2534134b8e0025fa86c4693cab6bbaa4d2661b35d2ce097"
+      },
+      {
+        "path": "src/engine/fanSentiment.js",
+        "bytes": 3546,
+        "sha256": "f24a533ea3bf49f998a03622cdaea43b7bcdc4ad3a56b266447695c42461c73e"
+      },
+      {
+        "path": "src/engine/gameSimulator.js",
+        "bytes": 78566,
+        "sha256": "d58390cd5cf1f1f9daca5d012962ad014f1d56f1eabfdb33936202b4073696d3"
+      },
+      {
+        "path": "src/engine/gmDecisionAuthority.js",
+        "bytes": 17267,
+        "sha256": "1201cd6015692af41586de3a56ef37914fcc81a9faff45a359f76851920df7b1"
+      },
+      {
+        "path": "src/engine/gmDecisionConsequences.js",
+        "bytes": 23253,
+        "sha256": "57b7e2258057306a27440c4ac1175520941540bdf3e4b69529dc3bc38d69f95a"
+      },
+      {
+        "path": "src/engine/gmLegacyScore.js",
+        "bytes": 18579,
+        "sha256": "2d645e3bc623beecfe885be2446f922ea826a5c75503ef8cccf31f930b6ee18a"
+      },
+      {
+        "path": "src/engine/injurySystem.js",
+        "bytes": 9323,
+        "sha256": "ca0a4e9b987e750fb39d7c2200b8cadd07c2a4562e94820914b2f1eed69ef556"
+      },
+      {
+        "path": "src/engine/matchupEdge.js",
+        "bytes": 5305,
+        "sha256": "5db513dacc629dc1b6c08dc7101149c9cc1bd99079b8d9676d0e62c5c26ac83b"
+      },
+      {
+        "path": "src/engine/narrativeEvents.js",
+        "bytes": 13177,
+        "sha256": "6fa816dc77817419f42baa68aa2d94069aa8031ef245282d9a4e33d43eeaa675"
+      },
+      {
+        "path": "src/engine/offseasonSimulator.js",
+        "bytes": 20328,
+        "sha256": "8a802098e9af70b5865cd37295ac5fbe5a59990bf2e2fb5710a92970ca244eae"
+      },
+      {
+        "path": "src/engine/onClockTradeMarket.js",
+        "bytes": 5121,
+        "sha256": "6befec37eb896928a1fac8d2e13fc113f06fd738c9af48b6e93c44c16f3098f7"
+      },
+      {
+        "path": "src/engine/ownerConfidence.js",
+        "bytes": 5471,
+        "sha256": "d097c5646ccd38ca085c790b70329af9f0db939698c25f9dc6ecd2fb7d04683b"
+      },
+      {
+        "path": "src/engine/playCalling.js",
+        "bytes": 4918,
+        "sha256": "c17ba6492f97bcc7aea90becb1c08a16a4ea5ad3384ade68ab22fae324c2df73"
+      },
+      {
+        "path": "src/engine/playerAgentAI.js",
+        "bytes": 6817,
+        "sha256": "a09fdabfb98c492d5bec786d0d6288e9f5e08102a2486bbac3cc6d6d43401753"
+      },
+      {
+        "path": "src/engine/pressConference.js",
+        "bytes": 13238,
+        "sha256": "5008f530bf7dd4ddc1b08272fc7f1a675f1b34b28a6332b00e11dc755e507d26"
+      },
+      {
+        "path": "src/engine/pressRoom.js",
+        "bytes": 12624,
+        "sha256": "7a9b513ac311bb1b29600ec7f0203d918248217a0a9b390565720f4b719f02ba"
+      },
+      {
+        "path": "src/engine/rivalFrontOffice.js",
+        "bytes": 3052,
+        "sha256": "8cb3e45088f7ae187b194794fc2f6b9fe8844365caf912097b93002182440e76"
+      },
+      {
+        "path": "src/engine/rivalGmPersona.js",
+        "bytes": 5575,
+        "sha256": "537ba5ef2ef454341b6b2546a29c07ab4aa9858e775eb4cb997faf4d9918d4f9"
+      },
+      {
+        "path": "src/engine/rivalTradeOffers.js",
+        "bytes": 12777,
+        "sha256": "6614c9a12adf0dc38a9b8314d8f0ebc4355bc7f6b8e2a29f8133852809583454"
+      },
+      {
+        "path": "src/engine/rivalryDNA.js",
+        "bytes": 4936,
+        "sha256": "be7954d5d0c3e71f5efbd9f2d9a466463a40f94d40f0734dffa2f7705c290962"
+      },
+      {
+        "path": "src/engine/schedule.js",
+        "bytes": 14293,
+        "sha256": "19ea2e12919c38f7d89b925f5c475d120709c34114f0beb03da9b0e7ce142434"
+      },
+      {
+        "path": "src/engine/seasonSimulator.js",
+        "bytes": 21369,
+        "sha256": "79ddd4566498cac9d7eb8384365f08e7dbe5e0fff0a68cefa328ea2d62a2cf17"
+      },
+      {
+        "path": "src/engine/speedrunChallenge.js",
+        "bytes": 3881,
+        "sha256": "762a3672e22c63660938c6c72923410cd9d299e59d8c53890e150c2a199a6feb"
+      },
+      {
+        "path": "src/engine/staffGeneration.js",
+        "bytes": 3082,
+        "sha256": "ae6634274a115e6e90733ed0361e602e435febd7f83b706f8808d57920986232"
+      },
+      {
+        "path": "src/engine/timeCapsule.js",
+        "bytes": 13128,
+        "sha256": "a3d3f1434d8e1c199eb8b8f523cc9c2bfdeeb56b20b9cbcefbdb5297b2377f61"
+      },
+      {
+        "path": "src/engine/veteranMentorship.js",
+        "bytes": 14005,
+        "sha256": "3989cb077c160ed0611ebf5bbd7f345d31b770da23d0ee0bb37504dc730b1e9b"
+      },
+      {
+        "path": "src/engine/weeklySimulator.js",
+        "bytes": 1941,
+        "sha256": "d2f174a239bbf4d3b0cb672f583cf27c0fff6328230bd30b192e59b4be61f7d9"
+      },
+      {
+        "path": "src/engine/whatIfReplay.js",
+        "bytes": 4072,
+        "sha256": "dc4df01eed9e474960b6d1b863ee8dc5a3bbb9d818fc09aa34d7ccc76b4d9f6a"
+      },
+      {
+        "path": "src/runtime/GameSession.js",
+        "bytes": 332829,
+        "sha256": "b3d462ae84ccaedcf76e63870d604c8a01fa2d159dbb4cab8c89f609136f8b3c"
+      },
+      {
+        "path": "src/runtime/advanceWeekCommand.js",
+        "bytes": 7037,
+        "sha256": "4989eefa5de67fa778fb5b6759a04401ae4850fbce2e85e6dede5ccf92357d91"
+      },
+      {
+        "path": "src/runtime/applyLeagueSetup.js",
+        "bytes": 6269,
+        "sha256": "43d627b8de1fa10394acb255e9394a50ca892ccf8ff8ec1bb384777c673c309a"
+      },
+      {
+        "path": "src/runtime/architectLedger.js",
+        "bytes": 3897,
+        "sha256": "8a1b2aa18052c46c17ff3de07fccae3520726d4d97804bf2ed6dc73eb0d54563"
+      },
+      {
+        "path": "src/runtime/franchiseAuthority.js",
+        "bytes": 10557,
+        "sha256": "d3011841d3aaf6ff3ad0f31540feede534a6efcee6af40a8d3f1c5a081d43c9f"
+      },
+      {
+        "path": "src/runtime/handlers/architectThesisHandler.js",
+        "bytes": 1264,
+        "sha256": "f4e591fbe4c76b9583e6229ce55fefdf202a7cf9c2f810c2038ea097a7a249cb"
+      },
+      {
+        "path": "src/runtime/handlers/franchiseMomentHandler.js",
+        "bytes": 3956,
+        "sha256": "5f93b9cc462464f3fa40ce353b4769f1951b4ee2a9f5ae51584f907b2213ae1c"
+      },
+      {
+        "path": "src/runtime/handlers/tradeOffersHandler.js",
+        "bytes": 1342,
+        "sha256": "56c0c8fabe9b90678f495e1720d1b6a7cb6d20cf419be9be775b04bbf829adf2"
+      },
+      {
+        "path": "src/runtime/modules/sessionModules.js",
+        "bytes": 1099,
+        "sha256": "05316a071da75db231b7d3151b6c8eda874e3eadf7d78e086bbe39d9fe756f40"
+      },
+      {
+        "path": "src/runtime/multiplayerSession.js",
+        "bytes": 9525,
+        "sha256": "834151078c7990d52fbcdd4f203527b991939b7aa86f5a42dc39ca50acdb55a7"
+      },
+      {
+        "path": "src/runtime/services/CoachingService.js",
+        "bytes": 5886,
+        "sha256": "18786b44e81a4fb5e5a022a3873a6377b49c005972d9d1439488ef306de0a7c4"
+      },
+      {
+        "path": "src/runtime/services/ContractService.js",
+        "bytes": 1646,
+        "sha256": "eea0f96a9fa549c2edab7359e6a8c6b3542b90c825b6c5b68d8655e213048bbe"
+      },
+      {
+        "path": "src/runtime/services/TradeService.js",
+        "bytes": 10722,
+        "sha256": "49d5bb30f5d2798ee0bb70b708e1a488f858570449f1fc36beb9548149351d3a"
+      },
+      {
+        "path": "src/runtime/services/index.js",
+        "bytes": 1835,
+        "sha256": "2296511ccb6da03fe56f35365409dba277f704de3099ea458b14989f4ac1a6d6"
+      },
+      {
+        "path": "src/runtime/services/tradePlan.js",
+        "bytes": 1939,
+        "sha256": "b58965b01237848130b36067e8e5f158fd488b1ec1ae0a05fbadccc8938e36a7"
+      },
+      {
+        "path": "src/runtime/snapshotMigration.js",
+        "bytes": 4725,
+        "sha256": "54d632309f363300c2ab503b1567a37801a6d7c67454e4d076d297bf4ca62a12"
+      },
+      {
+        "path": "src/runtime/weekResultProjection.js",
+        "bytes": 10497,
+        "sha256": "89ddf5d63abb22222d3a0a86cb3a234b122f06d9c69b22ccb5daa97a3838b983"
+      },
+      {
+        "path": "src/runtime/weeklyTactic.js",
+        "bytes": 3178,
+        "sha256": "f8f0aa3883857f8d7f67d374f7cc34a9a16bdf0f533084e29a5d73b9377f6b9f"
+      },
+      {
+        "path": "src/stats/approximateValue.js",
+        "bytes": 12713,
+        "sha256": "6abe8fc07159a14c2008e97108088f4965bd4678c6a68b86bff4e9bc7fc27486"
+      },
+      {
+        "path": "src/stats/gameImpact.js",
+        "bytes": 3136,
+        "sha256": "9a0f1781da1bc7ac58a87857b9603b90b9cb129fb0bcbd5451b7386110db4be5"
+      },
+      {
+        "path": "src/stats/gmReportCard.js",
+        "bytes": 10017,
+        "sha256": "4efcb78eeb3810770f63b211092b499ec7c7a9b8678b02433bac2349973c08ca"
+      },
+      {
+        "path": "src/stats/profiles/pfrCareerWeightedProfile.js",
+        "bytes": 4418,
+        "sha256": "1072fdb5711a28a22ecf5c0d4bbce90d1cf6e702abbdd39c57b94c84ea200eb0"
+      },
+      {
+        "path": "src/stats/profiles/pfrRecentWeightedProfile.js",
+        "bytes": 2383,
+        "sha256": "bad1cc35d2c4b5b692f9370b5ec4617b60611b3909b10abb23bb202b1be41866"
+      },
+      {
+        "path": "src/stats/progressionParity.js",
+        "bytes": 23760,
+        "sha256": "92b5ca994b16ed0dadc37ea2d45de367fdd06a52d4860596a65670910ccb0bd5"
+      },
+      {
+        "path": "src/stats/realismCalibrator.js",
+        "bytes": 25821,
+        "sha256": "e9d51c5555059430201a8fd31dabee7eb71b75f895f754cdbffe64afb5c17d58"
+      },
+      {
+        "path": "src/stats/scoreline.js",
+        "bytes": 2928,
+        "sha256": "02ce98a9d69dc0415f3c9f68e77b6b3ab7ff513ec692db62c62a033598c03c5b"
+      },
+      {
+        "path": "src/stats/statBook.js",
+        "bytes": 36129,
+        "sha256": "028ef8d33f3aae8f607fedb0e6dfa8cf9fee6722a7b7aa52caaeab23544dcc6e"
+      },
+      {
+        "path": "src/stats/teamRecord.js",
+        "bytes": 765,
+        "sha256": "45648a0f4669dc8887bd4897093e75169904e87472d3b8a035c4064a85828f51"
+      },
+      {
+        "path": "src/utils/rng.js",
+        "bytes": 3456,
+        "sha256": "b2f131bfee4a86b3999e58a679e3ba1f5cf78dd41d78292777d10a3bfc539596"
+      },
+      {
+        "path": "src/utils/rngStreams.js",
+        "bytes": 1408,
+        "sha256": "5d5c225c96e274e7b764798e8929f75e720b899452ac24a38554b23ea17ad181"
+      },
+      {
+        "path": "stats-surface.json",
+        "bytes": 3191,
+        "sha256": "e75c35e7f59e1c1c3a84bff2d581a238835b6710ac791b34802b80680f3dd67a"
+      },
+      {
+        "path": "stats.html",
+        "bytes": 5676,
+        "sha256": "2afc944dd96e183b0b8acd356c112ecf92c1ac8905a9928643bb2379e8b9788d"
+      },
+      {
+        "path": "status.html",
+        "bytes": 8564,
+        "sha256": "b473bcfacc940a33e2916b7bf22d2720e4acf1b23ea47c7e2ceb785e83781324"
+      },
+      {
+        "path": "styles.8b9fcd5fa4.css",
+        "bytes": 187205,
+        "sha256": "8b9fcd5fa4c4ab88c13800f098e4fc797c92c25281872f7216b16b0c7f8cfab5"
+      },
+      {
+        "path": "styles.css",
+        "bytes": 187205,
+        "sha256": "8b9fcd5fa4c4ab88c13800f098e4fc797c92c25281872f7216b16b0c7f8cfab5"
+      },
+      {
+        "path": "sw.js",
+        "bytes": 8411,
+        "sha256": "96a509121bb9da83dba5c17ef5a22c4f176c1ce829215e0a294d1ae1c7c66a0a"
+      },
+      {
+        "path": "terms.html",
+        "bytes": 3007,
+        "sha256": "d9fb05248f9a376ad005a8e65395818f8046c89ef60863c2d019e889f13a673c"
+      }
+    ],
     "exclusions": [
       "_health",
       "deploy-manifest.json",
@@ -21,17 +1078,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a310784dfdb3f283-IAD",
+    "cf-ray": "a35593774b441325-EWR",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Wed, 26 Aug 2026 05:34:53 GMT",
+    "date": "Thu, 03 Sep 2026 14:52:03 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=coOVuPNqbElU%2BVtZ3IxDEPyHL6fFpJzsfpt2kjRqVkpQbbdwmNECGXSs9xNJiM3VEWFZ0bju2UkCGEsIRVA7M7F3TNgtwGOt8HcN5eYZC2L7cZvgb9vCLtR38kNYBOsGlXPzY3oproZtm7KIFQ%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=JxLHSraedxEO8pTCVBV7IvvSaZ07daabFLpON0eK%2Bg0lsjfvgxaOaZkfSe94DUCDDhwQlBttzzAunisDpVYWw2v5CGNP3jLylv%2Bje69cGcNyIzvN6%2FpgU0o6yGTs371JEhquDG3m51cInZL4XL4hCvO%2FrvFF\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -47,13 +1104,13 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 784,
+      "lcpMs": 1408,
       "inpMs": 32,
       "cls": 0.0277,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 964,
+          "lcpMs": 10408,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -63,7 +1120,7 @@
           "cls": 0.0277,
           "shifts": [
             {
-              "startTimeMs": 1320,
+              "startTimeMs": 10881,
               "scrollY": 0,
               "value": 0.0277,
               "sources": [
@@ -149,7 +1206,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 784,
+          "lcpMs": 1408,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -159,7 +1216,7 @@
           "cls": 0.0277,
           "shifts": [
             {
-              "startTimeMs": 1409,
+              "startTimeMs": 1672,
               "scrollY": 0,
               "value": 0.0277,
               "sources": [
@@ -241,11 +1298,11 @@
               ]
             }
           ],
-          "inpMs": 40,
+          "inpMs": 24,
           "interactionObserved": true
         },
         {
-          "lcpMs": 756,
+          "lcpMs": 460,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -255,7 +1312,7 @@
           "cls": 0.0277,
           "shifts": [
             {
-              "startTimeMs": 1335,
+              "startTimeMs": 790,
               "scrollY": 0,
               "value": 0.0277,
               "sources": [
@@ -337,7 +1394,7 @@
               ]
             }
           ],
-          "inpMs": 32,
+          "inpMs": 48,
           "interactionObserved": true
         }
       ]
@@ -349,13 +1406,13 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 1352,
+      "lcpMs": 1036,
       "inpMs": 24,
       "cls": 0.0144,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 1344,
+          "lcpMs": 10912,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -365,7 +1422,7 @@
           "cls": 0.0144,
           "shifts": [
             {
-              "startTimeMs": 1317,
+              "startTimeMs": 10903,
               "scrollY": 0,
               "value": 0.0059,
               "sources": [
@@ -397,85 +1454,7 @@
               ]
             },
             {
-              "startTimeMs": 8169,
-              "scrollY": 0,
-              "value": 0.0085,
-              "sources": [
-                {
-                  "tag": "SECTION",
-                  "id": null,
-                  "className": "community-pulse",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 350.203125,
-                    "width": 390,
-                    "height": 493.796875,
-                    "top": 350.203125,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 362.390625,
-                    "width": 390,
-                    "height": 481.609375,
-                    "top": 362.390625,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 56,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 1352,
-          "lcpElement": {
-            "tag": "P",
-            "id": null,
-            "className": "",
-            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
-          },
-          "cls": 0.0144,
-          "shifts": [
-            {
-              "startTimeMs": 1342,
-              "scrollY": 0,
-              "value": 0.0059,
-              "sources": [
-                {
-                  "tag": "DIV",
-                  "id": null,
-                  "className": "",
-                  "previousRect": {
-                    "x": 34.1875,
-                    "y": 627.203125,
-                    "width": 321.625,
-                    "height": 216.796875,
-                    "top": 627.203125,
-                    "right": 355.8125,
-                    "bottom": 844,
-                    "left": 34.1875
-                  },
-                  "currentRect": {
-                    "x": 22.1875,
-                    "y": 607.203125,
-                    "width": 345.625,
-                    "height": 236.796875,
-                    "top": 607.203125,
-                    "right": 367.8125,
-                    "bottom": 844,
-                    "left": 22.1875
-                  }
-                }
-              ]
-            },
-            {
-              "startTimeMs": 6998,
+              "startTimeMs": 15824,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -511,7 +1490,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 1552,
+          "lcpMs": 1036,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -521,7 +1500,7 @@
           "cls": 0.0144,
           "shifts": [
             {
-              "startTimeMs": 1537,
+              "startTimeMs": 1024,
               "scrollY": 0,
               "value": 0.0059,
               "sources": [
@@ -553,7 +1532,85 @@
               ]
             },
             {
-              "startTimeMs": 8129,
+              "startTimeMs": 4486,
+              "scrollY": 0,
+              "value": 0.0085,
+              "sources": [
+                {
+                  "tag": "SECTION",
+                  "id": null,
+                  "className": "community-pulse",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 350.203125,
+                    "width": 390,
+                    "height": 493.796875,
+                    "top": 350.203125,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 362.390625,
+                    "width": 390,
+                    "height": 481.609375,
+                    "top": 362.390625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 16,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 968,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "",
+            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
+          },
+          "cls": 0.0144,
+          "shifts": [
+            {
+              "startTimeMs": 959,
+              "scrollY": 0,
+              "value": 0.0059,
+              "sources": [
+                {
+                  "tag": "DIV",
+                  "id": null,
+                  "className": "",
+                  "previousRect": {
+                    "x": 34.1875,
+                    "y": 627.203125,
+                    "width": 321.625,
+                    "height": 216.796875,
+                    "top": 627.203125,
+                    "right": 355.8125,
+                    "bottom": 844,
+                    "left": 34.1875
+                  },
+                  "currentRect": {
+                    "x": 22.1875,
+                    "y": 607.203125,
+                    "width": 345.625,
+                    "height": 236.796875,
+                    "top": 607.203125,
+                    "right": 367.8125,
+                    "bottom": 844,
+                    "left": 22.1875
+                  }
+                }
+              ]
+            },
+            {
+              "startTimeMs": 5492,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -597,13 +1654,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "92e4190a4221383c8352ea6321d65528cb449e74",
+        "observed": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7",
+        "observed": "6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4",
         "expected": "sha256"
       },
       {
@@ -627,7 +1684,7 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 784,
+        "observed": 1408,
         "expected": "< 1800ms"
       },
       {
@@ -651,7 +1708,7 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 1352,
+        "observed": 1036,
         "expected": "< 1800ms"
       },
       {
@@ -693,5 +1750,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "a5cd3102f1042e7e5bac748769937fa5b53c1e9e48fe1374e119d4735f1025c8"
+  "receiptSha256": "54e066ce77ce2834866ddf72c48c88aad4dea2d0477a6c06ffca4a1a1392dd17"
 }

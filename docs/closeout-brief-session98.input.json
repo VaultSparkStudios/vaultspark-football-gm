@@ -1,0 +1,88 @@
+{
+  "session": "S98",
+  "date": "2026-09-03",
+  "repo": "Franchise Architect: Football",
+  "headline": "The first season now pays off, Trophy Road keeps real chronology, and tablet keyboard focus returns safely; one exact artifact is verified on staging, production Pages, and the backend while public launch remains independent.",
+  "items": [
+    {
+      "title": "The first completed season reaches its reckoning",
+      "projectImpact": 10,
+      "ecosystemImpact": 7,
+      "evidence": "One previous/current transition predicate keeps initial load quiet and invokes the existing review, epilogue, feedback, and reward path exactly once for the first real completion."
+    },
+    {
+      "title": "Trophy Road preserves the league's chronology",
+      "projectImpact": 8,
+      "ecosystemImpact": 7,
+      "evidence": "The streak projection now honors GameSession's year/week-descending receipts; current-year Week 1 is no longer displaced by prior-year Week 18."
+    },
+    {
+      "title": "Keyboard focus survives responsive navigation",
+      "projectImpact": 8,
+      "ecosystemImpact": 8,
+      "evidence": "One orientation-aware handler owns Arrow/Home/End behavior, preserves desktop roving focus, and returns tablet focus to the visible toggle before the drawer becomes inert."
+    },
+    {
+      "title": "One exact candidate reached every technical surface",
+      "projectImpact": 10,
+      "ecosystemImpact": 10,
+      "evidence": "Source 3cce0a51e82e78625bdfad82f1cbdb19a31c94aa and artifact 6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4 agree across visual, performance, staging 14/14, production 10/10, CI 33769176381, Pages 33770515766, and backend 33770517153."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "Observe the first genuine opted-in cohort",
+      "evidence": "Validate freshness, suppression, deletion, and abuse ceilings from real consented activity; do not manufacture a cohort."
+    },
+    {
+      "title": "Restore the stats surface only after its evidence threshold",
+      "evidence": "Return /stats to the sitemap only when the community snapshot clears the declared suppression floor."
+    },
+    {
+      "title": "Reconcile public launch independently",
+      "evidence": "Require Zoho receive/reply-as, explicit SHA-bound approval, authoritative lifecycle state, and applicable external Obelisk relying-party proof before any public-launch flip."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "Public launch remains HOLD",
+      "evidence": "Technical deployment is complete. Email delivery/reply-as, public-launch approval, lifecycle authority, external Obelisk registration, and cohort evidence remain independently unverified."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "The first release pass was correctly rejected",
+      "evidence": "The boot gate found a stale preload graph and a strict shell 1,892 bytes over budget. The graph was simplified and preloads rebuilt; the ceiling was not raised."
+    },
+    {
+      "title": "The first production pass was superseded honestly",
+      "evidence": "After the initial exact artifact was promoted, public-truth caught the status page at S96. The note was fixed and a new immutable candidate was rebuilt, staged, remeasured, and re-promoted across Pages and backend; the older deployment remains only as rollback and audit history."
+    },
+    {
+      "title": "The test boundaries remain distinct",
+      "evidence": "Canonical local Node is 1,303/1,303 across six shards; push CI is 1,298/1,298 across five configured shards; the release browser suite is 55/55."
+    },
+    {
+      "title": "Rendered proof is source-bound",
+      "evidence": "Two hundred fifty-five game states yielded 98 retained exact-candidate captures, and four status-page captures covered desktop/mobile in both themes; direct inspection found zero blocking defects."
+    },
+    {
+      "title": "Visual retention preserved proof",
+      "evidence": "Ninety-two Session 95 PNGs moved outside the three-session window only after all hashes were preserved; they remain recoverable from Git history."
+    },
+    {
+      "title": "Deployment is not public launch",
+      "evidence": "The founder authorized commit, push, and full technical deployment, not a lifecycle or launchReady flip. The independent launch holds remain explicit."
+    }
+  ],
+  "diffStat": {
+    "files": 213,
+    "insertions": 0,
+    "deletions": 0,
+    "suite": "Canonical Node 1,303/1,303; push CI 1,298/1,298; Playwright 55/55; responsive 255 game states with 98 exact-candidate captures plus four status captures; staging 14/14; production 10/10; backend exact; unified release authority verified; launchReady false."
+  },
+  "amortization": {
+    "ratio": 6.78,
+    "verdict": "excellent"
+  }
+}
