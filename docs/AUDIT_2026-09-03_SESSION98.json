@@ -182,7 +182,7 @@
       "title": "Trophy Road can award or hide streaks from stale games when its eight-game window crosses a season",
       "status": "shipped",
       "premise": "GameSession.getRecentBoxScores returns year/week-descending receipts. deriveWinStreak copies that array and sorts only by week, allowing a previous Week 18 to outrank a current Week 1.",
-      "fix": "Centralize chronological comparison using year, season phase/order, week, and stable game identity; keep ties/losses as streak breakers and bind current-year Week 1 versus prior-year Week 18 as a negative control.",
+      "fix": "Honor GameSession.getRecentBoxScores as the single year/week-descending authority; remove the destructive week-only re-sort, keep ties/losses as streak breakers, and bind current-year Week 1 versus prior-year Week 18 as a negative control.",
       "ladder": {
         "L1": {
           "effortHours": 0.5,
@@ -197,7 +197,7 @@
           "recipe": "L2 plus use the same chronology authority for exact controlled-game selection and prove deterministic behavior for duplicate/missing week metadata without inventing a result."
         }
       },
-      "executionEvidence": "Trophy streaks now use year, optional season type, week, and stable source order; any missing year/week preserves the runtime order. The reproduced 2027 Week 1 win versus 2026 Week 18 loss reports a one-game streak in the 26/26 focused suite."
+      "executionEvidence": "Trophy streaks now preserve GameSession's existing year/week-descending receipt order instead of applying a second week-only chronology. The reproduced 2027 Week 1 win versus 2026 Week 18 loss reports a one-game streak in the focused suite."
     },
     {
       "rank": 3,

@@ -2,10 +2,6 @@ function normalizedOrientation(value) {
   return value === "horizontal" ? "horizontal" : "vertical";
 }
 
-/**
- * Resolve the next roving-tab index for an ARIA tablist. Returning null means
- * the key is not owned by the tablist and must remain available to the page.
- */
 export function resolveTabKeyboardIndex({ key, currentIndex, count, orientation = "vertical" } = {}) {
   const size = Number(count);
   const index = Number(currentIndex);

@@ -4,12 +4,10 @@ import assert from "node:assert/strict";
 import {
   ACHIEVEMENTS,
   ACHIEVEMENT_PROGRESS,
-  compareGameChronologyDesc,
   deriveControlledGame,
   deriveTrophyRoad,
   deriveWinStreak,
-  evaluateAchievements,
-  sortGamesByChronologyDesc
+  evaluateAchievements
 } from "../public/lib/achievements.js";
 import { isSeasonEndTransition } from "../public/lib/seasonReviewTransition.js";
 import { checkSeasonEndReview } from "../public/lib/gameFlow.js";
@@ -49,12 +47,7 @@ test("deriveWinStreak counts consecutive wins from the most recent game", () => 
 test("deriveWinStreak keeps year chronology when a recent window crosses seasons", () => {
   const priorLoss = { ...box(18, 13, 27), year: 2026 };
   const currentWin = { ...box(1, 24, 17), year: 2027 };
-  assert.equal(deriveWinStreak([priorLoss, currentWin], TEAM), 1, "current Week 1 outranks prior Week 18");
-  assert.deepEqual(sortGamesByChronologyDesc([priorLoss, currentWin]), [currentWin, priorLoss]);
-  assert.ok(compareGameChronologyDesc(currentWin, priorLoss) < 0);
-
-  const unknown = [box(2, 21, 20), { ...box(18, 7, 30), year: 2026 }];
-  assert.deepEqual(sortGamesByChronologyDesc(unknown), unknown, "missing year preserves source order");
+  assert.equal(deriveWinStreak([currentWin, priorLoss], TEAM), 1, "runtime chronology is not re-sorted by week");
 });
 
 test("season reckoning fires only for a real play-to-reckoning transition, including year one", () => {

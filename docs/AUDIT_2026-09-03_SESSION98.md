@@ -40,5 +40,5 @@ Combined priority: **71.6**.
 | Item | Status | Evidence |
 |---|---|---|
 | first-season-reckoning-is-suppressed | shipped | Extracted one previous/current phase predicate; removed the never-initialized sentinel; initial load, ordinary refresh, regular-season to awards, postseason to offseason, and exactly-once callback controls pass in the 26/26 focused reward/browser suite. |
-| trophy-streak-loses-season-chronology | shipped | Trophy streaks now use year, optional season type, week, and stable source order; any missing year/week preserves the runtime order. The reproduced 2027 Week 1 win versus 2026 Week 18 loss reports a one-game streak in the 26/26 focused suite. |
+| trophy-streak-loses-season-chronology | shipped | Trophy streaks now preserve GameSession's existing year/week-descending receipt order instead of applying a second week-only chronology. The reproduced 2027 Week 1 win versus 2026 Week 18 loss reports a one-game streak in the focused suite. |
 | tablet-tablist-focus-enters-inert-drawer | shipped | Keyboard activation is centralized in bindMenuTabs, declared orientation owns the arrow axis, the duplicate handler is removed, desktop roving focus is preserved, and tablet selection returns focus to the visible toggle. The full real-browser suite passes 55/55 in dark/light and responsive drawer journeys. |
