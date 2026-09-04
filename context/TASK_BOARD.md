@@ -7,6 +7,16 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Observe the first real opted-in cohort and verify freshness, suppression, deletion and abuse ceilings without manufacturing activity.
 - [ ] Reconcile launch authority only from delivered/reply-as email evidence, SHA-bound founder launch approval, and the authoritative lifecycle registry.
 
+## Session 86 — Tablet touch swipe for mobile nav drawer (CANON-041)
+
+| Item | Status |
+|------|--------|
+| tablet-touch-nav-swipe — swipe right from left edge to open nav drawer; swipe left to close. Uses same `pointerdown`/`pointerup` + touch/pen pointer filter as sim-watch transport. `resolveNavSwipe` exported for direct unit testing. | ✅ Done |
+
+**Verification:** `node --test test/nav-swipe-gesture.test.js` 9/9; shard-coverage guard 3/3; `node --check public/lib/appCore.js` clean.
+
+**Carried from S62/S63:** this was the remaining CANON-041 touch-affordance item after the nav drawer shipped in S66. The "dedicated visual-evidence re-baseline" is a follow-up: the gesture logic is independently verified here; Playwright + responsive-evidence capture over the new swipe path is the natural next step for the founder to validate on device.
+
 ## Next
 
 - [ ] Restore `/stats` to sitemap.xml the moment the community snapshot clears its suppression threshold. S94 withheld it so the first page indexed about this game is not a table of zeros; that is a temporary state with a defined exit condition, not a permanent decision.
