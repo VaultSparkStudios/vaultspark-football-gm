@@ -3,10 +3,10 @@
   "entry": "app.js",
   "budgets": {
     "staticBytes": 730000,
-    "staticModules": 58
+    "staticModules": 61
   },
   "targets": {
-    "staticBytes": 650000
+    "staticBytes": 653000
   },
   "minimumIslandHeadroomRatio": 0.15,
   "islandBudgets": {

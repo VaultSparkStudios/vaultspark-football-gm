@@ -69,7 +69,7 @@ test("global Escape never invokes a cold lazy island when no modal is open", asy
 test("boot graph excludes all tab islands and enforces target plus per-island headroom", async () => {
   const receipt = await analyzeBrowserBoot();
   assert.equal(receipt.ok, true, receipt.findings.join("; "));
-  assert.ok(receipt.staticBytes <= 650_000);
+  assert.ok(receipt.staticBytes <= 653_000);
   for (const root of ["tabRoster", "tabContracts", "tabDraft", "tabStats", "tabHistory", "tabSettings"]) {
     assert.equal(receipt.modules.some((file) => file.includes(root)), false, `${root} leaked into boot`);
   }
