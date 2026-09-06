@@ -71,6 +71,7 @@ Natural-language invocation works too. Typing "start" without the slash, or sayi
 
 **v1.3 — Token-lean, AI-first (S101).** Target: ≤8K tokens consumed by session start. Raw context files are synthesized into the startup brief — they are NOT individually read at startup.
 
+0. **Sync `main` (direct-to-main repos).** Run `node scripts/start-sync.mjs` (Studio Ops) / `node ../vaultspark-studio-ops/scripts/start-sync.mjs` (siblings with the propagated copy). It classifies working-tree residue with the closeout's own receipt allowlist: **clean** → `git pull --rebase`; **receipt-only** (append-only ledgers the last closeout's push/deploy wrote after its final commit) → `git pull --rebase --autostash`, so the receipts ride this session's first commit; **substantive** → it stops and names the files — a prior session's WIP is never auto-stashed. A bare `git pull --rebase` refuses receipt residue ("You have unstaged changes") and that refusal was being resolved by hand every session (S305).
 1. **Run start-recovery preflight, then write session lock.** Before overwriting any existing lock, run `node scripts/start-recovery-preflight.mjs --json` when present. If it reports `possible-cutoff-*`, read the recovery-integrity verdict and use the arc recovery branch before mutating files. Then use the dedicated standalone script — bash `echo` silently fails for dotfiles on Windows, and ops.mjs may not be present in all project repos:
    ```
    node scripts/write-session-lock.mjs --agent <claude-code|codex|other> --trigger <founder-mission|recovery|scheduled-routine|ad-hoc>
@@ -93,6 +94,7 @@ Natural-language invocation works too. Typing "start" without the slash, or sayi
    - **Stalled-remediation resume (S288 · Studio Ops):** `node scripts/start-stalled-remediation-resume.mjs`. Doctor's `genius-batch-delivery` probe names its own remedy and, before S288, nothing ever ran it — a batch sat `in_progress` for ten hours with 24 repos' genius summaries behind it while the warning was reported to nobody who would act. This makes exactly **one** bounded attempt per session, writes an attempt receipt to `portfolio/ops/stalled-remediation-resume.ndjson`, and **leaves the doctor warning standing when the resume fails** — acting is the point, looking like it acted is the failure. No poller, no retry loop, no background process (a stopped poller is the S244 defect this replaces, and §0 window discipline forbids one).
    - **Frontier capability currency (CANON-049):** `node scripts/frontier-capability-radar.mjs --refresh-if-stale --write --json`. This checks the machine radar every start and performs a bounded official-source refresh only when the last complete scan is older than seven days. Source failure/timeout stays degraded or unknown — never touch timestamps to green it. Changed fingerprints create scored review candidates; they never auto-install, enable a beta, spend API money, or change a public promise.
    - **Bounded maintenance session lane (S301 · CANON-031):** `node scripts/run-maintenance.mjs --apply --session-due --json`. Eight registry jobs declared a cadence that **nothing could keep** — `--auto` excludes networked risk by design, the ops-daemon is not running, and every hosted cron was retired for runner cost — so their `cadenceMinutes` were undefendable bounds, not schedules. Measured at S301: `source-fingerprint-refresh` sat ten days past a seven-day cadence, and the fingerprint court's growing staleness had no visible cause. This lane admits **only** jobs the registry marks `sessionGated: true`, chosen by what the step actually does rather than by risk label: networked-read plus local-write, mutating nothing outward. It never widens `--allow-destructive`, and it never admits a job that ships, dispatches, or deploys — `fleet-url-health --ship`, `canon-enforcement --ship`, `ladder-court-dispatch`, `console-shell-deploy` and `mcp-leak-reap` stay out on purpose. A job whose court exits non-zero is recorded as a **failure with backoff**, never laundered into a success. The pattern is CANON-049's radar, which is current precisely because a session is obliged to run it.
+     **S315 — the lane is now MEASURED, because "obliged" was not enough.** Between S301 and S315 the lane worked and simply was not run: asked directly it answered `2 due · 2 runnable`, while `source-fingerprint-court` sat 7.1 days past its own 7-day promise and `.cache/maintenance-receipts.ndjson` recorded every execution with no probe reading it. A line in a protocol runs only when the agent performing the ceremony runs it — the S314 gate-liveness rule, one layer up. `node scripts/check-maintenance-lane-ran.mjs` (doctor probe `maintenance-lane-ran`) now asserts the lane executed inside this session's lock window and, when it did not, NAMES the session-gated jobs past cadence as the standing consequence. It is the CAUSE probe; `maintenance-overdue` reports the symptom. An unreadable receipt ledger is `unknown`, never a confident "skipped".
    - **Machine-change check (S157 #12):** if `.cache/machine-fingerprint.json` is absent OR its `host`+`user` differ from the current machine, run `node scripts/run-doctor.mjs --machine`. It probes toolchain, gh scopes, installed hook-version, node_modules across registry repos, and MCP config — the exact migration-readiness gaps that cost the S152 session a full recovery. Surface any ⚠ before item #1.
 
    If any tool is missing, note it and continue.
@@ -851,7 +853,9 @@ One-command operational security sweep:
 
 ### §11 — `/app-release-gate` (pre-release checklist)
 
-1. CI health check — last 5 workflow runs all green.
+1. **CI health check — one of two evidence lanes must be green.**
+   - **Hosted lane:** the last 5 workflow runs are all green; or
+   - **Budget-independent lane:** every non-green hosted run is a verified zero-step GitHub Actions budget rejection **and** `node scripts/check-release-proof.mjs --sha HEAD` passes a signed, network-isolated, exact-SHA receipt from the policy-declared independent runner. A local test run, unsigned JSON, stale receipt, different SHA, non-isolated persistent runner, or merely skipped workflow is never a substitute. This alternate lane exists so the founder's hard $5/month Actions ceiling cannot make safe releases impossible; it does not weaken test, staging, rollback, secrets, or founder-approval gates.
 2. Staging smoke test — `curl -f ${stagingUrl}/_health`.
 3. Secrets completeness — capability map for this project all READY.
 4. Branding compliance — CANON-006 check.
@@ -935,3 +939,40 @@ Read `AGENTS.md` at repo root → read this file → execute. No agent-specific 
 - **Version bump** (`<!-- session-protocol-version: -->` at top) when a change is breaking or a new command lands.
 
 *Canonical source: `vaultspark-studio-ops/docs/SESSION_PROTOCOL.md`. Propagated to all registry repos.*
+
+<!-- BEGIN GENERATED: audit-premise-vocabulary (gen-premise-vocabulary.mjs) -->
+
+#### Audit premise vocabulary — the ONLY legal adapters and operators
+
+A premise is a typed object, not a sentence. An adapter name that does not appear
+below resolves to nothing, and the premise stays `unverified` forever — which reads
+as verification and is not. Every premise needs `claim`, `adapter`, `target`,
+`operator` and `expected`.
+
+| adapter | measures | needs |
+|---|---|---|
+| `doctor-probe` | presence, outcome | `target` |
+| `doctor-probe-absent` | presence | `target` |
+| `doctor-blocking` | outcome, count | `target` |
+| `workflow-schedules` | count | `target` |
+| `tests` | outcome, count | `target` |
+| `file-exists` | presence | `target` |
+| `deploy-receipt` | presence, outcome | `target` |
+| `task-lifecycle` | state | `target` |
+| `file-content` | content | `target`, `pattern` |
+| `grep` | content | `target`, `pattern` |
+| `grep-count` | content, count | `target`, `pattern` |
+
+**Operators:** `eq` · `neq` · `lt` · `lte` · `gt` · `gte` · `contains`
+
+**Refused on purpose — a refusal is not a gap:**
+- `exit-code` — runs a command to read its exit status — a sidecar must never make the verifier execute arbitrary commands (CANON-024).
+- `cli-json` — shells out and parses the output — same CANON-024 refusal as exit-code, and CLI output is not a stable contract.
+- `command-json` — is cli-json under another name — shelling out and parsing stdout is refused under CANON-024, and renaming the adapter does not change what it does.
+- `cli-output` — is cli-json under another name — see cli-json.
+
+Presence is the adapter's job, never an operator: write `operator: "eq"` with
+`expected: true`, not `operator: "present"`. Verify before shipping the plan:
+`node scripts/check-audit-premises.mjs --audit docs/AUDIT_<date>.json`.
+
+<!-- END GENERATED: audit-premise-vocabulary -->

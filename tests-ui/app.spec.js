@@ -16,7 +16,10 @@ async function waitGameReady(page, timeout = 60_000) {
 
 async function dismissTutorialIfVisible(page) {
   const skip = page.locator("#tutSkipBtn");
-  if (await skip.isVisible({ timeout: 3_000 }).catch(() => false)) {
+  // Cold module hydration can mount onboarding after the shell first reports
+  // Ready. Wait for that bounded mount instead of racing the modal and letting
+  // its focus trap invalidate unrelated interaction journeys.
+  if (await skip.isVisible({ timeout: 10_000 }).catch(() => false)) {
     await skip.click();
     await expect(page.locator(".tutorial-overlay")).toHaveCount(0);
   }
@@ -566,4 +569,35 @@ test("switching runtime mode reloads setup state", async ({ page }) => {
   await expect(page.locator("#runtimeModeSelect")).toHaveValue("server");
   await expect(page.locator("#savesTable")).toContainText(slot, { timeout: 20_000 });
   await expect(page.locator("#resumeLatestBtn")).toBeEnabled();
+});
+test("primary franchise tablist supports keyboard activation on desktop and in the tablet drawer", async ({ page }) => {
+  await createLeagueFromSetup(page);
+
+  const overview = page.locator('[data-testid="tab-overview"]');
+  const stats = page.locator('[data-testid="tab-stats"]');
+  await overview.focus();
+  await expect(overview).toBeFocused();
+  await page.keyboard.press("ArrowDown");
+  await expect(stats).toBeFocused();
+  await expect(stats).toHaveAttribute("aria-selected", "true");
+  await expect(page.locator("#statsTab")).toHaveClass(/active/);
+
+  await page.keyboard.press("End");
+  const settings = page.locator('[data-testid="tab-settings"]');
+  await expect(settings).toBeFocused();
+  await expect(settings).toHaveAttribute("aria-selected", "true");
+  await page.keyboard.press("Home");
+  await expect(overview).toBeFocused();
+  await expect(overview).toHaveAttribute("aria-selected", "true");
+
+  await page.setViewportSize({ width: 768, height: 900 });
+  const toggle = page.locator("#mobileNavToggle");
+  await toggle.click();
+  await expect(page.locator("body")).toHaveClass(/mobile-nav-open/);
+  await expect(overview).toBeFocused();
+  await page.keyboard.press("ArrowDown");
+  await expect(stats).toHaveAttribute("aria-selected", "true");
+  await expect(page.locator("#statsTab")).toHaveClass(/active/);
+  await expect(page.locator("body")).not.toHaveClass(/mobile-nav-open/);
+  await expect(toggle).toBeFocused();
 });

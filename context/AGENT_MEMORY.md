@@ -1,4 +1,24 @@
 # Agent Memory
+## Session 98 durable patterns
+
+- A transition guard should read the previous and current domain states it is asked to compare. A second sentinel that is initialized only inside the transition path makes the first valid transition disappear.
+- When an upstream API already promises year/week-descending receipts, downstream reward code must preserve that order. Re-sorting on a partial key destroys authority at season boundaries.
+- A tablist needs one keyboard owner. Resolve keys from declared orientation, activate through the shared path, and move focus out before a responsive drawer becomes inert.
+- Boot-budget failures are architecture feedback: keep generated preloads aligned with the actual initial graph and reduce the graph instead of raising the ceiling or preloading a declared lazy island.
+
+## Session 97 durable patterns
+
+- Treat a football record as W-L-T everywhere and compute percentage as `(wins + 0.5 * ties) / games`; tie-only movement must cross persistence and return boundaries.
+- Health receipts and product activity use separate clocks. Pass `touchLastUpdated:false` for read-oriented automation and test the real command path.
+- Keep the irreversible phone commit in a sticky, opaque, theme-correct dock inside four-edge safe areas, and inspect 390px plus 430px pixels in both themes.
+- Do not assume an unsupported `--help` is read-only. Verify the script's pure-help branch before invoking it, especially for cross-repo utilities.
+
+## Session 96 durable patterns
+
+- Rendered-state evidence must poll bounded geometry before capture. A fixed sleep can pass locally and still freeze mid-animation under throttled Linux CI.
+- Aggregate analytics page loads prove that reporting works; they do not prove people, sessions, engagement, retention, or a cohort.
+- Exact-artifact refusal should remain fail-closed while printing expected/observed identities and first-file deltas from a deterministic per-file ledger.
+- Generated orientation needs negative controls for inline schemas, invalid dates, and stale caches; a correct-looking total can coexist with corrupt category rows.
 
 ## Session 87 durable patterns
 

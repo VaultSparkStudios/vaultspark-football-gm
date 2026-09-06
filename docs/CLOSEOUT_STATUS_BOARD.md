@@ -1,27 +1,28 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.1 -->
-<!-- generated-at: 2026-08-26 (Session 95 closeout) -->
+<!-- generated-at: 2026-09-03 (Session 98 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S95 ══════╗
-║  Date: 2026-08-26  ·  SIL: 993/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S98 ══════╗
+║  Date: 2026-09-03  ·  SIL: 994/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
+║  Autopilot: unknown (S98) — receipt ledger unreadable, NOT chec  ║
 ║  Live:  🌐 LIVE  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED ════════════════════════════════════════════════╗
-║  ✓ Session 95 completed the full `/arc`; all seven ranked audit  ║
-║  ✓ Exact candidate `92e4190a4221383c8352ea6321d65528cb449e74` i  ║
-║  ✓ Production workflow 32933281222 is green. Stable staging pas  ║
-║  ✓ Unified release authority is `verified`; `launchReady` remai  ║
-║  ✓ Canonical Node receipt is 1,280/1,280; Playwright is 54/54;   ║
+║  ✓ All three S98 audit items are shipped; `docs/AUDIT_2026-09-0  ║
+║  ✓ Exact candidate `3cce0a51e82e78625bdfad82f1cbdb19a31c94aa` i  ║
+║  ✓ CI workflow 33769176381, automatic Pages workflow 3376917636  ║
+║  ✓ Stable staging passes 14/14 at deployment `a835d039-bd18-408  ║
+║  ✓ Canonical Node is 1,303/1,303; Playwright is 55/55; boot is   ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 993/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 994/1000 ═══════════════════════════════════════╗
 ║    Dev Health         100  ██████████                            ║
 ║    Alignment          100  ██████████                            ║
 ║    Momentum           100  ██████████                            ║
-║    Engagement         100  ██████████                            ║
-║    Process Qual       94   █████████░                            ║
+║    Engagement         98   ██████████                            ║
+║    Process Qual       97   ██████████                            ║
 ║    Coherence          99   ██████████                            ║
 ║    Security           100  ██████████                            ║
 ║    Ecosystem          100  ██████████                            ║
@@ -33,7 +34,7 @@
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
+║  · context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  ✓ context/TRUTH_AUDIT.md                                        ║
@@ -41,7 +42,7 @@
 ║  · agent memory (~/.claude/projects/<slug>/memory/)              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 24 files  ·  M:17 A:0 D:0 ?:7                          ║
+║  Changes: 220 files  ·  M:18 A:0 D:92 ?:110                      ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,11 +53,11 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1280/1280                                        ║
+║  Tests:         1303/1303                                        ║
 ║  Validation:    unknown                                          ║
-║  IGNIS:         15d ago                                          ║
+║  IGNIS:         24d ago                                          ║
 ║  Truth:         green                                            ║
-║  Sanitization:  17d ago                                          ║
+║  Sanitization:  2d ago                                           ║
 ║  shells:        unknown · missing/stale enumeration              ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗

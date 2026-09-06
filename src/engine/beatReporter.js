@@ -7,6 +7,7 @@
  */
 
 import { getRivalGmPersona, recordRivalGmMemory } from "./rivalGmPersona.js";
+import { formatRecord } from "../stats/teamRecord.js";
 
 const MAX_NEWS_LOG = 50;
 
@@ -281,6 +282,7 @@ export function reportStreaks(league, year, week) {
   for (const team of league.teams) {
     const wins = team.season?.wins || 0;
     const losses = team.season?.losses || 0;
+    const record = formatRecord(team.season);
     const streak = team.season?.streak || 0; // positive = win streak
     if (streak >= 5) {
       push(league, {
@@ -305,7 +307,7 @@ export function reportStreaks(league, year, week) {
         type: "standings",
         week,
         year,
-        headline: `${team.id} (${wins}-${losses}) is closing in on a playoff berth with a strong late-season push`,
+        headline: `${team.id} (${record}) is closing in on a playoff berth with a strong late-season push`,
         teamIds: [team.id]
       });
     }

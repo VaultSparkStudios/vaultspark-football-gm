@@ -46,7 +46,7 @@ test("exhausted genius authority remains an explicit receipt", () => {
   assert.equal(summary.reason, "No open ranked items.");
 });
 
-test("missing ignored cache falls back to committed audit authority", () => {
+test("missing ignored cache falls back to the newest committed audit authority", () => {
   assert.deepEqual(describeGeniusCache(null), {
     status: "unknown",
     source: "latest audit",
@@ -56,15 +56,16 @@ test("missing ignored cache falls back to committed audit authority", () => {
     reason: null
   });
   const authority = readCommittedGeniusAuthority(root);
-  assert.equal(authority.status, "exhausted");
-  assert.equal(authority.items.length, 0);
-  assert.match(authority.source, /^AUDIT_[0-9]{4}-[0-9]{2}-[0-9]{2}[.]json$/);
+  assert.match(authority.source, /^AUDIT_[0-9]{4}-[0-9]{2}-[0-9]{2}(?:_SESSION[0-9]+)?[.]json$/);
   const selectedAudit = JSON.parse(readFileSync(resolve(root, "docs", authority.source), "utf8"));
+  const isClosed = (item) => ["shipped", "done", "complete", "completed"].includes(String(item.status).toLowerCase());
+  const expectedOpen = selectedAudit.items.filter((item) => !isClosed(item));
   const expectedClosed = selectedAudit.items
-    .filter((item) => ["shipped", "done", "complete", "completed"].includes(String(item.status).toLowerCase()))
+    .filter(isClosed)
     .map((item) => item.slug)
     .sort();
-  assert.ok(expectedClosed.length > 0);
+  assert.equal(authority.status, expectedOpen.length ? "open" : "exhausted");
+  assert.deepEqual(authority.items.map((item) => item.slug), expectedOpen.map((item) => item.slug));
   assert.deepEqual([...authority.closed].sort(), expectedClosed);
 });
 

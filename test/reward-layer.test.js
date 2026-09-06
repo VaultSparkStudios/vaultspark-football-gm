@@ -9,6 +9,8 @@ import {
   deriveWinStreak,
   evaluateAchievements
 } from "../public/lib/achievements.js";
+import { isSeasonEndTransition } from "../public/lib/seasonReviewTransition.js";
+import { checkSeasonEndReview } from "../public/lib/gameFlow.js";
 import {
   buildWeekRecapModel,
   buildDraftPickVerdict,
@@ -40,6 +42,29 @@ test("deriveWinStreak counts consecutive wins from the most recent game", () => 
   assert.equal(deriveWinStreak([box(3, 20, 10), box(2, 24, 14), box(1, 7, 30)], TEAM), 2);
   assert.equal(deriveWinStreak([box(2, 7, 30), box(1, 40, 0)], TEAM), 0);
   assert.equal(deriveWinStreak([], TEAM), 0);
+});
+
+test("deriveWinStreak keeps year chronology when a recent window crosses seasons", () => {
+  const priorLoss = { ...box(18, 13, 27), year: 2026 };
+  const currentWin = { ...box(1, 24, 17), year: 2027 };
+  assert.equal(deriveWinStreak([currentWin, priorLoss], TEAM), 1, "runtime chronology is not re-sorted by week");
+});
+
+test("season reckoning fires only for a real play-to-reckoning transition, including year one", () => {
+  assert.equal(isSeasonEndTransition(null, { phase: "offseason" }), false, "initial load stays quiet");
+  assert.equal(isSeasonEndTransition({ phase: "regular-season" }, { phase: "regular-season" }), false);
+  assert.equal(isSeasonEndTransition({ phase: "regular-season" }, { phase: "season-awards" }), true);
+  assert.equal(isSeasonEndTransition({ phase: "postseason" }, { phase: "offseason" }), true);
+  assert.equal(isSeasonEndTransition({ phase: "offseason" }, { phase: "regular-season" }), false);
+
+  let calls = 0;
+  const onSeasonEnd = () => { calls += 1; };
+  assert.equal(checkSeasonEndReview(null, { current: { phase: "offseason" }, onSeasonEnd }), false);
+  assert.equal(checkSeasonEndReview(
+    { phase: "regular-season" },
+    { current: { phase: "season-awards" }, onSeasonEnd }
+  ), true);
+  assert.equal(calls, 1, "the first valid transition commits one reckoning");
 });
 
 test("weekly achievements unlock only from receipted results and never twice", () => {

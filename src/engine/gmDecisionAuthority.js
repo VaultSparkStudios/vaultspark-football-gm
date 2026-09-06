@@ -1,5 +1,6 @@
 import { getCapAlerts } from "./capAlerts.js";
 import { gmDecisionSurface } from "../../public/lib/gameplayNavigation.js";
+import { formatRecord } from "../stats/teamRecord.js";
 
 export const GM_DECISION_CATALOG = Object.freeze({
   "trade-deadline": Object.freeze({
@@ -226,7 +227,7 @@ export function generateGmDecisions(state = {}, { ledger = [] } = {}) {
     candidates.push(decisionRecord(
       state,
       "trade-deadline",
-      `Trade deadline closes end of Week 11 (current: Week ${week}). Record: ${myRow.wins || 0}-${myRow.losses || 0}. What's your priority?`,
+      `Trade deadline closes end of Week 11 (current: Week ${week}). Record: ${formatRecord(myRow)}. What's your priority?`,
       `deadline-${state.currentYear || state.startYear || "unknown"}`
     ));
   }

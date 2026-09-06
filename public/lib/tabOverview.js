@@ -15,6 +15,7 @@ import { renderPressRoomPanel } from "./pressRoomPanel.js";
 import { buildCoGmBriefingPacket } from "./coGmBriefing.js";
 import { deriveMarqueeBadge } from "./marqueeBadge.js";
 import { renderPredictionPanel } from "./predictionPanel.js";
+import { findTeamStanding, formatTeamRecord, teamRecordWinPct } from "./teamRecord.js";
 
 export function renderOverview() {
   const d = state.dashboard;
@@ -517,8 +518,8 @@ export function renderTradeDeadlineAlert() {
   const roleEl = document.getElementById("tradeDeadlineBuyerSeller");
   const standings = d.latestStandings || [];
   const team = d.controlledTeam || {};
-  const myRow = standings.find((r) => r.team === (team.abbrev || team.teamId));
-  const winPct = myRow ? (myRow.wins || 0) / Math.max(1, (myRow.wins || 0) + (myRow.losses || 0)) : 0.5;
+  const myRow = findTeamStanding(standings, team);
+  const winPct = teamRecordWinPct(myRow);
   const weeksLeft = 18 - week;
   const role = winPct >= 0.55 ? "BUYER" : winPct <= 0.4 ? "SELLER" : "NEUTRAL";
   const roleColors = { BUYER: "var(--success)", SELLER: "#ff8f8f", NEUTRAL: "var(--info)" };
@@ -547,9 +548,7 @@ export function renderOverviewSpotlight() {
   const topNeed = (d.rosterNeeds || [])
     .slice()
     .sort((a, b) => a.delta - b.delta || a.position.localeCompare(b.position))[0];
-  const recordLabel = standingsRow
-    ? `${standingsRow.wins}-${standingsRow.losses}${standingsRow.ties ? `-${standingsRow.ties}` : ""}`
-    : "0-0";
+  const recordLabel = formatTeamRecord(standingsRow, { separator: "-", empty: "0-0" });
   const teamLabel = [controlledTeam.city, controlledTeam.nickname].filter(Boolean).join(" ") || controlledTeam.name || controlledTeam.id || "-";
   const schemeFallback = typeof controlledTeam.scheme === "string" ? controlledTeam.scheme : "";
   const schemeLabel = [scheme.offense, scheme.defense].filter(Boolean).join(" / ") || schemeFallback || "Balanced";
@@ -1226,8 +1225,8 @@ export function renderSeasonPreviewPanel() {
   if (!grid) return;
   const team = d.controlledTeam || {};
   const standings = d.latestStandings || [];
-  const myRow = standings.find((r) => r.team === (team.abbrev || team.teamId)) || {};
-  const lastRecord = myRow.wins != null ? `${myRow.wins}–${myRow.losses}` : "—";
+  const myRow = findTeamStanding(standings, team);
+  const lastRecord = formatTeamRecord(myRow);
   const ovr = team.overallRating ?? "—";
   const cap = d.cap?.capSpace != null ? fmtMoney(d.cap.capSpace) : "—";
   const scheme = team.schemeIdentity || {};

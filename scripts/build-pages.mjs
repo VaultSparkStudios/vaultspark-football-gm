@@ -10,7 +10,7 @@ import { assertPublicFooterContract } from "./lib/public-footer.mjs";
 import { assertPublicTruth } from "./check-public-truth.mjs";
 import { emitEdgeSecurityPolicy } from "./lib/edge-security-policy.mjs";
 import { emitServiceWorker, SW_REGISTRATION_SNIPPET } from "./lib/service-worker.mjs";
-import { fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
+import { compactArtifactFingerprint, fingerprintArtifactDirectory } from "./lib/artifact-fingerprint.mjs";
 import { staticGraphFor } from "./check-browser-boot-budget.mjs";
 import { replaceSimulationAnchor, SIMULATION_ANCHOR_START } from "./lib/simulation-methodology.mjs";
 // CANON-016: never the raw module — safe-spawn forces windowsHide so a build
@@ -479,7 +479,7 @@ async function emitDeployEvidence(edgePolicy, artifactFingerprint) {
     status: "ok",
     service: identity.slug,
     sourceRevision,
-    artifactFingerprint,
+    artifactFingerprint: compactArtifactFingerprint(artifactFingerprint),
     styleAsset: hashedStyleHref,
     communityStatsAsset: hashedCommunityStatsSrc,
     edgePolicyFingerprint: edgePolicy.policyFingerprint,

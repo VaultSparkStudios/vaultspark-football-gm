@@ -17,6 +17,8 @@ import { renderCoachingMarketPanel } from "./coachingMarketPanel.js";
 import { recordReturnBoundary } from "./returnDigest.js";
 import { recordAchievementEvent, renderTrophyRoad } from "./achievements.js";
 import { resolveDashboardPredictions } from "./spreadPredictions.js";
+import { findTeamStanding, formatTeamRecord, normalizeTeamRecord } from "./teamRecord.js";
+import { isSeasonEndTransition } from "./seasonReviewTransition.js";
 
 const hydrationAuthority = createAuthorityEpochTracker();
 
@@ -1119,18 +1121,13 @@ export async function advanceSeasonSequential({ startYear: requestedStartYear = 
   }
 }
 
-export function checkSeasonEndReview(previous) {
-  const curr = state.dashboard;
-  if (!curr || !previous) return;
-  // Trigger when transitioning from postseason → offseason
-  const justEndedSeason =
-    (previous.phase === "postseason" || previous.phase === "regular-season") &&
-    (curr.phase === "offseason" || curr.phase === "season-awards");
-  if (!justEndedSeason) return;
-  // Don't fire on initial load
-  if (state.prevDashboardPhase === null) { state.prevDashboardPhase = curr.phase; return; }
-  state.prevDashboardPhase = curr.phase;
-  showSeasonEndReview();
+export function checkSeasonEndReview(previous, {
+  current = state.dashboard,
+  onSeasonEnd = showSeasonEndReview
+} = {}) {
+  if (!isSeasonEndTransition(previous, current)) return false;
+  onSeasonEnd();
+  return true;
 }
 
 export function showSeasonEndReview() {
@@ -1138,12 +1135,14 @@ export function showSeasonEndReview() {
   if (!d) return;
   const team = d.controlledTeam || {};
   const standings = d.latestStandings || [];
-  const myRow = standings.find((r) => r.team === (team.abbrev || team.teamId)) || {};
-  const record = myRow.wins != null ? `${myRow.wins}–${myRow.losses}` : "—";
-  const rank = standings.findIndex((r) => r.team === (team.abbrev || team.teamId)) + 1;
+  const myRow = findTeamStanding(standings, team);
+  const record = formatTeamRecord(myRow);
+  const rank = myRow ? standings.indexOf(myRow) + 1 : 0;
+  const seasonRecord = normalizeTeamRecord(myRow);
   recordAchievementEvent("season-complete", {
-    wins: Number(myRow.wins) || 0,
-    losses: Number(myRow.losses) || 0,
+    wins: seasonRecord.wins,
+    losses: seasonRecord.losses,
+    ties: seasonRecord.ties,
     rank: rank > 0 ? rank : null
   });
   const legacy = d.gmLegacy;

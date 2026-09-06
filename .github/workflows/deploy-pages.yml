@@ -155,7 +155,7 @@ jobs:
           [[ "$CANDIDATE_REVISION" =~ ^[a-f0-9]{40}$ ]]
           [[ "$STAGING_ARTIFACT_DIGEST" =~ ^[a-f0-9]{64}$ ]]
           test "$(git rev-parse HEAD)" = "$CANDIDATE_REVISION"
-          node -e 'const m=require("./static/deploy-manifest.json"); if(m.sourceRevision!==process.env.CANDIDATE_REVISION||m.artifactFingerprint?.digest!==process.env.STAGING_ARTIFACT_DIGEST) process.exit(2)'
+          node scripts/verify-promotion-bind.mjs --manifest static/deploy-manifest.json --staging-url https://staging.playfranchisearchitect.com
 
       - name: Verify stable staging serves the exact promotion candidate
         if: ${{ github.event_name == 'workflow_dispatch' }}

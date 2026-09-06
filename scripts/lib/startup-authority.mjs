@@ -32,9 +32,12 @@ export function readCommittedGeniusAuthority(root) {
   let names = [];
   try {
     names = fs.readdirSync(docsDir)
-      .filter((name) => /^AUDIT_\d{4}-\d{2}-\d{2}\.json$/i.test(name))
-      .sort()
-      .reverse();
+      .filter((name) => /^AUDIT_\d{4}-\d{2}-\d{2}(?:_SESSION\d+)?\.json$/i.test(name))
+      .sort((a, b) => {
+        const session = (name) => Number(name.match(/_SESSION(\d+)/i)?.[1] || 0);
+        const date = (name) => name.match(/AUDIT_(\d{4}-\d{2}-\d{2})/i)?.[1] || "";
+        return date(b).localeCompare(date(a)) || session(b) - session(a);
+      });
   } catch {
     return {};
   }

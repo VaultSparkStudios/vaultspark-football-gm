@@ -47,7 +47,14 @@ test("a production receipt-only descendant keeps one deployable authority", () =
   const publicationDelta = evaluatePublicationDelta({
     from: revision,
     to: publicationRevision,
-    changedFiles: ["docs/visual-qa/LATEST.json", "context/PROJECT_STATUS.json", "logs/WORK_LOG.md", "scripts/write-visual-qa-receipt.mjs"]
+    changedFiles: [
+      "docs/visual-qa/LATEST.json",
+      "context/PROJECT_STATUS.json",
+      "logs/WORK_LOG.md",
+      "portfolio/BLOCKER_DISCIPLINE_LOG.ndjson",
+      "reports/s98-production.json",
+      "scripts/write-visual-qa-receipt.mjs"
+    ]
   });
   const authority = deriveReleaseAuthority({
     stagingReport: report,
@@ -68,6 +75,8 @@ test("Pages production publication is explicit and bound to exact stable-staging
   assert.match(workflow, /staging_artifact_digest:[\s\S]*required: true/);
   assert.match(workflow, /SOURCE_REVISION: \$\{\{ github\.event_name == 'workflow_dispatch' && inputs\.candidate_revision \|\| github\.sha \}\}/);
   assert.match(workflow, /Bind production promotion to the exact staged candidate[\s\S]*git rev-parse HEAD/);
+  assert.match(workflow, /verify-promotion-bind\.mjs --manifest static\/deploy-manifest\.json --staging-url https:\/\/staging\.playfranchisearchitect\.com/);
+  assert.doesNotMatch(workflow, /process\.exit\(2\)/);
   assert.match(workflow, /Verify stable staging serves the exact promotion candidate[\s\S]*verify-staging-receipt\.mjs/);
   assert.match(workflow, /name: Publish to Cloudflare Pages \(live origin\)\s+if: \$\{\{ github\.event_name == 'workflow_dispatch' \}\}/);
   assert.match(workflow, /name: Verify the live origin serves this build\s+if: \$\{\{ github\.event_name == 'workflow_dispatch' \}\}/);

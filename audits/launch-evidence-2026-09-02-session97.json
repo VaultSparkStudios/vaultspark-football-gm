@@ -1,0 +1,182 @@
+{
+  "schemaVersion": "1.0",
+  "generatedBy": "scripts/launch-evidence-report.mjs",
+  "checkedAt": "2026-09-02T07:45:28.627Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "summary": {
+    "status": "blocked",
+    "routesOk": true,
+    "emailForwardingVerified": false,
+    "originEvidenceVerified": true,
+    "blocker": "On-domain email forwarding/copying is unverified."
+  },
+  "routeChecks": [
+    {
+      "route": "/",
+      "url": "https://playfranchisearchitect.com/",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/",
+          "statusCode": 200
+        }
+      ],
+      "headers": {
+        "content-type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-frame-options": "DENY",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      }
+    },
+    {
+      "route": "/game.html",
+      "url": "https://playfranchisearchitect.com/game.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /game → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/game.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/game",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/contact.html",
+      "url": "https://playfranchisearchitect.com/contact.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /contact → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/contact.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/contact",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/privacy.html",
+      "url": "https://playfranchisearchitect.com/privacy.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /privacy → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/privacy.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/privacy",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/terms.html",
+      "url": "https://playfranchisearchitect.com/terms.html",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 308 → /terms → HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/terms.html",
+          "statusCode": 308
+        },
+        {
+          "url": "https://playfranchisearchitect.com/terms",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/agents.json",
+      "url": "https://playfranchisearchitect.com/agents.json",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/agents.json",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/.well-known/llms.txt",
+      "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/.well-known/llms.txt",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/sitemap.xml",
+      "url": "https://playfranchisearchitect.com/sitemap.xml",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/sitemap.xml",
+          "statusCode": 200
+        }
+      ]
+    },
+    {
+      "route": "/_health",
+      "url": "https://playfranchisearchitect.com/_health",
+      "ok": true,
+      "statusCode": 200,
+      "detail": "HTTP 200",
+      "chain": [
+        {
+          "url": "https://playfranchisearchitect.com/_health",
+          "statusCode": 200
+        }
+      ],
+      "headers": {
+        "content-type": "application/octet-stream",
+        "server": "cloudflare",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-frame-options": "DENY",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin"
+      },
+      "body": "{\n  \"status\": \"ok\",\n  \"service\": \"franchise-architect-football\",\n  \"sourceRevision\": \"95597906033ced89469cd2c268a661d5a3b2b4a8\",\n  \"artifactFingerprint\": {\n    \"algorithm\": \"sha256\",\n    \"digest\": \"47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89\",\n    \"files\": 209,\n    \"exclusions\": [\n      \"_health\",\n      \"deploy-manifest.json\",\n      \"edge-policy-receipt.json\"\n    ]\n  },\n  \"styleAsset\": \"styles.8b9fcd5fa4.css\",\n  \"communityStatsAsset\": \"community-stats.39fac4ebf0.js\",\n  \"edgePolicyFingerprint\": \"sha256:949f7228f5e773597ce57077c484adaeb4cc639122142ea4d3ac6217e777f517\",\n  \"edgePolicyAppliedToHostedOrigin\": false,\n  \"generatedAt\": \"2026-09-02T06:25:24.377Z\",\n  \"launchReady\": false,\n  \"launchNote\": \"Runtime health is green; launch readiness still requires separate contact-channel, edge-header, deploy-currency, and release-approval evidence.\"\n}\n"
+    }
+  ],
+  "emailForwarding": {
+    "status": "unverified",
+    "address": "football@playfranchisearchitect.com",
+    "detail": "No delivery/forwarding evidence supplied. Do not mark SPARKED from route checks alone."
+  },
+  "originEvidence": {
+    "required": true,
+    "healthReceiptValid": true,
+    "securityHeaders": {
+      "strictTransportSecurity": true,
+      "frameProtection": true,
+      "contentSecurityPolicy": true
+    },
+    "status": "verified"
+  }
+}

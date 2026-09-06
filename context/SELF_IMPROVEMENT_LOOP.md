@@ -1,10 +1,78 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 95 closed at 993 / 1000 SIL v3.0. Seven reproduced audit findings shipped through an exact staging-to-production promotion: postseason now preserves the weekly decision beat, owner capital reaches a gated long-horizon equilibrium, cloud-save security claims match their mechanism, deep realism retains partial evidence, and browser-red candidates cannot publish. The first production attempt correctly stopped on a digest mismatch; tracing it to shallow Git history made sitemap identity deterministic rather than weakening the bind. Canonical receipt 1,280 / 1,280, Playwright 54 / 54, final release authority verified at `92e4190…` / `ca66c921…`.
+Rolling status: Session 98 closed at 994 / 1000 SIL v3.0. Three reproduced findings shipped: the first completed season reaches its existing payoff exactly once, Trophy Road preserves authoritative cross-season chronology, and the primary tablist has one focus-safe orientation-aware keyboard contract. Canonical Node is 1,303 / 1,303; exact-SHA CI and the 55-case browser gate are green; 255 responsive states retain 98 reviewed captures; and staging, hosted performance, production Pages and backend deployment bind exact source `85a9097…` / artifact `854f371e…`. Engagement remains evidence-limited without a genuine opted-in cohort; Process is scored down for the first-pass stale preload and 1,892-byte shell overrun; Cross-Repo Coherence retains the registry/local lifecycle drift.
 
-Previously — Session 94 closed at 991 / 1000 after a live-origin audit found the site's own Content-Security-Policy refusing its injected analytics beacon and moved live economy controls into the Boardroom.
+Previously — Session 97 closed at 982 / 1000 after three reproduced findings and an exact immutable staging-to-production promotion.
 <!-- rolling-status-end -->
+
+## 2026-09-03 — Session 98 The First Season Finally Pays Off
+
+SIL v3.0: **994 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 98, Process Quality 97, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+**What changed the outcome.** The audit traced three boundaries where one authority had been shadowed by another: a domain transition was discarded by a sentinel that could not be initialized in time, runtime chronology was overwritten by a partial-key UI sort, and shared tab activation was followed by a competing focus owner. Removing those shadow authorities lets the product's existing season payoff, trophy logic and responsive navigation behave as designed.
+
+**What went well.**
+
+- All three ranked premises were reproduced before implementation and shipped at the chosen quality depth; six tempting but unsupported alternatives were recorded as phantoms rather than padded into the plan.
+- Initial load, ordinary refresh, regular-season completion, postseason completion and exactly-once callback behavior are direct negative controls around the first-season fix.
+- The real-browser suite covers desktop roving focus and tablet drawer focus return; the rendered-pixel loop covers both themes across desktop, mobile and tablet with zero blocking defects.
+- Exact source and artifact identity survived local build, CI, stable staging, hosted performance, production Pages and backend deployment.
+
+**What cost the session, and why Process Quality is 97.** The first canonical release pass found both a stale generated preload list and a strict initial-shell total 1,892 bytes over its 650 KB release ceiling. The correction simplified the architecture and rebuilt preloads instead of raising the budget, but checking the boot graph before the first full canonical run would have avoided one release cycle.
+
+**Evidence boundary, and why Engagement is 98.** The changes restore visible payoff and keyboard reachability, but no genuine opted-in cohort exists. The score reflects design/runtime evidence only; it does not claim comprehension, return behavior, fun or retention.
+
+**Committed SIL follow-ups.**
+
+- [SIL] A transition needs one authority derived from previous/current domain state; never add a sentinel whose initialization depends on the transition it gates.
+- [SIL] Preserve an upstream chronology contract in projections. If a consumer must reorder, its comparator must carry every ordering dimension, not a convenient partial key.
+- [SIL] Responsive navigation needs one keyboard and focus owner; if activation inerts its source subtree, focus must leave that subtree before the interaction completes.
+- [SIL] Run boot graph and preload currency checks before the long canonical receipt whenever a UI module boundary changes.
+## 2026-09-02 — Session 97 Tie-Complete Truth and the Reachable Commit
+
+SIL v3.0: **982 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, Engagement 98, Process Quality 91, Cross-Repo Coherence 93, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+**What changed the outcome.** The audit followed record truth through every consumer rather than repairing one string. The simulator already modelled ties, but record displays, return boundaries, achievements, season judgement and multiple engine decisions silently collapsed them. One browser authority and one engine helper now make W-L-T and half-win semantics explicit everywhere reproduced.
+
+**What went well.**
+
+- All three ranked premises were reproduced and shipped at L3, with a tie-only delta and 5-0-1 negative control.
+- The canonical suite passed 1,300/1,300; exact-SHA CI passed 1,295/1,295 plus 54/54 browser cases.
+- The rendered-pixel loop covered 255 states and retained 98 hash-bound dark/light desktop/tablet/mobile captures; direct 390px and 430px inspection found the sticky action dock readable and unobscured.
+- Stable staging, production, visual and performance receipts agree on one exact source/artifact identity.
+
+**What cost the session, and why Process Quality is 91 and Cross-Repo Coherence is 93.** A command invoked only to inspect usage—`ignis-rescore-touched --help`—did not implement a pure help path and refreshed generated Studio Ops outputs. The sibling tree already carried concurrent changes, so attempting a blanket revert would have risked destroying work that was not ours. No manual sibling edit or commit followed; the incident was sent through Ark. The lesson is operational: never assume `--help` is read-only unless the script advertises and gates it.
+
+**Committed SIL follow-ups.**
+
+- [SIL] Football record truth is one domain contract: format W-L-T, compute ties as half a win, and make tie-only deltas observable from one authority rather than scattered string arithmetic.
+- [SIL] Health-receipt freshness and substantive project activity are different clocks. Automated doctor writes must opt out of touching `lastUpdated`, and the real command path must be the regression target.
+- [SIL] A phone decision loop needs its irreversible commit reachable after the longest pressure stack and outside every safe-area inset; inspect the actual pixels in both themes.
+- [SIL] Treat an unknown script's `--help` as potentially executable until its source or documented pure-help contract proves otherwise.
+- [SIL] A route fixture that advances time must honor every valid checkpoint the engine can surface; resolve a pending General Manager decision through its real command contract instead of assuming the calendar always advances.
+
+## 2026-08-26 — Session 96 Rendered Settlement and Exact Evidence
+
+SIL v3.0: **989 / 1000** (Dev Health 100, Creative Alignment 99, Momentum 100, Engagement 98, Process Quality 94, Cross-Repo Coherence 99, Security Posture 100, Ecosystem Integration 99, Capital Efficiency 100, Automation Coverage 100).
+
+**What changed the outcome.** Evidence was treated as a rendered-state contract. The first pixel loop exposed a global Escape handler waking cold lazy islands; manual inspection then exposed mid-transition drawer captures; Linux CI finally proved a fixed wait was not portable by catching geometry at −1.816px. The harness now polls bounded rendered geometry before capture, and the final exact candidate passed locally and in CI.
+
+**What went well.**
+
+- All four ranked premises were reproduced and shipped at L3.
+- Aggregate analytics is deliberately narrow: seven page loads prove reporting, not seven people, sessions, engagement, retention, or a cohort.
+- Release diagnostics now name both revisions/digests and the first differing paths while preserving fail-closed behavior.
+- Staging, production, visual, and hosted-performance receipts agree on one SHA and artifact.
+
+**What cost the session, and why Process Quality is 94.** Two candidate iterations were needed after the first implementation: rendered pixels found the cold-island Escape fault, and Linux CI invalidated the 320ms animation wait. Both were root-fixed and regression-covered, but the initial evidence harness encoded time rather than state.
+
+**Committed SIL follow-ups.**
+
+- [SIL] Rendered state is proven by settled geometry and inspected pixels, not a class transition or wall-clock sleep; CI can throttle animation frames.
+- [SIL] Aggregate analytics confirms reporting only; page loads do not prove users, sessions, engagement, or retention.
+- [SIL] A promotion verifier should emit expected/observed identities and first file deltas before refusing.
+- [SIL] Test generated orientation against modern inline schema, invalid dates, and stale caches; a plausible total can coexist with corrupt category details.
 
 ## 2026-08-26 — Session 95 One Decision Beat Per Round, One Artifact Through Production
 

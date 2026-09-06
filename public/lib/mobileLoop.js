@@ -40,6 +40,7 @@
 import { buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "./franchiseCommandCenter.js";
 import { deriveTrophyRoad, readEarnedAchievements, renderTrophyRoad } from "./achievements.js";
 import { buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
+import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
 
 const MOBILE_PREF_KEY = "vsfgm_mobile_loop";
 
@@ -92,8 +93,8 @@ export function renderMobileOverlay(state, onAdvanceWeek) {
 
   const team        = d.controlledTeam || {};
   const standings   = d.latestStandings || [];
-  const myRow       = standings.find((r) => r.team === (team.abbrev || team.teamId)) || {};
-  const record      = `${myRow.wins || 0}–${myRow.losses || 0}`;
+  const myRow       = findTeamStanding(standings, team) || {};
+  const record      = formatTeamRecord(myRow);
   const capSpace    = d.cap?.capSpace ?? null;
   const phase       = d.phase || "";
   const newsHead    = (state.newsRows || [])[0]?.headline || "";

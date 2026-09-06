@@ -16,6 +16,7 @@
  */
 
 import { orientWinnerFirst } from "./scoreline.js";
+import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
 
 function esc(str) {
   if (str == null) return "";
@@ -38,9 +39,8 @@ export function generateFranchiseNewsletter(state) {
   const team       = d.controlledTeam || {};
   const teamId     = d.controlledTeamId || "—";
   const standings  = d.latestStandings || [];
-  const myRow      = standings.find((r) => r.team === teamId) || {};
-  const wins       = myRow.wins ?? "—";
-  const losses     = myRow.losses ?? "—";
+  const myRow      = findTeamStanding(standings, { ...team, id: teamId });
+  const record     = formatTeamRecord(myRow);
   const champ      = d.lastChampion || d.champions?.slice(-1)[0] || null;
   const champTeam  = champ?.championTeamId || champ || "—";
   const champScore = orientWinnerFirst(champ?.score || "");
@@ -172,7 +172,7 @@ export function generateFranchiseNewsletter(state) {
   </div>
 
   <div class="record-strip">
-    <div class="record-cell"><div class="rc-val">${esc(String(wins))}–${esc(String(losses))}</div><div class="rc-label">Record</div></div>
+    <div class="record-cell"><div class="rc-val">${esc(record)}</div><div class="rc-label">Record</div></div>
     <div class="record-cell"><div class="rc-val">${esc(String(ovr))}</div><div class="rc-label">Team OVR</div></div>
     <div class="record-cell"><div class="rc-val">${esc(capSpace)}</div><div class="rc-label">Cap Space</div></div>
     <div class="record-cell"><div class="rc-val">${esc(mvp)}</div><div class="rc-label">League MVP</div></div>

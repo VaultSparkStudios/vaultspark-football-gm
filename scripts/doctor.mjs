@@ -62,7 +62,7 @@ if (args.has("--update-json")) {
       warning,
       checks: items
     }
-  }));
+  }), { touchLastUpdated: false });
 }
 if (!args.has("--quiet")) console.log(JSON.stringify(output, null, 2));
 if (blockingFailing) process.exitCode = 2;

@@ -1,39 +1,46 @@
 <!-- generated-by: scripts/compact-handoff.mjs v3.1 -->
-<!-- source-hash: a92a860d5645 -->
-<!-- generated-at: 2026-08-25T19:05:32.472Z -->
+<!-- source-hash: d766da87d44a -->
+<!-- generated-at: 2026-09-03T15:39:35.488Z -->
 
 # LATEST_HANDOFF (compact)
 
-SESSION 94 → 95 HANDOFF SUMMARY
+# Handoff Summary — Session 98 → 99
 
-Status
-- SIL v3.0: 991/1000. Canonical receipt 1,266/1,266, direct exit 0, all six shards.
-- Public launch: HOLD, launchReady false.
+## Session
+- S98 complete; clean fully-deployed boundary. S99 starts here.
+- Intent: prefer first genuine opted-in cohort if it exists; else fresh executable audit against live behavior. Do not manufacture cohort/email/identity/lifecycle/launch evidence.
 
-Shipped this session
-- Live-origin audit (source → build-pages rewrite → edge policy); source-only audit was structurally blind.
-- CSP fix: production served CPloudflare beacon that own script-src refused; zero pageviews collected. verify-edge-policy-application.mjs now fetches as a browser and asserts served policy admits every external origin the served document requests (hosts read from beacon.min.js).
-- Newcomer "why" content added to root page below one-click start; Playwright spec locks ordering.
-- Draft market GM identity + intel exposure fixes (partial item; half already existed).
-- 819-entry visual-review ledger written before prune; prune refuses without it.
-- Fixed 10 code-review findings (dead CTA button, dead-code paths, hidden diagnostics/retry, continue→break, double --apply, unguarded gate branch), shard-coverage assignments, hardened child_process wrapper, edge-policy fixture.
+## Shipped (S98)
+- First-season payoff: dashboard phase is sole transition authority; season review/epilogue/feedback/reward run exactly once.
+- Chronological Trophy Road: streaks use GameSession year/week-descending receipts.
+- Focus-safe tab keyboard: single orientation handler owns Arrow/Home/End; roving focus intact; tablet focus returns to visible toggle.
+- Exact technical deployment: one immutable source/artifact passed CI, pixels, hosted perf, staging, production, backend.
 
-Now bucket (priority order)
-1. Gate the long-horizon facility equilibrium (carried, strongest item); S93 season-15 dispersion turnaround argued, not asserted.
-2. Verify beacon actually reports once S94 policy reaches production; still-silent dashboard post-deploy is a live finding.
-3. Calibrate owner.cash scale and source FACILITY_MARKET_PROFILE appetite weights (both carried from S93).
+## Deployment State
+- Candidate 3cce0a5 at artifact 6bdc133... verified on stable staging and production.
+- Green: CI 33769176381, Pages 33769176361, promotion 33770515766, backend 33770517153.
+- Stable staging 14/14 (deploy a835d039, rollback d67e9fe7); production 10/10 provenance.
+- Node 1303/1303; Playwright 55/55; boot 649,716/730,000 bytes, zero lazy leaks; 255 game states, 98 candidate + 4 status captures.
+- launchReady remains false.
 
-Blockers / holds
-- check-release-evidence-freshness EXPIRED (observed 2026-08-16, expired 2026-08-17). Pre-existing, tied to external blockers.
-- Two app.spec.js failures pre-existing (reproduced on pre-S94 tree).
-- Registry says SPARKED, local contract says FORGE. Reconcile via Ark owner only; never edit sibling truth.
+## Now (top 3)
+1. Observe first genuine opted-in cohort; verify freshness, suppression, deletion, abuse ceilings without manufacturing activity.
+2. Restore /stats to sitemap only when community snapshot clears suppression threshold.
+3. Reconcile public launch only from Zoho receive/reply-as evidence, SHA-bound approval, authoritative lifecycle state, applicable Obelisk relying-party proof.
 
-Human-blocked (externally owned, age from 2026-08-23)
-- email-delivery-unverified
-- founder-approval-unverified
-- lifecycle-authority-unverified
+## Blockers (top 3)
+- Public launch/SPARKED not approved; technical deployment complete only.
+- Registry SPARKED vs local FORGE lifecycle drift; reconcile via Studio Ark, never edit sibling registry directly.
+- Node 24 Actions warnings advisory until official Node 24-native action majors exist.
 
-Deferred
-- 14→6 tab regroup skipped; rail already grouped under five headers. Phone target-count is founder-deferred, needs own visual-evidence budget.
+## Human-Blocked
+- Public launch approval: pending SHA-bound explicit approval and Zoho evidence (age: current session).
+- Cohort observation: pending first genuine opted-in cohort existence (age: current session).
 
-Next session: start at task board Now item 1 — gate the facility equilibrium.
+## Constraints
+- Aggregate page loads prove reporting only, not people/sessions/engagement/retention.
+- No new creative direction; no DECISIONS/Creative Direction Record entry owed.
+- Wrangler 4.80.0 pinned, Package Trust approved.
+
+## Next
+Check for first opted-in cohort; if absent, run fresh executable audit against live behavior.

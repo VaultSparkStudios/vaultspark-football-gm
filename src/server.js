@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import http from "node:http";
 import { GAME_NAME } from "./config.js";
+import { recordWinPct } from "./stats/teamRecord.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "./config/leagueSetup.js";
 import { createSession, createSessionFromSnapshot } from "./runtime/bootstrap.js";
 import { applyInitialLeagueSetup } from "./runtime/applyLeagueSetup.js";
@@ -240,9 +241,7 @@ function generateSeasonArcs(sess) {
     const team = d.controlledTeam || {};
     const standings = d.latestStandings || [];
     const myRow = standings.find((r) => r.team === (team.abbrev || team.id)) || {};
-    const wins = myRow.wins || 0;
-    const losses = myRow.losses || 0;
-    const winPct = (wins + losses) > 0 ? wins / (wins + losses) : 0.5;
+    const winPct = recordWinPct(myRow);
     const arcs = [];
     const qb = (team.roster || []).find((p) => p.position === "QB");
     if (qb) {

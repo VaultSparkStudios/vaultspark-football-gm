@@ -11,6 +11,7 @@
 import { state } from "./appState.js";
 import { showToast } from "./appCore.js";
 import { buildLaunchReadinessRows } from "./launchReadiness.js";
+import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
 
 import {
   buildLocalPlaytestExport,
@@ -133,9 +134,7 @@ export function buildFeedbackContextFingerprint({ dashboard = {}, newsRows = [] 
   const team = dashboard.controlledTeam || {};
   const controlledTeamId = dashboard.controlledTeamId || team.abbrev || team.teamId || "?";
   const standings = dashboard.latestStandings || [];
-  const row = standings.find((entry) => entry.team === controlledTeamId || entry.team === team.abbrev || entry.teamId === controlledTeamId) || {};
-  const wins = row.wins ?? team.wins ?? 0;
-  const losses = row.losses ?? team.losses ?? 0;
+  const row = findTeamStanding(standings, { ...team, id: controlledTeamId }) || team;
   const capSpace = dashboard.cap?.capSpace;
   const rosterNeed = (dashboard.rosterNeeds || [])[0];
   const topNeed = rosterNeed?.pos || rosterNeed?.position || rosterNeed || "none surfaced";
@@ -148,7 +147,7 @@ export function buildFeedbackContextFingerprint({ dashboard = {}, newsRows = [] 
 
   return [
     { label: "Team", value: `${team.name || team.abbrev || controlledTeamId}` },
-    { label: "Record", value: `${wins}-${losses}` },
+    { label: "Record", value: formatTeamRecord(row, { separator: "-" }) },
     { label: "Cap", value: capPosture },
     { label: "Top Need", value: String(topNeed) },
     { label: "Pressure", value: String(pressure).slice(0, 120) }

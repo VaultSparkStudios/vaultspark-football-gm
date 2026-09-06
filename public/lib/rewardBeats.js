@@ -6,6 +6,7 @@
 import { state } from "./appState.js";
 import { escapeHtml, teamName } from "./appCore.js";
 import { playSound, vibrate, HAPTIC_PATTERNS } from "./audioFeedback.js";
+import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
 
 const AUTO_DISMISS_MS = 8000;
 let dismissTimer = null;
@@ -52,8 +53,8 @@ export function buildWeekRecapModel({ game, dashboard }) {
   const d = dashboard || {};
   const standings = d.latestStandings || [];
   const abbrev = d.controlledTeam?.abbrev || d.controlledTeamId;
-  const rowIndex = standings.findIndex((row) => row.team === abbrev || row.teamId === d.controlledTeamId);
-  const myRow = rowIndex >= 0 ? standings[rowIndex] : null;
+  const myRow = findTeamStanding(standings, { ...d.controlledTeam, id: d.controlledTeamId, abbrev });
+  const rowIndex = myRow ? standings.indexOf(myRow) : -1;
   const headline = game.won
     ? game.margin >= 30 ? "Statement Win" : game.margin <= 3 ? "Escape Act" : "Victory"
     : game.margin >= -3 ? "Heartbreaker" : game.margin <= -30 ? "Woodshed" : "Defeat";
@@ -62,7 +63,7 @@ export function buildWeekRecapModel({ game, dashboard }) {
     headline,
     scoreLine: `${game.teamScore}–${game.oppScore} ${game.home ? "vs" : "at"} ${teamName(game.opponent) || game.opponent}`,
     week: game.week,
-    record: myRow ? `${myRow.wins}–${myRow.losses}` : null,
+    record: myRow ? formatTeamRecord(myRow) : null,
     rank: rowIndex >= 0 ? rowIndex + 1 : null,
     seasonType: game.seasonType
   };
