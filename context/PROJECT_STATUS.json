@@ -122,18 +122,18 @@
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
-    "total": 12,
+    "total": 11,
     "failing": 0,
-    "score": 92,
-    "date": "2026-09-03",
-    "passing": 11,
+    "score": 91,
+    "date": "2026-09-06",
+    "passing": 10,
     "warning": 1,
     "checks": [
       {
-        "id": "lifecycle-authoritative-registry",
+        "id": "release-authority-git-head-covered-by-publication",
         "status": "warning",
         "blocking": false,
-        "detail": "registry SPARKED · local contract FORGE"
+        "detail": "HEAD e6ac032d24be4fbefdf7771016fe3c0b45bb70c9 is not covered by live production 3cce0a51e82e78625bdfad82f1cbdb19a31c94aa"
       }
     ]
   },
