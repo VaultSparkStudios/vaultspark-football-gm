@@ -6761,6 +6761,26 @@
       "bytes": 503716,
       "session": 99
     },
+    "s99-entry-paint-desktop-dark.png": {
+      "sha256": "792037acd7d5d5987aeaad89ad2b3f9fcd64f0ee5882392aa00e9f65e999e22d",
+      "bytes": 828931,
+      "session": 99
+    },
+    "s99-entry-paint-desktop-light.png": {
+      "sha256": "adf6463b730cdb12d17013b61f715ca4d8bf6ba7548ad172f79f6bbe3894fe12",
+      "bytes": 721053,
+      "session": 99
+    },
+    "s99-entry-paint-mobile-dark.png": {
+      "sha256": "1e1fd574cad0824fcc5e84257ada464dca7f29899354bb455a28e1524a9c4694",
+      "bytes": 255474,
+      "session": 99
+    },
+    "s99-entry-paint-mobile-light.png": {
+      "sha256": "2421d42f71a7cd678a37a78e933c9c57750d5fec12d6b63fc732afd4a71adc3a",
+      "bytes": 198067,
+      "session": 99
+    },
     "s99-first-debrief-desktop-dark.png": {
       "sha256": "ec620954c8c98a0bf7c21c50a4c988a2321b988d90dd906bebe415ee0b2e94a8",
       "bytes": 276567,

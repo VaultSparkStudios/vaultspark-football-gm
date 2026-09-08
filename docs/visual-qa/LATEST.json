@@ -1,12 +1,14 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-09-08T04:01:00.000Z",
-  "sourceRevision": "bd164ebd4f3e3dd6783166e9caf3ab2433e428f4+worktree",
+  "capturedAt": "2026-09-08T20:12:06.447Z",
+  "sourceRevision": "11ea2adebf4c5e10a79fa439992f7a30a955379e+worktree",
   "sourceFingerprint": {
     "algorithm": "sha256",
     "files": {
       "public/app.js": "4b61da2f570054886b2b04ac76564587d9702eecb50b7b7ac67908668c828cee",
-      "public/lib/firstDebriefPulse.js": "da2b09fd90778c874a4f714c5ddd6d7b11b69232a62bb613146e2bc78dca34b8"
+      "public/lib/firstDebriefPulse.js": "da2b09fd90778c874a4f714c5ddd6d7b11b69232a62bb613146e2bc78dca34b8",
+      "public/index.html": "7cc3a569d7fd3d2e39c5fa0220fad511af0df0edfec380db0018fd1d5488c8c4",
+      "public/community-stats.js": "a2cd9636cc5491f81a6566a3fd9cab3959219e0695693f6b87f2237e6958b105"
     }
   },
   "artifact": "S99 first-week debrief pulse working-tree review",
@@ -39,6 +41,34 @@
       "theme": "light",
       "viewport": { "width": 390, "height": 844 },
       "page": "First weekly debrief private check-in"
+    },
+    {
+      "file": "s99-entry-paint-desktop-dark.png",
+      "sha256": "792037acd7d5d5987aeaad89ad2b3f9fcd64f0ee5882392aa00e9f65e999e22d",
+      "theme": "dark",
+      "viewport": { "width": 1440, "height": 1000 },
+      "page": "Pre-network Community Stats invitation"
+    },
+    {
+      "file": "s99-entry-paint-desktop-light.png",
+      "sha256": "adf6463b730cdb12d17013b61f715ca4d8bf6ba7548ad172f79f6bbe3894fe12",
+      "theme": "light",
+      "viewport": { "width": 1440, "height": 1000 },
+      "page": "Pre-network Community Stats invitation"
+    },
+    {
+      "file": "s99-entry-paint-mobile-dark.png",
+      "sha256": "1e1fd574cad0824fcc5e84257ada464dca7f29899354bb455a28e1524a9c4694",
+      "theme": "dark",
+      "viewport": { "width": 390, "height": 844 },
+      "page": "Pre-network Community Stats invitation"
+    },
+    {
+      "file": "s99-entry-paint-mobile-light.png",
+      "sha256": "2421d42f71a7cd678a37a78e933c9c57750d5fec12d6b63fc732afd4a71adc3a",
+      "theme": "light",
+      "viewport": { "width": 390, "height": 844 },
+      "page": "Pre-network Community Stats invitation"
     }
   ],
   "inspection": {
@@ -48,12 +78,14 @@
       "The first light-theme capture exposed an undefined-token defect that made the card translucent and its text unreadable.",
       "After correction, the card, fields, privacy boundary, and actions are legible and unclipped at 1440x900 and 390x844 in dark and light themes.",
       "The mobile layout preserves 44px-or-larger actions, a single-column rating flow, and a scroll-bounded 100dvh card.",
-      "The explicit confirmation says that nothing was sent; the browser stored only a scoped state marker and an allowlisted local receipt."
+      "The explicit confirmation says that nothing was sent; the browser stored only a scoped state marker and an allowlisted local receipt.",
+      "The pre-network Community Stats invitation is readable and unclipped in both themes at 1440x1000 and 390x844; mobile content continues naturally below the fold without horizontal clipping."
     ],
     "fixesApplied": [
       "Replaced undefined --surface and --text variables with the canonical --panel-strong and --ink theme tokens.",
       "Kept the overlay opaque enough to separate the invitation from live game state in both themes.",
-      "Added explicit focus return to the weekly-advance control when the prompt closes."
+      "Added explicit focus return to the weekly-advance control when the prompt closes.",
+      "Replaced the entry-page skeleton with truthful static pre-cohort content and preserved that DOM on the first async refresh, preventing the Community Stats request from becoming a late mobile LCP."
     ],
     "blockingDefectsOpen": 0
   }

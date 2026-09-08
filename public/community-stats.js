@@ -189,7 +189,12 @@ function renderPulse(snapshot) {
   if (isPreCohort(snapshot)) {
     root.dataset.state = "pre-cohort";
     root.querySelector("[data-community-freshness]").textContent = "Open to join";
-    root.querySelector("[data-community-pulse-content]").innerHTML = invitationMarkup(true);
+    const content = root.querySelector("[data-community-pulse-content]");
+    if (content.dataset.communityPrerendered === "pre-cohort") {
+      delete content.dataset.communityPrerendered;
+      return;
+    }
+    content.innerHTML = invitationMarkup(true);
     bindConsent(root);
     return;
   }

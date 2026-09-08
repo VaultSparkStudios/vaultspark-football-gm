@@ -92,11 +92,16 @@ test("/stats is withheld from the crawl invitation while the cohort is empty", (
 
 test("the community pulse renders an invitation, never a row of zeros, before a cohort exists", () => {
   const source = fs.readFileSync(path.join(rootDir, "public", "community-stats.js"), "utf8");
+  const home = fs.readFileSync(path.join(rootDir, "public", "index.html"), "utf8");
   assert.match(source, /function isPreCohort/);
   assert.match(source, /invitationMarkup/);
+  assert.match(home, /data-community-prerendered="pre-cohort"/);
+  assert.match(home, /data-community-invitation/);
+  assert.doesNotMatch(home, /data-community-pulse-content[^>]*>\s*<div class="community-skeleton-grid"/);
   // Both consumer surfaces must take the pre-cohort path, not just the home page.
   const pulse = source.slice(source.indexOf("function renderPulse"), source.indexOf("function percentileMessage"));
   const atlas = source.slice(source.indexOf("function renderAtlas"));
   assert.match(pulse, /isPreCohort\(snapshot\)/);
+  assert.match(pulse, /dataset\.communityPrerendered === "pre-cohort"/);
   assert.match(atlas, /isPreCohort\(snapshot\)/);
 });
