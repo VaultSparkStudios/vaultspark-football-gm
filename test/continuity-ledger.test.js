@@ -102,6 +102,31 @@ test("press memory: a fiery loss followed by a win produces a promise-kept follo
   assert.equal(last.isWin, true);
 });
 
+test("a tied game stays a tie across headlines, memory, and the interactive podium", () => {
+  const league = {
+    teams: [{ id: "BUF", season: { streak: 0 } }, { id: "MIA", season: { streak: 0 } }],
+    players: []
+  };
+  const weekResult = {
+    week: 5,
+    games: [{ homeTeamId: "BUF", awayTeamId: "MIA", homeScore: 20, awayScore: 20 }]
+  };
+
+  generatePressConference(league, weekResult, "BUF", 2026);
+  const items = league.newsLog;
+
+  assert.ok(items.length >= 2);
+  assert.ok(items.every((item) => item.result === "tie" && item.isTie === true));
+  assert.ok(items.every((item) => /^Tie vs MIA\b/.test(item.headline)));
+  assert.ok(items.every((item) => !/^Loss vs/.test(item.headline)));
+  const remembered = getLastPress(league, { year: 2026, week: 6 });
+  assert.equal(remembered.result, "tie");
+  assert.equal(remembered.isTie, true);
+  assert.equal(remembered.isWin, false);
+  assert.equal(league.pressRoom.pending.result, "tie");
+  assert.match(league.pressRoom.pending.question, /Neither side found a winner/);
+});
+
 test("narrative engine is live in a real season and the feed is no longer empty by construction", () => {
   const session = createSession({ seed: 20260701, startYear: 2026, controlledTeamId: "BUF" });
   assert.ok(session.getLeagueSettings().enableNarratives, "narratives must default on for this test");

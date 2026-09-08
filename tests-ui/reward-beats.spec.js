@@ -9,6 +9,11 @@ async function waitSetupReady(page) {
 
 async function waitGameReady(page, timeout = 60_000) {
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout });
+  const decline = page.locator("#firstDebriefDecline");
+  if (await decline.isVisible({ timeout: 2_000 }).catch(() => false)) {
+    await decline.click();
+    await expect(page.locator("#firstDebriefPulse")).toHaveCount(0);
+  }
 }
 
 async function dismissTutorialIfVisible(page) {

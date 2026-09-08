@@ -11,6 +11,7 @@ function leagueFixture() {
     seasonsServed: 2,
     totalWins: 20,
     totalLosses: 14,
+    totalTies: 1,
     playoffAppearances: 1,
     superBowlWins: 0,
     capGradeTotal: 150,
@@ -44,6 +45,7 @@ test("mastery portfolio preserves four independent evidence paths", () => {
   assert.equal(portfolio.signature.status, portfolio.paths.find((path) => path.id === "stewardship").status);
   assert.match(portfolio.focus.nextMilestone, /\S/);
   assert.match(portfolio.disclaimer, /not a causal claim/i);
+  assert.match(portfolio.paths.find((path) => path.id === "results").evidence, /20-14-1/);
 });
 
 test("empty evidence remains visibly empty instead of receiving fabricated progress", () => {

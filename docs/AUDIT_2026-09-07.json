@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-07",
+  "session": 99,
+  "agent": "codex",
+  "project": "franchise-architect",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 58.0,
+    "source": "Live S99 working tree, deterministic tie reproduction, first-run and feedback code paths, bounded task projection, current release authority, and current game-loop review.",
+    "axesCovered": 9,
+    "itemsRanked": 2,
+    "phantomsRejected": 7,
+    "novelCandidates": 3,
+    "verificationNote": "Both ranked premises were reproduced against live code. The repository-local studio-oracle and audit-premise executables are absent, so the typed premises are recorded for canonical verification and were manually checked with the named source patterns."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "first-user evidence, player-facing result truth, game-loop payoff, static-host safety, responsive accessibility, and release honesty",
+    "staging": "No deployment, launch flip, or public announcement is authorized by this audit.",
+    "source": "Fresh audit after the S99 Genius List and innovation pack both exhausted"
+  },
+  "axisSurvey": {
+    "feature-depth": [
+      { "candidate": "post-game tie truth across recap, Franchise Moment, and press room", "verdict": "ranked", "evidence": "A deterministic 20-20 result renders Heartbreaker, Tough loss, two Loss headlines, and a one-score-loss press question." },
+      { "candidate": "terminal General Manager firing state", "verdict": "deferred", "evidence": "Recent decisions still reserve the terminal ending for founder creative direction." }
+    ],
+    "new-innovative-features": [
+      { "candidate": "first-debrief private pulse", "verdict": "ranked-novel", "evidence": "The game already records the first debrief and has local-only receipt primitives, but never joins them into an in-context invitation." },
+      { "candidate": "session-path replay diff", "verdict": "novel-deferred", "evidence": "Useful after genuine cohort receipts exist; today it would optimize against self-selected local instrumentation." }
+    ],
+    "ui-ux": [
+      { "candidate": "in-context first-debrief check-in", "verdict": "ranked", "evidence": "The only detailed playtest controls are inserted at the top of Settings, away from the first completed decision loop." },
+      { "candidate": "collapse fourteen navigation targets into six", "verdict": "deferred", "evidence": "The rail is already grouped and mobile has a focused decision deck; a structural regroup requires a dedicated full visual baseline." }
+    ],
+    "feedback-loop": [
+      { "candidate": "connect the debrief checkpoint to the private receipt authority", "verdict": "ranked", "evidence": "weekly-debrief-ready is recorded immediately after hydration, while receipt creation is only reachable manually from Settings." },
+      { "candidate": "claim retention from Cloudflare page loads", "verdict": "rejected", "evidence": "The project correctly states that aggregate page loads are not people, sessions, retention, or a cohort." }
+    ],
+    "gamification-engagement": [
+      { "candidate": "tie-neutral reward and narrative payoff", "verdict": "ranked", "evidence": "A tie receives loss audio/tone and loss narrative even though standings correctly render 2-2-1." },
+      { "candidate": "hidden mastery bonus for completing the pulse", "verdict": "rejected", "evidence": "A feedback action must not alter simulation outcomes or create coercive progression pressure." }
+    ],
+    "ai-integration": [
+      { "candidate": "deterministic outcome-state authority for narrative agents", "verdict": "ranked-with-tie-truth", "evidence": "Three narrative consumers independently collapse boolean not-win into loss; first-class win/loss/tie state removes that ambiguity without a provider." },
+      { "candidate": "hosted generative onboarding coach", "verdict": "rejected", "evidence": "Existing deterministic guidance is deep; provider inference adds cost and a data boundary without resolving the reproduced gaps." }
+    ],
+    "security": [
+      { "candidate": "local-only first-debrief pulse", "verdict": "ranked-as-constraint", "evidence": "Existing receipt code excludes identifiers and save payloads and sends nothing unless the player explicitly shares it." },
+      { "candidate": "project-local account system", "verdict": "rejected", "evidence": "External Obelisk is the declared identity architecture and no account flow is present." }
+    ],
+    "speed-organization-efficiency": [
+      { "candidate": "one outcome vocabulary across post-game consumers", "verdict": "ranked", "evidence": "Boolean won is interpreted separately in rewardBeats, franchiseMomentHandler, pressConference, and pressRoom." },
+      { "candidate": "eager-load the complete feedback surface", "verdict": "rejected", "evidence": "The first-run path already loads betaFeedback beside the tutorial; no new boot dependency is required." }
+    ],
+    "token-api-reduction": [
+      { "candidate": "reuse local receipt and modal primitives", "verdict": "ranked-as-constraint", "evidence": "The first-debrief pulse can remain browser-local and reuse current code with zero runtime API calls." },
+      { "candidate": "new analytics or survey vendor", "verdict": "rejected", "evidence": "A vendor adds recurring cost and data access before a real cohort proves the local path insufficient." }
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "Feature depth · feedback loop · gamification truth",
+      "effortHours": 3,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 30.1,
+      "slug": "postgame-ties-still-become-losses",
+      "title": "Post-game reward, Franchise Moment, and press-room surfaces still turn a tie into a loss",
+      "status": "implemented",
+      "executionEvidence": "One shared game-result authority now carries win/loss/tie through recap, Franchise Moment, press headlines, interactive questions/effects, promises, and continuity. Exact 20-20 focused tests pass across reward, milestone, press-conference, and continuity suites; the final source-bound aggregate is green at 1,319/1,319 and Playwright is green at 55/55.",
+      "premise": "S99 completed standings and career tie arithmetic, but the immediate emotional payoff still uses boolean won as a two-state outcome. A 20-20 game is called Heartbreaker, receives loss feedback, becomes a Tough loss and share-text Loss, and opens two Loss press stories plus a one-score-loss question.",
+      "premises": [
+        { "claim": "week recap collapses every non-win to a loss headline", "adapter": "grep", "target": "public/lib/rewardBeats.js", "pattern": "game.margin <= -30 ? \"Woodshed\" : \"Defeat\"", "operator": "eq", "expected": true },
+        { "claim": "Franchise Moment persists only win or loss", "adapter": "grep", "target": "src/runtime/handlers/franchiseMomentHandler.js", "pattern": "result: won ? \"win\" : \"loss\"", "operator": "eq", "expected": true },
+        { "claim": "press headlines collapse every non-win to Loss", "adapter": "grep", "target": "src/engine/pressConference.js", "pattern": "isWin ? \"Win\" : \"Loss\"", "operator": "eq", "expected": true }
+      ],
+      "fix": "Make win/loss/tie a first-class result through recap, Franchise Moment, generated press copy, interactive questions, receipts, effects, and continuity. Add exact 20-20 tests and a sentinel that prevents post-game consumers from reintroducing two-state result copy.",
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Correct recap, Franchise Moment, and press headlines/questions for a tie." },
+        "L2": { "effortHours": 2, "recipe": "Carry explicit result/isTie through press-room receipts and give tie responses neutral, disclosed consequences." },
+        "L3": { "effortHours": 3, "recipe": "L2 plus continuity semantics, focused browser/runtime tests, and a cross-consumer source sentinel." }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "CRITICAL",
+      "category": "Feedback loop · UX · engagement evidence",
+      "effortHours": 4,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 27.9,
+      "slug": "first-debrief-never-invites-private-playtest-evidence",
+      "title": "The first completed decision loop records a debrief checkpoint but never invites the player to capture evidence there",
+      "status": "implemented",
+      "executionEvidence": "A one-time per-franchise, focus-safe first-debrief pulse now collects four explicit ratings plus an optional note, stores only a bounded local receipt, sends nothing automatically, and supports truthful copy/export feedback. Playwright is green at 55/55, four inspected desktop/mobile dark/light captures are permanently hash-ledgered, and lazy post-game loading leaves the first-decision graph at 643,495/650,000 bytes with zero lazy leaks.",
+      "premise": "The game records weekly-debrief-ready at the exact first-loop payoff. The existing clarity, agency, pace, and return-intent receipt form is mounted only inside Settings, so an alpha tester can complete the signature loop without ever seeing the evidence control.",
+      "premises": [
+        { "claim": "the app records the debrief-ready checkpoint", "adapter": "grep", "target": "public/app.js", "pattern": "weekly-debrief-ready", "operator": "eq", "expected": true },
+        { "claim": "playtest controls are inserted into Settings", "adapter": "grep", "target": "public/lib/betaFeedback.js", "pattern": "settingsTab.insertBefore", "operator": "eq", "expected": true },
+        { "claim": "local receipt export explicitly disclaims cohort and causal claims", "adapter": "grep", "target": "public/lib/playtestReceipts.js", "pattern": "cannot support cohort, retention, comprehension, or causal claims", "operator": "eq", "expected": true }
+      ],
+      "fix": "After the first successful weekly debrief per franchise, offer one skippable, focus-safe check-in that reuses the local-only receipt authority. Save nothing until explicit submission, send nothing automatically, permit copying the bounded receipt, and never show it again once answered or declined.",
+      "ladder": {
+        "L1": { "effortHours": 1.5, "recipe": "Show a one-time local check-in link after the first debrief." },
+        "L2": { "effortHours": 2.5, "recipe": "Render the four existing ratings in a scoped, skippable dialog and store the existing receipt shape only on submit." },
+        "L3": { "effortHours": 4, "recipe": "L2 plus copy/export action, per-franchise answered/declined state, focus restoration, browser tests, and desktop/mobile dark/light rendered proof." }
+      }
+    }
+  ],
+  "phantomsRejected": [
+    { "slug": "new-simulation-system-required-for-retention", "verdict": "REFUTED", "evidence": "The game already has deep weekly, season, and dynasty loops; the missing evidence is real-player observation." },
+    { "slug": "second-account-system", "verdict": "REFUTED", "evidence": "No account flows exist and Obelisk remains the only authorized future identity plane." },
+    { "slug": "provider-ai-onboarding", "verdict": "REFUTED", "evidence": "The reproduced onboarding gap is placement of an existing deterministic control, not missing inference." },
+    { "slug": "community-stats-proves-retention", "verdict": "REFUTED", "evidence": "Current aggregate telemetry and documentation explicitly refuse that conclusion." },
+    { "slug": "fourteen-tabs-are-proven-confusing", "verdict": "REFUTED", "evidence": "The count is a credible risk but no real-user observation proves confusion; do not restructure it on assumption." },
+    { "slug": "current-s99-worktree-is-a-release-candidate", "verdict": "REFUTED", "evidence": "The working tree remains mutable and public launch authority remains false." },
+    { "slug": "new-feedback-backend", "verdict": "REFUTED", "evidence": "Local receipts plus explicit GitHub sharing cover the alpha need without cost or a new privacy boundary." }
+  ],
+  "recommendedMoves": [
+    "Finish tie truth at the emotional surfaces, not only standings and career arithmetic.",
+    "Ask for private evidence at the first debrief, where the player can still remember whether the loop was clear.",
+    "Keep the check-in local, explicit, skippable, per-franchise, and causally honest.",
+    "Keep public launch on HOLD until independent release authorities are verified."
+  ]
+}

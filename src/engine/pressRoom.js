@@ -29,6 +29,8 @@
  *     consequence. It is never a dead end and never a silent no-op.
  */
 
+import { GAME_RESULTS, normalizeGameResult } from "../../public/lib/gameOutcome.js";
+
 const clampStat = (value) => Math.max(0, Math.min(100, Math.round(value)));
 const clampPatience = (value) => Number(Math.max(0.05, Math.min(0.95, value)).toFixed(4));
 
@@ -119,6 +121,40 @@ export const PRESS_RESPONSE_CATALOG = Object.freeze({
 /** The three real postures, in the order they are offered. `decline` is the skip. */
 export const PRESS_RESPONSE_IDS = Object.freeze(["back-the-room", "take-the-blame", "put-on-notice"]);
 
+export const PRESS_TIE_RESPONSES = Object.freeze({
+  "back-the-room": Object.freeze({
+    quote: "\"Nobody in this room accepts standing still, but I am not turning a tie into an excuse to pick apart our locker room.\"",
+    effects: Object.freeze({ chemistry: 1, fanInterest: 0, patience: 0 }),
+    reason: "backed the locker room after a draw"
+  }),
+  "take-the-blame": Object.freeze({
+    quote: "\"We had a chance to finish that game and did not. A draw is not a loss, but the preparation still starts with me.\"",
+    effects: Object.freeze({ chemistry: 1, fanInterest: 0, patience: 0.004 }),
+    reason: "owned the unfinished result in public"
+  }),
+  "put-on-notice": Object.freeze({
+    quote: "\"We did not lose, and we did not finish. That middle ground cannot become comfortable in this building.\"",
+    effects: Object.freeze({ chemistry: -1, fanInterest: 1, patience: 0.002 }),
+    reason: "refused to let a draw feel comfortable"
+  }),
+  decline: Object.freeze({
+    quote: "\"The score says neither side won. That is all I have today.\"",
+    effects: Object.freeze({ chemistry: 0, fanInterest: -1, patience: -0.002 }),
+    reason: "declined to answer after a draw"
+  })
+});
+
+function responseForOutcome(responseId, outcome) {
+  const response = PRESS_RESPONSE_CATALOG[responseId];
+  if (!response) return null;
+  if (outcome === GAME_RESULTS.TIE) return PRESS_TIE_RESPONSES[responseId] || null;
+  return {
+    quote: response.quote[outcome],
+    effects: response.effects[outcome],
+    reason: response.reasons[outcome]
+  };
+}
+
 function ensurePressRoom(league) {
   if (!league.pressRoom || typeof league.pressRoom !== "object") {
     league.pressRoom = { pending: null, receipts: [] };
@@ -135,7 +171,11 @@ export function pressQuestionId({ teamId, year, week }) {
  * The question the room asks, phrased from the actual result.
  * Derived only from observable facts — score, margin, streak, opponent.
  */
-function questionFor({ isWin, margin, streak, opponent, topPerformer }) {
+function questionFor({ result, margin, streak, opponent, topPerformer }) {
+  if (result === GAME_RESULTS.TIE) {
+    return `Neither side found a winner against ${opponent}. What kept you from finishing it?`;
+  }
+  const isWin = result === GAME_RESULTS.WIN;
   if (!isWin && margin >= 21) {
     return `That was a ${margin}-point loss to ${opponent}. What do you say to the people who watched it?`;
   }
@@ -163,7 +203,7 @@ function questionFor({ isWin, margin, streak, opponent, topPerformer }) {
  * Idempotent: re-opening the same week does not replace an unanswered question
  * or reopen one the GM already answered.
  */
-export function openPressQuestion(league, { teamId, year, week, isWin, margin, streak, opponent, score, topPerformer = null }) {
+export function openPressQuestion(league, { teamId, year, week, result = null, isWin = null, isTie = false, margin, streak, opponent, score, topPerformer = null }) {
   if (!league || !teamId) return null;
   const room = ensurePressRoom(league);
   const id = pressQuestionId({ teamId, year, week });
@@ -171,32 +211,36 @@ export function openPressQuestion(league, { teamId, year, week, isWin, margin, s
   if (room.pending?.id === id) return room.pending;
   if (room.receipts.some((receipt) => receipt.questionId === id)) return null;
 
+  const resolvedResult = normalizeGameResult({ result, isWin, isTie });
   room.pending = {
     id,
     teamId,
     year,
     week,
-    isWin: Boolean(isWin),
+    result: resolvedResult,
+    isWin: resolvedResult === GAME_RESULTS.WIN,
+    isTie: resolvedResult === GAME_RESULTS.TIE,
     margin: Number(margin) || 0,
     score: score || null,
     opponent: opponent || null,
     topPerformer,
-    question: questionFor({ isWin, margin, streak: Number(streak) || 0, opponent, topPerformer }),
+    question: questionFor({ result: resolvedResult, margin, streak: Number(streak) || 0, opponent, topPerformer }),
     options: PRESS_RESPONSE_IDS.map((responseId) => {
       const response = PRESS_RESPONSE_CATALOG[responseId];
+      const outcomeResponse = responseForOutcome(responseId, resolvedResult);
       return {
         id: response.id,
         label: response.label,
         posture: response.posture,
-        preview: response.quote[isWin ? "win" : "loss"],
+        preview: outcomeResponse.quote,
         promises: response.promises,
-        consequence: describeEffects(response.effects[isWin ? "win" : "loss"])
+        consequence: describeEffects(outcomeResponse.effects)
       };
     }),
     skip: {
       id: "decline",
       label: PRESS_RESPONSE_CATALOG.decline.label,
-      consequence: describeEffects(PRESS_RESPONSE_CATALOG.decline.effects[isWin ? "win" : "loss"])
+      consequence: describeEffects(responseForOutcome("decline", resolvedResult).effects)
     }
   };
   return room.pending;
@@ -261,15 +305,16 @@ export function answerPressQuestion(league, { teamId, responseId, questionId = n
     };
   }
 
-  const outcome = pending.isWin ? "win" : "loss";
-  const effects = response.effects[outcome];
+  const outcome = normalizeGameResult(pending);
+  const outcomeResponse = responseForOutcome(responseId, outcome);
+  const effects = outcomeResponse.effects;
   const team = league.teams?.find((entry) => entry.id === pending.teamId);
   const reasons = [];
 
   if (team) {
     if (effects.chemistry) {
       team.chemistry = clampStat((team.chemistry ?? 70) + effects.chemistry);
-      reasons.push(`${response.reasons[outcome]} (locker room ${effects.chemistry > 0 ? "+" : ""}${effects.chemistry})`);
+      reasons.push(`${outcomeResponse.reason} (locker room ${effects.chemistry > 0 ? "+" : ""}${effects.chemistry})`);
     }
     if (team.owner) {
       if (effects.fanInterest) {
@@ -282,11 +327,11 @@ export function answerPressQuestion(league, { teamId, responseId, questionId = n
       }
     }
   }
-  if (!reasons.length) reasons.push(`${response.reasons[outcome]} — nothing measurable moved`);
+  if (!reasons.length) reasons.push(`${outcomeResponse.reason} — nothing measurable moved`);
 
   // A promise only exists after a loss. Promising to be better after a win is a
   // posture; promising after a loss is a debt the next result settles.
-  const promised = response.promises && !pending.isWin;
+  const promised = response.promises && outcome === GAME_RESULTS.LOSS;
 
   const receipt = {
     questionId: pending.id,
@@ -296,8 +341,10 @@ export function answerPressQuestion(league, { teamId, responseId, questionId = n
     responseId: response.id,
     label: response.label,
     posture: response.posture,
-    quote: response.quote[outcome],
+    quote: outcomeResponse.quote,
+    result: outcome,
     isWin: pending.isWin,
+    isTie: outcome === GAME_RESULTS.TIE,
     score: pending.score,
     opponent: pending.opponent,
     promised,

@@ -150,9 +150,19 @@ export function releaseTruthProse(contract) {
   const proven = green.length ? `${green.join(", ")} verified` : "no production surface proof verified";
   const freshness = evaluateReleaseEvidenceFreshness({ contract });
   const freshnessPhrase = freshness.current ? `evidence current through ${freshness.expiresAt}` : `evidence ${freshness.status}`;
+  const pending = [];
+  if (!freshness.current) pending.push("refresh production evidence");
+  if (contract.independentStaging?.verified !== true) pending.push("verify an independent staging origin");
+  if (contract.exactRevision?.verified !== true) pending.push("prove production parity at the exact candidate revision");
+  if (contract.emailDelivery?.verified !== true) pending.push("prove delivered on-domain email and reply identity");
+  if (contract.founderApproval?.verified !== true) pending.push("record founder approval bound to the candidate");
+  if (contract.lifecycleAuthority?.verified !== true) pending.push("reconcile authoritative lifecycle state");
+  const nextMilestone = pending.length
+    ? `${pending.map((item, index) => index === 0 ? item[0].toUpperCase() + item.slice(1) : item).join("; ")} before any launch flip.`
+    : "Release authority is complete and current; preserve the receipts through the launch flip.";
   return {
     currentFocus: `Release truth is receipt-derived: ${proven}; ${freshnessPhrase}. Launch remains ${contract.launchReady && freshness.current ? "READY" : "HOLD"}; independent gates are not collapsed.`,
-    nextMilestone: "Verify an independent staging origin at the exact candidate revision, then prove production revision parity, delivered on-domain email, founder approval, and authoritative lifecycle before any launch flip.",
+    nextMilestone,
     blockers: contract.launchReady && freshness.current ? [] : [`Launch HOLD — ${[...new Set([...contract.blockerCodes, ...freshness.reasons])].join(", ")}.`]
   };
 }

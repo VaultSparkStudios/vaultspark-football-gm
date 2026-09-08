@@ -12,7 +12,7 @@
 ║  ECOSYSTEM IMPACT   ████████░░   80/100                                                       ║
 ║  SIL v6 (2nd axis)  Health 724/1000 · Impact 0/1000 (0/5 signals live)                        ║
 ║  BOOT AMORTIZATION  6.78×  (excellent)                                                        ║
-║  PROOF OF WORK      213 files · +0/-0 · suite Canonical Node 1,303/1,303; push CI 1,298/1,298; Playwright 55/55; responsive 255 game states with 98 exact-candidate captures plus four status captures; staging 14/14; production 10/10; backend exact; unified release authority verified; launchReady false.  ║
+║  PROOF OF WORK      236 files · +5724/-547 · suite Canonical Node 1,303/1,303; push CI 1,298/1,298; Playwright 55/55; responsive 255 game states with 98 exact-candidate captures plus four status captures; staging 14/14; production 10/10; backend exact; unified release authority verified; launchReady false.  ║
 ║                                                                                               ║
 ╚═════════════════════════════════════════════════════════════════════════════════════════════╝
 

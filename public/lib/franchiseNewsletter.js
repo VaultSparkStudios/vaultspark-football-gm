@@ -198,7 +198,7 @@ export function generateFranchiseNewsletter(state) {
       <div class="gm-score">${esc(String(gmScore))}</div>
       <div>
         <div><span class="gm-grade">${esc(gmGrade)}</span> &nbsp; <strong>${esc(personaName)}</strong></div>
-        <div class="gm-text">${gmLegacy ? `${gmLegacy.wins ?? 0}W–${gmLegacy.losses ?? 0}L career · ${gmLegacy.playoffs ?? 0} playoff appearances · ${gmLegacy.superBowls ?? 0} titles` : "No legacy data yet."}</div>
+        <div class="gm-text">${gmLegacy ? `${formatTeamRecord({ wins: gmLegacy.wins, losses: gmLegacy.losses, ties: gmLegacy.ties })} career · ${gmLegacy.playoffs ?? 0} playoff appearances · ${gmLegacy.superBowls ?? 0} titles` : "No legacy data yet."}</div>
       </div>
     </div>
   </div>

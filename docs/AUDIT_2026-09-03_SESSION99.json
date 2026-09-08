@@ -1,0 +1,187 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-03",
+  "session": 99,
+  "agent": "codex",
+  "project": "franchise-architect",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "combinedPriority": 85.5,
+    "source": "S97-S98 commit range, current source, focused Node tests, real-browser Playwright, release receipts, session lock, startup and closeout artifacts.",
+    "axesCovered": 9,
+    "itemsRanked": 4,
+    "phantomsRejected": 6,
+    "novelCandidates": 4,
+    "verificationNote": "Every ranked defect was reproduced before editing. The local audit-premise runner is absent, so typed premises are recorded for canonical verification and were manually checked against the named files this session."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product truth, game-loop depth, rendered-pixel accessibility, release honesty, and session continuity",
+    "staging": "No deployment was authorized or attempted; all release gates remain independent.",
+    "source": "Live S99 review of S97 and S98 changes"
+  },
+  "gameLoopReview": {
+    "loopTightness": 9,
+    "progression": 8,
+    "sessionEngagement": 8,
+    "retention": 5,
+    "soulFidelity": 9,
+    "overall": 7.8,
+    "evidence": "The first-season and chronology fixes remain correct. Residual tie handling contradicted the same record-truth authority in sentiment, deadline posture, marquee ranking, legacy scoring, mastery evidence, and newsletter copy; retention remains evidence-limited without an opted-in cohort."
+  },
+  "axisSurvey": {
+    "feature-depth": [
+      { "candidate": "tie-complete franchise record truth", "verdict": "ranked", "evidence": "Six downstream systems still ignored ties or displayed a two-column career record after S97 established a shared tie-aware authority." },
+      { "candidate": "terminal General Manager firing state", "verdict": "deferred", "evidence": "Creative direction still reserves the terminal ending for founder direction." }
+    ],
+    "new-innovative-features": [
+      { "candidate": "record-truth static sentinel", "verdict": "novel-follow-up", "evidence": "A consumer allowlist can catch new manual record math before it fragments the established authority." },
+      { "candidate": "synthetic season-payoff replay receipt", "verdict": "novel-deferred", "evidence": "A compact deterministic multi-season fixture could jointly exercise ties, chronology, and payoff without adding a provider." }
+    ],
+    "ui-ux": [
+      { "candidate": "focus-safe drawer dismissal state machine", "verdict": "ranked", "evidence": "Escape and scrim closed and made the drawer inert without returning focus, leaving focus inside an unavailable subtree or on the body." },
+      { "candidate": "second tablet shell", "verdict": "rejected", "evidence": "The existing scrollable 768px drawer rendered cleanly; the defect was dismissal focus, not structure." }
+    ],
+    "feedback-loop": [
+      { "candidate": "fan sentiment distinguishes ties from losses", "verdict": "ranked-with-record-truth", "evidence": "A tied game emitted the explicit reason ‘lost this week’." },
+      { "candidate": "community retention conclusion", "verdict": "deferred", "evidence": "No genuine opted-in cohort exists, so aggregate loads cannot establish player behavior." }
+    ],
+    "gamification-engagement": [
+      { "candidate": "career score and mastery count ties as half-wins", "verdict": "ranked-with-record-truth", "evidence": "GM legacy omitted total ties and career win percentage divided only wins by wins plus losses." },
+      { "candidate": "new hidden mastery reward", "verdict": "rejected", "evidence": "Mastery is explicitly descriptive and must not invent causal bonuses." }
+    ],
+    "ai-integration": [
+      { "candidate": "deterministic record-authority lint insight", "verdict": "novel-follow-up", "evidence": "An AST or source sentinel can flag manual W/L arithmetic cheaply and explain the shared replacement." },
+      { "candidate": "hosted generative copilot", "verdict": "rejected", "evidence": "No reproduced defect requires variable-cost inference or a new data boundary." }
+    ],
+    "security": [
+      { "candidate": "inert subtree focus invariant", "verdict": "ranked", "evidence": "Focus inside an inert subtree is an accessibility and browser-state integrity defect, reproduced on Escape and scrim dismissal." },
+      { "candidate": "project-local account system", "verdict": "rejected", "evidence": "External Obelisk remains the declared identity architecture and no local account flow is authorized." }
+    ],
+    "speed-organization-efficiency": [
+      { "candidate": "monotonic session identity and truthful startup receipts", "verdict": "ranked", "evidence": "The local lock omitted session_id and trigger, --help mutated state, and string summaries rendered blank Tests and Deploy rows despite structured verification data." },
+      { "candidate": "artifact-manifest-derived publication classifier", "verdict": "novel-follow-up", "evidence": "Deriving deployability from the artifact manifest would reduce long-term reliance on a growing path allowlist." }
+    ],
+    "token-api-reduction": [
+      { "candidate": "shared record helpers and local browser proof", "verdict": "ranked-as-constraint", "evidence": "All fixes reuse deterministic local authorities and existing browser infrastructure with no runtime API cost." },
+      { "candidate": "new analytics vendor", "verdict": "rejected", "evidence": "It would add cost and data access without resolving any reproduced defect." }
+    ]
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "CRITICAL",
+      "category": "Feature depth · feedback loop · gamification truth",
+      "effortHours": 4,
+      "impact": 10,
+      "innovation": 7,
+      "priority": 31.5,
+      "slug": "tie-record-authority-stops-before-player-facing-consumers",
+      "title": "Tie-aware record truth stopped before sentiment, trade posture, marquee ranking, and the persistent General Manager career",
+      "status": "shipped",
+      "premise": "S97 added shared tie-aware helpers, but fan sentiment divided by wins plus losses, ties were narrated as losses, trade and marquee fallbacks counted a tie as zero wins, and GM legacy omitted ties from persistence, scoring, mastery, and newsletter output.",
+      "premises": [
+        { "claim": "fan sentiment consumes the engine record authority", "adapter": "grep", "target": "src/engine/fanSentiment.js", "pattern": "recordWinPct", "operator": "eq", "expected": true },
+        { "claim": "GM legacy persists total ties", "adapter": "grep", "target": "src/engine/gmLegacyScore.js", "pattern": "totalTies", "operator": "eq", "expected": true },
+        { "claim": "browser record consumers use the shared authority", "adapter": "grep", "target": "test/team-record-truth.test.js", "pattern": "tradeDeadlineFrenzy.js", "operator": "eq", "expected": true }
+      ],
+      "fix": "Route every residual calculation and narrative through the existing engine/browser record helpers, migrate older saves to zero ties, persist season/career ties, and bind half-win thresholds with focused tests.",
+      "ladder": {
+        "L1": { "effortHours": 1, "recipe": "Correct the three visible W/L/T formulas and the tie-versus-loss reason." },
+        "L2": { "effortHours": 2.5, "recipe": "Use both shared helpers across every named consumer and add exact threshold tests." },
+        "L3": { "effortHours": 4, "recipe": "L2 plus migrate persistent legacy ties, expose tie-complete career and mastery copy, and expand the consumer sentinel." }
+      },
+      "executionEvidence": "The focused 114/114 Node proof and final canonical 1,313/1,313 suite pass. A 5-3-2 team is a .600 buyer, 5-4-1 fan approval is .550-derived, ties narrate as ties, marquee fallback selects the true leader, and an 8-8-1 legacy returns record 8-8-1 at .500."
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "UI/UX · accessibility · responsive parity",
+      "effortHours": 2.5,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 22.0,
+      "slug": "escape-and-scrim-leave-focus-behind-in-inert-drawer",
+      "title": "Escape and scrim dismissal could strand focus inside the newly inert tablet drawer",
+      "status": "shipped",
+      "premise": "S98 restored focus only from the tab-selection path. Escape invoked closeNav directly while focus remained on a drawer tab; pointer-down on the scrim could move focus before click, so both paths needed explicit close semantics.",
+      "premises": [
+        { "claim": "focus restoration happens before inert is applied", "adapter": "grep", "target": "public/lib/appCore.js", "pattern": "restoreFocus \\|\\| focusWasInDrawer", "operator": "eq", "expected": true },
+        { "claim": "real-browser dismissal coverage exists", "adapter": "grep", "target": "tests-ui/app.spec.js", "pattern": "mobileNavScrim", "operator": "eq", "expected": true },
+        { "claim": "current visual receipt exists", "adapter": "file-exists", "target": "docs/visual-qa/LATEST.json", "operator": "eq", "expected": true }
+      ],
+      "fix": "Centralize restore-before-inert behavior in closeNav, allow explicit restoration for pointer and Escape paths, retain automatic restoration when focus is inside the drawer, and prove it in Playwright plus rendered pixels.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Focus the toggle from the Escape listener." },
+        "L2": { "effortHours": 1.5, "recipe": "Centralize restore-before-inert and cover Escape plus scrim." },
+        "L3": { "effortHours": 2.5, "recipe": "L2 plus real-browser assertions and dark/light desktop, tablet, and mobile pixel receipts." }
+      },
+      "executionEvidence": "The targeted journey and full Playwright suite pass 55/55; Escape and scrim both close the drawer and focus the visible toggle. Eight source-hash-bound captures were manually reviewed, and CANON-053 reports 8 hash-bound captures across two themes with zero open defects."
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Release honesty · observability",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 16.0,
+      "slug": "release-next-milestone-repeats-already-proven-gates",
+      "title": "The release reconciler told the next session to re-prove staging and revision gates that were already green",
+      "status": "shipped",
+      "premise": "releaseTruthProse hard-coded every possible release gate into nextMilestone. Current structured evidence had independent staging and exact revision verified, while PROJECT_STATUS still instructed the next session to verify both.",
+      "premises": [
+        { "claim": "next milestone is derived from pending gates", "adapter": "grep", "target": "scripts/lib/release-truth.mjs", "pattern": "const pending = \\[\\]", "operator": "eq", "expected": true },
+        { "claim": "staging is currently verified", "adapter": "grep", "target": "context/PROJECT_STATUS.json", "pattern": "independentStaging", "operator": "eq", "expected": true }
+      ],
+      "fix": "Build nextMilestone from only freshness and gate fields that are not verified, keep launch HOLD independent, and reconcile current status from the exact S98 launch-evidence receipt.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Remove staging and revision from the current prose by hand." },
+        "L2": { "effortHours": 1, "recipe": "Derive milestone clauses from each structured gate and add a regression test." },
+        "L3": { "effortHours": 1.5, "recipe": "L2 plus re-run the reconciler against the exact receipt and prove HOLD still names only email, approval, and lifecycle." }
+      },
+      "executionEvidence": "Release-truth tests pass and PROJECT_STATUS now omits already-proven staging/revision work while retaining HOLD for on-domain email/reply identity, SHA-bound founder approval, and lifecycle authority."
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Session continuity · organization · token efficiency",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 4,
+      "priority": 16.0,
+      "slug": "session-lock-and-closeout-receipts-lose-active-session-truth",
+      "title": "The local session lock could not identify S98/S99 correctly and the startup/closeout receipts degraded",
+      "status": "shipped",
+      "premise": "The local writer silently ignored --trigger, omitted session_id, and mutated the lock on --help. The prior closeout then fell back out-of-band, lastCloseoutAt stayed stale, its proof line reported 213 files and +0/-0, and the next startup printed blank Tests and Deploy rows despite lastVerification.",
+      "premises": [
+        { "claim": "shared session identity exists locally", "adapter": "file-exists", "target": "scripts/lib/session-identity.mjs", "operator": "eq", "expected": true },
+        { "claim": "lock writes the active session id", "adapter": "grep", "target": "scripts/write-session-lock.mjs", "pattern": "session_id: \\$\\{sessionId\\}", "operator": "eq", "expected": true },
+        { "claim": "startup string summaries accept verification receipts", "adapter": "grep", "target": "scripts/lib/brief-blocks.mjs", "pattern": "opts.tests", "operator": "eq", "expected": true }
+      ],
+      "fix": "Propagate the monotonic session resolver and non-mutating help/trigger contract, regenerate the active S99 lock, render existing verification receipts in startup, and repair the measured S98 closeout/status fields.",
+      "ladder": {
+        "L1": { "effortHours": 0.5, "recipe": "Add session_id to the current lock and repair the two stale fields." },
+        "L2": { "effortHours": 1.25, "recipe": "Propagate the resolver and writer contract, add tests, and feed lastVerification into startup rendering." },
+        "L3": { "effortHours": 2, "recipe": "L2 plus repair the prior diff receipt, verify --help writes nothing, and send the cross-repo protocol drift through Studio Ark." }
+      },
+      "executionEvidence": "The active lock now says session_id 99 and founder-mission; --help preserves its SHA-256; session identity/startup tests pass; startup summaries render current test and verified production receipts instead of blanks or N/A; S98 proof is repaired to the measured full-session 236 files, +5,724/-547; and lastCloseoutAt is bound to the final S98 commit timestamp."
+    }
+  ],
+  "phantomsRejected": [
+    { "slug": "s98-first-season-fix-double-awards", "verdict": "REFUTED", "evidence": "The transition predicate and exactly-once callback controls remain green." },
+    { "slug": "trophy-road-still-reorders-seasons", "verdict": "REFUTED", "evidence": "The runtime preserves year/week-descending receipts and focused chronology tests pass." },
+    { "slug": "public-launch-is-now-ready", "verdict": "REFUTED", "evidence": "Email reply identity, founder approval, lifecycle authority, external Obelisk proof, and cohort evidence remain independent." },
+    { "slug": "release-classifier-path-traversal", "verdict": "REFUTED", "evidence": "Git diff paths are normalized repository entries; no traversal input reaches the classifier." },
+    { "slug": "second-responsive-shell", "verdict": "REFUTED", "evidence": "Rendered drawer structure is sound at the breakpoint; only close-focus semantics were defective." },
+    { "slug": "provider-ai-fixes-record-truth", "verdict": "REFUTED", "evidence": "The defect is deterministic arithmetic and persistence, already covered by local shared authorities." }
+  ],
+  "recommendedMoves": [
+    "Keep every record calculation and narrative on the shared tie-aware helpers.",
+    "Treat drawer closure as a focus-state transition before an inert-state transition.",
+    "Render release and session guidance from structured evidence instead of static prose.",
+    "Keep public launch on HOLD until its independent authorities are actually verified."
+  ]
+}

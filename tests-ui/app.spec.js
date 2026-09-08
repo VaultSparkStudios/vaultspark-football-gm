@@ -12,6 +12,11 @@ async function waitSetupReady(page) {
 
 async function waitGameReady(page, timeout = 60_000) {
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout });
+  const decline = page.locator("#firstDebriefDecline");
+  if (await decline.isVisible({ timeout: 2_000 }).catch(() => false)) {
+    await decline.click();
+    await expect(page.locator("#firstDebriefPulse")).toHaveCount(0);
+  }
 }
 
 async function dismissTutorialIfVisible(page) {
@@ -598,6 +603,18 @@ test("primary franchise tablist supports keyboard activation on desktop and in t
   await page.keyboard.press("ArrowDown");
   await expect(stats).toHaveAttribute("aria-selected", "true");
   await expect(page.locator("#statsTab")).toHaveClass(/active/);
+  await expect(page.locator("body")).not.toHaveClass(/mobile-nav-open/);
+  await expect(toggle).toBeFocused();
+
+  await toggle.click();
+  await expect(overview).toBeFocused();
+  await page.keyboard.press("Escape");
+  await expect(page.locator("body")).not.toHaveClass(/mobile-nav-open/);
+  await expect(toggle).toBeFocused();
+
+  await toggle.click();
+  await expect(overview).toBeFocused();
+  await page.locator("#mobileNavScrim").click({ position: { x: 760, y: 20 } });
   await expect(page.locator("body")).not.toHaveClass(/mobile-nav-open/);
   await expect(toggle).toBeFocused();
 });

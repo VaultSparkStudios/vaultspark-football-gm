@@ -1,3 +1,5 @@
+import { recordWinPct } from "../stats/teamRecord.js";
+
 /**
  * Fan Sentiment Engine
  * Computes crowd approval (0–100) per team each week based on performance,
@@ -18,11 +20,9 @@ export function computeFanApproval(team, standings = []) {
   // Base: owner's tracked fan interest (already updated weekly by processOwnerFinances)
   const base = Number(team?.owner?.fanInterest ?? 70);
   // Win% modifier: ±15 points
-  const row = standings.find((r) => r.team === (team.abbrev || team.id));
-  const w = Number(row?.wins ?? team?.season?.wins ?? 0);
-  const l = Number(row?.losses ?? team?.season?.losses ?? 0);
-  const gp = w + l;
-  const winPct = gp > 0 ? w / gp : 0.5;
+  const keys = new Set([team?.id, team?.abbrev].filter(Boolean));
+  const row = standings.find((r) => keys.has(r?.team) || keys.has(r?.teamId));
+  const winPct = recordWinPct(row || team?.season);
   const winMod = Math.round((winPct - 0.5) * 30);
   // Personality bias: win-now owners have higher fan expectations (more volatile)
   const personality = team?.owner?.personality || "balanced";
@@ -51,10 +51,11 @@ export function updateFanSentiment(league, weekResult, year) {
       (g) => g.homeTeamId === team.id || g.awayTeamId === team.id
     );
     if (game) {
+      const tied = Number(game.homeScore) === Number(game.awayScore);
       const won =
         (game.homeTeamId === team.id && game.homeScore > game.awayScore) ||
         (game.awayTeamId === team.id && game.awayScore > game.homeScore);
-      reasons.push(won ? "won this week" : "lost this week");
+      reasons.push(tied ? "tied this week" : won ? "won this week" : "lost this week");
     }
     if (Number(team?.owner?.fanInterest ?? 70) < 58) reasons.push("fan base restless");
     if (trend === "rising") reasons.push("momentum building");

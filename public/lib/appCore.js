@@ -1390,10 +1390,14 @@ export function bindMobileNav() {
   /** True when the hamburger is actually rendered, i.e. the drawer breakpoint is live. */
   const isDrawerActive = () => window.getComputedStyle(toggle).display !== "none";
 
-  function closeNav() {
+  function closeNav({ restoreFocus = false } = {}) {
+    const focusWasInDrawer = sideMenu?.contains(document.activeElement);
     document.body.classList.remove("mobile-nav-open");
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Open navigation");
+    // Move focus before the drawer becomes inert. Escape and scrim dismissal
+    // must be as focus-safe as selecting a destination tab.
+    if (restoreFocus || focusWasInDrawer) toggle.focus();
     // Keep the off-screen drawer out of the tab order and away from screen readers.
     if (sideMenu && isDrawerActive()) sideMenu.setAttribute("inert", "");
   }
@@ -1422,9 +1426,9 @@ export function bindMobileNav() {
     if (document.body.classList.contains("mobile-nav-open")) closeNav();
     else openNav();
   });
-  scrim.addEventListener("click", closeNav);
+  scrim.addEventListener("click", () => closeNav({ restoreFocus: true }));
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && document.body.classList.contains("mobile-nav-open")) closeNav();
+    if (event.key === "Escape" && document.body.classList.contains("mobile-nav-open")) closeNav({ restoreFocus: true });
   });
 
   return closeNav;
@@ -1437,8 +1441,7 @@ export function bindMenuTabs(activateTabFn, closeMobileNav) {
     activateTabFn(button.dataset.tab);
     // Selecting a section is the drawer's job done — get it off the screen.
     closeMobileNav?.();
-    if (drawerWasOpen) document.getElementById("mobileNavToggle")?.focus();
-    else if (keyboard) button.focus();
+    if (!drawerWasOpen && keyboard) button.focus();
   };
 
   buttons.forEach((button) => {

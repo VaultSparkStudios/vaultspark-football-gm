@@ -94,9 +94,9 @@
     }
   ],
   "diffStat": {
-    "files": 213,
-    "insertions": 0,
-    "deletions": 0,
+    "files": 236,
+    "insertions": 5724,
+    "deletions": 547,
     "suite": "Canonical Node 1,303/1,303; push CI 1,298/1,298; Playwright 55/55; responsive 255 game states with 98 exact-candidate captures plus four status captures; staging 14/14; production 10/10; backend exact; unified release authority verified; launchReady false."
   },
   "amortization": {

@@ -1,4 +1,5 @@
 import { escapeHtml, teamCode } from "./appCore.js";
+import { teamRecordWinPct } from "./teamRecord.js";
 
 function normalizeNeed(entry) {
   if (!entry) return null;
@@ -8,7 +9,7 @@ function normalizeNeed(entry) {
 }
 
 function contenderScore(entry = {}) {
-  return Number(entry.wins || 0) - Number(entry.losses || 0) + Number(entry.winPct || 0) * 4;
+  return Number(entry.wins || 0) - Number(entry.losses || 0) + teamRecordWinPct(entry) * 4;
 }
 
 function standingTeamId(value) {
@@ -55,8 +56,7 @@ export function buildTradeDeadlineFrenzy(dashboard = {}) {
   const team = dashboard.controlledTeam || {};
   const myCode = team.abbrev || team.teamId || dashboard.controlledTeamId || "";
   const row = standings.find((entry) => entry.team === myCode || entry.teamName === team.name) || {};
-  const games = Math.max(1, Number(row.wins || 0) + Number(row.losses || 0) + Number(row.ties || 0));
-  const pct = Number(row.wins || 0) / games;
+  const pct = teamRecordWinPct(row);
   const needs = (dashboard.rosterNeeds || []).map(normalizeNeed).filter(Boolean).sort((a, b) => a.delta - b.delta);
   const capSpace = Number(dashboard.cap?.capSpace ?? dashboard.capSpace ?? 0);
   const capStatus = capTier(capSpace);

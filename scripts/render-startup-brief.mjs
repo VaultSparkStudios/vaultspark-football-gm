@@ -758,6 +758,10 @@ const shippedLine  = handoffBlock.match(/^- Shipped:\s*(.+)$/m)?.[1]
   ?? shippedSection.match(/^-\s+(.+)$/m)?.[1]
   ?? status.currentFocus
   ?? 'see LATEST_HANDOFF.md';
+const lastDeploySignal = status.lastDeployStatus
+  || status.lastVerification?.production
+  || status.lastVerification?.deploy
+  || 'N/A';
 
 // ── Signal thresholds ─────────────────────────────────────────────────────────
 function sig(val, green, warn) {
@@ -1189,6 +1193,8 @@ const lines = [
   renderLastCompleted(status.lastSessionSummary, {
     expectedSession: currentSession - 1,
     fallback: status.currentFocus || shippedLine || 'Latest session details unavailable.',
+    tests: status.lastVerification?.canonical || status.lastVerification?.tests || null,
+    deploy: status.lastVerification?.production || status.lastVerification?.deploy || null,
   }),
   ``,
   ...(Array.isArray(status.testingSurfaces) && status.testingSurfaces.length
@@ -1228,7 +1234,7 @@ const lines = [
   // S181 [audit #2] — was `${testsTotal} passing`, which labelled the TOTAL as
   // PASSING (179 "passing" while 10 failed) — a CANON-031 lying surface that
   // contradicted the SIGNALS block. Show passing/total, matching testsLabel.
-  row(`Tests:    ${typeof status.testsPassing === 'number' ? `${status.testsPassing}/${status.testsTotal ?? '?'}` : (status.testsTotal ?? '?')} passing  ·  Deploy: ${status.lastDeployStatus || 'N/A'}`),
+  row(`Tests:    ${typeof status.testsPassing === 'number' ? `${status.testsPassing}/${status.testsTotal ?? '?'}` : (status.testsTotal ?? '?')} passing  ·  Deploy: ${lastDeploySignal}`),
   bot(),
   ``,
   // ── CONTEXT METER (S119 founder directive — was buried, now first-class) ──

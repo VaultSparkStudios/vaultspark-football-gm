@@ -7,16 +7,21 @@
  * games, championships, and eliminations all register as moments.
  */
 
-export function scoreDrama({ won, margin, scoringPlays, seasonType, label }) {
+import { GAME_RESULTS, gameResultFromScores, gameResultLabel } from "../../../public/lib/gameOutcome.js";
+
+export function scoreDrama({ result = null, won = null, margin, scoringPlays, seasonType, label }) {
+  const resolvedResult = result || (won === true ? GAME_RESULTS.WIN : won === false ? GAME_RESULTS.LOSS : GAME_RESULTS.UNKNOWN);
+  const isWin = resolvedResult === GAME_RESULTS.WIN;
+  const isLoss = resolvedResult === GAME_RESULTS.LOSS;
   const playoffs = seasonType === "playoffs";
   return (
-    (won && margin < 4 ? 3 : 0) +
+    (isWin && margin < 4 ? 3 : 0) +
     (margin <= 3 ? 2 : 0) +
     (scoringPlays > 8 ? 1 : 0) +
-    (won && margin >= 21 ? 2 : 0) +
+    (isWin && margin >= 21 ? 2 : 0) +
     (playoffs ? 2 : 0) +
     (playoffs && label === "super-bowl" ? 3 : 0) +
-    (playoffs && !won ? 2 : 0)
+    (playoffs && isLoss ? 2 : 0)
   );
 }
 
@@ -32,9 +37,10 @@ export function buildFranchiseMoment(session, teamId) {
     const homeIsControlled = game.homeTeamId === teamId;
     const teamScore = homeIsControlled ? boxScore.homeTeam?.score : boxScore.awayTeam?.score;
     const oppScore = homeIsControlled ? boxScore.awayTeam?.score : boxScore.homeTeam?.score;
-    const won = (teamScore || 0) > (oppScore || 0);
+    const result = gameResultFromScores(teamScore, oppScore);
+    const won = result === GAME_RESULTS.WIN;
     const dramaScore = scoreDrama({
-      won,
+      result,
       margin,
       scoringPlays: scoring.length,
       seasonType: game.seasonType,
@@ -51,7 +57,9 @@ export function buildFranchiseMoment(session, teamId) {
           : won
             ? `Playoff statement: ${teamScore}-${oppScore} — the run continues`
             : `Season ends ${teamScore}-${oppScore} — the run is over`
-        : won
+        : result === GAME_RESULTS.TIE
+          ? `Deadlock — ${teamScore}-${oppScore}, and neither side could break it`
+          : won
           ? margin <= 3
             ? `Clutch ${margin === 0 ? "tie" : `${teamScore}-${oppScore} thriller`} — your team wins it!`
             : margin >= 21
@@ -67,9 +75,9 @@ export function buildFranchiseMoment(session, teamId) {
         highlight: walkoff
           ? `${walkoff.type} by ${walkoff.description?.split(" ")[0] || "your team"} — ${walkoff.quarterLabel}`
           : "Big moments on both sides",
-        result: won ? "win" : "loss",
+        result,
         score: `${teamScore}-${oppScore}`,
-        shareText: `🏈 ${playoffs ? "Playoffs" : `Week ${game.week}`} ${won ? "Win" : "Loss"} — ${teamScore}-${oppScore}. Playing Franchise Architect: Football — best GM sim around! #VaultSpark`,
+        shareText: `🏈 ${playoffs ? "Playoffs" : `Week ${game.week}`} ${gameResultLabel(result)} — ${teamScore}-${oppScore}. Playing Franchise Architect: Football — best GM sim around! #VaultSpark`,
         topPlay:
           pbp.find(
             (p) =>

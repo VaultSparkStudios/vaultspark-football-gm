@@ -15,6 +15,16 @@ test("primary tab navigation resolves orientation-correct roving keyboard target
   assert.equal(resolveTabKeyboardIndex({ key: "Enter", currentIndex: 2, count: 14 }), null);
 });
 
+test("mobile drawer dismissal restores focus before making the drawer inert", () => {
+  const source = read("../public/lib/appCore.js");
+  const focusCapture = source.indexOf("const focusWasInDrawer = sideMenu?.contains(document.activeElement)");
+  const focusRestore = source.indexOf("if (restoreFocus || focusWasInDrawer) toggle.focus()", focusCapture);
+  const inertWrite = source.indexOf('sideMenu.setAttribute("inert", "")', focusRestore);
+  assert.ok(focusCapture >= 0);
+  assert.ok(focusRestore > focusCapture);
+  assert.ok(inertWrite > focusRestore, "focus must leave the drawer before inert is applied");
+});
+
 test("app shell wires share-card and newsletter through the lazy export island", () => {
   const appSource = read("../public/app.js");
   const gameSource = read("../public/game.html");

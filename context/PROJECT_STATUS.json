@@ -5,7 +5,7 @@
   "status": "active",
   "health": "yellow",
   "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 3cce0a51e82e78625bdfad82f1cbdb19a31c94aa, required edge headers verified; evidence current through 2026-09-04T15:14:14.967Z. Launch remains HOLD; independent gates are not collapsed.",
-  "nextMilestone": "Verify an independent staging origin at the exact candidate revision, then prove production revision parity, delivered on-domain email, founder approval, and authoritative lifecycle before any launch flip.",
+  "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -118,14 +118,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 724,
+  "silHealth": 694,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
     "score": 92,
-    "date": "2026-09-03",
+    "date": "2026-09-08",
     "passing": 11,
     "warning": 1,
     "checks": [
@@ -1354,7 +1354,7 @@
     "verified": true,
     "observedAt": "2026-09-03T14:51:07.264Z"
   },
-  "lastCloseoutAt": "2026-08-27T00:59:49.532Z",
+  "lastCloseoutAt": "2026-09-03T16:16:49.000Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
     "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",

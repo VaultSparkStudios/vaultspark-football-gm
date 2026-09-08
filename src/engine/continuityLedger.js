@@ -209,7 +209,9 @@ export function recordPress(league, entry) {
     year: entry.year,
     week: entry.week,
     tone: entry.tone,
+    result: entry.result || (entry.isTie ? "tie" : entry.isWin ? "win" : "loss"),
     isWin: entry.isWin,
+    isTie: entry.isTie === true,
     opponent: entry.opponent || null,
     score: entry.score || null
   };

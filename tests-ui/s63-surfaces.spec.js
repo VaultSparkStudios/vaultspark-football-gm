@@ -39,7 +39,14 @@ async function advanceWeekThroughPlan(page, timeoutMs = 150_000) {
   const deadline = Date.now() + timeoutMs;
 
   while (Date.now() < deadline) {
-    if ((await status.textContent().catch(() => ""))?.includes("Ready")) return;
+    if ((await status.textContent().catch(() => ""))?.includes("Ready")) {
+      const decline = page.locator("#firstDebriefDecline");
+      if (await decline.isVisible({ timeout: 2_000 }).catch(() => false)) {
+        await decline.click();
+        await expect(page.locator("#firstDebriefPulse")).toHaveCount(0);
+      }
+      return;
+    }
 
     const decision = page.locator("#gmDecisionOptions .gm-decision-option").first();
     if (await decision.isVisible().catch(() => false)) {

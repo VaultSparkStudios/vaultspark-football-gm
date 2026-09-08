@@ -1,21 +1,12 @@
-# Implementation Plan — Franchise Architect: Football — Session 98
+# Implementation Plan — 2026-09-07
 
-Source: docs/AUDIT_2026-09-03_SESSION98.json (three live-premise-verified items; combined priority 71.6).
+Source: `docs/AUDIT_2026-09-07.json`
 
-## Wave 1 — shared deterministic authorities
+1. **postgame-ties-still-become-losses** — ✅ Complete at L3. A shared result authority now preserves ties across recap, Franchise Moment, press-room copy/effects/promises, and continuity, with exact 20–20 regressions.
+2. **first-debrief-never-invites-private-playtest-evidence** — ✅ Complete at L3. The first successful weekly debrief now offers a one-time, skippable, local-only pulse with explicit submit semantics, truthful copy feedback, focus restoration, browser coverage, and hash-bound responsive theme proof.
 
-1. Add a pure season-transition authority and make the first valid completed season open its existing reckoning exactly once.
-2. Preserve the runtime's existing year/week game chronology in Trophy Road instead of applying a second week-only sort.
-3. Add an orientation-aware roving-tab index authority for the existing primary navigation contract.
+Verification order: focused Node tests → browser wiring/Playwright → build and browser budgets → rendered desktop/mobile dark/light review → canonical suite.
 
-## Wave 2 — browser integration
+No commit, push, deployment, lifecycle flip, or public announcement is part of this plan; `/closeout` remains a separate founder command.
 
-1. Replace the redundant prevDashboardPhase sentinel with the previous/current dashboard transition contract.
-2. Consolidate the duplicate Arrow/Home/End paths through the existing activateTab authority.
-3. Return focus to the visible toggle when a keyboard selection closes and inerts the tablet drawer.
-
-## Wave 3 — proof
-
-1. Focused Node tests for year-one transition, cross-season runtime order, and tab wraparound.
-2. Playwright desktop and tablet-drawer keyboard journey.
-3. Full canonical, responsive rendered-pixel, staging, production, and exact-revision release gates.
+Implementation status: **2/2 complete**. Final verification: canonical aggregate **1,319/1,319**, Playwright **55/55**, focused release guards **44/44**, and first-decision graph **643,495/650,000 bytes** with zero lazy leaks. Public launch authority remains separate and is still **HOLD** pending delivered reply-capable project-domain email evidence, exact-SHA founder approval, and authoritative lifecycle reconciliation.

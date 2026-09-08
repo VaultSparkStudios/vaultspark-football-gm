@@ -91,6 +91,22 @@ test("weekly fan sentiment changes from the live season even when league standin
   assert.ok(league.fanSentiment.BUF.reasons.includes("won this week"));
 });
 
+test("fan sentiment counts ties as half-wins and never narrates a tie as a loss", () => {
+  const team = { id: "BUF", abbrev: "BUF", owner: { fanInterest: 70, personality: "balanced" }, season: { wins: 5, losses: 4, ties: 1 } };
+  assert.equal(computeFanApproval(team), 72, "a 5-4-1 record is .550, not .500");
+  const league = {
+    teams: [team],
+    latestStandings: [{ teamId: "BUF", wins: 5, losses: 4, ties: 1 }],
+    fanSentiment: { BUF: { approval: 70, trend: "stable", reasons: [] } }
+  };
+  updateFanSentiment(league, {
+    week: 10,
+    games: [{ homeTeamId: "BUF", awayTeamId: "MIA", homeScore: 20, awayScore: 20 }]
+  }, 2026);
+  assert.ok(league.fanSentiment.BUF.reasons.includes("tied this week"));
+  assert.ok(!league.fanSentiment.BUF.reasons.includes("lost this week"));
+});
+
 test("live numeric chemistry reaches the culture-crisis event and controlled-GM decision", () => {
   const session = createSession({ seed: 8707, startYear: 2026, controlledTeamId: "BUF", mode: "stat" });
   for (const team of session.league.teams) {

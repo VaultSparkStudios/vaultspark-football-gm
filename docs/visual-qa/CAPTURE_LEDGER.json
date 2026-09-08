@@ -6750,6 +6750,66 @@
       "supersededSha256": [
         "41efdfe8753e5d56f327ac67f92868417c1a0bee1aa3fb9fc16ea219de548ca3"
       ]
+    },
+    "s99-desktop-overview-dark.png": {
+      "sha256": "ba52ef592724b667d76ff794d7ed03f954224ad2f92527b600c3a0a9c878b5ae",
+      "bytes": 549384,
+      "session": 99
+    },
+    "s99-desktop-overview-light.png": {
+      "sha256": "149fac6d1260843ac6c790d1f4399f48c59ad5d7decb0494539302547c22c180",
+      "bytes": 503716,
+      "session": 99
+    },
+    "s99-first-debrief-desktop-dark.png": {
+      "sha256": "ec620954c8c98a0bf7c21c50a4c988a2321b988d90dd906bebe415ee0b2e94a8",
+      "bytes": 276567,
+      "session": 99
+    },
+    "s99-first-debrief-desktop-light.png": {
+      "sha256": "7363722ec3af7be2d133ef6b94b4fd8bae488b2794a4560d23b298e244453ac2",
+      "bytes": 272266,
+      "session": 99
+    },
+    "s99-first-debrief-mobile-dark.png": {
+      "sha256": "6c4f25f24ccc4776ef741abfd8d8bcb50de59218eb4d40ad3b1d8f3532808983",
+      "bytes": 69931,
+      "session": 99
+    },
+    "s99-first-debrief-mobile-light.png": {
+      "sha256": "013e1de37c768b40e3b127f67f74e68541be8f7a0ceedd7fcba7536aa02ce05b",
+      "bytes": 63324,
+      "session": 99
+    },
+    "s99-mobile-overview-dark.png": {
+      "sha256": "5cf5c225e3fcbda2fd2aecd2381adc6fa88a0bb4a4da85c06b66d29d4f05927e",
+      "bytes": 68162,
+      "session": 99
+    },
+    "s99-mobile-overview-light.png": {
+      "sha256": "8cab7f125bbdd67a8fbc48803971347c602608a1dd036239e7aeed97e8d6d254",
+      "bytes": 72004,
+      "session": 99
+    },
+    "s99-tablet-drawer-focus-dark.png": {
+      "sha256": "312ac1eca540ef7efb0f22480f63fedc297483bb4ea098bab6736193af61d34e",
+      "bytes": 243966,
+      "session": 99
+    },
+    "s99-tablet-drawer-focus-light.png": {
+      "sha256": "2dcfb48de73a165906a5930fef1151adc306a60fd797a44b6143efb939f70741",
+      "bytes": 248029,
+      "session": 99
+    },
+    "s99-tablet-drawer-open-dark.png": {
+      "sha256": "c029686116e20c8badafd110cef587bf1a6c9392fcbd6e0abccbdca92847be0c",
+      "bytes": 210811,
+      "session": 99
+    },
+    "s99-tablet-drawer-open-light.png": {
+      "sha256": "79cefe9d92d477fa9c597f0283b5c261552503e32cd406366aba897f5f966633",
+      "bytes": 198453,
+      "session": 99
     }
   }
 }

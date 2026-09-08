@@ -1,3 +1,5 @@
+import { teamRecordWinPct } from "./teamRecord.js";
+
 /**
  * marqueeBadge.js — deterministic "primetime" flavor badge (S78).
  *
@@ -15,8 +17,7 @@ const MIN_QUALIFYING_WEEK = 6;
 
 function winPctOf(row) {
   if (typeof row.winPct === "number") return row.winPct;
-  const games = (row.wins || 0) + (row.losses || 0) + (row.ties || 0);
-  return games ? (row.wins || 0) / games : 0;
+  return teamRecordWinPct(row, { empty: 0 });
 }
 
 /** Deterministic comparator: better winPct first; ties broken by wins, then team code (alphabetical) so the result never depends on array/object iteration order. */

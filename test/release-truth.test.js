@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { evaluateReleaseEvidenceFreshness, validateReleaseEvidence, verifyReleaseEvidenceContract } from "../scripts/lib/release-truth.mjs";
+import { evaluateReleaseEvidenceFreshness, releaseTruthProse, validateReleaseEvidence, verifyReleaseEvidenceContract } from "../scripts/lib/release-truth.mjs";
 
 const NOW = Date.parse("2026-08-02T16:00:00.000Z");
 
@@ -133,4 +133,14 @@ test("a checked-in release contract self-validates against its exact source rece
   });
   assert.equal(drift.valid, false);
   assert.ok(drift.mismatches.includes("contract-drift:receiptSha256"));
+});
+
+test("next milestone names only release gates that remain unverified", () => {
+  const contract = validate(report(), { stagingVerified: true }).contract;
+  const prose = releaseTruthProse(contract);
+  assert.doesNotMatch(prose.nextMilestone, /independent staging/i);
+  assert.doesNotMatch(prose.nextMilestone, /production parity/i);
+  assert.match(prose.nextMilestone, /on-domain email/i);
+  assert.match(prose.nextMilestone, /founder approval/i);
+  assert.match(prose.nextMilestone, /lifecycle/i);
 });

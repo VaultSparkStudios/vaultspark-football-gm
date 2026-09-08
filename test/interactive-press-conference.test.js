@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 import {
   PRESS_RESPONSE_CATALOG,
   PRESS_RESPONSE_IDS,
+  PRESS_TIE_RESPONSES,
   openPressQuestion,
   answerPressQuestion,
   getPendingPressQuestion,
@@ -55,6 +56,9 @@ test("three postures are offered, plus an honest skip", () => {
     assert.ok(response.quote.win && response.quote.loss, `${id} must have a line for both outcomes`);
     assert.ok(response.effects.win && response.effects.loss, `${id} must have effects for both outcomes`);
     assert.ok(response.reasons.win && response.reasons.loss, `${id} must explain itself`);
+    assert.ok(PRESS_TIE_RESPONSES[id]?.quote, `${id} must have a line for a tie`);
+    assert.ok(PRESS_TIE_RESPONSES[id]?.effects, `${id} must have effects for a tie`);
+    assert.ok(PRESS_TIE_RESPONSES[id]?.reason, `${id} must explain a tie response`);
   }
 });
 
@@ -99,6 +103,40 @@ test("the question is phrased from the actual result", () => {
     teamId: "BUF", year: 2026, week: 9, isWin: false, margin: 3, streak: -4, opponent: "MIA", score: "17–20"
   });
   assert.match(skid.question, /4 straight/);
+});
+
+test("a tie opens a neutral podium and applies tie-specific consequences", () => {
+  const league = fakeLeague();
+  const pending = openPressQuestion(league, {
+    teamId: "BUF",
+    year: 2026,
+    week: 5,
+    result: "tie",
+    isTie: true,
+    margin: 0,
+    streak: 0,
+    opponent: "NYJ",
+    score: "20–20"
+  });
+
+  assert.equal(pending.result, "tie");
+  assert.equal(pending.isWin, false);
+  assert.equal(pending.isTie, true);
+  assert.match(pending.question, /Neither side found a winner/);
+  assert.equal(pending.options.length, 3);
+  assert.ok(pending.options.every((option) => option.preview && option.consequence));
+
+  const answered = answerPressQuestion(league, {
+    teamId: "BUF",
+    responseId: "take-the-blame",
+    questionId: pending.id
+  });
+  assert.equal(answered.ok, true);
+  assert.equal(answered.receipt.result, "tie");
+  assert.equal(answered.receipt.isTie, true);
+  assert.equal(answered.receipt.promised, false, "a tie cannot create a broken-loss promise");
+  assert.equal(league.teams[0].chemistry, 71);
+  assert.equal(league.teams[0].owner.patience, 0.554);
 });
 
 test("opening is idempotent and never reopens an answered question", () => {

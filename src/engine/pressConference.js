@@ -13,10 +13,13 @@ import { initNewsLog } from "./beatReporter.js";
 import { getLastPress, recordPress } from "./continuityLedger.js";
 import { topGamePerformer } from "../stats/gameImpact.js";
 import { openPressQuestion, getLastPressResponse } from "./pressRoom.js";
+import { GAME_RESULTS, gameResultFromScores, gameResultLabel } from "../../public/lib/gameOutcome.js";
 
 // ── Tone assignment ────────────────────────────────────────────────────────────
 
-function getTone(margin, isWin, streak) {
+function getTone(margin, result, streak) {
+  if (result === GAME_RESULTS.TIE) return "analytical";
+  const isWin = result === GAME_RESULTS.WIN;
   if (isWin && margin >= 21) return "confident";
   if (isWin && streak >= 3)  return "confident";
   if (!isWin && margin >= 21) return "disappointed";
@@ -56,6 +59,12 @@ const QUOTES = {
   ]
 };
 
+const TIE_QUOTES = [
+  (ctx) => `"${ctx.score} says exactly what happened: neither side finished the job. We earned parts of that result and left parts of it on the field."`,
+  (ctx) => `"A tie is its own kind of film. We were good enough not to lose to ${ctx.opponent}, and not sharp enough to beat them. Both truths matter."`,
+  () => `"Nobody gets to call that a win or a loss. We move forward with the record we earned and a clear list of what has to improve."`
+];
+
 // ── Continuity follow-ups (S29) — the room remembers last week's podium ──────
 // Keyed by transition from last week's tone/result to this week's result.
 
@@ -83,7 +92,9 @@ const FOLLOWUP_QUOTES = {
  * the player never said. The engine-tone path below remains for weeks the GM
  * skipped or for saves that predate the interactive podium.
  */
-function followupKey(lastPress, isWin, lastResponse = null) {
+function followupKey(lastPress, result, lastResponse = null) {
+  if (result === GAME_RESULTS.TIE) return null;
+  const isWin = result === GAME_RESULTS.WIN;
   if (lastResponse) {
     if (lastResponse.promised) return isWin ? "promise-kept" : "promise-broken";
     if (lastResponse.isWin && lastResponse.posture === "demanding" && !isWin) return "humbled";
@@ -99,7 +110,7 @@ function followupKey(lastPress, isWin, lastResponse = null) {
 
 const ANALYST_QUOTES = [
   (ctx) => `"Looking at the numbers: ${ctx.topPerformer ? `${ctx.topPerformer} was our most efficient player` : "the unit held its own"}. The matchup advantage we identified pre-game played out. Film tells you what the score doesn't."`,
-  (ctx) => `"Tactically, we wanted to attack their secondary early. ${ctx.isWin ? "It worked." : "We didn't execute it cleanly."} The adjustments at halftime ${ctx.isWin ? "were the difference" : "came too late"}."`
+  (ctx) => `"Tactically, we wanted to attack their secondary early. ${ctx.result === GAME_RESULTS.WIN ? "It worked." : ctx.result === GAME_RESULTS.TIE ? "It created chances, but not a winning edge." : "We did not execute it cleanly."} The adjustments at halftime ${ctx.result === GAME_RESULTS.WIN ? "were the difference" : ctx.result === GAME_RESULTS.TIE ? "kept the game level" : "came too late"}."`
 ];
 
 // ── Pick a deterministic quote using game seed ─────────────────────────────────
@@ -158,7 +169,9 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
   const myScore  = isHome ? (game.homeScore ?? 0) : (game.awayScore ?? 0);
   const theirScore = isHome ? (game.awayScore ?? 0) : (game.homeScore ?? 0);
   const opponent = isHome ? game.awayTeamId : game.homeTeamId;
-  const isWin    = myScore > theirScore;
+  const result   = gameResultFromScores(myScore, theirScore);
+  const isWin    = result === GAME_RESULTS.WIN;
+  const isTie    = result === GAME_RESULTS.TIE;
   const margin   = Math.abs(myScore - theirScore);
   const score    = `${myScore}–${theirScore}`;
   const week     = weekResult.week;
@@ -180,21 +193,22 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
   const topPerformer =
     topGamePerformer(game.boxScore, { teamId: controlledTeamId })?.player || null;
 
-  const tone = getTone(margin, isWin, streak);
-  const ctx  = { opponent, score, isWin, margin, topPerformer, week };
+  const tone = getTone(margin, result, streak);
+  const ctx  = { opponent, score, result, isWin, isTie, margin, topPerformer, week };
   const gameId = `${game.homeTeamId}-${game.awayTeamId}-${week}`;
   // The quote key carries every dimension that should vary the room: which game,
   // which season, which week, and what mood the coach is in.
-  const quoteKey = `${gameId}|${year}|${week}|${tone}|${isWin ? "W" : "L"}`;
+  const quoteKey = `${gameId}|${year}|${week}|${tone}|${result}`;
 
-  const headCoachQ = pickQuote(QUOTES[tone], quoteKey, 0)(ctx);
+  const headCoachQ = pickQuote(isTie ? TIE_QUOTES : QUOTES[tone], quoteKey, 0)(ctx);
   const analystQ   = pickQuote(ANALYST_QUOTES, quoteKey, 1)(ctx);
 
   // Continuity: does the room remember something from last week's podium?
   // The GM's own answer takes precedence over the engine's inferred tone.
   const lastPress = getLastPress(league, { year, week });
   const lastResponse = getLastPressResponse(league, { year, week });
-  const fKey = followupKey(lastPress, isWin, lastResponse);
+  const fKey = followupKey(lastPress, result, lastResponse);
+  const resultLabel = gameResultLabel(result);
 
   const items = [
     {
@@ -203,11 +217,13 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
       tone,
       week,
       year,
-      headline: `${isWin ? "Win" : "Loss"} vs ${opponent} — Week ${week} Post-Game: Head Coach`,
+      headline: `${resultLabel} vs ${opponent} — Week ${week} Post-Game: Head Coach`,
       quote: headCoachQ,
       teamIds: [controlledTeamId],
       score,
-      isWin
+      result,
+      isWin,
+      isTie
     },
     {
       type: "press-conference",
@@ -215,11 +231,13 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
       tone: "analytical",
       week,
       year,
-      headline: `${isWin ? "Win" : "Loss"} vs ${opponent} — Week ${week} Post-Game: GM Analysis`,
+      headline: `${resultLabel} vs ${opponent} — Week ${week} Post-Game: GM Analysis`,
       quote: analystQ,
       teamIds: [controlledTeamId],
       score,
-      isWin
+      result,
+      isWin,
+      isTie
     }
   ];
 
@@ -235,6 +253,8 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
       teamIds: [controlledTeamId],
       score,
       isWin,
+      isTie,
+      result,
       continuity: fKey
     });
   }
@@ -248,7 +268,7 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
   });
 
   // Remember this podium for next week's room.
-  recordPress(league, { year, week, tone, isWin, opponent, score });
+  recordPress(league, { year, week, tone, result, isWin, isTie, opponent, score });
 
   // S63 — and open the question the GM actually gets to answer. The room asks
   // once per controlled-team game; an unanswered question simply expires when
@@ -257,7 +277,9 @@ export function generatePressConference(league, weekResult, controlledTeamId, ye
     teamId: controlledTeamId,
     year,
     week,
+    result,
     isWin,
+    isTie,
     margin,
     streak,
     opponent,

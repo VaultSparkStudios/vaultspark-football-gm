@@ -105,3 +105,15 @@ test("empty/missing standings and game inputs are handled safely", () => {
   assert.equal(deriveMarqueeBadge({ awayTeamId: "BUF", homeTeamId: "BAL" }, [], 8), null);
   assert.equal(deriveMarqueeBadge({ awayTeamId: "BUF", homeTeamId: "BAL" }, null, 8), null);
 });
+
+test("fallback standings rank ties as half-wins when winPct is absent", () => {
+  const tiedStandings = [
+    { team: "A", conference: "AFC", division: "East", wins: 5, losses: 5, ties: 0 },
+    { team: "Z", conference: "AFC", division: "East", wins: 5, losses: 4, ties: 1 },
+    { team: "B", conference: "AFC", division: "East", wins: 2, losses: 8, ties: 0 }
+  ];
+  assert.deepEqual(
+    deriveMarqueeBadge({ awayTeamId: "Z", homeTeamId: "B" }, tiedStandings, 8),
+    { label: "Division Showdown", reason: "A divisional rival is taking on the team currently leading their division." }
+  );
+});

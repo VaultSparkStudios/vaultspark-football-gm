@@ -25,7 +25,7 @@ test("browser and engine win percentage authorities count a tie as half a win", 
 });
 
 test("engine-authored record narratives consume the tie-aware authority", () => {
-  for (const file of ["beatReporter.js", "gmDecisionAuthority.js", "narrativeEvents.js"]) {
+  for (const file of ["beatReporter.js", "fanSentiment.js", "gmDecisionAuthority.js", "gmLegacyScore.js", "narrativeEvents.js"]) {
     const source = readFileSync(new URL(`../src/engine/${file}`, import.meta.url), "utf8");
     assert.match(source, /from "\.\.\/stats\/teamRecord\.js"/);
   }
@@ -34,7 +34,8 @@ test("engine-authored record narratives consume the tie-aware authority", () => 
 test("all player-facing record surfaces use the shared browser authority", () => {
   const consumers = [
     "mobileLoop.js", "betaFeedback.js", "franchiseNewsletter.js", "rewardBeats.js",
-    "gameFlow.js", "tabOverview.js", "seasonEpilogue.js", "returnDigest.js", "achievements.js"
+    "gameFlow.js", "tabOverview.js", "seasonEpilogue.js", "returnDigest.js", "achievements.js",
+    "tradeDeadlineFrenzy.js", "marqueeBadge.js"
   ];
   for (const file of consumers) {
     const source = readFileSync(new URL(`../public/lib/${file}`, import.meta.url), "utf8");
