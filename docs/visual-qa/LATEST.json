@@ -1,7 +1,17 @@
 {
   "schemaVersion": 1,
   "capturedAt": "2026-09-08T20:12:06.447Z",
-  "sourceRevision": "11ea2adebf4c5e10a79fa439992f7a30a955379e+worktree",
+  "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4",
+    "files": 214,
+    "exclusions": [
+      "_health",
+      "deploy-manifest.json",
+      "edge-policy-receipt.json"
+    ]
+  },
   "sourceFingerprint": {
     "algorithm": "sha256",
     "files": {

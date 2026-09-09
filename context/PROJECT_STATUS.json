@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 3cce0a51e82e78625bdfad82f1cbdb19a31c94aa, required edge headers verified; evidence current through 2026-09-04T15:14:14.967Z. Launch remains HOLD; independent gates are not collapsed.",
+  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 713b326d4d84843112ddbc8354c0760bb6400859, required edge headers verified; evidence current through 2026-09-10T00:29:26.862Z. Launch remains HOLD; independent gates are not collapsed.",
   "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-09-03",
+  "lastUpdated": "2026-09-09",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -125,7 +125,7 @@
     "total": 12,
     "failing": 0,
     "score": 92,
-    "date": "2026-09-08",
+    "date": "2026-09-09",
     "passing": 11,
     "warning": 1,
     "checks": [
@@ -140,7 +140,7 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-09-02",
-  "lastVerificationAt": "2026-09-03",
+  "lastVerificationAt": "2026-09-09",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
@@ -164,7 +164,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-09-03"
+      "lastChecked": "2026-09-08"
     }
   ],
   "lastSession": 98,
@@ -202,8 +202,8 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
-    "workflowRun": 33770517153,
+    "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+    "workflowRun": 34275259066,
     "deployServer": "live-exact-workflow-green",
     "externalHealth": {
       "ok": true,
@@ -212,22 +212,22 @@
       "healthCache": "no-store",
       "snapshotCache": "public, max-age=30, s-maxage=60, stale-while-revalidate=300"
     },
-    "verifiedAt": "2026-09-03"
+    "verifiedAt": "2026-09-08"
   },
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "4044bd49f4510bec87df32d5ee2ba78eedc44b8c2f6554d4f2c2c9d50bfa7771",
-    "checkedAt": "2026-09-03T15:14:14.967Z",
+    "receiptSha256": "33cfdccfa3c4dcd78bca14de401018d918839cc397257a5ea6abbc761cac2f7c",
+    "checkedAt": "2026-09-09T00:29:26.862Z",
     "evidenceWindow": {
-      "observedAt": "2026-09-03T15:14:14.967Z",
+      "observedAt": "2026-09-09T00:29:26.862Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-09-04T15:14:14.967Z",
+      "expiresAt": "2026-09-10T00:29:26.862Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
+    "deployedRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
     "routes": {
       "verified": true,
       "checked": 9
@@ -248,7 +248,7 @@
     },
     "exactRevision": {
       "verified": true,
-      "expected": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa"
+      "expected": "713b326d4d84843112ddbc8354c0760bb6400859"
     },
     "independentStaging": {
       "verified": true
@@ -269,12 +269,12 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "350b95199feeaa26db74fa6da6a5713027b19c613f071629bc516ecea58d753d",
-    "sourceRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
+    "receiptSha256": "56889a90c5e81091c5bae36de2ee657c0f805b02961359c5f814f89a8bb5d1ad",
+    "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4",
-      "files": 211,
+      "digest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4",
+      "files": 214,
       "entries": [
         {
           "path": ".well-known/llms.txt",
@@ -313,8 +313,8 @@
         },
         {
           "path": "app.js",
-          "bytes": 106878,
-          "sha256": "899680ff671523c768bd2ac433c1f47f697296d34763171b21a762207c9f8cb7"
+          "bytes": 107364,
+          "sha256": "4b61da2f570054886b2b04ac76564587d9702eecb50b7b7ac67908668c828cee"
         },
         {
           "path": "boot-manifest.json",
@@ -322,14 +322,14 @@
           "sha256": "07246f9ae65c69e767131dfce15e1067b809e1f213be708de489d6730691e850"
         },
         {
-          "path": "community-stats.39fac4ebf0.js",
-          "bytes": 19896,
-          "sha256": "39fac4ebf0be3dae515c5cd811c87270c0706a3aea9fdaeb5f6e418d26bacf22"
+          "path": "community-stats.a2cd9636cc.js",
+          "bytes": 20061,
+          "sha256": "a2cd9636cc5491f81a6566a3fd9cab3959219e0695693f6b87f2237e6958b105"
         },
         {
           "path": "community-stats.js",
-          "bytes": 19896,
-          "sha256": "39fac4ebf0be3dae515c5cd811c87270c0706a3aea9fdaeb5f6e418d26bacf22"
+          "bytes": 20061,
+          "sha256": "a2cd9636cc5491f81a6566a3fd9cab3959219e0695693f6b87f2237e6958b105"
         },
         {
           "path": "contact.html",
@@ -353,8 +353,8 @@
         },
         {
           "path": "game.html",
-          "bytes": 102533,
-          "sha256": "a4c29e535980f65cdcc3e261de5e50b0dcf1818b5c0274e37af61363b43c3ec7"
+          "bytes": 102472,
+          "sha256": "95bd37bb800b884b288c5fca9911925af536042c854be293c40f653676fd3357"
         },
         {
           "path": "images/cover.png",
@@ -373,8 +373,8 @@
         },
         {
           "path": "index.html",
-          "bytes": 18387,
-          "sha256": "4f0c056103f5059f37fd26cbbf2f59a582bfff5b5b6ae235839280ea99016c19"
+          "bytes": 19256,
+          "sha256": "2e1c7ece519de07fff1a2d1057cfcc1c1bde5128ebfe4c14e83a00a72afc0569"
         },
         {
           "path": "lib/achievements.js",
@@ -398,8 +398,8 @@
         },
         {
           "path": "lib/appCore.js",
-          "bytes": 64633,
-          "sha256": "1f4f2cd6a4d1355119233b2c0cf8894bae0b68bdf5f3e3c9481f63e7da3a2bf4"
+          "bytes": 64921,
+          "sha256": "2029f4189461170dcc04b64524c66bc9bc93003620702fee2a3e6e0d53660dff"
         },
         {
           "path": "lib/appState.js",
@@ -522,6 +522,11 @@
           "sha256": "4181fa619506961b34db77f2a1db7915fa76508524481ec15c500053f6255c00"
         },
         {
+          "path": "lib/firstDebriefPulse.js",
+          "bytes": 10081,
+          "sha256": "da2b09fd90778c874a4f714c5ddd6d7b11b69232a62bb613146e2bc78dca34b8"
+        },
+        {
           "path": "lib/franchiseArchitecture.js",
           "bytes": 7301,
           "sha256": "97976cdb2955955871634c0e8a67777f6a333bc9cefd883c57d6ede9cd6f915d"
@@ -533,8 +538,8 @@
         },
         {
           "path": "lib/franchiseNewsletter.js",
-          "bytes": 8106,
-          "sha256": "4eaaae68a087686739022339eb51cffcde93237a5df16c6ce26f61c5593d9f9a"
+          "bytes": 8147,
+          "sha256": "124c0b8893d87ad3ae0e35f178bbea2d678c1638d93133c7ef2d53354733a81b"
         },
         {
           "path": "lib/franchiseScope.js",
@@ -545,6 +550,11 @@
           "path": "lib/gameFlow.js",
           "bytes": 60659,
           "sha256": "3c7725edca7bcac6b2906b2d6606d2f6c8433597b361c07abab50fc17d129f2a"
+        },
+        {
+          "path": "lib/gameOutcome.js",
+          "bytes": 2085,
+          "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
         },
         {
           "path": "lib/gameplayNavigation.js",
@@ -593,8 +603,8 @@
         },
         {
           "path": "lib/marqueeBadge.js",
-          "bytes": 4176,
-          "sha256": "252fd6cf39ce5587d9c9f580d299ce3014f77fd42614b95a73a25e60ff124093"
+          "bytes": 4158,
+          "sha256": "18cf4ea5f6ee32ebaff173dafc8403f0d8c5b2d9189b26918939c7fa9fc3378e"
         },
         {
           "path": "lib/mentorshipPanel.js",
@@ -663,8 +673,8 @@
         },
         {
           "path": "lib/rewardBeats.js",
-          "bytes": 6917,
-          "sha256": "e09e8a4569e4a56d55e6d299da06fcc099a4febc86c4bfea26a77d1bcdec4d85"
+          "bytes": 7382,
+          "sha256": "5ca27bae06a4c010b443ef1d8870367b3c4cafd84edd7add051209cf8c718427"
         },
         {
           "path": "lib/rivalCoachIntel.js",
@@ -788,8 +798,8 @@
         },
         {
           "path": "lib/tradeDeadlineFrenzy.js",
-          "bytes": 9862,
-          "sha256": "ea30e270ba6593da3b3295e54d19004dd95d84fad2bf47577d810da30c70c1fe"
+          "bytes": 9802,
+          "sha256": "3af3d2a20be5351af4e74ee12e2e17279c6912c1e948fa5004522f7001c6299a"
         },
         {
           "path": "lib/tutorialCampaign.js",
@@ -808,8 +818,8 @@
         },
         {
           "path": "precache-manifest.json",
-          "bytes": 15643,
-          "sha256": "c5a7033de3875786c73b29ca3316fdb8bc5689e1d996ade021d6aeebff717047"
+          "bytes": 15867,
+          "sha256": "07865171c68d025d5a074d86521b42fedf5ab3f4a57ef4457fdcb8109cdedda7"
         },
         {
           "path": "privacy.html",
@@ -820,6 +830,11 @@
           "path": "public-identity.json",
           "bytes": 584,
           "sha256": "39a81c7ebeead641bc7aeef0087798797a6f2a960f99eb8ba0e1c29db299ac3e"
+        },
+        {
+          "path": "public/lib/gameOutcome.js",
+          "bytes": 2085,
+          "sha256": "738c31cead7673f36a59e111d9755b40b086fb383d58093f682d582cf2c584bd"
         },
         {
           "path": "public/lib/gameplayNavigation.js",
@@ -854,7 +869,7 @@
         {
           "path": "sitemap.xml",
           "bytes": 1623,
-          "sha256": "665bfa188bff5168838f50f2a206df4435e146165390e03c5a1a928cede92575"
+          "sha256": "2f9ce0b0b5543f1181ca2bfc7c1360c851d81a2c8d49ed7d38005763a81a71c2"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -958,8 +973,8 @@
         },
         {
           "path": "src/engine/architectMasteryPortfolio.js",
-          "bytes": 8456,
-          "sha256": "b86c2057280e8aa6dc32bec2375e258cc42d2d1136972d555685d76e0add69eb"
+          "bytes": 8565,
+          "sha256": "b2eec1351ee372bc258abd8a8080caeb522c8a84aebb78073a8c7066b23b59d4"
         },
         {
           "path": "src/engine/architectThesis.js",
@@ -993,8 +1008,8 @@
         },
         {
           "path": "src/engine/continuityLedger.js",
-          "bytes": 8506,
-          "sha256": "3adafbc402e1d446fbc5b2449bc24ec1c1a06293b17c78cf06bb66ee9c765c59"
+          "bytes": 8621,
+          "sha256": "b6e8b08689c26158ab5baaa0c3c4e5517907b5a2f027fee3ce93b598a5047896"
         },
         {
           "path": "src/engine/depthChartUsage.js",
@@ -1013,8 +1028,8 @@
         },
         {
           "path": "src/engine/fanSentiment.js",
-          "bytes": 3546,
-          "sha256": "f24a533ea3bf49f998a03622cdaea43b7bcdc4ad3a56b266447695c42461c73e"
+          "bytes": 3641,
+          "sha256": "816b3681a493f0eaa4bfe4e75e9a6a16e1ac5fb29750f71818fd76e15c51be58"
         },
         {
           "path": "src/engine/gameSimulator.js",
@@ -1033,8 +1048,8 @@
         },
         {
           "path": "src/engine/gmLegacyScore.js",
-          "bytes": 18579,
-          "sha256": "2d645e3bc623beecfe885be2446f922ea826a5c75503ef8cccf31f930b6ee18a"
+          "bytes": 19007,
+          "sha256": "dccbb2f110b826c51c6ba6361e45dace630135c83dca6d33b03f2a4a54e1e7c3"
         },
         {
           "path": "src/engine/injurySystem.js",
@@ -1078,13 +1093,13 @@
         },
         {
           "path": "src/engine/pressConference.js",
-          "bytes": 13238,
-          "sha256": "5008f530bf7dd4ddc1b08272fc7f1a675f1b34b28a6332b00e11dc755e507d26"
+          "bytes": 14480,
+          "sha256": "b035672661939747124269fe48577d447318ebda0f31862f56f46879f533107f"
         },
         {
           "path": "src/engine/pressRoom.js",
-          "bytes": 12624,
-          "sha256": "7a9b513ac311bb1b29600ec7f0203d918248217a0a9b390565720f4b719f02ba"
+          "bytes": 14828,
+          "sha256": "9a3acadb1eb2899afd28e9a3a4bc97d7ad5c03176ac303f77b219b75111e92fa"
         },
         {
           "path": "src/engine/rivalFrontOffice.js",
@@ -1178,8 +1193,8 @@
         },
         {
           "path": "src/runtime/handlers/franchiseMomentHandler.js",
-          "bytes": 3956,
-          "sha256": "5f93b9cc462464f3fa40ce353b4769f1951b4ee2a9f5ae51584f907b2213ae1c"
+          "bytes": 4492,
+          "sha256": "dd9104a2e6597bb6276e720e50f850df23fcadb295ea050de23653d0469b315a"
         },
         {
           "path": "src/runtime/handlers/tradeOffersHandler.js",
@@ -1304,7 +1319,7 @@
         {
           "path": "stats.html",
           "bytes": 5676,
-          "sha256": "2afc944dd96e183b0b8acd356c112ecf92c1ac8905a9928643bb2379e8b9788d"
+          "sha256": "d33cefd5347e2ea90423569d5b6c065d2bf9ec32225c54fba8250608f6f86906"
         },
         {
           "path": "status.html",
@@ -1323,8 +1338,8 @@
         },
         {
           "path": "sw.js",
-          "bytes": 8411,
-          "sha256": "96a509121bb9da83dba5c17ef5a22c4f176c1ce829215e0a294d1ae1c7c66a0a"
+          "bytes": 8493,
+          "sha256": "5cc17571a8a6d94d3fb6d7e400074d78c22921cc3c236ede3381be64f1eda02b"
         },
         {
           "path": "terms.html",
@@ -1338,77 +1353,77 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "a835d039-bd18-4084-8eec-5a60b81993aa",
+    "deploymentId": "d339e90e-5e62-4faf-b23d-59515f4e4033",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-09-03T14:51:07.264Z"
+      "checkedAt": "2026-09-08T20:18:24.531Z"
     },
     "rollback": {
-      "previousDeploymentId": "d67e9fe7-7311-469d-9dd1-a8f5c3ffd064",
+      "previousDeploymentId": "8dfe7ae5-8f85-4f33-a63a-055d4b31b39a",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-09-03T14:51:07.264Z"
+    "observedAt": "2026-09-08T20:18:24.532Z"
   },
   "lastCloseoutAt": "2026-09-03T16:16:49.000Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
-    "sourceRevision": "48557d616260d18de07d187e79d099f13525b166",
-    "artifactDigest": "112b6163f15367465618dbdaddffbf657820a89f510130c416a371a9656855a1",
+    "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+    "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4",
     "route": "/",
     "edgePolicyObserved": true,
     "verified": true,
-    "observedAt": "2026-08-17T04:09:49.364Z",
-    "receiptSha256": "0007e2f2a67068aeee180770f65e5e1ecfff9497c127461ea3b4a8a2be9c3eb8",
-    "note": "Session 88 re-measured hosted performance against the new candidate to bind release-authority reconciliation; no route or asset performance characteristic changed versus S85's last-measured desktop/mobile LCP/INP/CLS medians, which are preserved as the last full Web Vitals baseline in docs/performance/LATEST.json history.",
+    "observedAt": "2026-09-08T20:42:39.359Z",
+    "receiptSha256": "2bdb802de04e85eb76da83ab6274099903cbf59d0156a2cd698f807ecdf13e4b",
+    "note": "Session 99 measured the canonical production entry route after exact-candidate promotion. Desktop and mobile LCP, INP, and CLS all passed the hosted release thresholds.",
     "diagnostic": {
-      "route": "/game.html",
+      "route": "/",
       "desktop": {
-        "lcpMs": 628,
-        "inpMs": 56,
+        "lcpMs": 488,
+        "inpMs": 32,
         "cls": 0
       },
       "mobile": {
-        "lcpMs": 780,
+        "lcpMs": 816,
         "inpMs": 24,
-        "cls": 0
+        "cls": 0.0085
       },
       "verified": true,
-      "receiptSha256": "f546749f1b44ca9554cf8820e56616e24017f76db02e1bbb8639e29ee347e905"
+      "receiptSha256": "2bdb802de04e85eb76da83ab6274099903cbf59d0156a2cd698f807ecdf13e4b"
     }
   },
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-09-03T15:18:55.979Z",
+    "observedAt": "2026-09-09T00:34:04.427Z",
     "status": "verified",
-    "sourceRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
-    "publicationRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
+    "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+    "publicationRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4"
+      "digest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
-        "artifactDigest": "6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4"
+        "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+        "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4"
       },
       "production": {
-        "sourceRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
-        "artifactDigest": "6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4"
+        "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+        "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4"
       },
       "visual": {
-        "sourceRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
-        "artifactDigest": "6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4"
+        "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+        "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4"
       },
       "performance": {
-        "sourceRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
-        "artifactDigest": "6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4"
+        "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+        "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4"
       }
     },
     "checks": [
@@ -1449,17 +1464,17 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
-      "verifiedAt": "2026-09-03",
+      "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+      "verifiedAt": "2026-09-08",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "7dcef2eb0000331e104040da2a187e8261d285d090c8ae93f88d727f340e2a39",
-      "productionSha256": "387514cec9bc4055c89b031156029756bdd942857d1ad480566f5cacdae9f471",
-      "visualSha256": "3ebcab7369c3466ed94a662d521c1f452e1a64af60e160d9ce10cf1dc51fe2f1",
-      "performanceSha256": "6a39193cddd63c81ee637ccf566acee051ca5ec525caa3876a07b5b4826f1dd4"
+      "stagingSha256": "3c8f8ddc9b5aff437b1beec4f38eda2f1fdae87e063b9228c3a1105e4b562d62",
+      "productionSha256": "da35a274b9102ee1458d3c0fea8725964cc4d23db908d6cd32ac5017ced1593b",
+      "visualSha256": "ada6031a1b350a596133c7dc044a0a56e749ce2418549ce660e8fb2f6e3f450d",
+      "performanceSha256": "a1046cf567842601b0dfe2564dab6d4ff5c28abe96b50d8c9bdf8026f336ff76"
     },
-    "receiptSha256": "8e06c9488ecd1737e12b4e3c6fc5dde8b8d0a151043b7775a2c414347c6807c7"
+    "receiptSha256": "4daabb549c6e4d71bc0fd6872a287b71cf3fe762189bb08f98823abd71861b5b"
   },
   "launchReady": false,
   "sil": {
