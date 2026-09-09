@@ -21,13 +21,13 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-09-03",
+  "truthAuditLastRun": "2026-09-09",
   "ignisScore": 42836,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-08-11",
   "testSuiteStatus": "green",
-  "testsPassing": 1303,
-  "testsTotal": 1303,
+  "testsPassing": 1319,
+  "testsTotal": 1319,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -66,32 +66,32 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 994,
+  "silScore": 978,
   "silCategoriesV3": {
     "devHealth": 100,
     "creativeAlignment": 100,
     "momentum": 100,
-    "engagement": 98,
-    "processQuality": 97,
-    "crossRepoCoherence": 99,
+    "engagement": 95,
+    "processQuality": 90,
+    "crossRepoCoherence": 95,
     "securityPosture": 100,
-    "ecosystemIntegration": 100,
+    "ecosystemIntegration": 98,
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 98,
+  "currentSession": 99,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
-    "date": "2026-09-03",
-    "canonical": "npm test -- 1,303/1,303 across six shards",
-    "exactShaCi": "workflow 33769176381 -- 1,298/1,298 across five push shards",
-    "browser": "55/55 Playwright locally and in production promotion",
-    "responsive": "255 states passed; 98 hash-bound captures retained and reviewed",
-    "staging": "14/14 at deployment a835d039-bd18-4084-8eec-5a60b81993aa",
-    "production": "10/10 via promotion workflow 33770515766; backend workflow 33770517153 green",
-    "sourceRevision": "3cce0a51e82e78625bdfad82f1cbdb19a31c94aa",
-    "artifactDigest": "6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4"
+    "date": "2026-09-08",
+    "canonical": "Implementation-boundary Node receipt: 1,319/1,319 across six shards",
+    "browser": "55/55 Playwright at implementation boundary",
+    "exactShaCi": "34273797142 and receipt-only CI 34296387803 succeeded",
+    "staging": "14/14; live identity rechecked during closeout",
+    "production": "10/10; Pages 34275252182 and backend 34275259066 succeeded",
+    "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+    "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4",
+    "closeout": "Studio shard 267/267 passed on 2026-09-09; doctor blockingFailing 0; settings sanitizer 0 findings"
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -118,7 +118,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 694,
+  "silHealth": 678,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -144,9 +144,9 @@
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.066,
-  "entropyLastComputed": "2026-09-03",
-  "lastSessionSummary": "S98 -- first-season payoff, authoritative cross-season Trophy Road chronology, and focus-safe orientation-aware tab navigation shipped; one exact artifact passed CI, rendered-pixel review, hosted performance, stable staging, production Pages, and backend deployment while public-launch authority stayed independent.",
+  "entropyScore": 0.07,
+  "entropyLastComputed": "2026-09-09",
+  "lastSessionSummary": "S99 shipped tie-complete results across career and post-game surfaces, focus-safe drawer dismissal, an explicit local-only first-debrief pulse, truthful session/release guidance, and stable mobile entry paint. Exact staging, production Pages and backend deployment are verified; public launch remains HOLD.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -167,8 +167,8 @@
       "lastChecked": "2026-09-08"
     }
   ],
-  "lastSession": 98,
-  "silLastSession": 98,
+  "lastSession": 99,
+  "silLastSession": 99,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -1369,7 +1369,7 @@
     "verified": true,
     "observedAt": "2026-09-08T20:18:24.532Z"
   },
-  "lastCloseoutAt": "2026-09-03T16:16:49.000Z",
+  "lastCloseoutAt": "2026-09-09T03:54:19.240Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
     "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",

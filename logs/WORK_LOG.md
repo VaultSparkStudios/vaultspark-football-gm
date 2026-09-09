@@ -1042,3 +1042,14 @@ The first documentation closeout commit then exposed three independent repositor
 The Studio closeout autopilot was stopped before commit after its `--project .` path rendered Studio-level Session 306 output and ran Studio-root refresh tasks from this project closeout. The incorrect local generated file was removed, the repo-local startup renderer restored the truthful S97 brief, and the already-validated evidence set was committed manually. The routing defect was returned to Studio Ops through Ark receipt `01K10BKC0C4B276631DD0B1360` rather than repaired by editing the sibling repository.
 
 Public launch remains HOLD: Zoho delivery/reply-as, explicit public-launch approval, lifecycle authority, and applicable external Obelisk relying-party proof remain separate. CDR reviewed; no new creative direction or DECISIONS entry is owed. Shell accounting: 1 started, 1 closed, 0 running.
+
+
+## 2026-09-09 — Session 99 — Tie-honest debrief and verified deployment
+
+S99 shipped tie-complete results across career and post-game surfaces, focus-safe drawer dismissal, an explicit local-only first-debrief pulse, truthful session/release guidance, and stable mobile entry paint. Exact staging, production Pages and backend deployment are verified; public launch remains HOLD.
+
+Application revision `713b326d4d84843112ddbc8354c0760bb6400859` and artifact `aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4` pass staging 14/14 and production provenance 10/10. CI 34273797142, Pages promotion 34275252182, backend deployment 34275259066, and receipt-only CI 34296387803 succeeded. Live staging/production currency passed 6/6 during closeout recovery; live backend reports database ready at the exact revision. The implementation-boundary Node receipt is 1,319/1,319 and Playwright is 55/55; these are retained historical receipts, not newly rerun suites.
+
+Recovered the incomplete closeout: the clean tree and green release existed while handoff, SIL and session status still described S98. Both audit plans and the second-order private debrief pulse are complete. CDR reviewed: no new human creative direction. No lifecycle flip or public announcement was made.
+
+Closeout verification: Studio shard 267/267 passed; doctor blockingFailing 0 with the existing lifecycle warning; settings sanitizer found zero issues. Entropy measured 0.070 (healthy); the canonical update path rejected the missing local schema, so the measured result was persisted through this repository's invariant-enforcing writer.
