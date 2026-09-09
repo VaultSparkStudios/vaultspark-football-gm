@@ -138,6 +138,7 @@ import {
 } from "../engine/injurySystem.js";
 import {
   reportWeeklyResults,
+  capturePlayerMilestoneStats,
   reportPlayerMilestones,
   reportStreaks,
   reportSignificantInjury,
@@ -5454,6 +5455,7 @@ export class GameSession {
               )
             )
         : [];
+      const previousMilestoneStats = capturePlayerMilestoneStats(this.league.players, this.currentYear);
       const weekResult = simulateRegularSeasonWeek({
         league: this.league,
         statBook: this.statBook,
@@ -5498,7 +5500,7 @@ export class GameSession {
       }
       // Beat reporter: results, milestones, streaks
       reportWeeklyResults(this.league, weekResult, this.currentYear);
-      reportPlayerMilestones(this.league, this.league.players, this.currentYear, weekResult.week);
+      reportPlayerMilestones(this.league, this.league.players, this.currentYear, weekResult.week, previousMilestoneStats);
       reportStreaks(this.league, this.currentYear, weekResult.week);
       // Rivalry DNA
       recordWeekRivalries(this.league, weekResult, this.currentYear);

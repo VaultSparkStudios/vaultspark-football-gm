@@ -2281,7 +2281,7 @@ td.tone-info {
   overflow: hidden;
 }
 
-.news-ticker.hidden { display: none; }
+.news-ticker.hidden, .news-ticker[hidden] { display: none; }
 
 .news-ticker-icon { font-size: 0.95rem; flex-shrink: 0; }
 
@@ -2294,6 +2294,8 @@ td.tone-info {
 }
 
 .news-ticker-close {
+  min-width: 44px;
+  min-height: 44px;
   background: none;
   border: none;
   color: var(--muted);

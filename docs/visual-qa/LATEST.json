@@ -1,101 +1,237 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-09-08T20:12:06.447Z",
-  "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
-  "artifactFingerprint": {
-    "algorithm": "sha256",
-    "digest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4",
-    "files": 214,
-    "exclusions": [
-      "_health",
-      "deploy-manifest.json",
-      "edge-policy-receipt.json"
-    ]
-  },
+  "capturedAt": "2026-09-09T07:06:41.058Z",
+  "sourceRevision": null,
   "sourceFingerprint": {
     "algorithm": "sha256",
     "files": {
-      "public/app.js": "4b61da2f570054886b2b04ac76564587d9702eecb50b7b7ac67908668c828cee",
-      "public/lib/firstDebriefPulse.js": "da2b09fd90778c874a4f714c5ddd6d7b11b69232a62bb613146e2bc78dca34b8",
-      "public/index.html": "7cc3a569d7fd3d2e39c5fa0220fad511af0df0edfec380db0018fd1d5488c8c4",
-      "public/community-stats.js": "a2cd9636cc5491f81a6566a3fd9cab3959219e0695693f6b87f2237e6958b105"
+      "public/app.js": "602279778a9a509bce33a4ab0826bc06731362cd1279f335cb9b87fae5917fdb",
+      "public/game.html": "4acb39c3c04a8c6decbbbd5017a14b178b362e399032add158878ec589da21a9",
+      "public/styles.css": "98f5b404539d4d72c44eee11681fb8059755f926dd882353e8553262f4d2f7a5",
+      "public/lib/firstDebriefPulse.js": "2f9b61fb67c74566590a58cf7f7516839a14dbcab1eb77c075991ba9d224b346",
+      "src/engine/beatReporter.js": "77e62bb8eb7573649b6e01cabd32741346547549ace194df01ddc83af42363fe",
+      "src/runtime/GameSession.js": "4ad4553b604b15ddd0e422d06b4d4eae91dd9d0d538e17e0ba92e138ba610b13"
     }
   },
-  "artifact": "S99 first-week debrief pulse working-tree review",
-  "themes": ["dark", "light"],
+  "artifact": "S100 source-hash-bound working-tree review; immutable candidate binding follows staging build",
+  "themes": [
+    "dark",
+    "light"
+  ],
   "captures": [
     {
-      "file": "s99-first-debrief-desktop-dark.png",
-      "sha256": "ec620954c8c98a0bf7c21c50a4c988a2321b988d90dd906bebe415ee0b2e94a8",
+      "file": "s100-pulse-desktop-dark-open.png",
+      "sha256": "afea7241660d238e2b984a113f96235a93e07f9844ee993e001d146dc0a6e456",
       "theme": "dark",
-      "viewport": { "width": 1440, "height": 900 },
-      "page": "First weekly debrief private check-in"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Optional debrief check-in: open; denied browser storage fixture"
     },
     {
-      "file": "s99-first-debrief-desktop-light.png",
-      "sha256": "7363722ec3af7be2d133ef6b94b4fd8bae488b2794a4560d23b298e244453ac2",
-      "theme": "light",
-      "viewport": { "width": 1440, "height": 900 },
-      "page": "First weekly debrief private check-in"
-    },
-    {
-      "file": "s99-first-debrief-mobile-dark.png",
-      "sha256": "6c4f25f24ccc4776ef741abfd8d8bcb50de59218eb4d40ad3b1d8f3532808983",
+      "file": "s100-pulse-desktop-dark-save-error.png",
+      "sha256": "104d7832dd40287bdf8e64894d92b46961b48e67bef18bb97ff0af9c14f16c5d",
       "theme": "dark",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "First weekly debrief private check-in"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Optional debrief check-in: save-error; denied browser storage fixture"
     },
     {
-      "file": "s99-first-debrief-mobile-light.png",
-      "sha256": "013e1de37c768b40e3b127f67f74e68541be8f7a0ceedd7fcba7536aa02ce05b",
-      "theme": "light",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "First weekly debrief private check-in"
-    },
-    {
-      "file": "s99-entry-paint-desktop-dark.png",
-      "sha256": "792037acd7d5d5987aeaad89ad2b3f9fcd64f0ee5882392aa00e9f65e999e22d",
+      "file": "s100-pulse-desktop-dark-dismissed.png",
+      "sha256": "57708d7442ad5d8ec7520f56a36c82f838da2577ebfa9917a7c1538feabfd153",
       "theme": "dark",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "Pre-network Community Stats invitation"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Optional debrief check-in: dismissed; denied browser storage fixture"
     },
     {
-      "file": "s99-entry-paint-desktop-light.png",
-      "sha256": "adf6463b730cdb12d17013b61f715ca4d8bf6ba7548ad172f79f6bbe3894fe12",
-      "theme": "light",
-      "viewport": { "width": 1440, "height": 1000 },
-      "page": "Pre-network Community Stats invitation"
-    },
-    {
-      "file": "s99-entry-paint-mobile-dark.png",
-      "sha256": "1e1fd574cad0824fcc5e84257ada464dca7f29899354bb455a28e1524a9c4694",
+      "file": "s100-milestone-desktop-dark.png",
+      "sha256": "9f2655d84907a0c80985dc2a349e621c9ff9561152804e647ab1e5b203831f6b",
       "theme": "dark",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Pre-network Community Stats invitation"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Canonical 4000-yard threshold crossing in the actual news ticker; deterministic rendering fixture, not player activity"
     },
     {
-      "file": "s99-entry-paint-mobile-light.png",
-      "sha256": "2421d42f71a7cd678a37a78e933c9c57750d5fec12d6b63fc732afd4a71adc3a",
+      "file": "s100-pulse-desktop-light-open.png",
+      "sha256": "437ba696dfa0505fe9ea20780a6afb286867fcaae5063b462f62e0a9f7864381",
       "theme": "light",
-      "viewport": { "width": 390, "height": 844 },
-      "page": "Pre-network Community Stats invitation"
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Optional debrief check-in: open; denied browser storage fixture"
+    },
+    {
+      "file": "s100-pulse-desktop-light-save-error.png",
+      "sha256": "6cb3408711c58a76a326b46187e6e0b9a779c16e2a7d518c4471a058505dc026",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Optional debrief check-in: save-error; denied browser storage fixture"
+    },
+    {
+      "file": "s100-pulse-desktop-light-dismissed.png",
+      "sha256": "bd770ddf747a0cde1630bfba3713112ca3c6808e2f262bce1e870b4d65f7fcb8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Optional debrief check-in: dismissed; denied browser storage fixture"
+    },
+    {
+      "file": "s100-milestone-desktop-light.png",
+      "sha256": "4ddeda702d69e31deb89d9f8f8dc78e349e65916bf9a407cc24aaef17f13fae8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Canonical 4000-yard threshold crossing in the actual news ticker; deterministic rendering fixture, not player activity"
+    },
+    {
+      "file": "s100-pulse-mobile-dark-open.png",
+      "sha256": "135fb7dfd709f420c598909feb189882b97003b3c82b931084c4b9578cb64fc7",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional debrief check-in: open; denied browser storage fixture"
+    },
+    {
+      "file": "s100-pulse-mobile-dark-save-error.png",
+      "sha256": "42006c309049e51bd92246c09eb94c2a1d232b175c148a0cbe00bdf184394b7a",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional debrief check-in: save-error; denied browser storage fixture"
+    },
+    {
+      "file": "s100-pulse-mobile-dark-dismissed.png",
+      "sha256": "2e4c6736ee50323eb930a9e2a36d147db8fbb133584d54161c619cdf63aa4d62",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional debrief check-in: dismissed; denied browser storage fixture"
+    },
+    {
+      "file": "s100-milestone-mobile-dark.png",
+      "sha256": "04274984b6e97053906f711d825c22f722d20d70ab9df990766629dc7764b747",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Canonical 4000-yard threshold crossing in the actual news ticker; deterministic rendering fixture, not player activity"
+    },
+    {
+      "file": "s100-pulse-mobile-light-open.png",
+      "sha256": "c53169fc3aaec8aa600b21b4642937c30b6d36b0311ea19a87dab9a3f6cc9c65",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional debrief check-in: open; denied browser storage fixture"
+    },
+    {
+      "file": "s100-pulse-mobile-light-save-error.png",
+      "sha256": "f7c8680d733dc2611063d7a9eac49124977e22a41692617a366af1fa00e51ceb",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional debrief check-in: save-error; denied browser storage fixture"
+    },
+    {
+      "file": "s100-pulse-mobile-light-dismissed.png",
+      "sha256": "62e3f7858a37e0e24fc53fce1392ffa6c21da106de360786317b5256f06c8439",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Optional debrief check-in: dismissed; denied browser storage fixture"
+    },
+    {
+      "file": "s100-milestone-mobile-light.png",
+      "sha256": "64420ff888761e81bbfc90a985c1895861ec6bdf2620903856f05c5839fddd6a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Canonical 4000-yard threshold crossing in the actual news ticker; deterministic rendering fixture, not player activity"
     }
   ],
+  "baseline": {
+    "path": "output/playwright/s100-pulse-before/result.json",
+    "results": [
+      {
+        "label": "desktop-dark",
+        "remaining": 1,
+        "focus": "firstDebriefDecline",
+        "errors": [
+          "Storage quota exceeded"
+        ]
+      },
+      {
+        "label": "desktop-light",
+        "remaining": 1,
+        "focus": "firstDebriefDecline",
+        "errors": [
+          "Storage quota exceeded"
+        ]
+      },
+      {
+        "label": "mobile-dark",
+        "remaining": 1,
+        "focus": "firstDebriefDecline",
+        "errors": [
+          "Storage quota exceeded"
+        ]
+      },
+      {
+        "label": "mobile-light",
+        "remaining": 1,
+        "focus": "firstDebriefDecline",
+        "errors": [
+          "Storage quota exceeded"
+        ]
+      }
+    ],
+    "milestone": "Pre-fix populated ticker remained hidden in the real browser because markup and renderer used different visibility controls."
+  },
   "inspection": {
     "renderedPixelsReviewed": true,
-    "reviewer": "session-agent",
+    "reviewer": "codex S100",
     "findings": [
-      "The first light-theme capture exposed an undefined-token defect that made the card translucent and its text unreadable.",
-      "After correction, the card, fields, privacy boundary, and actions are legible and unclipped at 1440x900 and 390x844 in dark and light themes.",
-      "The mobile layout preserves 44px-or-larger actions, a single-column rating flow, and a scroll-bounded 100dvh card.",
-      "The explicit confirmation says that nothing was sent; the browser stored only a scoped state marker and an allowlisted local receipt.",
-      "The pre-network Community Stats invitation is readable and unclipped in both themes at 1440x1000 and 390x844; mobile content continues naturally below the fold without horizontal clipping."
+      "Private feedback controls, readable errors and dismissal are visible at 1440px and 390px in dark/light themes.",
+      "Denied writes leave the check-in unsaved and still dismissible; focus returns without an unhandled exception.",
+      "The source-generated milestone headline is now visible on desktop and in mobile Full View. Long mobile ticker text truncates within its existing single-line layout; the full headline remains in league news.",
+      "Close control uses a 44px minimum target; real-browser tests prove visibility, dismissal, keyboard reopening and empty-feed hiding."
     ],
     "fixesApplied": [
-      "Replaced undefined --surface and --text variables with the canonical --panel-strong and --ink theme tokens.",
-      "Kept the overlay opaque enough to separate the invitation from live game state in both themes.",
-      "Added explicit focus return to the weekly-advance control when the prompt closes.",
-      "Replaced the entry-page skeleton with truthful static pre-cohort content and preserved that DOM on the first async refresh, preventing the Community Stats request from becoming a late mobile LCP."
+      "Retain franchise-scoped page-local suppression when browser storage is unavailable.",
+      "Guard missing receipt storage instead of showing a saved confirmation.",
+      "Use hidden attribute consistently for ticker markup, renderer and controls, with matching CSS.",
+      "Enlarge the newly visible ticker close target to 44px."
     ],
     "blockingDefectsOpen": 0
   }

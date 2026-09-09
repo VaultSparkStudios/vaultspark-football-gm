@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { parseTaskBoardItems, taskItemKey } from "./lib/task-board.mjs";
+import { isAuditComplete } from "./lib/audit-completion.mjs";
 
 const root = process.cwd();
 const args = new Set(process.argv.slice(2));
@@ -41,7 +42,6 @@ function latestAudit() {
 // The old prose sniff (/shipped|implemented|done|verified|.../i on the Item cell) had two
 // live failure modes: Execution Log completions never matched (rows don't start with a
 // digit), and "unverified" in an Item cell matched /verified/i and wrongly closed the item.
-const DONE_STATUS_RE = /^(shipped|implemented|done)$/i;
 const BLOCKED_STATUS_RE = /^blocked$/i;
 
 function normalizeTaskStatus(statusText = "") {
@@ -111,7 +111,7 @@ function parseAuditItems(auditFile) {
       const slug = titleMatch?.[1]?.trim() ?? `audit-item-${cols[0]}`;
       const logStatus = (execLog.get(slug.toLowerCase()) ?? "").trim();
       const taskStatus = taskBoardStatuses.get(taskItemKey(slug)) ?? "";
-      const done = DONE_STATUS_RE.test(logStatus) || taskStatus === "done";
+      const done = isAuditComplete(logStatus) || taskStatus === "done";
       const blocked = BLOCKED_STATUS_RE.test(logStatus) || (!done && taskStatus === "blocked");
       return {
         rank: Number(cols[0]),

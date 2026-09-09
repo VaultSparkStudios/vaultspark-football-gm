@@ -222,6 +222,7 @@ export const SHARDS = {
     "test/shard-coverage.test.js",
     "test/duplicate-pr-guard.test.js",
     "test/studio-protocol-smoke.test.js",
+    "test/audit-completion-contract.test.js",
     "test/startup-authority-contract.test.js",
     "test/startup-sil-truth.test.js",
     "test/startup-brief-last-session.test.js",

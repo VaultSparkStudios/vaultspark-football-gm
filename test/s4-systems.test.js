@@ -7,12 +7,15 @@
 
 import test from "node:test";
 import assert from "node:assert/strict";
+import { createZeroedSeasonStats, mergeStats } from "../src/domain/playerFactory.js";
+import { createSession, createSessionFromSnapshot } from "../src/runtime/bootstrap.js";
 
 // ── beatReporter ──────────────────────────────────────────────────────────────
 
 import {
   initNewsLog,
   reportWeeklyResults,
+  capturePlayerMilestoneStats,
   reportPlayerMilestones,
   reportStreaks,
   reportSignificantInjury,
@@ -66,11 +69,13 @@ test("beatReporter: reportPlayerMilestones captures QB 4000-yard season", () => 
     position: "QB",
     teamId: "BUF",
     seasonStats: {
-      2026: { passing: { yards: 4050, yardsLast: 3900, td: 28 } }
+      2026: { ...createZeroedSeasonStats(), passing: { ...createZeroedSeasonStats().passing, yards: 3900, td: 28 } }
     }
   };
   const league = {};
-  reportPlayerMilestones(league, [player], 2026, 14);
+  const previous = capturePlayerMilestoneStats([player], 2026);
+  mergeStats(player.seasonStats[2026], { passing: { yards: 150 } });
+  reportPlayerMilestones(league, [player], 2026, 14, previous);
   const milestone = league.newsLog?.find((n) => n.type === "milestone");
   assert.ok(milestone, "should fire 4000-yard milestone");
   assert.ok(milestone.headline.includes("4,000"));
@@ -515,4 +520,92 @@ test("draftCombine: getCombineSummary returns sorted grades", () => {
   ];
   const summary = getCombineSummary(draftClass);
   assert.equal(summary[0].grade, 85, "higher grade should be first");
+});
+
+test("beatReporter: canonical counters announce every threshold crossed, including overshoots", () => {
+  const rows = [
+    ["QB", "passing", "yards", 3990, 300], ["QB", "passing", "td", 29, 3],
+    ["RB", "rushing", "yards", 990, 175], ["WR", "receiving", "yards", 999, 150],
+    ["TE", "receiving", "yards", 980, 130], ["DL", "defense", "sacks", 9.5, 1.5],
+    ["LB", "defense", "sacks", 9, 2]
+  ];
+  const players = rows.map(([position, group, stat, value], index) => {
+    const season = createZeroedSeasonStats();
+    season[group][stat] = value;
+    return { id: `milestone-${index}`, name: "Player", position, teamId: "BUF", seasonStats: { 2026: season } };
+  });
+  const league = {};
+  const previous = capturePlayerMilestoneStats(players, 2026);
+  rows.forEach(([, group, stat, , gain], index) => mergeStats(players[index].seasonStats[2026], { [group]: { [stat]: gain } }));
+  reportPlayerMilestones(league, players, 2026, 14, previous);
+  assert.equal(league.newsLog.length, rows.length);
+  for (const receipt of league.newsLog) {
+    assert.ok(receipt.milestone.previous < receipt.milestone.threshold);
+    assert.ok(receipt.milestone.total >= receipt.milestone.threshold);
+  }
+  reportPlayerMilestones(league, players, 2026, 14, previous);
+  reportPlayerMilestones(league, players, 2026, 15, capturePlayerMilestoneStats(players, 2026));
+  assert.equal(league.newsLog.length, rows.length, "repeated calls and a bye never repeat milestones");
+});
+
+test("beatReporter: old above-threshold totals and missing pre-week observations never invent news", () => {
+  const season = createZeroedSeasonStats();
+  season.passing.yards = 4500;
+  season.passing.td = 30;
+  const player = { id: "old-save", name: "Player", position: "QB", teamId: "BUF", seasonStats: { 2026: season } };
+  const league = {};
+  reportPlayerMilestones(league, [player], 2026, 14);
+  const previous = capturePlayerMilestoneStats([player], 2026);
+  mergeStats(season, { passing: { yards: 250, td: 2 } });
+  reportPlayerMilestones(league, [player], 2026, 15, previous);
+  reportPlayerMilestones(league, [player], 2027, 1, previous);
+  assert.deepEqual(league.newsLog, []);
+});
+
+test("beatReporter: season receipt survives feed eviction, trade, and reload, and resets next year", () => {
+  const season = createZeroedSeasonStats();
+  season.passing.td = 29;
+  const player = { id: "career", name: "Player", position: "QB", teamId: "BUF", seasonStats: { 2026: season } };
+  let league = { players: [player] };
+  const previous = capturePlayerMilestoneStats(league.players, 2026);
+  mergeStats(season, { passing: { td: 2 } });
+  reportPlayerMilestones(league, league.players, 2026, 14, previous);
+  league.newsLog = [];
+  league = JSON.parse(JSON.stringify(league));
+  league.players[0].teamId = "MIA";
+  reportPlayerMilestones(league, league.players, 2026, 15, previous);
+  assert.deepEqual(league.newsLog, [], "receipt does not depend on the rolling feed or current team");
+  const nextSeason = createZeroedSeasonStats();
+  nextSeason.passing.td = 29;
+  league.players[0].seasonStats[2027] = nextSeason;
+  const nextPrevious = capturePlayerMilestoneStats(league.players, 2027);
+  mergeStats(nextSeason, { passing: { td: 2 } });
+  reportPlayerMilestones(league, league.players, 2027, 14, nextPrevious);
+  assert.equal(league.newsLog.length, 1);
+  assert.equal(league.newsLog[0].year, 2027);
+  assert.deepEqual(league.newsLog[0].teamIds, ["MIA"]);
+  assert.equal(league.playerMilestoneReceipts.keys.length, 1, "only current-season keys are retained");
+});
+
+test("beatReporter: real weekly simulation emits canonical milestones and snapshot restore preserves receipts", () => {
+  const session = createSession({ seed: 100, startYear: 2026, controlledTeamId: "BUF" });
+  for (const player of session.league.players.filter((row) => row.position === "QB")) {
+    const season = createZeroedSeasonStats();
+    season.passing.yards = 3999;
+    player.seasonStats[2026] = season;
+  }
+  const previous = capturePlayerMilestoneStats(session.league.players, 2026);
+  session.advanceWeek();
+  const milestones = session.league.newsLog.filter((row) => row.milestone?.key === "passing-yards-4000");
+  assert.ok(milestones.length > 0, "actual weekly runtime must wire the pre-simulation counters into the reporter");
+  for (const item of milestones) {
+    const player = session.league.players.find((row) => row.id === item.playerIds[0]);
+    assert.equal(item.milestone.previous, 3999);
+    assert.equal(item.milestone.total, player.seasonStats[2026].passing.yards);
+  }
+  session.league.newsLog = [];
+  const restored = createSessionFromSnapshot(JSON.parse(JSON.stringify(session.toSnapshot())));
+  reportPlayerMilestones(restored.league, restored.league.players, 2026, 1, previous);
+  assert.deepEqual(restored.league.newsLog, []);
+  assert.deepEqual(restored.league.playerMilestoneReceipts, session.league.playerMilestoneReceipts);
 });

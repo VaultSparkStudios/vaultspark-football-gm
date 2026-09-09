@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { parseHumanItems, parseUnifiedItems } from "./lib/task-board.mjs";
 import { dedupeInnovationCandidates } from "./lib/innovation-candidates.mjs";
+import { isAuditComplete } from "./lib/audit-completion.mjs";
 
 const root = process.cwd();
 const today = new Date().toISOString().slice(0, 10);
@@ -60,7 +61,7 @@ function latestAudit() {
   const items = Array.isArray(sidecar.items) ? sidecar.items : [];
   return {
     ...latest,
-    openItems: items.filter((item) => !/^(?:done|complete|completed|implemented|shipped)$/i.test(String(item.status || ""))),
+    openItems: items.filter((item) => !isAuditComplete(item.status)),
     shippedInnovations: (Array.isArray(sidecar.secondOrderCandidates) ? sidecar.secondOrderCandidates : [])
       .filter((item) => /^(?:done|complete|completed|shipped|second-order-shipped)$/i.test(String(item.status || "")))
   };

@@ -12,6 +12,22 @@ export const FIRST_DEBRIEF_PULSE_STATES = Object.freeze({
   DECLINED: "declined"
 });
 
+// Optional feedback remains dismissible when browser storage is unavailable.
+// This fallback lasts for this page only; it does not claim durable persistence.
+const pageStates = new WeakMap();
+const unavailableStorageStates = new Map();
+
+function resolvePulseStorage(storage) {
+  if (storage !== undefined) return storage;
+  try { return globalThis.localStorage; } catch { return null; }
+}
+
+function pulsePageStates(storage) {
+  if (!storage || (typeof storage !== "object" && typeof storage !== "function")) return unavailableStorageStates;
+  if (!pageStates.has(storage)) pageStates.set(storage, new Map());
+  return pageStates.get(storage);
+}
+
 function ensureFirstDebriefStyles() {
   if (document.getElementById("firstDebriefPulseStyles")) return;
   const styles = document.createElement("style");
@@ -40,24 +56,31 @@ export function firstDebriefPulseStorageKey(dashboard = {}) {
   return franchiseStorageKey(FIRST_DEBRIEF_PULSE_STORAGE_PREFIX, dashboard);
 }
 
-export function getFirstDebriefPulseState(dashboard = {}, storage = globalThis.localStorage) {
+export function getFirstDebriefPulseState(dashboard = {}, storage) {
+  storage = resolvePulseStorage(storage);
+  const key = firstDebriefPulseStorageKey(dashboard);
+  const pageState = pulsePageStates(storage).get(key);
+  if (pageState) return pageState;
   try {
-    const value = storage?.getItem?.(firstDebriefPulseStorageKey(dashboard));
+    const value = storage?.getItem?.(key);
     return Object.values(FIRST_DEBRIEF_PULSE_STATES).includes(value) ? value : null;
   } catch {
     return null;
   }
 }
 
-export function setFirstDebriefPulseState(dashboard = {}, value, storage = globalThis.localStorage) {
+export function setFirstDebriefPulseState(dashboard = {}, value, storage) {
   if (!Object.values(FIRST_DEBRIEF_PULSE_STATES).includes(value)) {
     throw new Error("First-debrief pulse state must be answered or declined.");
   }
-  storage?.setItem?.(firstDebriefPulseStorageKey(dashboard), value);
+  storage = resolvePulseStorage(storage);
+  const key = firstDebriefPulseStorageKey(dashboard);
+  pulsePageStates(storage).set(key, value);
+  try { storage?.setItem?.(key, value); } catch { /* Suppressed for this page only. */ }
   return value;
 }
 
-export function shouldPromptFirstDebriefPulse(dashboard = {}, storage = globalThis.localStorage) {
+export function shouldPromptFirstDebriefPulse(dashboard = {}, storage) {
   return Boolean(dashboard?.controlledTeamId) && getFirstDebriefPulseState(dashboard, storage) === null;
 }
 
@@ -126,10 +149,11 @@ function confirmationMarkup() {
 
 export function maybePromptFirstDebriefPulse({
   dashboard = {},
-  storage = globalThis.localStorage,
+  storage,
   clipboard = globalThis.navigator?.clipboard,
   focusTarget = null
 } = {}) {
+  storage = resolvePulseStorage(storage);
   if (typeof document === "undefined" || !document.body || !shouldPromptFirstDebriefPulse(dashboard, storage)) {
     return false;
   }
@@ -173,6 +197,7 @@ export function maybePromptFirstDebriefPulse({
         returnIntent: data.get("returnIntent"),
         note: data.get("note")
       }, contextFromDashboard(dashboard));
+      if (typeof storage?.setItem !== "function") throw new Error("Browser storage is unavailable. This check-in was not saved.");
       saveLocalPlaytestReceipt(receipt, storage);
       setFirstDebriefPulseState(dashboard, FIRST_DEBRIEF_PULSE_STATES.ANSWERED, storage);
       resolved = true;

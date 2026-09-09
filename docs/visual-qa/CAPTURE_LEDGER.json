@@ -22,6 +22,86 @@
       "bytes": 519438,
       "session": null
     },
+    "s100-milestone-desktop-dark.png": {
+      "sha256": "9f2655d84907a0c80985dc2a349e621c9ff9561152804e647ab1e5b203831f6b",
+      "bytes": 614379,
+      "session": 100
+    },
+    "s100-milestone-desktop-light.png": {
+      "sha256": "4ddeda702d69e31deb89d9f8f8dc78e349e65916bf9a407cc24aaef17f13fae8",
+      "bytes": 555996,
+      "session": 100
+    },
+    "s100-milestone-mobile-dark.png": {
+      "sha256": "04274984b6e97053906f711d825c22f722d20d70ab9df990766629dc7764b747",
+      "bytes": 165931,
+      "session": 100
+    },
+    "s100-milestone-mobile-light.png": {
+      "sha256": "64420ff888761e81bbfc90a985c1895861ec6bdf2620903856f05c5839fddd6a",
+      "bytes": 160003,
+      "session": 100
+    },
+    "s100-pulse-desktop-dark-dismissed.png": {
+      "sha256": "57708d7442ad5d8ec7520f56a36c82f838da2577ebfa9917a7c1538feabfd153",
+      "bytes": 874943,
+      "session": 100
+    },
+    "s100-pulse-desktop-dark-open.png": {
+      "sha256": "afea7241660d238e2b984a113f96235a93e07f9844ee993e001d146dc0a6e456",
+      "bytes": 402103,
+      "session": 100
+    },
+    "s100-pulse-desktop-dark-save-error.png": {
+      "sha256": "104d7832dd40287bdf8e64894d92b46961b48e67bef18bb97ff0af9c14f16c5d",
+      "bytes": 405945,
+      "session": 100
+    },
+    "s100-pulse-desktop-light-dismissed.png": {
+      "sha256": "bd770ddf747a0cde1630bfba3713112ca3c6808e2f262bce1e870b4d65f7fcb8",
+      "bytes": 746471,
+      "session": 100
+    },
+    "s100-pulse-desktop-light-open.png": {
+      "sha256": "437ba696dfa0505fe9ea20780a6afb286867fcaae5063b462f62e0a9f7864381",
+      "bytes": 374952,
+      "session": 100
+    },
+    "s100-pulse-desktop-light-save-error.png": {
+      "sha256": "6cb3408711c58a76a326b46187e6e0b9a779c16e2a7d518c4471a058505dc026",
+      "bytes": 379212,
+      "session": 100
+    },
+    "s100-pulse-mobile-dark-dismissed.png": {
+      "sha256": "2e4c6736ee50323eb930a9e2a36d147db8fbb133584d54161c619cdf63aa4d62",
+      "bytes": 266693,
+      "session": 100
+    },
+    "s100-pulse-mobile-dark-open.png": {
+      "sha256": "135fb7dfd709f420c598909feb189882b97003b3c82b931084c4b9578cb64fc7",
+      "bytes": 92226,
+      "session": 100
+    },
+    "s100-pulse-mobile-dark-save-error.png": {
+      "sha256": "42006c309049e51bd92246c09eb94c2a1d232b175c148a0cbe00bdf184394b7a",
+      "bytes": 94810,
+      "session": 100
+    },
+    "s100-pulse-mobile-light-dismissed.png": {
+      "sha256": "62e3f7858a37e0e24fc53fce1392ffa6c21da106de360786317b5256f06c8439",
+      "bytes": 194057,
+      "session": 100
+    },
+    "s100-pulse-mobile-light-open.png": {
+      "sha256": "c53169fc3aaec8aa600b21b4642937c30b6d36b0311ea19a87dab9a3f6cc9c65",
+      "bytes": 81101,
+      "session": 100
+    },
+    "s100-pulse-mobile-light-save-error.png": {
+      "sha256": "f7c8680d733dc2611063d7a9eac49124977e22a41692617a366af1fa00e51ceb",
+      "bytes": 83134,
+      "session": 100
+    },
     "s69-desktop-gm-persona-dark.png": {
       "sha256": "6fceb8a7121d7c6ebe4d5bb955fd2be60b49d247dc97b43bcc00860a909a5bc5",
       "bytes": 52906,

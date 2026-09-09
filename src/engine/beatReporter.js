@@ -89,76 +89,66 @@ export function reportWeeklyResults(league, weekResults, year) {
 
 // ── Player milestones ────────────────────────────────────────────────────────
 
-export function reportPlayerMilestones(league, players, year, week) {
+const PLAYER_MILESTONES = [
+  { key: "passing-yards-4000", positions: ["QB"], group: "passing", stat: "yards", threshold: 4000,
+    headline: (p) => `${p.name} surpasses 4,000 passing yards on the season` },
+  { key: "passing-td-30", positions: ["QB"], group: "passing", stat: "td", threshold: 30,
+    headline: (p) => `${p.name} throws his 30th TD pass of the year — elite season taking shape` },
+  { key: "rushing-yards-1000", positions: ["RB"], group: "rushing", stat: "yards", threshold: 1000,
+    headline: (p) => `${p.name} hits 1,000 rushing yards — on pace for a Pro Bowl season` },
+  { key: "receiving-yards-1000", positions: ["WR", "TE"], group: "receiving", stat: "yards", threshold: 1000,
+    headline: (p) => `${p.name} eclipses 1,000 receiving yards — commanding target in the passing game` },
+  { key: "defense-sacks-10", positions: ["DL", "LB"], group: "defense", stat: "sacks", threshold: 10,
+    headline: (p) => `${p.name} records his 10th sack — one of the most disruptive pass-rushers in the league` }
+];
+
+// Capture only the five counters used by the reporter, before simulation mutates
+// the canonical season buckets. A missing bucket means no stats this season.
+export function capturePlayerMilestoneStats(players, year) {
+  return {
+    year,
+    players: new Map(players.map((player) => [player.id, Object.fromEntries(
+      PLAYER_MILESTONES.map((milestone) => [
+        milestone.key,
+        Number(player.seasonStats?.[year]?.[milestone.group]?.[milestone.stat] ?? 0)
+      ])
+    )]))
+  };
+}
+
+export function reportPlayerMilestones(league, players, year, week, previous = null) {
   initNewsLog(league);
+  // Without a pre-week observation, a total proves achievement but not that it
+  // happened this week. In particular, never backfill invented news on old saves.
+  if (previous?.year !== year || !(previous.players instanceof Map)) return;
 
-  for (const p of players) {
-    const s = p.seasonStats?.[year];
-    if (!s) continue;
-
-    if (p.position === "QB") {
-      if (s.passing?.yards >= 4000 && s.passing?.yards - (s.passing?.yardsLast || 0) < 200) {
-        push(league, {
-          type: "milestone",
-          week,
-          year,
-          headline: `${p.name} surpasses 4,000 passing yards on the season`,
-          playerIds: [p.id],
-          teamIds: [p.teamId]
-        });
-      }
-      if (s.passing?.td >= 30 && (s.passing?.td - 1) < 30) {
-        push(league, {
-          type: "milestone",
-          week,
-          year,
-          headline: `${p.name} throws his 30th TD pass of the year — elite season taking shape`,
-          playerIds: [p.id],
-          teamIds: [p.teamId]
-        });
-      }
-    }
-
-    if (p.position === "RB") {
-      if (s.rushing?.yards >= 1000 && s.rushing?.yards - (s.rushing?.yardsLast || 0) < 120) {
-        push(league, {
-          type: "milestone",
-          week,
-          year,
-          headline: `${p.name} hits 1,000 rushing yards — on pace for a Pro Bowl season`,
-          playerIds: [p.id],
-          teamIds: [p.teamId]
-        });
-      }
-    }
-
-    if (p.position === "WR" || p.position === "TE") {
-      if (s.receiving?.yards >= 1000 && s.receiving?.yards - (s.receiving?.yardsLast || 0) < 120) {
-        push(league, {
-          type: "milestone",
-          week,
-          year,
-          headline: `${p.name} eclipses 1,000 receiving yards — commanding target in the passing game`,
-          playerIds: [p.id],
-          teamIds: [p.teamId]
-        });
-      }
-    }
-
-    if ((p.position === "DL" || p.position === "LB") && s.defense?.sacks >= 10) {
-      const prev = s.defense.sacks - (s.defense.sacksLastWeek || 0);
-      if (prev < 10) {
-        push(league, {
-          type: "milestone",
-          week,
-          year,
-          headline: `${p.name} records his 10th sack — one of the most disruptive pass-rushers in the league`,
-          playerIds: [p.id],
-          teamIds: [p.teamId]
-        });
-      }
+  // The league is persisted verbatim by GameSession. Keep this season's receipts
+  // independently of the rolling news feed, so eviction/reload cannot re-award.
+  if (league.playerMilestoneReceipts?.year !== year) {
+    league.playerMilestoneReceipts = { year, keys: [] };
+  }
+  const receipts = league.playerMilestoneReceipts;
+  const reported = new Set(receipts.keys || []);
+  for (const player of players) {
+    const before = previous.players.get(player.id);
+    const season = player.seasonStats?.[year];
+    if (!before || !season) continue;
+    for (const milestone of PLAYER_MILESTONES) {
+      if (!milestone.positions.includes(player.position)) continue;
+      const total = Number(season[milestone.group]?.[milestone.stat]);
+      const prior = before[milestone.key];
+      const key = JSON.stringify([player.id, milestone.key]);
+      if (!Number.isFinite(prior) || !Number.isFinite(total) ||
+          prior >= milestone.threshold || total < milestone.threshold || reported.has(key)) continue;
+      push(league, {
+        type: "milestone", week, year, headline: milestone.headline(player),
+        playerIds: [player.id], teamIds: [player.teamId],
+        milestone: { key: milestone.key, threshold: milestone.threshold, previous: prior, total }
+      });
+      reported.add(key);
     }
   }
+  receipts.keys = [...reported];
 }
 
 // ── Injuries ─────────────────────────────────────────────────────────────────

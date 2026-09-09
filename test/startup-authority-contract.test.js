@@ -58,7 +58,7 @@ test("missing ignored cache falls back to the newest committed audit authority",
   const authority = readCommittedGeniusAuthority(root);
   assert.match(authority.source, /^AUDIT_[0-9]{4}-[0-9]{2}-[0-9]{2}(?:_SESSION[0-9]+)?[.]json$/);
   const selectedAudit = JSON.parse(readFileSync(resolve(root, "docs", authority.source), "utf8"));
-  const isClosed = (item) => ["shipped", "done", "complete", "completed"].includes(String(item.status).toLowerCase());
+  const isClosed = (item) => ["shipped", "done", "implemented", "complete", "completed"].includes(String(item.status).trim().toLowerCase());
   const expectedOpen = selectedAudit.items.filter((item) => !isClosed(item));
   const expectedClosed = selectedAudit.items
     .filter(isClosed)

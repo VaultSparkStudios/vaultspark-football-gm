@@ -121,3 +121,29 @@ test("first-debrief prompt is wired immediately after the receipted debrief boun
   assert.ok(debrief >= 0 && prompt > debrief, "the invitation must follow the successful weekly debrief");
   assert.match(app.slice(debrief, prompt + 200), /\.\/lib\/firstDebriefPulse\.js/);
 });
+
+test("declining optional feedback survives denied writes without marking another franchise", () => {
+  const storage = { getItem() { throw new Error("SecurityError"); }, setItem() { throw new Error("QuotaExceededError"); } };
+  const team = { franchiseId: "denied-BUF", controlledTeamId: "BUF" };
+  assert.equal(shouldPromptFirstDebriefPulse(team, storage), true);
+  assert.doesNotThrow(() => setFirstDebriefPulseState(team, "declined", storage));
+  assert.equal(getFirstDebriefPulseState(team, storage), "declined");
+  assert.equal(shouldPromptFirstDebriefPulse(team, storage), false);
+  assert.equal(shouldPromptFirstDebriefPulse({ franchiseId: "denied-MIA", controlledTeamId: "MIA" }, storage), true);
+  assert.equal(shouldPromptFirstDebriefPulse(team, { getItem() { return null; } }), true, "a new page without persistence has no durable receipt");
+  assert.throws(() => setFirstDebriefPulseState(team, "unverified", storage), /answered or declined/);
+});
+
+test("a denied localStorage getter cannot prevent feedback dismissal", () => {
+  const descriptor = Object.getOwnPropertyDescriptor(globalThis, "localStorage");
+  const team = { franchiseId: "getter-denied", controlledTeamId: "BUF" };
+  try {
+    Object.defineProperty(globalThis, "localStorage", { configurable: true, get() { throw new Error("SecurityError"); } });
+    assert.equal(shouldPromptFirstDebriefPulse(team), true);
+    assert.doesNotThrow(() => setFirstDebriefPulseState(team, "declined"));
+    assert.equal(shouldPromptFirstDebriefPulse(team), false);
+  } finally {
+    if (descriptor) Object.defineProperty(globalThis, "localStorage", descriptor);
+    else delete globalThis.localStorage;
+  }
+});

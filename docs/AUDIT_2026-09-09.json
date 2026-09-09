@@ -1,0 +1,225 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-09",
+  "session": 100,
+  "agent": "codex",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "source": "Live code, canonical-stat reproductions, real-browser storage-denial captures, startup and release authority.",
+    "itemsRanked": 4,
+    "combinedPriority": 67,
+    "verificationNote": "Focused verification complete; integrated suite and exact candidate deployment remain in progress."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product; game-loop payoff, truthful feedback, static-host safety and measured release readiness",
+    "staging": "Stable Cloudflare staging before authorized main promotion and production deployment",
+    "source": "Local project status and live deployment receipts"
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "HIGH",
+      "category": "Speed/organization; token reduction; feedback truth",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 3,
+      "priority": 12,
+      "slug": "startup-reopens-implemented-audit-items",
+      "title": "Startup reopens implemented audit items",
+      "status": "implemented",
+      "premise": "S99 audit items are implemented, but readCommittedGeniusAuthority only recognizes done/shipped, so the fresh S100 startup brief advertises both completed S99 findings as critical open work. The Markdown cache and innovation generator use different completion vocabularies.",
+      "premises": [
+        {
+          "claim": "Startup completion vocabulary omits implemented",
+          "adapter": "file-content",
+          "target": "scripts/lib/startup-authority.mjs",
+          "pattern": "[\"done\", \"shipped\"].includes",
+          "operator": "contains",
+          "expected": "[\"done\", \"shipped\"].includes"
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Recognize implemented in startup authority."
+        },
+        "L2": {
+          "effortHours": 0.75,
+          "recipe": "Share exact normalized completion vocabulary across startup, Markdown queue, and innovation audit readers; test mixed and exhausted queues."
+        },
+        "L3": {
+          "effortHours": 1,
+          "recipe": "Exercise real startup rendering and queue freshness against implemented fixtures, preserving unknown/blocked/unverified states as open."
+        }
+      },
+      "executionEvidence": "Shared exact normalized completion vocabulary across three readers; 17 focused regressions passed; canonical studio shard includes the new contract."
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "UX; feedback loop; security of local persistence",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 4,
+      "priority": 16,
+      "slug": "optional-feedback-storage-trap",
+      "title": "Storage failure traps optional feedback dismissal",
+      "status": "implemented",
+      "premise": "Real browser reproduction at 1440px and 390px in dark/light: denied storage writes throw on Not now, leaving the modal and focus trap active; imported handler reproduction confirms Escape too.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Always close the dialog despite a persistence exception."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Use franchise-scoped page-local suppression when storage is denied; guard unavailable storage without claiming a receipt was saved."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "Cover denied reads/writes, denied global storage getter, missing storage, keyboard dismissal, focus return, repeated prompts, and visible save errors in real browser tests and inspected theme/viewport captures."
+        }
+      },
+      "executionEvidence": "8 playtest-journey tests and 4 browser storage regressions passed; four dark/light desktop/mobile failure captures prove dismissal and focus return."
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Feature depth; progression; gamification; deterministic narrative",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 4,
+      "priority": 14,
+      "slug": "milestone-headlines-use-nonexistent-stats",
+      "title": "Milestone headlines miss canonical stats and repeat exact thresholds",
+      "status": "implemented",
+      "premise": "Canonical createZeroedSeasonStats reproduction produces no headlines at QB 4100 yards, RB/WR 1050 yards, DL 10 sacks, or QB 31 touchdowns. QB 30 touchdowns produces duplicate headlines on consecutive calls. yardsLast and sacksLastWeek have no production writer.",
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Read canonical totals and recognize overshot thresholds."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Derive previous-stat crossings and persist season-scoped milestone deduplication through runtime save/load."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Use canonical stat fixtures and verify overshoot, bye/no-stat week, repeated call, save/load, and new-season behavior without changing simulation outcomes."
+        }
+      },
+      "executionEvidence": "46/46 s4-system tests passed, including canonical threshold overshoots and actual weekly simulation plus snapshot restore."
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "UX; progression payoff; second-order follow-through",
+      "effortHours": 1,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 25,
+      "slug": "news-ticker-permanent-hidden-class",
+      "title": "Milestone ticker stays hidden despite populated news",
+      "status": "implemented",
+      "premise": "Real-browser canonical milestone capture timed out: newsTicker contains the generated headline and hidden=false but retains its markup hidden class. renderNewsTicker and both close/keyboard handlers manipulate only the hidden property. No caller removes the class.",
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Use the hidden attribute consistently for initial ticker visibility."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Align CSS with the hidden attribute and prove render, close, keyboard reopen and empty feed."
+        },
+        "L3": {
+          "effortHours": 1,
+          "recipe": "Inspect canonical generated milestone headlines at desktop/mobile in both themes and add a real-browser visibility regression."
+        }
+      },
+      "executionEvidence": "Real-browser test passed for generated milestone visibility, close, keyboard reopen, empty feed and 44px close target; inspected desktop/mobile dark/light captures."
+    }
+  ],
+  "executionLog": [],
+  "gameLoopReview": {
+    "sessionEngagement": 7,
+    "retention": 5,
+    "loopTightness": 8,
+    "soulFidelity": 8,
+    "progression": 7,
+    "evidence": "Code/design judgments only; no current real-player cohort or detailed private creative evidence was available."
+  },
+  "axisSurvey": {
+    "new-innovative-features": [
+      "Session-local optional-feedback resilience ranked; shareable aggregate milestone cards deferred until genuine cohort evidence."
+    ],
+    "ai-integration": [
+      "Repair deterministic narrative input authority ranked; hosted generative coach rejected without demonstrated need or budget authorization."
+    ],
+    "feedback-loop": [
+      "Truthful save-failure feedback ranked; reward points for submitting ratings rejected as coercive."
+    ],
+    "security": [
+      "Denied browser-storage access must not trap optional consent ranked; project-local authentication rejected under external identity architecture."
+    ],
+    "feature-depth": [
+      "Canonical milestone payoff ranked; wholesale simulation rewrite rejected: existing deep loop."
+    ],
+    "token-api-reduction": [
+      "Prevent repeated implemented tasks ranked; new survey API rejected because local explicit receipts suffice."
+    ],
+    "speed-organization-efficiency": [
+      "One audit completion vocabulary ranked; unrelated dependency churn rejected against green exact-SHA CI."
+    ],
+    "ui-ux": [
+      "Storage-denied escape path ranked; wholesale mobile regroup deferred under existing creative scope."
+    ],
+    "gamification-engagement": [
+      "Overshot and once-only milestones ranked; S99 tie-result replacement rejected as already implemented."
+    ]
+  },
+  "phantomsRejected": [
+    {
+      "reason": "Live audit and implementation confirm completed tie authority.",
+      "candidate": "S99 tie fixes still needed"
+    },
+    {
+      "reason": "Live release currency 6/6 and last five GitHub runs green.",
+      "candidate": "production unavailable"
+    },
+    {
+      "reason": "Fixture invented fields with no production writer.",
+      "candidate": "synthetic milestone fixtures prove reachability"
+    },
+    {
+      "reason": "No genuine opted-in cohort evidence; no activity manufactured.",
+      "candidate": "new telemetry proves retention"
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "news-ticker-permanent-hidden-class",
+      "evidence": [
+        "Discovered by rendering the source-generated milestone after the canonical-stat fix."
+      ],
+      "status": "shipped"
+    },
+    {
+      "slug": "milestone-share-cards",
+      "evidence": [
+        "No genuine cohort evidence supports a sharing expansion; existing opt-in privacy boundary retained."
+      ],
+      "status": "deferred"
+    },
+    {
+      "slug": "persistent-fallback-storage",
+      "evidence": [
+        "A second durable store would add complexity to an optional declined prompt; page-local suppression is sufficient."
+      ],
+      "status": "rejected"
+    }
+  ]
+}

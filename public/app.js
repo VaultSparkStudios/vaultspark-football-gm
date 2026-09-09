@@ -1924,7 +1924,8 @@ function bindEvents() {
     }
     if (event.key.toLowerCase() === "n" && !event.ctrlKey && !event.metaKey) {
       const ticker = document.getElementById("newsTicker");
-      if (ticker) ticker.hidden = !ticker.hidden;
+      if (ticker?.hidden) renderNewsTicker();
+      else if (ticker) ticker.hidden = true;
       return;
     }
     // 1–9: jump to tab by index
