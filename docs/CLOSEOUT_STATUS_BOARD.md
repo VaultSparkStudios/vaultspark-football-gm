@@ -10,11 +10,11 @@
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ chore(proof): reconcile S101 release authority at the deploy  ║
+║  ✓ chore(proof): complete the S101 capture ledger and render th  ║
 ║  ✓ chore(proof): record S101 deployment receipts and reconciled  ║
 ║  ✓ fix: give the backend deploy gate a budget matching its new   ║
 ║  ✓ feat: enforce the rules the game advertises, and make four g  ║
-║  ✓ chore: record S100 verified deployment and closeout           ║
-║  ✓ fix: make debrief dismissal and milestone news reliable [SIL  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 954/1000 ═══════════════════════════════════════╗
 ║    Dev Health         96   ██████████                            ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 3 files  ·  M:1 A:0 D:0 ?:2                            ║
+║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -50,7 +50,7 @@
 ║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
-║  Doctor:        10/12                                            ║
+║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
 ║  Tests:         1327/1327 · STALE                                ║
 ║  IGNIS:         1d ago                                           ║
