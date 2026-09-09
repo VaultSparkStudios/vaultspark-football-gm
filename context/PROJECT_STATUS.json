@@ -134,12 +134,12 @@
   "silHealth": 658,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 1,
+    "blockingFailing": 3,
     "total": 12,
-    "failing": 1,
-    "score": 83,
+    "failing": 3,
+    "score": 67,
     "date": "2026-09-09",
-    "passing": 10,
+    "passing": 8,
     "warning": 1,
     "checks": [
       {
@@ -149,10 +149,22 @@
         "detail": "registry SPARKED · local contract FORGE"
       },
       {
+        "id": "release-authority-checked-staging-current",
+        "status": "failing",
+        "blocking": true,
+        "detail": "checked 5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3 · live 78c571ff2a31087156a4fb8ebe52b2c677877e1f"
+      },
+      {
+        "id": "release-authority-release-source-current",
+        "status": "failing",
+        "blocking": true,
+        "detail": "release source 5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3 · live staging 78c571ff2a31087156a4fb8ebe52b2c677877e1f"
+      },
+      {
         "id": "release-authority-git-head-covered-by-publication",
         "status": "failing",
         "blocking": true,
-        "detail": "HEAD 5126ae4667449991c139026b0b17b47560d876d1 is not covered by live production 5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3"
+        "detail": "HEAD 78c571ff2a31087156a4fb8ebe52b2c677877e1f is not covered by live production 5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3"
       }
     ]
   },

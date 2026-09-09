@@ -4,7 +4,7 @@
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: 134b32a7179383e1 -->
-<!-- session-authority: committed=S101 · SIL=S100 · status=S101 · handoff=S?; divergent=true -->
+<!-- session-authority: committed=S101 · SIL=S101 · status=S101 · handoff=S?; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
@@ -14,12 +14,6 @@
 ---
 
 ```
-╔══ SESSION AUTHORITY ═══════════════════════════════════════════╗
-║  ✓ Monotonic next session: S102; no source moved backward.       ║
-║  committed=S101 · SIL=S100 · status=S101 · handoff=S?            ║
-║  SIL may lag a verified receipt; closeout will reconcile score.  ║
-╚════════════════════════════════════════════════════════════════╝
-
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
@@ -47,23 +41,23 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    952/1000   ██████████████████████░░   95%                     ║
+║    954/1000   ██████████████████████░░   95%                     ║
 ║    SIL v3.0  ·  Avg3: 974.7  ·  Velocity 4→                      ║
 ║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend  ▇▇▇▇▇  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        98    ██████████  —        →                ║
+║    Dev Health        96    ██████████  —        →                ║
 ║    Alignment         98    ██████████  —        →                ║
 ║    Momentum          98    ██████████  —        →                ║
-║    Engagement        85    █████████░  —        →                ║
-║    Process Qual      92    █████████░  —        →                ║
+║    Engagement        86    █████████░  —        →                ║
+║    Process Qual      94    █████████░  —        →                ║
 ║    Coherence         95    ██████████  ········ →                ║
 ║    Security          98    ██████████  ········ →                ║
 ║    Ecosystem         90    █████████░  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation        98    ██████████  ········ →                ║
+║    Automation        99    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -74,8 +68,8 @@
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,820 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,410 tok/turn  ·  cache 50%  ·  128 turns to compact       ║
+║     2,674 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,337 tok/turn  ·  cache 50%  ·  135 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -94,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
+║  ⛔  Doctor        8/12 (67%)  ·  3 failing                       ║
 ║  ✓  Cost          Max flat-rate · $0.51/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -114,7 +108,7 @@
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
 ║  Velocity:   ▇▇▇▇▇  4→  (last 5 sessions)                        ║
 ║  Intent:     ?% achieved last 5                                  ║
-║  Streak:     ✓ 1 consecutive achieved-intent session             ║
+║  Streak:     ✓ 2 consecutive achieved-intent sessions            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗

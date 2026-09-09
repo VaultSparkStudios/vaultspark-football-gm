@@ -1,47 +1,47 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-09-09 (Session 100 closeout) -->
+<!-- generated-at: 2026-09-09 (Session 101 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S100 ═════╗
-║  Date: 2026-09-09  ·  SIL: 952/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S101 ═════╗
+║  Date: 2026-09-09  ·  SIL: 954/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: codex                                  ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ chore(proof): record S101 deployment receipts and reconciled  ║
+║  ✓ fix: give the backend deploy gate a budget matching its new   ║
+║  ✓ feat: enforce the rules the game advertises, and make four g  ║
+║  ✓ chore: record S100 verified deployment and closeout           ║
 ║  ✓ fix: make debrief dismissal and milestone news reliable [SIL  ║
-║  ✓ chore: complete S99 deployment closeout                       ║
-║  ✓ chore: record session 99 release evidence                     ║
-║  ✓ fix: stabilize mobile entry paint                             ║
-║  ✓ feat: ship tie-honest debrief loop                            ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 952/1000 ═══════════════════════════════════════╗
-║    Dev Health         98   ██████████                            ║
+╔══ SCORES · SIL 954/1000 ═══════════════════════════════════════╗
+║    Dev Health         96   ██████████                            ║
 ║    Alignment          98   ██████████                            ║
 ║    Momentum           98   ██████████                            ║
-║    Engagement         85   █████████░                            ║
-║    Process Qual       92   █████████░                            ║
+║    Engagement         86   █████████░                            ║
+║    Process Qual       94   █████████░                            ║
 ║    Coherence          95   ██████████                            ║
 ║    Security           98   ██████████                            ║
 ║    Ecosystem          90   █████████░                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         98   ██████████                            ║
+║    Automation         99   ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  ✓ context/CURRENT_STATE.md                                      ║
-║  ✓ context/TASK_BOARD.md                                         ║
-║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
-║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  · context/CURRENT_STATE.md                                      ║
+║  · context/TASK_BOARD.md                                         ║
+║  · context/LATEST_HANDOFF.md                                     ║
+║  · logs/WORK_LOG.md                                              ║
+║  · context/DECISIONS.md                                          ║
+║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  ✓ context/TRUTH_AUDIT.md                                        ║
-║  ✓ context/PROJECT_STATUS.json                                   ║
-║  · agent memory (~/.codex or ~/.claude project memory)           ║
+║  · context/TRUTH_AUDIT.md                                        ║
+║  · context/PROJECT_STATUS.json                                   ║
+║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 28 files  ·  M:16 A:0 D:0 ?:12                         ║
+║  Changes: 3 files  ·  M:1 A:0 D:0 ?:2                            ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -50,12 +50,12 @@
 ║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
-║  Doctor:        11/12                                            ║
+║  Doctor:        10/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1327/1327                                        ║
-║  IGNIS:         0d ago                                           ║
+║  Tests:         1327/1327 · STALE                                ║
+║  IGNIS:         1d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  7d ago                                           ║
+║  Sanitization:  8d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
 ║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║

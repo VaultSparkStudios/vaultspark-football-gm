@@ -6910,6 +6910,26 @@
       "sha256": "79cefe9d92d477fa9c597f0283b5c261552503e32cd406366aba897f5f966633",
       "bytes": 198453,
       "session": 99
+    },
+    "s101-desktop-game-contracts-light.png": {
+      "sha256": "3fca75f067a9d3b6f49b7925f8d5fae638e911d6264123df276885d9795cc285",
+      "bytes": 1363728,
+      "session": 101
+    },
+    "s101-desktop-game-settings-dark.png": {
+      "sha256": "6d7c693eea2026bd59906438b3cd5479031ffd5cb299a378d489feb007c7f394",
+      "bytes": 1232493,
+      "session": 101
+    },
+    "s101-desktop-game-settings-light.png": {
+      "sha256": "a4836a2e60f2219d076cf348dc07485c36f1abce56830200cd077433b9e16a0b",
+      "bytes": 1101049,
+      "session": 101
+    },
+    "s101-mobile-game-contracts-light.png": {
+      "sha256": "e53d72a6cee6bd3848ef49d34c660c2c281881a63558dc9c3c5286f69553e47a",
+      "bytes": 678548,
+      "session": 101
     }
   }
 }

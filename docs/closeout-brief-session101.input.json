@@ -2,7 +2,7 @@
   "session": "S101",
   "date": "2026-09-09",
   "repo": "franchise-architect",
-  "headline": "Completed the full arc. A four-lane live-code audit found that several rules the game advertises were never enforced and several gates reporting green had no ability to report red \u2014 the trade deadline the UI said would 'shut' was not checked anywhere in the engine, a capped-out club could re-sign everyone anyway, every rewind write exceeded the browser quota so a shipped feature never worked, and banked cap space quietly went to zero by season eight. All were fixed against measured evidence, and every new or repaired gate was given a negative control against the real pre-fix defect \u2014 which caught one of this session's own tests passing with the bug restored.",
+  "headline": "Completed the full arc. A four-lane live-code audit found that several rules the game advertises were never enforced and several gates reporting green had no ability to report red — the trade deadline the UI said would 'shut' was not checked anywhere in the engine, a capped-out club could re-sign everyone anyway, every rewind write exceeded the browser quota so a shipped feature never worked, and banked cap space quietly went to zero by season eight. All were fixed against measured evidence, and every new or repaired gate was given a negative control against the real pre-fix defect — which caught one of this session's own tests passing with the bug restored.",
   "items": [
     {
       "title": "The trade deadline becomes an enforced rule",
@@ -14,7 +14,7 @@
       "title": "The salary cap can no longer be walked through",
       "projectImpact": 8,
       "ecosystemImpact": 1,
-      "evidence": "negotiateAndSign caught the cap authority's refusal and hand-wrote the contract with the OLD capHit, returning ok:true \u2014 a capped-out club could extend every expiring player forever while the client reported a flat 'accepted the offer'. The bypass is removed and the applied terms are reported; proven by a test that goes red with the bypass restored."
+      "evidence": "negotiateAndSign caught the cap authority's refusal and hand-wrote the contract with the OLD capHit, returning ok:true — a capped-out club could extend every expiring player forever while the client reported a flat 'accepted the offer'. The bypass is removed and the applied terms are reported; proven by a test that goes red with the bypass restored."
     },
     {
       "title": "A restored franchise can no longer become unplayable",
@@ -44,7 +44,7 @@
       "title": "The publish path now runs the tests that cover it",
       "projectImpact": 7,
       "ecosystemImpact": 5,
-      "evidence": "deploy-pages and deploy-backend gated on the studio shard alone while src/** was a trigger path and full CI ran as a parallel workflow, not a needs: \u2014 an engine regression could reach the live origin unexercised and sit until the weekly sweep. Both now run the behaviour shards, guarded structurally by a test that fails on the pre-fix workflow."
+      "evidence": "deploy-pages and deploy-backend gated on the studio shard alone while src/** was a trigger path and full CI ran as a parallel workflow, not a needs: — an engine regression could reach the live origin unexercised and sit until the weekly sweep. Both now run the behaviour shards, guarded structurally by a test that fails on the pre-fix workflow."
     },
     {
       "title": "Four gates that could not fail were made falsifiable",
@@ -86,7 +86,7 @@
   "honestyLedger": [
     {
       "title": "One of this session's own new tests was a false green",
-      "evidence": "The cap-rollover regression passed with the pre-fix bug deliberately restored \u2014 the fixture left enough space that both readings clamped to the same ceiling. It was rewritten until it failed at 2.4M-against-146M and re-verified. Reported because the class is exactly what this session spent its effort on."
+      "evidence": "The cap-rollover regression passed with the pre-fix bug deliberately restored — the fixture left enough space that both readings clamped to the same ceiling. It was rewritten until it failed at 2.4M-against-146M and re-verified. Reported because the class is exactly what this session spent its effort on."
     },
     {
       "title": "S99 and S100 never wrote their CURRENT_STATE entries",
@@ -102,13 +102,13 @@
     },
     {
       "title": "A probe column that looks like a regression is not one",
-      "evidence": "The over/spaceM columns in the rollover probe measure against the flat base cap \u2014 the same measurement error the audit lane retracted mid-audit \u2014 and are not evidence of a solvency change. capComplianceUnresolved is empty every season."
+      "evidence": "The over/spaceM columns in the rollover probe measure against the flat base cap — the same measurement error the audit lane retracted mid-audit — and are not evidence of a solvency change. capComplianceUnresolved is empty every season."
     }
   ],
   "diffStat": {
-    "files": 37,
-    "insertions": 833,
-    "deletions": 102,
+    "files": 60,
+    "insertions": 6121,
+    "deletions": 367,
     "suite": "Node 1,369/1,369 across six shards; Playwright 60/60; studio shard rerun after two self-caused reds fixed at source"
   }
 }
