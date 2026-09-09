@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.1",
-  "generatedBy": "scripts/verify-release-provenance.mjs",
-  "checkedAt": "2026-09-09T22:51:05.410Z",
-  "baseUrl": "https://playfranchisearchitect.com",
+  "generatedBy": "scripts/verify-staging-receipt.mjs",
+  "checkedAt": "2026-09-09T22:51:43.842Z",
+  "baseUrl": "https://staging.playfranchisearchitect.com",
   "expectedRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
   "summary": {
     "status": "verified",
@@ -78,5 +78,11 @@
       "expected": false,
       "observed": false
     }
-  ]
+  ],
+  "stagingContract": {
+    "sameOriginRequired": true,
+    "healthSchemaRequired": true,
+    "exactDeployIdentityRequired": true,
+    "declaredBootAssetsRequired": true
+  }
 }

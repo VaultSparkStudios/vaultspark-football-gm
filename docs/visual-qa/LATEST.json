@@ -1,16 +1,17 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-09-09T07:06:41.058Z",
-  "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+  "capturedAt": "2026-09-09T22:50:40.271Z",
+  "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
   "sourceFingerprint": {
     "algorithm": "sha256",
     "files": {
-      "public/app.js": "602279778a9a509bce33a4ab0826bc06731362cd1279f335cb9b87fae5917fdb",
-      "public/game.html": "4acb39c3c04a8c6decbbbd5017a14b178b362e399032add158878ec589da21a9",
-      "public/styles.css": "98f5b404539d4d72c44eee11681fb8059755f926dd882353e8553262f4d2f7a5",
-      "public/lib/firstDebriefPulse.js": "2f9b61fb67c74566590a58cf7f7516839a14dbcab1eb77c075991ba9d224b346",
-      "src/engine/beatReporter.js": "77e62bb8eb7573649b6e01cabd32741346547549ace194df01ddc83af42363fe",
-      "src/runtime/GameSession.js": "4ad4553b604b15ddd0e422d06b4d4eae91dd9d0d538e17e0ba92e138ba610b13"
+      "public/app.js": "e8fca18d465b88e1afeb0174766d5bcc2278b859726e3af4d1da0de0570db5e9",
+      "public/game.html": "72bd7626c7abbc4adb29dd3cc21219c27e9ce8a9e09150e15119e9db1c8ea44c",
+      "public/styles.css": "637f93f5b31fed1800434774ae0b7ef94c5cc661d1be205de101eb1d007da64f",
+      "public/lib/tradeWindow.js": "ae3cd16bbad79e54d94dda978ebdab22af87a037d0c4848f7dcc9a39448f316c",
+      "public/lib/appCore.js": "0a5644c11de2b7deb9c5832f92d72dc6005e23412be2f81949a5eba2390e9d6a",
+      "public/lib/tabContracts.js": "b3f82f6b49c3118203a51e80fee55057b20e2758e0c186642b5b9f7c370e8eb9",
+      "public/lib/exactSurfaceNavigation.js": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
     }
   },
   "artifact": "Reviewed rendering source verified unchanged against the exact stable-staging candidate.",
@@ -20,164 +21,44 @@
   ],
   "captures": [
     {
-      "file": "s100-pulse-desktop-dark-open.png",
-      "sha256": "afea7241660d238e2b984a113f96235a93e07f9844ee993e001d146dc0a6e456",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Optional debrief check-in: open; denied browser storage fixture"
-    },
-    {
-      "file": "s100-pulse-desktop-dark-save-error.png",
-      "sha256": "104d7832dd40287bdf8e64894d92b46961b48e67bef18bb97ff0af9c14f16c5d",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Optional debrief check-in: save-error; denied browser storage fixture"
-    },
-    {
-      "file": "s100-pulse-desktop-dark-dismissed.png",
-      "sha256": "57708d7442ad5d8ec7520f56a36c82f838da2577ebfa9917a7c1538feabfd153",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Optional debrief check-in: dismissed; denied browser storage fixture"
-    },
-    {
-      "file": "s100-milestone-desktop-dark.png",
-      "sha256": "9f2655d84907a0c80985dc2a349e621c9ff9561152804e647ab1e5b203831f6b",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Canonical 4000-yard threshold crossing in the actual news ticker; deterministic rendering fixture, not player activity"
-    },
-    {
-      "file": "s100-pulse-desktop-light-open.png",
-      "sha256": "437ba696dfa0505fe9ea20780a6afb286867fcaae5063b462f62e0a9f7864381",
+      "file": "s101-desktop-game-contracts-light.png",
+      "sha256": "3fca75f067a9d3b6f49b7925f8d5fae638e911d6264123df276885d9795cc285",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Optional debrief check-in: open; denied browser storage fixture"
+      "page": "Contracts: Cap Casualty Predictor team select is populated (was permanently empty under copy telling the player to choose a team); 3-Year Cap Projection no longer shows a team dropdown the panel cannot honour."
     },
     {
-      "file": "s100-pulse-desktop-light-save-error.png",
-      "sha256": "6cb3408711c58a76a326b46187e6e0b9a779c16e2a7d518c4471a058505dc026",
+      "file": "s101-mobile-game-contracts-light.png",
+      "sha256": "e53d72a6cee6bd3848ef49d34c660c2c281881a63558dc9c3c5286f69553e47a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Contracts at 390px: both cap panels render the same corrected controls; no overflow."
+    },
+    {
+      "file": "s101-desktop-game-settings-light.png",
+      "sha256": "a4836a2e60f2219d076cf348dc07485c36f1abce56830200cd077433b9e16a0b",
       "theme": "light",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Optional debrief check-in: save-error; denied browser storage fixture"
+      "page": "Commissioner deck: lobby team select is populated, Queue Intent submits the previously dead Intent Type control, and Disband Lobby uses a light-theme-legible danger token instead of the dark-only #f85149. Negative QA metric deltas are readable."
     },
     {
-      "file": "s100-pulse-desktop-light-dismissed.png",
-      "sha256": "bd770ddf747a0cde1630bfba3713112ca3c6808e2f262bce1e870b4d65f7fcb8",
-      "theme": "light",
+      "file": "s101-desktop-game-settings-dark.png",
+      "sha256": "6d7c693eea2026bd59906438b3cd5479031ffd5cb299a378d489feb007c7f394",
+      "theme": "dark",
       "viewport": {
         "width": 1440,
         "height": 1000
       },
-      "page": "Optional debrief check-in: dismissed; denied browser storage fixture"
-    },
-    {
-      "file": "s100-milestone-desktop-light.png",
-      "sha256": "4ddeda702d69e31deb89d9f8f8dc78e349e65916bf9a407cc24aaef17f13fae8",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 1000
-      },
-      "page": "Canonical 4000-yard threshold crossing in the actual news ticker; deterministic rendering fixture, not player activity"
-    },
-    {
-      "file": "s100-pulse-mobile-dark-open.png",
-      "sha256": "135fb7dfd709f420c598909feb189882b97003b3c82b931084c4b9578cb64fc7",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Optional debrief check-in: open; denied browser storage fixture"
-    },
-    {
-      "file": "s100-pulse-mobile-dark-save-error.png",
-      "sha256": "42006c309049e51bd92246c09eb94c2a1d232b175c148a0cbe00bdf184394b7a",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Optional debrief check-in: save-error; denied browser storage fixture"
-    },
-    {
-      "file": "s100-pulse-mobile-dark-dismissed.png",
-      "sha256": "2e4c6736ee50323eb930a9e2a36d147db8fbb133584d54161c619cdf63aa4d62",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Optional debrief check-in: dismissed; denied browser storage fixture"
-    },
-    {
-      "file": "s100-milestone-mobile-dark.png",
-      "sha256": "04274984b6e97053906f711d825c22f722d20d70ab9df990766629dc7764b747",
-      "theme": "dark",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Canonical 4000-yard threshold crossing in the actual news ticker; deterministic rendering fixture, not player activity"
-    },
-    {
-      "file": "s100-pulse-mobile-light-open.png",
-      "sha256": "c53169fc3aaec8aa600b21b4642937c30b6d36b0311ea19a87dab9a3f6cc9c65",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Optional debrief check-in: open; denied browser storage fixture"
-    },
-    {
-      "file": "s100-pulse-mobile-light-save-error.png",
-      "sha256": "f7c8680d733dc2611063d7a9eac49124977e22a41692617a366af1fa00e51ceb",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Optional debrief check-in: save-error; denied browser storage fixture"
-    },
-    {
-      "file": "s100-pulse-mobile-light-dismissed.png",
-      "sha256": "62e3f7858a37e0e24fc53fce1392ffa6c21da106de360786317b5256f06c8439",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Optional debrief check-in: dismissed; denied browser storage fixture"
-    },
-    {
-      "file": "s100-milestone-mobile-light.png",
-      "sha256": "64420ff888761e81bbfc90a985c1895861ec6bdf2620903856f05c5839fddd6a",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Canonical 4000-yard threshold crossing in the actual news ticker; deterministic rendering fixture, not player activity"
+      "page": "Same deck in dark theme: no regression from the token change; danger red remains legible."
     }
   ],
   "baseline": {
@@ -220,23 +101,24 @@
   },
   "inspection": {
     "renderedPixelsReviewed": true,
-    "reviewer": "codex S100",
+    "reviewer": "claude S101",
     "findings": [
-      "Private feedback controls, readable errors and dismissal are visible at 1440px and 390px in dark/light themes.",
-      "Denied writes leave the check-in unsaved and still dismissible; focus returns without an unhandled exception.",
-      "The source-generated milestone headline is now visible on desktop and in mobile Full View. Long mobile ticker text truncates within its existing single-line layout; the full headline remains in league news.",
-      "Close control uses a 44px minimum target; real-browser tests prove visibility, dismissal, keyboard reopening and empty-feed hiding."
+      "Cap Casualty Predictor now offers a populated team picker on desktop and at 390px; it previously shipped an empty select directly above copy instructing the player to choose a team.",
+      "The 3-Year Cap Projection team dropdown is removed rather than faked: the panel derives from the controlled club cap summary and cannot honour a per-team selection.",
+      "The multiplayer lobby team select is populated, so a player is no longer silently forced to join as their own club.",
+      "Queue Intent gives the Intent Type control a submit path to POST /api/commissioner/intent, which was fully implemented and contract-registered but unreachable.",
+      "Disband Lobby and the tone-negative surfaces now use the theme danger token; the inline #f85149 and six #ff8f8f literals had no light-theme path. Verified legible in light and unchanged in dark."
     ],
     "fixesApplied": [
-      "Retain franchise-scoped page-local suppression when browser storage is unavailable.",
-      "Guard missing receipt storage instead of showing a saved confirmation.",
-      "Use hidden attribute consistently for ticker markup, renderer and controls, with matching CSS.",
-      "Enlarge the newly visible ticker close target to 44px."
+      "Populate capCasualtyTeamSelect and joinTeamSelect in syncTeamSelects and honour the selection in the Run Analysis handler.",
+      "Remove the unsupported capProjectionTeamSelect control.",
+      "Add the Queue Intent button and wire it to the existing endpoint.",
+      "Replace seven hardcoded reds with var(--danger) and add a themed .danger-text class."
     ],
     "blockingDefectsOpen": 0
   },
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
+    "digest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
   }
 }

@@ -131,15 +131,15 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 657,
+  "silHealth": 658,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 12,
-    "failing": 0,
-    "score": 92,
+    "failing": 1,
+    "score": 83,
     "date": "2026-09-09",
-    "passing": 11,
+    "passing": 10,
     "warning": 1,
     "checks": [
       {
@@ -147,6 +147,12 @@
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
+      },
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "failing",
+        "blocking": true,
+        "detail": "HEAD 5126ae4667449991c139026b0b17b47560d876d1 is not covered by live production 5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3"
       }
     ]
   },
@@ -281,12 +287,12 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "632b98009c8c9973ca532e9aac14603ade7407b8d87f97235e0ca2749ba97109",
-    "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+    "receiptSha256": "35ef9c0205fb6d42b48137658d038a5adc5be6f24be6dcef00933c98b3f51bbc",
+    "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6",
-      "files": 214,
+      "digest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e",
+      "files": 215,
       "entries": [
         {
           "path": ".well-known/llms.txt",
@@ -301,7 +307,7 @@
         {
           "path": "404.html",
           "bytes": 1775,
-          "sha256": "75b290bdbe49ef5dc482ddf6d4d92263c16ae586f23a1c079a7bcad5a179c1bc"
+          "sha256": "f5acf563ce8b00f99654b5bdd46aa1462cb18d414a9a6976080c1df659ead27b"
         },
         {
           "path": "_headers",
@@ -316,7 +322,7 @@
         {
           "path": "about.html",
           "bytes": 2443,
-          "sha256": "a08fd9dc8867057ec1bc7eb7b1b656db25d392739eec3c3624a92181c42eb7df"
+          "sha256": "d0fe146297206153482bf603558bfa772e5bb528a4ae49856e212e52e01a0a17"
         },
         {
           "path": "agents.json",
@@ -325,8 +331,8 @@
         },
         {
           "path": "app.js",
-          "bytes": 107405,
-          "sha256": "602279778a9a509bce33a4ab0826bc06731362cd1279f335cb9b87fae5917fdb"
+          "bytes": 109256,
+          "sha256": "e8fca18d465b88e1afeb0174766d5bcc2278b859726e3af4d1da0de0570db5e9"
         },
         {
           "path": "boot-manifest.json",
@@ -346,7 +352,7 @@
         {
           "path": "contact.html",
           "bytes": 2216,
-          "sha256": "54503d8fd001b81329589d3e4957c9a1ae33980722d3cc325f5ea5fab7799fab"
+          "sha256": "966b1d54d64c72f28f269b329922ee55e792c1e17bf3de3f5d6f3fdf334e7cc5"
         },
         {
           "path": "favicon.ico",
@@ -365,8 +371,8 @@
         },
         {
           "path": "game.html",
-          "bytes": 102472,
-          "sha256": "dabf2a0a587f8e07fd003332ce23e4c04faa57527e3813ba4ba513e2f7ca1a59"
+          "bytes": 102540,
+          "sha256": "fbad04c6659d625636979d3b5addb5aa52d273b1da8b3b1f2d2984fd555d14c6"
         },
         {
           "path": "images/cover.png",
@@ -386,7 +392,7 @@
         {
           "path": "index.html",
           "bytes": 19256,
-          "sha256": "1c3ab0e0b7ca61ba88d2b0c131091a39522042c3e806e4d7dd59979ab0647f50"
+          "sha256": "496b3ed7b58d55a2f95edbdc36df5d1637e8cf6cfdd79f43a9dc721cae3d721d"
         },
         {
           "path": "lib/achievements.js",
@@ -410,8 +416,8 @@
         },
         {
           "path": "lib/appCore.js",
-          "bytes": 64921,
-          "sha256": "2029f4189461170dcc04b64524c66bc9bc93003620702fee2a3e6e0d53660dff"
+          "bytes": 65338,
+          "sha256": "0a5644c11de2b7deb9c5832f92d72dc6005e23412be2f81949a5eba2390e9d6a"
         },
         {
           "path": "lib/appState.js",
@@ -515,8 +521,8 @@
         },
         {
           "path": "lib/exactSurfaceNavigation.js",
-          "bytes": 2074,
-          "sha256": "64cd63538b32452c038bdea8e760fbe9b3ba0b74dc43fe4abc9c2f9915c785f5"
+          "bytes": 3114,
+          "sha256": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
         },
         {
           "path": "lib/extractCommunityEvents.js",
@@ -545,8 +551,8 @@
         },
         {
           "path": "lib/franchiseCommandCenter.js",
-          "bytes": 8269,
-          "sha256": "bfc1231bdb575c5f4e43116e1b230f6a34718ef2ab58918aed24ec7a0f4f8d31"
+          "bytes": 8577,
+          "sha256": "cf78477bff49edfc6bd115895b7aabb8c1088f88a3f3f82f19b5db85b9b76b80"
         },
         {
           "path": "lib/franchiseNewsletter.js",
@@ -625,8 +631,8 @@
         },
         {
           "path": "lib/mobileLoop.js",
-          "bytes": 19701,
-          "sha256": "b13101f3a4cbe08d39df8756d7ea0b2af15f501d3566906a744745318b594616"
+          "bytes": 19927,
+          "sha256": "685c7e0cf81ce8cf02f4a482908b91fa337fda2dfbf7333fc9a50aca66f7d3ce"
         },
         {
           "path": "lib/modalManager.js",
@@ -745,8 +751,8 @@
         },
         {
           "path": "lib/tabContracts.js",
-          "bytes": 34172,
-          "sha256": "0dea8f17f14143b63e106f6c351ba94b72cfc7689aebcf6e7f10dad11a44a504"
+          "bytes": 34543,
+          "sha256": "b3f82f6b49c3118203a51e80fee55057b20e2758e0c186642b5b9f7c370e8eb9"
         },
         {
           "path": "lib/tabDraft.js",
@@ -770,8 +776,8 @@
         },
         {
           "path": "lib/tabOverview.js",
-          "bytes": 68425,
-          "sha256": "99fad43e22ba0729f08ffc95de2a57dc718578a354aa965560618a763fa109b4"
+          "bytes": 68713,
+          "sha256": "9b33f776b4e1b3820ef0eb925e73ee7f3f9f5df6b9065e66bdbe456801044ae2"
         },
         {
           "path": "lib/tabRoster.js",
@@ -814,6 +820,11 @@
           "sha256": "3af3d2a20be5351af4e74ee12e2e17279c6912c1e948fa5004522f7001c6299a"
         },
         {
+          "path": "lib/tradeWindow.js",
+          "bytes": 1486,
+          "sha256": "ae3cd16bbad79e54d94dda978ebdab22af87a037d0c4848f7dcc9a39448f316c"
+        },
+        {
           "path": "lib/tutorialCampaign.js",
           "bytes": 16237,
           "sha256": "efe4306ba4f79f12fce785bfe39c924f9f5d80d9c89fa75aca5fcc22b04964fe"
@@ -830,13 +841,13 @@
         },
         {
           "path": "precache-manifest.json",
-          "bytes": 15867,
-          "sha256": "dce106d776b3fe5a2628f68ddc206bcce73e4ce6faef9f98dd2905ec1816d96f"
+          "bytes": 15938,
+          "sha256": "5f7f0f4e45a49f3ba04d637534be465077687a3cbe6421694b4615d621d61882"
         },
         {
           "path": "privacy.html",
           "bytes": 4558,
-          "sha256": "fa2dff47a744fbbb31c9fa618f8b40324a5ff3c605c813cbcd8cc5d749a76bc7"
+          "sha256": "aa45644e3b18d542e9f31706f3cd7c15ea8e15c13655903158eac6ceac068250"
         },
         {
           "path": "public-identity.json",
@@ -876,12 +887,12 @@
         {
           "path": "simulation.html",
           "bytes": 9363,
-          "sha256": "b437f0b26a8b3b21eb5d1f5658530a6067dacaa71cb24e159674c08eb4989b19"
+          "sha256": "fad78d746793df2033669a7246a0659a8e4f665801ff5d708494a7b0bbf7f256"
         },
         {
           "path": "sitemap.xml",
           "bytes": 1623,
-          "sha256": "2f9ce0b0b5543f1181ca2bfc7c1360c851d81a2c8d49ed7d38005763a81a71c2"
+          "sha256": "2b07b056bb3b618857f7625330a9ba5408599951a49ce03f9eee80d64dc45d56"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -905,8 +916,8 @@
         },
         {
           "path": "src/app/api/localApiRuntime.js",
-          "bytes": 88413,
-          "sha256": "a28d3aa3fe0d1b0236ef9242fa3a7facc0b2af66e792768dc9866eed213d2d3d"
+          "bytes": 92533,
+          "sha256": "3f9c433a0757233da2b681509bdfb1b1541aef79e4f2f93ec5fb48c136e6938c"
         },
         {
           "path": "src/config.js",
@@ -915,8 +926,8 @@
         },
         {
           "path": "src/config/leagueSetup.js",
-          "bytes": 16377,
-          "sha256": "6a18c4e9751d385c0c842ed4250355f039dd1f15e72a71de0d45c5048a260066"
+          "bytes": 16836,
+          "sha256": "a8a98029a13a6f8caf8769390ebe17eb69b2615a850ca1fae3b5a4bf5b3b2c5f"
         },
         {
           "path": "src/data/nflEliteDensityBaseline.js",
@@ -1080,8 +1091,8 @@
         },
         {
           "path": "src/engine/offseasonSimulator.js",
-          "bytes": 20328,
-          "sha256": "8a802098e9af70b5865cd37295ac5fbe5a59990bf2e2fb5710a92970ca244eae"
+          "bytes": 21068,
+          "sha256": "7b83913434c24d74ed78404734d20d189cabd0dbbb4acb4044f4fc40e9a29f01"
         },
         {
           "path": "src/engine/onClockTradeMarket.js",
@@ -1175,8 +1186,8 @@
         },
         {
           "path": "src/runtime/GameSession.js",
-          "bytes": 332989,
-          "sha256": "4ad4553b604b15ddd0e422d06b4d4eae91dd9d0d538e17e0ba92e138ba610b13"
+          "bytes": 337328,
+          "sha256": "88834f4108ecc220821ed1cc7eb47f2daa779de7abd4bb814a78eccc3b72a889"
         },
         {
           "path": "src/runtime/advanceWeekCommand.js",
@@ -1225,8 +1236,8 @@
         },
         {
           "path": "src/runtime/services/CoachingService.js",
-          "bytes": 5886,
-          "sha256": "18786b44e81a4fb5e5a022a3873a6377b49c005972d9d1439488ef306de0a7c4"
+          "bytes": 6743,
+          "sha256": "8bc57ca62777f7c8453d77596361fba5c6242fc7283fed57fd193f6781f731c5"
         },
         {
           "path": "src/runtime/services/ContractService.js",
@@ -1235,8 +1246,8 @@
         },
         {
           "path": "src/runtime/services/TradeService.js",
-          "bytes": 10722,
-          "sha256": "49d5bb30f5d2798ee0bb70b708e1a488f858570449f1fc36beb9548149351d3a"
+          "bytes": 12307,
+          "sha256": "fef0bba44026b6fe0ce16de60896f20fcfb00b07d2f7c3ffb2741babd9780887"
         },
         {
           "path": "src/runtime/services/index.js",
@@ -1331,32 +1342,32 @@
         {
           "path": "stats.html",
           "bytes": 5676,
-          "sha256": "74e02655d0d96c222ef1670fb9268e7950133b720872fa19ac5f8df7ecbf3059"
+          "sha256": "e6e29848091dc8766138f4ba09e75f7f0a42b98e90a58fc455e144c822b1fb90"
         },
         {
           "path": "status.html",
-          "bytes": 8564,
-          "sha256": "d30361a85e3858c8100ba25b37cf1e728b6e61e69f11fcf22340e860fcce6f86"
+          "bytes": 10715,
+          "sha256": "c940f07251c2554426266f25d0ce58ca3ee8588a257c505ce0d62141f483637d"
         },
         {
-          "path": "styles.98f5b40453.css",
-          "bytes": 187266,
-          "sha256": "98f5b404539d4d72c44eee11681fb8059755f926dd882353e8553262f4d2f7a5"
+          "path": "styles.637f93f5b3.css",
+          "bytes": 187428,
+          "sha256": "637f93f5b31fed1800434774ae0b7ef94c5cc661d1be205de101eb1d007da64f"
         },
         {
           "path": "styles.css",
-          "bytes": 187266,
-          "sha256": "98f5b404539d4d72c44eee11681fb8059755f926dd882353e8553262f4d2f7a5"
+          "bytes": 187428,
+          "sha256": "637f93f5b31fed1800434774ae0b7ef94c5cc661d1be205de101eb1d007da64f"
         },
         {
           "path": "sw.js",
-          "bytes": 8493,
-          "sha256": "3f4fb376d7397bb94ed11375e8e45968b1f97356d4715b02b66e384ecab44bd8"
+          "bytes": 8516,
+          "sha256": "3044b05b8ce9c911b2ab56eeb244688024f66e3d4446fa68a5fb43123cc7beab"
         },
         {
           "path": "terms.html",
           "bytes": 3007,
-          "sha256": "409b919ddb26bfba36b4ec6447abb3a0b8a8079b69a672ab8e61cd1405e24ed2"
+          "sha256": "19f3bfe6533df966f1fe60714cb03eb467466b3144d690b7d198d976cae996c6"
         }
       ],
       "exclusions": [
@@ -1365,21 +1376,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "0676fd22-5cd1-4a32-a6fa-3af2354ca486",
+    "deploymentId": "3dba5f27-525d-43f3-8daa-ec17dfad4192",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-09-09T08:27:48.952Z"
+      "checkedAt": "2026-09-09T22:14:11.363Z"
     },
     "rollback": {
-      "previousDeploymentId": "f4d1d7e9-e840-4473-935c-a1723e2cdeb7",
+      "previousDeploymentId": "0676fd22-5cd1-4a32-a6fa-3af2354ca486",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-09-09T08:27:48.953Z"
+    "observedAt": "2026-09-09T22:14:11.364Z"
   },
   "lastCloseoutAt": "2026-09-09T09:26:41.463Z",
   "performanceAuthority": {
@@ -1411,31 +1422,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-09-09T09:26:39.041Z",
+    "observedAt": "2026-09-09T22:52:21.208Z",
     "status": "verified",
-    "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
-    "publicationRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+    "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+    "publicationRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
+      "digest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
-        "artifactDigest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
+        "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+        "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
       },
       "production": {
-        "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
-        "artifactDigest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
+        "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+        "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
       },
       "visual": {
-        "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
-        "artifactDigest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
+        "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+        "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
       },
       "performance": {
-        "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
-        "artifactDigest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
+        "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+        "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
       }
     },
     "checks": [
@@ -1481,12 +1492,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "5a76216db1c0afc372e53e5fe0808e862fedf5d3af29632635274454d63a4692",
-      "productionSha256": "a99f4b4c689df08c0999709857bb4ee1c7257b93e75a88ed5553c90b172dbe50",
-      "visualSha256": "852d5ab46cac3c7a38e405cb37809c2cb9f7ed510af01fd1c3da8e56657b3d7a",
-      "performanceSha256": "42ea2afaa171aaedec7b12282767880918032218a600ea7957fe7af89eb52045"
+      "stagingSha256": "4ad913fa39e3c9e709fad2a2b361e254bbfe77f767fb6bde10a81b6f06306265",
+      "productionSha256": "af18ec218c67e0bbfcdf2c866ec89ccbb6ab107dfb66865cda3d2144622a809a",
+      "visualSha256": "2bea3f8a6bcb953f9281dc23875646ee33310c6f0341f4a59fc51aa534cb4514",
+      "performanceSha256": "b0da9683930d2f688d49aeb683711ced417d6aac2dd65e7bb19fe9edd4e03faa"
     },
-    "receiptSha256": "813cbe028119d749466f5b9f02641b8eb3ce58054a6869aedceb42c3c4618fa7"
+    "receiptSha256": "ac795a990b8ca9da408d1e308e173d8328ca130547b04e53a05e251bbea5cdb4"
   },
   "launchReady": false,
   "sil": {
