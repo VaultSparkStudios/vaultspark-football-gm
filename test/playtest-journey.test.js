@@ -9,6 +9,13 @@ import {
   startPlaytestJourney
 } from "../public/lib/playtestJourney.js";
 import { buildLocalPlaytestExport, buildLocalPlaytestReceipt } from "../public/lib/playtestReceipts.js";
+import {
+  FIRST_DEBRIEF_PULSE_STATES,
+  firstDebriefPulseStorageKey,
+  getFirstDebriefPulseState,
+  setFirstDebriefPulseState,
+  shouldPromptFirstDebriefPulse
+} from "../public/lib/firstDebriefPulse.js";
 
 function memoryStorage() {
   const values = new Map();
@@ -92,4 +99,25 @@ test("planning-friction summary distinguishes reviewed revision, defer, and debr
     evidenceBoundary: "Local, self-selected instrumentation only; this does not prove cohort behavior, retention, comprehension, or causality."
   });
   assert.equal(summary.privacy.cohortClaimPermitted, false);
+});
+
+test("first-debrief pulse is one-time, franchise-scoped, and honors decline", () => {
+  const storage = memoryStorage();
+  const buffalo = { franchiseId: "fa-2026-BUF", controlledTeamId: "BUF" };
+  const miami = { franchiseId: "fa-2026-MIA", controlledTeamId: "MIA" };
+
+  assert.notEqual(firstDebriefPulseStorageKey(buffalo), firstDebriefPulseStorageKey(miami));
+  assert.equal(shouldPromptFirstDebriefPulse(buffalo, storage), true);
+  setFirstDebriefPulseState(buffalo, FIRST_DEBRIEF_PULSE_STATES.DECLINED, storage);
+  assert.equal(getFirstDebriefPulseState(buffalo, storage), "declined");
+  assert.equal(shouldPromptFirstDebriefPulse(buffalo, storage), false);
+  assert.equal(shouldPromptFirstDebriefPulse(miami, storage), true);
+});
+
+test("first-debrief prompt is wired immediately after the receipted debrief boundary", () => {
+  const app = readFileSync(new URL("../public/app.js", import.meta.url), "utf8");
+  const debrief = app.indexOf('recordPlaytestJourneyCheckpoint("weekly-debrief-ready")');
+  const prompt = app.indexOf("maybePromptFirstDebriefPulse", debrief);
+  assert.ok(debrief >= 0 && prompt > debrief, "the invitation must follow the successful weekly debrief");
+  assert.match(app.slice(debrief, prompt + 200), /\.\/lib\/firstDebriefPulse\.js/);
 });

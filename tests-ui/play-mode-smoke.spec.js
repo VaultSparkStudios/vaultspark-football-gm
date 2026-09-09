@@ -55,6 +55,11 @@ test("first session turns onboarding promises into a committed weekly evidence t
   await page.locator("#commitArchitectPlanBtn").click();
 
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 120_000 });
+  const firstDebriefDecline = page.locator("#firstDebriefDecline");
+  if (await firstDebriefDecline.isVisible({ timeout: 2_000 }).catch(() => false)) {
+    await firstDebriefDecline.click();
+    await expect(page.locator("#firstDebriefPulse")).toHaveCount(0);
+  }
   await expect(page.locator(".weekly-plan-receipt")).toContainText("Weekly plan committed");
   await expect(page.locator(".weekly-plan-receipt")).toContainText("tactic run-heavy");
   await expect(page.locator(".weekly-plan-receipt")).toContainText("reviewed against");

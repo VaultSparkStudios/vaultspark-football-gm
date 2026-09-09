@@ -29,8 +29,9 @@ test("the root page argues the case, below the one-click start rather than in fr
 });
 
 test("the community pulse offers an invitation, never zero contributors, before a cohort exists", async ({ page }) => {
-  await page.route("**/community/v1/snapshot", (route) =>
-    route.fulfill({
+  await page.route("**/community/v1/snapshot", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 1_500));
+    await route.fulfill({
       status: 200,
       contentType: "application/json",
       body: JSON.stringify({
@@ -41,11 +42,16 @@ test("the community pulse offers an invitation, never zero contributors, before 
           "30d": { key: "30d", label: "Past 30 days", status: "warming", sampleSize: 0, headline: [], categories: [] }
         }
       })
-    })
-  );
-  await page.goto("/");
+    });
+  });
+  await page.goto("/", { waitUntil: "domcontentloaded" });
   const pulse = page.locator("[data-community-pulse]");
+  const content = pulse.locator("[data-community-pulse-content]");
+  await expect(content).toHaveAttribute("data-community-prerendered", "pre-cohort");
+  await expect(pulse.locator("[data-community-invitation]")).toBeVisible();
+  await expect(pulse.locator(".community-skeleton-grid")).toHaveCount(0);
   await expect(pulse).toHaveAttribute("data-state", "pre-cohort", { timeout: 20_000 });
+  await expect(content).not.toHaveAttribute("data-community-prerendered", /.+/);
   await expect(pulse.locator("[data-community-invitation]")).toBeVisible();
   await expect(pulse).not.toContainText("0 contributors");
   await expect(pulse).not.toContainText("Warming up");

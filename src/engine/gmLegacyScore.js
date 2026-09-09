@@ -1,4 +1,5 @@
 import { buildArchitectMasteryPortfolio } from "./architectMasteryPortfolio.js";
+import { formatRecord, recordWinPct } from "../stats/teamRecord.js";
 
 /**
  * GM Legacy Score — Persistent Career Arc Rating
@@ -28,6 +29,7 @@ export function initGmLegacy(league) {
       seasonsServed: 0,
       totalWins: 0,
       totalLosses: 0,
+      totalTies: 0,
       playoffAppearances: 0,
       superBowlWins: 0,
       capGradeTotal: 0,
@@ -39,6 +41,7 @@ export function initGmLegacy(league) {
   if (!Number.isFinite(league.gmLegacy.capGradeTotal)) league.gmLegacy.capGradeTotal = 0;
   if (!Number.isFinite(league.gmLegacy.cultureGradeTotal)) league.gmLegacy.cultureGradeTotal = 0;
   if (!Number.isFinite(league.gmLegacy.tradeNetAV)) league.gmLegacy.tradeNetAV = 0;
+  if (!Number.isFinite(league.gmLegacy.totalTies)) league.gmLegacy.totalTies = 0;
   if (!Array.isArray(league.gmLegacy.seasonHistory)) league.gmLegacy.seasonHistory = [];
   return league.gmLegacy;
 }
@@ -65,6 +68,7 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year, { capS
 
   const wins = team.season?.wins || 0;
   const losses = team.season?.losses || 0;
+  const ties = team.season?.ties || 0;
   const madePlayoffs = teamMadePlayoffs(team);
   const latestChampion = (league.champions || [])
     .slice()
@@ -88,6 +92,7 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year, { capS
   legacy.seasonsServed += 1;
   legacy.totalWins += wins;
   legacy.totalLosses += losses;
+  legacy.totalTies += ties;
   if (madePlayoffs) legacy.playoffAppearances += 1;
   if (wonSuperBowl) legacy.superBowlWins += 1;
   legacy.capGradeTotal += capGrade;
@@ -95,7 +100,7 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year, { capS
   const seasonTradeNetAv = Number(stewardshipReport?.tradeReceipt?.netAv || 0);
   legacy.tradeNetAV += seasonTradeNetAv;
 
-  const seasonScore = _computeSeasonScore({ wins, losses, madePlayoffs, wonSuperBowl, capGrade, cultureGrade });
+  const seasonScore = _computeSeasonScore({ wins, losses, ties, madePlayoffs, wonSuperBowl, capGrade, cultureGrade });
   legacy.seasonHistory.push({
     year,
     teamId: controlledTeamId,
@@ -103,6 +108,7 @@ export function updateGmLegacyAfterSeason(league, controlledTeamId, year, { capS
     score: seasonScore,
     wins,
     losses,
+    ties,
     madePlayoffs,
     wonSuperBowl,
     capGrade,
@@ -121,8 +127,8 @@ export function resolveChampionTeamId(entry) {
   return entry.championTeamId || entry.teamId || entry.champion || null;
 }
 
-function _computeSeasonScore({ wins, losses, madePlayoffs, wonSuperBowl, capGrade, cultureGrade }) {
-  const winScore = Math.min(50, wins * 2.9);
+function _computeSeasonScore({ wins, losses, ties = 0, madePlayoffs, wonSuperBowl, capGrade, cultureGrade }) {
+  const winScore = Math.min(50, (wins + ties * 0.5) * 2.9);
   const playoffBonus = madePlayoffs ? 10 : 0;
   const sbBonus = wonSuperBowl ? 25 : 0;
   const capScore = capGrade * 0.1;
@@ -138,7 +144,8 @@ export function computeGmLegacyScore(legacy) {
   }
 
   const seasons = legacy.seasonsServed;
-  const winPct = legacy.totalWins / Math.max(1, legacy.totalWins + legacy.totalLosses);
+  const ties = Number(legacy.totalTies || 0);
+  const winPct = recordWinPct({ wins: legacy.totalWins, losses: legacy.totalLosses, ties });
   const playoffRate = legacy.playoffAppearances / seasons;
   const sbRate = legacy.superBowlWins / seasons;
   const avgCap = legacy.capGradeTotal / seasons;
@@ -170,6 +177,8 @@ export function computeGmLegacyScore(legacy) {
     label,
     wins: legacy.totalWins,
     losses: legacy.totalLosses,
+    ties,
+    record: formatRecord({ wins: legacy.totalWins, losses: legacy.totalLosses, ties }),
     winPct: winPct.toFixed(3),
     playoffs: legacy.playoffAppearances,
     superBowls: legacy.superBowlWins,

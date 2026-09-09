@@ -16,6 +16,7 @@ import {
   buildDraftPickVerdict,
   buildTradeVerdict
 } from "../public/lib/rewardBeats.js";
+import { GAME_RESULTS, gameResultFromScores, gameResultLabel, gameResultTone } from "../public/lib/gameOutcome.js";
 
 const TEAM = "BUF";
 
@@ -140,6 +141,25 @@ test("week recap model derives headline, score line, and standings truthfully", 
   assert.equal(model.rank, 2);
   assert.match(model.scoreLine, /^24–21 vs /);
   assert.equal(buildWeekRecapModel({ game: null, dashboard }), null, "no game — no recap");
+});
+
+test("a tied score remains a neutral tie through the shared outcome and weekly recap authorities", () => {
+  assert.equal(gameResultFromScores(20, 20), GAME_RESULTS.TIE);
+  assert.equal(gameResultLabel(GAME_RESULTS.TIE), "Tie");
+  assert.equal(gameResultTone(GAME_RESULTS.TIE), "neutral");
+  const model = buildWeekRecapModel({
+    game: { won: false, teamScore: 20, oppScore: 20, margin: 0, week: 7, home: true, opponent: "MIA", seasonType: "regular" },
+    dashboard: {
+      controlledTeamId: TEAM,
+      controlledTeam: { abbrev: TEAM },
+      latestStandings: [{ team: TEAM, wins: 3, losses: 3, ties: 1 }]
+    }
+  });
+  assert.equal(model.result, "tie");
+  assert.equal(model.tied, true);
+  assert.equal(model.won, false);
+  assert.equal(model.headline, "Deadlock");
+  assert.equal(model.record, "3–3–1");
 });
 
 test("Trophy Road ranks three nearest measurable truths and advances after an unlock", () => {

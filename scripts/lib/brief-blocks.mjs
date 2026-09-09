@@ -74,8 +74,8 @@ export function renderLastCompleted(summary, opts = {}) {
     return [
       top(`LAST SESSION (S${session}) - WHAT SHIPPED`),
       row(summary.slice(0, W)),
-      row(`Tests  -`),
-      row(`Deploy -`),
+      row(`Tests  ${opts.tests || '—'}`),
+      row(`Deploy ${opts.deploy || '—'}`),
       bottom(),
     ].join('\n');
   }

@@ -66,6 +66,27 @@ test("the shared moment handler serves both adapters and honors playoff drama", 
   assert.equal(buildFranchiseMoment(session, "BUF")?.gameId, response.body.moment?.gameId);
 });
 
+test("a tied game is a neutral Franchise Moment, never a loss", () => {
+  const session = {
+    getRecentBoxScores: () => [{
+      gameId: "tie-1", year: 2026, week: 7, seasonType: "regular",
+      homeTeamId: "BUF", awayTeamId: "MIA"
+    }],
+    getBoxScore: () => ({
+      homeTeam: { score: 20 },
+      awayTeam: { score: 20 },
+      scoringSummary: [],
+      playByPlay: []
+    })
+  };
+  const moment = buildFranchiseMoment(session, "BUF");
+  assert.equal(moment.result, "tie");
+  assert.match(moment.headline, /Deadlock/);
+  assert.match(moment.shareText, /Week 7 Tie/);
+  assert.doesNotMatch(`${moment.headline} ${moment.shareText}`, /loss/i);
+  assert.equal(scoreDrama({ result: "tie", margin: 0, scoringPlays: 0, seasonType: "regular" }), 2);
+});
+
 test("both adapters delegate to the shared moment authority (drift twin is dead)", () => {
   const serverSource = read("../src/server.js");
   const runtimeSource = read("../src/app/api/localApiRuntime.js");

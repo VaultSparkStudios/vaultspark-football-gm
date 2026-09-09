@@ -1,4 +1,5 @@
 import { computeGmLegacyScore, initGmLegacy } from "./gmLegacyScore.js";
+import { formatRecord } from "../stats/teamRecord.js";
 
 function boundedScore(value, max = 25) {
   return Math.max(0, Math.min(max, Math.round(Number(value) || 0)));
@@ -74,7 +75,7 @@ export function buildArchitectMasteryPortfolio(league = {}, teamId = null) {
     score: legacyScore.score * 0.25,
     evidenceCount: seasons,
     evidence: seasons
-      ? `${legacy.totalWins}-${legacy.totalLosses} across ${seasons} completed season${seasons === 1 ? "" : "s"}; ${legacy.playoffAppearances} playoff appearance${legacy.playoffAppearances === 1 ? "" : "s"}.`
+      ? `${formatRecord({ wins: legacy.totalWins, losses: legacy.totalLosses, ties: legacy.totalTies })} across ${seasons} completed season${seasons === 1 ? "" : "s"}; ${legacy.playoffAppearances} playoff appearance${legacy.playoffAppearances === 1 ? "" : "s"}.`
       : "No completed season has been logged.",
     nextMilestone: seasons ? "Complete the next season and let the record—not a projection—move this path." : "Complete one season to establish a results baseline."
   });

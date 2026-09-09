@@ -13,7 +13,6 @@ import { getSavedToken, saveToken, getSavedGistId, saveGistId } from "./lib/gist
 
 import { state, api } from "./lib/appState.js";
 import { recordAchievementEvent, renderTrophyCase, renderTrophyRoad } from "./lib/achievements.js";
-import { presentWeekRecap, presentDraftPickBeat, presentTradeBeat } from "./lib/rewardBeats.js";
 import { playSound, vibrate, HAPTIC_PATTERNS, isSoundEnabled, setSoundEnabled, isHapticsEnabled, setHapticsEnabled } from "./lib/audioFeedback.js";
 import { clearClientDiagnostics, observeBackgroundTask, recordClientDiagnostic, resolveClientDiagnostic, retryClientDiagnostics } from "./lib/clientDiagnostics.js";
 import { coordinatePostCommitHydration } from "./lib/postCommitHydration.js";
@@ -462,7 +461,7 @@ async function refreshAfterWeeklyCommand(response) {
     const { game } = recordAchievementEvent("week-advanced", {
       completedWeek: Number(state.dashboard?.currentWeek) - 1
     });
-    if (game) presentWeekRecap(game);
+    if (game) (await import("./lib/rewardBeats.js")).presentWeekRecap(game);
   } catch (error) {
     recordClientDiagnostic({
       surface: "engagement",
@@ -489,6 +488,11 @@ async function advanceOneWeek({ gmDecisionChoice = null } = {}) {
   const postCommitReceipt = await refreshAfterWeeklyCommand(response);
   recordReturnBoundary(state.dashboard, { reason: "weekly-commit" });
   recordPlaytestJourneyCheckpoint("weekly-debrief-ready");
+  await observeBackgroundTask(
+    () => import("./lib/firstDebriefPulse.js").then(({ maybePromptFirstDebriefPulse }) =>
+      maybePromptFirstDebriefPulse({ dashboard: state.dashboard, focusTarget: document.getElementById("advanceWeekBtn") })),
+    { surface: "playtest", operation: "first-debrief-pulse", authorityKey: dashboardAuthorityKey(state.dashboard), severity: "warning" }
+  );
   return { ...response, ...postCommitReceipt, postCommitReceipt };
 }
 
@@ -914,7 +918,7 @@ function bindEvents() {
       const mine = controlledId === payload.teamB ? b : a;
       const theirs = controlledId === payload.teamB ? a : b;
       const partner = controlledId === payload.teamB ? payload.teamA : payload.teamB;
-      const tradeVerdict = presentTradeBeat({ myDelta: mine.delta, theirDelta: theirs.delta, partner });
+      const tradeVerdict = (await import("./lib/rewardBeats.js")).presentTradeBeat({ myDelta: mine.delta, theirDelta: theirs.delta, partner });
       recordAchievementEvent("trade-committed", { valueEdge: tradeVerdict.edge, inbound: false });
       clearTradePackages({ keepMessage: true });
       await Promise.all([loadState(), loadRoster(), loadContractsTeam(), loadFreeAgency(), loadDepthChart(), loadTransactionLog(), loadPickAssets()]);
@@ -953,7 +957,7 @@ function bindEvents() {
         const myId = state.dashboard?.controlledTeamId;
         const rivalId = result.offer?.fromTeamId;
         if (valuation && valuation[myId] && valuation[rivalId]) {
-          const beat = presentTradeBeat({
+          const beat = (await import("./lib/rewardBeats.js")).presentTradeBeat({
             myDelta: valuation[myId].delta,
             theirDelta: valuation[rivalId].delta,
             partner: rivalId,
@@ -1287,7 +1291,7 @@ function bindEvents() {
         method: "POST",
         body: { playerId: state.selectedDraftProspectId }
       });
-      const verdict = presentDraftPickBeat(prospect, draftBefore);
+      const verdict = (await import("./lib/rewardBeats.js")).presentDraftPickBeat(prospect, draftBefore);
       recordAchievementEvent("draft-pick", { grade: prospect?.grade, verdict: verdict.verdict });
       await Promise.all([loadState(), loadDraftState(), loadScouting(), loadRoster(), loadTransactionLog()]);
     }, "Submitting user pick...")
@@ -1314,7 +1318,7 @@ function bindEvents() {
         method: "POST",
         body: { playerId: button.dataset.draftPlayerId }
       });
-      const verdict = presentDraftPickBeat(prospect, draftBefore);
+      const verdict = (await import("./lib/rewardBeats.js")).presentDraftPickBeat(prospect, draftBefore);
       recordAchievementEvent("draft-pick", { grade: prospect?.grade, verdict: verdict.verdict });
       await Promise.all([loadState(), loadDraftState(), loadScouting(), loadRoster(), loadTransactionLog()]);
     }, "Drafting player...");

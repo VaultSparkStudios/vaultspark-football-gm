@@ -7,6 +7,7 @@ import { state } from "./appState.js";
 import { escapeHtml, teamName } from "./appCore.js";
 import { playSound, vibrate, HAPTIC_PATTERNS } from "./audioFeedback.js";
 import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
+import { GAME_RESULTS, gameResultFromScores, gameResultTone } from "./gameOutcome.js";
 
 const AUTO_DISMISS_MS = 8000;
 let dismissTimer = null;
@@ -55,11 +56,16 @@ export function buildWeekRecapModel({ game, dashboard }) {
   const abbrev = d.controlledTeam?.abbrev || d.controlledTeamId;
   const myRow = findTeamStanding(standings, { ...d.controlledTeam, id: d.controlledTeamId, abbrev });
   const rowIndex = myRow ? standings.indexOf(myRow) : -1;
-  const headline = game.won
-    ? game.margin >= 30 ? "Statement Win" : game.margin <= 3 ? "Escape Act" : "Victory"
-    : game.margin >= -3 ? "Heartbreaker" : game.margin <= -30 ? "Woodshed" : "Defeat";
+  const result = gameResultFromScores(game.teamScore, game.oppScore);
+  const headline = result === GAME_RESULTS.TIE
+    ? "Deadlock"
+    : result === GAME_RESULTS.WIN
+      ? game.margin >= 30 ? "Statement Win" : game.margin <= 3 ? "Escape Act" : "Victory"
+      : game.margin >= -3 ? "Heartbreaker" : game.margin <= -30 ? "Woodshed" : "Defeat";
   return {
-    won: game.won,
+    result,
+    won: result === GAME_RESULTS.WIN,
+    tied: result === GAME_RESULTS.TIE,
     headline,
     scoreLine: `${game.teamScore}–${game.oppScore} ${game.home ? "vs" : "at"} ${teamName(game.opponent) || game.opponent}`,
     week: game.week,
@@ -72,14 +78,14 @@ export function buildWeekRecapModel({ game, dashboard }) {
 export function presentWeekRecap(game) {
   const model = buildWeekRecapModel({ game, dashboard: state.dashboard });
   if (!model) return false;
-  playSound(model.won ? "win-chime" : "loss-thud");
-  vibrate(model.won ? HAPTIC_PATTERNS.win : HAPTIC_PATTERNS.loss);
+  playSound(model.result === GAME_RESULTS.WIN ? "win-chime" : model.result === GAME_RESULTS.LOSS ? "loss-thud" : "advance-tick");
+  vibrate(model.result === GAME_RESULTS.WIN ? HAPTIC_PATTERNS.win : model.result === GAME_RESULTS.LOSS ? HAPTIC_PATTERNS.loss : HAPTIC_PATTERNS.tick);
   return showBeatCard({
     kicker: `Week ${model.week}${model.seasonType === "playoffs" ? " · Playoffs" : ""} Recap`,
     headline: model.headline,
     line: model.scoreLine,
     meta: `${model.record ? `Record ${model.record}` : ""}${model.rank ? ` · League #${model.rank}` : ""}`.replace(/^ · /, ""),
-    tone: model.won ? "win" : "loss"
+    tone: gameResultTone(model.result)
   });
 }
 

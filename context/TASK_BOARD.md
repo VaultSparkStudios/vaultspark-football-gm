@@ -26,6 +26,16 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 - [ ] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker.
 
+## Session 99 — Tie-honest payoff and first-debrief evidence (2026-09-08)
+
+- [x] Replace two-state post-game result copy with one win/loss/tie authority across recap, Franchise Moment, press-room questions, effects, promises, receipts, and continuity.
+- [x] Add exact 20–20 regressions that prevent every named emotional surface from turning a tie into a loss.
+- [x] Offer a one-time, per-franchise private pulse after the first successful weekly debrief: four explicit ratings, optional note, no automatic transmission, and no save payload or player identity.
+- [x] Make dismissal and completion focus-safe, copy feedback truthful when the Clipboard API is unavailable, and never prompt again once answered or declined.
+- [x] Inspect and hash-bind the new surface on desktop/mobile in dark/light themes; correct the light-theme contrast defect found in the first render.
+
+**Verification:** canonical aggregate **1,319/1,319** across six shards; Playwright **55/55**; focused release guards **44/44**; Pages build, browser-module reachability, static smoke, and CANON-053 visual receipt green. Lazy-loading the post-game reward layer holds the first-decision graph at **643,495/650,000 bytes**, 52/58 modules, with zero lazy-root leaks. Application and release evidence are committed and pushed; exact staging, production Pages and backend deployment are verified. Public launch remains **HOLD** pending delivered reply-capable project-domain email evidence, exact-SHA founder approval, and authoritative lifecycle reconciliation.
+
 ## Session 98 — Full arc: the first season pays off, chronology stays true, and tablet focus comes home (2026-09-03)
 
 - [x] Replace the never-initialized dashboard-phase sentinel with one pure previous/current season-transition authority.
@@ -1747,3 +1757,10 @@ Execution order: deterministic visual authority → permanent Decision Archive �
 - Responsive evidence **140 captures** across 390/768/1440, dark/light and every primary tab.
 - Visual QA **32 SHA-256-bound inspected captures**; CANON-053 changed-surface check passes.
 - Launch status remains independently gated by delivered reply-capable Zoho alias evidence and authoritative lifecycle reconciliation; neither is inferred from a production deploy.
+
+
+## Session 99 release follow-through
+
+- [x] Verify immutable S99 staging and production artifact identity and successful backend deployment.
+- [x] Recover stale S98 handoff/status references using the S99 release receipts.
+- [x] Complete closeout validation: Studio shard 267/267, doctor zero blocking failures, and changed-file secret scan zero findings.

@@ -29,6 +29,20 @@ test("trade deadline frenzy turns a winning team into structured buy offers", ()
   assert.ok(frenzy.offers.every((offer) => offer.constraint && offer.risk && offer.partner));
 });
 
+test("trade deadline role counts each tie as half a win", () => {
+  const frenzy = buildTradeDeadlineFrenzy({
+    currentWeek: 10,
+    controlledTeamId: "BUF",
+    controlledTeam: { abbrev: "BUF" },
+    latestStandings: [
+      { team: "BUF", wins: 5, losses: 3, ties: 2 },
+      { team: "MIA", wins: 7, losses: 3 }
+    ],
+    rosterNeeds: [{ position: "CB", delta: -2 }]
+  });
+  assert.equal(frenzy.role, "buyer", "5-3-2 is .600, not .500");
+});
+
 test("trade deadline frenzy protects cap and challenge constraints", () => {
   const frenzy = buildTradeDeadlineFrenzy({
     currentWeek: 10,

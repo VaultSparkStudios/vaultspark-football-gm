@@ -336,6 +336,24 @@ test("gmLegacyScore: updateGmLegacyAfterSeason increments seasonsServed", () => 
   assert.equal(league.gmLegacy.totalWins, 12);
 });
 
+test("gmLegacyScore: career records preserve ties and migrate older saves", () => {
+  const migrated = { gmLegacy: { seasonsServed: 1, totalWins: 8, totalLosses: 8, seasonHistory: [] } };
+  initGmLegacy(migrated);
+  assert.equal(migrated.gmLegacy.totalTies, 0);
+
+  const league = {
+    teams: [{ id: "BUF", season: { wins: 8, losses: 8, ties: 1 }, cap: {}, chemistry: 75 }],
+    champions: []
+  };
+  updateGmLegacyAfterSeason(league, "BUF", 2026);
+  const score = computeGmLegacyScore(league.gmLegacy);
+  assert.equal(league.gmLegacy.totalTies, 1);
+  assert.equal(league.gmLegacy.seasonHistory[0].ties, 1);
+  assert.equal(score.ties, 1);
+  assert.equal(score.record, "8-8-1");
+  assert.equal(score.winPct, "0.500");
+});
+
 test("gmLegacyScore: updateGmLegacyAfterSeason records playoff appearance", () => {
   const league = {
     teams: [{ id: "BUF", season: { wins: 13, losses: 4, playoffSeed: 1 }, cap: {}, chemistry: 80 }],
