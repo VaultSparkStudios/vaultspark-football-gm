@@ -623,3 +623,10 @@ Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green
 ---
 
 Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+
+## 2026-09-09 — S100 — Storage and milestone truth
+
+Optional feedback suppression can fall back to franchise-scoped page memory, while saving still requires a successful browser-storage write. Milestones require a measured prior-to-current crossing, persist deduplication independently of the rolling news feed, and do not backfill unsupported historical events. Ticker visibility uses one native hidden-state authority.
+
+Release posture: stable staging is independently verified at the exact candidate; no account flows exist and external identity remains the declared architecture. The milestone ticker and storage-safe feedback controls provide visible surface follow-through, with desktop/mobile evidence in both themes.

@@ -5,4 +5,4 @@
 - Player milestone headlines use canonical season counters, detect actual threshold crossings, and remain deduplicated across save/reload and news-feed rotation.
 - Populated news tickers display correctly. Dismissal and the keyboard shortcut respect empty feeds, and the close control has a 44px target.
 
-Validation includes focused engine and browser regressions, the full test suites, and desktop/mobile visual review in light and dark themes. Release verification records are published separately when complete. These checks do not establish real-player engagement or retention.
+Validation includes focused engine and browser regressions, the full test suites, and desktop/mobile visual review in light and dark themes. Release verification is complete in the S100 staging, production, test, and workflow receipts. These checks do not establish real-player engagement or retention.

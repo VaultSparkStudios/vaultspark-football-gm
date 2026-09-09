@@ -409,6 +409,25 @@
       },
       "delta": 0,
       "cause": "Release truth is receipt-derived: 9 production routes, origin health at 713b326d4d84843112ddbc8354c0760bb6400859, requir"
+    },
+    {
+      "date": "2026-09-09",
+      "session": 100,
+      "total": 0,
+      "maxTotal": 25,
+      "overallStatus": "green",
+      "lastReviewed": "2026-09-09",
+      "dimensions": {
+        "schema_alignment": 0,
+        "prompt_template_alignment": 0,
+        "derived_view_freshness": 0,
+        "handoff_continuity": 0,
+        "contradiction_density": 0
+      },
+      "delta": 0,
+      "cause": "Release truth is receipt-derived: 9 production routes, origin health at d0fea099ea9c177e724d958755d1d47a93770a3b, requir",
+      "dimensionMeasurementStatus": "unmeasured",
+      "dimensionMeasurementNote": "Dimension table absent from the source truth audit; zero values are parser defaults, not assessed dimension scores."
     }
   ]
 }

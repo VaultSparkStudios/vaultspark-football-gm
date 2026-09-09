@@ -4,7 +4,7 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at 713b326d4d84843112ddbc8354c0760bb6400859, required edge headers verified; evidence current through 2026-09-10T00:29:26.862Z. Launch remains HOLD; independent gates are not collapsed.",
+  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at d0fea099ea9c177e724d958755d1d47a93770a3b, required edge headers verified; evidence current through 2026-09-10T09:20:55.636Z. Launch remains HOLD; independent gates are not collapsed.",
   "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
@@ -22,12 +22,12 @@
   },
   "truthAuditStatus": "green",
   "truthAuditLastRun": "2026-09-09",
-  "ignisScore": 42836,
+  "ignisScore": 41119,
   "ignisGrade": "FORGE",
-  "ignisLastComputed": "2026-08-11",
+  "ignisLastComputed": "2026-09-09",
   "testSuiteStatus": "green",
-  "testsPassing": 1319,
-  "testsTotal": 1319,
+  "testsPassing": 1327,
+  "testsTotal": 1327,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -66,32 +66,45 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 978,
+  "silScore": 952,
   "silCategoriesV3": {
-    "devHealth": 100,
-    "creativeAlignment": 100,
-    "momentum": 100,
-    "engagement": 95,
-    "processQuality": 90,
+    "devHealth": 98,
+    "creativeAlignment": 98,
+    "momentum": 98,
+    "engagement": 85,
+    "processQuality": 92,
     "crossRepoCoherence": 95,
-    "securityPosture": 100,
-    "ecosystemIntegration": 98,
+    "securityPosture": 98,
+    "ecosystemIntegration": 90,
     "capitalEfficiency": 100,
-    "automationCoverage": 100
+    "automationCoverage": 98
   },
-  "currentSession": 99,
+  "currentSession": 100,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
-    "date": "2026-09-08",
-    "canonical": "Implementation-boundary Node receipt: 1,319/1,319 across six shards",
-    "browser": "55/55 Playwright at implementation boundary",
-    "exactShaCi": "34273797142 and receipt-only CI 34296387803 succeeded",
-    "staging": "14/14; live identity rechecked during closeout",
-    "production": "10/10; Pages 34275252182 and backend 34275259066 succeeded",
-    "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
-    "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4",
-    "closeout": "Studio shard 267/267 passed on 2026-09-09; doctor blockingFailing 0; settings sanitizer 0 findings"
+    "date": "2026-09-09",
+    "canonical": "1327/1327; six shards with explicit studio rerun",
+    "browser": "Final local 59/60 plus unchanged failed-test rerun 1/1; hosted release browser gate passed",
+    "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+    "artifactDigest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6",
+    "workflows": [
+      {
+        "name": "CI",
+        "id": 34331844586,
+        "conclusion": "success"
+      },
+      {
+        "name": "Deploy Pages",
+        "id": 34333215833,
+        "conclusion": "success"
+      },
+      {
+        "name": "Deploy Backend Runtime",
+        "id": 34333220807,
+        "conclusion": "success"
+      }
+    ]
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -118,7 +131,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 678,
+  "silHealth": 657,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -144,9 +157,9 @@
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
-  "entropyScore": 0.07,
+  "entropyScore": 0.004,
   "entropyLastComputed": "2026-09-09",
-  "lastSessionSummary": "S99 shipped tie-complete results across career and post-game surfaces, focus-safe drawer dismissal, an explicit local-only first-debrief pulse, truthful session/release guidance, and stable mobile entry paint. Exact staging, production Pages and backend deployment are verified; public launch remains HOLD.",
+  "lastSessionSummary": "S100 fixes storage-safe optional feedback dismissal, canonical once-only player milestone reporting, visible and keyboard-safe news tickers, and consistent completed-audit status handling. Stable staging, production Pages and backend deployment are verified.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -164,11 +177,11 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-09-08"
+      "lastChecked": "2026-09-09"
     }
   ],
-  "lastSession": 99,
-  "silLastSession": 99,
+  "lastSession": 100,
+  "silLastSession": 100,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -202,32 +215,31 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
-    "workflowRun": 34275259066,
+    "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+    "workflowRun": 34333220807,
     "deployServer": "live-exact-workflow-green",
     "externalHealth": {
       "ok": true,
       "database": "ready",
       "corsOrigin": "https://playfranchisearchitect.com",
-      "healthCache": "no-store",
-      "snapshotCache": "public, max-age=30, s-maxage=60, stale-while-revalidate=300"
+      "healthCache": "no-store"
     },
-    "verifiedAt": "2026-09-08"
+    "verifiedAt": "2026-09-09T09:26:36.726Z"
   },
   "releaseEvidence": {
     "schemaVersion": "1.1",
     "kind": "structured-release-evidence",
     "source": "scripts/launch-evidence-report.mjs",
-    "receiptSha256": "33cfdccfa3c4dcd78bca14de401018d918839cc397257a5ea6abbc761cac2f7c",
-    "checkedAt": "2026-09-09T00:29:26.862Z",
+    "receiptSha256": "d17e4a19f03827420df5bed41fdc10120d6a8aeff1edb238a05c966c7eb78f26",
+    "checkedAt": "2026-09-09T09:20:55.636Z",
     "evidenceWindow": {
-      "observedAt": "2026-09-09T00:29:26.862Z",
+      "observedAt": "2026-09-09T09:20:55.636Z",
       "maxAgeMs": 86400000,
-      "expiresAt": "2026-09-10T00:29:26.862Z",
+      "expiresAt": "2026-09-10T09:20:55.636Z",
       "statusAtIssue": "current"
     },
     "runtimeUrl": "https://playfranchisearchitect.com",
-    "deployedRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+    "deployedRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
     "routes": {
       "verified": true,
       "checked": 9
@@ -248,7 +260,7 @@
     },
     "exactRevision": {
       "verified": true,
-      "expected": "713b326d4d84843112ddbc8354c0760bb6400859"
+      "expected": "d0fea099ea9c177e724d958755d1d47a93770a3b"
     },
     "independentStaging": {
       "verified": true
@@ -269,11 +281,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "56889a90c5e81091c5bae36de2ee657c0f805b02961359c5f814f89a8bb5d1ad",
-    "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+    "receiptSha256": "632b98009c8c9973ca532e9aac14603ade7407b8d87f97235e0ca2749ba97109",
+    "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4",
+      "digest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6",
       "files": 214,
       "entries": [
         {
@@ -289,7 +301,7 @@
         {
           "path": "404.html",
           "bytes": 1775,
-          "sha256": "b63890a49eb740eb9682b73e2d2c8cc84ff001b3c182c0286fabe1933da594fe"
+          "sha256": "75b290bdbe49ef5dc482ddf6d4d92263c16ae586f23a1c079a7bcad5a179c1bc"
         },
         {
           "path": "_headers",
@@ -304,7 +316,7 @@
         {
           "path": "about.html",
           "bytes": 2443,
-          "sha256": "253f9237fb4ca7d5b62a56bab5f67509f4dff16db24046cf7d6305a33a9dd3e7"
+          "sha256": "a08fd9dc8867057ec1bc7eb7b1b656db25d392739eec3c3624a92181c42eb7df"
         },
         {
           "path": "agents.json",
@@ -313,8 +325,8 @@
         },
         {
           "path": "app.js",
-          "bytes": 107364,
-          "sha256": "4b61da2f570054886b2b04ac76564587d9702eecb50b7b7ac67908668c828cee"
+          "bytes": 107405,
+          "sha256": "602279778a9a509bce33a4ab0826bc06731362cd1279f335cb9b87fae5917fdb"
         },
         {
           "path": "boot-manifest.json",
@@ -334,7 +346,7 @@
         {
           "path": "contact.html",
           "bytes": 2216,
-          "sha256": "7852437e168f7cf53e7326ce2cbf9337d018143c599c35ce604b9feb8f6633f6"
+          "sha256": "54503d8fd001b81329589d3e4957c9a1ae33980722d3cc325f5ea5fab7799fab"
         },
         {
           "path": "favicon.ico",
@@ -354,7 +366,7 @@
         {
           "path": "game.html",
           "bytes": 102472,
-          "sha256": "95bd37bb800b884b288c5fca9911925af536042c854be293c40f653676fd3357"
+          "sha256": "dabf2a0a587f8e07fd003332ce23e4c04faa57527e3813ba4ba513e2f7ca1a59"
         },
         {
           "path": "images/cover.png",
@@ -374,7 +386,7 @@
         {
           "path": "index.html",
           "bytes": 19256,
-          "sha256": "2e1c7ece519de07fff1a2d1057cfcc1c1bde5128ebfe4c14e83a00a72afc0569"
+          "sha256": "1c3ab0e0b7ca61ba88d2b0c131091a39522042c3e806e4d7dd59979ab0647f50"
         },
         {
           "path": "lib/achievements.js",
@@ -523,8 +535,8 @@
         },
         {
           "path": "lib/firstDebriefPulse.js",
-          "bytes": 10081,
-          "sha256": "da2b09fd90778c874a4f714c5ddd6d7b11b69232a62bb613146e2bc78dca34b8"
+          "bytes": 11109,
+          "sha256": "2f9b61fb67c74566590a58cf7f7516839a14dbcab1eb77c075991ba9d224b346"
         },
         {
           "path": "lib/franchiseArchitecture.js",
@@ -819,12 +831,12 @@
         {
           "path": "precache-manifest.json",
           "bytes": 15867,
-          "sha256": "07865171c68d025d5a074d86521b42fedf5ab3f4a57ef4457fdcb8109cdedda7"
+          "sha256": "dce106d776b3fe5a2628f68ddc206bcce73e4ce6faef9f98dd2905ec1816d96f"
         },
         {
           "path": "privacy.html",
           "bytes": 4558,
-          "sha256": "b2eb8a19609946a808421ee6c056ad7ea08419964fb4016a0f1c5a97d52f1f4b"
+          "sha256": "fa2dff47a744fbbb31c9fa618f8b40324a5ff3c605c813cbcd8cc5d749a76bc7"
         },
         {
           "path": "public-identity.json",
@@ -864,7 +876,7 @@
         {
           "path": "simulation.html",
           "bytes": 9363,
-          "sha256": "bdd3c2304943c9b5f93de062b2afbf240d4228aea2ddfdc29f683eb44a386e6c"
+          "sha256": "b437f0b26a8b3b21eb5d1f5658530a6067dacaa71cb24e159674c08eb4989b19"
         },
         {
           "path": "sitemap.xml",
@@ -983,8 +995,8 @@
         },
         {
           "path": "src/engine/beatReporter.js",
-          "bytes": 12496,
-          "sha256": "39fd517a31b38c81899a895c99e2b6528767444e4a126a1f771383a6903ed6b2"
+          "bytes": 13566,
+          "sha256": "77e62bb8eb7573649b6e01cabd32741346547549ace194df01ddc83af42363fe"
         },
         {
           "path": "src/engine/capAlerts.js",
@@ -1163,8 +1175,8 @@
         },
         {
           "path": "src/runtime/GameSession.js",
-          "bytes": 332829,
-          "sha256": "b3d462ae84ccaedcf76e63870d604c8a01fa2d159dbb4cab8c89f609136f8b3c"
+          "bytes": 332989,
+          "sha256": "4ad4553b604b15ddd0e422d06b4d4eae91dd9d0d538e17e0ba92e138ba610b13"
         },
         {
           "path": "src/runtime/advanceWeekCommand.js",
@@ -1319,32 +1331,32 @@
         {
           "path": "stats.html",
           "bytes": 5676,
-          "sha256": "d33cefd5347e2ea90423569d5b6c065d2bf9ec32225c54fba8250608f6f86906"
+          "sha256": "74e02655d0d96c222ef1670fb9268e7950133b720872fa19ac5f8df7ecbf3059"
         },
         {
           "path": "status.html",
           "bytes": 8564,
-          "sha256": "b473bcfacc940a33e2916b7bf22d2720e4acf1b23ea47c7e2ceb785e83781324"
+          "sha256": "d30361a85e3858c8100ba25b37cf1e728b6e61e69f11fcf22340e860fcce6f86"
         },
         {
-          "path": "styles.8b9fcd5fa4.css",
-          "bytes": 187205,
-          "sha256": "8b9fcd5fa4c4ab88c13800f098e4fc797c92c25281872f7216b16b0c7f8cfab5"
+          "path": "styles.98f5b40453.css",
+          "bytes": 187266,
+          "sha256": "98f5b404539d4d72c44eee11681fb8059755f926dd882353e8553262f4d2f7a5"
         },
         {
           "path": "styles.css",
-          "bytes": 187205,
-          "sha256": "8b9fcd5fa4c4ab88c13800f098e4fc797c92c25281872f7216b16b0c7f8cfab5"
+          "bytes": 187266,
+          "sha256": "98f5b404539d4d72c44eee11681fb8059755f926dd882353e8553262f4d2f7a5"
         },
         {
           "path": "sw.js",
           "bytes": 8493,
-          "sha256": "5cc17571a8a6d94d3fb6d7e400074d78c22921cc3c236ede3381be64f1eda02b"
+          "sha256": "3f4fb376d7397bb94ed11375e8e45968b1f97356d4715b02b66e384ecab44bd8"
         },
         {
           "path": "terms.html",
           "bytes": 3007,
-          "sha256": "d9fb05248f9a376ad005a8e65395818f8046c89ef60863c2d019e889f13a673c"
+          "sha256": "409b919ddb26bfba36b4ec6447abb3a0b8a8079b69a672ab8e61cd1405e24ed2"
         }
       ],
       "exclusions": [
@@ -1353,23 +1365,23 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "d339e90e-5e62-4faf-b23d-59515f4e4033",
+    "deploymentId": "0676fd22-5cd1-4a32-a6fa-3af2354ca486",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-09-08T20:18:24.531Z"
+      "checkedAt": "2026-09-09T08:27:48.952Z"
     },
     "rollback": {
-      "previousDeploymentId": "8dfe7ae5-8f85-4f33-a63a-055d4b31b39a",
+      "previousDeploymentId": "f4d1d7e9-e840-4473-935c-a1723e2cdeb7",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-09-08T20:18:24.532Z"
+    "observedAt": "2026-09-09T08:27:48.953Z"
   },
-  "lastCloseoutAt": "2026-09-09T03:54:19.240Z",
+  "lastCloseoutAt": "2026-09-09T09:26:41.463Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
     "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
@@ -1399,31 +1411,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-09-09T00:34:04.427Z",
+    "observedAt": "2026-09-09T09:26:39.041Z",
     "status": "verified",
-    "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
-    "publicationRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
+    "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+    "publicationRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4"
+      "digest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
-        "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4"
+        "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+        "artifactDigest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
       },
       "production": {
-        "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
-        "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4"
+        "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+        "artifactDigest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
       },
       "visual": {
-        "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
-        "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4"
+        "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+        "artifactDigest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
       },
       "performance": {
-        "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
-        "artifactDigest": "aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4"
+        "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+        "artifactDigest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
       }
     },
     "checks": [
@@ -1464,17 +1476,17 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
-      "verifiedAt": "2026-09-08",
+      "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
+      "verifiedAt": "2026-09-09T09:26:36.726Z",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "3c8f8ddc9b5aff437b1beec4f38eda2f1fdae87e063b9228c3a1105e4b562d62",
-      "productionSha256": "da35a274b9102ee1458d3c0fea8725964cc4d23db908d6cd32ac5017ced1593b",
-      "visualSha256": "ada6031a1b350a596133c7dc044a0a56e749ce2418549ce660e8fb2f6e3f450d",
-      "performanceSha256": "a1046cf567842601b0dfe2564dab6d4ff5c28abe96b50d8c9bdf8026f336ff76"
+      "stagingSha256": "5a76216db1c0afc372e53e5fe0808e862fedf5d3af29632635274454d63a4692",
+      "productionSha256": "a99f4b4c689df08c0999709857bb4ee1c7257b93e75a88ed5553c90b172dbe50",
+      "visualSha256": "852d5ab46cac3c7a38e405cb37809c2cb9f7ed510af01fd1c3da8e56657b3d7a",
+      "performanceSha256": "42ea2afaa171aaedec7b12282767880918032218a600ea7957fe7af89eb52045"
     },
-    "receiptSha256": "4daabb549c6e4d71bc0fd6872a287b71cf3fe762189bb08f98823abd71861b5b"
+    "receiptSha256": "813cbe028119d749466f5b9f02641b8eb3ce58054a6869aedceb42c3c4618fa7"
   },
   "launchReady": false,
   "sil": {
@@ -1515,5 +1527,12 @@
     },
     "total": 1303,
     "note": "S98 canonical receipt, direct exit 0: 1,303/1,303. Exact-SHA push CI separately passed 1,298/1,298 across its five configured shards, plus 55/55 Playwright cases in release promotion."
+  },
+  "silRollingAverages": {
+    "3": 974.7,
+    "5": 979,
+    "10": 984.4,
+    "25": 988.5,
+    "all": 963.5
   }
 }

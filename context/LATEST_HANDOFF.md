@@ -1,15 +1,17 @@
-# Latest Handoff — Session 99 → Session 100
+# Latest Handoff — Session 100 → Session 101
 
-## Current outcome
+## Where We Left Off
 
-S99 shipped tie-complete results across career and post-game surfaces, focus-safe drawer dismissal, an explicit local-only first-debrief pulse, truthful session/release guidance, and stable mobile entry paint. Exact staging, production Pages and backend deployment are verified; public launch remains HOLD.
+S100 fixes storage-safe optional feedback dismissal, canonical once-only player milestone reporting, visible and keyboard-safe news tickers, and consistent completed-audit status handling. Stable staging, production Pages and backend deployment are verified.
 
-Application revision `713b326d4d84843112ddbc8354c0760bb6400859` and artifact `aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4` pass staging 14/14 and production provenance 10/10. CI 34273797142, Pages promotion 34275252182, backend deployment 34275259066, and receipt-only CI 34296387803 succeeded. Live staging/production currency passed 6/6 during closeout recovery; live backend reports database ready at the exact revision. The implementation-boundary Node receipt is 1,319/1,319 and Playwright is 55/55; these are retained historical receipts, not newly rerun suites.
+Deploy: verified on stable staging and production, including backend runtime.
+
+Application revision d0fea099ea9c177e724d958755d1d47a93770a3b; artifact ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6. Staging 14/14; production 10/10; hosted performance verified. Node 1327/1327 across six shards, with the studio shard rerun after adding screenshot-ledger entries. Local browser verification: 59/60 on the final full run, then the sole setup timeout passed unchanged on focused rerun; earlier full run 60/60. Hosted candidate workflows: CI 34331844586 success; Deploy Pages 34333215833 success; Deploy Backend Runtime 34333220807 success. Sixteen reviewed captures cover desktop/mobile and both themes.
 
 ## Next work
 
-Observe the first genuine opted-in cohort; preserve suppression and privacy boundaries. Restore /stats to the sitemap only when the community snapshot clears its suppression threshold. Public-launch email, approval, lifecycle and applicable identity evidence remain separate from technical deployment.
+Observe genuine opted-in player feedback while retaining privacy and suppression boundaries. Restore the statistics sitemap entry only after its existing cohort threshold is met. Delivered/reply-as contact email, candidate-bound public-launch approval, and lifecycle authority remain independent launch evidence.
 
-## Release boundary
+## Verification boundaries
 
-The application candidate is 713b326d4d84843112ddbc8354c0760bb6400859; later closeout commits contain receipts and documentation. Both S99 audit plans are implemented (four initial findings and two deeper payoff findings). Mobile entry paint was stabilized during hosted performance verification. No new human creative direction was introduced; no Creative Direction Record entry is owed.
+Local setup initialization timed out once under concurrent work and passed unchanged on rerun. The screenshot retention ledger was corrected before publication; previous failure remains recorded in the test receipt. No new creative direction was introduced. Later receipt-only commits do not change the deployed application.

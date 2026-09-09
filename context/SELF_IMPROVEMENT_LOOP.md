@@ -1,8 +1,10 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Rolling status: Session 99 closed at 978 / 1000 SIL v3.0. S99 shipped tie-complete results across career and post-game surfaces, focus-safe drawer dismissal, an explicit local-only first-debrief pulse, truthful session/release guidance, and stable mobile entry paint. Exact staging, production Pages and backend deployment are verified; public launch remains HOLD.
-Previously: Session 98 closed at 994 / 1000.
+Last session: 100 (2026-09-09) | Total: 952/1000 | Velocity: 4 | Debt: →
+Avgs — 3: 974.7 | 5: 979 | 10: 984.4 | 25: 988.5 | all: 963.5
+Sparkline: ▇▇▇▇▇
+SIL delta: 978 → 952 (-26). Engineering assessments, not user-outcome measurements. Rolling averages use 87 unique scored sessions, exclude calibration sessions 1–3, and normalize older scales to 1000.
 <!-- rolling-status-end -->
 
 ## 2026-09-03 — Session 98 The First Season Finally Pays Off
@@ -343,3 +345,15 @@ Process Quality reflects the interrupted closeout and stale session records; eng
 
 - [SIL] Verify live artifact identity and write-back currency independently: a clean, deployed tree can still have an unfinished session record.
 - [SIL] Trace all three game outcomes through emotional copy and persisted effects; accurate standings alone do not prove tie-honest feedback.
+
+
+## 2026-09-09 — Session 100 — Reliable feedback and milestone news
+
+SIL v3.0: **952 / 1000** (Dev Health 98, Creative Alignment 98, Momentum 98, Engagement 85, Process Quality 92, Cross-Repo Coherence 95, Security Posture 98, Ecosystem Integration 90, Capital Efficiency 100, Automation Coverage 98). Intent outcome: Achieved. These are engineering assessments, not measured user outcomes. Engagement lacks real-cohort evidence; process quality reflects the late ledger correction and transient setup failure.
+
+S100 fixes storage-safe optional feedback dismissal, canonical once-only player milestone reporting, visible and keyboard-safe news tickers, and consistent completed-audit status handling. Stable staging, production Pages and backend deployment are verified.
+
+Application revision d0fea099ea9c177e724d958755d1d47a93770a3b; artifact ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6. Staging 14/14; production 10/10; hosted performance verified. Node 1327/1327 across six shards, with the studio shard rerun after adding screenshot-ledger entries. Local browser verification: 59/60 on the final full run, then the sole setup timeout passed unchanged on focused rerun; earlier full run 60/60. Hosted candidate workflows: CI 34331844586 success; Deploy Pages 34333215833 success; Deploy Backend Runtime 34333220807 success. Sixteen reviewed captures cover desktop/mobile and both themes.
+
+- [SIL] Exercise denied storage at the dismissal boundary, not only while saving.
+- [SIL] Canonical threshold crossings and durable deduplication must be verified through the actual weekly simulation and rendered news feed.

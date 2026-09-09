@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "capturedAt": "2026-09-09T07:06:41.058Z",
-  "sourceRevision": null,
+  "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
   "sourceFingerprint": {
     "algorithm": "sha256",
     "files": {
@@ -13,7 +13,7 @@
       "src/runtime/GameSession.js": "4ad4553b604b15ddd0e422d06b4d4eae91dd9d0d538e17e0ba92e138ba610b13"
     }
   },
-  "artifact": "S100 source-hash-bound working-tree review; immutable candidate binding follows staging build",
+  "artifact": "Reviewed rendering source verified unchanged against the exact stable-staging candidate.",
   "themes": [
     "dark",
     "light"
@@ -234,5 +234,9 @@
       "Enlarge the newly visible ticker close target to 44px."
     ],
     "blockingDefectsOpen": 0
+  },
+  "artifactFingerprint": {
+    "algorithm": "sha256",
+    "digest": "ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6"
   }
 }
