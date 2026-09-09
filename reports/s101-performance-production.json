@@ -2,10 +2,10 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-09-09T22:43:38.987Z",
+  "observedAt": "2026-09-09T23:32:52.578Z",
   "baseUrl": "https://playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+  "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
   "artifactFingerprint": {
     "algorithm": "sha256",
     "digest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e",
@@ -1098,17 +1098,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a389b681dccdde94-EWR",
+    "cf-ray": "a389fe9d898bdac4-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Wed, 09 Sep 2026 22:43:37 GMT",
+    "date": "Wed, 09 Sep 2026 23:32:51 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=uwm94kbSPQ78CCBwLyotL5DO1eVK2PhleuEDwMaX3Qq0FZyJj08NYRoPic5mHNtcFM2d83ZKz%2FURskr3cS3OWLYjpuUqHbZ1kcKfJOtZ6BXwvXECNnFD%2BnFPMbmbOj73%2F01Z5L8ELOxZERK1xw%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=oxZRjdPCY7e76TRpQlNssdhb9my64DzNOUJDIJ9vGMLOWmA%2B7DzgH0S6gTBHvg5roK5kS5zlNeV6OP11iGIiV3lhUU0C2nShMvi3KVQmpoYhmLEutDdnblkBd2SnYEOk1%2BIUg5m7SGulVYQH7w%3D%3D\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -1124,26 +1124,13 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 412,
+      "lcpMs": 440,
       "inpMs": 32,
       "cls": 0,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 10716,
-          "lcpElement": {
-            "tag": "H1",
-            "id": null,
-            "className": "setup-title",
-            "text": "Franchise Architect: Football"
-          },
-          "cls": 0,
-          "shifts": [],
-          "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 364,
+          "lcpMs": 10288,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -1156,7 +1143,20 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 412,
+          "lcpMs": 440,
+          "lcpElement": {
+            "tag": "H1",
+            "id": null,
+            "className": "setup-title",
+            "text": "Franchise Architect: Football"
+          },
+          "cls": 0,
+          "shifts": [],
+          "inpMs": 32,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 384,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -1177,13 +1177,13 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 340,
-      "inpMs": 16,
+      "lcpMs": 476,
+      "inpMs": 24,
       "cls": 0.0085,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 10420,
+          "lcpMs": 10268,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -1193,7 +1193,7 @@
           "cls": 0.0085,
           "shifts": [
             {
-              "startTimeMs": 14761,
+              "startTimeMs": 14430,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -1225,11 +1225,11 @@
               ]
             }
           ],
-          "inpMs": 16,
+          "inpMs": 24,
           "interactionObserved": true
         },
         {
-          "lcpMs": 336,
+          "lcpMs": 476,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -1239,7 +1239,7 @@
           "cls": 0.0085,
           "shifts": [
             {
-              "startTimeMs": 2465,
+              "startTimeMs": 2667,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -1271,11 +1271,11 @@
               ]
             }
           ],
-          "inpMs": 16,
+          "inpMs": 24,
           "interactionObserved": true
         },
         {
-          "lcpMs": 340,
+          "lcpMs": 360,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -1285,7 +1285,7 @@
           "cls": 0.0085,
           "shifts": [
             {
-              "startTimeMs": 2595,
+              "startTimeMs": 2263,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -1329,7 +1329,7 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+        "observed": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
         "expected": "40-character git SHA"
       },
       {
@@ -1359,7 +1359,7 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 412,
+        "observed": 440,
         "expected": "< 1800ms"
       },
       {
@@ -1383,13 +1383,13 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 340,
+        "observed": 476,
         "expected": "< 1800ms"
       },
       {
         "name": "mobile INP",
         "ok": true,
-        "observed": 16,
+        "observed": 24,
         "expected": "<= 200ms"
       },
       {
@@ -1425,5 +1425,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "dfecd02478248a9030c27f6499fbd7cf275e802761442e1b23846868136ba45f"
+  "receiptSha256": "d8af9c6010f5ad8eea3178d4fae628337b1e3c49cff52e95ec1fc00172ef9fb6"
 }

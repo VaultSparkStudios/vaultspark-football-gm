@@ -134,12 +134,12 @@
   "silHealth": 658,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 3,
+    "blockingFailing": 0,
     "total": 12,
-    "failing": 3,
-    "score": 67,
+    "failing": 0,
+    "score": 92,
     "date": "2026-09-09",
-    "passing": 8,
+    "passing": 11,
     "warning": 1,
     "checks": [
       {
@@ -147,24 +147,6 @@
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
-      },
-      {
-        "id": "release-authority-checked-staging-current",
-        "status": "failing",
-        "blocking": true,
-        "detail": "checked 5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3 · live 78c571ff2a31087156a4fb8ebe52b2c677877e1f"
-      },
-      {
-        "id": "release-authority-release-source-current",
-        "status": "failing",
-        "blocking": true,
-        "detail": "release source 5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3 · live staging 78c571ff2a31087156a4fb8ebe52b2c677877e1f"
-      },
-      {
-        "id": "release-authority-git-head-covered-by-publication",
-        "status": "failing",
-        "blocking": true,
-        "detail": "HEAD 78c571ff2a31087156a4fb8ebe52b2c677877e1f is not covered by live production 5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3"
       }
     ]
   },
@@ -233,16 +215,14 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
-    "workflowRun": 34333220807,
+    "sourceRevision": "5126ae4667449991c139026b0b17b47560d876d1",
+    "workflowRun": 34413556979,
     "deployServer": "live-exact-workflow-green",
     "externalHealth": {
-      "ok": true,
-      "database": "ready",
-      "corsOrigin": "https://playfranchisearchitect.com",
-      "healthCache": "no-store"
+      "verified": false,
+      "note": "Not independently probed this session: the API origin is supplied by repository variables (vars.API_ORIGIN) that are not readable from this repo, so no live health receipt was captured. The workflow gate (studio, runtime, core, sim-contract), both image builds and deploy-server all completed green at the exact revision; that is the extent of what is attested."
     },
-    "verifiedAt": "2026-09-09T09:26:36.726Z"
+    "verifiedAt": "2026-09-09T23:14:09.007Z"
   },
   "releaseEvidence": {
     "schemaVersion": "1.1",
@@ -299,8 +279,8 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "35ef9c0205fb6d42b48137658d038a5adc5be6f24be6dcef00933c98b3f51bbc",
-    "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+    "receiptSha256": "f84e8cbabefc12368b720f9608dcb9ef16e56237936d086d5b89a4ba9e1f926f",
+    "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
     "artifactFingerprint": {
       "algorithm": "sha256",
       "digest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e",
@@ -1388,21 +1368,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "3dba5f27-525d-43f3-8daa-ec17dfad4192",
+    "deploymentId": "6292dd61-11c5-4dca-8d54-3f23e81b00c2",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-09-09T22:14:11.363Z"
+      "checkedAt": "2026-09-09T23:04:00.697Z"
     },
     "rollback": {
-      "previousDeploymentId": "0676fd22-5cd1-4a32-a6fa-3af2354ca486",
+      "previousDeploymentId": "fb838bbb-6970-4502-9a95-cf9295030457",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-09-09T22:14:11.364Z"
+    "observedAt": "2026-09-09T23:04:00.697Z"
   },
   "lastCloseoutAt": "2026-09-09T09:26:41.463Z",
   "performanceAuthority": {
@@ -1434,10 +1414,10 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-09-09T22:52:21.208Z",
+    "observedAt": "2026-09-09T23:33:19.002Z",
     "status": "verified",
-    "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
-    "publicationRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+    "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
+    "publicationRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
@@ -1445,19 +1425,19 @@
     },
     "identities": {
       "staging": {
-        "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+        "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
         "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
       },
       "production": {
-        "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+        "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
         "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
       },
       "visual": {
-        "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+        "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
         "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
       },
       "performance": {
-        "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+        "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
         "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
       }
     },
@@ -1499,17 +1479,17 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "d0fea099ea9c177e724d958755d1d47a93770a3b",
-      "verifiedAt": "2026-09-09T09:26:36.726Z",
+      "sourceRevision": "5126ae4667449991c139026b0b17b47560d876d1",
+      "verifiedAt": "2026-09-09T23:14:09.007Z",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "4ad913fa39e3c9e709fad2a2b361e254bbfe77f767fb6bde10a81b6f06306265",
-      "productionSha256": "af18ec218c67e0bbfcdf2c866ec89ccbb6ab107dfb66865cda3d2144622a809a",
-      "visualSha256": "2bea3f8a6bcb953f9281dc23875646ee33310c6f0341f4a59fc51aa534cb4514",
-      "performanceSha256": "b0da9683930d2f688d49aeb683711ced417d6aac2dd65e7bb19fe9edd4e03faa"
+      "stagingSha256": "5cf84d9be38f5bdc017868536769a3542587e6e36b8b3a35a9f684a338ccf3c3",
+      "productionSha256": "8c910e14741dc60f339369d822fdf49e00005751b18e3066d39450ddd49845d7",
+      "visualSha256": "0fa43c787aea43eefa1f697cb3aa58631edce229eeac5f112492c6d04fa48c6d",
+      "performanceSha256": "b22d0eb5a36a70d83c4d85676e51f3ab03875c40e89ebdbb8c63f6f203eab127"
     },
-    "receiptSha256": "ac795a990b8ca9da408d1e308e173d8328ca130547b04e53a05e251bbea5cdb4"
+    "receiptSha256": "9308ddd32fd78b39c13f27b33c0e98e035573893f1ff1467ea752b89944eb241"
   },
   "launchReady": false,
   "sil": {

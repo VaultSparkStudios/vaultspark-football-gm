@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.1",
   "generatedBy": "scripts/verify-release-provenance.mjs",
-  "checkedAt": "2026-09-09T22:51:05.410Z",
+  "checkedAt": "2026-09-09T23:32:23.943Z",
   "baseUrl": "https://playfranchisearchitect.com",
-  "expectedRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+  "expectedRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
   "summary": {
     "status": "verified",
     "checksPassed": 14,
@@ -51,8 +51,8 @@
     {
       "name": "source revision",
       "ok": true,
-      "expected": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
-      "observed": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3"
+      "expected": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
+      "observed": "9df2f7e280af55345f6d87ba2f8dd98acc280291"
     },
     {
       "name": "artifact fingerprint",

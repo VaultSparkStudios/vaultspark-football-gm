@@ -3,7 +3,7 @@
   "kind": "independent-staging-authority",
   "project": "franchise-architect-staging",
   "branch": "staging",
-  "sourceRevision": "78c571ff2a31087156a4fb8ebe52b2c677877e1f",
+  "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
   "artifactFingerprint": {
     "algorithm": "sha256",
     "digest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e",
@@ -1091,9 +1091,9 @@
       "edge-policy-receipt.json"
     ]
   },
-  "promotionIdentity": "78c571ff2a31087156a4fb8ebe52b2c677877e1f:2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e",
-  "deploymentId": "fb838bbb-6970-4502-9a95-cf9295030457",
-  "deploymentUrl": "https://fb838bbb.franchise-architect-staging.pages.dev",
+  "promotionIdentity": "9df2f7e280af55345f6d87ba2f8dd98acc280291:2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e",
+  "deploymentId": "6292dd61-11c5-4dca-8d54-3f23e81b00c2",
+  "deploymentUrl": "https://6292dd61.franchise-architect-staging.pages.dev",
   "stableUrl": "https://staging.playfranchisearchitect.com",
   "domainStatus": "active",
   "independent": true,
@@ -1103,12 +1103,12 @@
     "status": "verified",
     "checksPassed": 14,
     "checksTotal": 14,
-    "checkedAt": "2026-09-09T22:54:50.795Z"
+    "checkedAt": "2026-09-09T23:04:00.697Z"
   },
   "rollback": {
-    "previousDeploymentId": "3dba5f27-525d-43f3-8daa-ec17dfad4192",
+    "previousDeploymentId": "fb838bbb-6970-4502-9a95-cf9295030457",
     "available": true
   },
   "verified": true,
-  "observedAt": "2026-09-09T22:54:50.795Z"
+  "observedAt": "2026-09-09T23:04:00.697Z"
 }

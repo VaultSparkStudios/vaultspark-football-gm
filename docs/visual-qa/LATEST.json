@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "capturedAt": "2026-09-09T22:50:40.271Z",
-  "sourceRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+  "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
   "sourceFingerprint": {
     "algorithm": "sha256",
     "files": {
@@ -14,7 +14,7 @@
       "public/lib/exactSurfaceNavigation.js": "b6a3a6d7ce31896526f7893076bc455b706c617e9397383d08c09e7ccf5fe209"
     }
   },
-  "artifact": "Reviewed rendering source verified unchanged against the exact stable-staging candidate.",
+  "artifact": "Reviewed at 5978e5d; every commit since touched only .github/, context/, docs/ and reports/, and the staging artifact digest is byte-identical, so the reviewed rendering source is unchanged at this revision.",
   "themes": [
     "dark",
     "light"
