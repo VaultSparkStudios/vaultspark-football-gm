@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.1",
+  "generatedBy": "scripts/verify-release-provenance.mjs",
+  "checkedAt": "2026-09-09T22:40:51.957Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "expectedRevision": "5978e5d5e28f0af9ef8db0730a0e0d5b35ced7b3",
+  "summary": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "checks": [
