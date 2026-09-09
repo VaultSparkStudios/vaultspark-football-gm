@@ -12,6 +12,8 @@ import {
 
 export const SHARDS = {
   core: [
+    "test/session101-cap-authority.test.js",
+    "test/session101-league-economy.test.js",
     "test/api.test.js",
     "test/architect-mastery-portfolio.test.js",
     "test/calibration.test.js",
@@ -38,6 +40,8 @@ export const SHARDS = {
     "test/world-state-next-step.test.js"
   ],
   runtime: [
+    "test/session101-restore-and-rewind.test.js",
+    "test/session101-trade-deadline.test.js",
     "test/action-coordinator.test.js",
     "test/advance-week-command.test.js",
     "test/session89-franchise-economy-truth.test.js",
@@ -220,6 +224,8 @@ export const SHARDS = {
     "test/test-shard-progress.test.js",
     "test/ui-islands.test.js",
     "test/shard-coverage.test.js",
+    "test/publish-path-shard-gate.test.js",
+    "test/session101-writeback-currency.test.js",
     "test/duplicate-pr-guard.test.js",
     "test/studio-protocol-smoke.test.js",
     "test/audit-completion-contract.test.js",
@@ -253,7 +259,7 @@ export const SHARDS = {
  * timeout below is raised so a slow-but-honest shard is never misreported as a
  * failure.
  */
-const DEFAULT_SHARDS = ["core", "runtime", "sim-contract", "sim-realism", "long", "studio"];
+export const DEFAULT_SHARDS = ["core", "runtime", "sim-contract", "sim-realism", "long", "studio"];
 
 function usage() {
   const names = Object.keys(SHARDS).join("|");

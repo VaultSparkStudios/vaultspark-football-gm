@@ -40,7 +40,7 @@ concurrency:
 jobs:
   gate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v5
         with:
@@ -56,6 +56,21 @@ jobs:
 
       - name: Run studio shard (protocol truth)
         run: npm run test:studio
+
+      # S101: this gate ran the studio shard alone while `src/**` is a trigger
+      # path for this workflow, so an engine or economy regression could reach
+      # playfranchisearchitect.com with nothing on the publish path having
+      # exercised it -- full CI runs in parallel and is not a `needs:` of this
+      # job. These are the behavior shards covering `src/**`; `long` stays out
+      # deliberately (weekly, ~45 min) so the publish path stays fast.
+      - name: Run core shard (engine + domain behavior)
+        run: npm run test:core
+
+      - name: Run sim contract shard
+        run: npm run test:sim:contract
+
+      - name: Run sim realism shard
+        run: npm run test:sim:realism
 
   build:
     needs: gate

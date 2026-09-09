@@ -88,14 +88,33 @@ export function inspectLifecycleCoherence(root = process.cwd(), { registryPath =
   const registry = resolvedRegistry && fs.existsSync(resolvedRegistry) ? readJson(resolvedRegistry, {}) : null;
   const registryEntry = registry ? findRegistryEntry(registry, slug) : null;
   const authoritative = String(registryEntry?.vaultStatus || registryEntry?.status || "").toUpperCase();
-  if (registryEntry) {
-    checks.push({
-      id: "authoritative-registry",
-      ok: authoritative === expected,
-      blocking: false,
-      detail: `registry ${authoritative || "missing"} · local contract ${expected}`
-    });
-  }
+
+  // S101: this check used to be pushed ONLY when a registry entry resolved. When
+  // the authoritative registry lives in a sibling repo that is not checked out --
+  // which is every CI run -- the check did not fail, it ceased to exist, and
+  // `authoritativeDrift` was false. The population disappeared and took the
+  // signal with it. An unresolved registry is now reported as unresolved: a
+  // visible non-blocking failure, never a silent absence.
+  const registryResolution = !resolvedRegistry
+    ? "undeclared"
+    : !registry
+      ? "unreachable"
+      : !registryEntry
+        ? "entry-missing"
+        : "resolved";
+  checks.push({
+    id: "authoritative-registry",
+    ok: registryResolution === "resolved" && authoritative === expected,
+    blocking: false,
+    resolution: registryResolution,
+    detail: registryResolution === "resolved"
+      ? `registry ${authoritative || "missing"} · local contract ${expected}`
+      : registryResolution === "entry-missing"
+        ? `authoritative registry has no entry for ${slug || "this project"} · local contract ${expected}`
+        : registryResolution === "unreachable"
+          ? `authoritative registry unresolved at ${resolvedRegistry} · local contract ${expected} unverified`
+          : `no authoritative registry declared · local contract ${expected} unverified`
+  });
 
   const blockingFailing = checks.filter((check) => check.blocking && !check.ok).length;
   const warning = checks.filter((check) => !check.blocking && !check.ok).length;
@@ -105,6 +124,8 @@ export function inspectLifecycleCoherence(root = process.cwd(), { registryPath =
     expectedVaultStatus: expected,
     localVaultStatus: local,
     authoritativeVaultStatus: authoritative || null,
+    authoritativeResolution: registryResolution,
+    authoritativeUnverified: registryResolution !== "resolved",
     audience,
     blockingFailing,
     warning,

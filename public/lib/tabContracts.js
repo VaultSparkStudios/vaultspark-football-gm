@@ -425,7 +425,7 @@ export function toggleTradeAsset(side, type, id) {
   renderTradeWorkspace();
 }
 
-export function queueTradePlayer(playerId) {
+export async function queueTradePlayer(playerId) {
   const teamId = state.contractTeamId || state.dashboard?.controlledTeamId || "BUF";
   const previousTeamA = getTradeTeamId("A");
   document.getElementById("tradeTeamA").value = teamId;
@@ -437,7 +437,13 @@ export function queueTradePlayer(playerId) {
   const player = state.contractRoster.find((entry) => entry.id === playerId);
   renderTradeWorkspace();
   setTradeEvalText(`${player?.name || playerId} queued for Team A. Add more assets, then evaluate or execute.`);
-  void loadPickAssets();
+  // S101: was `void loadPickAssets()`. Team A is already switched above, so a
+  // rejected reload left the previous team's assets on screen, unreported.
+  try {
+    await loadPickAssets();
+  } catch (error) {
+    setTradeEvalText(`${player?.name || playerId} queued, but the pick assets could not be refreshed: ${error?.message || error}. Re-open the trade desk before evaluating.`);
+  }
 }
 
 export function renderTradeRosterTable(tableId, roster, side) {

@@ -94,6 +94,26 @@ function sessionForDate(root, isoDate) {
   return entries.length ? entries[0].session : null;
 }
 
+/**
+ * Every file actually shipped to players from public/ that could carry a claim:
+ * markup and browser modules, recursively. Build output and vendored assets are
+ * excluded by extension rather than by directory, so a new subdirectory is
+ * covered the day it appears instead of the day someone remembers to add it.
+ */
+function collectShippedSurfaces(dir, prefix = "") {
+  const found = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const relative = prefix ? `${prefix}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) {
+      if (entry.name === "node_modules" || entry.name.startsWith(".")) continue;
+      found.push(...collectShippedSurfaces(path.join(dir, entry.name), relative));
+    } else if (/\.(html|js)$/i.test(entry.name)) {
+      found.push(relative);
+    }
+  }
+  return found.sort();
+}
+
 export function inspectPublicTruth(root = rootDir) {
   const publicDir = path.join(root, "public");
   const problems = [];
@@ -146,9 +166,15 @@ export function inspectPublicTruth(root = rootDir) {
     problems.push(`index.html claims ${rivalMatch[1]} rival front offices but the league has ${TEAM_COUNT - 1}`);
   }
 
-  const htmlFiles = fs.readdirSync(publicDir).filter((name) => name.endsWith(".html"));
-  for (const name of htmlFiles) {
-    const source = stripComments(fs.readFileSync(path.join(publicDir, name), "utf8"));
+  // S101 — this walked only the TOP level of public/ and only `.html`, so
+  // `public/lib/*.js` (87 shipped modules) and any future subdirectory sat
+  // outside the gate's denominator entirely. The surface is clean today; it was
+  // simply unguarded. A gate that does not declare its population cannot promise
+  // anything about the files it never looked at.
+  const shippedFiles = collectShippedSurfaces(publicDir);
+  for (const relativeName of shippedFiles) {
+    const name = relativeName;
+    const source = stripComments(fs.readFileSync(path.join(publicDir, relativeName), "utf8"));
     for (const pattern of FORBIDDEN_PUBLIC_CLAIMS) {
       if (pattern.test(source)) problems.push(`${name} ships a retired/false claim matching ${pattern}`);
     }
@@ -164,15 +190,17 @@ export function inspectPublicTruth(root = rootDir) {
     }
   }
 
+  const surfaceCount = shippedFiles.length;
+
   const ogImage = path.join(publicDir, "images", "cover.png");
-  const referencesCover = htmlFiles.some((name) =>
+  const referencesCover = shippedFiles.some((name) =>
     fs.readFileSync(path.join(publicDir, name), "utf8").includes("images/cover.png")
   );
   if (referencesCover && !fs.existsSync(ogImage)) {
     problems.push("public pages reference images/cover.png but the file does not exist (broken social shares)");
   }
 
-  return { problems, engineCount, ok: problems.length === 0 };
+  return { problems, engineCount, surfaceCount, ok: problems.length === 0 };
 }
 
 export function assertPublicTruth(root = rootDir) {
@@ -186,7 +214,7 @@ export function assertPublicTruth(root = rootDir) {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
     const report = assertPublicTruth();
-    console.log(`public-truth gate: OK (${report.engineCount} engine systems verified)`);
+    console.log(`public-truth gate: OK (${report.engineCount} engine systems verified · ${report.surfaceCount} shipped surfaces scanned)`);
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;

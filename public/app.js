@@ -1128,7 +1128,20 @@ function bindEvents() {
           `${player.name} countered at ${response.counterOffer?.years}y / ${fmtMoney(response.counterOffer?.salary || 0)}. Morale ${response.morale}, motivation ${response.motivation}.`
         );
       } else {
-        setContractActionText(`${player.name} accepted the offer. Morale ${response.morale}, motivation ${response.motivation}.`);
+        // S101 — this reported "accepted the offer" unconditionally, including when
+        // the engine had signed a smaller deal than the one offered. State the
+        // terms that were actually signed.
+        const signedYears = response.appliedYears ?? null;
+        const signedSalary = response.appliedSalary ?? null;
+        const adjusted = response.adjustedReason === "cap-room";
+        const terms = signedYears && signedSalary ? `${signedYears}y / ${fmtMoney(signedSalary)}` : null;
+        setContractActionText(
+          adjusted && terms
+            ? `${player.name} signed for ${terms} — below your offer, limited by cap room. Morale ${response.morale}, motivation ${response.motivation}.`
+            : terms
+              ? `${player.name} accepted ${terms}. Morale ${response.morale}, motivation ${response.motivation}.`
+              : `${player.name} accepted the offer. Morale ${response.morale}, motivation ${response.motivation}.`
+        );
       }
       await Promise.all([loadState(), loadRoster(), loadContractsTeam(), loadTransactionLog(), loadNegotiations(state.contractTeamId)]);
     }, "Negotiating contract...")
@@ -1982,6 +1995,12 @@ function bindEvents() {
 
   document.getElementById("runCapCasualtyBtn")?.addEventListener("click", () =>
     runAction(async () => {
+      // S101 — the dropdown beside this button was never populated and never
+      // read, so the panel silently analysed whatever team the Contracts tab
+      // happened to be on. Honour the selection.
+      const chosen = document.getElementById("capCasualtyTeamSelect")?.value;
+      const contractsSelect = document.getElementById("contractsTeamSelect");
+      if (chosen && contractsSelect && contractsSelect.value !== chosen) contractsSelect.value = chosen;
       await loadContractsTeam();
       renderCapCasualtyPanel();
     }, "Analyzing cap casualties...")
@@ -2058,6 +2077,15 @@ function bindEvents() {
       await api("/api/commissioner/advance", { method: "POST", body: {} });
       await Promise.all([loadState(), invokeUiIsland("settings", "renderCommissionerLobby")]);
     }, "Advancing commissioner turn...")
+  );
+  document.getElementById("queueIntentBtn")?.addEventListener("click", () =>
+    runAction(async () => {
+      const userId = document.getElementById("joinUserIdInput")?.value?.trim() || "guest-gm";
+      const type = document.getElementById("intentTypeSelect")?.value;
+      if (!type) throw new Error("Choose an intent type before queueing.");
+      await api("/api/commissioner/intent", { method: "POST", body: { userId, type } });
+      await invokeUiIsland("settings", "renderCommissionerLobby");
+    }, "Queueing intent...")
   );
   document.getElementById("refreshLobbyBtn")?.addEventListener("click", () =>
     runAction(() => invokeUiIsland("settings", "renderCommissionerLobby"), "Refreshing lobby...")

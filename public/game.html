@@ -571,7 +571,7 @@
               <button id="runCapCasualtyBtn">Run Analysis</button>
             </div>
             <div id="capCasualtyContent" class="cap-casualty-list">
-              <div class="narrative-empty">Select your team and run to see cut risk analysis.</div>
+              <div class="narrative-empty">Choose a team and run to see cut risk analysis.</div>
             </div>
           </div>
 
@@ -582,7 +582,10 @@
               <span class="narrative-panel-kicker">Obligations + expiring + projected space</span>
             </div>
             <div class="row compact">
-              <label>Team <select id="capProjectionTeamSelect"></select></label>
+              <!-- S101: this carried a permanently empty team dropdown. The
+                   projection is derived from the controlled club's cap summary,
+                   so a team selector promised a capability the panel does not
+                   have; the control is removed rather than faked. -->
               <button id="runCapProjectionBtn">Calculate</button>
             </div>
             <div id="capProjectionContent" class="cap-projection-bars">
@@ -1142,8 +1145,13 @@
                   <option value="restructure">Restructure</option>
                 </select>
               </label>
+              <!-- S101: this Intent Type select had no submit control and was read
+                   by no JavaScript, while POST /api/commissioner/intent is fully
+                   implemented on both the server and the local runtime and is
+                   registered in the API contract. The control now invokes it. -->
+              <button id="queueIntentBtn">Queue Intent</button>
               <button id="refreshLobbyBtn">Refresh Lobby</button>
-              <button id="disbandLobbyBtn" style="color:#f85149;">Disband Lobby</button>
+              <button id="disbandLobbyBtn" class="danger-text">Disband Lobby</button>
             </div>
           </div>
 

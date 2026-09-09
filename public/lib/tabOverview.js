@@ -1,4 +1,5 @@
 import { state, api, STATS_BENCHMARK_HINTS } from "./appState.js";
+import { tradeWindow } from "./tradeWindow.js";
 import { deriveTrophyRoad, readEarnedAchievements, recordAchievementEvent } from "./achievements.js";
 import { playSound } from "./audioFeedback.js";
 import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderGuideContent, renderPanelError, renderTable, setBoxScoreTab, setMetricCardValue, setTableSkeleton, showToast, teamCode, teamName } from "./appCore.js";
@@ -510,7 +511,8 @@ export function renderTradeDeadlineAlert() {
   if (!d) { panel.hidden = true; return; }
   const week = d.currentWeek || 0;
   const phase = d.phase || "";
-  const isDeadline = phase === "regular-season" && week >= 9 && week <= 11;
+  const deadline = tradeWindow(d);
+  const isDeadline = deadline.declared && deadline.closing;
   panel.hidden = !isDeadline;
   if (!isDeadline) return;
   renderTradeDeadlineFrenzy("tradeDeadlineFrenzy", d);
@@ -521,9 +523,14 @@ export function renderTradeDeadlineAlert() {
   const myRow = findTeamStanding(standings, team);
   const winPct = teamRecordWinPct(myRow);
   const weeksLeft = 18 - week;
+  const untilDeadline = deadline.weeksLeft;
   const role = winPct >= 0.55 ? "BUYER" : winPct <= 0.4 ? "SELLER" : "NEUTRAL";
-  const roleColors = { BUYER: "var(--success)", SELLER: "#ff8f8f", NEUTRAL: "var(--info)" };
-  if (statusEl) statusEl.textContent = `Week ${week} of 18 — ${weeksLeft} weeks remain. Deadline closes end of Week 11.`;
+  const roleColors = { BUYER: "var(--success)", SELLER: "var(--danger)", NEUTRAL: "var(--info)" };
+  if (statusEl) {
+    statusEl.textContent = untilDeadline === 0
+      ? `Week ${week} of 18 — ${weeksLeft} weeks remain. The trade deadline closes at the end of this week.`
+      : `Week ${week} of 18 — ${weeksLeft} weeks remain. Deadline closes end of Week ${deadline.deadlineWeek}.`;
+  }
   if (roleEl) {
     roleEl.textContent = role;
     roleEl.style.color = roleColors[role];

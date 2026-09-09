@@ -45,6 +45,14 @@ export const WRITE_BACK_ANCHOR = 'context/SELF_IMPROVEMENT_LOOP.md';
 // `chore(closeout)` is included deliberately: those commits ARE the closeout
 // (receipt capture, rebased-surface regeneration) and legitimately land after
 // the SIL anchor. Counting them as debt would make every clean closeout dirty.
+/**
+ * Subjects trusted on their own, without inspecting the files they touch —
+ * because these commits legitimately carry non-generated paths (see the note in
+ * `isSubstantive`).
+ */
+export const SUBJECT_ONLY_EXEMPT_RE =
+  /^(?:chore\(closeout\)|Merge (?:branch|pull request|remote-tracking)|Revert ")/i;
+
 export const AUTOMATION_SUBJECT_RE =
   /^(?:chore\((?:routine-[\w-]+|closeout|ledgers?|proof|deps|release-please)\)|Merge (?:branch|pull request|remote-tracking)|Revert ")/i;
 
@@ -73,10 +81,24 @@ export function isGeneratedPath(file = '') {
  * subject AND it touches at least one non-generated file.
  */
 export function isSubstantiveCommit(commit = {}) {
-  if (AUTOMATION_SUBJECT_RE.test(String(commit.subject || ''))) return false;
+  const subject = String(commit.subject || '');
   const files = Array.isArray(commit.files) ? commit.files : [];
   if (!files.length) return false; // empty/merge commit — nothing to write back
-  return files.some((f) => !isGeneratedPath(f));
+  const touchesRealWork = files.some((f) => !isGeneratedPath(f));
+
+  // S101 — an automation SUBJECT used to exempt a commit regardless of what it
+  // touched, so real source work committed as `chore(proof): …` was laundered
+  // straight out of the denominator this probe exists to measure. The subject is
+  // now only trusted when the files agree with it.
+  //
+  // `chore(closeout)` and merges keep the subject-only exemption on purpose:
+  // closeout commits ARE the write-back (they regenerate rebased surfaces and
+  // capture receipts) and legitimately touch non-generated paths after the SIL
+  // anchor. Counting those would make every clean closeout look dirty.
+  if (SUBJECT_ONLY_EXEMPT_RE.test(subject)) return false;
+  if (AUTOMATION_SUBJECT_RE.test(subject)) return touchesRealWork;
+
+  return touchesRealWork;
 }
 
 /**

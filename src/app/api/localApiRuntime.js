@@ -1,5 +1,6 @@
 import { createHybridBrowserSaveStore } from "../../adapters/persistence/hybridSaveStore.js";
 import { createPersistenceDescriptor } from "../../adapters/persistence/saveStoreShared.js";
+import { decodeSnapshot, encodeSnapshot } from "../../adapters/persistence/snapshotCodec.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "../../config/leagueSetup.js";
 import { createLeagueBase } from "../../domain/teamFactory.js";
 import { GameSession } from "../../runtime/GameSession.js";
@@ -89,12 +90,78 @@ const REWIND_META_KEY = "vsfgm-rw-index";
 const REWIND_STATE_PREFIX = "vsfgm:rw-state:";
 const REWIND_MAX_SLOTS = 10;
 
+/**
+ * Read the rewind index.
+ *
+ * S101 — this used to be `catch { return [] }`. Because the write path is
+ * load-then-rewrite, one unparseable read did not merely hide an error: the very
+ * next snapshot COMMITTED the empty index, permanently orphaning every existing
+ * `vsfgm:rw-state:` payload. The orphans stayed in the quota while `_rwPruneOldest`
+ * — which only walks the index — could no longer reach them, so the storage
+ * budget shrank with no way back. Absent and unparseable are now different
+ * things: an unparseable index is rebuilt from the payloads actually present.
+ */
 function _rwGetMeta(storage) {
-  try { return JSON.parse(storage.getItem(REWIND_META_KEY) || "[]"); } catch { return []; }
+  const raw = storage.getItem(REWIND_META_KEY);
+  if (raw == null || raw === "") return [];
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) return parsed;
+  } catch {
+    // fall through to reconciliation
+  }
+  return _rwReconcileMeta(storage);
+}
+
+/** Rebuild an index from the rewind payloads actually present in storage. */
+function _rwReconcileMeta(storage) {
+  const ids = [];
+  try {
+    for (let i = 0; i < Number(storage.length || 0); i += 1) {
+      const key = storage.key?.(i);
+      if (typeof key === "string" && key.startsWith(REWIND_STATE_PREFIX)) {
+        ids.push(key.slice(REWIND_STATE_PREFIX.length));
+      }
+    }
+  } catch {
+    return [];
+  }
+  // `${trigger}-y${year}-w${week}-${Date.now()}` — recover what the id encodes
+  // and sort newest-first, matching the order the index is maintained in.
+  const recovered = ids.map((id) => {
+    const match = /^(.*)-y(\d+)-w(\d+)-(\d+)$/.exec(id);
+    const createdAt = match ? Number(match[4]) : 0;
+    return {
+      id,
+      trigger: match ? match[1] : "recovered",
+      label: "Recovered snapshot",
+      year: match ? Number(match[2]) : null,
+      week: match ? Number(match[3]) : null,
+      phase: null,
+      createdAt: createdAt ? new Date(createdAt).toISOString() : null,
+      recovered: true
+    };
+  });
+  recovered.sort((a, b) => String(b.id).localeCompare(String(a.id)));
+  try { _rwSetMeta(storage, recovered); } catch { /* index stays in memory */ }
+  return recovered;
 }
 
 function _rwSetMeta(storage, meta) {
   storage.setItem(REWIND_META_KEY, JSON.stringify(meta));
+}
+
+/**
+ * Surface a non-fatal rewind failure instead of dropping it. The automatic
+ * checkpoints (pre-deadline, season-start, pre-trade) must not fail a player's
+ * action, but the advertised "you can always rewind before a trade" guarantee
+ * silently stopped holding when they failed, so the reason is recorded.
+ */
+function _rwNote(metrics, result) {
+  if (result?.ok === false) {
+    metrics.lastRewindWarning = { at: new Date().toISOString(), error: result.error || "rewind snapshot failed" };
+  }
+  return result;
 }
 
 function _rwPruneOldest(storage, meta) {
@@ -104,7 +171,16 @@ function _rwPruneOldest(storage, meta) {
   }
 }
 
-function _rwTakeSnapshot(storage, session, trigger, label) {
+/**
+ * S101 — this wrote `JSON.stringify(session.toSnapshot())` raw while save slots
+ * and backups went through `encodeSnapshot`, the 8.5x gzip+base64 codec written
+ * for exactly this budget. A measured mid-season rewind payload was 12.13 MB
+ * against a 5-10 MB per-origin quota, so in a real browser EVERY rewind write
+ * threw QuotaExceededError from week 1 — a shipped, user-visible feature that
+ * could not work in the client-only build. `decodeSnapshot` passes plain JSON
+ * through unchanged, so rewind points written before this keep loading.
+ */
+async function _rwTakeSnapshot(storage, session, trigger, label) {
   const id = `${trigger}-y${session.currentYear}-w${session.currentWeek}-${Date.now()}`;
   const entry = {
     id, trigger, label,
@@ -114,7 +190,7 @@ function _rwTakeSnapshot(storage, session, trigger, label) {
     createdAt: new Date().toISOString()
   };
   try {
-    storage.setItem(REWIND_STATE_PREFIX + id, JSON.stringify(session.toSnapshot()));
+    storage.setItem(REWIND_STATE_PREFIX + id, await encodeSnapshot(session.toSnapshot()));
     const meta = _rwGetMeta(storage);
     meta.unshift(entry);
     _rwPruneOldest(storage, meta);
@@ -559,10 +635,10 @@ export function createLocalApiRuntime({
         const { committedSession, ...responseOutcome } = outcome;
         session = committedSession;
         if (responseOutcome.results.some((result) => result.week === 9)) {
-          _rwTakeSnapshot(storage, session, "pre-deadline", "Trade Deadline Checkpoint");
+          _rwNote(runtimeMetrics, await _rwTakeSnapshot(storage, session, "pre-deadline", "Trade Deadline Checkpoint"));
         }
         if (responseOutcome.commandReceipt.started.phase !== "regular-season" && session.phase === "regular-season") {
-          _rwTakeSnapshot(storage, session, "season-start", `Season ${session.currentYear} Start`);
+          _rwNote(runtimeMetrics, await _rwTakeSnapshot(storage, session, "season-start", `Season ${session.currentYear} Start`));
         }
         writeAutoBackup(responseOutcome.results[responseOutcome.results.length - 1]?.phase === "offseason" ? "offseason-checkpoint" : "week");
         return finish(jsonResponse(200, {
@@ -790,7 +866,7 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/trade") {
         if (!body?.teamA || !body?.teamB) return finish(jsonResponse(400, { ok: false, error: "teamA and teamB required." }));
-        _rwTakeSnapshot(storage, session, "pre-trade", `Before trade ${String(body.teamA).toUpperCase()} ↔ ${String(body.teamB).toUpperCase()}`);
+        _rwNote(runtimeMetrics, await _rwTakeSnapshot(storage, session, "pre-trade", `Before trade ${String(body.teamA).toUpperCase()} ↔ ${String(body.teamB).toUpperCase()}`));
         const result = session.tradePlayers({
           teamA: String(body.teamA).toUpperCase(),
           teamB: String(body.teamB).toUpperCase(),
@@ -1369,7 +1445,7 @@ export function createLocalApiRuntime({
 
       if (method === "POST" && pathname === "/api/rewind/snapshot") {
         const label = body?.label ? String(body.label) : "Manual snapshot";
-        const result = _rwTakeSnapshot(storage, session, "manual", label);
+        const result = await _rwTakeSnapshot(storage, session, "manual", label);
         return finish(jsonResponse(result.ok ? 200 : 500, result));
       }
 
@@ -1378,12 +1454,25 @@ export function createLocalApiRuntime({
         const snapshotJson = storage.getItem(REWIND_STATE_PREFIX + String(body.id));
         if (!snapshotJson) return finish(jsonResponse(404, { ok: false, error: "Snapshot not found." }));
         // Auto-backup current state before restoring
-        _rwTakeSnapshot(storage, session, "pre-restore", `Before restore to ${String(body.id)}`);
+        // S101 — this call's result used to be discarded, and `Object.assign(session,
+        // restored)` below then replaced the live session anyway, returning 200. The
+        // player's "restore an old point to compare" move destroyed the state from a
+        // second ago with no recovery entry and no warning. The identical call at
+        // /api/rewind/snapshot already checked `result.ok`, so this was inconsistent
+        // rather than deliberate. Refuse the restore instead of doing it blind.
+        const checkpoint = await _rwTakeSnapshot(storage, session, "pre-restore", `Before restore to ${String(body.id)}`);
+        if (!checkpoint.ok) {
+          return finish(jsonResponse(409, {
+            ok: false,
+            reasonCode: "rewind-checkpoint-failed",
+            error: `Could not save a recovery point before restoring, so the restore was refused: ${checkpoint.error}`
+          }));
+        }
         try {
           // Rewind snapshots are persisted payloads like any save, so they go
           // through the same migration seam — this path previously skipped it,
           // which meant an older-schema rewind point restored unmigrated.
-          const snapshot = migrateSnapshot(JSON.parse(snapshotJson));
+          const snapshot = migrateSnapshot(await decodeSnapshot(snapshotJson));
           const rngFactory = (seed) => new session.rng.constructor(seed);
           const restored = GameSession.fromSnapshot(snapshot, rngFactory);
           // Replace active session internals

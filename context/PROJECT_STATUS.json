@@ -26,8 +26,8 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
   "testSuiteStatus": "green",
-  "testsPassing": 1327,
-  "testsTotal": 1327,
+  "testsPassing": 1369,
+  "testsTotal": 1369,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -66,20 +66,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 952,
+  "silScore": 954,
   "silCategoriesV3": {
-    "devHealth": 98,
+    "devHealth": 96,
     "creativeAlignment": 98,
     "momentum": 98,
-    "engagement": 85,
-    "processQuality": 92,
+    "engagement": 86,
+    "processQuality": 94,
     "crossRepoCoherence": 95,
     "securityPosture": 98,
     "ecosystemIntegration": 90,
     "capitalEfficiency": 100,
-    "automationCoverage": 98
+    "automationCoverage": 99
   },
-  "currentSession": 100,
+  "currentSession": 101,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
@@ -180,8 +180,8 @@
       "lastChecked": "2026-09-09"
     }
   ],
-  "lastSession": 100,
-  "silLastSession": 100,
+  "lastSession": 101,
+  "silLastSession": 101,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",

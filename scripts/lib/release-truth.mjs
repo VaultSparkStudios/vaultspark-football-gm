@@ -21,7 +21,21 @@ function healthReceipt(report) {
   }
 }
 
-export function evaluateReleaseEvidenceFreshness({ contract, now = Date.now(), liveReport = null, expectedRevision = null } = {}) {
+/**
+ * Two different questions share this function, and S101 initially conflated them:
+ *
+ *  - `releaseTruthProse` asks "is the recorded evidence still inside its window?"
+ *    That evidence WAS derived from a live observation when it was issued, so
+ *    age alone is the right answer and a live report is not expected.
+ *  - `check-release-evidence-freshness` asks "does the live origin agree with
+ *    what we recorded?" That question is meaningless without a live report, and
+ *    answering "current" from a timestamp this repo writes itself is how a
+ *    silent failed promote or a rollback stayed green.
+ *
+ * `requireLive` picks the question. It defaults to false so the prose caller is
+ * unchanged; the CLI gate opts in.
+ */
+export function evaluateReleaseEvidenceFreshness({ contract, now = Date.now(), liveReport = null, expectedRevision = null, requireLive = false } = {}) {
   const observedAt = contract?.evidenceWindow?.observedAt || contract?.checkedAt || null;
   const observedAtMs = Date.parse(observedAt);
   const maxAgeMs = Number(contract?.evidenceWindow?.maxAgeMs || RELEASE_EVIDENCE_MAX_AGE_MS);
@@ -31,6 +45,13 @@ export function evaluateReleaseEvidenceFreshness({ contract, now = Date.now(), l
   else if (observedAtMs > now + 5 * 60 * 1000) reasons.push("observed-at-future");
 
   let liveRevision = null;
+  // S101 — every live check below sits inside this branch, and no caller in the
+  // repo passes `--live-report`: the whole arm was dead in practice. That left
+  // `status: "current"` decided solely by an `observedAt` timestamp this repo's
+  // own tooling writes, so a promote that silently did not apply, or a rollback
+  // to an older revision, still read as current. "Nobody looked at the origin"
+  // is now a distinct, visible state rather than a pass.
+  if (requireLive && !liveReport) reasons.push("live-unverified");
   if (liveReport) {
     liveRevision = healthReceipt(liveReport)?.sourceRevision || null;
     if (normalizeUrl(liveReport.baseUrl) !== normalizeUrl(contract?.runtimeUrl)) reasons.push("live-origin-mismatch");
@@ -39,16 +60,20 @@ export function evaluateReleaseEvidenceFreshness({ contract, now = Date.now(), l
     if (expectedRevision && liveRevision !== expectedRevision) reasons.push("candidate-revision-mismatch");
   }
 
+  const liveVerified = Boolean(liveReport);
   const status = reasons.some((reason) => reason === "evidence-expired")
     ? "expired"
-    : reasons.some((reason) => reason.includes("revision") || reason.includes("origin"))
-      ? "revision-drift"
-      : reasons.length
-        ? "unknown"
-        : "current";
+    : reasons.some((reason) => reason === "live-unverified")
+      ? "live-unverified"
+      : reasons.some((reason) => reason.includes("revision") || reason.includes("origin"))
+        ? "revision-drift"
+        : reasons.length
+          ? "unknown"
+          : "current";
   return {
     status,
     current: status === "current",
+    liveVerified,
     observedAt,
     expiresAt: Number.isFinite(observedAtMs) ? new Date(observedAtMs + maxAgeMs).toISOString() : null,
     maxAgeMs,

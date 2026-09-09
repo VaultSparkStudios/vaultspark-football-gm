@@ -3,6 +3,29 @@ function immediateSchedule(callback) {
 }
 
 /**
+ * Is `target` actually reachable inside the tab we just activated?
+ *
+ * S101: getElementById is document-global and inactive tabs are display:none, so
+ * a target in another tab was still "found", focus silently fell to <body>, and
+ * this resolved focused:true — certifying a destination never reached. Returns
+ * true only when misplacement or hiding is positively confirmed; an environment
+ * that cannot tell us stays permissive.
+ */
+function isUnreachable(target, targetTab) {
+  let node = target;
+  let guard = 0;
+  while (node && guard < 100) {
+    guard += 1;
+    if (node.hidden === true) return true;
+    const classList = node.classList;
+    const isPanel = typeof classList?.contains === "function" && classList.contains("tab-panel");
+    if (isPanel) return Boolean(node.id && node.id !== targetTab);
+    node = node.parentElement || null;
+  }
+  return false;
+}
+
+/**
  * Activate a tab, wait for its hydration authority, then focus the exact
  * player-decision surface. Callers provide the tab owner so this module stays
  * dependency-free and usable by both the browser and focused tests.
@@ -26,13 +49,19 @@ export async function navigateToExactSurface(action = {}, {
 
   return new Promise((resolve) => {
     schedule(() => {
-      const target = documentRef?.getElementById?.(targetId) || null;
+      const found = documentRef?.getElementById?.(targetId) || null;
+      const target = found && !isUnreachable(found, targetTab) ? found : null;
       if (!target) {
         const message = typeof missingMessage === "function"
           ? missingMessage({ ...action, targetTab, targetId })
           : missingMessage;
         if (message) announce(message);
-        resolve({ targetTab, targetId, focused: false, reason: "target-unavailable" });
+        resolve({
+          targetTab,
+          targetId,
+          focused: false,
+          reason: found ? "target-not-in-tab" : "target-unavailable"
+        });
         return;
       }
 

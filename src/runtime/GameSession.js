@@ -32,6 +32,7 @@ import {
 import { createDraftClass, createZeroedSeasonStats, jerseyNumberForPlayer } from "../domain/playerFactory.js";
 import {
   createLeagueBase,
+  createTeamSeasonState,
   ensureTeamIdentity,
   getAllTeamPlayers,
   getTeamPlayers,
@@ -1380,15 +1381,36 @@ function ensureLeagueRuntime(league) {
     league.freeAgencyMarket = { stage: "open-market", offers: [] };
   }
   if (!league.negotiations || typeof league.negotiations !== "object") league.negotiations = {};
+  // S101 — declared by createLeagueBase but never backfilled here. `fromSnapshot`
+  // spreads `league.retiredPlayers` unguarded, so a payload without it threw
+  // `retiredPlayers is not iterable` AFTER the compatibility check said ok.
+  if (!Array.isArray(league.retiredPlayers)) league.retiredPlayers = [];
+  if (!Array.isArray(league.retiredNumbers)) league.retiredNumbers = [];
+  if (!Array.isArray(league.champions)) league.champions = [];
+  if (!Array.isArray(league.history)) league.history = [];
   if (!league.settings || typeof league.settings !== "object") league.settings = { ...DEFAULT_LEAGUE_SETTINGS };
   league.settings = {
     ...DEFAULT_LEAGUE_SETTINGS,
     ...league.settings
   };
   for (const team of league.teams) {
-    if (!team.season || typeof team.season !== "object") team.season = {};
-    if (!Number.isFinite(team.season.drivesFor)) team.season.drivesFor = 0;
-    if (!Number.isFinite(team.season.drivesAgainst)) team.season.drivesAgainst = 0;
+    // S101 — the third declaration site of `team.season`, and the one that had
+    // drifted. `createTeamSeasonState` (teamFactory.js) declares twelve keys;
+    // creation and season-reset were unified in S71, but this restore normalizer
+    // was still backfilling exactly two of them. A snapshot missing `season`
+    // came back with `{drivesFor, drivesAgainst}` only, the validator called it
+    // compatible, and the next `advanceWeek` wrote `wins: null` and then threw
+    // on `season.weekResults.push` — a permanently unadvanceable franchise.
+    // Merge over the canonical shape so this site cannot drift from it again.
+    team.season = { ...createTeamSeasonState(league.year), ...(team.season && typeof team.season === "object" ? team.season : {}) };
+    for (const [key, fallback] of Object.entries(createTeamSeasonState(league.year))) {
+      const value = team.season[key];
+      if (Array.isArray(fallback)) {
+        if (!Array.isArray(value)) team.season[key] = [];
+      } else if (!Number.isFinite(value)) {
+        team.season[key] = fallback;
+      }
+    }
     if (!Array.isArray(team.retiredNumbers)) team.retiredNumbers = [];
     Object.assign(team, ensureTeamIdentity(team));
     if (!team.staff || STAFF_ROLE_KEYS.some((role) => !team.staff?.[role])) {
@@ -1848,6 +1870,13 @@ export class GameSession {
   static fromSnapshot(snapshot, rngFactory) {
     const session = Object.create(GameSession.prototype);
     Object.assign(session, snapshot);
+    // S101 — the constructor normalizes the league BEFORE building the StatBook
+    // (see above); this path did it after, so `new StatBook(session.league)`
+    // reached `reindexPlayers` first and threw `retiredPlayers is not iterable`
+    // on any payload missing an array the snapshot happened not to carry. The
+    // normalizer is idempotent, so restoring the constructor's ordering here is
+    // the root fix; the later call is left in place beside initializeLeagueSystems.
+    ensureLeagueRuntime(session.league);
     session.schemaVersion = Number(snapshot.schemaVersion || LATEST_SNAPSHOT_SCHEMA_VERSION);
     session.rng = rngFactory(snapshot.rngSeed);
     session.rngStreams = RNGStreams.fromSnapshot(
@@ -2285,7 +2314,11 @@ export class GameSession {
     const appliedGameScheduled = Boolean(appliedSchedule?.games?.some((entry) =>
       entry.homeTeamId === this.controlledTeamId || entry.awayTeamId === this.controlledTeamId
     ));
-    const nextOpponent = weeklyPlan?.opponentId || null;
+    // S101 — `buildWeeklyMatchPlan` emits `opponentTeamId` (see :788 and :971);
+    // this read used `opponentId`, and `|| null` laundered the permanent absence
+    // into a silent no-op, so every onboarding string written to name the
+    // opponent has dropped it for the whole life of the feature.
+    const nextOpponent = weeklyPlan?.opponentTeamId || null;
     const waitingDetail = currentWeek > appliedWeek
       ? `${appliedGameScheduled ? `No controlled-team result was recorded for Week ${appliedWeek}.` : `Week ${appliedWeek} was a scheduled bye.`} Week ${currentWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} is the next source gate.`
       : `Week ${appliedWeek}${nextOpponent ? ` vs ${nextOpponent}` : ""} is ready to play`;
@@ -2295,7 +2328,7 @@ export class GameSession {
     const isHome = game?.homeTeamId === this.controlledTeamId;
     const teamScore = game ? Number(isHome ? game.homeScore : game.awayScore) : null;
     const opponentScore = game ? Number(isHome ? game.awayScore : game.homeScore) : null;
-    const opponentId = game ? (isHome ? game.awayTeamId : game.homeTeamId) : (weeklyPlan?.opponentId || null);
+    const opponentId = game ? (isHome ? game.awayTeamId : game.homeTeamId) : (weeklyPlan?.opponentTeamId || null);
     const result = game
       ? {
           verdict: game.isTie || teamScore === opponentScore ? "T" : teamScore > opponentScore ? "W" : "L",
@@ -5006,22 +5039,42 @@ export class GameSession {
       };
     }
 
+    // S101 — `resignPlayer` is the cap authority. A third fallback branch used to
+    // catch its refusal and write `player.contract` BY HAND, keeping the old
+    // capHit and returning `ok: true`: a capped-out club could extend every
+    // expiring player, forever, for free, which quietly no-opped the cap-pressure
+    // work the Command Center escalates. The cap is now allowed to refuse.
+    //
+    // The surviving fallback is a legitimate smaller offer, but the client
+    // reported a flat "accepted the offer" for it, so a player who offered
+    // 4y/$25M was told yes and got 3y/$14.7M. The applied terms are returned so
+    // the one surface that reports a negotiation can state what was signed.
+    let appliedYears = offerYears;
+    let appliedSalary = offerSalary;
+    let adjustedReason = null;
+
     let result = this.resignPlayer({ teamId, playerId, years: offerYears, salary: offerSalary });
     if (!result.ok && String(result.error || "").toLowerCase().includes("cap")) {
       const currentCapHit = normalizeContract(player.contract).capHit;
       const capRoom = this.getTeamCapSummary(teamId).capSpace + currentCapHit;
       const fallbackSalary = Math.max(850_000, Math.min(offerSalary, Math.round(capRoom * 0.92)));
       const fallbackYears = clamp(Math.max(offerYears, 2), 1, 5);
-      result = this.resignPlayer({ teamId, playerId, years: fallbackYears, salary: fallbackSalary });
-      if (!result.ok && String(result.error || "").toLowerCase().includes("cap")) {
-        const current = normalizeContract(player.contract);
-        player.contract = normalizeContract({
-          ...current,
-          yearsRemaining: clamp(current.yearsRemaining + 1, 1, 5),
-          salary: Math.max(850_000, Math.min(current.salary, 12_000_000)),
-          capHit: current.capHit
-        });
-        result = { ok: true, contract: player.contract };
+      const fallback = this.resignPlayer({ teamId, playerId, years: fallbackYears, salary: fallbackSalary });
+      if (fallback.ok) {
+        result = fallback;
+        appliedYears = fallbackYears;
+        appliedSalary = fallbackSalary;
+        adjustedReason = "cap-room";
+      } else {
+        return {
+          ok: false,
+          reasonCode: "cap-blocked",
+          error: fallback.error || result.error,
+          teamId,
+          playerId,
+          demand,
+          agent: agentSummary(player)
+        };
       }
     }
     if (!result.ok) return result;
@@ -5032,19 +5085,31 @@ export class GameSession {
       teamId,
       playerId,
       playerName: player.name,
-      details: { outcome: "accepted", offerYears, offerSalary, morale: player.morale, motivation: player.motivation }
+      details: {
+        outcome: "accepted",
+        offerYears,
+        offerSalary,
+        appliedYears,
+        appliedSalary,
+        adjustedReason,
+        morale: player.morale,
+        motivation: player.motivation
+      }
     });
     this.logNews(`${player.name} agreed to an extension with ${teamId}`, {
       teamId,
       playerId,
-      years: offerYears,
-      salary: offerSalary
+      years: appliedYears,
+      salary: appliedSalary
     });
     return {
       ok: true,
       teamId,
       playerId,
       contract: result.contract,
+      appliedYears,
+      appliedSalary,
+      adjustedReason,
       demand,
       agent: agentSummary(player),
       morale: player.morale,
@@ -5230,12 +5295,32 @@ export class GameSession {
     }
   }
 
+  /**
+   * S101 — the offseason pipeline calls this twice, once at the `retirements`
+   * stage and again at `coaching-carousel`, so every coaching contract burned two
+   * years per offseason: a head coach hired on a 2-year deal (the engine issues
+   * `rng.int(2, 5)`) was gone after one. Measured league-wide head-coach turnover
+   * was ~29%/yr with a 22-of-32 spike in year two as the whole 2-year cohort
+   * cleared at once, which makes a club's staff annual noise rather than the
+   * multi-year identity the coaching-tree narrative is built on.
+   *
+   * Its three neighbours in the same pipeline — `runRosterYearRollover`,
+   * `runRetentionWindow` and `runFreeAgencyWindow` — are all guarded against the
+   * repeated call. This one simply was not; the omission reads as an oversight,
+   * so it is guarded the same way rather than by removing a call site.
+   */
   processStaffLifecycle() {
-    return this.services.coaching.processLifecycle({
+    const pipeline = this.getOffseasonPipeline();
+    if (pipeline.staffLifecycleYear === this.currentYear) {
+      return { expired: [], firedHeadCoachIds: [], alreadyRun: true };
+    }
+    const result = this.services.coaching.processLifecycle({
       createStaffProfile: () => buildStaffProfile(this.rng),
       applyStaffToCoaching,
       logNews: (headline, details) => this.logNews(headline, details)
     });
+    pipeline.staffLifecycleYear = this.currentYear;
+    return result;
   }
 
   generateWeekEvents(weekResult) {

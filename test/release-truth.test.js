@@ -60,7 +60,10 @@ test("release evidence carries an explicit expiring observation window", () => {
   });
   const expired = evaluateReleaseEvidenceFreshness({ contract: result.contract, now: NOW + 25 * 60 * 60 * 1000 });
   assert.equal(expired.status, "expired");
+  // The prose caller asks only "is the recorded evidence still in its window?",
+  // so an absent live report is not a reason here (S101: `requireLive`).
   assert.deepEqual(expired.reasons, ["evidence-expired"]);
+  assert.equal(expired.liveVerified, false);
 });
 
 test("live freshness detects origin, deployed, and candidate revision drift", () => {
@@ -143,4 +146,24 @@ test("next milestone names only release gates that remain unverified", () => {
   assert.match(prose.nextMilestone, /on-domain email/i);
   assert.match(prose.nextMilestone, /founder approval/i);
   assert.match(prose.nextMilestone, /lifecycle/i);
+});
+
+test("the two freshness questions are answered separately", () => {
+  const contract = validate(report()).contract;
+
+  // "Is the recorded evidence still inside its window?" — the prose caller.
+  // That evidence WAS live-derived when issued, so age alone answers it.
+  const windowOnly = evaluateReleaseEvidenceFreshness({ contract, now: NOW });
+  assert.equal(windowOnly.status, "current");
+  assert.equal(windowOnly.current, true);
+  assert.equal(windowOnly.liveVerified, false, "but it must still report that nobody re-checked the origin");
+
+  // "Does the live origin agree with what we recorded?" — the CLI gate. Without
+  // a live report that question was silently answered "current" from a timestamp
+  // this repo's own tooling writes, which is how a failed promote or a rollback
+  // stayed green.
+  const gate = evaluateReleaseEvidenceFreshness({ contract, now: NOW, requireLive: true });
+  assert.equal(gate.status, "live-unverified");
+  assert.equal(gate.current, false);
+  assert.ok(gate.reasons.includes("live-unverified"));
 });

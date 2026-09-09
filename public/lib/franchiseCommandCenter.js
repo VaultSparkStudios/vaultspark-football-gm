@@ -1,3 +1,4 @@
+import { tradeWindow } from "./tradeWindow.js";
 function money(value) {
   const amount = Number(value);
   if (!Number.isFinite(amount)) return "—";
@@ -34,6 +35,7 @@ export function buildFranchiseCommandStack({
   const draftActive = phase.includes("draft") || Boolean(draft.available?.length);
   const controlledPickBlocking = draft.controlledTeamOnClock === true || draft.userActionRequired === true;
   const week = Number(dashboard.currentWeek || 0);
+  const deadline = tradeWindow(dashboard);
   const newsHead = newsRows[0]?.headline || "";
   const cards = [];
 
@@ -111,14 +113,18 @@ export function buildFranchiseCommandStack({
     });
   }
 
-  if (week >= 8 && week <= 10 && !cards.some((card) => card.targetTab === "transactionsTab")) {
+  // S101: window was hand-typed 8-10 while other surfaces used 9-11, and it
+  // pointed at a target living in the overview tab.
+  if (deadline.closing && !cards.some((card) => card.targetTab === "transactionsTab")) {
     cards.push({
       kicker: "Deadline window",
       title: "Price the market",
-      detail: topNeed === "depth" ? "Check trade options before the deadline closes." : "Shop for " + topNeed + " help before the deadline closes.",
+      detail: topNeed === "depth"
+        ? `Check trade options before the deadline closes at the end of Week ${deadline.deadlineWeek}.`
+        : `Shop for ${topNeed} help before the deadline closes at the end of Week ${deadline.deadlineWeek}.`,
       action: "open-tab",
-      targetTab: "transactionsTab",
-      targetId: "tradeDeadlineFrenzy",
+      targetTab: "overviewTab",
+      targetId: "tradeDeadlinePanel",
       tone: "warning",
       lane: "Optional",
       blocking: false

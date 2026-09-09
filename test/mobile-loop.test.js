@@ -118,6 +118,7 @@ test("mobile pressure stack elevates deadline window and stays useful without ur
       phase: "regular-season",
       controlledTeamId: "BUF",
       currentWeek: 10,
+      settings: { tradeDeadlineWeek: 11 },
       controlledTeam: {},
       cap: { capSpace: 15_000_000 },
       rosterNeeds: [{ pos: "CB" }],
@@ -126,8 +127,9 @@ test("mobile pressure stack elevates deadline window and stays useful without ur
   });
 
   assert.equal(deadlineCards[0].kicker, "Deadline window");
-  assert.equal(deadlineCards[0].targetTab, "transactionsTab");
-  assert.equal(deadlineCards[0].targetId, "tradeDeadlineFrenzy");
+  // S101: the deadline panel lives in the overview tab, not transactions.
+  assert.equal(deadlineCards[0].targetTab, "overviewTab");
+  assert.equal(deadlineCards[0].targetId, "tradeDeadlinePanel");
   assert.match(deadlineCards[0].detail, /CB/);
 
   const calmCards = buildMobilePressureStack({

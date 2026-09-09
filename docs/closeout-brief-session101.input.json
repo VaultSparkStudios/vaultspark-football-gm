@@ -1,0 +1,114 @@
+{
+  "session": "S101",
+  "date": "2026-09-09",
+  "repo": "franchise-architect",
+  "headline": "Completed the full arc. A four-lane live-code audit found that several rules the game advertises were never enforced and several gates reporting green had no ability to report red \u2014 the trade deadline the UI said would 'shut' was not checked anywhere in the engine, a capped-out club could re-sign everyone anyway, every rewind write exceeded the browser quota so a shipped feature never worked, and banked cap space quietly went to zero by season eight. All were fixed against measured evidence, and every new or repaired gate was given a negative control against the real pre-fix defect \u2014 which caught one of this session's own tests passing with the bug restored.",
+  "items": [
+    {
+      "title": "The trade deadline becomes an enforced rule",
+      "projectImpact": 8,
+      "ecosystemImpact": 2,
+      "evidence": "Three surfaces advertised three different windows (8-10, 9-11, a W12 mandate) for a rule TradeService never checked, so the same trade was legal in Week 17 and in the playoffs. One tradeDeadlineWeek in DEFAULT_LEAGUE_SETTINGS, enforced once at the shared command seam so CPU front offices obey it, derived once by the UI."
+    },
+    {
+      "title": "The salary cap can no longer be walked through",
+      "projectImpact": 8,
+      "ecosystemImpact": 1,
+      "evidence": "negotiateAndSign caught the cap authority's refusal and hand-wrote the contract with the OLD capHit, returning ok:true \u2014 a capped-out club could extend every expiring player forever while the client reported a flat 'accepted the offer'. The bypass is removed and the applied terms are reported; proven by a test that goes red with the bypass restored."
+    },
+    {
+      "title": "A restored franchise can no longer become unplayable",
+      "projectImpact": 9,
+      "ecosystemImpact": 1,
+      "evidence": "The restore normalizer rebuilt 2 of team.season's 12 declared keys (third drift site of the S71 shape), so a snapshot missing season restored with wins:null and threw on the next advanceWeek. fromSnapshot now normalizes the league before new StatBook, matching the constructor, so an omitted collection cannot throw after the compatibility check said compatible."
+    },
+    {
+      "title": "The rewind feature actually works",
+      "projectImpact": 8,
+      "ecosystemImpact": 1,
+      "evidence": "Rewind wrote raw JSON measured at 12.13 MB per payload against a 5-10 MB quota while saves used the 8.5x gzip codec, so every write failed in a real browser; the pre-restore safety checkpoint's failure was discarded before the live session was irreversibly replaced with a 200; a corrupt index reset to [] and committed the emptiness on the next write. All three fixed, legacy plain-JSON points still load, measured 14,892 KB to 1,808 KB across four payloads."
+    },
+    {
+      "title": "Banked cap space carries forward again",
+      "projectImpact": 7,
+      "ecosystemImpact": 1,
+      "evidence": "applyCapRollover was the only cap reader ignoring teamCapOverride, so rollover collapsed from ~30M to ~1.09M by simulated season 8 as the real cap grew. Re-measured over 10 seasons: rollover holds ~29-31M with capComplianceUnresolved empty every season."
+    },
+    {
+      "title": "Coaching staff stop being annual noise",
+      "projectImpact": 6,
+      "ecosystemImpact": 1,
+      "evidence": "processStaffLifecycle ran twice per offseason, burning contracts at 2x their declared term (a 2-year head coach gone after one), and is now guarded like its three pipeline neighbours. Four of seven staff roles never expired at all, freezing two of five inputs to every CPU club's coaching.development and 100% of coaching.wellness for the life of the franchise."
+    },
+    {
+      "title": "The publish path now runs the tests that cover it",
+      "projectImpact": 7,
+      "ecosystemImpact": 5,
+      "evidence": "deploy-pages and deploy-backend gated on the studio shard alone while src/** was a trigger path and full CI ran as a parallel workflow, not a needs: \u2014 an engine regression could reach the live origin unexercised and sit until the weekly sweep. Both now run the behaviour shards, guarded structurally by a test that fails on the pre-fix workflow."
+    },
+    {
+      "title": "Four gates that could not fail were made falsifiable",
+      "projectImpact": 6,
+      "ecosystemImpact": 6,
+      "evidence": "A drift test asserting a tautology; an authoritative-registry check that ceased to exist rather than failing whenever the sibling repo was absent (every CI run); git-head-covered-by-publication hardcoding contradiction:false so 'is main actually live?' could not block; and a release-freshness live arm no caller ever reached. Each now has a negative control against its real defect."
+    },
+    {
+      "title": "Dead controls and unreadable numbers",
+      "projectImpact": 5,
+      "ecosystemImpact": 1,
+      "evidence": "navigateToExactSurface reported focused:true while focusing an element in a display:none tab (two live call sites pointed at the wrong tab); three selects shipped permanently empty, two under copy telling the player to use them; the commissioner intent queue had no submit control despite a fully implemented, contract-registered endpoint; seven hardcoded reds had no light-theme path, including the Cap Space card and the draft clock."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "Signing-bonus proration accelerates",
+      "evidence": "Recomputed over remaining years, so a contract gets more expensive every year it exists (+18.3% over 3y, +26.4% over 4y) and its final year is its most expensive. Needs a save-shape migration; deferred with measurements rather than half-fixed."
+    },
+    {
+      "title": "The free-agent pool is unbounded",
+      "evidence": "0 to ~413 players by season 10, ~60/season with no exit path, displacing the reversion gap centre by 0.44-0.51 by season 10. Bound the pool; do not re-scope the centre."
+    },
+    {
+      "title": "The dispersion arm reads out-of-range on every seed",
+      "evidence": "The engine's own buildDistributionReceipt reports out-of-range while the suite asserts only the elite and mean arms, which pass. Wiring the assertion turns the suite red immediately, which is the point. Needs its own session with a 10-season re-measurement budget."
+    },
+    {
+      "title": "Real player evidence",
+      "evidence": "Wait for a genuine opted-in cohort; no manufactured activity."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "Public launch remains HOLD",
+      "evidence": "Delivered reply-capable project-domain email, candidate-bound founder approval and authoritative lifecycle reconciliation remain unproved and unchanged this session."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "One of this session's own new tests was a false green",
+      "evidence": "The cap-rollover regression passed with the pre-fix bug deliberately restored \u2014 the fixture left enough space that both readings clamped to the same ceiling. It was rewritten until it failed at 2.4M-against-146M and re-verified. Reported because the class is exactly what this session spent its effort on."
+    },
+    {
+      "title": "S99 and S100 never wrote their CURRENT_STATE entries",
+      "evidence": "The public-truth gate derives a session number from that file and blocked the Pages build, which is how the gap surfaced. The S101 entry is written; theirs are not back-dated, because reconstructing them would be fabrication."
+    },
+    {
+      "title": "Three engine defects are measured, not fixed",
+      "evidence": "Signing-bonus proration, the unbounded FA pool and the dispersion arm are deferred with their numbers recorded in TASK_BOARD and DECISIONS. Honest deferral, not a silent skip."
+    },
+    {
+      "title": "SIL scores are engineering assessments",
+      "evidence": "Not measured player outcomes. No real-cohort evidence exists, so engagement stays limited."
+    },
+    {
+      "title": "A probe column that looks like a regression is not one",
+      "evidence": "The over/spaceM columns in the rollover probe measure against the flat base cap \u2014 the same measurement error the audit lane retracted mid-audit \u2014 and are not evidence of a solvency change. capComplianceUnresolved is empty every season."
+    }
+  ],
+  "diffStat": {
+    "files": 37,
+    "insertions": 833,
+    "deletions": 102,
+    "suite": "Node 1,369/1,369 across six shards; Playwright 60/60; studio shard rerun after two self-caused reds fixed at source"
+  }
+}

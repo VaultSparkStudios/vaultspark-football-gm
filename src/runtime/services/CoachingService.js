@@ -11,6 +11,27 @@ const COORDINATOR_ROLES = Object.freeze([
   ["defensiveCoordinator", "DC"]
 ]);
 
+/**
+ * Every staff role whose contract expires.
+ *
+ * S101 — the lifecycle loop ran over head coach + coordinators only, so the
+ * other four roles were created once at league generation and never decremented.
+ * Measured: `scoutingDirector.yearsRemaining` was 3 before and 3 after two
+ * lifecycle passes. For all 31 CPU clubs those staffers were immortal, which
+ * froze two of the five inputs to `coaching.development` forever and 100% of
+ * `coaching.wellness` — so a rival club's development environment was neither an
+ * identity nor a trajectory. Only HC/OC/DC are registered in the coaching tree;
+ * the rest simply expire and are replaced.
+ */
+const LIFECYCLE_STAFF_ROLES = Object.freeze([
+  ["headCoach", "HC"],
+  ...COORDINATOR_ROLES,
+  ["scoutingDirector", "SCOUT"],
+  ["capAnalyst", "CAP"],
+  ["strengthCoach", "STRENGTH"],
+  ["medicalDirector", "MEDICAL"]
+]);
+
 function nodeForStaff(tree, teamId, staffer, role) {
   return Object.values(tree?.nodes || {}).find((node) =>
     node.currentTeamId === teamId &&
@@ -110,7 +131,7 @@ export class CoachingService {
     const expired = [];
     const firedHeadCoachIds = [];
     for (const team of this.league.teams || []) {
-      for (const [staffKey, role] of [["headCoach", "HC"], ...COORDINATOR_ROLES]) {
+      for (const [staffKey, role] of LIFECYCLE_STAFF_ROLES) {
         const staffer = team.staff?.[staffKey];
         if (!staffer) continue;
         staffer.yearsRemaining = Math.max(0, (staffer.yearsRemaining || 1) - 1);

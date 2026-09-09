@@ -83,14 +83,39 @@ test("indexed player lookups replace the repeated linear scans", () => {
 test("snapshot-restored sessions carry a fully-armed TradeService", () => {
   const session = createSession({ seed: 620115, startYear: 2026, controlledTeamId: "BUF", mode: "stat" });
   const restored = createSessionFromSnapshot(session.toSnapshot());
-  const buf = restored.getRoster("BUF");
-  const mia = restored.getRoster("MIA");
-  // Before the fix this crashed with "teamPlayersAll is not a function".
-  const evaluation = restored.services.trades.evaluate({
+  const buf = session.getRoster("BUF");
+  const mia = session.getRoster("MIA");
+  const input = {
     teamA: "BUF",
     teamB: "MIA",
     teamAPlayerIds: [buf[0].id],
     teamBPlayerIds: [mia[0].id]
-  });
-  assert.ok(typeof evaluation.ok === "boolean", "evaluate returns a verdict, not a crash");
+  };
+
+  // Before the fix this crashed with "teamPlayersAll is not a function".
+  //
+  // S101 — but the only assertion here used to be `typeof evaluation.ok ===
+  // "boolean"`, which is absence-of-throw, not parity. If the wiring broke again
+  // and the failure were swallowed into a graceful `{ ok: false }`, every
+  // restored session would silently refuse all trades and this test would stay
+  // green, because `false` is a boolean. Compare the restored verdict against
+  // the live one instead: that is the property the test is named for.
+  const live = session.services.trades.evaluate(input);
+  const evaluation = restored.services.trades.evaluate(input);
+
+  assert.equal(typeof evaluation.ok, "boolean", "evaluate returns a verdict, not a crash");
+  assert.equal(
+    evaluation.ok,
+    live.ok,
+    "a restored session must reach the same verdict as the live one — silent always-refuse is the failure this guards"
+  );
+  assert.equal(evaluation.reasonCode ?? null, live.reasonCode ?? null, "and refuse for the same reason, if it refuses");
+
+  if (live.ok) {
+    assert.deepEqual(
+      Object.keys(evaluation.valuation || {}).sort(),
+      Object.keys(live.valuation || {}).sort(),
+      "the restored service must produce a valuation, not an empty verdict"
+    );
+  }
 });

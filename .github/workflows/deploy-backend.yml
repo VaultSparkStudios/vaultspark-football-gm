@@ -51,6 +51,15 @@ jobs:
       - name: Run runtime shard (backend behavior)
         run: npm run test:runtime
 
+      # S101: see deploy-pages.yml -- the backend publish path also accepted
+      # `src/**` changes with no engine-behavior shard between the push and
+      # the deployed runtime.
+      - name: Run core shard (engine + domain behavior)
+        run: npm run test:core
+
+      - name: Run sim contract shard
+        run: npm run test:sim:contract
+
   build-images:
     needs: gate
     runs-on: ubuntu-latest

@@ -16,6 +16,31 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 - [ ] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker.
 
+## Session 101 — Full arc: the advertised rules become enforced rules (2026-09-09)
+
+- [x] Declare the trade deadline once in league settings and enforce it at the shared trade command seam, replacing three surfaces that advertised three different windows for a rule the engine never checked.
+- [x] Stop `negotiateAndSign` hand-writing a contract with the old cap hit when the cap authority refuses, and report the terms actually signed instead of a flat "accepted the offer".
+- [x] Rebuild the whole declared `team.season` shape on the restore path (third drift site) and normalize the league before `new StatBook` so an omitted collection cannot throw after the compatibility check passed.
+- [x] Route rewind snapshots through the save codec, refuse a restore whose recovery point could not be written, and reconcile a corrupt rewind index against the payloads actually present.
+- [x] Compute cap rollover against the grown cap, guard `processStaffLifecycle` against the repeated pipeline call, and expire all seven staff roles rather than three.
+- [x] Make the deploy gates run the behaviour shards that cover `src/**`, with a structural test that fails on the pre-fix workflow.
+- [x] Replace the tautological lifecycle-drift assertion with fixture-driven negative controls, and report an unresolved authoritative registry as unresolved instead of omitting the check.
+- [x] Let `git-head-covered-by-publication` and an anonymous-but-reachable origin contradict a verified release claim; make an unverified live origin an explicit freshness state.
+- [x] Assert `fromSnapshot` TradeService parity against the live session rather than absence-of-throw.
+- [x] Report navigation honestly when the target is in another tab or hidden, and repoint the two call sites that pointed into the wrong tab.
+- [x] Populate the two team selects that shipped empty, remove the one the data cannot support, wire the commissioner intent queue to its existing endpoint, and token-ize seven hardcoded reds with no light-theme path.
+- [x] Ship an Ark `registry-delta` correcting the authoritative registry to FORGE, rather than flipping the local contract (which would vacuate three blocking lifecycle gates).
+
+**Verification:** canonical Node **1,369/1,369** across six shards (core 210, runtime 784, sim-contract 83, sim-realism 1, long 5, studio 286). The studio shard was rerun after two self-caused reds on its first pass — a stale `static/` build whose modulepreload list predated this session's new module (the earlier build had been blocked by the public-truth gate), and a Command Center fixture that predated the declared `tradeDeadlineWeek` setting. Both were fixed at source; neither was flaky, sibling drift, or force-greened. The rerun also covers the writeback-currency test, which was registered after the runner had already loaded its shard map. Doctor `blockingFailing 0` with the one standing lifecycle-registry warning. Pages build, browser module reachability, promise observability, boot budget (649,152/650,000 static bytes, 53/58 modules, zero lazy leaks) and public-truth (42 engine systems · 102 shipped surfaces) all green.
+
+**Deferred with measurements, not silently:**
+
+- [ ] Signing-bonus proration is recomputed over *remaining* years (`src/domain/contracts.js:120`), so a contract gets more expensive every year it exists — measured +18.3% over 3 years, +26.4% over 4, +22.8% over 5, and a deal's final year is its most expensive, which is backwards. `normalizeContract` already computes a `capYears` local that is never persisted. The fix is a save-shape change (persist the original term, migrate existing snapshots by defaulting to current `yearsRemaining`) and was too large to land safely alongside this session's other persistence work.
+- [ ] The free-agent pool is unbounded (0 → ~413 players by simulated season 10, ~60/season with no exit path) and sits inside the reversion gap centre that `progressionParity.js` explicitly fences it out of. Measured displacement of the centre every rostered player converges toward: 0.00 at season 0, 0.44-0.51 by season 10. Bound the pool — force retirement after N consecutive unsigned offseasons — rather than re-scoping the centre; the conservation argument in `potentialReversion.js:117-134` is correct.
+- [ ] The engine's own `buildDistributionReceipt` reads `dispersionStatus: out-of-range` on all three probed seeds (annual sd drift 0.165-0.171 against a 0.15 ceiling; 90+ share 0.3-0.45% → 2.97-3.51% on a fixed active-roster denominator), while `realism-career-regression.test.js` and `session92-nfl-elite-density-baseline.test.js` assert only the *elite* and *global mean* arms — the arms that pass. The mean is on-target (77.28 → 77.67), so this is a shape defect a mean gate cannot see. Wiring the dispersion assertion turns the suite red immediately, which is the point; the root is that the generator's implied 90+ share is ~3x the sourced All-Pro ceiling, so the fix is `playerFactory.js`'s SUPERSTAR band, not the reversion rate. Needs its own session with a 10-season re-measurement budget.
+- [ ] Every coach in a generated league shares one name ("Head Coach", "Offensive Coordinator") — `buildStaffProfile` falls back to the role label, and coordinators never get real names. Immersion, and it weakens `nodeForStaff`'s (teamId, role, name) identity.
+- [ ] A bye week still demands a tactical decision and returns no feedback: `weeklyPlanComposer.js` forces the tactic step for every regular-season week, the film receipt is null, and no beat card fires. The client already reads `schedule.byeTeams`; pass it in and give the bye its own beat.
+
 ## Session 99 — Tie-honest payoff and first-debrief evidence (2026-09-08)
 
 - [x] Replace two-state post-game result copy with one win/loss/tie authority across recap, Franchise Moment, press-room questions, effects, promises, receipts, and continuity.

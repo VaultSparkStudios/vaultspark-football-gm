@@ -395,7 +395,16 @@ export function applyCapRollover(league) {
       deadCapCurrentYear: 0,
       deadCapNextYear: 0
     };
-    const capForYear = NFL_STRUCTURE.salaryCap + (current.rollover || 0);
+    // S101 — this was the only cap reader in the engine that ignored the grown
+    // cap. `GameSession.startSeason` raises the cap 4.5%/yr into
+    // `league.teamCapOverride`; computing rollover against the flat base meant
+    // that by simulated season 8 every club banked ~$1.09M against ~$84M of real
+    // space, so "bank space this year to strike in free agency next year" — a
+    // core GM lever — silently stopped existing. Nothing errored; the number just
+    // went to zero. The override-with-flat-fallback form is required: the
+    // headless `runOffseason` path never calls `startSeason` and so has no
+    // override, which is why line 264 already reads it exactly this way.
+    const capForYear = (league.teamCapOverride?.[team.id] || NFL_STRUCTURE.salaryCap) + (current.rollover || 0);
     const capSpace = capForYear - used - (current.deadCapCurrentYear || 0);
     const nextRollover = clamp(Math.round(Math.max(0, capSpace) * 0.48), 0, 35_000_000);
     league.capLedger[team.id] = {

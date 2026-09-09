@@ -33,6 +33,13 @@ export const DEFAULT_LEAGUE_SETTINGS = {
   enableChemistry: true,
   retirementWinningRetention: true,
   retirementOverrideMinWinningPct: 0.55,
+  // S101 — the trade deadline was pure UI fiction: three surfaces claimed three
+  // different windows (weeks 8-10, 9-11, and a W12 GM mandate) for a rule the
+  // engine did not have, so the player could make the identical trade in Week 17
+  // or during the playoffs. Declared once here, enforced at the trade command
+  // seam so CPU front offices obey the same rule, and read by the UI rather than
+  // hand-typed per surface.
+  tradeDeadlineWeek: 11,
   waiverClaimWindowWeeks: 1,
   practiceSquadExperienceLimit: 2,
   onboardingCompleted: false,

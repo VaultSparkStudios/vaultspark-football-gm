@@ -11,7 +11,9 @@ function valueAfter(args, flag) {
 
 export function checkReleaseEvidenceFreshness({ root = process.cwd(), liveReport = null, expectedRevision = null, now = Date.now() } = {}) {
   const status = JSON.parse(fs.readFileSync(path.join(root, "context", "PROJECT_STATUS.json"), "utf8"));
-  return evaluateReleaseEvidenceFreshness({ contract: status.releaseEvidence, liveReport, expectedRevision, now });
+  // S101 — this gate exists to compare the record against the live origin, so an
+  // absent live report is a failure to check, not a pass.
+  return evaluateReleaseEvidenceFreshness({ contract: status.releaseEvidence, liveReport, expectedRevision, now, requireLive: true });
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);

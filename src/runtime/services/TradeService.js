@@ -13,6 +13,33 @@ export class TradeService {
     this.strategies = strategies;
   }
 
+  /**
+   * The trade window is closed once the regular season passes the declared
+   * deadline week, and stays closed through the postseason. It reopens with the
+   * new league year, which the offseason phases represent.
+   */
+  _deadlineRefusal() {
+    const session = this.session;
+    const deadlineWeek = Number(session?.league?.settings?.tradeDeadlineWeek);
+    if (!Number.isFinite(deadlineWeek)) return null;
+
+    const phase = session?.phase;
+    const week = Number(session?.currentWeek);
+    const closed = phase === "postseason"
+      || (phase === "regular-season" && Number.isFinite(week) && week > deadlineWeek);
+    if (!closed) return null;
+
+    return {
+      ok: false,
+      status: 409,
+      reasonCode: "trade-deadline-closed",
+      error: phase === "postseason"
+        ? "The trade deadline has passed. The window reopens in the offseason."
+        : `The trade deadline passed at the end of Week ${deadlineWeek}. The window reopens in the offseason.`,
+      deadlineWeek
+    };
+  }
+
   _createPlan(input = {}) {
     return buildTradePlan(this.session, input);
   }
@@ -195,6 +222,15 @@ export class TradeService {
   }
 
   commit(input) {
+    // S101 — the trade deadline existed only as UI copy: three surfaces claimed
+    // three different windows and told the player the window "shuts", while the
+    // engine had no week check at all, so the identical trade was still legal in
+    // Week 17 or in the playoffs. Enforced here, at the shared command seam, so
+    // CPU front offices obey the same rule the player is shown (the repo's
+    // standing rule: authority at the seam, never in GameSession).
+    const deadlineRefusal = this._deadlineRefusal();
+    if (deadlineRefusal) return deadlineRefusal;
+
     if (input?.expectedPlanFingerprint) {
       const currentPlan = this._createPlan(input);
       if (currentPlan.fingerprint !== input.expectedPlanFingerprint) {

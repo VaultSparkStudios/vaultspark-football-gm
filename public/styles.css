@@ -1823,7 +1823,7 @@ body[data-theme="light"] .btn-primary {
 }
 
 .tone-negative {
-  color: #ff8f8f !important;
+  color: var(--danger) !important;
 }
 
 .tone-warning {
@@ -2027,7 +2027,10 @@ td.tone-info {
 
 .tone-border-positive { border-left-color: var(--success) !important; }
 .tone-border-warning  { border-left-color: var(--warning) !important; }
-.tone-border-negative { border-left-color: #ff8f8f !important; }
+.tone-border-negative { border-left-color: var(--danger) !important; }
+
+/* S101 — replaces an inline style="color:#f85149" that had no light-theme path. */
+.danger-text { color: var(--danger); }
 .tone-border-info     { border-left-color: var(--info) !important; }
 .tone-border-accent   { border-left-color: var(--accent-strong) !important; }
 
@@ -2151,8 +2154,8 @@ td.tone-info {
 }
 
 .small-btn:hover { border-color: var(--accent); color: var(--accent-strong); }
-.small-btn.warn  { border-color: rgba(208, 92, 92, 0.5); color: #ff8f8f; }
-.small-btn.warn:hover { border-color: #ff8f8f; }
+.small-btn.warn  { border-color: rgba(208, 92, 92, 0.5); color: var(--danger); }
+.small-btn.warn:hover { border-color: var(--danger); }
 
 /* ── War Room Board ───────────────────────────────────────────────────────── */
 
@@ -2231,7 +2234,7 @@ td.tone-info {
 
 .clock-normal .clock-bar-fill  { background: var(--success); }
 .clock-warning .clock-bar-fill { background: var(--warning); }
-.clock-urgent .clock-bar-fill  { background: #ff8f8f; }
+.clock-urgent .clock-bar-fill  { background: var(--danger); }
 
 .clock-seconds {
   font-size: 1.4rem;
@@ -2239,7 +2242,7 @@ td.tone-info {
   color: var(--ink-strong);
 }
 
-.clock-urgent .clock-seconds { color: #ff8f8f; }
+.clock-urgent .clock-seconds { color: var(--danger); }
 
 .war-room-trade-call {
   padding: 0.9rem;

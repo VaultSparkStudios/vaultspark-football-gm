@@ -114,7 +114,15 @@ test("release currency distinguishes current evidence, stale claims, safe receip
     productionHealth: { sourceRevision: "e".repeat(40), artifactFingerprint: { digest: identityDigest } }
   });
   assert.equal(stale.status, "contradicted");
-  assert.equal(stale.blockingFailing, 3);
+  // S101 — was 3. `git-head-covered-by-publication` used to hardcode
+  // `contradiction: false`, so the one question that matters — "is what is on
+  // main actually live?" — could never block. Here HEAD is the publication
+  // revision while production reports something else, which is exactly that
+  // contradiction, and it now counts.
+  assert.equal(stale.blockingFailing, 4);
+  const headCheck = stale.items.find((item) => item.id === "release-authority-git-head-covered-by-publication");
+  assert.ok(headCheck, "an uncovered HEAD must be reported");
+  assert.equal(headCheck.blocking, true);
 
   const receiptHead = "f".repeat(40);
   const safeHead = evaluateReleaseAuthorityCurrency({
@@ -136,4 +144,40 @@ test("a deployable publication delta is never treated as receipt-only", () => {
   const delta = evaluatePublicationDelta({ from: revision, to: "c".repeat(40), changedFiles: ["public/app.js", "docs/visual-qa/LATEST.json"] });
   assert.equal(delta.verified, false);
   assert.deepEqual(delta.unsafeFiles, ["public/app.js"]);
+});
+
+test("an origin that answers without identifying itself contradicts a verified release claim", () => {
+  const candidate = "a".repeat(40);
+  const digest = "c".repeat(64);
+  const status = {
+    stagingAuthority: { sourceRevision: candidate, artifactFingerprint: { digest } },
+    releaseAuthority: {
+      status: "verified",
+      evidenceVerified: true,
+      sourceRevision: candidate,
+      publicationRevision: candidate,
+      artifactFingerprint: { digest }
+    }
+  };
+
+  // Unreachable origin: genuinely unknown, must stay a warning.
+  const unreachable = evaluateReleaseAuthorityCurrency({
+    headRevision: candidate,
+    status,
+    stagingHealth: null,
+    productionHealth: null,
+    stagingError: "production unknown: fetch failed",
+    productionError: "production unknown: fetch failed"
+  });
+  assert.equal(unreachable.blockingFailing, 0, "an unreachable origin is unknown, not a contradiction");
+
+  // Origin answered and declined to say what it is running: that contradicts a
+  // verified claim and used to be filed as a warning.
+  const anonymous = evaluateReleaseAuthorityCurrency({
+    headRevision: candidate,
+    status,
+    stagingHealth: { artifactFingerprint: { digest } },
+    productionHealth: { artifactFingerprint: { digest } }
+  });
+  assert.ok(anonymous.blockingFailing > 0, "an origin that answers without a revision must be able to block");
 });

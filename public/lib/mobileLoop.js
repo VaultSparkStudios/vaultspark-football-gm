@@ -38,6 +38,7 @@
  */
 
 import { buildFranchiseCommandStack, hasBlockingFranchiseCommand } from "./franchiseCommandCenter.js";
+import { tradeWindow } from "./tradeWindow.js";
 import { deriveTrophyRoad, readEarnedAchievements, renderTrophyRoad } from "./achievements.js";
 import { buildThreeHorizonBlueprint } from "./franchiseArchitecture.js";
 import { findTeamStanding, formatTeamRecord } from "./teamRecord.js";
@@ -371,14 +372,17 @@ export function buildMobilePressureStack({ dashboard = {}, newsRows = [] } = {})
     });
   }
 
-  if (phase === "regular-season" && week >= 9 && week <= 11) {
+  const deadline = tradeWindow(dashboard);
+  if (deadline.closing) {
     const topNeed = rosterNeeds[0] || "roster";
     cards.push({
       kicker: "Deadline window",
       title: "Trade market is live",
-      detail: `Week ${week}: price ${topNeed} help or sell before the window shuts.`,
-      targetTab: "transactionsTab",
-      targetId: "tradeDeadlineFrenzy",
+      detail: deadline.weeksLeft === 0
+        ? `Week ${week}: the window shuts at the end of this week — price ${topNeed} help or sell now.`
+        : `Week ${week}: price ${topNeed} help or sell before the window shuts after Week ${deadline.deadlineWeek}.`,
+      targetTab: "overviewTab",
+      targetId: "tradeDeadlinePanel",
       tone: "warning"
     });
   }

@@ -19,10 +19,6 @@
       "lifecycleAuthorityFingerprint",
       "geniusAuthorityFingerprint"
     ],
-    "scripts/check-brief-staleness.mjs": [
-      "lifecycle authority changed",
-      "genius authority changed"
-    ],
     "scripts/lib/cross-repo-tasks.mjs": [
       "parseTaskBoardItems",
       "shared-task-board-parser"
@@ -32,5 +28,11 @@
     "scripts/run-tests.mjs",
     "scripts/check-last-session-summary.mjs"
   ],
-  "canonicalTestCommand": "node scripts/run-test-shard.mjs all"
+  "canonicalTestCommand": "node scripts/run-test-shard.mjs all",
+  "behavioralAssertions": {
+    "scripts/check-brief-staleness.mjs": [
+      "lifecycle-fingerprint-drift-detected",
+      "genius-fingerprint-drift-detected"
+    ]
+  }
 }

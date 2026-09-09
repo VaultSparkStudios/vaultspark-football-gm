@@ -1177,8 +1177,13 @@ export function syncTeamSelects() {
   setSelectOptions("analyticsTeamFilter", [{ value: "", label: "ALL Teams" }, ...teamOptions]);
   setSelectOptions("staffTeamSelect", teamOptions, controlled);
   setSelectOptions("ownerTeamSelect", teamOptions, controlled);
+  // S101: both shipped permanently empty — the cap panel sat under copy telling
+  // the player to choose a team, and the lobby select always fell back to the
+  // controlled club.
+  setSelectOptions("capCasualtyTeamSelect", teamOptions, controlledChanged ? controlled : state.contractTeamId || controlled);
+  setSelectOptions("joinTeamSelect", teamOptions, controlled);
 
-  ["rosterTeamSelect", "contractsTeamSelect", "tradeTeamA", "teamHistorySelect", "depthTeamSelect", "retirementOverrideTeamSelect"].forEach((id) => {
+  ["rosterTeamSelect", "contractsTeamSelect", "tradeTeamA", "teamHistorySelect", "depthTeamSelect", "retirementOverrideTeamSelect", "capCasualtyTeamSelect", "joinTeamSelect"].forEach((id) => {
     const el = document.getElementById(id);
     if (el && !el.value && controlled) el.value = controlled;
   });

@@ -31,7 +31,11 @@ test("tactical previews reward only execution and expose the exact next identity
 });
 
 test("ranked command authority emits a deterministic explanation receipt", () => {
-  const input = { dashboard: { controlledTeamId: "BUF", currentYear: 2026, currentWeek: 9, phase: "regular-season", cap: { capSpace: -1 }, injuryReport: [], rosterNeeds: [] } };
+  // S101 — the deadline card is emitted only when the league DECLARES a deadline
+  // (settings.tradeDeadlineWeek), which live state always carries. Without it the
+  // surface must stay silent rather than advertise a window the engine does not
+  // enforce, so the fixture carries the setting the real payload carries.
+  const input = { dashboard: { controlledTeamId: "BUF", currentYear: 2026, currentWeek: 9, phase: "regular-season", settings: { tradeDeadlineWeek: 11 }, cap: { capSpace: -1 }, injuryReport: [], rosterNeeds: [] } };
   const cards = buildFranchiseCommandStack(input);
   assert.deepEqual(cards.map((card) => card.rank), [1, 2, 3]);
   assert.equal(cards[0].reasonCode, "cap-pressure");

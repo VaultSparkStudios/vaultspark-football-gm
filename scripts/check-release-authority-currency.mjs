@@ -49,12 +49,17 @@ export function evaluateReleaseAuthorityCurrency({
       id: "live-staging-observed",
       ok: Boolean(live.staging.sourceRevision),
       unknown: Boolean(stagingError),
+      // S101: an origin that could not be reached is genuinely unknown. An origin
+      // that ANSWERED and declined to identify its revision is not unknown -- it
+      // contradicts a verified release claim, and used to be filed as a warning.
+      contradiction: Boolean(!stagingError && !live.staging.sourceRevision),
       detail: stagingError || live.staging.sourceRevision || "stable staging returned no source revision"
     },
     {
       id: "live-production-observed",
       ok: Boolean(live.production.sourceRevision),
       unknown: Boolean(productionError),
+      contradiction: Boolean(!productionError && !live.production.sourceRevision),
       detail: productionError || live.production.sourceRevision || "production returned no source revision"
     },
     {
@@ -78,7 +83,13 @@ export function evaluateReleaseAuthorityCurrency({
     {
       id: "git-head-covered-by-publication",
       ok: headCovered,
-      contradiction: false,
+      // S101: this was hardcoded `false`, so the one question that matters --
+      // "is what is on main actually live?" -- was structurally incapable of
+      // blocking. main could carry unpublished `src/` changes indefinitely while
+      // the project claimed a verified release authority and doctor stayed green.
+      // Receipt-only descendants are still covered (verified above), so ordinary
+      // closeout commits do not trip this; real unpublished source does.
+      contradiction: Boolean(head && live.production.sourceRevision && !headCovered),
       detail: headCovered
         ? head === live.production.sourceRevision ? `HEAD ${head} is live` : `HEAD ${head} is a verified receipt-only descendant of ${live.production.sourceRevision}`
         : `HEAD ${head || "unknown"} is not covered by live production ${live.production.sourceRevision || "unknown"}`
