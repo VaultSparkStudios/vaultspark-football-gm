@@ -1,27 +1,27 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-09-10 (Session 103 closeout) -->
+<!-- generated-at: 2026-09-10 (Session 104 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S103 ═════╗
-║  Date: 2026-09-10  ·  SIL: 960/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S104 ═════╗
+║  Date: 2026-09-10  ·  SIL: 961/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ feat: generate a league at the roster its own rules declare,  ║
+║  ✓ chore(deps-dev): bump @playwright/test in the dev-dependenci  ║
+║  ✓ chore(closeout): record S103 deployment receipts and reconci  ║
 ║  ✓ fix: handle a bye where the product now decides it, and neve  ║
 ║  ✓ feat: make the parity gate report its own moving denominator  ║
-║  ✓ chore(closeout): record S102 receipts, captures and closeout  ║
-║  ✓ feat: fix the cap ledger, bound the pool, and make a gate me  ║
-║  ✓ chore(closeout): refresh S101 status board                    ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 960/1000 ═══════════════════════════════════════╗
-║    Dev Health         96   ██████████                            ║
+╔══ SCORES · SIL 961/1000 ═══════════════════════════════════════╗
+║    Dev Health         97   ██████████                            ║
 ║    Alignment          98   ██████████                            ║
-║    Momentum           98   ██████████                            ║
+║    Momentum           100  ██████████                            ║
 ║    Engagement         86   █████████░                            ║
-║    Process Qual       99   ██████████                            ║
+║    Process Qual       97   ██████████                            ║
 ║    Coherence          95   ██████████                            ║
 ║    Security           98   ██████████                            ║
 ║    Ecosystem          90   █████████░                            ║
@@ -30,9 +30,9 @@
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  · context/CURRENT_STATE.md                                      ║
-║  ✓ context/TASK_BOARD.md                                         ║
+║  · context/TASK_BOARD.md                                         ║
 ║  · context/LATEST_HANDOFF.md                                     ║
-║  ✓ logs/WORK_LOG.md                                              ║
+║  · logs/WORK_LOG.md                                              ║
 ║  · context/DECISIONS.md                                          ║
 ║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 110 files  ·  M:8 A:0 D:0 ?:102                        ║
+║  Changes: 129 files  ·  M:5 A:0 D:20 ?:104                       ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -53,14 +53,13 @@
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
 ║  Tests:         1415/1415 · STALE                                ║
-║  IGNIS:         1d ago                                           ║
+║  IGNIS:         2d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  8d ago                                           ║
+║  Sanitization:  9d ago                                           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
-║      Latest audit has no open ranked items; run /audit for a ne  ║
-║      ↳ node scripts/ops.mjs genius-list                          ║
+║  #1: last-session-summary-had-a-detector-but-no-writer — Write   ║
+║      Feedback truth; observability; startup accuracy             ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 

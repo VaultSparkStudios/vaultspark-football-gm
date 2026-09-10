@@ -2,7 +2,7 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-09-10T23:41:06.383Z",
+  "observedAt": "2026-09-10T23:39:15.846Z",
   "baseUrl": "https://playfranchisearchitect.com",
   "route": "/",
   "sourceRevision": "24ad30eb0675dd49eafcde7f380a0e11ceb0ae07",
@@ -1103,17 +1103,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a392480eabc868ed-IAD",
+    "cf-ray": "a392455c4cc899f9-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Thu, 10 Sep 2026 23:41:05 GMT",
+    "date": "Thu, 10 Sep 2026 23:39:15 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=nyduYADfC3PWD7%2FCx3zRvvYi2vGnQ2wxLZ6FFhYjQXysVbFVnH8ENiq4se2K8NDd4A2y7iuTDcb96hHE7%2Btp5WLCiEd6wM8G4d63NAtiZjiXti%2B9MWMIrs7eOsnU%2BEbSIEa1LVkmqxoPa%2Bnq1Q%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=ahhWWCbV9TkcZBh6Np9Yi%2BqFBIoizTFZajLNM5P6UcrCySoFKsdjUxtfJCRipQQDKngsJMTxMeDtr3mgmQw%2FNtavAHuiSF55bSTqBbaYKPB9FlJ1t8BECPeDEU1Ts%2FpMmiqzgqmmTqBwdl%2BXdw%3D%3D\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -1129,13 +1129,13 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 352,
+      "lcpMs": 392,
       "inpMs": 32,
       "cls": 0,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 352,
+          "lcpMs": 10252,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -1148,7 +1148,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 364,
+          "lcpMs": 368,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -1157,11 +1157,11 @@
           },
           "cls": 0,
           "shifts": [],
-          "inpMs": 24,
+          "inpMs": 32,
           "interactionObserved": true
         },
         {
-          "lcpMs": 348,
+          "lcpMs": 392,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -1182,13 +1182,13 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 404,
+      "lcpMs": 480,
       "inpMs": 24,
       "cls": 0.0085,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 412,
+          "lcpMs": 10252,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -1198,7 +1198,53 @@
           "cls": 0.0085,
           "shifts": [
             {
-              "startTimeMs": 2964,
+              "startTimeMs": 12930,
+              "scrollY": 0,
+              "value": 0.0085,
+              "sources": [
+                {
+                  "tag": "SECTION",
+                  "id": null,
+                  "className": "community-pulse",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 350.203125,
+                    "width": 390,
+                    "height": 493.796875,
+                    "top": 350.203125,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 362.390625,
+                    "width": 390,
+                    "height": 481.609375,
+                    "top": 362.390625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 16,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 480,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "",
+            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
+          },
+          "cls": 0.0085,
+          "shifts": [
+            {
+              "startTimeMs": 2478,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -1234,7 +1280,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 404,
+          "lcpMs": 460,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -1244,53 +1290,7 @@
           "cls": 0.0085,
           "shifts": [
             {
-              "startTimeMs": 2311,
-              "scrollY": 0,
-              "value": 0.0085,
-              "sources": [
-                {
-                  "tag": "SECTION",
-                  "id": null,
-                  "className": "community-pulse",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 350.203125,
-                    "width": 390,
-                    "height": 493.796875,
-                    "top": 350.203125,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 362.390625,
-                    "width": 390,
-                    "height": 481.609375,
-                    "top": 362.390625,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 24,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 360,
-          "lcpElement": {
-            "tag": "P",
-            "id": null,
-            "className": "",
-            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
-          },
-          "cls": 0.0085,
-          "shifts": [
-            {
-              "startTimeMs": 4216,
+              "startTimeMs": 2753,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -1364,7 +1364,7 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 352,
+        "observed": 392,
         "expected": "< 1800ms"
       },
       {
@@ -1388,7 +1388,7 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 404,
+        "observed": 480,
         "expected": "< 1800ms"
       },
       {
@@ -1430,5 +1430,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "e51d85f454bd019d0bd94335fc08e5be653d9fe7bed0ff3f0256fa639f4adbff"
+  "receiptSha256": "1313ab64f9240ba1be3ee50ae0c8081924f41c067fd388f809b030513ec0afc9"
 }

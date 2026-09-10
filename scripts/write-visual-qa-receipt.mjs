@@ -128,15 +128,15 @@ const receipt = {
     renderedPixelsReviewed: true,
     reviewer: "session-agent",
     findings: [
-      "The mobile weekly decision deck and sticky commit dock render legibly at 390px in both dark and light themes, with both actions fully visible above the viewport edge.",
-      "A separate 430 by 932 pixel browser probe passed in dark and light themes; manual pixel review found the dock readable, unclipped, and visually separated from the scrolling decision stack.",
-      "The deterministic harness inspected 255 dark and light states at 1440px desktop, 768px tablet, and 390px mobile with no overflow, contrast, touch-target, selector, or runtime failures.",
+      "The roster surface renders the shipped structure rather than only asserting it: the desktop dark capture shows a club carrying both active and practice slots from generation, with practice rows offering To Active and active rows offering To PS, and a position mix spanning OL, DL, LB, DB, RB, WR, TE, QB, K and P rather than the quarterback-and-specialist pile-up the pre-S104 ranking produced.",
+      "The Roster Window Map above the table reports real rooms — Quarterback, Backfield, Receivers, Offensive Line, Front Seven, Secondary, Specialists — each with its own window, OVR, POT, fit, next-year age mix, expiring count and standard bearer, so the depth-chart structure the engine now enforces is legible to the player.",
+      "Theme parity checked on the same surface: the 390px light-theme roster renders the identical structure with readable contrast, no clipped columns and no horizontal overflow, against the 1440px dark capture.",
+      "The deterministic harness inspected 255 dark and light states at 1440px desktop, 768px tablet and 390px mobile with no overflow, contrast, touch-target, selector or runtime failures, and reported status passed bound to an immutable source revision and artifact fingerprint.",
       "Deployment readiness remains independent from public-launch authority; no rendered surface asserts that email, cohort, retention, or launch approval is verified."
     ],
     fixesApplied: [
-      "Added top, right, bottom, and left safe-area padding to the full-screen mobile decision deck.",
-      "Turned the weekly action row into a theme-correct sticky command dock and exposed the overlay as a named region.",
-      "Pinned safe-area coverage, sticky placement, landmark semantics, theme coverage, and 390/430px rendered states with static and real-browser gates."
+      "No rendered-pixel defect was found this session, so no visual fix was applied — the captures are evidence for an engine change, not a repair of the render layer.",
+      "The player-facing release note on the public status page was written for what these captures show: clubs dressing a legal depth chart, new leagues starting at a full roster with a practice squad, demand-weighted draft intake, and a cap that binds from the first snap."
     ],
     blockingDefectsOpen: 0
   }
