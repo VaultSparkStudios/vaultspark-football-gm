@@ -64,6 +64,20 @@ export const LEAGUE_IDENTITY_VERSION = "2026-s103-content-derived";
  */
 export const IDENTITY_SAMPLE_SIZE = 64;
 
+/**
+ * Enough persisted content to fingerprint? A league is only identifiable once it
+ * actually holds players; `IDENTITY_SAMPLE_SIZE` ids is the sample the
+ * fingerprint reads, so that is the floor.
+ */
+export function hasFingerprintableContent(league) {
+  let seen = 0;
+  for (const player of league?.players || []) {
+    if (typeof player?.id === "string" && player.id) seen += 1;
+    if (seen >= IDENTITY_SAMPLE_SIZE) return true;
+  }
+  return false;
+}
+
 function fingerprintSource(league) {
   const year = Number(league?.startYear ?? league?.year ?? league?.currentYear ?? 0);
   const ids = [];
@@ -114,6 +128,15 @@ export function ensureLeagueIdentity(league) {
   if (!league || typeof league !== "object") return null;
   const declared = league.leagueId || league.franchiseId;
   if (typeof declared === "string" && declared) return declared;
+  // Never persist an identity derived from a league that has nothing to
+  // fingerprint. `createLeagueBase` returns 32 teams and **zero players**, so a
+  // league normalized before its roster is allocated hashes an empty sample and
+  // yields one constant id for every league in existence — which is precisely
+  // the defect this module exists to fix, rebuilt inside its own fix and then
+  // frozen into the save. Below the floor the identity is derived on demand
+  // (callers still get a deterministic key) but nothing is written, so the next
+  // normalize with a populated roster assigns the real one.
+  if (!hasFingerprintableContent(league)) return null;
   const derived = deriveLeagueIdentity(league);
   league.leagueId = derived;
   return derived;
