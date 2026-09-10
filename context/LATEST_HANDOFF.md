@@ -62,6 +62,16 @@ A club now holds 69 players instead of 49, so the league holds **2,208 active pl
 - **Save payload.** A freshly generated league's raw snapshot is **5.01 MB against `save-payload-budget`'s 16 MB guard**, and the end-to-end test — a full season of realistic play, backing up every week, inside a 5 MB browser origin — still passes. Snapshots are gzip+base64 in storage, so 5.01 MB raw is not the stored figure. There is real headroom, but it is roughly 40% less than it was; check this number before adding anything per-player to the snapshot.
 - **Wall clock.** Every simulation test costs proportionally more. The `core` shard alone went from minutes to ~28 on this machine, and the whole canonical run took roughly 85 minutes against a 45-minute-per-shard timeout. No shard timed out, but `core` and `runtime` now have materially less margin than they did. If a shard starts reporting exit 124, that is the budget, not a hang — raise `TEST_SHARD_TIMEOUT_MS` deliberately and say so, rather than treating it as flake.
 
+## One receipt is deliberately stale — read this before treating it as a defect
+
+`.cache/test-count.json` still holds **1,415/1,415 generated 04:47**, which is the cut-off S104 session's run, not this one. The startup brief will therefore show `Tests … STALE — run`, and that is correct and honest rather than a bug.
+
+Why it is stale: the shard runner writes a green receipt only when a full `all` run exits 0, and this session's canonical run had **three self-caused studio reds on its first pass**. Those were fixed at source and the studio shard re-run green (295/295), but a re-run of one shard does not produce a whole-suite receipt. A second full `all` run was started purely to refresh the cache and **deliberately stopped after a minute**: it costs ~85 minutes, `.cache/` is gitignored, the measured canonical figure is already recorded with full provenance in `PROJECT_STATUS.testShardReceipt`, and the brief's own STALE marker is the system working rather than failing.
+
+There is no coverage gap behind it. The canonical **1,446/1,446** was measured against the source committed as `24ad30e`, and nothing under `src/` or `public/` changed after that commit — the two later commits are docs, context, reports and captures only. The individually affected studio tests were re-run after those edits (32/32).
+
+**If you want the marker gone, run `npm test` once at the top of the session** and it will write a genuine receipt. Do not hand-write `.cache/test-count.json`.
+
 ## Verification boundaries
 
 The parity decomposition, the roster-composition figures and the population counts are a **single-seed, ten-season** reading on the canonical seed 20260306, taken from `runRealismVerification({ seasons: 10 })` — the path `realism-career-regression` itself asserts on. The cross-seed statements (`+0.038 to +0.063`, `+0.102 to +0.115`, the dispersion arm's `+0.105`/`+0.111`) are two additional seeds, not a sweep. Generation-time cap legality is asserted across four seeds (20260306 / 2026 / 8121 / 4242); every other measurement in this handoff is not.
