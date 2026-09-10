@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S103 answered the parity denominator question and then refused to ship the answer at a threshold's expense. A drift statistic requires a population that exists at both ends of its window and rostered does not — a generated league starts with an empty practice squad and fills 16 slots per club over the measured decade. Shift-share on the canonical seed: within-group +0.269/season (watch) against between-group -0.197/season, summing to the +0.072 the gate asserts as on-target. Re-pointing reads 0.303/season, out-of-range rather than watch, so the population waits on the fix instead of a widened band; the finding ships gated instead, with the realism regression asserting the receipt reports verdict-changed-by-composition. A league also has an identity: staff and coaching-market seeds fell back to the start year, making every franchise byte-identical across seeds 8121/2026/4242.",
-  "nextMilestone": "Fix the active roster's position composition — normalizeRosterSlots ranks a club's whole roster by overall with no positional structure, so the quarterback room goes 64 to 195 and specialists 64 to 155 while the line falls 288 to 258 and the front seven 480 to 407, with 11.3% of quarterbacks at 90+. That is the measured candidate for both the 0.303 parity reading and the standing elite-density watch, and the parity re-point should follow it rather than precede it. Do not widen onTargetMaxAbs/watchMaxAbs and do not re-point the population a second time. Launch evidence unchanged: delivered reply-capable email, candidate-bound founder approval, authoritative lifecycle reconciliation.",
+  "currentFocus": "S104 found that the defect three sessions had been circling was one level below all of them: a league was never generated at the roster its own rules declare. ROSTER_TEMPLATE summed to 49 against a declared activeLimit of 53 and generation built no practice squad at all against a declared practiceLimit of 16, so every league in this project's history began 20 players a club below its own steady state. That is why S102's question could not be answered by choosing between two populations: rostered gained ~39% of itself mid-window and activeRosterOnly silently acquired a selection filter as an unfiltered 49 became the top 53 of 69. Generating at the declared structure, and reading it as a floor in teamNeeds as well as a ceiling in the compliance pass, takes the canonical between-group drift from -0.197 to +0.003 and the within-group term from +0.269 watch to +0.040 on-target. Three defects of the same family fell out of it: the active 53 was a leaderboard rather than a fieldable depth chart (quarterback rooms 64 to 195, line 288 to 258), both release paths were position-blind and value density strips the line first, and draft intake was uniform at 11.1% a position against demand ranging 1.9% to 18.9%. Separately, scripts/check-audit-premises.mjs -- spawned by the startup brief inside a silent catch -- did not exist, so every typed premises block in the audit history had gone unchecked with nothing to say so.",
+  "nextMilestone": "Re-derive elite density under the new roster shape. S103 named active-roster position composition as the measured candidate for both the 0.303 parity reading and the standing elite-density watch; the composition driver is now removed and the parity reading is closed, but elite density has NOT been re-measured and no claim is made about it. Do not re-implement S102's age-indexed potential decline -- it was built, measured against a matched control and reverted in S103. Do not close the distribution gate's dispersion arm by widening stdDevDrift*: its move from on-target to watch is the same artefact seen from the other side, and with the selection filter constant it reports the S91 random walk it was built to find. Do not re-point the parity population: both candidates are valid at last and rostered holds the wider margin. Launch evidence unchanged: delivered reply-capable email, candidate-bound founder approval, authoritative lifecycle reconciliation.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -26,8 +26,8 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
   "testSuiteStatus": "green",
-  "testsPassing": 1415,
-  "testsTotal": 1415,
+  "testsPassing": 1446,
+  "testsTotal": 1446,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -66,20 +66,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 960,
+  "silScore": 961,
   "silCategoriesV3": {
-    "devHealth": 96,
+    "devHealth": 97,
     "creativeAlignment": 98,
-    "momentum": 98,
+    "momentum": 100,
     "engagement": 86,
-    "processQuality": 99,
+    "processQuality": 97,
     "crossRepoCoherence": 95,
     "securityPosture": 98,
     "ecosystemIntegration": 90,
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 103,
+  "currentSession": 104,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
@@ -131,15 +131,15 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 662,
+  "silHealth": 665,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 12,
-    "failing": 0,
-    "score": 92,
+    "failing": 1,
+    "score": 83,
     "date": "2026-09-10",
-    "passing": 11,
+    "passing": 10,
     "warning": 1,
     "checks": [
       {
@@ -147,6 +147,12 @@
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
+      },
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "failing",
+        "blocking": true,
+        "detail": "HEAD 0ba047070198d86fa32dfd3c66c2d77c4d9c14e9 is not covered by live production 9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c"
       }
     ]
   },
@@ -159,7 +165,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.004,
   "entropyLastComputed": "2026-09-09",
-  "lastSessionSummary": "S100 fixes storage-safe optional feedback dismissal, canonical once-only player milestone reporting, visible and keyboard-safe news tickers, and consistent completed-audit status handling. Stable staging, production Pages and backend deployment are verified.",
+  "lastSessionSummary": "S104 generates a league at the roster its own rules declare — ROSTER_TEMPLATE summed to 49 against a declared activeLimit of 53 with no practice squad at all, so every league began 20 players a club below its own steady state. That is why neither candidate gated population was a valid drift statistic, and fixing it takes the parity gate's between-group drift from -0.197 to +0.003. The active 53 is now a fieldable depth chart rather than a leaderboard, both release paths are guarded by a count, and draft intake is proportional to demand. Two propagated scripts that were referenced but absent were written, and the general form ships as a gate: every static relative import under scripts/ must resolve.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -180,8 +186,8 @@
       "lastChecked": "2026-09-10"
     }
   ],
-  "lastSession": 103,
-  "silLastSession": 102,
+  "lastSession": 104,
+  "silLastSession": 104,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -1499,14 +1505,14 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 103,
-    "silScore": 960,
+    "session": 104,
+    "silScore": 961,
     "categories": {
-      "devHealth": 96,
+      "devHealth": 97,
       "creativeAlignment": 98,
-      "momentum": 98,
+      "momentum": 100,
       "engagement": 86,
-      "processQuality": 99,
+      "processQuality": 97,
       "crossRepoCoherence": 95,
       "securityPosture": 98,
       "ecosystemIntegration": 90,
@@ -1526,15 +1532,15 @@
       "studio"
     ],
     "counts": {
-      "core": 198,
-      "runtime": 755,
-      "sim-contract": 82,
+      "core": 245,
+      "runtime": 817,
+      "sim-contract": 83,
       "sim-realism": 1,
       "long": 5,
-      "studio": 262
+      "studio": 295
     },
-    "total": 1303,
-    "note": "S98 canonical receipt, direct exit 0: 1,303/1,303. Exact-SHA push CI separately passed 1,298/1,298 across its five configured shards, plus 55/55 Playwright cases in release promotion."
+    "total": 1446,
+    "note": "S104 canonical receipt, direct exit 0: 1,446/1,446. The studio shard went red on its first pass with three self-caused failures (a new script violating the project authority contract forbiddenFiles; two arms of the same release-note freshness defect) and was re-run green after all three were fixed at source - none flaky, sibling drift, or force-greened. The studio re-run was required in any case: this session added a test file to that shard after the full run began."
   },
   "silRollingAverages": {
     "3": 974.7,

@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-09-10 (Session 103 closeout) -->
+<!-- generated-at: 2026-09-10 (Session 104 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
-<!-- genius-authority-fingerprint: 134b32a7179383e1 -->
-<!-- session-authority: committed=S103 · SIL=S103 · status=S103 · handoff=S?; divergent=false -->
+<!-- genius-authority-fingerprint: 15db7c1418473a1e -->
+<!-- session-authority: committed=S104 · SIL=S104 · status=S104 · handoff=S?; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 103 closeout · 2026-09-10.
+> **Fast-boot brief** — generated at Session 104 closeout · 2026-09-10.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,14 +17,14 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 104 · 2026-09-10 · BUILDER MODE                         ║
+║  Session 105 · 2026-09-10 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ STALE LAST SESSION SUMMARY ══════════════════════════════════╗
-║  Expected S103; PROJECT_STATUS summary says S100.                ║
-║  S103 answered the parity denominator question and then refused  ║
-║  Repair: update PROJECT_STATUS.lastSessionSummary at closeout.   ║
+╔══ LAST SESSION (S104) - WHAT SHIPPED ══════════════════════════╗
+║  S104 generates a league at the roster its own rules declare —   ║
+║  Tests  1327/1327; six shards with explicit studio rerun         ║
+║  Deploy —                                                        ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -34,25 +34,25 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ PROJECT PROFILE ═════════════════════════════════════════════╗
-║  Profile · game · cache stale 6d · refresh required              ║
+║  Profile · game · cache stale 7d · refresh required              ║
 ║  ⚠ Lifecycle authority · local FORGE · registry SPARKED · DRIFT  ║
 ║  Policy · reconcile via signed Studio Ark; never edit sibling t  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    960/1000   ███████████████████████░   96%                     ║
+║    961/1000   ███████████████████████░   96%                     ║
 ║    SIL v3.0  ·  Avg3: 974.7  ·  Velocity 4→                      ║
 ║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend  ▇▇▇▇▇  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        96    ██████████  —        →                ║
+║    Dev Health        97    ██████████  —        →                ║
 ║    Alignment         98    ██████████  —        →                ║
-║    Momentum          98    ██████████  —        →                ║
+║    Momentum         100    ██████████  —        →                ║
 ║    Engagement        86    █████████░  —        →                ║
-║    Process Qual      99    ██████████  —        →                ║
+║    Process Qual      97    ██████████  —        →                ║
 ║    Coherence         95    ██████████  ········ →                ║
 ║    Security          98    ██████████  ········ →                ║
 ║    Ecosystem         90    █████████░  ········ →                ║
@@ -61,15 +61,15 @@
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 103 ═══════════════════════════╗
-║  Shipped:  S103 answered the parity denominator question and th  ║
+╔══ WHERE WE LEFT OFF  ·  Session 104 ═══════════════════════════╗
+║  Shipped:  S104 found that the defect three sessions had been c  ║
 ║  Tests:    1415/1415 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,674 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,337 tok/turn  ·  cache 50%  ·  135 turns to compact       ║
+║     2,708 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,354 tok/turn  ·  cache 50%  ·  133 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -108,18 +108,20 @@
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
 ║  Velocity:   ▇▇▇▇▇  4→  (last 5 sessions)                        ║
 ║  Intent:     ?% achieved last 5                                  ║
-║  Streak:     ✓ 4 consecutive achieved-intent sessions            ║
+║  Streak:     ✓ 5 consecutive achieved-intent sessions            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-09-09.json               ║
-║  Closed: 4 · Open: 0                                             ║
-║  All 4 live-premise-verified audit items are done.               ║
+║  ✓ cache source: AUDIT_2026-09-10_SESSION104.json                ║
+║                                                                  ║
+║  #6 · HIGH · last-session-summary-had-a-detector-but-no-writer   ║
+║  The startup brief has replayed S100 as 'last session' for four  ║
+║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 103 closeout · 2026-09-10*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 104 closeout · 2026-09-10*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

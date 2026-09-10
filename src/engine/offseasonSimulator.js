@@ -1,9 +1,9 @@
 import {
   CONTRACT_RULES,
   FREE_AGENCY_RULES,
+  FULL_ROSTER_TEMPLATE,
   NFL_STRUCTURE,
-  POSITION_MAX_AGE_LIMITS,
-  ROSTER_TEMPLATE
+  POSITION_MAX_AGE_LIMITS
 } from "../config.js";
 import { createDraftClass, createSyntheticPlayer } from "../domain/playerFactory.js";
 import { advanceContractYear, buildContract } from "../domain/contracts.js";
@@ -13,7 +13,7 @@ import {
   measurePotentialGapCentre,
   potentialReversionFor
 } from "../domain/potentialReversion.js";
-import { getAllTeamPlayers, getTeamPlayers, recalculateAllTeamRatings } from "../domain/teamFactory.js";
+import { getAllTeamPlayers, recalculateAllTeamRatings } from "../domain/teamFactory.js";
 import { enforceRosterAndCapCompliance, normalizeRosterSlots } from "./capCompliance.js";
 import { clamp } from "../utils/rng.js";
 
@@ -273,11 +273,39 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
   league.players = keep;
 }
 
+/**
+ * What a club must sign to stay fieldable.
+ *
+ * S104 - this measured the club's **active** roster against `ROSTER_TEMPLATE`,
+ * which is the shape a league is *generated* in, not a shape any running club
+ * is obliged to hold. Once `assignFieldableActiveRoster` began allocating the
+ * twelve discretionary slots on merit, a club's active room counts legitimately
+ * differ from the generation template - so reading the template here would have
+ * reported a permanent shortfall in whichever room lost the merit pass and sent
+ * the free-agency backstop shopping for it every single offseason. That is a
+ * new accumulator, installed by the fix for the old one.
+ *
+ * Two corrections, and the second was measured after the first got it wrong.
+ *
+ * It counts the **whole** roster rather than the active slice: a club with a
+ * fourth cornerback on its practice squad does not need to sign one off the
+ * street, and counting only the active slice made a slotting decision look like
+ * a personnel shortfall.
+ *
+ * And it reads `FULL_ROSTER_TEMPLATE`, not the fieldable minimum. Pointing it
+ * at `FIELDABLE_DEPTH[pos].min` was tried first and measured: the minimums sum
+ * to 41, so clubs restocked to 41 and nothing pulled them back up. The league
+ * drained 2,208 -> 1,905 over ten seasons, the practice squad fell from 16 per
+ * club to 6.5, and the active roster's dispersion drift went out-of-range
+ * because the top-53 filter weakened as the population it selected from shrank.
+ * That is the S103 moving-denominator defect with its sign flipped, installed
+ * by the fix for it. The floor has to be the roster a club actually carries.
+ */
 function teamNeeds(league, teamId) {
-  const roster = getTeamPlayers(league, teamId);
+  const roster = getAllTeamPlayers(league, teamId);
   const counts = {};
   for (const p of roster) counts[p.position] = (counts[p.position] || 0) + 1;
-  return Object.entries(ROSTER_TEMPLATE)
+  return Object.entries(FULL_ROSTER_TEMPLATE)
     .map(([position, need]) => ({ position, missing: Math.max(0, need - (counts[position] || 0)) }))
     .filter((x) => x.missing > 0)
     .sort((a, b) => b.missing - a.missing);

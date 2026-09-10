@@ -1,7 +1,12 @@
-import { NFL_STRUCTURE, ROSTER_TEMPLATE, TEAM_METADATA } from "../config.js";
+import { CONTRACT_RULES, NFL_STRUCTURE, ROSTER_TEMPLATE, TEAM_METADATA } from "../config.js";
 import { buildSyntheticTeamRoster, createSyntheticPlayer } from "./playerFactory.js";
+import { assignFieldableActiveRoster, capSpaceForTeam, fieldableProtectedIds } from "../engine/capCompliance.js";
+import { buildContract } from "./contracts.js";
 import { calcTeamOffenseDefense } from "./ratings.js";
 import { derivedRng } from "../utils/rng.js";
+
+/** A contract already at the minimum cannot be demoted any further. */
+const MIN_SALARY_FLOOR = CONTRACT_RULES.minSalary;
 
 /**
  * The one shape of a team's in-season record.
@@ -374,8 +379,49 @@ export function initializeLeagueRoster({ league, importedPlayers, rng }) {
     const teamPlayers = players
       .filter((player) => player.teamId === team.id && player.status === "active")
       .sort((a, b) => b.overall - a.overall);
+    // S104 - the last bare `53` in the engine, and it was also the last
+    // position-blind slotting. Generation now assigns the active roster through
+    // the same authority every subsequent season uses, so a league cannot be
+    // created in a shape the running engine would never produce.
+    // A generated club must be able to afford the roster it is generated with.
+    //
+    // S104 - pricing the roster by role (see `buildSyntheticTeamRoster`) took
+    // the canonical seed from six over-cap clubs at kickoff to one, over by
+    // 0.5M of 255M. The remaining club is not a rounding error to wave through:
+    // the baseline was zero, and "the cap binds from the first snap" is the
+    // property S89 built the compliance authority to establish.
+    //
+    // It is closed with more of the same rule rather than a new one. A club
+    // that cannot afford its roster signs another minimum deal - dearest
+    // contract outside the fieldable minimum first, since that is the one whose
+    // holder is most obviously being paid above his role. No threshold moves,
+    // no salary curve is shaved, and the loop is bounded by the number of
+    // players who could be demoted, so it either reaches legality or leaves the
+    // club visibly over and lets the compliance pass see it.
+    const affordable = fieldableProtectedIds(teamPlayers);
+    let demotions = 0;
+    while (capSpaceForTeam(league, team.id) < 0 && demotions < teamPlayers.length) {
+      const candidate = teamPlayers
+        .filter((player) => !affordable.has(player.id) && Number(player.contract?.capHit || 0) > MIN_SALARY_FLOOR)
+        .sort(
+          (a, b) =>
+            Number(b.contract?.capHit || 0) - Number(a.contract?.capHit || 0) ||
+            String(a.id).localeCompare(String(b.id))
+        )[0];
+      if (!candidate) break;
+      candidate.contract = buildContract({
+        overall: candidate.overall,
+        years: 1,
+        salary: CONTRACT_RULES.minSalary,
+        minSalary: CONTRACT_RULES.minSalary,
+        rng
+      });
+      demotions += 1;
+    }
+
+    const { activeIds } = assignFieldableActiveRoster(teamPlayers);
     teamPlayers.forEach((player, index) => {
-      player.rosterSlot = index < 53 ? "active" : "practice";
+      player.rosterSlot = activeIds.has(player.id) ? "active" : "practice";
       player.depthChartOrder = index + 1;
     });
     league.depthCharts[team.id] = buildDefaultDepthChart(teamPlayers);

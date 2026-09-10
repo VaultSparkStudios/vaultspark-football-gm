@@ -67,8 +67,27 @@ test("instant signing of a premium free agent is refused toward the market", () 
   assert.equal(result.reasonCode, "market-pursuit");
   assert.match(result.error, /market offers/i);
   // Depth-tier signing stays instant.
+  //
+  // S104 - the controlled club now begins the season with a **full** active
+  // roster, because a generated league is built at the 53 the rules declare
+  // rather than the 49 it used to be built at. So a slot has to be opened
+  // first, exactly as a GM would open one. This assertion is about the signing
+  // path staying instant for the depth tier; it was never about the roster
+  // limit failing to bind, and before S104 it only passed because the limit had
+  // four spare slots to hide in.
   const depth = ensureDepthFa(session);
   assert.ok(depth, "a depth free agent exists");
+  const outgoing = session.league.players.find(
+    (p) =>
+      p.status === "active" &&
+      p.teamId === "BUF" &&
+      (p.rosterSlot || "active") === "active" &&
+      p.id !== depth.id
+  );
+  assert.ok(outgoing, "the controlled club has someone to release");
+  outgoing.teamId = "FA";
+  session.rebuildLookupIndexes();
+
   const signed = session.signFreeAgent({ teamId: "BUF", playerId: depth.id });
   assert.equal(signed.ok, true, JSON.stringify(signed));
 });

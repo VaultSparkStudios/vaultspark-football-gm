@@ -150,9 +150,23 @@ test("accepting an offer commits the real trade with fresh-fingerprint disciplin
 // genuinely seed-sensitive — of twenty seeds scanned, three reproduced it and
 // two produced no offer inside fourteen weeks at all — so a future change that
 // moves it again should re-scan rather than assume the engine broke.
+//
+// S104 — re-scanned again, for the second time, and for a legitimate reason of
+// the same kind. 620097 now surfaces at week 7. This session generates leagues
+// at the roster structure the rules declare (53 active plus a full 16-man
+// practice squad, against a previous 49 with no practice squad), so every
+// freshly generated league has 41% more players and a different roster shape,
+// and rival front offices therefore reach different trade decisions on
+// different weeks. Existing saves are untouched. Seeds 620081-620120 were
+// re-scanned against the live engine: **620092 surfaces its offer at week 13,
+// two past the declared Week 11 deadline** — the widest margin available, which
+// is why it was chosen over 620094 and 620100 at week 12. The reproduction rate
+// is unchanged at three seeds in forty, with eight producing no offer inside
+// fourteen weeks, so this remains seed-sensitive and a future move should be
+// re-scanned rather than treated as a regression.
 test("negative control: without the window guard the fixture yields an unacceptable offer", () => {
-  const { session, offer } = sessionWithOffer(620097);
-  assert.ok(offer, "seed 620097 must still produce a pending offer at all");
+  const { session, offer } = sessionWithOffer(620092);
+  assert.ok(offer, "seed 620092 must still produce a pending offer at all");
 
   const deadlineWeek = Number(session.getLeagueSettings().tradeDeadlineWeek);
   assert.ok(

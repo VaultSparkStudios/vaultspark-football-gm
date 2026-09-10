@@ -52,13 +52,18 @@ test("the distributional gate reads its ceiling and watch line from the sourced 
  * ------------------------------------------------------------------ */
 
 test("activeRosterOnly and practiceSquad partition rostered with no double counting", () => {
-  // A freshly generated league carries 49 players a club (below the 53-man
-  // active floor), all defaulted to `rosterSlot: "active"` — the practice
-  // squad only populates later, once camp cuts / roster moves run. So this
-  // is a hand-built fixture, not `createSession`, to pin the partition
-  // property against a league that actually has both populations present
-  // (as the live decade probe below does at season-end: 1681 active / 496
-  // practice, seed 20260306).
+  // A hand-built fixture rather than `createSession`, so the partition property
+  // is pinned against constructed counts rather than against whatever a
+  // generated league happens to hold.
+  //
+  // S104 — the original reason for hand-building it has gone away, and that is
+  // worth recording rather than deleting. A generated league used to carry 49
+  // players a club, all defaulted to `rosterSlot: "active"`, with the practice
+  // squad populating only later once camp cuts ran; there was no league with
+  // both populations present to test against at season zero. Leagues are now
+  // generated at 53 active plus a full 16-man practice squad, so that is no
+  // longer true. The fixture stays hand-built regardless: a partition property
+  // should be asserted on counts the test controls.
   const league = {
     teams: [{ id: "BUF" }, { id: "MIA" }],
     players: [

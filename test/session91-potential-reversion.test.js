@@ -221,10 +221,13 @@ test("camp cuts hold the cap against the league that comes to rest, not an inter
   const league = session.league;
   const target = league.teams.find((team) => team.id !== session.controlledTeamId);
 
-  // A freshly generated league carries 49 players a club, which is BELOW the
-  // 53-man floor the trim loop refuses to cut past — so the fixture must first
-  // put the club clear of that floor, or it would be testing the trapped path
-  // rather than the enforcement path. Bodies are borrowed from a third club.
+  // S104 — a freshly generated league now carries the full 69 a club, so this
+  // fixture no longer NEEDS to borrow bodies to clear the 53-man floor the trim
+  // loop refuses to cut past. The borrowing is kept anyway: it puts the club far
+  // enough above the floor that this stays a test of the enforcement path with
+  // room to spare, which is what it was written to be. (Before S104 a generated
+  // club held 49 — below the floor — and without donors this test would have
+  // been measuring the trapped path while claiming to measure enforcement.)
   const donorId = league.teams.find((team) => team.id !== target.id && team.id !== session.controlledTeamId).id;
   const donors = league.players.filter((player) => player.teamId === donorId && player.status === "active").slice(0, 12);
   for (const player of donors) player.teamId = target.id;

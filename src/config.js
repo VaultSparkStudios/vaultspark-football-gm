@@ -52,18 +52,89 @@ export const POSITION_BUCKETS = {
   special: ["K", "P"]
 };
 
+/**
+ * The active roster a club is generated with, position by position.
+ *
+ * S104 — this summed to **49**, four short of `ROSTER_STRUCTURE.activeLimit`
+ * and twenty short of the 69 a club actually carries. A generated league
+ * therefore started 20 players per club below its own steady state and spent
+ * the next decade filling the gap: rostered population 1,568 -> 2,178 on the
+ * canonical seed, with the practice squad going 0 -> 495.
+ *
+ * That is not a cosmetic starting condition. It is the reason **neither** of
+ * this project's two candidate gated populations was a valid drift statistic:
+ *
+ *   - `rostered` gains ~39% of itself over the window, all of it ~10 points
+ *     below the roster it is averaged into (the S103 finding);
+ *   - `activeRosterOnly` is an *unfiltered* 49 at the start of the window and
+ *     the **top 53 of 68** at the end, so it silently acquires a selection
+ *     filter it did not have — the same defect mirrored, and the reason the
+ *     re-point read +0.303/season and was correctly refused in S103.
+ *
+ * A drift statistic requires a population that exists at both ends of its
+ * window. Generating the league at 53 active plus a full 16-man practice squad
+ * makes both populations exist at both ends, which is what lets the parity
+ * target be re-pointed on measurement rather than paid for with a threshold.
+ *
+ * The counts sum to exactly `ROSTER_STRUCTURE.activeLimit` and every one of
+ * them lies inside its `FIELDABLE_DEPTH` band; `test/session104-fieldable-depth.test.js`
+ * binds both facts so this table cannot drift out of the structure it fills.
+ */
 export const ROSTER_TEMPLATE = {
-  QB: 2,
+  QB: 3,
   RB: 4,
   WR: 6,
   TE: 3,
   OL: 9,
   DL: 8,
   LB: 7,
-  DB: 8,
+  DB: 11,
   K: 1,
   P: 1
 };
+
+/**
+ * The 16-man practice squad a club is generated with.
+ *
+ * Sums to `ROSTER_STRUCTURE.practiceLimit`. No kicker and no punter: a club
+ * carries one of each and does not develop a second, which is also why those
+ * two rooms are pinned at `{ min: 1, max: 1 }` in `FIELDABLE_DEPTH`.
+ */
+export const PRACTICE_SQUAD_TEMPLATE = {
+  QB: 1,
+  RB: 2,
+  WR: 3,
+  TE: 1,
+  OL: 3,
+  DL: 3,
+  LB: 2,
+  DB: 1
+};
+
+/**
+ * The full roster a club is expected to carry, position by position.
+ *
+ * S104 - `ROSTER_STRUCTURE` was enforced only as a **ceiling**. Nothing was a
+ * floor, so a club that lost players to retirement and cap cuts simply carried
+ * fewer, and the league drained: measured 2,208 -> 1,905 rostered players over
+ * ten seasons on the canonical seed with the practice squad falling from 16 per
+ * club to 6.5. A one-sided limit is not a roster rule, and a draining practice
+ * squad reintroduces exactly the moving denominator this session exists to
+ * remove - it is the S103 defect with its sign flipped.
+ *
+ * So the same declared structure is now read from both sides: the compliance
+ * pass will not let a club exceed it, and `teamNeeds` will not let a club sit
+ * below it. It sums to `activeLimit + practiceLimit`, which is what "a club
+ * carries a full roster" means.
+ */
+export const FULL_ROSTER_TEMPLATE = Object.freeze(
+  Object.fromEntries(
+    Object.keys(ROSTER_TEMPLATE).map((position) => [
+      position,
+      ROSTER_TEMPLATE[position] + (PRACTICE_SQUAD_TEMPLATE[position] || 0)
+    ])
+  )
+);
 
 export const PLAYER_ATTRIBUTE_KEYS = {
   physical: ["speed", "strength", "agility", "acceleration", "jumping"],
@@ -137,6 +208,56 @@ export const ROSTER_STRUCTURE = {
   activeLimit: 53,
   practiceLimit: 16
 };
+
+/**
+ * The fieldable depth chart — what the active 53 has to *look* like.
+ *
+ * S104. `ROSTER_STRUCTURE` bounds how many players a club may carry; nothing
+ * bounded *which* players. Every seam that decides membership of the active
+ * roster ranked by a position-blind scalar: `normalizeRosterSlots` labelled the
+ * top 53 by overall, the roster-limit cut released the tail by overall, and the
+ * cap cut released by value density (overall per dollar of cap hit). None of
+ * them knew what a football team has to put on the field.
+ *
+ * Those scalars are not neutral with respect to position. A quarterback or a
+ * kicker on a rookie deal has enormous overall-per-dollar; a starting left
+ * tackle has very little. So the cap cut strips linemen first and keeps
+ * specialists, and the overall ranking then promotes the survivors. Measured
+ * over ten seasons on the canonical seed, the league's quarterback rooms went
+ * 64 -> 195 players and its specialists 64 -> 155, while the offensive line
+ * fell 288 -> 258 and the front seven 480 -> 407 — and 11.3% of the quarterback
+ * population sat at 90+ overall. That is a roster no club could field, and it
+ * inflates every mean measured on the active roster for a reason that has
+ * nothing to do with players developing: the denominator is quietly refilling
+ * itself with the highest-rated, cheapest rooms in the sport.
+ *
+ * Both bounds are load-bearing and they are declared together on purpose:
+ *
+ *   - **`min`** is what the club must dress. It is protected in the release
+ *     paths too, so trimming to legality can never leave a club unable to field
+ *     an offensive line.
+ *   - **`max`** is what stops the drift. A minimum alone does not: nothing in a
+ *     minimum prevents a sixth quarterback from out-rating a fourth cornerback
+ *     and taking the slot, which is exactly how the room grew.
+ *
+ * The minimums sum to 41 and the maximums to 59, so the declared 53 sits
+ * strictly inside the feasible band with 12 slots left for a club to allocate
+ * on merit. `test/session104-fieldable-depth.test.js` binds that arithmetic to
+ * `ROSTER_STRUCTURE.activeLimit` so neither constant can drift out of the
+ * other's reach — the failure mode `CONTRACT_RULES.maxSalary` shipped for years.
+ */
+export const FIELDABLE_DEPTH = Object.freeze({
+  QB: Object.freeze({ min: 2, max: 3 }),
+  RB: Object.freeze({ min: 3, max: 5 }),
+  WR: Object.freeze({ min: 5, max: 7 }),
+  TE: Object.freeze({ min: 2, max: 4 }),
+  OL: Object.freeze({ min: 8, max: 10 }),
+  DL: Object.freeze({ min: 6, max: 9 }),
+  LB: Object.freeze({ min: 5, max: 8 }),
+  DB: Object.freeze({ min: 8, max: 11 }),
+  K: Object.freeze({ min: 1, max: 1 }),
+  P: Object.freeze({ min: 1, max: 1 })
+});
 
 // Hard upper bounds for active player age by position.
 // Players can play through their max-age season and are forced out once they exceed it.

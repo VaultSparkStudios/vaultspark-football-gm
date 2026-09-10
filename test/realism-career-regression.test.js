@@ -148,18 +148,47 @@ test("a deterministic decade satisfies progression parity and finite-number inte
     "the active-roster contrast must be measured, not omitted"
   );
 
-  // S103 — and the reason that contrast exists is now a machine-checked fact
-  // rather than a comment. `compositionShift` decomposes this gate's own blended
-  // mean into development and denominator movement, and reports when the two
-  // disagree about the verdict. On this path they do: blended +0.072 `on-target`
-  // sitting on top of a within-group +0.269 `watch`, with the practice squad
-  // arriving from 0% of the denominator to 22.7% of it.
+  // S104 — the denominator stopped moving, so this block now asserts the
+  // opposite of what it asserted in S103, and that inversion is the finding.
   //
-  // This assertion is the point of the whole item. S103 implemented the re-point
-  // to `activeRosterOnly`, measured it at 0.303/season — `out-of-range`, not
-  // `watch` — and reverted rather than weaken a threshold to land it. What
-  // survives is that the gate can no longer report `on-target` without also
-  // reporting, in the same receipt, that its denominator moved underneath it.
+  // S103 built `compositionShift` to stop this gate reporting `on-target` while
+  // its verdict was actually being produced by its own denominator: the
+  // practice squad arrived from 0% of the rostered population to 22.7% of it
+  // across the measured window, contributing a between-group −0.197/season that
+  // cancelled a within-group +0.269 `watch` into a blended +0.072 `on-target`.
+  // S103 could not fix it — re-pointing at `activeRosterOnly` read 0.303/season,
+  // `out-of-range` — so it shipped the finding as a gated fact instead.
+  //
+  // The cause was never the choice of population. A generated league was built
+  // at 49 players a club with an EMPTY practice squad and filled to 69 over the
+  // following decade, so `rostered` gained 39% of itself mid-window and
+  // `activeRosterOnly` acquired a selection filter it did not start with. S104
+  // generates the league at the structure the rules declare — 53 active plus a
+  // full 16-man practice squad — and both populations now exist at both ends.
+  // Measured on this same call:
+  //
+  //     practice-squad weight   23.2% -> 22.7%   (was 0% -> 22.7%)
+  //     between-group drift     +0.003/season    (was -0.197)
+  //     within-group drift      +0.040 on-target (was +0.269 watch)
+  //     blended drift           +0.044 on-target
+  //     activeRosterOnly        +0.107 on-target (was +0.303 out-of-range)
+  //
+  // So the gate's two terms now agree about the verdict, and the guard reports
+  // `development-dominated` rather than `verdict-changed-by-composition`.
+  //
+  // **The detector is still proved to fire**, and it has to be — a guard that
+  // only ever reports the healthy state proves nothing. Its negative controls
+  // are fixture-driven and live in `test/session102-gated-population.test.js`
+  // ("negative control: the blended denominator reports a drift the gated one
+  // does not", and "a fixture with no practice squad measures exactly what it
+  // always did"), which construct the pre-S104 shape explicitly rather than
+  // relying on the canonical league to stay broken.
+  //
+  // The re-point S103 deferred is deliberately still not taken. `rostered` is
+  // now a valid drift statistic — it exists at both ends of its window — and
+  // reads well inside `onTargetMaxAbs`, so there is no measured reason left to
+  // move a declared population. Moving it would trade a comfortable margin for
+  // a tighter one to no end.
   const shift = report.progression.compositionShift;
   assert.equal(shift.gated, false);
   assert.ok(
@@ -175,21 +204,41 @@ test("a deterministic decade satisfies progression parity and finite-number inte
   );
   assert.equal(
     shift.status,
-    "verdict-changed-by-composition",
-    `this gate's on-target verdict is produced by its denominator moving, and the receipt must say so: ${JSON.stringify(shift)}`
+    "development-dominated",
+    `this gate's verdict must be produced by development, not by its denominator: ${JSON.stringify(shift)}`
   );
   assert.equal(shift.blendedWouldClassifyAs, "on-target");
-  assert.notEqual(
+  assert.equal(
     shift.withinGroupWouldClassifyAs,
     "on-target",
-    "the league the GM competes in is not on-target, and that is the finding"
+    "the league the GM competes in must agree with the gate that measures it"
   );
+  assert.ok(
+    Math.abs(shift.betweenGroupAnnualDrift) <= 0.02,
+    `the denominator must be holding still: ${JSON.stringify(shift)}`
+  );
+
   const practice = shift.groups.find((group) => group.group === "practiceSquad");
   assert.ok(practice, JSON.stringify(shift.groups));
-  assert.equal(practice.startWeightPct, 0, "the practice squad starts empty — that is why this denominator moves");
+  // The property that makes this gate's statistic meaningful at all: the
+  // practice squad is a real, roughly constant share of the population at both
+  // ends of the window, rather than something that arrives during it.
   assert.ok(
-    practice.endWeightPct > 15,
-    `and it fills to roughly a quarter of the denominator: ${JSON.stringify(practice)}`
+    practice.startWeightPct > 15,
+    `the practice squad must exist at the START of the window: ${JSON.stringify(practice)}`
+  );
+  assert.ok(
+    Math.abs(practice.endWeightPct - practice.startWeightPct) <= 5,
+    `and must hold roughly that share at the end: ${JSON.stringify(practice)}`
+  );
+
+  // The S103 contrast, re-measured: pointing this target at the active roster
+  // would now classify on-target too. Recorded so that if it ever drifts back
+  // toward the 0.303 that forced S103's deferral, this test says so.
+  assert.equal(
+    report.progression.activeRosterMeanOverallDrift.wouldClassifyAs,
+    "on-target",
+    JSON.stringify(report.progression.activeRosterMeanOverallDrift)
   );
 
   assert.equal(report.numericIntegrity.status, "pass", JSON.stringify(report.numericIntegrity));

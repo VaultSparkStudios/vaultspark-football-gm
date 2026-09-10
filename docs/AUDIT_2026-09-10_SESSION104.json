@@ -1,0 +1,412 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-10",
+  "session": 104,
+  "agent": "claude-code",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "source": "Live code plus executed engine measurement: ten-season runs of runRealismVerification on the canonical seed 20260306 and on seeds 2026 / 8121 / 4242, read against the roster structure the rules declare.",
+    "itemsRanked": 8,
+    "combinedPriority": 172,
+    "verificationNote": "Canonical Node 1,446/1,446 across six shards (core 245, runtime 817, sim-contract 83, sim-realism 1, long 5, studio 295), up from 1,428/1,428 in S103. The studio shard went red on its first pass with three self-caused failures and was re-run green after all three were fixed at source: a new script that violated context/PROJECT_AUTHORITY_CONTRACT.json's forbiddenFiles (deleted, not allowlisted), and two arms of the same release-note freshness defect on public/status.html. None was flaky, sibling drift, or force-greened. Engine measurements are ten-season runs of runRealismVerification on the canonical seed 20260306, with cross-seed statements on seeds 2026/8121/4242 and generation-time cap legality asserted across four seeds."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product; game-loop payoff, truthful feedback, static-host safety and measured release readiness",
+    "staging": "Stable Cloudflare staging before authorized main promotion and production deployment",
+    "source": "context/PROJECT_STATUS.json, context/LATEST_HANDOFF.md and live deployment receipts"
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "HIGH",
+      "category": "Feature depth; simulation truth; measurement validity",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 6,
+      "priority": 30,
+      "slug": "league-generated-below-its-own-roster-structure",
+      "title": "A generated league starts 20 players a club below the structure its own rules declare",
+      "status": "implemented",
+      "premise": "ROSTER_TEMPLATE sums to 49 against a declared activeLimit of 53, and generation builds no practice squad at all against a declared practiceLimit of 16. A club is generated with 49 of the 69 players the rules require it to carry and fills the gap over the following decade, which is why neither candidate gated population was a valid drift statistic: rostered gains ~39% of itself mid-window, and activeRosterOnly silently acquires a selection filter (an unfiltered 49 becomes the top 53 of 69).",
+      "premises": [
+        {
+          "claim": "The active roster template does not fill the declared active limit",
+          "adapter": "grep",
+          "target": "src/config.js",
+          "pattern": "export const PRACTICE_SQUAD_TEMPLATE",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Raise ROSTER_TEMPLATE to sum to activeLimit."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Generate the declared 53 active plus a declared 16-man practice squad, and bind both tables to ROSTER_STRUCTURE by test so neither constant can drift out of the other's reach."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Read the same declared structure from both sides — FULL_ROSTER_TEMPLATE as a floor in teamNeeds as well as a ceiling in the compliance pass — so a club neither exceeds nor drains below the roster it is supposed to carry, and re-measure the parity decomposition to confirm the denominator has stopped moving."
+        }
+      },
+      "executionEvidence": "ROSTER_TEMPLATE raised to sum to activeLimit and PRACTICE_SQUAD_TEMPLATE added summing to practiceLimit, both bound to ROSTER_STRUCTURE by test. FULL_ROSTER_TEMPLATE reads the same structure as a floor in teamNeeds. Measured on the canonical seed over ten seasons: rostered population 1568->2178 becomes 2208->2183, practice weight 0%->22.7% becomes 23.2%->22.7%, between-group drift -0.197 becomes +0.003, within-group +0.269 watch becomes +0.040 on-target, activeRosterOnly +0.303 out-of-range becomes +0.107 on-target. realism-career-regression asserts the post-fix decomposition and that the composition guard reports development-dominated."
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "Feature depth; game-loop credibility; gamification",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 7,
+      "priority": 28,
+      "slug": "active-roster-is-a-leaderboard-not-a-depth-chart",
+      "title": "The active 53 is chosen by a position-blind ranking, so clubs dress six quarterbacks and four kickers",
+      "status": "implemented",
+      "premise": "normalizeRosterSlots labels the top 53 of a club's roster by overall with no positional structure. Overall is not comparable across positions — quarterbacks and specialists rate several points above a league mean by construction — so a pure ranking promotes them and demotes the rooms that decide games. Measured over ten seasons on the canonical seed: quarterback rooms 64 -> 195 players and specialists 64 -> 155, while the offensive line falls 288 -> 258 and the front seven 480 -> 407, with 11.3% of quarterbacks at 90+ overall.",
+      "premises": [
+        {
+          "claim": "No fieldable depth structure bounds active-roster membership",
+          "adapter": "grep",
+          "target": "src/config.js",
+          "pattern": "export const FIELDABLE_DEPTH",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Declare a per-position minimum for the active roster."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Declare FIELDABLE_DEPTH with BOTH a min and a max per room and select the active roster in three passes — minimums, then merit bounded by each room's ceiling, then legality — because a minimum alone cannot stop a sixth quarterback out-rating a fourth cornerback for the slot."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "Export the selection as a pure function so the property is assertable on a roster without simulating a decade, and prove it with an explicit negative control that reproduces the pre-fix ranking and shows the two rules disagree."
+        }
+      },
+      "executionEvidence": "FIELDABLE_DEPTH declares min and max per room; assignFieldableActiveRoster allocates in three passes (minimums, merit bounded by ceiling, legality) and is exported pure. session104-fieldable-depth asserts the bands on a synthetic roster shaped like the measured defect, with an explicit negative control computing the pre-fix top-53-by-overall rule and asserting the two rules disagree, plus a generated-league assertion that all 32 clubs dress inside every band."
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Simulation truth; economy integrity",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 24,
+      "slug": "release-paths-are-position-blind",
+      "title": "Both release paths can cut a club below a roster it could field, and value density strips the line first",
+      "status": "implemented",
+      "premise": "The roster-limit cut releases the tail by overall and the cap cut releases by value density (overall per dollar of cap hit). Neither scalar is position-neutral: a quarterback or kicker on a rookie deal has enormous overall-per-dollar and a starting left tackle has very little, so the club that has to get legal does it by cutting linemen, every time.",
+      "premises": [
+        {
+          "claim": "The release paths have no fieldability guard",
+          "adapter": "grep",
+          "target": "src/engine/capCompliance.js",
+          "pattern": "export function selectReleasable",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Protect each club's best min players at every position from release."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "Guard a COUNT rather than a list of people — protecting individuals is a no-trade clause, not a fieldability rule, and measurably left a club $27.8M over the cap reporting itself trapped while holding eleven untouchable linemen."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "Apply the same count guard to both release paths and prove it with a negative control that reproduces the pre-fix cap loop on a clone and shows it really does leave the club unfieldable."
+        }
+      },
+      "executionEvidence": "selectReleasable guards a count and is applied to both the roster-limit cut and the cap cut. Asserted three ways: the S91 camp-cuts fixture reaches legality with stillOverCap empty and stays fieldable; the guard blocks a cut at the minimum and permits the one above it; and a negative control reproduces the pre-S104 cap loop on a structuredClone and confirms it leaves the club below a fieldable line."
+    },
+    {
+      "rank": 4,
+      "tier": "HIGH",
+      "category": "Feature depth; simulation truth; long-run calibration",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 22,
+      "slug": "draft-intake-uniform-against-nonuniform-demand",
+      "title": "Every position receives 11.1% of every draft class while demand ranges 1.9% to 18.9%",
+      "status": "implemented",
+      "premise": "createDraftClass sampled rng.pick over the nine drafted positions, so intake was uniform while a club's demand for them is ROSTER_TEMPLATE-shaped. Intake that does not match demand does not equilibrate — it accumulates on one side and starves the other, monotonically, for as long as the league runs, and the over-supplied rooms are exactly the highest-rated ones. Punters were excluded from the draft entirely while every club needs one, leaving the emergency-depth signing path as the only route to a punter.",
+      "premises": [
+        {
+          "claim": "Draft position selection is an unweighted pick",
+          "adapter": "grep",
+          "target": "src/domain/playerFactory.js",
+          "pattern": "export const DRAFT_POSITION_WEIGHTS",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Include punters in the drafted positions."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Weight the draw by the declared roster template so intake is proportional to demand, using the RNG's existing weightedPick so exactly one value is drawn per prospect and a seeded league's RNG position is unchanged in count."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "Assert the produced class mix against the declared demand, with a negative control measured against the share the pre-fix uniform draw actually produced rather than against an idealized uniform that never existed."
+        }
+      },
+      "executionEvidence": "DRAFT_POSITION_WEIGHTS derives from ROSTER_TEMPLATE and draws via the RNG's existing weightedPick, one value per prospect. A 4096-prospect class on a fixed seed matches declared demand within 2 percentage points at every position, with a negative control measured against the share the pre-fix uniform draw actually produced (punter excluded) rather than an idealised uniform that never existed."
+    },
+    {
+      "rank": 5,
+      "tier": "HIGH",
+      "category": "Feedback truth; observability; speed/organization",
+      "effortHours": 1.5,
+      "impact": 6,
+      "innovation": 5,
+      "priority": 20,
+      "slug": "premise-decay-check-spawns-a-script-that-does-not-exist",
+      "title": "The brief's audit premise-decay step spawns a file that is not in the repository, inside a silent catch",
+      "status": "implemented",
+      "premise": "scripts/lib/brief-preflight.mjs spawns scripts/check-audit-premises.mjs and the script does not exist anywhere in the repo. The spawn sits in try { … } catch { /* non-fatal */ }, so a missing script and a clean run are the same observation from outside: .cache/audit-premise-decay.json has never been written, the brief's SIGNALS row has never appeared, and every typed premises block in docs/AUDIT_*.json has never been checked against the code it describes. Verified during implementation: the preflight module could not even be imported, because it also statically imports ../check-last-session-summary.mjs, which is likewise absent — so the spawn had never executed at all, and the whole module was dead. Both are covered here; the second defect is ranked separately at rank 6 because it has its own live user-visible symptom.",
+      "premises": [
+        {
+          "claim": "The premise checker the brief preflight spawns is absent",
+          "adapter": "file-exists",
+          "target": "scripts/check-audit-premises.mjs",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Delete the dead spawn from brief-preflight."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Write the checker the preflight already expects, emitting exactly the fields it destructures, and keep it advisory — a stale audit must not block a brief render, but advisory has to mean 'reports a problem without blocking', not 'reports nothing'."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "Reuse the shared isAuditComplete vocabulary rather than declaring a fourth copy of it, treat an unobservable premise as a third outcome so a renamed target can never read as 'the defect is fixed', prove the gate can actually fire with a negative control on an item nobody acted on, and ship the GENERAL form as a test: every static relative import under scripts/ must resolve, which catches this whole class by reading rather than by executing."
+        }
+      },
+      "executionEvidence": "scripts/check-audit-premises.mjs written; reuses isAuditComplete; treats an unobservable premise as a third outcome. Run across all 83 committed sidecars: zero unverified, zero open decay. Nine tests in session104-audit-premise-decay, registered in the studio shard, including a negative control proving an identical contradicted premise is decay on an untouched item and confirmation on a shipped one, and a spawned --strict run that exits 1 on a decayed fixture while the default mode exits 0."
+    },
+    {
+      "rank": 6,
+      "tier": "HIGH",
+      "category": "Feedback truth; observability; startup accuracy",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 4,
+      "priority": 18,
+      "slug": "last-session-summary-had-a-detector-but-no-writer",
+      "title": "The startup brief has replayed S100 as 'last session' for four sessions, because the writer its own remedy names was never written",
+      "status": "shipped-corrected",
+      "premise": "scripts/lib/brief-blocks.mjs renders a STALE LAST SESSION SUMMARY block whenever PROJECT_STATUS.lastSessionSummary does not name the expected session, and scripts/lib/doctor-remedies.mjs maps the last-session-summary check to check-last-session-summary.mjs --fix. That script does not exist, and scripts/lib/brief-preflight.mjs imports { fix } from it STATICALLY — so the absence made the whole preflight module un-importable, and since nothing in this repo imports the preflight, the ERR_MODULE_NOT_FOUND was never seen. The comment beside the remedy states the defect exactly: lastSessionSummary had a detector but no writer, so it silently went stale. Live state: lastSessionSummary describes S100 while four further sessions have shipped.",
+      "premises": [
+        {
+          "claim": "The writer the doctor remedy names does not exist",
+          "adapter": "file-exists",
+          "target": "scripts/check-last-session-summary.mjs",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Hand-edit lastSessionSummary at closeout and move on."
+        },
+        "L2": {
+          "effortHours": 0.75,
+          "recipe": "Write the module both call sites already name — WRONG, and the studio shard says so. context/PROJECT_AUTHORITY_CONTRACT.json names scripts/check-last-session-summary.mjs in forbiddenFiles, whose declared purpose is to fail closed when generic Studio propagation erases project-specific authority; the project declares exactly three permitted statusMutators and a generic writer would be a fourth mutator of PROJECT_STATUS.json. It was written, caught, and removed rather than allowlisted."
+        },
+        "L3": {
+          "effortHours": 1,
+          "recipe": "Write the summary at closeout by hand, which IS this project's declared authority for it; reconcile currentSession, which S103 left one behind, so the brief's currentSession - 1 arithmetic is satisfied by real values rather than by coincidence; document the closeout ordering the two renderers silently depend on; and encode the true import invariant instead of the naive one — every static relative import under scripts/ resolves UNLESS its target is contractually forbidden, in which case the importing module must have no importer, so wiring brief-preflight up trips a test rather than failing at runtime."
+        }
+      },
+      "executionEvidence": "CORRECTED. The writer was written and then deleted: test/project-authority-contract.test.js failed it because the path is named in PROJECT_AUTHORITY_CONTRACT.json under forbiddenFiles and the project declares exactly three permitted statusMutators. Closed instead by this project's own authority - lastSessionSummary written at closeout and currentSession reconciled - after which the four-session-stale check reports green on true values. The closeout ordering the two renderers silently depend on is documented, and the import gate encodes the true invariant rather than the one that would have required creating the forbidden file."
+    },
+    {
+      "rank": 7,
+      "tier": "HIGH",
+      "category": "Public surface truth; player-facing communication",
+      "effortHours": 0.75,
+      "impact": 6,
+      "innovation": 3,
+      "priority": 16,
+      "slug": "public-status-page-stopped-tracking-the-product",
+      "title": "The public status page owes players two sessions of release notes, and the tolerance hid the first",
+      "status": "implemented",
+      "premise": "check-public-truth's release-note freshness gate counts sessions rather than days and tolerates exactly one, because the note lands at closeout — one behind is in flight, two behind is a page that stopped tracking the product. The newest note on public/status.html is dated 2026-09-09, which resolves to session 102. S103 shipped without a player-facing note and the gate could not see it, because 103 minus 102 sat exactly on the tolerance; the debt only became visible when S104 pushed it to two.",
+      "premises": [
+        {
+          "claim": "The newest published release note predates the shipped product by more than the tolerance",
+          "adapter": "grep",
+          "target": "public/status.html",
+          "pattern": "2026-09-10 — Every club fields a real roster",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Add a dated heading so the gate resolves to the current session."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Write a real player-facing note for what actually shipped, in the page's existing plain-language register, covering what a player will notice rather than what the engine changed."
+        },
+        "L3": {
+          "effortHours": 0.75,
+          "recipe": "Cover the parts of the roster work a player can see and verify — clubs dressing a legal depth chart instead of six quarterbacks and four kickers, new leagues starting at a full roster with a practice squad, the draft supplying the positions clubs need, and the cap binding from the first snap — without importing any internal vocabulary the public-truth gate forbids."
+        }
+      },
+      "executionEvidence": "public/status.html carries a dated player-facing note for 2026-09-10 covering the roster work in the page's existing plain-language register. check-public-truth exits 0 (42 engine systems verified, 102 shipped surfaces scanned); session94-public-surface's freshness gate and public-compliance's truth gate both pass, with their own negative controls intact."
+    },
+    {
+      "rank": 8,
+      "tier": "HIGH",
+      "category": "Economy integrity; second-order defect introduced by this session's own fix",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 5,
+      "priority": 14,
+      "slug": "generated-league-cannot-afford-its-own-roster",
+      "title": "Filling the declared roster put every club over the cap before a snap was played",
+      "status": "implemented",
+      "premise": "Every generated player was paid marketSalaryForOverall, which was survivable at 49 players a club and is not at 69. Adding the declared practice squad on ordinary market contracts put all 32 clubs over a $255M cap at kickoff — median space -$50.1M, worst -$84.7M — against a measured baseline of zero over-cap clubs and $43.4M median headroom. The compliance pass would have laundered it by cutting twenty players per club in the first offseason, so nothing would have gone red; the league would simply have started as fiction.",
+      "premises": [
+        {
+          "claim": "Generation prices every player at the market curve regardless of role",
+          "adapter": "grep",
+          "target": "src/domain/playerFactory.js",
+          "pattern": "function minimumDeal",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Shave the salary curve until the roster fits under the cap."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Reject L1 — that is moving a threshold until the number fits, and the curve is bound to CONTRACT_RULES.maxSalary by test. Price by ROLE instead: a real roster pays its starters and key backups and fills the rest at the league minimum, and FIELDABLE_DEPTH[pos].min is already this project's declaration of who those players are."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "Close the residual with more of the same rule rather than a new one — a club that still cannot afford its roster signs another minimum deal, dearest contract outside the fieldable minimum first — and assert cap legality at generation across four seeds rather than on the canonical one alone."
+        }
+      },
+      "executionEvidence": "Roster priced by role at generation (starters and key backups on market deals, depth beyond FIELDABLE_DEPTH[pos].min at the league minimum) plus a bounded generation-time affordability pass. Asserted across seeds 20260306/2026/8121/4242 that every generated club has non-negative cap space before a snap is played."
+    }
+  ],
+  "gameLoopReview": {
+    "loopTightness": 8,
+    "progression": 7,
+    "sessionEngagement": 7,
+    "retention": 5,
+    "soulFidelity": 8,
+    "evidence": "Code and executed-engine judgments only. The roster composition fix is the first change in several sessions that alters what a club looks like on screen — clubs now dress a fieldable depth chart rather than six quarterbacks — but no real-player cohort evidence exists and none was manufactured."
+  },
+  "axisSurvey": {
+    "feature-depth": [
+      "Fieldable depth chart and role-priced generation ranked; a positional-scheme/formation system rejected as a far larger design change than the defect requires."
+    ],
+    "new-innovative-features": [
+      "Demand-weighted draft intake ranked; a scouting-error model deferred — it would sit on top of an intake distribution that was itself wrong."
+    ],
+    "ai-integration": [
+      "No item ranked. CPU roster construction now inherits the same fieldable authority as the player's club, which was the honest fix; a hosted generative GM was rejected without demonstrated need or budget authorization."
+    ],
+    "feedback-loop": [
+      "Parity decomposition now reports development-dominated on a denominator that holds still; the distribution gate's dispersion arm moving to watch is published as an honest cost rather than absorbed."
+    ],
+    "gamification-engagement": [
+      "Clubs dressing a legal depth chart ranked as loop credibility; no new reward surface added on unmeasured retention."
+    ],
+    "ui-ux": [
+      "No item ranked this session; the defects were all below the render layer."
+    ],
+    "security": [
+      "No item ranked. No new persistence, network surface or third-party dependency was added."
+    ],
+    "speed-organization-efficiency": [
+      "Active-roster selection exported as a pure function so the property is assertable on a roster instead of by simulating a decade."
+    ],
+    "token-api-reduction": [
+      "No item ranked; no new API surface introduced."
+    ]
+  },
+  "phantomsRejected": [
+    {
+      "candidate": "Widen onTargetMaxAbs / watchMaxAbs to land the S103 parity re-point",
+      "reason": "Explicitly forbidden by the S103 handoff and by this project's own standing rule: a red gate is closed by fixing the defect it found, never by weakening the gate."
+    },
+    {
+      "candidate": "Re-point the gated population to activeRosterOnly",
+      "reason": "Deliberately not taken. Both populations are now valid drift statistics, so the choice is no longer forced — and rostered reads +0.038 to +0.063 against an onTargetMaxAbs of 0.15 where activeRosterOnly reads +0.102 to +0.115. Moving a declared population for no measured reason trades a comfortable margin for a tight one."
+    },
+    {
+      "candidate": "Widen stdDevDrift* to restore the dispersion arm to on-target",
+      "reason": "The arm's move to watch is not a regression this session caused. The old on-target was produced by the active roster's selection filter strengthening across the window, which compresses measured dispersion exactly as the underlying spread widens. With the filter constant, the arm reports the S91 random walk it was built to find."
+    },
+    {
+      "candidate": "Age-indexed potential decline as the elite-density fix",
+      "reason": "Already built, measured against a matched control and reverted in S103. Re-proposing it would be re-implementing an inherited diagnosis rather than re-deriving one."
+    }
+  ],
+  "secondOrderCandidates": [
+    {
+      "slug": "generated-league-cannot-afford-its-own-roster",
+      "status": "shipped",
+      "evidence": [
+        "Discovered by running the engine after filling the declared roster, not by reading the diff: the practice squad on market contracts put all 32 clubs over the cap at kickoff."
+      ]
+    },
+    {
+      "slug": "team-needs-read-the-generation-template",
+      "status": "shipped",
+      "evidence": [
+        "Discovered after the merit pass shipped: teamNeeds measured the ACTIVE roster against ROSTER_TEMPLATE, so a room that legitimately lost the merit pass reported a permanent shortfall and sent the free-agency backstop shopping every offseason — a new accumulator installed by the fix for the old one.",
+        "Pointing it at FIELDABLE_DEPTH[pos].min was tried first and measured wrong: the minimums sum to 41, clubs restocked to 41, and the league drained 2,208 -> 1,905 over ten seasons with the practice squad falling from 16 a club to 6.5. That is the S103 moving-denominator defect with its sign flipped."
+      ]
+    },
+    {
+      "slug": "release-guard-protected-individuals",
+      "status": "shipped",
+      "evidence": [
+        "The first version of the fieldability guard protected each club's best min players outright. Driven on the S91 camp-cuts fixture it left a club $129.0M over the cap bottomed out at the 53-man floor still $27.8M over and reporting itself trapped, while holding eleven linemen it was never allowed to touch."
+      ]
+    },
+    {
+      "slug": "parity-population-re-point",
+      "status": "deferred",
+      "evidence": [
+        "Now a decision rather than an inheritance. Both candidates are valid drift statistics at last; rostered holds the wider margin, so the contrast stays published and ungated in activeRosterMeanOverallDrift rather than being moved."
+      ]
+    }
+  ]
+}

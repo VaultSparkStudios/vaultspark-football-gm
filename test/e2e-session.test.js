@@ -13,7 +13,14 @@ test("session e2e: core flows are operational", () => {
   const roster = session.getRoster("BUF");
   // Premium free agents (74+) sign through the competing-offer market (S62);
   // the instant sign path in this flow uses a depth player.
-  const releasable = roster.find((entry) => (entry.overall || 0) < 74) || roster.at(-1);
+  //
+  // S104 — and an **active** one. `getRoster` returns all 69, and a generated
+  // club now carries a real 16-man practice squad, so the lowest-rated player
+  // here is typically on it: releasing him opens a roster slot but not an
+  // active one, and the re-signing below is then correctly refused with
+  // "Active roster full (53)".
+  const activeRoster = roster.filter((entry) => (entry.rosterSlot || "active") === "active");
+  const releasable = activeRoster.find((entry) => (entry.overall || 0) < 74) || activeRoster.at(-1);
   const released = session.releasePlayer({ teamId: "BUF", playerId: releasable.id, toWaivers: false });
   assert.equal(released.ok, true);
 

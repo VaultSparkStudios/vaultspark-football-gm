@@ -15,8 +15,17 @@ test("release then sign free agent obeys roster constraints", () => {
   const rosterBefore = session.getRoster("BUF").length;
   // Premium free agents (74+) route through the competing-offer market (S62);
   // the instant release/sign constraint check uses the depth tier.
-  const releasable = session.getRoster("BUF").find((entry) => (entry.overall || 0) < 74)
-    || session.getRoster("BUF").at(-1);
+  //
+  // S104 - and it has to be a player on the **active** roster. `getRoster`
+  // returns all 69, and since a generated club now carries a real practice
+  // squad, the lowest-rated player it finds is typically on it: releasing him
+  // opens a roster slot but not an active one, so the re-signing is correctly
+  // refused with "Active roster full (53)". Selecting an active player keeps
+  // this test measuring the release/sign round trip it is named for, rather
+  // than accidentally measuring the active-roster limit.
+  const releasable =
+    session.getRoster("BUF").find((entry) => (entry.overall || 0) < 74 && (entry.rosterSlot || "active") === "active")
+    || session.getRoster("BUF").filter((entry) => (entry.rosterSlot || "active") === "active").at(-1);
   const released = session.releasePlayer({ teamId: "BUF", playerId: releasable.id, toWaivers: false });
   assert.equal(released.ok, true);
   assert.equal(session.getRoster("BUF").length, rosterBefore - 1);

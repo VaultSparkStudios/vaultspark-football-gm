@@ -1,7 +1,9 @@
 import {
   CONTRACT_RULES,
   DEVELOPMENT_TRAITS,
+  FIELDABLE_DEPTH,
   PLAYER_ATTRIBUTE_KEYS,
+  PRACTICE_SQUAD_TEMPLATE,
   ROSTER_TEMPLATE
 } from "../config.js";
 import { calculatePositionOverall, ensureCoverageDepthRatings, ensureQuarterbackDepthRatings } from "./ratings.js";
@@ -295,6 +297,33 @@ export function createSyntheticPlayer({ teamId, position, year, rng, draft = fal
   };
 }
 
+/** A one-year deal at the league minimum - what the back of a roster is paid. */
+function minimumDeal(player, rng) {
+  return buildContract({
+    overall: player.overall,
+    years: 1,
+    salary: CONTRACT_RULES.minSalary,
+    minSalary: CONTRACT_RULES.minSalary,
+    rng
+  });
+}
+
+/**
+ * A club's whole roster at generation: the declared active 53 **and** the
+ * declared 16-man practice squad.
+ *
+ * S104 — this built only `ROSTER_TEMPLATE`, and before S104 that template
+ * summed to 49. Every generated league therefore began 20 players per club
+ * short of the roster the rules require it to carry, and closed the gap over
+ * the following decade. See the note on `ROSTER_TEMPLATE` for why that made
+ * both of this project's candidate gated populations invalid drift statistics.
+ *
+ * Practice players are created from the same factory and then marked, rather
+ * than drawn from a separate quality curve: the slot is decided by
+ * `assignFieldableActiveRoster` at the first normalize, exactly as it is for
+ * every subsequent season, so generation cannot install a roster shape the
+ * running engine would not have produced.
+ */
 export function buildSyntheticTeamRoster(teamId, year, rng) {
   const roster = [];
   for (const [position, count] of Object.entries(ROSTER_TEMPLATE)) {
@@ -302,14 +331,107 @@ export function buildSyntheticTeamRoster(teamId, year, rng) {
       roster.push(createSyntheticPlayer({ teamId, position, year, rng }));
     }
   }
+
+  // Price the roster by role, not by rating alone.
+  //
+  // S104 - every generated player was paid `marketSalaryForOverall`, which was
+  // survivable while a club held 49 of them and is not at 53. Measured on the
+  // canonical seed: the declared 53-man roster left the median club 10.2M under
+  // a 255M cap and put **six clubs over it before a snap was played**, against
+  // a baseline of zero over-cap clubs and 43.4M median headroom. A generated
+  // league that is illegal at kickoff is fiction, and it is the fiction S89
+  // built the compliance authority to remove.
+  //
+  // The answer is not to shave the salary curve until the number fits - that
+  // would be moving a threshold until it passed, and the curve is bound to
+  // `CONTRACT_RULES.maxSalary` by test. It is that a real roster does not pay
+  // 53 market salaries. It pays its starters and key backups, and fills the
+  // rest of the roster at the minimum. `FIELDABLE_DEPTH[pos].min` is already
+  // this project's declaration of who those players are, so the depth beyond it
+  // signs the deal the depth beyond it actually signs.
+  for (const [position, band] of Object.entries(FIELDABLE_DEPTH)) {
+    const room = roster
+      .filter((player) => player.position === position)
+      .sort((a, b) => Number(b.overall || 0) - Number(a.overall || 0));
+    for (const player of room.slice(band.min)) {
+      player.contract = minimumDeal(player, rng);
+    }
+  }
+  for (const [position, count] of Object.entries(PRACTICE_SQUAD_TEMPLATE)) {
+    for (let i = 0; i < count; i += 1) {
+      const player = createSyntheticPlayer({ teamId, position, year, rng });
+      player.rosterSlot = "practice";
+      // Practice-squad money, not veteran money. The first draft of this gave
+      // the sixteen new players ordinary market contracts and put **every one
+      // of the 32 clubs $50M over a $255M cap before a snap was played** -
+      // median space -50.1M, worst -84.7M. A generated league that is illegal
+      // at kickoff is the exact fiction S89 built this module to remove, and it
+      // would have been laundered by the compliance pass cutting twenty players
+      // per club in the first offseason. A practice-squad deal is one year at
+      // the minimum, which is both what the sport pays and what keeps the
+      // declared cap a real constraint.
+      player.contract = minimumDeal(player, rng);
+      roster.push(player);
+    }
+  }
   return roster;
 }
 
+/**
+ * The draft's position mix, weighted by what a roster actually needs.
+ *
+ * S104 — this is the engine that drove the league's position composition apart,
+ * and it is worth stating plainly because every measured direction falls out of
+ * one line. `createDraftClass` sampled `rng.pick(positions)` over the nine
+ * drafted positions, so **every position received 11.1% of every draft class**
+ * — 256 prospects a year, forever — while a club's demand for them is
+ * `ROSTER_TEMPLATE`-shaped and ranges from 1.9% (kicker) to 18.9% (offensive
+ * line). Intake that does not match demand does not equilibrate; it accumulates
+ * on one side and starves the other, monotonically, for as long as the league
+ * runs.
+ *
+ * Measured over ten seasons on the canonical seed 20260306, against the
+ * uniform draw's predictions:
+ *
+ *   position   demand   uniform intake   rostered population, season 0 -> 10
+ *   QB           5.7%       11.1%          64 -> 211   (+230%)
+ *   K/P          3.8%       11.1%          64 -> 172   (+169%)
+ *   OL          17.0%       11.1%         288 -> 314   (+9%)
+ *   Front Seven 28.3%       22.2%         480 -> 559   (+16%)
+ *
+ * Over-supplied rooms grow fastest, under-supplied rooms slowest, and the
+ * ordering is exact. It also explains why the surplus concentrates in the
+ * *highest-rated* rooms: quarterbacks and specialists rate several points above
+ * a league mean by construction, so an over-supplied quarterback room is also a
+ * disproportionately elite one — 11.3% of quarterbacks at 90+ overall by season
+ * ten, against 1.1% of the front seven.
+ *
+ * Weighting the draw by the declared template makes intake proportional to
+ * demand. Punters are included: excluding them from the draft while every club
+ * needs one is why the only route to a punter was the emergency-depth signing
+ * path, which manufactures a player out of nothing.
+ *
+ * This is a weighted pick over a fixed table, not a new RNG stream — it draws
+ * exactly one value from `rng` per prospect, as the uniform pick did, so a
+ * seeded league's RNG position is unchanged in count. Seeded *content* does
+ * change, necessarily: that is the defect being fixed.
+ */
+export const DRAFT_POSITION_WEIGHTS = Object.freeze(
+  Object.fromEntries(Object.entries(ROSTER_TEMPLATE).map(([position, count]) => [position, count]))
+);
+
+export function pickDraftPosition(rng) {
+  // `weightedPick` already exists on the RNG and already draws exactly one
+  // `float`, as the uniform `pick` it replaces drew exactly one `int`. Writing
+  // the loop again here would be the second declaration of one quantity, which
+  // is the drift this project has paid for repeatedly.
+  return rng.weightedPick(DRAFT_POSITION_WEIGHTS);
+}
+
 export function createDraftClass({ size = 256, year, rng }) {
-  const positions = Object.keys(ROSTER_TEMPLATE).filter((p) => p !== "P");
   const classPlayers = [];
   for (let i = 0; i < size; i += 1) {
-    const position = rng.pick(positions);
+    const position = pickDraftPosition(rng);
     const prospect = createSyntheticPlayer({
       teamId: "FA",
       position,

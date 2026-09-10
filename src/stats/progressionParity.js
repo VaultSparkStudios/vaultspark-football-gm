@@ -26,57 +26,70 @@ const round = (value, digits = 2) => Number(Number(value || 0).toFixed(digits));
  * simply no longer allowed to vote on whether the league is calibrated.
  */
 /**
- * S103 — the denominator question, answered; the re-point, measured and not yet
- * paid for. Read this before proposing to move this population again.
+ * S104 — the denominator stopped moving. Read all of this before proposing to
+ * change or re-point this population; it carries the S102/S103 history that
+ * explains why the obvious move is the wrong one.
  *
- * S102 published the divergence rather than acting on it and asked the right
- * question first: *is the league this gate polices the one the GM competes in,
- * or the one the roster rules define?* The answer is not a matter of taste,
- * because `rostered` fails a prior test that has nothing to do with which
- * league you would rather police: **a drift statistic requires a population
- * that exists at both ends of its window, and `rostered` does not.** A
- * generated league is built at 53/club with an EMPTY practice squad and fills
- * its 16/club practice slots over the following decade, so this denominator
- * grows by roughly a quarter of itself and everything it gains sits about ten
- * points below the roster it is averaged into.
+ * **The question S102 asked and S103 answered was the wrong question.** It was
+ * put as a choice: is the league this gate polices the one the GM competes in
+ * (`activeRosterOnly`), or the one the roster rules define (`rostered`)? S103
+ * showed `rostered` failed a prior test — a drift statistic requires a
+ * population that exists at both ends of its window, and a generated league was
+ * built at 49 players a club with an EMPTY practice squad, filling to 69 over
+ * the following decade. It then measured the re-point at +0.303/season,
+ * `out-of-range` against `watchMaxAbs`, and correctly refused to buy it with a
+ * threshold change.
  *
- * Measured on seed 20260306 over ten seasons — the canonical path
- * `realism-career-regression` asserts on, and `buildCompositionShift` below
- * reports this decomposition on every run:
+ * What neither session tested is that **`activeRosterOnly` fails the same prior
+ * test, mirrored.** If the club holds 49 players at the start of the window and
+ * 69 at the end, then the active roster is an *unfiltered* 49 at one end and
+ * the *top 53 of 69* at the other: it silently acquires a selection filter it
+ * did not have. That is why it read 0.303. Neither candidate was a valid drift
+ * statistic, and choosing between them could not have produced one.
  *
- *   within-group  (players actually developing)   +0.269/season   "watch"
- *   between-group (practice weight 0% -> 22.7%)   -0.197/season
- *   blended       (what this gate asserts)        +0.072/season   "on-target"
+ * The defect was never the choice of population. It was that the league was
+ * generated 20 players a club below its own steady state. S104 generates it at
+ * the structure the rules declare — `ROSTER_TEMPLATE` now sums to the 53-man
+ * active limit and `PRACTICE_SQUAD_TEMPLATE` to the 16-man practice squad — and
+ * `FULL_ROSTER_TEMPLATE` holds clubs there as a floor rather than only as a
+ * ceiling. Measured on seed 20260306 over ten seasons, the same canonical path
+ * `realism-career-regression` asserts on:
  *
- * Two effects of opposite sign cancelling inside a gate built to catch exactly
- * that — the shape S91 found with the free-agent pool in this same denominator,
- * and the shape S102 found on the dispersion arm. Third time.
+ *                          before S104          after S104
+ *   rostered population    1568 -> 2178         2208 -> 2183
+ *   practice-squad weight  0% -> 22.7%          23.2% -> 22.7%
+ *   within-group drift     +0.269  watch        +0.040  on-target
+ *   between-group drift    -0.197               +0.003
+ *   blended (gated)        +0.072  on-target    +0.044  on-target
+ *   activeRosterOnly       +0.303  out-of-range +0.107  on-target
  *
- * **So why is the population still `rostered`?** Because re-pointing it was
- * implemented, measured, and reverted in the same session. On the canonical
- * seed the active-roster reading is **0.303/season**, which is `out-of-range`
- * against `watchMaxAbs` — not `watch`. Shipping the re-point would turn this
- * gate red, and the two ways out of a red gate are to fix the defect it found
- * or to weaken the gate. Weakening it is forbidden and the defect is real, so
- * the re-point waits on the fix rather than being paid for with a threshold.
- * **Do not close this by widening `onTargetMaxAbs` or `watchMaxAbs`, and do not
- * close it by re-pointing the population a second time.**
+ * The between-group term — the entire S91/S102/S103 shape, three sessions of
+ * two effects with opposite signs cancelling inside a gate built to catch
+ * exactly that — is now +0.003. `buildCompositionShift` reports
+ * `development-dominated` rather than `verdict-changed-by-composition`, and it
+ * keeps its fixture-driven negative controls in
+ * `test/session102-gated-population.test.js` so the detector is still proved to
+ * fire against the pre-S104 shape.
  *
- * The measured root-cause candidate, from the same receipt: the active roster's
- * *position composition* is itself drifting hard, because `normalizeRosterSlots`
- * ranks a club's whole roster by overall with no positional structure. Over ten
- * seasons the quarterback room goes 64 -> 195 players and specialists 64 -> 155
- * while the offensive line falls 288 -> 258 and the front seven 480 -> 407 — and
- * the quarterback room carries 11.3% of its players at 90+. High-rated, cheap
- * positions crowd out linemen, which inflates the active-roster mean for a
- * compositional reason one level below the one this note is about. That is the
- * thing to fix; the re-point should follow it, not precede it.
+ * **The population is still `rostered`, and that is now a decision rather than
+ * an inheritance.** Both candidates are valid drift statistics at last, so the
+ * question is no longer forced — and `rostered` reads +0.038 to +0.063 across
+ * seeds against an `onTargetMaxAbs` of 0.15, where `activeRosterOnly` reads
+ * +0.102 to +0.115. Re-pointing would move a declared target for no measured
+ * reason and trade a comfortable margin for a tight one. The contrast stays
+ * published, ungated, in `activeRosterMeanOverallDrift`.
  *
- * Both readings this gate declines to assert are published, `gated: false`:
- * `activeRosterMeanOverallDrift` carries the contrast and what it would have
- * classified as, and `compositionShift` carries the decomposition and says
- * `verdict-changed-by-composition` when the blend and the within-group term
- * disagree about the verdict — which, on the canonical path, they do.
+ * What did NOT come out clean, and is the honest cost of this fix: the
+ * distribution gate's dispersion arm moved from `on-target` to `watch`
+ * (+0.095/season on this path, +0.105 and +0.111 on the two probed seeds,
+ * against `stdDevDriftOnTargetMaxAbs` 0.08). That reading is not a regression
+ * this session caused — it is the same artefact seen from the other side. The
+ * old `on-target` was produced by the active roster's selection filter
+ * *strengthening* across the window (an unfiltered 49 becoming the top 53 of
+ * 69), which compresses measured dispersion exactly as the underlying spread
+ * widens. With the filter constant, the arm reports the S91 random-walk it was
+ * built to find. Do not close it by widening `stdDevDrift*`; it is a real
+ * reading of a real defect that now has nowhere to hide.
  */
 export const LEAGUE_PROGRESSION_PARITY_TARGET = Object.freeze({
   version: "2026-s91-rostered-distribution",

@@ -167,8 +167,14 @@ test("signing a free agent with max roster triggers an error or roster cap", () 
   const before = session.getRoster("BUF").length;
   // Premium free agents (74+) route through the competing-offer market (S62);
   // this instant-sign flow check uses the depth tier.
-  const releasable = session.getRoster("BUF").find((entry) => (entry.overall || 0) < 74)
-    || session.getRoster("BUF").at(-1);
+  // S104 — and it must be a player on the **active** roster. `getRoster` returns
+  // all 69, and a generated club now carries a real practice squad, so the
+  // lowest-rated player it finds is typically on it: releasing him opens a
+  // roster slot but not an active one, and the re-signing is then correctly
+  // refused with "Active roster full (53)". Selecting an active player keeps
+  // this measuring the round trip it is named for.
+  const activeRoster = session.getRoster("BUF").filter((entry) => (entry.rosterSlot || "active") === "active");
+  const releasable = activeRoster.find((entry) => (entry.overall || 0) < 74) || activeRoster.at(-1);
   session.releasePlayer({ teamId: "BUF", playerId: releasable.id, toWaivers: false });
 
   const signed = session.signFreeAgent({ teamId: "BUF", playerId: releasable.id });

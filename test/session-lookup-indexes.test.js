@@ -30,7 +30,14 @@ test("GameSession lookup indexes track releases, signings, and trades", () => {
   const mia = session.getRoster("MIA");
   // Premium free agents (74+) route through the competing-offer market (S62);
   // the instant release/sign index check uses the depth tier.
-  const released = buf.find((player) => (player.overall || 0) < 74) || buf.at(-1);
+  // S104 — and it must be a player on the **active** roster. `getRoster` returns
+  // all 69, and a generated club now carries a real practice squad, so the
+  // lowest-rated player it finds is typically on it: releasing him opens a
+  // roster slot but not an active one, and the re-signing is then correctly
+  // refused with "Active roster full (53)". Selecting an active player keeps
+  // this measuring the round trip it is named for.
+  const activeBuf = buf.filter((player) => (player.rosterSlot || "active") === "active");
+  const released = activeBuf.find((player) => (player.overall || 0) < 74) || activeBuf.at(-1);
 
   assert.equal(session.getPlayerById(released.id)?.teamId, "BUF");
   assert.equal(session.releasePlayer({ teamId: "BUF", playerId: released.id, toWaivers: false }).ok, true);

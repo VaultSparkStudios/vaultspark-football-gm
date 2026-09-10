@@ -17,6 +17,7 @@ export const SHARDS = {
     "test/session102-contract-proration.test.js",
     "test/session102-gated-population.test.js",
     "test/session102-potential-centre.test.js",
+    "test/session104-fieldable-depth.test.js",
     "test/api.test.js",
     "test/architect-mastery-portfolio.test.js",
     "test/calibration.test.js",
@@ -191,6 +192,7 @@ export const SHARDS = {
   studio: [
     "test/api-contract-parity.test.js",
     "test/audit-renderer.test.js",
+    "test/session104-audit-premise-decay.test.js",
     "test/card-visibility-gate.test.js",
     "test/browser-module-reachability.test.js",
     "test/script-cli-smoke.test.js",
