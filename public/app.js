@@ -392,6 +392,9 @@ async function collectWeeklyCommandIntent({ gmDecisionChoice = null } = {}) {
     phase: state.dashboard?.phase || "unknown",
     postseasonPlanRequired: state.dashboard?.postseasonProgress?.controlledStatus === "active",
     presetDecisionChoice: gmDecisionChoice || state.mobilePendingDecisionChoice || null,
+    // Engine-owned truth (S102). The schedule cache is cold on this path, so it
+    // cannot answer whether this week has an opponent.
+    onBye: state.dashboard?.controlledOnBye === true,
     collectDecision: checkAndShowGmDecision,
     collectTactic: () => new Promise((resolve) => showHalftimeAdjustModal(resolve, {
       title: "Weekly Plan Composer",

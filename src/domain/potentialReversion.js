@@ -1,4 +1,5 @@
 import { clamp } from "../utils/rng.js";
+import { LEAGUE_AVERAGE_POTENTIAL } from "./ratings.js";
 
 /**
  * Potential-reversion authority — the term that makes `potential` an actual
@@ -169,6 +170,55 @@ export function measurePotentialGapCentre(league) {
   }
   return Object.freeze({
     gapCentre: gapSum / population.length,
+    sampleSize: population.length,
+    source: "measured",
+    profileVersion: profile.version
+  });
+}
+
+/**
+ * Measure the league's own mean potential — the centre `developmentDelta`'s
+ * *trait* term differentiates against.
+ *
+ * S102 — the third instance of one defect. `developmentDelta` computes
+ * `traitFactor = (potential - centre) / 20`, and that centre has always been a
+ * literal. It was 70 while the generated league sat at 79.9, which handed every
+ * player a standing +0.50/offseason; S91 found that and replaced the literal 70
+ * with the literal 80. But the league does not stay at 80: measured on seed 2026,
+ * the active roster's mean potential climbs 79.92 -> 83.57 over ten seasons,
+ * because survivorship selects for it — low-potential players wash out while
+ * intake keeps supplying the same distribution. By season 10 the constant is
+ * stale by 3.65 points and the differentiator is a league-wide subsidy again,
+ * for the same reason and in the same function as before.
+ *
+ * `measurePotentialGapCentre` above already carries the doctrine: re-measure
+ * from the live league every offseason "precisely so it cannot rot into a
+ * literal, which is the failure mode that produced this defect's two
+ * predecessors." The reversion term was de-literalized then; the trait term
+ * beside it was not.
+ *
+ * Measured over `progressedPopulation` — the same population the term is
+ * applied to — for the same conservation reason spelled out there: a centre
+ * measured on one population and applied to a wider one is how a centred term
+ * leaks into a raise.
+ */
+export function measurePotentialCentre(league) {
+  const profile = POTENTIAL_REVERSION_PROFILE;
+  const population = progressedPopulation(league);
+  if (population.length < profile.minimumCentreSample) {
+    return Object.freeze({
+      potentialCentre: LEAGUE_AVERAGE_POTENTIAL,
+      sampleSize: population.length,
+      source: "declared",
+      profileVersion: profile.version
+    });
+  }
+  let potentialSum = 0;
+  for (const player of population) {
+    potentialSum += assertFinite(player.potential, "player potential");
+  }
+  return Object.freeze({
+    potentialCentre: potentialSum / population.length,
     sampleSize: population.length,
     source: "measured",
     profileVersion: profile.version

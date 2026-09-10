@@ -70,6 +70,7 @@
     "lib/franchiseNewsletter.js",
     "lib/leagueStoryExport.js",
     "lib/seasonEpilogue.js",
-    "lib/devSurfaces.js"
+    "lib/devSurfaces.js",
+    "lib/tradeDeadlineFrenzy.js"
   ]
 }

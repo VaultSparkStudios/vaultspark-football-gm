@@ -140,6 +140,28 @@ export const ROSTER_STRUCTURE = {
 
 // Hard upper bounds for active player age by position.
 // Players can play through their max-age season and are forced out once they exceed it.
+/**
+ * The free-agent pool's exit rule.
+ *
+ * S102 — the pool had no exit. Intake ran every offseason (draft class plus
+ * emergency depth) and the only way out was a retirement roll that is ~0.03%
+ * for an unsigned 24-year-old, so the pool grew monotonically: measured 0 at
+ * season 0 to 311 by simulated season 10 (mean age 28.9, mean overall 66.4) on
+ * seed 2026. That is not a market, it is an accumulator — and `progressionParity`
+ * had already been forced to fence the pool out of its gated population in S91
+ * precisely because its unbounded size could cancel any amount of rostered
+ * inflation in a blended mean.
+ *
+ * A player nobody signs for this many consecutive offseasons is out of the
+ * league. Three is the shortest window that still lets a real market miss on a
+ * player twice — once for a down year, once for a crowded position — before
+ * calling it a career, and it is applied as a deterministic rule so it does not
+ * consume the RNG stream and re-calibrate every league in the process.
+ */
+export const FREE_AGENCY_RULES = {
+  maxConsecutiveUnsignedOffseasons: 3
+};
+
 export const POSITION_MAX_AGE_LIMITS = {
   QB: 45,
   RB: 40,

@@ -14,6 +14,9 @@ export const SHARDS = {
   core: [
     "test/session101-cap-authority.test.js",
     "test/session101-league-economy.test.js",
+    "test/session102-contract-proration.test.js",
+    "test/session102-gated-population.test.js",
+    "test/session102-potential-centre.test.js",
     "test/api.test.js",
     "test/architect-mastery-portfolio.test.js",
     "test/calibration.test.js",
@@ -42,6 +45,8 @@ export const SHARDS = {
   runtime: [
     "test/session101-restore-and-rewind.test.js",
     "test/session101-trade-deadline.test.js",
+    "test/session102-free-agent-pool.test.js",
+    "test/session102-staff-and-bye.test.js",
     "test/action-coordinator.test.js",
     "test/advance-week-command.test.js",
     "test/session89-franchise-economy-truth.test.js",

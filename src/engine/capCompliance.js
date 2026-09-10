@@ -93,10 +93,25 @@ export function releaseRanking(roster) {
  * predicts it in order to choose a release worth making.
  */
 function currentYearProration(contract = {}) {
-  return Math.max(
-    0,
-    Math.round(Number(contract.signingBonus || 0) / Math.max(1, Number(contract.capYears || contract.yearsRemaining || 1)))
+  // S102 — read the persisted amortization schedule.
+  //
+  // This read `contract.capYears`, which was never a field on a persisted
+  // contract: `normalizeContract` computed a `capYears` local and discarded it,
+  // so this expression always fell through to `yearsRemaining`. That was
+  // invisible while `capHit` was *also* being re-derived from the remaining
+  // term — the two wrong answers agreed. Now that the schedule is persisted as
+  // `prorationYears`, reading anything else would make this function and the
+  // contract's own cap hit disagree about the same quantity, which is the
+  // "declare a shape twice and it drifts" failure this project keeps paying
+  // for. `capYears` is kept in the chain only as a fossil-tolerant fallback.
+  //
+  // The convergence property the comment below depends on is unaffected: the
+  // charge is still bounded by the cap hit, so the current-year saving stays
+  // non-negative and the trim loop still makes progress on every release.
+  const schedule = Number(
+    contract.prorationYears || contract.capYears || contract.yearsRemaining || 1
   );
+  return Math.max(0, Math.round(Number(contract.signingBonus || 0) / Math.max(1, schedule)));
 }
 
 /**

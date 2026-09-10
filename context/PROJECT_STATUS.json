@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "Release truth is receipt-derived: 9 production routes, origin health at d0fea099ea9c177e724d958755d1d47a93770a3b, required edge headers verified; evidence current through 2026-09-10T09:20:55.636Z. Launch remains HOLD; independent gates are not collapsed.",
-  "nextMilestone": "Prove delivered on-domain email and reply identity; record founder approval bound to the candidate; reconcile authoritative lifecycle state before any launch flip.",
+  "currentFocus": "S102 closed the measured engine backlog: a contract cap hit is fixed at signing (was +28.9% over a five-year deal), the free-agent pool has an exit (400 unsigned without the rule vs 296 with it at simulated season 10), and the distribution gate now measures the active-roster population it has declared since S92 on BOTH arms rather than one (blended dispersion drift 0.173 out-of-range vs 0.037 on-target on the declared population). Canonical Node 1,415/1,415 across six shards; doctor blockingFailing 0.",
+  "nextMilestone": "Decide the parity target denominator deliberately as its own item (mean drift reads +0.055/season rostered vs +0.282/season active-roster-only, published ungated), then price the survivorship ratchet that keeps elite density at watch (3.5% vs a sourced 1.53% All-Pro ceiling). Launch evidence unchanged: delivered reply-capable email, candidate-bound founder approval, authoritative lifecycle reconciliation.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-09-09",
+  "lastUpdated": "2026-09-10",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -21,13 +21,13 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-09-09",
+  "truthAuditLastRun": "2026-09-10",
   "ignisScore": 41119,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
   "testSuiteStatus": "green",
-  "testsPassing": 1369,
-  "testsTotal": 1369,
+  "testsPassing": 1415,
+  "testsTotal": 1415,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -66,20 +66,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 954,
+  "silScore": 958,
   "silCategoriesV3": {
-    "devHealth": 96,
+    "devHealth": 97,
     "creativeAlignment": 98,
-    "momentum": 98,
+    "momentum": 99,
     "engagement": 86,
-    "processQuality": 94,
+    "processQuality": 96,
     "crossRepoCoherence": 95,
     "securityPosture": 98,
     "ecosystemIntegration": 90,
     "capitalEfficiency": 100,
     "automationCoverage": 99
   },
-  "currentSession": 101,
+  "currentSession": 102,
   "lastAgent": "codex",
   "sessionMode": "builder",
   "lastVerification": {
@@ -138,7 +138,7 @@
     "total": 12,
     "failing": 0,
     "score": 92,
-    "date": "2026-09-09",
+    "date": "2026-09-10",
     "passing": 11,
     "warning": 1,
     "checks": [
@@ -180,8 +180,8 @@
       "lastChecked": "2026-09-09"
     }
   ],
-  "lastSession": 101,
-  "silLastSession": 101,
+  "lastSession": 102,
+  "silLastSession": 102,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -1494,21 +1494,21 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 98,
-    "silScore": 994,
+    "session": 102,
+    "silScore": 958,
     "categories": {
-      "devHealth": 100,
-      "creativeAlignment": 100,
-      "momentum": 100,
-      "engagement": 98,
-      "processQuality": 97,
-      "crossRepoCoherence": 99,
-      "securityPosture": 100,
-      "ecosystemIntegration": 100,
+      "devHealth": 97,
+      "creativeAlignment": 98,
+      "momentum": 99,
+      "engagement": 86,
+      "processQuality": 96,
+      "crossRepoCoherence": 95,
+      "securityPosture": 98,
+      "ecosystemIntegration": 90,
       "capitalEfficiency": 100,
-      "automationCoverage": 100
+      "automationCoverage": 99
     },
-    "date": "2026-09-03"
+    "date": "2026-09-10"
   },
   "testShardReceipt": {
     "canonicalCommand": "npm test",

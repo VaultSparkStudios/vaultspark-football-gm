@@ -28,15 +28,35 @@ function memoryStorage() {
   };
 }
 
-function sessionWithOffer(seed = 620081) {
+/**
+ * S102 — `withinTradeWindow` exists because a pending offer and an *actionable*
+ * offer stopped being the same thing.
+ *
+ * S101 made the trade deadline a real rule enforced at the shared command seam,
+ * but this helper still walked up to 14 weeks looking for any pending offer.
+ * Past the declared deadline the accept path correctly refuses with
+ * `trade-deadline-closed`, so the helper could hand a test that needs to commit
+ * a trade an offer that can never be committed — a precondition the assertion
+ * depends on and the fixture never established. It stayed hidden while offers
+ * happened to land early, and surfaced in S102 when a `derivedRng` fix changed
+ * how leagues develop, which is precisely the fragility the note below
+ * describes. The deadline is read from the declared league setting rather than
+ * hardcoded, so this cannot drift from the rule the engine applies.
+ */
+function sessionWithOffer(seed = 620081, { withinTradeWindow = false } = {}) {
   const session = createSession({ seed, startYear: 2026, controlledTeamId: "BUF", mode: "stat" });
+  const deadlineWeek = Number(session.getLeagueSettings()?.tradeDeadlineWeek) || 0;
   // Force generation deterministically: walk weeks until an offer lands.
   let offer = null;
   let guard = 0;
   while (!offer && guard < 14) {
     session.advanceWeek();
-    offer = (session.league.inboundTradeOffers || []).find((row) => row.status === "pending") || null;
+    const pending = (session.league.inboundTradeOffers || []).find((row) => row.status === "pending") || null;
+    const actionable = !withinTradeWindow || !deadlineWeek || session.currentWeek <= deadlineWeek;
+    if (pending && actionable) offer = pending;
     guard += 1;
+    // Walking further cannot produce an offer this caller can act on.
+    if (withinTradeWindow && deadlineWeek && session.currentWeek > deadlineWeek) break;
   }
   return { session, offer };
 }
@@ -53,10 +73,10 @@ function sessionWithOffer(seed = 620081) {
  */
 const OFFER_SEEDS = [620081, 620082, 1, 2, 3, 42, 999, 777];
 
-function firstSessionWithOffer(preferredSeed = null) {
+function firstSessionWithOffer(preferredSeed = null, options = {}) {
   const seeds = preferredSeed == null ? OFFER_SEEDS : [preferredSeed, ...OFFER_SEEDS];
   for (const seed of seeds) {
-    const attempt = sessionWithOffer(seed);
+    const attempt = sessionWithOffer(seed, options);
     if (attempt.offer) return attempt;
   }
   return { session: null, offer: null };
@@ -91,8 +111,14 @@ test("same seed produces the identical offer stream (deterministic)", () => {
 });
 
 test("accepting an offer commits the real trade with fresh-fingerprint discipline", () => {
-  const { session, offer } = firstSessionWithOffer(620083);
+  const { session, offer } = firstSessionWithOffer(620083, { withinTradeWindow: true });
   assert.ok(offer, "no sampled league produced a pending offer");
+  // Pin the precondition this test depends on, rather than assuming the fixture
+  // established it — that assumption is exactly what broke here in S102.
+  assert.ok(
+    session.currentWeek <= Number(session.getLeagueSettings().tradeDeadlineWeek),
+    "the fixture must hand back an offer the trade window can actually accept"
+  );
   const target = session.getPlayerById(offer.requestedPlayerIds[0]);
   assert.equal(target.teamId, "BUF");
   const result = respondToInboundTradeOffer(session, { offerId: offer.id, action: "accept" });
@@ -105,8 +131,28 @@ test("accepting an offer commits the real trade with fresh-fingerprint disciplin
   assert.equal(again.status, 409);
 });
 
+// NEGATIVE CONTROL — the un-windowed helper really does hand back an offer the
+// deadline must refuse, so the option above is fixing a live condition rather
+// than guarding a hypothetical one. If this ever stops reproducing, the seed's
+// league has changed and `withinTradeWindow` needs re-justifying, not deleting.
+test("negative control: without the window guard the fixture yields an unacceptable offer", () => {
+  const { session, offer } = sessionWithOffer(620083);
+  assert.ok(offer, "seed 620083 must still produce a pending offer at all");
+
+  const deadlineWeek = Number(session.getLeagueSettings().tradeDeadlineWeek);
+  assert.ok(
+    session.currentWeek > deadlineWeek,
+    `this seed is expected to surface its offer past the Week ${deadlineWeek} deadline (found at week ${session.currentWeek})`
+  );
+
+  const result = respondToInboundTradeOffer(session, { offerId: offer.id, action: "accept" });
+  assert.equal(result.ok, false, "the deadline must refuse a trade committed after it closed");
+  assert.equal(result.status, 409);
+  assert.equal(result.reasonCode, "trade-deadline-closed");
+});
+
 test("a changed league fails an accept closed and records the stale receipt", () => {
-  const { session, offer } = firstSessionWithOffer(620084);
+  const { session, offer } = firstSessionWithOffer(620084, { withinTradeWindow: true });
   assert.ok(offer, "no sampled league produced a pending offer");
   // The world changes: the wanted player is gone before the GM answers.
   const target = session.getPlayerById(offer.requestedPlayerIds[0]);

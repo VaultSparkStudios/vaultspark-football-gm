@@ -101,6 +101,55 @@ test("a deterministic decade satisfies progression parity and finite-number inte
     0,
     "the practice squad negative control: if this ever moves off zero, the activeRosterOnly-vs-rostered gap this test documents has changed and the comment above needs re-measuring"
   );
+  // S102 — the dispersion arm, asserted for the first time.
+  //
+  // S101 recorded that this regression asserted only the arms that passed:
+  // `globalStatus` and `eliteStatus` were checked and `dispersionStatus` was
+  // not, while the engine's own receipt read `out-of-range` on every probed
+  // seed. The reason it could not be asserted turned out not to be the
+  // generator — it was that this arm was reading a different population from
+  // the elite arm beside it. `LEAGUE_DISTRIBUTION_TARGET` has declared
+  // "active-roster overall dispersion and elite density" since S92, S92 moved
+  // the elite arm onto `activeRosterOnly`, and the dispersion arm kept reading
+  // the blended active-roster-plus-practice-squad `stdDevOverall`. Measured
+  // through this same call on seed 2026:
+  //
+  //     blended `rostered`   sd 4.318 -> 6.048   (drift 0.173/season, out-of-range)
+  //     `activeRosterOnly`   sd 4.318 -> 4.690   (drift 0.037/season, on-target)
+  //
+  // The arm was reporting a defect in a statistic no target declared. Nothing
+  // about the ceiling or the reversion rate was touched to reach this verdict;
+  // the population match did it, and the blended reading it used to report is
+  // still published beside it as `distribution.blendedRostered` so the contrast
+  // stays visible rather than being quietly dropped.
+  assert.notEqual(
+    report.progression.distribution.dispersionStatus,
+    "out-of-range",
+    JSON.stringify(report.progression.distribution)
+  );
+  assert.equal(
+    report.progression.distribution.endStdDevOverall,
+    Number(Number(report.progression.end.population.activeRosterOnly.stdDevOverall).toFixed(3)),
+    "the dispersion arm must read the same population the elite arm does"
+  );
+  assert.equal(
+    report.progression.distribution.blendedRostered.gated,
+    false,
+    "the pre-S102 blended reading must stay published, and must stay ungated"
+  );
+
+  // The parity target's own denominator is load-bearing too — the same drift
+  // measured on the active roster is several times larger. Not gated here (this
+  // target declares `rostered`), but it must be published, because the whole
+  // reason this class of defect keeps recurring is that the contrast goes
+  // unrecorded. See `context/TASK_BOARD.md` (S102, deferred).
+  assert.equal(report.progression.activeRosterMeanOverallDrift.gated, false);
+  assert.equal(
+    typeof report.progression.activeRosterMeanOverallDrift.annualMeanOverallDrift,
+    "number",
+    "the active-roster contrast must be measured, not omitted"
+  );
+
   assert.equal(report.numericIntegrity.status, "pass", JSON.stringify(report.numericIntegrity));
   assert.equal(report.numericIntegrity.source.truncated, false);
   assert.equal(report.numericIntegrity.simulated.truncated, false);

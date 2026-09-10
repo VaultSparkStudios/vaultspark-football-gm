@@ -1,8 +1,18 @@
-import { CONTRACT_RULES, NFL_STRUCTURE, POSITION_MAX_AGE_LIMITS, ROSTER_TEMPLATE } from "../config.js";
+import {
+  CONTRACT_RULES,
+  FREE_AGENCY_RULES,
+  NFL_STRUCTURE,
+  POSITION_MAX_AGE_LIMITS,
+  ROSTER_TEMPLATE
+} from "../config.js";
 import { createDraftClass, createSyntheticPlayer } from "../domain/playerFactory.js";
 import { advanceContractYear, buildContract } from "../domain/contracts.js";
 import { calculatePositionOverall, developmentDelta, positionRatingKeys } from "../domain/ratings.js";
-import { measurePotentialGapCentre, potentialReversionFor } from "../domain/potentialReversion.js";
+import {
+  measurePotentialCentre,
+  measurePotentialGapCentre,
+  potentialReversionFor
+} from "../domain/potentialReversion.js";
 import { getAllTeamPlayers, getTeamPlayers, recalculateAllTeamRatings } from "../domain/teamFactory.js";
 import { enforceRosterAndCapCompliance, normalizeRosterSlots } from "./capCompliance.js";
 import { clamp } from "../utils/rng.js";
@@ -133,7 +143,20 @@ export function progressPlayer(player, rng, context = {}) {
   if (!Number.isFinite(potentialReversion)) {
     throw new TypeError(`progressPlayer: potential reversion must be finite, received ${rawReversion}`);
   }
-  const delta = developmentDelta(player, rng, { environmentTilt, potentialReversion });
+  // S102 — the league's measured mean potential, the centre the trait term
+  // differentiates against. Same discipline again: absent is legitimate (a
+  // caller outside the offseason seam gets the declared neutral centre),
+  // present-but-not-finite must throw rather than be laundered to a default
+  // that would silently turn the differentiator back into a subsidy.
+  const rawCentre = context.potentialCentre ?? null;
+  if (rawCentre !== null && !Number.isFinite(Number(rawCentre))) {
+    throw new TypeError(`progressPlayer: potential centre must be finite, received ${rawCentre}`);
+  }
+  const delta = developmentDelta(player, rng, {
+    environmentTilt,
+    potentialReversion,
+    ...(rawCentre === null ? {} : { potentialCentre: Number(rawCentre) })
+  });
   const ratingKeys = Object.keys(player.ratings);
   const focusRatings = (context.focusRatings || []).filter((key) => ratingKeys.includes(key));
   // rng.shuffle is called unconditionally and identically to before, so the RNG
@@ -196,6 +219,10 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
   // at all — a context-borne fix would silently not apply on the exact path the
   // career-realism regression runs.
   const reversionCentres = measurePotentialGapCentre(league);
+  // S102 — measured here for the same reasons and on the same schedule: once
+  // per offseason, from the league as it stood before anyone was progressed, so
+  // every player is differentiated against the same centre.
+  const { potentialCentre } = measurePotentialCentre(league);
   for (const player of activePlayers(league)) {
     const team = teamsById.get(player.teamId) || null;
     player.age += 1;
@@ -205,17 +232,39 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
       player.seasonsPlayed += 1;
     }
     const supplied = typeof options.developmentContext === "function" ? options.developmentContext(player, team) || {} : {};
-    const context = { ...supplied, potentialReversion: potentialReversionFor(player, reversionCentres) };
+    const context = {
+      ...supplied,
+      potentialCentre,
+      potentialReversion: potentialReversionFor(player, reversionCentres)
+    };
     progressPlayer(player, rng, context);
     const chance = retirementChance(player, team, {
       ...options,
       seasonYear: year
     });
-    if (rng.chance(chance)) {
+    // S102 — the pool's exit rule. Derived from the club the player is on at
+    // this point in the offseason rather than pushed from every signing site,
+    // so a player the market picked up is reset by the fact of being rostered
+    // and no call site can forget to clear the counter.
+    // The counter is only carried by players who are actually unsigned, and is
+    // dropped the moment one is rostered — writing a `0` onto all ~1,600 active
+    // players would put a field in every save payload to record a fact about a
+    // few hundred of them.
+    const unsigned = !team && (player.teamId === "FA" || player.teamId === "WAIVER");
+    if (unsigned) player.unsignedOffseasons = Number(player.unsignedOffseasons || 0) + 1;
+    else if (player.unsignedOffseasons) delete player.unsignedOffseasons;
+    const outOfTheLeague =
+      unsigned && player.unsignedOffseasons >= FREE_AGENCY_RULES.maxConsecutiveUnsignedOffseasons;
+    // `rng.chance` is consumed for every player either way. Short-circuiting it
+    // for a forced exit would shift the RNG stream and silently re-calibrate
+    // every league that has ever been generated from a seed.
+    const rolled = rng.chance(chance);
+    if (rolled || outOfTheLeague) {
       player.status = "retired";
       player.retiredYear = year;
       player.teamId = "RET";
       player.retirementOverride = null;
+      player.retirementReason = rolled ? "retired" : "unsigned-out-of-league";
       league.retiredPlayers.push(player);
     } else {
       keep.push(player);

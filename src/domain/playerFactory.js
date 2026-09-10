@@ -155,6 +155,18 @@ function randomName(rng) {
   return `${rng.pick(FIRST_NAMES)} ${rng.pick(LAST_NAMES)}`;
 }
 
+/**
+ * The league's one name source.
+ *
+ * Exported so coaching staff draw from the same pool as players instead of
+ * carrying their role label as a name — see `buildStaffProfile`. Any RNG-shaped
+ * source works, including `derivedRng`, so a caller that must not touch the
+ * session stream can still get a stable, distinct name.
+ */
+export function generatePersonName(rng) {
+  return randomName(rng);
+}
+
 function randomTrait(rng) {
   return rng.weightedPick(DEV_TRAIT_WEIGHTS);
 }

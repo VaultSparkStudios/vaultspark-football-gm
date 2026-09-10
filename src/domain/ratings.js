@@ -350,13 +350,31 @@ export const PLAYER_DEVELOPMENT_PROFILE = Object.freeze({
  * rounding as the rest of the curve. The RNG stream is untouched — `rng.float`
  * is still drawn exactly once per player, in the same order.
  */
-export function developmentDelta(player, rng, { environmentTilt = 0, potentialReversion = 0 } = {}) {
+export function developmentDelta(
+  player,
+  rng,
+  { environmentTilt = 0, potentialReversion = 0, potentialCentre = LEAGUE_AVERAGE_POTENTIAL } = {}
+) {
   let ageFactor;
   if (player.age <= 25) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.developing25AndUnder;
   else if (player.age <= 29) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.prime26To29;
   else ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.veteran30Plus;
 
-  const traitFactor = (player.potential - LEAGUE_AVERAGE_POTENTIAL) / 20;
+  // S102 — the centre this term differentiates against is measured from the
+  // live league, not declared. `LEAGUE_AVERAGE_POTENTIAL` remains the neutral
+  // default for callers with no league to measure (fixtures, the headless
+  // facade), and it is still the generated league's true centre at season 0;
+  // what it is not is the centre at season 10, and a differentiator measured
+  // against a centre the league has left behind is a subsidy. Twice before —
+  // at 70, then at 80 — this literal went stale exactly this way. Same NaN
+  // discipline as the terms below: a corrupt centre must throw, never launder.
+  const centre = Number(
+    potentialCentre === undefined || potentialCentre === null ? LEAGUE_AVERAGE_POTENTIAL : potentialCentre
+  );
+  if (!Number.isFinite(centre)) {
+    throw new TypeError(`developmentDelta: potentialCentre must be finite, received ${potentialCentre}`);
+  }
+  const traitFactor = (player.potential - centre) / 20;
   // Never `Number(x || 0)` here: NaN is falsy, so that idiom launders a NaN into
   // a silent zero and the curve quietly stops applying. Validate, then use.
   const tilt = environmentTilt === undefined || environmentTilt === null ? 0 : Number(environmentTilt);

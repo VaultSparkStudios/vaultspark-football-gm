@@ -5,7 +5,6 @@ import { playSound } from "./audioFeedback.js";
 import { classifyTone, decoratePlayerColumnByIds, decoratePlayerColumnFromRows, escapeHtml, fmtMoney, renderGuideContent, renderPanelError, renderTable, setBoxScoreTab, setMetricCardValue, setTableSkeleton, showToast, teamCode, teamName } from "./appCore.js";
 import { buildRivalCoachIntel } from "./rivalCoachIntel.js";
 import { invokeUiIsland } from "./uiIslands.js";
-import { renderTradeDeadlineFrenzy } from "./tradeDeadlineFrenzy.js";
 import { buildBoxScoreImpactLeaders, buildQuarterScoreboard } from "./boxScorePresentation.js";
 import { observeBackgroundTask, recordClientDiagnostic } from "./clientDiagnostics.js";
 import { buildFranchiseCommandStack } from "./franchiseCommandCenter.js";
@@ -504,6 +503,18 @@ export function renderNarrativePanel() {
   }).join("");
 }
 
+/**
+ * Memoized dynamic import of the deadline frenzy board (S102, a declared lazy
+ * root). A failed load resets the memo so a transient network error does not
+ * disable the board for the rest of the session.
+ */
+let tradeDeadlineFrenzyModule = null;
+function loadTradeDeadlineFrenzy() {
+  if (!tradeDeadlineFrenzyModule) {
+    tradeDeadlineFrenzyModule = import("./tradeDeadlineFrenzy.js").then((mod) => mod.renderTradeDeadlineFrenzy);
+  }
+  return tradeDeadlineFrenzyModule;
+}
 export function renderTradeDeadlineAlert() {
   const panel = document.getElementById("tradeDeadlinePanel");
   if (!panel) return;
@@ -515,7 +526,33 @@ export function renderTradeDeadlineAlert() {
   const isDeadline = deadline.declared && deadline.closing;
   panel.hidden = !isDeadline;
   if (!isDeadline) return;
-  renderTradeDeadlineFrenzy("tradeDeadlineFrenzy", d);
+  // S102 — the frenzy board only exists inside the declared deadline window,
+  // and the guard above already says so. It was still downloaded on every boot
+  // to be used in a handful of weeks a season, which is what pushed the initial
+  // shell over its 650 KB target. Gating the download the same way the use is
+  // gated is the fix; raising the budget would not be.
+  observeBackgroundTask(
+    async () => {
+      const renderFrenzy = await loadTradeDeadlineFrenzy();
+      if (typeof renderFrenzy !== "function") return;
+      // Re-check against live state: the import resolves asynchronously and the
+      // week may have moved on, in which case rendering `d` would paint a board
+      // for a window that has since closed.
+      const current = state.dashboard;
+      if (!current) return;
+      const now = tradeWindow(current);
+      if (now.declared && now.closing) renderFrenzy("tradeDeadlineFrenzy", current);
+    },
+    {
+      surface: "ui-island",
+      operation: "trade-deadline-frenzy:render",
+      optional: true,
+      // A transient load failure must not disable the board for the session.
+      onError: () => {
+        tradeDeadlineFrenzyModule = null;
+      }
+    }
+  );
   const statusEl = document.getElementById("tradeDeadlineStatus");
   const roleEl = document.getElementById("tradeDeadlineBuyerSeller");
   const standings = d.latestStandings || [];

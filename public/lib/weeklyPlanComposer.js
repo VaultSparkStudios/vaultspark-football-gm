@@ -9,17 +9,41 @@ function decisionSummary(choice) {
   };
 }
 
-function previewReceipt({ status, compositionOrder, decisionChoice, tacticId, phase, tacticalPhase = false, review = null }) {
+// S102 — a bye is a week, not a missing game: it suppresses the tactic step
+// (there is no opponent to plan for) and carries its own beat instead of
+// returning nothing. Full defect narrative in session102-staff-and-bye.test.js;
+// this module is in the initial boot graph, so the prose lives in the test.
+export const BYE_WEEK_BEAT = Object.freeze({
+  id: "bye-week",
+  kind: "rest",
+  headline: "Bye week — no game to plan",
+  detail:
+    "No opponent this week. The staff banks the rest and the game plan waits; your next tactical call is the week after."
+});
+
+function previewReceipt({
+  status,
+  compositionOrder,
+  decisionChoice,
+  tacticId,
+  phase,
+  tacticalPhase = false,
+  onBye = false,
+  review = null
+}) {
   return {
     schemaVersion: WEEKLY_PLAN_RECEIPT_SCHEMA_VERSION,
     kind: "weekly-plan-preview",
     status,
     phase: phase || "unknown",
+    onBye,
+    beat: onBye ? BYE_WEEK_BEAT : null,
     compositionOrder,
     plan: {
       gmDecision: decisionSummary(decisionChoice),
       tacticId: tacticId || null,
-      explicitNoPlan: tacticalPhase && !tacticId
+      // A bye has no tactic to withhold, so it is not an "explicit no-plan".
+      explicitNoPlan: tacticalPhase && !onBye && !tacticId
     },
     review
   };
@@ -31,11 +55,13 @@ export async function composeWeeklyPlan({
   presetDecisionChoice = null,
   collectDecision = async () => ({ status: "none", choice: null }),
   collectTactic = async () => null,
+  onBye = false,
   reviewPlan = null,
   onCheckpoint = () => {}
 } = {}) {
   const regularSeason = phase === "regular-season";
-  const tacticalPhase = regularSeason || (phase === "postseason" && postseasonPlanRequired);
+  const onByeWeek = Boolean(onBye) && regularSeason;
+  const tacticalPhase = (regularSeason && !onByeWeek) || (phase === "postseason" && postseasonPlanRequired);
   const compositionOrder = [];
   let decisionChoice = presetDecisionChoice || null;
   onCheckpoint("weekly-plan-opened");
@@ -53,7 +79,8 @@ export async function composeWeeklyPlan({
           decisionChoice: null,
           tacticId: null,
           phase,
-          tacticalPhase
+          tacticalPhase,
+          onBye: onByeWeek
         })
       };
     }
@@ -80,7 +107,8 @@ export async function composeWeeklyPlan({
         decisionChoice,
         tacticId,
         phase,
-        tacticalPhase
+        tacticalPhase,
+        onBye: onByeWeek
       }));
       if (reviewReceipt?.mode === "standing-reinforcement") {
         compositionOrder[compositionOrder.length - 1] = "standing-plan-reinforced";
@@ -104,6 +132,7 @@ export async function composeWeeklyPlan({
             tacticId,
             phase,
             tacticalPhase,
+            onBye: onByeWeek,
             review: reviewReceipt?.evidence || null
           })
         };
@@ -112,6 +141,11 @@ export async function composeWeeklyPlan({
       onCheckpoint("weekly-plan-reviewed");
       break;
     }
+  }
+
+  if (onByeWeek) {
+    compositionOrder.push("bye");
+    onCheckpoint("bye-week-acknowledged");
   }
 
   const body = { count: 1 };
@@ -127,6 +161,7 @@ export async function composeWeeklyPlan({
       tacticId,
       phase,
       tacticalPhase,
+      onBye: onByeWeek,
       review
     })
   };
@@ -154,9 +189,22 @@ export function commitWeeklyPlanReceipt(receipt, response = {}) {
 export function describeWeeklyPlanReceipt(receipt) {
   if (!receipt) return null;
   const decision = receipt.plan?.gmDecision?.choiceId ? "GM choice" : "no GM choice";
-  const tactic = receipt.plan?.tacticId ? `tactic ${receipt.plan.tacticId}` : "explicit no-plan";
+  // On a bye there was no tactic to give, so "explicit no-plan" would describe
+  // a refusal that never happened.
+  const tactic = receipt.plan?.tacticId
+    ? `tactic ${receipt.plan.tacticId}`
+    : receipt.onBye
+      ? "bye week — no opponent"
+      : "explicit no-plan";
   if (receipt.status === "deferred") {
     return { title: "Weekly plan deferred", detail: "No command was committed.", tone: "warning" };
+  }
+  if (receipt.onBye) {
+    return {
+      title: receipt.status === "committed" ? "Bye week committed" : "Bye week staged",
+      detail: `${decision} · ${tactic} · ${receipt.compositionOrder.join(" → ") || "phase-only command"}`,
+      tone: "accent"
+    };
   }
   const reviewSource = receipt.review?.counterSignalSource
     ? ` · reviewed against ${String(receipt.review.counterSignalSource).slice(0, 80)}`

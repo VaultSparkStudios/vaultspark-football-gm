@@ -29,7 +29,7 @@ import {
   normalizeContract,
   restructureContract
 } from "../domain/contracts.js";
-import { createDraftClass, createZeroedSeasonStats, jerseyNumberForPlayer } from "../domain/playerFactory.js";
+import { createDraftClass, createZeroedSeasonStats, generatePersonName, jerseyNumberForPlayer } from "../domain/playerFactory.js";
 import {
   createLeagueBase,
   createTeamSeasonState,
@@ -983,7 +983,23 @@ function buildWeeklyMatchPlan(team, roster = [], opponent = null, opponentRoster
   };
 }
 
-function buildStaffProfile(rng, existing = null) {
+/**
+ * S102 — coaches get names.
+ *
+ * `make()` fell back to the role label, so every head coach in every league was
+ * called "Head Coach" and every coordinator "Offensive Coordinator". Beyond the
+ * immersion cost, `nodeForStaff` identifies a coach by (teamId, role, name), so
+ * the identity it was built on carried no information at all: the name column
+ * was a constant per role, league-wide, for the life of the franchise.
+ *
+ * Names are drawn from a `derivedRng` keyed on (staff identity, role) whenever
+ * a `nameSeedKey` is supplied, never from the passed `rng`. That is deliberate:
+ * this builder runs on normalizer paths where drawing from the session stream
+ * would desync a replayed save (the constraint S63 established), and it also
+ * means adding names does not shift the stream for any caller that already
+ * exists. Deterministic, distinct, and free of side effects on calibration.
+ */
+function buildStaffProfile(rng, existing = null, { nameSeedKey = null } = {}) {
   const archetypes = Object.keys(COACHING_TENDENCY_ARCHETYPES);
   const pickArchetype = () => {
     if (typeof rng?.pick === "function") return rng.pick(archetypes);
@@ -993,8 +1009,18 @@ function buildStaffProfile(rng, existing = null) {
     existing?.tendencyKey && COACHING_TENDENCY_ARCHETYPES[existing.tendencyKey]
       ? existing.tendencyKey
       : pickArchetype();
+  const nameFor = (role, fallback) => {
+    const existingName = existing?.[role]?.name;
+    // The role label is what the old fallback wrote, so treat a stored copy of
+    // it as the absence of a name rather than as a name worth preserving —
+    // otherwise every save in existence keeps "Head Coach" forever.
+    if (existingName && existingName !== fallback) return existingName;
+    const source = nameSeedKey ? derivedStaffRng(`${nameSeedKey}|name|${role}`) : rng;
+    if (typeof source?.pick !== "function") return fallback;
+    return generatePersonName(source) || fallback;
+  };
   const make = (role, fallback, specialty = {}) => ({
-    name: existing?.[role]?.name || fallback,
+    name: nameFor(role, fallback),
     playcalling: Number.isFinite(existing?.[role]?.playcalling) ? existing[role].playcalling : rng.int(62, 93),
     development: Number.isFinite(existing?.[role]?.development) ? existing[role].development : rng.int(62, 93),
     discipline: Number.isFinite(existing?.[role]?.discipline) ? existing[role].discipline : rng.int(62, 93),
@@ -1420,7 +1446,9 @@ function ensureLeagueRuntime(league) {
       // tendency archetype, and a corrupt `yearsRemaining: 76`. The stub existed
       // because a normalizer must not draw from the session RNG stream; the
       // derived source keeps that guarantee and still varies by team.
-      team.staff = buildStaffProfile(derivedStaffRng(staffSeedKey(league, team.id)), team.staff);
+      team.staff = buildStaffProfile(derivedStaffRng(staffSeedKey(league, team.id)), team.staff, {
+        nameSeedKey: staffSeedKey(league, team.id)
+      });
     }
     if (!team.strategyProfile) team.strategyProfile = "balanced";
     // S63 — describes a fixed defect, not live debt. innovation-pack:ignore
@@ -2001,7 +2029,7 @@ export class GameSession {
     ensureLeagueRuntime(this.league);
     for (const team of this.league.teams) {
       if (!team.staff || STAFF_ROLE_KEYS.some((role) => !team.staff?.[role])) {
-        team.staff = buildStaffProfile(this.rng, team.staff);
+        team.staff = buildStaffProfile(this.rng, team.staff, { nameSeedKey: staffSeedKey(this.league, team.id) });
       }
       team.owner = buildOwnerProfile(this.rng, team.owner);
       applyStaffToCoaching(team);
@@ -3267,7 +3295,7 @@ export class GameSession {
   updateStaff({ teamId, role, name, playcalling, development, discipline, yearsRemaining }) {
     const team = teamById(this.league, teamId);
     if (!team) return { ok: false, error: "Invalid team." };
-    if (!team.staff) team.staff = buildStaffProfile(this.rng, team.staff);
+    if (!team.staff) team.staff = buildStaffProfile(this.rng, team.staff, { nameSeedKey: staffSeedKey(this.league, team.id) });
     if (!STAFF_ROLE_KEYS.includes(role)) {
       return { ok: false, error: "Invalid staff role." };
     }
@@ -5278,7 +5306,7 @@ export class GameSession {
   runStaffAndStrategyRefresh() {
     const era = this.getEraProfile();
     for (const team of this.league.teams) {
-      if (!team.staff || !team.staff.headCoach) team.staff = buildStaffProfile(this.rng, team.staff);
+      if (!team.staff || !team.staff.headCoach) team.staff = buildStaffProfile(this.rng, team.staff, { nameSeedKey: staffSeedKey(this.league, team.id) });
       applyStaffToCoaching(team);
       const roster = teamPlayersAll(this.league, team.id);
       team.scheme.passRate = Number(clamp((team.scheme?.passRate || 0.54) + era.passRateDelta * 0.02, 0.34, 0.72).toFixed(2));
@@ -5315,7 +5343,13 @@ export class GameSession {
       return { expired: [], firedHeadCoachIds: [], alreadyRun: true };
     }
     const result = this.services.coaching.processLifecycle({
-      createStaffProfile: () => buildStaffProfile(this.rng),
+      createStaffProfile: (team, staffKey) =>
+        buildStaffProfile(this.rng, null, {
+          // A replacement hire is a new person: key the name on the vacancy
+          // being filled (team, role, year) so it is distinct from the coach
+          // who just left and stable across a replay of the same offseason.
+          nameSeedKey: `${staffSeedKey(this.league, team?.id)}|hire|${this.currentYear}|${staffKey || ""}`
+        }),
       applyStaffToCoaching,
       logNews: (headline, details) => this.logNews(headline, details)
     });
@@ -6622,7 +6656,19 @@ export class GameSession {
     const postseasonSchedule = postseasonProgress?.nextGame
       ? { week: this.currentWeek, games: [postseasonProgress.nextGame], byeTeams: [] }
       : null;
+    // S102 — whether the controlled team plays this week is a fact the engine
+    // owns, so it is answered here rather than inferred from whatever the
+    // client happens to have cached. `renderSchedule` derived it from
+    // `state.scheduleCache[week]`, which is cold on the exact path that needed
+    // it (composing the weekly command), so the plan composer demanded a tactic
+    // for a week with no opponent and returned no feedback for it.
+    const controlledOnBye = Boolean(
+      this.phase === "regular-season" &&
+        this.controlledTeamId &&
+        (this.getScheduleWeek(this.currentWeek)?.byeTeams || []).includes(this.controlledTeamId)
+    );
     const dashboard = {
+      controlledOnBye,
       game: GAME_NAME,
       franchiseId: `fa-${this.rngStreams?.baseSeed ?? this.startYear}-${this.controlledTeamId}`,
       startYear: this.startYear,

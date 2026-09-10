@@ -220,9 +220,16 @@ export function splitActivePopulation(league) {
 
 export function summarizeLeagueProgression(league) {
   const { active, rostered, unrostered, activeRosterOnly, practiceSquad } = splitActivePopulation(league);
-  // The gated population. If a league has no teams at all — a fixture, or a
-  // caller that built players without a structure — fall back to the active set
-  // rather than reporting a zeroed league as calibrated.
+  // The gated population for the PARITY target, which declares itself as
+  // "rostered-player mean overall annual drift" — so `rostered` is what it is
+  // supposed to measure, and it still is. The DISTRIBUTION target declares a
+  // different population ("active-roster overall dispersion and elite density")
+  // and `buildDistributionReceipt` now reads that one on both of its arms; see
+  // the S102 note there.
+  //
+  // If a league has no teams at all — a fixture, or a caller that built players
+  // without a structure — fall back to the active set rather than reporting a
+  // zeroed league as calibrated.
   const players = rostered.length ? rostered : active;
   const summary = summarizePlayers(players);
   return {
@@ -286,12 +293,41 @@ const worstOf = (...statuses) =>
  */
 export function buildDistributionReceipt({ start, end, observedSeasons }) {
   const target = LEAGUE_DISTRIBUTION_TARGET;
-  const startCount = Number(start?.population?.rostered?.count ?? start?.playerCount ?? 0);
-  const endCount = Number(end?.population?.rostered?.count ?? end?.playerCount ?? 0);
+  const startCount = Number(
+    start?.population?.activeRosterOnly?.count ?? start?.population?.rostered?.count ?? start?.playerCount ?? 0
+  );
+  const endCount = Number(
+    end?.population?.activeRosterOnly?.count ?? end?.population?.rostered?.count ?? end?.playerCount ?? 0
+  );
   const adequateSample = startCount >= target.minimumSample && endCount >= target.minimumSample;
 
-  const startStdDev = Number(start?.stdDevOverall ?? start?.population?.rostered?.stdDevOverall ?? 0);
-  const endStdDev = Number(end?.stdDevOverall ?? end?.population?.rostered?.stdDevOverall ?? 0);
+  // S102 — same population as the elite arm, and the same fallback chain.
+  //
+  // `LEAGUE_DISTRIBUTION_TARGET.metric` has declared "active-roster overall
+  // dispersion and elite density" since S92, and S92 moved the elite arm onto
+  // `activeRosterOnly` for a stated reason: All-Pro honors are drawn from the
+  // active roster, and the practice squad is structurally ineligible. It left
+  // the dispersion arm reading `stdDevOverall` off the blended `rostered`
+  // population, so the two readings this receipt calls "two views of one
+  // league" were two views of two different leagues.
+  //
+  // The blended reading is not merely noisier, it reverses the verdict.
+  // Measured through `runRealismVerification({ seasons: 10 })` on seed 2026 —
+  // the exact path `test/realism-career-regression.test.js` asserts on:
+  //
+  //   blended `rostered`   sd 4.318 -> 6.048   (drift 0.173/season, out-of-range)
+  //   `activeRosterOnly`   sd 4.318 -> 4.690   (drift 0.037/season, on-target)
+  //
+  // The gated population's dispersion is not diffusing; the practice squad's
+  // size and composition were moving the blend. That is the same free-parameter
+  // shape S91 fenced the free-agent pool out for, and it is why this arm could
+  // never be asserted: it reported a defect in a statistic nothing declared.
+  const startStdDev = Number(
+    start?.population?.activeRosterOnly?.stdDevOverall ?? start?.stdDevOverall ?? start?.population?.rostered?.stdDevOverall ?? 0
+  );
+  const endStdDev = Number(
+    end?.population?.activeRosterOnly?.stdDevOverall ?? end?.stdDevOverall ?? end?.population?.rostered?.stdDevOverall ?? 0
+  );
   const annualStdDevDrift = adequateSample ? round((endStdDev - startStdDev) / Math.max(1, observedSeasons), 3) : null;
   // S92 — prefer the active-roster-only reading, which is the population the
   // sourced NFL-honors ceiling below is actually anchored to. Older callers
@@ -322,6 +358,20 @@ export function buildDistributionReceipt({ start, end, observedSeasons }) {
     annualStdDevDrift,
     startElite90PlusPct: Number(start?.elite90PlusPct ?? 0),
     endElite90PlusPct: elite90PlusPct,
+    // Reported, never gated — the same convention `splitActivePopulation` uses
+    // for `unrostered`: the population that is NOT gated stays visible, so a
+    // future reader can see what the blended reading would have said instead of
+    // having to rediscover the difference. This pair is the evidence that the
+    // denominator matters; if they ever converge, that is worth knowing too.
+    blendedRostered: {
+      gated: false,
+      note: "active roster + practice squad — the pre-S102 dispersion denominator, reported for contrast only",
+      startStdDevOverall: round(Number(start?.population?.rostered?.stdDevOverall ?? 0), 3),
+      endStdDevOverall: round(Number(end?.population?.rostered?.stdDevOverall ?? 0), 3),
+      startMeanOverall: Number(start?.population?.rostered?.meanOverall ?? 0),
+      endMeanOverall: Number(end?.population?.rostered?.meanOverall ?? 0),
+      endElite90PlusPct: Number(end?.population?.rostered?.elite90PlusPct ?? 0)
+    },
     target
   };
 }
@@ -377,6 +427,35 @@ export function buildProgressionParityReceipt({ start, end, seasons, seed, devel
       : roomStatuses.includes("watch") || globalStatus === "watch" || distribution.status === "watch"
         ? "watch"
         : "on-target";
+  // S102 — the same mean drift, measured on the active roster instead of the
+  // blended rostered population this target declares. REPORTED, NEVER GATED.
+  //
+  // Fixing the dispersion arm's denominator exposed that the choice of
+  // denominator is doing a great deal of work on the mean arm too. Same run,
+  // same seed, same 10 seasons:
+  //
+  //   `rostered` (gated, as declared)   77.21 -> 77.76   +0.055/season  on-target
+  //   `activeRosterOnly` (reported)     drift             +0.282/season  would be watch
+  //
+  // Five times the drift, in the population the GM actually competes in.
+  // This is deliberately not gated here: `LEAGUE_PROGRESSION_PARITY_TARGET`
+  // declares `rostered`, and quietly re-pointing a declared target at a
+  // population that turns it red is a calibration decision, not a bug fix —
+  // it would also be indistinguishable, from the outside, from moving a
+  // threshold until the number fit. The divergence is published so the decision
+  // can be taken deliberately, with the numbers in hand, instead of being
+  // rediscovered a third time. See `context/TASK_BOARD.md` (S102, deferred).
+  const activeRosterMeanDrift =
+    Number.isFinite(Number(start?.population?.activeRosterOnly?.meanOverall)) &&
+    Number.isFinite(Number(end?.population?.activeRosterOnly?.meanOverall))
+      ? round(
+          (Number(end.population.activeRosterOnly.meanOverall) -
+            Number(start.population.activeRosterOnly.meanOverall)) /
+            observedSeasons,
+          3
+        )
+      : null;
+
   return {
     status,
     globalStatus,
@@ -384,6 +463,19 @@ export function buildProgressionParityReceipt({ start, end, seasons, seed, devel
     observedSeasons,
     seed: Number(seed),
     annualMeanOverallDrift,
+    activeRosterMeanOverallDrift: {
+      gated: false,
+      note: "the same statistic on the active roster only — reported for contrast, see S102",
+      annualMeanOverallDrift: activeRosterMeanDrift,
+      wouldClassifyAs:
+        activeRosterMeanDrift === null
+          ? "incomplete"
+          : classifyDrift(
+              Math.abs(activeRosterMeanDrift),
+              LEAGUE_PROGRESSION_PARITY_TARGET.onTargetMaxAbs,
+              LEAGUE_PROGRESSION_PARITY_TARGET.watchMaxAbs
+            )
+    },
     target: LEAGUE_PROGRESSION_PARITY_TARGET,
     developmentProfile,
     start,
