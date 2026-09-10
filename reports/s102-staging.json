@@ -1,0 +1,88 @@
+{
+  "schemaVersion": "1.1",
+  "generatedBy": "scripts/verify-staging-receipt.mjs",
+  "checkedAt": "2026-09-10T04:57:16.053Z",
+  "baseUrl": "https://staging.playfranchisearchitect.com",
+  "expectedRevision": "30572068d13875432a7a7f23062664167a139753",
+  "summary": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14
+  },
+  "checks": [
+    {
+      "name": "health stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "manifest stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "style asset stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset stayed on staging origin",
+      "ok": true
+    },
+    {
+      "name": "health reachable",
+      "ok": true
+    },
+    {
+      "name": "manifest reachable",
+      "ok": true
+    },
+    {
+      "name": "style asset reachable",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset reachable",
+      "ok": true
+    },
+    {
+      "name": "Community Stats asset identity",
+      "ok": true,
+      "expected": "community-stats.a2cd9636cc.js",
+      "observed": "community-stats.a2cd9636cc.js"
+    },
+    {
+      "name": "source revision",
+      "ok": true,
+      "expected": "30572068d13875432a7a7f23062664167a139753",
+      "observed": "30572068d13875432a7a7f23062664167a139753"
+    },
+    {
+      "name": "artifact fingerprint",
+      "ok": true,
+      "expected": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507",
+      "observed": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
+    },
+    {
+      "name": "style asset identity",
+      "ok": true,
+      "expected": "styles.637f93f5b3.css",
+      "observed": "styles.637f93f5b3.css"
+    },
+    {
+      "name": "repository identity",
+      "ok": true,
+      "expected": "VaultSparkStudios/vaultspark-football-gm",
+      "observed": "VaultSparkStudios/vaultspark-football-gm"
+    },
+    {
+      "name": "launch truth separation",
+      "ok": true,
+      "expected": false,
+      "observed": false
+    }
+  ],
+  "stagingContract": {
+    "sameOriginRequired": true,
+    "healthSchemaRequired": true,
+    "exactDeployIdentityRequired": true,
+    "declaredBootAssetsRequired": true
+  }
+}

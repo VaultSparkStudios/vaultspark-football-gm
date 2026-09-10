@@ -46,6 +46,7 @@ export const SHARDS = {
     "test/session101-restore-and-rewind.test.js",
     "test/session101-trade-deadline.test.js",
     "test/session102-free-agent-pool.test.js",
+    "test/session102-lazy-frenzy-board.test.js",
     "test/session102-staff-and-bye.test.js",
     "test/action-coordinator.test.js",
     "test/advance-week-command.test.js",

@@ -1,27 +1,27 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-09-09 (Session 101 closeout) -->
+<!-- generated-at: 2026-09-10 (Session 102 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S101 ═════╗
-║  Date: 2026-09-09  ·  SIL: 954/1000  ·  Velocity: —              ║
-║  Mode: BUILDER  ·  Agent: codex                                  ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S102 ═════╗
+║  Date: 2026-09-10  ·  SIL: 958/1000  ·  Velocity: —              ║
+║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ feat: fix the cap ledger, bound the pool, and make a gate me  ║
+║  ✓ chore(closeout): refresh S101 status board                    ║
 ║  ✓ chore(proof): reconcile S101 release authority at the deploy  ║
 ║  ✓ chore(proof): complete the S101 capture ledger and render th  ║
 ║  ✓ chore(proof): record S101 deployment receipts and reconciled  ║
-║  ✓ fix: give the backend deploy gate a budget matching its new   ║
-║  ✓ feat: enforce the rules the game advertises, and make four g  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 954/1000 ═══════════════════════════════════════╗
-║    Dev Health         96   ██████████                            ║
+╔══ SCORES · SIL 958/1000 ═══════════════════════════════════════╗
+║    Dev Health         97   ██████████                            ║
 ║    Alignment          98   ██████████                            ║
-║    Momentum           98   ██████████                            ║
+║    Momentum           99   ██████████                            ║
 ║    Engagement         86   █████████░                            ║
-║    Process Qual       94   █████████░                            ║
+║    Process Qual       96   ██████████                            ║
 ║    Coherence          95   ██████████                            ║
 ║    Security           98   ██████████                            ║
 ║    Ecosystem          90   █████████░                            ║
@@ -37,11 +37,11 @@
 ║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
 ║  · context/TRUTH_AUDIT.md                                        ║
-║  · context/PROJECT_STATUS.json                                   ║
+║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 0 files  ·  M:0 A:0 D:0 ?:0                            ║
+║  Changes: 232 files  ·  M:5 A:0 D:216 ?:11                       ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -52,7 +52,7 @@
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
-║  Tests:         1327/1327 · STALE                                ║
+║  Tests:         1415/1415 · STALE                                ║
 ║  IGNIS:         1d ago                                           ║
 ║  Truth:         green                                            ║
 ║  Sanitization:  8d ago                                           ║

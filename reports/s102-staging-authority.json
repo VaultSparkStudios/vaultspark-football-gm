@@ -1,6 +1,8 @@
 {
-  "schemaVersion": 1,
-  "capturedAt": "2026-09-10T05:28:13.767Z",
+  "schemaVersion": "1.1",
+  "kind": "independent-staging-authority",
+  "project": "franchise-architect-staging",
+  "branch": "staging",
   "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
   "artifactFingerprint": {
     "algorithm": "sha256",
@@ -1089,73 +1091,24 @@
       "edge-policy-receipt.json"
     ]
   },
-  "artifact": "static responsive-evidence:d1b155d0ecf12970819811dd55d7f06ae4087745eb10e58e268de0d9d178eb67",
-  "themes": [
-    "dark",
-    "light"
-  ],
-  "captures": [
-    {
-      "file": "s102-desktop-boardroom-staff-dark.png",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 900
-      },
-      "page": "Boardroom coaching staff, head-coach market and coaching-tree lineage",
-      "sha256": "c5cd8b7430cd9b34e0580bd094df605c870bcd684080da38713aeb088ad33ec1"
-    },
-    {
-      "file": "s102-desktop-boardroom-staff-light.png",
-      "theme": "light",
-      "viewport": {
-        "width": 1440,
-        "height": 900
-      },
-      "page": "Boardroom coaching staff, head-coach market and coaching-tree lineage",
-      "sha256": "a16d10f6f2ea28b74d358a7ea5c8730cd06678df75bbd3c5706b9f4b72ba4075"
-    },
-    {
-      "file": "s102-desktop-overview-dark.png",
-      "theme": "dark",
-      "viewport": {
-        "width": 1440,
-        "height": 900
-      },
-      "page": "Overview franchise command, weekly call and schedule",
-      "sha256": "6219e39d155c973cb01c622a8ecdcb5b8ecee20ab390f9510b1c421156e51e17"
-    },
-    {
-      "file": "s102-mobile-overview-light.png",
-      "theme": "light",
-      "viewport": {
-        "width": 390,
-        "height": 844
-      },
-      "page": "Overview franchise command at phone width",
-      "sha256": "873e7738a585a940c7cf77a53205325ec7dfdb4694ac7d2ef36faf8fb4304d2e"
-    }
-  ],
-  "inspection": {
-    "renderedPixelsReviewed": true,
-    "reviewer": "session-agent",
-    "findings": [
-      "The Boardroom coaching staff table renders seven distinct real names (Aiden White, Malik Moore, John Davis, Ethan Johnson, Michael Williams, Jaxon Anderson, Michael Thomas). The same capture at the pre-fix revision 5978e5d5 reads 'Head Coach', 'Offensive Coordinator', 'Defensive Coordinator', 'Scouting Director', 'Cap Analyst', 'Strength Coach' and 'Medical Director' in the name column — the defect and its fix were compared in rendered pixels, not inferred.",
-      "The Head Coach Market now offers named candidates (Jaxon Harris, Devin White) where the pre-fix build offered coaches called 'Defensive Coordinator' and 'Offensive Coordinator'. Two of the four market cards were already hardcoded named free agents (Isaiah Kowalski, Sterling Braddock), which is part of why the defect read as normal.",
-      "Coaching Tree DNA lineage renders real identities and inheritance (Malik Moore OC from Aiden White; John Davis DC from Aiden White), so the (teamId, role, name) key nodeForStaff builds on now carries information in its name column.",
-      "Overview at 1440px dark and 390px light render legibly with no overflow, clipping or theme-incorrect surfaces; the mobile column holds its safe-area gutters and the sticky header and footer remain readable.",
-      "The deterministic harness inspected 255 dark and light states at 1440px desktop, 768px tablet and 390px mobile with no overflow, contrast, touch-target, selector or runtime failures.",
-      "LIMIT OF THIS EVIDENCE — the trade-deadline frenzy board became a declared lazy root this session, and every capture in this set is taken in Week 1, outside the declared deadline window. These pixels therefore cannot see that surface at all: a dynamic import that never resolved would look identical to a board correctly staying hidden. That seam is covered instead by test/session102-lazy-frenzy-board.test.js, which drives the render at Week 11 and asserts the board actually paints.",
-      "PRE-EXISTING, NOT INTRODUCED THIS SESSION — an empty bordered container renders on Overview between 'Architecture Review' and 'STANDINGS'. Verified present and identical in the pre-fix capture at revision 5978e5d5, so it is not a regression from this session's lazy-import change; recorded here rather than silently passed over.",
-      "PRE-EXISTING, NOT INTRODUCED THIS SESSION — the Boardroom coaching staff table renders a 'tendencyKey' row with blank name and rating columns, because the staff object's tendency key is iterated alongside its role entries. Present identically at 5978e5d5.",
-      "Deployment readiness remains independent from public-launch authority; no rendered surface asserts that email delivery, founder approval, cohort, retention or launch approval is verified."
-    ],
-    "fixesApplied": [
-      "Gave every coaching role a real generated name, derived from a keyed source that never draws on the session RNG stream, replacing a fallback that wrote the role label into the name column.",
-      "Corrected derivedRng's range reduction (high-bit scaling plus a murmur3 fmix32 finalizer) so sibling seed keys stop colliding — 13/32 distinct name pairs before, 31/32 after — which is what made every league's coaches share names.",
-      "Made the trade-deadline frenzy board a declared lazy root, bringing the initial shell to 642,587/650,000 bytes with zero lazy leaks without raising the budget.",
-      "Gave the bye week its own beat and stopped it demanding a tactic against no opponent, with the fact of playing supplied as engine-owned dashboard truth."
-    ],
-    "blockingDefectsOpen": 0
-  }
+  "promotionIdentity": "30572068d13875432a7a7f23062664167a139753:7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507",
+  "deploymentId": "794c03b0-e878-4862-806a-54655fa60ea4",
+  "deploymentUrl": "https://794c03b0.franchise-architect-staging.pages.dev",
+  "stableUrl": "https://staging.playfranchisearchitect.com",
+  "domainStatus": "active",
+  "independent": true,
+  "exactRevision": true,
+  "exactArtifact": true,
+  "provenance": {
+    "status": "verified",
+    "checksPassed": 14,
+    "checksTotal": 14,
+    "checkedAt": "2026-09-10T04:56:56.480Z"
+  },
+  "rollback": {
+    "previousDeploymentId": "6292dd61-11c5-4dca-8d54-3f23e81b00c2",
+    "available": true
+  },
+  "verified": true,
+  "observedAt": "2026-09-10T04:56:56.480Z"
 }

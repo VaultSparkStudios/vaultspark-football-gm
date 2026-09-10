@@ -80,7 +80,7 @@
     "automationCoverage": 99
   },
   "currentSession": 102,
-  "lastAgent": "codex",
+  "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
     "date": "2026-09-09",
@@ -131,7 +131,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 658,
+  "silHealth": 662,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -153,7 +153,7 @@
   "complianceScore": 37,
   "complianceTotal": 37,
   "sanitizationLastCleared": "2026-09-02",
-  "lastVerificationAt": "2026-09-09",
+  "lastVerificationAt": "2026-09-10T05:38:33.390Z",
   "stagingType": "cloudflare-pages",
   "stagingUrl": "https://staging.playfranchisearchitect.com",
   "runtimeUrl": "https://playfranchisearchitect.com/",
@@ -177,7 +177,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-09-09"
+      "lastChecked": "2026-09-10"
     }
   ],
   "lastSession": 102,
@@ -215,14 +215,14 @@
     }
   ],
   "backendDeployment": {
-    "sourceRevision": "5126ae4667449991c139026b0b17b47560d876d1",
-    "workflowRun": 34413556979,
+    "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
+    "workflowRun": 34439215581,
     "deployServer": "live-exact-workflow-green",
     "externalHealth": {
       "verified": false,
-      "note": "Not independently probed this session: the API origin is supplied by repository variables (vars.API_ORIGIN) that are not readable from this repo, so no live health receipt was captured. The workflow gate (studio, runtime, core, sim-contract), both image builds and deploy-server all completed green at the exact revision; that is the extent of what is attested."
+      "note": "Not independently probed this session, for the same reason recorded in S101: the API origin is supplied by repository variables (vars.API_ORIGIN) that are not readable from this repo, and PROJECT_STATUS.runtimeUrl points at the Pages site rather than the API. The workflow gate (studio, runtime, core, sim-contract), both image builds and deploy-server all completed green at the exact candidate revision; that is the extent of what is attested."
     },
-    "verifiedAt": "2026-09-09T23:14:09.007Z"
+    "verifiedAt": "2026-09-10T05:36:48.569Z"
   },
   "releaseEvidence": {
     "schemaVersion": "1.1",
@@ -279,11 +279,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "f84e8cbabefc12368b720f9608dcb9ef16e56237936d086d5b89a4ba9e1f926f",
-    "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
+    "receiptSha256": "0c755bd4d730e588a49e83ba56c28495a9d99aa8f4a3da4bfebdae1acbd6c637",
+    "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e",
+      "digest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507",
       "files": 215,
       "entries": [
         {
@@ -323,13 +323,13 @@
         },
         {
           "path": "app.js",
-          "bytes": 109256,
-          "sha256": "e8fca18d465b88e1afeb0174766d5bcc2278b859726e3af4d1da0de0570db5e9"
+          "bytes": 109447,
+          "sha256": "b9d81eb82455574d7cdf24f8cb855b6792baff6e8c4a7a605ce6b81de6e2b53f"
         },
         {
           "path": "boot-manifest.json",
-          "bytes": 1447,
-          "sha256": "07246f9ae65c69e767131dfce15e1067b809e1f213be708de489d6730691e850"
+          "bytes": 1481,
+          "sha256": "14ff7365d4755a3ab0a59ee08a2a16fa5c3199abc5e2513d7997fe8e9bc946c5"
         },
         {
           "path": "community-stats.a2cd9636cc.js",
@@ -363,8 +363,8 @@
         },
         {
           "path": "game.html",
-          "bytes": 102540,
-          "sha256": "fbad04c6659d625636979d3b5addb5aa52d273b1da8b3b1f2d2984fd555d14c6"
+          "bytes": 102471,
+          "sha256": "a0a4bbe959c9df3c7cf55497f02843707e6c5f7bf281285f7d1ad8daee7c0ca0"
         },
         {
           "path": "images/cover.png",
@@ -768,8 +768,8 @@
         },
         {
           "path": "lib/tabOverview.js",
-          "bytes": 68713,
-          "sha256": "9b33f776b4e1b3820ef0eb925e73ee7f3f9f5df6b9065e66bdbe456801044ae2"
+          "bytes": 70275,
+          "sha256": "9607e850188f350b03f313ff788c9729e86b9fe4ce1c6d27b8700f51cefe74e2"
         },
         {
           "path": "lib/tabRoster.js",
@@ -828,13 +828,13 @@
         },
         {
           "path": "lib/weeklyPlanComposer.js",
-          "bytes": 5720,
-          "sha256": "d55eb2bdd29951289c8d7a12442e4d25571d5712762dad3af9dce432c8bab3e4"
+          "bytes": 7204,
+          "sha256": "a15c5fcf2cba1ef3f7c8726c4f281025e2701e8681c9db163701058deaf9d05b"
         },
         {
           "path": "precache-manifest.json",
-          "bytes": 15938,
-          "sha256": "5f7f0f4e45a49f3ba04d637534be465077687a3cbe6421694b4615d621d61882"
+          "bytes": 15942,
+          "sha256": "c23aa3e2ba3d85b5cd474d9487e2daf4cb2f1505044acf158327e849acae2019"
         },
         {
           "path": "privacy.html",
@@ -913,8 +913,8 @@
         },
         {
           "path": "src/config.js",
-          "bytes": 9637,
-          "sha256": "8b3ecb90cb86558c035c9fcde9350ca07dc9b5d8f1a305dab7a04eb0cb82af62"
+          "bytes": 10742,
+          "sha256": "f99ec468ad2e9862d899b752e4d376253979b6bf78a4af030258f5d241415975"
         },
         {
           "path": "src/config/leagueSetup.js",
@@ -928,8 +928,8 @@
         },
         {
           "path": "src/domain/contracts.js",
-          "bytes": 6838,
-          "sha256": "74c66ad6cc38597cb7f552c14d7a834daaa0acf412778743a5a6fb07f661f93b"
+          "bytes": 10451,
+          "sha256": "ba3cca2be6328ce24a7d04b2d3021138a784fb850a847b36bb82c10fdbb8428e"
         },
         {
           "path": "src/domain/developmentEnvironment.js",
@@ -948,18 +948,18 @@
         },
         {
           "path": "src/domain/playerFactory.js",
-          "bytes": 9891,
-          "sha256": "33cc51aeb1ca9289dd9cf9c51b8ea6d9ca62e90405aafcba93f48f872aaffd71"
+          "bytes": 10299,
+          "sha256": "33b331064f8244855277f2cfa76028d095df991383deb5758dd4c73a013bf7cb"
         },
         {
           "path": "src/domain/potentialReversion.js",
-          "bytes": 9400,
-          "sha256": "bd848ba6aa2f8c62e5f0bbc45a548e232b2a1afc39783c43247f3f8f25a7f14a"
+          "bytes": 11659,
+          "sha256": "fe05b45e3db7c27c32f2ff9eda50e0c0213a6c158c7a7a9c8ac447eb8af54d87"
         },
         {
           "path": "src/domain/ratings.js",
-          "bytes": 14482,
-          "sha256": "cd9045d1d9db192074ffb4b99192cbec4f8a1808556864b62a3e11e723f3f267"
+          "bytes": 15424,
+          "sha256": "163a4ebd2c6f0dc8c98ae2901aba15145db5aa3935e766ae9ac685687e6b4a8a"
         },
         {
           "path": "src/domain/teamFactory.js",
@@ -1008,8 +1008,8 @@
         },
         {
           "path": "src/engine/capCompliance.js",
-          "bytes": 11679,
-          "sha256": "619461b7bd29db8946d71c32a568e1c78c887538298a3c89ea42701613241133"
+          "bytes": 12725,
+          "sha256": "64bf17109b21ef0aebeb03355be40c775c33ee91aa98fc326bc33cc4e520e74c"
         },
         {
           "path": "src/engine/coachingMarket.js",
@@ -1083,8 +1083,8 @@
         },
         {
           "path": "src/engine/offseasonSimulator.js",
-          "bytes": 21068,
-          "sha256": "7b83913434c24d74ed78404734d20d189cabd0dbbb4acb4044f4fc40e9a29f01"
+          "bytes": 23420,
+          "sha256": "982a2d287c29b09535473df0f4e28ccbaf536252d25e9e88ce52394ef2612c5b"
         },
         {
           "path": "src/engine/onClockTradeMarket.js",
@@ -1178,8 +1178,8 @@
         },
         {
           "path": "src/runtime/GameSession.js",
-          "bytes": 337328,
-          "sha256": "88834f4108ecc220821ed1cc7eb47f2daa779de7abd4bb814a78eccc3b72a889"
+          "bytes": 340163,
+          "sha256": "e833fa723409ef2b33939ec0e18f4eff1107337817f46c2e1e2d3b918b0d1c43"
         },
         {
           "path": "src/runtime/advanceWeekCommand.js",
@@ -1293,8 +1293,8 @@
         },
         {
           "path": "src/stats/progressionParity.js",
-          "bytes": 23760,
-          "sha256": "92b5ca994b16ed0dadc37ea2d45de367fdd06a52d4860596a65670910ccb0bd5"
+          "bytes": 28741,
+          "sha256": "a8cf20aea632a244c873158db7a009a139c3a1dcb9d8413685269371b82352cd"
         },
         {
           "path": "src/stats/realismCalibrator.js",
@@ -1318,8 +1318,8 @@
         },
         {
           "path": "src/utils/rng.js",
-          "bytes": 3456,
-          "sha256": "b2f131bfee4a86b3999e58a679e3ba1f5cf78dd41d78292777d10a3bfc539596"
+          "bytes": 5535,
+          "sha256": "12b630dea99627b266aef906d5344ba17ce77316b336ca2dab113c655d41d089"
         },
         {
           "path": "src/utils/rngStreams.js",
@@ -1354,7 +1354,7 @@
         {
           "path": "sw.js",
           "bytes": 8516,
-          "sha256": "3044b05b8ce9c911b2ab56eeb244688024f66e3d4446fa68a5fb43123cc7beab"
+          "sha256": "d1faaee3e9ab85614684a56a795721ce765a3a68bda8e9088401a5349a99f738"
         },
         {
           "path": "terms.html",
@@ -1368,21 +1368,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "6292dd61-11c5-4dca-8d54-3f23e81b00c2",
+    "deploymentId": "794c03b0-e878-4862-806a-54655fa60ea4",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-09-09T23:04:00.697Z"
+      "checkedAt": "2026-09-10T04:56:56.480Z"
     },
     "rollback": {
-      "previousDeploymentId": "fb838bbb-6970-4502-9a95-cf9295030457",
+      "previousDeploymentId": "6292dd61-11c5-4dca-8d54-3f23e81b00c2",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-09-09T23:04:00.697Z"
+    "observedAt": "2026-09-10T04:56:56.480Z"
   },
   "lastCloseoutAt": "2026-09-09T09:26:41.463Z",
   "performanceAuthority": {
@@ -1414,31 +1414,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-09-09T23:33:19.002Z",
+    "observedAt": "2026-09-10T05:35:37.119Z",
     "status": "verified",
-    "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
-    "publicationRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
+    "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
+    "publicationRevision": "30572068d13875432a7a7f23062664167a139753",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
+      "digest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
-        "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
+        "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
+        "artifactDigest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
       },
       "production": {
-        "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
-        "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
+        "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
+        "artifactDigest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
       },
       "visual": {
-        "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
-        "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
+        "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
+        "artifactDigest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
       },
       "performance": {
-        "sourceRevision": "9df2f7e280af55345f6d87ba2f8dd98acc280291",
-        "artifactDigest": "2cd23001b7f29352ad235493acca8afc43a824d6d5e1620d78a818bdcf027b1e"
+        "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
+        "artifactDigest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
       }
     },
     "checks": [
@@ -1484,12 +1484,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "5cf84d9be38f5bdc017868536769a3542587e6e36b8b3a35a9f684a338ccf3c3",
-      "productionSha256": "8c910e14741dc60f339369d822fdf49e00005751b18e3066d39450ddd49845d7",
-      "visualSha256": "0fa43c787aea43eefa1f697cb3aa58631edce229eeac5f112492c6d04fa48c6d",
-      "performanceSha256": "b22d0eb5a36a70d83c4d85676e51f3ab03875c40e89ebdbb8c63f6f203eab127"
+      "stagingSha256": "f266840081deef88fd65a1df329f43a4f2571f82d2c433cb6838c218861b57ee",
+      "productionSha256": "aa6af10e4d05b7dab6e7f871c734c8bf008c23f95c437a5395b8f05e1be524e8",
+      "visualSha256": "0eb1ff06bb285e186edd579f6426532c82868afef475070d32c0a04c5dae805f",
+      "performanceSha256": "c12cde8571b4689511322147b26659b095811138bec55cbabb12bc1008fe82a5"
     },
-    "receiptSha256": "9308ddd32fd78b39c13f27b33c0e98e035573893f1ff1467ea752b89944eb241"
+    "receiptSha256": "0a41d65bbb8f3827aa97f4f487364556ed5c621759afe6cb7dd9895e08dc9cef"
   },
   "launchReady": false,
   "sil": {
