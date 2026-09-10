@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-09-10 (Session 102 closeout) -->
+<!-- generated-at: 2026-09-10 (Session 103 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: 134b32a7179383e1 -->
-<!-- session-authority: committed=S102 · SIL=S102 · status=S102 · handoff=S?; divergent=false -->
+<!-- session-authority: committed=S103 · SIL=S103 · status=S103 · handoff=S?; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 102 closeout · 2026-09-10.
+> **Fast-boot brief** — generated at Session 103 closeout · 2026-09-10.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,13 +17,13 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 103 · 2026-09-10 · BUILDER MODE                         ║
+║  Session 104 · 2026-09-10 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ STALE LAST SESSION SUMMARY ══════════════════════════════════╗
-║  Expected S102; PROJECT_STATUS summary says S100.                ║
-║  Release truth is receipt-derived: 9 production routes, origin   ║
+║  Expected S103; PROJECT_STATUS summary says S100.                ║
+║  S103 answered the parity denominator question and then refused  ║
 ║  Repair: update PROJECT_STATUS.lastSessionSummary at closeout.   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -41,29 +41,29 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    958/1000   ██████████████████████░░   96%                     ║
+║    960/1000   ███████████████████████░   96%                     ║
 ║    SIL v3.0  ·  Avg3: 974.7  ·  Velocity 4→                      ║
-║    Active 0d · closeout 1d · source: newest SIL/status/handoff   ║
+║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend  ▇▇▇▇▇  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        97    ██████████  —        →                ║
+║    Dev Health        96    ██████████  —        →                ║
 ║    Alignment         98    ██████████  —        →                ║
-║    Momentum          99    ██████████  —        →                ║
+║    Momentum          98    ██████████  —        →                ║
 ║    Engagement        86    █████████░  —        →                ║
-║    Process Qual      96    ██████████  —        →                ║
+║    Process Qual      99    ██████████  —        →                ║
 ║    Coherence         95    ██████████  ········ →                ║
 ║    Security          98    ██████████  ········ →                ║
 ║    Ecosystem         90    █████████░  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation        99    ██████████  ········ →                ║
+║    Automation       100    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 102 ═══════════════════════════╗
-║  Shipped:  Release truth is receipt-derived: 9 production route  ║
-║  Tests:    1327/1327 passing  ·  Deploy: N/A                     ║
+╔══ WHERE WE LEFT OFF  ·  Session 103 ═══════════════════════════╗
+║  Shipped:  S103 answered the parity denominator question and th  ║
+║  Tests:    1415/1415 passing  ·  Deploy: N/A                     ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
@@ -74,7 +74,7 @@
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1327/1327 passing (2026-09-09) · STALE — run   ║
+║  ⚠  Tests         1415/1415 passing (2026-09-10) · STALE — run   ║
 ║  ✓  Velocity      4   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
@@ -88,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
+║  ⛔  Doctor        10/12 (83%)  ·  1 failing                      ║
 ║  ✓  Cost          Max flat-rate · $0.51/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -108,7 +108,7 @@
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
 ║  Velocity:   ▇▇▇▇▇  4→  (last 5 sessions)                        ║
 ║  Intent:     ?% achieved last 5                                  ║
-║  Streak:     ✓ 3 consecutive achieved-intent sessions            ║
+║  Streak:     ✓ 4 consecutive achieved-intent sessions            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
@@ -121,5 +121,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 102 closeout · 2026-09-10*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 103 closeout · 2026-09-10*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

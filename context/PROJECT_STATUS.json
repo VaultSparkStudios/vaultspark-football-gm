@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S102 closed the measured engine backlog: a contract cap hit is fixed at signing (was +28.9% over a five-year deal), the free-agent pool has an exit (400 unsigned without the rule vs 296 with it at simulated season 10), and the distribution gate now measures the active-roster population it has declared since S92 on BOTH arms rather than one (blended dispersion drift 0.173 out-of-range vs 0.037 on-target on the declared population). Canonical Node 1,415/1,415 across six shards; doctor blockingFailing 0.",
-  "nextMilestone": "Decide the parity target denominator deliberately as its own item (mean drift reads +0.055/season rostered vs +0.282/season active-roster-only, published ungated), then price the survivorship ratchet that keeps elite density at watch (3.5% vs a sourced 1.53% All-Pro ceiling). Launch evidence unchanged: delivered reply-capable email, candidate-bound founder approval, authoritative lifecycle reconciliation.",
+  "currentFocus": "S103 answered the parity denominator question and then refused to ship the answer at a threshold's expense. A drift statistic requires a population that exists at both ends of its window and rostered does not — a generated league starts with an empty practice squad and fills 16 slots per club over the measured decade. Shift-share on the canonical seed: within-group +0.269/season (watch) against between-group -0.197/season, summing to the +0.072 the gate asserts as on-target. Re-pointing reads 0.303/season, out-of-range rather than watch, so the population waits on the fix instead of a widened band; the finding ships gated instead, with the realism regression asserting the receipt reports verdict-changed-by-composition. A league also has an identity: staff and coaching-market seeds fell back to the start year, making every franchise byte-identical across seeds 8121/2026/4242.",
+  "nextMilestone": "Fix the active roster's position composition — normalizeRosterSlots ranks a club's whole roster by overall with no positional structure, so the quarterback room goes 64 to 195 and specialists 64 to 155 while the line falls 288 to 258 and the front seven 480 to 407, with 11.3% of quarterbacks at 90+. That is the measured candidate for both the 0.303 parity reading and the standing elite-density watch, and the parity re-point should follow it rather than precede it. Do not widen onTargetMaxAbs/watchMaxAbs and do not re-point the population a second time. Launch evidence unchanged: delivered reply-capable email, candidate-bound founder approval, authoritative lifecycle reconciliation.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -79,7 +79,7 @@
     "capitalEfficiency": 100,
     "automationCoverage": 99
   },
-  "currentSession": 102,
+  "currentSession": 103,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
@@ -134,12 +134,12 @@
   "silHealth": 662,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 1,
     "total": 12,
-    "failing": 0,
-    "score": 92,
+    "failing": 1,
+    "score": 83,
     "date": "2026-09-10",
-    "passing": 11,
+    "passing": 10,
     "warning": 1,
     "checks": [
       {
@@ -147,6 +147,12 @@
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
+      },
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "failing",
+        "blocking": true,
+        "detail": "HEAD 5cde423e725e20eb681a8cd75883e9c5d163f80e is not covered by live production 30572068d13875432a7a7f23062664167a139753"
       }
     ]
   },
@@ -180,7 +186,7 @@
       "lastChecked": "2026-09-10"
     }
   ],
-  "lastSession": 102,
+  "lastSession": 103,
   "silLastSession": 102,
   "bootAmortization": {
     "ratio": 6.78,
@@ -1494,19 +1500,19 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 102,
-    "silScore": 958,
+    "session": 103,
+    "silScore": 960,
     "categories": {
-      "devHealth": 97,
+      "devHealth": 96,
       "creativeAlignment": 98,
-      "momentum": 99,
+      "momentum": 98,
       "engagement": 86,
-      "processQuality": 96,
+      "processQuality": 99,
       "crossRepoCoherence": 95,
       "securityPosture": 98,
       "ecosystemIntegration": 90,
       "capitalEfficiency": 100,
-      "automationCoverage": 99
+      "automationCoverage": 100
     },
     "date": "2026-09-10"
   },

@@ -138,16 +138,58 @@ test("a deterministic decade satisfies progression parity and finite-number inte
     "the pre-S102 blended reading must stay published, and must stay ungated"
   );
 
-  // The parity target's own denominator is load-bearing too — the same drift
-  // measured on the active roster is several times larger. Not gated here (this
-  // target declares `rostered`), but it must be published, because the whole
-  // reason this class of defect keeps recurring is that the contrast goes
-  // unrecorded. See `context/TASK_BOARD.md` (S102, deferred).
+  // S102 — the parity target's own denominator is load-bearing, and the same
+  // drift on the active roster is several times larger. Not gated (this target
+  // declares `rostered`), but it must be published.
   assert.equal(report.progression.activeRosterMeanOverallDrift.gated, false);
   assert.equal(
     typeof report.progression.activeRosterMeanOverallDrift.annualMeanOverallDrift,
     "number",
     "the active-roster contrast must be measured, not omitted"
+  );
+
+  // S103 — and the reason that contrast exists is now a machine-checked fact
+  // rather than a comment. `compositionShift` decomposes this gate's own blended
+  // mean into development and denominator movement, and reports when the two
+  // disagree about the verdict. On this path they do: blended +0.072 `on-target`
+  // sitting on top of a within-group +0.269 `watch`, with the practice squad
+  // arriving from 0% of the denominator to 22.7% of it.
+  //
+  // This assertion is the point of the whole item. S103 implemented the re-point
+  // to `activeRosterOnly`, measured it at 0.303/season — `out-of-range`, not
+  // `watch` — and reverted rather than weaken a threshold to land it. What
+  // survives is that the gate can no longer report `on-target` without also
+  // reporting, in the same receipt, that its denominator moved underneath it.
+  const shift = report.progression.compositionShift;
+  assert.equal(shift.gated, false);
+  assert.ok(
+    Math.abs(shift.withinGroupAnnualDrift + shift.betweenGroupAnnualDrift - shift.blendedAnnualDrift) <= 0.002,
+    `shift-share must reconstruct the whole: ${JSON.stringify(shift)}`
+  );
+  // A tolerance, not equality: both sides are built from means already rounded
+  // to two places by `summarizePlayers`, so demanding an exact match would be
+  // asserting the rounding rather than the decomposition.
+  assert.ok(
+    Math.abs(shift.blendedAnnualDrift - report.progression.annualMeanOverallDrift) <= 0.005,
+    `the decomposition must decompose the gated reading: ${shift.blendedAnnualDrift} vs ${report.progression.annualMeanOverallDrift}`
+  );
+  assert.equal(
+    shift.status,
+    "verdict-changed-by-composition",
+    `this gate's on-target verdict is produced by its denominator moving, and the receipt must say so: ${JSON.stringify(shift)}`
+  );
+  assert.equal(shift.blendedWouldClassifyAs, "on-target");
+  assert.notEqual(
+    shift.withinGroupWouldClassifyAs,
+    "on-target",
+    "the league the GM competes in is not on-target, and that is the finding"
+  );
+  const practice = shift.groups.find((group) => group.group === "practiceSquad");
+  assert.ok(practice, JSON.stringify(shift.groups));
+  assert.equal(practice.startWeightPct, 0, "the practice squad starts empty — that is why this denominator moves");
+  assert.ok(
+    practice.endWeightPct > 15,
+    `and it fills to roughly a quarter of the denominator: ${JSON.stringify(practice)}`
   );
 
   assert.equal(report.numericIntegrity.status, "pass", JSON.stringify(report.numericIntegrity));

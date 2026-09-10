@@ -174,6 +174,7 @@ import { answerPressQuestion, getPendingPressQuestion, getPressReceipts } from "
 import { buildCoachingMarket, fireCoach, getCoachingMarketReceipts, hireCoach } from "../engine/coachingMarket.js";
 import { initCoachingTree, registerRootHeadCoach } from "../engine/coachingTree.js";
 import { derivedStaffRng, staffSeedKey } from "../engine/staffGeneration.js";
+import { ensureLeagueIdentity } from "../domain/leagueIdentity.js";
 import { applyArchiveRetention, pruneWeeklyHistory, toLeanWeekResult } from "./weekResultProjection.js";
 import { consumePendingWeeklyTactic } from "./weeklyTactic.js";
 import { buildWhatIfReplay } from "../engine/whatIfReplay.js";
@@ -1413,6 +1414,13 @@ function ensureLeagueRuntime(league) {
   if (!Array.isArray(league.retiredPlayers)) league.retiredPlayers = [];
   if (!Array.isArray(league.retiredNumbers)) league.retiredNumbers = [];
   if (!Array.isArray(league.champions)) league.champions = [];
+  // S103 — assign the league its own identity before anything keys off it.
+  // Derived from persisted content, never from the session RNG (this is a
+  // normalizer; see the S63 note below), and written once so it persists in the
+  // snapshot from here on. Everything downstream — staff generation, the
+  // coaching market — used to fall back to the start year, which is the same
+  // number for every league anyone starts in that year.
+  ensureLeagueIdentity(league);
   if (!Array.isArray(league.history)) league.history = [];
   if (!league.settings || typeof league.settings !== "object") league.settings = { ...DEFAULT_LEAGUE_SETTINGS };
   league.settings = {

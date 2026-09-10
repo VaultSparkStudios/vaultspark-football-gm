@@ -33,6 +33,8 @@
  * does not cover, and the budget was already a live simulation input.
  */
 
+import { leagueIdentity } from "../domain/leagueIdentity.js";
+
 const ROLE_LABELS = Object.freeze({
   headCoach: "Head Coach",
   offensiveCoordinator: "Offensive Coordinator",
@@ -142,10 +144,15 @@ export function firingCost(staffer, role = "headCoach") {
   return Math.round((coachSalary(staffer, role) * years * 0.55) / 50_000) * 50_000;
 }
 
+/**
+ * S103 — the same identity defect `staffSeedKey` carried, in a second file.
+ * The fallback was `y${league.year}`, so two franchises started in the same year
+ * interviewed the same candidate pool — same names, same ratings — for the life
+ * of both saves. Now keyed on the league's own derived identity.
+ */
 function leagueSeed(league, teamId, role) {
   const year = league?.currentYear ?? 0;
-  const identity = league?.leagueId || league?.franchiseId || `y${league?.year ?? year}`;
-  return `coach-market|${identity}|${year}|${teamId}|${role}`;
+  return `coach-market|${leagueIdentity(league)}|${year}|${teamId}|${role}`;
 }
 
 function candidateName(seed, index) {

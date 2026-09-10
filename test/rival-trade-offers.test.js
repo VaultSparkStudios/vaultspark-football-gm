@@ -135,9 +135,24 @@ test("accepting an offer commits the real trade with fresh-fingerprint disciplin
 // deadline must refuse, so the option above is fixing a live condition rather
 // than guarding a hypothetical one. If this ever stops reproducing, the seed's
 // league has changed and `withinTradeWindow` needs re-justifying, not deleting.
+//
+// S103 — re-justified, exactly as that note prescribes. Seed 620083 used to
+// surface its offer at week 13; it now surfaces at week 2, because this session
+// gave each league its own identity (`src/domain/leagueIdentity.js`). Staff and
+// owner profiles are derived from that identity, `applyStaffToCoaching` feeds
+// them into `team.coaching`, and coaching drives how a league develops — so
+// every freshly generated league from a given seed legitimately plays out
+// differently now. That is the fix working, not the offer engine regressing:
+// existing saves are untouched, because the profile builders preserve any value
+// already stored. Seeds were re-scanned against the live engine and 620097
+// surfaces its offer at week 12, one past the declared Week 11 deadline, which
+// is the condition this control exists to reproduce. Note that the condition is
+// genuinely seed-sensitive — of twenty seeds scanned, three reproduced it and
+// two produced no offer inside fourteen weeks at all — so a future change that
+// moves it again should re-scan rather than assume the engine broke.
 test("negative control: without the window guard the fixture yields an unacceptable offer", () => {
-  const { session, offer } = sessionWithOffer(620083);
-  assert.ok(offer, "seed 620083 must still produce a pending offer at all");
+  const { session, offer } = sessionWithOffer(620097);
+  assert.ok(offer, "seed 620097 must still produce a pending offer at all");
 
   const deadlineWeek = Number(session.getLeagueSettings().tradeDeadlineWeek);
   assert.ok(

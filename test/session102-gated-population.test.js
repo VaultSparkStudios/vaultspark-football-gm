@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  buildCompositionShift,
   buildDistributionReceipt,
   buildProgressionParityReceipt,
   splitActivePopulation,
@@ -151,6 +152,10 @@ test("the distribution target measures the population it declares", () => {
 });
 
 test("the parity target still measures the rostered population it declares", () => {
+  // S103 decided the re-point on evidence and did not ship it: on the canonical
+  // seed the active-roster reading is 0.303/season, `out-of-range` rather than
+  // `watch`, and a red gate is closed by fixing the defect it found, not by
+  // widening the band. See the S103 note on the target.
   const summary = summarizeLeagueProgression(fixtureLeague({ activeOverall: 78, practiceOverall: 60 }));
   assert.equal(summary.population.basis, "rostered");
   assert.equal(summary.meanOverall, summary.population.rostered.meanOverall);
@@ -168,11 +173,64 @@ test("the active-roster mean drift is published, and published as ungated", () =
   assert.ok(Math.abs(reported.annualMeanOverallDrift - 0.3) < 0.02, "the active roster moved 3 points over 10 seasons");
   assert.equal(typeof reported.wouldClassifyAs, "string", "it must say what it would have been classified as");
 
-  // And the gated arm is unchanged by the presence of the diagnostic.
   assert.ok(
     parity.annualMeanOverallDrift < reported.annualMeanOverallDrift,
     "the blended gated drift must be the smaller number — that divergence is the finding"
   );
+});
+
+test("S103 — the composition decomposition is exact, and names a moving denominator", () => {
+  // A practice squad that arrives mid-window is the shape that made `rostered`
+  // the wrong denominator, so the decomposition is built against exactly that:
+  // the practice group is absent at the start and present at the end, and its
+  // arrival is the entire movement — the active roster does not develop at all.
+  const start = summarizeLeagueProgression(fixtureLeague({ activeOverall: 78, practiceOverall: 60, practicePerTeam: 0 }));
+  const end = summarizeLeagueProgression(fixtureLeague({ activeOverall: 78, practiceOverall: 60 }));
+  const parity = buildProgressionParityReceipt({ start, end, seasons: 10, seed: 7 });
+  const shift = parity.compositionShift;
+
+  assert.equal(shift.gated, false);
+  assert.ok(
+    Math.abs(shift.withinGroupAnnualDrift + shift.betweenGroupAnnualDrift - shift.blendedAnnualDrift) <= 0.002,
+    `shift-share must reconstruct the whole: ${JSON.stringify(shift)}`
+  );
+  assert.equal(
+    shift.status,
+    "verdict-changed-by-composition",
+    `a denominator that gained a whole group while nobody developed is composition, not development: ${JSON.stringify(shift)}`
+  );
+  assert.equal(shift.withinGroupWouldClassifyAs, "on-target", "nobody developed, so the development term is quiet");
+  assert.notEqual(shift.blendedWouldClassifyAs, "on-target", "and the blended reading is not — that disagreement is the whole guard");
+  assert.equal(shift.withinGroupAnnualDrift, 0, "nobody developed in this fixture");
+  assert.ok(shift.betweenGroupAnnualDrift < 0, "the arriving group is worse than the roster it joined");
+
+  // Negative control: the same decomposition on a league that really did
+  // develop, with a denominator that did not move, must NOT be composition.
+  const stillStart = summarizeLeagueProgression(fixtureLeague({ activeOverall: 76, practiceOverall: 60 }));
+  const stillEnd = summarizeLeagueProgression(fixtureLeague({ activeOverall: 79, practiceOverall: 60 }));
+  const stable = buildProgressionParityReceipt({ start: stillStart, end: stillEnd, seasons: 10, seed: 7 }).compositionShift;
+  assert.equal(stable.status, "development-dominated", JSON.stringify(stable));
+  assert.equal(stable.betweenGroupAnnualDrift, 0, "no weight moved, so there is nothing for the between term to charge");
+
+  // The control that matters most: the guard must fire on the defect in the
+  // exact shape it was measured, not only on a fixture built to trip it. These
+  // are the seed-2026 ten-season readings — blended +0.037 "on-target" sitting
+  // on top of a within-group +0.235 "watch".
+  const side = (activeCount, activeMean, practiceCount, practiceMean) => ({
+    population: {
+      activeRosterOnly: { count: activeCount, meanOverall: activeMean },
+      practiceSquad: { count: practiceCount, meanOverall: practiceMean }
+    }
+  });
+  const measured = buildCompositionShift({
+    start: side(1568, 77.21, 0, 0),
+    end: side(1685, 79.86, 493, 69.77),
+    observedSeasons: 10
+  });
+  assert.equal(measured.status, "verdict-changed-by-composition", JSON.stringify(measured));
+  assert.equal(measured.blendedAnnualDrift, 0.037, "must reproduce the drift the pre-S103 gate asserted as on-target");
+  assert.equal(measured.blendedWouldClassifyAs, "on-target");
+  assert.equal(measured.withinGroupWouldClassifyAs, "watch", "the league the GM competes in was never on-target");
 });
 
 test("a fixture with no practice squad measures exactly what it always did", () => {

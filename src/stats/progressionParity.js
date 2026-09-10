@@ -25,6 +25,59 @@ const round = (value, digits = 2) => Number(Number(value || 0).toFixed(digits));
  * The pool is still measured and reported, in `population.unrostered`. It is
  * simply no longer allowed to vote on whether the league is calibrated.
  */
+/**
+ * S103 — the denominator question, answered; the re-point, measured and not yet
+ * paid for. Read this before proposing to move this population again.
+ *
+ * S102 published the divergence rather than acting on it and asked the right
+ * question first: *is the league this gate polices the one the GM competes in,
+ * or the one the roster rules define?* The answer is not a matter of taste,
+ * because `rostered` fails a prior test that has nothing to do with which
+ * league you would rather police: **a drift statistic requires a population
+ * that exists at both ends of its window, and `rostered` does not.** A
+ * generated league is built at 53/club with an EMPTY practice squad and fills
+ * its 16/club practice slots over the following decade, so this denominator
+ * grows by roughly a quarter of itself and everything it gains sits about ten
+ * points below the roster it is averaged into.
+ *
+ * Measured on seed 20260306 over ten seasons — the canonical path
+ * `realism-career-regression` asserts on, and `buildCompositionShift` below
+ * reports this decomposition on every run:
+ *
+ *   within-group  (players actually developing)   +0.269/season   "watch"
+ *   between-group (practice weight 0% -> 22.7%)   -0.197/season
+ *   blended       (what this gate asserts)        +0.072/season   "on-target"
+ *
+ * Two effects of opposite sign cancelling inside a gate built to catch exactly
+ * that — the shape S91 found with the free-agent pool in this same denominator,
+ * and the shape S102 found on the dispersion arm. Third time.
+ *
+ * **So why is the population still `rostered`?** Because re-pointing it was
+ * implemented, measured, and reverted in the same session. On the canonical
+ * seed the active-roster reading is **0.303/season**, which is `out-of-range`
+ * against `watchMaxAbs` — not `watch`. Shipping the re-point would turn this
+ * gate red, and the two ways out of a red gate are to fix the defect it found
+ * or to weaken the gate. Weakening it is forbidden and the defect is real, so
+ * the re-point waits on the fix rather than being paid for with a threshold.
+ * **Do not close this by widening `onTargetMaxAbs` or `watchMaxAbs`, and do not
+ * close it by re-pointing the population a second time.**
+ *
+ * The measured root-cause candidate, from the same receipt: the active roster's
+ * *position composition* is itself drifting hard, because `normalizeRosterSlots`
+ * ranks a club's whole roster by overall with no positional structure. Over ten
+ * seasons the quarterback room goes 64 -> 195 players and specialists 64 -> 155
+ * while the offensive line falls 288 -> 258 and the front seven 480 -> 407 — and
+ * the quarterback room carries 11.3% of its players at 90+. High-rated, cheap
+ * positions crowd out linemen, which inflates the active-roster mean for a
+ * compositional reason one level below the one this note is about. That is the
+ * thing to fix; the re-point should follow it, not precede it.
+ *
+ * Both readings this gate declines to assert are published, `gated: false`:
+ * `activeRosterMeanOverallDrift` carries the contrast and what it would have
+ * classified as, and `compositionShift` carries the decomposition and says
+ * `verdict-changed-by-composition` when the blend and the within-group term
+ * disagree about the verdict — which, on the canonical path, they do.
+ */
 export const LEAGUE_PROGRESSION_PARITY_TARGET = Object.freeze({
   version: "2026-s91-rostered-distribution",
   metric: "rostered-player mean overall annual drift",
@@ -222,19 +275,18 @@ export function summarizeLeagueProgression(league) {
   const { active, rostered, unrostered, activeRosterOnly, practiceSquad } = splitActivePopulation(league);
   // The gated population for the PARITY target, which declares itself as
   // "rostered-player mean overall annual drift" — so `rostered` is what it is
-  // supposed to measure, and it still is. The DISTRIBUTION target declares a
-  // different population ("active-roster overall dispersion and elite density")
-  // and `buildDistributionReceipt` now reads that one on both of its arms; see
-  // the S102 note there.
+  // supposed to measure, and it still is. See `LEAGUE_PROGRESSION_PARITY_TARGET`
+  // for why S103 decided the re-point on evidence and still did not ship it.
   //
   // If a league has no teams at all — a fixture, or a caller that built players
   // without a structure — fall back to the active set rather than reporting a
   // zeroed league as calibrated.
   const players = rostered.length ? rostered : active;
+  const basis = rostered.length ? "rostered" : "active-fallback";
   const summary = summarizePlayers(players);
   return {
     population: {
-      basis: rostered.length ? "rostered" : "active-fallback",
+      basis,
       rostered: summarizePlayers(rostered),
       unrostered: summarizePlayers(unrostered),
       blended: summarizePlayers(active),
@@ -263,6 +315,136 @@ export function summarizeLeagueProgression(league) {
       prime26To29: cohort(players, (player) => Number(player.age) >= 26 && Number(player.age) <= 29),
       veteran30Plus: cohort(players, (player) => Number(player.age) >= 30)
     }
+  };
+}
+
+/**
+ * Annual drift between two mean readings, or null when either is unusable.
+ *
+ * Used by the reported arms. The gated arm above keeps its own inline form
+ * deliberately: it must produce a number for `classifyDrift` under every input,
+ * where a reported arm is allowed to say "incomplete" and does. The difference
+ * is a real one, not an oversight — but it is the kind of difference that rots,
+ * so it is written down here rather than left to be rediscovered.
+ */
+function driftBetween(startMean, endMean, observedSeasons) {
+  const a = Number(startMean);
+  const b = Number(endMean);
+  const seasons = Number(observedSeasons);
+  if (!Number.isFinite(a) || !Number.isFinite(b) || !Number.isFinite(seasons) || seasons <= 0) return null;
+  return round((b - a) / seasons, 3);
+}
+
+/**
+ * S103 — why a mean drift on a mixed population can be a lie, stated as a number.
+ *
+ * This project has now shipped the same defect three times, in three different
+ * gates, and each time the fix was to name the right population. Naming a
+ * population is a one-off; this is the recurring check.
+ *
+ * A blended mean is `sum over groups of weight * mean`. It can move for two
+ * completely different reasons: the groups' means moved (**within** — players
+ * developing, which is the thing the gate exists to police), or the groups'
+ * relative sizes moved (**between** — a bucket arriving or draining, which is
+ * not development at all). A standard shift-share decomposition separates them
+ * exactly, using midpoint weights and midpoint means so the two parts sum to
+ * the whole with no residual:
+ *
+ *   within  = sum_g  wbar_g * (m_g,end - m_g,start)
+ *   between = sum_g  mbar_g * (w_g,end - w_g,start)
+ *   within + between = blended_end - blended_start     (identically)
+ *
+ * Measured on the pre-S103 gated population, seed 2026, ten seasons: within
+ * about +0.28/season, between about -0.28/season, blended +0.055 and reported
+ * "on-target". Neither number on its own is wrong; the *sum* is what was
+ * meaningless, and no arm of the receipt could say so.
+ *
+ * **What counts as bad is a changed verdict, not a magnitude.** The first draft
+ * of this flagged composition when `|between| > |within|`, and on the very case
+ * that motivated it — the measurement above — it reported
+ * "development-dominated", because 0.198 is not larger than 0.235. A guard that
+ * stays quiet on the defect it was built for is worth nothing, so the criterion
+ * is the thing actually at stake: **classify the blended drift, classify the
+ * within-group drift, and say so when they disagree.** Here they do — blended
+ * `on-target` against within-group `watch` — which is precisely the sentence
+ * "the composition term changed this gate's answer". No threshold is invented;
+ * the target's own bands do the work.
+ */
+export function buildCompositionShift({ start, end, observedSeasons }) {
+  const groups = ["activeRosterOnly", "practiceSquad"];
+  const read = (side, key) => {
+    const block = side?.population?.[key];
+    return { count: Number(block?.count), mean: Number(block?.meanOverall) };
+  };
+  const startTotal = groups.reduce((sum, key) => sum + (Number.isFinite(read(start, key).count) ? read(start, key).count : 0), 0);
+  const endTotal = groups.reduce((sum, key) => sum + (Number.isFinite(read(end, key).count) ? read(end, key).count : 0), 0);
+  if (!startTotal || !endTotal) {
+    return {
+      gated: false,
+      status: "incomplete",
+      note: "no rostered population at one end of the window",
+      blendedWouldClassifyAs: "incomplete",
+      withinGroupWouldClassifyAs: "incomplete",
+      withinGroupAnnualDrift: null,
+      betweenGroupAnnualDrift: null,
+      blendedAnnualDrift: null,
+      groups: []
+    };
+  }
+  let within = 0;
+  let between = 0;
+  const rows = [];
+  for (const key of groups) {
+    const a = read(start, key);
+    const b = read(end, key);
+    const startWeight = (Number.isFinite(a.count) ? a.count : 0) / startTotal;
+    const endWeight = (Number.isFinite(b.count) ? b.count : 0) / endTotal;
+    // An absent group carries no mean of its own, so the mean it "had" is the
+    // one it has at the end — using 0 here would charge the decomposition a
+    // phantom 66-point swing for a bucket that simply did not exist yet.
+    const startMean = Number.isFinite(a.mean) && a.count ? a.mean : Number.isFinite(b.mean) ? b.mean : 0;
+    const endMean = Number.isFinite(b.mean) && b.count ? b.mean : startMean;
+    const meanWeight = (startWeight + endWeight) / 2;
+    const meanLevel = (startMean + endMean) / 2;
+    within += meanWeight * (endMean - startMean);
+    between += meanLevel * (endWeight - startWeight);
+    rows.push({
+      group: key,
+      startCount: Number.isFinite(a.count) ? a.count : 0,
+      endCount: Number.isFinite(b.count) ? b.count : 0,
+      startWeightPct: round(startWeight * 100, 1),
+      endWeightPct: round(endWeight * 100, 1),
+      startMeanOverall: round(startMean),
+      endMeanOverall: round(endMean)
+    });
+  }
+  const seasons = Number(observedSeasons) > 0 ? Number(observedSeasons) : 1;
+  const withinDrift = round(within / seasons, 3);
+  const betweenDrift = round(between / seasons, 3);
+  const blendedDrift = round((within + between) / seasons, 3);
+  const classify = (drift) =>
+    classifyDrift(
+      Math.abs(drift),
+      LEAGUE_PROGRESSION_PARITY_TARGET.onTargetMaxAbs,
+      LEAGUE_PROGRESSION_PARITY_TARGET.watchMaxAbs
+    );
+  const blendedVerdict = classify(blendedDrift);
+  const withinVerdict = classify(withinDrift);
+  return {
+    gated: false,
+    note: "shift-share decomposition of the blended rostered mean — reported so a denominator that moved cannot pass as development",
+    status:
+      blendedVerdict !== withinVerdict
+        ? "verdict-changed-by-composition"
+        : Math.abs(betweenDrift) > Math.abs(withinDrift)
+          ? "composition-dominated"
+          : "development-dominated",
+    blendedWouldClassifyAs: blendedVerdict,
+    withinGroupWouldClassifyAs: withinVerdict,
+    withinGroupAnnualDrift: withinDrift,
+    betweenGroupAnnualDrift: betweenDrift,
+    blendedAnnualDrift: blendedDrift,
+    groups: rows
   };
 }
 
@@ -429,32 +611,15 @@ export function buildProgressionParityReceipt({ start, end, seasons, seed, devel
         : "on-target";
   // S102 — the same mean drift, measured on the active roster instead of the
   // blended rostered population this target declares. REPORTED, NEVER GATED.
-  //
-  // Fixing the dispersion arm's denominator exposed that the choice of
-  // denominator is doing a great deal of work on the mean arm too. Same run,
-  // same seed, same 10 seasons:
-  //
-  //   `rostered` (gated, as declared)   77.21 -> 77.76   +0.055/season  on-target
-  //   `activeRosterOnly` (reported)     drift             +0.282/season  would be watch
-  //
-  // Five times the drift, in the population the GM actually competes in.
-  // This is deliberately not gated here: `LEAGUE_PROGRESSION_PARITY_TARGET`
-  // declares `rostered`, and quietly re-pointing a declared target at a
-  // population that turns it red is a calibration decision, not a bug fix —
-  // it would also be indistinguishable, from the outside, from moving a
-  // threshold until the number fit. The divergence is published so the decision
-  // can be taken deliberately, with the numbers in hand, instead of being
-  // rediscovered a third time. See `context/TASK_BOARD.md` (S102, deferred).
-  const activeRosterMeanDrift =
-    Number.isFinite(Number(start?.population?.activeRosterOnly?.meanOverall)) &&
-    Number.isFinite(Number(end?.population?.activeRosterOnly?.meanOverall))
-      ? round(
-          (Number(end.population.activeRosterOnly.meanOverall) -
-            Number(start.population.activeRosterOnly.meanOverall)) /
-            observedSeasons,
-          3
-        )
-      : null;
+  // S103 measured what re-pointing the target at it would cost and decided not
+  // to pay it yet; see `LEAGUE_PROGRESSION_PARITY_TARGET`.
+  const activeRosterMeanDrift = driftBetween(
+    start?.population?.activeRosterOnly?.meanOverall,
+    end?.population?.activeRosterOnly?.meanOverall,
+    observedSeasons
+  );
+  // S103 — and the general guard. See `buildCompositionShift`.
+  const compositionShift = buildCompositionShift({ start, end, observedSeasons });
 
   return {
     status,
@@ -465,7 +630,7 @@ export function buildProgressionParityReceipt({ start, end, seasons, seed, devel
     annualMeanOverallDrift,
     activeRosterMeanOverallDrift: {
       gated: false,
-      note: "the same statistic on the active roster only — reported for contrast, see S102",
+      note: "the same statistic on the active roster only — reported for contrast, see S102 and the S103 note on the target",
       annualMeanOverallDrift: activeRosterMeanDrift,
       wouldClassifyAs:
         activeRosterMeanDrift === null
@@ -476,6 +641,7 @@ export function buildProgressionParityReceipt({ start, end, seasons, seed, devel
               LEAGUE_PROGRESSION_PARITY_TARGET.watchMaxAbs
             )
     },
+    compositionShift,
     target: LEAGUE_PROGRESSION_PARITY_TARGET,
     developmentProfile,
     start,

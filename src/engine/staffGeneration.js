@@ -43,15 +43,23 @@
  */
 
 import { derivedRng } from "../utils/rng.js";
+import { leagueIdentity } from "../domain/leagueIdentity.js";
 
 /**
  * Stable identity for a league/team pair, used as the generation seed.
- * Falls back through the fields a league may carry so the key is always defined.
+ *
+ * S103 — this used to fall back to `y${league.year}` when a league carried no
+ * `leagueId`/`franchiseId`, which is every single-player league the game ships:
+ * only the multiplayer lobby path sets those fields. The year is not an
+ * identity, so every league started in the same year derived the same staff.
+ * Measured on seeds 8121 / 2026 / 4242: byte-identical head coaches.
+ *
+ * `leagueIdentity` derives a real per-league identity from persisted content
+ * and is assigned once by the league normalizer, so this key is now distinct
+ * per franchise and still stable for the life of a save.
  */
 export function staffSeedKey(league, teamId) {
-  const identity =
-    league?.leagueId || league?.franchiseId || `y${league?.year ?? league?.currentYear ?? 0}`;
-  return `staff|${identity}|${teamId}`;
+  return `staff|${leagueIdentity(league)}|${teamId}`;
 }
 
 /**
