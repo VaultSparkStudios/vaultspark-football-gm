@@ -10,11 +10,11 @@
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ chore(closeout): record S104 deployment receipts, captures a  ║
 ║  ✓ feat: generate a league at the roster its own rules declare,  ║
 ║  ✓ chore(deps-dev): bump @playwright/test in the dev-dependenci  ║
 ║  ✓ chore(closeout): record S103 deployment receipts and reconci  ║
 ║  ✓ fix: handle a bye where the product now decides it, and neve  ║
-║  ✓ feat: make the parity gate report its own moving denominator  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 961/1000 ═══════════════════════════════════════╗
 ║    Dev Health         97   ██████████                            ║
@@ -31,17 +31,17 @@
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  · context/CURRENT_STATE.md                                      ║
 ║  · context/TASK_BOARD.md                                         ║
-║  · context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ context/LATEST_HANDOFF.md                                     ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 129 files  ·  M:5 A:0 D:20 ?:104                       ║
+║  Changes: 11 files  ·  M:11 A:0 D:0 ?:0                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝

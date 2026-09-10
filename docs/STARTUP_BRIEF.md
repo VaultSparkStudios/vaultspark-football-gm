@@ -23,8 +23,8 @@
 
 ╔══ LAST SESSION (S104) - WHAT SHIPPED ══════════════════════════╗
 ║  S104 generates a league at the roster its own rules declare —   ║
-║  Tests  1327/1327; six shards with explicit studio rerun         ║
-║  Deploy —                                                        ║
+║  Tests  1446/1446; six shards with an explicit studio rerun aft  ║
+║  Deploy verified 10/10 at 24ad30eb                               ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -63,13 +63,13 @@
 
 ╔══ WHERE WE LEFT OFF  ·  Session 104 ═══════════════════════════╗
 ║  Shipped:  S104 found that the defect three sessions had been c  ║
-║  Tests:    1415/1415 passing  ·  Deploy: N/A                     ║
+║  Tests:    1415/1415 passing  ·  Deploy: verified 10/10 at 24ad  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,708 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,354 tok/turn  ·  cache 50%  ·  133 turns to compact       ║
+║     2,857 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,429 tok/turn  ·  cache 50%  ·  126 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -88,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⛔  Doctor        10/12 (83%)  ·  1 failing                      ║
+║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
 ║  ✓  Cost          Max flat-rate · $0.51/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
