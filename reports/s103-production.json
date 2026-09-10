@@ -1,31 +1,15 @@
 {
   "schemaVersion": "1.1",
-  "generatedBy": "scripts/verify-staging-receipt.mjs",
-  "checkedAt": "2026-09-10T10:22:00.350Z",
-  "baseUrl": "https://staging.playfranchisearchitect.com",
+  "generatedBy": "scripts/verify-release-provenance.mjs",
+  "checkedAt": "2026-09-10T10:15:26.071Z",
+  "baseUrl": "https://playfranchisearchitect.com",
   "expectedRevision": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
   "summary": {
     "status": "verified",
-    "checksPassed": 14,
-    "checksTotal": 14
+    "checksPassed": 10,
+    "checksTotal": 10
   },
   "checks": [
-    {
-      "name": "health stayed on staging origin",
-      "ok": true
-    },
-    {
-      "name": "manifest stayed on staging origin",
-      "ok": true
-    },
-    {
-      "name": "style asset stayed on staging origin",
-      "ok": true
-    },
-    {
-      "name": "Community Stats asset stayed on staging origin",
-      "ok": true
-    },
     {
       "name": "health reachable",
       "ok": true
@@ -78,11 +62,5 @@
       "expected": false,
       "observed": false
     }
-  ],
-  "stagingContract": {
-    "sameOriginRequired": true,
-    "healthSchemaRequired": true,
-    "exactDeployIdentityRequired": true,
-    "declaredBootAssetsRequired": true
-  }
+  ]
 }

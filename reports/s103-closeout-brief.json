@@ -27,6 +27,18 @@
       "projectImpact": 4,
       "ecosystemImpact": 3,
       "evidence": "S102's engine work was committed and verified on both staging and production at revision 30572068, but its closeout-artifact commit never landed: deployment receipts, visual captures, the rendered brief and the status board sat uncommitted beneath a clean-looking history — the exact state a tree-only triage calls not cut off. The per-surface ledger showed all eight core surfaces already written in S102's own feature commit, so recovery was one commit rather than a re-implementation. Its uncommitted lazy-frenzy-board test was real work, passed 4 of 4, and was registered in the runtime shard."
+    },
+    {
+      "title": "Classified an intermittent browser red instead of re-running it, and found a latent S102 test defect",
+      "projectImpact": 6,
+      "ecosystemImpact": 6,
+      "evidence": "The browser gate went red on one Playwright spec while 59 others passed. S102 made a bye suppress the tactic step entirely, but s63-surfaces still handled a bye INSIDE the pre-game modal — a branch that a bye now never opens. The league is generated from a random seed, so whether the controlled team plays in the first advanced week varies per run: measured 2 failures in 10 repeats locally, and the captured failure artifact carried the product's own receipt, 'Bye week committed · GM choice · bye week — no opponent · gm-decision → bye'. CI had passed on the two prior commits by luck. The test now waits for the brief OR the bye receipt and asserts against whichever the product produced; 20/20 repeats after the fix, and both strings the bye branch asserts were checked directly against describeWeeklyPlanReceipt output, because a run that never draws a bye would be a green that proves nothing."
+    },
+    {
+      "title": "An empty league fingerprinted to a constant identity",
+      "projectImpact": 5,
+      "ecosystemImpact": 4,
+      "evidence": "createLeagueBase returns 32 teams and zero players, so a league normalized before its roster is allocated hashed an empty sample and produced one identity for every league in existence — the exact defect leagueIdentity exists to fix, rebuilt inside its own fix and then frozen into the save. ensureLeagueIdentity now refuses to persist below a fingerprintable floor; callers still get a deterministic derived key and the next normalize with a populated roster assigns the real one. Found while investigating the red, independent of it."
     }
   ],
   "followUps": [
@@ -59,6 +71,10 @@
       "evidence": "Having the right argument for moving a declared population is necessary and not sufficient — you also have to be able to pay for it. On the canonical seed the active-roster reading is 0.303/season, out-of-range rather than watch, so shipping the re-point would have forced a threshold change in the same commit. From outside that is indistinguishable from moving a threshold until the number fits, and it would have converted a correct diagnosis into the exact failure S102 wrote its deferral to avoid. onTargetMaxAbs and watchMaxAbs are untouched; the finding shipped instead of the re-point."
     },
     {
+      "title": "An early reading of the browser red as self-caused was wrong, and the correction is recorded",
+      "evidence": "The first hypothesis was that the league-identity change caused the intermittent failure, on a negative control that passed 10/10 with the change disabled against 8/10 with it. That is not evidence at that sample size — 10/10 has roughly an 11 per cent probability at a 20 per cent failure rate — and chasing it cost real time. What settled it was the product's own weekly-plan receipt inside the captured failure artifact, which named the bye directly. Read the artifact the failure already wrote before building a control around a guess."
+    },
+    {
       "title": "This session's own new gate returned the wrong verdict on the real numbers before it shipped",
       "evidence": "The composition guard passed a fixture negative control and then classified the production measurement as development-dominated — the exact defect it was written to catch — because 0.197 is not larger than 0.269. Caught by running the finished gate against the measurement that motivated it, and rewritten around a changed verdict rather than an invented magnitude threshold."
     },
@@ -79,5 +95,10 @@
       "evidence": "The parity decomposition and the roster-composition finding are single-seed ten-season readings on the canonical seed 20260306. The elite-density comparison and the ratchet control arm are single-seed ten-season readings on seed 2026. The league-identity result is a three-seed reading. SIL scores are engineering assessments, not measured player outcomes; no real-cohort evidence exists."
     }
   ],
-  "diffStat": {}
+  "diffStat": {
+    "files": 23,
+    "insertions": 2104,
+    "deletions": 96,
+    "suite": "canonical Node 1,428/1,428 across six shards (core 236, runtime 817, sim-contract 83, sim-realism 1, long 5, studio 286); CI green on 9cfced1f including browser-gates; doctor blockingFailing 0; staging verified 14/14 and production verified 10/10 at 9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c, artifact 6a197848a41b8454576bd941b90409f2f096531324767e926f31585d105de327; release authority reconciled verified across staging, production, visual (98 retained captures of 255) and hosted performance"
+  }
 }

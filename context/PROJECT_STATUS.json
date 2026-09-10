@@ -66,18 +66,18 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 958,
+  "silScore": 960,
   "silCategoriesV3": {
-    "devHealth": 97,
+    "devHealth": 96,
     "creativeAlignment": 98,
-    "momentum": 99,
+    "momentum": 98,
     "engagement": 86,
-    "processQuality": 96,
+    "processQuality": 99,
     "crossRepoCoherence": 95,
     "securityPosture": 98,
     "ecosystemIntegration": 90,
     "capitalEfficiency": 100,
-    "automationCoverage": 99
+    "automationCoverage": 100
   },
   "currentSession": 103,
   "lastAgent": "claude-code",
@@ -134,12 +134,12 @@
   "silHealth": 662,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 1,
+    "blockingFailing": 0,
     "total": 12,
-    "failing": 1,
-    "score": 83,
+    "failing": 0,
+    "score": 92,
     "date": "2026-09-10",
-    "passing": 10,
+    "passing": 11,
     "warning": 1,
     "checks": [
       {
@@ -147,12 +147,6 @@
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
-      },
-      {
-        "id": "release-authority-git-head-covered-by-publication",
-        "status": "failing",
-        "blocking": true,
-        "detail": "HEAD 5cde423e725e20eb681a8cd75883e9c5d163f80e is not covered by live production 30572068d13875432a7a7f23062664167a139753"
       }
     ]
   },
@@ -285,12 +279,12 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "0c755bd4d730e588a49e83ba56c28495a9d99aa8f4a3da4bfebdae1acbd6c637",
-    "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
+    "receiptSha256": "24f62e482337654751f3ec2ca6bd0cababfed7d5b8ec06febe78235cac22d76f",
+    "sourceRevision": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507",
-      "files": 215,
+      "digest": "6a197848a41b8454576bd941b90409f2f096531324767e926f31585d105de327",
+      "files": 216,
       "entries": [
         {
           "path": ".well-known/llms.txt",
@@ -839,8 +833,8 @@
         },
         {
           "path": "precache-manifest.json",
-          "bytes": 15942,
-          "sha256": "c23aa3e2ba3d85b5cd474d9487e2daf4cb2f1505044acf158327e849acae2019"
+          "bytes": 16022,
+          "sha256": "15bc42cb40ee7c23d786f328e061590a2552f170069cd50a59d4ab4628e56743"
         },
         {
           "path": "privacy.html",
@@ -948,6 +942,11 @@
           "sha256": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb"
         },
         {
+          "path": "src/domain/leagueIdentity.js",
+          "bytes": 6966,
+          "sha256": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40"
+        },
+        {
           "path": "src/domain/ownerEconomy.js",
           "bytes": 6571,
           "sha256": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec"
@@ -1019,8 +1018,8 @@
         },
         {
           "path": "src/engine/coachingMarket.js",
-          "bytes": 16427,
-          "sha256": "60ba64bd2bb7676681d3902dd46e5d39f6a298d3205c5fb8bec2146e32229a3c"
+          "bytes": 16734,
+          "sha256": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011"
         },
         {
           "path": "src/engine/coachingTree.js",
@@ -1159,8 +1158,8 @@
         },
         {
           "path": "src/engine/staffGeneration.js",
-          "bytes": 3082,
-          "sha256": "ae6634274a115e6e90733ed0361e602e435febd7f83b706f8808d57920986232"
+          "bytes": 3565,
+          "sha256": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038"
         },
         {
           "path": "src/engine/timeCapsule.js",
@@ -1184,8 +1183,8 @@
         },
         {
           "path": "src/runtime/GameSession.js",
-          "bytes": 340163,
-          "sha256": "e833fa723409ef2b33939ec0e18f4eff1107337817f46c2e1e2d3b918b0d1c43"
+          "bytes": 340710,
+          "sha256": "07c56956e11f9e1562b2bfe8c52db7cadc680764a3e3579cdc5de7543db1d508"
         },
         {
           "path": "src/runtime/advanceWeekCommand.js",
@@ -1299,8 +1298,8 @@
         },
         {
           "path": "src/stats/progressionParity.js",
-          "bytes": 28741,
-          "sha256": "a8cf20aea632a244c873158db7a009a139c3a1dcb9d8413685269371b82352cd"
+          "bytes": 37283,
+          "sha256": "14add73702ada8160783500a5af33d0642a191824faf6db8d633c83a7cd5bf9b"
         },
         {
           "path": "src/stats/realismCalibrator.js",
@@ -1359,8 +1358,8 @@
         },
         {
           "path": "sw.js",
-          "bytes": 8516,
-          "sha256": "d1faaee3e9ab85614684a56a795721ce765a3a68bda8e9088401a5349a99f738"
+          "bytes": 8549,
+          "sha256": "6a9e4b20ade8d063afcbc67156649789f4499feecea53d6fb108776e86805f13"
         },
         {
           "path": "terms.html",
@@ -1374,21 +1373,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "794c03b0-e878-4862-806a-54655fa60ea4",
+    "deploymentId": "22660c04-89ea-4d8c-9d0b-64acb7197752",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-09-10T04:56:56.480Z"
+      "checkedAt": "2026-09-10T09:48:47.492Z"
     },
     "rollback": {
-      "previousDeploymentId": "6292dd61-11c5-4dca-8d54-3f23e81b00c2",
+      "previousDeploymentId": "58cf25ff-1ade-4372-b9a7-a87f168dfcc2",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-09-10T04:56:56.480Z"
+    "observedAt": "2026-09-10T09:48:47.493Z"
   },
   "lastCloseoutAt": "2026-09-09T09:26:41.463Z",
   "performanceAuthority": {
@@ -1420,31 +1419,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-09-10T05:35:37.119Z",
+    "observedAt": "2026-09-10T10:22:07.653Z",
     "status": "verified",
-    "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
-    "publicationRevision": "30572068d13875432a7a7f23062664167a139753",
+    "sourceRevision": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
+    "publicationRevision": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
+      "digest": "6a197848a41b8454576bd941b90409f2f096531324767e926f31585d105de327"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
-        "artifactDigest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
+        "sourceRevision": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
+        "artifactDigest": "6a197848a41b8454576bd941b90409f2f096531324767e926f31585d105de327"
       },
       "production": {
-        "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
-        "artifactDigest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
+        "sourceRevision": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
+        "artifactDigest": "6a197848a41b8454576bd941b90409f2f096531324767e926f31585d105de327"
       },
       "visual": {
-        "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
-        "artifactDigest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
+        "sourceRevision": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
+        "artifactDigest": "6a197848a41b8454576bd941b90409f2f096531324767e926f31585d105de327"
       },
       "performance": {
-        "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
-        "artifactDigest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507"
+        "sourceRevision": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
+        "artifactDigest": "6a197848a41b8454576bd941b90409f2f096531324767e926f31585d105de327"
       }
     },
     "checks": [
@@ -1485,17 +1484,17 @@
       "lifecycle-authority-unverified"
     ],
     "backendAuthority": {
-      "sourceRevision": "5126ae4667449991c139026b0b17b47560d876d1",
-      "verifiedAt": "2026-09-09T23:14:09.007Z",
+      "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
+      "verifiedAt": "2026-09-10T05:36:48.569Z",
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "f266840081deef88fd65a1df329f43a4f2571f82d2c433cb6838c218861b57ee",
-      "productionSha256": "aa6af10e4d05b7dab6e7f871c734c8bf008c23f95c437a5395b8f05e1be524e8",
-      "visualSha256": "0eb1ff06bb285e186edd579f6426532c82868afef475070d32c0a04c5dae805f",
-      "performanceSha256": "c12cde8571b4689511322147b26659b095811138bec55cbabb12bc1008fe82a5"
+      "stagingSha256": "41469e5e619e9e572e2dc603c85d6b81942f3afcfb362c742c620b420f302407",
+      "productionSha256": "1a41416260eca9ad05ba526f6fe7611eded546f9e33fb2a5d511c1be50380648",
+      "visualSha256": "a5505c4d1da610a9340aebe53cb0a980d888973b5272bb702e58765d39c2e9a3",
+      "performanceSha256": "914cc376d068ea1833f9c32c079855fe02aedc89ea0c67f84ad751116535be83"
     },
-    "receiptSha256": "0a41d65bbb8f3827aa97f4f487364556ed5c621759afe6cb7dd9895e08dc9cef"
+    "receiptSha256": "8d50ddf711c36f448660cfa124bd7a55de9d8c87a153c6fb27d73ffbeb60af7b"
   },
   "launchReady": false,
   "sil": {

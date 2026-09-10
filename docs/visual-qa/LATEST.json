@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-09-10T05:28:13.767Z",
-  "sourceRevision": "30572068d13875432a7a7f23062664167a139753",
+  "capturedAt": "2026-09-10T10:21:02.914Z",
+  "sourceRevision": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "7d0aa5c0eed470c153e6d4f4ddc6647a3a85c2fe28aa6094566342714bb28507",
-    "files": 215,
+    "digest": "6a197848a41b8454576bd941b90409f2f096531324767e926f31585d105de327",
+    "files": 216,
     "entries": [
       {
         "path": ".well-known/llms.txt",
@@ -554,8 +554,8 @@
       },
       {
         "path": "precache-manifest.json",
-        "bytes": 15942,
-        "sha256": "c23aa3e2ba3d85b5cd474d9487e2daf4cb2f1505044acf158327e849acae2019"
+        "bytes": 16022,
+        "sha256": "15bc42cb40ee7c23d786f328e061590a2552f170069cd50a59d4ab4628e56743"
       },
       {
         "path": "privacy.html",
@@ -663,6 +663,11 @@
         "sha256": "ae3d1805d056ec4fdb5079336367d6814f319a4e8f073170cea753d58938c6eb"
       },
       {
+        "path": "src/domain/leagueIdentity.js",
+        "bytes": 6966,
+        "sha256": "ee14173fa1ea30bb67968d3566b665224d2efdbcbf995009e5d3aa97e41b0c40"
+      },
+      {
         "path": "src/domain/ownerEconomy.js",
         "bytes": 6571,
         "sha256": "fcf17ea60adf2fc16d93c23807d00ac16999d038e87ae0d2a3da4b38920f30ec"
@@ -734,8 +739,8 @@
       },
       {
         "path": "src/engine/coachingMarket.js",
-        "bytes": 16427,
-        "sha256": "60ba64bd2bb7676681d3902dd46e5d39f6a298d3205c5fb8bec2146e32229a3c"
+        "bytes": 16734,
+        "sha256": "c14857dbdd606a4367e726a4270d1605b0f82fd98c1da9295c8e99fe9d26d011"
       },
       {
         "path": "src/engine/coachingTree.js",
@@ -874,8 +879,8 @@
       },
       {
         "path": "src/engine/staffGeneration.js",
-        "bytes": 3082,
-        "sha256": "ae6634274a115e6e90733ed0361e602e435febd7f83b706f8808d57920986232"
+        "bytes": 3565,
+        "sha256": "5c3a08775aeb8bcf208a1e11849c7d43dd01e8f5b04ceef5d00714f25c869038"
       },
       {
         "path": "src/engine/timeCapsule.js",
@@ -899,8 +904,8 @@
       },
       {
         "path": "src/runtime/GameSession.js",
-        "bytes": 340163,
-        "sha256": "e833fa723409ef2b33939ec0e18f4eff1107337817f46c2e1e2d3b918b0d1c43"
+        "bytes": 340710,
+        "sha256": "07c56956e11f9e1562b2bfe8c52db7cadc680764a3e3579cdc5de7543db1d508"
       },
       {
         "path": "src/runtime/advanceWeekCommand.js",
@@ -1014,8 +1019,8 @@
       },
       {
         "path": "src/stats/progressionParity.js",
-        "bytes": 28741,
-        "sha256": "a8cf20aea632a244c873158db7a009a139c3a1dcb9d8413685269371b82352cd"
+        "bytes": 37283,
+        "sha256": "14add73702ada8160783500a5af33d0642a191824faf6db8d633c83a7cd5bf9b"
       },
       {
         "path": "src/stats/realismCalibrator.js",
@@ -1074,8 +1079,8 @@
       },
       {
         "path": "sw.js",
-        "bytes": 8516,
-        "sha256": "d1faaee3e9ab85614684a56a795721ce765a3a68bda8e9088401a5349a99f738"
+        "bytes": 8549,
+        "sha256": "6a9e4b20ade8d063afcbc67156649789f4499feecea53d6fb108776e86805f13"
       },
       {
         "path": "terms.html",
@@ -1089,72 +1094,1006 @@
       "edge-policy-receipt.json"
     ]
   },
-  "artifact": "static responsive-evidence:d1b155d0ecf12970819811dd55d7f06ae4087745eb10e58e268de0d9d178eb67",
+  "artifact": "static responsive-evidence:c7c99317620963694f7919c2ec0f8b71fcd0673cebad3dc7b144a095bda97791",
   "themes": [
     "dark",
     "light"
   ],
   "captures": [
     {
-      "file": "s102-desktop-boardroom-staff-dark.png",
+      "file": "s103-desktop-game-dialog-dark.png",
+      "sha256": "055dc3b67252e5f7789d852c749914385085112ecb24ebdeb6aa14c2db69b375",
       "theme": "dark",
       "viewport": {
         "width": 1440,
-        "height": 900
+        "height": 1000
       },
-      "page": "Boardroom coaching staff, head-coach market and coaching-tree lineage",
-      "sha256": "c5cd8b7430cd9b34e0580bd094df605c870bcd684080da38713aeb088ad33ec1"
+      "page": "First-run Opening Contract tutorial"
     },
     {
-      "file": "s102-desktop-boardroom-staff-light.png",
+      "file": "s103-desktop-game-dialog-light.png",
+      "sha256": "a0a76995be7be62c9a84ef0cb77ef3cbf0d8967a7e4ca0275e96d08c65e74c14",
       "theme": "light",
       "viewport": {
         "width": 1440,
-        "height": 900
+        "height": 1000
       },
-      "page": "Boardroom coaching staff, head-coach market and coaching-tree lineage",
-      "sha256": "a16d10f6f2ea28b74d358a7ea5c8730cd06678df75bbd3c5706b9f4b72ba4075"
+      "page": "First-run Opening Contract tutorial"
     },
     {
-      "file": "s102-desktop-overview-dark.png",
+      "file": "s103-desktop-cap-pressure-dark.png",
+      "sha256": "f333df228784c4a11f53b6eabf10d5aaca0a0dba651cdfa6f2992d5cb2b7025e",
       "theme": "dark",
       "viewport": {
         "width": 1440,
-        "height": 900
+        "height": 1000
       },
-      "page": "Overview franchise command, weekly call and schedule",
-      "sha256": "6219e39d155c973cb01c622a8ecdcb5b8ecee20ab390f9510b1c421156e51e17"
+      "page": "Opening salary-cap pressure and General Manager legacy"
     },
     {
-      "file": "s102-mobile-overview-light.png",
+      "file": "s103-desktop-cap-pressure-light.png",
+      "sha256": "3e5f520b7f7f72d6646fe825adc98ea0a931fdb7ee345c9ee2bf036735ffb99c",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Opening salary-cap pressure and General Manager legacy"
+    },
+    {
+      "file": "s103-desktop-waiver-identity-dark.png",
+      "sha256": "e6f4e328444b72c53d11a4baa4c17f59abaaf3b7f6905ff8bba2d3a79c06c598",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Named and rated waiver-wire player identity"
+    },
+    {
+      "file": "s103-desktop-waiver-identity-light.png",
+      "sha256": "521dce3525168027b8681de693ab21635cfa540ab8d92fdce84ac484d3c99253",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Named and rated waiver-wire player identity"
+    },
+    {
+      "file": "s103-desktop-franchise-legends-dark.png",
+      "sha256": "d5eeeac77e14d670ee2cd5f958a6186b649202f9893922f1fd8142af04f21e1a",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Franchise Legends dynasty memory"
+    },
+    {
+      "file": "s103-desktop-franchise-legends-light.png",
+      "sha256": "f922382f10498b6dfe14975160866030636f8f05cd4acd40a81c1d02894924cf",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Franchise Legends dynasty memory"
+    },
+    {
+      "file": "s103-desktop-gm-persona-dark.png",
+      "sha256": "2b924ec5b1bfd6ef22d6860ead918844085fafafa813fd5de34b9c049c9ace73",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "General Manager market reputation"
+    },
+    {
+      "file": "s103-desktop-gm-persona-light.png",
+      "sha256": "0f2fc2db4978da0d786b9ca0475632924cefbac401c373a4e8cc1ad8aa7eac0c",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "General Manager market reputation"
+    },
+    {
+      "file": "s103-desktop-trophy-road-dark.png",
+      "sha256": "0d50e51722f176d271d860da80cdb6901decb6537deb14abf8c4c30759ccb14e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "s103-desktop-trophy-road-light.png",
+      "sha256": "5926a82a7ad678d2633a0685e3c13c47d737f916353bd414f242cc083afd575e",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "s103-desktop-sim-watch-reel-dark.png",
+      "sha256": "c3095f18305ad6c29afdde9029a328a2933fb1c708fd5b6fa33d89b94c664516",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "s103-desktop-sim-watch-reel-light.png",
+      "sha256": "46d389f05c5fc27e54367e529697a9683493c4b3834951ad8a745f62b86f2b98",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "s103-desktop-room-watch-dark.png",
+      "sha256": "91d7e615f385928dd261d0cce844259fc1d0403102684097099c2bfcd9d219bc",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "s103-desktop-room-watch-light.png",
+      "sha256": "b89fdc38096fc8f267959beed3ead3bfaf4e8e8615c572ee0c233225b3efac9f",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "s103-desktop-architect-cut-dark.png",
+      "sha256": "167daf08c3e6fb489da6dc457aabd2c3bdb5ddb334352ff1a497abf73611c789",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "s103-desktop-architect-cut-light.png",
+      "sha256": "e061d642f899a4b118f0b16abf3a8d694d9dba0136736f75312439a11243fb00",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "s103-desktop-guide-modal-dark.png",
+      "sha256": "0f5c27573ee05fb80d8c95b910d77c283879047ec309c403c981efcb8e61ba63",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "s103-desktop-guide-modal-light.png",
+      "sha256": "7732c7fcde76a9716faac54333f64836b6db702a807eee8d2438255367ae0959",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "s103-desktop-rival-coaching-dark.png",
+      "sha256": "3196b86f4f66af4fc9d762c4540ce45b6514656adc41a686a92e058cc14749ee",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "s103-desktop-rival-coaching-light.png",
+      "sha256": "7c3031b5ab8ab09ae6351b359958deec9c6a12cf1e09e270c589a9eb9d8aedea",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "s103-desktop-decision-archive-dark.png",
+      "sha256": "625b78b80bd502665f7d7d766cfcb71ab5d917be044c27319ac3b38ca6bfc81e",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s103-desktop-decision-archive-light.png",
+      "sha256": "020ff7f24181a7a6e11c3b489043c5c852e5985baa29efc289930ea5b236d451",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s103-desktop-co-gm-brief-dark.png",
+      "sha256": "4bd05eafd3d7bfcf91e2744a5745c2f2bdb3b7aef0556d6ec74c15b2343a819c",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s103-desktop-co-gm-brief-light.png",
+      "sha256": "2e2e6b3ae01e213aa4a06631ec084da2ac74406c5012d3cf9a15b36fdc09e063",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s103-desktop-prediction-receipt-dark.png",
+      "sha256": "b8019eecb5c333977a15c47ee9a924c31df8c7c84f9aaceb9b6be0b37bf10be6",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "s103-desktop-prediction-receipt-light.png",
+      "sha256": "419fc7cf9cce055f40f21ca646475f2858673008124c708ce9466816ca71f4c8",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "s103-desktop-agent-negotiation-dark.png",
+      "sha256": "9964b0598b396e6e102854adc3b909c0266ca26e1370e216eef8da99a4d75fb8",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "s103-desktop-agent-negotiation-light.png",
+      "sha256": "ff6c39c34bb9112705ed26a5b6874f6f5f03c893b4ea12e555b38c1aee5213c7",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "s103-desktop-draft-trade-review-dark.png",
+      "sha256": "ea54adbb813be95cfdf4ea12fbfa304fd4d61a0f201aa6864ea1218cab9e1170",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "s103-desktop-draft-trade-review-light.png",
+      "sha256": "8a23e7820242df878908fac7c75a7a1c0da72ef546190e7c2ed89b4fbc699e09",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "s103-desktop-hof-ceremony-dark.png",
+      "sha256": "b8c79a96d9c9b1e8d64f181ad2ddbf8b4c32ca851a13db9d0a3937641262ee63",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "s103-desktop-hof-ceremony-light.png",
+      "sha256": "00b2e21ec07ae12806438f2ed6058236a5808563cec4c275c7d8cd0bd31dd93d",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "s103-desktop-architect-signature-dark.png",
+      "sha256": "fd1dbbb3bff779e80d01fa8c984db74b1439ed781ad6f156d8ea3b2155a12f09",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "s103-desktop-architect-signature-light.png",
+      "sha256": "2bc0f17148074ac749e6c9b10e09941a840d05fbcc048cecd9ebfdf867b201e5",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "s103-desktop-architect-objective-dark.png",
+      "sha256": "0d65e43c6c89a92e533acd5d6206009f03f44ea27baae8a8c05fa2fb9ecb7e60",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "s103-desktop-architect-objective-light.png",
+      "sha256": "00a651b64811e16de9f89a1d731b9dd0421e06d5117f25a401b953d10c411a28",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "s103-desktop-exact-command-center-dark.png",
+      "sha256": "7518ff179063570374a84f34c49dba1f122e149d5941a64cbc772594662652c8",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "s103-desktop-exact-command-center-light.png",
+      "sha256": "ac8980abc3237c3ebcf89b1f7052b60a5fd84a4db662be056bf785099fc03df7",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "s103-desktop-exact-command-target-dark.png",
+      "sha256": "e0e617e92f0515164143bddd12caee7af52a41dc02cd1555cbd2b6f3f67b969f",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "s103-desktop-exact-command-target-light.png",
+      "sha256": "86125a510a347ddda6a61a8bbf42a78d9cc913c295b31b6f168429fdbdb1d1b3",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "s103-desktop-facility-capital-dark.png",
+      "sha256": "750c4ba92fc8e01b0ffc4d0ca79bc9d2c212a31bd256a534bba8eed64d5faf47",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
+    },
+    {
+      "file": "s103-desktop-facility-capital-light.png",
+      "sha256": "8a332c230b2a0c5d27ce716df1f316e6b966781b09f797757e7fc1dc37b81e4a",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
+    },
+    {
+      "file": "s103-desktop-gist-authentication-dark.png",
+      "sha256": "32e37ef805d5ed6532e3752b2d985dbb16ba5cab9c4117a66d96c36dd95d3ff4",
+      "theme": "dark",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Cloud-save corruption and optional authentication boundary"
+    },
+    {
+      "file": "s103-desktop-gist-authentication-light.png",
+      "sha256": "cc67d1e5cd08d481da0660fb86874d78f13eb1910914e8fbc63174ff29c4dce3",
+      "theme": "light",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "page": "Cloud-save corruption and optional authentication boundary"
+    },
+    {
+      "file": "s103-mobile-game-dialog-dark.png",
+      "sha256": "94a71260b04643cb1f1558d787b22ec7687b1abe9dc322bb2d0cc10487dbe41e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "First-run Opening Contract tutorial"
+    },
+    {
+      "file": "s103-mobile-game-dialog-light.png",
+      "sha256": "016c5bc22bfdbc6057446f7f0576b4f32584e1dfddee85fb9a655fb315ddbc83",
       "theme": "light",
       "viewport": {
         "width": 390,
         "height": 844
       },
-      "page": "Overview franchise command at phone width",
-      "sha256": "873e7738a585a940c7cf77a53205325ec7dfdb4694ac7d2ef36faf8fb4304d2e"
+      "page": "First-run Opening Contract tutorial"
+    },
+    {
+      "file": "s103-mobile-cap-pressure-dark.png",
+      "sha256": "5575b3058031e44cf2156c3e7b1f7abd0d9d56cf31ae0aac8e0f146cc822b790",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening salary-cap pressure and General Manager legacy"
+    },
+    {
+      "file": "s103-mobile-cap-pressure-light.png",
+      "sha256": "ee1b756c5a7ee976ae9e93a9e3f6016ee101f093edc55e989fda7fc09458e078",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Opening salary-cap pressure and General Manager legacy"
+    },
+    {
+      "file": "s103-mobile-waiver-identity-dark.png",
+      "sha256": "3bd9be9b785395278ecb82428023c5ae25098ddd7c9389b6803428643d73b28b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Named and rated waiver-wire player identity"
+    },
+    {
+      "file": "s103-mobile-waiver-identity-light.png",
+      "sha256": "f56c559d34d7ea2728f1d57669d64224fba4a3661c2a697ad8e09dec98b85fd5",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Named and rated waiver-wire player identity"
+    },
+    {
+      "file": "s103-mobile-franchise-legends-dark.png",
+      "sha256": "f912deac62a12e15cfc3c1a64cafb4fe7b493f7007cb98006ea4bfcf64c466e4",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Franchise Legends dynasty memory"
+    },
+    {
+      "file": "s103-mobile-franchise-legends-light.png",
+      "sha256": "82a5651350d361cca696dbd7829a3f02ba902e98965446cf505a7fe82a44aacc",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Franchise Legends dynasty memory"
+    },
+    {
+      "file": "s103-mobile-gm-persona-dark.png",
+      "sha256": "d900706bb6619a3fbcc935785d5e3137db42a93043ce380c0468a34cef0d323b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "General Manager market reputation"
+    },
+    {
+      "file": "s103-mobile-gm-persona-light.png",
+      "sha256": "01c5244e463465f035be87e58de89c85f66ce9f7852ee0d7270620edc32fea45",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "General Manager market reputation"
+    },
+    {
+      "file": "s103-mobile-trophy-road-dark.png",
+      "sha256": "a7f5190a78ec314adce5a0835065d7b78003d58b4e7372c05d456a2527cd9bdc",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "s103-mobile-trophy-road-light.png",
+      "sha256": "29a5aaeb1bae76641eea27a7a01e87270eeb6bd8a65cb6daba32e260873ad4e2",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Trophy Road progress and next unlock"
+    },
+    {
+      "file": "s103-mobile-sim-watch-reel-dark.png",
+      "sha256": "c00f94dc962c7d593037b2204301a634253dc39ab828c7c554d7b96644e73e90",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "s103-mobile-sim-watch-reel-light.png",
+      "sha256": "d548f3dc8a5ad8dfa8b99e3bde63fad2235369e85d079b64ea3c2643f8305263",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Broadcast Director Final Reel"
+    },
+    {
+      "file": "s103-mobile-room-watch-dark.png",
+      "sha256": "10d57caaf45d74b5e7259582f59c3a119b32912b532a1bc2dad897fe3e6bd9f3",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "s103-mobile-room-watch-light.png",
+      "sha256": "f7617721a48acb2cbb9ec7d95a5575601f43617bdc4106a4340e91a12e48c049",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Position Room Watch parity alerts"
+    },
+    {
+      "file": "s103-mobile-architect-cut-dark.png",
+      "sha256": "e37cca28cae9473509849eafbb871cd8341321b936874d7459e5096c75d70120",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "s103-mobile-architect-cut-light.png",
+      "sha256": "0391fc6d04c4a104246f4a3ef4e8936f688dd1dd9343da2a8197acb4612949eb",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architect's Cut and Decision Anthology"
+    },
+    {
+      "file": "s103-mobile-guide-modal-dark.png",
+      "sha256": "119b08f4f9a03a19d57f02dc2ba869349ac008b0b2d9c0fd2313b6c8f76a9b00",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "s103-mobile-guide-modal-light.png",
+      "sha256": "021ba567f27f566d53323e3253398595d9ccc7c5e2fa9c61e0d0ecbdcb06064c",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Game Guide populated modal"
+    },
+    {
+      "file": "s103-mobile-rival-coaching-dark.png",
+      "sha256": "07c510458ecad5fa6744f906ba1a40b9e76376c8ba3b11099e3906814a7b0838",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "s103-mobile-rival-coaching-light.png",
+      "sha256": "09268af82539195fa4b03999a9b81f5d767f81149c476d9bc4513aa3388e3b77",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Rival coaching ownership boundary"
+    },
+    {
+      "file": "s103-mobile-decision-archive-dark.png",
+      "sha256": "bbf16dbe877d6174295e53a889f1129a48d7625afd5646dc1b496c12a226ed21",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s103-mobile-decision-archive-light.png",
+      "sha256": "3cf8b1c1b81fce5234ab6ea55f35a5fd4ae13862a19f00e7427dfe0a65a809e3",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Permanent Decision Archive sparse state"
+    },
+    {
+      "file": "s103-mobile-co-gm-brief-dark.png",
+      "sha256": "65d5dbb930402c2ebc567f6dfbf79c0da4807953cffbb3b93ff4da7c21d3cd18",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s103-mobile-co-gm-brief-light.png",
+      "sha256": "930452d12d37ab611281676eaf53eb5862e7a1d0bfb7e8b644582e4e32de7df4",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Privacy-bounded Co-GM Brief"
+    },
+    {
+      "file": "s103-mobile-prediction-receipt-dark.png",
+      "sha256": "00c91f913f409bbf57d8b9743ee9fe55252148ab053ab4bcb4373b358da8fcbc",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "s103-mobile-prediction-receipt-light.png",
+      "sha256": "ce7f0f7cfbfaad4745cc0030fe807f267c39992717df5eab6ca234008843ec62",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Prediction winner and margin receipt"
+    },
+    {
+      "file": "s103-mobile-agent-negotiation-dark.png",
+      "sha256": "4d7845f7a05fd55b08d3f4a97123a500362089b842507fc274d08c220c4be939",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "s103-mobile-agent-negotiation-light.png",
+      "sha256": "7668285dba15779988fa0f87c5f1e6df94f6244e1227066d197ca1186a1eb2d1",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Canonical contract-year agent negotiation"
+    },
+    {
+      "file": "s103-mobile-draft-trade-review-dark.png",
+      "sha256": "56fedcf5982db87b84fdd19197a1f65659dc4a95727a51cf3180a6ee43451367",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "s103-mobile-draft-trade-review-light.png",
+      "sha256": "84e3430ae5f751cd9d2b94a88265f46d4e103a341a28dde9e6db1a921ea21922",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Irreversible live-pick trade confirmation"
+    },
+    {
+      "file": "s103-mobile-hof-ceremony-dark.png",
+      "sha256": "728558e0a51fde90f8a9cd90e17119aefd357b4a7cca46c75a2485b2cc3be82e",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "s103-mobile-hof-ceremony-light.png",
+      "sha256": "0192c0d26abbec8bb8cfb8ff8959853dc1220718e91031efb254dc0787f710f6",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Hall of Fame induction ceremony"
+    },
+    {
+      "file": "s103-mobile-architect-signature-dark.png",
+      "sha256": "92281145fc4b22ecb16084a1d4af3314af730403e25b0bfb43cb2b94a7ef1348",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "s103-mobile-architect-signature-light.png",
+      "sha256": "3d688901843c10e76295bd0ed4c6a7e760da1348e3faa21d3aa2219d80e1b954",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Architecture Review strongest mastery signature"
+    },
+    {
+      "file": "s103-mobile-architect-objective-dark.png",
+      "sha256": "6dd192bc26c0c6ec982df269ef9df3011fe8b03d2248eb245e7cd4f317534fe5",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "s103-mobile-architect-objective-light.png",
+      "sha256": "76e0a2e1407447805e3eaa7dd9e1853a3525a198d164a44677e8f00a3bd32f46",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Player-authored Architect Objective hierarchy"
+    },
+    {
+      "file": "s103-mobile-exact-command-center-dark.png",
+      "sha256": "e52f9f1b08f16825ad97c61934c7686331ee0dcdb274be915ca76ae1ddffadd1",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "s103-mobile-exact-command-center-light.png",
+      "sha256": "c4f366476b03096a8c28837f0d65281d2b024bb8ab04aad74da5c97a692afa61",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Ranked General Manager command strip"
+    },
+    {
+      "file": "s103-mobile-exact-command-target-dark.png",
+      "sha256": "48f092a55005a4d933d6c39c724e8060aa95d0f19257ba0b3f8fd5b01c64576b",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "s103-mobile-exact-command-target-light.png",
+      "sha256": "7602a7eafc7d3840cb35030fcfb2fc730feca6d9e09c9b305e6315d3279fd549",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Exact command destination and keyboard focus target"
+    },
+    {
+      "file": "s103-mobile-facility-capital-dark.png",
+      "sha256": "d0e0dde00b8a102435a003af8d57ca12a8d106d0d09acc137e81056d1f8384a2",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
+    },
+    {
+      "file": "s103-mobile-facility-capital-light.png",
+      "sha256": "909baed84477b1081272a53d723134d57c8834bfa49ac4c561f28aaabb7cf85f",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Owner facility-capital liquidity, runway, and obligation receipt"
+    },
+    {
+      "file": "s103-mobile-gist-authentication-dark.png",
+      "sha256": "9b236145957b9bdd24a2ae2e73d3fd1d7a2001f1c5b3e4a2a65078a87b1296f2",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Cloud-save corruption and optional authentication boundary"
+    },
+    {
+      "file": "s103-mobile-gist-authentication-light.png",
+      "sha256": "c3ebcb1af349fb58bbded7366efd51a09e961f511cb7ef764712c1c5d053647a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Cloud-save corruption and optional authentication boundary"
+    },
+    {
+      "file": "s103-tablet-nav-drawer-dark.png",
+      "sha256": "f7cb645f399a8f5451c60d1f9380890e2acbc4653b5d91d446a2065c83620d34",
+      "theme": "dark",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "page": "Notch-safe off-canvas section navigation"
+    },
+    {
+      "file": "s103-tablet-nav-drawer-light.png",
+      "sha256": "3388077a981425d704fbb4035a1047b3f339b82ffe2606b2ff0eb8df71c4e2b4",
+      "theme": "light",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "page": "Notch-safe off-canvas section navigation"
+    },
+    {
+      "file": "s103-mobile-nav-drawer-dark.png",
+      "sha256": "8f6e8c9c34fa9a2499d3c556be5b448ab19f8b8228035ec370e3f1fe66fe42d9",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Notch-safe off-canvas section navigation"
+    },
+    {
+      "file": "s103-mobile-nav-drawer-light.png",
+      "sha256": "b9b6dee3b3e9d1ba36b59609347a1208441ce65c3630f79abd47af372a74650a",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Notch-safe off-canvas section navigation"
+    },
+    {
+      "file": "s103-mobile-game-loop-dark.png",
+      "sha256": "6a572b3256463a2e68d29db043807f23fb8b46b8fb6a0eeb0d4cafe3bdaa5721",
+      "theme": "dark",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Mobile weekly decision deck and sticky command dock"
+    },
+    {
+      "file": "s103-mobile-game-loop-light.png",
+      "sha256": "d256da1085375dcbdf7d0bf51af46087c0413dbb1ce13c3130197c3b1c6a1572",
+      "theme": "light",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "page": "Mobile weekly decision deck and sticky command dock"
     }
   ],
   "inspection": {
     "renderedPixelsReviewed": true,
     "reviewer": "session-agent",
     "findings": [
-      "The Boardroom coaching staff table renders seven distinct real names (Aiden White, Malik Moore, John Davis, Ethan Johnson, Michael Williams, Jaxon Anderson, Michael Thomas). The same capture at the pre-fix revision 5978e5d5 reads 'Head Coach', 'Offensive Coordinator', 'Defensive Coordinator', 'Scouting Director', 'Cap Analyst', 'Strength Coach' and 'Medical Director' in the name column — the defect and its fix were compared in rendered pixels, not inferred.",
-      "The Head Coach Market now offers named candidates (Jaxon Harris, Devin White) where the pre-fix build offered coaches called 'Defensive Coordinator' and 'Offensive Coordinator'. Two of the four market cards were already hardcoded named free agents (Isaiah Kowalski, Sterling Braddock), which is part of why the defect read as normal.",
-      "Coaching Tree DNA lineage renders real identities and inheritance (Malik Moore OC from Aiden White; John Davis DC from Aiden White), so the (teamId, role, name) key nodeForStaff builds on now carries information in its name column.",
-      "Overview at 1440px dark and 390px light render legibly with no overflow, clipping or theme-incorrect surfaces; the mobile column holds its safe-area gutters and the sticky header and footer remain readable.",
-      "The deterministic harness inspected 255 dark and light states at 1440px desktop, 768px tablet and 390px mobile with no overflow, contrast, touch-target, selector or runtime failures.",
-      "LIMIT OF THIS EVIDENCE — the trade-deadline frenzy board became a declared lazy root this session, and every capture in this set is taken in Week 1, outside the declared deadline window. These pixels therefore cannot see that surface at all: a dynamic import that never resolved would look identical to a board correctly staying hidden. That seam is covered instead by test/session102-lazy-frenzy-board.test.js, which drives the render at Week 11 and asserts the board actually paints.",
-      "PRE-EXISTING, NOT INTRODUCED THIS SESSION — an empty bordered container renders on Overview between 'Architecture Review' and 'STANDINGS'. Verified present and identical in the pre-fix capture at revision 5978e5d5, so it is not a regression from this session's lazy-import change; recorded here rather than silently passed over.",
-      "PRE-EXISTING, NOT INTRODUCED THIS SESSION — the Boardroom coaching staff table renders a 'tendencyKey' row with blank name and rating columns, because the staff object's tendency key is iterated alongside its role entries. Present identically at 5978e5d5.",
-      "Deployment readiness remains independent from public-launch authority; no rendered surface asserts that email delivery, founder approval, cohort, retention or launch approval is verified."
+      "The mobile weekly decision deck and sticky commit dock render legibly at 390px in both dark and light themes, with both actions fully visible above the viewport edge.",
+      "A separate 430 by 932 pixel browser probe passed in dark and light themes; manual pixel review found the dock readable, unclipped, and visually separated from the scrolling decision stack.",
+      "The deterministic harness inspected 255 dark and light states at 1440px desktop, 768px tablet, and 390px mobile with no overflow, contrast, touch-target, selector, or runtime failures.",
+      "Deployment readiness remains independent from public-launch authority; no rendered surface asserts that email, cohort, retention, or launch approval is verified."
     ],
     "fixesApplied": [
-      "Gave every coaching role a real generated name, derived from a keyed source that never draws on the session RNG stream, replacing a fallback that wrote the role label into the name column.",
-      "Corrected derivedRng's range reduction (high-bit scaling plus a murmur3 fmix32 finalizer) so sibling seed keys stop colliding — 13/32 distinct name pairs before, 31/32 after — which is what made every league's coaches share names.",
-      "Made the trade-deadline frenzy board a declared lazy root, bringing the initial shell to 642,587/650,000 bytes with zero lazy leaks without raising the budget.",
-      "Gave the bye week its own beat and stopped it demanding a tactic against no opponent, with the fact of playing supplied as engine-owned dashboard truth."
+      "Added top, right, bottom, and left safe-area padding to the full-screen mobile decision deck.",
+      "Turned the weekly action row into a theme-correct sticky command dock and exposed the overlay as a named region.",
+      "Pinned safe-area coverage, sticky placement, landmark semantics, theme coverage, and 390/430px rendered states with static and real-browser gates."
     ],
     "blockingDefectsOpen": 0
   }

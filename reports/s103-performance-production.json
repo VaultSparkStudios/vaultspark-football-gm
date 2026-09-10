@@ -1,8 +1,10 @@
 {
-  "schemaVersion": "1.1",
-  "kind": "independent-staging-authority",
-  "project": "franchise-architect-staging",
-  "branch": "staging",
+  "schemaVersion": "1.0",
+  "kind": "hosted-performance-evidence",
+  "generatedBy": "scripts/measure-hosted-performance.mjs",
+  "observedAt": "2026-09-10T10:16:34.539Z",
+  "baseUrl": "https://playfranchisearchitect.com",
+  "route": "/",
   "sourceRevision": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
   "artifactFingerprint": {
     "algorithm": "sha256",
@@ -1096,24 +1098,337 @@
       "edge-policy-receipt.json"
     ]
   },
-  "promotionIdentity": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c:6a197848a41b8454576bd941b90409f2f096531324767e926f31585d105de327",
-  "deploymentId": "22660c04-89ea-4d8c-9d0b-64acb7197752",
-  "deploymentUrl": "https://22660c04.franchise-architect-staging.pages.dev",
-  "stableUrl": "https://staging.playfranchisearchitect.com",
-  "domainStatus": "active",
-  "independent": true,
-  "exactRevision": true,
-  "exactArtifact": true,
-  "provenance": {
+  "edgeHeaders": {
+    "access-control-allow-origin": "*",
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public, max-age=0, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "a38dad858cf9c96a-IAD",
+    "connection": "keep-alive",
+    "content-encoding": "br",
+    "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+    "content-type": "text/html; charset=utf-8",
+    "date": "Thu, 10 Sep 2026 10:16:32 GMT",
+    "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
+    "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+    "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=VcOQ8cqqol1GxgwA1wpDcWZ9cnLDb6jFAAVN3tKjkayGOJ0eFDil4J6FnzLl35n8z%2BP8PFeyHp1oYcoL1RP57hniyCWzB822vOqFHsu5BMH199snNKIelOOl6r93NsClExM%2FRRiU9%2B82F%2FqGmQ%3D%3D\"}]}",
+    "server": "cloudflare",
+    "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+    "transfer-encoding": "chunked",
+    "vary": "accept-encoding",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY"
+  },
+  "profiles": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "runs": 3,
+      "lcpMs": 380,
+      "inpMs": 32,
+      "cls": 0,
+      "interactionObserved": true,
+      "samples": [
+        {
+          "lcpMs": 10272,
+          "lcpElement": {
+            "tag": "H1",
+            "id": null,
+            "className": "setup-title",
+            "text": "Franchise Architect: Football"
+          },
+          "cls": 0,
+          "shifts": [],
+          "inpMs": 24,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 344,
+          "lcpElement": {
+            "tag": "H1",
+            "id": null,
+            "className": "setup-title",
+            "text": "Franchise Architect: Football"
+          },
+          "cls": 0,
+          "shifts": [],
+          "inpMs": 32,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 380,
+          "lcpElement": {
+            "tag": "H1",
+            "id": null,
+            "className": "setup-title",
+            "text": "Franchise Architect: Football"
+          },
+          "cls": 0,
+          "shifts": [],
+          "inpMs": 32,
+          "interactionObserved": true
+        }
+      ]
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "runs": 3,
+      "lcpMs": 324,
+      "inpMs": 24,
+      "cls": 0.0085,
+      "interactionObserved": true,
+      "samples": [
+        {
+          "lcpMs": 10236,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "",
+            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
+          },
+          "cls": 0.0085,
+          "shifts": [
+            {
+              "startTimeMs": 14631,
+              "scrollY": 0,
+              "value": 0.0085,
+              "sources": [
+                {
+                  "tag": "SECTION",
+                  "id": null,
+                  "className": "community-pulse",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 350.203125,
+                    "width": 390,
+                    "height": 493.796875,
+                    "top": 350.203125,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 362.390625,
+                    "width": 390,
+                    "height": 481.609375,
+                    "top": 362.390625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 24,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 304,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "",
+            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
+          },
+          "cls": 0.0085,
+          "shifts": [
+            {
+              "startTimeMs": 2748,
+              "scrollY": 0,
+              "value": 0.0085,
+              "sources": [
+                {
+                  "tag": "SECTION",
+                  "id": null,
+                  "className": "community-pulse",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 350.203125,
+                    "width": 390,
+                    "height": 493.796875,
+                    "top": 350.203125,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 362.390625,
+                    "width": 390,
+                    "height": 481.609375,
+                    "top": 362.390625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 24,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 324,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "",
+            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
+          },
+          "cls": 0.0085,
+          "shifts": [
+            {
+              "startTimeMs": 2658,
+              "scrollY": 0,
+              "value": 0.0085,
+              "sources": [
+                {
+                  "tag": "SECTION",
+                  "id": null,
+                  "className": "community-pulse",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 350.203125,
+                    "width": 390,
+                    "height": 493.796875,
+                    "top": 350.203125,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 362.390625,
+                    "width": 390,
+                    "height": 481.609375,
+                    "top": 362.390625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 16,
+          "interactionObserved": true
+        }
+      ]
+    }
+  ],
+  "evaluation": {
     "status": "verified",
-    "checksPassed": 14,
-    "checksTotal": 14,
-    "checkedAt": "2026-09-10T09:48:47.492Z"
+    "checks": [
+      {
+        "name": "source revision is immutable",
+        "ok": true,
+        "observed": "9cfced1f3b6a8c8d2ba9c78b5246f84fc7e5bf3c",
+        "expected": "40-character git SHA"
+      },
+      {
+        "name": "artifact fingerprint is immutable",
+        "ok": true,
+        "observed": "6a197848a41b8454576bd941b90409f2f096531324767e926f31585d105de327",
+        "expected": "sha256"
+      },
+      {
+        "name": "hosted Strict-Transport-Security observed",
+        "ok": true,
+        "observed": "max-age=31536000; includeSubDomains; preload",
+        "expected": "present"
+      },
+      {
+        "name": "hosted Content-Security-Policy observed",
+        "ok": true,
+        "observed": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
+        "expected": "present"
+      },
+      {
+        "name": "hosted frame protection observed",
+        "ok": true,
+        "observed": "DENY",
+        "expected": "present"
+      },
+      {
+        "name": "desktop LCP",
+        "ok": true,
+        "observed": 380,
+        "expected": "< 1800ms"
+      },
+      {
+        "name": "desktop INP",
+        "ok": true,
+        "observed": 32,
+        "expected": "<= 200ms"
+      },
+      {
+        "name": "desktop CLS",
+        "ok": true,
+        "observed": 0,
+        "expected": "<= 0.1"
+      },
+      {
+        "name": "desktop deliberate interaction observed",
+        "ok": true,
+        "observed": true,
+        "expected": true
+      },
+      {
+        "name": "mobile LCP",
+        "ok": true,
+        "observed": 324,
+        "expected": "< 1800ms"
+      },
+      {
+        "name": "mobile INP",
+        "ok": true,
+        "observed": 24,
+        "expected": "<= 200ms"
+      },
+      {
+        "name": "mobile CLS",
+        "ok": true,
+        "observed": 0.0085,
+        "expected": "<= 0.1"
+      },
+      {
+        "name": "mobile deliberate interaction observed",
+        "ok": true,
+        "observed": true,
+        "expected": true
+      },
+      {
+        "name": "desktop and mobile measured",
+        "ok": true,
+        "observed": [
+          "desktop",
+          "mobile"
+        ],
+        "expected": [
+          "desktop",
+          "mobile"
+        ]
+      }
+    ],
+    "failures": [],
+    "thresholds": {
+      "lcpMs": 1800,
+      "inpMs": 200,
+      "cls": 0.1
+    }
   },
-  "rollback": {
-    "previousDeploymentId": "58cf25ff-1ade-4372-b9a7-a87f168dfcc2",
-    "available": true
-  },
-  "verified": true,
-  "observedAt": "2026-09-10T09:48:47.493Z"
+  "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
+  "receiptSha256": "82eaafd2503a3bc05bdc5b539051c255d29af4b4c4a8f148eaa8d92a016b3819"
 }

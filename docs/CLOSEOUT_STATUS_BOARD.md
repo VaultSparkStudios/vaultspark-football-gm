@@ -1,38 +1,38 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-09-10 (Session 102 closeout) -->
+<!-- generated-at: 2026-09-10 (Session 103 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S102 ═════╗
-║  Date: 2026-09-10  ·  SIL: 958/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S103 ═════╗
+║  Date: 2026-09-10  ·  SIL: 960/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ fix: handle a bye where the product now decides it, and neve  ║
+║  ✓ feat: make the parity gate report its own moving denominator  ║
+║  ✓ chore(closeout): record S102 receipts, captures and closeout  ║
 ║  ✓ feat: fix the cap ledger, bound the pool, and make a gate me  ║
 ║  ✓ chore(closeout): refresh S101 status board                    ║
-║  ✓ chore(proof): reconcile S101 release authority at the deploy  ║
-║  ✓ chore(proof): complete the S101 capture ledger and render th  ║
-║  ✓ chore(proof): record S101 deployment receipts and reconciled  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 958/1000 ═══════════════════════════════════════╗
-║    Dev Health         97   ██████████                            ║
+╔══ SCORES · SIL 960/1000 ═══════════════════════════════════════╗
+║    Dev Health         96   ██████████                            ║
 ║    Alignment          98   ██████████                            ║
-║    Momentum           99   ██████████                            ║
+║    Momentum           98   ██████████                            ║
 ║    Engagement         86   █████████░                            ║
-║    Process Qual       96   ██████████                            ║
+║    Process Qual       99   ██████████                            ║
 ║    Coherence          95   ██████████                            ║
 ║    Security           98   ██████████                            ║
 ║    Ecosystem          90   █████████░                            ║
 ║    Capital            100  ██████████                            ║
-║    Automation         99   ██████████                            ║
+║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  · context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
+║  ✓ logs/WORK_LOG.md                                              ║
 ║  · context/DECISIONS.md                                          ║
 ║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 232 files  ·  M:5 A:0 D:216 ?:11                       ║
+║  Changes: 110 files  ·  M:8 A:0 D:0 ?:102                        ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
