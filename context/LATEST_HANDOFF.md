@@ -96,4 +96,18 @@ The first promotion of `e541418` passed its `gate` job and **failed in `build`**
 
 **The bye branch is proven at the renderer, not by luck.** Six local repeats passed, but none is known to have drawn a bye, and S103's own lesson is that a run which never draws one is a green that proves nothing. So `test/session105-brief-authority-writers.test.js` pins the exact strings the browser branch matches on, directly against `describeWeeklyPlanReceipt`: title `Bye week committed` and detail `GM choice · bye week — no opponent · gm-decision → bye`, with a negative control asserting an ordinary week renders `tactic run-heavy` and no bye wording. If that wording ever changes, it goes red immediately instead of at the next CI run that happens to draw a bye. **What remains unproven is the live browser path on a bye**; that is stated rather than implied.
 
+### Deployment — two candidates, one promoted
+
+| | |
+|---|---|
+| Candidate promoted | `4d291eec136904003c1a17b728dddb928997cd2d` |
+| Artifact digest | `0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75` (unchanged from S104 — this session altered nothing under `public/`) |
+| Staging | verified **14/14** · deployment `eacad999-2d78-4bef-9f3a-d048c98af0bb` · rollback `9be1e622-3eae-4bda-86e3-735b02759178` available |
+| Production | promotion run **34655574507** — gate, build and deploy all success · live origin verified **10/10** |
+| Release authority | **verified**, all four identities (staging · production · visual · performance) bound to `4d291eec` |
+| Doctor | `blockingFailing 0` · 11/12 · the one standing warning is the registry SPARKED vs local FORGE drift |
+| `launchReady` | **false** — unchanged. This is a technical deployment, not a public launch |
+
+The first candidate, `e541418`, was deployed to staging (verified 14/14) and its promotion **failed in `build`**, so production was never republished from it. Both candidates carry identical artifacts; the second exists solely because the browser-gate fix had to be committed to be promoted.
+
 Other gates green at the final tree: local `npm run test:ui` **60/60** (the same command the promotion's browser release gate runs) · `check-audit-premises` 6 verified · 0 open decay across the sidecar corpus · `validate-brief-format` conformant · `session-authority` binding the live handoff to the newest SIL entry · SIL rolling-status current.

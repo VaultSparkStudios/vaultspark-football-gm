@@ -83,32 +83,15 @@
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
-    "date": "2026-09-10",
-    "canonical": "1446/1446; six shards with an explicit studio rerun after three self-caused reds were fixed at source",
-    "browser": "Local Playwright 60/60 exit 0 before push; hosted browser-gates job passed in CI",
-    "sourceRevision": "24ad30eb0675dd49eafcde7f380a0e11ceb0ae07",
+    "date": "2026-09-11",
+    "canonical": "1,458/1,458 across six shards; studio re-run green after two self-caused reds fixed at source",
+    "browser": "local npm run test:ui 60/60 exit 0 (the promotion gate own command); browser-gates green in CI on e541418",
+    "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
     "artifactDigest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75",
-    "staging": "verified 14/14 at 24ad30eb, domain active, rollback available",
-    "production": "verified 10/10 at 24ad30eb",
-    "performance": "verified on / and /game.html at 24ad30eb; docs/performance/LATEST.json refreshed from a receipt that had been stale since S98",
-    "visual": "255 captures taken, 98 retained under the three-session window; 98 new ledger hashes, 20 pruned and still provable",
-    "workflows": [
-      {
-        "name": "CI",
-        "id": 34540838456,
-        "conclusion": "success"
-      },
-      {
-        "name": "Deploy Pages",
-        "id": 34541062953,
-        "conclusion": "success"
-      },
-      {
-        "name": "Deploy Backend Runtime",
-        "id": 34541074496,
-        "conclusion": "success"
-      }
-    ]
+    "staging": "verified 14/14 at 4d291eec, deployment eacad999-2d78-4bef-9f3a-d048c98af0bb, rollback 9be1e622-3eae-4bda-86e3-735b02759178 available",
+    "production": "verified 10/10 at 4d291eec via verify-release-provenance against the live origin; promotion run 34655574507 gate/build/deploy all success",
+    "performance": "hosted performance VERIFIED at 4d291eec",
+    "note": "The first promotion attempt (run 34652592973, candidate e541418) passed its gate and FAILED in build on an intermittent play-mode-smoke bye-week assertion; deploy was skipped and production was never republished. Fixed at source rather than re-run, and 4d291eec promoted cleanly."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -138,12 +121,12 @@
   "silHealth": 665,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 3,
+    "blockingFailing": 0,
     "total": 12,
-    "failing": 3,
-    "score": 67,
+    "failing": 0,
+    "score": 92,
     "date": "2026-09-11",
-    "passing": 8,
+    "passing": 11,
     "warning": 1,
     "checks": [
       {
@@ -151,24 +134,6 @@
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
-      },
-      {
-        "id": "release-authority-checked-staging-current",
-        "status": "failing",
-        "blocking": true,
-        "detail": "checked 24ad30eb0675dd49eafcde7f380a0e11ceb0ae07 · live e5414189a209ef2a3c3b6ec2f29212c45fcb8b6c"
-      },
-      {
-        "id": "release-authority-release-source-current",
-        "status": "failing",
-        "blocking": true,
-        "detail": "release source 24ad30eb0675dd49eafcde7f380a0e11ceb0ae07 · live staging e5414189a209ef2a3c3b6ec2f29212c45fcb8b6c"
-      },
-      {
-        "id": "release-authority-git-head-covered-by-publication",
-        "status": "failing",
-        "blocking": true,
-        "detail": "HEAD e5414189a209ef2a3c3b6ec2f29212c45fcb8b6c is not covered by live production 24ad30eb0675dd49eafcde7f380a0e11ceb0ae07"
       }
     ]
   },
@@ -199,7 +164,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-09-10"
+      "lastChecked": "2026-09-11"
     }
   ],
   "lastSession": 105,
@@ -301,8 +266,8 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "9cd2adb7cbd7d7a3f16d32b9b4af162851c802008635fb409666793296c5e3af",
-    "sourceRevision": "24ad30eb0675dd49eafcde7f380a0e11ceb0ae07",
+    "receiptSha256": "330d8b0042da0baf66470ecbf8a804f14b9663565af4740ce150371b36f59f11",
+    "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
     "artifactFingerprint": {
       "algorithm": "sha256",
       "digest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75",
@@ -1395,23 +1360,23 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "9bd42f6e-94bd-49d9-8911-32f45ebc364c",
+    "deploymentId": "eacad999-2d78-4bef-9f3a-d048c98af0bb",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-09-10T23:10:51.940Z"
+      "checkedAt": "2026-09-11T22:47:47.841Z"
     },
     "rollback": {
-      "previousDeploymentId": "22660c04-89ea-4d8c-9d0b-64acb7197752",
+      "previousDeploymentId": "9be1e622-3eae-4bda-86e3-735b02759178",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-09-10T23:10:51.940Z"
+    "observedAt": "2026-09-11T22:47:47.841Z"
   },
-  "lastCloseoutAt": "2026-09-10T23:43:44.444Z",
+  "lastCloseoutAt": "2026-09-11T23:21:55.204Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
     "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
@@ -1441,10 +1406,10 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-09-10T23:41:17.500Z",
+    "observedAt": "2026-09-11T23:20:45.743Z",
     "status": "verified",
-    "sourceRevision": "24ad30eb0675dd49eafcde7f380a0e11ceb0ae07",
-    "publicationRevision": "24ad30eb0675dd49eafcde7f380a0e11ceb0ae07",
+    "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
+    "publicationRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
@@ -1452,19 +1417,19 @@
     },
     "identities": {
       "staging": {
-        "sourceRevision": "24ad30eb0675dd49eafcde7f380a0e11ceb0ae07",
+        "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
         "artifactDigest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75"
       },
       "production": {
-        "sourceRevision": "24ad30eb0675dd49eafcde7f380a0e11ceb0ae07",
+        "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
         "artifactDigest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75"
       },
       "visual": {
-        "sourceRevision": "24ad30eb0675dd49eafcde7f380a0e11ceb0ae07",
+        "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
         "artifactDigest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75"
       },
       "performance": {
-        "sourceRevision": "24ad30eb0675dd49eafcde7f380a0e11ceb0ae07",
+        "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
         "artifactDigest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75"
       }
     },
@@ -1511,12 +1476,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "56a1711eee2cd4c392ebd69ed3f63c7afe0c8aa5f7a55b06e27fafa75055d86b",
-      "productionSha256": "12df5061645f5dbed54d3056c177fb11253093a6bf52cf1813c305b14cff85b6",
-      "visualSha256": "8c9d6384c3734e651232cdcf742e4f98d97ad2d9d6cdb932c87319355daaaa15",
-      "performanceSha256": "57419edcd491c35e17e681b3b1a4f92691b325778b91db3b1537c0005d27296c"
+      "stagingSha256": "31ea71eaa8f3a6170db89c8dec187b37dc32cff6353cdb26f7bf62c3bc7455b8",
+      "productionSha256": "db97cc12bcf4161153425ae11824bc2d37dca71e994d784eaf32e399d944179d",
+      "visualSha256": "f7420056912ffb87b41a3416c8d2d11a4ea8f490dcbd3a3e32e445706b1fe0cf",
+      "performanceSha256": "9855bf660cfc1941329f696caa00fd7bfa0466845ff319f77e8f33f92caf2027"
     },
-    "receiptSha256": "84943a1910f9b6045ed51306e0c5178c408eb8e10513a8558818e75160d3984c"
+    "receiptSha256": "65c8efcc3ab14bdad6b2ff10d7bfaae321a1b4c6de422000dab47aa36e3723f3"
   },
   "launchReady": false,
   "sil": {
