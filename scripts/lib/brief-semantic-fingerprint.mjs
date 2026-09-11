@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { parseHandoffCloseoutAuthority } from './session-authority.mjs';
 
 function readJson(file) {
   try { return JSON.parse(fs.readFileSync(file, 'utf8')); } catch { return null; }
@@ -21,7 +22,10 @@ export function buildBriefSemanticFingerprint(root = process.cwd()) {
   const closedSessions = [status.currentSession, status.lastSession, status.silLastSession]
     .map(numberOrNull).filter(Number.isFinite);
   const lastClosedSession = closedSessions.length ? Math.max(...closedSessions) : 0;
-  const handoffSession = numberOrNull(handoff.match(/(?:Impact Summary|Where We Left Off) \(Session (\d+)\)/i)?.[1]);
+  // Declared once, in session-authority. The literal that stood here matched a
+  // heading this project has never written, so the fingerprint hashed `null`
+  // for the handoff every session and could not see a handoff change at all.
+  const handoffSession = parseHandoffCloseoutAuthority(handoff);
   const source = {
     nextSession: lastClosedSession + 1,
     silSession: numberOrNull(status.silLastSession),

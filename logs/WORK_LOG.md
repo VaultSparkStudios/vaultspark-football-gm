@@ -1142,3 +1142,29 @@ The studio shard went **red on its first pass with three self-caused failures**,
 The core, runtime, sim-contract, sim-realism and long shards are from the single full-suite run; the studio shard is a re-run, which is required in any case because this session added a test file to it after that run began.
 
 Other gates, all green at the final tree: `check-public-truth` (42 engine systems, 102 shipped surfaces) · `check-windows-hide` (which caught a real red on this session's own new test and was fixed at the call site) · browser boot budget 642,587/730,000 with zero lazy leaks · browser module reachability 92 modules from 4 HTML entries · `validate-brief-format` conformant · `check-project-authority-contract` ok · `check-audit-premises` zero unverified and zero open decay across all 83 committed sidecars.
+
+## 2026-09-11 — Session 105 — Full arc: every surface the brief reads gets a writer and a test that fails when it is skipped
+
+**Triage.** Clean start. F7 reported write-back debt on `ccf68c2`; that is S104's own post-closeout handoff edit (the known closeout-order false positive), and every core surface was current through S104. No lock, clean tree, synced with origin. Profile: app · product rubric · direct-to-main with staging first · public → sanitize (studio-ops profiler, `--project .`; no local copy exists, labelled accordingly).
+
+**Audit** (`docs/AUDIT_2026-09-11_SESSION105.json`, six items, combined priority 111, every premise verified against live code before inclusion) came from reading every derived row of the rendered S105 brief rather than the rows that looked wrong.
+
+**Shipped:**
+
+1. `parseHandoffCloseoutAuthority` reads `# Latest Handoff — Session N → Session M` (left-hand session only); `brief-semantic-fingerprint` routes through it. None of twelve committed handoffs had ever matched. The live handoff is bound to the newest SIL entry by test, with a negative control reproducing the pre-S105 pattern.
+2. `scripts/render-sil-rolling-status.mjs` derives the SIL rolling-status block from the live file and its archive; `test/session105-brief-authority-writers.test.js` fails when the committed block lags a fresh derivation. Derived Avg3 959.7 against the hand-written 974.7; 58 unique `/1000` sessions against a claimed 87.
+3. The same test walks every `docs/AUDIT_*.json` through `checkAudit` and fails on open decay or unverified premises, with a fixture negative control. First run: red on this session's own sidecar (shipped items still `planned`); resolved by recording evidence.
+4. Elite density re-derived under the S104 roster shape (canonical seed, ten seasons): active-roster 90+ share 0.4% → 2.8%, `watch`; dispersion 0.095/season and parity +0.043 reproduce S104 to the third decimal. A probe reproducing the gate's clone path (2.79% against the gated 2.8%) decomposes the cohort by room: QB 11 of 95 (11.6%), OL 19 of 311 (6.1%), every other room 17 of 1,279 — QB and OL are 24% of the roster and 64% of its elite. Those are the only two rooms a generated league places above their own mean potential (OL 82.1 vs 79.8, QB 82.7 vs 80.9). Recorded as the measured candidate; no statistic or generator change shipped on one seed.
+5. `brief-preflight` importer question closed as DECISIONS S105-4.
+6. PROJECT PROFILE row shipped to studio-ops as Ark `pattern-share` cargo `01K291HHVU080E58C015E99770`.
+
+**Two of my own first drafts were wrong and tests caught both:** the intent rate divided by all five entries (an entry with no recorded outcome counted as a miss), and the sparkline rescaled min-to-max within five scores. Code fixed, fixtures untouched.
+
+CDR reviewed: no new founder creative direction this session, so no entry is owed. No player-facing change, so no status-page release note is owed (the freshness gate tolerates one session).
+
+**Receipts.** Canonical Node **1,457/1,457** across six shards (core 245, runtime 817, sim-contract 83, sim-realism 1, long 5, studio 306), up from 1,446/1,446 in S104. The full `npm test` read 1,450/1,452 — every behaviour shard green, two self-caused studio reds — and the studio shard was re-run green after both were fixed at source. Nothing under `src/` or `public/` changed after the full run.
+
+**Both reds were in this session's own record-keeping, and the second one mattered.**
+
+1. The new SIL rolling-status gate went red on **byte-identical text**: the file is CRLF in this working copy and LF once git normalises it, so a re-save after `--write` flipped the block's endings. A terminator-sensitive comparison is red locally and green in CI. Fixed at source (normalise line endings) with a CRLF regression test and a negative control.
+2. `DECISIONS.md` hit the 96 KB ledger ceiling, and **running the gate's own remedy, `ledger-roll.mjs --apply`, archived this session's record.** The roller assumed every ledger is newest-first and kept the first ten matching entries; DECISIONS, TRUTH_AUDIT and SELF_IMPROVEMENT_LOOP are newest-last, so it kept the oldest and archived the newest — the live SIL was left at sessions 85–98 with zero intent lines. Compounding it, the DECISIONS/TRUTH_AUDIT patterns matched only the pre-S100 `— Session N` heading, so the cut landed at the eleventh old-style entry and every modern section below it moved as one block. Reversed exactly (current archive minus committed archive, asserted; no `git checkout` on the live ledgers, which would have discarded this session's uncommitted work), then fixed at source: per-ledger `order`, suffix retention for newest-last, header kept live, archived block appended at the correct end, pointer kept at EOF, patterns matching both heading eras. Three tests plus a negative control reproducing the inversion, and a direct invariant — every live ledger still holds this session's own entry after a roll. Re-rolled correctly: oldest 38/12/12 archived, 286 KB → 147 KB, S105 intact.

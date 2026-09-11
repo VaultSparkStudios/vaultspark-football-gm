@@ -1,0 +1,250 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-11",
+  "session": 105,
+  "agent": "claude-code",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "source": "Live code read against the rendered S105 startup brief, the git history of context/LATEST_HANDOFF.md across twelve closeouts, and an executed ten-season runRealismVerification on the canonical seed 20260306.",
+    "itemsRanked": 6,
+    "combinedPriority": 111,
+    "verificationNote": "Every premise below was checked against live code before inclusion. Item 1's premise was checked against every committed handoff since S96: none has ever matched the parser."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product; game-loop payoff, truthful feedback, static-host safety and measured release readiness",
+    "staging": "Stable Cloudflare staging before authorized main promotion and production deployment",
+    "source": "arc-profile (studio-ops copy, --project .; no local copy exists), context/PROJECT_STATUS.json, context/LATEST_HANDOFF.md"
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "HIGH",
+      "category": "Observability truth; session authority",
+      "effortHours": 1,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 30.3,
+      "slug": "handoff-session-authority-never-parsed",
+      "title": "One of the three session authorities has never been read: the handoff heading this project writes matches neither parser",
+      "status": "implemented",
+      "premise": "resolveSessionAuthority takes the monotonic maximum of SIL, status and handoff and flags divergence when they disagree. parseHandoffCloseoutAuthority only recognises '# Session N Closeout', and brief-semantic-fingerprint only recognises 'Where We Left Off (Session N)'. This project has headed every handoff '# Latest Handoff — Session N → Session N+1' since at least S96, so the brief has rendered 'handoff=S?' for the project's whole recorded history and the divergence check has silently been a two-way check. A handoff lagging SIL by a session could never be detected.",
+      "premises": [
+        {
+          "claim": "The closeout-authority parser does not recognise this project's handoff heading",
+          "adapter": "grep",
+          "target": "scripts/lib/session-authority.mjs",
+          "pattern": "Latest Handoff",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.3,
+          "recipe": "Hand-add a '# Session 104 Closeout' heading to the handoff."
+        },
+        "L2": {
+          "effortHours": 0.7,
+          "recipe": "Teach parseHandoffCloseoutAuthority the 'Latest Handoff — Session N → Session M' form (N is the closed session; M is only intent and never counts), and route brief-semantic-fingerprint through the same parser so the heading is declared once."
+        },
+        "L3": {
+          "effortHours": 1,
+          "recipe": "L2 plus a test that parses the LIVE context/LATEST_HANDOFF.md and asserts it names the same session as the newest SIL entry — so a future heading change or a skipped handoff write goes red instead of silently degrading the authority to two sources."
+        }
+      },
+      "executionEvidence": "parseHandoffCloseoutAuthority recognises the Latest Handoff — Session N → Session M form (N only); brief-semantic-fingerprint routes through the same parser instead of its own never-matching literal. session-authority.test.js binds the LIVE handoff to the newest SIL entry and the fingerprint, with a negative control reproducing the pre-S105 pattern. Brief now renders handoff=S104."
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "Observability truth; closeout write-back",
+      "effortHours": 1.5,
+      "impact": 7,
+      "innovation": 6,
+      "priority": 23.2,
+      "slug": "sil-rolling-status-has-no-writer",
+      "title": "The SIL rolling-status header has no writer and has said 'Last session: 100' for four sessions",
+      "status": "implemented",
+      "premise": "render-startup-brief reads 'Intent rate:', 'Last session:', 'Velocity trend:' and the averages from the rolling-status block at the top of SELF_IMPROVEMENT_LOOP.md. Nothing in this repo writes that block; it is hand-maintained and was last touched at S100. It has never carried an 'Intent rate:' line, so the brief's MOMENTUM METER renders 'Intent: ?% achieved last 5' while every one of the last five entries records 'Intent outcome: Achieved'. The same detector-without-a-writer shape S104 found in lastSessionSummary.",
+      "premises": [
+        {
+          "claim": "The rolling-status header still names S100 as the last session",
+          "adapter": "grep",
+          "target": "context/SELF_IMPROVEMENT_LOOP.md",
+          "pattern": "Last session: 100 ",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.2,
+          "recipe": "Hand-edit the header."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "Write scripts/render-sil-rolling-status.mjs that derives the whole block from the entries themselves — last session, total, delta, 3/5/10/25/all averages, sparkline and intent rate — so the header is a projection, never an authority."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "L2 plus a studio-shard test asserting the committed header equals a fresh render of the committed entries, so a closeout that appends an entry and forgets the header goes red."
+        }
+      },
+      "executionEvidence": "scripts/render-sil-rolling-status.mjs derives the block from live+archive entries (58 unique /1000 sessions, calibration excluded), adds Intent rate (denominator = entries recording an outcome) and carries only Velocity/Debt, labelled carried. The derived Avg3 is 959.7 against the hand-written 974.7, and the hand-written 87-session population was not reproducible from /1000 scores. A studio test binds the committed block to a fresh render."
+    },
+    {
+      "rank": 3,
+      "tier": "MEDIUM",
+      "category": "Process quality; audit truth",
+      "effortHours": 0.75,
+      "impact": 6,
+      "innovation": 5,
+      "priority": 20.6,
+      "slug": "premise-decay-never-fails-anything",
+      "title": "Open premise decay across the audit history can never fail anything",
+      "status": "implemented",
+      "premise": "check-audit-premises.mjs checks only the newest sidecar by default and is advisory; its only caller (brief-preflight) cannot be imported in this repo by contract. session104-audit-premise-decay proves the checker can fire on a fixture, but nothing asserts the real corpus stays free of open contradictions — S104's 'zero across all 83 sidecars' was a one-off manual reading.",
+      "premises": [
+        {
+          "claim": "No test walks every committed audit sidecar through the premise checker",
+          "adapter": "file-exists",
+          "target": "test/session105-brief-authority-writers.test.js",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Run the checker across all sidecars by hand at closeout."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Studio-shard test: checkAudit over every docs/AUDIT_*.json, assert openContradicted == 0 and unverified == 0."
+        },
+        "L3": {
+          "effortHours": 0.75,
+          "recipe": "L2 with a negative control that feeds a sidecar whose premise is contradicted and whose item is still open, and asserts the corpus assertion fails on it."
+        }
+      },
+      "executionEvidence": "session105-brief-authority-writers walks every docs/AUDIT_*.json through checkAudit and fails on open decay or unverified premises, with a fixture negative control. On its first run it caught a live instance: this session's own sidecar, whose items 1-3 had shipped while still marked planned."
+    },
+    {
+      "rank": 4,
+      "tier": "MEDIUM",
+      "category": "Simulation truth; measurement validity",
+      "effortHours": 2,
+      "impact": 7,
+      "innovation": 5,
+      "priority": 17.5,
+      "slug": "elite-density-unmeasured-under-declared-roster",
+      "title": "Elite density's standing watch has not been re-derived under the roster shape S104 shipped",
+      "status": "implemented",
+      "premise": "S103 named active-roster position composition as the measured candidate driver of elite density; S104 removed that driver (quarterback and specialist rooms bounded by FIELDABLE_DEPTH, draft intake proportional to demand) but did not re-measure elite density afterwards. The watch is currently carried on a pre-S104 reading.",
+      "premises": [
+        {
+          "claim": "The task board still carries elite density as an unmeasured deferral",
+          "adapter": "grep",
+          "target": "context/TASK_BOARD.md",
+          "pattern": "Elite density: re-measure",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Run runRealismVerification({seasons:10}) on the canonical seed and record the elite arm."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "L1 on two further seeds, decompose the elite cohort by position room, and state whether the residual is intake/filter or roster shape."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 and, only if a mechanism is measured, ship a cost with a matched control — never a threshold change."
+        }
+      },
+      "executionEvidence": "Shipped at the L1 rung plus the L2 room decomposition on the canonical seed; the L2 cross-seed readings were NOT taken and are the stated next step. Canonical seed 20260306, ten seasons: active-roster 90+ share 0.4% -> 2.8%, watch (S103 carried 3.3% on the pre-S104 shape). A probe reproducing the clone path (2.79% vs gated 2.8%) puts 64% of the elite cohort in QB (11/95, 11.6%) and OL (19/311, 6.1%), which are 24% of the roster; those are the only rooms generated above their own mean potential (OL 82.1 vs 79.8, QB 82.7 vs 80.9). No statistic or generator change shipped on one seed."
+    },
+    {
+      "rank": 5,
+      "tier": "LOW",
+      "category": "Ecosystem; cross-repo coherence",
+      "effortHours": 0.5,
+      "impact": 4,
+      "innovation": 4,
+      "priority": 12.1,
+      "slug": "profile-lens-cache-has-no-refresh-path",
+      "title": "The brief's PROJECT PROFILE row can only ever say 'refresh required'",
+      "status": "implemented",
+      "premise": "render-startup-brief reads .cache/project-profile.json, a 30-minute TTL cache written only by studio-ops' scripts/lib/project-profile.mjs, which this repo does not carry. The brief is rendered at closeout, so the row is structurally stale and instructs a refresh nothing here can perform. The fix belongs in studio-ops (the renderer and the lens are both propagated), so it ships as Ark cargo, never a sibling-tree edit.",
+      "premises": [
+        {
+          "claim": "This repo carries no profile-lens writer",
+          "adapter": "file-exists",
+          "target": "scripts/lib/project-profile.mjs",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Ship Ark cargo to studio-ops describing the reader-without-writer."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "L1 with the proposed fix: the renderer computes the lens (or renders 'no profile source' honestly) instead of reading a TTL cache it cannot refresh."
+        },
+        "L3": {
+          "effortHours": 0.5,
+          "recipe": "Same as L2; no local change is legal here."
+        }
+      },
+      "executionEvidence": "Shipped as Ark pattern-share cargo 01K291HHVU080E58C015E99770 to vaultspark-studio-ops with the proposed fix (compute the lens in the renderer, or render an honest no-profile-source line). No local change is legal: renderer and lens are both propagated. Recorded in DECISIONS S105-5."
+    },
+    {
+      "rank": 6,
+      "tier": "LOW",
+      "category": "Process quality; decision debt",
+      "effortHours": 0.25,
+      "impact": 3,
+      "innovation": 3,
+      "priority": 7.7,
+      "slug": "brief-preflight-importer-question-open-three-sessions",
+      "title": "Close the open question of whether the brief renderer should call brief-preflight",
+      "status": "implemented",
+      "premise": "The S104 handoff asks, for the third time, whether render-startup-brief should import scripts/lib/brief-preflight.mjs. It cannot: brief-preflight statically imports scripts/check-last-session-summary.mjs, which PROJECT_AUTHORITY_CONTRACT.json forbids, and S104's import gate fails the suite the moment anything imports it. The question has a determined answer and should be recorded as a decision rather than carried.",
+      "premises": [
+        {
+          "claim": "The brief renderer does not import brief-preflight",
+          "adapter": "grep",
+          "target": "scripts/render-startup-brief.mjs",
+          "pattern": "brief-preflight",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.1,
+          "recipe": "Record the decision in DECISIONS.md."
+        },
+        "L2": {
+          "effortHours": 0.25,
+          "recipe": "L1 and drop the item from the handoff's next-work list."
+        },
+        "L3": {
+          "effortHours": 0.25,
+          "recipe": "Same as L2."
+        }
+      },
+      "executionEvidence": "Closed as DECISIONS S105-4: the renderer cannot import brief-preflight because it statically imports a contractually forbidden file, and the S104 import gate fails the suite the moment it is wired. The module stays in the tree, inert by design."
+    }
+  ]
+}

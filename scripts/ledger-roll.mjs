@@ -14,7 +14,29 @@
  * retained window move verbatim into context/archive/, with a pointer line left
  * behind, and nothing is rewritten or summarised on the way.
  *
- * Ledgers are newest-first here, so the retained window is a prefix.
+ * S105 — THE LEDGERS ARE NOT ALL NEWEST-FIRST, AND ASSUMING THEY WERE MOVED THE
+ * WRONG END. This file used to declare "ledgers are newest-first here, so the
+ * retained window is a prefix". That is true of CURRENT_STATE only. DECISIONS,
+ * TRUTH_AUDIT and SELF_IMPROVEMENT_LOOP are append-only with the NEWEST entry
+ * last, so keeping the first ten entries archived the newest sections and kept
+ * the oldest. Run live at S105 it moved that very session's decisions, truth
+ * audit and SIL entry into the archives and left the live SIL holding sessions
+ * 85-98 with no intent lines at all.
+ *
+ * Two independent things were wrong, and both are fixed here:
+ *   1. Direction. Each ledger now declares its `order`, and the retained window
+ *      is a prefix for newest-first and a SUFFIX for newest-last.
+ *   2. The entry patterns did not match the headings this project has written
+ *      since S100 (`## 2026-09-11 — S105 — …`), only the older
+ *      `— Session 105` form. So for DECISIONS the cut landed at the eleventh
+ *      OLD-style entry and every modern section below it was swept into the
+ *      archive as one contiguous tail. A pattern that silently matches a subset
+ *      of a ledger's entries is how a roll moves far more than it reports.
+ *
+ * The pointer always stays at the END of the live file, for both orders:
+ * `splitLedger` strips from the sentinel to EOF, so a pointer written into the
+ * middle of a newest-last ledger would make the next roll delete every entry
+ * beneath it.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -31,21 +53,31 @@ export const RETAINED_SESSION_ENTRIES = 10;
 // working-set duty. Enforced by check-ledger-budget so it cannot creep back.
 export const LIVE_LEDGER_BYTE_CEILING = 96 * 1024;
 
+export const NEWEST_FIRST = "newest-first";
+export const NEWEST_LAST = "newest-last";
+
+// Session headings come in two shapes here: `— Session 105 —` (through S99) and
+// `— S105 —` (S100 onward). Both must match, or the roll silently treats one
+// era as "not an entry" and moves it wholesale.
 export const ROLLABLE_LEDGERS = Object.freeze([
-  { file: "CURRENT_STATE.md", entry: /^- (\d{4}-\d{2}-\d{2}): Session (\d+)/ },
-  { file: "DECISIONS.md", entry: /^## (\d{4}-\d{2}-\d{2}) — Session (\d+)/ },
-  { file: "TRUTH_AUDIT.md", entry: /^## (\d{4}-\d{2}-\d{2}).*?Session (\d+)/ },
-  { file: "SELF_IMPROVEMENT_LOOP.md", entry: /^## (\d{4}-\d{2}-\d{2}) — Session (\d+)/ }
+  { file: "CURRENT_STATE.md", entry: /^- (\d{4}-\d{2}-\d{2}): (?:Session\s+|S)(\d+)\b/, order: NEWEST_FIRST },
+  { file: "DECISIONS.md", entry: /^## (\d{4}-\d{2}-\d{2})\s*[—–-]\s*(?:Session\s+|S)(\d+)\b/, order: NEWEST_LAST },
+  { file: "TRUTH_AUDIT.md", entry: /^## (\d{4}-\d{2}-\d{2}).*?\b(?:Session\s+|S)(\d+)\b/, order: NEWEST_LAST },
+  { file: "SELF_IMPROVEMENT_LOOP.md", entry: /^## (\d{4}-\d{2}-\d{2})\s*[—–-]\s*(?:Session\s+|S)(\d+)\b/, order: NEWEST_LAST }
 ]);
 
-/**
- * Split a newest-first ledger into the retained prefix and the archived tail.
- * Returns null when the file has fewer entries than the retention window, so a
- * short ledger is left completely alone.
- */
 export const POINTER_SENTINEL = "<!-- ledger-roll:pointer -->";
 
-export function splitLedger(source, entryPattern, retain = RETAINED_SESSION_ENTRIES) {
+/**
+ * Split a ledger into the retained working set and the archived remainder.
+ *
+ * `order` says which end is new. Returns null when the file has fewer entries
+ * than the retention window, so a short ledger is left completely alone.
+ *
+ * `head` is always the live content (file header plus retained entries, in the
+ * file's own order) and `tail` is always the block that moves to the archive.
+ */
+export function splitLedger(source, entryPattern, retain = RETAINED_SESSION_ENTRIES, order = NEWEST_FIRST) {
   // Drop any pointer a previous roll appended. Without this it is re-read as
   // ordinary content and moved into the middle of an archive whose entire
   // promise is that it is verbatim.
@@ -57,14 +89,25 @@ export function splitLedger(source, entryPattern, retain = RETAINED_SESSION_ENTR
     if (entryPattern.test(lines[index])) starts.push(index);
   }
   if (starts.length <= retain) return null;
-  const cut = starts[retain];
-  return {
+
+  const finish = (keptLines, archivedLines) => ({
     entries: starts.length,
     retainedEntries: retain,
     archivedEntries: starts.length - retain,
-    head: lines.slice(0, cut).join("\n").replace(/\s+$/, "") + "\n",
-    tail: lines.slice(cut).join("\n").replace(/\s+$/, "") + "\n"
-  };
+    order,
+    head: keptLines.join("\n").replace(/\s+$/, "") + "\n",
+    tail: archivedLines.join("\n").replace(/\s+$/, "") + "\n"
+  });
+
+  if (order === NEWEST_LAST) {
+    // The newest entries are at the bottom, so the retained window is the last
+    // `retain` of them. The file header above the first entry stays live.
+    const cut = starts[starts.length - retain];
+    const header = lines.slice(0, starts[0]);
+    return finish(header.concat(lines.slice(cut)), lines.slice(starts[0], cut));
+  }
+  const cut = starts[retain];
+  return finish(lines.slice(0, cut), lines.slice(cut));
 }
 
 export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_SESSION_ENTRIES } = {}) {
@@ -75,7 +118,8 @@ export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_S
     if (!fs.existsSync(livePath)) continue;
     const source = fs.readFileSync(livePath, "utf8");
     const before = Buffer.byteLength(source);
-    const split = splitLedger(source, ledger.entry, retain);
+    const order = ledger.order || NEWEST_FIRST;
+    const split = splitLedger(source, ledger.entry, retain, order);
     if (!split) {
       results.push({ file: ledger.file, before, after: before, archived: 0, skipped: "fewer entries than the retention window" });
       continue;
@@ -102,8 +146,16 @@ export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_S
       const existingBody = fs.existsSync(archivePath)
         ? fs.readFileSync(archivePath, "utf8").replace(banner, "")
         : "";
-      // Rolled entries are newer than anything already archived, so they go on top.
-      fs.writeFileSync(archivePath, banner + (existingBody ? `${split.tail}\n${existingBody}` : split.tail), "utf8");
+      // Where the rolled block belongs depends on which end is new. For a
+      // newest-first ledger the rolled entries are newer than anything already
+      // archived and go on top; for a newest-last ledger they are the OLDEST
+      // entries and belong beneath what is already there.
+      const merged = !existingBody
+        ? split.tail
+        : order === NEWEST_LAST
+          ? `${existingBody.replace(/\s+$/, "")}\n\n${split.tail}`
+          : `${split.tail}\n${existingBody}`;
+      fs.writeFileSync(archivePath, banner + merged, "utf8");
       fs.writeFileSync(livePath, head, "utf8");
     }
 
@@ -112,6 +164,7 @@ export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_S
       before,
       after: Buffer.byteLength(head),
       archived: split.archivedEntries,
+      order,
       archivePath: path.relative(root, archivePath)
     });
   }
@@ -129,7 +182,7 @@ function main(argv = process.argv.slice(2)) {
   }
   console.log(apply ? "Rolling ledgers" : "Ledger roll (dry run — pass --apply)");
   for (const row of results) {
-    const note = row.skipped ? ` (${row.skipped})` : ` · archived ${row.archived} entries`;
+    const note = row.skipped ? ` (${row.skipped})` : ` · archived ${row.archived} entries (${row.order})`;
     console.log(`  ${row.file.padEnd(26)} ${Math.round(row.before / 1024)} KB → ${Math.round(row.after / 1024)} KB${note}`);
   }
   console.log(`  ${"TOTAL".padEnd(26)} ${Math.round(before / 1024)} KB → ${Math.round(after / 1024)} KB`);

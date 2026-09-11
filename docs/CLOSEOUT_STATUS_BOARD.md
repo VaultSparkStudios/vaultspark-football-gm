@@ -1,36 +1,36 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-09-10 (Session 104 closeout) -->
+<!-- generated-at: 2026-09-11 (Session 105 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S104 ═════╗
-║  Date: 2026-09-10  ·  SIL: 961/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S105 ═════╗
+║  Date: 2026-09-11  ·  SIL: 961/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ docs(handoff): record why the cached test receipt is deliber  ║
+║  ✓ fix(record): correct an invariant this session got wrong abo  ║
 ║  ✓ chore(closeout): record S104 deployment receipts, captures a  ║
 ║  ✓ feat: generate a league at the roster its own rules declare,  ║
 ║  ✓ chore(deps-dev): bump @playwright/test in the dev-dependenci  ║
-║  ✓ chore(closeout): record S103 deployment receipts and reconci  ║
-║  ✓ fix: handle a bye where the product now decides it, and neve  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 961/1000 ═══════════════════════════════════════╗
 ║    Dev Health         97   ██████████                            ║
 ║    Alignment          98   ██████████                            ║
-║    Momentum           100  ██████████                            ║
+║    Momentum           98   ██████████                            ║
 ║    Engagement         86   █████████░                            ║
 ║    Process Qual       97   ██████████                            ║
-║    Coherence          95   ██████████                            ║
+║    Coherence          96   ██████████                            ║
 ║    Security           98   ██████████                            ║
-║    Ecosystem          90   █████████░                            ║
+║    Ecosystem          91   █████████░                            ║
 ║    Capital            100  ██████████                            ║
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
 ║  ✓ context/DECISIONS.md                                          ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 11 files  ·  M:11 A:0 D:0 ?:0                          ║
+║  Changes: 23 files  ·  M:18 A:4 D:0 ?:1                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -53,13 +53,14 @@
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
 ║  Tests:         1415/1415 · STALE                                ║
-║  IGNIS:         2d ago                                           ║
+║  IGNIS:         3d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  9d ago                                           ║
+║  Sanitization:  10d ago                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: last-session-summary-had-a-detector-but-no-writer — Write   ║
-║      Feedback truth; observability; startup accuracy             ║
+║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
+║      Latest audit has no open ranked items; run /audit for a ne  ║
+║      ↳ node scripts/ops.mjs genius-list                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 

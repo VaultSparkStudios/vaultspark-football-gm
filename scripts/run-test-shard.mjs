@@ -193,6 +193,7 @@ export const SHARDS = {
     "test/api-contract-parity.test.js",
     "test/audit-renderer.test.js",
     "test/session104-audit-premise-decay.test.js",
+    "test/session105-brief-authority-writers.test.js",
     "test/card-visibility-gate.test.js",
     "test/browser-module-reachability.test.js",
     "test/script-cli-smoke.test.js",

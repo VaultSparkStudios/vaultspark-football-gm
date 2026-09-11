@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S104 found that the defect three sessions had been circling was one level below all of them: a league was never generated at the roster its own rules declare. ROSTER_TEMPLATE summed to 49 against a declared activeLimit of 53 and generation built no practice squad at all against a declared practiceLimit of 16, so every league in this project's history began 20 players a club below its own steady state. That is why S102's question could not be answered by choosing between two populations: rostered gained ~39% of itself mid-window and activeRosterOnly silently acquired a selection filter as an unfiltered 49 became the top 53 of 69. Generating at the declared structure, and reading it as a floor in teamNeeds as well as a ceiling in the compliance pass, takes the canonical between-group drift from -0.197 to +0.003 and the within-group term from +0.269 watch to +0.040 on-target. Three defects of the same family fell out of it: the active 53 was a leaderboard rather than a fieldable depth chart (quarterback rooms 64 to 195, line 288 to 258), both release paths were position-blind and value density strips the line first, and draft intake was uniform at 11.1% a position against demand ranging 1.9% to 18.9%. Separately, scripts/check-audit-premises.mjs -- spawned by the startup brief inside a silent catch -- did not exist, so every typed premises block in the audit history had gone unchecked with nothing to say so.",
-  "nextMilestone": "Re-derive elite density under the new roster shape. S103 named active-roster position composition as the measured candidate for both the 0.303 parity reading and the standing elite-density watch; the composition driver is now removed and the parity reading is closed, but elite density has NOT been re-measured and no claim is made about it. Do not re-implement S102's age-indexed potential decline -- it was built, measured against a matched control and reverted in S103. Do not close the distribution gate's dispersion arm by widening stdDevDrift*: its move from on-target to watch is the same artefact seen from the other side, and with the selection filter constant it reports the S91 random walk it was built to find. Do not re-point the parity population: both candidates are valid at last and rostered holds the wider margin. Launch evidence unchanged: delivered reply-capable email, candidate-bound founder approval, authoritative lifecycle reconciliation.",
+  "currentFocus": "S105 closed three reader-without-writer defects in the startup brief (handoff session authority, SIL rolling-status header, audit premise decay as a gate) and re-derived elite density under the S104 roster shape at 2.8%, still watch against the sourced 1.53% ceiling. Run node scripts/render-sil-rolling-status.mjs --write after every SIL entry; keep the Latest Handoff — Session N → Session N+1 heading shape, which is now committed session authority.",
+  "nextMilestone": "Elite density remains watch at 2.8% (canonical seed, ten seasons, post-S104 roster shape). Take the next step from the S105 decomposition in the handoff, not from an inherited diagnosis; do not ship a cost without a mechanism measured against a matched control (S102's age-indexed decline was already refused in S103). Do not close the dispersion arm by widening stdDevDrift*, and do not re-point the parity population. Public launch remains HOLD.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-09-10",
+  "lastUpdated": "2026-09-11",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -25,9 +25,9 @@
   "ignisScore": 41119,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
-  "testSuiteStatus": "green",
-  "testsPassing": 1446,
-  "testsTotal": 1446,
+  "testSuiteStatus": "passing",
+  "testsPassing": 1457,
+  "testsTotal": 1457,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -70,16 +70,16 @@
   "silCategoriesV3": {
     "devHealth": 97,
     "creativeAlignment": 98,
-    "momentum": 100,
+    "momentum": 98,
     "engagement": 86,
     "processQuality": 97,
-    "crossRepoCoherence": 95,
+    "crossRepoCoherence": 96,
     "securityPosture": 98,
-    "ecosystemIntegration": 90,
+    "ecosystemIntegration": 91,
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 104,
+  "currentSession": 105,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
@@ -142,7 +142,7 @@
     "total": 12,
     "failing": 0,
     "score": 92,
-    "date": "2026-09-10",
+    "date": "2026-09-11",
     "passing": 11,
     "warning": 1,
     "checks": [
@@ -163,7 +163,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.004,
   "entropyLastComputed": "2026-09-09",
-  "lastSessionSummary": "S104 generates a league at the roster its own rules declare — ROSTER_TEMPLATE summed to 49 against a declared activeLimit of 53 with no practice squad at all, so every league began 20 players a club below its own steady state. That is why neither candidate gated population was a valid drift statistic, and fixing it takes the parity gate's between-group drift from -0.197 to +0.003. The active 53 is now a fieldable depth chart rather than a leaderboard, both release paths are guarded by a count, and draft intake is proportional to demand. Two propagated scripts that were referenced but absent were written, and the general form ships as a gate: every static relative import under scripts/ must resolve.",
+  "lastSessionSummary": "S105 gives every surface the startup brief reads a writer and a test that fails when the writer is skipped. The handoff was never a session authority: its parser knew a heading this project has never written, so the brief rendered handoff=S? for the project's whole recorded history and divergent=false compared two sources while claiming three; the parser now reads this project's heading and a test binds the live handoff to the newest SIL entry. The SIL rolling-status header had no writer and read Last session: 100 through S104; scripts/render-sil-rolling-status.mjs now derives it, and the derived averages are lower than the published ones (Avg3 959.7 against 974.7). Open premise decay across every audit sidecar now fails the studio shard, and caught this session's own sidecar on its first run. Elite density re-derived under the S104 roster shape: 0.4% to 2.8% on the canonical seed, still watch. Nothing a player sees changed.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -184,8 +184,8 @@
       "lastChecked": "2026-09-10"
     }
   ],
-  "lastSession": 104,
-  "silLastSession": 104,
+  "lastSession": 105,
+  "silLastSession": 105,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -1503,21 +1503,21 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 104,
+    "session": 105,
     "silScore": 961,
     "categories": {
       "devHealth": 97,
       "creativeAlignment": 98,
-      "momentum": 100,
+      "momentum": 98,
       "engagement": 86,
       "processQuality": 97,
-      "crossRepoCoherence": 95,
+      "crossRepoCoherence": 96,
       "securityPosture": 98,
-      "ecosystemIntegration": 90,
+      "ecosystemIntegration": 91,
       "capitalEfficiency": 100,
       "automationCoverage": 100
     },
-    "date": "2026-09-10"
+    "date": "2026-09-11"
   },
   "testShardReceipt": {
     "canonicalCommand": "npm test",
@@ -1535,16 +1535,17 @@
       "sim-contract": 83,
       "sim-realism": 1,
       "long": 5,
-      "studio": 295
+      "studio": 306
     },
-    "total": 1446,
-    "note": "S104 canonical receipt, direct exit 0: 1,446/1,446. The studio shard went red on its first pass with three self-caused failures (a new script violating the project authority contract forbiddenFiles; two arms of the same release-note freshness defect) and was re-run green after all three were fixed at source - none flaky, sibling drift, or force-greened. The studio re-run was required in any case: this session added a test file to that shard after the full run began."
+    "total": 1457,
+    "note": "S105 canonical receipt: 1,457/1,457. The full npm test run read 1,450/1,452 with every behaviour shard green on its first pass and two self-caused studio reds, both in this session own record-keeping: (1) the new SIL rolling-status gate red on byte-identical text because the working copy is CRLF and the derivation LF, fixed at source by normalising line endings, with a CRLF regression test and a negative control; (2) the context-ledger ceiling, whose prescribed remedy (ledger-roll --apply) then archived this session own decisions, truth-audit and SIL entry because the roller assumed every ledger is newest-first while three are newest-last, and because its entry patterns matched only the pre-S100 heading era. Reversed exactly from the committed archives, fixed at source with three tests and a negative control, re-rolled correctly, and the studio shard re-run green at 306/306. Nothing under src/ or public/ changed after the full run, so the behaviour shard counts stand against the shipped source. Neither red was flaky, sibling drift, or force-greened.",
+    "generatedAt": "2026-09-11T21:57:40.937Z"
   },
   "silRollingAverages": {
-    "3": 974.7,
-    "5": 979,
-    "10": 984.4,
-    "25": 988.5,
-    "all": 963.5
+    "3": 960.7,
+    "5": 958.8,
+    "10": 968.9,
+    "25": 980.8,
+    "all": 988.9
   }
 }
