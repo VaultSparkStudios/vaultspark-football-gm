@@ -6,6 +6,7 @@ import path from "node:path";
 import { buildRollingStatus, currentBlock, parseSilEntries, renderForRoot } from "../scripts/render-sil-rolling-status.mjs";
 import { checkAudit } from "../scripts/check-audit-premises.mjs";
 import { NEWEST_FIRST, NEWEST_LAST, ROLLABLE_LEDGERS, splitLedger } from "../scripts/ledger-roll.mjs";
+import { describeWeeklyPlanReceipt } from "../public/lib/weeklyPlanComposer.js";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
 
@@ -69,6 +70,49 @@ test("the live SIL has an intent outcome on every recent entry, so the intent ra
   assert.equal(recent.length, 5);
   for (const entry of recent) assert.ok(entry.intent, `Session ${entry.session} records no intent outcome`);
   assert.doesNotMatch(currentBlock(fs.readFileSync(path.join(ROOT, "context", "SELF_IMPROVEMENT_LOOP.md"), "utf8")), /Intent rate: unknown/);
+});
+
+/**
+ * S105: the browser spec's bye branch asserts strings; this pins them.
+ *
+ * `tests-ui/play-mode-smoke.spec.js` asserted the tactic modal unconditionally,
+ * but S102 made a bye suppress the tactic step entirely, and the browser league
+ * is generated from a random seed — so the test failed in S104's CI run and in
+ * S105's promotion gate while passing in S105's own CI run on the same commit.
+ * The spec now branches on what the product rendered, which means the branch is
+ * only as good as the literals it matches, and a local run that never draws a
+ * bye proves nothing about them (S103's lesson, one spec over).
+ *
+ * So the literals are pinned here, against the renderer that produces them.
+ * This does NOT claim the composer emits this composition order — that is
+ * `session102-staff-and-bye`'s job, and it asserts the order contains "bye".
+ * What this fixes is the other half: if the rendered wording changes, this goes
+ * red immediately rather than at the next CI run that happens to draw a bye.
+ */
+test("the bye receipt renders exactly the strings the browser spec matches on", () => {
+  const described = describeWeeklyPlanReceipt({
+    status: "committed",
+    onBye: true,
+    plan: { gmDecision: { choiceId: "bye" } },
+    compositionOrder: ["gm-decision", "bye"]
+  });
+  assert.equal(described.title, "Bye week committed");
+  assert.equal(described.detail, "GM choice · bye week — no opponent · gm-decision → bye");
+  // The three literals play-mode-smoke's bye branch depends on, by name.
+  assert.match(described.title, /Bye week/);
+  assert.match(described.detail, /bye week — no opponent/);
+  assert.match(described.detail, /gm-decision → bye/);
+  // Negative control: an ordinary week must NOT render the bye wording, or the
+  // branch would match on a week that actually demanded a tactic.
+  const played = describeWeeklyPlanReceipt({
+    status: "committed",
+    onBye: false,
+    plan: { gmDecision: { choiceId: "aggressive" }, tacticId: "run-heavy" },
+    compositionOrder: ["gm-decision", "tactic"]
+  });
+  assert.equal(played.title, "Weekly plan committed");
+  assert.doesNotMatch(played.detail, /bye week/);
+  assert.match(played.detail, /tactic run-heavy/);
 });
 
 /**

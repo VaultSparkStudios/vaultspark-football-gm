@@ -88,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
+║  ⛔  Doctor        8/12 (67%)  ·  3 failing                       ║
 ║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 

@@ -26,8 +26,8 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
   "testSuiteStatus": "passing",
-  "testsPassing": 1457,
-  "testsTotal": 1457,
+  "testsPassing": 1458,
+  "testsTotal": 1458,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -138,12 +138,12 @@
   "silHealth": 665,
   "silHealthMax": 1000,
   "doctorScore": {
-    "blockingFailing": 0,
+    "blockingFailing": 3,
     "total": 12,
-    "failing": 0,
-    "score": 92,
+    "failing": 3,
+    "score": 67,
     "date": "2026-09-11",
-    "passing": 11,
+    "passing": 8,
     "warning": 1,
     "checks": [
       {
@@ -151,6 +151,24 @@
         "status": "warning",
         "blocking": false,
         "detail": "registry SPARKED · local contract FORGE"
+      },
+      {
+        "id": "release-authority-checked-staging-current",
+        "status": "failing",
+        "blocking": true,
+        "detail": "checked 24ad30eb0675dd49eafcde7f380a0e11ceb0ae07 · live e5414189a209ef2a3c3b6ec2f29212c45fcb8b6c"
+      },
+      {
+        "id": "release-authority-release-source-current",
+        "status": "failing",
+        "blocking": true,
+        "detail": "release source 24ad30eb0675dd49eafcde7f380a0e11ceb0ae07 · live staging e5414189a209ef2a3c3b6ec2f29212c45fcb8b6c"
+      },
+      {
+        "id": "release-authority-git-head-covered-by-publication",
+        "status": "failing",
+        "blocking": true,
+        "detail": "HEAD e5414189a209ef2a3c3b6ec2f29212c45fcb8b6c is not covered by live production 24ad30eb0675dd49eafcde7f380a0e11ceb0ae07"
       }
     ]
   },
@@ -1535,11 +1553,12 @@
       "sim-contract": 83,
       "sim-realism": 1,
       "long": 5,
-      "studio": 306
+      "studio": 307
     },
-    "total": 1457,
-    "note": "S105 canonical receipt: 1,457/1,457. The full npm test run read 1,450/1,452 with every behaviour shard green on its first pass and two self-caused studio reds, both in this session own record-keeping: (1) the new SIL rolling-status gate red on byte-identical text because the working copy is CRLF and the derivation LF, fixed at source by normalising line endings, with a CRLF regression test and a negative control; (2) the context-ledger ceiling, whose prescribed remedy (ledger-roll --apply) then archived this session own decisions, truth-audit and SIL entry because the roller assumed every ledger is newest-first while three are newest-last, and because its entry patterns matched only the pre-S100 heading era. Reversed exactly from the committed archives, fixed at source with three tests and a negative control, re-rolled correctly, and the studio shard re-run green at 306/306. Nothing under src/ or public/ changed after the full run, so the behaviour shard counts stand against the shipped source. Neither red was flaky, sibling drift, or force-greened.",
-    "generatedAt": "2026-09-11T21:57:40.937Z"
+    "total": 1458,
+    "note": "S105 canonical receipt: 1,458/1,458 (studio 307 after the browser-flake fix added a renderer-contract test). The full npm test run read 1,450/1,452 with every behaviour shard green on its first pass and two self-caused studio reds - a CRLF-vs-LF comparison in this session new SIL rolling-status gate, and the context-ledger ceiling whose prescribed remedy then archived this session own record - both fixed at source and the shard re-run green. The production promotion of e541418 then failed in its build job on an intermittent play-mode-smoke bye-week assertion (the same test failed in S104 CI on ccf68c2 and passed in S105 CI on the commit the promotion failed); fixed at source rather than re-run, with the bye literals pinned against describeWeeklyPlanReceipt and a negative control. Local npm run test:ui - the promotion gate own command - passes 60/60. Nothing under src/ or public/ changed after the full run, so the behaviour shard counts stand. No red was flaky-dismissed, sibling drift, or force-greened.",
+    "generatedAt": "2026-09-11T22:45:10.177Z",
+    "browserGate": "npm run test:ui 60/60 local, exit 0"
   },
   "silRollingAverages": {
     "3": 960.7,

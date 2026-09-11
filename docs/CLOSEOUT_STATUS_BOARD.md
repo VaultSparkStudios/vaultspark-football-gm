@@ -10,11 +10,11 @@
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ feat(record): give every surface the brief reads a writer, a  ║
 ║  ✓ docs(handoff): record why the cached test receipt is deliber  ║
 ║  ✓ fix(record): correct an invariant this session got wrong abo  ║
 ║  ✓ chore(closeout): record S104 deployment receipts, captures a  ║
 ║  ✓ feat: generate a league at the roster its own rules declare,  ║
-║  ✓ chore(deps-dev): bump @playwright/test in the dev-dependenci  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 961/1000 ═══════════════════════════════════════╗
 ║    Dev Health         97   ██████████                            ║
@@ -29,19 +29,19 @@
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  ✓ context/CURRENT_STATE.md                                      ║
+║  · context/CURRENT_STATE.md                                      ║
 ║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
+║  · context/DECISIONS.md                                          ║
 ║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  · context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 23 files  ·  M:18 A:4 D:0 ?:1                          ║
+║  Changes: 114 files  ·  M:12 A:0 D:4 ?:98                        ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -50,7 +50,7 @@
 ║  Live:     https://playfranchisearchitect.com/  ·  preview/FORG  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ POST-SESSION SIGNALS ════════════════════════════════════════╗
-║  Doctor:        11/12                                            ║
+║  Doctor:        8/12                                             ║
 ║  Compliance:    37/37                                            ║
 ║  Tests:         1415/1415 · STALE                                ║
 ║  IGNIS:         3d ago                                           ║

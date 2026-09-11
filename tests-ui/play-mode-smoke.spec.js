@@ -46,13 +46,29 @@ test("first session turns onboarding promises into a committed weekly evidence t
   const decision = page.locator("#gmDecisionOptions .gm-decision-option").first();
   if (await decision.isVisible({ timeout: 10_000 }).catch(() => false)) await decision.click();
 
+  // S105 — the bye-week defect S103 fixed in s63-surfaces was still latent here.
+  //
+  // This spec asserted the tactic modal unconditionally, but S102 made a bye
+  // suppress the tactic step entirely (`composeWeeklyPlan`: `tacticalPhase =
+  // regularSeason && !onByeWeek`), so on a bye there is no modal to click. The
+  // browser league is generated from a random seed, so whether the controlled
+  // team plays in the first advanced week varies per run — measured at roughly
+  // one bye in five. That is exactly the intermittency observed: this test
+  // failed in S104's CI run and again in S105's promotion gate
+  // (`toBeVisible` → `hidden`) while passing in S105's own CI run on the very
+  // same commit. Assert against whichever branch the product actually rendered;
+  // a run that never draws a bye is a green that proves nothing.
   const tactic = page.locator("#halftimeAdjustModal .tactic-option").first();
-  await expect(tactic).toBeVisible({ timeout: 10_000 });
-  await tactic.click();
-  await page.locator("#halftimeAdjustModal .tactic-confirm-btn").click();
-  await expect(page.locator("#architectPlanRehearsalModal")).toBeVisible();
-  await expect(page.locator("#architectRehearsalCounter")).not.toBeEmpty();
-  await page.locator("#commitArchitectPlanBtn").click();
+  const byeReceipt = page.locator(".weekly-plan-receipt", { hasText: "Bye week" });
+  await expect(tactic.or(byeReceipt).first()).toBeVisible({ timeout: 30_000 });
+  const onBye = await byeReceipt.isVisible().catch(() => false);
+  if (!onBye) {
+    await tactic.click();
+    await page.locator("#halftimeAdjustModal .tactic-confirm-btn").click();
+    await expect(page.locator("#architectPlanRehearsalModal")).toBeVisible();
+    await expect(page.locator("#architectRehearsalCounter")).not.toBeEmpty();
+    await page.locator("#commitArchitectPlanBtn").click();
+  }
 
   await expect(page.locator("#statusChip")).toContainText("Ready", { timeout: 120_000 });
   const firstDebriefDecline = page.locator("#firstDebriefDecline");
@@ -60,9 +76,17 @@ test("first session turns onboarding promises into a committed weekly evidence t
     await firstDebriefDecline.click();
     await expect(page.locator("#firstDebriefPulse")).toHaveCount(0);
   }
-  await expect(page.locator(".weekly-plan-receipt")).toContainText("Weekly plan committed");
-  await expect(page.locator(".weekly-plan-receipt")).toContainText("tactic run-heavy");
-  await expect(page.locator(".weekly-plan-receipt")).toContainText("reviewed against");
+  if (onBye) {
+    // A bye is an authoritative empty state, not a missing read: the plan says
+    // so in its own receipt and must not have asked for a tactic.
+    await expect(byeReceipt).toContainText("bye week — no opponent");
+    await expect(byeReceipt).toContainText("gm-decision → bye");
+    await expect(page.locator("#halftimeAdjustModal .tactic-option")).toHaveCount(0);
+  } else {
+    await expect(page.locator(".weekly-plan-receipt")).toContainText("Weekly plan committed");
+    await expect(page.locator(".weekly-plan-receipt")).toContainText("tactic run-heavy");
+    await expect(page.locator(".weekly-plan-receipt")).toContainText("reviewed against");
+  }
   await page.locator("details.architecture-review summary").click();
   await expect(page.locator(".architect-ledger-row").first()).toBeVisible();
   await expect(page.locator(".architecture-mastery")).toBeVisible();
