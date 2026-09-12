@@ -34,7 +34,7 @@
 
 ## Proof
 
-- Files changed: 21
-- Insertions: 3344
-- Deletions: 2857
+- Files changed: 155
+- Insertions: 886
+- Deletions: 248
 - Suite: canonical Node 1,463/1,463 across six shards (core 245, runtime 817, sim-contract 83, sim-realism 1, long 5, studio 312), up from 1,458/1,458 in S105. The full run read 1,461/1,463 with two self-caused studio reds - one defect from two gates, the status page's release note two sessions behind against a tolerance of one - fixed at source and the studio shard re-run green. An earlier full run this session, before the generator revert, read 1,450/1,452 and is superseded.

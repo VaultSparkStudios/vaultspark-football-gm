@@ -88,4 +88,18 @@ The full `npm test` run read **1,461/1,463**: every behaviour shard green on its
 
 An earlier full run in this session (before the revert) read 1,450/1,452 and is superseded; its numbers describe code that is no longer in the tree.
 
+### Deployment
+
+| | |
+|---|---|
+| Candidate promoted | `dbdc5c5aadae039c92e9f7d347c44832823968af` |
+| Artifact digest | `449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3` — **changed this session** (from `0bdc08eb…`), because `public/status.html` carries a new release note |
+| Staging | verified **14/14** · deployment `ff866b0a-117c-4ee2-868a-0b2f671c6317` · rollback `eacad999-2d78-4bef-9f3a-d048c98af0bb` |
+| Production | promotion run **34669637746** — gate, build and deploy all success · live origin verified **10/10** |
+| Release authority | **verified**, all four identities bound to `dbdc5c5a` |
+| Doctor | `blockingFailing 0` · the standing warning is the registry SPARKED vs local FORGE drift |
+| `launchReady` | **false** — unchanged. Technical deployment, not public launch |
+
+**The one player-facing change was verified against the live origin, not by capture.** The responsive harness covers game surfaces and takes no status-page captures, so `https://staging.playfranchisearchitect.com/status.html` was fetched directly (HTTP 200, note present, dated 2026-09-12, including the line telling players their saved franchises are untouched). The visual receipt records that distinction rather than implying coverage it does not have.
+
 Other gates green at the final tree: `check-audit-premises` 1 verified · 3 resolved · **0 open decay** · SIL rolling-status current · every newest-last ledger ends at S106 · the ledger population derived from disk covers all six ledgers.

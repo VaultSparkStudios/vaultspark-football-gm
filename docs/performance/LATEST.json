@@ -2,13 +2,13 @@
   "schemaVersion": "1.0",
   "kind": "hosted-performance-evidence",
   "generatedBy": "scripts/measure-hosted-performance.mjs",
-  "observedAt": "2026-09-11T23:14:43.510Z",
+  "observedAt": "2026-09-12T03:39:51.563Z",
   "baseUrl": "https://playfranchisearchitect.com",
   "route": "/",
-  "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
+  "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75",
+    "digest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3",
     "files": 216,
     "entries": [
       {
@@ -559,7 +559,7 @@
       {
         "path": "precache-manifest.json",
         "bytes": 16022,
-        "sha256": "ed897a582f5bd38d99edd2d6411561adcfd958ecc6ce3125981d81d0219a4f56"
+        "sha256": "23e1a273150b3b43ef2e2079453b756cd17ebfe2397ea768d95ff66298b9fd5a"
       },
       {
         "path": "privacy.html",
@@ -609,7 +609,7 @@
       {
         "path": "sitemap.xml",
         "bytes": 1623,
-        "sha256": "46c092a1b44eaec9878d5095c056d7520787df79a5b601a56d08b134f5984b33"
+        "sha256": "d4c2a42e75cf09980c3070d2fc144be20eb1bc64ec4909cbcb8f4d28b0fbfaaa"
       },
       {
         "path": "src/adapters/persistence/browserSaveStore.js",
@@ -678,8 +678,8 @@
       },
       {
         "path": "src/domain/playerFactory.js",
-        "bytes": 16571,
-        "sha256": "bb83011162a71c3681c3351b4ac718ca61a73c87c0e2de8679be05458604ca49"
+        "bytes": 18857,
+        "sha256": "5e2fb972b8a8fc5189a249b5f1e29a0737612a149d8fe3784657b702c776434d"
       },
       {
         "path": "src/domain/potentialReversion.js",
@@ -1068,8 +1068,8 @@
       },
       {
         "path": "status.html",
-        "bytes": 12870,
-        "sha256": "7a8c3657131ddc42467d32579776e5a8c7caba2094ed578fef25345172b9226a"
+        "bytes": 14119,
+        "sha256": "64b82c768b9d8e37dc52a7fd8c453989515ba17c9acfe57ae18ca372bc2c81a1"
       },
       {
         "path": "styles.637f93f5b3.css",
@@ -1084,7 +1084,7 @@
       {
         "path": "sw.js",
         "bytes": 8549,
-        "sha256": "00e2f446f6395fca9afd28946f265fcad4fc24412301eb147b131a6a6ad4bb94"
+        "sha256": "8baa046b8dcf93780d99c8418a152052321200752c8059cd9e23fe58dabafd62"
       },
       {
         "path": "terms.html",
@@ -1103,17 +1103,17 @@
     "alt-svc": "h3=\":443\"; ma=86400",
     "cache-control": "public, max-age=0, must-revalidate",
     "cf-cache-status": "DYNAMIC",
-    "cf-ray": "a39a5ec54a61d63c-IAD",
+    "cf-ray": "a39be3259c63c105-IAD",
     "connection": "keep-alive",
     "content-encoding": "br",
     "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' mailto:; script-src 'self' 'sha256-/qrJC6d5lTEfvLxIGXfFyR9d7iz5n4iqCNAwQBgEZKU=' 'sha256-cJ+O4iCa12Djc+lM4dpFv3CfXYaisab9inDRNvb1mTA=' 'sha256-oAUBbPL9XmeFnhQnAcW8trINgfVPydt4Qoi/D2Enitc=' https://static.cloudflareinsights.com; style-src-elem 'self'; style-src-attr 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.github.com https://gist.githubusercontent.com https://api-franchise-architect-football.vaultsparkstudios.com https://cloudflareinsights.com; worker-src 'self'; manifest-src 'self'; upgrade-insecure-requests",
     "content-type": "text/html; charset=utf-8",
-    "date": "Fri, 11 Sep 2026 23:14:42 GMT",
+    "date": "Sat, 12 Sep 2026 03:39:50 GMT",
     "link": "<./lib/api/createApiClient.js>; rel=\"modulepreload\", <./lib/apiContract.js>; rel=\"modulepreload\", <./lib/challengeCodes.js>; rel=\"modulepreload\", <./lib/clientDiagnostics.js>; rel=\"modulepreload\", <./lib/themeCustomizer.js>; rel=\"modulepreload\"",
     "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
     "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
     "referrer-policy": "strict-origin-when-cross-origin",
-    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=MMGuNaDw6h9gmaIgMWTTIHbn6tTDNssTEdAYnE%2BDmmaZfAHM7X43APl%2B%2FQZQTjfaqD7TzuEJGCgB1xquAv2Ya00EO8AHu6acdqBXuPfjV6a74VLen%2F6OeJneXPRlhM708u9b5Pza5fruGsITJw%3D%3D\"}]}",
+    "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=sZY6l3fIOufYBsEGVu7eHpVNSyyhUzU1k%2FycU%2FEBv4VyEVZh1MTjGAyvtSac%2F3UbEGhZTK9QBbE%2FdmjotiAOtrJ9PW1yrlLgTR25dqi%2Bq1SE3SGNGzE%2BLB5fw4sMUhzH30djrcH7TBDerKk5%2Fw%3D%3D\"}]}",
     "server": "cloudflare",
     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
     "transfer-encoding": "chunked",
@@ -1129,13 +1129,26 @@
         "height": 1000
       },
       "runs": 3,
-      "lcpMs": 892,
-      "inpMs": 40,
+      "lcpMs": 368,
+      "inpMs": 32,
       "cls": 0,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 832,
+          "lcpMs": 10296,
+          "lcpElement": {
+            "tag": "H1",
+            "id": null,
+            "className": "setup-title",
+            "text": "Franchise Architect: Football"
+          },
+          "cls": 0,
+          "shifts": [],
+          "inpMs": 24,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 364,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -1148,7 +1161,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 892,
+          "lcpMs": 368,
           "lcpElement": {
             "tag": "H1",
             "id": null,
@@ -1157,20 +1170,7 @@
           },
           "cls": 0,
           "shifts": [],
-          "inpMs": 40,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 1128,
-          "lcpElement": {
-            "tag": "H1",
-            "id": null,
-            "className": "setup-title",
-            "text": "Franchise Architect: Football"
-          },
-          "cls": 0,
-          "shifts": [],
-          "inpMs": 56,
+          "inpMs": 32,
           "interactionObserved": true
         }
       ]
@@ -1182,13 +1182,13 @@
         "height": 844
       },
       "runs": 3,
-      "lcpMs": 860,
-      "inpMs": 32,
+      "lcpMs": 308,
+      "inpMs": 24,
       "cls": 0.0085,
       "interactionObserved": true,
       "samples": [
         {
-          "lcpMs": 944,
+          "lcpMs": 10212,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -1198,53 +1198,7 @@
           "cls": 0.0085,
           "shifts": [
             {
-              "startTimeMs": 7734,
-              "scrollY": 0,
-              "value": 0.0085,
-              "sources": [
-                {
-                  "tag": "SECTION",
-                  "id": null,
-                  "className": "community-pulse",
-                  "previousRect": {
-                    "x": 0,
-                    "y": 350.203125,
-                    "width": 390,
-                    "height": 493.796875,
-                    "top": 350.203125,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  },
-                  "currentRect": {
-                    "x": 0,
-                    "y": 362.390625,
-                    "width": 390,
-                    "height": 481.609375,
-                    "top": 362.390625,
-                    "right": 390,
-                    "bottom": 844,
-                    "left": 0
-                  }
-                }
-              ]
-            }
-          ],
-          "inpMs": 32,
-          "interactionObserved": true
-        },
-        {
-          "lcpMs": 860,
-          "lcpElement": {
-            "tag": "P",
-            "id": null,
-            "className": "",
-            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
-          },
-          "cls": 0.0085,
-          "shifts": [
-            {
-              "startTimeMs": 7364,
+              "startTimeMs": 14217,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -1280,7 +1234,7 @@
           "interactionObserved": true
         },
         {
-          "lcpMs": 816,
+          "lcpMs": 308,
           "lcpElement": {
             "tag": "P",
             "id": null,
@@ -1290,7 +1244,7 @@
           "cls": 0.0085,
           "shifts": [
             {
-              "startTimeMs": 6693,
+              "startTimeMs": 2173,
               "scrollY": 0,
               "value": 0.0085,
               "sources": [
@@ -1322,7 +1276,53 @@
               ]
             }
           ],
-          "inpMs": 32,
+          "inpMs": 24,
+          "interactionObserved": true
+        },
+        {
+          "lcpMs": 308,
+          "lcpElement": {
+            "tag": "P",
+            "id": null,
+            "className": "",
+            "text": "Community Stats shows the choices real general managers are making — which eras they start in, how they attack the draft, when they trade, and what it wins them. It appears here on"
+          },
+          "cls": 0.0085,
+          "shifts": [
+            {
+              "startTimeMs": 2752,
+              "scrollY": 0,
+              "value": 0.0085,
+              "sources": [
+                {
+                  "tag": "SECTION",
+                  "id": null,
+                  "className": "community-pulse",
+                  "previousRect": {
+                    "x": 0,
+                    "y": 350.203125,
+                    "width": 390,
+                    "height": 493.796875,
+                    "top": 350.203125,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  },
+                  "currentRect": {
+                    "x": 0,
+                    "y": 362.390625,
+                    "width": 390,
+                    "height": 481.609375,
+                    "top": 362.390625,
+                    "right": 390,
+                    "bottom": 844,
+                    "left": 0
+                  }
+                }
+              ]
+            }
+          ],
+          "inpMs": 24,
           "interactionObserved": true
         }
       ]
@@ -1334,13 +1334,13 @@
       {
         "name": "source revision is immutable",
         "ok": true,
-        "observed": "4d291eec136904003c1a17b728dddb928997cd2d",
+        "observed": "dbdc5c5aadae039c92e9f7d347c44832823968af",
         "expected": "40-character git SHA"
       },
       {
         "name": "artifact fingerprint is immutable",
         "ok": true,
-        "observed": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75",
+        "observed": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3",
         "expected": "sha256"
       },
       {
@@ -1364,13 +1364,13 @@
       {
         "name": "desktop LCP",
         "ok": true,
-        "observed": 892,
+        "observed": 368,
         "expected": "< 1800ms"
       },
       {
         "name": "desktop INP",
         "ok": true,
-        "observed": 40,
+        "observed": 32,
         "expected": "<= 200ms"
       },
       {
@@ -1388,13 +1388,13 @@
       {
         "name": "mobile LCP",
         "ok": true,
-        "observed": 860,
+        "observed": 308,
         "expected": "< 1800ms"
       },
       {
         "name": "mobile INP",
         "ok": true,
-        "observed": 32,
+        "observed": 24,
         "expected": "<= 200ms"
       },
       {
@@ -1430,5 +1430,5 @@
     }
   },
   "boundary": "Lab evidence for the canonical public entry route from a real hosted browser interaction; it is not field cohort data. Direct game-shell hydration is retained as a separate diagnostic and is not silently collapsed into this route.",
-  "receiptSha256": "b1d90f2603269f831b7c1964d1642d58f4cc1ee1453594d1555bd50017f63287"
+  "receiptSha256": "37e53838e769a00007c91c4804dad6411b91e77b3141b4b272c9e74afeb9207e"
 }

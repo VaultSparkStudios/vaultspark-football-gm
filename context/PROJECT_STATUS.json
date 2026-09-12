@@ -83,15 +83,15 @@
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
-    "date": "2026-09-11",
-    "canonical": "1,458/1,458 across six shards; studio re-run green after two self-caused reds fixed at source",
-    "browser": "local npm run test:ui 60/60 exit 0 (the promotion gate own command); browser-gates green in CI on e541418",
-    "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
-    "artifactDigest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75",
-    "staging": "verified 14/14 at 4d291eec, deployment eacad999-2d78-4bef-9f3a-d048c98af0bb, rollback 9be1e622-3eae-4bda-86e3-735b02759178 available",
-    "production": "verified 10/10 at 4d291eec via verify-release-provenance against the live origin; promotion run 34655574507 gate/build/deploy all success",
-    "performance": "hosted performance VERIFIED at 4d291eec",
-    "note": "The first promotion attempt (run 34652592973, candidate e541418) passed its gate and FAILED in build on an intermittent play-mode-smoke bye-week assertion; deploy was skipped and production was never republished. Fixed at source rather than re-run, and 4d291eec promoted cleanly."
+    "date": "2026-09-12",
+    "canonical": "1,463/1,463 across six shards; studio re-run green after two self-caused reds (one defect, two gates: the status page's release note two sessions behind)",
+    "browser": "browser-gates green in CI on the candidate; the S105 bye-week fix holds",
+    "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
+    "artifactDigest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3",
+    "staging": "verified 14/14 at dbdc5c5a, deployment ff866b0a-117c-4ee2-868a-0b2f671c6317, rollback eacad999-2d78-4bef-9f3a-d048c98af0bb available",
+    "production": "verified 10/10 at dbdc5c5a via verify-release-provenance against the live origin; promotion run 34669637746 gate/build/deploy all success",
+    "performance": "hosted performance VERIFIED at dbdc5c5aadae",
+    "note": "The artifact digest changed this session (449b6d36, from 0bdc08eb) because public/status.html carries a new release note - the only player-facing change in S106. That note was verified against the live staging origin by fetch (HTTP 200, note present, dated 2026-09-12) rather than by capture: the responsive harness covers game surfaces and does not include the status page, and the visual receipt says so rather than implying coverage it does not have."
   },
   "silScoreV3MigratedAt": "2026-04-21",
   "modelTier": "codex-1m",
@@ -164,7 +164,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-09-11"
+      "lastChecked": "2026-09-12"
     }
   ],
   "lastSession": 106,
@@ -266,11 +266,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "330d8b0042da0baf66470ecbf8a804f14b9663565af4740ce150371b36f59f11",
-    "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
+    "receiptSha256": "c67f1174e8fc76b1c9133548ff74c577039277657c6f0da25f947f6b559f0018",
+    "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75",
+      "digest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3",
       "files": 216,
       "entries": [
         {
@@ -821,7 +821,7 @@
         {
           "path": "precache-manifest.json",
           "bytes": 16022,
-          "sha256": "ed897a582f5bd38d99edd2d6411561adcfd958ecc6ce3125981d81d0219a4f56"
+          "sha256": "23e1a273150b3b43ef2e2079453b756cd17ebfe2397ea768d95ff66298b9fd5a"
         },
         {
           "path": "privacy.html",
@@ -871,7 +871,7 @@
         {
           "path": "sitemap.xml",
           "bytes": 1623,
-          "sha256": "46c092a1b44eaec9878d5095c056d7520787df79a5b601a56d08b134f5984b33"
+          "sha256": "d4c2a42e75cf09980c3070d2fc144be20eb1bc64ec4909cbcb8f4d28b0fbfaaa"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -940,8 +940,8 @@
         },
         {
           "path": "src/domain/playerFactory.js",
-          "bytes": 16571,
-          "sha256": "bb83011162a71c3681c3351b4ac718ca61a73c87c0e2de8679be05458604ca49"
+          "bytes": 18857,
+          "sha256": "5e2fb972b8a8fc5189a249b5f1e29a0737612a149d8fe3784657b702c776434d"
         },
         {
           "path": "src/domain/potentialReversion.js",
@@ -1330,8 +1330,8 @@
         },
         {
           "path": "status.html",
-          "bytes": 12870,
-          "sha256": "7a8c3657131ddc42467d32579776e5a8c7caba2094ed578fef25345172b9226a"
+          "bytes": 14119,
+          "sha256": "64b82c768b9d8e37dc52a7fd8c453989515ba17c9acfe57ae18ca372bc2c81a1"
         },
         {
           "path": "styles.637f93f5b3.css",
@@ -1346,7 +1346,7 @@
         {
           "path": "sw.js",
           "bytes": 8549,
-          "sha256": "00e2f446f6395fca9afd28946f265fcad4fc24412301eb147b131a6a6ad4bb94"
+          "sha256": "8baa046b8dcf93780d99c8418a152052321200752c8059cd9e23fe58dabafd62"
         },
         {
           "path": "terms.html",
@@ -1360,23 +1360,23 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "eacad999-2d78-4bef-9f3a-d048c98af0bb",
+    "deploymentId": "ff866b0a-117c-4ee2-868a-0b2f671c6317",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-09-11T22:47:47.841Z"
+      "checkedAt": "2026-09-12T03:09:59.555Z"
     },
     "rollback": {
-      "previousDeploymentId": "9be1e622-3eae-4bda-86e3-735b02759178",
+      "previousDeploymentId": "eacad999-2d78-4bef-9f3a-d048c98af0bb",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-09-11T22:47:47.841Z"
+    "observedAt": "2026-09-12T03:09:59.555Z"
   },
-  "lastCloseoutAt": "2026-09-11T23:21:55.204Z",
+  "lastCloseoutAt": "2026-09-12T03:40:41.929Z",
   "performanceAuthority": {
     "schemaVersion": "1.0",
     "sourceRevision": "713b326d4d84843112ddbc8354c0760bb6400859",
@@ -1406,31 +1406,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-09-11T23:20:45.743Z",
+    "observedAt": "2026-09-12T03:40:08.797Z",
     "status": "verified",
-    "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
-    "publicationRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
+    "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
+    "publicationRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75"
+      "digest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
-        "artifactDigest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75"
+        "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
+        "artifactDigest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3"
       },
       "production": {
-        "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
-        "artifactDigest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75"
+        "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
+        "artifactDigest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3"
       },
       "visual": {
-        "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
-        "artifactDigest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75"
+        "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
+        "artifactDigest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3"
       },
       "performance": {
-        "sourceRevision": "4d291eec136904003c1a17b728dddb928997cd2d",
-        "artifactDigest": "0bdc08eb57b1891ce343c1ceb471263ffd96f91cf6d4b351523f2c357563eb75"
+        "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
+        "artifactDigest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3"
       }
     },
     "checks": [
@@ -1476,12 +1476,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "31ea71eaa8f3a6170db89c8dec187b37dc32cff6353cdb26f7bf62c3bc7455b8",
-      "productionSha256": "db97cc12bcf4161153425ae11824bc2d37dca71e994d784eaf32e399d944179d",
-      "visualSha256": "f7420056912ffb87b41a3416c8d2d11a4ea8f490dcbd3a3e32e445706b1fe0cf",
-      "performanceSha256": "9855bf660cfc1941329f696caa00fd7bfa0466845ff319f77e8f33f92caf2027"
+      "stagingSha256": "a97df85afcd52c8490bb82505317ab2772d3d122008977e735742e490ad28022",
+      "productionSha256": "3a4727454f4f71dd07e3a442c88fb50862edeaa0d2207d00d89374423ee6925f",
+      "visualSha256": "1c12d5407d9c57fe68d54ecf4a56fb60cc8815855fd6d708ca46805ba4f8e767",
+      "performanceSha256": "fbdc32afa156c1c848695863695571bc5aac388e977978f5083b6457c14aeb8b"
     },
-    "receiptSha256": "65c8efcc3ab14bdad6b2ff10d7bfaae321a1b4c6de422000dab47aa36e3723f3"
+    "receiptSha256": "8f354c9ee63c8fc100f683b995cb199ccf2a95a172cd279a3c166b96f42e54e3"
   },
   "launchReady": false,
   "sil": {
