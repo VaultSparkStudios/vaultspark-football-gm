@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-12",
+  "session": 106,
+  "agent": "claude-code",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "source": "Live code plus an executed generation-time measurement: four seeds (20260306 / 2026 / 8121 / 4242), 8,832 rostered players, per-position mean overall against mean potential, taken through splitActivePopulation — the same population split the gates read.",
+    "itemsRanked": 4,
+    "combinedPriority": 82,
+    "verificationNote": "Every premise was checked against live code before inclusion. Item 1's measurement is generation-only (no simulation), so it is cheap to reproduce and independent of the ten-season runs S103-S105 relied on."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product; game-loop payoff, truthful feedback, static-host safety and measured release readiness",
+    "staging": "Stable Cloudflare staging before authorized main promotion and production deployment",
+    "source": "context/PROJECT_STATUS.json, context/LATEST_HANDOFF.md, arc-profile (studio-ops copy)"
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "HIGH",
+      "category": "Simulation truth; feature depth; the root of the standing elite-density watch",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 31,
+      "slug": "potential-is-drawn-on-a-scale-overall-does-not-share",
+      "title": "A player's potential is drawn position-blind while his overall is position-weighted, so a third of the league is generated above its own ceiling",
+      "status": "deferred",
+      "premise": "randomPotential(trait, rng) draws from one distribution for every position (SUPERSTAR 84-98, HIDDEN 76-94, BUST 58-76, else 68-90) while overall is a position-weighted average of attributes built as rng.int(50,86) + POSITION_ATTRIBUTE_BIASES[position][key]. The two numbers therefore live on unrelated scales, and only overall is position-aware. Measured at generation across four seeds and 8,832 rostered players: mean potential is ~80 for every room while mean overall runs 73.6 (TE) to 81.7 (QB), an 8.1-point spread that is pure formula artifact. 36.8% of the league is generated ABOVE its own potential; QB 51.8% and OL 49.0% against TE 22.7%. Every one of the 45 players at 90+ in a freshly generated league is a QB (11) or an OL (34) — zero in any other room. This is the generation-side root of the elite-density watch S105 measured but could not explain: S105 found QB+OL holding 64% of the elite cohort from 24% of the roster after ten seasons, and the same two rooms are the only ones above their own potential on day zero.",
+      "premises": [
+        {
+          "claim": "Potential is drawn without reference to position",
+          "adapter": "grep",
+          "target": "src/domain/playerFactory.js",
+          "pattern": "function randomPotential\\(trait, rng\\)",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Publish the per-position overall-vs-potential table as a receipt so the artifact is visible."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "Make potential position-aware: derive it on the same scale overall is measured on (headroom above the player's own generated overall, sized by development trait and age) so a rookie is never generated past his ceiling, and re-measure the generation table plus elite density."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus a ten-season re-measurement of the distribution and parity gates against a matched control, and a negative control reproducing the pre-fix position-blind draw so the property cannot silently regress. Do not close the elite-density watch by moving its ceiling."
+        }
+      },
+      "executionEvidence": "MEASURED, IMPLEMENTED, RE-FIXED, MEASURED AGAIN AND REVERTED. Position-aware potential (trait-sized headroom above the player's own overall, same stream slot, damped near the 99 ceiling) measured better than the session inherited on every distribution arm: generated-above-own-potential 36.8% to 0.0%, elite density 2.8% to 1.8%, dispersion drift 0.095 to 0.083, parity +0.043 to +0.034. It was still reverted: test/session90-development-environment.test.js asserts one offseason moves the league by its declared curve and nothing else, and read 0.285 against a 0.25 tolerance - then 0.289 after the obvious follow-up fix (per-room trait centres) was also implemented and measured. Reversion's mean contribution measured exactly 0.000 and the engine's measured trait centre made the gap slightly worse (0.297), so the residual is structural: development deltas land on ratings and overall is recomputed with position weights, so changing WHICH players move changes aggregate OVR at zero mean delta. Closing the gate would have required duplicating the engine inside the test or widening its tolerance; both refused. src/ differs from HEAD by 37 lines, all comment, verified by diff. Next session's item is the test's declared curve, not the generator."
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "Observability truth; gate population",
+      "effortHours": 1,
+      "impact": 7,
+      "innovation": 6,
+      "priority": 26.5,
+      "slug": "ledger-budget-gate-does-not-police-its-two-largest-ledgers",
+      "title": "The ledger-budget gate polices the four smallest live ledgers and cannot see the two largest",
+      "status": "implemented",
+      "premise": "check-ledger-budget asserts every entry of ROLLABLE_LEDGERS stays under LIVE_LEDGER_BYTE_CEILING (96 KB). ROLLABLE_LEDGERS names CURRENT_STATE, DECISIONS, TRUTH_AUDIT and SELF_IMPROVEMENT_LOOP — all now 34-43 KB after the S105 roll. It does not name logs/WORK_LOG.md (213 KB) or context/TASK_BOARD.md (206 KB), which are both more than twice the ceiling and are exactly the append-only files the roll exists for. The gate reports green while the two biggest working-set files in the repo are doing archive duty, which is the undeclared-population defect this project has now hit in three separate gates.",
+      "premises": [
+        {
+          "claim": "TASK_BOARD is not registered as a rollable ledger, though the file's own header comment names it append-only",
+          "adapter": "grep",
+          "target": "scripts/ledger-roll.mjs",
+          "pattern": "TASK_BOARD[.]md",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Roll the two files by hand."
+        },
+        "L2": {
+          "effortHours": 0.75,
+          "recipe": "Add WORK_LOG and TASK_BOARD to ROLLABLE_LEDGERS with their own entry patterns and order, and roll them — WORK_LOG is newest-last like the others; TASK_BOARD is newest-first with standing Now/Next sections that must stay live."
+        },
+        "L3": {
+          "effortHours": 1,
+          "recipe": "L2 plus a test asserting the gate's population is every append-only ledger in the repo rather than a hand-kept list, so a new ledger cannot be added without being policed."
+        }
+      },
+      "executionEvidence": "ROLLABLE_LEDGERS now carries a per-ledger dir and includes logs/WORK_LOG.md (newest-last, both heading eras) and context/TASK_BOARD.md (newest-first, standing Now/Next sections above the first entry stay live). Rolled: WORK_LOG 213 KB -> 41 KB (78 archived), TASK_BOARD 206 KB -> 50 KB (93 archived), total 572 KB -> 244 KB, S105 entries intact in both. The budget test reads each ledger from its own directory, and a new test derives the population from disk - any context/ or logs/ markdown with 12+ dated session headings must be registered - so the list cannot silently omit a ledger again."
+    },
+    {
+      "rank": 3,
+      "tier": "MEDIUM",
+      "category": "Observability truth; renderer ordering",
+      "effortHours": 0.5,
+      "impact": 5,
+      "innovation": 4,
+      "priority": 15.1,
+      "slug": "brief-prints-session-authority-from-pre-heal-status",
+      "title": "The brief prints its session-authority line from the status it read before self-healing it",
+      "status": "implemented",
+      "premise": "render-startup-brief computes sessionAuthority once near the top, then self-heals PROJECT_STATUS.currentSession later in the same run. The rendered line therefore describes the pre-heal state: at S105 closeout the first render healed currentSession 104 to 105 and in the same run emitted status=S104 and divergent=true, while a second render emitted divergent=false. The value on disk was correct both times; only the rendered line lagged by one render. It was invisible before S105 because the handoff was not a third authority.",
+      "premises": [
+        {
+          "claim": "Session authority is resolved once, before the self-heal",
+          "adapter": "grep",
+          "target": "scripts/render-startup-brief.mjs",
+          "pattern": "const sessionAuthority = resolveSessionAuthority",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.2,
+          "recipe": "Re-render twice at closeout."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "Recompute the authority after a successful heal so the rendered line and the committed value agree in one pass, with a test that renders against a lagging status and asserts the emitted line reports the healed state."
+        },
+        "L3": {
+          "effortHours": 0.5,
+          "recipe": "Same as L2."
+        }
+      },
+      "executionEvidence": "sessionAuthority is now a let, and the self-heal block re-resolves it from the healed status immediately after updateProjectStatus writes, so all three emit sites (the warning, the brief row and the session-authority comment) report the state that exists on disk. Two tests: a behavioural one asserting a lagging status diverges and the healed one does not, and a structural one asserting the recompute sits between the heal write and the emitted comment - read rather than executed, because the ordering is the property."
+    },
+    {
+      "rank": 4,
+      "tier": "LOW",
+      "category": "Ecosystem; propagated machinery vs project contract",
+      "effortHours": 0.5,
+      "impact": 4,
+      "innovation": 3,
+      "priority": 9.1,
+      "slug": "doctor-remedy-names-a-contractually-forbidden-writer",
+      "title": "A doctor remedy prescribes running a script this project forbids by name",
+      "status": "implemented",
+      "premise": "scripts/lib/doctor-remedies.mjs maps the last-session-summary check to check-last-session-summary.mjs --fix. context/PROJECT_AUTHORITY_CONTRACT.json names that exact path in forbiddenFiles, and S104 deleted the file rather than allowlisting it after the studio shard caught it. The remedy therefore tells a future session to create a file the contract forbids — the same trap S104 recorded as a decision, still printed as advice.",
+      "premises": [
+        {
+          "claim": "The HEAL_MAP entry itself still prescribes the forbidden writer (a bare filename match would hit the explanatory comment instead)",
+          "adapter": "grep",
+          "target": "scripts/lib/doctor-remedies.mjs",
+          "pattern": "'last-session-summary': \\{ script",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.2,
+          "recipe": "Point the remedy at this project's real authority — the closeout write — instead of the forbidden script."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "L1 plus a test asserting no doctor remedy names a path in forbiddenFiles, so propagation cannot reintroduce one silently."
+        },
+        "L3": {
+          "effortHours": 0.5,
+          "recipe": "L2 and ship the finding upstream as Ark cargo, since doctor-remedies is propagated machinery."
+        }
+      },
+      "executionEvidence": "The last-session-summary entry is removed from HEAL_MAP with the contract history recorded in its place, and a test asserts no HEAL_MAP remedy names any basename in PROJECT_AUTHORITY_CONTRACT.forbiddenFiles. doctor.mjs defines no last-session-summary check here, so the remedy was inert advice to violate the contract."
+    }
+  ]
+}

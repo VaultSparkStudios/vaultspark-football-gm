@@ -173,6 +173,43 @@ function randomTrait(rng) {
   return rng.weightedPick(DEV_TRAIT_WEIGHTS);
 }
 
+/**
+ * S106 — MEASURED, IMPLEMENTED AND REVERTED. Read this before rewriting it.
+ *
+ * This draw is position-blind while `overall` is a position-WEIGHTED average of
+ * position-BIASED attributes, so the two numbers every development, reversion,
+ * scouting and elite-density calculation compares are not on the same scale.
+ * Measured at generation across four seeds and 8,832 rostered players: mean
+ * potential ~80 in EVERY room against mean overall 73.6 (TE) to 81.7 (QB);
+ * 36.8% of the league generated ABOVE its own potential (QB 51.8%, OL 49.0%,
+ * TE 22.7%); and all 45 players at 90+ in a fresh league were quarterbacks (11)
+ * or offensive linemen (34), none anywhere else.
+ *
+ * S106 replaced it with trait-sized headroom above the player's own overall
+ * (same stream slot, one `rng.int`), damped near the 99 ceiling after the first
+ * version took elite density to 5.3% and dispersion to 0.157 — both
+ * out-of-range — because the defect had been a downward counterweight in the
+ * reversion term. The damped version measured BETTER than the session inherited
+ * on every arm: elite 2.8% -> 1.8%, dispersion 0.095 -> 0.083, parity +0.043 ->
+ * +0.034.
+ *
+ * It was still reverted, because `test/session90-development-environment.test.js`
+ * went red at 0.285 against a 0.25 tolerance and STAYED red (0.289) after the
+ * obvious follow-up fix — per-room trait centres — was implemented and
+ * measured. The cause is not a miscentred term: development deltas are applied
+ * to RATINGS and overall is recomputed with position weights, so changing WHICH
+ * players move changes aggregate OVR even when the delta's mean is zero. Taking
+ * gaps from mixed (37% negative) to uniformly positive is exactly such a
+ * redistribution. Closing that gate would have required either duplicating the
+ * engine inside the test or widening its tolerance, and this project forbids
+ * allowlisting your own change through a gate.
+ *
+ * **The next session's item is the test, not the generator**: make the declared
+ * curve model the rating-level, position-weighted application it is compared
+ * against — with the S90 subsidy (+0.84) still caught as a negative control —
+ * and only then re-land position-relative potential. The full measurement is in
+ * the S106 handoff.
+ */
 function randomPotential(trait, rng) {
   if (trait === "SUPERSTAR") return rng.int(84, 98);
   if (trait === "HIDDEN") return rng.int(76, 94);

@@ -1,27 +1,27 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-09-11 (Session 105 closeout) -->
+<!-- generated-at: 2026-09-12 (Session 106 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S105 ═════╗
-║  Date: 2026-09-11  ·  SIL: 961/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S106 ═════╗
+║  Date: 2026-09-12  ·  SIL: 960/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ chore(closeout): record S105 deployment receipts, provenance  ║
 ║  ✓ fix(tests): assert the branch the product rendered, so a bye  ║
 ║  ✓ feat(record): give every surface the brief reads a writer, a  ║
 ║  ✓ docs(handoff): record why the cached test receipt is deliber  ║
 ║  ✓ fix(record): correct an invariant this session got wrong abo  ║
-║  ✓ chore(closeout): record S104 deployment receipts, captures a  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 961/1000 ═══════════════════════════════════════╗
-║    Dev Health         97   ██████████                            ║
+╔══ SCORES · SIL 960/1000 ═══════════════════════════════════════╗
+║    Dev Health         96   ██████████                            ║
 ║    Alignment          98   ██████████                            ║
-║    Momentum           98   ██████████                            ║
+║    Momentum           96   ██████████                            ║
 ║    Engagement         86   █████████░                            ║
-║    Process Qual       97   ██████████                            ║
+║    Process Qual       99   ██████████                            ║
 ║    Coherence          96   ██████████                            ║
 ║    Security           98   ██████████                            ║
 ║    Ecosystem          91   █████████░                            ║
@@ -30,18 +30,18 @@
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
 ║  ✓ context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
 ║  ✓ logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 63 files  ·  M:61 A:2 D:0 ?:0                          ║
+║  Changes: 22 files  ·  M:16 A:5 D:0 ?:1                          ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -58,9 +58,8 @@
 ║  Sanitization:  10d ago                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
-║      Latest audit has no open ranked items; run /audit for a ne  ║
-║      ↳ node scripts/ops.mjs genius-list                          ║
+║  #1: potential-is-drawn-on-a-scale-overall-does-not-share — Mak  ║
+║      Simulation truth; feature depth; the root of the standing   ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 

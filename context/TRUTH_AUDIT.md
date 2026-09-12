@@ -145,3 +145,13 @@ Feedback save failures are visible and are never counted as saved. Milestone fix
 ---
 
 Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-09-12 — S106 — A number the whole system compares against, measured on the wrong scale
+
+**What shipped and what did not.** The generator change described below was implemented, measured twice, and **reverted**; `src/` carries only a comment recording it, verified by diff as zero behaviour change. What shipped are three gate and record fixes: the ledger-budget gate's population, the brief's post-heal session authority, and the removal of a doctor remedy prescribing a contractually forbidden file. Every number below is a real measurement of code that was run, not of code that is live — that distinction is the point of recording it here.
+
+**Potential was never comparable to overall, and every reader of their difference inherited that.** The draw was position-blind while overall is position-weighted; measured at generation across four seeds and 8,832 players, 36.8% of the league started above its own potential and all 45 elite players in a fresh league sat in two rooms. Development, reversion, scouting and elite density all read that difference. The scale is corrected; what is claimed is a generation-time measurement across four seeds and a ten-season run on the canonical seed, not a sweep.
+
+**The first version of the fix was worse, and that is recorded rather than absorbed.** Position-aware potential alone read elite 5.3% and dispersion 0.157 — both out-of-range — because the defect had been supplying a downward counterweight. The shipped version damps headroom near the ceiling and reads elite **1.8%**, dispersion **0.083**, parity **+0.034**, each better than the session inherited. Both figures that remain outside their on-target bands are reported as `watch`; no threshold was widened, and the uncalibrated reading is published here rather than omitted.
+
+**What is deliberately not claimed.** Elite density is not closed: 1.8% against a sourced 1.53% All-Pro ceiling is still `watch`, and the residual is the position-blind 90+ cut compared against a per-position honor — a declared-population question, not a tuning target. Dispersion is `watch` at 0.083 against 0.08. The ten-season figures are one seed; the generation figures are four seeds and no simulation. `launchReady` remains false on unchanged evidence.

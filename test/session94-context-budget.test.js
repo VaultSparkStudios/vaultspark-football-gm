@@ -33,7 +33,8 @@ test("the task board has a bounded projection, and it says when it truncates", (
 test("no live context ledger has grown back into an archive", () => {
   const oversized = [];
   for (const ledger of ROLLABLE_LEDGERS) {
-    const file = path.join(rootDir, "context", ledger.file);
+    // S106 — each ledger declares its own directory; WORK_LOG lives in logs/.
+    const file = path.join(rootDir, ledger.dir || "context", ledger.file);
     if (!fs.existsSync(file)) continue;
     const bytes = fs.statSync(file).size;
     if (bytes > LIVE_LEDGER_BYTE_CEILING) oversized.push(`${ledger.file} ${Math.round(bytes / 1024)} KB`);

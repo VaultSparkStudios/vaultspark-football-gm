@@ -504,7 +504,11 @@ const today          = new Date().toISOString().slice(0, 10);
 // A scored SIL closeout can legitimately lag later verification/deployment
 // receipts. Resolve the next identity from the monotonic maximum of every
 // committed authority; generation may repair upward but never move backward.
-const sessionAuthority = resolveSessionAuthority({ sil, status, handoff, fallbackCompletedSession: 62 });
+// `let`, because a successful self-heal below changes the answer: S105 measured
+// this render emitting `status=S104 … divergent=true` in the same run that
+// healed currentSession to 105, so the line described a state that no longer
+// existed by the time it was written. Recomputed after the heal.
+let sessionAuthority = resolveSessionAuthority({ sil, status, handoff, fallbackCompletedSession: 62 });
 const currentSession = sessionAuthority.nextSession ?? 63;
 const ctxUpdated     = csmd.match(/^Last updated:\s*(\d{4}-\d{2}-\d{2})/m)?.[1] ?? status.lastUpdated ?? null;
 const ctxAge         = ctxUpdated ? daysBetween(ctxUpdated, today) : '?';
@@ -1133,8 +1137,18 @@ if (silMaxSession == null) {
     // Sync ONLY the session number. silScore/silCategoriesV3 are owned by the
     // closeout SIL scorer — writing silScore here would desync it from the
     // category breakdown (tier1-sil-migration invariant: score == sum(categories)).
-    updateProjectStatus(root, (live) => ({ ...live, currentSession: sessionAuthority.repairStatusSession }));
-    console.log(`  ↻ self-heal: PROJECT_STATUS.currentSession ${statusLatest ?? '?'} → ${sessionAuthority.repairStatusSession} (monotonic committed authority)`);
+    const healed = sessionAuthority.repairStatusSession;
+    updateProjectStatus(root, (live) => ({ ...live, currentSession: healed }));
+    console.log(`  ↻ self-heal: PROJECT_STATUS.currentSession ${statusLatest ?? '?'} → ${healed} (monotonic committed authority)`);
+    // S106 — report the state that now exists on disk, not the one read before
+    // the heal. Without this the rendered session-authority line lags its own
+    // repair by one render, and `divergent=true` outlives the divergence.
+    sessionAuthority = resolveSessionAuthority({
+      sil,
+      status: { ...status, currentSession: healed },
+      handoff,
+      fallbackCompletedSession: 62
+    });
   } catch (e) {
     console.warn(`  ⚠ could not self-heal PROJECT_STATUS.json: ${e.message}`);
   }

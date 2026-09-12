@@ -194,6 +194,7 @@ export const SHARDS = {
     "test/audit-renderer.test.js",
     "test/session104-audit-premise-decay.test.js",
     "test/session105-brief-authority-writers.test.js",
+    "test/session106-ledger-population-and-authority.test.js",
     "test/card-visibility-gate.test.js",
     "test/browser-module-reachability.test.js",
     "test/script-cli-smoke.test.js",

@@ -1,11 +1,11 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Last session: 105 (2026-09-11) | Total: 961/1000 | Velocity: 4 | Debt: →
-Avgs — 3: 960.7 | 5: 958.8 | 10: 968.9 | 25: 980.8 | all: 988.9
+Last session: 106 (2026-09-12) | Total: 960/1000 | Velocity: 4 | Debt: →
+Avgs — 3: 960.7 | 5: 960 | 10: 966 | 25: 979.4 | all: 988.4
 Sparkline: ▅▅▅▅▅
 Intent rate: 100% (5/5 last 5)
-SIL delta: 961 → 961 (+0). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 59 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 961 → 960 (-1). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 60 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 ## 2026-08-11 — Session 80 Exact Decision Surfaces and Visible Architect Mastery
@@ -198,3 +198,21 @@ Process Quality is 97. Two of my own first drafts were wrong and tests caught bo
 ---
 
 Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-09-12 — Session 106 — Potential stops being drawn on a scale overall does not share
+
+SIL v3.0: **960 / 1000** (Dev Health 96, Creative Alignment 98, Momentum 96, Engagement 86, Process Quality 99, Cross-Repo Coherence 96, Security Posture 98, Ecosystem Integration 91, Capital Efficiency 100, Automation Coverage 100). Intent outcome: Achieved. These are engineering assessments, not measured player outcomes; engagement remains limited by the absence of any real-cohort evidence.
+
+Three sessions had been circling elite density from above — S103 named composition, S104 removed it, S105 decomposed the cohort and found QB and OL holding 64% of it. The defect was one level below all of them, at generation: **`randomPotential` drew one distribution for every position while `overall` is a position-weighted average of position-biased attributes.** The two numbers every development, reversion, scouting and density calculation compares were never on the same scale. Measured across four seeds and 8,832 players: mean potential ~80 in every room against mean overall 73.6 (TE) to 81.7 (QB); **36.8% of the league generated above its own potential**; all 45 elite players in a fresh league were quarterbacks or offensive linemen, none anywhere else.
+
+**The fix's first version was worse than the defect, and only measurement said so.** Position-aware potential alone read elite **5.3%** and dispersion **0.157**, both out-of-range, because the thing being removed was doing work: a third of the league sitting above its own potential was a standing downward pull in the reversion term. Damping headroom by proximity to the rating ceiling restored the brake and left all three arms better than the session inherited — elite 2.8% → **1.8%**, dispersion 0.095 → **0.083**, parity +0.043 → **+0.034** — with no threshold moved and both `watch` readings still reported as `watch`.
+
+**And then it was reverted.** `session90-development-environment` asserts that one offseason moves the league by its declared curve and nothing else; it read **0.285 against a 0.25 tolerance**, and stayed red at **0.289 after the obvious follow-up fix — per-room trait centres — was implemented and measured too**. The cause is not a miscentred term: reversion's mean contribution measured **exactly 0.000** and the measured trait centre made the gap slightly worse. Development deltas land on **ratings**, and overall is recomputed with position weights, so changing *which* players move changes aggregate OVR at zero mean delta — and taking gaps from mixed to uniformly positive is exactly that. The only ways to close the gate were duplicating the engine inside the test or widening its tolerance, so the change came out and the measurement stayed in: `src/` differs from HEAD by 37 lines, all comment, verified by diff.
+
+Dev Health is 96: the session's engine work is a finding rather than an improvement, and elite density remains where S105 left it. Process Quality is 99 — the regression was caught by running the gate rather than by reasoning, the follow-up fix was measured instead of assumed, the revert was verified by diff, and the premise checker twice caught my own typed premises matching comments instead of the code they described. Momentum is 96: three of four ranked items shipped and the fourth is a fully-measured deferral. Engagement holds at 86 with no cohort evidence.
+
+- [SIL] Before tuning anything that reads the difference between two numbers, prove they are measured on the same scale. Three sessions optimised the *consumers* of `potential - overall` while the two terms came from unrelated generators; every one of those sessions produced true findings that could not close the gap, because the gap was an artifact of comparison.
+- [SIL] When the follow-up fix does not move the gate either, stop: the gate has found something you have not understood. Per-room trait centres were a principled, correct-sounding second fix and moved 0.285 to 0.289. That was the signal that the residual was structural (deltas land on ratings; overall is position-weighted) rather than a centring error — and the moment to hand over a measurement instead of pushing a third attempt through.
+- [SIL] Refusing your own best work at a gate you did not write is the job. The reverted change measured better on all three distribution arms, and shipping it would have required either duplicating the engine inside a test or widening a tolerance. The finding keeps all of its value in the record; the code would have cost a gate.
+- [SIL] When removing a defect makes a gate worse, the defect was load-bearing — find what it was holding up before deciding what to do. A third of the league generated above its own potential was nonsense AND a brake. The honest fix keeps the correction and replaces the brake with one that is defensible on its own terms, rather than restoring the nonsense or widening the band.
+- [SIL] A gate that declares a ceiling must declare its population, and the population should be derived rather than listed. Third instance here; the fix that lasts is the one that reads the repo instead of a hand-kept array.

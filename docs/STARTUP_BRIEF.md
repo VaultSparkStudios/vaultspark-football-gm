@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-09-11 (Session 105 closeout) -->
+<!-- generated-at: 2026-09-12 (Session 106 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
-<!-- genius-authority-fingerprint: 6daa1adf5f7532dc -->
-<!-- session-authority: committed=S105 · SIL=S105 · status=S105 · handoff=S105; divergent=false -->
+<!-- genius-authority-fingerprint: 8ecc8f064e62a0cd -->
+<!-- session-authority: committed=S106 · SIL=S106 · status=S106 · handoff=S106; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 105 closeout · 2026-09-11.
+> **Fast-boot brief** — generated at Session 106 closeout · 2026-09-12.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,14 +17,14 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 106 · 2026-09-11 · BUILDER MODE                         ║
+║  Session 107 · 2026-09-12 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S105) - WHAT SHIPPED ══════════════════════════╗
-║  S105 gives every surface the startup brief reads a writer and   ║
-║  Tests  1446/1446; six shards with an explicit studio rerun aft  ║
-║  Deploy verified 10/10 at 24ad30eb                               ║
+╔══ LAST SESSION (S106) - WHAT SHIPPED ══════════════════════════╗
+║  S106 found that a player's potential is drawn on a scale his o  ║
+║  Tests  1,458/1,458 across six shards; studio re-run green afte  ║
+║  Deploy verified 10/10 at 4d291eec via verify-release-provenanc  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -41,18 +41,18 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    961/1000   ███████████████████████░   96%                     ║
+║    960/1000   ███████████████████████░   96%                     ║
 ║    SIL v3.0  ·  Avg3: 960.7  ·  Velocity 4→                      ║
 ║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend  ▅▅▅▅▅  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        97    ██████████  —        →                ║
+║    Dev Health        96    ██████████  —        →                ║
 ║    Alignment         98    ██████████  —        →                ║
-║    Momentum          98    ██████████  —        →                ║
+║    Momentum          96    ██████████  —        →                ║
 ║    Engagement        86    █████████░  —        →                ║
-║    Process Qual      97    ██████████  —        →                ║
+║    Process Qual      99    ██████████  —        →                ║
 ║    Coherence         96    ██████████  ········ →                ║
 ║    Security          98    ██████████  ········ →                ║
 ║    Ecosystem         91    █████████░  ········ →                ║
@@ -61,15 +61,15 @@
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 105 ═══════════════════════════╗
-║  Shipped:  S105 closed three reader-without-writer defects in t  ║
-║  Tests:    1415/1415 passing  ·  Deploy: verified 10/10 at 24ad  ║
+╔══ WHERE WE LEFT OFF  ·  Session 106 ═══════════════════════════╗
+║  Shipped:  S106 shipped three gate and record fixes and deferre  ║
+║  Tests:    1415/1415 passing  ·  Deploy: verified 10/10 at 4d29  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
 ║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    1% used                          ║
-║     2,671 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
-║     ~1,336 tok/turn  ·  cache 50%  ·  135 turns to compact       ║
+║     2,707 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,354 tok/turn  ·  cache 50%  ·  133 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -78,7 +78,7 @@
 ║  ✓  Velocity      4   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
 ║  ✓  Context age   0d                                             ║
-║  ✓  IGNIS         41119 FORGE  ·  2d old                         ║
+║  ✓  IGNIS         41119 FORGE  ·  3d old                         ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
@@ -88,7 +88,7 @@
 ║  ✓  Templates     v3.3 aligned                                   ║
 ║  —  Revenue sig.  prelaunch · not applicable                     ║
 ║  ✓  Deploy gaps   no gaps (run: ops deploy-gaps)                 ║
-║  ⛔  Doctor        8/12 (67%)  ·  3 failing                       ║
+║  ⚠  Doctor        11/12 (92%)  ·  1 warn                         ║
 ║  ✓  Cost          Max flat-rate · $0.00/7d notional · no alarm   ║
 ╚════════════════════════════════════════════════════════════════╝
 
@@ -108,18 +108,20 @@
 ╔══ MOMENTUM METER ══════════════════════════════════════════════╗
 ║  Velocity:   ▅▅▅▅▅  4→  (last 5 sessions)                        ║
 ║  Intent:     100% achieved last 5                                ║
-║  Streak:     ✓ 6 consecutive achieved-intent sessions            ║
+║  Streak:     ✓ 7 consecutive achieved-intent sessions            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ GENIUS HIT LIST ═════════════════════════════════════════════╗
-║  ✓ queue exhausted · source: AUDIT_2026-09-11_SESSION105.json    ║
-║  Closed: 6 · Open: 0                                             ║
-║  All 6 live-premise-verified audit items are done.               ║
+║  ✓ cache source: AUDIT_2026-09-12_SESSION106.json                ║
+║                                                                  ║
+║  #1 · HIGH · potential-is-drawn-on-a-scale-overall-does-not-sha  ║
+║  A player's potential is drawn position-blind while his overall  ║
+║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ```
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 105 closeout · 2026-09-11*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 106 closeout · 2026-09-12*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

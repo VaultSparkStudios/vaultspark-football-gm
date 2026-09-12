@@ -59,11 +59,29 @@ export const NEWEST_LAST = "newest-last";
 // Session headings come in two shapes here: `— Session 105 —` (through S99) and
 // `— S105 —` (S100 onward). Both must match, or the roll silently treats one
 // era as "not an entry" and moves it wholesale.
+// S106 — the population this gate polices used to be four files, and the two
+// LARGEST append-only ledgers in the repo were not among them. Measured at S106:
+// logs/WORK_LOG.md 213 KB and context/TASK_BOARD.md 206 KB, both more than twice
+// the 96 KB ceiling, while the four policed ledgers sat at 34-43 KB. The header
+// above has named TASK_BOARD as append-only since S94 — the list simply never
+// included it, so `check-ledger-budget` reported green on the two files it most
+// needed to see. A gate that declares a ceiling must declare its population too.
+//
+// `dir` exists because WORK_LOG lives in logs/, not context/; each ledger
+// archives beside itself.
 export const ROLLABLE_LEDGERS = Object.freeze([
-  { file: "CURRENT_STATE.md", entry: /^- (\d{4}-\d{2}-\d{2}): (?:Session\s+|S)(\d+)\b/, order: NEWEST_FIRST },
-  { file: "DECISIONS.md", entry: /^## (\d{4}-\d{2}-\d{2})\s*[—–-]\s*(?:Session\s+|S)(\d+)\b/, order: NEWEST_LAST },
-  { file: "TRUTH_AUDIT.md", entry: /^## (\d{4}-\d{2}-\d{2}).*?\b(?:Session\s+|S)(\d+)\b/, order: NEWEST_LAST },
-  { file: "SELF_IMPROVEMENT_LOOP.md", entry: /^## (\d{4}-\d{2}-\d{2})\s*[—–-]\s*(?:Session\s+|S)(\d+)\b/, order: NEWEST_LAST }
+  { file: "CURRENT_STATE.md", dir: "context", entry: /^- (\d{4}-\d{2}-\d{2}): (?:Session\s+|S)(\d+)\b/, order: NEWEST_FIRST },
+  { file: "DECISIONS.md", dir: "context", entry: /^## (\d{4}-\d{2}-\d{2})\s*[—–-]\s*(?:Session\s+|S)(\d+)\b/, order: NEWEST_LAST },
+  { file: "TRUTH_AUDIT.md", dir: "context", entry: /^## (\d{4}-\d{2}-\d{2}).*?\b(?:Session\s+|S)(\d+)\b/, order: NEWEST_LAST },
+  { file: "SELF_IMPROVEMENT_LOOP.md", dir: "context", entry: /^## (\d{4}-\d{2}-\d{2})\s*[—–-]\s*(?:Session\s+|S)(\d+)\b/, order: NEWEST_LAST },
+  // Two heading eras, both live in this file: `## 2026-09-11 — Session 105 — …`
+  // and `## Session 103 — 2026-09-10 — …`. Matching only one would sweep the
+  // other era wholesale, which is exactly the S105 defect.
+  { file: "WORK_LOG.md", dir: "logs", entry: /^##\s+(?:\d{4}-\d{2}-\d{2}\s*[—–-]\s*)?(?:Session\s+|S)(\d+)\b/, order: NEWEST_LAST },
+  // Newest-first, and its standing `## Now` / `## Next` sections sit above the
+  // first session entry — they are the working set and stay live by construction,
+  // because the retained window starts at the first matching entry.
+  { file: "TASK_BOARD.md", dir: "context", entry: /^##\s+(?:Session\s+|S)(\d+)\b/, order: NEWEST_FIRST }
 ]);
 
 export const POINTER_SENTINEL = "<!-- ledger-roll:pointer -->";
@@ -111,10 +129,11 @@ export function splitLedger(source, entryPattern, retain = RETAINED_SESSION_ENTR
 }
 
 export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_SESSION_ENTRIES } = {}) {
-  const archiveDir = path.join(root, "context", "archive");
   const results = [];
   for (const ledger of ROLLABLE_LEDGERS) {
-    const livePath = path.join(root, "context", ledger.file);
+    const dir = ledger.dir || "context";
+    const archiveDir = path.join(root, dir, "archive");
+    const livePath = path.join(root, dir, ledger.file);
     if (!fs.existsSync(livePath)) continue;
     const source = fs.readFileSync(livePath, "utf8");
     const before = Buffer.byteLength(source);
@@ -127,8 +146,9 @@ export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_S
 
     const archiveName = ledger.file.replace(/\.md$/, "") + ".archive.md";
     const archivePath = path.join(archiveDir, archiveName);
+    const archiveRel = `${dir}/archive/${archiveName}`;
     const pointer =
-      `\n${POINTER_SENTINEL}\n---\n\nOlder entries are retained verbatim in \`context/archive/${archiveName}\`. ` +
+      `\n${POINTER_SENTINEL}\n---\n\nOlder entries are retained verbatim in \`${archiveRel}\`. ` +
       `Nothing is summarised or removed on the way; the live file holds the working set only ` +
       `(newest ${retain} entries), so a reader does not pay for the whole project's history to ` +
       `learn what is true this week.\n`;
