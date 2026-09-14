@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-09-14T07:23:45.678Z",
-  "sourceRevision": "fac752feda47a5448d312129cc576a269c9ab0f9",
+  "capturedAt": "2026-09-14T10:52:35.731Z",
+  "sourceRevision": "ee7286837d177bb36f0a7f35dcbeef6d8436c7db",
   "artifactFingerprint": {
     "algorithm": "sha256",
-    "digest": "bb8382f91956728cd384f6f255176f8222f71b62317902e8aecf9bf85f70c95e",
-    "files": 216,
+    "digest": "82f4b29e0b54f3941493b3b611114ff1a5d48ae43b5997e43e89bacaddcc02eb",
+    "files": 218,
     "entries": [
       {
         "path": ".well-known/llms.txt",
@@ -49,8 +49,8 @@
       },
       {
         "path": "boot-manifest.json",
-        "bytes": 1481,
-        "sha256": "14ff7365d4755a3ab0a59ee08a2a16fa5c3199abc5e2513d7997fe8e9bc946c5"
+        "bytes": 1522,
+        "sha256": "201e57cfc318c81c952b17e059c2143a359eee042fd1cf2399a1577e6e099d14"
       },
       {
         "path": "community-stats.a2cd9636cc.js",
@@ -84,8 +84,8 @@
       },
       {
         "path": "game.html",
-        "bytes": 102471,
-        "sha256": "a0a4bbe959c9df3c7cf55497f02843707e6c5f7bf281285f7d1ad8daee7c0ca0"
+        "bytes": 103067,
+        "sha256": "a2cdaab3be0a3d190d47be3ce39c09d079abffc787ae8bde9a37004aeead8409"
       },
       {
         "path": "images/cover.png",
@@ -105,7 +105,7 @@
       {
         "path": "index.html",
         "bytes": 19256,
-        "sha256": "496b3ed7b58d55a2f95edbdc36df5d1637e8cf6cfdd79f43a9dc721cae3d721d"
+        "sha256": "231db8d597105dce8b28a57c066a369aec16f30ecd627a32358d0f266dec5a33"
       },
       {
         "path": "lib/achievements.js",
@@ -219,8 +219,8 @@
       },
       {
         "path": "lib/draftPickReveal.js",
-        "bytes": 3301,
-        "sha256": "5b0c7f462e2ad76d2a5bc233db11777b0296b59fa240db810511094be87194f5"
+        "bytes": 3617,
+        "sha256": "37879caa92820206d1b884d45eab7878f456384678c06d3480752998bab128a4"
       },
       {
         "path": "lib/dynastyTimeline.js",
@@ -229,8 +229,8 @@
       },
       {
         "path": "lib/engagementFeatures.js",
-        "bytes": 32515,
-        "sha256": "1b64af696833d97fe1280a173b68b8ebafe0f06369d5576558f85e4d81ed554b"
+        "bytes": 32794,
+        "sha256": "5e1acb8b5fcb2ff356ecb81abe1a94c4a1a5a1db3ac7f0c4e97cf8706d6b0766"
       },
       {
         "path": "lib/exactSurfaceNavigation.js",
@@ -353,14 +353,19 @@
         "sha256": "d274fee8513330371c141e782b07988043ec66c267b02a98773cecb58917aff9"
       },
       {
+        "path": "lib/offseasonDevelopmentReport.js",
+        "bytes": 3031,
+        "sha256": "b965dc4c9a36556c2953005720d2aee3394df686aea18ecc2edf61cfa75158a8"
+      },
+      {
         "path": "lib/onClockTradeMarketPanel.js",
         "bytes": 5154,
         "sha256": "4299d9517e44e776cb7609d09c3294d708d1eaf52a6de72d9567398bee9c9387"
       },
       {
         "path": "lib/playerProfileNarrative.js",
-        "bytes": 8667,
-        "sha256": "7dbb95d1c167ecf545fb471db91b28be33fc80fbccf4ec2c0fd0a945621c2498"
+        "bytes": 9769,
+        "sha256": "441619fe5550ed1eaeb020fa484d9e66a2b970cb9c2f38e3b325c99b43654e64"
       },
       {
         "path": "lib/playtestJourney.js",
@@ -404,8 +409,8 @@
       },
       {
         "path": "lib/rewardBeats.js",
-        "bytes": 7382,
-        "sha256": "5ca27bae06a4c010b443ef1d8870367b3c4cafd84edd7add051209cf8c718427"
+        "bytes": 7590,
+        "sha256": "0f06ee560442b7fcc6506c46cee53fd8a5db715b1019ae9b5dccec0964699405"
       },
       {
         "path": "lib/rivalCoachIntel.js",
@@ -469,13 +474,13 @@
       },
       {
         "path": "lib/tabDraft.js",
-        "bytes": 23064,
-        "sha256": "70979c5b6172b296f81f9b6be23c372c3ce0fb7d2849c0f7bc5271167119a4a5"
+        "bytes": 23290,
+        "sha256": "77e9e86bcad29685d2f6f90a5fe289a2ffddd7030ca35923d18e460ee314442f"
       },
       {
         "path": "lib/tabHistory.js",
-        "bytes": 41946,
-        "sha256": "642e5ea8bc8b7fcd29f21833b640cc44825e5a59c8cc55f48869c79441227655"
+        "bytes": 42426,
+        "sha256": "09f1b8901dffafe885e4bf13824fe68960a2c8a0bd2d67c64c7b3a155b2d4b0a"
       },
       {
         "path": "lib/tabHydration.js",
@@ -494,8 +499,8 @@
       },
       {
         "path": "lib/tabRoster.js",
-        "bytes": 16069,
-        "sha256": "378b9ddfe9e1eebdbae23e5c5d3a49f97b491eb8de87443048afad38df264041"
+        "bytes": 16229,
+        "sha256": "52b7ceac57c869b802eff54120588ea1bcf486b03442205db506a2a3d855a0cd"
       },
       {
         "path": "lib/tabSettings.js",
@@ -554,8 +559,8 @@
       },
       {
         "path": "precache-manifest.json",
-        "bytes": 16022,
-        "sha256": "8e153b87eab42e09165310086f1b2fafca9dcfd801111b2afeb21609ec266673"
+        "bytes": 16199,
+        "sha256": "7567b08f8bbc5b38465109adbbe272fa02be56463f5ea8653f6a2b3313bec5cd"
       },
       {
         "path": "privacy.html",
@@ -605,7 +610,7 @@
       {
         "path": "sitemap.xml",
         "bytes": 1623,
-        "sha256": "2b50bb82590950c29b28db71f032ca6f6359225f67cdb08cbd4344c0292300d1"
+        "sha256": "6dee5f1f3beb20b9cf6235c5564a92cabbc2b47acac4cad6ad2ed0e4e0f83a65"
       },
       {
         "path": "src/adapters/persistence/browserSaveStore.js",
@@ -629,8 +634,8 @@
       },
       {
         "path": "src/app/api/localApiRuntime.js",
-        "bytes": 92533,
-        "sha256": "3f9c433a0757233da2b681509bdfb1b1541aef79e4f2f93ec5fb48c136e6938c"
+        "bytes": 92723,
+        "sha256": "3cfee7238aa9b8cd6d82847e2cb9e28bec0f44fd16de9c7cea5a2456a87cc2a1"
       },
       {
         "path": "src/config.js",
@@ -644,8 +649,8 @@
       },
       {
         "path": "src/data/nflEliteDensityBaseline.js",
-        "bytes": 6587,
-        "sha256": "62724174a9f4f879b9cc63b17e896b6a268723876d5771c8fea70dcd70c0d079"
+        "bytes": 8606,
+        "sha256": "99719bf9298ce2a5027a831bbb0956b196d4a03c6ccd3e97e75766f41cc95f9d"
       },
       {
         "path": "src/domain/contracts.js",
@@ -684,8 +689,8 @@
       },
       {
         "path": "src/domain/ratings.js",
-        "bytes": 15424,
-        "sha256": "163a4ebd2c6f0dc8c98ae2901aba15145db5aa3935e766ae9ac685687e6b4a8a"
+        "bytes": 15953,
+        "sha256": "f42c0f2c8598b38a35b36513ac92bb9602ee4a7d203e855a0d401920541c1597"
       },
       {
         "path": "src/domain/teamFactory.js",
@@ -724,8 +729,8 @@
       },
       {
         "path": "src/engine/beatReporter.js",
-        "bytes": 13566,
-        "sha256": "77e62bb8eb7573649b6e01cabd32741346547549ace194df01ddc83af42363fe"
+        "bytes": 14546,
+        "sha256": "c060fa4b69a9b9ef681c601fac3c9217e54b3ea0bf8f86d39b4f4d164427fab7"
       },
       {
         "path": "src/engine/capAlerts.js",
@@ -759,8 +764,8 @@
       },
       {
         "path": "src/engine/draftCombine.js",
-        "bytes": 5792,
-        "sha256": "2c6b813a9b0981a0c013a239cf6f30bf29119d933e2d77e86d45e5f2c0e8f1ab"
+        "bytes": 5974,
+        "sha256": "68c9f6b2928c7f513849becbdfb2c407911dec67edce7080f51cc14c61cc639b"
       },
       {
         "path": "src/engine/facilityMarket.js",
@@ -808,9 +813,14 @@
         "sha256": "6fa816dc77817419f42baa68aa2d94069aa8031ef245282d9a4e33d43eeaa675"
       },
       {
+        "path": "src/engine/offseasonDevelopmentReport.js",
+        "bytes": 4011,
+        "sha256": "965ce7177c18ccad6a834e8cbfb1eb70724bbefa42999700615b749c1a4e7dbe"
+      },
+      {
         "path": "src/engine/offseasonSimulator.js",
-        "bytes": 25069,
-        "sha256": "afefc3d418abafe09d014158ae9114da0f9f02d6dea43a03851d3a287cf425b5"
+        "bytes": 26369,
+        "sha256": "3c2e8ab757ab2eddf8dc97a857a565f7e5ee26dbe2996aeb73dc61b15d8a496e"
       },
       {
         "path": "src/engine/onClockTradeMarket.js",
@@ -904,8 +914,8 @@
       },
       {
         "path": "src/runtime/GameSession.js",
-        "bytes": 340710,
-        "sha256": "07c56956e11f9e1562b2bfe8c52db7cadc680764a3e3579cdc5de7543db1d508"
+        "bytes": 346618,
+        "sha256": "77088ec3542223bb069a3aa6ce06dbd5e016185a1021ab052df025deb5de2e12"
       },
       {
         "path": "src/runtime/advanceWeekCommand.js",
@@ -1019,8 +1029,8 @@
       },
       {
         "path": "src/stats/progressionParity.js",
-        "bytes": 38079,
-        "sha256": "85d61a8b1009f74a78e844a19e155475f96474dd319170495d03ed62aa23403b"
+        "bytes": 41570,
+        "sha256": "7a0fe464dbfc453b1e4266ab2a102154a4d20520c6c69bb5437eb2f127a986d1"
       },
       {
         "path": "src/stats/realismCalibrator.js",
@@ -1064,8 +1074,8 @@
       },
       {
         "path": "status.html",
-        "bytes": 15547,
-        "sha256": "4704dfcac92f1fae8db06c2739f8da79360371d03320b328dada4a0c6e44a4c9"
+        "bytes": 16823,
+        "sha256": "fcfa0af1d579ea69cce492612e05bb7f60cad5a6ac78d299e88b69748b1540a2"
       },
       {
         "path": "styles.637f93f5b3.css",
@@ -1079,8 +1089,8 @@
       },
       {
         "path": "sw.js",
-        "bytes": 8549,
-        "sha256": "5cda159e9b651d59d78af8ca89a625d5be1a56ac6e6300da9d870d8e19e6822e"
+        "bytes": 8632,
+        "sha256": "355912d21eb3ce8be172fc8fa4f7729e5b9f661bac564c30943cb7c2cf5bcd12"
       },
       {
         "path": "terms.html",
@@ -1094,15 +1104,15 @@
       "edge-policy-receipt.json"
     ]
   },
-  "artifact": "static responsive-evidence:3870951449abdb67494cc39553397c2055e4ba33f061d93ffd43386554d2010d",
+  "artifact": "static responsive-evidence:2cb7b37d7818b14a6e4e8c19338083b1527f8e9aebb8ad4e789c1f67d53d34e3",
   "themes": [
     "dark",
     "light"
   ],
   "captures": [
     {
-      "file": "s107-desktop-game-dialog-dark.png",
-      "sha256": "33b0c0808784229dfeb102e70189fd8bc80ed70bb789c350eff8652cb905adec",
+      "file": "s108-desktop-game-dialog-dark.png",
+      "sha256": "5db34085911f16c3673de9016ab3d1bba2bf538ef25f3da90f9328cd557a4188",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1111,8 +1121,8 @@
       "page": "First-run Opening Contract tutorial"
     },
     {
-      "file": "s107-desktop-game-dialog-light.png",
-      "sha256": "0e120bcbd398412fa8aa88185ee2471d7bf855394075749c98f334db27b53eca",
+      "file": "s108-desktop-game-dialog-light.png",
+      "sha256": "d7f1779f9dd6bd18ecbe5a00952af340b9bbaa3e4946397780c1907f0e8e3ab3",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1121,8 +1131,8 @@
       "page": "First-run Opening Contract tutorial"
     },
     {
-      "file": "s107-desktop-cap-pressure-dark.png",
-      "sha256": "edc43c3542e5edeeaf562d1c3620d2ea1d82f3d527b5248b4c9bb03c174fcb2b",
+      "file": "s108-desktop-cap-pressure-dark.png",
+      "sha256": "0d6410f848f3fc02134a7b330b071ca8fc271664c5ff8f7c7e605d483e0f06bf",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1131,8 +1141,8 @@
       "page": "Opening salary-cap pressure and General Manager legacy"
     },
     {
-      "file": "s107-desktop-cap-pressure-light.png",
-      "sha256": "8c91ebf6857c2a3c984d59dc9cbc2edec04effbb7e3fdfcab558d30eb1efc861",
+      "file": "s108-desktop-cap-pressure-light.png",
+      "sha256": "0973644ba1a3b6e312fb17bbe73e891dc6dd53e0f2c0ea9292f4a9fa1066b1d2",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1141,8 +1151,8 @@
       "page": "Opening salary-cap pressure and General Manager legacy"
     },
     {
-      "file": "s107-desktop-waiver-identity-dark.png",
-      "sha256": "15d929514117de357006a3d81de4d5bcf10ee913214673765a3066449088163e",
+      "file": "s108-desktop-waiver-identity-dark.png",
+      "sha256": "55e53db42630b9006a68df0e5e986939f9c96bf3e4d750a0bebb46a05ad125fe",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1151,8 +1161,8 @@
       "page": "Named and rated waiver-wire player identity"
     },
     {
-      "file": "s107-desktop-waiver-identity-light.png",
-      "sha256": "66301cea303fe5841f5f4b37b218d0dbcf2bd4b30edb9797c316c4f70e4c5bb5",
+      "file": "s108-desktop-waiver-identity-light.png",
+      "sha256": "b17a0281d2fec959308985b005e237dd50893af71617321da9e06d8be615811e",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1161,8 +1171,8 @@
       "page": "Named and rated waiver-wire player identity"
     },
     {
-      "file": "s107-desktop-franchise-legends-dark.png",
-      "sha256": "d5eeeac77e14d670ee2cd5f958a6186b649202f9893922f1fd8142af04f21e1a",
+      "file": "s108-desktop-franchise-legends-dark.png",
+      "sha256": "e50ecc4bf1367795e79f9f0ab7f824109360b4bc520f0f0ccb89c029e395d706",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1171,8 +1181,8 @@
       "page": "Franchise Legends dynasty memory"
     },
     {
-      "file": "s107-desktop-franchise-legends-light.png",
-      "sha256": "f922382f10498b6dfe14975160866030636f8f05cd4acd40a81c1d02894924cf",
+      "file": "s108-desktop-franchise-legends-light.png",
+      "sha256": "6c6610b54ffa0d6857b804e38ffe623d428a365b88163a5e37f105448641f909",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1181,8 +1191,8 @@
       "page": "Franchise Legends dynasty memory"
     },
     {
-      "file": "s107-desktop-gm-persona-dark.png",
-      "sha256": "682a20517b85a3b8ffb4e89144c92dda6cfd92ddea8c68b41fff288b873e1369",
+      "file": "s108-desktop-gm-persona-dark.png",
+      "sha256": "33251d60c8024cd2b4dfed982e35f112dde17ed70d0f6593301499d99a9cf8fa",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1191,8 +1201,8 @@
       "page": "General Manager market reputation"
     },
     {
-      "file": "s107-desktop-gm-persona-light.png",
-      "sha256": "d34bd5c58ccab968b31d5ac917d4ac37315f4147f501c4d0a0478e30df62db95",
+      "file": "s108-desktop-gm-persona-light.png",
+      "sha256": "0f2fc2db4978da0d786b9ca0475632924cefbac401c373a4e8cc1ad8aa7eac0c",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1201,7 +1211,7 @@
       "page": "General Manager market reputation"
     },
     {
-      "file": "s107-desktop-trophy-road-dark.png",
+      "file": "s108-desktop-trophy-road-dark.png",
       "sha256": "0d50e51722f176d271d860da80cdb6901decb6537deb14abf8c4c30759ccb14e",
       "theme": "dark",
       "viewport": {
@@ -1211,7 +1221,7 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s107-desktop-trophy-road-light.png",
+      "file": "s108-desktop-trophy-road-light.png",
       "sha256": "5926a82a7ad678d2633a0685e3c13c47d737f916353bd414f242cc083afd575e",
       "theme": "light",
       "viewport": {
@@ -1221,8 +1231,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s107-desktop-sim-watch-reel-dark.png",
-      "sha256": "a3c1ff35daf15f3627a437326acb019d2ac6c5e21ae796ee0ce1998feec27e49",
+      "file": "s108-desktop-sim-watch-reel-dark.png",
+      "sha256": "3e3983d139260ec86b0c01636e8a1bd1fe377d4d269b0f92ff64e8fcc780f51a",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1231,8 +1241,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s107-desktop-sim-watch-reel-light.png",
-      "sha256": "299ea593ab807fd160f4a2e3a672f4bcd0a12f337d8d8b1d0764f92a27d8690c",
+      "file": "s108-desktop-sim-watch-reel-light.png",
+      "sha256": "31b00ecbec0687d9b3d7f0b7c2c5d68ee2805f7bac53444015502e3b13ca48bb",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1241,8 +1251,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s107-desktop-room-watch-dark.png",
-      "sha256": "eb0b21248bd7e6acdef98d73b880891f4bd07f5976862edb6e16130f0e4bd760",
+      "file": "s108-desktop-room-watch-dark.png",
+      "sha256": "b9cf9a0cfc7ad413572f301aaf67d4fcf413d845565c3881f18d59d75a7c6ed1",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1251,8 +1261,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s107-desktop-room-watch-light.png",
-      "sha256": "06bc2e2021785d55064d6426ec16fdf2b445b655065e6c63b275b87f06a1e4db",
+      "file": "s108-desktop-room-watch-light.png",
+      "sha256": "1f7355bbd9868cebc734e7ab7df61a1daaf20c7de0e0086f11bc5fbef5868096",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1261,8 +1271,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s107-desktop-architect-cut-dark.png",
-      "sha256": "e8c4c270235a4b865b4603a9e9e4d68ccd9999c457be188522b52db09e1195e5",
+      "file": "s108-desktop-architect-cut-dark.png",
+      "sha256": "53f92b0bb98ffa9d00a3a95c71c9a662900f03bb4da2ef77b7e14b7846ce721e",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1271,8 +1281,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s107-desktop-architect-cut-light.png",
-      "sha256": "f4a536aeb0ce74703254be4f45bc506236022b1c3a51f791e717fc460967fad7",
+      "file": "s108-desktop-architect-cut-light.png",
+      "sha256": "be0f445c77685620873008589873edfda4a6780a93648aa9df45013a0658799c",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1281,8 +1291,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s107-desktop-guide-modal-dark.png",
-      "sha256": "0f5c27573ee05fb80d8c95b910d77c283879047ec309c403c981efcb8e61ba63",
+      "file": "s108-desktop-guide-modal-dark.png",
+      "sha256": "40c4365fda4d196e98f7f2067f138e47ef09728b726761769297875e544131b9",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1291,8 +1301,8 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s107-desktop-guide-modal-light.png",
-      "sha256": "6801732a33fe1505a9b4c8959b726c0b0435e96ae1ac3007467bde0efcbe46dd",
+      "file": "s108-desktop-guide-modal-light.png",
+      "sha256": "7732c7fcde76a9716faac54333f64836b6db702a807eee8d2438255367ae0959",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1301,7 +1311,7 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s107-desktop-rival-coaching-dark.png",
+      "file": "s108-desktop-rival-coaching-dark.png",
       "sha256": "3196b86f4f66af4fc9d762c4540ce45b6514656adc41a686a92e058cc14749ee",
       "theme": "dark",
       "viewport": {
@@ -1311,7 +1321,7 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s107-desktop-rival-coaching-light.png",
+      "file": "s108-desktop-rival-coaching-light.png",
       "sha256": "7c3031b5ab8ab09ae6351b359958deec9c6a12cf1e09e270c589a9eb9d8aedea",
       "theme": "light",
       "viewport": {
@@ -1321,8 +1331,8 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s107-desktop-decision-archive-dark.png",
-      "sha256": "625b78b80bd502665f7d7d766cfcb71ab5d917be044c27319ac3b38ca6bfc81e",
+      "file": "s108-desktop-decision-archive-dark.png",
+      "sha256": "25d4467c517a6a84323c9010b185df7cec3b803a6839863f0c2c6781993970b1",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1331,8 +1341,8 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s107-desktop-decision-archive-light.png",
-      "sha256": "020ff7f24181a7a6e11c3b489043c5c852e5985baa29efc289930ea5b236d451",
+      "file": "s108-desktop-decision-archive-light.png",
+      "sha256": "aa990c95fe9578494a29b2ef58b10e3781f0a77c9dee9f3fc20aed8d5114bc7d",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1341,8 +1351,8 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s107-desktop-co-gm-brief-dark.png",
-      "sha256": "4bd05eafd3d7bfcf91e2744a5745c2f2bdb3b7aef0556d6ec74c15b2343a819c",
+      "file": "s108-desktop-co-gm-brief-dark.png",
+      "sha256": "dc1a594ffed4af9855a76fb24e93d59c9cc8c5f4d6e4ad062b276bdfc264fa83",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1351,8 +1361,8 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s107-desktop-co-gm-brief-light.png",
-      "sha256": "2e2e6b3ae01e213aa4a06631ec084da2ac74406c5012d3cf9a15b36fdc09e063",
+      "file": "s108-desktop-co-gm-brief-light.png",
+      "sha256": "98f625d5ff557ca2b1128dbe3a692990bb28e78e9e66ad803863cd30aaaf1eb3",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1361,7 +1371,7 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s107-desktop-prediction-receipt-dark.png",
+      "file": "s108-desktop-prediction-receipt-dark.png",
       "sha256": "b8019eecb5c333977a15c47ee9a924c31df8c7c84f9aaceb9b6be0b37bf10be6",
       "theme": "dark",
       "viewport": {
@@ -1371,7 +1381,7 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s107-desktop-prediction-receipt-light.png",
+      "file": "s108-desktop-prediction-receipt-light.png",
       "sha256": "419fc7cf9cce055f40f21ca646475f2858673008124c708ce9466816ca71f4c8",
       "theme": "light",
       "viewport": {
@@ -1381,8 +1391,8 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s107-desktop-agent-negotiation-dark.png",
-      "sha256": "92f644d7400a01606fedfff3c9c03e028d19a3ff8ce82493095a1cafb67ea471",
+      "file": "s108-desktop-agent-negotiation-dark.png",
+      "sha256": "a0bc88d75743b4cdc7468c2c04986c039c0f797ee1dae5f1eb632abaeec8d7f2",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1391,8 +1401,8 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s107-desktop-agent-negotiation-light.png",
-      "sha256": "6518bcbb9733c159b670f9e29ca389d898798c460e3fb31a954d8be3fdeb55f4",
+      "file": "s108-desktop-agent-negotiation-light.png",
+      "sha256": "8a36102ee23434929bc83bb2f585f6f0b7fef454422a51456634a9181231c74a",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1401,7 +1411,7 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s107-desktop-draft-trade-review-dark.png",
+      "file": "s108-desktop-draft-trade-review-dark.png",
       "sha256": "ea54adbb813be95cfdf4ea12fbfa304fd4d61a0f201aa6864ea1218cab9e1170",
       "theme": "dark",
       "viewport": {
@@ -1411,7 +1421,7 @@
       "page": "Irreversible live-pick trade confirmation"
     },
     {
-      "file": "s107-desktop-draft-trade-review-light.png",
+      "file": "s108-desktop-draft-trade-review-light.png",
       "sha256": "8a23e7820242df878908fac7c75a7a1c0da72ef546190e7c2ed89b4fbc699e09",
       "theme": "light",
       "viewport": {
@@ -1421,8 +1431,8 @@
       "page": "Irreversible live-pick trade confirmation"
     },
     {
-      "file": "s107-desktop-hof-ceremony-dark.png",
-      "sha256": "b85c075a1a942c8ea166d692544294c8c9d993cb5ea7f7fba03f12cb1171eb40",
+      "file": "s108-desktop-hof-ceremony-dark.png",
+      "sha256": "af6d961e9e54a87ffd76f68ec69062fba140d79a7fe104b35e0a79015cbf1b55",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1431,8 +1441,8 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s107-desktop-hof-ceremony-light.png",
-      "sha256": "65496b5d31b51073891418eda7bda179b8198593c2c193df054c911ba85893e4",
+      "file": "s108-desktop-hof-ceremony-light.png",
+      "sha256": "a3c10860aba16b65f00fe20e7072234e7d4cd04c7393c43e6df03a0215f99f9d",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1441,7 +1451,7 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s107-desktop-architect-signature-dark.png",
+      "file": "s108-desktop-architect-signature-dark.png",
       "sha256": "fd1dbbb3bff779e80d01fa8c984db74b1439ed781ad6f156d8ea3b2155a12f09",
       "theme": "dark",
       "viewport": {
@@ -1451,7 +1461,7 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s107-desktop-architect-signature-light.png",
+      "file": "s108-desktop-architect-signature-light.png",
       "sha256": "2bc0f17148074ac749e6c9b10e09941a840d05fbcc048cecd9ebfdf867b201e5",
       "theme": "light",
       "viewport": {
@@ -1461,7 +1471,7 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s107-desktop-architect-objective-dark.png",
+      "file": "s108-desktop-architect-objective-dark.png",
       "sha256": "0d65e43c6c89a92e533acd5d6206009f03f44ea27baae8a8c05fa2fb9ecb7e60",
       "theme": "dark",
       "viewport": {
@@ -1471,7 +1481,7 @@
       "page": "Player-authored Architect Objective hierarchy"
     },
     {
-      "file": "s107-desktop-architect-objective-light.png",
+      "file": "s108-desktop-architect-objective-light.png",
       "sha256": "00a651b64811e16de9f89a1d731b9dd0421e06d5117f25a401b953d10c411a28",
       "theme": "light",
       "viewport": {
@@ -1481,7 +1491,7 @@
       "page": "Player-authored Architect Objective hierarchy"
     },
     {
-      "file": "s107-desktop-exact-command-center-dark.png",
+      "file": "s108-desktop-exact-command-center-dark.png",
       "sha256": "7518ff179063570374a84f34c49dba1f122e149d5941a64cbc772594662652c8",
       "theme": "dark",
       "viewport": {
@@ -1491,7 +1501,7 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s107-desktop-exact-command-center-light.png",
+      "file": "s108-desktop-exact-command-center-light.png",
       "sha256": "ac8980abc3237c3ebcf89b1f7052b60a5fd84a4db662be056bf785099fc03df7",
       "theme": "light",
       "viewport": {
@@ -1501,8 +1511,8 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s107-desktop-exact-command-target-dark.png",
-      "sha256": "d95fb2ca2bbc8e61b95f4e587d6525efb492fdce254165f253e2a04ecc33e309",
+      "file": "s108-desktop-exact-command-target-dark.png",
+      "sha256": "19b4bafd51bc10394c927ec52362732cea77d8ae2a36e2aec733cadb28b4d012",
       "theme": "dark",
       "viewport": {
         "width": 1440,
@@ -1511,8 +1521,8 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s107-desktop-exact-command-target-light.png",
-      "sha256": "1ca2d89822c5f8462955da96296210879bb90540ff483eae6784322007050e7c",
+      "file": "s108-desktop-exact-command-target-light.png",
+      "sha256": "45ab096d64af8f6ce40256c02ba2f9f0a850d8b6a5125c8b3b942a4041666852",
       "theme": "light",
       "viewport": {
         "width": 1440,
@@ -1521,7 +1531,7 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s107-desktop-facility-capital-dark.png",
+      "file": "s108-desktop-facility-capital-dark.png",
       "sha256": "750c4ba92fc8e01b0ffc4d0ca79bc9d2c212a31bd256a534bba8eed64d5faf47",
       "theme": "dark",
       "viewport": {
@@ -1531,7 +1541,7 @@
       "page": "Owner facility-capital liquidity, runway, and obligation receipt"
     },
     {
-      "file": "s107-desktop-facility-capital-light.png",
+      "file": "s108-desktop-facility-capital-light.png",
       "sha256": "8a332c230b2a0c5d27ce716df1f316e6b966781b09f797757e7fc1dc37b81e4a",
       "theme": "light",
       "viewport": {
@@ -1541,7 +1551,7 @@
       "page": "Owner facility-capital liquidity, runway, and obligation receipt"
     },
     {
-      "file": "s107-desktop-gist-authentication-dark.png",
+      "file": "s108-desktop-gist-authentication-dark.png",
       "sha256": "32e37ef805d5ed6532e3752b2d985dbb16ba5cab9c4117a66d96c36dd95d3ff4",
       "theme": "dark",
       "viewport": {
@@ -1551,7 +1561,7 @@
       "page": "Cloud-save corruption and optional authentication boundary"
     },
     {
-      "file": "s107-desktop-gist-authentication-light.png",
+      "file": "s108-desktop-gist-authentication-light.png",
       "sha256": "cc67d1e5cd08d481da0660fb86874d78f13eb1910914e8fbc63174ff29c4dce3",
       "theme": "light",
       "viewport": {
@@ -1561,8 +1571,8 @@
       "page": "Cloud-save corruption and optional authentication boundary"
     },
     {
-      "file": "s107-mobile-game-dialog-dark.png",
-      "sha256": "660c04ef34edf468ca22eae610d5635d16915a38ba6448d38199f744f03e5f10",
+      "file": "s108-mobile-game-dialog-dark.png",
+      "sha256": "779c5c9e5eef7381e5808eaa27d6f6c489bdc0267bac17697d43d0a151a62b74",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1571,8 +1581,8 @@
       "page": "First-run Opening Contract tutorial"
     },
     {
-      "file": "s107-mobile-game-dialog-light.png",
-      "sha256": "875ab7891deab0c8613818aef27fb055a7d5baf88b60fc543643198bf829f648",
+      "file": "s108-mobile-game-dialog-light.png",
+      "sha256": "144b72fce59dd9e16f2aa1416c6d367180fe4dbb58195bbbbe678eb1bedf1a26",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1581,8 +1591,8 @@
       "page": "First-run Opening Contract tutorial"
     },
     {
-      "file": "s107-mobile-cap-pressure-dark.png",
-      "sha256": "3ba96943fb97ae971f529f0e4259c656c84ec59dd72877efe95ff8261852f1be",
+      "file": "s108-mobile-cap-pressure-dark.png",
+      "sha256": "36818430c10ad63726090e645b6da9d60f7d10d87f7ca75b125d6eae2ad4b19d",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1591,8 +1601,8 @@
       "page": "Opening salary-cap pressure and General Manager legacy"
     },
     {
-      "file": "s107-mobile-cap-pressure-light.png",
-      "sha256": "15bb382e6d21205a1571cb2f262e1a28b60d9694650d10d314c531f8ae78611f",
+      "file": "s108-mobile-cap-pressure-light.png",
+      "sha256": "105ea34abed9c3e0c186a08c9496c8a136a443cc967c8d00d6b81dbf556c9b91",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1601,8 +1611,8 @@
       "page": "Opening salary-cap pressure and General Manager legacy"
     },
     {
-      "file": "s107-mobile-waiver-identity-dark.png",
-      "sha256": "e5fe58cdafb8aa541b585cdf760e57fb2646c6c30dee734c4f55d20adadbfe2b",
+      "file": "s108-mobile-waiver-identity-dark.png",
+      "sha256": "83e53b85403bbdd1b02970b2de6f810f2d4422d28556cab4efde0c8de49ee9b0",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1611,8 +1621,8 @@
       "page": "Named and rated waiver-wire player identity"
     },
     {
-      "file": "s107-mobile-waiver-identity-light.png",
-      "sha256": "19594b013174f1c3ce3cffbb1239df5c034682df262c4b375c27d14f6e633055",
+      "file": "s108-mobile-waiver-identity-light.png",
+      "sha256": "89870628f463cb579fb0c3249bc09cbae78320bc097275b607c55a154ca23499",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1621,8 +1631,8 @@
       "page": "Named and rated waiver-wire player identity"
     },
     {
-      "file": "s107-mobile-franchise-legends-dark.png",
-      "sha256": "f912deac62a12e15cfc3c1a64cafb4fe7b493f7007cb98006ea4bfcf64c466e4",
+      "file": "s108-mobile-franchise-legends-dark.png",
+      "sha256": "d6ef2f39f2b0e835dbb37b3bfeabdc6d96dc086ed66921f4e00d566105459122",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1631,8 +1641,8 @@
       "page": "Franchise Legends dynasty memory"
     },
     {
-      "file": "s107-mobile-franchise-legends-light.png",
-      "sha256": "82a5651350d361cca696dbd7829a3f02ba902e98965446cf505a7fe82a44aacc",
+      "file": "s108-mobile-franchise-legends-light.png",
+      "sha256": "ce678667d5665184d088bf39684e3999e6dcfb85f1c1e8b6cbc701b9c222e6fb",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1641,8 +1651,8 @@
       "page": "Franchise Legends dynasty memory"
     },
     {
-      "file": "s107-mobile-gm-persona-dark.png",
-      "sha256": "9dae53334d52ca73974ffc9433bf7060156f933c27413c2bc095724ead3ceaa6",
+      "file": "s108-mobile-gm-persona-dark.png",
+      "sha256": "d900706bb6619a3fbcc935785d5e3137db42a93043ce380c0468a34cef0d323b",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1651,8 +1661,8 @@
       "page": "General Manager market reputation"
     },
     {
-      "file": "s107-mobile-gm-persona-light.png",
-      "sha256": "f79e81b781d4fbc014e605fd806fc6667d325a42c5cbc15c52611e531128930d",
+      "file": "s108-mobile-gm-persona-light.png",
+      "sha256": "01c5244e463465f035be87e58de89c85f66ce9f7852ee0d7270620edc32fea45",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1661,7 +1671,7 @@
       "page": "General Manager market reputation"
     },
     {
-      "file": "s107-mobile-trophy-road-dark.png",
+      "file": "s108-mobile-trophy-road-dark.png",
       "sha256": "a7f5190a78ec314adce5a0835065d7b78003d58b4e7372c05d456a2527cd9bdc",
       "theme": "dark",
       "viewport": {
@@ -1671,7 +1681,7 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s107-mobile-trophy-road-light.png",
+      "file": "s108-mobile-trophy-road-light.png",
       "sha256": "29a5aaeb1bae76641eea27a7a01e87270eeb6bd8a65cb6daba32e260873ad4e2",
       "theme": "light",
       "viewport": {
@@ -1681,8 +1691,8 @@
       "page": "Trophy Road progress and next unlock"
     },
     {
-      "file": "s107-mobile-sim-watch-reel-dark.png",
-      "sha256": "f0af056dda8e75946b05996b4e5a24eede88f6bb0cf71093267d9480f5f6bf01",
+      "file": "s108-mobile-sim-watch-reel-dark.png",
+      "sha256": "8c941134114b30dc60ebca03f0b606e939284d98eb049fe3635e83b020394a0a",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1691,8 +1701,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s107-mobile-sim-watch-reel-light.png",
-      "sha256": "b9ed77ce38e2323ba5fa2de7bbda997ff38dd13a7f47b81b617441c20195436d",
+      "file": "s108-mobile-sim-watch-reel-light.png",
+      "sha256": "9c9db743b1aa7e6e0c221258dc6b659dca6098a0a655438177f56ecee65b2c40",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1701,8 +1711,8 @@
       "page": "Broadcast Director Final Reel"
     },
     {
-      "file": "s107-mobile-room-watch-dark.png",
-      "sha256": "71957d99b1e95d5cc51a8c1bc7acbc1c44e351a0c6558f2f3d82239d43eee346",
+      "file": "s108-mobile-room-watch-dark.png",
+      "sha256": "5d2b2162825d46a31595cbe27f1ac1ec462ee0ddf902978d5a0c25e4ba8d6a66",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1711,8 +1721,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s107-mobile-room-watch-light.png",
-      "sha256": "0a8ad92bb3b4ea7b6876cae5687c764a8686e6f12829b1d009da3677ea773a42",
+      "file": "s108-mobile-room-watch-light.png",
+      "sha256": "28f420163bf84a4928fb50409726baa0f4e4292924152238f99b0584957c4ae5",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1721,8 +1731,8 @@
       "page": "Position Room Watch parity alerts"
     },
     {
-      "file": "s107-mobile-architect-cut-dark.png",
-      "sha256": "cb23cce24ed4f5591acf3e0024ae278821a32fce70027e21e781625ad5601ece",
+      "file": "s108-mobile-architect-cut-dark.png",
+      "sha256": "858dd6ccbe8b2509f980434dd1547c3521c560cad0ceb599e18465c3e2a52d86",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1731,8 +1741,8 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s107-mobile-architect-cut-light.png",
-      "sha256": "4f5479c1183631943ef6f04cf16cda568e68c4c2c5b3856e380f4b948067040c",
+      "file": "s108-mobile-architect-cut-light.png",
+      "sha256": "646b72fa8a78ab41adaf34eb4cd36a052db1b26edfa61157781d4c3a1ecbc3c0",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1741,7 +1751,7 @@
       "page": "Architect's Cut and Decision Anthology"
     },
     {
-      "file": "s107-mobile-guide-modal-dark.png",
+      "file": "s108-mobile-guide-modal-dark.png",
       "sha256": "119b08f4f9a03a19d57f02dc2ba869349ac008b0b2d9c0fd2313b6c8f76a9b00",
       "theme": "dark",
       "viewport": {
@@ -1751,7 +1761,7 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s107-mobile-guide-modal-light.png",
+      "file": "s108-mobile-guide-modal-light.png",
       "sha256": "021ba567f27f566d53323e3253398595d9ccc7c5e2fa9c61e0d0ecbdcb06064c",
       "theme": "light",
       "viewport": {
@@ -1761,7 +1771,7 @@
       "page": "Game Guide populated modal"
     },
     {
-      "file": "s107-mobile-rival-coaching-dark.png",
+      "file": "s108-mobile-rival-coaching-dark.png",
       "sha256": "79f8ec9cbcafa4f756f533e762b283e774f7a5636a681605361208e7751f17c7",
       "theme": "dark",
       "viewport": {
@@ -1771,7 +1781,7 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s107-mobile-rival-coaching-light.png",
+      "file": "s108-mobile-rival-coaching-light.png",
       "sha256": "f167af6177eef949edf1443c2ffab700768fb9220c76a1aa86c9449ce213af6b",
       "theme": "light",
       "viewport": {
@@ -1781,8 +1791,8 @@
       "page": "Rival coaching ownership boundary"
     },
     {
-      "file": "s107-mobile-decision-archive-dark.png",
-      "sha256": "bbf16dbe877d6174295e53a889f1129a48d7625afd5646dc1b496c12a226ed21",
+      "file": "s108-mobile-decision-archive-dark.png",
+      "sha256": "42d8f339779816d9b850377c48cb2c4aa649fa1338dcb1b0da437319db25866d",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1791,8 +1801,8 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s107-mobile-decision-archive-light.png",
-      "sha256": "3cf8b1c1b81fce5234ab6ea55f35a5fd4ae13862a19f00e7427dfe0a65a809e3",
+      "file": "s108-mobile-decision-archive-light.png",
+      "sha256": "ed4bf1e688e487966e9c3080d68ec97ad22d8eb7d09efec374eea0dae0615fdd",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1801,8 +1811,8 @@
       "page": "Permanent Decision Archive sparse state"
     },
     {
-      "file": "s107-mobile-co-gm-brief-dark.png",
-      "sha256": "7479e9043f74f9df12d6529b64ec5ddab9e58bd4702df1772b241b7c12e71c70",
+      "file": "s108-mobile-co-gm-brief-dark.png",
+      "sha256": "65d5dbb930402c2ebc567f6dfbf79c0da4807953cffbb3b93ff4da7c21d3cd18",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1811,8 +1821,8 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s107-mobile-co-gm-brief-light.png",
-      "sha256": "0d4f4724f5112a8cbab519a4d8817c6eec0161eaecef15b843fdbf9f285d1491",
+      "file": "s108-mobile-co-gm-brief-light.png",
+      "sha256": "930452d12d37ab611281676eaf53eb5862e7a1d0bfb7e8b644582e4e32de7df4",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1821,7 +1831,7 @@
       "page": "Privacy-bounded Co-GM Brief"
     },
     {
-      "file": "s107-mobile-prediction-receipt-dark.png",
+      "file": "s108-mobile-prediction-receipt-dark.png",
       "sha256": "00c91f913f409bbf57d8b9743ee9fe55252148ab053ab4bcb4373b358da8fcbc",
       "theme": "dark",
       "viewport": {
@@ -1831,7 +1841,7 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s107-mobile-prediction-receipt-light.png",
+      "file": "s108-mobile-prediction-receipt-light.png",
       "sha256": "ce7f0f7cfbfaad4745cc0030fe807f267c39992717df5eab6ca234008843ec62",
       "theme": "light",
       "viewport": {
@@ -1841,8 +1851,8 @@
       "page": "Prediction winner and margin receipt"
     },
     {
-      "file": "s107-mobile-agent-negotiation-dark.png",
-      "sha256": "89a06f8b62dbcaf483f55cd65f9181ec63995bdaddd0ba0c873049df5fbfeefd",
+      "file": "s108-mobile-agent-negotiation-dark.png",
+      "sha256": "39f5c2233c19cda30d6ac9d6c3c95bacbdb8cfcd391c6114cabd6db485b2fd18",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1851,8 +1861,8 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s107-mobile-agent-negotiation-light.png",
-      "sha256": "dfcedc2a42050338ad15bf87fdd5495ebb50878e4a24106aecae22eb542eee10",
+      "file": "s108-mobile-agent-negotiation-light.png",
+      "sha256": "5a5f7624f2389ed6dd3ec43c7ba46180c30d634ba9409f16d2a996be39694882",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1861,7 +1871,7 @@
       "page": "Canonical contract-year agent negotiation"
     },
     {
-      "file": "s107-mobile-draft-trade-review-dark.png",
+      "file": "s108-mobile-draft-trade-review-dark.png",
       "sha256": "56fedcf5982db87b84fdd19197a1f65659dc4a95727a51cf3180a6ee43451367",
       "theme": "dark",
       "viewport": {
@@ -1871,7 +1881,7 @@
       "page": "Irreversible live-pick trade confirmation"
     },
     {
-      "file": "s107-mobile-draft-trade-review-light.png",
+      "file": "s108-mobile-draft-trade-review-light.png",
       "sha256": "84e3430ae5f751cd9d2b94a88265f46d4e103a341a28dde9e6db1a921ea21922",
       "theme": "light",
       "viewport": {
@@ -1881,8 +1891,8 @@
       "page": "Irreversible live-pick trade confirmation"
     },
     {
-      "file": "s107-mobile-hof-ceremony-dark.png",
-      "sha256": "36e5937d7b5e71a738556ba6122764d966752fbefd93582fdb384735b230185e",
+      "file": "s108-mobile-hof-ceremony-dark.png",
+      "sha256": "b2c1a5dbc4e710925b48fcaee63b0633389f13b91d3b86925e985e48ba4d895f",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1891,8 +1901,8 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s107-mobile-hof-ceremony-light.png",
-      "sha256": "0192c0d26abbec8bb8cfb8ff8959853dc1220718e91031efb254dc0787f710f6",
+      "file": "s108-mobile-hof-ceremony-light.png",
+      "sha256": "b99c0e2550e6198f2149b56877b96bcd58e5ebcda77c299c31f97d52d61f263e",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1901,8 +1911,8 @@
       "page": "Hall of Fame induction ceremony"
     },
     {
-      "file": "s107-mobile-architect-signature-dark.png",
-      "sha256": "46baaeb923d0013468d9758151547a5d9af71c86dc80f7bb0fc0e940e4795c11",
+      "file": "s108-mobile-architect-signature-dark.png",
+      "sha256": "92281145fc4b22ecb16084a1d4af3314af730403e25b0bfb43cb2b94a7ef1348",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1911,7 +1921,7 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s107-mobile-architect-signature-light.png",
+      "file": "s108-mobile-architect-signature-light.png",
       "sha256": "3d688901843c10e76295bd0ed4c6a7e760da1348e3faa21d3aa2219d80e1b954",
       "theme": "light",
       "viewport": {
@@ -1921,7 +1931,7 @@
       "page": "Architecture Review strongest mastery signature"
     },
     {
-      "file": "s107-mobile-architect-objective-dark.png",
+      "file": "s108-mobile-architect-objective-dark.png",
       "sha256": "6dd192bc26c0c6ec982df269ef9df3011fe8b03d2248eb245e7cd4f317534fe5",
       "theme": "dark",
       "viewport": {
@@ -1931,7 +1941,7 @@
       "page": "Player-authored Architect Objective hierarchy"
     },
     {
-      "file": "s107-mobile-architect-objective-light.png",
+      "file": "s108-mobile-architect-objective-light.png",
       "sha256": "76e0a2e1407447805e3eaa7dd9e1853a3525a198d164a44677e8f00a3bd32f46",
       "theme": "light",
       "viewport": {
@@ -1941,7 +1951,7 @@
       "page": "Player-authored Architect Objective hierarchy"
     },
     {
-      "file": "s107-mobile-exact-command-center-dark.png",
+      "file": "s108-mobile-exact-command-center-dark.png",
       "sha256": "e52f9f1b08f16825ad97c61934c7686331ee0dcdb274be915ca76ae1ddffadd1",
       "theme": "dark",
       "viewport": {
@@ -1951,7 +1961,7 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s107-mobile-exact-command-center-light.png",
+      "file": "s108-mobile-exact-command-center-light.png",
       "sha256": "c4f366476b03096a8c28837f0d65281d2b024bb8ab04aad74da5c97a692afa61",
       "theme": "light",
       "viewport": {
@@ -1961,8 +1971,8 @@
       "page": "Ranked General Manager command strip"
     },
     {
-      "file": "s107-mobile-exact-command-target-dark.png",
-      "sha256": "e40c80bbeaad334dec8e48cf695c8a2dd75c5cb9a03bb8325b5abd4eff600df7",
+      "file": "s108-mobile-exact-command-target-dark.png",
+      "sha256": "4e788493470037c5e70c612b75d0b7a6cdc9990e5eeda0bab9464a33ed0e8963",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1971,8 +1981,8 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s107-mobile-exact-command-target-light.png",
-      "sha256": "5101073f6e9df94621ffc40aa5b9e3571c99940b074f8db601ae2d654b118b39",
+      "file": "s108-mobile-exact-command-target-light.png",
+      "sha256": "83c0214a5a8e191cae31d75cd332c4f13c0326e0302e47b8471a2a1ffb269e8e",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -1981,8 +1991,8 @@
       "page": "Exact command destination and keyboard focus target"
     },
     {
-      "file": "s107-mobile-facility-capital-dark.png",
-      "sha256": "e96984ba4232edcdb3944549dd7fe3ee076f6a481d8b448363c1ae63fe88dc90",
+      "file": "s108-mobile-facility-capital-dark.png",
+      "sha256": "b8d19d4c8b6319a3078c9fc212902059a3952d7e02eca4c337921440859aa83a",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -1991,8 +2001,8 @@
       "page": "Owner facility-capital liquidity, runway, and obligation receipt"
     },
     {
-      "file": "s107-mobile-facility-capital-light.png",
-      "sha256": "09c2613854ffef2dce595a5dc938ee16911c31d4e166159c14fb271e18d52a61",
+      "file": "s108-mobile-facility-capital-light.png",
+      "sha256": "41761432a5d78d33936d074b809b4269a130272bcce3dfeca1c602560e1304aa",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2001,7 +2011,7 @@
       "page": "Owner facility-capital liquidity, runway, and obligation receipt"
     },
     {
-      "file": "s107-mobile-gist-authentication-dark.png",
+      "file": "s108-mobile-gist-authentication-dark.png",
       "sha256": "9b236145957b9bdd24a2ae2e73d3fd1d7a2001f1c5b3e4a2a65078a87b1296f2",
       "theme": "dark",
       "viewport": {
@@ -2011,8 +2021,8 @@
       "page": "Cloud-save corruption and optional authentication boundary"
     },
     {
-      "file": "s107-mobile-gist-authentication-light.png",
-      "sha256": "aeee1c9080470b01911ff0d88405a93f4db470985b81d2fb7797ee7a3c9c8f52",
+      "file": "s108-mobile-gist-authentication-light.png",
+      "sha256": "c3ebcb1af349fb58bbded7366efd51a09e961f511cb7ef764712c1c5d053647a",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2021,8 +2031,8 @@
       "page": "Cloud-save corruption and optional authentication boundary"
     },
     {
-      "file": "s107-tablet-nav-drawer-dark.png",
-      "sha256": "607d5cf018fcaf0f9d4bcd118c54f925f88d2a780173ea6a3abdced129df5322",
+      "file": "s108-tablet-nav-drawer-dark.png",
+      "sha256": "a4f3fc0844cde107dcbfd1dee590b27a05c436282f650844d4ad904917e7782f",
       "theme": "dark",
       "viewport": {
         "width": 768,
@@ -2031,8 +2041,8 @@
       "page": "Notch-safe off-canvas section navigation"
     },
     {
-      "file": "s107-tablet-nav-drawer-light.png",
-      "sha256": "f9a8b9d7e26823ce68dada680eb25317227d7d22ffd25d5430a8dc79927d69dd",
+      "file": "s108-tablet-nav-drawer-light.png",
+      "sha256": "7460282e22b55f999a18375093636853f930ab545d9094a75305fc8bfb2a1128",
       "theme": "light",
       "viewport": {
         "width": 768,
@@ -2041,8 +2051,8 @@
       "page": "Notch-safe off-canvas section navigation"
     },
     {
-      "file": "s107-mobile-nav-drawer-dark.png",
-      "sha256": "82027020a4c6b664eaaa73c6d22edecfd56f64816759aa65c7eea30d9e00d989",
+      "file": "s108-mobile-nav-drawer-dark.png",
+      "sha256": "ca3eab54508d9a7fc7d065603af01f6838cae92da5d8e82587d830c1f3d03d1c",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2051,8 +2061,8 @@
       "page": "Notch-safe off-canvas section navigation"
     },
     {
-      "file": "s107-mobile-nav-drawer-light.png",
-      "sha256": "0d289bca09f334148ed364f614eb8b412e5490683e8ecf559fccc4185da57bd9",
+      "file": "s108-mobile-nav-drawer-light.png",
+      "sha256": "e845942ec3226815969da58700f92636dcaeaa81393b0134ec13f98d60658772",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2061,8 +2071,8 @@
       "page": "Notch-safe off-canvas section navigation"
     },
     {
-      "file": "s107-mobile-game-loop-dark.png",
-      "sha256": "37aa5c945f385ee6d3ec69833a00da9a202a7b9b3e5551b6e5cafb9ad7e2a9a3",
+      "file": "s108-mobile-game-loop-dark.png",
+      "sha256": "ebe5594d82b499af2f257c0558dceec1ad33d636010b820cc61edb58aaafff6c",
       "theme": "dark",
       "viewport": {
         "width": 390,
@@ -2071,8 +2081,8 @@
       "page": "Mobile weekly decision deck and sticky command dock"
     },
     {
-      "file": "s107-mobile-game-loop-light.png",
-      "sha256": "dcf6ba79fe7f1cd8ee9b8d90390e0916f8fb757df3fea90c29838e9c8d58f6a3",
+      "file": "s108-mobile-game-loop-light.png",
+      "sha256": "fc25e2cfdc072839c9ab8f730917cadff9cf1e4f98652f524d4093e60d34a785",
       "theme": "light",
       "viewport": {
         "width": 390,
@@ -2085,17 +2095,17 @@
     "renderedPixelsReviewed": true,
     "reviewer": "session-agent",
     "findings": [
-      "S107 changed how a new league's potential is generated: potential is now headroom above the player's own overall. The player sees it in the POT column and in the profile's development runway. Inspected directly on the 1440px dark roster, every visible row reads POT at or above OVR. Players in their thirties read POT equal to OVR (for example, an age-31 offensive lineman at 86 / 86), while young players carry room to grow (for example, a 22-year-old quarterback at 78 / 80). No row shows the old negative runway, which a third of every new league used to show.",
-      "The Roster Window Map above the table reports room-level OVR and POT for Quarterback, Backfield, Receivers, Offensive Line, Front Seven, Secondary and Specialists, on the same scale as the table beneath it. So the position-relative potential the engine now generates is legible to the player at room level as well as row level.",
-      "Theme parity checked on the same surface: the 390px light-theme roster renders the same structure with readable contrast, and its wide table scrolls inside its own container rather than widening the page, against the 1440px dark capture.",
-      "The draft-room capture is NOT evidence for this change and is not claimed as such. Its single available prospect (Malik North, EDGE, 77 OVR / 92 POT) is a hardcoded fixture in scripts/responsive-evidence.mjs, and its potential exceeds what the generator can now produce for a 21-year-old at 77 (at most 84). A real draft class goes through createSyntheticPlayer and resolvePotential, which test/session107-position-relative-potential.test.js asserts directly.",
-      "The release note on public/status.html is outside this capture set, which covers game surfaces only. It was verified against the live staging origin instead: https://staging.playfranchisearchitect.com/status.html returns HTTP 200 and serves the 2026-09-13 note above the 2026-09-12 note, including the line telling players their saved franchises keep their potentials.",
-      "The deterministic harness inspected 255 dark and light states at 1440px desktop, 768px tablet and 390px mobile with no overflow, contrast, touch-target, selector or runtime failures, and reported status passed bound to an immutable source revision and artifact fingerprint.",
+      "S108 added a Dev column to the roster table (the development trait the DTO has carried since S8; the free-agent table already showed it). Inspected on the 1440px dark roster capture, the column renders beside POT with the trait labels (Steady, Superstar, Hidden Development, Bust) and the table's width still scrolls inside its own container at 390px light rather than widening the page.",
+      "The draft room's Available Prospects table now shows Scout Ovr and Scout Pot in place of Ovr and Pot. The capture's single available prospect is a hardcoded fixture in scripts/responsive-evidence.mjs, so it is evidence that the renamed columns render and align, NOT evidence of the fog's values; the fog itself (overall, potential and ratings stripped from every draft response; scouted potential within plus-or-minus 6 off the main RNG stream) is asserted by test/session108-draft-board-fog.test.js against a real class.",
+      "The Offseason Development Report card on the History tab is outside this capture set, which does not drive an offseason. It is proven by tests-ui/offseason-development.spec.js, which drives the runtime to the retirements stage through its own API and asserts the card names the club's risers and fallers with before, after and change; the card's module is lazily imported and its load is observed, because the history island sits at 15.2 per cent headroom against a 15 per cent floor.",
+      "Theme parity checked on the roster surface: the 390px light-theme roster renders the same structure with readable contrast against the 1440px dark capture.",
+      "The release note on public/status.html is outside this capture set, which covers game surfaces only. It was verified against the live staging origin instead: the 2026-09-14 note is served above the 2026-09-13 note and tells players what they can now see (who developed), that the draft board stops giving away the answers, and that saved franchises are unaffected.",
+      "The deterministic harness inspected the dark and light states at 1440px desktop, 768px tablet and 390px mobile with no overflow, contrast, touch-target, selector or runtime failures, and reported status passed bound to an immutable source revision and artifact fingerprint.",
       "Deployment readiness remains independent from public-launch authority; no rendered surface asserts that email, cohort, retention, or launch approval is verified."
     ],
     "fixesApplied": [
-      "No rendered-pixel defect was found this session, so no visual fix was applied. The captures are evidence for an engine change, not a repair of the render layer.",
-      "The player-facing release note on the public status page was written for what these captures show: potential that means the same thing at every position, no player in a new league starting past his own ceiling, and saved franchises keeping the potentials they already have."
+      "No rendered-pixel defect was found this session, so no visual fix was applied. The captures are evidence for two table changes (a Dev column on the roster; Scout Ovr / Scout Pot on the draft board) and for theme parity, not a repair of the render layer.",
+      "The player-facing release note on the public status page was written for what shipped: the offseason development report, the honest draft board, the profile outlook that reads potential and trait, and saved franchises unaffected."
     ],
     "blockingDefectsOpen": 0
   }

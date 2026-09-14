@@ -49,4 +49,16 @@ A position-blind 90 is a +1.5 to +1.7 sd claim in two rooms and a +3.0 to +4.0 s
 
 ### Deployment
 
-*Recorded in the closeout commit.*
+| | |
+|---|---|
+| Candidate | `ee7286837d177bb36f0a7f35dcbeef6d8436c7db` (pushed to main; pre-push hook green; `origin/main == HEAD` verified) |
+| Artifact digest | `82f4b29e0b54f3941493b3b611114ff1a5d48ae43b5997e43e89bacaddcc02eb` |
+| Staging | verified **14/14** · deployment `53b1b0dc-0e87-4549-ba04-e7120bb41442` · rollback `a9d06c47-dc29-4895-98ce-812a9c1392f0` · provenance report `reports/s108-staging.json` **10/10** |
+| Visual QA | 98 `s108-*` captures bound to the candidate, 0 blocking; 255 responsive states passed; retention recorded 98 new hashes (1,919 total), 65.4 MB → 49.8 MB |
+| Production | promotion run **34835045345** — gate, build and deploy all **success** · live origin provenance `reports/s108-production.json` **10/10**, serving `ee728683` · push-triggered Deploy Pages `34834839134` cancelled by the dispatch, as expected |
+| Performance | hosted receipt **verified**, bound to `ee728683` |
+| Release authority | **verified** — source and publication revision `ee728683`, all four identities (staging, production, visual, performance) bound; `stagingAuthority` reconciled at the same revision |
+| Doctor | `blockingFailing 0` · 11/12 · the standing warning is the registry SPARKED vs local FORGE drift |
+| `launchReady` | **false** — unchanged (email delivery, founder approval, lifecycle authority). Technical deployment, not public launch |
+
+**What the captures do and do not prove.** The roster capture shows the new Dev column beside POT; the draft-room capture shows the renamed Scout Ovr / Scout Pot columns on a hardcoded fixture prospect, so it proves the columns render, not the fog's values (those are asserted by `test/session108-draft-board-fog.test.js`). The Offseason Development Report card is outside the capture set and is proven by `tests-ui/offseason-development.spec.js`. The status-page note was verified on the live staging origin.

@@ -10,11 +10,11 @@
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ feat(game): the offseason's verdict reaches the GM, the draf  ║
 ║  ✓ chore(closeout): record S107 deployment receipts, provenance  ║
 ║  ✓ feat(sim): the S90 gate measures every progressed player, an  ║
 ║  ✓ chore(closeout): record S106 deployment receipts, provenance  ║
 ║  ✓ feat(gates): give the ledger-budget gate its population, and  ║
-║  ✓ chore(closeout): record S105 deployment receipts, provenance  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 963/1000 ═══════════════════════════════════════╗
 ║    Dev Health         97   ██████████                            ║
@@ -29,19 +29,19 @@
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  ✓ context/CURRENT_STATE.md                                      ║
-║  ✓ context/TASK_BOARD.md                                         ║
+║  · context/CURRENT_STATE.md                                      ║
+║  · context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  ✓ logs/WORK_LOG.md                                              ║
-║  ✓ context/DECISIONS.md                                          ║
-║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  · logs/WORK_LOG.md                                              ║
+║  · context/DECISIONS.md                                          ║
+║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  ✓ context/TRUTH_AUDIT.md                                        ║
+║  · context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 52 files  ·  M:40 A:0 D:0 ?:12                         ║
+║  Changes: 204 files  ·  M:5 A:0 D:98 ?:101                       ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
