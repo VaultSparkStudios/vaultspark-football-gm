@@ -33,10 +33,30 @@
  *      archive as one contiguous tail. A pattern that silently matches a subset
  *      of a ledger's entries is how a roll moves far more than it reports.
  *
- * The pointer always stays at the END of the live file, for both orders:
- * `splitLedger` strips from the sentinel to EOF, so a pointer written into the
- * middle of a newest-last ledger would make the next roll delete every entry
- * beneath it.
+ * S108 — RETENTION IS BY SESSION NUMBER, AND THE POINTER IS FOUND WHEREVER IT
+ * SITS. Two more things were wrong after S105, and both were found by running
+ * the dry run on the live tree rather than on a fixture:
+ *   3. Retention was positional: "the last N entries in file order". The live
+ *      ledgers have never been strictly ordered (the SIL held S78-S80 in
+ *      descending order ABOVE S99-S107; TRUTH_AUDIT held S83, S82, S80 the
+ *      same way), so a positional suffix on TRUTH_AUDIT would have archived
+ *      S82 and S83 and kept S80. `splitLedger` now retains the N highest
+ *      distinct session numbers present, wherever they sit, and emits the
+ *      retained entries in session order (ascending for newest-last,
+ *      descending for newest-first), every line verbatim. The positional
+ *      rule survives as `splitLedgerByPosition`, exported only so the tests
+ *      can prove the difference on the shapes that were observed.
+ *   4. The previous header said the pointer "always stays at the END" and that
+ *      a mid-file pointer "would make the next roll delete every entry beneath
+ *      it" — and then every closeout since S105 appended its entry BENEATH the
+ *      pointer, because that is where the end of the file is. Measured at S108:
+ *      all four newest-last ledgers carried the pointer above S106 and S107.
+ *      `splitLedger` sliced the source at the sentinel, so those entries were
+ *      invisible to the roll (every newest-last ledger reported "fewer entries
+ *      than the retention window" while holding twelve), and an applied roll
+ *      would have rewritten the live file WITHOUT them. The pointer block is
+ *      now removed wherever it occurs and re-appended at EOF, so an entry
+ *      written after it is an ordinary entry.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -95,27 +115,135 @@ export const POINTER_SENTINEL = "<!-- ledger-roll:pointer -->";
  * `head` is always the live content (file header plus retained entries, in the
  * file's own order) and `tail` is always the block that moves to the archive.
  */
-export function splitLedger(source, entryPattern, retain = RETAINED_SESSION_ENTRIES, order = NEWEST_FIRST) {
-  // Drop any pointer a previous roll appended. Without this it is re-read as
-  // ordinary content and moved into the middle of an archive whose entire
-  // promise is that it is verbatim.
-  const pointerAt = source.indexOf(POINTER_SENTINEL);
-  const body = pointerAt === -1 ? source : source.slice(0, pointerAt).replace(/\n---\n\s*$/, "");
-  const lines = body.split(/\r?\n/);
+/**
+ * Remove every pointer block a previous roll left behind, wherever it sits.
+ *
+ * A block is the sentinel line, the `---` rule beneath it, and the prose
+ * paragraph that follows (up to the next blank line or EOF). Before S108 the
+ * source was sliced at the sentinel, which silently discarded every entry a
+ * later closeout had appended beneath it.
+ */
+export function stripPointerBlocks(source) {
+  const lines = String(source).split(/\r?\n/);
+  const kept = [];
+  // Only a line that IS the sentinel starts a block — an entry that quotes the
+  // sentinel in prose (this fix's own DECISIONS entry, say) is content.
+  const isSentinel = (line) => line.trim() === POINTER_SENTINEL;
+  // The prose paragraph ends at a blank line OR at the next heading, so an
+  // entry appended directly beneath the prose with no blank line between is
+  // never swallowed into the block.
+  const endsParagraph = (line) => line.trim() === "" || /^#/.test(line);
+  for (let index = 0; index < lines.length; index += 1) {
+    if (!isSentinel(lines[index])) {
+      kept.push(lines[index]);
+      continue;
+    }
+    // Sentinel line dropped. Then the rule, blank lines, and one prose paragraph.
+    let cursor = index + 1;
+    if (cursor < lines.length && /^---\s*$/.test(lines[cursor])) cursor += 1;
+    while (cursor < lines.length && lines[cursor].trim() === "") cursor += 1;
+    while (cursor < lines.length && !endsParagraph(lines[cursor])) cursor += 1;
+    // Collapse the blank run the block sat in so entries do not drift apart.
+    while (kept.length && kept[kept.length - 1].trim() === "" && cursor < lines.length && lines[cursor].trim() === "") cursor += 1;
+    index = cursor - 1;
+  }
+  return kept.join("\n");
+}
+
+/** The session number a heading carries: the last capture group the pattern filled. */
+export function sessionOfHeading(line, entryPattern) {
+  const match = entryPattern.exec(line);
+  if (!match) return null;
+  const groups = match.slice(1).filter((group) => group !== undefined);
+  const session = Number(groups[groups.length - 1]);
+  return Number.isFinite(session) ? session : null;
+}
+
+function indexEntries(source, entryPattern) {
+  const lines = stripPointerBlocks(source).split(/\r?\n/);
   const starts = [];
   for (let index = 0; index < lines.length; index += 1) {
     if (entryPattern.test(lines[index])) starts.push(index);
   }
-  if (starts.length <= retain) return null;
+  const entries = starts.map((start, position) => ({
+    position,
+    start,
+    end: position + 1 < starts.length ? starts[position + 1] : lines.length,
+    session: sessionOfHeading(lines[start], entryPattern)
+  }));
+  return { lines, starts, entries };
+}
 
-  const finish = (keptLines, archivedLines) => ({
-    entries: starts.length,
-    retainedEntries: retain,
-    archivedEntries: starts.length - retain,
+function finishSplit({ entries, retainedEntries, archivedEntries, order, keptLines, archivedLines, extra = {} }) {
+  return {
+    entries,
+    retainedEntries,
+    archivedEntries,
     order,
     head: keptLines.join("\n").replace(/\s+$/, "") + "\n",
-    tail: archivedLines.join("\n").replace(/\s+$/, "") + "\n"
+    tail: archivedLines.join("\n").replace(/\s+$/, "") + "\n",
+    ...extra
+  };
+}
+
+/**
+ * Split a ledger into the retained working set and the archived remainder,
+ * retaining the `retain` HIGHEST distinct session numbers present.
+ *
+ * Returns null when nothing would move: fewer entries than the window, or no
+ * entry outside the retained sessions. `head` holds the file header plus the
+ * retained entries in session order (ascending for newest-last, descending
+ * for newest-first — the order the ledger declares for itself); `tail` holds
+ * the archived entries in their original file order. Every line of every
+ * entry survives verbatim in exactly one of the two.
+ */
+export function splitLedger(source, entryPattern, retain = RETAINED_SESSION_ENTRIES, order = NEWEST_FIRST) {
+  const { lines, starts, entries } = indexEntries(source, entryPattern);
+  if (starts.length <= retain) return null;
+
+  const distinct = [...new Set(entries.map((entry) => entry.session))].sort((a, b) => b - a);
+  const keep = new Set(distinct.slice(0, retain));
+  const retained = entries.filter((entry) => keep.has(entry.session));
+  const archived = entries.filter((entry) => !keep.has(entry.session));
+  // More headings than the window but no more distinct sessions than it: a
+  // session that wrote twice (a post-push correction, say). Nothing moves, and
+  // the caller is told WHY, distinctly from "too short", because the two
+  // states need different remedies.
+  if (!archived.length) return { nothingToArchive: "duplicate session headings inside the retention window", entries: starts.length, distinctSessions: distinct.length };
+
+  const bySession = order === NEWEST_LAST
+    ? (a, b) => a.session - b.session || a.position - b.position
+    : (a, b) => b.session - a.session || a.position - b.position;
+  const ordered = [...retained].sort(bySession);
+  const reordered = ordered.some((entry, index) => entry !== retained[index]);
+  const block = (list) => list.flatMap((entry) => lines.slice(entry.start, entry.end));
+
+  return finishSplit({
+    entries: starts.length,
+    retainedEntries: retained.length,
+    archivedEntries: archived.length,
+    order,
+    keptLines: lines.slice(0, starts[0]).concat(block(ordered)),
+    archivedLines: block(archived),
+    extra: {
+      retainedSessions: ordered.map((entry) => entry.session),
+      archivedSessions: archived.map((entry) => entry.session),
+      reordered
+    }
   });
+}
+
+/**
+ * The pre-S108 rule — "keep the last `retain` entries in file order" — kept
+ * only as a negative control. On a ledger whose entries are not in session
+ * order it retains the wrong sessions; see `test/session108-ledger-retention-by-session.test.js`.
+ */
+export function splitLedgerByPosition(source, entryPattern, retain = RETAINED_SESSION_ENTRIES, order = NEWEST_FIRST) {
+  const { lines, starts } = indexEntries(source, entryPattern);
+  if (starts.length <= retain) return null;
+
+  const finish = (keptLines, archivedLines) =>
+    finishSplit({ entries: starts.length, retainedEntries: retain, archivedEntries: starts.length - retain, order, keptLines, archivedLines });
 
   if (order === NEWEST_LAST) {
     // The newest entries are at the bottom, so the retained window is the last
@@ -126,6 +254,17 @@ export function splitLedger(source, entryPattern, retain = RETAINED_SESSION_ENTR
   }
   const cut = starts[retain];
   return finish(lines.slice(0, cut), lines.slice(cut));
+}
+
+/** The pointer block a roll leaves at the END of a live ledger. */
+export function pointerFor(ledger, dir = ledger.dir || "context", retain = RETAINED_SESSION_ENTRIES) {
+  const archiveRel = `${dir}/archive/${ledger.file.replace(/\.md$/, "")}.archive.md`;
+  return (
+    `\n${POINTER_SENTINEL}\n---\n\nOlder entries are retained verbatim in \`${archiveRel}\`. ` +
+    `Nothing is summarised or removed on the way; the live file holds the working set only ` +
+    `(newest ${retain} entries), so a reader does not pay for the whole project's history to ` +
+    `learn what is true this week.\n`
+  );
 }
 
 export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_SESSION_ENTRIES } = {}) {
@@ -139,20 +278,27 @@ export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_S
     const before = Buffer.byteLength(source);
     const order = ledger.order || NEWEST_FIRST;
     const split = splitLedger(source, ledger.entry, retain, order);
-    if (!split) {
-      results.push({ file: ledger.file, before, after: before, archived: 0, skipped: "fewer entries than the retention window" });
+    if (!split || split.nothingToArchive) {
+      // Nothing to move. A pointer left mid-file by an earlier closeout is
+      // still relocated to EOF, so the file's shape does not depend on whether
+      // the roll happened to have entries to archive that day.
+      const stripped = stripPointerBlocks(source);
+      const pointerMoved = stripped !== source && source.includes(POINTER_SENTINEL) && !source.trimEnd().endsWith(pointerFor(ledger, dir, retain).trimEnd());
+      if (apply && pointerMoved) fs.writeFileSync(livePath, stripped.replace(/\s+$/, "") + "\n" + pointerFor(ledger, dir, retain), "utf8");
+      results.push({
+        file: ledger.file,
+        before,
+        after: before,
+        archived: 0,
+        pointerRelocated: pointerMoved,
+        skipped: split?.nothingToArchive || "fewer entries than the retention window"
+      });
       continue;
     }
 
     const archiveName = ledger.file.replace(/\.md$/, "") + ".archive.md";
     const archivePath = path.join(archiveDir, archiveName);
-    const archiveRel = `${dir}/archive/${archiveName}`;
-    const pointer =
-      `\n${POINTER_SENTINEL}\n---\n\nOlder entries are retained verbatim in \`${archiveRel}\`. ` +
-      `Nothing is summarised or removed on the way; the live file holds the working set only ` +
-      `(newest ${retain} entries), so a reader does not pay for the whole project's history to ` +
-      `learn what is true this week.\n`;
-    const head = split.head + pointer;
+    const head = split.head + pointerFor(ledger, dir, retain);
 
     if (apply) {
       fs.mkdirSync(archiveDir, { recursive: true });
@@ -184,6 +330,9 @@ export function rollLedgers({ root = rootDir, apply = false, retain = RETAINED_S
       before,
       after: Buffer.byteLength(head),
       archived: split.archivedEntries,
+      archivedSessions: split.archivedSessions,
+      retainedSessions: split.retainedSessions,
+      reordered: split.reordered,
       order,
       archivePath: path.relative(root, archivePath)
     });
@@ -202,7 +351,9 @@ function main(argv = process.argv.slice(2)) {
   }
   console.log(apply ? "Rolling ledgers" : "Ledger roll (dry run — pass --apply)");
   for (const row of results) {
-    const note = row.skipped ? ` (${row.skipped})` : ` · archived ${row.archived} entries (${row.order})`;
+    const note = row.skipped
+      ? ` (${row.skipped})`
+      : ` · archived ${row.archived} entries [S${(row.archivedSessions || []).join(", S")}] (${row.order}${row.reordered ? ", retained entries re-sequenced by session" : ""})`;
     console.log(`  ${row.file.padEnd(26)} ${Math.round(row.before / 1024)} KB → ${Math.round(row.after / 1024)} KB${note}`);
   }
   console.log(`  ${"TOTAL".padEnd(26)} ${Math.round(before / 1024)} KB → ${Math.round(after / 1024)} KB`);

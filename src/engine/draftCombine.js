@@ -59,7 +59,9 @@ export function runCombineForProspect(prospect, rng) {
     prospectId:  prospect.id,
     name:        prospect.name,
     position:    pos,
-    overall:     prospect.overall,
+    // S108 — the scout's read, not the answer key: the combine table sits on
+    // the same tab as the scouting board that sells the reveal.
+    overall:     prospect.scouting?.scoutedOverall ?? prospect.overall,
     events,
     grade,
     performedAt: new Date().toISOString()

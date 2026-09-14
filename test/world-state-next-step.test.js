@@ -37,7 +37,10 @@ test("world-state next step: scouting reveal quality improves with staff and fit
   strong.refreshChemistryAndSchemeFit();
   weak.refreshChemistryAndSchemeFit();
 
-  const prospect = strong.getDraftState().available[0];
+  // S108 — the draft SURFACE no longer carries a prospect's true overall (the
+  // scouting board sells that read); the reveal's accuracy is measured against
+  // the engine's own prospect, which is where the truth lives.
+  const prospect = strong.league.pendingDraft.available[0];
   const strongSpend = strong.allocateScoutingPoints({ teamId: "BUF", playerId: prospect.id, points: 12 });
   const weakSpend = weak.allocateScoutingPoints({ teamId: "BUF", playerId: prospect.id, points: 12 });
 

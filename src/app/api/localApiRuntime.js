@@ -3,7 +3,7 @@ import { createPersistenceDescriptor } from "../../adapters/persistence/saveStor
 import { decodeSnapshot, encodeSnapshot } from "../../adapters/persistence/snapshotCodec.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "../../config/leagueSetup.js";
 import { createLeagueBase } from "../../domain/teamFactory.js";
-import { GameSession } from "../../runtime/GameSession.js";
+import { GameSession, scoutedDraftResult } from "../../runtime/GameSession.js";
 import { applyInitialLeagueSetup } from "../../runtime/applyLeagueSetup.js";
 import { RNG } from "../../utils/rng.js";
 import { RNGStreams } from "../../utils/rngStreams.js";
@@ -968,21 +968,24 @@ export function createLocalApiRuntime({
       }
 
       if (method === "POST" && pathname === "/api/draft/prepare") {
-        const draft = session.prepareDraft();
+        // S108 — every draft response carries the scout's view, never the truth.
+        const draft = scoutedDraftResult(session.prepareDraft());
         return finish(jsonResponse(200, { ok: true, draft, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/draft/cpu") {
-        const result = session.runCpuDraft({
-          picks: Math.max(1, Math.min(224, toInt(body?.picks) || 224)),
-          untilUserPick: body?.untilUserPick !== false
-        });
+        const result = scoutedDraftResult(
+          session.runCpuDraft({
+            picks: Math.max(1, Math.min(224, toInt(body?.picks) || 224)),
+            untilUserPick: body?.untilUserPick !== false
+          })
+        );
         return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 
       if (method === "POST" && pathname === "/api/draft/user-pick") {
         if (!body?.playerId) return finish(jsonResponse(400, { ok: false, error: "playerId required." }));
-        const result = session.draftUserPick({ playerId: String(body.playerId) });
+        const result = scoutedDraftResult(session.draftUserPick({ playerId: String(body.playerId) }));
         return finish(jsonResponse(result.ok ? 200 : 400, { ...result, state: getAugmentedState(session) }));
       }
 

@@ -37,6 +37,31 @@ function push(league, item) {
   if (league.newsLog.length > MAX_NEWS_LOG) league.newsLog.length = MAX_NEWS_LOG;
 }
 
+// ── Offseason development (S108) ─────────────────────────────────────────────
+
+/**
+ * The club's offseason development report as a news item on the log the
+ * Priority Inbox ingests (`dashboard.newsLog`, top-level `type`). `logNews`
+ * writes the long-form feed; this is the one the bell reads.
+ */
+export function reportOffseasonDevelopment(league, report, { week = 0 } = {}) {
+  if (!report || !report.club || !(report.club.progressed > 0)) return null;
+  initNewsLog(league);
+  const riser = report.risers?.[0] || null;
+  const faller = report.fallers?.[0] || null;
+  const item = {
+    type: "development",
+    week,
+    year: report.year,
+    headline: report.headline,
+    detail: report.summaryLine,
+    teamIds: report.teamId ? [report.teamId] : [],
+    playerIds: [riser?.playerId, faller?.playerId].filter(Boolean)
+  };
+  push(league, item);
+  return league.newsLog[0];
+}
+
 // ── Weekly game results ──────────────────────────────────────────────────────
 
 export function reportWeeklyResults(league, weekResults, year) {

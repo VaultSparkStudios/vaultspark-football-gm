@@ -1,4 +1,6 @@
 import { state, api } from "./appState.js";
+import { observeBackgroundTask } from "./clientDiagnostics.js";
+import { dashboardAuthorityKey } from "./franchiseScope.js";
 import { decoratePlayerColumnFromRows, escapeHtml, renderPulseChips, renderTable, setElementTone, setSelectOptions, teamCode, teamName } from "./appCore.js";
 import { hallOfFameCeremonyButton, openHallOfFameCeremony } from "./hallOfFameCeremony.js";
 import { orientWinnerFirst } from "./scoreline.js";
@@ -589,6 +591,12 @@ export function renderRecordsAndHistory() {
   const awards = (state.dashboard?.awards || []).slice().reverse();
   const awardYears = awards.map((award) => String(award.year));
   renderHistorySpotlight();
+  // S108 — lazy (island headroom), observed (a failed import is a diagnostic).
+  observeBackgroundTask(() => import("./offseasonDevelopmentReport.js").then((mod) => mod.renderOffseasonDevelopmentReport()), {
+    surface: "ui-island",
+    operation: "history:offseason-development-report",
+    authorityKey: dashboardAuthorityKey(state.dashboard)
+  });
   renderTeamHistorySpotlight(state.teamHistory);
   renderPlayerHistoryArchive(state.historyTimeline);
 

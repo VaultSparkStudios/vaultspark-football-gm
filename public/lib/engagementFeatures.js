@@ -97,8 +97,12 @@ export function syncInboxScope(dashboard = state.dashboard || {}, storage = null
 }
 
 export function classifyNewsItem(item) {
-  const type = (item.type || "").toLowerCase();
+  // S108 — `logNews` carries its type inside `details`; the dashboard feed
+  // ships entries as written, so a typed news item classified as FLAVOR here
+  // unless the type was lifted. Read both shapes.
+  const type = (item.type || item.details?.type || "").toLowerCase();
   const headline = (item.headline || "").toLowerCase();
+  if (type === "development") return "IMPORTANT";
   if (type === "injury" && (headline.includes("out for season") || headline.includes("severe"))) return "CRITICAL";
   if (type === "cap-alert" || type === "cap_alert") return "CRITICAL";
   if (type === "owner-ultimatum") return "CRITICAL";

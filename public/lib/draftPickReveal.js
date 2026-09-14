@@ -41,15 +41,19 @@ export function pickAnalystLine(seed) {
 export function renderDraftPickReveal(modal, prospect, teamName, onConfirm) {
   const body = modal.querySelector(".draft-reveal-body");
   if (body) {
+    // S108 — the draft surface carries the scout's read, not the truth; the
+    // reveal speaks to what the room knows at the moment of the pick.
+    const shownOverall = prospect?.overall ?? prospect?.scouting?.scoutedOverall ?? null;
+    const overallLabel = prospect?.overall != null ? "OVR" : "Scout OVR";
     const analyst = pickAnalystLine(
-      (prospect?.name?.charCodeAt(0) || 0) + (prospect?.overall || 0)
+      (prospect?.name?.charCodeAt(0) || 0) + (shownOverall || 0)
     );
     body.innerHTML = `
       <div class="draft-reveal-clock">⏱ On the clock: <strong>${escapeHtml(teamName || "Your Team")}</strong></div>
       <div class="draft-reveal-pick">
         <div class="dr-pos-badge">${escapeHtml(prospect?.position || prospect?.pos || "?")}</div>
         <div class="dr-name">${escapeHtml(prospect?.name || "Unknown")}</div>
-        <div class="dr-ovr">OVR ${prospect?.overall ?? "—"}</div>
+        <div class="dr-ovr">${overallLabel} ${shownOverall ?? "—"}</div>
       </div>
       <div class="draft-reveal-analyst">"${escapeHtml(analyst)}"</div>
       <div class="prospect-origin-note">${escapeHtml(getProspectNarrative(prospect).line)}</div>

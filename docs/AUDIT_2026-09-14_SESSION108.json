@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-14",
+  "session": 108,
+  "agent": "claude-code",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "implemented",
+  "summary": {
+    "source": "Live code, the ledger roll's dry run executed on the live tree, and a ten-season canonical-seed probe on the unchanged tree (seeds 20260306 and 2026) read from the report's own end-of-window composition. Player-facing candidates were located by a read-only sweep of public/lib and the offseason seam, then each premise was re-verified by grep against the file it names.",
+    "itemsRanked": 6,
+    "combinedPriority": 142.4,
+    "verificationNote": "Two inherited premises were corrected before any code. S106 recorded the live SIL as 'three entries short of what it advertises' because retention was positional; on the SIL's actual shape (S78-S80 above S99-S107) the positional suffix and the session-number rule move the same two entries, so that file was not the evidence. TRUTH_AUDIT was: it held S83, S82, S80 in descending order above the modern block, and a positional suffix would have archived S83 and S82 and kept S80. The larger defect sat beside it and nobody had named it: every closeout since S105 appended beneath the roll pointer, the splitter sliced the source at the sentinel, and all four newest-last ledgers reported 'fewer entries than the retention window' while holding twelve - the budget gate's own remedy had been inert for three sessions, and an applied roll would have rewritten each live file without its two newest entries. Priority is impact x innovation / (1 + effort/2)."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product; game-loop payoff, truthful feedback, static-host safety and measured release readiness",
+    "staging": "Stable Cloudflare staging before authorized main promotion and production deployment",
+    "source": "context/PROJECT_STATUS.json, context/LATEST_HANDOFF.md, arc-profile (studio-ops copy with --project ., registry-matched; the local copy is not propagated here)"
+  },
+  "phantomsRejected": [
+    {
+      "slug": "sil-is-three-entries-short-because-retention-is-positional",
+      "reason": "S106's stated evidence does not reproduce: on the SIL's live shape the positional suffix and the session-number rule archive the same two entries (S78, S79). The defect is real but its instance is TRUTH_AUDIT, and the load-bearing defect is the pointer beneath which every closeout since S105 has written. Folded into item 1 with the corrected evidence rather than carried as written."
+    }
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "tier": "HIGH",
+      "category": "Record truth; the budget gate's remedy was inert and would have been destructive",
+      "effortHours": 1.5,
+      "impact": 8,
+      "innovation": 7,
+      "priority": 32,
+      "slug": "ledger-retention-is-positional-and-the-pointer-hides-entries-beneath-it",
+      "title": "The ledger roll retains by file position on files that were never in session order, and slices the source at a pointer every closeout has written beneath",
+      "status": "implemented",
+      "premise": "scripts/ledger-roll.mjs `splitLedger` keeps the last N entries in file order for a newest-last ledger, and strips the source from the pointer sentinel to EOF before counting entries. The live newest-last ledgers are not in session order (SIL: S78, S79, S80 above S99-S107; TRUTH_AUDIT: S83, S82, S80 above S99-S107), so on TRUTH_AUDIT a positional suffix of ten would archive S83 and S82 and keep S80. And since S105 every closeout has appended its entry beneath the pointer, because that is where EOF is: measured on the live tree, the pointer sits at SIL line 197 of 236, DECISIONS 167/194, TRUTH_AUDIT 144/165 and WORK_LOG 159/206, with S106 and S107 beneath it in all four. The dry run therefore reports 'fewer entries than the retention window' for every newest-last ledger while each holds twelve, the check-ledger-budget remedy cannot fire, and an applied roll would write `head + pointer` from the pre-sentinel slice - dropping S106 and S107 from the live file without archiving them.",
+      "premises": [
+        {
+          "claim": "The splitter slices the source at the pointer sentinel",
+          "adapter": "grep",
+          "target": "scripts/ledger-roll.mjs",
+          "pattern": "source\\.slice\\(0, pointerAt\\)",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "Session entries sit beneath the pointer in the live SIL",
+          "adapter": "grep",
+          "target": "context/SELF_IMPROVEMENT_LOOP.md",
+          "pattern": "ledger-roll:pointer -->[\\s\\S]*## 2026-09-1\\d — Session 10[67]",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Strip the pointer block wherever it sits and re-append it at EOF, so an entry written beneath it is an ordinary entry; assert on the live tree that no ledger has an entry beneath its pointer."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "L1 plus retention by session number: keep the N highest distinct sessions present wherever they sit, emit them in the order the ledger declares, keep the old positional rule exported only as a negative control, and prove the difference on TRUTH_AUDIT's observed shape."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "L2 plus apply the roll to the live ledgers this session, verify by diff that only the pointer moved and the archived blocks appear verbatim in the archives, and add a live gate that fails when any ledger has sessions to move so the roll is run at closeout rather than when the byte ceiling fires."
+        }
+      },
+      "executionEvidence": "L3 shipped. scripts/ledger-roll.mjs: stripPointerBlocks removes the pointer block wherever it sits and the roll re-appends it at EOF; splitLedger retains the N highest distinct session numbers present and emits them in the order the ledger declares; the positional rule survives only as splitLedgerByPosition for the negative control. test/session108-ledger-retention-by-session.test.js (9/9): TRUTH_AUDIT's observed shape archives S82 and S80 and keeps S83 where the positional rule archived S83 and S82 and kept S80; a mid-file pointer hides nothing (12 entries counted, the pre-S108 slice saw 10); an applied roll on that shape leaves every entry in exactly one of live/archive with one pointer at EOF; a live gate fails when any ledger has sessions to move. Applied on the live tree: CURRENT_STATE S94/S95, DECISIONS S23/S24, TRUTH_AUDIT S80/S82, SIL S78/S79, WORK_LOG S87/S95, TASK_BOARD S95/S96 moved verbatim (296 KB -> 270 KB); verified by diff that the only added lines in live ledgers are the relocated pointer, and no entry sits beneath a pointer in any ledger. Nothing needed re-sequencing live; the reorder path is covered by fixture."
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "Game-loop payoff; the potential system's annual verdict is invisible",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 28.8,
+      "slug": "offseason-development-is-computed-and-thrown-away",
+      "title": "Every player's annual overall move is computed in progressPlayer and discarded; the GM sees '12 retired, 40 contracts expired' and nothing about who grew",
+      "status": "implemented",
+      "premise": "src/engine/offseasonSimulator.js `progressPlayer` computes `delta`, writes ratings and `player.overall`, and returns undefined; `applyAgingProgressionAndRetirements` calls it for every active player and keeps nothing. `runRosterYearRollover` in src/runtime/GameSession.js reduces the whole pass to `{ retired, expired }`, the pipeline stage message reads '<n> retired, <n> contracts expired, <n> re-signed by their own club.', and public/app.js discards even that response after POST /api/offseason/advance. S107 made potential a real per-player runway and the profile narrative promises one, but the moment the runway pays out - or does not - produces no player-facing output at all.",
+      "premises": [
+        {
+          "claim": "progressPlayer is called for its side effects only",
+          "adapter": "grep",
+          "target": "src/engine/offseasonSimulator.js",
+          "pattern": "^\\s+progressPlayer\\(player, rng, context\\);$",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The rollover returns two integers and no development record",
+          "adapter": "grep",
+          "target": "src/runtime/GameSession.js",
+          "pattern": "return \\{ ok: true, alreadyRun: false, retired, expired \\};",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Have applyAgingProgressionAndRetirements return a development ledger ({ playerId, teamId, name, position, age, before, after, delta, potential, trait } per progressed player) without changing a single RNG draw, and keep the controlled club's ledger on the session as the offseason's development report."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "L1 plus surface it: the retirements stage message names the club's biggest riser and steepest decline, a news entry carries the club's top risers/fallers, and a focused test asserts the ledger sums to the league's measured overall change and names the same players the engine moved."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus the browser: an Offseason Development card on the pipeline surface that renders the controlled club's risers and fallers with before -> after and the potential runway consumed, reachable by a Playwright spec, inside the boot budget."
+        }
+      },
+      "executionEvidence": "L3 shipped. progressPlayer returns { before, after, delta }; applyAgingProgressionAndRetirements returns a development ledger (one row per progressed player, retirees flagged rather than dropped) with no RNG draw added: two leagues from one seed develop identically and the stream position after the rollover is equal. src/engine/offseasonDevelopmentReport.js (pure) summarises the controlled club (improved / declined / held, net and mean change, top five risers and fallers, a summary line and a headline) with the league-wide figures beside it. runRosterYearRollover writes it to the pipeline, returns it, and logs a development news entry (IMPORTANT in the Priority Inbox, which now also reads details.type); the retirements stage message carries the line. Browser: an Offseason Development Report panel on the History tab (where the retirements stage routes), rendered by a lazily imported module because the history island sat 0.9 per cent above its 15 per cent headroom floor; tests-ui/offseason-development.spec.js drives the pipeline to the retirements stage and asserts the card names risers and fallers. test/session108-offseason-development-report.test.js (6/6): the ledger equals the league's own overall changes player by player, the club summary is faithful and ordered, the club net in the report equals the club net in the league, movers are still on the league at the overall the row records, and retirees never appear as movers."
+    },
+    {
+      "rank": 3,
+      "tier": "HIGH",
+      "category": "Gate population; the declared-population question S105-S107 carried",
+      "effortHours": 3,
+      "impact": 8,
+      "innovation": 8,
+      "priority": 25.6,
+      "slug": "elite-cohort-composition-is-invisible-to-a-position-blind-gate",
+      "title": "The elite arm compares a position-blind 90+ share with an anchor that is allocated per position, and cannot see that 97% of the cohort sits in two rooms",
+      "status": "implemented",
+      "premise": "src/stats/progressionParity.js reads `elite90PlusPct` as the share of activeRosterOnly at overall >= 90 and classifies it against `NFL_ELITE_DENSITY_BASELINE.firstTeamAllProPct` (26 / 1,696). The anchor's total is position-blind, so the gated comparison is like-for-like at the total - but the 26 seats are one per position, and src/data/nflEliteDensityBaseline.js carries no per-room allocation, so nothing in the receipt can report that the engine's cohort is 97% quarterbacks and offensive linemen (S107, canonical seed) where the anchor gives those rooms 6 of 26 seats. The room rows in `summarizeLeagueProgression` are computed on the rostered basis, not the active-roster population the elite arm declares. The question to state first: is the composition a generator property (overall is position-weighted, so the same 90 is a different z-score in every room) or a target property (the cut should be per room)? Either answer must be published as a reported arm before anyone proposes gating on it.",
+      "premises": [
+        {
+          "claim": "The elite share is computed position-blind on overall >= 90",
+          "adapter": "grep",
+          "target": "src/stats/progressionParity.js",
+          "pattern": "elite90Plus: overalls\\.filter\\(\\(value\\) => value >= 90\\)\\.length",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The baseline carries no per-room seat allocation",
+          "adapter": "grep",
+          "target": "src/data/nflEliteDensityBaseline.js",
+          "pattern": "seatsByRoom|ROOM_SEATS|seatsPerRoom",
+          "operator": "eq",
+          "expected": false
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Write the declared-population question and its answer in DECISIONS before code: the gate's total stays position-blind because the anchor's total is; composition is published, never gated. Declare the per-room seat allocation of the 26-seat All-Pro format in the baseline module with its provenance and the two seats (returner, special-teamer) this engine has no room for."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "L1 plus a reported, ungated `eliteComposition` arm in the distribution receipt: per room, active-roster count, 90+ count, share of the cohort, share of the allocable seats, and the over-representation ratio; rooms computed on activeRosterOnly; fixtures without it read 'incomplete'. A negative control: a league whose every elite player is a quarterback reports a QB ratio far above one and every other room at zero."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus the measurement on the landed generator over ten seasons on the canonical seed and seed 2026, recorded in the handoff with the ratio per room, and the finding stated: which rooms are over-represented against the seat allocation and by how much, with no ceiling moved and no per-room gate added."
+        }
+      },
+      "executionEvidence": "L3 shipped. DECISIONS S108 states the question and the answer before the code: the elite ceiling stays position-blind because the anchor's total (26 of 1,696) is position-blind, and composition is published, never gated. src/data/nflEliteDensityBaseline.js declares the 26 seats by room (QB 1, Backfield 1, Receivers 4 incl. the flex, OL 5, Front Seven 6, Secondary 5, Specialists 2) with the two returner/special-teamer seats declared unallocable, so shares are of 24 rather than silently understated. summarizeLeagueProgression adds activeRosterRooms (the rooms on the population the elite arm declares; a test proves they partition activeRosterOnly exactly and that the rostered rooms are a different population). buildEliteCompositionReading publishes per room: count, 90+ count and share, share of cohort, share of seats, and their ratio; concentratedRooms names any room at 2x or more; fixtures without the reading say incomplete. test/session108-elite-composition.test.js (6/6) includes a negative control (an all-quarterback cohort reads a QB ratio above 20 and every other room 0), a proportional cohort reading 1.0 everywhere, and the proof that composition never moves eliteStatus or status. Measured on the landed generator over ten seasons, active roster only: canonical seed cohort 36 — Offensive Line 29 (80.6% of the cohort against 20.8% of seats, ratio 3.87), Quarterback 6 (16.7% vs 4.2%, ratio 3.98), Secondary 1 (0.13), every other room 0; seed 2026 cohort 46 — QB 13 (ratio 6.74), OL 29 (3.03), Receivers 2 (0.26), Secondary 2 (0.21), rest 0. The mechanism is on the same table: active-roster room means QB 84.1-84.6 (sd 3.5-4.1) and OL 83.1-83.3 (sd 4.4) against 76.5-78.2 (sd 3.3-4.0) everywhere else, so a position-blind 90 is +1.5 to +1.7 sd for those two rooms and +3.0 to +4.0 sd for the other five. No ceiling moved, no per-room gate added."
+    },
+    {
+      "rank": 4,
+      "tier": "MEDIUM",
+      "category": "Game-loop truth; the scouting economy sells information the next table gives away",
+      "effortHours": 2,
+      "impact": 8,
+      "innovation": 6,
+      "priority": 24,
+      "slug": "draft-board-prints-the-truth-the-scouting-economy-sells",
+      "title": "The Available Prospects table prints true OVR and true POT for every prospect beside a scouting board that charges points for a 72%-accurate read",
+      "status": "implemented",
+      "premise": "public/lib/tabDraft.js builds `availableRows` with `ovr: prospect.overall` and `pot: prospect.potential` straight from `draft.available`, which src/runtime/GameSession.js pushes as the raw prospect array. The scouting table on the same tab deliberately shows `scoutedOverall`, a reveal tier, a confidence percentage and a fogged makeup read (`deriveMakeupRead`, ~72% accurate by its own comment). There is no `scoutedPotential` anywhere in the repo, so potential - the number S107 made decisive - has no fogged counterpart and is shown raw. The points economy, reveal tiers and confidence are worthless while the adjacent table prints the answer for free.",
+      "premises": [
+        {
+          "claim": "The available table prints true potential",
+          "adapter": "grep",
+          "target": "public/lib/tabDraft.js",
+          "pattern": "pot: prospect\\.potential,",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The scouting read is deliberately fogged",
+          "adapter": "grep",
+          "target": "src/runtime/GameSession.js",
+          "pattern": "scoutedOverall",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Establish what the draft DTO already carries per prospect (scouting.scoutedOverall, confidence, reveal tier) and which browser specs assert on the available table's OVR/POT columns."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "L1 plus: the available table shows the scouted OVR and a potential band derived from the reveal tier instead of the truth, with the truth revealed only at full confidence; the DTO stops shipping raw `potential` for undrafted prospects; a focused test asserts a prospect below full reveal never renders his true potential."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 plus the player profile modal for a prospect reads the same fogged values, and a Playwright spec proves the two tables agree."
+        }
+      },
+      "executionEvidence": "L2 shipped. getDraftState maps available prospects through scoutedProspectView: true overall and true potential are removed from the surface, and the scouting block gains scoutedPotential, a +/-6 fog from derivedRng keyed on draft year and prospect id, off the main stream (a control draw proves the stream is untouched) and stable across reads. The engine keeps the truth on league.pendingDraft for CPU picks, the on-clock market and the reveal itself. tabDraft shows Scout Ovr / Scout Pot in place of Ovr / Pot. test/session108-draft-board-fog.test.js (3/3). world-state-next-step now measures reveal accuracy against the engine's prospect rather than the surface, which is where the truth lives. L3 (a prospect profile modal) was not needed: prospects are not profile-able until drafted, so there is no second surface to align."
+    },
+    {
+      "rank": 5,
+      "tier": "MEDIUM",
+      "category": "Truthful feedback; the profile contradicts itself two lines apart",
+      "effortHours": 1,
+      "impact": 6,
+      "innovation": 5,
+      "priority": 20,
+      "slug": "development-outlook-contradicts-the-potential-badge-beside-it",
+      "title": "The profile's development outlook reads facilities, fit and age but never potential or trait, so a Bust at his ceiling in a great facility reads 'surging'",
+      "status": "implemented",
+      "premise": "src/runtime/GameSession.js `buildPlayerDevelopmentOutlook` computes `trajectoryScore = context.developmentBonus + fit term + age term` and never reads `player.potential` or the development trait; public/lib/appCore.js renders that trajectory in the same hero that shows `Potential <n>` and `<Trait> Dev`. public/lib/playerProfileNarrative.js branches its runway sentence on `ceilingGap` alone while the engine closes headroom at 31 (`closedHeadroomAge`), so a 29-year-old and a 22-year-old with the same +9 gap get the same 'meaningful development runway' sentence.",
+      "premises": [
+        {
+          "claim": "The trajectory score reads environment, fit and age only",
+          "adapter": "grep",
+          "target": "src/runtime/GameSession.js",
+          "pattern": "const trajectoryScore = context\\.developmentBonus \\+ \\(fit >= 82",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The runway sentence does not read age",
+          "adapter": "grep",
+          "target": "public/lib/playerProfileNarrative.js",
+          "pattern": "leaves a meaningful development runway",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Fold the player's remaining headroom (potential - overall, zero once closed) and his trait into the trajectory score so a player at his ceiling cannot read 'surging', with the environment still able to lift a player who has room."
+        },
+        "L2": {
+          "effortHours": 1,
+          "recipe": "L1 plus the narrative states the runway in seasons (closedHeadroomAge - age, floored at zero) beside the points, and a focused test pins both: ceiling-bound Bust in a top facility is not 'surging'; 22 and 29 with the same gap read different runways."
+        },
+        "L3": {
+          "effortHours": 1.5,
+          "recipe": "L2 plus the roster table shows the development trait the DTO already carries, matching the free-agent table."
+        }
+      },
+      "executionEvidence": "L3 shipped. buildPlayerDevelopmentOutlook reads the player's headroom (potential minus overall) and trait; with no headroom the trajectory cannot exceed steady whatever the facility says, and the term is exposed as outlook.headroom. The profile projects developmentHeadroom and developmentRunwaySeasons from POTENTIAL_HEADROOM_PROFILE.closedHeadroomAge so the browser narrative does not re-declare the constant; the narrative states seasons remaining, calls a wide gap with two seasons or fewer a short runway, and keeps the old sentence for DTOs without the projection. The roster table shows the development trait the DTO has carried since S8 (the free-agent table already did). test/session108-development-outlook.test.js (3/3): a ceiling-bound Bust in a 99/99 environment reads steady and the same player with room reads positive or surging; 22 and 29 with the same +9 gap read different runways."
+    },
+    {
+      "rank": 6,
+      "tier": "LOW",
+      "category": "Process; a standing Next item that costs a shard re-run each time it is skipped",
+      "effortHours": 0.5,
+      "impact": 5,
+      "innovation": 3,
+      "priority": 12,
+      "slug": "code-review-runs-after-the-receipt-it-should-precede",
+      "title": "Run the review of this session's own diff before the canonical receipt, not after",
+      "status": "implemented",
+      "premise": "context/TASK_BOARD.md has carried since S94: re-run /code-review against a session's own diff BEFORE the canonical receipt. S94 ran it late, it found ten real defects, and the 45-minute shard re-ran. This session's diff touches the offseason seam and the ledger roller; a review before the receipt is cheap relative to the receipt.",
+      "premises": [
+        {
+          "claim": "The board still carries the item",
+          "adapter": "grep",
+          "target": "context/TASK_BOARD.md",
+          "pattern": "BEFORE the canonical receipt",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Run the code review on the working tree diff once items 1-5 are in, before any shard."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "L1 plus act on every confirmed finding before the receipt, and record the count in the closeout brief."
+        },
+        "L3": {
+          "effortHours": 0.5,
+          "recipe": "L2 plus strike the Next item from the board with the evidence."
+        }
+      },
+      "executionEvidence": "L3 shipped. /code-review medium ran on the working tree before any shard, and returned eight verified findings, every one acted on before the receipt: (1) the Draft Day reveal and the pick reward beat read prospect.overall from the surface the fog had just stripped and would have printed 'OVR —' for every user pick — both now read the scout's number and say so; (2) the fog was incomplete: ratings still shipped (overall is a pure function of them), the Combine Results table printed true OVR on the same tab, and the three draft POST responses spread the raw pendingDraft — ratings are now stripped, the combine row carries the scouted read with a 'Scout OVR' header, and scoutedDraftResult projects every draft mutation's response in both API layers; (3) the Priority Inbox ingests dashboard.newsLog with a top-level type and never reads dashboard.news, so the development headline could not reach the bell — reportOffseasonDevelopment now writes the beat-reporter item and the test asserts it on the newsLog the inbox reads; (4) the live-tree ledger tests would have gone red at every closeout append — the pointer-at-EOF test is removed (the splitter handles a mid-file pointer by design) and the pending-roll gate tolerates one session of debt, the same tolerance the release-note gate uses; (5) a ledger with duplicate same-session headings returned null with the wrong reason and never relocated its pointer — distinct reason, pointer relocated even with nothing to archive, idempotent, tested; (6) the development report lived only on the pipeline, which initializeLeagueSystems resets on reload once the year moves on — it now lives on the league, the dashboard carries it directly, and a snapshot round-trip across a year change is tested; (7) developmentRunwaySeasons was projected from the generation-time headroom constant (31) while the development curve turns negative at 26 — GROWTH_WINDOW_MAX_AGE is exported from the curve's own module, used by developmentDelta and the projection, and the narrative now speaks of growth seasons and a closed growth window; (8) stripPointerBlocks matched any line containing the sentinel and could swallow a heading appended directly beneath the prose — anchored on the exact sentinel line, paragraph scan stops at a heading, both shapes tested. Two candidates the reviewer dropped (expiring players excluded from the club report, which the test pins as intended; column tone cosmetics) were not taken. The review also exposed, indirectly, why the browser spec had been failing: the lazy module imported `state` from appCore, which does not export it, and the failure was swallowed by a .catch the promise-observability gate then rejected — the import is corrected and the load is observed through observeBackgroundTask. Board item struck."
+    }
+  ]
+}

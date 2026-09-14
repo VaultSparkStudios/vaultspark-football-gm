@@ -1,93 +1,52 @@
-# Latest Handoff — Session 107 → Session 108
+# Latest Handoff — Session 108 → Session 109
 
 > **Keep this heading shape.** Since S105 it is committed session authority: `parseHandoffCloseoutAuthority` reads the left-hand session, and `test/session-authority.test.js` fails if the live handoff and the newest SIL entry disagree.
 
 ## Where We Left Off
 
-S107 was a clean start: F7 current, tree clean, synced. The startup brief was two days stale and was re-rendered fresh.
+S108 was a clean start: F7 current at `fac752fe`, tree clean, synced, brief fresh. Six audit items, six shipped, one inherited premise rejected before code.
 
-**S106's diagnosis was wrong, and the change it refused is now live.** S106 recorded that `session90-development-environment` could not express position-relative potential because "development deltas are applied to ratings and overall is recomputed with position weights", and prescribed modelling that inside the test. Re-derived before implementing, it did not survive one probe:
+**The question S107 handed over was answered before any code, and the answer is that the gate must not learn to see composition.** The 90+ cut is position-blind and so is the anchor's total (26 of 1,696), so the gated comparison is like for like at the total. What it cannot see is *which rooms* hold the cohort, and that is now published on the receipt, never gated:
 
 ```
-unchanged S106 tree, one offseason, four seeds       gap vs declared curve
-  survivors only (what the gate read)                +0.149 .. +0.238   (canonical 0.235 of a 0.25 tolerance)
-  every progressed player, captured before the call  -0.022 .. +0.022
-  environment's own contribution (wired - zeroed)    -0.035 .. -0.005
-  pre-S90 environment through the same matched run   +0.831 .. +0.903
+ten seasons, active roster only            cohort   QB share/seats (ratio)   OL share/seats (ratio)   other rooms
+  canonical 20260306                          36     16.7% / 4.2%  (3.98)     80.6% / 20.8% (3.87)     0 – 0.13
+  seed 2026                                   46     28.3% / 4.2%  (6.74)     63.0% / 20.8% (3.03)     0 – 0.26
+active-roster room means (sd)                QB 84.1–84.6 (3.5–4.1) · OL 83.1–83.3 (4.4) · every other room 76.5–78.2 (3.3–4.0)
 ```
 
-`applyAgingProgressionAndRetirements` progresses a player and **then** rolls `retirementChance` on the overall it just produced (x0.86 at 90+, x1.08-1.18 at 74 and below). Keeping only survivors selects on the outcome. S106's generator changed who retires, and that is all the gate saw.
+A position-blind 90 is a +1.5 to +1.7 sd claim in two rooms and a +3.0 to +4.0 sd claim in the other five. **That is a rating-scale question, and it is recorded as one** (DECISIONS S108 Decision 1, TASK_BOARD S108). Do not add a per-room elite arm; do not move the 1.53% ceiling; do not widen `stdDevDrift*`. Both seeds reproduced S107's headline arms to the decimal before anything changed (2.1% / 0.093 / −0.001 and 2.7% / 0.108 / −0.025).
+
+**The ledger roll's own remedy had been inert since S105.** The dry run on the live tree — not the S106 note — showed every newest-last ledger reporting "fewer entries than the retention window" while holding twelve: each closeout appended beneath the pointer, and the splitter sliced at the sentinel. An applied roll would have dropped S106 and S107 from each live file. Fixed at source: pointer found anywhere and re-appended at EOF (also when nothing archives), retention by the N highest distinct session numbers in the ledger's declared order, distinct reason for duplicate-session headings, positional rule kept only as a negative control on TRUTH_AUDIT's real shape. **S106's "the SIL is three entries short" was a phantom** — positional and by-session move the same two entries there; the instance was TRUTH_AUDIT.
 
 ## What shipped
 
-- **The S90 gate measures the population the mechanism was applied to.** Every progressed player at the engine's measured potential centre, with the environment isolated by a matched seeded offseason (wired vs zeroed tilt) — the engine is the baseline, nothing of it is re-implemented in the test. **Tolerance 0.25 → 0.10** (largest reading 0.056 across four seeds on both generators). Negative controls: the pre-S90 environment must fail; the survivor reading of the same run must exceed the progressed reading.
-- **Position-relative potential.** `src/domain/playerFactory.js`: trait-sized headroom above the player's own overall (SUPERSTAR 6-18, HIDDEN 3-14, NORMAL 0-9, BUST 0-3), whole at 23, closed by 31, tapered linearly over the **55** points below 99, drawn in the same single `rng.int` slot, finite inputs asserted in `resolvePotential`. Four seeds: above own potential **36.0-37.6% → 0.0%**, mean potential tracks the room (QB 82.1-83.3, TE 74.3-75.2), every mean overall and 90+ count unchanged to the decimal. Saved franchises keep their stored potentials.
-- **`test/session107-position-relative-potential.test.js`** (core shard): generation property, room tracking, a position-blind negative control, `resolvePotential` rules and finite guards, and profile surfacing.
-- **Two seed-pinned tests now sample.** The rival-offer negative control (re-pinned in S103, S104 and now) walks 620111/620108/620114/620115; home-field advantage pools three leagues. Both were classified as legitimate simulation shifts by measurement before being touched — home edge reads +0.028 at 2,000 games on the pair that read -0.009 at 220.
-- **Record corrected** append-only: DECISIONS S107 Decision 1 supersedes S106 Decision 0's causal claim; TRUTH_AUDIT names the contradiction.
-- **Player-facing:** POT columns and the profile narrative's development runway, which is no longer negative for a third of every new league. Release note on `public/status.html`.
-
-## The calibration — read before touching the taper
-
-```
-canonical seed 20260306, ten seasons      elite 90+   dispersion   parity
-  old position-blind draw                   2.8%        0.095       +0.043
-  headroom, taper span 25                   2.4%        0.112         —      <- a cost, rejected
-  headroom, taper span 40                   3.0%        0.101       +0.032
-  headroom, taper span 55 (shipped)         2.1%        0.093       -0.001
-
-seed 2026, same-seed control
-  old draw (restored from HEAD, isolated)   3.4%        0.125       +0.021
-  span 55                                   2.7%        0.108       -0.025
-```
-
-Dispersion falls monotonically with span, and the mechanism is clear. A narrow taper makes potential track overall almost one-for-one, and the trait term `(potential - centre)/20` then pays the players who are already highest. Elite density bounces around, which is noise on a tail statistic, so it was not used to choose. Absolute readings differ widely between seeds, which is why every comparison here is same-seed. Variants ran from isolated copies of `src/`, never from the worktree.
+- **Offseason Development Report.** `progressPlayer` returns `{ before, after, delta }`; `applyAgingProgressionAndRetirements` returns one row per progressed player (retirees flagged, never dropped); `src/engine/offseasonDevelopmentReport.js` summarises the club (top five risers/fallers, improved/declined/held, net, mean; league beside it). The rollover keeps it on the pipeline **and the league** (`dashboard.developmentReport`, so it survives the season it describes and a reload), puts the line in the retirements stage message, logs the long-form feed entry, and writes the beat-reporter item the Priority Inbox actually ingests (`newsLog`, top-level `type: "development"`, IMPORTANT). History tab card (`#offseasonDevelopmentPanel`) rendered by `public/lib/offseasonDevelopmentReport.js`, lazily imported through `observeBackgroundTask` because the history island sits at **15.2% headroom against a 15% floor**. No RNG draw added: identical fingerprints on a seeded pair, equal stream position after the rollover.
+- **Draft fog on every path.** `scoutedProspectView` strips `overall`, `potential` and `ratings`; `scoutedPotential` is ±6 from `derivedRng` keyed on year and prospect id; `scoutedDraftResult` projects GET `/api/draft` and the three draft POSTs in `server.js` and `localApiRuntime.js`; combine rows carry the scouted read ("Scout OVR"); the reveal modal and reward beat say "Scout OVR" when that is what they hold. The engine's `league.pendingDraft` is untouched (CPU picks, on-clock market, the reveal).
+- **Profile outlook and runway.** `buildPlayerDevelopmentOutlook` reads headroom and trait; at zero headroom it cannot exceed "steady". `GROWTH_WINDOW_MAX_AGE` (25) is exported from `src/domain/ratings.js`, read by `developmentDelta` and by the profile's `developmentRunwaySeasons`; the narrative says "growth seasons" and "the growth window has closed". Roster table shows the dev trait.
+- **Elite composition arm.** `NFL_FIRST_TEAM_ALL_PRO_SEATS_BY_ROOM` (24 allocable of 26; returner and special-teamer declared unallocable), `activeRosterRooms` on `summarizeLeagueProgression`, `buildEliteCompositionReading` → `distribution.eliteComposition` with `gated: false`.
+- **Ledger roll** as above; `test/session108-ledger-retention-by-session.test.js`.
+- **Review before receipt** (the S94 Next item): eight findings, all acted on before any shard — reveal/reward reading a stripped field, three more truth leaks in the fog, the inbox never reading `dashboard.news`, a live-tree ledger test that would go red every closeout, a duplicate-session null path, the report lost on reload, the runway projected from the wrong constant, and the pointer strip swallowing a heading.
+- **Public:** release note on `public/status.html` (2026-09-14); `index.html` engine count 42 → 43.
 
 ## Next work
 
-- **Elite density's declared-population question — state it before writing any code.** At the end of the window, QB+OL hold **97%** of the 90+ cohort on the canonical seed (35/36). On seed 2026 that goes from **72%** under the old draw (41/57) to **91%** with span 55 (42/46). Position-relative potential made the cohort smaller and **more** concentrated, which is what anchoring potential to a position-scaled overall must do. The 90+ cut is position-blind; the First-Team All-Pro anchor is allocated per position. Write the question in DECISIONS first. Do **not** add a per-position arm as a route to a green gate, and do not move the 1.53% ceiling.
-- Dispersion is `watch` at 0.093 against 0.08, and elite density is `watch` at 2.1% against 1.53%. Do not widen `stdDevDrift*`.
-- Do not re-point the parity population (standing since S104).
-- Ledger retention by session number (carried from S106) still wants its own session.
-- The authoritative registry still reads `sparked` against a local contract of FORGE; do **not** flip the local contract.
+- **The rating scale, not the gate.** Rooms sit seven overall points apart, so "90" is not the same claim in every room; any change is a generator/scale change with the full distribution receipt as its matched control. State the question in DECISIONS first.
+- The history island has 15.2% headroom; the next change to that tab goes behind a dynamic import.
+- Run `node scripts/ledger-roll.mjs --apply` at every closeout after appending entries; the live gate tolerates one session of debt.
+- Do not re-point the parity population (standing since S104); the registry still reads `sparked` against a local contract of FORGE; do **not** flip the local contract.
 - Delivered/reply-capable project-domain email, candidate-bound public-launch approval and authoritative lifecycle reconciliation remain independent launch evidence. Public launch remains **HOLD**.
 
-## How the canonical receipt was earned — do not repeat these
+## How this session's reds were earned — do not repeat these
 
-- Never run ten-season probes beside a shard. Three of them timed `core` out at its 45-minute bound; alone it takes ~25 minutes.
-- Never export `TEST_SHARD_TIMEOUT_MS` for `npm test`. `test/test-shard-progress.test.js` asserts the default, and the child tests inherit the environment.
-- `runRealismVerification` simulates a copy: read end-of-window composition from `report.progression.end.rooms`, never from `session.league` afterwards.
-- A shard that exits 1 with no TAP output is a runner-level failure. Re-run it alone before diagnosing (the long shard was 5/5 alone).
+- A lazy browser module imported `state` from `appCore.js`, which does not export it, and a `.catch(() => {})` hid the failure; the spec asserted on placeholder text that is also in the HTML, so it could not tell "module failed" from "no report". Observe the load (`observeBackgroundTask`), and assert on something only the module renders.
+- The GM Inbox drawer is off-canvas when closed but reports visible; a spec that clicks `#closeInboxBtn` on `isVisible()` hangs. Refresh state through `[data-testid="refresh-btn"]`, not by reloading (the local runtime does not persist the offseason advance).
+- Fogging one field is not fogging the number: grep for every path (`ratings`, sibling tables, mutation responses) before claiming the surface is fogged.
 
 ## Receipts
 
-**Tests: every shard green on the final source, 1,471/1,471** (core 253, runtime 817, sim-contract 83, sim-realism 1 in one `all` run on the final tree; long 5 and studio 312 each alone), up from 1,463 in S106. **The combined source-bound receipt (`.cache/test-count.json`) was not produced and is not claimed.** In the final `all` run, `long` exceeded its 45-minute bound (exit 124, no test failed) with the machine at 100% CPU from other sessions' work; it passes 5/5 alone in 29.7 minutes.
-
-**Clean-runner CI on `fac752fe`: success** (run `34816816943`) — unit shards core, runtime, sim-contract, sim-realism and studio, plus browser gates, all green on `ubuntu-latest`.
-
-Reds this session surfaced and resolved, each classified before it was touched:
-
-- The rival-offer negative control (seed shift; now samples).
-- Home-field advantage (sampling noise; now pools).
-- A stale audit render.
-- An exported timeout override leaking into a studio test.
-- A `core` timeout and a no-output `long` exit, both under this session's own probe load.
-
-None was flaky, sibling drift or force-greened.
+**Tests: every shard green, 1,501/1,501** — core 273, runtime 817, sim-contract 83, sim-realism 1, long 5, studio 322 — up from 1,471 in S107. The first `npm test` run (2,848 s, alone on the machine) went red on exactly one test, the studio shard's manifest gate: the five S108 test files were not registered in `scripts/run-test-shard.mjs`, so the receipt had silently skipped them (core read 253, unchanged from S107). Classified as my own omission, registered, and core (870 s) and studio (52 s) re-run on the final tree; runtime, sim-contract, sim-realism and long are unaffected by a manifest-only change and stand from the full run. Doctor `blockingFailing 0` · 11/12 · the standing warning is the registry SPARKED vs local FORGE drift. Browser gates: boot budget 643,968/730,000 with every island above its 15% floor (history 15.2%), reachability 93 modules, promise observability 0 silent sinks, public-truth OK (43 engine systems), `tests-ui/offseason-development.spec.js` 2/2.
 
 ### Deployment
 
-| | |
-|---|---|
-| Candidate | `fac752feda47a5448d312129cc576a269c9ab0f9` |
-| Artifact digest | `bb8382f91956728cd384f6f255176f8222f71b62317902e8aecf9bf85f70c95e` — changed (from `449b6d36…`), because `public/status.html` carries a new release note |
-| Staging | verified **14/14** · deployment `a9d06c47-dc29-4895-98ce-812a9c1392f0` · rollback `ff866b0a-117c-4ee2-868a-0b2f671c6317` · provenance report `reports/s107-staging.json` **10/10** |
-| Visual QA | 98 `s107-*` captures bound to the candidate and digest, 0 blocking; 255 responsive states passed; retention recorded 98 new hashes (1,821 total), 65.5 MB → 49.9 MB |
-| Backend runtime | run **34816816965** success — gate, `build-images (play)` and `build-images (api)` all green. `deploy-server` **skipped by design**: it runs only on a manual dispatch with `deploy_to_server` set (`deploy-backend.yml:104`), exactly as in S106. Images are built and published; no server rollout was dispatched, and none is claimed |
-| Production | promotion run **34817136107** — gate, build and deploy all **success** · live origin provenance `reports/s107-production.json` **10/10**, serving `fac752fe` at digest `bb8382f9…` · push-triggered Deploy Pages `34816816986` cancelled by the dispatch, as expected |
-| Performance | hosted receipt **verified**, bound to `fac752fe` |
-| Release authority | **verified** — source and publication revision `fac752fe`, all four identities (staging, production, visual, performance) bound; `stagingAuthority` reconciled at the same revision |
-| Doctor | `blockingFailing 0` · 11/12 · the standing warning is the registry SPARKED vs local FORGE drift |
-| `launchReady` | **false** — unchanged (email delivery, founder approval, lifecycle authority). Technical deployment, not public launch |
-
-**What the captures do and do not prove.** The roster at 1440px dark shows POT at or above OVR on every visible row, with veterans at no headroom and young players carrying room. The 390px light roster matches it. The draft-room prospect (77 OVR / 92 POT, EDGE) is a hardcoded fixture in `scripts/responsive-evidence.mjs` and is **not** evidence for this change. The status-page note was verified against the live staging origin (HTTP 200, 2026-09-13 note present), because the harness does not capture that page.
+*Recorded in the closeout commit.*

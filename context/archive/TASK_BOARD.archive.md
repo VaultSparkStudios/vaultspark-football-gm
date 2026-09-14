@@ -2,6 +2,43 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/TASK_BOARD.md` for the working set.
 
+## Session 97 — Full arc: tie-complete franchise truth and a reachable phone commit (2026-09-02)
+
+- [x] Establish one browser record authority and one engine helper for W-L-T formatting, standings lookup, half-win percentages, and exact deltas.
+- [x] Migrate every reproduced record consumer across mobile, newsletters, rewards, season epilogue, achievements, return digest, server/local fan sentiment, adaptive difficulty, beat reporting, General Manager authority, and narrative events.
+- [x] Prove a tie-only return delta is visible and a 5-0-1 season is neither rendered nor scored as 5-0/perfect.
+- [x] Isolate doctor health-receipt freshness from substantive `lastUpdated` activity and pin the real command path.
+- [x] Make the phone decision overlay a named, four-edge-safe region with a sticky theme-correct action dock.
+- [x] Bind tests, inspected pixels, hosted performance, stable staging, production, and release authority to exact source `95597906033ced89469cd2c268a661d5a3b2b4a8` and artifact `47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89`.
+
+**Verification:** canonical Node 1,300/1,300; exact-SHA CI 1,295/1,295 across five shards in workflow 33595882214; Playwright 54/54 locally and green in the workflow browser gate; 255 responsive states with 98 retained reviewed dark/light desktop/tablet/mobile captures; Pages build, module reachability, boot budget and smoke green; sanitization critical/warning 0/0; sitemap 9/10; staging 14/14; production 10/10; hosted performance verified; promotion workflow 33598681683 green. Technical deployment is complete. Public launch remains HOLD.
+
+## Session 96 — Full arc: trustworthy orientation, diagnosable release identity, and mobile parity (2026-08-26)
+
+- [x] Make startup orientation reject invalid dates, parse inline SIL v3 categories, derive intent from entry bodies, and content-refresh stale Genius authority.
+- [x] Add a deterministic per-file artifact ledger and a reusable promotion-bind verifier that prints both identities plus first-file deltas.
+- [x] Turn Cloudflare aggregate analytics reporting into a repeatable secrets-gateway-backed receipt while withholding user, engagement, retention, and cohort claims.
+- [x] Raise the mobile trigger to 44×44px and make the 100dvh drawer four-edge safe-area aware.
+- [x] Root-fix the cold lazy-island Escape error found by rendered pixels.
+- [x] Replace wall-clock animation waiting with bounded rendered-geometry settlement after Linux CI exposed the portability defect.
+- [x] Bind visual, hosted-performance, stable-staging, and production authority to `93b867e010dfe3773116433e5b8068dc894e7c0c` / `c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6`.
+
+**Verification:** implementation-boundary canonical Node 1,293/1,293; final-SHA CI 1,290/1,290 across five push shards in workflow 33030325197; Playwright 54/54; focused release/staging checks 26/26 and 19/19; final workflow responsive evidence 255 states with 240/240 required and 96 retained/reviewed; staging 14/14; production 10/10; promotion workflow 33031371311 green. Technical deployment is complete. Public launch remains HOLD.
+
+## Session 95 — Full arc: one decision beat per playoff round, one exact artifact through production (2026-08-26)
+
+- [x] Gate Pages publication on the full browser suite and repair the stale development-profile assertion.
+- [x] Persist postseason round state so one command resolves one controlled-team game; preserve exact plans across save/resume and make whole-season delegation consume every gate.
+- [x] Centralize phase-to-surface navigation and prove exact destinations exist and receive focus.
+- [x] Calibrate owner capital as football-operations liquidity with obligations, runway, trait-weighted appetite, bounded distributions, and deterministic 1/8/15/40-year equilibrium gates.
+- [x] Replace the Gist forgery claim with an honest checksum boundary and optional versioned PBKDF2/HMAC authentication with legacy-save support.
+- [x] Align realism workflow timeouts, persist progress, and upload partial evidence under `always()`.
+- [x] Bind rendered pixels, hosted performance, stable staging, and production to SHA `92e4190a4221383c8352ea6321d65528cb449e74` and artifact `ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7`.
+- [x] Remove repeated Hall of Fame candidate rescoring; the measured two-season dashboard probe improved from about 16.8 seconds to 7.1 seconds.
+- [x] Root-fix the release-only digest mismatch: Pages now checks out full Git history so git-derived sitemap lastmod values are deterministic across local, staging, and CI builds.
+
+**Verification:** canonical Node 1,280/1,280; Playwright 54/54; responsive 251 states with 92 retained/reviewed plus 236 final-CI required states; staging 14/14 with rollback; production 10/10; workflow 32933281222 green. Technical deployment is complete. Public launch remains HOLD.
+
 ## Session 94 — Full arc: the site's own policy stops refusing the site (2026-08-23)
 
 - [x] Admit the edge-injected analytics beacon in the CSP that was blocking it, and make `verify-edge-policy-application` fetch as a browser so it audits the document a visitor actually receives. Negative control proves the pre-S94 policy refused both origins by name.

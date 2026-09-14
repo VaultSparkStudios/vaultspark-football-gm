@@ -173,8 +173,10 @@ export function renderDraft() {
     age: prospect.age,
     height: formatHeight(prospect.heightInches),
     weight: prospect.weightLbs || "-",
-    ovr: prospect.overall,
-    pot: prospect.potential,
+    // S108 — the scout's read, not the answer key. True OVR/POT stay with the
+    // engine; the board sells the reveal and this table no longer undercuts it.
+    scoutOvr: prospect.scouting?.scoutedOverall ?? "-",
+    scoutPot: prospect.scouting?.scoutedPotential ?? "-",
     projRnd: prospect.scouting?.projectedRound || "-",
     board: state.scoutingBoardDraft.indexOf(prospect.id) >= 0 ? state.scoutingBoardDraft.indexOf(prospect.id) + 1 : "-",
     action: isUserPick && !draft.completed ? "Select / Draft" : ""
@@ -432,7 +434,7 @@ export function renderCombineResults() {
   }
   const sorted = [...results].sort((a, b) => (b.grade || 0) - (a.grade || 0));
   table.innerHTML = `<table class="data-table"><thead><tr>
-    <th>Name</th><th>Pos</th><th>OVR</th><th>Grade</th><th>Tier</th>
+    <th>Name</th><th>Pos</th><th>Scout OVR</th><th>Grade</th><th>Tier</th>
   </tr></thead><tbody>` +
   sorted.map((p) => {
     const g = p.grade ?? 0;

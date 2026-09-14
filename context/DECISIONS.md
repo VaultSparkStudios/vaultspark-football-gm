@@ -2,62 +2,6 @@
 
 Public-safe decisions only. Detailed internal decision history is maintained privately.
 
-## 2026-06-30 — Session 23 public reachability evidence split
-
-**Decision:** Treat public reachability as partially improved but not fully release-ready: `https://vaultsparkstudios.com/vaultspark-football-gm/` returned HTTP 200 on 2026-06-30 and Actions/Pages workflows are green, but GitHub Pages API still reports the custom-domain certificate as `bad_authz` with an expiry of 2026-06-02.
-
-**Rationale:** CANON-031 observability honesty. A Cloudflare-edge 200 proves the old blanket "Cloudflare 403" wording is stale, while the GitHub Pages certificate state prevents claiming the custom-domain path is fully healthy.
-
-**Pattern established:** Launch Readiness must distinguish route reachability, deploy workflow health, and certificate/domain health instead of collapsing them into a single green/red label.
-
----
-
-## 2026-06-30 — Session 24 protocol commands must be executable locally
-
-**Decision:** Project-local protocol commands referenced by `docs/SESSION_PROTOCOL.md` should have executable shims in this repo when they are public-safe and repeatedly used by arcs. Session 24 added `node scripts/ops.mjs innovation-pack` instead of continuing to write the innovation expansion manually.
-
-**Rationale:** A required protocol step that depends on manual reconstruction is fragile and creates inconsistent closeout evidence. A small source-derived generator with `--dry-run` support gives future agents a deterministic queue and lets tests cover the command without rewriting real docs.
-
-**Pattern established:** When a protocol step is repeatedly marked "manual because command missing," implement the smallest honest local command and test the command path.
-
----
-
-## 2026-06-30 — Startup SIL category rows prefer v3 status values
-
-**Decision:** The startup brief should prefer `PROJECT_STATUS.json.silCategoriesV3` for the v3 category rows when recent SIL entries no longer contain the old table format.
-
-**Rationale:** Rendering zeroes under a 921/1000 headline is a CANON-031 truth bug. The status JSON already carries the current category source of truth and must drive the founder-facing brief when the append-only SIL prose cannot be parsed as a table.
-
----
-
-## 2026-07-01 — Franchise Architect becomes the canonical public identity
-
-**Decision:** Treat `Franchise Architect: Football`, `franchise-architect-football`, and `https://playfranchisearchitect.com/` as the canonical public identity for this game, while keeping legacy `vaultspark-football-gm` route mirrors as compatibility aliases.
-
-**Rationale:** The public beta needs a product-specific brand and root-domain route surface before launch. Removing old aliases immediately would risk breaking existing links and smoke assumptions, so aliases stay until live migration evidence supports removal.
-
-**Pattern established:** Product rebrands must update human pages, machine-readable agent files, package/repo metadata, feedback links, Pages build paths, and smoke tests in the same session so observability does not split across names.
-
----
-
-## 2026-07-01 — Protocol cache source ordering must be filename-stable
-
-**Decision:** Project-local audit/queue cache helpers should rank audit sources by encoded date/session in the filename, not mutable file modification time.
-
-**Rationale:** Startup and smoke tests can touch older generated files during verification. If cache freshness follows mtime alone, `/go` can point at a prior session even when a newer audit exists, which is a CANON-031 truth bug.
-
-**Pattern established:** For append-only session artifacts named with session IDs, derive recency from the session/date identity first and use mtime only as a tie-breaker.
-
-## 2026-07-01 — Session 28 Launch Evidence Must Prove Email Delivery
-
-Decision: Launch/SPARKED readiness for Franchise Architect: Football is gated by repo-local launch evidence, including both public route reachability and explicit proof that the on-domain contact address forwards/copies to Studio operations.
-
-Rationale: Public route checks can be automated, but email forwarding cannot be assumed from static files or DNS intent. The evidence report must remain `blocked` until a real delivery receipt is supplied.
-
-Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green public routes while still blocking launch on missing email evidence. This is the desired honest state, not a failure to paper over.
-
----
-
 ## 2026-07-02 — Session 29: additive situational play-calling over drive-engine rewrite
 
 **Decision:** Implement fourth-down decision-making and situational play selection as a real, tracked-within-the-drive down/distance/field-position state machine layered on top of the existing drive-summary engine, rather than rearchitecting `simulateDrive` into a full down-by-down play-by-play engine.
@@ -164,11 +108,6 @@ Release posture: stable staging is independently verified at the exact candidate
 
 **Decision 5 — the PROJECT PROFILE row is studio-level debt and ships as cargo, not as a local edit.** The row reads `.cache/project-profile.json`, a 30-minute TTL cache written only by studio-ops' `scripts/lib/project-profile.mjs`, which this repo does not carry; the brief is rendered at closeout, so the row is structurally `refresh required`. Both the renderer and the lens are propagated, so a local fix would be overwritten and a sibling-tree edit is forbidden. Shipped as Ark `pattern-share` cargo `01K291HHVU080E58C015E99770` with the proposed fix.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-09-12 — S106 — Potential is headroom above a player's own overall, and the brake that made it safe was found by measuring
 
 **Decision 0 — the headline change was refused at the gate, and the finding was kept instead.** Everything in Decisions 1 and 2 below was implemented and measured; none of it is in the shipped code. `session90-development-environment` asserts that one offseason moves the league by its declared curve and nothing else, and it read 0.285 against a 0.25 tolerance — then **0.289 after the obvious follow-up fix (per-room trait centres) was also implemented and measured.** The cause is not a miscentred term: reversion's mean contribution measured **exactly 0.000**, and the trait centre made the gap slightly worse. Development deltas are applied to **ratings**, and overall is recomputed with position weights, so changing *which* players move moves aggregate OVR even when the delta's mean is zero — and taking the potential gap from mixed (37% negative) to uniformly positive is exactly that redistribution. **Rationale:** the only ways to close that gate were duplicating the engine inside the test or widening its tolerance, and this project forbids allowlisting your own change through a gate (S104 DECISIONS 12). So `src/` carries a 37-line comment recording the measurement and no behaviour change — verified by diff, not assumption. **The next item is the test**: make its declared curve model the rating-level, position-weighted application it is compared against, keep the +0.84 S90 subsidy as its negative control, and only then re-land position-relative potential. **Pattern:** when a gate you did not write refuses a change you believe in, and the follow-up fix does not move it either, the gate has found something you have not understood yet — stop and hand over the measurement.
@@ -192,3 +131,22 @@ Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. N
 **Decision 4 — the first calibration made dispersion worse, and the taper width was chosen on the arm that moved monotonically, not on the one that looked best.** Canonical seed, ten seasons, every arm against the old draw's elite 2.8% / dispersion 0.095 / parity +0.043: taper span **25** read 2.4% / **0.112**, span **40** read 3.0% / 0.101 / +0.032, span **55** read **2.1% / 0.093 / -0.001**. **Rationale:** span 25 bought elite density with dispersion, which is a cost, not a fix. Dispersion falls monotonically with span and has a mechanism: a narrow taper makes potential track overall almost one-for-one, and the trait term `(potential - centre)/20` then pays the players who are already highest. Elite density does not move monotonically (2.4 → 3.0 → 2.1), which is the signature of one-seed noise on a tail statistic, so it was not used to choose. No threshold moved, and every arm is still reported as `watch` where it reads `watch`. The ten-season arms were run from isolated copies of `src/` so neither the worktree nor a running shard saw a variant. **Confirmed on a second seed against its own matched control** (seed 2026, the old draw restored from HEAD in an isolated copy): old draw **3.4% / 0.125 / +0.021**, span 55 **2.7% / 0.108 / -0.025** — better on both distribution arms, parity on-target in both (|0.025| against a 0.15 on-target limit). Absolute readings differ widely between seeds (canonical 2.1% / 0.093), which is exactly why the comparison is same-seed. **Pattern:** when a calibration sweep has one arm that moves monotonically and one that does not, choose on the monotone arm and confirm across seeds, instead of picking the best-looking noisy reading.
 
 **Decision 5 — the elite cohort got smaller and MORE concentrated, and that is recorded as the question it sharpens, not acted on.** Seed 2026, end of window: under the old draw QB and OL held **72%** of the 90+ cohort (41 of 57); under span 55 they hold **91%** (42 of 46) from 24% of the rostered population. Position-relative potential removed elite players from the rooms whose overall scale is lower, not from QB and OL. **Rationale:** that is what anchoring potential to a position-scaled overall must do, and it makes the S105/S106 question sharper: the 90+ cut is position-blind while the All-Pro anchor it is compared against is allocated per position. The question stays a question: no per-position arm was added and no ceiling moved in this session, and it is not a route to a green gate.
+
+## 2026-09-14 — S108 — The question is answered before the code, the ledger tool's own remedy was inert, and the annual verdict of the potential system becomes visible
+
+**Decision 1 — the elite ceiling stays position-blind because the anchor's total is; composition is published beside it and never gated.** The question S105–S107 carried: the 90+ cut is position-blind while the 26 First-Team All-Pro seats are one per position. Stated first, as instructed: 26 of 1,696 is itself a position-blind share, so the gated comparison is like for like *at the total*, and there is no honest per-position ceiling to gate on without either inventing a per-room rating scale or declaring one room's 90 to mean something different from another's. What the total cannot see is composition, and composition is the finding. `src/data/nflEliteDensityBaseline.js` now declares the seats by room (QB 1 · Backfield 1 · Receivers 4 with the flex · OL 5 · Front Seven 6 · Secondary 5 · Specialists 2), with the two returner/special-teamer seats declared unallocable so shares are of 24 rather than silently understated; `buildEliteCompositionReading` publishes each room's share of the cohort against its share of the seats and the ratio, on `activeRosterOnly` — the population the elite arm declares — and a fixture without that reading says `incomplete`. **Rationale:** the pattern from S102–S104: a reading you decline to gate on stays visible, so nobody has to rediscover it. Measured on the landed generator, ten seasons: canonical seed, Offensive Line holds 80.6% of the cohort against 20.8% of the seats (ratio 3.87) and Quarterback 16.7% against 4.2% (3.98); seed 2026, QB 6.74 and OL 3.03; every other room reads 0–0.26. The mechanism is on the same table: active-roster room means QB 84.1–84.6 and OL 83.1–83.3 (sd 3.5–4.4) against 76.5–78.2 everywhere else, so a position-blind 90 is +1.5 to +1.7 sd for those two rooms and +3.0 to +4.0 sd for the other five. **The next honest question is the rating scale, not the gate:** overall is position-weighted and the rooms sit seven points apart, so "90" is not the same claim in every room. That is a generator/scale question and it is recorded here as one; no per-room arm was added, no ceiling moved, and the receipt's `status` is proven by test not to move when composition changes.
+
+**Decision 2 — ledger retention is by session number, the pointer is found wherever it sits, and the previous version's own header described a defect every closeout had been triggering.** Running the roll's dry run on the live tree — rather than trusting the S106 note — showed all four newest-last ledgers reporting "fewer entries than the retention window" while holding twelve, because each closeout since S105 had appended beneath the pointer and `splitLedger` sliced the source at the sentinel. The header even said a mid-file pointer "would make the next roll delete every entry beneath it": the applied roll would have rewritten each live file without S106 and S107. **Rationale:** a remedy the budget gate prescribes must work on the shape the repo actually has, and this one had been inert for three sessions and destructive on the fourth. `stripPointerBlocks` removes the block wherever it is and the roll re-appends it at EOF; retention keeps the N highest distinct session numbers present and emits them in the ledger's declared order; the positional rule survives only as `splitLedgerByPosition`, a negative control that proves the difference on TRUTH_AUDIT's real shape (S83, S82, S80 above S99–S107: positional would have archived S83 and S82 and kept S80). Applied live: two entries per ledger moved verbatim, 296 KB → 270 KB, nothing needed re-sequencing. **Corrected premise:** S106's evidence — "the SIL is three entries short" — does not reproduce; on the SIL's shape positional and by-session move the same two entries. The instance was TRUTH_AUDIT, and the load-bearing defect was the pointer. Recorded as a rejected phantom in the audit rather than carried as written.
+
+**Decision 3 — the offseason's development ledger is returned from the engine and shown to the GM; no RNG draw is added.** `progressPlayer` has computed every player's annual move since the engine existed and overwrote it into the ratings; the GM was told "12 retired, 40 contracts expired" and nothing else. **Rationale:** S107 made potential a real per-player runway and the profile promises one; the offseason is where it pays out or does not, and that moment produced zero player-facing output. The ledger is captured from the returned move (retirees flagged, never dropped — S107's lesson), summarised for the club (top five risers and fallers, improved/declined/held, net), kept on the league so it survives the season it describes, written to the retirements stage message, to the long-form feed and to the beat-reporter log the Priority Inbox actually reads, and rendered as an Offseason Development Report on the History tab, where the retirements stage routes. Two seeded leagues develop identically with the recording on, and the stream position after the rollover is equal.
+
+**Decision 4 — the draft surface ships the scout's numbers, never the truth, on every response.** The Available Prospects table printed true OVR and true POT beside a board that charges points for a 72%-accurate read. **Rationale:** the fog is the product; a surface that prints the answer key makes the scouting economy a tax. The first version removed only `overall` and `potential`; the pre-receipt review found the truth still shipping three ways (the ratings that reproduce overall exactly, the Combine Results table on the same tab, and the three draft POST responses), and the reveal modal reading a field the fog had just removed. All four are closed: ratings stripped, combine rows carry the scouted read under a "Scout OVR" header, `scoutedDraftResult` projects every draft mutation's response in both API layers, and the reveal and reward beat say "Scout OVR" when that is what they know. Potential had no fogged counterpart at all; one is derived from a keyed generator off the main stream, so no seeded league's draws move and a reload does not re-roll it. The engine keeps the truth on `league.pendingDraft` — CPU picks, the on-clock market and the reveal itself are unchanged.
+
+**Decision 5 — the profile's development outlook reads headroom and trait, and the runway is measured against the curve's own boundary, not the generator's.** A Bust at his ceiling in a top facility read "surging". With no headroom the outlook now cannot exceed "steady" whatever the environment says, and the environment still lifts a player who has room. The first projection of "seasons remaining" used `closedHeadroomAge` (31) — a generation-time constant that never moves a rating — while the development curve turns negative at 26; the review caught it. `GROWTH_WINDOW_MAX_AGE` is exported from the curve's module, `developmentDelta` and the projection both read it, and the narrative speaks of growth seasons and a closed growth window. **Pattern:** a shape declared twice will drift (memory), and this was the near miss: the constant that names an age is not the constant that drives development.
+
+**Decision 6 — the review ran before the receipt, and it found eight things.** The standing Next item since S94. Every finding was acted on before any shard ran, and the review also exposed why the browser spec had failed four times: the lazy History-tab module imported `state` from a module that does not export it, and the failure was swallowed by a `.catch` — which the promise-observability gate then rejected. The load is now observed through `observeBackgroundTask`. **Rationale:** a review that costs minutes found what a 45-minute receipt cannot see (surfaces the receipt does not render), and struck a Next item that had been carried for fourteen sessions.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/DECISIONS.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

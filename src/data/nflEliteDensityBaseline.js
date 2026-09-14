@@ -103,6 +103,45 @@ export const NFL_FIRST_TEAM_ALL_PRO_SLOTS = 26;
  */
 export const NFL_PRO_BOWL_SLOTS = 88;
 
+/**
+ * S108 — how the 26 First-Team All-Pro seats fall by position room.
+ *
+ * The total above is position-blind and so is the 90+ cut it anchors; that
+ * comparison is like for like at the total. But the seats are one per
+ * position, and the engine's cohort was 97% quarterbacks and offensive
+ * linemen on the canonical seed at S107 where the format gives those rooms
+ * 6 of 26. A position-blind gate cannot see that, and it should not gate it
+ * either: this table exists so the receipt can REPORT composition against the
+ * anchor's own allocation, ungated, in the same rooms `progressionParity`
+ * already summarises.
+ *
+ * Modern AP format, by room: offense QB 1 · RB 1 · WR 2 · TE 1 · flex 1
+ * (RB/WR/TE — counted with the receivers, where it has been filled) · T 2 ·
+ * G 2 · C 1; defense edge 2 · interior 2 · LB 2 · CB 2 · S 2 · DB 1;
+ * specialists K · P · returner · special-teamer. The returner and the
+ * special-teamer have no room in this engine (no return position is modelled),
+ * so 24 of the 26 seats are allocable and the per-room shares are of 24. That
+ * is stated rather than hidden: a share of 26 would leave 7.7% of the anchor
+ * unassigned and every room's share understated.
+ */
+export const NFL_FIRST_TEAM_ALL_PRO_SEATS_BY_ROOM = Object.freeze({
+  Quarterback: 1,
+  Backfield: 1,
+  Receivers: 4,
+  "Offensive Line": 5,
+  "Front Seven": 6,
+  Secondary: 5,
+  Specialists: 2
+});
+
+/** Seats the engine cannot place in any room it models: returner, special-teamer. */
+export const NFL_FIRST_TEAM_ALL_PRO_UNALLOCABLE_SEATS = 2;
+
+export const NFL_FIRST_TEAM_ALL_PRO_ALLOCABLE_SEATS = Object.values(NFL_FIRST_TEAM_ALL_PRO_SEATS_BY_ROOM).reduce(
+  (sum, seats) => sum + seats,
+  0
+);
+
 function round(value, digits = 2) {
   const factor = 10 ** digits;
   return Math.round(Number(value) * factor) / factor;
@@ -121,5 +160,9 @@ export const NFL_ELITE_DENSITY_BASELINE = Object.freeze({
   firstTeamAllProSlots: NFL_FIRST_TEAM_ALL_PRO_SLOTS,
   proBowlSlots: NFL_PRO_BOWL_SLOTS,
   firstTeamAllProPct: round((NFL_FIRST_TEAM_ALL_PRO_SLOTS / NFL_ACTIVE_ROSTER_POPULATION) * 100, 2),
-  proBowlPct: round((NFL_PRO_BOWL_SLOTS / NFL_ACTIVE_ROSTER_POPULATION) * 100, 2)
+  proBowlPct: round((NFL_PRO_BOWL_SLOTS / NFL_ACTIVE_ROSTER_POPULATION) * 100, 2),
+  // S108 — per-room allocation, for the reported composition arm only.
+  firstTeamAllProSeatsByRoom: NFL_FIRST_TEAM_ALL_PRO_SEATS_BY_ROOM,
+  firstTeamAllProAllocableSeats: NFL_FIRST_TEAM_ALL_PRO_ALLOCABLE_SEATS,
+  firstTeamAllProUnallocableSeats: NFL_FIRST_TEAM_ALL_PRO_UNALLOCABLE_SEATS
 });

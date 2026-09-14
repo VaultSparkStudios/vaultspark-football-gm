@@ -306,6 +306,16 @@ export function calcTeamOffenseDefense(teamPlayers) {
  */
 export const LEAGUE_AVERAGE_POTENTIAL = 80;
 
+/**
+ * S108 — the last age at which the declared curve still points UP. The
+ * profile's `developing25AndUnder` bucket is the only positive age factor;
+ * from 26 the expected annual move is negative. Anything that tells a player
+ * how many growth seasons he has left must read this, not the generation-time
+ * headroom constant (`POTENTIAL_HEADROOM_PROFILE.closedHeadroomAge`, 31),
+ * which only scales the headroom drawn at creation and never moves a rating.
+ */
+export const GROWTH_WINDOW_MAX_AGE = 25;
+
 export const PLAYER_DEVELOPMENT_PROFILE = Object.freeze({
   version: "2026-s91-reverting",
   potentialCenter: LEAGUE_AVERAGE_POTENTIAL,
@@ -356,7 +366,7 @@ export function developmentDelta(
   { environmentTilt = 0, potentialReversion = 0, potentialCentre = LEAGUE_AVERAGE_POTENTIAL } = {}
 ) {
   let ageFactor;
-  if (player.age <= 25) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.developing25AndUnder;
+  if (player.age <= GROWTH_WINDOW_MAX_AGE) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.developing25AndUnder;
   else if (player.age <= 29) ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.prime26To29;
   else ageFactor = PLAYER_DEVELOPMENT_PROFILE.ageFactors.veteran30Plus;
 

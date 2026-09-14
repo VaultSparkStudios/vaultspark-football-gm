@@ -1,0 +1,100 @@
+{
+  "session": "S108",
+  "date": "2026-09-14",
+  "repo": "franchise-architect",
+  "headline": "The elite-density question was answered before any code and its composition is published where the gate cannot reach it; the ledger roll's own remedy, inert since S105, is fixed at source; and the offseason's verdict on every player - computed since the engine existed and never shown - now reaches the GM.",
+  "items": [
+    {
+      "title": "Elite composition is published on the receipt, never gated",
+      "projectImpact": 8,
+      "ecosystemImpact": 8,
+      "evidence": "DECISIONS S108 states the question first: the 90+ cut is position-blind and so is the anchor's total (26 of 1,696), so the gated comparison is like for like at the total, and composition - which the total cannot see - is reported beside it. The 26 First-Team All-Pro seats are declared by room (24 allocable; returner and special-teamer named unallocable), the summary carries rooms on activeRosterOnly, and buildEliteCompositionReading publishes each room's share of the cohort against its share of the seats. Ten seasons, active roster only: canonical seed OL 80.6 per cent of the cohort against 20.8 per cent of seats (ratio 3.87), QB 16.7 against 4.2 (3.98); seed 2026 QB 6.74, OL 3.03; every other room 0 to 0.26. Room means QB 84.1-84.6 and OL 83.1-83.3 against 76.5-78.2 elsewhere, so a position-blind 90 is +1.5-1.7 sd in two rooms and +3.0-4.0 sd in five - a rating-scale question, recorded as one. A test proves status is identical for a proportional and a concentrated cohort. No ceiling moved."
+    },
+    {
+      "title": "Ledger retention by session number, and a roll remedy that had been inert since S105",
+      "projectImpact": 8,
+      "ecosystemImpact": 7,
+      "evidence": "The dry run on the live tree - not the S106 note - showed all four newest-last ledgers reporting 'fewer entries than the retention window' while holding twelve: every closeout since S105 appended beneath the pointer, and the splitter sliced the source at the sentinel, so an applied roll would have dropped S106 and S107 from each file. stripPointerBlocks finds the block wherever it sits (exact sentinel line, paragraph scan stops at a heading) and the roll re-appends it at EOF even when nothing archives; retention keeps the N highest distinct session numbers in the ledger's declared order; duplicate-session headings get their own reason; the positional rule survives only as a negative control proving the difference on TRUTH_AUDIT's real shape. S106's evidence ('the SIL is three entries short') was a phantom - positional and by-session move the same two entries there - and is recorded as one. Applied live at two points in the session: 296 KB to 270 KB, then 294 KB to 281 KB after the S108 entries, every live ledger holding exactly its ten newest sessions. 11/11 tests."
+    },
+    {
+      "title": "The offseason development ledger reaches the GM",
+      "projectImpact": 9,
+      "ecosystemImpact": 5,
+      "evidence": "progressPlayer returns its move and applyAgingProgressionAndRetirements returns one row per progressed player (retirees flagged, never dropped - S107's lesson). buildOffseasonDevelopmentReport summarises the controlled club: top five risers and fallers, improved/declined/held, net and mean, with the league beside it. The rollover keeps it on the pipeline and the league (so it survives the season it describes and a reload), puts the line in the retirements stage message, logs the long-form feed entry and writes the beat-reporter item the Priority Inbox actually ingests. History-tab card from a lazily imported, observed module because the island sits at 15.2 per cent headroom against a 15 per cent floor. No RNG draw added: identical fingerprints on a seeded pair and an equal stream position after the rollover. Node 7/7 (ledger equals the league's own overall changes player by player; club net in the report equals club net in the league; movers are still on the league at the overall the row records); Playwright 2/2 driving the runtime to the retirements stage."
+    },
+    {
+      "title": "The draft surface ships the scout's read on every path",
+      "projectImpact": 8,
+      "ecosystemImpact": 4,
+      "evidence": "The Available Prospects table printed true OVR and true POT beside a scouting board that charges points for a 72 per cent-accurate read. scoutedProspectView strips overall, potential and the ratings that reproduce overall exactly; scoutedPotential is a plus-or-minus-6 fog from a keyed generator off the main stream (a control draw proves the stream is untouched; a second read does not re-roll it); scoutedDraftResult projects GET /api/draft and the three draft POST responses in both API layers; combine rows carry the scouted read under a 'Scout OVR' header; the reveal modal and reward beat say 'Scout OVR' when that is what they hold. The engine's league.pendingDraft is verified untouched. 4/4 tests."
+    },
+    {
+      "title": "The profile outlook reads headroom and trait; the runway is measured against the curve's own boundary",
+      "projectImpact": 6,
+      "ecosystemImpact": 5,
+      "evidence": "A Bust at his ceiling in a 99/99 environment read 'surging'; with no headroom the outlook now cannot exceed 'steady', and the same player with room reads positive or surging. The first 'seasons remaining' projection used the generator's closedHeadroomAge (31), which never moves a rating; the review caught it. GROWTH_WINDOW_MAX_AGE (25) is exported from src/domain/ratings.js and read by developmentDelta and the projection, and the narrative speaks of growth seasons and a closed growth window. The roster table shows the development trait the DTO has carried since S8. 3/3 tests."
+    },
+    {
+      "title": "The review ran before the receipt and found eight things",
+      "projectImpact": 7,
+      "ecosystemImpact": 8,
+      "evidence": "The Next item carried since S94. /code-review medium on the working tree before any shard returned eight verified findings, every one acted on before the receipt: the reveal and reward beat reading a stripped field; three more truth leaks in the fog; the inbox never reading dashboard.news; a live-tree ledger test that would go red at every closeout; a duplicate-session null path that never relocated the pointer; the report lost on reload once the year moves; the runway projected from the wrong constant; and the pointer strip swallowing a heading appended beneath the prose. It also exposed why the browser spec had failed four times: the lazy module imported state from a module that does not export it, hidden by a .catch the promise-observability gate then rejected."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "The rating scale is the next honest question, not the gate",
+      "evidence": "Rooms sit seven overall points apart on the active roster, so '90' is not the same claim in every room. Any change is a generator/scale change with the full distribution receipt as its matched control; state it in DECISIONS first; no per-room elite arm, no ceiling moved."
+    },
+    {
+      "title": "Dispersion and elite density remain watch",
+      "evidence": "Elite 2.1 / 2.7 per cent (canonical / seed 2026) against 1.53; dispersion 0.093 / 0.108 against 0.08. Do not widen stdDevDrift*."
+    },
+    {
+      "title": "The history island has 15.2 per cent headroom against a 15 per cent floor",
+      "evidence": "The next change to that tab goes behind a dynamic import, never a raised maxBytes."
+    },
+    {
+      "title": "Roll the ledgers at every closeout",
+      "evidence": "node scripts/ledger-roll.mjs --apply after appending entries; the live gate tolerates one session of debt, not two."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "Public launch remains HOLD - unchanged and untouched this session",
+      "evidence": "Delivered reply-capable project-domain email, candidate-bound founder launch approval, and authoritative lifecycle reconciliation remain three independent unmet gates. launchReady stays false. This session is a technical deployment only."
+    },
+    {
+      "title": "Authoritative registry still reads SPARKED against a local contract of FORGE",
+      "evidence": "Non-blocking doctor warning, unchanged. Do not resolve by flipping the local contract."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "I shipped a lazy browser module that could not load, and hid it from myself",
+      "evidence": "The History-tab card imported state from appCore.js, which does not export it; the .catch I wrote swallowed the rejection; the spec asserted on placeholder text that is also in the HTML. Four Playwright runs looked at state refresh and modal overlays before the review and the promise-observability gate pointed at the import. Fixed at source (appState.js, observeBackgroundTask) and the spec now asserts on rows only the module renders."
+    },
+    {
+      "title": "The first draft-fog fix closed one of four leaks",
+      "evidence": "Ratings, the combine table and the three draft POST responses still carried the truth, and the reveal read the field the fog had removed. All found by the pre-receipt review, all closed before any shard."
+    },
+    {
+      "title": "The first runway projection used the wrong constant",
+      "evidence": "closedHeadroomAge scales headroom at generation and never moves a rating; the development curve turns negative at 26. Replaced by GROWTH_WINDOW_MAX_AGE from the curve's own module, and the test that had pinned the wrong age was rewritten to bind the curve."
+    },
+    {
+      "title": "An inherited premise was rejected rather than carried",
+      "evidence": "S106 and S107 both recorded 'the SIL is three entries short because retention is positional'. On the SIL's live shape the two rules move the same entries. Recorded in the audit's phantomsRejected with the corrected instance (TRUTH_AUDIT) and the load-bearing defect (the pointer)."
+    },
+    {
+      "title": "Measurement scope declared rather than implied",
+      "evidence": "Composition readings are ten seasons on two seeds, active roster only, reproduced to S107's decimals before any change. The development ledger's fidelity is one seed player-by-player plus an identical-fingerprint pair on another. The runway in growth seasons is a projection of the declared curve's boundary, not a measured outcome. SIL scores are engineering assessments; no real-cohort evidence exists and none was manufactured."
+    }
+  ],
+  "diffStat": {
+    "files": 40,
+    "insertions": 973,
+    "deletions": 433,
+    "suite": "every shard green on the final tree, 1,501/1,501 (core 273, runtime 817, sim-contract 83, sim-realism 1, long 5, studio 322), up from 1,471 in S107. The first full run went red on one test - the studio manifest gate, because the five S108 test files were not registered and the receipt had silently skipped them; registered, core and studio re-run on the final tree, the other four shards unaffected by a manifest-only change."
+  }
+}

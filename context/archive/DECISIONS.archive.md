@@ -1253,3 +1253,59 @@ Decision: Do not treat `vaultsparkstudios.com` as ready from repo-local evidence
 Rationale: CANON-031 observability honesty. A green local suite, Pages bundle, and static smoke prove the deployable repo, not the external custom-domain path.
 
 ---
+
+## 2026-06-30 — Session 23 public reachability evidence split
+
+**Decision:** Treat public reachability as partially improved but not fully release-ready: `https://vaultsparkstudios.com/vaultspark-football-gm/` returned HTTP 200 on 2026-06-30 and Actions/Pages workflows are green, but GitHub Pages API still reports the custom-domain certificate as `bad_authz` with an expiry of 2026-06-02.
+
+**Rationale:** CANON-031 observability honesty. A Cloudflare-edge 200 proves the old blanket "Cloudflare 403" wording is stale, while the GitHub Pages certificate state prevents claiming the custom-domain path is fully healthy.
+
+**Pattern established:** Launch Readiness must distinguish route reachability, deploy workflow health, and certificate/domain health instead of collapsing them into a single green/red label.
+
+---
+
+## 2026-06-30 — Session 24 protocol commands must be executable locally
+
+**Decision:** Project-local protocol commands referenced by `docs/SESSION_PROTOCOL.md` should have executable shims in this repo when they are public-safe and repeatedly used by arcs. Session 24 added `node scripts/ops.mjs innovation-pack` instead of continuing to write the innovation expansion manually.
+
+**Rationale:** A required protocol step that depends on manual reconstruction is fragile and creates inconsistent closeout evidence. A small source-derived generator with `--dry-run` support gives future agents a deterministic queue and lets tests cover the command without rewriting real docs.
+
+**Pattern established:** When a protocol step is repeatedly marked "manual because command missing," implement the smallest honest local command and test the command path.
+
+---
+
+## 2026-06-30 — Startup SIL category rows prefer v3 status values
+
+**Decision:** The startup brief should prefer `PROJECT_STATUS.json.silCategoriesV3` for the v3 category rows when recent SIL entries no longer contain the old table format.
+
+**Rationale:** Rendering zeroes under a 921/1000 headline is a CANON-031 truth bug. The status JSON already carries the current category source of truth and must drive the founder-facing brief when the append-only SIL prose cannot be parsed as a table.
+
+---
+
+## 2026-07-01 — Franchise Architect becomes the canonical public identity
+
+**Decision:** Treat `Franchise Architect: Football`, `franchise-architect-football`, and `https://playfranchisearchitect.com/` as the canonical public identity for this game, while keeping legacy `vaultspark-football-gm` route mirrors as compatibility aliases.
+
+**Rationale:** The public beta needs a product-specific brand and root-domain route surface before launch. Removing old aliases immediately would risk breaking existing links and smoke assumptions, so aliases stay until live migration evidence supports removal.
+
+**Pattern established:** Product rebrands must update human pages, machine-readable agent files, package/repo metadata, feedback links, Pages build paths, and smoke tests in the same session so observability does not split across names.
+
+---
+
+## 2026-07-01 — Protocol cache source ordering must be filename-stable
+
+**Decision:** Project-local audit/queue cache helpers should rank audit sources by encoded date/session in the filename, not mutable file modification time.
+
+**Rationale:** Startup and smoke tests can touch older generated files during verification. If cache freshness follows mtime alone, `/go` can point at a prior session even when a newer audit exists, which is a CANON-031 truth bug.
+
+**Pattern established:** For append-only session artifacts named with session IDs, derive recency from the session/date identity first and use mtime only as a tie-breaker.
+
+## 2026-07-01 — Session 28 Launch Evidence Must Prove Email Delivery
+
+Decision: Launch/SPARKED readiness for Franchise Architect: Football is gated by repo-local launch evidence, including both public route reachability and explicit proof that the on-domain contact address forwards/copies to Studio operations.
+
+Rationale: Public route checks can be automated, but email forwarding cannot be assumed from static files or DNS intent. The evidence report must remain `blocked` until a real delivery receipt is supplied.
+
+Impact: `scripts/launch-evidence-report.mjs` and `ops launch-evidence` may green public routes while still blocking launch on missing email evidence. This is the desired honest state, not a failure to paper over.
+
+---

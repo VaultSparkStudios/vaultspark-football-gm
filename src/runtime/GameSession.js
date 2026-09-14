@@ -47,6 +47,7 @@ import {
   normalizeRosterSlots,
   runFreeAgencyBackstop
 } from "../engine/offseasonSimulator.js";
+import { buildOffseasonDevelopmentReport } from "../engine/offseasonDevelopmentReport.js";
 import { enforceRosterAndCapCompliance } from "../engine/capCompliance.js";
 import {
   buildMeritAdjustedRoomShares,
@@ -54,7 +55,7 @@ import {
   resolveDepthChartRoomShares,
   rotationMeritScore
 } from "../engine/depthChartUsage.js";
-import { coverageDepthRating, PLAYER_DEVELOPMENT_PROFILE } from "../domain/ratings.js";
+import { coverageDepthRating, GROWTH_WINDOW_MAX_AGE, PLAYER_DEVELOPMENT_PROFILE } from "../domain/ratings.js";
 import {
   DEVELOPMENT_ENVIRONMENT_PROFILE,
   developmentEnvironmentTilt,
@@ -119,7 +120,7 @@ import {
   scanFiniteSimulationState,
   summarizeLeagueProgression
 } from "../stats/progressionParity.js";
-import { clamp } from "../utils/rng.js";
+import { clamp, derivedRng } from "../utils/rng.js";
 import { RNGStreams } from "../utils/rngStreams.js";
 import { createSessionModules } from "./modules/sessionModules.js";
 import { createServices } from "./services/index.js";
@@ -147,7 +148,8 @@ import {
   reportOwnerUltimatum,
   reportInboundTradeOffer,
   reportFreeAgencyOutbid,
-  reportMilestone
+  reportMilestone,
+  reportOffseasonDevelopment
 } from "../engine/beatReporter.js";
 import { recordWeekRivalries } from "../engine/rivalryDNA.js";
 import { buildPreseasonPredictions, gradeTimeCapsule } from "../engine/timeCapsule.js";
@@ -678,6 +680,51 @@ function freeAgencyOfferScore(player, offer, team, roster = []) {
   );
 }
 
+/**
+ * S108 — the prospect as the scouting department sees him.
+ *
+ * `overall` and `potential` are removed from the projection; the scouting
+ * block carries `scoutedOverall` (the baseline read the class was generated
+ * with, refined by evaluations elsewhere) and a `scoutedPotential` fogged by
+ * the same ±6 band from a generator keyed on the draft year and prospect id.
+ */
+export const SCOUTED_POTENTIAL_FOG = Object.freeze({ min: -6, max: 6, floor: 50, ceiling: 99 });
+
+export function scoutedPotential(prospect, draftYear) {
+  const truth = Number(prospect?.potential);
+  if (!Number.isFinite(truth)) return null;
+  const fog = derivedRng(`draft-potential:${draftYear}:${prospect.id}`).int(SCOUTED_POTENTIAL_FOG.min, SCOUTED_POTENTIAL_FOG.max);
+  return clamp(Math.round(truth + fog), SCOUTED_POTENTIAL_FOG.floor, SCOUTED_POTENTIAL_FOG.ceiling);
+}
+
+export function scoutedProspectView(prospect, draftYear) {
+  // `ratings` go too: overall is a pure position-weighted function of them,
+  // so shipping the ratings ships the answer.
+  const { overall, potential, ratings, ...rest } = prospect || {};
+  return {
+    ...rest,
+    scouting: {
+      ...(prospect?.scouting || {}),
+      scoutedPotential: scoutedPotential(prospect, draftYear)
+    }
+  };
+}
+
+/**
+ * The same projection for a draft mutation's result, which spreads the live
+ * `pendingDraft` (prepare, user pick, CPU run) into the API response.
+ */
+export function scoutedDraftResult(result) {
+  if (!result || typeof result !== "object") return result;
+  if (Array.isArray(result.available)) {
+    return { ...result, available: result.available.map((prospect) => scoutedProspectView(prospect, result.year)) };
+  }
+  if (result.draft && Array.isArray(result.draft.available)) {
+    return { ...result, draft: scoutedDraftResult(result.draft) };
+  }
+  return result;
+}
+
 function buildPlayerDevelopmentOutlook(player, team, roster = [], centres = null) {
   // The outlook must be built from the same centres the offseason will actually
   // progress him on. Leaving this on the declared fallbacks would put a number in
@@ -685,10 +732,29 @@ function buildPlayerDevelopmentOutlook(player, team, roster = [], centres = null
   // thing while the simulation does another.
   const context = playerDevelopmentContext(team, roster, player, centres);
   const fit = team ? computeSchemeFit(player, team) : player.schemeFit || 72;
-  const trajectoryScore = context.developmentBonus + (fit >= 82 ? 1 : fit <= 64 ? -1 : 0) + (player.age <= 24 ? 1 : player.age >= 30 ? -1 : 0);
-  const trajectory = trajectoryScore >= 3 ? "surging" : trajectoryScore >= 1 ? "positive" : trajectoryScore <= -2 ? "fragile" : "steady";
+  // S108 — the outlook must read the two inputs the engine develops on: the
+  // player's own headroom and his trait. Before this it read facilities, fit
+  // and age only, so a Bust at his ceiling in a top facility rendered
+  // "surging" two lines beneath the POT badge that said he had nowhere to go.
+  // Headroom is the term that binds: with none, the environment can lift
+  // nothing, and the score cannot reach "surging" whatever the facility says.
+  const headroom = Number.isFinite(Number(player.potential)) ? Number(player.potential) - Number(player.overall || 0) : 0;
+  const headroomTerm = headroom <= 0 ? -2 : headroom >= 8 ? 1 : 0;
+  const traitTerm = player.developmentTrait === "Superstar" ? 1 : player.developmentTrait === "Bust" ? -1 : 0;
+  const trajectoryScore =
+    context.developmentBonus +
+    (fit >= 82 ? 1 : fit <= 64 ? -1 : 0) +
+    (player.age <= 24 ? 1 : player.age >= 30 ? -1 : 0) +
+    headroomTerm +
+    traitTerm;
+  const scored = trajectoryScore >= 3 ? "surging" : trajectoryScore >= 1 ? "positive" : trajectoryScore <= -2 ? "fragile" : "steady";
+  // With no headroom there is nothing for the environment to lift: the best
+  // an at-ceiling player can read is "steady". A great facility keeps him
+  // there; it does not make him "positive".
+  const trajectory = headroom <= 0 && (scored === "surging" || scored === "positive") ? "steady" : scored;
   return {
     trajectory,
+    headroom,
     fit,
     fitLabel: fit >= 84 ? "ideal" : fit >= 74 ? "strong" : fit <= 64 ? "poor" : "average",
     developmentBonus: context.developmentBonus,
@@ -2605,7 +2671,7 @@ export class GameSession {
     // every player must be measured against the same league — not against one
     // that shifts under him as the loop walks the roster.
     this.developmentEnvironmentCentres();
-    applyAgingProgressionAndRetirements(this.league, this.currentYear, this.rng, {
+    const { progressed } = applyAgingProgressionAndRetirements(this.league, this.currentYear, this.rng, {
       winningRetention: settings.retirementWinningRetention !== false,
       developmentContext: (player, team) => this.buildPlayerDevelopmentContext(team?.id || player.teamId, player)
     });
@@ -2615,11 +2681,35 @@ export class GameSession {
       (player) => player.status === "active" && player.teamId === "FA" && pendingExpiry.has(player.id)
     ).length;
 
+    // S108 — the club's annual development, recorded where the GM will read
+    // it. Kept on the pipeline (small: two lists of five) so the dashboard and
+    // the offseason surface see the same report after a reload.
+    const development = buildOffseasonDevelopmentReport({
+      progressed,
+      teamId: this.controlledTeamId,
+      year: this.currentYear
+    });
+    pipeline.developmentReport = development;
+    this.league.developmentReport = development;
     pipeline.rosterRolloverYear = this.currentYear;
     this.statBook.reindexPlayers();
     this.rebuildLookupIndexes();
     this.appendEvent("offseason-roster-rollover", { year: this.currentYear, retired, expired });
-    return { ok: true, alreadyRun: false, retired, expired };
+    if (development.club.progressed > 0) {
+      // The bell reads `newsLog`; the long-form feed reads `newsFeed`. Both.
+      reportOffseasonDevelopment(this.league, development, { week: this.currentWeek });
+      this.logNews(development.headline, {
+        type: "development",
+        teamId: this.controlledTeamId,
+        year: this.currentYear,
+        improved: development.club.improved,
+        declined: development.club.declined,
+        netOverall: development.club.netOverall,
+        riser: development.risers[0] || null,
+        faller: development.fallers[0] || null
+      });
+    }
+    return { ok: true, alreadyRun: false, retired, expired, development };
   }
 
   /**
@@ -3017,9 +3107,10 @@ export class GameSession {
         expired: rollover.expired,
         retained: retention.retained
       });
+      const developmentLine = rollover.development?.summaryLine ? ` ${rollover.development.summaryLine}` : "";
       return next({
         nextStage: "coaching-carousel",
-        message: `${rollover.retired} retired, ${rollover.expired} contracts expired, ${retention.retained} re-signed by their own club.`
+        message: `${rollover.retired} retired, ${rollover.expired} contracts expired, ${retention.retained} re-signed by their own club.${developmentLine}`
       });
     }
     if (stage === "coaching-carousel") {
@@ -6058,6 +6149,15 @@ export class GameSession {
     if (!draft) return null;
     return {
       ...draft,
+      // S108 — the draft surface used to ship every prospect's true overall
+      // and true potential beside a scouting board that charges points for a
+      // 72%-accurate read. The truth stays on `league.pendingDraft` for the
+      // engine (CPU picks, on-clock market, the reveal itself); the surface
+      // gets the scout's numbers. Potential had no fogged counterpart at all,
+      // so one is derived here from a keyed generator — off the main RNG
+      // stream, so no seeded league's draws move, and stable per prospect so
+      // a reload does not re-roll the fog.
+      available: (draft.available || []).map((prospect) => scoutedProspectView(prospect, draft.year)),
       onClockTradeMarket: this.getOnClockTradeMarket()
     };
   }
@@ -6442,6 +6542,13 @@ export class GameSession {
         reinjuryRisk: player.reinjuryRisk || 0,
         developmentTrait: player.developmentTrait,
         potential: player.potential,
+        // S108 — the runway in growth seasons: offseasons left before the
+        // declared development curve turns negative (`GROWTH_WINDOW_MAX_AGE`,
+        // the curve's own boundary — not the generation-time headroom constant,
+        // which never moves a rating). Projected here so the browser narrative
+        // does not re-declare the age.
+        developmentHeadroom: Number.isFinite(Number(player.potential)) ? Number(player.potential) - Number(player.overall || 0) : null,
+        developmentRunwaySeasons: Math.max(0, GROWTH_WINDOW_MAX_AGE + 1 - Number(player.age || 0)),
         status: player.status,
         rosterSlot: player.rosterSlot,
         designations: player.designations || { ir: false, pup: false, nfi: false, gameDayInactive: false },
@@ -6706,6 +6813,10 @@ export class GameSession {
       settings: this.getLeagueSettings(),
       eraProfile: this.getEraProfile(),
       offseasonPipeline: this.getOffseasonPipeline(),
+      // S108 — the latest offseason development report, kept on the league so
+      // it survives the season it describes (the pipeline is reset when the
+      // year moves on and a save is reloaded).
+      developmentReport: this.league.developmentReport || null,
       freeAgencyWindow: this.getFreeAgencyWindow(),
       rosterShortfall: this.league.rosterShortfall || null,
       rosterNeeds: this.getRosterNeedSummary(this.controlledTeamId),

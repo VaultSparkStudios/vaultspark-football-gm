@@ -1596,3 +1596,64 @@ SIL v3.0: **996 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 100, 
 Committed SIL follow-ups:
 - [SIL] A rendered game-flow review must exercise the authentic launch event, not only call the target module directly; duplicate listeners can make correct code unreachable.
 - [SIL] Fictional presentation boundaries must normalize source identity before interpolation; canonical engine IDs and object-shaped records are never safe display values.
+
+## 2026-08-11 — Session 79 Canonical Loops, Evidence Integrity, and Browser Headroom
+
+SIL v3.0: **998 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 99, Engagement 100, Process Quality 99, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+- **Dev Health: 100** — canonical game/runtime/simulation behavior passed through 838 tests before the Studio metadata guard; browser 40/40, Pages build/smoke, visual and boot gates are green; the final source-bound aggregate rerun follows reconciled closeout truth.
+- **Creative Alignment: 100** — player-agent personality and predictions deepen General Manager drama while remaining deterministic, source-derived, local-first and explicitly non-causal where appropriate.
+- **Momentum: 99** — six ranked items and two second-order fixes landed; one point withheld because the initial aggregate gate found an omitted shard registration.
+- **Engagement: 100** — ordinary week advance now pays off predictions automatically, negotiations expose understandable pressure, and Hall of Fame induction behaves like a real ceremony.
+- **Process Quality: 99** — live pixel review found a 34px touch target and the fail-closed shard guard found missing membership; both were root-fixed, but they were genuine verification catches.
+- **Cross-Repo Coherence: 100** — no sibling files were edited; operations defects are transported through Studio Ark only.
+- **Security Posture: 100** — Community Stats now rejects missing-Origin mutations, binds short-lived capabilities to participants, forces browser evidence tier and prevents one caller manufacturing k=5.
+- **Ecosystem Integration: 100** — audit sidecar, execution log, Task Board, handoff, truth audit, release authority and visual receipt resolve from the same S79 facts.
+- **Capital Efficiency: 100** — all work uses existing static hosting and self-hosted services with no new dependency or marginal paid call.
+- **Automation Coverage: 100** — focused adversarial, accessibility, rollover, island-budget, reachability and aggregate suites cover every new authority.
+
+Committed SIL follow-ups:
+- [SIL] Any new test file must be registered in a canonical shard in the same patch; the membership guard is the authority, not a later CI surprise.
+- [SIL] Fixed/scrollable modal evidence must capture the visible viewport rather than an off-viewport element crop; otherwise transparent pixels can conceal touch-target and scroll defects.
+
+## 2026-08-09 — Session 78 Marquee, Prediction Minigame, TD Sound, A11y + Coverage Sweep
+
+SIL v3.0: **998 / 1000** (Dev Health 100, Creative Alignment 100, Momentum 98, Engagement 100, Process Quality 100, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+- **Dev Health: 100** — canonical `npm test` 998/998 direct exit 0 (up from 922/922), no deploy required, no regression in any existing surface.
+- **Creative Alignment: 100** — both new player-facing systems (Primetime Marquee, spread-prediction minigame) are additive, local-only, and explicitly non-causal — consistent with the counterfactual-replay/rehearsal decisions already on record; neither invents fake causality or backend dependency on a static-host-only project.
+- **Momentum: 98** — scored down slightly and deliberately: the session's own new code (3 statically-imported modules) tripped the static boot-budget gate, a self-inflicted regression caught only because the full suite was run rather than just the new test files. Root-fixed in the same session with an honest justification, not silently raised — but it is real overhead against a fully clean 7/7 sweep, and the SIL should reflect that rather than round it away.
+- **Engagement: 100** — two genuine new retention/immersion mechanics shipped this session (marquee-game flavor, weekly pick'em with an accuracy streak), both zero-backend and free-tier-safe per the game-medium skill overlay's success bar.
+- **Process Quality: 100** — every shipped item traces to concrete file/line premise verification (grep-confirmed call sites, read-before-claim on all 3 rejected phantoms) before implementation; the byte-identical-league-state test for the prediction minigame is exactly the kind of falsifiable proof this rubric rewards, not a claim taken on faith.
+- **Cross-Repo Coherence: 100** — no sibling tree touched; no Ark cargo needed.
+- **Security Posture: 100** — no new attack surface (all client-side/static); the prediction minigame's non-mutation guarantee is itself a security-adjacent integrity proof (a local minigame cannot become a save-corruption vector).
+- **Ecosystem Integration: 100** — audit sidecar/markdown, task board, handoff, work log, decisions, and doctor all agree on the same S78 state.
+- **Capital Efficiency: 100** — zero marginal infrastructure cost; all 7 items are client-side code + tests, no new services.
+- **Automation Coverage: 100** — audioFeedback.js (7 call sites, 5 modules) went from zero to 13 tests; the two new systems both shipped with direct fixture-driven tests, not left for a future session to backfill.
+
+Committed SIL follow-ups:
+- [SIL] Any session that adds new statically-imported client modules should run the full suite (not just the new test files) before claiming done — the boot-budget gate only fires on the full run, and this session would have shipped an unverified regression otherwise.
+- [SIL] A phantom-candidate rejection is only trustworthy when it names the exact file/test that already covers the claim (as this session did for coaching-tree lineage and pressRoomPanel) — a rejection without a citation is itself an unverified premise.
+
+---
+
+Older entries are retained verbatim in `context/archive/SELF_IMPROVEMENT_LOOP.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
+
+## 2026-08-11 — Session 80 Exact Decision Surfaces and Visible Architect Mastery
+
+SIL v3.0: **996 / 1000** (Dev Health 100, Creative Alignment 99, Momentum 100, Engagement 99, Process Quality 98, Cross-Repo Coherence 100, Security Posture 100, Ecosystem Integration 100, Capital Efficiency 100, Automation Coverage 100).
+
+- **Dev Health: 100** — canonical Node passes 1,024/1,024 with a direct source-bound receipt; Playwright passes 40/40; Pages build/smoke, 176-state responsive evidence and the CANON-053 receipt are green.
+- **Creative Alignment: 99** — exact decision handoffs and visible career identity strongly match the public football General Manager premise; one point is withheld because the public `SOUL.md` intentionally does not expose the private creative non-negotiables needed for a complete audit.
+- **Momentum: 100** — both player-facing audit items and the second-order accessibility refinement shipped, followed by exact immutable staging, direct-main Pages and guarded backend deployment in the same turn.
+- **Engagement: 99** — commands reach the promised work surface and coherent mastery has a visible payoff, but no real-player cohort exists, so code-contract strength is not mislabeled as measured fun or retention.
+- **Process Quality: 98** — pixel inspection, app-release gating and source-bound suites caught one phase-brittle Studio assertion and one transient Hall request timeout; both were resolved honestly, but the initial red gates are reflected rather than rounded away.
+- **Cross-Repo Coherence: 100** — no sibling repository was edited; lifecycle authority remains external and unchanged.
+- **Security Posture: 100** — no new network, identity or data custody was added; canonical settings sanitation is clean and the scoped working-tree scan reports zero findings.
+- **Ecosystem Integration: 100** — audit sidecar, innovation pack, task board, handoff, truth audit, visual receipt and release constraints resolve from the same Session 80 facts.
+- **Capital Efficiency: 100** — the work adds no dependency, paid call or new service; static hosting and the existing self-hosted backend remain the only runtime authorities.
+- **Automation Coverage: 100** — exact navigation, target receipts, mastery empty/evidence states, browser wiring, mobile routes, reduced motion, 40 real-browser paths and 176 rendered states are executable gates.
+
+Committed SIL follow-ups:
+- [SIL] A command surface contract is incomplete until it carries and focuses an exact target ID in both desktop and mobile paths.
+- [SIL] Protocol assertions about “latest” artifacts must derive expectations from live item statuses; they may not force intentionally in-progress release work to appear closed.

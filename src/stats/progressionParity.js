@@ -323,6 +323,14 @@ export function summarizeLeagueProgression(league) {
       positions: positions.join("/"),
       ...summarizePlayers(players.filter((player) => positions.includes(player.pos || player.position)))
     })),
+    // S108 — the same rooms on the population the elite arm declares
+    // (`activeRosterOnly`), so composition can be reported against the
+    // per-position anchor without borrowing the blended rostered basis.
+    activeRosterRooms: POSITION_ROOMS.map(({ room, positions }) => ({
+      room,
+      positions: positions.join("/"),
+      ...summarizePlayers(activeRosterOnly.filter((player) => positions.includes(player.pos || player.position)))
+    })),
     cohorts: {
       developing25AndUnder: cohort(players, (player) => Number(player.age) <= 25),
       prime26To29: cohort(players, (player) => Number(player.age) >= 26 && Number(player.age) <= 29),
@@ -486,6 +494,64 @@ const worstOf = (...statuses) =>
  * players are 90+). A fix that damped the walk but left the league already
  * inflated would pass the first and fail the second, and it should.
  */
+/**
+ * S108 — elite composition, reported and never gated.
+ *
+ * The declared-population question S105–S107 carried: the 90+ cut is
+ * position-blind while the anchor's 26 seats are one per position. The answer
+ * (DECISIONS S108): the gate's total stays position-blind because the anchor's
+ * total is — 26 of 1,696 is a position-blind share — and composition is
+ * published beside it so a cohort that is 97% two rooms can be seen, named and
+ * measured without becoming a route to a green gate. Nothing here feeds
+ * `status`.
+ *
+ * Per room: the room's 90+ count, its share of the cohort, its share of the
+ * allocable All-Pro seats, and the ratio of the two. A ratio of 1 means the
+ * room holds elite players in the proportion the honor format seats them; 4
+ * means four times that. Rooms are read on `activeRosterOnly`, the population
+ * the elite arm declares; a fixture without that reading reports `incomplete`.
+ */
+export function buildEliteCompositionReading(end) {
+  const rooms = Array.isArray(end?.activeRosterRooms) ? end.activeRosterRooms : null;
+  const seatsByRoom = NFL_ELITE_DENSITY_BASELINE.firstTeamAllProSeatsByRoom;
+  const allocableSeats = NFL_ELITE_DENSITY_BASELINE.firstTeamAllProAllocableSeats;
+  if (!rooms || !rooms.length) {
+    return { gated: false, status: "incomplete", note: "no active-roster room reading on this summary", cohort: 0, allocableSeats, rooms: [] };
+  }
+  const cohort = rooms.reduce((sum, room) => sum + Number(room.elite90Plus || 0), 0);
+  const rows = rooms.map((room) => {
+    const seats = Number(seatsByRoom[room.room] ?? 0);
+    const elite = Number(room.elite90Plus || 0);
+    const cohortSharePct = cohort ? round((elite / cohort) * 100, 1) : 0;
+    const seatSharePct = allocableSeats ? round((seats / allocableSeats) * 100, 1) : 0;
+    return {
+      room: room.room,
+      positions: room.positions,
+      count: Number(room.count || 0),
+      elite90Plus: elite,
+      elite90PlusPct: Number(room.elite90PlusPct || 0),
+      seats,
+      cohortSharePct,
+      seatSharePct,
+      // Composition ratio: how much of the cohort the room holds against how
+      // much of the honor format it is seated for. Null when the anchor gives
+      // the room no seat, rather than a division by zero dressed as a number.
+      ratio: seats > 0 && cohort ? round(cohortSharePct / seatSharePct, 2) : null
+    };
+  });
+  const concentrated = rows.filter((row) => row.ratio != null && row.ratio >= 2).map((row) => row.room);
+  return {
+    gated: false,
+    status: cohort ? "reported" : "incomplete",
+    note: "composition against the per-room All-Pro seat allocation — published, never gated; the elite ceiling is position-blind because the anchor's total is",
+    cohort,
+    allocableSeats,
+    unallocableSeats: NFL_ELITE_DENSITY_BASELINE.firstTeamAllProUnallocableSeats,
+    concentratedRooms: concentrated,
+    rooms: rows
+  };
+}
+
 export function buildDistributionReceipt({ start, end, observedSeasons }) {
   const target = LEAGUE_DISTRIBUTION_TARGET;
   const startCount = Number(
@@ -567,6 +633,8 @@ export function buildDistributionReceipt({ start, end, observedSeasons }) {
       endMeanOverall: Number(end?.population?.rostered?.meanOverall ?? 0),
       endElite90PlusPct: Number(end?.population?.rostered?.elite90PlusPct ?? 0)
     },
+    // S108 — reported, never gated. See `buildEliteCompositionReading`.
+    eliteComposition: buildEliteCompositionReading(end),
     target
   };
 }

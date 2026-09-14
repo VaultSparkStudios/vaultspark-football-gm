@@ -5,42 +5,6 @@ Overall status: green
 Last reviewed: 2026-09-09
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
-## 2026-08-12 - Session 83 truth update
-
-- **Rematch memory is bounded evidence.** Tactical Film Room reads only the canonical rivalry ledger, orients the last score to the controlled club, labels a bounded recent sample and denies prediction/causation.
-- **Sim-Watch has one reachable authority.** A single ordered ticker listener opens the box score and then the broadcast; touch/pen, keyboard and buttons all drive the same previous/next controller.
-- **Fictional labels are presentation authority.** Rendered review found BUF/NE engine identifiers and an object-shaped standings value leaking into public copy; all affected paths now normalize to fictional abbreviations before interpolation.
-- **Public statistics share one honest descriptor.** Homepage showcase, deep atlas and Analytica consume one aggregate-only Feed v1 contract with six analyzed metrics, three showcased metrics and a 30-second refresh promise. It does not claim adoption or synthetic activity.
-- **Identity absence is explicit.** Passport v1 query-token/session examples are removed. Structured status declares external/not-integrated Obelisk v2, no local auth and no account flows until relying-party registration and PKCE verification succeed.
-- **Candidate and publication evidence are exact.** Node passes 1,078/1,078. Nine reviewed dark/light desktop/mobile captures, hosted performance, staging, and production are unified at published revision 8b7d595… and artifact 0f79737d…. Staging passes 14/14 with rollback; production passes 10/10.
-- **Deployment is not launch.** Zoho delivery/reply-as, SHA-bound founder approval and authoritative lifecycle reconciliation remain unproved. launchReady stays false.
-
-## 2026-08-12 - Session 82 truth update
-
-- **Session truth is monotonic.** Startup authority resolves the newest committed session across status, handoff and SIL; older summaries cannot self-heal the project backward.
-- **Trade consent is exact.** A live on-clock offer cannot mutate the draft until the player confirms the named outgoing/incoming picks and irreversible one-use consequence in an accessible dialog.
-- **Progression truth belongs to the player.** Planning-friction receipts describe source-derived decisions and Architecture Review projects identity, active pressure, next proof and mastery path; neither surface predicts results or changes simulation outcomes.
-- **Candidate evidence is exact.** Stable staging serves candidate `046e35df…` and artifact `656eb904…` with 14/14 checks and rollback. The 64 reviewed captures and hosted performance receipt bind that same deployable identity.
-- **Artifact identity excludes only source-bound receipts.** Production exposed that `edge-policy-receipt.json` changes solely because it embeds the publication SHA. It is now excluded alongside health/manifest evidence; its policy fingerprint and every executable/content byte remain verified, and a regression test proves source-bound receipt changes cannot perturb product identity.
-- **Production lineage is exact.** Receipt-only publication `a38ad346…` passed 10/10 provenance at the same `656eb904…` deployable artifact as candidate/staging `046e35df…`; the reconciler verifies the Git delta and rejects any deployable publication change.
-- **Performance truth is route-specific.** Canonical `/` public-entry medians clear LCP/INP/CLS at desktop and mobile with edge policy observed. A separate direct-game diagnostic preserves its first-run tutorial layout-shift red and is not relabeled as the landing-page gate.
-- **Test truth is not rounded up.** Four aggregate shards passed; the Studio shard had one transient aggregate failure and immediately passed 196/196 alone on unchanged source. All 1,069 shard tests are green, but only clean CI may establish the final aggregate receipt.
-- **Deployment is not launch.** Reply-capable on-domain email, SHA-bound founder approval and authoritative lifecycle reconciliation remain unproved, so `launchReady` remains false.
-
-## 2026-08-11 - Session 80 truth update
-
-- **Command handoffs are exact.** Ranked command receipts publish `targetTab` and `targetId`; one shared authority waits for tab hydration, scrolls, focuses and reports unavailable targets without choosing for the player.
-- **Accessibility is part of the authority.** Keyboard focus lands on the working surface, temporary focusability is applied only when needed, and reduced-motion preference changes scrolling from smooth to automatic.
-- **Mastery identity is visible but non-causal.** Architecture Review renders the strongest source-derived signature with score, status and receipt count; an empty portfolio remains empty, and the interface states that no hidden bonus exists.
-- **Outcome evidence is not invented.** The game-loop design review scores code-contract coverage only. No real first-session cohort exists, so no measured fun, retention or return-intent claim was made.
-- **Candidate evidence is current.** Node passes 1,024/1,024; Playwright passes 40/40; Pages build/smoke passes; responsive evidence passes 176 states; 56 dark/light desktop/mobile captures are hash-bound and reviewed in `docs/visual-qa/LATEST.json`; the scoped workspace secret scan has zero findings.
-- **Deployment truth is complete and still separate from launch.** Candidate `7becc573…` passed stable staging 14/14 and production at artifact `6781437a…`; CI, Pages and guarded backend dispatch `31544469131` are green; the external API is database-ready with production CORS and explicit cache behavior. That deployment evidence does not verify email, lifecycle or public-launch approval, so `launchReady` stays false.
-
----
-
-Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
-
 ## 2026-09-09 — Session 99 release truth
 
 Application revision `713b326d4d84843112ddbc8354c0760bb6400859` and artifact `aba5118bdc0c045780d5c8b15c33f02fca46a0bce53b26e8be826520629bb3d4` pass staging 14/14 and production provenance 10/10. CI 34273797142, Pages promotion 34275252182, backend deployment 34275259066, and receipt-only CI 34296387803 succeeded. Live staging/production currency passed 6/6 during closeout recovery; live backend reports database ready at the exact revision. The implementation-boundary Node receipt is 1,319/1,319 and Playwright is 55/55; these are retained historical receipts, not newly rerun suites.
@@ -141,11 +105,6 @@ Feedback save failures are visible and are never counted as saved. Milestone fix
 
 **What is deliberately not claimed.** Elite density was re-derived on one seed (the canonical path) and remains `watch`; no cross-seed reading was taken and no cost was shipped. The PROJECT PROFILE row remains structurally stale until studio-ops acts on the S105 cargo; it is not fixed here. `launchReady` remains false on unchanged evidence.
 
-<!-- ledger-roll:pointer -->
----
-
-Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.
-
 ## 2026-09-12 — S106 — A number the whole system compares against, measured on the wrong scale
 
 **What shipped and what did not.** The generator change described below was implemented, measured twice, and **reverted**; `src/` carries only a comment recording it, verified by diff as zero behaviour change. What shipped are three gate and record fixes: the ledger-budget gate's population, the brief's post-heal session authority, and the removal of a doctor remedy prescribing a contractually forbidden file. Every number below is a real measurement of code that was run, not of code that is live — that distinction is the point of recording it here.
@@ -163,3 +122,18 @@ Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`.
 **Gate truth.** A gate that had consumed 94% of its tolerance on selection bias was reporting green on the canonical seed while being unable to accept a correct change. It now reads the population the mechanism was applied to and isolates the environment with a matched seeded offseason. Tolerance moved from 0.25 to 0.10, which is tighter. Its negative controls reproduce the pre-S90 subsidy at +0.82 to +0.90, and they catch the survivor measurement itself.
 
 **What is claimed and what is not.** The gate readings are four seeds of one offseason. The generation table is four seeds with no simulation. Ten-season distribution readings for the landed generator are recorded in the S107 handoff with their seed counts, and no ten-season figure is carried over from S106's differently-tuned implementation as if it were this one's. `launchReady` remains false on unchanged evidence.
+
+## 2026-09-14 — S108 — A remedy that could not fire, a surface that shipped the answer key, and a finding published where the gate cannot reach it
+
+**Contradiction found and resolved.** S106 and S107 both recorded that ledger retention was positional and that the live SIL was "three entries short of what it advertises". The instance does not reproduce: on the SIL's live shape the positional suffix and the by-session rule move the same two entries. TRUTH_AUDIT was the real instance (S83, S82, S80 above S99–S107), and beneath both sat the defect nobody had named — every closeout since S105 appended beneath the roll pointer, and the splitter sliced the file at the sentinel, so `check-ledger-budget`'s own remedy reported "fewer entries than the retention window" on ledgers holding twelve and, applied, would have dropped the two newest entries from each. The S106/S107 entries stand as written; this entry and the audit's `phantomsRejected` carry the correction.
+
+**A surface contradicting its own economy.** The draft room charged scouting points for a fogged read while the adjacent table, the combine table, and every draft POST response shipped the truth. That is a truth defect in the product's own terms: the number the player pays to approach was printed beside the price. Closed on every path found (the review found three the first fix missed), with the engine's copy verified untouched.
+
+**A gate that must not learn to see.** Elite composition is now measured (QB and OL hold 97% of the canonical cohort against 25% of the seats; ratios 3.9–6.7) and published on the receipt with `gated: false`. A test proves the gated verdict is identical for a cohort seated in the anchor's proportions and one concentrated in two rooms. The elite ceiling remains `watch` at 2.1% (canonical) / 2.7% (seed 2026) against 1.53%; dispersion remains `watch` at 0.093 / 0.108 against 0.08. No threshold moved.
+
+**What is claimed and what is not.** Composition readings are ten seasons on two seeds, active roster only, the same runs S107 used and reproduced to the decimal before anything changed. The development ledger's fidelity is proven player-by-player against the league on one seed and by an identical-fingerprint pair on another; the browser card is proven by one Playwright spec that drives the runtime to the retirements stage. The runway in growth seasons is a projection of the declared curve's boundary, not a measured outcome for any player. No real-cohort evidence exists and none was manufactured. Public launch remains HOLD on the same three unmet gates.
+
+<!-- ledger-roll:pointer -->
+---
+
+Older entries are retained verbatim in `context/archive/TRUTH_AUDIT.archive.md`. Nothing is summarised or removed on the way; the live file holds the working set only (newest 10 entries), so a reader does not pay for the whole project's history to learn what is true this week.

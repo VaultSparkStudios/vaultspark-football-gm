@@ -1,27 +1,27 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-09-14 (Session 107 closeout) -->
+<!-- generated-at: 2026-09-14 (Session 108 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S107 ═════╗
-║  Date: 2026-09-14  ·  SIL: 960/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S108 ═════╗
+║  Date: 2026-09-14  ·  SIL: 963/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ chore(closeout): record S107 deployment receipts, provenance  ║
 ║  ✓ feat(sim): the S90 gate measures every progressed player, an  ║
 ║  ✓ chore(closeout): record S106 deployment receipts, provenance  ║
 ║  ✓ feat(gates): give the ledger-budget gate its population, and  ║
 ║  ✓ chore(closeout): record S105 deployment receipts, provenance  ║
-║  ✓ fix(tests): assert the branch the product rendered, so a bye  ║
 ╚════════════════════════════════════════════════════════════════╝
-╔══ SCORES · SIL 960/1000 ═══════════════════════════════════════╗
+╔══ SCORES · SIL 963/1000 ═══════════════════════════════════════╗
 ║    Dev Health         97   ██████████                            ║
 ║    Alignment          98   ██████████                            ║
 ║    Momentum           98   ██████████                            ║
-║    Engagement         87   █████████░                            ║
-║    Process Qual       95   ██████████                            ║
+║    Engagement         89   █████████░                            ║
+║    Process Qual       96   ██████████                            ║
 ║    Coherence          96   ██████████                            ║
 ║    Security           98   ██████████                            ║
 ║    Ecosystem          91   █████████░                            ║
@@ -29,19 +29,19 @@
 ║    Automation         100  ██████████                            ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WRITE-BACK STATUS ═══════════════════════════════════════════╗
-║  · context/CURRENT_STATE.md                                      ║
-║  · context/TASK_BOARD.md                                         ║
+║  ✓ context/CURRENT_STATE.md                                      ║
+║  ✓ context/TASK_BOARD.md                                         ║
 ║  ✓ context/LATEST_HANDOFF.md                                     ║
-║  · logs/WORK_LOG.md                                              ║
-║  · context/DECISIONS.md                                          ║
-║  · context/SELF_IMPROVEMENT_LOOP.md                              ║
+║  ✓ logs/WORK_LOG.md                                              ║
+║  ✓ context/DECISIONS.md                                          ║
+║  ✓ context/SELF_IMPROVEMENT_LOOP.md                              ║
 ║  · docs/CREATIVE_DIRECTION_RECORD.md                             ║
-║  · context/TRUTH_AUDIT.md                                        ║
+║  ✓ context/TRUTH_AUDIT.md                                        ║
 ║  ✓ context/PROJECT_STATUS.json                                   ║
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 205 files  ·  M:6 A:0 D:98 ?:101                       ║
+║  Changes: 52 files  ·  M:40 A:0 D:0 ?:12                         ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -58,8 +58,9 @@
 ║  Sanitization:  12d ago                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: elite-density-cut-is-position-blind-against-a-per-position  ║
-║      Gate population; realism                                    ║
+║  #1: Latest audit exhausted; run /audit for a fresh live-code p  ║
+║      Latest audit has no open ranked items; run /audit for a ne  ║
+║      ↳ node scripts/ops.mjs genius-list                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 

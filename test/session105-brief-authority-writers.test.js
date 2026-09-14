@@ -5,7 +5,7 @@ import path from "node:path";
 
 import { buildRollingStatus, currentBlock, parseSilEntries, renderForRoot } from "../scripts/render-sil-rolling-status.mjs";
 import { checkAudit } from "../scripts/check-audit-premises.mjs";
-import { NEWEST_FIRST, NEWEST_LAST, ROLLABLE_LEDGERS, splitLedger } from "../scripts/ledger-roll.mjs";
+import { NEWEST_FIRST, NEWEST_LAST, ROLLABLE_LEDGERS, splitLedger, splitLedgerByPosition } from "../scripts/ledger-roll.mjs";
 import { describeWeeklyPlanReceipt } from "../public/lib/weeklyPlanComposer.js";
 
 const ROOT = path.resolve(import.meta.dirname, "..");
@@ -147,7 +147,9 @@ test("a newest-last ledger retains its newest entries, not its oldest", () => {
 
   // Negative control: the pre-S105 behaviour, on the same ledger, archives the
   // newest entry — the defect exactly as it was observed.
-  const wrong = splitLedger(source, pattern, 1, NEWEST_FIRST);
+  // S108 kept the positional rule only as this control; `splitLedger` itself now
+  // retains by session number and no longer depends on `order` to pick entries.
+  const wrong = splitLedgerByPosition(source, pattern, 1, NEWEST_FIRST);
   assert.match(wrong.tail, /S3 newest/);
   assert.match(wrong.head, /Session 1 oldest/);
 });

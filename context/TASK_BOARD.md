@@ -10,11 +10,24 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 ## Next
 
 - [ ] Restore `/stats` to sitemap.xml the moment the community snapshot clears its suppression threshold. S94 withheld it so the first page indexed about this game is not a table of zeros; that is a temporary state with a defined exit condition, not a permanent decision.
-- [ ] Re-run `/code-review` against a session's own diff BEFORE the canonical receipt, not after. S94 ran it late and it found ten real defects, which cost a full 45-minute shard re-run. The review is cheap relative to the receipt and should precede it.
+- [x] Re-run `/code-review` against a session's own diff BEFORE the canonical receipt, not after. **Done S108: eight findings, all acted on before any shard ran.** S94 ran it late and it found ten real defects, which cost a full 45-minute shard re-run. The review is cheap relative to the receipt and should precede it.
 - [ ] Reconsider the mobile tab-target count on its own terms. S94 skipped the 14-to-6 regroup because the rail is already grouped under five task headers and the remaining cost is target count on a phone — which is the founder-deferred item needing its own visual-evidence re-baseline budget, not a side effect of an information-architecture pass.
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 - [ ] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker.
+
+## Session 108 — Full arc: the question answered first, the roll's remedy revived, and the offseason's verdict shown (2026-09-14)
+
+- [x] **State elite density's declared-population question before any code, and answer it.** The ceiling stays position-blind because the anchor's total (26 of 1,696) is; composition is published on the receipt, never gated. Seats by room declared in the baseline (24 allocable of 26, two returner/special-teamer seats named unallocable); `activeRosterRooms` on the summary; `buildEliteCompositionReading` on the receipt. Canonical seed: OL 80.6% of the cohort against 20.8% of seats (ratio 3.87), QB 16.7% vs 4.2% (3.98); seed 2026: QB 6.74, OL 3.03; every other room 0–0.26. Room means QB 84.1–84.6 and OL 83.1–83.3 against 76.5–78.2 elsewhere: a position-blind 90 is +1.5–1.7 sd in two rooms and +3.0–4.0 sd in five. No per-room arm, no ceiling moved; a test proves `status` is identical for a proportional and a concentrated cohort.
+- [x] **Ledger retention by session number — and the roll's remedy had been inert since S105.** Every closeout appended beneath the pointer and the splitter sliced at the sentinel: four ledgers "fewer than the window" while holding twelve, and an applied roll would have dropped S106/S107. Fixed at source (pointer found anywhere, re-appended at EOF, by-session retention in declared order, duplicate-session reason distinct, positional rule kept as negative control). Rolled live: 296 KB → 270 KB. The S106 evidence ("SIL three short") was a phantom; TRUTH_AUDIT was the instance.
+- [x] **The offseason development ledger reaches the GM.** Engine returns every progressed player's move (retirees flagged); club report on the pipeline and the league; stage message, long-form feed, beat-reporter log (inbox IMPORTANT); History-tab card from a lazily imported module. No RNG draw added. Node 7/7, Playwright 2/2.
+- [x] **The draft surface stops printing the truth the scouting board sells.** Overall, potential and ratings stripped from available prospects on every response (GET and the three POSTs, both API layers); fogged potential ±6 from a keyed generator; combine rows and reveal/reward beats read the scouted number. Engine copy untouched.
+- [x] **The profile outlook reads headroom and trait; the runway is in growth seasons.** At-ceiling players cannot read past "steady". `GROWTH_WINDOW_MAX_AGE` exported from the curve's module (the generator's `closedHeadroomAge` is not the development boundary). Roster table shows the dev trait.
+- [x] **Review before receipt** — eight findings, all acted on before a shard ran. The S94 Next item is struck.
+- [ ] **The rating scale is the next honest question, not the gate.** Rooms sit seven overall points apart, so "90" is not the same claim in every room. Any change is a generator/scale change with the full distribution receipt as its control; do not add a per-room elite arm and do not move the 1.53% ceiling.
+- [ ] Elite density `watch` at 2.1% / 2.7% (canonical / 2026) against 1.53%; dispersion `watch` at 0.093 / 0.108 against 0.08. Do not widen `stdDevDrift*`.
+- [ ] The history island sits at 15.2% headroom against a 15% floor; the next History-tab change goes behind a dynamic import, never a raised `maxBytes`.
+- [ ] Run `node scripts/ledger-roll.mjs --apply` at every closeout after appending; the live gate tolerates one session of debt, not two.
 
 ## Session 107 — Full arc: the gate measured who survived, and potential lands on the scale overall uses (2026-09-13)
 
@@ -27,7 +40,7 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [x] **Stop re-pinning the rival-offer negative control to one seed.** Third move (S103, S104, S107), each from a legitimate change to how leagues develop. Re-scanned 620101-620120; the control now walks 620111 / 620108 / 620114 / 620115 and requires one to surface an offer past the deadline.
 - [~] **Elite density's position-blind cut — measured, still a question.** End-of-window QB+OL share of the 90+ cohort: canonical **97%** (35/36); seed 2026 old draw 72% (41/57) → span 55 **91%** (42/46). Position-relative potential made the cohort smaller and more concentrated. State the declared-population question in DECISIONS before any per-position arm; never as a route to a green gate.
 - [ ] Elite density `watch` at 2.1% against the sourced 1.53% ceiling; dispersion `watch` at 0.093 against 0.08. Do not widen `stdDevDrift*` or move the elite ceiling.
-- [ ] Ledger retention by session number (carried from S106) — its own session.
+- [x] Ledger retention by session number (carried from S106) — its own session. **S108.**
 
 ## Session 106 — Full arc: potential stops being drawn on a scale overall does not share (2026-09-12)
 
@@ -171,42 +184,6 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [x] Bind Node, browser, responsive-pixel, hosted-performance, staging, production Pages and backend deployment evidence to source `3cce0a51e82e78625bdfad82f1cbdb19a31c94aa` and artifact `6bdc133a478cfee8a8b19321a5684001b65e3322210e1a090b573785240bc7f4`.
 
 **Verification:** canonical Node 1,303/1,303 across six shards; exact-SHA CI workflow 33769176381 green; Playwright 55/55 locally and in the release workflow; boot 649,716/730,000 bytes with 53/58 initial modules and zero lazy leaks; 255 responsive game states with 98 retained exact-candidate captures plus four reviewed status-page captures; stable staging 14/14 at deployment `a835d039-bd18-4084-8eec-5a60b81993aa` with rollback; hosted `/` and `/game.html` performance verified; production Pages workflow 33770515766 and backend workflow 33770517153 use the exact candidate. Technical deployment is complete; public launch remains HOLD.
-## Session 97 — Full arc: tie-complete franchise truth and a reachable phone commit (2026-09-02)
-
-- [x] Establish one browser record authority and one engine helper for W-L-T formatting, standings lookup, half-win percentages, and exact deltas.
-- [x] Migrate every reproduced record consumer across mobile, newsletters, rewards, season epilogue, achievements, return digest, server/local fan sentiment, adaptive difficulty, beat reporting, General Manager authority, and narrative events.
-- [x] Prove a tie-only return delta is visible and a 5-0-1 season is neither rendered nor scored as 5-0/perfect.
-- [x] Isolate doctor health-receipt freshness from substantive `lastUpdated` activity and pin the real command path.
-- [x] Make the phone decision overlay a named, four-edge-safe region with a sticky theme-correct action dock.
-- [x] Bind tests, inspected pixels, hosted performance, stable staging, production, and release authority to exact source `95597906033ced89469cd2c268a661d5a3b2b4a8` and artifact `47b3cee3288715e8560cb877a1337c13366f39e2a46335e7ef2be7e2487e2b89`.
-
-**Verification:** canonical Node 1,300/1,300; exact-SHA CI 1,295/1,295 across five shards in workflow 33595882214; Playwright 54/54 locally and green in the workflow browser gate; 255 responsive states with 98 retained reviewed dark/light desktop/tablet/mobile captures; Pages build, module reachability, boot budget and smoke green; sanitization critical/warning 0/0; sitemap 9/10; staging 14/14; production 10/10; hosted performance verified; promotion workflow 33598681683 green. Technical deployment is complete. Public launch remains HOLD.
-
-## Session 96 — Full arc: trustworthy orientation, diagnosable release identity, and mobile parity (2026-08-26)
-
-- [x] Make startup orientation reject invalid dates, parse inline SIL v3 categories, derive intent from entry bodies, and content-refresh stale Genius authority.
-- [x] Add a deterministic per-file artifact ledger and a reusable promotion-bind verifier that prints both identities plus first-file deltas.
-- [x] Turn Cloudflare aggregate analytics reporting into a repeatable secrets-gateway-backed receipt while withholding user, engagement, retention, and cohort claims.
-- [x] Raise the mobile trigger to 44×44px and make the 100dvh drawer four-edge safe-area aware.
-- [x] Root-fix the cold lazy-island Escape error found by rendered pixels.
-- [x] Replace wall-clock animation waiting with bounded rendered-geometry settlement after Linux CI exposed the portability defect.
-- [x] Bind visual, hosted-performance, stable-staging, and production authority to `93b867e010dfe3773116433e5b8068dc894e7c0c` / `c45c4a49a46da9e0438219744b8e42e30fb96125ba8c414881c665fe766783a6`.
-
-**Verification:** implementation-boundary canonical Node 1,293/1,293; final-SHA CI 1,290/1,290 across five push shards in workflow 33030325197; Playwright 54/54; focused release/staging checks 26/26 and 19/19; final workflow responsive evidence 255 states with 240/240 required and 96 retained/reviewed; staging 14/14; production 10/10; promotion workflow 33031371311 green. Technical deployment is complete. Public launch remains HOLD.
-
-## Session 95 — Full arc: one decision beat per playoff round, one exact artifact through production (2026-08-26)
-
-- [x] Gate Pages publication on the full browser suite and repair the stale development-profile assertion.
-- [x] Persist postseason round state so one command resolves one controlled-team game; preserve exact plans across save/resume and make whole-season delegation consume every gate.
-- [x] Centralize phase-to-surface navigation and prove exact destinations exist and receive focus.
-- [x] Calibrate owner capital as football-operations liquidity with obligations, runway, trait-weighted appetite, bounded distributions, and deterministic 1/8/15/40-year equilibrium gates.
-- [x] Replace the Gist forgery claim with an honest checksum boundary and optional versioned PBKDF2/HMAC authentication with legacy-save support.
-- [x] Align realism workflow timeouts, persist progress, and upload partial evidence under `always()`.
-- [x] Bind rendered pixels, hosted performance, stable staging, and production to SHA `92e4190a4221383c8352ea6321d65528cb449e74` and artifact `ca66c9210c1efbd234c31d9f392ca70dd6aa03171b47c90057b32d02210767e7`.
-- [x] Remove repeated Hall of Fame candidate rescoring; the measured two-season dashboard probe improved from about 16.8 seconds to 7.1 seconds.
-- [x] Root-fix the release-only digest mismatch: Pages now checks out full Git history so git-derived sitemap lastmod values are deterministic across local, staging, and CI builds.
-
-**Verification:** canonical Node 1,280/1,280; Playwright 54/54; responsive 251 states with 92 retained/reviewed plus 236 final-CI required states; staging 14/14 with rollback; production 10/10; workflow 32933281222 green. Technical deployment is complete. Public launch remains HOLD.
 
 <!-- ledger-roll:pointer -->
 ---

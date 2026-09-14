@@ -5,6 +5,7 @@ import { GAME_NAME } from "./config.js";
 import { recordWinPct } from "./stats/teamRecord.js";
 import { getLeagueConfigCatalog, getLeagueConfigSummary, resolveLeagueSettings } from "./config/leagueSetup.js";
 import { createSession, createSessionFromSnapshot } from "./runtime/bootstrap.js";
+import { scoutedDraftResult } from "./runtime/GameSession.js";
 import { applyInitialLeagueSetup } from "./runtime/applyLeagueSetup.js";
 import {
   deleteSaveSlot,
@@ -1074,7 +1075,9 @@ async function handleApi(req, res, url) {
   }
 
   if (req.method === "POST" && url.pathname === "/api/draft/prepare") {
-    const draft = session.prepareDraft();
+    // S108 — every draft response carries the scout's view of the class, never
+    // the truth; see scoutedProspectView.
+    const draft = scoutedDraftResult(session.prepareDraft());
     sendJson(res, 200, { ok: true, draft, state: session.getDashboardState() });
     return true;
   }
@@ -1121,7 +1124,7 @@ async function handleApi(req, res, url) {
       sendJson(res, 400, { ok: false, error: "playerId required." });
       return true;
     }
-    const result = session.draftUserPick({ playerId: String(body.playerId) });
+    const result = scoutedDraftResult(session.draftUserPick({ playerId: String(body.playerId) }));
     sendJson(res, result.ok ? 200 : 400, { ...result, state: session.getDashboardState() });
     return true;
   }
@@ -1147,10 +1150,12 @@ async function handleApi(req, res, url) {
       sendJson(res, 400, { ok: false, error: "Invalid JSON body." });
       return true;
     }
-    const result = session.runCpuDraft({
-      picks: Math.max(1, Math.min(224, toInt(body.picks) || 224)),
-      untilUserPick: body.untilUserPick !== false
-    });
+    const result = scoutedDraftResult(
+      session.runCpuDraft({
+        picks: Math.max(1, Math.min(224, toInt(body.picks) || 224)),
+        untilUserPick: body.untilUserPick !== false
+      })
+    );
     sendJson(res, result.ok ? 200 : 400, { ...result, state: session.getDashboardState() });
     return true;
   }

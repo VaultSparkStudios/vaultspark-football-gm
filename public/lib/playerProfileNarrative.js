@@ -121,10 +121,23 @@ export function buildPlayerProfileNarrative(profile = {}) {
     `${player.name || "This player"} profiles as a ${identity.noun} in the ${phase} of a career, with value rooted in ${identity.craft}.`
   ];
   const opening = templates[hashText(player.id || player.name) % templates.length];
+  // S108 — the runway is measured in seasons as well as points. The engine
+  // closes headroom at a declared age (`developmentRunwaySeasons` is projected
+  // by the runtime from that constant, so this file does not re-declare it); a
+  // 29-year-old and a 22-year-old with the same +9 gap have very different
+  // amounts of it left, and the sentence used to be identical for both.
+  const runwaySeasons = Number.isFinite(Number(player.developmentRunwaySeasons)) ? Number(player.developmentRunwaySeasons) : null;
+  const seasonsClause = runwaySeasons == null
+    ? ""
+    : runwaySeasons <= 0
+      ? " The growth window has closed; from here the curve points down, and what he holds is what he keeps."
+      : ` About ${runwaySeasons} growth season${runwaySeasons === 1 ? "" : "s"} remain to reach it.`;
   const trajectory = ceilingGap >= 8
-    ? `The ${overall} OVR / ${potential} POT gap leaves a meaningful development runway.`
+    ? runwaySeasons != null && runwaySeasons <= 2
+      ? `The ${overall} OVR / ${potential} POT gap is wide, but the runway is short.${seasonsClause}`
+      : `The ${overall} OVR / ${potential} POT gap leaves a meaningful development runway.${seasonsClause}`
     : ceilingGap >= 3
-      ? `At ${overall} OVR with ${potential} POT, refinement matters more than reinvention.`
+      ? `At ${overall} OVR with ${potential} POT, refinement matters more than reinvention.${seasonsClause}`
       : `The ${overall} OVR / ${potential} POT profile is near its modeled ceiling, making role fit and consistency decisive.`;
   const availability = player.injury?.type
     ? `Availability watch: ${player.injury.type}${player.injury.weeksRemaining ? `, ${player.injury.weeksRemaining} week(s) remaining` : ""}.`
@@ -134,7 +147,7 @@ export function buildPlayerProfileNarrative(profile = {}) {
     `Age ${age || "—"} · ${player.experience || 0} years of experience · ${seasonCount} recorded season${seasonCount === 1 ? "" : "s"}`,
     `Signature trait: ${best.name} ${best.value}`,
     `Career production: ${careerLine(position, career)}`,
-    `Development: ${player.developmentTrait || "Steady"} · ${overall} OVR · ${potential} POT · ${ceilingGap >= 0 ? "+" : ""}${ceilingGap} runway`,
+    `Development: ${player.developmentTrait || "Steady"} · ${overall} OVR · ${potential} POT · ${ceilingGap >= 0 ? "+" : ""}${ceilingGap} runway${runwaySeasons == null ? "" : ` · ${runwaySeasons} growth season${runwaySeasons === 1 ? "" : "s"} left`}`,
     availability
   ];
   const achievements = [

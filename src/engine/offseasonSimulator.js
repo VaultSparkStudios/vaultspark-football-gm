@@ -157,6 +157,10 @@ export function progressPlayer(player, rng, context = {}) {
     potentialReversion,
     ...(rawCentre === null ? {} : { potentialCentre: Number(rawCentre) })
   });
+  // S108 — the overall this player carried into the offseason. Returned with
+  // the result so the caller can record the move; until S108 the only record
+  // of a player's annual development was the ratings it had already overwritten.
+  const before = Number(player.overall);
   const ratingKeys = Object.keys(player.ratings);
   const focusRatings = (context.focusRatings || []).filter((key) => ratingKeys.includes(key));
   // rng.shuffle is called unconditionally and identically to before, so the RNG
@@ -181,6 +185,9 @@ export function progressPlayer(player, rng, context = {}) {
   player.overall = calculatePositionOverall(player.position, player.ratings);
   player.morale = clamp((player.morale || 72) + Math.round(Number(context.moraleDelta || 0)), 35, 99);
   player.reinjuryRisk = clamp((player.reinjuryRisk || 0) - Number(context.recoveryBonus || 0), 0, 0.55);
+  // No RNG draw is added or removed by returning this: every seeded league
+  // develops exactly as it did before the move was recorded.
+  return { before, after: Number(player.overall), delta };
 }
 
 export function expireContracts(league) {
@@ -223,6 +230,11 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
   // per offseason, from the league as it stood before anyone was progressed, so
   // every player is differentiated against the same centre.
   const { potentialCentre } = measurePotentialCentre(league);
+  // S108 — the development ledger. One row per progressed player, captured
+  // from the returned move rather than re-derived, so the record is exactly
+  // what the engine did. Retirees stay in it with `retired: true`: the S107
+  // gate showed that dropping them selects on the outcome.
+  const progressed = [];
   for (const player of activePlayers(league)) {
     const team = teamsById.get(player.teamId) || null;
     player.age += 1;
@@ -237,7 +249,21 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
       potentialCentre,
       potentialReversion: potentialReversionFor(player, reversionCentres)
     };
-    progressPlayer(player, rng, context);
+    const move = progressPlayer(player, rng, context);
+    const row = {
+      playerId: player.id,
+      teamId: player.teamId,
+      name: player.name,
+      position: player.position,
+      age: player.age,
+      before: move.before,
+      after: move.after,
+      change: move.after - move.before,
+      potential: Number.isFinite(Number(player.potential)) ? Number(player.potential) : null,
+      trait: player.developmentTrait || null,
+      retired: false
+    };
+    progressed.push(row);
     const chance = retirementChance(player, team, {
       ...options,
       seasonYear: year
@@ -266,11 +292,13 @@ export function applyAgingProgressionAndRetirements(league, year, rng, options =
       player.retirementOverride = null;
       player.retirementReason = rolled ? "retired" : "unsigned-out-of-league";
       league.retiredPlayers.push(player);
+      row.retired = true;
     } else {
       keep.push(player);
     }
   }
   league.players = keep;
+  return { progressed };
 }
 
 /**

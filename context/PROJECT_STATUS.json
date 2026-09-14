@@ -4,8 +4,8 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S107 landed position-relative potential behind a corrected S90 gate. The gate had read offseason survivors, and retirement rolls on the overall the offseason produced, so it measured selection, not development; it now measures every progressed player with a matched counterfactual and is tightened to 0.10. Canonical seed ten seasons: elite 2.1 per cent, dispersion 0.093, parity -0.001 - better than the old draw on all three, confirmed on seed 2026.",
-  "nextMilestone": "State the declared-population question for elite density before any code: the 90+ cut is position-blind while the All-Pro anchor is allocated per position, and position-relative potential made the cohort smaller and more concentrated (QB+OL 97 per cent canonical, 91 per cent seed 2026). Do not add a per-position arm as a route to a green gate, do not move the 1.53 per cent ceiling, and do not widen stdDevDrift (dispersion watch at 0.093). Public launch remains HOLD.",
+  "currentFocus": "S108 answered the elite-density question before code: the ceiling stays position-blind because the anchor's total is, and composition is published on the receipt, never gated - QB and OL hold 97 per cent of the canonical cohort against 25 per cent of the All-Pro seats, and sit seven overall points above the other five rooms. The offseason's development ledger is now returned from the engine and shown to the GM (stage message, feed, inbox, History-tab card) with no RNG draw added; the draft surface ships the scout's read on every response; the profile outlook reads headroom and trait and states the runway in growth seasons. The ledger roll's remedy, inert since S105, is fixed at source with retention by session number.",
+  "nextMilestone": "The rating scale is the next honest question, not the gate: rooms sit seven overall points apart, so 90 is not the same claim in every room; any change is a generator/scale change with the full distribution receipt as its matched control, stated in DECISIONS first. Do not add a per-room elite arm, do not move the 1.53 per cent ceiling, do not widen stdDevDrift (watch at 0.093 / 0.108). Keep the history island behind dynamic imports (15.2 per cent headroom). Public launch remains HOLD.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
@@ -21,13 +21,13 @@
     "migrationPosture": "passport-v1-artifacts-removed; relying-party registration and end-to-end verification still required"
   },
   "truthAuditStatus": "green",
-  "truthAuditLastRun": "2026-09-10",
+  "truthAuditLastRun": "2026-09-14",
   "ignisScore": 41119,
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
   "testSuiteStatus": "passing",
-  "testsPassing": 1471,
-  "testsTotal": 1471,
+  "testsPassing": 1501,
+  "testsTotal": 1501,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -66,20 +66,20 @@
   "silRubricVersion": "3.0",
   "silMax": 1000,
   "silScoreLegacy500": null,
-  "silScore": 960,
+  "silScore": 963,
   "silCategoriesV3": {
     "devHealth": 97,
     "creativeAlignment": 98,
     "momentum": 98,
-    "engagement": 87,
-    "processQuality": 95,
+    "engagement": 89,
+    "processQuality": 96,
     "crossRepoCoherence": 96,
     "securityPosture": 98,
     "ecosystemIntegration": 91,
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 107,
+  "currentSession": 108,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
@@ -118,7 +118,7 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 663,
+  "silHealth": 664,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
@@ -146,7 +146,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.004,
   "entropyLastComputed": "2026-09-09",
-  "lastSessionSummary": "S107 re-derived the diagnosis S106 handed over and found it wrong. The S90 declared-curve gate measured only players who survived the offseason, and retirement is rolled on the overall that offseason just produced, so it measured selection: +0.149 to +0.238 above the curve on survivors against within 0.022 on the full progressed population, four seeds. The gate now reads every progressed player with a matched seeded counterfactual, is tightened from 0.25 to 0.10, and keeps the pre-S90 subsidy (+0.82 to +0.90) and the survivor reading as negative controls. Position-relative potential landed behind it: headroom above the player's own overall, closed by 31, tapered over the 55 points below 99, same RNG slot. Above own potential 36.0-37.6 per cent to 0.0, overalls unchanged to the decimal. The first calibration (taper 25) worsened dispersion to 0.112 and was rejected; the width was chosen on the monotone dispersion arm and confirmed on a second seed. Canonical seed: elite 2.1 per cent, dispersion 0.093, parity -0.001. Two seed-pinned tests (rival-offer negative control, home-field advantage) now sample instead of pinning. Player-facing: POT and the profile's development runway for new leagues, with a release note.",
+  "lastSessionSummary": "S108 answered the question S107 handed over before writing code - the elite ceiling stays position-blind because the anchor's total is, and composition is published on the receipt, never gated: QB and OL hold 97 per cent of the canonical cohort against 25 per cent of the seats (ratios 3.9 and 3.9; 6.7 and 3.0 on seed 2026), and the two rooms sit seven overall points above the other five, which makes it a rating-scale question rather than a gate. The ledger roll's own remedy had been inert since S105 (every closeout appended beneath the pointer where the splitter stopped reading) and would have dropped S106 and S107; retention is now by session number with the pointer found anywhere. The offseason development ledger the engine always computed is now returned and shown to the GM - stage message, feed, inbox, History-tab card - with no RNG draw added; the draft surface ships the scout's read on every response instead of the truth the scouting board sells; the profile outlook reads headroom and trait. A pre-receipt review found eight things, all acted on before any shard ran.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -167,8 +167,8 @@
       "lastChecked": "2026-09-14"
     }
   ],
-  "lastSession": 106,
-  "silLastSession": 106,
+  "lastSession": 107,
+  "silLastSession": 108,
   "bootAmortization": {
     "ratio": 6.78,
     "verdict": "excellent",
@@ -1486,21 +1486,21 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 107,
-    "silScore": 960,
+    "session": 108,
+    "silScore": 963,
     "categories": {
       "devHealth": 97,
       "creativeAlignment": 98,
       "momentum": 98,
-      "engagement": 87,
-      "processQuality": 95,
+      "engagement": 89,
+      "processQuality": 96,
       "crossRepoCoherence": 96,
       "securityPosture": 98,
       "ecosystemIntegration": 91,
       "capitalEfficiency": 100,
       "automationCoverage": 100
     },
-    "date": "2026-09-13"
+    "date": "2026-09-14"
   },
   "testShardReceipt": {
     "canonicalCommand": "npm test",

@@ -122,7 +122,9 @@ export function presentDraftPickBeat(prospect, draft) {
     kicker: "The Pick Is In",
     headline: `${prospect?.name || "Unknown"} · ${verdict.label}`,
     line: verdict.line,
-    meta: `${prospect?.position || prospect?.pos || "?"} · OVR ${prospect?.overall ?? "—"}`,
+    // S108 — the surface prospect carries the scout's read; the truth arrives
+    // on the roster once the pick is in.
+    meta: `${prospect?.position || prospect?.pos || "?"} · ${prospect?.overall != null ? "OVR" : "Scout OVR"} ${prospect?.overall ?? prospect?.scouting?.scoutedOverall ?? "—"}`,
     tone: verdict.verdict === "reach" ? "loss" : verdict.verdict === "steal" ? "win" : "neutral"
   });
   return verdict;

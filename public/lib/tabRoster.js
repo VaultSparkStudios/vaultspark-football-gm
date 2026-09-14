@@ -39,6 +39,9 @@ export function renderRoster() {
     age: player.age,
     ovr: player.overall,
     pot: player.potential,
+    // S108 — the DTO has carried the trait since S8; the free-agent table
+    // showed it and the GM's own roster did not.
+    dev: player.devTrait ?? "-",
     fit: player.schemeFit ?? "-",
     morale: player.morale,
     slot: player.rosterSlot,
