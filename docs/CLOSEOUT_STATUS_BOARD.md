@@ -1,27 +1,27 @@
 <!-- generated-by: scripts/render-closeout-board.mjs v1.0 -->
-<!-- generated-at: 2026-09-12 (Session 106 closeout) -->
+<!-- generated-at: 2026-09-14 (Session 107 closeout) -->
 
 # Closeout Status Board — Franchise Architect: Football
 
 ```
-╔══ SESSION CLOSEOUT · Franchise Architect: Football · S106 ═════╗
-║  Date: 2026-09-12  ·  SIL: 960/1000  ·  Velocity: —              ║
+╔══ SESSION CLOSEOUT · Franchise Architect: Football · S107 ═════╗
+║  Date: 2026-09-14  ·  SIL: 960/1000  ·  Velocity: —              ║
 ║  Mode: BUILDER  ·  Agent: claude-code                            ║
 ║  Live:  preview  →  https://playfranchisearchitect.com/          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ WHAT SHIPPED · last 5 commits ═══════════════════════════════╗
+║  ✓ feat(sim): the S90 gate measures every progressed player, an  ║
+║  ✓ chore(closeout): record S106 deployment receipts, provenance  ║
 ║  ✓ feat(gates): give the ledger-budget gate its population, and  ║
 ║  ✓ chore(closeout): record S105 deployment receipts, provenance  ║
 ║  ✓ fix(tests): assert the branch the product rendered, so a bye  ║
-║  ✓ feat(record): give every surface the brief reads a writer, a  ║
-║  ✓ docs(handoff): record why the cached test receipt is deliber  ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ SCORES · SIL 960/1000 ═══════════════════════════════════════╗
-║    Dev Health         96   ██████████                            ║
+║    Dev Health         97   ██████████                            ║
 ║    Alignment          98   ██████████                            ║
-║    Momentum           96   ██████████                            ║
-║    Engagement         86   █████████░                            ║
-║    Process Qual       99   ██████████                            ║
+║    Momentum           98   ██████████                            ║
+║    Engagement         87   █████████░                            ║
+║    Process Qual       95   ██████████                            ║
 ║    Coherence          96   ██████████                            ║
 ║    Security           98   ██████████                            ║
 ║    Ecosystem          91   █████████░                            ║
@@ -41,7 +41,7 @@
 ║  ✓ agent memory (~/.codex or ~/.claude project memory)           ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ GIT STATUS ══════════════════════════════════════════════════╗
-║  Changes: 156 files  ·  M:7 A:51 D:49 ?:0                        ║
+║  Changes: 205 files  ·  M:6 A:0 D:98 ?:101                       ║
 ║  Ahead: 0  ·  Behind: 0                                          ║
 ║  Branch: main                                                    ║
 ╚════════════════════════════════════════════════════════════════╝
@@ -53,13 +53,13 @@
 ║  Doctor:        11/12                                            ║
 ║  Compliance:    37/37                                            ║
 ║  Tests:         1415/1415 · STALE                                ║
-║  IGNIS:         3d ago                                           ║
+║  IGNIS:         5d ago                                           ║
 ║  Truth:         green                                            ║
-║  Sanitization:  10d ago                                          ║
+║  Sanitization:  12d ago                                          ║
 ╚════════════════════════════════════════════════════════════════╝
 ╔══ NEXT SESSION ════════════════════════════════════════════════╗
-║  #1: potential-is-drawn-on-a-scale-overall-does-not-share — Mak  ║
-║      Simulation truth; feature depth; the root of the standing   ║
+║  #1: elite-density-cut-is-position-blind-against-a-per-position  ║
+║      Gate population; realism                                    ║
 ╚════════════════════════════════════════════════════════════════╝
 ```
 

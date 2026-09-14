@@ -164,7 +164,7 @@
       "type": "staging",
       "label": "Cloudflare Pages",
       "url": "https://staging.playfranchisearchitect.com",
-      "lastChecked": "2026-09-12"
+      "lastChecked": "2026-09-14"
     }
   ],
   "lastSession": 106,
@@ -266,11 +266,11 @@
   },
   "stagingAuthority": {
     "schemaVersion": "1.0",
-    "receiptSha256": "c67f1174e8fc76b1c9133548ff74c577039277657c6f0da25f947f6b559f0018",
-    "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
+    "receiptSha256": "9640bfd1435a96786f4bd4090db62b7b8dc3a6a45f249d28fc8a62f0b277256c",
+    "sourceRevision": "fac752feda47a5448d312129cc576a269c9ab0f9",
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3",
+      "digest": "bb8382f91956728cd384f6f255176f8222f71b62317902e8aecf9bf85f70c95e",
       "files": 216,
       "entries": [
         {
@@ -821,7 +821,7 @@
         {
           "path": "precache-manifest.json",
           "bytes": 16022,
-          "sha256": "23e1a273150b3b43ef2e2079453b756cd17ebfe2397ea768d95ff66298b9fd5a"
+          "sha256": "8e153b87eab42e09165310086f1b2fafca9dcfd801111b2afeb21609ec266673"
         },
         {
           "path": "privacy.html",
@@ -871,7 +871,7 @@
         {
           "path": "sitemap.xml",
           "bytes": 1623,
-          "sha256": "d4c2a42e75cf09980c3070d2fc144be20eb1bc64ec4909cbcb8f4d28b0fbfaaa"
+          "sha256": "2b50bb82590950c29b28db71f032ca6f6359225f67cdb08cbd4344c0292300d1"
         },
         {
           "path": "src/adapters/persistence/browserSaveStore.js",
@@ -940,8 +940,8 @@
         },
         {
           "path": "src/domain/playerFactory.js",
-          "bytes": 18857,
-          "sha256": "5e2fb972b8a8fc5189a249b5f1e29a0737612a149d8fe3784657b702c776434d"
+          "bytes": 20923,
+          "sha256": "e010d21f0d1baf19a9c84ff6a2f0efdcc41b1dfd8b297c1244f359205337d65e"
         },
         {
           "path": "src/domain/potentialReversion.js",
@@ -1330,8 +1330,8 @@
         },
         {
           "path": "status.html",
-          "bytes": 14119,
-          "sha256": "64b82c768b9d8e37dc52a7fd8c453989515ba17c9acfe57ae18ca372bc2c81a1"
+          "bytes": 15547,
+          "sha256": "4704dfcac92f1fae8db06c2739f8da79360371d03320b328dada4a0c6e44a4c9"
         },
         {
           "path": "styles.637f93f5b3.css",
@@ -1346,7 +1346,7 @@
         {
           "path": "sw.js",
           "bytes": 8549,
-          "sha256": "8baa046b8dcf93780d99c8418a152052321200752c8059cd9e23fe58dabafd62"
+          "sha256": "5cda159e9b651d59d78af8ca89a625d5be1a56ac6e6300da9d870d8e19e6822e"
         },
         {
           "path": "terms.html",
@@ -1360,21 +1360,21 @@
         "edge-policy-receipt.json"
       ]
     },
-    "deploymentId": "ff866b0a-117c-4ee2-868a-0b2f671c6317",
+    "deploymentId": "a9d06c47-dc29-4895-98ce-812a9c1392f0",
     "stableUrl": "https://staging.playfranchisearchitect.com",
     "domainStatus": "active",
     "provenance": {
       "status": "verified",
       "checksPassed": 14,
       "checksTotal": 14,
-      "checkedAt": "2026-09-12T03:09:59.555Z"
+      "checkedAt": "2026-09-14T07:15:10.281Z"
     },
     "rollback": {
-      "previousDeploymentId": "eacad999-2d78-4bef-9f3a-d048c98af0bb",
+      "previousDeploymentId": "ff866b0a-117c-4ee2-868a-0b2f671c6317",
       "available": true
     },
     "verified": true,
-    "observedAt": "2026-09-12T03:09:59.555Z"
+    "observedAt": "2026-09-14T07:15:10.282Z"
   },
   "lastCloseoutAt": "2026-09-12T03:40:41.929Z",
   "performanceAuthority": {
@@ -1406,31 +1406,31 @@
   "releaseAuthority": {
     "schemaVersion": "1.0",
     "kind": "unified-release-authority",
-    "observedAt": "2026-09-12T03:40:08.797Z",
+    "observedAt": "2026-09-14T07:50:55.021Z",
     "status": "verified",
-    "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
-    "publicationRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
+    "sourceRevision": "fac752feda47a5448d312129cc576a269c9ab0f9",
+    "publicationRevision": "fac752feda47a5448d312129cc576a269c9ab0f9",
     "publicationDelta": null,
     "artifactFingerprint": {
       "algorithm": "sha256",
-      "digest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3"
+      "digest": "bb8382f91956728cd384f6f255176f8222f71b62317902e8aecf9bf85f70c95e"
     },
     "identities": {
       "staging": {
-        "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
-        "artifactDigest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3"
+        "sourceRevision": "fac752feda47a5448d312129cc576a269c9ab0f9",
+        "artifactDigest": "bb8382f91956728cd384f6f255176f8222f71b62317902e8aecf9bf85f70c95e"
       },
       "production": {
-        "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
-        "artifactDigest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3"
+        "sourceRevision": "fac752feda47a5448d312129cc576a269c9ab0f9",
+        "artifactDigest": "bb8382f91956728cd384f6f255176f8222f71b62317902e8aecf9bf85f70c95e"
       },
       "visual": {
-        "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
-        "artifactDigest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3"
+        "sourceRevision": "fac752feda47a5448d312129cc576a269c9ab0f9",
+        "artifactDigest": "bb8382f91956728cd384f6f255176f8222f71b62317902e8aecf9bf85f70c95e"
       },
       "performance": {
-        "sourceRevision": "dbdc5c5aadae039c92e9f7d347c44832823968af",
-        "artifactDigest": "449b6d36ec61635a1dc7dc36104488246c82637383c0a688a960b5ce3a19e3e3"
+        "sourceRevision": "fac752feda47a5448d312129cc576a269c9ab0f9",
+        "artifactDigest": "bb8382f91956728cd384f6f255176f8222f71b62317902e8aecf9bf85f70c95e"
       }
     },
     "checks": [
@@ -1476,12 +1476,12 @@
       "note": "Backend runtime is independently attested and is not collapsed into the static artifact identity."
     },
     "receipts": {
-      "stagingSha256": "a97df85afcd52c8490bb82505317ab2772d3d122008977e735742e490ad28022",
-      "productionSha256": "3a4727454f4f71dd07e3a442c88fb50862edeaa0d2207d00d89374423ee6925f",
-      "visualSha256": "1c12d5407d9c57fe68d54ecf4a56fb60cc8815855fd6d708ca46805ba4f8e767",
-      "performanceSha256": "fbdc32afa156c1c848695863695571bc5aac388e977978f5083b6457c14aeb8b"
+      "stagingSha256": "2de35ee9f71b28331e93c7868ebf3eb3701ed7cab5406c1f09e4b948b699efa2",
+      "productionSha256": "24a66d20a46f6a042d407e55027f6e4d3f304b29e66b4685688e5b676cbaf1cf",
+      "visualSha256": "e6c89863b244d61024f5b2acbaa9e59ad4fd41aea0c3b2f32cb83a9d7f6b478f",
+      "performanceSha256": "fb98a460feb80581968d59921aae6c3fe998a26a433cfa160df2e38ba5f615c9"
     },
-    "receiptSha256": "8f354c9ee63c8fc100f683b995cb199ccf2a95a172cd279a3c166b96f42e54e3"
+    "receiptSha256": "0448ce12bea89f91830244c665f9b9515f823b51cb85c54798c7c3723c0d14e8"
   },
   "launchReady": false,
   "sil": {

@@ -61,4 +61,33 @@ Dispersion falls monotonically with span, and the mechanism is clear. A narrow t
 
 ## Receipts
 
-Recorded at closeout below.
+**Tests: every shard green on the final source, 1,471/1,471** (core 253, runtime 817, sim-contract 83, sim-realism 1 in one `all` run on the final tree; long 5 and studio 312 each alone), up from 1,463 in S106. **The combined source-bound receipt (`.cache/test-count.json`) was not produced and is not claimed.** In the final `all` run, `long` exceeded its 45-minute bound (exit 124, no test failed) with the machine at 100% CPU from other sessions' work; it passes 5/5 alone in 29.7 minutes.
+
+**Clean-runner CI on `fac752fe`: success** (run `34816816943`) — unit shards core, runtime, sim-contract, sim-realism and studio, plus browser gates, all green on `ubuntu-latest`.
+
+Reds this session surfaced and resolved, each classified before it was touched:
+
+- The rival-offer negative control (seed shift; now samples).
+- Home-field advantage (sampling noise; now pools).
+- A stale audit render.
+- An exported timeout override leaking into a studio test.
+- A `core` timeout and a no-output `long` exit, both under this session's own probe load.
+
+None was flaky, sibling drift or force-greened.
+
+### Deployment
+
+| | |
+|---|---|
+| Candidate | `fac752feda47a5448d312129cc576a269c9ab0f9` |
+| Artifact digest | `bb8382f91956728cd384f6f255176f8222f71b62317902e8aecf9bf85f70c95e` — changed (from `449b6d36…`), because `public/status.html` carries a new release note |
+| Staging | verified **14/14** · deployment `a9d06c47-dc29-4895-98ce-812a9c1392f0` · rollback `ff866b0a-117c-4ee2-868a-0b2f671c6317` · provenance report `reports/s107-staging.json` **10/10** |
+| Visual QA | 98 `s107-*` captures bound to the candidate and digest, 0 blocking; 255 responsive states passed; retention recorded 98 new hashes (1,821 total), 65.5 MB → 49.9 MB |
+| Backend runtime | run **34816816965** success — gate, `build-images (play)` and `build-images (api)` all green. `deploy-server` **skipped by design**: it runs only on a manual dispatch with `deploy_to_server` set (`deploy-backend.yml:104`), exactly as in S106. Images are built and published; no server rollout was dispatched, and none is claimed |
+| Production | promotion run **34817136107** — gate, build and deploy all **success** · live origin provenance `reports/s107-production.json` **10/10**, serving `fac752fe` at digest `bb8382f9…` · push-triggered Deploy Pages `34816816986` cancelled by the dispatch, as expected |
+| Performance | hosted receipt **verified**, bound to `fac752fe` |
+| Release authority | **verified** — source and publication revision `fac752fe`, all four identities (staging, production, visual, performance) bound; `stagingAuthority` reconciled at the same revision |
+| Doctor | `blockingFailing 0` · 11/12 · the standing warning is the registry SPARKED vs local FORGE drift |
+| `launchReady` | **false** — unchanged (email delivery, founder approval, lifecycle authority). Technical deployment, not public launch |
+
+**What the captures do and do not prove.** The roster at 1440px dark shows POT at or above OVR on every visible row, with veterans at no headroom and young players carrying room. The 390px light roster matches it. The draft-room prospect (77 OVR / 92 POT, EDGE) is a hardcoded fixture in `scripts/responsive-evidence.mjs` and is **not** evidence for this change. The status-page note was verified against the live staging origin (HTTP 200, 2026-09-13 note present), because the harness does not capture that page.
