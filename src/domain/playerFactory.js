@@ -174,47 +174,87 @@ function randomTrait(rng) {
 }
 
 /**
- * S106 — MEASURED, IMPLEMENTED AND REVERTED. Read this before rewriting it.
+ * Potential is headroom above the player's own overall (S106 finding, S107 landed).
  *
- * This draw is position-blind while `overall` is a position-WEIGHTED average of
- * position-BIASED attributes, so the two numbers every development, reversion,
- * scouting and elite-density calculation compares are not on the same scale.
- * Measured at generation across four seeds and 8,832 rostered players: mean
- * potential ~80 in EVERY room against mean overall 73.6 (TE) to 81.7 (QB);
- * 36.8% of the league generated ABOVE its own potential (QB 51.8%, OL 49.0%,
- * TE 22.7%); and all 45 players at 90+ in a fresh league were quarterbacks (11)
- * or offensive linemen (34), none anywhere else.
+ * The draw this replaces was position-blind — one band for every room — while
+ * `overall` is a position-WEIGHTED average of position-BIASED attributes, so the
+ * two numbers every development, reversion, scouting and elite-density
+ * calculation compares were not on the same scale. Measured at generation on
+ * four seeds and 8,832 rostered players: mean potential ~80 in every room
+ * against mean overall 73.1 (TE) to 82.4 (QB); 36.0-37.6% of the league
+ * generated ABOVE its own potential (QB up to 55.5%, TE as low as 19.5%); and
+ * every 90+ player in a fresh league a quarterback or an offensive lineman.
+ * After: 0.0% above own potential on every seed, mean potential tracking the
+ * room, and every mean overall unchanged to the decimal — the evidence that the
+ * single `rng.int` still occupies the same stream slot. `src/data/pfrAdapter.js`
+ * already derived potential this way for imported players.
  *
- * S106 replaced it with trait-sized headroom above the player's own overall
- * (same stream slot, one `rng.int`), damped near the 99 ceiling after the first
- * version took elite density to 5.3% and dispersion to 0.157 — both
- * out-of-range — because the defect had been a downward counterweight in the
- * reversion term. The damped version measured BETTER than the session inherited
- * on every arm: elite 2.8% -> 1.8%, dispersion 0.095 -> 0.083, parity +0.043 ->
- * +0.034.
+ * The ceiling taper is load-bearing, not cosmetic. Measured by S106, headroom
+ * without it took ten-season elite density to 5.3% and dispersion drift to
+ * 0.157, both out-of-range: the old draw's above-potential third had been a
+ * standing downward pull in the reversion term, and removing a brake installs
+ * an accumulator. The taper runs across most of the rating scale, so a player
+ * at 70 keeps about half his drawn room and one at 92 keeps an eighth — see
+ * `ceilingTaperSpan` for the measurement that chose its width.
  *
- * It was still reverted, because `test/session90-development-environment.test.js`
- * went red at 0.285 against a 0.25 tolerance and STAYED red (0.289) after the
- * obvious follow-up fix — per-room trait centres — was implemented and
- * measured. The cause is not a miscentred term: development deltas are applied
- * to RATINGS and overall is recomputed with position weights, so changing WHICH
- * players move changes aggregate OVR even when the delta's mean is zero. Taking
- * gaps from mixed (37% negative) to uniformly positive is exactly such a
- * redistribution. Closing that gate would have required either duplicating the
- * engine inside the test or widening its tolerance, and this project forbids
- * allowlisting your own change through a gate.
- *
- * **The next session's item is the test, not the generator**: make the declared
- * curve model the rating-level, position-weighted application it is compared
- * against — with the S90 subsidy (+0.84) still caught as a negative control —
- * and only then re-land position-relative potential. The full measurement is in
- * the S106 handoff.
+ * S106 refused this change at `test/session90-development-environment.test.js`
+ * and recorded the cause as rating-level redistribution. S107 re-measured and
+ * that was wrong: the gate read only the players who SURVIVED the offseason,
+ * and retirement is rolled on the overall the offseason just produced, so the
+ * generator had changed who retires, not how the league develops. The gate now
+ * measures every player it progressed; see the note above its tests.
  */
-function randomPotential(trait, rng) {
-  if (trait === "SUPERSTAR") return rng.int(84, 98);
-  if (trait === "HIDDEN") return rng.int(76, 94);
-  if (trait === "BUST") return rng.int(58, 76);
-  return rng.int(68, 90);
+export const POTENTIAL_HEADROOM_PROFILE = Object.freeze({
+  version: "2026-s107-headroom",
+  /** Rating points of growth a 23-year-old far from the ceiling may be drawn, by trait. */
+  headroomByTrait: Object.freeze({
+    SUPERSTAR: Object.freeze([6, 18]),
+    HIDDEN: Object.freeze([3, 14]),
+    BUST: Object.freeze([0, 3]),
+    NORMAL: Object.freeze([0, 9])
+  }),
+  /** Headroom is whole at or below this age... */
+  fullHeadroomAge: 23,
+  /** ...and gone by this one: a veteran's ceiling is the player he already is. */
+  closedHeadroomAge: 31,
+  /**
+   * Headroom tapers linearly over this many points below the 99 ceiling.
+   * Measured, canonical seed over ten seasons, against the old draw (elite 2.8%,
+   * dispersion 0.095, parity +0.043): span 25 read 2.4% / 0.112, span 40 read
+   * 3.0% / 0.101, span 55 read 2.1% / 0.093 / -0.001. Dispersion falls
+   * monotonically as the span widens because a narrow taper makes potential
+   * track overall almost one-for-one, and the trait term then rewards the
+   * players who are already highest.
+   */
+  ceilingTaperSpan: 55
+});
+
+/** One draw, in the stream slot the position-blind potential used to occupy. */
+function drawPotentialHeadroom(trait, rng) {
+  const [min, max] = POTENTIAL_HEADROOM_PROFILE.headroomByTrait[trait] || POTENTIAL_HEADROOM_PROFILE.headroomByTrait.NORMAL;
+  return rng.int(min, max);
+}
+
+/**
+ * A player's potential on the scale his overall is measured on: his own
+ * overall plus the drawn headroom, closed by age and by proximity to 99.
+ * Never below his overall, so no player is generated past his own ceiling.
+ */
+export function resolvePotential({ overall, age, headroom }) {
+  const profile = POTENTIAL_HEADROOM_PROFILE;
+  // Validated here, where the value is written: a NaN potential would sail
+  // through every downstream `|| overall` and silently stop development applying.
+  const values = { overall: Number(overall), age: Number(age), headroom: Number(headroom) };
+  for (const [label, value] of Object.entries(values)) {
+    if (!Number.isFinite(value)) throw new TypeError(`resolvePotential: ${label} must be finite, received ${value}`);
+  }
+  const ageRoom = clamp(
+    (profile.closedHeadroomAge - values.age) / (profile.closedHeadroomAge - profile.fullHeadroomAge),
+    0,
+    1
+  );
+  const ceilingRoom = clamp((99 - values.overall) / profile.ceilingTaperSpan, 0, 1);
+  return clamp(values.overall + Math.round(values.headroom * ageRoom * ceilingRoom), values.overall, 99);
 }
 
 function randomAttributeBase(position, rng) {
@@ -279,12 +319,13 @@ export function jerseyNumberForPlayer(position, seed) {
 
 export function createSyntheticPlayer({ teamId, position, year, rng, draft = false }) {
   const devTrait = randomTrait(rng);
-  const potential = randomPotential(devTrait, rng);
+  const headroom = drawPotentialHeadroom(devTrait, rng);
   const ratings = randomAttributeBase(position, rng);
   if (position === "QB") ensureQuarterbackDepthRatings(ratings);
   if (position === "LB" || position === "DB") ensureCoverageDepthRatings(ratings);
   const overall = calculatePositionOverall(position, ratings);
   const age = draft ? rng.int(21, 23) : rng.int(22, 33);
+  const potential = resolvePotential({ overall, age, headroom });
   const id = `P${year}-${teamId}-${position}-${Math.floor(rng.next() * 1e8)}`;
   const frame = physicalFrameFromSeed(position, id);
 

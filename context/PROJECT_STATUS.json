@@ -4,12 +4,12 @@
   "name": "Franchise Architect: Football",
   "status": "active",
   "health": "yellow",
-  "currentFocus": "S106 shipped three gate and record fixes and deferred its headline engine change with a full measurement. The next item is the TEST, not the generator: session90-development-environment compares a scalar declared curve against an engine that applies deltas to ratings and recomputes overall with position weights, so it cannot express position-relative potential. Make the declared curve model that application, keep the +0.84 S90 subsidy as its negative control, then re-land position-relative potential.",
-  "nextMilestone": "Re-land position-relative potential behind a test that can express it. The generator finding is measured across four seeds (36.8 per cent of players generated above their own potential; all 45 elite players in a fresh league are QB or OL) and the shipped calibration measured better on every distribution arm, but the S90 offseason gate stayed red at 0.289 even after per-room trait centres. Do not widen that tolerance and do not duplicate the engine inside the test. Elite density remains watch at 2.8 per cent and dispersion at 0.095 - the S105 readings, unchanged. Public launch remains HOLD.",
+  "currentFocus": "S107 landed position-relative potential behind a corrected S90 gate. The gate had read offseason survivors, and retirement rolls on the overall the offseason produced, so it measured selection, not development; it now measures every progressed player with a matched counterfactual and is tightened to 0.10. Canonical seed ten seasons: elite 2.1 per cent, dispersion 0.093, parity -0.001 - better than the old draw on all three, confirmed on seed 2026.",
+  "nextMilestone": "State the declared-population question for elite density before any code: the 90+ cut is position-blind while the All-Pro anchor is allocated per position, and position-relative potential made the cohort smaller and more concentrated (QB+OL 97 per cent canonical, 91 per cent seed 2026). Do not add a per-position arm as a route to a green gate, do not move the 1.53 per cent ceiling, and do not widen stdDevDrift (dispersion watch at 0.093). Public launch remains HOLD.",
   "blockers": [
     "Launch HOLD — email-delivery-unverified, founder-approval-unverified, lifecycle-authority-unverified."
   ],
-  "lastUpdated": "2026-09-12",
+  "lastUpdated": "2026-09-14",
   "lifecycle": "deployed",
   "audience": "public-unlaunched",
   "obeliskArchitecture": "external",
@@ -26,8 +26,8 @@
   "ignisGrade": "FORGE",
   "ignisLastComputed": "2026-09-09",
   "testSuiteStatus": "passing",
-  "testsPassing": 1463,
-  "testsTotal": 1463,
+  "testsPassing": 1471,
+  "testsTotal": 1471,
   "session8Summary": {
     "itemsShipped": 19,
     "itemsDeferred": 1,
@@ -68,18 +68,18 @@
   "silScoreLegacy500": null,
   "silScore": 960,
   "silCategoriesV3": {
-    "devHealth": 96,
+    "devHealth": 97,
     "creativeAlignment": 98,
-    "momentum": 96,
-    "engagement": 86,
-    "processQuality": 99,
+    "momentum": 98,
+    "engagement": 87,
+    "processQuality": 95,
     "crossRepoCoherence": 96,
     "securityPosture": 98,
     "ecosystemIntegration": 91,
     "capitalEfficiency": 100,
     "automationCoverage": 100
   },
-  "currentSession": 106,
+  "currentSession": 107,
   "lastAgent": "claude-code",
   "sessionMode": "builder",
   "lastVerification": {
@@ -118,14 +118,14 @@
   },
   "silImpact": 0,
   "silImpactMax": 1000,
-  "silHealth": 664,
+  "silHealth": 663,
   "silHealthMax": 1000,
   "doctorScore": {
     "blockingFailing": 0,
     "total": 12,
     "failing": 0,
     "score": 92,
-    "date": "2026-09-12",
+    "date": "2026-09-14",
     "passing": 11,
     "warning": 1,
     "checks": [
@@ -146,7 +146,7 @@
   "runtimeUrl": "https://playfranchisearchitect.com/",
   "entropyScore": 0.004,
   "entropyLastComputed": "2026-09-09",
-  "lastSessionSummary": "S106 found that a player's potential is drawn on a scale his overall does not share - randomPotential uses one band for every position while overall is a position-weighted average of position-biased attributes - and measured it across four seeds and 8,832 players: 36.8 per cent of the league is generated above its own potential, and every 90+ player in a fresh league is a quarterback or an offensive lineman. The fix was implemented, measured better on all three distribution arms (elite 2.8 to 1.8 per cent, dispersion 0.095 to 0.083, parity +0.043 to +0.034), re-fixed with per-room trait centres, measured again - and REVERTED, because session90-development-environment stayed red (0.285 then 0.289 against a 0.25 tolerance) and closing it would have meant duplicating the engine inside the test or widening a tolerance. src/ carries only a comment recording the measurement, verified by diff. What shipped: the ledger-budget gate's population (WORK_LOG 213 KB and TASK_BOARD 206 KB were never policed; both registered and rolled, 572 KB to 244 KB), the brief reporting the session authority that exists on disk after its own self-heal, removal of a doctor remedy prescribing a contractually forbidden file, and a test that fails when a newest-last ledger does not end with its newest entry.",
+  "lastSessionSummary": "S107 re-derived the diagnosis S106 handed over and found it wrong. The S90 declared-curve gate measured only players who survived the offseason, and retirement is rolled on the overall that offseason just produced, so it measured selection: +0.149 to +0.238 above the curve on survivors against within 0.022 on the full progressed population, four seeds. The gate now reads every progressed player with a matched seeded counterfactual, is tightened from 0.25 to 0.10, and keeps the pre-S90 subsidy (+0.82 to +0.90) and the survivor reading as negative controls. Position-relative potential landed behind it: headroom above the player's own overall, closed by 31, tapered over the 55 points below 99, same RNG slot. Above own potential 36.0-37.6 per cent to 0.0, overalls unchanged to the decimal. The first calibration (taper 25) worsened dispersion to 0.112 and was rejected; the width was chosen on the monotone dispersion arm and confirmed on a second seed. Canonical seed: elite 2.1 per cent, dispersion 0.093, parity -0.001. Two seed-pinned tests (rival-offer negative control, home-field advantage) now sample instead of pinning. Player-facing: POT and the profile's development runway for new leagues, with a release note.",
   "testingSurfaces": [
     {
       "type": "local",
@@ -1486,21 +1486,21 @@
   "launchReady": false,
   "sil": {
     "version": "3.0",
-    "session": 106,
+    "session": 107,
     "silScore": 960,
     "categories": {
-      "devHealth": 96,
+      "devHealth": 97,
       "creativeAlignment": 98,
-      "momentum": 96,
-      "engagement": 86,
-      "processQuality": 99,
+      "momentum": 98,
+      "engagement": 87,
+      "processQuality": 95,
       "crossRepoCoherence": 96,
       "securityPosture": 98,
       "ecosystemIntegration": 91,
       "capitalEfficiency": 100,
       "automationCoverage": 100
     },
-    "date": "2026-09-12"
+    "date": "2026-09-13"
   },
   "testShardReceipt": {
     "canonicalCommand": "npm test",

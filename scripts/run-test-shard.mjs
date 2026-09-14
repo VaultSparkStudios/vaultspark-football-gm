@@ -18,6 +18,7 @@ export const SHARDS = {
     "test/session102-gated-population.test.js",
     "test/session102-potential-centre.test.js",
     "test/session104-fieldable-depth.test.js",
+    "test/session107-position-relative-potential.test.js",
     "test/api.test.js",
     "test/architect-mastery-portfolio.test.js",
     "test/calibration.test.js",

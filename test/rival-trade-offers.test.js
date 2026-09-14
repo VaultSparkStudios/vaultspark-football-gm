@@ -164,14 +164,35 @@ test("accepting an offer commits the real trade with fresh-fingerprint disciplin
 // is unchanged at three seeds in forty, with eight producing no offer inside
 // fourteen weeks, so this remains seed-sensitive and a future move should be
 // re-scanned rather than treated as a regression.
-test("negative control: without the window guard the fixture yields an unacceptable offer", () => {
-  const { session, offer } = sessionWithOffer(620092);
-  assert.ok(offer, "seed 620092 must still produce a pending offer at all");
+//
+// S107 — the third move, for the same legitimate kind of reason: potential is
+// now headroom above a player's own overall, so player valuations in every
+// freshly generated league changed and 620092 surfaces its offer at week 3.
+// Existing saves are untouched. Seeds 620101-620120 were re-scanned against the
+// live engine with this file's own un-windowed helper: 620111 surfaces at week
+// 14 (three past the deadline, the widest margin this control has had), and
+// 620108, 620114 and 620115 at week 12. After three single-seed re-pins, the
+// control no longer pins one seed. It walks the reproducing seeds in order and
+// requires one to reproduce, the same pattern `OFFER_SEEDS` uses above, so one
+// legitimate simulation change cannot flip it by moving a single league.
+const PAST_DEADLINE_SEEDS = [620111, 620108, 620114, 620115];
 
-  const deadlineWeek = Number(session.getLeagueSettings().tradeDeadlineWeek);
+test("negative control: without the window guard the fixture yields an unacceptable offer", () => {
+  let session = null;
+  let offer = null;
+  const observed = [];
+  for (const seed of PAST_DEADLINE_SEEDS) {
+    const attempt = sessionWithOffer(seed);
+    const deadline = Number(attempt.session.getLeagueSettings().tradeDeadlineWeek);
+    observed.push(`${seed}:${attempt.offer ? `week ${attempt.session.currentWeek}` : "no offer"}`);
+    if (attempt.offer && attempt.session.currentWeek > deadline) {
+      ({ session, offer } = attempt);
+      break;
+    }
+  }
   assert.ok(
-    session.currentWeek > deadlineWeek,
-    `this seed is expected to surface its offer past the Week ${deadlineWeek} deadline (found at week ${session.currentWeek})`
+    offer,
+    `no candidate seed surfaced a pending offer past the deadline (${observed.join(", ")}) — re-scan, do not delete`
   );
 
   const result = respondToInboundTradeOffer(session, { offerId: offer.id, action: "accept" });

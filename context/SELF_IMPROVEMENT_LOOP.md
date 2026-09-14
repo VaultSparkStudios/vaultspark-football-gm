@@ -1,11 +1,11 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Last session: 106 (2026-09-12) | Total: 960/1000 | Velocity: 4 | Debt: →
-Avgs — 3: 960.7 | 5: 960 | 10: 966 | 25: 979.4 | all: 988.4
+Last session: 107 (2026-09-13) | Total: 960/1000 | Velocity: 4 | Debt: →
+Avgs — 3: 960.3 | 5: 960.4 | 10: 963.8 | 25: 978.1 | all: 987.9
 Sparkline: ▅▅▅▅▅
 Intent rate: 100% (5/5 last 5)
-SIL delta: 961 → 960 (-1). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 60 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 960 → 960 (+0). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 61 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
 
 ## 2026-08-11 — Session 80 Exact Decision Surfaces and Visible Architect Mastery
@@ -216,3 +216,21 @@ Dev Health is 96: the session's engine work is a finding rather than an improvem
 - [SIL] Refusing your own best work at a gate you did not write is the job. The reverted change measured better on all three distribution arms, and shipping it would have required either duplicating the engine inside a test or widening a tolerance. The finding keeps all of its value in the record; the code would have cost a gate.
 - [SIL] When removing a defect makes a gate worse, the defect was load-bearing — find what it was holding up before deciding what to do. A third of the league generated above its own potential was nonsense AND a brake. The honest fix keeps the correction and replaces the brake with one that is defensible on its own terms, rather than restoring the nonsense or widening the band.
 - [SIL] A gate that declares a ceiling must declare its population, and the population should be derived rather than listed. Third instance here; the fix that lasts is the one that reads the repo instead of a hand-kept array.
+
+## 2026-09-13 — Session 107 — The gate measured who survived, and potential lands on the scale overall uses
+
+SIL v3.0: **960 / 1000** (Dev Health 97, Creative Alignment 98, Momentum 98, Engagement 87, Process Quality 95, Cross-Repo Coherence 96, Security Posture 98, Ecosystem Integration 91, Capital Efficiency 100, Automation Coverage 100). Intent outcome: Achieved. These are engineering assessments, not measured player outcomes; engagement remains limited by the absence of any real-cohort evidence.
+
+S106 handed over a diagnosis and a prescription: the S90 gate's residual was rating-level, position-weighted redistribution, so model that inside the test. **Re-derived instead of inherited, it did not survive a single probe.** Over the full progressed population the engine matched the declared curve within ±0.022 on four seeds; the same runs read over survivors sat +0.149 to +0.238 high. Retirement is rolled on the overall the offseason just produced, so a survivor filter selects on the outcome. S106's generator change had altered who retires, not how the league develops, and the prescribed fix would have been the engine duplication S106 itself forbade, aimed at a cause that was not there.
+
+**The gate now measures what it claims to.** Every progressed player, at the engine's measured centre, with the environment isolated by a matched seeded offseason. It is tightened from 0.25 to 0.10 and carries two negative controls: the pre-S90 environment (+0.82 to +0.90), and the survivor reading itself. Position-relative potential landed behind it: above own potential went 36.0-37.6% → 0.0% with overalls unchanged to the decimal.
+
+**The first calibration was a cost, and it was measured as one before anyone believed it.** Taper span 25 improved elite density and worsened dispersion (0.095 → 0.112). The sweep's dispersion arm moved monotonically (0.112 / 0.101 / 0.093) while elite density did not (2.4 / 3.0 / 2.1%), so the width was chosen on the monotone arm and confirmed on a second seed against a restored old draw. Canonical seed: elite 2.1%, dispersion 0.093, parity -0.001, better than the old draw on all three, with no threshold moved.
+
+Dev Health is 97: the headline change shipped on measured evidence across two seeds, and the four reds the canonical runs surfaced were each classified before being touched and fixed at source. Momentum is 98: three items shipped, and the fourth was measured and deliberately left a question. **Process Quality is 95, and the deductions are my own.** I ran three ten-season probes beside a shard and timed it out. I exported a timeout override that a studio test reads through the inherited environment. My first composition probe read a league the verification never advances. And the audit sidecar was left stale twice. Gates or measurement caught every one before it shipped; each still cost a rerun. Engagement is 87: POT and the profile's development runway are truthful for new leagues, but there is still no cohort.
+
+- [SIL] Re-derive an inherited diagnosis by running it before implementing its prescription. S106's cause was wrong, and its prescribed fix would have duplicated the engine inside the test. One matched probe on the unchanged tree was cheaper than either.
+- [SIL] A residual that moves when the population's composition changes is a population effect before it is a mechanism. Check what population a gate reads — and whether anything after the mechanism filters it on the outcome — before theorising about how the mechanism works.
+- [SIL] In a calibration sweep, choose on the arm that moves monotonically and confirm on a second seed against a same-seed control. Tail statistics that bounce across the sweep are telling you their noise, not their optimum.
+- [SIL] A test that pins one seed to reproduce a population claim will be re-pinned by every legitimate simulation change. The rival-offer control had been re-pinned three times and home-field advantage once; both now sample, so the claim they assert is the claim they measure.
+- [SIL] Never share a CPU or an environment with the canonical receipt. Probes beside a shard timed it out, and an exported override leaked into a child test's assertion; both reds were real observations of a polluted run, not of the code.

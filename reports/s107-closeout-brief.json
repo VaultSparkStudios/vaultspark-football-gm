@@ -1,0 +1,96 @@
+{
+  "session": "S107",
+  "date": "2026-09-13",
+  "repo": "franchise-architect",
+  "headline": "The gate that refused S106's change was measuring who survived the offseason, not how the league developed. Re-derived, not inherited; the change it refused is now live on a calibration chosen by matched measurement.",
+  "items": [
+    {
+      "title": "The S90 declared-curve gate measures every player the offseason progressed",
+      "projectImpact": 9,
+      "ecosystemImpact": 8,
+      "evidence": "session90-development-environment compared the declared curve with the mean overall change of players still in the league after applyAgingProgressionAndRetirements, which progresses a player and then rolls retirementChance on the overall it just produced. Keeping survivors selected on the outcome. On the unchanged S106 tree across four seeds the survivor reading sat +0.149 to +0.238 above the curve (0.235 of a 0.25 tolerance on the canonical seed) while the full progressed population matched within -0.022 to +0.022 and the environment itself contributed -0.035 to -0.005. The gate now captures every progressed player before the call, reads the curve at the engine's measured potential centre, and isolates the environment with a matched seeded offseason (wired against zeroed tilt), so none of the engine is re-implemented inside the test. Tolerance tightened 0.25 to 0.10 on a largest reading of 0.056. Negative controls: the pre-S90 environment through the same matched offseason reads +0.82 to +0.90 and fails, and the survivor reading of the same run must exceed the progressed reading. The old survivor gate on the new generator reproduces S106's red at 0.301 while the environment contributes 0.002."
+    },
+    {
+      "title": "A player's potential is headroom above his own overall",
+      "projectImpact": 9,
+      "ecosystemImpact": 6,
+      "evidence": "The position-blind draw put 36.0-37.6 per cent of every new league above its own potential (QB up to 55.5 per cent, TE as low as 19.5) because overall is position-weighted and potential was not. Potential is now trait-sized headroom above the player's own overall (SUPERSTAR 6-18, HIDDEN 3-14, NORMAL 0-9, BUST 0-3), whole at 23, closed by 31, tapered linearly over the 55 points below 99, drawn in the same single rng.int slot and resolved once overall and age exist, with finite inputs asserted where the value is written. Four seeds: above own potential 0.0 per cent, mean potential tracks the room (QB 82.1-83.3, TE 74.3-75.2), every mean overall and 90+ count unchanged to the decimal. The PFR import path already derived potential this way. A focused test carries a negative control reconstructing the position-blind draw."
+    },
+    {
+      "title": "The first calibration was a cost, and the taper width was chosen on the arm that moved monotonically",
+      "projectImpact": 8,
+      "ecosystemImpact": 7,
+      "evidence": "Canonical seed, ten seasons, against the old draw (elite 2.8 per cent, dispersion 0.095, parity +0.043): taper span 25 read 2.4 / 0.112 — better elite density bought with worse dispersion, rejected. Span 40 read 3.0 / 0.101 / +0.032; span 55 read 2.1 / 0.093 / -0.001, better on all three. Dispersion fell monotonically with span and has a mechanism (a narrow taper makes potential track overall one-for-one, so the trait term pays the players already highest); elite density bounced, so it was not used to choose. Confirmed on seed 2026 against a restored old draw: 3.4 / 0.125 to 2.7 / 0.108. Variants ran from isolated copies of src/ so neither the worktree nor a running shard saw one. No threshold moved."
+    },
+    {
+      "title": "Two seed-pinned tests assert the population claims they state",
+      "projectImpact": 6,
+      "ecosystemImpact": 7,
+      "evidence": "The rival-offer negative control needs a league whose first offer lands after the Week 11 deadline; potential feeds player value, so seed 620092 moved to week 3 — its third re-pin after S103 and S104, exactly as its own comment predicted. Re-scanned 620101-620120 with the file's own helper; it now walks 620111 (week 14, the widest margin it has had), 620108, 620114 and 620115. Home-field advantage read edge 0.705 against neutral 0.714 on one league at 220 games; the same pair reads +0.028 at 2,000 games and +0.036 swapped, and seven of eight leagues read +0.032 to +0.064 at 220 — sampling noise on an unchanged 1.2-point boost. It now pools three leagues and keeps the per-league bound."
+    },
+    {
+      "title": "The S106 record is corrected append-only",
+      "projectImpact": 5,
+      "ecosystemImpact": 7,
+      "evidence": "DECISIONS S107 Decision 1 supersedes S106 Decision 0's causal claim with both measurements side by side; the S106 entry is untouched. The randomPotential source comment is replaced with the landed design and its measurement, TRUTH_AUDIT names the contradiction, and agent memory records the pattern: a residual that moves when a population's composition changes is a population effect before it is a mechanism."
+    },
+    {
+      "title": "New leagues show players a truthful development runway",
+      "projectImpact": 6,
+      "ecosystemImpact": 3,
+      "evidence": "POT is visible in the roster, contracts, draft and stats tabs, and the profile narrative prints OVR / POT and a signed development runway. A third of every new league used to show a negative runway on day one. No generated player does now. public/status.html carries a player-facing note saying what changed, why it had been held back, and that saved franchises keep their potentials."
+    }
+  ],
+  "followUps": [
+    {
+      "title": "State elite density's declared-population question before any code",
+      "evidence": "End-of-window QB+OL share of the 90+ cohort: 97 per cent on the canonical seed (35 of 36); on seed 2026, 72 per cent under the old draw (41 of 57) and 91 per cent under span 55 (42 of 46). Position-relative potential made the cohort smaller and more concentrated. The 90+ cut is position-blind; the First-Team All-Pro anchor is allocated per position. Write the question in DECISIONS first; never adopt a per-position arm as a route to a green gate, and do not move the 1.53 per cent ceiling."
+    },
+    {
+      "title": "Dispersion and elite density remain watch",
+      "evidence": "Dispersion drift 0.093 against an on-target 0.08, elite 2.1 per cent against a sourced 1.53 per cent ceiling, canonical seed. Do not widen stdDevDrift*."
+    },
+    {
+      "title": "Ledger retention by session number",
+      "evidence": "Carried from S106: the roll keeps the last N entries in file order while some live ledgers are not strictly ordered. It is a history rewrite and wants its own session."
+    }
+  ],
+  "blockers": [
+    {
+      "title": "Public launch remains HOLD — unchanged and untouched this session",
+      "evidence": "Delivered reply-capable project-domain email, candidate-bound founder launch approval, and authoritative lifecycle reconciliation remain three independent unmet gates. launchReady stays false. This session is a technical deployment only."
+    },
+    {
+      "title": "Authoritative registry still reads SPARKED against a local contract of FORGE",
+      "evidence": "Non-blocking doctor warning, unchanged. Do not resolve by flipping the local contract."
+    }
+  ],
+  "honestyLedger": [
+    {
+      "title": "The inherited diagnosis was wrong, and its prescribed fix would have built the wrong thing",
+      "evidence": "S106 prescribed modelling rating-level, position-weighted application inside the test. That is the engine duplication S106 itself forbade, aimed at a cause one probe on the unchanged tree disproved. The correction is recorded append-only rather than by editing S106's entries."
+    },
+    {
+      "title": "The first calibration I shipped into the worktree made dispersion worse",
+      "evidence": "Taper span 25 measured dispersion 0.112 against the old draw's 0.095. It stayed in the tree through the first gate run and the first core shard, and a ten-season receipt caught it before any commit. The recorded justification for the tolerance was corrected to the shipped generator's readings."
+    },
+    {
+      "title": "Four canonical-run reds were self-inflicted pollution or my own omissions",
+      "evidence": "Three ten-season probes beside the core shard timed it out (exit 124, no test failed). An exported TEST_SHARD_TIMEOUT_MS leaked into test-shard-progress through the inherited environment. The audit sidecar went stale twice, once with a shipped item still marked planned, which a pre-receipt review caught, and once after an evidence edit. A long shard exited 1 with no output under load and passed 5/5 alone. Each was classified before being touched; none was flaky or force-greened, and none was a defect in the shipped code."
+    },
+    {
+      "title": "A composition probe measured the wrong league and its numbers were voided",
+      "evidence": "The first room-composition probe read session.league after runRealismVerification, which simulates a copy. Its elite counts were day-zero figures. They were not used; the probe was rewritten to read the report's own end-of-window rooms."
+    },
+    {
+      "title": "Measurement scope declared rather than implied",
+      "evidence": "Gate readings are one offseason on four seeds. The generation table is four seeds with no simulation. Ten-season distribution readings are the canonical seed plus one same-seed confirmation on seed 2026, not a sweep. SIL scores are engineering assessments, not measured player outcomes; no real-cohort evidence exists and none was manufactured."
+    }
+  ],
+  "diffStat": {
+    "files": 20,
+    "insertions": 884,
+    "deletions": 227,
+    "suite": "every shard green on the final source, 1,471/1,471 (core 253, runtime 817, sim-contract 83, sim-realism 1 in one all-run on the final tree; long 5 and studio 312 each run alone), up from 1,463 in S106. The combined source-bound receipt was NOT produced: in the final all-run long exceeded its 45-minute bound (exit 124, no test failed) with the machine at 100 per cent CPU from other sessions' work; it passes 5/5 alone, and test-count.json is neither written nor claimed. GitHub CI's shard matrix (core, runtime, sim-contract, sim-realism, studio) and the Deploy Pages gate are the clean-runner receipt. Earlier runs this session surfaced four reds, each classified before it was touched: a seed-pinned rival-offer control and a seed-pinned home-field sample (legitimate simulation shifts, both now sample), a stale audit render, and an exported timeout override leaking into a studio test."
+  }
+}

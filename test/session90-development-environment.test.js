@@ -9,7 +9,8 @@ import {
   measureDevelopmentCentres,
   rawDevelopmentTilt
 } from "../src/domain/developmentEnvironment.js";
-import { developmentDelta, LEAGUE_AVERAGE_POTENTIAL, PLAYER_DEVELOPMENT_PROFILE } from "../src/domain/ratings.js";
+import { developmentDelta, PLAYER_DEVELOPMENT_PROFILE } from "../src/domain/ratings.js";
+import { measurePotentialCentre } from "../src/domain/potentialReversion.js";
 import { applyAgingProgressionAndRetirements, progressPlayer } from "../src/engine/offseasonSimulator.js";
 import { clamp } from "../src/utils/rng.js";
 
@@ -73,23 +74,8 @@ test("the club development environment is a differentiator, not a league-wide su
 });
 
 test("NEGATIVE CONTROL — the same assertion rejects the pre-S90 formula it was written to catch", () => {
-  // The defect exactly as it shipped: centres hardcoded at 72/72/70, the culture
-  // credit unconditional while its debit applied only to players 29 and over,
-  // and a clamp with more headroom up than down. If the tolerance above cannot
-  // fail this, it is not a gate — it is decoration.
-  const priorTilt = (player, team, modifierIdentity) =>
-    clamp(
-      Math.round(
-        (Number(team?.owner?.facilities?.training || 72) - 72) / 10 +
-          (Number(team?.coaching?.development || 72) - 72) / 13 +
-          (computeSchemeFit(player, team) - 70) / 18 +
-          (modifierIdentity === "developmental" ? 1 : 0) -
-          (modifierIdentity === "urgent" && player.age >= 29 ? 1 : 0)
-      ),
-      -3,
-      4
-    );
-
+  // The defect exactly as it shipped (`priorTilt`, below). If the tolerance above
+  // cannot fail it, it is not a gate — it is decoration.
   const { session, teamsById, roster } = leagueOf(20260306);
   const priorMean = mean(
     roster.map((player) => {
@@ -253,48 +239,154 @@ test("the player-facing development outlook reports the tilt the engine will act
   }
 });
 
-test("one wired offseason moves the league by the declared curve and nothing else", () => {
-  // The sharpest available statement of the defect. The declared curve says what
-  // the league's mean development should be for this exact roster; the engine
-  // must deliver that and not that-plus-a-subsidy. Measured on the players who
-  // survive the offseason, so retirement and intake composition — separate
-  // mechanisms with their own owners — cannot mask or be blamed for the result.
-  //
-  // League-level multi-season drift is deliberately NOT asserted here: it is the
-  // emergent product of this curve plus retirement plus intake, and
-  // `test/realism-career-regression.test.js` is the authority that owns it.
-  const session = createSession({ seed: 20260306, startYear: 2026, controlledTeamId: "BUF" });
-  const year = session.currentYear;
+/*
+ * S107 — the offseason gates below measure every player the offseason
+ * PROGRESSED, captured before the call, retirees included.
+ *
+ * Until S107 this gate read the players who survived the offseason, "so that
+ * retirement cannot mask the result". It did the opposite. The offseason
+ * progresses a player and only then rolls his retirement, on the overall it
+ * has just produced (`retirementChance` rewards 84+ and punishes 74-and-below),
+ * so keeping only survivors selects on the very outcome being measured. On the
+ * unchanged S106 tree that selection alone read +0.149 to +0.238 across four
+ * seeds — 94 per cent of the 0.25 tolerance on the canonical seed — while the
+ * full progressed population matched the declared curve to within 0.035 and
+ * the environment itself contributed -0.035 to -0.005. S106 read that residual
+ * as rating-level redistribution and refused a generator change for it; the
+ * change had only altered who retires.
+ *
+ * League-level multi-season drift is still deliberately NOT asserted here: it
+ * is the emergent product of this curve plus retirement plus intake, and
+ * `test/realism-career-regression.test.js` owns it.
+ */
+const OFFSEASON_GATE_SEED = 20260306;
 
-  const before = new Map(
-    session.league.players
-      .filter((player) => player.status !== "retired")
-      .map((player) => [player.id, { overall: Number(player.overall), age: Number(player.age), potential: Number(player.potential) }])
+/**
+ * Largest mean OVR move, in either direction, an offseason may make beyond what
+ * the declared curve (or, for the environment arm, a zeroed environment) says.
+ * Tightened from 0.25 in S107: with the population defect removed, the largest
+ * reading across four seeds on both the old potential draw and the shipped
+ * generator was 0.056 against the declared curve and 0.035 for the environment
+ * arm, while the defect this guards against read +0.82 to +0.90 through the
+ * same measurement.
+ */
+const OFFSEASON_MOVEMENT_TOLERANCE = 0.1;
+
+// The environment exactly as it shipped before S90: centres hardcoded at
+// 72/72/70, the culture credit unconditional while its debit applied only to
+// players 29 and over, and a clamp with more headroom up than down.
+function priorTilt(player, team, modifierIdentity) {
+  return clamp(
+    Math.round(
+      (Number(team?.owner?.facilities?.training || 72) - 72) / 10 +
+        (Number(team?.coaching?.development || 72) - 72) / 13 +
+        (computeSchemeFit(player, team) - 70) / 18 +
+        (modifierIdentity === "developmental" ? 1 : 0) -
+        (modifierIdentity === "urgent" && player.age >= 29 ? 1 : 0)
+    ),
+    -3,
+    4
   );
+}
 
+const offseasonRuns = new Map();
+
+/**
+ * One real offseason on a fresh league. `environment` selects the club
+ * development environment the engine is handed: `wired` (the live authority),
+ * `zeroed` (the same context with the tilt removed) or `prior` (the pre-S90
+ * formula). Everything else — the RNG stream, reversion, centres, retirement —
+ * is the engine's own, so arms on the same seed differ only in the environment.
+ */
+function offseasonMovement(environment) {
+  if (offseasonRuns.has(environment)) return offseasonRuns.get(environment);
+  const session = createSession({ seed: OFFSEASON_GATE_SEED, startYear: 2026, controlledTeamId: "BUF" });
+  const progressed = session.league.players.filter((player) => player.status !== "retired");
+  const before = new Map(
+    progressed.map((player) => [
+      player.id,
+      { overall: Number(player.overall), age: Number(player.age), potential: Number(player.potential) }
+    ])
+  );
+  // The centre the engine differentiates the trait term against, measured the
+  // way the engine measures it, from the league before anyone is progressed.
+  const { potentialCentre } = measurePotentialCentre(session.league);
+  const factors = PLAYER_DEVELOPMENT_PROFILE.ageFactors;
   const declared = mean(
     [...before.values()].map((player) => {
       // The player is a year older when the curve is applied to him.
       const age = player.age + 1;
-      const factors = PLAYER_DEVELOPMENT_PROFILE.ageFactors;
       const ageFactor =
         age <= 25 ? factors.developing25AndUnder : age <= 29 ? factors.prime26To29 : factors.veteran30Plus;
-      return ageFactor + (player.potential - LEAGUE_AVERAGE_POTENTIAL) / 20;
+      return ageFactor + (player.potential - potentialCentre) / 20;
     })
   );
 
   session.developmentEnvironmentCentres();
-  applyAgingProgressionAndRetirements(session.league, year, session.rng, {
-    developmentContext: (player, team) => session.buildPlayerDevelopmentContext(team?.id || player.teamId, player)
+  applyAgingProgressionAndRetirements(session.league, session.currentYear, session.rng, {
+    developmentContext: (player, team) => {
+      const context = session.buildPlayerDevelopmentContext(team?.id || player.teamId, player);
+      if (environment === "zeroed") return { ...context, developmentEnvironmentTilt: 0, developmentBonus: 0 };
+      if (environment === "prior") {
+        const tilt = priorTilt(player, team, team?.cultureProfile?.identity || null);
+        return { ...context, developmentEnvironmentTilt: tilt, developmentBonus: 0 };
+      }
+      return context;
+    }
   });
 
+  const moved = (players) => mean(players.map((player) => Number(player.overall) - before.get(player.id).overall));
   const survivors = session.league.players.filter((player) => before.has(player.id));
-  const observed = mean(survivors.map((player) => Number(player.overall) - before.get(player.id).overall));
+  const run = {
+    declared,
+    progressedCount: progressed.length,
+    survivorCount: survivors.length,
+    progressed: moved(progressed),
+    survivors: moved(survivors)
+  };
+  offseasonRuns.set(environment, run);
+  return run;
+}
 
-  assert.ok(survivors.length > 1000, `expected a full league of survivors, got ${survivors.length}`);
+test("one wired offseason moves every player it progressed by the declared curve and nothing else", () => {
+  const wired = offseasonMovement("wired");
+  assert.ok(wired.progressedCount > 2000, `expected a full league, got ${wired.progressedCount}`);
   assert.ok(
-    Math.abs(observed - declared) <= 0.25,
-    `the engine moved the league ${observed.toFixed(3)} OVR while the declared curve says ${declared.toFixed(3)} ` +
-      `(gap ${(observed - declared).toFixed(3)}). The pre-S90 environment subsidy was worth +0.84 here.`
+    Math.abs(wired.progressed - wired.declared) <= OFFSEASON_MOVEMENT_TOLERANCE,
+    `the engine moved the league ${wired.progressed.toFixed(3)} OVR while the declared curve says ` +
+      `${wired.declared.toFixed(3)} (gap ${(wired.progressed - wired.declared).toFixed(3)}). ` +
+      "The pre-S90 environment subsidy was worth +0.84 here."
+  );
+});
+
+test("the club environment, isolated by a matched offseason with the tilt zeroed, mints no development", () => {
+  const wired = offseasonMovement("wired");
+  const zeroed = offseasonMovement("zeroed");
+  const contribution = wired.progressed - zeroed.progressed;
+  assert.ok(
+    Math.abs(contribution) <= OFFSEASON_MOVEMENT_TOLERANCE,
+    `the wired environment moved the league ${contribution.toFixed(3)} OVR beyond an identical offseason without it`
+  );
+});
+
+test("NEGATIVE CONTROL — the matched offseason rejects the pre-S90 environment it was written to catch", () => {
+  const prior = offseasonMovement("prior");
+  const zeroed = offseasonMovement("zeroed");
+  const contribution = prior.progressed - zeroed.progressed;
+  assert.ok(contribution > 0.5, `the pre-S90 environment should reproduce the measured subsidy; got ${contribution.toFixed(3)}`);
+  assert.ok(contribution > OFFSEASON_MOVEMENT_TOLERANCE, "the offseason tolerance must reject the defect it was written for");
+});
+
+test("NEGATIVE CONTROL — reading only the survivors is selection on the outcome, and visibly so", () => {
+  // Retirement is rolled on the overall the offseason just produced, so the
+  // survivor population is biased toward players whose ratings rose. If a
+  // refactor ever "simplifies" the gates above back to survivors, this is the
+  // size of the error it reintroduces.
+  const wired = offseasonMovement("wired");
+  assert.ok(wired.survivorCount < wired.progressedCount, "retirement should have removed someone");
+  assert.ok(
+    wired.survivors - wired.progressed > OFFSEASON_MOVEMENT_TOLERANCE,
+    `survivors ${wired.survivors.toFixed(3)} vs progressed ${wired.progressed.toFixed(3)}: the survivor bias the ` +
+      "pre-S107 gate carried should be larger than the tolerance it consumed"
   );
 });

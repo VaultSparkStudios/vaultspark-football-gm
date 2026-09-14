@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "1.1",
+  "date": "2026-09-13",
+  "session": 107,
+  "agent": "claude-code",
+  "project": "franchise-architect-football",
+  "displayName": "Franchise Architect: Football",
+  "status": "planned",
+  "summary": {
+    "source": "Live code plus executed engine measurements on the unchanged tree: a matched-counterfactual offseason (wired environment / zeroed environment / reconstructed pre-S90 environment) on four seeds (20260306 / 4040 / 777 / 90210), each measured over both the survivor population the S90 gate reads and the full progressed population, and a generation table on four seeds (20260306 / 2026 / 8121 / 4242, 8,832 rostered players).",
+    "itemsRanked": 4,
+    "combinedPriority": 111,
+    "verificationNote": "The S106 handoff diagnosed the S90 gate's residual as rating-level, position-weighted redistribution. Re-derived rather than inherited, and it does not survive measurement: over the full progressed population the engine matches the declared curve to within 0.035 on every seed, and the same run read over survivors only is 0.15-0.24 high. The residual is selection on the outcome, not redistribution."
+  },
+  "profile": {
+    "audience": "public-unlaunched",
+    "type": "browser football management game",
+    "rubric": "product; game-loop payoff, truthful feedback, static-host safety and measured release readiness",
+    "staging": "Stable Cloudflare staging before authorized main promotion and production deployment",
+    "source": "context/PROJECT_STATUS.json, context/LATEST_HANDOFF.md, arc-profile (studio-ops copy, registry-matched)"
+  },
+  "items": [
+    {
+      "rank": 1,
+      "tier": "HIGH",
+      "category": "Gate truth; the defect that blocked S106's headline change",
+      "effortHours": 2,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 36,
+      "slug": "s90-gate-conditions-on-its-own-outcome",
+      "title": "The S90 declared-curve gate measures only the players who survived the offseason, and retirement is rolled on the overall the offseason just produced",
+      "status": "implemented",
+      "executionEvidence": "L3 shipped. test/session90-development-environment.test.js now measures every progressed player (captured before the call, retirees included) against the declared curve at the engine's measured potential centre, and isolates the environment with a matched seeded offseason (wired vs zeroed tilt). Tolerance tightened 0.25 -> 0.10 on the readings: largest curve gap 0.056 and largest environment contribution 0.035 across four seeds on both the old draw and the shipped generator. Negative controls: the pre-S90 environment through the same matched offseason reads +0.82 to +0.90 and fails; the survivor reading of the same run exceeds the progressed reading by more than the tolerance. The old survivor gate on the new generator reads 0.301 (S106's red reproduced) while the environment contributes 0.002 in that run. 20/20 in the two affected files.",
+      "premise": "test/session90-development-environment.test.js compares the declared curve with the mean overall change of `survivors` — players still in league.players after applyAgingProgressionAndRetirements. But that function progresses a player and THEN rolls retirementChance, which multiplies by the post-progression overall (x0.86 at 90+, x0.93 at 84+, x1.08-x1.18 at 68-74 and below). Conditioning on survival therefore selects on the outcome being measured: players whose ratings fell are more likely to be excluded. Measured on the unchanged tree: survivor population gap +0.149 to +0.238 across four seeds (canonical seed +0.235 against the 0.25 tolerance — 94% of the gate consumed before any change); full progressed population gap -0.022 to +0.022 on the same runs. The environment the gate exists to police contributes -0.035 to -0.005 (wired minus zeroed arm), and the reconstructed pre-S90 environment through the same counterfactual reads +0.831 to +0.903 — the named +0.84. The test's own comment says it measures survivors 'so retirement cannot mask the result'; it is the reverse. This is why S106's generator change moved the gate: it changed who retires.",
+      "premises": [
+        {
+          "claim": "The declared-curve gate reads the survivor population",
+          "adapter": "grep",
+          "target": "test/session90-development-environment.test.js",
+          "pattern": "const survivors = session\\.league\\.players\\.filter",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "Retirement chance reads the player's overall after progression",
+          "adapter": "grep",
+          "target": "src/engine/offseasonSimulator.js",
+          "pattern": "if \\(\\(player\\.overall \\|\\| 70\\) >= 90\\) chance \\*= 0\\.86",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.5,
+          "recipe": "Measure the gate over every player the offseason progressed (captured before the call, retirees included) and against the measured potential centre the engine actually uses."
+        },
+        "L2": {
+          "effortHours": 1.5,
+          "recipe": "L1 plus a matched counterfactual on the same seed — wired environment against an identical offseason with the tilt zeroed — so the environment's contribution is isolated without re-implementing any of the engine inside the test."
+        },
+        "L3": {
+          "effortHours": 2,
+          "recipe": "L2 plus two negative controls: the reconstructed pre-S90 environment through the same counterfactual must fail, and the survivor-population reading of the same run must visibly exceed the progressed-population reading, so the population defect cannot be reintroduced by a refactor that 'simplifies' the measurement back."
+        }
+      }
+    },
+    {
+      "rank": 2,
+      "tier": "HIGH",
+      "category": "Simulation truth; feature depth; the generation-side root of the elite-density watch",
+      "effortHours": 3,
+      "impact": 9,
+      "innovation": 8,
+      "priority": 31,
+      "slug": "potential-is-drawn-on-a-scale-overall-does-not-share",
+      "title": "Re-land position-relative potential behind a gate that can express it",
+      "status": "implemented",
+      "executionEvidence": "L3 shipped. Potential is trait-sized headroom above the player's own overall (SUPERSTAR 6-18, HIDDEN 3-14, NORMAL 0-9, BUST 0-3), whole at 23, closed by 31, tapered over the 55 points below 99, in the same single rng.int slot, finite inputs asserted. Generation, four seeds: above own potential 36.0-37.6% -> 0.0%; mean potential tracks the room (QB 82.1-83.3, TE 74.3-75.2); every mean overall and 90+ count unchanged to the decimal. The first calibration (span 25) was measured and rejected: ten seasons on the canonical seed read elite 2.4% but dispersion 0.112 against the old draw's 2.8% / 0.095 / parity +0.043. Span 40 read 3.0% / 0.101 / +0.032; span 55 read 2.1% / 0.093 / -0.001 — better than the old draw on all three arms, no threshold moved, each arm still reported as its status. Chosen on the monotone dispersion arm; elite density was non-monotone across the sweep and not used to choose. The corrected item-1 gate is green on it. test/session107-position-relative-potential.test.js covers the generation property, room tracking, resolvePotential rules and finite guards, profile surfacing, and a negative control reconstructing the position-blind draw. Player-facing: POT columns and the profile narrative's development runway, which is no longer negative for generated players; release note on public/status.html.",
+      "premise": "Carried from S106 and re-measured here on the unchanged tree: randomPotential still draws one band for every position while overall is position-weighted. Four seeds, 8,832 rostered players: 36.0-37.6% generated above their own potential (QB 46.9-55.5%, OL 47.4-50.5%, TE 19.5-25.0%); all 45 fresh-league 90+ players are QB or OL. The real-data path already does it the other way: src/data/pfrAdapter.js inferTraitAndPotential derives potential as overall plus a trait-sized headroom. S106's version (trait-sized headroom above the player's own overall, age-tapered, damped near the 99 ceiling, same stream slot) measured better on every ten-season arm and was only refused by item 1's defect.",
+      "premises": [
+        {
+          "claim": "Potential is still drawn without reference to position",
+          "adapter": "grep",
+          "target": "src/domain/playerFactory.js",
+          "pattern": "function randomPotential\\(trait, rng\\)",
+          "operator": "eq",
+          "expected": true
+        },
+        {
+          "claim": "The PFR import path already derives potential from overall",
+          "adapter": "grep",
+          "target": "src/data/pfrAdapter.js",
+          "pattern": "potential: clamp\\(overall \\+ rng\\.int",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Implement headroom-above-own-overall in the same single rng.int slot and re-measure the four-seed generation table; seeded overalls must be unchanged to the decimal."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "L1 plus the corrected item-1 gate green on the new generator, and a ten-season canonical-seed receipt compared with the matched control on this tree (elite density, dispersion drift, parity) — no threshold moved."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus a focused test with a negative control that reconstructs the position-blind draw and proves the above-own-potential assertion rejects it, and a check that the player-facing profile surfaces the new potential."
+        }
+      }
+    },
+    {
+      "rank": 3,
+      "tier": "MEDIUM",
+      "category": "Record truth",
+      "effortHours": 0.5,
+      "impact": 6,
+      "innovation": 5,
+      "priority": 22.7,
+      "slug": "s106-record-carries-a-refuted-causal-diagnosis",
+      "title": "The S106 decision, handoff and a 37-line source comment state a cause that measurement refutes",
+      "status": "implemented",
+      "executionEvidence": "L3 shipped. DECISIONS S107 Decision 1 supersedes S106 Decision 0's causal claim with both measurements side by side (S106 entry untouched, append-only). The randomPotential doc comment is replaced with the landed design and its measurement. TRUTH_AUDIT S107 names the contradiction. Agent memory records the pattern (survivor population is selection on the outcome).",
+      "premise": "DECISIONS S106 Decision 0, the S106 handoff and the randomPotential doc comment all say the gate's residual is structural because 'development deltas are applied to ratings and overall is recomputed with position weights'. Item 1's measurement shows the engine matches the declared curve over the full population; the residual is survivor selection. A future session reading the record would build the wrong thing — S106 itself prescribed modelling rating-level application inside the test, which is the engine duplication it also forbade.",
+      "premises": [
+        {
+          "claim": "DECISIONS records the redistribution diagnosis",
+          "adapter": "grep",
+          "target": "context/DECISIONS.md",
+          "pattern": "Development deltas are applied to \\*\\*ratings\\*\\*",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 0.25,
+          "recipe": "Append an S107 decision that supersedes S106 Decision 0's causal claim, with both measurements side by side (append-only; the S106 entry is not edited)."
+        },
+        "L2": {
+          "effortHours": 0.5,
+          "recipe": "L1 plus replace the source comment with the landed design and its measurement, and record the pattern in agent memory: a residual that moves when the population changes is a population effect before it is a mechanism."
+        },
+        "L3": {
+          "effortHours": 0.5,
+          "recipe": "L2 plus the TRUTH_AUDIT entry naming the contradiction between the S106 record and the S107 measurement."
+        }
+      }
+    },
+    {
+      "rank": 4,
+      "tier": "MEDIUM",
+      "category": "Gate population; realism",
+      "effortHours": 3,
+      "impact": 7,
+      "innovation": 7,
+      "priority": 21.1,
+      "slug": "elite-density-cut-is-position-blind-against-a-per-position-anchor",
+      "title": "Elite density compares a position-blind 90+ share with a First-Team All-Pro anchor that is allocated per position",
+      "status": "deferred",
+      "executionEvidence": "L1 measured, ungated, on the landed generator; L2/L3 deferred to their own session by design (the question must be stated first and must not be adopted as a route to a green gate). End-of-window 90+ cohort by room, rostered basis: canonical seed 20260306 (span 55) — Offensive Line 29, Quarterback 6, Secondary 1, every other room 0 (QB+OL 35 of 36, 97%). Seed 2026 — old draw: OL 30, QB 11, Secondary 8, Receivers 4, Backfield 2, Front Seven 1, Specialists 1 (QB+OL 41 of 57, 72%); span 55: OL 29, QB 13, Receivers 2, Secondary 2 (QB+OL 42 of 46, 91%). Position-relative potential shrank the cohort and concentrated it further in the two rooms with the highest overall scale, which sharpens the position-blind-cut question rather than answering it. No per-position arm added; no ceiling moved.",
+      "premise": "Carried from S105/S106 as a question, not a fix. The sourced ceiling in src/data/nflEliteDensityBaseline.js derives from All-Pro selections, which are allocated per position, while the gate counts players at 90+ regardless of position. That is the declared-population question S102-S104 settled for the parity gate. Must be stated as a question first and never adopted as a route to a green gate.",
+      "premises": [
+        {
+          "claim": "The elite-density baseline module exists",
+          "adapter": "file-exists",
+          "target": "src/data/nflEliteDensityBaseline.js",
+          "operator": "eq",
+          "expected": true
+        }
+      ],
+      "ladder": {
+        "L1": {
+          "effortHours": 1,
+          "recipe": "Publish, ungated, the per-room composition of the ten-season 90+ cohort beside the All-Pro per-position allocation, on the tree item 2 lands."
+        },
+        "L2": {
+          "effortHours": 2,
+          "recipe": "L1 across two further seeds, with the declared-population question written first in DECISIONS and a stated reason for either answer."
+        },
+        "L3": {
+          "effortHours": 3,
+          "recipe": "L2 plus, only if the evidence selects it independently of the gate's colour, a per-position arm reported beside the position-blind arm — never replacing it."
+        }
+      }
+    }
+  ]
+}

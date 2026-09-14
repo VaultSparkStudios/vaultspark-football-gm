@@ -52,23 +52,34 @@ function closestRatedPair(league) {
   return best.map((team) => team.id);
 }
 
+// S107 — the claim is about the venue edge, not about one matchup. This test
+// used to pin a single league (620071) at 220 games, and the paired seeds only
+// correlate the two arms until the first play diverges. S107 changed how
+// leagues are generated, so that league's closest-rated pair changed too, and
+// it read edge 0.705 against neutral 0.714 there. Measured before touching the
+// test: the same pair reads +0.028 at 2,000 games and +0.036 with the venue
+// swapped, and seven of eight league seeds read +0.032 to +0.064 at 220. That
+// is sampling noise on a 1.2-point boost, not a lost edge. The sample now pools
+// three leagues, so one legitimately changed matchup cannot flip the verdict.
+const HOME_EDGE_LEAGUE_SEEDS = [620071, 620072, 620073];
+
 test("home edge shifts win share above the same matchup on a neutral site", () => {
-  const session = createSession({ seed: 620071, startYear: 2026, mode: "stat" });
-  const [teamA, teamB] = closestRatedPair(session.league);
   const games = 220;
+  const deltas = HOME_EDGE_LEAGUE_SEEDS.map((seed) => {
+    const session = createSession({ seed, startYear: 2026, mode: "stat" });
+    const [teamA, teamB] = closestRatedPair(session.league);
+    // Same matchup, same seeds — the only difference is the venue edge.
+    const withEdge = homeWinShare({ session, homeTeamId: teamA, awayTeamId: teamB, games, neutralSite: false });
+    const neutral = homeWinShare({ session, homeTeamId: teamA, awayTeamId: teamB, games, neutralSite: true });
+    return { seed, withEdge, neutral, delta: withEdge - neutral };
+  });
+  const receipt = deltas.map((row) => `${row.seed}: ${row.withEdge.toFixed(3)} vs ${row.neutral.toFixed(3)}`).join("; ");
+  const pooled = deltas.reduce((sum, row) => sum + row.delta, 0) / deltas.length;
 
-  // Same matchup, same seeds — the only difference is the venue edge.
-  const withEdge = homeWinShare({ session, homeTeamId: teamA, awayTeamId: teamB, games, neutralSite: false });
-  const neutral = homeWinShare({ session, homeTeamId: teamA, awayTeamId: teamB, games, neutralSite: true });
-
-  assert.ok(
-    withEdge > neutral,
-    `home edge must raise win share (edge ${withEdge.toFixed(3)} vs neutral ${neutral.toFixed(3)})`
-  );
-  assert.ok(
-    withEdge - neutral < 0.2,
-    `home edge must stay small and calibrated (delta ${(withEdge - neutral).toFixed(3)})`
-  );
+  assert.ok(pooled > 0, `home edge must raise win share across leagues (pooled delta ${pooled.toFixed(3)}; ${receipt})`);
+  for (const row of deltas) {
+    assert.ok(row.delta < 0.2, `home edge must stay small and calibrated (seed ${row.seed} delta ${row.delta.toFixed(3)})`);
+  }
 });
 
 test("every result carries an honest venue receipt", () => {
