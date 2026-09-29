@@ -56,6 +56,7 @@ test("the Desk shows the advisor's call and the first-season contract; the Leagu
   await expect(contract).toBeVisible();
   await expect(contract.locator("li.first-season-objective")).toHaveCount(5);
   await expect(page.locator("#firstSeasonContractProgress")).toHaveText("0 of 5");
+  await expect(page.locator("#gmCommitmentBoard")).toBeHidden();
 
   // The standings and the news feed live on the League tab now.
   await expect(page.locator("#overviewTab #standingsTable")).toHaveCount(0);

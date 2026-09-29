@@ -4786,6 +4786,7 @@ html[data-theme="light"] .bg-layer {
 .film-identity { align-items: baseline; background: color-mix(in srgb, var(--panel) 82%, var(--accent)); border: 1px solid var(--border); border-radius: .65rem; display: flex; flex-wrap: wrap; gap: .35rem 1rem; justify-content: space-between; padding: .7rem .8rem; }
 .film-identity span { color: var(--muted); font-size: .78rem; }
 .gm-commitment-board { border-left: 4px solid var(--accent); display: grid; gap: .75rem; }
+.gm-commitment-board[hidden] { display: none; }
 .gm-commitment-kicker { color: var(--accent); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .gm-commitment-row { align-items: center; background: color-mix(in srgb, var(--panel) 82%, var(--accent)); border: 1px solid var(--border); border-radius: .65rem; display: flex; gap: 1rem; justify-content: space-between; padding: .8rem; }
 .gm-commitment-row span { color: var(--muted); font-size: .8rem; white-space: nowrap; }
