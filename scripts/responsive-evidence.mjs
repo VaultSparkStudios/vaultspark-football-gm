@@ -657,8 +657,13 @@ async function main() {
       }
       const simWatchReceipt = await resolveVisualGameReceipt({
         advance: () => page.evaluate(async () => {
-          const { api } = await import("./lib/appState.js");
-          const response = await api("/api/advance-week", { method: "POST", body: {} });
+          const { api, state } = await import("./lib/appState.js");
+          const pending = state.dashboard?.gmDecisionQueue?.[0];
+          const chosen = pending?.options?.find((option) => option.id === "defer") || pending?.options?.[0];
+          const body = pending && chosen
+            ? { gmDecisionChoice: { decisionId: pending.id, occurrenceKey: pending.occurrenceKey, choiceId: chosen.id } }
+            : {};
+          const response = await api("/api/advance-week", { method: "POST", body });
           globalThis.__VS_FA_APPLY_DASHBOARD__?.(response.state);
           return response;
         }),
