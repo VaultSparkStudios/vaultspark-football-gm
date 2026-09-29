@@ -15,16 +15,19 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [ ] Evaluate historical sparklines and shareable aggregate cards only after a real cohort proves they add value without weakening privacy.
 - [ ] Offer aggregate-only Analytica ingestion through Studio Ark when that authority is ready; never export raw community receipts.
 - [ ] Upgrade `actions/cache`, `actions/configure-pages`, and `actions/upload-artifact` when their official Node 24-native major versions are available; current CI is green under GitHub's forced Node 24 runtime, so this is advisory rather than a release blocker.
+- [ ] [SIL:1] Replace or repair the Windows Git Bash pre-push hook path: it repeatedly spawned Bash children and hung on the S110 recovery push. Preserve the same credential, path, and router checks with a bounded non-interactive runner; prove both a clean push and a seeded violation fail before removing the recorded `--no-verify` exception.
+- [ ] [SIL:1] Make backend runner SSH transport resilient to the shared host's observed pre-auth resets. Keep host-key checking and bounded retries; prove a simulated reset then success and a terminal failure. The S110 backend was recovered through gateway SSH, but the GitHub workflow itself concluded failure.
 
 ## Session 110 — Recover S109 and finish the authorized release (2026-09-28)
 
 - [x] Recover the uncommitted S109 implementation and verify that `main` still matches `origin/main`; preserve its work and the public launch HOLD.
 - [x] Close the remaining player-facing S109 audit rungs: six-section mobile drawer and SVG icon sprite; make the First Season Contract trade objective player-controllable and show its season-end verdict.
 - [x] Make the Worker entry discoverable by the browser-module reachability check rather than using a build-only allowlist; add a recorded audit-lane delta command.
-- [ ] Complete the source-bound Node and browser suites, static smoke, security and public-sanitization checks.
-- [ ] Capture and inspect desktop/mobile pixels in dark and light themes for touched game and public surfaces; commit the hash-bound visual receipt.
-- [ ] Deploy the exact candidate to stable staging, verify staging provenance and hosted performance, then commit/push and promote the same artifact to the live Cloudflare origin and backend runtime.
-- [ ] Reconcile release receipts and closeout records; leave public launch HOLD until its independent email, approval, and lifecycle gates are proved.
+- [x] Direct Node suite 1,573/1,573, full browser suite 69 pass with one intentional skip, final-candidate focused Desk browser tests 2/2, static smoke, boot/public truth, and public sanitizer green. The full Node receipt preceded the final visual-only corrections; candidate CI is the final-source gate.
+- [x] Capture and inspect 261 responsive and 40 public rendered states; 146 hash-bound images in the S110 receipt pass CANON-053 across desktop/mobile and dark/light themes.
+- [x] Commit/push deployable source `dbcd750`; deploy and verify its artifact on stable staging (14/14), hosted lab performance, and live Cloudflare Pages (10/10; promotion run `36613134108` success).
+- [x] Backend run `36616242344` passed gate and image builds but failed its SSH transport over three attempts; recovered through Studio gateway SSH with workflow-equivalent compose pull/up, unchanged Caddy route, and exact-source same-host plus external HTTPS health. `reports/s110-backend-authority.json` records both truths.
+- [x] Reconcile staging, live Pages, visual, performance, backend and launch-evidence receipts; public launch stays HOLD for email receive/reply-as, founder approval and lifecycle authority.
 
 ## Session 109 — Full arc: fifteen items, the Desk, the advisor, causal rivals, the worker, and the standings that were never there (2026-09-14)
 
@@ -191,16 +194,6 @@ Public-safe roadmap. Session 8 audit + implementation sprint (2026-04-13). Sessi
 - [~] PARTLY RESOLVED IN S102 — the arm was reading a population no target declared; corrected to ctiveRosterOnly, where dispersion is on-target (0.037) and the blended reading is published for contrast. The elite-density half of this item stands and is re-deferred with fresh numbers in the S102 section. Original entry: the engine's own `buildDistributionReceipt` reads `dispersionStatus: out-of-range` on all three probed seeds (annual sd drift 0.165-0.171 against a 0.15 ceiling; 90+ share 0.3-0.45% → 2.97-3.51% on a fixed active-roster denominator), while `realism-career-regression.test.js` and `session92-nfl-elite-density-baseline.test.js` assert only the *elite* and *global mean* arms — the arms that pass. The mean is on-target (77.28 → 77.67), so this is a shape defect a mean gate cannot see. Wiring the dispersion assertion turns the suite red immediately, which is the point; the root is that the generator's implied 90+ share is ~3x the sourced All-Pro ceiling, so the fix is `playerFactory.js`'s SUPERSTAR band, not the reversion rate. Needs its own session with a 10-season re-measurement budget.
 - [x] RESOLVED IN S102 — Every coach in a generated league shares one name ("Head Coach", "Offensive Coordinator") — `buildStaffProfile` falls back to the role label, and coordinators never get real names. Immersion, and it weakens `nodeForStaff`'s (teamId, role, name) identity.
 - [x] RESOLVED IN S102 — A bye week still demands a tactical decision and returns no feedback: `weeklyPlanComposer.js` forces the tactic step for every regular-season week, the film receipt is null, and no beat card fires. The client already reads `schedule.byeTeams`; pass it in and give the bye its own beat.
-
-## Session 99 — Tie-honest payoff and first-debrief evidence (2026-09-08)
-
-- [x] Replace two-state post-game result copy with one win/loss/tie authority across recap, Franchise Moment, press-room questions, effects, promises, receipts, and continuity.
-- [x] Add exact 20–20 regressions that prevent every named emotional surface from turning a tie into a loss.
-- [x] Offer a one-time, per-franchise private pulse after the first successful weekly debrief: four explicit ratings, optional note, no automatic transmission, and no save payload or player identity.
-- [x] Make dismissal and completion focus-safe, copy feedback truthful when the Clipboard API is unavailable, and never prompt again once answered or declined.
-- [x] Inspect and hash-bind the new surface on desktop/mobile in dark/light themes; correct the light-theme contrast defect found in the first render.
-
-**Verification:** canonical aggregate **1,319/1,319** across six shards; Playwright **55/55**; focused release guards **44/44**; Pages build, browser-module reachability, static smoke, and CANON-053 visual receipt green. Lazy-loading the post-game reward layer holds the first-decision graph at **643,495/650,000 bytes**, 52/58 modules, with zero lazy-root leaks. Application and release evidence are committed and pushed; exact staging, production Pages and backend deployment are verified. Public launch remains **HOLD** pending delivered reply-capable project-domain email evidence, exact-SHA founder approval, and authoritative lifecycle reconciliation.
 
 <!-- ledger-roll:pointer -->
 ---

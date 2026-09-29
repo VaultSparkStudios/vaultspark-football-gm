@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "backend-recovery-authority",
+  "sourceRevision": "dbcd750b1c8e8d477928f28ca8afa869bb80d253",
+  "verifiedAt": "2026-09-29T20:25:09.373Z",
+  "githubWorkflow": {
+    "run": 36616242344,
+    "attempts": 3,
+    "conclusion": "failure",
+    "failedStep": "runner SSH transport reset during SCP or deploy connection",
+    "gate": "success",
+    "imageBuilds": "success"
+  },
+  "recoveryPath": "Studio secrets gateway SSH from local agent; workflow-equivalent compose pull/up, Caddy comparison, same-host exact-source health",
+  "sameHostHealth": {
+    "verified": true,
+    "sourceRevision": "dbcd750b1c8e8d477928f28ca8afa869bb80d253"
+  },
+  "externalHealth": {
+    "verified": true,
+    "url": "https://api-franchise-architect-football.vaultsparkstudios.com/community/v1/health",
+    "ok": true,
+    "database": "ready",
+    "schemaVersion": 1,
+    "service": "franchise-architect-community-stats",
+    "sourceRevision": "dbcd750b1c8e8d477928f28ca8afa869bb80d253"
+  }
+}

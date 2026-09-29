@@ -5,13 +5,6 @@ Overall status: green
 Last reviewed: 2026-09-09
 Public-safe summary only. Sensitive verification notes are maintained privately.
 
-## 2026-09-09 — Session 100
-
-Application revision d0fea099ea9c177e724d958755d1d47a93770a3b; artifact ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6. Staging 14/14; production 10/10; hosted performance verified. Node 1327/1327 across six shards, with the studio shard rerun after adding screenshot-ledger entries. Local browser verification: 59/60 on the final full run, then the sole setup timeout passed unchanged on focused rerun; earlier full run 60/60. Hosted candidate workflows: CI 34331844586 success; Deploy Pages 34333215833 success; Deploy Backend Runtime 34333220807 success. Sixteen reviewed captures cover desktop/mobile and both themes.
-
-Feedback save failures are visible and are never counted as saved. Milestone fixtures are deterministic test evidence, not user activity. Technical deployment does not establish launch readiness or retention.
-
-
 ## 2026-09-09 — Session 101
 
 **A write-back gap in the record itself.** S99 and S100 never appended their `context/CURRENT_STATE.md` entries. The public-truth release-note gate derives a session number from that file, so it read the published page as two sessions stale and blocked the Pages build — which is how the gap surfaced at all. The S101 entry is written; the S99/S100 entries remain absent and are not being back-dated, because reconstructing what those sessions would have written is fabrication. Their record lives in WORK_LOG, SIL and the handoff.
@@ -143,6 +136,14 @@ Feedback save failures are visible and are never counted as saved. Milestone fix
 **Product promise corrected.** An objective that depended on a random inbound offer was described as player-achievable. It now accepts the player's own successful trade evaluation and closes at the season review with an owner verdict. The public release note's September 14 label described a local build, so it is dated to the actual September 28 release candidate.
 
 **Gate coverage corrected.** S109 recorded a Worker reachability exception. The checker now follows the Worker URL edge and the exception is removed. The browser gate will inspect the shipped Worker module as a member of the graph.
+
+**Recovery verification, 2026-09-29.** The direct canonical suite passed 1,573/1,573 across six shards, and the full browser suite passed 69 with one declared opt-in negative control skipped. The source-bound Node receipt predates final CSS, public copy, capture-script, and browser-spec corrections; it is evidence for the recovered implementation, not a claim that the final `dbcd750` tree was rerun through all six shards. Its focused Desk browser spec passed 2/2, the CSS token test passed 5/5, static smoke passed alone after one timeout under concurrent browser load, public-truth passed, and studio doctor reported `blockingFailing 0` with the standing registry warning. Candidate CI is the final-source gate.
+
+**Rendered pixels corrected the record.** The original S110 evidence script could not reach tabs inside the collapsed six-section drawer. The fixed path exercised visible group toggles; rendered review then found default-blue public links, an About roadmap calling shipped features future work, and a CSS rule exposing an empty commitment panel despite its `hidden` attribute. All four were corrected before the final capture. The latest receipt binds 146 reviewed images in dark/light and desktop/mobile to `dbcd750`; the complete responsive report passed 261/261 captures, and public capture passed 40/40. The non-vacuous visual-QA checker passed without `--changed`.
+
+**Release boundary.** Stable staging returned 14/14 same-origin provenance checks for source `dbcd750b1c8e8d477928f28ca8afa869bb80d253` and artifact `6585b783020cbca6b639f8222fd26825139db2e3c665e7ff576ae237534cd51a`. Hosted lab entry-route performance was verified (desktop LCP 696 ms, mobile 784 ms; desktop/mobile CLS 0/0.0085). These are lab and staging measurements; they are not real-cohort metrics or evidence of production promotion. Public launch remains HOLD.
+
+**S110 release truth, 2026-09-29.** The source and artifact are now observed on stable staging (14/14) and live Pages (10/10), with the reviewed 146-image visual receipt and hosted lab performance bound to the same `dbcd750` source and `6585b783…534cd51a` artifact. Launch evidence reaches all nine public routes and verifies origin security headers but reports `launchReady:false`: project-domain receive/reply-as email, founder approval and authoritative lifecycle remain unverified. The backend workflow's test gate and images passed, but three runner attempts failed at SSH transport. Gateway SSH subsequently deployed the exact source, and same-host plus external HTTPS health reported it ready. The backend deployment claim comes from that independent observation; the workflow conclusion remains failure. Studio closeout rerun passed 340/340 after the S110 SIL header was rendered. The direct six-shard 1,573/1,573 receipt predates final visual-only edits; exact-candidate CI supplies final-source test coverage.
 
 <!-- ledger-roll:pointer -->
 ---

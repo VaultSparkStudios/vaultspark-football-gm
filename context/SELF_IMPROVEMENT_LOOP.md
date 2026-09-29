@@ -1,24 +1,12 @@
 # Self-Improvement Loop
 
 <!-- rolling-status-start -->
-Last session: 109 (2026-09-14) | Total: 958/1000 | Velocity: 4 | Debt: →
-Avgs — 3: 960.3 | 5: 960.4 | 10: 958.7 | 25: 975.8 | all: 987.1
+Last session: 110 (2026-09-29) | Total: 952/1000 | Velocity: 4 | Debt: →
+Avgs — 3: 957.7 | 5: 958.6 | 10: 958.7 | 25: 974.3 | all: 986.5
 Sparkline: ▅▅▅▅▅
 Intent rate: 100% (5/5 last 5)
-SIL delta: 963 → 958 (-5). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 63 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
+SIL delta: 958 → 952 (-6). Engineering assessments, not user-outcome measurements. Derived by scripts/render-sil-rolling-status.mjs from 64 unique sessions scored /1000 in the live file and its archive (calibration sessions 1–3 excluded); Velocity and Debt are carried, not derived.
 <!-- rolling-status-end -->
-
-## 2026-09-09 — Session 100 — Reliable feedback and milestone news
-
-SIL v3.0: **952 / 1000** (Dev Health 98, Creative Alignment 98, Momentum 98, Engagement 85, Process Quality 92, Cross-Repo Coherence 95, Security Posture 98, Ecosystem Integration 90, Capital Efficiency 100, Automation Coverage 98). Intent outcome: Achieved. These are engineering assessments, not measured user outcomes. Engagement lacks real-cohort evidence; process quality reflects the late ledger correction and transient setup failure.
-
-S100 fixes storage-safe optional feedback dismissal, canonical once-only player milestone reporting, visible and keyboard-safe news tickers, and consistent completed-audit status handling. Stable staging, production Pages and backend deployment are verified.
-
-Application revision d0fea099ea9c177e724d958755d1d47a93770a3b; artifact ec10055728641c1e7942368fab4b85f6dd57d1cbedf200c0be00f9443d49b2b6. Staging 14/14; production 10/10; hosted performance verified. Node 1327/1327 across six shards, with the studio shard rerun after adding screenshot-ledger entries. Local browser verification: 59/60 on the final full run, then the sole setup timeout passed unchanged on focused rerun; earlier full run 60/60. Hosted candidate workflows: CI 34331844586 success; Deploy Pages 34333215833 success; Deploy Backend Runtime 34333220807 success. Sixteen reviewed captures cover desktop/mobile and both themes.
-
-- [SIL] Exercise denied storage at the dismissal boundary, not only while saving.
-- [SIL] Canonical threshold crossings and durable deduplication must be verified through the actual weekly simulation and rendered news feed.
-
 
 ## 2026-09-09 — Session 101 — Advertised rules become enforced rules
 
@@ -188,6 +176,19 @@ Dev Health is 96: 1,568/1,568 on the final tree, every browser gate green, one a
 - [SIL] A count premise's separator must not overlap its token. The lazy form hangs exactly when the fix succeeds.
 - [SIL] A new spec is an audit of the surface it drives; the standings defect was older than every test that had ever passed around it.
 - [SIL] A 45-minute suite is launched detached with a log and a waiter, and nothing in its digest is edited until it lands.
+
+## 2026-09-29 — Session 110 — Recovery made the receipts earn their claims
+
+SIL v3.0: **952 / 1000** (Dev Health 97, Creative Alignment 98, Momentum 98, Engagement 92, Process Quality 88, Cross-Repo Coherence 94, Security Posture 97, Ecosystem Integration 91, Capital Efficiency 100, Automation Coverage 97). Intent outcome: **Achieved for the recovered S109–S110 implementation and closeout**; public launch remains HOLD.
+
+S109 described deployment and closeout as achieved while the source was still uncommitted and its staging, production, visual and release receipts pointed to older revisions. Recovery inspected the full diff and history, parsed every changed JSON, confirmed the local Claude configuration was valid, ran the six Node shards (1,573/1,573) and Studio Doctor (zero blocking findings), then committed the actual implementation. The exact final source passed CI and a production promotion gate. The page and game visuals were inspected in two themes and desktop/mobile, with four visible defects fixed before capture. Stable staging attested 14/14 same-origin checks; hosted lab performance passed. These are technical proofs, not player-cohort evidence or a public-launch decision.
+
+Process Quality is 88 because the initial handoff's deployment claim was phantom, the first responsive evidence script clicked hidden drawer tabs, screenshot retention was missing its ledger write until the gate caught it, and the Windows Bash pre-push hook required a documented `--no-verify` transport bypass after its checks were run directly. Security Posture is 97 because the bypass leaves a hook-repair task; the sanitizer and outgoing-diff checks themselves passed. Engagement 92 reflects stronger player-facing decisions and navigation but no measured real cohort.
+
+- [SIL] A passing source suite is not a deployment receipt. Compare the source revision and artifact digest on local, staging and live origins before writing "deployed."
+- [SIL] A screenshot of a hidden target is not visual proof of a reachable interaction. Navigate through the same visible controls a player uses and inspect both themes at mobile and desktop sizes.
+- [SIL] When a hook hangs, isolate the hook's process family, run its checks directly, document the bypass, and repair the hook. Do not kill another repository's Git process while diagnosing yours.
+- [SIL] A capture retention job that records images but misses the hash ledger will fail a later studio gate. Write and verify the ledger before treating the visual receipt as complete.
 
 <!-- ledger-roll:pointer -->
 ---

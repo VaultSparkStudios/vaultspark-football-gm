@@ -1,14 +1,14 @@
 <!-- generated-by: scripts/render-startup-brief.mjs v3.1 -->
-<!-- generated-at: 2026-09-29 (Session 109 closeout) -->
+<!-- generated-at: 2026-09-29 (Session 110 closeout) -->
 <!-- fast-boot-valid-until: next session if within 24h -->
 <!-- brief-coherent: true -->
 <!-- lifecycle-authority-fingerprint: f56e73838faf621d -->
 <!-- genius-authority-fingerprint: ba71abc118735f16 -->
-<!-- session-authority: committed=S109 · SIL=S109 · status=S109 · handoff=S109; divergent=false -->
+<!-- session-authority: committed=S110 · SIL=S110 · status=S110 · handoff=S110; divergent=false -->
 
 # Startup Brief — Franchise Architect: Football
 
-> **Fast-boot brief** — generated at Session 109 closeout · 2026-09-29.
+> **Fast-boot brief** — generated at Session 110 closeout · 2026-09-29.
 > Valid for next session if started within 24h. For sessions >24h later, load context files fresh (start.md §3).
 
 ---
@@ -17,14 +17,14 @@
 ╔════════════════════════════════════════════════════════════════╗
 ║  🎮 FRANCHISE ARCHITECT: FOOTBALL                                ║
 ║  game · deployed/public-unlaunched · FORGE                       ║
-║  Session 110 · 2026-09-29 · BUILDER MODE                         ║
+║  Session 111 · 2026-09-29 · BUILDER MODE                         ║
 ║  Owner: VaultSpark Studios                                       ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ LAST SESSION (S109) - WHAT SHIPPED ══════════════════════════╗
-║  S109 ran the whole arc under one founder goal: a three-lane au  ║
-║  Tests  1,463/1,463 across six shards; studio re-run green afte  ║
-║  Deploy verified 10/10 at dbdc5c5a via verify-release-provenanc  ║
+╔══ LAST SESSION (S110) - WHAT SHIPPED ══════════════════════════╗
+║  S110 recovered S109/S110 source from an interrupted worktree,   ║
+║  Tests  Direct six-shard Node run 1,573/1,573 on recovered work  ║
+║  Deploy verified 10/10 on live Pages at the same source and dig  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ WHERE TO TEST · Franchise Architect: Football ═══════════════╗
@@ -41,48 +41,48 @@
 
 ╔══ SCORE ═══════════════════════════════════════════════════════╗
 ║                                                                  ║
-║    958/1000   ██████████████████████░░   96%                     ║
-║    SIL v3.0  ·  Avg3: 960.3  ·  Velocity 4→                      ║
-║    Active 14d · closeout 15d · source: newest SIL/status/handof  ║
+║    952/1000   ██████████████████████░░   95%                     ║
+║    SIL v3.0  ·  Avg3: 957.7  ·  Velocity 4→                      ║
+║    Active 0d · closeout 0d · source: newest SIL/status/handoff   ║
 ║    Trend  ▅▅▅▅▅  →  (last 5 sessions)                            ║
 ║                                                                  ║
 ║    Category         Score  Bar        Spark   Δ                  ║
 ║    ─────────────── ────── ────────── ──────── ─                  ║
-║    Dev Health        96    ██████████  —        →                ║
-║    Alignment         97    ██████████  —        →                ║
+║    Dev Health        97    ██████████  —        →                ║
+║    Alignment         98    ██████████  —        →                ║
 ║    Momentum          98    ██████████  —        →                ║
-║    Engagement        93    █████████░  —        →                ║
-║    Process Qual      92    █████████░  —        →                ║
-║    Coherence         95    ██████████  ········ →                ║
-║    Security          98    ██████████  ········ →                ║
+║    Engagement        92    █████████░  —        →                ║
+║    Process Qual      88    █████████░  —        →                ║
+║    Coherence         94    █████████░  ········ →                ║
+║    Security          97    ██████████  ········ →                ║
 ║    Ecosystem         91    █████████░  ········ →                ║
 ║    Capital          100    ██████████  ········ →                ║
-║    Automation        98    ██████████  ········ →                ║
+║    Automation        97    ██████████  ········ →                ║
 ║                                                                  ║
 ╚════════════════════════════════════════════════════════════════╝
 
-╔══ WHERE WE LEFT OFF  ·  Session 109 ═══════════════════════════╗
-║  Shipped:  S108 answered the elite-density question before code  ║
-║  Tests:    1568/1568 passing  ·  Deploy: verified 10/10 at dbdc  ║
+╔══ WHERE WE LEFT OFF  ·  Session 110 ═══════════════════════════╗
+║  Shipped:  S110 recovery committed the previously uncommitted S  ║
+║  Tests:    1573/1573 passing  ·  Deploy: verified 10/10 on live  ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ CONTEXT METER ═══════════════════════════════════════════════╗
-║  ✓  ████░░░░░░░░░░░░░░░░░░░░   17% used                          ║
-║     45,935 / 272,000 tok  ·  codex/codex-272k  ·  measured+heur  ║
-║     ~22,968 tok/turn  ·  cache 50%  ·  8 turns to compact        ║
+║  ✓  ░░░░░░░░░░░░░░░░░░░░░░░░    2% used                          ║
+║     2,928 / 200,000 tok  ·  unknown/default  ·  heuristic        ║
+║     ~1,464 tok/turn  ·  cache 50%  ·  123 turns to compact       ║
 ║     Verdict: CONTINUE                                            ║
 ╚════════════════════════════════════════════════════════════════╝
 
 ╔══ SIGNALS ═════════════════════════════════════════════════════╗
-║  ⚠  Tests         1568/1568 passing (2026-09-15) · STALE — run   ║
+║  ⚠  Tests         1573/1573 passing (2026-09-29) · STALE — run   ║
 ║  ✓  Velocity      4   ·  Debt: →                                 ║
 ║  ⚠  Runway        not tracked                                    ║
-║  ⚠  Context age   14d                                            ║
+║  ✓  Context age   0d                                             ║
 ║  ⛔  IGNIS         41119 FORGE  ·  20d old                        ║
 ║  ✓  Truth         green  ·  Genome: green                        ║
 ║  ✓  Compliance   37/37 (100%) · status source                    ║
 ║  ✓  Genome dims   all stable  (0/25)                             ║
-║  ✓  Entropy       0.004  (healthy)                               ║
+║  ✓  Entropy       0.114  (healthy)                               ║
 ║  ✓  CDR           no gap detected                                ║
 ║  ✓  Patterns      no recurring pressure detected                 ║
 ║  ✓  Templates     v3.3 aligned                                   ║
@@ -135,5 +135,5 @@
 
 ---
 
-*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 109 closeout · 2026-09-29*
+*Generated by `scripts/render-startup-brief.mjs v3.1` · Session 110 closeout · 2026-09-29*
 *Run `node scripts/ops.mjs doctor` for live health check · `node scripts/ops.mjs genius-list` to refresh hit list*

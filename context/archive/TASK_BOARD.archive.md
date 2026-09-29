@@ -2,6 +2,16 @@
 
 Append-only archive of entries rolled out of the live ledger. Verbatim; newest first. See `context/TASK_BOARD.md` for the working set.
 
+## Session 99 — Tie-honest payoff and first-debrief evidence (2026-09-08)
+
+- [x] Replace two-state post-game result copy with one win/loss/tie authority across recap, Franchise Moment, press-room questions, effects, promises, receipts, and continuity.
+- [x] Add exact 20–20 regressions that prevent every named emotional surface from turning a tie into a loss.
+- [x] Offer a one-time, per-franchise private pulse after the first successful weekly debrief: four explicit ratings, optional note, no automatic transmission, and no save payload or player identity.
+- [x] Make dismissal and completion focus-safe, copy feedback truthful when the Clipboard API is unavailable, and never prompt again once answered or declined.
+- [x] Inspect and hash-bind the new surface on desktop/mobile in dark/light themes; correct the light-theme contrast defect found in the first render.
+
+**Verification:** canonical aggregate **1,319/1,319** across six shards; Playwright **55/55**; focused release guards **44/44**; Pages build, browser-module reachability, static smoke, and CANON-053 visual receipt green. Lazy-loading the post-game reward layer holds the first-decision graph at **643,495/650,000 bytes**, 52/58 modules, with zero lazy-root leaks. Application and release evidence are committed and pushed; exact staging, production Pages and backend deployment are verified. Public launch remains **HOLD** pending delivered reply-capable project-domain email evidence, exact-SHA founder approval, and authoritative lifecycle reconciliation.
+
 ## Session 98 — Full arc: the first season pays off, chronology stays true, and tablet focus comes home (2026-09-03)
 
 - [x] Replace the never-initialized dashboard-phase sentinel with one pure previous/current season-transition authority.
